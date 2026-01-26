@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movemental DNA: A Leadership Development Framework</title>
+    <style>
+        /* HBR-inspired duotone print-ready styles */
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --primary-color: #1a365d;
+            --accent-color: #4a90a4;
+            --text-dark: #2d3748;
+            --text-medium: #4a5568;
+            --text-light: #718096;
+            --border-light: #e2e8f0;
+            --background-light: #f7fafc;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Crimson Text', serif;
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--white);
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 1in;
+        }
+        
+        /* Typography Hierarchy */
+        h1 {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5em;
+            line-height: 1.2;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.3em;
+        }
+        
+        h2 {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 2em 0 1em 0;
+            line-height: 1.3;
+        }
+        
+        h3 {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin: 1.5em 0 0.75em 0;
+            line-height: 1.4;
+        }
+        
+        h4 {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin: 1.25em 0 0.5em 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Lead paragraph styling */
+        .lead {
+            font-size: 22px;
+            font-style: italic;
+            color: var(--accent-color);
+            margin-bottom: 2em;
+            padding: 1em;
+            border-left: 4px solid var(--accent-color);
+            background: var(--background-light);
+        }
+        
+        p {
+            margin-bottom: 1.25em;
+            text-align: justify;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin: 1em 0 1.5em 2em;
+        }
+        
+        li {
+            margin-bottom: 0.5em;
+        }
+        
+        /* Special elements */
+        .framework-box {
+            background: var(--background-light);
+            border: 2px solid var(--border-light);
+            border-left: 6px solid var(--accent-color);
+            padding: 1.5em;
+            margin: 2em 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .framework-box h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .outcomes-box {
+            background: linear-gradient(135deg, var(--background-light) 0%, var(--white) 100%);
+            border: 1px solid var(--border-light);
+            padding: 1.25em;
+            margin: 1.5em 0;
+            border-radius: 4px;
+        }
+        
+        .outcomes-box h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.75em;
+        }
+        
+        /* Module sections */
+        .module {
+            margin: 3em 0;
+            page-break-inside: avoid;
+        }
+        
+        .module-header {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1em 1.5em;
+            margin-bottom: 1.5em;
+            border-radius: 4px;
+        }
+        
+        .module-header h3 {
+            color: var(--white);
+            margin: 0;
+            font-size: 22px;
+        }
+        
+        .sub-module {
+            margin: 2em 0;
+            padding-left: 1.5em;
+            border-left: 2px solid var(--border-light);
+        }
+        
+        /* Action items */
+        .actions {
+            background: var(--white);
+            border: 1px solid var(--accent-color);
+            border-radius: 4px;
+            padding: 1.25em;
+            margin: 1.5em 0;
+        }
+        
+        .actions h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.75em;
+        }
+        
+        .actions ul {
+            margin-left: 1em;
+        }
+        
+        /* Assessment timeline */
+        .timeline {
+            background: var(--background-light);
+            padding: 1.5em;
+            margin: 2em 0;
+            border-radius: 4px;
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .timeline-item {
+            margin-bottom: 1em;
+            padding-bottom: 1em;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .week-marker {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 16px;
+        }
+        
+        /* Emphasis and quotes */
+        em {
+            font-style: italic;
+            color: var(--accent-color);
+        }
+        
+        strong {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        blockquote {
+            font-style: italic;
+            font-size: 20px;
+            color: var(--accent-color);
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1.5em;
+            margin: 2em 0;
+        }
+        
+        /* Print optimizations */
+        @media print {
+            body {
+                font-size: 12pt;
+                line-height: 1.6;
+                padding: 0.5in;
+            }
+            
+            h1 { 
+                font-size: 24pt; 
+                page-break-after: avoid;
+            }
+            
+            h2 { 
+                font-size: 18pt; 
+                page-break-after: avoid;
+            }
+            
+            h3 { 
+                font-size: 16pt; 
+                page-break-after: avoid;
+            }
+            
+            .module {
+                page-break-inside: avoid;
+            }
+            
+            .framework-box,
+            .outcomes-box,
+            .actions,
+            .timeline {
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 0.5in;
+                font-size: 16px;
+            }
+            
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+            h3 { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Movemental DNA: A Leadership Development Framework</h1>
+        <p class="lead">"After a time of decay comes the turning point… The movement is natural, arising spontaneously." The question before us is whether we will design for propagation or settle for preservation. The problem we must solve before we offer the solution is simple to say and hard to face: five strong strands won't carry a movement; you need the whole mDNA—integrated, operative, and embodied—if you want sustained transformation that multiplies at the edges. Not programs but paradigm; not maintenance but movement.</p>
+    </header>
+
+    <section>
+        <h2>Learning Architecture</h2>
+        
+        <div class="framework-box">
+            <h4>Adult-Learning "Chunking" Approach</h4>
+            <p><strong>Two-phase journey for adult learners:</strong></p>
+            <p><strong>Phase 1: Core (14 weeks).</strong> Seven modules, some with sub-modules. Weekly 90-minute cohort sessions plus 30 minutes pre-work and a small field experiment. Cadence every week: <em>Explore</em> (dialogue the content) → <em>Evaluate</em> (prioritize options, name blockages) → <em>Employ</em> (try a field practice) → <em>Journal</em> (guided reflection) to prevent discussion-only drift and anchor action-learning.</p>
+            
+            <p><strong>Phase 2: Residency (12 weeks).</strong> Learners lead in-context experiments, coached through huddles and peer feedback; focus on reproduction and network effects (starfish logic) rather than central performance.</p>
+            
+            <p><strong>Micro-chunking inside each module:</strong></p>
+            <ul>
+                <li><strong>Week A:</strong> paradigm framing + light tool</li>
+                <li><strong>Week B:</strong> field lab + peer coaching</li>
+            </ul>
+            <p>Short, simple, transferable tools favored over complex curricula (movement scales on simplicity).</p>
+        </div>
+
+        <div class="outcomes-box">
+            <h4>Assessment-by-Evidence</h4>
+            <p>mDNA diagnostic at start and at each module pivot to identify the "weakest strand" and focus effort; all six strands must be cultivated—resist silver-bullet fixes.</p>
+            <p><strong>Artifacts:</strong> network maps, coaching plans, micro-expression stories, and APEST team exercises.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>How Alan's Books Anchor Each Module</h2>
+        
+        <ul>
+            <li><strong>The Forgotten Ways (TFW):</strong> movement paradigm, mDNA, APEST Culture, liminality-communitas; establishes why a movemental imaginary must supplant an institutional lens in the West.</li>
+            
+            <li><strong>The Forgotten Ways Handbook:</strong> group process and the Explore/Evaluate/Employ/Journal rhythm; practical scaffolding for action groups and diagnostics.</li>
+            
+            <li><strong>Permanent Revolution:</strong> movements vs. institutions; centralization's inverse relationship to movement capacity; links to innovation and organic systems; APEST leadership ecology.</li>
+            
+            <li><strong>On the Verge:</strong> process for implementing movemental change in complex organizations; a companion for leaders shepherding larger systems.</li>
+            
+            <li><strong>The Starfish-and-network references:</strong> decentralized, regenerative logic for micro-expressions and equipping hubs; weekly coaching huddles that scale in crisis (KC Underground as a living example).</li>
+            
+            <li><strong>Right Here, Right Now; The Shaping of Things to Come:</strong> missional-incarnational practice and innovation; cited within the ecosystem to inform contextualization and culture shift.</li>
+            
+            <li><strong>Metanoia resources:</strong> ongoing un/learning posture, learning-organization dynamics that sustain long-term change in a movemental ecology.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Full Course Outline</h2>
+        
+        <div class="module">
+            <div class="module-header">
+                <h3>Intro Module: mDNA Overview and Diagnostics</h3>
+            </div>
+            
+            <div class="framework-box">
+                <h4>Big Idea</h4>
+                <p>Movements require all six mDNA elements functioning together; five won't get you to full-scale movement. Avoid silver-bullet thinking; embed Jesus-centered DNA at the core and strengthen your weakest strand first.</p>
+                <p>Movements vs. institutions: centralization of power and function inversely correlates to capacity for spread; design for diffusion, not control.</p>
+                <p>A living U.S. example of a decentralized, equipping ecosystem is the Kansas City Underground (weekly leader equipping, coaching webs, microchurch emergence).</p>
+            </div>
+            
+            <div class="outcomes-box">
+                <h4>Outcomes</h4>
+                <ul>
+                    <li>Explain why all six mDNA elements are necessary for genuine movement and diagnose your weakest strand</li>
+                    <li>Describe how decentralization increases movement potential and identify one centralized bottleneck</li>
+                </ul>
+            </div>
+            
+            <h4>Content</h4>
+            <ul>
+                <li>The Forgotten Ways paradigm shift and updated terms: APEST Culture; Liminality-Communitas; imagination and metanoia as prerequisites for change</li>
+                <li>Movement mental model for post-Christendom complexity (avoid copy-paste from premodern settings)</li>
+                <li>Explore/Evaluate/Employ/Journal group process to ensure action-learning</li>
+            </ul>
+            
+            <div class="actions">
+                <h4>Actions/Exercises</h4>
+                <ul>
+                    <li>Baseline mDNA self-diagnostic; pick the weakest strand to target this term</li>
+                    <li>Draw your ministry as a network and mark centralized "red zones" that limit spread</li>
+                    <li>Watch the starfish/microchurch case and note one coaching habit to adopt (KC Underground)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <h3>Module 1: Jesus is Lord</h3>
+            </div>
+            
+            <div class="framework-box">
+                <h4>Big Idea</h4>
+                <p>Indicative precedes imperative: we begin not with tasks but with the confession that orders reality—Jesus is Lord. From that center flows sentness: missio Dei as our identity, not an elective.</p>
+            </div>
+            
+            <div class="outcomes-box">
+                <h4>Outcomes</h4>
+                <ul>
+                    <li>Articulate Jesus is Lord as the theological anchor that drives mission-as-identity</li>
+                    <li>Identify one "queen piece" you will set aside this term to rediscover the body's latent capacities (remove the queen to learn the game)</li>
+                </ul>
+            </div>
+            
+            <h4>Content</h4>
+            <ul>
+                <li>Reframing church from vendor-of-services to movement of disciples (reversing 20:80 passive:active to 80:20 active)</li>
+                <li>Missio Dei shapes method: sent as the Son was sent—missional-incarnational, not merely attractional</li>
+            </ul>
+            
+            <div class="actions">
+                <h4>Actions/Exercises</h4>
+                <ul>
+                    <li>Confess-in-place: a small public act that names Jesus' Lordship in your everyday context; capture the conversation it opens</li>
+                    <li>Make a "queen removal" list: identify one centralized dependence (e.g., Sunday stage, single communicator) you will suspend or slim for 6 weeks and what you will learn in its absence</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <h3>Module 2: Discipleship and Disciple-Making</h3>
+            </div>
+            
+            <div class="framework-box">
+                <h4>Big Idea</h4>
+                <p>Movements multiply because discipleship is the core process, not a department; keep it simple, reproducible, and obedience-oriented.</p>
+            </div>
+            
+            <div class="outcomes-box">
+                <h4>Outcomes</h4>
+                <ul>
+                    <li>Design a simple, reproducible disciple pathway that embeds accountability and obedience</li>
+                    <li>Launch a discovery group or micro-discipling triad with two people in your actual context</li>
+                </ul>
+            </div>
+            
+            <h4>Content</h4>
+            <ul>
+                <li>TFW's insistence that movemental foundations reverse passive-to-active norms and internalize DNA for organic multiplication</li>
+                <li>Ecosystem journeys and simple frameworks (e.g., missionary pathway, harvest-to-church) as exemplars from KC Underground</li>
+            </ul>
+            
+            <div class="actions">
+                <h4>Actions/Exercises</h4>
+                <ul>
+                    <li>4-week discovery Scripture dialog with two seekers/new believers; weekly obedience step and check-in</li>
+                    <li>Map "from harvest to church, church to harvest" steps in your locale; identify next faithful step this week</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <h3>Module 3: Incarnational Mission</h3>
+            </div>
+            
+            <div class="sub-module">
+                <h4>Sub-module A: Contextualization & Culture Shift</h4>
+                
+                <div class="framework-box">
+                    <h4>Big Idea</h4>
+                    <p>We embed and extend the gospel into real places and peoples; attractional gravity is strong, so we must re-code for everyday mission in post-Christendom contexts.</p>
+                </div>
+                
+                <div class="outcomes-box">
+                    <h4>Outcomes</h4>
+                    <ul>
+                        <li>Name your focus people/place; practice presence-proclamation patterns that fit your context</li>
+                        <li>Draft a contextualization memo that translates movement dynamics into your culture (no copy-paste from premodern models)</li>
+                    </ul>
+                </div>
+                
+                <h4>Content</h4>
+                <ul>
+                    <li>Missional-incarnational impulse as a hyphenated both/and, anchored in Jesus-is-Lord centeredness</li>
+                    <li>Anchors and inspirations: Right Here, Right Now; The Shaping of Things to Come (as referenced) for everyday mission innovation</li>
+                </ul>
+                
+                <div class="actions">
+                    <h4>Actions/Exercises</h4>
+                    <ul>
+                        <li>Three presence reps: bless, eat, listen in your place; record names and next steps</li>
+                        <li>Culture shift workshop: identify "default attractional scripts" and replace them with missional-incarnational scripts for three common scenarios</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <h3>Module 4: Liminality–Communitas</h3>
+            </div>
+            
+            <div class="framework-box">
+                <h4>Big Idea</h4>
+                <p>Risk, marginality, and disorientation are God's gym for forming communitas; liminality provokes learning and mission courage.</p>
+            </div>
+            
+            <div class="outcomes-box">
+                <h4>Outcomes</h4>
+                <ul>
+                    <li>Normalize liminal experiences and design safe-to-fail edge exposures that build communitas</li>
+                    <li>Practice prayerful dependence as you enter liminality</li>
+                </ul>
+            </div>
+            
+            <h4>Content</h4>
+            <ul>
+                <li>TFW language update: Liminality–Communitas as an inseparable pair; leaders curate environments of risk and solidarity</li>
+                <li>Scriptural sending into lack (Luke 9) as a pattern of empowered dependence; definition of liminality</li>
+            </ul>
+            
+            <div class="actions">
+                <h4>Actions/Exercises</h4>
+                <ul>
+                    <li>Liminality rep: try a new setting or practice beyond comfort (e.g., spiritual conversation in a third place) with a teammate; debrief with the Explore/Evaluate/Employ/Journal loop</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <h3>Module 5: APEST Culture</h3>
+            </div>
+            
+            <div class="framework-box">
+                <h4>Big Idea</h4>
+                <p>APEST is an ecosystem for movement health—culture, not hierarchy. Unity-in-diversity mobilizes the whole body.</p>
+            </div>
+            
+            <div class="outcomes-box">
+                <h4>Outcomes</h4>
+                <ul>
+                    <li>Identify APEST wirings on your team; run a rotation where each function leads a week's focus</li>
+                    <li>Design a lightweight rhythm that keeps APEST voices in play without ossifying into roles-only</li>
+                </ul>
+            </div>
+            
+            <h4>Content</h4>
+            <ul>
+                <li>Shift from "apostolic environment" to "APEST Culture" and why it matters for movemental leadership and ministry</li>
+                <li>Re-coding organizations around discipleship, incarnational mission, full APEST ministry, organic structures, and risky communitas</li>
+            </ul>
+            
+            <div class="actions">
+                <h4>Actions/Exercises</h4>
+                <ul>
+                    <li>APEST sprint: five weeks where each function proposes one practice and a success signal</li>
+                    <li>Peer feedback: where did our ecology show imbalance this month?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <h3>Module 6: Organic Systems</h3>
+            </div>
+            
+            <div class="sub-module">
+                <h4>Sub-module A: Movement Process & Systems</h4>
+                
+                <div class="framework-box">
+                    <h4>Big Idea</h4>
+                    <p>Organic, chaordic processes let intelligence flow from the edges; design feedback loops that learn and adapt.</p>
+                </div>
+                
+                <div class="outcomes-box">
+                    <h4>Outcomes</h4>
+                    <p>Build two concrete feedback loops; host one cross-micro learning exchange.</p>
+                </div>
+                
+                <h4>Content</h4>
+                <p>Collective intelligence and unseen processes; design for many-to-many learning; innovation cycles and "greenhouse" spaces for idea testing.</p>
+                
+                <div class="actions">
+                    <h4>Actions</h4>
+                    <p>Launch a monthly learning exchange; harvest front-line insights and change one system in response.</p>
+                </div>
+            </div>
+            
+            <div class="sub-module">
+                <h4>Sub-module B: Coaching & Decentralized Leadership</h4>
+                
+                <div class="framework-box">
+                    <h4>Big Idea</h4>
+                    <p>Staff become equippers; coaching webs beat central programs at scale.</p>
+                </div>
+                
+                <div class="outcomes-box">
+                    <h4>Outcomes</h4>
+                    <p>Redeploy 20–40% of staff/lead time to coaching; run weekly leader huddles with breakout problem-solving.</p>
+                </div>
+                
+                <h4>Content</h4>
+                <p>KC Underground's equipping hub pattern; every micro leader has a coach; huddles work at 100% capacity even in crisis because they run on coaching logic.</p>
+                
+                <div class="actions">
+                    <h4>Actions</h4>
+                    <p>Write a 6-week coaching plan for one emerging leader and run two huddles.</p>
+                </div>
+            </div>
+            
+            <div class="sub-module">
+                <h4>Sub-module C: Micro-Expressions & Networks (Starfish Logic)</h4>
+                
+                <div class="framework-box">
+                    <h4>Big Idea</h4>
+                    <p>Regenerative networks of microchurches spread further than centralized spiders; remove the "queen" to rediscover the rest of the body.</p>
+                </div>
+                
+                <div class="outcomes-box">
+                    <h4>Outcomes</h4>
+                    <p>Launch/strengthen one micro-expression; set its DNA for multiplication.</p>
+                </div>
+                
+                <h4>Content</h4>
+                <p>Reimagine church as decentralized micro expressions; starfish vs. spider; "remove the queen" analogy.</p>
+                
+                <div class="actions">
+                    <h4>Actions</h4>
+                    <p>Host a meal-sized gathering with Word–table–witness; capture next steps and apprentice identification.</p>
+                </div>
+            </div>
+            
+            <div class="sub-module">
+                <h4>Sub-module D: Simple, Transferable Tools</h4>
+                
+                <div class="framework-box">
+                    <h4>Big Idea</h4>
+                    <p>Movement scales on simplicity; use practices that embed quickly and spread easily.</p>
+                </div>
+                
+                <div class="outcomes-box">
+                    <h4>Outcomes</h4>
+                    <p>Adopt one habit set and one leadership rhythm; track adherence and fruit.</p>
+                </div>
+                
+                <h4>Content</h4>
+                <p>BELLS/HUDDLE as examples of training tools; engage narrative, data, and theory to reach diverse learners.</p>
+                
+                <div class="actions">
+                    <h4>Actions</h4>
+                    <p>Six-week BELLS sprint with weekly measurement; one HUDDLE launched for your micro team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Overall Course Learning Outcomes</h2>
+        
+        <div class="outcomes-box">
+            <h4>Graduating Learners Will Be Able To:</h4>
+            <ol>
+                <li>Explain and assess all six mDNA elements; identify and strengthen their weakest strand via action-learning sprints (Explore/Evaluate/Employ/Journal)</li>
+                
+                <li>Confess and embody "Jesus is Lord" as the center that generates missional-incarnational identity and practice; reverse the passive/active ratio in their context toward 80% active engagement</li>
+                
+                <li>Design and run simple, reproducible disciple-making pathways that create micro-expressions and multiply at the edges; avoid premodern copy-paste and translate wisely into Western complexity</li>
+                
+                <li>Cultivate APEST culture in teams; lead through liminality toward communitas with courage and prayerful dependence</li>
+                
+                <li>Build organic systems that decentralize power, leverage coaching webs, and increase movement capacity; demonstrate understanding that centralization constrains spread</li>
+                
+                <li>Learn as a "movemental learning organization," practicing ongoing metanoia and iteration beyond the course window</li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h2>Milestones and Assessment</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="week-marker">Week 2:</span> Baseline mDNA diagnostic complete; weakest strand identified; one bottleneck named
+            </div>
+            
+            <div class="timeline-item">
+                <span class="week-marker">Week 4:</span> First disciple-making micro-practice launched; evidence posted (names, next steps)
+            </div>
+            
+            <div class="timeline-item">
+                <span class="week-marker">Week 6:</span> Contextualization memo submitted; three missional-incarnational scripts rewritten for your locale
+            </div>
+            
+            <div class="timeline-item">
+                <span class="week-marker">Week 8:</span> Liminality rep completed and debriefed; communitas practices named
+            </div>
+            
+            <div class="timeline-item">
+                <span class="week-marker">Week 10:</span> APEST sprint completed with team reflections; imbalance identified and addressed
+            </div>
+            
+            <div class="timeline-item">
+                <span class="week-marker">Week 12–14:</span> Coaching huddles running; one micro-expression launched or strengthened; network map updated; starfish logic demonstrated in practice
+            </div>
+            
+            <div class="timeline-item">
+                <span class="week-marker">Residency Finish:</span> Re-diagnostic shows growth across all six strands; at least one reproduction outcome (apprentice identified or micro multiplied)
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>A Final Reframing</h2>
+        
+        <blockquote>
+            We will design the learning to act our way into a new way of thinking. The starfish beats the spider; hubs equip while edges extend; all six strands or it won't sing. Jesus is Lord—there's our center. From there, everything moves outward. The only way to fulfill a global commission is to become a movement; moving from one region to the next requires movement—so we will build for movement from the ground up.
+        </blockquote>
+    </section>
+</body>
+</html>

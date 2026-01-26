@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorandum of Understanding - Strategic Partnership Agreement</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 1in;
+            background: white;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 20px;
+        }
+
+        .company-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .document-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .document-subtitle {
+            font-size: 14px;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #bdc3c7;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .parties-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .party-box {
+            border: 1px solid #bdc3c7;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+
+        .party-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .party-details {
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .whereas-section {
+            margin-bottom: 25px;
+        }
+
+        .whereas-item {
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        .whereas-item strong {
+            color: #2c3e50;
+        }
+
+        .terms-section {
+            margin-bottom: 25px;
+        }
+
+        .term-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .term-number {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .term-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #34495e;
+        }
+
+        .term-content {
+            text-align: justify;
+            line-height: 1.5;
+        }
+
+        .equity-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .equity-table th,
+        .equity-table td {
+            border: 1px solid #bdc3c7;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .equity-table th {
+            background-color: #2c3e50;
+            color: white;
+            font-weight: bold;
+        }
+
+        .equity-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .signature-section {
+            margin-top: 50px;
+            page-break-inside: avoid;
+        }
+
+        .signature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .signature-box {
+            text-align: center;
+        }
+
+        .signature-line {
+            border-bottom: 2px solid #2c3e50;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+
+        .signature-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .signature-name {
+            font-style: italic;
+            color: #7f8c8d;
+        }
+
+        .date-location {
+            text-align: center;
+            margin-top: 40px;
+            font-style: italic;
+            color: #7f8c8d;
+        }
+
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 12px;
+            color: #7f8c8d;
+            border-top: 1px solid #bdc3c7;
+            padding-top: 20px;
+        }
+
+        .highlight {
+            background-color: #f1c40f;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        .important {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        @media print {
+            body {
+                padding: 0.5in;
+            }
+            .signature-section {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="company-name">Movemental</div>
+        <div class="document-title">Memorandum of Understanding</div>
+        <div class="document-subtitle">Strategic Partnership & Equity Agreement</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Parties to This Agreement</div>
+        <div class="parties-grid">
+            <div class="party-box">
+                <div class="party-title">Founder</div>
+                <div class="party-details">
+                    <strong>Name:</strong> Josh Shepherd<br>
+                    <strong>Role:</strong> Founder & CEO<br>
+                    <strong>Equity:</strong> 70%<br>
+                    <strong>Contribution:</strong> Platform development, operations, technology leadership
+                </div>
+            </div>
+            <div class="party-box">
+                <div class="party-title">Strategic Partner 1</div>
+                <div class="party-details">
+                    <strong>Name:</strong> Alan Hirsch<br>
+                    <strong>Role:</strong> Strategic Advisor & Champion<br>
+                    <strong>Equity:</strong> 10%<br>
+                    <strong>Contribution:</strong> Network access, credibility, movemental leadership
+                </div>
+            </div>
+            <div class="party-box">
+                <div class="party-title">Strategic Partner 2</div>
+                <div class="party-details">
+                    <strong>Name:</strong> Brad Brisco<br>
+                    <strong>Role:</strong> Strategic Advisor & Network Lead<br>
+                    <strong>Equity:</strong> 10%<br>
+                    <strong>Contribution:</strong> Movement networks, testimonials, strategic guidance
+                </div>
+            </div>
+            <div class="party-box">
+                <div class="party-title">Network Partner</div>
+                <div class="party-details">
+                    <strong>Entity:</strong> Movement Leaders Collective<br>
+                    <strong>Role:</strong> Network Access & Partnership<br>
+                    <strong>Equity:</strong> 10%<br>
+                    <strong>Contribution:</strong> 100+ movemental leader network, credibility transfer
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section whereas-section">
+        <div class="section-title">Background & Intent</div>
+        <div class="whereas-item">
+            <strong>WHEREAS</strong> the parties recognize the revolutionary opportunity to democratize digital publishing for movemental leaders through platform ownership and AI integration;
+        </div>
+        <div class="whereas-item">
+            <strong>WHEREAS</strong> this partnership combines technical innovation with established movemental networks to create unprecedented access to professional-grade publishing platforms;
+        </div>
+        <div class="whereas-item">
+            <strong>WHEREAS</strong> the $1,000 + 10% revenue share model represents a "blue ocean" strategy that disrupts traditional publishing and agency pricing;
+        </div>
+        <div class="whereas-item">
+            <strong>WHEREAS</strong> the strategic partnerships provide essential credibility, network access, and movemental leadership that enables rapid market penetration and authentic community building;
+        </div>
+        <div class="whereas-item">
+            <strong>WHEREAS</strong> the parties are committed to building a sustainable ecosystem that serves individual movemental leaders while advancing broader movement impact globally.
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Equity Allocation Agreement</div>
+        <table class="equity-table">
+            <thead>
+                <tr>
+                    <th>Partner</th>
+                    <th>Equity Percentage</th>
+                    <th>Primary Contribution</th>
+                    <th>Strategic Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Josh Shepherd (Founder)</strong></td>
+                    <td><strong>70%</strong></td>
+                    <td>Platform development, operations, technology leadership</td>
+                    <td>Core innovation and execution capacity</td>
+                </tr>
+                <tr>
+                    <td><strong>Alan Hirsch</strong></td>
+                    <td><strong>10%</strong></td>
+                    <td>Network access, theological credibility, flagship testimonial</td>
+                    <td>Movement leadership and global influence</td>
+                </tr>
+                <tr>
+                    <td><strong>Brad Brisco</strong></td>
+                    <td><strong>10%</strong></td>
+                    <td>Network connections, strategic guidance, proof of concept</td>
+                    <td>Practical implementation and network multiplication</td>
+                </tr>
+                <tr>
+                    <td><strong>Movement Leaders Collective</strong></td>
+                    <td><strong>10%</strong></td>
+                    <td>100+ movemental leader network, institutional partnership</td>
+                    <td>Scale access and collaborative intelligence</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section terms-section">
+        <div class="section-title">Terms & Obligations</div>
+        
+        <div class="term-item">
+            <div class="term-number">1.</div>
+            <div class="term-title">Network Access & Introductions</div>
+            <div class="term-content">
+                Strategic partners commit to facilitating introductions to qualified movemental leaders within their networks, providing testimonials and endorsements, and actively promoting the Movemental platform within appropriate movement contexts.
+            </div>
+        </div>
+
+        <div class="term-item">
+            <div class="term-number">2.</div>
+            <div class="term-title">Platform Development & Innovation</div>
+            <div class="term-content">
+                Founder maintains responsibility for all technical development, platform innovation, customer service, and operational execution while incorporating strategic guidance from partners regarding movemental leader needs and market positioning.
+            </div>
+        </div>
+
+        <div class="term-item">
+            <div class="term-number">3.</div>
+            <div class="term-title">Revenue Sharing & Financial Structure</div>
+            <div class="term-content">
+                Equity partners participate in profit distribution based on agreed percentages. All parties support the $1,000 + 10% revenue share pricing model as essential to market disruption and movemental leader accessibility.
+            </div>
+        </div>
+
+        <div class="term-item">
+            <div class="term-number">4.</div>
+            <div class="term-title">Brand & Messaging Alignment</div>
+            <div class="term-content">
+                All parties agree to represent the Movemental platform consistently with its mission of empowering movemental leaders through platform ownership, AI integration, and collaborative intelligence while maintaining theological integrity and movement values.
+            </div>
+        </div>
+
+        <div class="term-item">
+            <div class="term-number">5.</div>
+            <div class="term-title">Collaborative Intelligence & Learning</div>
+            <div class="term-content">
+                Partners commit to sharing relevant insights, best practices, and strategic feedback to continuously improve the platform's effectiveness in serving movemental leaders and advancing movement impact globally.
+            </div>
+        </div>
+
+        <div class="term-item">
+            <div class="term-number">6.</div>
+            <div class="term-title">Long-term Commitment & Vision</div>
+            <div class="term-content">
+                This partnership represents a long-term commitment to building the definitive platform for movemental leader digital presence, with shared dedication to platform success, movemental leader empowerment, and global movement multiplication.
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Strategic Objectives</div>
+        <div class="term-content">
+            <p><strong>Year 1 Goals:</strong> Establish 50+ movemental leaders with successful platforms, generate $100K+ in revenue, and create documented case studies proving the model's effectiveness.</p>
+            
+            <p><strong>Year 3 Vision:</strong> Scale to 500+ movemental leaders, establish "movemental digital publishing" as recognized category, and generate $1M+ annual revenue while maintaining revolutionary pricing and platform ownership principles.</p>
+            
+            <p><strong>Long-term Impact:</strong> Create a thriving ecosystem of 1,000+ movemental leaders who own their platforms, collaborate for greater impact, and multiply movements globally through connected, authentic digital presence.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Governance & Decision Making</div>
+        <div class="term-content">
+            Founder maintains operational control and final decision-making authority while actively seeking input from strategic partners on major platform decisions, pricing changes, and strategic direction. Quarterly partnership reviews ensure alignment and address any concerns or opportunities for enhancement.
+        </div>
+    </div>
+
+    <div class="signature-section">
+        <div class="section-title">Agreement Execution</div>
+        <div class="signature-grid">
+            <div class="signature-box">
+                <div class="signature-line"></div>
+                <div class="signature-label">Josh Shepherd</div>
+                <div class="signature-name">Founder & CEO, Movemental</div>
+            </div>
+            <div class="signature-box">
+                <div class="signature-line"></div>
+                <div class="signature-label">Alan Hirsch</div>
+                <div class="signature-name">Strategic Partner & Movemental Leader</div>
+            </div>
+        </div>
+        <div class="signature-grid">
+            <div class="signature-box">
+                <div class="signature-line"></div>
+                <div class="signature-label">Brad Brisco</div>
+                <div class="signature-name">Strategic Partner & Network Lead</div>
+            </div>
+            <div class="signature-box">
+                <div class="signature-line"></div>
+                <div class="signature-label">Movement Leaders Collective</div>
+                <div class="signature-name">Network Partner Representative</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="date-location">
+        <p><strong>Date:</strong> ________________________</p>
+        <p><strong>Location:</strong> ________________________</p>
+    </div>
+
+    <div class="footer">
+        <p>This Memorandum of Understanding establishes the strategic partnership framework for building the definitive digital publishing platform for movemental leaders worldwide.</p>
+        <p><em>Movemental: Where Movement Leaders Own Their Platforms</em></p>
+    </div>
+</body>
+</html>
