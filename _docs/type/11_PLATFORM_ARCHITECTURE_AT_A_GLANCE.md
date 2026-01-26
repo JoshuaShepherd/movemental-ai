@@ -2,7 +2,7 @@
 
 > **What kind of site this is** - Technical stack and structure overview
 
-**Version**: 1.1.0  
+**Version**: 2.0.0  
 **Last Updated**: January 2026
 
 ---
@@ -17,32 +17,43 @@ This platform is a **multi-tenant content and learning management system** built
 
 ### Frontend
 
-- **Next.js 15**: React framework with App Router
-- **React**: UI library
-- **TypeScript**: Type-safe JavaScript
-- **Tailwind CSS**: Utility-first CSS framework
-- **shadcn/ui**: Component library (do not modify `components/ui/`)
+| Technology | Purpose | Version |
+|------------|---------|---------|
+| Next.js | React framework with App Router | 16.1.4 |
+| React | UI library | 19.2.3 |
+| TypeScript | Type-safe JavaScript | 5.9.3 |
+| Tailwind CSS | Utility-first CSS framework | 4.1.18 |
+| shadcn/ui | Component library (Radix-based) | Latest |
+| Framer Motion | Animation library | 12.29.0 |
 
 ### Backend
 
-- **Next.js API Routes**: Server-side API endpoints
-- **Supabase**: PostgreSQL database + authentication
-- **Drizzle ORM**: Type-safe database queries
-- **Zod**: Runtime validation + TypeScript types
+| Technology | Purpose | Version |
+|------------|---------|---------|
+| Next.js API Routes | Server-side API endpoints | Built-in |
+| Supabase | PostgreSQL database + authentication | 2.91.0 |
+| Drizzle ORM | Type-safe database queries | 0.45.1 |
+| drizzle-zod | Schema-to-Zod generation | 0.8.3 |
+| Zod | Runtime validation | 4.3.5 |
 
 ### Data Layer
 
-- **Supabase PostgreSQL**: Primary database
-- **Drizzle Schema**: Type-safe database definitions (`db/schema.ts`)
-- **Zod Schemas**: Runtime validation + types SSOT (`lib/schemas/`)
-- **Services**: Business logic layer (`lib/services/simplified/`)
-- **API Routes**: HTTP interface (`app/api/simplified/`)
-- **React Hooks**: Data fetching layer (`hooks/simplified/`)
+| Layer | Technology | Location |
+|-------|------------|----------|
+| Database | Supabase PostgreSQL | Cloud |
+| Schema | Drizzle ORM | `db/schema.ts` |
+| Types | Zod schemas | `lib/schemas/` |
+| Services | TypeScript classes | `lib/services/simplified/` |
+| API Routes | Next.js handlers | `app/api/simplified/` |
+| Hooks | React Query | `hooks/simplified/` |
 
-### Deployment
+### State Management
 
-- **Vercel**: Hosting and deployment platform
-- **Supabase**: Database hosting
+| Technology | Purpose | Version |
+|------------|---------|---------|
+| React Query | Server state management | 5.90.19 |
+| Zustand | Client state management | 5.0.10 |
+| React Hook Form | Form state management | 7.71.1 |
 
 ---
 
@@ -60,6 +71,7 @@ This platform is a **multi-tenant content and learning management system** built
 - **DO NOT MODIFY** `components/ui/` directly
 - Use shadcn components as building blocks
 - Customize via props and composition
+- Add new components: `npx shadcn@latest add [component]`
 
 **Design System**:
 - Color tokens defined in `app/globals.css`
@@ -84,7 +96,7 @@ Layer 6: UI → components/
 **Key Principles**:
 - Types flow downstream, never upstream
 - Fix errors bottom-up (Layer 1 → 6)
-- Validate each layer before proceeding
+- Validate each layer before proceeding (`npx tsc --noEmit`)
 - Database schema (Layer 1) = Structure SSOT
 - Zod schemas (Layer 2) = TypeScript Types SSOT
 
@@ -92,70 +104,26 @@ Layer 6: UI → components/
 
 ---
 
-## Agents Posture (High Level)
-
-**What**: AI agents can be integrated to provide content generation, analysis, and assistance.
-
-**How**: 
-- Agents operate within the type safety chain
-- Agents use services (Layer 3) for data access
-- Agents respect tenant boundaries
-- Agent outputs validated with Zod schemas
-
-**Note**: This documentation focuses on platform "bones" only. Agent-specific content and voice/style documentation is tenant-specific and not included here.
-
----
-
-## Deployment Posture
-
-### Vercel
-
-**Platform**: Vercel (Next.js optimized hosting)
-
-**Process**:
-1. Code pushed to git repository
-2. Vercel automatically builds and deploys
-3. Environment variables configured in Vercel dashboard
-4. Database migrations run automatically (or manually)
-
-**Environments**:
-- **Production**: Main deployment
-- **Preview**: Automatic preview deployments for PRs
-- **Development**: Local development with `npm run dev`
-
-### Supabase
-
-**Platform**: Supabase (PostgreSQL database)
-
-**Process**:
-1. Database schema defined in Drizzle (`db/schema.ts`)
-2. Migrations generated with `npm run db:generate`
-3. Migrations applied with `npm run db:push`
-4. Database accessible via Supabase dashboard
-
----
-
-## Multi-Tenant Posture (High Level)
+## Multi-Tenant Posture
 
 ### Architecture
 
 **What**: Multiple organizations share the same codebase but have isolated data.
 
 **How**:
-- Tenant resolution from subdomain/custom domain
-- Tenant context available in services
+- Tenant resolution from subdomain/custom domain/header
+- Tenant context available in services via `getOrganizationId(request)`
 - All queries automatically filter by `organizationId`
 - Tenant boundaries enforced at service layer (Layer 3)
 
 ### Tenant Isolation
 
-**Database**: Each tenant-scoped table includes `organizationId` field
-
-**Services**: All queries filter by tenant automatically
-
-**Routes**: Tenant context passed from middleware to services
-
-**UI**: Tenant-agnostic—tenant scoping is transparent
+| Layer | Responsibility |
+|-------|---------------|
+| Database | Tables include `organizationId` field |
+| Services | All queries filter by tenant |
+| Routes | Pass request to services |
+| UI | Tenant-agnostic (transparent) |
 
 **See**: [09_MULTI_TENANT_NOTES.md](./09_MULTI_TENANT_NOTES.md) for detailed tenant scoping information.
 
@@ -169,7 +137,9 @@ Layer 6: UI → components/
 ├── app/                      # Next.js App Router pages
 │   ├── (public)/            # Public pages (fit-check, team, pricing, etc.)
 │   ├── api/                 # API routes (Layer 4)
+│   │   ├── onboarding/      # File upload routes
 │   │   └── simplified/      # Entity API routes
+│   │       └── onboarding-responses/
 │   └── dashboard/           # Dashboard pages
 ├── components/              # UI components (Layer 6)
 │   └── ui/                 # shadcn/ui components (do not modify)
@@ -180,6 +150,7 @@ Layer 6: UI → components/
 │   └── simplified/         # Entity hooks
 ├── lib/
 │   ├── middleware/         # Tenant resolution middleware
+│   │   └── tenant.ts       # getOrganizationId()
 │   ├── providers/          # React providers (React Query)
 │   ├── schemas/            # Zod schemas (Layer 2) - Types SSOT
 │   │   ├── index.ts       # Entity schemas
@@ -187,8 +158,10 @@ Layer 6: UI → components/
 │   │   ├── fit-check.ts   # Fit Check types
 │   │   └── onboarding-path.ts  # Onboarding path types
 │   └── services/           # Services (Layer 3)
+│       ├── types.ts        # Result<T>, ServiceError
+│       ├── simplified-base.ts  # Base service class
 │       └── simplified/     # Entity services
-└── _docs/                   # Documentation (single source of truth)
+└── _docs/                   # Documentation
     └── type/               # Type safety chain documentation
 ```
 
@@ -200,9 +173,9 @@ Layer 6: UI → components/
 
 1. **Layer 1**: Add table to Drizzle schema → `npm run db:generate` → `npm run db:push`
 2. **Layer 2**: Add Zod schemas + type exports (Filters schema manual)
-3. **Layer 3**: Create service
+3. **Layer 3**: Create service extending `SimplifiedService`
 4. **Layer 4**: Create routes
-5. **Layer 5**: Create hooks
+5. **Layer 5**: Create hooks with React Query
 6. **Layer 6**: Create UI components
 7. **Validate**: `npx tsc --noEmit`
 
@@ -215,32 +188,33 @@ Layer 6: UI → components/
 npx tsc --noEmit
 ```
 
-This single command validates all layers. Errors will show the file and line number.
-
 ---
 
-## Key Principles
+## Key Commands
 
-### Type Safety
+### Development
 
-- **Unidirectional flow**: Types flow downstream (Layer 1 → 6)
-- **Bottom-up fixing**: Fix errors from lowest layer
-- **Validation**: No TypeScript errors before proceeding
-- **Structure SSOT**: Database schema (Layer 1)
-- **Types SSOT**: Zod schemas (Layer 2)
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Lint code
+```
 
-### Multi-Tenant
+### Database
 
-- **Tenant isolation**: Data isolated by `organizationId`
-- **Service layer enforcement**: Tenant boundaries at Layer 3
-- **Transparent to UI**: UI doesn't need to know about tenants
+```bash
+npm run db:generate  # Generate migrations
+npm run db:push      # Apply migrations
+npm run db:migrate   # Run migrations
+npm run db:studio    # Open Drizzle Studio
+```
 
-### Code Quality
+### Validation
 
-- **No direct database edits**: Always use migrations
-- **No manual type definitions**: Derive from Zod schemas using `z.infer<>`
-- **No business logic in routes**: Delegate to services
-- **No direct fetching in UI**: Use hooks
+```bash
+npx tsc --noEmit     # Validate all layers
+```
 
 ---
 
@@ -266,20 +240,28 @@ This single command validates all layers. Errors will show the file and line num
 
 ---
 
-## Getting Started
+## Key Principles
 
-### For Developers
+### Type Safety
 
-1. **Read**: [01_OVERVIEW.md](./01_OVERVIEW.md) to understand the type safety chain
-2. **Read**: [08_CHAIN_WORKFLOW_CHECKLIST.md](./08_CHAIN_WORKFLOW_CHECKLIST.md) for workflow
-3. **Read**: [12_PUBLIC_SITEMAP_AND_FEATURES.md](./12_PUBLIC_SITEMAP_AND_FEATURES.md) for site structure
+- **Unidirectional flow**: Types flow downstream (Layer 1 → 6)
+- **Bottom-up fixing**: Fix errors from lowest layer
+- **Validation**: No TypeScript errors before proceeding
+- **Structure SSOT**: Database schema (Layer 1)
+- **Types SSOT**: Zod schemas (Layer 2)
 
-### For Cursor Agents
+### Multi-Tenant
 
-1. **Understand**: The six-layer type safety chain
-2. **Follow**: The workflow checklist when making changes
-3. **Validate**: `npx tsc --noEmit` after each layer
-4. **Fix**: Errors bottom-up (Layer 1 → 6)
+- **Tenant isolation**: Data isolated by `organizationId`
+- **Service layer enforcement**: Tenant boundaries at Layer 3
+- **Transparent to UI**: UI doesn't need to know about tenants
+
+### Code Quality
+
+- **No direct database edits**: Always use migrations
+- **No manual type definitions**: Derive from Zod schemas using `z.infer<>`
+- **No business logic in routes**: Delegate to services
+- **No direct fetching in UI**: Use hooks
 
 ---
 

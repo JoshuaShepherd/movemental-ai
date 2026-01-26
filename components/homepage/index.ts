@@ -1,7 +1,7 @@
 // Homepage components barrel export
 export { Navigation } from './Navigation'
 export { DarkHeroSection } from './DarkHeroSection'
-export { LogoBar } from './LogoBar'
+export { CredibilityChainSection, LogoBar } from './LogoBar'
 export { StatsSection } from './StatsSection'
 export { ProcessSteps } from './ProcessSteps'
 export { FeatureSection } from './FeatureSection'

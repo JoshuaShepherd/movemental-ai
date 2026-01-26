@@ -72,8 +72,8 @@ export function Footer({ className }: FooterProps) {
               Movemental
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed">
-              Complete digital publishing platforms for movement leaders.
-              Own your platform. Keep your revenue.
+              A credibility network for movement leaders.
+              Content that actually moves.
             </p>
           </div>
 

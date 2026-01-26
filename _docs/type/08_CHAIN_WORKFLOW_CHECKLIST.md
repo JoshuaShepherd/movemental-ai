@@ -2,7 +2,7 @@
 
 > **Step-by-step execution guide** for adding/adjusting features in the type safety chain
 
-**Version**: 1.1.0  
+**Version**: 2.0.0  
 **Last Updated**: January 2026
 
 ---
@@ -29,10 +29,16 @@ Use this checklist when:
 **File**: `db/schema.ts`
 
 ```typescript
+import { pgTable, uuid, text, timestamp, boolean, jsonb } from "drizzle-orm/pg-core";
+
+// Use helper functions for common fields
 export const newEntity = pgTable('new_entity', {
   id: id(),
   name: text('name').notNull(),
-  organizationId: uuid('organization_id').references(() => organizations.id).notNull(),
+  description: text('description'),
+  organizationId: uuid('organization_id')
+    .references(() => organizations.id)
+    .notNull(),  // Required for tenant scoping
   createdAt: createdAt(),
   updatedAt: updatedAt(),
 });
@@ -43,7 +49,7 @@ export const newEntity = pgTable('new_entity', {
 # Generate migration
 npm run db:generate
 
-# Review migration file in migrations/ folder
+# Review migration file in drizzle/ folder
 
 # Apply migration
 npm run db:push
@@ -63,19 +69,28 @@ npx tsc --noEmit
 **File**: `lib/schemas/index.ts`
 
 ```typescript
-// Select Schema
+import { createSelectSchema, createInsertSchema, createUpdateSchema } from 'drizzle-zod';
+import { z } from 'zod';
+import * as schema from '../../db/schema';
+import { BaseFiltersSchema, IdSchema } from './base';
+
+// ============================================================================
+// New Entity Schemas
+// ============================================================================
+
+// Select Schema (reading)
 export const NewEntitySelectSchema = createSelectSchema(schema.newEntity);
 export type NewEntity = z.infer<typeof NewEntitySelectSchema>;
 
-// Insert Schema
+// Insert Schema (creating)
 export const NewEntityInsertSchema = createInsertSchema(schema.newEntity);
 export type NewEntityCreate = z.infer<typeof NewEntityInsertSchema>;
 
-// Update Schema
+// Update Schema (updating)
 export const NewEntityUpdateSchema = createUpdateSchema(schema.newEntity);
 export type NewEntityUpdate = z.infer<typeof NewEntityUpdateSchema>;
 
-// Filters Schema
+// Filters Schema (querying) - MANUAL, not auto-generated
 export const NewEntityFiltersSchema = BaseFiltersSchema.extend({
   id: IdSchema.optional(),
   name: z.string().optional(),
@@ -86,7 +101,6 @@ export type NewEntityFilters = z.infer<typeof NewEntityFiltersSchema>;
 
 **Commands**:
 ```bash
-# Validate - no TypeScript errors
 npx tsc --noEmit
 ```
 
@@ -101,31 +115,37 @@ npx tsc --noEmit
 **File**: `lib/services/simplified/newEntity.ts`
 
 ```typescript
+import { and, eq } from 'drizzle-orm';
 import { SimplifiedService } from '../simplified-base';
-import { 
-  NewEntitySelectSchema, 
-  NewEntityInsertSchema, 
-  NewEntityUpdateSchema, 
+import {
+  NewEntitySelectSchema,
+  NewEntityInsertSchema,
+  NewEntityUpdateSchema,
   NewEntityFiltersSchema,
   type NewEntity,
   type NewEntityCreate,
   type NewEntityUpdate,
   type NewEntityFilters,
-} from '@/lib/schemas';
-import * as schema from '@/db/schema';
+} from '../../schemas';
+import { newEntity } from '@/db/schema';
+import type { Result } from '../types';
+import { getOrganizationId } from '../../middleware/tenant';
+import { NextRequest } from 'next/server';
 
 export class NewEntityService extends SimplifiedService<
-  typeof schema.newEntity,
+  typeof newEntity,
   NewEntity,
   NewEntityCreate,
   NewEntityUpdate,
   NewEntityFilters
 > {
-  protected table = schema.newEntity;
+  protected table = newEntity;
   protected selectSchema = NewEntitySelectSchema;
   protected insertSchema = NewEntityInsertSchema;
   protected updateSchema = NewEntityUpdateSchema;
   protected filtersSchema = NewEntityFiltersSchema;
+
+  // Implement methods with tenant scoping...
 }
 
 export const newEntityService = new NewEntityService();
@@ -133,7 +153,6 @@ export const newEntityService = new NewEntityService();
 
 **Commands**:
 ```bash
-# Validate - no TypeScript errors
 npx tsc --noEmit
 ```
 
@@ -146,14 +165,28 @@ npx tsc --noEmit
 **Action**: Create route files
 
 **Files**:
-- `app/api/simplified/new-entity/route.ts` (GET list, POST create)
-- `app/api/simplified/new-entity/[id]/route.ts` (GET detail, PATCH update, DELETE delete)
+- `app/api/simplified/new-entity/route.ts` (GET list, POST create, PATCH update)
+- `app/api/simplified/new-entity/[id]/route.ts` (GET detail, DELETE)
 
 **Pattern**: Follow existing route patterns (see [05_LAYER_4_ROUTES.md](./05_LAYER_4_ROUTES.md))
 
+```typescript
+import { NextRequest, NextResponse } from 'next/server';
+import { newEntityService } from '@/lib/services/simplified/newEntity';
+import { NewEntityInsertSchema } from '@/lib/schemas';
+import { z } from 'zod';
+
+export async function GET(request: NextRequest) {
+  // ...
+}
+
+export async function POST(request: NextRequest) {
+  // Validate input, call service, return response
+}
+```
+
 **Commands**:
 ```bash
-# Validate - no TypeScript errors
 npx tsc --noEmit
 ```
 
@@ -167,11 +200,37 @@ npx tsc --noEmit
 
 **File**: `hooks/simplified/useNewEntity.ts`
 
-**Pattern**: Follow existing hook patterns (see [06_LAYER_5_HOOKS.md](./06_LAYER_5_HOOKS.md))
+```typescript
+'use client';
+
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import type { NewEntity, NewEntityCreate, NewEntityUpdate, NewEntityFilters } from '@/lib/schemas';
+
+export const newEntityKeys = {
+  all: ['new-entity'] as const,
+  lists: () => [...newEntityKeys.all, 'list'] as const,
+  list: (filters?: NewEntityFilters) => [...newEntityKeys.lists(), filters] as const,
+  details: () => [...newEntityKeys.all, 'detail'] as const,
+  detail: (id: string) => [...newEntityKeys.details(), id] as const,
+};
+
+export function useNewEntities(filters?: NewEntityFilters) {
+  return useQuery<NewEntity[]>({ /* ... */ });
+}
+
+export function useNewEntity(id: string) {
+  return useQuery<NewEntity>({ /* ... */ });
+}
+
+export function useCreateNewEntity() {
+  return useMutation({ /* ... */ });
+}
+
+// etc.
+```
 
 **Commands**:
 ```bash
-# Validate - no TypeScript errors
 npx tsc --noEmit
 ```
 
@@ -183,13 +242,22 @@ npx tsc --noEmit
 
 **Action**: Create component files
 
-**Files**: `components/new-entity/`
+**Directory**: `components/new-entity/`
 
 **Pattern**: Follow existing component patterns (see [07_LAYER_6_UI.md](./07_LAYER_6_UI.md))
 
+```typescript
+import { useNewEntities } from '@/hooks/simplified/useNewEntity';
+
+export function NewEntityList() {
+  const { data, isLoading, error } = useNewEntities();
+  // Handle loading, error, empty states
+  // Render data
+}
+```
+
 **Commands**:
 ```bash
-# Validate - no TypeScript errors
 npx tsc --noEmit
 ```
 
@@ -199,9 +267,6 @@ npx tsc --noEmit
 
 ### Final Validation
 
-**Action**: Validate all layers
-
-**Commands**:
 ```bash
 # Validate entire project
 npx tsc --noEmit
@@ -249,7 +314,7 @@ npx tsc --noEmit
 
 export const OnboardingResponsesFiltersSchema = BaseFiltersSchema.extend({
   // ... existing filters
-  newField: z.string().optional(),  // ← NEW FILTER
+  newField: z.string().optional(),  // ← NEW FILTER (if needed)
 });
 ```
 
@@ -262,7 +327,7 @@ npx tsc --noEmit
 
 ---
 
-### Step 3-6: Update Downstream Layers
+### Steps 3-6: Update Downstream Layers
 
 **Action**: Update services, routes, hooks, UI to use new field
 
@@ -274,14 +339,6 @@ npx tsc --noEmit
 ```
 
 **✅ Checkpoint**: No TypeScript errors.
-
----
-
-### Final Validation
-
-```bash
-npx tsc --noEmit
-```
 
 ---
 
@@ -301,7 +358,8 @@ npx tsc --noEmit
 ```
 UI error: "Property 'email' does not exist"
 → Check Layer 6 (UI) - uses hook
-→ Check Layer 5 (Hook) - uses service
+→ Check Layer 5 (Hook) - uses route
+→ Check Layer 4 (Route) - uses service
 → Check Layer 3 (Service) - uses Zod schema
 → Check Layer 2 (Zod) - uses Drizzle schema
 → Check Layer 1 (Database) - MISSING 'email' field
@@ -315,12 +373,12 @@ UI error: "Property 'email' does not exist"
 **Action**: Fix from lowest layer with error
 
 **Process**:
-1. Fix Layer 1 (if needed)
-2. Validate Layer 1: `npx tsc --noEmit` → No errors
-3. Fix Layer 2 (if needed)
-4. Validate Layer 2: `npx tsc --noEmit` → No errors
-5. Continue through all layers
-6. Validate all: `npx tsc --noEmit` → No errors
+1. Fix Layer 1 (if needed) → Validate: `npx tsc --noEmit`
+2. Fix Layer 2 (if needed) → Validate: `npx tsc --noEmit`
+3. Fix Layer 3 (if needed) → Validate: `npx tsc --noEmit`
+4. Fix Layer 4 (if needed) → Validate: `npx tsc --noEmit`
+5. Fix Layer 5 (if needed) → Validate: `npx tsc --noEmit`
+6. Fix Layer 6 (if needed) → Validate: `npx tsc --noEmit`
 
 **✅ Checkpoint**: No TypeScript errors. Error resolved!
 
@@ -335,6 +393,8 @@ UI error: "Property 'email' does not exist"
 | 2 | `lib/schemas/base.ts` | Base schemas |
 | 2 | `lib/schemas/*.ts` | Domain-specific schemas |
 | 3 | `lib/services/simplified/` | Entity services |
+| 3 | `lib/services/simplified-base.ts` | Base service class |
+| 3 | `lib/services/types.ts` | Result<T>, ServiceError |
 | 4 | `app/api/simplified/` | API routes |
 | 5 | `hooks/simplified/` | React hooks |
 | 6 | `components/` | UI components |
@@ -358,7 +418,7 @@ This validates ALL layers at once. If there are errors, they will show the file 
 
 **Problem**: Proceeding to next layer without validating current layer
 
-**Solution**: Always validate before proceeding
+**Solution**: Always validate before proceeding: `npx tsc --noEmit`
 
 ### ❌ Fixing Top-Down
 
@@ -378,6 +438,12 @@ This validates ALL layers at once. If there are errors, they will show the file 
 
 **Solution**: Always use migrations (`npm run db:generate` + `npm run db:push`)
 
+### ❌ Trusting Client Input
+
+**Problem**: Using `organizationId` from client input
+
+**Solution**: Always extract tenant from request via `getOrganizationId(request)`
+
 ---
 
 ## Success Criteria
@@ -386,7 +452,8 @@ A feature is complete when:
 - ✅ No TypeScript errors (`npx tsc --noEmit` passes)
 - ✅ All 6 layers have necessary files
 - ✅ Types flow correctly from Layer 1 → 6
-- ✅ Tenant boundaries enforced (if multi-tenant)
+- ✅ Tenant boundaries enforced (all queries filter by `organizationId`)
+- ✅ All types exported from Zod schemas using `z.infer<>`
 
 ---
 

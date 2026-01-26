@@ -2,7 +2,7 @@
 
 import { Navigation } from './Navigation'
 import { DarkHeroSection } from './DarkHeroSection'
-import { LogoBar } from './LogoBar'
+import { CredibilityChainSection } from './LogoBar'
 import { StatsSection } from './StatsSection'
 import { ProcessSteps } from './ProcessSteps'
 import { FeatureSection } from './FeatureSection'
@@ -23,19 +23,19 @@ export function HomepageContainer({ className }: HomepageContainerProps) {
 
       {/* Main content */}
       <main>
-        {/* Hero section - dark gradient with bold typography */}
+        {/* Hero section - credibility-first messaging */}
         <DarkHeroSection />
 
-        {/* Social proof logo bar */}
-        <LogoBar />
+        {/* Credibility chain - scenius positioning */}
+        <CredibilityChainSection />
 
-        {/* Stats section - key metrics */}
+        {/* Stats section - movement-first pillars */}
         <StatsSection />
 
-        {/* Features section */}
+        {/* Features section - credibility network leads */}
         <FeatureSection />
 
-        {/* Process steps - how it works */}
+        {/* Process steps - fit check to launch */}
         <ProcessSteps />
 
         {/* Final CTA section */}

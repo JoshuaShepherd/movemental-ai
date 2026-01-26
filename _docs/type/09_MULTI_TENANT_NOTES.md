@@ -2,7 +2,7 @@
 
 > **High-level overview** of how tenant resolution and scoping works
 
-**Version**: 1.1.0  
+**Version**: 2.0.0  
 **Last Updated**: January 2026
 
 ---
@@ -13,101 +13,198 @@ This platform supports multi-tenant architecture where each organization (tenant
 
 ---
 
-## How Tenant Resolution Generally Works
+## How Tenant Resolution Works
 
-### Tenant Resolution Sources
+### Current Implementation
 
-Tenants are resolved from one of these sources (in priority order):
+**File**: `lib/middleware/tenant.ts`
 
-1. **Subdomain**: `tenant.example.com` → resolves to tenant with `subdomain = "tenant"`
-2. **Custom Domain**: `tenant.com` → resolves to tenant with `custom_domain = "tenant.com"`
-3. **Path Parameter**: `/tenant/...` → resolves to tenant from path (if implemented)
-4. **Session**: User's current organization from session (fallback)
+```typescript
+import { NextRequest } from 'next/server';
+import { db } from '../../db/index';
+import { organizations } from '../../db/schema';
+import { eq } from 'drizzle-orm';
+
+export async function getOrganizationId(request: NextRequest): Promise<string | null> {
+  // 1. Try header first (set by middleware)
+  const headerOrgId = request.headers.get('x-organization-id');
+  if (headerOrgId) {
+    return headerOrgId;
+  }
+
+  // 2. Try subdomain resolution
+  const hostname = request.headers.get('host') || '';
+  const subdomain = extractSubdomain(hostname);
+
+  if (subdomain) {
+    const [org] = await db
+      .select({ id: organizations.id })
+      .from(organizations)
+      .where(eq(organizations.slug, subdomain))
+      .limit(1);
+
+    if (org) {
+      return org.id;
+    }
+  }
+
+  // 3. Fallback: return null (no tenant context)
+  return null;
+}
+
+function extractSubdomain(hostname: string): string | null {
+  const parts = hostname.split('.');
+  if (parts.length >= 3) {
+    return parts[0];
+  }
+  return null;
+}
+```
+
+### Tenant Resolution Sources (Priority Order)
+
+1. **Request Header**: `x-organization-id` (set by middleware)
+2. **Subdomain**: `tenant.example.com` → resolves via `organizations.slug`
+3. **Session**: User's current organization (future implementation)
 
 ### Resolution Flow
 
 ```
-Request → Middleware → Tenant Resolution → Tenant Context → Services
+Request → Middleware → getOrganizationId() → Services → Database Query
+                                    ↓
+                           organizationId filter
 ```
 
-1. **Middleware** intercepts request
-2. **Extracts hostname/subdomain** from request
-3. **Queries database** for matching organization
-4. **Sets tenant context** in request
-5. **Services** use tenant context for all queries
-
 ---
 
-## Where Tenant Context Typically Comes From
+## Where Tenant Context Is Used
 
-### Middleware (Next.js)
+### Layer 3: Services (Enforcement Layer)
 
-**File**: `lib/middleware/tenant.ts` or `middleware.ts`
+**CRITICAL**: All tenant boundary enforcement happens in services.
 
-**Process**:
-1. Extract subdomain/custom domain from request
-2. Query `organizations` table for matching tenant
-3. Set tenant context in request headers/cookies
-4. Pass tenant context to services
-
-### Services (Layer 3)
-
-**Directory**: `lib/services/simplified/`
-
-**Process**:
-1. Get tenant context via `getTenantContext()`
-2. Automatically filter all queries by `organizationId`
-3. Enforce tenant boundaries in all operations
-
----
-
-## What Must Be True in Services/Routes
-
-### Services (Layer 3)
-
-**Requirements**:
-- ✅ All queries filter by `organizationId`
-- ✅ All creates include `organizationId`
-- ✅ All updates filter by `organizationId`
-- ✅ All deletes filter by `organizationId`
-- ✅ Fail if no tenant context available
-
-**Pattern**:
 ```typescript
-async findMany(filters?: Filters): Promise<Result<Entity[]>> {
-  const tenantContext = await getTenantContext();
-  if (!tenantContext) {
-    return this.fail('NO_TENANT', 'No tenant context found');
+async getOnboardingResponse(request: NextRequest): Promise<Result<OnboardingResponses | null>> {
+  try {
+    // 1. Get tenant context
+    const organizationId = await getOrganizationId(request);
+    if (!organizationId) {
+      return this.fail('NO_TENANT', 'Organization ID is required for tenant scoping');
+    }
+
+    // 2. Query with tenant filter
+    const [response] = await this.db
+      .select()
+      .from(this.table)
+      .where(eq(this.table.organizationId, organizationId))  // ← TENANT FILTER
+      .limit(1);
+
+    // ...
   }
-  
-  // Always filter by tenant
-  const results = await db.select()
-    .from(this.table)
-    .where(and(
-      eq(this.table.organizationId, tenantContext.id),  // ← Tenant filter
-      // ... other filters
-    ));
-  
-  return this.ok(results);
 }
 ```
 
-### Routes (Layer 4)
+### Layer 4: Routes (Pass-Through)
 
-**Requirements**:
-- ✅ Tenant context available from middleware
-- ✅ No manual tenant filtering needed (services handle it)
-- ✅ Tenant context passed to services automatically
+Routes pass the request to services. They don't handle tenant scoping directly.
 
-**Pattern**:
 ```typescript
-export async function GET(req: NextRequest) {
-  // Tenant context already set by middleware
-  // Services automatically filter by tenant
-  const result = await booksService.findMany(filters);
+export async function GET(request: NextRequest) {
+  // Service extracts tenant context from request
+  const result = await onboardingResponsesService.getOnboardingResponse(request);
   // ...
 }
 ```
+
+### Layers 5-6: Transparent
+
+Hooks and UI don't need to know about tenant scoping—it's handled automatically by services.
+
+---
+
+## What Must Be True in Services
+
+### All Queries Must Filter by Tenant
+
+```typescript
+// ✅ CORRECT: Always filter by organizationId
+const results = await db.select()
+  .from(this.table)
+  .where(eq(this.table.organizationId, organizationId));
+
+// ❌ WRONG: Missing tenant filter
+const results = await db.select()
+  .from(this.table);
+```
+
+### All Creates Must Include Tenant
+
+```typescript
+// ✅ CORRECT: organizationId from tenant context (never from client)
+const [response] = await this.db
+  .insert(this.table)
+  .values({
+    ...validated,
+    organizationId,  // From getOrganizationId(request)
+  })
+  .returning();
+
+// ❌ WRONG: organizationId from client input
+const [response] = await this.db
+  .insert(this.table)
+  .values({
+    ...data,  // Client data may contain organizationId
+  })
+  .returning();
+```
+
+### All Updates/Deletes Must Filter by Tenant
+
+```typescript
+// ✅ CORRECT: Filter by tenant
+const [response] = await this.db
+  .update(this.table)
+  .set(validated)
+  .where(eq(this.table.organizationId, organizationId))  // ← TENANT FILTER
+  .returning();
+
+// ❌ WRONG: Only filter by ID
+const [response] = await this.db
+  .update(this.table)
+  .set(validated)
+  .where(eq(this.table.id, id))  // Missing tenant filter!
+  .returning();
+```
+
+### Fail If No Tenant Context
+
+```typescript
+const organizationId = await getOrganizationId(request);
+if (!organizationId) {
+  return this.fail('NO_TENANT', 'Organization ID is required for tenant scoping');
+}
+```
+
+---
+
+## Database Schema Pattern
+
+### Tenant-Scoped Tables
+
+Every table that contains tenant-specific data **MUST** include:
+
+```typescript
+organizationId: uuid('organization_id')
+  .references(() => organizations.id)
+  .notNull(),  // Required for tenant scoping
+```
+
+### Current Tables
+
+| Table | Tenant-Scoped | Organization Reference |
+|-------|--------------|------------------------|
+| `organizations` | No (tenant root) | N/A |
+| `onboardingResponses` | ✅ Yes | `organizationId → organizations.id` |
 
 ---
 
@@ -116,89 +213,29 @@ export async function GET(req: NextRequest) {
 ### Critical Rules
 
 1. **Never query without tenant filter**
-   - ❌ `db.select().from(books)` (missing tenant filter)
-   - ✅ `db.select().from(books).where(eq(books.organizationId, tenantId))`
+   - ❌ `db.select().from(table)`
+   - ✅ `db.select().from(table).where(eq(table.organizationId, tenantId))`
 
-2. **Always get tenant context**
-   - ❌ Assume tenant context exists
-   - ✅ Check for tenant context and fail if missing
+2. **Always get tenant context from request**
+   - ❌ Trust `organizationId` from client input
+   - ✅ Use `getOrganizationId(request)` to extract tenant
 
 3. **Never expose cross-tenant data**
    - ❌ Return data from multiple tenants
    - ✅ Only return data from current tenant
 
-4. **Validate tenant in all operations**
-   - ❌ Skip tenant validation for "admin" operations
-   - ✅ Always validate tenant, even for admins
+4. **Fail gracefully when no tenant**
+   - ❌ Continue with null tenant (query all data)
+   - ✅ Return `NO_TENANT` error
 
-### Service Layer Enforcement
-
-**Key Point**: Tenant boundaries are enforced at the **service layer** (Layer 3), not at the route layer (Layer 4) or UI layer (Layer 6).
-
-**Why**: 
-- Services are the single point of data access
-- Routes and UI don't need to worry about tenant scoping
-- All queries automatically filtered by tenant
-
----
-
-## Database Schema Pattern
-
-### Tenant-Scoped Tables
-
-Every table that contains tenant-specific data must include:
+### Security: Never Trust Client Input
 
 ```typescript
-organizationId: uuid('organization_id')
-  .references(() => organizations.id)
-  .notNull(),  // Required for tenant scoping
-```
+// In routes: Strip organizationId from client input
+const { organizationId: _, ...dataWithoutOrgId } = validated as any;
 
-### Example
-
-```typescript
-export const books = pgTable('books', {
-  id: id(),
-  title: text('title').notNull(),
-  organizationId: uuid('organization_id')
-    .references(() => organizations.id)
-    .notNull(),  // ← Tenant scoping
-  createdAt: createdAt(),
-  updatedAt: updatedAt(),
-});
-```
-
----
-
-## Tenant Context API
-
-### Getting Tenant Context
-
-```typescript
-import { getTenantContext } from '@/lib/tenant/context';
-
-const tenantContext = await getTenantContext();
-if (!tenantContext) {
-  // No tenant context - fail operation
-  return this.fail('NO_TENANT', 'No tenant context found');
-}
-
-// Use tenantContext.id for filtering
-```
-
-### Tenant Context Structure
-
-```typescript
-type TenantContext = {
-  id: string;              // Organization ID
-  name: string;            // Organization name
-  subdomain: string;       // Subdomain (e.g., "tenant")
-  customDomain?: string;   // Custom domain (e.g., "tenant.com")
-  isActive: boolean;        // Whether tenant is active
-  planId?: string;         // Subscription plan ID
-  settings: Record<string, any>;  // Tenant settings
-  features: string[];      // Enabled features
-};
+// In services: Get organizationId from tenant context
+const organizationId = await getOrganizationId(request);
 ```
 
 ---
@@ -212,25 +249,44 @@ type TenantContext = {
 3. **Tenant Filtering**: All queries include tenant filter
 4. **Tenant Isolation**: Data from different tenants never mixed
 
-### Test Pattern
+### Manual Testing
+
+```bash
+# Test with different subdomains
+curl -H "Host: tenant-a.example.com" http://localhost:3000/api/simplified/onboarding-responses
+curl -H "Host: tenant-b.example.com" http://localhost:3000/api/simplified/onboarding-responses
+
+# Test with header
+curl -H "x-organization-id: uuid-here" http://localhost:3000/api/simplified/onboarding-responses
+```
+
+---
+
+## Future Enhancements
+
+### Session-Based Tenant (TODO)
 
 ```typescript
-// Test: User from Tenant A cannot access Tenant B's data
-const tenantA = await createTenant('tenant-a');
-const tenantB = await createTenant('tenant-b');
+// In lib/middleware/tenant.ts
+export async function getOrganizationId(request: NextRequest): Promise<string | null> {
+  // ... existing code ...
 
-const bookA = await createBook({ organizationId: tenantA.id });
-const bookB = await createBook({ organizationId: tenantB.id });
+  // TODO: Try session (fallback)
+  // const session = await getSession(request);
+  // if (session?.user) {
+  //   return session.user.currentOrganizationId;
+  // }
 
-// Set tenant context to Tenant A
-setTenantContext(tenantA);
-
-// Try to access Tenant B's book
-const result = await booksService.findById(bookB.id);
-
-// Should fail or return empty (tenant boundary enforced)
-expect(result.ok).toBe(false);
+  return null;
+}
 ```
+
+### Multiple Organizations per User (TODO)
+
+Users may belong to multiple organizations. Future implementation will:
+- Store user-organization relationships
+- Allow users to switch between organizations
+- Default to user's primary organization
 
 ---
 
@@ -238,25 +294,26 @@ expect(result.ok).toBe(false);
 
 ### Key Points
 
-1. **Tenant Resolution**: Happens in middleware from subdomain/custom domain
-2. **Tenant Context**: Available in services via `getTenantContext()`
-3. **Tenant Filtering**: All queries automatically filter by `organizationId`
+1. **Tenant Resolution**: Happens via `getOrganizationId()` from header, subdomain, or session
+2. **Tenant Context**: Available in services via `getOrganizationId(request)`
+3. **Tenant Filtering**: All queries filter by `organizationId` in services
 4. **Service Layer**: Enforces tenant boundaries (not routes or UI)
 5. **Database Schema**: All tenant-scoped tables include `organizationId`
 
 ### What You Don't Need to Worry About
 
 - ❌ Manual tenant filtering in routes (services handle it)
-- ❌ Manual tenant filtering in UI (services handle it)
-- ❌ Tenant context in components (services handle it)
+- ❌ Manual tenant filtering in hooks (services handle it)
+- ❌ Tenant context in UI components (services handle it)
 
 ### What You Must Do
 
 - ✅ Include `organizationId` in all tenant-scoped tables
-- ✅ Filter all queries by `organizationId` in services
-- ✅ Get tenant context in services before querying
-- ✅ Fail if no tenant context available
+- ✅ Filter ALL queries by `organizationId` in services
+- ✅ Get tenant context from `getOrganizationId(request)`
+- ✅ Fail with `NO_TENANT` if no tenant context available
+- ✅ Never trust `organizationId` from client input
 
 ---
 
-**Remember**: Tenant boundaries are enforced at the service layer. Services automatically filter by tenant, so routes and UI don't need to worry about tenant scoping.
+**Remember**: Tenant boundaries are enforced at the service layer. Services automatically filter by tenant, so routes and UI don't need to worry about tenant scoping. Never trust client-provided `organizationId`—always extract it from the request context.

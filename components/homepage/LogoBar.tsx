@@ -1,22 +1,31 @@
-'use client'
-
 import { cn } from '@/lib/utils'
+import { Users, Link2, Sparkles } from 'lucide-react'
 
-interface LogoBarProps {
+interface CredibilityChainSectionProps {
   /** Optional additional class names */
   className?: string
 }
 
-// Placeholder logos - these would be replaced with actual partner/customer logos
-const logos = [
-  { name: 'Partner 1', placeholder: true },
-  { name: 'Partner 2', placeholder: true },
-  { name: 'Partner 3', placeholder: true },
-  { name: 'Partner 4', placeholder: true },
-  { name: 'Partner 5', placeholder: true },
+const credibilityPoints = [
+  {
+    icon: Sparkles,
+    text: 'In an AI-saturated world, trust is the scarce resource.',
+  },
+  {
+    icon: Users,
+    text: "Movemental is a network of verified peers who reference, link, and reinforce one another's work.",
+  },
+  {
+    icon: Link2,
+    text: "Your content moves farther when it doesn't move alone.",
+  },
 ]
 
-export function LogoBar({ className }: LogoBarProps) {
+/**
+ * CredibilityChainSection - Replaces the placeholder LogoBar
+ * Emphasizes credibility network / scenius positioning
+ */
+export function CredibilityChainSection({ className }: CredibilityChainSectionProps) {
   return (
     <section
       className={cn(
@@ -25,28 +34,27 @@ export function LogoBar({ className }: LogoBarProps) {
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Tagline */}
-        <p className="text-center text-sm text-muted-foreground uppercase tracking-wider mb-8">
-          Trusted by movement leaders who are transforming their communities
-        </p>
+        {/* Section title */}
+        <h2 className="text-center text-2xl sm:text-3xl font-bold text-foreground mb-8">
+          Credibility travels through people.
+        </h2>
 
-        {/* Logo grid */}
-        <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 lg:gap-16 opacity-60">
-          {logos.map((logo, index) => (
+        {/* Credibility points */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          {credibilityPoints.map((point, index) => (
             <div
               key={index}
-              className="flex items-center justify-center h-8 sm:h-10"
+              className={cn(
+                'flex flex-col items-center text-center p-4',
+                'rounded-lg'
+              )}
             >
-              {/* Placeholder logo - replace with actual logos */}
-              <div
-                className={cn(
-                  'px-6 py-2 rounded-md',
-                  'bg-muted text-muted-foreground',
-                  'text-sm font-medium'
-                )}
-              >
-                {logo.placeholder ? 'Logo' : logo.name}
+              <div className="mb-3 p-2 rounded-full bg-blue-100">
+                <point.icon className="w-5 h-5 text-blue-600" />
               </div>
+              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                {point.text}
+              </p>
             </div>
           ))}
         </div>
@@ -54,3 +62,6 @@ export function LogoBar({ className }: LogoBarProps) {
     </section>
   )
 }
+
+// Keep LogoBar export for backward compatibility with imports
+export { CredibilityChainSection as LogoBar }

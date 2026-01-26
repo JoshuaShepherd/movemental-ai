@@ -3,9 +3,9 @@
 > **Type-Safe HTTP Interface** with Next.js App Router
 
 **Layer**: 4 of 6  
-**Directory**: `app/api/simplified/`  
+**Directory**: `app/api/`  
 **Validation**: `npx tsc --noEmit`  
-**Status Required**: No TypeScript errors
+**Status**: ✅ LOCKED (No TypeScript errors)
 
 ---
 
@@ -15,27 +15,154 @@ API routes provide **RESTful HTTP endpoints** using Next.js App Router. They val
 
 ### Key Principles
 
-1. **Input Validation**: All inputs validated with Zod `.safeParse()`
+1. **Input Validation**: All inputs validated with Zod `.parse()` or `.safeParse()`
 2. **Service Integration**: All business logic delegated to services (Layer 3)
 3. **Result Handling**: Handle `Result<T>` types from services
 4. **Consistent Responses**: Standardized response format for success/error
 5. **Proper Status Codes**: Use appropriate HTTP status codes
-6. **Type Safety**: All types derived from Zod schemas (Layer 2)
+6. **Tenant Transparency**: Tenant scoping handled by services automatically
 
 ---
 
-## Current Route Structure
+## File Structure
 
 ```
 app/api/
 ├── onboarding/
 │   └── upload/
-│       └── route.ts          # File upload handling
+│       └── route.ts              # File upload handling
 └── simplified/
     └── onboarding-responses/
-        ├── route.ts          # GET list, POST create
+        ├── route.ts              # GET (read), POST (create), PATCH (update)
         └── complete/
-            └── route.ts      # POST complete onboarding
+            └── route.ts          # POST (complete onboarding)
+```
+
+---
+
+## Current Implementation
+
+### `app/api/simplified/onboarding-responses/route.ts`
+
+```typescript
+import { NextRequest, NextResponse } from 'next/server';
+import { onboardingResponsesService } from '@/lib/services/simplified/onboardingResponses';
+import {
+  OnboardingResponsesInsertSchema,
+  OnboardingResponsesUpdateSchema,
+} from '@/lib/schemas';
+import { z } from 'zod';
+
+export async function GET(request: NextRequest) {
+  try {
+    // Service automatically filters by organizationId (tenant scoping)
+    const result = await onboardingResponsesService.getOnboardingResponse(request);
+
+    if (!result.ok) {
+      return NextResponse.json(
+        { error: result.error.message },
+        { status: result.error.code === 'NO_TENANT' ? 401 : 500 }
+      );
+    }
+
+    return NextResponse.json({ data: result.data });
+  } catch (error) {
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const validated = OnboardingResponsesInsertSchema.parse(body);
+
+    // CRITICAL: organizationId comes from tenant context, not client input
+    const { organizationId: _, ...dataWithoutOrgId } = validated as any;
+
+    const result = await onboardingResponsesService.createOnboardingResponse(
+      request,
+      dataWithoutOrgId
+    );
+
+    if (!result.ok) {
+      return NextResponse.json(
+        { error: result.error.message },
+        { status: result.error.code === 'NO_TENANT' ? 401 : 500 }
+      );
+    }
+
+    return NextResponse.json({ data: result.data }, { status: 201 });
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ error: error.issues }, { status: 400 });
+    }
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function PATCH(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const validated = OnboardingResponsesUpdateSchema.parse(body);
+
+    const { organizationId: _, ...dataWithoutOrgId } = validated as any;
+
+    const result = await onboardingResponsesService.updateOnboardingResponse(
+      request,
+      dataWithoutOrgId
+    );
+
+    if (!result.ok) {
+      return NextResponse.json(
+        { error: result.error.message },
+        { status: result.error.code === 'NO_TENANT' ? 401 : result.error.code === 'NOT_FOUND' ? 404 : 500 }
+      );
+    }
+
+    return NextResponse.json({ data: result.data });
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ error: error.issues }, { status: 400 });
+    }
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}
+```
+
+### `app/api/simplified/onboarding-responses/complete/route.ts`
+
+```typescript
+import { NextRequest, NextResponse } from 'next/server';
+import { onboardingResponsesService } from '@/lib/services/simplified/onboardingResponses';
+
+export async function POST(request: NextRequest) {
+  try {
+    const result = await onboardingResponsesService.completeOnboardingResponse(request);
+
+    if (!result.ok) {
+      return NextResponse.json(
+        { error: result.error.message },
+        { status: result.error.code === 'NO_TENANT' ? 401 : result.error.code === 'NOT_FOUND' ? 404 : 500 }
+      );
+    }
+
+    return NextResponse.json({ data: result.data });
+  } catch (error) {
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}
 ```
 
 ---
@@ -46,70 +173,37 @@ app/api/
 
 ```
 app/api/simplified/{entity}/
-  ├── route.ts          # List handler (GET, POST)
-  └── [id]/route.ts     # Detail handler (GET, PATCH, DELETE)
+├── route.ts          # Collection handler: GET (list), POST (create)
+└── [id]/route.ts     # Resource handler: GET (detail), PATCH (update), DELETE (delete)
+```
+
+For our current implementation (single tenant record pattern):
+```
+app/api/simplified/{entity}/
+├── route.ts          # GET (read), POST (create), PATCH (update)
+└── complete/
+    └── route.ts      # POST (complete/finalize)
 ```
 
 ### HTTP Methods
 
-- **GET** `/api/simplified/{entity}` - List entities
-- **POST** `/api/simplified/{entity}` - Create entity
-- **GET** `/api/simplified/{entity}/[id]` - Get entity by ID
-- **PATCH** `/api/simplified/{entity}/[id]` - Update entity
-- **DELETE** `/api/simplified/{entity}/[id]` - Delete entity
+| Method | Purpose | Success Status | Error Status |
+|--------|---------|----------------|--------------|
+| GET | Read data | 200 | 401, 404, 500 |
+| POST | Create data | 201 | 400, 401, 500 |
+| PATCH | Update data | 200 | 400, 401, 404, 500 |
+| DELETE | Delete data | 200 | 401, 404, 500 |
 
 ---
 
-## Validation, Auth, Tenant Scope
-
-### Input Validation
-
-All inputs must be validated with Zod:
-
-```typescript
-import { OnboardingResponsesInsertSchema } from '@/lib/schemas';
-
-export async function POST(req: NextRequest) {
-  const json = await req.json();
-  
-  // Validate with Zod
-  const parsed = OnboardingResponsesInsertSchema.safeParse(json);
-  if (!parsed.success) {
-    return NextResponse.json(
-      { error: { code: 'VALIDATION_ERROR', message: 'Invalid input' } },
-      { status: 400 }
-    );
-  }
-  
-  // Call service with validated data
-  const result = await onboardingResponsesService.create(parsed.data);
-  // ...
-}
-```
-
-### Authentication
-
-Authentication is handled by middleware. Routes receive authenticated user context:
-
-```typescript
-// User context available via getServerSession() or similar
-// Tenant context available via getTenantContext()
-```
-
-### Tenant Scope
-
-Tenant scoping happens automatically in services (Layer 3). Routes don't need to manually filter by tenant—services handle it.
-
----
-
-## Error Surface Patterns
+## Response Format
 
 ### Success Response
 
 ```typescript
 return NextResponse.json(
-  { success: true, data: result.data },
-  { status: 201 }  // 201 for create, 200 for read/update
+  { data: result.data },
+  { status: 200 }  // or 201 for POST
 );
 ```
 
@@ -117,20 +211,29 @@ return NextResponse.json(
 
 ```typescript
 return NextResponse.json(
-  {
-    error: {
-      code: result.error.code,
-      message: result.error.message
-    }
-  },
-  { status: 400 }  // 400 for validation, 404 for not found, 500 for server errors
+  { error: result.error.message },
+  { status: 400 }  // appropriate status code
 );
 ```
 
-### Status Code Mapping
+### Validation Error Response
 
-| Service Error | HTTP Status | Description |
-|--------------|-------------|-------------|
+```typescript
+if (error instanceof z.ZodError) {
+  return NextResponse.json(
+    { error: error.issues },
+    { status: 400 }
+  );
+}
+```
+
+---
+
+## Status Code Mapping
+
+| Service Error Code | HTTP Status | Description |
+|-------------------|-------------|-------------|
+| `NO_TENANT` | 401 | No tenant context (unauthorized) |
 | `NOT_FOUND` | 404 | Entity not found |
 | `VALIDATION_ERROR` | 400 | Input validation failed |
 | `DB_ERROR` | 500 | Database operation failed |
@@ -139,47 +242,93 @@ return NextResponse.json(
 
 ---
 
-## Common Patterns
+## Input Validation
 
-### GET (List)
+### With `.parse()` (throws on error)
 
 ```typescript
-import { NextRequest, NextResponse } from 'next/server';
-import { OnboardingResponsesFiltersSchema } from '@/lib/schemas';
-import { onboardingResponsesService } from '@/lib/services/simplified/onboardingResponses';
+try {
+  const validated = OnboardingResponsesInsertSchema.parse(body);
+  // Use validated data...
+} catch (error) {
+  if (error instanceof z.ZodError) {
+    return NextResponse.json({ error: error.issues }, { status: 400 });
+  }
+  // Handle other errors...
+}
+```
 
-export async function GET(req: NextRequest) {
+### With `.safeParse()` (returns result)
+
+```typescript
+const parsed = OnboardingResponsesInsertSchema.safeParse(body);
+if (!parsed.success) {
+  return NextResponse.json(
+    { error: parsed.error.issues },
+    { status: 400 }
+  );
+}
+// Use parsed.data...
+```
+
+---
+
+## Result Handling
+
+Always check `result.ok` before accessing `result.data`:
+
+```typescript
+const result = await onboardingResponsesService.getOnboardingResponse(request);
+
+if (!result.ok) {
+  // Handle error based on error code
+  return NextResponse.json(
+    { error: result.error.message },
+    { status: mapErrorCodeToStatus(result.error.code) }
+  );
+}
+
+// Safe to access result.data
+return NextResponse.json({ data: result.data });
+```
+
+---
+
+## Tenant Scoping
+
+**Routes don't handle tenant scoping directly.** Tenant context is:
+
+1. **Resolved by middleware** or extracted from request in service
+2. **Passed to service methods** via the `request` parameter
+3. **Enforced by services** (Layer 3) automatically
+
+```typescript
+// Route passes request to service - service handles tenant scoping
+const result = await onboardingResponsesService.getOnboardingResponse(request);
+```
+
+---
+
+## Common Patterns
+
+### GET (Read)
+
+```typescript
+export async function GET(request: NextRequest) {
   try {
-    const url = new URL(req.url);
-    const filters = {
-      limit: Number(url.searchParams.get("limit")) || 25,
-      offset: Number(url.searchParams.get("offset")) || 0,
-      // ... other filters
-    };
-    
-    const parsed = OnboardingResponsesFiltersSchema.safeParse(filters);
-    if (!parsed.success) {
-      return NextResponse.json(
-        { error: { code: 'VALIDATION_ERROR', message: 'Invalid filters' } },
-        { status: 400 }
-      );
-    }
-    
-    const result = await onboardingResponsesService.findMany(parsed.data);
+    const result = await entityService.getEntity(request);
+
     if (!result.ok) {
       return NextResponse.json(
-        { error: result.error },
-        { status: result.error.code === 'NOT_FOUND' ? 404 : 500 }
+        { error: result.error.message },
+        { status: result.error.code === 'NO_TENANT' ? 401 : 500 }
       );
     }
-    
-    return NextResponse.json(
-      { success: true, data: result.data },
-      { status: 200 }
-    );
+
+    return NextResponse.json({ data: result.data });
   } catch (error) {
     return NextResponse.json(
-      { error: { code: 'INTERNAL_ERROR', message: 'Internal server error' } },
+      { error: error instanceof Error ? error.message : 'Internal server error' },
       { status: 500 }
     );
   }
@@ -189,135 +338,61 @@ export async function GET(req: NextRequest) {
 ### POST (Create)
 
 ```typescript
-export async function POST(req: NextRequest) {
+export async function POST(request: NextRequest) {
   try {
-    const json = await req.json();
-    
-    const parsed = OnboardingResponsesInsertSchema.safeParse(json);
-    if (!parsed.success) {
-      return NextResponse.json(
-        { error: { code: 'VALIDATION_ERROR', message: 'Invalid input' } },
-        { status: 400 }
-      );
-    }
-    
-    const result = await onboardingResponsesService.create(parsed.data);
+    const body = await request.json();
+    const validated = EntityInsertSchema.parse(body);
+
+    // Remove organizationId (comes from tenant context, not client)
+    const { organizationId: _, ...data } = validated as any;
+
+    const result = await entityService.createEntity(request, data);
+
     if (!result.ok) {
       return NextResponse.json(
-        { error: result.error },
-        { status: 500 }
+        { error: result.error.message },
+        { status: result.error.code === 'NO_TENANT' ? 401 : 500 }
       );
     }
-    
-    return NextResponse.json(
-      { success: true, data: result.data },
-      { status: 201 }
-    );
+
+    return NextResponse.json({ data: result.data }, { status: 201 });
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ error: error.issues }, { status: 400 });
+    }
     return NextResponse.json(
-      { error: { code: 'INTERNAL_ERROR', message: 'Internal server error' } },
+      { error: error instanceof Error ? error.message : 'Internal server error' },
       { status: 500 }
     );
   }
 }
 ```
 
-### GET [id] (Get by ID)
+### PATCH (Update)
 
 ```typescript
-export async function GET(
-  req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
+export async function PATCH(request: NextRequest) {
   try {
-    const { id } = await params;
-    
-    const result = await onboardingResponsesService.findById(id);
+    const body = await request.json();
+    const validated = EntityUpdateSchema.parse(body);
+
+    const { organizationId: _, ...data } = validated as any;
+
+    const result = await entityService.updateEntity(request, data);
+
     if (!result.ok) {
-      return NextResponse.json(
-        { error: result.error },
-        { status: result.error.code === 'NOT_FOUND' ? 404 : 500 }
-      );
+      const status = result.error.code === 'NO_TENANT' ? 401 
+        : result.error.code === 'NOT_FOUND' ? 404 : 500;
+      return NextResponse.json({ error: result.error.message }, { status });
     }
-    
-    return NextResponse.json(
-      { success: true, data: result.data },
-      { status: 200 }
-    );
+
+    return NextResponse.json({ data: result.data });
   } catch (error) {
-    return NextResponse.json(
-      { error: { code: 'INTERNAL_ERROR', message: 'Internal server error' } },
-      { status: 500 }
-    );
-  }
-}
-```
-
-### PATCH [id] (Update)
-
-```typescript
-export async function PATCH(
-  req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
-  try {
-    const { id } = await params;
-    const json = await req.json();
-    
-    const parsed = OnboardingResponsesUpdateSchema.safeParse(json);
-    if (!parsed.success) {
-      return NextResponse.json(
-        { error: { code: 'VALIDATION_ERROR', message: 'Invalid input' } },
-        { status: 400 }
-      );
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ error: error.issues }, { status: 400 });
     }
-    
-    const result = await onboardingResponsesService.update(id, parsed.data);
-    if (!result.ok) {
-      return NextResponse.json(
-        { error: result.error },
-        { status: result.error.code === 'NOT_FOUND' ? 404 : 500 }
-      );
-    }
-    
     return NextResponse.json(
-      { success: true, data: result.data },
-      { status: 200 }
-    );
-  } catch (error) {
-    return NextResponse.json(
-      { error: { code: 'INTERNAL_ERROR', message: 'Internal server error' } },
-      { status: 500 }
-    );
-  }
-}
-```
-
-### DELETE [id] (Delete)
-
-```typescript
-export async function DELETE(
-  req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
-  try {
-    const { id } = await params;
-    
-    const result = await onboardingResponsesService.delete(id);
-    if (!result.ok) {
-      return NextResponse.json(
-        { error: result.error },
-        { status: result.error.code === 'NOT_FOUND' ? 404 : 500 }
-      );
-    }
-    
-    return NextResponse.json(
-      { success: true },
-      { status: 200 }
-    );
-  } catch (error) {
-    return NextResponse.json(
-      { error: { code: 'INTERNAL_ERROR', message: 'Internal server error' } },
+      { error: error instanceof Error ? error.message : 'Internal server error' },
       { status: 500 }
     );
   }
@@ -332,22 +407,19 @@ export async function DELETE(
 
 **Problem**: Route accepts invalid data
 
-**Solution**: Always validate with Zod `.safeParse()`:
+**Solution**: Always validate with Zod:
 ```typescript
-const parsed = OnboardingResponsesInsertSchema.safeParse(json);
-if (!parsed.success) {
-  return NextResponse.json({ error: ... }, { status: 400 });
-}
+const validated = EntityInsertSchema.parse(body);
 ```
 
 ### 2. Not Checking result.ok
 
 **Problem**: Accessing `result.data` without checking `result.ok`
 
-**Solution**: Always check `result.ok`:
+**Solution**: Always check first:
 ```typescript
 if (!result.ok) {
-  return NextResponse.json({ error: result.error }, { status: 500 });
+  return NextResponse.json({ error: result.error.message }, { status: 500 });
 }
 // Now safe to access result.data
 ```
@@ -360,22 +432,18 @@ if (!result.ok) {
 - `200` - Success (GET, PATCH, DELETE)
 - `201` - Created (POST)
 - `400` - Validation error
+- `401` - No tenant context
 - `404` - Not found
 - `500` - Server error
 
-### 4. Not Handling Errors
+### 4. Not Handling Zod Errors
 
-**Problem**: Unhandled exceptions crash the API
+**Problem**: Zod validation errors not returned properly
 
-**Solution**: Wrap in try-catch:
+**Solution**: Check for `z.ZodError`:
 ```typescript
-try {
-  // ... route logic
-} catch (error) {
-  return NextResponse.json(
-    { error: { code: 'INTERNAL_ERROR', message: 'Internal server error' } },
-    { status: 500 }
-  );
+if (error instanceof z.ZodError) {
+  return NextResponse.json({ error: error.issues }, { status: 400 });
 }
 ```
 
@@ -389,13 +457,14 @@ After making any route changes:
 npx tsc --noEmit
 ```
 
-**Required Status**: No TypeScript errors
+**Required Status**: No TypeScript errors (Layer 4 LOCKED)
 
-Validation checks:
+Validation checklist:
 - ✅ All routes validate inputs with Zod
 - ✅ All routes check `result.ok` before accessing data
 - ✅ All routes use appropriate HTTP status codes
-- ✅ All routes handle errors properly
+- ✅ All routes handle errors properly (try-catch)
+- ✅ All routes handle Zod validation errors
 - ✅ No TypeScript errors in route files
 
 ---
@@ -404,20 +473,22 @@ Validation checks:
 
 ### ✅ Always Do
 
-- Validate ALL inputs with Zod `.safeParse()`
+- Validate ALL inputs with Zod (`.parse()` or `.safeParse()`)
 - Check `result.ok` before accessing `result.data`
 - Use appropriate HTTP status codes
 - Wrap in try-catch blocks
-- Return consistent response format
-- Import types from `lib/schemas/`
+- Return consistent response format: `{ data }` or `{ error }`
+- Import types and schemas from `lib/schemas/`
+- Pass `request` to service methods (for tenant context)
 
 ### ❌ Never Do
 
 - Skip input validation
-- Implement business logic in routes
+- Implement business logic in routes (delegate to services)
 - Access `result.data` without checking `result.ok`
 - Use wrong HTTP status codes
 - Let exceptions go unhandled
+- Trust `organizationId` from client input
 
 ---
 
@@ -428,7 +499,7 @@ Validation checks:
 **Problem**: TypeScript errors in routes
 
 **Solution**:
-1. Ensure Layer 2 has no TypeScript errors (`npx tsc --noEmit`)
+1. Ensure Layer 2 has no TypeScript errors
 2. Verify types are imported from Layer 2 schemas
 3. Check that `Result<T>` is handled correctly
 4. Review TypeScript error messages
@@ -446,9 +517,9 @@ Validation checks:
 
 ## Next Steps
 
-- **Layer 5**: Read [06_LAYER_5_HOOKS.md](./06_LAYER_5_HOOKS.md) to understand how hooks call routes
-- **Workflow**: Read [08_CHAIN_WORKFLOW_CHECKLIST.md](./08_CHAIN_WORKFLOW_CHECKLIST.md) for complete workflow
-- **Glossary**: Read [10_GLOSSARY.md](./10_GLOSSARY.md) for term definitions
+- **Layer 5**: [06_LAYER_5_HOOKS.md](./06_LAYER_5_HOOKS.md) - React hooks
+- **Workflow**: [08_CHAIN_WORKFLOW_CHECKLIST.md](./08_CHAIN_WORKFLOW_CHECKLIST.md) - Complete workflow
+- **Glossary**: [10_GLOSSARY.md](./10_GLOSSARY.md) - Term definitions
 
 ---
 

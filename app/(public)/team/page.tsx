@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { TeamCredibilityContainer } from '@/components/team-credibility'
+import { getTeamMembers } from '@/lib/authors'
 
 export const metadata: Metadata = {
   title: 'Our Team | Movemental',
@@ -11,6 +12,9 @@ export const metadata: Metadata = {
   },
 }
 
-export default function TeamPage() {
-  return <TeamCredibilityContainer />
+export default async function TeamPage() {
+  // Load team members from the canonical author registry
+  const teamMembers = await getTeamMembers()
+
+  return <TeamCredibilityContainer teamMembers={teamMembers} />
 }

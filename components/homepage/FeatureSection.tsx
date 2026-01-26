@@ -3,11 +3,11 @@
 import Link from 'next/link'
 import { 
   BookOpen, 
-  DollarSign, 
   Users, 
   BarChart3,
   Sparkles,
-  Globe
+  Globe,
+  Shield
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { LucideIcon } from 'lucide-react'
@@ -28,41 +28,42 @@ interface FeatureSectionProps {
   className?: string
 }
 
+// Reordered: Credibility/Scenius first, then content movement, then platform features
 const features: Feature[] = [
   {
-    icon: BookOpen,
-    title: 'Complete Publishing Platform',
+    icon: Globe,
+    title: 'Credibility Network',
     description:
-      'Books, courses, articles, and multimedia content—all in one integrated platform you own. No more fractured tool ecosystems.',
-    link: '/onboarding',
+      "Join a peer network of verified movement leaders who link, reference, and reinforce one another's work. Trust compounds across the network.",
+    link: '/network',
   },
   {
-    icon: DollarSign,
-    title: '90% Revenue Retention',
+    icon: Shield,
+    title: 'Content That Circulates',
     description:
-      'Keep 90% of your revenue instead of losing 85-90% to traditional publishers and digital platforms. Your content, your revenue.',
-    link: '/pricing',
-  },
-  {
-    icon: Users,
-    title: 'Audience Ownership',
-    description:
-      'Own your audience data and relationships. Direct communication, no platform intermediaries, full control over your community.',
-    link: '/what-is-movemental',
+      'Structured publishing designed for discovery—internal linking, external references, and metadata that search systems and AI can actually read.',
+    link: '/why-movemental',
   },
   {
     icon: Sparkles,
-    title: 'AI-Powered Content',
+    title: 'Voice Preservation',
     description:
-      'AI support tailored to your voice and theology. Create content faster while maintaining authenticity and alignment.',
+      'AI assists with mechanics—formatting, structure, metadata—while your authentic voice and theological clarity stay intact. Transparency built in.',
     link: '/ai-vision',
   },
   {
-    icon: Globe,
-    title: 'Network Effects',
+    icon: BookOpen,
+    title: 'Publishing Platform',
     description:
-      'Shared infrastructure creates collective SEO benefits and cross-platform amplification. Rise together with the network.',
-    link: '/network',
+      'Books, courses, articles, and multimedia content—all in one integrated platform you own. Your work, unified and accessible.',
+    link: '/onboarding',
+  },
+  {
+    icon: Users,
+    title: 'Audience Relationship',
+    description:
+      'Own your audience data and relationships. Direct communication, no platform intermediaries, full control over your community.',
+    link: '/what-is-movemental',
   },
   {
     icon: BarChart3,
@@ -85,14 +86,14 @@ export function FeatureSection({ className }: FeatureSectionProps) {
         {/* Section header */}
         <div className="text-center mb-16">
           <p className="text-sm font-medium text-blue-600 uppercase tracking-wider mb-3">
-            Platform Features
+            How It Works
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Everything You Need to{' '}
-            <span className="text-blue-600">Move</span>
+            Content That Actually{' '}
+            <span className="text-blue-600">Moves</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A complete digital publishing infrastructure—content, commerce, community, and analytics—built for movement leaders.
+            Not emotionally—literally. Your work gets discovered, linked, referenced, and shared across a network built for compounding reach.
           </p>
         </div>
 

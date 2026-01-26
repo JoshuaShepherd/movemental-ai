@@ -5,7 +5,7 @@
 **Layer**: 3 of 6  
 **Directory**: `lib/services/simplified/`  
 **Validation**: `npx tsc --noEmit`  
-**Status Required**: No TypeScript errors
+**Status**: ✅ LOCKED (No TypeScript errors)
 
 ---
 
@@ -20,11 +20,23 @@ Services implement **business logic** and **data operations** using validated Zo
 3. **Result Pattern**: Return `Result<T>` types for explicit error handling
 4. **Input Validation**: All inputs validated with Zod before operations
 5. **Output Validation**: All outputs validated with Zod after operations
-6. **Base Class Extension**: All services extend `SimplifiedService` base class
+6. **Tenant Scoping**: All queries filter by `organizationId` for multi-tenant isolation
 
 ---
 
-## Current Service Structure
+## File Structure
+
+```
+lib/services/
+├── types.ts               # Result<T> and ServiceError types
+├── simplified-base.ts     # Base service class
+└── simplified/
+    └── onboardingResponses.ts  # OnboardingResponses service
+```
+
+---
+
+## Current Implementation
 
 ### `lib/services/types.ts` - Service Types
 
@@ -34,22 +46,67 @@ export type Result<T> =
   | { ok: true; data: T }
   | { ok: false; error: ServiceError };
 
-export interface ServiceError {
+export type ServiceError = {
   code: string;
   message: string;
-}
+};
 ```
 
 ### `lib/services/simplified-base.ts` - Base Service
 
-Contains the base service class that all entity services extend.
+```typescript
+import { z } from 'zod';
+import { db } from '../../db/index';
+import type { Result, ServiceError } from './types';
+
+export abstract class SimplifiedService<
+  TTable,
+  TSelect,
+  TInsert,
+  TUpdate,
+  TFilters
+> {
+  protected abstract table: TTable;
+  protected abstract selectSchema: z.ZodSchema<TSelect>;
+  protected abstract insertSchema: z.ZodSchema<TInsert>;
+  protected abstract updateSchema: z.ZodSchema<TUpdate>;
+  protected abstract filtersSchema: z.ZodSchema<TFilters>;
+
+  // Helper methods for Result pattern
+  protected ok<T>(data: T): Result<T> {
+    return { ok: true, data };
+  }
+
+  protected fail(code: string, message: string): Result<never> {
+    return {
+      ok: false,
+      error: { code, message },
+    };
+  }
+
+  // Validation helpers
+  protected validateInput<T>(schema: z.ZodSchema<T>, data: unknown): T {
+    return schema.parse(data);
+  }
+
+  protected validateOutput<T>(schema: z.ZodSchema<T>, data: unknown): T {
+    return schema.parse(data);
+  }
+
+  // Get database instance
+  protected get db() {
+    return db;
+  }
+}
+```
 
 ### `lib/services/simplified/onboardingResponses.ts` - Example Service
 
 ```typescript
+import { and, eq } from 'drizzle-orm';
 import { SimplifiedService } from '../simplified-base';
-import { 
-  OnboardingResponsesSelectSchema, 
+import {
+  OnboardingResponsesSelectSchema,
   OnboardingResponsesInsertSchema,
   OnboardingResponsesUpdateSchema,
   OnboardingResponsesFiltersSchema,
@@ -57,16 +114,55 @@ import {
   type OnboardingResponsesCreate,
   type OnboardingResponsesUpdate,
   type OnboardingResponsesFilters,
-} from '@/lib/schemas';
+} from '../../schemas';
+import { onboardingResponses } from '@/db/schema';
+import type { Result } from '../types';
+import { getOrganizationId } from '../../middleware/tenant';
+import { NextRequest } from 'next/server';
 
-// Service implementation...
+export class OnboardingResponsesService extends SimplifiedService<
+  typeof onboardingResponses,
+  OnboardingResponses,
+  OnboardingResponsesCreate,
+  OnboardingResponsesUpdate,
+  OnboardingResponsesFilters
+> {
+  protected table = onboardingResponses;
+  protected selectSchema = OnboardingResponsesSelectSchema;
+  protected insertSchema = OnboardingResponsesInsertSchema;
+  protected updateSchema = OnboardingResponsesUpdateSchema;
+  protected filtersSchema = OnboardingResponsesFiltersSchema;
+
+  async getOnboardingResponse(request: NextRequest): Promise<Result<OnboardingResponses | null>> {
+    // Implementation with tenant scoping...
+  }
+
+  async createOnboardingResponse(
+    request: NextRequest,
+    data: OnboardingResponsesCreate
+  ): Promise<Result<OnboardingResponses>> {
+    // Implementation with tenant scoping...
+  }
+
+  async updateOnboardingResponse(
+    request: NextRequest,
+    data: OnboardingResponsesUpdate
+  ): Promise<Result<OnboardingResponses>> {
+    // Implementation with tenant scoping...
+  }
+
+  async completeOnboardingResponse(request: NextRequest): Promise<Result<OnboardingResponses>> {
+    // Implementation with tenant scoping...
+  }
+}
+
+// Singleton export
+export const onboardingResponsesService = new OnboardingResponsesService();
 ```
 
 ---
 
-## Service Conventions
-
-### Result<T> Pattern
+## Result<T> Pattern
 
 Services **never throw errors**. Instead, they return `Result<T>` types:
 
@@ -85,238 +181,224 @@ return this.fail('ERROR_CODE', 'Error message');
 ### Why Result<T>?
 
 1. **Explicit Error Handling**: Errors are part of the type system
-2. **No Exceptions**: No try-catch needed—errors are returned
-3. **Type Safety**: TypeScript enforces error handling
+2. **No Exceptions**: No try-catch chains needed at caller sites
+3. **Type Safety**: TypeScript enforces error checking
 4. **Composability**: Results can be chained and combined
 
 ---
 
-## Error Handling
+## Error Codes
 
-### Service Error Types
+### Common Error Codes
 
-```typescript
-// Common error codes
-'NOT_FOUND'        // Entity not found
-'VALIDATION_ERROR' // Input validation failed
-'DB_ERROR'         // Database operation failed
-'PERMISSION_DENIED' // User lacks permission
-'DUPLICATE_ENTRY'  // Unique constraint violation
-'NO_TENANT'        // No tenant context available
-```
-
-### Error Handling Pattern
-
-```typescript
-async findById(id: string): Promise<Result<OnboardingResponses>> {
-  try {
-    // Validate input
-    const validatedId = z.string().uuid().parse(id);
-    
-    // Query database
-    const result = await db.select()
-      .from(this.table)
-      .where(eq(this.table.id, validatedId))
-      .limit(1);
-    
-    if (result.length === 0) {
-      return this.fail('NOT_FOUND', `Entity with id ${id} not found`);
-    }
-    
-    // Validate output
-    const validated = this.validateOutput(this.selectSchema, result[0]);
-    return this.ok(validated);
-  } catch (error) {
-    return this.fail('DB_ERROR', error instanceof Error ? error.message : String(error));
-  }
-}
-```
+| Code | Description | HTTP Status |
+|------|-------------|-------------|
+| `NOT_FOUND` | Entity not found | 404 |
+| `VALIDATION_ERROR` | Input validation failed | 400 |
+| `DB_ERROR` | Database operation failed | 500 |
+| `PERMISSION_DENIED` | User lacks permission | 403 |
+| `DUPLICATE_ENTRY` | Unique constraint violation | 409 |
+| `NO_TENANT` | No tenant context available | 401 |
 
 ---
 
-## How Services Should Enforce Tenant Boundaries
+## Tenant Scoping
 
-### Automatic Tenant Filtering
+### CRITICAL: All Queries Must Filter by Tenant
 
-Services automatically filter by tenant context:
+Services automatically filter by `organizationId` using the tenant context from the request:
 
 ```typescript
-async findMany(filters?: OnboardingResponsesFilters): Promise<Result<OnboardingResponses[]>> {
-  const tenantContext = await getTenantContext();
-  
-  if (!tenantContext) {
-    return this.fail('NO_TENANT', 'No tenant context found');
+async getOnboardingResponse(request: NextRequest): Promise<Result<OnboardingResponses | null>> {
+  try {
+    // 1. Get tenant context
+    const organizationId = await getOrganizationId(request);
+    if (!organizationId) {
+      return this.fail('NO_TENANT', 'Organization ID is required for tenant scoping');
+    }
+
+    // 2. Query with tenant filter
+    const [response] = await this.db
+      .select()
+      .from(this.table)
+      .where(eq(this.table.organizationId, organizationId))  // ← TENANT FILTER
+      .limit(1);
+
+    if (!response) {
+      return this.ok(null);
+    }
+
+    // 3. Validate output
+    const validated = this.validateOutput(this.selectSchema, response);
+    return this.ok(validated);
+  } catch (error) {
+    return this.fail('DB_ERROR', error instanceof Error ? error.message : 'Database error');
   }
-  
-  // Automatically add tenant filter
-  const tenantFilters = {
-    ...filters,
-    organizationId: tenantContext.id,  // ← Tenant boundary enforced
-  };
-  
-  // Query with tenant filter
-  const results = await db.select()
-    .from(this.table)
-    .where(and(
-      eq(this.table.organizationId, tenantContext.id),  // ← Always filter by tenant
-      // ... other filters
-    ));
-  
-  return this.ok(results);
 }
 ```
 
-### Key Points
+### Tenant Context Source
 
-- ✅ **Always filter by `organizationId`** in queries
-- ✅ **Get tenant context** from `getTenantContext()`
-- ✅ **Fail if no tenant** context is available
-- ❌ **Never query** without tenant filter
-- ❌ **Never expose** cross-tenant data
+The `getOrganizationId()` function in `lib/middleware/tenant.ts` resolves tenant from:
+
+1. **Request Header**: `x-organization-id` (set by middleware)
+2. **Subdomain**: Extract from hostname (e.g., `tenant.example.com`)
+3. **Session**: User's current organization (fallback - future implementation)
 
 ---
 
-## Typical Patterns
+## Service Method Patterns
 
-### findById
+### Get by Tenant (Single Record)
 
 ```typescript
-async findById(id: string): Promise<Result<OnboardingResponses>> {
+async getOnboardingResponse(request: NextRequest): Promise<Result<OnboardingResponses | null>> {
   try {
-    const validatedId = z.string().uuid().parse(id);
-    const tenantContext = await getTenantContext();
-    
-    const result = await db.select()
+    const organizationId = await getOrganizationId(request);
+    if (!organizationId) {
+      return this.fail('NO_TENANT', 'Organization ID is required for tenant scoping');
+    }
+
+    const [response] = await this.db
+      .select()
       .from(this.table)
-      .where(and(
-        eq(this.table.id, validatedId),
-        eq(this.table.organizationId, tenantContext.id)  // ← Tenant filter
-      ))
+      .where(eq(this.table.organizationId, organizationId))
       .limit(1);
-    
-    if (result.length === 0) {
-      return this.fail('NOT_FOUND', `Entity not found`);
+
+    if (!response) {
+      return this.ok(null);
     }
-    
-    const validated = this.validateOutput(this.selectSchema, result[0]);
+
+    const validated = this.validateOutput(this.selectSchema, response);
     return this.ok(validated);
   } catch (error) {
-    return this.fail('DB_ERROR', error.message);
+    return this.fail('DB_ERROR', error instanceof Error ? error.message : 'Database error');
   }
 }
 ```
 
-### list (findMany)
+### Create with Tenant
 
 ```typescript
-async findMany(filters?: OnboardingResponsesFilters): Promise<Result<OnboardingResponses[]>> {
+async createOnboardingResponse(
+  request: NextRequest,
+  data: OnboardingResponsesCreate
+): Promise<Result<OnboardingResponses>> {
   try {
-    const tenantContext = await getTenantContext();
-    const validatedFilters = this.validateInput(this.filtersSchema, filters);
-    
-    const conditions = [
-      eq(this.table.organizationId, tenantContext.id)  // ← Tenant filter
-    ];
-    
-    // Add other filters...
-    if (validatedFilters.isComplete !== undefined) {
-      conditions.push(eq(this.table.isComplete, validatedFilters.isComplete));
+    const organizationId = await getOrganizationId(request);
+    if (!organizationId) {
+      return this.fail('NO_TENANT', 'Organization ID is required for tenant scoping');
     }
-    
-    const results = await db.select()
-      .from(this.table)
-      .where(and(...conditions))
-      .limit(validatedFilters.limit || 20)
-      .offset(validatedFilters.offset || 0);
-    
-    const validated = results.map(r => this.validateOutput(this.selectSchema, r));
-    return this.ok(validated);
-  } catch (error) {
-    return this.fail('DB_ERROR', error.message);
-  }
-}
-```
 
-### create
+    // Remove organizationId from data if present (security - never trust client input)
+    const { organizationId: _, ...dataWithoutOrgId } = data as any;
 
-```typescript
-async create(data: OnboardingResponsesCreate): Promise<Result<OnboardingResponses>> {
-  try {
-    const tenantContext = await getTenantContext();
-    const validated = this.validateInput(this.insertSchema, data);
-    
-    // Automatically add tenant ID
-    const insertData = {
-      ...validated,
-      organizationId: tenantContext.id,  // ← Tenant ID added
-    };
-    
-    const [result] = await db.insert(this.table)
-      .values(insertData)
+    const validated = this.validateInput(this.insertSchema, dataWithoutOrgId);
+
+    const [response] = await this.db
+      .insert(this.table)
+      .values({
+        ...validated,
+        organizationId,  // From tenant context - CRITICAL
+      })
       .returning();
-    
-    const validatedOutput = this.validateOutput(this.selectSchema, result);
+
+    const validatedOutput = this.validateOutput(this.selectSchema, response);
     return this.ok(validatedOutput);
   } catch (error) {
-    return this.fail('DB_ERROR', error.message);
+    return this.fail('DB_ERROR', error instanceof Error ? error.message : 'Database error');
   }
 }
 ```
 
-### update
+### Update with Tenant
 
 ```typescript
-async update(id: string, data: OnboardingResponsesUpdate): Promise<Result<OnboardingResponses>> {
+async updateOnboardingResponse(
+  request: NextRequest,
+  data: OnboardingResponsesUpdate
+): Promise<Result<OnboardingResponses>> {
   try {
-    const tenantContext = await getTenantContext();
-    const validated = this.validateInput(this.updateSchema, data);
-    
-    const [result] = await db.update(this.table)
+    const organizationId = await getOrganizationId(request);
+    if (!organizationId) {
+      return this.fail('NO_TENANT', 'Organization ID is required for tenant scoping');
+    }
+
+    // Remove organizationId from data if present (security)
+    const { organizationId: _, ...dataWithoutOrgId } = data as any;
+
+    const validated = this.validateInput(this.updateSchema, dataWithoutOrgId);
+
+    const [response] = await this.db
+      .update(this.table)
       .set({
         ...validated,
-        updatedAt: new Date(),  // ← Auto-update timestamp
+        updatedAt: new Date(),  // Auto-update timestamp
       })
-      .where(and(
-        eq(this.table.id, id),
-        eq(this.table.organizationId, tenantContext.id)  // ← Tenant filter
-      ))
+      .where(eq(this.table.organizationId, organizationId))  // ← TENANT FILTER
       .returning();
-    
-    if (!result) {
-      return this.fail('NOT_FOUND', `Entity not found`);
+
+    if (!response) {
+      return this.fail('NOT_FOUND', 'Onboarding response not found');
     }
-    
-    const validatedOutput = this.validateOutput(this.selectSchema, result);
+
+    const validatedOutput = this.validateOutput(this.selectSchema, response);
     return this.ok(validatedOutput);
   } catch (error) {
-    return this.fail('DB_ERROR', error.message);
+    return this.fail('DB_ERROR', error instanceof Error ? error.message : 'Database error');
   }
 }
 ```
 
-### delete
+---
+
+## Adding a New Service
+
+### Step 1: Create Service File
+
+Create `lib/services/simplified/entityName.ts`:
 
 ```typescript
-async delete(id: string): Promise<Result<void>> {
-  try {
-    const tenantContext = await getTenantContext();
-    
-    const result = await db.delete(this.table)
-      .where(and(
-        eq(this.table.id, id),
-        eq(this.table.organizationId, tenantContext.id)  // ← Tenant filter
-      ))
-      .returning();
-    
-    if (result.length === 0) {
-      return this.fail('NOT_FOUND', `Entity not found`);
-    }
-    
-    return this.ok(undefined);
-  } catch (error) {
-    return this.fail('DB_ERROR', error.message);
-  }
+import { and, eq } from 'drizzle-orm';
+import { SimplifiedService } from '../simplified-base';
+import {
+  EntitySelectSchema,
+  EntityInsertSchema,
+  EntityUpdateSchema,
+  EntityFiltersSchema,
+  type Entity,
+  type EntityCreate,
+  type EntityUpdate,
+  type EntityFilters,
+} from '../../schemas';
+import { entity } from '@/db/schema';
+import type { Result } from '../types';
+import { getOrganizationId } from '../../middleware/tenant';
+import { NextRequest } from 'next/server';
+
+export class EntityService extends SimplifiedService<
+  typeof entity,
+  Entity,
+  EntityCreate,
+  EntityUpdate,
+  EntityFilters
+> {
+  protected table = entity;
+  protected selectSchema = EntitySelectSchema;
+  protected insertSchema = EntityInsertSchema;
+  protected updateSchema = EntityUpdateSchema;
+  protected filtersSchema = EntityFiltersSchema;
+
+  // Implement methods...
 }
+
+export const entityService = new EntityService();
+```
+
+### Step 2: Validate
+
+```bash
+npx tsc --noEmit
 ```
 
 ---
@@ -329,14 +411,15 @@ After making any service changes:
 npx tsc --noEmit
 ```
 
-**Required Status**: No TypeScript errors
+**Required Status**: No TypeScript errors (Layer 3 LOCKED)
 
-Validation checks:
-- ✅ All services extend `SimplifiedService`
+Validation checklist:
+- ✅ Service extends `SimplifiedService`
 - ✅ All methods return `Result<T>`
 - ✅ All inputs validated with Zod
 - ✅ All outputs validated with Zod
-- ✅ No TypeScript errors in service files
+- ✅ All queries filter by tenant (`organizationId`)
+- ✅ Singleton exported
 
 ---
 
@@ -346,19 +429,21 @@ Validation checks:
 
 - Extend `SimplifiedService` base class
 - Return `Result<T>` from ALL methods (never throw)
-- Validate inputs/outputs with Zod schemas
-- Export singleton instance
-- Filter by tenant in all queries
-- Handle errors explicitly
+- Validate inputs with Zod schemas before operations
+- Validate outputs with Zod schemas after operations
+- Export singleton instance: `export const entityService = new EntityService()`
+- Filter ALL queries by `organizationId` (tenant scoping)
+- Handle errors explicitly with `this.fail()`
 - Import types from `lib/schemas/`
 
 ### ❌ Never Do
 
 - Throw errors (use `Result<T>`)
-- Bypass validation
+- Bypass input/output validation
 - Define custom types (derive from schemas)
 - Query without tenant filter
 - Access database directly from routes/components
+- Trust `organizationId` from client input
 
 ---
 
@@ -380,7 +465,7 @@ Validation checks:
 
 **Solution**:
 1. Ensure all queries filter by `organizationId`
-2. Verify `getTenantContext()` is called
+2. Verify `getOrganizationId()` is called before every query
 3. Check that tenant context is available
 4. Review service methods for missing tenant filters
 
@@ -388,9 +473,9 @@ Validation checks:
 
 ## Next Steps
 
-- **Layer 4**: Read [05_LAYER_4_ROUTES.md](./05_LAYER_4_ROUTES.md) to understand how routes call services
-- **Workflow**: Read [08_CHAIN_WORKFLOW_CHECKLIST.md](./08_CHAIN_WORKFLOW_CHECKLIST.md) for complete workflow
-- **Multi-Tenant**: Read [09_MULTI_TENANT_NOTES.md](./09_MULTI_TENANT_NOTES.md) for tenant scoping details
+- **Layer 4**: [05_LAYER_4_ROUTES.md](./05_LAYER_4_ROUTES.md) - API routes
+- **Workflow**: [08_CHAIN_WORKFLOW_CHECKLIST.md](./08_CHAIN_WORKFLOW_CHECKLIST.md) - Complete workflow
+- **Multi-Tenant**: [09_MULTI_TENANT_NOTES.md](./09_MULTI_TENANT_NOTES.md) - Tenant scoping details
 
 ---
 

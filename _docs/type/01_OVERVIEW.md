@@ -2,8 +2,9 @@
 
 > **The Six-Layer Chain: How Types Flow from Database to UI**
 
-**Version**: 1.1.0  
-**Last Updated**: January 2026
+**Version**: 2.0.0  
+**Last Updated**: January 26, 2026  
+**Status**: ✅ All Layers LOCKED (No TypeScript errors - verified)
 
 ---
 
@@ -12,16 +13,16 @@
 The Six-Layer Chain is a unidirectional type safety architecture that ensures complete type safety from the database schema all the way to the user interface. Types flow in one direction only: **downstream**, never upstream.
 
 ```
-Layer 1: DATABASE (Drizzle Schema)     → db/schema.ts
-   ↓ Auto-generates types
-Layer 2: ZOD (Validation Schemas)      → lib/schemas/ (SSOT for all TypeScript types)
+Layer 1: DATABASE (Drizzle Schema)     → db/schema.ts (Structure SSOT)
+   ↓ Auto-generates types via drizzle-zod
+Layer 2: ZOD (Validation Schemas)      → lib/schemas/ (Types SSOT)
    ↓ Types exported via z.infer<>
 Layer 3: SERVICES (Business Logic)     → lib/services/simplified/
-   ↓ Uses Zod types
+   ↓ Uses Zod types, enforces tenant boundaries
 Layer 4: ROUTES (HTTP Interface)       → app/api/simplified/
-   ↓ Uses Zod types
+   ↓ Uses Zod types for validation
 Layer 5: HOOKS (Data Fetching)         → hooks/simplified/
-   ↓ Uses Zod types
+   ↓ Uses Zod types, React Query
 Layer 6: UI (Components)               → components/
 ```
 
@@ -56,21 +57,80 @@ Zod schemas are the **single source of truth for all TypeScript types**. This is
 - Domain-specific types (like FitCheck, OnboardingPath) are defined
 
 **Key Files**:
-- `lib/schemas/index.ts` - Entity schemas (Organizations, OnboardingResponses)
-- `lib/schemas/base.ts` - Base schemas (IdSchema, BaseFiltersSchema)
-- `lib/schemas/fit-check.ts` - Fit Check assessment types
-- `lib/schemas/onboarding-path.ts` - Onboarding path types
+
+| File | Purpose |
+|------|---------|
+| `lib/schemas/index.ts` | Entity schemas (Organizations, OnboardingResponses) |
+| `lib/schemas/base.ts` | Base schemas (IdSchema, BaseFiltersSchema) |
+| `lib/schemas/fit-check.ts` | Fit Check assessment types |
+| `lib/schemas/onboarding-path.ts` | Onboarding path types |
 
 **Critical Pattern**: All types MUST be exported from Zod schemas:
 
 ```typescript
 // ✅ CORRECT: Export types from Zod schemas
-export const BooksSelectSchema = createSelectSchema(schema.books);
-export type Books = z.infer<typeof BooksSelectSchema>;
+export const EntitySelectSchema = createSelectSchema(schema.entity);
+export type Entity = z.infer<typeof EntitySelectSchema>;
 
 // ❌ WRONG: Manually define types
-interface Books { id: string; title: string; }
+interface Entity { id: string; title: string; }
 ```
+
+---
+
+## Current Implementation Status
+
+### Layer 1: Database (`db/schema.ts`)
+
+**Tables**:
+- `organizations` - Tenant root table
+- `onboardingResponses` - Tenant-scoped onboarding data
+
+**Status**: ✅ LOCKED
+
+### Layer 2: Zod Schemas (`lib/schemas/`)
+
+**Entity Schemas** (auto-generated from Drizzle):
+- Organizations: Select, Insert, Update, Filters + types
+- OnboardingResponses: Select, Insert, Update, Filters + types
+
+**Domain-Specific Schemas**:
+- Fit Check: Questions, Responses, Results
+- Onboarding Path: Phases, Activities
+
+**Status**: ✅ LOCKED
+
+### Layer 3: Services (`lib/services/simplified/`)
+
+**Services**:
+- `OnboardingResponsesService` - Full CRUD with tenant scoping
+
+**Status**: ✅ LOCKED
+
+### Layer 4: Routes (`app/api/simplified/`)
+
+**Routes**:
+- `/api/simplified/onboarding-responses` - GET, POST, PATCH
+- `/api/simplified/onboarding-responses/complete` - POST
+
+**Status**: ✅ LOCKED
+
+### Layer 5: Hooks (`hooks/simplified/`)
+
+**Hooks**:
+- `useOnboardingResponse` - Query hook
+- `useCreateOnboardingResponse` - Mutation hook
+- `useUpdateOnboardingResponse` - Mutation hook
+- `useCompleteOnboardingResponse` - Mutation hook
+- `useUploadOnboardingFile` - File upload mutation
+
+**Status**: ✅ LOCKED
+
+### Layer 6: UI (`components/`)
+
+**Component Directories**: 20+ feature-specific directories
+
+**Status**: ✅ LOCKED
 
 ---
 
@@ -95,7 +155,7 @@ By enforcing unidirectional flow, we guarantee:
 The chain enforces clear separation of concerns:
 - **Database**: Defines structure
 - **Zod**: Defines types and validates data
-- **Services**: Implements business logic
+- **Services**: Implements business logic, enforces tenant boundaries
 - **Routes**: Provides HTTP interface
 - **Hooks**: Manages data fetching
 - **UI**: Renders presentation
@@ -137,8 +197,6 @@ UI shows error: "Property 'email' does not exist"
 11. Error resolved with type safety maintained ✅
 ```
 
-**Benefit**: Types flow naturally downstream, maintaining architectural integrity.
-
 ---
 
 ## How Multi-Tenant Affects Queries
@@ -147,21 +205,23 @@ In a multi-tenant system, every query must be scoped to the current tenant/organ
 
 ### High-Level Flow
 
-1. **Tenant Resolution**: Middleware resolves tenant from subdomain/custom domain/path
-2. **Tenant Context**: Tenant ID is available in services and routes
-3. **Query Scoping**: All database queries automatically filter by tenant ID
+1. **Tenant Resolution**: Middleware resolves tenant from subdomain/custom domain/header
+2. **Tenant Context**: Available in services via `getOrganizationId(request)`
+3. **Query Scoping**: All database queries automatically filter by `organizationId`
 4. **Type Safety**: Tenant ID is part of the type system, preventing cross-tenant leaks
 
 ### Where Tenant Scoping Happens
 
-- **Layer 1 (Database)**: Tables include `organizationId` field
-- **Layer 2 (Zod)**: Filters schemas include `organizationId` validation
-- **Layer 3 (Services)**: All queries automatically filter by tenant context
-- **Layer 4 (Routes)**: Tenant context extracted from request
-- **Layer 5 (Hooks)**: Tenant context passed through API calls
-- **Layer 6 (UI)**: UI never directly accesses tenant—it's handled automatically
+| Layer | Responsibility |
+|-------|---------------|
+| Layer 1 (Database) | Tables include `organizationId` field |
+| Layer 2 (Zod) | Filters schemas include `organizationId` validation |
+| Layer 3 (Services) | **All queries filter by tenant context** |
+| Layer 4 (Routes) | Pass request to services (tenant context extracted) |
+| Layer 5 (Hooks) | Transparent (tenant handled by routes/services) |
+| Layer 6 (UI) | Transparent (tenant handled automatically) |
 
-**Key Point**: The type safety chain ensures tenant boundaries are enforced at the service layer, preventing accidental cross-tenant data access.
+**Key Point**: Tenant boundaries are enforced at the service layer (Layer 3).
 
 ---
 
@@ -169,31 +229,20 @@ In a multi-tenant system, every query must be scoped to the current tenant/organ
 
 Each layer must achieve validation status before proceeding to the next layer.
 
-### Validation Commands
+### Validation Command
 
 ```bash
 # Primary validation: TypeScript compilation
-npx tsc --noEmit       # Validates ALL layers at once
-
-# Layer-specific validation (if scripts exist)
-npm run db:check         # Layer 1: Database
-npm run contracts:check  # Layer 2: Zod
-npm run services:check   # Layer 3: Services
-npm run routes:check     # Layer 4: Routes
-npm run hooks:check      # Layer 5: Hooks
-npm run ui:check         # Layer 6: UI
-
-# Or validate all at once (if script exists)
-npm run validate:all
+npx tsc --noEmit
 ```
 
-**Note**: Most validation happens via TypeScript compilation (`npx tsc --noEmit`). Layer-specific scripts may not all be implemented yet.
+This single command validates ALL layers at once. Errors will show the file and line number to identify which layer has issues.
 
 ### What "LOCKED" Means
 
+- ✅ No TypeScript errors in layer files
 - ✅ All required files exist
 - ✅ All structural patterns are correct
-- ✅ No TypeScript errors in layer files
 - ✅ Types are properly aligned with upstream layers
 
 **Critical**: Never proceed to the next layer if the current layer has TypeScript errors.
@@ -201,6 +250,8 @@ npm run validate:all
 ---
 
 ## Quick Reference
+
+### File Locations
 
 | Layer | File/Directory | Purpose | SSOT For |
 |-------|---------------|---------|----------|
@@ -211,69 +262,37 @@ npm run validate:all
 | 5 | `hooks/simplified/` | Data fetching | N/A (derives from Layer 2) |
 | 6 | `components/` | UI presentation | N/A (derives from Layer 2) |
 
----
+### Key Commands
 
-## Key Schema Files
+```bash
+# Database migrations
+npm run db:generate    # Generate migration
+npm run db:push        # Apply migration
 
-### `lib/schemas/index.ts` - Entity Schemas
+# Type validation
+npx tsc --noEmit       # Validate all layers
 
-Contains all entity schemas auto-generated from Drizzle:
-
-```typescript
-// Organizations
-export const OrganizationsSelectSchema = createSelectSchema(schema.organizations);
-export type Organizations = z.infer<typeof OrganizationsSelectSchema>;
-export type OrganizationsCreate = z.infer<typeof OrganizationsInsertSchema>;
-export type OrganizationsUpdate = z.infer<typeof OrganizationsUpdateSchema>;
-export type OrganizationsFilters = z.infer<typeof OrganizationsFiltersSchema>;
-
-// OnboardingResponses
-export const OnboardingResponsesSelectSchema = createSelectSchema(schema.onboardingResponses);
-export type OnboardingResponses = z.infer<typeof OnboardingResponsesSelectSchema>;
-// ... etc
-```
-
-### `lib/schemas/base.ts` - Base Schemas
-
-Contains shared base schemas:
-
-```typescript
-export const IdSchema = z.string().uuid();
-export const BaseFiltersSchema = z.object({
-  limit: z.number().int().positive().optional(),
-  offset: z.number().int().nonnegative().optional(),
-});
-```
-
-### `lib/schemas/fit-check.ts` - Domain-Specific Types
-
-Contains domain-specific schemas not derived from database:
-
-```typescript
-export const FitCheckQuestionSchema = z.object({ ... });
-export type FitCheckQuestion = z.infer<typeof FitCheckQuestionSchema>;
-
-export const FitCheckResultSchema = z.object({ ... });
-export type FitCheckResult = z.infer<typeof FitCheckResultSchema>;
-```
-
-### `lib/schemas/onboarding-path.ts` - Domain-Specific Types
-
-Contains onboarding path schemas:
-
-```typescript
-export const OnboardingPhaseSchema = z.object({ ... });
-export type OnboardingPhase = z.infer<typeof OnboardingPhaseSchema>;
+# Development
+npm run dev            # Start dev server
 ```
 
 ---
 
-## Next Steps
+## Documentation Index
 
-- **Layer 1**: Read [02_LAYER_1_DATABASE.md](./02_LAYER_1_DATABASE.md) to understand database schema and migrations
-- **Layer 2**: Read [03_LAYER_2_ZOD.md](./03_LAYER_2_ZOD.md) to understand Zod schemas and type exports
-- **Workflow**: Read [08_CHAIN_WORKFLOW_CHECKLIST.md](./08_CHAIN_WORKFLOW_CHECKLIST.md) for step-by-step execution guide
-- **Multi-Tenant**: Read [09_MULTI_TENANT_NOTES.md](./09_MULTI_TENANT_NOTES.md) for tenant scoping details
+| Document | Purpose |
+|----------|---------|
+| [02_LAYER_1_DATABASE.md](./02_LAYER_1_DATABASE.md) | Database schema details |
+| [03_LAYER_2_ZOD.md](./03_LAYER_2_ZOD.md) | Zod schemas (Types SSOT) |
+| [04_LAYER_3_SERVICES.md](./04_LAYER_3_SERVICES.md) | Services layer |
+| [05_LAYER_4_ROUTES.md](./05_LAYER_4_ROUTES.md) | API routes |
+| [06_LAYER_5_HOOKS.md](./06_LAYER_5_HOOKS.md) | React hooks |
+| [07_LAYER_6_UI.md](./07_LAYER_6_UI.md) | UI components |
+| [08_CHAIN_WORKFLOW_CHECKLIST.md](./08_CHAIN_WORKFLOW_CHECKLIST.md) | Step-by-step workflow |
+| [09_MULTI_TENANT_NOTES.md](./09_MULTI_TENANT_NOTES.md) | Multi-tenant details |
+| [10_GLOSSARY.md](./10_GLOSSARY.md) | Term definitions |
+| [11_PLATFORM_ARCHITECTURE_AT_A_GLANCE.md](./11_PLATFORM_ARCHITECTURE_AT_A_GLANCE.md) | Platform overview |
+| [12_PUBLIC_SITEMAP_AND_FEATURES.md](./12_PUBLIC_SITEMAP_AND_FEATURES.md) | Public site structure |
 
 ---
 

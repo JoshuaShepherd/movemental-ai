@@ -4,16 +4,14 @@ import { notFound } from 'next/navigation'
 import { ArrowLeft } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { BookDetailClient } from '@/components/book-purchase'
+import { resolveAuthors, type AuthorSlug } from '@/lib/authors'
 
-// Sample books data - in production this would come from database
-const BOOKS_DATA: Record<string, {
+// Book data with author slugs (identity is slug-based)
+// In production this would come from database
+interface BookDetailData {
   slug: string
   title: string
-  author: {
-    name: string
-    slug: string
-    avatar?: string
-  }
+  authorSlugs: AuthorSlug[]
   coverImage: string
   price: number | 'free'
   pageCount: number
@@ -22,15 +20,13 @@ const BOOKS_DATA: Record<string, {
   reviewCount: number
   description: string
   learningPoints: string[]
-}> = {
+}
+
+const BOOKS_DATA: Record<string, BookDetailData> = {
   'forgotten-ways': {
     slug: 'forgotten-ways',
     title: 'The Forgotten Ways',
-    author: {
-      name: 'Alan Hirsch',
-      slug: 'alan-hirsch',
-      avatar: '/api/placeholder/40/40',
-    },
+    authorSlugs: ['alan-hirsch'],
     coverImage: '/api/placeholder/400/600',
     price: 24.99,
     pageCount: 312,
@@ -53,10 +49,7 @@ This book challenges conventional church paradigms and offers practical pathways
   'knowledge-spine': {
     slug: 'knowledge-spine',
     title: 'The Knowledge Spine',
-    author: {
-      name: 'Movemental',
-      slug: 'movemental',
-    },
+    authorSlugs: ['movemental'],
     coverImage: '/api/placeholder/400/600',
     price: 'free',
     pageCount: 186,
@@ -82,9 +75,39 @@ interface PageProps {
   params: Promise<{ slug: string }>
 }
 
+/**
+ * Resolve book data with authors from registry
+ */
+async function getBookWithAuthors(slug: string) {
+  const bookData = BOOKS_DATA[slug]
+  if (!bookData) return null
+
+  // Resolve authors from registry
+  const authors = await resolveAuthors(bookData.authorSlugs)
+  const primaryAuthor = authors[0]
+
+  return {
+    slug: bookData.slug,
+    title: bookData.title,
+    author: {
+      name: authors.map((a) => a.displayName).join(' & '),
+      slug: primaryAuthor?.slug || bookData.authorSlugs[0],
+      avatar: primaryAuthor?.avatarUrl,
+    },
+    coverImage: bookData.coverImage,
+    price: bookData.price,
+    pageCount: bookData.pageCount,
+    publishYear: bookData.publishYear,
+    rating: bookData.rating,
+    reviewCount: bookData.reviewCount,
+    description: bookData.description,
+    learningPoints: bookData.learningPoints,
+  }
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
-  const book = BOOKS_DATA[slug]
+  const book = await getBookWithAuthors(slug)
 
   if (!book) {
     return {
@@ -100,7 +123,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function BookDetailPage({ params }: PageProps) {
   const { slug } = await params
-  const book = BOOKS_DATA[slug]
+  const book = await getBookWithAuthors(slug)
 
   if (!book) {
     notFound()

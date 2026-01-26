@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { TopicHubContainer } from '@/components/topic-hub'
+import { resolveAuthors, type AuthorSlug } from '@/lib/authors'
 
 // Sample topics data - in production this would come from database
 const TOPICS_DATA: Record<string, {
@@ -138,15 +139,26 @@ const SAMPLE_CONTENT = [
   },
 ]
 
-// Sample contributors
-const SAMPLE_CONTRIBUTORS = [
-  { name: 'Alan Hirsch', slug: 'alan-hirsch', avatar: '/api/placeholder/64/64', pieceCount: 23 },
-  { name: 'Mindy Caliguire', slug: 'mindy-caliguire', avatar: '/api/placeholder/64/64', pieceCount: 15 },
-  { name: 'Tim Keel', slug: 'tim-keel', avatar: '/api/placeholder/64/64', pieceCount: 12 },
-  { name: 'Mandy Smith', slug: 'mandy-smith', avatar: '/api/placeholder/64/64', pieceCount: 8 },
-  { name: 'Michael Frost', slug: 'michael-frost', avatar: '/api/placeholder/64/64', pieceCount: 19 },
-  { name: 'Hugh Halter', slug: 'hugh-halter', avatar: '/api/placeholder/64/64', pieceCount: 11 },
+// Contributor slugs - resolved through author registry
+// In production, these would be determined by actual content authorship
+const CONTRIBUTOR_SLUGS: AuthorSlug[] = [
+  'alan-hirsch',
+  'mindy-caliguire',
+  'tim-keel',
+  'mandy-smith',
+  'michael-frost',
+  'hugh-halter',
 ]
+
+// Piece counts per contributor (would come from content database in production)
+const PIECE_COUNTS: Record<AuthorSlug, number> = {
+  'alan-hirsch': 23,
+  'mindy-caliguire': 15,
+  'tim-keel': 12,
+  'mandy-smith': 8,
+  'michael-frost': 19,
+  'hugh-halter': 11,
+}
 
 // Related topics mapping
 const RELATED_TOPICS: Record<string, { title: string; slug: string; icon: string }[]> = {
@@ -220,6 +232,15 @@ export default async function TopicHubPage({ params }: PageProps) {
     notFound()
   }
 
+  // Resolve contributors from author registry
+  const authorRecords = await resolveAuthors(CONTRIBUTOR_SLUGS)
+  const contributors = authorRecords.map((author) => ({
+    name: author.displayName,
+    slug: author.slug,
+    avatar: author.avatarUrl,
+    pieceCount: PIECE_COUNTS[author.slug] || 0,
+  }))
+
   const relatedTopics = RELATED_TOPICS[slug] || []
   const stats = {
     totalPieces: topic.articleCount,
@@ -232,7 +253,7 @@ export default async function TopicHubPage({ params }: PageProps) {
     <TopicHubContainer
       topic={topic}
       featuredContent={SAMPLE_CONTENT}
-      contributors={SAMPLE_CONTRIBUTORS}
+      contributors={contributors}
       relatedTopics={relatedTopics}
       stats={stats}
     />

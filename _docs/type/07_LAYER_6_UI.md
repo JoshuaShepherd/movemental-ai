@@ -5,7 +5,7 @@
 **Layer**: 6 of 6  
 **Directory**: `components/`  
 **Validation**: `npx tsc --noEmit`  
-**Status Required**: No TypeScript errors
+**Status**: ✅ LOCKED (No TypeScript errors)
 
 ---
 
@@ -20,23 +20,46 @@ UI components provide the **user interface** using type-safe props derived from 
 3. **No Direct Fetching**: Never fetch data directly in components
 4. **Proper Error Handling**: Handle loading and error states
 5. **Form Validation**: Use React Hook Form with Zod resolvers
+6. **Tenant Transparency**: Components are tenant-agnostic
 
 ---
 
-## Current Component Structure
+## File Structure
 
 ```
 components/
-├── ui/                    # shadcn/ui components (do not modify)
-├── onboarding/           # Onboarding components
-├── fit-check/            # Fit Check assessment components
-├── onboarding-path/      # Onboarding path components
-├── homepage/             # Homepage components
-├── dashboard/            # Dashboard components
-├── search/               # Search components
-├── shared/               # Shared components
-└── ... (many more)
+├── ui/                        # shadcn/ui components (DO NOT MODIFY)
+├── ai-book-reading/           # AI book reading components
+├── ai-media-lab/              # AI media lab components
+├── ai-vision/                 # AI vision components
+├── analytics-dashboard/       # Analytics dashboard components
+├── book-purchase/             # Book purchase components
+├── content-workbench/         # Content workbench components
+├── course-enrollment/         # Course enrollment components
+├── dashboard/                 # Dashboard components
+├── e-reader/                  # E-reader components
+├── fit-check/                 # Fit Check assessment components
+├── homepage/                  # Homepage components
+├── leader-profile/            # Leader profile components
+├── legal-support/             # Legal support components
+├── network-discovery/         # Network discovery components
+├── onboarding/                # Onboarding components
+├── onboarding-path/           # Onboarding path components
+├── search/                    # Search components
+├── shared/                    # Shared components (navigation, footer)
+├── subscription/              # Subscription/pricing components
+├── team-credibility/          # Team credibility components
+├── topic-hub/                 # Topic hub components
+├── user-account/              # User account components
+└── why-movemental/            # Why Movemental components
 ```
+
+### Component Organization
+
+Each feature folder contains:
+- `index.ts` - Barrel export for all components
+- `[Component]Container.tsx` - Container component (data fetching)
+- `[Component]*.tsx` - Presentational components
 
 ---
 
@@ -48,18 +71,17 @@ components/
 import { useOnboardingResponse } from '@/hooks/simplified/useOnboardingResponse';
 import type { OnboardingResponses } from '@/lib/schemas';
 
-export function OnboardingResponsesList() {
-  const { data, isLoading, error } = useOnboardingResponses();
-  
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-  if (!data) return <div>No responses found</div>;
-  
+export function OnboardingResponseDisplay() {
+  const { data, isLoading, error } = useOnboardingResponse();
+
+  if (isLoading) return <LoadingSpinner />;
+  if (error) return <ErrorMessage error={error} />;
+  if (!data) return <EmptyState message="No response found" />;
+
   return (
     <div>
-      {data.map(response => (
-        <div key={response.id}>{response.currentStep}</div>
-      ))}
+      <h2>Current Step: {data.currentStep}</h2>
+      <p>Complete: {data.isComplete ? 'Yes' : 'No'}</p>
     </div>
   );
 }
@@ -68,17 +90,17 @@ export function OnboardingResponsesList() {
 ### ❌ Wrong Pattern
 
 ```typescript
-// ❌ NEVER fetch directly in components
-export function OnboardingResponsesList() {
-  const [responses, setResponses] = useState([]);
-  
+// NEVER fetch directly in components
+export function OnboardingResponseDisplay() {
+  const [data, setData] = useState<OnboardingResponses | null>(null);
+
   useEffect(() => {
     fetch('/api/simplified/onboarding-responses')
       .then(res => res.json())
-      .then(data => setResponses(data.data));
+      .then(({ data }) => setData(data));
   }, []);
-  
-  return <div>...</div>;
+
+  return <div>{data?.currentStep}</div>;
 }
 ```
 
@@ -93,7 +115,7 @@ export function OnboardingResponsesList() {
 ### ❌ Wrong: Adding Types in UI
 
 ```typescript
-// ❌ WRONG: Adding type in UI that doesn't exist in database
+// WRONG: Adding type in UI that doesn't exist in database
 interface ResponseWithRating extends OnboardingResponses {
   rating: number;  // ← This doesn't exist in database!
 }
@@ -106,125 +128,67 @@ export function ResponseCard({ response }: { response: ResponseWithRating }) {
 ### ✅ Correct: Add Type at Source
 
 1. Add `rating` field to database schema (Layer 1)
-2. Types flow automatically to Layer 2 (Zod)
-3. Types flow automatically to Layer 5 (Hooks)
-4. UI can now use `rating` field
+2. Run migration: `npm run db:generate && npm run db:push`
+3. Types flow automatically to Layer 2 (Zod)
+4. Types flow automatically to Layer 5 (Hooks)
+5. UI can now use `rating` field
 
 ---
 
-## Patterns for List/Detail/Edit Flows
+## Loading and Error States
 
-### List Flow
+### Always Handle All States
 
 ```typescript
-import { useOnboardingResponses } from '@/hooks/simplified/useOnboardingResponse';
+export function EntityDisplay({ id }: { id: string }) {
+  const { data, isLoading, error } = useEntity(id);
 
-export function ResponsesList() {
-  const { data: responses, isLoading, error } = useOnboardingResponses();
-  
-  if (isLoading) return <LoadingSpinner />;
-  if (error) return <ErrorMessage error={error} />;
-  if (!responses || responses.length === 0) return <EmptyState />;
-  
+  // Loading state
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  // Error state
+  if (error) {
+    return <ErrorMessage error={error} />;
+  }
+
+  // Empty state
+  if (!data) {
+    return <EmptyState message="Entity not found" />;
+  }
+
+  // Success state
+  return <EntityContent entity={data} />;
+}
+```
+
+### Component Patterns
+
+```typescript
+// Loading spinner component
+function LoadingSpinner() {
+  return <div className="animate-spin">Loading...</div>;
+}
+
+// Error message component
+function ErrorMessage({ error }: { error: Error }) {
   return (
-    <div className="grid grid-cols-3 gap-4">
-      {responses.map(response => (
-        <ResponseCard key={response.id} response={response} />
-      ))}
+    <div className="text-red-500">
+      <p>Error: {error.message}</p>
+    </div>
+  );
+}
+
+// Empty state component
+function EmptyState({ message }: { message: string }) {
+  return (
+    <div className="text-gray-500">
+      <p>{message}</p>
     </div>
   );
 }
 ```
-
-### Detail Flow
-
-```typescript
-import { useOnboardingResponse, useUpdateOnboardingResponse } from '@/hooks/simplified/useOnboardingResponse';
-
-export function ResponseDetail({ id }: { id: string }) {
-  const { data: response, isLoading, error } = useOnboardingResponse(id);
-  const updateResponse = useUpdateOnboardingResponse();
-  
-  if (isLoading) return <LoadingSpinner />;
-  if (error) return <ErrorMessage error={error} />;
-  if (!response) return <NotFound />;
-  
-  return (
-    <div>
-      <h1>{response.currentStep}</h1>
-      <p>Complete: {response.isComplete ? 'Yes' : 'No'}</p>
-      <EditResponseForm response={response} onUpdate={updateResponse.mutate} />
-    </div>
-  );
-}
-```
-
-### Edit Flow
-
-```typescript
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { OnboardingResponsesUpdateSchema, type OnboardingResponsesUpdate, type OnboardingResponses } from '@/lib/schemas';
-import { useUpdateOnboardingResponse } from '@/hooks/simplified/useOnboardingResponse';
-
-export function EditResponseForm({ 
-  response, 
-  onUpdate 
-}: { 
-  response: OnboardingResponses; 
-  onUpdate: (data: { id: string; data: OnboardingResponsesUpdate }) => void;
-}) {
-  const form = useForm<OnboardingResponsesUpdate>({
-    resolver: zodResolver(OnboardingResponsesUpdateSchema),
-    defaultValues: {
-      currentStep: response.currentStep,
-      isComplete: response.isComplete,
-    },
-  });
-  
-  const onSubmit = (data: OnboardingResponsesUpdate) => {
-    onUpdate({ id: response.id, data });
-  };
-  
-  return (
-    <form onSubmit={form.handleSubmit(onSubmit)}>
-      <input {...form.register('currentStep')} />
-      {form.formState.errors.currentStep && (
-        <span>{form.formState.errors.currentStep.message}</span>
-      )}
-      <button type="submit">Save</button>
-    </form>
-  );
-}
-```
-
----
-
-## How to Keep UI Adaptable Across Tenants
-
-### Tenant-Agnostic Components
-
-UI components should be **tenant-agnostic**. Tenant scoping happens automatically in services (Layer 3).
-
-### Pattern
-
-```typescript
-// ✅ Correct: UI doesn't know about tenants
-export function ResponsesList() {
-  const { data: responses } = useOnboardingResponses();  // ← Automatically filtered by tenant
-  // UI just renders responses - tenant scoping is transparent
-  return <div>{responses.map(r => <ResponseCard key={r.id} response={r} />)}</div>;
-}
-```
-
-### Why This Works
-
-1. **Services filter by tenant** (Layer 3)
-2. **Routes don't need tenant logic** (Layer 4)
-3. **Hooks call routes** (Layer 5)
-4. **UI just renders** (Layer 6)
-
-Tenant boundaries are enforced at the service layer, so UI components don't need to worry about tenant scoping.
 
 ---
 
@@ -233,43 +197,196 @@ Tenant boundaries are enforced at the service layer, so UI components don't need
 ### React Hook Form + Zod
 
 ```typescript
+'use client';
+
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { OnboardingResponsesInsertSchema, type OnboardingResponsesCreate } from '@/lib/schemas';
-import { useCreateOnboardingResponse } from '@/hooks/simplified/useOnboardingResponse';
+import {
+  OnboardingResponsesUpdateSchema,
+  type OnboardingResponsesUpdate,
+  type OnboardingResponses,
+} from '@/lib/schemas';
+import { useUpdateOnboardingResponse } from '@/hooks/simplified/useOnboardingResponse';
 
-export function CreateResponseForm() {
-  const createResponse = useCreateOnboardingResponse();
-  
-  const form = useForm<OnboardingResponsesCreate>({
-    resolver: zodResolver(OnboardingResponsesInsertSchema),
+interface EditFormProps {
+  response: OnboardingResponses;
+}
+
+export function EditOnboardingForm({ response }: EditFormProps) {
+  const updateResponse = useUpdateOnboardingResponse();
+
+  const form = useForm<OnboardingResponsesUpdate>({
+    resolver: zodResolver(OnboardingResponsesUpdateSchema),
     defaultValues: {
-      currentStep: 'step1',
-      isComplete: false,
+      currentStep: response.currentStep ?? undefined,
+      isComplete: response.isComplete ?? false,
     },
   });
-  
-  const onSubmit = async (data: OnboardingResponsesCreate) => {
+
+  const onSubmit = async (data: OnboardingResponsesUpdate) => {
     try {
-      await createResponse.mutateAsync(data);
+      await updateResponse.mutateAsync(data);
+      // Success handling
+    } catch (error) {
+      // Error is handled by React Query
+    }
+  };
+
+  return (
+    <form onSubmit={form.handleSubmit(onSubmit)}>
+      <input {...form.register('currentStep')} />
+      {form.formState.errors.currentStep && (
+        <span className="text-red-500">
+          {form.formState.errors.currentStep.message}
+        </span>
+      )}
+      
+      <button type="submit" disabled={updateResponse.isPending}>
+        {updateResponse.isPending ? 'Saving...' : 'Save'}
+      </button>
+    </form>
+  );
+}
+```
+
+---
+
+## Tenant-Agnostic Components
+
+### Why Tenant-Agnostic?
+
+UI components should be **tenant-agnostic**. Tenant scoping happens automatically:
+
+1. **Services (Layer 3)** filter by `organizationId`
+2. **Routes (Layer 4)** pass request to services
+3. **Hooks (Layer 5)** call routes
+4. **UI (Layer 6)** just renders data
+
+### Pattern
+
+```typescript
+// ✅ Correct: UI doesn't know about tenants
+export function OnboardingProgress() {
+  // Automatically filtered by tenant in services
+  const { data } = useOnboardingResponse();
+
+  // UI just renders - tenant scoping is transparent
+  return (
+    <div>
+      <h2>Onboarding Progress</h2>
+      <p>Step: {data?.currentStep}</p>
+    </div>
+  );
+}
+```
+
+---
+
+## Common Patterns
+
+### List Component
+
+```typescript
+import { useEntities } from '@/hooks/simplified/useEntities';
+
+export function EntityList() {
+  const { data: entities, isLoading, error } = useEntities();
+
+  if (isLoading) return <LoadingSpinner />;
+  if (error) return <ErrorMessage error={error} />;
+  if (!entities?.length) return <EmptyState message="No entities found" />;
+
+  return (
+    <div className="grid grid-cols-3 gap-4">
+      {entities.map(entity => (
+        <EntityCard key={entity.id} entity={entity} />
+      ))}
+    </div>
+  );
+}
+```
+
+### Detail Component
+
+```typescript
+import { useEntity } from '@/hooks/simplified/useEntity';
+
+interface EntityDetailProps {
+  id: string;
+}
+
+export function EntityDetail({ id }: EntityDetailProps) {
+  const { data: entity, isLoading, error } = useEntity(id);
+
+  if (isLoading) return <LoadingSpinner />;
+  if (error) return <ErrorMessage error={error} />;
+  if (!entity) return <NotFound />;
+
+  return (
+    <div>
+      <h1>{entity.title}</h1>
+      <p>{entity.description}</p>
+    </div>
+  );
+}
+```
+
+### Create Component
+
+```typescript
+import { useCreateEntity } from '@/hooks/simplified/useEntity';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { EntityInsertSchema, type EntityCreate } from '@/lib/schemas';
+
+export function CreateEntityForm() {
+  const createEntity = useCreateEntity();
+
+  const form = useForm<EntityCreate>({
+    resolver: zodResolver(EntityInsertSchema),
+  });
+
+  const onSubmit = async (data: EntityCreate) => {
+    try {
+      await createEntity.mutateAsync(data);
       form.reset();
     } catch (error) {
       // Error handled by React Query
     }
   };
-  
+
   return (
     <form onSubmit={form.handleSubmit(onSubmit)}>
-      <input {...form.register('currentStep')} />
-      {form.formState.errors.currentStep && (
-        <span>{form.formState.errors.currentStep.message}</span>
-      )}
-      <button type="submit" disabled={createResponse.isPending}>
-        {createResponse.isPending ? 'Creating...' : 'Create Response'}
+      {/* Form fields */}
+      <button type="submit" disabled={createEntity.isPending}>
+        Create
       </button>
     </form>
   );
 }
+```
+
+---
+
+## shadcn/ui Components
+
+### Location
+
+`components/ui/` contains shadcn/ui components.
+
+### ❌ DO NOT MODIFY
+
+These components are managed by shadcn and should not be modified directly:
+- `button.tsx`
+- `card.tsx`
+- `dropdown-menu.tsx`
+- `progress.tsx`
+- etc.
+
+### Adding New shadcn Components
+
+```bash
+npx shadcn@latest add [component-name]
 ```
 
 ---
@@ -282,13 +399,14 @@ After making any UI changes:
 npx tsc --noEmit
 ```
 
-**Required Status**: No TypeScript errors
+**Required Status**: No TypeScript errors (Layer 6 LOCKED)
 
-Validation checks:
+Validation checklist:
 - ✅ All components use hooks for data fetching
 - ✅ All component props properly typed
 - ✅ No direct data fetching in components
 - ✅ Forms use React Hook Form with Zod resolvers
+- ✅ Loading, error, and empty states handled
 - ✅ No TypeScript errors in component files
 
 ---
@@ -303,6 +421,7 @@ Validation checks:
 - Derive all types from Layer 2 schemas
 - Properly type all component props
 - Import types from `lib/schemas/`
+- Use `'use client'` directive for client components
 
 ### ❌ Never Do
 
@@ -311,6 +430,7 @@ Validation checks:
 - Skip error/loading state handling
 - Use `any` or `unknown` types
 - Modify `components/ui/` (shadcn/ui managed)
+- Add types in UI that don't exist in database
 
 ---
 
@@ -321,7 +441,7 @@ Validation checks:
 **Problem**: TypeScript errors in components
 
 **Solution**:
-1. Ensure Layer 2 has no TypeScript errors (`npx tsc --noEmit`)
+1. Ensure Layer 2 has no TypeScript errors
 2. Verify types are imported from Layer 2 schemas
 3. Check that hook return types match expected types
 4. Review TypeScript error messages
@@ -336,13 +456,22 @@ Validation checks:
 3. Check React Query DevTools for cache state
 4. Ensure loading/error states are handled
 
+### Form Validation Not Working
+
+**Problem**: Form accepts invalid data
+
+**Solution**:
+1. Check `zodResolver` is properly configured
+2. Verify schema matches form fields
+3. Check for validation errors in `form.formState.errors`
+
 ---
 
 ## Next Steps
 
-- **Workflow**: Read [08_CHAIN_WORKFLOW_CHECKLIST.md](./08_CHAIN_WORKFLOW_CHECKLIST.md) for complete workflow
-- **Multi-Tenant**: Read [09_MULTI_TENANT_NOTES.md](./09_MULTI_TENANT_NOTES.md) for tenant scoping details
-- **Glossary**: Read [10_GLOSSARY.md](./10_GLOSSARY.md) for term definitions
+- **Workflow**: [08_CHAIN_WORKFLOW_CHECKLIST.md](./08_CHAIN_WORKFLOW_CHECKLIST.md) - Complete workflow
+- **Multi-Tenant**: [09_MULTI_TENANT_NOTES.md](./09_MULTI_TENANT_NOTES.md) - Tenant scoping details
+- **Glossary**: [10_GLOSSARY.md](./10_GLOSSARY.md) - Term definitions
 
 ---
 

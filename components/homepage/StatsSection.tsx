@@ -1,14 +1,14 @@
-'use client'
-
 import { cn } from '@/lib/utils'
+import { Shield, TrendingUp, Sparkles, Rocket } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
 interface Stat {
-  /** The numeric value or figure */
-  value: string
+  /** Lucide icon for the stat */
+  icon: LucideIcon
   /** Label describing the stat */
   label: string
   /** Additional context or description */
-  description?: string
+  description: string
 }
 
 interface StatsSectionProps {
@@ -18,24 +18,24 @@ interface StatsSectionProps {
 
 const stats: Stat[] = [
   {
-    value: '90%',
-    label: 'Revenue Retained',
-    description: 'vs. 10-15% with traditional publishers',
+    icon: Shield,
+    label: 'Credibility-First',
+    description: 'Peer trust signals that AI cannot fake. Your reputation, verified by real relationships.',
   },
   {
-    value: '$1K',
-    label: 'Platform Cost',
-    description: 'vs. $50K-$150K industry standard',
+    icon: TrendingUp,
+    label: 'Content That Compounds',
+    description: 'Internal and external linking, structured presence, designed for discovery over time.',
   },
   {
-    value: '2-4',
-    label: 'Weeks to Launch',
-    description: 'vs. 6-12 months traditional timeline',
+    icon: Sparkles,
+    label: 'AI for Amplification',
+    description: 'AI handles the mechanics—formatting, structure, metadata—while your voice stays yours.',
   },
   {
-    value: '100%',
-    label: 'Ownership',
-    description: 'Your platform, your audience, your data',
+    icon: Rocket,
+    label: '2–4 Weeks to Launch',
+    description: 'What used to require agencies and huge budgets now ships in weeks.',
   },
 ]
 
@@ -48,20 +48,20 @@ export function StatsSection({ className }: StatsSectionProps) {
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-2">
-                {stat.value}
+              <div className="flex justify-center mb-4">
+                <div className="p-3 rounded-xl bg-white/10">
+                  <stat.icon className="w-7 h-7 text-white" />
+                </div>
               </div>
-              <div className="text-lg font-semibold text-blue-100 mb-1">
+              <div className="text-lg sm:text-xl font-semibold text-white mb-2">
                 {stat.label}
               </div>
-              {stat.description && (
-                <div className="text-sm text-blue-200">
-                  {stat.description}
-                </div>
-              )}
+              <p className="text-sm text-blue-100 leading-relaxed">
+                {stat.description}
+              </p>
             </div>
           ))}
         </div>

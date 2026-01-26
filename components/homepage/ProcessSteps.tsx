@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { CheckCircle, Lightbulb, Rocket } from 'lucide-react'
+import { CheckCircle, Map, Rocket } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { LucideIcon } from 'lucide-react'
 
@@ -33,7 +33,7 @@ const steps: Step[] = [
     number: 1,
     title: 'Check Your Fit',
     description:
-      'Take the 60-second Fit Check to discover if Movemental is the right platform for your movement. We help movement leaders who are ready to own their digital presence.',
+      'Take the 60-second Fit Check to discover if Movemental is right for your movement. We help leaders who have real-world credibility and content ready to circulate.',
     icon: CheckCircle,
     hasCTA: true,
     ctaText: 'Take Fit Check',
@@ -41,16 +41,19 @@ const steps: Step[] = [
   },
   {
     number: 2,
-    title: 'Understand the Problem',
+    title: 'Map Your Content & Credibility',
     description:
-      'Learn why movement leaders lose 85-90% of their revenue to traditional publishers and rental platforms—and how Movemental changes that equation.',
-    icon: Lightbulb,
+      'We inventory your existing work and relationships—books, articles, courses, collaborators—and organize it into a structure designed for discovery and linking.',
+    icon: Map,
+    hasCTA: true,
+    ctaText: 'Learn More',
+    ctaLink: '/why-movemental',
   },
   {
     number: 3,
-    title: 'Launch Your Platform',
+    title: 'Launch Into the Network',
     description:
-      'In 2-4 weeks, go from fit-confirmed to live platform. Complete digital publishing infrastructure—content, commerce, community—for $1,000 instead of $50K-$150K.',
+      'In 2–4 weeks, your work goes live on a platform where credibility and amplification compound together. Your content finally moves.',
     icon: Rocket,
   },
 ]
@@ -70,7 +73,7 @@ export function ProcessSteps({ className }: ProcessStepsProps) {
             From Fit Check to Launch
           </h2>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            A clear path from discernment to your own digital publishing platform
+            A clear path from discernment to a platform where your content compounds
           </p>
         </div>
 

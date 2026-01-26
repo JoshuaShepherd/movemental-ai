@@ -20,17 +20,17 @@ interface PricingTier {
 const pricingTiers: PricingTier[] = [
   {
     name: 'Platform Launch',
-    description: 'Complete platform setup for $1,000 + 10% revenue share',
+    description: 'Your complete publishing platform, structured for discovery and linking.',
     link: '/pricing#platform-launch',
   },
   {
     name: 'Content Migration',
-    description: 'Bring your existing content into your new platform',
+    description: 'Bring your existing books, articles, and courses into a unified presence.',
     link: '/pricing#content-migration',
   },
   {
-    name: 'Network Membership',
-    description: 'Join the network for collective amplification',
+    name: 'Credibility Network',
+    description: 'Join a peer network where trust and amplification compound together.',
     link: '/pricing#network',
   },
 ]
@@ -54,11 +54,11 @@ export function CTASection({ className }: CTASectionProps) {
           {/* Left column - CTA content */}
           <div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-              Start building your platform.
+              Start moving your content.
             </h2>
             <p className="text-lg sm:text-xl text-slate-300 mb-8 leading-relaxed">
               Take the Fit Check to discover if Movemental is right for you. 
-              No trial, no credit card, no risk. Just 60 seconds to clarity.
+              60 seconds to clarity—no trial, no credit card, no commitment.
             </p>
 
             <Button
@@ -67,7 +67,7 @@ export function CTASection({ className }: CTASectionProps) {
               className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-6 text-lg rounded-full shadow-lg shadow-blue-500/25 transition-all hover:shadow-xl hover:shadow-blue-500/30"
             >
               <Link href="/fit-check">
-                Get started for free
+                Take the Fit Check
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -121,21 +121,12 @@ export function CTASection({ className }: CTASectionProps) {
           </div>
         </div>
 
-        {/* Social proof / Logo bar (on dark background) */}
+        {/* Removed placeholder logo bar - replaced with credibility statement */}
         <div className="mt-20 pt-12 border-t border-white/10">
-          <p className="text-center text-sm text-slate-500 uppercase tracking-wider mb-8">
-            Join movement leaders who are transforming their digital presence
+          <p className="text-center text-slate-400 max-w-2xl mx-auto">
+            Movemental is building a network of movement leaders whose content reinforces and amplifies one another. 
+            When you join, your work doesn&apos;t move alone.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 lg:gap-16">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div
-                key={i}
-                className="px-6 py-2 rounded-md bg-white/5 text-slate-500 text-sm font-medium"
-              >
-                Logo
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

@@ -32,20 +32,20 @@ export function DarkHeroSection({ className }: DarkHeroSectionProps) {
 
         {/* Main headline with gradient text */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8">
-          <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent">
-            Own your platform.
+          <span className="text-white">
+            Your content is powerful.
           </span>
           <br />
-          <span className="text-white">
-            Keep your revenue.
+          <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent">
+            It just isn&apos;t moving.
           </span>
         </h1>
 
-        {/* Supporting text */}
+        {/* Supporting text - the 4 blockers */}
         <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Stop losing 85-90% of your revenue to traditional publishers and platforms. 
-          Movemental builds complete digital publishing platforms for movement leaders—for 
-          $1,000 instead of $50K-$150K.
+          Your work is scattered across platforms, published in isolation, invisible to 
+          discovery systems, and disconnected from the networks that build credibility. 
+          This isn&apos;t your fault—until now, fixing it required resources most leaders didn&apos;t have.
         </p>
 
         {/* CTA buttons */}
@@ -67,7 +67,7 @@ export function DarkHeroSection({ className }: DarkHeroSectionProps) {
             className="text-slate-300 hover:text-white hover:bg-white/10 px-6 py-6 text-lg"
           >
             <Link href="/why-movemental">
-              Learn Why <ArrowRight className="ml-1 h-4 w-4" />
+              Why Movemental <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
           </Button>
         </div>
