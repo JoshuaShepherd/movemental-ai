@@ -69,31 +69,31 @@ const MILESTONES: Milestone[] = [
 
 const TEAM_MEMBERS: TeamMember[] = [
   {
-    id: 'builder',
-    name: 'Platform Team',
-    role: 'The Builders',
-    bio: 'Technical expertise combined with deep understanding of movement leadership needs. Building tools that serve the mission.',
+    id: 'josh',
+    name: 'Josh Shepherd',
+    role: 'Platform Lead',
+    bio: 'Builder and technologist working at the intersection of AI, publishing, and movement leadership. Responsible for platform architecture and the technical vision behind Movemental.',
     socialLinks: [
-      { platform: 'twitter', url: '#' },
-      { platform: 'linkedin', url: '#' },
+      { platform: 'website', url: 'https://joshshepherd.com' },
+      { platform: 'linkedin', url: 'https://linkedin.com/in/joshshepherd' },
     ],
   },
   {
-    id: 'authority',
-    name: 'Movement Council',
-    role: 'Movement Authority',
-    bio: 'Decades of experience in missional theology, church planting, and discipleship movements. Guiding the platform direction.',
+    id: 'alan',
+    name: 'Alan Hirsch',
+    role: 'Movement Catalyst',
+    bio: 'Author and thought leader on missional ecclesiology, apostolic movements, and organizational leadership. Decades of experience shaping how movements form and multiply.',
     socialLinks: [
-      { platform: 'website', url: '#' },
+      { platform: 'website', url: 'https://alanhirsch.org' },
     ],
   },
   {
-    id: 'practitioners',
-    name: 'Pioneer Leaders',
-    role: 'Practitioners',
-    bio: 'Movement leaders actively using Movemental to reach their communities. Their results shape our roadmap.',
+    id: 'brad',
+    name: 'Brad Briscoe',
+    role: 'Church Planting Strategist',
+    bio: 'Practitioner and strategist focused on church planting, multiplication networks, and equipping leaders for missional engagement in diverse contexts.',
     socialLinks: [
-      { platform: 'twitter', url: '#' },
+      { platform: 'website', url: 'https://bradbriscoe.com' },
     ],
   },
 ]
@@ -134,17 +134,20 @@ export function TeamCredibilityContainer({ className }: TeamCredibilityContainer
         </div>
       </section>
 
-      {/* Testimonial */}
-      <TestimonialQuote
-        quote="Movemental understood what we needed before we could articulate it. They've built something that actually serves the mission, not just the metrics."
-        author={{
-          name: 'Movement Leader',
-          title: 'Founding Member',
-          company: 'Movemental Network',
-          socialHandle: '@movementalleader',
-        }}
-        backgroundColor="bg-slate-900"
-      />
+      {/* Stewardship Posture */}
+      <section className="py-16 sm:py-24 px-4 bg-muted/30">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            Our Stewardship Posture
+          </h2>
+          <p className="text-lg text-muted-foreground mb-4">
+            Movemental is stewarded, not scaled. We work with a curated cohort of movement leaders—not because we want to be exclusive, but because meaningful credibility requires embodied relationships.
+          </p>
+          <p className="text-lg text-muted-foreground">
+            We believe the people behind the platform matter as much as the platform itself. That&apos;s why we lead with who we are, not just what we build.
+          </p>
+        </div>
+      </section>
 
       {/* Team Grid */}
       <TeamGrid

@@ -10,7 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { Menu, X, ChevronDown, Search, BookOpen, Layers, Brain, Sparkles, GraduationCap } from 'lucide-react'
+import { Menu, X, ChevronDown, Search, BookOpen, Layers, Brain, Sparkles } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface NavItem {
@@ -30,26 +30,20 @@ interface PublicNavigationProps {
   className?: string
 }
 
-// Main navigation items (excluding dropdowns)
+// Tier A: Primary navigation items (conversion path)
 const navItems: NavItem[] = [
   { label: 'Fit Check', href: '/fit-check' },
   { label: 'Why Movemental', href: '/why-movemental' },
-]
-
-// Content dropdown items
-const contentItems: NavDropdownItem[] = [
-  { label: 'AI Book', href: '/book', icon: <BookOpen className="h-4 w-4" />, description: 'Interactive AI-powered book' },
-  { label: 'Books', href: '/books', icon: <Layers className="h-4 w-4" />, description: 'Browse our book catalog' },
-  { label: 'Topics', href: '/topics', icon: <Brain className="h-4 w-4" />, description: 'Explore by subject' },
-  { label: 'AI Vision', href: '/ai-vision', icon: <Sparkles className="h-4 w-4" />, description: 'Movemental Intelligence' },
-  { label: 'Learn', href: '/learn', icon: <GraduationCap className="h-4 w-4" />, description: 'Courses & resources' },
-]
-
-// Secondary navigation items (after dropdown)
-const secondaryNavItems: NavItem[] = [
-  { label: 'Network', href: '/network' },
-  { label: 'Team', href: '/team' },
+  { label: 'How It Works', href: '/how-it-works' },
   { label: 'Pricing', href: '/pricing' },
+]
+
+// Tier C: Explore dropdown items (content path)
+const exploreItems: NavDropdownItem[] = [
+  { label: 'AI Book', href: '/book', icon: <BookOpen className="h-4 w-4" />, description: 'The living artifact' },
+  { label: 'Books', href: '/books', icon: <Layers className="h-4 w-4" />, description: 'Browse our catalog' },
+  { label: 'Topics', href: '/topics', icon: <Brain className="h-4 w-4" />, description: 'Explore by subject' },
+  { label: 'Learn', href: '/learn', icon: <Sparkles className="h-4 w-4" />, description: 'Resources & guides' },
 ]
 
 export function PublicNavigation({ variant = 'light', className }: PublicNavigationProps) {
@@ -124,25 +118,25 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
               )
             })}
 
-            {/* Content Dropdown */}
+            {/* Explore Dropdown (Tier C) */}
             <DropdownMenu>
               <DropdownMenuTrigger
                 className={cn(
                   'flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition-colors outline-none',
                   isDark
-                    ? contentItems.some(item => pathname === item.href || pathname.startsWith(item.href + '/'))
+                    ? exploreItems.some(item => pathname === item.href || pathname.startsWith(item.href + '/'))
                       ? 'text-white bg-white/10'
                       : 'text-slate-300 hover:text-white hover:bg-white/10'
-                    : contentItems.some(item => pathname === item.href || pathname.startsWith(item.href + '/'))
+                    : exploreItems.some(item => pathname === item.href || pathname.startsWith(item.href + '/'))
                       ? 'text-foreground bg-muted'
                       : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                 )}
               >
-                Content
+                Explore
                 <ChevronDown className="h-4 w-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-64">
-                {contentItems.map((item) => (
+                {exploreItems.map((item) => (
                   <DropdownMenuItem key={item.href} asChild>
                     <Link href={item.href} className="flex items-start gap-3 p-3">
                       <span className="text-muted-foreground mt-0.5">{item.icon}</span>
@@ -157,29 +151,6 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
-
-            {/* Secondary nav items */}
-            {secondaryNavItems.map((item) => {
-              const isActive = pathname === item.href || pathname.startsWith(item.href + '/')
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    'px-3 py-2 text-sm font-medium rounded-md transition-colors',
-                    isDark
-                      ? isActive
-                        ? 'text-white bg-white/10'
-                        : 'text-slate-300 hover:text-white hover:bg-white/10'
-                      : isActive
-                        ? 'text-foreground bg-muted'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                  )}
-                >
-                  {item.label}
-                </Link>
-              )
-            })}
           </div>
 
           {/* Desktop CTA Buttons */}
@@ -279,18 +250,18 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
               )
             })}
 
-            {/* Content section header */}
+            {/* Explore section header */}
             <div
               className={cn(
                 'px-4 pt-4 pb-2 text-xs font-semibold uppercase tracking-wider',
                 isDark ? 'text-slate-500' : 'text-muted-foreground'
               )}
             >
-              Content
+              Explore
             </div>
 
-            {/* Content items */}
-            {contentItems.map((item) => {
+            {/* Explore items */}
+            {exploreItems.map((item) => {
               const isActive = pathname === item.href || pathname.startsWith(item.href + '/')
               return (
                 <Link
@@ -308,29 +279,6 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
                   )}
                 >
                   <span className="text-muted-foreground">{item.icon}</span>
-                  {item.label}
-                </Link>
-              )
-            })}
-
-            {/* Secondary nav items */}
-            {secondaryNavItems.map((item) => {
-              const isActive = pathname === item.href || pathname.startsWith(item.href + '/')
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    'block px-4 py-3 text-base font-medium rounded-lg transition-colors',
-                    isDark
-                      ? isActive
-                        ? 'text-white bg-white/10'
-                        : 'text-slate-300 hover:text-white hover:bg-white/10'
-                      : isActive
-                        ? 'text-foreground bg-muted'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                  )}
-                >
                   {item.label}
                 </Link>
               )

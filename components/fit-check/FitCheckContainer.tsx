@@ -108,8 +108,8 @@ export function FitCheckContainer({ className }: FitCheckContainerProps) {
   const handleContinue = useCallback(() => {
     if (!result) return
     
-    const tierInfo = result.tier === 'tier1' || result.tier === 'tier2' || result.tier === 'tier3'
-    const href = tierInfo ? '/why-movemental' : '/resources'
+    const isFit = result.tier === 'tier1' || result.tier === 'tier2' || result.tier === 'tier3'
+    const href = isFit ? '/why-movemental' : '/about'
     
     // Navigate (could also use Next.js router)
     window.location.href = href

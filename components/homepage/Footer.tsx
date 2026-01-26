@@ -24,28 +24,28 @@ const footerSections: FooterSection[] = [
     links: [
       { label: 'Fit Check', href: '/fit-check' },
       { label: 'Why Movemental', href: '/why-movemental' },
+      { label: 'How It Works', href: '/how-it-works' },
       { label: 'Pricing', href: '/pricing' },
-      { label: 'Network', href: '/network' },
     ],
   },
   {
-    title: 'Content',
+    title: 'Explore',
     links: [
       { label: 'AI Book', href: '/book' },
       { label: 'Books', href: '/books' },
       { label: 'Topics', href: '/topics' },
-      { label: 'AI Vision', href: '/ai-vision' },
-      { label: 'Learning Hub', href: '/learn' },
+      { label: 'Learn', href: '/learn' },
       { label: 'Search', href: '/search' },
+      { label: 'Network', href: '/network' },
     ],
   },
   {
-    title: 'Company',
+    title: 'About',
     links: [
+      { label: 'About', href: '/about' },
+      { label: 'What Is Movemental', href: '/what-is-movemental' },
+      { label: 'AI Vision', href: '/ai-vision' },
       { label: 'Team', href: '/team' },
-      { label: 'Onboarding', href: '/onboarding' },
-      { label: 'Privacy Policy', href: '/legal/privacy' },
-      { label: 'Terms of Service', href: '/legal/terms' },
     ],
   },
 ]

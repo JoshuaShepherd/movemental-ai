@@ -49,14 +49,15 @@ const typeConfig: Record<
 export function ContentCard({ content, className }: ContentCardProps) {
   const config = typeConfig[content.type]
 
+  // Course detail pages not yet implemented - link to learn hub
   const href =
     content.type === 'book'
       ? `/books/${content.slug}`
       : content.type === 'course'
-      ? `/learn/${content.slug}`
+      ? `/learn`
       : content.type === 'video'
-      ? `/videos/${content.slug}`
-      : `/articles/${content.slug}`
+      ? `/book` // Videos not yet implemented - link to AI book
+      : `/book` // Articles not yet implemented - link to AI book
 
   return (
     <Link

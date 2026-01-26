@@ -56,14 +56,17 @@ const typeConfig: Record<
 export function SearchResultCard({ result, className }: SearchResultCardProps) {
   const config = typeConfig[result.type]
 
+  // Course and article detail pages not yet implemented
   const href =
     result.type === 'leader'
       ? `/profile/${result.slug}`
       : result.type === 'book'
       ? `/books/${result.slug}`
       : result.type === 'course'
-      ? `/learn/${result.slug}`
-      : `/articles/${result.slug}`
+      ? `/learn`
+      : result.type === 'video'
+      ? `/book`
+      : `/book` // Articles not yet implemented - link to AI book
 
   return (
     <Link

@@ -1,78 +1,129 @@
 import { Metadata } from 'next'
-import { VideoLearningCard, GradientResourceCard, CategoryCard } from '@/components/course-enrollment'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { BookOpen, Sparkles, Users, ArrowRight, Clock } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Learn | Movemental',
-  description: 'Discover courses, tutorials, and resources to help you create content that moves.',
+  description: 'Resources and guides for movement leaders using Movemental. Learning hub coming soon.',
 }
-
-const FEATURED_VIDEOS = [
-  { id: '1', title: 'Getting Started with Movemental', duration: '15m', href: '/learn/getting-started' },
-  { id: '2', title: 'Creating Your First Course', duration: '10m', href: '/learn/first-course' },
-  { id: '3', title: 'Platform Ownership Explained', duration: '12m', href: '/learn/ownership' },
-]
-
-const RESOURCE_CARDS = [
-  { title: 'In-App Tour', description: 'A guided walkthrough of the platform', gradient: 'blue-teal' as const, href: '/learn/tour' },
-  { title: '3 Hour Course', description: 'Comprehensive platform mastery', gradient: 'purple-pink' as const, href: '/learn/mastery' },
-  { title: 'Video Library', description: 'All tutorials in one place', gradient: 'orange-red' as const, href: '/learn/videos' },
-  { title: 'Examples', description: 'Real platforms built with Movemental', gradient: 'blue-purple' as const, href: '/learn/examples' },
-]
-
-const CATEGORIES = [
-  { id: '1', title: 'Content Strategy', subtitle: 'Plan and organize your content', href: '/learn/content-strategy' },
-  { id: '2', title: 'Course Creation', subtitle: 'Build engaging courses', href: '/learn/course-creation' },
-  { id: '3', title: 'Audience Growth', subtitle: 'Grow your following', href: '/learn/audience-growth' },
-  { id: '4', title: 'Monetization', subtitle: 'Revenue strategies', href: '/learn/monetization' },
-]
 
 export default function LearnPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
       <section className="py-16 sm:py-24 px-4 text-center">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+          <Clock className="h-4 w-4" />
+          Coming Soon
+        </div>
         <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
-          Learn Movemental
+          Learning Hub
         </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Everything you need to create content that moves—from quick tutorials 
-          to comprehensive courses.
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+          We&apos;re building comprehensive guides, tutorials, and courses for movement leaders. 
+          In the meantime, explore these resources.
         </p>
       </section>
 
-      {/* Featured videos */}
-      <section className="py-8 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold text-foreground mb-6">Get Started</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {FEATURED_VIDEOS.map((video) => (
-              <VideoLearningCard key={video.id} {...video} />
-            ))}
+      {/* Available Resources */}
+      <section className="py-12 px-4">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold text-foreground mb-8 text-center">
+            Start Here
+          </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Link
+              href="/ai-vision"
+              className="p-6 rounded-xl border bg-card hover:border-primary/50 hover:shadow-lg transition-all group"
+            >
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                <Sparkles className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="font-semibold text-foreground mb-2">AI Vision</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Understand how Movemental approaches AI—as a translation layer, not a replacement for your voice.
+              </p>
+              <span className="text-sm font-medium text-primary flex items-center gap-1">
+                Explore <ArrowRight className="h-4 w-4" />
+              </span>
+            </Link>
+
+            <Link
+              href="/book"
+              className="p-6 rounded-xl border bg-card hover:border-primary/50 hover:shadow-lg transition-all group"
+            >
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                <BookOpen className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="font-semibold text-foreground mb-2">The AI Book</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Deep dive into credibility, AI, and movement leadership with our interactive book.
+              </p>
+              <span className="text-sm font-medium text-primary flex items-center gap-1">
+                Start Reading <ArrowRight className="h-4 w-4" />
+              </span>
+            </Link>
+
+            <Link
+              href="/how-it-works"
+              className="p-6 rounded-xl border bg-card hover:border-primary/50 hover:shadow-lg transition-all group"
+            >
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                <Users className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="font-semibold text-foreground mb-2">How It Works</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                See the four-phase journey from vision to platform launch.
+              </p>
+              <span className="text-sm font-medium text-primary flex items-center gap-1">
+                See Journey <ArrowRight className="h-4 w-4" />
+              </span>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Resource cards */}
-      <section className="py-8 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold text-foreground mb-6">Resources</h2>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {RESOURCE_CARDS.map((card) => (
-              <GradientResourceCard key={card.title} {...card} />
-            ))}
+      {/* What's Coming */}
+      <section className="py-12 px-4 bg-muted/30">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-2xl font-bold text-foreground mb-6">What&apos;s Coming</h2>
+          <div className="grid sm:grid-cols-2 gap-4 text-left mb-8">
+            <div className="p-4 rounded-lg bg-background border">
+              <h3 className="font-medium mb-1">Platform Tutorials</h3>
+              <p className="text-sm text-muted-foreground">Step-by-step guides for publishing, courses, and analytics.</p>
+            </div>
+            <div className="p-4 rounded-lg bg-background border">
+              <h3 className="font-medium mb-1">Content Strategy Guides</h3>
+              <p className="text-sm text-muted-foreground">How to structure and organize your existing content.</p>
+            </div>
+            <div className="p-4 rounded-lg bg-background border">
+              <h3 className="font-medium mb-1">AI Best Practices</h3>
+              <p className="text-sm text-muted-foreground">Using AI as a translation layer while preserving your voice.</p>
+            </div>
+            <div className="p-4 rounded-lg bg-background border">
+              <h3 className="font-medium mb-1">Network Integration</h3>
+              <p className="text-sm text-muted-foreground">Building credibility through peer connections.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Categories */}
-      <section className="py-8 px-4 pb-16">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold text-foreground mb-6">Browse by Topic</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {CATEGORIES.map((category) => (
-              <CategoryCard key={category.id} {...category} />
-            ))}
-          </div>
+      {/* CTA */}
+      <section className="py-16 px-4">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-2xl font-bold text-foreground mb-4">
+            Ready to get started?
+          </h2>
+          <p className="text-muted-foreground mb-8">
+            The best way to learn Movemental is to see if it&apos;s right for you.
+          </p>
+          <Button asChild size="lg" className="group">
+            <Link href="/fit-check">
+              Take the Fit Check
+              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Button>
         </div>
       </section>
     </div>

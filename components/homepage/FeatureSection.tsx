@@ -34,42 +34,42 @@ const features: Feature[] = [
     title: 'Complete Publishing Platform',
     description:
       'Books, courses, articles, and multimedia content—all in one integrated platform you own. No more fractured tool ecosystems.',
-    link: '/features/publishing',
+    link: '/onboarding',
   },
   {
     icon: DollarSign,
     title: '90% Revenue Retention',
     description:
       'Keep 90% of your revenue instead of losing 85-90% to traditional publishers and digital platforms. Your content, your revenue.',
-    link: '/features/revenue',
+    link: '/pricing',
   },
   {
     icon: Users,
     title: 'Audience Ownership',
     description:
       'Own your audience data and relationships. Direct communication, no platform intermediaries, full control over your community.',
-    link: '/features/audience',
+    link: '/what-is-movemental',
   },
   {
     icon: Sparkles,
     title: 'AI-Powered Content',
     description:
       'AI support tailored to your voice and theology. Create content faster while maintaining authenticity and alignment.',
-    link: '/features/ai',
+    link: '/ai-vision',
   },
   {
     icon: Globe,
     title: 'Network Effects',
     description:
       'Shared infrastructure creates collective SEO benefits and cross-platform amplification. Rise together with the network.',
-    link: '/features/network',
+    link: '/network',
   },
   {
     icon: BarChart3,
     title: 'Built-in Analytics',
     description:
       'Understand your audience with integrated analytics. Track engagement, measure impact, and grow strategically.',
-    link: '/features/analytics',
+    link: '/onboarding',
   },
 ]
 
