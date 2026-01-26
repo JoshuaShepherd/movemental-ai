@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C \"C:\\\\dev\\\\movemental-sites\\\\movemental-ai\" log --oneline -10)"
+    ]
+  }
+}

@@ -74,7 +74,7 @@ export default function BookLandingPage() {
             <Button
               variant="outline"
               size="lg"
-              className="h-14 px-8 text-lg font-semibold border-white/20 text-white hover:bg-white/10 hover:text-white"
+              className="h-14 px-8 text-lg font-semibold bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white"
             >
               <Download className="mr-2 h-5 w-5" />
               Download PDF
