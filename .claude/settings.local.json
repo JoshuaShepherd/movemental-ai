@@ -7,7 +7,15 @@
       "Bash(npx tsc --noEmit)",
       "Bash(timeout 15 npm run dev:*)",
       "Bash(npm run lint:*)",
-      "Bash(npx next lint:*)"
+      "Bash(npx next lint:*)",
+      "Bash(npm ls:*)",
+      "Bash(find:*)",
+      "Bash(npm run build:*)",
+      "Bash(dir:*)",
+      "Bash(test:*)",
+      "Bash(git stash:*)",
+      "Bash(if not exist \"C:\\\\dev\\\\movemental-sites\\\\movemental-ai-site\\\\app\\\\templates\\\\chat\" mkdir \"C:\\\\dev\\\\movemental-sites\\\\movemental-ai-site\\\\app\\\\templates\\\\chat\")",
+      "Bash(echo:*)"
     ]
   }
 }

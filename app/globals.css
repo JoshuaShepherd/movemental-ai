@@ -100,3 +100,1124 @@
     color: hsl(var(--foreground));
   }
 }
+
+/* ============================================================
+   Template: Movement Leader — Base Tokens
+   Prefix: --mvmt-*
+   Scoped to .template-movement-leader wrapper
+   ============================================================ */
+.template-movement-leader {
+  /* Dark surface text */
+  --mvmt-on-dark-primary: #FFFFFF;
+  --mvmt-on-dark-secondary: #E2E8F0;
+  --mvmt-on-dark-muted: #CBD5E1;
+  --mvmt-on-dark-subtle: #94A3B8;
+
+  /* Light surface text */
+  --mvmt-text-primary: #1A1A2E;
+  --mvmt-text-secondary: #64748B;
+  --mvmt-text-muted: #94A3B8;
+
+  /* Surfaces */
+  --mvmt-surface-dark: #181818;
+  --mvmt-surface-dark-elevated: #242424;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFBFC;
+
+  /* Accent / CTA */
+  --mvmt-accent: #9B59B6;
+  --mvmt-accent-hover: #8E44AD;
+  --mvmt-cta-bg: #9B59B6;
+  --mvmt-cta-text: #FFFFFF;
+
+  /* Borders */
+  --mvmt-border-on-dark: rgba(255, 255, 255, 0.15);
+  --mvmt-border-on-dark-medium: rgba(255, 255, 255, 0.25);
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+
+  /* Gradients */
+  --mvmt-gradient-hero-brand: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #2563EB 100%);
+  --mvmt-gradient-hero-dark: linear-gradient(135deg, #1A1A2E 0%, #0F0F23 100%);
+  --mvmt-gradient-overlay-dark: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+  --mvmt-gradient-overlay-hero: linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0.05) 100%);
+
+  /* Typography */
+  --mvmt-font-heading: var(--font-inter), system-ui, sans-serif;
+  --mvmt-font-body: var(--font-inter), system-ui, sans-serif;
+
+  /* Effects */
+  --mvmt-shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --mvmt-shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+  --mvmt-shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  --mvmt-radius-sm: 0.375rem;
+  --mvmt-radius-md: 0.5rem;
+  --mvmt-radius-lg: 0.75rem;
+  --mvmt-radius-xl: 1rem;
+  --mvmt-radius-full: 9999px;
+
+  /* Footer */
+  --mvmt-footer-bg: #F5F5F5;
+  --mvmt-footer-text: #64748B;
+  --mvmt-footer-text-highlight: #1A1A2E;
+}
+
+/* Variant: colorful-headline — Spotify for Developers style
+   Warm golden image bg, bold sans headline, purple accent words, purple CTA */
+.template-movement-leader[data-variant="colorful-headline"] {
+  --mvmt-accent: #9B59B6;
+  --mvmt-accent-hover: #8E44AD;
+  --mvmt-cta-bg: #9B59B6;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #181818;
+  --mvmt-surface-dark-elevated: #282828;
+  --mvmt-gradient-overlay-hero: linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.0) 100%);
+}
+
+/* Variant: agency-gradient — Framer Agencies style
+   Bold blue/purple gradient bg, split layout, UI preview cards */
+.template-movement-leader[data-variant="agency-gradient"] {
+  --mvmt-accent: #FFDD00;
+  --mvmt-accent-hover: #E5C700;
+  --mvmt-cta-bg: #FFFFFF;
+  --mvmt-cta-text: #1A1A2E;
+  --mvmt-surface-dark: #2B1AFF;
+  --mvmt-surface-dark-elevated: #3D2FFF;
+  --mvmt-gradient-hero-brand: linear-gradient(135deg, #2B1AFF 0%, #4F46E5 50%, #6D28D9 100%);
+}
+
+/* Variant: centered-product — NYT Cooking style
+   Light bg, centered serif headline, warm editorial */
+.template-movement-leader[data-variant="centered-product"] {
+  --mvmt-accent: #D4421E;
+  --mvmt-accent-hover: #B83918;
+  --mvmt-cta-bg: #D4421E;
+  --mvmt-cta-text: #FFFFFF;
+}
+
+/* Variant: centered-serif — Substack style
+   Clean white, large serif headline, orange accent */
+.template-movement-leader[data-variant="centered-serif"] {
+  --mvmt-accent: #E67E22;
+  --mvmt-accent-hover: #D35400;
+  --mvmt-cta-bg: #E67E22;
+  --mvmt-cta-text: #FFFFFF;
+}
+
+/* Variant: chat-widget — Intercom style
+   Full-bleed image, bold sans, floating chat card */
+.template-movement-leader[data-variant="chat-widget"] {
+  --mvmt-accent: #5468FF;
+  --mvmt-accent-hover: #3D4EDB;
+  --mvmt-cta-bg: #5468FF;
+  --mvmt-cta-text: #FFFFFF;
+}
+
+/* Variant: circular-feature — ClassPass style
+   Clean minimal, circular image, blue accent */
+.template-movement-leader[data-variant="circular-feature"] {
+  --mvmt-accent: #3B82F6;
+  --mvmt-accent-hover: #2563EB;
+  --mvmt-cta-bg: #3B82F6;
+  --mvmt-cta-text: #FFFFFF;
+}
+
+/* Variant: clean-minimal — Unsplash style
+   Clean white, text left, image grid right */
+.template-movement-leader[data-variant="clean-minimal"] {
+  --mvmt-accent: #111111;
+  --mvmt-accent-hover: #333333;
+  --mvmt-cta-bg: #111111;
+  --mvmt-cta-text: #FFFFFF;
+}
+
+/* Variant: clean-minimal-alt — Airbnb style
+   Warm minimal, soft tone, lifestyle image */
+.template-movement-leader[data-variant="clean-minimal-alt"] {
+  --mvmt-accent: #222222;
+  --mvmt-accent-hover: #444444;
+  --mvmt-cta-bg: #222222;
+  --mvmt-cta-text: #FFFFFF;
+}
+
+/* Variant: dark-features — Zapier style
+   Dark background, feature grid, orange CTA */
+.template-movement-leader[data-variant="dark-features"] {
+  --mvmt-accent: #FF6B35;
+  --mvmt-accent-hover: #E55A28;
+  --mvmt-cta-bg: #FF6B35;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #1A1A1A;
+  --mvmt-surface-dark-elevated: #2A2A2A;
+}
+
+/* Variant: floating-card — OpenTable style
+   Full-bleed warm image, floating white card, red CTA */
+.template-movement-leader[data-variant="floating-card"] {
+  --mvmt-accent: #DA3743;
+  --mvmt-accent-hover: #C12E39;
+  --mvmt-cta-bg: #DA3743;
+  --mvmt-cta-text: #FFFFFF;
+}
+
+/* Variant: full-bleed — Wix Learn style
+   Full-bleed image, centered text overlay, yellow accent */
+.template-movement-leader[data-variant="full-bleed"] {
+  --mvmt-accent: #FACC15;
+  --mvmt-accent-hover: #EAB308;
+  --mvmt-cta-bg: #FACC15;
+  --mvmt-cta-text: #1A1A2E;
+}
+
+/* Variant: gradient-illustration — GitLab style
+   Light bg with blue gradient, line illustrations */
+.template-movement-leader[data-variant="gradient-illustration"] {
+  --mvmt-accent: #6B4FBB;
+  --mvmt-accent-hover: #5A3FA3;
+  --mvmt-cta-bg: #6B4FBB;
+  --mvmt-cta-text: #FFFFFF;
+}
+
+/* Variant: how-it-works — Blue Apron Wine style
+   Hero image, how-it-works steps below, navy accent */
+.template-movement-leader[data-variant="how-it-works"] {
+  --mvmt-accent: #1B3A5C;
+  --mvmt-accent-hover: #152E49;
+  --mvmt-cta-bg: #1B3A5C;
+  --mvmt-cta-text: #FFFFFF;
+}
+
+/* Variant: image-grid — Dropbox style
+   Dark bg, image grid, blue accent */
+.template-movement-leader[data-variant="image-grid"] {
+  --mvmt-accent: #0061FF;
+  --mvmt-accent-hover: #004FD4;
+  --mvmt-cta-bg: #0061FF;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #000000;
+  --mvmt-surface-dark-elevated: #1A1A1A;
+}
+
+/* Variant: pricing-card — Codecademy style
+   Dark bg, pricing card, indigo accent */
+.template-movement-leader[data-variant="pricing-card"] {
+  --mvmt-accent: #5B4FE5;
+  --mvmt-accent-hover: #4A3FCC;
+  --mvmt-cta-bg: #5B4FE5;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #1D1547;
+  --mvmt-surface-dark-elevated: #2A1F5E;
+}
+
+/* Variant: product-showcase — Blue Apron style
+   Full-bleed product image, bold stat, blue accent */
+.template-movement-leader[data-variant="product-showcase"] {
+  --mvmt-accent: #0047AB;
+  --mvmt-accent-hover: #003A8C;
+  --mvmt-cta-bg: #0047AB;
+  --mvmt-cta-text: #FFFFFF;
+}
+
+/* Variant: product-showcase-alt — Webflow Enterprise style
+   Dark bg, split UI preview, logo bar */
+.template-movement-leader[data-variant="product-showcase-alt"] {
+  --mvmt-accent: #4353FF;
+  --mvmt-accent-hover: #3344DD;
+  --mvmt-cta-bg: #4353FF;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #0E0E1A;
+  --mvmt-surface-dark-elevated: #1A1A2E;
+}
+
+/* Variant: split-tabs — LinkedIn style
+   Split hero, tabbed content below, blue accent */
+.template-movement-leader[data-variant="split-tabs"] {
+  --mvmt-accent: #0A66C2;
+  --mvmt-accent-hover: #084E96;
+  --mvmt-cta-bg: #0A66C2;
+  --mvmt-cta-text: #FFFFFF;
+}
+
+/* Variant: template-preview — Framer Boost style
+   Light bg, floating preview cards, purple accent */
+.template-movement-leader[data-variant="template-preview"] {
+  --mvmt-accent: #7C3AED;
+  --mvmt-accent-hover: #6D28D9;
+  --mvmt-cta-bg: #7C3AED;
+  --mvmt-cta-text: #FFFFFF;
+}
+
+/* ============================================================
+   Article Variants
+   ============================================================ */
+
+/* Article Variant: help-center — Front Help Center style
+   Light bg, search bar, breadcrumbs, left sidebar TOC, right content */
+.template-movement-leader[data-variant="art-help-center"] {
+  --mvmt-accent: #F55067;
+  --mvmt-accent-hover: #E03E54;
+  --mvmt-cta-bg: #F55067;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8F9FA;
+  --mvmt-border-light: #E5E7EB;
+  --mvmt-gradient-hero-brand: linear-gradient(135deg, #FDDFE2 0%, #E0C3FC 50%, #C2E9FB 100%);
+}
+
+/* Article Variant: case-study — Expensify style
+   Left nav sidebar, hero image, "At a Glance" right sidebar */
+.template-movement-leader[data-variant="art-case-study"] {
+  --mvmt-accent: #1A8D5F;
+  --mvmt-accent-hover: #157A51;
+  --mvmt-cta-bg: #1A8D5F;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F7FAF8;
+}
+
+/* Article Variant: guide-hero — Monarch style
+   Colored hero banner with CTA, left TOC sidebar, main article */
+.template-movement-leader[data-variant="art-guide-hero"] {
+  --mvmt-accent: #E8572A;
+  --mvmt-accent-hover: #D14A21;
+  --mvmt-cta-bg: #E8572A;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #2B3A67;
+  --mvmt-surface-dark-elevated: #354578;
+  --mvmt-gradient-hero-brand: linear-gradient(135deg, #2B3A67 0%, #3D4F8F 100%);
+}
+
+/* Article Variant: dark-case-study — Threads style
+   Dark bg, quote hero header, author avatars, metadata row */
+.template-movement-leader[data-variant="art-dark-case-study"] {
+  --mvmt-accent: #6366F1;
+  --mvmt-accent-hover: #4F46E5;
+  --mvmt-cta-bg: #6366F1;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #0F1729;
+  --mvmt-surface-dark-elevated: #1A2540;
+  --mvmt-gradient-hero-brand: linear-gradient(135deg, #0F1729 0%, #1A2540 100%);
+}
+
+/* Article Variant: bold-header — Dovetail style
+   Large purple/brand header block, metadata row, right sidebar CTA + TOC */
+.template-movement-leader[data-variant="art-bold-header"] {
+  --mvmt-accent: #5B21B6;
+  --mvmt-accent-hover: #4C1D95;
+  --mvmt-cta-bg: #5B21B6;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #5B21B6;
+  --mvmt-surface-dark-elevated: #6D28D9;
+  --mvmt-gradient-hero-brand: linear-gradient(135deg, #5B21B6 0%, #7C3AED 100%);
+}
+
+/* Article Variant: colorful-sidebar — Gamma Support style
+   Gradient hero image, left sidebar nav, right "Articles in this section" */
+.template-movement-leader[data-variant="art-colorful-sidebar"] {
+  --mvmt-accent: #8B5CF6;
+  --mvmt-accent-hover: #7C3AED;
+  --mvmt-cta-bg: #8B5CF6;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFBFF;
+  --mvmt-gradient-hero-brand: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
+}
+
+/* Article Variant: bold-editorial — Bleacher Report style
+   Full-bleed B&W hero image with overlaid neon text, centered body */
+.template-movement-leader[data-variant="art-bold-editorial"] {
+  --mvmt-accent: #39FF14;
+  --mvmt-accent-hover: #32E012;
+  --mvmt-cta-bg: #39FF14;
+  --mvmt-cta-text: #000000;
+  --mvmt-surface-dark: #000000;
+  --mvmt-surface-dark-elevated: #1A1A1A;
+}
+
+/* Article Variant: clean-longform — Medium style
+   Minimal clean white, centered longform text, no sidebar */
+.template-movement-leader[data-variant="art-clean-longform"] {
+  --mvmt-accent: #1A8917;
+  --mvmt-accent-hover: #157012;
+  --mvmt-cta-bg: #1A8917;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-text-primary: #242424;
+  --mvmt-text-secondary: #6B6B6B;
+}
+
+/* Article Variant: faq-accordion — Framer FAQ style
+   Clean minimal FAQ layout, centered questions with expandable answers */
+.template-movement-leader[data-variant="art-faq-accordion"] {
+  --mvmt-accent: #000000;
+  --mvmt-accent-hover: #333333;
+  --mvmt-cta-bg: #000000;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-text-primary: #111111;
+  --mvmt-text-secondary: #6B7280;
+}
+
+/* Article Variant: stats-highlight — Kajabi style
+   Gradient bg, tabbed navigation (parts), large stat callouts */
+.template-movement-leader[data-variant="art-stats-highlight"] {
+  --mvmt-accent: #3730A3;
+  --mvmt-accent-hover: #312E81;
+  --mvmt-cta-bg: #3730A3;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #F5F0FF;
+  --mvmt-surface-light-muted: #EDE9FE;
+  --mvmt-gradient-hero-brand: linear-gradient(135deg, #C4B5FD 0%, #A7F3D0 100%);
+}
+
+/* Article Variant: docs-sidebar — Framer Docs style
+   Left nav sidebar, large bold title, TOC right sidebar, article body */
+.template-movement-leader[data-variant="art-docs-sidebar"] {
+  --mvmt-accent: #000000;
+  --mvmt-accent-hover: #333333;
+  --mvmt-cta-bg: #000000;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-text-primary: #111111;
+  --mvmt-text-secondary: #6B7280;
+}
+
+/* Article Variant: blockquote-editorial — Dropbox Blog style
+   Orange accent color block with large pull-quote, two-column body */
+.template-movement-leader[data-variant="art-blockquote-editorial"] {
+  --mvmt-accent: #D35400;
+  --mvmt-accent-hover: #B84500;
+  --mvmt-cta-bg: #D35400;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-text-primary: #1A1A1A;
+}
+
+/* ============================================================
+   ASSESSMENT VARIANTS
+   ============================================================ */
+
+/* Assessment Variant: template-picker — Framer picker style
+   Light bg, pastel multi-color cards, friendly/colorful */
+.template-movement-leader[data-variant="assess-template-picker"] {
+  --mvmt-font-heading: var(--font-poppins), system-ui, sans-serif;
+  --mvmt-accent: #9B59B6;
+  --mvmt-cta-bg: #9B59B6;
+  --mvmt-cta-text: #FFFFFF;
+  --assess-card-1: #FDDDE6;
+  --assess-card-2: #D4E6FF;
+  --assess-card-3: #E8F5E9;
+  --assess-card-4: #FFF3E0;
+}
+
+/* Assessment Variant: progress-quiz — HubSpot progress style
+   Light grey + coral accent, professional/edu */
+.template-movement-leader[data-variant="assess-progress-quiz"] {
+  --mvmt-font-heading: var(--font-dm-sans), system-ui, sans-serif;
+  --mvmt-accent: #FF5C35;
+  --mvmt-accent-hover: #E5492A;
+  --mvmt-cta-bg: #FF5C35;
+  --mvmt-cta-text: #FFFFFF;
+  --assess-option-selected-bg: #FFF0EB;
+}
+
+/* Assessment Variant: mood-gradient — Headspace style
+   Blue-pink gradient, playful/energetic */
+.template-movement-leader[data-variant="assess-mood-gradient"] {
+  --mvmt-font-heading: var(--font-nunito), system-ui, sans-serif;
+  --mvmt-gradient-hero-brand: linear-gradient(135deg, #2563EB 0%, #3B82F6 40%, #A855F7 70%, #EC4899 100%);
+  --mvmt-accent: #3B82F6;
+  --mvmt-cta-bg: #3B82F6;
+  --mvmt-cta-text: #FFFFFF;
+  --assess-mood-card-bg: rgba(30, 58, 138, 0.5);
+  --assess-close-bg: rgba(255, 255, 255, 0.15);
+}
+
+/* Assessment Variant: binary-choice — Hims minimal style
+   White + grey cards, clean/accessible */
+.template-movement-leader[data-variant="assess-binary-choice"] {
+  --mvmt-accent: #333333;
+  --mvmt-cta-bg: #333333;
+  --mvmt-cta-text: #FFFFFF;
+  --assess-card-muted: #F0F0F0;
+}
+
+/* Assessment Variant: dark-intro — WeTransfer style
+   Charcoal/black, premium/sophisticated, serif heading */
+.template-movement-leader[data-variant="assess-dark-intro"] {
+  --mvmt-font-heading: var(--font-playfair), Georgia, serif;
+  --mvmt-surface-dark: #1A1A1A;
+  --mvmt-surface-dark-elevated: #2A2A2A;
+  --mvmt-accent: #FFFFFF;
+  --mvmt-cta-bg: transparent;
+  --mvmt-cta-text: #FFFFFF;
+}
+
+/* Assessment Variant: modal-quiz — Kajabi style
+   White modal, dark overlay, blue progress */
+.template-movement-leader[data-variant="assess-modal-quiz"] {
+  --mvmt-accent: #3B5BDB;
+  --mvmt-cta-bg: #1A1A2E;
+  --mvmt-cta-text: #FFFFFF;
+  --assess-overlay-bg: rgba(0, 0, 0, 0.75);
+}
+
+/* Assessment Variant: scale-options — Typeform style
+   Light grey + lavender pills, clean/survey */
+.template-movement-leader[data-variant="assess-scale-options"] {
+  --mvmt-accent: #10B981;
+  --mvmt-cta-bg: #10B981;
+  --mvmt-cta-text: #FFFFFF;
+  --assess-pill-bg: #F3F0FF;
+  --assess-pill-key-bg: #E9E4FC;
+}
+
+/* Assessment Variant: nps-scale — Typeform NPS style
+   Light bg + blue boxes + orange CTA */
+.template-movement-leader[data-variant="assess-nps-scale"] {
+  --mvmt-accent: #E67E22;
+  --mvmt-cta-bg: #E67E22;
+  --mvmt-cta-text: #FFFFFF;
+  --assess-progress-track: #FDE9D9;
+  --assess-question-number: #3B82F6;
+  --assess-scale-border: #BFDBFE;
+  --assess-scale-text: #1E3A5F;
+  --assess-scale-label: #3B82F6;
+}
+
+/* Assessment Variant: section-intro — Hims warm style
+   White + tan/beige accent, serif heading */
+.template-movement-leader[data-variant="assess-section-intro"] {
+  --mvmt-font-heading: var(--font-lora), Georgia, serif;
+  --mvmt-accent: #C4956A;
+  --mvmt-accent-hover: #B0845C;
+  --mvmt-cta-bg: #C4956A;
+  --mvmt-cta-text: #FFFFFF;
+  --assess-progress-fill: #C4956A;
+}
+
+/* Assessment Variant: udemy-quiz — Udemy style
+   Dark header + light body, educational/standard */
+.template-movement-leader[data-variant="assess-udemy-quiz"] {
+  --mvmt-accent: #5624D0;
+  --mvmt-cta-bg: #5624D0;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #1C1D1F;
+}
+
+/* Assessment Variant: visual-cards — Hims medical/clear style
+   Light bg + grey cards, line icons */
+.template-movement-leader[data-variant="assess-visual-cards"] {
+  --mvmt-accent: #333333;
+  --mvmt-cta-bg: #333333;
+  --mvmt-cta-text: #FFFFFF;
+  --assess-card-muted: #F0F0F0;
+}
+
+/* Assessment Variant: avatar-survey — HoneyBook style
+   Light bg + blue avatar + lavender options */
+.template-movement-leader[data-variant="assess-avatar-survey"] {
+  --mvmt-accent: #5B6ABF;
+  --mvmt-cta-bg: #5B6ABF;
+  --mvmt-cta-text: #FFFFFF;
+  --assess-avatar-bg: #5B6ABF;
+  --assess-option-bg: #EEEDF7;
+  --assess-option-text: #4A4A8A;
+}
+
+/* Assessment Variant: dark-floating — WeTransfer dark quiz style
+   Dark + purple/blue/green gradient cards */
+.template-movement-leader[data-variant="assess-dark-floating"] {
+  --mvmt-font-heading: var(--font-space-grotesk), system-ui, sans-serif;
+  --mvmt-surface-dark: #111111;
+  --mvmt-accent: #A78BFA;
+  --mvmt-cta-bg: #A78BFA;
+  --mvmt-cta-text: #000000;
+  --assess-float-card-1: rgba(167, 139, 250, 0.3);
+  --assess-float-card-2: rgba(74, 222, 128, 0.2);
+  --assess-float-card-3: rgba(96, 165, 250, 0.25);
+}
+
+/* Assessment Variant: hubspot-duplicate — HubSpot corporate style
+   Light bg + coral accent + blue highlights */
+.template-movement-leader[data-variant="assess-hubspot-duplicate"] {
+  --mvmt-accent: #FF5C35;
+  --mvmt-accent-hover: #E5492A;
+  --mvmt-cta-bg: #FF5C35;
+  --mvmt-cta-text: #FFFFFF;
+  --assess-option-selected-bg: #FFF0EB;
+}
+
+/* Assessment Variant: long-form — Hims long form style
+   Light bg + lavender options + navy text */
+.template-movement-leader[data-variant="assess-long-form"] {
+  --mvmt-accent: #C4956A;
+  --mvmt-accent-hover: #B0845C;
+  --mvmt-cta-bg: #C4956A;
+  --mvmt-cta-text: #FFFFFF;
+  --assess-progress-fill: #C4956A;
+}
+
+/* ============================================================
+   CHAT VARIANTS
+   ============================================================ */
+
+/* Chat: support-minimal — Apple Support style */
+.template-movement-leader[data-variant="chat-support-minimal"] {
+  --mvmt-accent: #007AFF;
+  --mvmt-accent-hover: #0066D6;
+  --mvmt-cta-bg: #007AFF;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F5F5F5;
+  --mvmt-text-primary: #1D1D1F;
+  --mvmt-text-secondary: #86868B;
+}
+
+/* Chat: warm-greeting — Claude style */
+.template-movement-leader[data-variant="chat-warm-greeting"] {
+  --mvmt-accent: #D97757;
+  --mvmt-accent-hover: #C4654A;
+  --mvmt-cta-bg: #D97757;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FAF6F1;
+  --mvmt-surface-light-muted: #F5EDE4;
+  --mvmt-text-primary: #2D2B28;
+  --mvmt-text-secondary: #8B8680;
+}
+
+/* Chat: panel-sidebar — ClickUp style */
+.template-movement-leader[data-variant="chat-panel-sidebar"] {
+  --mvmt-accent: #7B68EE;
+  --mvmt-accent-hover: #6A58DD;
+  --mvmt-cta-bg: #7B68EE;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #1A1D2E;
+  --mvmt-surface-dark-elevated: #2B2F44;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-text-primary: #1A1A2E;
+}
+
+/* Chat: widget-popup — Front style */
+.template-movement-leader[data-variant="chat-widget-popup"] {
+  --mvmt-accent: #D27057;
+  --mvmt-accent-hover: #C06048;
+  --mvmt-cta-bg: #D27057;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-text-primary: #1A1A1A;
+  --mvmt-text-secondary: #999999;
+}
+
+/* Chat: hero-overlay — Intercom style */
+.template-movement-leader[data-variant="chat-hero-overlay"] {
+  --mvmt-accent: #1A1A1A;
+  --mvmt-accent-hover: #333333;
+  --mvmt-cta-bg: #1A1A1A;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #1A1A1A;
+  --mvmt-gradient-overlay-hero: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.1) 100%);
+}
+
+/* Chat: assistant-friendly — Monarch style */
+.template-movement-leader[data-variant="chat-assistant-friendly"] {
+  --mvmt-accent: #E8572A;
+  --mvmt-accent-hover: #D14A21;
+  --mvmt-cta-bg: #E8572A;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #1E2A4A;
+  --mvmt-surface-dark-elevated: #2B3A67;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FFF5F2;
+}
+
+/* Chat: dark-sidebar — OpenAI/ChatGPT style */
+.template-movement-leader[data-variant="chat-dark-sidebar"] {
+  --mvmt-accent: #10A37F;
+  --mvmt-accent-hover: #0D8A6A;
+  --mvmt-cta-bg: #10A37F;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #202123;
+  --mvmt-surface-dark-elevated: #343541;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F7F7F8;
+}
+
+/* Chat: split-templates — Strut style */
+.template-movement-leader[data-variant="chat-split-templates"] {
+  --mvmt-accent: #E5A84B;
+  --mvmt-accent-hover: #D09A3E;
+  --mvmt-cta-bg: #E5A84B;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-text-primary: #1A1A1A;
+  --mvmt-text-secondary: #6B7280;
+}
+
+/* Chat: team-channels — Twist style */
+.template-movement-leader[data-variant="chat-team-channels"] {
+  --mvmt-accent: #64C8D0;
+  --mvmt-accent-hover: #52B5BD;
+  --mvmt-cta-bg: #64C8D0;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F0FAFA;
+  --mvmt-text-primary: #1A1A2E;
+  --mvmt-text-secondary: #6B7280;
+}
+
+/* Chat: suggestion-chips — Upwork style */
+.template-movement-leader[data-variant="chat-suggestion-chips"] {
+  --mvmt-accent: #14A800;
+  --mvmt-accent-hover: #108A00;
+  --mvmt-cta-bg: #14A800;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F2F7F2;
+  --mvmt-text-primary: #1A1A1A;
+  --mvmt-text-secondary: #5E6D55;
+}
+
+/* ============================================================
+   ABOUT / CTA / FAQ / ORGS VARIANTS
+   ============================================================ */
+
+/* About: video-bio — MasterClass Live style
+   Dark header, video + bio split, sticky CTA bar */
+.template-movement-leader[data-variant="about-video-bio"] {
+  --mvmt-accent: #E74C5E;
+  --mvmt-accent-hover: #D13A4C;
+  --mvmt-cta-bg: #E74C5E;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #1A1A1A;
+  --mvmt-surface-dark-elevated: #2A2A2A;
+}
+
+/* CTA: bold-banner — Canva style
+   Light bg, dark rounded banner, purple CTA */
+.template-movement-leader[data-variant="cta-bold-banner"] {
+  --mvmt-accent: #7C3AED;
+  --mvmt-accent-hover: #6D28D9;
+  --mvmt-cta-bg: #7C3AED;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #1B2340;
+}
+
+/* FAQ: dark-hero — MasterClass at Work style
+   All dark bg, red accent, split hero + FAQ */
+.template-movement-leader[data-variant="faq-dark-hero"] {
+  --mvmt-accent: #E74C5E;
+  --mvmt-accent-hover: #D13A4C;
+  --mvmt-cta-bg: #E74C5E;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #111111;
+  --mvmt-surface-dark-elevated: #1E1E1E;
+}
+
+/* FAQ: minimal-accordion — Framer style
+   White bg, bold FAQ heading, minimal + icons */
+.template-movement-leader[data-variant="faq-minimal-accordion"] {
+  --mvmt-accent: #7C3AED;
+  --mvmt-accent-hover: #6D28D9;
+  --mvmt-cta-bg: #7C3AED;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #111111;
+}
+
+/* Orgs: enterprise-trust — MasterClass at Work style
+   Dark bg, trust logos, testimonial quote, red accent */
+.template-movement-leader[data-variant="orgs-enterprise-trust"] {
+  --mvmt-accent: #E74C5E;
+  --mvmt-accent-hover: #D13A4C;
+  --mvmt-cta-bg: #E74C5E;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #111111;
+  --mvmt-surface-dark-elevated: #1E1E1E;
+}
+
+/* ============================================================
+   READER VARIANTS
+   ============================================================ */
+
+/* Reader: docs-sidebar — Pitch style
+   Light bg, left TOC sidebar, right article, purple accent */
+.template-movement-leader[data-variant="reader-docs-sidebar"] {
+  --mvmt-accent: #7C3AED;
+  --mvmt-accent-hover: #6D28D9;
+  --mvmt-cta-bg: #7C3AED;
+  --mvmt-cta-text: #FFFFFF;
+}
+
+/* Reader: ebook-dark — Amazon Kindle style
+   Dark bg overlay, white reader modal, serif text */
+.template-movement-leader[data-variant="reader-ebook-dark"] {
+  --mvmt-font-heading: var(--font-lora), Georgia, serif;
+  --mvmt-surface-dark: #1A1A1A;
+  --mvmt-accent: #333333;
+  --mvmt-cta-bg: #333333;
+  --mvmt-cta-text: #FFFFFF;
+}
+
+/* ============================================================
+   SEARCH VARIANTS
+   ============================================================ */
+
+/* Search: ai-assistant — Lindy AI style
+   Warm gradient bg, chat input, suggestion pills */
+.template-movement-leader[data-variant="search-ai-assistant"] {
+  --mvmt-gradient-hero-brand: linear-gradient(180deg, #FFF5E6 0%, #FFF0D6 40%, #FEFEFE 100%);
+  --mvmt-accent: #6366F1;
+  --mvmt-cta-bg: #6366F1;
+  --mvmt-cta-text: #FFFFFF;
+}
+
+/* Search: minimal-centered — Substack style
+   Clean white, large serif heading, orange accent */
+.template-movement-leader[data-variant="search-minimal-centered"] {
+  --mvmt-font-heading: var(--font-lora), Georgia, serif;
+  --mvmt-accent: #E67E22;
+  --mvmt-accent-hover: #D35400;
+  --mvmt-cta-bg: #1DA1F2;
+  --mvmt-cta-text: #FFFFFF;
+}
+
+/* Search: resource-hub — Klaviyo style
+   Warm peach gradient hero, floating avatars, dark top bar */
+.template-movement-leader[data-variant="search-resource-hub"] {
+  --mvmt-gradient-hero-brand: linear-gradient(180deg, #FDE8D8 0%, #F8E0F0 50%, #FEFEFE 100%);
+  --mvmt-accent: #1A1A1A;
+  --mvmt-cta-bg: #1A1A1A;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #1A1A1A;
+}
+
+/* ============================================================
+   CONTENT VARIANTS
+   ============================================================ */
+
+/* Content Variant: accordion-features — Framer-style expandable feature list
+   Minimal bg, clean typography, expand/collapse sections */
+.template-movement-leader[data-variant="cnt-accordion-features"] {
+  --mvmt-accent: #000000;
+  --mvmt-accent-hover: #333333;
+  --mvmt-cta-bg: #000000;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-text-primary: #111111;
+  --mvmt-text-secondary: #6B7280;
+}
+
+/* Content Variant: case-studies — Kit-style 3-col case study cards with photos */
+.template-movement-leader[data-variant="cnt-case-studies"] {
+  --mvmt-accent: #3B82F6;
+  --mvmt-accent-hover: #2563EB;
+  --mvmt-cta-bg: #3B82F6;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+}
+
+/* Content Variant: resource-cards — WSJ-style 3-col cards with images + topic selector */
+.template-movement-leader[data-variant="cnt-resource-cards"] {
+  --mvmt-accent: #1A1A1A;
+  --mvmt-accent-hover: #333333;
+  --mvmt-cta-bg: #1A1A1A;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F5F5F0;
+}
+
+/* Content Variant: category-blog — NordVPN-style category pills + article grid with author */
+.template-movement-leader[data-variant="cnt-category-blog"] {
+  --mvmt-accent: #4A67FF;
+  --mvmt-accent-hover: #3B54E0;
+  --mvmt-cta-bg: #4A67FF;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F0F4FF;
+}
+
+/* Content Variant: integration-guides — Clearbit-style gradient-top cards with tags */
+.template-movement-leader[data-variant="cnt-integration-guides"] {
+  --mvmt-accent: #6366F1;
+  --mvmt-accent-hover: #4F46E5;
+  --mvmt-cta-bg: #6366F1;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-gradient-hero-brand: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+}
+
+/* Content Variant: component-gallery — Framer-style sidebar nav + preview grid */
+.template-movement-leader[data-variant="cnt-component-gallery"] {
+  --mvmt-accent: #000000;
+  --mvmt-accent-hover: #333333;
+  --mvmt-cta-bg: #000000;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-text-primary: #111111;
+}
+
+/* Content Variant: dark-browse — MasterClass category browse with carousel */
+.template-movement-leader[data-variant="cnt-dark-browse"] {
+  --mvmt-accent: #E74C5E;
+  --mvmt-accent-hover: #D13A4C;
+  --mvmt-cta-bg: #E74C5E;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-dark: #000000;
+  --mvmt-surface-dark-elevated: #1A1A1A;
+}
+
+/* Content Variant: dark-personalized — MasterClass personalized recommendations + CTA */
+.template-movement-leader[data-variant="cnt-dark-personalized"] {
+  --mvmt-accent: #22C55E;
+  --mvmt-accent-hover: #16A34A;
+  --mvmt-cta-bg: #22C55E;
+  --mvmt-cta-text: #000000;
+  --mvmt-surface-dark: #0A0A0A;
+  --mvmt-surface-dark-elevated: #1C1C1C;
+}
+
+/* Content Variant: dark-recordings — MasterClass live recordings 3-col cards */
+.template-movement-leader[data-variant="cnt-dark-recordings"] {
+  --mvmt-accent: #F59E0B;
+  --mvmt-accent-hover: #D97706;
+  --mvmt-cta-bg: #F59E0B;
+  --mvmt-cta-text: #000000;
+  --mvmt-surface-dark: #111111;
+  --mvmt-surface-dark-elevated: #1E1E1E;
+}
+
+/* Content Variant: feature-preview — Framer-style 2-col feature cards with images */
+.template-movement-leader[data-variant="cnt-feature-preview"] {
+  --mvmt-accent: #7C3AED;
+  --mvmt-accent-hover: #6D28D9;
+  --mvmt-cta-bg: #7C3AED;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFF;
+}
+
+/* Content Variant: video-tutorials — Framer-style video grid + doc list */
+.template-movement-leader[data-variant="cnt-video-tutorials"] {
+  --mvmt-accent: #000000;
+  --mvmt-accent-hover: #333333;
+  --mvmt-cta-bg: #000000;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F9FAFB;
+}
+
+/* Content Variant: toc-illustrated — User Interviews-style illustrated chapter grid */
+.template-movement-leader[data-variant="cnt-toc-illustrated"] {
+  --mvmt-accent: #4F46E5;
+  --mvmt-accent-hover: #4338CA;
+  --mvmt-cta-bg: #4F46E5;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+}
+
+/* Content Variant: template-showcase — Framer-style 4-col template cards with price */
+.template-movement-leader[data-variant="cnt-template-showcase"] {
+  --mvmt-accent: #7C3AED;
+  --mvmt-accent-hover: #6D28D9;
+  --mvmt-cta-bg: #7C3AED;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+}
+
+/* Content Variant: resource-hub — Teachable-style 3x2 icon cards with colored tops */
+.template-movement-leader[data-variant="cnt-resource-hub"] {
+  --mvmt-accent: #FF6B35;
+  --mvmt-accent-hover: #E55A28;
+  --mvmt-cta-bg: #FF6B35;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FFF7F3;
+}
+
+/* Content Variant: docs-grid — WorkOS-style icon + title + description grid */
+.template-movement-leader[data-variant="cnt-docs-grid"] {
+  --mvmt-accent: #6366F1;
+  --mvmt-accent-hover: #4F46E5;
+  --mvmt-cta-bg: #6366F1;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-text-primary: #111111;
+}
+
+/* Content Variant: training-resources — Google Classroom-style filtered resource cards */
+.template-movement-leader[data-variant="cnt-training-resources"] {
+  --mvmt-accent: #1A73E8;
+  --mvmt-accent-hover: #1557B0;
+  --mvmt-cta-bg: #1A73E8;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F1F3F4;
+}
+
+/* Content Variant: product-carousel — Apple-style horizontal product cards with images */
+.template-movement-leader[data-variant="cnt-product-carousel"] {
+  --mvmt-accent: #0071E3;
+  --mvmt-accent-hover: #005BBB;
+  --mvmt-cta-bg: #0071E3;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+}
+
+/* Content Variant: instructor-courses — Kajabi-style course cards with level badges */
+.template-movement-leader[data-variant="cnt-instructor-courses"] {
+  --mvmt-accent: #3730A3;
+  --mvmt-accent-hover: #312E81;
+  --mvmt-cta-bg: #3730A3;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+}
+
+/* Content Variant: filtered-gallery — Framer-style sidebar filter + template grid */
+.template-movement-leader[data-variant="cnt-filtered-gallery"] {
+  --mvmt-accent: #000000;
+  --mvmt-accent-hover: #333333;
+  --mvmt-cta-bg: #000000;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-text-primary: #111111;
+}
+
+/* Content Variant: lesson-list — SuperHi-style vertical video lesson list */
+.template-movement-leader[data-variant="cnt-lesson-list"] {
+  --mvmt-accent: #E63946;
+  --mvmt-accent-hover: #D12836;
+  --mvmt-cta-bg: #E63946;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FFF5F5;
+}
+
+/* ============================================================
+   BOOKS VARIANTS
+   ============================================================ */
+
+/* Books Variant: product-showcase — Apple Shop Mac style */
+.template-movement-leader[data-variant="books-product-showcase"] {
+  --mvmt-font-heading: var(--font-poppins), system-ui, sans-serif;
+  --mvmt-accent: #0071E3;
+  --mvmt-accent-hover: #0060C0;
+  --mvmt-cta-bg: #0071E3;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #F5F5F7;
+  --mvmt-surface-light-muted: #FBFBFD;
+  --mvmt-text-primary: #1D1D1F;
+  --mvmt-text-secondary: #6E6E73;
+  --mvmt-radius-lg: 1.125rem;
+}
+
+/* Books Variant: spec-cards — Hims style */
+.template-movement-leader[data-variant="books-spec-cards"] {
+  --mvmt-accent: #1A1A1A;
+  --mvmt-cta-bg: #1A1A1A;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F7F7F7;
+  --mvmt-text-primary: #1A1A1A;
+  --mvmt-text-secondary: #6B7280;
+  --mvmt-border-light: #E5E5E5;
+  --books-rating-star: #C9A96E;
+  --books-tag-bg: #F3F3F3;
+}
+
+/* Books Variant: filtered-grid — Shopify Shop style */
+.template-movement-leader[data-variant="books-filtered-grid"] {
+  --mvmt-accent: #5B28C6;
+  --mvmt-cta-bg: #5B28C6;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F9F9F9;
+  --mvmt-text-primary: #1A1A1A;
+  --mvmt-text-secondary: #6B7280;
+  --mvmt-border-light: #E5E7EB;
+  --books-filter-bg: #F3F4F6;
+  --books-badge-sale: #EF4444;
+}
+
+/* Books Variant: detail-cart — Webflow Dark PDP + Cart Drawer */
+.template-movement-leader[data-variant="books-detail-cart"] {
+  --mvmt-surface-dark: #1A1A1A;
+  --mvmt-surface-dark-elevated: #2A2A2A;
+  --mvmt-accent: #4353FF;
+  --mvmt-cta-bg: #4353FF;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-border-on-dark: rgba(255,255,255,0.12);
+  --books-cart-bg: #FFFFFF;
+  --books-cart-text: #1A1A1A;
+}
+
+/* Books Variant: minimal-grid — Cal.com Merch style */
+.template-movement-leader[data-variant="books-minimal-grid"] {
+  --mvmt-accent: #111111;
+  --mvmt-cta-bg: #111111;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-text-primary: #111111;
+  --mvmt-text-secondary: #6B7280;
+  --books-color-swatch-1: #1F2937;
+  --books-color-swatch-2: #312E81;
+}
+
+/* Books Variant: related-products — Webflow Related Products style */
+.template-movement-leader[data-variant="books-related-products"] {
+  --mvmt-accent: #4353FF;
+  --mvmt-cta-bg: #4353FF;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F5F5F5;
+  --mvmt-text-primary: #1A1A1A;
+  --mvmt-text-secondary: #6B7280;
+}
+
+/* Books Variant: detail-clean — Webflow Clean PDP style */
+.template-movement-leader[data-variant="books-detail-clean"] {
+  --mvmt-font-heading: var(--font-dm-sans), system-ui, sans-serif;
+  --mvmt-accent: #111111;
+  --mvmt-cta-bg: #111111;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F9FAFB;
+  --mvmt-text-primary: #111111;
+  --mvmt-text-secondary: #6B7280;
+}
+
+/* Books Variant: detail-split — Webflow Bold Split PDP style */
+.template-movement-leader[data-variant="books-detail-split"] {
+  --mvmt-accent: #111111;
+  --mvmt-cta-bg: #111111;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F5F5F5;
+  --mvmt-text-primary: #111111;
+  --mvmt-text-secondary: #6B7280;
+  --mvmt-border-medium: #D1D5DB;
+}
+
+/* Books Variant: detail-modal — Perplexity Modal style */
+.template-movement-leader[data-variant="books-detail-modal"] {
+  --mvmt-accent: #0D9488;
+  --mvmt-cta-bg: #0D9488;
+  --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F9FAFB;
+  --mvmt-text-primary: #111111;
+  --mvmt-text-secondary: #6B7280;
+  --books-overlay-bg: rgba(0, 0, 0, 0.6);
+  --books-modal-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+}

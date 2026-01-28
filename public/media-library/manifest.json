@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-01-17",
+  "source": "Unsplash",
+  "totalImages": 0,
+  "collections": {
+    "landscape": {
+      "16-9": [],
+      "4-3": [],
+      "21-9": [],
+      "3-2": []
+    },
+    "portrait": {
+      "9-16": [],
+      "3-4": [],
+      "2-3": []
+    },
+    "square": {
+      "1-1": []
+    },
+    "categories": {
+      "bw": [],
+      "silhouette": [],
+      "abstract": [],
+      "community": [],
+      "worship": [],
+      "mission": [],
+      "leadership": [],
+      "people": []
+    }
+  },
+  "notes": "This manifest will be automatically updated when images are downloaded using the script. Manual images should be added to this manifest."
+}

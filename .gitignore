@@ -38,3 +38,7 @@ next-env.d.ts
 
 # drizzle
 /drizzle
+
+# Windows reserved device names (Git cannot index these)
+/nul
+nul
