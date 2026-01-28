@@ -25,14 +25,14 @@ const tierIcons: Record<FitResultTier, React.ReactNode> = {
   'tier1': <Sparkles className="h-12 w-12 text-emerald-500" />,
   'tier2': <CheckCircle2 className="h-12 w-12 text-blue-500" />,
   'tier3': <TrendingUp className="h-12 w-12 text-amber-500" />,
-  'non-fit': <AlertCircle className="h-12 w-12 text-slate-400" />,
+  'non-fit': <AlertCircle className="h-12 w-12 text-sage-400" />,
 }
 
 const tierColors: Record<FitResultTier, string> = {
   'tier1': 'from-emerald-500/20 to-cyan-500/20',
   'tier2': 'from-blue-500/20 to-indigo-500/20',
   'tier3': 'from-amber-500/20 to-orange-500/20',
-  'non-fit': 'from-slate-500/20 to-slate-600/20',
+  'non-fit': 'from-sage-500/20 to-sage-600/20',
 }
 
 export function FitCheckResults({ result, onContinue, className }: FitCheckResultsProps) {
@@ -43,8 +43,8 @@ export function FitCheckResults({ result, onContinue, className }: FitCheckResul
       className={cn(
         'min-h-screen flex flex-col items-center justify-center px-4 py-12',
         tierInfo.isFit 
-          ? 'bg-gradient-to-b from-slate-50 to-white' 
-          : 'bg-gradient-to-b from-slate-100 to-slate-50',
+          ? 'bg-gradient-to-b from-sage-50 to-white' 
+          : 'bg-gradient-to-b from-sage-100 to-sage-50',
         className
       )}
     >
@@ -128,9 +128,9 @@ export function FitCheckResults({ result, onContinue, className }: FitCheckResul
                         className={cn(
                           'h-full rounded-full transition-all',
                           percentage >= 75 && 'bg-emerald-500',
-                          percentage >= 50 && percentage < 75 && 'bg-blue-500',
+                          percentage >= 50 && percentage < 75 && 'bg-scarlet-rush-500',
                           percentage >= 25 && percentage < 50 && 'bg-amber-500',
-                          percentage < 25 && 'bg-slate-400'
+                          percentage < 25 && 'bg-sage-400'
                         )}
                         style={{ width: `${percentage}%` }}
                       />
@@ -153,7 +153,7 @@ export function FitCheckResults({ result, onContinue, className }: FitCheckResul
           )}
         >
           {tierInfo.ctaText}
-          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:transage-x-1" />
         </Button>
 
         {/* Secondary action for non-fits */}

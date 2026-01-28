@@ -217,15 +217,15 @@ export function WhyMovementalContainer({ className }: WhyMovementalContainerProp
           <div className="grid md:grid-cols-3 gap-8 mt-16 text-center">
             <div className="space-y-2">
               <p className="text-4xl sm:text-5xl font-bold text-white">Ownership</p>
-              <p className="text-slate-400">Your platform. Your audience. Your data.</p>
+              <p className="text-sage-400">Your platform. Your audience. Your data.</p>
             </div>
             <div className="space-y-2">
               <p className="text-4xl sm:text-5xl font-bold text-white">Sustainability</p>
-              <p className="text-slate-400">Revenue that funds the mission, not the middleman.</p>
+              <p className="text-sage-400">Revenue that funds the mission, not the middleman.</p>
             </div>
             <div className="space-y-2">
               <p className="text-4xl sm:text-5xl font-bold text-white">Connection</p>
-              <p className="text-slate-400">A network of trusted peers, not isolated competition.</p>
+              <p className="text-sage-400">A network of trusted peers, not isolated competition.</p>
             </div>
           </div>
         </div>

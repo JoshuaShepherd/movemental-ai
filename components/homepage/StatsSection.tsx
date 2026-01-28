@@ -43,7 +43,7 @@ export function StatsSection({ className }: StatsSectionProps) {
   return (
     <section
       className={cn(
-        'py-16 sm:py-20 bg-blue-600',
+        'py-16 sm:py-20 bg-scarlet-rush-500',
         className
       )}
     >
@@ -59,7 +59,7 @@ export function StatsSection({ className }: StatsSectionProps) {
               <div className="text-lg sm:text-xl font-semibold text-white mb-2">
                 {stat.label}
               </div>
-              <p className="text-sm text-blue-100 leading-relaxed">
+              <p className="text-sm text-scarlet-rush-100 leading-relaxed">
                 {stat.description}
               </p>
             </div>

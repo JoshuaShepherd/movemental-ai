@@ -23,7 +23,7 @@ export function NarrativeSection({
   const backgroundClasses = {
     default: 'bg-background',
     muted: 'bg-muted/30',
-    dark: 'bg-slate-900 text-white',
+    dark: 'bg-sage-900 text-white',
   }
 
   return (

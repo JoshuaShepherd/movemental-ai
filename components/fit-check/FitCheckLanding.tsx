@@ -14,7 +14,7 @@ export function FitCheckLanding({ onStart, className }: FitCheckLandingProps) {
     <div
       className={cn(
         'min-h-screen flex flex-col items-center justify-center px-4 py-12',
-        'bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800',
+        'bg-gradient-to-b from-sage-900 via-sage-900 to-sage-800',
         className
       )}
     >
@@ -35,7 +35,7 @@ export function FitCheckLanding({ onStart, className }: FitCheckLandingProps) {
         </h1>
 
         {/* Subheadline */}
-        <p className="text-lg sm:text-xl text-slate-300 mb-8 max-w-lg mx-auto leading-relaxed">
+        <p className="text-lg sm:text-xl text-sage-300 mb-8 max-w-lg mx-auto leading-relaxed">
           Before we tell you about Movemental, let&apos;s make sure it&apos;s built for you.
           Six questions. One minute. Complete clarity.
         </p>
@@ -50,7 +50,7 @@ export function FitCheckLanding({ onStart, className }: FitCheckLandingProps) {
             'Platform ownership',
             'Network value',
           ].map((item) => (
-            <div key={item} className="flex items-center gap-2 text-slate-400 text-sm">
+            <div key={item} className="flex items-center gap-2 text-sage-400 text-sm">
               <CheckCircle2 className="h-4 w-4 text-cyan-400 shrink-0" />
               <span>{item}</span>
             </div>
@@ -63,16 +63,16 @@ export function FitCheckLanding({ onStart, className }: FitCheckLandingProps) {
           size="lg"
           className={cn(
             'group h-14 px-8 text-lg font-semibold',
-            'bg-white text-slate-900 hover:bg-slate-100',
+            'bg-white text-sage-900 hover:bg-sage-100',
             'transition-all duration-200'
           )}
         >
           Begin Fit Check
-          <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+          <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:transage-x-1" />
         </Button>
 
         {/* Privacy note */}
-        <p className="mt-6 text-xs text-slate-500">
+        <p className="mt-6 text-xs text-sage-500">
           Your responses help us serve you better. No email required.
         </p>
       </div>

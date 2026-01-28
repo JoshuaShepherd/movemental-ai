@@ -85,12 +85,12 @@ export function FeatureSection({ className }: FeatureSectionProps) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-16">
-          <p className="text-sm font-medium text-blue-600 uppercase tracking-wider mb-3">
+          <p className="text-sm font-medium text-scarlet-rush-500 uppercase tracking-wider mb-3">
             How It Works
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Content That Actually{' '}
-            <span className="text-blue-600">Moves</span>
+            <span className="text-scarlet-rush-500">Moves</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Not emotionally—literally. Your work gets discovered, linked, referenced, and shared across a network built for compounding reach.
@@ -105,14 +105,14 @@ export function FeatureSection({ className }: FeatureSectionProps) {
               className={cn(
                 'group p-6 sm:p-8 rounded-2xl',
                 'bg-card border border-border',
-                'hover:border-blue-200 hover:shadow-lg hover:shadow-blue-500/5',
+                'hover:border-scarlet-rush-200 hover:shadow-lg hover:shadow-scarlet-rush-500/5',
                 'transition-all duration-300'
               )}
             >
               {/* Icon */}
               <div className="mb-5">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-100 group-hover:bg-blue-500 transition-colors">
-                  <feature.icon className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors" />
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-scarlet-rush-100 group-hover:bg-scarlet-rush-500 transition-colors">
+                  <feature.icon className="w-6 h-6 text-scarlet-rush-500 group-hover:text-white transition-colors" />
                 </div>
               </div>
 
@@ -130,7 +130,7 @@ export function FeatureSection({ className }: FeatureSectionProps) {
               {feature.link && (
                 <Link
                   href={feature.link}
-                  className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors"
+                  className="inline-flex items-center text-sm font-medium text-scarlet-rush-500 hover:text-scarlet-rush-700 transition-colors"
                 >
                   Learn more
                   <svg

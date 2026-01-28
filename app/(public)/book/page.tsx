@@ -20,7 +20,7 @@ export default function BookLandingPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative py-24 sm:py-32 px-4 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800">
+      <section className="relative py-24 sm:py-32 px-4 bg-gradient-to-b from-sage-900 via-sage-900 to-sage-800">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
           <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white/80">
@@ -38,17 +38,17 @@ export default function BookLandingPage() {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl sm:text-2xl text-slate-300 mb-4">
+          <p className="text-xl sm:text-2xl text-sage-300 mb-4">
             {BOOK_METADATA.subtitle}
           </p>
 
           {/* Description */}
-          <p className="text-lg text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-sage-400 mb-8 max-w-2xl mx-auto leading-relaxed">
             {BOOK_METADATA.description}
           </p>
 
           {/* Stats */}
-          <div className="flex flex-wrap justify-center gap-8 mb-10 text-slate-400">
+          <div className="flex flex-wrap justify-center gap-8 mb-10 text-sage-400">
             <div className="flex items-center gap-2">
               <Clock className="h-5 w-5" />
               <span>{BOOK_METADATA.totalReadingTime} min total read</span>
@@ -64,11 +64,11 @@ export default function BookLandingPage() {
             <Button
               asChild
               size="lg"
-              className="group h-14 px-8 text-lg font-semibold bg-white text-slate-900 hover:bg-slate-100"
+              className="group h-14 px-8 text-lg font-semibold bg-white text-sage-900 hover:bg-sage-100"
             >
               <Link href={`/book/read`}>
                 Start Reading
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:transage-x-1" />
               </Link>
             </Button>
             <Button
@@ -218,7 +218,7 @@ export default function BookLandingPage() {
           >
             <Link href="/book/read">
               Start Reading Chapter 1
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:transage-x-1" />
             </Link>
           </Button>
         </div>

@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
@@ -72,8 +73,8 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
         'sticky top-0 z-50 transition-all duration-300',
         isDark
           ? isScrolled
-            ? 'bg-slate-900/95 backdrop-blur-md border-b border-slate-800'
-            : 'bg-slate-900'
+            ? 'bg-sage-900/95 backdrop-blur-md border-b border-sage-800'
+            : 'bg-sage-900'
           : isScrolled
             ? 'bg-background/95 backdrop-blur-md border-b'
             : 'bg-background border-b',
@@ -85,12 +86,22 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
           {/* Logo */}
           <Link
             href="/"
-            className={cn(
-              'flex items-center gap-2 font-bold text-xl tracking-tight',
-              isDark ? 'text-white' : 'text-foreground'
-            )}
+            className="flex items-center gap-2"
           >
-            Movemental
+            <Image
+              src="/media-library/images/logo/mark.webp"
+              alt="Movemental mark"
+              width={32}
+              height={32}
+              className="h-8 w-8"
+            />
+            <Image
+              src="/media-library/images/logo/logo.webp"
+              alt="Movemental"
+              width={140}
+              height={32}
+              className="h-7 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -107,7 +118,7 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
                     isDark
                       ? isActive
                         ? 'text-white bg-white/10'
-                        : 'text-slate-300 hover:text-white hover:bg-white/10'
+                        : 'text-sage-300 hover:text-white hover:bg-white/10'
                       : isActive
                         ? 'text-foreground bg-muted'
                         : 'text-muted-foreground hover:text-foreground hover:bg-muted'
@@ -126,7 +137,7 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
                   isDark
                     ? exploreItems.some(item => pathname === item.href || pathname.startsWith(item.href + '/'))
                       ? 'text-white bg-white/10'
-                      : 'text-slate-300 hover:text-white hover:bg-white/10'
+                      : 'text-sage-300 hover:text-white hover:bg-white/10'
                     : exploreItems.some(item => pathname === item.href || pathname.startsWith(item.href + '/'))
                       ? 'text-foreground bg-muted'
                       : 'text-muted-foreground hover:text-foreground hover:bg-muted'
@@ -151,6 +162,19 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
+
+            {/* Templates CTA */}
+            <Link
+              href="/templates"
+              className={cn(
+                'ml-1 px-3 py-1.5 text-sm font-medium rounded-full transition-colors',
+                isDark
+                  ? 'bg-velvet-orchid-500 text-white hover:bg-velvet-orchid-600'
+                  : 'bg-velvet-orchid-500 text-white hover:bg-velvet-orchid-600'
+              )}
+            >
+              Templates
+            </Link>
           </div>
 
           {/* Desktop CTA Buttons */}
@@ -160,7 +184,7 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
               className={cn(
                 'p-2 rounded-md transition-colors',
                 isDark
-                  ? 'text-slate-300 hover:text-white hover:bg-white/10'
+                  ? 'text-sage-300 hover:text-white hover:bg-white/10'
                   : 'text-muted-foreground hover:text-foreground hover:bg-muted'
               )}
               aria-label="Search"
@@ -172,7 +196,7 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
               size="sm"
               className={cn(
                 isDark
-                  ? 'bg-blue-500 hover:bg-blue-600 text-white'
+                  ? 'bg-scarlet-rush-500 hover:bg-scarlet-rush-600 text-white'
                   : 'bg-primary hover:bg-primary/90'
               )}
             >
@@ -204,7 +228,7 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
           className={cn(
             'lg:hidden border-b',
             isDark
-              ? 'bg-slate-900/95 backdrop-blur-md border-slate-800'
+              ? 'bg-sage-900/95 backdrop-blur-md border-sage-800'
               : 'bg-background/95 backdrop-blur-md'
           )}
         >
@@ -217,7 +241,7 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
                 isDark
                   ? pathname === '/search'
                     ? 'text-white bg-white/10'
-                    : 'text-slate-300 hover:text-white hover:bg-white/10'
+                    : 'text-sage-300 hover:text-white hover:bg-white/10'
                   : pathname === '/search'
                     ? 'text-foreground bg-muted'
                     : 'text-muted-foreground hover:text-foreground hover:bg-muted'
@@ -239,7 +263,7 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
                     isDark
                       ? isActive
                         ? 'text-white bg-white/10'
-                        : 'text-slate-300 hover:text-white hover:bg-white/10'
+                        : 'text-sage-300 hover:text-white hover:bg-white/10'
                       : isActive
                         ? 'text-foreground bg-muted'
                         : 'text-muted-foreground hover:text-foreground hover:bg-muted'
@@ -250,11 +274,19 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
               )
             })}
 
+            {/* Templates CTA (mobile) */}
+            <Link
+              href="/templates"
+              className="block px-4 py-3 text-base font-medium rounded-lg bg-velvet-orchid-500 text-white hover:bg-velvet-orchid-600 transition-colors"
+            >
+              Templates
+            </Link>
+
             {/* Explore section header */}
             <div
               className={cn(
                 'px-4 pt-4 pb-2 text-xs font-semibold uppercase tracking-wider',
-                isDark ? 'text-slate-500' : 'text-muted-foreground'
+                isDark ? 'text-sage-500' : 'text-muted-foreground'
               )}
             >
               Explore
@@ -272,7 +304,7 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
                     isDark
                       ? isActive
                         ? 'text-white bg-white/10'
-                        : 'text-slate-300 hover:text-white hover:bg-white/10'
+                        : 'text-sage-300 hover:text-white hover:bg-white/10'
                       : isActive
                         ? 'text-foreground bg-muted'
                         : 'text-muted-foreground hover:text-foreground hover:bg-muted'
@@ -290,7 +322,7 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
                 className={cn(
                   'w-full',
                   isDark
-                    ? 'bg-blue-500 hover:bg-blue-600 text-white'
+                    ? 'bg-scarlet-rush-500 hover:bg-scarlet-rush-600 text-white'
                     : 'bg-primary hover:bg-primary/90'
                 )}
               >

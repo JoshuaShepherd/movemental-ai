@@ -127,10 +127,10 @@ export default async function BooksPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="py-16 sm:py-24 px-4 bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+      <section className="py-16 sm:py-24 px-4 bg-gradient-to-b from-sage-900 to-sage-800 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">Books</h1>
-          <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-sage-300 max-w-2xl mx-auto">
             Deep theological content, practical wisdom, and transformational insights from movement leaders.
           </p>
         </div>

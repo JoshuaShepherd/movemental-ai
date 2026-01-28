@@ -49,8 +49,8 @@ export function CredibilityChainSection({ className }: CredibilityChainSectionPr
                 'rounded-lg'
               )}
             >
-              <div className="mb-3 p-2 rounded-full bg-blue-100">
-                <point.icon className="w-5 h-5 text-blue-600" />
+              <div className="mb-3 p-2 rounded-full bg-scarlet-rush-100">
+                <point.icon className="w-5 h-5 text-scarlet-rush-500" />
               </div>
               <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
                 {point.text}

@@ -43,7 +43,7 @@ export function GradientHero({
           <Button
             asChild
             size="lg"
-            className="group h-14 px-8 text-lg font-semibold bg-white text-slate-900 hover:bg-white/90"
+            className="group h-14 px-8 text-lg font-semibold bg-white text-sage-900 hover:bg-white/90"
           >
             <a href={cta.href}>
               {cta.label}

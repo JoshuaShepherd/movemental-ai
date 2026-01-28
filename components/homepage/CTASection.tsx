@@ -42,12 +42,12 @@ export function CTASection({ className }: CTASectionProps) {
     <section
       className={cn(
         'relative py-24 sm:py-32',
-        'bg-gradient-to-b from-slate-900 via-purple-950 to-slate-900',
+        'bg-gradient-to-b from-sage-900 via-velvet-orchid-950 to-sage-900',
         className
       )}
     >
       {/* Background effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-purple-900/30 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-velvet-orchid-900/30 via-transparent to-transparent" />
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
@@ -56,7 +56,7 @@ export function CTASection({ className }: CTASectionProps) {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
               Start moving your content.
             </h2>
-            <p className="text-lg sm:text-xl text-slate-300 mb-8 leading-relaxed">
+            <p className="text-lg sm:text-xl text-sage-300 mb-8 leading-relaxed">
               Take the Fit Check to discover if Movemental is right for you. 
               60 seconds to clarity—no trial, no credit card, no commitment.
             </p>
@@ -64,7 +64,7 @@ export function CTASection({ className }: CTASectionProps) {
             <Button
               asChild
               size="lg"
-              className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-6 text-lg rounded-full shadow-lg shadow-blue-500/25 transition-all hover:shadow-xl hover:shadow-blue-500/30"
+              className="bg-scarlet-rush-500 hover:bg-scarlet-rush-600 text-white px-8 py-6 text-lg rounded-full shadow-lg shadow-scarlet-rush-500/25 transition-all hover:shadow-xl hover:shadow-scarlet-rush-500/30"
             >
               <Link href="/fit-check">
                 Take the Fit Check
@@ -93,14 +93,14 @@ export function CTASection({ className }: CTASectionProps) {
                       {tier.name}
                     </h3>
                     {expandedTier === index && (
-                      <p className="text-sm text-slate-400 mt-1">
+                      <p className="text-sm text-sage-400 mt-1">
                         {tier.description}
                       </p>
                     )}
                   </div>
                   <ChevronDown
                     className={cn(
-                      'w-5 h-5 text-slate-400 transition-transform',
+                      'w-5 h-5 text-sage-400 transition-transform',
                       expandedTier === index && 'rotate-180'
                     )}
                   />
@@ -109,7 +109,7 @@ export function CTASection({ className }: CTASectionProps) {
                   <div className="px-4 sm:px-5 pb-4 sm:pb-5">
                     <Link
                       href={tier.link}
-                      className="inline-flex items-center text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
+                      className="inline-flex items-center text-sm font-medium text-scarlet-rush-400 hover:text-scarlet-rush-300 transition-colors"
                     >
                       Learn more
                       <ArrowRight className="ml-1 w-4 h-4" />
@@ -123,7 +123,7 @@ export function CTASection({ className }: CTASectionProps) {
 
         {/* Removed placeholder logo bar - replaced with credibility statement */}
         <div className="mt-20 pt-12 border-t border-white/10">
-          <p className="text-center text-slate-400 max-w-2xl mx-auto">
+          <p className="text-center text-sage-400 max-w-2xl mx-auto">
             Movemental is building a network of movement leaders whose content reinforces and amplifies one another. 
             When you join, your work doesn&apos;t move alone.
           </p>

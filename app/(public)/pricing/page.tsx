@@ -151,7 +151,7 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative py-20 sm:py-28 px-4 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800">
+      <section className="relative py-20 sm:py-28 px-4 bg-gradient-to-b from-sage-900 via-sage-900 to-sage-800">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-4 py-2 text-sm text-emerald-400">
@@ -163,14 +163,14 @@ export default function PricingPage() {
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
             <span className="text-emerald-400">$1,000</span> Platform Build
             <br />
-            <span className="text-slate-300 text-3xl sm:text-4xl md:text-5xl">+ 10% Revenue Share</span>
+            <span className="text-sage-300 text-3xl sm:text-4xl md:text-5xl">+ 10% Revenue Share</span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl sm:text-2xl text-slate-300 mb-4">
+          <p className="text-xl sm:text-2xl text-sage-300 mb-4">
             Keep <span className="text-emerald-400 font-semibold">90%</span> of your revenue
           </p>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-10">
+          <p className="text-lg text-sage-400 max-w-2xl mx-auto mb-10">
             vs. 10-15% with traditional publishers, or endless monthly fees with rental platforms.
             Own your platform. Keep your audience. Amplify your impact.
           </p>
@@ -346,12 +346,12 @@ export default function PricingPage() {
 
             <Card className="p-6">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                  <Shield className="h-5 w-5 text-slate-600" />
+                <div className="p-2 bg-sage-100 dark:bg-sage-800 rounded-lg">
+                  <Shield className="h-5 w-5 text-sage-600" />
                 </div>
                 <h3 className="font-semibold text-foreground">We Earn</h3>
               </div>
-              <div className="text-4xl font-bold text-slate-600 mb-2">10%</div>
+              <div className="text-4xl font-bold text-sage-600 mb-2">10%</div>
               <p className="text-muted-foreground">
                 Our fee for ongoing platform hosting, updates, support, AI features, 
                 and network infrastructure. We only earn when you earn.
@@ -366,7 +366,7 @@ export default function PricingPage() {
               <span className="font-bold text-emerald-600">$9,000</span>
               <span className="text-muted-foreground mx-2">|</span>
               <span className="text-muted-foreground">We receive:</span>
-              <span className="font-bold text-slate-600">$1,000</span>
+              <span className="font-bold text-sage-600">$1,000</span>
             </div>
             <p className="text-sm text-muted-foreground mt-2">
               No monthly fees. No per-transaction charges. No hidden costs.
@@ -394,12 +394,12 @@ export default function PricingPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 sm:py-28 px-4 bg-gradient-to-b from-slate-900 to-slate-800">
+      <section className="py-20 sm:py-28 px-4 bg-gradient-to-b from-sage-900 to-sage-800">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             Ready to Own Your Platform?
           </h2>
-          <p className="text-lg text-slate-300 mb-8">
+          <p className="text-lg text-sage-300 mb-8">
             Start with a 60-second fit check to see if Movemental is right for you.
           </p>
           <Button
@@ -412,7 +412,7 @@ export default function PricingPage() {
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
-          <p className="text-slate-400 mt-4 text-sm">
+          <p className="text-sage-400 mt-4 text-sm">
             No credit card required. No commitment.
           </p>
         </div>

@@ -61,7 +61,7 @@ export function NarrativeStatement({
           'tracking-tight font-light',
           // Color variants
           variant === 'dark'
-            ? 'text-slate-300 [&_strong]:text-white [&_strong]:font-bold'
+            ? 'text-sage-300 [&_strong]:text-white [&_strong]:font-bold'
             : 'text-muted-foreground [&_strong]:text-foreground [&_strong]:font-bold'
         )}
       >

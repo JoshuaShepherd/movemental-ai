@@ -55,7 +55,7 @@ export function TopicHero({ topic, className }: TopicHeroProps) {
         {/* Subscribe CTA */}
         <Button
           size="lg"
-          className="h-12 px-6 bg-white text-slate-900 hover:bg-white/90 mb-8"
+          className="h-12 px-6 bg-white text-sage-900 hover:bg-white/90 mb-8"
         >
           <Bell className="mr-2 h-4 w-4" />
           Subscribe to Topic

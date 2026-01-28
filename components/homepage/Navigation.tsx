@@ -66,7 +66,7 @@ export function Navigation({ className }: NavigationProps) {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         isScrolled
-          ? 'bg-slate-900/95 backdrop-blur-md border-b border-slate-800'
+          ? 'bg-sage-900/95 backdrop-blur-md border-b border-sage-800'
           : 'bg-transparent',
         className
       )}
@@ -90,7 +90,7 @@ export function Navigation({ className }: NavigationProps) {
                 href={item.href}
                 className={cn(
                   'px-4 py-2 text-sm font-medium rounded-md transition-colors',
-                  'text-slate-300 hover:text-white hover:bg-white/10'
+                  'text-sage-300 hover:text-white hover:bg-white/10'
                 )}
               >
                 {item.label}
@@ -102,7 +102,7 @@ export function Navigation({ className }: NavigationProps) {
               <DropdownMenuTrigger
                 className={cn(
                   'flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-md transition-colors outline-none',
-                  'text-slate-300 hover:text-white hover:bg-white/10'
+                  'text-sage-300 hover:text-white hover:bg-white/10'
                 )}
               >
                 Explore
@@ -130,7 +130,7 @@ export function Navigation({ className }: NavigationProps) {
           <div className="hidden md:flex items-center gap-2">
             <Link
               href="/search"
-              className="p-2 text-slate-300 hover:text-white hover:bg-white/10 rounded-md transition-colors"
+              className="p-2 text-sage-300 hover:text-white hover:bg-white/10 rounded-md transition-colors"
               aria-label="Search"
             >
               <Search className="h-5 w-5" />
@@ -138,7 +138,7 @@ export function Navigation({ className }: NavigationProps) {
             <Button
               asChild
               size="sm"
-              className="bg-blue-500 hover:bg-blue-600 text-white"
+              className="bg-scarlet-rush-500 hover:bg-scarlet-rush-600 text-white"
             >
               <Link href="/fit-check">Get Started</Link>
             </Button>
@@ -161,12 +161,12 @@ export function Navigation({ className }: NavigationProps) {
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
+        <div className="md:hidden bg-sage-900/95 backdrop-blur-md border-b border-sage-800">
           <div className="container mx-auto px-4 py-4 space-y-1">
             {/* Search */}
             <Link
               href="/search"
-              className="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+              className="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg text-sage-300 hover:text-white hover:bg-white/10 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <Search className="h-5 w-5" />
@@ -178,7 +178,7 @@ export function Navigation({ className }: NavigationProps) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="block px-4 py-3 text-base font-medium rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+                className="block px-4 py-3 text-base font-medium rounded-lg text-sage-300 hover:text-white hover:bg-white/10 transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}
@@ -186,7 +186,7 @@ export function Navigation({ className }: NavigationProps) {
             ))}
 
             {/* Explore section header */}
-            <div className="px-4 pt-4 pb-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
+            <div className="px-4 pt-4 pb-2 text-xs font-semibold uppercase tracking-wider text-sage-500">
               Explore
             </div>
 
@@ -195,10 +195,10 @@ export function Navigation({ className }: NavigationProps) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+                className="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg text-sage-300 hover:text-white hover:bg-white/10 transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span className="text-slate-400">{item.icon}</span>
+                <span className="text-sage-400">{item.icon}</span>
                 {item.label}
               </Link>
             ))}
@@ -206,7 +206,7 @@ export function Navigation({ className }: NavigationProps) {
             <div className="pt-4">
               <Button
                 asChild
-                className="w-full bg-blue-500 hover:bg-blue-600 text-white"
+                className="w-full bg-scarlet-rush-500 hover:bg-scarlet-rush-600 text-white"
               >
                 <Link href="/fit-check" onClick={() => setIsMobileMenuOpen(false)}>
                   Get Started

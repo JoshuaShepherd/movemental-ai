@@ -14,7 +14,7 @@ export function AIVisionCTA({ className }: AIVisionCTAProps) {
   return (
     <section
       className={cn(
-        'py-24 sm:py-32 px-4 bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900 text-white',
+        'py-24 sm:py-32 px-4 bg-gradient-to-br from-sage-900 via-velvet-orchid-950 to-sage-900 text-white',
         className
       )}
     >
@@ -29,7 +29,7 @@ export function AIVisionCTA({ className }: AIVisionCTAProps) {
             , not platform extraction.
           </h2>
 
-          <p className="text-lg text-slate-300 mb-10 max-w-xl mx-auto">
+          <p className="text-lg text-sage-300 mb-10 max-w-xl mx-auto">
             Ready to see how Movemental Intelligence can amplify your authentic
             voice while maintaining theological depth?
           </p>
@@ -38,7 +38,7 @@ export function AIVisionCTA({ className }: AIVisionCTAProps) {
             <Button
               asChild
               size="lg"
-              className="h-14 px-8 text-lg bg-white text-slate-900 hover:bg-white/90"
+              className="h-14 px-8 text-lg bg-white text-sage-900 hover:bg-white/90"
             >
               <Link href="/book">
                 <BookOpen className="mr-2 h-5 w-5" />

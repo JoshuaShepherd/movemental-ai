@@ -62,7 +62,7 @@ export function ProcessSteps({ className }: ProcessStepsProps) {
   return (
     <section
       className={cn(
-        'py-20 sm:py-28 bg-slate-950',
+        'py-20 sm:py-28 bg-sage-950',
         className
       )}
     >
@@ -72,7 +72,7 @@ export function ProcessSteps({ className }: ProcessStepsProps) {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             From Fit Check to Launch
           </h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+          <p className="text-lg text-sage-400 max-w-2xl mx-auto">
             A clear path from discernment to a platform where your content compounds
           </p>
         </div>
@@ -84,8 +84,8 @@ export function ProcessSteps({ className }: ProcessStepsProps) {
               key={step.number}
               className={cn(
                 'relative p-6 sm:p-8 rounded-2xl',
-                'bg-slate-900/50 border border-slate-800',
-                'hover:border-slate-700 transition-colors'
+                'bg-sage-900/50 border border-sage-800',
+                'hover:border-sage-700 transition-colors'
               )}
             >
               {/* Icon */}
@@ -96,7 +96,7 @@ export function ProcessSteps({ className }: ProcessStepsProps) {
               </div>
 
               {/* Step number badge */}
-              <div className="absolute top-6 right-6 text-xs font-medium text-slate-600">
+              <div className="absolute top-6 right-6 text-xs font-medium text-sage-600">
                 Step {step.number}
               </div>
 
@@ -106,7 +106,7 @@ export function ProcessSteps({ className }: ProcessStepsProps) {
               </h3>
 
               {/* Description */}
-              <p className="text-slate-400 leading-relaxed mb-6">
+              <p className="text-sage-400 leading-relaxed mb-6">
                 {step.description}
               </p>
 
@@ -115,7 +115,7 @@ export function ProcessSteps({ className }: ProcessStepsProps) {
                 <Button
                   asChild
                   variant="secondary"
-                  className="bg-white text-slate-900 hover:bg-slate-100"
+                  className="bg-white text-sage-900 hover:bg-sage-100"
                 >
                   <Link href={step.ctaLink}>{step.ctaText}</Link>
                 </Button>

@@ -56,7 +56,7 @@ export function Footer({ className }: FooterProps) {
   return (
     <footer
       className={cn(
-        'bg-slate-950 border-t border-slate-800',
+        'bg-sage-950 border-t border-sage-800',
         'py-12 sm:py-16',
         className
       )}
@@ -71,7 +71,7 @@ export function Footer({ className }: FooterProps) {
             >
               Movemental
             </Link>
-            <p className="text-sm text-slate-400 leading-relaxed">
+            <p className="text-sm text-bright-snow-400 leading-relaxed">
               A credibility network for movement leaders.
               Content that actually moves.
             </p>
@@ -88,7 +88,7 @@ export function Footer({ className }: FooterProps) {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-slate-400 hover:text-white transition-colors"
+                      className="text-sm text-bright-snow-400 hover:text-white transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -100,20 +100,20 @@ export function Footer({ className }: FooterProps) {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-slate-500">
+        <div className="mt-12 pt-8 border-t border-sage-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-bright-snow-500">
             &copy; {currentYear} Movemental. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <Link
               href="/legal/privacy"
-              className="text-sm text-slate-500 hover:text-slate-300 transition-colors"
+              className="text-sm text-bright-snow-500 hover:text-bright-snow-300 transition-colors"
             >
               Privacy Policy
             </Link>
             <Link
               href="/legal/terms"
-              className="text-sm text-slate-500 hover:text-slate-300 transition-colors"
+              className="text-sm text-bright-snow-500 hover:text-bright-snow-300 transition-colors"
             >
               Terms of Service
             </Link>

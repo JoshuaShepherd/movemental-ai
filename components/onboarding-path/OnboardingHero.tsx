@@ -15,15 +15,15 @@ export function OnboardingHero({ onStartJourney, className }: OnboardingHeroProp
     <section
       className={cn(
         'relative min-h-[80vh] flex flex-col items-center justify-center px-4 py-16',
-        'bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800',
+        'bg-gradient-to-b from-sage-900 via-sage-900 to-sage-800',
         className
       )}
     >
       {/* Background pattern */}
       <div className="absolute inset-0 overflow-hidden opacity-5">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-white/20" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-white/20" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-white/20" />
+        <div className="absolute top-1/2 left-1/2 -transage-x-1/2 -transage-y-1/2 w-[800px] h-[800px] rounded-full border border-white/20" />
+        <div className="absolute top-1/2 left-1/2 -transage-x-1/2 -transage-y-1/2 w-[600px] h-[600px] rounded-full border border-white/20" />
+        <div className="absolute top-1/2 left-1/2 -transage-x-1/2 -transage-y-1/2 w-[400px] h-[400px] rounded-full border border-white/20" />
       </div>
 
       <div className="relative z-10 w-full max-w-3xl mx-auto text-center">
@@ -43,7 +43,7 @@ export function OnboardingHero({ onStartJourney, className }: OnboardingHeroProp
         </h1>
 
         {/* Subheadline */}
-        <p className="text-lg sm:text-xl text-slate-300 mb-10 max-w-xl mx-auto leading-relaxed">
+        <p className="text-lg sm:text-xl text-sage-300 mb-10 max-w-xl mx-auto leading-relaxed">
           A collaborative journey from discovery to launch. No empty templates—your platform 
           launches with content, configured for your unique voice.
         </p>
@@ -60,9 +60,9 @@ export function OnboardingHero({ onStartJourney, className }: OnboardingHeroProp
               <div className="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 text-white text-sm font-semibold">
                 {phase.num}
               </div>
-              <span className="text-slate-400 text-sm">{phase.label}</span>
+              <span className="text-sage-400 text-sm">{phase.label}</span>
               {index < 3 && (
-                <div className="hidden sm:block w-8 h-px bg-slate-600 ml-2" />
+                <div className="hidden sm:block w-8 h-px bg-sage-600 ml-2" />
               )}
             </div>
           ))}
@@ -75,7 +75,7 @@ export function OnboardingHero({ onStartJourney, className }: OnboardingHeroProp
             'Evidence-based insights',
             'Launch-ready platform',
           ].map((item) => (
-            <div key={item} className="flex items-center gap-2 text-slate-400 text-sm justify-center sm:justify-start">
+            <div key={item} className="flex items-center gap-2 text-sage-400 text-sm justify-center sm:justify-start">
               <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
               <span>{item}</span>
             </div>
@@ -89,12 +89,12 @@ export function OnboardingHero({ onStartJourney, className }: OnboardingHeroProp
             size="lg"
             className={cn(
               'group h-14 px-8 text-lg font-semibold',
-              'bg-white text-slate-900 hover:bg-slate-100',
+              'bg-white text-sage-900 hover:bg-sage-100',
               'transition-all duration-200'
             )}
           >
             Start Your Journey
-            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:transage-x-1" />
           </Button>
           <Button
             variant="outline"
@@ -107,8 +107,8 @@ export function OnboardingHero({ onStartJourney, className }: OnboardingHeroProp
         </div>
 
         {/* Scroll hint */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block">
-          <div className="flex flex-col items-center gap-2 text-slate-500 animate-bounce">
+        <div className="absolute bottom-8 left-1/2 -transage-x-1/2 hidden md:block">
+          <div className="flex flex-col items-center gap-2 text-sage-500 animate-bounce">
             <span className="text-xs uppercase tracking-wider">Scroll to explore</span>
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />

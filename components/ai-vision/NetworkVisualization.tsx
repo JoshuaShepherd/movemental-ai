@@ -28,7 +28,7 @@ export function NetworkVisualization({ className }: NetworkVisualizationProps) {
 
   return (
     <ScrollRevealBlock className={cn('', className)}>
-      <div className="relative w-full aspect-video max-w-lg mx-auto bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl overflow-hidden">
+      <div className="relative w-full aspect-video max-w-lg mx-auto bg-gradient-to-br from-sage-900 to-sage-800 rounded-2xl overflow-hidden">
         {/* Connections */}
         <svg className="absolute inset-0 w-full h-full">
           {connections.map(([from, to], index) => (
@@ -59,7 +59,7 @@ export function NetworkVisualization({ className }: NetworkVisualizationProps) {
             <div
               key={index}
               className={cn(
-                'absolute rounded-full transform -translate-x-1/2 -translate-y-1/2',
+                'absolute rounded-full transform -transage-x-1/2 -transage-y-1/2',
                 sizeClass,
                 index === 0
                   ? 'bg-gradient-to-br from-cyan-400 to-purple-500 shadow-lg shadow-purple-500/30'
@@ -81,10 +81,10 @@ export function NetworkVisualization({ className }: NetworkVisualizationProps) {
 
         {/* Labels */}
         <div className="absolute bottom-4 left-4 right-4 text-center">
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-sage-400">
             Leaders connected, ideas flowing
           </p>
-          <p className="text-xs text-slate-500 mt-1">
+          <p className="text-xs text-sage-500 mt-1">
             Cross-pollination at scale
           </p>
         </div>

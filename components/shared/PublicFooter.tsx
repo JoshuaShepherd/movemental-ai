@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
 interface PublicFooterProps {
@@ -49,7 +50,7 @@ export function PublicFooter({ variant = 'light', className }: PublicFooterProps
       className={cn(
         'py-12 sm:py-16 border-t',
         isDark
-          ? 'bg-slate-950 border-slate-800'
+          ? 'bg-sage-950 border-sage-800'
           : 'bg-muted/30 border-border',
         className
       )}
@@ -60,17 +61,27 @@ export function PublicFooter({ variant = 'light', className }: PublicFooterProps
           <div className="col-span-2 md:col-span-1">
             <Link
               href="/"
-              className={cn(
-                'inline-block text-xl font-bold mb-4',
-                isDark ? 'text-white' : 'text-foreground'
-              )}
+              className="inline-flex items-center gap-2 mb-4"
             >
-              Movemental
+              <Image
+                src="/media-library/images/logo/mark.webp"
+                alt="Movemental mark"
+                width={28}
+                height={28}
+                className="h-7 w-7"
+              />
+              <Image
+                src="/media-library/images/logo/logo.webp"
+                alt="Movemental"
+                width={120}
+                height={28}
+                className="h-6 w-auto"
+              />
             </Link>
             <p
               className={cn(
                 'text-sm leading-relaxed',
-                isDark ? 'text-slate-400' : 'text-muted-foreground'
+                isDark ? 'text-bright-snow-400' : 'text-muted-foreground'
               )}
             >
               Complete digital publishing platforms for movement leaders.
@@ -97,7 +108,7 @@ export function PublicFooter({ variant = 'light', className }: PublicFooterProps
                       className={cn(
                         'text-sm transition-colors',
                         isDark
-                          ? 'text-slate-400 hover:text-white'
+                          ? 'text-bright-snow-400 hover:text-white'
                           : 'text-muted-foreground hover:text-foreground'
                       )}
                     >
@@ -114,13 +125,13 @@ export function PublicFooter({ variant = 'light', className }: PublicFooterProps
         <div
           className={cn(
             'mt-12 pt-8 border-t flex flex-col sm:flex-row items-center justify-between gap-4',
-            isDark ? 'border-slate-800' : 'border-border'
+            isDark ? 'border-sage-800' : 'border-border'
           )}
         >
           <p
             className={cn(
               'text-sm',
-              isDark ? 'text-slate-500' : 'text-muted-foreground'
+              isDark ? 'text-bright-snow-500' : 'text-muted-foreground'
             )}
           >
             &copy; {currentYear} Movemental. All rights reserved.
@@ -131,7 +142,7 @@ export function PublicFooter({ variant = 'light', className }: PublicFooterProps
               className={cn(
                 'text-sm transition-colors',
                 isDark
-                  ? 'text-slate-500 hover:text-slate-300'
+                  ? 'text-bright-snow-500 hover:text-bright-snow-300'
                   : 'text-muted-foreground hover:text-foreground'
               )}
             >
@@ -142,7 +153,7 @@ export function PublicFooter({ variant = 'light', className }: PublicFooterProps
               className={cn(
                 'text-sm transition-colors',
                 isDark
-                  ? 'text-slate-500 hover:text-slate-300'
+                  ? 'text-bright-snow-500 hover:text-bright-snow-300'
                   : 'text-muted-foreground hover:text-foreground'
               )}
             >

@@ -19,7 +19,7 @@ export function AIVisionHero({ className }: AIVisionHeroProps) {
     <section
       className={cn(
         'relative min-h-screen flex items-center justify-center px-4',
-        'bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900',
+        'bg-gradient-to-br from-sage-900 via-velvet-orchid-950 to-sage-900',
         className
       )}
     >
@@ -27,7 +27,7 @@ export function AIVisionHero({ className }: AIVisionHeroProps) {
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 -transage-x-1/2 -transage-y-1/2 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
       {/* Content */}
@@ -40,14 +40,14 @@ export function AIVisionHero({ className }: AIVisionHeroProps) {
           <span className="text-white">Intelligence</span>
         </h1>
 
-        <p className="text-xl sm:text-2xl text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-xl sm:text-2xl text-sage-300 mb-12 max-w-2xl mx-auto leading-relaxed">
           AI that amplifies authentic voices while maintaining theological depth
         </p>
 
         {/* Scroll Indicator */}
         <button
           onClick={scrollToContent}
-          className="inline-flex flex-col items-center gap-2 text-slate-400 hover:text-white transition-colors group"
+          className="inline-flex flex-col items-center gap-2 text-sage-400 hover:text-white transition-colors group"
         >
           <span className="text-sm">Scroll to explore</span>
           <ChevronDown className="h-6 w-6 animate-bounce" />
