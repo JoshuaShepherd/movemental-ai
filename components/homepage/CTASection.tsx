@@ -93,14 +93,14 @@ export function CTASection({ className }: CTASectionProps) {
                       {tier.name}
                     </h3>
                     {expandedTier === index && (
-                      <p className="text-sm text-sage-400 mt-1">
+                      <p className="text-sm text-sage-300 mt-1">
                         {tier.description}
                       </p>
                     )}
                   </div>
                   <ChevronDown
                     className={cn(
-                      'w-5 h-5 text-sage-400 transition-transform',
+                      'w-5 h-5 text-sage-300 transition-transform',
                       expandedTier === index && 'rotate-180'
                     )}
                   />
@@ -123,7 +123,7 @@ export function CTASection({ className }: CTASectionProps) {
 
         {/* Removed placeholder logo bar - replaced with credibility statement */}
         <div className="mt-20 pt-12 border-t border-white/10">
-          <p className="text-center text-sage-400 max-w-2xl mx-auto">
+          <p className="text-center text-sage-300 max-w-2xl mx-auto">
             Movemental is building a network of movement leaders whose content reinforces and amplifies one another. 
             When you join, your work doesn&apos;t move alone.
           </p>

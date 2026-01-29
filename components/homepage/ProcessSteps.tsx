@@ -72,7 +72,7 @@ export function ProcessSteps({ className }: ProcessStepsProps) {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             From Fit Check to Launch
           </h2>
-          <p className="text-lg text-sage-400 max-w-2xl mx-auto">
+          <p className="text-lg text-sage-300 max-w-2xl mx-auto">
             A clear path from discernment to a platform where your content compounds
           </p>
         </div>
@@ -96,7 +96,7 @@ export function ProcessSteps({ className }: ProcessStepsProps) {
               </div>
 
               {/* Step number badge */}
-              <div className="absolute top-6 right-6 text-xs font-medium text-sage-600">
+              <div className="absolute top-6 right-6 text-xs font-medium text-sage-400">
                 Step {step.number}
               </div>
 
@@ -106,7 +106,7 @@ export function ProcessSteps({ className }: ProcessStepsProps) {
               </h3>
 
               {/* Description */}
-              <p className="text-sage-400 leading-relaxed mb-6">
+              <p className="text-sage-300 leading-relaxed mb-6">
                 {step.description}
               </p>
 

@@ -47,7 +47,7 @@ export function AIVisionHero({ className }: AIVisionHeroProps) {
         {/* Scroll Indicator */}
         <button
           onClick={scrollToContent}
-          className="inline-flex flex-col items-center gap-2 text-sage-400 hover:text-white transition-colors group"
+          className="inline-flex flex-col items-center gap-2 text-sage-300 hover:text-white transition-colors group"
         >
           <span className="text-sm">Scroll to explore</span>
           <ChevronDown className="h-6 w-6 animate-bounce" />

@@ -186,7 +186,7 @@ export function Navigation({ className }: NavigationProps) {
             ))}
 
             {/* Explore section header */}
-            <div className="px-4 pt-4 pb-2 text-xs font-semibold uppercase tracking-wider text-sage-500">
+            <div className="px-4 pt-4 pb-2 text-xs font-semibold uppercase tracking-wider text-sage-400">
               Explore
             </div>
 
@@ -198,7 +198,7 @@ export function Navigation({ className }: NavigationProps) {
                 className="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg text-sage-300 hover:text-white hover:bg-white/10 transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span className="text-sage-400">{item.icon}</span>
+                <span className="text-sage-300">{item.icon}</span>
                 {item.label}
               </Link>
             ))}

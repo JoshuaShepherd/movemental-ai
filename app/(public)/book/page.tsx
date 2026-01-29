@@ -43,12 +43,12 @@ export default function BookLandingPage() {
           </p>
 
           {/* Description */}
-          <p className="text-lg text-sage-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-sage-300 mb-8 max-w-2xl mx-auto leading-relaxed">
             {BOOK_METADATA.description}
           </p>
 
           {/* Stats */}
-          <div className="flex flex-wrap justify-center gap-8 mb-10 text-sage-400">
+          <div className="flex flex-wrap justify-center gap-8 mb-10 text-sage-300">
             <div className="flex items-center gap-2">
               <Clock className="h-5 w-5" />
               <span>{BOOK_METADATA.totalReadingTime} min total read</span>

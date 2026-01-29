@@ -170,7 +170,7 @@ export default function PricingPage() {
           <p className="text-xl sm:text-2xl text-sage-300 mb-4">
             Keep <span className="text-emerald-400 font-semibold">90%</span> of your revenue
           </p>
-          <p className="text-lg text-sage-400 max-w-2xl mx-auto mb-10">
+          <p className="text-lg text-sage-300 max-w-2xl mx-auto mb-10">
             vs. 10-15% with traditional publishers, or endless monthly fees with rental platforms.
             Own your platform. Keep your audience. Amplify your impact.
           </p>
@@ -412,7 +412,7 @@ export default function PricingPage() {
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
-          <p className="text-sage-400 mt-4 text-sm">
+          <p className="text-sage-300 mt-4 text-sm">
             No credit card required. No commitment.
           </p>
         </div>

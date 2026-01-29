@@ -81,10 +81,10 @@ export function NetworkVisualization({ className }: NetworkVisualizationProps) {
 
         {/* Labels */}
         <div className="absolute bottom-4 left-4 right-4 text-center">
-          <p className="text-sm text-sage-400">
+          <p className="text-sm text-sage-300">
             Leaders connected, ideas flowing
           </p>
-          <p className="text-xs text-sage-500 mt-1">
+          <p className="text-xs text-sage-300 mt-1">
             Cross-pollination at scale
           </p>
         </div>

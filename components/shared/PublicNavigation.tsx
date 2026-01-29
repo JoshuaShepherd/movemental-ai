@@ -286,7 +286,7 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
             <div
               className={cn(
                 'px-4 pt-4 pb-2 text-xs font-semibold uppercase tracking-wider',
-                isDark ? 'text-sage-500' : 'text-muted-foreground'
+                isDark ? 'text-sage-400' : 'text-muted-foreground'
               )}
             >
               Explore

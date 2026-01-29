@@ -50,7 +50,7 @@ export function FitCheckLanding({ onStart, className }: FitCheckLandingProps) {
             'Platform ownership',
             'Network value',
           ].map((item) => (
-            <div key={item} className="flex items-center gap-2 text-sage-400 text-sm">
+            <div key={item} className="flex items-center gap-2 text-sage-300 text-sm">
               <CheckCircle2 className="h-4 w-4 text-cyan-400 shrink-0" />
               <span>{item}</span>
             </div>
@@ -72,7 +72,7 @@ export function FitCheckLanding({ onStart, className }: FitCheckLandingProps) {
         </Button>
 
         {/* Privacy note */}
-        <p className="mt-6 text-xs text-sage-500">
+        <p className="mt-6 text-xs text-sage-300">
           Your responses help us serve you better. No email required.
         </p>
       </div>

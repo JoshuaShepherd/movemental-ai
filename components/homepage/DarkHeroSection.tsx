@@ -73,10 +73,10 @@ export function DarkHeroSection({ className }: DarkHeroSectionProps) {
         </div>
 
         {/* Bottom hint text */}
-        <div className="mt-16 flex items-center justify-center gap-2 text-sage-500 text-sm">
+        <div className="mt-16 flex items-center justify-center gap-2 text-sage-300 text-sm">
           <span>just answer 6 questions and...</span>
           <svg
-            className="w-6 h-6 text-sage-500"
+            className="w-6 h-6 text-sage-300"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"

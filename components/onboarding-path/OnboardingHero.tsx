@@ -60,9 +60,9 @@ export function OnboardingHero({ onStartJourney, className }: OnboardingHeroProp
               <div className="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 text-white text-sm font-semibold">
                 {phase.num}
               </div>
-              <span className="text-sage-400 text-sm">{phase.label}</span>
+              <span className="text-sage-300 text-sm">{phase.label}</span>
               {index < 3 && (
-                <div className="hidden sm:block w-8 h-px bg-sage-600 ml-2" />
+                <div className="hidden sm:block w-8 h-px bg-sage-400 ml-2" />
               )}
             </div>
           ))}
@@ -75,7 +75,7 @@ export function OnboardingHero({ onStartJourney, className }: OnboardingHeroProp
             'Evidence-based insights',
             'Launch-ready platform',
           ].map((item) => (
-            <div key={item} className="flex items-center gap-2 text-sage-400 text-sm justify-center sm:justify-start">
+            <div key={item} className="flex items-center gap-2 text-sage-300 text-sm justify-center sm:justify-start">
               <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
               <span>{item}</span>
             </div>
@@ -108,7 +108,7 @@ export function OnboardingHero({ onStartJourney, className }: OnboardingHeroProp
 
         {/* Scroll hint */}
         <div className="absolute bottom-8 left-1/2 -transage-x-1/2 hidden md:block">
-          <div className="flex flex-col items-center gap-2 text-sage-500 animate-bounce">
+          <div className="flex flex-col items-center gap-2 text-sage-300 animate-bounce">
             <span className="text-xs uppercase tracking-wider">Scroll to explore</span>
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
