@@ -21,17 +21,17 @@ export function ContentIntegrationGuides({ className }: ContentIntegrationGuides
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light-muted)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light-muted", className)} >
       {/* Gradient header */}
-      <div className="py-16 px-6" style={{ background: "var(--mvmt-gradient-hero-brand)" }}>
+      <div className="py-16 px-6 bg-mvmt-gradient-hero-brand">
         <div className="max-w-6xl mx-auto">
-          <p className="text-sm font-medium uppercase tracking-widest mb-3" style={{ color: "rgba(255,255,255,0.7)" }}>
+          <p className="text-sm font-medium uppercase tracking-widest mb-3 text-mvmt-on-dark-muted">
             Integrations
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4" style={{ color: "#FFFFFF", fontFamily: "var(--mvmt-font-heading)" }}>
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 font-mvmt-heading text-mvmt-on-dark-primary">
             Connect your movement tools
           </h1>
-          <p className="text-lg max-w-2xl" style={{ color: "rgba(255,255,255,0.85)" }}>
+          <p className="text-lg max-w-2xl text-mvmt-on-dark-secondary">
             Movemental integrates with the platforms your teams already use, so data flows and nothing falls through the cracks.
           </p>
         </div>
@@ -41,15 +41,15 @@ export function ContentIntegrationGuides({ className }: ContentIntegrationGuides
       <div className="max-w-6xl mx-auto px-6 py-14">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {guides.map((guide) => (
-            <div key={guide.title} className="rounded-xl overflow-hidden" style={{ backgroundColor: "var(--mvmt-surface-light)", border: "1px solid var(--mvmt-border-light)" }}>
+            <div key={guide.title} className="rounded-xl overflow-hidden bg-mvmt-surface-light border border-mvmt-border-light">
               <div className="h-2 w-full" style={{ background: guide.gradient }} />
               <div className="p-6">
                 <div className="w-10 h-10 rounded-lg mb-4" style={{ background: guide.gradient, opacity: 0.2 }} />
-                <h3 className="text-lg font-bold mb-2" style={{ color: "var(--mvmt-text-primary)" }}>{guide.title}</h3>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--mvmt-text-secondary)" }}>{guide.description}</p>
+                <h3 className="text-lg font-bold mb-2 text-mvmt-text-primary">{guide.title}</h3>
+                <p className="text-sm leading-relaxed mb-4 text-mvmt-text-secondary">{guide.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {guide.tags.map((tag) => (
-                    <span key={tag} className="px-2.5 py-1 text-xs font-medium rounded-full" style={{ backgroundColor: "var(--mvmt-surface-light-muted)", color: "var(--mvmt-accent)" }}>
+                    <span key={tag} className="px-2.5 py-1 text-xs font-medium rounded-full text-mvmt-accent bg-mvmt-surface-light-muted">
                       {tag}
                     </span>
                   ))}

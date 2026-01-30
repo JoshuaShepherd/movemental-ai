@@ -18,11 +18,11 @@ export function ArticlesCleanLongform({ className }: ArticlesCleanLongformProps)
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       {/* Top bar */}
       <div className="border-b" style={{ borderColor: "var(--mvmt-border-light)" }}>
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-          <span className="text-sm font-semibold tracking-wide" style={{ color: "var(--mvmt-text-primary)" }}>Movemental</span>
+          <span className="text-sm font-semibold tracking-wide text-mvmt-text-primary">Movemental</span>
           <div className="w-5 h-5 rounded-full" style={{ backgroundColor: "var(--mvmt-border-light)" }} />
         </div>
       </div>
@@ -30,8 +30,7 @@ export function ArticlesCleanLongform({ className }: ArticlesCleanLongformProps)
       {/* Article */}
       <article className="max-w-2xl mx-auto px-6 py-12">
         <h1
-          className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight"
-          style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+          className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-mvmt-text-primary font-mvmt-heading"
         >
           The Slow Work of Disciple-Making
         </h1>
@@ -40,13 +39,13 @@ export function ArticlesCleanLongform({ className }: ArticlesCleanLongformProps)
         <div className="mt-6 flex items-center gap-3">
           <div className="w-10 h-10 rounded-full flex-shrink-0" style={{ backgroundColor: "var(--mvmt-accent-muted)" }} />
           <div>
-            <p className="text-sm font-medium" style={{ color: "var(--mvmt-text-primary)" }}>Brad Brisco</p>
+            <p className="text-sm font-medium text-mvmt-text-primary">Brad Brisco</p>
             <p className="text-xs" style={{ color: "var(--mvmt-text-tertiary)" }}>April 23, 2024 &middot; 8 min read</p>
           </div>
         </div>
 
         {/* Body */}
-        <div className="mt-10 space-y-6 text-base leading-relaxed" style={{ color: "var(--mvmt-text-secondary)" }}>
+        <div className="mt-10 space-y-6 text-base leading-relaxed text-mvmt-text-secondary">
           <p>
             We live in a culture that prizes speed and scale. Church planting conferences celebrate
             rapid growth metrics. Social media amplifies the voices of leaders with the largest
@@ -102,12 +101,12 @@ export function ArticlesCleanLongform({ className }: ArticlesCleanLongformProps)
 
       {/* More from Movemental */}
       <div className="max-w-4xl mx-auto px-6 pb-16">
-        <h2 className="text-lg font-bold mb-6" style={{ color: "var(--mvmt-text-primary)" }}>More from Movemental</h2>
+        <h2 className="text-lg font-bold mb-6 text-mvmt-text-primary">More from Movemental</h2>
         <div className="grid sm:grid-cols-3 gap-6">
           {relatedArticles.map((article) => (
             <div key={article.title} className="space-y-2">
               <div className="w-full h-32 rounded-lg" style={{ backgroundColor: "var(--mvmt-accent-muted)" }} />
-              <h3 className="text-sm font-semibold leading-snug" style={{ color: "var(--mvmt-text-primary)" }}>{article.title}</h3>
+              <h3 className="text-sm font-semibold leading-snug text-mvmt-text-primary">{article.title}</h3>
               <p className="text-xs" style={{ color: "var(--mvmt-text-tertiary)" }}>
                 {article.author} &middot; {article.date} &middot; {article.readTime}
               </p>

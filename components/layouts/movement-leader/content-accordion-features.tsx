@@ -24,34 +24,34 @@ export function ContentAccordionFeatures({ className }: ContentAccordionFeatures
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       <div className="max-w-3xl mx-auto px-6 py-20">
-        <p className="text-sm font-medium uppercase tracking-widest mb-4" style={{ color: "var(--mvmt-text-secondary)" }}>
+        <p className="text-sm font-medium uppercase tracking-widest mb-4 text-mvmt-text-secondary">
           Platform Features
         </p>
-        <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-4" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+        <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-4 text-mvmt-text-primary font-mvmt-heading">
           Everything you need to lead a movement
         </h1>
-        <p className="text-lg mb-12" style={{ color: "var(--mvmt-text-secondary)" }}>
+        <p className="text-lg mb-12 text-mvmt-text-secondary">
           Purpose-built tools for missional leaders who are serious about multiplication.
         </p>
 
-        <div className="divide-y" style={{ borderColor: "var(--mvmt-border-light)" }}>
+        <div className="divide-y divide-mvmt-border-light">
           {features.map((feature, i) => (
             <div key={feature.title}>
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 className="w-full flex items-center justify-between py-5 text-left"
               >
-                <span className="text-lg font-semibold" style={{ color: "var(--mvmt-text-primary)" }}>
+                <span className="text-lg font-semibold text-mvmt-text-primary">
                   {feature.title}
                 </span>
-                <span className="text-2xl leading-none ml-4 flex-shrink-0" style={{ color: "var(--mvmt-text-secondary)" }}>
+                <span className="text-2xl leading-none ml-4 flex-shrink-0 text-mvmt-text-secondary">
                   {openIndex === i ? "−" : "+"}
                 </span>
               </button>
               {openIndex === i && (
-                <p className="pb-5 text-base leading-relaxed" style={{ color: "var(--mvmt-text-secondary)" }}>
+                <p className="pb-5 text-base leading-relaxed text-mvmt-text-secondary">
                   {feature.description}
                 </p>
               )}

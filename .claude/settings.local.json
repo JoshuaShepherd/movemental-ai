@@ -17,7 +17,9 @@
       "Bash(if not exist \"C:\\\\dev\\\\movemental-sites\\\\movemental-ai-site\\\\app\\\\templates\\\\chat\" mkdir \"C:\\\\dev\\\\movemental-sites\\\\movemental-ai-site\\\\app\\\\templates\\\\chat\")",
       "Bash(echo:*)",
       "Bash(npx sharp:*)",
-      "Bash(npx sharp-cli:*)"
+      "Bash(npx sharp-cli:*)",
+      "Bash(node:*)",
+      "Bash(git checkout:*)"
     ]
   }
 }

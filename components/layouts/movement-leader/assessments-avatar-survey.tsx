@@ -17,21 +17,19 @@ export function AssessmentsAvatarSurvey({ className }: AssessmentsAvatarSurveyPr
 
   return (
     <section
-      className={cn("relative w-full min-h-[70vh] md:min-h-[80vh] flex flex-col", className)}
-      style={{ backgroundColor: "var(--mvmt-surface-light)" }}
+      className={cn("relative w-full min-h-[70vh] md:min-h-[80vh] flex flex-col bg-mvmt-surface-light", className)}
     >
       {/* Top Bar */}
       <div className="flex items-center justify-between px-6 py-4">
-        <button className="text-lg" style={{ color: "var(--mvmt-text-primary)" }}>‹</button>
-        <span className="text-sm" style={{ color: "var(--mvmt-text-muted)" }}>3 / 4</span>
-        <button className="text-xs font-semibold tracking-wider uppercase" style={{ color: "var(--mvmt-text-muted)" }}>Skip</button>
+        <button className="text-lg text-mvmt-text-primary">‹</button>
+        <span className="text-sm text-mvmt-text-muted">3 / 4</span>
+        <button className="text-xs font-semibold tracking-wider uppercase text-mvmt-text-muted">Skip</button>
       </div>
 
       {/* Avatar */}
       <div className="flex justify-center mt-4 mb-6">
         <div
-          className="w-20 h-20 rounded-full flex items-center justify-center text-xl font-bold"
-          style={{ backgroundColor: "var(--assess-avatar-bg)", color: "var(--mvmt-surface-light)" }}
+          className="w-20 h-20 rounded-full flex items-center justify-center text-xl font-bold bg-[var(--assess-avatar-bg)] text-[var(--mvmt-surface-light)]"
         >
           ML
         </div>
@@ -39,8 +37,7 @@ export function AssessmentsAvatarSurvey({ className }: AssessmentsAvatarSurveyPr
 
       {/* Question */}
       <h2
-        className="text-xl sm:text-2xl font-bold text-center mb-8 px-6"
-        style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+        className="text-xl sm:text-2xl font-bold text-center mb-8 px-6 text-mvmt-text-primary font-mvmt-heading"
       >
         How many leaders are you<br />currently discipling?
       </h2>
@@ -50,8 +47,7 @@ export function AssessmentsAvatarSurvey({ className }: AssessmentsAvatarSurveyPr
         {options.map((opt) => (
           <button
             key={opt}
-            className="w-full py-3.5 px-5 rounded-lg text-sm font-medium text-left transition-colors"
-            style={{ backgroundColor: "var(--assess-option-bg)", color: "var(--assess-option-text)" }}
+            className="w-full py-3.5 px-5 rounded-lg text-sm font-medium text-left transition-colors bg-[var(--assess-option-bg)] text-[var(--assess-option-text)]"
           >
             {opt}
           </button>

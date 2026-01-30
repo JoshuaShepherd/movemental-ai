@@ -21,33 +21,24 @@ export function HeroImageGrid({ className }: HeroImageGridProps) {
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-dark)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-dark", className)} >
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 py-16 md:py-24">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left — Copy */}
           <div>
             <h1
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
-              style={{
-                color: "var(--mvmt-on-dark-primary)",
-                fontFamily: "var(--mvmt-font-heading)",
-              }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-mvmt-on-dark-primary font-mvmt-heading"
             >
               Become a Movemental Champion
             </h1>
-            <p className="mt-4 text-base leading-relaxed max-w-md" style={{ color: "var(--mvmt-on-dark-secondary)" }}>
+            <p className="mt-4 text-base leading-relaxed max-w-md text-mvmt-on-dark-secondary">
               Grow your network. Promote your resources and your movement&apos;s
               success. And get equipped for your advocacy.
             </p>
             <div className="mt-8">
               <Link
                 href="/fit-check"
-                className="inline-block px-6 py-3 text-sm font-medium transition-colors"
-                style={{
-                  backgroundColor: "var(--mvmt-accent)",
-                  color: "var(--mvmt-cta-text)",
-                  borderRadius: "var(--mvmt-radius-md)",
-                }}
+                className="inline-block px-6 py-3 text-sm font-medium transition-colors text-mvmt-cta-text bg-mvmt-accent rounded-mvmt-md"
               >
                 Sign up
               </Link>
@@ -66,13 +57,9 @@ export function HeroImageGrid({ className }: HeroImageGridProps) {
       </div>
 
       {/* Below section */}
-      <div className="py-12 text-center" style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+      <div className="py-12 text-center bg-mvmt-surface-light">
         <h2
-          className="text-2xl sm:text-3xl font-bold"
-          style={{
-            color: "var(--mvmt-text-primary)",
-            fontFamily: "var(--mvmt-font-heading)",
-          }}
+          className="text-2xl sm:text-3xl font-bold text-mvmt-text-primary font-mvmt-heading"
         >
           What is the Movemental Champions program?
         </h2>

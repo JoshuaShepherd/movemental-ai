@@ -21,7 +21,7 @@ export function ArticlesGuideHero({ className }: ArticlesGuideHeroProps) {
   const socialIcons = ["share", "twitter", "linkedin", "link"];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 py-12 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-[48px_1fr] gap-6">
           {/* Social Share Column */}
@@ -45,28 +45,23 @@ export function ArticlesGuideHero({ className }: ArticlesGuideHeroProps) {
           <div>
             {/* Hero Banner */}
             <div
-              className="rounded-2xl overflow-hidden mb-12"
-              style={{ background: "var(--mvmt-gradient-hero-brand)" }}
+              className="rounded-2xl overflow-hidden mb-12 bg-mvmt-gradient-hero-brand"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 md:p-12 items-center">
                 <div>
                   <h1
-                    className="text-3xl sm:text-4xl font-bold leading-tight mb-4"
-                    style={{ color: "var(--mvmt-on-dark-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+                    className="text-3xl sm:text-4xl font-bold leading-tight mb-4 text-mvmt-on-dark-primary font-mvmt-heading"
                   >
                     Gain Total Clarity on Your Mission
                   </h1>
-                  <p className="text-base mb-6" style={{ color: "var(--mvmt-on-dark-secondary)" }}>
+                  <p className="text-base mb-6 text-mvmt-on-dark-secondary">
                     A step-by-step guide to launching and leading missional communities that
                     multiply healthy leaders and transform neighborhoods.
                   </p>
                   <a
                     href="#"
-                    className="inline-block px-6 py-3 text-sm font-semibold rounded-lg transition-colors"
-                    style={{
-                      backgroundColor: "var(--mvmt-accent-primary)",
-                      color: "var(--mvmt-on-dark-primary)",
-                    }}
+                    className="inline-block px-6 py-3 text-sm font-semibold rounded-lg transition-colors text-mvmt-on-dark-primary"
+                    style={{ backgroundColor: "var(--mvmt-accent-primary)" }}
                   >
                     Sign up now
                   </a>
@@ -99,8 +94,7 @@ export function ArticlesGuideHero({ className }: ArticlesGuideHeroProps) {
                       <li key={link}>
                         <a
                           href="#"
-                          className="text-sm transition-colors hover:opacity-80"
-                          style={{ color: "var(--mvmt-text-secondary)" }}
+                          className="text-sm transition-colors hover:opacity-80 text-mvmt-text-secondary"
                         >
                           {i + 1}. {link}
                         </a>
@@ -111,10 +105,9 @@ export function ArticlesGuideHero({ className }: ArticlesGuideHeroProps) {
               </aside>
 
               {/* Article Content */}
-              <article className="space-y-6 text-base leading-relaxed" style={{ color: "var(--mvmt-text-primary)" }}>
+              <article className="space-y-6 text-base leading-relaxed text-mvmt-text-primary">
                 <h2
-                  className="text-2xl font-semibold"
-                  style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+                  className="text-2xl font-semibold text-mvmt-text-primary font-mvmt-heading"
                 >
                   How to launch a missional community
                 </h2>
@@ -125,12 +118,11 @@ export function ArticlesGuideHero({ className }: ArticlesGuideHeroProps) {
                 </p>
 
                 <h3
-                  className="text-xl font-semibold pt-2"
-                  style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+                  className="text-xl font-semibold pt-2 text-mvmt-text-primary font-mvmt-heading"
                 >
                   1. Define your mission focus
                 </h3>
-                <ul className="list-disc pl-6 space-y-2" style={{ color: "var(--mvmt-text-secondary)" }}>
+                <ul className="list-disc pl-6 space-y-2 text-mvmt-text-secondary">
                   <li>Identify the people group or place you feel called to</li>
                   <li>Research the existing needs and assets in that context</li>
                   <li>Write a one-sentence mission statement for your community</li>
@@ -148,14 +140,13 @@ export function ArticlesGuideHero({ className }: ArticlesGuideHeroProps) {
                   <p className="text-sm font-semibold mb-2" style={{ color: "var(--mvmt-accent-primary)" }}>
                     Formula for Mission Clarity
                   </p>
-                  <p className="text-sm" style={{ color: "var(--mvmt-text-secondary)" }}>
+                  <p className="text-sm text-mvmt-text-secondary">
                     Calling (who you are) + Context (where you are) + Community (who is with you) = Mission Focus
                   </p>
                 </div>
 
                 <h3
-                  className="text-xl font-semibold pt-2"
-                  style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+                  className="text-xl font-semibold pt-2 text-mvmt-text-primary font-mvmt-heading"
                 >
                   2. Gather your core team
                 </h3>
@@ -166,8 +157,7 @@ export function ArticlesGuideHero({ className }: ArticlesGuideHeroProps) {
                 </p>
 
                 <h3
-                  className="text-xl font-semibold pt-2"
-                  style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+                  className="text-xl font-semibold pt-2 text-mvmt-text-primary font-mvmt-heading"
                 >
                   3. Establish shared rhythms
                 </h3>

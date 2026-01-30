@@ -33,29 +33,23 @@ export function BooksFilteredGrid({ className }: BooksFilteredGridProps) {
 
   return (
     <section
-      className={cn("relative w-full min-h-screen", className)}
-      style={{ backgroundColor: "var(--mvmt-surface-light)" }}
+      className={cn("relative w-full min-h-screen bg-mvmt-surface-light", className)}
     >
       <div
-        className="sticky top-0 z-30 px-6 py-3"
-        style={{ backgroundColor: "var(--mvmt-surface-light)", borderBottom: "1px solid var(--mvmt-border-light)" }}
+        className="sticky top-0 z-30 px-6 py-3 bg-mvmt-surface-light border-b border-b-mvmt-border-light"
       >
         <div className="max-w-2xl mx-auto relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5" style={{ color: "var(--mvmt-text-muted)" }} />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-mvmt-text-muted"  />
           <input
             type="text"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-            className="w-full pl-10 pr-10 py-2.5 rounded-full text-sm outline-none"
-            style={{
-              backgroundColor: "var(--books-filter-bg)",
-              color: "var(--mvmt-text-primary)",
-              border: "1px solid var(--mvmt-border-light)",
-            }}
+            className="w-full pl-10 pr-10 py-2.5 rounded-full text-sm outline-none text-mvmt-text-primary border border-mvmt-border-light"
+            style={{ backgroundColor: "var(--books-filter-bg)" }}
           />
           {searchValue && (
             <button onClick={() => setSearchValue("")} className="absolute right-3 top-1/2 -translate-y-1/2">
-              <X className="w-4 h-4" style={{ color: "var(--mvmt-text-muted)" }} />
+              <X className="w-4 h-4 text-mvmt-text-muted"  />
             </button>
           )}
         </div>
@@ -66,12 +60,8 @@ export function BooksFilteredGrid({ className }: BooksFilteredGridProps) {
           {filters.map((f) => (
             <button
               key={f}
-              className="px-4 py-1.5 text-sm rounded-full transition-colors"
-              style={{
-                backgroundColor: "var(--books-filter-bg)",
-                color: "var(--mvmt-text-secondary)",
-                border: "1px solid var(--mvmt-border-light)",
-              }}
+              className="px-4 py-1.5 text-sm rounded-full transition-colors text-mvmt-text-secondary border border-mvmt-border-light"
+              style={{ backgroundColor: "var(--books-filter-bg)" }}
             >
               {f}
             </button>
@@ -81,15 +71,15 @@ export function BooksFilteredGrid({ className }: BooksFilteredGridProps) {
         {/* Related Authors */}
         <div className="mb-10">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-bold" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+            <h3 className="text-lg font-bold text-mvmt-text-primary font-mvmt-heading">
               Related Authors
             </h3>
             <div className="flex gap-1">
-              <button className="w-8 h-8 rounded-full flex items-center justify-center" style={{ border: "1px solid var(--mvmt-border-light)" }}>
-                <ChevronLeft className="w-4 h-4" style={{ color: "var(--mvmt-text-muted)" }} />
+              <button className="w-8 h-8 rounded-full flex items-center justify-center border border-mvmt-border-light">
+                <ChevronLeft className="w-4 h-4 text-mvmt-text-muted"  />
               </button>
-              <button className="w-8 h-8 rounded-full flex items-center justify-center" style={{ border: "1px solid var(--mvmt-border-light)" }}>
-                <ChevronRight className="w-4 h-4" style={{ color: "var(--mvmt-text-muted)" }} />
+              <button className="w-8 h-8 rounded-full flex items-center justify-center border border-mvmt-border-light">
+                <ChevronRight className="w-4 h-4 text-mvmt-text-muted"  />
               </button>
             </div>
           </div>
@@ -97,8 +87,8 @@ export function BooksFilteredGrid({ className }: BooksFilteredGridProps) {
             {relatedAuthors.map((a) => (
               <div key={a.name} className="flex-shrink-0 w-40">
                 <div className="w-full aspect-square rounded-lg" style={{ backgroundColor: "var(--books-filter-bg)" }} />
-                <p className="mt-2 text-sm font-medium truncate" style={{ color: "var(--mvmt-text-primary)" }}>{a.name}</p>
-                <p className="text-xs" style={{ color: "var(--mvmt-text-secondary)" }}>
+                <p className="mt-2 text-sm font-medium truncate text-mvmt-text-primary">{a.name}</p>
+                <p className="text-xs text-mvmt-text-secondary">
                   ★{a.rating} ({a.reviews.toLocaleString()})
                 </p>
               </div>
@@ -109,15 +99,15 @@ export function BooksFilteredGrid({ className }: BooksFilteredGridProps) {
         {/* Discipleship Books */}
         <div className="mb-10">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-bold" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+            <h3 className="text-lg font-bold text-mvmt-text-primary font-mvmt-heading">
               Discipleship Books
             </h3>
             <div className="flex gap-1">
-              <button className="w-8 h-8 rounded-full flex items-center justify-center" style={{ border: "1px solid var(--mvmt-border-light)" }}>
-                <ChevronLeft className="w-4 h-4" style={{ color: "var(--mvmt-text-muted)" }} />
+              <button className="w-8 h-8 rounded-full flex items-center justify-center border border-mvmt-border-light">
+                <ChevronLeft className="w-4 h-4 text-mvmt-text-muted"  />
               </button>
-              <button className="w-8 h-8 rounded-full flex items-center justify-center" style={{ border: "1px solid var(--mvmt-border-light)" }}>
-                <ChevronRight className="w-4 h-4" style={{ color: "var(--mvmt-text-muted)" }} />
+              <button className="w-8 h-8 rounded-full flex items-center justify-center border border-mvmt-border-light">
+                <ChevronRight className="w-4 h-4 text-mvmt-text-muted"  />
               </button>
             </div>
           </div>
@@ -127,26 +117,26 @@ export function BooksFilteredGrid({ className }: BooksFilteredGridProps) {
                 <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden" style={{ backgroundColor: "var(--books-filter-bg)" }}>
                   {book.sale && (
                     <span
-                      className="absolute top-2 right-2 px-2 py-0.5 text-xs font-bold rounded-full"
-                      style={{ backgroundColor: "var(--books-badge-sale)", color: "var(--mvmt-on-dark-primary)" }}
+                      className="absolute top-2 right-2 px-2 py-0.5 text-xs font-bold rounded-full text-mvmt-on-dark-primary"
+                      style={{ backgroundColor: "var(--books-badge-sale)" }}
                     >
                       {book.sale}
                     </span>
                   )}
                 </div>
-                <p className="mt-2 text-xs" style={{ color: "var(--mvmt-text-secondary)" }}>{book.author}</p>
-                <p className="text-sm font-medium leading-tight mt-0.5" style={{ color: "var(--mvmt-text-primary)" }}>{book.title}</p>
-                <p className="text-xs mt-1" style={{ color: "var(--mvmt-text-secondary)" }}>
+                <p className="mt-2 text-xs text-mvmt-text-secondary">{book.author}</p>
+                <p className="text-sm font-medium leading-tight mt-0.5 text-mvmt-text-primary">{book.title}</p>
+                <p className="text-xs mt-1 text-mvmt-text-secondary">
                   ★{book.rating} ({book.reviews})
                 </p>
-                <p className="text-sm font-semibold mt-1" style={{ color: "var(--mvmt-text-primary)" }}>{book.price}</p>
+                <p className="text-sm font-semibold mt-1 text-mvmt-text-primary">{book.price}</p>
               </div>
             ))}
           </div>
         </div>
 
         <div className="mb-10">
-          <h3 className="text-lg font-bold" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+          <h3 className="text-lg font-bold text-mvmt-text-primary font-mvmt-heading">
             Church Planting
           </h3>
         </div>

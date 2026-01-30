@@ -10,6 +10,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        mvmt: {
+          "text-primary": "var(--mvmt-text-primary)",
+          "text-secondary": "var(--mvmt-text-secondary)",
+          "text-muted": "var(--mvmt-text-muted)",
+          "on-dark-primary": "var(--mvmt-on-dark-primary)",
+          "on-dark-secondary": "var(--mvmt-on-dark-secondary)",
+          "on-dark-muted": "var(--mvmt-on-dark-muted)",
+          "on-dark-subtle": "var(--mvmt-on-dark-subtle)",
+          "surface-dark": "var(--mvmt-surface-dark)",
+          "surface-dark-elevated": "var(--mvmt-surface-dark-elevated)",
+          "surface-light": "var(--mvmt-surface-light)",
+          "surface-light-muted": "var(--mvmt-surface-light-muted)",
+          accent: "var(--mvmt-accent)",
+          "accent-hover": "var(--mvmt-accent-hover)",
+          "cta-bg": "var(--mvmt-cta-bg)",
+          "cta-text": "var(--mvmt-cta-text)",
+          "border-on-dark": "var(--mvmt-border-on-dark)",
+          "border-on-dark-medium": "var(--mvmt-border-on-dark-medium)",
+          "border-light": "var(--mvmt-border-light)",
+          "border-medium": "var(--mvmt-border-medium)",
+          "footer-bg": "var(--mvmt-footer-bg)",
+          "footer-text": "var(--mvmt-footer-text)",
+          "footer-text-highlight": "var(--mvmt-footer-text-highlight)",
+        },
         sage: {
           50: "#f0f4f0",
           100: "#e2e9e2",
@@ -103,10 +127,27 @@ const config: Config = {
           "5": "hsl(var(--chart-5))",
         },
       },
+      fontSize: {
+        "2xs": ["10px", { lineHeight: "14px" }],
+        "3xs": ["8px", { lineHeight: "12px" }],
+      },
+      boxShadow: {
+        "mvmt-sm": "var(--mvmt-shadow-sm)",
+        "mvmt-md": "var(--mvmt-shadow-md)",
+        "mvmt-lg": "var(--mvmt-shadow-lg)",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        "mvmt-sm": "var(--mvmt-radius-sm)",
+        "mvmt-md": "var(--mvmt-radius-md)",
+        "mvmt-lg": "var(--mvmt-radius-lg)",
+        "mvmt-xl": "var(--mvmt-radius-xl)",
+      },
+      fontFamily: {
+        "mvmt-heading": "var(--mvmt-font-heading)",
+        "mvmt-body": "var(--mvmt-font-body)",
       },
     },
   },

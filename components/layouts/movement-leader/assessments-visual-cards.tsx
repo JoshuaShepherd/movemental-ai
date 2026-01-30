@@ -42,12 +42,10 @@ export function AssessmentsVisualCards({ className }: AssessmentsVisualCardsProp
 
   return (
     <section
-      className={cn("relative w-full min-h-[70vh] md:min-h-[80vh] flex flex-col items-center justify-center", className)}
-      style={{ backgroundColor: "var(--mvmt-surface-light-muted)" }}
+      className={cn("relative w-full min-h-[70vh] md:min-h-[80vh] flex flex-col items-center justify-center bg-mvmt-surface-light-muted", className)}
     >
       <h1
-        className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 max-w-xl px-6"
-        style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+        className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 max-w-xl px-6 text-mvmt-text-primary font-mvmt-heading"
       >
         What type of leader<br />are you?
       </h1>
@@ -56,17 +54,15 @@ export function AssessmentsVisualCards({ className }: AssessmentsVisualCardsProp
         {cards.map((card) => (
           <button
             key={card.label}
-            className="flex flex-col items-center w-44 sm:w-52 rounded-xl overflow-hidden cursor-pointer transition-transform hover:scale-[1.02]"
-            style={{ border: "1px solid var(--mvmt-border-light)", boxShadow: "var(--mvmt-shadow-sm)" }}
+            className="flex flex-col items-center w-44 sm:w-52 rounded-xl overflow-hidden cursor-pointer transition-transform hover:scale-[1.02] shadow-mvmt-sm border border-mvmt-border-light"
           >
             <div
-              className="w-full py-8 flex items-center justify-center"
-              style={{ backgroundColor: "var(--assess-card-muted)", color: "var(--mvmt-text-primary)" }}
+              className="w-full py-8 flex items-center justify-center text-mvmt-text-primary bg-[var(--assess-card-muted)]"
             >
               {card.icon}
             </div>
-            <div className="w-full py-4 text-center" style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
-              <span className="text-sm font-medium" style={{ color: "var(--mvmt-text-primary)" }}>{card.label}</span>
+            <div className="w-full py-4 text-center bg-mvmt-surface-light">
+              <span className="text-sm font-medium text-mvmt-text-primary">{card.label}</span>
             </div>
           </button>
         ))}

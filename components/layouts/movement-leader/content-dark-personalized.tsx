@@ -24,27 +24,27 @@ export function ContentDarkPersonalized({ className }: ContentDarkPersonalizedPr
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-dark)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-dark", className)} >
       <div className="max-w-7xl mx-auto px-6 py-16">
         {/* Welcome */}
-        <h1 className="text-3xl sm:text-4xl font-bold mb-1" style={{ color: "var(--mvmt-on-dark-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+        <h1 className="text-3xl sm:text-4xl font-bold mb-1 text-mvmt-on-dark-primary font-mvmt-heading">
           Welcome back, Leader
         </h1>
-        <p className="text-base mb-12" style={{ color: "var(--mvmt-on-dark-muted)" }}>
+        <p className="text-base mb-12 text-mvmt-on-dark-muted">
           Pick up where you left off or explore something new.
         </p>
 
         {/* Continue Learning */}
-        <h2 className="text-lg font-bold mb-4" style={{ color: "var(--mvmt-on-dark-primary)" }}>Continue Learning</h2>
+        <h2 className="text-lg font-bold mb-4 text-mvmt-on-dark-primary">Continue Learning</h2>
         <div className="grid sm:grid-cols-2 gap-5 mb-14">
           {continueItems.map((item) => (
-            <div key={item.title} className="flex gap-4 rounded-xl p-4 cursor-pointer" style={{ backgroundColor: "var(--mvmt-surface-dark-elevated)" }}>
+            <div key={item.title} className="flex gap-4 rounded-xl p-4 cursor-pointer bg-mvmt-surface-dark-elevated">
               <div className="w-28 h-20 rounded-lg flex-shrink-0" style={{ backgroundColor: item.color }} />
               <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-bold mb-1 truncate" style={{ color: "var(--mvmt-on-dark-primary)" }}>{item.title}</h3>
-                <p className="text-xs mb-3" style={{ color: "var(--mvmt-on-dark-muted)" }}>{item.lessons}</p>
-                <div className="w-full h-1.5 rounded-full" style={{ backgroundColor: "rgba(255,255,255,0.1)" }}>
-                  <div className="h-full rounded-full" style={{ width: `${item.progress}%`, backgroundColor: "var(--mvmt-accent)" }} />
+                <h3 className="text-sm font-bold mb-1 truncate text-mvmt-on-dark-primary">{item.title}</h3>
+                <p className="text-xs mb-3 text-mvmt-on-dark-muted">{item.lessons}</p>
+                <div className="w-full h-1.5 rounded-full bg-mvmt-on-dark-muted/10">
+                  <div className="h-full rounded-full bg-mvmt-accent" style={{ width: `${item.progress}%` }} />
                 </div>
               </div>
             </div>
@@ -52,32 +52,32 @@ export function ContentDarkPersonalized({ className }: ContentDarkPersonalizedPr
         </div>
 
         {/* Recommended */}
-        <h2 className="text-lg font-bold mb-4" style={{ color: "var(--mvmt-on-dark-primary)" }}>Recommended For You</h2>
+        <h2 className="text-lg font-bold mb-4 text-mvmt-on-dark-primary">Recommended For You</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
           {recommended.map((item) => (
-            <div key={item.title} className="rounded-xl overflow-hidden cursor-pointer" style={{ backgroundColor: "var(--mvmt-surface-dark-elevated)" }}>
+            <div key={item.title} className="rounded-xl overflow-hidden cursor-pointer bg-mvmt-surface-dark-elevated">
               <div className="h-36 w-full relative" style={{ backgroundColor: item.color }}>
-                <span className="absolute top-3 left-3 px-2 py-0.5 text-xs font-bold rounded" style={{ backgroundColor: "var(--mvmt-accent)", color: "var(--mvmt-cta-text)" }}>
+                <span className="absolute top-3 left-3 px-2 py-0.5 text-xs font-bold rounded text-mvmt-cta-text bg-mvmt-accent">
                   {item.tag}
                 </span>
               </div>
               <div className="p-4">
-                <h3 className="text-sm font-bold mb-1" style={{ color: "var(--mvmt-on-dark-primary)" }}>{item.title}</h3>
-                <p className="text-xs" style={{ color: "var(--mvmt-on-dark-muted)" }}>{item.lessons}</p>
+                <h3 className="text-sm font-bold mb-1 text-mvmt-on-dark-primary">{item.title}</h3>
+                <p className="text-xs text-mvmt-on-dark-muted">{item.lessons}</p>
               </div>
             </div>
           ))}
         </div>
 
         {/* CTA Banner */}
-        <div className="rounded-2xl p-8 sm:p-12 text-center" style={{ backgroundColor: "var(--mvmt-surface-dark-elevated)" }}>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-3" style={{ color: "var(--mvmt-on-dark-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+        <div className="rounded-2xl p-8 sm:p-12 text-center bg-mvmt-surface-dark-elevated">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3 text-mvmt-on-dark-primary font-mvmt-heading">
             Unlock the full movement library
           </h2>
-          <p className="text-base mb-6 max-w-xl mx-auto" style={{ color: "var(--mvmt-on-dark-secondary)" }}>
+          <p className="text-base mb-6 max-w-xl mx-auto text-mvmt-on-dark-secondary">
             Get unlimited access to every class, resource, and coaching tool on the platform.
           </p>
-          <button className="px-8 py-3 text-sm font-bold rounded-full" style={{ backgroundColor: "var(--mvmt-accent)", color: "var(--mvmt-cta-text)" }}>
+          <button className="px-8 py-3 text-sm font-bold rounded-full text-mvmt-cta-text bg-mvmt-accent">
             Get Full Access
           </button>
         </div>

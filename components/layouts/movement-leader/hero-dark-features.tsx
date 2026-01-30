@@ -23,8 +23,7 @@ export function HeroDarkFeatures({ className }: HeroDarkFeaturesProps) {
 
   return (
     <section
-      className={cn("relative w-full", className)}
-      style={{ backgroundColor: "var(--mvmt-surface-dark)" }}
+      className={cn("relative w-full bg-mvmt-surface-dark", className)}
     >
       {/* Decorative dots */}
       <div className="absolute inset-0 overflow-hidden opacity-5">
@@ -36,23 +35,14 @@ export function HeroDarkFeatures({ className }: HeroDarkFeaturesProps) {
       <div className="relative z-10 container mx-auto px-6 sm:px-8 lg:px-12 pt-16 md:pt-24 pb-12">
         <div className="max-w-2xl">
           <h1
-            className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight"
-            style={{
-              color: "var(--mvmt-on-dark-primary)",
-              fontFamily: "var(--mvmt-font-heading)",
-            }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-mvmt-on-dark-primary font-mvmt-heading"
           >
             Build a Movemental integration, instantly connect with 5,000+ leaders
           </h1>
           <div className="mt-8">
             <Link
               href="/fit-check"
-              className="inline-block px-6 py-3 text-sm font-semibold uppercase tracking-wider transition-colors"
-              style={{
-                backgroundColor: "var(--mvmt-cta-bg)",
-                color: "var(--mvmt-cta-text)",
-                borderRadius: "var(--mvmt-radius-md)",
-              }}
+              className="inline-block px-6 py-3 text-sm font-semibold uppercase tracking-wider transition-colors text-mvmt-cta-text bg-mvmt-cta-bg rounded-mvmt-md"
             >
               Sign Up
             </Link>
@@ -66,18 +56,16 @@ export function HeroDarkFeatures({ className }: HeroDarkFeaturesProps) {
           {features.map((f) => (
             <div key={f.title}>
               <div
-                className="w-10 h-10 rounded-md flex items-center justify-center mb-4"
-                style={{ backgroundColor: "var(--mvmt-surface-dark-elevated)" }}
+                className="w-10 h-10 rounded-md flex items-center justify-center mb-4 bg-mvmt-surface-dark-elevated"
               >
-                <div className="w-5 h-5 rounded-sm" style={{ backgroundColor: "var(--mvmt-accent)" }} />
+                <div className="w-5 h-5 rounded-sm bg-mvmt-accent"  />
               </div>
               <h3
-                className="text-base font-semibold mb-2"
-                style={{ color: "var(--mvmt-on-dark-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+                className="text-base font-semibold mb-2 text-mvmt-on-dark-primary font-mvmt-heading"
               >
                 {f.title}
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--mvmt-on-dark-muted)" }}>
+              <p className="text-sm leading-relaxed text-mvmt-on-dark-muted">
                 {f.desc}
               </p>
             </div>

@@ -21,40 +21,31 @@ export function HeroCleanMinimal({ className }: HeroCleanMinimalProps) {
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 py-16 md:py-24">
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Left — Copy */}
           <div className="pt-8">
             <h1
-              className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight"
-              style={{
-                color: "var(--mvmt-text-primary)",
-                fontFamily: "var(--mvmt-font-heading)",
-              }}
+              className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-mvmt-text-primary font-mvmt-heading"
             >
               Resources for everyone
             </h1>
-            <p className="mt-4 text-base leading-relaxed max-w-md" style={{ color: "var(--mvmt-text-secondary)" }}>
+            <p className="mt-4 text-base leading-relaxed max-w-md text-mvmt-text-secondary">
               Over 50 field-tested resources brought to you by the world&apos;s
               most effective movement practitioners.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/fit-check"
-                className="inline-block px-6 py-3 text-sm font-medium border transition-colors"
-                style={{
-                  borderColor: "var(--mvmt-text-primary)",
-                  color: "var(--mvmt-text-primary)",
-                  borderRadius: "var(--mvmt-radius-full)",
-                }}
+                className="inline-block px-6 py-3 text-sm font-medium border transition-colors text-mvmt-text-primary rounded-full"
+                style={{ borderColor: "var(--mvmt-text-primary)" }}
               >
                 Start browsing
               </Link>
               <Link
                 href="/about"
-                className="inline-block px-6 py-3 text-sm font-medium transition-colors"
-                style={{ color: "var(--mvmt-text-secondary)" }}
+                className="inline-block px-6 py-3 text-sm font-medium transition-colors text-mvmt-text-secondary"
               >
                 Become a contributor
               </Link>

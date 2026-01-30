@@ -15,38 +15,35 @@ export function AssessmentsModalQuiz({ className }: AssessmentsModalQuizProps) {
 
   return (
     <section
-      className={cn("relative w-full min-h-[70vh] md:min-h-[80vh] flex items-center justify-center", className)}
-      style={{ backgroundColor: "var(--assess-overlay-bg)" }}
+      className={cn("relative w-full min-h-[70vh] md:min-h-[80vh] flex items-center justify-center bg-[var(--assess-overlay-bg)]", className)}
     >
       {/* Modal Card */}
       <div
-        className="relative w-full max-w-2xl mx-4 rounded-lg overflow-hidden"
-        style={{ backgroundColor: "var(--mvmt-surface-light)", boxShadow: "var(--mvmt-shadow-lg)" }}
+        className="relative w-full max-w-2xl mx-4 rounded-lg overflow-hidden bg-mvmt-surface-light shadow-mvmt-lg"
       >
         {/* Close button */}
-        <button className="absolute top-4 right-4 text-lg" style={{ color: "var(--mvmt-text-muted)" }}>
+        <button className="absolute top-4 right-4 text-lg text-mvmt-text-muted">
           ✕
         </button>
 
         <div className="p-8">
           {/* Progress */}
           <div className="flex items-center gap-3 mb-2">
-            <span className="text-xs font-bold tracking-wider uppercase" style={{ color: "var(--mvmt-text-primary)" }}>
+            <span className="text-xs font-bold tracking-wider uppercase text-mvmt-text-primary">
               Question 1 of 3
             </span>
           </div>
-          <div className="w-full h-1.5 rounded-full mb-8" style={{ backgroundColor: "var(--mvmt-border-light)" }}>
-            <div className="h-full rounded-full w-1/3" style={{ backgroundColor: "var(--mvmt-accent)" }} />
+          <div className="w-full h-1.5 rounded-full mb-8 bg-[var(--mvmt-border-light)]">
+            <div className="h-full rounded-full w-1/3 bg-mvmt-accent"  />
           </div>
 
           {/* Question */}
           <h2
-            className="text-xl sm:text-2xl font-bold mb-2"
-            style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+            className="text-xl sm:text-2xl font-bold mb-2 text-mvmt-text-primary font-mvmt-heading"
           >
             How large is your movement network?
           </h2>
-          <p className="text-sm mb-8" style={{ color: "var(--mvmt-text-secondary)" }}>
+          <p className="text-sm mb-8 text-mvmt-text-secondary">
             Include both your direct disciples and extended network.
           </p>
 
@@ -71,8 +68,7 @@ export function AssessmentsModalQuiz({ className }: AssessmentsModalQuizProps) {
           {/* Next button */}
           <div className="flex justify-center">
             <button
-              className="px-8 py-3 text-xs font-bold tracking-widest uppercase rounded-md transition-colors"
-              style={{ backgroundColor: "var(--mvmt-surface-dark)", color: "var(--mvmt-on-dark-primary)" }}
+              className="px-8 py-3 text-xs font-bold tracking-widest uppercase rounded-md transition-colors text-mvmt-on-dark-primary bg-mvmt-surface-dark"
             >
               Next Question
             </button>

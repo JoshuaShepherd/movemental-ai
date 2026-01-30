@@ -32,16 +32,14 @@ export function SiteNavigation({ className }: SiteNavigationProps) {
 
   return (
     <nav
-      className={cn("sticky top-0 z-50", className)}
-      style={{ backgroundColor: "var(--mvmt-surface-dark)" }}
+      className={cn("sticky top-0 z-50 bg-mvmt-surface-dark", className)}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-14 items-center gap-6">
           {/* Back to main site */}
           <Link
             href="/"
-            className="flex items-center gap-1.5 text-xs font-medium tracking-wider transition-colors shrink-0"
-            style={{ color: "var(--mvmt-on-dark-muted)" }}
+            className="flex items-center gap-1.5 text-xs font-medium tracking-wider transition-colors shrink-0 text-mvmt-on-dark-muted"
             onMouseEnter={(e) =>
               (e.currentTarget.style.color = "var(--mvmt-on-dark-primary)")
             }

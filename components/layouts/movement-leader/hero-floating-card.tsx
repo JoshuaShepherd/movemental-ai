@@ -24,36 +24,26 @@ export function HeroFloatingCard({ className }: HeroFloatingCardProps) {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0" style={{ background: "var(--mvmt-gradient-overlay-dark)" }} />
+        <div className="absolute inset-0 bg-mvmt-gradient-overlay-dark"  />
 
         {/* Floating card */}
         <div className="absolute bottom-12 left-6 sm:left-12 lg:left-24 z-10">
           <div
-            className="p-6 sm:p-8 rounded-lg shadow-xl max-w-sm"
-            style={{ backgroundColor: "var(--mvmt-surface-light)" }}
+            className="p-6 sm:p-8 rounded-lg shadow-xl max-w-sm bg-mvmt-surface-light"
           >
             <h2
-              className="text-xl sm:text-2xl font-bold leading-tight"
-              style={{
-                color: "var(--mvmt-text-primary)",
-                fontFamily: "var(--mvmt-font-heading)",
-              }}
+              className="text-xl sm:text-2xl font-bold leading-tight text-mvmt-text-primary font-mvmt-heading"
             >
               Equip your movement every season
             </h2>
-            <p className="mt-2 text-sm" style={{ color: "var(--mvmt-text-secondary)" }}>
+            <p className="mt-2 text-sm text-mvmt-text-secondary">
               Get more reach and increase impact when you access the world&apos;s
               largest network of movement leaders.
             </p>
             <div className="mt-4">
               <Link
                 href="/fit-check"
-                className="inline-block px-6 py-3 text-sm font-semibold uppercase tracking-wider transition-colors"
-                style={{
-                  backgroundColor: "var(--mvmt-cta-bg)",
-                  color: "var(--mvmt-cta-text)",
-                  borderRadius: "var(--mvmt-radius-md)",
-                }}
+                className="inline-block px-6 py-3 text-sm font-semibold uppercase tracking-wider transition-colors text-mvmt-cta-text bg-mvmt-cta-bg rounded-mvmt-md"
               >
                 Get Started with Movemental
               </Link>
@@ -64,15 +54,10 @@ export function HeroFloatingCard({ className }: HeroFloatingCardProps) {
 
       {/* Below hero — headline */}
       <div
-        className="py-12 text-center"
-        style={{ backgroundColor: "var(--mvmt-surface-light)" }}
+        className="py-12 text-center bg-mvmt-surface-light"
       >
         <h2
-          className="text-2xl sm:text-3xl md:text-4xl font-bold"
-          style={{
-            color: "var(--mvmt-text-primary)",
-            fontFamily: "var(--mvmt-font-heading)",
-          }}
+          className="text-2xl sm:text-3xl md:text-4xl font-bold text-mvmt-text-primary font-mvmt-heading"
         >
           Make your calling easier when you accept the mission
         </h2>

@@ -30,11 +30,11 @@ export function ContentComponentGallery({ className }: ContentComponentGalleryPr
   const filtered = activeSection === "All" ? components : components.filter((c) => c.section === activeSection);
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       <div className="max-w-7xl mx-auto px-6 py-16 flex gap-8">
         {/* Sidebar */}
         <aside className="hidden md:block w-52 flex-shrink-0">
-          <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--mvmt-text-muted)" }}>
+          <p className="text-xs font-semibold uppercase tracking-widest mb-4 text-mvmt-text-muted">
             Components
           </p>
           <nav className="space-y-1">
@@ -57,20 +57,20 @@ export function ContentComponentGallery({ className }: ContentComponentGalleryPr
 
         {/* Main grid */}
         <div className="flex-1">
-          <h1 className="text-3xl font-bold mb-2" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+          <h1 className="text-3xl font-bold mb-2 text-mvmt-text-primary font-mvmt-heading">
             Component Gallery
           </h1>
-          <p className="text-base mb-8" style={{ color: "var(--mvmt-text-secondary)" }}>
+          <p className="text-base mb-8 text-mvmt-text-secondary">
             Pre-built sections for your movement site. Click to preview.
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {filtered.map((comp) => (
-              <div key={comp.name} className="rounded-lg overflow-hidden cursor-pointer group" style={{ border: "1px solid var(--mvmt-border-light)" }}>
+              <div key={comp.name} className="rounded-lg overflow-hidden cursor-pointer group border border-mvmt-border-light">
                 <div className="h-36 w-full" style={{ backgroundColor: comp.color }} />
                 <div className="p-4">
-                  <h3 className="text-sm font-semibold mb-1" style={{ color: "var(--mvmt-text-primary)" }}>{comp.name}</h3>
-                  <p className="text-xs" style={{ color: "var(--mvmt-text-secondary)" }}>{comp.description}</p>
+                  <h3 className="text-sm font-semibold mb-1 text-mvmt-text-primary">{comp.name}</h3>
+                  <p className="text-xs text-mvmt-text-secondary">{comp.description}</p>
                 </div>
               </div>
             ))}

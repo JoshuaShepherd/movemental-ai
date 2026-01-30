@@ -73,12 +73,50 @@ export type { ChatVariant } from "./chat-template-switcher";
 // FAQ templates
 export { FaqDarkHero } from "./faq-dark-hero";
 export { FaqMinimalAccordion } from "./faq-minimal-accordion";
+export { FaqCategorizedGrid } from "./faq-categorized-grid";
+export { FaqSearchHero } from "./faq-search-hero";
+export { FaqSidebarNav } from "./faq-sidebar-nav";
+export { FaqTabbedSections } from "./faq-tabbed-sections";
+export { FaqSupportCenter } from "./faq-support-center";
+export { FaqGradientCards } from "./faq-gradient-cards";
 export { FaqTemplateSwitcher } from "./faq-template-switcher";
 export type { FaqVariant } from "./faq-template-switcher";
+
+// Courses templates
+export { CoursesVideoPlayer } from "./courses-video-player";
+export { CoursesChapterBuilder } from "./courses-chapter-builder";
+export { CoursesLessonSidebar } from "./courses-lesson-sidebar";
+export { CoursesDarkPlayer } from "./courses-dark-player";
+export { CoursesBootcampHero } from "./courses-bootcamp-hero";
+export { CoursesGridCatalog } from "./courses-grid-catalog";
+export { CoursesCertificate } from "./courses-certificate";
+export { CoursesQuizProgress } from "./courses-quiz-progress";
+export { CoursesMasterclassDark } from "./courses-masterclass-dark";
+export { CoursesLearningPaths } from "./courses-learning-paths";
+export { CoursesTemplateSwitcher } from "./courses-template-switcher";
+export type { CoursesVariant } from "./courses-template-switcher";
+
+// Pricing templates
+export { PricingComparisonTable } from "./pricing-comparison-table";
+export { PricingTeamCalculator } from "./pricing-team-calculator";
+export { PricingTierCards } from "./pricing-tier-cards";
+export { PricingPartnerSteps } from "./pricing-partner-steps";
+export { PricingBusinessTiers } from "./pricing-business-tiers";
+export { PricingMembershipGrid } from "./pricing-membership-grid";
+export { PricingTemplateSwitcher } from "./pricing-template-switcher";
+export type { PricingVariant } from "./pricing-template-switcher";
 
 // Reader templates
 export { ReaderDocsSidebar } from "./reader-docs-sidebar";
 export { ReaderEbookDark } from "./reader-ebook-dark";
+export { ReaderArticleClean } from "./reader-article-clean";
+export { ReaderHighlightTools } from "./reader-highlight-tools";
+export { ReaderMinimalScroll } from "./reader-minimal-scroll";
+export { ReaderPaginatedBook } from "./reader-paginated-book";
+export { ReaderChapterNav } from "./reader-chapter-nav";
+export { ReaderSplitReference } from "./reader-split-reference";
+export { ReaderImmersiveDark } from "./reader-immersive-dark";
+export { ReaderNewsletterDigest } from "./reader-newsletter-digest";
 export { ReaderTemplateSwitcher } from "./reader-template-switcher";
 export type { ReaderVariant } from "./reader-template-switcher";
 
@@ -86,13 +124,50 @@ export type { ReaderVariant } from "./reader-template-switcher";
 export { SearchAiAssistant } from "./search-ai-assistant";
 export { SearchMinimalCentered } from "./search-minimal-centered";
 export { SearchResourceHub } from "./search-resource-hub";
+export { SearchFacetedFilters } from "./search-faceted-filters";
+export { SearchCommandPalette } from "./search-command-palette";
+export { SearchDiscoveryGrid } from "./search-discovery-grid";
+export { SearchResultsList } from "./search-results-list";
+export { SearchDarkSpotlight } from "./search-dark-spotlight";
+export { SearchAiConversational } from "./search-ai-conversational";
 export { SearchTemplateSwitcher } from "./search-template-switcher";
 export type { SearchVariant } from "./search-template-switcher";
 
-// Misc templates (About, CTA, Orgs)
+// About templates
 export { AboutVideoBio } from "./about-video-bio";
+export { AboutTeamGrid } from "./about-team-grid";
+export { AboutTimelineStory } from "./about-timeline-story";
+export { AboutMissionValues } from "./about-mission-values";
+export { AboutStatsHero } from "./about-stats-hero";
+export { AboutManifestoDark } from "./about-manifesto-dark";
+export { AboutSplitMedia } from "./about-split-media";
+export { AboutFounderLetter } from "./about-founder-letter";
+export { AboutTemplateSwitcher } from "./about-template-switcher";
+export type { AboutVariant } from "./about-template-switcher";
+
+// Auth templates
+export { AuthSplitImage } from "./auth-split-image";
+export { AuthCenteredCard } from "./auth-centered-card";
+export { AuthDarkMinimal } from "./auth-dark-minimal";
+export { AuthSocialFirst } from "./auth-social-first";
+export { AuthBrandedHero } from "./auth-branded-hero";
+export { AuthMagicLink } from "./auth-magic-link";
+export { AuthTabbedForm } from "./auth-tabbed-form";
+export { AuthGradientOverlay } from "./auth-gradient-overlay";
+export { AuthTemplateSwitcher } from "./auth-template-switcher";
+export type { AuthVariant } from "./auth-template-switcher";
+
+// Misc templates (CTA, Orgs)
 export { CtaBoldBanner } from "./cta-bold-banner";
+export { CtaGradientSplit } from "./cta-gradient-split";
+export { CtaMinimalCentered } from "./cta-minimal-centered";
+export { CtaDarkFullWidth } from "./cta-dark-full-width";
+export { CtaSocialProof } from "./cta-social-proof";
 export { OrgsEnterpriseTrust } from "./orgs-enterprise-trust";
+export { OrgsLogoGrid } from "./orgs-logo-grid";
+export { OrgsCaseStudyCards } from "./orgs-case-study-cards";
+export { OrgsFeatureComparison } from "./orgs-feature-comparison";
+export { OrgsContactSales } from "./orgs-contact-sales";
 export { MiscTemplateSwitcher } from "./misc-template-switcher";
 export type { MiscVariant } from "./misc-template-switcher";
 
@@ -132,3 +207,45 @@ export { BooksDetailSplit } from "./books-detail-split";
 export { BooksDetailModal } from "./books-detail-modal";
 export { BooksTemplateSwitcher } from "./books-template-switcher";
 export type { BooksVariant } from "./books-template-switcher";
+
+// Testimonials templates
+export { TestimonialsQuoteHero } from "./testimonials-quote-hero";
+export { TestimonialsSplitTweets } from "./testimonials-split-tweets";
+export { TestimonialsMasonryGrid } from "./testimonials-masonry-grid";
+export { TestimonialsCarouselHero } from "./testimonials-carousel-hero";
+export { TestimonialsElegantSerif } from "./testimonials-elegant-serif";
+export { TestimonialsDarkBlockquote } from "./testimonials-dark-blockquote";
+export { TestimonialsGeometricCarousel } from "./testimonials-geometric-carousel";
+export { TestimonialsSplitCta } from "./testimonials-split-cta";
+export { TestimonialsDramaticDark } from "./testimonials-dramatic-dark";
+export { TestimonialsImageOverlay } from "./testimonials-image-overlay";
+export { TestimonialsGridCards } from "./testimonials-grid-cards";
+export { TestimonialsInstructorDark } from "./testimonials-instructor-dark";
+export { TestimonialsTrustLogos } from "./testimonials-trust-logos";
+export { TestimonialsTemplateSwitcher } from "./testimonials-template-switcher";
+export type { TestimonialsVariant } from "./testimonials-template-switcher";
+
+// Special page templates
+export { SpecialNetworkMap } from "./special-network-map";
+export { SpecialTimeline } from "./special-timeline";
+export { SpecialCheckInbox } from "./special-check-inbox";
+export { SpecialEditor } from "./special-editor";
+export { SpecialFounderStory } from "./special-founder-story";
+export { SpecialCourseTranscript } from "./special-course-transcript";
+export { SpecialYoureIn } from "./special-youre-in";
+export { SpecialTemplateSwitcher } from "./special-template-switcher";
+export type { SpecialVariant } from "./special-template-switcher";
+
+// Lead Magnet templates
+export { LeadMagnetSplitForm } from "./lead-magnet-split-form";
+export { LeadMagnetBookPreview } from "./lead-magnet-book-preview";
+export { LeadMagnetGuideSimple } from "./lead-magnet-guide-simple";
+export { LeadMagnetDarkResources } from "./lead-magnet-dark-resources";
+export { LeadMagnetShareInvite } from "./lead-magnet-share-invite";
+export { LeadMagnetEbookPreview } from "./lead-magnet-ebook-preview";
+export { LeadMagnetChecklist } from "./lead-magnet-checklist";
+export { LeadMagnetWebinar } from "./lead-magnet-webinar";
+export { LeadMagnetToolkit } from "./lead-magnet-toolkit";
+export { LeadMagnetDarkMinimal } from "./lead-magnet-dark-minimal";
+export { LeadMagnetTemplateSwitcher } from "./lead-magnet-template-switcher";
+export type { LeadMagnetVariant } from "./lead-magnet-template-switcher";

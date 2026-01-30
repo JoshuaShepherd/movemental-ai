@@ -23,18 +23,18 @@ export function ContentLessonList({ className }: ContentLessonListProps) {
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       <div className="max-w-3xl mx-auto px-6 py-20">
-        <p className="text-sm font-medium uppercase tracking-widest mb-3" style={{ color: "var(--mvmt-accent)" }}>
+        <p className="text-sm font-medium uppercase tracking-widest mb-3 text-mvmt-accent">
           Course
         </p>
-        <h1 className="text-3xl sm:text-4xl font-bold mb-3" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+        <h1 className="text-3xl sm:text-4xl font-bold mb-3 text-mvmt-text-primary font-mvmt-heading">
           Movement Foundations
         </h1>
-        <p className="text-base mb-2" style={{ color: "var(--mvmt-text-secondary)" }}>
+        <p className="text-base mb-2 text-mvmt-text-secondary">
           An 8-lesson journey through the core principles of missional movement leadership, taught by Brad Brisco and Dave Ferguson.
         </p>
-        <p className="text-sm mb-10" style={{ color: "var(--mvmt-text-muted)" }}>
+        <p className="text-sm mb-10 text-mvmt-text-muted">
           8 lessons • 2h 20m total
         </p>
 
@@ -42,18 +42,17 @@ export function ContentLessonList({ className }: ContentLessonListProps) {
           {lessons.map((lesson) => (
             <div
               key={lesson.num}
-              className="flex gap-5 py-5 cursor-pointer group"
-              style={{ borderBottom: "1px solid var(--mvmt-border-light)" }}
+              className="flex gap-5 py-5 cursor-pointer group border-b border-b-mvmt-border-light"
             >
-              <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center" style={{ border: "2px solid var(--mvmt-border-light)" }}>
-                <span className="text-sm font-bold" style={{ color: "var(--mvmt-text-primary)" }}>{lesson.num}</span>
+              <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center border-2 border-mvmt-border-light">
+                <span className="text-sm font-bold text-mvmt-text-primary">{lesson.num}</span>
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between mb-1">
-                  <h3 className="text-base font-bold" style={{ color: "var(--mvmt-text-primary)" }}>{lesson.title}</h3>
-                  <span className="text-xs flex-shrink-0 ml-4" style={{ color: "var(--mvmt-text-muted)" }}>{lesson.duration}</span>
+                  <h3 className="text-base font-bold text-mvmt-text-primary">{lesson.title}</h3>
+                  <span className="text-xs flex-shrink-0 ml-4 text-mvmt-text-muted">{lesson.duration}</span>
                 </div>
-                <p className="text-sm" style={{ color: "var(--mvmt-text-secondary)" }}>{lesson.description}</p>
+                <p className="text-sm text-mvmt-text-secondary">{lesson.description}</p>
               </div>
             </div>
           ))}

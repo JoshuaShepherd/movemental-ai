@@ -1,0 +1,25 @@
+{
+  "page": "hero",
+  "totalVariants": 19,
+  "variants": [
+    { "id": "colorful-headline", "name": "Colorful Headline", "style": "Light", "ref": "home-hero-colorful-headline-01.png" },
+    { "id": "agency-gradient", "name": "Agency Gradient", "style": "Dark", "ref": "home-hero-agency-gradient-01.png" },
+    { "id": "centered-product", "name": "Centered Product", "style": "Light", "ref": "home-hero-centered-product-01.png" },
+    { "id": "centered-serif", "name": "Centered Serif", "style": "Light", "ref": "home-hero-centered-serif-01.png" },
+    { "id": "chat-widget", "name": "Chat Widget", "style": "Light", "ref": "home-hero-chat-widget-01.png" },
+    { "id": "circular-feature", "name": "Circular Feature", "style": "Light", "ref": "home-hero-circular-feature-01.png" },
+    { "id": "clean-minimal", "name": "Clean Minimal", "style": "Light", "ref": "home-hero-clean-minimal-01.png" },
+    { "id": "clean-minimal-alt", "name": "Clean Minimal Alt", "style": "Light", "ref": "home-hero-clean-minimal-02.png" },
+    { "id": "dark-features", "name": "Dark Features", "style": "Dark", "ref": "home-hero-dark-features-01.png" },
+    { "id": "floating-card", "name": "Floating Card", "style": "Light", "ref": "home-hero-floating-card-01.png" },
+    { "id": "full-bleed", "name": "Full Bleed", "style": "Dark", "ref": "home-hero-full-bleed-01.png" },
+    { "id": "gradient-illustration", "name": "Gradient Illustration", "style": "Light", "ref": "home-hero-gradient-illustration-01.png" },
+    { "id": "how-it-works", "name": "How It Works", "style": "Light", "ref": "home-hero-how-it-works-01.png" },
+    { "id": "image-grid", "name": "Image Grid", "style": "Dark", "ref": "home-hero-image-grid-01.png" },
+    { "id": "pricing-card", "name": "Pricing Card", "style": "Dark", "ref": "home-hero-pricing-card-01.png" },
+    { "id": "product-showcase", "name": "Product Showcase", "style": "Light", "ref": "home-hero-product-showcase-01.png" },
+    { "id": "product-showcase-alt", "name": "Product Showcase Alt", "style": "Dark", "ref": "home-hero-product-showcase-02.png" },
+    { "id": "split-tabs", "name": "Split Tabs", "style": "Light", "ref": "home-hero-split-tabs-01.png" },
+    { "id": "template-preview", "name": "Template Preview", "style": "Light", "ref": "home-hero-template-preview-01.png" }
+  ]
+}

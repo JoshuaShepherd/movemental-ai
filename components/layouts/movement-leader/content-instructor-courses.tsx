@@ -21,32 +21,32 @@ export function ContentInstructorCourses({ className }: ContentInstructorCourses
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       <div className="max-w-6xl mx-auto px-6 py-20">
         <div className="text-center mb-14">
-          <p className="text-sm font-medium uppercase tracking-widest mb-3" style={{ color: "var(--mvmt-accent)" }}>
+          <p className="text-sm font-medium uppercase tracking-widest mb-3 text-mvmt-accent">
             Courses
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-mvmt-text-primary font-mvmt-heading">
             Learn from movement leaders
           </h1>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: "var(--mvmt-text-secondary)" }}>
+          <p className="text-lg max-w-2xl mx-auto text-mvmt-text-secondary">
             In-depth courses taught by the practitioners shaping the future of missional movements.
           </p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {courses.map((course) => (
-            <div key={course.title} className="rounded-xl overflow-hidden cursor-pointer group" style={{ border: "1px solid var(--mvmt-border-light)", backgroundColor: "var(--mvmt-surface-light)" }}>
+            <div key={course.title} className="rounded-xl overflow-hidden cursor-pointer group bg-mvmt-surface-light border border-mvmt-border-light">
               <div className="h-44 w-full relative" style={{ backgroundColor: course.color }}>
                 <span className="absolute top-3 right-3 px-2.5 py-1 text-xs font-bold rounded-full" style={{ backgroundColor: course.badgeColor, color: "#FFFFFF" }}>
                   {course.level}
                 </span>
               </div>
               <div className="p-5">
-                <p className="text-xs font-medium uppercase tracking-wider mb-1" style={{ color: "var(--mvmt-text-muted)" }}>{course.instructor}</p>
-                <h3 className="text-lg font-bold mb-3 leading-snug" style={{ color: "var(--mvmt-text-primary)" }}>{course.title}</h3>
-                <div className="flex items-center gap-3 text-xs" style={{ color: "var(--mvmt-text-secondary)" }}>
+                <p className="text-xs font-medium uppercase tracking-wider mb-1 text-mvmt-text-muted">{course.instructor}</p>
+                <h3 className="text-lg font-bold mb-3 leading-snug text-mvmt-text-primary">{course.title}</h3>
+                <div className="flex items-center gap-3 text-xs text-mvmt-text-secondary">
                   <span>{course.lessons} lessons</span>
                   <span>•</span>
                   <span>{course.duration}</span>

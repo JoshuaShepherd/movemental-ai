@@ -1,0 +1,16 @@
+{
+  "page": "chat",
+  "totalVariants": 10,
+  "variants": [
+    { "id": "chat-support-minimal", "name": "Support Minimal", "style": "Light", "ref": "chat-apple-support-minimal-01.png" },
+    { "id": "chat-warm-greeting", "name": "Warm Greeting", "style": "Light", "ref": "chat-claude-warm-minimal-01.png" },
+    { "id": "chat-panel-sidebar", "name": "Panel Sidebar", "style": "Light", "ref": "chat-clickup-panel-sidebar-01.png" },
+    { "id": "chat-widget-popup", "name": "Widget Popup", "style": "Light", "ref": "chat-front-widget-popup-01.png" },
+    { "id": "chat-hero-overlay", "name": "Hero Overlay", "style": "Light", "ref": "chat-intercom-landing-hero-01.png" },
+    { "id": "chat-assistant-friendly", "name": "Assistant Friendly", "style": "Light", "ref": "chat-monarch-assistant-friendly-01.png" },
+    { "id": "chat-dark-sidebar", "name": "Dark Sidebar", "style": "Dark", "ref": "chat-openai-dark-sidebar-01.png" },
+    { "id": "chat-split-templates", "name": "Split Templates", "style": "Light", "ref": "chat-strut-split-templates-01.png" },
+    { "id": "chat-team-channels", "name": "Team Channels", "style": "Light", "ref": "chat-twist-team-channels-01.png" },
+    { "id": "chat-suggestion-chips", "name": "Suggestion Chips", "style": "Light", "ref": "chat-upwork-suggestion-chips-01.png" }
+  ]
+}

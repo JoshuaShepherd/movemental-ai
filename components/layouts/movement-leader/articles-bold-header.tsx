@@ -21,15 +21,14 @@ export function ArticlesBoldHeader({ className }: ArticlesBoldHeaderProps) {
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       {/* Full-width Header */}
       <div
-        className="w-full px-6 sm:px-8 lg:px-12 py-16 md:py-24"
-        style={{ background: "var(--mvmt-gradient-hero-brand)" }}
+        className="w-full px-6 sm:px-8 lg:px-12 py-16 md:py-24 bg-mvmt-gradient-hero-brand"
       >
         <div className="container mx-auto max-w-5xl">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-sm mb-8" style={{ color: "var(--mvmt-on-dark-secondary)" }}>
+          <div className="flex items-center gap-2 text-sm mb-8 text-mvmt-on-dark-secondary">
             <span>Guides</span>
             <span style={{ opacity: 0.5 }}>/</span>
             <span>Missional Communities</span>
@@ -37,14 +36,13 @@ export function ArticlesBoldHeader({ className }: ArticlesBoldHeaderProps) {
 
           {/* Title */}
           <h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-3xl"
-            style={{ color: "var(--mvmt-on-dark-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-3xl text-mvmt-on-dark-primary font-mvmt-heading"
           >
             What is missional community leadership?
           </h1>
 
           {/* Metadata */}
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-8 text-sm" style={{ color: "var(--mvmt-on-dark-secondary)" }}>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-8 text-sm text-mvmt-on-dark-secondary">
             <span>Last updated: January 2025</span>
             <span style={{ opacity: 0.4 }}>|</span>
             <span>Author: Brad Brisco</span>
@@ -58,15 +56,14 @@ export function ArticlesBoldHeader({ className }: ArticlesBoldHeaderProps) {
       <div className="container mx-auto max-w-5xl px-6 sm:px-8 lg:px-12 py-12 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12">
           {/* Article Body */}
-          <article className="space-y-6 text-base leading-relaxed" style={{ color: "var(--mvmt-text-primary)" }}>
+          <article className="space-y-6 text-base leading-relaxed text-mvmt-text-primary">
             <p>
               Missional community leadership is a distinct practice rooted in the conviction that the people of
               God are called to live as a sent community — not merely gathering for worship, but actively
               participating in God&apos;s mission in their neighborhoods, workplaces, and relational networks.
             </p>
             <h2
-              className="text-2xl font-semibold pt-4"
-              style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+              className="text-2xl font-semibold pt-4 text-mvmt-text-primary font-mvmt-heading"
             >
               What defines a missional community?
             </h2>
@@ -77,8 +74,7 @@ export function ArticlesBoldHeader({ className }: ArticlesBoldHeaderProps) {
               feel called to serve.
             </p>
             <h2
-              className="text-2xl font-semibold pt-4"
-              style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+              className="text-2xl font-semibold pt-4 text-mvmt-text-primary font-mvmt-heading"
             >
               Core leadership competencies
             </h2>
@@ -93,8 +89,7 @@ export function ArticlesBoldHeader({ className }: ArticlesBoldHeaderProps) {
               within the broader mission of the community.
             </p>
             <h2
-              className="text-2xl font-semibold pt-4"
-              style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+              className="text-2xl font-semibold pt-4 text-mvmt-text-primary font-mvmt-heading"
             >
               Building rhythms of life
             </h2>
@@ -116,21 +111,17 @@ export function ArticlesBoldHeader({ className }: ArticlesBoldHeaderProps) {
               }}
             >
               <h3
-                className="text-lg font-semibold mb-2"
-                style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+                className="text-lg font-semibold mb-2 text-mvmt-text-primary font-mvmt-heading"
               >
                 Get started today
               </h3>
-              <p className="text-sm mb-5" style={{ color: "var(--mvmt-text-secondary)" }}>
+              <p className="text-sm mb-5 text-mvmt-text-secondary">
                 Launch your first missional community cohort with guided onboarding and templates.
               </p>
               <a
                 href="#"
-                className="inline-block w-full text-center px-5 py-2.5 text-sm font-semibold rounded-lg transition-colors"
-                style={{
-                  backgroundColor: "var(--mvmt-accent-primary)",
-                  color: "var(--mvmt-on-dark-primary)",
-                }}
+                className="inline-block w-full text-center px-5 py-2.5 text-sm font-semibold rounded-lg transition-colors text-mvmt-on-dark-primary"
+                style={{ backgroundColor: "var(--mvmt-accent-primary)" }}
               >
                 Start free trial
               </a>
@@ -149,8 +140,7 @@ export function ArticlesBoldHeader({ className }: ArticlesBoldHeaderProps) {
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-sm transition-colors hover:opacity-80"
-                      style={{ color: "var(--mvmt-text-secondary)" }}
+                      className="text-sm transition-colors hover:opacity-80 text-mvmt-text-secondary"
                     >
                       {link}
                     </a>

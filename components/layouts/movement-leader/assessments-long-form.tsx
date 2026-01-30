@@ -20,20 +20,19 @@ export function AssessmentsLongForm({ className }: AssessmentsLongFormProps) {
 
   return (
     <section
-      className={cn("relative w-full min-h-[70vh] md:min-h-[80vh] flex flex-col", className)}
-      style={{ backgroundColor: "var(--mvmt-surface-light-muted)" }}
+      className={cn("relative w-full min-h-[70vh] md:min-h-[80vh] flex flex-col bg-mvmt-surface-light-muted", className)}
     >
       {/* Brand top bar */}
-      <div className="text-center py-4" style={{ borderBottom: "1px solid var(--mvmt-border-light)" }}>
-        <span className="text-sm font-bold tracking-wide" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+      <div className="text-center py-4 border-b border-b-mvmt-border-light">
+        <span className="text-sm font-bold tracking-wide text-mvmt-text-primary font-mvmt-heading">
           Movemental
         </span>
       </div>
 
       {/* Navigation + Section */}
-      <div className="flex items-center gap-4 px-6 sm:px-8 py-3" style={{ borderBottom: "1px solid var(--mvmt-border-light)" }}>
-        <button className="text-lg" style={{ color: "var(--mvmt-text-primary)" }}>‹</button>
-        <span className="text-xs font-semibold" style={{ color: "var(--mvmt-text-primary)" }}>Your Ministry</span>
+      <div className="flex items-center gap-4 px-6 sm:px-8 py-3 border-b border-b-mvmt-border-light">
+        <button className="text-lg text-mvmt-text-primary">‹</button>
+        <span className="text-xs font-semibold text-mvmt-text-primary">Your Ministry</span>
       </div>
 
       {/* Segmented Progress */}
@@ -49,14 +48,13 @@ export function AssessmentsLongForm({ className }: AssessmentsLongFormProps) {
 
       {/* Content */}
       <div className="flex-1 px-6 sm:px-8 lg:px-12 max-w-2xl">
-        <p className="text-xs mb-2" style={{ color: "var(--mvmt-text-muted)" }}>9 of 21</p>
+        <p className="text-xs mb-2 text-mvmt-text-muted">9 of 21</p>
         <h2
-          className="text-xl sm:text-2xl font-bold mb-2"
-          style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+          className="text-xl sm:text-2xl font-bold mb-2 text-mvmt-text-primary font-mvmt-heading"
         >
           What is your primary ministry context?
         </h2>
-        <p className="text-sm mb-8 leading-relaxed" style={{ color: "var(--mvmt-text-secondary)" }}>
+        <p className="text-sm mb-8 leading-relaxed text-mvmt-text-secondary">
           We ask this question to all movement leaders to ensure that we provide you with the most relevant resources and assessments for your context.
         </p>
 
@@ -64,14 +62,12 @@ export function AssessmentsLongForm({ className }: AssessmentsLongFormProps) {
           {options.map((opt) => (
             <label
               key={opt}
-              className="flex items-center gap-4 px-5 py-5 rounded-xl cursor-pointer transition-colors"
-              style={{ backgroundColor: "var(--mvmt-surface-light)", border: "1px solid var(--mvmt-border-light)" }}
+              className="flex items-center gap-4 px-5 py-5 rounded-xl cursor-pointer transition-colors bg-mvmt-surface-light border border-mvmt-border-light"
             >
               <div
-                className="w-5 h-5 rounded-full border-2 flex-shrink-0"
-                style={{ borderColor: "var(--mvmt-border-medium)" }}
+                className="w-5 h-5 rounded-full border-2 flex-shrink-0 border-[var(--mvmt-border-medium)]"
               />
-              <span className="text-sm" style={{ color: "var(--mvmt-text-primary)" }}>{opt}</span>
+              <span className="text-sm text-mvmt-text-primary">{opt}</span>
             </label>
           ))}
         </div>

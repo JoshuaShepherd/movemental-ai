@@ -74,7 +74,7 @@ function AppCard({
           <div className="flex items-center gap-2">
             <h3 className="font-medium text-sm truncate">{app.name}</h3>
             {app.isFeatured && (
-              <span className="flex items-center gap-0.5 px-1.5 py-0.5 bg-amber-100 text-amber-700 text-[10px] font-medium rounded">
+              <span className="flex items-center gap-0.5 px-1.5 py-0.5 bg-amber-100 text-amber-700 text-2xs font-medium rounded">
                 <Sparkles className="h-3 w-3" />
                 Featured
               </span>

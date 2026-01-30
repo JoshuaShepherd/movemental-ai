@@ -20,13 +20,13 @@ export function ContentProductCarousel({ className }: ContentProductCarouselProp
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="mb-10">
-          <p className="text-sm font-medium uppercase tracking-widest mb-3" style={{ color: "var(--mvmt-accent)" }}>
+          <p className="text-sm font-medium uppercase tracking-widest mb-3 text-mvmt-accent">
             Platform
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-mvmt-text-primary font-mvmt-heading">
             Tools for every stage of the journey
           </h1>
         </div>
@@ -36,14 +36,13 @@ export function ContentProductCarousel({ className }: ContentProductCarouselProp
           {products.map((product) => (
             <div
               key={product.title}
-              className="flex-shrink-0 w-80 rounded-2xl overflow-hidden cursor-pointer"
-              style={{ backgroundColor: "var(--mvmt-surface-light)", border: "1px solid var(--mvmt-border-light)" }}
+              className="flex-shrink-0 w-80 rounded-2xl overflow-hidden cursor-pointer bg-mvmt-surface-light border border-mvmt-border-light"
             >
               <div className="h-52 w-full" style={{ backgroundColor: product.color }} />
               <div className="p-6">
-                <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "var(--mvmt-accent)" }}>{product.subtitle}</p>
-                <h3 className="text-xl font-bold mb-2" style={{ color: "var(--mvmt-text-primary)" }}>{product.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--mvmt-text-secondary)" }}>{product.description}</p>
+                <p className="text-xs font-semibold uppercase tracking-wider mb-1 text-mvmt-accent">{product.subtitle}</p>
+                <h3 className="text-xl font-bold mb-2 text-mvmt-text-primary">{product.title}</h3>
+                <p className="text-sm leading-relaxed text-mvmt-text-secondary">{product.description}</p>
               </div>
             </div>
           ))}

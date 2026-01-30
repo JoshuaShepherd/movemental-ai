@@ -13,30 +13,23 @@ interface ArticlesDarkCaseStudyProps {
 export function ArticlesDarkCaseStudy({ className }: ArticlesDarkCaseStudyProps) {
   return (
     <section
-      className={cn("relative w-full", className)}
-      style={{ backgroundColor: "var(--mvmt-surface-dark)" }}
+      className={cn("relative w-full bg-mvmt-surface-dark", className)}
     >
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 py-12 md:py-20">
         {/* Back link */}
         <a
           href="#"
-          className="inline-flex items-center gap-2 text-sm font-medium mb-10 transition-opacity hover:opacity-80"
-          style={{ color: "var(--mvmt-on-dark-muted)" }}
+          className="inline-flex items-center gap-2 text-sm font-medium mb-10 transition-opacity hover:opacity-80 text-mvmt-on-dark-muted"
         >
           &larr; Case Studies
         </a>
 
         {/* Hero quote block */}
         <div
-          className="rounded-2xl p-8 md:p-12 mb-10"
-          style={{ backgroundColor: "var(--mvmt-surface-dark-elevated)" }}
+          className="rounded-2xl p-8 md:p-12 mb-10 bg-mvmt-surface-dark-elevated"
         >
           <p
-            className="text-2xl sm:text-3xl md:text-4xl italic leading-snug font-light"
-            style={{
-              color: "var(--mvmt-on-dark-primary)",
-              fontFamily: "var(--mvmt-font-heading)",
-            }}
+            className="text-2xl sm:text-3xl md:text-4xl italic leading-snug font-light text-mvmt-on-dark-primary font-mvmt-heading"
           >
             &ldquo;If you care about multiplication and healthy communities, you need Movemental.&rdquo;
           </p>
@@ -44,11 +37,7 @@ export function ArticlesDarkCaseStudy({ className }: ArticlesDarkCaseStudyProps)
 
         {/* Subtitle */}
         <h1
-          className="text-lg sm:text-xl md:text-2xl font-semibold mb-8"
-          style={{
-            color: "var(--mvmt-on-dark-primary)",
-            fontFamily: "var(--mvmt-font-heading)",
-          }}
+          className="text-lg sm:text-xl md:text-2xl font-semibold mb-8 text-mvmt-on-dark-primary font-mvmt-heading"
         >
           How Movemental replaced all other tools for NewThing Network
         </h1>
@@ -57,14 +46,13 @@ export function ArticlesDarkCaseStudy({ className }: ArticlesDarkCaseStudyProps)
         <div className="flex flex-wrap items-center gap-6 mb-12">
           {/* Company logo placeholder */}
           <div
-            className="w-12 h-12 rounded-md flex-shrink-0"
-            style={{ backgroundColor: "var(--mvmt-surface-dark-elevated)" }}
+            className="w-12 h-12 rounded-md flex-shrink-0 bg-mvmt-surface-dark-elevated"
           />
-          <div className="flex flex-wrap gap-6 text-sm" style={{ color: "var(--mvmt-on-dark-secondary)" }}>
-            <span className="font-medium" style={{ color: "var(--mvmt-on-dark-primary)" }}>
+          <div className="flex flex-wrap gap-6 text-sm text-mvmt-on-dark-secondary">
+            <span className="font-medium text-mvmt-on-dark-primary">
               Dave Ferguson, COO
             </span>
-            <span className="font-medium" style={{ color: "var(--mvmt-on-dark-primary)" }}>
+            <span className="font-medium text-mvmt-on-dark-primary">
               Neil Cole, CEO
             </span>
             <span>December 21, 2023</span>
@@ -76,17 +64,13 @@ export function ArticlesDarkCaseStudy({ className }: ArticlesDarkCaseStudyProps)
 
         {/* Section header */}
         <h2
-          className="text-xl font-semibold mb-6"
-          style={{
-            color: "var(--mvmt-on-dark-primary)",
-            fontFamily: "var(--mvmt-font-heading)",
-          }}
+          className="text-xl font-semibold mb-6 text-mvmt-on-dark-primary font-mvmt-heading"
         >
           <span className="mr-2">&#128075;</span> A bit of context
         </h2>
 
         {/* Body paragraphs */}
-        <div className="max-w-3xl space-y-6 text-base leading-relaxed" style={{ color: "var(--mvmt-on-dark-secondary)" }}>
+        <div className="max-w-3xl space-y-6 text-base leading-relaxed text-mvmt-on-dark-secondary">
           <p>
             NewThing Network has been at the forefront of church multiplication for over two decades.
             Founded by Dave Ferguson and a coalition of movement-minded leaders, the network equips

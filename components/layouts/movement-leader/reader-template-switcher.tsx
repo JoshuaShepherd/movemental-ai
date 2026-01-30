@@ -6,16 +6,32 @@ import { ChevronDown } from "lucide-react";
 
 export type ReaderVariant =
   | "reader-docs-sidebar"
-  | "reader-ebook-dark";
+  | "reader-ebook-dark"
+  | "reader-article-clean"
+  | "reader-highlight-tools"
+  | "reader-minimal-scroll"
+  | "reader-paginated-book"
+  | "reader-chapter-nav"
+  | "reader-split-reference"
+  | "reader-immersive-dark"
+  | "reader-newsletter-digest";
 
 interface ReaderTemplateSwitcherProps {
   activeTemplate: ReaderVariant;
   onTemplateChange: (template: ReaderVariant) => void;
 }
 
-const templates: Array<{ id: ReaderVariant; name: string; category: "Light" | "Dark" }> = [
+const templates: Array<{ id: ReaderVariant; name: string; category: "Light" | "Dark" | "Split" }> = [
   { id: "reader-docs-sidebar", name: "Docs Sidebar", category: "Light" },
   { id: "reader-ebook-dark", name: "Ebook Dark", category: "Dark" },
+  { id: "reader-article-clean", name: "Article Clean", category: "Light" },
+  { id: "reader-highlight-tools", name: "Highlight Tools", category: "Light" },
+  { id: "reader-minimal-scroll", name: "Minimal Scroll", category: "Light" },
+  { id: "reader-paginated-book", name: "Paginated Book", category: "Light" },
+  { id: "reader-chapter-nav", name: "Chapter Nav", category: "Light" },
+  { id: "reader-split-reference", name: "Split Reference", category: "Split" },
+  { id: "reader-immersive-dark", name: "Immersive Dark", category: "Dark" },
+  { id: "reader-newsletter-digest", name: "Newsletter Digest", category: "Light" },
 ];
 
 export function ReaderTemplateSwitcher({ activeTemplate, onTemplateChange }: ReaderTemplateSwitcherProps) {
@@ -34,7 +50,7 @@ export function ReaderTemplateSwitcher({ activeTemplate, onTemplateChange }: Rea
           <ChevronDown className={cn("h-4 w-4 transition-transform", isOpen && "rotate-180")} />
         </button>
         {isOpen && (
-          <div className="absolute top-full left-0 mt-1 w-64 rounded-md border bg-background shadow-lg z-50">
+          <div className="absolute top-full left-0 mt-1 w-64 rounded-md border bg-background shadow-lg z-50 max-h-80 overflow-y-auto">
             {templates.map((t) => (
               <button
                 key={t.id}

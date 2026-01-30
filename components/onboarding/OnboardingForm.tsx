@@ -71,14 +71,14 @@ export function OnboardingForm() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-[#1A1A1A] text-white">
+      <div className="flex items-center justify-center min-h-screen bg-mvmt-surface-dark text-white">
         Loading...
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#1A1A1A] text-white">
+    <div className="min-h-screen bg-mvmt-surface-dark text-white">
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         {/* Progress Indicator */}
         <div className="mb-8">
@@ -97,7 +97,7 @@ export function OnboardingForm() {
         </div>
 
         {/* Form Card */}
-        <div className="bg-[#2A2A2A] border border-gray-700 rounded-lg p-6">
+        <div className="bg-mvmt-surface-dark-elevated border border-gray-700 rounded-lg p-6">
           <h2 className="text-3xl font-serif tracking-wide mb-6">
             {currentStepConfig.title}
           </h2>
@@ -120,7 +120,7 @@ export function OnboardingForm() {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-white text-[#1A1A1A] rounded hover:bg-gray-100 flex items-center gap-2"
+                  className="px-4 py-2 bg-white text-mvmt-surface-dark rounded hover:bg-gray-100 flex items-center gap-2"
                 >
                   {currentStep === STEPS.length ? 'Complete' : 'Next'}
                   {currentStep < STEPS.length && <ArrowRight className="h-4 w-4" />}

@@ -6,7 +6,13 @@ import { ChevronDown } from "lucide-react";
 
 export type FaqVariant =
   | "faq-dark-hero"
-  | "faq-minimal-accordion";
+  | "faq-minimal-accordion"
+  | "faq-categorized-grid"
+  | "faq-search-hero"
+  | "faq-sidebar-nav"
+  | "faq-tabbed-sections"
+  | "faq-support-center"
+  | "faq-gradient-cards";
 
 interface FaqTemplateSwitcherProps {
   activeTemplate: FaqVariant;
@@ -16,6 +22,12 @@ interface FaqTemplateSwitcherProps {
 const templates: Array<{ id: FaqVariant; name: string; category: "Dark" | "Light" }> = [
   { id: "faq-dark-hero", name: "Dark Hero FAQ", category: "Dark" },
   { id: "faq-minimal-accordion", name: "Minimal Accordion", category: "Light" },
+  { id: "faq-categorized-grid", name: "Categorized Grid", category: "Light" },
+  { id: "faq-search-hero", name: "Search Hero", category: "Light" },
+  { id: "faq-sidebar-nav", name: "Sidebar Nav", category: "Light" },
+  { id: "faq-tabbed-sections", name: "Tabbed Sections", category: "Light" },
+  { id: "faq-support-center", name: "Support Center", category: "Dark" },
+  { id: "faq-gradient-cards", name: "Gradient Cards", category: "Dark" },
 ];
 
 export function FaqTemplateSwitcher({ activeTemplate, onTemplateChange }: FaqTemplateSwitcherProps) {
@@ -34,7 +46,7 @@ export function FaqTemplateSwitcher({ activeTemplate, onTemplateChange }: FaqTem
           <ChevronDown className={cn("h-4 w-4 transition-transform", isOpen && "rotate-180")} />
         </button>
         {isOpen && (
-          <div className="absolute top-full left-0 mt-1 w-64 rounded-md border bg-background shadow-lg z-50">
+          <div className="absolute top-full left-0 mt-1 w-64 rounded-md border bg-background shadow-lg z-50 max-h-80 overflow-y-auto">
             {templates.map((t) => (
               <button
                 key={t.id}

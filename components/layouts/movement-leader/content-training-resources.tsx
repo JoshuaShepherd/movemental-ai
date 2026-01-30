@@ -27,12 +27,12 @@ export function ContentTrainingResources({ className }: ContentTrainingResources
   const filtered = activeFilter === "All" ? resources : resources.filter((r) => r.type === activeFilter);
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light-muted)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light-muted", className)} >
       <div className="max-w-6xl mx-auto px-6 py-20">
-        <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+        <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-mvmt-text-primary font-mvmt-heading">
           Training Resources
         </h1>
-        <p className="text-base mb-8" style={{ color: "var(--mvmt-text-secondary)" }}>
+        <p className="text-base mb-8 text-mvmt-text-secondary">
           Materials for developing leaders at every stage of the multiplication journey.
         </p>
 
@@ -57,16 +57,16 @@ export function ContentTrainingResources({ className }: ContentTrainingResources
         {/* Resource cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filtered.map((res, i) => (
-            <div key={`${res.title}-${i}`} className="rounded-xl p-5 cursor-pointer" style={{ backgroundColor: "var(--mvmt-surface-light)", border: "1px solid var(--mvmt-border-light)" }}>
+            <div key={`${res.title}-${i}`} className="rounded-xl p-5 cursor-pointer bg-mvmt-surface-light border border-mvmt-border-light">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: res.color }}>
-                  <span className="text-xs font-bold" style={{ color: "var(--mvmt-accent)" }}>{res.type.slice(0, 3).toUpperCase()}</span>
+                  <span className="text-xs font-bold text-mvmt-accent">{res.type.slice(0, 3).toUpperCase()}</span>
                 </div>
-                <span className="text-xs font-medium uppercase tracking-wider" style={{ color: "var(--mvmt-accent)" }}>{res.type}</span>
+                <span className="text-xs font-medium uppercase tracking-wider text-mvmt-accent">{res.type}</span>
               </div>
-              <h3 className="text-base font-bold mb-2" style={{ color: "var(--mvmt-text-primary)" }}>{res.title}</h3>
-              <p className="text-sm leading-relaxed mb-3" style={{ color: "var(--mvmt-text-secondary)" }}>{res.description}</p>
-              <p className="text-xs" style={{ color: "var(--mvmt-text-muted)" }}>{res.meta}</p>
+              <h3 className="text-base font-bold mb-2 text-mvmt-text-primary">{res.title}</h3>
+              <p className="text-sm leading-relaxed mb-3 text-mvmt-text-secondary">{res.description}</p>
+              <p className="text-xs text-mvmt-text-muted">{res.meta}</p>
             </div>
           ))}
         </div>

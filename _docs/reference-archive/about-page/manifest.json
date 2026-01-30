@@ -1,0 +1,53 @@
+{
+  "templateCategory": "about-page",
+  "variants": [
+    {
+      "id": "about-video-bio",
+      "file": "about-video-bio.tsx",
+      "reference": "about-video-bio-01.png",
+      "source": "MasterClass"
+    },
+    {
+      "id": "about-team-grid",
+      "file": "about-team-grid.tsx",
+      "reference": null,
+      "source": "Stripe"
+    },
+    {
+      "id": "about-timeline-story",
+      "file": "about-timeline-story.tsx",
+      "reference": null,
+      "source": "Linear"
+    },
+    {
+      "id": "about-mission-values",
+      "file": "about-mission-values.tsx",
+      "reference": null,
+      "source": "Notion"
+    },
+    {
+      "id": "about-stats-hero",
+      "file": "about-stats-hero.tsx",
+      "reference": null,
+      "source": "Vercel"
+    },
+    {
+      "id": "about-manifesto-dark",
+      "file": "about-manifesto-dark.tsx",
+      "reference": null,
+      "source": "Basecamp"
+    },
+    {
+      "id": "about-split-media",
+      "file": "about-split-media.tsx",
+      "reference": null,
+      "source": "Webflow"
+    },
+    {
+      "id": "about-founder-letter",
+      "file": "about-founder-letter.tsx",
+      "reference": null,
+      "source": "Custom"
+    }
+  ]
+}

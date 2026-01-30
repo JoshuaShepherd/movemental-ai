@@ -21,34 +21,34 @@ export function ContentDarkRecordings({ className }: ContentDarkRecordingsProps)
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-dark)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-dark", className)} >
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="flex items-end justify-between mb-10">
           <div>
-            <p className="text-sm font-medium uppercase tracking-widest mb-2" style={{ color: "var(--mvmt-accent)" }}>
+            <p className="text-sm font-medium uppercase tracking-widest mb-2 text-mvmt-accent">
               Live Recordings
             </p>
-            <h1 className="text-3xl sm:text-4xl font-bold" style={{ color: "var(--mvmt-on-dark-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+            <h1 className="text-3xl sm:text-4xl font-bold text-mvmt-on-dark-primary font-mvmt-heading">
               Watch past sessions
             </h1>
           </div>
-          <button className="hidden sm:block px-4 py-2 text-sm font-medium rounded-lg" style={{ border: "1px solid var(--mvmt-border-on-dark)", color: "var(--mvmt-on-dark-secondary)" }}>
+          <button className="hidden sm:block px-4 py-2 text-sm font-medium rounded-lg text-mvmt-on-dark-secondary border border-mvmt-border-on-dark">
             View All
           </button>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {recordings.map((rec) => (
-            <div key={rec.title} className="rounded-xl overflow-hidden cursor-pointer group" style={{ backgroundColor: "var(--mvmt-surface-dark-elevated)" }}>
+            <div key={rec.title} className="rounded-xl overflow-hidden cursor-pointer group bg-mvmt-surface-dark-elevated">
               <div className="h-44 w-full relative" style={{ backgroundColor: rec.color }}>
-                <span className="absolute bottom-3 right-3 px-3 py-1 text-xs font-bold rounded-full" style={{ backgroundColor: "var(--mvmt-accent)", color: "var(--mvmt-cta-text)" }}>
+                <span className="absolute bottom-3 right-3 px-3 py-1 text-xs font-bold rounded-full text-mvmt-cta-text bg-mvmt-accent">
                   {rec.duration}
                 </span>
               </div>
               <div className="p-5">
-                <h3 className="text-base font-bold mb-2 leading-snug" style={{ color: "var(--mvmt-on-dark-primary)" }}>{rec.title}</h3>
-                <p className="text-sm mb-1" style={{ color: "var(--mvmt-on-dark-secondary)" }}>{rec.speaker}</p>
-                <p className="text-xs" style={{ color: "var(--mvmt-on-dark-muted)" }}>{rec.date}</p>
+                <h3 className="text-base font-bold mb-2 leading-snug text-mvmt-on-dark-primary">{rec.title}</h3>
+                <p className="text-sm mb-1 text-mvmt-on-dark-secondary">{rec.speaker}</p>
+                <p className="text-xs text-mvmt-on-dark-muted">{rec.date}</p>
               </div>
             </div>
           ))}

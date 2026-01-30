@@ -7,50 +7,108 @@ import { ChevronDown } from "lucide-react";
 export type SearchVariant =
   | "search-ai-assistant"
   | "search-minimal-centered"
-  | "search-resource-hub";
+  | "search-resource-hub"
+  | "search-faceted-filters"
+  | "search-command-palette"
+  | "search-discovery-grid"
+  | "search-results-list"
+  | "search-dark-spotlight"
+  | "search-ai-conversational";
 
 interface SearchTemplateSwitcherProps {
   activeTemplate: SearchVariant;
   onTemplateChange: (template: SearchVariant) => void;
 }
 
-const templates: Array<{ id: SearchVariant; name: string; category: "Gradient" | "Light" }> = [
+const templates: Array<{
+  id: SearchVariant;
+  name: string;
+  category: "Light" | "Dark" | "Gradient" | "Overlay";
+}> = [
   { id: "search-ai-assistant", name: "AI Assistant", category: "Gradient" },
   { id: "search-minimal-centered", name: "Minimal Centered", category: "Light" },
   { id: "search-resource-hub", name: "Resource Hub", category: "Gradient" },
+  { id: "search-faceted-filters", name: "Faceted Filters", category: "Light" },
+  { id: "search-command-palette", name: "Command Palette", category: "Overlay" },
+  { id: "search-discovery-grid", name: "Discovery Grid", category: "Dark" },
+  { id: "search-results-list", name: "Results List", category: "Light" },
+  { id: "search-dark-spotlight", name: "Dark Spotlight", category: "Dark" },
+  { id: "search-ai-conversational", name: "AI Conversational", category: "Light" },
 ];
 
-export function SearchTemplateSwitcher({ activeTemplate, onTemplateChange }: SearchTemplateSwitcherProps) {
+const categories = ["All", "Light", "Dark", "Gradient", "Overlay"] as const;
+
+export function SearchTemplateSwitcher({
+  activeTemplate,
+  onTemplateChange,
+}: SearchTemplateSwitcherProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [filterCategory, setFilterCategory] = useState<string>("All");
   const active = templates.find((t) => t.id === activeTemplate);
+
+  const filtered = filterCategory === "All"
+    ? templates
+    : templates.filter((t) => t.category === filterCategory);
 
   return (
     <div className="flex items-center gap-3 px-4 py-2">
-      <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Search:</span>
+      <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+        Search:
+      </span>
       <div className="relative">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className={cn("flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-md border transition-colors", "border-border bg-background hover:bg-muted")}
+          className={cn(
+            "flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-md border transition-colors",
+            "border-border bg-background hover:bg-muted"
+          )}
         >
           {active?.name ?? "Select"}
           <ChevronDown className={cn("h-4 w-4 transition-transform", isOpen && "rotate-180")} />
         </button>
+
         {isOpen && (
-          <div className="absolute top-full left-0 mt-1 w-64 rounded-md border bg-background shadow-lg z-50">
-            {templates.map((t) => (
-              <button
-                key={t.id}
-                onClick={() => { onTemplateChange(t.id); setIsOpen(false); }}
-                className={cn("w-full text-left px-3 py-2 text-sm transition-colors hover:bg-muted", t.id === activeTemplate && "bg-muted font-medium")}
-              >
-                <span>{t.name}</span>
-                <span className="ml-2 text-xs text-muted-foreground">{t.category}</span>
-              </button>
-            ))}
+          <div className="absolute top-full left-0 mt-1 w-72 rounded-md border bg-background shadow-lg z-50">
+            <div className="flex flex-wrap gap-1 p-2 border-b">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setFilterCategory(cat)}
+                  className={cn(
+                    "px-2 py-1 text-xs rounded transition-colors",
+                    filterCategory === cat
+                      ? "bg-primary text-primary-foreground"
+                      : "hover:bg-muted text-muted-foreground"
+                  )}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+            <div className="max-h-64 overflow-y-auto">
+              {filtered.map((t) => (
+                <button
+                  key={t.id}
+                  onClick={() => {
+                    onTemplateChange(t.id);
+                    setIsOpen(false);
+                  }}
+                  className={cn(
+                    "w-full text-left px-3 py-2 text-sm transition-colors hover:bg-muted",
+                    t.id === activeTemplate && "bg-muted font-medium"
+                  )}
+                >
+                  <span>{t.name}</span>
+                  <span className="ml-2 text-xs text-muted-foreground">{t.category}</span>
+                </button>
+              ))}
+            </div>
           </div>
         )}
       </div>
-      <span className="text-xs text-muted-foreground">{templates.length} templates</span>
+      <span className="text-xs text-muted-foreground">
+        {templates.length} templates
+      </span>
     </div>
   );
 }

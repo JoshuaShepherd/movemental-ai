@@ -16,19 +16,17 @@ export function AssessmentsUdemyQuiz({ className }: AssessmentsUdemyQuizProps) {
 
   return (
     <section
-      className={cn("relative w-full min-h-[70vh] md:min-h-[80vh] flex flex-col", className)}
-      style={{ backgroundColor: "var(--mvmt-surface-light)" }}
+      className={cn("relative w-full min-h-[70vh] md:min-h-[80vh] flex flex-col bg-mvmt-surface-light", className)}
     >
       {/* Dark Header */}
-      <div className="flex items-center justify-between px-6 py-3" style={{ backgroundColor: "var(--mvmt-surface-dark)" }}>
+      <div className="flex items-center justify-between px-6 py-3 bg-mvmt-surface-dark">
         <div className="flex items-center gap-3">
-          <span className="text-sm font-bold" style={{ color: "var(--mvmt-on-dark-primary)" }}>Movemental</span>
-          <span className="text-xs" style={{ color: "var(--mvmt-on-dark-muted)" }}>|</span>
-          <span className="text-xs" style={{ color: "var(--mvmt-on-dark-secondary)" }}>Church Planting 101</span>
+          <span className="text-sm font-bold text-mvmt-on-dark-primary">Movemental</span>
+          <span className="text-xs text-mvmt-on-dark-muted">|</span>
+          <span className="text-xs text-mvmt-on-dark-secondary">Church Planting 101</span>
         </div>
         <button
-          className="px-4 py-1.5 text-xs font-medium rounded flex items-center gap-1"
-          style={{ border: "1px solid var(--mvmt-border-on-dark-medium)", color: "var(--mvmt-on-dark-primary)" }}
+          className="px-4 py-1.5 text-xs font-medium rounded flex items-center gap-1 text-mvmt-on-dark-primary border border-mvmt-border-on-dark-medium"
         >
           ✕ Save and exit
         </button>
@@ -36,14 +34,13 @@ export function AssessmentsUdemyQuiz({ className }: AssessmentsUdemyQuizProps) {
 
       {/* Question Body */}
       <div className="flex-1 px-6 sm:px-12 lg:px-24 py-10 max-w-3xl">
-        <p className="text-sm font-medium mb-3" style={{ color: "var(--mvmt-text-secondary)" }}>Question 2</p>
+        <p className="text-sm font-medium mb-3 text-mvmt-text-secondary">Question 2</p>
         <h2
-          className="text-xl sm:text-2xl font-semibold leading-snug mb-2"
-          style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+          className="text-xl sm:text-2xl font-semibold leading-snug mb-2 text-mvmt-text-primary font-mvmt-heading"
         >
           Which attribute would you prioritize first when launching a movement in a new context? Select all that apply.
         </h2>
-        <p className="text-sm mb-8" style={{ color: "var(--mvmt-text-muted)" }}>Select the correct answer</p>
+        <p className="text-sm mb-8 text-mvmt-text-muted">Select the correct answer</p>
 
         <div className="space-y-3 max-w-xl">
           {options.map((opt) => (
@@ -53,12 +50,11 @@ export function AssessmentsUdemyQuiz({ className }: AssessmentsUdemyQuizProps) {
               style={{ border: opt.selected ? "2px solid var(--mvmt-text-primary)" : "1px solid var(--mvmt-border-medium)" }}
             >
               <div
-                className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0"
-                style={{ borderColor: "var(--mvmt-text-primary)" }}
+                className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 border-[var(--mvmt-text-primary)]"
               >
-                {opt.selected && <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "var(--mvmt-text-primary)" }} />}
+                {opt.selected && <div className="w-2.5 h-2.5 rounded-full bg-[var(--mvmt-text-primary)]" />}
               </div>
-              <span className="text-sm" style={{ color: "var(--mvmt-text-primary)" }}>{opt.label}</span>
+              <span className="text-sm text-mvmt-text-primary">{opt.label}</span>
             </label>
           ))}
         </div>
@@ -66,22 +62,19 @@ export function AssessmentsUdemyQuiz({ className }: AssessmentsUdemyQuizProps) {
 
       {/* Bottom Bar */}
       <div
-        className="flex items-center justify-between px-6 sm:px-12 lg:px-24 py-4"
-        style={{ borderTop: "1px solid var(--mvmt-border-light)" }}
+        className="flex items-center justify-between px-6 sm:px-12 lg:px-24 py-4 border-t border-t-mvmt-border-light"
       >
-        <button className="text-xs flex items-center gap-1" style={{ color: "var(--mvmt-text-secondary)" }}>
+        <button className="text-xs flex items-center gap-1 text-mvmt-text-secondary">
           ⚑ Report issue
         </button>
         <div className="flex gap-3">
           <button
-            className="px-5 py-2 text-sm font-medium rounded"
-            style={{ border: "1px solid var(--mvmt-border-medium)", color: "var(--mvmt-text-primary)" }}
+            className="px-5 py-2 text-sm font-medium rounded text-mvmt-text-primary border border-mvmt-border-medium"
           >
             Skip
           </button>
           <button
-            className="px-5 py-2 text-sm font-semibold rounded"
-            style={{ backgroundColor: "var(--mvmt-cta-bg)", color: "var(--mvmt-cta-text)" }}
+            className="px-5 py-2 text-sm font-semibold rounded text-mvmt-cta-text bg-mvmt-cta-bg"
           >
             Submit answer
           </button>

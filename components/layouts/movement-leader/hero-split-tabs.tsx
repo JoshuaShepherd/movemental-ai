@@ -37,40 +37,30 @@ export function HeroSplitTabs({ className }: HeroSplitTabsProps) {
       <div className="grid md:grid-cols-2 min-h-[50vh]">
         {/* Left — Copy */}
         <div
-          className="flex items-center px-6 sm:px-12 lg:px-24 py-16"
-          style={{ backgroundColor: "var(--mvmt-surface-light-muted)" }}
+          className="flex items-center px-6 sm:px-12 lg:px-24 py-16 bg-mvmt-surface-light-muted"
         >
           <div>
             <h1
-              className="text-3xl sm:text-4xl md:text-5xl leading-tight"
-              style={{
-                color: "var(--mvmt-text-primary)",
-                fontFamily: "var(--mvmt-font-heading)",
-                fontWeight: 400,
-                fontStyle: "italic",
-              }}
+              className="text-3xl sm:text-4xl md:text-5xl leading-tight text-mvmt-text-primary font-mvmt-heading"
+              style={{ fontWeight: 400,
+                fontStyle: "italic" }}
             >
               Equipping is just the beginning
             </h1>
-            <p className="mt-4 text-base" style={{ color: "var(--mvmt-text-secondary)" }}>
+            <p className="mt-4 text-base text-mvmt-text-secondary">
               Get help finding and developing great leaders.
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
               <Link
                 href="/fit-check"
-                className="inline-block px-6 py-3 text-sm font-medium border transition-colors"
-                style={{
-                  borderColor: "var(--mvmt-text-primary)",
-                  color: "var(--mvmt-text-primary)",
-                  borderRadius: "var(--mvmt-radius-md)",
-                }}
+                className="inline-block px-6 py-3 text-sm font-medium border transition-colors text-mvmt-text-primary rounded-mvmt-md"
+                style={{ borderColor: "var(--mvmt-text-primary)" }}
               >
                 Contact us
               </Link>
               <Link
                 href="/about"
-                className="inline-block px-6 py-3 text-sm font-medium transition-colors"
-                style={{ color: "var(--mvmt-text-secondary)" }}
+                className="inline-block px-6 py-3 text-sm font-medium transition-colors text-mvmt-text-secondary"
               >
                 See all resources
               </Link>
@@ -90,14 +80,10 @@ export function HeroSplitTabs({ className }: HeroSplitTabsProps) {
       </div>
 
       {/* Tabs section */}
-      <div className="py-12" style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+      <div className="py-12 bg-mvmt-surface-light">
         <div className="container mx-auto px-6 sm:px-8 lg:px-12">
           <h2
-            className="text-xl sm:text-2xl font-medium text-center mb-8"
-            style={{
-              color: "var(--mvmt-text-primary)",
-              fontFamily: "var(--mvmt-font-heading)",
-            }}
+            className="text-xl sm:text-2xl font-medium text-center mb-8 text-mvmt-text-primary font-mvmt-heading"
           >
             What can we help you do?
           </h2>
@@ -114,7 +100,7 @@ export function HeroSplitTabs({ className }: HeroSplitTabsProps) {
             ))}
           </div>
           <div className="mt-6 text-center max-w-2xl mx-auto">
-            <p className="text-base leading-relaxed" style={{ color: "var(--mvmt-text-secondary)" }}>
+            <p className="text-base leading-relaxed text-mvmt-text-secondary">
               {tabs[activeTab].content}
             </p>
           </div>

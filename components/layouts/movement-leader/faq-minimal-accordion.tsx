@@ -27,26 +27,24 @@ export function FaqMinimalAccordion({ className }: FaqMinimalAccordionProps) {
   ];
 
   return (
-    <section className={cn("relative w-full flex flex-col", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full flex flex-col bg-mvmt-surface-light", className)} >
       {/* Dark Nav */}
-      <div className="flex items-center justify-between px-6 sm:px-12 py-3" style={{ backgroundColor: "var(--mvmt-surface-dark)" }}>
+      <div className="flex items-center justify-between px-6 sm:px-12 py-3 bg-mvmt-surface-dark">
         <div className="flex items-center gap-6">
-          <span className="text-sm font-bold" style={{ color: "var(--mvmt-on-dark-primary)" }}>Movemental</span>
+          <span className="text-sm font-bold text-mvmt-on-dark-primary">Movemental</span>
           {["Templates", "Plugins", "Learn", "Gallery"].map((item) => (
-            <span key={item} className="text-sm hidden sm:inline" style={{ color: "var(--mvmt-on-dark-secondary)" }}>{item}</span>
+            <span key={item} className="text-sm hidden sm:inline text-mvmt-on-dark-secondary">{item}</span>
           ))}
         </div>
         <div className="flex items-center gap-3">
           <span
-            className="text-sm px-3 py-1 rounded"
-            style={{ border: "1px solid var(--mvmt-border-on-dark)", color: "var(--mvmt-on-dark-primary)" }}
+            className="text-sm px-3 py-1 rounded text-mvmt-on-dark-primary border border-mvmt-border-on-dark"
           >
             Pricing
           </span>
           <Link
             href="/signup"
-            className="text-sm px-4 py-1.5 rounded font-medium"
-            style={{ backgroundColor: "var(--mvmt-accent)", color: "var(--mvmt-cta-text)" }}
+            className="text-sm px-4 py-1.5 rounded font-medium text-mvmt-cta-text bg-mvmt-accent"
           >
             Start for free
           </Link>
@@ -54,9 +52,9 @@ export function FaqMinimalAccordion({ className }: FaqMinimalAccordionProps) {
       </div>
 
       {/* Pricing Row */}
-      <div className="px-6 sm:px-12 lg:px-16 py-6" style={{ borderBottom: "1px solid var(--mvmt-border-light)" }}>
+      <div className="px-6 sm:px-12 lg:px-16 py-6 border-b border-b-mvmt-border-light">
         <div className="flex items-baseline gap-8">
-          <span className="text-sm font-semibold" style={{ color: "var(--mvmt-text-primary)" }}>Site plans</span>
+          <span className="text-sm font-semibold text-mvmt-text-primary">Site plans</span>
           {plans.map((p) => (
             <div key={p.name} className="text-center">
               <p className="text-sm font-medium" style={{ color: p.highlight ? "var(--mvmt-accent)" : "var(--mvmt-text-primary)" }}>{p.name}</p>
@@ -66,13 +64,12 @@ export function FaqMinimalAccordion({ className }: FaqMinimalAccordionProps) {
         </div>
       </div>
 
-      <div className="my-4 mx-6 sm:mx-12 lg:mx-16" style={{ borderBottom: "1px solid var(--mvmt-border-light)" }} />
+      <div className="my-4 mx-6 sm:mx-12 lg:mx-16 border-b border-b-mvmt-border-light"  />
 
       {/* FAQ */}
       <div className="flex-1 px-6 sm:px-12 lg:px-16 py-12 max-w-3xl mx-auto w-full">
         <h2
-          className="text-4xl sm:text-5xl font-black text-center mb-12"
-          style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+          className="text-4xl sm:text-5xl font-black text-center mb-12 text-mvmt-text-primary font-mvmt-heading"
         >
           FAQ
         </h2>
@@ -80,18 +77,17 @@ export function FaqMinimalAccordion({ className }: FaqMinimalAccordionProps) {
           {faqs.map((faq, i) => (
             <button
               key={i}
-              className="w-full text-left py-6"
-              style={{ borderBottom: "1px solid var(--mvmt-border-light)" }}
+              className="w-full text-left py-6 border-b border-b-mvmt-border-light"
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
             >
               <div className="flex items-center justify-between">
-                <span className="text-base" style={{ color: "var(--mvmt-text-primary)" }}>{faq.q}</span>
-                <span className="text-xl ml-4 flex-shrink-0" style={{ color: "var(--mvmt-text-muted)" }}>
+                <span className="text-base text-mvmt-text-primary">{faq.q}</span>
+                <span className="text-xl ml-4 flex-shrink-0 text-mvmt-text-muted">
                   {openIndex === i ? "−" : "+"}
                 </span>
               </div>
               {openIndex === i && (
-                <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--mvmt-text-secondary)" }}>
+                <p className="mt-3 text-sm leading-relaxed text-mvmt-text-secondary">
                   {faq.a}
                 </p>
               )}

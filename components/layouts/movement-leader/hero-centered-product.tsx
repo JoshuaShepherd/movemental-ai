@@ -32,42 +32,31 @@ export function HeroCenteredProduct({ className }: HeroCenteredProductProps) {
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       {/* Hero area */}
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 pt-12 pb-8 text-center">
         <p
-          className="text-sm font-semibold uppercase tracking-widest mb-2"
-          style={{ color: "var(--mvmt-accent)", fontFamily: "var(--mvmt-font-body)" }}
+          className="text-sm font-semibold uppercase tracking-widest mb-2 text-mvmt-accent font-mvmt-body"
         >
           Movemental
         </p>
         <h1
-          className="text-3xl sm:text-4xl md:text-5xl leading-tight"
-          style={{
-            color: "var(--mvmt-text-primary)",
-            fontFamily: "var(--mvmt-font-heading)",
-            fontWeight: 400,
-          }}
+          className="text-3xl sm:text-4xl md:text-5xl leading-tight text-mvmt-text-primary font-mvmt-heading"
+          style={{ fontWeight: 400 }}
         >
           Resources from practitioners
           <br />
           for any leader or context.
         </h1>
         <p
-          className="mt-4 text-base max-w-xl mx-auto"
-          style={{ color: "var(--mvmt-text-secondary)" }}
+          className="mt-4 text-base max-w-xl mx-auto text-mvmt-text-secondary"
         >
           Includes books, online courses, a personal Resource Library, assessments, and more.
         </p>
         <div className="mt-6">
           <Link
             href="/fit-check"
-            className="inline-block px-6 py-3 text-sm font-semibold uppercase tracking-wider transition-colors"
-            style={{
-              backgroundColor: "var(--mvmt-cta-bg)",
-              color: "var(--mvmt-cta-text)",
-              borderRadius: "var(--mvmt-radius-sm)",
-            }}
+            className="inline-block px-6 py-3 text-sm font-semibold uppercase tracking-wider transition-colors text-mvmt-cta-text bg-mvmt-cta-bg rounded-mvmt-sm"
           >
             Subscribe Now
           </Link>
@@ -83,12 +72,11 @@ export function HeroCenteredProduct({ className }: HeroCenteredProductProps) {
                 <Image src={f.image} alt={f.title} fill className="object-cover" />
               </div>
               <h3
-                className="text-base font-semibold"
-                style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+                className="text-base font-semibold text-mvmt-text-primary font-mvmt-heading"
               >
                 {f.title}
               </h3>
-              <p className="mt-1 text-sm" style={{ color: "var(--mvmt-text-secondary)" }}>
+              <p className="mt-1 text-sm text-mvmt-text-secondary">
                 {f.subtitle}
               </p>
             </div>

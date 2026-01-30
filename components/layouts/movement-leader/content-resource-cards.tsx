@@ -27,12 +27,12 @@ export function ContentResourceCards({ className }: ContentResourceCardsProps) {
   const filtered = activeTopic === "All" ? cards : cards.filter((c) => c.topic === activeTopic);
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light-muted)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light-muted", className)} >
       <div className="max-w-6xl mx-auto px-6 py-20">
-        <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+        <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-mvmt-text-primary font-mvmt-heading">
           Resources
         </h1>
-        <p className="text-base mb-8" style={{ color: "var(--mvmt-text-secondary)" }}>
+        <p className="text-base mb-8 text-mvmt-text-secondary">
           Curated articles and guides for movement leaders.
         </p>
 
@@ -55,13 +55,13 @@ export function ContentResourceCards({ className }: ContentResourceCardsProps) {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((card) => (
-            <div key={card.title} className="rounded-lg overflow-hidden" style={{ backgroundColor: "var(--mvmt-surface-light)", border: "1px solid var(--mvmt-border-light)" }}>
+            <div key={card.title} className="rounded-lg overflow-hidden bg-mvmt-surface-light border border-mvmt-border-light">
               <div className="h-40 w-full" style={{ backgroundColor: card.color }} />
               <div className="p-5">
-                <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--mvmt-accent)" }}>{card.topic}</span>
-                <h3 className="text-lg font-bold mt-2 mb-2" style={{ color: "var(--mvmt-text-primary)" }}>{card.title}</h3>
-                <p className="text-sm leading-relaxed mb-3" style={{ color: "var(--mvmt-text-secondary)" }}>{card.excerpt}</p>
-                <p className="text-xs" style={{ color: "var(--mvmt-text-muted)" }}>{card.date}</p>
+                <span className="text-xs font-semibold uppercase tracking-wider text-mvmt-accent">{card.topic}</span>
+                <h3 className="text-lg font-bold mt-2 mb-2 text-mvmt-text-primary">{card.title}</h3>
+                <p className="text-sm leading-relaxed mb-3 text-mvmt-text-secondary">{card.excerpt}</p>
+                <p className="text-xs text-mvmt-text-muted">{card.date}</p>
               </div>
             </div>
           ))}

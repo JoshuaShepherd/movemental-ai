@@ -27,12 +27,12 @@ export function ContentCategoryBlog({ className }: ContentCategoryBlogProps) {
   const filtered = activeCategory === "All" ? articles : articles.filter((a) => a.category === activeCategory);
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       <div className="max-w-6xl mx-auto px-6 py-20">
-        <h1 className="text-4xl sm:text-5xl font-bold mb-3" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+        <h1 className="text-4xl sm:text-5xl font-bold mb-3 text-mvmt-text-primary font-mvmt-heading">
           Movement Blog
         </h1>
-        <p className="text-lg mb-8" style={{ color: "var(--mvmt-text-secondary)" }}>
+        <p className="text-lg mb-8 text-mvmt-text-secondary">
           Insights, stories, and strategies for leaders on mission.
         </p>
 
@@ -57,16 +57,16 @@ export function ContentCategoryBlog({ className }: ContentCategoryBlogProps) {
           {filtered.map((article) => (
             <div key={article.title} className="group cursor-pointer">
               <div className="h-48 w-full rounded-xl mb-4" style={{ backgroundColor: article.color }} />
-              <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full mb-3" style={{ backgroundColor: "var(--mvmt-surface-light-muted)", color: "var(--mvmt-accent)" }}>
+              <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full mb-3 text-mvmt-accent bg-mvmt-surface-light-muted">
                 {article.category}
               </span>
-              <h3 className="text-xl font-bold mb-2 leading-snug" style={{ color: "var(--mvmt-text-primary)" }}>{article.title}</h3>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--mvmt-text-secondary)" }}>{article.excerpt}</p>
+              <h3 className="text-xl font-bold mb-2 leading-snug text-mvmt-text-primary">{article.title}</h3>
+              <p className="text-sm leading-relaxed mb-4 text-mvmt-text-secondary">{article.excerpt}</p>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full flex-shrink-0" style={{ backgroundColor: article.color }} />
                 <div>
-                  <p className="text-sm font-medium" style={{ color: "var(--mvmt-text-primary)" }}>{article.author}</p>
-                  <p className="text-xs" style={{ color: "var(--mvmt-text-muted)" }}>{article.date}</p>
+                  <p className="text-sm font-medium text-mvmt-text-primary">{article.author}</p>
+                  <p className="text-xs text-mvmt-text-muted">{article.date}</p>
                 </div>
               </div>
             </div>

@@ -18,36 +18,36 @@ export function ContentCaseStudies({ className }: ContentCaseStudiesProps) {
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       <div className="max-w-6xl mx-auto px-6 py-20">
         <div className="text-center mb-14">
-          <p className="text-sm font-medium uppercase tracking-widest mb-3" style={{ color: "var(--mvmt-accent)" }}>
+          <p className="text-sm font-medium uppercase tracking-widest mb-3 text-mvmt-accent">
             Case Studies
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-mvmt-text-primary font-mvmt-heading">
             Leaders building movements with Movemental
           </h1>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: "var(--mvmt-text-secondary)" }}>
+          <p className="text-lg max-w-2xl mx-auto text-mvmt-text-secondary">
             See how missional organizations are using the platform to multiply leaders and communities.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {studies.map((study) => (
-            <div key={study.org} className="rounded-xl overflow-hidden" style={{ border: "1px solid var(--mvmt-border-light)", backgroundColor: "var(--mvmt-surface-light)" }}>
+            <div key={study.org} className="rounded-xl overflow-hidden bg-mvmt-surface-light border border-mvmt-border-light">
               <div className="h-48 w-full" style={{ backgroundColor: study.color }} />
               <div className="p-6">
-                <p className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "var(--mvmt-accent)" }}>
+                <p className="text-xs font-semibold uppercase tracking-wider mb-3 text-mvmt-accent">
                   {study.org}
                 </p>
-                <p className="text-base leading-relaxed mb-6" style={{ color: "var(--mvmt-text-primary)" }}>
+                <p className="text-base leading-relaxed mb-6 text-mvmt-text-primary">
                   &ldquo;{study.quote}&rdquo;
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full flex-shrink-0" style={{ backgroundColor: study.color }} />
                   <div>
-                    <p className="text-sm font-semibold" style={{ color: "var(--mvmt-text-primary)" }}>{study.person}</p>
-                    <p className="text-xs" style={{ color: "var(--mvmt-text-secondary)" }}>{study.role}</p>
+                    <p className="text-sm font-semibold text-mvmt-text-primary">{study.person}</p>
+                    <p className="text-xs text-mvmt-text-secondary">{study.role}</p>
                   </div>
                 </div>
               </div>

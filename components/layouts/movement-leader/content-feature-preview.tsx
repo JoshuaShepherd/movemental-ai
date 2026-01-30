@@ -19,16 +19,16 @@ export function ContentFeaturePreview({ className }: ContentFeaturePreviewProps)
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       <div className="max-w-6xl mx-auto px-6 py-20">
         <div className="text-center mb-16">
-          <p className="text-sm font-medium uppercase tracking-widest mb-3" style={{ color: "var(--mvmt-accent)" }}>
+          <p className="text-sm font-medium uppercase tracking-widest mb-3 text-mvmt-accent">
             Features
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-mvmt-text-primary font-mvmt-heading">
             Built for multiplication
           </h1>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: "var(--mvmt-text-secondary)" }}>
+          <p className="text-lg max-w-2xl mx-auto text-mvmt-text-secondary">
             Every feature designed around how movements actually grow — through leaders developing leaders.
           </p>
         </div>
@@ -38,9 +38,9 @@ export function ContentFeaturePreview({ className }: ContentFeaturePreviewProps)
             <div key={feature.title} className={cn("flex flex-col md:flex-row gap-8 items-center", i % 2 === 1 && "md:flex-row-reverse")}>
               <div className="flex-1 w-full h-64 sm:h-80 rounded-2xl" style={{ backgroundColor: feature.color }} />
               <div className="flex-1">
-                <p className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: "var(--mvmt-accent)" }}>{feature.label}</p>
-                <h2 className="text-2xl sm:text-3xl font-bold mb-3 leading-snug" style={{ color: "var(--mvmt-text-primary)" }}>{feature.title}</h2>
-                <p className="text-base leading-relaxed" style={{ color: "var(--mvmt-text-secondary)" }}>{feature.description}</p>
+                <p className="text-sm font-semibold uppercase tracking-wider mb-2 text-mvmt-accent">{feature.label}</p>
+                <h2 className="text-2xl sm:text-3xl font-bold mb-3 leading-snug text-mvmt-text-primary">{feature.title}</h2>
+                <p className="text-base leading-relaxed text-mvmt-text-secondary">{feature.description}</p>
               </div>
             </div>
           ))}

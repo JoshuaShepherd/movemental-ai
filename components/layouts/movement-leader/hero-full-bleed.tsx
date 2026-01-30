@@ -30,24 +30,16 @@ export function HeroFullBleed({ className }: HeroFullBleedProps) {
       {/* Centered content */}
       <div className="relative z-10 text-center px-6 py-16 md:py-24">
         <h1
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-3xl mx-auto"
-          style={{
-            color: "var(--mvmt-on-dark-primary)",
-            fontFamily: "var(--mvmt-font-heading)",
-          }}
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-3xl mx-auto text-mvmt-on-dark-primary font-mvmt-heading"
         >
           You know what you want to accomplish.{" "}
-          <span style={{ color: "var(--mvmt-accent)" }}>Now learn how.</span>
+          <span className="text-mvmt-accent">Now learn how.</span>
         </h1>
         <div className="mt-8">
           <Link
             href="/fit-check"
-            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium border transition-colors"
-            style={{
-              borderColor: "var(--mvmt-on-dark-primary)",
-              color: "var(--mvmt-on-dark-primary)",
-              borderRadius: "var(--mvmt-radius-md)",
-            }}
+            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium border transition-colors text-mvmt-on-dark-primary rounded-mvmt-md"
+            style={{ borderColor: "var(--mvmt-on-dark-primary)" }}
           >
             Start Learning &rarr;
           </Link>

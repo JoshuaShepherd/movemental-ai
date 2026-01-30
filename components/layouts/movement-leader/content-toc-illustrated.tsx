@@ -23,32 +23,32 @@ export function ContentTocIllustrated({ className }: ContentTocIllustratedProps)
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       <div className="max-w-6xl mx-auto px-6 py-20">
         <div className="text-center mb-14">
-          <p className="text-sm font-medium uppercase tracking-widest mb-3" style={{ color: "var(--mvmt-accent)" }}>
+          <p className="text-sm font-medium uppercase tracking-widest mb-3 text-mvmt-accent">
             The Movemental Guide
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-mvmt-text-primary font-mvmt-heading">
             Movement Leadership Foundations
           </h1>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: "var(--mvmt-text-secondary)" }}>
+          <p className="text-lg max-w-2xl mx-auto text-mvmt-text-secondary">
             A comprehensive guide to building, sustaining, and multiplying missional communities. Eight chapters. One vision.
           </p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {chapters.map((ch) => (
-            <div key={ch.num} className="rounded-xl overflow-hidden cursor-pointer group" style={{ border: "1px solid var(--mvmt-border-light)", backgroundColor: "var(--mvmt-surface-light)" }}>
+            <div key={ch.num} className="rounded-xl overflow-hidden cursor-pointer group bg-mvmt-surface-light border border-mvmt-border-light">
               <div className="h-32 w-full flex items-center justify-center" style={{ backgroundColor: ch.color }}>
-                <span className="text-4xl font-bold" style={{ color: "var(--mvmt-accent)", opacity: 0.3 }}>{String(ch.num).padStart(2, "0")}</span>
+                <span className="text-4xl font-bold text-mvmt-accent" style={{ opacity: 0.3 }}>{String(ch.num).padStart(2, "0")}</span>
               </div>
               <div className="p-5">
-                <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "var(--mvmt-accent)" }}>
+                <p className="text-xs font-semibold uppercase tracking-wider mb-1 text-mvmt-accent">
                   Chapter {ch.num}
                 </p>
-                <h3 className="text-base font-bold mb-2 leading-snug" style={{ color: "var(--mvmt-text-primary)" }}>{ch.title}</h3>
-                <p className="text-xs leading-relaxed" style={{ color: "var(--mvmt-text-secondary)" }}>{ch.description}</p>
+                <h3 className="text-base font-bold mb-2 leading-snug text-mvmt-text-primary">{ch.title}</h3>
+                <p className="text-xs leading-relaxed text-mvmt-text-secondary">{ch.description}</p>
               </div>
             </div>
           ))}

@@ -1,0 +1,18 @@
+{
+  "templateCategory": "testimonials-page",
+  "variants": [
+    { "id": "testimonials-quote-hero", "file": "testimonials-quote-hero.tsx", "reference": "quote-hero-01.png", "source": "Framer" },
+    { "id": "testimonials-split-tweets", "file": "testimonials-split-tweets.tsx", "reference": "split-tweets-02.png", "source": "Framer" },
+    { "id": "testimonials-masonry-grid", "file": "testimonials-masonry-grid.tsx", "reference": "masonry-grid-03.png", "source": "Framer" },
+    { "id": "testimonials-carousel-hero", "file": "testimonials-carousel-hero.tsx", "reference": "carousel-hero-04.png", "source": "Framer" },
+    { "id": "testimonials-elegant-serif", "file": "testimonials-elegant-serif.tsx", "reference": "elegant-serif-05.png", "source": "Airbnb" },
+    { "id": "testimonials-dark-blockquote", "file": "testimonials-dark-blockquote.tsx", "reference": "dark-blockquote-06.png", "source": "Kickstarter" },
+    { "id": "testimonials-geometric-carousel", "file": "testimonials-geometric-carousel.tsx", "reference": "geometric-carousel-07.png", "source": "TikTok" },
+    { "id": "testimonials-split-cta", "file": "testimonials-split-cta.tsx", "reference": "split-cta-08.png", "source": "Asana" },
+    { "id": "testimonials-dramatic-dark", "file": "testimonials-dramatic-dark.tsx", "reference": "dramatic-dark-09.png", "source": "Klaviyo" },
+    { "id": "testimonials-image-overlay", "file": "testimonials-image-overlay.tsx", "reference": "image-overlay-10.png", "source": "Google Education" },
+    { "id": "testimonials-grid-cards", "file": "testimonials-grid-cards.tsx", "reference": "grid-cards-11.png", "source": "Spotify" },
+    { "id": "testimonials-instructor-dark", "file": "testimonials-instructor-dark.tsx", "reference": "instructor-dark-12.png", "source": "MasterClass" },
+    { "id": "testimonials-trust-logos", "file": "testimonials-trust-logos.tsx", "reference": "trust-logos-13.png", "source": "MasterClass" }
+  ]
+}

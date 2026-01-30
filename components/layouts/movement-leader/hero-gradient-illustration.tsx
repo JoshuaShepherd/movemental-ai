@@ -13,11 +13,10 @@ interface HeroGradientIllustrationProps {
  */
 export function HeroGradientIllustration({ className }: HeroGradientIllustrationProps) {
   return (
-    <section className={cn("relative w-full overflow-hidden", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full overflow-hidden bg-mvmt-surface-light", className)} >
       {/* Top announcement bar */}
       <div
-        className="py-2 text-center text-sm"
-        style={{ backgroundColor: "var(--mvmt-accent)", color: "var(--mvmt-cta-text)" }}
+        className="py-2 text-center text-sm text-mvmt-cta-text bg-mvmt-accent"
       >
         Movemental named in Top 10 Leader Development Platforms for 2026.{" "}
         <Link href="/about" className="underline font-medium">
@@ -30,32 +29,23 @@ export function HeroGradientIllustration({ className }: HeroGradientIllustration
           {/* Left — Copy */}
           <div>
             <p
-              className="text-sm font-medium mb-2"
-              style={{ color: "var(--mvmt-accent)" }}
+              className="text-sm font-medium mb-2 text-mvmt-accent"
             >
               TeamOps ✦
             </p>
             <h1
-              className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight"
-              style={{
-                color: "var(--mvmt-text-primary)",
-                fontFamily: "var(--mvmt-font-heading)",
-              }}
+              className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-mvmt-text-primary font-mvmt-heading"
             >
               Stay Connected. Stay Productive.
             </h1>
-            <p className="mt-4 text-base leading-relaxed max-w-md" style={{ color: "var(--mvmt-text-secondary)" }}>
+            <p className="mt-4 text-base leading-relaxed max-w-md text-mvmt-text-secondary">
               Redefining teamwork for the modern movement. Collaborate with leaders across cities, networks, and continents.
             </p>
             <div className="mt-8">
               <Link
                 href="/fit-check"
-                className="inline-block px-6 py-3 text-sm font-medium border transition-colors"
-                style={{
-                  borderColor: "var(--mvmt-text-primary)",
-                  color: "var(--mvmt-text-primary)",
-                  borderRadius: "var(--mvmt-radius-md)",
-                }}
+                className="inline-block px-6 py-3 text-sm font-medium border transition-colors text-mvmt-text-primary rounded-mvmt-md"
+                style={{ borderColor: "var(--mvmt-text-primary)" }}
               >
                 Learn How
               </Link>
@@ -69,20 +59,17 @@ export function HeroGradientIllustration({ className }: HeroGradientIllustration
             <div className="absolute w-32 h-32 rounded-full border-2 top-12 right-12" style={{ borderColor: "var(--mvmt-border-medium)" }} />
             {/* People placeholders */}
             <div
-              className="absolute top-8 left-16 w-16 h-16 rounded-lg flex items-center justify-center text-xs font-bold"
-              style={{ backgroundColor: "var(--mvmt-surface-light-muted)", color: "var(--mvmt-text-primary)" }}
+              className="absolute top-8 left-16 w-16 h-16 rounded-lg flex items-center justify-center text-xs font-bold text-mvmt-text-primary bg-mvmt-surface-light-muted"
             >
               📚
             </div>
             <div
-              className="absolute bottom-12 right-8 w-16 h-16 rounded-lg flex items-center justify-center text-xs font-bold"
-              style={{ backgroundColor: "var(--mvmt-surface-light-muted)", color: "var(--mvmt-text-primary)" }}
+              className="absolute bottom-12 right-8 w-16 h-16 rounded-lg flex items-center justify-center text-xs font-bold text-mvmt-text-primary bg-mvmt-surface-light-muted"
             >
               🎓
             </div>
             <div
-              className="absolute top-1/2 right-1/3 w-16 h-16 rounded-lg flex items-center justify-center text-xs font-bold"
-              style={{ backgroundColor: "var(--mvmt-surface-light-muted)", color: "var(--mvmt-text-primary)" }}
+              className="absolute top-1/2 right-1/3 w-16 h-16 rounded-lg flex items-center justify-center text-xs font-bold text-mvmt-text-primary bg-mvmt-surface-light-muted"
             >
               🌍
             </div>

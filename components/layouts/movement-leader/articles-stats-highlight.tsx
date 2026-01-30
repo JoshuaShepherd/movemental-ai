@@ -18,8 +18,7 @@ export function ArticlesStatsHighlight({ className }: ArticlesStatsHighlightProp
 
   return (
     <section
-      className={cn("relative w-full", className)}
-      style={{ background: "var(--mvmt-gradient-hero-brand)" }}
+      className={cn("relative w-full bg-mvmt-gradient-hero-brand", className)}
     >
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 py-12 md:py-20">
         {/* Tabbed navigation */}
@@ -51,17 +50,13 @@ export function ArticlesStatsHighlight({ className }: ArticlesStatsHighlightProp
 
         {/* Title */}
         <h1
-          className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-8"
-          style={{
-            color: "var(--mvmt-on-dark-primary)",
-            fontFamily: "var(--mvmt-font-heading)",
-          }}
+          className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-8 text-mvmt-on-dark-primary font-mvmt-heading"
         >
           The State of the Movement Economy
         </h1>
 
         {/* Body text */}
-        <div className="max-w-3xl space-y-6 text-base leading-relaxed mb-12" style={{ color: "var(--mvmt-on-dark-secondary)" }}>
+        <div className="max-w-3xl space-y-6 text-base leading-relaxed mb-12 text-mvmt-on-dark-secondary">
           <p>
             The creator economy reshaped how individuals monetize skill and audience. But for
             movement leaders — church planters, missional community founders, multiplication
@@ -83,27 +78,20 @@ export function ArticlesStatsHighlight({ className }: ArticlesStatsHighlightProp
 
         {/* Stat callout block */}
         <div
-          className="rounded-2xl p-8 md:p-12 mb-12"
-          style={{ backgroundColor: "var(--mvmt-surface-light-muted)" }}
+          className="rounded-2xl p-8 md:p-12 mb-12 bg-mvmt-surface-light-muted"
         >
           <p
-            className="text-6xl sm:text-7xl md:text-8xl font-black mb-4"
-            style={{
-              color: "var(--mvmt-accent)",
-              fontFamily: "var(--mvmt-font-heading)",
-            }}
+            className="text-6xl sm:text-7xl md:text-8xl font-black mb-4 text-mvmt-accent font-mvmt-heading"
           >
             66%
           </p>
           <p
-            className="text-lg sm:text-xl font-bold leading-snug"
-            style={{ color: "var(--mvmt-text-primary)" }}
+            className="text-lg sm:text-xl font-bold leading-snug text-mvmt-text-primary"
           >
             of movement leaders made most of their impact from one multiplication source — coaching.
           </p>
           <p
-            className="mt-4 text-sm leading-relaxed"
-            style={{ color: "var(--mvmt-text-secondary)" }}
+            className="mt-4 text-sm leading-relaxed text-mvmt-text-secondary"
           >
             Movemental &amp; Exponential 2023 Leadership Survey, n=1,240 respondents across
             14 networks and 6 countries.
@@ -111,7 +99,7 @@ export function ArticlesStatsHighlight({ className }: ArticlesStatsHighlightProp
         </div>
 
         {/* More body text */}
-        <div className="max-w-3xl space-y-6 text-base leading-relaxed" style={{ color: "var(--mvmt-on-dark-secondary)" }}>
+        <div className="max-w-3xl space-y-6 text-base leading-relaxed text-mvmt-on-dark-secondary">
           <p>
             Coaching remains the single highest-leverage activity in the movement economy, yet
             most leaders still deliver it through ad hoc video calls and untracked conversations.

@@ -1,0 +1,16 @@
+{
+  "page": "courses",
+  "totalVariants": 10,
+  "variants": [
+    { "id": "courses-video-player", "name": "Video Player", "style": "Light", "ref": "courses-video-player-01.png" },
+    { "id": "courses-chapter-builder", "name": "Chapter Builder", "style": "Light", "ref": "courses-chapter-builder-02.png" },
+    { "id": "courses-lesson-sidebar", "name": "Lesson Sidebar", "style": "Light", "ref": "courses-lesson-sidebar-03.png" },
+    { "id": "courses-dark-player", "name": "Dark Player", "style": "Dark", "ref": "courses-dark-player-04.png" },
+    { "id": "courses-bootcamp-hero", "name": "Bootcamp Hero", "style": "Dark", "ref": "courses-bootcamp-hero-05.png" },
+    { "id": "courses-grid-catalog", "name": "Grid Catalog", "style": "Light", "ref": "courses-grid-filters-06.png" },
+    { "id": "courses-certificate", "name": "Certificate", "style": "Light", "ref": "courses-certificate-07.png" },
+    { "id": "courses-quiz-progress", "name": "Quiz Progress", "style": "Light", "ref": "courses-quiz-progress-08.png" },
+    { "id": "courses-masterclass-dark", "name": "Masterclass Dark", "style": "Dark", "ref": "courses-masterclass-dark-11.png" },
+    { "id": "courses-learning-paths", "name": "Learning Paths", "style": "Light", "ref": "courses-learning-paths-14.png" }
+  ]
+}

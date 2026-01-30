@@ -238,6 +238,8 @@ npx tsc --noEmit
 
 This single command validates ALL layers at once. Errors will show the file and line number to identify which layer has issues.
 
+**Quick reference**: See [08_CHAIN_WORKFLOW_CHECKLIST.md](./08_CHAIN_WORKFLOW_CHECKLIST.md#type-safety-validation-runbook) for the full validation runbook (lock-before-proceed steps, file path → layer mapping, stop criteria).
+
 ### What "LOCKED" Means
 
 - ✅ No TypeScript errors in layer files

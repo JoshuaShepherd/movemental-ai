@@ -28,12 +28,12 @@ export function ContentDarkBrowse({ className }: ContentDarkBrowseProps) {
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-dark)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-dark", className)} >
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <h1 className="text-4xl sm:text-5xl font-bold mb-3" style={{ color: "var(--mvmt-on-dark-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+        <h1 className="text-4xl sm:text-5xl font-bold mb-3 text-mvmt-on-dark-primary font-mvmt-heading">
           Browse by Category
         </h1>
-        <p className="text-lg mb-10" style={{ color: "var(--mvmt-on-dark-secondary)" }}>
+        <p className="text-lg mb-10 text-mvmt-on-dark-secondary">
           Explore world-class training from movement leaders.
         </p>
 
@@ -45,21 +45,21 @@ export function ContentDarkBrowse({ className }: ContentDarkBrowseProps) {
               className="flex-shrink-0 w-48 h-28 rounded-xl flex flex-col justify-end p-4 cursor-pointer"
               style={{ backgroundColor: cat.color }}
             >
-              <p className="text-sm font-bold" style={{ color: "#FFFFFF" }}>{cat.name}</p>
-              <p className="text-xs" style={{ color: "rgba(255,255,255,0.7)" }}>{cat.count} classes</p>
+              <p className="text-sm font-bold text-mvmt-on-dark-primary">{cat.name}</p>
+              <p className="text-xs text-mvmt-on-dark-muted">{cat.count} classes</p>
             </div>
           ))}
         </div>
 
         {/* Featured row */}
-        <h2 className="text-xl font-bold mb-6" style={{ color: "var(--mvmt-on-dark-primary)" }}>Featured Classes</h2>
+        <h2 className="text-xl font-bold mb-6 text-mvmt-on-dark-primary">Featured Classes</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {featured.map((item) => (
-            <div key={item.title} className="rounded-xl overflow-hidden cursor-pointer" style={{ backgroundColor: "var(--mvmt-surface-dark-elevated)" }}>
+            <div key={item.title} className="rounded-xl overflow-hidden cursor-pointer bg-mvmt-surface-dark-elevated">
               <div className="h-40 w-full" style={{ backgroundColor: item.color }} />
               <div className="p-4">
-                <h3 className="text-sm font-bold mb-1" style={{ color: "var(--mvmt-on-dark-primary)" }}>{item.title}</h3>
-                <p className="text-xs" style={{ color: "var(--mvmt-on-dark-muted)" }}>{item.subtitle}</p>
+                <h3 className="text-sm font-bold mb-1 text-mvmt-on-dark-primary">{item.title}</h3>
+                <p className="text-xs text-mvmt-on-dark-muted">{item.subtitle}</p>
               </div>
             </div>
           ))}

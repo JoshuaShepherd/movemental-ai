@@ -25,8 +25,7 @@ export function HeroChatWidget({ className }: HeroChatWidgetProps) {
           priority
         />
         <div
-          className="absolute inset-0"
-          style={{ background: "var(--mvmt-gradient-overlay-dark)" }}
+          className="absolute inset-0 bg-mvmt-gradient-overlay-dark"
         />
       </div>
 
@@ -35,18 +34,13 @@ export function HeroChatWidget({ className }: HeroChatWidgetProps) {
           {/* Left — Headline */}
           <div>
             <h1
-              className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight"
-              style={{
-                color: "var(--mvmt-on-dark-primary)",
-                fontFamily: "var(--mvmt-font-heading)",
-              }}
+              className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-mvmt-on-dark-primary font-mvmt-heading"
             >
               The new age of leader development is{" "}
-              <span style={{ color: "var(--mvmt-accent)" }}>AI-first</span>
+              <span className="text-mvmt-accent">AI-first</span>
             </h1>
             <p
-              className="mt-4 text-sm sm:text-base max-w-md italic leading-relaxed"
-              style={{ color: "var(--mvmt-on-dark-secondary)" }}
+              className="mt-4 text-sm sm:text-base max-w-md italic leading-relaxed text-mvmt-on-dark-secondary"
             >
               AI-first is a totally new way to equip leaders. The entire
               Movemental platform is powered by AI — so leaders get instant
@@ -56,23 +50,14 @@ export function HeroChatWidget({ className }: HeroChatWidgetProps) {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/fit-check"
-                className="inline-block px-6 py-3 text-sm font-medium border transition-colors"
-                style={{
-                  borderColor: "var(--mvmt-border-on-dark-medium)",
-                  color: "var(--mvmt-on-dark-primary)",
-                  borderRadius: "var(--mvmt-radius-md)",
-                }}
+                className="inline-block px-6 py-3 text-sm font-medium border transition-colors text-mvmt-on-dark-primary rounded-mvmt-md"
+                style={{ borderColor: "var(--mvmt-border-on-dark-medium)" }}
               >
                 View demo
               </Link>
               <Link
                 href="/fit-check"
-                className="inline-block px-6 py-3 text-sm font-medium transition-colors"
-                style={{
-                  backgroundColor: "var(--mvmt-cta-bg)",
-                  color: "var(--mvmt-cta-text)",
-                  borderRadius: "var(--mvmt-radius-md)",
-                }}
+                className="inline-block px-6 py-3 text-sm font-medium transition-colors text-mvmt-cta-text bg-mvmt-cta-bg rounded-mvmt-md"
               >
                 Start free trial
               </Link>
@@ -82,11 +67,7 @@ export function HeroChatWidget({ className }: HeroChatWidgetProps) {
           {/* Right — Chat Widget */}
           <div className="hidden md:block">
             <div
-              className="rounded-xl p-5 shadow-2xl max-w-sm ml-auto"
-              style={{
-                backgroundColor: "var(--mvmt-surface-light)",
-                border: "1px solid var(--mvmt-border-light)",
-              }}
+              className="rounded-xl p-5 shadow-2xl max-w-sm ml-auto bg-mvmt-surface-light border border-mvmt-border-light"
             >
               {/* Header */}
               <div className="flex items-center gap-3 mb-4">
@@ -102,28 +83,28 @@ export function HeroChatWidget({ className }: HeroChatWidgetProps) {
                   </div>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold" style={{ color: "var(--mvmt-text-primary)" }}>Movemental AI</p>
-                  <p className="text-xs" style={{ color: "var(--mvmt-text-muted)" }}>Active now</p>
+                  <p className="text-sm font-semibold text-mvmt-text-primary">Movemental AI</p>
+                  <p className="text-xs text-mvmt-text-muted">Active now</p>
                 </div>
               </div>
               {/* Messages */}
               <div className="space-y-3 mb-4">
-                <div className="p-3 rounded-lg text-sm" style={{ backgroundColor: "var(--mvmt-surface-light-muted)", color: "var(--mvmt-text-primary)" }}>
+                <div className="p-3 rounded-lg text-sm text-mvmt-text-primary bg-mvmt-surface-light-muted">
                   Glad to see you checking out the platform! 👋 Can I help you with anything?
                 </div>
-                <div className="p-3 rounded-lg text-sm ml-8" style={{ backgroundColor: "var(--mvmt-accent)", color: "var(--mvmt-cta-text)" }}>
+                <div className="p-3 rounded-lg text-sm ml-8 text-mvmt-cta-text bg-mvmt-accent">
                   I&apos;m interested in trying Movemental
                 </div>
-                <div className="p-3 rounded-lg text-sm" style={{ backgroundColor: "var(--mvmt-surface-light-muted)", color: "var(--mvmt-text-primary)" }}>
+                <div className="p-3 rounded-lg text-sm text-mvmt-text-primary bg-mvmt-surface-light-muted">
                   Movemental is a platform that combines AI coaching with field-tested resources — so you can equip leaders faster.
                 </div>
               </div>
               {/* Actions */}
               <div className="flex gap-2 text-xs">
-                <span className="px-3 py-1.5 rounded-full border" style={{ borderColor: "var(--mvmt-border-light)", color: "var(--mvmt-text-secondary)" }}>
+                <span className="px-3 py-1.5 rounded-full border text-mvmt-text-secondary" style={{ borderColor: "var(--mvmt-border-light)" }}>
                   Start a free trial
                 </span>
-                <span className="px-3 py-1.5 rounded-full border" style={{ borderColor: "var(--mvmt-border-light)", color: "var(--mvmt-text-secondary)" }}>
+                <span className="px-3 py-1.5 rounded-full border text-mvmt-text-secondary" style={{ borderColor: "var(--mvmt-border-light)" }}>
                   Chat with a coach
                 </span>
               </div>

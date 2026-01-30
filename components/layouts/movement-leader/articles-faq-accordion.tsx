@@ -49,19 +49,18 @@ export function ArticlesFaqAccordion({ className }: ArticlesFaqAccordionProps) {
   const [expanded, setExpanded] = useState<number | null>(null);
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       <div className="max-w-2xl mx-auto px-6 py-16 md:py-24">
         {/* Header */}
         <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--mvmt-accent-primary)" }}>
           FAQ
         </p>
         <h1
-          className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight"
-          style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+          className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-mvmt-text-primary font-mvmt-heading"
         >
           Frequently asked questions
         </h1>
-        <p className="mt-4 text-base leading-relaxed" style={{ color: "var(--mvmt-text-secondary)" }}>
+        <p className="mt-4 text-base leading-relaxed text-mvmt-text-secondary">
           Everything you need to know about the Movement Leader Platform and how it can serve your mission.
         </p>
 
@@ -73,7 +72,7 @@ export function ArticlesFaqAccordion({ className }: ArticlesFaqAccordionProps) {
                 className="w-full flex items-center justify-between text-left gap-4"
                 onClick={() => setExpanded(expanded === index ? null : index)}
               >
-                <span className="text-base font-semibold" style={{ color: "var(--mvmt-text-primary)" }}>
+                <span className="text-base font-semibold text-mvmt-text-primary">
                   {item.question}
                 </span>
                 <ChevronDown
@@ -82,7 +81,7 @@ export function ArticlesFaqAccordion({ className }: ArticlesFaqAccordionProps) {
                 />
               </button>
               {expanded === index && (
-                <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--mvmt-text-secondary)" }}>
+                <p className="mt-3 text-sm leading-relaxed text-mvmt-text-secondary">
                   {item.answer}
                 </p>
               )}

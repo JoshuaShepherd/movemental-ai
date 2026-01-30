@@ -21,7 +21,7 @@ export function ArticlesCaseStudy({ className }: ArticlesCaseStudyProps) {
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 py-12 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr_280px] gap-10">
           {/* Left Sidebar Nav */}
@@ -30,8 +30,7 @@ export function ArticlesCaseStudy({ className }: ArticlesCaseStudyProps) {
               <a
                 key={link}
                 href="#"
-                className="px-3 py-2 text-sm font-medium rounded-md transition-colors hover:opacity-80"
-                style={{ color: "var(--mvmt-text-secondary)" }}
+                className="px-3 py-2 text-sm font-medium rounded-md transition-colors hover:opacity-80 text-mvmt-text-secondary"
               >
                 {link}
               </a>
@@ -39,11 +38,8 @@ export function ArticlesCaseStudy({ className }: ArticlesCaseStudyProps) {
             <div className="mt-6">
               <a
                 href="#"
-                className="inline-block w-full text-center px-4 py-2.5 text-sm font-semibold rounded-lg transition-colors"
-                style={{
-                  backgroundColor: "var(--mvmt-accent-primary)",
-                  color: "var(--mvmt-on-dark-primary)",
-                }}
+                className="inline-block w-full text-center px-4 py-2.5 text-sm font-semibold rounded-lg transition-colors text-mvmt-on-dark-primary"
+                style={{ backgroundColor: "var(--mvmt-accent-primary)" }}
               >
                 Get Started
               </a>
@@ -63,8 +59,7 @@ export function ArticlesCaseStudy({ className }: ArticlesCaseStudyProps) {
 
             {/* Title */}
             <h1
-              className="text-3xl sm:text-4xl font-bold leading-tight mb-3"
-              style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+              className="text-3xl sm:text-4xl font-bold leading-tight mb-3 text-mvmt-text-primary font-mvmt-heading"
             >
               Exponential + Movemental Case Study
             </h1>
@@ -74,15 +69,12 @@ export function ArticlesCaseStudy({ className }: ArticlesCaseStudyProps) {
 
             {/* Hero Image Placeholder */}
             <div
-              className="w-full rounded-xl overflow-hidden mb-10"
-              style={{
-                aspectRatio: "16 / 9",
-                background: "var(--mvmt-gradient-hero-brand)",
-              }}
+              className="w-full rounded-xl overflow-hidden mb-10 bg-mvmt-gradient-hero-brand"
+              style={{ aspectRatio: "16 / 9" }}
             />
 
             {/* Body Text */}
-            <div className="space-y-5 text-base leading-relaxed" style={{ color: "var(--mvmt-text-primary)" }}>
+            <div className="space-y-5 text-base leading-relaxed text-mvmt-text-primary">
               <p>
                 The Exponential network, one of the largest church planting organizations in North America,
                 partnered with Movemental to streamline how they equip and track movement leaders across
@@ -94,8 +86,7 @@ export function ArticlesCaseStudy({ className }: ArticlesCaseStudyProps) {
                 The lack of a unified system meant weeks of lag between data collection and actionable insights.
               </p>
               <h2
-                className="text-xl font-semibold pt-4"
-                style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+                className="text-xl font-semibold pt-4 text-mvmt-text-primary font-mvmt-heading"
               >
                 The Challenge
               </h2>
@@ -106,8 +97,7 @@ export function ArticlesCaseStudy({ className }: ArticlesCaseStudyProps) {
                 revitalization, or international partnerships.
               </p>
               <h2
-                className="text-xl font-semibold pt-4"
-                style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+                className="text-xl font-semibold pt-4 text-mvmt-text-primary font-mvmt-heading"
               >
                 The Solution
               </h2>
@@ -134,8 +124,7 @@ export function ArticlesCaseStudy({ className }: ArticlesCaseStudyProps) {
               }}
             >
               <h3
-                className="text-lg font-semibold mb-5"
-                style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+                className="text-lg font-semibold mb-5 text-mvmt-text-primary font-mvmt-heading"
               >
                 At a Glance
               </h3>
@@ -143,7 +132,7 @@ export function ArticlesCaseStudy({ className }: ArticlesCaseStudyProps) {
                 <span className="block text-xs font-medium uppercase tracking-wide mb-1" style={{ color: "var(--mvmt-text-tertiary)" }}>
                   Network type:
                 </span>
-                <span className="text-sm font-medium" style={{ color: "var(--mvmt-text-primary)" }}>
+                <span className="text-sm font-medium text-mvmt-text-primary">
                   Church Planting &amp; Multiplication
                 </span>
               </div>
@@ -153,7 +142,7 @@ export function ArticlesCaseStudy({ className }: ArticlesCaseStudyProps) {
                 </span>
                 <ul className="space-y-2">
                   {favoriteFeatures.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2 text-sm" style={{ color: "var(--mvmt-text-secondary)" }}>
+                    <li key={feature} className="flex items-start gap-2 text-sm text-mvmt-text-secondary">
                       <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: "var(--mvmt-accent-primary)" }} />
                       {feature}
                     </li>

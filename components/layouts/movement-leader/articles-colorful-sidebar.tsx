@@ -27,11 +27,10 @@ export function ArticlesColorfulSidebar({ className }: ArticlesColorfulSidebarPr
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       {/* Gradient hero banner */}
       <div
-        className="h-48 w-full rounded-b-xl"
-        style={{ background: "var(--mvmt-gradient-hero-brand)" }}
+        className="h-48 w-full rounded-b-xl bg-mvmt-gradient-hero-brand"
       />
 
       <div className="max-w-6xl mx-auto px-6 -mt-8">
@@ -40,7 +39,7 @@ export function ArticlesColorfulSidebar({ className }: ArticlesColorfulSidebarPr
           <div className="flex-1 min-w-0">
             {/* Breadcrumbs */}
             <div className="mb-4">
-              <p className="text-sm" style={{ color: "var(--mvmt-text-secondary)" }}>
+              <p className="text-sm text-mvmt-text-secondary">
                 <span>Movemental Support</span>
                 <span className="mx-2">&gt;</span>
                 <span>Knowledge Base</span>
@@ -51,8 +50,7 @@ export function ArticlesColorfulSidebar({ className }: ArticlesColorfulSidebarPr
 
             {/* Title */}
             <h1
-              className="text-2xl sm:text-3xl font-bold leading-tight"
-              style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+              className="text-2xl sm:text-3xl font-bold leading-tight text-mvmt-text-primary font-mvmt-heading"
             >
               How do I set up my leader profile on Movemental?
             </h1>
@@ -60,17 +58,16 @@ export function ArticlesColorfulSidebar({ className }: ArticlesColorfulSidebarPr
             {/* Author row */}
             <div className="mt-5 flex items-center gap-3">
               <div
-                className="w-10 h-10 rounded-full flex-shrink-0"
-                style={{ background: "var(--mvmt-gradient-hero-brand)" }}
+                className="w-10 h-10 rounded-full flex-shrink-0 bg-mvmt-gradient-hero-brand"
               />
               <div>
-                <p className="text-sm font-medium" style={{ color: "var(--mvmt-text-primary)" }}>Cassie</p>
-                <p className="text-xs" style={{ color: "var(--mvmt-text-secondary)" }}>Updated 21 days ago</p>
+                <p className="text-sm font-medium text-mvmt-text-primary">Cassie</p>
+                <p className="text-xs text-mvmt-text-secondary">Updated 21 days ago</p>
               </div>
             </div>
 
             {/* Article body */}
-            <div className="mt-8 space-y-5 text-base leading-relaxed" style={{ color: "var(--mvmt-text-secondary)" }}>
+            <div className="mt-8 space-y-5 text-base leading-relaxed text-mvmt-text-secondary">
               <p>
                 Your leader profile is the foundation of everything you do on Movemental.
                 It tells your network who you are, what movement context you operate in,
@@ -98,15 +95,15 @@ export function ArticlesColorfulSidebar({ className }: ArticlesColorfulSidebarPr
               {platformCards.map((card) => (
                 <div
                   key={card.title}
-                  className="rounded-lg border p-5"
-                  style={{ borderColor: "var(--mvmt-border-light)", backgroundColor: "var(--mvmt-surface-light)" }}
+                  className="rounded-lg border p-5 bg-mvmt-surface-light"
+                  style={{ borderColor: "var(--mvmt-border-light)" }}
                 >
-                  <h3 className="text-sm font-bold mb-2" style={{ color: "var(--mvmt-text-primary)" }}>
+                  <h3 className="text-sm font-bold mb-2 text-mvmt-text-primary">
                     {card.title}
                   </h3>
                   <ul className="space-y-1">
                     {card.items.map((item) => (
-                      <li key={item} className="text-sm" style={{ color: "var(--mvmt-text-secondary)" }}>
+                      <li key={item} className="text-sm text-mvmt-text-secondary">
                         {item}
                       </li>
                     ))}
@@ -118,8 +115,8 @@ export function ArticlesColorfulSidebar({ className }: ArticlesColorfulSidebarPr
             {/* Help badge */}
             <div className="mt-10 mb-12">
               <div
-                className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold"
-                style={{ backgroundColor: "var(--mvmt-accent-muted)", color: "var(--mvmt-accent)" }}
+                className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-mvmt-accent"
+                style={{ backgroundColor: "var(--mvmt-accent-muted)" }}
               >
                 Help
               </div>
@@ -139,8 +136,7 @@ export function ArticlesColorfulSidebar({ className }: ArticlesColorfulSidebarPr
                 <a
                   key={title}
                   href="#"
-                  className="flex items-start gap-2 text-sm leading-snug"
-                  style={{ color: "var(--mvmt-text-secondary)" }}
+                  className="flex items-start gap-2 text-sm leading-snug text-mvmt-text-secondary"
                 >
                   <span className="flex-shrink-0">📄</span>
                   <span>{title}</span>

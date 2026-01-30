@@ -23,26 +23,26 @@ export function ContentTemplateShowcase({ className }: ContentTemplateShowcasePr
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light-muted)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light-muted", className)} >
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-mvmt-text-primary font-mvmt-heading">
             Templates
           </h1>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: "var(--mvmt-text-secondary)" }}>
+          <p className="text-lg max-w-2xl mx-auto text-mvmt-text-secondary">
             Jump-start your movement infrastructure with ready-made templates built by practitioners.
           </p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {templates.map((tpl) => (
-            <div key={tpl.name} className="rounded-xl overflow-hidden cursor-pointer group" style={{ backgroundColor: "var(--mvmt-surface-light)", border: "1px solid var(--mvmt-border-light)" }}>
+            <div key={tpl.name} className="rounded-xl overflow-hidden cursor-pointer group bg-mvmt-surface-light border border-mvmt-border-light">
               <div className="h-44 w-full" style={{ backgroundColor: tpl.color }} />
               <div className="p-4">
-                <h3 className="text-sm font-bold mb-1" style={{ color: "var(--mvmt-text-primary)" }}>{tpl.name}</h3>
+                <h3 className="text-sm font-bold mb-1 text-mvmt-text-primary">{tpl.name}</h3>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs" style={{ color: "var(--mvmt-text-secondary)" }}>{tpl.category}</span>
-                  <span className="text-xs font-semibold" style={{ color: "var(--mvmt-accent)" }}>Free</span>
+                  <span className="text-xs text-mvmt-text-secondary">{tpl.category}</span>
+                  <span className="text-xs font-semibold text-mvmt-accent">Free</span>
                 </div>
               </div>
             </div>

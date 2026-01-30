@@ -29,47 +29,47 @@ export function ContentVideoTutorials({ className }: ContentVideoTutorialsProps)
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       <div className="max-w-6xl mx-auto px-6 py-20">
-        <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+        <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-mvmt-text-primary font-mvmt-heading">
           Learn Movemental
         </h1>
-        <p className="text-base mb-10" style={{ color: "var(--mvmt-text-secondary)" }}>
+        <p className="text-base mb-10 text-mvmt-text-secondary">
           Video tutorials and documentation to help you get the most from the platform.
         </p>
 
         {/* Video grid */}
-        <h2 className="text-lg font-bold mb-4" style={{ color: "var(--mvmt-text-primary)" }}>Video Tutorials</h2>
+        <h2 className="text-lg font-bold mb-4 text-mvmt-text-primary">Video Tutorials</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
           {videos.map((video) => (
-            <div key={video.title} className="rounded-lg overflow-hidden cursor-pointer group" style={{ border: "1px solid var(--mvmt-border-light)" }}>
+            <div key={video.title} className="rounded-lg overflow-hidden cursor-pointer group border border-mvmt-border-light">
               <div className="h-36 w-full relative" style={{ backgroundColor: video.color }}>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: "var(--mvmt-accent)" }}>
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center bg-mvmt-accent">
                     <div className="w-0 h-0 ml-1 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[10px]" style={{ borderLeftColor: "var(--mvmt-cta-text)" }} />
                   </div>
                 </div>
-                <span className="absolute bottom-2 right-2 px-2 py-0.5 text-xs font-medium rounded" style={{ backgroundColor: "rgba(0,0,0,0.7)", color: "#FFFFFF" }}>
+                <span className="absolute bottom-2 right-2 px-2 py-0.5 text-xs font-medium rounded bg-mvmt-surface-dark/70 text-mvmt-on-dark-primary">
                   {video.duration}
                 </span>
               </div>
               <div className="p-4">
-                <h3 className="text-sm font-semibold" style={{ color: "var(--mvmt-text-primary)" }}>{video.title}</h3>
+                <h3 className="text-sm font-semibold text-mvmt-text-primary">{video.title}</h3>
               </div>
             </div>
           ))}
         </div>
 
         {/* Documentation list */}
-        <h2 className="text-lg font-bold mb-4" style={{ color: "var(--mvmt-text-primary)" }}>Documentation</h2>
-        <div className="divide-y" style={{ borderColor: "var(--mvmt-border-light)" }}>
+        <h2 className="text-lg font-bold mb-4 text-mvmt-text-primary">Documentation</h2>
+        <div className="divide-y divide-mvmt-border-light">
           {docs.map((doc) => (
             <div key={doc.title} className="flex items-center justify-between py-4 cursor-pointer group">
               <div>
-                <h3 className="text-sm font-semibold mb-0.5" style={{ color: "var(--mvmt-text-primary)" }}>{doc.title}</h3>
-                <p className="text-xs" style={{ color: "var(--mvmt-text-secondary)" }}>{doc.description}</p>
+                <h3 className="text-sm font-semibold mb-0.5 text-mvmt-text-primary">{doc.title}</h3>
+                <p className="text-xs text-mvmt-text-secondary">{doc.description}</p>
               </div>
-              <span className="text-lg flex-shrink-0 ml-4" style={{ color: "var(--mvmt-text-muted)" }}>→</span>
+              <span className="text-lg flex-shrink-0 ml-4 text-mvmt-text-muted">→</span>
             </div>
           ))}
         </div>

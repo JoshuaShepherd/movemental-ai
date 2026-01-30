@@ -30,11 +30,11 @@ export function ContentFilteredGallery({ className }: ContentFilteredGalleryProp
   const filtered = activeType === "All" ? items : items.filter((item) => item.type === activeType);
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       <div className="max-w-7xl mx-auto px-6 py-16 flex gap-8">
         {/* Sidebar filters */}
         <aside className="hidden md:block w-52 flex-shrink-0">
-          <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--mvmt-text-muted)" }}>
+          <p className="text-xs font-semibold uppercase tracking-widest mb-4 text-mvmt-text-muted">
             Filter by type
           </p>
           <nav className="space-y-1">
@@ -57,21 +57,21 @@ export function ContentFilteredGallery({ className }: ContentFilteredGalleryProp
 
         {/* Main grid */}
         <div className="flex-1">
-          <h1 className="text-3xl font-bold mb-2" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+          <h1 className="text-3xl font-bold mb-2 text-mvmt-text-primary font-mvmt-heading">
             Template Gallery
           </h1>
-          <p className="text-base mb-8" style={{ color: "var(--mvmt-text-secondary)" }}>
+          <p className="text-base mb-8 text-mvmt-text-secondary">
             Browse and customize templates for your movement.
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {filtered.map((item) => (
-              <div key={item.name} className="rounded-lg overflow-hidden cursor-pointer" style={{ border: "1px solid var(--mvmt-border-light)" }}>
+              <div key={item.name} className="rounded-lg overflow-hidden cursor-pointer border border-mvmt-border-light">
                 <div className="h-36 w-full" style={{ backgroundColor: item.color }} />
                 <div className="p-4">
-                  <span className="text-xs font-medium uppercase tracking-wider" style={{ color: "var(--mvmt-accent)" }}>{item.type}</span>
-                  <h3 className="text-sm font-bold mt-1 mb-1" style={{ color: "var(--mvmt-text-primary)" }}>{item.name}</h3>
-                  <p className="text-xs" style={{ color: "var(--mvmt-text-secondary)" }}>{item.description}</p>
+                  <span className="text-xs font-medium uppercase tracking-wider text-mvmt-accent">{item.type}</span>
+                  <h3 className="text-sm font-bold mt-1 mb-1 text-mvmt-text-primary">{item.name}</h3>
+                  <p className="text-xs text-mvmt-text-secondary">{item.description}</p>
                 </div>
               </div>
             ))}

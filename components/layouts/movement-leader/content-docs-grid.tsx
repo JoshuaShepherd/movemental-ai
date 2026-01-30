@@ -24,12 +24,12 @@ export function ContentDocsGrid({ className }: ContentDocsGridProps) {
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       <div className="max-w-5xl mx-auto px-6 py-20">
-        <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+        <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-mvmt-text-primary font-mvmt-heading">
           Documentation
         </h1>
-        <p className="text-base mb-12" style={{ color: "var(--mvmt-text-secondary)" }}>
+        <p className="text-base mb-12 text-mvmt-text-secondary">
           Guides and references for building on the Movemental platform.
         </p>
 
@@ -37,15 +37,14 @@ export function ContentDocsGrid({ className }: ContentDocsGridProps) {
           {docs.map((doc) => (
             <div
               key={doc.title}
-              className="flex gap-4 p-5 rounded-xl cursor-pointer transition-colors"
-              style={{ border: "1px solid var(--mvmt-border-light)" }}
+              className="flex gap-4 p-5 rounded-xl cursor-pointer transition-colors border border-mvmt-border-light"
               onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--mvmt-surface-light-muted)")}
               onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
             >
               <span className="text-2xl flex-shrink-0">{doc.icon}</span>
               <div>
-                <h3 className="text-sm font-bold mb-1" style={{ color: "var(--mvmt-text-primary)" }}>{doc.title}</h3>
-                <p className="text-xs leading-relaxed" style={{ color: "var(--mvmt-text-secondary)" }}>{doc.description}</p>
+                <h3 className="text-sm font-bold mb-1 text-mvmt-text-primary">{doc.title}</h3>
+                <p className="text-xs leading-relaxed text-mvmt-text-secondary">{doc.description}</p>
               </div>
             </div>
           ))}

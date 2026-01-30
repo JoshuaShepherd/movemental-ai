@@ -14,8 +14,7 @@ interface HeroAgencyGradientProps {
 export function HeroAgencyGradient({ className }: HeroAgencyGradientProps) {
   return (
     <section
-      className={cn("relative w-full min-h-[70vh] md:min-h-[80vh] flex items-center overflow-hidden", className)}
-      style={{ background: "var(--mvmt-gradient-hero-brand)" }}
+      className={cn("relative w-full min-h-[70vh] md:min-h-[80vh] flex items-center overflow-hidden bg-mvmt-gradient-hero-brand", className)}
     >
       {/* Decorative pattern */}
       <div className="absolute inset-0 opacity-10">
@@ -29,23 +28,17 @@ export function HeroAgencyGradient({ className }: HeroAgencyGradientProps) {
           {/* Left — Copy */}
           <div>
             <p
-              className="text-sm font-medium uppercase tracking-wider mb-4"
-              style={{ color: "var(--mvmt-on-dark-secondary)" }}
+              className="text-sm font-medium uppercase tracking-wider mb-4 text-mvmt-on-dark-secondary"
             >
               Movemental for Leaders
             </p>
             <h1
-              className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight"
-              style={{
-                color: "var(--mvmt-on-dark-primary)",
-                fontFamily: "var(--mvmt-font-heading)",
-              }}
+              className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight text-mvmt-on-dark-primary font-mvmt-heading"
             >
               Equip every leader. Reach every nation.
             </h1>
             <p
-              className="mt-6 text-lg max-w-lg leading-relaxed"
-              style={{ color: "var(--mvmt-on-dark-secondary)" }}
+              className="mt-6 text-lg max-w-lg leading-relaxed text-mvmt-on-dark-secondary"
             >
               Scale your movement with books, courses, assessments, and
               AI-powered coaching. Leaders like Brad Brisco, Alan Hirsch, and
@@ -54,23 +47,16 @@ export function HeroAgencyGradient({ className }: HeroAgencyGradientProps) {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/fit-check"
-                className="inline-block px-8 py-4 text-sm font-semibold uppercase tracking-widest transition-colors"
-                style={{
-                  backgroundColor: "var(--mvmt-on-dark-primary)",
-                  color: "var(--mvmt-surface-dark)",
-                  borderRadius: "var(--mvmt-radius-md)",
-                }}
+                className="inline-block px-8 py-4 text-sm font-semibold uppercase tracking-widest transition-colors rounded-mvmt-md"
+                style={{ backgroundColor: "var(--mvmt-on-dark-primary)",
+                  color: "var(--mvmt-surface-dark)" }}
               >
                 Start for Free
               </Link>
               <Link
                 href="/about"
-                className="inline-block px-8 py-4 text-sm font-semibold uppercase tracking-widest transition-colors border"
-                style={{
-                  borderColor: "var(--mvmt-border-on-dark-medium)",
-                  color: "var(--mvmt-on-dark-primary)",
-                  borderRadius: "var(--mvmt-radius-md)",
-                }}
+                className="inline-block px-8 py-4 text-sm font-semibold uppercase tracking-widest transition-colors border text-mvmt-on-dark-primary rounded-mvmt-md"
+                style={{ borderColor: "var(--mvmt-border-on-dark-medium)" }}
               >
                 Learn More &rsaquo;
               </Link>
@@ -80,50 +66,34 @@ export function HeroAgencyGradient({ className }: HeroAgencyGradientProps) {
           {/* Right — Floating UI Cards */}
           <div className="hidden md:block relative">
             <div
-              className="rounded-lg p-6 shadow-xl"
-              style={{
-                backgroundColor: "var(--mvmt-surface-dark-elevated)",
-                border: "1px solid var(--mvmt-border-on-dark)",
-              }}
+              className="rounded-lg p-6 shadow-xl bg-mvmt-surface-dark-elevated border border-mvmt-border-on-dark"
             >
               <div className="flex items-center gap-3 mb-4">
                 <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold"
-                  style={{
-                    backgroundColor: "var(--mvmt-accent)",
-                    color: "var(--mvmt-cta-text)",
-                  }}
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold text-mvmt-cta-text bg-mvmt-accent"
                 >
                   BB
                 </div>
                 <div>
-                  <p className="text-sm font-medium" style={{ color: "var(--mvmt-on-dark-primary)" }}>Brad Brisco</p>
-                  <p className="text-xs" style={{ color: "var(--mvmt-on-dark-muted)" }}>Movement Catalyst</p>
+                  <p className="text-sm font-medium text-mvmt-on-dark-primary">Brad Brisco</p>
+                  <p className="text-xs text-mvmt-on-dark-muted">Movement Catalyst</p>
                 </div>
               </div>
               <div className="space-y-3">
                 {["Books & Resources", "Online Courses", "Assessments", "AI Coaching"].map((item) => (
                   <div
                     key={item}
-                    className="flex items-center gap-3 p-3 rounded-md"
-                    style={{
-                      backgroundColor: "var(--mvmt-surface-dark)",
-                      border: "1px solid var(--mvmt-border-on-dark)",
-                    }}
+                    className="flex items-center gap-3 p-3 rounded-md bg-mvmt-surface-dark border border-mvmt-border-on-dark"
                   >
-                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "var(--mvmt-accent)" }} />
-                    <span className="text-sm" style={{ color: "var(--mvmt-on-dark-secondary)" }}>{item}</span>
+                    <div className="w-2 h-2 rounded-full bg-mvmt-accent"  />
+                    <span className="text-sm text-mvmt-on-dark-secondary">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
             {/* Floating badge */}
             <div
-              className="absolute -bottom-4 -left-4 px-4 py-2 rounded-full text-xs font-bold shadow-lg"
-              style={{
-                backgroundColor: "var(--mvmt-accent)",
-                color: "var(--mvmt-cta-text)",
-              }}
+              className="absolute -bottom-4 -left-4 px-4 py-2 rounded-full text-xs font-bold shadow-lg text-mvmt-cta-text bg-mvmt-accent"
             >
               Leader
             </div>

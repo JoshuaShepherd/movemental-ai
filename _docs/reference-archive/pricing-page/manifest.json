@@ -1,0 +1,48 @@
+{
+  "page_type": "pricing",
+  "archived_date": "2026-01-30",
+  "images": [
+    {
+      "original": "pricing-comparison-table-01.png",
+      "archived_as": "pricing-comparison-table-01.png",
+      "template_path": "components/layouts/movement-leader/pricing-comparison-table.tsx",
+      "variant_id": "pricing-comparison-table",
+      "reference": "Framer — light feature comparison table with 4 plan columns, grouped feature rows"
+    },
+    {
+      "original": "pricing-team-calculator-02.png",
+      "archived_as": "pricing-team-calculator-02.png",
+      "template_path": "components/layouts/movement-leader/pricing-team-calculator.tsx",
+      "variant_id": "pricing-team-calculator",
+      "reference": "Framer — team pricing with left feature card and right interactive cost calculator"
+    },
+    {
+      "original": "pricing-tier-cards-03.png",
+      "archived_as": "pricing-tier-cards-03.png",
+      "template_path": "components/layouts/movement-leader/pricing-tier-cards.tsx",
+      "variant_id": "pricing-tier-cards",
+      "reference": "Framer — dark gradient header with 3 tier cards overlapping, purple accent"
+    },
+    {
+      "original": "pricing-partner-steps-04.png",
+      "archived_as": "pricing-partner-steps-04.png",
+      "template_path": "components/layouts/movement-leader/pricing-partner-steps.tsx",
+      "variant_id": "pricing-partner-steps",
+      "reference": "Framer — dark background partner/affiliate program with 3-step icon cards"
+    },
+    {
+      "original": "pricing-business-tiers-05.png",
+      "archived_as": "pricing-business-tiers-05.png",
+      "template_path": "components/layouts/movement-leader/pricing-business-tiers.tsx",
+      "variant_id": "pricing-business-tiers",
+      "reference": "Framer — dark enterprise/business tier with 3 feature category cards"
+    },
+    {
+      "original": "pricing-membership-grid-06.png",
+      "archived_as": "pricing-membership-grid-06.png",
+      "template_path": "components/layouts/movement-leader/pricing-membership-grid.tsx",
+      "variant_id": "pricing-membership-grid",
+      "reference": "MasterClass — dark annual membership comparison grid with plan selection and red accent"
+    }
+  ]
+}

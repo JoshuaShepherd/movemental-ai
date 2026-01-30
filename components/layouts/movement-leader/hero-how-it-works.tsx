@@ -42,33 +42,23 @@ export function HeroHowItWorks({ className }: HeroHowItWorksProps) {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0" style={{ background: "var(--mvmt-gradient-overlay-dark)" }} />
+        <div className="absolute inset-0 bg-mvmt-gradient-overlay-dark"  />
         <div className="absolute inset-0 flex items-center justify-end pr-6 sm:pr-12 lg:pr-24">
           <div className="text-right max-w-md">
             <h1
-              className="text-2xl sm:text-3xl md:text-4xl font-medium leading-tight"
-              style={{
-                color: "var(--mvmt-on-dark-primary)",
-                fontFamily: "var(--mvmt-font-heading)",
-              }}
+              className="text-2xl sm:text-3xl md:text-4xl font-medium leading-tight text-mvmt-on-dark-primary font-mvmt-heading"
             >
               Discover the perfect resource for your movement context
             </h1>
             <div className="mt-6 inline-flex items-center gap-3">
               <Link
                 href="/fit-check"
-                className="inline-block px-6 py-3 text-sm font-semibold uppercase tracking-wider transition-colors"
-                style={{
-                  backgroundColor: "var(--mvmt-cta-bg)",
-                  color: "var(--mvmt-cta-text)",
-                  borderRadius: "var(--mvmt-radius-md)",
-                }}
+                className="inline-block px-6 py-3 text-sm font-semibold uppercase tracking-wider transition-colors text-mvmt-cta-text bg-mvmt-cta-bg rounded-mvmt-md"
               >
                 Get Started
               </Link>
               <span
-                className="text-xs px-3 py-1 rounded-full"
-                style={{ backgroundColor: "var(--mvmt-accent)", color: "var(--mvmt-cta-text)" }}
+                className="text-xs px-3 py-1 rounded-full text-mvmt-cta-text bg-mvmt-accent"
               >
                 Free
               </span>
@@ -78,14 +68,10 @@ export function HeroHowItWorks({ className }: HeroHowItWorksProps) {
       </div>
 
       {/* How It Works */}
-      <div className="py-16" style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+      <div className="py-16 bg-mvmt-surface-light">
         <div className="container mx-auto px-6 sm:px-8 lg:px-12">
           <h2
-            className="text-2xl sm:text-3xl font-bold text-center mb-12"
-            style={{
-              color: "var(--mvmt-text-primary)",
-              fontFamily: "var(--mvmt-font-heading)",
-            }}
+            className="text-2xl sm:text-3xl font-bold text-center mb-12 text-mvmt-text-primary font-mvmt-heading"
           >
             How It Works
           </h2>
@@ -98,10 +84,10 @@ export function HeroHowItWorks({ className }: HeroHowItWorksProps) {
                 {i < steps.length - 1 && (
                   <div className="hidden md:block absolute top-8 w-24 h-px" style={{ left: `${(i + 1) * 33 - 4}%`, backgroundColor: "var(--mvmt-border-light)" }} />
                 )}
-                <h3 className="text-sm font-bold uppercase tracking-wider mb-2" style={{ color: "var(--mvmt-text-primary)" }}>
+                <h3 className="text-sm font-bold uppercase tracking-wider mb-2 text-mvmt-text-primary">
                   {step.title}
                 </h3>
-                <p className="text-sm leading-relaxed max-w-xs mx-auto" style={{ color: "var(--mvmt-text-secondary)" }}>
+                <p className="text-sm leading-relaxed max-w-xs mx-auto text-mvmt-text-secondary">
                   {step.desc}
                 </p>
               </div>

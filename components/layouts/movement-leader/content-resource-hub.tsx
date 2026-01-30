@@ -21,27 +21,27 @@ export function ContentResourceHub({ className }: ContentResourceHubProps) {
   ];
 
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       <div className="max-w-5xl mx-auto px-6 py-20">
         <div className="text-center mb-14">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-mvmt-text-primary font-mvmt-heading">
             Resource Hub
           </h1>
-          <p className="text-lg max-w-xl mx-auto" style={{ color: "var(--mvmt-text-secondary)" }}>
+          <p className="text-lg max-w-xl mx-auto text-mvmt-text-secondary">
             Everything you need to build, lead, and multiply — all in one place.
           </p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {resources.map((res) => (
-            <div key={res.title} className="rounded-xl overflow-hidden cursor-pointer" style={{ backgroundColor: "var(--mvmt-surface-light)", border: "1px solid var(--mvmt-border-light)" }}>
+            <div key={res.title} className="rounded-xl overflow-hidden cursor-pointer bg-mvmt-surface-light border border-mvmt-border-light">
               <div className="h-2 w-full" style={{ backgroundColor: res.color }} />
               <div className="p-6">
                 <div className="w-12 h-12 rounded-xl mb-4 flex items-center justify-center" style={{ backgroundColor: res.bgLight }}>
                   <div className="w-6 h-6 rounded" style={{ backgroundColor: res.color, opacity: 0.6 }} />
                 </div>
-                <h3 className="text-lg font-bold mb-2" style={{ color: "var(--mvmt-text-primary)" }}>{res.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--mvmt-text-secondary)" }}>{res.description}</p>
+                <h3 className="text-lg font-bold mb-2 text-mvmt-text-primary">{res.title}</h3>
+                <p className="text-sm leading-relaxed text-mvmt-text-secondary">{res.description}</p>
               </div>
             </div>
           ))}

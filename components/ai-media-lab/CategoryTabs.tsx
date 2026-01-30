@@ -64,7 +64,7 @@ export function CategoryTabs({
             {showIcons && Icon && <Icon className="h-4 w-4" />}
             {tab.label}
             {tab.badge && (
-              <span className="px-1.5 py-0.5 text-[10px] font-medium bg-primary text-primary-foreground rounded">
+              <span className="px-1.5 py-0.5 text-2xs font-medium bg-primary text-primary-foreground rounded">
                 {tab.badge}
               </span>
             )}

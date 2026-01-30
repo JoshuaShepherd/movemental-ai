@@ -17,15 +17,14 @@ export function AssessmentsHubspotDuplicate({ className }: AssessmentsHubspotDup
 
   return (
     <section
-      className={cn("relative w-full min-h-[70vh] md:min-h-[80vh] flex flex-col", className)}
-      style={{ backgroundColor: "var(--mvmt-surface-light)" }}
+      className={cn("relative w-full min-h-[70vh] md:min-h-[80vh] flex flex-col bg-mvmt-surface-light", className)}
     >
       {/* Header Card */}
-      <div className="px-8 sm:px-12 lg:px-16 pt-8 pb-6" style={{ borderBottom: "1px solid var(--mvmt-border-light)" }}>
-        <h2 className="text-lg font-bold mb-1" style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}>
+      <div className="px-8 sm:px-12 lg:px-16 pt-8 pb-6 border-b border-b-mvmt-border-light">
+        <h2 className="text-lg font-bold mb-1 text-mvmt-text-primary font-mvmt-heading">
           Discipleship Foundations
         </h2>
-        <p className="text-sm mb-6" style={{ color: "var(--mvmt-text-secondary)" }}>
+        <p className="text-sm mb-6 text-mvmt-text-secondary">
           Learn how to build and maintain a strong disciple-making reputation.
         </p>
 
@@ -44,7 +43,7 @@ export function AssessmentsHubspotDuplicate({ className }: AssessmentsHubspotDup
                 >
                   {i < 2 ? "✓" : ""}
                 </div>
-                <span className="text-[9px] font-bold tracking-wider mt-1.5 text-center whitespace-nowrap" style={{ color: i < 2 ? "var(--mvmt-text-primary)" : "var(--mvmt-text-muted)" }}>
+                <span className="text-2xs font-bold tracking-wider mt-1.5 text-center whitespace-nowrap" style={{ color: i < 2 ? "var(--mvmt-text-primary)" : "var(--mvmt-text-muted)" }}>
                   {step}
                 </span>
               </div>
@@ -58,13 +57,12 @@ export function AssessmentsHubspotDuplicate({ className }: AssessmentsHubspotDup
 
       {/* Question */}
       <div className="flex-1 px-8 sm:px-12 lg:px-16 py-10 max-w-3xl">
-        <p className="text-sm mb-2" style={{ color: "var(--mvmt-text-secondary)" }}>
+        <p className="text-sm mb-2 text-mvmt-text-secondary">
           Test your discipleship knowledge with this quick quiz.
         </p>
-        <p className="text-xs font-medium mb-4" style={{ color: "var(--mvmt-text-muted)" }}>Question 1 of 3</p>
+        <p className="text-xs font-medium mb-4 text-mvmt-text-muted">Question 1 of 3</p>
         <h3
-          className="text-xl md:text-2xl font-semibold leading-snug mb-8"
-          style={{ color: "var(--mvmt-accent)", fontFamily: "var(--mvmt-font-heading)" }}
+          className="text-xl md:text-2xl font-semibold leading-snug mb-8 text-mvmt-accent font-mvmt-heading"
         >
           When looking to send leaders to your network you need to collect _______ to help build the trust you need to create lasting relationships with your disciples.
         </h3>
@@ -80,20 +78,18 @@ export function AssessmentsHubspotDuplicate({ className }: AssessmentsHubspotDup
               }}
             >
               <div
-                className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0"
-                style={{ borderColor: "var(--mvmt-accent)" }}
+                className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 border-[var(--mvmt-accent)]"
               >
-                {opt.selected && <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "var(--mvmt-accent)" }} />}
+                {opt.selected && <div className="w-2.5 h-2.5 rounded-full bg-mvmt-accent"  />}
               </div>
-              <span className="text-sm font-medium" style={{ color: "var(--mvmt-text-primary)" }}>{opt.label}</span>
+              <span className="text-sm font-medium text-mvmt-text-primary">{opt.label}</span>
             </label>
           ))}
         </div>
 
         <div className="flex justify-end mt-8">
           <button
-            className="px-6 py-3 rounded-md text-sm font-semibold"
-            style={{ backgroundColor: "var(--mvmt-cta-bg)", color: "var(--mvmt-cta-text)" }}
+            className="px-6 py-3 rounded-md text-sm font-semibold text-mvmt-cta-text bg-mvmt-cta-bg"
           >
             Check Answer
           </button>

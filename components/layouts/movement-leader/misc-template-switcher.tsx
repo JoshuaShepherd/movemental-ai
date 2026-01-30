@@ -5,19 +5,33 @@ import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 
 export type MiscVariant =
-  | "about-video-bio"
   | "cta-bold-banner"
-  | "orgs-enterprise-trust";
+  | "cta-gradient-split"
+  | "cta-minimal-centered"
+  | "cta-dark-full-width"
+  | "cta-social-proof"
+  | "orgs-enterprise-trust"
+  | "orgs-logo-grid"
+  | "orgs-case-study-cards"
+  | "orgs-feature-comparison"
+  | "orgs-contact-sales";
 
 interface MiscTemplateSwitcherProps {
   activeTemplate: MiscVariant;
   onTemplateChange: (template: MiscVariant) => void;
 }
 
-const templates: Array<{ id: MiscVariant; name: string; category: "Dark" | "Light" }> = [
-  { id: "about-video-bio", name: "Video Bio", category: "Dark" },
-  { id: "cta-bold-banner", name: "Bold Banner CTA", category: "Light" },
-  { id: "orgs-enterprise-trust", name: "Enterprise Trust", category: "Dark" },
+const templates: Array<{ id: MiscVariant; name: string; category: "CTA" | "Orgs" }> = [
+  { id: "cta-bold-banner", name: "Bold Banner CTA", category: "CTA" },
+  { id: "cta-gradient-split", name: "Gradient Split", category: "CTA" },
+  { id: "cta-minimal-centered", name: "Minimal Centered", category: "CTA" },
+  { id: "cta-dark-full-width", name: "Dark Full Width", category: "CTA" },
+  { id: "cta-social-proof", name: "Social Proof", category: "CTA" },
+  { id: "orgs-enterprise-trust", name: "Enterprise Trust", category: "Orgs" },
+  { id: "orgs-logo-grid", name: "Logo Grid", category: "Orgs" },
+  { id: "orgs-case-study-cards", name: "Case Study Cards", category: "Orgs" },
+  { id: "orgs-feature-comparison", name: "Feature Comparison", category: "Orgs" },
+  { id: "orgs-contact-sales", name: "Contact Sales", category: "Orgs" },
 ];
 
 export function MiscTemplateSwitcher({ activeTemplate, onTemplateChange }: MiscTemplateSwitcherProps) {
@@ -36,7 +50,7 @@ export function MiscTemplateSwitcher({ activeTemplate, onTemplateChange }: MiscT
           <ChevronDown className={cn("h-4 w-4 transition-transform", isOpen && "rotate-180")} />
         </button>
         {isOpen && (
-          <div className="absolute top-full left-0 mt-1 w-64 rounded-md border bg-background shadow-lg z-50">
+          <div className="absolute top-full left-0 mt-1 w-64 rounded-md border bg-background shadow-lg z-50 max-h-80 overflow-y-auto">
             {templates.map((t) => (
               <button
                 key={t.id}

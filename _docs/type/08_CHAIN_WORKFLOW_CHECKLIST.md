@@ -20,6 +20,42 @@ Use this checklist when:
 
 ---
 
+## Type Safety Validation Runbook
+
+Use this runbook when validating the type safety chain or fixing type errors.
+
+### Validation Command
+
+```bash
+npx tsc --noEmit
+```
+
+- **Exit code 0** → All layers LOCKED. Stop. No action needed.
+- **Exit code 1** → Errors exist. Follow the process below.
+
+### Lock-Before-Proceed Discipline
+
+1. **Identify** which layer has errors (use file path → layer mapping below).
+2. **Fix** the lowest layer with errors first (fix bottom-up).
+3. **Validate** after each fix: `npx tsc --noEmit`.
+4. **Proceed** to the next layer only when current layer has no errors.
+5. **Stop** when `npx tsc --noEmit` returns exit code 0.
+
+### File Path → Layer Mapping (for error identification)
+
+| Error in file path | Layer | Fix order |
+|-------------------|-------|-----------|
+| `db/schema.ts` | 1 | First |
+| `lib/schemas/*.ts` | 2 | Second |
+| `lib/services/**/*.ts` | 3 | Third |
+| `app/api/simplified/**/*.ts` | 4 | Fourth |
+| `hooks/simplified/*.ts` | 5 | Fifth |
+| `components/**/*.ts` | 6 | Sixth |
+
+**Note**: TypeScript errors often surface in downstream layers but originate upstream. Trace back to the root cause (lowest layer) before fixing.
+
+---
+
 ## Adding a New Entity
 
 ### Step 1: Layer 1 - Database Schema

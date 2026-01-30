@@ -21,14 +21,12 @@ const books = [
 export function BooksMinimalGrid({ className }: BooksMinimalGridProps) {
   return (
     <section
-      className={cn("relative w-full min-h-screen py-12", className)}
-      style={{ backgroundColor: "var(--mvmt-surface-light)" }}
+      className={cn("relative w-full min-h-screen py-12 bg-mvmt-surface-light", className)}
     >
       <div className="max-w-7xl mx-auto px-6">
-        <p className="text-xs uppercase tracking-wider" style={{ color: "var(--mvmt-text-secondary)" }}>HOME</p>
+        <p className="text-xs uppercase tracking-wider text-mvmt-text-secondary">HOME</p>
         <h1
-          className="mt-2 text-4xl sm:text-5xl font-bold"
-          style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+          className="mt-2 text-4xl sm:text-5xl font-bold text-mvmt-text-primary font-mvmt-heading"
         >
           All Books
         </h1>
@@ -37,12 +35,11 @@ export function BooksMinimalGrid({ className }: BooksMinimalGridProps) {
           {books.map((book) => (
             <div key={book.title} className="group cursor-pointer">
               <div
-                className="aspect-square flex items-center justify-center rounded-lg"
-                style={{ backgroundColor: "var(--mvmt-surface-light-muted)" }}
+                className="aspect-square flex items-center justify-center rounded-lg bg-mvmt-surface-light-muted"
               >
                 <div
-                  className="w-24 h-36 rounded"
-                  style={{ backgroundColor: "var(--mvmt-border-light)", boxShadow: "var(--mvmt-shadow-sm)" }}
+                  className="w-24 h-36 rounded shadow-mvmt-sm"
+                  style={{ backgroundColor: "var(--mvmt-border-light)" }}
                 />
               </div>
 
@@ -62,12 +59,12 @@ export function BooksMinimalGrid({ className }: BooksMinimalGridProps) {
                       ))}
                     </div>
                   ) : (
-                    <Check className="w-4 h-4" style={{ color: "var(--mvmt-text-muted)" }} />
+                    <Check className="w-4 h-4 text-mvmt-text-muted"  />
                   )}
                 </div>
-                <p className="mt-1.5 text-sm leading-tight" style={{ color: "var(--mvmt-text-primary)" }}>{book.title}</p>
-                <p className="text-xs mt-0.5" style={{ color: "var(--mvmt-text-secondary)" }}>{book.author}</p>
-                <p className="mt-1 text-sm font-medium" style={{ color: "var(--mvmt-text-primary)" }}>{book.price}</p>
+                <p className="mt-1.5 text-sm leading-tight text-mvmt-text-primary">{book.title}</p>
+                <p className="text-xs mt-0.5 text-mvmt-text-secondary">{book.author}</p>
+                <p className="mt-1 text-sm font-medium text-mvmt-text-primary">{book.price}</p>
               </div>
             </div>
           ))}

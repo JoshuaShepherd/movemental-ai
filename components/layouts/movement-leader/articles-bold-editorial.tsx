@@ -13,8 +13,7 @@ interface ArticlesBoldEditorialProps {
 export function ArticlesBoldEditorial({ className }: ArticlesBoldEditorialProps) {
   return (
     <section
-      className={cn("relative w-full", className)}
-      style={{ backgroundColor: "var(--mvmt-surface-dark)" }}
+      className={cn("relative w-full bg-mvmt-surface-dark", className)}
     >
       {/* Full-bleed hero */}
       <div className="relative w-full h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
@@ -28,18 +27,13 @@ export function ArticlesBoldEditorial({ className }: ArticlesBoldEditorialProps)
         />
         {/* Background texture placeholder */}
         <div
-          className="absolute inset-0 opacity-20"
-          style={{ backgroundColor: "var(--mvmt-surface-dark-elevated)" }}
+          className="absolute inset-0 opacity-20 bg-mvmt-surface-dark-elevated"
         />
 
         {/* Neon headline */}
         <h1
-          className="relative z-10 text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight text-center uppercase"
-          style={{
-            color: "var(--mvmt-accent)",
-            fontFamily: "var(--mvmt-font-heading)",
-            textShadow: "0 0 40px var(--mvmt-accent)",
-          }}
+          className="relative z-10 text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight text-center uppercase text-mvmt-accent font-mvmt-heading"
+          style={{ textShadow: "0 0 40px var(--mvmt-accent)" }}
         >
           WHO WE ARE
         </h1>
@@ -50,17 +44,14 @@ export function ArticlesBoldEditorial({ className }: ArticlesBoldEditorialProps)
         <div className="max-w-3xl mx-auto">
           {/* Subheading */}
           <h2
-            className="text-sm sm:text-base font-bold uppercase tracking-widest mb-10 pb-3"
-            style={{
-              color: "var(--mvmt-on-dark-primary)",
-              borderBottom: "2px solid var(--mvmt-on-dark-primary)",
-              display: "inline-block",
-            }}
+            className="text-sm sm:text-base font-bold uppercase tracking-widest mb-10 pb-3 text-mvmt-on-dark-primary"
+            style={{ borderBottom: "2px solid var(--mvmt-on-dark-primary)",
+              display: "inline-block" }}
           >
             IGNITE THE POWER OF MOVEMENT CULTURE TO MAKE MOMENTS THAT MATTER
           </h2>
 
-          <div className="space-y-6 text-base sm:text-lg leading-relaxed" style={{ color: "var(--mvmt-on-dark-secondary)" }}>
+          <div className="space-y-6 text-base sm:text-lg leading-relaxed text-mvmt-on-dark-secondary">
             <p>
               Movement leadership is not a job title. It is a posture, a commitment to the belief
               that culture shifts when ordinary people are empowered to act with extraordinary
@@ -91,7 +82,7 @@ export function ArticlesBoldEditorial({ className }: ArticlesBoldEditorialProps)
               from consumption to creation, from attendance to agency, from isolated effort to
               networked multiplication.
             </p>
-            <p style={{ color: "var(--mvmt-on-dark-primary)" }} className="font-semibold text-lg sm:text-xl">
+            <p className="font-semibold text-lg sm:text-xl text-mvmt-on-dark-primary">
               This is not content management. This is movement infrastructure.
             </p>
           </div>

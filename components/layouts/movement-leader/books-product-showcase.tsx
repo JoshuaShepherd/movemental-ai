@@ -41,35 +41,28 @@ const books = [
 export function BooksProductShowcase({ className }: BooksProductShowcaseProps) {
   return (
     <section
-      className={cn("relative w-full py-16", className)}
-      style={{ backgroundColor: "var(--mvmt-surface-light)" }}
+      className={cn("relative w-full py-16 bg-mvmt-surface-light", className)}
     >
       <div className="max-w-7xl mx-auto px-6">
         <h2
-          className="text-4xl sm:text-5xl font-bold tracking-tight"
-          style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+          className="text-4xl sm:text-5xl font-bold tracking-tight text-mvmt-text-primary font-mvmt-heading"
         >
           Essential Reading
         </h2>
-        <p className="mt-2 text-lg" style={{ color: "var(--mvmt-text-secondary)" }}>
-          All titles. <span style={{ color: "var(--mvmt-text-muted)" }}>Take your pick.</span>
+        <p className="mt-2 text-lg text-mvmt-text-secondary">
+          All titles. <span className="text-mvmt-text-muted">Take your pick.</span>
         </p>
 
         <div className="mt-10 flex gap-6 overflow-x-auto pb-4 -mx-6 px-6 scroll-smooth snap-x">
           {books.map((book) => (
             <div
               key={book.title}
-              className="flex-shrink-0 w-72 sm:w-80 snap-start flex flex-col"
-              style={{
-                backgroundColor: "var(--mvmt-surface-light-muted)",
-                borderRadius: "var(--mvmt-radius-lg)",
-              }}
+              className="flex-shrink-0 w-72 sm:w-80 snap-start flex flex-col bg-mvmt-surface-light-muted rounded-mvmt-lg"
             >
               {book.badge && (
                 <div className="px-6 pt-5">
                   <span
-                    className="text-xs font-semibold uppercase tracking-wider"
-                    style={{ color: "var(--mvmt-accent)" }}
+                    className="text-xs font-semibold uppercase tracking-wider text-mvmt-accent"
                   >
                     {book.badge}
                   </span>
@@ -78,41 +71,32 @@ export function BooksProductShowcase({ className }: BooksProductShowcaseProps) {
 
               <div className={cn("px-6", book.badge ? "pt-1" : "pt-6")}>
                 <h3
-                  className="text-xl font-bold"
-                  style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+                  className="text-xl font-bold text-mvmt-text-primary font-mvmt-heading"
                 >
                   {book.title}
                 </h3>
-                <p className="mt-1 text-sm" style={{ color: "var(--mvmt-text-secondary)" }}>
+                <p className="mt-1 text-sm text-mvmt-text-secondary">
                   {book.author}
                 </p>
               </div>
 
               <div className="flex-1 flex items-center justify-center px-6 py-8">
                 <div
-                  className="w-36 h-52 rounded-md flex items-center justify-center"
-                  style={{
-                    backgroundColor: "var(--mvmt-border-light)",
-                    boxShadow: "var(--mvmt-shadow-lg)",
-                  }}
+                  className="w-36 h-52 rounded-md flex items-center justify-center shadow-mvmt-lg"
+                  style={{ backgroundColor: "var(--mvmt-border-light)" }}
                 >
-                  <span className="text-xs font-medium" style={{ color: "var(--mvmt-text-muted)" }}>
+                  <span className="text-xs font-medium text-mvmt-text-muted">
                     Cover
                   </span>
                 </div>
               </div>
 
               <div className="px-6 pb-6 flex items-center justify-between">
-                <p className="text-sm" style={{ color: "var(--mvmt-text-secondary)" }}>
+                <p className="text-sm text-mvmt-text-secondary">
                   {book.price}
                 </p>
                 <button
-                  className="px-4 py-2 text-sm font-medium transition-colors"
-                  style={{
-                    backgroundColor: "var(--mvmt-cta-bg)",
-                    color: "var(--mvmt-cta-text)",
-                    borderRadius: "var(--mvmt-radius-full)",
-                  }}
+                  className="px-4 py-2 text-sm font-medium transition-colors text-mvmt-cta-text bg-mvmt-cta-bg rounded-full"
                 >
                   Get Book
                 </button>
@@ -121,7 +105,7 @@ export function BooksProductShowcase({ className }: BooksProductShowcaseProps) {
           ))}
 
           <div className="flex-shrink-0 w-16 flex items-center justify-center">
-            <ChevronRight className="w-8 h-8" style={{ color: "var(--mvmt-text-muted)" }} />
+            <ChevronRight className="w-8 h-8 text-mvmt-text-muted"  />
           </div>
         </div>
       </div>

@@ -28,8 +28,7 @@ export function HeroColorfulHeadline({ className }: HeroColorfulHeadlineProps) {
         />
         {/* Gradient overlay — darker on left for text readability */}
         <div
-          className="absolute inset-0"
-          style={{ background: "var(--mvmt-gradient-overlay-hero)" }}
+          className="absolute inset-0 bg-mvmt-gradient-overlay-hero"
         />
       </div>
 
@@ -37,27 +36,18 @@ export function HeroColorfulHeadline({ className }: HeroColorfulHeadlineProps) {
       <div className="relative z-10 container mx-auto px-6 sm:px-8 lg:px-12 py-16 md:py-24">
         <div className="max-w-2xl">
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight"
-            style={{
-              color: "var(--mvmt-on-dark-primary)",
-              fontFamily: "var(--mvmt-font-heading)",
-            }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-mvmt-on-dark-primary font-mvmt-heading"
           >
             Equip leaders for movements with{" "}
-            <span style={{ color: "var(--mvmt-accent)" }}>books</span>,{" "}
-            <span style={{ color: "var(--mvmt-accent)" }}>courses</span>, and{" "}
-            <span style={{ color: "var(--mvmt-accent)" }}>much, much more</span>.
+            <span className="text-mvmt-accent">books</span>,{" "}
+            <span className="text-mvmt-accent">courses</span>, and{" "}
+            <span className="text-mvmt-accent">much, much more</span>.
           </h1>
 
           <div className="mt-10">
             <Link
               href="/fit-check"
-              className="inline-block px-8 py-4 text-sm font-semibold uppercase tracking-widest transition-colors"
-              style={{
-                backgroundColor: "var(--mvmt-cta-bg)",
-                color: "var(--mvmt-cta-text)",
-                borderRadius: "var(--mvmt-radius-full)",
-              }}
+              className="inline-block px-8 py-4 text-sm font-semibold uppercase tracking-widest transition-colors text-mvmt-cta-text bg-mvmt-cta-bg rounded-full"
               onMouseEnter={(e) =>
                 (e.currentTarget.style.backgroundColor = "var(--mvmt-accent-hover)")
               }

@@ -12,17 +12,17 @@ interface ArticlesBlockquoteEditorialProps {
  */
 export function ArticlesBlockquoteEditorial({ className }: ArticlesBlockquoteEditorialProps) {
   return (
-    <section className={cn("relative w-full", className)} style={{ backgroundColor: "var(--mvmt-surface-light)" }}>
+    <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       {/* Top bar */}
       <div className="border-b" style={{ borderColor: "var(--mvmt-border-light)" }}>
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-          <span className="text-sm font-semibold tracking-wide" style={{ color: "var(--mvmt-text-primary)" }}>Movemental Journal</span>
+          <span className="text-sm font-semibold tracking-wide text-mvmt-text-primary">Movemental Journal</span>
           <div className="w-5 h-5 rounded-full" style={{ backgroundColor: "var(--mvmt-border-light)" }} />
         </div>
       </div>
 
       {/* Opening section */}
-      <div className="max-w-2xl mx-auto px-6 py-12 space-y-6 text-base leading-relaxed" style={{ color: "var(--mvmt-text-primary)" }}>
+      <div className="max-w-2xl mx-auto px-6 py-12 space-y-6 text-base leading-relaxed text-mvmt-text-primary">
         <p>
           Creativity in movement organizations does not happen by accident. It requires
           the kind of team health that most leaders talk about but few cultivate with
@@ -48,11 +48,11 @@ export function ArticlesBlockquoteEditorial({ className }: ArticlesBlockquoteEdi
       </div>
 
       {/* Full-width pull-quote block */}
-      <div className="w-full py-16 px-8" style={{ backgroundColor: "var(--mvmt-accent)" }}>
+      <div className="w-full py-16 px-8 bg-mvmt-accent">
         <div className="max-w-3xl mx-auto">
           <p
-            className="text-2xl md:text-4xl leading-snug"
-            style={{ color: "var(--mvmt-cta-text)", fontStyle: "italic" }}
+            className="text-2xl md:text-4xl leading-snug text-mvmt-cta-text"
+            style={{ fontStyle: "italic" }}
           >
             &ldquo;When you put everything on the table, it creates a lot of space for
             creative problem-solving and blue sky thinking.&rdquo;
@@ -64,7 +64,7 @@ export function ArticlesBlockquoteEditorial({ className }: ArticlesBlockquoteEdi
       <div className="max-w-5xl mx-auto px-6 py-12">
         <div className="grid md:grid-cols-2 gap-12">
           {/* Left column */}
-          <div className="space-y-5 text-base leading-relaxed" style={{ color: "var(--mvmt-text-primary)" }}>
+          <div className="space-y-5 text-base leading-relaxed text-mvmt-text-primary">
             <p>
               In practice, this looks like building rhythms that protect space for
               imagination. Brad Brisco encourages the leaders he coaches to block one
@@ -91,8 +91,8 @@ export function ArticlesBlockquoteEditorial({ className }: ArticlesBlockquoteEdi
           </div>
 
           {/* Right column */}
-          <div className="space-y-5 text-base leading-relaxed" style={{ color: "var(--mvmt-text-primary)" }}>
-            <h3 className="text-lg font-bold" style={{ fontFamily: "var(--mvmt-font-heading)" }}>
+          <div className="space-y-5 text-base leading-relaxed text-mvmt-text-primary">
+            <h3 className="text-lg font-bold font-mvmt-heading">
               Welcome tough conversations
             </h3>
             <p>
@@ -123,8 +123,7 @@ export function ArticlesBlockquoteEditorial({ className }: ArticlesBlockquoteEdi
             <div className="pt-4 text-right">
               <a
                 href="#"
-                className="text-sm font-semibold"
-                style={{ color: "var(--mvmt-accent)" }}
+                className="text-sm font-semibold text-mvmt-accent"
               >
                 Share &rarr;
               </a>

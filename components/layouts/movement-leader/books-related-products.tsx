@@ -20,13 +20,11 @@ const relatedBooks = [
 export function BooksRelatedProducts({ className }: BooksRelatedProductsProps) {
   return (
     <section
-      className={cn("relative w-full py-16", className)}
-      style={{ backgroundColor: "var(--mvmt-surface-light)" }}
+      className={cn("relative w-full py-16 bg-mvmt-surface-light", className)}
     >
       <div className="max-w-7xl mx-auto px-6">
         <h2
-          className="text-3xl sm:text-4xl font-bold"
-          style={{ color: "var(--mvmt-text-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+          className="text-3xl sm:text-4xl font-bold text-mvmt-text-primary font-mvmt-heading"
         >
           Related Books
         </h2>
@@ -35,25 +33,23 @@ export function BooksRelatedProducts({ className }: BooksRelatedProductsProps) {
           {relatedBooks.map((book) => (
             <div key={book.title} className="group cursor-pointer">
               <div
-                className="aspect-square flex flex-col items-center justify-center rounded-lg relative"
-                style={{ backgroundColor: "var(--mvmt-surface-light-muted)" }}
+                className="aspect-square flex flex-col items-center justify-center rounded-lg relative bg-mvmt-surface-light-muted"
               >
                 <div
-                  className="w-24 h-36 rounded"
-                  style={{ backgroundColor: "var(--mvmt-border-light)", boxShadow: "var(--mvmt-shadow-sm)" }}
+                  className="w-24 h-36 rounded shadow-mvmt-sm"
+                  style={{ backgroundColor: "var(--mvmt-border-light)" }}
                 />
                 {book.collection && (
                   <span
-                    className="absolute bottom-4 left-4 text-[10px] font-mono uppercase tracking-wider underline"
-                    style={{ color: "var(--mvmt-accent)" }}
+                    className="absolute bottom-4 left-4 text-2xs font-mono uppercase tracking-wider underline text-mvmt-accent"
                   >
                     {book.collection}
                   </span>
                 )}
               </div>
               <div className="mt-3 flex items-center justify-between">
-                <p className="text-sm" style={{ color: "var(--mvmt-text-primary)" }}>{book.title}</p>
-                <p className="text-sm" style={{ color: "var(--mvmt-text-primary)" }}>{book.price}</p>
+                <p className="text-sm text-mvmt-text-primary">{book.title}</p>
+                <p className="text-sm text-mvmt-text-primary">{book.price}</p>
               </div>
             </div>
           ))}

@@ -154,7 +154,7 @@ export function ContentCardGrid({
                             className="w-full h-full object-cover"
                           />
                         ) : (
-                          <span className="text-[10px] font-medium text-primary">
+                          <span className="text-2xs font-medium text-primary">
                             {initials}
                           </span>
                         )}

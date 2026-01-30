@@ -19,18 +19,17 @@ export function FaqDarkHero({ className }: FaqDarkHeroProps) {
   ];
 
   return (
-    <section className={cn("relative w-full flex flex-col", className)} style={{ backgroundColor: "var(--mvmt-surface-dark)" }}>
+    <section className={cn("relative w-full flex flex-col bg-mvmt-surface-dark", className)} >
       {/* Nav */}
       <div className="flex items-center justify-between px-6 sm:px-12 py-4">
-        <span className="text-sm font-semibold" style={{ color: "var(--mvmt-on-dark-primary)" }}>
-          Movemental <span style={{ color: "var(--mvmt-on-dark-muted)" }}>at Work</span>
+        <span className="text-sm font-semibold text-mvmt-on-dark-primary">
+          Movemental <span className="text-mvmt-on-dark-muted">at Work</span>
         </span>
         <div className="flex items-center gap-4">
-          <span className="text-sm" style={{ color: "var(--mvmt-on-dark-secondary)" }}>Log In</span>
+          <span className="text-sm text-mvmt-on-dark-secondary">Log In</span>
           <Link
             href="/contact"
-            className="px-4 py-2 text-xs font-semibold rounded-full"
-            style={{ backgroundColor: "var(--mvmt-accent)", color: "var(--mvmt-cta-text)" }}
+            className="px-4 py-2 text-xs font-semibold rounded-full text-mvmt-cta-text bg-mvmt-accent"
           >
             Contact Sales
           </Link>
@@ -40,23 +39,20 @@ export function FaqDarkHero({ className }: FaqDarkHeroProps) {
       {/* Split Hero */}
       <div className="px-6 sm:px-12 lg:px-16 py-12 grid md:grid-cols-2 gap-10 items-center">
         <div
-          className="aspect-[4/3] rounded-lg"
-          style={{ backgroundColor: "var(--mvmt-surface-dark-elevated)" }}
+          className="aspect-[4/3] rounded-lg bg-mvmt-surface-dark-elevated"
         />
         <div>
           <h2
-            className="text-2xl sm:text-3xl font-bold mb-4"
-            style={{ color: "var(--mvmt-on-dark-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+            className="text-2xl sm:text-3xl font-bold mb-4 text-mvmt-on-dark-primary font-mvmt-heading"
           >
             Drive ministry outcomes
           </h2>
-          <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--mvmt-on-dark-secondary)" }}>
+          <p className="text-sm leading-relaxed mb-6 text-mvmt-on-dark-secondary">
             Help teams develop critical skills that support organizational goals as well as personal growth and transformation.
           </p>
           <Link
             href="/contact"
-            className="inline-block px-6 py-3 text-xs font-semibold rounded-full"
-            style={{ backgroundColor: "var(--mvmt-accent)", color: "var(--mvmt-cta-text)" }}
+            className="inline-block px-6 py-3 text-xs font-semibold rounded-full text-mvmt-cta-text bg-mvmt-accent"
           >
             Contact Sales
           </Link>
@@ -66,8 +62,7 @@ export function FaqDarkHero({ className }: FaqDarkHeroProps) {
       {/* FAQ Section */}
       <div className="px-6 sm:px-12 lg:px-16 py-16">
         <h2
-          className="text-2xl sm:text-3xl font-bold text-center mb-10"
-          style={{ color: "var(--mvmt-on-dark-primary)", fontFamily: "var(--mvmt-font-heading)" }}
+          className="text-2xl sm:text-3xl font-bold text-center mb-10 text-mvmt-on-dark-primary font-mvmt-heading"
         >
           Frequently Asked Questions
         </h2>
@@ -75,16 +70,15 @@ export function FaqDarkHero({ className }: FaqDarkHeroProps) {
           {faqs.map((faq, i) => (
             <button
               key={i}
-              className="w-full text-left px-6 py-4 rounded-lg transition-colors"
-              style={{ backgroundColor: "var(--mvmt-surface-dark-elevated)" }}
+              className="w-full text-left px-6 py-4 rounded-lg transition-colors bg-mvmt-surface-dark-elevated"
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
             >
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium pr-4" style={{ color: "var(--mvmt-on-dark-primary)" }}>{faq.q}</span>
-                <span style={{ color: "var(--mvmt-on-dark-muted)" }}>{openIndex === i ? "∧" : "∨"}</span>
+                <span className="text-sm font-medium pr-4 text-mvmt-on-dark-primary">{faq.q}</span>
+                <span className="text-mvmt-on-dark-muted">{openIndex === i ? "∧" : "∨"}</span>
               </div>
               {openIndex === i && (
-                <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--mvmt-on-dark-secondary)" }}>
+                <p className="mt-3 text-sm leading-relaxed text-mvmt-on-dark-secondary">
                   {faq.a}
                 </p>
               )}
@@ -94,8 +88,7 @@ export function FaqDarkHero({ className }: FaqDarkHeroProps) {
         <div className="text-center mt-10">
           <Link
             href="/contact"
-            className="inline-block px-8 py-3 text-sm font-semibold rounded-full"
-            style={{ backgroundColor: "var(--mvmt-accent)", color: "var(--mvmt-cta-text)" }}
+            className="inline-block px-8 py-3 text-sm font-semibold rounded-full text-mvmt-cta-text bg-mvmt-accent"
           >
             Contact Sales
           </Link>
