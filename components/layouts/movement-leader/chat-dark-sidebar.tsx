@@ -68,7 +68,7 @@ export function ChatDarkSidebar({ className }: ChatDarkSidebarProps) {
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-mvmt-cta-text"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg>
                 </div>
                 <div className="pt-1">
-                  <div className="w-2.5 h-4 inline-block" style={{ backgroundColor: "var(--mvmt-text-primary)", animation: "pulse 1s infinite" }} />
+                  <div className="w-2.5 h-4 inline-block bg-mvmt-text-primary" style={{ animation: "pulse 1s infinite" }} />
                 </div>
               </div>
             </div>

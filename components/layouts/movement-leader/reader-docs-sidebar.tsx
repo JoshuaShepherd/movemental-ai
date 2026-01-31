@@ -59,7 +59,7 @@ export function ReaderDocsSidebar({ className }: ReaderDocsSidebarProps) {
             Movement<br />best practices
           </h2>
           {/* Progress */}
-          <div className="w-full h-1 rounded-full mb-1" style={{ backgroundColor: "var(--mvmt-border-light)" }}>
+          <div className="w-full h-1 rounded-full mb-1 bg-mvmt-border-light" >
             <div className="h-full w-1/4 rounded-full bg-mvmt-accent"  />
           </div>
           <p className="text-xs mb-8 text-mvmt-accent">25% of guide read</p>

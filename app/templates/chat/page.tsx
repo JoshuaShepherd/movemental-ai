@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import {
   ChatSupportMinimal,
   ChatWarmGreeting,
@@ -15,6 +15,7 @@ import {
   ChatTemplateSwitcher,
 } from "@/components/layouts/movement-leader";
 import type { ChatVariant } from "@/components/layouts/movement-leader";
+import { useTemplateVariant } from "@/app/templates/template-variant-context";
 
 const templateComponents: Record<ChatVariant, React.ComponentType> = {
   "chat-support-minimal": ChatSupportMinimal,
@@ -34,8 +35,11 @@ export default function ChatTemplatePage() {
     useState<ChatVariant>("chat-warm-greeting");
   const ActiveComponent = templateComponents[activeTemplate];
 
+  const { setVariant } = useTemplateVariant();
+  useEffect(() => { setVariant(activeTemplate); }, [activeTemplate, setVariant]);
+
   return (
-    <div className="template-movement-leader" data-variant={activeTemplate}>
+    <>
       <div className="sticky top-14 z-40 bg-background border-b">
         <ChatTemplateSwitcher
           activeTemplate={activeTemplate}
@@ -43,6 +47,6 @@ export default function ChatTemplatePage() {
         />
       </div>
       <ActiveComponent />
-    </div>
+    </>
   );
 }

@@ -104,11 +104,8 @@ export function ArticlesBoldHeader({ className }: ArticlesBoldHeaderProps) {
           <aside className="space-y-8">
             {/* CTA Card */}
             <div
-              className="rounded-xl p-6"
-              style={{
-                backgroundColor: "var(--mvmt-surface-raised)",
-                border: "1px solid var(--mvmt-border-default)",
-              }}
+              className="rounded-xl p-6 bg-mvmt-surface-raised"
+              style={{ border: "1px solid var(--mvmt-border-default)" }}
             >
               <h3
                 className="text-lg font-semibold mb-2 text-mvmt-text-primary font-mvmt-heading"
@@ -120,8 +117,8 @@ export function ArticlesBoldHeader({ className }: ArticlesBoldHeaderProps) {
               </p>
               <a
                 href="#"
-                className="inline-block w-full text-center px-5 py-2.5 text-sm font-semibold rounded-lg transition-colors text-mvmt-on-dark-primary"
-                style={{ backgroundColor: "var(--mvmt-accent-primary)" }}
+                className="inline-block w-full text-center px-5 py-2.5 text-sm font-semibold rounded-lg transition-colors text-mvmt-on-dark-primary bg-mvmt-accent-primary"
+                
               >
                 Start free trial
               </a>
@@ -130,8 +127,8 @@ export function ArticlesBoldHeader({ className }: ArticlesBoldHeaderProps) {
             {/* Table of Contents */}
             <div>
               <h4
-                className="text-xs font-semibold uppercase tracking-wider mb-4"
-                style={{ color: "var(--mvmt-text-tertiary)" }}
+                className="text-xs font-semibold uppercase tracking-wider mb-4 text-mvmt-text-tertiary"
+                
               >
                 Contents
               </h4>

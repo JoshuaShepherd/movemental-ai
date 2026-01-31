@@ -31,20 +31,20 @@ export function ArticlesDocsSidebar({ className }: ArticlesDocsSidebarProps) {
   return (
     <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       {/* Top bar */}
-      <div className="border-b" style={{ borderColor: "var(--mvmt-border-light)" }}>
+      <div className="border-b border-mvmt-border-light" >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <span className="text-sm font-semibold tracking-wide text-mvmt-text-primary">Movemental Docs</span>
           <div className="flex items-center gap-4">
             <span className="text-sm text-mvmt-text-secondary">Search</span>
-            <div className="w-5 h-5 rounded-full" style={{ backgroundColor: "var(--mvmt-border-light)" }} />
+            <div className="w-5 h-5 rounded-full bg-mvmt-border-light"  />
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto flex">
         {/* Left sidebar */}
-        <aside className="w-56 flex-shrink-0 border-r py-8 px-4" style={{ borderColor: "var(--mvmt-border-light)" }}>
-          <p className="text-xs font-semibold uppercase tracking-wider mb-4" style={{ color: "var(--mvmt-text-tertiary)" }}>
+        <aside className="w-56 flex-shrink-0 border-r py-8 px-4 border-mvmt-border-light" >
+          <p className="text-xs font-semibold uppercase tracking-wider mb-4 text-mvmt-text-tertiary" >
             Legal
           </p>
           <nav className="space-y-1">
@@ -120,7 +120,7 @@ export function ArticlesDocsSidebar({ className }: ArticlesDocsSidebarProps) {
 
         {/* Right TOC sidebar */}
         <aside className="w-48 flex-shrink-0 py-12 px-4 hidden lg:block">
-          <p className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "var(--mvmt-text-tertiary)" }}>
+          <p className="text-xs font-semibold uppercase tracking-wider mb-3 text-mvmt-text-tertiary" >
             On this page
           </p>
           <nav className="space-y-2">

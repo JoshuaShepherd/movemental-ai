@@ -47,13 +47,8 @@ export function HeroColorfulHeadline({ className }: HeroColorfulHeadlineProps) {
           <div className="mt-10">
             <Link
               href="/fit-check"
-              className="inline-block px-8 py-4 text-sm font-semibold uppercase tracking-widest transition-colors text-mvmt-cta-text bg-mvmt-cta-bg rounded-full"
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.backgroundColor = "var(--mvmt-accent-hover)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.backgroundColor = "var(--mvmt-cta-bg)")
-              }
+              className="inline-block px-8 py-4 text-sm font-semibold uppercase tracking-widest transition-colors text-mvmt-cta-text bg-mvmt-cta-bg rounded-full hover:bg-mvmt-accent-hover"
+
             >
               Start Multiplying
             </Link>

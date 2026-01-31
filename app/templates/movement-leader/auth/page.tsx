@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import {
   AuthSplitImage,
   AuthCenteredCard,
@@ -13,6 +13,7 @@ import {
   AuthTemplateSwitcher,
 } from "@/components/layouts/movement-leader";
 import type { AuthVariant } from "@/components/layouts/movement-leader";
+import { useTemplateVariant } from "@/app/templates/template-variant-context";
 
 const templateComponents: Record<AuthVariant, React.ComponentType> = {
   "auth-split-image": AuthSplitImage,
@@ -30,8 +31,11 @@ export default function AuthTemplatePage() {
     useState<AuthVariant>("auth-split-image");
   const ActiveComponent = templateComponents[activeTemplate];
 
+  const { setVariant } = useTemplateVariant();
+  useEffect(() => { setVariant(activeTemplate); }, [activeTemplate, setVariant]);
+
   return (
-    <div className="template-movement-leader" data-variant={activeTemplate}>
+    <>
       <div className="sticky top-14 z-40 bg-background border-b">
         <AuthTemplateSwitcher
           activeTemplate={activeTemplate}
@@ -39,6 +43,6 @@ export default function AuthTemplatePage() {
         />
       </div>
       <ActiveComponent />
-    </div>
+    </>
   );
 }

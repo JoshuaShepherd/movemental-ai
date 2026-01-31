@@ -20,10 +20,10 @@ export function ArticlesCleanLongform({ className }: ArticlesCleanLongformProps)
   return (
     <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       {/* Top bar */}
-      <div className="border-b" style={{ borderColor: "var(--mvmt-border-light)" }}>
+      <div className="border-b border-mvmt-border-light" >
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
           <span className="text-sm font-semibold tracking-wide text-mvmt-text-primary">Movemental</span>
-          <div className="w-5 h-5 rounded-full" style={{ backgroundColor: "var(--mvmt-border-light)" }} />
+          <div className="w-5 h-5 rounded-full bg-mvmt-border-light"  />
         </div>
       </div>
 
@@ -37,10 +37,10 @@ export function ArticlesCleanLongform({ className }: ArticlesCleanLongformProps)
 
         {/* Author row */}
         <div className="mt-6 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full flex-shrink-0" style={{ backgroundColor: "var(--mvmt-accent-muted)" }} />
+          <div className="w-10 h-10 rounded-full flex-shrink-0 bg-mvmt-accent-muted"  />
           <div>
             <p className="text-sm font-medium text-mvmt-text-primary">Brad Brisco</p>
-            <p className="text-xs" style={{ color: "var(--mvmt-text-tertiary)" }}>April 23, 2024 &middot; 8 min read</p>
+            <p className="text-xs text-mvmt-text-tertiary" >April 23, 2024 &middot; 8 min read</p>
           </div>
         </div>
 
@@ -87,14 +87,14 @@ export function ArticlesCleanLongform({ className }: ArticlesCleanLongformProps)
         </div>
 
         {/* Interaction row */}
-        <div className="mt-10 flex items-center gap-4 py-4 border-t border-b" style={{ borderColor: "var(--mvmt-border-light)" }}>
+        <div className="mt-10 flex items-center gap-4 py-4 border-t border-b border-mvmt-border-light" >
           <div className="flex items-center gap-1">
-            <div className="w-5 h-5 rounded-full" style={{ backgroundColor: "var(--mvmt-accent-primary)" }} />
-            <span className="text-sm" style={{ color: "var(--mvmt-text-tertiary)" }}>142</span>
+            <div className="w-5 h-5 rounded-full bg-mvmt-accent-primary"  />
+            <span className="text-sm text-mvmt-text-tertiary" >142</span>
           </div>
           <div className="flex items-center gap-1">
-            <div className="w-4 h-4 rounded" style={{ backgroundColor: "var(--mvmt-border-light)" }} />
-            <span className="text-sm" style={{ color: "var(--mvmt-text-tertiary)" }}>24 responses</span>
+            <div className="w-4 h-4 rounded bg-mvmt-border-light"  />
+            <span className="text-sm text-mvmt-text-tertiary" >24 responses</span>
           </div>
         </div>
       </article>
@@ -105,9 +105,9 @@ export function ArticlesCleanLongform({ className }: ArticlesCleanLongformProps)
         <div className="grid sm:grid-cols-3 gap-6">
           {relatedArticles.map((article) => (
             <div key={article.title} className="space-y-2">
-              <div className="w-full h-32 rounded-lg" style={{ backgroundColor: "var(--mvmt-accent-muted)" }} />
+              <div className="w-full h-32 rounded-lg bg-mvmt-accent-muted"  />
               <h3 className="text-sm font-semibold leading-snug text-mvmt-text-primary">{article.title}</h3>
-              <p className="text-xs" style={{ color: "var(--mvmt-text-tertiary)" }}>
+              <p className="text-xs text-mvmt-text-tertiary" >
                 {article.author} &middot; {article.date} &middot; {article.readTime}
               </p>
             </div>

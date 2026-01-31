@@ -82,8 +82,8 @@ export function BooksProductShowcase({ className }: BooksProductShowcaseProps) {
 
               <div className="flex-1 flex items-center justify-center px-6 py-8">
                 <div
-                  className="w-36 h-52 rounded-md flex items-center justify-center shadow-mvmt-lg"
-                  style={{ backgroundColor: "var(--mvmt-border-light)" }}
+                  className="w-36 h-52 rounded-md flex items-center justify-center shadow-mvmt-lg bg-mvmt-border-light"
+                  
                 >
                   <span className="text-xs font-medium text-mvmt-text-muted">
                     Cover

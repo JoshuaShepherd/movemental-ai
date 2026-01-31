@@ -34,7 +34,7 @@ export function ChatAssistantFriendly({ className }: ChatAssistantFriendlyProps)
               <span className="text-mvmt-on-dark-secondary">20 days left</span>
             </div>
             <div className="w-full h-1.5 rounded-full" style={{ backgroundColor: "rgba(255,255,255,0.15)" }}>
-              <div className="h-full rounded-full" style={{ width: "66%", backgroundColor: "var(--mvmt-success)" }} />
+              <div className="h-full rounded-full bg-mvmt-success" style={{ width: "66%" }} />
             </div>
           </div>
 

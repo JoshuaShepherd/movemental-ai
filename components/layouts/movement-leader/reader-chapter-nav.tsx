@@ -73,7 +73,7 @@ export function ReaderChapterNav({ className }: ReaderChapterNavProps) {
           </div>
         </div>
         {/* Chapter progress bar */}
-        <div className="w-full h-0.5" style={{ backgroundColor: "var(--mvmt-border-light)" }}>
+        <div className="w-full h-0.5 bg-mvmt-border-light" >
           <div className="h-full bg-mvmt-accent transition-all" style={{ width: "45%" }} />
         </div>
       </div>

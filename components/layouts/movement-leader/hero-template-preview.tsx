@@ -45,8 +45,8 @@ export function HeroTemplatePreview({ className }: HeroTemplatePreviewProps) {
               </Link>
               <Link
                 href="/about"
-                className="inline-block px-6 py-3 text-sm font-medium border transition-colors text-mvmt-text-primary rounded-mvmt-md"
-                style={{ borderColor: "var(--mvmt-border-medium)" }}
+                className="inline-block px-6 py-3 text-sm font-medium border transition-colors text-mvmt-text-primary rounded-mvmt-md border-mvmt-border-medium"
+                
               >
                 Explore Pages
               </Link>
@@ -106,8 +106,8 @@ export function HeroTemplatePreview({ className }: HeroTemplatePreviewProps) {
                 </p>
                 <div className="flex gap-2 mt-2">
                   <div className="w-8 h-1 rounded-full bg-mvmt-accent"  />
-                  <div className="w-8 h-1 rounded-full" style={{ backgroundColor: "var(--mvmt-border-light)" }} />
-                  <div className="w-8 h-1 rounded-full" style={{ backgroundColor: "var(--mvmt-border-light)" }} />
+                  <div className="w-8 h-1 rounded-full bg-mvmt-border-light"  />
+                  <div className="w-8 h-1 rounded-full bg-mvmt-border-light"  />
                 </div>
               </div>
             </div>

@@ -41,8 +41,8 @@ export function CtaBoldBanner({ className }: CtaBoldBannerProps) {
           {groups.map((g) => (
             <div key={g.region}>
               <div
-                className="aspect-[3/2] rounded-lg mb-3"
-                style={{ backgroundColor: "var(--mvmt-border-light)" }}
+                className="aspect-[3/2] rounded-lg mb-3 bg-mvmt-border-light"
+                
               />
               <p className="text-2xs font-bold uppercase tracking-widest mb-1 text-mvmt-accent">
                 Community Group

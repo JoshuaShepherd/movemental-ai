@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import {
   LeadMagnetSplitForm,
   LeadMagnetBookPreview,
@@ -15,6 +15,7 @@ import {
   LeadMagnetTemplateSwitcher,
 } from "@/components/layouts/movement-leader";
 import type { LeadMagnetVariant } from "@/components/layouts/movement-leader";
+import { useTemplateVariant } from "@/app/templates/template-variant-context";
 
 const templateComponents: Record<LeadMagnetVariant, React.ComponentType> = {
   "lead-magnet-split-form": LeadMagnetSplitForm,
@@ -33,12 +34,15 @@ export default function LeadMagnetTemplatePage() {
   const [activeTemplate, setActiveTemplate] = useState<LeadMagnetVariant>("lead-magnet-split-form");
   const ActiveComponent = templateComponents[activeTemplate];
 
+  const { setVariant } = useTemplateVariant();
+  useEffect(() => { setVariant(activeTemplate); }, [activeTemplate, setVariant]);
+
   return (
-    <div className="template-movement-leader" data-variant={activeTemplate}>
+    <>
       <div className="sticky top-14 z-40 bg-background border-b">
         <LeadMagnetTemplateSwitcher activeTemplate={activeTemplate} onTemplateChange={setActiveTemplate} />
       </div>
       <ActiveComponent />
-    </div>
+    </>
   );
 }

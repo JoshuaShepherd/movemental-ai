@@ -26,8 +26,8 @@ export function BooksDetailModal({ className }: BooksDetailModalProps) {
             className="flex-1 flex items-center justify-center rounded-lg min-h-[300px] bg-mvmt-surface-light-muted"
           >
             <div
-              className="w-40 h-56 rounded shadow-mvmt-md"
-              style={{ backgroundColor: "var(--mvmt-border-light)" }}
+              className="w-40 h-56 rounded shadow-mvmt-md bg-mvmt-border-light"
+              
             />
           </div>
           <div className="mt-4 flex gap-2">
@@ -51,7 +51,7 @@ export function BooksDetailModal({ className }: BooksDetailModalProps) {
           </button>
 
           <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded" style={{ backgroundColor: "var(--mvmt-border-light)" }} />
+            <div className="w-5 h-5 rounded bg-mvmt-border-light"  />
             <span className="text-sm text-mvmt-text-secondary">Movemental Press</span>
           </div>
 

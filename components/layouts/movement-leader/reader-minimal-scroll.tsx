@@ -21,7 +21,7 @@ export function ReaderMinimalScroll({ className }: ReaderMinimalScrollProps) {
       </div>
 
       {/* Progress bar */}
-      <div className="sticky top-0 z-10 w-full h-0.5" style={{ backgroundColor: "var(--mvmt-border-light)" }}>
+      <div className="sticky top-0 z-10 w-full h-0.5 bg-mvmt-border-light" >
         <div className="h-full w-[35%] bg-mvmt-accent transition-all" />
       </div>
 

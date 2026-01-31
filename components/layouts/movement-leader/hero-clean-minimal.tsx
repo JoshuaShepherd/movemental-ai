@@ -38,8 +38,8 @@ export function HeroCleanMinimal({ className }: HeroCleanMinimalProps) {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/fit-check"
-                className="inline-block px-6 py-3 text-sm font-medium border transition-colors text-mvmt-text-primary rounded-full"
-                style={{ borderColor: "var(--mvmt-text-primary)" }}
+                className="inline-block px-6 py-3 text-sm font-medium border transition-colors text-mvmt-text-primary rounded-full border-mvmt-text-primary"
+                
               >
                 Start browsing
               </Link>

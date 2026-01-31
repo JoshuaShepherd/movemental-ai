@@ -38,8 +38,8 @@ export function HeroFullBleed({ className }: HeroFullBleedProps) {
         <div className="mt-8">
           <Link
             href="/fit-check"
-            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium border transition-colors text-mvmt-on-dark-primary rounded-mvmt-md"
-            style={{ borderColor: "var(--mvmt-on-dark-primary)" }}
+            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium border transition-colors text-mvmt-on-dark-primary rounded-mvmt-md border-mvmt-on-dark-primary"
+            
           >
             Start Learning &rarr;
           </Link>

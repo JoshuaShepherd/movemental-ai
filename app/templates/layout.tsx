@@ -1,6 +1,7 @@
 "use client";
 
 import { SiteNavigation } from "@/components/layouts/movement-leader";
+import { VariantProvider } from "./template-variant-context";
 
 export default function TemplatesLayout({
   children,
@@ -8,11 +9,9 @@ export default function TemplatesLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen">
-      <div className="template-movement-leader">
-        <SiteNavigation />
-      </div>
+    <VariantProvider>
+      <SiteNavigation />
       {children}
-    </div>
+    </VariantProvider>
   );
 }

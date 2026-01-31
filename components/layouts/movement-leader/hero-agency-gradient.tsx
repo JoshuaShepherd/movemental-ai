@@ -18,9 +18,9 @@ export function HeroAgencyGradient({ className }: HeroAgencyGradientProps) {
     >
       {/* Decorative pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 right-10 w-64 h-64 border border-[var(--mvmt-border-on-dark)] rounded-full" />
-        <div className="absolute bottom-20 right-40 w-40 h-40 border border-[var(--mvmt-border-on-dark)] rounded-full" />
-        <div className="absolute top-1/2 right-1/4 w-24 h-24 border border-[var(--mvmt-border-on-dark)] rounded-full" />
+        <div className="absolute top-10 right-10 w-64 h-64 border border-mvmt-border-on-dark rounded-full" />
+        <div className="absolute bottom-20 right-40 w-40 h-40 border border-mvmt-border-on-dark rounded-full" />
+        <div className="absolute top-1/2 right-1/4 w-24 h-24 border border-mvmt-border-on-dark rounded-full" />
       </div>
 
       <div className="relative z-10 container mx-auto px-6 sm:px-8 lg:px-12 py-16 md:py-24">
@@ -47,16 +47,15 @@ export function HeroAgencyGradient({ className }: HeroAgencyGradientProps) {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/fit-check"
-                className="inline-block px-8 py-4 text-sm font-semibold uppercase tracking-widest transition-colors rounded-mvmt-md"
-                style={{ backgroundColor: "var(--mvmt-on-dark-primary)",
-                  color: "var(--mvmt-surface-dark)" }}
+                className="inline-block px-8 py-4 text-sm font-semibold uppercase tracking-widest transition-colors rounded-mvmt-md bg-mvmt-on-dark-primary text-mvmt-surface-dark"
+                
               >
                 Start for Free
               </Link>
               <Link
                 href="/about"
-                className="inline-block px-8 py-4 text-sm font-semibold uppercase tracking-widest transition-colors border text-mvmt-on-dark-primary rounded-mvmt-md"
-                style={{ borderColor: "var(--mvmt-border-on-dark-medium)" }}
+                className="inline-block px-8 py-4 text-sm font-semibold uppercase tracking-widest transition-colors border text-mvmt-on-dark-primary rounded-mvmt-md border-mvmt-border-on-dark-medium"
+                
               >
                 Learn More &rsaquo;
               </Link>

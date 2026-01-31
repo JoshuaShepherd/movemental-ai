@@ -59,12 +59,12 @@ export function ChatPanelSidebar({ className }: ChatPanelSidebarProps) {
         </nav>
 
         <div className="mb-4">
-          <span className="text-2xs font-semibold uppercase tracking-wider px-2" style={{ color: "var(--mvmt-on-dark-tertiary)" }}>Favorites</span>
+          <span className="text-2xs font-semibold uppercase tracking-wider px-2 text-mvmt-on-dark-tertiary" >Favorites</span>
           <div className="mt-1 px-2 py-1 text-xs text-mvmt-on-dark-secondary">Church Planting Playbook</div>
         </div>
 
         <div>
-          <span className="text-2xs font-semibold uppercase tracking-wider px-2" style={{ color: "var(--mvmt-on-dark-tertiary)" }}>Spaces</span>
+          <span className="text-2xs font-semibold uppercase tracking-wider px-2 text-mvmt-on-dark-tertiary" >Spaces</span>
           <div className="mt-1 space-y-0.5 text-xs text-mvmt-on-dark-secondary">
             <div className="px-2 py-1">Everything</div>
             <div className="px-4 py-1">Team Space</div>
@@ -79,13 +79,13 @@ export function ChatPanelSidebar({ className }: ChatPanelSidebarProps) {
         <h1 className="text-2xl font-bold mb-6 text-mvmt-text-primary">Good afternoon, Brad</h1>
 
         {/* Recents card */}
-        <div className="border rounded-xl p-5 mb-6" style={{ borderColor: "var(--mvmt-border-light)" }}>
+        <div className="border rounded-xl p-5 mb-6 border-mvmt-border-light" >
           <h2 className="text-sm font-semibold mb-3 text-mvmt-text-primary">Recents</h2>
           <div className="space-y-2">
             {recentItems.map((item) => (
               <div key={item.title} className="flex items-center justify-between py-1.5 text-sm">
                 <span className="text-mvmt-text-secondary">{item.title}</span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-mvmt-surface-light-muted" style={{ color: "var(--mvmt-text-tertiary)" }}>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-mvmt-surface-light-muted text-mvmt-text-tertiary" >
                   {item.tag}
                 </span>
               </div>
@@ -94,9 +94,9 @@ export function ChatPanelSidebar({ className }: ChatPanelSidebarProps) {
         </div>
 
         {/* My Work card */}
-        <div className="border rounded-xl p-5" style={{ borderColor: "var(--mvmt-border-light)" }}>
+        <div className="border rounded-xl p-5 border-mvmt-border-light" >
           <h2 className="text-sm font-semibold mb-3 text-mvmt-text-primary">My Work</h2>
-          <div className="flex gap-4 mb-4 text-xs font-medium" style={{ color: "var(--mvmt-text-tertiary)" }}>
+          <div className="flex gap-4 mb-4 text-xs font-medium text-mvmt-text-tertiary" >
             <span className="pb-1 text-mvmt-text-primary" style={{ borderBottom: "2px solid var(--mvmt-accent)" }}>To Do</span>
             <span className="pb-1 cursor-pointer">Done</span>
             <span className="pb-1 cursor-pointer">Delegated</span>
@@ -105,7 +105,7 @@ export function ChatPanelSidebar({ className }: ChatPanelSidebarProps) {
             {tasks.map((task) => (
               <div key={task.title} className="flex items-center justify-between py-1.5 text-sm">
                 <div className="flex items-center gap-2">
-                  <div className="w-3.5 h-3.5 rounded border" style={{ borderColor: "var(--mvmt-border-light)" }} />
+                  <div className="w-3.5 h-3.5 rounded border border-mvmt-border-light"  />
                   <span className="text-mvmt-text-secondary">{task.title}</span>
                 </div>
                 <span className="text-xs" style={{ color: task.priority === "High" ? "var(--mvmt-status-urgent)" : "var(--mvmt-text-tertiary)" }}>{task.priority}</span>
@@ -116,8 +116,8 @@ export function ChatPanelSidebar({ className }: ChatPanelSidebarProps) {
       </main>
 
       {/* Right AI panel */}
-      <aside className="w-80 flex-shrink-0 border-l flex flex-col" style={{ borderColor: "var(--mvmt-border-light)" }}>
-        <div className="px-5 py-4 border-b flex items-center gap-2" style={{ borderColor: "var(--mvmt-border-light)" }}>
+      <aside className="w-80 flex-shrink-0 border-l flex flex-col border-mvmt-border-light" >
+        <div className="px-5 py-4 border-b flex items-center gap-2 border-mvmt-border-light" >
           <span className="text-sm text-mvmt-accent">&#10024;</span>
           <span className="text-sm font-semibold text-mvmt-text-primary">Movemental AI</span>
         </div>
@@ -127,14 +127,14 @@ export function ChatPanelSidebar({ className }: ChatPanelSidebarProps) {
 
           <div className="rounded-lg p-3 bg-mvmt-surface-light-muted">
             <p className="text-xs font-medium mb-1 text-mvmt-text-primary">Enhance Movemental AI&apos;s knowledge with Docs</p>
-            <p className="text-xs" style={{ color: "var(--mvmt-text-tertiary)" }}>Connect your coaching documents, curriculum guides, and community playbooks.</p>
+            <p className="text-xs text-mvmt-text-tertiary" >Connect your coaching documents, curriculum guides, and community playbooks.</p>
           </div>
 
           <div>
-            <p className="text-xs font-semibold mb-2" style={{ color: "var(--mvmt-text-tertiary)" }}>Ask about your tasks</p>
+            <p className="text-xs font-semibold mb-2 text-mvmt-text-tertiary" >Ask about your tasks</p>
             <div className="space-y-1.5">
               {aiPrompts.map((prompt) => (
-                <div key={prompt} className="px-3 py-2 text-xs rounded-lg border cursor-pointer text-mvmt-text-secondary" style={{ borderColor: "var(--mvmt-border-light)" }}>
+                <div key={prompt} className="px-3 py-2 text-xs rounded-lg border cursor-pointer text-mvmt-text-secondary border-mvmt-border-light" >
                   {prompt}
                 </div>
               ))}
@@ -142,17 +142,17 @@ export function ChatPanelSidebar({ className }: ChatPanelSidebarProps) {
           </div>
 
           <div>
-            <p className="text-xs font-semibold mb-2" style={{ color: "var(--mvmt-text-tertiary)" }}>Ideas for writing: Content</p>
-            <div className="px-3 py-2 text-xs rounded-lg border text-mvmt-text-secondary" style={{ borderColor: "var(--mvmt-border-light)" }}>
+            <p className="text-xs font-semibold mb-2 text-mvmt-text-tertiary" >Ideas for writing: Content</p>
+            <div className="px-3 py-2 text-xs rounded-lg border text-mvmt-text-secondary border-mvmt-border-light" >
               Draft a blog post on incarnational leadership for missional communities
             </div>
           </div>
         </div>
 
         {/* Input bar */}
-        <div className="px-4 py-3 border-t" style={{ borderColor: "var(--mvmt-border-light)" }}>
-          <div className="flex items-center gap-2 px-3 py-2 rounded-lg border" style={{ borderColor: "var(--mvmt-border-light)" }}>
-            <span className="text-sm flex-1" style={{ color: "var(--mvmt-text-tertiary)" }}>Ask Movemental AI...</span>
+        <div className="px-4 py-3 border-t border-mvmt-border-light" >
+          <div className="flex items-center gap-2 px-3 py-2 rounded-lg border border-mvmt-border-light" >
+            <span className="text-sm flex-1 text-mvmt-text-tertiary" >Ask Movemental AI...</span>
             <span className="text-xs text-mvmt-accent">&uarr;</span>
           </div>
         </div>

@@ -39,20 +39,14 @@ export function SiteNavigation({ className }: SiteNavigationProps) {
           {/* Back to main site */}
           <Link
             href="/"
-            className="flex items-center gap-1.5 text-xs font-medium tracking-wider transition-colors shrink-0 text-mvmt-on-dark-muted"
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.color = "var(--mvmt-on-dark-primary)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.color = "var(--mvmt-on-dark-muted)")
-            }
+            className="flex items-center gap-1.5 text-xs font-medium tracking-wider transition-colors shrink-0 text-mvmt-on-dark-muted hover:text-mvmt-on-dark-primary"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             MOVEMENTAL
           </Link>
 
           {/* Divider */}
-          <div className="h-5 w-px shrink-0" style={{ backgroundColor: "var(--mvmt-border-on-dark)" }} />
+          <div className="h-5 w-px shrink-0 bg-mvmt-border-on-dark" />
 
           {/* Template page links */}
           <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide">
@@ -67,22 +61,11 @@ export function SiteNavigation({ className }: SiteNavigationProps) {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "px-3 py-2 text-xs font-medium tracking-wider transition-colors whitespace-nowrap rounded-md",
-                    isActive && "bg-white/10"
+                    "px-3 py-2 text-xs font-medium tracking-wider transition-colors whitespace-nowrap rounded-md hover:text-mvmt-on-dark-primary",
+                    isActive
+                      ? "text-mvmt-on-dark-primary bg-white/10"
+                      : "text-mvmt-on-dark-secondary"
                   )}
-                  style={{
-                    color: isActive
-                      ? "var(--mvmt-on-dark-primary)"
-                      : "var(--mvmt-on-dark-secondary)",
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "var(--mvmt-on-dark-primary)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = isActive
-                      ? "var(--mvmt-on-dark-primary)"
-                      : "var(--mvmt-on-dark-secondary)")
-                  }
                 >
                   {item.label}
                 </Link>

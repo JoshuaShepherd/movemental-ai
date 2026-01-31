@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import {
   BooksProductShowcase,
   BooksSpecCards,
@@ -14,6 +14,7 @@ import {
   BooksTemplateSwitcher,
 } from "@/components/layouts/movement-leader";
 import type { BooksVariant } from "@/components/layouts/movement-leader";
+import { useTemplateVariant } from "@/app/templates/template-variant-context";
 
 const templateComponents: Record<BooksVariant, React.ComponentType> = {
   "books-product-showcase": BooksProductShowcase,
@@ -32,8 +33,11 @@ export default function BooksTemplatePage() {
     useState<BooksVariant>("books-product-showcase");
   const ActiveComponent = templateComponents[activeTemplate];
 
+  const { setVariant } = useTemplateVariant();
+  useEffect(() => { setVariant(activeTemplate); }, [activeTemplate, setVariant]);
+
   return (
-    <div className="template-movement-leader" data-variant={activeTemplate}>
+    <>
       <div className="sticky top-14 z-40 bg-background border-b">
         <BooksTemplateSwitcher
           activeTemplate={activeTemplate}
@@ -41,6 +45,6 @@ export default function BooksTemplatePage() {
         />
       </div>
       <ActiveComponent />
-    </div>
+    </>
   );
 }

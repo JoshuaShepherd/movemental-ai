@@ -38,8 +38,8 @@ export function BooksMinimalGrid({ className }: BooksMinimalGridProps) {
                 className="aspect-square flex items-center justify-center rounded-lg bg-mvmt-surface-light-muted"
               >
                 <div
-                  className="w-24 h-36 rounded shadow-mvmt-sm"
-                  style={{ backgroundColor: "var(--mvmt-border-light)" }}
+                  className="w-24 h-36 rounded shadow-mvmt-sm bg-mvmt-border-light"
+                  
                 />
               </div>
 

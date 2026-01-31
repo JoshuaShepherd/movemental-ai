@@ -145,7 +145,7 @@ export function BooksDetailCart({ className }: BooksDetailCartProps) {
             </div>
             <div className="flex-1 p-6">
               <div className="flex gap-4">
-                <div className="w-16 h-20 rounded flex-shrink-0" style={{ backgroundColor: "var(--mvmt-border-light)" }} />
+                <div className="w-16 h-20 rounded flex-shrink-0 bg-mvmt-border-light"  />
                 <div className="flex-1">
                   <div className="flex justify-between">
                     <div>

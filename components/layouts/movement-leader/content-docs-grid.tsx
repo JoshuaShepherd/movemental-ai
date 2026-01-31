@@ -37,9 +37,8 @@ export function ContentDocsGrid({ className }: ContentDocsGridProps) {
           {docs.map((doc) => (
             <div
               key={doc.title}
-              className="flex gap-4 p-5 rounded-xl cursor-pointer transition-colors border border-mvmt-border-light"
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--mvmt-surface-light-muted)")}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
+              className="flex gap-4 p-5 rounded-xl cursor-pointer transition-colors border border-mvmt-border-light hover:bg-mvmt-surface-light-muted"
+
             >
               <span className="text-2xl flex-shrink-0">{doc.icon}</span>
               <div>

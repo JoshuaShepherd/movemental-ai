@@ -34,7 +34,7 @@ export function ChatWidgetPopup({ className }: ChatWidgetPopupProps) {
               <div className="px-3 py-2 rounded-xl rounded-tl-sm text-xs leading-relaxed text-mvmt-text-primary bg-mvmt-surface-light-muted">
                 Hi there, this is a sample message from a support team member.
               </div>
-              <p className="text-2xs mt-1" style={{ color: "var(--mvmt-text-tertiary)" }}>2 minutes ago</p>
+              <p className="text-2xs mt-1 text-mvmt-text-tertiary" >2 minutes ago</p>
             </div>
           </div>
 
@@ -44,7 +44,7 @@ export function ChatWidgetPopup({ className }: ChatWidgetPopupProps) {
               <div className="px-3 py-2 rounded-xl rounded-tr-sm text-xs leading-relaxed text-mvmt-cta-text bg-mvmt-accent">
                 Hi there, this is a sample message from a community leader.
               </div>
-              <p className="text-2xs mt-1 text-right" style={{ color: "var(--mvmt-text-tertiary)" }}>2 minutes ago</p>
+              <p className="text-2xs mt-1 text-right text-mvmt-text-tertiary" >2 minutes ago</p>
             </div>
           </div>
 
@@ -56,16 +56,16 @@ export function ChatWidgetPopup({ className }: ChatWidgetPopupProps) {
               <div className="px-3 py-2 rounded-xl rounded-tl-sm text-xs leading-relaxed text-mvmt-text-primary bg-mvmt-surface-light-muted">
                 Feel free to continue the conversation and test the chat widget experience below.
               </div>
-              <p className="text-2xs mt-1" style={{ color: "var(--mvmt-text-tertiary)" }}>1 minute ago</p>
+              <p className="text-2xs mt-1 text-mvmt-text-tertiary" >1 minute ago</p>
             </div>
           </div>
         </div>
 
         {/* Input footer */}
-        <div className="px-4 py-3 border-t bg-mvmt-surface-light" style={{ borderColor: "var(--mvmt-border-light)" }}>
-          <div className="flex items-center gap-2 px-3 py-2 rounded-lg border" style={{ borderColor: "var(--mvmt-accent)" }}>
-            <span className="text-sm" style={{ color: "var(--mvmt-text-tertiary)" }}>&#x1F4CE;</span>
-            <span className="flex-1 text-xs" style={{ color: "var(--mvmt-text-tertiary)" }}>Type a message...</span>
+        <div className="px-4 py-3 border-t bg-mvmt-surface-light border-mvmt-border-light" >
+          <div className="flex items-center gap-2 px-3 py-2 rounded-lg border border-mvmt-accent" >
+            <span className="text-sm text-mvmt-text-tertiary" >&#x1F4CE;</span>
+            <span className="flex-1 text-xs text-mvmt-text-tertiary" >Type a message...</span>
           </div>
         </div>
       </div>

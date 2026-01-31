@@ -27,8 +27,8 @@ export function HeroDarkFeatures({ className }: HeroDarkFeaturesProps) {
     >
       {/* Decorative dots */}
       <div className="absolute inset-0 overflow-hidden opacity-5">
-        <div className="absolute top-20 right-20 w-32 h-32 border border-[var(--mvmt-border-on-dark)] rounded-lg rotate-12" />
-        <div className="absolute top-40 right-60 w-20 h-20 border border-[var(--mvmt-border-on-dark)] rounded-lg -rotate-6" />
+        <div className="absolute top-20 right-20 w-32 h-32 border border-mvmt-border-on-dark rounded-lg rotate-12" />
+        <div className="absolute top-40 right-60 w-20 h-20 border border-mvmt-border-on-dark rounded-lg -rotate-6" />
       </div>
 
       {/* Hero top */}

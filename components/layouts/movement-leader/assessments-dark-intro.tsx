@@ -21,9 +21,9 @@ export function AssessmentsDarkIntro({ className }: AssessmentsDarkIntroProps) {
           Movement Leadership Index
         </span>
         <button className="flex flex-col gap-1">
-          <span className="block w-5 h-0.5 bg-[var(--mvmt-on-dark-primary)]" />
-          <span className="block w-5 h-0.5 bg-[var(--mvmt-on-dark-primary)]" />
-          <span className="block w-5 h-0.5 bg-[var(--mvmt-on-dark-primary)]" />
+          <span className="block w-5 h-0.5 bg-mvmt-on-dark-primary" />
+          <span className="block w-5 h-0.5 bg-mvmt-on-dark-primary" />
+          <span className="block w-5 h-0.5 bg-mvmt-on-dark-primary" />
         </button>
       </div>
 

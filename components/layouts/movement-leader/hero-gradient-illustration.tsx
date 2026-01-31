@@ -44,8 +44,8 @@ export function HeroGradientIllustration({ className }: HeroGradientIllustration
             <div className="mt-8">
               <Link
                 href="/fit-check"
-                className="inline-block px-6 py-3 text-sm font-medium border transition-colors text-mvmt-text-primary rounded-mvmt-md"
-                style={{ borderColor: "var(--mvmt-text-primary)" }}
+                className="inline-block px-6 py-3 text-sm font-medium border transition-colors text-mvmt-text-primary rounded-mvmt-md border-mvmt-text-primary"
+                
               >
                 Learn How
               </Link>
@@ -54,9 +54,9 @@ export function HeroGradientIllustration({ className }: HeroGradientIllustration
 
           {/* Right — Illustration placeholder (line art circles) */}
           <div className="hidden md:flex items-center justify-center relative h-80">
-            <div className="absolute w-64 h-64 rounded-full border-2" style={{ borderColor: "var(--mvmt-border-light)" }} />
-            <div className="absolute w-48 h-48 rounded-full border-2 -top-4 -right-4" style={{ borderColor: "var(--mvmt-accent)" }} />
-            <div className="absolute w-32 h-32 rounded-full border-2 top-12 right-12" style={{ borderColor: "var(--mvmt-border-medium)" }} />
+            <div className="absolute w-64 h-64 rounded-full border-2 border-mvmt-border-light"  />
+            <div className="absolute w-48 h-48 rounded-full border-2 -top-4 -right-4 border-mvmt-accent"  />
+            <div className="absolute w-32 h-32 rounded-full border-2 top-12 right-12 border-mvmt-border-medium"  />
             {/* People placeholders */}
             <div
               className="absolute top-8 left-16 w-16 h-16 rounded-lg flex items-center justify-center text-xs font-bold text-mvmt-text-primary bg-mvmt-surface-light-muted"

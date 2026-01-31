@@ -64,8 +64,8 @@ export function ReaderEbookDark({ className }: ReaderEbookDarkProps) {
 
         {/* Progress */}
         <div className="px-8 sm:px-16 md:px-24 pb-6">
-          <div className="w-full h-1 rounded-full mb-2" style={{ backgroundColor: "var(--mvmt-border-light)" }}>
-            <div className="h-full w-[3%] rounded-full" style={{ backgroundColor: "var(--mvmt-text-muted)" }} />
+          <div className="w-full h-1 rounded-full mb-2 bg-mvmt-border-light" >
+            <div className="h-full w-[3%] rounded-full bg-mvmt-text-muted"  />
           </div>
           <p className="text-xs text-center text-mvmt-text-muted">
             Location 157 of 583 • 3%

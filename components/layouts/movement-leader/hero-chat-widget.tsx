@@ -50,8 +50,8 @@ export function HeroChatWidget({ className }: HeroChatWidgetProps) {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/fit-check"
-                className="inline-block px-6 py-3 text-sm font-medium border transition-colors text-mvmt-on-dark-primary rounded-mvmt-md"
-                style={{ borderColor: "var(--mvmt-border-on-dark-medium)" }}
+                className="inline-block px-6 py-3 text-sm font-medium border transition-colors text-mvmt-on-dark-primary rounded-mvmt-md border-mvmt-border-on-dark-medium"
+                
               >
                 View demo
               </Link>
@@ -72,7 +72,7 @@ export function HeroChatWidget({ className }: HeroChatWidgetProps) {
               {/* Header */}
               <div className="flex items-center gap-3 mb-4">
                 <div className="flex -space-x-2">
-                  <div className="w-8 h-8 rounded-full overflow-hidden border-2" style={{ borderColor: "var(--mvmt-surface-light)" }}>
+                  <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-mvmt-surface-light" >
                     <Image
                       src="/media-library/images/headshots/brad-brisco/brad-brisco-casual-light-16x9.webp"
                       alt="Brad Brisco"
@@ -101,10 +101,10 @@ export function HeroChatWidget({ className }: HeroChatWidgetProps) {
               </div>
               {/* Actions */}
               <div className="flex gap-2 text-xs">
-                <span className="px-3 py-1.5 rounded-full border text-mvmt-text-secondary" style={{ borderColor: "var(--mvmt-border-light)" }}>
+                <span className="px-3 py-1.5 rounded-full border text-mvmt-text-secondary border-mvmt-border-light" >
                   Start a free trial
                 </span>
-                <span className="px-3 py-1.5 rounded-full border text-mvmt-text-secondary" style={{ borderColor: "var(--mvmt-border-light)" }}>
+                <span className="px-3 py-1.5 rounded-full border text-mvmt-text-secondary border-mvmt-border-light" >
                   Chat with a coach
                 </span>
               </div>

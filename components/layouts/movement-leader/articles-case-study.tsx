@@ -38,8 +38,8 @@ export function ArticlesCaseStudy({ className }: ArticlesCaseStudyProps) {
             <div className="mt-6">
               <a
                 href="#"
-                className="inline-block w-full text-center px-4 py-2.5 text-sm font-semibold rounded-lg transition-colors text-mvmt-on-dark-primary"
-                style={{ backgroundColor: "var(--mvmt-accent-primary)" }}
+                className="inline-block w-full text-center px-4 py-2.5 text-sm font-semibold rounded-lg transition-colors text-mvmt-on-dark-primary bg-mvmt-accent-primary"
+                
               >
                 Get Started
               </a>
@@ -49,11 +49,11 @@ export function ArticlesCaseStudy({ className }: ArticlesCaseStudyProps) {
           {/* Main Content */}
           <article className="min-w-0">
             {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-sm mb-6" style={{ color: "var(--mvmt-text-tertiary)" }}>
+            <div className="flex items-center gap-2 text-sm mb-6 text-mvmt-text-tertiary" >
               <span>Resource Center</span>
-              <span style={{ color: "var(--mvmt-border-default)" }}>/</span>
+              <span  className="text-mvmt-border-default">/</span>
               <span>Case Studies</span>
-              <span style={{ color: "var(--mvmt-border-default)" }}>/</span>
+              <span  className="text-mvmt-border-default">/</span>
               <span>8 minutes read</span>
             </div>
 
@@ -63,7 +63,7 @@ export function ArticlesCaseStudy({ className }: ArticlesCaseStudyProps) {
             >
               Exponential + Movemental Case Study
             </h1>
-            <p className="text-sm mb-8" style={{ color: "var(--mvmt-text-tertiary)" }}>
+            <p className="text-sm mb-8 text-mvmt-text-tertiary" >
               April 10, 2024 by Brad Brisco
             </p>
 
@@ -117,11 +117,8 @@ export function ArticlesCaseStudy({ className }: ArticlesCaseStudyProps) {
           {/* Right Sidebar */}
           <aside className="hidden lg:block">
             <div
-              className="rounded-xl p-6 sticky top-8"
-              style={{
-                backgroundColor: "var(--mvmt-surface-raised)",
-                border: "1px solid var(--mvmt-border-default)",
-              }}
+              className="rounded-xl p-6 sticky top-8 bg-mvmt-surface-raised"
+              style={{ border: "1px solid var(--mvmt-border-default)" }}
             >
               <h3
                 className="text-lg font-semibold mb-5 text-mvmt-text-primary font-mvmt-heading"
@@ -129,7 +126,7 @@ export function ArticlesCaseStudy({ className }: ArticlesCaseStudyProps) {
                 At a Glance
               </h3>
               <div className="mb-4">
-                <span className="block text-xs font-medium uppercase tracking-wide mb-1" style={{ color: "var(--mvmt-text-tertiary)" }}>
+                <span className="block text-xs font-medium uppercase tracking-wide mb-1 text-mvmt-text-tertiary" >
                   Network type:
                 </span>
                 <span className="text-sm font-medium text-mvmt-text-primary">
@@ -137,13 +134,13 @@ export function ArticlesCaseStudy({ className }: ArticlesCaseStudyProps) {
                 </span>
               </div>
               <div>
-                <span className="block text-xs font-medium uppercase tracking-wide mb-2" style={{ color: "var(--mvmt-text-tertiary)" }}>
+                <span className="block text-xs font-medium uppercase tracking-wide mb-2 text-mvmt-text-tertiary" >
                   Favorite features:
                 </span>
                 <ul className="space-y-2">
                   {favoriteFeatures.map((feature) => (
                     <li key={feature} className="flex items-start gap-2 text-sm text-mvmt-text-secondary">
-                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: "var(--mvmt-accent-primary)" }} />
+                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 bg-mvmt-accent-primary"  />
                       {feature}
                     </li>
                   ))}

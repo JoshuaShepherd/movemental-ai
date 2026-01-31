@@ -45,7 +45,7 @@ export function HeroCenteredSerif({ className }: HeroCenteredSerifProps) {
 
       {/* Divider */}
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-        <hr style={{ borderColor: "var(--mvmt-border-light)" }} />
+        <hr  className="border-mvmt-border-light" />
       </div>
 
       {/* Testimonial */}

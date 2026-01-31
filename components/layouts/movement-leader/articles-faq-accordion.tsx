@@ -52,7 +52,7 @@ export function ArticlesFaqAccordion({ className }: ArticlesFaqAccordionProps) {
     <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       <div className="max-w-2xl mx-auto px-6 py-16 md:py-24">
         {/* Header */}
-        <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--mvmt-accent-primary)" }}>
+        <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-mvmt-accent-primary" >
           FAQ
         </p>
         <h1
@@ -65,7 +65,7 @@ export function ArticlesFaqAccordion({ className }: ArticlesFaqAccordionProps) {
         </p>
 
         {/* FAQ list */}
-        <div className="mt-12 divide-y" style={{ borderColor: "var(--mvmt-border-light)" }}>
+        <div className="mt-12 divide-y border-mvmt-border-light" >
           {faqItems.map((item, index) => (
             <div key={index} className="py-5">
               <button
@@ -76,8 +76,8 @@ export function ArticlesFaqAccordion({ className }: ArticlesFaqAccordionProps) {
                   {item.question}
                 </span>
                 <ChevronDown
-                  className={cn("w-5 h-5 flex-shrink-0 transition-transform duration-200", expanded === index && "rotate-180")}
-                  style={{ color: "var(--mvmt-text-tertiary)" }}
+                  className={cn("w-5 h-5 flex-shrink-0 transition-transform duration-200", expanded === index && "rotate-180", "text-mvmt-text-tertiary")}
+                  
                 />
               </button>
               {expanded === index && (

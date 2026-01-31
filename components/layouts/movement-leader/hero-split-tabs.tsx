@@ -53,8 +53,8 @@ export function HeroSplitTabs({ className }: HeroSplitTabsProps) {
             <div className="mt-6 flex flex-wrap gap-4">
               <Link
                 href="/fit-check"
-                className="inline-block px-6 py-3 text-sm font-medium border transition-colors text-mvmt-text-primary rounded-mvmt-md"
-                style={{ borderColor: "var(--mvmt-text-primary)" }}
+                className="inline-block px-6 py-3 text-sm font-medium border transition-colors text-mvmt-text-primary rounded-mvmt-md border-mvmt-text-primary"
+                
               >
                 Contact us
               </Link>
@@ -87,7 +87,7 @@ export function HeroSplitTabs({ className }: HeroSplitTabsProps) {
           >
             What can we help you do?
           </h2>
-          <div className="flex justify-center gap-1 border-b" style={{ borderColor: "var(--mvmt-border-light)" }}>
+          <div className="flex justify-center gap-1 border-b border-mvmt-border-light" >
             {tabs.map((tab, i) => (
               <button
                 key={tab.label}

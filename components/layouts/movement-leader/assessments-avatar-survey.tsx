@@ -29,7 +29,7 @@ export function AssessmentsAvatarSurvey({ className }: AssessmentsAvatarSurveyPr
       {/* Avatar */}
       <div className="flex justify-center mt-4 mb-6">
         <div
-          className="w-20 h-20 rounded-full flex items-center justify-center text-xl font-bold bg-[var(--assess-avatar-bg)] text-[var(--mvmt-surface-light)]"
+          className="w-20 h-20 rounded-full flex items-center justify-center text-xl font-bold bg-[var(--assess-avatar-bg)] text-mvmt-surface-light"
         >
           ML
         </div>

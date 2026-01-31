@@ -43,7 +43,7 @@ export function AssessmentsScaleOptions({ className }: AssessmentsScaleOptionsPr
             <span className="text-xs font-medium" style={{ color: step.active ? "var(--mvmt-text-primary)" : "var(--mvmt-text-muted)" }}>
               {step.label}
             </span>
-            {i < steps.length - 1 && <div className="w-12 h-px ml-2 bg-[var(--mvmt-border-light)]" />}
+            {i < steps.length - 1 && <div className="w-12 h-px ml-2 bg-mvmt-border-light" />}
           </div>
         ))}
       </div>

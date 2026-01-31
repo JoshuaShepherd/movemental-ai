@@ -14,25 +14,25 @@ export function ChatSupportMinimal({ className }: ChatSupportMinimalProps) {
   return (
     <section className={cn("relative w-full min-h-screen flex flex-col bg-mvmt-surface-light", className)} >
       {/* Header */}
-      <div className="border-b" style={{ borderColor: "var(--mvmt-border-light)" }}>
+      <div className="border-b border-mvmt-border-light" >
         <div className="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div
-              className="w-10 h-10 rounded-full border-2 flex items-center justify-center"
-              style={{ borderColor: "var(--mvmt-text-primary)" }}
+              className="w-10 h-10 rounded-full border-2 flex items-center justify-center border-mvmt-text-primary"
+              
             >
               <span className="text-xs font-bold text-mvmt-text-primary">M</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "var(--mvmt-status-online)" }} />
+              <div className="w-2.5 h-2.5 rounded-full bg-mvmt-status-online"  />
               <span className="text-sm font-medium text-mvmt-text-primary">
                 You are connected with an Advisor
               </span>
             </div>
           </div>
           <button
-            className="px-4 py-1.5 text-sm font-medium rounded-md border text-mvmt-text-primary"
-            style={{ borderColor: "var(--mvmt-border-light)" }}
+            className="px-4 py-1.5 text-sm font-medium rounded-md border text-mvmt-text-primary border-mvmt-border-light"
+            
           >
             End Chat
           </button>
@@ -42,12 +42,12 @@ export function ChatSupportMinimal({ className }: ChatSupportMinimalProps) {
       {/* Chat body */}
       <div className="flex-1 max-w-2xl w-full mx-auto px-6 py-6 space-y-4 overflow-y-auto pb-24">
         {/* Timestamp */}
-        <p className="text-center text-xs" style={{ color: "var(--mvmt-text-tertiary)" }}>
+        <p className="text-center text-xs text-mvmt-text-tertiary" >
           11/04/2024 5:31 PM
         </p>
 
         {/* System message */}
-        <p className="text-center text-xs" style={{ color: "var(--mvmt-text-tertiary)" }}>
+        <p className="text-center text-xs text-mvmt-text-tertiary" >
           You are chatting with Sarah. Your case number is 102450517498.
         </p>
 
@@ -74,15 +74,15 @@ export function ChatSupportMinimal({ className }: ChatSupportMinimalProps) {
       </div>
 
       {/* Fixed footer input */}
-      <div className="border-t bg-mvmt-surface-light" style={{ borderColor: "var(--mvmt-border-light)" }}>
+      <div className="border-t bg-mvmt-surface-light border-mvmt-border-light" >
         <div className="max-w-2xl mx-auto px-6 py-3 flex items-center gap-3">
           <button
-            className="w-8 h-8 rounded-full flex items-center justify-center border"
-            style={{ borderColor: "var(--mvmt-border-light)", color: "var(--mvmt-text-tertiary)" }}
+            className="w-8 h-8 rounded-full flex items-center justify-center border border-mvmt-border-light text-mvmt-text-tertiary"
+            
           >
             <span className="text-lg leading-none">+</span>
           </button>
-          <div className="flex-1 px-4 py-2 rounded-full border text-sm" style={{ borderColor: "var(--mvmt-border-light)", color: "var(--mvmt-text-tertiary)" }}>
+          <div className="flex-1 px-4 py-2 rounded-full border text-sm border-mvmt-border-light text-mvmt-text-tertiary" >
             Send message
           </div>
           <button

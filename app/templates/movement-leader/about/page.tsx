@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import {
   AboutVideoBio,
   AboutTeamGrid,
@@ -13,6 +13,7 @@ import {
   AboutTemplateSwitcher,
 } from "@/components/layouts/movement-leader";
 import type { AboutVariant } from "@/components/layouts/movement-leader";
+import { useTemplateVariant } from "@/app/templates/template-variant-context";
 
 const templateComponents: Record<AboutVariant, React.ComponentType> = {
   "about-video-bio": AboutVideoBio,
@@ -30,8 +31,11 @@ export default function AboutTemplatePage() {
     useState<AboutVariant>("about-video-bio");
   const ActiveComponent = templateComponents[activeTemplate];
 
+  const { setVariant } = useTemplateVariant();
+  useEffect(() => { setVariant(activeTemplate); }, [activeTemplate, setVariant]);
+
   return (
-    <div className="template-movement-leader" data-variant={activeTemplate}>
+    <>
       <div className="sticky top-14 z-40 bg-background border-b">
         <AboutTemplateSwitcher
           activeTemplate={activeTemplate}
@@ -39,6 +43,6 @@ export default function AboutTemplatePage() {
         />
       </div>
       <ActiveComponent />
-    </div>
+    </>
   );
 }

@@ -27,7 +27,7 @@ export function ChatHeroOverlay({ className }: ChatHeroOverlayProps) {
       {/* Nav */}
       <nav className="relative z-10 flex items-center justify-between px-8 py-4">
         <div className="flex items-center gap-8">
-          <div className="w-8 h-8 rounded-full border-2 flex items-center justify-center" style={{ borderColor: "var(--mvmt-on-dark-primary)" }}>
+          <div className="w-8 h-8 rounded-full border-2 flex items-center justify-center border-mvmt-on-dark-primary" >
             <span className="text-xs font-bold text-mvmt-on-dark-primary">M</span>
           </div>
           {navLinks.map((link) => (
@@ -58,7 +58,7 @@ export function ChatHeroOverlay({ className }: ChatHeroOverlayProps) {
             launch communities, and scale Kingdom impact — all from one platform built for the church planting ecosystem.
           </p>
           <div className="flex items-center gap-4">
-            <button className="px-6 py-3 text-sm font-medium rounded-lg border text-mvmt-on-dark-primary" style={{ borderColor: "var(--mvmt-on-dark-primary)" }}>
+            <button className="px-6 py-3 text-sm font-medium rounded-lg border text-mvmt-on-dark-primary border-mvmt-on-dark-primary" >
               View demo
             </button>
             <button className="px-6 py-3 text-sm font-medium rounded-lg text-mvmt-cta-text bg-mvmt-cta-bg">
@@ -70,16 +70,16 @@ export function ChatHeroOverlay({ className }: ChatHeroOverlayProps) {
         {/* Right side — floating chat widget */}
         <div className="w-80 flex-shrink-0 ml-8 rounded-xl overflow-hidden bg-mvmt-surface-light shadow-mvmt-lg">
           {/* Chat header */}
-          <div className="px-4 py-3 flex items-center gap-3 border-b" style={{ borderColor: "var(--mvmt-border-light)" }}>
-            <span className="text-sm cursor-pointer" style={{ color: "var(--mvmt-text-tertiary)" }}>&larr;</span>
+          <div className="px-4 py-3 flex items-center gap-3 border-b border-mvmt-border-light" >
+            <span className="text-sm cursor-pointer text-mvmt-text-tertiary" >&larr;</span>
             <div className="flex -space-x-2">
-              <div className="w-6 h-6 rounded-full border-2" style={{ backgroundColor: "var(--mvmt-accent-muted)", borderColor: "var(--mvmt-surface-light)" }} />
-              <div className="w-6 h-6 rounded-full border-2 bg-mvmt-accent" style={{ borderColor: "var(--mvmt-surface-light)" }} />
-              <div className="w-6 h-6 rounded-full border-2 bg-mvmt-surface-light-muted" style={{ borderColor: "var(--mvmt-surface-light)" }} />
+              <div className="w-6 h-6 rounded-full border-2 bg-mvmt-accent-muted border-mvmt-surface-light"  />
+              <div className="w-6 h-6 rounded-full border-2 bg-mvmt-accent border-mvmt-surface-light"  />
+              <div className="w-6 h-6 rounded-full border-2 bg-mvmt-surface-light-muted border-mvmt-surface-light"  />
             </div>
             <div>
               <p className="text-xs font-semibold text-mvmt-text-primary">Movemental</p>
-              <p className="text-2xs" style={{ color: "var(--mvmt-text-tertiary)" }}>Within a day</p>
+              <p className="text-2xs text-mvmt-text-tertiary" >Within a day</p>
             </div>
           </div>
 
@@ -112,7 +112,7 @@ export function ChatHeroOverlay({ className }: ChatHeroOverlayProps) {
             <button className="w-full py-2.5 text-xs font-medium rounded-lg text-mvmt-cta-text bg-mvmt-accent">
               Start a free trial
             </button>
-            <button className="w-full py-2.5 text-xs font-medium rounded-lg border text-mvmt-text-primary" style={{ borderColor: "var(--mvmt-border-light)" }}>
+            <button className="w-full py-2.5 text-xs font-medium rounded-lg border text-mvmt-text-primary border-mvmt-border-light" >
               Chat with a coach
             </button>
           </div>

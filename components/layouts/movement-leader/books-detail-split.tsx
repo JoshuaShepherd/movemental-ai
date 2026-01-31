@@ -35,8 +35,8 @@ export function BooksDetailSplit({ className }: BooksDetailSplitProps) {
         {/* Image */}
         <div className="flex items-center justify-center min-h-[500px] bg-mvmt-surface-light-muted">
           <div
-            className="w-52 h-72 rounded-md shadow-mvmt-lg"
-            style={{ backgroundColor: "var(--mvmt-border-light)" }}
+            className="w-52 h-72 rounded-md shadow-mvmt-lg bg-mvmt-border-light"
+            
           />
         </div>
 

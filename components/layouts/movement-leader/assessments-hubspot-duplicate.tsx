@@ -78,7 +78,7 @@ export function AssessmentsHubspotDuplicate({ className }: AssessmentsHubspotDup
               }}
             >
               <div
-                className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 border-[var(--mvmt-accent)]"
+                className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 border-mvmt-accent"
               >
                 {opt.selected && <div className="w-2.5 h-2.5 rounded-full bg-mvmt-accent"  />}
               </div>

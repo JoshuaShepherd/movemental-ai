@@ -25,8 +25,8 @@ export function AssessmentsMoodGradient({ className }: AssessmentsMoodGradientPr
       className={cn("relative w-full min-h-[70vh] md:min-h-[80vh] flex flex-col items-center justify-center overflow-hidden bg-mvmt-gradient-hero-brand", className)}
     >
       {/* Decorative cloud shapes */}
-      <div className="absolute top-16 right-20 w-20 h-8 rounded-full opacity-20 bg-[var(--mvmt-on-dark-primary)]" />
-      <div className="absolute top-24 right-32 w-12 h-5 rounded-full opacity-15 bg-[var(--mvmt-on-dark-primary)]" />
+      <div className="absolute top-16 right-20 w-20 h-8 rounded-full opacity-20 bg-mvmt-on-dark-primary" />
+      <div className="absolute top-24 right-32 w-12 h-5 rounded-full opacity-15 bg-mvmt-on-dark-primary" />
 
       {/* Steps */}
       <div className="flex items-center gap-2 mb-10">

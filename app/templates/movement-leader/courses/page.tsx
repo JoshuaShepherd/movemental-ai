@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import {
   CoursesVideoPlayer,
   CoursesChapterBuilder,
@@ -15,6 +15,7 @@ import {
   CoursesTemplateSwitcher,
 } from "@/components/layouts/movement-leader";
 import type { CoursesVariant } from "@/components/layouts/movement-leader";
+import { useTemplateVariant } from "@/app/templates/template-variant-context";
 
 const templateComponents: Record<CoursesVariant, React.ComponentType> = {
   "courses-video-player": CoursesVideoPlayer,
@@ -33,12 +34,15 @@ export default function CoursesTemplatePage() {
   const [activeTemplate, setActiveTemplate] = useState<CoursesVariant>("courses-video-player");
   const ActiveComponent = templateComponents[activeTemplate];
 
+  const { setVariant } = useTemplateVariant();
+  useEffect(() => { setVariant(activeTemplate); }, [activeTemplate, setVariant]);
+
   return (
-    <div className="template-movement-leader" data-variant={activeTemplate}>
+    <>
       <div className="sticky top-14 z-40 bg-background border-b">
         <CoursesTemplateSwitcher activeTemplate={activeTemplate} onTemplateChange={setActiveTemplate} />
       </div>
       <ActiveComponent />
-    </div>
+    </>
   );
 }

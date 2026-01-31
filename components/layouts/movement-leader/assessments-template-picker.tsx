@@ -36,9 +36,9 @@ export function AssessmentsTemplatePicker({ className }: AssessmentsTemplatePick
               <div className="aspect-[4/3] relative" style={{ backgroundColor: item.color }}>
                 <div className="absolute inset-4 rounded bg-mvmt-surface-light opacity-85">
                   <div className="p-3 space-y-2">
-                    <div className="h-2 w-3/4 rounded-full bg-[var(--mvmt-border-light)]" />
-                    <div className="h-2 w-1/2 rounded-full bg-[var(--mvmt-border-light)]" />
-                    <div className="h-2 w-2/3 rounded-full bg-[var(--mvmt-border-light)]" />
+                    <div className="h-2 w-3/4 rounded-full bg-mvmt-border-light" />
+                    <div className="h-2 w-1/2 rounded-full bg-mvmt-border-light" />
+                    <div className="h-2 w-2/3 rounded-full bg-mvmt-border-light" />
                   </div>
                 </div>
               </div>

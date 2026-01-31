@@ -65,7 +65,7 @@ export function AssessmentsLongForm({ className }: AssessmentsLongFormProps) {
               className="flex items-center gap-4 px-5 py-5 rounded-xl cursor-pointer transition-colors bg-mvmt-surface-light border border-mvmt-border-light"
             >
               <div
-                className="w-5 h-5 rounded-full border-2 flex-shrink-0 border-[var(--mvmt-border-medium)]"
+                className="w-5 h-5 rounded-full border-2 flex-shrink-0 border-mvmt-border-medium"
               />
               <span className="text-sm text-mvmt-text-primary">{opt}</span>
             </label>

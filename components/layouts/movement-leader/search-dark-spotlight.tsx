@@ -34,7 +34,7 @@ export function SearchDarkSpotlight({ className }: SearchDarkSpotlightProps) {
             Top Hit
           </span>
         </div>
-        <div className="px-5 py-3 flex items-center gap-4 border-b border-[var(--mvmt-border-on-dark)]">
+        <div className="px-5 py-3 flex items-center gap-4 border-b border-mvmt-border-on-dark">
           <div className="w-10 h-10 rounded-lg bg-mvmt-accent flex items-center justify-center text-mvmt-cta-text text-sm font-bold">
             CP
           </div>
@@ -57,7 +57,7 @@ export function SearchDarkSpotlight({ className }: SearchDarkSpotlightProps) {
             key={i}
             className={cn(
               "px-5 py-2.5 flex items-center gap-3",
-              i < suggested.length - 1 && "border-b border-[var(--mvmt-border-on-dark)]"
+              i < suggested.length - 1 && "border-b border-mvmt-border-on-dark"
             )}
           >
             <div className="w-6 h-6 rounded bg-mvmt-surface-dark flex items-center justify-center text-mvmt-on-dark-muted text-xs">

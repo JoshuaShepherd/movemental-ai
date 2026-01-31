@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import {
   ReaderDocsSidebar,
   ReaderEbookDark,
@@ -15,6 +15,7 @@ import {
   ReaderTemplateSwitcher,
 } from "@/components/layouts/movement-leader";
 import type { ReaderVariant } from "@/components/layouts/movement-leader";
+import { useTemplateVariant } from "@/app/templates/template-variant-context";
 
 const templateComponents: Record<ReaderVariant, React.ComponentType> = {
   "reader-docs-sidebar": ReaderDocsSidebar,
@@ -33,12 +34,15 @@ export default function ReaderTemplatePage() {
   const [activeTemplate, setActiveTemplate] = useState<ReaderVariant>("reader-docs-sidebar");
   const ActiveComponent = templateComponents[activeTemplate];
 
+  const { setVariant } = useTemplateVariant();
+  useEffect(() => { setVariant(activeTemplate); }, [activeTemplate, setVariant]);
+
   return (
-    <div className="template-movement-leader" data-variant={activeTemplate}>
+    <>
       <div className="sticky top-14 z-40 bg-background border-b">
         <ReaderTemplateSwitcher activeTemplate={activeTemplate} onTemplateChange={setActiveTemplate} />
       </div>
       <ActiveComponent />
-    </div>
+    </>
   );
 }

@@ -30,7 +30,7 @@ export function ChatWarmGreeting({ className }: ChatWarmGreetingProps) {
   return (
     <section className={cn("relative w-full min-h-screen flex bg-mvmt-surface-light", className)} >
       {/* Left sidebar */}
-      <aside className="w-56 flex-shrink-0 flex flex-col border-r px-4 py-5" style={{ borderColor: "var(--mvmt-border-light)" }}>
+      <aside className="w-56 flex-shrink-0 flex flex-col border-r px-4 py-5 border-mvmt-border-light" >
         <span className="text-sm font-bold tracking-wide mb-6 text-mvmt-text-primary">Movemental</span>
 
         <nav className="space-y-1 mb-8">
@@ -45,7 +45,7 @@ export function ChatWarmGreeting({ className }: ChatWarmGreetingProps) {
           ))}
         </nav>
 
-        <span className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: "var(--mvmt-text-tertiary)" }}>
+        <span className="text-xs font-semibold uppercase tracking-wider mb-2 text-mvmt-text-tertiary" >
           Recents
         </span>
         <div className="space-y-1 flex-1 overflow-y-auto">
@@ -58,10 +58,10 @@ export function ChatWarmGreeting({ className }: ChatWarmGreetingProps) {
 
         {/* User */}
         <div className="mt-4 flex items-center gap-2 px-3 py-2 rounded-md bg-mvmt-surface-light-muted">
-          <div className="w-7 h-7 rounded-full flex-shrink-0" style={{ backgroundColor: "var(--mvmt-accent-muted)" }} />
+          <div className="w-7 h-7 rounded-full flex-shrink-0 bg-mvmt-accent-muted"  />
           <div>
             <p className="text-xs font-medium text-mvmt-text-primary">Brad Brisco</p>
-            <p className="text-2xs" style={{ color: "var(--mvmt-text-tertiary)" }}>Pro plan</p>
+            <p className="text-2xs text-mvmt-text-tertiary" >Pro plan</p>
           </div>
         </div>
       </aside>
@@ -76,20 +76,20 @@ export function ChatWarmGreeting({ className }: ChatWarmGreetingProps) {
         </h1>
 
         {/* Input card */}
-        <div className="w-full max-w-xl border rounded-xl p-4" style={{ borderColor: "var(--mvmt-border-light)" }}>
-          <div className="text-sm mb-4" style={{ color: "var(--mvmt-text-tertiary)" }}>
+        <div className="w-full max-w-xl border rounded-xl p-4 border-mvmt-border-light" >
+          <div className="text-sm mb-4 text-mvmt-text-tertiary" >
             How can I help you today?
           </div>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <span className="text-base" style={{ color: "var(--mvmt-text-tertiary)" }}>+</span>
-              <span className="text-sm" style={{ color: "var(--mvmt-text-tertiary)" }}>&#9776;</span>
-              <span className="px-2 py-0.5 text-xs rounded-full border text-mvmt-text-secondary" style={{ borderColor: "var(--mvmt-border-light)" }}>
+              <span className="text-base text-mvmt-text-tertiary" >+</span>
+              <span className="text-sm text-mvmt-text-tertiary" >&#9776;</span>
+              <span className="px-2 py-0.5 text-xs rounded-full border text-mvmt-text-secondary border-mvmt-border-light" >
                 Research
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-xs" style={{ color: "var(--mvmt-text-tertiary)" }}>Sonnet 4 &#9662;</span>
+              <span className="text-xs text-mvmt-text-tertiary" >Sonnet 4 &#9662;</span>
               <button className="w-7 h-7 rounded-full flex items-center justify-center bg-mvmt-accent">
                 <span className="text-xs text-mvmt-cta-text">&uarr;</span>
               </button>
@@ -102,8 +102,8 @@ export function ChatWarmGreeting({ className }: ChatWarmGreetingProps) {
           {categoryChips.map((chip) => (
             <span
               key={chip}
-              className="px-4 py-1.5 rounded-full border text-sm cursor-pointer text-mvmt-text-secondary"
-              style={{ borderColor: "var(--mvmt-border-light)" }}
+              className="px-4 py-1.5 rounded-full border text-sm cursor-pointer text-mvmt-text-secondary border-mvmt-border-light"
+              
             >
               {chip}
             </span>

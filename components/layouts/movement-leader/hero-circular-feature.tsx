@@ -65,8 +65,8 @@ export function HeroCircularFeature({ className }: HeroCircularFeatureProps) {
           <div className="mt-4">
             <Link
               href="/fit-check"
-              className="inline-block px-6 py-2.5 text-sm font-medium border transition-colors text-mvmt-on-dark-primary rounded-full"
-              style={{ borderColor: "var(--mvmt-border-on-dark-medium)" }}
+              className="inline-block px-6 py-2.5 text-sm font-medium border transition-colors text-mvmt-on-dark-primary rounded-full border-mvmt-border-on-dark-medium"
+              
             >
               Start a free trial
             </Link>

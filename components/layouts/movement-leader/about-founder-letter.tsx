@@ -10,19 +10,19 @@ export function AboutFounderLetter({ className }: AboutFounderLetterProps) {
   return (
     <section className={cn("relative w-full", className)}>
       {/* Warm Header */}
-      <div className="px-6 sm:px-12 lg:px-20 py-20 text-center bg-[var(--mvmt-surface-light)]">
-        <p className="text-xs font-bold tracking-widest uppercase mb-4 text-[var(--mvmt-accent)]">
+      <div className="px-6 sm:px-12 lg:px-20 py-20 text-center bg-mvmt-surface-light">
+        <p className="text-xs font-bold tracking-widest uppercase mb-4 text-mvmt-accent">
           A Letter From Our Founder
         </p>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 text-[var(--mvmt-text-primary)] font-mvmt-heading">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 text-mvmt-text-primary font-mvmt-heading">
           Why I Built Movemental
         </h1>
       </div>
 
       {/* Letter Body */}
-      <div className="px-6 sm:px-12 lg:px-20 py-16 bg-[var(--mvmt-surface-light-muted)]">
-        <article className="max-w-2xl mx-auto space-y-6 text-base leading-relaxed text-[var(--mvmt-text-secondary)]">
-          <p className="text-[var(--mvmt-text-primary)]">
+      <div className="px-6 sm:px-12 lg:px-20 py-16 bg-mvmt-surface-light-muted">
+        <article className="max-w-2xl mx-auto space-y-6 text-base leading-relaxed text-mvmt-text-secondary">
+          <p className="text-mvmt-text-primary">
             Dear friend,
           </p>
           <p>
@@ -42,16 +42,16 @@ export function AboutFounderLetter({ className }: AboutFounderLetterProps) {
           </p>
 
           {/* Signature */}
-          <div className="pt-8 border-t border-[var(--mvmt-border-light)]">
+          <div className="pt-8 border-t border-mvmt-border-light">
             <div className="flex items-center gap-5">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center text-lg font-bold text-[var(--mvmt-on-dark-primary)] bg-[var(--mvmt-surface-dark)]">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center text-lg font-bold text-mvmt-on-dark-primary bg-mvmt-surface-dark">
                 BB
               </div>
               <div>
-                <p className="text-lg font-bold text-[var(--mvmt-text-primary)] font-mvmt-heading">
+                <p className="text-lg font-bold text-mvmt-text-primary font-mvmt-heading">
                   Brad Brisco
                 </p>
-                <p className="text-sm text-[var(--mvmt-text-muted)]">
+                <p className="text-sm text-mvmt-text-muted">
                   Founder &amp; Lead Catalyst, Movemental
                 </p>
               </div>
@@ -61,13 +61,13 @@ export function AboutFounderLetter({ className }: AboutFounderLetterProps) {
       </div>
 
       {/* Bottom CTA */}
-      <div className="px-6 sm:px-12 lg:px-20 py-10 flex flex-col sm:flex-row items-center justify-center gap-6 bg-[var(--mvmt-surface-dark)]">
-        <p className="text-sm text-[var(--mvmt-on-dark-secondary)]">
+      <div className="px-6 sm:px-12 lg:px-20 py-10 flex flex-col sm:flex-row items-center justify-center gap-6 bg-mvmt-surface-dark">
+        <p className="text-sm text-mvmt-on-dark-secondary">
           Explore the platform Brad built for leaders like you
         </p>
         <a
           href="/pricing"
-          className="px-8 py-3 text-xs font-bold uppercase tracking-widest rounded-md transition-colors text-[var(--mvmt-cta-text)] bg-[var(--mvmt-accent)] hover:bg-[var(--mvmt-accent-hover)]"
+          className="px-8 py-3 text-xs font-bold uppercase tracking-widest rounded-md transition-colors text-mvmt-cta-text bg-mvmt-accent hover:bg-mvmt-accent-hover"
         >
           Get Started
         </a>

@@ -50,9 +50,9 @@ export function AssessmentsUdemyQuiz({ className }: AssessmentsUdemyQuizProps) {
               style={{ border: opt.selected ? "2px solid var(--mvmt-text-primary)" : "1px solid var(--mvmt-border-medium)" }}
             >
               <div
-                className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 border-[var(--mvmt-text-primary)]"
+                className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 border-mvmt-text-primary"
               >
-                {opt.selected && <div className="w-2.5 h-2.5 rounded-full bg-[var(--mvmt-text-primary)]" />}
+                {opt.selected && <div className="w-2.5 h-2.5 rounded-full bg-mvmt-text-primary" />}
               </div>
               <span className="text-sm text-mvmt-text-primary">{opt.label}</span>
             </label>

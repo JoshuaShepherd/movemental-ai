@@ -95,8 +95,8 @@ export function ArticlesColorfulSidebar({ className }: ArticlesColorfulSidebarPr
               {platformCards.map((card) => (
                 <div
                   key={card.title}
-                  className="rounded-lg border p-5 bg-mvmt-surface-light"
-                  style={{ borderColor: "var(--mvmt-border-light)" }}
+                  className="rounded-lg border p-5 bg-mvmt-surface-light border-mvmt-border-light"
+                  
                 >
                   <h3 className="text-sm font-bold mb-2 text-mvmt-text-primary">
                     {card.title}
@@ -115,8 +115,8 @@ export function ArticlesColorfulSidebar({ className }: ArticlesColorfulSidebarPr
             {/* Help badge */}
             <div className="mt-10 mb-12">
               <div
-                className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-mvmt-accent"
-                style={{ backgroundColor: "var(--mvmt-accent-muted)" }}
+                className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-mvmt-accent bg-mvmt-accent-muted"
+                
               >
                 Help
               </div>
@@ -126,8 +126,8 @@ export function ArticlesColorfulSidebar({ className }: ArticlesColorfulSidebarPr
           {/* Right sidebar */}
           <aside className="w-64 flex-shrink-0 pt-4 hidden lg:block">
             <p
-              className="text-xs font-bold uppercase tracking-wider mb-4"
-              style={{ color: "var(--mvmt-text-tertiary)" }}
+              className="text-xs font-bold uppercase tracking-wider mb-4 text-mvmt-text-tertiary"
+              
             >
               Articles in this section
             </p>

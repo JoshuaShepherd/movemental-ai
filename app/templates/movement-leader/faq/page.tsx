@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import {
   FaqDarkHero,
   FaqMinimalAccordion,
@@ -13,6 +13,7 @@ import {
   FaqTemplateSwitcher,
 } from "@/components/layouts/movement-leader";
 import type { FaqVariant } from "@/components/layouts/movement-leader";
+import { useTemplateVariant } from "@/app/templates/template-variant-context";
 
 const templateComponents: Record<FaqVariant, React.ComponentType> = {
   "faq-dark-hero": FaqDarkHero,
@@ -29,12 +30,15 @@ export default function FaqTemplatePage() {
   const [activeTemplate, setActiveTemplate] = useState<FaqVariant>("faq-dark-hero");
   const ActiveComponent = templateComponents[activeTemplate];
 
+  const { setVariant } = useTemplateVariant();
+  useEffect(() => { setVariant(activeTemplate); }, [activeTemplate, setVariant]);
+
   return (
-    <div className="template-movement-leader" data-variant={activeTemplate}>
+    <>
       <div className="sticky top-14 z-40 bg-background border-b">
         <FaqTemplateSwitcher activeTemplate={activeTemplate} onTemplateChange={setActiveTemplate} />
       </div>
       <ActiveComponent />
-    </div>
+    </>
   );
 }

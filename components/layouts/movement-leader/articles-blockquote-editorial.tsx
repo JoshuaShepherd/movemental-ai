@@ -14,10 +14,10 @@ export function ArticlesBlockquoteEditorial({ className }: ArticlesBlockquoteEdi
   return (
     <section className={cn("relative w-full bg-mvmt-surface-light", className)} >
       {/* Top bar */}
-      <div className="border-b" style={{ borderColor: "var(--mvmt-border-light)" }}>
+      <div className="border-b border-mvmt-border-light" >
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <span className="text-sm font-semibold tracking-wide text-mvmt-text-primary">Movemental Journal</span>
-          <div className="w-5 h-5 rounded-full" style={{ backgroundColor: "var(--mvmt-border-light)" }} />
+          <div className="w-5 h-5 rounded-full bg-mvmt-border-light"  />
         </div>
       </div>
 

@@ -36,8 +36,8 @@ export function BooksDetailClean({ className }: BooksDetailCleanProps) {
         {/* Image */}
         <div className="flex items-center justify-center p-12 min-h-[400px] lg:min-h-[600px] bg-mvmt-surface-light-muted">
           <div
-            className="w-48 h-64 rounded-md shadow-mvmt-lg"
-            style={{ backgroundColor: "var(--mvmt-border-light)" }}
+            className="w-48 h-64 rounded-md shadow-mvmt-lg bg-mvmt-border-light"
+            
           />
         </div>
 
@@ -81,7 +81,7 @@ export function BooksDetailClean({ className }: BooksDetailCleanProps) {
             </button>
           </div>
 
-          <hr className="my-10" style={{ borderColor: "var(--mvmt-border-light)" }} />
+          <hr className="my-10 border-mvmt-border-light"  />
 
           <div>
             <p className="text-xs uppercase tracking-wider font-bold text-mvmt-text-secondary">DETAILS</p>

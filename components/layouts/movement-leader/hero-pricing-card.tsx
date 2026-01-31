@@ -75,8 +75,8 @@ export function HeroPricingCard({ className }: HeroPricingCardProps) {
               </Link>
               <Link
                 href="/about"
-                className="block w-full text-center px-6 py-3.5 text-sm font-medium border transition-colors text-mvmt-text-secondary rounded-mvmt-md"
-                style={{ borderColor: "var(--mvmt-border-light)" }}
+                className="block w-full text-center px-6 py-3.5 text-sm font-medium border transition-colors text-mvmt-text-secondary rounded-mvmt-md border-mvmt-border-light"
+                
               >
                 Download brochure
               </Link>

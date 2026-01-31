@@ -60,7 +60,7 @@ export function ArticlesDarkCaseStudy({ className }: ArticlesDarkCaseStudyProps)
         </div>
 
         {/* Divider */}
-        <div className="h-px mb-12" style={{ backgroundColor: "var(--mvmt-border-on-dark)" }} />
+        <div className="h-px mb-12 bg-mvmt-border-on-dark"  />
 
         {/* Section header */}
         <h2

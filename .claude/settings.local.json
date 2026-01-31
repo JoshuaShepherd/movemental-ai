@@ -19,7 +19,8 @@
       "Bash(npx sharp:*)",
       "Bash(npx sharp-cli:*)",
       "Bash(node:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(grep:*)"
     ]
   }
 }

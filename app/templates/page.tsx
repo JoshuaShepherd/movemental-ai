@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import {
   HeroColorfulHeadline,
   HeroAgencyGradient,
@@ -24,6 +24,7 @@ import {
   TemplateSwitcher,
 } from "@/components/layouts/movement-leader";
 import type { HeroVariant } from "@/components/layouts/movement-leader";
+import { useTemplateVariant } from "@/app/templates/template-variant-context";
 
 const templateComponents: Record<HeroVariant, React.ComponentType> = {
   "colorful-headline": HeroColorfulHeadline,
@@ -52,8 +53,11 @@ export default function TemplatesHomePage() {
     useState<HeroVariant>("colorful-headline");
   const ActiveComponent = templateComponents[activeTemplate];
 
+  const { setVariant } = useTemplateVariant();
+  useEffect(() => { setVariant(activeTemplate); }, [activeTemplate, setVariant]);
+
   return (
-    <div className="template-movement-leader" data-variant={activeTemplate}>
+    <>
       {/* Sticky template switcher — below nav (top-14 = nav height) */}
       <div className="sticky top-14 z-40 bg-background border-b">
         <TemplateSwitcher
@@ -64,6 +68,6 @@ export default function TemplatesHomePage() {
 
       {/* Active hero template */}
       <ActiveComponent />
-    </div>
+    </>
   );
 }

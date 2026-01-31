@@ -41,14 +41,14 @@ export function ArticlesHelpCenter({ className }: ArticlesHelpCenterProps) {
           <div
             className="mt-6 mx-auto max-w-md flex items-center rounded-lg px-4 py-3 bg-mvmt-surface-light border border-mvmt-border-light"
           >
-            <span className="text-sm" style={{ color: "var(--mvmt-text-tertiary)" }}>Search articles...</span>
+            <span className="text-sm text-mvmt-text-tertiary" >Search articles...</span>
           </div>
         </div>
       </div>
 
       {/* Breadcrumb */}
       <div className="max-w-5xl mx-auto px-6 py-4">
-        <nav className="text-xs flex gap-1" style={{ color: "var(--mvmt-text-tertiary)" }}>
+        <nav className="text-xs flex gap-1 text-mvmt-text-tertiary" >
           <span>Home</span>
           <span>&gt;</span>
           <span>Knowledge Base</span>
@@ -81,7 +81,7 @@ export function ArticlesHelpCenter({ className }: ArticlesHelpCenterProps) {
           >
             Movement Leader 101
           </h2>
-          <p className="mt-1 text-xs" style={{ color: "var(--mvmt-text-tertiary)" }}>
+          <p className="mt-1 text-xs text-mvmt-text-tertiary" >
             Edited 3 months ago
           </p>
 

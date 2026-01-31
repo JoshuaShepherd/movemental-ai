@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import {
   ContentAccordionFeatures,
   ContentCaseStudies,
@@ -25,6 +25,7 @@ import {
   ContentTemplateSwitcher,
 } from "@/components/layouts/movement-leader";
 import type { ContentVariant } from "@/components/layouts/movement-leader";
+import { useTemplateVariant } from "@/app/templates/template-variant-context";
 
 const templateComponents: Record<ContentVariant, React.ComponentType> = {
   "cnt-accordion-features": ContentAccordionFeatures,
@@ -54,8 +55,11 @@ export default function ContentTemplatePage() {
     useState<ContentVariant>("cnt-case-studies");
   const ActiveComponent = templateComponents[activeTemplate];
 
+  const { setVariant } = useTemplateVariant();
+  useEffect(() => { setVariant(activeTemplate); }, [activeTemplate, setVariant]);
+
   return (
-    <div className="template-movement-leader" data-variant={activeTemplate}>
+    <>
       <div className="sticky top-14 z-40 bg-background border-b">
         <ContentTemplateSwitcher
           activeTemplate={activeTemplate}
@@ -63,6 +67,6 @@ export default function ContentTemplatePage() {
         />
       </div>
       <ActiveComponent />
-    </div>
+    </>
   );
 }

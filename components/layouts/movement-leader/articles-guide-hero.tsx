@@ -29,12 +29,8 @@ export function ArticlesGuideHero({ className }: ArticlesGuideHeroProps) {
             {socialIcons.map((icon) => (
               <div
                 key={icon}
-                className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-medium cursor-pointer transition-colors"
-                style={{
-                  backgroundColor: "var(--mvmt-surface-raised)",
-                  color: "var(--mvmt-text-tertiary)",
-                  border: "1px solid var(--mvmt-border-default)",
-                }}
+                className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-medium cursor-pointer transition-colors bg-mvmt-surface-raised text-mvmt-text-tertiary"
+                style={{ border: "1px solid var(--mvmt-border-default)" }}
               >
                 {icon.charAt(0).toUpperCase()}
               </div>
@@ -60,8 +56,8 @@ export function ArticlesGuideHero({ className }: ArticlesGuideHeroProps) {
                   </p>
                   <a
                     href="#"
-                    className="inline-block px-6 py-3 text-sm font-semibold rounded-lg transition-colors text-mvmt-on-dark-primary"
-                    style={{ backgroundColor: "var(--mvmt-accent-primary)" }}
+                    className="inline-block px-6 py-3 text-sm font-semibold rounded-lg transition-colors text-mvmt-on-dark-primary bg-mvmt-accent-primary"
+                    
                   >
                     Sign up now
                   </a>
@@ -84,8 +80,8 @@ export function ArticlesGuideHero({ className }: ArticlesGuideHeroProps) {
               <aside className="hidden lg:block">
                 <div className="sticky top-8">
                   <h4
-                    className="text-xs font-bold uppercase tracking-wider mb-4"
-                    style={{ color: "var(--mvmt-text-tertiary)" }}
+                    className="text-xs font-bold uppercase tracking-wider mb-4 text-mvmt-text-tertiary"
+                    
                   >
                     Table of Contents
                   </h4>
@@ -131,13 +127,10 @@ export function ArticlesGuideHero({ className }: ArticlesGuideHeroProps) {
 
                 {/* Callout Box */}
                 <div
-                  className="rounded-lg p-5 my-6"
-                  style={{
-                    border: "1px solid var(--mvmt-border-default)",
-                    backgroundColor: "var(--mvmt-surface-raised)",
-                  }}
+                  className="rounded-lg p-5 my-6 bg-mvmt-surface-raised"
+                  style={{ border: "1px solid var(--mvmt-border-default)" }}
                 >
-                  <p className="text-sm font-semibold mb-2" style={{ color: "var(--mvmt-accent-primary)" }}>
+                  <p className="text-sm font-semibold mb-2 text-mvmt-accent-primary" >
                     Formula for Mission Clarity
                   </p>
                   <p className="text-sm text-mvmt-text-secondary">

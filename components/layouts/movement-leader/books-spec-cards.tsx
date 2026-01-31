@@ -88,8 +88,8 @@ export function BooksSpecCards({ className }: BooksSpecCardsProps) {
               className="flex flex-col overflow-hidden bg-mvmt-surface-light-muted rounded-mvmt-lg border border-mvmt-border-light"
             >
               <div
-                className="h-56 flex items-center justify-center"
-                style={{ backgroundColor: "var(--mvmt-border-light)" }}
+                className="h-56 flex items-center justify-center bg-mvmt-border-light"
+                
               >
                 <div
                   className="w-28 h-40 rounded bg-mvmt-surface-light shadow-mvmt-md"

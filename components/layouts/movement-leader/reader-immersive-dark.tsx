@@ -48,7 +48,7 @@ export function ReaderImmersiveDark({ className }: ReaderImmersiveDarkProps) {
             <div className="flex items-center gap-2">
               {[
                 { label: "Dark", bg: "bg-mvmt-surface-dark" },
-                { label: "Sepia", bg: "bg-[var(--mvmt-surface-light-muted)]" },
+                { label: "Sepia", bg: "bg-mvmt-surface-light-muted" },
                 { label: "Light", bg: "bg-mvmt-surface-light" },
               ].map((theme) => (
                 <button

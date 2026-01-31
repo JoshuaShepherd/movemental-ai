@@ -54,7 +54,7 @@ export function AssessmentsDarkFloating({ className }: AssessmentsDarkFloatingPr
             {options.map((opt) => (
               <div key={opt.key} className="flex items-start gap-3">
                 <span
-                  className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 text-mvmt-text-secondary border-[1.5px] border-[var(--mvmt-border-medium)]"
+                  className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 text-mvmt-text-secondary border-[1.5px] border-mvmt-border-medium"
                 >
                   {opt.key}
                 </span>

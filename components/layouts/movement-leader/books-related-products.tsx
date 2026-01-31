@@ -36,8 +36,8 @@ export function BooksRelatedProducts({ className }: BooksRelatedProductsProps) {
                 className="aspect-square flex flex-col items-center justify-center rounded-lg relative bg-mvmt-surface-light-muted"
               >
                 <div
-                  className="w-24 h-36 rounded shadow-mvmt-sm"
-                  style={{ backgroundColor: "var(--mvmt-border-light)" }}
+                  className="w-24 h-36 rounded shadow-mvmt-sm bg-mvmt-border-light"
+                  
                 />
                 {book.collection && (
                   <span

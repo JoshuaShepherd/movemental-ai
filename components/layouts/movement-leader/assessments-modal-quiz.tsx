@@ -33,7 +33,7 @@ export function AssessmentsModalQuiz({ className }: AssessmentsModalQuizProps) {
               Question 1 of 3
             </span>
           </div>
-          <div className="w-full h-1.5 rounded-full mb-8 bg-[var(--mvmt-border-light)]">
+          <div className="w-full h-1.5 rounded-full mb-8 bg-mvmt-border-light">
             <div className="h-full rounded-full w-1/3 bg-mvmt-accent"  />
           </div>
 
