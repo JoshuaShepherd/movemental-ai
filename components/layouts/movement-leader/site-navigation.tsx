@@ -11,15 +11,22 @@ interface SiteNavigationProps {
 
 const templatePages = [
   { label: "Home", href: "/templates" },
-  { label: "About", href: "/templates/about" },
-  { label: "Books", href: "/templates/books" },
-  { label: "Articles", href: "/templates/articles" },
-  { label: "Podcasts", href: "/templates/podcasts" },
-  { label: "Video", href: "/templates/video" },
-  { label: "Courses", href: "/templates/courses" },
-  { label: "Chat", href: "/templates/chat" },
-  { label: "Assessments", href: "/templates/assessments" },
-  { label: "Content", href: "/templates/content" },
+  { label: "About", href: "/templates/movement-leader/about" },
+  { label: "Articles", href: "/templates/movement-leader/articles" },
+  { label: "Assessments", href: "/templates/movement-leader/assessments" },
+  { label: "Auth", href: "/templates/movement-leader/auth" },
+  { label: "Books", href: "/templates/movement-leader/books" },
+  { label: "Chat", href: "/templates/movement-leader/chat" },
+  { label: "Content", href: "/templates/movement-leader/content" },
+  { label: "Courses", href: "/templates/movement-leader/courses" },
+  { label: "FAQ", href: "/templates/movement-leader/faq" },
+  { label: "Lead Magnet", href: "/templates/movement-leader/lead-magnet" },
+  { label: "Misc", href: "/templates/movement-leader/misc" },
+  { label: "Pricing", href: "/templates/movement-leader/pricing" },
+  { label: "Reader", href: "/templates/movement-leader/reader" },
+  { label: "Search", href: "/templates/movement-leader/search" },
+  { label: "Special", href: "/templates/movement-leader/special" },
+  { label: "Testimonials", href: "/templates/movement-leader/testimonials" },
 ];
 
 /**
