@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Exclude docs directory from Tailwind's automatic content detection */
+@source not "../_docs";
+
 /* Tailwind v4 plugin + dark mode class strategy */
 @plugin "tailwindcss-animate";
 @variant dark (&:where(.dark, .dark *));

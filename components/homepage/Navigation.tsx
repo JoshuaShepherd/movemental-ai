@@ -9,7 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { Menu, X, ChevronDown, Search, BookOpen, Layers, Brain, Sparkles } from 'lucide-react'
+import { Menu, X, ChevronDown, Search, BookOpen, Layers, Brain, Sparkles, LayoutGrid } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface NavItem {
@@ -96,6 +96,14 @@ export function Navigation({ className }: NavigationProps) {
                 {item.label}
               </Link>
             ))}
+
+            {/* Templates */}
+            <Link
+              href="/templates"
+              className="px-3 py-1.5 text-sm font-medium rounded-full transition-colors bg-velvet-orchid-500 text-white hover:bg-velvet-orchid-600"
+            >
+              Templates
+            </Link>
 
             {/* Explore Dropdown (Tier C) */}
             <DropdownMenu>
@@ -184,6 +192,16 @@ export function Navigation({ className }: NavigationProps) {
                 {item.label}
               </Link>
             ))}
+
+            {/* Templates */}
+            <Link
+              href="/templates"
+              className="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg text-white bg-velvet-orchid-500 hover:bg-velvet-orchid-600 transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <LayoutGrid className="h-5 w-5" />
+              Templates
+            </Link>
 
             {/* Explore section header */}
             <div className="px-4 pt-4 pb-2 text-xs font-semibold uppercase tracking-wider text-sage-400">
