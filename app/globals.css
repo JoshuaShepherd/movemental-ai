@@ -259,6 +259,14 @@
   --mvmt-footer-bg: #F5F5F5;
   --mvmt-footer-text: #64748B;
   --mvmt-footer-text-highlight: #1A1A2E;
+
+  /* Decorative card colors (for card headers, avatars, category badges) */
+  --mvmt-card-decorative-1: #DBEAFE; /* blue tint */
+  --mvmt-card-decorative-2: #E0E7FF; /* indigo tint */
+  --mvmt-card-decorative-3: #FCE7F3; /* pink tint */
+  --mvmt-card-decorative-4: #D1FAE5; /* green tint */
+  --mvmt-card-decorative-5: #FEF3C7; /* yellow tint */
+  --mvmt-card-decorative-6: #FEE2E2; /* red tint */
 }
 
 /* Gradient utilities scoped to movement-leader template */
@@ -2602,4 +2610,1801 @@
   --mvmt-text-secondary: #6B7280;
   --mvmt-text-muted: #9CA3AF;
   --mvmt-border-light: #E5E7EB;
+}
+
+/* ============================================================
+   FIX 2: Surface/Border Token Augmentation
+
+   Adds --mvmt-surface-light, --mvmt-surface-light-muted,
+   --mvmt-border-light, --mvmt-border-medium to variants that
+   only had accent colors defined. This allows cards and UI
+   chrome to look distinct per variant.
+
+   Organized by color family:
+   - Purple/Violet variants: cool lavender tints
+   - Blue variants: cool blue tints
+   - Green/Teal variants: cool mint tints
+   - Orange/Red/Warm variants: warm cream tints
+   - Yellow variants: warm golden tints
+   - Neutral/Black variants: pure gray tints
+   - Dark variants: dark card surfaces with light text
+   ============================================================ */
+
+/* --- HERO VARIANTS (Purple family) --- */
+.template-movement-leader[data-variant="colorful-headline"] {
+  --mvmt-surface-light: #FEFCFF;
+  --mvmt-surface-light-muted: #FAF5FF;
+  --mvmt-border-light: #E9D5FF;
+  --mvmt-border-medium: #D8B4FE;
+}
+
+.template-movement-leader[data-variant="agency-gradient"] {
+  /* Dark/gradient variant - cards should be dark too */
+  --mvmt-surface-light: #1E1B4B;
+  --mvmt-surface-light-muted: #2E2A5E;
+  --mvmt-border-light: rgba(255,255,255,0.12);
+  --mvmt-border-medium: rgba(255,255,255,0.2);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #C7D2FE;
+  --mvmt-text-muted: #A5B4FC;
+}
+
+.template-movement-leader[data-variant="centered-product"] {
+  /* Warm red accent - warm cream surface */
+  --mvmt-surface-light: #FFFBF8;
+  --mvmt-surface-light-muted: #FFF5EE;
+  --mvmt-border-light: #FED7AA;
+  --mvmt-border-medium: #FDBA74;
+}
+
+.template-movement-leader[data-variant="centered-serif"] {
+  /* Orange accent - warm surface */
+  --mvmt-surface-light: #FFFBF5;
+  --mvmt-surface-light-muted: #FEF3E2;
+  --mvmt-border-light: #FED7AA;
+  --mvmt-border-medium: #FDBA74;
+}
+
+.template-movement-leader[data-variant="chat-widget"] {
+  /* Blue accent - cool surface */
+  --mvmt-surface-light: #F8FAFF;
+  --mvmt-surface-light-muted: #EEF2FF;
+  --mvmt-border-light: #C7D2FE;
+  --mvmt-border-medium: #A5B4FC;
+}
+
+.template-movement-leader[data-variant="circular-feature"] {
+  /* Blue accent - cool surface */
+  --mvmt-surface-light: #F8FBFF;
+  --mvmt-surface-light-muted: #EFF6FF;
+  --mvmt-border-light: #BFDBFE;
+  --mvmt-border-medium: #93C5FD;
+}
+
+.template-movement-leader[data-variant="clean-minimal"] {
+  /* Black accent - pure neutral */
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="clean-minimal-alt"] {
+  /* Black accent - warm neutral (Airbnb style) */
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F7F7F7;
+  --mvmt-border-light: #EBEBEB;
+  --mvmt-border-medium: #DDDDDD;
+}
+
+.template-movement-leader[data-variant="dark-features"] {
+  /* Dark variant - dark cards */
+  --mvmt-surface-light: #262626;
+  --mvmt-surface-light-muted: #2E2E2E;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A3A3A3;
+  --mvmt-text-muted: #737373;
+}
+
+.template-movement-leader[data-variant="floating-card"] {
+  /* Red accent - warm surface */
+  --mvmt-surface-light: #FFFBFA;
+  --mvmt-surface-light-muted: #FEF2F2;
+  --mvmt-border-light: #FECACA;
+  --mvmt-border-medium: #FCA5A5;
+}
+
+.template-movement-leader[data-variant="full-bleed"] {
+  /* Yellow accent - warm golden */
+  --mvmt-surface-light: #FFFEF5;
+  --mvmt-surface-light-muted: #FEFCE8;
+  --mvmt-border-light: #FEF08A;
+  --mvmt-border-medium: #FDE047;
+}
+
+.template-movement-leader[data-variant="gradient-illustration"] {
+  /* Purple accent - cool lavender */
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+.template-movement-leader[data-variant="how-it-works"] {
+  /* Navy accent - cool blue */
+  --mvmt-surface-light: #F8FAFC;
+  --mvmt-surface-light-muted: #F1F5F9;
+  --mvmt-border-light: #CBD5E1;
+  --mvmt-border-medium: #94A3B8;
+}
+
+.template-movement-leader[data-variant="image-grid"] {
+  /* Dark variant - dark cards */
+  --mvmt-surface-light: #1A1A1A;
+  --mvmt-surface-light-muted: #262626;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A3A3A3;
+  --mvmt-text-muted: #737373;
+}
+
+.template-movement-leader[data-variant="pricing-card"] {
+  /* Dark indigo variant - dark cards */
+  --mvmt-surface-light: #1E1842;
+  --mvmt-surface-light-muted: #2A2255;
+  --mvmt-border-light: rgba(255,255,255,0.12);
+  --mvmt-border-medium: rgba(255,255,255,0.2);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #C7D2FE;
+  --mvmt-text-muted: #A5B4FC;
+}
+
+.template-movement-leader[data-variant="product-showcase"] {
+  /* Blue accent - cool surface */
+  --mvmt-surface-light: #F8FAFF;
+  --mvmt-surface-light-muted: #EFF6FF;
+  --mvmt-border-light: #BFDBFE;
+  --mvmt-border-medium: #93C5FD;
+}
+
+.template-movement-leader[data-variant="product-showcase-alt"] {
+  /* Dark variant - dark cards */
+  --mvmt-surface-light: #1A1A2E;
+  --mvmt-surface-light-muted: #252542;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #94A3B8;
+  --mvmt-text-muted: #64748B;
+}
+
+.template-movement-leader[data-variant="split-tabs"] {
+  /* Blue accent - cool surface */
+  --mvmt-surface-light: #F8FAFC;
+  --mvmt-surface-light-muted: #EFF6FF;
+  --mvmt-border-light: #BFDBFE;
+  --mvmt-border-medium: #93C5FD;
+}
+
+.template-movement-leader[data-variant="template-preview"] {
+  /* Purple accent - cool lavender */
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+/* --- ASSESSMENT VARIANTS --- */
+.template-movement-leader[data-variant="assess-template-picker"] {
+  --mvmt-surface-light: #FEFCFF;
+  --mvmt-surface-light-muted: #FAF5FF;
+  --mvmt-border-light: #E9D5FF;
+  --mvmt-border-medium: #D8B4FE;
+}
+
+.template-movement-leader[data-variant="assess-progress-quiz"] {
+  --mvmt-surface-light: #FFFBFA;
+  --mvmt-surface-light-muted: #FFF5F2;
+  --mvmt-border-light: #FED7D0;
+  --mvmt-border-medium: #FECDC5;
+}
+
+.template-movement-leader[data-variant="assess-mood-gradient"] {
+  /* Gradient dark - dark cards */
+  --mvmt-surface-light: #1E3A5F;
+  --mvmt-surface-light-muted: #1E40AF;
+  --mvmt-border-light: rgba(255,255,255,0.15);
+  --mvmt-border-medium: rgba(255,255,255,0.25);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #BFDBFE;
+  --mvmt-text-muted: #93C5FD;
+}
+
+.template-movement-leader[data-variant="assess-binary-choice"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F5F5F5;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="assess-dark-intro"] {
+  /* Dark variant */
+  --mvmt-surface-light: #262626;
+  --mvmt-surface-light-muted: #333333;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.2);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A3A3A3;
+  --mvmt-text-muted: #737373;
+}
+
+.template-movement-leader[data-variant="assess-modal-quiz"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="assess-scale-options"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #E9D5FF;
+  --mvmt-border-medium: #D8B4FE;
+}
+
+.template-movement-leader[data-variant="assess-nps-scale"] {
+  --mvmt-surface-light: #FFFBF5;
+  --mvmt-surface-light-muted: #FEF3E2;
+  --mvmt-border-light: #FED7AA;
+  --mvmt-border-medium: #FDBA74;
+}
+
+.template-movement-leader[data-variant="assess-section-intro"] {
+  --mvmt-surface-light: #FFFBF8;
+  --mvmt-surface-light-muted: #FEF7F0;
+  --mvmt-border-light: #F5D5B8;
+  --mvmt-border-medium: #E8C4A0;
+}
+
+.template-movement-leader[data-variant="assess-udemy-quiz"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+.template-movement-leader[data-variant="assess-visual-cards"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F5F5F5;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="assess-avatar-survey"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #E9D5FF;
+  --mvmt-border-medium: #D8B4FE;
+}
+
+.template-movement-leader[data-variant="assess-dark-floating"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1A1A1A;
+  --mvmt-surface-light-muted: #262626;
+  --mvmt-border-light: rgba(167, 139, 250, 0.3);
+  --mvmt-border-medium: rgba(167, 139, 250, 0.5);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #C4B5FD;
+  --mvmt-text-muted: #A78BFA;
+}
+
+.template-movement-leader[data-variant="assess-hubspot-duplicate"] {
+  --mvmt-surface-light: #FFFBFA;
+  --mvmt-surface-light-muted: #FFF5F2;
+  --mvmt-border-light: #FED7D0;
+  --mvmt-border-medium: #FECDC5;
+}
+
+.template-movement-leader[data-variant="assess-long-form"] {
+  --mvmt-surface-light: #FFFBF8;
+  --mvmt-surface-light-muted: #FEF7F0;
+  --mvmt-border-light: #F5D5B8;
+  --mvmt-border-medium: #E8C4A0;
+}
+
+/* --- CHAT VARIANTS --- */
+.template-movement-leader[data-variant="chat-support-minimal"] {
+  --mvmt-surface-light: #F8FAFC;
+  --mvmt-surface-light-muted: #F1F5F9;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="chat-warm-greeting"] {
+  --mvmt-surface-light: #FFFBF5;
+  --mvmt-surface-light-muted: #FEF7ED;
+  --mvmt-border-light: #FED7AA;
+  --mvmt-border-medium: #FDBA74;
+}
+
+.template-movement-leader[data-variant="chat-panel-sidebar"] {
+  --mvmt-surface-light: #F8FAFF;
+  --mvmt-surface-light-muted: #EEF2FF;
+  --mvmt-border-light: #C7D2FE;
+  --mvmt-border-medium: #A5B4FC;
+}
+
+.template-movement-leader[data-variant="chat-widget-popup"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="chat-hero-overlay"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="chat-assistant-friendly"] {
+  --mvmt-surface-light: #ECFDF5;
+  --mvmt-surface-light-muted: #D1FAE5;
+  --mvmt-border-light: #A7F3D0;
+  --mvmt-border-medium: #6EE7B7;
+}
+
+.template-movement-leader[data-variant="chat-dark-sidebar"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1F2937;
+  --mvmt-surface-light-muted: #374151;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #9CA3AF;
+  --mvmt-text-muted: #6B7280;
+}
+
+.template-movement-leader[data-variant="chat-split-templates"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+.template-movement-leader[data-variant="chat-team-channels"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+.template-movement-leader[data-variant="chat-suggestion-chips"] {
+  --mvmt-surface-light: #F0FDF4;
+  --mvmt-surface-light-muted: #DCFCE7;
+  --mvmt-border-light: #BBF7D0;
+  --mvmt-border-medium: #86EFAC;
+}
+
+/* --- ABOUT VARIANTS --- */
+.template-movement-leader[data-variant="about-video-bio"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1F1F1F;
+  --mvmt-surface-light-muted: #2A2A2A;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A3A3A3;
+  --mvmt-text-muted: #737373;
+}
+
+.template-movement-leader[data-variant="about-team-grid"] {
+  --mvmt-surface-light: #F8FAFF;
+  --mvmt-surface-light-muted: #EEF2FF;
+  --mvmt-border-light: #C7D2FE;
+  --mvmt-border-medium: #A5B4FC;
+}
+
+.template-movement-leader[data-variant="about-timeline-story"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1A1A1A;
+  --mvmt-surface-light-muted: #262626;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A3A3A3;
+  --mvmt-text-muted: #737373;
+}
+
+.template-movement-leader[data-variant="about-mission-values"] {
+  --mvmt-surface-light: #F0FDF4;
+  --mvmt-surface-light-muted: #DCFCE7;
+  --mvmt-border-light: #BBF7D0;
+  --mvmt-border-medium: #86EFAC;
+}
+
+.template-movement-leader[data-variant="about-stats-hero"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="about-manifesto-dark"] {
+  /* Dark variant */
+  --mvmt-surface-light: #0F172A;
+  --mvmt-surface-light-muted: #1E293B;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #94A3B8;
+  --mvmt-text-muted: #64748B;
+}
+
+.template-movement-leader[data-variant="about-split-media"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="about-founder-letter"] {
+  --mvmt-surface-light: #FFFBF8;
+  --mvmt-surface-light-muted: #FEF7F0;
+  --mvmt-border-light: #FED7AA;
+  --mvmt-border-medium: #FDBA74;
+}
+
+/* --- AUTH VARIANTS --- */
+.template-movement-leader[data-variant="auth-split-image"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+.template-movement-leader[data-variant="auth-centered-card"] {
+  --mvmt-surface-light: #F8FAFF;
+  --mvmt-surface-light-muted: #EEF2FF;
+  --mvmt-border-light: #C7D2FE;
+  --mvmt-border-medium: #A5B4FC;
+}
+
+.template-movement-leader[data-variant="auth-dark-minimal"] {
+  /* Dark variant */
+  --mvmt-surface-light: #18181B;
+  --mvmt-surface-light-muted: #27272A;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A1A1AA;
+  --mvmt-text-muted: #71717A;
+}
+
+.template-movement-leader[data-variant="auth-social-first"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="auth-branded-hero"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+.template-movement-leader[data-variant="auth-magic-link"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1C1C1E;
+  --mvmt-surface-light-muted: #2C2C2E;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #8E8E93;
+  --mvmt-text-muted: #636366;
+}
+
+.template-movement-leader[data-variant="auth-tabbed-form"] {
+  --mvmt-surface-light: #F0FDF4;
+  --mvmt-surface-light-muted: #DCFCE7;
+  --mvmt-border-light: #BBF7D0;
+  --mvmt-border-medium: #86EFAC;
+}
+
+.template-movement-leader[data-variant="auth-gradient-overlay"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+/* --- CTA VARIANTS --- */
+.template-movement-leader[data-variant="cta-bold-banner"] {
+  --mvmt-surface-light: #FFFBFA;
+  --mvmt-surface-light-muted: #FEF2F2;
+  --mvmt-border-light: #FECACA;
+  --mvmt-border-medium: #FCA5A5;
+}
+
+.template-movement-leader[data-variant="cta-gradient-split"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+.template-movement-leader[data-variant="cta-minimal-centered"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="cta-dark-full-width"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1A1A1A;
+  --mvmt-surface-light-muted: #262626;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A3A3A3;
+  --mvmt-text-muted: #737373;
+}
+
+.template-movement-leader[data-variant="cta-social-proof"] {
+  --mvmt-surface-light: #F8FAFF;
+  --mvmt-surface-light-muted: #EEF2FF;
+  --mvmt-border-light: #C7D2FE;
+  --mvmt-border-medium: #A5B4FC;
+}
+
+/* --- FAQ VARIANTS --- */
+.template-movement-leader[data-variant="faq-dark-hero"] {
+  /* Dark variant */
+  --mvmt-surface-light: #18181B;
+  --mvmt-surface-light-muted: #27272A;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A1A1AA;
+  --mvmt-text-muted: #71717A;
+}
+
+.template-movement-leader[data-variant="faq-minimal-accordion"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="faq-categorized-grid"] {
+  --mvmt-surface-light: #F8FAFF;
+  --mvmt-surface-light-muted: #EEF2FF;
+  --mvmt-border-light: #C7D2FE;
+  --mvmt-border-medium: #A5B4FC;
+}
+
+.template-movement-leader[data-variant="faq-search-hero"] {
+  --mvmt-surface-light: #ECFDF5;
+  --mvmt-surface-light-muted: #D1FAE5;
+  --mvmt-border-light: #A7F3D0;
+  --mvmt-border-medium: #6EE7B7;
+}
+
+.template-movement-leader[data-variant="faq-sidebar-nav"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="faq-tabbed-sections"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+.template-movement-leader[data-variant="faq-support-center"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1A1A2E;
+  --mvmt-surface-light-muted: #252542;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #94A3B8;
+  --mvmt-text-muted: #64748B;
+}
+
+.template-movement-leader[data-variant="faq-gradient-cards"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+/* --- CONTENT VARIANTS --- */
+.template-movement-leader[data-variant="content-accordion-features"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="content-case-studies"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="content-category-blog"] {
+  --mvmt-surface-light: #FFFBFA;
+  --mvmt-surface-light-muted: #FEF2F2;
+  --mvmt-border-light: #FECACA;
+  --mvmt-border-medium: #FCA5A5;
+}
+
+.template-movement-leader[data-variant="content-component-gallery"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="content-dark-browse"] {
+  /* Dark variant */
+  --mvmt-surface-light: #18181B;
+  --mvmt-surface-light-muted: #27272A;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A1A1AA;
+  --mvmt-text-muted: #71717A;
+}
+
+.template-movement-leader[data-variant="content-dark-personalized"] {
+  /* Dark variant */
+  --mvmt-surface-light: #18181B;
+  --mvmt-surface-light-muted: #27272A;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A1A1AA;
+  --mvmt-text-muted: #71717A;
+}
+
+.template-movement-leader[data-variant="content-dark-recordings"] {
+  /* Dark variant */
+  --mvmt-surface-light: #18181B;
+  --mvmt-surface-light-muted: #27272A;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A1A1AA;
+  --mvmt-text-muted: #71717A;
+}
+
+.template-movement-leader[data-variant="content-docs-grid"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="content-feature-preview"] {
+  --mvmt-surface-light: #F8FAFF;
+  --mvmt-surface-light-muted: #EEF2FF;
+  --mvmt-border-light: #C7D2FE;
+  --mvmt-border-medium: #A5B4FC;
+}
+
+.template-movement-leader[data-variant="content-filtered-gallery"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="content-instructor-courses"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+.template-movement-leader[data-variant="content-integration-guides"] {
+  --mvmt-surface-light: #F8FAFF;
+  --mvmt-surface-light-muted: #EFF6FF;
+  --mvmt-border-light: #BFDBFE;
+  --mvmt-border-medium: #93C5FD;
+}
+
+.template-movement-leader[data-variant="content-lesson-list"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="content-product-carousel"] {
+  --mvmt-surface-light: #FFFBFA;
+  --mvmt-surface-light-muted: #FEF2F2;
+  --mvmt-border-light: #FECACA;
+  --mvmt-border-medium: #FCA5A5;
+}
+
+.template-movement-leader[data-variant="content-resource-cards"] {
+  --mvmt-surface-light: #ECFDF5;
+  --mvmt-surface-light-muted: #D1FAE5;
+  --mvmt-border-light: #A7F3D0;
+  --mvmt-border-medium: #6EE7B7;
+}
+
+.template-movement-leader[data-variant="content-resource-hub"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+.template-movement-leader[data-variant="content-template-showcase"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+.template-movement-leader[data-variant="content-toc-illustrated"] {
+  --mvmt-surface-light: #FFFBF5;
+  --mvmt-surface-light-muted: #FEF3E2;
+  --mvmt-border-light: #FED7AA;
+  --mvmt-border-medium: #FDBA74;
+}
+
+.template-movement-leader[data-variant="content-training-resources"] {
+  --mvmt-surface-light: #F8FAFF;
+  --mvmt-surface-light-muted: #EEF2FF;
+  --mvmt-border-light: #C7D2FE;
+  --mvmt-border-medium: #A5B4FC;
+}
+
+.template-movement-leader[data-variant="content-video-tutorials"] {
+  --mvmt-surface-light: #FFFBFA;
+  --mvmt-surface-light-muted: #FEF2F2;
+  --mvmt-border-light: #FECACA;
+  --mvmt-border-medium: #FCA5A5;
+}
+
+/* --- COURSES VARIANTS --- */
+.template-movement-leader[data-variant="courses-video-player"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="courses-chapter-builder"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="courses-lesson-sidebar"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="courses-dark-player"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1A1A1A;
+  --mvmt-surface-light-muted: #262626;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A3A3A3;
+  --mvmt-text-muted: #737373;
+}
+
+.template-movement-leader[data-variant="courses-bootcamp-hero"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1A1A1A;
+  --mvmt-surface-light-muted: #262626;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A3A3A3;
+  --mvmt-text-muted: #737373;
+}
+
+.template-movement-leader[data-variant="courses-grid-catalog"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="courses-certificate"] {
+  --mvmt-surface-light: #FFFEF5;
+  --mvmt-surface-light-muted: #FEFCE8;
+  --mvmt-border-light: #FEF08A;
+  --mvmt-border-medium: #FDE047;
+}
+
+.template-movement-leader[data-variant="courses-quiz-progress"] {
+  --mvmt-surface-light: #F8FAFF;
+  --mvmt-surface-light-muted: #EEF2FF;
+  --mvmt-border-light: #C7D2FE;
+  --mvmt-border-medium: #A5B4FC;
+}
+
+.template-movement-leader[data-variant="courses-masterclass-dark"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1A1A1A;
+  --mvmt-surface-light-muted: #262626;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A3A3A3;
+  --mvmt-text-muted: #737373;
+}
+
+.template-movement-leader[data-variant="courses-learning-paths"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+/* --- ORGS VARIANTS --- */
+.template-movement-leader[data-variant="orgs-enterprise-trust"] {
+  --mvmt-surface-light: #F8FAFC;
+  --mvmt-surface-light-muted: #F1F5F9;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="orgs-logo-grid"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="orgs-case-study-cards"] {
+  --mvmt-surface-light: #F8FAFF;
+  --mvmt-surface-light-muted: #EEF2FF;
+  --mvmt-border-light: #C7D2FE;
+  --mvmt-border-medium: #A5B4FC;
+}
+
+.template-movement-leader[data-variant="orgs-feature-comparison"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="orgs-contact-sales"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+/* --- PRICING VARIANTS --- */
+.template-movement-leader[data-variant="pricing-comparison-table"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="pricing-team-calculator"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="pricing-tier-cards"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1A1A2E;
+  --mvmt-surface-light-muted: #252542;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #94A3B8;
+  --mvmt-text-muted: #64748B;
+}
+
+.template-movement-leader[data-variant="pricing-partner-steps"] {
+  /* Dark variant */
+  --mvmt-surface-light: #18181B;
+  --mvmt-surface-light-muted: #27272A;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A1A1AA;
+  --mvmt-text-muted: #71717A;
+}
+
+.template-movement-leader[data-variant="pricing-business-tiers"] {
+  /* Dark variant */
+  --mvmt-surface-light: #0F172A;
+  --mvmt-surface-light-muted: #1E293B;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #94A3B8;
+  --mvmt-text-muted: #64748B;
+}
+
+.template-movement-leader[data-variant="pricing-membership-grid"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+/* --- READER VARIANTS --- */
+.template-movement-leader[data-variant="reader-docs-sidebar"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="reader-ebook-dark"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1A1A1A;
+  --mvmt-surface-light-muted: #262626;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #F5F5F5;
+  --mvmt-text-secondary: #A3A3A3;
+  --mvmt-text-muted: #737373;
+}
+
+.template-movement-leader[data-variant="reader-article-clean"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="reader-highlight-tools"] {
+  --mvmt-surface-light: #FFFEF5;
+  --mvmt-surface-light-muted: #FEFCE8;
+  --mvmt-border-light: #FEF08A;
+  --mvmt-border-medium: #FDE047;
+}
+
+.template-movement-leader[data-variant="reader-minimal-scroll"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="reader-paginated-book"] {
+  --mvmt-surface-light: #FFFBF8;
+  --mvmt-surface-light-muted: #FEF7F0;
+  --mvmt-border-light: #F5D5B8;
+  --mvmt-border-medium: #E8C4A0;
+}
+
+.template-movement-leader[data-variant="reader-chapter-nav"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="reader-split-reference"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="reader-immersive-dark"] {
+  /* Dark variant */
+  --mvmt-surface-light: #0A0A0A;
+  --mvmt-surface-light-muted: #171717;
+  --mvmt-border-light: rgba(255,255,255,0.08);
+  --mvmt-border-medium: rgba(255,255,255,0.12);
+  --mvmt-text-primary: #E5E5E5;
+  --mvmt-text-secondary: #A3A3A3;
+  --mvmt-text-muted: #737373;
+}
+
+.template-movement-leader[data-variant="reader-newsletter-digest"] {
+  --mvmt-surface-light: #FFFBF8;
+  --mvmt-surface-light-muted: #FEF7F0;
+  --mvmt-border-light: #F5D5B8;
+  --mvmt-border-medium: #E8C4A0;
+}
+
+/* --- LEAD MAGNET VARIANTS --- */
+.template-movement-leader[data-variant="lead-magnet-split-form"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+.template-movement-leader[data-variant="lead-magnet-book-preview"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="lead-magnet-guide-simple"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="lead-magnet-dark-resources"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1A1A2E;
+  --mvmt-surface-light-muted: #252542;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #94A3B8;
+  --mvmt-text-muted: #64748B;
+}
+
+.template-movement-leader[data-variant="lead-magnet-share-invite"] {
+  /* Dark variant */
+  --mvmt-surface-light: #18181B;
+  --mvmt-surface-light-muted: #27272A;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A1A1AA;
+  --mvmt-text-muted: #71717A;
+}
+
+.template-movement-leader[data-variant="lead-magnet-ebook-preview"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="lead-magnet-checklist"] {
+  --mvmt-surface-light: #ECFDF5;
+  --mvmt-surface-light-muted: #D1FAE5;
+  --mvmt-border-light: #A7F3D0;
+  --mvmt-border-medium: #6EE7B7;
+}
+
+.template-movement-leader[data-variant="lead-magnet-webinar"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1E293B;
+  --mvmt-surface-light-muted: #334155;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #94A3B8;
+  --mvmt-text-muted: #64748B;
+}
+
+.template-movement-leader[data-variant="lead-magnet-toolkit"] {
+  --mvmt-surface-light: #FFFBF5;
+  --mvmt-surface-light-muted: #FEF3E2;
+  --mvmt-border-light: #FED7AA;
+  --mvmt-border-medium: #FDBA74;
+}
+
+.template-movement-leader[data-variant="lead-magnet-dark-minimal"] {
+  /* Dark variant */
+  --mvmt-surface-light: #0A0A0A;
+  --mvmt-surface-light-muted: #171717;
+  --mvmt-border-light: rgba(255,255,255,0.08);
+  --mvmt-border-medium: rgba(255,255,255,0.12);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A3A3A3;
+  --mvmt-text-muted: #737373;
+}
+
+/* --- SEARCH VARIANTS --- */
+.template-movement-leader[data-variant="search-ai-assistant"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+.template-movement-leader[data-variant="search-minimal-centered"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="search-resource-hub"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+.template-movement-leader[data-variant="search-faceted-filters"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="search-command-palette"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="search-discovery-grid"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1A1A2E;
+  --mvmt-surface-light-muted: #252542;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #94A3B8;
+  --mvmt-text-muted: #64748B;
+}
+
+.template-movement-leader[data-variant="search-results-list"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="search-dark-spotlight"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1C1C1E;
+  --mvmt-surface-light-muted: #2C2C2E;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #8E8E93;
+  --mvmt-text-muted: #636366;
+}
+
+/* --- CNT (Content) VARIANTS --- */
+.template-movement-leader[data-variant="cnt-accordion-features"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="cnt-case-studies"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="cnt-resource-cards"] {
+  --mvmt-surface-light: #ECFDF5;
+  --mvmt-surface-light-muted: #D1FAE5;
+  --mvmt-border-light: #A7F3D0;
+  --mvmt-border-medium: #6EE7B7;
+}
+
+.template-movement-leader[data-variant="cnt-category-blog"] {
+  --mvmt-surface-light: #FFFBFA;
+  --mvmt-surface-light-muted: #FEF2F2;
+  --mvmt-border-light: #FECACA;
+  --mvmt-border-medium: #FCA5A5;
+}
+
+.template-movement-leader[data-variant="cnt-integration-guides"] {
+  --mvmt-surface-light: #F8FAFF;
+  --mvmt-surface-light-muted: #EFF6FF;
+  --mvmt-border-light: #BFDBFE;
+  --mvmt-border-medium: #93C5FD;
+}
+
+.template-movement-leader[data-variant="cnt-component-gallery"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="cnt-dark-browse"] {
+  /* Dark variant */
+  --mvmt-surface-light: #18181B;
+  --mvmt-surface-light-muted: #27272A;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A1A1AA;
+  --mvmt-text-muted: #71717A;
+}
+
+.template-movement-leader[data-variant="cnt-dark-personalized"] {
+  /* Dark variant */
+  --mvmt-surface-light: #18181B;
+  --mvmt-surface-light-muted: #27272A;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A1A1AA;
+  --mvmt-text-muted: #71717A;
+}
+
+.template-movement-leader[data-variant="cnt-dark-recordings"] {
+  /* Dark variant */
+  --mvmt-surface-light: #18181B;
+  --mvmt-surface-light-muted: #27272A;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A1A1AA;
+  --mvmt-text-muted: #71717A;
+}
+
+.template-movement-leader[data-variant="cnt-feature-preview"] {
+  --mvmt-surface-light: #F8FAFF;
+  --mvmt-surface-light-muted: #EEF2FF;
+  --mvmt-border-light: #C7D2FE;
+  --mvmt-border-medium: #A5B4FC;
+}
+
+.template-movement-leader[data-variant="cnt-video-tutorials"] {
+  --mvmt-surface-light: #FFFBFA;
+  --mvmt-surface-light-muted: #FEF2F2;
+  --mvmt-border-light: #FECACA;
+  --mvmt-border-medium: #FCA5A5;
+}
+
+.template-movement-leader[data-variant="cnt-toc-illustrated"] {
+  --mvmt-surface-light: #FFFBF5;
+  --mvmt-surface-light-muted: #FEF3E2;
+  --mvmt-border-light: #FED7AA;
+  --mvmt-border-medium: #FDBA74;
+}
+
+.template-movement-leader[data-variant="cnt-template-showcase"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+.template-movement-leader[data-variant="cnt-resource-hub"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+.template-movement-leader[data-variant="cnt-docs-grid"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="cnt-training-resources"] {
+  --mvmt-surface-light: #F8FAFF;
+  --mvmt-surface-light-muted: #EEF2FF;
+  --mvmt-border-light: #C7D2FE;
+  --mvmt-border-medium: #A5B4FC;
+}
+
+.template-movement-leader[data-variant="cnt-product-carousel"] {
+  --mvmt-surface-light: #FFFBFA;
+  --mvmt-surface-light-muted: #FEF2F2;
+  --mvmt-border-light: #FECACA;
+  --mvmt-border-medium: #FCA5A5;
+}
+
+.template-movement-leader[data-variant="cnt-instructor-courses"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+.template-movement-leader[data-variant="cnt-filtered-gallery"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="cnt-lesson-list"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+/* --- BOOKS VARIANTS --- */
+.template-movement-leader[data-variant="books-product-showcase"] {
+  --mvmt-surface-light: #FFFBF8;
+  --mvmt-surface-light-muted: #FEF7F0;
+  --mvmt-border-light: #F5D5B8;
+  --mvmt-border-medium: #E8C4A0;
+}
+
+.template-movement-leader[data-variant="books-spec-cards"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="books-filtered-grid"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="books-detail-cart"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1A1A1A;
+  --mvmt-surface-light-muted: #262626;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A3A3A3;
+  --mvmt-text-muted: #737373;
+}
+
+.template-movement-leader[data-variant="books-minimal-grid"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="books-related-products"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="books-detail-clean"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="books-detail-split"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="books-detail-modal"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+/* --- TESTIMONIALS VARIANTS --- */
+.template-movement-leader[data-variant="testimonials-quote-hero"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1A1A1A;
+  --mvmt-surface-light-muted: #262626;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A3A3A3;
+  --mvmt-text-muted: #737373;
+}
+
+.template-movement-leader[data-variant="testimonials-split-tweets"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="testimonials-masonry-grid"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+.template-movement-leader[data-variant="testimonials-carousel-hero"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1A1A2E;
+  --mvmt-surface-light-muted: #252542;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #94A3B8;
+  --mvmt-text-muted: #64748B;
+}
+
+.template-movement-leader[data-variant="testimonials-elegant-serif"] {
+  --mvmt-surface-light: #FFFBF8;
+  --mvmt-surface-light-muted: #FEF7F0;
+  --mvmt-border-light: #F5D5B8;
+  --mvmt-border-medium: #E8C4A0;
+}
+
+.template-movement-leader[data-variant="testimonials-dark-blockquote"] {
+  /* Dark variant */
+  --mvmt-surface-light: #0F172A;
+  --mvmt-surface-light-muted: #1E293B;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #94A3B8;
+  --mvmt-text-muted: #64748B;
+}
+
+.template-movement-leader[data-variant="testimonials-geometric-carousel"] {
+  /* Dark variant */
+  --mvmt-surface-light: #18181B;
+  --mvmt-surface-light-muted: #27272A;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A1A1AA;
+  --mvmt-text-muted: #71717A;
+}
+
+.template-movement-leader[data-variant="testimonials-split-cta"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="testimonials-dramatic-dark"] {
+  /* Dark variant */
+  --mvmt-surface-light: #0A0A0A;
+  --mvmt-surface-light-muted: #171717;
+  --mvmt-border-light: rgba(255,255,255,0.08);
+  --mvmt-border-medium: rgba(255,255,255,0.12);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A3A3A3;
+  --mvmt-text-muted: #737373;
+}
+
+.template-movement-leader[data-variant="testimonials-image-overlay"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="testimonials-grid-cards"] {
+  --mvmt-surface-light: #F8FAFF;
+  --mvmt-surface-light-muted: #EEF2FF;
+  --mvmt-border-light: #C7D2FE;
+  --mvmt-border-medium: #A5B4FC;
+}
+
+.template-movement-leader[data-variant="testimonials-instructor-dark"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1A1A1A;
+  --mvmt-surface-light-muted: #262626;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A3A3A3;
+  --mvmt-text-muted: #737373;
+}
+
+.template-movement-leader[data-variant="testimonials-trust-logos"] {
+  /* Dark variant */
+  --mvmt-surface-light: #0F172A;
+  --mvmt-surface-light-muted: #1E293B;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #94A3B8;
+  --mvmt-text-muted: #64748B;
+}
+
+/* --- SPECIAL VARIANTS --- */
+.template-movement-leader[data-variant="special-network-map"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="special-timeline"] {
+  --mvmt-surface-light: #FDFCFF;
+  --mvmt-surface-light-muted: #F5F3FF;
+  --mvmt-border-light: #DDD6FE;
+  --mvmt-border-medium: #C4B5FD;
+}
+
+.template-movement-leader[data-variant="special-check-inbox"] {
+  --mvmt-surface-light: #ECFDF5;
+  --mvmt-surface-light-muted: #D1FAE5;
+  --mvmt-border-light: #A7F3D0;
+  --mvmt-border-medium: #6EE7B7;
+}
+
+.template-movement-leader[data-variant="special-editor"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #FAFAFA;
+  --mvmt-border-light: #E5E5E5;
+  --mvmt-border-medium: #D4D4D4;
+}
+
+.template-movement-leader[data-variant="special-founder-story"] {
+  /* Dark variant */
+  --mvmt-surface-light: #1A1A1A;
+  --mvmt-surface-light-muted: #262626;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #A3A3A3;
+  --mvmt-text-muted: #737373;
+}
+
+.template-movement-leader[data-variant="special-course-transcript"] {
+  --mvmt-surface-light: #FFFFFF;
+  --mvmt-surface-light-muted: #F8FAFC;
+  --mvmt-border-light: #E2E8F0;
+  --mvmt-border-medium: #CBD5E1;
+}
+
+.template-movement-leader[data-variant="special-youre-in"] {
+  /* Dark variant */
+  --mvmt-surface-light: #0F172A;
+  --mvmt-surface-light-muted: #1E293B;
+  --mvmt-border-light: rgba(255,255,255,0.1);
+  --mvmt-border-medium: rgba(255,255,255,0.15);
+  --mvmt-text-primary: #FFFFFF;
+  --mvmt-text-secondary: #94A3B8;
+  --mvmt-text-muted: #64748B;
+}
+
+/* ============================================================
+   FIX 3: Decorative Card Color Overrides
+
+   Per-variant overrides for --mvmt-card-decorative-{1-6}
+   These colors are used for card headers, avatar placeholders,
+   and category badges that should match the variant's palette.
+   ============================================================ */
+
+/* Purple/Violet variants - purple-tinted decorative colors */
+.template-movement-leader[data-variant="colorful-headline"],
+.template-movement-leader[data-variant="template-preview"],
+.template-movement-leader[data-variant="gradient-illustration"],
+.template-movement-leader[data-variant="auth-split-image"],
+.template-movement-leader[data-variant="auth-branded-hero"],
+.template-movement-leader[data-variant="auth-gradient-overlay"],
+.template-movement-leader[data-variant="cta-gradient-split"],
+.template-movement-leader[data-variant="faq-tabbed-sections"],
+.template-movement-leader[data-variant="faq-gradient-cards"],
+.template-movement-leader[data-variant="content-instructor-courses"],
+.template-movement-leader[data-variant="content-resource-hub"],
+.template-movement-leader[data-variant="content-template-showcase"],
+.template-movement-leader[data-variant="courses-learning-paths"],
+.template-movement-leader[data-variant="orgs-contact-sales"],
+.template-movement-leader[data-variant="pricing-membership-grid"],
+.template-movement-leader[data-variant="lead-magnet-split-form"],
+.template-movement-leader[data-variant="search-ai-assistant"],
+.template-movement-leader[data-variant="search-resource-hub"],
+.template-movement-leader[data-variant="cnt-instructor-courses"],
+.template-movement-leader[data-variant="cnt-resource-hub"],
+.template-movement-leader[data-variant="cnt-template-showcase"],
+.template-movement-leader[data-variant="testimonials-masonry-grid"],
+.template-movement-leader[data-variant="special-timeline"],
+.template-movement-leader[data-variant="chat-split-templates"],
+.template-movement-leader[data-variant="chat-team-channels"] {
+  --mvmt-card-decorative-1: #E9D5FF; /* light purple */
+  --mvmt-card-decorative-2: #DDD6FE; /* lavender */
+  --mvmt-card-decorative-3: #F5D0FE; /* pink-purple */
+  --mvmt-card-decorative-4: #C4B5FD; /* muted purple */
+  --mvmt-card-decorative-5: #FDE68A; /* warm yellow */
+  --mvmt-card-decorative-6: #FECACA; /* soft red */
+}
+
+/* Blue variants - blue-tinted decorative colors */
+.template-movement-leader[data-variant="chat-widget"],
+.template-movement-leader[data-variant="circular-feature"],
+.template-movement-leader[data-variant="product-showcase"],
+.template-movement-leader[data-variant="split-tabs"],
+.template-movement-leader[data-variant="how-it-works"],
+.template-movement-leader[data-variant="auth-centered-card"],
+.template-movement-leader[data-variant="cta-social-proof"],
+.template-movement-leader[data-variant="faq-categorized-grid"],
+.template-movement-leader[data-variant="content-feature-preview"],
+.template-movement-leader[data-variant="content-integration-guides"],
+.template-movement-leader[data-variant="content-training-resources"],
+.template-movement-leader[data-variant="courses-quiz-progress"],
+.template-movement-leader[data-variant="orgs-case-study-cards"],
+.template-movement-leader[data-variant="about-team-grid"],
+.template-movement-leader[data-variant="cnt-feature-preview"],
+.template-movement-leader[data-variant="cnt-integration-guides"],
+.template-movement-leader[data-variant="cnt-training-resources"],
+.template-movement-leader[data-variant="testimonials-grid-cards"],
+.template-movement-leader[data-variant="chat-panel-sidebar"] {
+  --mvmt-card-decorative-1: #BFDBFE; /* sky blue */
+  --mvmt-card-decorative-2: #C7D2FE; /* indigo-blue */
+  --mvmt-card-decorative-3: #A5B4FC; /* deeper blue */
+  --mvmt-card-decorative-4: #BAE6FD; /* light cyan */
+  --mvmt-card-decorative-5: #FEF08A; /* yellow */
+  --mvmt-card-decorative-6: #FECACA; /* soft red */
+}
+
+/* Green/Teal variants - green-tinted decorative colors */
+.template-movement-leader[data-variant="faq-search-hero"],
+.template-movement-leader[data-variant="auth-tabbed-form"],
+.template-movement-leader[data-variant="about-mission-values"],
+.template-movement-leader[data-variant="content-resource-cards"],
+.template-movement-leader[data-variant="lead-magnet-checklist"],
+.template-movement-leader[data-variant="chat-assistant-friendly"],
+.template-movement-leader[data-variant="chat-suggestion-chips"],
+.template-movement-leader[data-variant="cnt-resource-cards"],
+.template-movement-leader[data-variant="special-check-inbox"],
+.template-movement-leader[data-variant="search-ai-conversational"] {
+  --mvmt-card-decorative-1: #A7F3D0; /* mint */
+  --mvmt-card-decorative-2: #6EE7B7; /* emerald */
+  --mvmt-card-decorative-3: #99F6E4; /* teal */
+  --mvmt-card-decorative-4: #BBF7D0; /* light green */
+  --mvmt-card-decorative-5: #FEF08A; /* yellow */
+  --mvmt-card-decorative-6: #FECDD3; /* rose */
+}
+
+/* Orange/Red/Warm variants - warm-tinted decorative colors */
+.template-movement-leader[data-variant="centered-product"],
+.template-movement-leader[data-variant="centered-serif"],
+.template-movement-leader[data-variant="floating-card"],
+.template-movement-leader[data-variant="cta-bold-banner"],
+.template-movement-leader[data-variant="about-founder-letter"],
+.template-movement-leader[data-variant="content-category-blog"],
+.template-movement-leader[data-variant="content-product-carousel"],
+.template-movement-leader[data-variant="content-video-tutorials"],
+.template-movement-leader[data-variant="content-toc-illustrated"],
+.template-movement-leader[data-variant="chat-warm-greeting"],
+.template-movement-leader[data-variant="assess-nps-scale"],
+.template-movement-leader[data-variant="assess-section-intro"],
+.template-movement-leader[data-variant="assess-long-form"],
+.template-movement-leader[data-variant="assess-progress-quiz"],
+.template-movement-leader[data-variant="assess-hubspot-duplicate"],
+.template-movement-leader[data-variant="lead-magnet-toolkit"],
+.template-movement-leader[data-variant="reader-paginated-book"],
+.template-movement-leader[data-variant="reader-newsletter-digest"],
+.template-movement-leader[data-variant="books-product-showcase"],
+.template-movement-leader[data-variant="testimonials-elegant-serif"],
+.template-movement-leader[data-variant="cnt-category-blog"],
+.template-movement-leader[data-variant="cnt-product-carousel"],
+.template-movement-leader[data-variant="cnt-video-tutorials"],
+.template-movement-leader[data-variant="cnt-toc-illustrated"] {
+  --mvmt-card-decorative-1: #FED7AA; /* peach */
+  --mvmt-card-decorative-2: #FDBA74; /* orange */
+  --mvmt-card-decorative-3: #FECACA; /* coral */
+  --mvmt-card-decorative-4: #FEF3C7; /* cream */
+  --mvmt-card-decorative-5: #FDE68A; /* golden */
+  --mvmt-card-decorative-6: #FECDD3; /* rose */
+}
+
+/* Yellow/Gold variants - golden decorative colors */
+.template-movement-leader[data-variant="full-bleed"],
+.template-movement-leader[data-variant="courses-certificate"],
+.template-movement-leader[data-variant="reader-highlight-tools"] {
+  --mvmt-card-decorative-1: #FEF08A; /* bright yellow */
+  --mvmt-card-decorative-2: #FDE68A; /* gold */
+  --mvmt-card-decorative-3: #FED7AA; /* peach */
+  --mvmt-card-decorative-4: #FEF3C7; /* cream */
+  --mvmt-card-decorative-5: #A7F3D0; /* mint contrast */
+  --mvmt-card-decorative-6: #FECACA; /* soft red */
+}
+
+/* Neutral/Minimal variants - soft gray decorative colors */
+.template-movement-leader[data-variant="clean-minimal"],
+.template-movement-leader[data-variant="clean-minimal-alt"],
+.template-movement-leader[data-variant="cta-minimal-centered"],
+.template-movement-leader[data-variant="faq-minimal-accordion"],
+.template-movement-leader[data-variant="content-accordion-features"],
+.template-movement-leader[data-variant="content-component-gallery"],
+.template-movement-leader[data-variant="content-docs-grid"],
+.template-movement-leader[data-variant="reader-docs-sidebar"],
+.template-movement-leader[data-variant="reader-article-clean"],
+.template-movement-leader[data-variant="reader-minimal-scroll"],
+.template-movement-leader[data-variant="search-minimal-centered"],
+.template-movement-leader[data-variant="search-command-palette"],
+.template-movement-leader[data-variant="books-minimal-grid"],
+.template-movement-leader[data-variant="books-detail-clean"],
+.template-movement-leader[data-variant="books-detail-modal"],
+.template-movement-leader[data-variant="orgs-logo-grid"],
+.template-movement-leader[data-variant="assess-binary-choice"],
+.template-movement-leader[data-variant="assess-visual-cards"],
+.template-movement-leader[data-variant="special-editor"],
+.template-movement-leader[data-variant="cnt-accordion-features"],
+.template-movement-leader[data-variant="cnt-component-gallery"],
+.template-movement-leader[data-variant="cnt-docs-grid"] {
+  --mvmt-card-decorative-1: #F3F4F6; /* gray-100 */
+  --mvmt-card-decorative-2: #E5E7EB; /* gray-200 */
+  --mvmt-card-decorative-3: #D1D5DB; /* gray-300 */
+  --mvmt-card-decorative-4: #F9FAFB; /* gray-50 */
+  --mvmt-card-decorative-5: #F3F4F6; /* gray-100 */
+  --mvmt-card-decorative-6: #E5E7EB; /* gray-200 */
+}
+
+/* Dark variants - muted/dark decorative colors */
+.template-movement-leader[data-variant="agency-gradient"],
+.template-movement-leader[data-variant="dark-features"],
+.template-movement-leader[data-variant="image-grid"],
+.template-movement-leader[data-variant="pricing-card"],
+.template-movement-leader[data-variant="product-showcase-alt"],
+.template-movement-leader[data-variant="art-dark-case-study"],
+.template-movement-leader[data-variant="art-bold-editorial"],
+.template-movement-leader[data-variant="assess-dark-intro"],
+.template-movement-leader[data-variant="assess-mood-gradient"],
+.template-movement-leader[data-variant="assess-dark-floating"],
+.template-movement-leader[data-variant="chat-dark-sidebar"],
+.template-movement-leader[data-variant="about-video-bio"],
+.template-movement-leader[data-variant="about-timeline-story"],
+.template-movement-leader[data-variant="about-manifesto-dark"],
+.template-movement-leader[data-variant="auth-dark-minimal"],
+.template-movement-leader[data-variant="auth-magic-link"],
+.template-movement-leader[data-variant="cta-dark-full-width"],
+.template-movement-leader[data-variant="faq-dark-hero"],
+.template-movement-leader[data-variant="faq-support-center"],
+.template-movement-leader[data-variant="content-dark-browse"],
+.template-movement-leader[data-variant="content-dark-personalized"],
+.template-movement-leader[data-variant="content-dark-recordings"],
+.template-movement-leader[data-variant="courses-dark-player"],
+.template-movement-leader[data-variant="courses-bootcamp-hero"],
+.template-movement-leader[data-variant="courses-masterclass-dark"],
+.template-movement-leader[data-variant="pricing-tier-cards"],
+.template-movement-leader[data-variant="pricing-partner-steps"],
+.template-movement-leader[data-variant="pricing-business-tiers"],
+.template-movement-leader[data-variant="reader-ebook-dark"],
+.template-movement-leader[data-variant="reader-immersive-dark"],
+.template-movement-leader[data-variant="lead-magnet-dark-resources"],
+.template-movement-leader[data-variant="lead-magnet-share-invite"],
+.template-movement-leader[data-variant="lead-magnet-webinar"],
+.template-movement-leader[data-variant="lead-magnet-dark-minimal"],
+.template-movement-leader[data-variant="search-discovery-grid"],
+.template-movement-leader[data-variant="search-dark-spotlight"],
+.template-movement-leader[data-variant="books-detail-cart"],
+.template-movement-leader[data-variant="testimonials-quote-hero"],
+.template-movement-leader[data-variant="testimonials-carousel-hero"],
+.template-movement-leader[data-variant="testimonials-dark-blockquote"],
+.template-movement-leader[data-variant="testimonials-geometric-carousel"],
+.template-movement-leader[data-variant="testimonials-dramatic-dark"],
+.template-movement-leader[data-variant="testimonials-instructor-dark"],
+.template-movement-leader[data-variant="testimonials-trust-logos"],
+.template-movement-leader[data-variant="special-founder-story"],
+.template-movement-leader[data-variant="special-youre-in"],
+.template-movement-leader[data-variant="cnt-dark-browse"],
+.template-movement-leader[data-variant="cnt-dark-personalized"],
+.template-movement-leader[data-variant="cnt-dark-recordings"] {
+  --mvmt-card-decorative-1: rgba(147, 197, 253, 0.2); /* blue/20 */
+  --mvmt-card-decorative-2: rgba(165, 180, 252, 0.2); /* indigo/20 */
+  --mvmt-card-decorative-3: rgba(249, 168, 212, 0.2); /* pink/20 */
+  --mvmt-card-decorative-4: rgba(110, 231, 183, 0.2); /* green/20 */
+  --mvmt-card-decorative-5: rgba(253, 224, 71, 0.2); /* yellow/20 */
+  --mvmt-card-decorative-6: rgba(252, 165, 165, 0.2); /* red/20 */
 }

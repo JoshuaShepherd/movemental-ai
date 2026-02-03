@@ -12,14 +12,14 @@ interface ContentTocIllustratedProps {
  */
 export function ContentTocIllustrated({ className }: ContentTocIllustratedProps) {
   const chapters = [
-    { num: 1, title: "The Missional Impulse", description: "Understanding the DNA that drives every lasting movement — and why programs alone won't cut it.", color: "#EEF2FF" },
-    { num: 2, title: "Incarnational Presence", description: "What it means to move into a neighborhood, not just minister to it. Brad Brisco's foundational framework.", color: "#F0FDF4" },
-    { num: 3, title: "Forming Community", description: "From first gathering to sustained rhythm — the practical steps of launching a missional community.", color: "#FFF7ED" },
-    { num: 4, title: "The Apprenticeship Model", description: "How Jesus developed leaders and what that means for your multiplication pipeline today.", color: "#FDF2F8" },
-    { num: 5, title: "Coaching for Multiplication", description: "The hero-maker framework: asking better questions, empowering others, and measuring what matters.", color: "#F5F3FF" },
-    { num: 6, title: "Sending Well", description: "The art of releasing leaders without losing connection. How healthy movements celebrate sending.", color: "#ECFDF5" },
-    { num: 7, title: "Metrics That Matter", description: "Moving beyond attendance counts to track the health signals of a genuine movement.", color: "#FEF3C7" },
-    { num: 8, title: "Movement Ecosystems", description: "How networks of communities become movements — and the infrastructure that sustains them.", color: "#FCE7F3" },
+    { num: 1, title: "The Missional Impulse", description: "Understanding the DNA that drives every lasting movement — and why programs alone won't cut it.", colorVar: "--mvmt-card-decorative-2" },
+    { num: 2, title: "Incarnational Presence", description: "What it means to move into a neighborhood, not just minister to it. Brad Brisco's foundational framework.", colorVar: "--mvmt-card-decorative-4" },
+    { num: 3, title: "Forming Community", description: "From first gathering to sustained rhythm — the practical steps of launching a missional community.", colorVar: "--mvmt-card-decorative-5" },
+    { num: 4, title: "The Apprenticeship Model", description: "How Jesus developed leaders and what that means for your multiplication pipeline today.", colorVar: "--mvmt-card-decorative-3" },
+    { num: 5, title: "Coaching for Multiplication", description: "The hero-maker framework: asking better questions, empowering others, and measuring what matters.", colorVar: "--mvmt-card-decorative-2" },
+    { num: 6, title: "Sending Well", description: "The art of releasing leaders without losing connection. How healthy movements celebrate sending.", colorVar: "--mvmt-card-decorative-4" },
+    { num: 7, title: "Metrics That Matter", description: "Moving beyond attendance counts to track the health signals of a genuine movement.", colorVar: "--mvmt-card-decorative-5" },
+    { num: 8, title: "Movement Ecosystems", description: "How networks of communities become movements — and the infrastructure that sustains them.", colorVar: "--mvmt-card-decorative-3" },
   ];
 
   return (
@@ -40,7 +40,7 @@ export function ContentTocIllustrated({ className }: ContentTocIllustratedProps)
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {chapters.map((ch) => (
             <div key={ch.num} className="rounded-xl overflow-hidden cursor-pointer group bg-mvmt-surface-light border border-mvmt-border-light">
-              <div className="h-32 w-full flex items-center justify-center" style={{ backgroundColor: ch.color }}>
+              <div className="h-32 w-full flex items-center justify-center" style={{ backgroundColor: `var(${ch.colorVar})` }}>
                 <span className="text-4xl font-bold text-mvmt-accent" style={{ opacity: 0.3 }}>{String(ch.num).padStart(2, "0")}</span>
               </div>
               <div className="p-5">

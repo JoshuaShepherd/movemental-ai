@@ -16,15 +16,15 @@ export function ContentFilteredGallery({ className }: ContentFilteredGalleryProp
   const types = ["All", "Community", "Coaching", "Content", "Analytics"];
 
   const items = [
-    { name: "Missional Community Starter", type: "Community", description: "Launch a new community with proven rhythms and structures.", color: "#F1F5F9" },
-    { name: "Coaching Session Template", type: "Coaching", description: "Hero-maker framework with question banks and note fields.", color: "#EEF2FF" },
-    { name: "Discipleship Pathway Builder", type: "Content", description: "Create multi-week formation journeys with assessments.", color: "#F0FDF4" },
-    { name: "Network Health Dashboard", type: "Analytics", description: "At-a-glance metrics for your entire movement.", color: "#FFF7ED" },
-    { name: "Small Group Guide", type: "Community", description: "Weekly discussion guide with scripture and application.", color: "#FDF2F8" },
-    { name: "Leader Check-in Form", type: "Coaching", description: "Quick pulse survey for leaders between coaching sessions.", color: "#F5F3FF" },
-    { name: "Video Course Template", type: "Content", description: "Multi-module course layout with progress tracking.", color: "#ECFDF5" },
-    { name: "Multiplication Report", type: "Analytics", description: "Track sending metrics and reproduction ratios.", color: "#FEF3C7" },
-    { name: "Prayer Walk Guide", type: "Community", description: "Structured neighborhood prayer exercise for groups.", color: "#FCE7F3" },
+    { name: "Missional Community Starter", type: "Community", description: "Launch a new community with proven rhythms and structures.", colorVar: "--mvmt-card-decorative-1" },
+    { name: "Coaching Session Template", type: "Coaching", description: "Hero-maker framework with question banks and note fields.", colorVar: "--mvmt-card-decorative-2" },
+    { name: "Discipleship Pathway Builder", type: "Content", description: "Create multi-week formation journeys with assessments.", colorVar: "--mvmt-card-decorative-4" },
+    { name: "Network Health Dashboard", type: "Analytics", description: "At-a-glance metrics for your entire movement.", colorVar: "--mvmt-card-decorative-5" },
+    { name: "Small Group Guide", type: "Community", description: "Weekly discussion guide with scripture and application.", colorVar: "--mvmt-card-decorative-3" },
+    { name: "Leader Check-in Form", type: "Coaching", description: "Quick pulse survey for leaders between coaching sessions.", colorVar: "--mvmt-card-decorative-2" },
+    { name: "Video Course Template", type: "Content", description: "Multi-module course layout with progress tracking.", colorVar: "--mvmt-card-decorative-4" },
+    { name: "Multiplication Report", type: "Analytics", description: "Track sending metrics and reproduction ratios.", colorVar: "--mvmt-card-decorative-5" },
+    { name: "Prayer Walk Guide", type: "Community", description: "Structured neighborhood prayer exercise for groups.", colorVar: "--mvmt-card-decorative-3" },
   ];
 
   const filtered = activeType === "All" ? items : items.filter((item) => item.type === activeType);
@@ -67,7 +67,7 @@ export function ContentFilteredGallery({ className }: ContentFilteredGalleryProp
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {filtered.map((item) => (
               <div key={item.name} className="rounded-lg overflow-hidden cursor-pointer border border-mvmt-border-light">
-                <div className="h-36 w-full" style={{ backgroundColor: item.color }} />
+                <div className="h-36 w-full" style={{ backgroundColor: `var(${item.colorVar})` }} />
                 <div className="p-4">
                   <span className="text-xs font-medium uppercase tracking-wider text-mvmt-accent">{item.type}</span>
                   <h3 className="text-sm font-bold mt-1 mb-1 text-mvmt-text-primary">{item.name}</h3>

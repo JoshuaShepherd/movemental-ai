@@ -16,12 +16,12 @@ export function ContentCategoryBlog({ className }: ContentCategoryBlogProps) {
   const categories = ["All", "Formation", "Strategy", "Stories", "Tools"];
 
   const articles = [
-    { category: "Formation", title: "Why Every Movement Needs a Rule of Life", excerpt: "Ancient monastic wisdom meets modern missional practice in this guide to communal spiritual formation.", author: "Brad Brisco", date: "Apr 18, 2024", color: "#E0E7FF" },
-    { category: "Strategy", title: "Mapping Your Multiplication Pathway", excerpt: "A practical framework for setting 1-year, 3-year, and 10-year multiplication goals for your network.", author: "Dave Ferguson", date: "Apr 10, 2024", color: "#DBEAFE" },
-    { category: "Stories", title: "From Garage to Global: One Community's Journey", excerpt: "How a small missional community in Denver became a network of 47 communities across three states.", author: "Kara Powell", date: "Mar 29, 2024", color: "#FCE7F3" },
-    { category: "Tools", title: "5 Coaching Questions That Unlock Growth", excerpt: "The questions great movement coaches ask — and the ones they avoid — during one-on-one sessions.", author: "Alan Hirsch", date: "Mar 15, 2024", color: "#E0F2FE" },
-    { category: "Formation", title: "Sabbath as Resistance for Activist Leaders", excerpt: "Why the most productive thing a movement leader can do is stop producing.", author: "Rich Villodas", date: "Mar 1, 2024", color: "#F0FDF4" },
-    { category: "Strategy", title: "The Economics of Generosity-Funded Movements", excerpt: "How movements that reject the scarcity mindset end up with more resources, not fewer.", author: "Todd Wilson", date: "Feb 20, 2024", color: "#FFF7ED" },
+    { category: "Formation", title: "Why Every Movement Needs a Rule of Life", excerpt: "Ancient monastic wisdom meets modern missional practice in this guide to communal spiritual formation.", author: "Brad Brisco", date: "Apr 18, 2024", colorVar: "--mvmt-card-decorative-2" },
+    { category: "Strategy", title: "Mapping Your Multiplication Pathway", excerpt: "A practical framework for setting 1-year, 3-year, and 10-year multiplication goals for your network.", author: "Dave Ferguson", date: "Apr 10, 2024", colorVar: "--mvmt-card-decorative-1" },
+    { category: "Stories", title: "From Garage to Global: One Community's Journey", excerpt: "How a small missional community in Denver became a network of 47 communities across three states.", author: "Kara Powell", date: "Mar 29, 2024", colorVar: "--mvmt-card-decorative-3" },
+    { category: "Tools", title: "5 Coaching Questions That Unlock Growth", excerpt: "The questions great movement coaches ask — and the ones they avoid — during one-on-one sessions.", author: "Alan Hirsch", date: "Mar 15, 2024", colorVar: "--mvmt-card-decorative-4" },
+    { category: "Formation", title: "Sabbath as Resistance for Activist Leaders", excerpt: "Why the most productive thing a movement leader can do is stop producing.", author: "Rich Villodas", date: "Mar 1, 2024", colorVar: "--mvmt-card-decorative-5" },
+    { category: "Strategy", title: "The Economics of Generosity-Funded Movements", excerpt: "How movements that reject the scarcity mindset end up with more resources, not fewer.", author: "Todd Wilson", date: "Feb 20, 2024", colorVar: "--mvmt-card-decorative-6" },
   ];
 
   const filtered = activeCategory === "All" ? articles : articles.filter((a) => a.category === activeCategory);
@@ -56,14 +56,14 @@ export function ContentCategoryBlog({ className }: ContentCategoryBlogProps) {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filtered.map((article) => (
             <div key={article.title} className="group cursor-pointer">
-              <div className="h-48 w-full rounded-xl mb-4" style={{ backgroundColor: article.color }} />
+              <div className="h-48 w-full rounded-xl mb-4" style={{ backgroundColor: `var(${article.colorVar})` }} />
               <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full mb-3 text-mvmt-accent bg-mvmt-surface-light-muted">
                 {article.category}
               </span>
               <h3 className="text-xl font-bold mb-2 leading-snug text-mvmt-text-primary">{article.title}</h3>
               <p className="text-sm leading-relaxed mb-4 text-mvmt-text-secondary">{article.excerpt}</p>
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full flex-shrink-0" style={{ backgroundColor: article.color }} />
+                <div className="w-8 h-8 rounded-full flex-shrink-0" style={{ backgroundColor: `var(${article.colorVar})` }} />
                 <div>
                   <p className="text-sm font-medium text-mvmt-text-primary">{article.author}</p>
                   <p className="text-xs text-mvmt-text-muted">{article.date}</p>

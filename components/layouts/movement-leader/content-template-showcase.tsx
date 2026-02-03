@@ -12,14 +12,14 @@ interface ContentTemplateShowcaseProps {
  */
 export function ContentTemplateShowcase({ className }: ContentTemplateShowcaseProps) {
   const templates = [
-    { name: "Movement Catalyst Kit", category: "Starter", color: "#EEF2FF" },
-    { name: "Discipleship Pathway", category: "Formation", color: "#F0FDF4" },
-    { name: "Church Plant Dashboard", category: "Analytics", color: "#FFF7ED" },
-    { name: "Coaching Session Tracker", category: "Coaching", color: "#FDF2F8" },
-    { name: "Community Health Report", category: "Analytics", color: "#F5F3FF" },
-    { name: "Leader Pipeline Board", category: "Leadership", color: "#ECFDF5" },
-    { name: "Network Overview", category: "Starter", color: "#FEF3C7" },
-    { name: "Multiplication Scorecard", category: "Analytics", color: "#FCE7F3" },
+    { name: "Movement Catalyst Kit", category: "Starter", colorVar: "--mvmt-card-decorative-2" },
+    { name: "Discipleship Pathway", category: "Formation", colorVar: "--mvmt-card-decorative-4" },
+    { name: "Church Plant Dashboard", category: "Analytics", colorVar: "--mvmt-card-decorative-5" },
+    { name: "Coaching Session Tracker", category: "Coaching", colorVar: "--mvmt-card-decorative-3" },
+    { name: "Community Health Report", category: "Analytics", colorVar: "--mvmt-card-decorative-2" },
+    { name: "Leader Pipeline Board", category: "Leadership", colorVar: "--mvmt-card-decorative-4" },
+    { name: "Network Overview", category: "Starter", colorVar: "--mvmt-card-decorative-5" },
+    { name: "Multiplication Scorecard", category: "Analytics", colorVar: "--mvmt-card-decorative-3" },
   ];
 
   return (
@@ -37,7 +37,7 @@ export function ContentTemplateShowcase({ className }: ContentTemplateShowcasePr
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {templates.map((tpl) => (
             <div key={tpl.name} className="rounded-xl overflow-hidden cursor-pointer group bg-mvmt-surface-light border border-mvmt-border-light">
-              <div className="h-44 w-full" style={{ backgroundColor: tpl.color }} />
+              <div className="h-44 w-full" style={{ backgroundColor: `var(${tpl.colorVar})` }} />
               <div className="p-4">
                 <h3 className="text-sm font-bold mb-1 text-mvmt-text-primary">{tpl.name}</h3>
                 <div className="flex items-center justify-between">

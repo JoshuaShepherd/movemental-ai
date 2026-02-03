@@ -12,9 +12,9 @@ interface ContentCaseStudiesProps {
  */
 export function ContentCaseStudies({ className }: ContentCaseStudiesProps) {
   const studies = [
-    { org: "Exponential Network", quote: "Movemental gave us the infrastructure to track multiplication across 200+ church plants. What used to take spreadsheets now happens in real time.", person: "Dave Ferguson", role: "Lead Visionary, Exponential", color: "#DBEAFE" },
-    { org: "Forge Mission Training", quote: "We needed a platform that understood missional DNA — not just content delivery. Movemental gets the difference between education and formation.", person: "Alan Hirsch", role: "Founder, Forge", color: "#E0E7FF" },
-    { org: "The Underground", quote: "Our network of missional communities finally has a shared space for training, coaching, and storytelling. It changed how we develop leaders.", person: "Brad Brisco", role: "Director, The Underground", color: "#FCE7F3" },
+    { org: "Exponential Network", quote: "Movemental gave us the infrastructure to track multiplication across 200+ church plants. What used to take spreadsheets now happens in real time.", person: "Dave Ferguson", role: "Lead Visionary, Exponential", colorVar: "--mvmt-card-decorative-1" },
+    { org: "Forge Mission Training", quote: "We needed a platform that understood missional DNA — not just content delivery. Movemental gets the difference between education and formation.", person: "Alan Hirsch", role: "Founder, Forge", colorVar: "--mvmt-card-decorative-2" },
+    { org: "The Underground", quote: "Our network of missional communities finally has a shared space for training, coaching, and storytelling. It changed how we develop leaders.", person: "Brad Brisco", role: "Director, The Underground", colorVar: "--mvmt-card-decorative-3" },
   ];
 
   return (
@@ -35,7 +35,7 @@ export function ContentCaseStudies({ className }: ContentCaseStudiesProps) {
         <div className="grid md:grid-cols-3 gap-8">
           {studies.map((study) => (
             <div key={study.org} className="rounded-xl overflow-hidden bg-mvmt-surface-light border border-mvmt-border-light">
-              <div className="h-48 w-full" style={{ backgroundColor: study.color }} />
+              <div className="h-48 w-full" style={{ backgroundColor: `var(${study.colorVar})` }} />
               <div className="p-6">
                 <p className="text-xs font-semibold uppercase tracking-wider mb-3 text-mvmt-accent">
                   {study.org}
@@ -44,7 +44,7 @@ export function ContentCaseStudies({ className }: ContentCaseStudiesProps) {
                   &ldquo;{study.quote}&rdquo;
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full flex-shrink-0" style={{ backgroundColor: study.color }} />
+                  <div className="w-10 h-10 rounded-full flex-shrink-0" style={{ backgroundColor: `var(${study.colorVar})` }} />
                   <div>
                     <p className="text-sm font-semibold text-mvmt-text-primary">{study.person}</p>
                     <p className="text-xs text-mvmt-text-secondary">{study.role}</p>

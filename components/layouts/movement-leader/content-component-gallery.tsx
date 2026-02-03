@@ -16,15 +16,15 @@ export function ContentComponentGallery({ className }: ContentComponentGalleryPr
   const sections = ["All", "Heroes", "Features", "Testimonials", "CTAs", "Footers"];
 
   const components = [
-    { name: "Mission Hero", section: "Heroes", description: "Full-width hero with movement tagline and CTA", color: "#F1F5F9" },
-    { name: "Leader Spotlight", section: "Heroes", description: "Split layout with leader photo and bio", color: "#EEF2FF" },
-    { name: "Impact Metrics", section: "Features", description: "3-column stat cards with icons", color: "#F0FDF4" },
-    { name: "Pathway Steps", section: "Features", description: "Horizontal stepper for discipleship journey", color: "#FFF7ED" },
-    { name: "Community Voices", section: "Testimonials", description: "Carousel of testimonial cards", color: "#FDF2F8" },
-    { name: "Leader Quote", section: "Testimonials", description: "Large pull-quote with attribution", color: "#F5F3FF" },
-    { name: "Join the Movement", section: "CTAs", description: "Bold CTA banner with email capture", color: "#ECFDF5" },
-    { name: "Start Your Journey", section: "CTAs", description: "Two-column CTA with image", color: "#FEF3C7" },
-    { name: "Movement Footer", section: "Footers", description: "Multi-column footer with social links", color: "#F8FAFC" },
+    { name: "Mission Hero", section: "Heroes", description: "Full-width hero with movement tagline and CTA", colorVar: "--mvmt-card-decorative-1" },
+    { name: "Leader Spotlight", section: "Heroes", description: "Split layout with leader photo and bio", colorVar: "--mvmt-card-decorative-2" },
+    { name: "Impact Metrics", section: "Features", description: "3-column stat cards with icons", colorVar: "--mvmt-card-decorative-4" },
+    { name: "Pathway Steps", section: "Features", description: "Horizontal stepper for discipleship journey", colorVar: "--mvmt-card-decorative-5" },
+    { name: "Community Voices", section: "Testimonials", description: "Carousel of testimonial cards", colorVar: "--mvmt-card-decorative-3" },
+    { name: "Leader Quote", section: "Testimonials", description: "Large pull-quote with attribution", colorVar: "--mvmt-card-decorative-2" },
+    { name: "Join the Movement", section: "CTAs", description: "Bold CTA banner with email capture", colorVar: "--mvmt-card-decorative-4" },
+    { name: "Start Your Journey", section: "CTAs", description: "Two-column CTA with image", colorVar: "--mvmt-card-decorative-5" },
+    { name: "Movement Footer", section: "Footers", description: "Multi-column footer with social links", colorVar: "--mvmt-card-decorative-1" },
   ];
 
   const filtered = activeSection === "All" ? components : components.filter((c) => c.section === activeSection);
@@ -67,7 +67,7 @@ export function ContentComponentGallery({ className }: ContentComponentGalleryPr
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {filtered.map((comp) => (
               <div key={comp.name} className="rounded-lg overflow-hidden cursor-pointer group border border-mvmt-border-light">
-                <div className="h-36 w-full" style={{ backgroundColor: comp.color }} />
+                <div className="h-36 w-full" style={{ backgroundColor: `var(${comp.colorVar})` }} />
                 <div className="p-4">
                   <h3 className="text-sm font-semibold mb-1 text-mvmt-text-primary">{comp.name}</h3>
                   <p className="text-xs text-mvmt-text-secondary">{comp.description}</p>

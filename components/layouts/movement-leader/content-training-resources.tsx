@@ -16,12 +16,12 @@ export function ContentTrainingResources({ className }: ContentTrainingResources
   const filters = ["All", "Video", "Document", "Worksheet", "Assessment"];
 
   const resources = [
-    { type: "Video", title: "Introduction to Missional Living", description: "A 20-minute overview of incarnational community practices.", meta: "20 min • Brad Brisco", color: "#DBEAFE" },
-    { type: "Document", title: "Community Covenant Template", description: "A starter template for writing your missional community's shared commitments.", meta: "PDF • 3 pages", color: "#D1FAE5" },
-    { type: "Worksheet", title: "Neighborhood Mapping Exercise", description: "Guided activity for identifying the people, places, and patterns in your parish.", meta: "Interactive • 30 min", color: "#FEF3C7" },
-    { type: "Assessment", title: "Leadership Readiness Check", description: "Self-assessment for emerging leaders preparing to facilitate a community.", meta: "15 questions • 10 min", color: "#EDE9FE" },
-    { type: "Video", title: "Hero Maker Workshop: Session 1", description: "Dave Ferguson walks through the five practices of multiplying leadership.", meta: "45 min • Dave Ferguson", color: "#DBEAFE" },
-    { type: "Document", title: "Movement Glossary", description: "Key terms and definitions used across the Movemental platform.", meta: "PDF • 8 pages", color: "#D1FAE5" },
+    { type: "Video", title: "Introduction to Missional Living", description: "A 20-minute overview of incarnational community practices.", meta: "20 min • Brad Brisco", colorVar: "--mvmt-card-decorative-1" },
+    { type: "Document", title: "Community Covenant Template", description: "A starter template for writing your missional community's shared commitments.", meta: "PDF • 3 pages", colorVar: "--mvmt-card-decorative-4" },
+    { type: "Worksheet", title: "Neighborhood Mapping Exercise", description: "Guided activity for identifying the people, places, and patterns in your parish.", meta: "Interactive • 30 min", colorVar: "--mvmt-card-decorative-5" },
+    { type: "Assessment", title: "Leadership Readiness Check", description: "Self-assessment for emerging leaders preparing to facilitate a community.", meta: "15 questions • 10 min", colorVar: "--mvmt-card-decorative-2" },
+    { type: "Video", title: "Hero Maker Workshop: Session 1", description: "Dave Ferguson walks through the five practices of multiplying leadership.", meta: "45 min • Dave Ferguson", colorVar: "--mvmt-card-decorative-1" },
+    { type: "Document", title: "Movement Glossary", description: "Key terms and definitions used across the Movemental platform.", meta: "PDF • 8 pages", colorVar: "--mvmt-card-decorative-4" },
   ];
 
   const filtered = activeFilter === "All" ? resources : resources.filter((r) => r.type === activeFilter);
@@ -59,7 +59,7 @@ export function ContentTrainingResources({ className }: ContentTrainingResources
           {filtered.map((res, i) => (
             <div key={`${res.title}-${i}`} className="rounded-xl p-5 cursor-pointer bg-mvmt-surface-light border border-mvmt-border-light">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: res.color }}>
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: `var(${res.colorVar})` }}>
                   <span className="text-xs font-bold text-mvmt-accent">{res.type.slice(0, 3).toUpperCase()}</span>
                 </div>
                 <span className="text-xs font-medium uppercase tracking-wider text-mvmt-accent">{res.type}</span>
