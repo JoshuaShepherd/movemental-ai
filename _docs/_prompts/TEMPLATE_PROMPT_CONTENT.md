@@ -10,7 +10,7 @@ Complete and polish the content hub template set. 19 variants exist — tied for
 content-accordion-features, content-case-studies, content-category-blog, content-component-gallery, content-dark-browse, content-dark-personalized, content-dark-recordings, content-docs-grid, content-feature-preview, content-filtered-gallery, content-instructor-courses, content-integration-guides, content-lesson-list, content-product-carousel, content-resource-cards, content-resource-hub, content-template-showcase, content-toc-illustrated, content-training-resources, content-video-tutorials
 
 **Switcher:** `components/layouts/movement-leader/content-template-switcher.tsx`
-**Route:** `app/templates/movement-leader/content/page.tsx`
+**Route:** `app/templates/content/page.tsx`
 
 ## Reference Images
 
@@ -44,7 +44,7 @@ Read and follow `_docs/reference-images-all/template-process-prompts/00-iron-cla
 |------|------|
 | Template components | `components/layouts/movement-leader/content-*.tsx` |
 | Template switcher | `components/layouts/movement-leader/content-template-switcher.tsx` |
-| Page route | `app/templates/movement-leader/content/page.tsx` |
+| Page route | `app/templates/content/page.tsx` |
 | Reference images | `_docs/reference-images-all/content-*` |
 | Reference archive | `_docs/reference-archive/content-page/` |
 | Token config | `tailwind.config.ts` |

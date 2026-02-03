@@ -10,7 +10,7 @@ Expand and polish the reader/e-book template set. Only 2 variants exist — need
 reader-docs-sidebar, reader-ebook-dark
 
 **Switcher:** `components/layouts/movement-leader/reader-template-switcher.tsx`
-**Route:** `app/templates/movement-leader/reader/page.tsx`
+**Route:** `app/templates/reader/page.tsx`
 
 ## Reference Images
 
@@ -69,7 +69,7 @@ Read and follow `_docs/reference-images-all/template-process-prompts/00-iron-cla
 |------|------|
 | Template components | `components/layouts/movement-leader/reader-*.tsx` |
 | Template switcher | `components/layouts/movement-leader/reader-template-switcher.tsx` |
-| Page route | `app/templates/movement-leader/reader/page.tsx` |
+| Page route | `app/templates/reader/page.tsx` |
 | Reference images | `_docs/reference-images-all/reader-*` |
 | Reference archive | `_docs/reference-archive/reader-page/` |
 | Token config | `tailwind.config.ts` |

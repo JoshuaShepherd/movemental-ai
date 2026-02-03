@@ -9,6 +9,8 @@ import { NarrativeSection } from './NarrativeSection'
 import { ScrollProgress } from './ScrollProgress'
 import { SectionNav } from './SectionNav'
 import { PullQuote } from './PullQuote'
+import { ContentMovementDiagnostic } from './ContentMovementDiagnostic'
+import { TrustSignalsPanel } from './TrustSignalsPanel'
 
 interface WhyMovementalContainerProps {
   className?: string
@@ -30,16 +32,14 @@ export function WhyMovementalContainer({ className }: WhyMovementalContainerProp
       {/* Section Navigation */}
       <SectionNav sections={SECTIONS} sticky />
 
-      {/* Section 1: Intro - The Real Problem */}
+      {/* Section 1: Intro - The Real Problem + diagnostic */}
       <section id="intro">
         <NarrativeSection background="dark">
           <NarrativeStatement alignment="center" variant="dark">
-            The problem is not that movement leaders lack <strong>transformative content.</strong>
+            Your content is transformative. <strong>It doesn&apos;t move.</strong>
           </NarrativeStatement>
           <div className="mt-12 sm:mt-16">
-            <NarrativeStatement alignment="center" variant="dark" delay={0.2}>
-              The problem is that their content <strong>does not move.</strong>
-            </NarrativeStatement>
+            <ContentMovementDiagnostic variant="dark" className="mt-8" />
           </div>
         </NarrativeSection>
       </section>
@@ -185,6 +185,10 @@ export function WhyMovementalContainer({ className }: WhyMovementalContainerProp
               We use AI as a <strong>translation layer</strong>—helping your existing content reach new formats and contexts without losing your voice.
             </NarrativeStatement>
 
+            <div className="max-w-3xl mx-auto">
+              <TrustSignalsPanel className="my-8" />
+            </div>
+
             <div className="max-w-3xl mx-auto p-8 rounded-lg bg-muted/30 border-l-4 border-primary">
               <p className="text-lg sm:text-xl text-muted-foreground italic mb-4">
                 Imagine a book you wrote five years ago.
@@ -242,7 +246,7 @@ export function WhyMovementalContainer({ className }: WhyMovementalContainerProp
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
               If this resonates, the next step is simple: see if we&apos;re the right fit for each other.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
               <Button 
                 asChild 
                 size="lg"
@@ -250,6 +254,17 @@ export function WhyMovementalContainer({ className }: WhyMovementalContainerProp
               >
                 <Link href="/fit-check">
                   Is This You?
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+              <Button 
+                asChild 
+                size="lg"
+                variant="outline"
+                className="h-14 px-8 text-lg"
+              >
+                <Link href="/how-it-works">
+                  See How It Works
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>

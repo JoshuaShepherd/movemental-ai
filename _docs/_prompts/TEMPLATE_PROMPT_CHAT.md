@@ -10,7 +10,7 @@ Complete and polish the chat interface template set. 10 variants exist. Focus is
 chat-assistant-friendly, chat-dark-sidebar, chat-hero-overlay, chat-panel-sidebar, chat-split-templates, chat-suggestion-chips, chat-support-minimal, chat-team-channels, chat-warm-greeting, chat-widget-popup
 
 **Switcher:** `components/layouts/movement-leader/chat-template-switcher.tsx`
-**Route:** `app/templates/movement-leader/chat/page.tsx`
+**Route:** `app/templates/chat/page.tsx`
 
 ## Reference Images
 
@@ -57,7 +57,7 @@ Read and follow `_docs/reference-images-all/template-process-prompts/00-iron-cla
 |------|------|
 | Template components | `components/layouts/movement-leader/chat-*.tsx` |
 | Template switcher | `components/layouts/movement-leader/chat-template-switcher.tsx` |
-| Page route | `app/templates/movement-leader/chat/page.tsx` |
+| Page route | `app/templates/chat/page.tsx` |
 | Reference images | `_docs/reference-images-all/chat-*` |
 | Reference archive | `_docs/reference-archive/chatbot-page/` |
 | Token config | `tailwind.config.ts` |

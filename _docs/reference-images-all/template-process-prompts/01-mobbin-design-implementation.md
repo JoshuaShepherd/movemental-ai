@@ -674,7 +674,7 @@ When executing this prompt for a new page type:
 | Template components | `components/layouts/movement-leader/{page-type}-{variant}.tsx` |
 | Template switcher | `components/layouts/movement-leader/template-switcher.tsx` |
 | Barrel exports | `components/layouts/movement-leader/index.ts` |
-| Page routes | `app/templates/movement-leader/{page-type}/page.tsx` |
+| Page routes | `app/templates/{page-type}/page.tsx` |
 | **Assets** | |
 | Author images | `public/media-library/images/headshots/{author}/` |
 | Reference images | `_docs/_prompts/reference-images/{page-type}/` |

@@ -50,7 +50,7 @@ FAQ (2), Reader (2), and Search (3) have significantly fewer variants than other
 - 7 new components: team-grid, timeline-story, mission-values, stats-hero, manifesto-dark, split-media, founder-letter
 - Migrated about-video-bio from misc to about page type
 - Created about-template-switcher.tsx with AboutVariant type
-- Created app/templates/movement-leader/about/page.tsx
+- Created app/templates/about/page.tsx
 - Added 7 data-variant token override blocks in globals.css
 - Created _docs/reference-archive/about-page/manifest.json
 - Updated index.ts exports
@@ -58,7 +58,7 @@ FAQ (2), Reader (2), and Search (3) have significantly fewer variants than other
 ### Auth Page Type (NEW)
 - 8 new components: split-image, centered-card, dark-minimal, social-first, branded-hero, magic-link, tabbed-form, gradient-overlay
 - Created auth-template-switcher.tsx with AuthVariant type
-- Created app/templates/movement-leader/auth/page.tsx
+- Created app/templates/auth/page.tsx
 - Added 8 data-variant token override blocks in globals.css
 - Created _docs/reference-archive/auth-page/manifest.json
 - Updated index.ts exports
@@ -95,7 +95,7 @@ components/layouts/movement-leader/
   index.ts                          # Central export registry
 ```
 
-Template preview routes live at `app/templates/movement-leader/[page-type]/page.tsx` and use the switcher pattern with `data-variant` attributes for per-variant CSS token overrides in `globals.css`.
+Template preview routes live at `app/templates/[page-type]/page.tsx` (e.g. `app/templates/about/page.tsx`) and use the switcher pattern with `data-variant` attributes for per-variant CSS token overrides in `globals.css`.
 
 ---
 

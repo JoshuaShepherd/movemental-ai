@@ -10,7 +10,7 @@ Complete and polish the articles/blog template set. 12 variants exist. Focus is 
 articles-blockquote-editorial, articles-bold-editorial, articles-bold-header, articles-case-study, articles-clean-longform, articles-colorful-sidebar, articles-dark-case-study, articles-docs-sidebar, articles-faq-accordion, articles-guide-hero, articles-help-center, articles-stats-highlight
 
 **Switcher:** `components/layouts/movement-leader/articles-template-switcher.tsx`
-**Route:** `app/templates/movement-leader/articles/page.tsx`
+**Route:** `app/templates/articles/page.tsx`
 
 ## Reference Images
 
@@ -64,7 +64,7 @@ Per `_docs/_prompts/STYLE_CLEANUP_PROMPT.md`, migrate all inline `style={{}}` to
 
 - All variants exported from `components/layouts/movement-leader/index.ts`
 - Switcher type union includes every variant ID
-- Route at `app/templates/movement-leader/articles/page.tsx` renders all variants correctly
+- Route at `app/templates/articles/page.tsx` renders all variants correctly
 
 ## Iron-Clad Rules
 
@@ -76,7 +76,7 @@ Read and follow `_docs/reference-images-all/template-process-prompts/00-iron-cla
 |------|------|
 | Template components | `components/layouts/movement-leader/articles-*.tsx` |
 | Template switcher | `components/layouts/movement-leader/articles-template-switcher.tsx` |
-| Page route | `app/templates/movement-leader/articles/page.tsx` |
+| Page route | `app/templates/articles/page.tsx` |
 | Reference images | `_docs/reference-images-all/articles-*` |
 | Reference archive | `_docs/reference-archive/articles/` |
 | Token config | `tailwind.config.ts` |

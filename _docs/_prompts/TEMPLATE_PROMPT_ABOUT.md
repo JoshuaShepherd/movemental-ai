@@ -54,7 +54,7 @@ Create `components/layouts/movement-leader/about-template-switcher.tsx`.
 
 ### 5. Create Page Route
 
-Create `app/templates/movement-leader/about/page.tsx`.
+Create `app/templates/about/page.tsx`.
 
 ### 6. Create manifest.json
 
@@ -75,7 +75,7 @@ Read and follow `_docs/reference-images-all/template-process-prompts/00-iron-cla
 | Existing component | `components/layouts/movement-leader/about-video-bio.tsx` |
 | Template components (create) | `components/layouts/movement-leader/about-*.tsx` |
 | Template switcher (create) | `components/layouts/movement-leader/about-template-switcher.tsx` |
-| Page route (create) | `app/templates/movement-leader/about/page.tsx` |
+| Page route (create) | `app/templates/about/page.tsx` |
 | Reference images | `_docs/reference-images-all/about-*` |
 | Reference archive (create) | `_docs/reference-archive/about-page/manifest.json` |
 | Central registry (update) | `components/layouts/movement-leader/index.ts` |

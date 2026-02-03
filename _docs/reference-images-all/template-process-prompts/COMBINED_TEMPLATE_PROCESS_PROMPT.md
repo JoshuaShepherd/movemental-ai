@@ -130,7 +130,7 @@ Break any link and the system fails silently.
 **Page Types & Navigation:**
 
 ```
-app/templates/movement-leader/
+app/templates/
 ├── page.tsx              # Home (hero templates)
 ├── about/page.tsx
 ├── books/page.tsx
@@ -639,7 +639,7 @@ Dynamic imports for code splitting. Add `"./templates/**/*.{js,ts,jsx,tsx,mdx}"`
 | Template components | `components/layouts/movement-leader/{page-type}-{variant}.tsx` |
 | Template switcher | `components/layouts/movement-leader/template-switcher.tsx` |
 | Barrel exports | `components/layouts/movement-leader/index.ts` |
-| Page routes | `app/templates/movement-leader/{page-type}/page.tsx` |
+| Page routes | `app/templates/{page-type}/page.tsx` |
 | Author images | `public/media-library/images/headshots/{author}/` |
 | Reference archive | `_docs/reference-archive/{page-type}/` |
 

@@ -10,7 +10,7 @@ Expand and polish the search template set. Only 3 variants exist — needs expan
 search-ai-assistant, search-minimal-centered, search-resource-hub
 
 **Switcher:** `components/layouts/movement-leader/search-template-switcher.tsx`
-**Route:** `app/templates/movement-leader/search/page.tsx`
+**Route:** `app/templates/search/page.tsx`
 
 ## Reference Images
 
@@ -65,7 +65,7 @@ Read and follow `_docs/reference-images-all/template-process-prompts/00-iron-cla
 |------|------|
 | Template components | `components/layouts/movement-leader/search-*.tsx` |
 | Template switcher | `components/layouts/movement-leader/search-template-switcher.tsx` |
-| Page route | `app/templates/movement-leader/search/page.tsx` |
+| Page route | `app/templates/search/page.tsx` |
 | Reference images | `_docs/reference-images-all/search-*` |
 | Reference archive | `_docs/reference-archive/search-page/` |
 | Token config | `tailwind.config.ts` |

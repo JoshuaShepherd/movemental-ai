@@ -10,7 +10,7 @@ Polish the assessments template set. This is the most complete category — 15 v
 assessments-avatar-survey, assessments-binary-choice, assessments-dark-floating, assessments-dark-intro, assessments-hubspot-duplicate, assessments-long-form, assessments-modal-quiz, assessments-mood-gradient, assessments-nps-scale, assessments-progress-quiz, assessments-scale-options, assessments-section-intro, assessments-template-picker, assessments-udemy-quiz, assessments-visual-cards
 
 **Switcher:** `components/layouts/movement-leader/assessments-template-switcher.tsx`
-**Route:** `app/templates/movement-leader/assessments/page.tsx`
+**Route:** `app/templates/assessments/page.tsx`
 **Manifest:** `_docs/reference-archive/assessments/manifest.json` (complete)
 
 **Reference sources:** Framer, HubSpot, Headspace, Hims, WeTransfer, Kajabi, Typeform, Udemy, HoneyBook
@@ -53,7 +53,7 @@ Read and follow `_docs/reference-images-all/template-process-prompts/00-iron-cla
 |------|------|
 | Template components | `components/layouts/movement-leader/assessments-*.tsx` |
 | Template switcher | `components/layouts/movement-leader/assessments-template-switcher.tsx` |
-| Page route | `app/templates/movement-leader/assessments/page.tsx` |
+| Page route | `app/templates/assessments/page.tsx` |
 | Manifest | `_docs/reference-archive/assessments/manifest.json` |
 | Reference images | `_docs/reference-images-all/assessments-*` |
 | Token config | `tailwind.config.ts` |

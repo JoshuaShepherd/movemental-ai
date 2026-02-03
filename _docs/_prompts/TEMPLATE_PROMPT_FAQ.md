@@ -10,7 +10,7 @@ Expand and polish the FAQ template set. Only 2 variants exist — this is one of
 faq-dark-hero, faq-minimal-accordion
 
 **Switcher:** `components/layouts/movement-leader/faq-template-switcher.tsx`
-**Route:** `app/templates/movement-leader/faq/page.tsx`
+**Route:** `app/templates/faq/page.tsx`
 
 ## Reference Images
 
@@ -76,7 +76,7 @@ Read and follow `_docs/reference-images-all/template-process-prompts/00-iron-cla
 |------|------|
 | Template components | `components/layouts/movement-leader/faq-*.tsx` |
 | Template switcher | `components/layouts/movement-leader/faq-template-switcher.tsx` |
-| Page route | `app/templates/movement-leader/faq/page.tsx` |
+| Page route | `app/templates/faq/page.tsx` |
 | Reference images | `_docs/reference-images-all/faq-*` |
 | Reference archive | `_docs/reference-archive/faq-page/` |
 | Token config | `tailwind.config.ts` |

@@ -21,14 +21,19 @@ export function OnboardingHero({ onStartJourney, className }: OnboardingHeroProp
     >
       {/* Background pattern */}
       <div className="absolute inset-0 overflow-hidden opacity-5">
-        <div className="absolute top-1/2 left-1/2 -transage-x-1/2 -transage-y-1/2 w-[800px] h-[800px] rounded-full border border-white/20" />
-        <div className="absolute top-1/2 left-1/2 -transage-x-1/2 -transage-y-1/2 w-[600px] h-[600px] rounded-full border border-white/20" />
-        <div className="absolute top-1/2 left-1/2 -transage-x-1/2 -transage-y-1/2 w-[400px] h-[400px] rounded-full border border-white/20" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-white/20" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-white/20" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-white/20" />
       </div>
 
       <div className="relative z-10 w-full max-w-3xl mx-auto text-center">
+        {/* Bridge from Why */}
+        <p className="text-sage-300 text-sm sm:text-base font-medium mb-4">
+          You&apos;ve seen the problem. Here&apos;s the path.
+        </p>
+
         {/* Time badge */}
-        <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white/80">
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white/80">
           <Clock className="h-4 w-4" />
           <span>{getTotalWeeks()} from fit to live</span>
         </div>
@@ -44,7 +49,7 @@ export function OnboardingHero({ onStartJourney, className }: OnboardingHeroProp
 
         {/* Subheadline */}
         <p className="text-lg sm:text-xl text-sage-300 mb-10 max-w-xl mx-auto leading-relaxed">
-          A collaborative journey from discovery to launch. No empty templates—your platform 
+          Four phases to make your content discoverable, connected, and moving. No empty templates—your platform 
           launches with content, configured for your unique voice.
         </p>
 
@@ -94,7 +99,7 @@ export function OnboardingHero({ onStartJourney, className }: OnboardingHeroProp
             )}
           >
             Start Your Journey
-            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:transage-x-1" />
+            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Button>
           <Button
             variant="outline"
@@ -107,7 +112,7 @@ export function OnboardingHero({ onStartJourney, className }: OnboardingHeroProp
         </div>
 
         {/* Scroll hint */}
-        <div className="absolute bottom-8 left-1/2 -transage-x-1/2 hidden md:block">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block">
           <div className="flex flex-col items-center gap-2 text-sage-300 animate-bounce">
             <span className="text-xs uppercase tracking-wider">Scroll to explore</span>
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -10,7 +10,7 @@ Complete and polish the remaining misc templates. After migrating `about-video-b
 cta-bold-banner, orgs-enterprise-trust
 
 **Switcher:** `components/layouts/movement-leader/misc-template-switcher.tsx`
-**Route:** `app/templates/movement-leader/misc/page.tsx`
+**Route:** `app/templates/misc/page.tsx`
 
 ## Reference Images
 
@@ -61,7 +61,7 @@ Read and follow `_docs/reference-images-all/template-process-prompts/00-iron-cla
 |------|------|
 | Template components | `components/layouts/movement-leader/cta-*.tsx`, `components/layouts/movement-leader/orgs-*.tsx` |
 | Template switcher | `components/layouts/movement-leader/misc-template-switcher.tsx` |
-| Page route | `app/templates/movement-leader/misc/page.tsx` |
+| Page route | `app/templates/misc/page.tsx` |
 | Reference images | `_docs/reference-images-all/cta-*`, `_docs/reference-images-all/orgs-*` |
 | Central registry | `components/layouts/movement-leader/index.ts` |
 | Token config | `tailwind.config.ts` |

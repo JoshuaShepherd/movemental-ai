@@ -155,4 +155,4 @@ And override per variant in CSS to match the variant's palette.
 After each fix:
 1. `npx tsc --noEmit` — type check passes
 2. `npm run build` — build succeeds
-3. Visual check: navigate to `/templates/movement-leader/` and switch between variants. Cards, switcher UI, and section backgrounds should look noticeably different per variant.
+3. Visual check: navigate to `/templates/` and switch between variants. Cards, switcher UI, and section backgrounds should look noticeably different per variant.

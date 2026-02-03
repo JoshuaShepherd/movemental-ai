@@ -10,7 +10,7 @@ Complete and polish the hero/landing page template set. 19 variants exist. This 
 hero-agency-gradient, hero-centered-product, hero-centered-serif, hero-chat-widget, hero-circular-feature, hero-clean-minimal, hero-clean-minimal-alt, hero-colorful-headline, hero-dark-features, hero-floating-card, hero-full-bleed, hero-gradient-illustration, hero-how-it-works, hero-image-grid, hero-pricing-card, hero-product-showcase, hero-product-showcase-alt, hero-split-tabs, hero-template-preview
 
 **Switcher:** `components/layouts/movement-leader/template-switcher.tsx`
-**Route:** `app/templates/movement-leader/page.tsx` (root movement-leader page)
+**Route:** `app/templates/page.tsx` (templates home / hero)
 
 ## Reference Images
 
@@ -72,7 +72,7 @@ Read and follow `_docs/reference-images-all/template-process-prompts/00-iron-cla
 |------|------|
 | Template components | `components/layouts/movement-leader/hero-*.tsx` |
 | Template switcher | `components/layouts/movement-leader/template-switcher.tsx` |
-| Page route | `app/templates/movement-leader/page.tsx` |
+| Page route | `app/templates/page.tsx` |
 | Reference images | `_docs/reference-images-all/home-hero-*`, `_docs/reference-images-all/landing-*` |
 | Reference archive | `_docs/reference-archive/landing-page/` |
 | Token config | `tailwind.config.ts` |

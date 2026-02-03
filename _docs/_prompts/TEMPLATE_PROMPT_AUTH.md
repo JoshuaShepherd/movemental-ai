@@ -61,7 +61,7 @@ Create `components/layouts/movement-leader/auth-template-switcher.tsx`.
 
 ### 4. Create Page Route
 
-Create `app/templates/movement-leader/auth/page.tsx`.
+Create `app/templates/auth/page.tsx`.
 
 ### 5. Create manifest.json
 
@@ -81,7 +81,7 @@ Read and follow `_docs/reference-images-all/template-process-prompts/00-iron-cla
 |------|------|
 | Template components (create) | `components/layouts/movement-leader/auth-*.tsx` |
 | Template switcher (create) | `components/layouts/movement-leader/auth-template-switcher.tsx` |
-| Page route (create) | `app/templates/movement-leader/auth/page.tsx` |
+| Page route (create) | `app/templates/auth/page.tsx` |
 | Reference images | `_docs/reference-images-all/auth-*` |
 | Reference archive (create) | `_docs/reference-archive/auth-page/manifest.json` |
 | Central registry (update) | `components/layouts/movement-leader/index.ts` |
@@ -90,4 +90,4 @@ Read and follow `_docs/reference-images-all/template-process-prompts/00-iron-cla
 | Iron-clad rules | `_docs/reference-images-all/template-process-prompts/00-iron-clad-rules.md` |
 | Full build workflow | `_docs/reference-images-all/template-process-prompts/01-mobbin-design-implementation.md` |
 | Existing switcher example | `components/layouts/movement-leader/assessments-template-switcher.tsx` |
-| Existing route example | `app/templates/movement-leader/assessments/page.tsx` |
+| Existing route example | `app/templates/assessments/page.tsx` |

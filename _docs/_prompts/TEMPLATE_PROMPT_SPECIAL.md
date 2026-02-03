@@ -42,7 +42,7 @@ Create `components/layouts/movement-leader/special-template-switcher.tsx`.
 
 ### 4. Create Page Route
 
-Create `app/templates/movement-leader/special/page.tsx`.
+Create `app/templates/special/page.tsx`.
 
 ### 5. Create manifest.json
 
@@ -62,7 +62,7 @@ Read and follow `_docs/reference-images-all/template-process-prompts/00-iron-cla
 |------|------|
 | Template components (create) | `components/layouts/movement-leader/special-*.tsx` |
 | Template switcher (create) | `components/layouts/movement-leader/special-template-switcher.tsx` |
-| Page route (create) | `app/templates/movement-leader/special/page.tsx` |
+| Page route (create) | `app/templates/special/page.tsx` |
 | Reference images | `_docs/reference-images-all/special-page-*` |
 | Reference archive (create) | `_docs/reference-archive/special-page/manifest.json` |
 | Central registry (update) | `components/layouts/movement-leader/index.ts` |

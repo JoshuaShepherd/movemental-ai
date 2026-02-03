@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { ArrowRight, Calendar, MessageCircle } from 'lucide-react'
+import Link from 'next/link'
 
 interface OnboardingCTAProps {
   className?: string
@@ -33,11 +34,11 @@ export function OnboardingCTA({ className }: OnboardingCTAProps) {
             className="group h-14 px-8 text-lg font-semibold"
             asChild
           >
-            <a href="/contact">
+            <Link href="/fit-check">
               <Calendar className="mr-2 h-5 w-5" />
-              Schedule Discovery Call
+              Start with Fit Check
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </a>
+            </Link>
           </Button>
           <Button
             variant="outline"
@@ -45,10 +46,10 @@ export function OnboardingCTA({ className }: OnboardingCTAProps) {
             className="h-14 px-8 text-lg font-semibold"
             asChild
           >
-            <a href="/contact">
+            <Link href="/fit-check">
               <MessageCircle className="mr-2 h-5 w-5" />
-              Ask a Question
-            </a>
+              Is This You?
+            </Link>
           </Button>
         </div>
 

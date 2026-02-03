@@ -56,7 +56,7 @@ Create `components/layouts/movement-leader/lead-magnet-template-switcher.tsx`.
 
 ### 5. Create Page Route
 
-Create `app/templates/movement-leader/lead-magnet/page.tsx`.
+Create `app/templates/lead-magnet/page.tsx`.
 
 ### 6. Create manifest.json
 
@@ -76,7 +76,7 @@ Read and follow `_docs/reference-images-all/template-process-prompts/00-iron-cla
 |------|------|
 | Template components (create) | `components/layouts/movement-leader/lead-magnet-*.tsx` |
 | Template switcher (create) | `components/layouts/movement-leader/lead-magnet-template-switcher.tsx` |
-| Page route (create) | `app/templates/movement-leader/lead-magnet/page.tsx` |
+| Page route (create) | `app/templates/lead-magnet/page.tsx` |
 | Reference images | `_docs/reference-images-all/lead-magnet-*` |
 | Reference archive (create) | `_docs/reference-archive/lead-magnet-page/manifest.json` |
 | Central registry (update) | `components/layouts/movement-leader/index.ts` |
@@ -85,4 +85,4 @@ Read and follow `_docs/reference-images-all/template-process-prompts/00-iron-cla
 | Iron-clad rules | `_docs/reference-images-all/template-process-prompts/00-iron-clad-rules.md` |
 | Full build workflow | `_docs/reference-images-all/template-process-prompts/01-mobbin-design-implementation.md` |
 | Existing switcher example | `components/layouts/movement-leader/assessments-template-switcher.tsx` |
-| Existing route example | `app/templates/movement-leader/assessments/page.tsx` |
+| Existing route example | `app/templates/assessments/page.tsx` |

@@ -33,7 +33,7 @@ Create `components/layouts/movement-leader/pricing-template-switcher.tsx` follow
 
 ### 3. Create Page Route
 
-Create `app/templates/movement-leader/pricing/page.tsx` following the pattern in `app/templates/movement-leader/assessments/page.tsx`:
+Create `app/templates/pricing/page.tsx` following the pattern in `app/templates/assessments/page.tsx`:
 
 - State for active template
 - `className="template-movement-leader"` wrapper
@@ -62,7 +62,7 @@ Read and follow `_docs/reference-images-all/template-process-prompts/00-iron-cla
 |------|------|
 | Template components (create) | `components/layouts/movement-leader/pricing-*.tsx` |
 | Template switcher (create) | `components/layouts/movement-leader/pricing-template-switcher.tsx` |
-| Page route (create) | `app/templates/movement-leader/pricing/page.tsx` |
+| Page route (create) | `app/templates/pricing/page.tsx` |
 | Reference images | `_docs/reference-images-all/pricing-*` |
 | Reference archive (create) | `_docs/reference-archive/pricing-page/manifest.json` |
 | Central registry (update) | `components/layouts/movement-leader/index.ts` |
@@ -72,4 +72,4 @@ Read and follow `_docs/reference-images-all/template-process-prompts/00-iron-cla
 | Full build workflow | `_docs/reference-images-all/template-process-prompts/01-mobbin-design-implementation.md` |
 | Fidelity plan | `_docs/reference-images-all/template-process-prompts/02-template-reference-fidelity-plan.md` |
 | Existing switcher example | `components/layouts/movement-leader/assessments-template-switcher.tsx` |
-| Existing route example | `app/templates/movement-leader/assessments/page.tsx` |
+| Existing route example | `app/templates/assessments/page.tsx` |

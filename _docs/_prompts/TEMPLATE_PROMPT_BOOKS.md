@@ -10,7 +10,7 @@ Complete and polish the books/product template set. 9 variants exist. Focus is o
 books-detail-cart, books-detail-clean, books-detail-modal, books-detail-split, books-filtered-grid, books-minimal-grid, books-product-showcase, books-related-products, books-spec-cards
 
 **Switcher:** `components/layouts/movement-leader/books-template-switcher.tsx`
-**Route:** `app/templates/movement-leader/books/page.tsx`
+**Route:** `app/templates/books/page.tsx`
 
 ## Reference Images
 
@@ -57,7 +57,7 @@ Read and follow `_docs/reference-images-all/template-process-prompts/00-iron-cla
 |------|------|
 | Template components | `components/layouts/movement-leader/books-*.tsx` |
 | Template switcher | `components/layouts/movement-leader/books-template-switcher.tsx` |
-| Page route | `app/templates/movement-leader/books/page.tsx` |
+| Page route | `app/templates/books/page.tsx` |
 | Reference images | `_docs/reference-images-all/books-*` |
 | Reference archive | `_docs/reference-archive/books-page/` |
 | Token config | `tailwind.config.ts` |
