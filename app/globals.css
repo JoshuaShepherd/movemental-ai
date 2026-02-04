@@ -284,12 +284,13 @@
 }
 
 /* Variant: colorful-headline — Spotify for Developers style
-   Warm golden image bg, bold sans headline, purple accent words, purple CTA */
+   Warm golden image bg, bold sans headline, MAGENTA accent words, GREEN CTA */
 .template-movement-leader[data-variant="colorful-headline"] {
-  --mvmt-accent: #9B59B6;
-  --mvmt-accent-hover: #8E44AD;
-  --mvmt-cta-bg: #9B59B6;
+  --mvmt-accent: #C026D3;               /* MAGENTA for accent words */
+  --mvmt-accent-hover: #A21CAF;
+  --mvmt-cta-bg: #1DB954;               /* SPOTIFY GREEN */
   --mvmt-cta-text: #FFFFFF;
+  --mvmt-on-dark-primary: #000000;      /* BLACK headline text */
   --mvmt-surface-dark: #181818;
   --mvmt-surface-dark-elevated: #282828;
   --mvmt-gradient-overlay-hero: linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.0) 100%);
@@ -308,8 +309,9 @@
 }
 
 /* Variant: centered-product — NYT Cooking style
-   Light bg, centered serif headline, warm editorial */
+   Light bg, centered SERIF headline, warm editorial */
 .template-movement-leader[data-variant="centered-product"] {
+  --mvmt-font-heading: var(--font-playfair), Georgia, serif;
   --mvmt-accent: #D4421E;
   --mvmt-accent-hover: #B83918;
   --mvmt-cta-bg: #D4421E;
@@ -317,8 +319,9 @@
 }
 
 /* Variant: centered-serif — Substack style
-   Clean white, large serif headline, orange accent */
+   Clean white, large SERIF headline, orange accent */
 .template-movement-leader[data-variant="centered-serif"] {
+  --mvmt-font-heading: var(--font-playfair), Georgia, serif;
   --mvmt-accent: #E67E22;
   --mvmt-accent-hover: #D35400;
   --mvmt-cta-bg: #E67E22;
@@ -326,11 +329,11 @@
 }
 
 /* Variant: chat-widget — Intercom style
-   Full-bleed image, bold sans, floating chat card */
+   Full-bleed image, bold sans, floating chat card, BLACK CTA */
 .template-movement-leader[data-variant="chat-widget"] {
   --mvmt-accent: #5468FF;
   --mvmt-accent-hover: #3D4EDB;
-  --mvmt-cta-bg: #5468FF;
+  --mvmt-cta-bg: #000000;               /* BLACK CTA per reference */
   --mvmt-cta-text: #FFFFFF;
 }
 
@@ -382,21 +385,22 @@
 }
 
 /* Variant: full-bleed — Wix Learn style
-   Full-bleed image, centered text overlay, yellow accent */
+   Full-bleed image, centered text overlay, YELLOW accent, dark CTA */
 .template-movement-leader[data-variant="full-bleed"] {
-  --mvmt-accent: #FACC15;
+  --mvmt-accent: #FACC15;               /* Yellow accent text */
   --mvmt-accent-hover: #EAB308;
-  --mvmt-cta-bg: #FACC15;
-  --mvmt-cta-text: #1A1A2E;
+  --mvmt-cta-bg: #333333;               /* Dark rounded pill CTA */
+  --mvmt-cta-text: #FFFFFF;
 }
 
 /* Variant: gradient-illustration — GitLab style
-   Light bg with blue gradient, line illustrations */
+   Light BLUE GRADIENT bg, line illustrations, OUTLINE CTA */
 .template-movement-leader[data-variant="gradient-illustration"] {
   --mvmt-accent: #6B4FBB;
   --mvmt-accent-hover: #5A3FA3;
-  --mvmt-cta-bg: #6B4FBB;
-  --mvmt-cta-text: #FFFFFF;
+  --mvmt-cta-bg: #FFFFFF;               /* White/outline CTA per reference */
+  --mvmt-cta-text: #1A1A2E;
+  --mvmt-gradient-hero-brand: linear-gradient(180deg, #E8F4FD 0%, #F5FAFF 50%, #FFFFFF 100%);
 }
 
 /* Variant: how-it-works — Blue Apron Wine style
@@ -420,7 +424,7 @@
 }
 
 /* Variant: pricing-card — Codecademy style
-   Dark bg, pricing card, indigo accent */
+   Dark PURPLE GRADIENT bg, pricing card, indigo accent */
 .template-movement-leader[data-variant="pricing-card"] {
   --mvmt-accent: #5B4FE5;
   --mvmt-accent-hover: #4A3FCC;
@@ -428,11 +432,13 @@
   --mvmt-cta-text: #FFFFFF;
   --mvmt-surface-dark: #1D1547;
   --mvmt-surface-dark-elevated: #2A1F5E;
+  --mvmt-gradient-hero-brand: linear-gradient(135deg, #1D1547 0%, #2A1E6D 50%, #1D1547 100%);
 }
 
 /* Variant: product-showcase — Blue Apron style
-   Full-bleed product image, bold stat, blue accent */
+   Light BLUE bg, product image, bold stat, blue accent */
 .template-movement-leader[data-variant="product-showcase"] {
+  --mvmt-surface-light: #E8F4FD;        /* Light blue background */
   --mvmt-accent: #0047AB;
   --mvmt-accent-hover: #003A8C;
   --mvmt-cta-bg: #0047AB;
@@ -451,21 +457,25 @@
 }
 
 /* Variant: split-tabs — LinkedIn style
-   Split hero, tabbed content below, blue accent */
+   Split hero, tabbed content below, blue accent, SERIF italic headline */
 .template-movement-leader[data-variant="split-tabs"] {
+  --mvmt-font-heading: var(--font-playfair), Georgia, serif;
   --mvmt-accent: #0A66C2;
   --mvmt-accent-hover: #084E96;
   --mvmt-cta-bg: #0A66C2;
   --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #F3F2EF;        /* LinkedIn light gray bg */
 }
 
 /* Variant: template-preview — Framer Boost style
-   Light bg, floating preview cards, purple accent */
+   LAVENDER GRADIENT bg, floating preview cards, purple accent */
 .template-movement-leader[data-variant="template-preview"] {
   --mvmt-accent: #7C3AED;
   --mvmt-accent-hover: #6D28D9;
   --mvmt-cta-bg: #7C3AED;
   --mvmt-cta-text: #FFFFFF;
+  --mvmt-surface-light: #F5F3FF;        /* Light lavender base */
+  --mvmt-gradient-hero-brand: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 50%, #DDD6FE 100%);
 }
 
 /* ============================================================

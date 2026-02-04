@@ -11,7 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { Menu, X, ChevronDown, Search, BookOpen, Layers, Brain, Sparkles } from 'lucide-react'
+import { Menu, X, ChevronDown, Search, BookOpen, Layers, Brain, Sparkles, User } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface NavItem {
@@ -45,6 +45,7 @@ const exploreItems: NavDropdownItem[] = [
   { label: 'Books', href: '/books', icon: <Layers className="h-4 w-4" />, description: 'Browse our catalog' },
   { label: 'Topics', href: '/topics', icon: <Brain className="h-4 w-4" />, description: 'Explore by subject' },
   { label: 'Learn', href: '/learn', icon: <Sparkles className="h-4 w-4" />, description: 'Resources & guides' },
+  { label: 'Profile Workspace', href: '/profile-workspace', icon: <User className="h-4 w-4" />, description: 'Your voice & work' },
 ]
 
 export function PublicNavigation({ variant = 'light', className }: PublicNavigationProps) {
