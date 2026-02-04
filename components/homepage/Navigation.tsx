@@ -8,18 +8,10 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu'
-import { Menu, X, ChevronDown, Search, BookOpen, Layers, Brain, Sparkles, LayoutGrid } from 'lucide-react'
+import { Menu, X, ChevronDown, Search, BookOpen, Layers, Brain, Sparkles, LayoutGrid, Zap, Target, DollarSign, Users, Building, Network, Heart } from 'lucide-react'
 import { cn } from '@/lib/utils'
-
-interface NavItem {
-  /** Display label for the navigation item */
-  label: string
-  /** URL to navigate to */
-  href: string
-  /** Whether this is a primary navigation item */
-  primary?: boolean
-}
 
 interface NavDropdownItem {
   label: string
@@ -33,20 +25,27 @@ interface NavigationProps {
   className?: string
 }
 
-// Tier A: Primary navigation items (conversion path)
-const navItems: NavItem[] = [
-  { label: 'Fit Check', href: '/fit-check' },
-  { label: 'Why Movemental', href: '/why-movemental' },
-  { label: 'How It Works', href: '/how-it-works' },
-  { label: 'Pricing', href: '/pricing' },
+// Platform dropdown items
+const platformItems: NavDropdownItem[] = [
+  { label: 'How It Works', href: '/how-it-works', icon: <Zap className="h-4 w-4" />, description: 'See the platform in action' },
+  { label: 'Fit Check', href: '/fit-check', icon: <Target className="h-4 w-4" />, description: 'See if we\'re right for you' },
+  { label: 'Pricing', href: '/pricing', icon: <DollarSign className="h-4 w-4" />, description: 'Plans for every stage' },
 ]
 
-// Tier C: Explore dropdown items (content path)
-const exploreItems: NavDropdownItem[] = [
+// Learn dropdown items (content path)
+const learnItems: NavDropdownItem[] = [
   { label: 'AI Book', href: '/book', icon: <BookOpen className="h-4 w-4" />, description: 'The living artifact' },
   { label: 'Books', href: '/books', icon: <Layers className="h-4 w-4" />, description: 'Browse our catalog' },
   { label: 'Topics', href: '/topics', icon: <Brain className="h-4 w-4" />, description: 'Explore by subject' },
-  { label: 'Learn', href: '/learn', icon: <Sparkles className="h-4 w-4" />, description: 'Resources & guides' },
+  { label: 'Resources', href: '/learn', icon: <Sparkles className="h-4 w-4" />, description: 'Guides & tutorials' },
+]
+
+// Company dropdown items
+const companyItems: NavDropdownItem[] = [
+  { label: 'Why Movemental', href: '/why-movemental', icon: <Heart className="h-4 w-4" />, description: 'Our mission & vision' },
+  { label: 'About', href: '/about', icon: <Building className="h-4 w-4" />, description: 'Our story' },
+  { label: 'Team', href: '/team', icon: <Users className="h-4 w-4" />, description: 'Meet the people' },
+  { label: 'Network', href: '/network', icon: <Network className="h-4 w-4" />, description: 'Our community' },
 ]
 
 export function Navigation({ className }: NavigationProps) {
@@ -83,41 +82,19 @@ export function Navigation({ className }: NavigationProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
-            {/* Primary nav items */}
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  'px-4 py-2 text-sm font-medium rounded-md transition-colors',
-                  'text-sage-300 hover:text-white hover:bg-white/10'
-                )}
-              >
-                {item.label}
-              </Link>
-            ))}
-
-            {/* Templates */}
-            <Link
-              href="/templates"
-              className="px-3 py-1.5 text-sm font-medium rounded-full transition-colors bg-velvet-orchid-500 text-white hover:bg-velvet-orchid-600"
-            >
-              Templates
-            </Link>
-
-            {/* Explore Dropdown (Tier C) */}
+            {/* Platform Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger
                 className={cn(
-                  'flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-md transition-colors outline-none',
+                  'flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition-colors outline-none',
                   'text-sage-300 hover:text-white hover:bg-white/10'
                 )}
               >
-                Explore
+                Platform
                 <ChevronDown className="h-4 w-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-64">
-                {exploreItems.map((item) => (
+                {platformItems.map((item) => (
                   <DropdownMenuItem key={item.href} asChild>
                     <Link href={item.href} className="flex items-start gap-3 p-3">
                       <span className="text-muted-foreground mt-0.5">{item.icon}</span>
@@ -132,6 +109,70 @@ export function Navigation({ className }: NavigationProps) {
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
+
+            {/* Learn Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                className={cn(
+                  'flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition-colors outline-none',
+                  'text-sage-300 hover:text-white hover:bg-white/10'
+                )}
+              >
+                Learn
+                <ChevronDown className="h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-64">
+                {learnItems.map((item) => (
+                  <DropdownMenuItem key={item.href} asChild>
+                    <Link href={item.href} className="flex items-start gap-3 p-3">
+                      <span className="text-muted-foreground mt-0.5">{item.icon}</span>
+                      <div>
+                        <div className="font-medium">{item.label}</div>
+                        {item.description && (
+                          <div className="text-xs text-muted-foreground">{item.description}</div>
+                        )}
+                      </div>
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {/* Company Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                className={cn(
+                  'flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition-colors outline-none',
+                  'text-sage-300 hover:text-white hover:bg-white/10'
+                )}
+              >
+                Company
+                <ChevronDown className="h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-64">
+                {companyItems.map((item) => (
+                  <DropdownMenuItem key={item.href} asChild>
+                    <Link href={item.href} className="flex items-start gap-3 p-3">
+                      <span className="text-muted-foreground mt-0.5">{item.icon}</span>
+                      <div>
+                        <div className="font-medium">{item.label}</div>
+                        {item.description && (
+                          <div className="text-xs text-muted-foreground">{item.description}</div>
+                        )}
+                      </div>
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {/* Templates CTA */}
+            <Link
+              href="/templates"
+              className="ml-1 px-3 py-1.5 text-sm font-medium rounded-full transition-colors bg-velvet-orchid-500 text-white hover:bg-velvet-orchid-600"
+            >
+              Templates
+            </Link>
           </div>
 
           {/* Desktop CTA Buttons */}
@@ -181,19 +222,7 @@ export function Navigation({ className }: NavigationProps) {
               Search
             </Link>
 
-            {/* Primary nav items */}
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="block px-4 py-3 text-base font-medium rounded-lg text-sage-300 hover:text-white hover:bg-white/10 transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-
-            {/* Templates */}
+            {/* Templates CTA */}
             <Link
               href="/templates"
               className="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg text-white bg-velvet-orchid-500 hover:bg-velvet-orchid-600 transition-colors"
@@ -203,13 +232,43 @@ export function Navigation({ className }: NavigationProps) {
               Templates
             </Link>
 
-            {/* Explore section header */}
+            {/* Platform section */}
             <div className="px-4 pt-4 pb-2 text-xs font-semibold uppercase tracking-wider text-sage-400">
-              Explore
+              Platform
             </div>
+            {platformItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg text-sage-300 hover:text-white hover:bg-white/10 transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span className="text-sage-300">{item.icon}</span>
+                {item.label}
+              </Link>
+            ))}
 
-            {/* Explore items */}
-            {exploreItems.map((item) => (
+            {/* Learn section */}
+            <div className="px-4 pt-4 pb-2 text-xs font-semibold uppercase tracking-wider text-sage-400">
+              Learn
+            </div>
+            {learnItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg text-sage-300 hover:text-white hover:bg-white/10 transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span className="text-sage-300">{item.icon}</span>
+                {item.label}
+              </Link>
+            ))}
+
+            {/* Company section */}
+            <div className="px-4 pt-4 pb-2 text-xs font-semibold uppercase tracking-wider text-sage-400">
+              Company
+            </div>
+            {companyItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}

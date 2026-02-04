@@ -24,7 +24,13 @@
       "WebFetch(domain:movemental-ai-site.vercel.app)",
       "Bash(findstr:*)",
       "Bash(npx shadcn@latest add tabs accordion sheet dialog badge separator textarea --yes)",
-      "Bash(npx shadcn@latest add:*)"
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(./node_modules/.bin/tsc:*)",
+      "Bash(sort:*)",
+      "Bash(done)",
+      "WebSearch",
+      "Bash(pnpm exec tsc:*)",
+      "Bash(pnpm exec eslint:*)"
     ]
   }
 }
