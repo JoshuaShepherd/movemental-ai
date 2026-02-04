@@ -400,7 +400,7 @@ export default function PricingPage() {
             Ready to Own Your Platform?
           </h2>
           <p className="text-lg text-sage-300 mb-8">
-            Start with a 60-second fit check to see if Movemental is right for you.
+            See if Movemental is built for you — a moment of recognition, not an application.
           </p>
           <Button
             asChild
@@ -408,7 +408,7 @@ export default function PricingPage() {
             className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-6 text-lg rounded-full shadow-lg shadow-emerald-500/25"
           >
             <Link href="/fit-check">
-              Take the Fit Check
+              Is Movemental for you?
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>

@@ -20,7 +20,7 @@ export function FitCheckProgress({
     <div className={cn('w-full space-y-2', className)}>
       <div className="flex items-center justify-between text-sm">
         <span className="text-muted-foreground">
-          Question {currentQuestion} of {totalQuestions}
+          Step {currentQuestion} of {totalQuestions}
         </span>
         <span className="text-muted-foreground">
           {Math.round(progress)}% complete

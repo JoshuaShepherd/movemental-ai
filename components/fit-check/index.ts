@@ -1,5 +1,5 @@
-// Fit Check Components
-// 60-second assessment to determine visitor alignment with Movemental
+// Fit Check (Recognition Gate) Components
+// "Is Movemental Built for You?" — recognition-based alignment, not qualification
 
 export { FitCheckContainer } from './FitCheckContainer'
 export { FitCheckLanding } from './FitCheckLanding'

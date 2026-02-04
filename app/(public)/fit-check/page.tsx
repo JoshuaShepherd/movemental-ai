@@ -2,11 +2,11 @@ import { Metadata } from 'next'
 import { FitCheckContainer } from '@/components/fit-check'
 
 export const metadata: Metadata = {
-  title: 'Fit Check | Movemental',
-  description: 'Take a 60-second assessment to determine if Movemental is right for you. Discover your alignment with movement leadership.',
+  title: 'Is Movemental Built for You? | Movemental',
+  description: 'A moment of recognition — not an application. See if Movemental is built for leaders like you.',
   openGraph: {
-    title: 'Is Movemental Right for You?',
-    description: 'Take a 60-second assessment to discover your fit with the Movemental platform.',
+    title: 'Is Movemental Built for You?',
+    description: 'A moment of recognition — not an application.',
     type: 'website',
   },
 }
