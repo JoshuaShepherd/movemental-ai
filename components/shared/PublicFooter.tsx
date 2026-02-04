@@ -15,9 +15,7 @@ const footerSections = [
     links: [
       { label: 'Fit Check', href: '/fit-check' },
       { label: 'Why Movemental', href: '/why-movemental' },
-      { label: 'Why Movemental (full)', href: '/why-movemental-new' },
       { label: 'How It Works', href: '/how-it-works' },
-      { label: 'How It Works (full)', href: '/how-it-works-new' },
       { label: 'Pricing', href: '/pricing' },
     ],
   },

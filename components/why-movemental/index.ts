@@ -2,7 +2,6 @@
 // Typography-focused narrative experience
 
 export { WhyMovementalContainer } from './WhyMovementalContainer'
-export { WhyMovementalNewContainer } from './WhyMovementalNewContainer'
 export { NarrativeStatement } from './NarrativeStatement'
 export { NarrativeSection } from './NarrativeSection'
 export { ScrollProgress } from './ScrollProgress'
