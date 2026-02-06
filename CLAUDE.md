@@ -21,7 +21,8 @@ npm run db:migrate       # Run migrations
 npm run db:studio        # Open Drizzle Studio GUI
 
 # Type validation
-npx tsc --noEmit         # Validate all layers
+npm run typecheck        # or: npx tsc --noEmit — validate all layers
+npm run build:check     # Pre-build validation; writes reports/pre-build-validation.json (run before deploy)
 ```
 
 ## Architecture: Six-Layer Type Safety Chain

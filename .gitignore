@@ -39,6 +39,9 @@ next-env.d.ts
 # drizzle
 /drizzle
 
+# Build validation reports (run npm run build:check before deploy)
+/reports
+
 # Windows reserved device names (Git cannot index these)
 /nul
 nul

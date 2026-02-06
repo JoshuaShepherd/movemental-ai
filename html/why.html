@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Movemental</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress"></div>
+
+  <!-- Navigation -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">move<span>mental</span></a>
+      <div class="nav-links">
+        <a href="why.html" class="active">Why</a>
+        <a href="how.html">How</a>
+        <a href="#">Pricing</a>
+        <a href="#">About</a>
+        <a href="#" class="nav-cta">Start discernment</a>
+      </div>
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       WHY-1 — HERO: THE SITUATION
+       ============================================================ -->
+  <section class="hero section--darker" id="why-hero">
+    <div class="hero-content">
+      <div class="reveal">
+        <h1 class="h1 heading-display" style="color: var(--text-on-dark);">
+          The way we decide what to trust<br>
+          <span class="text-gradient">has changed.</span>
+        </h1>
+      </div>
+
+      <p class="body-large reveal" style="transition-delay: 150ms;">
+        Movemental exists to protect credibility — and help it travel — when the internet can no longer tell the difference.
+      </p>
+
+      <!-- Video placeholder (Remotion embed area) -->
+      <div class="video-placeholder reveal" style="transition-delay: 250ms;">
+        <div class="play-button">
+          <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+        </div>
+        <span class="video-label">Watch 90 seconds</span>
+      </div>
+
+      <div class="reveal" style="transition-delay: 350ms;">
+        <a href="#" class="btn btn-primary">Start discernment</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHY-2 — THE CREDIBILITY COLLAPSE
+       ============================================================ -->
+  <section class="section section--dark" id="why-collapse">
+    <div class="container">
+      <div class="split">
+        <div>
+          <span class="section-number reveal">WHY — 01</span>
+          <h2 class="h2 heading-sans reveal" style="color: var(--text-on-dark);">
+            Credibility is harder to see.
+          </h2>
+          <div class="reveal" style="transition-delay: 100ms;">
+            <p class="body-large" style="color: var(--text-on-dark-secondary); margin-bottom: 12px;">
+              Clear signals of authorship and trust used to be easy to notice.
+            </p>
+            <p class="body-large" style="color: var(--text-on-dark-secondary); margin-bottom: 12px;">
+              Now everything arrives in the same format, at the same speed, with the same confidence.
+            </p>
+            <p class="body-large" style="color: var(--text-on-dark-muted);">
+              The result isn't just misinformation — it's <em>indistinguishability</em>.
+            </p>
+          </div>
+
+          <div class="disclosure disclosure--dark reveal" style="margin-top: 28px; transition-delay: 200ms;">
+            <button class="disclosure-trigger">
+              <span>What changed?</span>
+              <svg class="disclosure-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="disclosure-content">
+              <div class="disclosure-inner">
+                <div>
+                  <ul>
+                    <li>Algorithmic feeds flattened editorial hierarchy</li>
+                    <li>AI-generated content removed visible markers of origin</li>
+                    <li>Platform incentives reward engagement, not accuracy</li>
+                    <li>Trust signals (publisher, author, track record) became invisible</li>
+                    <li>Speed of distribution outpaced verification</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Signal flattening diagram -->
+        <div class="reveal-right" style="transition-delay: 300ms;">
+          <div class="diagram-container">
+            <svg viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Signals -->
+              <g>
+                <rect x="20" y="20" width="90" height="70" rx="8" fill="rgba(110,145,110,0.2)" stroke="rgba(110,145,110,0.4)" stroke-width="1"/>
+                <text x="65" y="52" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="11" font-family="Inter">Source A</text>
+
+                <rect x="20" y="100" width="90" height="70" rx="8" fill="rgba(140,80,175,0.15)" stroke="rgba(140,80,175,0.3)" stroke-width="1"/>
+                <text x="65" y="132" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="11" font-family="Inter">Source B</text>
+
+                <rect x="20" y="180" width="90" height="70" rx="8" fill="rgba(203,52,55,0.15)" stroke="rgba(203,52,55,0.3)" stroke-width="1"/>
+                <text x="65" y="212" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="11" font-family="Inter">Source C</text>
+              </g>
+
+              <!-- Arrow: signals to feed -->
+              <path d="M 120 135 L 170 135" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" marker-end="url(#arrowhead)" class="draw-path"/>
+
+              <!-- Feed (flattened) -->
+              <g>
+                <rect x="180" y="50" width="120" height="170" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+                <text x="240" y="38" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="11" font-family="Inter" font-weight="600">THE FEED</text>
+
+                <!-- All look the same -->
+                <rect x="196" y="68" width="88" height="40" rx="6" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                <rect x="202" y="76" width="50" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
+                <rect x="202" y="84" width="70" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+                <rect x="202" y="91" width="60" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+
+                <rect x="196" y="118" width="88" height="40" rx="6" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                <rect x="202" y="126" width="50" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
+                <rect x="202" y="134" width="70" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+                <rect x="202" y="141" width="60" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+
+                <rect x="196" y="168" width="88" height="40" rx="6" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                <rect x="202" y="176" width="50" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
+                <rect x="202" y="184" width="70" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+                <rect x="202" y="191" width="60" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+              </g>
+
+              <!-- Arrow: feed to flattening -->
+              <path d="M 310 135 L 340 135" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" class="draw-path"/>
+
+              <!-- Flattening result -->
+              <g>
+                <text x="370" y="110" text-anchor="middle" fill="rgba(203,52,55,0.6)" font-size="28" font-family="Inter" font-weight="700">?</text>
+                <text x="370" y="140" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="10" font-family="Inter">Indistinguishable</text>
+              </g>
+
+              <!-- Arrow marker -->
+              <defs>
+                <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                  <polygon points="0 0, 8 3, 0 6" fill="rgba(255,255,255,0.2)"/>
+                </marker>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHY-3 — THE FELT SYMPTOM: CONTENT DOESN'T MOVE
+       ============================================================ -->
+  <section class="section section--darker" id="why-stuck">
+    <div class="container">
+      <div class="split split--reverse">
+        <div>
+          <span class="section-number reveal">WHY — 02</span>
+          <h2 class="h2 heading-sans reveal" style="color: var(--text-on-dark);">
+            Most good work doesn't travel.
+          </h2>
+          <div class="reveal" style="transition-delay: 100ms;">
+            <p class="body-large" style="color: var(--text-on-dark-secondary); margin-bottom: 12px;">
+              If you're a credible leader, the issue usually isn't quality.
+            </p>
+            <p class="body-large" style="color: var(--text-on-dark-secondary); margin-bottom: 12px;">
+              It's <em>circulation</em>.
+            </p>
+            <p class="body-large" style="color: var(--text-on-dark-muted);">
+              Your work can be deeply true — and still remain largely invisible to the people who would actually receive it.
+            </p>
+          </div>
+        </div>
+
+        <!-- Stuck vs Moving visualization -->
+        <div class="content-viz reveal-left" style="transition-delay: 200ms;">
+          <div class="content-viz-card content-viz-card--stuck">
+            <canvas id="stuck-orbit" width="200" height="160" style="width: 100%; height: 140px;"></canvas>
+            <p style="font-size: 13px; color: var(--text-on-dark-subtle); margin-top: 8px;">Stuck in a small orbit</p>
+          </div>
+          <div class="content-viz-card content-viz-card--moving">
+            <canvas id="moving-orbit" width="200" height="160" style="width: 100%; height: 140px;"></canvas>
+            <p style="font-size: 13px; color: var(--sage-300); margin-top: 8px;">Traveling through a network</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHY-4 — THE CATEGORY ERROR: CREDIBILITY ≠ AMPLIFICATION
+       ============================================================ -->
+  <section class="section section--dark" id="why-category">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="section-number reveal">WHY — 03</span>
+        <h2 class="h2 heading-sans reveal" style="color: var(--text-on-dark);">
+          Amplification and credibility are different forces.
+        </h2>
+        <div class="reveal" style="transition-delay: 100ms;">
+          <p class="body-large" style="color: var(--text-on-dark-secondary);">
+            Amplification increases reach.
+            Credibility is earned over time.<br>
+            When amplification outruns credibility, trust collapses.
+          </p>
+        </div>
+      </div>
+
+      <!-- Chart: Credibility vs Amplification -->
+      <div class="reveal-scale" style="transition-delay: 200ms; text-align: center;">
+        <div id="cred-amp-chart" style="margin: 0 auto;"></div>
+      </div>
+
+      <div class="reveal" style="text-align: center; transition-delay: 350ms;">
+        <p style="color: var(--text-on-dark-muted); font-size: 1rem; margin-top: 40px; font-style: italic;">
+          These forces behave differently. Confusing them has consequences.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHY-5 — THE SOLUTION: SCENIUS / CREDIBILITY ECOLOGY
+       ============================================================ -->
+  <section class="section section--darker" id="why-scenius">
+    <div class="container">
+      <div class="split">
+        <div>
+          <span class="section-number reveal">WHY — 04</span>
+          <h2 class="h2 heading-sans reveal" style="color: var(--text-on-dark);">
+            Credibility now travels through relationships.
+          </h2>
+          <div class="reveal" style="transition-delay: 100ms;">
+            <p class="body-large" style="color: var(--text-on-dark-secondary); margin-bottom: 12px;">
+              Institutional trust can't carry the weight it once did.
+            </p>
+            <p class="body-large" style="color: var(--text-on-dark-secondary); margin-bottom: 12px;">
+              What remains scalable is relational credibility: visible networks of people who vouch for what they know is real.
+            </p>
+            <p class="body-large" style="color: var(--text-on-dark-muted);">
+              Movemental is designed as a credibility ecology — a <em>scenius</em> — not a content platform.
+            </p>
+          </div>
+
+          <div class="micro-callout reveal" style="transition-delay: 250ms;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            The network is part of the product.
+          </div>
+        </div>
+
+        <!-- Network visualization (static) -->
+        <div class="reveal-right" style="transition-delay: 300ms;">
+          <div style="padding: 24px; background: var(--sage-950); border: 1px solid var(--border-on-dark); border-radius: var(--radius-xl);">
+            <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%;">
+              <!-- Relational links -->
+              <line x1="200" y1="150" x2="90" y2="70" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <line x1="200" y1="150" x2="310" y2="60" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <line x1="200" y1="150" x2="340" y2="180" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <line x1="200" y1="150" x2="280" y2="250" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <line x1="200" y1="150" x2="110" y2="240" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <line x1="200" y1="150" x2="60" y2="170" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Peer-to-peer -->
+              <line x1="90" y1="70" x2="60" y2="170" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4"/>
+              <line x1="310" y1="60" x2="340" y2="180" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4"/>
+              <line x1="110" y1="240" x2="280" y2="250" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4"/>
+              <!-- Center node -->
+              <circle cx="200" cy="150" r="14" fill="#cb3437" opacity="0.9"/>
+              <circle cx="200" cy="150" r="24" fill="none" stroke="rgba(203,52,55,0.15)" stroke-width="1"/>
+              <circle cx="200" cy="150" r="40" fill="none" stroke="rgba(203,52,55,0.06)" stroke-width="1"/>
+              <!-- Peer nodes -->
+              <circle cx="90" cy="70" r="8" fill="#6e916e" opacity="0.7"/>
+              <circle cx="310" cy="60" r="8" fill="#6e916e" opacity="0.7"/>
+              <circle cx="340" cy="180" r="8" fill="#8c50af" opacity="0.7"/>
+              <circle cx="280" cy="250" r="8" fill="#6e916e" opacity="0.7"/>
+              <circle cx="110" cy="240" r="8" fill="#8c50af" opacity="0.7"/>
+              <circle cx="60" cy="170" r="8" fill="#6e916e" opacity="0.7"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHY-6 — WHAT WE BUILT FOR ALAN (INCARNATIONAL PROOF)
+       ============================================================ -->
+  <section class="section section--dark" id="why-alan">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="section-number reveal">WHY — 05</span>
+        <h2 class="h2 heading-sans reveal" style="color: var(--text-on-dark);">
+          We started by building for one credible voice.
+        </h2>
+        <div class="reveal" style="transition-delay: 100ms;">
+          <p class="body-large" style="color: var(--text-on-dark-secondary); max-width: 640px; margin: 0 auto;">
+            Movemental began as a full digital platform built to steward a real body of work — books, talks, decades of formation — so it could be found, trusted, and carried forward without distortion.
+          </p>
+        </div>
+      </div>
+
+      <!-- Case study strip -->
+      <div class="case-strip stagger">
+        <!-- Before -->
+        <div class="case-card reveal">
+          <div class="case-card-image">
+            <div class="placeholder-ui">
+              <div style="height: 6px; width: 60%; background: rgba(255,255,255,0.15); border-radius: 3px;"></div>
+              <div style="height: 4px; width: 80%; background: rgba(255,255,255,0.08); border-radius: 2px;"></div>
+              <div style="display: flex; gap: 4px; margin-top: auto;">
+                <div style="flex:1; height: 20px; background: rgba(255,255,255,0.06); border-radius: 3px;"></div>
+                <div style="flex:1; height: 20px; background: rgba(255,255,255,0.06); border-radius: 3px;"></div>
+              </div>
+              <div style="height: 4px; width: 40%; background: rgba(255,255,255,0.06); border-radius: 2px;"></div>
+              <div style="height: 4px; width: 70%; background: rgba(255,255,255,0.04); border-radius: 2px;"></div>
+            </div>
+          </div>
+          <div class="case-card-caption">
+            <div class="case-card-label">Before</div>
+            <div class="case-card-text">Scattered archives, broken links, content locked in formats that don't travel.</div>
+          </div>
+        </div>
+
+        <!-- After -->
+        <div class="case-card reveal">
+          <div class="case-card-image" style="background: var(--sage-800);">
+            <div class="placeholder-ui" style="background: rgba(110,145,110,0.08); border-color: rgba(110,145,110,0.2);">
+              <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+                <div style="width: 16px; height: 16px; border-radius: 50%; background: rgba(110,145,110,0.4);"></div>
+                <div style="height: 5px; width: 50%; background: rgba(255,255,255,0.15); border-radius: 3px;"></div>
+              </div>
+              <div style="height: 3px; width: 90%; background: rgba(255,255,255,0.08); border-radius: 2px;"></div>
+              <div style="height: 3px; width: 75%; background: rgba(255,255,255,0.06); border-radius: 2px;"></div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: auto;">
+                <div style="height: 28px; background: rgba(110,145,110,0.1); border-radius: 4px; border: 1px solid rgba(110,145,110,0.15);"></div>
+                <div style="height: 28px; background: rgba(110,145,110,0.1); border-radius: 4px; border: 1px solid rgba(110,145,110,0.15);"></div>
+              </div>
+            </div>
+          </div>
+          <div class="case-card-caption">
+            <div class="case-card-label" style="color: var(--sage-400);">After</div>
+            <div class="case-card-text">A coherent platform home where everything is findable, structured, and alive.</div>
+          </div>
+        </div>
+
+        <!-- Living system -->
+        <div class="case-card reveal">
+          <div class="case-card-image" style="background: linear-gradient(135deg, var(--sage-800), #1c1023);">
+            <div class="placeholder-ui" style="background: rgba(140,80,175,0.06); border-color: rgba(140,80,175,0.15);">
+              <div style="display: flex; gap: 4px;">
+                <div style="flex:1; height: 24px; background: rgba(140,80,175,0.1); border-radius: 4px; border: 1px solid rgba(140,80,175,0.15);"></div>
+                <div style="flex:1; height: 24px; background: rgba(203,52,55,0.08); border-radius: 4px; border: 1px solid rgba(203,52,55,0.12);"></div>
+              </div>
+              <div style="height: 3px; width: 85%; background: rgba(255,255,255,0.1); border-radius: 2px; margin-top: auto;"></div>
+              <div style="display: flex; gap: 4px;">
+                <div style="flex:1; height: 16px; background: rgba(255,255,255,0.04); border-radius: 3px;"></div>
+                <div style="flex:1; height: 16px; background: rgba(255,255,255,0.04); border-radius: 3px;"></div>
+                <div style="flex:1; height: 16px; background: rgba(255,255,255,0.04); border-radius: 3px;"></div>
+              </div>
+              <div style="height: 3px; width: 60%; background: rgba(255,255,255,0.06); border-radius: 2px;"></div>
+            </div>
+          </div>
+          <div class="case-card-caption">
+            <div class="case-card-label" style="color: var(--orchid-400);">Living system</div>
+            <div class="case-card-text">Pipeline outputs: articles, courses, translations — all flowing from one source of truth.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal" style="text-align: center; margin-top: 40px;">
+        <p class="body-regular" style="color: var(--text-on-dark-subtle); font-style: italic;">
+          It began as a focused build and became a shared vision.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHY-7 — WHY NOW (AI AS CONDITION, NOT HERO)
+       ============================================================ -->
+  <section class="section section--darker" id="why-now">
+    <div class="container">
+      <div class="split">
+        <div>
+          <span class="section-number reveal">WHY — 06</span>
+          <h2 class="h2 heading-sans reveal" style="color: var(--text-on-dark);">
+            This wasn't feasible until recently.
+          </h2>
+          <div class="reveal" style="transition-delay: 100ms;">
+            <p class="body-large" style="color: var(--text-on-dark-secondary); margin-bottom: 12px;">
+              Not because AI can replace leaders —
+            </p>
+            <p class="body-large" style="color: var(--text-on-dark-secondary); margin-bottom: 12px;">
+              but because it can remove digital friction that used to require agencies, budgets, and endless time.
+            </p>
+            <p class="body-large" style="color: var(--text-on-dark-muted);">
+              AI belongs in the background, translating your work into discoverability and circulation.
+            </p>
+          </div>
+        </div>
+
+        <!-- Constraint collapse — simplified -->
+        <div class="reveal-right" style="transition-delay: 200ms;">
+          <div class="constraint-bars">
+            <div class="constraint-bar" style="--fill-width: 25%;">
+              <div class="constraint-bar-label">
+                <span style="color: var(--text-on-dark-secondary);">Time to launch</span>
+                <span style="color: var(--text-on-dark-subtle); font-size: 12px;">Years → Weeks</span>
+              </div>
+              <div class="constraint-bar-track">
+                <div class="constraint-bar-fill"></div>
+              </div>
+            </div>
+
+            <div class="constraint-bar" style="--fill-width: 20%;">
+              <div class="constraint-bar-label">
+                <span style="color: var(--text-on-dark-secondary);">Cost</span>
+                <span style="color: var(--text-on-dark-subtle); font-size: 12px;">Agency budget → Sustainable</span>
+              </div>
+              <div class="constraint-bar-track">
+                <div class="constraint-bar-fill"></div>
+              </div>
+            </div>
+
+            <div class="constraint-bar" style="--fill-width: 30%;">
+              <div class="constraint-bar-label">
+                <span style="color: var(--text-on-dark-secondary);">Complexity</span>
+                <span style="color: var(--text-on-dark-subtle); font-size: 12px;">Full team → Small team</span>
+              </div>
+              <div class="constraint-bar-track">
+                <div class="constraint-bar-fill"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHY-8 — BOUNDARIES: WHO IT'S FOR + STOP AT 100 + DOWNWARD SCALING
+       ============================================================ -->
+  <section class="section section--dark" id="why-boundaries">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="section-number reveal">WHY — 07</span>
+        <h2 class="h2 heading-sans reveal" style="color: var(--text-on-dark);">
+          This is intentionally narrow.
+        </h2>
+      </div>
+
+      <div class="cards-grid stagger">
+        <!-- Card 1: Who it's for -->
+        <div class="card card--dark reveal">
+          <div class="card-header">
+            <div class="chip chip--sage" style="margin-bottom: 12px;">Who</div>
+            <h3 class="card-title" style="color: var(--text-on-dark);">Who it's for</h3>
+          </div>
+          <div class="card-body">
+            <p>For leaders with embodied credibility and real communities.</p>
+            <p style="margin-top: 8px; color: var(--text-on-dark-subtle);">We work with people who already have it — not those trying to manufacture it.</p>
+          </div>
+        </div>
+
+        <!-- Card 2: Why stop at 100 -->
+        <div class="card card--dark reveal">
+          <div class="card-header">
+            <div class="chip chip--scarlet" style="margin-bottom: 12px;">Scale</div>
+            <h3 class="card-title" style="color: var(--text-on-dark);">Why stop at 100</h3>
+          </div>
+          <div class="card-body">
+            <p>Because relational credibility has limits.</p>
+            <p style="margin-top: 8px; color: var(--text-on-dark-subtle);">A trusted ecology of 100 holds more weight than a diluted marketplace of 10,000.</p>
+          </div>
+        </div>
+
+        <!-- Card 3: Downward scaling -->
+        <div class="card card--dark reveal">
+          <div class="card-header">
+            <div class="chip chip--orchid" style="margin-bottom: 12px;">Depth</div>
+            <h3 class="card-title" style="color: var(--text-on-dark);">Downward scaling</h3>
+          </div>
+          <div class="card-body">
+            <p>Movemental scales depth, not noise.</p>
+            <p style="margin-top: 8px; color: var(--text-on-dark-subtle);">Each leader serves their actual community better — not a wider audience worse.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHY-08 — SOUL PROTECTION: EMBODIMENT + TELOS + GRIEF
+       ============================================================ -->
+  <section class="section section--darker" id="why-soul" style="padding-bottom: calc(var(--section-py) + 40px);">
+    <div class="container">
+      <div class="quiet-section">
+        <span class="section-number reveal">WHY — 08</span>
+
+        <h2 class="h2 heading-display reveal" style="font-style: italic; font-weight: 400; color: var(--text-on-dark-secondary); margin-bottom: 32px;">
+          Movement still happens offline.
+        </h2>
+
+        <div class="reveal" style="transition-delay: 100ms;">
+          <p style="color: var(--text-on-dark-muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 16px;">
+            Formation can't be automated.<br>
+            Community can't be simulated.
+          </p>
+          <p style="color: var(--text-on-dark-muted); font-size: 1.05rem; line-height: 1.8;">
+            Movemental exists to reduce digital burden — so leaders can stay present to people.
+          </p>
+        </div>
+
+        <div class="reveal" style="transition-delay: 200ms;">
+          <p class="telos-line" style="margin-top: 36px;">
+            Success is being heard by your people — not everyone.
+          </p>
+        </div>
+
+        <!-- Rule of life motif -->
+        <div class="reveal" style="transition-delay: 300ms;">
+          <div class="rule-motif">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            ~3 hours per week of your attention. We handle the rest.
+          </div>
+        </div>
+
+        <div class="reveal" style="transition-delay: 400ms;">
+          <p class="lament" style="margin-top: 40px;">
+            This wasn't built from hype. It was built from the sense that something precious was being lost.
+          </p>
+        </div>
+
+        <div class="section-divider reveal" style="margin: 48px auto 40px; transition-delay: 450ms;"></div>
+
+        <div class="reveal" style="transition-delay: 500ms;">
+          <a href="#" class="btn btn-primary" style="margin-top: 8px;">Start discernment</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">move<span>mental</span></div>
+        <div class="footer-links">
+          <a href="why.html">Why</a>
+          <a href="how.html">How</a>
+          <a href="#">Pricing</a>
+          <a href="#">About</a>
+          <a href="#">Privacy</a>
+        </div>
+      </div>
+      <div class="footer-copy">
+        A credibility ecology for movement leaders.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="scripts/main.js"></script>
+</body>
+</html>

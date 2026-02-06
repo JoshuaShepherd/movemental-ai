@@ -30,8 +30,20 @@ Use this runbook when validating the type safety chain or fixing type errors.
 npx tsc --noEmit
 ```
 
+Or use the project script: `npm run typecheck` (same as above).
+
 - **Exit code 0** → All layers LOCKED. Stop. No action needed.
 - **Exit code 1** → Errors exist. Follow the process below.
+
+### Pre-deploy / Vercel: build:check
+
+Before deploying (e.g. to Vercel), run:
+
+```bash
+npm run build:check
+```
+
+This runs type checking and writes **`reports/pre-build-validation.json`** with pass/fail and recommendations. On TypeScript failure, full output is saved to **`reports/tsc.txt`**. Use this in CI or locally to confirm the project is safe to build. Exit code 0 = pass, 1 = fail.
 
 ### Lock-Before-Proceed Discipline
 

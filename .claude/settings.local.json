@@ -30,7 +30,10 @@
       "Bash(done)",
       "WebSearch",
       "Bash(pnpm exec tsc:*)",
-      "Bash(pnpm exec eslint:*)"
+      "Bash(pnpm exec eslint:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx next build --no-lint)",
+      "Bash(npx next build:*)"
     ]
   }
 }
