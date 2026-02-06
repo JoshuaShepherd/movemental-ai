@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import React, { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -17,11 +17,20 @@ import { ImpactDashboard } from '@/components/linking-visualizations/ImpactDashb
 
 gsap.registerPlugin(ScrollTrigger)
 
+/** Discriminated union so TypeScript narrows filler vs Component panels. */
+type FillerPanel = { id: string; label: string; filler: true }
+type ComponentPanel = { id: string; label: string; Component: () => React.ReactElement }
+type LinkingPanel = FillerPanel | ComponentPanel
+
+function isFillerPanel(panel: LinkingPanel): panel is FillerPanel {
+  return 'filler' in panel && panel.filler === true
+}
+
 /**
  * Horizontal panels section — scroll vertically to move through panels.
  * Panel 1: intro filler. Panels 2–11: linking visualizations (one per panel).
  */
-const LINKING_VIZ_PANELS = [
+const LINKING_VIZ_PANELS: readonly LinkingPanel[] = [
   { id: 'intro', label: 'How platforms link together', filler: true },
   { id: 'publish-time', label: 'Publish-time link suggestions', Component: PublishTimeSuggestions },
   { id: 'cross-tenant', label: 'Cross-tenant citation', Component: CrossTenantCitation },
@@ -33,7 +42,7 @@ const LINKING_VIZ_PANELS = [
   { id: 'nudges', label: 'Contextual nudges', Component: ContextualNudges },
   { id: 'tags', label: 'Tag aggregation', Component: TagAggregation },
   { id: 'impact', label: 'Impact dashboard', Component: ImpactDashboard },
-] as const
+]
 
 const PANEL_COUNT = LINKING_VIZ_PANELS.length
 
@@ -41,10 +50,10 @@ function PanelContent({
   panel,
   index,
 }: {
-  panel: (typeof LINKING_VIZ_PANELS)[number]
+  panel: LinkingPanel
   index: number
 }) {
-  if (panel.filler) {
+  if (isFillerPanel(panel)) {
     return (
       <div
         className="text-center px-8"
@@ -78,7 +87,7 @@ function PanelContent({
     )
   }
 
-  const Component = panel.Component!
+  const { Component } = panel
   return (
     <div className="h-full w-full overflow-y-auto overflow-x-hidden">
       <div className="mx-auto max-w-4xl px-4 py-10 md:px-6 md:py-12">
@@ -132,7 +141,7 @@ export function HorizontalPanelsSection() {
             <div
               key={panel.id}
               className={`flex h-full w-screen shrink-0 flex-col ${
-                panel.filler
+                isFillerPanel(panel)
                   ? 'items-center justify-center'
                   : 'items-stretch justify-start'
               }`}
