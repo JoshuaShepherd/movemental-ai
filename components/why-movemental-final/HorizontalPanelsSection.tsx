@@ -4,22 +4,89 @@ import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { PublishTimeSuggestions } from '@/components/linking-visualizations/PublishTimeSuggestions'
+import { CrossTenantCitation } from '@/components/linking-visualizations/CrossTenantCitation'
+import { RelatedFromNetwork } from '@/components/linking-visualizations/RelatedFromNetwork'
+import { PillarClusterGraph } from '@/components/linking-visualizations/PillarClusterGraph'
+import { NetworkCalendar } from '@/components/linking-visualizations/NetworkCalendar'
+import { CoAuthorshipFlow } from '@/components/linking-visualizations/CoAuthorshipFlow'
+import { NetworkDigest } from '@/components/linking-visualizations/NetworkDigest'
+import { ContextualNudges } from '@/components/linking-visualizations/ContextualNudges'
+import { TagAggregation } from '@/components/linking-visualizations/TagAggregation'
+import { ImpactDashboard } from '@/components/linking-visualizations/ImpactDashboard'
 
 gsap.registerPlugin(ScrollTrigger)
 
 /**
- * Horizontal panels section — same structure as GSAP "infinite looped panels" demo
- * but without infinite looping. Scroll vertically to move through panels; stops at the last.
- * Placeholder content matches demo structure.
+ * Horizontal panels section — scroll vertically to move through panels.
+ * Panel 1: intro filler. Panels 2–11: linking visualizations (one per panel).
  */
-const PANELS = [
-  { id: '01', label: 'Panel 01' },
-  { id: '02', label: 'Panel 02' },
-  { id: '03', label: 'Panel 03' },
-  { id: '04', label: 'Panel 04' },
+const LINKING_VIZ_PANELS = [
+  { id: 'intro', label: 'How platforms link together', filler: true },
+  { id: 'publish-time', label: 'Publish-time link suggestions', Component: PublishTimeSuggestions },
+  { id: 'cross-tenant', label: 'Cross-tenant citation', Component: CrossTenantCitation },
+  { id: 'related', label: 'Related from network', Component: RelatedFromNetwork },
+  { id: 'pillar', label: 'Pillar cluster graph', Component: PillarClusterGraph },
+  { id: 'calendar', label: 'Network calendar', Component: NetworkCalendar },
+  { id: 'coauthorship', label: 'Co-authorship flow', Component: CoAuthorshipFlow },
+  { id: 'digest', label: 'Network digest', Component: NetworkDigest },
+  { id: 'nudges', label: 'Contextual nudges', Component: ContextualNudges },
+  { id: 'tags', label: 'Tag aggregation', Component: TagAggregation },
+  { id: 'impact', label: 'Impact dashboard', Component: ImpactDashboard },
 ] as const
 
-const PANEL_COUNT = PANELS.length
+const PANEL_COUNT = LINKING_VIZ_PANELS.length
+
+function PanelContent({
+  panel,
+  index,
+}: {
+  panel: (typeof LINKING_VIZ_PANELS)[number]
+  index: number
+}) {
+  if (panel.filler) {
+    return (
+      <div
+        className="text-center px-8"
+        style={{
+          fontFamily: 'var(--font-playfair, "Playfair Display", serif)',
+        }}
+      >
+        <h2
+          className="mx-auto max-w-2xl text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl"
+          style={{ color: 'var(--color-bright-snow, #f0f4f0)' }}
+        >
+          How platforms link together
+        </h2>
+        <p
+          className="mx-auto mt-6 max-w-xl text-lg opacity-70"
+          style={{ color: 'var(--color-bright-snow, #f0f4f0)' }}
+        >
+          Visual simulations of every cross-tenant feature — from automated
+          citations to network calendars and co-authorship flows.
+        </p>
+        <p
+          className="mt-8 text-sm opacity-50"
+          style={{
+            fontFamily: 'var(--font-space-grotesk), system-ui, sans-serif',
+            color: 'var(--color-bright-snow, #f0f4f0)',
+          }}
+        >
+          Scroll to explore
+        </p>
+      </div>
+    )
+  }
+
+  const Component = panel.Component!
+  return (
+    <div className="h-full w-full overflow-y-auto overflow-x-hidden">
+      <div className="mx-auto max-w-4xl px-4 py-10 md:px-6 md:py-12">
+        <Component />
+      </div>
+    </div>
+  )
+}
 
 export function HorizontalPanelsSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -61,10 +128,14 @@ export function HorizontalPanelsSection() {
           className="flex h-full"
           style={{ width: 'max-content' }}
         >
-          {PANELS.map((panel, i) => (
+          {LINKING_VIZ_PANELS.map((panel, i) => (
             <div
               key={panel.id}
-              className="flex h-full w-screen shrink-0 items-center justify-center"
+              className={`flex h-full w-screen shrink-0 flex-col ${
+                panel.filler
+                  ? 'items-center justify-center'
+                  : 'items-stretch justify-start'
+              }`}
               style={{
                 background:
                   i % 2 === 0
@@ -73,28 +144,7 @@ export function HorizontalPanelsSection() {
                 borderRight: '1px solid rgba(255,255,255,0.08)',
               }}
             >
-              <div
-                className="text-center"
-                style={{
-                  fontFamily: 'var(--font-space-grotesk), system-ui, sans-serif',
-                }}
-              >
-                <span
-                  className="block text-6xl font-bold md:text-8xl"
-                  style={{
-                    color: 'var(--color-scarlet-rush-400)',
-                    fontFamily: 'var(--font-space-grotesk), system-ui, sans-serif',
-                  }}
-                >
-                  {panel.id}
-                </span>
-                <span
-                  className="mt-2 block text-lg font-medium md:text-xl"
-                  style={{ color: 'var(--color-bright-snow-400)' }}
-                >
-                  {panel.label}
-                </span>
-              </div>
+              <PanelContent panel={panel} index={i} />
             </div>
           ))}
         </div>
