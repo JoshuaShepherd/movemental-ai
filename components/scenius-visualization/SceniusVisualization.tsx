@@ -22,21 +22,22 @@ const CENTER = WORLD_SIZE / 2
 /**
  * Camera scales for each tier reveal.
  * Index = tier number. Zooms from tight (tier 0) to full network (tier 12).
+ * Tripled from original so first circle and final network are larger on screen.
  */
 const TIER_SCALES: Record<number, number> = {
-  0: 4.5,
-  1: 3.0,
-  2: 2.2,
-  3: 1.6,
-  4: 1.2,
-  5: 1.05,
-  6: 0.95,
-  7: 0.88,
-  8: 0.82,
-  9: 0.78,
-  10: 0.74,
-  11: 0.7,
-  12: 0.68,
+  0: 13.5,
+  1: 9.0,
+  2: 6.6,
+  3: 4.8,
+  4: 3.6,
+  5: 3.15,
+  6: 2.85,
+  7: 2.64,
+  8: 2.46,
+  9: 2.34,
+  10: 2.22,
+  11: 2.1,
+  12: 2.04,
 }
 
 /** Total scroll height as viewport heights */

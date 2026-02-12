@@ -27,6 +27,18 @@ export interface SceniusData {
 }
 
 // ---------------------------------------------------------------------------
+// Avatar helpers — use local images where available, else UI Avatars
+// ---------------------------------------------------------------------------
+
+function avatarUrl(name: string, id: string): string {
+  if (id === 'brad-brisco') {
+    return '/media-library/images/headshots/brad-brisco/brad-brisco-studio-backdrop-3x4.webp'
+  }
+  const encoded = encodeURIComponent(name.replace(/\s+/g, '+'))
+  return `https://ui-avatars.com/api/?name=${encoded}&background=6e916e&color=fff&size=128`
+}
+
+// ---------------------------------------------------------------------------
 // Known Authors (tiers 0–4) — sourced from author registry
 // ---------------------------------------------------------------------------
 
@@ -40,6 +52,7 @@ const KNOWN_NODES: SceniusNode[] = [
     bio: 'Thought leader on missional ecclesiology, organic systems, and apostolic movement. Founder of Forge Mission Training Network.',
     tags: ['theology', 'mission', 'movement'],
     tier: 0,
+    avatarUrl: avatarUrl('Alan Hirsch', 'alan-hirsch'),
   },
   // Tier 1 — Closest collaborator
   {
@@ -50,6 +63,7 @@ const KNOWN_NODES: SceniusNode[] = [
     bio: 'Missional church strategist and co-author with Alan Hirsch on The Permanent Revolution.',
     tags: ['strategy', 'multiplication', 'author'],
     tier: 1,
+    avatarUrl: avatarUrl('Brad Brisco', 'brad-brisco'),
   },
   // Tier 2 — Core co-authors
   {
@@ -60,6 +74,7 @@ const KNOWN_NODES: SceniusNode[] = [
     bio: 'Missiologist and author exploring incarnational mission and the future of the church.',
     tags: ['theology', 'mission', 'author'],
     tier: 2,
+    avatarUrl: avatarUrl('Michael Frost', 'michael-frost'),
   },
   {
     id: 'deb-hirsch',
@@ -69,6 +84,7 @@ const KNOWN_NODES: SceniusNode[] = [
     bio: 'Speaker and writer on spiritual formation and community practices.',
     tags: ['formation', 'author', 'speaker'],
     tier: 2,
+    avatarUrl: avatarUrl('Deb Hirsch', 'deb-hirsch'),
   },
   // Tier 3 — Inner circle
   {
@@ -78,6 +94,7 @@ const KNOWN_NODES: SceniusNode[] = [
     bio: 'Author and consultant on missional leadership and church transformation.',
     tags: ['leadership', 'author', 'consulting'],
     tier: 3,
+    avatarUrl: avatarUrl('Lance Ford', 'lance-ford'),
   },
   {
     id: 'tim-keel',
@@ -86,6 +103,7 @@ const KNOWN_NODES: SceniusNode[] = [
     bio: 'Pastor and thought leader on faith, culture, and spiritual formation.',
     tags: ['pastoral', 'formation', 'author'],
     tier: 3,
+    avatarUrl: avatarUrl('Tim Keel', 'tim-keel'),
   },
   {
     id: 'dave-ferguson',
@@ -94,6 +112,7 @@ const KNOWN_NODES: SceniusNode[] = [
     bio: 'Leadership coach and author on multiplication movements.',
     tags: ['leadership', 'multiplication', 'author'],
     tier: 3,
+    avatarUrl: avatarUrl('Dave Ferguson', 'dave-ferguson'),
   },
   {
     id: 'hugh-halter',
@@ -102,6 +121,7 @@ const KNOWN_NODES: SceniusNode[] = [
     bio: 'Church planter, author, and trainer focused on incarnational community.',
     tags: ['training', 'church-planting', 'author'],
     tier: 3,
+    avatarUrl: avatarUrl('Hugh Halter', 'hugh-halter'),
   },
   // Tier 4 — Extended known authors
   {
@@ -111,6 +131,7 @@ const KNOWN_NODES: SceniusNode[] = [
     bio: 'Church planter and co-author focused on missional community.',
     tags: ['church-planting', 'author'],
     tier: 4,
+    avatarUrl: avatarUrl('Matt Smay', 'matt-smay'),
   },
   {
     id: 'jeff-vanderstelt',
@@ -119,6 +140,7 @@ const KNOWN_NODES: SceniusNode[] = [
     bio: 'Pastor and author focused on gospel-centered community and mission.',
     tags: ['pastoral', 'mission', 'author'],
     tier: 4,
+    avatarUrl: avatarUrl('Jeff Vanderstelt', 'jeff-vanderstelt'),
   },
   {
     id: 'steve-addison',
@@ -127,6 +149,7 @@ const KNOWN_NODES: SceniusNode[] = [
     bio: 'Researcher and author on movements and church multiplication.',
     tags: ['research', 'movements', 'author'],
     tier: 4,
+    avatarUrl: avatarUrl('Steve Addison', 'steve-addison'),
   },
   {
     id: 'ori-brafman',
@@ -135,6 +158,7 @@ const KNOWN_NODES: SceniusNode[] = [
     bio: 'Bestselling author on organizational dynamics and decentralized systems.',
     tags: ['leadership', 'author', 'organizations'],
     tier: 4,
+    avatarUrl: avatarUrl('Ori Brafman', 'ori-brafman'),
   },
   {
     id: 'eddie-gibbs',
@@ -143,6 +167,7 @@ const KNOWN_NODES: SceniusNode[] = [
     bio: 'Professor emeritus and author on church leadership and emerging churches.',
     tags: ['academic', 'leadership', 'author'],
     tier: 4,
+    avatarUrl: avatarUrl('Eddie Gibbs', 'eddie-gibbs'),
   },
   {
     id: 'mindy-caliguire',
@@ -151,6 +176,7 @@ const KNOWN_NODES: SceniusNode[] = [
     bio: 'Author and speaker on spiritual formation and soul care practices.',
     tags: ['soul-care', 'formation', 'author'],
     tier: 4,
+    avatarUrl: avatarUrl('Mindy Caliguire', 'mindy-caliguire'),
   },
   {
     id: 'mandy-smith',
@@ -159,6 +185,7 @@ const KNOWN_NODES: SceniusNode[] = [
     bio: 'Pastor and author exploring the intersection of faith and everyday life.',
     tags: ['pastoral', 'author'],
     tier: 4,
+    avatarUrl: avatarUrl('Mandy Smith', 'mandy-smith'),
   },
   {
     id: 'josh-shepherd',
@@ -168,6 +195,7 @@ const KNOWN_NODES: SceniusNode[] = [
     bio: 'Builder and technologist working at the intersection of AI, publishing, and movement leadership.',
     tags: ['platform', 'steward', 'technology'],
     tier: 4,
+    avatarUrl: avatarUrl('Josh Shepherd', 'josh-shepherd'),
   },
   {
     id: 'scott-shepherd',
@@ -176,6 +204,7 @@ const KNOWN_NODES: SceniusNode[] = [
     bio: 'Author and practitioner in the missional movement space.',
     tags: ['author', 'mission'],
     tier: 4,
+    avatarUrl: avatarUrl('Scott Shepherd', 'scott-shepherd'),
   },
 ]
 
@@ -306,14 +335,16 @@ function generateMockNodes(): SceniusNode[] {
         if (!tags.includes(tag)) tags.push(tag)
       }
 
+      const fullName = `${first} ${last}`
       nodes.push({
         id,
-        name: `${first} ${last}`,
+        name: fullName,
         role,
         organization: org,
         bio: `${role} contributing to the missional movement network.`,
         tags,
         tier,
+        avatarUrl: avatarUrl(fullName, id),
       })
 
       nameIdx++

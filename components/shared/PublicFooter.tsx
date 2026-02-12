@@ -57,25 +57,19 @@ export function PublicFooter({ variant = 'light', className }: PublicFooterProps
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
-          {/* Brand column */}
+          {/* Brand column — full logo per _docs/ui/logo-usage.md */}
           <div className="col-span-2 md:col-span-1">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 mb-4"
+              className="inline-flex items-center mb-4"
+              aria-label="Movemental home"
             >
               <Image
-                src="/media-library/images/logo/mark.webp"
-                alt="Movemental mark"
-                width={28}
-                height={28}
-                className="h-7 w-7"
-              />
-              <Image
-                src="/media-library/images/logo/logo.webp"
+                src={isDark ? '/media-library/images/logo/logo-horizontal-white-h32.webp' : '/media-library/images/logo/logo-horizontal-black-h32.webp'}
                 alt="Movemental"
-                width={120}
-                height={28}
-                className="h-6 w-auto"
+                width={67}
+                height={32}
+                className="h-8 w-auto"
               />
             </Link>
             <p

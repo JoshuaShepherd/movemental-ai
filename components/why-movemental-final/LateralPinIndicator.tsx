@@ -59,7 +59,7 @@ export function LateralPinIndicator() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: pinSectionRef.current,
-          start: 'top top',
+          start: 'center center',
           end: `+=${SECTION_COUNT * 50}%`,
           pin: true,
           scrub: true,

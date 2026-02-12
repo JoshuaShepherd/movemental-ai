@@ -1,0 +1,343 @@
+/* ============================================================
+   BRAD BRISCO — Page-specific layout (hero, image grid, personas)
+   Complements main.css. React-friendly class names.
+   ============================================================ */
+
+/* --- Hero: full-bleed image + overlay content --- */
+.brad-hero {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.brad-hero__bg {
+  position: absolute;
+  inset: 0;
+}
+
+.brad-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.brad-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 20, 15, 0.5) 0%,
+    rgba(15, 20, 15, 0.75) 50%,
+    rgba(15, 20, 15, 0.92) 100%
+  );
+}
+
+.brad-hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 var(--section-px);
+}
+
+.brad-hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--scarlet-400);
+  margin-bottom: 20px;
+}
+
+.brad-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text-on-dark);
+  margin-bottom: 16px;
+}
+
+.brad-hero__title .text-gradient {
+  background: linear-gradient(135deg, var(--scarlet-400), var(--orchid-400));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brad-hero__subtitle {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--text-on-dark-secondary);
+  margin-bottom: 32px;
+}
+
+/* --- Split hero (optional): image right, copy left --- */
+.brad-split-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 90vh;
+  align-items: center;
+  gap: 0;
+}
+
+.brad-split-hero__copy {
+  padding: var(--section-py) clamp(24px, 5vw, 64px);
+  max-width: 560px;
+}
+
+.brad-split-hero__media {
+  position: relative;
+  height: 100%;
+  min-height: 70vh;
+}
+
+.brad-split-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .brad-split-hero {
+    grid-template-columns: 1fr;
+  }
+  .brad-split-hero__media {
+    min-height: 50vh;
+    order: -1;
+  }
+}
+
+/* --- Image grid (gallery) --- */
+.brad-image-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.brad-image-grid__cell {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.brad-image-grid__cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.brad-image-grid__cell:hover img {
+  transform: scale(1.06);
+}
+
+.brad-image-grid__cell--span2 {
+  grid-column: span 2;
+}
+
+.brad-image-grid__cell--span2-row {
+  grid-row: span 2;
+  aspect-ratio: auto;
+}
+
+@media (max-width: 768px) {
+  .brad-image-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .brad-image-grid__cell--span2 {
+    grid-column: span 2;
+  }
+  .brad-image-grid__cell--span2-row {
+    grid-row: span 1;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* --- Persona / audience cards --- */
+.brad-personas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.brad-persona {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-on-dark);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  transition: border-color var(--duration-fast), background var(--duration-fast);
+}
+
+.brad-persona:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.brad-persona__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--scarlet-400);
+  margin-bottom: 10px;
+}
+
+.brad-persona__title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-on-dark);
+  margin-bottom: 8px;
+}
+
+.brad-persona__desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-on-dark-muted);
+}
+
+/* --- Books strip --- */
+.brad-books {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.brad-book {
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: box-shadow var(--duration-normal), transform var(--duration-normal);
+}
+
+.brad-book:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.brad-book__cover {
+  aspect-ratio: 2 / 3;
+  background: var(--sage-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 16px;
+  text-align: center;
+}
+
+.brad-book__body {
+  padding: 20px;
+}
+
+.brad-book__title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.brad-book__meta {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* --- Quote / pullquote --- */
+.brad-quote {
+  position: relative;
+  padding: 40px 32px 40px 48px;
+  border-left: 4px solid var(--scarlet-500);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+
+.brad-quote__text {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--text-on-dark-secondary);
+}
+
+.brad-quote__cite {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--text-on-dark-muted);
+}
+
+/* --- Stat / credential strip --- */
+.brad-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 48px 64px;
+}
+
+.brad-stat {
+  text-align: center;
+}
+
+.brad-stat__value {
+  font-family: var(--font-mono);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: var(--scarlet-400);
+  line-height: 1.2;
+}
+
+.brad-stat__label {
+  font-size: 13px;
+  color: var(--text-on-dark-muted);
+  margin-top: 4px;
+}
+
+/* --- CTA block --- */
+.brad-cta {
+  text-align: center;
+  padding: var(--section-py) var(--section-px);
+  background: linear-gradient(180deg, var(--sage-900) 0%, var(--sage-950) 100%);
+  border-top: 1px solid var(--border-on-dark);
+}
+
+.brad-cta__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 600;
+  color: var(--text-on-dark);
+  margin-bottom: 12px;
+}
+
+.brad-cta__text {
+  font-size: 1.05rem;
+  color: var(--text-on-dark-secondary);
+  max-width: 520px;
+  margin: 0 auto 28px;
+  line-height: 1.65;
+}
+
+/* --- Mobile nav: when menu is open --- */
+@media (max-width: 768px) {
+  .site-nav.menu-open .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--sage-950);
+    padding: 24px;
+    gap: 16px;
+    border-top: 1px solid var(--border-on-dark);
+  }
+}

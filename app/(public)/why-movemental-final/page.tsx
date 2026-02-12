@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { LateralPinIndicator } from '@/components/why-movemental-final/LateralPinIndicator'
 import { PlaybookPinSection } from '@/components/why-movemental-final/PlaybookPinSection'
+import { PlaybookTabbedPanel } from '@/components/why-movemental-final/PlaybookTabbedPanel'
 import { SceniusVisualization } from '@/components/scenius-visualization/SceniusVisualization'
 import { HorizontalPanelsSection } from '@/components/why-movemental-final/HorizontalPanelsSection'
 import { LinkingVisualizationsTabbedSection } from '@/components/why-movemental-final/LinkingVisualizationsTabbedSection'
@@ -23,6 +24,7 @@ export default function WhyMovementalFinalPage() {
     <>
       <LateralPinIndicator />
       <PlaybookPinSection />
+      <PlaybookTabbedPanel />
       <SceniusVisualization />
       <HorizontalPanelsSection />
       <LinkingVisualizationsTabbedSection />

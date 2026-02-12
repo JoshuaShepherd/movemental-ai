@@ -9,7 +9,7 @@
 
 ## Purpose
 
-This directory contains reference images organized by feature/page. Use these directories to store Mobbin screenshots, design inspiration, and reference materials for each component.
+This directory contains reference images organized by feature/page. **Logo assets and usage:** see [logo-usage.md](./logo-usage.md) for naming, manifest, and Movemental.ai logo standards. Use these directories to store Mobbin screenshots, design inspiration, and reference materials for each component.
 
 ---
 
