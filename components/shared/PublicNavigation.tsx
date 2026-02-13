@@ -11,7 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { Menu, X, ChevronDown, Search, BookOpen, Layers, Brain, Sparkles, User, Zap, Target, DollarSign, Users, Building, Network, Heart, LayoutGrid } from 'lucide-react'
+import { Menu, X, ChevronDown, Search, BookOpen, Layers, Brain, Sparkles, User, Zap, Target, DollarSign, Users, Building, Network, Heart, LayoutGrid, HelpCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 /** Full logo (horizontal) — full color for both light and dark nav. Per _docs/ui/logo-usage.md */
@@ -34,6 +34,7 @@ const platformItems: NavDropdownItem[] = [
   { label: 'How It Works', href: '/how-it-works', icon: <Zap className="h-4 w-4" />, description: 'See the platform in action' },
   { label: 'Self-Screen', href: '/fit-check', icon: <Target className="h-4 w-4" />, description: 'See if we\'re built for you' },
   { label: 'Pricing', href: '/pricing', icon: <DollarSign className="h-4 w-4" />, description: 'Plans for every stage' },
+  { label: 'FAQ', href: '/faq', icon: <HelpCircle className="h-4 w-4" />, description: 'Billing, ownership, roles & support' },
 ]
 
 // Learn dropdown items (content path)

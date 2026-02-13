@@ -12,19 +12,24 @@ import { NarrativeStatement } from '@/components/why-movemental/NarrativeStateme
 import { Timeline, TimelineHorizontal } from './Timeline'
 import { ONBOARDING_PHASES } from '@/lib/schemas/onboarding-path'
 import { getTotalWeeks } from '@/lib/schemas/onboarding-path'
+import { WorkHereVisionSection } from '@/components/how-it-works-final/WorkHereVisionSection'
+import { ContentPipelineDiagram } from '@/components/how-it-works-new/diagrams/ContentPipelineDiagram'
 
 interface OnboardingPathContainerProps {
   className?: string
 }
 
 const SECTIONS = [
-  { id: 'order', label: 'Order of Understanding' },
+  { id: 'order', label: 'Understanding' },
+  { id: 'work-here', label: 'Your Work' },
   { id: 'path', label: 'The Path' },
   { id: 'phases', label: 'Four Phases' },
-  { id: 'different', label: 'What Makes This Different' },
+  { id: 'pipeline', label: 'Pipeline' },
+  { id: 'ai-role', label: 'AI Role' },
+  { id: 'different', label: 'Different' },
   { id: 'get', label: 'What You Get' },
-  { id: 'pricing', label: 'Pricing & Access' },
-  { id: 'supporting', label: 'Supporting Pieces' },
+  { id: 'pricing', label: 'Pricing' },
+  { id: 'supporting', label: 'Support' },
   { id: 'summary', label: 'Summary' },
   { id: 'cta', label: 'Next Step' },
 ]
@@ -54,6 +59,20 @@ const ORDER_STEPS = [
   'AI Book / Knowledge — What is the foundational thinking and posture?',
   'Learning Hub — How do I use the platform?',
   'Pricing & Access — What does it cost and what are the limits?',
+]
+
+const AI_ASSISTS = [
+  'Drafting and structuring from your material',
+  'Pattern recognition and themes',
+  'Editing and formatting',
+  'Translation and SEO as background',
+]
+
+const HUMANS_RETAIN = [
+  'Voice and theological judgment',
+  'Discernment and course design',
+  'What to publish and when',
+  'Honesty with your audience',
 ]
 
 export function OnboardingPathContainer({ className }: OnboardingPathContainerProps) {
@@ -129,9 +148,28 @@ export function OnboardingPathContainer({ className }: OnboardingPathContainerPr
         </NarrativeSection>
       </section>
 
+      {/* NEW: Your work is here / It should also be here */}
+      <section id="work-here">
+        <NarrativeSection background="muted">
+          <div className="space-y-12 sm:space-y-16">
+            <NarrativeStatement alignment="center">
+              Your work is here. <strong>It should also be here.</strong>
+            </NarrativeStatement>
+            <div className="mx-auto max-w-3xl space-y-6 text-lg text-muted-foreground text-center">
+              <p>
+                Your sermons, books, talks, and notes already exist — in PDFs, on YouTube, in archives.
+                We don&apos;t start from a blank page. We start with what you have and make it
+                findable, linked, and part of a coherent platform.
+              </p>
+            </div>
+            <WorkHereVisionSection className="mt-10" />
+          </div>
+        </NarrativeSection>
+      </section>
+
       {/* Path intro */}
       <section id="path">
-        <NarrativeSection background="muted">
+        <NarrativeSection>
           <div className="space-y-8">
             <NarrativeStatement alignment="center">
               From fit to live in <strong>3–4 weeks</strong>
@@ -145,7 +183,7 @@ export function OnboardingPathContainer({ className }: OnboardingPathContainerPr
 
       {/* Four phases */}
       <section id="phases">
-        <NarrativeSection>
+        <NarrativeSection background="muted">
           <div className="space-y-12">
             <NarrativeStatement alignment="center">
               <strong>Four phases</strong> to launch
@@ -160,9 +198,67 @@ export function OnboardingPathContainer({ className }: OnboardingPathContainerPr
         </NarrativeSection>
       </section>
 
+      {/* NEW: Content Pipeline */}
+      <section id="pipeline">
+        <NarrativeSection>
+          <div className="space-y-12 sm:space-y-16">
+            <NarrativeStatement alignment="center">
+              What happens to the work <strong>you&apos;re already doing</strong>
+            </NarrativeStatement>
+            <div className="max-w-3xl mx-auto space-y-6 text-lg text-muted-foreground text-center">
+              <p>
+                Your existing body of work — sermons, talks, books, notes, archives — passes through a discernment layer that identifies your voice, themes, and primary lane. What emerges is evergreen content structured for discovery.
+              </p>
+              <p className="text-foreground font-medium">
+                Creation is not accelerated. Circulation is.
+              </p>
+            </div>
+            <ContentPipelineDiagram className="my-8" />
+          </div>
+        </NarrativeSection>
+      </section>
+
+      {/* NEW: AI's Role */}
+      <section id="ai-role">
+        <NarrativeSection background="dark">
+          <div className="space-y-12 sm:space-y-16">
+            <NarrativeStatement alignment="center" variant="dark">
+              <strong>AI&apos;s role</strong> — and what stays human
+            </NarrativeStatement>
+            <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+              <div className="p-8 rounded-lg bg-sage-800/50 border border-sage-700">
+                <h3 className="text-xl font-semibold mb-6 text-white">AI assists with</h3>
+                <ul className="space-y-3 text-sage-300">
+                  {AI_ASSISTS.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="text-emerald-400 mt-1">+</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="p-8 rounded-lg bg-sage-800/50 border border-sage-700">
+                <h3 className="text-xl font-semibold mb-6 text-white">Humans retain</h3>
+                <ul className="space-y-3 text-sage-300">
+                  {HUMANS_RETAIN.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="text-white mt-1">&bull;</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <p className="max-w-2xl mx-auto text-center text-sage-300">
+              Quality is preserved through feedback loops. AI helps draft; humans shape. The system learns your constraints over time.
+            </p>
+          </div>
+        </NarrativeSection>
+      </section>
+
       {/* What makes this different */}
       <section id="different">
-        <NarrativeSection background="muted">
+        <NarrativeSection>
           <div className="space-y-12">
             <NarrativeStatement alignment="center">
               This is not a <strong>DIY platform</strong> or a generic template.
@@ -181,7 +277,7 @@ export function OnboardingPathContainer({ className }: OnboardingPathContainerPr
 
       {/* What you get */}
       <section id="get">
-        <NarrativeSection>
+        <NarrativeSection background="muted">
           <div className="space-y-10">
             <NarrativeStatement alignment="center">
               <strong>What you get</strong>
@@ -200,7 +296,7 @@ export function OnboardingPathContainer({ className }: OnboardingPathContainerPr
 
       {/* Pricing and access */}
       <section id="pricing">
-        <NarrativeSection background="muted">
+        <NarrativeSection>
           <div className="space-y-8 max-w-2xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
               Pricing and access
@@ -217,7 +313,7 @@ export function OnboardingPathContainer({ className }: OnboardingPathContainerPr
 
       {/* Supporting pieces */}
       <section id="supporting">
-        <NarrativeSection>
+        <NarrativeSection background="muted">
           <div className="space-y-8 max-w-2xl mx-auto">
             <NarrativeStatement alignment="center">
               <strong>Supporting pieces</strong>

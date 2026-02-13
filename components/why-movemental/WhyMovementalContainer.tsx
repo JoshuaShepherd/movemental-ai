@@ -2,9 +2,7 @@
 
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
-import { ArrowRight, ChevronDown } from 'lucide-react'
-import Link from 'next/link'
+import { ChevronDown } from 'lucide-react'
 import { NarrativeStatement } from './NarrativeStatement'
 import { NarrativeSection } from './NarrativeSection'
 import { ScrollProgress } from './ScrollProgress'
@@ -12,6 +10,15 @@ import { SectionNav } from './SectionNav'
 import { PullQuote } from './PullQuote'
 import { ContentMovementDiagnostic } from './ContentMovementDiagnostic'
 import { TrustSignalsPanel } from './TrustSignalsPanel'
+import {
+  CredibilityCrisis,
+  MovementalPlaybook,
+  FragmentedToPlatform,
+  AlanProof,
+  CredibilityAmplified,
+  NetworkEffect,
+  Invitation,
+} from './sections'
 
 interface WhyMovementalContainerProps {
   className?: string
@@ -25,7 +32,13 @@ const SECTIONS = [
   { id: 'solution', label: 'What Movemental Is' },
   { id: 'goal', label: 'The Goal' },
   { id: 'tradeoff', label: 'Why Now' },
-  { id: 'outro', label: 'Outro' },
+  { id: 'crisis', label: 'Crisis' },
+  { id: 'playbook', label: 'Playbook' },
+  { id: 'transformation', label: 'Transformation' },
+  { id: 'proof', label: 'Proof' },
+  { id: 'amplification', label: 'Amplification' },
+  { id: 'network', label: 'Network' },
+  { id: 'invitation', label: 'Invitation' },
 ]
 
 export function WhyMovementalContainer({ className }: WhyMovementalContainerProps) {
@@ -295,36 +308,39 @@ export function WhyMovementalContainer({ className }: WhyMovementalContainerProp
         </NarrativeSection>
       </section>
 
-      {/* Outro + CTAs */}
-      <section id="outro">
-        <NarrativeSection>
-          <NarrativeStatement alignment="center">
-            <strong>Movemental exists</strong> to help content that matters find the people it was made for.
-          </NarrativeStatement>
+      {/* Section 1 — The Credibility Crisis */}
+      <section id="crisis">
+        <CredibilityCrisis />
+      </section>
 
-          <div className="mt-16 sm:mt-24 text-center space-y-8">
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-              If this resonates, the next step is simple: see if we&apos;re the right fit for each other.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
-              <Button asChild size="lg" className="group h-14 px-8 text-lg font-semibold">
-                <Link href="/fit-check">
-                  Is This You?
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg">
-                <Link href="/how-it-works">
-                  See How It Works
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg">
-                <Link href="/ai-vision">Explore Our AI Posture</Link>
-              </Button>
-            </div>
-          </div>
-        </NarrativeSection>
+      {/* Section 2 — The Movemental Playbook */}
+      <section id="playbook">
+        <MovementalPlaybook />
+      </section>
+
+      {/* Section 3 — From Fragmented to Platform */}
+      <section id="transformation">
+        <FragmentedToPlatform />
+      </section>
+
+      {/* Section 4 — The Alan Proof */}
+      <section id="proof">
+        <AlanProof />
+      </section>
+
+      {/* Section 5 — Credibility Amplified */}
+      <section id="amplification">
+        <CredibilityAmplified />
+      </section>
+
+      {/* Section 6 — The Network Effect */}
+      <section id="network">
+        <NetworkEffect />
+      </section>
+
+      {/* Section 7 — Invitation */}
+      <section id="invitation">
+        <Invitation />
       </section>
     </div>
   )
