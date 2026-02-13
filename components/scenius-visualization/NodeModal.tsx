@@ -7,6 +7,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog'
+import { fontHeading, fontBody, fontAccent } from '@/components/why-movemental-final/typography'
 import type { PositionedNode } from './useNetworkLayout'
 
 const cardStyles = {
@@ -14,10 +15,10 @@ const cardStyles = {
   color: 'var(--color-bright-snow-100, #f0f4f0)',
   border: 'border-sage-800',
 }
-const titleFont = { fontFamily: 'var(--font-playfair, Georgia, serif)', color: 'var(--color-bright-snow-50, #fff)', fontSize: '1.25rem' }
-const metaFont = { fontFamily: 'var(--font-space-grotesk, monospace)', color: 'var(--color-sage-300, #a3bea3)', fontSize: '0.8rem', letterSpacing: '0.02em' }
-const bodyFont = { color: 'var(--color-bright-snow-300, #d0d8d0)', fontFamily: 'var(--font-inter, sans-serif)' }
-const tagStyle = 'inline-block rounded-full px-2.5 py-0.5 text-xs font-[var(--font-space-grotesk)] border border-sage-600/50'
+const titleFont = { fontFamily: fontHeading, color: 'var(--color-bright-snow-50, #fff)', fontSize: '1.25rem' }
+const metaFont = { fontFamily: fontAccent, color: 'var(--color-sage-300, #a3bea3)', fontSize: '0.8rem', letterSpacing: '0.02em' }
+const bodyFont = { color: 'var(--color-bright-snow-300, #d0d8d0)', fontFamily: fontBody }
+const tagStyle = 'inline-block rounded-full px-2.5 py-0.5 text-xs border border-sage-600/50'
 const tagBg = 'var(--color-sage-800, #2a3e2a)'
 const tagColor = 'var(--color-sage-200, #c4dac4)'
 
@@ -56,7 +57,7 @@ export function NodeModal({ node, onClose }: NodeModalProps) {
                     style={{
                       background: 'rgba(110, 145, 110, 0.25)',
                       color: 'var(--color-sage-200, #c4dac4)',
-                      fontFamily: 'var(--font-space-grotesk, monospace)',
+                      fontFamily: fontAccent,
                     }}
                   >
                     In the Movemental network
@@ -86,7 +87,7 @@ export function NodeModal({ node, onClose }: NodeModalProps) {
                       <span
                         key={tag}
                         className={tagStyle}
-                        style={{ background: tagBg, color: tagColor }}
+                        style={{ background: tagBg, color: tagColor, fontFamily: fontAccent }}
                       >
                         {tag}
                       </span>
@@ -103,7 +104,7 @@ export function NodeModal({ node, onClose }: NodeModalProps) {
                     style={{
                       background: 'rgba(140, 80, 175, 0.2)',
                       color: 'var(--color-sage-200, #c4dac4)',
-                      fontFamily: 'var(--font-space-grotesk, monospace)',
+                      fontFamily: fontAccent,
                     }}
                   >
                     Who&apos;s next in the scenius

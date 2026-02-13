@@ -293,82 +293,102 @@ const KNOWN_LINKS: SceniusLink[] = [
 
 // ---------------------------------------------------------------------------
 // Persona nodes (tiers 5–12) — "Who's next in the scenius"
+// Target: ~100 total nodes (17 known + ~83 personas)
 // ---------------------------------------------------------------------------
 
-const PERSONA_NODES: SceniusNode[] = [
+const PERSONA_ROLES: { name: string; role: string; story: string }[] = [
   {
-    id: 'persona-5',
     name: 'Church planter',
     role: 'Church planter',
-    tier: 5,
-    inNetwork: false,
-    personaStory:
+    story:
       'Planting in a new context, with content and frameworks that need to travel. The kind of voice joining the scenius next—where credibility grows through connection to trusted peers.',
   },
   {
-    id: 'persona-6',
     name: 'Researcher',
     role: 'Researcher & Author',
-    tier: 6,
-    inNetwork: false,
-    personaStory:
+    story:
       'Studying movements and multiplication; writing for practitioners and scholars. The kind of voice joining the scenius next—where ideas are cited and amplified across the network.',
   },
   {
-    id: 'persona-7',
     name: 'Trainer',
     role: 'Trainer & Formator',
-    tier: 7,
-    inNetwork: false,
-    personaStory:
+    story:
       'Equipping leaders in the room and online. The kind of voice joining the scenius next—where training content becomes discoverable and linked to the movement.',
   },
   {
-    id: 'persona-8',
     name: 'Theologian',
     role: 'Theologian',
-    tier: 8,
-    inNetwork: false,
-    personaStory:
+    story:
       'Working at the intersection of theology and mission. The kind of voice joining the scenius next—where credibility is distributed through the network, not follower count.',
   },
   {
-    id: 'persona-9',
     name: 'Pastor',
     role: 'Pastor & Author',
-    tier: 9,
-    inNetwork: false,
-    personaStory:
+    story:
       'Leading a congregation and writing for the wider church. The kind of voice joining the scenius next—where your content moves through the people who already trust you.',
   },
   {
-    id: 'persona-10',
     name: 'Missionary',
     role: 'Missionary',
-    tier: 10,
-    inNetwork: false,
-    personaStory:
+    story:
       'Sent across cultures; content and reporting that deserve a permanent, linked home. The kind of voice joining the scenius next.',
   },
   {
-    id: 'persona-11',
     name: 'Educator',
     role: 'Educator',
-    tier: 11,
-    inNetwork: false,
-    personaStory:
+    story:
       'Teaching the next generation of movement leaders. The kind of voice joining the scenius next—where teaching becomes discoverable and part of the collective body of work.',
   },
   {
-    id: 'persona-12',
     name: 'Consultant',
     role: 'Consultant & Strategist',
-    tier: 12,
-    inNetwork: false,
-    personaStory:
+    story:
       'Advising networks and denominations; thinking that should compound. The kind of voice joining the scenius next—where your expertise is amplified through the network.',
   },
+  {
+    name: 'Formator',
+    role: 'Spiritual Formator',
+    story:
+      'Guiding others in formation practices. The kind of voice joining the scenius next—where wisdom is shared and linked across the network.',
+  },
+  {
+    name: 'Author',
+    role: 'Author & Speaker',
+    story:
+      'Writing and speaking for the movement. The kind of voice joining the scenius next—where your work is discoverable through trusted peers.',
+  },
 ]
+
+const TARGET_TOTAL_NODES = 100
+
+/** Generate persona nodes to reach target count; spread across tiers 5–12. */
+function generatePersonaNodes(): SceniusNode[] {
+  const knownCount = KNOWN_NODES.length
+  const count = Math.max(0, TARGET_TOTAL_NODES - knownCount)
+  const nodes: SceniusNode[] = []
+  const tiers = [5, 6, 7, 8, 9, 10, 11, 12]
+  let idx = 0
+  for (let i = 0; i < count; i++) {
+    const tier = tiers[i % tiers.length]
+    const roleDef = PERSONA_ROLES[i % PERSONA_ROLES.length]
+    const label =
+      count <= PERSONA_ROLES.length
+        ? roleDef.name
+        : `${roleDef.name} ${Math.floor(i / PERSONA_ROLES.length) + 1}`
+    nodes.push({
+      id: `persona-${idx}`,
+      name: label,
+      role: roleDef.role,
+      tier,
+      inNetwork: false,
+      personaStory: roleDef.story,
+    })
+    idx++
+  }
+  return nodes
+}
+
+const PERSONA_NODES = generatePersonaNodes()
 
 /** Links from each persona to 1–2 known nodes so the layout pulls them into the graph. */
 function getPersonaLinks(personaNodes: SceniusNode[], knownIds: string[]): SceniusLink[] {

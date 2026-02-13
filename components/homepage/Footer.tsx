@@ -22,7 +22,7 @@ const footerSections: FooterSection[] = [
   {
     title: 'Platform',
     links: [
-      { label: 'Fit Check', href: '/fit-check' },
+      { label: 'Self-Screen', href: '/fit-check' },
       { label: 'Why Movemental', href: '/why-movemental' },
       { label: 'How It Works', href: '/how-it-works' },
       { label: 'Pricing', href: '/pricing' },

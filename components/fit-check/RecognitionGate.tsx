@@ -3,7 +3,7 @@
 import { Card } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import type { RecognitionOption } from '@/lib/schemas/fit-check'
-import { Check } from 'lucide-react'
+import { Check, Info } from 'lucide-react'
 
 interface RecognitionGateProps {
   options: RecognitionOption[]
@@ -60,10 +60,10 @@ export function RecognitionGate({
                 isChecked && 'border-primary bg-primary/5 ring-2 ring-primary'
               )}
             >
-              <div className="flex w-full items-center gap-3">
+              <div className="flex w-full items-start gap-3">
                 <div
                   className={cn(
-                    'h-5 w-5 shrink-0 rounded border-2 flex items-center justify-center transition-colors',
+                    'h-5 w-5 shrink-0 rounded border-2 flex items-center justify-center transition-colors mt-0.5',
                     isChecked
                       ? 'border-primary bg-primary'
                       : 'border-muted-foreground/30'
@@ -79,6 +79,16 @@ export function RecognitionGate({
                 >
                   {option.label}
                 </span>
+                {option.tooltip && (
+                  <span
+                    className="shrink-0 text-muted-foreground hover:text-foreground transition-colors"
+                    title={option.tooltip}
+                    onClick={(e) => e.stopPropagation()}
+                    onKeyDown={(e) => e.stopPropagation()}
+                  >
+                    <Info className="h-4 w-4" aria-hidden />
+                  </span>
+                )}
               </div>
             </Card>
           )

@@ -17,7 +17,7 @@ interface BreadcrumbsProps {
 
 // Map of path segments to human-readable labels
 const pathLabels: Record<string, string> = {
-  'fit-check': 'Fit Check',
+  'fit-check': 'Self-Screen',
   'why-movemental': 'Why Movemental',
   book: 'AI Book',
   learn: 'Learn',

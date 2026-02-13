@@ -1,4 +1,4 @@
-// Fit Check (Recognition Gate) Components
+// Self-Screen (Movement Leader Fit) Components — route: /fit-check
 // "Is Movemental Built for You?" — recognition-based alignment, not qualification
 
 export { FitCheckContainer } from './FitCheckContainer'

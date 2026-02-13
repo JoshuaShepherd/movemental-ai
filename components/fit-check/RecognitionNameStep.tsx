@@ -43,7 +43,7 @@ export function RecognitionNameStep({
       >
         <div className="text-center mb-8">
           <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">
-            Share your name & body of work
+            Create your account
           </h1>
           <p className="text-muted-foreground text-sm">
             {transparencyCopy}

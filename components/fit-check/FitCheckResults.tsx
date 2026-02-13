@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { CheckCircle2, ArrowRight, BookOpen, FileText } from 'lucide-react'
+import { CheckCircle2, ArrowRight, BookOpen, FileText, Heart } from 'lucide-react'
 import type { RecognitionResult } from '@/lib/schemas/fit-check'
 import { getRecognitionResultCopy } from '@/lib/schemas/fit-check'
 
@@ -19,13 +19,14 @@ export function FitCheckResults({
   onSecondary,
   className,
 }: FitCheckResultsProps) {
-  const copy = getRecognitionResultCopy(result.recognized)
+  const copy = getRecognitionResultCopy(result.pathway)
+  const isFullFit = result.pathway === 'full-fit'
 
   return (
     <div
       className={cn(
         'min-h-screen flex flex-col items-center justify-center px-4 py-12',
-        result.recognized
+        isFullFit
           ? 'bg-gradient-to-b from-sage-50 to-white'
           : 'bg-gradient-to-b from-sage-100 to-sage-50',
         className
@@ -35,15 +36,17 @@ export function FitCheckResults({
         <div
           className={cn(
             'mb-6 inline-flex items-center justify-center h-24 w-24 rounded-full',
-            result.recognized
+            isFullFit
               ? 'bg-gradient-to-br from-emerald-500/20 to-cyan-500/20'
               : 'bg-gradient-to-br from-sage-500/20 to-sage-600/20'
           )}
         >
-          {result.recognized ? (
+          {isFullFit ? (
             <CheckCircle2 className="h-12 w-12 text-emerald-500" />
-          ) : (
+          ) : result.pathway === 'content-no-movement' ? (
             <BookOpen className="h-12 w-12 text-sage-400" />
+          ) : (
+            <Heart className="h-12 w-12 text-sage-400" />
           )}
         </div>
 
@@ -55,7 +58,7 @@ export function FitCheckResults({
           {copy.body}
         </p>
 
-        {result.recognized ? (
+        {isFullFit ? (
           <div className="space-y-3">
             {copy.primaryCta && onShareName && (
               <Button
@@ -82,7 +85,7 @@ export function FitCheckResults({
             )}
           </div>
         ) : (
-          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center flex-wrap">
             {copy.links?.map((link) => (
               <Button
                 key={link.href}
@@ -94,6 +97,8 @@ export function FitCheckResults({
                 <a href={link.href}>
                   {link.label === 'Explore the Book' ? (
                     <BookOpen className="h-4 w-4" />
+                  ) : link.label === 'About Us' ? (
+                    <Heart className="h-4 w-4" />
                   ) : (
                     <FileText className="h-4 w-4" />
                   )}

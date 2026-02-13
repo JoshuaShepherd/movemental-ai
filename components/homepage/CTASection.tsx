@@ -57,8 +57,7 @@ export function CTASection({ className }: CTASectionProps) {
               Start moving your content.
             </h2>
             <p className="text-lg sm:text-xl text-sage-300 mb-8 leading-relaxed">
-              Take the Fit Check to discover if Movemental is right for you. 
-              60 seconds to clarity—no trial, no credit card, no commitment.
+              We&apos;re focused on movement leaders. Take the Self-Screen to see if we&apos;re built for you—one question, no commitment.
             </p>
 
             <Button
@@ -67,7 +66,7 @@ export function CTASection({ className }: CTASectionProps) {
               className="bg-scarlet-rush-500 hover:bg-scarlet-rush-600 text-white px-8 py-6 text-lg rounded-full shadow-lg shadow-scarlet-rush-500/25 transition-all hover:shadow-xl hover:shadow-scarlet-rush-500/30"
             >
               <Link href="/fit-check">
-                Take the Fit Check
+                Take the Self-Screen
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>

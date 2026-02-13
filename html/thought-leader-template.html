@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+    ============================================================
+    THOUGHT LEADER TEMPLATE — Movemental Design System
+    ============================================================
+    A reusable single-page template for movement leaders.
+    Replace placeholder content marked with [BRACKETS] and
+    update images, copy, and metadata for each leader.
+
+    Design: warm editorial — dark sage hero, cream content,
+    scarlet CTA. Playfair Display + Inter + Space Grotesk.
+    ============================================================
+  -->
+  <title>[Leader Name] — [Domain / Tagline] | Movemental</title>
+  <meta name="description" content="[One-sentence description of the leader and their work. 150-160 chars for SEO.]">
+
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Template styles (self-contained — does not require main.css) -->
+  <link rel="stylesheet" href="styles/thought-leader-template.css">
+</head>
+
+<body class="tl-page">
+
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="tl-skip-link">Skip to content</a>
+
+  <!-- Reading progress bar -->
+  <div class="tl-progress" id="tl-progress" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <header class="tl-nav" id="tl-nav">
+    <div class="tl-nav__inner">
+      <a href="/" class="tl-nav__logo">move<span>mental</span></a>
+      <nav class="tl-nav__links" aria-label="Main navigation">
+        <a href="why.html">Why</a>
+        <a href="how.html">How</a>
+        <a href="#" class="active">[Leader Name]</a>
+        <a href="#cta" class="tl-nav__cta">Get in touch</a>
+      </nav>
+      <button class="tl-nav__toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ============================================================
+         HERO
+         Primary message: "[Leader Name] is a [role] helping [audience]
+         do [outcome]."
+         Primary CTA: Explore their work.
+         ============================================================ -->
+    <section class="tl-hero" id="hero">
+      <div class="tl-hero__content">
+        <p class="tl-hero__eyebrow tl-reveal">Movement Leader</p>
+        <h1 class="tl-hero__title tl-reveal">
+          [Leader Name]
+          <span class="tl-hero__tagline">[Domain phrase — e.g. "Missional ecclesiology & multiplication"]</span>
+        </h1>
+        <p class="tl-hero__subtitle tl-reveal">
+          [One to two sentences describing what this leader does and who they serve.
+          Be specific. Avoid jargon. Speak directly to the visitor.]
+        </p>
+        <div class="tl-hero__actions tl-reveal">
+          <a href="#calling" class="tl-btn tl-btn--primary">
+            Explore their work
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10h10M11 6l4 4-4 4"/></svg>
+          </a>
+          <a href="#content" class="tl-btn tl-btn--secondary">See their content</a>
+        </div>
+      </div>
+
+      <!-- Hero image band (full-width, cinematic crop) -->
+      <div class="tl-hero__band tl-reveal">
+        <!-- Public asset: media-library landscape 16:9. Replace with leader headshot when available: headshots/[leader-slug]/[leader-hero-16x9].webp -->
+        <img
+          src="../public/media-library/images/landscape/16-9/hero-graphic.svg"
+          alt=""
+          fetchpriority="high"
+          width="1920"
+          height="1080"
+        />
+      </div>
+    </section>
+
+    <!-- ============================================================
+         STATS STRIP (social proof)
+         ============================================================ -->
+    <section class="tl-stats" id="stats">
+      <div class="tl-stats__grid tl-stagger">
+        <div class="tl-reveal">
+          <span class="tl-stat__number">[N]</span>
+          <span class="tl-stat__label">[Metric label — e.g. "Published books"]</span>
+        </div>
+        <div class="tl-reveal">
+          <span class="tl-stat__number">[N]+</span>
+          <span class="tl-stat__label">[Metric label — e.g. "Years teaching"]</span>
+        </div>
+        <div class="tl-reveal">
+          <span class="tl-stat__number">[N]+</span>
+          <span class="tl-stat__label">[Metric label — e.g. "Practitioners trained"]</span>
+        </div>
+        <div class="tl-reveal">
+          <span class="tl-stat__number">[Org Name]</span>
+          <span class="tl-stat__label">[Role — e.g. "Director of Strategy"]</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         01 — CALLING / MISSION
+         Split layout: prose left, image right.
+         ============================================================ -->
+    <section class="tl-section tl-section--numbered" id="calling">
+      <span class="tl-section-num" aria-hidden="true">01</span>
+      <div class="tl-container--with-num">
+        <div class="tl-split">
+          <div>
+            <h2 class="tl-heading tl-reveal">[You're called to — what is this leader's fundamental calling or thesis?]</h2>
+            <div class="tl-prose tl-reveal">
+              <p>[First paragraph: describe the calling in concrete, human terms. What does this person actually do day-to-day? What movement are they part of?]</p>
+              <p>[Second paragraph: describe their posture — how they think about success, what makes their approach distinctive. Why does their work matter beyond their own platform?]</p>
+            </div>
+          </div>
+          <div class="tl-split__image tl-reveal-right">
+            <!-- Public asset: media-library landscape 4:3. Replace with leader image when available: headshots/[leader-slug]/[leader-secondary-4x3].webp -->
+            <img
+              src="../public/media-library/images/landscape/4-3/section-graphic.svg"
+              alt=""
+              width="800"
+              height="600"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         02 — AUDIENCE
+         Centered heading + persona cards.
+         ============================================================ -->
+    <section class="tl-section tl-section--numbered tl-section--alt" id="audience">
+      <span class="tl-section-num" aria-hidden="true">02</span>
+      <div class="tl-container--with-num">
+        <h2 class="tl-heading tl-heading--center tl-reveal">[The people who respond to this work are — describe the tribe.]</h2>
+        <p class="tl-lead tl-lead--center tl-reveal">[One sentence expanding on the audience: what they care about, what they're looking for.]</p>
+        <div class="tl-personas tl-stagger">
+
+          <div class="tl-persona tl-reveal">
+            <div class="tl-persona__icon">
+              <!-- Icon: replace SVG with a relevant icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="tl-persona__title">[Persona 1 title]</h3>
+            <p class="tl-persona__desc">[Short description of this audience segment and what they want from the leader's work.]</p>
+          </div>
+
+          <div class="tl-persona tl-reveal">
+            <div class="tl-persona__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <h3 class="tl-persona__title">[Persona 2 title]</h3>
+            <p class="tl-persona__desc">[Short description of this audience segment and what they want from the leader's work.]</p>
+          </div>
+
+          <div class="tl-persona tl-reveal">
+            <div class="tl-persona__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <h3 class="tl-persona__title">[Persona 3 title]</h3>
+            <p class="tl-persona__desc">[Short description of this audience segment and what they want from the leader's work.]</p>
+          </div>
+
+          <div class="tl-persona tl-reveal">
+            <div class="tl-persona__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <h3 class="tl-persona__title">[Persona 4 title]</h3>
+            <p class="tl-persona__desc">[Short description of this audience segment and what they want from the leader's work.]</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         03 — CONTENT / WORKS
+         Centered heading, tile chips for books/resources, featured image.
+         ============================================================ -->
+    <section class="tl-section tl-section--numbered" id="content">
+      <span class="tl-section-num" aria-hidden="true">03</span>
+      <div class="tl-container--with-num" style="text-align: center;">
+        <h2 class="tl-heading tl-heading--center tl-reveal">[Their content lives across books, teaching, and conferences.]</h2>
+        <p class="tl-lead tl-lead--center tl-reveal">[List the key works, platforms, and venues. Be specific: book titles, podcast names, organizations, conferences.]</p>
+
+        <div class="tl-tiles tl-reveal">
+          <div class="tl-tile">[Book Title 1]</div>
+          <div class="tl-tile">[Book Title 2]</div>
+          <div class="tl-tile">[Book Title 3]</div>
+          <div class="tl-tile">[Resource / Podcast]</div>
+          <div class="tl-tile">[Organization]</div>
+        </div>
+
+        <div class="tl-featured-img tl-reveal-scale">
+          <!-- Public asset: media-library landscape 16:9. Replace with leader context image when available: headshots/[leader-slug]/[leader-context-16x9].webp -->
+          <img
+            src="../public/media-library/images/landscape/16-9/content-graphic.svg"
+            alt=""
+            width="1280"
+            height="720"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         QUOTE / PULL QUOTE
+         Dark inversion section.
+         ============================================================ -->
+    <section class="tl-quote" id="quote">
+      <div class="tl-quote__inner tl-reveal">
+        <span class="tl-quote__mark" aria-hidden="true">"</span>
+        <blockquote>
+          <p class="tl-quote__text">[A compelling quote that captures the core tension or insight. This could be from the leader, about the leader, or a reflected understanding. Keep it to 2-3 sentences.]</p>
+          <cite class="tl-quote__cite">— [Attribution, e.g. "Reflected understanding, [Leader Name]"]</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         04 — CONSTRAINTS / REALITY
+         What limits exist and how Movemental addresses them.
+         ============================================================ -->
+    <section class="tl-section tl-section--numbered tl-section--alt" id="constraints">
+      <span class="tl-section-num" aria-hidden="true">04</span>
+      <div class="tl-container--with-num">
+        <h2 class="tl-heading tl-heading--center tl-reveal">[Time and attention are scarce — the real work is in the room.]</h2>
+        <p class="tl-lead tl-lead--center tl-reveal">[Describe how a platform that reduces friction addresses the leader's constraints without asking them to become a different kind of leader.]</p>
+        <div class="tl-values tl-stagger">
+
+          <div class="tl-value tl-reveal">
+            <div class="tl-value__icon tl-value__icon--sage">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <h3 class="tl-value__title">[Value 1 — e.g. "Interconnection"]</h3>
+            <p class="tl-value__body">[Describe the value: how books, articles, appearances, and teaching become visibly linked in one discoverable ecosystem.]</p>
+          </div>
+
+          <div class="tl-value tl-reveal">
+            <div class="tl-value__icon tl-value__icon--scarlet">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </div>
+            <h3 class="tl-value__title">[Value 2 — e.g. "Structure & repurpose"]</h3>
+            <p class="tl-value__body">[Describe the value: how years of teaching become articles and courses; how speaking and podcast content gets transcribed and published.]</p>
+          </div>
+
+          <div class="tl-value tl-reveal">
+            <div class="tl-value__icon tl-value__icon--orchid">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h3 class="tl-value__title">[Value 3 — e.g. "Ownership & discoverability"]</h3>
+            <p class="tl-value__body">[Describe the value: one place you control where credibility, content, and network are clearly attached — SEO + GEO so the work can move.]</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         05 — TESTIMONIALS (optional)
+         Social proof from people who know the leader's work.
+         Remove this section if not applicable.
+         ============================================================ -->
+    <section class="tl-section tl-section--numbered" id="testimonials">
+      <span class="tl-section-num" aria-hidden="true">05</span>
+      <div class="tl-container--with-num">
+        <h2 class="tl-heading tl-heading--center tl-reveal">[What others say about their work.]</h2>
+        <div class="tl-testimonials tl-stagger">
+
+          <div class="tl-testimonial tl-reveal">
+            <p class="tl-testimonial__text">"[Testimonial text — 2-3 sentences from someone who has been impacted by the leader's work.]"</p>
+            <div class="tl-testimonial__author">
+              <div class="tl-testimonial__avatar">[A]</div>
+              <div>
+                <div class="tl-testimonial__name">[Person Name]</div>
+                <div class="tl-testimonial__role">[Title, Organization]</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-testimonial tl-reveal">
+            <p class="tl-testimonial__text">"[Testimonial text — 2-3 sentences from someone who has been impacted by the leader's work.]"</p>
+            <div class="tl-testimonial__author">
+              <div class="tl-testimonial__avatar">[B]</div>
+              <div>
+                <div class="tl-testimonial__name">[Person Name]</div>
+                <div class="tl-testimonial__role">[Title, Organization]</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-testimonial tl-reveal">
+            <p class="tl-testimonial__text">"[Testimonial text — 2-3 sentences from someone who has been impacted by the leader's work.]"</p>
+            <div class="tl-testimonial__author">
+              <div class="tl-testimonial__avatar">[C]</div>
+              <div>
+                <div class="tl-testimonial__name">[Person Name]</div>
+                <div class="tl-testimonial__role">[Title, Organization]</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CTA
+         Final call to action — inverted dark section.
+         ============================================================ -->
+    <section class="tl-cta" id="cta">
+      <div class="tl-cta__inner">
+        <h2 class="tl-cta__title tl-reveal">[Your content can move.]</h2>
+        <p class="tl-cta__text tl-reveal">[One to two sentences: Movemental is built so your voice stays central — same mission, same message — with content that's findable, connected, and able to support sustainability.]</p>
+        <div class="tl-reveal">
+          <a href="#" class="tl-btn tl-btn--primary">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="tl-footer">
+    <div class="tl-footer__inner">
+      <div class="tl-footer__logo">move<span>mental</span></div>
+      <nav class="tl-footer__links" aria-label="Footer navigation">
+        <a href="why.html">Why</a>
+        <a href="how.html">How</a>
+        <a href="#">[Leader Name]</a>
+        <a href="#">Privacy</a>
+      </nav>
+    </div>
+    <p class="tl-footer__bottom">A credibility ecology for movement leaders.</p>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPTS — minimal, no external dependencies.
+       ============================================================ -->
+  <script>
+    (function () {
+      'use strict';
+
+      // --- Reading progress bar ---
+      var progress = document.getElementById('tl-progress');
+      function updateProgress() {
+        if (!progress) return;
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        progress.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+      }
+
+      // --- Nav scroll state ---
+      var nav = document.getElementById('tl-nav');
+      function updateNav() {
+        if (!nav) return;
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+      }
+
+      // Combined scroll handler (passive for performance)
+      window.addEventListener('scroll', function () {
+        updateProgress();
+        updateNav();
+      }, { passive: true });
+      updateProgress();
+      updateNav();
+
+      // --- Mobile menu toggle ---
+      var toggle = nav && nav.querySelector('.tl-nav__toggle');
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          var open = nav.classList.toggle('menu-open');
+          toggle.setAttribute('aria-expanded', open);
+        });
+      }
+
+      // --- Intersection Observer: reveal animations ---
+      var reveals = document.querySelectorAll(
+        '.tl-reveal, .tl-reveal-left, .tl-reveal-right, .tl-reveal-scale'
+      );
+      if (reveals.length && 'IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, {
+          threshold: 0.08,
+          rootMargin: '0px 0px -40px 0px'
+        });
+        reveals.forEach(function (el) { observer.observe(el); });
+      } else {
+        // Fallback: show everything immediately
+        reveals.forEach(function (el) { el.classList.add('visible'); });
+      }
+
+      // --- Smooth scroll for anchor links ---
+      document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          var target = document.querySelector(link.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Close mobile menu if open
+            if (nav) {
+              nav.classList.remove('menu-open');
+              if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            }
+          }
+        });
+      });
+
+    })();
+  </script>
+
+</body>
+</html>

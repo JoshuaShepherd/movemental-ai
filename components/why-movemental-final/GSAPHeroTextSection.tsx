@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { fontHeading, fontBody, fontAccent } from './typography'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -71,50 +72,80 @@ export function GSAPHeroTextSection() {
       }}
     >
       <div className={baseClasses} ref={block1Ref}>
-        <p
-          className="max-w-3xl text-xl leading-relaxed sm:text-2xl md:text-3xl lg:text-4xl"
+        <div
+          className="max-w-3xl space-y-4 text-xl leading-relaxed sm:text-2xl md:text-3xl lg:text-4xl"
           style={{
-            fontFamily: 'var(--font-playfair, Georgia, serif)',
+            fontFamily: fontHeading,
             color: 'var(--color-bright-snow-100, #f8faf8)',
           }}
         >
-          What if everything you ever wrote or said could live online, not as random pdfs and videos,
-          but as a cohesive body of work—digitally-adapted books, articles, and online courses,
-          ready to translate into new languages, supported by AI, and integrated into a
-          well-architected content, commerce, and subscriber ecosystem?
-        </p>
+          <p>
+            What if your life&apos;s work could live online on a unified digital platform you own
+            but didn&apos;t have to build—e-books, courses, articles, AI agents, all integrated in
+            an e-commerce and [subscription] platform built for movement—of your content and of the
+            people shaped by it?
+          </p>
+          <p>
+            Not scattered PDFs and videos—
+            <br />
+            but books, articles, and courses, digitally structured, AI-supported, and ready to grow.
+          </p>
+          <div className="h-12 sm:h-16" aria-hidden />
+          <p className="text-2xl sm:text-3xl md:text-4xl">In less than 2 weeks.</p>
+        </div>
       </div>
 
       <div className={baseClasses} ref={block2Ref}>
-        <p
-          className="max-w-2xl text-2xl font-medium sm:text-3xl md:text-4xl lg:text-5xl"
+        <div
+          className="max-w-3xl space-y-6 text-center"
           style={{
-            fontFamily: 'var(--font-playfair, Georgia, serif)',
+            fontFamily: fontBody,
             color: 'var(--color-bright-snow-100, #f8faf8)',
           }}
         >
-          What if it could happen this week?
-        </p>
+          <p className="text-xl leading-relaxed sm:text-2xl md:text-3xl">
+            And what if that platform was… part of a credibility network of 100 movement leaders
+            like Alan Hirsch and Brad Brisco.
+          </p>
+          <p
+            className="text-lg font-medium sm:text-xl"
+            style={{ fontFamily: fontHeading, color: 'var(--color-bright-snow-200, #e8ece8)' }}
+          >
+            100 movement leaders:
+          </p>
+          <ul className="mx-auto max-w-md list-none space-y-2 text-left text-base sm:text-lg">
+            <li>
+              <span
+                title="Cross-linking between leaders amplifies discoverability and signals shared credibility to readers and algorithms."
+              >
+                Linking to each other
+              </span>
+            </li>
+            <li>Collaborating in new ways</li>
+            <li>Publishing their best stuff</li>
+            <li>…and more.</li>
+          </ul>
+        </div>
       </div>
 
       <div className={baseClasses} ref={block3Ref}>
         <p
-          className="max-w-3xl text-lg leading-relaxed sm:text-xl md:text-2xl"
+          className="max-w-3xl text-2xl font-medium sm:text-3xl md:text-4xl"
           style={{
-            fontFamily: 'var(--font-inter, system-ui, sans-serif)',
-            color: 'var(--color-bright-snow-200, #e8ece8)',
+            fontFamily: fontHeading,
+            color: 'var(--color-bright-snow-100, #f8faf8)',
           }}
         >
-          What took us 6 months to build for Alan Hirsch took 2 weeks to build for Brad Brisco and 1
-          week for the next 98 leaders to join the Movemental network.
+          Look.
         </p>
+        {/* Alan's face fades in and story continues — visualization left as-is for now */}
       </div>
 
       <div className={baseClasses} ref={block4Ref}>
         <p
           className="text-sm uppercase tracking-widest"
           style={{
-            fontFamily: 'var(--font-space-grotesk, system-ui, sans-serif)',
+            fontFamily: fontAccent,
             color: 'var(--color-sage-400, #8a9a8a)',
           }}
         >

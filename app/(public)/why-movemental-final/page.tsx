@@ -3,6 +3,7 @@ import { GSAPHeroTextSection } from '@/components/why-movemental-final/GSAPHeroT
 import { SceniusVisualization } from '@/components/scenius-visualization/SceniusVisualization'
 import { TrustCollapseMiddleSection } from '@/components/why-movemental-final/TrustCollapseMiddleSection'
 import { CredibilityCrisisSection } from '@/components/why-movemental-final/CredibilityCrisisSection'
+import { fontBody } from '@/components/why-movemental-final/typography'
 
 export const metadata: Metadata = {
   title: 'Why Movemental | Movemental',
@@ -18,11 +19,11 @@ export const metadata: Metadata = {
 
 export default function WhyMovementalFinalPage() {
   return (
-    <>
+    <div style={{ fontFamily: fontBody }}>
       <GSAPHeroTextSection />
       <SceniusVisualization />
       <TrustCollapseMiddleSection />
       <CredibilityCrisisSection />
-    </>
+    </div>
   )
 }

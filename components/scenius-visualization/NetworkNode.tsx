@@ -1,6 +1,7 @@
 'use client'
 
 import { forwardRef } from 'react'
+import { fontAccent, fontBody } from '@/components/why-movemental-final/typography'
 import type { PositionedNode } from './useNetworkLayout'
 
 interface NetworkNodeProps {
@@ -97,7 +98,7 @@ export const NetworkNode = forwardRef<SVGGElement, NetworkNodeProps>(
             dominantBaseline="central"
             fill={isPersona ? 'rgba(163, 190, 163, 0.9)' : '#f0f4f0'}
             fontSize={fontSize}
-            fontFamily="var(--font-space-grotesk, monospace)"
+            fontFamily={fontAccent}
             fontWeight={600}
           >
             {initials}
@@ -111,7 +112,7 @@ export const NetworkNode = forwardRef<SVGGElement, NetworkNodeProps>(
           textAnchor="middle"
           fill={isPersona ? 'rgba(163, 190, 163, 0.85)' : '#f0f4f0'}
           fontSize={Math.max(6, r * 0.5)}
-          fontFamily="var(--font-inter, sans-serif)"
+          fontFamily={fontBody}
           fontWeight={400}
           style={{ pointerEvents: 'none' }}
         >

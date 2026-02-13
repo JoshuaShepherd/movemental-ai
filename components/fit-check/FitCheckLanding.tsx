@@ -2,14 +2,22 @@
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, User, Building2 } from 'lucide-react'
+import type { SelfScreenContext } from '@/lib/schemas/fit-check'
 
 interface FitCheckLandingProps {
   onStart: () => void
+  context: SelfScreenContext
+  onContextChange: (context: SelfScreenContext) => void
   className?: string
 }
 
-export function FitCheckLanding({ onStart, className }: FitCheckLandingProps) {
+export function FitCheckLanding({
+  onStart,
+  context,
+  onContextChange,
+  className,
+}: FitCheckLandingProps) {
   return (
     <div
       className={cn(
@@ -19,6 +27,36 @@ export function FitCheckLanding({ onStart, className }: FitCheckLandingProps) {
       )}
     >
       <div className="w-full max-w-2xl mx-auto text-center">
+        {/* Context switcher: Individual vs Organization */}
+        <div className="flex items-center justify-center gap-2 mb-8 p-1.5 rounded-full bg-white/10 border border-white/20">
+          <button
+            type="button"
+            onClick={() => onContextChange('individual')}
+            className={cn(
+              'flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors',
+              context === 'individual'
+                ? 'bg-white text-sage-900'
+                : 'text-sage-200 hover:text-white hover:bg-white/10'
+            )}
+          >
+            <User className="h-4 w-4" />
+            Individual
+          </button>
+          <button
+            type="button"
+            onClick={() => onContextChange('organization')}
+            className={cn(
+              'flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors',
+              context === 'organization'
+                ? 'bg-white text-sage-900'
+                : 'text-sage-200 hover:text-white hover:bg-white/10'
+            )}
+          >
+            <Building2 className="h-4 w-4" />
+            Organization
+          </button>
+        </div>
+
         {/* Main headline */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
           Is Movemental
@@ -30,7 +68,9 @@ export function FitCheckLanding({ onStart, className }: FitCheckLandingProps) {
 
         {/* Subheadline */}
         <p className="text-lg sm:text-xl text-sage-300 mb-10 max-w-lg mx-auto leading-relaxed">
-          A moment of recognition — not an application.
+          {context === 'organization'
+            ? 'A quick self-screen for organizations. Select what describes you; we’ll point you to the right next step.'
+            : 'A quick self-screen. Select what describes you; we’ll point you to the right next step.'}
         </p>
 
         {/* CTA button */}
@@ -48,7 +88,7 @@ export function FitCheckLanding({ onStart, className }: FitCheckLandingProps) {
         </Button>
 
         <p className="mt-6 text-xs text-sage-300">
-          No scoring. No qualification. Just recognition.
+          One question, multiple choices. We use it to route you well.
         </p>
       </div>
     </div>

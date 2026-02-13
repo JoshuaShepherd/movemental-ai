@@ -85,6 +85,9 @@ export type { FaqVariant } from "./faq-template-switcher";
 // Courses templates
 export { CoursesVideoPlayer } from "./courses-video-player";
 export { CoursesChapterBuilder } from "./courses-chapter-builder";
+export { FormationCompanionChat } from "./formation-companion-chat";
+export type { CourseFlowItem, CourseWeek } from "./courses-chapter-builder";
+export type { ChatMessage } from "./formation-companion-chat";
 export { CoursesLessonSidebar } from "./courses-lesson-sidebar";
 export { CoursesDarkPlayer } from "./courses-dark-player";
 export { CoursesBootcampHero } from "./courses-bootcamp-hero";

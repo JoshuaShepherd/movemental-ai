@@ -10,13 +10,14 @@ import { FitCheckResults } from './FitCheckResults'
 import { RecognitionGate } from './RecognitionGate'
 import { RecognitionNameStep } from './RecognitionNameStep'
 import {
-  RECOGNITION_OPTIONS,
-  RECOGNITION_PROMPT,
+  getRecognitionOptions,
+  getRecognitionPrompt,
   RECOGNITION_MICROCOPY,
   NAME_STEP_TRANSPARENCY,
-  isRecognized,
+  getPathway,
   type AssessmentState,
   type RecognitionResult,
+  type SelfScreenContext,
 } from '@/lib/schemas/fit-check'
 
 interface FitCheckContainerProps {
@@ -25,6 +26,7 @@ interface FitCheckContainerProps {
 
 export function FitCheckContainer({ className }: FitCheckContainerProps) {
   const [state, setState] = useState<AssessmentState>('landing')
+  const [context, setContext] = useState<SelfScreenContext>('individual')
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set())
   const [result, setResult] = useState<RecognitionResult | null>(null)
   const [isTransitioning, setIsTransitioning] = useState(false)
@@ -33,6 +35,11 @@ export function FitCheckContainer({ className }: FitCheckContainerProps) {
 
   const handleStart = useCallback(() => {
     setState('in-progress')
+  }, [])
+
+  const handleContextChange = useCallback((next: SelfScreenContext) => {
+    setContext(next)
+    setSelectedIds(new Set())
   }, [])
 
   const handleToggle = useCallback((id: string) => {
@@ -47,9 +54,9 @@ export function FitCheckContainer({ className }: FitCheckContainerProps) {
   const handleContinue = useCallback(() => {
     setIsTransitioning(true)
     setTimeout(() => {
-      const recognized = isRecognized(Array.from(selectedIds))
+      const pathway = getPathway(Array.from(selectedIds))
       setResult({
-        recognized,
+        pathway,
         selectedIds: Array.from(selectedIds),
         completedAt: new Date(),
       })
@@ -75,14 +82,21 @@ export function FitCheckContainer({ className }: FitCheckContainerProps) {
   }, [])
 
   if (state === 'landing') {
-    return <FitCheckLanding onStart={handleStart} className={className} />
+    return (
+      <FitCheckLanding
+        onStart={handleStart}
+        context={context}
+        onContextChange={handleContextChange}
+        className={className}
+      />
+    )
   }
 
   if (state === 'results' && result) {
     return (
       <FitCheckResults
         result={result}
-        onShareName={result.recognized ? handleShareName : undefined}
+        onShareName={result.pathway === 'full-fit' ? handleShareName : undefined}
         onSecondary={handleResultsSecondary}
         className={className}
       />
@@ -120,10 +134,10 @@ export function FitCheckContainer({ className }: FitCheckContainerProps) {
         )}
       >
         <RecognitionGate
-          options={RECOGNITION_OPTIONS}
+          options={getRecognitionOptions(context)}
           selectedIds={selectedIds}
           onToggle={handleToggle}
-          promptText={RECOGNITION_PROMPT}
+          promptText={getRecognitionPrompt(context)}
           microcopy={RECOGNITION_MICROCOPY}
         />
       </main>

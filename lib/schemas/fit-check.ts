@@ -1,17 +1,21 @@
 import { z } from 'zod'
 
 // ============================================
-// Recognition Gate Types and Schemas
+// Self-Screen (Movement Leader Fit) Types and Schemas
 // ============================================
-// Replaces the former "Fit Check" qualification model with a recognition-based
-// alignment gate: "Is Movemental Built for You?" — confirmation, not scoring.
+// Single-question multi-select: "Is Movemental built for you?" with three pathways:
+// Full Fit → create account; Content No Movement → publish content but not our niche; Affinity → care for them, communicate focus.
+
+export const SelfScreenContextSchema = z.enum(['individual', 'organization'])
+export type SelfScreenContext = z.infer<typeof SelfScreenContextSchema>
 
 /**
- * Single recognition statement (multi-select checklist item)
+ * Single recognition statement (multi-select checklist item). Optional tooltip for mDNA, content-not-multiplying, etc.
  */
 export const RecognitionOptionSchema = z.object({
   id: z.string(),
   label: z.string(),
+  tooltip: z.string().optional(),
 })
 
 export type RecognitionOption = z.infer<typeof RecognitionOptionSchema>
@@ -21,18 +25,24 @@ export type RecognitionOption = z.infer<typeof RecognitionOptionSchema>
  */
 export const AssessmentStateSchema = z.enum([
   'landing',
-  'in-progress',  // single recognition step
+  'in-progress',
   'results',
-  'name-step',   // post-gate: name + optional body of work (recognized only)
+  'name-step', // full-fit only: create account / share name
 ])
 
 export type AssessmentState = z.infer<typeof AssessmentStateSchema>
 
 /**
- * Result of the recognition gate (no score, no tiers)
+ * Pathway result: full-fit (create account), content-no-movement, or affinity
+ */
+export const PathwaySchema = z.enum(['full-fit', 'content-no-movement', 'affinity'])
+export type Pathway = z.infer<typeof PathwaySchema>
+
+/**
+ * Result of the self-screen
  */
 export const RecognitionResultSchema = z.object({
-  recognized: z.boolean(),
+  pathway: PathwaySchema,
   selectedIds: z.array(z.string()),
   completedAt: z.date(),
 })
@@ -40,16 +50,98 @@ export const RecognitionResultSchema = z.object({
 export type RecognitionResult = z.infer<typeof RecognitionResultSchema>
 
 // ============================================
-// Recognition Options (Copy SSOT)
+// Recognition Options (Copy SSOT) — Individual
 // ============================================
 
-export const RECOGNITION_OPTIONS: RecognitionOption[] = [
-  { id: 'movement-leader', label: "I've helped lead or catalyze a movement, not just an organization" },
-  { id: 'incarnational', label: 'My work is rooted in incarnational theology and lived practice' },
-  { id: 'body-of-work', label: 'I already have a body of work (books, sermons, teaching, writing, courses, talks, PDFs, etc.)' },
-  { id: 'depth-travel', label: "People often tell me my work has depth, but it doesn't travel easily" },
-  { id: 'faithfulness', label: 'I care more about faithfulness and longevity than growth hacks or virality' },
+const MOVEMENT_LEADER = 'movement-leader'
+const MDNA = 'mdna'
+const CREATE_CONTENT = 'create-content'
+const CONTENT_NOT_MULTIPLYING = 'content-not-multiplying'
+const LOW_MONEY = 'low-money'
+const TIME_STEWARDSHIP = 'time-stewardship'
+
+export const RECOGNITION_OPTIONS_INDIVIDUAL: RecognitionOption[] = [
+  { id: MOVEMENT_LEADER, label: 'I am considered a movement leader.' },
+  {
+    id: MDNA,
+    label: "I'm aligned with mDNA (movement DNA)—the six components of apostolic movement.",
+    tooltip: 'mDNA: Jesus is Lord, disciple-making, missional-incarnational impulse, apostolic ministry, organic systems, communitas. We use this as a shorthand for movement-oriented, embodied practice.',
+  },
+  { id: CREATE_CONTENT, label: 'I create and publish content (teaching, writing, courses, talks, etc.).' },
+  {
+    id: CONTENT_NOT_MULTIPLYING,
+    label: "My content isn't really online, or it's online in a way that doesn't lead to multiplication and movement.",
+    tooltip: "e.g. scattered across platforms, locked in PDFs or live events only, or published in isolation so it doesn't compound or spread.",
+  },
+  {
+    id: LOW_MONEY,
+    label: "There isn't much income or budget from my content work.",
+  },
+  {
+    id: TIME_STEWARDSHIP,
+    label: "I feel time constraints—both because I'm busy and because of stewardship (embodied ministry and presence vs. content creation).",
+  },
 ]
+
+// ============================================
+// Recognition Options — Organization (same gist)
+// ============================================
+
+export const RECOGNITION_OPTIONS_ORGANIZATION: RecognitionOption[] = [
+  { id: MOVEMENT_LEADER, label: 'We are considered a movement-oriented organization.' },
+  {
+    id: MDNA,
+    label: "We're aligned with mDNA—the six components of apostolic movement.",
+    tooltip: 'mDNA: Jesus is Lord, disciple-making, missional-incarnational impulse, apostolic ministry, organic systems, communitas.',
+  },
+  { id: CREATE_CONTENT, label: 'We create and publish content (resources, training, curricula, etc.).' },
+  {
+    id: CONTENT_NOT_MULTIPLYING,
+    label: "Our content isn't really online, or it's online in a way that doesn't lead to multiplication and movement.",
+    tooltip: "e.g. scattered across platforms, locked in events or internal use, or published in isolation so it doesn't compound.",
+  },
+  {
+    id: LOW_MONEY,
+    label: "We don't have much income or budget dedicated to content and distribution.",
+  },
+  {
+    id: TIME_STEWARDSHIP,
+    label: "We feel time and stewardship constraints—embodied presence and mission vs. content and platform work.",
+  },
+]
+
+/** Options for the current context (individual or organization). */
+export function getRecognitionOptions(context: SelfScreenContext): RecognitionOption[] {
+  return context === 'organization' ? RECOGNITION_OPTIONS_ORGANIZATION : RECOGNITION_OPTIONS_INDIVIDUAL
+}
+
+// ============================================
+// Pathway Logic
+// ============================================
+// Full fit: movement leader + mDNA + create content + (content not multiplying) + (low money or time/stewardship).
+// Content no movement: create content but not full fit (e.g. not our niche).
+// Affinity: don't create content or don't have movement—we still want to care for them.
+
+export function getPathway(selectedIds: string[]): Pathway {
+  const set = new Set(selectedIds)
+  const hasMovementLeader = set.has(MOVEMENT_LEADER)
+  const hasMdna = set.has(MDNA)
+  const hasCreateContent = set.has(CREATE_CONTENT)
+  const hasContentNotMultiplying = set.has(CONTENT_NOT_MULTIPLYING)
+  const hasLowMoney = set.has(LOW_MONEY)
+  const hasTimeStewardship = set.has(TIME_STEWARDSHIP)
+
+  const isFullFit =
+    hasMovementLeader &&
+    hasMdna &&
+    hasCreateContent &&
+    hasContentNotMultiplying &&
+    (hasLowMoney || hasTimeStewardship)
+
+  if (isFullFit) return 'full-fit'
+  if (hasCreateContent) return 'content-no-movement'
+  return 'affinity'
+}
 
 // ============================================
 // Copy for Results Screen (Config-Driven)
@@ -60,34 +152,43 @@ export interface RecognitionResultCopy {
   body: string
   primaryCta?: { label: string; action: 'share-name' }
   secondaryCta?: { label: string; href: string }
-  links?: Array< { label: string; href: string } >
+  links?: Array<{ label: string; href: string }>
 }
 
-export function getRecognitionResultCopy(recognized: boolean): RecognitionResultCopy {
-  if (recognized) {
+export function getRecognitionResultCopy(pathway: Pathway): RecognitionResultCopy {
+  if (pathway === 'full-fit') {
     return {
-      headline: 'Then we should probably talk.',
-      body: "Movemental is intentionally built for a narrow group of leaders. If you recognized yourself above, the next step isn't onboarding — it's conversation.",
-      primaryCta: { label: 'Share your name & body of work', action: 'share-name' },
-      secondaryCta: { label: "I'm not sure — help me discern", href: '/why-movemental' },
+      headline: "You're a full fit.",
+      body: "We're focused on movement leaders like you—embodied practice, content that could multiply, and real constraints on time and budget. The next step is to create an account so we can get you moving.",
+      primaryCta: { label: 'Create an account', action: 'share-name' },
+      secondaryCta: { label: 'Learn more first', href: '/why-movemental' },
     }
   }
+  if (pathway === 'content-no-movement') {
+    return {
+      headline: "You create content—we're just not in the same niche yet.",
+      body: "Right now we're focused on a specific slice of movement leaders (mDNA-aligned, content that isn't multiplying, limited budget/time). We're not sure yet what we'll offer for creators outside that focus, but we're glad you're here.",
+      links: [
+        { label: 'Explore the Book', href: '/learn' },
+        { label: 'Read Why Movemental', href: '/why-movemental' },
+      ],
+    }
+  }
+  // affinity
   return {
-    headline: "Movemental may not be for you — and that's okay.",
-    body: "Movemental is intentionally narrow right now. If you're curious, you're welcome to explore — but we don't want to pretend this is for everyone.",
+    headline: "You're in the right neighborhood.",
+    body: "You might not create content or lead a movement in the way we're built for—but we want to take care of you. Explore our writers and resources; we'll keep communicating who we're focused on so you're never in the dark.",
     links: [
       { label: 'Explore the Book', href: '/learn' },
       { label: 'Read Why Movemental', href: '/why-movemental' },
+      { label: 'About Us', href: '/about' },
     ],
   }
 }
 
-// ============================================
-// Threshold Logic (No Scoring)
-// ============================================
-
+// Legacy: recognized = full-fit only (for any code that still checks boolean)
 export function isRecognized(selectedIds: string[]): boolean {
-  return selectedIds.length >= 1
+  return getPathway(selectedIds) === 'full-fit'
 }
 
 // ============================================
@@ -100,12 +201,19 @@ export const RecognitionNameStepSchema = z.object({
 })
 export type RecognitionNameStep = z.infer<typeof RecognitionNameStepSchema>
 
-export const RECOGNITION_PROMPT =
-  'Movemental is built for leaders who recognize themselves in at least one of the following.'
+export const RECOGNITION_PROMPT_INDIVIDUAL =
+  'Which of these describe you? Select all that apply.'
+export const RECOGNITION_PROMPT_ORGANIZATION =
+  'Which of these describe your organization? Select all that apply.'
+export function getRecognitionPrompt(context: SelfScreenContext): string {
+  return context === 'organization' ? RECOGNITION_PROMPT_ORGANIZATION : RECOGNITION_PROMPT_INDIVIDUAL
+}
 export const RECOGNITION_MICROCOPY =
-  "You don't need to select all of these. Recognition, not perfection."
+  "We use your answers to point you to the right next step—full fit, content creator outside our niche, or friend of the house."
 export const NAME_STEP_TRANSPARENCY =
   'We do a bit of research before we talk so we can meet you well.'
+// Legacy alias
+export const RECOGNITION_PROMPT = RECOGNITION_PROMPT_INDIVIDUAL
 
 // ============================================
 // Legacy Exports (for minimal breaking change)

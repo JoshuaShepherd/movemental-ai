@@ -273,7 +273,7 @@ export function HowItWorksNewContainer({ className }: HowItWorksNewContainerProp
             <div className="pt-4">
               <Button asChild size="lg" className="group h-14 px-8 text-lg font-semibold">
                 <Link href="/fit-check">
-                  Take the Fit Check
+                  Take the Self-Screen
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>

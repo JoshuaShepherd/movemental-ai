@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { fontHeading, fontAccent } from './typography'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -11,8 +12,6 @@ const sectionBg = 'var(--color-sage-950, #161d16)'
 const textPrimary = 'var(--color-bright-snow-100, #f8faf8)'
 const textSecondary = 'var(--color-bright-snow-200, #e8ece8)'
 const textMuted = 'var(--color-sage-400, #8a9a8a)'
-const fontSerif = 'var(--font-playfair, Georgia, serif)'
-const fontSans = 'var(--font-inter, system-ui, sans-serif)'
 
 /**
  * GSAP scroll-driven section: trust collapse, the middle (publication/wisdom),
@@ -139,14 +138,14 @@ export function TrustCollapseMiddleSection() {
           <div className="max-w-3xl mx-auto space-y-4 sm:space-y-6">
             <p
               className="text-xl leading-relaxed sm:text-2xl md:text-3xl"
-              style={{ fontFamily: fontSerif, color: textPrimary }}
+              style={{ fontFamily: fontHeading, color: textPrimary }}
             >
               {item.lead}
             </p>
             {item.body && (
               <p
                 className="text-lg sm:text-xl md:text-2xl font-medium"
-                style={{ fontFamily: fontSerif, color: textSecondary }}
+                style={{ fontFamily: fontHeading, color: textSecondary }}
               >
                 {item.body}
               </p>
@@ -154,7 +153,7 @@ export function TrustCollapseMiddleSection() {
             {item.small && (
               <p
                 className="text-sm uppercase tracking-widest pt-2"
-                style={{ fontFamily: fontSans, color: textMuted }}
+                style={{ fontFamily: fontAccent, color: textMuted }}
               >
                 {item.small}
               </p>

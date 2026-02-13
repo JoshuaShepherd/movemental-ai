@@ -36,7 +36,7 @@ export function OnboardingCTA({ className }: OnboardingCTAProps) {
           >
             <Link href="/fit-check">
               <Calendar className="mr-2 h-5 w-5" />
-              Start with Fit Check
+              Start with Self-Screen
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>

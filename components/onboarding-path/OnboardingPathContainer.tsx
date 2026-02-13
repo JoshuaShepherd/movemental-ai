@@ -47,7 +47,7 @@ const WHAT_YOU_GET = [
 ]
 
 const ORDER_STEPS = [
-  'Fit Check — Am I the right person for this?',
+  'Self-Screen — Am I the right person for this?',
   'Why Movemental — What problem does this solve and why does it matter?',
   'How It Works — What actually happens from fit to launch?',
   'Team / Credibility — Who is behind this and why should I trust them?',
@@ -275,7 +275,7 @@ export function OnboardingPathContainer({ className }: OnboardingPathContainerPr
             <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
               <Button asChild size="lg" className="group h-14 px-8 text-lg font-semibold">
                 <Link href="/fit-check">
-                  Start with Fit Check
+                  Start with Self-Screen
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>

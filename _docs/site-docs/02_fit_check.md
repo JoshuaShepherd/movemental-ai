@@ -1,9 +1,11 @@
-# Fit Check
+# Fit Check / Self-Screen
 
-> **The Fit Check as a first-class structural component**
+> **The Fit Check (public name: Self-Screen) as a first-class structural component**
 
-**Version**: 1.0.0  
-**Last Updated**: January 2026
+**Version**: 1.1.0  
+**Last Updated**: February 2026
+
+**Implementation note**: The public-facing name is **Self-Screen**. The flow is a single question with multiple-select options. Context can be **Individual** or **Organization** (switcher on landing). Three pathways: **Full Fit** (create account), **Content No Movement** (publish content but not in our niche), **Affinity** (care for them, communicate focus). Route remains `/fit-check`.
 
 ---
 

@@ -51,7 +51,7 @@ interface SimLink extends SimulationLinkDatum<SimNode> {
 
 const WORLD_SIZE = 2000
 const CENTER = WORLD_SIZE / 2
-const TICK_COUNT = 300
+const TICK_COUNT = 450
 
 // ---------------------------------------------------------------------------
 // Hook

@@ -41,11 +41,9 @@ export function DarkHeroSection({ className }: DarkHeroSectionProps) {
           </span>
         </h1>
 
-        {/* Supporting text - the 4 blockers */}
+        {/* Supporting text */}
         <p className="text-lg sm:text-xl text-sage-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Your work is scattered across platforms, published in isolation, invisible to 
-          discovery systems, and disconnected from the networks that build credibility. 
-          This isn&apos;t your fault—until now, fixing it required resources most leaders didn&apos;t have.
+          We&apos;re focused on movement leaders. We&apos;ve made it easy to self-screen—see if we&apos;re built for you in one short step.
         </p>
 
         {/* CTA buttons */}
@@ -56,7 +54,7 @@ export function DarkHeroSection({ className }: DarkHeroSectionProps) {
             className="bg-scarlet-rush-500 hover:bg-scarlet-rush-600 text-white px-8 py-6 text-lg rounded-full shadow-lg shadow-scarlet-rush-500/25 transition-all hover:shadow-xl hover:shadow-scarlet-rush-500/30"
           >
             <Link href="/fit-check">
-              Take the 60-Second Fit Check
+              Take the Self-Screen
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
@@ -74,7 +72,7 @@ export function DarkHeroSection({ className }: DarkHeroSectionProps) {
 
         {/* Bottom hint text */}
         <div className="mt-16 flex items-center justify-center gap-2 text-sage-300 text-sm">
-          <span>just answer 6 questions and...</span>
+          <span>one question, multiple choices</span>
           <svg
             className="w-6 h-6 text-sage-300"
             viewBox="0 0 24 24"
@@ -84,7 +82,7 @@ export function DarkHeroSection({ className }: DarkHeroSectionProps) {
           >
             <path d="M7 17L17 7M17 7H7M17 7V17" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          <span>...discover your fit</span>
+          <span>we&apos;ll point you to the right next step</span>
         </div>
       </div>
 

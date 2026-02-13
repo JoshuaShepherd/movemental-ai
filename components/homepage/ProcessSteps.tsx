@@ -31,12 +31,12 @@ interface ProcessStepsProps {
 const steps: Step[] = [
   {
     number: 1,
-    title: 'Check Your Fit',
+    title: 'Self-Screen',
     description:
-      'Take the 60-second Fit Check to discover if Movemental is right for your movement. We help leaders who have real-world credibility and content ready to circulate.',
+      'We\'re focused on movement leaders. Take the Self-Screen—one question, multiple choices—to see if we\'re built for you.',
     icon: CheckCircle,
     hasCTA: true,
-    ctaText: 'Take Fit Check',
+    ctaText: 'Take Self-Screen',
     ctaLink: '/fit-check',
   },
   {
@@ -70,7 +70,7 @@ export function ProcessSteps({ className }: ProcessStepsProps) {
         {/* Section headline */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            From Fit Check to Launch
+            From Self-Screen to Launch
           </h2>
           <p className="text-lg text-sage-300 max-w-2xl mx-auto">
             A clear path from discernment to a platform where your content compounds

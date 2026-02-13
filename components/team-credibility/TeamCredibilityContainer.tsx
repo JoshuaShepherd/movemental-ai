@@ -173,7 +173,7 @@ export function TeamCredibilityContainer({
             href="/fit-check"
             className="inline-flex items-center justify-center h-14 px-8 text-lg font-semibold bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
           >
-            Start Fit Check
+            Start Self-Screen
           </a>
         </div>
       </section>
