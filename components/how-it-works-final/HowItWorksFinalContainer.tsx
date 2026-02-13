@@ -27,7 +27,7 @@ export function HowItWorksFinalContainer({ className }: { className?: string }) 
             A clear path from your existing work to a living system.
           </NarrativeStatement>
           <p className="mx-auto max-w-2xl text-center text-lg text-sage-300 sm:text-xl">
-            No hype. No black box. Just a repeatable process built around credible leadership.
+            No hype. No black box. A repeatable process built around credible leadership.
           </p>
         </div>
       </NarrativeSection>
@@ -38,14 +38,14 @@ export function HowItWorksFinalContainer({ className }: { className?: string }) 
           <NarrativeStatement alignment="center">
             Your work is here. <strong>It should also be here.</strong>
           </NarrativeStatement>
-          <div className="mx-auto max-w-3xl space-y-6 text-lg text-muted-foreground text-center">
-            <p>
-              Your sermons, books, talks, and notes already exist—in PDFs, on YouTube, in archives.
-              We don&apos;t start from a blank page. We start with what you have and make it
-              findable, linked, and part of a coherent platform. If it&apos;s cheap and fast, it&apos;s
-              stewardship.
-            </p>
-          </div>
+            <div className="mx-auto max-w-3xl space-y-6 text-lg text-muted-foreground text-center">
+              <p>
+                Your sermons, books, talks, and notes already exist—in PDFs, on YouTube, in
+                archives. We don&apos;t start from a blank page. We start with what you have and
+                make it findable, linked, and part of one coherent platform. Cheap and fast is
+                good stewardship.
+              </p>
+            </div>
           <WorkHereVisionSection className="mt-10" />
         </div>
       </NarrativeSection>
@@ -78,8 +78,8 @@ export function HowItWorksFinalContainer({ className }: { className?: string }) 
           </NarrativeStatement>
           <div className="mx-auto max-w-3xl space-y-6 text-lg text-muted-foreground text-center">
             <p>
-              Your existing material becomes a living archive—then becomes evergreen content,
-              courses, and translated circulation. Creation is not accelerated. Circulation is.
+              Your existing material becomes a living archive—then evergreen content, courses, and
+              circulation. We don&apos;t speed up creation. We speed up circulation.
             </p>
           </div>
           <ContentPipelineDiagram className="my-8" />
@@ -127,7 +127,7 @@ export function HowItWorksFinalContainer({ className }: { className?: string }) 
             </div>
           </div>
           <p className="mx-auto max-w-2xl text-center text-sage-300">
-            Quality is preserved through feedback loops. AI helps draft; humans shape. The system
+            Quality is preserved through feedback loops. AI drafts; humans shape. The system
             learns your constraints over time.
           </p>
         </div>
@@ -153,8 +153,8 @@ export function HowItWorksFinalContainer({ className }: { className?: string }) 
       <NarrativeSection background="default">
         <div className="max-w-2xl mx-auto text-center space-y-8">
           <p className="text-xl sm:text-2xl text-muted-foreground">
-            If you&apos;re curious what this would look like for your work, the next step is{' '}
-            <strong className="text-foreground">discernment</strong>—not commitment.
+            If you&apos;re curious what this would look like for your work, the next step is
+            discernment—not commitment.
           </p>
           <div className="pt-4">
             <Button asChild size="lg" className="group h-14 px-8 text-lg font-semibold">

@@ -10,47 +10,47 @@ const STEPS = [
   {
     title: 'Content Extraction',
     details: [
-      'Audit existing content across all formats — books, talks, articles, courses.',
-      'Identify core frameworks, recurring themes, and signature ideas.',
-      'Capture the raw material that defines the leader\'s intellectual contribution.',
+      'Audit existing content—books, talks, articles, courses.',
+      'Identify core frameworks, themes, and signature ideas.',
+      'Capture the raw material that defines the leader\'s contribution.',
     ],
   },
   {
     title: 'Canonical Structuring',
     details: [
-      'Organize extracted content into a coherent knowledge architecture.',
+      'Organize content into a coherent knowledge architecture.',
       'Establish relationships between ideas, themes, and bodies of work.',
-      'Create a single source of truth for the leader\'s intellectual output.',
+      'Create a single source of truth for the leader\'s output.',
     ],
   },
   {
     title: 'Modularization',
     details: [
-      'Break structured content into reusable, addressable modules.',
+      'Break content into reusable, addressable modules.',
       'Each module can stand alone or connect to larger narratives.',
-      'Enable content to be surfaced, remixed, and delivered in multiple formats.',
+      'Content can be surfaced, remixed, and delivered in multiple formats.',
     ],
   },
   {
     title: 'Platformization',
     details: [
-      'Deploy modular content into a leader-owned digital platform.',
-      'Structured books, courses, articles, and resources — all in one place.',
-      'The leader controls the experience, the audience, and the data.',
+      'Deploy modular content into a leader-owned platform.',
+      'Books, courses, articles, resources—all in one place.',
+      'The leader controls the experience, audience, and data.',
     ],
   },
   {
     title: 'AI Integration',
     details: [
-      'Layer AI tools that respect the leader\'s voice and intent.',
-      'Writing assistance, content repurposing, and intelligent search.',
-      'AI as translation layer — not replacement.',
+      'Add AI tools that respect the leader\'s voice and intent.',
+      'Writing assistance, repurposing, intelligent search.',
+      'AI as translation layer—not replacement.',
     ],
   },
   {
     title: 'Distribution Network',
     details: [
-      'Connect the platform to the broader Movemental credibility network.',
+      'Connect the platform to the Movemental credibility network.',
       'Structured content becomes discoverable across the movement.',
       'Peer connections compound credibility and reach.',
     ],
@@ -59,8 +59,8 @@ const STEPS = [
     title: 'Feedback & Amplification',
     details: [
       'Measure what resonates. Surface what compounds.',
-      'Content that connects earns more visibility — not through algorithms, but through trust.',
-      'The flywheel turns: structure creates leverage, leverage creates amplification.',
+      'Content that connects earns visibility through trust, not algorithms.',
+      'Structure creates leverage; leverage creates amplification.',
     ],
   },
 ]
@@ -80,7 +80,7 @@ export function MovementalPlaybook() {
             <strong>The Movemental Playbook</strong>
           </NarrativeStatement>
           <p className="mt-6 text-center text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-            This wasn&apos;t random. It followed a structured content architecture.
+            It followed a structured content architecture.
           </p>
         </div>
 

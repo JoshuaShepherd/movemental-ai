@@ -33,6 +33,7 @@ interface PublicNavigationProps {
 const platformItems: NavDropdownItem[] = [
   { label: 'How It Works', href: '/how-it-works', icon: <Zap className="h-4 w-4" />, description: 'See the platform in action' },
   { label: 'Self-Screen', href: '/fit-check', icon: <Target className="h-4 w-4" />, description: 'See if we\'re built for you' },
+  { label: 'Compare Options', href: '/compare', icon: <LayoutGrid className="h-4 w-4" />, description: 'Movemental vs agency vs SaaS' },
   { label: 'Pricing', href: '/pricing', icon: <DollarSign className="h-4 w-4" />, description: 'Plans for every stage' },
   { label: 'FAQ', href: '/faq', icon: <HelpCircle className="h-4 w-4" />, description: 'Billing, ownership, roles & support' },
 ]

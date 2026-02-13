@@ -61,25 +61,25 @@ const LOW_MONEY = 'low-money'
 const TIME_STEWARDSHIP = 'time-stewardship'
 
 export const RECOGNITION_OPTIONS_INDIVIDUAL: RecognitionOption[] = [
-  { id: MOVEMENT_LEADER, label: 'I am considered a movement leader.' },
+  { id: MOVEMENT_LEADER, label: 'I am a movement leader.' },
   {
     id: MDNA,
-    label: "I'm aligned with mDNA (movement DNA)—the six components of apostolic movement.",
-    tooltip: 'mDNA: Jesus is Lord, disciple-making, missional-incarnational impulse, apostolic ministry, organic systems, communitas. We use this as a shorthand for movement-oriented, embodied practice.',
+    label: "I'm aligned with mDNA—the six components of apostolic movement.",
+    tooltip: 'mDNA: Jesus is Lord, disciple-making, missional-incarnational impulse, apostolic ministry, organic systems, communitas. Shorthand for movement-oriented, embodied practice.',
   },
-  { id: CREATE_CONTENT, label: 'I create and publish content (teaching, writing, courses, talks, etc.).' },
+  { id: CREATE_CONTENT, label: 'I create and publish content (teaching, writing, courses, talks).' },
   {
     id: CONTENT_NOT_MULTIPLYING,
-    label: "My content isn't really online, or it's online in a way that doesn't lead to multiplication and movement.",
-    tooltip: "e.g. scattered across platforms, locked in PDFs or live events only, or published in isolation so it doesn't compound or spread.",
+    label: "My content isn't really online, or it's online in a way that doesn't multiply or move.",
+    tooltip: "e.g. scattered across platforms, locked in PDFs or events only, or published in isolation so it doesn't compound or spread.",
   },
   {
     id: LOW_MONEY,
-    label: "There isn't much income or budget from my content work.",
+    label: "I don't have much income or budget from my content work.",
   },
   {
     id: TIME_STEWARDSHIP,
-    label: "I feel time constraints—both because I'm busy and because of stewardship (embodied ministry and presence vs. content creation).",
+    label: "I'm short on time—busy with embodied ministry and presence, not just content.",
   },
 ]
 
@@ -88,25 +88,25 @@ export const RECOGNITION_OPTIONS_INDIVIDUAL: RecognitionOption[] = [
 // ============================================
 
 export const RECOGNITION_OPTIONS_ORGANIZATION: RecognitionOption[] = [
-  { id: MOVEMENT_LEADER, label: 'We are considered a movement-oriented organization.' },
+  { id: MOVEMENT_LEADER, label: 'We are a movement-oriented organization.' },
   {
     id: MDNA,
     label: "We're aligned with mDNA—the six components of apostolic movement.",
     tooltip: 'mDNA: Jesus is Lord, disciple-making, missional-incarnational impulse, apostolic ministry, organic systems, communitas.',
   },
-  { id: CREATE_CONTENT, label: 'We create and publish content (resources, training, curricula, etc.).' },
+  { id: CREATE_CONTENT, label: 'We create and publish content (resources, training, curricula).' },
   {
     id: CONTENT_NOT_MULTIPLYING,
-    label: "Our content isn't really online, or it's online in a way that doesn't lead to multiplication and movement.",
+    label: "Our content isn't really online, or it's online in a way that doesn't multiply or move.",
     tooltip: "e.g. scattered across platforms, locked in events or internal use, or published in isolation so it doesn't compound.",
   },
   {
     id: LOW_MONEY,
-    label: "We don't have much income or budget dedicated to content and distribution.",
+    label: "We don't have much budget for content and distribution.",
   },
   {
     id: TIME_STEWARDSHIP,
-    label: "We feel time and stewardship constraints—embodied presence and mission vs. content and platform work.",
+    label: "We're stretched—embodied presence and mission take priority over content and platform work.",
   },
 ]
 
@@ -159,7 +159,7 @@ export function getRecognitionResultCopy(pathway: Pathway): RecognitionResultCop
   if (pathway === 'full-fit') {
     return {
       headline: "You're a full fit.",
-      body: "We're focused on movement leaders like you—embodied practice, content that could multiply, and real constraints on time and budget. The next step is to create an account so we can get you moving.",
+      body: "We're built for movement leaders like you—embodied practice, content that could multiply, and real limits on time and budget. Next step: create an account so we can get you moving.",
       primaryCta: { label: 'Create an account', action: 'share-name' },
       secondaryCta: { label: 'Learn more first', href: '/why-movemental' },
     }
@@ -167,7 +167,7 @@ export function getRecognitionResultCopy(pathway: Pathway): RecognitionResultCop
   if (pathway === 'content-no-movement') {
     return {
       headline: "You create content—we're just not in the same niche yet.",
-      body: "Right now we're focused on a specific slice of movement leaders (mDNA-aligned, content that isn't multiplying, limited budget/time). We're not sure yet what we'll offer for creators outside that focus, but we're glad you're here.",
+      body: "Right now we're focused on a specific slice: mDNA-aligned movement leaders whose content isn't multiplying and who have limited budget or time. We don't yet offer much for creators outside that slice, but we're glad you're here.",
       links: [
         { label: 'Explore the Book', href: '/learn' },
         { label: 'Read Why Movemental', href: '/why-movemental' },
@@ -177,7 +177,7 @@ export function getRecognitionResultCopy(pathway: Pathway): RecognitionResultCop
   // affinity
   return {
     headline: "You're in the right neighborhood.",
-    body: "You might not create content or lead a movement in the way we're built for—but we want to take care of you. Explore our writers and resources; we'll keep communicating who we're focused on so you're never in the dark.",
+    body: "You may not create content or lead a movement the way we're built for—but we want to take care of you. Explore our writers and resources; we'll keep saying clearly who we're focused on.",
     links: [
       { label: 'Explore the Book', href: '/learn' },
       { label: 'Read Why Movemental', href: '/why-movemental' },
@@ -209,9 +209,9 @@ export function getRecognitionPrompt(context: SelfScreenContext): string {
   return context === 'organization' ? RECOGNITION_PROMPT_ORGANIZATION : RECOGNITION_PROMPT_INDIVIDUAL
 }
 export const RECOGNITION_MICROCOPY =
-  "We use your answers to point you to the right next step—full fit, content creator outside our niche, or friend of the house."
+  "We use your answers to route you: full fit, content creator outside our niche, or friend of the house."
 export const NAME_STEP_TRANSPARENCY =
-  'We do a bit of research before we talk so we can meet you well.'
+  'We do a bit of research before we talk so we can be useful.'
 // Legacy alias
 export const RECOGNITION_PROMPT = RECOGNITION_PROMPT_INDIVIDUAL
 

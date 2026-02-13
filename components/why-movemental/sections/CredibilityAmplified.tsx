@@ -10,19 +10,19 @@ const STATS = [
     number: '100',
     label: 'Structured Ideas',
     description:
-      'Core frameworks extracted, organized, and made permanently discoverable.',
+      'Core frameworks extracted, organized, and made discoverable.',
   },
   {
     number: '1,000',
     label: 'Discoverable Nodes',
     description:
-      'Individual content modules — chapters, lessons, articles — each addressable and searchable.',
+      'Content modules—chapters, lessons, articles—each addressable and searchable.',
   },
   {
     number: '10%',
     label: 'Compounded Credibility',
     description:
-      'Structured content compounds visibility month over month through network connections.',
+      'Structured content compounds visibility over time through network connections.',
   },
 ]
 

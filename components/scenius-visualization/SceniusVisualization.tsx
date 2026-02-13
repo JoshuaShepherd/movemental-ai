@@ -41,16 +41,16 @@ const TIER_SCALES: Record<number, number> = {
 }
 
 /** Total scroll height (vh) for the pinned network panel. Long enough to complete full reveal of ~100 nodes and leave the full network on screen for interaction. */
-const SCROLL_VH = 1200
+const SCROLL_VH = 1000
 
 /** Anchor node id for camera focus; camera stays on this node until the final "fit full network" tier. */
 const ANCHOR_NODE_ID = 'alan-hirsch'
 
-/** Duration (timeline units) per tier: more for first reveal (Alan→two) and last (full network hold). */
+/** Duration (timeline units) per tier: slow Alan→Brad, faster through the rest, smooth final hold. */
 function getTierDuration(tierIndex: number, totalTiers: number): number {
-  if (tierIndex === 1) return 1.25 // Alan → two nodes: give it weight
+  if (tierIndex === 1) return 2.0 // Alan → two nodes: slow so user can take it in
   if (tierIndex === totalTiers - 1) return 1.1 // final zoom: smooth and hold
-  return 0.85
+  return 0.55 // tiers 2–11: advance faster, still user-controlled via scrub
 }
 
 /** Narrative beats shown on scroll (one line per beat). Synced to timeline. */

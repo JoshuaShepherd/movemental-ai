@@ -16,6 +16,7 @@ const footerSections = [
       { label: 'Self-Screen', href: '/fit-check' },
       { label: 'Why Movemental', href: '/why-movemental' },
       { label: 'How It Works', href: '/how-it-works' },
+      { label: 'Compare Options', href: '/compare' },
       { label: 'Pricing', href: '/pricing' },
       { label: 'FAQ', href: '/faq' },
     ],

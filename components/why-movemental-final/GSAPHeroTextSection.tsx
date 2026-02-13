@@ -73,18 +73,16 @@ export function GSAPHeroTextSection() {
           }}
         >
           <p>
-            What if your life&apos;s work could live online on a unified digital platform you own
-            but didn&apos;t have to build—e-books, courses, articles, AI agents, all integrated in
-            an e-commerce and [subscription] platform built for movement—of your content and of the
-            people shaped by it?
+            What if your life&apos;s work could live on one platform you own but didn&apos;t have to
+            build—e-books, courses, articles, AI tools, all in one place, built for your content
+            and the people shaped by it?
           </p>
           <p>
-            Not scattered PDFs and videos—
-            <br />
-            but books, articles, and courses, digitally structured, AI-supported, and ready to grow.
+            Not scattered PDFs and videos—books, articles, and courses, structured, AI-supported,
+            and ready to grow.
           </p>
           <div className="h-12 sm:h-16" aria-hidden />
-          <p className="text-2xl sm:text-3xl md:text-4xl">In less than 2 weeks.</p>
+          <p className="text-2xl sm:text-3xl md:text-4xl">In under 2 weeks.</p>
         </div>
       </div>
 
@@ -97,7 +95,7 @@ export function GSAPHeroTextSection() {
           }}
         >
           <p className="text-xl leading-relaxed sm:text-2xl md:text-3xl">
-            And what if that platform was… part of a credibility network of 100 movement leaders
+            And what if that platform was part of a credibility network of 100 movement leaders—
             like Alan Hirsch and Brad Brisco.
           </p>
           <p
@@ -107,16 +105,13 @@ export function GSAPHeroTextSection() {
             100 movement leaders:
           </p>
           <ul className="mx-auto max-w-md list-none space-y-2 text-left text-base sm:text-lg">
-            <li>
-              <span
-                title="Cross-linking between leaders amplifies discoverability and signals shared credibility to readers and algorithms."
-              >
-                Linking to each other
-              </span>
+            <li
+              title="Cross-linking amplifies discoverability and signals shared credibility to readers and algorithms."
+            >
+              Linking to each other
             </li>
             <li>Collaborating in new ways</li>
-            <li>Publishing their best stuff</li>
-            <li>…and more.</li>
+            <li>Publishing their best work</li>
           </ul>
         </div>
       </div>

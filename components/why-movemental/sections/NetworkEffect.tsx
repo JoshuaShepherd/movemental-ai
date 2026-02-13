@@ -40,8 +40,8 @@ export function NetworkEffect() {
         </NarrativeStatement>
 
         <p className="text-center text-lg sm:text-xl text-sage-300 max-w-2xl mx-auto">
-          When structured content connects to structured systems, amplification multiplies.
-          Each node in the network strengthens every other node.
+          When structured content connects to structured systems, amplification multiplies. Each
+          node in the network strengthens the others.
         </p>
 
         {/* Network visualization */}

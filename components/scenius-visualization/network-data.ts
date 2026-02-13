@@ -39,6 +39,9 @@ export interface SceniusData {
 // ---------------------------------------------------------------------------
 
 function avatarUrl(name: string, id: string): string {
+  if (id === 'alan-hirsch') {
+    return '/media-library/images/network/alan-hirsch-illustration-headshot.png'
+  }
   if (id === 'brad-brisco') {
     return '/media-library/images/headshots/brad-brisco/brad-brisco-studio-backdrop-3x4.webp'
   }

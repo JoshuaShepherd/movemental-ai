@@ -15,8 +15,8 @@ export function Invitation() {
         </NarrativeStatement>
 
         <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-          Your content already exists. Your ideas already matter.
-          The only question is whether they&apos;re structured to move.
+          Your content already exists. Your ideas already matter. The question is whether
+          they&apos;re structured to move.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

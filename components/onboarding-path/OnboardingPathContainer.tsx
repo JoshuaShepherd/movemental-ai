@@ -14,6 +14,7 @@ import { ONBOARDING_PHASES } from '@/lib/schemas/onboarding-path'
 import { getTotalWeeks } from '@/lib/schemas/onboarding-path'
 import { WorkHereVisionSection } from '@/components/how-it-works-final/WorkHereVisionSection'
 import { ContentPipelineDiagram } from '@/components/how-it-works-new/diagrams/ContentPipelineDiagram'
+import { ContentPipelinePreviewAgent } from './ContentPipelinePreviewAgent'
 
 interface OnboardingPathContainerProps {
   className?: string
@@ -35,10 +36,10 @@ const SECTIONS = [
 ]
 
 const WHAT_MAKES_DIFFERENT = [
-  { title: 'Movement-First', description: 'Built specifically for movement leaders with missional theology and incarnational practice at the core.' },
-  { title: 'Evidence-Based', description: 'AI-powered content analysis ensures your platform reflects your actual voice and body of work.' },
+  { title: 'Movement-First', description: 'Built for movement leaders with missional theology and incarnational practice at the core.' },
+  { title: 'Evidence-Based', description: 'AI analyzes your content so the platform reflects your real voice and body of work.' },
   { title: 'Launch-Ready', description: 'Your platform launches with content, not empty templates. Ready to serve from day one.' },
-  { title: 'Network Effects', description: 'Connect with other movement leaders. Cross-pollinate ideas. Amplify reach together.' },
+  { title: 'Network Effects', description: 'Connect with other movement leaders. Cross-pollinate. Amplify reach together.' },
   { title: 'Owned, Not Rented', description: 'Your platform, your audience, your data. No algorithmic gatekeeping.' },
   { title: 'AI-Amplified', description: 'Movemental Intelligence helps create, curate, and connect your content across the network.' },
 ]
@@ -111,7 +112,8 @@ export function OnboardingPathContainer({ className }: OnboardingPathContainerPr
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-300">Works</span>
           </h1>
           <p className="text-lg sm:text-xl text-sage-300 mb-10 max-w-xl mx-auto">
-            Four phases to make your content discoverable, connected, and moving. Your platform launches with content, not empty templates.
+            Four phases to get your content discoverable, connected, and moving. Your platform
+            launches with content, not empty templates.
           </p>
           <Button
             onClick={handleStartJourney}
@@ -175,7 +177,10 @@ export function OnboardingPathContainer({ className }: OnboardingPathContainerPr
               From fit to live in <strong>3–4 weeks</strong>
             </NarrativeStatement>
             <p className="text-center text-lg text-muted-foreground max-w-3xl mx-auto">
-              After you confirm fit and understand why Movemental exists, the journey to a live platform runs in four phases. Your platform launches with content, not empty templates—configured for your voice and connected to the Movemental network. Each phase builds on the last. The process is movement-first, evidence-based, and launch-ready.
+              After you confirm fit and understand why Movemental exists, you go through four
+              phases. Your platform launches with content, not empty templates—configured for your
+              voice and connected to the Movemental network. Each phase builds on the last. The
+              process is movement-first, evidence-based, and launch-ready.
             </p>
           </div>
         </NarrativeSection>
@@ -207,13 +212,18 @@ export function OnboardingPathContainer({ className }: OnboardingPathContainerPr
             </NarrativeStatement>
             <div className="max-w-3xl mx-auto space-y-6 text-lg text-muted-foreground text-center">
               <p>
-                Your existing body of work — sermons, talks, books, notes, archives — passes through a discernment layer that identifies your voice, themes, and primary lane. What emerges is evergreen content structured for discovery.
+                Your existing work—sermons, talks, books, notes, archives—passes through a layer
+                that identifies your voice, themes, and lane. What emerges is evergreen content
+                structured for discovery.
               </p>
               <p className="text-foreground font-medium">
-                Creation is not accelerated. Circulation is.
+                We don&apos;t speed up creation. We speed up circulation.
               </p>
             </div>
             <ContentPipelineDiagram className="my-8" />
+            <div className="mt-12 pt-10 border-t border-border">
+              <ContentPipelinePreviewAgent />
+            </div>
           </div>
         </NarrativeSection>
       </section>
@@ -302,7 +312,10 @@ export function OnboardingPathContainer({ className }: OnboardingPathContainerPr
               Pricing and access
             </h2>
             <p className="text-muted-foreground">
-              Movemental&apos;s model is built for accessibility and alignment: an upfront fee that covers platform build and deployment (orders of magnitude below the $50K–$150K industry standard), plus a revenue share so incentives are aligned with your success. You keep the vast majority of revenue. Pricing is presented in full on the Pricing page—after you understand why Movemental exists and what the path looks like, so you can evaluate it in context.
+              Movemental charges an upfront fee (far below the $50K–$150K norm) plus a revenue
+              share so we're aligned with your success. You keep most of the revenue. Full pricing
+              is on the Pricing page—after you understand why Movemental exists and what the path
+              looks like, so you can evaluate it in context.
             </p>
             <Button asChild size="lg" variant="outline">
               <Link href="/pricing">View pricing</Link>
@@ -320,13 +333,16 @@ export function OnboardingPathContainer({ className }: OnboardingPathContainerPr
             </NarrativeStatement>
             <ul className="space-y-4 text-muted-foreground">
               <li>
-                <strong className="text-foreground">Team / Credibility</strong> — Who built Movemental and who guides it. Real people, embodied credibility.
+                <strong className="text-foreground">Team / Credibility</strong> — Who built
+                Movemental and who guides it.
               </li>
               <li>
-                <strong className="text-foreground">AI Book / Knowledge Spine</strong> — Foundational language, discernment, and posture. Free and substantive.
+                <strong className="text-foreground">AI Book / Knowledge Spine</strong> —
+                Foundational language, discernment, and posture. Free and substantive.
               </li>
               <li>
-                <strong className="text-foreground">Learning Hub</strong> — Guides, explainers, and resources to use the platform effectively.
+                <strong className="text-foreground">Learning Hub</strong> — Guides and resources
+                to use the platform.
               </li>
             </ul>
             <div className="flex flex-wrap gap-4 justify-center pt-4">
@@ -366,7 +382,7 @@ export function OnboardingPathContainer({ className }: OnboardingPathContainerPr
               <strong>Ready to begin?</strong>
             </NarrativeStatement>
             <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-              See if you&apos;re the right fit. No commitment required.
+              See if you&apos;re a fit. No commitment required.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
               <Button asChild size="lg" className="group h-14 px-8 text-lg font-semibold">

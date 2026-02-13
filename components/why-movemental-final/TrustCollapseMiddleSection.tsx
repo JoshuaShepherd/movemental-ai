@@ -83,34 +83,34 @@ export function TrustCollapseMiddleSection() {
   }> = [
     {
       lead:
-        'Because of AI, all non face-to-face communication and creation is as likely fake as real—and it\'s impossible to find out.',
+        'Because of AI, anything that isn\'t face-to-face can be fake or real—and you often can\'t tell.',
     },
     {
-      lead: 'Because of AI, the scale of that communication and creation is humanly incomprehensible.',
+      lead: 'The volume of that content is beyond what any person can take in.',
     },
     {
-      lead: 'The result is mass confusion and overwhelm.',
-      body: 'Which always leads to shutdown.',
+      lead: 'The result is confusion and overwhelm.',
+      body: 'Which leads to shutdown.',
     },
     {
-      lead: 'What do they shut down?',
-      body: 'What they can\'t verify. What can\'t they verify? Anything that wasn\'t LIVE.',
+      lead: 'What do people shut down?',
+      body: 'What they can\'t verify. And they can\'t verify what wasn\'t live.',
     },
     {
-      lead: 'Soon most people\'s trust will be two things:',
+      lead: 'For most people, trust is becoming two things:',
       body: 'Hyperlocal. And AI-mediated.',
-      small: 'In between, total collapse.',
+      small: 'In between, trust collapses.',
     },
     {
-      lead: 'What used to live in that space?',
+      lead: 'What used to live in that middle?',
       body: 'Publication. Wisdom—personal and collective.',
     },
     {
-      lead: 'On that embodiment spectrum—hyperlocal, middle, digital—movement leaders traverse all three.',
-      body: 'But they have predominantly taught and published through the middle. And it\'s gone.',
+      lead: 'Movement leaders work across all three: hyperlocal, middle, digital.',
+      body: 'But most have taught and published in the middle. And that middle is gone.',
     },
     {
-      lead: 'For most people, the inability to distinguish—combined with speed and scale—means they\'re done.',
+      lead: 'For most people, not being able to tell what\'s real—plus the speed and scale—means they\'re done.',
       body: 'Online trust, done. TV trust, done. Print trust, done.',
     },
     {

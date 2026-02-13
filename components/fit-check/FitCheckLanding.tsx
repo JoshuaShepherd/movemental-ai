@@ -69,8 +69,8 @@ export function FitCheckLanding({
         {/* Subheadline */}
         <p className="text-lg sm:text-xl text-sage-300 mb-10 max-w-lg mx-auto leading-relaxed">
           {context === 'organization'
-            ? 'A quick self-screen for organizations. Select what describes you; we’ll point you to the right next step.'
-            : 'A quick self-screen. Select what describes you; we’ll point you to the right next step.'}
+            ? 'A quick self-screen for organizations. Pick what describes you; we’ll point you to the right next step.'
+            : 'A quick self-screen. Pick what describes you; we’ll point you to the right next step.'}
         </p>
 
         {/* CTA button */}
@@ -88,7 +88,7 @@ export function FitCheckLanding({
         </Button>
 
         <p className="mt-6 text-xs text-sage-300">
-          One question, multiple choices. We use it to route you well.
+          One question, multiple choices. We use your answers to point you to the right path.
         </p>
       </div>
     </div>
