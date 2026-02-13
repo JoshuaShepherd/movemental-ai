@@ -39,7 +39,6 @@ export function GSAPHeroTextSection() {
       gsap.set(block1, { opacity: 1, y: 0 })
       gsap.set(block2, { opacity: 0, y: 30 })
       gsap.set(block3, { opacity: 0, y: 30 })
-      gsap.set(block4, { opacity: 0, y: 30 })
 
       // Phase 1: block1 stays, gets slightly bigger
       tl.to(block1, { scale: 1.08, opacity: 1, duration: 1, ease: 'power1.inOut' }, 0)
