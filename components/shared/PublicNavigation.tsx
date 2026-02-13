@@ -14,9 +14,8 @@ import {
 import { Menu, X, ChevronDown, Search, BookOpen, Layers, Brain, Sparkles, User, Zap, Target, DollarSign, Users, Building, Network, Heart, LayoutGrid } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-/** Full logo (horizontal) — light and dark nav. Per _docs/ui/logo-usage.md */
-const LOGO_NAV_LIGHT = '/media-library/images/logo/logo-horizontal-black-h32.webp'
-const LOGO_NAV_DARK = '/media-library/images/logo/logo-horizontal-white-h32.webp'
+/** Full logo (horizontal) — full color for both light and dark nav. Per _docs/ui/logo-usage.md */
+const LOGO_NAV = '/media-library/images/logo/logo-horizontal-full-color-h32.webp'
 
 interface NavDropdownItem {
   label: string
@@ -99,7 +98,7 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
             aria-label="Movemental home"
           >
             <Image
-              src={isDark ? LOGO_NAV_DARK : LOGO_NAV_LIGHT}
+              src={LOGO_NAV}
               alt="Movemental"
               width={67}
               height={32}

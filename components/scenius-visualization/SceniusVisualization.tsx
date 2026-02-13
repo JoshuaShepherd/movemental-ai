@@ -244,6 +244,57 @@ export function SceniusVisualization() {
 
   return (
     <>
+      {/* Intro: scrolls away before the viz pins */}
+      <div
+        className="px-6 pt-16 pb-8 md:px-10 md:pt-20 md:pb-10"
+        style={{
+          width: '100%',
+          background: 'var(--color-sage-950, #161d16)',
+          color: 'var(--color-bright-snow-100, #f0f4f0)',
+        }}
+      >
+        <p
+          className="mx-auto max-w-2xl text-center text-lg font-medium leading-relaxed md:text-xl"
+          style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}
+        >
+          Credibility in the AI age doesn&apos;t come from going viral. It comes from being part of a{' '}
+          <strong className="text-sage-300">network of verified voices</strong>.
+        </p>
+        <p
+          className="mx-auto mt-2 max-w-2xl text-center text-sm md:text-base"
+          style={{
+            color: 'var(--color-sage-300, #a3bea3)',
+            fontFamily: 'var(--font-inter, sans-serif)',
+          }}
+        >
+          The scenius behind the missional movement—and who&apos;s next. Scroll to explore; click a node to see how credibility is distributed.
+        </p>
+        <div
+          className="mx-auto mt-6 flex flex-wrap items-center justify-center gap-4 text-xs"
+          style={{
+            color: 'var(--color-sage-400, #8aab8a)',
+            fontFamily: 'var(--font-space-grotesk, monospace)',
+          }}
+        >
+          <span className="flex items-center gap-2">
+            <span
+              className="inline-block h-3 w-3 rounded-full border border-bright-snow-100"
+              style={{ background: 'var(--color-sage-700, #3a5a3a)' }}
+              aria-hidden
+            />
+            In the network today
+          </span>
+          <span className="flex items-center gap-2">
+            <span
+              className="inline-block h-3 w-3 rounded-full border border-dashed border-sage-400 bg-transparent"
+              style={{ borderColor: 'rgba(163, 190, 163, 0.7)' }}
+              aria-hidden
+            />
+            Who&apos;s next in the scenius
+          </span>
+        </div>
+      </div>
+
       <div
         ref={containerRef}
         style={{

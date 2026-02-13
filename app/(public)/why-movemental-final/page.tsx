@@ -1,20 +1,17 @@
 import { Metadata } from 'next'
-import { LateralPinIndicator } from '@/components/why-movemental-final/LateralPinIndicator'
-import { PlaybookPinSection } from '@/components/why-movemental-final/PlaybookPinSection'
-import { PlaybookTabbedPanel } from '@/components/why-movemental-final/PlaybookTabbedPanel'
+import { GSAPHeroTextSection } from '@/components/why-movemental-final/GSAPHeroTextSection'
 import { SceniusVisualization } from '@/components/scenius-visualization/SceniusVisualization'
-import { HorizontalPanelsSection } from '@/components/why-movemental-final/HorizontalPanelsSection'
-import { LinkingVisualizationsTabbedSection } from '@/components/why-movemental-final/LinkingVisualizationsTabbedSection'
-import { LayeredPinningSection } from '@/components/why-movemental-final/LayeredPinningSection'
+import { TrustCollapseMiddleSection } from '@/components/why-movemental-final/TrustCollapseMiddleSection'
+import { CredibilityCrisisSection } from '@/components/why-movemental-final/CredibilityCrisisSection'
 
 export const metadata: Metadata = {
   title: 'Why Movemental | Movemental',
   description:
-    'Movemental began by building for Alan Hirsch. Reflected understanding: calling, audience, content, constraints, and commerce.',
+    'What if your best work could live online as a cohesive body of work? The credibility crisis, Alan Hirsch, and credibility amplification via the very tool behind it.',
   openGraph: {
-    title: 'Why Movemental — Reflected Understanding',
+    title: 'Why Movemental — The Credibility Crisis & Credibility Amplification',
     description:
-      'Explore why Movemental exists through the lens of Alan Hirsch: calling, audience, existing content, constraints, and commerce.',
+      'There is a rapidly advancing credibility crisis. For us it was personal. Here is what we decided to do—and how we use the very tool behind the crisis to amplify what\'s real.',
     type: 'website',
   },
 }
@@ -22,13 +19,10 @@ export const metadata: Metadata = {
 export default function WhyMovementalFinalPage() {
   return (
     <>
-      <LateralPinIndicator />
-      <PlaybookPinSection />
-      <PlaybookTabbedPanel />
+      <GSAPHeroTextSection />
       <SceniusVisualization />
-      <HorizontalPanelsSection />
-      <LinkingVisualizationsTabbedSection />
-      <LayeredPinningSection />
+      <TrustCollapseMiddleSection />
+      <CredibilityCrisisSection />
     </>
   )
 }

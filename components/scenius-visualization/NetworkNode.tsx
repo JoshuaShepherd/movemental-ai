@@ -17,7 +17,7 @@ function getRadius(tier: number): number {
   return 9
 }
 
-/** Extract initials from a name */
+/** Extract initials from a name (e.g. "Church planter" -> "CP", "Alan Hirsch" -> "AH") */
 function getInitials(name: string): string {
   return name
     .split(' ')
@@ -37,30 +37,44 @@ export const NetworkNode = forwardRef<SVGGElement, NetworkNodeProps>(
     const r = getRadius(node.tier)
     const initials = getInitials(node.name)
     const fontSize = getFontSize(r)
+    const isPersona = !node.inNetwork
 
-    // Tier-based coloring
-    const fillColor =
-      node.tier === 0
+    // In-network: tier-based fill. Persona: outline only, muted.
+    const fillColor = isPersona
+      ? 'transparent'
+      : node.tier === 0
         ? '#cb3437' // Scarlet Rush for Alan
         : node.tier <= 2
           ? '#6e916e' // Sage for inner circle
           : node.tier <= 4
             ? '#8c50af' // Velvet Orchid for known authors
-            : '#3a5a3a' // Darker sage for mock
+            : '#3a5a3a'
+    const strokeColor = isPersona ? 'rgba(163, 190, 163, 0.7)' : '#f0f4f0'
+    const strokeWidth = isPersona ? 1.5 : 1.5
+    const strokeDasharray = isPersona ? '4 3' : undefined
 
     return (
       <g
         ref={ref}
         data-node-id={node.id}
         data-tier={node.tier}
+        data-in-network={node.inNetwork ? 'true' : 'false'}
         style={{ cursor: 'pointer', opacity: 0 }}
         onClick={() => onClick?.(node)}
       >
-        {/* Background circle */}
-        <circle cx={node.x} cy={node.y} r={r} fill={fillColor} stroke="#f0f4f0" strokeWidth={1.5} />
+        {/* Background circle: solid for in-network, outline for persona */}
+        <circle
+          cx={node.x}
+          cy={node.y}
+          r={r}
+          fill={fillColor}
+          stroke={strokeColor}
+          strokeWidth={strokeWidth}
+          strokeDasharray={strokeDasharray}
+        />
 
-        {/* Avatar image or initials fallback */}
-        {node.avatarUrl ? (
+        {/* Avatar image or initials */}
+        {!isPersona && node.avatarUrl ? (
           <>
             <clipPath id={`clip-${node.id}`}>
               <circle cx={node.x} cy={node.y} r={r - 1} />
@@ -81,7 +95,7 @@ export const NetworkNode = forwardRef<SVGGElement, NetworkNodeProps>(
             y={node.y}
             textAnchor="middle"
             dominantBaseline="central"
-            fill="#f0f4f0"
+            fill={isPersona ? 'rgba(163, 190, 163, 0.9)' : '#f0f4f0'}
             fontSize={fontSize}
             fontFamily="var(--font-space-grotesk, monospace)"
             fontWeight={600}
@@ -90,12 +104,12 @@ export const NetworkNode = forwardRef<SVGGElement, NetworkNodeProps>(
           </text>
         )}
 
-        {/* Name label below */}
+        {/* Label below: name or role for persona */}
         <text
           x={node.x}
           y={node.y + r + 10}
           textAnchor="middle"
-          fill="#f0f4f0"
+          fill={isPersona ? 'rgba(163, 190, 163, 0.85)' : '#f0f4f0'}
           fontSize={Math.max(6, r * 0.5)}
           fontFamily="var(--font-inter, sans-serif)"
           fontWeight={400}

@@ -65,7 +65,7 @@ export function PublicFooter({ variant = 'light', className }: PublicFooterProps
               aria-label="Movemental home"
             >
               <Image
-                src={isDark ? '/media-library/images/logo/logo-horizontal-white-h32.webp' : '/media-library/images/logo/logo-horizontal-black-h32.webp'}
+                src="/media-library/images/logo/logo-horizontal-full-color-h32.webp"
                 alt="Movemental"
                 width={67}
                 height={32}
