@@ -14,17 +14,14 @@ export function GSAPHeroTextSection() {
   const block1Ref = useRef<HTMLDivElement>(null)
   const block2Ref = useRef<HTMLDivElement>(null)
   const block3Ref = useRef<HTMLDivElement>(null)
-  const block4Ref = useRef<HTMLDivElement>(null)
-
   useGSAP(
     () => {
       const section = sectionRef.current
       const block1 = block1Ref.current
       const block2 = block2Ref.current
       const block3 = block3Ref.current
-      const block4 = block4Ref.current
 
-      if (!section || !block1 || !block2 || !block3 || !block4) return
+      if (!section || !block1 || !block2 || !block3) return
 
       const scrollLength = '+=400%'
 
@@ -49,13 +46,9 @@ export function GSAPHeroTextSection() {
       // Phase 2: block1 fades out, block2 ("What if it could happen this week?") fades in
       tl.to(block1, { opacity: 0, y: -40, duration: 0.6, ease: 'power2.in' }, 1)
       tl.fromTo(block2, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 1)
-      // Phase 3: block2 fades, block3 (background / Alan/Brad/98 leaders) fades in
+      // Phase 3: block2 fades, block3 ("Look.") fades in and holds
       tl.to(block2, { opacity: 0, y: -30, duration: 0.5 }, 2)
       tl.fromTo(block3, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 2)
-      // Phase 4: block3 fades, block4 (scroll hint) fades in briefly
-      tl.to(block3, { opacity: 0.7, y: -20, duration: 0.5 }, 3)
-      tl.fromTo(block4, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 3)
-      tl.to(block4, { opacity: 0.8, duration: 0.3 }, 3.5)
     },
     { scope: sectionRef }
   )
@@ -65,6 +58,7 @@ export function GSAPHeroTextSection() {
 
   return (
     <section
+      id="hero"
       ref={sectionRef}
       className="relative min-h-screen w-full"
       style={{
@@ -137,19 +131,6 @@ export function GSAPHeroTextSection() {
           }}
         >
           Look.
-        </p>
-        {/* Alan's face fades in and story continues — visualization left as-is for now */}
-      </div>
-
-      <div className={baseClasses} ref={block4Ref}>
-        <p
-          className="text-sm uppercase tracking-widest"
-          style={{
-            fontFamily: fontAccent,
-            color: 'var(--color-sage-400, #8a9a8a)',
-          }}
-        >
-          Scroll to explore the network
         </p>
       </div>
     </section>

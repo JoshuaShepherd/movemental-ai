@@ -122,6 +122,7 @@ export function TrustCollapseMiddleSection() {
 
   return (
     <section
+      id="trust-collapse"
       ref={sectionRef}
       className="relative min-h-screen w-full"
       style={{ background: sectionBg }}

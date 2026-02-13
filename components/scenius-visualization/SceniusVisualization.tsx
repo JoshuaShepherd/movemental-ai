@@ -53,6 +53,16 @@ function getTierDuration(tierIndex: number, totalTiers: number): number {
   return 0.85
 }
 
+/** Narrative beats shown on scroll (one line per beat). Synced to timeline. */
+const NARRATIVE_BEATS = [
+  'One voice.',
+  'Two. The graph begins—who points to you.',
+  'Connected voices. Each addition makes the whole more findable.',
+  'The scenius grows.',
+  'At 100: a real credibility graph.',
+  'Your content discoverable through the people who already trust you. Click a node to explore.',
+]
+
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
@@ -109,6 +119,7 @@ function getCameraTransform(
 export function SceniusVisualization() {
   const containerRef = useRef<HTMLDivElement>(null)
   const introRef = useRef<HTMLDivElement>(null)
+  const narrativeStripRef = useRef<HTMLDivElement>(null)
   const svgRef = useRef<SVGSVGElement>(null)
   const cameraRef = useRef<SVGGElement>(null)
   const nodeGroupRef = useRef<SVGGElement>(null)
@@ -227,6 +238,18 @@ export function SceniusVisualization() {
         tl.to(introOverlay, { opacity: 0, duration: 0.2, ease: 'power2.in' }, 0)
       }
 
+      // Narrative strip: beat elements (opacity 0 initially), then show beat 0 after intro
+      const narrativeStrip = narrativeStripRef.current
+      const beats = narrativeStrip
+        ? NARRATIVE_BEATS.map((_, idx) =>
+            narrativeStrip.querySelector(`[data-beat="${idx}"]`) as HTMLElement
+          ).filter(Boolean)
+        : []
+      if (beats.length > 0) {
+        gsap.set(beats, { opacity: 0 })
+        tl.to(beats[0], { opacity: 1, duration: 0.35, ease: 'power1.out' }, 0.22)
+      }
+
       // Cumulative visible nodes for bounding-box calculation
       const visibleNodes: PositionedNode[] = [...(nodeLookup.get(0) || [])]
       const lastTier = TIERS[TIERS.length - 1]
@@ -288,9 +311,30 @@ export function SceniusVisualization() {
           })
           tl.to(edgeEls, { strokeDashoffset: 0, duration: 0.6, stagger: 0.02, ease: 'none' }, '<+0.1')
         }
+
+        // Narrative: at key tiers, switch to the next beat (fade out previous, fade in next)
+        if (beats.length >= 6) {
+          if (i === 1) {
+            tl.to(beats[0], { opacity: 0, duration: 0.25, ease: 'power1.in' }, '+=0.15')
+            tl.to(beats[1], { opacity: 1, duration: 0.4, ease: 'power1.out' }, '<')
+          } else if (i === 4) {
+            tl.to(beats[1], { opacity: 0, duration: 0.25 }, '+=0.1')
+            tl.to(beats[2], { opacity: 1, duration: 0.4 }, '<')
+          } else if (i === 7) {
+            tl.to(beats[2], { opacity: 0, duration: 0.25 }, '+=0.1')
+            tl.to(beats[3], { opacity: 1, duration: 0.4 }, '<')
+          } else if (i === TIERS.length - 1) {
+            tl.to(beats[3], { opacity: 0, duration: 0.25 }, '+=0.1')
+            tl.to(beats[4], { opacity: 1, duration: 0.4 }, '<')
+          }
+        }
       }
 
-      // End pad: hold the full network in view for a long stretch so users can interact (click nodes, explore). Reveal finishes at ~60% of scroll; remaining scroll is full network on screen.
+      // End pad: hold the full network; show final narrative beat (click to explore)
+      if (beats.length >= 6) {
+        tl.to(beats[4], { opacity: 0, duration: 0.3 }, '+=0.2')
+        tl.to(beats[5], { opacity: 1, duration: 0.5 }, '<')
+      }
       tl.to({}, { duration: 6 })
     },
     { scope: containerRef, dependencies: [layout, nodeLookup, linkTierMap, scaleForFullNetwork] }
@@ -337,7 +381,7 @@ export function SceniusVisualization() {
               fontFamily: fontBody,
             }}
           >
-            The scenius behind the missional movement—and who&apos;s next. Scroll to explore; click a node to see how credibility is distributed.
+            The scenius behind the missional movement—and who&apos;s next. Click a node to see how credibility is distributed.
           </p>
           <div
             className="mx-auto mt-6 flex flex-wrap items-center justify-center gap-4 text-xs"
@@ -362,6 +406,39 @@ export function SceniusVisualization() {
               />
               Who&apos;s next in the scenius
             </span>
+          </div>
+        </div>
+
+        {/* Narrative strip: story beats that update on scroll (synced to timeline) */}
+        <div
+          ref={narrativeStripRef}
+          className="absolute bottom-0 left-0 right-0 z-20 flex justify-center px-6 pb-8 pt-4 md:px-10 md:pb-10"
+          style={{
+            background: 'linear-gradient(to top, var(--color-sage-950, #161d16) 60%, transparent)',
+            pointerEvents: 'none',
+          }}
+          aria-live="polite"
+          aria-atomic
+        >
+          <div className="relative mx-auto max-w-2xl text-center">
+            {NARRATIVE_BEATS.map((text, idx) => (
+              <p
+                key={idx}
+                data-beat={idx}
+                className="absolute left-0 right-0 top-0 mx-auto max-w-2xl px-4 text-center text-base font-medium leading-relaxed md:text-lg"
+                style={{
+                  fontFamily: fontHeading,
+                  color: 'var(--color-bright-snow-100, #f0f4f0)',
+                  opacity: 0,
+                }}
+              >
+                {text}
+              </p>
+            ))}
+            {/* Spacer so the container has height; beat text is absolutely positioned over it */}
+            <p className="invisible text-base font-medium md:text-lg" style={{ fontFamily: fontHeading }}>
+              {NARRATIVE_BEATS[0]}
+            </p>
           </div>
         </div>
 
