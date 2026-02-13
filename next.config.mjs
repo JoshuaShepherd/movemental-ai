@@ -8,6 +8,16 @@ const nextConfig = {
         destination: '/how-it-works',
         permanent: true,
       },
+      {
+        source: '/how-it-works-new',
+        destination: '/how-it-works',
+        permanent: true,
+      },
+      {
+        source: '/how-it-works-final',
+        destination: '/how-it-works',
+        permanent: true,
+      },
     ]
   },
 };

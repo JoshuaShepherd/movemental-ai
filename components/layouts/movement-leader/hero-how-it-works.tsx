@@ -9,8 +9,9 @@ interface HeroHowItWorksProps {
 }
 
 /**
- * How It Works Hero — Based on Blue Apron Wine reference
- * Hero image top with overlay text + CTA, then "How It Works" 3-step section below
+ * Template-only hero: "How It Works" 3-step section (Blue Apron Wine reference).
+ * Used in movement-leader template preview (/templates), NOT on the main site's
+ * How It Works page (which uses OnboardingPathContainer at /how-it-works).
  */
 export function HeroHowItWorks({ className }: HeroHowItWorksProps) {
   const steps = [
@@ -99,4 +100,4 @@ export function HeroHowItWorks({ className }: HeroHowItWorksProps) {
   );
 }
 
-HeroHowItWorks.displayName = "HeroHowItWorks";
+HeroHowItWorks.displayName = "HeroHowItWorksTemplate";

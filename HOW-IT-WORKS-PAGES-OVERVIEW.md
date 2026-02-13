@@ -4,6 +4,13 @@
 **Audience:** Product/content decision-making.  
 **Last updated:** February 2026.
 
+### Implementation status (done)
+
+- **Canonical only:** `/how-it-works` is the single How It Works page; `OnboardingPathContainer` includes merged content (Your work here, Pipeline, AI role).
+- **Redirects:** `/onboarding`, `/how-it-works-new`, and `/how-it-works-final` 301 → `/how-it-works` (`next.config.mjs`).
+- **Alternate routes removed:** `app/(public)/how-it-works-new/page.tsx` and `app/(public)/how-it-works-final/page.tsx` deleted; components remain in repo for reference.
+- **Template hero:** `HeroHowItWorks` JSDoc and `displayName = "HeroHowItWorksTemplate"` clarify it is for template preview only, not the main site.
+
 ---
 
 ## Part 1 — Current Inventory: All How-It-Works Content
