@@ -70,7 +70,7 @@ export function GSAPHeroTextSection() {
         background: 'var(--color-sage-950, #161d16)',
       }}
     >
-      <div className={baseClasses} ref={block1}>
+      <div className={baseClasses} ref={block1Ref}>
         <p
           className="max-w-3xl text-xl leading-relaxed sm:text-2xl md:text-3xl lg:text-4xl"
           style={{
@@ -85,7 +85,7 @@ export function GSAPHeroTextSection() {
         </p>
       </div>
 
-      <div className={baseClasses} ref={block2}>
+      <div className={baseClasses} ref={block2Ref}>
         <p
           className="max-w-2xl text-2xl font-medium sm:text-3xl md:text-4xl lg:text-5xl"
           style={{
@@ -97,7 +97,7 @@ export function GSAPHeroTextSection() {
         </p>
       </div>
 
-      <div className={baseClasses} ref={block3}>
+      <div className={baseClasses} ref={block3Ref}>
         <p
           className="max-w-3xl text-lg leading-relaxed sm:text-xl md:text-2xl"
           style={{
@@ -110,7 +110,7 @@ export function GSAPHeroTextSection() {
         </p>
       </div>
 
-      <div className={baseClasses} ref={block4}>
+      <div className={baseClasses} ref={block4Ref}>
         <p
           className="text-sm uppercase tracking-widest"
           style={{
