@@ -118,25 +118,21 @@ export function getRecognitionOptions(context: SelfScreenContext): RecognitionOp
 // ============================================
 // Pathway Logic
 // ============================================
-// Full fit: movement leader + mDNA + create content + (content not multiplying) + (low money or time/stewardship).
-// Content no movement: create content but not full fit (e.g. not our niche).
-// Affinity: don't create content or don't have movement—we still want to care for them.
+// Full fit: any 2 of 3 core (movement leader, mDNA, create content). Rationale:
+// - ML + mDNA only: right person; we help them start or grow content.
+// - ML + content only: practice matches; mDNA may be language/articulation we help with.
+// - mDNA + content only: same theology and content; "movement leader" may be identity they don't claim yet.
+// We do not require content-not-multiplying or constraint (low money / time)—those describe how we serve them.
+// Content no movement: exactly one core (e.g. content only). Affinity: no core options selected.
 
 export function getPathway(selectedIds: string[]): Pathway {
   const set = new Set(selectedIds)
   const hasMovementLeader = set.has(MOVEMENT_LEADER)
   const hasMdna = set.has(MDNA)
   const hasCreateContent = set.has(CREATE_CONTENT)
-  const hasContentNotMultiplying = set.has(CONTENT_NOT_MULTIPLYING)
-  const hasLowMoney = set.has(LOW_MONEY)
-  const hasTimeStewardship = set.has(TIME_STEWARDSHIP)
 
-  const isFullFit =
-    hasMovementLeader &&
-    hasMdna &&
-    hasCreateContent &&
-    hasContentNotMultiplying &&
-    (hasLowMoney || hasTimeStewardship)
+  const coreCount = [hasMovementLeader, hasMdna, hasCreateContent].filter(Boolean).length
+  const isFullFit = coreCount >= 2
 
   if (isFullFit) return 'full-fit'
   if (hasCreateContent) return 'content-no-movement'
@@ -159,7 +155,7 @@ export function getRecognitionResultCopy(pathway: Pathway): RecognitionResultCop
   if (pathway === 'full-fit') {
     return {
       headline: "You're a full fit.",
-      body: "We're built for movement leaders like you—embodied practice, content that could multiply, and real limits on time and budget. Next step: create an account so we can get you moving.",
+      body: "We're built for movement leaders and mDNA-aligned creators—whether you're already publishing content or ready to get it moving. Next step: create an account so we can get you moving.",
       primaryCta: { label: 'Create an account', action: 'share-name' },
       secondaryCta: { label: 'Learn more first', href: '/why-movemental' },
     }

@@ -6,6 +6,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { NarrativeSection } from '@/components/why-movemental/NarrativeSection'
 import { NarrativeStatement } from '@/components/why-movemental/NarrativeStatement'
+import { ExternalQuoteCallout } from '@/components/why-movemental-final/ExternalQuoteCallout'
 import { fontHeading, fontBody } from './typography'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -104,7 +105,13 @@ function CredibilityCrisisFactsBlock() {
             So what?
           </h3>
           <p className="text-sage-200 space-y-3" style={{ fontFamily: fontBody }}>
-            This isn&apos;t a tech problem. <strong className="text-white">It&apos;s a human
+            Many movement leaders feel it: I have credibility in the room. Online I&apos;m
+            invisible. I don&apos;t want to create more—I want what I&apos;ve created to do more. I
+            don&apos;t have time to become a content strategist, and I shouldn&apos;t have to. For a
+            long time it was right not to pour years into &quot;being findable&quot;—the cost made it
+            poor stewardship. The moment has flipped: the opportunity now costs you almost nothing,
+            and the upside isn&apos;t just your credibility but the network&apos;s. This isn&apos;t a
+            tech problem. <strong className="text-white">It&apos;s a human
             problem.</strong> It needs a human response—thoughtful, personalized AI integration.
             That&apos;s not mainly technical. It&apos;s hard. And it needs a community to carry it.
             We decided to build <strong className="text-white">credibility through networks</strong>,
@@ -112,6 +119,15 @@ function CredibilityCrisisFactsBlock() {
             trust you.
           </p>
         </div>
+
+        <ExternalQuoteCallout
+          quote="Who did the posting will soon matter more than what was posted."
+          attribution="The Economist"
+          source="AI-generated content is raising the value of trust (Jan 2024)"
+          sourceUrl="https://www.economist.com/leaders/2024/01/18/ai-generated-content-is-raising-the-value-of-trust"
+          variant="light"
+          triggerStart="top 75%"
+        />
       </div>
     </section>
   )
@@ -145,6 +161,13 @@ export function CredibilityCrisisSection() {
               network of verified humans who can steward credibility, content, and community when
               the middle has collapsed.
             </p>
+            <ExternalQuoteCallout
+              quote="Scenius is the intelligence of a whole operation or group of people—the communal form of the concept of genius."
+              attribution="Brian Eno"
+              source="Creativity Through Community — Watch on YouTube"
+              sourceUrl="https://www.youtube.com/watch?v=a-4VnHWj15o"
+              variant="dark"
+            />
           </div>
         </div>
       </NarrativeSection>
@@ -169,6 +192,13 @@ export function CredibilityCrisisSection() {
               and linked to trusted peers. Your work doesn&apos;t sit alone—it becomes discoverable
               through the people who already trust you.
             </p>
+            <ExternalQuoteCallout
+              quote="Most people who want to be creative would be served best not by worrying about genius but by trying to create or join a scenius."
+              attribution="Austin Kleon"
+              source="Show Your Work!"
+              sourceUrl="https://austinkleon.com/show-your-work/"
+              variant="dark"
+            />
           </div>
         </div>
       </NarrativeSection>
@@ -191,6 +221,12 @@ export function CredibilityCrisisSection() {
               handle structure and formatting so you can focus on what only you can do. The
               credibility stays yours. It&apos;s grounded in what&apos;s real—verified through the
               network, not fabricated by the algorithm.
+            </p>
+            <p>
+              Whether you want AI for human flourishing or not: if you don&apos;t know its power,
+              you miss the benefits and you miss the harm. The posture that serves movement
+              leaders is liminal, experimental, risk-taking in public—toward maturity and formation
+              while staying embodied and relational.
             </p>
             <p className="font-medium text-white">
               Use AI to amplify what&apos;s real. Don&apos;t use it to fake what isn&apos;t.
@@ -220,8 +256,10 @@ export function CredibilityCrisisSection() {
               infrastructure from day one.
             </p>
             <p>
-              <strong className="text-foreground">10%.</strong> Revenue share aligns us with your
-              success. We don&apos;t make money unless your content moves. That keeps us building
+              <strong className="text-foreground">10%.</strong> Traditional publishing has taken
+              85–90% and left the writer with the rest; the only credibility model said you needed
+              them to be legit. We take 10% when you succeed. Revenue share aligns us with your
+              success—we don&apos;t make money unless your content moves. That keeps us building
               for circulation and credibility, not for extraction. We grow when you do.
             </p>
           </div>
@@ -246,6 +284,13 @@ export function CredibilityCrisisSection() {
               that travels—can hold again. So movement leaders can teach and publish there, and
               movement can still happen in the room.
             </p>
+            <ExternalQuoteCallout
+              quote="We admire Van Gogh's paintings, not his publication schedule."
+              attribution="More Tothat"
+              source="Make Classics, Not Content"
+              sourceUrl="https://moretothat.com/make-classics-not-content/"
+              variant="light"
+            />
           </div>
         </div>
       </NarrativeSection>

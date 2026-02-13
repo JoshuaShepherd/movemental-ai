@@ -14,6 +14,7 @@ export interface FaqItem {
 export const FAQ_CATEGORIES = [
   "Billing & plans",
   "Who owns what",
+  "Partnership, payments & exits",
   "Roles & team",
   "Platform & content",
   "Getting started",
@@ -70,7 +71,12 @@ export const FAQ_ITEMS: { category: FaqCategory; items: FaqItem[] }[] = [
       {
         question: "How does the 10% revenue share work?",
         answer:
-          "You keep 90% of all revenue from your content—subscriptions, course sales, ebooks, consulting fees processed through your platform. We take 10% as our ongoing fee. There are no hidden costs, no monthly fees, and no per-transaction charges on top of the revenue share.",
+          "You keep 90% of all revenue from your content—subscriptions, course sales, ebooks, consulting fees processed through your platform. We take 10% as our ongoing fee. The split happens automatically at the moment of each transaction; you never invoice us and we never manually take money. Revenue is distributed to you monthly with detailed reporting. There are no hidden costs, no monthly platform fees, and no per-transaction charges on top of the revenue share.",
+      },
+      {
+        question: "How do payments and the 90/10 split work technically?",
+        answer:
+          "We use Stripe Connect so that revenue flows safely and transparently. When a customer pays you, the split happens automatically at the moment of payment: 90% goes to your account and 10% to Movemental. Payment goes directly to you—not through Movemental—and every transaction is visible and auditable in your dashboard.",
       },
       {
         question: "What if I don't generate revenue right away?",
@@ -83,14 +89,19 @@ export const FAQ_ITEMS: { category: FaqCategory; items: FaqItem[] }[] = [
     category: "Who owns what",
     items: [
       {
-        question: "Do I really own the platform?",
+        question: "Do I really own my platform, content, and audience?",
         answer:
-          "Yes. Your platform, your domain, your audience data, and your content are yours. If you ever leave, you take everything with you. We don't hold your content or audience hostage.",
+          "Yes. You own your content, your name and brand, your audience (email lists, subscriber data, relationships), your custom domain, and 90% of revenue. Movemental never owns the copyright to your content, your voice, or your audience. You can use your content elsewhere subject to reasonable transition rules. We operate the platform with a non-exclusive license to host and display your content—you retain all rights.",
+      },
+      {
+        question: "What does Movemental retain or own?",
+        answer:
+          "Movemental owns the platform infrastructure: the codebase, database and systems, AI agents and tools, design system, deployment and operations, and the Movemental brand and network. We also have the right to collect the 10% revenue share for operating and evolving the platform. You are not buying software you take with you—you are in a long-term publishing partnership with a managed platform.",
       },
       {
         question: "Who owns the content I publish?",
         answer:
-          "You do. Content you create and publish on your Movemental platform is yours. The platform is built so your work stays discoverable, connected, and under your control.",
+          "You do. All original intellectual property—text, audio, video, courses, assessments—is yours. Movemental can operate the platform with your content (non-exclusive, operational license) but you keep full ownership and can reuse content elsewhere.",
       },
       {
         question: "Who owns audience and subscriber data?",
@@ -102,10 +113,61 @@ export const FAQ_ITEMS: { category: FaqCategory; items: FaqItem[] }[] = [
         answer:
           "The platform is multi-tenant: each organization's data is strictly isolated. All data is scoped by organization, and access is enforced at the service layer. Your data is never mixed with another organization's.",
       },
+    ],
+  },
+  {
+    category: "Partnership, payments & exits",
+    items: [
       {
-        question: "What happens to my data if I leave?",
+        question: "Is this a partnership or am I buying software?",
         answer:
-          "You retain ownership of your content and audience data. We'll work with you on export and transition so you can take your platform and data with you.",
+          "You're entering a long-term publishing partnership, not buying a product you take away. Movemental operates and evolves a shared platform; you own your content, audience, brand, and 90% of revenue. The value is in the partnership, the network, and the ecosystem—like working with a world-class publisher and product team, not buying Squarespace.",
+      },
+      {
+        question: "Do I ever invoice Movemental, or do they pay me?",
+        answer:
+          "You never invoice Movemental. Revenue from your audience flows through the payment system; the 90/10 split happens automatically at the moment of each transaction. You receive your share directly (via Stripe Connect) and can see every transaction. Movemental doesn't manually take money from you.",
+      },
+      {
+        question: "When do I get my revenue?",
+        answer:
+          "Revenue is distributed monthly with detailed reporting. You can see each transaction and the split in your dashboard. The split is automatic, transparent, and auditable.",
+      },
+      {
+        question: "What happens if I leave or back out?",
+        answer:
+          "Your content is always yours. We offer content export (e.g. markdown/HTML), a redirect grace period (typically 3–6 months) so your audience isn't cut off, and optional paid transition support if you want help moving elsewhere. You do not receive the codebase, agent systems, or platform infrastructure—those stay with Movemental because this is a managed platform, not software you purchase. Exit paths are designed to be humane; we offer them because we're confident in the partnership value.",
+      },
+      {
+        question: "What if Movemental shuts down?",
+        answer:
+          "Your content is yours. We would provide content export and reasonable transition support. We're building for long-term sustainability; the partnership and revenue-share model aligns us with your success over time.",
+      },
+      {
+        question: "Can I use my content elsewhere?",
+        answer:
+          "Yes. You own your content. You may reuse it elsewhere subject to reasonable transition rules. The agreement includes a non-exclusive license so we can operate the platform with your content—we don't get ownership or exclusive rights.",
+      },
+      {
+        question: "Why 10%? Why not less?",
+        answer:
+          "10% funds platform operation, development, and network stewardship. We keep it low on purpose: we want alignment over extraction. We succeed when you succeed. The percentage reflects that we're partners, not taking a cut the way traditional publishers or rental platforms do.",
+      },
+      {
+        question: "Can I customize the design?",
+        answer:
+          "We have approved templates and patterns. You can choose templates, request adaptations within the system, or work with your designer in collaboration with us. Deep customization beyond the design system is possible but involves additional cost because it adds complexity to a shared platform. Most authors don't need it.",
+      },
+      {
+        question: "What's in the agreement?",
+        answer:
+          "Conceptually: (1) Platform Participation—terms for being part of the Movemental network and quality expectations; (2) Revenue Share—90/10 split, payment processing, and reporting; (3) Content License—non-exclusive, so we can operate the platform with your content while you retain full ownership; (4) Data & Privacy—how data is used and protected. Full terms are in the legal documents.",
+        link: { text: "Terms of Service", href: "/legal/terms" },
+      },
+      {
+        question: "What do I control vs. what does Movemental control?",
+        answer:
+          "You control your content, structure, voice, pricing, publishing cadence, and how you use AI assistance. Movemental maintains the core platform architecture, design system, and UX patterns so the network stays coherent and high quality. That constraint is intentional—it keeps the experience consistent and builds credibility across the network. Think of it like working with a publisher and product team that keeps the infrastructure in shape while you focus on your movement.",
       },
     ],
   },
@@ -136,7 +198,7 @@ export const FAQ_ITEMS: { category: FaqCategory; items: FaqItem[] }[] = [
       {
         question: "What's included in the $1,000 build?",
         answer:
-          "Everything you need to launch: custom domain setup, content management, e-commerce integration, email tools, analytics, AI content assistance, and network features. We build your platform around your needs during the 3–4 week onboarding process.",
+          "Complete platform development (React/Next.js), AI agent integration and training, content migration and optimization, SEO setup and network integration, custom domain and DNS, payment processing configuration, and 90 days of implementation support plus training and onboarding. Timeline is typically 2–4 weeks from contract to launch.",
       },
       {
         question: "What content types does the platform support?",
@@ -196,12 +258,12 @@ export const FAQ_ITEMS: { category: FaqCategory; items: FaqItem[] }[] = [
       {
         question: "Where is the Privacy Policy?",
         answer:
-          "Our Privacy Policy is available at /privacy. It describes how we collect, use, and protect your data.",
+          "Our Privacy Policy is available at /legal/privacy. It describes how we collect, use, and protect your data.",
       },
       {
         question: "Where are the Terms of Service?",
         answer:
-          "Our Terms of Service are available at /terms. They cover use of the platform, billing, and refunds.",
+          "Our Terms of Service are available at /legal/terms. They cover use of the platform, billing, refunds, and the agreement model.",
       },
     ],
   },

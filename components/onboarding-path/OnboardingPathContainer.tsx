@@ -15,6 +15,7 @@ import { getTotalWeeks } from '@/lib/schemas/onboarding-path'
 import { WorkHereVisionSection } from '@/components/how-it-works-final/WorkHereVisionSection'
 import { ContentPipelineDiagram } from '@/components/how-it-works-new/diagrams/ContentPipelineDiagram'
 import { ContentPipelinePreviewAgent } from './ContentPipelinePreviewAgent'
+import { ExternalQuoteCallout } from '@/components/why-movemental-final/ExternalQuoteCallout'
 
 interface OnboardingPathContainerProps {
   className?: string
@@ -281,6 +282,13 @@ export function OnboardingPathContainer({ className }: OnboardingPathContainerPr
                 </div>
               ))}
             </div>
+            <ExternalQuoteCallout
+              quote="Publish on your own site, syndicate elsewhere."
+              attribution="IndieWeb"
+              source="POSSE — indieweb.org"
+              sourceUrl="https://indieweb.org/POSSE"
+              variant="dark"
+            />
           </div>
         </NarrativeSection>
       </section>

@@ -59,7 +59,7 @@ The Fit Check assesses dimensions relevant to Movemental's purpose, specifically
 - **Platform Ownership Mindset** → Understanding of ownership vs. rental model, willingness to own digital presence
 - **Network Value & Collaboration Potential** → Connections to movement networks, potential for cross-promotion and collaboration
 
-**Note**: Specific questions and evaluation criteria are implementation details, not structural requirements. The evaluation system uses a 100-point scale across these categories to determine fit (Tier 1: 85-100 points, Tier 2: 70-84 points, etc.).
+**Note**: The current Self-Screen uses a single multi-select question (recognition options), not a numeric score. Core fit is defined by three options: (1) movement leader / movement-oriented org, (2) mDNA alignment, (3) creates/publishes content. **Full Fit** = any 2 of those 3. Other options do not exclude from fit. Content No Movement = exactly one core (e.g. content only). Affinity = no core selected.
 
 ### Outcomes
 
@@ -120,13 +120,13 @@ The Fit Check gates access to the deeper understanding of the platform. Visitors
 
 ### What This Document Does Not Specify
 
-- Specific questions or assessment criteria
+- Full scoring algorithms or multi-dimensional point systems (e.g. 100-point scale)
 - UI/UX design of the Fit Check
-- Technical implementation details
-- Scoring algorithms or evaluation logic
+- Exact question wording beyond the core rule below
 
 ### What This Document Does Specify
 
+- **Core fit rule**: **Full Fit** = any 2 of 3 core options: (1) movement leader / movement-oriented org, (2) mDNA alignment, (3) creates/publishes content. Content No Movement = exactly one core. Affinity = no core selected.
 - The Fit Check is a first-class structural component
 - It must be encountered early in the visitor journey
 - It must assess fit across relevant dimensions

@@ -94,7 +94,8 @@ export function TrustCollapseMiddleSection() {
     },
     {
       lead: 'What do people shut down?',
-      body: 'What they can\'t verify. And they can\'t verify what wasn\'t live.',
+      body:
+        'What they can\'t verify. And they can\'t verify what wasn\'t live. The people you\'re called to form? They shut down what they can\'t find.',
     },
     {
       lead: 'For most people, trust is becoming two things:',

@@ -73,6 +73,9 @@ export function GSAPHeroTextSection() {
           }}
         >
           <p>
+            What if your best work already exists—but the people who need it can&apos;t find it?
+          </p>
+          <p>
             What if your life&apos;s work could live on one platform you own but didn&apos;t have to
             build—e-books, courses, articles, AI tools, all in one place, built for your content
             and the people shaped by it?

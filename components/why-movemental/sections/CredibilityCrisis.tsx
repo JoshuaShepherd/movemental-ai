@@ -14,6 +14,10 @@ export function CredibilityCrisis() {
           <p className="mt-6 text-center text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
             Modern movement leaders are digitally fragmented.
           </p>
+          <p className="mt-8 text-center text-lg sm:text-xl text-foreground max-w-2xl mx-auto font-medium">
+            My best work exists. Nobody can find it. The people who trust me can&apos;t point
+            others to it.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-4xl mx-auto">

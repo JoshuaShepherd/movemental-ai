@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils'
 import { SectionNav } from '@/components/why-movemental/SectionNav'
 import { GSAPHeroTextSection } from '@/components/why-movemental-final/GSAPHeroTextSection'
 import { SceniusVisualization } from '@/components/scenius-visualization/SceniusVisualization'
+import { SoundFamiliarSection } from '@/components/why-movemental-final/SoundFamiliarSection'
 import { TrustCollapseMiddleSection } from '@/components/why-movemental-final/TrustCollapseMiddleSection'
 import { CredibilityCrisisSection } from '@/components/why-movemental-final/CredibilityCrisisSection'
 import {
@@ -20,6 +21,7 @@ import { fontBody } from '@/components/why-movemental-final/typography'
 const SECTIONS = [
   { id: 'hero', label: 'Hero' },
   { id: 'network', label: 'Network' },
+  { id: 'sound-familiar', label: 'Sound Familiar' },
   { id: 'trust-collapse', label: 'Trust Collapse' },
   { id: 'credibility-crisis', label: 'Credibility Crisis' },
   { id: 'fragmentation', label: 'Crisis' },
@@ -42,6 +44,7 @@ export function WhyMovementalFinalContainer({ className }: { className?: string 
         <SceniusVisualization />
       </section>
 
+      <SoundFamiliarSection />
       <TrustCollapseMiddleSection />
       <CredibilityCrisisSection />
 
