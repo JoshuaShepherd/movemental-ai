@@ -1,7 +1,7 @@
 'use client'
 
 import { forwardRef } from 'react'
-import { fontAccent, fontBody } from '@/components/why-movemental-final/typography'
+import { fontAccent } from '@/components/why-movemental-final/typography'
 import type { PositionedNode } from './useNetworkLayout'
 
 interface NetworkNodeProps {
@@ -31,12 +31,6 @@ function getInitials(name: string): string {
 /** Font size scales with radius */
 function getFontSize(radius: number): number {
   return Math.max(6, radius * 0.65)
-}
-
-/** Display name for overlay: full name for larger nodes, initials for small */
-function getOverlayName(name: string, radius: number): string {
-  if (radius >= 14) return name
-  return getInitials(name)
 }
 
 export const NetworkNode = forwardRef<SVGGElement, NetworkNodeProps>(
@@ -112,30 +106,6 @@ export const NetworkNode = forwardRef<SVGGElement, NetworkNodeProps>(
             {initials}
           </text>
         )}
-
-        {/* Name overlay: small font at bottom center of image with sufficient contrast */}
-        <g clipPath={`url(#clip-${node.id})`}>
-          <rect
-            x={node.x - r}
-            y={node.y + r * 0.5}
-            width={r * 2}
-            height={r * 0.5}
-            fill="rgba(0, 0, 0, 0.82)"
-          />
-          <text
-            x={node.x}
-            y={node.y + r * 0.78}
-            textAnchor="middle"
-            dominantBaseline="central"
-            fill="#f0f4f0"
-            fontSize={Math.max(5, Math.min(8, r * 0.4))}
-            fontFamily={fontBody}
-            fontWeight={600}
-            style={{ pointerEvents: 'none' }}
-          >
-            {getOverlayName(node.name, r)}
-          </text>
-        </g>
       </g>
     )
   }
