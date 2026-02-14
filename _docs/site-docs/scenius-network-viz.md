@@ -62,6 +62,31 @@ The visualization is intentionally “needs more time to develop.” The followi
 
 ---
 
+## Overlay story map (teleprompter text)
+
+The bottom overlay shows one line at a time, synced to scroll/tier. Only **Alan Hirsch** and **Brad Brisco** show names on the graph; all other nodes are initials or role labels. Story beats:
+
+| Tier(s) | What’s on screen | Overlay text |
+|--------|-------------------|--------------|
+| 0 | Alan only | One voice. The beginning of the scenius. |
+| 1 | Alan + Brad | Two. Alan and Brad. The graph begins—who points to you. |
+| 2–4 | First wave of connections | Connected voices. Each addition makes the whole more findable. |
+| 5–8 | Mid expansion | The scenius grows. |
+| 9–11 | Nearing full network | At 100: a real credibility graph. |
+| 12 (final) | Full network, scale-to-fit | Your content discoverable through the people who already trust you. Click a node to explore. |
+
+Defined in `SceniusVisualization.tsx` as `OVERLAY_STORY_BEATS`; timeline switches beat at tier indices 1, 4, 7, 11, and last tier.
+
+---
+
+## Aesthetic review (proportion and design)
+
+- **Desktop**: Full network appears as a dense graph of initials (e.g. MF, DH, CP, R1). The pinned viewport is full viewport height; the overlay sits at the bottom with a soft gradient so the graph can extend behind it. On large screens the graph can feel small until the final zoom-out; tier scales and final scale-to-fit may need tuning so the “one → two → many” progression reads clearly and the final frame feels balanced.
+- **Mobile**: Same content in a narrower viewport; section nav (HERO, NETWORK, …) remains. Node circles and overlay text scale with viewport; the overlay’s max-width (42rem) and gradient keep the teleprompter readable. Touch targets for nodes and section nav should be checked for comfort.
+- **Proportion opportunities**: (1) Consider slightly larger anchor node (Alan) or longer hold on tier 0/1 so “one voice” and “two” land before the pace quickens. (2) Final frame: ensure the scale-to-fit padding and vertical balance with the overlay feel intentional rather than cramped. (3) Overlay height (min 32vh) reserves space for story; if copy grows, ensure line count and font size stay within the blend zone.
+
+---
+
 ## File Map
 
 | File | Role |

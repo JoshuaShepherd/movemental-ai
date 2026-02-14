@@ -16,6 +16,8 @@ const cardStyles = {
   border: 'border-sage-800',
 }
 const titleFont = { fontFamily: fontHeading, color: 'var(--color-bright-snow-50, #fff)', fontSize: '1.25rem' }
+/** Only Alan and Brad show their real name in the modal title; others use a generic label. */
+const NAMED_NODE_IDS = new Set(['alan-hirsch', 'brad-brisco'])
 const metaFont = { fontFamily: fontAccent, color: 'var(--color-sage-300, #a3bea3)', fontSize: '0.8rem', letterSpacing: '0.02em' }
 const bodyFont = { color: 'var(--color-bright-snow-300, #d0d8d0)', fontFamily: fontBody }
 const tagStyle = 'inline-block rounded-full px-2.5 py-0.5 text-xs border border-sage-600/50'
@@ -38,7 +40,7 @@ export function NodeModal({ node, onClose }: NodeModalProps) {
           <>
             <DialogHeader>
               <DialogTitle style={titleFont}>
-                {node.name}
+                {NAMED_NODE_IDS.has(node.id) ? node.name : (node.role ?? 'A voice in the network')}
               </DialogTitle>
               {node.role && (
                 <DialogDescription style={metaFont}>

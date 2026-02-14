@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useState, useCallback, useMemo } from 'react'
-import { fontHeading, fontBody, fontAccent } from '@/components/why-movemental-final/typography'
+import { fontHeading } from '@/components/why-movemental-final/typography'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -52,6 +52,24 @@ function getTierDuration(tierIndex: number, totalTiers: number): number {
   if (tierIndex === totalTiers - 1) return 1.1 // final zoom: smooth and hold
   return 0.55 // tiers 2–11: advance faster, still user-controlled via scrub
 }
+
+/**
+ * Story beats for the teleprompter overlay. Synced to scroll/tier:
+ * - Beat 0: Tier 0 (Alan only) — one voice, the beginning
+ * - Beat 1: Tier 1 (Alan + Brad) — two, the graph begins
+ * - Beat 2: Tiers 2–4 — connected voices, each addition helps
+ * - Beat 3: Tiers 5–8 — the scenius grows
+ * - Beat 4: Tiers 9–11 — toward 100, real credibility graph
+ * - Beat 5: Tier 12 (full network) — discoverable through who trusts you; click to explore
+ */
+const OVERLAY_STORY_BEATS = [
+  'One voice. The beginning of the scenius.',
+  'Two. Alan and Brad. The graph begins—who points to you.',
+  'Connected voices. Each addition makes the whole more findable.',
+  'The scenius grows.',
+  'At 100: a real credibility graph.',
+  'Your content discoverable through the people who already trust you. Click a node to explore.',
+]
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -108,6 +126,7 @@ function getCameraTransform(
 
 export function SceniusVisualization() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const overlayStripRef = useRef<HTMLDivElement>(null)
   const svgRef = useRef<SVGSVGElement>(null)
   const cameraRef = useRef<SVGGElement>(null)
   const nodeGroupRef = useRef<SVGGElement>(null)
@@ -220,6 +239,18 @@ export function SceniusVisualization() {
         },
       })
 
+      // Overlay story beats: one visible at a time, synced to tier
+      const overlayStrip = overlayStripRef.current
+      const beats = overlayStrip
+        ? OVERLAY_STORY_BEATS.map((_, idx) =>
+            overlayStrip.querySelector(`[data-beat="${idx}"]`) as HTMLElement
+          ).filter(Boolean)
+        : []
+      if (beats.length > 0) {
+        gsap.set(beats, { opacity: 0 })
+        tl.to(beats[0], { opacity: 1, duration: 0.35, ease: 'power1.out' }, 0.22)
+      }
+
       // Cumulative visible nodes for bounding-box calculation
       const visibleNodes: PositionedNode[] = [...(nodeLookup.get(0) || [])]
       const lastTier = TIERS[TIERS.length - 1]
@@ -282,7 +313,27 @@ export function SceniusVisualization() {
           tl.to(edgeEls, { strokeDashoffset: 0, duration: 0.6, stagger: 0.02, ease: 'none' }, '<+0.1')
         }
 
+        // Overlay narrative: switch beat at key tiers
+        if (beats.length >= 6) {
+          if (i === 1) {
+            tl.to(beats[0], { opacity: 0, duration: 0.25, ease: 'power1.in' }, '+=0.15')
+            tl.to(beats[1], { opacity: 1, duration: 0.4, ease: 'power1.out' }, '<')
+          } else if (i === 4) {
+            tl.to(beats[1], { opacity: 0, duration: 0.25 }, '+=0.1')
+            tl.to(beats[2], { opacity: 1, duration: 0.4 }, '<')
+          } else if (i === 7) {
+            tl.to(beats[2], { opacity: 0, duration: 0.25 }, '+=0.1')
+            tl.to(beats[3], { opacity: 1, duration: 0.4 }, '<')
+          } else if (i === 11) {
+            tl.to(beats[3], { opacity: 0, duration: 0.25 }, '+=0.1')
+            tl.to(beats[4], { opacity: 1, duration: 0.4 }, '<')
+          } else if (i === TIERS.length - 1) {
+            tl.to(beats[4], { opacity: 0, duration: 0.25 }, '+=0.1')
+            tl.to(beats[5], { opacity: 1, duration: 0.4 }, '<')
+          }
+        }
       }
+
       tl.to({}, { duration: 6 })
     },
     { scope: containerRef, dependencies: [layout, nodeLookup, linkTierMap, scaleForFullNetwork] }
@@ -305,7 +356,7 @@ export function SceniusVisualization() {
           background: 'var(--color-sage-950, #161d16)',
         }}
       >
-        {/* Teleprompter-style overlay: black band with soft blend for scrollytelling text */}
+        {/* Teleprompter-style overlay: story beats synced to scroll (Alan → Brad → expansion) */}
         <div
           className="absolute bottom-0 left-0 right-0 z-20 flex min-h-[32vh] flex-col justify-end pb-0 pt-16"
           style={{
@@ -314,16 +365,31 @@ export function SceniusVisualization() {
             pointerEvents: 'auto',
           }}
           aria-label="Story text area"
+          aria-live="polite"
+          aria-atomic
         >
           <div
-            className="mx-auto w-full max-w-[42rem] flex-1 px-6 pb-12 pt-8 md:px-10 md:pb-14 md:pt-10"
+            ref={overlayStripRef}
+            className="relative mx-auto w-full max-w-[42rem] flex-1 px-6 pb-12 pt-8 md:px-10 md:pb-14 md:pt-10"
             style={{
               fontFamily: fontHeading,
               color: 'var(--color-bright-snow-100, #f0f4f0)',
             }}
           >
-            <div className="text-center text-lg leading-relaxed tracking-wide md:text-xl md:leading-loose">
-              {/* Space reserved for storytelling / scrollytelling content */}
+            <div className="relative text-center text-lg leading-relaxed tracking-wide md:text-xl md:leading-loose">
+              {OVERLAY_STORY_BEATS.map((text, idx) => (
+                <p
+                  key={idx}
+                  data-beat={idx}
+                  className="absolute left-0 right-0 top-0 mx-auto px-4"
+                  style={{ opacity: 0 }}
+                >
+                  {text}
+                </p>
+              ))}
+              <p className="invisible" aria-hidden="true">
+                {OVERLAY_STORY_BEATS[0]}
+              </p>
             </div>
           </div>
         </div>
