@@ -191,14 +191,15 @@ Result: that prospective writer row is now “claimed” and can be used to driv
 
 ## 6. Checklist summary
 
-- [ ] **Schema:** `write` table exists in Supabase; columns match plan (or your variant).  
-- [ ] **Schema:** `write_content` (or equivalent) exists for content storage and retrieval.  
-- [ ] **Drizzle:** `db/schema.ts` updated (Layer 1); then Zod (Layer 2), services (Layer 3), API (Layer 4), hooks (Layer 5).  
-- [ ] **Supabase MCP:** Used to confirm table structure and to insert prospective writers into `write`.  
-- [ ] **Supabase MCP:** Used to insert content into `write_content` for each writer.  
-- [ ] **Matching:** Signup/profile flow runs name match and sets `linked_user_id` + `linked_at` on `write`.  
-- [ ] **Retrieval:** Queries use `write` + `write_content` (and optionally linked user id) for search/RAG.  
-- [ ] **UI:** New section in why-movemental-final that shows linked writers (+ content) near the top; hidden when there are no linked writers.  
+- [x] **Schema:** `write` table exists in Supabase; columns match plan.
+- [x] **Schema:** `write_content` exists for content storage and retrieval.
+- [x] **Drizzle:** `db/schema.ts` updated (Layer 1); then Zod (Layer 2), services (Layer 3), API (Layer 4), hooks (Layer 5).
+- [x] **Supabase MCP:** Used to confirm table structure and to insert prospective writers into `write`.
+- [x] **Supabase MCP:** Used to insert content into `write_content` for each writer.
+- [x] **Matching:** Auth callback runs name match and sets `linked_user_id` + `linked_at` on `write` at signup/email-confirm.
+- [ ] **Retrieval:** Queries use `write` + `write_content` (and optionally linked user id) for search/RAG.
+- [x] **UI:** New section in why-movemental-final that shows linked writers (+ content) near the top; hidden when there are no linked writers.
+- [x] **Upload path:** Seed/import script and documented JSON format for bulk-loading writers and content.  
 
 ---
 
@@ -226,6 +227,12 @@ The following has been implemented in the repo:
 - **Layer 3:** `lib/services/simplified/write.ts` — `WriteService` with `listLinkedWriters()`, `getFirstContentByWriteIds()`, `findUnlinkedByFullName()`, `linkWriterToUser()`.
 - **Layer 4:** `app/api/simplified/linked-writers/route.ts` — GET returns linked writers plus one featured content per writer.
 - **Layer 5:** `hooks/simplified/useLinkedWriters.ts` — React Query hook for the section.
-- **Layer 6:** `components/why-movemental-final/VoicesJoiningSection.tsx` — “Voices joining” section; `WhyMovementalFinalContainer` includes it after Network and only shows the nav item when there are linked writers.
+- **Layer 6:** `components/why-movemental-final/VoicesJoiningSection.tsx` — "Voices joining" section; `WhyMovementalFinalContainer` includes it after Network and only shows the nav item when there are linked writers.
 
-**Linking on signup:** When you have a signup or profile-creation flow, call `writeService.findUnlinkedByFullName(fullName)` and, if a match is found, `writeService.linkWriterToUser(match.id, userId)`. No auth flow exists in the repo yet; add this where you create the user or organization (e.g. after Supabase Auth signup or in an onboarding completion handler).
+**Linking on signup (done):** `lib/auth/link-prospective-writer.ts` provides `linkProspectiveWriter(userId, fullName)`. It is called from `app/auth/callback/route.ts` after both OAuth code exchange and email OTP verification. The helper calls `writeService.findUnlinkedByFullName` and, if a match is found, `writeService.linkWriterToUser`. Errors are caught silently so auth flow is never blocked.
+
+**Upload path (done):** `scripts/seed-write-content.ts` reads a JSON file, validates it with Zod, and upserts writers by slug into `write` plus their content into `write_content`. Format documented in `_docs/guides/prospective-writers-content-format.md`. Run with:
+
+```bash
+npx tsx scripts/seed-write-content.ts ./data/prospective-writers-sample.json
+```

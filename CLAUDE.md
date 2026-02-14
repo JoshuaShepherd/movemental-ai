@@ -58,7 +58,14 @@ All tenant-scoped data includes `organizationId`. Tenant boundaries are enforced
 | Base service class | `lib/services/simplified-base.ts` |
 | Result<T> pattern types | `lib/services/types.ts` |
 | Tenant middleware | `lib/middleware/tenant.ts` |
+| Supabase Auth (server/browser clients, session refresh) | `lib/supabase/` |
+| Auth actions (sign-in, sign-up, sign-out, reset) | `app/(public)/auth/actions.ts` |
+| Auth callback (OAuth + email confirm) | `app/auth/callback/route.ts` |
 | Architecture docs | `_docs/type/01_OVERVIEW.md` |
+
+### Supabase Auth env
+
+For cookie-based auth: `NEXT_PUBLIC_SUPABASE_URL` (or `SUPABASE_URL`) and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` (or legacy `NEXT_PUBLIC_SUPABASE_ANON_KEY`). Optional: `NEXT_PUBLIC_APP_URL` for redirect URLs (defaults to localhost in dev).
 
 ## Code Patterns
 

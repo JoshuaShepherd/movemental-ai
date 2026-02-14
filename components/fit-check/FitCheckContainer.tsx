@@ -70,8 +70,9 @@ export function FitCheckContainer({ className }: FitCheckContainerProps) {
   }, [])
 
   const handleNameStepSubmit = useCallback(
-    (data: { name: string; bodyOfWork?: string }) => {
-      // TODO: submit to API when backend is ready; for now send to sign-up with next=/tour
+    (_data: { name: string; bodyOfWork?: string }) => {
+      // Send to sign-up; after auth they are redirected to /tour (next param).
+      // TODO: submit name/bodyOfWork to API when backend is ready (e.g. link to prospective writer).
       window.location.href = '/sign-up?next=/tour'
     },
     []
