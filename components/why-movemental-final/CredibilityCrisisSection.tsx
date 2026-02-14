@@ -6,7 +6,6 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { NarrativeSection } from '@/components/why-movemental/NarrativeSection'
 import { NarrativeStatement } from '@/components/why-movemental/NarrativeStatement'
-import { ExternalQuoteCallout } from '@/components/why-movemental-final/ExternalQuoteCallout'
 import { fontHeading, fontBody } from './typography'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -119,15 +118,6 @@ function CredibilityCrisisFactsBlock() {
             trust you.
           </p>
         </div>
-
-        <ExternalQuoteCallout
-          quote="Who did the posting will soon matter more than what was posted."
-          attribution="The Economist"
-          source="AI-generated content is raising the value of trust (Jan 2024)"
-          sourceUrl="https://www.economist.com/leaders/2024/01/18/ai-generated-content-is-raising-the-value-of-trust"
-          variant="light"
-          triggerStart="top 75%"
-        />
       </div>
     </section>
   )
@@ -161,13 +151,6 @@ export function CredibilityCrisisSection() {
               network of verified humans who can steward credibility, content, and community when
               the middle has collapsed.
             </p>
-            <ExternalQuoteCallout
-              quote="Scenius is the intelligence of a whole operation or group of people—the communal form of the concept of genius."
-              attribution="Brian Eno"
-              source="Creativity Through Community — Watch on YouTube"
-              sourceUrl="https://www.youtube.com/watch?v=a-4VnHWj15o"
-              variant="dark"
-            />
           </div>
         </div>
       </NarrativeSection>
@@ -192,13 +175,6 @@ export function CredibilityCrisisSection() {
               and linked to trusted peers. Your work doesn&apos;t sit alone—it becomes discoverable
               through the people who already trust you.
             </p>
-            <ExternalQuoteCallout
-              quote="Most people who want to be creative would be served best not by worrying about genius but by trying to create or join a scenius."
-              attribution="Austin Kleon"
-              source="Show Your Work!"
-              sourceUrl="https://austinkleon.com/show-your-work/"
-              variant="dark"
-            />
           </div>
         </div>
       </NarrativeSection>
@@ -284,13 +260,6 @@ export function CredibilityCrisisSection() {
               that travels—can hold again. So movement leaders can teach and publish there, and
               movement can still happen in the room.
             </p>
-            <ExternalQuoteCallout
-              quote="We admire Van Gogh's paintings, not his publication schedule."
-              attribution="More Tothat"
-              source="Make Classics, Not Content"
-              sourceUrl="https://moretothat.com/make-classics-not-content/"
-              variant="light"
-            />
           </div>
         </div>
       </NarrativeSection>

@@ -7,7 +7,6 @@ import { COMPARE_OPTIONS_ROWS } from '@/lib/compare-options-data'
 
 export const metadata: Metadata = {
   title: 'Compare Your Options | Movemental',
-  description: "If you need a movement platform: Movemental, agency, or SaaS? See what you get—and what you don't—with each option. Real comparison, real numbers.",
   openGraph: {
     title: 'Compare Your Options | Movemental',
     description: 'Movemental vs agency vs SaaS. Cost, playbook, platform, network—and what only Movemental gives you.',
