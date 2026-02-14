@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self-Screen | Movemental</title>
+  <meta name="description" content="See if Movemental is built for you. One question, multiple choices.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="fit-check.css">
+</head>
+<body class="fit-check-page">
+
+  <!-- ========== LANDING ========== -->
+  <section class="fit fit--landing" id="fit-landing" data-step="landing">
+    <div class="fit-landing-inner">
+      <div class="fit-context-switcher" role="group" aria-label="Who is this for?">
+        <button type="button" class="fit-context-btn is-active" data-context="individual" aria-pressed="true">
+          <span class="fit-context-icon" aria-hidden="true">I</span>
+          Individual
+        </button>
+        <button type="button" class="fit-context-btn" data-context="organization" aria-pressed="false">
+          <span class="fit-context-icon" aria-hidden="true">O</span>
+          Organization
+        </button>
+      </div>
+      <h1 class="fit-landing-headline">
+        Is Movemental<br>
+        <span class="fit-landing-headline-accent">built for you?</span>
+      </h1>
+      <p class="fit-landing-subtext" data-individual="A quick self-screen. Pick what describes you; we'll point you to the right next step." data-organization="A quick self-screen for organizations. Pick what describes you; we'll point you to the right next step.">
+        A quick self-screen. Pick what describes you; we'll point you to the right next step.
+      </p>
+      <button type="button" class="btn btn-primary btn-lg fit-landing-cta" id="fit-start-btn">
+        Begin
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <p class="fit-landing-microcopy">One question, multiple choices. We use your answers to point you to the right path.</p>
+    </div>
+  </section>
+
+  <!-- ========== QUESTION (multi-select) ========== -->
+  <section class="fit fit--question" id="fit-question" data-step="question" hidden>
+    <header class="fit-question-header">
+      <div class="fit-progress">
+        <span class="fit-progress-label">1 of 1</span>
+      </div>
+    </header>
+    <main class="fit-question-main">
+      <p class="fit-question-prompt" data-individual="Which of these describe you? Select all that apply." data-organization="Which of these describe your organization? Select all that apply.">
+        Which of these describe you? Select all that apply.
+      </p>
+      <p class="fit-question-microcopy">We use your answers to route you: full fit, content creator outside our niche, or friend of the house.</p>
+      <div class="fit-options" id="fit-options" role="group" aria-label="Select all that apply"></div>
+    </main>
+    <footer class="fit-question-footer">
+      <button type="button" class="btn btn-primary" id="fit-continue-btn">
+        Continue
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </footer>
+  </section>
+
+  <!-- ========== RESULTS ========== -->
+  <section class="fit fit--results" id="fit-results" data-step="results" hidden>
+    <div class="fit-results-inner" id="fit-results-inner">
+      <!-- Filled by JS: headline, body, CTAs per pathway -->
+    </div>
+  </section>
+
+  <script src="fit-check.js"></script>
+</body>
+</html>

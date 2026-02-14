@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useState } from "react";
-import { FAQ_ITEMS_FLAT, type FaqItem } from "@/content/faq";
+import { FAQ_ITEMS, FAQ_ITEMS_FLAT, type FaqItem } from "@/content/faq";
 
 interface FaqSectionProps {
   /** FAQ entries to render. Defaults to full list from content/faq. */
@@ -27,6 +27,7 @@ export function FaqSection({
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const list = Array.isArray(items) && items.length > 0 ? items : FAQ_ITEMS_FLAT;
+  const useCategories = groupedByCategory && !(Array.isArray(items) && items.length > 0);
 
   return (
     <section
@@ -52,10 +53,10 @@ export function FaqSection({
                 Why Movemental
               </Link>
               <Link
-                href="/how-it-works"
+                href="/architecture"
                 className="text-sm text-[var(--mvmt-on-dark-secondary)] hover:text-[var(--mvmt-on-dark-primary)]"
               >
-                How It Works
+                Architecture
               </Link>
               <Link
                 href="/pricing"
@@ -87,49 +88,115 @@ export function FaqSection({
           {title}
         </h2>
 
-        <div className="space-y-0">
-          {list.map((faq, i) => (
-            <div
-              key={i}
-              className="border-b border-[var(--mvmt-border-on-dark)]"
-            >
-              <button
-                type="button"
-                className="w-full text-left py-5 pr-4 flex items-start justify-between gap-4 rounded-none bg-transparent hover:bg-white/[0.03] transition-colors"
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                aria-expanded={openIndex === i}
-              >
-                <span className="text-base font-medium text-[var(--mvmt-on-dark-primary)]">
-                  {faq.question}
-                </span>
-                <span
-                  className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-xl text-[var(--mvmt-on-dark-muted)]"
-                  aria-hidden
-                >
-                  {openIndex === i ? "−" : "+"}
-                </span>
-              </button>
-              {openIndex === i && (
-                <div className="pb-5 pr-12">
-                  <p className="text-sm leading-relaxed text-[var(--mvmt-on-dark-secondary)]">
-                    {faq.answer}
-                    {faq.link && (
-                      <>
-                        {" "}
-                        <Link
-                          href={faq.link.href}
-                          className="text-[var(--mvmt-accent)] hover:underline"
+        {useCategories ? (
+          <div className="space-y-10">
+            {FAQ_ITEMS.map((group, groupIndex) => {
+              const baseIndex = FAQ_ITEMS.slice(0, groupIndex).reduce(
+                (sum, g) => sum + g.items.length,
+                0
+              );
+              return (
+                <div key={group.category}>
+                  <h3 className="text-lg font-semibold text-[var(--mvmt-on-dark-primary)] mb-4">
+                    {group.category}
+                  </h3>
+                  <div className="space-y-0">
+                    {group.items.map((faq, itemIndex) => {
+                      const i = baseIndex + itemIndex;
+                      return (
+                        <div
+                          key={i}
+                          className="border-b border-[var(--mvmt-border-on-dark)]"
                         >
-                          {faq.link.text}
-                        </Link>
-                      </>
-                    )}
-                  </p>
+                          <button
+                            type="button"
+                            className="w-full text-left py-5 pr-4 flex items-start justify-between gap-4 rounded-none bg-transparent hover:bg-white/[0.03] transition-colors"
+                            onClick={() =>
+                              setOpenIndex(openIndex === i ? null : i)
+                            }
+                            aria-expanded={openIndex === i}
+                          >
+                            <span className="text-base font-medium text-[var(--mvmt-on-dark-primary)]">
+                              {faq.question}
+                            </span>
+                            <span
+                              className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-xl text-[var(--mvmt-on-dark-muted)]"
+                              aria-hidden
+                            >
+                              {openIndex === i ? "−" : "+"}
+                            </span>
+                          </button>
+                          {openIndex === i && (
+                            <div className="pb-5 pr-12">
+                              <p className="text-sm leading-relaxed text-[var(--mvmt-on-dark-secondary)]">
+                                {faq.answer}
+                                {faq.link && (
+                                  <>
+                                    {" "}
+                                    <Link
+                                      href={faq.link.href}
+                                      className="text-[var(--mvmt-accent)] hover:underline"
+                                    >
+                                      {faq.link.text}
+                                    </Link>
+                                  </>
+                                )}
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
-              )}
-            </div>
-          ))}
-        </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="space-y-0">
+            {list.map((faq, i) => (
+              <div
+                key={i}
+                className="border-b border-[var(--mvmt-border-on-dark)]"
+              >
+                <button
+                  type="button"
+                  className="w-full text-left py-5 pr-4 flex items-start justify-between gap-4 rounded-none bg-transparent hover:bg-white/[0.03] transition-colors"
+                  onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                  aria-expanded={openIndex === i}
+                >
+                  <span className="text-base font-medium text-[var(--mvmt-on-dark-primary)]">
+                    {faq.question}
+                  </span>
+                  <span
+                    className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-xl text-[var(--mvmt-on-dark-muted)]"
+                    aria-hidden
+                  >
+                    {openIndex === i ? "−" : "+"}
+                  </span>
+                </button>
+                {openIndex === i && (
+                  <div className="pb-5 pr-12">
+                    <p className="text-sm leading-relaxed text-[var(--mvmt-on-dark-secondary)]">
+                      {faq.answer}
+                      {faq.link && (
+                        <>
+                          {" "}
+                          <Link
+                            href={faq.link.href}
+                            className="text-[var(--mvmt-accent)] hover:underline"
+                          >
+                            {faq.link.text}
+                          </Link>
+                        </>
+                      )}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

@@ -1,0 +1,150 @@
+/* ============================================================
+   Not-a-fit graceful redirect pages — shared styles
+   Complements styles.css. Used by not-a-fit-content.html and not-a-fit-affinity.html.
+   ============================================================ */
+
+.not-a-fit-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, var(--sage-100) 0%, var(--sage-50) 50%, #fff 100%);
+}
+.not-a-fit-header {
+  flex-shrink: 0;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--sage-200);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+}
+.not-a-fit-header-inner {
+  max-width: 48rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.not-a-fit-logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  color: var(--sage-900);
+}
+.not-a-fit-logo:hover { color: var(--sage-900); opacity: 0.85; }
+.not-a-fit-back {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--sage-600);
+  transition: color var(--transition);
+}
+.not-a-fit-back:hover { color: var(--sage-800); }
+
+.not-a-fit-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem 3rem;
+}
+.not-a-fit-inner {
+  max-width: 32rem;
+  margin: 0 auto;
+  text-align: center;
+}
+.not-a-fit-icon {
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(94, 116, 88, 0.15), rgba(88, 116, 88, 0.1));
+}
+.not-a-fit-icon svg {
+  width: 2.25rem;
+  height: 2.25rem;
+  color: var(--sage-600);
+}
+.not-a-fit-headline {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #1a1a2e;
+  margin: 0 0 1rem;
+}
+.not-a-fit-body {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: #475569;
+  margin: 0 0 1.5rem;
+}
+.not-a-fit-body strong { color: #1a1a2e; }
+.not-a-fit-ctas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.not-a-fit-ctas .btn { min-width: 14rem; }
+.not-a-fit-secondary {
+  font-size: 0.9375rem;
+  margin: 0 0 1rem;
+}
+.not-a-fit-secondary a {
+  color: var(--sage-600);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.not-a-fit-secondary a:hover { color: var(--sage-800); }
+.not-a-fit-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 1rem;
+  margin-top: 1rem;
+}
+.not-a-fit-links a {
+  font-size: 0.875rem;
+  color: var(--sage-600);
+  transition: color var(--transition);
+}
+.not-a-fit-links a:hover { color: var(--sage-800); }
+.not-a-fit-focus {
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--sage-200);
+  border-radius: 0.5rem;
+  text-align: left;
+}
+.not-a-fit-focus-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sage-600);
+  margin: 0 0 0.5rem;
+}
+.not-a-fit-focus p {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #475569;
+  margin: 0;
+}
+.not-a-fit-footer {
+  flex-shrink: 0;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--sage-200);
+  background: #fff;
+  text-align: center;
+}
+.not-a-fit-footer a {
+  font-size: 0.875rem;
+  color: var(--sage-600);
+  font-weight: 500;
+}
+.not-a-fit-footer a:hover { color: var(--sage-800); }

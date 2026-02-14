@@ -53,6 +53,46 @@ export const OnboardingResponsesFiltersSchema = BaseFiltersSchema.extend({
 export type OnboardingResponsesFilters = z.infer<typeof OnboardingResponsesFiltersSchema>;
 
 // ============================================================================
+// Write (prospective writers) — platform-level
+// ============================================================================
+
+export const WriteSelectSchema = createSelectSchema(schema.write);
+export type Write = z.infer<typeof WriteSelectSchema>;
+
+export const WriteInsertSchema = createInsertSchema(schema.write);
+export type WriteCreate = z.infer<typeof WriteInsertSchema>;
+
+export const WriteUpdateSchema = createUpdateSchema(schema.write);
+export type WriteUpdate = z.infer<typeof WriteUpdateSchema>;
+
+export const WriteFiltersSchema = BaseFiltersSchema.extend({
+  id: IdSchema.optional(),
+  linkedUserId: z.string().uuid().nullable().optional(),
+  fullName: z.string().optional(),
+});
+export type WriteFilters = z.infer<typeof WriteFiltersSchema>;
+
+// ============================================================================
+// Write content (content for retrieval / display per writer)
+// ============================================================================
+
+export const WriteContentSelectSchema = createSelectSchema(schema.writeContent);
+export type WriteContent = z.infer<typeof WriteContentSelectSchema>;
+
+export const WriteContentInsertSchema = createInsertSchema(schema.writeContent);
+export type WriteContentCreate = z.infer<typeof WriteContentInsertSchema>;
+
+export const WriteContentUpdateSchema = createUpdateSchema(schema.writeContent);
+export type WriteContentUpdate = z.infer<typeof WriteContentUpdateSchema>;
+
+export const WriteContentFiltersSchema = BaseFiltersSchema.extend({
+  id: IdSchema.optional(),
+  writeId: IdSchema.optional(),
+  contentType: z.string().optional(),
+});
+export type WriteContentFilters = z.infer<typeof WriteContentFiltersSchema>;
+
+// ============================================================================
 // Form-Specific Schemas for Multi-Step Validation
 // ============================================================================
 

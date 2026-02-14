@@ -105,3 +105,39 @@ export const onboardingResponses = pgTable("onboarding_responses", {
   createdAt: createdAt(),
   updatedAt: updatedAt(),
 });
+
+// ---------------------------------------------------------------------------
+// Prospective writers ("write" table) — platform-level, not tenant-scoped
+// Linked to a user when they create an account (matched by full_name).
+// ---------------------------------------------------------------------------
+export const write = pgTable("write", {
+  id: id(),
+  fullName: text("full_name").notNull(),
+  email: text("email"),
+  slug: text("slug").unique(),
+  bio: text("bio"),
+  avatarUrl: text("avatar_url"),
+  role: text("role"),
+  organization: text("organization"),
+  tags: jsonb("tags"), // string[] stored as jsonb
+  linkedUserId: uuid("linked_user_id"),
+  linkedAt: timestamp("linked_at", { withTimezone: true }),
+  createdAt: createdAt(),
+  updatedAt: updatedAt(),
+});
+
+// Content belonging to a prospective writer (for retrieval and display)
+export const writeContent = pgTable("write_content", {
+  id: id(),
+  writeId: uuid("write_id")
+    .references(() => write.id, { onDelete: "cascade" })
+    .notNull(),
+  title: text("title").notNull(),
+  contentType: text("content_type").notNull(), // e.g. article, book, talk, quote
+  bodyExcerpt: text("body_excerpt"),
+  bodyFull: text("body_full"),
+  url: text("url"),
+  metadata: jsonb("metadata"),
+  createdAt: createdAt(),
+  updatedAt: updatedAt(),
+});

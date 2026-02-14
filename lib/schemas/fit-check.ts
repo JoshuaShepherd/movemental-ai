@@ -167,6 +167,7 @@ export function getRecognitionResultCopy(pathway: Pathway): RecognitionResultCop
       links: [
         { label: 'Explore the Book', href: '/learn' },
         { label: 'Read Why Movemental', href: '/why-movemental' },
+        { label: 'Full message & next steps', href: '/not-a-fit/content' },
       ],
     }
   }
@@ -178,6 +179,7 @@ export function getRecognitionResultCopy(pathway: Pathway): RecognitionResultCop
       { label: 'Explore the Book', href: '/learn' },
       { label: 'Read Why Movemental', href: '/why-movemental' },
       { label: 'About Us', href: '/about' },
+      { label: 'Full message & next steps', href: '/not-a-fit/affinity' },
     ],
   }
 }

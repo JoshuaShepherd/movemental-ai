@@ -1,9 +1,11 @@
 'use client'
 
+import { useMemo } from 'react'
 import { cn } from '@/lib/utils'
 import { SectionNav } from '@/components/why-movemental/SectionNav'
 import { GSAPHeroTextSection } from '@/components/why-movemental-final/GSAPHeroTextSection'
 import { SceniusVisualization } from '@/components/scenius-visualization/SceniusVisualization'
+import { VoicesJoiningSection } from '@/components/why-movemental-final/VoicesJoiningSection'
 import { SoundFamiliarSection } from '@/components/why-movemental-final/SoundFamiliarSection'
 import { TrustCollapseMiddleSection } from '@/components/why-movemental-final/TrustCollapseMiddleSection'
 import { CredibilityCrisisSection } from '@/components/why-movemental-final/CredibilityCrisisSection'
@@ -17,8 +19,9 @@ import {
   Invitation,
 } from '@/components/why-movemental/sections'
 import { fontBody } from '@/components/why-movemental-final/typography'
+import { useLinkedWriters } from '@/hooks/simplified/useLinkedWriters'
 
-const SECTIONS = [
+const BASE_SECTIONS = [
   { id: 'hero', label: 'Hero' },
   { id: 'network', label: 'Network' },
   { id: 'sound-familiar', label: 'Sound Familiar' },
@@ -34,9 +37,23 @@ const SECTIONS = [
 ]
 
 export function WhyMovementalFinalContainer({ className }: { className?: string }) {
+  const { data: linkedWriters } = useLinkedWriters()
+  const sections = useMemo(() => {
+    if (linkedWriters?.length) {
+      const voices = { id: 'voices-joining', label: 'Voices Joining' }
+      const networkIdx = BASE_SECTIONS.findIndex((s) => s.id === 'network')
+      return [
+        ...BASE_SECTIONS.slice(0, networkIdx + 1),
+        voices,
+        ...BASE_SECTIONS.slice(networkIdx + 1),
+      ]
+    }
+    return BASE_SECTIONS
+  }, [linkedWriters?.length])
+
   return (
     <div className={cn('min-h-screen', className)} style={{ fontFamily: fontBody }}>
-      <SectionNav sections={SECTIONS} sticky />
+      <SectionNav sections={sections} sticky />
 
       <GSAPHeroTextSection />
 
@@ -44,6 +61,7 @@ export function WhyMovementalFinalContainer({ className }: { className?: string 
         <SceniusVisualization />
       </section>
 
+      <VoicesJoiningSection />
       <SoundFamiliarSection />
       <TrustCollapseMiddleSection />
       <CredibilityCrisisSection />

@@ -4,15 +4,21 @@ import { FaqSection } from "@/components/faq/FaqSection";
 export const metadata: Metadata = {
   title: "FAQ | Movemental",
   description:
-    "Frequently asked questions about Movemental: billing, ownership, roles, platform, and support. Who owns what, how plans work, and how to get started.",
+    "Frequently asked questions about Movemental: fit, philosophy, ownership, economics, time and embodiment, AI, infrastructure, credibility network, onboarding, and exit.",
   openGraph: {
     title: "FAQ | Movemental",
     description:
-      "Questions about billing, ownership, roles, and the platform. Movemental helps movement leaders own their content and keep 90% of revenue.",
+      "Comprehensive FAQ for movement leaders: fit, ownership, alignment, AI, and participation.",
     type: "website",
   },
 };
 
 export default function FaqPage() {
-  return <FaqSection showHeader={false} title="FAQ" />;
+  return (
+    <FaqSection
+      showHeader={false}
+      title="FAQ"
+      groupedByCategory={true}
+    />
+  );
 }

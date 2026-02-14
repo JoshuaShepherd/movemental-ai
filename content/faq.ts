@@ -1,273 +1,416 @@
 /**
- * FAQ content derived from project documentation (_docs/).
- * Covers: ownership, billing, plans, roles, tenant/organization, platform, content, and support.
+ * FAQ content for Movemental.
+ * Categories: fit, philosophy, ownership, economics, time/embodiment, AI, infrastructure, credibility, process, exit.
+ * Tone: calm, transparent, non-marketing.
  */
 
 export interface FaqItem {
   question: string;
   answer: string;
-  /** Optional link text and href for "read more" (e.g. "here" -> /team) */
   link?: { text: string; href: string };
 }
 
-/** Categories for optional grouping on the FAQ page */
 export const FAQ_CATEGORIES = [
-  "Billing & plans",
-  "Who owns what",
-  "Partnership, payments & exits",
-  "Roles & team",
-  "Platform & content",
-  "Getting started",
-  "Support & legal",
+  "Fit & audience",
+  "Philosophy & framing",
+  "Ownership & intellectual property",
+  "Economics & alignment",
+  "Time & embodiment",
+  "AI & technology",
+  "Infrastructure & platform",
+  "Credibility network",
+  "Process & onboarding",
+  "Exit & long-term commitment",
 ] as const;
 
 export type FaqCategory = (typeof FAQ_CATEGORIES)[number];
 
 export const FAQ_ITEMS: { category: FaqCategory; items: FaqItem[] }[] = [
   {
-    category: "Billing & plans",
+    category: "Fit & audience",
     items: [
       {
-        question: "How are additional editors or team members billed?",
+        question: "Who is this for?",
         answer:
-          "Billing is at the organization (workspace) level. Your plan and billing term (e.g. yearly or monthly) determine the rate. The account owner is not charged as an additional seat. Team members can be added from your team settings or invite panel. You can read more about roles and permissions here.",
-        link: { text: "here", href: "/team" },
+          "Movemental is for credible movement leaders: authors, teachers, and practitioners who catalyze lasting change through incarnational theology and movement practice. We serve people who already have a body of work and an audience, and who want that work structured for discoverability and longevity rather than scattered across silos. The Self-Screen (Fit Check) helps you determine fit before you invest time in the rest of the journey.",
       },
       {
-        question: "Can I trial Movemental before paying?",
+        question: "Who is it not for?",
         answer:
-          "Yes. You can explore the platform and run a Fit Check with no commitment. The $1,000 platform build is due when you decide to launch. There are no monthly platform fees—only a 10% revenue share when you earn from your content.",
+          "It is not for people who want a generic content platform, a growth-hack funnel, or a replacement for embodied leadership. It is not for those who prefer to rent someone else's platform or who are not aligned with a shared credibility network. The Self-Screen surfaces misalignment early so both sides can redirect without wasted effort.",
       },
       {
-        question: "What payment methods do you offer?",
+        question: "What qualifies someone as a movement leader?",
         answer:
-          "We accept major credit cards, PayPal, and for larger or custom arrangements, wire transfer. Payment for the one-time platform build can be made by card or agreed terms.",
+          "We look for alignment with missional and incarnational theology, movement-oriented practice, and a demonstrated body of work (books, talks, courses, or consistent teaching). Audience size and engagement matter less than credibility in your domain and a willingness to participate in a network of verified humans. The Fit Check assesses movement alignment, content quality, and platform-ownership mindset.",
       },
       {
-        question: "Can I cancel or change my plan at any time?",
+        question: "What if I am early-stage?",
         answer:
-          "Yes. You can downgrade or change how you work with us at any time from your account or billing settings. Your platform, content, and audience data remain yours regardless.",
+          "Early-stage leaders with a clear movement alignment and a growing body of work may still be a fit. The bar is not celebrity; it is credibility and trajectory. If you have a small but real audience and content that reflects your calling, the Self-Screen and a conversation can clarify whether now is the right time or whether to revisit later.",
       },
       {
-        question: "How can I manage my invoices and charges?",
+        question: "What if I already have a publisher?",
         answer:
-          "Visit your Billing page in account or team settings to view invoices, update payment methods, and see revenue-share and one-time charge history.",
+          "Movemental is not a substitute for a traditional publisher. It is infrastructure for your digital presence: your platform, your discoverability, your connection to a credibility network. Many authors keep publishing with houses for certain works while using Movemental to structure and amplify their broader corpus and to own their audience and revenue.",
       },
       {
-        question: "What is your refund policy?",
+        question: "What if I don't create books but create talks or courses?",
         answer:
-          "Refund terms for the one-time platform build are set out in our Terms of Service. Revenue share applies only to revenue you actually earn; there are no recurring platform fees to refund.",
+          "The platform supports books, articles, courses, videos, and other content types. The focus is on structuring what you already have and making it discoverable. If your primary output is talks or courses rather than long-form print, the same logic applies: codification, structure, and network alignment matter more than format.",
       },
       {
-        question: "What are Site plans vs. Organization (workspace) plans?",
+        question: "What if I don't want to scale?",
         answer:
-          "Movemental is organized by organization (tenant). Each organization has one account owner, its own data, and its own plan. Your 'site' is your public platform (books, articles, courses, etc.) under that organization. Billing and roles are at the organization level.",
-      },
-      {
-        question: "Why is the upfront cost so low?",
-        answer:
-          "Our mission is to serve movement leaders who otherwise couldn't afford these tools. The $1,000 covers the platform build and deployment. We earn through the 10% revenue share when you succeed, which aligns our incentives and makes professional-grade platforms accessible.",
-      },
-      {
-        question: "How does the 10% revenue share work?",
-        answer:
-          "You keep 90% of all revenue from your content—subscriptions, course sales, ebooks, consulting fees processed through your platform. We take 10% as our ongoing fee. The split happens automatically at the moment of each transaction; you never invoice us and we never manually take money. Revenue is distributed to you monthly with detailed reporting. There are no hidden costs, no monthly platform fees, and no per-transaction charges on top of the revenue share.",
-      },
-      {
-        question: "How do payments and the 90/10 split work technically?",
-        answer:
-          "We use Stripe Connect so that revenue flows safely and transparently. When a customer pays you, the split happens automatically at the moment of payment: 90% goes to your account and 10% to Movemental. Payment goes directly to you—not through Movemental—and every transaction is visible and auditable in your dashboard.",
-      },
-      {
-        question: "What if I don't generate revenue right away?",
-        answer:
-          "The revenue share only applies when you earn. If you're building your audience and not monetizing yet, you pay nothing beyond the initial $1,000. We're invested in your long-term success.",
+          "Movemental is not a scaling engine. It is built for stewardship and longevity, not virality. You are not required to grow an audience or monetize aggressively. The model supports leaders who want their existing work to do more without turning them into full-time content producers. If you don't want to scale, that is consistent with the offer.",
       },
     ],
   },
   {
-    category: "Who owns what",
+    category: "Philosophy & framing",
     items: [
       {
-        question: "Do I really own my platform, content, and audience?",
+        question: "Why call this a commons?",
         answer:
-          "Yes. You own your content, your name and brand, your audience (email lists, subscriber data, relationships), your custom domain, and 90% of revenue. Movemental never owns the copyright to your content, your voice, or your audience. You can use your content elsewhere subject to reasonable transition rules. We operate the platform with a non-exclusive license to host and display your content—you retain all rights.",
+          "The commons is shared infrastructure that no single participant owns but everyone benefits from. Movemental provides shared digital architecture, a credibility network, and aligned economics. You own your content and your audience; the infrastructure, optimization, and network are held in common. The language signals that this is not a marketplace or a rental platform but a shared resource for movement leaders.",
       },
       {
-        question: "What does Movemental retain or own?",
+        question: "Why focus on infrastructure?",
         answer:
-          "Movemental owns the platform infrastructure: the codebase, database and systems, AI agents and tools, design system, deployment and operations, and the Movemental brand and network. We also have the right to collect the 10% revenue share for operating and evolving the platform. You are not buying software you take with you—you are in a long-term publishing partnership with a managed platform.",
+          "Discovery and credibility in the age of AI depend on structure. Scattered content cannot be found, linked, or trusted. Infrastructure—canonical structuring, codification, discoverability, and network alignment—is what makes your work findable and durable. We focus on infrastructure so you can focus on what only you can do: teach, write, and lead.",
       },
       {
-        question: "Who owns the content I publish?",
+        question: "Why not just 'do SEO'?",
         answer:
-          "You do. All original intellectual property—text, audio, video, courses, assessments—is yours. Movemental can operate the platform with your content (non-exclusive, operational license) but you keep full ownership and can reuse content elsewhere.",
+          "SEO alone does not solve the credibility crisis. Volume and polish no longer signal expertise; AI can produce both at scale. Movement leaders were right to be skeptical of spending years on algorithmic gaming. The shift is that structure plus network credibility creates signals that are harder to fake. Discoverability is a byproduct of that structure and those relationships, not a substitute for them.",
       },
       {
-        question: "Who owns audience and subscriber data?",
+        question: "Is this about growth or stewardship?",
         answer:
-          "You do. Audience and subscriber data are tied to your organization and are not shared across other tenants. You own and control this data; we don't sell it or use it for advertising.",
+          "Stewardship. The goal is to steward credible work in an environment that increasingly mediates discovery. Growth may follow, but we do not promise virality or guaranteed traffic. Success is defined as your work being findable and durable, and your primary calling—embodied leadership—remaining central.",
       },
       {
-        question: "How is my data isolated from other organizations?",
+        question: "How does this relate to embodiment?",
         answer:
-          "The platform is multi-tenant: each organization's data is strictly isolated. All data is scoped by organization, and access is enforced at the service layer. Your data is never mixed with another organization's.",
+          "Movemental exists to support embodied work, not replace it. Formation, community, and movement happen in the room. The digital layer exists to extend reach and preserve credibility so that what you do in person can be discovered and trusted by those who are not in the room. The time boundary (no more than two hours per week) is designed to keep the digital in service of the embodied.",
+      },
+      {
+        question: "Is this a theological position?",
+        answer:
+          "The team holds a missional and incarnational theology; the platform is built for movement leaders who share that general orientation. We do not police doctrine. We do curate for credibility and alignment with movement practice. The credibility network is relational and curatorial, not confessional in a narrow sense.",
+      },
+      {
+        question: "Why hold the tool/threat tension around AI?",
+        answer:
+          "AI amplifies both credibility and confusion. It can help your work reach more people and stay coherent; it can also flood the world with content that is hard to verify. We hold the tension by using AI to amplify what is real (structure, translation, discoverability) and by being explicit about what we do not do: replace your voice, auto-generate content as if it were yours, or promise that AI will not change. The posture is liminal and honest, not triumphalist.",
       },
     ],
   },
   {
-    category: "Partnership, payments & exits",
+    category: "Ownership & intellectual property",
     items: [
       {
-        question: "Is this a partnership or am I buying software?",
+        question: "Who owns my content?",
         answer:
-          "You're entering a long-term publishing partnership, not buying a product you take away. Movemental operates and evolves a shared platform; you own your content, audience, brand, and 90% of revenue. The value is in the partnership, the network, and the ecosystem—like working with a world-class publisher and product team, not buying Squarespace.",
+          "You do. All original intellectual property—text, audio, video, courses, assessments—remains yours. Movemental operates the platform under a non-exclusive license to host and display your content. We never take ownership or exclusive rights. You can reuse your content elsewhere subject to reasonable transition rules if you leave.",
       },
       {
-        question: "Do I ever invoice Movemental, or do they pay me?",
+        question: "Can I leave?",
         answer:
-          "You never invoice Movemental. Revenue from your audience flows through the payment system; the 90/10 split happens automatically at the moment of each transaction. You receive your share directly (via Stripe Connect) and can see every transaction. Movemental doesn't manually take money from you.",
+          "Yes. You can leave. Your content is yours. We offer content export (e.g. markdown or HTML), a redirect grace period so your audience is not cut off, and optional paid transition support. You do not receive the codebase, agent systems, or platform infrastructure—those stay with Movemental because this is a managed platform, not software you purchase. Exit is designed to be humane.",
       },
       {
-        question: "When do I get my revenue?",
+        question: "What happens if I leave?",
         answer:
-          "Revenue is distributed monthly with detailed reporting. You can see each transaction and the split in your dashboard. The split is automatic, transparent, and auditable.",
+          "You retain ownership of all content you created and may reuse it elsewhere. We provide content export and a redirect period (typically 3–6 months). You do not receive the platform code, AI systems, or multi-tenant architecture; that is the nature of a managed partnership. Revenue share stops when you stop using the platform for new transactions. There is no lock-in on your intellectual property.",
       },
       {
-        question: "What happens if I leave or back out?",
+        question: "Can I publish elsewhere?",
         answer:
-          "Your content is always yours. We offer content export (e.g. markdown/HTML), a redirect grace period (typically 3–6 months) so your audience isn't cut off, and optional paid transition support if you want help moving elsewhere. You do not receive the codebase, agent systems, or platform infrastructure—those stay with Movemental because this is a managed platform, not software you purchase. Exit paths are designed to be humane; we offer them because we're confident in the partnership value.",
+          "Yes. You own your content. Non-exclusive means you can publish the same work elsewhere, subject to any existing agreements (e.g. with a traditional publisher for a specific book). Movemental does not demand exclusivity.",
       },
       {
-        question: "What if Movemental shuts down?",
+        question: "What happens to translations?",
         answer:
-          "Your content is yours. We would provide content export and reasonable transition support. We're building for long-term sustainability; the partnership and revenue-share model aligns us with your success over time.",
+          "Translations of your work are derivative works. Ownership and licensing depend on how they are produced (by you, by Movemental tools, or by third parties) and are addressed in the agreement. The principle is that your voice and your original IP remain yours; translation support is part of making your work discoverable and usable, not a transfer of rights.",
       },
       {
-        question: "Can I use my content elsewhere?",
+        question: "What about derivative works?",
         answer:
-          "Yes. You own your content. You may reuse it elsewhere subject to reasonable transition rules. The agreement includes a non-exclusive license so we can operate the platform with your content—we don't get ownership or exclusive rights.",
+          "Derivative works (adaptations, summaries, translations) are addressed in the participation agreement. The default is that you retain ownership of your originals and that derivatives created through the platform are governed by clear terms. We do not claim ownership of your ideas or your voice.",
       },
       {
-        question: "Why 10%? Why not less?",
+        question: "How is my voice protected?",
         answer:
-          "10% funds platform operation, development, and network stewardship. We keep it low on purpose: we want alignment over extraction. We succeed when you succeed. The percentage reflects that we're partners, not taking a cut the way traditional publishers or rental platforms do.",
-      },
-      {
-        question: "Can I customize the design?",
-        answer:
-          "We have approved templates and patterns. You can choose templates, request adaptations within the system, or work with your designer in collaboration with us. Deep customization beyond the design system is possible but involves additional cost because it adds complexity to a shared platform. Most authors don't need it.",
-      },
-      {
-        question: "What's in the agreement?",
-        answer:
-          "Conceptually: (1) Platform Participation—terms for being part of the Movemental network and quality expectations; (2) Revenue Share—90/10 split, payment processing, and reporting; (3) Content License—non-exclusive, so we can operate the platform with your content while you retain full ownership; (4) Data & Privacy—how data is used and protected. Full terms are in the legal documents.",
-        link: { text: "Terms of Service", href: "/legal/terms" },
-      },
-      {
-        question: "What do I control vs. what does Movemental control?",
-        answer:
-          "You control your content, structure, voice, pricing, publishing cadence, and how you use AI assistance. Movemental maintains the core platform architecture, design system, and UX patterns so the network stays coherent and high quality. That constraint is intentional—it keeps the experience consistent and builds credibility across the network. Think of it like working with a publisher and product team that keeps the infrastructure in shape while you focus on your movement.",
+          "Your voice is yours. AI integration is designed to amplify and reflect your voice, not replace it. We do not auto-publish content as if it were yours without your approval. Voice capture and style preferences are used to support you, not to simulate you. The credibility network also protects voice: your work is attached to you and to the people who vouch for you.",
       },
     ],
   },
   {
-    category: "Roles & team",
+    category: "Economics & alignment",
     items: [
       {
-        question: "What is the account owner?",
+        question: "Why the upfront commitment?",
         answer:
-          "Each organization has one account owner (set in our system). The account owner is the billing and administrative contact and is not charged as an extra seat. They can invite editors and manage team settings.",
+          "The upfront amount funds onboarding, architecture configuration, and initial corpus structuring. It reflects commitment to shared infrastructure and covers work that would otherwise require high-cost custom consulting. It is priced so that credible movement leaders can enter without prohibitive capital. The amount may be adjusted over time as the commons grows; there is no artificial scarcity.",
       },
       {
-        question: "How do I add editors or team members?",
+        question: "Why 90/10?",
         answer:
-          "You can add editors from the invite panel in your project or via your team/organization settings. Additional seats are billed according to your organization plan and billing term.",
+          "Alignment. Movemental succeeds only when creators succeed. A revenue share keeps incentives aligned: we earn when your content moves. Ten percent funds platform operation, evolution, and network stewardship. Ninety percent stays with you. The split is transparent and automatic at the moment of each transaction. We do not make money unless you do.",
       },
       {
-        question: "Where do I read more about roles and permissions?",
+        question: "What happens if I don't generate revenue?",
         answer:
-          "You can read more about roles, permissions, and how billing applies to your team here.",
-        link: { text: "here", href: "/team" },
+          "The revenue share applies only when you earn. If you are building audience and not monetizing yet, you pay nothing beyond the upfront commitment. There are no monthly platform fees. We are invested in long-term success, not in pressuring you to monetize before you are ready.",
+      },
+      {
+        question: "Is there pressure to monetize?",
+        answer:
+          "No. The model aligns us with your success, but we do not require you to monetize. Some participants use the platform primarily for discoverability and credibility; revenue may follow later or not at all. There are no hidden costs or recurring fees if you are not earning.",
+      },
+      {
+        question: "What is Movemental incentivized to do?",
+        answer:
+          "We are incentivized to help your content circulate, stay discoverable, and earn when you choose to monetize. We are not incentivized to extract maximum fees, lock you in, or push you toward volume over quality. The 10% revenue share means we benefit from your success, not from your dependency.",
+      },
+      {
+        question: "How does sustainability work?",
+        answer:
+          "Sustainability comes from the combination of upfront commitment and revenue share, plus a curated network size that keeps quality high. We bet on long-term partnership and network effects: when the commons grows and creators succeed, the model sustains itself. We do not rely on advertising, data sale, or aggressive scaling.",
+      },
+      {
+        question: "Are there hidden costs?",
+        answer:
+          "No. The model is the upfront infrastructure commitment and 10% of content revenue. There are no monthly platform fees, no per-transaction charges on top of the revenue share, and no surprise fees. Payment processing (e.g. Stripe) has its own small fees; those are visible and standard. Custom work outside the standard build may be quoted separately; that is the only exception.",
       },
     ],
   },
   {
-    category: "Platform & content",
+    category: "Time & embodiment",
     items: [
       {
-        question: "What's included in the $1,000 build?",
+        question: "How much time does this require?",
         answer:
-          "Complete platform development (React/Next.js), AI agent integration and training, content migration and optimization, SEO setup and network integration, custom domain and DNS, payment processing configuration, and 90 days of implementation support plus training and onboarding. Timeline is typically 2–4 weeks from contract to launch.",
+          "The architecture is designed for no more than two hours per week. Your primary calling remains embodied. Movemental supports your work; it does not consume it. Infrastructure carries the technical load so you can focus on teaching, writing, and leading.",
       },
       {
-        question: "What content types does the platform support?",
+        question: "What if I don't want to become a content machine?",
         answer:
-          "Books (with chapters), articles, videos, podcasts, courses (with modules), and assessments. Not every type has to be used; we enable what fits your movement and content strategy.",
+          "You don't have to. The goal is to structure what you already have and make it discoverable, not to turn you into a full-time content producer. We do not require a publishing cadence or a content treadmill. Many participants have existing corpuses; the work is codification and connection, not constant creation.",
       },
       {
-        question: "How is this different from Substack, Kajabi, or Teachable?",
+        question: "How does this avoid replacing embodied work?",
         answer:
-          "Those platforms rent you access—you're on their land, under their rules, competing with others on their platform. With Movemental you own your platform. You keep 90% of revenue instead of 70–85%, and you get network amplification instead of competing in a feed.",
+          "By design. The digital layer exists to support the physical: reach, discoverability, and credibility so that what you do in the room can be found and trusted. We do not promise that digital presence replaces presence. Formation and community cannot be automated. The time boundary and the framing of infrastructure (not replacement) keep embodiment central.",
       },
       {
-        question: "What is the 'content that moves' idea?",
+        question: "What are expectations of participation?",
         answer:
-          "We believe the problem for many movement leaders isn't more content—it's that existing content doesn't move: it's not discoverable, connected, or compounding. Movemental helps make your content discoverable, linked to trusted peers, and usable by AI in a way that reflects your voice.",
+          "Participation means maintaining your presence on the platform, keeping content and profile reasonably current, and adhering to the quality and conduct expectations of the network. It does not mean a fixed number of posts per month or mandatory engagement. The expectation is stewardship of your corner of the commons, not performance metrics.",
       },
       {
-        question: "Do I get a custom domain?",
+        question: "Is there community obligation?",
         answer:
-          "Yes. Custom domain setup is part of the platform build. Your brand, your domain, your platform.",
+          "The network is a shared credibility commons. There is no formal obligation to promote others or to participate in group activities. The value of the network is that your work is discoverable through trusted peers and that the whole benefits from coherence. How you engage beyond that is up to you.",
+      },
+      {
+        question: "What if I'm already overwhelmed?",
+        answer:
+          "The two-hour boundary exists for people who are already carrying a lot. If you are overwhelmed, the question is whether adding structure to existing work (rather than creating net-new work) reduces or increases load. For many, it reduces it: once the corpus is structured, discoverability and updates can stay within the boundary. The Self-Screen and a conversation can help you decide.",
       },
     ],
   },
   {
-    category: "Getting started",
+    category: "AI & technology",
     items: [
       {
-        question: "How do I know if Movemental is right for me?",
+        question: "How is AI used?",
         answer:
-          "Start with the Fit Check—a short, reflective set of questions. It's a moment of recognition, not an application. No credit card or commitment required.",
+          "AI is used for structure, discoverability, translation, and assistance—not to replace your voice or to publish as you. It can help codify your corpus, optimize for search and network discovery, support writing and repurposing in your voice, and translate or adapt content. Use is guided by voice preservation and transparency. We do not hide where AI is involved.",
       },
       {
-        question: "How long does it take to launch?",
+        question: "Is my voice replaced?",
         answer:
-          "Typically 3–4 weeks from fit to launch. The path includes discovery and vision, content research, platform architecture, and network and launch. Timeline can be discussed during onboarding.",
+          "No. Your voice remains yours. AI is trained or configured to reflect your style and theology, not to simulate you for unattributed output. We do not auto-publish content as if it were yours without your approval. The aim is amplification and assistance, not replacement.",
       },
       {
-        question: "What are the main steps from signup to launch?",
+        question: "Is content auto-generated?",
         answer:
-          "Fit Check → discovery and vision → content research → platform architecture → network and launch. You can see the full path and phases on the How It Works page.",
+          "No. Content on your platform is yours: written, approved, or clearly attributed. AI may assist with drafts, summaries, or adaptations, but we do not fill your site with machine-generated content that passes as yours. The credibility of the network depends on real humans standing behind real work.",
       },
       {
-        question: "Where do I find the How It Works and Why Movemental pages?",
+        question: "What about hallucination risk?",
         answer:
-          "Why Movemental explains the problem we address and who we're for. How It Works walks through the four phases to launch. Both are linked from the main navigation.",
+          "AI can hallucinate or misattribute. We take that seriously. Outputs are meant to be reviewed; we do not treat AI as an autonomous author. Where AI is used for discovery, translation, or assistance, we aim for transparency and human oversight. The tension is acknowledged, not papered over.",
+      },
+      {
+        question: "How is data handled?",
+        answer:
+          "Your content and audience data are scoped to your organization and are not shared with other tenants for marketing or training without agreement. Data handling is described in our Privacy Policy. We do not sell your data or use it for advertising. AI systems may use your content for your own experience (e.g. voice matching) under the terms you agree to.",
+      },
+      {
+        question: "What happens if AI changes?",
+        answer:
+          "AI will change. We do not promise a fixed technical stack forever. We do promise that the posture—amplify what is real, don't fake what isn't, preserve voice and credibility—will guide how we adopt new tools. If a provider or model changes, we adapt in line with that posture.",
+      },
+      {
+        question: "Is this dependent on one provider?",
+        answer:
+          "We use specific providers for AI and infrastructure today. We are not locked to a single vendor for all time; we can evolve providers and models. The dependency that matters is the partnership with Movemental and the shared infrastructure, not a particular AI API.",
       },
     ],
   },
   {
-    category: "Support & legal",
+    category: "Infrastructure & platform",
     items: [
       {
-        question: "Where can I get support?",
+        question: "What is multi-tenant architecture?",
         answer:
-          "Use the contact or support options in your account, or the contact form on the site. For billing and invoices, use the Billing section in your settings.",
+          "Multi-tenant means one shared platform serves many organizations. Each organization's data and content are strictly isolated; you do not see another leader's content or audience. The infrastructure—codebase, deployment, AI systems, design system—is shared so that we can maintain quality, security, and evolution for everyone without each person running their own stack.",
       },
       {
-        question: "Where is the Privacy Policy?",
+        question: "How is this different from hiring a developer?",
         answer:
-          "Our Privacy Policy is available at /legal/privacy. It describes how we collect, use, and protect your data.",
+          "Hiring a developer typically gets you a one-off build and ongoing maintenance on you. Movemental gives you a place inside a shared infrastructure: you get a bespoke front-end and your own data, but the platform evolves for the whole network. You get network effects, credibility alignment, and ongoing evolution without owning the entire technical burden.",
       },
       {
-        question: "Where are the Terms of Service?",
+        question: "How is discoverability handled?",
         answer:
-          "Our Terms of Service are available at /legal/terms. They cover use of the platform, billing, refunds, and the agreement model.",
+          "Discoverability comes from structure (canonical content, clear taxonomy, internal linking), technical optimization (e.g. for search), and the credibility network (your work is discoverable through the people who already trust you). We do not promise guaranteed rankings or traffic. We do work so that your work can be found by humans and systems that are looking for it.",
+      },
+      {
+        question: "What about search engines?",
+        answer:
+          "The platform is built to be crawlable and indexable. Structure and metadata support search. We do not rely on tricks or black-hat tactics. Search is one channel; the credibility network is another. Both matter for discovery.",
+      },
+      {
+        question: "What about translation?",
+        answer:
+          "Translation support is part of the offering: making your work available in other languages while preserving voice and meaning. How translation is produced (AI-assisted, human-reviewed, etc.) and who owns or licenses translations is covered in the agreement and in our approach to derivative works.",
+      },
+      {
+        question: "What happens as the platform evolves?",
+        answer:
+          "The platform will evolve. We add capabilities, improve performance, and respond to the needs of the commons. You benefit from that evolution. Constraints (e.g. design system, shared patterns) keep the network coherent. We do not promise that every feature will never change; we do promise that evolution is in service of the mission and the participants.",
+      },
+      {
+        question: "Is there lock-in?",
+        answer:
+          "Your content and audience are not locked in. You can export content and leave. The platform code, agent systems, and infrastructure stay with Movemental because this is a managed partnership, not a product you take with you. So there is lock-in to the partnership and the ecosystem, but not to your intellectual property or your ability to leave with your work.",
+      },
+    ],
+  },
+  {
+    category: "Credibility network",
+    items: [
+      {
+        question: "How is credibility curated?",
+        answer:
+          "Participation is curated. We assess fit through the Self-Screen and through conversation. The network is not open signup. We look for movement alignment, a body of work, and willingness to participate in shared infrastructure and norms. Curation keeps the network coherent and the credibility signal meaningful.",
+      },
+      {
+        question: "Who decides who participates?",
+        answer:
+          "Movemental decides, in line with fit criteria and capacity. The decision is not algorithmic; it involves human judgment and sometimes conversation. We are transparent about what we look for and why. We do not publish a public formula because fit is relational and contextual.",
+      },
+      {
+        question: "Is there gatekeeping?",
+        answer:
+          "There is selection. Not everyone is a fit; the Self-Screen and our process filter for alignment. We call it curation rather than gatekeeping: the goal is to build a network of verified humans who strengthen each other's credibility, not to exclude arbitrarily. We would rather say no clearly than create misaligned expectations.",
+      },
+      {
+        question: "What if I disagree with others in the network?",
+        answer:
+          "Participation does not require agreement on every point. The network is united by movement orientation and shared infrastructure, not by a single line on every doctrine or strategy. You are not endorsing every other participant's views. You are sharing infrastructure and a credibility signal. Disagreement can coexist with that.",
+      },
+      {
+        question: "Is this denominational?",
+        answer:
+          "No. We serve movement leaders from a range of traditions and contexts. The alignment is with missional and incarnational theology and movement practice in a broad sense, not with a particular denomination or confession. The network is ecumenical in that way.",
+      },
+      {
+        question: "How public is participation?",
+        answer:
+          "Your presence on the platform is public: your site, your content, your place in the network. Your participation in the commons (e.g. that you are part of Movemental) is visible. We do not hide who is in the network; the credibility signal depends on it being knowable.",
+      },
+      {
+        question: "How is trust maintained?",
+        answer:
+          "Trust is maintained through transparency (what we do and don't do), through the quality of the network (curation), and through aligned incentives (we succeed when you succeed). We do not sell your data, lock you in to your IP, or promise what we can't deliver. The agreement and our behavior are meant to be consistent with that.",
+      },
+    ],
+  },
+  {
+    category: "Process & onboarding",
+    items: [
+      {
+        question: "What happens after I click 'I've Decided'?",
+        answer:
+          "You are taken to the structured offer page, where you can review what you are agreeing to. From there you can accept and continue (e.g. to checkout or proposal) or go to the discernment companion if you still have questions. After acceptance, we schedule a kickoff conversation and begin onboarding.",
+      },
+      {
+        question: "What is onboarding like?",
+        answer:
+          "Onboarding includes discovery and vision, content research, platform architecture, and network integration. You work with the team to structure your corpus, configure your presence, and connect to the commons. Timeline is typically a few weeks from kickoff to launch. The focus is on your movement and your content, not on technical training for its own sake.",
+      },
+      {
+        question: "What materials do I need?",
+        answer:
+          "You need a sense of your existing body of work (books, talks, articles, courses) and access to it in some form. You don't need everything perfectly organized in advance. We help with content audit and structuring. A short questionnaire and a kickoff call set the direction.",
+      },
+      {
+        question: "How long does setup take?",
+        answer:
+          "From contract to launch, typically a few weeks. The exact timeline depends on the size of your corpus and your availability. We will give you a clearer estimate during the kickoff conversation.",
+      },
+      {
+        question: "What if I don't have clean archives?",
+        answer:
+          "Many movement leaders don't. Content may be in PDFs, old blogs, video, or notes. We work with what you have. The process includes identifying and importing what matters and structuring it. You don't need a pristine archive to start.",
+      },
+      {
+        question: "What support is provided?",
+        answer:
+          "Support includes onboarding, platform configuration, and ongoing access to the team for questions and evolution. The scope is defined in the agreement. We are not a 24/7 help desk; we are a partnership. For billing, legal, and account issues, there are clear channels (e.g. Billing in settings, contact form, Terms and Privacy).",
+      },
+    ],
+  },
+  {
+    category: "Exit & long-term commitment",
+    items: [
+      {
+        question: "Can I leave?",
+        answer:
+          "Yes. You can leave. Your content is yours. We provide content export and a redirect period. You do not receive the platform code or systems. There is no punitive exit; we offer humane paths because we are confident in the partnership value.",
+      },
+      {
+        question: "What happens to my structured site if I leave?",
+        answer:
+          "Your content is exported so you can take it elsewhere. The live site on our infrastructure is eventually retired after the redirect period. You do not get a copy of the running platform; you get your content and the chance to rebuild elsewhere if you choose.",
+      },
+      {
+        question: "What about ongoing revenue after I leave?",
+        answer:
+          "Revenue share applies to transactions that occur while you are on the platform. After you leave, new revenue through Movemental stops. Historical payouts are yours. Any revenue you generate on another platform is entirely yours.",
+      },
+      {
+        question: "What happens if Movemental ceases to exist?",
+        answer:
+          "Your content is yours. We would provide content export and reasonable transition support. We are building for long-term sustainability; the model aligns us with your success over time. We do not have a plan for shutdown, but we do have a commitment to orderly transition if that ever changed.",
+      },
+      {
+        question: "Is there a minimum term?",
+        answer:
+          "Terms (including any minimum commitment) are set out in the agreement. We do not use long minimum terms as a lock-in tactic. The partnership is intended to be long-term because the value is in the relationship and the network, not in a contract length.",
+      },
+      {
+        question: "Can I pause participation?",
+        answer:
+          "Pausing is addressed in the agreement. In principle, we would rather find a way to accommodate a season of reduced participation than force an all-or-nothing exit. The details (e.g. what happens to your site, revenue share, and reinstatement) depend on the situation and the terms.",
       },
     ],
   },
 ];
 
-/** Flat list of all FAQ items (for pages that don't group by category) */
 export const FAQ_ITEMS_FLAT: FaqItem[] = FAQ_ITEMS.flatMap((c) => c.items);

@@ -1,10 +1,7 @@
 'use client'
 
 import { forwardRef } from 'react'
-import { fontAccent, fontBody } from '@/components/why-movemental-final/typography'
-
-/** Only these nodes show a name label under the avatar in the visualization. */
-const NAMED_NODE_IDS = new Set(['alan-hirsch', 'brad-brisco'])
+import { fontAccent } from '@/components/why-movemental-final/typography'
 import type { PositionedNode } from './useNetworkLayout'
 
 interface NetworkNodeProps {
@@ -108,32 +105,6 @@ export const NetworkNode = forwardRef<SVGGElement, NetworkNodeProps>(
           >
             {initials}
           </text>
-        )}
-
-        {/* Name overlay: only for Alan Hirsch and Brad Brisco */}
-        {NAMED_NODE_IDS.has(node.id) && !isPersona && (
-          <g clipPath={`url(#clip-${node.id})`}>
-            <rect
-              x={node.x - r}
-              y={node.y + r * 0.5}
-              width={r * 2}
-              height={r * 0.5}
-              fill="rgba(0, 0, 0, 0.82)"
-            />
-            <text
-              x={node.x}
-              y={node.y + r * 0.78}
-              textAnchor="middle"
-              dominantBaseline="central"
-              fill="#f0f4f0"
-              fontSize={Math.max(5, Math.min(8, r * 0.4))}
-              fontFamily={fontBody}
-              fontWeight={600}
-              style={{ pointerEvents: 'none' }}
-            >
-              {node.name}
-            </text>
-          </g>
         )}
       </g>
     )
