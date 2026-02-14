@@ -9,6 +9,30 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const API_ROUTE = '/api/content-pipeline-preview'
 
+/** Parse inline markdown (**bold**, *italic*) into React nodes */
+function parseInlineMarkdown(text: string, keyPrefix = 'm'): React.ReactNode {
+  const parts: React.ReactNode[] = []
+  let idx = 0
+  // Split by ** or * while preserving delimiters - process in order
+  const regex = /(\*\*[^*]+\*\*|\*[^*]+\*)/g
+  let lastEnd = 0
+  let match: RegExpExecArray | null
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastEnd) {
+      parts.push(text.slice(lastEnd, match.index))
+    }
+    const raw = match[0]
+    if (raw.startsWith('**')) {
+      parts.push(<strong key={`${keyPrefix}-${idx++}`} className="font-semibold text-foreground">{raw.slice(2, -2)}</strong>)
+    } else {
+      parts.push(<em key={`${keyPrefix}-${idx++}`}>{raw.slice(1, -1)}</em>)
+    }
+    lastEnd = match.index + raw.length
+  }
+  if (lastEnd < text.length) parts.push(text.slice(lastEnd))
+  return parts.length === 1 && typeof parts[0] === 'string' ? parts[0] : <>{parts}</>
+}
+
 export function ContentPipelinePreviewAgent() {
   const [selected, setSelected] = useState<Set<ContentSourceId>>(new Set())
   const [preview, setPreview] = useState<string | null>(null)
@@ -162,7 +186,7 @@ export function ContentPipelinePreviewAgent() {
                   if (trimmed.startsWith('### ')) {
                     nodes.push(
                       <h4 key={i} className="mt-4 text-sm font-semibold text-foreground first:mt-0">
-                        {trimmed.slice(4)}
+                        {parseInlineMarkdown(trimmed.slice(4), `h4-${i}`)}
                       </h4>
                     )
                     i++
@@ -171,7 +195,7 @@ export function ContentPipelinePreviewAgent() {
                   if (trimmed.startsWith('## ')) {
                     nodes.push(
                       <h3 key={i} className="mt-4 text-base font-semibold text-foreground first:mt-0">
-                        {trimmed.slice(3)}
+                        {parseInlineMarkdown(trimmed.slice(3), `h3-${i}`)}
                       </h3>
                     )
                     i++
@@ -190,7 +214,7 @@ export function ContentPipelinePreviewAgent() {
                     nodes.push(
                       <ul key={i} className="list-disc pl-5">
                         {listItems.map((item, j) => (
-                          <li key={j}>{item}</li>
+                          <li key={j}>{parseInlineMarkdown(item, `li-${i}-${j}`)}</li>
                         ))}
                       </ul>
                     )
@@ -198,7 +222,7 @@ export function ContentPipelinePreviewAgent() {
                   }
                   nodes.push(
                     <p key={i} className="mb-2 last:mb-0">
-                      {trimmed}
+                      {parseInlineMarkdown(trimmed, `p-${i}`)}
                     </p>
                   )
                   i++

@@ -33,6 +33,12 @@ function getFontSize(radius: number): number {
   return Math.max(6, radius * 0.65)
 }
 
+/** Display name for overlay: full name for larger nodes, initials for small */
+function getOverlayName(name: string, radius: number): string {
+  if (radius >= 14) return name
+  return getInitials(name)
+}
+
 export const NetworkNode = forwardRef<SVGGElement, NetworkNodeProps>(
   function NetworkNode({ node, onClick }, ref) {
     const r = getRadius(node.tier)
@@ -63,6 +69,11 @@ export const NetworkNode = forwardRef<SVGGElement, NetworkNodeProps>(
         style={{ cursor: 'pointer', opacity: 0 }}
         onClick={() => onClick?.(node)}
       >
+        {/* ClipPath for avatar/overlay (used by all nodes) */}
+        <clipPath id={`clip-${node.id}`}>
+          <circle cx={node.x} cy={node.y} r={r - 1} />
+        </clipPath>
+
         {/* Background circle: solid for in-network, outline for persona */}
         <circle
           cx={node.x}
@@ -77,9 +88,6 @@ export const NetworkNode = forwardRef<SVGGElement, NetworkNodeProps>(
         {/* Avatar image or initials */}
         {!isPersona && node.avatarUrl ? (
           <>
-            <clipPath id={`clip-${node.id}`}>
-              <circle cx={node.x} cy={node.y} r={r - 1} />
-            </clipPath>
             <image
               href={node.avatarUrl}
               x={node.x - r + 1}
@@ -105,19 +113,29 @@ export const NetworkNode = forwardRef<SVGGElement, NetworkNodeProps>(
           </text>
         )}
 
-        {/* Label below: name or role for persona */}
-        <text
-          x={node.x}
-          y={node.y + r + 10}
-          textAnchor="middle"
-          fill={isPersona ? 'rgba(163, 190, 163, 0.85)' : '#f0f4f0'}
-          fontSize={Math.max(6, r * 0.5)}
-          fontFamily={fontBody}
-          fontWeight={400}
-          style={{ pointerEvents: 'none' }}
-        >
-          {node.name}
-        </text>
+        {/* Name overlay: small font at bottom center of image with sufficient contrast */}
+        <g clipPath={`url(#clip-${node.id})`}>
+          <rect
+            x={node.x - r}
+            y={node.y + r * 0.5}
+            width={r * 2}
+            height={r * 0.5}
+            fill="rgba(0, 0, 0, 0.82)"
+          />
+          <text
+            x={node.x}
+            y={node.y + r * 0.78}
+            textAnchor="middle"
+            dominantBaseline="central"
+            fill="#f0f4f0"
+            fontSize={Math.max(5, Math.min(8, r * 0.4))}
+            fontFamily={fontBody}
+            fontWeight={600}
+            style={{ pointerEvents: 'none' }}
+          >
+            {getOverlayName(node.name, r)}
+          </text>
+        </g>
       </g>
     )
   }

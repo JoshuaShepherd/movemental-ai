@@ -3,7 +3,7 @@
 import { useState, useCallback } from 'react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Clock } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { ScrollProgress } from '@/components/why-movemental/ScrollProgress'
 import { SectionNav } from '@/components/why-movemental/SectionNav'
@@ -11,25 +11,25 @@ import { NarrativeSection } from '@/components/why-movemental/NarrativeSection'
 import { NarrativeStatement } from '@/components/why-movemental/NarrativeStatement'
 import { Timeline, TimelineHorizontal } from './Timeline'
 import { ONBOARDING_PHASES } from '@/lib/schemas/onboarding-path'
-import { getTotalWeeks } from '@/lib/schemas/onboarding-path'
 import { WorkHereVisionSection } from '@/components/how-it-works-final/WorkHereVisionSection'
 import { ContentPipelineDiagram } from '@/components/how-it-works-new/diagrams/ContentPipelineDiagram'
 import { ContentPipelinePreviewAgent } from './ContentPipelinePreviewAgent'
 import { ExternalQuoteCallout } from '@/components/why-movemental-final/ExternalQuoteCallout'
+import { CompareOptionsTable } from '@/components/compare/CompareOptionsTable'
+import { COMPARE_OPTIONS_ROWS } from '@/lib/compare-options-data'
 
 interface OnboardingPathContainerProps {
   className?: string
 }
 
 const SECTIONS = [
-  { id: 'order', label: 'Understanding' },
   { id: 'work-here', label: 'Your Work' },
-  { id: 'path', label: 'The Path' },
   { id: 'phases', label: 'Four Phases' },
   { id: 'pipeline', label: 'Pipeline' },
   { id: 'ai-role', label: 'AI Role' },
   { id: 'different', label: 'Different' },
   { id: 'get', label: 'What You Get' },
+  { id: 'compare', label: 'Compare' },
   { id: 'pricing', label: 'Pricing' },
   { id: 'supporting', label: 'Support' },
   { id: 'summary', label: 'Summary' },
@@ -51,16 +51,6 @@ const WHAT_YOU_GET = [
   'Ownership — you own the platform, the audience relationship, and the data.',
   'Connection — you\'re part of the Movemental network: discoverability and credibility alongside trusted peers.',
   'Ongoing support — AI and tools that help your content stay discoverable, connected, and moving.',
-]
-
-const ORDER_STEPS = [
-  'Self-Screen — Am I the right person for this?',
-  'Why Movemental — What problem does this solve and why does it matter?',
-  'How It Works — What actually happens from fit to launch?',
-  'Team / Credibility — Who is behind this and why should I trust them?',
-  'AI Book / Knowledge — What is the foundational thinking and posture?',
-  'Learning Hub — How do I use the platform?',
-  'Pricing & Access — What does it cost and what are the limits?',
 ]
 
 const AI_ASSISTS = [
@@ -93,65 +83,7 @@ export function OnboardingPathContainer({ className }: OnboardingPathContainerPr
       <ScrollProgress />
       <SectionNav sections={SECTIONS} sticky />
 
-      {/* Hero: bridge + path headline */}
-      <section className="relative min-h-[70vh] flex flex-col items-center justify-center px-4 py-16 bg-gradient-to-b from-sage-900 via-sage-900 to-sage-800">
-        <div className="absolute inset-0 overflow-hidden opacity-5">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-white/20" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-white/20" />
-        </div>
-        <div className="relative z-10 w-full max-w-3xl mx-auto text-center">
-          <p className="text-sage-300 text-sm sm:text-base font-medium mb-4">
-            You&apos;ve seen the problem. Here&apos;s the path.
-          </p>
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white/80">
-            <Clock className="h-4 w-4" />
-            <span>{getTotalWeeks()} from fit to live</span>
-          </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
-            How Movemental
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-300">Works</span>
-          </h1>
-          <p className="text-lg sm:text-xl text-sage-300 mb-10 max-w-xl mx-auto">
-            Four phases to get your content discoverable, connected, and moving. Your platform
-            launches with content, not empty templates.
-          </p>
-          <Button
-            onClick={handleStartJourney}
-            size="lg"
-            className="group h-14 px-8 text-lg font-semibold bg-white text-sage-900 hover:bg-sage-100"
-          >
-            See the four phases
-            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-          </Button>
-        </div>
-      </section>
-
-      {/* Order of understanding */}
-      <section id="order">
-        <NarrativeSection>
-          <div className="space-y-12">
-            <NarrativeStatement alignment="center">
-              The right <strong>order</strong> to understand Movemental
-            </NarrativeStatement>
-            <p className="text-center text-lg text-muted-foreground max-w-2xl mx-auto">
-              For someone who doesn&apos;t know, the path only makes sense after you understand why Movemental exists.
-            </p>
-            <ol className="max-w-2xl mx-auto space-y-4 list-decimal list-inside text-muted-foreground">
-              {ORDER_STEPS.map((step, i) => (
-                <li key={i} className="pl-2 text-left">
-                  <span className="text-foreground font-medium">{step.split('—')[0]?.trim()}</span>
-                  {step.includes('—') && (
-                    <span> — {step.split('—').slice(1).join('—').trim()}</span>
-                  )}
-                </li>
-              ))}
-            </ol>
-          </div>
-        </NarrativeSection>
-      </section>
-
-      {/* NEW: Your work is here / It should also be here */}
+      {/* Your work is here / It should also be here */}
       <section id="work-here">
         <NarrativeSection background="muted">
           <div className="space-y-12 sm:space-y-16">
@@ -166,23 +98,6 @@ export function OnboardingPathContainer({ className }: OnboardingPathContainerPr
               </p>
             </div>
             <WorkHereVisionSection className="mt-10" />
-          </div>
-        </NarrativeSection>
-      </section>
-
-      {/* Path intro */}
-      <section id="path">
-        <NarrativeSection>
-          <div className="space-y-8">
-            <NarrativeStatement alignment="center">
-              From fit to live in <strong>3–4 weeks</strong>
-            </NarrativeStatement>
-            <p className="text-center text-lg text-muted-foreground max-w-3xl mx-auto">
-              After you confirm fit and understand why Movemental exists, you go through four
-              phases. Your platform launches with content, not empty templates—configured for your
-              voice and connected to the Movemental network. Each phase builds on the last. The
-              process is movement-first, evidence-based, and launch-ready.
-            </p>
           </div>
         </NarrativeSection>
       </section>
@@ -308,6 +223,21 @@ export function OnboardingPathContainer({ className }: OnboardingPathContainerPr
                 </li>
               ))}
             </ul>
+          </div>
+        </NarrativeSection>
+      </section>
+
+      {/* Compare: Movemental vs Agency vs SaaS */}
+      <section id="compare">
+        <NarrativeSection>
+          <div className="space-y-10">
+            <NarrativeStatement alignment="center">
+              Movemental vs agency vs SaaS
+            </NarrativeStatement>
+            <p className="text-center text-lg text-muted-foreground max-w-2xl mx-auto">
+              What you get, what you pay, and what only Movemental gives you: the scenius and the people in it.
+            </p>
+            <CompareOptionsTable rows={COMPARE_OPTIONS_ROWS} showSourcesLink={true} className="mt-8" />
           </div>
         </NarrativeSection>
       </section>

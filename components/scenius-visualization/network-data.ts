@@ -40,10 +40,10 @@ export interface SceniusData {
 
 function avatarUrl(name: string, id: string): string {
   if (id === 'alan-hirsch') {
-    return '/media-library/images/network/alan-hirsch-illustration-headshot.png'
+    return '/media-library/images/headshots/alan-hirsch/alan-headshot-no-bg.png'
   }
   if (id === 'brad-brisco') {
-    return '/media-library/images/headshots/brad-brisco/brad-brisco-studio-backdrop-3x4.webp'
+    return '/media-library/images/headshots/brad-brisco/brad-headshot-no-bg.png'
   }
   const encoded = encodeURIComponent(name.replace(/\s+/g, '+'))
   return `https://ui-avatars.com/api/?name=${encoded}&background=6e916e&color=fff&size=128`

@@ -58,27 +58,29 @@ export function ExternalQuoteCallout({
   )
 
   const isDark = variant === 'dark'
-  // Light variant: light callout for dark sections (stands out). Dark variant: dark callout for light sections.
-  const borderColor = isDark ? 'var(--color-sage-600)' : 'var(--color-sage-400)'
+  // Gray/supplemental styling: muted so block quotes set aside rather than demand attention.
+  // Light variant: on dark sections use sage-400/500. Dark variant: on light sections use sage-600/500.
+  const borderColor = isDark ? 'var(--color-sage-500)' : 'var(--color-sage-500)'
   const bgColor = isDark
-    ? 'rgba(26, 35, 26, 0.85)'
-    : 'rgba(248, 250, 248, 0.95)'
+    ? 'rgba(26, 35, 26, 0.5)'
+    : 'rgba(61, 90, 61, 0.08)'
+  const quoteColor = isDark ? 'var(--color-sage-400)' : 'var(--color-sage-600)'
 
   return (
     <blockquote
       ref={blockRef}
-      className="relative mx-auto max-w-3xl py-10 sm:py-14 px-6 sm:px-10 rounded-xl border-l-4 my-16 shadow-lg"
+      className="relative mx-auto max-w-3xl py-8 sm:py-10 px-6 sm:px-8 rounded-xl border-l-4 my-12"
       style={{
         borderLeftColor: borderColor,
         background: bgColor,
-        backdropFilter: 'blur(8px)',
+        backdropFilter: 'blur(6px)',
       }}
     >
       <p
-        className="text-xl sm:text-2xl md:text-3xl leading-relaxed italic"
+        className="text-lg sm:text-xl md:text-2xl leading-relaxed italic"
         style={{
           fontFamily: fontHeading,
-          color: isDark ? 'var(--color-bright-snow-100)' : 'var(--color-sage-900)',
+          color: quoteColor,
         }}
       >
         &ldquo;{quote}&rdquo;
@@ -90,7 +92,7 @@ export function ExternalQuoteCallout({
               className="text-xs font-semibold uppercase tracking-widest"
               style={{
                 fontFamily: fontAccent,
-                color: isDark ? 'var(--color-sage-400)' : 'var(--color-sage-600)',
+                color: isDark ? 'var(--color-sage-500)' : 'var(--color-sage-500)',
               }}
             >
               {attribution}
@@ -104,7 +106,7 @@ export function ExternalQuoteCallout({
               className="inline-flex items-center gap-1.5 text-sm hover:underline transition-colors w-fit"
               style={{
                 fontFamily: fontBody,
-                color: isDark ? 'var(--color-sage-300)' : 'var(--color-sage-600)',
+                color: isDark ? 'var(--color-sage-500)' : 'var(--color-sage-500)',
               }}
             >
               {source}
@@ -115,7 +117,7 @@ export function ExternalQuoteCallout({
               className="text-sm"
               style={{
                 fontFamily: fontBody,
-                color: isDark ? 'var(--color-sage-400)' : 'var(--color-sage-600)',
+                color: isDark ? 'var(--color-sage-500)' : 'var(--color-sage-500)',
               }}
             >
               {source}
