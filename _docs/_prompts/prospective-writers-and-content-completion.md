@@ -1,4 +1,4 @@
-# Prompt: Prospective Writers and Content — Remaining Steps (Phase by Phase)
+D# Prompt: Prospective Writers and Content — Remaining Steps (Phase by Phase)
 
 **Audience:** Claude/Cursor agent.  
 **Purpose:** Complete all remaining work for (1) prospective movement leader content in the database, (2) name-based linking when users sign up, and (3) verification that the full flow works.  
