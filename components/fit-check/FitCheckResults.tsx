@@ -37,12 +37,12 @@ export function FitCheckResults({
           className={cn(
             'mb-6 inline-flex items-center justify-center h-24 w-24 rounded-full',
             isFullFit
-              ? 'bg-gradient-to-br from-emerald-500/20 to-cyan-500/20'
+              ? 'bg-scarlet-rush-500/20'
               : 'bg-gradient-to-br from-sage-500/20 to-sage-600/20'
           )}
         >
           {isFullFit ? (
-            <CheckCircle2 className="h-12 w-12 text-emerald-500" />
+            <CheckCircle2 className="h-12 w-12 text-scarlet-rush-500" />
           ) : result.pathway === 'content-no-movement' ? (
             <BookOpen className="h-12 w-12 text-sage-400" />
           ) : (
@@ -64,7 +64,7 @@ export function FitCheckResults({
               <Button
                 onClick={onShareName}
                 size="lg"
-                className="w-full sm:w-auto group h-12 px-6 text-base font-semibold bg-primary hover:bg-primary/90"
+                className="w-full sm:w-auto group h-12 px-6 text-base font-semibold bg-scarlet-rush-500 text-white hover:bg-scarlet-rush-600"
               >
                 {copy.primaryCta.label}
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

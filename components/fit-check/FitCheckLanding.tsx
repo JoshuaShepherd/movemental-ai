@@ -61,7 +61,7 @@ export function FitCheckLanding({
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
           Is Movemental
           <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+          <span className="text-scarlet-rush-400">
             built for you?
           </span>
         </h1>

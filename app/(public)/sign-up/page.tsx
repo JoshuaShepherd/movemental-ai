@@ -4,8 +4,8 @@ import { Send } from 'lucide-react'
 import { AuthLayout, AuthModalCard } from '@/components/auth'
 
 export const metadata: Metadata = {
-  title: 'Create Account — Movemental',
-  description: 'Create your Movemental account. First name, last name, email.',
+  title: 'Sign up | Movemental',
+  description: 'Create your Movemental account.',
 }
 
 export default function SignUpPage() {

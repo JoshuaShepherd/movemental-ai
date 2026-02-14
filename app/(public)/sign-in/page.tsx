@@ -4,8 +4,8 @@ import { Send } from 'lucide-react'
 import { AuthLayout, AuthModalCard } from '@/components/auth'
 
 export const metadata: Metadata = {
-  title: 'Welcome to Movemental',
-  description: 'Sign in or continue with email. Matches main-flow welcome.',
+  title: 'Sign in | Movemental',
+  description: 'Sign in to your Movemental account.',
 }
 
 export default function SignInPage() {
@@ -46,6 +46,11 @@ function SignInForm() {
         Continue
       </button>
       <p className="text-center text-sm text-sage-300 mt-2">
+        <Link href="/forgot-password" className="text-scarlet-rush-400 hover:underline">
+          Forgot password?
+        </Link>
+      </p>
+      <p className="text-center text-sm text-sage-300 mt-1">
         Don&apos;t have an account?{' '}
         <Link href="/sign-up" className="text-scarlet-rush-400 hover:underline">
           Sign up

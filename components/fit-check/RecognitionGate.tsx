@@ -29,10 +29,10 @@ export function RecognitionGate({
         className
       )}
     >
-      <p className="text-center text-xl sm:text-2xl md:text-3xl font-semibold text-foreground leading-tight mb-2">
+      <p className="text-center text-xl sm:text-2xl md:text-3xl font-semibold text-white leading-tight mb-2">
         {promptText}
       </p>
-      <p className="text-center text-sm text-muted-foreground mb-8">
+      <p className="text-center text-sm text-sage-300 mb-8">
         {microcopy}
       </p>
 
@@ -54,10 +54,10 @@ export function RecognitionGate({
               }}
               className={cn(
                 'relative cursor-pointer p-4 transition-all duration-200',
-                'hover:border-primary/50 hover:shadow-sm',
-                'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
+                'bg-sage-900/80 border-white/10 hover:border-sage-600',
+                'focus:outline-none focus:ring-2 focus:ring-sage-500 focus:ring-offset-2 focus:ring-offset-sage-950',
                 'min-h-[56px] flex items-center',
-                isChecked && 'border-primary bg-primary/5 ring-2 ring-primary'
+                isChecked && 'border-scarlet-rush-500 bg-scarlet-rush-500/10 ring-2 ring-scarlet-rush-500/50'
               )}
             >
               <div className="flex w-full items-start gap-3">
@@ -65,23 +65,23 @@ export function RecognitionGate({
                   className={cn(
                     'h-5 w-5 shrink-0 rounded border-2 flex items-center justify-center transition-colors mt-0.5',
                     isChecked
-                      ? 'border-primary bg-primary'
-                      : 'border-muted-foreground/30'
+                      ? 'border-scarlet-rush-500 bg-scarlet-rush-500'
+                      : 'border-white/30'
                   )}
                 >
-                  {isChecked && <Check className="h-3 w-3 text-primary-foreground" />}
+                  {isChecked && <Check className="h-3 w-3 text-white" />}
                 </div>
                 <span
                   className={cn(
-                    'block font-medium text-base flex-1 text-left',
-                    isChecked && 'text-primary'
+                    'block font-medium text-base flex-1 text-left text-white',
+                    isChecked && 'text-scarlet-rush-400'
                   )}
                 >
                   {option.label}
                 </span>
                 {option.tooltip && (
                   <span
-                    className="shrink-0 text-muted-foreground hover:text-foreground transition-colors"
+                    className="shrink-0 text-sage-400 hover:text-sage-300 transition-colors"
                     title={option.tooltip}
                     onClick={(e) => e.stopPropagation()}
                     onKeyDown={(e) => e.stopPropagation()}

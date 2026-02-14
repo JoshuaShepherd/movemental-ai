@@ -71,8 +71,8 @@ export function FitCheckContainer({ className }: FitCheckContainerProps) {
 
   const handleNameStepSubmit = useCallback(
     (data: { name: string; bodyOfWork?: string }) => {
-      // TODO: submit to API when backend is ready; for now redirect
-      window.location.href = '/why-movemental'
+      // TODO: submit to API when backend is ready; for now send to sign-up with next=/tour
+      window.location.href = '/sign-up?next=/tour'
     },
     []
   )
@@ -116,13 +116,17 @@ export function FitCheckContainer({ className }: FitCheckContainerProps) {
   return (
     <div
       className={cn(
-        'min-h-screen flex flex-col bg-background',
+        'min-h-screen flex flex-col bg-sage-950',
         className
       )}
     >
-      <header className="fixed top-0 left-0 right-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+      <header className="fixed top-0 left-0 right-0 z-10 bg-sage-950/95 backdrop-blur border-b border-white/[0.06]">
         <div className="container max-w-3xl mx-auto px-4 py-4">
-          <FitCheckProgress currentQuestion={1} totalQuestions={totalSteps} />
+          <FitCheckProgress
+          currentQuestion={1}
+          totalQuestions={totalSteps}
+          className="[&_span]:text-sage-300"
+        />
         </div>
       </header>
 
@@ -142,17 +146,17 @@ export function FitCheckContainer({ className }: FitCheckContainerProps) {
         />
       </main>
 
-      <footer className="fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-t">
+      <footer className="fixed bottom-0 left-0 right-0 bg-sage-950/95 backdrop-blur border-t border-white/[0.06]">
         <div className="container max-w-3xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Button variant="ghost" className="invisible gap-2" disabled>
+            <Button variant="ghost" className="invisible gap-2 text-sage-300" disabled>
               <ArrowLeft className="h-4 w-4" />
               Back
             </Button>
             <Button
               onClick={handleContinue}
               disabled={isTransitioning}
-              className="gap-2"
+              className="gap-2 bg-scarlet-rush-500 text-white hover:bg-scarlet-rush-600"
             >
               Continue
               <ArrowRight className="h-4 w-4" />
