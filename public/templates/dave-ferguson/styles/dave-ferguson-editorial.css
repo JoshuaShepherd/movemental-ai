@@ -3894,8 +3894,9 @@ select.e-form__input {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: var(--e-accent);
-  color: #fff;
+  background: #2563eb !important; /* force contrast; overrides global button resets */
+  background: var(--e-accent, #2563eb) !important;
+  color: #fff !important;
   border: none;
   cursor: pointer;
   display: flex;
@@ -3906,7 +3907,8 @@ select.e-form__input {
 }
 
 .e-chatbot__fab:hover {
-  background: var(--e-accent-hover);
+  background: #1d4ed8 !important;
+  background: var(--e-accent-hover, #1d4ed8) !important;
   transform: scale(1.06);
   box-shadow: 0 6px 28px rgba(37, 99, 235, 0.45);
 }
@@ -3919,6 +3921,7 @@ select.e-form__input {
 .e-chatbot__fab svg {
   width: 26px;
   height: 26px;
+  color: #fff; /* ensure icon is always visible on FAB background */
 }
 
 .e-chatbot__backdrop {
