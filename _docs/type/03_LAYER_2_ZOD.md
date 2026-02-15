@@ -4,8 +4,8 @@
 
 **Layer**: 2 of 6  
 **Directory**: `lib/schemas/`  
-**Validation**: `npx tsc --noEmit`  
-**Status**: ✅ LOCKED (No TypeScript errors)
+**Validation**: `pnpm contracts:check` → required `{"status":"LOCKED"}` (or `npx tsc --noEmit`)  
+**Status**: ✅ LOCKED (2026-02-15)
 
 ---
 

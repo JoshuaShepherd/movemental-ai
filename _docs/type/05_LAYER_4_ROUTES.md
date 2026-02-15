@@ -4,8 +4,8 @@
 
 **Layer**: 4 of 6  
 **Directory**: `app/api/`  
-**Validation**: `npx tsc --noEmit`  
-**Status**: ✅ LOCKED (No TypeScript errors)
+**Validation**: `pnpm routes:check` → required `{"status":"VALIDATED"}` (or `npx tsc --noEmit`)  
+**Status**: ✅ VALIDATED (2026-02-15)
 
 ---
 

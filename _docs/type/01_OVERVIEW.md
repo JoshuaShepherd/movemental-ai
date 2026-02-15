@@ -3,8 +3,8 @@
 > **The Six-Layer Chain: How Types Flow from Database to UI**
 
 **Version**: 2.0.0  
-**Last Updated**: January 26, 2026  
-**Status**: ✅ All Layers LOCKED (No TypeScript errors - verified)
+**Last Updated**: February 15, 2026  
+**Status**: ✅ All Layers LOCKED/VALIDATED (No TypeScript errors - verified)
 
 ---
 
@@ -232,6 +232,15 @@ Each layer must achieve validation status before proceeding to the next layer.
 ### Validation Command
 
 ```bash
+# Layer-specific checks (output JSON status)
+pnpm db:check       # Layer 1 → LOCKED
+pnpm contracts:check  # Layer 2 → LOCKED
+pnpm services:check   # Layer 3 → LOCKED
+pnpm routes:check     # Layer 4 → VALIDATED
+pnpm hooks:check      # Layer 5 → LOCKED
+pnpm ui:check         # Layer 6 → VALIDATED
+pnpm validate:all     # Run all checks in sequence
+
 # Primary validation: TypeScript compilation
 npx tsc --noEmit
 ```

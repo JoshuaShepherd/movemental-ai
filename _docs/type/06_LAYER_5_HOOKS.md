@@ -4,8 +4,8 @@
 
 **Layer**: 5 of 6  
 **Directory**: `hooks/simplified/`  
-**Validation**: `npx tsc --noEmit`  
-**Status**: ✅ LOCKED (No TypeScript errors)
+**Validation**: `pnpm hooks:check` → required `{"status":"LOCKED"}` (or `npx tsc --noEmit`)  
+**Status**: ✅ LOCKED (2026-02-15)
 
 ---
 

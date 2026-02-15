@@ -6,11 +6,11 @@ import { ArrowRight, ArrowLeft } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'Substack vs Movemental: An Honest Guide | Movemental',
   description:
-    'If you're deciding between Substack and Movemental, here's how we'd frame it—when each makes sense, and what you get for your 10%.',
+    "If you're deciding between Substack and Movemental, here's how we'd frame it—when each makes sense, and what you get for your 10%.",
   openGraph: {
     title: 'Substack vs Movemental: An Honest Guide | Movemental',
     description:
-      'If you're deciding between Substack and Movemental, here's how we'd frame it—when each makes sense, and what you get for your 10%.',
+      "If you're deciding between Substack and Movemental, here's how we'd frame it—when each makes sense, and what you get for your 10%.",
     type: 'website',
   },
   alternates: {
@@ -129,12 +129,27 @@ export default function CompareSubstackPage() {
             </table>
           </div>
 
-          <p className="compare-substack-body text-muted-foreground mb-12">
+          <p className="compare-substack-body text-muted-foreground mb-8">
             The short version: Substack is excellent for newsletter-first writers who want to
             publish quickly and cheaply. Movemental is for movement leaders who want one owned
             platform—books, articles, courses—and a credibility network. Neither is wrong. Choose
             based on what you're building.
           </p>
+
+          <div className="rounded-lg border border-border bg-muted/30 py-4 px-5 mb-12">
+            <p className="compare-substack-body text-muted-foreground mb-2">
+              <strong className="text-foreground">It's not either/or.</strong> If you're on
+              Movemental (or going there), you can integrate your Substack into your platform—one
+              home, your newsletter included.
+            </p>
+            <Link
+              href="/compare/substack-integration"
+              className="text-emerald-600 hover:text-emerald-700 font-medium text-base inline-flex items-center gap-1"
+            >
+              How to integrate your Substack into Movemental
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </Link>
+          </div>
 
           <div className="mt-14 pt-10 border-t border-border flex flex-col sm:flex-row gap-4">
             <Button

@@ -49,7 +49,7 @@ Migrations applied to movemental:
 | 2026-02-15 | Created cohort_discussion_messages                                     |
 | 2026-02-15 | Documented book_chapters vs books_chapters (both retained)             |
 | 2026-02-15 | Applied add_alan_hirsch_columns_batch1, align_agent_guardrails_defaults |
-| 2026-02-15 | Type safety chain validation (see _docs/type/validation/)              |
+| 2026-02-15 | Type safety chain completed; all layers LOCKED/VALIDATED                 |
 
 **Intentional differences left on movemental**:
 - organization_id on tenant tables (required for RLS / multi-tenant isolation)

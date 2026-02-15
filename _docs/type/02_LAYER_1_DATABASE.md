@@ -4,8 +4,8 @@
 
 **Layer**: 1 of 6  
 **File**: `db/schema.ts`  
-**Validation**: `npx tsc --noEmit`  
-**Status**: ✅ LOCKED (No TypeScript errors)
+**Validation**: `pnpm db:check` → required `{"status":"LOCKED"}` (or `npx tsc --noEmit`)  
+**Status**: ✅ LOCKED (2026-02-15)
 
 ---
 
