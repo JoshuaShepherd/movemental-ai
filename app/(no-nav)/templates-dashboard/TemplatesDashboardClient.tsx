@@ -210,7 +210,7 @@ export function TemplatesDashboardClient() {
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {/* Movement leader template — shareable, not in main nav */}
             <Link
-              href="/templates/dave-ferguson/"
+              href="/templates/dave-ferguson/index.html"
               className="group block rounded-xl border border-white/10 bg-white/5 transition hover:border-white/20 hover:bg-white/[0.07]"
             >
               <div className="aspect-[4/3] overflow-hidden rounded-t-xl bg-white/10">

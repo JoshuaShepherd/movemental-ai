@@ -20,7 +20,12 @@ const nextConfig = {
       },
       {
         source: '/templates/dave-ferguson',
-        destination: '/templates/dave-ferguson/',
+        destination: '/templates/dave-ferguson/index.html',
+        permanent: false,
+      },
+      {
+        source: '/templates/dave-ferguson/',
+        destination: '/templates/dave-ferguson/index.html',
         permanent: false,
       },
     ]
