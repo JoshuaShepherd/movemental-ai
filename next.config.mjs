@@ -18,6 +18,11 @@ const nextConfig = {
         destination: '/how-it-works',
         permanent: true,
       },
+      {
+        source: '/templates/dave-ferguson',
+        destination: '/templates/dave-ferguson/',
+        permanent: false,
+      },
     ]
   },
 };
