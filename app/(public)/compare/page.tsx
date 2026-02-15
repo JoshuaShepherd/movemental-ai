@@ -9,7 +9,8 @@ export const metadata: Metadata = {
   title: 'Compare Your Options | Movemental',
   openGraph: {
     title: 'Compare Your Options | Movemental',
-    description: 'Movemental vs agency vs SaaS. Cost, playbook, platform, network—and what only Movemental gives you.',
+    description:
+      'Movemental vs agency vs course platforms vs Substack. Cost, playbook, platform, network—and what only Movemental gives you.',
     type: 'website',
   },
   alternates: {
@@ -27,7 +28,20 @@ export default function ComparePage() {
             If you need to be doing this, here are your options.
           </h1>
           <p className="text-lg sm:text-xl text-sage-300 max-w-2xl mx-auto">
-            Movemental, agency, or SaaS—what you get, what you pay, and what only one of them gives you: the scenius and the people in it.
+            Movemental, agency, course platforms, or Substack—what you get, what you pay, and what
+            only one of them gives you: the scenius and the people in it.
+          </p>
+        </div>
+      </section>
+
+      {/* Substack guide entry point */}
+      <section className="py-4 px-4">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-center text-sm text-muted-foreground">
+            Considering Substack?{' '}
+            <Link href="/compare/substack" className="underline hover:text-foreground font-medium">
+              Read our honest Substack vs Movemental guide
+            </Link>
           </p>
         </div>
       </section>
@@ -35,7 +49,11 @@ export default function ComparePage() {
       {/* Comparison table */}
       <section className="py-12 sm:py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <CompareOptionsTable rows={COMPARE_OPTIONS_ROWS} showSourcesLink={true} />
+          <CompareOptionsTable
+            rows={COMPARE_OPTIONS_ROWS}
+            showSourcesLink={true}
+            showSubstackGuideLink={true}
+          />
         </div>
       </section>
 
@@ -43,14 +61,18 @@ export default function ComparePage() {
       <section className="py-16 sm:py-20 px-4 bg-muted/30">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
-            The part they can't give you
+            The part they can&apos;t give you
           </h2>
           <p className="text-lg text-muted-foreground mb-6">
-            An agency can build you a great site. A SaaS can host your courses. Neither gives you the <strong className="text-foreground">scenius</strong>—the network of movement leaders who vouch for each other, cross-promote, and make credibility visible. That's the most valuable part. And it's only here, with Alan, Brad, and the people already in it.
+            An agency can build you a great site. Course platforms can host your courses. Substack
+            can host your newsletter. None of them give you the <strong className="text-foreground">scenius</strong>—the
+            network of movement leaders who vouch for each other, cross-promote, and make credibility
+            visible. That&apos;s the most valuable part. And it&apos;s only here, with Alan, Brad, and the
+            people already in it.
           </p>
           <Button asChild size="lg" className="rounded-full bg-emerald-500 hover:bg-emerald-600 text-white">
             <Link href="/fit-check">
-              See if you're a fit
+              See if you&apos;re a fit
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
@@ -92,10 +114,26 @@ export default function ComparePage() {
       {/* Sources (anchor for link) */}
       <section id="sources" className="py-12 px-4 border-t bg-muted/20">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-lg font-semibold text-foreground mb-3">Sources for this comparison</h2>
+          <h2 className="text-lg font-semibold text-foreground mb-3">
+            Sources for this comparison
+          </h2>
           <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-5">
-            <li>Agency costs: Custom platform/website development typically $50K–$150K+ (Clutch, GoodFirms, industry surveys); ~$175K used as representative upper range. Timeline 6–12 months, maintenance 10–20% annually.</li>
-            <li>SaaS: Thinkific $49–$199/mo, 0% transaction fees on paid plans. Teachable $39–$249/mo, 7.5% transaction fee on Starter, 0% on higher tiers; payment processing 2.9%+$0.30. Kajabi $89–$399/mo, no transaction fees. (Official pricing and fee pages, 2024–2025.)</li>
+            <li>
+              Agency costs: Custom platform/website development typically $50K–$150K+ (Clutch,
+              GoodFirms, industry surveys); ~$175K used as representative upper range. Timeline
+              6–12 months, maintenance 10–20% annually.
+            </li>
+            <li>
+              Course platforms: Thinkific $49–$199/mo, 0% transaction fees on paid plans. Teachable
+              $39–$249/mo, 7.5% transaction fee on Starter, 0% on higher tiers; payment processing
+              2.9%+$0.30. Kajabi $89–$399/mo, no transaction fees. (Official pricing and fee pages,
+              2024–2025.)
+            </li>
+            <li>
+              Substack: 10% of paid subscription revenue; free to publish; Stripe processing
+              2.9%+$0.30 per transaction. Creators can export email list. (support.substack.com,
+              2024–2025.)
+            </li>
             <li>Movemental: Internal docs (pricing, why Movemental, credibility playbook, how it works).</li>
           </ul>
         </div>

@@ -38,16 +38,18 @@ function CellValue({
 interface CompareOptionsTableProps {
   rows: CompareRow[]
   showSourcesLink?: boolean
+  showSubstackGuideLink?: boolean
   className?: string
 }
 
 /**
- * Movemental vs Agency vs SaaS comparison table.
+ * Movemental vs Agency vs Course platforms vs Substack comparison table.
  * Used on /compare and embedded in How It Works.
  */
 export function CompareOptionsTable({
   rows,
   showSourcesLink = true,
+  showSubstackGuideLink = false,
   className = '',
 }: CompareOptionsTableProps) {
   const categories = Array.from(new Set(rows.map((r) => r.category)))
@@ -55,20 +57,23 @@ export function CompareOptionsTable({
   return (
     <div className={className}>
       <div className="overflow-x-auto -mx-4 sm:mx-0">
-        <table className="w-full border-collapse min-w-[720px]">
+        <table className="w-full border-collapse min-w-[900px]">
           <thead>
             <tr className="border-b border-border">
-              <th className="text-left py-4 px-4 font-semibold text-foreground w-[220px] sm:w-[260px]">
+              <th className="text-left py-4 px-4 font-semibold text-foreground w-[200px] sm:w-[220px]">
                 Feature
               </th>
-              <th className="text-center py-4 px-3 font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50/80 dark:bg-emerald-950/30 w-[140px] sm:w-[160px]">
+              <th className="text-center py-4 px-2 sm:px-3 font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50/80 dark:bg-emerald-950/30 w-[100px] sm:w-[120px]">
                 Movemental
               </th>
-              <th className="text-center py-4 px-3 font-semibold text-muted-foreground w-[140px] sm:w-[160px]">
+              <th className="text-center py-4 px-2 sm:px-3 font-semibold text-muted-foreground w-[90px] sm:w-[110px]">
                 Agency
               </th>
-              <th className="text-center py-4 px-3 font-semibold text-muted-foreground w-[140px] sm:w-[160px]">
-                SaaS
+              <th className="text-center py-4 px-2 sm:px-3 font-semibold text-muted-foreground w-[90px] sm:w-[120px]">
+                Course platforms
+              </th>
+              <th className="text-center py-4 px-2 sm:px-3 font-semibold text-muted-foreground w-[90px] sm:w-[110px]">
+                Substack
               </th>
             </tr>
           </thead>
@@ -77,7 +82,7 @@ export function CompareOptionsTable({
               <Fragment key={cat}>
                 <tr className="bg-muted/40">
                   <td
-                    colSpan={4}
+                    colSpan={5}
                     className="py-2 px-4 text-sm font-semibold text-foreground uppercase tracking-wider border-b border-border"
                   >
                     {cat}
@@ -91,14 +96,17 @@ export function CompareOptionsTable({
                     <td className="py-3 px-4 text-sm text-foreground align-top">
                       {row.feature}
                     </td>
-                    <td className="py-3 px-3 text-center text-sm align-top bg-emerald-50/30 dark:bg-emerald-950/20">
+                    <td className="py-3 px-2 sm:px-3 text-center text-sm align-top bg-emerald-50/30 dark:bg-emerald-950/20">
                       <CellValue value={row.movemental} isMovemental />
                     </td>
-                    <td className="py-3 px-3 text-center text-sm align-top">
+                    <td className="py-3 px-2 sm:px-3 text-center text-sm align-top">
                       <CellValue value={row.agency} />
                     </td>
-                    <td className="py-3 px-3 text-center text-sm align-top">
-                      <CellValue value={row.saas} />
+                    <td className="py-3 px-2 sm:px-3 text-center text-sm align-top">
+                      <CellValue value={row.coursePlatforms} />
+                    </td>
+                    <td className="py-3 px-2 sm:px-3 text-center text-sm align-top">
+                      <CellValue value={row.substack} />
                     </td>
                   </tr>
                 ))}
@@ -107,16 +115,30 @@ export function CompareOptionsTable({
           </tbody>
         </table>
       </div>
-      {showSourcesLink && (
-        <p className="mt-6 flex items-center gap-2 text-xs text-muted-foreground">
-          <HelpCircle className="h-4 w-4 shrink-0" />
-          Agency and SaaS figures from public pricing and industry reports (2024–2025). See{' '}
-          <Link href="/compare#sources" className="underline hover:text-foreground">
-            sources
-          </Link>
-          .
-        </p>
-      )}
+      <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs text-muted-foreground">
+        {showSourcesLink && (
+          <p className="flex items-center gap-2">
+            <HelpCircle className="h-4 w-4 shrink-0" />
+            Agency, course platforms, and Substack figures from public pricing and industry reports
+            (2024–2025). See{' '}
+            <Link href="/compare#sources" className="underline hover:text-foreground">
+              sources
+            </Link>
+            .
+          </p>
+        )}
+        {showSubstackGuideLink && (
+          <p>
+            Considering Substack?{' '}
+            <Link
+              href="/compare/substack"
+              className="underline hover:text-foreground font-medium"
+            >
+              Read our honest comparison
+            </Link>
+          </p>
+        )}
+      </div>
     </div>
   )
 }

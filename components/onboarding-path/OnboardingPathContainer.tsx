@@ -219,12 +219,12 @@ export function OnboardingPathContainer({ className }: OnboardingPathContainerPr
         </NarrativeSection>
       </section>
 
-      {/* Compare: Movemental vs Agency vs SaaS */}
+      {/* Compare: Movemental vs Agency vs Course platforms vs Substack */}
       <section id="compare">
         <NarrativeSection>
           <div className="space-y-10">
             <NarrativeStatement alignment="center">
-              Movemental vs agency vs SaaS
+              Movemental vs agency vs course platforms vs Substack
             </NarrativeStatement>
             <p className="text-center text-lg text-muted-foreground max-w-2xl mx-auto">
               What you get, what you pay, and what only Movemental gives you: the scenius and the people in it.
