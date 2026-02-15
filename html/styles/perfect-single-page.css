@@ -326,7 +326,7 @@ html { scroll-behavior: smooth; }
 .psp-reveal {
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity 0.5s var(--psp-ease), transform 0.5s var(--psp-ease);
+  transition: opacity 0.35s var(--psp-ease), transform 0.35s var(--psp-ease);
 }
 .psp-reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -412,3 +412,11 @@ html { scroll-behavior: smooth; }
 .psp-footer__links a { color: inherit; font-size: var(--psp-text-sm); }
 .psp-footer__links a:hover { color: var(--psp-on-dark); }
 .psp-footer__tagline { margin: 0; font-size: var(--psp-text-xs); text-align: center; opacity: 0.8; }
+
+@media (prefers-reduced-motion: reduce) {
+  .psp-reveal {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

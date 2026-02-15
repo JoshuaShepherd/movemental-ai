@@ -518,9 +518,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .reveal {
   opacity: 0;
   transform: translateY(12px);
-  transition: opacity 0.5s var(--m-ease), transform 0.5s var(--m-ease);
+  transition: opacity 0.35s var(--m-ease), transform 0.35s var(--m-ease);
 }
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

@@ -116,7 +116,6 @@
   --radius-mvmt-sm: var(--mvmt-radius-sm);
   --radius-mvmt-md: var(--mvmt-radius-md);
   --radius-mvmt-lg: var(--mvmt-radius-lg);
-  --radius-mvmt-xl: var(--mvmt-radius-xl);
 
   /* ===== Box shadows ===== */
   --shadow-mvmt-sm: var(--mvmt-shadow-sm);
@@ -266,7 +265,7 @@
   /* Light surface text */
   --mvmt-text-primary: #1A1A2E;
   --mvmt-text-secondary: #64748B;
-  --mvmt-text-muted: #94A3B8;
+  --mvmt-text-muted: #6B7280;
 
   /* Surfaces */
   --mvmt-surface-dark: #181818;
@@ -301,10 +300,18 @@
   --mvmt-shadow-md: 0 4px 6px rgba(0,0,0,0.07);
   --mvmt-shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
   --mvmt-radius-sm: 0.375rem;
-  --mvmt-radius-md: 0.5rem;
-  --mvmt-radius-lg: 0.75rem;
-  --mvmt-radius-xl: 1rem;
+  --mvmt-radius-md: 0.75rem;
+  --mvmt-radius-lg: 1rem;
   --mvmt-radius-full: 9999px;
+
+  /* Button hierarchy */
+  --mvmt-btn-primary-bg: var(--mvmt-cta-bg);
+  --mvmt-btn-primary-text: var(--mvmt-cta-text);
+  --mvmt-btn-secondary-bg: transparent;
+  --mvmt-btn-secondary-text: var(--mvmt-text-primary);
+  --mvmt-btn-secondary-border: var(--mvmt-border-light);
+  --mvmt-btn-tertiary-bg: transparent;
+  --mvmt-btn-tertiary-text: var(--mvmt-accent);
 
   /* Footer */
   --mvmt-footer-bg: #F5F5F5;

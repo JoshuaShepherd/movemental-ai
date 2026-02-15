@@ -3,28 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dave Ferguson — Leadership Multiplication & Church Planting</title>
-  <meta name="description" content="Co-founding pastor of Community Christian Church, visionary leader of NewThing Network, President/CEO of Exponential Conference. Author of Hero Maker, Exponential, B.L.E.S.S., and more. Helping leaders multiply leaders and churches multiply churches.">
+  <title>Dave Ferguson — Writer, Speaker, Leader, Movement</title>
+  <meta name="description" content="Co-founding pastor of Community Christian Church, visionary leader of NewThing Network, President/CEO of Exponential Conference. Author of Hero Maker, B.L.E.S.S., and more.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,12..72,400;0,12..72,500;0,12..72,600;1,12..72,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles/dave-ferguson-editorial.css">
 </head>
-<body class="e-theme">
+<body class="e-theme e-home e-nav-over-dark">
 
   <div class="e-read-progress" id="e-read-progress" aria-hidden="true"></div>
 
   <header class="e-nav" id="e-nav">
     <div class="e-nav__inner">
-      <a href="index.html" class="e-nav__logo">move<span>mental</span></a>
+      <a href="index.html" class="e-nav__logo">
+        <img src="../../public/dave-ferguson/logo.webp" alt="Dave Ferguson">
+      </a>
       <div class="e-nav__links">
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About</a>
-        <a href="books.html">Books</a>
-        <a href="speaking.html">Speaking</a>
-        <a href="contact.html" class="e-nav__cta">Get in touch</a>
+        <a href="index.html" class="active" aria-current="page">HOME</a>
+        <a href="books.html">BOOKS</a>
+        <a href="blog.html">BLOG</a>
+        <a href="newsletter.html">NEWSLETTER</a>
+        <a href="content.html">CONTENT</a>
+        <a href="themes.html">THEMES</a>
+        <a href="courses.html">COURSES</a>
+        <a href="contact.html">CONTACT</a>
       </div>
       <button class="e-nav__toggle" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -32,168 +37,271 @@
     </div>
   </header>
 
-  <!-- Hero: centered copy + image band below -->
-  <section class="e-hero" id="hero" data-section="hero">
-    <div class="e-hero__copy">
-      <p class="e-hero__eyebrow reveal">Movement Leader</p>
-      <h1 class="e-hero__title reveal">
-        Dave Ferguson
-        <span class="e-hero__tagline">Leadership multiplication & church planting</span>
-      </h1>
-      <p class="e-hero__subtitle reveal">
-        Helping leaders multiply leaders and churches multiply churches — through Community Christian Church, NewThing Network, and the world's largest church planting conference, Exponential.
-      </p>
+  <!-- Hero: full-width background image with overlay -->
+  <section class="e-home-hero" id="hero" data-section="hero">
+    <div class="e-home-hero__bg">
+      <img src="../../public/media-library/images/headshots/dave-ferguson.webp" alt="" aria-hidden="true" fetchpriority="high">
+    </div>
+    <div class="e-home-hero__overlay"></div>
+    <div class="e-home-hero__content">
+      <h1 class="e-home-hero__title reveal">DAVE FERGUSON</h1>
+      <p class="e-home-hero__tagline reveal">Friend. Author. Leader. Visionary.</p>
       <div class="reveal">
-        <a href="#calling" class="e-btn">Explore his work</a>
+        <a href="#about" class="e-btn e-btn--red">Get to know me</a>
       </div>
-    </div>
-    <div class="e-hero__band reveal">
-      <img
-        src="../../public/media-library/images/headshots/dave-ferguson.webp"
-        alt="Dave Ferguson"
-        fetchpriority="high"
-      />
     </div>
   </section>
 
-  <!-- Stats -->
-  <section class="e-section e-section--stats" id="stats" data-section="stats">
+  <!-- About -->
+  <section class="e-home-about" id="about" data-section="about">
     <div class="e-container">
-      <div class="e-stats">
-        <div class="e-stat reveal"><span class="e-stat__n">9+</span><span class="e-stat__l">Published books</span></div>
-        <div class="e-stat reveal"><span class="e-stat__n">Exponential</span><span class="e-stat__l">President/CEO — world's largest church planting conference</span></div>
-        <div class="e-stat reveal"><span class="e-stat__n">NewThing</span><span class="e-stat__l">Visionary leader, international church-planting movement</span></div>
-        <div class="e-stat reveal"><span class="e-stat__n">Community Christian</span><span class="e-stat__l">Co-founding pastor — one of America's most influential churches</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Calling (with margin section number) -->
-  <section class="e-section e-section--numbered" id="calling" data-section="calling">
-    <span class="e-section-num" aria-hidden="true">01</span>
-    <div class="e-container e-container--with-num">
-      <div class="e-two-col">
-        <div class="e-two-col__main">
-          <h2 class="e-heading reveal">You're called to leadership multiplication and church planting.</h2>
-          <div class="e-body reveal">
-            <p>Not to build one church or hold one platform — but to help <em>churches multiply</em> and to equip leaders who multiply leaders. You think in terms of movement: reproduction, networks, and the long run.</p>
-            <p>You're not selling a brand; you're creating systems that multiply. Success for you is movement that outlasts you — churches that plant churches, leaders who develop leaders, and frameworks that reproduce.</p>
+      <div class="e-home-about__grid">
+        <div class="e-home-about__main">
+          <h2 class="e-home-about__title reveal">A life built around multiplication</h2>
+          <div class="e-home-about__body reveal">
+            <p>Dave Ferguson is the co-founding pastor of Community Christian Church in Naperville, Illinois — recognized as one of America's most influential churches. What began as a church plant has grown into a multi-site missional community with a singular focus: reproduction over addition.</p>
+            <p>He is the visionary leader of NewThing Network, an international church-planting movement that equips and connects church planters around the world. In 2025, NewThing joined forces with Exponential Conference, where Dave serves as President and CEO — leading the world's largest church planting conference.</p>
+            <p>Dave's work isn't about building a personal brand. It's about creating systems that multiply — churches that plant churches, leaders who develop leaders, and frameworks that reproduce across contexts.</p>
+          </div>
+          <h3 class="e-home-about__subtitle reveal">Background & education</h3>
+          <div class="e-home-about__body reveal">
+            <p>Dave holds a Bachelor of Arts in Bible and Communications from Lincoln Christian University (1986) and a Master of Arts in Educational Ministries, specializing in Church Planting, from Wheaton Graduate School (1991).</p>
+            <p>He lives in the Chicago area with his wife, Sue. They have three children: Amy, Joshua, and Caleb.</p>
+            <p>His writing — including <em>Hero Maker</em>, <em>Exponential</em>, <em>B.L.E.S.S.</em>, <em>Finding Your Way Back to God</em> (co-authored with his brother Jon Ferguson), and others — has been published by Zondervan, Multnomah, and WaterBrook Multnomah.</p>
+          </div>
+          <h3 class="e-home-about__subtitle reveal">Why one platform?</h3>
+          <div class="e-home-about__body reveal">
+            <p>Dave's credibility in the room — Community Christian Church, NewThing, Exponential, the conference stage, church planting networks — is clear. Online, it's partial: his name and books show up; his talks and movement resources add to it. But the full picture isn't assembled in one place that multiplies.</p>
+            <p>Movemental is built so that voice stays central — same mission, same message — with content that's findable, connected, and able to reproduce through a unified ecosystem.</p>
           </div>
         </div>
-        <div class="e-two-col__aside reveal">
-          <img src="../../public/media-library/images/headshots/dave-ferguson.webp" alt="Dave Ferguson" />
+        <div class="e-home-about__aside reveal">
+          <div class="e-home-about__photo">
+            <img src="../../public/media-library/images/headshots/dave-ferguson.webp" alt="Dave Ferguson">
+          </div>
+          <div class="e-home-about__stats">
+            <div class="e-home-about__stat"><span class="e-home-about__stat-n">9+</span><span class="e-home-about__stat-l">Published books</span></div>
+            <div class="e-home-about__stat"><span class="e-home-about__stat-n">Exponential</span><span class="e-home-about__stat-l">President/CEO — world's largest church planting conference</span></div>
+            <div class="e-home-about__stat"><span class="e-home-about__stat-n">NewThing</span><span class="e-home-about__stat-l">Visionary leader, international church-planting movement</span></div>
+            <div class="e-home-about__stat"><span class="e-home-about__stat-n">Community Christian</span><span class="e-home-about__stat-l">Co-founding pastor — one of America's most influential churches</span></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Audience -->
-  <section class="e-section e-section--numbered e-section--alt" id="audience" data-section="audience">
-    <span class="e-section-num" aria-hidden="true">02</span>
-    <div class="e-container e-container--with-num">
-      <h2 class="e-heading e-heading--center reveal">The people who respond to your work are multiplication-oriented.</h2>
-      <p class="e-lead reveal">They care about church planting, leadership development, missional living, and creating systems that reproduce — not addition, but exponential growth.</p>
-      <div class="e-personas">
-        <div class="e-persona reveal">
-          <h3 class="e-persona__title">Church multiplication leader</h3>
-          <p class="e-persona__desc">Already in NewThing, Exponential, or similar networks; they want frameworks for multiplying leaders and churches.</p>
-        </div>
-        <div class="e-persona reveal">
-          <h3 class="e-persona__title">Multi-site pastor</h3>
-          <p class="e-persona__desc">Leading or exploring multi-site; they want strategy and practices from Community Christian Church and Exponential.</p>
-        </div>
-        <div class="e-persona reveal">
-          <h3 class="e-persona__title">Church planter</h3>
-          <p class="e-persona__desc">Planting or preparing to plant; they want Hero Maker, Exponential resources, and NewThing training.</p>
-        </div>
-        <div class="e-persona reveal">
-          <h3 class="e-persona__title">Missional practitioner</h3>
-          <p class="e-persona__desc">Engaging neighbors and community; they want B.L.E.S.S. and practical missional living content.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Content / books -->
-  <section class="e-section e-section--numbered" id="content" data-section="content">
-    <span class="e-section-num" aria-hidden="true">03</span>
-    <div class="e-container e-container--with-num">
-      <h2 class="e-heading e-heading--center reveal">Your content lives across books, conferences, and movement resources.</h2>
-      <p class="e-lead e-lead--center reveal">Hero Maker, Exponential, B.L.E.S.S., Finding Your Way Back to God. Community Christian Church, NewThing Network, Exponential Conference, daveferguson.org.</p>
-      <div class="e-books reveal">
-        <div class="e-book">Hero Maker</div>
-        <div class="e-book">Exponential</div>
-        <div class="e-book">B.L.E.S.S.</div>
-        <div class="e-book">Finding Your Way Back to God</div>
-        <div class="e-book">On The Verge</div>
-        <div class="e-book">The Big Idea</div>
-        <div class="e-book">Discover Your Mission Now</div>
-        <div class="e-book">Keeping Score</div>
-        <div class="e-book">Starting Over</div>
-      </div>
-      <div class="e-content-img reveal">
-        <img src="../../public/media-library/images/headshots/dave-ferguson.webp" alt="Dave Ferguson" />
-      </div>
-    </div>
-  </section>
-
-  <!-- Quote -->
-  <section class="e-quote" id="quote" data-section="quote">
+  <!-- Books: 3 featured -->
+  <section class="e-home-books" id="books" data-section="books">
     <div class="e-container">
-      <blockquote class="e-quote__block reveal">
-        <p class="e-quote__text">Your credibility in the room — Community Christian Church, NewThing, Exponential, the conference stage, church planting networks — is clear. Online, it's partial: your name and books show up; your talks and movement resources add to it. But the full picture isn't assembled in one place that multiplies.</p>
-        <cite class="e-quote__cite">— Reflected understanding, Dave Ferguson</cite>
-      </blockquote>
-    </div>
-  </section>
+      <div class="e-home-books__grid">
+        <article class="e-home-book reveal">
+          <div class="e-home-book__cover">
+            <img src="../../public/dave-ferguson/books/multiplier.jpg" alt="Multiplier book cover">
+          </div>
+          <div class="e-home-book__body">
+            <h3 class="e-home-book__title">Multiplier</h3>
+            <p class="e-home-book__subtitle">How our mission to make disciples multiplies</p>
+            <p class="e-home-book__desc">Leadership multiplication changes everything. Discover how healthy leaders create lasting impact by investing in others who multiply.</p>
+            <div class="e-home-book__actions">
+              <a href="reader.html?book=multiplier" class="e-btn e-btn--red e-btn--sm">LEARN MORE</a>
+              <a href="#" class="e-btn e-btn--red e-btn--sm">BUY</a>
+            </div>
+          </div>
+        </article>
 
-  <!-- Constraints (value cards with hover tilt) -->
-  <section class="e-section e-section--numbered e-section--alt" id="constraints" data-section="constraints">
-    <span class="e-section-num" aria-hidden="true">04</span>
-    <div class="e-container e-container--with-num">
-      <h2 class="e-heading e-heading--center reveal">Time and attention are scarce — the work is in the room.</h2>
-      <p class="e-lead e-lead--center reveal">A platform that reduces the lift — that helps structure, repurpose, connect, and amplify what you already do — addresses those constraints without asking you to become a different kind of leader.</p>
-      <div class="e-cards">
-        <div class="e-card reveal">
-          <h3 class="e-card__title">Interconnection</h3>
-          <p class="e-card__body">Books, conference talks, sermons, and movement resources visibly linked in one discoverable ecosystem — so content multiplies the way your churches multiply.</p>
-        </div>
-        <div class="e-card reveal">
-          <h3 class="e-card__title">Structure & repurpose</h3>
-          <p class="e-card__body">Sermons and talks turned into articles and courses; Hero Maker and B.L.E.S.S. frameworks expanded across content forms without starting from scratch.</p>
-        </div>
-        <div class="e-card reveal">
-          <h3 class="e-card__title">Ownership & discoverability</h3>
-          <p class="e-card__body">One place you control where your credibility, content, and network are clearly attached — so your content can multiply through a unified system.</p>
-        </div>
+        <article class="e-home-book reveal">
+          <div class="e-home-book__cover">
+            <img src="../../public/dave-ferguson/books/bless.jpg" alt="B.L.E.S.S. book cover">
+          </div>
+          <div class="e-home-book__body">
+            <h3 class="e-home-book__title">B.L.E.S.S.</h3>
+            <p class="e-home-book__subtitle">5 everyday ways to love your neighbor and change the world</p>
+            <p class="e-home-book__desc">Before we talk, bless. Learn, eat, and serve — five simple rhythms that transform ordinary moments into kingdom opportunities.</p>
+            <div class="e-home-book__actions">
+              <a href="reader.html?book=bless" class="e-btn e-btn--red e-btn--sm">LEARN MORE</a>
+              <a href="#" class="e-btn e-btn--red e-btn--sm">BUY</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="e-home-book reveal">
+          <div class="e-home-book__cover">
+            <img src="../../public/dave-ferguson/books/hero-maker.jpg" alt="Hero Maker book cover">
+          </div>
+          <div class="e-home-book__body">
+            <h3 class="e-home-book__title">Hero Maker</h3>
+            <p class="e-home-book__subtitle">5 essential practices for leaders to multiply leaders</p>
+            <p class="e-home-book__desc">Stop being the hero. Start making heroes. Five learnable practices that any leader can implement to multiply leaders who multiply leaders.</p>
+            <div class="e-home-book__actions">
+              <a href="reader.html?book=hero-maker" class="e-btn e-btn--red e-btn--sm">LEARN MORE</a>
+              <a href="#" class="e-btn e-btn--red e-btn--sm">BUY</a>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="e-cta" id="cta" data-section="cta">
+  <!-- Blog: 3 featured posts -->
+  <section class="e-home-blog" id="blog" data-section="blog">
     <div class="e-container">
-      <h2 class="e-cta__title reveal">Your content can multiply.</h2>
-      <p class="e-cta__text reveal">Movemental is built so your voice stays central — same mission, same message — with content that's findable, connected, and able to reproduce through a unified ecosystem.</p>
-      <div class="reveal">
-        <a href="contact.html" class="e-btn e-btn--primary">Get in touch</a>
+      <h2 class="e-home-blog__title reveal">Blog</h2>
+      <div class="e-home-blog__grid">
+        <a href="article-leadership-multiplication.html" class="e-home-post reveal">
+          <div class="e-home-post__img e-home-post__img--1"></div>
+          <div class="e-home-post__body">
+            <h3 class="e-home-post__title">The Shift from Hero to Hero Maker: Leadership Multiplication</h3>
+            <p class="e-home-post__excerpt">Most leaders are trapped in the hero role. Here's how to break free and start multiplying leaders who multiply leaders.</p>
+            <span class="e-btn e-btn--red e-btn--sm">LEARN MORE</span>
+          </div>
+        </a>
+
+        <a href="blog.html" class="e-home-post reveal">
+          <div class="e-home-post__img e-home-post__img--2"></div>
+          <div class="e-home-post__body">
+            <h3 class="e-home-post__title">From Addition to Multiplication: The Math That Makes Movements</h3>
+            <p class="e-home-post__excerpt">Churches grow by addition. Movements spread by multiplication. Understanding this difference catalyzes real change.</p>
+            <span class="e-btn e-btn--red e-btn--sm">LEARN MORE</span>
+          </div>
+        </a>
+
+        <a href="blog.html" class="e-home-post reveal">
+          <div class="e-home-post__img e-home-post__img--3"></div>
+          <div class="e-home-post__body">
+            <h3 class="e-home-post__title">B.L.E.S.S. Your Neighborhood: Five Practices That Change Everything</h3>
+            <p class="e-home-post__excerpt">What if being missional didn't require a program but just five everyday rhythms? Discover how B.L.E.S.S. transforms ordinary moments.</p>
+            <span class="e-btn e-btn--red e-btn--sm">LEARN MORE</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>
 
-  <footer class="e-footer">
-    <div class="e-footer__inner">
-      <div class="e-footer__logo">move<span>mental</span></div>
-      <div class="e-footer__links">
+  <!-- Instagram -->
+  <section class="e-home-instagram" id="instagram" data-section="instagram">
+    <div class="e-container">
+      <div class="e-home-instagram__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </div>
+      <p class="e-home-instagram__text reveal">Follow <a href="#">@daveferguson</a> on Instagram</p>
+      <div class="e-home-instagram__gallery reveal">
+        <div class="e-home-instagram__thumb"></div>
+        <div class="e-home-instagram__thumb"></div>
+        <div class="e-home-instagram__thumb"></div>
+        <div class="e-home-instagram__thumb"></div>
+        <div class="e-home-instagram__thumb"></div>
+        <div class="e-home-instagram__thumb"></div>
+        <div class="e-home-instagram__thumb"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Thanks for stopping by -->
+  <section class="e-home-thanks" id="thanks" data-section="thanks">
+    <div class="e-container">
+      <h2 class="e-home-thanks__title reveal">Hi! Thanks for stopping by.</h2>
+      <div class="e-home-thanks__body reveal">
+        <p>For over 20 years I've been obsessed with one question: How do we help churches multiply and leaders multiply leaders? That journey has taken me from co-founding Community Christian Church to leading NewThing Network to serving as President/CEO of Exponential — the world's largest church planting conference.</p>
+        <p>This site brings together my books, articles, and resources in one place. Whether you're planting a church, developing leaders, or learning to bless your neighbors — you're in the right place. <a href="#about">Learn more about Dave Ferguson</a>.</p>
+      </div>
+      <div class="reveal e-home-thanks__actions">
+        <a href="content.html" class="e-btn e-btn--red">GET FREE RESOURCES</a>
+        <a href="newsletter.html" class="e-btn">Subscribe to Newsletter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Let's Connect (Contact form + Elsewhere) -->
+  <section class="e-home-connect" id="connect" data-section="connect">
+    <div class="e-container">
+      <h2 class="e-home-connect__title reveal">Let's Connect</h2>
+      <p class="e-home-connect__intro reveal">For speaking inquiries, media requests, or general questions about Dave's work — or about how Movemental could help his content multiply. Send a message below.</p>
+      <div class="e-home-connect__inner">
+        <form class="e-home-connect__form reveal" onsubmit="event.preventDefault(); alert('This is a mock-up — form submissions are not active.');">
+          <div class="e-home-connect__field">
+            <label for="connect-name">Name</label>
+            <input type="text" id="connect-name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="e-home-connect__field">
+            <label for="connect-email">Email</label>
+            <input type="email" id="connect-email" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="e-home-connect__field">
+            <label for="connect-subject">Subject</label>
+            <select id="connect-subject" name="subject">
+              <option value="">Select a topic</option>
+              <option value="speaking">Speaking inquiry</option>
+              <option value="media">Media request</option>
+              <option value="general">General question</option>
+              <option value="movemental">About Movemental</option>
+            </select>
+          </div>
+          <div class="e-home-connect__field">
+            <label for="connect-message">Message</label>
+            <textarea id="connect-message" name="message" rows="5" placeholder="How can we help?" required></textarea>
+          </div>
+          <button type="submit" class="e-btn e-btn--red">Send message</button>
+        </form>
+        <div class="e-home-connect__elsewhere reveal">
+          <h3 class="e-home-connect__elsewhere-title">Elsewhere</h3>
+          <p class="e-home-connect__elsewhere-desc">Dave's work spans multiple platforms. Here are the primary ones:</p>
+          <div class="e-elsewhere">
+            <a href="#" class="e-elsewhere__link">
+              <span class="e-elsewhere__name">daveferguson.org</span>
+              <span class="e-elsewhere__desc">Personal website & blog</span>
+            </a>
+            <a href="#" class="e-elsewhere__link">
+              <span class="e-elsewhere__name">Exponential</span>
+              <span class="e-elsewhere__desc">World's largest church planting conference</span>
+            </a>
+            <a href="#" class="e-elsewhere__link">
+              <span class="e-elsewhere__name">NewThing Network</span>
+              <span class="e-elsewhere__desc">International church-planting movement</span>
+            </a>
+            <a href="#" class="e-elsewhere__link">
+              <span class="e-elsewhere__name">Community Christian Church</span>
+              <span class="e-elsewhere__desc">Multi-site missional community, Chicago</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="e-home-footer">
+    <div class="e-container">
+      <div class="e-home-footer__links">
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
+        <a href="content.html">Content</a>
+        <a href="themes.html">Themes</a>
+        <a href="courses.html">Courses</a>
         <a href="books.html">Books</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
         <a href="speaking.html">Speaking</a>
         <a href="contact.html">Contact</a>
         <a href="privacy.html">Privacy</a>
       </div>
+      <div class="e-home-footer__inner">
+        <p class="e-home-footer__copy">Copyright © 2026 Movemental Inc.</p>
+        <div class="e-home-footer__logos">
+          <span class="e-home-footer__logo-text">COMMUNITY<br>OF HOPE<br>MOVEMENT</span>
+          <span class="e-home-footer__logo-text">EXPONENTIAL</span>
+        </div>
+        <div class="e-home-footer__social">
+          <a href="#" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h11c5.5 0 10 4.5 10 10s-4.5 10-10 10h-11"/><polyline points="8 10 4 14 8 18"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <p class="e-home-footer__tagline">A credibility ecology for movement leaders.</p>
     </div>
-    <p class="e-footer__tagline">A credibility ecology for movement leaders.</p>
   </footer>
 
   <script>
@@ -205,8 +313,7 @@
         if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
         if (progress) {
           var h = document.documentElement.scrollHeight - window.innerHeight;
-          var pct = h > 0 ? (window.scrollY / h) * 100 : 0;
-          progress.style.width = pct + '%';
+          progress.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
         }
       }
       window.addEventListener('scroll', onScroll, { passive: true });
@@ -225,5 +332,6 @@
       }
     })();
   </script>
+  <script src="scripts/chatbot.js"></script>
 </body>
 </html>

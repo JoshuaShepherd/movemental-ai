@@ -208,6 +208,26 @@ export function TemplatesDashboardClient() {
             The best templates hand-picked by the team.
           </p>
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            {/* Movement leader template — shareable, not in main nav */}
+            <Link
+              href="/templates/dave-ferguson"
+              className="group block rounded-xl border border-white/10 bg-white/5 transition hover:border-white/20 hover:bg-white/[0.07]"
+            >
+              <div className="aspect-[4/3] overflow-hidden rounded-t-xl bg-white/10">
+                <img
+                  src="/dave-ferguson/logo.webp"
+                  alt="Dave Ferguson template preview"
+                  className="h-full w-full object-cover object-center transition group-hover:scale-[1.02]"
+                />
+              </div>
+              <div className="p-4">
+                <h3 className="font-semibold text-white">Dave Ferguson</h3>
+                <p className="mt-1 text-sm text-white/50">Movemental</p>
+                <p className="mt-2">
+                  <span className="text-sm font-medium text-[#007AFF]">Template</span>
+                </p>
+              </div>
+            </Link>
             {TEMPLATES.map((template) => (
               <article
                 key={template.id}

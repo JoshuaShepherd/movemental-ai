@@ -560,7 +560,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .reveal {
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity 0.55s var(--m-ease), transform 0.55s var(--m-ease);
+  transition: opacity 0.35s var(--m-ease), transform 0.35s var(--m-ease);
 }
 
 .reveal.visible {
@@ -577,3 +577,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .stagger > .reveal:nth-child(7) { transition-delay: 300ms; }
 .stagger > .reveal:nth-child(8) { transition-delay: 350ms; }
 .stagger > .reveal:nth-child(9) { transition-delay: 400ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

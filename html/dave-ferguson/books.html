@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,12..72,400;0,12..72,500;0,12..72,600;1,12..72,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles/dave-ferguson-editorial.css">
 </head>
@@ -18,13 +18,18 @@
 
   <header class="e-nav" id="e-nav">
     <div class="e-nav__inner">
-      <a href="index.html" class="e-nav__logo">move<span>mental</span></a>
+      <a href="index.html" class="e-nav__logo">
+        <img src="../../public/dave-ferguson/logo.webp" alt="Dave Ferguson">
+      </a>
       <div class="e-nav__links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="books.html" class="active">Books</a>
-        <a href="speaking.html">Speaking</a>
-        <a href="contact.html" class="e-nav__cta">Get in touch</a>
+        <a href="index.html">HOME</a>
+        <a href="books.html" class="active" aria-current="page">BOOKS</a>
+        <a href="blog.html">BLOG</a>
+        <a href="newsletter.html">NEWSLETTER</a>
+        <a href="content.html">CONTENT</a>
+        <a href="themes.html">THEMES</a>
+        <a href="courses.html">COURSES</a>
+        <a href="contact.html">CONTACT</a>
       </div>
       <button class="e-nav__toggle" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -44,108 +49,108 @@
   </section>
 
   <!-- Book Grid -->
-  <section class="e-section e-section--numbered" id="books" data-section="books">
+  <section class="e-section e-section" id="books" data-section="books">
     <span class="e-section-num" aria-hidden="true">01</span>
-    <div class="e-container e-container--with-num">
+    <div class="e-section__inner">
       <h2 class="e-heading reveal">Selected works</h2>
       <div class="e-book-grid">
 
-        <div class="e-book-card reveal">
+        <a href="reader.html?book=hero-maker" class="e-book-card reveal">
           <div class="e-book-card__cover">
             <img src="../../public/dave-ferguson/books/hero-maker.jpg" alt="Hero Maker book cover">
           </div>
           <div class="e-book-card__info">
             <h3 class="e-book-card__title">Hero Maker</h3>
             <p class="e-book-card__subtitle">Five Essential Practices for Leaders to Multiply Leaders</p>
-            <p class="e-book-card__meta">With Warren Bird</p>
+            <p class="e-book-card__meta">With Warren Bird · Read preview</p>
           </div>
-        </div>
+        </a>
 
-        <div class="e-book-card reveal">
+        <a href="reader.html?book=bless" class="e-book-card reveal">
           <div class="e-book-card__cover">
             <img src="../../public/dave-ferguson/books/bless.jpg" alt="B.L.E.S.S. book cover">
           </div>
           <div class="e-book-card__info">
             <h3 class="e-book-card__title">B.L.E.S.S.</h3>
             <p class="e-book-card__subtitle">5 Everyday Ways to Love Your Neighbor and Change the World</p>
-            <p class="e-book-card__meta">With Jon Ferguson</p>
+            <p class="e-book-card__meta">With Jon Ferguson · Read preview</p>
           </div>
-        </div>
+        </a>
 
-        <div class="e-book-card reveal">
+        <a href="reader.html?book=multiplier" class="e-book-card reveal">
           <div class="e-book-card__cover">
             <img src="../../public/dave-ferguson/books/multiplier.jpg" alt="Multiplier book cover">
           </div>
           <div class="e-book-card__info">
             <h3 class="e-book-card__title">Multiplier</h3>
             <p class="e-book-card__subtitle">How Healthy Leaders Create Lasting Impact</p>
-            <p class="e-book-card__meta">Exponential Resources</p>
+            <p class="e-book-card__meta">Exponential Resources · Read preview</p>
           </div>
-        </div>
+        </a>
 
-        <div class="e-book-card reveal">
+        <a href="reader.html?book=boss-or-leader" class="e-book-card reveal">
           <div class="e-book-card__cover">
             <img src="../../public/dave-ferguson/books/boss-or-leader.webp" alt="Boss or Leader book cover">
           </div>
           <div class="e-book-card__info">
             <h3 class="e-book-card__title">Boss or Leader</h3>
             <p class="e-book-card__subtitle">Are You Leading for a Living, or Living to Lead?</p>
-            <p class="e-book-card__meta">Expanded 2nd Edition</p>
+            <p class="e-book-card__meta">Expanded 2nd Edition · Read preview</p>
           </div>
-        </div>
+        </a>
 
-        <div class="e-book-card reveal">
+        <a href="reader.html?book=finding-your-way-back-to-god" class="e-book-card reveal">
           <div class="e-book-card__cover">
             <img src="../../public/dave-ferguson/books/finding-your-way-back-to-god.jpg" alt="Finding Your Way Back to God book cover">
           </div>
           <div class="e-book-card__info">
             <h3 class="e-book-card__title">Finding Your Way Back to God</h3>
             <p class="e-book-card__subtitle">5 Awakenings to Your New Life</p>
-            <p class="e-book-card__meta">With Jon Ferguson · 2015</p>
+            <p class="e-book-card__meta">With Jon Ferguson · 2015 · Read preview</p>
           </div>
-        </div>
+        </a>
 
-        <div class="e-book-card reveal">
+        <a href="reader.html?book=exponential" class="e-book-card reveal">
           <div class="e-book-card__cover">
             <img src="../../public/dave-ferguson/books/exponential.jpg" alt="Exponential book cover">
           </div>
           <div class="e-book-card__info">
             <h3 class="e-book-card__title">Exponential</h3>
             <p class="e-book-card__subtitle">How You and Your Friends Can Start a Missional Church Movement</p>
-            <p class="e-book-card__meta">With Jon Ferguson · 2010</p>
+            <p class="e-book-card__meta">With Jon Ferguson · 2010 · Read preview</p>
           </div>
-        </div>
+        </a>
 
-        <div class="e-book-card reveal">
+        <a href="reader.html?book=legacy-of-a-hero-maker" class="e-book-card reveal">
           <div class="e-book-card__cover">
             <img src="../../public/dave-ferguson/books/the-legacy-of-a-hero-maker.jpg" alt="The Legacy of a Hero Maker book cover">
           </div>
           <div class="e-book-card__info">
             <h3 class="e-book-card__title">The Legacy of a Hero Maker</h3>
             <p class="e-book-card__subtitle">A supplemental resource to Hero Maker</p>
-            <p class="e-book-card__meta">With Todd Wilson · Exponential</p>
+            <p class="e-book-card__meta">With Todd Wilson · Exponential · Read preview</p>
           </div>
-        </div>
+        </a>
 
-        <div class="e-book-card reveal">
+        <a href="reader.html?book=one-eighty" class="e-book-card reveal">
           <div class="e-book-card__cover">
             <img src="../../public/dave-ferguson/books/one-eighty.jpg" alt="One Eighty book cover">
           </div>
           <div class="e-book-card__info">
             <h3 class="e-book-card__title">One Eighty</h3>
             <p class="e-book-card__subtitle">A Return to Disciple-Making</p>
-            <p class="e-book-card__meta">Jeff Vanderstelt · Foreword by Dave Ferguson</p>
+            <p class="e-book-card__meta">Jeff Vanderstelt · Foreword by Dave Ferguson · Read preview</p>
           </div>
-        </div>
+        </a>
 
       </div>
     </div>
   </section>
 
   <!-- Additional Titles -->
-  <section class="e-section e-section--numbered e-section--alt" id="more" data-section="more">
+  <section class="e-section e-section--alt" id="more" data-section="more">
     <span class="e-section-num" aria-hidden="true">02</span>
-    <div class="e-container e-container--with-num">
+    <div class="e-section__inner">
       <h2 class="e-heading reveal">Additional titles</h2>
       <p class="e-lead reveal">Earlier works on church strategy, mission, and multiplication.</p>
       <div class="e-book-list-compact">
@@ -193,8 +198,12 @@
       <div class="e-footer__logo">move<span>mental</span></div>
       <div class="e-footer__links">
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
+        <a href="content.html">Content</a>
+        <a href="themes.html">Themes</a>
+        <a href="courses.html">Courses</a>
         <a href="books.html">Books</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
         <a href="speaking.html">Speaking</a>
         <a href="contact.html">Contact</a>
         <a href="privacy.html">Privacy</a>
@@ -232,5 +241,6 @@
       }
     })();
   </script>
+  <script src="scripts/chatbot.js"></script>
 </body>
 </html>

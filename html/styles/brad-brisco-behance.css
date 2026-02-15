@@ -53,7 +53,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   letter-spacing: 0.2em;
   text-transform: uppercase;
   opacity: 1;
-  transition: opacity 0.5s var(--b-ease);
+  transition: opacity 0.35s var(--b-ease);
 }
 
 .b-scroll-hint.hidden { opacity: 0; pointer-events: none; }
@@ -662,7 +662,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .reveal {
   opacity: 0;
   transform: translateY(32px);
-  transition: opacity 0.8s var(--b-ease), transform 0.8s var(--b-ease);
+  transition: opacity 0.35s var(--b-ease), transform 0.35s var(--b-ease);
 }
 
 .reveal.visible {
@@ -676,3 +676,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .stagger > .reveal:nth-child(4) { transition-delay: 300ms; }
 .stagger > .reveal:nth-child(5) { transition-delay: 400ms; }
 .stagger > .reveal:nth-child(6) { transition-delay: 500ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .b-scroll-hint__line {
+    animation: none !important;
+  }
+}

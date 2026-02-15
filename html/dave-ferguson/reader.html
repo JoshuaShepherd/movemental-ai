@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Maker - E-Reader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/dave-ferguson-editorial.css">
+</head>
+<body class="e-theme">
+  <div class="e-reader e-reader--font-md" id="reader">
+    <!-- Top bar -->
+    <div class="e-reader__topbar">
+      <a href="books.html" class="e-reader__back">&larr; Books</a>
+      <span class="e-reader__book-title" id="book-title">Hero Maker</span>
+      <span class="e-reader__progress" id="reader-progress">0%</span>
+    </div>
+
+    <!-- Sidebar (TOC) -->
+    <aside class="e-reader__sidebar" id="reader-sidebar">
+      <div class="e-reader__toc-label">Contents</div>
+      <nav class="e-reader__toc" id="reader-toc">
+        <!-- JS populates TOC items -->
+      </nav>
+    </aside>
+
+    <!-- Main reading area -->
+    <div class="e-reader__content" id="reader-content">
+      <div class="e-reader__chapter" id="chapter-content">
+        <!-- JS populates chapter content -->
+      </div>
+    </div>
+
+    <!-- Bottom controls -->
+    <div class="e-reader__controls">
+      <div class="e-reader__nav-btns">
+        <button class="e-reader__toc-btn" id="toc-toggle">TOC</button>
+        <button class="e-reader__nav-btn" id="prev-btn" disabled>&larr; Previous</button>
+        <button class="e-reader__nav-btn" id="next-btn">Next &rarr;</button>
+      </div>
+      <div class="e-reader__font-controls">
+        <button class="e-reader__font-btn" id="font-down">A-</button>
+        <button class="e-reader__font-btn" id="font-up">A+</button>
+        <button class="e-reader__dark-btn" id="dark-toggle">&#9789;</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // Book data — Hero Maker content
+      var books = {
+        'hero-maker': {
+          title: 'Hero Maker',
+          chapters: [
+            {
+              num: 'Chapter 1',
+              title: 'The Hero Trap',
+              content: [
+                { type: 'p', text: 'Every leader starts with good intentions. We step into leadership because we want to make a difference, to use our gifts and talents to help others succeed. But somewhere along the way, something shifts. We become the answer to every question, the solution to every problem, the person everyone turns to when things get difficult.' },
+                { type: 'p', text: 'This is what I call the Hero Trap. It\'s the natural gravitational pull toward being the indispensable leader—the one who swoops in to save the day. And it feels good, at least at first. There\'s a rush that comes from being needed, from knowing you have the skills to fix what\'s broken. People praise your competence, your availability, your willingness to step in when others can\'t.' },
+                { type: 'p', text: 'But the Hero Trap is exactly that—a trap. The more you step in to be the hero, the less capacity you build in others. The more you solve problems, the more people depend on you to solve them. You become the bottleneck in your organization, the lid on its potential. Your capacity becomes the ceiling for everyone else\'s growth.' },
+                { type: 'pullquote', text: 'Your capacity becomes the ceiling for everyone else\'s growth.' },
+                { type: 'p', text: 'I learned this the hard way. For years, I prided myself on being available, responsive, ready to help. If someone needed counsel, I gave it. If a ministry was struggling, I stepped in. If a decision needed to be made, I made it. I thought I was being a servant leader. In reality, I was being a hero leader—and I was limiting the very people I was trying to help.' },
+                { type: 'h2', text: 'The Cost of Being the Hero' },
+                { type: 'p', text: 'The cost of hero leadership isn\'t immediately obvious. In the short term, things often appear to be working. Problems get solved, decisions get made, crises get averted. But over time, the cracks begin to show. Your team stops taking initiative because they\'ve learned you\'ll do it better. Emerging leaders stop developing because they never get the chance to try and fail and learn.' },
+                { type: 'p', text: 'You find yourself exhausted, stretched thin, unable to focus on the strategic work only you can do. Meanwhile, your organization plateaus. It can only grow as large as your personal capacity allows. You\'ve created a system that requires your constant presence, your constant intervention. And ironically, the very people you\'re trying to help become dependent rather than developed.' },
+                { type: 'p', text: 'The alternative is what I call hero making. Instead of being the hero, you make heroes out of others. Instead of solving every problem, you develop problem solvers. Instead of being the indispensable leader, you raise up a movement of leaders who can do even greater things than you ever could alone.' },
+                { type: 'p', text: 'This shift from hero to hero maker is one of the most significant transitions a leader can make. It requires a fundamentally different mindset—one that moves from addition to multiplication, from doing to developing, from leading to leading leaders. It\'s not about doing less; it\'s about focusing your energy on developing others who will multiply your impact exponentially.' },
+                { type: 'p', text: 'The journey out of the Hero Trap begins with a simple recognition: the greatest thing you can do as a leader is not to accomplish great things yourself, but to empower others to accomplish great things. This is the multiplication mindset, and it changes everything.' }
+              ]
+            },
+            {
+              num: 'Chapter 2',
+              title: 'The Multiplication Mindset',
+              content: [
+                { type: 'p', text: 'Most leaders think additively. We calculate impact by what we personally contribute—the sermons we preach, the decisions we make, the people we counsel, the strategies we develop. If we want to increase our impact, we work harder, put in more hours, take on more responsibility. This is addition thinking: 1 + 1 + 1 = 3.' },
+                { type: 'p', text: 'But there\'s another way to think about leadership impact. What if instead of adding your efforts, you multiplied them through others? What if every person you developed could develop others, who could develop others, who could develop others? This is multiplication thinking: 1 × 2 × 2 × 2 = 8, then 16, then 32, then 64.' },
+                { type: 'p', text: 'The mathematics of multiplication are staggering. If you personally invest in ten people over the course of a year, you\'ve added ten. But if you invest in ten people who each invest in ten more, you\'ve multiplied to one hundred. And if those one hundred each invest in ten, you\'ve reached one thousand—all from your initial investment in ten.' },
+                { type: 'pullquote', text: 'Multiplication thinking asks not "What can I do?" but "Who can I develop to do even more?"' },
+                { type: 'p', text: 'This shift from addition to multiplication requires a fundamental change in how you view your role as a leader. Multiplication thinking asks not "What can I do?" but "Who can I develop to do even more?" It values empowerment over expertise, investment over intervention, development over doing.' },
+                { type: 'h2', text: 'What Multiplication Looks Like in Practice' },
+                { type: 'p', text: 'In practice, multiplication means you spend less time being the smartest person in the room and more time making others smarter. You spend less time solving problems and more time coaching others to solve them. You spend less time doing ministry and more time developing ministers.' },
+                { type: 'p', text: 'I remember the first time I truly embraced multiplication thinking. A crisis emerged in one of our ministries, and my instinct was to step in and fix it. But instead, I asked myself: Who could I develop through this situation? I called a young leader on our team and said, "I think you\'re the right person to handle this. I\'ll coach you through it, but this is your opportunity to lead."' },
+                { type: 'p', text: 'It was harder than doing it myself. It took more time, more patience, more trust. But watching that leader rise to the challenge, work through the complexity, and emerge with new confidence and capability—that was multiplication. And the next time a similar crisis arose, I didn\'t have to be involved at all. That leader could handle it, and they could coach someone else through it too.' },
+                { type: 'p', text: 'Multiplication leaders ask different questions. Instead of "How can I do this better?" they ask "How can I develop someone to do this?" Instead of "What do I need to accomplish?" they ask "Who do I need to invest in?" Instead of "How do I solve this problem?" they ask "Who can I coach to solve this problem?"' },
+                { type: 'p', text: 'The multiplication mindset also requires a longer time horizon. Addition produces immediate results—you do something, it gets done. Multiplication requires investment, patience, and trust. You invest in someone who might fail, who will certainly struggle, who won\'t do it as well as you could—at least not at first. But over time, they grow. They develop. They multiply. And eventually, they surpass you.' },
+                { type: 'p', text: 'This is the power of the multiplication mindset. It transforms your leadership from a solo performance into a movement. It shifts your impact from what you can accomplish in your lifetime to what generations of leaders you\'ve developed can accomplish long after you\'re gone. It\'s the difference between being a hero and making heroes.' }
+              ]
+            },
+            {
+              num: 'Chapter 3',
+              title: 'Permission Giving',
+              content: [
+                { type: 'p', text: 'The first and most foundational practice of a hero maker is permission giving. Before you can develop leaders, you must give them permission to lead. This sounds simple, but in practice, it\'s one of the most difficult shifts a leader can make. Why? Because giving permission means giving up control.' },
+                { type: 'p', text: 'Many leaders say they want to empower others, but their actions tell a different story. They create systems that require their approval at every step. They micromanage decisions. They step in at the first sign of struggle. They say "Go for it" but really mean "Go for it exactly the way I would do it." This isn\'t permission giving—it\'s permission withholding with a thin veneer of empowerment.' },
+                { type: 'p', text: 'True permission giving means you trust others to make decisions, even when you might make them differently. It means you allow people to try, fail, learn, and grow. It means you resist the urge to swoop in and save the day every time something doesn\'t go according to plan. It means you believe in people\'s potential more than you trust in your own ability to control outcomes.' },
+                { type: 'pullquote', text: 'Permission giving means you believe in people\'s potential more than you trust in your own ability to control outcomes.' },
+                { type: 'p', text: 'I\'ll never forget the conversation that changed my perspective on permission giving. A young leader on our team came to me with an idea that I thought was misguided. My first instinct was to explain why it wouldn\'t work and suggest a better approach. But before I could, I paused and asked myself: What would happen if I gave permission instead of direction?' },
+                { type: 'h2', text: 'The Practice of Saying Yes' },
+                { type: 'p', text: 'So I said yes. I told her I thought it was a risky idea, but I trusted her judgment and wanted her to move forward. I committed to supporting her, coaching her, and helping her learn regardless of the outcome. And then I let go. It was terrifying. But it was also transformative—for both of us.' },
+                { type: 'p', text: 'Her idea didn\'t work exactly as planned. But through the process, she learned more about leadership, problem-solving, and resilience than any amount of instruction from me could have taught her. And she came back with a revised approach that was actually better than anything I would have suggested. Giving permission unlocked something in her—a sense of ownership, creativity, and confidence that only comes when someone truly believes you trust them to lead.' },
+                { type: 'p', text: 'Permission giving doesn\'t mean abandoning people. It doesn\'t mean throwing them into the deep end without support. It means clearly defining boundaries, providing resources, offering coaching, and then trusting them to lead within those parameters. It means being available to guide without being compelled to control.' },
+                { type: 'p', text: 'In practical terms, permission giving looks like this: You identify emerging leaders with potential. You invite them into opportunities slightly beyond their current capacity. You clarify expectations and boundaries. You provide resources and support. And then you step back and let them lead. You resist the urge to micromanage. You celebrate progress, not perfection. You debrief both successes and failures as learning opportunities.' },
+                { type: 'p', text: 'The most powerful question a permission-giving leader asks is not "How can I make this better?" but "How can I help you grow through this?" This question shifts the focus from the task to the person, from the outcome to the development. It communicates trust, investment, and belief. And it creates a culture where people feel empowered to take initiative, make decisions, and lead with confidence.' },
+                { type: 'p', text: 'Permission giving is the gateway to hero making. Until you genuinely give others permission to lead—to make decisions, to take risks, to fail and learn—you cannot develop them into the leaders they\'re capable of becoming. And until you develop leaders, you cannot multiply your impact. It all begins with permission. The question is: Are you ready to give it?' }
+              ]
+            }
+          ]
+        }
+      };
+
+      // Read URL param
+      var params = new URLSearchParams(window.location.search);
+      var bookSlug = params.get('book') || 'hero-maker';
+      var book = books[bookSlug] || books['hero-maker'];
+      var currentChapter = 0;
+      var fontSizes = ['e-reader--font-sm', 'e-reader--font-md', 'e-reader--font-lg'];
+      var currentFont = 1;
+      var reader = document.getElementById('reader');
+
+      // Set book title
+      document.getElementById('book-title').textContent = book.title;
+
+      // Build TOC
+      function buildTOC() {
+        var tocNav = document.getElementById('reader-toc');
+        tocNav.innerHTML = '';
+
+        book.chapters.forEach(function(chapter, index) {
+          var tocItem = document.createElement('button');
+          tocItem.className = 'e-reader__toc-item';
+          tocItem.textContent = chapter.num + ': ' + chapter.title;
+          tocItem.setAttribute('data-chapter', index);
+
+          tocItem.addEventListener('click', function() {
+            renderChapter(index);
+            // Close sidebar on mobile after selection
+            if (window.innerWidth < 900) {
+              reader.classList.add('e-reader--sidebar-closed');
+            }
+          });
+
+          tocNav.appendChild(tocItem);
+        });
+      }
+
+      // Render chapter
+      function renderChapter(index) {
+        if (index < 0 || index >= book.chapters.length) return;
+
+        currentChapter = index;
+        var chapter = book.chapters[index];
+        var contentDiv = document.getElementById('chapter-content');
+
+        // Build chapter HTML
+        var html = '<div class="e-reader__chapter-header">';
+        html += '<div class="e-reader__chapter-num">' + chapter.num + '</div>';
+        html += '<h1 class="e-reader__chapter-title">' + chapter.title + '</h1>';
+        html += '</div>';
+
+        chapter.content.forEach(function(block) {
+          if (block.type === 'p') {
+            html += '<p class="e-reader__p">' + block.text + '</p>';
+          } else if (block.type === 'h2') {
+            html += '<h2 class="e-reader__h2">' + block.text + '</h2>';
+          } else if (block.type === 'pullquote') {
+            html += '<div class="e-reader__pullquote">' + block.text + '</div>';
+          }
+        });
+
+        contentDiv.innerHTML = html;
+
+        // Update TOC active state
+        var tocItems = document.querySelectorAll('.e-reader__toc-item');
+        tocItems.forEach(function(item, i) {
+          if (i === index) {
+            item.classList.add('e-reader__toc-item--active');
+          } else {
+            item.classList.remove('e-reader__toc-item--active');
+          }
+        });
+
+        // Update prev/next buttons
+        var prevBtn = document.getElementById('prev-btn');
+        var nextBtn = document.getElementById('next-btn');
+
+        if (index === 0) {
+          prevBtn.disabled = true;
+        } else {
+          prevBtn.disabled = false;
+        }
+
+        if (index === book.chapters.length - 1) {
+          nextBtn.disabled = true;
+        } else {
+          nextBtn.disabled = false;
+        }
+
+        // Scroll content to top
+        document.getElementById('reader-content').scrollTop = 0;
+
+        // Update progress
+        updateProgress();
+      }
+
+      // Progress calculation
+      function updateProgress() {
+        var pct = Math.round(((currentChapter + 1) / book.chapters.length) * 100);
+        document.getElementById('reader-progress').textContent = pct + '%';
+      }
+
+      // TOC toggle
+      document.getElementById('toc-toggle').addEventListener('click', function() {
+        reader.classList.toggle('e-reader--sidebar-closed');
+      });
+
+      // Font size controls
+      document.getElementById('font-down').addEventListener('click', function() {
+        if (currentFont > 0) {
+          reader.classList.remove(fontSizes[currentFont]);
+          currentFont--;
+          reader.classList.add(fontSizes[currentFont]);
+        }
+      });
+
+      document.getElementById('font-up').addEventListener('click', function() {
+        if (currentFont < 2) {
+          reader.classList.remove(fontSizes[currentFont]);
+          currentFont++;
+          reader.classList.add(fontSizes[currentFont]);
+        }
+      });
+
+      // Dark mode toggle
+      document.getElementById('dark-toggle').addEventListener('click', function() {
+        reader.classList.toggle('e-reader--dark');
+      });
+
+      // Chapter navigation
+      document.getElementById('prev-btn').addEventListener('click', function() {
+        if (currentChapter > 0) {
+          renderChapter(currentChapter - 1);
+        }
+      });
+
+      document.getElementById('next-btn').addEventListener('click', function() {
+        if (currentChapter < book.chapters.length - 1) {
+          renderChapter(currentChapter + 1);
+        }
+      });
+
+      // Keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft' && currentChapter > 0) {
+          renderChapter(currentChapter - 1);
+        } else if (e.key === 'ArrowRight' && currentChapter < book.chapters.length - 1) {
+          renderChapter(currentChapter + 1);
+        } else if (e.key === 't' || e.key === 'T') {
+          reader.classList.toggle('e-reader--sidebar-closed');
+        } else if (e.key === 'd' || e.key === 'D') {
+          reader.classList.toggle('e-reader--dark');
+        }
+      });
+
+      // Initialize
+      buildTOC();
+      renderChapter(0);
+    })();
+  </script>
+  <script src="scripts/chatbot.js"></script>
+</body>
+</html>

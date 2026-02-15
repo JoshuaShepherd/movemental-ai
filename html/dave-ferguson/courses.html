@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses - Dave Ferguson - Movemental</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/dave-ferguson-editorial.css">
+</head>
+<body class="e-theme">
+  <div class="e-read-progress" id="e-read-progress" aria-hidden="true"></div>
+
+  <header class="e-nav" id="e-nav">
+    <div class="e-nav__inner">
+      <a href="index.html" class="e-nav__logo">
+        <img src="../../public/dave-ferguson/logo.webp" alt="Dave Ferguson">
+      </a>
+      <div class="e-nav__links">
+        <a href="index.html">HOME</a>
+        <a href="books.html">BOOKS</a>
+        <a href="blog.html">BLOG</a>
+        <a href="newsletter.html">NEWSLETTER</a>
+        <a href="content.html">CONTENT</a>
+        <a href="themes.html">THEMES</a>
+        <a href="courses.html" class="active" aria-current="page">COURSES</a>
+        <a href="contact.html">CONTACT</a>
+      </div>
+      <button class="e-nav__toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <section class="e-hero" id="hero" data-section="hero">
+    <div class="e-hero__copy">
+      <p class="e-hero__eyebrow reveal">Learn</p>
+      <h1 class="e-hero__title reveal">Courses</h1>
+      <p class="e-hero__subtitle reveal">Practical training rooted in Dave's frameworks</p>
+    </div>
+  </section>
+
+  <section class="e-section" id="courses" data-section="courses">
+    <span class="e-section-num" aria-hidden="true">01</span>
+    <div class="e-section__inner">
+
+      <div class="e-course-featured reveal">
+        <div class="e-course-featured__img"></div>
+        <div class="e-course-featured__content">
+          <span class="e-course-featured__badge">Featured</span>
+          <h3 class="e-course-featured__title">Hero Maker: Five Essential Practices</h3>
+          <p class="e-course-featured__meta">6 modules · 12 hours · Intermediate</p>
+          <p class="e-course-featured__desc">Transform your leadership approach from being the hero to making heroes. Based on the bestselling book Hero Maker, this course walks you through the five essential practices that turn leaders into multipliers.</p>
+          <a href="course-hero-maker.html" class="e-btn e-btn--primary">View course</a>
+        </div>
+      </div>
+
+      <div class="e-course-grid">
+        <div class="e-course-card reveal">
+          <div class="e-course-card__img"></div>
+          <div class="e-course-card__body">
+            <span class="e-course-card__badge e-course-card__badge--beginner">Beginner</span>
+            <h3 class="e-course-card__title">B.L.E.S.S. Practicum</h3>
+            <p class="e-course-card__meta">4 modules · 6 hours</p>
+            <p class="e-course-card__desc">Master the art of everyday mission through the B.L.E.S.S. practices. Learn to Begin with prayer, Listen, Eat, Serve, and Share your story in natural, authentic ways that build meaningful relationships.</p>
+          </div>
+        </div>
+
+        <div class="e-course-card reveal">
+          <div class="e-course-card__img"></div>
+          <div class="e-course-card__body">
+            <span class="e-course-card__badge e-course-card__badge--advanced">Advanced</span>
+            <h3 class="e-course-card__title">Exponential Church Planting</h3>
+            <p class="e-course-card__meta">8 modules · 16 hours</p>
+            <p class="e-course-card__desc">Comprehensive training for leaders planting reproducing churches. Explore the principles, strategies, and spiritual disciplines required to launch movements that multiply disciples, leaders, and churches.</p>
+          </div>
+        </div>
+
+        <div class="e-course-card reveal">
+          <div class="e-course-card__img"></div>
+          <div class="e-course-card__body">
+            <span class="e-course-card__badge e-course-card__badge--intermediate">Intermediate</span>
+            <h3 class="e-course-card__title">Leadership Multiplier</h3>
+            <p class="e-course-card__meta">5 modules · 10 hours</p>
+            <p class="e-course-card__desc">Develop leaders who develop leaders. This course equips you with practical tools and biblical frameworks for identifying, investing in, and releasing the next generation of kingdom leaders.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="e-cta" id="cta" data-section="cta">
+    <div class="e-container">
+      <h2 class="e-cta__title reveal">Ready to multiply your impact?</h2>
+      <p class="e-cta__text reveal">Join thousands of leaders who are learning to make more and better disciples through practical, proven frameworks.</p>
+      <div class="reveal">
+        <a href="contact.html" class="e-btn e-btn--primary">Get started</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="e-footer">
+    <div class="e-footer__inner">
+      <div class="e-footer__logo">move<span>mental</span></div>
+      <div class="e-footer__links">
+        <a href="index.html">Home</a><a href="content.html">Content</a><a href="themes.html">Themes</a><a href="courses.html">Courses</a><a href="books.html">Books</a><a href="blog.html">Blog</a><a href="about.html">About</a><a href="speaking.html">Speaking</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a>
+      </div>
+    </div>
+    <p class="e-footer__tagline">A credibility ecology for movement leaders.</p>
+  </footer>
+
+  <script>
+    (function () {
+      var nav = document.getElementById('e-nav');
+      var progress = document.getElementById('e-read-progress');
+
+      function onScroll() {
+        if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
+        if (progress) {
+          var h = document.documentElement.scrollHeight - window.innerHeight;
+          var pct = h > 0 ? (window.scrollY / h) * 100 : 0;
+          progress.style.width = pct + '%';
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      document.querySelector('.e-nav__toggle')?.addEventListener('click', function () {
+        nav && nav.classList.toggle('menu-open');
+      });
+
+      var reveals = document.querySelectorAll('.reveal');
+      if (reveals.length) {
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.06, rootMargin: '0px 0px -60px 0px' });
+        reveals.forEach(function (r) { obs.observe(r); });
+      }
+    })();
+  </script>
+  <script src="scripts/chatbot.js"></script>
+</body>
+</html>

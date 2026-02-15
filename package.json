@@ -23,7 +23,8 @@
     "routes:check": "tsx scripts/layer-validation.ts routes",
     "hooks:check": "tsx scripts/layer-validation.ts hooks",
     "ui:check": "tsx scripts/layer-validation.ts ui",
-    "validate:all": "npm run db:check && npm run contracts:check && npm run services:check && npm run routes:check && npm run hooks:check && npm run ui:check"
+    "validate:all": "npm run db:check && npm run contracts:check && npm run services:check && npm run routes:check && npm run hooks:check && npm run ui:check",
+    "template:sync-dave-ferguson": "node scripts/sync-dave-ferguson-template.mjs"
   },
   "keywords": [],
   "author": "",
