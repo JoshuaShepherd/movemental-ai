@@ -1,6 +1,6 @@
 # Vercel Sign-Up / Fit-Check Flow — Diagnosis & Resolution
 
-**Issue:** `Application error: a server-side exception occurred while loading movemental-ai-site.vercel.app` when visiting the sign-up URL or arriving via the fit-check path (Fit Check → Full Fit → Share Name → redirect to `/sign-up?next=/tour`).
+**Issue:** `Application error: a server-side exception occurred while loading movemental-ai-site.vercel.app` when visiting the sign-up URL or arriving via the fit-check path (Fit Check → Full Fit → Info step → redirect to `/sign-up?next=/tour`).
 
 **Last Updated:** February 14, 2025
 
@@ -121,7 +121,7 @@ Set these in **Vercel Project → Settings → Environment Variables** for the r
 
 1. Temporarily rename in `.env.local`:
    - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY` → `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
-2. Run `npm run dev`, go through fit-check → sign-up and submit.
+2. Run `npm run dev`, go through fit-check → Full Fit → Info step → sign-up and submit.
 3. If it works locally, the mismatch is confirmed.
 
 ---
@@ -159,7 +159,7 @@ To align with Supabase’s newer naming, you can add a fallback in the Supabase 
 - [ ] Confirm `NEXT_PUBLIC_SUPABASE_URL` is set.
 - [ ] Confirm `DATABASE_URL` is set (needed for auth callback and linked-writers).
 - [ ] Redeploy on Vercel.
-- [ ] Test flow: Fit Check → Full Fit → Share Name → Sign Up → submit form.
+- [ ] Test flow: Fit Check → Full Fit → Info step → Sign Up → submit form.
 - [ ] If using email confirmation, test: confirm link → landing page.
 - [ ] If using OAuth, test: OAuth flow → callback → redirect.
 - [ ] Check Vercel logs for any remaining errors.
@@ -171,7 +171,7 @@ To align with Supabase’s newer naming, you can add a fallback in the Supabase 
 ```
 Fit Check (/fit-check)
   → User selects Full Fit
-  → Share Name step
+  → Info step (informational page)
   → Redirect: /sign-up?next=/tour
 
 Sign Up (/sign-up)

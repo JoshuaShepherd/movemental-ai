@@ -27,7 +27,7 @@ export const AssessmentStateSchema = z.enum([
   'landing',
   'in-progress',
   'results',
-  'name-step', // full-fit only: create account / share name
+  'info-step', // full-fit only: informational page, then create account
 ])
 
 export type AssessmentState = z.infer<typeof AssessmentStateSchema>

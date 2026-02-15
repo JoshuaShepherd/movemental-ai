@@ -7,13 +7,12 @@ import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { FitCheckLanding } from './FitCheckLanding'
 import { FitCheckProgress } from './FitCheckProgress'
 import { FitCheckResults } from './FitCheckResults'
+import { FitCheckInfoStep } from './FitCheckInfoStep'
 import { RecognitionGate } from './RecognitionGate'
-import { RecognitionNameStep } from './RecognitionNameStep'
 import {
   getRecognitionOptions,
   getRecognitionPrompt,
   RECOGNITION_MICROCOPY,
-  NAME_STEP_TRANSPARENCY,
   getPathway,
   type AssessmentState,
   type RecognitionResult,
@@ -65,18 +64,9 @@ export function FitCheckContainer({ className }: FitCheckContainerProps) {
     }, 300)
   }, [selectedIds])
 
-  const handleShareName = useCallback(() => {
-    setState('name-step')
+  const handleGoToInfo = useCallback(() => {
+    setState('info-step')
   }, [])
-
-  const handleNameStepSubmit = useCallback(
-    (_data: { name: string; bodyOfWork?: string }) => {
-      // Send to sign-up; after auth they are redirected to /tour (next param).
-      // TODO: submit name/bodyOfWork to API when backend is ready (e.g. link to prospective writer).
-      window.location.href = '/sign-up?next=/tour'
-    },
-    []
-  )
 
   const handleResultsSecondary = useCallback(() => {
     window.location.href = '/why-movemental'
@@ -97,21 +87,15 @@ export function FitCheckContainer({ className }: FitCheckContainerProps) {
     return (
       <FitCheckResults
         result={result}
-        onShareName={result.pathway === 'full-fit' ? handleShareName : undefined}
+        onShareName={result.pathway === 'full-fit' ? handleGoToInfo : undefined}
         onSecondary={handleResultsSecondary}
         className={className}
       />
     )
   }
 
-  if (state === 'name-step') {
-    return (
-      <RecognitionNameStep
-        transparencyCopy={NAME_STEP_TRANSPARENCY}
-        onSubmit={handleNameStepSubmit}
-        className={className}
-      />
-    )
+  if (state === 'info-step') {
+    return <FitCheckInfoStep className={className} />
   }
 
   return (
