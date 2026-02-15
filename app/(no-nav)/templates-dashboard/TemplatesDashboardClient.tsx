@@ -215,7 +215,7 @@ export function TemplatesDashboardClient() {
             >
               <div className="aspect-[4/3] overflow-hidden rounded-t-xl bg-white/10">
                 <img
-                  src="/dave-ferguson/logo.webp"
+                  src="/media-library/images/headshots/dave-ferguson/logo.webp"
                   alt="Dave Ferguson template preview"
                   className="h-full w-full object-cover object-center transition group-hover:scale-[1.02]"
                 />
