@@ -201,6 +201,57 @@
 }
 
 /* ============================================================
+   Compare: Substack page — editorial typography & layout
+   Scoped to .compare-substack-page for /compare/substack
+   ============================================================ */
+.compare-substack-page {
+  --mvmt-font-heading: var(--font-playfair), Georgia, serif;
+  --mvmt-font-body: var(--font-inter), system-ui, sans-serif;
+}
+
+.compare-substack-page .compare-substack-hero-title {
+  font-family: var(--mvmt-font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+
+.compare-substack-page .compare-substack-hero-subtitle {
+  font-size: 1.125rem;
+  letter-spacing: 0.01em;
+  line-height: 1.55;
+}
+
+.compare-substack-page .compare-substack-section-heading {
+  font-family: var(--mvmt-font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.compare-substack-page .compare-substack-body {
+  font-size: 1.0625rem;
+  letter-spacing: 0.01em;
+  line-height: 1.7;
+}
+
+.compare-substack-page .compare-substack-table-wrap {
+  font-size: 0.9375rem;
+  letter-spacing: 0.01em;
+  line-height: 1.55;
+}
+
+.compare-substack-page .compare-substack-table-wrap thead th {
+  font-family: var(--mvmt-font-heading);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
    Template: Movement Leader — Base Tokens
    Prefix: --mvmt-*
    Scoped to .template-movement-leader wrapper

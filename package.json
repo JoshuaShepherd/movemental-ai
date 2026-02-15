@@ -16,7 +16,14 @@
     "db:studio": "drizzle-kit studio",
     "typecheck": "tsc --noEmit",
     "build:check": "tsx scripts/pre-build-check.ts",
-    "logo:generate": "tsx scripts/generate-logo-assets.ts"
+    "logo:generate": "tsx scripts/generate-logo-assets.ts",
+    "db:check": "tsx scripts/layer-validation.ts db",
+    "contracts:check": "tsx scripts/layer-validation.ts contracts",
+    "services:check": "tsx scripts/layer-validation.ts services",
+    "routes:check": "tsx scripts/layer-validation.ts routes",
+    "hooks:check": "tsx scripts/layer-validation.ts hooks",
+    "ui:check": "tsx scripts/layer-validation.ts ui",
+    "validate:all": "npm run db:check && npm run contracts:check && npm run services:check && npm run routes:check && npm run hooks:check && npm run ui:check"
   },
   "keywords": [],
   "author": "",
