@@ -111,8 +111,10 @@
           var m = /[?&]book=([^&]+)/.exec(window.location.search);
           excludeSlug = (m && m[1]) || '';
         }
-        if (excludeSlug) items = items.filter(function (b) { return b.slug !== excludeSlug; });
-        items = items.slice(0, 4);
+        if (excludeSlug) {
+          items = items.filter(function (b) { return b.slug !== excludeSlug; });
+          items = items.slice(0, 4);
+        }
       }
       if (listPath === 'contentLibrary.videos') {
         if (!excludeSlug) {
@@ -150,6 +152,9 @@
         }
         if (listPath === 'contentLibrary.courses' && item.slug && clone.tagName === 'A') {
           clone.href = 'course-detail.html?course=' + encodeURIComponent(item.slug);
+        }
+        if (listPath === 'books' && item.slug && clone.tagName === 'A') {
+          clone.href = 'book-detail.html?book=' + encodeURIComponent(item.slug);
         }
         if (listPath === 'themes' && item.slug && clone.tagName === 'A') {
           clone.href = 'theme-detail.html?theme=' + encodeURIComponent(item.slug);
@@ -231,6 +236,11 @@
       var labels = book.themeLabels || [book.themeLabel];
       badgesContainer.innerHTML = labels.map(function (l) { return '<span class="badge badge--theme">' + escapeHtml(l) + '</span>'; }).join('');
     }
+    var readerLink = document.getElementById('book-reader-link');
+    if (readerLink) readerLink.href = 'book-reader.html?book=' + encodeURIComponent(bookSlug);
+    var readerBack = document.querySelector('a.book-reader__back');
+    if (readerBack) readerBack.href = 'book-detail.html?book=' + encodeURIComponent(bookSlug);
+    if (config.name && book.title) document.title = book.title + ' — ' + config.name;
   }
 
   function escapeHtml(s) {

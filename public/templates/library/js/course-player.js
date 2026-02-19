@@ -116,8 +116,10 @@
       videoEl.pause();
     }
     if (playBtn) playBtn.setAttribute("aria-label", "Play video");
-    if (title) title.textContent = badge ? badge + ": " + (title.getAttribute("data-title") || "") : (title.getAttribute("data-title") || "Play");
-    if (badge) badge.textContent = title.getAttribute("data-badge") || "Course";
+    var badgeText = (badge && (badge.getAttribute("data-badge") || badge.textContent)) ? (badge.getAttribute("data-badge") || badge.textContent) : "";
+    var titleText = title ? (title.getAttribute("data-title") || "Play") : "Play";
+    if (title) title.textContent = badgeText ? badgeText + ": " + titleText : titleText;
+    if (badge) badge.textContent = (badge && badge.getAttribute("data-badge")) ? badge.getAttribute("data-badge") : "Course";
   }
 
   function showVideo(videoEl, posterEl, playBtn) {

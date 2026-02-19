@@ -12,14 +12,14 @@
 <body data-leader-title="pageTitles.courses">
   <header class="public-header" role="banner">
     <div class="public-header__inner">
-      <a href="index.html" class="public-header__logo" data-leader="name">Alan Hirsch</a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <a href="index.html" class="public-header__logo" data-leader="name">Leader</a>
+      <button type="button" class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
       <nav class="public-header__nav" id="nav" aria-label="Main navigation">
         <a href="index.html">Home</a>
-        <a href="content-hub.html">Content</a>
-        <a href="index.html#themes">Themes</a>
+        <a href="content-hub.html" class="active">Content</a>
+        <a href="themes.html">Themes</a>
         <a href="index.html#assessments">Assessments</a>
         <a href="chat.html">AI Lab</a>
       </nav>
@@ -46,9 +46,9 @@
       </div>
 
       <div class="books-grid" data-leader-list="contentLibrary.courses">
-        <a href="course-detail.html" class="book-card" data-leader-item-template>
-          <div class="book-card__cover book-card__cover--icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a23.838 23.838 0 0 0-1.012 5.434c-.085.362-.12.752-.12 1.145 0 .058.005.116.006.174M19.74 10.147a23.839 23.839 0 0 1 1.012 5.434c.085.362.12.752.12 1.145 0 .058-.005.116-.006.174M12 2.25l8.27 4.04a.75.75 0 0 1 0 1.336L12 11.664 3.73 7.626a.75.75 0 0 1 0-1.336L12 2.25Z" /></svg>
+        <a href="course-detail.html" class="book-card book-card--course" data-leader-item-template>
+          <div class="book-card__cover">
+            <img src="" alt="" loading="lazy" data-leader-item="heroImage" />
           </div>
           <div class="book-card__info">
             <h3 class="book-card__title" data-leader-item="title">Course</h3>

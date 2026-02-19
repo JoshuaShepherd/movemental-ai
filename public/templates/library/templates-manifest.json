@@ -216,7 +216,8 @@
         { "label": "Sign In", "href": "pastoral-warm/signin.html" },
         { "label": "Sign up", "href": "pastoral-warm/signup.html" },
         { "label": "Verify Email", "href": "pastoral-warm/verify-email.html" },
-        { "label": "AI Lab", "href": "pastoral-warm/chat.html" }
+        { "label": "AI Lab", "href": "pastoral-warm/chat.html" },
+        { "label": "mDNA Assessment", "href": "pastoral-warm/assessment-mdna.html" }
       ]
     },
     {

@@ -166,9 +166,9 @@ export function Navigation({ className }: NavigationProps) {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* Templates CTA — HTML template library */}
+            {/* Templates CTA — pastoral-warm with Alan as default */}
             <Link
-              href="/templates/library/dark-first/"
+              href="/templates/library/pastoral-warm/?leader=alan-hirsch"
               className="ml-1 px-3 py-1.5 text-sm font-medium rounded-full transition-colors bg-velvet-orchid-500 text-white hover:bg-velvet-orchid-600"
             >
               Templates
@@ -222,9 +222,9 @@ export function Navigation({ className }: NavigationProps) {
               Search
             </Link>
 
-            {/* Templates CTA — HTML template library */}
+            {/* Templates CTA — pastoral-warm with Alan as default */}
             <Link
-              href="/templates/library/dark-first/"
+              href="/templates/library/pastoral-warm/?leader=alan-hirsch"
               className="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg text-white bg-velvet-orchid-500 hover:bg-velvet-orchid-600 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >

@@ -12,14 +12,14 @@
 <body data-leader-title="pageTitles.books">
   <header class="public-header" role="banner">
     <div class="public-header__inner">
-      <a href="index.html" class="public-header__logo" data-leader="name">Alan Hirsch</a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <a href="index.html" class="public-header__logo" data-leader="name">Leader</a>
+      <button type="button" class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
       <nav class="public-header__nav" id="nav" aria-label="Main navigation">
         <a href="index.html">Home</a>
-        <a href="content-hub.html">Content</a>
-        <a href="index.html#themes">Themes</a>
+        <a href="content-hub.html" class="active">Content</a>
+        <a href="themes.html">Themes</a>
         <a href="index.html#assessments">Assessments</a>
         <a href="chat.html">AI Lab</a>
       </nav>
@@ -45,81 +45,15 @@
         <button class="content-tabs__tab" role="tab" data-filter="disciple making">Disciple Making</button>
       </div>
 
-      <div class="books-grid">
-        <a href="book-detail.html" class="book-card" data-category="apest">
+      <div class="books-grid" data-leader-list="books">
+        <a href="book-detail.html" class="book-card" data-leader-item-template data-category="apest">
           <div class="book-card__cover">
-            <img src="../images/books/book-5q.webp" alt="5Q book cover" loading="lazy" />
+            <img src="" alt="" loading="lazy" data-leader-item="cover" />
           </div>
           <div class="book-card__info">
-            <h3 class="book-card__title">5Q</h3>
-            <p class="book-card__author">Alan Hirsch</p>
-            <div class="book-card__badges"><span class="badge">APEST</span></div>
-          </div>
-        </a>
-
-        <a href="book-detail.html" class="book-card" data-category="disciple making">
-          <div class="book-card__cover">
-            <img src="../images/books/book-disciplism.webp" alt="Disciplism book cover" loading="lazy" />
-          </div>
-          <div class="book-card__info">
-            <h3 class="book-card__title">Disciplism</h3>
-            <p class="book-card__author">Alan Hirsch</p>
-            <div class="book-card__badges"><span class="badge">Disciple Making</span></div>
-          </div>
-        </a>
-
-        <a href="book-detail.html" class="book-card" data-category="missional church">
-          <div class="book-card__cover">
-            <img src="../images/books/book-fast-forward-to-mission.webp" alt="Fast Forward to Mission book cover" loading="lazy" />
-          </div>
-          <div class="book-card__info">
-            <h3 class="book-card__title">Fast Forward to Mission</h3>
-            <p class="book-card__author">Alan Hirsch</p>
-            <div class="book-card__badges"><span class="badge">Missional Church</span></div>
-          </div>
-        </a>
-
-        <a href="book-detail.html" class="book-card" data-category="formation">
-          <div class="book-card__cover">
-            <img src="../images/books/book-metanoia.webp" alt="Metanoia book cover" loading="lazy" />
-          </div>
-          <div class="book-card__info">
-            <h3 class="book-card__title">Metanoia</h3>
-            <p class="book-card__author">Alan Hirsch</p>
-            <div class="book-card__badges"><span class="badge">Formation</span></div>
-          </div>
-        </a>
-
-        <a href="book-detail.html" class="book-card" data-category="missional church">
-          <div class="book-card__cover">
-            <img src="../images/books/book-on-the-verge.webp" alt="On the Verge book cover" loading="lazy" />
-          </div>
-          <div class="book-card__info">
-            <h3 class="book-card__title">On the Verge</h3>
-            <p class="book-card__author">Alan Hirsch</p>
-            <div class="book-card__badges"><span class="badge">Missional Church</span></div>
-          </div>
-        </a>
-
-        <a href="book-detail.html" class="book-card" data-category="formation">
-          <div class="book-card__cover">
-            <img src="../images/books/book-reframation.webp" alt="Reframation book cover" loading="lazy" />
-          </div>
-          <div class="book-card__info">
-            <h3 class="book-card__title">Reframation</h3>
-            <p class="book-card__author">Alan Hirsch</p>
-            <div class="book-card__badges"><span class="badge">Formation</span></div>
-          </div>
-        </a>
-
-        <a href="book-detail.html" class="book-card" data-category="christocentric">
-          <div class="book-card__cover">
-            <img src="../images/books/book-rejesus.webp" alt="ReJesus book cover" loading="lazy" />
-          </div>
-          <div class="book-card__info">
-            <h3 class="book-card__title">ReJesus</h3>
-            <p class="book-card__author">Alan Hirsch</p>
-            <div class="book-card__badges"><span class="badge">Christocentric</span></div>
+            <h3 class="book-card__title" data-leader-item="title">Title</h3>
+            <p class="book-card__author" data-leader-item="author">Author</p>
+            <div class="book-card__badges"><span class="badge" data-leader-item="themeLabel">Theme</span></div>
           </div>
         </a>
       </div>

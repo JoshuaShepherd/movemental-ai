@@ -11,7 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { Menu, X, ChevronDown, Search, BookOpen, Layers, Brain, Sparkles, User, Zap, Target, DollarSign, Users, Building, Network, Heart, LayoutGrid, HelpCircle } from 'lucide-react'
+import { Menu, X, ChevronDown, Search, BookOpen, Layers, Brain, Sparkles, User, Zap, Target, DollarSign, Users, Building, Network, Heart, LayoutGrid, HelpCircle, Beaker } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 /** Full logo (horizontal) — full color for both light and dark nav. Per _docs/ui/logo-usage.md */
@@ -41,6 +41,7 @@ const platformItems: NavDropdownItem[] = [
 // Learn dropdown items (content path)
 const learnItems: NavDropdownItem[] = [
   { label: 'AI Book', href: '/book', icon: <BookOpen className="h-4 w-4" />, description: 'The living artifact' },
+  { label: 'AI Lab', href: '/ai-lab/about', icon: <Beaker className="h-4 w-4" />, description: 'How we do AI & the Lab' },
   { label: 'Books', href: '/books', icon: <Layers className="h-4 w-4" />, description: 'Browse our catalog' },
   { label: 'Topics', href: '/topics', icon: <Brain className="h-4 w-4" />, description: 'Explore by subject' },
   { label: 'Resources', href: '/learn', icon: <Sparkles className="h-4 w-4" />, description: 'Guides & tutorials' },
@@ -212,9 +213,9 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* Templates CTA — HTML template library */}
+            {/* Templates CTA — pastoral-warm with Alan as default */}
             <Link
-              href="/templates/library/dark-first/"
+              href="/templates/library/pastoral-warm/?leader=alan-hirsch"
               className="ml-1 px-3 py-1.5 text-sm font-medium rounded-full transition-colors bg-velvet-orchid-500 text-white hover:bg-velvet-orchid-600"
             >
               Templates
@@ -295,9 +296,9 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
               Search
             </Link>
 
-            {/* Templates CTA (mobile) — HTML template library */}
+            {/* Templates CTA (mobile) — pastoral-warm with Alan as default */}
             <Link
-              href="/templates/library/dark-first/"
+              href="/templates/library/pastoral-warm/?leader=alan-hirsch"
               className="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg bg-velvet-orchid-500 text-white hover:bg-velvet-orchid-600 transition-colors"
             >
               <LayoutGrid className="h-5 w-5" />

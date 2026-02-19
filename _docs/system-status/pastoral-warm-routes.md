@@ -5,6 +5,7 @@ Routes are under `/templates/library/pastoral-warm/`. Base: `https://<origin>/te
 - `/templates/library/pastoral-warm/` — Home
 - `/templates/library/pastoral-warm/content-hub.html` — Content Hub
 - `/templates/library/pastoral-warm/themes.html` — Themes (leader-aware: `?leader=alan-hirsch` \| `brad-brisco` \| `dave-ferguson`)
+- `/templates/library/pastoral-warm/assessment-mdna.html` — mDNA Assessment (6-element diagnostic; leader-aware via `?leader=`)
 - `/templates/library/pastoral-warm/theme-detail.html?theme=<slug>` — Theme Detail (e.g. `?theme=missional-church`; leader-aware via `?leader=`)
 - `/templates/library/pastoral-warm/articles.html` — Articles
 - `/templates/library/pastoral-warm/article-detail.html` — Article Detail

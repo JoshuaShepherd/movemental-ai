@@ -905,6 +905,76 @@
       "theme": "christocentric",
       "themeLabel": "Christocentric",
       "shortDescription": ""
+    },
+    {
+      "slug": "the-forgotten-ways",
+      "title": "The Forgotten Ways",
+      "cover": "../images/books/book-the-forgotten-ways.webp",
+      "coverAlt": "The Forgotten Ways book cover",
+      "author": "Alan Hirsch",
+      "theme": "missional-church",
+      "themeLabel": "Missional Church",
+      "shortDescription": "Reactivating the apostolic movements that turned the world upside down — the mDNA framework and Apostolic Genius."
+    },
+    {
+      "slug": "the-forgotten-ways-handbook",
+      "title": "The Forgotten Ways Handbook",
+      "cover": "../images/books/book-the-forgotten-ways-handbook.webp",
+      "coverAlt": "The Forgotten Ways Handbook book cover",
+      "author": "Alan Hirsch",
+      "theme": "missional-church",
+      "themeLabel": "Missional Church",
+      "shortDescription": "A practical guide to implementing the six elements of Apostolic Genius in your context."
+    },
+    {
+      "slug": "the-faith-of-leap",
+      "title": "The Faith of Leap",
+      "cover": "../images/books/book-the-faith-of-leap.webp",
+      "coverAlt": "The Faith of Leap book cover",
+      "author": "Alan Hirsch & Michael Frost",
+      "theme": "formation",
+      "themeLabel": "Formation",
+      "shortDescription": "Embracing a theology of risk, adventure, and courage — liminality and communitas for missional communities."
+    },
+    {
+      "slug": "the-permanent-revolution",
+      "title": "The Permanent Revolution",
+      "cover": "../images/books/book-the-permanent-revolution.webp",
+      "coverAlt": "The Permanent Revolution book cover",
+      "author": "Alan Hirsch & Tim Catchim",
+      "theme": "apest",
+      "themeLabel": "APEST",
+      "shortDescription": "Recovering apostolic ministry and the full fivefold (APEST) as the architecture of movement."
+    },
+    {
+      "slug": "untamed",
+      "title": "Untamed",
+      "cover": "../images/books/book-untamed.webp",
+      "coverAlt": "Untamed book cover",
+      "author": "Alan & Debra Hirsch",
+      "theme": "formation",
+      "themeLabel": "Formation",
+      "shortDescription": "Reimagining the wild, dangerous, and beautiful life of discipleship beyond tame religion."
+    },
+    {
+      "slug": "right-here-right-now",
+      "title": "Right Here, Right Now",
+      "cover": "../images/books/book-right-here-right-now.webp",
+      "coverAlt": "Right Here, Right Now book cover",
+      "author": "Alan Hirsch",
+      "theme": "missional-church",
+      "themeLabel": "Missional Church",
+      "shortDescription": "Incarnational mission and being the church in the neighborhood — presence and place."
+    },
+    {
+      "slug": "starfish-and-the-spirit",
+      "title": "The Starfish and the Spirit",
+      "cover": "../images/books/book-starfish-and-the-spirit.webp",
+      "coverAlt": "The Starfish and the Spirit book cover",
+      "author": "Alan Hirsch, Lance Ford & Rob Wegner",
+      "theme": "missional-church",
+      "themeLabel": "Missional Church",
+      "shortDescription": "Unleashing the leadership potential of congregations through decentralized, organic movement."
     }
   ],
   "orgs": [
@@ -1019,30 +1089,22 @@
     }
   },
   "art": {
-    "heroBackground": "../images/art/hero-sections/art-abstract-cinematic-frame-created-with-loose-charcoa.webp",
-    "heroBand": "../images/art/hero-sections/art-abstract-flowing-pathways-diverging-and-converging.webp",
+    "heroBackground": "../images/art/mdna/art-abstract-incarnational-spiral-form-with-inward-and-1.webp",
+    "heroBand": "../images/art/courses/art-courses-hero-formation.webp",
     "sectionBackgrounds": {
-      "exploration": "../images/art/hero-sections/art-abstract-communal-figures-loosely-circling-a-centra.webp",
-      "library": "../images/art/hero-sections/art-abstract-vertical-stacked-forms-evoking-a-row-of-bo.webp",
-      "divider": "../images/art/hero-sections/art-abstract-emerging-concept-sketch-with-charcoal-line.webp"
+      "exploration": "../images/art/mdna/art-abstract-incarnational-spiral-form-with-inward-and.webp",
+      "library": "../images/art/courses/art-courses-hero-formation.webp",
+      "divider": "../images/art/mdna/art-abstract-symbolic-footsteps-merging-into-a-flowing.webp"
     },
     "all": [
-      "../images/art/hero-sections/art-abstract-cinematic-frame-created-with-loose-charcoa.webp",
-      "../images/art/hero-sections/art-abstract-cinematic-frame-created-with-loose-charcoa-1.webp",
-      "../images/art/hero-sections/art-abstract-communal-figures-loosely-circling-a-centra.webp",
-      "../images/art/hero-sections/art-abstract-communal-figures-loosely-circling-a-centra-1.webp",
-      "../images/art/hero-sections/art-abstract-communal-figures-loosely-circling-a-centra-2.webp",
-      "../images/art/hero-sections/art-abstract-emerging-concept-sketch-with-charcoal-line.webp",
-      "../images/art/hero-sections/art-abstract-emerging-concept-sketch-with-charcoal-line-1.webp",
-      "../images/art/hero-sections/art-abstract-flowing-pathways-diverging-and-converging.webp",
-      "../images/art/hero-sections/art-abstract-sound-wave-inspired-curves-made-with-charc.webp",
-      "../images/art/hero-sections/art-abstract-sound-wave-inspired-curves-made-with-charc-1.webp",
-      "../images/art/hero-sections/art-abstract-stacked-and-overlapping-rectangular-gestur.webp",
-      "../images/art/hero-sections/art-abstract-stacked-and-overlapping-rectangular-gestur-1.webp",
-      "../images/art/hero-sections/art-abstract-stacked-and-overlapping-rectangular-gestur-2.webp",
-      "../images/art/hero-sections/art-abstract-vertical-stacked-forms-evoking-a-row-of-bo.webp",
-      "../images/art/hero-sections/art-abstract-vertical-stacked-forms-evoking-a-row-of-bo-1.webp",
-      "../images/art/hero-sections/art-abstract-vertical-stacked-forms-evoking-a-row-of-bo-2.webp"
+      "../images/art/mdna/art-abstract-incarnational-spiral-form-with-inward-and-1.webp",
+      "../images/art/mdna/art-abstract-incarnational-spiral-form-with-inward-and.webp",
+      "../images/art/mdna/art-abstract-rooted-form-rising-into-gentle-flame-like.webp",
+      "../images/art/mdna/art-abstract-symbolic-crown-rendered-in-expressive-char.webp",
+      "../images/art/mdna/art-abstract-symbolic-doorway-or-threshold-shape-expres.webp",
+      "../images/art/mdna/art-abstract-symbolic-footsteps-merging-into-a-flowing-1.webp",
+      "../images/art/mdna/art-abstract-symbolic-footsteps-merging-into-a-flowing.webp",
+      "../images/art/mdna/art-two-abstract-human-figures-interacting-drawn-with-e.webp"
     ]
   },
   "images": {
@@ -1063,7 +1125,14 @@
       "../images/books/book-metanoia.webp",
       "../images/books/book-on-the-verge.webp",
       "../images/books/book-reframation.webp",
-      "../images/books/book-rejesus.webp"
+      "../images/books/book-rejesus.webp",
+      "../images/books/book-the-forgotten-ways.webp",
+      "../images/books/book-the-forgotten-ways-handbook.webp",
+      "../images/books/book-the-faith-of-leap.webp",
+      "../images/books/book-the-permanent-revolution.webp",
+      "../images/books/book-untamed.webp",
+      "../images/books/book-right-here-right-now.webp",
+      "../images/books/book-starfish-and-the-spirit.webp"
     ]
   }
 }

@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { EReaderContainer } from '@/components/e-reader'
+import { ALAN_HIRSCH_BOOK_CONTENT } from '@/lib/books/alan-hirsch-content'
 
 // Sample book content - in production this would come from database/CMS
 const BOOK_CONTENT: Record<string, {
@@ -187,13 +188,18 @@ Content that moves is the ultimate measure of whether platform ownership and net
   },
 }
 
+const ALL_BOOK_CONTENT: Record<string, { title: string; slug: string; chapters: { number: number; title: string; slug: string; content: string }[] }> = {
+  ...BOOK_CONTENT,
+  ...ALAN_HIRSCH_BOOK_CONTENT,
+}
+
 interface PageProps {
   params: Promise<{ slug: string }>
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
-  const book = BOOK_CONTENT[slug]
+  const book = ALL_BOOK_CONTENT[slug]
 
   if (!book) {
     return {
@@ -208,7 +214,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function BookReadPage({ params }: PageProps) {
   const { slug } = await params
-  const book = BOOK_CONTENT[slug]
+  const book = ALL_BOOK_CONTENT[slug]
 
   if (!book) {
     notFound()

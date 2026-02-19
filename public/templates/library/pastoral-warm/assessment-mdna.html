@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <base href="./" />
+  <title>mDNA Assessment — Leader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body data-leader-title="pageTitles.home">
+  <header class="public-header" role="banner">
+    <div class="public-header__inner">
+      <a href="index.html" class="public-header__logo" data-leader="name">Leader</a>
+      <button type="button" class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav class="public-header__nav" id="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="content-hub.html">Content</a>
+        <a href="themes.html">Themes</a>
+        <a href="index.html#assessments" class="active">Assessments</a>
+        <a href="chat.html">AI Lab</a>
+      </nav>
+      <div class="public-header__actions">
+        <a href="#search" aria-label="Search" class="public-header__search">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </a>
+        <a href="signin.html" class="btn-signin">Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- Intro (shown by default) -->
+    <section class="page-section mdna-intro" id="mdna-intro" aria-labelledby="mdna-intro-title">
+      <div class="page-section__inner">
+        <h1 id="mdna-intro-title" class="page-section__title">mDNA Assessment</h1>
+        <p class="page-section__subtitle page-section__subtitle--lead">
+          Discover which elements of Missional DNA are strongest in your life and context — and which need attention. The six elements (Jesus Is Lord, Disciple Making, Missional-Incarnational, APEST, Organic Systems, and Liminality & Communitas) form the genetic code of apostolic movements. This short assessment gives you a snapshot and a starting point for formation.
+        </p>
+        <p class="page-section__subtitle">Takes about 15 minutes. Answer honestly for yourself or your community.</p>
+        <button type="button" class="btn btn--primary" id="mdna-start-btn">Start assessment</button>
+      </div>
+    </section>
+
+    <!-- Form (hidden until Start) -->
+    <section class="page-section mdna-form-section" id="mdna-form-section" aria-labelledby="mdna-form-title" hidden>
+      <div class="page-section__inner">
+        <h2 id="mdna-form-title" class="page-section__title">Rate each statement</h2>
+        <p class="page-section__subtitle">From 1 (Strongly Disagree) to 5 (Strongly Agree). There are no right answers — only your current reality.</p>
+        <form id="mdna-form" class="mdna-form">
+          <div class="mdna-form__questions">
+            <fieldset class="mdna-question" data-element="jesus_is_lord">
+              <legend class="mdna-question__label">Jesus is the functional organizing center of my life and our community's life — not just a doctrinal belief.</legend>
+              <span class="mdna-question__element">Jesus Is Lord</span>
+              <div class="mdna-question__options" role="group" aria-label="Scale 1 to 5">
+                <label class="mdna-option"><input type="radio" name="jesus_is_lord" value="1" required /> 1</label>
+                <label class="mdna-option"><input type="radio" name="jesus_is_lord" value="2" /> 2</label>
+                <label class="mdna-option"><input type="radio" name="jesus_is_lord" value="3" /> 3</label>
+                <label class="mdna-option"><input type="radio" name="jesus_is_lord" value="4" /> 4</label>
+                <label class="mdna-option"><input type="radio" name="jesus_is_lord" value="5" /> 5</label>
+              </div>
+              <p class="mdna-question__hint">1 = Strongly Disagree … 5 = Strongly Agree</p>
+            </fieldset>
+            <fieldset class="mdna-question" data-element="disciple_making">
+              <legend class="mdna-question__label">We are actively forming people to become more like Jesus, with the expectation that they will form others.</legend>
+              <span class="mdna-question__element">Disciple Making</span>
+              <div class="mdna-question__options" role="group" aria-label="Scale 1 to 5">
+                <label class="mdna-option"><input type="radio" name="disciple_making" value="1" required /> 1</label>
+                <label class="mdna-option"><input type="radio" name="disciple_making" value="2" /> 2</label>
+                <label class="mdna-option"><input type="radio" name="disciple_making" value="3" /> 3</label>
+                <label class="mdna-option"><input type="radio" name="disciple_making" value="4" /> 4</label>
+                <label class="mdna-option"><input type="radio" name="disciple_making" value="5" /> 5</label>
+              </div>
+              <p class="mdna-question__hint">1 = Strongly Disagree … 5 = Strongly Agree</p>
+            </fieldset>
+            <fieldset class="mdna-question" data-element="missional_incarnational">
+              <legend class="mdna-question__label">We go to where people are and embed the gospel in the rhythms of our neighborhood and context.</legend>
+              <span class="mdna-question__element">Missional-Incarnational</span>
+              <div class="mdna-question__options" role="group" aria-label="Scale 1 to 5">
+                <label class="mdna-option"><input type="radio" name="missional_incarnational" value="1" required /> 1</label>
+                <label class="mdna-option"><input type="radio" name="missional_incarnational" value="2" /> 2</label>
+                <label class="mdna-option"><input type="radio" name="missional_incarnational" value="3" /> 3</label>
+                <label class="mdna-option"><input type="radio" name="missional_incarnational" value="4" /> 4</label>
+                <label class="mdna-option"><input type="radio" name="missional_incarnational" value="5" /> 5</label>
+              </div>
+              <p class="mdna-question__hint">1 = Strongly Disagree … 5 = Strongly Agree</p>
+            </fieldset>
+            <fieldset class="mdna-question" data-element="apostolic_environment">
+              <legend class="mdna-question__label">Our community recognizes and releases all five ministry types (APEST: apostle, prophet, evangelist, shepherd, teacher), not just some.</legend>
+              <span class="mdna-question__element">Apostolic Environment</span>
+              <div class="mdna-question__options" role="group" aria-label="Scale 1 to 5">
+                <label class="mdna-option"><input type="radio" name="apostolic_environment" value="1" required /> 1</label>
+                <label class="mdna-option"><input type="radio" name="apostolic_environment" value="2" /> 2</label>
+                <label class="mdna-option"><input type="radio" name="apostolic_environment" value="3" /> 3</label>
+                <label class="mdna-option"><input type="radio" name="apostolic_environment" value="4" /> 4</label>
+                <label class="mdna-option"><input type="radio" name="apostolic_environment" value="5" /> 5</label>
+              </div>
+              <p class="mdna-question__hint">1 = Strongly Disagree … 5 = Strongly Agree</p>
+            </fieldset>
+            <fieldset class="mdna-question" data-element="organic_systems">
+              <legend class="mdna-question__label">We use simple, reproducible structures that enable multiplication rather than just addition.</legend>
+              <span class="mdna-question__element">Organic Systems</span>
+              <div class="mdna-question__options" role="group" aria-label="Scale 1 to 5">
+                <label class="mdna-option"><input type="radio" name="organic_systems" value="1" required /> 1</label>
+                <label class="mdna-option"><input type="radio" name="organic_systems" value="2" /> 2</label>
+                <label class="mdna-option"><input type="radio" name="organic_systems" value="3" /> 3</label>
+                <label class="mdna-option"><input type="radio" name="organic_systems" value="4" /> 4</label>
+                <label class="mdna-option"><input type="radio" name="organic_systems" value="5" /> 5</label>
+              </div>
+              <p class="mdna-question__hint">1 = Strongly Disagree … 5 = Strongly Agree</p>
+            </fieldset>
+            <fieldset class="mdna-question" data-element="liminality_communitas">
+              <legend class="mdna-question__label">We experience deep community forged through shared mission, risk, or threshold experiences.</legend>
+              <span class="mdna-question__element">Liminality & Communitas</span>
+              <div class="mdna-question__options" role="group" aria-label="Scale 1 to 5">
+                <label class="mdna-option"><input type="radio" name="liminality_communitas" value="1" required /> 1</label>
+                <label class="mdna-option"><input type="radio" name="liminality_communitas" value="2" /> 2</label>
+                <label class="mdna-option"><input type="radio" name="liminality_communitas" value="3" /> 3</label>
+                <label class="mdna-option"><input type="radio" name="liminality_communitas" value="4" /> 4</label>
+                <label class="mdna-option"><input type="radio" name="liminality_communitas" value="5" /> 5</label>
+              </div>
+              <p class="mdna-question__hint">1 = Strongly Disagree … 5 = Strongly Agree</p>
+            </fieldset>
+          </div>
+          <div class="mdna-form__actions">
+            <button type="submit" class="btn btn--primary">See my results</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Results (hidden until submit) -->
+    <section class="page-section mdna-results" id="mdna-results-section" aria-labelledby="mdna-results-title" hidden>
+      <div class="page-section__inner">
+        <h2 id="mdna-results-title" class="page-section__title">Your mDNA snapshot</h2>
+        <p class="page-section__subtitle">This is a diagnostic, not a verdict. Your lowest-scoring element is your <strong>growth edge</strong> — strengthening it often raises the whole system.</p>
+        <div class="mdna-results__limiting" id="mdna-limiting-factor"></div>
+        <div class="mdna-results__scores" id="mdna-scores-list"></div>
+        <div class="mdna-results__next">
+          <p>Go deeper with the full mDNA course: eight weeks of formation through the six elements.</p>
+          <a href="course-learn.html?course=mdna" class="btn btn--primary">Explore mDNA course</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="public-footer" role="contentinfo">
+    <div class="public-footer__inner">
+      <nav class="public-footer__links" aria-label="Footer links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#formation">Formation</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="#accessibility">Accessibility</a>
+      </nav>
+      <p class="public-footer__copy" data-leader="pageCopy.footer.copy">© Leader. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button type="button" class="floating-chat-button" id="chat-open" aria-label="Open AI Lab chat">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+  </button>
+  <div class="chat-backdrop" id="chat-backdrop" aria-hidden="true"></div>
+  <aside class="floating-chat-panel" id="chat-panel" aria-label="AI Lab chat panel" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="floating-chat-panel__header">
+      <h2 class="floating-chat-panel__title" data-leader="pageCopy.chat.title">AI Lab</h2>
+      <button type="button" class="floating-chat-panel__close" id="chat-close" aria-label="Close chat">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="floating-chat-panel__body">
+      <p class="floating-chat-panel__placeholder" data-leader="pageCopy.chat.placeholder">Ask a question.</p>
+      <div class="floating-chat-panel__suggestions">
+        <button type="button" class="floating-chat-panel__suggestion">What is mDNA?</button>
+        <button type="button" class="floating-chat-panel__suggestion">Explain APEST</button>
+        <button type="button" class="floating-chat-panel__suggestion">Suggest a next step</button>
+      </div>
+    </div>
+    <div class="floating-chat-panel__input-area">
+      <input type="text" class="floating-chat-panel__input" placeholder="Type your message…" aria-label="Chat message" data-leader-placeholder="pageCopy.chat.inputPlaceholder" />
+      <button type="button" class="floating-chat-panel__send" data-leader="pageCopy.chat.sendLabel">Send</button>
+    </div>
+  </aside>
+
+  <script src="js/main.js"></script>
+  <script src="../js/leader-content.js" data-json="../data/alan-hirsch.json"></script>
+  <script>
+(function () {
+  var ELEMENT_LABELS = {
+    jesus_is_lord: 'Jesus Is Lord',
+    disciple_making: 'Disciple Making',
+    missional_incarnational: 'Missional-Incarnational',
+    apostolic_environment: 'Apostolic Environment',
+    organic_systems: 'Organic Systems',
+    liminality_communitas: 'Liminality & Communitas'
+  };
+  var intro = document.getElementById('mdna-intro');
+  var formSection = document.getElementById('mdna-form-section');
+  var resultsSection = document.getElementById('mdna-results-section');
+  var startBtn = document.getElementById('mdna-start-btn');
+  var form = document.getElementById('mdna-form');
+
+  function showForm() {
+    if (intro) intro.hidden = true;
+    if (formSection) { formSection.hidden = false; formSection.scrollIntoView({ behavior: 'smooth' }); }
+  }
+
+  function showResults(scores) {
+    if (formSection) formSection.hidden = true;
+    if (resultsSection) {
+      resultsSection.hidden = false;
+      var limitingEl = document.getElementById('mdna-limiting-factor');
+      var scoresEl = document.getElementById('mdna-scores-list');
+      if (limitingEl && scoresEl) {
+        var minScore = Math.min.apply(null, Object.values(scores));
+        var limitingKey = Object.keys(scores).find(function (k) { return scores[k] === minScore; });
+        var limitingName = limitingKey ? ELEMENT_LABELS[limitingKey] || limitingKey : '';
+        limitingEl.innerHTML = '<div class="mdna-limiting-card"><strong>Your growth edge</strong>: ' + limitingName + ' — focusing here can raise the whole system.</div>';
+        var sorted = Object.keys(scores).sort(function (a, b) { return scores[b] - scores[a]; });
+        scoresEl.innerHTML = sorted.map(function (key) {
+          var name = ELEMENT_LABELS[key] || key;
+          var val = scores[key];
+          var pct = Math.round((val / 5) * 100);
+          return '<div class="mdna-score-row"><span class="mdna-score-row__name">' + name + '</span><span class="mdna-score-row__bar-wrap"><span class="mdna-score-row__bar" style="width:' + pct + '%"></span></span><span class="mdna-score-row__value">' + val + '/5</span></div>';
+        }).join('');
+      }
+      resultsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  if (startBtn) startBtn.addEventListener('click', showForm);
+
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var fd = new FormData(form);
+      var scores = {};
+      Object.keys(ELEMENT_LABELS).forEach(function (key) {
+        var v = fd.get(key);
+        scores[key] = v ? parseInt(v, 10) : 0;
+      });
+      try { localStorage.setItem('mdna-assessment-scores', JSON.stringify(scores)); } catch (err) {}
+      showResults(scores);
+    });
+  }
+})();
+  </script>
+</body>
+</html>

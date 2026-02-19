@@ -3,6 +3,17 @@ const nextConfig = {
   reactStrictMode: true,
   async redirects() {
     return [
+      // Default Templates entry → pastoral-warm with Alan (alan-hirsch) as default leader
+      {
+        source: '/templates',
+        destination: '/templates/library/pastoral-warm/?leader=alan-hirsch',
+        permanent: false,
+      },
+      {
+        source: '/templates/',
+        destination: '/templates/library/pastoral-warm/?leader=alan-hirsch',
+        permanent: false,
+      },
       {
         source: '/onboarding',
         destination: '/how-it-works',

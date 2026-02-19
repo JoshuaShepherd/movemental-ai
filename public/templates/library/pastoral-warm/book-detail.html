@@ -12,14 +12,14 @@
 <body data-leader-title="pageTitles.bookDetail">
   <header class="public-header" role="banner">
     <div class="public-header__inner">
-      <a href="index.html" class="public-header__logo" data-leader="name">Alan Hirsch</a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <a href="index.html" class="public-header__logo" data-leader="name">Leader</a>
+      <button type="button" class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
       <nav class="public-header__nav" id="nav" aria-label="Main navigation">
         <a href="index.html">Home</a>
-        <a href="content-hub.html">Content</a>
-        <a href="index.html#themes">Themes</a>
+        <a href="content-hub.html" class="active">Content</a>
+        <a href="themes.html">Themes</a>
         <a href="index.html#assessments">Assessments</a>
         <a href="chat.html">AI Lab</a>
       </nav>
@@ -36,25 +36,25 @@
     <div class="book-detail">
       <div class="book-detail__hero">
         <div class="book-detail__cover">
-          <img src="../images/books/book-reframation.webp" alt="Reframation book cover" />
+          <img src="../images/books/book-reframation.webp" alt="Reframation book cover" data-leader-book="cover" />
         </div>
         <div class="book-detail__meta">
-          <h1 class="book-detail__title">Reframation</h1>
+          <h1 class="book-detail__title" data-leader-book="title">Reframation</h1>
           <div class="book-detail__author-row">
             <img src="../images/alan/alan-headshot-4x5.webp" alt="Alan Hirsch" class="book-detail__author-avatar" />
-            <p class="book-detail__author-name">Alan Hirsch</p>
+            <p class="book-detail__author-name" data-leader-book="author">Alan Hirsch</p>
           </div>
-          <div class="book-detail__badges">
+          <div class="book-detail__badges" data-leader-book-badges>
             <span class="badge">Formation</span>
             <span class="badge">Missional Church</span>
           </div>
-          <div class="book-detail__description">
+          <div class="book-detail__description" data-leader-book="longDescription">
             <p>The church stands at a pivotal crossroads. In a rapidly changing world, old frameworks no longer serve the missional calling that lies at the heart of the gospel. Reframation is a prophetic invitation to reframe our understanding of church, leadership, and discipleship for a new era of movement.</p>
             <p>Drawing on decades of research into apostolic movements and the DNA of the early church, Alan Hirsch challenges us to recover the theological imagination that once turned the world upside down. This is not about tweaking existing structures but about a fundamental reorientation toward the missional heart of God.</p>
             <p>Through compelling stories, sharp theological insight, and practical frameworks, Reframation equips leaders, pastors, and everyday disciples to move beyond institutional maintenance and into the wild adventure of participating in God's mission in the world.</p>
           </div>
           <div class="book-detail__ctas">
-            <a href="book-reader.html" class="btn btn--primary btn--lg">Start Reading</a>
+            <a href="book-reader.html" class="btn btn--primary btn--lg" id="book-reader-link">Start Reading</a>
             <a href="pricing.html" class="btn btn--outline btn--lg">Buy This Book</a>
           </div>
         </div>
@@ -62,45 +62,15 @@
 
       <section class="book-detail__related" aria-labelledby="related-title">
         <h2 id="related-title" class="book-detail__related-title">Related books</h2>
-        <div class="books-grid">
-          <a href="book-detail.html" class="book-card">
+        <div class="books-grid" data-leader-list="books">
+          <a href="book-detail.html" class="book-card" data-leader-item-template>
             <div class="book-card__cover">
-              <img src="../images/books/book-5q.webp" alt="5Q book cover" loading="lazy" />
+              <img src="" alt="" loading="lazy" data-leader-item="cover" />
             </div>
             <div class="book-card__info">
-              <h3 class="book-card__title">5Q</h3>
-              <p class="book-card__author">Alan Hirsch</p>
-              <div class="book-card__badges"><span class="badge">APEST</span></div>
-            </div>
-          </a>
-          <a href="book-detail.html" class="book-card">
-            <div class="book-card__cover">
-              <img src="../images/books/book-disciplism.webp" alt="Disciplism book cover" loading="lazy" />
-            </div>
-            <div class="book-card__info">
-              <h3 class="book-card__title">Disciplism</h3>
-              <p class="book-card__author">Alan Hirsch</p>
-              <div class="book-card__badges"><span class="badge">Disciple Making</span></div>
-            </div>
-          </a>
-          <a href="book-detail.html" class="book-card">
-            <div class="book-card__cover">
-              <img src="../images/books/book-metanoia.webp" alt="Metanoia book cover" loading="lazy" />
-            </div>
-            <div class="book-card__info">
-              <h3 class="book-card__title">Metanoia</h3>
-              <p class="book-card__author">Alan Hirsch</p>
-              <div class="book-card__badges"><span class="badge">Formation</span></div>
-            </div>
-          </a>
-          <a href="book-detail.html" class="book-card">
-            <div class="book-card__cover">
-              <img src="../images/books/book-on-the-verge.webp" alt="On the Verge book cover" loading="lazy" />
-            </div>
-            <div class="book-card__info">
-              <h3 class="book-card__title">On the Verge</h3>
-              <p class="book-card__author">Alan Hirsch</p>
-              <div class="book-card__badges"><span class="badge">Missional Church</span></div>
+              <h3 class="book-card__title" data-leader-item="title">Title</h3>
+              <p class="book-card__author" data-leader-item="author">Author</p>
+              <div class="book-card__badges"><span class="badge" data-leader-item="themeLabel">Theme</span></div>
             </div>
           </a>
         </div>
