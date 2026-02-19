@@ -1,0 +1,153 @@
+{
+  "slug": "on-the-verge",
+  "title": "On the Verge",
+  "author": "Alan Hirsch, Dave Ferguson",
+  "description": "",
+  "sections": [
+    {
+      "slug": "acknowledgments",
+      "title": "Acknowledgments",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-acknowledgments.mdx",
+      "wordCount": 181,
+      "summary": "The authors express gratitude to key contributors who helped shape the book, including Pat Masek, Rob Wegner, Jon Ferguson, Carter Moss, Sher Sheets, and others from Leadership Network, Zondervan, and the Future Travelers cohort."
+    },
+    {
+      "slug": "foreword-by-mike-breen",
+      "title": "Foreword by Mike Breen",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-foreword-by-mike-breen.mdx",
+      "wordCount": 505,
+      "summary": "Mike Breen introduces the book's dual-voice approach, comparing it to a dual-anchor sports program that provides depth and clarity. He emphasizes the need for both attractional and missional forces to work together, suggesting that the twenty-first century must reconnect missiology and ecclesiology to create churches that reflect Jesus' life and mission."
+    },
+    {
+      "slug": "foreword-by-reggie-mcneal",
+      "title": "Foreword by Reggie Mc Neal",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-foreword-by-reggie-mcneal.mdx",
+      "wordCount": 494,
+      "summary": "Reggie McNeal situates the book within the broader missional movement conversation, noting the shift from church-focused to community-focused expressions. He highlights the emergence of missional communities as a new life form for reaching populations not susceptible to traditional congregational church, and commends the authors for exploring how megachurches can implement this approach."
+    },
+    {
+      "slug": "introduction",
+      "title": "Introduction",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-introduction.mdx",
+      "wordCount": 2015,
+      "summary": "The introduction frames the book's mission to help the Western church recover its apostolic movement form. It explains why and how the book was written, with Alan bringing missional strategy and theological perspectives while Dave contributes practical implementation from his megachurch leadership experience. The authors describe their collaborative dialogue approach and the book's structure around four main sections: Imagine, Shift, Innovate, and Move."
+    },
+    {
+      "slug": "on-the-verge-of-the-future",
+      "title": "Chapter 1: On the Verge of the Future",
+      "type": "chapter",
+      "order": 1,
+      "file": "01-on-the-verge-of-the-future.mdx",
+      "wordCount": 8352,
+      "summary": "This chapter introduces the Future Travelers cohort of megachurches committed to becoming missional movements. It addresses the strategic problem that most churches target only 40 percent of the population, leaving 60 percent unreached, and the missionary problem of churches forgetting their sent nature. The chapter explores cultural shifts, the 60:40 red/blue ocean metaphor, technological changes, and the need to move beyond the Constantine paradigm toward apostolic movements."
+    },
+    {
+      "slug": "the-silver-imagination",
+      "title": "Chapter 2",
+      "type": "chapter",
+      "order": 2,
+      "file": "02-the-silver-imagination.mdx",
+      "wordCount": 10444,
+      "summary": "This chapter explores the role of imagination and paradigms in shifting church thinking. It argues that paradigms function like organizational DNA, consisting of myths, metaphors, and models that shape behavior. The chapter emphasizes that paradigm shifts require imagination to see beyond current limitations, and that telling alternative stories is essential for change. It discusses how Jesus used imagination through parables and how missional imagination must be shaped by the Missio Dei, kingdom of God, and incarnation."
+    },
+    {
+      "slug": "verge-ination",
+      "title": "Chapter 3",
+      "type": "chapter",
+      "order": 3,
+      "file": "03-verge-ination.mdx",
+      "wordCount": 11511,
+      "summary": "Titled \"Mission to the Mind and Heart,\" this chapter explains the process of recoding organizational paradigms by examining myths, metaphors, and models. It identifies institutional myths that need to be challenged (such as \"build it and they will come\" and \"we need clergy, buildings, and Sunday services\") and explores how to shift from institutional to movemental metaphors. The chapter emphasizes that true change requires recoding the deep assumptions that shape how churches think and operate."
+    },
+    {
+      "slug": "apostolic-genius",
+      "title": "Chapter 4",
+      "type": "chapter",
+      "order": 4,
+      "file": "04-apostolic-genius.mdx",
+      "wordCount": 8656,
+      "summary": "This chapter presents Apostolic Genius as the genetic code of movement, consisting of six interrelating elements: Jesus is Lord (the central confession), disciple-making, missional-incarnational impulse, apostolic environment, organic systems, and communitas. Drawing from the Chinese underground church and other movements, it argues that every church has the latent potential for apostolic movement encoded within it. The chapter explains how these elements work together as mDNA (missional DNA) to create exponential, reproducible movements."
+    },
+    {
+      "slug": "verge-vibe",
+      "title": "Chapter 5",
+      "type": "chapter",
+      "order": 5,
+      "file": "05-verge-vibe.mdx",
+      "wordCount": 8401,
+      "summary": "This chapter introduces \"Verge Vibe\" as the operating system (ethos) of apostolic movement. Using the metaphor of computer systems, it explains how ethos mediates between the paradigm (hardware/machine language) and practices (programs). The chapter explores how to develop an apostolic ethos by identifying beliefs, formulating values, developing vocabulary, and creating culture. It emphasizes that ethos represents the character and disposition of a community and serves as the pivot point between paradigm shift and practical implementation."
+    },
+    {
+      "slug": "embodying-movement",
+      "title": "Chapter 6",
+      "type": "chapter",
+      "order": 6,
+      "file": "06-embodying-movement.mdx",
+      "wordCount": 8651,
+      "summary": "This chapter focuses on practices as the observable, repeatable behaviors that embody movement values. It argues that practices are the \"business end\" of the Verge church process, where paradigm and ethos become lived reality. The chapter contrasts Hebraic (action-oriented) and Greek (concept-oriented) approaches to knowledge, emphasizing the need to \"act our way into a new way of thinking\" rather than trying to think our way into new actions. It explores how core practices develop disciples and create the embodied witness of the movement."
+    },
+    {
+      "slug": "acting-our-way",
+      "title": "Chapter 7",
+      "type": "chapter",
+      "order": 7,
+      "file": "07-acting-our-way.mdx",
+      "wordCount": 7768,
+      "summary": "Titled \"Innovate or Die,\" this chapter argues that innovation is essential for apostolic churches, especially in times of crisis. It presents innovation as \"the shifting of resources from areas of low productivity to areas of higher productivity\" and proposes that innovation equals imagination multiplied by implementation. The chapter shares the story of Community Christian Church's financial crisis that led to expanded mission, and emphasizes that innovation is the least risky course rather than the most risky. It describes three key characteristics of leaders who value and practice innovation."
+    },
+    {
+      "slug": "imagination-implementation",
+      "title": "Chapter 8",
+      "type": "chapter",
+      "order": 8,
+      "file": "08-imagination-implementation.mdx",
+      "wordCount": 7282,
+      "summary": "This chapter explores \"Out-of-the-Box Innovation\" by contrasting in-the-box innovation (happening within church facilities) with out-of-the-box innovation (extending mission beyond traditional boundaries). It presents nine characteristics of out-of-the-box innovative cultures, including being \"beta not better\" (like Google), trusting and trustworthy teams, assuming permission and expecting forgiveness, and balancing hurry-up-and-wait rhythms. The chapter includes examples of churches that have moved mission beyond their buildings and into their communities."
+    },
+    {
+      "slug": "the-making-of-an-apostolic-movement",
+      "title": "Chapter 9",
+      "type": "chapter",
+      "order": 9,
+      "file": "09-the-making-of-an-apostolic-movement.mdx",
+      "wordCount": 16044,
+      "summary": "This chapter explains how to gain \"missional momentum\" (movementum) by combining church multiplication with people on mission in every sphere of life. It uses Jim Collins' flywheel metaphor to describe how consistent effort builds unstoppable momentum. The chapter presents research showing that new churches grow much faster than established ones, and emphasizes that apostolic movement requires both macro reproduction (church planting) and micro reproduction (every person mobilized for mission). It describes the continuous cycle of imagine, shift, and innovate that creates movement, and discusses categories of movement adoption using diffusion of innovation theory."
+    },
+    {
+      "slug": "final-thoughts",
+      "title": "Final Thoughts",
+      "type": "chapter",
+      "order": 10,
+      "file": "10-final-thoughts.mdx",
+      "wordCount": 245,
+      "summary": "The authors conclude by expressing hope that the church can recover its apostolic movement form. They emphasize that Apostolic Genius is already latent within the people of God and needs to be activated rather than imposed. They call for new understandings of ministry to be created with each generation, moving from professional ministers to missionary pastors, and express confidence that signs of this shift are emerging in the Western church."
+    },
+    {
+      "slug": "appendix",
+      "title": "Appendix",
+      "type": "appendix",
+      "order": 11,
+      "file": "11-appendix.mdx",
+      "wordCount": 8751,
+      "summary": "This appendix provides detailed profiles of the Future Travelers churches, including The Austin Stone Church, Community Christian Church, Granger Community Church, The Journey, Kensington Community Church, Mosaic Church, Mountain Lake, River Tree Christian Church, Rock Harbor Church, Seacoast Church, Soma Communities, and West Ridge Church. Each profile includes location information, stories of missional engagement, wins achieved, the church's journey toward movement, and ongoing challenges."
+    },
+    {
+      "slug": "notes",
+      "title": "Notes",
+      "type": "notes",
+      "order": 12,
+      "file": "12-notes.mdx",
+      "wordCount": 6308,
+      "summary": "This section contains bibliographic notes, citations, and references for sources quoted and referenced throughout the book. It includes citations from works on leadership, missiology, organizational theory, innovation, and theology that informed the authors' thinking and arguments."
+    }
+  ],
+  "totalSections": 16
+}

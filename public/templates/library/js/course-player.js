@@ -35,6 +35,82 @@
     return div.innerHTML;
   }
 
+  /** Simple markdown to HTML for course content (reading, reflection, action, scripture). */
+  function markdownToHtml(text) {
+    if (text == null || typeof text !== "string") return "";
+    var s = text.trim();
+    if (!s) return "";
+    s = s.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+    var out = [];
+    var i = 0;
+    var len = s.length;
+    function peekLine() {
+      var start = i;
+      while (i < len && s[i] !== "\n") i++;
+      var line = s.slice(start, i);
+      if (i < len) i++;
+      return line;
+    }
+    function flushParagraph(p) {
+      p = p.trim();
+      if (!p) return;
+      p = p.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>").replace(/\*([^*]+)\*/g, "<em>$1</em>");
+      out.push("<p>" + p + "</p>");
+    }
+    var para = "";
+    while (i < len) {
+      var line = peekLine();
+      var trimmed = line.trim();
+      if (/^#{2,3}\s/.test(trimmed)) {
+        if (para) { flushParagraph(para); para = ""; }
+        var level = trimmed.startsWith("###") ? 3 : 2;
+        var head = trimmed.replace(/^#+\s*/, "").trim();
+        head = head.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>").replace(/\*([^*]+)\*/g, "<em>$1</em>");
+        out.push("<h" + level + ">" + head + "</h" + level + ">");
+        continue;
+      }
+      if (/^---+$/.test(trimmed)) {
+        if (para) { flushParagraph(para); para = ""; }
+        out.push("<hr/>");
+        continue;
+      }
+      if (/^[-*]\s/.test(trimmed) || /^\d+\.\s/.test(trimmed)) {
+        if (para) { flushParagraph(para); para = ""; }
+        var listTag = /^\d+\.\s/.test(trimmed) ? "ol" : "ul";
+        var items = [];
+        items.push(trimmed.replace(/^[-*]\s/, "").replace(/^\d+\.\s/, ""));
+        while (i < len) {
+          var next = s.slice(i);
+          var nextLine = next.split("\n")[0];
+          if (!nextLine || (!/^[-*]\s/.test(nextLine.trim()) && !/^\d+\.\s/.test(nextLine.trim()))) break;
+          i += nextLine.length + 1;
+          items.push(nextLine.trim().replace(/^[-*]\s/, "").replace(/^\d+\.\s/, ""));
+        }
+        var lis = items.map(function (t) {
+          t = t.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>").replace(/\*([^*]+)\*/g, "<em>$1</em>");
+          return "<li>" + t + "</li>";
+        }).join("");
+        out.push("<" + listTag + ">" + lis + "</" + listTag + ">");
+        continue;
+      }
+      if (trimmed === "") {
+        if (para) { flushParagraph(para); para = ""; }
+        continue;
+      }
+      para = para ? para + " " + line : line;
+    }
+    if (para) flushParagraph(para);
+    return out.join("\n");
+  }
+
+  /** Get full lesson body from sections (reading, reflection, action, scripture, _videoScript). */
+  function getLessonBody(lesson) {
+    var sec = lesson && lesson.sections;
+    if (!sec) return "";
+    var raw = sec.reading || sec.reflection || sec.action || sec.scripture || sec._videoScript || "";
+    return typeof raw === "string" ? raw : "";
+  }
+
   /** Placeholder durations for lessons (e.g. "1:51", "4:12") when not in JSON */
   function lessonDuration(weekIndex, lessonIndex) {
     if (weekIndex === 0 && lessonIndex === 0) return "1:51";
@@ -146,16 +222,34 @@
       posterTitle.textContent = (cur.weekIndex + 1) + "." + (cur.lessonIndex + 1) + " " + (lesson.title || cur.slug.replace(/-/g, " "));
     }
     if (posterBadge && opts.courseTitle) posterBadge.setAttribute("data-badge", opts.courseTitle);
+
+    var mediaEl = document.getElementById("course-player-media");
+    var contentEl = document.getElementById("course-player-lesson-content");
+    var contentBodyEl = document.getElementById("course-player-content-body");
     var video = document.getElementById("course-player-video");
     var poster = document.getElementById("course-player-poster");
     var playBtn = document.getElementById("course-player-play-btn");
-    if (lesson.sections && lesson.sections.video) {
+
+    var hasVideoUrl = lesson.sections && lesson.sections.video && String(lesson.sections.video).trim() !== "";
+    var bodyText = getLessonBody(lesson);
+
+    if (hasVideoUrl) {
+      if (mediaEl) mediaEl.classList.remove("is-hidden");
+      if (contentEl) { contentEl.classList.remove("is-visible"); contentEl.hidden = true; }
       if (video) {
         video.src = lesson.sections.video;
         video.classList.add("is-visible");
         if (poster) poster.classList.remove("is-visible");
       }
     } else {
+      if (mediaEl) mediaEl.classList.add("is-hidden");
+      if (contentEl) {
+        contentEl.hidden = false;
+        contentEl.classList.add("is-visible");
+      }
+      if (contentBodyEl) {
+        contentBodyEl.innerHTML = bodyText ? markdownToHtml(bodyText) : "<p>No content for this lesson.</p>";
+      }
       showPoster(poster, video, playBtn, posterTitle, posterBadge);
     }
   }

@@ -39,18 +39,22 @@
 
     <div class="course-player-layout">
       <div class="course-player-video-col">
-        <div class="course-player-video-wrap" id="course-player-video-wrap">
-          <div class="course-player-poster is-visible" id="course-player-poster">
-            <img id="course-player-poster-bg" class="course-player-poster__bg" alt="" />
-            <span class="course-player-poster__badge" id="course-player-poster-badge">Course</span>
-            <h2 class="course-player-poster__title" id="course-player-poster-title">Welcome</h2>
-            <button type="button" class="course-player-play-btn" id="course-player-play-btn" aria-label="Play video">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </button>
+        <div class="course-player-media" id="course-player-media">
+          <div class="course-player-video-wrap" id="course-player-video-wrap">
+            <div class="course-player-poster is-visible" id="course-player-poster">
+              <img id="course-player-poster-bg" class="course-player-poster__bg" alt="" />
+              <span class="course-player-poster__badge" id="course-player-poster-badge">Course</span>
+              <h2 class="course-player-poster__title" id="course-player-poster-title">Welcome</h2>
+              <button type="button" class="course-player-play-btn" id="course-player-play-btn" aria-label="Play video">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <video class="course-player-video" id="course-player-video" controls playsinline preload="metadata" aria-label="Lesson video">
+            </video>
           </div>
-          <video class="course-player-video" id="course-player-video" controls playsinline preload="metadata" aria-label="Lesson video">
-            <!-- Optional: <source src="..." type="video/mp4"> when video URLs exist -->
-          </video>
+        </div>
+        <div class="course-player-lesson-content" id="course-player-lesson-content" hidden>
+          <div class="course-player-content-body prose" id="course-player-content-body"></div>
         </div>
         <div class="course-player-below">
           <div class="course-player-lesson-desc">
@@ -73,7 +77,7 @@
           </button>
         </div>
         <h2 class="course-player-sidebar__course-title" id="course-player-sidebar-title">Course title</h2>
-        <p class="course-player-sidebar__meta">Video lessons</p>
+        <p class="course-player-sidebar__meta" id="course-player-sidebar-meta">Lessons</p>
         <div class="course-player-outline" id="course-player-outline">
           <p class="course-player-loading">Loading…</p>
         </div>

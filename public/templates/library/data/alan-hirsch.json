@@ -30,32 +30,32 @@
     {
       "slug": "missional-church",
       "title": "Missional Church",
-      "description": "Foundations and practices for missional ecclesiology and apostolic movement."
+      "description": "Foundations and practices for missional ecclesiology and apostolic movement—the six-element genetic code (mDNA) that has driven every significant Jesus movement in history, and how to recover it in your context."
     },
     {
       "slug": "formation",
       "title": "Formation",
-      "description": "Spiritual and leadership formation for disciples and leaders."
+      "description": "Spiritual and leadership formation for disciples and leaders—including the kind of community that forms when people share a liminal journey: communitas, risk, and the edge where growth happens."
     },
     {
       "slug": "disciple-making",
       "title": "Disciple Making",
-      "description": "Making disciples who make disciples: frameworks and practices."
+      "description": "Making disciples who make disciples: frameworks and practices that put formation at the center, so evangelism and mission flow from a life that looks like Jesus."
     },
     {
       "slug": "apest",
       "title": "APEST",
-      "description": "Apostolic, prophetic, evangelistic, shepherd, teacher—fivefold ministry."
+      "description": "Apostle, Prophet, Evangelist, Shepherd, Teacher—the fivefold ministry Christ gave for the maturity and mission of his body. Explore 5Q and how to activate all five forms of intelligence in your community."
     },
     {
       "slug": "kingdom-mission",
       "title": "Kingdom Mission",
-      "description": "Kingdom-centered mission and church planting."
+      "description": "Kingdom-centered mission and church planting—how the reign of God shapes where we go, how we multiply, and how we partner with what the Spirit is already doing in the world."
     },
     {
       "slug": "christocentric",
-      "title": "Christocentric",
-      "description": "Christ-centered faith and discipleship."
+      "title": "Christ at the Center",
+      "description": "Christ-centered faith and discipleship—the confession \"Jesus Is Lord\" as the heart of mDNA and the lens through which we see mission, church, and life."
     }
   ],
   "contentLibrary": {
@@ -853,7 +853,7 @@
       "author": "Alan Hirsch",
       "theme": "missional-church",
       "themeLabel": "Missional Church",
-      "shortDescription": ""
+      "shortDescription": "A brief guide to moving from where you are to missional engagement — briefing and debriefing for the journey."
     },
     {
       "slug": "metanoia",
@@ -863,7 +863,7 @@
       "author": "Alan Hirsch",
       "theme": "formation",
       "themeLabel": "Formation",
-      "shortDescription": ""
+      "shortDescription": "Biblical repentance as paradigm shift — for personal and organizational transformation."
     },
     {
       "slug": "on-the-verge",
@@ -873,7 +873,7 @@
       "author": "Alan Hirsch",
       "theme": "missional-church",
       "themeLabel": "Missional Church",
-      "shortDescription": ""
+      "shortDescription": "Apostolic imagination and the making of missional movement — from verge to embodiment."
     },
     {
       "slug": "reframation",
@@ -904,7 +904,7 @@
       "author": "Alan Hirsch",
       "theme": "christocentric",
       "themeLabel": "Christocentric",
-      "shortDescription": ""
+      "shortDescription": "Recovering the radical, biblical Jesus and allowing him to reshape faith, church, and mission."
     },
     {
       "slug": "the-forgotten-ways",
@@ -1040,7 +1040,7 @@
       "subtitle": "Explore articles, books, courses, podcasts, and videos on formation, mission, and discipleship."
     },
     "themes": {
-      "subtitle": "Explore by theme — missional church, formation, disciple making, APEST, kingdom mission, and Christocentric faith."
+      "subtitle": "Explore by theme — missional church, formation, disciple making, APEST, kingdom mission, and Christ at the center."
     },
     "footer": {
       "copy": "© Alan Hirsch. All rights reserved.",

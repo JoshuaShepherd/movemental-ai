@@ -10,8 +10,8 @@ Routes are under `/templates/library/pastoral-warm/`. Base: `https://<origin>/te
 - `/templates/library/pastoral-warm/articles.html` — Articles
 - `/templates/library/pastoral-warm/article-detail.html` — Article Detail
 - `/templates/library/pastoral-warm/books.html` — Books
-- `/templates/library/pastoral-warm/book-detail.html` — Book Detail
-- `/templates/library/pastoral-warm/book-reader.html` — Book Reader
+- `/templates/library/pastoral-warm/book-detail.html?book=<slug>` — Book Detail
+- `/templates/library/pastoral-warm/book-reader.html?book=<slug>&section=<slug>` — Book Reader (loads content from built MDX; see `_docs/themes-content/PASTORAL_WARM_BOOKS_MDX.md`)
 - `/templates/library/pastoral-warm/courses.html` — Courses
 - `/templates/library/pastoral-warm/course-detail.html` — Course Detail
 - `/templates/library/pastoral-warm/course-learn.html` — Course Learn

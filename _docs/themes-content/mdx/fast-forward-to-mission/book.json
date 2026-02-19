@@ -1,0 +1,27 @@
+{
+  "slug": "fast-forward-to-mission",
+  "title": "Fast Forward to Mission",
+  "author": "Alan Hirsch",
+  "description": "",
+  "sections": [
+    {
+      "slug": "briefing-right-here",
+      "title": "Fast Forward to Mission",
+      "type": "chapter",
+      "order": 1,
+      "file": "01-briefing-right-here.mdx",
+      "wordCount": 9328,
+      "summary": "This chapter provides a comprehensive framework for missional Christianity, outlining four key movements: move out (into missional engagement), move in (burrowing into culture through incarnation), move alongside (engaging in relationships and community), and move from (challenging dehumanizing aspects of culture). It establishes the foundations for missional living by emphasizing that every believer is called to be a missionary in their sphere of influence, and explains how to engage culture meaningfully through incarnational practices, understanding cultural dynamics, and embodying the gospel in everyday life."
+    },
+    {
+      "slug": "debriefing-right-now",
+      "title": "Debriefing Right Now",
+      "type": "chapter",
+      "order": 2,
+      "file": "02-debriefing-right-now.mdx",
+      "wordCount": 8436,
+      "summary": "This chapter addresses critical challenges facing the contemporary Western church, including the need to stretch our understanding of church beyond institutional boundaries, overcome credibility gaps through authentic discipleship, confront consumerism and middle-class biases, distinguish between kingdom and church, move beyond attractional-extractional models, and address sustainability issues. The author calls for awakening the missional potential of all God's people, emphasizing that the future of Christianity depends on becoming a people movement again that activates both apostolic mission and the mission of the whole people of God in every sphere of society."
+    }
+  ],
+  "totalSections": 2
+}

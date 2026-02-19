@@ -1,0 +1,1193 @@
+{
+  "books": [
+    {
+      "slug": "5q",
+      "title": "5Q: Reactivating the Original Intelligence and Capacity of the Body of Christ",
+      "author": "Alan Hirsch",
+      "sections": [
+        {
+          "slug": "introduction",
+          "title": "Introduction",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "preface",
+          "title": "In Praise of Soft Eyes",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "retrofuture",
+          "title": "Chapter 1: RetroFuture — Biblical Foundations for a 5Q Future",
+          "type": "chapter",
+          "order": 1
+        },
+        {
+          "slug": "5q-the-primordial-form",
+          "title": "Chapter 2: The Universality and Origins of APEST: Archetypes, Myths, and Hero-Expression",
+          "type": "chapter",
+          "order": 2
+        },
+        {
+          "slug": "the-traces-of-god",
+          "title": "Chapter 3: The Traces of God",
+          "type": "chapter",
+          "order": 3
+        },
+        {
+          "slug": "scenius",
+          "title": "Scenius",
+          "type": "chapter",
+          "order": 4
+        },
+        {
+          "slug": "the-heros-journey",
+          "title": "Chapter 5: The Hero's Journey—The Movement That Jesus Started",
+          "type": "chapter",
+          "order": 5
+        },
+        {
+          "slug": "embodiment",
+          "title": "Chapter 6: Embodiment—The Fivefold Modes of Jesus' Presence in the Church",
+          "type": "chapter",
+          "order": 6
+        },
+        {
+          "slug": "eph4us",
+          "title": "Chapter 7: Eph4Us—The Fivefold Functionality of the Church",
+          "type": "chapter",
+          "order": 7
+        },
+        {
+          "slug": "marking-the-body",
+          "title": "Chapter 8: Marking the Body",
+          "type": "chapter",
+          "order": 8
+        },
+        {
+          "slug": "tools-for-the-trade",
+          "title": "5Q: Reactivating the Original Intelligence and Capacity of the Body of Christ",
+          "type": "chapter",
+          "order": 9
+        },
+        {
+          "slug": "to-get-from-here-to-there",
+          "title": "Chapter 10: To Get From Here to There",
+          "type": "chapter",
+          "order": 10
+        },
+        {
+          "slug": "conclusion",
+          "title": "Conclusion",
+          "type": "conclusion",
+          "order": 11
+        },
+        {
+          "slug": "appendix-1",
+          "title": "5Q: Reactivating the Original Intelligence and Capacity of the Body of Christ",
+          "type": "appendix",
+          "order": 12
+        },
+        {
+          "slug": "appendix-2",
+          "title": "5Q: Reactivating the Original Intelligence and Capacity of the Body of Christ",
+          "type": "appendix",
+          "order": 13
+        },
+        {
+          "slug": "appendix-3",
+          "title": "5Q: Reactivating the Original Intelligence and Capacity of the Body of Christ",
+          "type": "appendix",
+          "order": 14
+        },
+        {
+          "slug": "appendix-4",
+          "title": "5Q: Reactivating the Original Intelligence and Capacity of the Body of Christ",
+          "type": "appendix",
+          "order": 15
+        },
+        {
+          "slug": "notes",
+          "title": "5Q: Reactivating the Original Intelligence and Capacity of the Body of Christ",
+          "type": "notes",
+          "order": 16
+        }
+      ]
+    },
+    {
+      "slug": "disciplism",
+      "title": "Disciplism",
+      "author": "Alan Hirsch",
+      "sections": [
+        {
+          "slug": "introduction",
+          "title": "Disciplism",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "the-end-game",
+          "title": "The End Game",
+          "type": "chapter",
+          "order": 1
+        },
+        {
+          "slug": "a-church-equal-to-the-game",
+          "title": "A Church Equal To The Game",
+          "type": "chapter",
+          "order": 2
+        },
+        {
+          "slug": "hear-o-israel",
+          "title": "Hear O Israel",
+          "type": "chapter",
+          "order": 3
+        },
+        {
+          "slug": "make-consumers-of-all-nations",
+          "title": "Make Consumers Of All Nations",
+          "type": "chapter",
+          "order": 4
+        },
+        {
+          "slug": "reimagining-evangelism",
+          "title": "Reimagining Evangelism",
+          "type": "chapter",
+          "order": 5
+        },
+        {
+          "slug": "its-all-about-jesus",
+          "title": "Chapter 6: It's All About Jesus. No, Really, It Is.",
+          "type": "chapter",
+          "order": 6
+        }
+      ]
+    },
+    {
+      "slug": "fast-forward-to-mission",
+      "title": "Fast Forward to Mission",
+      "author": "Alan Hirsch",
+      "sections": [
+        {
+          "slug": "briefing-right-here",
+          "title": "Fast Forward to Mission",
+          "type": "chapter",
+          "order": 1
+        },
+        {
+          "slug": "debriefing-right-now",
+          "title": "Debriefing Right Now",
+          "type": "chapter",
+          "order": 2
+        }
+      ]
+    },
+    {
+      "slug": "metanoia",
+      "title": "Metanoia",
+      "author": "Alan Hirsch, Rob Kelly",
+      "sections": [
+        {
+          "slug": "a-briefing-for-the-metanoic-journey",
+          "title": "Metanoia",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "the-apocalypse-of-the-ecclesial-soul",
+          "title": "Chapter 1: The Apocalypse of the (Ecclesial) Soul: Glimpses into the Problems and Potentials of the Church",
+          "type": "chapter",
+          "order": 1
+        },
+        {
+          "slug": "metanoi-eh",
+          "title": "Chapter 2: Metanoi-eh?",
+          "type": "chapter",
+          "order": 2
+        },
+        {
+          "slug": "why-we-need-to-repent",
+          "title": "Chapter 3: Why We Need to Repent: A Compelling Rationale for Metanoia",
+          "type": "chapter",
+          "order": 3
+        },
+        {
+          "slug": "christo-logic",
+          "title": "Chapter 4: Christo-Logic: Seeing the World from Inside the Mind That Created It",
+          "type": "chapter",
+          "order": 4
+        },
+        {
+          "slug": "wholehearted-metanoia",
+          "title": "Chapter Five: Wholehearted Metanoia Activating Mind, Soul, and Will",
+          "type": "chapter",
+          "order": 5
+        },
+        {
+          "slug": "the-metanoia-journey",
+          "title": "How Metanoia",
+          "type": "chapter",
+          "order": 6
+        },
+        {
+          "slug": "paradigm",
+          "title": "Chapter 7: Paradigm: Blowing the Collective Mind",
+          "type": "chapter",
+          "order": 7
+        },
+        {
+          "slug": "platformed",
+          "title": "Chapter 8: Platformed: Shaping the Collective Soul",
+          "type": "chapter",
+          "order": 8
+        },
+        {
+          "slug": "practices",
+          "title": "Chapter Nine: Practice/s Engaging the Collective Will",
+          "type": "chapter",
+          "order": 9
+        },
+        {
+          "slug": "conclusion",
+          "title": "CONCLUSION",
+          "type": "conclusion",
+          "order": 10
+        }
+      ]
+    },
+    {
+      "slug": "on-the-verge",
+      "title": "On the Verge",
+      "author": "Alan Hirsch, Dave Ferguson",
+      "sections": [
+        {
+          "slug": "acknowledgments",
+          "title": "Acknowledgments",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "foreword-by-mike-breen",
+          "title": "Foreword by Mike Breen",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "foreword-by-reggie-mcneal",
+          "title": "Foreword by Reggie Mc Neal",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "introduction",
+          "title": "Introduction",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "on-the-verge-of-the-future",
+          "title": "Chapter 1: On the Verge of the Future",
+          "type": "chapter",
+          "order": 1
+        },
+        {
+          "slug": "the-silver-imagination",
+          "title": "Chapter 2",
+          "type": "chapter",
+          "order": 2
+        },
+        {
+          "slug": "verge-ination",
+          "title": "Chapter 3",
+          "type": "chapter",
+          "order": 3
+        },
+        {
+          "slug": "apostolic-genius",
+          "title": "Chapter 4",
+          "type": "chapter",
+          "order": 4
+        },
+        {
+          "slug": "verge-vibe",
+          "title": "Chapter 5",
+          "type": "chapter",
+          "order": 5
+        },
+        {
+          "slug": "embodying-movement",
+          "title": "Chapter 6",
+          "type": "chapter",
+          "order": 6
+        },
+        {
+          "slug": "acting-our-way",
+          "title": "Chapter 7",
+          "type": "chapter",
+          "order": 7
+        },
+        {
+          "slug": "imagination-implementation",
+          "title": "Chapter 8",
+          "type": "chapter",
+          "order": 8
+        },
+        {
+          "slug": "the-making-of-an-apostolic-movement",
+          "title": "Chapter 9",
+          "type": "chapter",
+          "order": 9
+        },
+        {
+          "slug": "final-thoughts",
+          "title": "Final Thoughts",
+          "type": "chapter",
+          "order": 10
+        },
+        {
+          "slug": "appendix",
+          "title": "Appendix",
+          "type": "appendix",
+          "order": 11
+        },
+        {
+          "slug": "notes",
+          "title": "Notes",
+          "type": "notes",
+          "order": 12
+        }
+      ]
+    },
+    {
+      "slug": "reframation",
+      "title": "Reframation",
+      "author": "Alan Hirsch, Mark Nelson",
+      "sections": [
+        {
+          "slug": "foreword",
+          "title": "Foreword",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "introduction",
+          "title": "Introduction",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "preface",
+          "title": "Preface",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "moving-the-moon",
+          "title": "Chapter 1: Moving the Moon",
+          "type": "chapter",
+          "order": 1
+        },
+        {
+          "slug": "a-curd-made-from-mashed-soybeans",
+          "title": "2 A Curd Made FROM MASHED SOYBEANS",
+          "type": "chapter",
+          "order": 2
+        },
+        {
+          "slug": "stranded-in-grey-town",
+          "title": "Chapter 3: Stranded in Grey Town",
+          "type": "chapter",
+          "order": 3
+        },
+        {
+          "slug": "the-humming-of-unseen-harps",
+          "title": "Chapter 4: The Humming of Unseen Harps",
+          "type": "chapter",
+          "order": 4
+        },
+        {
+          "slug": "thro-narrow-chinks-in-the-cavern",
+          "title": "5 Thro' Narrow",
+          "type": "chapter",
+          "order": 5
+        },
+        {
+          "slug": "the-art-of-seeing",
+          "title": "Chapter 6: The Art of Seeing",
+          "type": "chapter",
+          "order": 6
+        },
+        {
+          "slug": "the-great-reframation",
+          "title": "Chapter 7: The Great Reframation",
+          "type": "chapter",
+          "order": 7
+        },
+        {
+          "slug": "ill-have-what-shes-having",
+          "title": "8 I'Ll Have What",
+          "type": "chapter",
+          "order": 8
+        },
+        {
+          "slug": "shards-of-heavens-kaleidoscope",
+          "title": "Chapter 9: Shards of Heaven's Kaleidoscope",
+          "type": "chapter",
+          "order": 9
+        },
+        {
+          "slug": "romancing-the-city",
+          "title": "Chapter 10: Romancing the City",
+          "type": "chapter",
+          "order": 10
+        },
+        {
+          "slug": "afterword",
+          "title": "Afterword",
+          "type": "afterword",
+          "order": 11
+        },
+        {
+          "slug": "appendix-1",
+          "title": "Appendix 1",
+          "type": "appendix",
+          "order": 12
+        },
+        {
+          "slug": "appendix-2",
+          "title": "Appendix 2",
+          "type": "appendix",
+          "order": 13
+        },
+        {
+          "slug": "appendix-3",
+          "title": "Appendix 3",
+          "type": "appendix",
+          "order": 14
+        },
+        {
+          "slug": "notes",
+          "title": "Notes",
+          "type": "notes",
+          "order": 15
+        }
+      ]
+    },
+    {
+      "slug": "rejesus",
+      "title": "ReJesus",
+      "author": "Alan Hirsch, Michael Frost",
+      "sections": [
+        {
+          "slug": "introduction",
+          "title": "This Bit First",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "how-jesus-changes-everything",
+          "title": "How Jesus Changes Everything",
+          "type": "chapter",
+          "order": 1
+        },
+        {
+          "slug": "rejesus-and-personal-renewal",
+          "title": "ReJesus and Personal Renewal",
+          "type": "chapter",
+          "order": 2
+        },
+        {
+          "slug": "rejesus-for-the-church-and-organization",
+          "title": "ReJesus for the Church and Organization",
+          "type": "chapter",
+          "order": 3
+        },
+        {
+          "slug": "ive-got-a-picture-of-jesus",
+          "title": "I've Got a Picture of Jesus",
+          "type": "chapter",
+          "order": 4
+        },
+        {
+          "slug": "the-shema-schema",
+          "title": "The Shema Schema (One God, One Love)",
+          "type": "chapter",
+          "order": 5
+        },
+        {
+          "slug": "three-two-one-engage",
+          "title": "Encountering Jesus Afresh",
+          "type": "chapter",
+          "order": 6
+        },
+        {
+          "slug": "the-church-that-jesus-built",
+          "title": "The Church That Jesus Built",
+          "type": "chapter",
+          "order": 7
+        },
+        {
+          "slug": "conclusion",
+          "title": "Conclusion",
+          "type": "conclusion",
+          "order": 8
+        },
+        {
+          "slug": "selected-resources",
+          "title": "Selected Resources",
+          "type": "resources",
+          "order": 9
+        },
+        {
+          "slug": "illustration-credits",
+          "title": "Illustration Credits",
+          "type": "credits",
+          "order": 10
+        },
+        {
+          "slug": "index",
+          "title": "Index",
+          "type": "index",
+          "order": 11
+        }
+      ]
+    },
+    {
+      "slug": "right-here-right-now",
+      "title": "Right Here, Right Now",
+      "author": "Alan Hirsch, Lance Ford",
+      "sections": [
+        {
+          "slug": "briefing-right-here",
+          "title": "Briefing",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "foreword-by-erwin-mcmanus",
+          "title": "FOREWORD",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "introduction",
+          "title": "Introduction",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "series-editors-preface",
+          "title": "SERIES EDITOR'S PREFACE",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "putting-the-extra-in-the-ordinary",
+          "title": "Chapter 1: Putting the Extra in the Ordinary",
+          "type": "chapter",
+          "order": 1
+        },
+        {
+          "slug": "meet-the-extras",
+          "title": "Meet the Extras",
+          "type": "chapter",
+          "order": 2
+        },
+        {
+          "slug": "from-paper-to-pavement",
+          "title": "From Paper to Pavement",
+          "type": "chapter",
+          "order": 3
+        },
+        {
+          "slug": "laodicean-cul-de-sacs",
+          "title": "Laodicean Cul-de-Sacs",
+          "type": "chapter",
+          "order": 4
+        },
+        {
+          "slug": "losing-for-winning",
+          "title": "Losing for Winning",
+          "type": "chapter",
+          "order": 5
+        },
+        {
+          "slug": "oh-raaaawb",
+          "title": "Oh Raaaawb!",
+          "type": "chapter",
+          "order": 6
+        },
+        {
+          "slug": "beyond-kumbaya",
+          "title": "Beyond Kumbaya",
+          "type": "chapter",
+          "order": 7
+        },
+        {
+          "slug": "yall-come-back-now-ya-hear",
+          "title": "Y'all Come Back Now, Ya Hear",
+          "type": "chapter",
+          "order": 8
+        },
+        {
+          "slug": "salt-blocks-and-salt-shakers",
+          "title": "Salt Blocks and Salt Shakers",
+          "type": "chapter",
+          "order": 9
+        },
+        {
+          "slug": "debriefing-right-now",
+          "title": "Debriefing",
+          "type": "chapter",
+          "order": 10
+        },
+        {
+          "slug": "notes",
+          "title": "Notes",
+          "type": "notes",
+          "order": 11
+        }
+      ]
+    },
+    {
+      "slug": "the-faith-of-leap",
+      "title": "The Faith of Leap",
+      "author": "Alan Hirsch, Michael Frost",
+      "sections": [
+        {
+          "slug": "about-the-shapevine-missional-series",
+          "title": "The Faith of Leap",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "introduction",
+          "title": "The End of the Beginning: Introduction",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "series-editors-preface",
+          "title": "Series Editor's Preface",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "the-spirits-edge",
+          "title": "Chapter 1: The Spirit's Edge: Putting Adventure Back into the Venture",
+          "type": "chapter",
+          "order": 1
+        },
+        {
+          "slug": "jesus-is-my-disequilibrium",
+          "title": "Chapter 2: Jesus Is My Disequilibrium: Where Friends Become Comrades",
+          "type": "chapter",
+          "order": 2
+        },
+        {
+          "slug": "a-walk-on-the-wilder-side",
+          "title": "Chapter 3: A Walk on the Wilder Side: Overcoming Fear in Pursuit of Wild Hope",
+          "type": "chapter",
+          "order": 3
+        },
+        {
+          "slug": "the-heros-journey",
+          "title": "Chapter 4: The Hero's Journey",
+          "type": "chapter",
+          "order": 4
+        },
+        {
+          "slug": "getting-over-risk-aversion",
+          "title": "Chapter 5: Getting Over Risk Aversion: Extracting Truth from Dare",
+          "type": "chapter",
+          "order": 5
+        },
+        {
+          "slug": "missional-catalysis",
+          "title": "Chapter 6: Missional Catalysis: Thinking Differently about the Church and Her Mission",
+          "type": "chapter",
+          "order": 6
+        },
+        {
+          "slug": "the-risk-of-neighborliness",
+          "title": "Chapter 7: The Risk of Neighborliness: An Invitation to Take the Plunge",
+          "type": "chapter",
+          "order": 7
+        },
+        {
+          "slug": "conclusion",
+          "title": "Conclusion",
+          "type": "conclusion",
+          "order": 8
+        },
+        {
+          "slug": "notes",
+          "title": "Notes",
+          "type": "notes",
+          "order": 9
+        }
+      ]
+    },
+    {
+      "slug": "the-forgotten-ways",
+      "title": "The Forgotten Ways",
+      "author": "Alan Hirsch",
+      "sections": [
+        {
+          "slug": "acknowledgments",
+          "title": "Acknowledgments",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "foreword-by-ed-stetzer",
+          "title": "Foreword By Ed Stetzer",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "introduction",
+          "title": "Introduction",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "preface-to-the-second-edition",
+          "title": "Preface to the Second Edition",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "a-view-from-the-edge",
+          "title": "The Making of a Missionary",
+          "type": "chapter",
+          "order": 1
+        },
+        {
+          "slug": "a-view-from-above",
+          "title": "A View from Above",
+          "type": "chapter",
+          "order": 2
+        },
+        {
+          "slug": "preparing-for-the-journey",
+          "title": "Preparing for the Journey",
+          "type": "chapter",
+          "order": 3
+        },
+        {
+          "slug": "the-heart-of-it-all-jesus-is-lord",
+          "title": "The Heart of It All: Jesus Is Lord",
+          "type": "chapter",
+          "order": 4
+        },
+        {
+          "slug": "disciple-making",
+          "title": "Disciple Making",
+          "type": "chapter",
+          "order": 5
+        },
+        {
+          "slug": "missional-incarnational-impulse",
+          "title": "Missional-Incarnational Impulse",
+          "type": "chapter",
+          "order": 6
+        },
+        {
+          "slug": "liminality-and-communitas",
+          "title": "Liminality and Communitas",
+          "type": "chapter",
+          "order": 7
+        },
+        {
+          "slug": "apest-culture",
+          "title": "APEST Culture",
+          "type": "chapter",
+          "order": 8
+        },
+        {
+          "slug": "organic-systems",
+          "title": "Organic Systems",
+          "type": "chapter",
+          "order": 9
+        },
+        {
+          "slug": "conclusion",
+          "title": "Conclusion",
+          "type": "conclusion",
+          "order": 10
+        },
+        {
+          "slug": "afterword-by-jeff-vanderstelt",
+          "title": "Afterword",
+          "type": "afterword",
+          "order": 11
+        },
+        {
+          "slug": "appendix-1",
+          "title": "Appendix 1",
+          "type": "appendix",
+          "order": 12
+        },
+        {
+          "slug": "appendix-2",
+          "title": "Appendix 2",
+          "type": "appendix",
+          "order": 13
+        },
+        {
+          "slug": "appendix-3",
+          "title": "Appendix 3",
+          "type": "appendix",
+          "order": 14
+        },
+        {
+          "slug": "appendix-4",
+          "title": "Appendix 4",
+          "type": "appendix",
+          "order": 15
+        },
+        {
+          "slug": "appendix-5",
+          "title": "Appendix 5",
+          "type": "appendix",
+          "order": 16
+        },
+        {
+          "slug": "glossary",
+          "title": "Glossary",
+          "type": "glossary",
+          "order": 17
+        },
+        {
+          "slug": "bibliography",
+          "title": "Bibliography",
+          "type": "bibliography",
+          "order": 18
+        },
+        {
+          "slug": "index",
+          "title": "Index",
+          "type": "index",
+          "order": 19
+        }
+      ]
+    },
+    {
+      "slug": "the-forgotten-ways-handbook",
+      "title": "The Forgotten Ways Handbook",
+      "author": "Alan Hirsch",
+      "sections": [
+        {
+          "slug": "preface",
+          "title": "Preface",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "introduction-to-the-forgotten-ways",
+          "title": "Introduction to the Forgotten Ways",
+          "type": "introduction",
+          "order": 1
+        },
+        {
+          "slug": "the-heart-of-it-all",
+          "title": "The Heart of It All",
+          "type": "chapter",
+          "order": 2
+        },
+        {
+          "slug": "disciple-making",
+          "title": "Disciple Making",
+          "type": "chapter",
+          "order": 3
+        },
+        {
+          "slug": "missional-incarnational-impulse",
+          "title": "Missional-Incarnational Impulse",
+          "type": "chapter",
+          "order": 4
+        },
+        {
+          "slug": "apostolic-environment",
+          "title": "Apostolic Environment",
+          "type": "chapter",
+          "order": 5
+        },
+        {
+          "slug": "organic-systems",
+          "title": "Organic Systems",
+          "type": "chapter",
+          "order": 6
+        },
+        {
+          "slug": "communitas-not-community",
+          "title": "Communitas, Not Community",
+          "type": "chapter",
+          "order": 7
+        },
+        {
+          "slug": "resources",
+          "title": "Resources",
+          "type": "resources",
+          "order": 8
+        },
+        {
+          "slug": "glossary-of-key-terms",
+          "title": "Glossary of Key Terms",
+          "type": "glossary",
+          "order": 9
+        },
+        {
+          "slug": "bibliography",
+          "title": "Bibliography",
+          "type": "bibliography",
+          "order": 10
+        }
+      ]
+    },
+    {
+      "slug": "the-permanent-revolution",
+      "title": "The Permanent Revolution",
+      "author": "Alan Hirsch, Tim Catchim",
+      "sections": [
+        {
+          "slug": "foreword-by-darrell-l-guder",
+          "title": "Foreword",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "introduction",
+          "title": "Introduction",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "preface",
+          "title": "Preface: A Briefing for the Journey",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "activating-the-theo-genetic-codes-of-apest-ministry",
+          "title": "Activating the Theo-Genetic Codes of APEST Ministry",
+          "type": "chapter",
+          "order": 1
+        },
+        {
+          "slug": "an-elegant-solution",
+          "title": "An Elegant Solution",
+          "type": "chapter",
+          "order": 2
+        },
+        {
+          "slug": "better-together",
+          "title": "Better Together",
+          "type": "chapter",
+          "order": 3
+        },
+        {
+          "slug": "missional-ministry-for-a-missional-church",
+          "title": "Missional Ministry for a Missional Church",
+          "type": "chapter",
+          "order": 4
+        },
+        {
+          "slug": "custody-of-the-codes",
+          "title": "Mapping the Contours of Apostolic Ministry",
+          "type": "chapter",
+          "order": 5
+        },
+        {
+          "slug": "come-back-peter-come-back-paul",
+          "title": "Living from the Center: Apostolic Ministry and the Renewal of Christianity",
+          "type": "chapter",
+          "order": 6
+        },
+        {
+          "slug": "living-from-the-center",
+          "title": "The Enterprise of Movement and the Movement of Enterprise",
+          "type": "chapter",
+          "order": 7
+        },
+        {
+          "slug": "the-enterprise-of-movement",
+          "title": "Come Back Peter, Come Back Paul",
+          "type": "chapter",
+          "order": 8
+        },
+        {
+          "slug": "the-spirit-of-innovation",
+          "title": "The Spirit of Innovation",
+          "type": "chapter",
+          "order": 9
+        },
+        {
+          "slug": "movements-r-us",
+          "title": "Movements R Us",
+          "type": "chapter",
+          "order": 10
+        },
+        {
+          "slug": "apostolic-architecture",
+          "title": "Apostolic Architecture",
+          "type": "chapter",
+          "order": 11
+        },
+        {
+          "slug": "conclusion",
+          "title": "Conclusion: The Mission Has a Church",
+          "type": "conclusion",
+          "order": 12
+        },
+        {
+          "slug": "afterword-by-mike-breen",
+          "title": "Afterword by Mike Breen",
+          "type": "afterword",
+          "order": 13
+        },
+        {
+          "slug": "appendix",
+          "title": "Notes",
+          "type": "appendix",
+          "order": 14
+        },
+        {
+          "slug": "notes",
+          "title": "Index",
+          "type": "notes",
+          "order": 15
+        },
+        {
+          "slug": "the-authors",
+          "title": "The Authors",
+          "type": "authors",
+          "order": 16
+        },
+        {
+          "slug": "index",
+          "title": "Index",
+          "type": "index",
+          "order": 17
+        }
+      ]
+    },
+    {
+      "slug": "untamed",
+      "title": "Untamed",
+      "author": "Alan Hirsch, Debra Hirsch",
+      "sections": [
+        {
+          "slug": "about-the-shapevine-missional-series",
+          "title": "Untamed",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "foreword-by-rick-warren",
+          "title": "Foreword",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "introduction",
+          "title": "The First Word",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "series-editors-preface",
+          "title": "Series Editor's Preface",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "why-write-this-book",
+          "title": "Why Write This Book?",
+          "type": "introduction",
+          "order": 0
+        },
+        {
+          "slug": "jeebus-made-me-do-it",
+          "title": "Section One: The Untamed God",
+          "type": "chapter",
+          "order": 1
+        },
+        {
+          "slug": "your-god-is-too-sick",
+          "title": "Chapter 2: Your God Is Too Sick",
+          "type": "chapter",
+          "order": 2
+        },
+        {
+          "slug": "the-spirits-edge",
+          "title": "Untamed",
+          "type": "chapter",
+          "order": 3
+        },
+        {
+          "slug": "kultcha-schmultcha",
+          "title": "Kultcha-Schmultcha",
+          "type": "chapter",
+          "order": 4
+        },
+        {
+          "slug": "the-church-that-jesus-built",
+          "title": "Chapter 5: The Church That Jesus Built",
+          "type": "chapter",
+          "order": 5
+        },
+        {
+          "slug": "refocusing-the-family",
+          "title": "Refocusing the Family",
+          "type": "chapter",
+          "order": 6
+        },
+        {
+          "slug": "the-lying-mirror",
+          "title": "The Lying Mirror",
+          "type": "chapter",
+          "order": 7
+        },
+        {
+          "slug": "too-sexy-for-the-church",
+          "title": "I'm Too Sexy for the Church",
+          "type": "chapter",
+          "order": 8
+        },
+        {
+          "slug": "going-out-going-deep",
+          "title": "Going Out, Going Deep",
+          "type": "chapter",
+          "order": 9
+        },
+        {
+          "slug": "conclusion",
+          "title": "Untamed",
+          "type": "conclusion",
+          "order": 10
+        },
+        {
+          "slug": "afterword-by-neil-cole",
+          "title": "Untamed",
+          "type": "afterword",
+          "order": 11
+        },
+        {
+          "slug": "notes",
+          "title": "Untamed",
+          "type": "notes",
+          "order": 12
+        },
+        {
+          "slug": "the-authors",
+          "title": "Untamed",
+          "type": "authors",
+          "order": 13
+        }
+      ]
+    }
+  ]
+}

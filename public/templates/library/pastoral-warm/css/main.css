@@ -1404,6 +1404,34 @@
       padding: 0 var(--space-l) var(--space-2xl);
     }
     .course-player-video-col { min-width: 0; }
+    .course-player-media { display: block; }
+    .course-player-media.is-hidden { display: none; }
+    .course-player-lesson-content {
+      display: none;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      max-height: 70vh;
+      overflow-y: auto;
+      margin-bottom: var(--space-xl);
+    }
+    .course-player-lesson-content.is-visible { display: block; }
+    .course-player-content-body.prose {
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+    .course-player-content-body.prose p { margin: 0 0 1em; }
+    .course-player-content-body.prose p:last-child { margin-bottom: 0; }
+    .course-player-content-body.prose h2 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 600; margin: 1.5em 0 0.5em; }
+    .course-player-content-body.prose h3 { font-family: var(--font-heading); font-size: 1.0625rem; font-weight: 600; margin: 1.25em 0 0.5em; }
+    .course-player-content-body.prose strong { font-weight: 600; }
+    .course-player-content-body.prose em { font-style: italic; }
+    .course-player-content-body.prose ul, .course-player-content-body.prose ol { margin: 0 0 1em; padding-left: 1.5em; }
+    .course-player-content-body.prose li { margin-bottom: 0.25em; }
+    .course-player-content-body.prose hr { border: none; border-top: 1px solid var(--border); margin: 1.5em 0; }
+    .course-player-content-body.prose blockquote { margin: 1em 0; padding-left: 1em; border-left: 3px solid var(--accent); color: var(--text-muted); }
     .course-player-video-wrap {
       position: relative;
       border-radius: var(--radius-lg);
