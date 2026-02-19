@@ -1838,3 +1838,8 @@
     .related-content__inner { max-width: var(--measure-wide); margin: 0 auto; }
     .related-content__title { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 600; color: var(--text); margin: 0 0 var(--space-xl); }
     .related-content__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-xl); }
+    .podcast-detail__artwork { position: relative; overflow: hidden; }
+    .podcast-detail__artwork-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .podcast-detail__artwork-img:not([data-filled]) { display: none; }
+    .podcast-detail__artwork:has(.podcast-detail__artwork-img[data-filled]) .podcast-detail__artwork-icon { display: none; }
+    .podcast-detail__artwork-icon { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--text-muted); }

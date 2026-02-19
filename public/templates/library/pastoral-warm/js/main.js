@@ -87,6 +87,20 @@
   }
 })();
 
+/* ----- Course detail: append ?course= and leader to any link with data-append-course ----- */
+(function(){
+  var course=/[?&]course=([^&]+)/.exec(window.location.search);
+  var leader=/[?&]leader=([^&]+)/.exec(window.location.search);
+  var q=[];
+  if(course&&course[1])q.push('course='+encodeURIComponent(course[1]));
+  if(leader&&leader[1])q.push('leader='+encodeURIComponent(leader[1]));
+  if(q.length) document.querySelectorAll('a[data-append-course]').forEach(function(link){
+    var base=link.getAttribute('href')||'';
+    var sep=base.indexOf('?')>=0?'&':'?';
+    link.href=base+sep+q.join('&');
+  });
+})();
+
 /* ----- Chat suggestion buttons ----- */
 (function(){
   var suggestions=document.querySelectorAll('.floating-chat-panel__suggestion');

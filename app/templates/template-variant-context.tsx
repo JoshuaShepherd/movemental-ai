@@ -20,6 +20,7 @@ export function VariantProvider({ children }: { children: React.ReactNode }) {
     <VariantContext.Provider value={{ variant, setVariant }}>
       <div
         className="min-h-screen template-movement-leader"
+        data-template="movement-leader"
         data-variant={variant || undefined}
       >
         {children}

@@ -1,5 +1,6 @@
 "use client";
 
+import "@/app/styles/templates/movement-leader.css";
 import { SiteNavigation } from "@/components/layouts/movement-leader";
 import { VariantProvider } from "./template-variant-context";
 

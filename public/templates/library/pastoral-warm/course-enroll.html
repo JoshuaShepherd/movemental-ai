@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enroll in course</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body data-leader-title="pageTitles.courseDetail">
+  <header class="public-header" role="banner">
+    <div class="public-header__inner">
+      <a href="index.html" class="public-header__logo" data-leader="name">Leader</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav class="public-header__nav" id="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="content-hub.html">Content</a>
+        <a href="index.html#themes">Themes</a>
+        <a href="index.html#assessments">Assessments</a>
+        <a href="chat.html">AI Lab</a>
+      </nav>
+      <div class="public-header__actions">
+        <a href="#search" aria-label="Search" class="public-header__search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></a>
+        <a href="signin.html" class="btn-signin">Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content course-enroll-main">
+    <div class="course-enroll-layout">
+      <div class="course-enroll-info">
+        <h1 class="course-enroll__title" data-leader-course="title">Course title</h1>
+        <div class="course-enroll__description" data-leader-course="description"></div>
+        <hr class="course-enroll__divider" aria-hidden="true" />
+        <h2 class="course-enroll__about-heading">About this course</h2>
+        <ul class="course-enroll__about-list">
+          <li><strong>Price:</strong> <span data-leader-course="price">—</span></li>
+          <li><strong>Number of lessons:</strong> <span data-leader-course="lessonCount">—</span></li>
+          <li><strong>Prerequisites:</strong> <span data-leader-course="prerequisites">—</span></li>
+          <li><strong>Read time:</strong> <span data-leader-course="readTime">—</span></li>
+        </ul>
+      </div>
+      <aside class="course-enroll-form-card">
+        <h2 class="course-enroll-form-card__title">Enroll in the course</h2>
+        <form class="course-enroll-form" action="#" method="post" id="course-enroll-form">
+          <div class="course-enroll-form__row">
+            <label class="course-enroll-form__label" for="enroll-first">First name</label>
+            <input class="course-enroll-form__input" id="enroll-first" name="first" type="text" placeholder="Jane" />
+          </div>
+          <div class="course-enroll-form__row">
+            <label class="course-enroll-form__label" for="enroll-last">Last name</label>
+            <input class="course-enroll-form__input" id="enroll-last" name="last" type="text" placeholder="Doe" />
+          </div>
+          <div class="course-enroll-form__row">
+            <label class="course-enroll-form__label" for="enroll-email">Email</label>
+            <input class="course-enroll-form__input" id="enroll-email" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="course-enroll-form__row course-enroll-form__row--half">
+            <label class="course-enroll-form__label" for="enroll-company">Company size</label>
+            <select class="course-enroll-form__input course-enroll-form__select" id="enroll-company" name="company">
+              <option value="1-50">1–50</option>
+              <option value="51-200">51–200</option>
+              <option value="201-500">201–500</option>
+              <option value="500+">500+</option>
+            </select>
+          </div>
+          <div class="course-enroll-form__row course-enroll-form__row--half">
+            <label class="course-enroll-form__label" for="enroll-hq">Headquarters</label>
+            <select class="course-enroll-form__input course-enroll-form__select" id="enroll-hq" name="headquarters">
+              <option value="us">United States</option>
+              <option value="uk">United Kingdom</option>
+              <option value="ca">Canada</option>
+              <option value="au">Australia</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="course-enroll-form__row course-enroll-form__row--checkbox">
+            <input class="course-enroll-form__checkbox" id="enroll-newsletter" name="newsletter" type="checkbox" />
+            <label class="course-enroll-form__label course-enroll-form__label--inline" for="enroll-newsletter">I’d like to receive updates and formation resources.</label>
+          </div>
+          <p class="course-enroll-form__privacy">We respect your data. By submitting, you agree to be contacted about our products and services in accordance with our <a href="#privacy">Privacy Policy</a>.</p>
+          <button type="submit" class="btn btn--primary btn--lg course-enroll-form__submit">Enroll now</button>
+        </form>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="public-footer" role="contentinfo">
+    <div class="public-footer__inner">
+      <nav class="public-footer__links" aria-label="Footer links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#formation">Formation</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="#accessibility">Accessibility</a>
+      </nav>
+      <p class="public-footer__copy" data-leader="pageCopy.footer.copy">&copy; Leader. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button type="button" class="floating-chat-button" id="chat-open" aria-label="Open AI Lab chat">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+  </button>
+  <div class="chat-backdrop" id="chat-backdrop" aria-hidden="true"></div>
+  <aside class="floating-chat-panel" id="chat-panel" aria-label="AI Lab chat panel" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="floating-chat-panel__header">
+      <h2 class="floating-chat-panel__title">AI Lab</h2>
+      <button type="button" class="floating-chat-panel__close" id="chat-close" aria-label="Close chat"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    </div>
+    <div class="floating-chat-panel__body"><p class="floating-chat-panel__placeholder">Ask a question about formation, mission, or discipleship.</p></div>
+    <div class="floating-chat-panel__input-area">
+      <input type="text" class="floating-chat-panel__input" placeholder="Type your message..." aria-label="Chat message" />
+      <button type="button" class="floating-chat-panel__send">Send</button>
+    </div>
+  </aside>
+
+  <script src="js/main.js"></script>
+  <script src="../js/leader-content.js" data-json="../data/alan-hirsch.json"></script>
+  <script>
+    (function(){ var q = window.location.search; if (q) document.querySelectorAll('a[href="course-learn.html"]').forEach(function(a){ a.href = 'course-learn.html' + q; }); })();
+  </script>
+  <script>
+    (function(){
+      var form = document.getElementById('course-enroll-form');
+      if (form) form.addEventListener('submit', function(e) { e.preventDefault(); alert('Enrollment is a prototype. In production this would submit your details.'); });
+    })();
+  </script>
+</body>
+</html>

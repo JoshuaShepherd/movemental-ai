@@ -1,0 +1,169 @@
+/* ----- Pastoral Warm (scoped exemplar) -----
+ * Formation, community, care.
+ * Scoped under [data-template="pastoral-warm"] for use inside the React app.
+ * Source: public/templates/library/pastoral-warm/css/main.css
+ * This file is NOT applied to any live route yet; it is prep for future import.
+ */
+
+/* Tokens: defined on the wrapper so they don't leak */
+[data-template="pastoral-warm"] {
+  --tpl-font-heading: 'Lora', Georgia, serif;
+  --tpl-font-body: 'DM Sans', system-ui, sans-serif;
+  --tpl-measure: min(65ch, 50rem);
+  --tpl-measure-wide: min(80rem, 95vw);
+  --tpl-space-xs: 0.25rem;
+  --tpl-space-s: 0.5rem;
+  --tpl-space-m: 1rem;
+  --tpl-space-l: 1.5rem;
+  --tpl-space-xl: 2rem;
+  --tpl-space-2xl: 3rem;
+  --tpl-space-3xl: 4.5rem;
+  --tpl-radius: 10px;
+  --tpl-radius-lg: 16px;
+  --tpl-bg: #faf7f2;
+  --tpl-bg-elevated: #ffffff;
+  --tpl-bg-warm: #f5efe6;
+  --tpl-border: #e8e0d4;
+  --tpl-text: #2c2420;
+  --tpl-text-muted: #7a6e63;
+  --tpl-accent: #b58c4c;
+  --tpl-accent-hover: #9a7640;
+  --tpl-accent-soft: rgba(181, 140, 76, 0.1);
+  --tpl-line-height-body: 1.7;
+  --tpl-line-height-heading: 1.3;
+}
+
+/* Wrapper acts as layout root (replaces body in static page) */
+[data-template="pastoral-warm"] {
+  margin: 0;
+  font-family: var(--tpl-font-body);
+  font-size: 1rem;
+  line-height: var(--tpl-line-height-body);
+  color: var(--tpl-text);
+  background: var(--tpl-bg);
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+[data-template="pastoral-warm"] *,
+[data-template="pastoral-warm"] *::before,
+[data-template="pastoral-warm"] *::after {
+  box-sizing: border-box;
+}
+
+/* ----- PublicHeader ----- */
+[data-template="pastoral-warm"] .public-header {
+  background: var(--tpl-bg-elevated);
+  border-bottom: 1px solid var(--tpl-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+[data-template="pastoral-warm"] .public-header__inner {
+  max-width: var(--tpl-measure-wide);
+  margin: 0 auto;
+  padding: var(--tpl-space-m) var(--tpl-space-l);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--tpl-space-xl);
+}
+
+[data-template="pastoral-warm"] .public-header__logo {
+  font-family: var(--tpl-font-heading);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--tpl-text);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+[data-template="pastoral-warm"] .public-header__logo:hover {
+  color: var(--tpl-accent);
+}
+
+[data-template="pastoral-warm"] .public-header__nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--tpl-space-xs);
+}
+
+[data-template="pastoral-warm"] .public-header__nav a {
+  font-size: 0.9375rem;
+  color: var(--tpl-text-muted);
+  text-decoration: none;
+  padding: var(--tpl-space-xs) var(--tpl-space-s);
+  border-radius: var(--tpl-radius);
+  transition: color 0.15s, background 0.15s;
+}
+
+[data-template="pastoral-warm"] .public-header__nav a:hover {
+  color: var(--tpl-text);
+  background: var(--tpl-bg-warm);
+}
+
+[data-template="pastoral-warm"] .public-header__nav .active {
+  color: var(--tpl-accent);
+  font-weight: 500;
+}
+
+[data-template="pastoral-warm"] .public-header__actions .btn-signin {
+  font-family: var(--tpl-font-body);
+  font-size: 0.9375rem;
+  padding: var(--tpl-space-s) var(--tpl-space-l);
+  border: 1px solid var(--tpl-accent);
+  border-radius: var(--tpl-radius);
+  background: transparent;
+  color: var(--tpl-accent);
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+
+[data-template="pastoral-warm"] .public-header__actions .btn-signin:hover {
+  background: var(--tpl-accent);
+  color: var(--tpl-bg-elevated);
+}
+
+/* ----- Main ----- */
+[data-template="pastoral-warm"] .main-content {
+  flex: 1;
+}
+
+/* ----- HomeHero (exemplar slice) ----- */
+[data-template="pastoral-warm"] .home-hero {
+  background: linear-gradient(135deg, var(--tpl-bg-warm) 55%, var(--tpl-accent-soft) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-template="pastoral-warm"] .home-hero__inner {
+  max-width: var(--tpl-measure-wide);
+  margin: 0 auto;
+  padding: var(--tpl-space-3xl) var(--tpl-space-l);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--tpl-space-2xl);
+  align-items: center;
+}
+
+[data-template="pastoral-warm"] .home-hero__title {
+  font-family: var(--tpl-font-heading);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 600;
+  line-height: var(--tpl-line-height-heading);
+  margin: 0 0 var(--tpl-space-l);
+  color: var(--tpl-text);
+}
+
+[data-template="pastoral-warm"] .home-hero__ctas .btn--primary {
+  background: var(--tpl-accent);
+  color: #fff;
+  border: 1px solid var(--tpl-accent);
+}

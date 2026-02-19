@@ -10,6 +10,18 @@ mdna_path = data_dir / "courses" / "mdna.json"
 alan = json.loads(alan_path.read_text(encoding="utf-8"))
 mdna = json.loads(mdna_path.read_text(encoding="utf-8"))
 
+# Preserve lesson titles from existing mdna in alan-hirsch (e.g. Alan-voice titles)
+existing_mdna = next((c for c in alan["contentLibrary"]["courses"] if c.get("slug") == "mdna"), None)
+if existing_mdna and existing_mdna.get("weeks"):
+    for wi, week in enumerate(mdna.get("weeks", [])):
+        exist_week = next((w for w in existing_mdna["weeks"] if w.get("index") == week.get("index")), None)
+        if not exist_week:
+            continue
+        for li, lesson in enumerate(week.get("lessons", [])):
+            exist_lessons = exist_week.get("lessons") or []
+            if li < len(exist_lessons) and exist_lessons[li].get("title"):
+                lesson["title"] = exist_lessons[li]["title"]
+
 existing = [c for c in alan["contentLibrary"]["courses"] if c.get("slug") != "mdna"]
 alan["contentLibrary"]["courses"] = [mdna] + existing
 

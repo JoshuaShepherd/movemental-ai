@@ -39,21 +39,47 @@
           <img src="" alt="" data-leader="portrait.headshot" data-leader-alt="portrait.headshotAlt" class="course-detail__instructor-img" />
         </div>
         <div class="course-detail__meta">
+          <p class="course-detail__eyebrow">New from Formation</p>
           <h1 class="course-detail__title" data-leader-course="title">Course</h1>
           <div class="course-detail__instructor-row">
             <img src="" alt="" class="course-detail__instructor-avatar" data-leader="portrait.headshot" data-leader-alt="portrait.headshotAlt" />
             <p class="course-detail__instructor-name" data-leader="name">Instructor</p>
           </div>
-          <div class="course-detail__badges" data-leader-course-badges>
-          </div>
-          <p class="course-detail__duration" data-leader-course="meta">—</p>
-          <div class="course-detail__description" data-leader-course="description">
-          </div>
+          <hr class="course-detail__instructor-line" aria-hidden="true" />
+          <div class="course-detail__badges" data-leader-course-badges></div>
+          <div class="course-detail__description" data-leader-course="description"></div>
           <div class="course-detail__ctas">
-            <a href="course-learn.html" class="btn btn--primary btn--lg">Start course</a>
+            <a href="course-learn.html" class="btn btn--primary btn--lg">Start session</a>
+            <a href="course-player.html" class="btn btn--secondary btn--lg" data-append-course>Watch in player</a>
+            <a href="course-enroll.html" class="btn btn--secondary btn--lg" data-append-course>Enroll</a>
+            <a href="course-overview.html" class="btn btn--secondary btn--lg" data-append-course>View overview</a>
+            <a href="courses.html" class="btn btn--secondary btn--lg">Browse courses</a>
           </div>
+          <p class="course-detail__availability">Currently available on Desktop and mobile.</p>
         </div>
       </div>
+
+      <section class="course-detail__meta-strip" aria-label="Course details">
+        <div class="course-detail__meta-strip-inner">
+          <dl class="course-detail__meta-item"><dt>Duration</dt><dd data-leader-course="duration">—</dd></dl>
+          <dl class="course-detail__meta-item"><dt>Outcome</dt><dd data-leader-course="outcome">—</dd></dl>
+          <dl class="course-detail__meta-item"><dt>Structure</dt><dd data-leader-course="structure">—</dd></dl>
+          <dl class="course-detail__meta-item"><dt>Feedback from</dt><dd data-leader-course="feedback">—</dd></dl>
+          <dl class="course-detail__meta-item"><dt>Difficulty</dt><dd data-leader-course="difficulty">—</dd></dl>
+        </div>
+      </section>
+
+      <section class="course-detail__promo" id="course-detail-promo" aria-labelledby="promo-title">
+        <h2 id="promo-title" class="course-detail__promo-title" data-leader-course="promoTitle">Get course resources delivered</h2>
+        <div class="course-detail__promo-inner">
+          <div class="course-detail__promo-media">
+            <img src="" alt="" class="course-detail__promo-img" data-leader-course="promoImage" />
+          </div>
+          <div class="course-detail__promo-body">
+            <p class="course-detail__promo-text" data-leader-course="promoBody">Members get access to exclusive offers and partner discounts. When you sign up, you'll receive a promo code for books and materials delivered to your doorstep.</p>
+          </div>
+        </div>
+      </section>
 
       <section class="course-detail__related" aria-labelledby="related-title">
         <h2 id="related-title" class="course-detail__related-title">Related content</h2>
@@ -110,5 +136,8 @@
 
   <script src="js/main.js"></script>
   <script src="../js/leader-content.js" data-json="../data/alan-hirsch.json"></script>
+  <script>
+    (function(){ var q = window.location.search; if (q) document.querySelectorAll('a[href="course-learn.html"]').forEach(function(a){ a.href = 'course-learn.html' + q; }); })();
+  </script>
 </body>
 </html>

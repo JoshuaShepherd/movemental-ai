@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Player</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body data-leader-title="pageTitles.contentHub">
+  <header class="public-header" role="banner">
+    <div class="public-header__inner">
+      <a href="index.html" class="public-header__logo" data-leader="name">Leader</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav class="public-header__nav" id="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="content-hub.html">Content</a>
+        <a href="index.html#themes">Themes</a>
+        <a href="index.html#assessments">Assessments</a>
+        <a href="chat.html">AI Lab</a>
+      </nav>
+      <div class="public-header__actions">
+        <a href="#search" aria-label="Search" class="public-header__search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></a>
+        <a href="signin.html" class="btn-signin">Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="course-player-main">
+    <a href="course-detail.html" class="course-player-back" id="course-player-back" aria-label="Back to overview">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" /></svg>
+      Back to overview
+    </a>
+
+    <div class="course-player-layout">
+      <div class="course-player-video-col">
+        <div class="course-player-video-wrap" id="course-player-video-wrap">
+          <div class="course-player-poster is-visible" id="course-player-poster">
+            <img id="course-player-poster-bg" class="course-player-poster__bg" alt="" />
+            <span class="course-player-poster__badge" id="course-player-poster-badge">Course</span>
+            <h2 class="course-player-poster__title" id="course-player-poster-title">Welcome</h2>
+            <button type="button" class="course-player-play-btn" id="course-player-play-btn" aria-label="Play video">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <video class="course-player-video" id="course-player-video" controls playsinline preload="metadata" aria-label="Lesson video">
+            <!-- Optional: <source src="..." type="video/mp4"> when video URLs exist -->
+          </video>
+        </div>
+        <div class="course-player-below">
+          <div class="course-player-lesson-desc">
+            <h1 class="course-player-lesson-title" id="course-player-lesson-title">Lesson title</h1>
+            <p class="course-player-lesson-excerpt" id="course-player-lesson-excerpt">Lesson description will load here.</p>
+          </div>
+          <div class="course-player-cta">
+            <p class="course-player-cta__text">Don't have an account?</p>
+            <a href="signup.html" class="course-player-cta__link">Sign up</a>
+            <p class="course-player-cta__sub">today and get started with a free trial.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="course-player-sidebar" id="course-player-sidebar" aria-label="Course outline">
+        <div class="course-player-sidebar__head">
+          <button type="button" class="course-player-lights-off" id="course-player-lights-off" aria-pressed="false" aria-label="Lights off">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0121 12c0-1.214.182-2.39.52-3.48M12 3v2.25m0 13.5V21M3 12h2.25m13.5 0H21M3.75 3.75l1.5 1.5m13.5 13.5l1.5 1.5M3.75 20.25l1.5-1.5M20.25 3.75l-1.5 1.5"/></svg>
+            <span>Lights off</span>
+          </button>
+        </div>
+        <h2 class="course-player-sidebar__course-title" id="course-player-sidebar-title">Course title</h2>
+        <p class="course-player-sidebar__meta">Video lessons</p>
+        <div class="course-player-outline" id="course-player-outline">
+          <p class="course-player-loading">Loading…</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="public-footer" role="contentinfo">
+    <div class="public-footer__inner">
+      <nav class="public-footer__links" aria-label="Footer links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#formation">Formation</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="#accessibility">Accessibility</a>
+      </nav>
+      <p class="public-footer__copy" data-leader="pageCopy.footer.copy">&copy; Leader. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button type="button" class="floating-chat-button" id="chat-open" aria-label="Open AI Lab chat">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+  </button>
+  <div class="chat-backdrop" id="chat-backdrop" aria-hidden="true"></div>
+  <aside class="floating-chat-panel" id="chat-panel" aria-label="AI Lab chat panel" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="floating-chat-panel__header">
+      <h2 class="floating-chat-panel__title">AI Lab</h2>
+      <button type="button" class="floating-chat-panel__close" id="chat-close" aria-label="Close chat"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    </div>
+    <div class="floating-chat-panel__body"><p class="floating-chat-panel__placeholder">Ask a question about formation, mission, or discipleship.</p></div>
+    <div class="floating-chat-panel__input-area">
+      <input type="text" class="floating-chat-panel__input" placeholder="Type your message..." aria-label="Chat message" />
+      <button type="button" class="floating-chat-panel__send">Send</button>
+    </div>
+  </aside>
+
+  <script src="js/main.js"></script>
+  <script src="../js/leader-content.js" data-json="../data/alan-hirsch.json"></script>
+  <script src="../js/course-player.js"></script>
+</body>
+</html>

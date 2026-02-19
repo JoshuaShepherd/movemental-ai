@@ -148,6 +148,9 @@
         if (listPath === 'contentLibrary.videos' && item.slug && clone.tagName === 'A') {
           clone.href = 'video-detail.html?slug=' + encodeURIComponent(item.slug);
         }
+        if (listPath === 'contentLibrary.courses' && item.slug && clone.tagName === 'A') {
+          clone.href = 'course-detail.html?course=' + encodeURIComponent(item.slug);
+        }
         clone.querySelectorAll('[data-leader-item]').forEach(function (field) {
           var key = field.getAttribute('data-leader-item');
           var val = item[key];
@@ -156,6 +159,18 @@
             if (key === 'cover' && val) {
               field.src = val;
               field.alt = item.coverAlt || item.title + ' cover';
+            } else if (key === 'heroImage' && val) {
+              field.src = val;
+              field.alt = (item.title || 'Course') + ' — course';
+              field.setAttribute('data-filled', 'true');
+            } else if (key === 'artwork' && val) {
+              field.src = val;
+              field.alt = (item.title || 'Podcast') + ' — podcast artwork';
+              field.setAttribute('data-filled', 'true');
+            } else if (key === 'featuredImage' && val) {
+              field.src = val;
+              field.alt = (item.title || 'Article') + ' — featured';
+              field.setAttribute('data-filled', 'true');
             }
           } else if (val !== undefined && val !== null) {
             field.textContent = val;
@@ -238,6 +253,14 @@
       var label = course.themeLabel || (config.themes && config.themes.find(function (t) { return t.slug === course.theme; }) && config.themes.find(function (t) { return t.slug === course.theme; }).title);
       if (label) badgesContainer.innerHTML = '<span class="badge badge--theme">' + escapeHtml(label) + '</span>';
     }
+    var promoSection = document.getElementById('course-detail-promo');
+    if (promoSection && !course.promoTitle && !course.promoBody) promoSection.style.display = 'none';
+    var promoMedia = document.querySelector('.course-detail__promo-media');
+    if (promoMedia && !course.promoImage) promoMedia.style.display = 'none';
+    if (course.heroImage) {
+      var heroImg = document.querySelector('.course-detail__media .course-detail__instructor-img');
+      if (heroImg) { heroImg.src = course.heroImage; heroImg.alt = (course.title || 'Course') + ' — course hero'; }
+    }
   }
 
   function applyVideoDetail(config) {
@@ -273,7 +296,15 @@
     document.querySelectorAll('[data-leader-podcast]').forEach(function (el) {
       var key = el.getAttribute('data-leader-podcast');
       var value = podcast[key];
-      if (value !== undefined && value !== null) el.textContent = value;
+      if (el.tagName === 'IMG') {
+        if (key === 'artwork' && value) {
+          el.src = value;
+          el.alt = (podcast.title || 'Podcast') + ' — artwork';
+          el.setAttribute('data-filled', 'true');
+        }
+      } else if (value !== undefined && value !== null) {
+        el.textContent = value;
+      }
     });
     var badgesContainer = document.querySelector('[data-leader-podcast-badges]');
     if (badgesContainer && (podcast.themeLabel || podcast.theme)) {

@@ -31,10 +31,10 @@
       { "title": "The Big Idea in Practice", "theme": "church-multiplication", "themeLabel": "Church Multiplication", "description": "Applying one big idea across your ministry for clarity and alignment.", "meta": "8 min read", "linkLabel": "Read article" }
     ],
     "courses": [
-      { "title": "Exponential Conference Resources", "theme": "church-multiplication", "themeLabel": "Church Multiplication", "description": "Talks and workshops from Exponential on church planting and multiplication.", "meta": "Multiple sessions", "linkLabel": "Explore" }
+      { "slug": "exponential-resources", "title": "Exponential Conference Resources", "theme": "church-multiplication", "themeLabel": "Church Multiplication", "description": "Talks and workshops from Exponential on church planting and multiplication. Dave Ferguson and guests on multiplying leaders and building movements.", "meta": "Multiple sessions", "linkLabel": "Explore", "duration": "Multiple sessions", "outcome": "Conference talks and action steps", "structure": "Video sessions and resources", "feedback": "Community discussion", "difficulty": "All levels", "price": "Free", "lessonCount": "12+", "prerequisites": "None", "readTime": "Varies", "heroImage": "../images/art/hero-sections/art-abstract-cinematic-frame-created-with-loose-charcoa.webp", "promoTitle": "Get course resources delivered.", "promoBody": "Exponential attendees and course members get access to exclusive offers from our partners. When you sign up, you'll receive a promo code for resources delivered to your doorstep.", "promoImage": "../images/art/hero-sections/art-abstract-emerging-concept-sketch-with-charcoal-line.webp", "weeks": [{ "title": "Welcome", "lessons": [{ "title": "A note from Dave", "slug": "note-dave" }, { "title": "Overview", "slug": "overview" }] }, { "title": "Sessions", "lessons": [{ "title": "Key talks and workshops", "slug": "sessions" }] }] }
     ],
     "podcasts": [
-      { "title": "Hero Maker Conversations", "theme": "leadership", "themeLabel": "Leadership", "description": "Dave Ferguson and guests on multiplying leaders and building movements.", "runtime": "35:00", "linkLabel": "Listen" }
+      { "slug": "hero-maker-conversations", "title": "Hero Maker Conversations", "theme": "leadership", "themeLabel": "Leadership", "description": "Dave Ferguson and guests on multiplying leaders and building movements.", "runtime": "35:00", "linkLabel": "Listen", "artwork": "../images/art/hero-sections/art-abstract-cinematic-frame-created-with-loose-charcoa.webp" }
     ],
     "videos": []
   },
