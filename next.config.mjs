@@ -38,15 +38,16 @@ const nextConfig = {
         destination: '/templates/library/index.html',
         permanent: false,
       },
-      // Template subfolders: serve index.html so CSS/JS relative paths work
+      // Template subfolders: serve index.html so CSS/JS relative paths work.
+      // Exclude templates-manifest.json so the manifest is served as static JSON, not redirected to .../index.html
       {
-        source: '/templates/library/:template',
-        destination: '/templates/library/:template/index.html',
+        source: '/templates/library/((?!templates-manifest\\.json$)[^/]+)',
+        destination: '/templates/library/$1/index.html',
         permanent: false,
       },
       {
-        source: '/templates/library/:template/',
-        destination: '/templates/library/:template/index.html',
+        source: '/templates/library/((?!templates-manifest\\.json$)[^/]+)/',
+        destination: '/templates/library/$1/index.html',
         permanent: false,
       },
     ]
