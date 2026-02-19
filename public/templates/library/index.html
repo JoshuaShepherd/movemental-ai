@@ -92,16 +92,22 @@
       justify-content: space-between;
       height: 72px;
     }
+    .nav-home {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-on-dark-muted);
+      text-decoration: none;
+      transition: color var(--duration-fast);
+    }
+    .nav-home:hover { color: var(--scarlet-400); }
     .nav-logo {
       font-family: var(--font-body);
       font-size: 18px;
       font-weight: 600;
       color: var(--text-on-dark);
       letter-spacing: -0.02em;
-      text-decoration: none;
-      transition: color var(--duration-fast);
     }
-    a.nav-logo:hover { color: var(--scarlet-400); }
     .nav-logo span { color: var(--scarlet-400); }
     .nav-cta {
       display: inline-flex;
@@ -386,7 +392,8 @@
 
   <header class="site-nav" id="site-nav">
     <div class="nav-inner">
-      <a href="/" class="nav-logo">← Home</a>
+      <a href="/" class="nav-home">← Home</a>
+      <span class="nav-logo">Template <span>Launcher</span></span>
       <a href="#launcher-main" class="nav-cta">Browse templates</a>
     </div>
   </header>

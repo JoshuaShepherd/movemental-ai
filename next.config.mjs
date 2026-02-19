@@ -38,6 +38,17 @@ const nextConfig = {
         destination: '/templates/library/index.html',
         permanent: false,
       },
+      // Template subfolders: serve index.html so CSS/JS relative paths work
+      {
+        source: '/templates/library/:template',
+        destination: '/templates/library/:template/index.html',
+        permanent: false,
+      },
+      {
+        source: '/templates/library/:template/',
+        destination: '/templates/library/:template/index.html',
+        permanent: false,
+      },
     ]
   },
 };
