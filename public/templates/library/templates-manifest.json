@@ -195,10 +195,9 @@
       "description": "Formation, community, warm, caring",
       "pages": [
         { "label": "Home", "href": "pastoral-warm/" },
-        { "label": "Home (Full-bleed Alan + art band)", "href": "pastoral-warm/index-hero-v2.html" },
-        { "label": "Home (Portrait + art accent)", "href": "pastoral-warm/index-hero-v3.html" },
-        { "label": "Home (Art bg + portrait card)", "href": "pastoral-warm/index-hero-v4.html" },
         { "label": "Content Hub", "href": "pastoral-warm/content-hub.html" },
+        { "label": "Themes", "href": "pastoral-warm/themes.html" },
+        { "label": "Theme Detail", "href": "pastoral-warm/theme-detail.html?theme=missional-church" },
         { "label": "Articles", "href": "pastoral-warm/articles.html" },
         { "label": "Books", "href": "pastoral-warm/books.html" },
         { "label": "Book Detail", "href": "pastoral-warm/book-detail.html" },

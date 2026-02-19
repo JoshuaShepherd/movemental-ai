@@ -151,6 +151,17 @@
         if (listPath === 'contentLibrary.courses' && item.slug && clone.tagName === 'A') {
           clone.href = 'course-detail.html?course=' + encodeURIComponent(item.slug);
         }
+        if (listPath === 'themes' && item.slug && clone.tagName === 'A') {
+          clone.href = 'theme-detail.html?theme=' + encodeURIComponent(item.slug);
+          if (leaderParam) clone.href += '&leader=' + encodeURIComponent(leaderParam);
+        }
+        if (listPath === 'themes' && config.art && Array.isArray(config.art.all) && config.art.all.length > 0) {
+          var img = clone.querySelector('.theme-card__img img, [data-leader-item="image"]');
+          if (img && img.tagName === 'IMG') {
+            img.src = config.art.all[index % config.art.all.length];
+            img.alt = (item.title || 'Theme') + ' — theme';
+          }
+        }
         clone.querySelectorAll('[data-leader-item]').forEach(function (field) {
           var key = field.getAttribute('data-leader-item');
           var val = item[key];
@@ -320,6 +331,29 @@
     if (title) document.title = title;
   }
 
+  /** Theme detail page: read ?theme=slug, fill [data-leader-theme] and optional page title. */
+  function applyThemeDetail(config) {
+    var m = /[?&]theme=([^&]+)/.exec(window.location.search);
+    var slug = m ? decodeURIComponent(m[1]) : '';
+    var themes = config.themes;
+    if (!Array.isArray(themes) || themes.length === 0) return;
+    var theme = themes.find(function (t) { return t.slug === slug; }) || themes[0];
+    document.querySelectorAll('[data-leader-theme]').forEach(function (el) {
+      var key = el.getAttribute('data-leader-theme');
+      var val = theme[key];
+      if (el.tagName === 'IMG' && key === 'image' && val) {
+        el.src = val;
+        el.alt = (theme.title || 'Theme') + ' — theme';
+      } else if (val !== undefined && val !== null) {
+        el.textContent = val;
+      }
+    });
+    var titleEl = document.body.getAttribute('data-leader-theme-title');
+    if (titleEl === 'true' || titleEl === '') {
+      document.title = (theme.title || 'Theme') + ' — ' + (config.name || '');
+    }
+  }
+
   /** Validate required top-level keys. Logs warnings for missing keys. Align with _docs/type/ and leader-config.schema.json (13 keys). */
   function validateConfig(config) {
     var required = ['id', 'name', 'tagline', 'hero', 'portrait', 'themes', 'contentLibrary', 'libraryCards', 'books', 'pageTitles', 'pageCopy', 'art', 'images'];
@@ -350,6 +384,7 @@
     applyVideoDetail(config);
     applyPodcastDetail(config);
     applyDocumentTitle(config);
+    applyThemeDetail(config);
   }
 
   fetch(jsonPath)

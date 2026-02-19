@@ -49,13 +49,10 @@
           <div class="course-detail__badges" data-leader-course-badges></div>
           <div class="course-detail__description" data-leader-course="description"></div>
           <div class="course-detail__ctas">
-            <a href="course-learn.html" class="btn btn--primary btn--lg">Start session</a>
-            <a href="course-player.html" class="btn btn--secondary btn--lg" data-append-course>Watch in player</a>
-            <a href="course-enroll.html" class="btn btn--secondary btn--lg" data-append-course>Enroll</a>
-            <a href="course-overview.html" class="btn btn--secondary btn--lg" data-append-course>View overview</a>
-            <a href="courses.html" class="btn btn--secondary btn--lg">Browse courses</a>
+            <a href="course-player.html" class="btn btn--primary btn--lg course-detail__cta-primary" data-append-course>Watch in player</a>
+            <p class="course-detail__cta-secondary">New here? <a href="course-enroll.html" data-append-course>Enroll for free</a> to save progress.</p>
           </div>
-          <p class="course-detail__availability">Currently available on Desktop and mobile.</p>
+          <p class="course-detail__availability">Available on desktop and mobile.</p>
         </div>
       </div>
 
@@ -137,7 +134,7 @@
   <script src="js/main.js"></script>
   <script src="../js/leader-content.js" data-json="../data/alan-hirsch.json"></script>
   <script>
-    (function(){ var q = window.location.search; if (q) document.querySelectorAll('a[href="course-learn.html"]').forEach(function(a){ a.href = 'course-learn.html' + q; }); })();
+    (function(){ var q = window.location.search; if (q) { document.querySelectorAll('a[data-append-course]').forEach(function(a){ a.href = a.href + (a.href.indexOf('?') >= 0 ? '&' : '?') + q.slice(1); }); } })();
   </script>
 </body>
 </html>

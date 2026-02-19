@@ -945,7 +945,8 @@
     "courseDetail": "Course — Alan Hirsch",
     "videoDetail": "Video — Alan Hirsch",
     "pricing": "Plans & Pricing — Alan Hirsch",
-    "bookReader": "Reading: Reframation — Chapter 1"
+    "bookReader": "Reading: Reframation — Chapter 1",
+    "themes": "Themes — Alan Hirsch"
   },
   "pageCopy": {
     "books": {
@@ -967,6 +968,9 @@
     "contentHub": {
       "title": "Content Library",
       "subtitle": "Explore articles, books, courses, podcasts, and videos on formation, mission, and discipleship."
+    },
+    "themes": {
+      "subtitle": "Explore by theme — missional church, formation, disciple making, APEST, kingdom mission, and Christocentric faith."
     },
     "footer": {
       "copy": "© Alan Hirsch. All rights reserved.",

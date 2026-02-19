@@ -87,7 +87,8 @@
     "contentHub": "Content Library — Brad Brisco",
     "bookDetail": "The Missional Quest — Brad Brisco",
     "pricing": "Plans & Pricing — Brad Brisco",
-    "bookReader": "Reading: The Missional Quest — Chapter 1"
+    "bookReader": "Reading: The Missional Quest — Chapter 1",
+    "themes": "Themes — Brad Brisco"
   },
   "pageCopy": {
     "books": {
@@ -97,6 +98,9 @@
     "contentHub": {
       "title": "Content Library",
       "subtitle": "Explore articles, books, courses, and podcasts on missional church and multiplication."
+    },
+    "themes": {
+      "subtitle": "Explore by theme — missional church, church planting, bivocational ministry, multiplication, and neighborhood mission."
     },
     "footer": {
       "copy": "© Brad Brisco. All rights reserved.",

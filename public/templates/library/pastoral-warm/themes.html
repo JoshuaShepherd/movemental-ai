@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Lab — Leader</title>
+  <base href="./" />
+  <title>Themes — Leader</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/main.css" />
 </head>
-<body data-leader-title="pageTitles.chat">
+<body data-leader-title="pageTitles.themes">
   <header class="public-header" role="banner">
     <div class="public-header__inner">
       <a href="index.html" class="public-header__logo" data-leader="name">Leader</a>
@@ -19,9 +20,9 @@
       <nav class="public-header__nav" id="nav" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="content-hub.html">Content</a>
-        <a href="index.html#themes">Themes</a>
+        <a href="themes.html" class="active">Themes</a>
         <a href="index.html#assessments">Assessments</a>
-        <a href="chat.html" class="active">AI Lab</a>
+        <a href="chat.html">AI Lab</a>
       </nav>
       <div class="public-header__actions">
         <a href="#search" aria-label="Search" class="public-header__search">
@@ -32,30 +33,31 @@
     </div>
   </header>
 
-  <main class="chat-page-wrap">
-    <div class="chat-page">
-      <div class="chat-page__frame">
-        <h1 class="chat-page__title" data-leader="pageCopy.chat.title">AI Lab</h1>
-        <p class="chat-page__user-in-charge">A personal guide through Alan's ideas — trained on his books, theology, and decades of teaching. Not generic AI, but AI that understands mDNA, APEST, and missional movement. You ask; you judge.</p>
+  <main class="main-content">
+    <section class="page-section" aria-labelledby="themes-hero-title">
+      <h1 id="themes-hero-title" class="page-section__title">Themes</h1>
+      <p class="page-section__subtitle" data-leader="pageCopy.themes.subtitle">Explore by theme — missional church, formation, disciple making, APEST, and more.</p>
+    </section>
+
+    <section class="exploration-lane section--art-bg" aria-labelledby="themes-list-title" data-leader-bg="art.sectionBackgrounds.exploration">
+      <h2 id="themes-list-title" class="exploration-lane__title">Explore by theme</h2>
+      <div class="exploration-lane__grid" data-leader-list="themes">
+        <a href="#" class="theme-card" data-leader-item-template>
+          <div class="theme-card__icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+          <h3 class="theme-card__title" data-leader-item="title">Theme title</h3>
+          <p class="theme-card__description" data-leader-item="description">Theme description.</p>
+          <span class="theme-card__meta">Explore theme</span>
+        </a>
       </div>
-      <div class="chat-page__messages" id="chat-messages" role="log" aria-live="polite">
-        <div class="chat-page__empty" id="chat-empty">
-          <p class="chat-page__welcome">What would you like to explore? Ask about missional DNA, fivefold ministry, disciple-making, or how movements multiply. Responses are grounded in Alan Hirsch's published work — use them as a thinking partner, not an oracle.</p>
-          <div class="chat-page__suggestions" aria-label="Suggested prompts">
-            <button type="button" class="chat-page__suggestion" data-prompt="What is missional DNA?">What is missional DNA?</button>
-            <button type="button" class="chat-page__suggestion" data-prompt="Explain the APEST framework">Explain the APEST framework</button>
-            <button type="button" class="chat-page__suggestion" data-prompt="How do movements multiply?">How do movements multiply?</button>
-            <button type="button" class="chat-page__suggestion" data-prompt="What is metanoia?">What is metanoia?</button>
-          </div>
-        </div>
-        <div class="chat-page__list" id="chat-list" hidden></div>
+    </section>
+
+    <section class="page-section">
+      <div class="page-section__inner">
+        <h2 class="page-section__title page-section__title--small">Browse the library</h2>
+        <p class="page-section__subtitle">Find articles, books, courses, and podcasts by theme in the content library.</p>
+        <a href="content-hub.html" class="btn btn--primary">Content Library</a>
       </div>
-      <div class="chat-page__input">
-        <input type="text" id="chat-input" placeholder="Ask Alan anything…" aria-label="Chat message" data-leader-placeholder="pageCopy.chat.inputPlaceholder" />
-        <button type="button" class="chat-page__send" id="chat-send" aria-label="Send" data-leader="pageCopy.chat.sendLabel">Send</button>
-      </div>
-      <p class="chat-page__disclaimer">Responses reflect Alan Hirsch's perspective based on his published works. This is an experimental learning space.</p>
-    </div>
+    </section>
   </main>
 
   <footer class="public-footer" role="contentinfo">
@@ -69,7 +71,7 @@
         <a href="#terms">Terms</a>
         <a href="#accessibility">Accessibility</a>
       </nav>
-      <p class="public-footer__copy" data-leader="pageCopy.footer.copy">&copy; Leader. All rights reserved.</p>
+      <p class="public-footer__copy" data-leader="pageCopy.footer.copy">© Leader. All rights reserved.</p>
     </div>
   </footer>
 
@@ -85,7 +87,7 @@
       </button>
     </div>
     <div class="floating-chat-panel__body">
-      <p class="floating-chat-panel__placeholder" data-leader="pageCopy.chat.placeholder">Ask a question about formation, mission, or discipleship. This is a standalone demo; chat is not connected to a backend.</p>
+      <p class="floating-chat-panel__placeholder" data-leader="pageCopy.chat.placeholder">Ask a question.</p>
       <div class="floating-chat-panel__suggestions">
         <button type="button" class="floating-chat-panel__suggestion">What is mDNA?</button>
         <button type="button" class="floating-chat-panel__suggestion">Explain APEST</button>
@@ -93,20 +95,12 @@
       </div>
     </div>
     <div class="floating-chat-panel__input-area">
-      <input type="text" class="floating-chat-panel__input" placeholder="Type your message..." aria-label="Chat message" data-leader-placeholder="pageCopy.chat.inputPlaceholder" />
+      <input type="text" class="floating-chat-panel__input" placeholder="Type your message…" aria-label="Chat message" data-leader-placeholder="pageCopy.chat.inputPlaceholder" />
       <button type="button" class="floating-chat-panel__send" data-leader="pageCopy.chat.sendLabel">Send</button>
     </div>
   </aside>
 
   <script src="js/main.js"></script>
   <script src="../js/leader-content.js" data-json="../data/alan-hirsch.json"></script>
-  <script>
-    (function(){
-      var input = document.getElementById('chat-input');
-      document.querySelectorAll('.chat-page__suggestion[data-prompt]').forEach(function(btn){
-        btn.addEventListener('click', function(){ if (input) { input.value = btn.getAttribute('data-prompt') || ''; input.focus(); } });
-      });
-    })();
-  </script>
 </body>
 </html>

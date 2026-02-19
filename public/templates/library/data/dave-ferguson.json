@@ -103,7 +103,8 @@
     "contentHub": "Content Library — Dave Ferguson",
     "bookDetail": "Hero Maker — Dave Ferguson",
     "pricing": "Plans & Pricing — Dave Ferguson",
-    "bookReader": "Reading: Hero Maker — Chapter 1"
+    "bookReader": "Reading: Hero Maker — Chapter 1",
+    "themes": "Themes — Dave Ferguson"
   },
   "pageCopy": {
     "books": {
@@ -113,6 +114,9 @@
     "contentHub": {
       "title": "Content Library",
       "subtitle": "Explore articles, books, courses, and podcasts on multiplication and leadership."
+    },
+    "themes": {
+      "subtitle": "Five interconnected themes — church multiplication, leadership, movement, evangelism, and B.L.E.S.S."
     },
     "footer": {
       "copy": "© Dave Ferguson. All rights reserved.",
