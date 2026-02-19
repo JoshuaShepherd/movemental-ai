@@ -1,0 +1,176 @@
+{
+  "id": "dave-ferguson",
+  "name": "Dave Ferguson",
+  "tagline": "Church multiplication, leadership, and movement",
+  "hero": {
+    "title": "Church multiplication, leadership, and movement",
+    "subtitle": "Explore resources and themes for multiplying churches, developing leaders, and building movements. No sign-up required to browse.",
+    "ctaPrimary": { "label": "Explore Content", "href": "#content" },
+    "ctaSecondary": { "label": "Browse Themes", "href": "#themes" },
+    "image": "../images/dave/dave-ferguson.webp",
+    "imageAlt": "Dave Ferguson",
+    "imagesByContext": {
+      "default": "../images/dave/dave-ferguson.webp",
+      "primary": "../images/dave/dave-ferguson.webp"
+    }
+  },
+  "portrait": {
+    "headshot": "../images/dave/dave-ferguson-primary.jpg",
+    "headshotAlt": "Dave Ferguson"
+  },
+  "themes": [
+    { "slug": "church-multiplication", "title": "Church Multiplication", "description": "Building and leading churches that multiply—Exponential, NewThing, and movement practices." },
+    { "slug": "leadership", "title": "Leadership", "description": "Developing hero makers and leaders who develop others." },
+    { "slug": "movement", "title": "Movement", "description": "From organization to movement: catalyzing and sustaining kingdom movement." },
+    { "slug": "evangelism", "title": "Evangelism", "description": "Finding your way back to God and helping others do the same." },
+    { "slug": "bless", "title": "B.L.E.S.S.", "description": "Five practices for everyday mission: Begin with prayer, Listen, Eat, Serve, Share." }
+  ],
+  "contentLibrary": {
+    "articles": [
+      { "title": "From Hero to Hero Maker", "theme": "leadership", "themeLabel": "Leadership", "description": "Shifting from being the hero to developing heroes who lead and multiply.", "meta": "6 min read", "linkLabel": "Read article" },
+      { "title": "The Big Idea in Practice", "theme": "church-multiplication", "themeLabel": "Church Multiplication", "description": "Applying one big idea across your ministry for clarity and alignment.", "meta": "8 min read", "linkLabel": "Read article" }
+    ],
+    "courses": [
+      { "title": "Exponential Conference Resources", "theme": "church-multiplication", "themeLabel": "Church Multiplication", "description": "Talks and workshops from Exponential on church planting and multiplication.", "meta": "Multiple sessions", "linkLabel": "Explore" }
+    ],
+    "podcasts": [
+      { "title": "Hero Maker Conversations", "theme": "leadership", "themeLabel": "Leadership", "description": "Dave Ferguson and guests on multiplying leaders and building movements.", "runtime": "35:00", "linkLabel": "Listen" }
+    ],
+    "videos": []
+  },
+  "libraryCards": {
+    "articles": { "title": "Articles", "description": "Essays and reflections on multiplication and leadership." },
+    "books": { "title": "Books", "description": "Books and resources for study and reference." },
+    "courses": { "title": "Courses", "description": "Structured learning and conference resources." },
+    "podcasts": { "title": "Podcasts", "description": "Conversations on church multiplication and leadership." },
+    "videos": { "title": "Videos", "description": "Talks and teaching series." }
+  },
+  "books": [
+    {
+      "slug": "hero-maker",
+      "title": "Hero Maker",
+      "cover": "../images/books/book-hero-maker.jpg",
+      "coverAlt": "Hero Maker book cover",
+      "author": "Dave Ferguson",
+      "theme": "leadership",
+      "themeLabel": "Leadership",
+      "shortDescription": "How to become a leader who develops other leaders and multiplies impact."
+    },
+    {
+      "slug": "exponential",
+      "title": "Exponential",
+      "cover": "../images/books/book-exponential.jpg",
+      "coverAlt": "Exponential book cover",
+      "author": "Dave Ferguson",
+      "theme": "church-multiplication",
+      "themeLabel": "Church Multiplication",
+      "shortDescription": "How you can better lead the church in the way of Jesus and multiply."
+    },
+    {
+      "slug": "on-the-verge",
+      "title": "On the Verge",
+      "cover": "../images/books/book-on-the-verge-dave.jpg",
+      "coverAlt": "On the Verge book cover",
+      "author": "Dave Ferguson",
+      "theme": "church-multiplication",
+      "themeLabel": "Church Multiplication",
+      "shortDescription": "A church on the verge of breakthrough—practices for missional innovation."
+    },
+    {
+      "slug": "the-big-idea",
+      "title": "The Big Idea",
+      "cover": "../images/books/book-the-big-idea.jpg",
+      "coverAlt": "The Big Idea book cover",
+      "author": "Dave Ferguson",
+      "theme": "church-multiplication",
+      "themeLabel": "Church Multiplication",
+      "shortDescription": "Focusing your ministry around one big idea for clarity and impact."
+    },
+    {
+      "slug": "bless",
+      "title": "B.L.E.S.S.",
+      "cover": "../images/books/book-bless.jpg",
+      "coverAlt": "B.L.E.S.S. book cover",
+      "author": "Dave Ferguson",
+      "theme": "bless",
+      "themeLabel": "B.L.E.S.S.",
+      "shortDescription": "Five everyday ways to love your neighbor and change the world."
+    }
+  ],
+  "pageTitles": {
+    "home": "Dave Ferguson — Church Multiplication, Leadership, Movement",
+    "books": "Books — Dave Ferguson",
+    "contentHub": "Content Library — Dave Ferguson",
+    "bookDetail": "Hero Maker — Dave Ferguson",
+    "pricing": "Plans & Pricing — Dave Ferguson",
+    "bookReader": "Reading: Hero Maker — Chapter 1"
+  },
+  "pageCopy": {
+    "books": {
+      "title": "Books",
+      "subtitle": "Explore books by Dave Ferguson on church multiplication, leadership, and movement."
+    },
+    "contentHub": {
+      "title": "Content Library",
+      "subtitle": "Explore articles, books, courses, and podcasts on multiplication and leadership."
+    },
+    "footer": {
+      "copy": "© Dave Ferguson. All rights reserved.",
+      "links": [
+        { "label": "Home", "href": "index.html" },
+        { "label": "About", "href": "about.html" },
+        { "label": "Formation", "href": "index.html#formation" },
+        { "label": "Pricing", "href": "pricing.html" },
+        { "label": "Privacy", "href": "privacy.html" },
+        { "label": "Terms", "href": "#terms" },
+        { "label": "Accessibility", "href": "#accessibility" }
+      ]
+    },
+    "chat": {
+      "title": "AI Lab",
+      "placeholder": "Ask a question about church multiplication, leadership, or movement. This is a standalone demo; chat is not connected to a backend.",
+      "inputPlaceholder": "Type your message…",
+      "sendLabel": "Send"
+    }
+  },
+  "art": {
+    "heroBackground": "../images/art/hero-sections/art-abstract-cinematic-frame-created-with-loose-charcoa.webp",
+    "heroBand": "../images/art/hero-sections/art-abstract-flowing-pathways-diverging-and-converging.webp",
+    "sectionBackgrounds": {
+      "exploration": "../images/art/hero-sections/art-abstract-communal-figures-loosely-circling-a-centra.webp",
+      "library": "../images/art/hero-sections/art-abstract-vertical-stacked-forms-evoking-a-row-of-bo.webp",
+      "divider": "../images/art/hero-sections/art-abstract-emerging-concept-sketch-with-charcoal-line.webp"
+    },
+    "all": [
+      "../images/art/hero-sections/art-abstract-cinematic-frame-created-with-loose-charcoa.webp",
+      "../images/art/hero-sections/art-abstract-cinematic-frame-created-with-loose-charcoa-1.webp",
+      "../images/art/hero-sections/art-abstract-communal-figures-loosely-circling-a-centra.webp",
+      "../images/art/hero-sections/art-abstract-communal-figures-loosely-circling-a-centra-1.webp",
+      "../images/art/hero-sections/art-abstract-communal-figures-loosely-circling-a-centra-2.webp",
+      "../images/art/hero-sections/art-abstract-emerging-concept-sketch-with-charcoal-line.webp",
+      "../images/art/hero-sections/art-abstract-emerging-concept-sketch-with-charcoal-line-1.webp",
+      "../images/art/hero-sections/art-abstract-flowing-pathways-diverging-and-converging.webp",
+      "../images/art/hero-sections/art-abstract-sound-wave-inspired-curves-made-with-charc.webp",
+      "../images/art/hero-sections/art-abstract-sound-wave-inspired-curves-made-with-charc-1.webp",
+      "../images/art/hero-sections/art-abstract-stacked-and-overlapping-rectangular-gestur.webp",
+      "../images/art/hero-sections/art-abstract-stacked-and-overlapping-rectangular-gestur-1.webp",
+      "../images/art/hero-sections/art-abstract-stacked-and-overlapping-rectangular-gestur-2.webp",
+      "../images/art/hero-sections/art-abstract-vertical-stacked-forms-evoking-a-row-of-bo.webp",
+      "../images/art/hero-sections/art-abstract-vertical-stacked-forms-evoking-a-row-of-bo-1.webp",
+      "../images/art/hero-sections/art-abstract-vertical-stacked-forms-evoking-a-row-of-bo-2.webp"
+    ]
+  },
+  "images": {
+    "leader": [
+      "../images/dave/dave-ferguson.webp",
+      "../images/dave/dave-ferguson-primary.jpg"
+    ],
+    "books": [
+      "../images/books/book-hero-maker.jpg",
+      "../images/books/book-exponential.jpg",
+      "../images/books/book-on-the-verge-dave.jpg",
+      "../images/books/book-the-big-idea.jpg",
+      "../images/books/book-bless.jpg"
+    ]
+  }
+}

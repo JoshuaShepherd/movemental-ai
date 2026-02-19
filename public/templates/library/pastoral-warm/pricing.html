@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plans &amp; Pricing — Alan Hirsch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body data-leader-title="pageTitles.pricing">
+  <header class="public-header" role="banner">
+    <div class="public-header__inner">
+      <a href="index.html" class="public-header__logo" data-leader="name">Alan Hirsch</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav class="public-header__nav" id="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="content-hub.html">Content</a>
+        <a href="index.html#themes">Themes</a>
+        <a href="index.html#assessments">Assessments</a>
+        <a href="chat.html">AI Lab</a>
+      </nav>
+      <div class="public-header__actions">
+        <a href="#search" aria-label="Search" class="public-header__search">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </a>
+        <a href="signin.html" class="btn-signin">Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="pricing-section" aria-labelledby="pricing-title">
+      <h1 id="pricing-title" class="pricing-section__title">Plans &amp; Pricing</h1>
+      <p class="pricing-section__subtitle">Choose the plan that fits your journey. Start free and upgrade as you grow.</p>
+
+      <div class="pricing-grid">
+        <!-- Free -->
+        <div class="plan-card">
+          <h2 class="plan-card__name">Free</h2>
+          <p class="plan-card__price">$0<span>/mo</span></p>
+          <p class="plan-card__desc">Browse content, read limited articles, and preview assessments.</p>
+          <ul class="plan-card__features">
+            <li>Browse the full content library</li>
+            <li>Read up to 3 articles per month</li>
+            <li>Preview assessment tools</li>
+            <li>Community discussions</li>
+          </ul>
+          <a href="#" class="btn btn--secondary btn--lg plan-card__cta">Get Started Free</a>
+        </div>
+
+        <!-- Reader (Featured) -->
+        <div class="plan-card plan-card--featured">
+          <div class="plan-card__badge"><span class="badge badge--popular">Most Popular</span></div>
+          <h2 class="plan-card__name">Reader</h2>
+          <p class="plan-card__price">$9<span>/mo</span></p>
+          <p class="plan-card__desc">Full access to every book, article, podcast, and video in the library.</p>
+          <ul class="plan-card__features">
+            <li>Unlimited articles and essays</li>
+            <li>Full book access with reader</li>
+            <li>All podcasts and video content</li>
+            <li>Complete assessment tools</li>
+            <li>Reading progress tracking</li>
+          </ul>
+          <a href="#" class="btn btn--primary btn--lg plan-card__cta">Start Reading</a>
+        </div>
+
+        <!-- Leader -->
+        <div class="plan-card">
+          <h2 class="plan-card__name">Leader</h2>
+          <p class="plan-card__price">$29<span>/mo</span></p>
+          <p class="plan-card__desc">Everything in Reader plus courses, AI Lab, and certificates of completion.</p>
+          <ul class="plan-card__features">
+            <li>Everything in Reader</li>
+            <li>All formation courses</li>
+            <li>AI Lab with Alan's frameworks</li>
+            <li>Certificates of completion</li>
+            <li>Priority community access</li>
+            <li>Downloadable resources</li>
+          </ul>
+          <a href="#" class="btn btn--outline btn--lg plan-card__cta">Start Leading</a>
+        </div>
+      </div>
+
+      <!-- Individual Book Purchase -->
+      <div class="individual-purchase">
+        <div class="individual-purchase__cover">
+          <img src="../images/books/book-reframation.webp" alt="Reframation book cover" />
+        </div>
+        <div class="individual-purchase__info">
+          <h3 class="individual-purchase__title">Individual Book Purchase</h3>
+          <p class="individual-purchase__price">$14.99</p>
+          <a href="#" class="btn btn--primary btn--sm">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq-section">
+        <h2 class="faq-section__title">Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <button class="faq-item__question" type="button">
+            Can I switch plans at any time?
+            <svg class="faq-item__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <p class="faq-item__answer">Yes, you can upgrade or downgrade your plan at any time. Changes take effect at the start of your next billing cycle. If you upgrade mid-cycle, you'll receive prorated access immediately.</p>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__question" type="button">
+            What payment methods do you accept?
+            <svg class="faq-item__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <p class="faq-item__answer">We accept all major credit cards (Visa, MasterCard, American Express) as well as PayPal. All payments are processed securely through Stripe.</p>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__question" type="button">
+            Is there a discount for annual billing?
+            <svg class="faq-item__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <p class="faq-item__answer">Yes! Annual billing saves you approximately 20%. The Reader plan is $86/year (instead of $108) and the Leader plan is $278/year (instead of $348).</p>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__question" type="button">
+            Do I keep access to individual book purchases if I cancel?
+            <svg class="faq-item__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <p class="faq-item__answer">Absolutely. Individual book purchases are yours to keep forever, regardless of your subscription status. Subscription-based access to the broader library will end when your plan expires.</p>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__question" type="button">
+            Can I get a refund?
+            <svg class="faq-item__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <p class="faq-item__answer">We offer a 14-day money-back guarantee on all subscription plans. If you're not satisfied, contact us within 14 days of purchase for a full refund.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="public-footer" role="contentinfo">
+    <div class="public-footer__inner">
+      <nav class="public-footer__links" aria-label="Footer links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#formation">Formation</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="#accessibility">Accessibility</a>
+      </nav>
+      <p class="public-footer__copy" data-leader="pageCopy.footer.copy">&copy; Alan Hirsch. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button type="button" class="floating-chat-button" id="chat-open" aria-label="Open AI Lab chat">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+  </button>
+  <div class="chat-backdrop" id="chat-backdrop" aria-hidden="true"></div>
+  <aside class="floating-chat-panel" id="chat-panel" aria-label="AI Lab chat panel" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="floating-chat-panel__header">
+      <h2 class="floating-chat-panel__title">AI Lab</h2>
+      <button type="button" class="floating-chat-panel__close" id="chat-close" aria-label="Close chat">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="floating-chat-panel__body"><p class="floating-chat-panel__placeholder">Ask a question about formation, mission, or discipleship.</p></div>
+    <div class="floating-chat-panel__input-area">
+      <input type="text" class="floating-chat-panel__input" placeholder="Type your message..." aria-label="Chat message" />
+      <button type="button" class="floating-chat-panel__send">Send</button>
+    </div>
+  </aside>
+
+  <script src="js/main.js"></script>
+  <script src="../js/leader-content.js" data-json="../data/alan-hirsch.json"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "images-crop-for-templates",
+  "version": "1.0.0",
+  "description": "Crop and realign images from alan/, brad/, dave/, art/hero-sections into template-ready hero and portrait sizes.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "crop": "node crop-for-templates.js",
+    "crop:dry": "node crop-for-templates.js --dry",
+    "convert-to-webp": "node convert-to-webp.js",
+    "convert-to-webp:dry": "node convert-to-webp.js --dry",
+    "fetch-book-covers": "node fetch-book-covers.js",
+    "fetch-book-covers:missing": "node fetch-book-covers.js --missing-only"
+  },
+  "dependencies": {
+    "sharp": "^0.33.0"
+  }
+}

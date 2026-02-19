@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Reader — Dave Ferguson</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="e-theme">
+
+  <div class="e-reader e-reader--font-md" id="reader">
+    <div class="e-reader__topbar">
+      <a href="books.html" class="e-reader__back">&larr; Books</a>
+      <span class="e-reader__book-title" id="book-title">Hero Maker</span>
+      <span class="e-reader__progress" id="reader-progress">0%</span>
+    </div>
+    <aside class="e-reader__sidebar" id="reader-sidebar">
+      <div class="e-reader__toc-label">Contents</div>
+      <nav class="e-reader__toc" id="reader-toc"></nav>
+    </aside>
+    <div class="e-reader__content" id="reader-content">
+      <div class="e-reader__chapter" id="chapter-content"></div>
+    </div>
+    <div class="e-reader__controls">
+      <div class="e-reader__nav-btns">
+        <button class="e-reader__toc-btn" id="toc-toggle">TOC</button>
+        <button class="e-reader__nav-btn" id="prev-btn" disabled>&larr; Previous</button>
+        <button class="e-reader__nav-btn" id="next-btn">Next &rarr;</button>
+      </div>
+      <div class="e-reader__font-controls">
+        <button class="e-reader__font-btn" id="font-down">A-</button>
+        <button class="e-reader__font-btn" id="font-up">A+</button>
+        <button class="e-reader__dark-btn" id="dark-toggle">&#9789;</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const bookData = {
+        title: "Hero Maker",
+        chapters: [
+          {
+            title: "The Hero Trap",
+            content: [
+              { type: "h2", text: "The Hero Trap" },
+              { type: "paragraph", text: "Most of us grow up believing that to make a difference, we need to be the hero. We dream of being the one on stage, the leader everyone looks to, the person who saves the day. But what if that impulse — the desire to be the hero — is actually the thing holding us back from our greatest impact?" },
+              { type: "paragraph", text: "I call this the Hero Trap. It's the seductive pull toward being the center of the story rather than empowering others to step into their own stories. The Hero Trap doesn't just limit your influence; it caps the potential of everyone around you." },
+              { type: "pullquote", text: "The Hero Trap is the seductive pull toward being the center of the story rather than empowering others to step into their own stories." },
+              { type: "paragraph", text: "When I planted Community Christian Church in the western suburbs of Chicago, I fell right into the Hero Trap. I was the vision caster, the primary communicator, the strategist, and the problem solver. If something needed to get done, I was the go-to person. And for a while, it worked — or at least it seemed to." },
+              { type: "paragraph", text: "But there came a point when the church hit a ceiling. We couldn't grow beyond what I could personally manage. The systems, the teams, the ministries — they all depended on me. I was the bottleneck, and I didn't even realize it." },
+              { type: "paragraph", text: "The breakthrough came when I started asking a different question. Instead of 'How can I be the hero?' I began asking 'How can I make heroes of others?' That single shift changed everything — not just for me, but for the hundreds of leaders who would go on to start new campuses, new churches, and new movements." },
+              { type: "paragraph", text: "If you find yourself exhausted, overwhelmed, and wondering why your organization has plateaued, the Hero Trap might be the reason. The good news? There's a way out. And it starts with a fundamental shift in how you see your role as a leader." }
+            ]
+          },
+          {
+            title: "The Multiplication Mindset",
+            content: [
+              { type: "h2", text: "The Multiplication Mindset" },
+              { type: "paragraph", text: "Escaping the Hero Trap requires more than a new technique or leadership hack. It demands an entirely new mindset — what I call the Multiplication Mindset. This is the shift from addition thinking to multiplication thinking." },
+              { type: "paragraph", text: "Addition thinking says: 'How can I do more?' Multiplication thinking asks: 'How can I help others do more?' The difference might sound subtle, but the results are exponentially different." },
+              { type: "pullquote", text: "Addition thinking says: 'How can I do more?' Multiplication thinking asks: 'How can I help others do more?'" },
+              { type: "paragraph", text: "Think about it this way. If you're the best leader in your organization and you can personally develop ten people a year, in five years you've developed fifty people. That's addition. But if you develop ten leaders who each develop ten more, and those leaders develop ten more — in just three years you've impacted a thousand people. That's multiplication." },
+              { type: "paragraph", text: "The Multiplication Mindset is rooted in the conviction that God has placed enormous potential in every person. Our job as leaders isn't to be the hero — it's to unlock the hero in everyone we lead." },
+              { type: "paragraph", text: "At Exponential, we've seen this play out in church after church, organization after organization. The leaders who make the biggest long-term impact aren't the ones with the biggest platforms. They're the ones who invest deeply in developing other leaders." },
+              { type: "paragraph", text: "Adopting the Multiplication Mindset means you'll have to let go of some things. You'll have to resist the urge to step in and fix everything. You'll have to be okay with others getting the credit. You'll have to measure success not by what you accomplish, but by what others accomplish because of your investment in them." },
+              { type: "paragraph", text: "It's not easy. But it's the path to exponential impact." }
+            ]
+          },
+          {
+            title: "Permission Giving",
+            content: [
+              { type: "h2", text: "Permission Giving" },
+              { type: "paragraph", text: "One of the five essential practices of a Hero Maker is Permission Giving. Of all the practices, this one might be the most counterintuitive — and the most powerful." },
+              { type: "paragraph", text: "Permission Giving is the act of empowering others to lead, create, and take risks — even before they feel fully ready. It's the opposite of the command-and-control model that dominates most organizations." },
+              { type: "pullquote", text: "Permission Giving is the act of empowering others to lead, create, and take risks — even before they feel fully ready." },
+              { type: "paragraph", text: "Most leaders operate on what I call the 'permission-withholding' model. They set up systems where everything requires approval. New ideas have to go through committees. Young leaders have to 'earn' the right to lead. Innovation is stifled because failure isn't tolerated." },
+              { type: "paragraph", text: "Permission Givers flip this model on its head. They create environments where the default answer is 'yes.' They trust people with real responsibility early. They celebrate experimentation and treat failure as a learning opportunity rather than a disaster." },
+              { type: "paragraph", text: "I learned the power of Permission Giving from my mentor, Bob Buford. Bob had a way of seeing potential in people that they couldn't yet see in themselves. He would give you a challenge, the resources to pursue it, and then get out of the way. His belief in you became the fuel for your growth." },
+              { type: "paragraph", text: "When we started multiplying campuses at Community Christian, Permission Giving was the engine. We gave young leaders the green light to start new locations with minimal oversight. Were there mistakes? Absolutely. But the culture of permission created an environment where leaders developed faster than anyone expected." },
+              { type: "paragraph", text: "If you want to become a Hero Maker, start by asking yourself: 'Am I a permission giver or a permission withholder?' The answer might be the key to unlocking an avalanche of leadership and impact in your organization." }
+            ]
+          }
+        ]
+      };
+
+      let currentChapter = 0;
+      const fontSizes = ["font-sm", "font-md", "font-lg", "font-xl"];
+      let currentFontIndex = 1;
+
+      const reader = document.getElementById("reader");
+      const bookTitle = document.getElementById("book-title");
+      const progress = document.getElementById("reader-progress");
+      const sidebar = document.getElementById("reader-sidebar");
+      const toc = document.getElementById("reader-toc");
+      const chapterContent = document.getElementById("chapter-content");
+      const tocToggle = document.getElementById("toc-toggle");
+      const prevBtn = document.getElementById("prev-btn");
+      const nextBtn = document.getElementById("next-btn");
+      const fontDown = document.getElementById("font-down");
+      const fontUp = document.getElementById("font-up");
+      const darkToggle = document.getElementById("dark-toggle");
+
+      function buildToc() {
+        toc.innerHTML = "";
+        bookData.chapters.forEach(function (ch, i) {
+          var a = document.createElement("a");
+          a.className = "e-reader__toc-item" + (i === currentChapter ? " active" : "");
+          a.href = "#";
+          a.textContent = ch.title;
+          a.addEventListener("click", function (e) {
+            e.preventDefault();
+            goToChapter(i);
+            sidebar.classList.remove("open");
+          });
+          toc.appendChild(a);
+        });
+      }
+
+      function renderChapter(index) {
+        var ch = bookData.chapters[index];
+        var html = "";
+        ch.content.forEach(function (block) {
+          if (block.type === "h2") {
+            html += '<h2 class="e-reader__heading">' + block.text + "</h2>";
+          } else if (block.type === "pullquote") {
+            html += '<blockquote class="e-reader__pullquote">' + block.text + "</blockquote>";
+          } else {
+            html += "<p>" + block.text + "</p>";
+          }
+        });
+        chapterContent.innerHTML = html;
+        updateProgress();
+        updateNavButtons();
+        buildToc();
+        document.getElementById("reader-content").scrollTop = 0;
+      }
+
+      function goToChapter(index) {
+        if (index < 0 || index >= bookData.chapters.length) return;
+        currentChapter = index;
+        renderChapter(currentChapter);
+      }
+
+      function updateProgress() {
+        var pct = Math.round(((currentChapter + 1) / bookData.chapters.length) * 100);
+        progress.textContent = pct + "%";
+      }
+
+      function updateNavButtons() {
+        prevBtn.disabled = currentChapter === 0;
+        nextBtn.disabled = currentChapter === bookData.chapters.length - 1;
+      }
+
+      tocToggle.addEventListener("click", function () {
+        sidebar.classList.toggle("open");
+      });
+
+      prevBtn.addEventListener("click", function () {
+        goToChapter(currentChapter - 1);
+      });
+
+      nextBtn.addEventListener("click", function () {
+        goToChapter(currentChapter + 1);
+      });
+
+      fontDown.addEventListener("click", function () {
+        if (currentFontIndex > 0) {
+          reader.classList.remove("e-reader--" + fontSizes[currentFontIndex]);
+          currentFontIndex--;
+          reader.classList.add("e-reader--" + fontSizes[currentFontIndex]);
+        }
+      });
+
+      fontUp.addEventListener("click", function () {
+        if (currentFontIndex < fontSizes.length - 1) {
+          reader.classList.remove("e-reader--" + fontSizes[currentFontIndex]);
+          currentFontIndex++;
+          reader.classList.add("e-reader--" + fontSizes[currentFontIndex]);
+        }
+      });
+
+      darkToggle.addEventListener("click", function () {
+        reader.classList.toggle("e-reader--dark");
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowLeft") {
+          goToChapter(currentChapter - 1);
+        } else if (e.key === "ArrowRight") {
+          goToChapter(currentChapter + 1);
+        } else if (e.key === "t" || e.key === "T") {
+          sidebar.classList.toggle("open");
+        } else if (e.key === "d" || e.key === "D") {
+          reader.classList.toggle("e-reader--dark");
+        }
+      });
+
+      bookTitle.textContent = bookData.title;
+      renderChapter(0);
+    })();
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>

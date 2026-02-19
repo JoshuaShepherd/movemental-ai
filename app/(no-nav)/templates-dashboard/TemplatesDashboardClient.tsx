@@ -1,99 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
-const SIDEBAR_CATEGORIES = [
-  { id: "featured", label: "Featured", icon: "★", count: 105, active: true },
-  { id: "new", label: "New", icon: "🚀", count: 60 },
-  { id: "free", label: "Free", icon: "❤", count: 186 },
-  { id: "saas", label: "SaaS", icon: "▤", count: 194 },
-  { id: "agency", label: "Agency", icon: "◆", count: 610 },
-  { id: "blog", label: "Blog", icon: "◇", count: 312 },
-  { id: "3d", label: "3D", icon: "◈", count: 88 },
-  { id: "ai", label: "Artificial intelligence", icon: "◉", count: 42 },
-  { id: "brand", label: "Brand Guidelines", icon: "◎", count: 156 },
-  { id: "business", label: "Business", icon: "●", count: 420 },
-  { id: "changelog", label: "Changelog", icon: "○", count: 28 },
-  { id: "docs", label: "Documentation", icon: "▪", count: 95 },
-  { id: "ecommerce", label: "Ecommerce", icon: "▴", count: 203 },
-  { id: "entertainment", label: "Entertainment", icon: "▾", count: 67 },
-  { id: "health", label: "Health", icon: "▸", count: 54 },
-];
+const LIBRARY_MANIFEST_URL = "/templates/library/templates-manifest.json";
 
-const TEMPLATES = [
-  {
-    id: "1",
-    title: "Flux",
-    creator: "Samar Jamil",
-    price: "Free",
-    free: true,
-    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop",
-  },
-  {
-    id: "2",
-    title: "Jules Journey",
-    creator: "Designed By Paul",
-    price: "$69",
-    free: false,
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop",
-  },
-  {
-    id: "3",
-    title: "Rocketsales",
-    creator: "Andrea Montini",
-    price: "Free",
-    free: true,
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-  },
-  {
-    id: "4",
-    title: "Pavyon",
-    creator: "Ucas Templates",
-    price: "$69",
-    free: false,
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop",
-  },
-  {
-    id: "5",
-    title: "TrinityFinancial",
-    creator: "Sohil Jain",
-    price: "$20",
-    free: false,
-    image: "https://images.unsplash.com/photo-1554224154-22dec7ec8818?w=600&h=400&fit=crop",
-  },
-  {
-    id: "6",
-    title: "OSCAR",
-    creator: "Template Co",
-    price: "$49",
-    free: false,
-    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop",
-  },
-  {
-    id: "7",
-    title: "Business & Corporate",
-    creator: "Studio Nine",
-    price: "Free",
-    free: true,
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop",
-  },
-  {
-    id: "8",
-    title: "NOLAN / MITCHELL",
-    creator: "Design Studio",
-    price: "$69",
-    free: false,
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
-  },
-  {
-    id: "9",
-    title: "Nature Hub",
-    creator: "Eco Templates",
-    price: "$39",
-    free: false,
-    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop",
-  },
+type TemplatePage = { label: string; href: string };
+type LibraryTemplate = {
+  id: string;
+  name: string;
+  description: string;
+  pages: TemplatePage[];
+};
+type LibraryManifest = {
+  title?: string;
+  subtitle?: string;
+  templates: LibraryTemplate[];
+};
+
+const SIDEBAR_CATEGORIES = [
+  { id: "featured", label: "Featured", icon: "★", count: 0, active: true },
+  { id: "design-library", label: "Design prototypes", icon: "◆", count: 0, active: false },
 ];
 
 const NAV_LINKS = [
@@ -108,6 +35,20 @@ const NAV_LINKS = [
 export function TemplatesDashboardClient() {
   const [activeCategory, setActiveCategory] = useState("featured");
   const [searchQuery, setSearchQuery] = useState("");
+  const [libraryManifest, setLibraryManifest] = useState<LibraryManifest | null>(null);
+  const [libraryError, setLibraryError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch(LIBRARY_MANIFEST_URL)
+      .then((res) => {
+        if (!res.ok) throw new Error(res.statusText);
+        return res.json();
+      })
+      .then((data: LibraryManifest) => setLibraryManifest(data))
+      .catch((err) => setLibraryError(err instanceof Error ? err.message : "Failed to load"));
+  }, []);
+
+  const libraryTemplates = libraryManifest?.templates ?? [];
 
   return (
     <>
@@ -205,12 +146,33 @@ export function TemplatesDashboardClient() {
             Featured Website Templates
           </h1>
           <p className="mt-2 text-base text-white/60">
-            The best templates hand-picked by the team.
+            {libraryManifest?.subtitle ?? "The best templates hand-picked by the team."}
           </p>
+          {libraryError && (
+            <p className="mt-4 text-sm text-amber-400">
+              Template library not loaded ({libraryError}). Run <code className="rounded bg-white/10 px-1">npm run template:sync-library</code> to copy design prototypes.
+            </p>
+          )}
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {/* Movement leader template — shareable, not in main nav */}
+            {/* Open full library (HTML launcher) */}
             <Link
-              href="/templates/dave-ferguson/index.html"
+              href="/templates/library"
+              className="group block rounded-xl border border-white/10 bg-white/5 transition hover:border-white/20 hover:bg-white/[0.07]"
+            >
+              <div className="aspect-[4/3] flex items-center justify-center overflow-hidden rounded-t-xl bg-gradient-to-br from-[#007AFF]/20 to-[#5856D6]/20">
+                <span className="text-4xl text-white/80">◇</span>
+              </div>
+              <div className="p-4">
+                <h3 className="font-semibold text-white">Design library (all modes)</h3>
+                <p className="mt-1 text-sm text-white/50">Open the full HTML launcher</p>
+                <p className="mt-2">
+                  <span className="text-sm font-medium text-[#007AFF]">Open library</span>
+                </p>
+              </div>
+            </Link>
+            {/* Dave Ferguson — standalone template */}
+            <Link
+              href="/templates/dave-ferguson"
               className="group block rounded-xl border border-white/10 bg-white/5 transition hover:border-white/20 hover:bg-white/[0.07]"
             >
               <div className="aspect-[4/3] overflow-hidden rounded-t-xl bg-white/10">
@@ -228,31 +190,30 @@ export function TemplatesDashboardClient() {
                 </p>
               </div>
             </Link>
-            {TEMPLATES.map((template) => (
-              <article
-                key={template.id}
-                className="group cursor-pointer rounded-xl border border-white/10 bg-white/5 transition hover:border-white/20 hover:bg-white/[0.07]"
-              >
-                <div className="aspect-[4/3] overflow-hidden rounded-t-xl bg-white/10">
-                  <img
-                    src={template.image}
-                    alt={template.title}
-                    className="h-full w-full object-cover transition group-hover:scale-[1.02]"
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="font-semibold text-white">{template.title}</h3>
-                  <p className="mt-1 text-sm text-white/50">{template.creator}</p>
-                  <p className="mt-2">
-                    {template.free ? (
-                      <span className="text-sm font-medium text-[#007AFF]">Free</span>
-                    ) : (
-                      <span className="text-sm font-medium text-white">{template.price}</span>
-                    )}
-                  </p>
-                </div>
-              </article>
-            ))}
+            {/* Design-mode prototypes from manifest */}
+            {libraryTemplates.map((template) => {
+              const href = `/templates/library/${template.id}/`;
+              return (
+                <Link
+                  key={template.id}
+                  href={href}
+                  className="group block rounded-xl border border-white/10 bg-white/5 transition hover:border-white/20 hover:bg-white/[0.07]"
+                >
+                  <div className="aspect-[4/3] flex items-center justify-center overflow-hidden rounded-t-xl bg-white/10">
+                    <span className="text-3xl text-white/60">◆</span>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-semibold text-white">{template.name}</h3>
+                    <p className="mt-1 line-clamp-2 text-sm text-white/50">{template.description}</p>
+                    <p className="mt-2">
+                      <span className="text-sm font-medium text-[#007AFF]">
+                        {template.pages.length} pages
+                      </span>
+                    </p>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </main>
       </div>

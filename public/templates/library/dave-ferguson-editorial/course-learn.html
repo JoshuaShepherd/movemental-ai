@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Maker Intensive — Learning — Dave Ferguson</title>
+  <meta name="description" content="Hero Maker Intensive course learning interface.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="e-theme e-learn">
+
+  <!-- Top Bar -->
+  <header class="e-learn-bar">
+    <div class="e-learn-bar__inner">
+      <a href="courses.html" class="e-learn-bar__back">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+        Back to Courses
+      </a>
+      <span class="e-learn-bar__title">Hero Maker Intensive</span>
+      <div class="e-learn-bar__progress">
+        <div class="e-learn-bar__progress-bar">
+          <div class="e-learn-bar__progress-fill" style="width: 17%;"></div>
+        </div>
+        <span class="e-learn-bar__progress-text">17% complete</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="e-learn-layout">
+
+    <!-- Sidebar: Module / Lesson TOC -->
+    <aside class="e-learn-sidebar" id="learn-sidebar">
+      <nav class="e-learn-toc" aria-label="Course table of contents">
+
+        <div class="e-learn-toc__module e-learn-toc__module--active">
+          <h3 class="e-learn-toc__module-title">Module 1: The Hero Trap</h3>
+          <ul class="e-learn-toc__lessons">
+            <li class="e-learn-toc__lesson e-learn-toc__lesson--complete">
+              <a href="#lesson-1-1">1.1 Why we default to the hero role</a>
+            </li>
+            <li class="e-learn-toc__lesson e-learn-toc__lesson--active">
+              <a href="#lesson-1-2">1.2 The cost of being the hero</a>
+            </li>
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-1-3">1.3 Recognizing hero culture</a>
+            </li>
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-1-4">1.4 The invitation to become a hero maker</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="e-learn-toc__module">
+          <h3 class="e-learn-toc__module-title">Module 2: Multiplication Thinking</h3>
+          <ul class="e-learn-toc__lessons">
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-2-1">2.1 Addition vs. multiplication mindset</a>
+            </li>
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-2-2">2.2 Thinking in generations of leaders</a>
+            </li>
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-2-3">2.3 The exponential impact</a>
+            </li>
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-2-4">2.4 Building a multiplication scorecard</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="e-learn-toc__module">
+          <h3 class="e-learn-toc__module-title">Module 3: Permission Giving</h3>
+          <ul class="e-learn-toc__lessons">
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-3-1">3.1 Creating a permission-giving culture</a>
+            </li>
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-3-2">3.2 Empowering without abdicating</a>
+            </li>
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-3-3">3.3 The art of saying "yes" more</a>
+            </li>
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-3-4">3.4 Case study: Community Christian Church</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="e-learn-toc__module">
+          <h3 class="e-learn-toc__module-title">Module 4: Disciple Multiplying</h3>
+          <ul class="e-learn-toc__lessons">
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-4-1">4.1 Jesus' model of disciple multiplication</a>
+            </li>
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-4-2">4.2 Apprenticeship as a way of life</a>
+            </li>
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-4-3">4.3 The I do / you watch framework</a>
+            </li>
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-4-4">4.4 Measuring disciple-making effectiveness</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="e-learn-toc__module">
+          <h3 class="e-learn-toc__module-title">Module 5: Gift Activating</h3>
+          <ul class="e-learn-toc__lessons">
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-5-1">5.1 Discovering gifts in others</a>
+            </li>
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-5-2">5.2 The commissioning conversation</a>
+            </li>
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-5-3">5.3 From consumer to contributor</a>
+            </li>
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-5-4">5.4 Building gift-based ministry teams</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="e-learn-toc__module">
+          <h3 class="e-learn-toc__module-title">Module 6: Kingdom Building</h3>
+          <ul class="e-learn-toc__lessons">
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-6-1">6.1 Beyond your own organization</a>
+            </li>
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-6-2">6.2 Collaborating for kingdom impact</a>
+            </li>
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-6-3">6.3 The NewThing movement story</a>
+            </li>
+            <li class="e-learn-toc__lesson">
+              <a href="#lesson-6-4">6.4 Your hero maker action plan</a>
+            </li>
+          </ul>
+        </div>
+
+      </nav>
+    </aside>
+
+    <!-- Main Lesson Content -->
+    <main class="e-learn-main" id="lesson-content">
+      <article class="e-learn-lesson">
+        <div class="e-learn-lesson__header">
+          <span class="e-learn-lesson__module">Module 1: The Hero Trap</span>
+          <h1 class="e-learn-lesson__title">1.2 The Cost of Being the Hero</h1>
+        </div>
+
+        <div class="e-learn-lesson__body">
+          <p>In the previous lesson, we explored why leaders naturally default to the hero role. It feels good. People celebrate you. The organization seems to depend on you. But there is a significant cost to carrying the hero identity, and in this lesson, we will confront it honestly.</p>
+
+          <h2>The Personal Cost</h2>
+          <p>When you are the hero, everything runs through you. Every decision, every initiative, every crisis lands on your desk. At first this feels empowering, but over time it becomes exhausting. Hero leaders experience higher rates of burnout, isolation, and even moral failure because the weight they carry was never designed for one person.</p>
+          <p>Dave Ferguson shares from his own experience: "There was a season early in my ministry where I was doing everything. Preaching every weekend, leading every meeting, casting every vision. I was the hero of my own story, and I was slowly dying inside. It wasn't until I nearly burned out that I realized something had to fundamentally change."</p>
+
+          <h2>The Organizational Cost</h2>
+          <p>Hero-driven organizations hit a ceiling. They can only grow as large as the hero's capacity. When the hero is absent, things stall. When the hero moves on, things collapse. Consider these warning signs:</p>
+          <ul>
+            <li>Nothing significant happens unless you initiate it</li>
+            <li>People wait for your approval before acting</li>
+            <li>The best emerging leaders leave because there is no room for them to lead</li>
+            <li>Growth has plateaued despite increased effort</li>
+          </ul>
+
+          <h2>The Kingdom Cost</h2>
+          <p>Perhaps the greatest cost is what remains undone. Every hour you spend doing what someone else could do is an hour you cannot spend on what only you can do. And more importantly, it is potential in another person that goes undeveloped.</p>
+          <p>Jesus modeled something radically different. He spent three years investing in twelve people, and within a generation, the movement they started had reached the known world. That kind of impact is impossible when one person insists on being the hero.</p>
+
+          <blockquote>
+            <p>"The hero gets a statue. The hero maker starts a movement."</p>
+            <cite>Dave Ferguson, Hero Maker</cite>
+          </blockquote>
+
+          <h2>Reflection Questions</h2>
+          <ol>
+            <li>Where in your leadership are you carrying the hero burden?</li>
+            <li>What warning signs from the list above do you recognize in your organization?</li>
+            <li>Who are the people around you whose potential is being limited by your hero role?</li>
+          </ol>
+
+          <h2>Next Steps</h2>
+          <p>In the next lesson, we will look at how to recognize hero culture in your organization — the systems, structures, and habits that keep the hero cycle in place. Understanding these patterns is the first step toward breaking free.</p>
+        </div>
+      </article>
+
+      <!-- Bottom Controls -->
+      <div class="e-learn-controls">
+        <a href="#lesson-1-1" class="e-learn-controls__btn e-learn-controls__btn--prev">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+          <span>
+            <span class="e-learn-controls__label">Previous</span>
+            <span class="e-learn-controls__name">1.1 Why we default to the hero role</span>
+          </span>
+        </a>
+        <a href="#lesson-1-3" class="e-learn-controls__btn e-learn-controls__btn--next">
+          <span>
+            <span class="e-learn-controls__label">Next</span>
+            <span class="e-learn-controls__name">1.3 Recognizing hero culture</span>
+          </span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Template collection — Movemental design prototypes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet" />
+  <style>
+    /* Movemental design system — from movemental-ai/html/styles/main.css */
+    :root {
+      --sage-50: #f0f4f0;
+      --sage-100: #e2e9e2;
+      --sage-200: #c5d3c5;
+      --sage-300: #a8bda8;
+      --sage-400: #8ba78b;
+      --sage-500: #6e916e;
+      --sage-600: #587458;
+      --sage-700: #425742;
+      --sage-800: #2c3a2c;
+      --sage-900: #161d16;
+      --sage-950: #0f140f;
+      --scarlet-400: #d55d5f;
+      --scarlet-500: #cb3437;
+      --scarlet-600: #a22a2c;
+      --orchid-400: #a373bf;
+      --orchid-500: #8c50af;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --text-on-dark: #ffffff;
+      --text-on-dark-secondary: #e2e8f0;
+      --text-on-dark-muted: #cbd5e1;
+      --text-on-dark-subtle: #94a3b8;
+      --border-on-dark: rgba(255, 255, 255, 0.15);
+      --section-py: clamp(48px, 10vw, 96px);
+      --section-px: clamp(20px, 5vw, 40px);
+      --container-max: 1200px;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --duration-fast: 200ms;
+      --duration-normal: 300ms;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-on-dark);
+      background: var(--sage-950);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Scroll progress */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--scarlet-500), var(--orchid-500));
+      width: 0%;
+      z-index: 1000;
+    }
+
+    /* Nav — Movemental site-nav */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      padding: 0 var(--section-px);
+      transition: background var(--duration-normal) var(--ease-out),
+                  backdrop-filter var(--duration-normal) var(--ease-out),
+                  box-shadow var(--duration-normal) var(--ease-out);
+    }
+    .site-nav.scrolled {
+      background: rgba(22, 29, 22, 0.92);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--border-on-dark);
+    }
+    .nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      font-family: var(--font-body);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-on-dark);
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      transition: color var(--duration-fast);
+    }
+    a.nav-logo:hover { color: var(--scarlet-400); }
+    .nav-logo span { color: var(--scarlet-400); }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 24px;
+      background: var(--scarlet-500);
+      color: white !important;
+      border-radius: var(--radius-full);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background var(--duration-fast), transform var(--duration-fast);
+    }
+    .nav-cta:hover {
+      background: var(--scarlet-600);
+      transform: translateY(-1px);
+    }
+
+    /* Hero — Movemental hero + section--darker */
+    .hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px var(--section-px) 80px;
+      background: linear-gradient(180deg, var(--sage-900) 0%, var(--sage-950) 100%);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(140, 80, 175, 0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 30%, rgba(203, 52, 55, 0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 var(--section-px);
+    }
+    .hero .h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--text-on-dark);
+      margin: 0 0 24px 0;
+    }
+    .hero .body-large {
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      line-height: 1.65;
+      color: var(--text-on-dark-secondary);
+      margin: 0 0 48px 0;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Main content */
+    .launcher-main {
+      padding: var(--section-py) var(--section-px) 4rem;
+      max-width: var(--container-max);
+      margin: 0 auto;
+    }
+    .section-header {
+      max-width: 720px;
+      margin-bottom: 48px;
+    }
+    .section-header.centered {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .section-header .h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      color: var(--text-on-dark);
+      margin-bottom: 16px;
+    }
+    .section-header .body-large {
+      font-size: 1.0625rem;
+      color: var(--text-on-dark-muted);
+      line-height: 1.6;
+    }
+
+    /* Template grid — Movemental cards-grid / card--dark */
+    .templates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .template-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-on-dark);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color var(--duration-fast), box-shadow var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out);
+    }
+    .template-card:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.07);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      transform: translateY(-2px);
+    }
+    .template-card[data-open="true"] {
+      border-color: var(--scarlet-400);
+    }
+    .template-card__head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.25rem 1.25rem 0;
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      background: none;
+      border: none;
+      color: inherit;
+      font: inherit;
+    }
+    .template-card__head:focus-visible {
+      outline: 2px solid var(--scarlet-500);
+      outline-offset: 2px;
+    }
+    .template-card__title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin: 0 0 0.25rem;
+      color: var(--text-on-dark);
+    }
+    .template-card__desc {
+      font-size: 0.875rem;
+      color: var(--text-on-dark-muted);
+      margin: 0;
+      line-height: 1.45;
+    }
+    .template-card__toggle {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.06);
+      color: var(--text-on-dark-muted);
+      transition: transform 0.25s var(--ease-out), color 0.2s ease;
+    }
+    .template-card[data-open="true"] .template-card__toggle {
+      transform: rotate(180deg);
+      color: var(--scarlet-400);
+    }
+    .template-card__toggle svg {
+      width: 18px;
+      height: 18px;
+    }
+    .template-card__body {
+      padding: 0 1.25rem 1.25rem;
+      display: none;
+    }
+    .template-card[data-open="true"] .template-card__body {
+      display: block;
+    }
+    .template-card__pages {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .template-card__pages a {
+      display: inline-block;
+      padding: 0.5rem 0.75rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border-on-dark);
+      border-radius: var(--radius-sm);
+      color: var(--text-on-dark-secondary);
+      text-decoration: none;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+    }
+    .template-card__pages a:hover {
+      border-color: var(--scarlet-400);
+      color: var(--scarlet-400);
+      background: rgba(203, 52, 55, 0.08);
+    }
+    .template-card__primary {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-on-dark);
+    }
+    .template-card__primary a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1rem;
+      background: var(--scarlet-500);
+      color: #fff !important;
+      border-radius: var(--radius-md);
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .template-card__primary a:hover {
+      background: var(--scarlet-600);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(203, 52, 55, 0.3);
+    }
+
+    /* Footer — Movemental site-footer */
+    .site-footer {
+      background: var(--sage-950);
+      color: var(--text-on-dark-muted);
+      padding: 64px var(--section-px) 32px;
+      border-top: 1px solid var(--border-on-dark);
+    }
+    .footer-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-logo {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-on-dark-secondary);
+    }
+    .footer-logo span { color: var(--scarlet-400); }
+    .footer-copy {
+      width: 100%;
+      text-align: center;
+      font-size: 13px;
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-on-dark);
+      color: var(--text-on-dark-subtle);
+    }
+    .footer-copy a {
+      color: var(--scarlet-400);
+      text-decoration: none;
+    }
+    .footer-copy a:hover { text-decoration: underline; }
+
+    #launcher-loading {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-on-dark-muted);
+    }
+    #launcher-error {
+      padding: 1.5rem;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: var(--radius-md);
+      color: #fca5a5;
+      margin: 2rem auto;
+      max-width: var(--container-max);
+    }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <header class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">← Home</a>
+      <a href="#launcher-main" class="nav-cta">Browse templates</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="h1">Template collection</h1>
+      <p class="body-large">Design-mode prototypes for the Movemental platform. Browse by mode: each includes a home page plus content → books → e-commerce → reader flows. Open any template to view its pages.</p>
+    </div>
+  </section>
+
+  <main class="launcher-main" id="launcher-main" aria-busy="true">
+    <div class="section-header centered">
+      <h2 class="h2">Design modes</h2>
+      <p class="body-large">Expand a card to see all completed pages for that template. Only pages that exist in the repo are listed.</p>
+    </div>
+    <p id="launcher-loading">Loading templates…</p>
+    <div id="launcher-error" class="hidden" role="alert" aria-live="polite"></div>
+    <ul class="templates-grid" id="templates-grid" hidden></ul>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-logo">Movemental <span>Templates</span></span>
+    </div>
+    <p class="footer-copy">Launcher data: <code>directories/templates-manifest.json</code>. When adding new templates or pages, update the manifest so they appear here. <a href="../_docs/LAUNCHER_HOME_PAGE.md">Docs</a></p>
+  </footer>
+
+  <script src="js/leader-switcher.js"></script>
+  <script>
+    (function () {
+      const LEADER_STORAGE_KEY = 'launcher-leader';
+      const VALID_LEADERS = ['alan-hirsch', 'brad-brisco', 'dave-ferguson'];
+
+      const grid = document.getElementById('templates-grid');
+      const loading = document.getElementById('launcher-loading');
+      const errorEl = document.getElementById('launcher-error');
+      const nav = document.getElementById('site-nav');
+      const progressBar = document.getElementById('scroll-progress');
+
+      let manifestData = null;
+
+      function getLeaderFromUrl() {
+        var params = new URLSearchParams(window.location.search);
+        var leader = params.get('leader');
+        return leader && VALID_LEADERS.indexOf(leader) >= 0 ? leader : null;
+      }
+      function getLeaderFromStorage() {
+        try {
+          var stored = localStorage.getItem(LEADER_STORAGE_KEY);
+          return stored && VALID_LEADERS.indexOf(stored) >= 0 ? stored : null;
+        } catch (e) { return null; }
+      }
+      function getEffectiveLeader() {
+        return getLeaderFromUrl() || getLeaderFromStorage() || 'alan-hirsch';
+      }
+      function setLeader(leader) {
+        if (!VALID_LEADERS.includes(leader)) return;
+        try { localStorage.setItem(LEADER_STORAGE_KEY, leader); } catch (e) {}
+        var url = new URL(window.location.href);
+        url.searchParams.set('leader', leader);
+        window.history.replaceState({}, '', url.toString());
+        if (manifestData) render(manifestData, leader);
+      }
+
+      function appendLeaderToHref(href, leader) {
+        if (!href || !leader) return href;
+        var sep = href.indexOf('?') >= 0 ? '&' : '?';
+        return href + sep + 'leader=' + encodeURIComponent(leader);
+      }
+
+      function onScroll() {
+        if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
+        if (progressBar) {
+          const h = document.documentElement.scrollHeight - window.innerHeight;
+          progressBar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      function showError(msg) {
+        loading.hidden = true;
+        grid.hidden = true;
+        errorEl.textContent = msg;
+        errorEl.classList.remove('hidden');
+        document.getElementById('launcher-main').setAttribute('aria-busy', 'false');
+      }
+
+      function render(data, leader) {
+        if (!data || !Array.isArray(data.templates)) {
+          showError('Invalid manifest: missing templates array.');
+          return;
+        }
+        leader = leader || getEffectiveLeader();
+        manifestData = data;
+        loading.hidden = true;
+        grid.hidden = false;
+        document.getElementById('launcher-main').setAttribute('aria-busy', 'false');
+        grid.innerHTML = '';
+        data.templates.forEach(function (t) {
+          const li = document.createElement('li');
+          li.className = 'template-card';
+          li.setAttribute('data-id', t.id);
+          const primaryPage = t.pages && t.pages[0];
+          let primaryHref = primaryPage ? primaryPage.href : (t.id + '/');
+          primaryHref = appendLeaderToHref(primaryHref, leader);
+          const pageLinks = (t.pages && t.pages.length)
+            ? t.pages.map(function (p) {
+                const href = appendLeaderToHref(p.href, leader);
+                return '<li><a href="' + escapeAttr(href) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(p.label) + '</a></li>';
+              }).join('')
+            : '';
+          li.innerHTML =
+            '<button type="button" class="template-card__head" aria-expanded="false" aria-controls="pages-' + escapeAttr(t.id) + '" id="btn-' + escapeAttr(t.id) + '">' +
+              '<div>' +
+                '<h2 class="template-card__title">' + escapeHtml(t.name) + '</h2>' +
+                (t.description ? '<p class="template-card__desc">' + escapeHtml(t.description) + '</p>' : '') +
+              '</div>' +
+              '<span class="template-card__toggle" aria-hidden="true">' +
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>' +
+              '</span>' +
+            '</button>' +
+            '<div class="template-card__body" id="pages-' + escapeAttr(t.id) + '" role="region" aria-labelledby="btn-' + escapeAttr(t.id) + '">' +
+              (t.pages && t.pages.length
+                ? '<ul class="template-card__pages">' + pageLinks +
+                  '</ul>' +
+                  '<div class="template-card__primary">' +
+                    '<a href="' + escapeAttr(primaryHref) + '" target="_blank" rel="noopener noreferrer">Open template →</a>' +
+                  '</div>'
+                : '<div class="template-card__primary"><a href="' + escapeAttr(primaryHref) + '" target="_blank" rel="noopener noreferrer">Open template →</a></div>') +
+            '</div>';
+          grid.appendChild(li);
+          const btn = li.querySelector('.template-card__head');
+          btn.addEventListener('click', function () {
+            const open = li.getAttribute('data-open') === 'true';
+            li.setAttribute('data-open', !open);
+            btn.setAttribute('aria-expanded', !open);
+          });
+        });
+      }
+
+      function escapeHtml(s) {
+        const div = document.createElement('div');
+        div.textContent = s;
+        return div.innerHTML;
+      }
+      function escapeAttr(s) {
+        return String(s)
+          .replace(/&/g, '&amp;')
+          .replace(/"/g, '&quot;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+      }
+
+      window.__onLeaderChange = setLeader;
+
+      fetch('templates-manifest.json')
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.status + ' ' + r.statusText);
+          return r.json();
+        })
+        .then(function (data) { render(data, getEffectiveLeader()); })
+        .catch(function (err) {
+          showError('Could not load templates. Serve this directory (e.g. from repo root) or check that templates-manifest.json exists. ' + (err && err.message ? err.message : ''));
+        });
+    })();
+  </script>
+</body>
+</html>

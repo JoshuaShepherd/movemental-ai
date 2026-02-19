@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Article — Leader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Sora:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body data-leader-title="pageTitles.articleDetail">
+
+  <!-- ========== ReaderHeader (reader layout) ========== -->
+  <header class="reader-header" id="header" role="banner">
+    <div class="reader-header__inner">
+      <a href="index.html" class="reader-header__logo" data-leader="name">Leader</a>
+      <nav class="reader-header__nav" aria-label="Reader navigation">
+        <a href="articles.html">Articles</a>
+        <a href="content-hub.html">Content</a>
+        <a href="chat.html">AI Lab</a>
+      </nav>
+      <div class="reader-header__actions">
+        <a href="signin.html" class="btn-signin">Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========== ContentDetailPage: article prose + byline ========== -->
+    <article class="article-detail" id="article-content">
+      <div class="article-detail__inner">
+        <div class="article-detail__badges">
+          <span class="badge badge--theme">Missional Church</span>
+        </div>
+        <h1 class="article-detail__title" data-leader="contentLibrary.articles.0.title">The Missional Impulse</h1>
+        <p class="article-detail__lead" data-leader="contentLibrary.articles.0.description">Why the church must recover its sent-ness in order to participate authentically in the mission of God.</p>
+        <div class="article-detail__meta">
+          <span class="article-detail__author" data-leader="name">Leader</span>
+          <span class="article-detail__read" data-leader="contentLibrary.articles.0.meta">8 min read</span>
+        </div>
+
+        <div class="article-detail__prose prose">
+          <p>The church exists for mission. When we forget that, we become chaplains to a subculture instead of witnesses to the kingdom. Recovering the missional impulse is not about adding programs or rebranding; it is about realigning with the sent-ness that defines the people of God.</p>
+          <p>In the New Testament, the church is repeatedly described as sent: Jesus sends the disciples, the Spirit sends the church into the world, and the apostolic movement spreads precisely because it understands itself as sent rather than as a destination. That sent-ness must shape our ecclesiology, our leadership, and our everyday practice.</p>
+          <h2>From attraction to sending</h2>
+          <p>Many congregations still operate on an attractional model: build it, and they will come. The missional shift invites us to become sending communities—equipping and releasing people into their neighborhoods, workplaces, and networks as bearers of good news.</p>
+          <p>This is not a rejection of gathered worship or teaching. It is a reordering: the gathered community exists to form and send, not only to receive. When the church recovers this impulse, it participates authentically in the mission of God.</p>
+        </div>
+
+        <!-- Byline -->
+        <footer class="article-detail__byline">
+          <img src="" alt="" class="article-detail__byline-photo" data-leader="portrait.headshot" data-leader-alt="portrait.headshotAlt" width="64" height="64" />
+          <div class="article-detail__byline-info">
+            <strong class="article-detail__byline-name" data-leader="name">Leader</strong>
+            <p class="article-detail__byline-bio" data-leader="tagline">Formation, mission, and discipleship.</p>
+          </div>
+        </footer>
+      </div>
+    </article>
+
+    <!-- ========== RelatedContent ========== -->
+    <section class="related-content">
+      <div class="related-content__inner">
+        <h2 class="related-content__title">Related</h2>
+        <div class="related-content__grid">
+          <a href="article-detail.html" class="dark-card dark-card--compact" data-type="article">
+            <div class="dark-card__body">
+              <span class="badge badge--type">Article</span>
+              <h3 class="dark-card__title" data-leader="contentLibrary.articles.1.title">Communitas vs. Community</h3>
+              <p class="dark-card__desc" data-leader="contentLibrary.articles.1.description">Understanding the difference between comfortable community and the transformative experience of communitas.</p>
+              <span class="dark-card__link">Read more &rarr;</span>
+            </div>
+          </a>
+          <a href="book-detail.html" class="dark-card dark-card--compact" data-type="book">
+            <div class="dark-card__body">
+              <span class="badge badge--type">Book</span>
+              <h3 class="dark-card__title" data-leader="books.0.title">Book</h3>
+              <p class="dark-card__desc" data-leader="books.0.shortDescription">Book description.</p>
+              <span class="dark-card__link">Read more &rarr;</span>
+            </div>
+          </a>
+          <a href="content-hub.html" class="dark-card dark-card--compact" data-type="course">
+            <div class="dark-card__body">
+              <span class="badge badge--type">Course</span>
+              <h3 class="dark-card__title" data-leader="contentLibrary.courses.0.title">Foundations of Missional Church</h3>
+              <p class="dark-card__desc" data-leader="contentLibrary.courses.0.description">A structured six-week course covering the theological and practical foundations.</p>
+              <span class="dark-card__link">Enroll &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== ReaderFooter (reader layout) ========== -->
+  <footer class="reader-footer">
+    <div class="reader-footer__inner">
+      <a href="content-hub.html" class="reader-footer__back">Back to Content</a>
+      <p class="reader-footer__copy" data-leader="pageCopy.footer.copy">© Leader. All rights reserved.</p>
+      <a href="#privacy" class="reader-footer__legal">Privacy</a>
+    </div>
+  </footer>
+
+  <button class="chat-open-btn" id="chat-open" aria-label="Open chat">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" /></svg>
+  </button>
+  <div class="chat-backdrop" id="chat-backdrop" aria-hidden="true"></div>
+  <div class="chat-panel" id="chat-panel" role="dialog" aria-label="AI Lab chat" aria-hidden="true">
+    <div class="chat-panel__header">
+      <h2 class="chat-panel__header-title" data-leader="pageCopy.chat.title"><span class="chat-panel__header-status" aria-hidden="true"></span> AI Lab</h2>
+      <button class="chat-panel__close" id="chat-close" aria-label="Close chat">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+    <div class="chat-panel__messages">
+      <p class="chat-panel__user-in-charge">You ask; you judge.</p>
+      <div class="chat-msg chat-msg--bot" data-leader="pageCopy.chat.placeholder">Ask a question about formation, mission, or discipleship.</div>
+      <div class="chat-panel__suggestions" aria-label="Suggested prompts">
+        <button type="button" class="chat-suggestion">What is mDNA?</button>
+        <button type="button" class="chat-suggestion">Explain APEST</button>
+        <button type="button" class="chat-suggestion">Suggest a next step</button>
+      </div>
+    </div>
+    <div class="chat-panel__input">
+      <input type="text" placeholder="Type your message…" aria-label="Chat message" data-leader-placeholder="pageCopy.chat.inputPlaceholder" />
+      <button class="chat-panel__send" aria-label="Send" data-leader="pageCopy.chat.sendLabel" type="button">Send</button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="../js/leader-content.js" data-json="../data/alan-hirsch.json"></script>
+</body>
+</html>

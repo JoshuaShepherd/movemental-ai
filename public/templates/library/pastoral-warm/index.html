@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leader — Formation, Mission, Discipleship</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/main.css" />
+
+</head>
+<body data-leader-title="pageTitles.home">
+  <header class="public-header" role="banner">
+    <div class="public-header__inner">
+      <a href="index.html" class="public-header__logo" data-leader="name">Leader</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav class="public-header__nav" id="nav" aria-label="Main navigation">
+        <a href="index.html" class="active">Home</a>
+        <a href="index-hero-v2.html">Home (Full-bleed)</a>
+        <a href="index-hero-v3.html">Home (Portrait + Art)</a>
+        <a href="index-hero-v4.html">Home (Art + Portrait)</a>
+        <a href="content-hub.html">Content</a>
+        <a href="index.html#themes">Themes</a>
+        <a href="index.html#assessments">Assessments</a>
+        <a href="chat.html">AI Lab</a>
+      </nav>
+      <div class="public-header__actions">
+        <a href="#search" aria-label="Search" class="public-header__search">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </a>
+        <a href="signin.html" class="btn-signin">Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content" id="welcome">
+    <section class="home-hero" aria-labelledby="hero-title">
+      <div class="home-hero__inner">
+        <div class="home-hero__content">
+          <p class="home-hero__eyebrow">Welcome to the journey</p>
+          <h1 id="hero-title" class="home-hero__title">Formation, mission, and discipleship for every context</h1>
+          <p class="home-hero__subtitle">
+            A place to grow. Explore resources for missional church, disciple making, and leadership formation — at your own pace, in your own way.
+          </p>
+          <div class="home-hero__ctas">
+            <a href="#content" class="btn btn--primary">Explore Content</a>
+            <a href="#themes" class="btn btn--secondary">Browse Themes</a>
+          </div>
+        </div>
+        <div class="home-hero__media">
+          <img src="" alt="" width="600" height="800" loading="eager" data-leader="hero.image" data-leader-alt="hero.imageAlt" />
+        </div>
+      </div>
+    </section>
+
+    <section class="exploration-lane section--art-bg" id="themes" aria-labelledby="themes-title" data-leader-bg="art.sectionBackgrounds.exploration">
+      <h2 id="themes-title" class="exploration-lane__title">Explore by theme</h2>
+      <div class="exploration-lane__grid">
+        <a href="#" class="theme-card">
+          <div class="theme-card__icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+          <h3 class="theme-card__title">Missional Church</h3>
+          <p class="theme-card__description">Foundations and practices for missional ecclesiology and apostolic movement.</p>
+          <span class="theme-card__meta">12 articles</span>
+        </a>
+        <a href="#" class="theme-card">
+          <div class="theme-card__icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg></div>
+          <h3 class="theme-card__title">Formation</h3>
+          <p class="theme-card__description">Spiritual and leadership formation for disciples and leaders.</p>
+          <span class="theme-card__meta">8 articles</span>
+        </a>
+        <a href="#" class="theme-card">
+          <div class="theme-card__icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <h3 class="theme-card__title">Disciple Making</h3>
+          <p class="theme-card__description">Making disciples who make disciples: frameworks and practices.</p>
+          <span class="theme-card__meta">6 articles</span>
+        </a>
+        <a href="#" class="theme-card">
+          <div class="theme-card__icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <h3 class="theme-card__title">APEST</h3>
+          <p class="theme-card__description">Apostolic, prophetic, evangelistic, shepherd, teacher — fivefold ministry.</p>
+          <span class="theme-card__meta">10 articles</span>
+        </a>
+        <a href="#" class="theme-card">
+          <div class="theme-card__icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <h3 class="theme-card__title">Kingdom Mission</h3>
+          <p class="theme-card__description">Kingdom-centered mission and church planting.</p>
+          <span class="theme-card__meta">5 articles</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="library-lane section--art-band" id="content" aria-labelledby="library-title">
+      <div class="section__art-band-strip" data-leader-bg="art.sectionBackgrounds.library" aria-hidden="true"></div>
+      <h2 id="library-title" class="library-lane__title">Content library</h2>
+      <div class="library-lane__grid">
+        <a href="articles.html" class="library-card">
+          <div class="library-card__thumb"><img src="../images/art/hero-sections/art-abstract-emerging-concept-sketch-with-charcoal-line.webp" alt="" loading="lazy" /></div>
+          <div class="library-card__icon-wrap">
+            <svg class="library-card__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>
+          </div>
+          <h3 class="library-card__title">Articles</h3>
+          <p class="library-card__description">Essays, reflections, and deep dives on mission and formation.</p>
+          <span class="library-card__meta">2 articles</span>
+        </a>
+        <a href="#" class="library-card">
+          <div class="library-card__thumb"><img src="../images/books/book-reframation.webp" alt="" loading="lazy" /></div>
+          <div class="library-card__icon-wrap">
+            <svg class="library-card__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg>
+          </div>
+          <h3 class="library-card__title">Books</h3>
+          <p class="library-card__description">Books and excerpts for study and reference.</p>
+          <span class="library-card__meta">7 titles</span>
+        </a>
+        <a href="#" class="library-card">
+          <div class="library-card__thumb"><img src="../images/art/courses/art-courses-hero-formation.webp" alt="" loading="lazy" /></div>
+          <div class="library-card__icon-wrap">
+            <svg class="library-card__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a23.838 23.838 0 0 0-1.012 5.434c-.085.362-.12.752-.12 1.145 0 .058.005.116.006.174M19.74 10.147a23.839 23.839 0 0 1 1.012 5.434c.085.362.12.752.12 1.145 0 .058-.005.116-.006.174M12 2.25l8.27 4.04a.75.75 0 0 1 0 1.336L12 11.664 3.73 7.626a.75.75 0 0 1 0-1.336L12 2.25Z"/></svg>
+          </div>
+          <h3 class="library-card__title">Courses</h3>
+          <p class="library-card__description">Structured learning paths by theme.</p>
+          <span class="library-card__meta">1 course</span>
+        </a>
+        <a href="podcasts.html" class="library-card">
+          <div class="library-card__thumb"><img src="../images/art/hero-sections/art-abstract-sound-wave-inspired-curves-made-with-charc.webp" alt="" loading="lazy" /></div>
+          <div class="library-card__icon-wrap">
+            <svg class="library-card__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z"/></svg>
+          </div>
+          <h3 class="library-card__title">Podcasts</h3>
+          <p class="library-card__description">Conversations and interviews on mission and church.</p>
+          <span class="library-card__meta">2 episodes</span>
+        </a>
+        <a href="#" class="library-card">
+          <div class="library-card__thumb"><img src="../images/art/hero-sections/art-abstract-stacked-and-overlapping-rectangular-gestur.webp" alt="" loading="lazy" /></div>
+          <div class="library-card__icon-wrap">
+            <svg class="library-card__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
+          </div>
+          <h3 class="library-card__title">Videos</h3>
+          <p class="library-card__description">Talks, teaching, and video series.</p>
+          <span class="library-card__meta">2 videos</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="home-foot" id="about" aria-labelledby="about-title">
+      <div class="home-foot__inner">
+        <div class="home-foot__top">
+          <div class="home-foot__about">
+            <h2 id="about-title" class="home-foot__title" data-leader="pageCopy.indexAbout.title">About Alan</h2>
+            <p class="home-foot__about-text" data-leader="pageCopy.indexAbout.text">Alan Hirsch is a missional theologian, author, and thought leader. He has written widely on apostolic movement, discipleship, and the renewal of the church. His work includes The Forgotten Ways, 5Q, and Reframation, and he co-founded the 5Q Collective and Movement Leaders Collective. This platform exists to translate his work—into conversation (AL), courses, books, and your language.</p>
+            <a href="pricing.html" class="home-foot__cta btn btn--secondary" data-leader="pageCopy.indexAbout.cta">Formation & pricing</a>
+          </div>
+          <div class="home-foot__newsletter">
+            <h2 class="home-foot__title" data-leader="pageCopy.newsletter.title">Stay in the loop</h2>
+            <p class="home-foot__newsletter-desc" data-leader="pageCopy.newsletter.description">Occasional updates on new content, courses, and formation—no spam.</p>
+            <form class="home-foot__newsletter-form" action="#" method="post" aria-label="Newsletter signup">
+              <input type="email" class="home-foot__newsletter-input" name="email" placeholder="Your email" data-leader-placeholder="pageCopy.newsletter.placeholder" required />
+              <button type="submit" class="btn btn--primary" data-leader="pageCopy.newsletter.buttonLabel">Subscribe</button>
+            </form>
+          </div>
+        </div>
+        <div class="home-foot__orgs">
+          <h2 class="home-foot__orgs-title" data-leader="pageCopy.indexOrgs.title">Organizations Alan founded and partners with</h2>
+          <p class="home-foot__orgs-subtitle" data-leader="pageCopy.indexOrgs.subtitle">Connect with the movements and platforms carrying his frameworks into practice.</p>
+          <div class="home-foot__orgs-grid" data-leader-list="orgs">
+            <a href="#" class="org-card" data-leader-item-template data-leader-item="url" target="_blank" rel="noopener noreferrer">
+              <span class="org-card__logo-wrap"><img class="org-card__logo" data-leader-item="logoPath" src="" alt="" width="160" height="64" loading="lazy" /></span>
+              <span class="org-card__name" data-leader-item="name">Organization</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="public-footer" role="contentinfo">
+    <div class="public-footer__inner">
+      <nav class="public-footer__links" aria-label="Footer links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#formation">Formation</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="#accessibility">Accessibility</a>
+      </nav>
+      <p class="public-footer__copy" data-leader="pageCopy.footer.copy">© Leader. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button type="button" class="floating-chat-button" id="chat-open" aria-label="Open AI Lab chat">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+  </button>
+  <div class="chat-backdrop" id="chat-backdrop" aria-hidden="true"></div>
+  <aside class="floating-chat-panel" id="chat-panel" aria-label="AI Lab chat panel" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="floating-chat-panel__header">
+      <h2 class="floating-chat-panel__title" data-leader="pageCopy.chat.title">AI Lab</h2>
+      <button type="button" class="floating-chat-panel__close" id="chat-close" aria-label="Close chat">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="floating-chat-panel__body"><p class="floating-chat-panel__placeholder" data-leader="pageCopy.chat.placeholder">Ask a question about formation, mission, or discipleship.</p>
+      <div class="floating-chat-panel__suggestions">
+        <button type="button" class="floating-chat-panel__suggestion">What is mDNA?</button>
+        <button type="button" class="floating-chat-panel__suggestion">Explain APEST</button>
+        <button type="button" class="floating-chat-panel__suggestion">Suggest a next step</button>
+      </div>
+    </div>
+    <div class="floating-chat-panel__input-area">
+      <input type="text" class="floating-chat-panel__input" placeholder="Type your message…" aria-label="Chat message" data-leader-placeholder="pageCopy.chat.inputPlaceholder" />
+      <button type="button" class="floating-chat-panel__send" data-leader="pageCopy.chat.sendLabel">Send</button>
+    </div>
+  </aside>
+
+    <script src="js/main.js"></script>
+    <script src="../js/leader-content.js" data-json="../data/alan-hirsch.json"></script>
+</body>
+</html>

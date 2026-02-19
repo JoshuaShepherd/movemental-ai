@@ -1,0 +1,164 @@
+{
+  "id": "brad-brisco",
+  "name": "Brad Brisco",
+  "tagline": "Missional church, multiplication, and church planting",
+  "hero": {
+    "title": "Missional church, multiplication, and church planting",
+    "subtitle": "Explore resources and themes for missional engagement, church multiplication, and bivocational leadership. No sign-up required to browse.",
+    "ctaPrimary": { "label": "Explore Content", "href": "#content" },
+    "ctaSecondary": { "label": "Browse Themes", "href": "#themes" },
+    "image": "../images/brad/brad-brisco-casual-light-16x9.webp",
+    "imageAlt": "Brad Brisco",
+    "imagesByContext": {
+      "default": "../images/brad/brad-brisco-casual-light-16x9.webp",
+      "grassroots": "../images/brad/brad-brisco-casual-light-16x9.webp",
+      "cinematic": "../images/brad/brad-brisco-portrait-dark-16x9.webp",
+      "outdoor": "../images/brad/brad-brisco-outdoor-golden-16x9.webp",
+      "primary": "../images/brad/brad-brisco-primary.jpg"
+    }
+  },
+  "portrait": {
+    "headshot": "../images/brad/brad-brisco-library-rays-3x4.webp",
+    "headshotAlt": "Brad Brisco"
+  },
+  "themes": [
+    { "slug": "missional-church", "title": "Missional Church", "description": "Foundations and practices for missional ecclesiology and sent life." },
+    { "slug": "church-planting", "title": "Church Planting", "description": "Multiplication strategies, Send Network, and church planting movements." },
+    { "slug": "bivocational", "title": "Bivocational Ministry", "description": "Covocational and bivocational church planting and leadership." },
+    { "slug": "multiplication", "title": "Multiplication", "description": "Building cultures and systems that multiply disciples and churches." },
+    { "slug": "neighborhood-mission", "title": "Neighborhood Mission", "description": "Next-door mission and incarnational presence in community." }
+  ],
+  "contentLibrary": {
+    "articles": [
+      { "title": "Work as Worship", "theme": "missional-church", "themeLabel": "Missional Church", "description": "Integrating faith and work in everyday missional engagement.", "meta": "6 min read", "linkLabel": "Read article" },
+      { "title": "Rethink Multiplication", "theme": "multiplication", "themeLabel": "Multiplication", "description": "Paradigm shifts for activating the church in multiplication.", "meta": "8 min read", "linkLabel": "Read article" }
+    ],
+    "courses": [
+      { "title": "Church Planting Masterclass", "theme": "church-planting", "themeLabel": "Church Planting", "description": "Principles and practices for church planters and multiplication leaders.", "meta": "8 modules · 10 hours", "linkLabel": "Enroll" }
+    ],
+    "podcasts": [
+      { "title": "Managing Your Time as Bivocational", "theme": "bivocational", "themeLabel": "Bivocational Ministry", "description": "Brad Brisco on time management and sustainability in bivocational ministry.", "runtime": "32:00", "linkLabel": "Listen" },
+      { "title": "Principles for Multiplication", "theme": "multiplication", "themeLabel": "Multiplication", "description": "Conversations on multiplication strategies with Send Network and Forge.", "runtime": "40:15", "linkLabel": "Listen" }
+    ],
+    "videos": []
+  },
+  "libraryCards": {
+    "articles": { "title": "Articles", "description": "Essays and reflections on missional church and multiplication." },
+    "books": { "title": "Books", "description": "Books and resources for study and reference." },
+    "courses": { "title": "Courses", "description": "Structured learning paths by theme." },
+    "podcasts": { "title": "Podcasts", "description": "Conversations on missional church and church planting." },
+    "videos": { "title": "Videos", "description": "Talks and teaching series." }
+  },
+  "books": [
+    {
+      "slug": "the-missional-quest",
+      "title": "The Missional Quest",
+      "cover": "../images/books/book-the-missional-quest.jpg",
+      "coverAlt": "The Missional Quest book cover",
+      "author": "Brad Brisco",
+      "theme": "missional-church",
+      "themeLabel": "Missional Church",
+      "shortDescription": "Becoming a church of the long run—sustained missional engagement and disciple making."
+    },
+    {
+      "slug": "missional-essentials",
+      "title": "Missional Essentials",
+      "cover": "../images/books/book-missional-essentials.jpg",
+      "coverAlt": "Missional Essentials book cover",
+      "author": "Brad Brisco",
+      "theme": "missional-church",
+      "themeLabel": "Missional Church",
+      "shortDescription": "A 12-week curriculum on missional church foundations and practices."
+    },
+    {
+      "slug": "rethink",
+      "title": "ReThink: 9 Key Paradigm Shifts for Activating the Church",
+      "cover": "../images/books/book-rethink.png",
+      "coverAlt": "ReThink book cover",
+      "author": "Brad Brisco",
+      "theme": "multiplication",
+      "themeLabel": "Multiplication",
+      "shortDescription": "Nine paradigm shifts to help the church move from maintenance to multiplication."
+    }
+  ],
+  "pageTitles": {
+    "home": "Brad Brisco — Missional Church, Multiplication, Church Planting",
+    "books": "Books — Brad Brisco",
+    "contentHub": "Content Library — Brad Brisco",
+    "bookDetail": "The Missional Quest — Brad Brisco",
+    "pricing": "Plans & Pricing — Brad Brisco",
+    "bookReader": "Reading: The Missional Quest — Chapter 1"
+  },
+  "pageCopy": {
+    "books": {
+      "title": "Books",
+      "subtitle": "Explore books by Brad Brisco on missional church, multiplication, and church planting."
+    },
+    "contentHub": {
+      "title": "Content Library",
+      "subtitle": "Explore articles, books, courses, and podcasts on missional church and multiplication."
+    },
+    "footer": {
+      "copy": "© Brad Brisco. All rights reserved.",
+      "links": [
+        { "label": "Home", "href": "index.html" },
+        { "label": "Privacy", "href": "#privacy" },
+        { "label": "Terms", "href": "#terms" },
+        { "label": "Accessibility", "href": "#accessibility" }
+      ]
+    },
+    "chat": {
+      "title": "AI Lab",
+      "placeholder": "Ask a question about missional church, multiplication, or church planting. This is a standalone demo; chat is not connected to a backend.",
+      "inputPlaceholder": "Type your message…",
+      "sendLabel": "Send"
+    }
+  },
+  "art": {
+    "heroBackground": "../images/art/hero-sections/art-abstract-cinematic-frame-created-with-loose-charcoa.webp",
+    "heroBand": "../images/art/hero-sections/art-abstract-flowing-pathways-diverging-and-converging.webp",
+    "sectionBackgrounds": {
+      "exploration": "../images/art/hero-sections/art-abstract-communal-figures-loosely-circling-a-centra.webp",
+      "library": "../images/art/hero-sections/art-abstract-vertical-stacked-forms-evoking-a-row-of-bo.webp",
+      "divider": "../images/art/hero-sections/art-abstract-emerging-concept-sketch-with-charcoal-line.webp"
+    },
+    "all": [
+      "../images/art/hero-sections/art-abstract-cinematic-frame-created-with-loose-charcoa.webp",
+      "../images/art/hero-sections/art-abstract-cinematic-frame-created-with-loose-charcoa-1.webp",
+      "../images/art/hero-sections/art-abstract-communal-figures-loosely-circling-a-centra.webp",
+      "../images/art/hero-sections/art-abstract-communal-figures-loosely-circling-a-centra-1.webp",
+      "../images/art/hero-sections/art-abstract-communal-figures-loosely-circling-a-centra-2.webp",
+      "../images/art/hero-sections/art-abstract-emerging-concept-sketch-with-charcoal-line.webp",
+      "../images/art/hero-sections/art-abstract-emerging-concept-sketch-with-charcoal-line-1.webp",
+      "../images/art/hero-sections/art-abstract-flowing-pathways-diverging-and-converging.webp",
+      "../images/art/hero-sections/art-abstract-sound-wave-inspired-curves-made-with-charc.webp",
+      "../images/art/hero-sections/art-abstract-sound-wave-inspired-curves-made-with-charc-1.webp",
+      "../images/art/hero-sections/art-abstract-stacked-and-overlapping-rectangular-gestur.webp",
+      "../images/art/hero-sections/art-abstract-stacked-and-overlapping-rectangular-gestur-1.webp",
+      "../images/art/hero-sections/art-abstract-stacked-and-overlapping-rectangular-gestur-2.webp",
+      "../images/art/hero-sections/art-abstract-vertical-stacked-forms-evoking-a-row-of-bo.webp",
+      "../images/art/hero-sections/art-abstract-vertical-stacked-forms-evoking-a-row-of-bo-1.webp",
+      "../images/art/hero-sections/art-abstract-vertical-stacked-forms-evoking-a-row-of-bo-2.webp"
+    ]
+  },
+  "images": {
+    "leader": [
+      "../images/brad/brad-brisco-studio-backdrop-3x4.webp",
+      "../images/brad/brad-brisco-portrait-dark-16x9.webp",
+      "../images/brad/brad-brisco-outdoor-golden-16x9.webp",
+      "../images/brad/brad-brisco-primary.jpg",
+      "../images/brad/brad-brisco-library-rays-3x4.webp",
+      "../images/brad/brad-brisco-casual-light-16x9.webp",
+      "../images/brad/brad-brisco-office-bw-3x4.webp",
+      "../images/brad/brad-brisco-urban-steps-a-16x9.webp",
+      "../images/brad/brad-brisco-urban-steps-b-16x9.webp",
+      "../images/brad/brad-headshot-no-bg.png"
+    ],
+    "books": [
+      "../images/books/book-the-missional-quest.jpg",
+      "../images/books/book-missional-essentials.jpg",
+      "../images/books/book-missional-essentials-cover.jpg",
+      "../images/books/book-rethink.png"
+    ]
+  }
+}

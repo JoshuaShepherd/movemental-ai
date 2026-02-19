@@ -212,9 +212,9 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* Templates CTA */}
+            {/* Templates CTA — HTML template library */}
             <Link
-              href="/templates"
+              href="/templates/library/"
               className="ml-1 px-3 py-1.5 text-sm font-medium rounded-full transition-colors bg-velvet-orchid-500 text-white hover:bg-velvet-orchid-600"
             >
               Templates
@@ -295,9 +295,9 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
               Search
             </Link>
 
-            {/* Templates CTA (mobile) */}
+            {/* Templates CTA (mobile) — HTML template library */}
             <Link
-              href="/templates"
+              href="/templates/library/"
               className="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg bg-velvet-orchid-500 text-white hover:bg-velvet-orchid-600 transition-colors"
             >
               <LayoutGrid className="h-5 w-5" />

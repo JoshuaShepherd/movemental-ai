@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Sora:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body data-leader-title="pageTitles.contentHub">
+
+  <!-- ========== PublicHeader ========== -->
+  <header class="public-header is-scrolled" id="header">
+    <div class="public-header__inner">
+      <a href="index.html" class="public-header__logo" data-leader="name">Leader</a>
+      <nav class="public-header__nav" id="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="content-hub.html" class="active">Content</a>
+        <a href="index.html#themes">Themes</a>
+        <a href="index.html#assessments">Assessments</a>
+        <a href="chat.html">AI Lab</a>
+      </nav>
+      <div class="public-header__actions">
+        <button class="public-header__search" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>
+        </button>
+        <a href="signin.html" class="btn-signin">Sign In</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="page-hero__inner">
+        <h1 class="page-hero__title">Content Library</h1>
+        <p class="page-hero__subtitle">Articles, books, courses, podcasts, and videos spanning decades of missional thought and practice.</p>
+      </div>
+    </section>
+
+    <!-- Tabs -->
+    <div class="content-tabs">
+      <div class="content-tabs__inner">
+        <button class="content-tab active" data-filter="all">All</button>
+        <button class="content-tab" data-filter="article">Articles</button>
+        <button class="content-tab" data-filter="book">Books</button>
+        <a href="courses.html" class="content-tab">Courses</a>
+        <a href="podcasts.html" class="content-tab">Podcasts</a>
+        <button class="content-tab" data-filter="video">Videos</button>
+      </div>
+    </div>
+
+    <!-- Content Grid -->
+    <section class="content-hub">
+      <div class="content-hub__inner">
+        <div class="content-hub__grid">
+
+          <!-- Book Card -->
+          <a href="book-detail.html" class="dark-card" data-type="book">
+            <div class="dark-card__media">
+              <img src="" alt="" data-leader="books.0.cover" data-leader-alt="books.0.coverAlt" />
+            </div>
+            <div class="dark-card__body">
+              <div class="dark-card__badges">
+                <span class="badge badge--type">Book</span>
+                <span class="badge badge--theme" data-leader="books.0.themeLabel">Theme</span>
+              </div>
+              <h3 class="dark-card__title" data-leader="books.0.title">Book</h3>
+              <p class="dark-card__desc" data-leader="books.0.shortDescription">Book description.</p>
+              <span class="dark-card__link">Read more &rarr;</span>
+            </div>
+          </a>
+
+          <!-- Article Card -->
+          <a href="article-detail.html" class="dark-card" data-type="article">
+            <div class="dark-card__media">
+              <svg class="dark-card__media-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
+            </div>
+            <div class="dark-card__body">
+              <div class="dark-card__badges">
+                <span class="badge badge--type">Article</span>
+                <span class="badge badge--theme">APEST</span>
+              </div>
+              <h3 class="dark-card__title">APEST: A Typology for the Whole Church</h3>
+              <p class="dark-card__desc">Why the fivefold ministry is not about leadership roles but the fundamental calling of every believer.</p>
+              <span class="dark-card__link">Read more &rarr;</span>
+            </div>
+          </a>
+
+          <!-- Video Card -->
+          <a href="video-detail.html" class="dark-card" data-type="video">
+            <div class="dark-card__media">
+              <svg class="dark-card__media-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>
+              <span class="dark-card__runtime">42 min</span>
+            </div>
+            <div class="dark-card__body">
+              <div class="dark-card__badges">
+                <span class="badge badge--type">Video</span>
+                <span class="badge badge--theme">Apostolic Movement</span>
+              </div>
+              <h3 class="dark-card__title">The Forgotten Ways: Reactivating Apostolic Genius</h3>
+              <p class="dark-card__desc">A comprehensive overview of the six elements of Apostolic Genius and how they catalyze movement.</p>
+              <span class="dark-card__link">Watch &rarr;</span>
+            </div>
+          </a>
+
+          <!-- Podcast Card -->
+          <a href="podcast-detail.html" class="dark-card" data-type="podcast">
+            <div class="dark-card__media">
+              <svg class="dark-card__media-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" /></svg>
+              <span class="dark-card__runtime">58 min</span>
+            </div>
+            <div class="dark-card__body">
+              <div class="dark-card__badges">
+                <span class="badge badge--type">Podcast</span>
+                <span class="badge badge--theme">Missional Church</span>
+              </div>
+              <h3 class="dark-card__title">Missional Church in a Post-Christian Context</h3>
+              <p class="dark-card__desc">Exploring what it means to be a genuinely missional community when Christendom assumptions no longer hold.</p>
+              <span class="dark-card__link">Listen &rarr;</span>
+            </div>
+          </a>
+
+          <!-- Book Card 2 -->
+          <a href="books.html" class="dark-card" data-type="book">
+            <div class="dark-card__media">
+              <img src="../images/books/book-5q.webp" alt="5Q book cover" />
+            </div>
+            <div class="dark-card__body">
+              <div class="dark-card__badges">
+                <span class="badge badge--type">Book</span>
+                <span class="badge badge--theme">APEST</span>
+              </div>
+              <h3 class="dark-card__title">5Q: Reactivating the Original Intelligence and Capacity of the Body of Christ</h3>
+              <p class="dark-card__desc">The definitive guide to understanding and applying the fivefold (APEST) ministry in every context.</p>
+              <span class="dark-card__link">Read more &rarr;</span>
+            </div>
+          </a>
+
+          <!-- Course Card -->
+          <a href="course-detail.html" class="dark-card" data-type="course">
+            <div class="dark-card__media">
+              <svg class="dark-card__media-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" /></svg>
+            </div>
+            <div class="dark-card__body">
+              <div class="dark-card__badges">
+                <span class="badge badge--type">Course</span>
+                <span class="badge badge--theme">Formation</span>
+              </div>
+              <h3 class="dark-card__title">Foundations of Missional Leadership</h3>
+              <p class="dark-card__desc">A structured 8-week journey through the core principles of missional leadership and apostolic movement.</p>
+              <span class="dark-card__link">Enroll &rarr;</span>
+            </div>
+          </a>
+
+          <!-- Video Card 2 -->
+          <a href="#" class="dark-card" data-type="video">
+            <div class="dark-card__media">
+              <svg class="dark-card__media-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>
+              <span class="dark-card__runtime">1h 15min</span>
+            </div>
+            <div class="dark-card__body">
+              <div class="dark-card__badges">
+                <span class="badge badge--type">Video</span>
+                <span class="badge badge--theme">Disciple Making</span>
+              </div>
+              <h3 class="dark-card__title">Leading as a Movement Starter</h3>
+              <p class="dark-card__desc">Practical principles for catalyzing organic, reproducible movements within existing church structures.</p>
+              <span class="dark-card__link">Watch &rarr;</span>
+            </div>
+          </a>
+
+          <!-- Article Card 2 -->
+          <a href="article-detail.html" class="dark-card" data-type="article">
+            <div class="dark-card__media">
+              <svg class="dark-card__media-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
+            </div>
+            <div class="dark-card__body">
+              <div class="dark-card__badges">
+                <span class="badge badge--type">Article</span>
+                <span class="badge badge--theme">Formation</span>
+              </div>
+              <h3 class="dark-card__title">The Permanent Revolution: Chapter One</h3>
+              <p class="dark-card__desc">The opening chapter exploring apostolic imagination and its role in the ongoing renewal of the church.</p>
+              <span class="dark-card__link">Read more &rarr;</span>
+            </div>
+          </a>
+
+          <!-- Podcast Card 2 -->
+          <a href="#" class="dark-card" data-type="podcast">
+            <div class="dark-card__media">
+              <svg class="dark-card__media-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" /></svg>
+              <span class="dark-card__runtime">45 min</span>
+            </div>
+            <div class="dark-card__body">
+              <div class="dark-card__badges">
+                <span class="badge badge--type">Podcast</span>
+                <span class="badge badge--theme">Christocentric</span>
+              </div>
+              <h3 class="dark-card__title">Rediscovering Jesus at the Center</h3>
+              <p class="dark-card__desc">A conversation about returning to the irreducible centrality of Jesus in theology, mission, and everyday discipleship.</p>
+              <span class="dark-card__link">Listen &rarr;</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== PublicFooter ========== -->
+  <footer class="public-footer">
+    <div class="public-footer__inner">
+      <div class="public-footer__top">
+        <div>
+          <h2 class="public-footer__brand-title" data-leader="name">Leader</h2>
+          <p class="public-footer__brand-desc">Pioneering frameworks for missional ecclesiology, apostolic movement, and the fivefold ministry.</p>
+        </div>
+        <div>
+          <h3 class="public-footer__column-title">Explore</h3>
+          <ul class="public-footer__links">
+            <li><a href="content-hub.html">Content</a></li>
+            <li><a href="books.html">Books</a></li>
+            <li><a href="#">Assessments</a></li>
+            <li><a href="#">Formation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="public-footer__column-title">Resources</h3>
+          <ul class="public-footer__links">
+            <li><a href="chat.html">AI Lab</a></li>
+            <li><a href="#">Podcasts</a></li>
+            <li><a href="video-detail.html">Videos</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="public-footer__column-title">Connect</h3>
+          <ul class="public-footer__links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#formation">Formation</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Newsletter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="public-footer__bottom">
+        <p class="public-footer__copy" data-leader="pageCopy.footer.copy">© Leader. All rights reserved.</p>
+        <div class="public-footer__legal">
+          <a href="#privacy">Privacy</a>
+          <a href="#terms">Terms</a>
+          <a href="#accessibility">Accessibility</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FloatingChatButton -->
+  <button class="chat-open-btn" id="chat-open" aria-label="Open chat">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" /></svg>
+  </button>
+  <div class="chat-backdrop" id="chat-backdrop" aria-hidden="true"></div>
+  <div class="chat-panel" id="chat-panel" role="dialog" aria-label="AI Lab chat" aria-hidden="true">
+    <div class="chat-panel__header">
+      <h2 class="chat-panel__header-title" data-leader="pageCopy.chat.title"><span class="chat-panel__header-status" aria-hidden="true"></span> AI Lab</h2>
+      <button class="chat-panel__close" id="chat-close" aria-label="Close chat">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+    <div class="chat-panel__messages">
+      <p class="chat-panel__user-in-charge">You ask; you judge.</p>
+      <div class="chat-msg chat-msg--bot" data-leader="pageCopy.chat.placeholder">Ask a question about formation, mission, or discipleship. This is a standalone demo; chat is not connected to a backend.</div>
+      <div class="chat-panel__suggestions" aria-label="Suggested prompts">
+        <button type="button" class="chat-suggestion">What is mDNA?</button>
+        <button type="button" class="chat-suggestion">Explain APEST</button>
+        <button type="button" class="chat-suggestion">Suggest a next step</button>
+      </div>
+    </div>
+    <div class="chat-panel__input">
+      <input type="text" placeholder="Type your message…" aria-label="Chat message" data-leader-placeholder="pageCopy.chat.inputPlaceholder" />
+      <button class="chat-panel__send" aria-label="Send" data-leader="pageCopy.chat.sendLabel" type="button">Send</button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="../js/leader-content.js" data-json="../data/alan-hirsch.json"></script>
+</body>
+</html>

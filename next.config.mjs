@@ -28,6 +28,16 @@ const nextConfig = {
         destination: '/templates/dave-ferguson/index.html',
         permanent: false,
       },
+      {
+        source: '/templates/library',
+        destination: '/templates/library/index.html',
+        permanent: false,
+      },
+      {
+        source: '/templates/library/',
+        destination: '/templates/library/index.html',
+        permanent: false,
+      },
     ]
   },
 };
