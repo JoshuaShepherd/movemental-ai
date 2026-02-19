@@ -386,6 +386,7 @@
 
   function run(config) {
     validateConfig(config);
+    if (config.id && document.body) document.body.setAttribute('data-leader-id', config.id);
     applyScalars(config);
     applyBackgroundImages(config);
     applyLists(config);

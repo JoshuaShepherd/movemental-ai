@@ -7,11 +7,11 @@
     "subtitle": "Explore resources and themes for multiplying churches, developing leaders, and building movements. No sign-up required to browse.",
     "ctaPrimary": { "label": "Explore Content", "href": "#content" },
     "ctaSecondary": { "label": "Browse Themes", "href": "#themes" },
-    "image": "../images/dave/dave-ferguson.webp",
+    "image": "../images/dave/dave-ferguson-primary.webp",
     "imageAlt": "Dave Ferguson",
     "imagesByContext": {
-      "default": "../images/dave/dave-ferguson.webp",
-      "primary": "../images/dave/dave-ferguson.webp"
+      "default": "../images/dave/dave-ferguson-primary.webp",
+      "primary": "../images/dave/dave-ferguson-primary.webp"
     }
   },
   "portrait": {
@@ -166,6 +166,7 @@
   },
   "images": {
     "leader": [
+      "../images/dave/dave-ferguson-primary.webp",
       "../images/dave/dave-ferguson.webp",
       "../images/dave/dave-ferguson-primary.jpg"
     ],
