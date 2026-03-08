@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Poppins, DM_Sans, Nunito, Playfair_Display, Lora, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { QueryProvider } from "@/lib/providers/query-provider";
+import { PreviewBanner } from "@/components/shared/PreviewBanner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-poppins" });
@@ -24,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable} ${dmSans.variable} ${nunito.variable} ${playfairDisplay.variable} ${lora.variable} ${spaceGrotesk.variable}`}>
       <body className={inter.className}>
+        <PreviewBanner />
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
