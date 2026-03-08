@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "title": "Themes",
+    "subtitle": "Explore by theme — missional church, formation, disciple making, APEST, kingdom mission, and Christocentric faith.",
+    "source": "Extracted from leader content (alan-hirsch) for themes listing and detail pages."
+  },
+  "themes": [
+    {
+      "slug": "missional-church",
+      "title": "Missional Church",
+      "description": "Foundations and practices for missional ecclesiology and apostolic movement.",
+      "coverImage": null,
+      "order": 1
+    },
+    {
+      "slug": "formation",
+      "title": "Formation",
+      "description": "Spiritual and leadership formation for disciples and leaders.",
+      "coverImage": null,
+      "order": 2
+    },
+    {
+      "slug": "disciple-making",
+      "title": "Disciple Making",
+      "description": "Making disciples who make disciples: frameworks and practices.",
+      "coverImage": null,
+      "order": 3
+    },
+    {
+      "slug": "apest",
+      "title": "APEST",
+      "description": "Apostolic, prophetic, evangelistic, shepherd, teacher—fivefold ministry.",
+      "coverImage": null,
+      "order": 4
+    },
+    {
+      "slug": "kingdom-mission",
+      "title": "Kingdom Mission",
+      "description": "Kingdom-centered mission and church planting.",
+      "coverImage": null,
+      "order": 5
+    },
+    {
+      "slug": "christocentric",
+      "title": "Christocentric",
+      "description": "Christ-centered faith and discipleship.",
+      "coverImage": null,
+      "order": 6
+    }
+  ]
+}

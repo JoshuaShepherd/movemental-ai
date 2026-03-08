@@ -1,0 +1,76 @@
+{
+  "page_type": "misc",
+  "archived_date": "2026-01-30",
+  "images": [
+    {
+      "original": "cta-bold-banner-01.png",
+      "archived_as": "cta-bold-banner-01.png",
+      "template_path": "components/layouts/movement-leader/cta-bold-banner.tsx",
+      "variant_id": "cta-bold-banner",
+      "reference": "Canva — light bg community cards with dark rounded CTA banner and footer"
+    },
+    {
+      "original": null,
+      "archived_as": null,
+      "template_path": "components/layouts/movement-leader/cta-gradient-split.tsx",
+      "variant_id": "cta-gradient-split",
+      "reference": "Gradient dark background CTA with split layout — features card right"
+    },
+    {
+      "original": null,
+      "archived_as": null,
+      "template_path": "components/layouts/movement-leader/cta-minimal-centered.tsx",
+      "variant_id": "cta-minimal-centered",
+      "reference": "Ultra-clean centered CTA with generous whitespace"
+    },
+    {
+      "original": null,
+      "archived_as": null,
+      "template_path": "components/layouts/movement-leader/cta-dark-full-width.tsx",
+      "variant_id": "cta-dark-full-width",
+      "reference": "Dark full-bleed CTA with stats row and single button"
+    },
+    {
+      "original": null,
+      "archived_as": null,
+      "template_path": "components/layouts/movement-leader/cta-social-proof.tsx",
+      "variant_id": "cta-social-proof",
+      "reference": "CTA with testimonial card alongside action prompt"
+    },
+    {
+      "original": "orgs-enterprise-trust-masterclass-01.png",
+      "archived_as": "orgs-enterprise-trust-masterclass-01.png",
+      "template_path": "components/layouts/movement-leader/orgs-enterprise-trust.tsx",
+      "variant_id": "orgs-enterprise-trust",
+      "reference": "MasterClass at Work — dark bg, trust logos, testimonial blockquote"
+    },
+    {
+      "original": null,
+      "archived_as": null,
+      "template_path": "components/layouts/movement-leader/orgs-logo-grid.tsx",
+      "variant_id": "orgs-logo-grid",
+      "reference": "Partner/client logo grid on light background"
+    },
+    {
+      "original": null,
+      "archived_as": null,
+      "template_path": "components/layouts/movement-leader/orgs-case-study-cards.tsx",
+      "variant_id": "orgs-case-study-cards",
+      "reference": "Enterprise case study cards with stats on dark background"
+    },
+    {
+      "original": null,
+      "archived_as": null,
+      "template_path": "components/layouts/movement-leader/orgs-feature-comparison.tsx",
+      "variant_id": "orgs-feature-comparison",
+      "reference": "Enterprise vs Standard feature comparison table"
+    },
+    {
+      "original": null,
+      "archived_as": null,
+      "template_path": "components/layouts/movement-leader/orgs-contact-sales.tsx",
+      "variant_id": "orgs-contact-sales",
+      "reference": "Enterprise contact/demo request with benefits and form"
+    }
+  ]
+}

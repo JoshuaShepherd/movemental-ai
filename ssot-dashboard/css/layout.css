@@ -1,0 +1,105 @@
+/**
+ * SSOT Dashboard — Layout
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  font-family: var(--ssot-font-sans);
+  font-size: var(--ssot-text-base);
+  line-height: var(--ssot-leading-normal);
+  color: var(--ssot-fg);
+  background: var(--ssot-bg);
+}
+
+.ssot-app {
+  display: grid;
+  grid-template-columns: var(--ssot-sidebar-width) 1fr;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.ssot-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--ssot-sidebar-width);
+  background: var(--ssot-sidebar-bg);
+  color: var(--ssot-sidebar-fg);
+  padding: var(--ssot-space-6) var(--ssot-space-4);
+  overflow-y: auto;
+}
+
+.ssot-sidebar__title {
+  font-size: var(--ssot-text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ssot-sidebar-muted);
+  margin: 0 0 var(--ssot-space-4);
+  padding-bottom: var(--ssot-space-2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ssot-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ssot-nav__item {
+  margin: 0 0 var(--ssot-space-1);
+}
+
+.ssot-nav__link {
+  display: block;
+  padding: var(--ssot-space-2) var(--ssot-space-3);
+  color: var(--ssot-sidebar-fg);
+  text-decoration: none;
+  font-size: var(--ssot-text-sm);
+  border-radius: 6px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.ssot-nav__link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ssot-sidebar-active);
+}
+
+.ssot-nav__link.is-active {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--ssot-sidebar-active);
+  font-weight: 500;
+}
+
+/* Main content */
+.ssot-main {
+  grid-column: 2;
+  min-width: 0;
+  padding: var(--ssot-space-8) var(--ssot-space-10);
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.ssot-main__inner {
+  /* Content wrapper for readability */
+}
+
+.ssot-main [data-section].is-hidden {
+  display: none;
+}
+
+.ssot-main [data-section]:not(.is-hidden) {
+  display: block;
+}

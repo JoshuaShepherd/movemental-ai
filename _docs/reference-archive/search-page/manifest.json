@@ -1,0 +1,14 @@
+{
+  "templateCategory": "search-page",
+  "variants": [
+    { "id": "search-ai-assistant", "file": "search-ai-assistant.tsx", "reference": "search-ai-assistant-01.png", "source": "Lindy AI" },
+    { "id": "search-minimal-centered", "file": "search-minimal-centered.tsx", "reference": "search-minimal-centered-02.png", "source": "Substack" },
+    { "id": "search-resource-hub", "file": "search-resource-hub.tsx", "reference": "search-resource-hub-03.png", "source": "Klaviyo" },
+    { "id": "search-faceted-filters", "file": "search-faceted-filters.tsx", "reference": null, "source": "Algolia" },
+    { "id": "search-command-palette", "file": "search-command-palette.tsx", "reference": null, "source": "Notion" },
+    { "id": "search-discovery-grid", "file": "search-discovery-grid.tsx", "reference": null, "source": "Spotify" },
+    { "id": "search-results-list", "file": "search-results-list.tsx", "reference": null, "source": "Google" },
+    { "id": "search-dark-spotlight", "file": "search-dark-spotlight.tsx", "reference": null, "source": "macOS Spotlight" },
+    { "id": "search-ai-conversational", "file": "search-ai-conversational.tsx", "reference": null, "source": "Perplexity" }
+  ]
+}

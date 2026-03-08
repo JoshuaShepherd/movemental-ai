@@ -1,0 +1,18 @@
+{
+  "page": "articles",
+  "totalVariants": 12,
+  "variants": [
+    { "id": "art-help-center", "name": "Help Center", "style": "Light", "ref": "articles-ref-01.png" },
+    { "id": "art-case-study", "name": "Case Study", "style": "Light", "ref": "articles-ref-02.png" },
+    { "id": "art-guide-hero", "name": "Guide Hero", "style": "Light", "ref": "articles-ref-03.png" },
+    { "id": "art-dark-case-study", "name": "Dark Case Study", "style": "Dark", "ref": "articles-ref-04.png" },
+    { "id": "art-bold-header", "name": "Bold Header", "style": "Dark", "ref": "articles-ref-05.png" },
+    { "id": "art-colorful-sidebar", "name": "Colorful Sidebar", "style": "Light", "ref": "articles-ref-06.png" },
+    { "id": "art-bold-editorial", "name": "Bold Editorial", "style": "Dark", "ref": "articles-ref-07.png" },
+    { "id": "art-clean-longform", "name": "Clean Longform", "style": "Light", "ref": "articles-ref-08.png" },
+    { "id": "art-faq-accordion", "name": "FAQ Accordion", "style": "Light", "ref": "articles-ref-09.png" },
+    { "id": "art-stats-highlight", "name": "Stats Highlight", "style": "Light", "ref": "articles-ref-10.png" },
+    { "id": "art-docs-sidebar", "name": "Docs Sidebar", "style": "Light", "ref": "articles-ref-11.png" },
+    { "id": "art-blockquote-editorial", "name": "Blockquote Editorial", "style": "Light", "ref": "articles-ref-12.png" }
+  ]
+}

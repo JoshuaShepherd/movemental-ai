@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <base href="./" />
+  <title>Themes — Leader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body data-leader-title="pageTitles.themes">
+  <header class="public-header" role="banner">
+    <div class="public-header__inner">
+      <a href="index.html" class="public-header__logo" data-leader="name">Leader</a>
+      <button type="button" class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav class="public-header__nav" id="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="content-hub.html">Content</a>
+        <a href="themes.html" class="active">Themes</a>
+        <a href="chat.html">AI Lab</a>
+      </nav>
+      <div class="public-header__actions">
+        <a href="#search" aria-label="Search" class="public-header__search">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </a>
+        <a href="signin.html" class="btn-signin">Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="page-section" aria-labelledby="themes-hero-title">
+      <div class="page-section__inner">
+        <h1 id="themes-hero-title" class="page-section__title">Themes</h1>
+        <p class="page-section__subtitle" data-leader="pageCopy.themes.subtitle">Explore by theme — missional church, formation, disciple making, APEST, and more.</p>
+        <p class="page-section__lead">Alan Hirsch’s work spans missional ecclesiology, apostolic movement, disciple making, and leadership formation. The themes below organize his books, courses, articles, and podcasts so you can go deep on what matters most to you — from the mDNA framework and fivefold (APEST) ministry to communitas, incarnational mission, and Christ-centered faith.</p>
+      </div>
+    </section>
+
+    <section class="exploration-lane section--art-bg" aria-labelledby="themes-list-title" data-leader-bg="art.sectionBackgrounds.exploration">
+      <h2 id="themes-list-title" class="exploration-lane__title">Explore by theme</h2>
+      <div class="exploration-lane__grid" data-leader-list="themes">
+        <a href="#" class="theme-card" data-leader-item-template>
+          <div class="theme-card__img"><img src="" alt="" loading="lazy" /></div>
+          <h3 class="theme-card__title" data-leader-item="title">Theme title</h3>
+          <p class="theme-card__description" data-leader-item="description">Theme description.</p>
+          <span class="theme-card__meta">Explore theme</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="page-section themes-frameworks" aria-labelledby="frameworks-title">
+      <div class="page-section__inner">
+        <h2 id="frameworks-title" class="page-section__title page-section__title--small">Key frameworks from Alan’s work</h2>
+        <p class="page-section__subtitle">Concepts that run through his writing, teaching, and formation resources.</p>
+        <div class="themes-frameworks__grid">
+          <a href="theme-detail.html?theme=missional-church" class="themes-frameworks__card">
+            <span class="themes-frameworks__label">mDNA</span>
+            <p class="themes-frameworks__text">The six-element genetic code of apostolic movements: Jesus Is Lord, disciple-making, missional-incarnational impulse, APEST culture, organic systems, and communitas. Central to <em>The Forgotten Ways</em>.</p>
+          </a>
+          <a href="theme-detail.html?theme=apest" class="themes-frameworks__card">
+            <span class="themes-frameworks__label">APEST</span>
+            <p class="themes-frameworks__text">Apostle, Prophet, Evangelist, Shepherd, Teacher — the fivefold ministry Christ gave for the maturity and mission of his body. Explored in <em>5Q</em> and <em>The Permanent Revolution</em>.</p>
+          </a>
+          <a href="theme-detail.html?theme=formation" class="themes-frameworks__card">
+            <span class="themes-frameworks__label">Communitas</span>
+            <p class="themes-frameworks__text">The deep bond that forms when people share a liminal experience — risk, mission, or threshold. Not comfort-first community but the togetherness that emerges from shared adventure.</p>
+          </a>
+          <a href="theme-detail.html?theme=missional-church" class="themes-frameworks__card">
+            <span class="themes-frameworks__label">Apostolic Genius</span>
+            <p class="themes-frameworks__text">The emergent phenomenon when all six elements of mDNA are active. The “silver imagination” that has driven every significant Jesus movement in history.</p>
+          </a>
+          <a href="theme-detail.html?theme=disciple-making" class="themes-frameworks__card">
+            <span class="themes-frameworks__label">Disciple making</span>
+            <p class="themes-frameworks__text">The church’s primary commission: forming people who look like Jesus. Frameworks and practices from <em>Untamed</em> and everyday missional living.</p>
+          </a>
+          <a href="theme-detail.html?theme=christocentric" class="themes-frameworks__card">
+            <span class="themes-frameworks__label">Christ at the center</span>
+            <p class="themes-frameworks__text">The confession “Jesus Is Lord” as the heart of mDNA — not a slogan but a worldview that restructures life, mission, and community. Central to <em>ReJesus</em> and reframation.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="page-section__inner">
+        <h2 class="page-section__title page-section__title--small">Browse the library</h2>
+        <p class="page-section__subtitle">Find articles, books, courses, and podcasts by theme in the content library.</p>
+        <a href="content-hub.html" class="btn btn--primary">Content Library</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="public-footer" role="contentinfo">
+    <div class="public-footer__inner">
+      <nav class="public-footer__links" aria-label="Footer links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#formation">Formation</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="#accessibility">Accessibility</a>
+      </nav>
+      <p class="public-footer__copy" data-leader="pageCopy.footer.copy">© Leader. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button type="button" class="floating-chat-button" id="chat-open" aria-label="Open AI Lab chat">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+  </button>
+  <div class="chat-backdrop" id="chat-backdrop" aria-hidden="true"></div>
+  <aside class="floating-chat-panel" id="chat-panel" aria-label="AI Lab chat panel" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="floating-chat-panel__header">
+      <h2 class="floating-chat-panel__title" data-leader="pageCopy.chat.title">AI Lab</h2>
+      <button type="button" class="floating-chat-panel__close" id="chat-close" aria-label="Close chat">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="floating-chat-panel__body">
+      <p class="floating-chat-panel__placeholder" data-leader="pageCopy.chat.placeholder">Ask a question.</p>
+      <div class="floating-chat-panel__suggestions">
+        <button type="button" class="floating-chat-panel__suggestion">What is mDNA?</button>
+        <button type="button" class="floating-chat-panel__suggestion">Explain APEST</button>
+        <button type="button" class="floating-chat-panel__suggestion">Suggest a next step</button>
+      </div>
+    </div>
+    <div class="floating-chat-panel__input-area">
+      <input type="text" class="floating-chat-panel__input" placeholder="Type your message…" aria-label="Chat message" data-leader-placeholder="pageCopy.chat.inputPlaceholder" />
+      <button type="button" class="floating-chat-panel__send" data-leader="pageCopy.chat.sendLabel">Send</button>
+    </div>
+  </aside>
+
+  <script src="js/main.js"></script>
+  <script src="../js/leader-content.js" data-json="../data/alan-hirsch.json"></script>
+</body>
+</html>

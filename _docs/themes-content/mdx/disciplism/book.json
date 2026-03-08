@@ -1,0 +1,72 @@
+{
+  "slug": "disciplism",
+  "title": "Disciplism",
+  "author": "Alan Hirsch",
+  "description": "",
+  "sections": [
+    {
+      "slug": "introduction",
+      "title": "Disciplism",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-introduction.mdx",
+      "wordCount": 1473,
+      "summary": "The introduction addresses the alarming loss of discipleship as a central practice in the contemporary church, despite it being at the heart of Jesus' Great Commission. Hirsch argues that discipleship, worship, and mission are dimensionally different aspects of the same phenomenon, and that the recovery of authentic discipleship is essential to addressing the church's current problems. He contends that a missional understanding of discipleship is necessary to transform admirers of Jesus into true followers who will go the distance and make a lasting impact."
+    },
+    {
+      "slug": "the-end-game",
+      "title": "The End Game",
+      "type": "chapter",
+      "order": 1,
+      "file": "01-the-end-game.mdx",
+      "wordCount": 487,
+      "summary": "This chapter examines the current state of discipleship in contemporary churches, identifying two basic approaches: introductory membership classes focused on doctrine, and optional spiritual disciplines for those wanting to go deeper. Hirsch argues that while these practices have some residual transformative capacity, they are inadequate to form people who can truly impact the world. He emphasizes the need for a clear understanding of what authentic discipleship entails and what the end game of discipleship is truly about."
+    },
+    {
+      "slug": "a-church-equal-to-the-game",
+      "title": "A Church Equal To The Game",
+      "type": "chapter",
+      "order": 2,
+      "file": "02-a-church-equal-to-the-game.mdx",
+      "wordCount": 1056,
+      "summary": "Drawing from his study of transformative movements throughout history, Hirsch demonstrates that discipleship is an irreplaceable key to catalytic movements and must be factored in at every level of the organization. He provocatively argues that the key to church health and renewal is not more evangelism but more discipleship, and that current evangelistic practices may actually block the capacity for disciple-making. The chapter calls for reframing evangelism within the context of discipleship, challenging the common assumption that the Great Commission is primarily about evangelism rather than disciple-making."
+    },
+    {
+      "slug": "hear-o-israel",
+      "title": "Hear O Israel",
+      "type": "chapter",
+      "order": 3,
+      "file": "03-hear-o-israel.mdx",
+      "wordCount": 811,
+      "summary": "This chapter provides a fresh examination of the Great Commission (Matthew 28:18-20), revealing that the text explicitly binds believers to the practices of discipleship and disciple-making, not evangelism. While evangelism is implied in the process of disciple-making, Hirsch argues that discipleship is evangelism's true context, not the other way around. He critiques the church growth movement for building much of its theology on a reductionist interpretation that substituted disciple-making with event-based proclamation and altar calls, fundamentally altering the unavoidable command of the resurrected Lord."
+    },
+    {
+      "slug": "make-consumers-of-all-nations",
+      "title": "Make Consumers Of All Nations",
+      "type": "chapter",
+      "order": 4,
+      "file": "04-make-consumers-of-all-nations.mdx",
+      "wordCount": 1778,
+      "summary": "Hirsch critiques how contemporary evangelism has been co-opted by consumerism, arguing that consumptive methods fail to challenge the primary religion of most seekers and actually exacerbate it. He demonstrates from Jesus' ministry and early church practice (100-300 A.D.) that discipleship should begin even before people become regenerated converts and continue until the end. The chapter emphasizes that one cannot consume one's way into the kingdom and that the cross must define our relationship to God from the very beginning. It calls for beginning with the end in mind—making disciples—and allowing evangelism to happen naturally within that context."
+    },
+    {
+      "slug": "reimagining-evangelism",
+      "title": "Reimagining Evangelism",
+      "type": "chapter",
+      "order": 5,
+      "file": "05-reimagining-evangelism.mdx",
+      "wordCount": 903,
+      "summary": "This chapter outlines a practical approach to reimagining evangelism through the lens of discipleship, moving away from formulaic approaches and the rush to get people to pray specific prayers. Using the example of mentoring a neighbor named Jack, Hirsch illustrates how evangelism happens naturally along the way as we disciple people. He references the Engels Scale and examples from Soma Communities and the New Thing Network to show how this approach creates space for long-term, authentic relationships and exponential, transformative ministry. The chapter emphasizes that this reframing is not merely pragmatic but represents a strategic decision with significant consequences for the church's future."
+    },
+    {
+      "slug": "its-all-about-jesus",
+      "title": "Chapter 6: It's All About Jesus. No, Really, It Is.",
+      "type": "chapter",
+      "order": 6,
+      "file": "06-its-all-about-jesus.mdx",
+      "wordCount": 1737,
+      "summary": "The final chapter establishes that discipleship is fundamentally about adherence to Jesus as both Lord and Savior, and that many of the church's problems stem from divorcing Jesus' work from His person. Hirsch argues that discipleship is the process of assimilating the gospel over a whole lifetime, becoming more like Christ and allowing His life to infuse ours. He critiques Western Christianity for emphasizing salvation theology while diminishing Jesus' words, actions, and radical lifestyle, warning against the dangerous heresy of separating Jesus' salvation from His lordship. The chapter concludes that a church that takes discipleship seriously is a church that takes Jesus seriously, and that disciple-making lies at the core of the church's mission."
+    }
+  ],
+  "totalSections": 7
+}

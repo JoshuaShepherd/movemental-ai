@@ -1,0 +1,76 @@
+{
+  "page_type": "lead-magnet",
+  "archived_date": "2026-01-30",
+  "images": [
+    {
+      "original": "lead-magnet-split-form-figma-01.png",
+      "archived_as": "lead-magnet-split-form-figma-01.png",
+      "template_path": "components/layouts/movement-leader/lead-magnet-split-form.tsx",
+      "variant_id": "lead-magnet-split-form",
+      "reference": "Figma — light lavender bg, split copy left + multi-field form right"
+    },
+    {
+      "original": "lead-magnet-book-preview-amplitude-02.png",
+      "archived_as": "lead-magnet-book-preview-amplitude-02.png",
+      "template_path": "components/layouts/movement-leader/lead-magnet-book-preview.tsx",
+      "variant_id": "lead-magnet-book-preview",
+      "reference": "Amplitude — left form, right book cover with bullet point description"
+    },
+    {
+      "original": "lead-magnet-guide-simple-calendly-03.png",
+      "archived_as": "lead-magnet-guide-simple-calendly-03.png",
+      "template_path": "components/layouts/movement-leader/lead-magnet-guide-simple.tsx",
+      "variant_id": "lead-magnet-guide-simple",
+      "reference": "Calendly — breadcrumb nav, guide details left, simple form right"
+    },
+    {
+      "original": "lead-magnet-dark-resources-masterclass-04.png",
+      "archived_as": "lead-magnet-dark-resources-masterclass-04.png",
+      "template_path": "components/layouts/movement-leader/lead-magnet-dark-resources.tsx",
+      "variant_id": "lead-magnet-dark-resources",
+      "reference": "MasterClass — dark bg, book cover + download, enterprise CTA banner"
+    },
+    {
+      "original": "lead-magnet-share-invite-masterclass-05.png",
+      "archived_as": "lead-magnet-share-invite-masterclass-05.png",
+      "template_path": "components/layouts/movement-leader/lead-magnet-share-invite.tsx",
+      "variant_id": "lead-magnet-share-invite",
+      "reference": "MasterClass — dark bg, guest pass invite via email + link, guarantee cards"
+    },
+    {
+      "original": null,
+      "archived_as": null,
+      "template_path": "components/layouts/movement-leader/lead-magnet-ebook-preview.tsx",
+      "variant_id": "lead-magnet-ebook-preview",
+      "reference": "Ebook chapter preview with locked/unlocked chapters and email capture"
+    },
+    {
+      "original": null,
+      "archived_as": null,
+      "template_path": "components/layouts/movement-leader/lead-magnet-checklist.tsx",
+      "variant_id": "lead-magnet-checklist",
+      "reference": "Visual checklist preview with opt-in form"
+    },
+    {
+      "original": null,
+      "archived_as": null,
+      "template_path": "components/layouts/movement-leader/lead-magnet-webinar.tsx",
+      "variant_id": "lead-magnet-webinar",
+      "reference": "Webinar/event registration with speaker info and urgency"
+    },
+    {
+      "original": null,
+      "archived_as": null,
+      "template_path": "components/layouts/movement-leader/lead-magnet-toolkit.tsx",
+      "variant_id": "lead-magnet-toolkit",
+      "reference": "Resource bundle/toolkit with itemized contents grid"
+    },
+    {
+      "original": null,
+      "archived_as": null,
+      "template_path": "components/layouts/movement-leader/lead-magnet-dark-minimal.tsx",
+      "variant_id": "lead-magnet-dark-minimal",
+      "reference": "Dark minimal with single email input and social proof stats"
+    }
+  ]
+}

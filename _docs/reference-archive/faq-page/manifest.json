@@ -1,0 +1,14 @@
+{
+  "page": "faq",
+  "totalVariants": 8,
+  "variants": [
+    { "id": "faq-dark-hero", "name": "Dark Hero FAQ", "style": "Dark", "status": "existing" },
+    { "id": "faq-minimal-accordion", "name": "Minimal Accordion", "style": "Light", "status": "existing" },
+    { "id": "faq-categorized-grid", "name": "Categorized Grid", "style": "Light", "status": "new" },
+    { "id": "faq-search-hero", "name": "Search Hero", "style": "Light", "status": "new" },
+    { "id": "faq-sidebar-nav", "name": "Sidebar Nav", "style": "Light", "status": "new" },
+    { "id": "faq-tabbed-sections", "name": "Tabbed Sections", "style": "Light", "status": "new" },
+    { "id": "faq-support-center", "name": "Support Center", "style": "Dark", "status": "new" },
+    { "id": "faq-gradient-cards", "name": "Gradient Cards", "style": "Dark", "status": "new" }
+  ]
+}

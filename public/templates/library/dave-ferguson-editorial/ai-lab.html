@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" class="e-theme">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Lab — Dave Ferguson</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <nav class="e-nav" aria-label="Main navigation">
+    <div class="e-nav__inner">
+      <a href="index.html" class="e-nav__logo">
+        <img src="../images/dave/dave-ferguson.webp" alt="Dave Ferguson" class="e-nav__logo-img">
+      </a>
+      <ul class="e-nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="content-hub.html">Content</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="books.html">Books</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="ai-lab.html" class="active" aria-current="page">AI Lab</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="e-nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="ai-lab">
+
+    <!-- Welcome Section -->
+    <section class="ai-lab__welcome" id="ai-lab-welcome">
+      <div class="ai-lab__welcome-inner">
+        <h1 class="ai-lab__greeting">Welcome to the AI Lab</h1>
+        <p class="ai-lab__description">Explore Dave Ferguson's teachings, leadership principles, and movement strategies through an AI-powered conversation. Ask anything about Hero Maker, multiplication, church planting, or leadership development.</p>
+        <a href="#who-is-df-modal" class="ai-lab__who-link" id="who-is-df-link">Who is Dave Ferguson?</a>
+
+        <div class="ai-lab__config">
+          <div class="ai-lab__config-item">
+            <label for="ai-topic" class="ai-lab__config-label">Topic</label>
+            <select id="ai-topic" class="ai-lab__select">
+              <option value="general">General</option>
+              <option value="leadership">Leadership</option>
+              <option value="multiplication">Multiplication</option>
+              <option value="church-planting">Church Planting</option>
+              <option value="hero-maker">Hero Maker</option>
+              <option value="movements">Movements</option>
+            </select>
+          </div>
+          <div class="ai-lab__config-item">
+            <label for="ai-approach" class="ai-lab__config-label">Approach</label>
+            <select id="ai-approach" class="ai-lab__select">
+              <option value="conversational">Conversational</option>
+              <option value="coaching">Coaching</option>
+              <option value="academic">Academic</option>
+              <option value="practical">Practical Steps</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="ai-lab__suggestions">
+          <button class="ai-lab__suggestion-card" data-prompt="What is the Hero Maker framework?">
+            <strong>Hero Maker</strong>
+            <span>What is the Hero Maker framework and how does it apply to leadership?</span>
+          </button>
+          <button class="ai-lab__suggestion-card" data-prompt="How do I develop a multiplication mindset?">
+            <strong>Multiplication</strong>
+            <span>How do I develop a multiplication mindset in my organization?</span>
+          </button>
+          <button class="ai-lab__suggestion-card" data-prompt="What are the five practices of a Hero Maker?">
+            <strong>Five Practices</strong>
+            <span>What are the five essential practices of a Hero Maker?</span>
+          </button>
+          <button class="ai-lab__suggestion-card" data-prompt="How can I start a movement?">
+            <strong>Movements</strong>
+            <span>How can I start a movement in my community or organization?</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chat Section (hidden initially) -->
+    <section class="ai-lab__chat" id="ai-lab-chat" hidden>
+      <div class="ai-lab__chat-messages" id="ai-chat-messages"></div>
+    </section>
+
+    <!-- Input Bar -->
+    <div class="ai-lab__input-bar">
+      <form class="ai-lab__form" id="ai-lab-form" autocomplete="off">
+        <input type="text" class="ai-lab__input" id="ai-lab-input" placeholder="Ask about Dave's teachings, books, or leadership principles..." required>
+        <button type="submit" class="ai-lab__send-btn" aria-label="Send message">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+    </div>
+
+    <!-- Who is DF Modal -->
+    <div class="ai-lab__modal" id="who-is-df-modal" hidden>
+      <div class="ai-lab__modal-overlay" id="modal-overlay"></div>
+      <div class="ai-lab__modal-content">
+        <button class="ai-lab__modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+        <img src="../images/dave/dave-ferguson-primary.jpg" alt="Dave Ferguson" class="ai-lab__modal-photo">
+        <h2 class="ai-lab__modal-title">Dave Ferguson</h2>
+        <p>Dave Ferguson is a visionary leader, author, and church planter. He is the lead pastor of Community Christian Church, a multi-site church based in the Chicago area, and the president of the Exponential Conference — the largest church planting conference in the world.</p>
+        <p>Dave is the author of several books including <em>Hero Maker</em>, <em>Keeping Score</em>, <em>The Big Four</em>, <em>Exponential</em>, and <em>Starting Over</em>. His work focuses on leadership multiplication, movement building, and helping leaders escape the "Hero Trap" to become Hero Makers who develop other leaders.</p>
+        <p>Through Exponential, Community Christian Church, and his writing, Dave has helped catalyze movements of church planting and leadership development across the globe.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+{
+  "templateCategory": "auth-page",
+  "variants": [
+    {
+      "id": "auth-split-image",
+      "file": "auth-split-image.tsx",
+      "reference": null,
+      "source": "Vercel"
+    },
+    {
+      "id": "auth-centered-card",
+      "file": "auth-centered-card.tsx",
+      "reference": null,
+      "source": "Clerk"
+    },
+    {
+      "id": "auth-dark-minimal",
+      "file": "auth-dark-minimal.tsx",
+      "reference": null,
+      "source": "Linear"
+    },
+    {
+      "id": "auth-social-first",
+      "file": "auth-social-first.tsx",
+      "reference": null,
+      "source": "Notion"
+    },
+    {
+      "id": "auth-branded-hero",
+      "file": "auth-branded-hero.tsx",
+      "reference": null,
+      "source": "Stripe"
+    },
+    {
+      "id": "auth-magic-link",
+      "file": "auth-magic-link.tsx",
+      "reference": null,
+      "source": "Supabase"
+    },
+    {
+      "id": "auth-tabbed-form",
+      "file": "auth-tabbed-form.tsx",
+      "reference": null,
+      "source": "Discord"
+    },
+    {
+      "id": "auth-gradient-overlay",
+      "file": "auth-gradient-overlay.tsx",
+      "reference": null,
+      "source": "Auth0"
+    }
+  ]
+}

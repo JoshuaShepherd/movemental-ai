@@ -1,0 +1,171 @@
+{
+  "slug": "untamed",
+  "title": "Untamed",
+  "author": "Alan Hirsch, Debra Hirsch",
+  "description": "",
+  "sections": [
+    {
+      "slug": "about-the-shapevine-missional-series",
+      "title": "Untamed",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-about-the-shapevine-missional-series.mdx",
+      "wordCount": 354,
+      "summary": "This section introduces the Shapevine Missional Series, explaining its purpose to bring together various elements of missional Christianity including church planting movements, urban mission, and emerging church expressions. It outlines the series' three distinctive areas: living (practical missional orthopraxy), learning (solid missional orthodoxy), and leading (tools for missional leadership)."
+    },
+    {
+      "slug": "foreword-by-rick-warren",
+      "title": "Foreword",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-foreword-by-rick-warren.mdx",
+      "wordCount": 574,
+      "summary": "Rick Warren's foreword calls for a return to radical discipleship, noting that many churches have become tamed by tradition and culture. He emphasizes that we can't make disciples until we are disciples, and shares how Saddleback Church's emphasis on radical discipleship has resulted in thousands of baptisms and missionaries sent worldwide. Warren frames the book as a needed spiritual adrenaline shot into mediocre attempts at following Christ."
+    },
+    {
+      "slug": "introduction",
+      "title": "The First Word",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-introduction.mdx",
+      "wordCount": 3089,
+      "summary": "The introduction opens with the parable of the skylark who sells her feathers for worms, eventually losing her ability to fly—a metaphor for how Christians gradually compromise their freedom in Christ. It establishes the book's focus on missional discipleship and identifies three areas where discipleship problems occur: theology, culture, and personal issues. The introduction outlines the book's structure and four signature themes: Jesus-shaped discipleship, Shema spirituality, the inseparability of mission and discipleship, and the prophetic call to faithfulness."
+    },
+    {
+      "slug": "series-editors-preface",
+      "title": "Series Editor's Preface",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-series-editors-preface.mdx",
+      "wordCount": 364,
+      "summary": "Alan Hirsch, as series editor, introduces the book's significance in recovering a vigorous and explicitly missional form of discipleship. He notes that discipleship has become a lost art in the church, often limited to personal spirituality rather than comprehensive life transformation. The preface warns that a Christianity without discipleship is a Christianity without Christ, drawing on Dietrich Bonhoeffer's insights about the dangers of discipleship-less Christianity."
+    },
+    {
+      "slug": "why-write-this-book",
+      "title": "Why Write This Book?",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-why-write-this-book.mdx",
+      "wordCount": 1890,
+      "summary": "The authors explain their motivation for writing the book: to help disciples become better and deeper followers of Jesus by addressing obstacles that trip up the people of God. They share their personal stories—Deb's background with the GLBT community and sensitivity to marginalized people, and Alan's Jewish upbringing and journey to faith. They reflect on their twenty years of ministry together, including their time at South Melbourne Restoration Community, and note that most failures trace back to failures in discipleship."
+    },
+    {
+      "slug": "jeebus-made-me-do-it",
+      "title": "Section One: The Untamed God",
+      "type": "chapter",
+      "order": 1,
+      "file": "01-jeebus-made-me-do-it.mdx",
+      "wordCount": 6566,
+      "summary": "This chapter establishes that missional discipleship must be based on Jesus the Messiah, who reveals God to us. Beginning with a Simpsons episode about Homer's ignorance of \"Jeebus,\" the chapter explores how we often create domesticated images of Jesus (\"Jeebus\") rather than embracing the wild, untamed Messiah of the Gospels. It argues that God is like Jesus, not the reverse, and examines Jesus's untamed holiness that attracted sinners while antagonizing religious people. The chapter warns against substituting morals and decency for Jesus's radical holiness."
+    },
+    {
+      "slug": "your-god-is-too-sick",
+      "title": "Chapter 2: Your God Is Too Sick",
+      "type": "chapter",
+      "order": 2,
+      "file": "02-your-god-is-too-sick.mdx",
+      "wordCount": 7593,
+      "summary": "This chapter addresses the critical importance of having a true understanding of God, warning that false conceptions of God lead to toxic religion. It explores idolatry as the rebel's religion and examines the Shema spirituality—loving God with all heart, soul, mind, and strength, and loving neighbor as self. The chapter outlines the School of Love (right feeling, right acting, right thinking) and discusses how idolatry manifests through money (prosperity doctrine), sex (theology of the little head), and power. It emphasizes that worship is offering our whole world back to God, which is a dangerous act that requires change."
+    },
+    {
+      "slug": "the-spirits-edge",
+      "title": "Untamed",
+      "type": "chapter",
+      "order": 3,
+      "file": "03-the-spirits-edge.mdx",
+      "wordCount": 6806,
+      "summary": "This chapter explores the Holy Spirit's role in untamed discipleship, beginning with Alan's powerful encounter with the Spirit. It contrasts two church experiences—Pentecostal and fundamentalist—highlighting the weaknesses in both: Pentecostalism's tendency toward spiritual engineering and obsession with power, and fundamentalism's cramped solemnity that quenches the Spirit. The chapter examines holiness as an active, missional concept rather than separation from the world, and outlines what should result from a vital experience of the Spirit: creativity, risky mission, communitas, becoming like Jesus, love, learning community, miracles, spiritual maturity, and unity around Jesus."
+    },
+    {
+      "slug": "kultcha-schmultcha",
+      "title": "Kultcha-Schmultcha",
+      "type": "chapter",
+      "order": 4,
+      "file": "04-kultcha-schmultcha.mdx",
+      "wordCount": 8052,
+      "summary": "This chapter examines how culture shapes and often subverts discipleship, warning that the church has been evangelized by culture rather than the reverse. It explores the powerful influences of money (the green god), consumerism (the new golden calf), and status anxiety as cultural forces that domesticate faith. The chapter critiques consumerist Christianity and the prosperity doctrine, arguing that money is not neutral but animated by powers. It contrasts the Beatitudes with cultural values, showing how Jesus's teachings invert worldly assumptions about happiness and blessedness."
+    },
+    {
+      "slug": "the-church-that-jesus-built",
+      "title": "Chapter 5: The Church That Jesus Built",
+      "type": "chapter",
+      "order": 5,
+      "file": "05-the-church-that-jesus-built.mdx",
+      "wordCount": 8423,
+      "summary": "This chapter challenges the consumerist model of church where members are discerning consumers and the church is a vendor of religious goods. It argues for the priesthood of all believers, where every believer is a minister and conversion is commission. The chapter advocates for expanding ministry beyond pastor-teacher models to include the full APEST framework (apostles, prophets, evangelists, shepherds, teachers). It explores \"undercover discipling\" of not-yet-believers and contrasts bounded-set churches (hard edges, soft center) with centered-set churches (hard center, soft edges), advocating for belonging before believing and open-set communion."
+    },
+    {
+      "slug": "refocusing-the-family",
+      "title": "Refocusing the Family",
+      "type": "chapter",
+      "order": 6,
+      "file": "06-refocusing-the-family.mdx",
+      "wordCount": 3663,
+      "summary": "This chapter addresses how the modern nuclear family has become a fortress from the world, hindering missional hospitality. It critiques the narrow definition of family that emerged from industrialization and consumerism, arguing that the church should be seen as the First Family rather than the nuclear family unit. The chapter explores how homes were used in the early church (oikos) and advocates for opening homes to strangers, practicing hospitality, and seeing the church as modeling a home. It calls for families to practice table fellowship beyond the nuclear family and to live in community houses that extend hospitality."
+    },
+    {
+      "slug": "the-lying-mirror",
+      "title": "The Lying Mirror",
+      "type": "chapter",
+      "order": 7,
+      "file": "07-the-lying-mirror.mdx",
+      "wordCount": 8136,
+      "summary": "This chapter explores identity formation, arguing that our authenticity and power are unleashed when we live out our true identity in Christ. It examines how identity requires two essential relationships: with God and with people. The chapter discusses the imago Dei (image of God) as the primary truth about every person, even before considering their fallenness. It explores Martin Buber's I-Thou relationships versus I-it relationships, emphasizing that we must see people as made in God's image. The chapter examines the process of being \"undragoned\" (transformed from false self to true self) and looks at salvation as theosis—becoming partakers of the divine nature."
+    },
+    {
+      "slug": "too-sexy-for-the-church",
+      "title": "I'm Too Sexy for the Church",
+      "type": "chapter",
+      "order": 8,
+      "file": "08-too-sexy-for-the-church.mdx",
+      "wordCount": 6531,
+      "summary": "This chapter addresses the church's struggles with sexuality, arguing that spirituality and sexuality are linked at a deep level and both are essential aspects of our humanity. It critiques the dualism introduced into Christianity that views the body and spirit as in conflict, tracing this through church history from Origen's self-castration to Augustine's conflicted views. The chapter defines sexuality and spirituality as similar longings for connection (horizontal and vertical), and argues that unredeemed sexuality becomes a dangerous idol. It addresses the church's reputation as anti-homosexual, calling for grace and compassion while maintaining that acceptance must precede repentance, following Jesus's pattern with the woman caught in adultery."
+    },
+    {
+      "slug": "going-out-going-deep",
+      "title": "Going Out, Going Deep",
+      "type": "chapter",
+      "order": 9,
+      "file": "09-going-out-going-deep.mdx",
+      "wordCount": 5718,
+      "summary": "This chapter explores incarnational mission, presenting six practices for engaging the world as Jesus did: presence (full identification with culture), proximity (geographic and relational closeness), powerlessness (humility and vulnerability), prevenience (recognizing God's work already present), passion (embracing redemptive suffering), and proclamation (sharing the good news). It argues that missional disciples must become incarnational, following God's example in becoming fully present and identifying with people. The chapter emphasizes that incarnation is not just theological doctrine but a way of life that requires intentional choices about where we position ourselves and how we engage others."
+    },
+    {
+      "slug": "conclusion",
+      "title": "Untamed",
+      "type": "conclusion",
+      "order": 10,
+      "file": "10-conclusion.mdx",
+      "wordCount": 2601,
+      "summary": "The conclusion returns to the theme of domestication, using Kierkegaard's parable of the wild geese and domesticated geese to illustrate how Christians have given up flight for the mediocrity of the barnyard. It calls readers to reactivate their discipleship by discarding things that keep them from fulfilling their destiny. The conclusion emphasizes that we already have all the resources needed to change the world: Jesus living in us, the gospel, and the Holy Spirit. It ends with a call to freedom, reminding readers that it is for freedom that Christ has set us free, and encouraging an untamed adventure of faith."
+    },
+    {
+      "slug": "afterword-by-neil-cole",
+      "title": "Untamed",
+      "type": "afterword",
+      "order": 11,
+      "file": "11-afterword-by-neil-cole.mdx",
+      "wordCount": 1740,
+      "summary": "Neil Cole's afterword shares a story from an African safari adventure, contrasting those who live the adventure versus those who only read about it. He commends the Hirsches for challenging readers to abandon domestic faith and embrace reckless faith. Cole emphasizes that untamed life is unpredictable, wild, and exhilarating—not comfortable. He notes that Alan has been teaching about apostolic church movements, and that this book addresses the essential ingredient: the follower of Jesus. The afterword encourages readers to live lives worth telling stories about, abandoning safe and tame religious morality."
+    },
+    {
+      "slug": "notes",
+      "title": "Untamed",
+      "type": "notes",
+      "order": 12,
+      "file": "12-notes.mdx",
+      "wordCount": 4445,
+      "summary": "This section provides comprehensive endnotes and citations for all chapters, including references to biblical texts, theological works, historical sources, and contemporary scholarship. The notes document sources for quotes, support arguments made throughout the book, and provide additional reading suggestions for those wanting to explore topics in greater depth."
+    },
+    {
+      "slug": "the-authors",
+      "title": "Untamed",
+      "type": "authors",
+      "order": 13,
+      "file": "13-the-authors.mdx",
+      "wordCount": 131,
+      "summary": "This brief section provides biographical information about the authors. Alan Hirsch is described as the founding director of Forge Mission Training Network and co-founder of Shapevine, a sought-after speaker and trainer, and author of several books on missional church. Debra Hirsch is noted as a widely known keynote speaker and church leader in Australia who has pioneered ministries to the GLBT subculture and worked among the poor and marginalized. Both authors live in the Los Angeles area."
+    }
+  ],
+  "totalSections": 18
+}

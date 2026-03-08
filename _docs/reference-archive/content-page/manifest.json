@@ -1,0 +1,26 @@
+{
+  "page": "content",
+  "totalVariants": 19,
+  "variants": [
+    { "id": "content-accordion-features", "name": "Accordion Features", "style": "Light", "ref": "content-accordion-features-01.png" },
+    { "id": "content-case-studies", "name": "Case Studies", "style": "Light", "ref": "content-case-studies-01.png" },
+    { "id": "content-category-blog", "name": "Category Blog", "style": "Light", "ref": "content-category-articles-01.png" },
+    { "id": "content-component-gallery", "name": "Component Gallery", "style": "Light", "ref": "content-component-showcase-01.png" },
+    { "id": "content-dark-browse", "name": "Dark Browse", "style": "Dark", "ref": "content-dark-gallery-01.png" },
+    { "id": "content-dark-personalized", "name": "Dark Personalized", "style": "Dark", "ref": "content-dark-masterclass-01.png" },
+    { "id": "content-dark-recordings", "name": "Dark Recordings", "style": "Dark", "ref": "content-dark-masterclass-03.png" },
+    { "id": "content-docs-grid", "name": "Docs Grid", "style": "Light", "ref": "content-resource-hub-02.png" },
+    { "id": "content-feature-preview", "name": "Feature Preview", "style": "Light", "ref": "content-feature-preview-01.png" },
+    { "id": "content-filtered-gallery", "name": "Filtered Gallery", "style": "Light", "ref": "content-filtered-marketplace-01.png" },
+    { "id": "content-instructor-courses", "name": "Instructor Courses", "style": "Light", "ref": "content-instructor-courses-01.png" },
+    { "id": "content-integration-guides", "name": "Integration Guides", "style": "Dark", "ref": "content-dark-masterclass-05.png" },
+    { "id": "content-lesson-list", "name": "Lesson List", "style": "Light", "ref": "content-resource-hub-03.png" },
+    { "id": "content-product-carousel", "name": "Product Carousel", "style": "Light", "ref": "content-product-carousel-01.png" },
+    { "id": "content-resource-cards", "name": "Resource Cards", "style": "Light", "ref": "content-resource-hub-01.png" },
+    { "id": "content-resource-hub", "name": "Resource Hub", "style": "Light", "ref": "content-resource-hub-01.png" },
+    { "id": "content-template-showcase", "name": "Template Showcase", "style": "Light", "ref": "content-template-marketplace-01.png" },
+    { "id": "content-toc-illustrated", "name": "TOC Illustrated", "style": "Light", "ref": "content-toc-illustrated-01.png" },
+    { "id": "content-training-resources", "name": "Training Resources", "style": "Light", "ref": "content-resource-hub-02.png" },
+    { "id": "content-video-tutorials", "name": "Video Tutorials", "style": "Light", "ref": "content-video-tutorials-01.png" }
+  ]
+}

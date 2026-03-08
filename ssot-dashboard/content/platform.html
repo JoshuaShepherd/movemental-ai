@@ -1,0 +1,23 @@
+<section class="ssot-section" data-section="platform" id="content-platform">
+  <p class="ssot-meta">Version 2.0.0 · Last updated January 2026</p>
+  <h1 class="ssot-page-title">Platform & Type Safety</h1>
+  <p class="ssot-page-lead">Multi-tenant content and learning management system — stack and six-layer type safety chain.</p>
+
+  <div class="ssot-card">
+    <h2 class="ssot-card__title">Six-Layer Type Safety Chain</h2>
+    <p>Types flow downstream only. Lock each layer before proceeding.</p>
+    <ol class="ssot-sequence">
+      <li><strong>Layer 1: Database</strong> — Drizzle schema (<code>db/schema.ts</code>) — Structure SSOT</li>
+      <li><strong>Layer 2: Zod schemas</strong> — <code>lib/schemas/</code> — Types SSOT</li>
+      <li><strong>Layer 3: Services</strong> — <code>lib/services/simplified/</code></li>
+      <li><strong>Layer 4: API routes</strong> — <code>app/api/simplified/</code></li>
+      <li><strong>Layer 5: Hooks</strong> — <code>hooks/simplified/</code></li>
+      <li><strong>Layer 6: UI</strong> — <code>components/</code></li>
+    </ol>
+  </div>
+
+  <div class="ssot-section__content">
+    <h2 class="ssot-section__title">Tech Stack (Summary)</h2>
+    <p><strong>Frontend:</strong> Next.js 16, React 19, TypeScript, Tailwind, shadcn/ui. <strong>Backend:</strong> Next.js API routes, Supabase (PostgreSQL + auth), Drizzle ORM, Zod. All tenant-scoped data includes <code>organizationId</code>; tenant boundaries enforced at the service layer.</p>
+  </div>
+</section>

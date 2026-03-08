@@ -1,0 +1,144 @@
+{
+  "slug": "right-here-right-now",
+  "title": "Right Here, Right Now",
+  "author": "Alan Hirsch, Lance Ford",
+  "description": "",
+  "sections": [
+    {
+      "slug": "briefing-right-here",
+      "title": "Briefing",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-briefing-right-here.mdx",
+      "wordCount": 11850,
+      "summary": "This comprehensive briefing chapter provides the foundational framework for missional Christianity, exploring the dual dimensions of people movements: Apostolic Mission (AM) and Mission of the People of God (MPOG). It outlines four essential movements required for missional engagement: move out (mission), move in (incarnation), move alongside (relationships), and move from (subversion). The chapter establishes that every believer is called to be a missionary in their daily context, emphasizing that conversion is commission and that missionality must extend into every sphere of life, not just church activities."
+    },
+    {
+      "slug": "foreword-by-erwin-mcmanus",
+      "title": "FOREWORD",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-foreword-by-erwin-mcmanus.mdx",
+      "wordCount": 430,
+      "summary": "This brief foreword introduces the Shapevine Missional Series and its purpose of bringing various elements of missional Christianity into meaningful dialogue. It outlines the series' focus on three distinctive areas: living (practical missional orthopraxy), learning (solid missional orthodoxy), and leading (tools for missional leadership)."
+    },
+    {
+      "slug": "introduction",
+      "title": "Introduction",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-introduction.mdx",
+      "wordCount": 1850,
+      "summary": "The introduction sets the stage for making missional concepts accessible to the whole body of Christ, moving beyond academic language to practical application. It clarifies that missionality involves every believer who seeks to follow Jesus authentically right here and right now, connected to discipleship and the lordship of Jesus. The authors explain their unique co-writing approach, with Alan providing theoretical frameworks and Lance offering practical, folksy interpretations and storytelling. They aim to help Christians see kingdom opportunities in their daily routines and live missionally as a lifestyle, not just participate in mission activities."
+    },
+    {
+      "slug": "series-editors-preface",
+      "title": "SERIES EDITOR'S PREFACE",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-series-editors-preface.mdx",
+      "wordCount": 510,
+      "summary": "Alan Hirsch's preface positions this book as a remedy to make missional church accessible to the masses, transforming it from a high-level leadership conversation into a movement of the whole people of God in every sphere of society. He describes it as a 'missionality-for-dummies' type book designed to help average believers become effective agents of the King wherever they find themselves, complementing previous publications in the Baker-Shapevine series."
+    },
+    {
+      "slug": "putting-the-extra-in-the-ordinary",
+      "title": "Chapter 1: Putting the Extra in the Ordinary",
+      "type": "chapter",
+      "order": 1,
+      "file": "01-putting-the-extra-in-the-ordinary.mdx",
+      "wordCount": 8750,
+      "summary": "This chapter challenges the common misconception that missionaries are only those who relocate to foreign lands, arguing that every Christian is called to view their immediate world through missionary eyes. Lance Ford shares his personal journey of understanding that all believers, regardless of vocation, are missionaries commissioned by Jesus. The chapter emphasizes that Christianity is fundamentally a people movement requiring every believer to be an active agent of God's kingdom. It explores the shift from Christendom to post-Christendom, the importance of kingdom citizenship over church membership, and the need for Christians to see themselves as ambassadors of heaven rather than average churchgoers."
+    },
+    {
+      "slug": "meet-the-extras",
+      "title": "Meet the Extras",
+      "type": "chapter",
+      "order": 2,
+      "file": "02-meet-the-extras.mdx",
+      "wordCount": 9500,
+      "summary": "This chapter explores the practice of 'beholding others' - moving beyond treating people as background scenery to seeing them as individuals made in God's image. Lance Ford discusses how modern culture fosters isolation and stranger avoidance, making it difficult to form meaningful connections. The chapter examines Jesus' practice of seeing individuals in crowds, the concept of imago Dei, and practical ways to develop the habit of greeting others with smiles, peace, and creative grace. It encourages readers to view every person they encounter as someone worthy of attention and love, moving from snap judgments to genuine beholding in the manner of Jesus."
+    },
+    {
+      "slug": "from-paper-to-pavement",
+      "title": "From Paper to Pavement",
+      "type": "chapter",
+      "order": 3,
+      "file": "03-from-paper-to-pavement.mdx",
+      "wordCount": 9200,
+      "summary": "This chapter addresses the gap between reading Scripture and living it out, emphasizing that the Bible must read us as much as we read it. Lance Ford explores the difference between believing in Jesus and believing Jesus, arguing that authentic discipleship requires moving from orthodoxy (right thinking) to orthopraxy (right action). Through personal stories and biblical examples, the chapter demonstrates how Christians must incarnate the Word in everyday situations - whether dealing with telemarketers, waiters, or neighbors. It challenges the notion that more Bible study alone produces maturity, emphasizing instead that transformation comes through practicing what Scripture teaches in the laboratory of daily life."
+    },
+    {
+      "slug": "laodicean-cul-de-sacs",
+      "title": "Laodicean Cul-de-Sacs",
+      "type": "chapter",
+      "order": 4,
+      "file": "04-laodicean-cul-de-sacs.mdx",
+      "wordCount": 7500,
+      "summary": "This chapter uses the biblical metaphor of the lukewarm church at Laodicea to examine how Western affluence and consumerism have created spiritual bankruptcy in contemporary Christianity. Lance Ford critiques the American Dream's emphasis on consumption, comfort, and convenience, which he argues works against missional values. The chapter explores how materialism, brand identity, and the pursuit of happiness through accumulation have seduced Christians, making it difficult to dream missionally or discern God's will. It calls for recognition of misplaced desires and recovery of imagination that is not held captive by commodities, challenging readers to examine their relationship with money, possessions, and middle-class culture."
+    },
+    {
+      "slug": "losing-for-winning",
+      "title": "Losing for Winning",
+      "type": "chapter",
+      "order": 5,
+      "file": "05-losing-for-winning.mdx",
+      "wordCount": 8300,
+      "summary": "This chapter argues that living missionally requires shedding excess weight - both material and lifestyle - that hinders engagement with God's mission. Using the analogy of physical fitness, Lance Ford demonstrates how Americans' accumulation of stuff (exemplified by the self-storage industry) prevents them from being able to run the missional race. The chapter explores how to 'unconform' to consumer culture, develop a mindset of redemption, and structure lives around missional limits rather than credit limits. It provides practical guidance on simplifying possessions, rethinking housing and transportation choices, and creating margin in life for missional engagement. The chapter emphasizes becoming 'rich toward God' by investing in people rather than accumulating earthly treasures."
+    },
+    {
+      "slug": "oh-raaaawb",
+      "title": "Oh Raaaawb!",
+      "type": "chapter",
+      "order": 6,
+      "file": "06-oh-raaaawb.mdx",
+      "wordCount": 11200,
+      "summary": "This chapter examines how suburban design and lifestyle create barriers to missional community. Lance Ford critiques cul-de-sac neighborhoods, silo living, and fragmented lifestyles that prevent authentic relationships and community formation. Drawing on his experience church planting in the suburbs, he explains how modern suburban development with its separation of residential, commercial, and social spaces leads to social disintegration. The chapter contrasts integrated small-town life (like his grandparents' community) with disintegrated suburban living where people exist in isolated compartments. It explores how the nuclear family has become an idol, social capital has declined, and genuine interdependence has been replaced by hyper-independence. The chapter offers practical suggestions for fostering neighborhood integration and rebuilding social capital."
+    },
+    {
+      "slug": "beyond-kumbaya",
+      "title": "Beyond Kumbaya",
+      "type": "chapter",
+      "order": 7,
+      "file": "07-beyond-kumbaya.mdx",
+      "wordCount": 9400,
+      "summary": "This chapter explores how small groups and house churches can function as authentic missional communities rather than just fellowship groups. Lance Ford redefines biblical koinonia (fellowship) as deep, committed partnership involving sharing goods, feelings, and life together - far beyond casual get-togethers. The chapter emphasizes that genuine Christian community requires unfeigned love, mutual care, and sacrificial sharing that makes the body of Christ attractive to outsiders. It introduces missional practices like BELLS (Bless, Eat, Listen, Learn, Sent) and shares examples of communities that have synergized resources for significant community impact. The chapter argues that authentic koinonia is essential for missional effectiveness and provides practical examples of communities living out the 'final apologetic' of Christian unity."
+    },
+    {
+      "slug": "yall-come-back-now-ya-hear",
+      "title": "Y'all Come Back Now, Ya Hear",
+      "type": "chapter",
+      "order": 8,
+      "file": "08-yall-come-back-now-ya-hear.mdx",
+      "wordCount": 7800,
+      "summary": "This chapter recovers the biblical practice of hospitality (philoxenia - love of strangers), which goes far beyond tea parties and dinner parties. Lance Ford explains that true hospitality involves welcoming strangers, not just friends, and that this practice was considered essential for church leaders in the early church. The chapter addresses fears and risks associated with opening homes and lives to strangers, while providing practical examples of adopting students, grandparents, and single-parent families. It reimagines the Lord's Supper as a full meal shared in community rather than a ceremonial wafer and juice, emphasizing how shared meals create bonds and witness to the new covenant. The chapter demonstrates that hospitality is both a righteous act and a powerful missional practice that can literally change the world."
+    },
+    {
+      "slug": "salt-blocks-and-salt-shakers",
+      "title": "Salt Blocks and Salt Shakers",
+      "type": "chapter",
+      "order": 9,
+      "file": "09-salt-blocks-and-salt-shakers.mdx",
+      "wordCount": 10200,
+      "summary": "This chapter challenges the 'salt block' approach to church where Christians expect people to come to them, advocating instead for a 'salt shaker' approach where believers scatter into culture. Lance Ford critiques how churches have professionalized mission, centralizing it in weekend services and removing most believers from the missional equation. The chapter explores incarnational mission - the practice of going to people on their turf rather than extracting them from their cultural contexts. It shares examples of missional engagement in various settings (breweries, urban neighborhoods, suburbs) and emphasizes the importance of presence, identification, and authentic relationship. The chapter argues that mission must move beyond programs to lifestyle, requiring believers to be embedded in culture as salt that flavors and preserves, rather than isolated in church buildings waiting for people to come."
+    },
+    {
+      "slug": "debriefing-right-now",
+      "title": "Debriefing",
+      "type": "chapter",
+      "order": 10,
+      "file": "10-debriefing-right-now.mdx",
+      "wordCount": 12600,
+      "summary": "Alan Hirsch's debriefing chapter addresses critical 'elephants in the room' that must be confronted for missional renewal. He proposes stretching the traditional marks of the church beyond sacramental definitions to include five essential identifiers: being centered on Jesus, existing as a covenanted community, practicing worship, engaging in discipleship, and participating in mission. The chapter addresses the credibility gap facing Western Christianity, arguing that authentic discipleship is essential for establishing the moral credibility of the gospel message. Hirsch critiques consumerism's spiritual dimensions, the confusion between church and kingdom, the limitations of attractional church models, and issues of sustainability and risk aversion. The chapter concludes with a sense of urgency about the need for recalibration in the 21st century, emphasizing that awakening both apostolic mission and the mission of the whole people of God is essential for Christianity's future in the West."
+    },
+    {
+      "slug": "notes",
+      "title": "Notes",
+      "type": "notes",
+      "order": 11,
+      "file": "11-notes.mdx",
+      "wordCount": 1850,
+      "summary": "This section contains endnotes and citations for the book, providing references for sources quoted throughout the chapters. It also includes brief biographical information about the authors, Alan Hirsch and Lance Ford, describing their backgrounds, ministries, and other published works in the missional church movement."
+    }
+  ],
+  "totalSections": 15
+}

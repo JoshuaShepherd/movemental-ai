@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reading: Reframation — Alan Hirsch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body style="background:var(--bg-elevated);" data-leader-title="pageTitles.bookReader">
+  <div class="book-reader">
+    <header class="book-reader__header">
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle chapter list">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <a href="book-detail.html" class="book-reader__back">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          Back to Book
+        </a>
+      </div>
+      <span class="book-reader__book-title">Reframation</span>
+      <div style="width:6rem;"></div>
+    </header>
+
+    <div class="book-reader__progress-bar">
+      <div class="book-reader__progress-fill" style="width:25%;"></div>
+    </div>
+
+    <div class="book-reader__body">
+      <aside class="book-reader__sidebar" id="reader-sidebar" aria-label="Chapter navigation">
+        <h2 class="book-reader__sidebar-title">Chapters</h2>
+        <ol class="book-reader__chapters">
+          <li><a href="#" class="book-reader__chapter">1. The Crisis of Imagination</a></li>
+          <li><a href="#" class="book-reader__chapter is-active">2. Reframing the Frame</a></li>
+          <li><a href="#" class="book-reader__chapter">3. The DNA of Movement</a></li>
+          <li><a href="#" class="book-reader__chapter">4. Christocentric Foundations</a></li>
+          <li><a href="#" class="book-reader__chapter">5. Incarnational Practice</a></li>
+          <li><a href="#" class="book-reader__chapter">6. Communitas and Mission</a></li>
+          <li><a href="#" class="book-reader__chapter">7. Apostolic Environment</a></li>
+          <li><a href="#" class="book-reader__chapter">8. The Way Forward</a></li>
+        </ol>
+      </aside>
+
+      <main class="book-reader__main">
+        <div class="book-reader__content">
+          <p class="book-reader__chapter-num">Chapter 2</p>
+          <h1 class="book-reader__chapter-title">Reframing the Frame</h1>
+
+          <div class="book-reader__prose">
+            <p>Every organization, every movement, every community operates within a frame -- a set of assumptions so deeply embedded that they are rarely questioned. These assumptions determine what we see and what we overlook, what we consider possible and what we dismiss as impractical. The frame is the invisible architecture of our collective imagination.</p>
+
+            <p>For the Western church, the dominant frame has been shaped by centuries of Christendom -- the cultural arrangement in which Christianity enjoyed social privilege, institutional power, and cultural centrality. Within this frame, the church became an institution to be managed rather than a movement to be unleashed. Ministry became a profession rather than a calling. Discipleship became an education program rather than a way of life.</p>
+
+            <h3>The Limits of the Institutional Frame</h3>
+
+            <p>The institutional frame served the church well in certain historical moments. It provided stability, structure, and social cohesion during periods of cultural upheaval. It built hospitals, universities, and systems of care that shaped the Western world. We should not dismiss these contributions.</p>
+
+            <p>But every frame has its limits. And the institutional frame has reached its limits in the post-Christendom context. The assumptions that once supported the church -- that people would naturally come to church, that Christianity would be the default worldview, that the church's authority would be respected by culture -- these assumptions no longer hold.</p>
+
+            <blockquote>
+              "We cannot solve our problems with the same thinking we used when we created them." The church's challenge is not to think harder within the existing frame, but to reframe entirely.
+            </blockquote>
+
+            <h3>What Reframing Requires</h3>
+
+            <p>Reframing is not merely adopting new strategies or updating our methods. It is not about better marketing, contemporary worship styles, or digital engagement -- though these may have their place. Reframing is about fundamentally changing the way we see the church, its purpose, and its relationship to the world.</p>
+
+            <p>This requires what the New Testament calls <em>metanoia</em> -- a complete transformation of mind. It requires the courage to question our most cherished assumptions and the humility to admit that much of what we have built may need to be deconstructed before it can be rebuilt on more faithful foundations.</p>
+
+            <p>Reframing begins with returning to Jesus -- not the domesticated Jesus of institutional religion, but the radical, boundary-breaking, movement-starting Jesus of the Gospels. It begins with asking: If Jesus is Lord, then what does the church look like? What does mission look like? What does discipleship look like?</p>
+
+            <p>These are not theoretical questions. They are the most practical questions the church can ask. Because the frame determines the practice, and the practice determines the fruit. If we want different fruit, we need a different frame. And the only frame adequate to the task is the one given to us by Jesus himself.</p>
+          </div>
+
+          <nav class="book-reader__nav" aria-label="Chapter navigation">
+            <a href="#" class="book-reader__nav-btn">&larr; Previous Chapter</a>
+            <a href="#" class="book-reader__nav-btn">Next Chapter &rarr;</a>
+          </nav>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="../js/leader-content.js" data-json="../data/alan-hirsch.json"></script>
+</body>
+</html>

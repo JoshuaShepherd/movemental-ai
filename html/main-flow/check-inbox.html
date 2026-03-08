@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Check your inbox — Movemental</title>
+  <link rel="stylesheet" href="auth-modals.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <main class="auth-modal" role="dialog" aria-labelledby="check-inbox-title" aria-modal="true">
+    <div class="auth-modal__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+        <polyline points="22,6 12,13 2,6" />
+      </svg>
+    </div>
+    <h1 id="check-inbox-title" class="auth-modal__title">Check your inbox</h1>
+    <p class="auth-modal__body">
+      We sent you an activation link. Please be sure to check your spam folder too.
+    </p>
+  </main>
+
+  <footer class="auth-modal-footer">
+    <a href="/" class="auth-modal-footer__logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 2L11 13" />
+        <path d="M22 2L15 22L11 13L2 9L22 2Z" />
+      </svg>
+      Movemental
+    </a>
+    <span class="auth-modal-footer__curated">curated by <strong>Movemental</strong></span>
+  </footer>
+</body>
+</html>

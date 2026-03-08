@@ -1,0 +1,20 @@
+{
+  "templateCategory": "assessments",
+  "variants": [
+    { "id": "assess-template-picker", "file": "assessments-template-picker.tsx", "reference": "assessments-template-picker-01.png", "source": "Framer" },
+    { "id": "assess-progress-quiz", "file": "assessments-progress-quiz.tsx", "reference": "assessments-progress-quiz-02.png", "source": "HubSpot" },
+    { "id": "assess-mood-gradient", "file": "assessments-mood-gradient.tsx", "reference": "assessments-mood-gradient-03.png", "source": "Headspace" },
+    { "id": "assess-binary-choice", "file": "assessments-binary-choice.tsx", "reference": "assessments-binary-choice-04.png", "source": "Hims" },
+    { "id": "assess-dark-intro", "file": "assessments-dark-intro.tsx", "reference": "assessments-dark-intro-05.png", "source": "WeTransfer" },
+    { "id": "assess-modal-quiz", "file": "assessments-modal-quiz.tsx", "reference": "assessments-modal-quiz-06.png", "source": "Kajabi" },
+    { "id": "assess-scale-options", "file": "assessments-scale-options.tsx", "reference": "assessments-scale-options-07.png", "source": "Typeform" },
+    { "id": "assess-nps-scale", "file": "assessments-nps-scale.tsx", "reference": "assessments-nps-scale-08.png", "source": "Typeform" },
+    { "id": "assess-section-intro", "file": "assessments-section-intro.tsx", "reference": "assessments-section-intro-09.png", "source": "Hims" },
+    { "id": "assess-udemy-quiz", "file": "assessments-udemy-quiz.tsx", "reference": "assessments-udemy-quiz-10.png", "source": "Udemy" },
+    { "id": "assess-visual-cards", "file": "assessments-visual-cards.tsx", "reference": "assessments-visual-cards-11.png", "source": "Hims" },
+    { "id": "assess-avatar-survey", "file": "assessments-avatar-survey.tsx", "reference": "assessments-avatar-survey-12.png", "source": "HoneyBook" },
+    { "id": "assess-dark-floating", "file": "assessments-dark-floating.tsx", "reference": "assessments-dark-floating-13.png", "source": "WeTransfer" },
+    { "id": "assess-hubspot-duplicate", "file": "assessments-hubspot-duplicate.tsx", "reference": "assessments-hubspot-duplicate-14.png", "source": "HubSpot" },
+    { "id": "assess-long-form", "file": "assessments-long-form.tsx", "reference": "assessments-long-form-15.png", "source": "Hims" }
+  ]
+}

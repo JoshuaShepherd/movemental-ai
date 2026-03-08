@@ -1,0 +1,99 @@
+"use client";
+
+import { cn } from "@/lib/utils";
+
+interface ChatSupportMinimalProps {
+  className?: string;
+}
+
+/**
+ * Chat Support Minimal — Apple Support style full-page chat (ref-chat-01)
+ * Clean white bg, centered content, agent/user bubble layout, fixed input footer
+ */
+export function ChatSupportMinimal({ className }: ChatSupportMinimalProps) {
+  return (
+    <section className={cn("relative w-full min-h-screen flex flex-col bg-mvmt-surface-light", className)} >
+      {/* Header */}
+      <div className="border-b border-mvmt-border-light" >
+        <div className="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div
+              className="w-10 h-10 rounded-full border-2 flex items-center justify-center border-mvmt-text-primary"
+              
+            >
+              <span className="text-xs font-bold text-mvmt-text-primary">M</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2.5 h-2.5 rounded-full bg-mvmt-status-online"  />
+              <span className="text-sm font-medium text-mvmt-text-primary">
+                You are connected with an Advisor
+              </span>
+            </div>
+          </div>
+          <button
+            className="px-4 py-1.5 text-sm font-medium rounded-md border text-mvmt-text-primary border-mvmt-border-light"
+            
+          >
+            End Chat
+          </button>
+        </div>
+      </div>
+
+      {/* Chat body */}
+      <div className="flex-1 max-w-2xl w-full mx-auto px-6 py-6 space-y-4 overflow-y-auto pb-24">
+        {/* Timestamp */}
+        <p className="text-center text-xs text-mvmt-text-tertiary" >
+          11/04/2024 5:31 PM
+        </p>
+
+        {/* System message */}
+        <p className="text-center text-xs text-mvmt-text-tertiary" >
+          You are chatting with Sarah. Your case number is 102450517498.
+        </p>
+
+        {/* Agent message 1 */}
+        <div className="flex justify-start">
+          <div className="max-w-[75%] px-4 py-3 rounded-2xl rounded-bl-sm text-sm text-mvmt-text-primary bg-mvmt-surface-light-muted">
+            Thanks for contacting Movemental Support. My name is Sarah. Please give me a moment to look over your information.
+          </div>
+        </div>
+
+        {/* Agent message 2 */}
+        <div className="flex justify-start">
+          <div className="max-w-[75%] px-4 py-3 rounded-2xl rounded-bl-sm text-sm text-mvmt-text-primary bg-mvmt-surface-light-muted">
+            Hi there, how are you doing today?
+          </div>
+        </div>
+
+        {/* User message */}
+        <div className="flex justify-end">
+          <div className="max-w-[75%] px-4 py-3 rounded-2xl rounded-br-sm text-sm text-mvmt-cta-text bg-mvmt-accent">
+            Hi, Sarah. I&apos;m good thank you. I just started leading a new missional community, and I&apos;m considering upgrading to the Leader Plus plan. Does it cover things like cohort management or team coaching tools? And does it also include the multiplication pathway resources?
+          </div>
+        </div>
+      </div>
+
+      {/* Fixed footer input */}
+      <div className="border-t bg-mvmt-surface-light border-mvmt-border-light" >
+        <div className="max-w-2xl mx-auto px-6 py-3 flex items-center gap-3">
+          <button
+            className="w-8 h-8 rounded-full flex items-center justify-center border border-mvmt-border-light text-mvmt-text-tertiary"
+            
+          >
+            <span className="text-lg leading-none">+</span>
+          </button>
+          <div className="flex-1 px-4 py-2 rounded-full border text-sm border-mvmt-border-light text-mvmt-text-tertiary" >
+            Send message
+          </div>
+          <button
+            className="w-8 h-8 rounded-full flex items-center justify-center bg-mvmt-accent"
+          >
+            <span className="text-xs text-mvmt-cta-text">&uarr;</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+ChatSupportMinimal.displayName = "ChatSupportMinimal";

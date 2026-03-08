@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Where AI Fits: Determinism & the Human</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green-bg: #f0fdf4;
+      --green-border: #15803d;
+      --green-light: #16a34a;
+      --yellow-bg: #fffbeb;
+      --yellow-border: #b45309;
+      --yellow-light: #d97706;
+      --red-bg: #fef2f2;
+      --red-border: #b91c1c;
+      --red-light: #dc2626;
+      --ink: #1c1917;
+      --ink-muted: #57534e;
+      --ink-light: #a8a29e;
+      --white: #ffffff;
+      --radius: 8px;
+      --shadow: 0 2px 16px rgba(0,0,0,0.04);
+      --line-w: 2px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Lora', Georgia, serif;
+      font-size: 19px;
+      line-height: 1.7;
+      color: var(--ink);
+      background: var(--white);
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2.5rem 6rem;
+    }
+
+    .framework-section {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .framework-section { grid-template-columns: 1fr; }
+      .track-col { display: none; }
+    }
+
+    /* ---- Left: header + cards ---- */
+    .cards-col { min-width: 0; }
+
+    .header {
+      margin-bottom: 4rem;
+      opacity: 0;
+    }
+    .header h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 600;
+      margin: 0 0 0.75rem;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+    .header .intro {
+      font-size: 1.05rem;
+      color: var(--ink-muted);
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .cards-col .row {
+      margin-bottom: 2.5rem;
+    }
+
+    /* Row = one traffic-light tier */
+    .row {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.25rem 2rem;
+      align-items: start;
+      padding: 2rem 2.25rem;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(24px);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .row:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
+    .row.green { background: var(--green-bg); border-color: var(--green-border); }
+    .row.yellow { background: var(--yellow-bg); border-color: var(--yellow-border); }
+    .row.red { background: var(--red-bg); border-color: var(--red-border); }
+
+    .light-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .light {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.08);
+    }
+    .light.green { background: var(--green-light); }
+    .light.yellow { background: var(--yellow-light); }
+    .light.red { background: var(--red-light); }
+    .light-label {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-align: center;
+      max-width: 80px;
+      line-height: 1.2;
+    }
+    .row.green .light-label { color: var(--green-border); }
+    .row.yellow .light-label { color: var(--yellow-border); }
+    .row.red .light-label { color: var(--red-border); }
+
+    .content-cell { min-width: 0; }
+    .row-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      font-size: 1.35rem;
+      margin: 0 0 0.5rem;
+    }
+    .row.green .row-title { color: var(--green-border); }
+    .row.yellow .row-title { color: var(--yellow-border); }
+    .row.red .row-title { color: var(--red-border); }
+    .activities {
+      font-size: 1rem;
+      color: var(--ink);
+      margin: 0 0 0.4rem;
+    }
+    .row-meta {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* Expandable wisdom */
+    .wisdom {
+      grid-column: 1 / -1;
+      margin-top: 0.75rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+    }
+    .row.is-open .wisdom {
+      max-height: 480px;
+      opacity: 1;
+    }
+    .wisdom-inner {
+      font-size: 0.95rem;
+      color: var(--ink-muted);
+      line-height: 1.7;
+    }
+    .wisdom-inner strong { color: var(--ink); }
+    .wisdom-inner p { margin: 0 0 0.6rem; }
+    .wisdom-inner p:last-child { margin-bottom: 0; }
+
+    .hint {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--ink-light);
+      margin-top: 3rem;
+      opacity: 0;
+    }
+
+    @media (max-width: 520px) {
+      .row { grid-template-columns: 1fr; padding: 1.5rem 1.5rem; }
+      .light-cell { flex-direction: row; justify-content: flex-start; }
+    }
+
+    /* ---- Right: line + terms ---- */
+    .track-col {
+      position: sticky;
+      top: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-top: 0.5rem;
+    }
+
+    .line-track {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: var(--line-w);
+      height: 100%;
+      min-height: 400px;
+      background: var(--ink-light);
+      opacity: 0.25;
+      border-radius: 1px;
+    }
+
+    .line-draw {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: var(--line-w);
+      height: 100%;
+      background: var(--ink);
+      border-radius: 1px;
+      transform-origin: top center;
+      transform: scaleY(0);
+    }
+
+    .term {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--ink-muted);
+      text-align: right;
+      padding: 1.5rem 0 1.5rem 1.25rem;
+      opacity: 0;
+      transform: translateX(10px);
+      min-height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="framework-section" id="framework">
+      <div class="cards-col">
+        <header class="header">
+          <h1>Where AI Fits</h1>
+          <p class="intro">Determinism, discernment, and what stays human.</p>
+        </header>
+
+        <div class="row green" data-row="green">
+          <div class="light-cell">
+            <div class="light green" aria-hidden="true"></div>
+            <span class="light-label">Green light</span>
+          </div>
+          <div class="content-cell">
+            <p class="row-title">Never only human</p>
+            <p class="activities">Write · Translate · Plan · Test · Code</p>
+            <p class="row-meta">Deterministic. Same inputs → same kind of output. Skills needed. Using AI here is always only okay.</p>
+          </div>
+          <div class="wisdom">
+            <div class="wisdom-inner">
+              <p><strong>Why green?</strong> These tasks have clear criteria and repeatable outcomes. What’s needed are <strong>skills</strong>—knowing how to prompt, review, and correct. AI can do the heavy lifting; the human brings judgment about the goal and the bar. No moral or relational singularity at stake.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row yellow" data-row="yellow">
+          <div class="light-cell">
+            <div class="light yellow" aria-hidden="true"></div>
+            <span class="light-label">Yellow light</span>
+          </div>
+          <div class="content-cell">
+            <p class="row-title">Sometimes only human</p>
+            <p class="activities">Communicate · Coach · Counsel · Collaborate · Create</p>
+            <p class="row-meta">Non-deterministic. Same inputs can yield different outcomes. Discernment and character are needed. Sometimes only human.</p>
+          </div>
+          <div class="wisdom">
+            <div class="wisdom-inner">
+              <p><strong>Why yellow?</strong> These involve other people, context, and meaning. Outcomes depend on relationship, timing, and who’s in the room. <strong>Discernment and character</strong> are required: when to use AI as a draft or aid, and when the presence and voice of the human are irreplaceable. Not never AI; not always AI. Sometimes only human.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row red" data-row="red">
+          <div class="light-cell">
+            <div class="light red" aria-hidden="true"></div>
+            <span class="light-label">Red light</span>
+          </div>
+          <div class="content-cell">
+            <p class="row-title">Always only human</p>
+            <p class="activities">Pray · Preach · Proclaim · Prophesy</p>
+            <p class="row-meta">Human will and restraint. These require the person and, where faith is at stake, the divine. Always only human.</p>
+          </div>
+          <div class="wisdom">
+            <div class="wisdom-inner">
+              <p><strong>Why red?</strong> These are acts of person and vocation, not just content production. They require <strong>human will and restraint</strong>—who stands before God and before the community, who speaks in first person, who bears the weight of the word. The agency and the accountability are always human (and, in faith, divine). AI does not pray, preach, proclaim, or prophesy.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="hint">Click a row to expand the reasoning.</p>
+      </div>
+
+      <div class="track-col" id="track-col">
+        <div class="line-track" id="line-track" aria-hidden="true"></div>
+        <div class="line-draw" id="line-draw" aria-hidden="true"></div>
+        <div class="term" id="term-1">DETERMINISTIC</div>
+        <div class="term" id="term-2">NON-DETERMINISTIC</div>
+        <div class="term" id="term-3">NON-RATIONAL</div>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script>
+    (function () {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const header = document.querySelector('.header');
+      const rows = document.querySelectorAll('.row');
+      const hint = document.querySelector('.hint');
+      const lineDraw = document.getElementById('line-draw');
+      const lineTrack = document.getElementById('line-track');
+      const trackCol = document.getElementById('track-col');
+      const term1 = document.getElementById('term-1');
+      const term2 = document.getElementById('term-2');
+      const term3 = document.getElementById('term-3');
+      const section = document.getElementById('framework');
+
+      // Initial reveal on load (no scroll yet)
+      const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
+      tl.fromTo(header, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 })
+        .fromTo(rows[0], { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.5, clearProps: 'transform' }, 0.4)
+        .fromTo(rows[1], { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.5, clearProps: 'transform' }, 0.7)
+        .fromTo(rows[2], { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.5, clearProps: 'transform' }, 1)
+        .fromTo(hint, { opacity: 0 }, { opacity: 1, duration: 0.4 }, 1.3);
+
+      // Match track height to cards column so line draws over full content height
+      function setTrackHeight() {
+        const cardsCol = document.querySelector('.cards-col');
+        if (cardsCol && trackCol) {
+          const h = cardsCol.offsetHeight;
+          lineTrack.style.height = h + 'px';
+          lineDraw.style.height = h + 'px';
+          trackCol.style.minHeight = h + 'px';
+        }
+      }
+      setTrackHeight();
+      window.addEventListener('resize', setTrackHeight);
+
+      // Line draws on scroll through the section
+      gsap.to(lineDraw, {
+        scaleY: 1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 30%',
+          end: 'bottom 70%',
+          scrub: 1.2
+        }
+      });
+
+      // Terms reveal when their card enters view
+      gsap.fromTo(term1, { opacity: 0, x: 12 }, {
+        opacity: 1,
+        x: 0,
+        duration: 0.5,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: rows[0],
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+      gsap.fromTo(term2, { opacity: 0, x: 12 }, {
+        opacity: 1,
+        x: 0,
+        duration: 0.5,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: rows[1],
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+      gsap.fromTo(term3, { opacity: 0, x: 12 }, {
+        opacity: 1,
+        x: 0,
+        duration: 0.5,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: rows[2],
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      // Expand/collapse on click
+      rows.forEach(function (row) {
+        row.addEventListener('click', function () {
+          const isOpen = row.classList.contains('is-open');
+          rows.forEach(function (r) { r.classList.remove('is-open'); });
+          if (!isOpen) row.classList.add('is-open');
+          setTrackHeight();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

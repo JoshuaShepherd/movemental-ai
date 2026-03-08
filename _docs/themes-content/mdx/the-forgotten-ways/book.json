@@ -1,0 +1,216 @@
+{
+  "slug": "the-forgotten-ways",
+  "title": "The Forgotten Ways",
+  "author": "Alan Hirsch",
+  "description": "",
+  "sections": [
+    {
+      "slug": "acknowledgments",
+      "title": "Acknowledgments",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-acknowledgments.mdx",
+      "wordCount": 79,
+      "summary": "The author expresses gratitude to those who contributed to the book's development and supported the work. This brief section acknowledges the collaborative effort behind the book's creation."
+    },
+    {
+      "slug": "foreword-by-ed-stetzer",
+      "title": "Foreword By Ed Stetzer",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-foreword-by-ed-stetzer.mdx",
+      "wordCount": 45,
+      "summary": "Ed Stetzer introduces the book's significance and previews its key contributions to missional church thinking. The foreword highlights the book's relevance for a new generation seeking to rediscover the church's missional calling."
+    },
+    {
+      "slug": "introduction",
+      "title": "Introduction",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-introduction.mdx",
+      "wordCount": 2865,
+      "summary": "The introduction opens with a compelling question: How did a tiny, persecuted Jewish sect grow from 25,000 to 20 million Christians in just two centuries? This question launches the author's quest to discover the generative system that undergirds all transformative Christian movements, which he calls movement DNA (mDNA). The introduction sets the stage for the book's exploration of missional theology and movement dynamics, using historical examples from the early church, the Chinese underground church, and other remarkable movements."
+    },
+    {
+      "slug": "preface-to-the-second-edition",
+      "title": "Preface to the Second Edition",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-preface-to-the-second-edition.mdx",
+      "wordCount": 3875,
+      "summary": "The preface provides context for the book's development and the author's journey in discovering the principles of Apostolic Genius. Hirsch reflects on the revelatory moment when the framework came together, describing it as both a gift from God and the product of years of missional practice and reflection. He explains how this second edition incorporates new insights and stories from those who have applied these principles in various contexts."
+    },
+    {
+      "slug": "a-view-from-the-edge",
+      "title": "The Making of a Missionary",
+      "type": "chapter",
+      "order": 1,
+      "file": "01-a-view-from-the-edge.mdx",
+      "wordCount": 5106,
+      "summary": "This chapter reflects on the author's personal journey into missional ministry and the formative experiences that shaped his understanding of church. Hirsch recounts his time at South Melbourne Restoration Community (SMRC), where he learned to engage with marginalized subcultures and discovered that great movements begin at the fringes of society. The chapter traces the evolution from a dying traditional church to a vibrant missional movement, highlighting the phases of transformation: from death to chaos, to becoming a church-planting church, to developing a missional approach."
+    },
+    {
+      "slug": "a-view-from-above",
+      "title": "A View from Above",
+      "type": "chapter",
+      "order": 2,
+      "file": "02-a-view-from-above.mdx",
+      "wordCount": 7907,
+      "summary": "This chapter provides a broader perspective on the challenges facing the contemporary church and the need for missional transformation. Moving beyond the local church experience, Hirsch examines the global context of Western Christianity's decline and the fundamental shifts required for renewal. The chapter argues that the church is always in a state of crisis due to the tension between its calling and its current expression, and explores how understanding this crisis can lead to genuine transformation."
+    },
+    {
+      "slug": "preparing-for-the-journey",
+      "title": "Preparing for the Journey",
+      "type": "chapter",
+      "order": 3,
+      "file": "03-preparing-for-the-journey.mdx",
+      "wordCount": 2910,
+      "summary": "This section prepares readers to engage with the core concepts of Apostolic Genius and movement DNA. Hirsch introduces the six key elements that constitute movement DNA, explaining that these elements must work together as an integrated system. The chapter sets the stage for the detailed exploration of each element that follows in subsequent chapters."
+    },
+    {
+      "slug": "the-heart-of-it-all-jesus-is-lord",
+      "title": "The Heart of It All: Jesus Is Lord",
+      "type": "chapter",
+      "order": 4,
+      "file": "04-the-heart-of-it-all-jesus-is-lord.mdx",
+      "wordCount": 4972,
+      "summary": "This chapter establishes the centrality of Christ as the foundation of all authentic Christian movements. Hirsch argues that persecution forces movements to distill the gospel to its essence, resulting in a simple yet powerful message centered on Jesus as Lord. The chapter explores the Shema Yisrael (Hear, O Israel) and how the confession 'Jesus is Lord' represents the core of biblical monotheism, touching on the nature of God, his relation to the world, and his covenantal relationship with his people."
+    },
+    {
+      "slug": "disciple-making",
+      "title": "Disciple Making",
+      "type": "chapter",
+      "order": 5,
+      "file": "05-disciple-making.mdx",
+      "wordCount": 6248,
+      "summary": "This chapter examines the essential role of disciple-making in creating transformative Christian movements. Hirsch argues that all six elements of mDNA must be present for authentic Apostolic Genius to activate, and disciple-making is fundamental to this process. The chapter explores how movements grow through the multiplication of disciples who embody and pass on the faith, rather than through programs or institutions."
+    },
+    {
+      "slug": "missional-incarnational-impulse",
+      "title": "Missional-Incarnational Impulse",
+      "type": "chapter",
+      "order": 6,
+      "file": "06-missional-incarnational-impulse.mdx",
+      "wordCount": 5264,
+      "summary": "This chapter explores how the church can engage missionally and incarnationally in contemporary contexts. Hirsch argues that the gospel must be proclaimed afresh in new ways to each generation, and that the church is intrinsically incarnational—it must become native to its context rather than remaining foreign. The chapter examines examples of incarnational mission, such as the Uffizi Order in Santa Barbara, and explains how the church can engage authentically in the nooks and crannies of society."
+    },
+    {
+      "slug": "liminality-and-communitas",
+      "title": "Liminality and Communitas",
+      "type": "chapter",
+      "order": 7,
+      "file": "07-liminality-and-communitas.mdx",
+      "wordCount": 6853,
+      "summary": "This chapter examines the role of liminal experiences and authentic community in fostering missional movements. Hirsch draws on anthropological concepts of liminality (threshold experiences) and communitas (deep community formed in crisis) to explain how movements are birthed. The chapter argues that when the church engages at its edges and enters liminal spaces, it creates the conditions for genuine transformation and the formation of authentic missional communities."
+    },
+    {
+      "slug": "apest-culture",
+      "title": "APEST Culture",
+      "type": "chapter",
+      "order": 8,
+      "file": "08-apest-culture.mdx",
+      "wordCount": 7645,
+      "summary": "This chapter explores the fivefold ministry framework (APEST—Apostles, Prophets, Evangelists, Shepherds, and Teachers—and its role in creating healthy missional culture. Hirsch argues that these functions are not just for leaders but should be distributed throughout the entire body of Christ. The chapter examines how APEST culture enables movements to function with the full range of gifts and callings, using examples from remarkable leaders in various contexts, including the Chinese underground church."
+    },
+    {
+      "slug": "organic-systems",
+      "title": "Organic Systems",
+      "type": "chapter",
+      "order": 9,
+      "file": "09-organic-systems.mdx",
+      "wordCount": 11031,
+      "summary": "This chapter examines how movements organize organically and maintain their core DNA while scaling effectively. Hirsch explores how exponentially expanding movements manage to get to scale while maintaining their core ideas and values. The chapter draws on living systems theory to explain how movements can pass on their DNA, maintain coherence, and adapt without losing their essential character, contrasting organic systems with institutional approaches."
+    },
+    {
+      "slug": "conclusion",
+      "title": "Conclusion",
+      "type": "conclusion",
+      "order": 10,
+      "file": "10-conclusion.mdx",
+      "wordCount": 276,
+      "summary": "The conclusion synthesizes the book's main arguments and offers final reflections on the themes developed throughout. Hirsch emphasizes that the church must be willing to let go of forms that lack integrity and be open to new ventures in new directions. The chapter calls readers to realize the potential that has lain hidden at the heart of God's people, reminding them that Apostolic Genius is not new but represents a recovery of what has been forgotten."
+    },
+    {
+      "slug": "afterword-by-jeff-vanderstelt",
+      "title": "Afterword",
+      "type": "afterword",
+      "order": 11,
+      "file": "11-afterword-by-jeff-vanderstelt.mdx",
+      "wordCount": 451,
+      "summary": "Jeff Vanderstelt provides a personal reflection on the book's impact and his friendship with Alan Hirsch. He shares how the book helped him remember why he left comfortable, predictable ministry to pioneer new expressions of church. Vanderstelt emphasizes that the mDNA of the church is not really anything new but represents what is already true for us in Christ, calling readers to live in the forgotten ways of our Savior, Lord, and King."
+    },
+    {
+      "slug": "appendix-1",
+      "title": "Appendix 1",
+      "type": "appendix",
+      "order": 12,
+      "file": "12-appendix-1.mdx",
+      "wordCount": 6290,
+      "summary": "This appendix provides a crash course in chaos theory and its application to church systems."
+    },
+    {
+      "slug": "appendix-2",
+      "title": "Appendix 2",
+      "type": "appendix",
+      "order": 13,
+      "file": "13-appendix-2.mdx",
+      "wordCount": 1149,
+      "summary": "This appendix addresses the distinction between apostolic leadership as CEO versus servant, arguing against hierarchical and domineering forms of leadership. It examines how APEST functions should be understood through a christological lens, emphasizing servant leadership modeled after Jesus. The appendix explores how adaptive, catalytic leadership empowers others and releases the latent potential already present in organizations, contrasting this with CEO-type leadership that tends to disempower and create dependency."
+    },
+    {
+      "slug": "appendix-3",
+      "title": "Appendix 3",
+      "type": "appendix",
+      "order": 14,
+      "file": "14-appendix-3.mdx",
+      "wordCount": 634,
+      "summary": "This appendix presents a living example of incarnational church practice."
+    },
+    {
+      "slug": "appendix-4",
+      "title": "Appendix 4",
+      "type": "appendix",
+      "order": 15,
+      "file": "15-appendix-4.mdx",
+      "wordCount": 848,
+      "summary": "This appendix explores leadership principles within living systems frameworks."
+    },
+    {
+      "slug": "appendix-5",
+      "title": "Appendix 5",
+      "type": "appendix",
+      "order": 16,
+      "file": "16-appendix-5.mdx",
+      "wordCount": 880,
+      "summary": "This appendix examines the contrast between liquid and solid forms of church organization."
+    },
+    {
+      "slug": "glossary",
+      "title": "Glossary",
+      "type": "glossary",
+      "order": 17,
+      "file": "17-glossary.mdx",
+      "wordCount": 2745,
+      "summary": "This glossary defines key terms and concepts used throughout the book, serving as a reference guide for specialized vocabulary."
+    },
+    {
+      "slug": "bibliography",
+      "title": "Bibliography",
+      "type": "bibliography",
+      "order": 18,
+      "file": "18-bibliography.mdx",
+      "wordCount": 1528,
+      "summary": "This bibliography lists the sources and references cited throughout the book, providing readers with resources for further study."
+    },
+    {
+      "slug": "index",
+      "title": "Index",
+      "type": "index",
+      "order": 19,
+      "file": "19-index.mdx",
+      "wordCount": 1003,
+      "summary": "This index provides a comprehensive listing of topics, names, and concepts covered in the book, organized alphabetically for easy reference."
+    }
+  ],
+  "totalSections": 23
+}

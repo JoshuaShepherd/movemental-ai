@@ -1,0 +1,30 @@
+{
+  "leader_slug": "dave-ferguson",
+  "leader_full_name": "Dave Ferguson",
+  "last_updated": "2025-02-14",
+  "source": "Assets brought from public/dave-ferguson and public/media-library/images/headshots; applied in html/dave-ferguson template.",
+  "headshots": [
+    {
+      "file": "dave-ferguson-primary.webp",
+      "path": "public/media-library/images/headshots/dave-ferguson/dave-ferguson-primary.webp",
+      "variant": "primary",
+      "used_in_template": ["hero", "about", "course-hero-maker", "article-leadership-multiplication"]
+    },
+    {
+      "file": "logo.webp",
+      "path": "public/media-library/images/headshots/dave-ferguson/logo.webp",
+      "variant": "logo",
+      "used_in_template": ["nav (all pages)"]
+    }
+  ],
+  "book_covers": [
+    { "file": "bless.jpg", "book_title": "B.L.E.S.S.", "path": "public/media-library/images/books/dave-ferguson/bless.jpg" },
+    { "file": "boss-or-leader.webp", "book_title": "Boss or Leader", "path": "public/media-library/images/books/dave-ferguson/boss-or-leader.webp" },
+    { "file": "exponential.jpg", "book_title": "Exponential", "path": "public/media-library/images/books/dave-ferguson/exponential.jpg" },
+    { "file": "finding-your-way-back-to-god.jpg", "book_title": "Finding Your Way Back to God", "path": "public/media-library/images/books/dave-ferguson/finding-your-way-back-to-god.jpg" },
+    { "file": "hero-maker.jpg", "book_title": "Hero Maker", "path": "public/media-library/images/books/dave-ferguson/hero-maker.jpg" },
+    { "file": "multiplier.jpg", "book_title": "Multiplier", "path": "public/media-library/images/books/dave-ferguson/multiplier.jpg" },
+    { "file": "one-eighty.jpg", "book_title": "One Eighty", "path": "public/media-library/images/books/dave-ferguson/one-eighty.jpg" },
+    { "file": "the-legacy-of-a-hero-maker.jpg", "book_title": "The Legacy of a Hero Maker", "path": "public/media-library/images/books/dave-ferguson/the-legacy-of-a-hero-maker.jpg" }
+  ]
+}
