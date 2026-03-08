@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C \"C:\\\\dev\\\\movemental-sites\\\\movemental-ai\" log --oneline -10)",
+      "Bash(ls:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc --noEmit)",
+      "Bash(timeout 15 npm run dev:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npx next lint:*)",
+      "Bash(npm ls:*)",
+      "Bash(find:*)",
+      "Bash(npm run build:*)",
+      "Bash(dir:*)",
+      "Bash(test:*)",
+      "Bash(git stash:*)",
+      "Bash(if not exist \"C:\\\\dev\\\\movemental-sites\\\\movemental-ai-site\\\\app\\\\templates\\\\chat\" mkdir \"C:\\\\dev\\\\movemental-sites\\\\movemental-ai-site\\\\app\\\\templates\\\\chat\")",
+      "Bash(echo:*)",
+      "Bash(npx sharp:*)",
+      "Bash(npx sharp-cli:*)",
+      "Bash(node:*)",
+      "Bash(git checkout:*)",
+      "Bash(grep:*)",
+      "WebFetch(domain:movemental-ai-site.vercel.app)",
+      "Bash(findstr:*)",
+      "Bash(npx shadcn@latest add tabs accordion sheet dialog badge separator textarea --yes)",
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(./node_modules/.bin/tsc:*)",
+      "Bash(sort:*)",
+      "Bash(done)",
+      "WebSearch",
+      "Bash(pnpm exec tsc:*)",
+      "Bash(pnpm exec eslint:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx next build --no-lint)",
+      "Bash(npx next build:*)",
+      "Bash(git diff:*)"
+    ]
+  }
+}
