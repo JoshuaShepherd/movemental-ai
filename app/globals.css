@@ -135,6 +135,8 @@
 
 @layer base {
   :root {
+    /* Preview/under-construction banner: fixed height for layout offset (nav, etc.) */
+    --preview-banner-height: 2.5rem;
     --background: 120 14% 95%;
     --foreground: 120 27% 7%;
     --card: 0 0% 100%;

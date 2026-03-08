@@ -1,21 +1,18 @@
 /**
- * Site-wide banner indicating the application is under construction and in preview.
- * Rendered at the root layout so it appears on every page.
- * Best practice: persistent, accessible, non-dismissible so all users see the notice.
+ * Site-wide banner: under construction / preview mode.
+ * Fixed at top; layout uses --preview-banner-height for nav offset.
+ * Styled per design system: muted, border, typography.
  */
 export function PreviewBanner() {
   return (
     <div
       role="region"
       aria-label="Site notice"
-      className="relative z-50 w-full border-b border-amber-200 bg-amber-50 px-4 py-2 text-center text-sm font-medium text-amber-900 dark:border-amber-800 dark:bg-amber-950/90 dark:text-amber-100"
+      className="fixed left-0 right-0 top-0 z-[100] flex h-[var(--preview-banner-height)] items-center justify-center border-b border-border bg-muted px-4 text-center"
     >
-      <span className="inline-flex items-center gap-2">
-        <span aria-hidden className="text-amber-600 dark:text-amber-400">
-          ◆
-        </span>
+      <p className="text-sm font-medium text-muted-foreground">
         This site is under construction and in preview. Content and features may change.
-      </span>
+      </p>
     </div>
   );
 }

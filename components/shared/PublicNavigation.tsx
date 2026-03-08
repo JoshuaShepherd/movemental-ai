@@ -82,7 +82,8 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
   return (
     <nav
       className={cn(
-        'sticky top-0 z-50 transition-all duration-300',
+        'sticky z-50 transition-all duration-300',
+        'top-[var(--preview-banner-height)]',
         isDark
           ? isScrolled
             ? 'bg-sage-900/95 backdrop-blur-md border-b border-sage-800'

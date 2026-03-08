@@ -26,7 +26,9 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${poppins.variable} ${dmSans.variable} ${nunito.variable} ${playfairDisplay.variable} ${lora.variable} ${spaceGrotesk.variable}`}>
       <body className={inter.className}>
         <PreviewBanner />
-        <QueryProvider>{children}</QueryProvider>
+        <div className="min-h-screen pt-[var(--preview-banner-height)]">
+          <QueryProvider>{children}</QueryProvider>
+        </div>
       </body>
     </html>
   );
