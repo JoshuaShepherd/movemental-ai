@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { cn } from '@/lib/utils'
+import { Logo } from '@/components/shared/Logo'
 
 interface PublicFooterProps {
   variant?: 'dark' | 'light'
@@ -61,19 +61,9 @@ export function PublicFooter({ variant = 'light', className }: PublicFooterProps
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand column — full logo per _docs/ui/logo-usage.md */}
           <div className="col-span-2 md:col-span-1">
-            <Link
-              href="/"
-              className="inline-flex items-center mb-4"
-              aria-label="Movemental home"
-            >
-              <Image
-                src="/media-library/images/logo/logo-horizontal-full-color-h32.webp"
-                alt="Movemental"
-                width={67}
-                height={32}
-                className="h-8 w-auto"
-              />
-            </Link>
+            <div className="mb-4">
+              <Logo size="md" invert={isDark} />
+            </div>
             <p
               className={cn(
                 'text-sm leading-relaxed',

@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
@@ -13,9 +12,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Menu, X, ChevronDown, Search, BookOpen, Layers, Brain, Sparkles, User, Zap, Target, DollarSign, Users, Building, Network, Heart, LayoutGrid, HelpCircle, Beaker } from 'lucide-react'
 import { cn } from '@/lib/utils'
-
-/** Full logo (horizontal) — full color for both light and dark nav. Per _docs/ui/logo-usage.md */
-const LOGO_NAV = '/media-library/images/logo/logo-horizontal-full-color-h32.webp'
+import { Logo } from '@/components/shared/Logo'
 
 interface NavDropdownItem {
   label: string
@@ -96,19 +93,7 @@ export function PublicNavigation({ variant = 'light', className }: PublicNavigat
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <Link
-            href="/"
-            className="inline-flex items-center shrink-0"
-            aria-label="Movemental home"
-          >
-            <Image
-              src={LOGO_NAV}
-              alt="Movemental"
-              width={67}
-              height={32}
-              className="h-8 w-auto"
-            />
-          </Link>
+          <Logo size="md" invert={isDark} />
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">

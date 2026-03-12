@@ -1,0 +1,276 @@
+{
+  "writers": [
+    {
+      "full_name": "Alan Hirsch",
+      "slug": "alan-hirsch",
+      "bio": "Alan Hirsch is a leading missiologist and Christian movement strategist recognized for his foundational work on the APEST framework (Apostle, Prophet, Evangelist, Shepherd, Teacher) and church multiplication movements. He has authored 9+ published books and co-founded multiple organizations including 100Movements, Forge Mission Training Network, and the Hirsch Institute.",
+      "role": "Founder, Missiologist, Author, Movement Strategist",
+      "organization": "100Movements, Forge Mission Training Network, The Hirsch Institute",
+      "tags": ["APEST", "missional church", "church multiplication", "apostolic imagination", "movement building", "author"]
+    },
+    {
+      "full_name": "Andrew Jones",
+      "slug": "andrew-jones",
+      "bio": "Andrew Jones, known as the 'Tall Skinny Kiwi,' is a longtime blogger, author, and emerging church thought leader from New Zealand who has been actively documenting and analyzing Christian movements for over 20 years. He hosts a popular podcast and has contributed significantly to conversations around emerging church movements, missional theology, and global Christianity.",
+      "role": "Blogger, Author, Podcast Host, Emerging Church Thought Leader",
+      "organization": "Tall Skinny Kiwi",
+      "tags": ["emerging church", "blogging", "missional theology", "podcast", "global Christianity"]
+    },
+    {
+      "full_name": "Brad Brisco",
+      "slug": "brad-brisco",
+      "bio": "Brad Brisco is the Director of Multiplication Strategies for Send Network and a recognized expert on church multiplication and planting strategies. He has co-authored 5 books on church multiplication and brings 18+ years of teaching experience in helping churches and networks develop sustainable multiplication strategies.",
+      "role": "Director of Multiplication Strategies, Author, Teacher",
+      "organization": "Send Network",
+      "tags": ["church multiplication", "church planting", "multiplication strategies", "author"]
+    },
+    {
+      "full_name": "Brian Johnson",
+      "slug": "brian-johnson",
+      "bio": "Brian Johnson is the co-founder of Bethel Music and serves as a senior worship pastor at Bethel Church in Redding, California. He has been instrumental in developing worship music and culture within one of the most influential contemporary churches in North America, producing multiple award-winning albums and shaping modern worship practices.",
+      "role": "Co-Founder, Worship Pastor, Music Producer",
+      "organization": "Bethel Music, Bethel Church",
+      "tags": ["worship music", "bethel", "contemporary worship", "music leadership"]
+    },
+    {
+      "full_name": "Cam Roxburgh",
+      "slug": "cam-roxburgh",
+      "bio": "Cam Roxburgh is the National Director of Forge Canada and Team Leader of Southside Community Church in British Columbia, bringing 30+ years of experience in missional church leadership and movement building. He holds a DMin degree and has been deeply involved in developing disciples and movements within the Canadian context.",
+      "role": "National Director, Missional Church Leader, Team Leader",
+      "organization": "Forge Canada, Southside Community Church",
+      "tags": ["missional church", "forge", "movement leadership", "discipleship"]
+    },
+    {
+      "full_name": "Darryl Answer",
+      "slug": "darryl-answer",
+      "bio": "Darryl Answer is the co-pastor of New Community Church in London and founder of Verge Solutions LLC, a consulting organization focused on helping churches develop missional and multiplication strategies. He brings practical experience in church planting and movement development.",
+      "role": "Co-Pastor, Founder, Consultant",
+      "organization": "New Community Church, Verge Solutions LLC",
+      "tags": ["church planting", "missional church", "consultation", "movement building"]
+    },
+    {
+      "full_name": "Dave Ferguson",
+      "slug": "dave-ferguson",
+      "bio": "Dave Ferguson is the Founding Pastor of Community Christian Church in the Chicago area and serves as President/CEO of the Exponential Conference, a major gathering for church multiplication and innovation leaders. He has authored 9+ published books and is a recognized voice in church multiplication movements.",
+      "role": "Founding Pastor, President/CEO, Author, Speaker",
+      "organization": "Community Christian Church, Exponential Conference",
+      "tags": ["church multiplication", "exponential", "church leadership", "innovation", "author"]
+    },
+    {
+      "full_name": "Deb Hirsch",
+      "slug": "deb-hirsch",
+      "bio": "Deb Hirsch is co-founder of the Forge Mission Training Network and board member of Missio Alliance, bringing 25+ years of professional experience in missional theology, church development, and movement building. She is a recognized expert in equipping leaders for missional engagement.",
+      "role": "Co-Founder, Board Member, Movement Leader",
+      "organization": "Forge Mission Training Network, Missio Alliance",
+      "tags": ["missional church", "forge", "movement leadership", "church development"]
+    },
+    {
+      "full_name": "Ed Love",
+      "slug": "ed-love",
+      "bio": "Ed Love serves as Executive Director of Church Multiplication and Discipleship for The Wesleyan Church, bringing significant expertise in multiplication strategies and discipleship development. He also serves as an adjunct professor, sharing his knowledge with emerging leaders in academic settings.",
+      "role": "Executive Director, Adjunct Professor",
+      "organization": "The Wesleyan Church",
+      "tags": ["church multiplication", "discipleship", "wesleyan", "movement building"]
+    },
+    {
+      "full_name": "Emma Cotterill",
+      "slug": "emma-cotterill",
+      "bio": "Emma Cotterill is Strategic Impact Manager at NYSA Sweden and Head of Partnerships at Movement Leaders Collective, with expertise in movement strategy and impact development. She co-authored a government-commissioned guidebook and brings strategic thinking to movement building and leadership development.",
+      "role": "Strategic Impact Manager, Head of Partnerships, Author",
+      "organization": "NYSA Sweden, Movement Leaders Collective",
+      "tags": ["movement strategy", "partnerships", "impact", "leadership development"]
+    },
+    {
+      "full_name": "Hugh Halter",
+      "slug": "hugh-halter",
+      "bio": "Hugh Halter is an experienced church planter and movement builder with 30+ years of ministry experience who has authored 7+ published books on church planting, microchurches, and missional community. He founded the Lantern Network and Post Commons, and co-founded the Adullam house church network, pioneering decentralized church models.",
+      "role": "Church Planter, Author, Founder, Movement Leader",
+      "organization": "Lantern Network, Post Commons, Adullam Network",
+      "tags": ["church planting", "microchurches", "missional community", "house churches", "author"]
+    },
+    {
+      "full_name": "Jeff Vanderstelt",
+      "slug": "jeff-vanderstelt",
+      "bio": "Jeff Vanderstelt is the Executive Director of Saturate and Founding Leader of Soma Family of Churches, with expertise in discipleship and church multiplication. He serves as Lead Teaching Pastor at Doxa Church and has authored 3+ books on missional living and church development.",
+      "role": "Executive Director, Founding Leader, Teaching Pastor, Author",
+      "organization": "Saturate, Soma Family of Churches, Doxa Church",
+      "tags": ["discipleship", "church multiplication", "saturate", "missional living", "author"]
+    },
+    {
+      "full_name": "JR Woodward",
+      "slug": "jr-woodward",
+      "bio": "JR Woodward is the National Director of the V3 Church Planting Movement and co-founder of both Missio Alliance and the Praxis Gathering, key convening spaces for missional church leaders. He holds a PhD and has authored 3 published books on church planting, movements, and leadership development.",
+      "role": "National Director, Co-Founder, Author, PhD",
+      "organization": "V3 Church Planting Movement, Missio Alliance, Praxis Gathering",
+      "tags": ["church planting", "movement building", "v3", "missio alliance", "author"]
+    },
+    {
+      "full_name": "Kurt Rietema",
+      "slug": "kurt-rietema",
+      "bio": "Kurt Rietema serves as Senior Director of YF Neighborhood at Youthfront and Street Psalms, bringing expertise in urban youth ministry and community development. He co-authored a book in 2023 and serves as an adjunct professor, sharing his knowledge with emerging leaders.",
+      "role": "Senior Director, Author, Adjunct Professor",
+      "organization": "Youthfront, Street Psalms",
+      "tags": ["youth ministry", "urban ministry", "community development", "author"]
+    },
+    {
+      "full_name": "Lucas Pulley",
+      "slug": "lucas-pulley",
+      "bio": "Lucas Pulley serves as Executive Director of Underground Network, Inc. in Tampa, Florida, and brings significant expertise as a writer, speaker, trainer, and coach focused on missional community development. He holds a Master of Global Leadership degree and is actively involved in developing missional networks and communities.",
+      "role": "Executive Director, Writer, Speaker, Trainer, Coach",
+      "organization": "Underground Network",
+      "tags": ["missional community", "underground network", "movement building", "coaching"]
+    },
+    {
+      "full_name": "Mandy Smith",
+      "slug": "mandy-smith",
+      "bio": "Mandy Smith is a leadership consultant with 20+ years of experience in church and organizational development, published as an author and recognized expert in leadership assessment and development. She is a Certified DiSC and CliftonStrengths practitioner, helping leaders and organizations develop their potential.",
+      "role": "Leadership Consultant, Author, Assessment Specialist",
+      "organization": "Independent Consulting Practice",
+      "tags": ["leadership development", "organizational development", "assessment", "coaching"]
+    },
+    {
+      "full_name": "Mark Cotterill",
+      "slug": "mark-cotterill",
+      "bio": "Mark Cotterill is a coach and consultant at 5Q Central with expertise in movement strategy and assessment, co-founder of Venture 12 Network, and an active church planter working alongside his wife Emma. He brings both strategic and practical experience in movement building and leadership development.",
+      "role": "Coach, Consultant, Co-Founder, Church Planter",
+      "organization": "5Q Central, Venture 12 Network",
+      "tags": ["5Q", "movement strategy", "coaching", "church planting"]
+    },
+    {
+      "full_name": "Mark Sayers",
+      "slug": "mark-sayers",
+      "bio": "Mark Sayers is the Lead Pastor of Red Church in Melbourne, Australia, and an established author with 5+ published books exploring contemporary theology, culture, and leadership. He hosts the Rebuilders podcast, which explores themes of cultural renewal and spiritual leadership.",
+      "role": "Lead Pastor, Author, Podcast Host",
+      "organization": "Red Church, Rebuilders Podcast",
+      "tags": ["leadership", "theology", "culture", "podcast", "author"]
+    },
+    {
+      "full_name": "Meghan Good",
+      "slug": "meghan-good",
+      "bio": "Meghan Good is faculty at Anabaptist Mennonite Biblical Seminary with 16+ years of pastoral experience and has authored 2 published books on church and leadership topics. She brings both academic and practical expertise in theological education and pastoral ministry.",
+      "role": "Faculty, Pastoral Leader, Author",
+      "organization": "Anabaptist Mennonite Biblical Seminary",
+      "tags": ["anabaptist theology", "pastoral ministry", "biblical seminary", "education", "author"]
+    },
+    {
+      "full_name": "Michael Frost",
+      "slug": "michael-frost",
+      "bio": "Michael Frost is a prolific author with 20+ published books and co-founder of the Forge Mission Training Network, one of the most influential organizations in the missional church movement. He is founding director of the Tinsley Institute and developer of the BELLS framework for missional engagement.",
+      "role": "Author, Co-Founder, Director, Theologian",
+      "organization": "Forge Mission Training Network, Tinsley Institute",
+      "tags": ["missional church", "forge", "BELLS framework", "missional theology", "author"]
+    },
+    {
+      "full_name": "Mindy Caliguire",
+      "slug": "mindy-caliguire",
+      "bio": "Mindy Caliguire is co-founder and president of Soul Care, serving 1000+ entities with soul care and spiritual formation resources. She has authored 4 published books and is recognized as a thought leader in spiritual formation and contemplative leadership.",
+      "role": "Co-Founder, President, Author, Spiritual Formation Expert",
+      "organization": "Soul Care",
+      "tags": ["soul care", "spiritual formation", "contemplative leadership", "discipleship", "author"]
+    },
+    {
+      "full_name": "Peyton Jones",
+      "slug": "peyton-jones",
+      "bio": "Peyton Jones is the CEO of NewBreed Training and author of a best-selling church planting textbook, with significant experience assisting in the establishment of 2000+ congregations. He is recognized as a leading expert in church planting strategies and movement multiplication.",
+      "role": "CEO, Author, Church Planting Expert",
+      "organization": "NewBreed Training",
+      "tags": ["church planting", "church multiplication", "newbreed", "leadership training", "author"]
+    },
+    {
+      "full_name": "Rich Robinson",
+      "slug": "rich-robinson",
+      "bio": "Rich Robinson is the founder of Catalyse Change and 100Movements, director of 5Q Collective, and brings 20+ years of experience in missional disciple-making and movement building. He is recognized as a strategist in missional theology and sustainable movements.",
+      "role": "Founder, Director, Strategist, Movement Leader",
+      "organization": "Catalyse Change, 100Movements, 5Q Collective",
+      "tags": ["missional disciple-making", "100movements", "5Q", "movement strategy"]
+    },
+    {
+      "full_name": "Rick Warren",
+      "slug": "rick-warren",
+      "bio": "Rick Warren is the founder of Saddleback Church, one of the largest megachurches in North America with 20,000+ members, and author of 'The Purpose Driven Life,' one of the best-selling Christian books of all time with 30+ million copies sold. He is a globally influential leader in contemporary Christianity and church growth movements.",
+      "role": "Founder, Author, Global Church Leader",
+      "organization": "Saddleback Church",
+      "tags": ["purpose driven", "megachurch", "church growth", "global influence", "author"]
+    },
+    {
+      "full_name": "Rob Bell",
+      "slug": "rob-bell",
+      "bio": "Rob Bell is a former pastor of Mars Hill Bible Church and established author with 8+ published books exploring contemporary spirituality, theology, and culture. He created the influential NOOMA video series (24 episodes with 30+ million views) and hosts The RobCast podcast, reaching audiences globally.",
+      "role": "Author, Pastor, Video Creator, Podcast Host",
+      "organization": "The RobCast, Mars Hill Bible Church (former)",
+      "tags": ["emerging theology", "NOOMA", "podcast", "contemporary spirituality", "author"]
+    },
+    {
+      "full_name": "Rob Wegner",
+      "slug": "rob-wegner",
+      "bio": "Rob Wegner is the founding leader and director of Kansas City Underground, and serves as Director of Microchurch Next for Exponential, bringing expertise in microchurch movements and decentralized church expressions. He co-authored 'The Starfish and the Spirit' and is actively shaping contemporary church multiplication strategies.",
+      "role": "Founding Leader, Director, Author",
+      "organization": "Kansas City Underground, Exponential",
+      "tags": ["microchurches", "church multiplication", "exponential", "underground network", "author"]
+    },
+    {
+      "full_name": "Rowland Smith",
+      "slug": "rowland-smith",
+      "bio": "Rowland Smith is the National Director of Forge America Mission Training Network and adjunct faculty member at multiple institutions including Fuller, Denver Seminary, and Grand Canyon University. He brings extensive experience in missional theology and movement development across North America.",
+      "role": "National Director, Adjunct Faculty, Missional Theologian",
+      "organization": "Forge America, Fuller, Denver Seminary, Grand Canyon University",
+      "tags": ["forge", "missional church", "theological education", "movement building"]
+    },
+    {
+      "full_name": "Dr. C. Scott Shepherd",
+      "slug": "scott-shepherd",
+      "bio": "Dr. C. Scott Shepherd is a worship and music ministry specialist with 30+ years of experience, currently serving as Associate Director of Renaissance at Bethel University in Tennessee. He previously served as Worship and Music Specialist for the Tennessee Baptist Convention and conducts state-level choral ensembles.",
+      "role": "Associate Director, Worship Specialist, Choral Conductor, Educator",
+      "organization": "Bethel University, Tennessee Men's Chorale, Tennessee Ladies Chorus",
+      "tags": ["worship music", "worship leadership", "music ministry", "education"]
+    },
+    {
+      "full_name": "Stacy Gaskins",
+      "slug": "stacy-gaskins",
+      "bio": "Stacy Gaskins serves as Managing Director and Executive Team Member at Tampa Underground, a vibrant network of 100+ microchurches in the Tampa Bay area and 15 sister city-wide movements worldwide. She brings operational and strategic leadership experience in missional movement networks emphasizing decentralized church expressions.",
+      "role": "Managing Director, Executive Team Member",
+      "organization": "Tampa Underground",
+      "tags": ["missional community", "microchurches", "movement leadership", "underground network"]
+    },
+    {
+      "full_name": "Steve Addison",
+      "slug": "steve-addison",
+      "bio": "Steve Addison is a prominent movement catalyst and established author with 6 published books on movement multiplication spanning 2009-2023, based in Melbourne, Australia. He co-leads MOVE (a mission agency focused on equipping disciple-makers and pioneering movements), hosts a podcast sharing insights from global movement research.",
+      "role": "Author, Movement Catalyst, Podcast Host, Mission Agency Leader",
+      "organization": "MOVE Mission Agency",
+      "tags": ["movement multiplication", "movement lifecycle", "disciple-making movements", "podcast", "author"]
+    },
+    {
+      "full_name": "Steve Pike",
+      "slug": "steve-pike",
+      "bio": "Steve Pike is a recognized Christian movement leader focused on urban church planting and church multiplication, serving as president and founder of Urban Islands Project and former founding director of Church Multiplication Network. He has been instrumental in the establishment of 2000+ congregations across the United States.",
+      "role": "President, Founder, Former Founding Director",
+      "organization": "Urban Islands Project, Church Multiplication Network",
+      "tags": ["urban church planting", "church multiplication", "urban ministry", "movement building"]
+    },
+    {
+      "full_name": "Tim Catchim",
+      "slug": "tim-catchim",
+      "bio": "Tim Catchim is a multi-vocational entrepreneur and church leader recognized for his work in fivefold ministry (APEST) and movemental church planting, based in Nashville, Tennessee. He co-authored 'The Permanent Revolution' with Alan Hirsch and founded Trimtab, a coaching and consulting agency applying the APEST framework.",
+      "role": "Co-Author, Founder, Coach, Church Leader",
+      "organization": "Trimtab, OneLife Church",
+      "tags": ["APEST", "apostolic imagination", "fivefold ministry", "coaching", "author"]
+    },
+    {
+      "full_name": "Tim Keel",
+      "slug": "tim-keel",
+      "bio": "Tim Keel is the founding pastor of Jacob's Well, an influential missional church in Kansas City, and author of 'Intuitive Leadership' (2007), a significant work in contemporary church leadership. He serves as board member of Emergent Village and is recognized as a voice in the emerging church and missional church movements.",
+      "role": "Founding Pastor, Author, Board Member",
+      "organization": "Jacob's Well, Emergent Village",
+      "tags": ["missional church", "emerging church", "leadership", "contemporary theology", "author"]
+    },
+    {
+      "full_name": "Tomy Wilkerson",
+      "slug": "tomy-wilkerson",
+      "bio": "Tomy Wilkerson is Co-Director and Tampa Director of Underground Network, actively building missional community movements in the Tampa Bay area. He is a speaker at major conferences like Exponential and maintains an active personal blog, contributing significantly to conversations on missional living and movement building.",
+      "role": "Co-Director, Speaker, Blogger",
+      "organization": "Underground Network",
+      "tags": ["missional community", "underground network", "movement building", "speaking"]
+    }
+  ]
+}

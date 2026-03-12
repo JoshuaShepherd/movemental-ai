@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/joshuashepherd/.supabase/**)",
+      "Read(//Users/joshuashepherd/Desktop/Dev/repos/**)",
+      "Bash(head -30 \"/Users/joshuashepherd/Desktop/Dev/repos/movemental-ai/app/\\(public\\)/why-movemental-final/page.tsx\")",
+      "Bash(wc -l /Users/joshuashepherd/Desktop/Dev/repos/movemental-ai/app/layout.tsx /Users/joshuashepherd/Desktop/Dev/repos/movemental-ai/lib/services/simplified/*.ts /Users/joshuashepherd/Desktop/Dev/repos/movemental-ai/app/api/simplified/**/*.ts)"
+    ]
+  }
+}

@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { LucideIcon, ExternalLink } from 'lucide-react'
+import { Logo } from '@/components/shared/Logo'
 
 export interface NavItem {
   label: string
@@ -35,12 +36,7 @@ export function DashboardSidebar({ sections, className }: DashboardSidebarProps)
     >
       {/* Logo / Brand */}
       <div className="p-4 border-b">
-        <Link
-          href="/"
-          className="flex items-center gap-2 font-bold text-lg text-foreground hover:text-primary transition-colors"
-        >
-          Movemental
-        </Link>
+        <Logo size="sm" />
         <Link
           href="/"
           target="_blank"

@@ -4,6 +4,13 @@
  * Use "Brad Brisco" consistently (not "Briscoe").
  */
 
+/** Optimized WebP headshots for team page (movemental-team 4:5). */
+export const TEAM_HEADSHOT_URLS: Record<string, string> = {
+  'josh-shepherd': '/media-library/images/headshots/movemental-team/josh-headshot-4x5.webp',
+  'brad-brisco': '/media-library/images/headshots/movemental-team/brad-headshot-4x5.webp',
+  'alan-hirsch': '/media-library/images/headshots/movemental-team/alan-headshot-4x5.webp',
+}
+
 export interface TeamProfileLink {
   label: string
   url: string

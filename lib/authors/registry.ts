@@ -123,6 +123,7 @@ const MANUAL_RECORDS: AuthorRecord[] = [
     badge: { id: 'founder', name: 'Founder', type: 'founder' },
     source: 'manual',
     profileUrl: '/profile/josh-shepherd',
+    avatarUrl: '/media-library/images/headshots/movemental-team/josh-headshot-4x5.webp',
   },
 
   // Network authors (from existing hardcoded data, now canonical)

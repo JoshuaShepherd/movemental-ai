@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { TeamPageContainer, type MergedTeamMember } from '@/components/team-credibility'
 import { getTeamMembers } from '@/lib/authors'
-import { getTeamProfiles } from '@/lib/team-profiles'
+import { getTeamProfiles, TEAM_HEADSHOT_URLS } from '@/lib/team-profiles'
 
 export const metadata: Metadata = {
   title: 'Team — Movemental | Josh Shepherd, Brad Brisco, Alan Hirsch',
@@ -22,7 +22,8 @@ export default async function TeamPage() {
   const authorBySlug = Object.fromEntries(authors.map((a) => [a.slug, a]))
   const members: MergedTeamMember[] = profiles.map((profile) => ({
     ...profile,
-    avatarUrl: authorBySlug[profile.slug]?.avatarUrl,
+    avatarUrl:
+      authorBySlug[profile.slug]?.avatarUrl ?? TEAM_HEADSHOT_URLS[profile.slug],
   }))
 
   return <TeamPageContainer members={members} />

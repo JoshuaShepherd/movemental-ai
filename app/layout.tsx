@@ -15,6 +15,20 @@ const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["400", "500", 
 export const metadata: Metadata = {
   title: "Movemental AI",
   description: "Movemental AI Application",
+  icons: {
+    icon: "/media-library/images/logo/movemental-logo-transparent.png",
+    apple: "/media-library/images/logo/movemental-logo-transparent.png",
+  },
+  openGraph: {
+    images: [
+      {
+        url: "/media-library/images/logo/movemental-logo-transparent.png",
+        width: 749,
+        height: 239,
+        alt: "Movemental",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

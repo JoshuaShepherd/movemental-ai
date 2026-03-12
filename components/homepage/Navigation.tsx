@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { Logo } from '@/components/shared/Logo'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -72,13 +73,7 @@ export function Navigation({ className }: NavigationProps) {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-2 font-bold text-xl tracking-tight text-white"
-          >
-            Movemental
-          </Link>
+          <Logo size="md" invert />
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">

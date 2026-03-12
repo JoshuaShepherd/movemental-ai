@@ -40,10 +40,13 @@ export interface SceniusData {
 
 function avatarUrl(name: string, id: string): string {
   if (id === 'alan-hirsch') {
-    return '/media-library/images/headshots/alan-hirsch/alan-headshot-no-bg.png'
+    return '/media-library/images/headshots/movemental-team/alan-headshot-4x5.webp'
   }
   if (id === 'brad-brisco') {
-    return '/media-library/images/headshots/brad-brisco/brad-headshot-no-bg.png'
+    return '/media-library/images/headshots/movemental-team/brad-headshot-4x5.webp'
+  }
+  if (id === 'josh-shepherd') {
+    return '/media-library/images/headshots/movemental-team/josh-headshot-4x5.webp'
   }
   const encoded = encodeURIComponent(name.replace(/\s+/g, '+'))
   return `https://ui-avatars.com/api/?name=${encoded}&background=6e916e&color=fff&size=128`
