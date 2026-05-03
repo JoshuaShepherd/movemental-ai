@@ -8,7 +8,13 @@ import { Container } from '@/components/studio/Container';
 export function PathClosingCta() {
   return (
     <section className="band-midnight relative overflow-hidden" aria-labelledby="closing-cta-title" id="closing-cta">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--inverse-surface)_0%,_#000_100%)] opacity-80 pointer-events-none" />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-80"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, var(--inverse-surface) 0%, color-mix(in oklab, var(--inverse-surface) 75%, var(--foreground)) 100%)",
+        }}
+      />
       <Container className="relative z-10 text-center">
         <Reveal>
           <span className="section-eyebrow text-inverse-foreground/80 flex justify-center items-center gap-2 mb-8">
@@ -33,7 +39,12 @@ export function PathClosingCta() {
           </p>
           
           <div className="flex flex-wrap justify-center gap-6">
-            <Link href="/contact" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Start a Conversation</Link>
+            <Link
+              href="/contact"
+              className="btn-pill bg-inverse-foreground text-inverse-surface hover:bg-inverse-muted font-semibold transition-colors"
+            >
+              Start a Conversation
+            </Link>
             <Link href="/path" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Explore the Full Path</Link>
           </div>
         </Reveal>
