@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Research-Teaching Bridge | Scholarly Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#8192a7",
+                    "secondary-fixed-dim": "#afcbd8",
+                    "on-tertiary-fixed": "#2c1600",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#30312e",
+                    "surface-container-high": "#e9e8e3",
+                    "on-secondary-container": "#4e6874",
+                    "tertiary-fixed": "#ffdcbd",
+                    "surface-bright": "#faf9f4",
+                    "primary-fixed-dim": "#b7c8de",
+                    "primary-fixed": "#d2e4fb",
+                    "secondary": "#48626e",
+                    "on-surface": "#1b1c19",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#1a2b3c",
+                    "primary": "#041627",
+                    "on-background": "#1b1c19",
+                    "inverse-on-surface": "#f2f1ec",
+                    "on-error": "#ffffff",
+                    "surface-container-low": "#f5f4ef",
+                    "background": "#faf9f4",
+                    "surface-variant": "#e3e3de",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#eebd8e",
+                    "tertiary": "#231100",
+                    "on-error-container": "#93000a",
+                    "surface": "#faf9f4",
+                    "on-secondary-fixed-variant": "#304a55",
+                    "surface-container-highest": "#e3e3de",
+                    "on-secondary-fixed": "#021f29",
+                    "inverse-primary": "#b7c8de",
+                    "on-surface-variant": "#44474c",
+                    "on-tertiary-container": "#b4885d",
+                    "on-tertiary-fixed-variant": "#61401b",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#dbdad5",
+                    "surface-tint": "#4f6073",
+                    "surface-container": "#efeee9",
+                    "on-primary-fixed-variant": "#38485a",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#74777d",
+                    "outline-variant": "#c4c6cd",
+                    "tertiary-container": "#3f2302",
+                    "on-primary-fixed": "#0b1d2d",
+                    "secondary-fixed": "#cbe7f5",
+                    "secondary-container": "#cbe7f5"
+            },
+            "fontFamily": {
+                    "serif": ["Newsreader", "serif"],
+                    "sans": ["Inter", "sans-serif"],
+                    "label": ["Inter", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #faf9f4;
+            color: #041627;
+        }
+    </style>
+</head>
+<body class="font-sans selection:bg-primary-fixed selection:text-primary">
+<!-- TopAppBar -->
+<header class="bg-[#faf9f4] dark:bg-[#041627] sticky top-0 z-50">
+<div class="flex justify-between items-center px-12 py-6 w-full max-w-screen-2xl mx-auto">
+<div class="text-2xl font-serif font-bold text-[#041627] dark:text-[#ffffff]">
+                Scholarly Intelligence
+            </div>
+<nav class="hidden md:flex items-center gap-8 font-serif text-newsreader tracking-tight">
+<a class="text-[#48626e] dark:text-[#aab4b8] hover:text-[#041627] dark:hover:text-[#ffffff] cursor-pointer transition-all active:opacity-70" href="#">Curriculum</a>
+<a class="text-[#48626e] dark:text-[#aab4b8] hover:text-[#041627] dark:hover:text-[#ffffff] cursor-pointer transition-all active:opacity-70" href="#">Research</a>
+<a class="text-[#041627] dark:text-[#ffffff] border-b-2 border-[#041627] dark:border-[#ffffff] pb-1 font-semibold cursor-pointer transition-all active:opacity-70" href="#">Bridges</a>
+<a class="text-[#48626e] dark:text-[#aab4b8] hover:text-[#041627] dark:hover:text-[#ffffff] cursor-pointer transition-all active:opacity-70" href="#">Faculty</a>
+</nav>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-secondary cursor-pointer" data-icon="account_balance">account_balance</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer" data-icon="settings">settings</span>
+<img alt="User Institutional Profile" class="w-10 h-10 rounded-full object-cover border border-outline-variant/20" data-alt="Close-up portrait of a professional academic in a library setting, soft natural lighting, intellectual and refined mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdh7YV0dnC-QglJMlxw3a6sWYGC6cBAzU_ph-69jnsn9_uph-aJzp-PZ7qg2829nJuQKSRib3oyzPfOY5-VOe4ksozCvBlnNi9hfOkkdRRs0MW83sdt0W6REQ3Vwm3tmpwLBPkhVPf-F1WtUiEmTby8xF4Lc4T8A9Vu-Bz9ful5CJkbA-sEqkdVNfXT5Hv2qiweT7IUFuEkcM_AdQWkjGrxHjTzakU4aenCZOjJstIrAu6VUpViuCu0oyiYaxYCff1_qHnx1sM64xy"/>
+</div>
+</div>
+<div class="bg-[#e9e8e3] dark:bg-[#1a2b3c] h-[1px] w-full"></div>
+</header>
+<main class="max-w-screen-2xl mx-auto px-12 py-20">
+<!-- Hero Header -->
+<div class="grid grid-cols-12 gap-8 mb-32 items-end">
+<div class="col-span-12 md:col-span-8">
+<h1 class="font-serif text-7xl md:text-8xl tracking-tight leading-[0.9] text-primary mb-8">
+                    The Research-Teaching Bridge
+                </h1>
+<p class="font-sans text-xl text-secondary max-w-2xl leading-relaxed">
+                    A dynamic architecture where academic inquiry isn't merely taught, but refined through the dialectic between faculty labs and student engagement.
+                </p>
+</div>
+<div class="col-span-12 md:col-span-4 flex justify-end">
+<div class="text-right">
+<div class="font-serif italic text-2xl text-primary mb-2">Cycle 2024.04</div>
+<div class="font-sans text-xs uppercase tracking-widest text-secondary">Institutional Integrity Report</div>
+</div>
+</div>
+</div>
+<!-- Section 1: Inquiry-Led Curriculum -->
+<section class="mb-32">
+<div class="flex items-baseline gap-4 mb-12">
+<span class="text-xs font-bold font-sans tracking-tighter text-primary bg-primary-fixed px-2 py-0.5 rounded">01</span>
+<h2 class="font-serif text-4xl tracking-tight text-primary">Inquiry-Led Curriculum</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<!-- Course Card 1 -->
+<div class="bg-surface-container-low p-10 rounded-lg group hover:bg-surface-container-high transition-colors duration-300">
+<div class="flex justify-between items-start mb-8">
+<div>
+<span class="font-sans text-xs uppercase tracking-widest text-secondary block mb-2">Syllabus IV.8</span>
+<h3 class="font-serif text-3xl text-primary">Advanced Ethics in AI</h3>
+</div>
+<span class="material-symbols-outlined text-primary/30 group-hover:text-primary transition-colors" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-2 h-2 rounded-full bg-primary mt-2"></div>
+<div class="w-px h-full bg-outline-variant/30 my-1"></div>
+<div class="w-2 h-2 rounded-full border border-primary"></div>
+</div>
+<div class="flex-1">
+<div class="mb-4">
+<span class="font-sans text-[10px] font-bold uppercase text-secondary block mb-1">Source Material</span>
+<p class="font-serif italic text-lg text-primary">The Algorithmic Panopticon: Meta-Ethics in Neural Architectures (2023)</p>
+<p class="font-sans text-sm text-secondary mt-1">Faculty: Dr. Aris Thorne | AI Ethics Lab</p>
+</div>
+<div>
+<span class="font-sans text-[10px] font-bold uppercase text-secondary block mb-1">Pedagogical Application</span>
+<p class="font-sans text-sm text-primary leading-relaxed">Students apply Thorne’s 'Bias-Drift' theorem to real-time generative models, identifying failure states documented in the original publication.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div class="bg-surface-container-low p-10 rounded-lg group hover:bg-surface-container-high transition-colors duration-300">
+<div class="flex justify-between items-start mb-8">
+<div>
+<span class="font-sans text-xs uppercase tracking-widest text-secondary block mb-2">Syllabus VII.2</span>
+<h3 class="font-serif text-3xl text-primary">Sociology of Networks</h3>
+</div>
+<span class="material-symbols-outlined text-primary/30 group-hover:text-primary transition-colors" data-icon="hub">hub</span>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-2 h-2 rounded-full bg-primary mt-2"></div>
+<div class="w-px h-full bg-outline-variant/30 my-1"></div>
+<div class="w-2 h-2 rounded-full border border-primary"></div>
+</div>
+<div class="flex-1">
+<div class="mb-4">
+<span class="font-sans text-[10px] font-bold uppercase text-secondary block mb-1">Source Material</span>
+<p class="font-serif italic text-lg text-primary">Fractal Governance: The Erosion of Localized Power Structures (2024)</p>
+<p class="font-sans text-sm text-secondary mt-1">Faculty: Prof. Elena Vance | Urban Dynamics Group</p>
+</div>
+<div>
+<span class="font-sans text-[10px] font-bold uppercase text-secondary block mb-1">Pedagogical Application</span>
+<p class="font-sans text-sm text-primary leading-relaxed">Seminar participants conduct field surveys in three metropolitan zones, providing raw sentiment data for Vance's longitudinal study.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: The Feedback Loop -->
+<section class="mb-32 relative overflow-hidden bg-primary text-on-primary rounded-xl p-16">
+<div class="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
+<svg class="w-full h-full fill-current" viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<path d="M44.7,-76.4C58.3,-69.2,70.1,-58,78.2,-44.6C86.3,-31.2,90.6,-15.6,90.3,-0.2C89.9,15.2,84.9,30.3,76.4,43.4C67.9,56.5,55.9,67.6,42.1,75.4C28.3,83.2,12.7,87.7,-3,92.8C-18.6,97.9,-37.2,103.6,-52.1,97.1C-67,90.6,-78.3,71.9,-85.4,54.2C-92.4,36.5,-95.3,19.7,-93.2,4.1C-91.2,-11.5,-84.2,-25.9,-75.4,-39.2C-66.6,-52.6,-56.1,-64.9,-43.3,-72.6C-30.5,-80.4,-15.2,-83.5,0.3,-84C15.8,-84.5,31.2,-83.5,44.7,-76.4Z" transform="translate(100 100)"></path>
+</svg>
+</div>
+<div class="relative z-10 max-w-3xl">
+<div class="flex items-baseline gap-4 mb-8">
+<span class="text-xs font-bold font-sans tracking-tighter text-on-primary border border-on-primary/30 px-2 py-0.5 rounded">02</span>
+<h2 class="font-serif text-4xl tracking-tight">The Feedback Loop</h2>
+</div>
+<p class="font-sans text-lg text-primary-fixed mb-12 leading-relaxed">
+                    Pedagogy is not a one-way street. At Scholarly Intelligence, student outcomes and capstone inquiries are treated as primary data. This cycle validates theoretical research through large-scale student application.
+                </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="border-l border-on-primary/20 pl-6 py-2">
+<div class="text-3xl font-serif mb-2">1,240</div>
+<div class="text-[10px] uppercase tracking-widest opacity-70">Capstone Data Points Integrated</div>
+</div>
+<div class="border-l border-on-primary/20 pl-6 py-2">
+<div class="text-3xl font-serif mb-2">14</div>
+<div class="text-[10px] uppercase tracking-widest opacity-70">Joint Faculty-Student Patents</div>
+</div>
+<div class="border-l border-on-primary/20 pl-6 py-2">
+<div class="text-3xl font-serif mb-2">82%</div>
+<div class="text-[10px] uppercase tracking-widest opacity-70">Curriculum Update Velocity</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Active Knowledge Bridges -->
+<section class="mb-32">
+<div class="flex items-baseline gap-4 mb-12">
+<span class="text-xs font-bold font-sans tracking-tighter text-primary bg-primary-fixed px-2 py-0.5 rounded">03</span>
+<h2 class="font-serif text-4xl tracking-tight text-primary">Active Knowledge Bridges</h2>
+</div>
+<div class="overflow-hidden">
+<table class="w-full text-left border-separate border-spacing-y-4">
+<thead>
+<tr class="font-sans text-[10px] uppercase tracking-widest text-secondary">
+<th class="pb-4 pl-4">Faculty Member</th>
+<th class="pb-4">Active Research Focus</th>
+<th class="pb-4">Course Module Link</th>
+<th class="pb-4 pr-4 text-right">Integration Status</th>
+</tr>
+</thead>
+<tbody class="font-sans text-sm">
+<tr class="bg-surface-container-lowest transition-all hover:translate-x-1 duration-200 cursor-default">
+<td class="py-6 pl-4 font-serif text-lg text-primary">Dr. Julian Sorkin</td>
+<td class="py-6 text-secondary">Quantum Linguistics &amp; Syntax</td>
+<td class="py-6 text-primary italic">"Semantics in Sub-Atomic Time"</td>
+<td class="py-6 pr-4 text-right">
+<span class="px-3 py-1 bg-green-50 text-green-700 rounded-full text-[10px] font-bold uppercase tracking-wider">Live Bridge</span>
+</td>
+</tr>
+<tr class="bg-surface-container-low transition-all hover:translate-x-1 duration-200 cursor-default">
+<td class="py-6 pl-4 font-serif text-lg text-primary">Dr. Sarah Khalil</td>
+<td class="py-6 text-secondary">Bio-Sustainable Architecture</td>
+<td class="py-6 text-primary italic">"Mycelial Building Systems"</td>
+<td class="py-6 pr-4 text-right">
+<span class="px-3 py-1 bg-amber-50 text-amber-700 rounded-full text-[10px] font-bold uppercase tracking-wider">Field Deployment</span>
+</td>
+</tr>
+<tr class="bg-surface-container-lowest transition-all hover:translate-x-1 duration-200 cursor-default">
+<td class="py-6 pl-4 font-serif text-lg text-primary">Prof. Marcus Wu</td>
+<td class="py-6 text-secondary">Post-Capitalist Resource Flow</td>
+<td class="py-6 text-primary italic">"Non-Linear Trade Models"</td>
+<td class="py-6 pr-4 text-right">
+<span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-[10px] font-bold uppercase tracking-wider">Review Phase</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Section 4: Institutional Compounding -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+<div class="md:col-span-5">
+<div class="flex items-baseline gap-4 mb-8">
+<span class="text-xs font-bold font-sans tracking-tighter text-primary bg-primary-fixed px-2 py-0.5 rounded">04</span>
+<h2 class="font-serif text-4xl tracking-tight text-primary">Institutional Compounding</h2>
+</div>
+<div class="space-y-6">
+<p class="font-sans text-secondary leading-relaxed">
+                        Knowledge fragmentation occurs when research remains locked in silos and teaching is tethered to outdated textbooks. Our "Compounding" strategy ensures that every research breakthrough is instantly translated into the curriculum.
+                    </p>
+<p class="font-sans text-secondary leading-relaxed">
+                        This prevents "Intellectual Decay," where the institutional body of knowledge loses its edge. By treating our students as peer-researchers, we accelerate the discovery cycle by an estimated 40% annually.
+                    </p>
+<button class="bg-primary text-on-primary px-8 py-3 rounded text-sm font-sans tracking-wide hover:opacity-90 transition-opacity">
+                        Review Methodology
+                    </button>
+</div>
+</div>
+<div class="md:col-span-7">
+<div class="aspect-video bg-surface-container-low rounded-xl relative flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 opacity-20">
+<img alt="Institutional Growth Visualization" class="w-full h-full object-cover grayscale" data-alt="Abstract visualization of a glowing neural network or architectural lattice, symbolizing interconnected ideas and institutional growth, dark elegant mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIEB7QekDp7K_LLownOUQAza7wUOhZm0qyLESV0doIE_dWr9PBZXo-Hw4rxwIjWWYkOUU3zYDldokp54scyWW69hok2u3lxXZRlUfRBlk5wwBLxb2tGbWnpElDpLBxMeSxlC76lhuXpkpiUBdXQoyZczhiq5Ed6tSuK8PjUz80JM6_wJQb1hLrdNxowPU-IGqdvvqqMy8zz4K-E1L6ja55mnpyzgs273uhICgfD-u_igz2MmFHCxwEIduQ5si5yXOtQR7xwlaQVnqu"/>
+</div>
+<div class="relative z-10 text-center p-12 bg-surface/80 backdrop-blur-md rounded-lg border border-outline-variant/10 shadow-xl max-w-md">
+<span class="material-symbols-outlined text-5xl text-primary mb-4" data-icon="auto_graph">auto_graph</span>
+<h4 class="font-serif text-2xl text-primary mb-2">The Velocity of Insight</h4>
+<p class="font-sans text-xs text-secondary leading-relaxed">Real-time tracking of research-to-classroom integration. Current status: 94% alignment across core sciences.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f5f4ef] dark:bg-[#1a2b3c] w-full mt-24">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-12 w-full max-w-screen-2xl mx-auto gap-4">
+<div class="font-sans text-xs tracking-wide uppercase text-[#48626e] dark:text-[#aab4b8]">
+                © 2024 The Scholarly Intelligence Framework. All rights reserved. Intellectual Rigor by Design.
+            </div>
+<div class="flex gap-8">
+<a class="font-sans text-xs tracking-wide uppercase text-[#48626e] dark:text-[#aab4b8] hover:text-[#041627] dark:hover:text-[#ffffff] transition-colors duration-150" href="#">Institutional Privacy</a>
+<a class="font-sans text-xs tracking-wide uppercase text-[#48626e] dark:text-[#aab4b8] hover:text-[#041627] dark:hover:text-[#ffffff] transition-colors duration-150" href="#">Citations</a>
+<a class="font-sans text-xs tracking-wide uppercase text-[#48626e] dark:text-[#aab4b8] hover:text-[#041627] dark:hover:text-[#ffffff] transition-colors duration-150" href="#">Methodology</a>
+<a class="font-sans text-xs tracking-wide uppercase text-[#48626e] dark:text-[#aab4b8] hover:text-[#041627] dark:hover:text-[#ffffff] transition-colors duration-150" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>

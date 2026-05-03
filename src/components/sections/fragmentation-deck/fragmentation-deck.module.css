@@ -1,0 +1,1435 @@
+/* ============================================================================
+   Fragmentation deck — horizontal GSAP pinned deck with interactive Integration
+   folder browser. All bespoke tokens are scoped under the component root so the
+   warm duotone does not leak into the rest of the site.
+   ========================================================================== */
+
+.main {
+  --bg: #faf6ee;
+  --bg-alt: #f2ece0;
+  --ink: #19150f;
+  --ink-muted: #6b6660;
+  --ink-soft: #9f978b;
+  --border: #e6ddcb;
+  --dark: #141110;
+  --dark-ink: #f4efe5;
+
+  --font-sans: var(--font-sans, "Inter", ui-sans-serif, system-ui);
+  --font-serif: var(--font-serif-display, "Instrument Serif", Georgia, serif);
+
+  --tr-display: -0.028em;
+  --tr-label: 0.09em;
+
+  --container: 1280px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  /* Match the sticky SiteNav height so the deck content isn't covered
+     during GSAP pin. Falls back if --site-chrome-total is unset. */
+  --header-h: var(--site-chrome-total, 4.25rem);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.55;
+  min-width: 0;
+  overflow-x: clip;
+}
+
+.em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  font-size: 1.05em;
+  color: inherit;
+}
+
+.inlineCode {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--bg-alt);
+  padding: 0.08em 0.35em;
+  border-radius: 4px;
+}
+
+.skipLink {
+  position: absolute;
+  left: -9999px;
+  top: 1rem;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.6rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 6px;
+  z-index: 100;
+}
+.skipLink:focus {
+  left: 1rem;
+}
+
+/* --- Buttons -------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.78rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    transform 0.2s var(--ease-out),
+    background-color 0.2s var(--ease-out),
+    color 0.2s var(--ease-out),
+    border-color 0.2s var(--ease-out);
+  white-space: nowrap;
+  text-decoration: none;
+}
+.btnPrimary {
+  background: var(--ink);
+  color: var(--bg);
+}
+.btnPrimary:hover {
+  background: color-mix(in srgb, var(--ink) 88%, #000 12%);
+  transform: translateY(-1px);
+}
+.btnGhost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--border);
+}
+.btnGhost:hover {
+  border-color: var(--ink);
+}
+.btnArrow {
+  display: inline-block;
+  transition: transform 0.2s var(--ease-out);
+}
+.btn:hover .btnArrow {
+  transform: translateX(3px);
+}
+
+/* ============================================================================
+   PROGRESS PILL — floating stage indicator + dots, pinned to the lower-right
+   of the deck viewport. Replaces the bespoke deck header so the marketing
+   SiteNav remains the single top-of-page chrome.
+   ========================================================================== */
+.progressPill {
+  position: fixed;
+  right: clamp(0.75rem, 3vw, 1.5rem);
+  bottom: clamp(0.75rem, 3vw, 1.75rem);
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.55rem 0.85rem;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: saturate(140%) blur(14px);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: 0 12px 40px rgba(25, 21, 15, 0.1);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+.stageIndicator {
+  text-align: center;
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.55rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  font-feature-settings: "tnum";
+  margin: 0;
+}
+.stageIndicatorCount {
+  color: var(--ink);
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: baseline;
+}
+.stageIndicatorSep {
+  color: var(--ink-soft);
+}
+.stageIndicatorSepDim {
+  color: var(--ink-soft);
+}
+.stageIndicatorName {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-transform: none;
+  line-height: 1;
+}
+.stageDots {
+  display: inline-flex;
+  gap: 0.45rem;
+  justify-self: end;
+}
+.stageDots button {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 6px;
+  cursor: pointer;
+  display: inline-flex;
+}
+.stageDots button::after {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink);
+  opacity: 0.22;
+  transition: opacity 0.2s ease, transform 0.2s var(--ease-out);
+}
+.stageDots button:hover::after {
+  opacity: 0.55;
+}
+.stageDots .stageDotActive::after {
+  opacity: 1;
+  transform: scale(1.25);
+}
+@media (max-width: 720px) {
+  .stageIndicatorName { display: none; }
+  .stageDots { gap: 0.3rem; }
+}
+
+/* ============================================================================
+   DECK
+   ========================================================================== */
+.deck {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  height: 100dvh;
+  padding-top: var(--header-h);
+  background: var(--bg);
+}
+.deckTrack {
+  display: flex;
+  height: 100%;
+  width: max-content;
+  will-change: transform;
+}
+.slide {
+  flex: 0 0 100vw;
+  width: 100vw;
+  height: 100%;
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 5vw, 4rem);
+  display: flex;
+}
+/* Marker class toggled by GSAP — keep a standalone rule so the name is always
+   emitted for `styles.isActive` in JS (some pipelines only export listed locals). */
+.isActive {
+}
+.slideInner {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  max-width: var(--container);
+  margin-inline: auto;
+  width: 100%;
+  min-width: 0;
+}
+.slide[data-index="0"],
+.slide[data-index="1"] {
+  overflow: visible;
+}
+.slide[data-index="0"] .slideInner,
+.slide[data-index="1"] .slideInner {
+  overflow: visible;
+}
+.slide[data-index="0"] .slideViz {
+  transform: scale(1.5);
+  transform-origin: center center;
+}
+.slide[data-index="1"] .slideViz {
+  width: 100%;
+  justify-content: flex-end;
+  transform: scale(1.35);
+  transform-origin: 100% 50%;
+}
+@media (min-width: 960px) {
+  .slideInner {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+  .slideInnerIntegration {
+    grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  }
+}
+
+.slideText { min-width: 0; }
+.slideLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0 0 1.5rem;
+}
+.slideLabelDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink);
+  opacity: 0.8;
+}
+.slideTitle {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: clamp(3.4rem, 9vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: var(--tr-display);
+  color: var(--ink);
+  margin: 0 0 clamp(1.25rem, 2vw, 1.75rem);
+}
+.slideCaption {
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  line-height: 1.35;
+  color: var(--ink-muted);
+  max-width: 32ch;
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+.slideHint {
+  margin-top: 1.1rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 46ch;
+}
+.slideHint strong {
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+.slideViz {
+  margin: 0;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+.viz {
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  display: block;
+}
+
+/* ============================================================================
+   VIZ 01 · Fragmentation
+   ========================================================================== */
+.frag {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: fragDrift 6.5s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+}
+.fragStroke {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.15;
+  pointer-events: none;
+}
+.vizFragmentation image {
+  opacity: 0.97;
+}
+@keyframes fragDrift {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -3px; }
+}
+
+/* ============================================================================
+   VIZ 02 · Integration — interactive folder grid
+   ========================================================================== */
+.vizIntegration {
+  /* Parent SVG is not itself interactive; each folder hit target is a child <g role="button">. */
+  overflow: visible;
+}
+.intFolder {
+  transform-box: view-box;
+  transform-origin: center;
+  opacity: 0;
+  scale: 0.9;
+  transition:
+    opacity 0.65s var(--ease-out),
+    scale 0.65s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+.slide.isActive .intFolder {
+  opacity: 1;
+  scale: 1;
+}
+.intFolder foreignObject {
+  overflow: visible;
+}
+.intFolderHit {
+  cursor: pointer;
+  color: var(--ink);
+  transform: translate(-55px, -44px);
+  transition: color 0.2s ease;
+  outline: none;
+}
+.intFolderHit[aria-disabled="true"] {
+  cursor: default;
+  opacity: 0.85;
+  pointer-events: none;
+}
+.intFolderHit:hover:not([aria-disabled="true"]) {
+  color: color-mix(in srgb, var(--ink) 88%, var(--dark) 12%);
+}
+.intFolderFocus {
+  fill: transparent;
+  stroke: transparent;
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+.intFolderHit:hover:not([aria-disabled="true"]) .intFolderFocus {
+  fill: color-mix(in srgb, var(--ink) 5%, transparent);
+  stroke: var(--border);
+}
+.intFolderHit:focus-visible .intFolderFocus {
+  fill: color-mix(in srgb, var(--ink) 6%, transparent);
+  stroke: var(--ink);
+}
+.intFolderLabel {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  fill: var(--ink);
+}
+.intFolderSub {
+  font-family: var(--font-sans);
+  font-size: 7.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  fill: var(--ink-soft);
+}
+
+/* ============================================================================
+   VIZ 03 · Activation
+   ========================================================================== */
+.qBar, .answer, .cited {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  scale: 0.96;
+  transition: opacity 0.6s var(--ease-out), scale 0.6s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+.slide.isActive .qBar,
+.slide.isActive .answer,
+.slide.isActive .cited {
+  opacity: 1;
+  scale: 1;
+}
+.qBarBg {
+  fill: color-mix(in srgb, var(--ink) 4%, var(--bg));
+  stroke: currentColor;
+  stroke-width: 0.9;
+}
+.qBarText {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  fill: var(--ink);
+}
+.qBarCaret { animation: qCaret 1.1s steps(2, jump-none) infinite; }
+@keyframes qCaret { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+.answerBg { fill: var(--bg); stroke: currentColor; stroke-width: 1.1; }
+.answerBand { fill: color-mix(in srgb, var(--ink) 9%, var(--bg)); }
+.answerLabel {
+  font-family: var(--font-sans);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  fill: var(--ink-muted);
+}
+.answerLine {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  fill: var(--ink);
+}
+.answerDots circle { animation: answerDots 1.4s ease-in-out infinite; }
+.answerDots circle:nth-child(2) { animation-delay: .16s; }
+.answerDots circle:nth-child(3) { animation-delay: .32s; }
+@keyframes answerDots { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+
+.citedBg {
+  fill: color-mix(in srgb, var(--ink) 3%, var(--bg));
+  stroke: currentColor;
+  stroke-width: 1.1;
+}
+.citedBand { fill: color-mix(in srgb, var(--ink) 9%, var(--bg)); }
+.citedFolder {
+  font-family: var(--font-sans);
+  font-size: 7.5px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  fill: var(--ink-muted);
+}
+.citedFile {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 8px;
+  font-weight: 500;
+  fill: var(--ink);
+}
+.vizActivation image { opacity: 0.96; }
+.ray {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 0.8s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+.slide.isActive .ray { stroke-dashoffset: 0; }
+.rayTag {
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+  paint-order: stroke;
+  stroke: var(--bg);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: var(--d, 0s);
+}
+.slide.isActive .rayTag { opacity: 1; }
+
+/* ============================================================================
+   VIZ 04 · Formation
+   ========================================================================== */
+.fForce {
+  stroke: var(--ink);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 0.7s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+.slide.isActive .fForce { stroke-dashoffset: 0; }
+.fArrow {
+  fill: var(--ink);
+  stroke: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  transition-delay: var(--d, 1s);
+}
+.slide.isActive .fArrow { opacity: 1; }
+.fLabel {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  fill: var(--ink);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: var(--d, 0s);
+}
+.fSub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: -0.005em;
+  fill: var(--ink-muted);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: var(--d, 0s);
+}
+.slide.isActive .fLabel,
+.slide.isActive .fSub { opacity: 1; }
+
+.fCommEdge {
+  stroke: var(--ink);
+  stroke-width: 0.9;
+  stroke-opacity: 0.5;
+  fill: none;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 0.5s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+.slide.isActive .fCommEdge { stroke-dashoffset: 0; }
+.fCommUser {
+  fill: var(--bg);
+  stroke: var(--ink);
+  stroke-width: 1.1;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  scale: 0.6;
+  transition: opacity 0.45s var(--ease-out), scale 0.5s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+.slide.isActive .fCommUser { opacity: 1; scale: 1; }
+
+.learnerDot {
+  fill: var(--bg);
+  stroke: var(--ink);
+  stroke-width: 1.3;
+  transition: fill 0.55s var(--ease-out);
+  transition-delay: 1.7s;
+}
+.slide.isActive .learnerDot { fill: var(--ink); }
+.learnerInitial {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  fill: var(--bg);
+  dominant-baseline: central;
+  opacity: 0;
+  transition: opacity 0.45s var(--ease-out);
+  transition-delay: 1.9s;
+}
+.slide.isActive .learnerInitial { opacity: 1; }
+.learnerHalo {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 0.9;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  scale: 0.6;
+  transition: opacity 0.65s var(--ease-out), scale 0.7s var(--ease-out);
+  transition-delay: 1.7s;
+}
+.slide.isActive .learnerHalo { opacity: 0.28; scale: 1; }
+.learnerCompanion {
+  fill: var(--ink);
+  transform-box: fill-box;
+  transform-origin: center;
+  scale: 0;
+  transition: scale 0.55s var(--ease-out);
+  transition-delay: 2.05s;
+}
+.slide.isActive .learnerCompanion { scale: 1; }
+
+.fSummary {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  fill: var(--ink-muted);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  transition-delay: 2.25s;
+}
+.fSummary .em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  fill: var(--ink);
+}
+.slide.isActive .fSummary { opacity: 1; }
+
+/* ============================================================================
+   VIZ 05 · Multiplication
+   ========================================================================== */
+.ampEyebrow {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.slide.isActive .ampEyebrow { opacity: 1; }
+.ampEyebrowRight {
+  transition: opacity 0.5s ease 0.1s;
+  font-style: italic;
+}
+.ampBaseline {
+  stroke: var(--ink);
+  stroke-width: 1;
+  opacity: 0;
+  transition: opacity 0.5s ease 0.05s;
+}
+.slide.isActive .ampBaseline { opacity: 0.55; }
+.ampBar {
+  fill: var(--ink);
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  transform: scaleY(0);
+  transition: transform 0.6s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+.slide.isActive .ampBar { transform: scaleY(1); }
+.ampSignalLine {
+  stroke: var(--ink);
+  stroke-width: 1.6;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 1s var(--ease-out) 1.3s;
+}
+.slide.isActive .ampSignalLine { stroke-dashoffset: 0; }
+.ampSignalHead {
+  fill: var(--ink);
+  opacity: 0;
+  transition: opacity 0.4s ease 2.3s;
+}
+.slide.isActive .ampSignalHead { opacity: 1; }
+
+.stackCard {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  scale: 0.92;
+  transition: opacity 0.5s var(--ease-out), scale 0.5s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+.slide.isActive .stackCard { opacity: 1; scale: 1; }
+.stackCardBg { fill: var(--bg); stroke: var(--ink); stroke-width: 1; }
+.stackCardNum {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  fill: var(--ink-muted);
+  font-feature-settings: "tnum";
+}
+.stackCardKind {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: -0.005em;
+  fill: var(--ink);
+}
+.stackLabel {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  fill: var(--ink);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  transition-delay: var(--d, 0s);
+}
+.slide.isActive .stackLabel { opacity: 1; }
+.stackSub {
+  font-family: var(--font-sans);
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  transition-delay: var(--d, 0s);
+}
+.slide.isActive .stackSub { opacity: 1; }
+
+.eeatBracket {
+  stroke: var(--ink-muted);
+  stroke-width: 1;
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 0.7s var(--ease-out) 1.3s;
+}
+.slide.isActive .eeatBracket { stroke-dashoffset: 0; }
+.eeatLabel {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: -0.005em;
+  fill: var(--ink-soft);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: var(--d, 0s);
+}
+.slide.isActive .eeatLabel { opacity: 1; }
+.ampThroughput {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  fill: var(--ink-soft);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  transition-delay: var(--d, 0s);
+}
+.slide.isActive .ampThroughput { opacity: 1; }
+
+/* ============================================================================
+   VIZ 06 · Movement
+   ========================================================================== */
+.netEdge {
+  stroke: currentColor;
+  stroke-linecap: round;
+  fill: none;
+}
+.netEdgeInter, .netEdgePrimary {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 1s var(--ease-out) 0.2s;
+}
+.slide.isActive .netEdgeInter,
+.slide.isActive .netEdgePrimary { stroke-dashoffset: 0; }
+.netEdgeInter { stroke-width: 1.35; stroke-opacity: 0.8; }
+.netEdgePrimary { stroke-width: 0.9; stroke-opacity: 0.55; }
+.netEdgeRegular {
+  stroke-width: 0.65;
+  stroke-opacity: 0.45;
+  stroke-dasharray: 1.8 2.6;
+  opacity: 0;
+  transition: opacity 0.65s ease 0.9s;
+}
+.slide.isActive .netEdgeRegular { opacity: 1; }
+
+.netUser {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  scale: 0.85;
+  transition: opacity 0.5s var(--ease-out), scale 0.5s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+.slide.isActive .netUser { opacity: 1; scale: 1; }
+.userHalo { fill: none; stroke: var(--ink); stroke-width: 0.9; opacity: 0.28; }
+.userDot { fill: var(--ink); stroke: none; }
+.userInitial {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  fill: var(--bg);
+  dominant-baseline: central;
+}
+.userName {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  fill: var(--ink);
+}
+.userRole {
+  font-family: var(--font-sans);
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+}
+.userDotRegular { fill: var(--bg); stroke: var(--ink); stroke-width: 1; }
+.userInitialRegular {
+  font-size: 9px;
+  fill: var(--ink);
+}
+.slide.isActive .netUserPrimary {
+  animation: netBreatheSlow 8s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+}
+.slide.isActive .netUser:not(.netUserPrimary) {
+  animation: netBreathe 6s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+}
+@keyframes netBreathe { 0%, 100% { translate: 0 0; } 50% { translate: 0 -2px; } }
+@keyframes netBreatheSlow { 0%, 100% { translate: 0 0; } 50% { translate: 0 -3px; } }
+
+.fieldCount {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: var(--d, 0s);
+}
+.fieldSub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 11px;
+  letter-spacing: -0.005em;
+  fill: var(--ink-soft);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: var(--d, 0s);
+}
+.slide.isActive .fieldCount,
+.slide.isActive .fieldSub { opacity: 1; }
+
+/* ============================================================================
+   AFTER-DECK
+   ========================================================================== */
+.afterDeck {
+  padding-block: clamp(5rem, 9vw, 7rem);
+  padding-inline: var(--gutter);
+  background: var(--bg-alt);
+}
+.afterDeckInner {
+  max-width: 740px;
+  margin-inline: auto;
+  text-align: center;
+}
+.afterDeckKicker {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0 0 1.25rem;
+}
+.afterDeckTitle {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: clamp(2rem, 4.2vw, 3.2rem);
+  line-height: 1.08;
+  letter-spacing: var(--tr-display);
+  color: var(--ink);
+  margin: 0 0 1.5rem;
+}
+.afterDeckBody {
+  color: var(--ink-muted);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  max-width: 52ch;
+  margin: 0 auto 1.25rem;
+}
+.afterDeckBody + .afterDeckLinks {
+  margin-top: 0.25rem;
+}
+.afterDeckLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.75rem 1.5rem;
+  margin: 0 auto 2rem;
+  max-width: 48rem;
+}
+.afterDeckHairline {
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+.afterDeckHairline a {
+  color: var(--ink-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.125rem;
+  transition:
+    border-color 0.2s var(--ease-out),
+    color 0.2s var(--ease-out);
+}
+.afterDeckHairline a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+.afterDeckSubscribe {
+  margin: 2.5rem auto 0;
+  max-width: 28rem;
+  text-align: center;
+}
+.afterDeckSubscribeLead {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ink-muted);
+  margin: 0 0 0.85rem;
+}
+.afterDeckSubscribeForm {
+  position: relative;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  padding: 0.85rem 1rem;
+}
+.afterDeckSubscribeForm :global(form) {
+  flex-wrap: wrap;
+}
+.afterDeckCtas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+}
+
+/* ============================================================================
+   INTEGRATION BROWSER DIALOG
+   ========================================================================== */
+.dialog {
+  width: min(100% - 2rem, 44rem);
+  max-height: min(92vh, 48rem);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg);
+  color: var(--ink);
+  box-shadow: 0 24px 80px rgba(25, 21, 15, 0.18);
+  font-family: var(--font-sans);
+}
+.dialog::backdrop {
+  background: rgba(25, 21, 15, 0.42);
+  backdrop-filter: blur(6px);
+}
+.dialogHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.25rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+}
+.dialogHeadMeta { min-width: 0; }
+.dialogKicker {
+  margin: 0 0 0.15rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--ink-muted);
+}
+.dialogTitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.45rem;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--ink);
+}
+.dialogSub {
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  line-height: 1.45;
+}
+.dialogClose {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-muted);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.dialogClose:hover {
+  color: var(--ink);
+  border-color: var(--border);
+  background: var(--bg-alt);
+}
+.dialogLede {
+  margin: 0;
+  padding: 1rem 1.25rem 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink-muted);
+}
+.dialogLede code,
+.dialogFineprint code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--bg-alt);
+  padding: 0.08em 0.35em;
+  border-radius: 4px;
+}
+.dialogFineprint {
+  margin: 0;
+  padding: 0 1.25rem 1.15rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+.breadcrumbs {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+.crumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.crumbBtn {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.78rem;
+}
+.crumbBtn:hover:not(:disabled) {
+  background: var(--bg-alt);
+  color: var(--ink);
+}
+.crumbBtn:disabled {
+  color: var(--ink);
+  font-weight: 600;
+  cursor: default;
+}
+.crumbSep {
+  color: var(--ink-soft);
+  font-size: 0.7rem;
+}
+
+/* --- Tree --------------------------------------------------------------- */
+.tree {
+  margin: 0;
+  padding: 0.6rem 0.85rem 1rem;
+  max-height: calc(min(92vh, 48rem) - 14rem);
+  overflow-y: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.treeRowFolder,
+.treeRowFile,
+.treeUpRow {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr auto;
+  gap: 0.6rem;
+  align-items: center;
+  width: 100%;
+  padding: 0.45rem 0.65rem;
+  border-radius: 7px;
+  font-size: 0.86rem;
+  line-height: 1.35;
+  text-align: left;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s var(--ease-out);
+}
+.treeRowFolder { font-weight: 600; }
+.treeRowFolder:hover,
+.treeRowFile:hover,
+.treeUpRow:hover {
+  background: var(--bg-alt);
+  transform: translateX(1px);
+}
+.treeRowFolder:focus-visible,
+.treeRowFile:focus-visible,
+.treeUpRow:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: -2px;
+  background: var(--bg-alt);
+}
+.treeRowFeatured {
+  background: color-mix(in srgb, var(--ink) 5%, var(--bg));
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+.treeRowFeatured:hover {
+  background: color-mix(in srgb, var(--ink) 10%, var(--bg));
+}
+.treeRowDim {
+  color: var(--ink-soft);
+  opacity: 0.82;
+}
+
+.treeTwigFolder,
+.treeTwigJson,
+.treeTwigMd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+}
+.treeTwigFolder { color: var(--ink); }
+.treeTwigJson {
+  color: var(--ink);
+  background: var(--bg-alt);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0;
+}
+.treeTwigMd {
+  color: var(--bg);
+  background: var(--ink);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+.treeName {
+  font-size: 0.86rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: -0.005em;
+}
+.treeRowFolder .treeName { font-weight: 600; }
+.treeRowFile .treeName { font-weight: 500; }
+.treeRowFeatured .treeName { font-weight: 600; }
+.treeMeta {
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  white-space: nowrap;
+}
+.treeEllipsis {
+  padding: 0.35rem 0.9rem;
+  font-size: 0.78rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+/* --- File panes ---------------------------------------------------------- */
+.filePane {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.fileToolbar {
+  padding: 0.75rem 1.25rem 0.35rem;
+  border-bottom: 1px solid var(--border);
+}
+.fileBack {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.78rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.fileBack:hover {
+  background: var(--bg-alt);
+  border-color: var(--ink);
+}
+
+.jsonBody {
+  margin: 0;
+  padding: 1rem 1.25rem 1.25rem;
+  overflow: auto;
+  max-height: calc(min(92vh, 48rem) - 10rem);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.mdBody {
+  margin: 0;
+  padding: 1.15rem 1.35rem 1.5rem;
+  overflow: auto;
+  max-height: calc(min(92vh, 48rem) - 10rem);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink);
+  border-top: 1px solid var(--border);
+}
+.mdBody h1 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.65rem;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.02em;
+}
+.mdBody h2 {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 1.5rem 0 0.5rem;
+}
+.mdBody p { margin: 0 0 0.85rem; color: var(--ink); }
+.mdBody ul { margin: 0 0 1rem 1.1rem; padding: 0; color: var(--ink-muted); }
+.mdBody li { margin-bottom: 0.35rem; }
+.mdBody code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.85em;
+  background: var(--bg-alt);
+  padding: 0.12em 0.35em;
+  border-radius: 4px;
+}
+.mdBody hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 1.25rem 0;
+}
+.mdBody blockquote {
+  margin: 0 0 1rem;
+  padding: 0 0 0 1rem;
+  border-left: 2px solid var(--border);
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--ink);
+}
+.mdBody blockquote p { margin: 0 0 0.35rem; }
+.mdBody blockquote footer {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+  margin-top: 0.25rem;
+}
+.mdBody :global(.md-yaml) {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--ink-muted);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem 0.9rem;
+  margin: 0 0 1.25rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.mdBody :global(.md-notice) {
+  font-family: var(--font-sans);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  background: var(--bg-alt);
+  padding: 0.65rem 0.85rem;
+  border-left: 2px solid var(--border);
+  border-radius: 4px;
+}
+.mdBody em { font-style: italic; }
+
+/* ============================================================================
+   Small-screen tweaks
+   ========================================================================== */
+@media (max-width: 640px) {
+  .slideTitle {
+    font-size: clamp(2.8rem, 11vw, 4.2rem);
+  }
+  .stageIndicator { font-size: 0.72rem; }
+}
+
+/* ============================================================================
+   Reduced motion — collapse to vertical stack, freeze SVG anims at final state.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .deck {
+    height: auto;
+    overflow: visible;
+    padding-bottom: 4rem;
+  }
+  .deckTrack {
+    flex-direction: column;
+    width: 100%;
+    transform: none !important;
+  }
+  .slide {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    min-height: 60vh;
+    padding-block: 4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .stageDots, .stageIndicator { display: none; }
+
+  /* Freeze anims / reveals */
+  .frag,
+  .qBarCaret,
+  .answerDots circle,
+  .netUser { animation: none !important; }
+
+  .intFolder,
+  .qBar,
+  .answer,
+  .cited,
+  .ray,
+  .rayTag,
+  .fForce,
+  .fArrow,
+  .fLabel,
+  .fSub,
+  .fCommEdge,
+  .fCommUser,
+  .learnerDot,
+  .learnerHalo,
+  .learnerInitial,
+  .learnerCompanion,
+  .fSummary,
+  .ampEyebrow,
+  .ampBaseline,
+  .ampBar,
+  .ampSignalLine,
+  .ampSignalHead,
+  .stackCard,
+  .stackLabel,
+  .stackSub,
+  .eeatBracket,
+  .eeatLabel,
+  .ampThroughput,
+  .netEdge,
+  .netEdgeRegular,
+  .netUser,
+  .fieldCount,
+  .fieldSub {
+    opacity: 1 !important;
+    stroke-dashoffset: 0 !important;
+    scale: 1 !important;
+    transform: scaleY(1) !important;
+  }
+}

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#2d2216",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#514536",
+                    "tertiary-container": "#44382a",
+                    "primary-container": "#3d3935",
+                    "on-secondary-fixed": "#201b14",
+                    "surface-container-low": "#f5f3ee",
+                    "surface-variant": "#e4e2dd",
+                    "on-surface": "#1b1c19",
+                    "secondary-fixed-dim": "#d0c5b9",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#ccc5bf",
+                    "inverse-on-surface": "#f2f1ec",
+                    "background": "#fbf9f4",
+                    "surface-bright": "#fbf9f4",
+                    "tertiary-fixed-dim": "#d6c4b1",
+                    "tertiary-fixed": "#f3dfcc",
+                    "primary": "#272420",
+                    "surface-tint": "#625d59",
+                    "surface-container-highest": "#e4e2dd",
+                    "on-primary-container": "#a9a29d",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#dbdad5",
+                    "secondary-fixed": "#ece1d5",
+                    "secondary": "#655d54",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#eae8e3",
+                    "on-primary-fixed": "#1e1b18",
+                    "on-secondary-container": "#696158",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#b2a18f",
+                    "outline": "#7d766f",
+                    "on-primary-fixed-variant": "#4a4642",
+                    "on-tertiary-fixed": "#231a0e",
+                    "surface-container": "#f0eee9",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "surface": "#fbf9f4",
+                    "on-background": "#1b1c19",
+                    "primary-fixed": "#e9e1db",
+                    "on-surface-variant": "#4c463f",
+                    "secondary-container": "#e9ded2",
+                    "primary-fixed-dim": "#ccc5bf",
+                    "on-secondary-fixed-variant": "#4d463d",
+                    "inverse-surface": "#30312e",
+                    "outline-variant": "#cec5bc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3 { font-family: 'Newsreader', serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-[#fbf9f4]/80 dark:bg-[#272420]/80 backdrop-blur-xl docked full-width top-0 sticky z-50 tonal-shift-surface-container-low">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="font-serif text-2xl font-semibold text-[#272420] dark:text-[#fbf9f4] tracking-tight">Modern Sanctuary</div>
+<nav class="hidden md:flex items-center gap-8 font-serif text-2xl tracking-tight Newsreader">
+<a class="text-[#625d59] dark:text-[#a5a09b] hover:text-[#272420] transition-colors" href="#">Formation</a>
+<a class="text-[#272420] dark:text-[#fbf9f4] border-b-2 border-[#272420] dark:border-[#fbf9f4] pb-1" href="#">Care</a>
+<a class="text-[#625d59] dark:text-[#a5a09b] hover:text-[#272420] transition-colors" href="#">Liturgy</a>
+<a class="text-[#625d59] dark:text-[#a5a09b] hover:text-[#272420] transition-colors" href="#">Community</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined p-2 hover:bg-[#f5f3ee] dark:hover:bg-[#3d3935] rounded-md transition-all duration-300">notifications</button>
+<button class="material-symbols-outlined p-2 hover:bg-[#f5f3ee] dark:hover:bg-[#3d3935] rounded-md transition-all duration-300">settings</button>
+<img alt="Minister profile" class="w-10 h-10 rounded-full object-cover" data-alt="Close up portrait of a kind-faced elderly man with salt and pepper hair in a soft lit indoor setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDO86EcJORfigTm9Ufe9-94vx5KsPyaafYATOIMd_KpOVMbhg3N0wXfJ5j4cUBnd7D8WmsDDfKO5kW1ky8py84qis9_HHf5X9B14F4B9p0awA5D_VPki0WdrC1iDzg7X5nruW6XLCKMunmnSmGg2kAL0GZd9CU3KMwDdZDEpfltuNykD6ebyQ90lt_X2Fg4KxNHP_Rsyd_vkBkGmnAR0P2zy3SwvrDJjM6oowO1g-BElQJ1TQTvyQ0rAitrw5J6tUv3aPLCsr7q7ko"/>
+</div>
+</div>
+</header>
+<div class="flex max-w-screen-2xl mx-auto">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 border-r-0 bg-[#f5f3ee] dark:bg-[#1b1c19] py-8 pr-4 sticky top-16">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-background text-sm" data-icon="church">church</span>
+</div>
+<h3 class="font-serif text-lg text-[#272420] dark:text-[#fbf9f4]">Care &amp; Support</h3>
+</div>
+<p class="text-xs font-medium Manrope text-[#625d59]">Sacred Coordination</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-6 py-3 bg-[#ffffff] dark:bg-[#3d3935] text-[#272420] dark:text-[#fbf9f4] rounded-r-full shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="volunteer_activism">volunteer_activism</span>
+<span class="font-sans text-sm font-medium Manrope">Active Needs</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-[#625d59] dark:text-[#a5a09b] hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-sans text-sm font-medium Manrope">Care Teams</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-[#625d59] dark:text-[#a5a09b] hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-sans text-sm font-medium Manrope">History</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-[#625d59] dark:text-[#a5a09b] hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="church">church</span>
+<span class="font-sans text-sm font-medium Manrope">Prayer Wall</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-[#625d59] dark:text-[#a5a09b] hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-sans text-sm font-medium Manrope">Resources</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full bg-primary text-on-primary py-3 rounded-md font-sans text-sm font-medium shadow-sm hover:opacity-90 transition-opacity">
+                    Log Interaction
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 px-8 py-12 md:px-16">
+<header class="mb-16">
+<h1 class="text-5xl font-serif text-primary mb-4 tracking-tight">Care &amp; Support</h1>
+<p class="text-lg text-secondary max-w-2xl font-light italic">"Bear one another's burdens, and so fulfill the law of Christ." — A space for intentional presence and coordinated love.</p>
+</header>
+<!-- Bento Grid Section: Active Needs & Care Assignments -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+<!-- Section 1: Active Needs (Span 2) -->
+<section class="lg:col-span-2 space-y-6">
+<div class="flex items-baseline justify-between">
+<h2 class="text-2xl font-serif text-primary">Active Needs</h2>
+<span class="text-xs uppercase tracking-widest text-outline">4 Pending Action</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Need Card 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border-l-4 border-error/30 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<h4 class="text-xl font-serif text-primary">Sarah Jenkins</h4>
+<span class="px-2 py-1 bg-error-container text-on-error-container text-[10px] uppercase font-bold tracking-tighter rounded">Health Crisis</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Recovering from surgery. Needs meal assistance and light house cleaning for the next two weeks.</p>
+<div class="flex items-center gap-3 text-xs text-secondary">
+<span class="material-symbols-outlined text-sm" data-icon="event">event</span>
+<span>Reported Oct 24</span>
+</div>
+</div>
+<!-- Need Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border-l-4 border-tertiary/30 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<h4 class="text-xl font-serif text-primary">David Wu</h4>
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] uppercase font-bold tracking-tighter rounded">Bereavement</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Loss of father last Tuesday. Needs pastoral visitation and presence during funeral arrangements.</p>
+<div class="flex items-center gap-3 text-xs text-secondary">
+<span class="material-symbols-outlined text-sm" data-icon="event">event</span>
+<span>Reported Oct 22</span>
+</div>
+</div>
+<!-- Need Card 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border-l-4 border-surface-variant hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<h4 class="text-xl font-serif text-primary">Elena Rodriguez</h4>
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant text-[10px] uppercase font-bold tracking-tighter rounded">Financial Strain</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Recent job loss. Seeking career mentorship and temporary grocery support.</p>
+<div class="flex items-center gap-3 text-xs text-secondary">
+<span class="material-symbols-outlined text-sm" data-icon="event">event</span>
+<span>Reported Oct 19</span>
+</div>
+</div>
+<!-- Need Card 4 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border-l-4 border-tertiary-container/30 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<h4 class="text-xl font-serif text-primary">Marcus Thorne</h4>
+<span class="px-2 py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] uppercase font-bold tracking-tighter rounded">New Baby</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Baby girl arrived Oct 20th. Meal train requested starting this Thursday.</p>
+<div class="flex items-center gap-3 text-xs text-secondary">
+<span class="material-symbols-outlined text-sm" data-icon="event">event</span>
+<span>Reported Oct 20</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Care Assignments -->
+<section class="space-y-6">
+<h2 class="text-2xl font-serif text-primary">Care Assignments</h2>
+<div class="bg-surface-container-low rounded-2xl p-8 space-y-8">
+<!-- Coordination Group 1 -->
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<h5 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Team: Elders</h5>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4">
+<div class="flex -space-x-3">
+<img alt="Leader" class="w-8 h-8 rounded-full border-2 border-surface" data-alt="Portrait of a smiling middle aged man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJl6tykGhbdtDWStkxTjUZMfmuYGBAFe_U5o6ZZAaMDBBY-zIi3KsvUnColnmXYw9AXBc-M53-yqEKq58NVXJ8MB1PqASfBIVM4ws5rM4bYYXUGkmp4zl36GV1IABjPv6SXh6NqftEXg4h562K9KY9-CFha0krDIPMQkASWuf-cesgAksyp6Zo6d2ROQI72Pc2e9VquD4i53O_q7LrlFnZqZU6uJPoaLQwElC2RS6atnU4sKzsYZuSkdu9uulL-rIWaEmEkIo9x0Q"/>
+<img alt="Leader" class="w-8 h-8 rounded-full border-2 border-surface" data-alt="Portrait of a smiling professional woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6gdjAAvMHDiU5KpznCIxyMj7NGF7liBsVmG7-tLcJESyOTCn3Cs6t5w0BJc8BXyRAuM6hgHCV6qaedy9zs9rHPKYOrg7qR-wLJPRptnxd4_FZey2N3szna2lQjuPXvxqBdsrzpyJ-kEAKfr7iWKnGMyUDhaaW1PgTMosQHhegqFmbSX0r8hdgtwt5vrVJ72sZ0kXyOSc2ycbEUkbRyelbIAZ5f2Oc1u0OKCw1517L89_TPvvhXmCcTkaayD16JAgGjjsMMZGtLbQ"/>
+</div>
+<div class="flex-1">
+<p class="text-sm font-medium">David Wu</p>
+<p class="text-[10px] text-secondary">Assigned to: Pastor Jim &amp; Diane</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Coordination Group 2 -->
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<h5 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Team: Hospitality</h5>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold text-xs">MA</div>
+<div class="flex-1">
+<p class="text-sm font-medium">Sarah Jenkins</p>
+<p class="text-[10px] text-secondary">Assigned to: Meal Alliance</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold text-xs">MA</div>
+<div class="flex-1">
+<p class="text-sm font-medium">Marcus Thorne</p>
+<p class="text-[10px] text-secondary">Assigned to: Meal Alliance</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Coordination Group 3 -->
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<h5 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Team: Deaconate</h5>
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="person">person</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-medium">Elena Rodriguez</p>
+<p class="text-[10px] text-secondary">Unassigned — Needs Leader</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Section 3: History -->
+<section class="space-y-8">
+<div class="flex items-center justify-between">
+<h2 class="text-3xl font-serif text-primary">History of Interaction</h2>
+<button class="text-sm font-medium text-primary flex items-center gap-2">
+                        View Archive <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="relative space-y-0 before:absolute before:left-6 before:top-2 before:bottom-2 before:w-[1px] before:bg-outline-variant/30">
+<!-- History Log 1 -->
+<div class="relative flex gap-8 pl-14 pb-12">
+<div class="absolute left-4 top-2 w-4 h-4 rounded-full bg-primary-container border-4 border-background"></div>
+<div class="flex-1 bg-surface-container-lowest p-8 rounded-2xl shadow-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div>
+<span class="text-xs font-bold uppercase tracking-widest text-outline block mb-1">Yesterday, 4:30 PM</span>
+<h4 class="text-xl font-serif">Home Visit — Sarah Jenkins</h4>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-4 py-2 rounded-full">
+<img alt="Caregiver" class="w-6 h-6 rounded-full" data-alt="Portrait of a friendly bearded man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlzgslqEwdHOJ-tP5rxfyl7SquZbAE6BZJVurjk6wgl967NsZNxBvzZt_aUNinzxWWcb4EUV2ccWABSn_GzmNIE0JbyiyIcJNXlX1pnnDC53WXI24jf40AAk-1q_pkoRukYpL14-K07brB4Ljrs8IodIjA3Eh4trcol5GEiRGxPVENEYZ6OSzpyJmFRJGg75ghl9BGbt_MdlfzKVQmTvGv2ulbELzYphKi2bQikMyrfl7HvK0XWVdHEwzCSqN8E08UpXEuXfwHUZ8"/>
+<span class="text-xs font-medium">Pastor John</span>
+</div>
+</div>
+<p class="text-on-surface-variant leading-relaxed">Delivered a home-cooked meal and spent 45 minutes in prayer. Sarah is in good spirits but physically weak. Recommended extending the meal train by another week.</p>
+<div class="mt-6 pt-6 border-t border-outline-variant/10 flex gap-4">
+<span class="px-3 py-1 bg-secondary-container/50 text-on-secondary-container text-[10px] rounded-full uppercase tracking-tighter font-bold">Meal Delivery</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-[10px] rounded-full uppercase tracking-tighter font-bold">Prayer Visit</span>
+</div>
+</div>
+</div>
+<!-- History Log 2 -->
+<div class="relative flex gap-8 pl-14 pb-12">
+<div class="absolute left-4 top-2 w-4 h-4 rounded-full bg-outline-variant border-4 border-background"></div>
+<div class="flex-1 bg-surface-container-lowest p-8 rounded-2xl shadow-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div>
+<span class="text-xs font-bold uppercase tracking-widest text-outline block mb-1">Oct 24, 11:15 AM</span>
+<h4 class="text-xl font-serif">Prayer Call — David Wu</h4>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-4 py-2 rounded-full">
+<img alt="Caregiver" class="w-6 h-6 rounded-full" data-alt="Portrait of a smiling young woman with brown hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6NJzVVHIqWnPFyhOxBkstj7_UnxfWp6fNOkEAzfXs4LB-pbi_QQnPMJjf_zAG-6QnONax6iy194yINQlMlKL4XDAvXS_MuND8dp81ba0pX9dgBAEwfgDKZajjRceBlNt8GnK0jS5k5FH4HV9FQ8nqZqL71LIHZHVWF_ayi1CB1pfQUk4FvYqC8dF5-CJfgcbiFU4Ylzuj_SpzaG7Gsdx66xqCxWPvuX-fawHVf2pGF01sU7zqe-f0aZsRpfEkC6MOBuymsIS1Suc"/>
+<span class="text-xs font-medium">Diane Miller</span>
+</div>
+</div>
+<p class="text-on-surface-variant leading-relaxed">Checked in via phone. David expressed deep appreciation for the church's support. He requested some quiet space this weekend but would love to attend the Sunday evening contemplative service.</p>
+<div class="mt-6 pt-6 border-t border-outline-variant/10 flex gap-4">
+<span class="px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] rounded-full uppercase tracking-tighter font-bold">Phone Connection</span>
+</div>
+</div>
+</div>
+<!-- History Log 3 -->
+<div class="relative flex gap-8 pl-14">
+<div class="absolute left-4 top-2 w-4 h-4 rounded-full bg-outline-variant border-4 border-background"></div>
+<div class="flex-1 bg-surface-container-lowest p-8 rounded-2xl shadow-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div>
+<span class="text-xs font-bold uppercase tracking-widest text-outline block mb-1">Oct 23, 2:00 PM</span>
+<h4 class="text-xl font-serif">Initial Intake — Elena Rodriguez</h4>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-4 py-2 rounded-full">
+<span class="material-symbols-outlined text-sm" data-icon="support_agent">support_agent</span>
+<span class="text-xs font-medium">Admin Office</span>
+</div>
+</div>
+<p class="text-on-surface-variant leading-relaxed">Received request for assistance through the community portal. Form submitted detailing employment status and immediate needs. Awaiting deacon assignment.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#fbf9f4]/90 dark:bg-[#272420]/90 backdrop-blur-lg rounded-t-3xl shadow-[0_-4px_24px_rgba(39,36,32,0.04)]">
+<a class="flex flex-col items-center justify-center text-[#625d59] px-6 py-2 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[10px] uppercase tracking-widest Manrope font-bold mt-1">Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#3d3935] text-[#fbf9f4] rounded-2xl px-6 py-2 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="text-[10px] uppercase tracking-widest Manrope font-bold mt-1">Needs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#625d59] px-6 py-2 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="diversity_1">diversity_1</span>
+<span class="text-[10px] uppercase tracking-widest Manrope font-bold mt-1">Teams</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#625d59] px-6 py-2 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="text-[10px] uppercase tracking-widest Manrope font-bold mt-1">Profile</span>
+</a>
+</nav>
+<!-- FAB (Suppressed on this dashboard-focused screen per instructions) -->
+</body></html>

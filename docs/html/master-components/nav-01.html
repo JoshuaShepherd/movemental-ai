@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Master components — Nav 01 · Glass + progress</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+    />
+    <link rel="stylesheet" href="./css/core.css" />
+    <link rel="stylesheet" href="./css/nav-demos.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="nav nav--01 nav--has-drawer" data-nav>
+      <div class="nav__inner">
+        <a class="brand" href="./index.html">
+          <span class="brand__mark" aria-hidden="true"></span>
+          Movemental
+        </a>
+        <nav class="nav__links" aria-label="Primary">
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#methodology">Methodology</a></li>
+            <li><a href="#evidence">Evidence</a></li>
+            <li><a href="#who">Who we serve</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+          </ul>
+        </nav>
+        <div class="nav__actions">
+          <a class="btn btn--ghost btn--sm" href="#faq">FAQ</a>
+          <a class="btn btn--primary btn--sm" href="#contact">
+            Contact
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+        <button
+          type="button"
+          class="nav__toggle"
+          data-nav-toggle
+          aria-expanded="false"
+          aria-controls="nav-drawer-01"
+        >
+          <span></span><span></span>
+        </button>
+      </div>
+      <div class="nav__progress" aria-hidden="true">
+        <span data-reading-fill></span>
+      </div>
+      <div id="nav-drawer-01" class="nav__drawer">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#methodology">Methodology</a></li>
+          <li><a href="#evidence">Evidence</a></li>
+          <li><a href="#who">Who we serve</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <div class="nav__drawer-cta">
+          <a class="btn btn--primary" href="#contact">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="demo-page">
+      <article class="container" style="padding-block: var(--section-y)">
+        <p class="label reveal"><span class="label__dot" aria-hidden="true"></span>Nav 01</p>
+        <h1 class="section-title reveal" style="--d: 0.06s">Glass field + <em>reading</em> progress</h1>
+        <p class="demo-kicker reveal" style="--d: 0.1s">
+          Fixed bar, centered links, ink pill CTA. Scroll this page — the hairline progress bar under
+          the nav tracks vertical scroll depth (Medium-style).
+        </p>
+        <div style="max-width: 58ch; color: var(--ink-muted); line-height: 1.65">
+          <p class="reveal" style="--d: 0.12s">
+            Long body copy placeholder so the progress bar moves. Services, methodology, evidence, and
+            pricing routes mirror the live site map; anchors here stand in for routes.
+          </p>
+          <p id="services" class="reveal" style="--d: 0.14s; margin-top: 1.25rem">
+            <strong style="color: var(--ink)">Services</strong> — advisory retainers, workshops, and
+            implementation partnerships. Each engagement names the human stakes first, then the
+            technical stack.
+          </p>
+          <p id="methodology" class="reveal" style="--d: 0.16s; margin-top: 1.25rem">
+            <strong style="color: var(--ink)">Methodology</strong> — dual intelligences, six-stage
+            progression, and infrastructure that holds under real organizational load.
+          </p>
+          <p id="evidence" class="reveal" style="--d: 0.18s; margin-top: 1.25rem">
+            <strong style="color: var(--ink)">Evidence</strong> — case studies, artifacts, and
+            measurable outcomes. Proof lives next to the claim, not in a footnote.
+          </p>
+          <p id="who" class="reveal" style="--d: 0.2s; margin-top: 1.25rem">
+            <strong style="color: var(--ink)">Who we serve</strong> — movement leaders, institutions,
+            nonprofits, and churches navigating AI with formation at stake.
+          </p>
+          <p id="pricing" class="reveal" style="--d: 0.22s; margin-top: 1.25rem">
+            <strong style="color: var(--ink)">Pricing</strong> — scoped phases with clear exit ramps.
+            No black-box enterprise lock-in.
+          </p>
+          <p id="faq" class="reveal" style="--d: 0.24s; margin-top: 1.25rem">
+            <strong style="color: var(--ink)">FAQ</strong> — security, data residency, model choice,
+            and how teams adopt without losing their voice.
+          </p>
+          <p id="contact" class="reveal" style="--d: 0.26s; margin-top: 1.25rem">
+            <strong style="color: var(--ink)">Contact</strong> — start with a clarity conversation. We
+            reply as humans, not sequences.
+          </p>
+          <p class="reveal" style="--d: 0.28s; margin-top: 2rem; padding-bottom: 30vh">
+            End of scroll region — progress should read near full width.
+          </p>
+        </div>
+      </article>
+
+      <footer class="site-foot">
+        <div class="site-foot__inner">
+          <span>Nav 01 · glass + progress</span>
+          <a href="./index.html">Index</a>
+        </div>
+      </footer>
+    </main>
+
+    <script src="./js/core.js" defer></script>
+  </body>
+</html>

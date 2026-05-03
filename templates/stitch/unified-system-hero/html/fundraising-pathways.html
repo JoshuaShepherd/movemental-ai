@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PathwayCurator | Donor Pathways</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e3e2df",
+                    "surface-container-low": "#f4f3f0",
+                    "surface-bright": "#faf9f6",
+                    "on-primary-container": "#819986",
+                    "outline-variant": "#c3c8c1",
+                    "primary-fixed-dim": "#b4cdb8",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#2f312f",
+                    "tertiary-fixed": "#ffd9dc",
+                    "on-secondary-fixed-variant": "#404944",
+                    "inverse-primary": "#b4cdb8",
+                    "secondary-fixed": "#dbe5de",
+                    "on-primary-fixed-variant": "#364c3c",
+                    "surface-tint": "#4d6453",
+                    "on-tertiary-fixed-variant": "#5d3f42",
+                    "surface": "#faf9f6",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#0b2013",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#271013",
+                    "primary-fixed": "#d0e9d4",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#e3e2df",
+                    "surface-container": "#efeeeb",
+                    "primary": "#061b0e",
+                    "on-tertiary-fixed": "#2d1417",
+                    "secondary-container": "#dbe5de",
+                    "on-tertiary-container": "#b0898c",
+                    "on-surface-variant": "#434843",
+                    "on-secondary-container": "#5d6661",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#151d1a",
+                    "surface-container-high": "#e9e8e5",
+                    "secondary": "#57605b",
+                    "tertiary-container": "#3f2427",
+                    "surface-dim": "#dbdad7",
+                    "primary-container": "#1b3022",
+                    "on-surface": "#1b1c1a",
+                    "on-background": "#1b1c1a",
+                    "tertiary-fixed-dim": "#e7bcbf",
+                    "on-secondary": "#ffffff",
+                    "outline": "#737973",
+                    "inverse-on-surface": "#f2f1ee",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#bfc9c2",
+                    "background": "#faf9f6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, .serif-italic { font-family: 'Newsreader', serif; font-style: italic; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- Top Navigation Shell -->
+<header class="bg-[#faf9f6] dark:bg-[#061b0e] transition-colors duration-300 sticky top-0 z-50">
+<div class="flex justify-between items-center px-12 py-6 w-full max-w-screen-2xl mx-auto">
+<div class="text-2xl font-serif italic text-[#061b0e] dark:text-[#faf9f6]">PathwayCurator</div>
+<nav class="hidden md:flex items-center space-x-8 font-label tracking-wide text-sm">
+<a class="text-[#5d6661] dark:text-[#c3c8c1] hover:text-[#061b0e] dark:hover:text-[#ffffff] transition-all" href="#">Dashboard</a>
+<a class="text-[#061b0e] dark:text-[#faf9f6] border-b border-[#061b0e] dark:border-[#faf9f6] pb-1 opacity-70 transition-opacity" href="#">Pathways</a>
+<a class="text-[#5d6661] dark:text-[#c3c8c1] hover:text-[#061b0e] dark:hover:text-[#ffffff] transition-all" href="#">Donors</a>
+<a class="text-[#5d6661] dark:text-[#c3c8c1] hover:text-[#061b0e] dark:hover:text-[#ffffff] transition-all" href="#">Insights</a>
+<a class="text-[#5d6661] dark:text-[#c3c8c1] hover:text-[#061b0e] dark:hover:text-[#ffffff] transition-all" href="#">Library</a>
+</nav>
+<div class="flex items-center space-x-6">
+<span class="material-symbols-outlined text-primary cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer">settings</span>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container">
+<img alt="Curator Profile" class="w-full h-full object-cover" data-alt="Professional portrait of a sophisticated man in a dark green library setting, soft Rembrandt lighting, academic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXbBhHwN13YvaTSPoTbiYf_wOL--cz_MBK3XcuiLi-TIdyPp0nXmftWUApJMPdJfl2JRegHVEdi8QI1kY7xgLTNHdH6Z7Mcv8s7TskVdgqqoGJzPWCh8buppSO4XeffoBJo2x-5gpgh0fbOIHU0NTxRxLvlmnSe28bVQ3H36h3Tk7HyJpOr7XFh4Lgby2wlwDCDNIIge5PS4yrY31C3rNlHW9_OzGCjeG3mvUP0WtGKFvEvKbw_I_Zyzy3-EUDkfroOIefpAKVI8M"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex max-w-screen-2xl mx-auto">
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-[#f4f3f0] dark:bg-[#1b3022] flex flex-col py-8 z-40 hidden lg:flex">
+<div class="px-8 mb-12">
+<div class="flex items-center space-x-3 mb-8">
+<div class="w-8 h-8 rounded bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<span class="font-serif text-lg text-[#061b0e]">Movemental</span>
+</div>
+<div class="space-y-1">
+<h3 class="text-[10px] uppercase tracking-[0.2em] text-secondary font-bold mb-4">Active Pathway</h3>
+<div class="flex items-center space-x-3 p-3 bg-surface-container-lowest rounded-xl">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">school</span>
+</div>
+<div>
+<p class="font-bold text-xs">Education Supporter</p>
+<p class="text-[10px] text-secondary">Mid-Level Strategy</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 pr-4">
+<a class="flex items-center space-x-4 py-3 px-8 text-[#5d6661] dark:text-[#c3c8c1] hover:pl-10 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">visibility</span>
+<span class="text-sm font-label">Awareness</span>
+</a>
+<a class="flex items-center space-x-4 py-3 px-8 text-[#5d6661] dark:text-[#c3c8c1] hover:pl-10 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="text-sm font-label">Engagement</span>
+</a>
+<a class="flex items-center space-x-4 py-3 px-8 text-[#061b0e] dark:text-[#faf9f6] font-bold bg-[#faf9f6] dark:bg-[#061b0e] rounded-r-xl scale-95 origin-left" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-sm font-label">Participation</span>
+</a>
+<a class="flex items-center space-x-4 py-3 px-8 text-[#5d6661] dark:text-[#c3c8c1] hover:pl-10 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-sm font-label">Investment</span>
+</a>
+<a class="flex items-center space-x-4 py-3 px-8 text-[#5d6661] dark:text-[#c3c8c1] hover:pl-10 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="text-sm font-label">Advocacy</span>
+</a>
+</nav>
+<div class="px-8 mt-auto space-y-4">
+<button class="w-full bg-primary text-on-primary py-3 rounded-md text-xs font-bold tracking-widest uppercase hover:opacity-90 transition-opacity">
+                    Optimize Flow
+                </button>
+<div class="pt-8 border-t border-outline-variant/20 space-y-4">
+<a class="flex items-center space-x-3 text-xs text-secondary hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">help_outline</span>
+<span>Support</span>
+</a>
+<a class="flex items-center space-x-3 text-xs text-secondary hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">inventory_2</span>
+<span>Archive</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-64 px-8 md:px-16 py-12">
+<!-- Header Section -->
+<header class="mb-20 max-w-4xl">
+<h1 class="text-6xl md:text-7xl font-serif italic mb-6 leading-tight">Donor Pathways</h1>
+<p class="text-xl md:text-2xl font-body text-secondary leading-relaxed font-light">
+                    Move from transactions to relationships that grow over time.
+                </p>
+</header>
+<!-- Section 1: Pathway Overview -->
+<section class="mb-24">
+<div class="flex items-baseline justify-between mb-12 border-b border-outline-variant/10 pb-4">
+<h2 class="text-3xl font-serif">Pathway Architecture</h2>
+<span class="text-xs font-label uppercase tracking-widest text-outline">The Lifecycle of Advocacy</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-5 gap-1">
+<!-- Stage 1 -->
+<div class="group cursor-default">
+<div class="mb-6 h-[2px] bg-primary/10 group-hover:bg-primary transition-colors relative">
+<div class="absolute -top-1.5 left-0 w-3 h-3 rounded-full bg-primary"></div>
+</div>
+<h4 class="font-serif italic text-xl mb-3">Awareness</h4>
+<p class="text-sm text-secondary leading-relaxed pr-4">Discovery through high-level impact stories and thematic reports.</p>
+</div>
+<!-- Stage 2 -->
+<div class="group cursor-default">
+<div class="mb-6 h-[2px] bg-primary/10 group-hover:bg-primary transition-colors"></div>
+<h4 class="font-serif italic text-xl mb-3">Engagement</h4>
+<p class="text-sm text-secondary leading-relaxed pr-4">Two-way interaction via webinars, events, or digital dialogue.</p>
+</div>
+<!-- Stage 3 -->
+<div class="group cursor-default">
+<div class="mb-6 h-[2px] bg-primary/10 group-hover:bg-primary transition-colors"></div>
+<h4 class="font-serif italic text-xl mb-3">Participation</h4>
+<p class="text-sm text-secondary leading-relaxed pr-4">Direct involvement with programs, visits, or volunteer advisory.</p>
+</div>
+<!-- Stage 4 -->
+<div class="group cursor-default">
+<div class="mb-6 h-[2px] bg-primary/10 group-hover:bg-primary transition-colors"></div>
+<h4 class="font-serif italic text-xl mb-3">Investment</h4>
+<p class="text-sm text-secondary leading-relaxed pr-4">Major philanthropic commitment paired with measurable impact.</p>
+</div>
+<!-- Stage 5 -->
+<div class="group cursor-default">
+<div class="mb-6 h-[2px] bg-primary/10 group-hover:bg-primary transition-colors"></div>
+<h4 class="font-serif italic text-xl mb-3">Advocacy</h4>
+<p class="text-sm text-secondary leading-relaxed pr-4">Transforming from donor to ambassador, scaling network effects.</p>
+</div>
+</div>
+</section>
+<!-- Main Layout Grid: Timeline & AI Guidance -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+<!-- Section 2 & 3: Active Pathway Example -->
+<div class="lg:col-span-8">
+<div class="flex items-center justify-between mb-12">
+<h2 class="text-3xl font-serif">Mid-Level Education Supporter</h2>
+<span class="px-4 py-1.5 bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-widest rounded-full">Phase: Investment</span>
+</div>
+<div class="relative space-y-16 pl-12 border-l border-outline-variant/30">
+<!-- Step 1 -->
+<div class="relative">
+<div class="absolute -left-[54px] top-0 w-4 h-4 rounded-full border-4 border-surface bg-primary"></div>
+<div class="flex flex-col md:flex-row md:items-start gap-8">
+<div class="flex-1 bg-surface-container-low p-8 rounded-xl">
+<span class="text-[10px] font-bold text-primary tracking-widest uppercase block mb-4">Content Touchpoint</span>
+<h5 class="text-xl font-serif mb-2">State of Education 2024 Report</h5>
+<p class="text-sm text-secondary">A comprehensive analysis of rural literacy rates across the region.</p>
+</div>
+<div class="w-full md:w-56 bg-surface p-6 border-l-2 border-primary/20 italic">
+<span class="text-[10px] font-bold text-secondary tracking-widest uppercase block mb-3">Relational Engagement</span>
+<p class="text-sm text-on-surface">Initial interest tracked; whitepaper download noted in profile.</p>
+</div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative">
+<div class="absolute -left-[54px] top-0 w-4 h-4 rounded-full border-4 border-surface bg-primary"></div>
+<div class="flex flex-col md:flex-row md:items-start gap-8">
+<div class="flex-1 bg-surface-container-low p-8 rounded-xl">
+<span class="text-[10px] font-bold text-primary tracking-widest uppercase block mb-4">Content Touchpoint</span>
+<h5 class="text-xl font-serif mb-2">Equity in Learning Webinar</h5>
+<p class="text-sm text-secondary">Live discussion featuring regional leads on educational equity.</p>
+</div>
+<div class="w-full md:w-56 bg-surface p-6 border-l-2 border-primary/20 italic">
+<span class="text-[10px] font-bold text-secondary tracking-widest uppercase block mb-3">Relational Engagement</span>
+<p class="text-sm text-on-surface">Q&amp;A participation noted; specifically asked about scalability.</p>
+</div>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative">
+<div class="absolute -left-[54px] top-0 w-4 h-4 rounded-full border-4 border-surface bg-primary"></div>
+<div class="flex flex-col md:flex-row md:items-start gap-8">
+<div class="flex-1 bg-surface-container-low p-8 rounded-xl">
+<span class="text-[10px] font-bold text-primary tracking-widest uppercase block mb-4">Content Touchpoint</span>
+<h5 class="text-xl font-serif mb-2">Field Visit Guide</h5>
+<p class="text-sm text-secondary">Interactive document outlining the logistical flow of school visits.</p>
+</div>
+<div class="w-full md:w-56 bg-surface p-6 border-l-2 border-primary/20 italic">
+<span class="text-[10px] font-bold text-secondary tracking-widest uppercase block mb-3">Relational Engagement</span>
+<p class="text-sm text-on-surface">In-person meeting with Program Director during site visit.</p>
+</div>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="relative">
+<div class="absolute -left-[54px] top-0 w-4 h-4 rounded-full border-4 border-surface bg-primary"></div>
+<div class="flex flex-col md:flex-row md:items-start gap-8">
+<div class="flex-1 bg-primary text-on-primary p-8 rounded-xl">
+<span class="text-[10px] font-bold text-on-primary-container tracking-widest uppercase block mb-4">Content Touchpoint</span>
+<h5 class="text-xl font-serif italic mb-2">Impact Statement: $10k Milestone</h5>
+<p class="text-sm opacity-80">Customized report showing exactly how the first major gift was deployed.</p>
+</div>
+<div class="w-full md:w-56 bg-surface p-6 border-l-2 border-primary italic">
+<span class="text-[10px] font-bold text-primary tracking-widest uppercase block mb-3">Relational Engagement</span>
+<p class="text-sm text-on-surface">Personal thank you call from CEO; discussed long-term vision.</p>
+</div>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="relative">
+<div class="absolute -left-[54px] top-0 w-4 h-4 rounded-full border-4 border-surface bg-outline-variant"></div>
+<div class="flex flex-col md:flex-row md:items-start gap-8">
+<div class="flex-1 bg-surface-container-low p-8 rounded-xl">
+<span class="text-[10px] font-bold text-primary tracking-widest uppercase block mb-4">Content Touchpoint</span>
+<h5 class="text-xl font-serif mb-2">Partner Advocacy Kit</h5>
+<p class="text-sm text-secondary">Resources for mobilizing others within their professional network.</p>
+</div>
+<div class="w-full md:w-56 bg-surface p-6 border-l-2 border-primary/20 italic">
+<span class="text-[10px] font-bold text-secondary tracking-widest uppercase block mb-3">Relational Engagement</span>
+<p class="text-sm text-on-surface">Hosted a local dinner for 3 new leads; introduced Movemental.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 4: AI Guidance -->
+<div class="lg:col-span-4">
+<div class="sticky top-32 space-y-8">
+<div class="bg-surface-container-high rounded-xl p-8 shadow-2xl shadow-primary/5 border border-outline-variant/10">
+<div class="flex items-center space-x-3 mb-8">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h3 class="text-lg font-serif italic">AI Guidance</h3>
+</div>
+<div class="mb-8">
+<span class="text-[10px] font-bold text-secondary tracking-widest uppercase block mb-2">Suggested Next Step</span>
+<div class="p-4 bg-surface-container-lowest rounded-lg border-l-4 border-primary">
+<p class="text-sm font-bold text-primary">Invite to regional gala event</p>
+<p class="text-[11px] text-secondary mt-1">Based on Advocacy stage and recent hosting activity.</p>
+</div>
+</div>
+<div class="space-y-4">
+<span class="text-[10px] font-bold text-secondary tracking-widest uppercase block">Draft Message</span>
+<div class="bg-surface p-5 rounded-lg border border-outline-variant/30 text-sm leading-relaxed text-on-surface italic">
+                                    "I was moved by the dinner you hosted last week. Since you're becoming a vital champion for our education initiatives, I'd love for you to join our VIP table at the Autumn Gala..."
+                                </div>
+<button class="w-full flex items-center justify-center space-x-2 py-3 bg-primary text-on-primary rounded-md text-xs font-bold hover:opacity-90 transition-opacity">
+<span>Personalize &amp; Send</span>
+<span class="material-symbols-outlined text-xs">send</span>
+</button>
+</div>
+</div>
+<!-- Contextual Card -->
+<div class="p-8 border border-outline-variant/30 rounded-xl bg-white/40 backdrop-blur-md">
+<h4 class="font-serif italic text-xl mb-4">Relationship Health</h4>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-widest mb-2">
+<span>Momentum</span>
+<span>92%</span>
+</div>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 92%"></div>
+</div>
+</div>
+<p class="text-xs text-secondary leading-relaxed">
+                                    Donor sentiment is at an all-time high following the site visit. Recommend shifting to Advocacy toolkit by month-end.
+                                </p>
+</div>
+</div>
+<!-- Decorative Curated Image -->
+<div class="rounded-xl overflow-hidden grayscale contrast-125 opacity-80">
+<img alt="Editorial close up" class="w-full h-48 object-cover" data-alt="Monochrome close-up of a high-quality fountain pen resting on a thick, cream-colored cotton paper journal, soft shadows, intellectual atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg9KBcz0whP43jKDcS7eXT_ILslQniQToZ2rAKcH7u5qCb45vjW1g1CnG3MYjCwGanc70rynezqMrgAsga21Z3lfQlyhEw_8xkxOcs1PeYK4IyeziHhV0VmCIs3zEj5Pt-E8l3xWexK2sLOu_bhB6kGxw68KlC6-Quap6wiIEV05ew1Xma8cyJ2TOFlCSGuSCNsXDMpF06plNG6mMZ3BfVhh2fWQvSW5lY_7gIbBZthMZ9rKoJYGkUnl97DARTzBMhQXgJkBFt7lg"/>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Mobile Navigation Shell -->
+<footer class="md:hidden fixed bottom-0 left-0 w-full bg-surface-bright border-t border-outline-variant/10 px-8 py-4 flex justify-between items-center z-50">
+<span class="material-symbols-outlined text-secondary">dashboard</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">route</span>
+<span class="material-symbols-outlined text-secondary">person</span>
+<span class="material-symbols-outlined text-secondary">bar_chart</span>
+</footer>
+</body></html>

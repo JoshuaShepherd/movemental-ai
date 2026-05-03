@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Article archive &mdash; Movemental</title>
+    <meta
+      name="description"
+      content="Browse every essay, strategy piece, playbook, and guide in the Movemental library — filter by shape, search, and sort."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+    />
+    <link rel="stylesheet" href="../homepage-concept-modern/styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <div class="nav__inner">
+        <a class="brand" href="../homepage-concept-modern/index.html">
+          <span class="brand__mark" aria-hidden="true"></span>
+          Movemental
+        </a>
+
+        <nav class="nav__links" aria-label="Primary">
+          <ul>
+            <li><a href="../homepage-concept-modern/index.html#stakes">Approach</a></li>
+            <li><a href="../homepage-concept-modern/index.html#path">Process</a></li>
+            <li><a href="./index.html">Writing</a></li>
+            <li><a href="./articles-archive.html" aria-current="page">Archive</a></li>
+            <li><a href="../books-concept-modern/index.html">Book</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav__actions">
+          <a class="btn btn--primary btn--sm" href="./index.html#subscribe">
+            Get new writing
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+
+        <button class="nav__toggle" type="button" aria-label="Toggle menu">
+          <span></span><span></span>
+        </button>
+      </div>
+
+      <div class="nav__progress" aria-hidden="true">
+        <span data-reading-fill></span>
+      </div>
+    </header>
+
+    <main id="main">
+      <article id="top">
+        <section
+          class="hero hero--articles hero--archive"
+          aria-labelledby="hero-title"
+        >
+          <div class="container">
+            <p class="label reveal">
+              <span class="label__dot" aria-hidden="true"></span>
+              Archive
+            </p>
+
+            <div class="hero__grid">
+              <div class="hero__main">
+                <h1
+                  id="hero-title"
+                  class="hero__title reveal"
+                  style="--d: 0.08s"
+                >
+                  Every piece, <em>searchable</em>.
+                </h1>
+
+                <p class="hero__subhead reveal" style="--d: 0.2s">
+                  The full Movemental library in one surface &mdash;
+                  filter by the shape of the argument, search by phrase,
+                  and jump straight into a long read.
+                </p>
+
+                <div class="hero__ctas reveal" style="--d: 0.3s">
+                  <a class="btn btn--primary" href="./index.html#featured">
+                    Editorial start
+                    <span class="arrow" aria-hidden="true">&rarr;</span>
+                  </a>
+                  <a class="btn btn--ghost" href="#archive-results">
+                    Browse below
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="archive-toolbar">
+          <div class="container archive-toolbar__inner">
+            <div class="archive-search">
+              <label for="archive-q">Search the library</label>
+              <div class="archive-search__field">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                  style="flex-shrink: 0; color: var(--ink-soft)"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="M20 20l-3-3" stroke-linecap="round" />
+                </svg>
+                <input
+                  id="archive-q"
+                  type="search"
+                  name="q"
+                  placeholder="Titles, topics, phrases&hellip;"
+                  autocomplete="off"
+                  data-archive-search
+                />
+              </div>
+            </div>
+
+            <div class="archive-filters" role="group" aria-label="Filter by type">
+              <span class="archive-filters__label">Shape</span>
+              <button type="button" class="archive-chip" data-archive-chip="all" aria-pressed="true">
+                All
+              </button>
+              <button type="button" class="archive-chip" data-archive-chip="essay" aria-pressed="false">
+                Essays
+              </button>
+              <button type="button" class="archive-chip" data-archive-chip="strategy" aria-pressed="false">
+                Strategy
+              </button>
+              <button type="button" class="archive-chip" data-archive-chip="playbook" aria-pressed="false">
+                Playbooks
+              </button>
+              <button type="button" class="archive-chip" data-archive-chip="methodology" aria-pressed="false">
+                Methodology
+              </button>
+            </div>
+
+            <div class="archive-sort">
+              <label for="archive-sort">Sort</label>
+              <select id="archive-sort" data-archive-sort>
+                <option value="recent">Newest first</option>
+                <option value="oldest">Oldest first</option>
+                <option value="read">Shortest read</option>
+                <option value="title">Title A&ndash;Z</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <section
+          class="archive-results"
+          id="archive-results"
+          aria-labelledby="archive-results-title"
+        >
+          <div class="container">
+            <div class="archive-results__head">
+              <h2 id="archive-results-title" class="section-title reveal" style="--d: 0.05s">
+                Library <em>index</em>
+              </h2>
+              <p class="archive-results__count" data-archive-count>
+                <strong>18</strong> pieces match
+              </p>
+            </div>
+
+            <p class="archive-empty" data-archive-empty hidden>
+              No pieces match that combination. Try clearing a filter or
+              a shorter search.
+            </p>
+
+            <div class="archive-grid" data-archive-grid>
+              <a
+                class="archive-card reveal"
+                href="./article.html"
+                style="--d: 0.05s"
+                data-archive-card
+                data-category="methodology"
+                data-date="2026-03-12"
+                data-read="9 min"
+              >
+                <span class="archive-card__eyebrow">Methodology</span>
+                <h3 class="archive-card__title">Where Fragmentation Actually Lives</h3>
+                <p class="archive-card__dek">
+                  A concrete inventory of what every organization is quietly losing &mdash; and why naming the places is the right starting point for integration.
+                </p>
+                <div class="archive-card__meta">
+                  <span>9 min read</span>
+                  <span class="arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+
+              <a
+                class="archive-card reveal"
+                href="./article.html"
+                style="--d: 0.08s"
+                data-archive-card
+                data-category="essay"
+                data-date="2026-02-20"
+                data-read="11 min"
+              >
+                <span class="archive-card__eyebrow">Essay</span>
+                <h3 class="archive-card__title">The Two Intelligences Every Organization Must Integrate</h3>
+                <p class="archive-card__dek">
+                  Information and relationship are not one asset but two. Why both have to become a shared foundation before anything on top compounds.
+                </p>
+                <div class="archive-card__meta">
+                  <span>11 min read</span>
+                  <span class="arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+
+              <a
+                class="archive-card reveal"
+                href="./article.html"
+                style="--d: 0.11s"
+                data-archive-card
+                data-category="methodology"
+                data-date="2026-01-08"
+                data-read="14 min"
+              >
+                <span class="archive-card__eyebrow">Guide</span>
+                <h3 class="archive-card__title">A Guide to AI &amp; Credibility in 2026</h3>
+                <p class="archive-card__dek">
+                  How to live with AI when it is both the force that makes credibility harder to see and a tool that can help it travel.
+                </p>
+                <div class="archive-card__meta">
+                  <span>14 min read</span>
+                  <span class="arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+
+              <a
+                class="archive-card reveal"
+                href="./article.html"
+                style="--d: 0.14s"
+                data-archive-card
+                data-category="essay"
+                data-date="2025-11-02"
+                data-read="12 min"
+              >
+                <span class="archive-card__eyebrow">Essay</span>
+                <h3 class="archive-card__title">The Cost of Fragmentation</h3>
+                <p class="archive-card__dek">
+                  What fragmentation charges movement leaders, churches, institutions, and nonprofits &mdash; a universal tax levied differently.
+                </p>
+                <div class="archive-card__meta">
+                  <span>12 min read</span>
+                  <span class="arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+
+              <a
+                class="archive-card reveal"
+                href="./article.html"
+                style="--d: 0.17s"
+                data-archive-card
+                data-category="essay"
+                data-date="2025-10-18"
+                data-read="10 min"
+              >
+                <span class="archive-card__eyebrow">Essay</span>
+                <h3 class="archive-card__title">Intelligence Fragmentation</h3>
+                <p class="archive-card__dek">
+                  The two hidden halves of every organization&rsquo;s most valuable asset &mdash; and why neither one alone can carry the weight.
+                </p>
+                <div class="archive-card__meta">
+                  <span>10 min read</span>
+                  <span class="arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+
+              <a
+                class="archive-card reveal"
+                href="./article.html"
+                style="--d: 0.2s"
+                data-archive-card
+                data-category="strategy"
+                data-date="2025-09-30"
+                data-read="13 min"
+              >
+                <span class="archive-card__eyebrow">Strategy</span>
+                <h3 class="archive-card__title">From Fragmentation to Multiplication</h3>
+                <p class="archive-card__dek">
+                  The missing system behind leaders, churches, and nonprofits &mdash; and why the same structural constraint sits under symptoms that look nothing alike.
+                </p>
+                <div class="archive-card__meta">
+                  <span>13 min read</span>
+                  <span class="arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+
+              <a
+                class="archive-card reveal"
+                href="./article.html"
+                style="--d: 0.23s"
+                data-archive-card
+                data-category="strategy"
+                data-date="2025-09-05"
+                data-read="9 min"
+              >
+                <span class="archive-card__eyebrow">Strategy</span>
+                <h3 class="archive-card__title">Why Your Content Isn&rsquo;t Compounding</h3>
+                <p class="archive-card__dek">
+                  The quiet frustration many thoughtful leaders carry &mdash; and what it would take for a body of work to actually compound.
+                </p>
+                <div class="archive-card__meta">
+                  <span>9 min read</span>
+                  <span class="arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+
+              <a
+                class="archive-card reveal"
+                href="./article.html"
+                style="--d: 0.26s"
+                data-archive-card
+                data-category="strategy"
+                data-date="2025-08-22"
+                data-read="8 min"
+              >
+                <span class="archive-card__eyebrow">Strategy</span>
+                <h3 class="archive-card__title">Substack Isn&rsquo;t the Problem &mdash; But It&rsquo;s Not the System Either</h3>
+                <p class="archive-card__dek">
+                  What Substack solves and what it doesn&rsquo;t, for the movement leader who has already done something right.
+                </p>
+                <div class="archive-card__meta">
+                  <span>8 min read</span>
+                  <span class="arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+
+              <a
+                class="archive-card reveal"
+                href="./article.html"
+                style="--d: 0.29s"
+                data-archive-card
+                data-category="playbook"
+                data-date="2025-07-14"
+                data-read="18 min"
+              >
+                <span class="archive-card__eyebrow">Playbook</span>
+                <h3 class="archive-card__title">The Movement Leader&rsquo;s Playbook</h3>
+                <p class="archive-card__dek">
+                  For the individual whose life&rsquo;s work is a body of ideas &mdash; integrating a decade of thought so it carries forward.
+                </p>
+                <div class="archive-card__meta">
+                  <span>18 min read</span>
+                  <span class="arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+
+              <a
+                class="archive-card reveal"
+                href="./article.html"
+                style="--d: 0.32s"
+                data-archive-card
+                data-category="playbook"
+                data-date="2025-07-01"
+                data-read="17 min"
+              >
+                <span class="archive-card__eyebrow">Playbook</span>
+                <h3 class="archive-card__title">The Nonprofit&rsquo;s Playbook</h3>
+                <p class="archive-card__dek">
+                  Integrating mission, money, and memory for organizations that must raise money, run programs, and compound impact year over year.
+                </p>
+                <div class="archive-card__meta">
+                  <span>17 min read</span>
+                  <span class="arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+
+              <a
+                class="archive-card reveal"
+                href="./article.html"
+                style="--d: 0.35s"
+                data-archive-card
+                data-category="methodology"
+                data-date="2025-06-10"
+                data-read="15 min"
+              >
+                <span class="archive-card__eyebrow">Methodology</span>
+                <h3 class="archive-card__title">The Movemental Stack, Plainly</h3>
+                <p class="archive-card__dek">
+                  A framework, a rubric, and twenty nonprofit use cases &mdash; the stack Movemental uses, in non-technical language.
+                </p>
+                <div class="archive-card__meta">
+                  <span>15 min read</span>
+                  <span class="arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+
+              <a
+                class="archive-card reveal"
+                href="./article.html"
+                style="--d: 0.38s"
+                data-archive-card
+                data-category="methodology"
+                data-date="2025-05-28"
+                data-read="8 min"
+              >
+                <span class="archive-card__eyebrow">Methodology</span>
+                <h3 class="archive-card__title">Sandbox Discovery</h3>
+                <p class="archive-card__dek">
+                  Where learning actually happens &mdash; the evolution from Discovery Lab, and why learning-first beats tool-first and strategy-first.
+                </p>
+                <div class="archive-card__meta">
+                  <span>8 min read</span>
+                  <span class="arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+
+              <a
+                class="archive-card reveal"
+                href="./article.html"
+                style="--d: 0.41s"
+                data-archive-card
+                data-category="essay"
+                data-date="2025-05-01"
+                data-read="9 min"
+              >
+                <span class="archive-card__eyebrow">Essay</span>
+                <h3 class="archive-card__title">The Skill of AI</h3>
+                <p class="archive-card__dek">
+                  Why reskilling is the wrong frame &mdash; and what to teach instead when the skill is judgment, not tool-fluency.
+                </p>
+                <div class="archive-card__meta">
+                  <span>9 min read</span>
+                  <span class="arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+
+              <a
+                class="archive-card reveal"
+                href="./article.html"
+                style="--d: 0.44s"
+                data-archive-card
+                data-category="essay"
+                data-date="2025-04-12"
+                data-read="8 min"
+              >
+                <span class="archive-card__eyebrow">Essay</span>
+                <h3 class="archive-card__title">The Work of Safety</h3>
+                <p class="archive-card__dek">
+                  What has to be true before anything else &mdash; and why safety is the first step, not the last.
+                </p>
+                <div class="archive-card__meta">
+                  <span>8 min read</span>
+                  <span class="arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+
+              <a
+                class="archive-card reveal"
+                href="./article.html"
+                style="--d: 0.47s"
+                data-archive-card
+                data-category="methodology"
+                data-date="2025-03-20"
+                data-read="14 min"
+              >
+                <span class="archive-card__eyebrow">Methodology</span>
+                <h3 class="archive-card__title">PII and Nonprofits: Private Agentic RAG</h3>
+                <p class="archive-card__dek">
+                  How to build a private agentic RAG system without handing donor data to any tech company.
+                </p>
+                <div class="archive-card__meta">
+                  <span>14 min read</span>
+                  <span class="arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+
+              <a
+                class="archive-card reveal"
+                href="./article.html"
+                style="--d: 0.5s"
+                data-archive-card
+                data-category="strategy"
+                data-date="2025-02-02"
+                data-read="7 min"
+              >
+                <span class="archive-card__eyebrow">Strategy</span>
+                <h3 class="archive-card__title">The One Constraint Behind Every AI Conversation</h3>
+                <p class="archive-card__dek">
+                  The single variable that determines whether a person or organization can actually benefit from what AI makes possible.
+                </p>
+                <div class="archive-card__meta">
+                  <span>7 min read</span>
+                  <span class="arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+
+              <a
+                class="archive-card reveal"
+                href="./article.html"
+                style="--d: 0.53s"
+                data-archive-card
+                data-category="playbook"
+                data-date="2025-01-15"
+                data-read="16 min"
+              >
+                <span class="archive-card__eyebrow">Playbook</span>
+                <h3 class="archive-card__title">The Church&rsquo;s Playbook</h3>
+                <p class="archive-card__dek">
+                  Integrating formation, care, and memory for the congregational body whose vocation is formation over time.
+                </p>
+                <div class="archive-card__meta">
+                  <span>16 min read</span>
+                  <span class="arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+
+              <a
+                class="archive-card reveal"
+                href="./article.html"
+                style="--d: 0.56s"
+                data-archive-card
+                data-category="playbook"
+                data-date="2024-12-01"
+                data-read="19 min"
+              >
+                <span class="archive-card__eyebrow">Playbook</span>
+                <h3 class="archive-card__title">The Institution&rsquo;s Playbook</h3>
+                <p class="archive-card__dek">
+                  Integrating across entities, generations, and accreditors &mdash; where fragmentation is political and theological before it is technical.
+                </p>
+                <div class="archive-card__meta">
+                  <span>19 min read</span>
+                  <span class="arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="invitation" aria-labelledby="invitation-title">
+          <div class="container container--narrow">
+            <p class="label reveal">
+              <span class="label__dot" aria-hidden="true"></span>
+              Reading path
+            </p>
+
+            <h2
+              id="invitation-title"
+              class="section-title section-title--xl reveal"
+              style="--d: 0.1s"
+            >
+              Prefer a <em>curated arc</em>?
+            </h2>
+
+            <div class="invitation__body reveal" style="--d: 0.2s">
+              <p>
+                The writing hub opens with three featured pieces that carry
+                the thesis in order. The book gathers the whole argument in
+                one manuscript.
+              </p>
+            </div>
+
+            <div class="invitation__ctas reveal" style="--d: 0.3s">
+              <a class="btn btn--primary btn--lg" href="./index.html#featured">
+                Start on the hub
+                <span class="arrow" aria-hidden="true">&rarr;</span>
+              </a>
+              <a class="btn btn--ghost btn--lg" href="../books-concept-modern/book-ereader.html">
+                Open the book reader
+              </a>
+            </div>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__brand-block">
+            <p class="footer__brand">
+              <span class="brand__mark brand__mark--inverse" aria-hidden="true"></span>
+              Movemental
+            </p>
+            <p class="footer__tag">
+              Movemental helps organizations navigate AI with clarity,
+              integrity, and mission in view.
+            </p>
+          </div>
+
+          <div class="footer__cols">
+            <div>
+              <p class="footer__col-label">Writing</p>
+              <ul>
+                <li><a href="./index.html">Hub</a></li>
+                <li><a href="./articles-archive.html">Archive</a></li>
+                <li><a href="./article.html">Sample article</a></li>
+              </ul>
+            </div>
+            <div>
+              <p class="footer__col-label">Explore</p>
+              <ul>
+                <li><a href="../homepage-concept-modern/index.html#stakes">Approach</a></li>
+                <li><a href="../homepage-concept-modern/index.html#path">Process</a></li>
+                <li><a href="../books-concept-modern/index.html">Book</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <hr class="footer__rule" />
+
+        <div class="footer__meta">
+          <span>&copy; <span data-year></span> Movemental</span>
+          <span>All rights reserved.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../homepage-concept-modern/script.js"></script>
+    <script src="./archive.js"></script>
+  </body>
+</html>

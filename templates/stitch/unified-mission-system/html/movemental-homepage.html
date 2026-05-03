@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Movemental | The Mission System for Nonprofits</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e4e2dd",
+                        "on-secondary-fixed": "#360e08",
+                        "on-tertiary-fixed-variant": "#653a43",
+                        "on-primary-fixed": "#02210c",
+                        "tertiary-fixed": "#ffd9df",
+                        "tertiary-container": "#73464f",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#abd0af",
+                        "secondary-fixed-dim": "#feb4a7",
+                        "on-background": "#1b1c19",
+                        "on-tertiary-fixed": "#321019",
+                        "tertiary-fixed-dim": "#f3b7c1",
+                        "secondary-container": "#feb4a7",
+                        "background": "#fbf9f4",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#3a5a40",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#f2f1ec",
+                        "surface-container": "#f0eee9",
+                        "inverse-surface": "#30312e",
+                        "surface-tint": "#45664b",
+                        "primary-fixed-dim": "#abd0af",
+                        "outline-variant": "#c2c8bf",
+                        "tertiary": "#593038",
+                        "on-surface-variant": "#424842",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "secondary": "#884f45",
+                        "secondary-fixed": "#ffdad4",
+                        "on-tertiary-container": "#f3b7c1",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#c7ecca",
+                        "on-primary-fixed-variant": "#2e4e35",
+                        "surface-dim": "#dbdad5",
+                        "on-surface": "#1b1c19",
+                        "surface-container-high": "#eae8e3",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#fbf9f4",
+                        "outline": "#727971",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-secondary-fixed-variant": "#6c382f",
+                        "on-secondary-container": "#7a443a",
+                        "on-primary-container": "#acd0af",
+                        "primary": "#23422a",
+                        "surface": "#fbf9f4",
+                        "surface-container-low": "#f5f3ee"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3 { font-family: 'Newsreader', serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#fbf9f4]/80 dark:bg-[#1b1c19]/80 backdrop-blur-md shadow-[0px_20px_40px_rgba(27,28,25,0.06)]">
+<div class="flex justify-between items-center px-8 py-6 max-w-[1440px] mx-auto">
+<div class="text-2xl font-bold font-['Newsreader'] text-[#23422a] dark:text-[#fbf9f4] tracking-tighter">Movemental</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-[#1b1c19]/60 dark:text-[#fbf9f4]/60 font-medium uppercase tracking-widest text-[0.75rem] hover:text-[#884f45] transition-colors duration-300" href="#">Mission</a>
+<a class="text-[#1b1c19]/60 dark:text-[#fbf9f4]/60 font-medium uppercase tracking-widest text-[0.75rem] hover:text-[#884f45] transition-colors duration-300" href="#">Repository</a>
+<a class="text-[#1b1c19]/60 dark:text-[#fbf9f4]/60 font-medium uppercase tracking-widest text-[0.75rem] hover:text-[#884f45] transition-colors duration-300" href="#">Impact</a>
+<a class="text-[#1b1c19]/60 dark:text-[#fbf9f4]/60 font-medium uppercase tracking-widest text-[0.75rem] hover:text-[#884f45] transition-colors duration-300" href="#">Network</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="font-label text-sm font-semibold text-primary hover:text-secondary transition-colors">Sign in</button>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-label text-sm font-bold tracking-tight hover:scale-95 duration-200 ease-in-out">Get Started</button>
+</div>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative px-8 pt-20 pb-32 overflow-hidden">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+<div class="lg:col-span-6">
+<h1 class="text-6xl md:text-7xl font-headline font-medium leading-[1.05] tracking-tight mb-8 text-on-surface">
+                        Your mission deserves more than <span class="italic text-secondary">scattered tools</span> and disconnected relationships.
+                    </h1>
+<p class="text-lg md:text-xl text-on-surface-variant leading-relaxed mb-10 max-w-xl">
+                        Movemental helps nonprofits bring their content, donor context, training, and organizational knowledge into one system built for longevity.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary-container transition-all">Establish Your System</button>
+<button class="border border-outline/20 px-8 py-4 rounded-lg font-bold text-lg hover:bg-surface-container-low transition-all">View the Architecture</button>
+</div>
+</div>
+<div class="lg:col-span-6 relative">
+<div class="relative z-10 bg-surface-container-highest rounded-xl p-4 shadow-2xl overflow-hidden border border-outline-variant/30">
+<img alt="Platform Preview" class="rounded-lg w-full h-auto" data-alt="A sophisticated dashboard UI mockup showing data visualizations, donor profiles, and organizational impact metrics in a clean editorial layout" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBngcgD_ZUGAr4qrxwzCV5BMEwqeRLq0bKPfER4faSXh5NzJEs5HFMdrOmNaCNqwIGfHHvoaWYiU_cTH9wpIYs1_xrUEM1YAOlsGL4DB-TM1bvjXtjoy92B7Aei7r93MLHcd8ihz915-v9jYLikoNONuC15EWRI4ou-9AP-OrgDj131mQd3GJOA86fhFifRl843J2SMHb85O4IRssBJIH1OClrjOZHeWJJi8meJoWZtLXNN-zbA8uaeMAp0220ms7HPPfp38EQ5oN4"/>
+</div>
+<div class="absolute -top-20 -right-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+</div>
+</div>
+</section>
+<!-- Trust Strip -->
+<section class="bg-surface-container-low py-12 px-8">
+<div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+<span class="font-label text-xs uppercase tracking-[0.2em] font-bold text-on-surface/40">Built for organizations that need more than a website</span>
+<div class="flex flex-wrap justify-center gap-x-12 gap-y-6">
+<div class="flex items-center gap-2 font-label text-xs font-bold text-on-surface-variant uppercase tracking-wider">
+<span class="material-symbols-outlined text-secondary" data-icon="auto_stories">auto_stories</span> Integrated knowledge
+                    </div>
+<div class="flex items-center gap-2 font-label text-xs font-bold text-on-surface-variant uppercase tracking-wider">
+<span class="material-symbols-outlined text-secondary" data-icon="psychology_alt">psychology_alt</span> Donor intelligence
+                    </div>
+<div class="flex items-center gap-2 font-label text-xs font-bold text-on-surface-variant uppercase tracking-wider">
+<span class="material-symbols-outlined text-secondary" data-icon="school">school</span> Training systems
+                    </div>
+<div class="flex items-center gap-2 font-label text-xs font-bold text-on-surface-variant uppercase tracking-wider">
+<span class="material-symbols-outlined text-secondary" data-icon="hub">hub</span> AI-ready context
+                    </div>
+</div>
+</div>
+</section>
+<!-- The Problem -->
+<section class="py-32 px-8 bg-surface">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-20">
+<div class="lg:col-span-5">
+<h2 class="text-4xl md:text-5xl font-headline leading-tight mb-8">
+                        Most nonprofits do not have a mission problem. They have a <span class="italic underline decoration-secondary decoration-2 underline-offset-8">fragmentation</span> problem.
+                    </h2>
+<p class="text-lg text-on-surface-variant leading-relaxed">
+                        Data lives in spreadsheets. Wisdom lives in PDFs. Relationships live in the heads of departing staff. Without a unified system, your organizational memory leaks every year.
+                    </p>
+</div>
+<div class="lg:col-span-7 grid grid-cols-2 gap-4">
+<div class="bg-surface-container rounded-lg p-8 aspect-square flex flex-col justify-center border border-outline-variant/10">
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-error/10 text-error px-3 py-1 rounded text-[10px] font-bold uppercase tracking-tighter">Spreadsheets</span>
+<span class="bg-error/10 text-error px-3 py-1 rounded text-[10px] font-bold uppercase tracking-tighter">Email Chains</span>
+<span class="bg-error/10 text-error px-3 py-1 rounded text-[10px] font-bold uppercase tracking-tighter">Static PDFs</span>
+</div>
+<h4 class="font-headline text-2xl mb-2 italic text-on-surface/50">The Fragmentation</h4>
+<p class="text-sm text-on-surface-variant/70">Knowledge is siloed, inaccessible, and decays over time.</p>
+</div>
+<div class="bg-primary-container text-on-primary-container rounded-lg p-8 aspect-square flex flex-col justify-center shadow-xl">
+<div class="flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-5xl" data-icon="all_inclusive">all_inclusive</span>
+</div>
+<h4 class="font-headline text-2xl mb-2">The Coherence</h4>
+<p class="text-sm text-on-primary-container/80">Every piece of data strengthens the whole system, compounding impact.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- What Changes -->
+<section class="py-32 px-8 bg-surface-container-low">
+<div class="max-w-[1440px] mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="space-y-6">
+<div class="w-12 h-12 bg-primary text-on-primary flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+</div>
+<h3 class="text-3xl font-headline">Integrated Knowledge</h3>
+<p class="text-on-surface-variant leading-relaxed">Turn static reports into a living library where every program update, impact story, and policy is searchable and actionable.</p>
+</div>
+<div class="space-y-6">
+<div class="w-12 h-12 bg-secondary text-on-primary flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined" data-icon="diversity_3">diversity_3</span>
+</div>
+<h3 class="text-3xl font-headline">Relational Memory</h3>
+<p class="text-on-surface-variant leading-relaxed">Stop treating donors like rows in a database. Understand the complex web of relationships that drive your movement.</p>
+</div>
+<div class="space-y-6">
+<div class="w-12 h-12 bg-on-surface text-surface flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+</div>
+<h3 class="text-3xl font-headline">Contextual AI</h3>
+<p class="text-on-surface-variant leading-relaxed">AI that actually understands your mission. It doesn't just write; it drafts based on your unique organizational history.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Platform Preview (Editorial Bento Grid) -->
+<section class="py-32 px-8 bg-surface">
+<div class="max-w-[1440px] mx-auto">
+<div class="mb-16">
+<h2 class="text-4xl md:text-5xl font-headline mb-4">One platform for mission, relationships, and intelligence.</h2>
+<p class="text-on-surface-variant max-w-2xl">The Movemental dashboard is designed for high-stakes operational clarity.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 grid-rows-none md:grid-rows-2 gap-6 h-auto md:h-[800px]">
+<!-- Impact Story -->
+<div class="md:col-span-4 md:row-span-1 bg-surface-container-highest p-8 rounded-xl flex flex-col justify-between group overflow-hidden">
+<div>
+<span class="font-label text-[10px] font-bold uppercase tracking-widest text-primary mb-4 block">Impact Story</span>
+<h4 class="text-2xl font-headline mb-2">Solar Initiative 2024</h4>
+<p class="text-sm text-on-surface-variant">Real-time tracking of mission delivery across 14 villages.</p>
+</div>
+<img alt="Solar" class="w-full h-32 object-cover rounded mt-6 grayscale hover:grayscale-0 transition-all duration-500" data-alt="Close up of solar panels in a rural setting with warm golden sunlight reflecting off the surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2ZMAbzcQkcKlJmP1HedBIfzEybD4efEFsu4UsSDAeuBOwBXC0_GBsq9kWgbcZMvflrvi6TAgl2PHa6Jdnzm9UWCjoBfGVb34nlIFe1HCbBaKpmKYhNpdcEI_TZatN0HiiORl8xuNwCeLHNhaaXFoMbYvxofzK5EhIDlwjQe_a-M4GwrGO2NNLI52bnA3Os2S8ZXNeN-HKe7jaGPENJovBMh47H4sXji0pHj_J-Na5HKGndPVg1tEV3GCpQTMFXXnjRD6PwL9FJeA"/>
+</div>
+<!-- Donor Intelligence -->
+<div class="md:col-span-8 md:row-span-1 bg-primary text-on-primary p-8 rounded-xl flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div>
+<span class="font-label text-[10px] font-bold uppercase tracking-widest text-on-primary/60 mb-4 block">Intelligence Panel</span>
+<h4 class="text-3xl font-headline italic">The Relationship Map</h4>
+</div>
+<span class="material-symbols-outlined text-4xl opacity-40" data-icon="hub">hub</span>
+</div>
+<div class="mt-8 grid grid-cols-3 gap-4">
+<div class="bg-white/10 p-4 rounded border border-white/5">
+<span class="text-xs font-bold block mb-1">Key Stakeholders</span>
+<span class="text-2xl font-headline tracking-tighter">142</span>
+</div>
+<div class="bg-white/10 p-4 rounded border border-white/5">
+<span class="text-xs font-bold block mb-1">Active Pledges</span>
+<span class="text-2xl font-headline tracking-tighter">$1.2M</span>
+</div>
+<div class="bg-white/10 p-4 rounded border border-white/5">
+<span class="text-xs font-bold block mb-1">Network Health</span>
+<span class="text-2xl font-headline tracking-tighter">Strong</span>
+</div>
+</div>
+</div>
+<!-- Ask the System -->
+<div class="md:col-span-5 md:row-span-1 bg-secondary text-on-primary p-8 rounded-xl flex flex-col">
+<span class="font-label text-[10px] font-bold uppercase tracking-widest text-on-primary/60 mb-4 block">Ask the System</span>
+<div class="mt-auto">
+<p class="text-xl font-headline italic mb-4">"Draft a briefing for our board meeting based on last quarter's impact metrics and donor feedback."</p>
+<div class="w-full bg-white/10 h-1 rounded-full relative overflow-hidden">
+<div class="absolute left-0 top-0 h-full bg-white w-1/3"></div>
+</div>
+</div>
+</div>
+<!-- Training & Resources -->
+<div class="md:col-span-7 md:row-span-1 grid grid-cols-2 gap-6">
+<div class="bg-surface-container-high p-6 rounded-xl border border-outline-variant/20">
+<span class="material-symbols-outlined mb-4 text-primary" data-icon="menu_book">menu_book</span>
+<h5 class="font-bold text-sm mb-1 uppercase tracking-tight">Resource Library</h5>
+<p class="text-xs text-on-surface-variant">42 Active Playbooks</p>
+</div>
+<div class="bg-surface-container-high p-6 rounded-xl border border-outline-variant/20">
+<span class="material-symbols-outlined mb-4 text-primary" data-icon="record_voice_over">record_voice_over</span>
+<h5 class="font-bold text-sm mb-1 uppercase tracking-tight">Partner Updates</h5>
+<p class="text-xs text-on-surface-variant">Real-time Feed</p>
+</div>
+<div class="col-span-2 bg-surface-container-high p-6 rounded-xl border border-outline-variant/20 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="model_training">model_training</span>
+</div>
+<h5 class="font-bold text-sm uppercase tracking-tight">Staff Onboarding System</h5>
+</div>
+<span class="text-xs font-bold text-primary">Live</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Relational Intelligence -->
+<section class="py-32 px-8 bg-surface-container-low overflow-hidden">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
+<div class="lg:col-span-6 lg:order-2">
+<h2 class="text-5xl font-headline leading-tight mb-8">Your relationships are part of the system too.</h2>
+<p class="text-lg text-on-surface-variant leading-relaxed mb-8">
+                        Traditional CRMs track transactions. Movemental tracks <span class="italic">meaning</span>. See how a casual donor is connected to a corporate partner, or how a local volunteer influence scales across your network.
+                    </p>
+<ul class="space-y-4">
+<li class="flex items-center gap-4 text-on-surface font-semibold">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span> Multi-dimensional stakeholder maps
+                        </li>
+<li class="flex items-center gap-4 text-on-surface font-semibold">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span> Affinity and influence scoring
+                        </li>
+<li class="flex items-center gap-4 text-on-surface font-semibold">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span> Narrative relationship histories
+                        </li>
+</ul>
+</div>
+<div class="lg:col-span-6 lg:order-1">
+<div class="relative">
+<img alt="Team" class="rounded-lg shadow-2xl grayscale brightness-90 contrast-110" data-alt="A diverse group of professionals working collaboratively around a large wooden table with papers and digital devices, soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5lVBC6C3si6IXJlOVpooIWYSPHsjZukDbpFM2Zr_M3Ct3j_jo0GPkjxZMJFkVPOjjc_hAoKQyU2rew3H7BYYaXOD7l49-7_VByC0lvIfZqxJwfCfmap8hVcd2939NIqZL0Ek3k7Qs2nf--ct52pjG0_537xqPhNx_dHjgWen1pYgv_zSPlvjzDIyWpFB44fbcNGdWNHapM4g0be_gtGR6kvXKVdW_IUIb4c4kzvEzp2uV6ePVC9FnpBXWDPMo4jK6kKpKWJEvAjw"/>
+<div class="absolute -bottom-10 -right-10 bg-white p-8 rounded-xl shadow-xl border border-outline-variant/30 max-w-xs">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-full bg-secondary/20 overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Portrait of a professional woman with a soft background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoyXFRP62je_IyWQ_QfldchAl9sc7BiP7WWa9huaoZ9DB_1je8_BbG9t8r3VO9LWP7e_0ItskJ90wC6m9kjCGR-s9h_u1B_JGXbCshqr_xwsydj4QJIT01FGvPBIaxwhS2VTEc6PDqA3uWUtKC1FBbmDaE13lt6QWshrpYafxbzzZJfuzMAHY9xNHVyuSQfeQXvXVVmnuGAe6ZHOr-ZG-2hYjyk5Ie890iqO6Ld8w1wi5xm0qBH_Kmgx3UxNUVVT27HBlceoFX3uU"/>
+</div>
+<div>
+<h6 class="font-bold text-sm">Elena Vance</h6>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant">Strategic Partner</p>
+</div>
+</div>
+<p class="text-xs leading-relaxed text-on-surface-variant">Connected to 4 foundations. Advocacy lead for Urban Policy. Prefers in-person briefings.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Capabilities -->
+<section class="py-32 px-8 bg-on-surface text-surface">
+<div class="max-w-[1440px] mx-auto text-center mb-24">
+<h2 class="text-5xl font-headline mb-6">AI only becomes useful when it has context.</h2>
+<p class="text-surface/60 max-w-2xl mx-auto text-lg">General AI knows everything about the world but nothing about your mission. Movemental AI is different.</p>
+</div>
+<div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="border-l border-surface/20 pl-8 py-4">
+<span class="font-label text-[10px] font-bold uppercase tracking-widest text-secondary-fixed-dim block mb-4">Donor Briefing</span>
+<p class="text-sm leading-relaxed">Automatically generate 1-pagers for major donors by synthesizing recent impact reports and historical preferences.</p>
+</div>
+<div class="border-l border-surface/20 pl-8 py-4">
+<span class="font-label text-[10px] font-bold uppercase tracking-widest text-secondary-fixed-dim block mb-4">Message Drafting</span>
+<p class="text-sm leading-relaxed">Draft emails that sound like your organization, using your past voice, tone, and specific mission-critical terminology.</p>
+</div>
+<div class="border-l border-surface/20 pl-8 py-4">
+<span class="font-label text-[10px] font-bold uppercase tracking-widest text-secondary-fixed-dim block mb-4">Program Search</span>
+<p class="text-sm leading-relaxed">Query your entire history: "What were the three biggest challenges we faced in the 2019 Clean Water launch?"</p>
+</div>
+<div class="border-l border-surface/20 pl-8 py-4">
+<span class="font-label text-[10px] font-bold uppercase tracking-widest text-secondary-fixed-dim block mb-4">Policy Check</span>
+<p class="text-sm leading-relaxed">Ensure new content aligns with organizational policies and donor restrictions instantly as you type.</p>
+</div>
+</div>
+</section>
+<!-- Use Cases -->
+<section class="py-32 px-8 bg-surface">
+<div class="max-w-[1440px] mx-auto">
+<h2 class="text-4xl font-headline mb-16 text-center">Built for every operational layer.</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+<div class="bg-surface-container-low p-8 rounded-lg hover:bg-surface-container-high transition-all border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary mb-6" data-icon="payments">payments</span>
+<h4 class="font-bold text-sm uppercase tracking-tight mb-3">Fundraising</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Transform cold data into warm opportunities.</p>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg hover:bg-surface-container-high transition-all border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary mb-6" data-icon="psychology">psychology</span>
+<h4 class="font-bold text-sm uppercase tracking-tight mb-3">Training</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Scale institutional wisdom to new team members.</p>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg hover:bg-surface-container-high transition-all border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary mb-6" data-icon="forum">forum</span>
+<h4 class="font-bold text-sm uppercase tracking-tight mb-3">Communication</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Maintain a coherent voice across all channels.</p>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg hover:bg-surface-container-high transition-all border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary mb-6" data-icon="auto_awesome">auto_awesome</span>
+<h4 class="font-bold text-sm uppercase tracking-tight mb-3">AI Enablement</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Future-proof your data for the machine age.</p>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg hover:bg-surface-container-high transition-all border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary mb-6" data-icon="account_tree">account_tree</span>
+<h4 class="font-bold text-sm uppercase tracking-tight mb-3">Board Alignment</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Clear, structured reporting for high-level governance.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-40 px-8 bg-primary relative overflow-hidden text-center">
+<div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 40px 40px;"></div>
+<div class="relative z-10 max-w-3xl mx-auto">
+<h2 class="text-5xl md:text-6xl font-headline text-on-primary mb-8">Build a mission system that actually compounds.</h2>
+<p class="text-xl text-on-primary/70 mb-12">Move away from fragmented software. Move toward a unified architecture for change.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-surface text-primary px-10 py-4 rounded-lg font-bold text-lg hover:scale-105 transition-transform">Request an Audit</button>
+<button class="border border-surface/30 text-surface px-10 py-4 rounded-lg font-bold text-lg hover:bg-surface/10 transition-all">Download Thesis PDF</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-20 bg-[#f5f3ee] dark:bg-[#1b1c19] text-[#23422a] dark:text-[#fbf9f4] font-['Manrope'] text-sm leading-relaxed">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-24 border-t border-[#e4e2dd]/20">
+<div class="space-y-6">
+<div class="text-xl font-bold font-['Newsreader'] text-[#23422a] dark:text-[#fbf9f4]">Movemental</div>
+<p class="text-on-surface-variant/70 max-w-xs">
+                    Building the digital infrastructure for long-term organizational wisdom and mission-driven intelligence.
+                </p>
+</div>
+<div>
+<h5 class="font-bold uppercase tracking-widest text-[0.7rem] mb-6">Foundation</h5>
+<ul class="space-y-4">
+<li><a class="text-[#1b1c19]/70 dark:text-[#fbf9f4]/70 hover:text-[#23422a] dark:hover:text-white transition-all underline-offset-4 hover:underline" href="#">Mission</a></li>
+<li><a class="text-[#1b1c19]/70 dark:text-[#fbf9f4]/70 hover:text-[#23422a] dark:hover:text-white transition-all underline-offset-4 hover:underline" href="#">Impact Report</a></li>
+<li><a class="text-[#1b1c19]/70 dark:text-[#fbf9f4]/70 hover:text-[#23422a] dark:hover:text-white transition-all underline-offset-4 hover:underline" href="#">Infrastructure</a></li>
+<li><a class="text-[#1b1c19]/70 dark:text-[#fbf9f4]/70 hover:text-[#23422a] dark:hover:text-white transition-all underline-offset-4 hover:underline" href="#">Annual Report</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold uppercase tracking-widest text-[0.7rem] mb-6">Legal &amp; Policy</h5>
+<ul class="space-y-4">
+<li><a class="text-[#1b1c19]/70 dark:text-[#fbf9f4]/70 hover:text-[#23422a] dark:hover:text-white transition-all underline-offset-4 hover:underline" href="#">Privacy Policy</a></li>
+<li><a class="text-[#1b1c19]/70 dark:text-[#fbf9f4]/70 hover:text-[#23422a] dark:hover:text-white transition-all underline-offset-4 hover:underline" href="#">Terms of Service</a></li>
+<li><a class="text-[#1b1c19]/70 dark:text-[#fbf9f4]/70 hover:text-[#23422a] dark:hover:text-white transition-all underline-offset-4 hover:underline" href="#">Ethics</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold uppercase tracking-widest text-[0.7rem] mb-6">Contact</h5>
+<ul class="space-y-4">
+<li><a class="text-[#1b1c19]/70 dark:text-[#fbf9f4]/70 hover:text-[#23422a] dark:hover:text-white transition-all underline-offset-4 hover:underline" href="#">Contact Us</a></li>
+<li><a class="text-[#1b1c19]/70 dark:text-[#fbf9f4]/70 hover:text-[#23422a] dark:hover:text-white transition-all underline-offset-4 hover:underline" href="#">Support</a></li>
+<li><a class="text-[#1b1c19]/70 dark:text-[#fbf9f4]/70 hover:text-[#23422a] dark:hover:text-white transition-all underline-offset-4 hover:underline" href="#">Media Kit</a></li>
+</ul>
+</div>
+</div>
+<div class="px-12 py-8 border-t border-[#e4e2dd]/20 flex flex-col md:flex-row justify-between items-center gap-4">
+<span class="text-xs text-on-surface-variant/50">© 2024 Movemental Archive. All rights reserved. Built for longevity.</span>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-lg opacity-40 hover:opacity-100 cursor-pointer" data-icon="public">public</span>
+<span class="material-symbols-outlined text-lg opacity-40 hover:opacity-100 cursor-pointer" data-icon="shield">shield</span>
+</div>
+</div>
+</footer>
+</body></html>

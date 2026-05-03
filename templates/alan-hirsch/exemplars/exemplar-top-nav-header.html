@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Top nav &amp; header patterns — Movemental (draft HTML)</title>
+    <meta
+      name="description"
+      content="Three header approaches for static templates: glass fixed bar (SiteNav parity), sticky template shell, dual-row docs chrome with optional mega panel."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../docs/html/site-templates/site-theme.css" />
+    <style>
+      .pattern-page {
+        padding-bottom: 96px;
+      }
+      .pattern-intro {
+        padding: 48px 24px 32px;
+        background: var(--section);
+        border-bottom: 1px solid var(--border);
+      }
+      .pattern-intro .container {
+        max-width: var(--container-max);
+        margin: 0 auto;
+      }
+      .pattern-intro h1 {
+        margin: 0 0 12px;
+        font-size: clamp(1.6rem, 3vw, 2.1rem);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--foreground);
+      }
+      .pattern-intro p {
+        margin: 0;
+        max-width: 52ch;
+        color: var(--muted-foreground);
+        line-height: 1.6;
+      }
+      .pattern-block {
+        padding: 40px 24px 0;
+        max-width: var(--container-max);
+        margin: 0 auto;
+      }
+      .pattern-block h2 {
+        margin: 0 0 8px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--muted-foreground);
+      }
+      .pattern-block > p {
+        margin: 0 0 20px;
+        max-width: 60ch;
+        font-size: 0.92rem;
+        color: var(--muted-foreground);
+        line-height: 1.55;
+      }
+      .demo-frame {
+        border-radius: calc(var(--radius) * 1.5);
+        overflow: hidden;
+        background: var(--card);
+        box-shadow: var(--shadow-ambient);
+        border: 1px solid var(--border);
+      }
+      .demo-frame__label {
+        margin: 0;
+        padding: 10px 16px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted-foreground);
+        background: var(--section);
+        border-bottom: 1px solid var(--border);
+      }
+      .demo-viewport {
+        position: relative;
+        min-height: 200px;
+        background: var(--background);
+      }
+
+      /* —— A: Glass fixed (parity with src/components/nav/site-nav.tsx) —— */
+      .nav-glass-fixed {
+        position: relative;
+        z-index: 5;
+      }
+      .nav-glass-fixed__bar {
+        position: sticky;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        min-height: 64px;
+        padding: 0 20px;
+        background: color-mix(in srgb, var(--card) 78%, transparent);
+        backdrop-filter: blur(18px);
+      }
+      @supports (backdrop-filter: blur(1px)) {
+        .nav-glass-fixed__bar {
+          background: color-mix(in srgb, var(--card) 70%, transparent);
+        }
+      }
+      .nav-glass-fixed__brand {
+        font-weight: 600;
+        font-size: 1rem;
+        letter-spacing: -0.02em;
+        color: var(--foreground);
+        text-decoration: none;
+        border-radius: var(--radius);
+        padding: 6px 4px;
+      }
+      .nav-glass-fixed__brand:focus-visible {
+        outline: 2px solid color-mix(in srgb, var(--primary) 55%, transparent);
+        outline-offset: 2px;
+      }
+      .nav-glass-fixed__links {
+        display: none;
+        flex: 1;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 4px 8px;
+        list-style: none;
+        margin: 0;
+        padding: 0 12px 0 0;
+      }
+      @media (min-width: 768px) {
+        .nav-glass-fixed__links {
+          display: flex;
+        }
+      }
+      .nav-glass-fixed__links a {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--muted-foreground);
+        text-decoration: none;
+        padding: 8px 10px;
+        border-radius: var(--radius);
+      }
+      .nav-glass-fixed__links a:hover {
+        color: var(--foreground);
+        background: color-mix(in srgb, var(--section) 80%, transparent);
+      }
+      .nav-glass-fixed__links a:focus-visible {
+        outline: 2px solid color-mix(in srgb, var(--primary) 45%, transparent);
+        outline-offset: 1px;
+      }
+      .nav-glass-fixed__cta {
+        display: none;
+        font-size: 0.875rem;
+        font-weight: 600;
+        padding: 10px 18px;
+        border-radius: var(--radius);
+        background: linear-gradient(135deg, var(--primary), var(--primary-dim));
+        color: var(--primary-foreground);
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      @media (min-width: 768px) {
+        .nav-glass-fixed__cta {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      .nav-glass-fixed__cta:focus-visible {
+        outline: 2px solid color-mix(in srgb, var(--primary) 55%, transparent);
+        outline-offset: 2px;
+      }
+      .nav-glass-fixed__mobile {
+        display: inline-flex;
+        border: 1px solid var(--border);
+        background: var(--card);
+        border-radius: var(--radius);
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--foreground);
+        cursor: pointer;
+      }
+      @media (min-width: 768px) {
+        .nav-glass-fixed__mobile {
+          display: none;
+        }
+      }
+      .nav-glass-fixed__body {
+        padding: 28px 20px 40px;
+        color: var(--muted-foreground);
+        font-size: 0.92rem;
+        line-height: 1.6;
+      }
+
+      /* —— B: Sticky shell (.site-top) — already in site-theme.css; spacing demo —— */
+      .demo-frame .site-top {
+        position: sticky;
+        top: 0;
+      }
+
+      /* —— C: Dual row + mega (focus-within) —— */
+      .nav-dual {
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-dual__row {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .nav-dual__row--sub {
+        padding-top: 0;
+        padding-bottom: 12px;
+        border-top: none;
+      }
+      .nav-dual__brand {
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--foreground);
+        text-decoration: none;
+      }
+      .nav-dual__clusters {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px 16px;
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+      .nav-dual__global {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 10px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .nav-dual__global a {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--muted-foreground);
+        text-decoration: none;
+        padding: 6px 8px;
+        border-radius: var(--radius);
+      }
+      .nav-dual__global a:hover {
+        color: var(--foreground);
+      }
+      .nav-dual__break {
+        width: 1px;
+        height: 14px;
+        background: var(--border);
+        opacity: 0.9;
+      }
+      .nav-dual__page {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 10px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .nav-dual__page a {
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: var(--muted-foreground);
+        text-decoration: none;
+        padding: 6px 8px;
+        border-radius: var(--radius);
+      }
+      .nav-dual__page a[aria-current="page"] {
+        color: var(--foreground);
+        text-decoration: underline;
+        text-underline-offset: 0.18em;
+      }
+      .nav-dual__cta {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        padding: 8px 14px;
+        border-radius: var(--radius);
+        border: 1px solid color-mix(in srgb, var(--primary) 35%, transparent);
+        color: var(--primary);
+        text-decoration: none;
+        background: transparent;
+      }
+      .nav-dual__mega {
+        position: relative;
+        list-style: none;
+      }
+      .nav-dual__mega-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border: none;
+        background: transparent;
+        font: inherit;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--muted-foreground);
+        padding: 6px 8px;
+        border-radius: var(--radius);
+        cursor: pointer;
+      }
+      .nav-dual__mega-btn:focus-visible {
+        outline: 2px solid color-mix(in srgb, var(--primary) 45%, transparent);
+        outline-offset: 1px;
+      }
+      .nav-dual__mega-panel {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: calc(100% + 8px);
+        min-width: 280px;
+        max-width: min(420px, 92vw);
+        padding: 16px;
+        border-radius: calc(var(--radius) * 1.5);
+        background: var(--card);
+        box-shadow: var(--shadow-ambient);
+        border: 1px solid var(--border);
+        z-index: 20;
+      }
+      .nav-dual__mega:focus-within .nav-dual__mega-panel,
+      .nav-dual__mega:hover .nav-dual__mega-panel {
+        display: block;
+      }
+      .nav-dual__mega-panel h3 {
+        margin: 0 0 8px;
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted-foreground);
+      }
+      .nav-dual__mega-panel ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .nav-dual__mega-panel a {
+        display: block;
+        padding: 8px 10px;
+        border-radius: var(--radius);
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--foreground);
+        text-decoration: none;
+        background: var(--section);
+      }
+      .nav-dual__mega-panel a:hover {
+        color: var(--primary);
+      }
+      .nav-dual__mega-panel span {
+        display: block;
+        font-size: 0.78rem;
+        font-weight: 400;
+        color: var(--muted-foreground);
+        margin-top: 2px;
+      }
+    </style>
+  </head>
+  <body class="pattern-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-top">
+      <div class="site-top__inner">
+        <a href="../../../docs/html/site-templates/index.html" class="site-brand">Movemental <small>Exemplar · headers</small></a>
+        <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-nav-list">Menu</button>
+        <nav class="site-nav" aria-label="Primary sections">
+          <ul id="site-nav-list">
+            <li><a href="../../../docs/html/site-templates/index.html">Templates home</a></li>
+            <li><a href="./exemplar-home-heroes.html">Home heroes</a></li>
+            <li><a href="./exemplar-feature-sections.html">Feature sections</a></li>
+            <li><a href="./exemplar-data-visualization.html">Data viz</a></li>
+            <li><a href="./exemplar-ui-components.html">UI components</a></li>
+            <li><a href="./exemplar-top-nav-header.html" class="is-active">This page</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="pattern-intro">
+        <div class="container">
+          <h1>Top navigation &amp; header patterns</h1>
+          <p>
+            Derived from the shipped <code>SiteNav</code> contract (glass, no hairline under bar) and from the
+            lightweight static shell used across <code>site-templates/</code>. Use A for marketing parity, B for
+            multi-page drafts, C for dense docs or hubs with in-page anchors.
+          </p>
+        </div>
+      </div>
+
+      <section class="pattern-block" aria-labelledby="hdr-a">
+        <h2 id="hdr-a">Pattern A — Glass fixed bar</h2>
+        <p>
+          Mirrors <code>src/components/nav/site-nav.tsx</code>: translucent <code>card</code> surface, strong blur,
+          primary CTA at end, links stay muted until hover. No bottom border on the bar; the first section provides
+          tonal edge.
+        </p>
+        <div class="demo-frame" role="region" aria-label="Glass header demo">
+          <p class="demo-frame__label">Live demo inside frame</p>
+          <div class="demo-viewport">
+            <div class="nav-glass-fixed">
+              <header class="nav-glass-fixed__bar">
+                <a class="nav-glass-fixed__brand" href="../../../docs/html/site-templates/index.html">Movemental</a>
+                <ul class="nav-glass-fixed__links">
+                  <li><a href="../../../docs/html/homepage-concept-modern/index.html">How it works</a></li>
+                  <li><a href="../../../docs/html/services-pricing-concept-modern.html">Services</a></li>
+                  <li><a href="../../../docs/html/homepage-concept-modern/index.html">Evidence</a></li>
+                  <li><a href="../../../docs/html/services-pricing-concept-modern.html">Pricing</a></li>
+                </ul>
+                <a class="nav-glass-fixed__cta" href="../../../docs/html/homepage-concept-modern/index.html">Book a walkthrough</a>
+                <button type="button" class="nav-glass-fixed__mobile" disabled aria-disabled="true">Menu</button>
+              </header>
+              <div class="nav-glass-fixed__body">
+                <strong style="color: var(--foreground)">Page content begins here.</strong>
+                On production, <code>main</code> uses top padding to clear a <em>fixed</em> bar; this frame uses
+                <code>position: sticky</code> so the demo stays self-contained in static HTML.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pattern-block" aria-labelledby="hdr-b">
+        <h2 id="hdr-b">Pattern B — Sticky template shell</h2>
+        <p>
+          Same structure as <code>index.html</code> and sibling templates: <code>.site-top</code> + mobile drawer
+          toggle wired by <code>site-shell.js</code>. Hairline bottom uses <code>--border</code> (allowed for chrome
+          separation in static drafts).
+        </p>
+        <div class="demo-frame" role="region" aria-label="Sticky shell demo">
+          <p class="demo-frame__label">Reuses shared classes from site-theme.css</p>
+          <div class="demo-viewport">
+            <header class="site-top">
+              <div class="site-top__inner">
+                <span class="site-brand">Movemental <small>Embedded demo</small></span>
+                <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="demo-shell-nav">
+                  Menu
+                </button>
+                <nav class="site-nav" aria-label="Demo shell">
+                  <ul id="demo-shell-nav">
+                    <li><a href="../../../docs/html/site-templates/index.html">Home</a></li>
+                    <li><a href="../../../docs/html/homepage-concept-modern/index.html">FAQ</a></li>
+                    <li><a href="../../../docs/html/homepage-concept-modern/index.html">Methodology</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </header>
+            <div class="nav-glass-fixed__body">
+              Scroll this frame: the bar sticks to the top of the viewport <em>inside the card</em>, exercising the
+              same flex and link styles as full pages.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pattern-block" aria-labelledby="hdr-c">
+        <h2 id="hdr-c">Pattern C — Dual row + mega disclosure</h2>
+        <p>
+          For documentation hubs: global IA on the first row, page-level anchors on the second, optional
+          hover/focus-within panel for grouped destinations. Tokens only; panel uses ghost lift shadow.
+        </p>
+        <div class="demo-frame" role="region" aria-label="Dual row header demo">
+          <p class="demo-frame__label">Mega panel opens on hover or keyboard focus within</p>
+          <div class="demo-viewport" style="padding: 0">
+            <header class="nav-dual">
+              <div class="nav-dual__row">
+                <a class="nav-dual__brand" href="../../../docs/html/site-templates/index.html">Movemental</a>
+                <div class="nav-dual__clusters">
+                  <ul class="nav-dual__global">
+                    <li><a href="../index.html">Prototype home</a></li>
+                    <li><a href="../../../docs/html/homepage-concept-modern/index.html">System</a></li>
+                    <li><a href="./exemplar-content-library.html">Library exemplar</a></li>
+                  </ul>
+                  <span class="nav-dual__break" aria-hidden="true"></span>
+                  <ul class="nav-dual__page">
+                    <li><a href="#hdr-c" aria-current="page">Overview</a></li>
+                    <li><a href="./exemplar-article-detail.html">Article detail</a></li>
+                    <li><a href="./exemplar-landing-course.html">Course landing</a></li>
+                    <li class="nav-dual__mega">
+                      <button type="button" class="nav-dual__mega-btn" aria-expanded="false">More templates ▾</button>
+                      <div class="nav-dual__mega-panel" role="region" aria-label="More templates">
+                        <h3>Jump to</h3>
+                        <ul>
+                          <li>
+                            <a href="./exemplar-ebook-reader.html"
+                              >E-book reader <span>Long-form reading chrome</span></a
+                            >
+                          </li>
+                          <li>
+                            <a href="./exemplar-wildcard-doc-workspace.html"
+                              >Doc workspace <span>Split editor shell</span></a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                  <a class="nav-dual__cta" href="../../../docs/html/homepage-concept-modern/index.html">Contact</a>
+                </div>
+              </div>
+            </header>
+            <div class="nav-glass-fixed__body">
+              Second row can be omitted when page TOC is not needed. Keep mega lists short; long lists belong in the
+              page body, not the header.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div>
+          <h3 class="site-footer__heading">Exemplars</h3>
+          <ul class="site-footer__links">
+            <li><a href="./exemplar-ui-components.html">UI components</a></li>
+            <li><a href="./exemplar-home-heroes.html">Home heroes</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="site-footer__meta">Static HTML · <code>templates/alan-hirsch/exemplars/</code></p>
+    </footer>
+    <script src="../../../docs/html/site-templates/site-shell.js" defer></script>
+  </body>
+</html>

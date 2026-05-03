@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Master components — Hero 02 · Midnight</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+    />
+    <link rel="stylesheet" href="./css/core.css" />
+    <link rel="stylesheet" href="./css/nav-demos.css" />
+    <link rel="stylesheet" href="./css/hero-demos.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="nav nav--02 nav--inverse" data-nav>
+      <div class="nav__inner">
+        <a class="brand" href="./index.html">
+          <span class="brand__mark brand__mark--inverse" aria-hidden="true"></span>
+          Movemental
+        </a>
+        <nav class="nav__links" aria-label="Primary">
+          <ul>
+            <li><a href="./index.html">Components</a></li>
+          </ul>
+        </nav>
+        <div class="nav__actions">
+          <a class="btn btn--primary-inverse btn--sm" href="#body">Continue</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="demo-page">
+      <section class="hero-b" aria-labelledby="mid-title">
+        <div class="container">
+          <p class="label label--on-dark reveal">
+            <span class="label__dot" aria-hidden="true"></span>
+            Hero 02 · Midnight band
+          </p>
+          <h1 id="mid-title" class="hero-b__title reveal" style="--d: 0.08s">
+            Infrastructure for <em>dual intelligences</em>
+          </h1>
+          <p class="hero-b__sub reveal" style="--d: 0.14s">
+            One surface for human sensemaking and machine speed — without collapsing either into a
+            slogan.
+          </p>
+          <div class="hero-b__ctas reveal" style="--d: 0.2s">
+            <a class="btn btn--primary-inverse" href="#body">
+              View the model
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="btn btn--ghost-inverse" href="./index.html">All heroes</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="body" class="container" style="padding-block: var(--section-y)">
+        <p class="demo-kicker reveal">
+          Full-viewport midnight hero: Instrument Serif for emphasis only, generous measure on the
+          subhead, inverse pills for actions.
+        </p>
+      </section>
+
+      <footer class="site-foot">
+        <div class="site-foot__inner">
+          <span>Hero 02</span>
+          <a href="./index.html">Index</a>
+        </div>
+      </footer>
+    </main>
+    <script src="./js/core.js" defer></script>
+  </body>
+</html>

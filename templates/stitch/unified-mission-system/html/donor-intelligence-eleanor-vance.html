@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Donor Intelligence | Eleanor Vance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#fbf9f4",
+                        "on-surface-variant": "#424842",
+                        "on-primary-fixed-variant": "#2e4e35",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#7a443a",
+                        "error-container": "#ffdad6",
+                        "on-background": "#1b1c19",
+                        "tertiary-fixed-dim": "#f3b7c1",
+                        "surface-container-low": "#f5f3ee",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e4e2dd",
+                        "surface-tint": "#45664b",
+                        "secondary-fixed-dim": "#feb4a7",
+                        "on-tertiary-container": "#f3b7c1",
+                        "secondary-container": "#feb4a7",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#abd0af",
+                        "primary-fixed": "#c7ecca",
+                        "surface-container": "#f0eee9",
+                        "outline-variant": "#c2c8bf",
+                        "tertiary-container": "#73464f",
+                        "surface-container-high": "#eae8e3",
+                        "primary": "#23422a",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-primary-fixed": "#02210c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#ffdad4",
+                        "surface-dim": "#dbdad5",
+                        "on-tertiary-fixed-variant": "#653a43",
+                        "surface-bright": "#fbf9f4",
+                        "on-surface": "#1b1c19",
+                        "background": "#fbf9f4",
+                        "on-secondary-fixed": "#360e08",
+                        "inverse-surface": "#30312e",
+                        "on-primary-container": "#acd0af",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#abd0af",
+                        "on-tertiary-fixed": "#321019",
+                        "primary-container": "#3a5a40",
+                        "surface-container-highest": "#e4e2dd",
+                        "tertiary-fixed": "#ffd9df",
+                        "outline": "#727971",
+                        "tertiary": "#593038",
+                        "secondary": "#884f45",
+                        "on-secondary-fixed-variant": "#6c382f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, .serif { font-family: 'Newsreader', serif; }
+        .ghost-shadow { box-shadow: 0px 20px 40px rgba(27, 28, 25, 0.06); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-container">
+<!-- TopNavBar -->
+<header class="bg-[#fbf9f4]/80 dark:bg-[#1b1c19]/80 backdrop-blur-md sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-16 py-6 max-w-[1440px] mx-auto">
+<div class="text-xl font-['Newsreader'] tracking-tight text-[#23422a] dark:text-[#fbf9f4] font-medium">Donor Intelligence</div>
+<nav class="hidden md:flex items-center space-x-12">
+<a class="text-[#727971] dark:text-[#e4e2dd] font-['Manrope'] uppercase tracking-widest text-[0.75rem] hover:text-[#884f45] transition-colors duration-300" href="#">Mission</a>
+<a class="text-[#23422a] dark:text-[#fbf9f4] font-bold border-b-2 border-[#884f45] pb-1 hover:text-[#884f45] transition-colors duration-300" href="#">Repository</a>
+<a class="text-[#727971] dark:text-[#e4e2dd] font-['Manrope'] uppercase tracking-widest text-[0.75rem] hover:text-[#884f45] transition-colors duration-300" href="#">Impact</a>
+<a class="text-[#727971] dark:text-[#e4e2dd] font-['Manrope'] uppercase tracking-widest text-[0.75rem] hover:text-[#884f45] transition-colors duration-300" href="#">Network</a>
+</nav>
+<div class="flex items-center space-x-6">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="bg-surface-container-low border-none text-sm pl-10 pr-4 py-2 w-64 focus:ring-1 focus:ring-primary rounded-lg transition-all" placeholder="Explore Archive..." type="text"/>
+</div>
+<span class="material-symbols-outlined text-[#23422a] cursor-pointer scale-98 active:opacity-80 transition-all" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto px-16 pt-16">
+<!-- Hero Header -->
+<section class="mb-24 grid grid-cols-12 gap-8 items-end">
+<div class="col-span-12 md:col-span-7">
+<div class="flex items-center gap-4 mb-4">
+<span class="label-md uppercase tracking-[0.1em] text-secondary font-bold text-xs">Principal Donor Profile</span>
+<div class="h-[1px] w-12 bg-outline-variant"></div>
+</div>
+<h1 class="text-7xl font-medium tracking-tight mb-4 text-on-surface">Eleanor Vance</h1>
+<p class="serif text-2xl italic text-primary mb-8">Strategic Philanthropist</p>
+<p class="body-lg text-on-surface-variant max-w-xl leading-[1.8]">
+                    A 12-year partner of Movemental, Eleanor's stewardship focuses on long-term Urban Policy reform and systemic Education shifts. Her approach is characterized by rigorous inquiry and a commitment to structural equity.
+                </p>
+</div>
+<div class="col-span-12 md:col-span-5 grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-8 rounded-lg border-l-2 border-primary">
+<span class="block text-[0.65rem] uppercase tracking-widest text-outline mb-1">Lifetime Impact</span>
+<span class="text-3xl font-headline font-semibold text-primary">$1.2M</span>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg">
+<span class="block text-[0.65rem] uppercase tracking-widest text-outline mb-1">Network Influence</span>
+<span class="text-3xl font-headline font-semibold text-on-surface">High</span>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg">
+<span class="block text-[0.65rem] uppercase tracking-widest text-outline mb-1">Last Interaction</span>
+<span class="text-3xl font-headline font-semibold text-on-surface">2 Days Ago</span>
+</div>
+<div class="bg-primary text-on-primary p-8 rounded-lg flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-3xl mb-2" data-icon="verified">verified</span>
+<span class="text-xs uppercase tracking-widest">Active Tier 1</span>
+</div>
+</div>
+</section>
+<!-- Main Content -->
+<div class="grid grid-cols-12 gap-16">
+<!-- Left Column: Relationship & Context -->
+<div class="col-span-12 lg:col-span-5 space-y-16">
+<!-- Relationship Map -->
+<div>
+<h2 class="headline-md text-2xl mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="hub">hub</span>
+                        Relationship Map
+                    </h2>
+<div class="relative bg-surface-container-lowest p-8 rounded-lg ghost-shadow border border-surface-variant/20 overflow-hidden min-h-[400px]">
+<img class="absolute inset-0 w-full h-full object-cover opacity-5 mix-blend-multiply" data-alt="minimalist architectural blueprint pattern with clean lines and geometric shapes on a light cream background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1bvfLYKLZ1AbczZ0xMZVRek1ly_UF5nKL213eR3m4_Zw5VYzcT5DWRNpzKgVWr3AtBpkvmFQlg9pTYf3RU1ODlpYie3WA1lV2_rk3ubVS_bIU_nLyfXr2lhO6wuSOP9-U0NAF1ASl3A01apmb8VNWgG3h84V8K7GKqFcov8E79mGNsO0D9xkDnop7RB5zS1zkw-etpoS-Jj8cYrDYiInRd1wDPdBqZb9jnYfqCNZmbUCQtGVbqac_zMxgwnwSVbVP36LoiljoT_c"/>
+<div class="relative z-10 flex flex-col gap-6">
+<!-- Center Node -->
+<div class="flex items-center justify-center">
+<div class="w-20 h-20 bg-primary text-on-primary rounded-full flex items-center justify-center text-xl font-headline italic border-4 border-surface">EV</div>
+</div>
+<!-- Connections -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container p-4 rounded-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="corporate_fare">corporate_fare</span>
+<div>
+<div class="text-xs font-bold text-on-surface uppercase tracking-tight">Vance Foundation</div>
+<div class="text-[0.65rem] text-outline">President &amp; Chair</div>
+</div>
+</div>
+<div class="bg-surface-container p-4 rounded-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="groups">groups</span>
+<div>
+<div class="text-xs font-bold text-on-surface uppercase tracking-tight">Urban Policy Board</div>
+<div class="text-[0.65rem] text-outline">Active Trustee</div>
+</div>
+</div>
+<div class="bg-surface-container p-4 rounded-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="person">person</span>
+<div>
+<div class="text-xs font-bold text-on-surface uppercase tracking-tight">Marcus Thorne</div>
+<div class="text-[0.65rem] text-outline">Co-Donor / High Trust</div>
+</div>
+</div>
+<div class="bg-surface-container p-4 rounded-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="account_balance">account_balance</span>
+<div>
+<div class="text-xs font-bold text-on-surface uppercase tracking-tight">State Archives</div>
+<div class="text-[0.65rem] text-outline">Major Benefactor</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Interests & Values -->
+<div>
+<h2 class="headline-md text-2xl mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="psychology_alt">psychology_alt</span>
+                        Interests &amp; Values
+                    </h2>
+<div class="space-y-4">
+<div class="group cursor-pointer bg-surface p-6 rounded-lg border-b border-surface-variant hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start mb-2">
+<span class="text-lg font-headline font-medium text-on-surface">Structural Equity</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Focus on redesigning municipal budget frameworks for equitable distribution.</p>
+<div class="mt-4 flex gap-2">
+<span class="text-[0.6rem] bg-surface-container-highest px-2 py-1 rounded uppercase tracking-widest text-outline">Policy</span>
+<span class="text-[0.6rem] bg-surface-container-highest px-2 py-1 rounded uppercase tracking-widest text-outline">Infrastructure</span>
+</div>
+</div>
+<div class="group cursor-pointer bg-surface p-6 rounded-lg border-b border-surface-variant hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start mb-2">
+<span class="text-lg font-headline font-medium text-on-surface">Systemic Change</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Prioritizes "upstream" interventions over localized immediate aid.</p>
+<div class="mt-4 flex gap-2">
+<span class="text-[0.6rem] bg-surface-container-highest px-2 py-1 rounded uppercase tracking-widest text-outline">Frameworks</span>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Insights Panel -->
+<div class="bg-primary-container p-8 rounded-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-8xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div class="relative z-10">
+<h3 class="text-on-primary font-headline text-xl mb-6">Ask the System</h3>
+<div class="space-y-4">
+<button class="w-full text-left bg-primary/20 hover:bg-primary/30 text-primary-fixed p-4 rounded-lg text-sm border border-primary/30 transition-all flex justify-between items-center group">
+                                "What is Eleanor's perspective on 2024 Solar?"
+                                <span class="material-symbols-outlined text-xs" data-icon="chat_bubble">chat_bubble</span>
+</button>
+<button class="w-full text-left bg-primary/20 hover:bg-primary/30 text-primary-fixed p-4 rounded-lg text-sm border border-primary/30 transition-all flex justify-between items-center group">
+                                "Draft a briefing for our upcoming coffee."
+                                <span class="material-symbols-outlined text-xs" data-icon="edit_note">edit_note</span>
+</button>
+<div class="pt-4 border-t border-primary/20">
+<input class="w-full bg-transparent border-none border-b border-on-primary/30 text-on-primary placeholder:text-on-primary/50 focus:ring-0 px-0 py-2" placeholder="Type a custom query..." type="text"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Activity & Impact -->
+<div class="col-span-12 lg:col-span-7 space-y-16">
+<!-- Impact Timeline -->
+<div>
+<h2 class="headline-md text-2xl mb-12 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="history_edu">history_edu</span>
+                        Impact Timeline
+                    </h2>
+<div class="relative ml-4 pl-12 border-l border-surface-variant space-y-12">
+<!-- Timeline Item 1 -->
+<div class="relative">
+<div class="absolute -left-[3.25rem] top-0 w-4 h-4 rounded-full bg-primary border-4 border-surface"></div>
+<div class="flex flex-col md:flex-row gap-6">
+<div class="w-full md:w-1/3">
+<span class="block label-md text-secondary font-bold mb-1 uppercase tracking-tighter">OCT 2023</span>
+<h4 class="text-lg font-headline font-medium">Urban Canopy Project</h4>
+<p class="text-xs text-outline font-bold uppercase tracking-widest mt-1">Impact Report Reviewed</p>
+</div>
+<div class="w-full md:w-2/3 bg-surface-container-low p-6 rounded-lg">
+<p class="text-sm text-on-surface-variant leading-[1.6]">Reviewed findings on heat island mitigation in District 4. Eleanor expressed concern regarding maintenance longevity but approved the Phase 2 grant of $450k.</p>
+</div>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative">
+<div class="absolute -left-[3.25rem] top-0 w-4 h-4 rounded-full bg-outline-variant border-4 border-surface"></div>
+<div class="flex flex-col md:flex-row gap-6">
+<div class="w-full md:w-1/3">
+<span class="block label-md text-outline font-bold mb-1 uppercase tracking-tighter">JUNE 2023</span>
+<h4 class="text-lg font-headline font-medium">Literacy Hubs Initiative</h4>
+<p class="text-xs text-outline font-bold uppercase tracking-widest mt-1">Major Contribution</p>
+</div>
+<div class="w-full md:w-2/3 bg-surface-container-low p-6 rounded-lg">
+<p class="text-sm text-on-surface-variant leading-[1.6]">Full funding for five community hubs. Eleanor personally attended the ribbon-cutting for the Central Hub and requested a tracking metric for 'soft literacy skills'.</p>
+</div>
+</div>
+</div>
+<!-- Timeline Item 3 -->
+<div class="relative">
+<div class="absolute -left-[3.25rem] top-0 w-4 h-4 rounded-full bg-outline-variant border-4 border-surface"></div>
+<div class="flex flex-col md:flex-row gap-6">
+<div class="w-full md:w-1/3">
+<span class="block label-md text-outline font-bold mb-1 uppercase tracking-tighter">JAN 2023</span>
+<h4 class="text-lg font-headline font-medium">Strategic Review</h4>
+<p class="text-xs text-outline font-bold uppercase tracking-widest mt-1">Foundational Strategy</p>
+</div>
+<div class="w-full md:w-2/3 bg-surface-container-low p-6 rounded-lg">
+<p class="text-sm text-on-surface-variant leading-[1.6]">Annual alignment meeting. Shifted focus from direct scholarship to system-level teacher training frameworks.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Communication Archive -->
+<div>
+<h2 class="headline-md text-2xl mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="all_inbox">all_inbox</span>
+                        Communication Archive
+                    </h2>
+<div class="bg-surface-container-lowest rounded-lg ghost-shadow overflow-hidden">
+<div class="p-6 border-b border-surface-variant flex justify-between items-center bg-surface-container-low">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Recent Intel</span>
+<button class="text-xs text-primary font-bold hover:underline">View All Archive</button>
+</div>
+<div class="divide-y divide-surface-variant">
+<div class="p-6 hover:bg-surface-container-low transition-colors">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="alternate_email">alternate_email</span>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="font-headline font-medium">Re: Quarterly Impact Digest</span>
+<span class="text-[0.65rem] text-outline">Oct 14</span>
+</div>
+<p class="text-xs text-on-surface-variant italic mb-2">"The metrics on the solar farm are promising, but I'd like to see the long-term stewardship plan..."</p>
+<div class="bg-surface p-2 rounded text-[0.65rem] text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[10px]" data-icon="smart_toy">smart_toy</span>
+                                            AI Summary: Donor is seeking detailed maintenance costs for renewable projects.
+                                        </div>
+</div>
+</div>
+</div>
+<div class="p-6 hover:bg-surface-container-low transition-colors">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="coffee">coffee</span>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="font-headline font-medium">Briefing: Downtown Coffee</span>
+<span class="text-[0.65rem] text-outline">Oct 12</span>
+</div>
+<p class="text-xs text-on-surface-variant italic mb-2">Notes from 45min session with CEO. Discussed the Vance Foundation's 5-year outlook.</p>
+<div class="bg-surface p-2 rounded text-[0.65rem] text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[10px]" data-icon="smart_toy">smart_toy</span>
+                                            AI Summary: Discussion focused on shifting $200k toward urban zoning policy research.
+                                        </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Call to Action Section -->
+<section class="mt-32 p-16 bg-surface-container-high rounded-lg text-center relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 grayscale pointer-events-none">
+<img class="w-full h-full object-cover" data-alt="clean minimal office conference room with glass walls and professional atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGp9vXytaPLktBzOmEycAEsvsgfJ_JG7QNGJJ7WxtLTDwSetQUdUGLx77OYupTomeXnyo01kBUyc9X9XgdXRAxUtc_fAcxPlBORxTXMjGQDsRDaYMXWA_a-aizxCfaLhoBRzMhAjCiB0uTxP6prZnEBVUSkLWD0KJR_1r0GMkBQYiG_DLXUUUpIWCJXYX0fuIm7pKcaiXNE5GD1dqgWnCpx4VoT4mc-cOiZnBJ3cMMYc3-Pts56XYLH-_S6O_46RDHq4-V-w074JI"/>
+</div>
+<div class="relative z-10 max-w-2xl mx-auto">
+<h2 class="text-4xl font-headline font-medium mb-6">Operational Readiness</h2>
+<p class="body-lg text-on-surface-variant mb-10 leading-relaxed">Prepare for the upcoming engagement with Eleanor Vance. Generate a tailored impact dossier or review the strategic alignment briefing.</p>
+<div class="flex flex-col md:flex-row gap-4 justify-center">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+                        Prepare for Meeting
+                    </button>
+<button class="border border-outline-variant text-primary px-8 py-4 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-surface transition-all">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+                        Generate Impact Report
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f5f3ee] dark:bg-[#1b1c19] full-width py-20 mt-32">
+<div class="flex flex-col md:flex-row justify-between items-start px-16 max-w-[1440px] mx-auto">
+<div class="mb-12 md:mb-0">
+<div class="font-['Newsreader'] italic text-lg text-[#23422a] dark:text-[#fbf9f4] mb-4">Movemental. The Living Archive.</div>
+<div class="text-[#727971] uppercase tracking-widest text-[0.75rem]">© 2024 Movemental. The Living Archive.</div>
+</div>
+<div class="flex flex-col md:flex-row gap-12">
+<div class="space-y-4">
+<span class="block text-xs font-bold uppercase tracking-widest text-outline">Legal</span>
+<nav class="flex flex-col gap-2">
+<a class="text-[#727971] uppercase tracking-widest text-[0.75rem] hover:text-[#23422a] transition-colors" href="#">Terms of Service</a>
+<a class="text-[#727971] uppercase tracking-widest text-[0.75rem] hover:text-[#23422a] transition-colors" href="#">Privacy Policy</a>
+</nav>
+</div>
+<div class="space-y-4">
+<span class="block text-xs font-bold uppercase tracking-widest text-outline">Ethos</span>
+<nav class="flex flex-col gap-2">
+<a class="text-[#727971] uppercase tracking-widest text-[0.75rem] hover:text-[#23422a] transition-colors" href="#">Archival Ethics</a>
+</nav>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

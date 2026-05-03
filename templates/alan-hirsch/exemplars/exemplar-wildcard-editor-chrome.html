@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Editor chrome — Movemental (draft HTML)</title>
+    <meta name="description" content="Static rich-text editor toolbar mock — Movemental design tokens." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../docs/html/site-templates/site-theme.css" />
+    <style>
+      .editor-page__intro {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: var(--section-y-sm) 24px 0;
+      }
+
+      .editor-page__intro h1 {
+        margin: 0 0 8px;
+        font-size: clamp(1.75rem, 3vw, 2.25rem);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--foreground);
+      }
+
+      .editor-page__intro p {
+        margin: 0;
+        max-width: 48ch;
+        color: var(--muted-foreground);
+        font-size: 0.95rem;
+      }
+
+      .editor-shell {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 32px 24px 120px;
+      }
+
+      .editor-chrome {
+        border-radius: calc(var(--radius) * 1.5);
+        overflow: hidden;
+        box-shadow: var(--shadow-ambient);
+      }
+
+      .editor-toolbar {
+        background: var(--elevated);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .editor-toolbar__row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 4px 8px;
+        padding: 10px 14px;
+      }
+
+      .editor-toolbar__row + .editor-toolbar__row {
+        border-top: 1px solid var(--border);
+      }
+
+      .editor-toolbar__group {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+      }
+
+      .editor-toolbar__sep {
+        width: 1px;
+        align-self: stretch;
+        min-height: 28px;
+        background: var(--border);
+        margin: 0 6px;
+      }
+
+      .editor-toolbar__btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 36px;
+        padding: 0;
+        border: none;
+        border-radius: var(--radius);
+        background: transparent;
+        color: var(--muted-foreground);
+        cursor: pointer;
+      }
+
+      .editor-toolbar__btn svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .editor-toolbar__btn:hover,
+      .editor-toolbar__btn[aria-pressed="true"] {
+        color: var(--primary);
+        background: color-mix(in srgb, var(--primary) 8%, transparent);
+      }
+
+      .editor-toolbar__btn:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+      }
+
+      .editor-toolbar__btn--wide {
+        width: auto;
+        padding: 0 12px;
+        gap: 8px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted-foreground);
+      }
+
+      .editor-toolbar__btn--primary {
+        margin-left: auto;
+        width: auto;
+        min-height: 40px;
+        padding: 0 18px;
+        border-radius: var(--radius);
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dim) 100%);
+        color: var(--primary-foreground);
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .editor-toolbar__btn--primary:hover {
+        color: var(--primary-foreground);
+        filter: brightness(1.03);
+      }
+
+      .editor-body {
+        background: var(--card);
+        padding: 28px 24px 40px;
+      }
+
+      .editor-body__inner {
+        max-width: var(--prose-max);
+        margin: 0 auto;
+      }
+
+      .editor-body__inner h2 {
+        margin: 0 0 16px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--foreground);
+      }
+
+      .editor-body__inner p {
+        margin: 0 0 14px;
+        color: var(--foreground);
+      }
+
+      .editor-body__inner blockquote {
+        margin: 20px 0;
+        padding: 16px 20px;
+        border-radius: var(--radius);
+        background: var(--section);
+        border-left: 3px solid var(--primary);
+        color: var(--muted-foreground);
+        font-style: italic;
+      }
+
+      .editor-body__inner ul {
+        margin: 0 0 14px;
+        padding-left: 1.25rem;
+        color: var(--foreground);
+      }
+
+      .editor-sticky-bar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 90;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 12px 24px;
+        background: color-mix(in srgb, var(--card) 92%, transparent);
+        backdrop-filter: blur(12px);
+        border-top: 1px solid var(--border);
+        max-width: 100%;
+      }
+
+      .editor-sticky-bar__inner {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .editor-sticky-bar__status {
+        font-size: 0.85rem;
+        color: var(--muted-foreground);
+      }
+
+      .editor-sticky-bar__save {
+        border: none;
+        border-radius: var(--radius);
+        padding: 10px 22px;
+        font-family: var(--font-sans);
+        font-size: 0.88rem;
+        font-weight: 600;
+        cursor: pointer;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dim) 100%);
+        color: var(--primary-foreground);
+      }
+
+      .editor-sticky-bar__save:hover {
+        filter: brightness(1.03);
+      }
+
+      .editor-sticky-bar__save:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-top">
+      <div class="site-top__inner">
+        <a href="../../../docs/html/site-templates/index.html" class="site-brand">Movemental <small>Draft HTML · not production</small></a>
+        <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-nav-list">Menu</button>
+        <nav class="site-nav" aria-label="Primary sections">
+          <ul id="site-nav-list">
+            <li><a href="../../../docs/html/site-templates/index.html">Home</a></li>
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">How it works</a></li>
+            <li><a href="../../../docs/html/audience-concept-modern/movement-leaders.html">Movement leaders</a></li>
+            <li><a href="../../../docs/html/audience-concept-modern/churches.html">Churches &amp; nonprofits</a></li>
+            <li><a href="../../../docs/html/team-concept-modern/index.html">Proof &amp; about</a></li>
+            <li><a href="../../../docs/html/services-pricing-concept-modern.html">Pricing &amp; FAQ</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="editor-page__intro">
+        <h1>Editor (preview)</h1>
+        <p>Frozen toolbar and body mock for a studio-style surface. Controls are non-functional; layout demonstrates token use for dense chrome.</p>
+      </div>
+
+      <section class="band-section" aria-label="Editor mock">
+        <div class="editor-shell">
+          <div class="editor-chrome">
+            <div class="editor-toolbar" role="toolbar" aria-label="Formatting">
+              <div class="editor-toolbar__row">
+                <div class="editor-toolbar__group" role="group" aria-label="Text style">
+                  <button type="button" class="editor-toolbar__btn" aria-label="Bold" title="Bold">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                      <path d="M6 4h8a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z"></path>
+                      <path d="M6 12h9a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z"></path>
+                    </svg>
+                  </button>
+                  <button type="button" class="editor-toolbar__btn" aria-label="Italic" title="Italic">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                      <line x1="19" y1="4" x2="10" y2="4"></line>
+                      <line x1="14" y1="20" x2="5" y2="20"></line>
+                      <line x1="15" y1="4" x2="9" y2="20"></line>
+                    </svg>
+                  </button>
+                  <button type="button" class="editor-toolbar__btn" aria-label="Underline" title="Underline">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                      <path d="M6 4v6a6 6 0 0 0 12 0V4"></path>
+                      <line x1="4" y1="20" x2="20" y2="20"></line>
+                    </svg>
+                  </button>
+                </div>
+                <span class="editor-toolbar__sep" aria-hidden="true"></span>
+                <div class="editor-toolbar__group" role="group" aria-label="Lists">
+                  <button type="button" class="editor-toolbar__btn" aria-label="Bulleted list" title="Bulleted list">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                      <line x1="8" y1="6" x2="21" y2="6"></line>
+                      <line x1="8" y1="12" x2="21" y2="12"></line>
+                      <line x1="8" y1="18" x2="21" y2="18"></line>
+                      <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                      <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                      <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                    </svg>
+                  </button>
+                  <button type="button" class="editor-toolbar__btn" aria-label="Numbered list" title="Numbered list">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                      <line x1="10" y1="6" x2="21" y2="6"></line>
+                      <line x1="10" y1="12" x2="21" y2="12"></line>
+                      <line x1="10" y1="18" x2="21" y2="18"></line>
+                      <path d="M4 6h1v4"></path>
+                      <path d="M4 10h2"></path>
+                      <path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"></path>
+                    </svg>
+                  </button>
+                </div>
+                <span class="editor-toolbar__sep" aria-hidden="true"></span>
+                <div class="editor-toolbar__group" role="group" aria-label="Insert">
+                  <button type="button" class="editor-toolbar__btn" aria-label="Insert link" title="Insert link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                    </svg>
+                  </button>
+                  <button type="button" class="editor-toolbar__btn" aria-label="Insert image" title="Insert image">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                      <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                      <polyline points="21 15 16 10 5 21"></polyline>
+                    </svg>
+                  </button>
+                  <button type="button" class="editor-toolbar__btn" aria-label="More options" title="More options">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="1"></circle>
+                      <circle cx="19" cy="12" r="1"></circle>
+                      <circle cx="5" cy="12" r="1"></circle>
+                    </svg>
+                  </button>
+                </div>
+                <button type="button" class="editor-toolbar__btn editor-toolbar__btn--primary" aria-label="Publish">Publish</button>
+              </div>
+              <div class="editor-toolbar__row">
+                <button type="button" class="editor-toolbar__btn editor-toolbar__btn--wide" aria-label="Insert block">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                    <line x1="12" y1="8" x2="12" y2="16"></line>
+                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                  </svg>
+                  Insert
+                </button>
+                <button type="button" class="editor-toolbar__btn editor-toolbar__btn--wide" aria-label="Open slash command menu placeholder">
+                  <span aria-hidden="true">/</span>
+                  Commands…
+                </button>
+              </div>
+            </div>
+
+            <div class="editor-body">
+              <div class="editor-body__inner prose">
+                <h2>Untitled draft</h2>
+                <p>Movemental helps leaders ship courses, articles, and books without losing voice. This paragraph is placeholder body copy inside a card-on-section stack.</p>
+                <p>A second paragraph shows rhythm and spacing in the prose column. Replace with real editor output when wiring to a CMS.</p>
+                <blockquote>
+                  “The primary is a light switch—reserve it for actions that move someone forward.”
+                </blockquote>
+                <p>Before you publish:</p>
+                <ul>
+                  <li>Check headings for hierarchy.</li>
+                  <li>Confirm links open in sensible targets.</li>
+                  <li>Scan for tone drift against your style guide.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="editor-sticky-bar" role="region" aria-label="Save status">
+      <div class="editor-sticky-bar__inner">
+        <p class="editor-sticky-bar__status">Saved · Draft</p>
+        <button type="button" class="editor-sticky-bar__save" aria-label="Save draft">Save</button>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div>
+          <h3 class="site-footer__heading">Product</h3>
+          <ul class="site-footer__links">
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">How it works</a></li>
+            <li><a href="../../../docs/html/services-pricing-concept-modern.html">Services</a></li>
+            <li><a href="../../../docs/html/services-pricing-concept-modern.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="site-footer__heading">Trust</h3>
+          <ul class="site-footer__links">
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">Evidence</a></li>
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">Methodology</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="site-footer__heading">Legal</h3>
+          <ul class="site-footer__links">
+            <li><a href="https://movemental.com/terms">Terms</a></li>
+            <li><a href="https://movemental.com/privacy">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="site-footer__meta">Movemental draft HTML · <code>site-theme.css</code> tokens</p>
+    </footer>
+
+    <script>
+      document.querySelector('.site-nav__toggle')?.addEventListener('click', function () {
+        const nav = this.closest('header').querySelector('.site-nav');
+        const open = nav.classList.toggle('is-open');
+        this.setAttribute('aria-expanded', open);
+      });
+    </script>
+  </body>
+</html>

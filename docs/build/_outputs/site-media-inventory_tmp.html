@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>site-media-inventory.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="movemental-site--media--visualization-inventory">Movemental site — media &amp; visualization inventory</h1>
+<p><strong>Generated:</strong> 2026-04-13<br>
+<strong>Method:</strong> Executed <a href="../prompts/site-pages-media-visualization-inventory.md">docs/build/prompts/site-pages-media-visualization-inventory.md</a> against <code>src/app/(site)/**</code> and <code>src/components/sections/home-*.tsx</code>.<br>
+<strong>Design alignment:</strong> <a href="../../design/DESIGN.md">docs/design/DESIGN.md</a> (The Digital Curator — tonal stacking, restrained primary, semantic tokens).</p>
+<p><strong>Conventions:</strong> Placeholder raster URLs (<code>lh3.googleusercontent.com/aida-public/...</code>) are listed as <strong>first-party replacements required</strong>; subject taken from existing <code>alt</code> or section role. <strong>Icon</strong> = Lucide (or equivalent) unless noted.</p>
+<hr>
+<h2 id="production-playbooks-designmd%E2%80%93aligned">Production playbooks (DESIGN.md–aligned)</h2>
+<p>Use these sections to route work: <strong>generative raster</strong> (editorial stills only), <strong>data/schematic JS</strong>, or <strong>code-only</strong> implementation. Brand anchors for any generative brief: <strong>Inter-class grotesk</strong> mood in scene styling (no type overlay unless explicitly briefed), palette discipline <strong>#101820</strong> (midnight), <strong>#f7f9fb / #ffffff</strong> (air), ink <strong>#2a3439</strong>, muted <strong>#566166</strong>, accent <strong>#0053db</strong> used sparingly (props, edge light, single garment detail—not full fields of blue). Style: <em>The Digital Curator</em>—high-end editorial, soft natural light, shallow depth, <strong>tonal stacking</strong> feeling in sets (warm gray environments, not neon SaaS). <strong>No</strong> pasted drop shadows in prompts; <strong>no</strong> pure black; <strong>no</strong> busy collage UI chrome unless the slot is explicitly a <strong>product screenshot</strong> (those stay first-party).</p>
+<h3 id="1-nano-banana-2--midjourney--editorial--atmosphere-rasters">1. Nano Banana 2 / Midjourney — editorial &amp; atmosphere rasters</h3>
+<p>Use generative image models <strong>only</strong> where the inventory calls for <strong>photography, texture, or editorial stills</strong>—not for product UI truth, logos, or legally sensitive captures.</p>
+<p><strong>Global negative / guardrails (append to each prompt):</strong> “No readable UI, no fake logos, no watermark, no lens-flare cliché, no stock ‘handshake in lobby’ vibe; photoreal or contemporary editorial; color grade harmonized to deep blue-gray shadows and warm highlights; subtle grain OK.”</p>
+<table>
+<thead>
+<tr>
+<th>Route / slot</th>
+<th>Aspect</th>
+<th>Subject</th>
+<th>Style notes</th>
+<th>Example prompt (copy-ready)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/</code> HomeAudiences card 1</td>
+<td><strong>16:10</strong></td>
+<td>Movement leader addressing a small diverse group in a modern civic or learning space</td>
+<td>Grayscale-friendly base exposure, strong silhouette, <strong>single restrained blue accent</strong> (chair edge or book spine)</td>
+<td>“Editorial photograph, movement leader facilitating discussion with attentive adults, contemporary architecture, soft side light, muted palette with deep blue-gray shadows #101820 and warm off-white walls #f7f9fb, subtle accent #0053db on one object only, 16:10, photoreal, calm authority, no logos”</td>
+</tr>
+<tr>
+<td><code>/</code> HomeAudiences card 2</td>
+<td><strong>16:10</strong></td>
+<td>Sacred-space interior as environment (empty or lightly occupied)</td>
+<td>Reverent, quiet, architectural</td>
+<td>“Editorial interior, modern church nave or chapel with honest materials and daylight, restrained color, blue-gray shadow tones, 16:10, photoreal, contemplative, no crosses or denominational marks if ambiguous—prefer abstract architecture”</td>
+</tr>
+<tr>
+<td><code>/</code> HomeAudiences card 3</td>
+<td><strong>16:10</strong></td>
+<td>Nonprofit team huddle / mission-driven workspace</td>
+<td>Warm, human, documentary</td>
+<td>“Documentary editorial, diverse nonprofit team collaborating around a table with laptops closed, human faces natural, environment #f0f4f7 feel, ink-like shadows #2a3439, 16:10, photoreal, premium nonprofit annual-report aesthetic”</td>
+</tr>
+<tr>
+<td><code>/</code> HomeAudiences card 4</td>
+<td><strong>16:10</strong></td>
+<td>Institutional partnership / civic table</td>
+<td>Institutional trust without cliché stock</td>
+<td>“Editorial photograph, small roundtable with civic or institutional leaders listening deeply, neutral modern room, restrained palette, one blue #0053db accent in clothing or book, 16:10, photoreal, dignified”</td>
+</tr>
+<tr>
+<td><code>/</code> optional future HomeHero still</td>
+<td><strong>21:9</strong> or <strong>2:1</strong></td>
+<td>Abstract documentary still—texture, fabric, paper, architecture macro</td>
+<td><strong>Midnight-safe</strong>: mostly dark with lift in highlights</td>
+<td>“Cinematic wide still, abstract close environment—linen, paper fibers, brushed metal—moonlit cool highlights on #101820 field, specular edge light hinting #0053db, ultra-wide 21:9, no text, moody editorial”</td>
+</tr>
+<tr>
+<td><code>/about</code> origin portrait</td>
+<td><strong>~3:4</strong> (match layout)</td>
+<td>Founder / principal portrait or <strong>environmental portrait</strong></td>
+<td>Editorial magazine</td>
+<td>“Environmental portrait, thoughtful leader in minimal studio with single plant or shelf, soft window light, wardrobe neutral with one ink or navy tone, background #f7f9fb family, 3:4, photoreal, intimate not heroic”</td>
+</tr>
+<tr>
+<td><code>/about</code> “what became clear” architecture</td>
+<td><strong>per block</strong></td>
+<td>Built artifact: studio shelf, books, model, wall of frames—<strong>tangible proof</strong></td>
+<td>Intentional <strong>grayscale</strong> base for code treatment</td>
+<td>“Editorial still life, curated wall of framed essays and books suggesting publishing craft, soft shadows, grayscale-ready contrast, cool undertone, photoreal, no legible copyrighted cover art—blur spines”</td>
+</tr>
+<tr>
+<td><code>/case-studies</code> hero</td>
+<td><strong>~16:9</strong></td>
+<td>Outcomes atmosphere—team reviewing printed report or wall of sticky synthesis</td>
+<td>Proof without fake metrics</td>
+<td>“Editorial photograph, strategy session aftermath—organized sticky notes on glass wall shallow DOF, faces optional blurred, palette aligned to #f0f4f7 and #2a3439, restrained blue accent, 16:9, photoreal”</td>
+</tr>
+<tr>
+<td><code>/case-studies</code> narrative inline</td>
+<td><strong>4:3</strong>–<strong>3:2</strong></td>
+<td>Workshop / facilitation moment</td>
+<td>Warm documentary</td>
+<td>“Documentary editorial, facilitator at whiteboard edge frame, participants in soft bokeh, honest light, muted palette, photoreal”</td>
+</tr>
+<tr>
+<td><code>/case-studies</code> closing wide</td>
+<td><strong>16:9</strong></td>
+<td>System / operations calm—server room <strong>avoided</strong>; prefer <strong>organized desk + notebook</strong></td>
+<td>Modern editorial</td>
+<td>“Wide editorial photograph, calm desk with notebook and closed laptop suggesting depth of work, shadow #101820 bias in background corners, 16:9, photoreal, premium consulting report cover”</td>
+</tr>
+<tr>
+<td><code>/contact</code> hero</td>
+<td><strong>3:4</strong></td>
+<td>Warm “conversation” portrait</td>
+<td>Grayscale-friendly + <strong>gentle</strong></td>
+<td>“Editorial portrait, same subject as site tone—approachable expert, slight smile, soft window light, neutral wardrobe, background minimal, 3:4, photoreal, grayscale conversion friendly”</td>
+</tr>
+<tr>
+<td><code>/evidence</code> hero decorative</td>
+<td><strong>16:9</strong> full-bleed feel</td>
+<td><strong>Abstract texture</strong> only</td>
+<td>Low contrast for <code>opacity-20</code> under type</td>
+<td>“Full-bleed abstract photographic texture, paper grain and faint diagonal light beams, very low contrast, colors restricted to #101820 with subtle #566166 lift, 16:9, no recognizable objects, seamless tile feel”</td>
+</tr>
+<tr>
+<td><code>/evidence</code> value proposition figure</td>
+<td><strong>4:3</strong></td>
+<td>Bright minimal gallery / atrium</td>
+<td>Matches alt “Bright minimal office gallery space”</td>
+<td>“Architectural interior, bright atrium with white plaster and warm wood bench, one plant, soft daylight, 4:3, photoreal, gallery calm, palette #ffffff / #f7f9fb / ink shadows”</td>
+</tr>
+<tr>
+<td><code>/faq</code> aside</td>
+<td><strong>4:5</strong> or <strong>3:4</strong></td>
+<td>Friendly editorial portrait or seated conversation</td>
+<td>Approachable</td>
+<td>“Editorial photograph, person seated listening with open posture, soft light, minimal set, 4:5, photoreal, trustworthy FAQ companion image”</td>
+</tr>
+<tr>
+<td><code>/methodology</code> hero</td>
+<td><strong>~3:4</strong></td>
+<td>Human-centered methodology—interview or synthesis</td>
+<td>“Methodology is human”</td>
+<td>“Editorial photograph, researcher typing notes after conversation, coffee cup, human warmth, shallow DOF, palette cool-warm balance, photoreal”</td>
+</tr>
+<tr>
+<td><code>/methodology</code> bento large</td>
+<td><strong>16:10</strong></td>
+<td>Structured workspace / systems wall</td>
+<td>Show <strong>structure</strong> not fake UI</td>
+<td>“Overhead editorial photograph, organized desk with index cards in grid suggesting system design, no readable text, muted palette, 16:10, photoreal”</td>
+</tr>
+<tr>
+<td><code>/services</code> (three figures)</td>
+<td><strong>mixed</strong></td>
+<td>Continuum: <strong>listening → building → proof</strong></td>
+<td>Cohesive series</td>
+<td>“Triptych brief (generate three related images): (A) leader listening in circle 3:2, (B) hands arranging modular blocks on felt board 4:3, (C) calm handshake-free team walking modern corridor 16:9; shared color grade, #0053db accents rare, photoreal editorial”</td>
+</tr>
+<tr>
+<td><code>/services/organizational-systems</code> ×3</td>
+<td><strong>16:9 / 4:3 / 3:2</strong></td>
+<td>Org scale: <strong>ops floor</strong>, <strong>integration diagram on glass</strong> (no text), <strong>outcome celebration</strong> restrained</td>
+<td>Institutional premium</td>
+<td>“Three related editorial photographs for enterprise transformation story, no fake dashboards, photoreal, restrained blue, cool gray shadows”</td>
+</tr>
+<tr>
+<td><code>/services/system-builds</code> “build environment”</td>
+<td><strong>16:9</strong></td>
+<td><strong>Muted</strong> desk / engineer workspace for video frame</td>
+<td>Will sit under <code>opacity-60</code> + grayscale</td>
+<td>“Cinematic 16:9 workspace still, laptop half-closed, cable management neat, single warm practical lamp, moody but not gloomy, desaturated-ready, photoreal, no readable screens—screens dark”</td>
+</tr>
+<tr>
+<td><code>/services/system-builds/content-fundraising</code> hero</td>
+<td><strong>~16:10</strong></td>
+<td>Bridge metaphor—<strong>library + generosity</strong> without religious cliché</td>
+<td>Editorial still life acceptable</td>
+<td>“Editorial photograph, curated bookshelf beside simple donation envelope motif <strong>without text</strong>, warm light, 16:10, photoreal, nonprofit sophistication”</td>
+</tr>
+<tr>
+<td><code>/system</code> hero decorative</td>
+<td><strong>16:9</strong></td>
+<td>Midnight abstract (match Evidence hero role)</td>
+<td>Same as evidence decorative, darker</td>
+<td>“Seamless abstract texture for dark UI band, noise and soft vignette, colors #101820–#2a3439 only, subtle lift, 16:9”</td>
+</tr>
+<tr>
+<td><code>/system</code> layer 1 image</td>
+<td><strong>4:5</strong></td>
+<td>Architecture / facade as “content &amp; pathways” metaphor</td>
+<td><strong>Grayscale + contrast</strong> for code</td>
+<td>“Vertical editorial photograph, modern building facade rhythm suggesting pathways, 4:5, photoreal, high micro-contrast for grayscale conversion”</td>
+</tr>
+<tr>
+<td><code>/system</code> layer 2 image</td>
+<td><strong>4:3</strong></td>
+<td>Studio collaboration</td>
+<td>Grayscale</td>
+<td>“Editorial 4:3, two people co-editing printed outline on table, faces partial, photoreal, grayscale-ready, calm”</td>
+</tr>
+<tr>
+<td><code>/walkthrough</code> ×3</td>
+<td><strong>16:9 / ~3:2 / 4:3</strong></td>
+<td>Narrative: <strong>atmosphere → contrast → synthesis</strong></td>
+<td>Cohesive cool-warm grade</td>
+<td>“Three-image series for product walkthrough: midnight city bokeh abstract; split desk showing messy vs organized papers (no text); team smiling at single laptop (screen dark), photoreal editorial”</td>
+</tr>
+<tr>
+<td><code>/who-we-serve</code> hero</td>
+<td><strong>16:9</strong></td>
+<td>Churches &amp; institutions—<strong>exterior or community hall</strong> without sectarian symbols if ambiguous</td>
+<td>Inclusive institutional</td>
+<td>“Wide editorial photograph, civic-styled community hall exterior at golden hour, people entering blurred motion, dignified, 16:9, photoreal, palette restrained”</td>
+</tr>
+<tr>
+<td><strong>Default OG / social</strong></td>
+<td><strong>1200×630</strong></td>
+<td>Lockup: <strong>wordmark + short tag</strong> on <code>background</code> or restrained midnight</td>
+<td>Flat graphic <strong>without</strong> Inter from generator—keep background clean for later type overlay in Figma/code</td>
+<td>“Clean marketing background plate only, subtle paper texture, horizontal 1200:630, color fields #f7f9fb and bottom weight toward #101820, <strong>no text</strong>, corner room for logo placement in post”</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Explicitly not generative (capture or design in Figma/code instead):</strong> <code>HomeEvidence</code> product screenshot; any slot requiring <strong>real UI</strong>, <strong>client data</strong>, or <strong>legal accuracy</strong>; icon rows; OG <strong>final</strong> lockup typography (use design tool or <code>next/og</code>).</p>
+<p><strong>Midjourney parameter cheat sheet:</strong> append <code>--ar 16:10</code> (etc.), <code>--style raw</code> for photographic truth; <strong>Nano Banana 2:</strong> specify aspect in words and “photoreal editorial” unless testing illustration.</p>
+<hr>
+<h3 id="2-javascript-first-visualizations-charts-schematics-flows">2. JavaScript-first visualizations (charts, schematics, flows)</h3>
+<p>Use code-driven viz where the story needs <strong>recomputable data</strong>, <strong>interaction</strong>, <strong>accessibility</strong>, or <strong>layout fidelity</strong>—not raster. Prefer <strong>semantic token colors</strong> from CSS variables at render time (map <code>#0053db</code> → <code>hsl(var(--primary))</code> etc. in theme).</p>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Library</th>
+<th>When to choose it</th>
+<th>Agent prompt pattern (copy-ready)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Marketing KPIs, simple trends, before/after bars, pricing tier comparisons</td>
+<td><strong>Recharts</strong> (<code>recharts</code>)</td>
+<td>Default for <code>/case-studies</code>, <code>/evidence</code>, <code>/pricing</code> if you add quant proof; React-friendly</td>
+<td>“Add a <code>ResponsiveContainer</code> + <code>BarChart</code> comparing two periods for Movemental case study metrics; series colors from CSS variables <code>--primary</code>, <code>--muted-foreground</code>, <code>--foreground</code>; gridlines minimal <code>stroke-border</code>; tooltip uses <code>bg-card</code>; respect <code>prefers-reduced-motion</code>; no chartjunk; labels <code>text-muted-foreground</code>.”</td>
+</tr>
+<tr>
+<td>Multi-series time series with annotations (cohorts, rolling averages)</td>
+<td><strong>Recharts</strong> or <strong>Visx</strong> (<code>@visx/xychart</code> + shapes)</td>
+<td>Choose Visx when you need <strong>non-standard</strong> annotations or brush</td>
+<td>“Build a Visx time series for monthly publishing output with a draggable brush synced to URL query; colors from tokens; midnight variant: invert text to <code>inverse-foreground</code>.”</td>
+</tr>
+<tr>
+<td>Custom node–link diagram (ecosystem / “scenius” map, stakeholder graph)</td>
+<td><strong>D3</strong> (<code>d3-force</code>, <code>d3-selection</code>) or <strong>React Flow</strong> (<code>@xyflow/react</code>)</td>
+<td><strong>React Flow</strong> if nodes are interactive draggable; <strong>D3</strong> if static layout export</td>
+<td>“Implement a read-only force-directed graph with &lt;20 nodes, labels <code>text-xs text-muted-foreground</code>, edges <code>stroke-border</code>, primary node highlight <code>fill-primary</code>; <code>aria-label</code> summary table fallback; reduced motion disables simulation ticks.”</td>
+</tr>
+<tr>
+<td>Sankey / multi-stage value flow (methodology, fundraising→content flow)</td>
+<td><strong>D3 Sankey</strong> (<code>d3-sankey</code>) or <strong>Plot</strong> (<code>@observablehq/plot</code>)</td>
+<td>Plot for faster iteration in marketing prototypes; D3 for tight bundle control</td>
+<td>“Sankey showing three stages Content → Formation → Distribution; link color <code>primary</code> at 30% opacity; node cards use <code>bg-card</code>; tooltips explain each stage; width responsive.”</td>
+</tr>
+<tr>
+<td>Sunburst / hierarchy (org capabilities tree)</td>
+<td><strong>D3 partition</strong> or <strong>Observable Plot</strong></td>
+<td>Rare; use if <code>/services/organizational-systems</code> gains a <strong>live</strong> capability map</td>
+<td>“Sunburst of service taxonomy from JSON; inner radius for category; color ramp from <code>--muted</code> to <code>--elevated</code>; focus+legend keyboard accessible.”</td>
+</tr>
+<tr>
+<td>Sparklines embedded in cards</td>
+<td><strong>Recharts <code>LineChart</code> minimal</strong> or custom <strong>SVG</strong></td>
+<td>Sparklines in bento tiles</td>
+<td>“2×24 sparkline in card footer; stroke <code>primary</code>; no axes; <code>aria-hidden</code> with numeric summary in <code>sr-only</code>.”</td>
+</tr>
+<tr>
+<td>Simple flowchart / swimlane <strong>in docs or internal</strong></td>
+<td><strong>Mermaid</strong> (<code>mermaid</code>)</td>
+<td><strong>Not</strong> for public hero art—OK for <code>/methodology</code> appendix MDX or PDF export</td>
+<td>“Mermaid <code>flowchart LR</code> for six-layer design chain L0–L5; monochrome nodes; export SVG for docs.”</td>
+</tr>
+<tr>
+<td>3D / spatial metaphor (only if brand explicitly expands)</td>
+<td><strong>three.js</strong> + <strong>@react-three/fiber</strong></td>
+<td>Avoid unless art-directed; performance cost</td>
+<td>“Defer unless requested: low-poly abstract ‘layers’ sculpture, midnight fog, <strong>no</strong> UI metaphor.”</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Inventory tie-ins (slots that would <em>benefit</em> from JS viz if product adds proof):</strong> case-studies outcome section; evidence “structured system” if metrics exist; methodology flow strip (replace static icon row with scroll-scrubbed step graphic <strong>only</strong> if IA adds data); pricing “why it works” comparative chart <strong>if</strong> numbers are real and sourced; organizational-systems early grid if <code>ScatterChart</code> icon becomes a <strong>real</strong> scatter of anonymized engagements.</p>
+<hr>
+<h3 id="3-react--tailwind--next--code-agent-execution-not-generative-image">3. React / Tailwind / Next — code-agent execution (not generative image)</h3>
+<p>These items must ship as <strong>typed components</strong>, <strong>tokens</strong>, and <strong>real media</strong>—not as Midjourney/NB2 outputs.</p>
+<table>
+<thead>
+<tr>
+<th>Workstream</th>
+<th>Scope</th>
+<th>Agent prompt pattern (copy-ready)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Placeholder purge</strong></td>
+<td>All <code>next/image</code> src pointing at <code>lh3.googleusercontent.com</code> / Stitch</td>
+<td>“Replace every external placeholder <code>Image</code> src in <code>src/app/(site)</code> with <code>public/images/...</code> WebP paths; preserve <code>sizes</code>, <code>priority</code> only on true LCP hero; run <code>pnpm lint</code>.”</td>
+</tr>
+<tr>
+<td><strong>OG + Twitter metadata</strong></td>
+<td><code>src/app/layout.tsx</code> gap</td>
+<td>“Add <code>metadata.openGraph.images</code> and <code>twitter.images</code> default 1200×630 using <code>metadataBase</code>; optional <code>ImageResponse</code> route for dynamic OG later; document alt text policy.”</td>
+</tr>
+<tr>
+<td><strong>HomeEvidence screenshot</strong></td>
+<td>Product-in-use band</td>
+<td>“Capture authenticated UI in staging with anonymized data; export PNG; apply bottom midnight gradient scrim in CSS as already spec’d; <code>alt</code> describes UI function not marketing fluff.”</td>
+</tr>
+<tr>
+<td><strong>Grayscale + hover interactions</strong></td>
+<td>HomeAudiences, contact hero, system-builds video band</td>
+<td>“Verify CSS filters (<code>grayscale</code>, hover color) respect <code>prefers-reduced-motion</code> where transitions exist; ensure focus states on cards still meet contrast.”</td>
+</tr>
+<tr>
+<td><strong>Midnight decorative images</strong></td>
+<td>Evidence, system, walkthrough heroes</td>
+<td>“Confirm <code>alt=&quot;&quot;</code>, <code>aria-hidden</code>, <code>opacity-20</code> pattern; no informational content solely in image.”</td>
+</tr>
+<tr>
+<td><strong>Icon consistency</strong></td>
+<td>Lucide set per appendix</td>
+<td>“Map appendix icon names to a single import barrel or tree-shaken imports; verify stroke weights match nav shell; do not swap to alternate icon packs.”</td>
+</tr>
+<tr>
+<td><strong>Arrow duplication</strong></td>
+<td>FAQ + global note</td>
+<td>“Replace inline <code>ArrowRight</code> link rows with <code>ArrowLink</code> primitive where copy fits; keep one pattern for analytics.”</td>
+</tr>
+<tr>
+<td><strong><code>/manifesto</code> route</strong></td>
+<td>Nav-only today</td>
+<td>“Scaffold <code>manifesto/page.tsx</code> with <code>Section</code> bands; <strong>no</strong> assets until copy approved.”</td>
+</tr>
+<tr>
+<td><strong>Foundation hairline</strong></td>
+<td><code>foundation/page.tsx</code></td>
+<td>“Keep <code>h-px w-8</code> rule divider as CSS per DESIGN.md—do not rasterize.”</td>
+</tr>
+<tr>
+<td><strong>System AI motif</strong></td>
+<td>Layer 3</td>
+<td>“Retain CSS ring/spinner motif; if marketing demands illustration, add <strong>SVG</strong> in code with token strokes—not PNG.”</td>
+</tr>
+<tr>
+<td><strong>System page contrast filters</strong></td>
+<td><code>contrast-125</code> grayscale images</td>
+<td>“Audit CLS when filters toggle; ensure images have explicit <code>width</code>/<code>height</code>.”</td>
+</tr>
+<tr>
+<td><strong>Video loop future</strong></td>
+<td>Home hero optional</td>
+<td>“If adding <code>next/video</code> or background video, ship poster frame as optimized WebP + <code>prefers-reduced-motion</code> static fallback.”</td>
+</tr>
+<tr>
+<td><strong>Footer / nav</strong></td>
+<td>Global chrome</td>
+<td>“Confirm zero raster logos in footer; glass nav uses <code>bg-card/80</code> + <code>backdrop-blur</code> tokens only.”</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="home"><code>/</code> (Home)</h2>
+<p><strong>Source file(s):</strong> <code>src/app/(site)/page.tsx</code>, <code>src/components/sections/home-*.tsx</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Section / component</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>HomeHero</code></td>
+<td>Full-width hero band</td>
+<td>—</td>
+<td><strong>No raster/SVG hero asset today</strong></td>
+<td>Typographic + CTAs only. Optional future: single midnight-safe hero still or slow-motion loop—only if IA explicitly adds it; do not assume.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>HomeAudiences</code></td>
+<td>Card header (×4)</td>
+<td>Image</td>
+<td>Humanize each audience segment</td>
+<td><strong>16:10</strong> (<code>aspect-[16/10]</code>). Replace placeholder URLs; <strong>grayscale → full color on hover</strong> (keep or revise per art direction). Subjects: leader+audience; church interior; nonprofit team; institutional collaboration.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>HomeMechanism</code></td>
+<td>Step card leading (×3)</td>
+<td>Icon</td>
+<td>Encode Capture / Connect / Sustain</td>
+<td><code>ScanLine</code>, <code>Link2</code>, <code>RefreshCw</code> — <code>h-8 w-8</code>, <code>text-muted-foreground</code>.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>HomeBento</code></td>
+<td>Card leading (×6)</td>
+<td>Icon</td>
+<td>“What this enables” vocabulary</td>
+<td><code>GraduationCap</code>, <code>Users</code>, <code>Clock</code>, <code>Wallet</code>, <code>Bot</code> — <code>h-6 w-6</code> in <code>h-14 w-14</code> rounded tile; hover swaps tile to <code>foreground</code>.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>HomeEvidence</code></td>
+<td>Midnight split, right column</td>
+<td>Image</td>
+<td>Proof of real platform</td>
+<td><strong>Screenshot</strong> of product in use; tall crop (<code>lg:h-[600px]</code>), <code>rounded-3xl</code>, bottom <strong>gradient scrim</strong> to midnight. First-party capture + disclosure if UI shows client data.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>HomeEvidence</code></td>
+<td>Proof list (×3)</td>
+<td>Icon</td>
+<td>Reinforce checklist read</td>
+<td><code>CheckCircle2</code> per row on midnight surface.</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>HomePhilosophy</code>, <code>HomeShift</code>, <code>HomeCoreDefinition</code>, <code>HomeSolution</code>, <code>HomeDifferentiation</code>, <code>HomeEconomics</code>, <code>HomeValues</code>, <code>HomeTheology</code>, <code>HomeFinalCta</code></td>
+<td>—</td>
+<td>—</td>
+<td><strong>No <code>Image</code> / page-specific icons in code</strong></td>
+<td>Typography + surfaces only.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="about"><code>/about</code></h2>
+<p><strong>Source file(s):</strong> <code>src/app/(site)/about/page.tsx</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Section / component</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Origin / editorial split</td>
+<td>Portrait column</td>
+<td>Image</td>
+<td>Human anchor for “why we exist”</td>
+<td>Replace Stitch URL; editorial portrait or environment; aspect per layout (see <code>Image</code> width/height in block ~117).</td>
+</tr>
+<tr>
+<td>2</td>
+<td>What became clear / asymmetric</td>
+<td>Architecture / proof photo</td>
+<td>Image</td>
+<td>Tangible “what was built”</td>
+<td>Second <code>Image</code> (~180); <strong>grayscale</strong> treatment in code — confirm intentional for launch.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>What we do / service intro</td>
+<td>Icon row (×4)</td>
+<td>Icon</td>
+<td>Four capability phrases</td>
+<td><code>Layers</code>, <code>Route</code>, <code>GraduationCap</code>, <code>Bot</code> in small cards.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Our approach / “We don’t”</td>
+<td>Inline</td>
+<td>Icon</td>
+<td>Contrast marker</td>
+<td><code>Ban</code> (per layout).</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Where we’re going / CTAs</td>
+<td>Link rows</td>
+<td>Icon</td>
+<td>Direction affordance</td>
+<td><code>ArrowRight</code> inline (×3) — consider consolidating with <code>ArrowLink</code> pattern globally.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="case-studies"><code>/case-studies</code></h2>
+<p><strong>Source file(s):</strong> <code>src/app/(site)/case-studies/page.tsx</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Section / component</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Hero / proof band</td>
+<td>Background or featured</td>
+<td>Image</td>
+<td>Establish “visible results”</td>
+<td>First <code>Image</code> (~62); align with midnight/section treatment in code.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Case narrative</td>
+<td>Inline figure</td>
+<td>Image</td>
+<td>Evidence of work</td>
+<td>Second <code>Image</code> (~209).</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Closing / synthesis</td>
+<td>Wide figure</td>
+<td>Image</td>
+<td>Outcome or system view</td>
+<td>Third <code>Image</code> (~284).</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Various</td>
+<td>List / grid</td>
+<td>Icon</td>
+<td>Status + category vocabulary</td>
+<td><code>Check</code>; tile set <code>Landmark</code>, <code>CreditCard</code>, <code>Database</code>, <code>Brain</code> with labels (Governance / Fundraising / Content / AI).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="contact"><code>/contact</code></h2>
+<p><strong>Source file(s):</strong> <code>src/app/(site)/contact/page.tsx</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Section / component</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Hero</td>
+<td>Right column (hidden below <code>md</code>)</td>
+<td>Image</td>
+<td>Warm, editorial “conversation” tone</td>
+<td><strong>3:4</strong> <code>aspect-[3/4]</code>, <code>rounded-xl</code>, <strong>grayscale + hover scale</strong>; <code>TODO(assets)</code> in code — first-party studio or portrait.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Who this is for</td>
+<td>Audience bento cards</td>
+<td>Icon</td>
+<td>Segment the inquiry</td>
+<td><code>Building2</code>, <code>Network</code>, <code>Church</code> — card-level.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Preparation / after panel</td>
+<td>Bullets / panel chrome</td>
+<td>Icon</td>
+<td>Micro affordances</td>
+<td><code>ArrowRight</code> on primary CTA row; <code>X</code> on dismiss-style row (~243).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="cookies"><code>/cookies</code></h2>
+<p><strong>Source file(s):</strong> <code>src/app/(site)/cookies/page.tsx</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Section / component</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><strong>No media in code</strong></td>
+<td>Legal prose only.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="evidence"><code>/evidence</code></h2>
+<p><strong>Source file(s):</strong> <code>src/app/(site)/evidence/page.tsx</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Section / component</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Hero</td>
+<td>Absolute full-bleed under copy</td>
+<td>Image</td>
+<td>Texture / depth on midnight</td>
+<td><strong>Decorative:</strong> <code>alt=&quot;&quot;</code>, <code>aria-hidden</code>, <code>opacity-20</code>, <code>object-cover</code>. Replace with first-party abstract or documentary still; no informational content in image alone.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Proof grid / “What we proved”</td>
+<td>Icon cards</td>
+<td>Icon</td>
+<td>Category of proof</td>
+<td><code>BookOpen</code>, <code>Radio</code>, <code>Database</code> (mapped in grid data).</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Problem / contrast</td>
+<td>Inline</td>
+<td>Icon</td>
+<td>“Not proven” signal</td>
+<td><code>XCircle</code> (~222).</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Structured system</td>
+<td>List</td>
+<td>Icon</td>
+<td>Positive checklist</td>
+<td><code>CheckCircle2</code> (×3).</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Value proposition</td>
+<td>Left column</td>
+<td>Image</td>
+<td>Editorial relief on light band</td>
+<td><strong>4:3</strong>, <code>rounded-xl</code>, <code>shadow-ambient</code>; alt describes environment (“Bright minimal office gallery space”) — replace URL; ensure alt reflects final art.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="faq"><code>/faq</code></h2>
+<p><strong>Source file(s):</strong> <code>src/app/(site)/faq/page.tsx</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Section / component</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Hero / aside</td>
+<td>Supporting column</td>
+<td>Image</td>
+<td>Humanize FAQ entry</td>
+<td>Single <code>Image</code> (~162); replace placeholder.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Links / accordion CTAs</td>
+<td>Inline</td>
+<td>Icon</td>
+<td><code>ArrowRight</code> next to link copy</td>
+<td>Page-level duplicate of arrow pattern — see Global.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="methodology"><code>/methodology</code></h2>
+<p><strong>Source file(s):</strong> <code>src/app/(site)/methodology/page.tsx</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Section / component</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Hero</td>
+<td>Split / portrait card</td>
+<td>Image</td>
+<td>Anchor “methodology is human”</td>
+<td>First <code>Image</code> (~82).</td>
+</tr>
+<tr>
+<td>2</td>
+<td>System built / bento</td>
+<td>Large panel</td>
+<td>Image</td>
+<td>Show structure / workspace</td>
+<td>Second <code>Image</code> (~290).</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Extraction / flow</td>
+<td>Various</td>
+<td>Icon</td>
+<td>Step labels + emphasis</td>
+<td><code>Search</code>, <code>TrendingUp</code>, <code>Users</code>, <code>Brain</code> in flow strip; <code>Network</code> (large), <code>FileText</code>, <code>TrendingUp</code>, <code>Workflow</code> in lower sections (see file for placement).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="pricing"><code>/pricing</code></h2>
+<p><strong>Source file(s):</strong> <code>src/app/(site)/pricing/page.tsx</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Section / component</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Investment hero</td>
+<td>—</td>
+<td>—</td>
+<td><strong>No <code>Image</code></strong></td>
+<td>Midnight <code>rounded-xl</code> panel — tonal only.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>For Movement Leaders</td>
+<td>List rows</td>
+<td>Icon</td>
+<td>Pricing semantics</td>
+<td><code>Landmark</code>, <code>TrendingUp</code>, <code>Ban</code>.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>For Organizations</td>
+<td>Callout strip</td>
+<td>Icon</td>
+<td>Delivery emphasis</td>
+<td><code>Zap</code> in <code>bg-card</code> strip.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Why it works</td>
+<td>Requirement tiles (×4)</td>
+<td>Icon</td>
+<td>“Requires” grid</td>
+<td><code>Users</code>, <code>Building</code>, <code>Network</code>, <code>Headphones</code>.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>What you’re paying for</td>
+<td>Header + cards</td>
+<td>Icon</td>
+<td>Negation + deliverables</td>
+<td><code>Ban</code> (×2, <code>text-destructive</code>); cards: <code>Puzzle</code>, <code>Book</code>, <code>GraduationCap</code>, <code>Route</code>.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Why different</td>
+<td>Left column</td>
+<td>Icon</td>
+<td>“Most orgs pay for” lines</td>
+<td><code>Info</code> (×2).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="privacy"><code>/privacy</code></h2>
+<p><strong>Source file(s):</strong> <code>src/app/(site)/privacy/page.tsx</code></p>
+<p>| — | — | — | — | <strong>No media in code</strong> | |</p>
+<hr>
+<h2 id="services"><code>/services</code></h2>
+<p><strong>Source file(s):</strong> <code>src/app/(site)/services/page.tsx</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Section / component</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Hero / narrative</td>
+<td>Primary visual</td>
+<td>Image</td>
+<td>Services promise</td>
+<td>First <code>Image</code> (~156).</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Mid-page</td>
+<td>Split / feature</td>
+<td>Image</td>
+<td>Continuation of editorial story</td>
+<td>Second <code>Image</code> (~263).</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Closing / proof</td>
+<td>Supporting</td>
+<td>Image</td>
+<td>Credibility</td>
+<td>Third <code>Image</code> (~334).</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Problem / static reality</td>
+<td>Cards / list</td>
+<td>Icon</td>
+<td>Offering map</td>
+<td>Card icons: <code>Network</code>, <code>Compass</code>, <code>GraduationCap</code>, <code>Brain</code>.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Links</td>
+<td>CTAs</td>
+<td>Icon</td>
+<td><code>ArrowRight</code>, <code>ArrowUpRight</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="servicesorganizational-systems"><code>/services/organizational-systems</code></h2>
+<p><strong>Source file(s):</strong> <code>src/app/(site)/services/organizational-systems/page.tsx</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Section / component</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Hero</td>
+<td>Full-bleed or featured</td>
+<td>Image</td>
+<td>Org-scale systems tone</td>
+<td>First <code>Image</code> (~96).</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Mid narrative</td>
+<td>Figure</td>
+<td>Image</td>
+<td>Operations / integration</td>
+<td>Second <code>Image</code> (~218).</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Lower band</td>
+<td>Figure</td>
+<td>Image</td>
+<td>Outcome / team</td>
+<td>Third <code>Image</code> (~302).</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Early grid</td>
+<td>Capability tiles</td>
+<td>Icon</td>
+<td><code>ArrowUpDown</code>, <code>ScatterChart</code>, <code>Users</code>, <code>Network</code></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Mid sections</td>
+<td>Pairs / callouts</td>
+<td>Icon</td>
+<td><code>FileText</code>, <code>CreditCard</code>; <code>Brain</code> hero icon; <code>Gavel</code>, <code>Compass</code></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Lower bento</td>
+<td>Stack visual</td>
+<td>Icon</td>
+<td><code>SquareStack</code> (×2 in layout).</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Closing</td>
+<td>Callout</td>
+<td>Icon</td>
+<td><code>Construction</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="servicessystem-builds"><code>/services/system-builds</code></h2>
+<p><strong>Source file(s):</strong> <code>src/app/(site)/services/system-builds/page.tsx</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Section / component</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Build cards (×4)</td>
+<td>Per-card feature rows</td>
+<td>Icon</td>
+<td>Map builds to features</td>
+<td><strong>Unique set:</strong> <code>Compass</code>, <code>Workflow</code>, <code>Network</code>, <code>Cpu</code>, <code>Sparkles</code>, <code>LayoutDashboard</code>, <code>ShieldCheck</code>, <code>FileText</code>, <code>BarChart3</code>, <code>TrendingUp</code> (see <code>builds[]</code>).</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Build environment</td>
+<td>Midnight <code>aspect-video</code></td>
+<td>Image</td>
+<td>“Real-time build” metaphor</td>
+<td><strong>16:9</strong> video frame; <code>opacity-60</code> + <strong>grayscale</strong> + overlay quote; replace with first-party workspace/desk still or muted loop.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Value vs clarity</td>
+<td>Section header</td>
+<td>Icon</td>
+<td>Editorial marker</td>
+<td><code>Info</code> <code>h-12 w-12</code> centered.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="servicessystem-buildscontent-fundraising"><code>/services/system-builds/content-fundraising</code></h2>
+<p><strong>Source file(s):</strong> <code>src/app/(site)/services/system-builds/content-fundraising/page.tsx</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Section / component</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Hero / split</td>
+<td>Featured</td>
+<td>Image</td>
+<td>Content + fundraising bridge</td>
+<td>Single <code>Image</code> (~189).</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Problem / contrast</td>
+<td>Columns</td>
+<td>Icon</td>
+<td><code>Blend</code>, <code>EyeOff</code></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Body lists</td>
+<td>Inline</td>
+<td>Icon</td>
+<td><code>Network</code>, <code>Plug</code></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Closing tiles</td>
+<td>Pair</td>
+<td>Icon</td>
+<td><code>Network</code>, <code>BarChart3</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="servicessystem-buildsfoundation"><code>/services/system-builds/foundation</code></h2>
+<p><strong>Source file(s):</strong> <code>src/app/(site)/services/system-builds/foundation/page.tsx</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Section / component</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Governance — current state</td>
+<td>List (×3)</td>
+<td>Icon</td>
+<td>Problem statements</td>
+<td><code>AlertCircle</code>, <code>RefreshCw</code>, <code>AlertTriangle</code>.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Governance — links</td>
+<td>Micro</td>
+<td>Icon</td>
+<td><code>ArrowRight</code> small (~155–164).</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Governance — outcomes</td>
+<td>Checklist</td>
+<td>Icon</td>
+<td><code>Check</code></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ethics / Lab — cards</td>
+<td>Capability (×3)</td>
+<td>Icon</td>
+<td><code>Beaker</code>, <code>Microscope</code>, <code>Users</code></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Eyebrow rules</td>
+<td>Horizontal rule</td>
+<td>—</td>
+<td><strong>CSS hairline</strong> (<code>h-px w-8</code>) — not an exportable asset</td>
+<td>Allowed dense-UI exception per DESIGN.md.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="system"><code>/system</code></h2>
+<p><strong>Source file(s):</strong> <code>src/app/(site)/system/page.tsx</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Section / component</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Hero</td>
+<td>Absolute bg</td>
+<td>Image</td>
+<td>Midnight depth</td>
+<td>Decorative: <code>alt=&quot;&quot;</code>, <code>aria-hidden</code>, <code>opacity-20</code> — replace with first-party abstract texture.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Breakdown — layer 1</td>
+<td>Left <code>aspect-[4/5]</code></td>
+<td>Image</td>
+<td>Content &amp; pathways</td>
+<td><strong>4:5</strong>, <strong>grayscale + contrast-125</strong>; architecture/facade metaphor.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Breakdown — layer 2</td>
+<td>Right <code>aspect-[4/3]</code></td>
+<td>Image</td>
+<td>Formation</td>
+<td><strong>4:3</strong>, <strong>grayscale</strong>; studio/collaboration.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Breakdown — layer 3 (AI)</td>
+<td>Square midnight card</td>
+<td>—</td>
+<td><strong>CSS ring</strong> (<code>border</code> spinner motif)</td>
+<td>Not raster; optional future illustration if marketing wants explicit “AI” mark.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Layer 1 list</td>
+<td>Bullets</td>
+<td>Icon</td>
+<td><code>Compass</code>, <code>Route</code></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Difference</td>
+<td>Two columns</td>
+<td>Icon</td>
+<td><code>Plug</code>, <code>Fingerprint</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="terms"><code>/terms</code></h2>
+<p><strong>Source file(s):</strong> <code>src/app/(site)/terms/page.tsx</code></p>
+<p>| — | — | — | — | <strong>No media in code</strong> | |</p>
+<hr>
+<h2 id="walkthrough"><code>/walkthrough</code></h2>
+<p><strong>Source file(s):</strong> <code>src/app/(site)/walkthrough/page.tsx</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Section / component</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Hero</td>
+<td>Midnight bg</td>
+<td>Image</td>
+<td>Full-bleed atmosphere</td>
+<td>First <code>Image</code> (~66); check <code>alt</code> / scrim in code.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Difference / steps</td>
+<td>Step imagery</td>
+<td>Image</td>
+<td>“Current vs Movemental”</td>
+<td>Second <code>Image</code> (~177).</td>
+</tr>
+<tr>
+<td>3</td>
+<td>What you’re seeing</td>
+<td>Tile / figure</td>
+<td>Image</td>
+<td>Synthesis</td>
+<td>Third <code>Image</code> (~314).</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Difference header</td>
+<td>Label</td>
+<td>Icon</td>
+<td><code>Network</code></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Steps / connector</td>
+<td>Vertical rhythm</td>
+<td>Icon</td>
+<td><code>AlignVerticalSpaceAround</code>, <code>GraduationCap</code> (see layout).</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Tiles / synthesis</td>
+<td>3-tile row</td>
+<td>Icon</td>
+<td><code>ArrowUpRight</code>, <code>Network</code>, <code>Hourglass</code> (per data structure ~448–453).</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Why matters / lists</td>
+<td>Bullets</td>
+<td>Icon</td>
+<td><code>Check</code>, <code>Sparkles</code></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Negative path</td>
+<td>Inline</td>
+<td>Icon</td>
+<td><code>X</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="who-we-serve"><code>/who-we-serve</code></h2>
+<p><strong>Source file(s):</strong> <code>src/app/(site)/who-we-serve/page.tsx</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Section / component</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Hero</td>
+<td>Supporting</td>
+<td>Image</td>
+<td>Churches &amp; institutions tone</td>
+<td>Single hero <code>Image</code> (~87).</td>
+</tr>
+<tr>
+<td>2</td>
+<td>What we build</td>
+<td>Icon tiles (×4)</td>
+<td>Icon</td>
+<td>Outcome phrases</td>
+<td><code>BookOpen</code>, <code>Route</code>, <code>GraduationCap</code>, <code>RefreshCw</code>.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Lower comparison</td>
+<td>Rows</td>
+<td>Icon</td>
+<td><code>Brain</code>, <code>MessageSquare</code>, <code>Lightbulb</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="manifesto-nav-only"><code>/manifesto</code> (nav-only)</h2>
+<p><strong>Source file(s):</strong> <em>No <code>page.tsx</code> at audit time</em></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Section / component</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><strong>TBD — route not implemented</strong></td>
+<td>Linked from <code>nav-links.ts</code> only. Defer media list until page exists.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="global-chrome--ui-shell">Global chrome &amp; UI shell</h2>
+<p><strong>Source file(s):</strong> <code>src/components/nav/site-nav.tsx</code>, <code>site-nav-menus.tsx</code>, <code>mobile-nav.tsx</code>, <code>site-footer.tsx</code>, <code>src/components/primitives/arrow-link.tsx</code>, <code>src/components/ui/*</code> (as consumed)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Area</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Desktop primary nav</td>
+<td>Dropdown triggers</td>
+<td>Icon</td>
+<td><code>ChevronDownIcon</code> (<code>site-nav-menus.tsx</code>)</td>
+<td>Single stroke weight with text.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Mobile nav</td>
+<td>Open control</td>
+<td>Icon</td>
+<td><code>Menu</code> (<code>mobile-nav.tsx</code>)</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Sheet / dialog (shadcn)</td>
+<td>Close</td>
+<td>Icon</td>
+<td><code>XIcon</code> in <code>sheet.tsx</code> / <code>dialog.tsx</code></td>
+<td>Product shell — list once.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Accordion</td>
+<td>Disclosure</td>
+<td>Icon</td>
+<td><code>ChevronDownIcon</code> / <code>ChevronUpIcon</code> (<code>accordion.tsx</code>)</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Dropdown menu</td>
+<td>Items</td>
+<td>Icon</td>
+<td><code>CheckIcon</code>, <code>ChevronRightIcon</code></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>ArrowLink</code></td>
+<td>Trailing</td>
+<td>Icon</td>
+<td><code>ArrowRight</code></td>
+<td>All pages using primitive share this — <strong>do not duplicate per route</strong> in asset production counts.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Site footer</td>
+<td>—</td>
+<td>—</td>
+<td><strong>No logos or imagery in code</strong></td>
+<td>Text links only.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="metadata--social">Metadata &amp; social</h2>
+<p><strong>Source file(s):</strong> <code>src/app/layout.tsx</code></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Placement</th>
+<th>Kind</th>
+<th>Role</th>
+<th>Spec notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Default <code>metadata</code></td>
+<td>OG / Twitter card</td>
+<td>Image</td>
+<td><strong>Gap:</strong> no <code>openGraph.images</code> or <code>twitter.images</code> defined</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="appendix--lucide-icons-referenced-on-marketing-routes">Appendix — Lucide icons referenced on marketing routes</h2>
+<p>Sorted unique names (site pages + home sections; <strong>excludes</strong> only importing UI primitives if not used on <code>(site)</code> pages — accordion/dropdown/sheet still listed under Global above).</p>
+<p><code>AlertCircle</code>, <code>AlertTriangle</code>, <code>AlignVerticalSpaceAround</code>, <code>ArrowRight</code>, <code>ArrowUpDown</code>, <code>ArrowUpRight</code>, <code>Ban</code>, <code>BarChart3</code>, <code>Beaker</code>, <code>Blend</code>, <code>Book</code>, <code>BookOpen</code>, <code>Bot</code>, <code>Brain</code>, <code>Building</code>, <code>Building2</code>, <code>Check</code>, <code>CheckCircle2</code>, <code>Church</code>, <code>Clock</code>, <code>Compass</code>, <code>Construction</code>, <code>Cpu</code>, <code>CreditCard</code>, <code>Database</code>, <code>EyeOff</code>, <code>FileText</code>, <code>Fingerprint</code>, <code>Gavel</code>, <code>GraduationCap</code>, <code>Headphones</code>, <code>Hourglass</code>, <code>Info</code>, <code>Landmark</code>, <code>Layers</code>, <code>LayoutDashboard</code>, <code>Lightbulb</code>, <code>Link2</code>, <code>Menu</code>, <code>MessageSquare</code>, <code>Microscope</code>, <code>Network</code>, <code>Plug</code>, <code>Puzzle</code>, <code>Radio</code>, <code>RefreshCw</code>, <code>Route</code>, <code>ScanLine</code>, <code>ScatterChart</code>, <code>Search</code>, <code>ShieldCheck</code>, <code>Sparkles</code>, <code>SquareStack</code>, <code>TrendingUp</code>, <code>Users</code>, <code>Wallet</code>, <code>Workflow</code>, <code>X</code>, <code>XCircle</code>, <code>Zap</code></p>
+<p><strong>Chevron / checkmarks inside <code>components/ui</code>:</strong> also <code>ChevronDownIcon</code>, <code>ChevronUpIcon</code>, <code>ChevronRightIcon</code>, <code>CheckIcon</code>, <code>XIcon</code> (shell).</p>
+<hr>
+<h2 id="reviewer-checklist-from-prompt">Reviewer checklist (from prompt)</h2>
+<ul>
+<li><input type="checkbox" id="checkbox0" checked="true"><label for="checkbox0">Every canonical </label><strong>implemented</strong> route has a table or “No media” line.</li>
+<li><input type="checkbox" id="checkbox1" checked="true"><label for="checkbox1">Global icons not repeated per page (only page-specific sets tabulated per route).</label></li>
+<li><input type="checkbox" id="checkbox2" checked="true"><label for="checkbox2">Each </label><code>next/image</code> usage accounted for (home + inner pages).</li>
+<li><input type="checkbox" id="checkbox3" checked="true"><label for="checkbox3"></label><code>/manifesto</code> flagged TBD.</li>
+<li><input type="checkbox" id="checkbox4" checked="true"><label for="checkbox4">OG image gap noted.</label></li>
+<li><input type="checkbox" id="checkbox5" checked="true"><label for="checkbox5">System page AI “spinner” documented as CSS, not exportable raster.</label></li>
+</ul>
+
+</body>
+</html>

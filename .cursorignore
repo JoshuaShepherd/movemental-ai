@@ -1,0 +1,8 @@
+# Context indexing — see docs/build/notes/curated-cleanup-plan-2026-05.md
+.next/
+node_modules/
+docs/html/
+docs/movement_leader_research/**/*.pdf
+
+# Book manuscript archives — rarely needed for site code; see docs/build/notes/curated-cleanup-plan-2026-05.md
+docs/book-development/archive/

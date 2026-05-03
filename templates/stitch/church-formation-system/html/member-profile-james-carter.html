@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Member Profile: James Carter | Movemental</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#272420",
+                        "primary-fixed": "#e9e1db",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#625d59",
+                        "on-secondary-container": "#696158",
+                        "surface-container-high": "#eae8e3",
+                        "surface-container": "#f0eee9",
+                        "on-surface": "#1b1c19",
+                        "on-secondary-fixed-variant": "#4d463d",
+                        "on-secondary-fixed": "#201b14",
+                        "surface": "#fbf9f4",
+                        "on-tertiary-fixed-variant": "#514536",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#d6c4b1",
+                        "surface-container-low": "#f5f3ee",
+                        "on-tertiary-fixed": "#231a0e",
+                        "on-primary-container": "#a9a29d",
+                        "on-surface-variant": "#4c463f",
+                        "surface-dim": "#dbdad5",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#3d3935",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-tertiary-container": "#b2a18f",
+                        "inverse-surface": "#30312e",
+                        "background": "#fbf9f4",
+                        "secondary-fixed": "#ece1d5",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1b1c19",
+                        "secondary-container": "#e9ded2",
+                        "secondary-fixed-dim": "#d0c5b9",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#4a4642",
+                        "outline-variant": "#cec5bc",
+                        "tertiary-container": "#44382a",
+                        "surface-bright": "#fbf9f4",
+                        "surface-variant": "#e4e2dd",
+                        "error": "#ba1a1a",
+                        "secondary": "#655d54",
+                        "surface-container-highest": "#e4e2dd",
+                        "tertiary": "#2d2216",
+                        "inverse-primary": "#ccc5bf",
+                        "primary-fixed-dim": "#ccc5bf",
+                        "outline": "#7d766f",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#f3dfcc",
+                        "on-primary-fixed": "#1e1b18"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        .font-serif { font-family: 'Newsreader', serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-[#fbf9f4]/80 dark:bg-[#272420]/80 backdrop-blur-xl text-[#272420] dark:text-[#fbf9f4] docked full-width top-0 sticky z-50 flex justify-between items-center px-8 h-20 w-full">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-serif italic tracking-tight text-[#272420] dark:text-[#fbf9f4]">Movemental</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8 text-[#625d59] dark:text-[#e4e2dd]">
+<a class="hover:opacity-70 transition-opacity duration-300 text-[#272420] dark:text-[#fbf9f4] font-medium" href="#">Sanctuary</a>
+<a class="hover:opacity-70 transition-opacity duration-300" href="#">Formation</a>
+<a class="hover:opacity-70 transition-opacity duration-300" href="#">Community</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined cursor-pointer hover:opacity-70 transition-opacity duration-300" data-icon="search">search</span>
+<span class="material-symbols-outlined cursor-pointer hover:opacity-70 transition-opacity duration-300" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+<!-- Header Section -->
+<header class="mb-20">
+<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+<div class="max-w-2xl">
+<h1 class="text-6xl md:text-8xl font-serif font-light tracking-tight text-primary leading-tight mb-4">James Carter</h1>
+<p class="font-label text-sm uppercase tracking-[0.2em] text-secondary">Member · Group Participant · Emerging Leader</p>
+</div>
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary px-6 py-3 rounded-md text-sm font-medium hover:opacity-90 transition-opacity">Contact Member</button>
+<button class="bg-surface-container-high text-primary px-6 py-3 rounded-md text-sm font-medium hover:bg-surface-container-highest transition-colors">Log Care Note</button>
+</div>
+</div>
+</header>
+<!-- Main Content Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16">
+<!-- Left Column: Spiritual Journey & History -->
+<div class="md:col-span-8 space-y-24">
+<!-- Section 1: Overview -->
+<section>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="p-8 bg-surface-container-low rounded-xl">
+<span class="font-label text-[10px] uppercase tracking-widest text-outline mb-4 block">History</span>
+<p class="text-3xl font-serif">3 Years</p>
+<p class="text-sm text-on-surface-variant mt-2">Active since Fall 2021</p>
+</div>
+<div class="p-8 bg-surface-container-low rounded-xl">
+<span class="font-label text-[10px] uppercase tracking-widest text-outline mb-4 block">Current Group</span>
+<p class="text-3xl font-serif">Downtown</p>
+<p class="text-sm text-on-surface-variant mt-2">Community Group</p>
+</div>
+<div class="p-8 bg-surface-container-low rounded-xl">
+<span class="font-label text-[10px] uppercase tracking-widest text-outline mb-4 block">Engagement</span>
+<p class="text-3xl font-serif">High</p>
+<p class="text-sm text-on-surface-variant mt-2">Consistent attendance</p>
+</div>
+</div>
+</section>
+<!-- Section 2: Spiritual Journey -->
+<section>
+<h2 class="text-3xl font-serif italic mb-10 text-primary">Spiritual Journey</h2>
+<div class="space-y-12">
+<div class="relative">
+<!-- Progress Bar -->
+<div class="flex items-center justify-between mb-4">
+<span class="font-label text-xs uppercase tracking-widest text-secondary">Pathway: 'Practice' Stage</span>
+<span class="text-sm font-medium">75% Complete</span>
+</div>
+<div class="h-[2px] w-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-primary w-3/4"></div>
+</div>
+</div>
+<!-- Milestones Asymmetric Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+<div class="flex gap-6 items-start">
+<div class="w-12 h-12 flex-shrink-0 bg-surface-container-high rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="water_drop">water_drop</span>
+</div>
+<div>
+<h4 class="font-serif text-xl mb-1">Baptism</h4>
+<p class="text-sm text-on-surface-variant">Easter Sunday, 2022. Witnessed by the full congregation.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="w-12 h-12 flex-shrink-0 bg-surface-container-high rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<h4 class="font-serif text-xl mb-1">Membership</h4>
+<p class="text-sm text-on-surface-variant">Completed 'Covenant Life' workshop in June 2022.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="w-12 h-12 flex-shrink-0 bg-surface-container-high rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="auto_stories">auto_stories</span>
+</div>
+<div>
+<h4 class="font-serif text-xl mb-1">Foundations Course</h4>
+<p class="text-sm text-on-surface-variant">12-week intensive on theology and spiritual formation.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Relationships -->
+<section>
+<h2 class="text-3xl font-serif italic mb-10 text-primary">Relational Sphere</h2>
+<div class="bg-surface-container-lowest p-10 rounded-xl space-y-12">
+<div>
+<span class="font-label text-[10px] uppercase tracking-widest text-outline mb-6 block">Downtown Community Group</span>
+<div class="flex flex-wrap gap-4">
+<div class="flex -space-x-3">
+<img class="w-12 h-12 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="portrait of a man with friendly expression in a casual setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUk1lLTAdEH2qiRuEiyHRp-ndPtrnvkS162VoHngNr5MCDNUzgPF3i0VEzeCr921L3jllqJM5TM-Vtz49EJu-g30Z9ty55BhgBuDbJX9ZdH-nLrymD2RU5Bi16Z8lYbsVYIv84d4Yqo6FIixZCRUotaFe105zaGHh3GVp7lmBKq7_BfGi8hni7OZ9QfgxbcmU8gl7oQmwyy0i3lZlIDxS_RFQX4WELi1LoETXJX2P6DCLpAYGTFovJjpz_Uj0c9odazbhBXAr91Xo"/>
+<img class="w-12 h-12 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="portrait of a woman smiling outdoors in natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrhqCE37ztz0k-Njuv4sN9zdJZ6mQdKYaeObZTP3jWMA5AQiTmSv5NzwWA0A70s37sllfIVmvfFR3YBkGpujC5ZBGpGKTXm1xqBzIqJRapjtLbb1bK_rDx6immWFuB87oIen0viNqUTYbbjD582ybSSu0ERUAdg8IIm3W0ua6tnn9mXwSXjIP1Jgo3DUCf6Ea5bVSCBwTRGWBu0ZTGbS364MNIrJUNngzVwqqIuExMEFoDZ640K91JbC3-nVELKfQtu4eNjZpXdY8"/>
+<img class="w-12 h-12 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="close up headshot of a middle aged man with professional look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJ_jQJuRUasGEk_GYGm-PYvHIIZdE_9D51t-6zk6fSErOjVW0N0rpFeuuZk9ucO2skVX8ukI2rF08jaomiBB-KXmAVafq1i9vFS1zssc9EaoPQAr6Ik2mCWvmzcdwrgtsteaMmGWE1vmx4y4EYZqtkcvVd9B8myl3ki7SAhgpoTFYe7eUhqsqDICC8jCIDrGoLWFSQMRWSl55bSsoKZzJJVZv0i-jU8e4V1y5DndfFjzeWh6jiI9KpTburSWQOtIhSEMuu66XyLxc"/>
+<div class="w-12 h-12 rounded-full bg-surface-container-high border-2 border-surface-container-lowest flex items-center justify-center text-xs font-bold">+8</div>
+</div>
+<div class="ml-4">
+<p class="text-sm font-medium">11 Active Connections</p>
+<p class="text-xs text-on-surface-variant">Meets weekly on Tuesdays</p>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/20">
+<div class="flex items-center gap-6">
+<img class="w-20 h-20 rounded-xl object-cover grayscale" data-alt="professional portrait of a pastor with warm and compassionate expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR8eUTrzJH9XL3kn5vuTfIHgNAZoQ6NculRf9GHSXLBfhiTiSpxRhP2yWS7wWBdpEOjDDThY_4-edZpsnT9CAxVvxUcvQd1p5Ye_53DxTpfcOadFnsLt2TrjjJF9Fc71bIjpAVZEqOpWj-P5VPQTVHRnPkQrlCYbYKjSHhAnM98x4xJ-NBJ68_elhk2nQAlVYcEpnazARWQmc_vTcWkGzDrE3XF_sdm6QOQvMOGHgIHVM5ys2hGuHhtS8g2vdkumB0amJyd-Qdjfs"/>
+<div>
+<span class="font-label text-[10px] uppercase tracking-widest text-outline mb-2 block">Direct Mentorship</span>
+<h4 class="font-serif text-2xl">Pastor Sarah Mitchell</h4>
+<p class="text-sm text-on-surface-variant mt-1">Monthly leadership mentoring focus.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Care Notes & AI Suggestions -->
+<div class="md:col-span-4 space-y-12">
+<!-- Section 4: Care Notes -->
+<section class="bg-[#f0eee9] p-8 rounded-xl">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-2xl font-serif">Care Journal</h2>
+<span class="material-symbols-outlined text-outline" data-icon="lock">lock</span>
+</div>
+<div class="space-y-8">
+<div class="relative pl-6 border-l border-primary/10 pb-8">
+<div class="absolute -left-[4.5px] top-0 w-2 h-2 rounded-full bg-primary"></div>
+<span class="font-label text-[10px] uppercase tracking-widest text-secondary block mb-2">October 2023</span>
+<h4 class="font-medium text-sm mb-2">Recent Support</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Bereavement support following the loss of his father. Pastor Sarah provided home visits and meals.</p>
+</div>
+<div class="relative pl-6 border-l border-primary/10">
+<div class="absolute -left-[4.5px] top-0 w-2 h-2 rounded-full bg-outline-variant"></div>
+<span class="font-label text-[10px] uppercase tracking-widest text-secondary block mb-2">January 2023</span>
+<h4 class="font-medium text-sm mb-2">Financial Guidance</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Transitioned to a new career path. Participated in the stewardship workshop.</p>
+</div>
+</div>
+</section>
+<!-- Section 5: Next Steps (AI) -->
+<section class="bg-primary text-on-primary p-8 rounded-xl">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label text-[10px] uppercase tracking-widest opacity-60">Intelligence Insight</span>
+</div>
+<h3 class="font-serif text-2xl leading-tight mb-4">Invite into leadership training</h3>
+<p class="text-sm text-on-primary-container leading-relaxed mb-8">James has demonstrated consistent emotional maturity and group participation. He is ideally suited for the upcoming 'Community Shepherd' cohort.</p>
+<button class="w-full bg-on-primary text-primary py-3 rounded-md text-sm font-bold hover:bg-opacity-90 transition-opacity">Initiate Invitation</button>
+</section>
+<!-- Additional Context -->
+<div class="p-8 border border-outline-variant/10 rounded-xl">
+<h4 class="font-serif text-lg mb-4">Quick Links</h4>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-sm text-on-surface-variant hover:text-primary cursor-pointer">
+<span class="material-symbols-outlined text-xs" data-icon="history">history</span>
+                            Giving History
+                        </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant hover:text-primary cursor-pointer">
+<span class="material-symbols-outlined text-xs" data-icon="volunteer_activism">volunteer_activism</span>
+                            Volunteer Records
+                        </li>
+<li class="flex items-center gap-3 text-sm text-on-surface-variant hover:text-primary cursor-pointer">
+<span class="material-symbols-outlined text-xs" data-icon="edit_note">edit_note</span>
+                            Update Details
+                        </li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#fbf9f4]/90 dark:bg-[#272420]/90 backdrop-blur-md rounded-t-3xl shadow-[0_-4px_24px_rgba(39,36,32,0.04)]">
+<div class="flex flex-col items-center justify-center text-[#625d59] dark:text-[#e4e2dd] px-6 py-2">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-sans text-[10px] tracking-widest uppercase mt-1">Journey</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#625d59] dark:text-[#e4e2dd] px-6 py-2">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="font-sans text-[10px] tracking-widest uppercase mt-1">Maps</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-[#ffffff] dark:bg-[#3d3935] text-[#272420] dark:text-[#fbf9f4] rounded-xl px-6 py-2">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-sans text-[10px] tracking-widest uppercase mt-1">Notes</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#625d59] dark:text-[#e4e2dd] px-6 py-2">
+<span class="material-symbols-outlined" data-icon="air">air</span>
+<span class="font-sans text-[10px] tracking-widest uppercase mt-1">Pulse</span>
+</div>
+</nav>
+</body></html>

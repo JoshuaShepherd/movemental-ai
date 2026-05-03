@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Readiness Assessment &mdash; Movemental</title>
+    <meta
+      name="description"
+      content="A short, honest self-assessment for how your organization is navigating AI — formation, operations, and mission. Takes six minutes."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-app>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- TOPBAR (stepper) ------------------------------------------------- -->
+    <header class="topbar" data-topbar data-view="intro">
+      <div class="topbar__inner">
+        <a class="brand" href="../index.html" aria-label="Movemental">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span>Movemental</span>
+        </a>
+        <div class="stepper" role="progressbar" aria-label="Assessment progress">
+          <span class="stepper__counter" data-step-counter>Step 01 / 08</span>
+          <span class="stepper__ticks" data-step-ticks></span>
+        </div>
+        <div class="topbar__save">
+          <span class="saved-dot" aria-hidden="true"></span>
+          <span data-saved>Autosaved</span>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="shell">
+        <div class="shell__inner">
+          <!-- INTRO ---------------------------------------------------- -->
+          <section class="intro" data-intro>
+            <div class="label">
+              <span class="label__dot" aria-hidden="true"></span>
+              <span>AI Readiness &middot; self-assessment</span>
+            </div>
+            <h1 class="intro__title">
+              Where is your organization <em>actually</em> with AI?
+            </h1>
+            <p class="intro__lede">
+              Eight questions. About six minutes. One clear picture of your
+              current posture &mdash; formation, operations, and mission &mdash;
+              with a short read at the end. No sign-up to begin.
+            </p>
+            <div class="intro__meta">
+              <div class="meta">
+                <span class="meta__label">Length</span>
+                <span class="meta__value">8 questions</span>
+              </div>
+              <div class="meta">
+                <span class="meta__label">Time</span>
+                <span class="meta__value">~6 minutes</span>
+              </div>
+              <div class="meta">
+                <span class="meta__label">Your answers</span>
+                <span class="meta__value">Saved locally, private</span>
+              </div>
+            </div>
+            <div class="intro__ctas">
+              <button class="btn btn--primary btn--lg" type="button" data-start>
+                Begin assessment
+                <span class="arrow" aria-hidden="true">→</span>
+              </button>
+              <span class="intro__hint">
+                Tip: press <span class="kbd">Enter</span> to advance,
+                <span class="kbd">1</span>&ndash;<span class="kbd">5</span> to
+                pick an answer.
+              </span>
+            </div>
+          </section>
+
+          <!-- QUESTIONS ------------------------------------------------ -->
+          <section class="questions" data-questions aria-label="Questions">
+            <!-- Q1: single-choice — posture ------------------------- -->
+            <article
+              class="question"
+              data-question="posture"
+              data-type="single"
+              data-summary-label="Current posture toward AI"
+            >
+              <div class="question__num">Question 1 of 8</div>
+              <h2 class="question__text">
+                Which best describes your team&rsquo;s <em>current posture</em>
+                toward AI?
+              </h2>
+              <p class="question__help">
+                Pick the one that&rsquo;s closest. We&rsquo;ll refine the
+                picture as you go.
+              </p>
+              <div class="options" role="radiogroup" aria-label="Current posture">
+                <label class="option">
+                  <input type="radio" name="posture" value="avoid" />
+                  <span class="option__label">
+                    <span class="option__letter" aria-hidden="true">A</span>
+                    <span class="option__body">
+                      <span class="option__title">Quietly avoiding it</span>
+                      <span class="option__sub">Hoping the moment passes.</span>
+                    </span>
+                    <span class="option__check" aria-hidden="true">
+                      <svg viewBox="0 0 12 12" fill="none">
+                        <path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </span>
+                </label>
+                <label class="option">
+                  <input type="radio" name="posture" value="experiment" />
+                  <span class="option__label">
+                    <span class="option__letter" aria-hidden="true">B</span>
+                    <span class="option__body">
+                      <span class="option__title">Quietly experimenting</span>
+                      <span class="option__sub">A few people are tinkering.</span>
+                    </span>
+                    <span class="option__check" aria-hidden="true">
+                      <svg viewBox="0 0 12 12" fill="none">
+                        <path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </span>
+                </label>
+                <label class="option">
+                  <input type="radio" name="posture" value="scaling" />
+                  <span class="option__label">
+                    <span class="option__letter" aria-hidden="true">C</span>
+                    <span class="option__body">
+                      <span class="option__title">Scaling, no guardrails</span>
+                      <span class="option__sub">Moving fast without a frame.</span>
+                    </span>
+                    <span class="option__check" aria-hidden="true">
+                      <svg viewBox="0 0 12 12" fill="none">
+                        <path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </span>
+                </label>
+                <label class="option">
+                  <input type="radio" name="posture" value="intentional" />
+                  <span class="option__label">
+                    <span class="option__letter" aria-hidden="true">D</span>
+                    <span class="option__body">
+                      <span class="option__title">Trying to be intentional</span>
+                      <span class="option__sub">Have a framework, still refining.</span>
+                    </span>
+                    <span class="option__check" aria-hidden="true">
+                      <svg viewBox="0 0 12 12" fill="none">
+                        <path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </span>
+                </label>
+              </div>
+            </article>
+
+            <!-- Q2: scale — formation --------------------------- -->
+            <article
+              class="question"
+              data-question="formation"
+              data-type="scale"
+              data-summary-label="Formation / people impact confidence"
+            >
+              <div class="question__num">Question 2 of 8</div>
+              <h2 class="question__text">
+                How confident are you that your team understands how AI is
+                <em>forming</em> your people?
+              </h2>
+              <p class="question__help">
+                Think habits, attention, judgment &mdash; not just productivity.
+              </p>
+              <div class="scale" role="radiogroup" aria-label="Formation confidence">
+                <label class="scale__item">
+                  <input type="radio" name="formation" value="1" />
+                  <span class="scale__label">
+                    <span class="scale__value">1</span>
+                    <span class="scale__caption">Not at all</span>
+                  </span>
+                </label>
+                <label class="scale__item">
+                  <input type="radio" name="formation" value="2" />
+                  <span class="scale__label">
+                    <span class="scale__value">2</span>
+                    <span class="scale__caption">A little</span>
+                  </span>
+                </label>
+                <label class="scale__item">
+                  <input type="radio" name="formation" value="3" />
+                  <span class="scale__label">
+                    <span class="scale__value">3</span>
+                    <span class="scale__caption">Somewhat</span>
+                  </span>
+                </label>
+                <label class="scale__item">
+                  <input type="radio" name="formation" value="4" />
+                  <span class="scale__label">
+                    <span class="scale__value">4</span>
+                    <span class="scale__caption">Mostly</span>
+                  </span>
+                </label>
+                <label class="scale__item">
+                  <input type="radio" name="formation" value="5" />
+                  <span class="scale__label">
+                    <span class="scale__value">5</span>
+                    <span class="scale__caption">Deeply</span>
+                  </span>
+                </label>
+              </div>
+              <p class="scale__legend">
+                <span>Not at all</span>
+                <span>Deeply</span>
+              </p>
+            </article>
+
+            <!-- Q3: single — policy ----------------------------- -->
+            <article
+              class="question"
+              data-question="policy"
+              data-type="single"
+              data-summary-label="Written AI use policy"
+            >
+              <div class="question__num">Question 3 of 8</div>
+              <h2 class="question__text">
+                Do you have a <em>written</em> AI use policy your team
+                actually reads?
+              </h2>
+              <p class="question__help">
+                &ldquo;Written&rdquo; = anything more than a thread.
+              </p>
+              <div class="options" role="radiogroup" aria-label="AI use policy">
+                <label class="option">
+                  <input type="radio" name="policy" value="none" />
+                  <span class="option__label">
+                    <span class="option__letter" aria-hidden="true">A</span>
+                    <span class="option__body">
+                      <span class="option__title">No &mdash; nothing in writing</span>
+                      <span class="option__sub">People are on their own.</span>
+                    </span>
+                    <span class="option__check" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </span>
+                </label>
+                <label class="option">
+                  <input type="radio" name="policy" value="draft" />
+                  <span class="option__label">
+                    <span class="option__letter" aria-hidden="true">B</span>
+                    <span class="option__body">
+                      <span class="option__title">Draft in progress</span>
+                      <span class="option__sub">It exists, but not circulated.</span>
+                    </span>
+                    <span class="option__check" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </span>
+                </label>
+                <label class="option">
+                  <input type="radio" name="policy" value="published" />
+                  <span class="option__label">
+                    <span class="option__letter" aria-hidden="true">C</span>
+                    <span class="option__body">
+                      <span class="option__title">Published but rarely referenced</span>
+                      <span class="option__sub">Lives in a shared drive.</span>
+                    </span>
+                    <span class="option__check" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </span>
+                </label>
+                <label class="option">
+                  <input type="radio" name="policy" value="living" />
+                  <span class="option__label">
+                    <span class="option__letter" aria-hidden="true">D</span>
+                    <span class="option__body">
+                      <span class="option__title">Living doc, regularly used</span>
+                      <span class="option__sub">Referenced in decisions.</span>
+                    </span>
+                    <span class="option__check" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </span>
+                </label>
+              </div>
+            </article>
+
+            <!-- Q4: scale — mission alignment -------------------- -->
+            <article
+              class="question"
+              data-question="mission_align"
+              data-type="scale"
+              data-summary-label="Mission alignment of AI decisions"
+            >
+              <div class="question__num">Question 4 of 8</div>
+              <h2 class="question__text">
+                To what degree are AI decisions anchored to your
+                <em>mission</em>, not just efficiency?
+              </h2>
+              <div class="scale" role="radiogroup" aria-label="Mission alignment">
+                <label class="scale__item"><input type="radio" name="mission_align" value="1" /><span class="scale__label"><span class="scale__value">1</span><span class="scale__caption">Efficiency only</span></span></label>
+                <label class="scale__item"><input type="radio" name="mission_align" value="2" /><span class="scale__label"><span class="scale__value">2</span><span class="scale__caption">Rarely</span></span></label>
+                <label class="scale__item"><input type="radio" name="mission_align" value="3" /><span class="scale__label"><span class="scale__value">3</span><span class="scale__caption">Sometimes</span></span></label>
+                <label class="scale__item"><input type="radio" name="mission_align" value="4" /><span class="scale__label"><span class="scale__value">4</span><span class="scale__caption">Usually</span></span></label>
+                <label class="scale__item"><input type="radio" name="mission_align" value="5" /><span class="scale__label"><span class="scale__value">5</span><span class="scale__caption">Always</span></span></label>
+              </div>
+              <p class="scale__legend"><span>Efficiency only</span><span>Mission first</span></p>
+            </article>
+
+            <!-- Q5: single — biggest risk ----------------------- -->
+            <article
+              class="question"
+              data-question="risk"
+              data-type="single"
+              data-summary-label="Largest perceived risk"
+            >
+              <div class="question__num">Question 5 of 8</div>
+              <h2 class="question__text">
+                What&rsquo;s the <em>largest risk</em> you feel from AI right
+                now?
+              </h2>
+              <div class="options" role="radiogroup" aria-label="Largest risk">
+                <label class="option">
+                  <input type="radio" name="risk" value="drift" />
+                  <span class="option__label">
+                    <span class="option__letter" aria-hidden="true">A</span>
+                    <span class="option__body">
+                      <span class="option__title">Cultural drift</span>
+                      <span class="option__sub">Losing what makes us, us.</span>
+                    </span>
+                    <span class="option__check" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </span>
+                </label>
+                <label class="option">
+                  <input type="radio" name="risk" value="dependency" />
+                  <span class="option__label">
+                    <span class="option__letter" aria-hidden="true">B</span>
+                    <span class="option__body">
+                      <span class="option__title">Over-dependency</span>
+                      <span class="option__sub">Atrophied skills and judgment.</span>
+                    </span>
+                    <span class="option__check" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </span>
+                </label>
+                <label class="option">
+                  <input type="radio" name="risk" value="missing" />
+                  <span class="option__label">
+                    <span class="option__letter" aria-hidden="true">C</span>
+                    <span class="option__body">
+                      <span class="option__title">Missing the moment</span>
+                      <span class="option__sub">Falling behind meaningfully.</span>
+                    </span>
+                    <span class="option__check" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </span>
+                </label>
+                <label class="option">
+                  <input type="radio" name="risk" value="division" />
+                  <span class="option__label">
+                    <span class="option__letter" aria-hidden="true">D</span>
+                    <span class="option__body">
+                      <span class="option__title">Internal division</span>
+                      <span class="option__sub">Team is split on how to use it.</span>
+                    </span>
+                    <span class="option__check" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </span>
+                </label>
+                <label class="option">
+                  <input type="radio" name="risk" value="security" />
+                  <span class="option__label">
+                    <span class="option__letter" aria-hidden="true">E</span>
+                    <span class="option__body">
+                      <span class="option__title">Data / security exposure</span>
+                      <span class="option__sub">Unsafe inputs, unclear audits.</span>
+                    </span>
+                    <span class="option__check" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </span>
+                </label>
+              </div>
+            </article>
+
+            <!-- Q6: scale — leadership readiness ---------------- -->
+            <article
+              class="question"
+              data-question="leadership"
+              data-type="scale"
+              data-summary-label="Leadership readiness to lead an AI conversation"
+            >
+              <div class="question__num">Question 6 of 8</div>
+              <h2 class="question__text">
+                How prepared is your <em>leadership</em> to host the AI
+                conversation with your people?
+              </h2>
+              <div class="scale" role="radiogroup" aria-label="Leadership readiness">
+                <label class="scale__item"><input type="radio" name="leadership" value="1" /><span class="scale__label"><span class="scale__value">1</span><span class="scale__caption">Not ready</span></span></label>
+                <label class="scale__item"><input type="radio" name="leadership" value="2" /><span class="scale__label"><span class="scale__value">2</span><span class="scale__caption">Nervous</span></span></label>
+                <label class="scale__item"><input type="radio" name="leadership" value="3" /><span class="scale__label"><span class="scale__value">3</span><span class="scale__caption">Getting there</span></span></label>
+                <label class="scale__item"><input type="radio" name="leadership" value="4" /><span class="scale__label"><span class="scale__value">4</span><span class="scale__caption">Confident</span></span></label>
+                <label class="scale__item"><input type="radio" name="leadership" value="5" /><span class="scale__label"><span class="scale__value">5</span><span class="scale__caption">Modeling it</span></span></label>
+              </div>
+              <p class="scale__legend"><span>Not ready</span><span>Modeling it</span></p>
+            </article>
+
+            <!-- Q7: single — tempo ------------------------------ -->
+            <article
+              class="question"
+              data-question="tempo"
+              data-type="single"
+              data-summary-label="Desired tempo for next steps"
+            >
+              <div class="question__num">Question 7 of 8</div>
+              <h2 class="question__text">
+                What tempo feels right for your <em>next step</em>?
+              </h2>
+              <div class="options" role="radiogroup" aria-label="Tempo">
+                <label class="option">
+                  <input type="radio" name="tempo" value="slow" />
+                  <span class="option__label">
+                    <span class="option__letter" aria-hidden="true">A</span>
+                    <span class="option__body">
+                      <span class="option__title">Slow and deliberate</span>
+                      <span class="option__sub">Reading, listening, prayer.</span>
+                    </span>
+                    <span class="option__check" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </span>
+                </label>
+                <label class="option">
+                  <input type="radio" name="tempo" value="steady" />
+                  <span class="option__label">
+                    <span class="option__letter" aria-hidden="true">B</span>
+                    <span class="option__body">
+                      <span class="option__title">Steady quarterly cadence</span>
+                      <span class="option__sub">Workshops and cohort work.</span>
+                    </span>
+                    <span class="option__check" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </span>
+                </label>
+                <label class="option">
+                  <input type="radio" name="tempo" value="intensive" />
+                  <span class="option__label">
+                    <span class="option__letter" aria-hidden="true">C</span>
+                    <span class="option__body">
+                      <span class="option__title">Intensive sprint</span>
+                      <span class="option__sub">90 days, real change.</span>
+                    </span>
+                    <span class="option__check" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </span>
+                </label>
+                <label class="option">
+                  <input type="radio" name="tempo" value="unsure" />
+                  <span class="option__label">
+                    <span class="option__letter" aria-hidden="true">D</span>
+                    <span class="option__body">
+                      <span class="option__title">Not sure yet</span>
+                      <span class="option__sub">Need to think out loud.</span>
+                    </span>
+                    <span class="option__check" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  </span>
+                </label>
+              </div>
+            </article>
+
+            <!-- Q8: open text ----------------------------------- -->
+            <article
+              class="question"
+              data-question="context"
+              data-type="textarea"
+              data-optional="true"
+              data-summary-label="Context / what you're trying to solve"
+            >
+              <div class="question__num">Question 8 of 8</div>
+              <h2 class="question__text">
+                In a sentence or two, what are you <em>actually</em> trying to
+                solve?
+              </h2>
+              <p class="question__help">
+                Optional, but the most useful thing you can tell us. Plain
+                English.
+              </p>
+              <div class="long-input">
+                <textarea
+                  maxlength="800"
+                  placeholder="e.g., Our staff is using AI ad-hoc and we want a shared posture before it becomes a culture problem."
+                ></textarea>
+                <div class="long-input__meta">
+                  <span>
+                    Press <span class="kbd">⌘</span>
+                    <span class="kbd">↵</span> to finish
+                  </span>
+                  <span data-ta-count>0 / 800</span>
+                </div>
+              </div>
+            </article>
+
+            <p class="question__error" role="alert" data-error></p>
+          </section>
+
+          <!-- DONE ----------------------------------------------------- -->
+          <section class="done" data-done aria-label="Complete">
+            <div class="label">
+              <span class="label__dot" aria-hidden="true"></span>
+              <span>Complete</span>
+            </div>
+            <h2 class="done__title">
+              Thanks &mdash; here&rsquo;s <em>your short read.</em>
+            </h2>
+            <p class="done__lede">
+              Your answers are saved on this device only. Send them to our team
+              for a tailored reply within one business day, or keep them for
+              your own leadership conversation.
+            </p>
+
+            <div class="summary">
+              <p class="summary__title">Your answers</p>
+              <ul class="summary__list" data-summary></ul>
+            </div>
+
+            <div class="done__ctas">
+              <a
+                class="btn btn--primary btn--lg"
+                href="../contact-concept-modern/index.html"
+              >
+                Send to our team
+                <span class="arrow" aria-hidden="true">→</span>
+              </a>
+              <button class="btn btn--ghost" type="button" data-restart>
+                Start over
+              </button>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- BOTTOM BAR (question nav) -------------------------------- -->
+      <div class="qfoot" data-qfoot>
+        <div class="qfoot__inner">
+          <div class="qfoot__left">
+            <button class="btn btn--plain" type="button" data-back>
+              <span aria-hidden="true">←</span> Back
+            </button>
+          </div>
+          <div class="qfoot__center">
+            <span data-foot-counter>Question 1 of 8</span>
+          </div>
+          <div class="qfoot__right">
+            <span class="qfoot__hint">
+              <span class="kbd">Enter</span> to continue
+            </span>
+            <button class="btn btn--primary" type="button" data-next>
+              Next
+              <span class="arrow" aria-hidden="true">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="./script.js" defer></script>
+  </body>
+</html>

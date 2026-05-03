@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Master components — Hero 05 · Stanza</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+    />
+    <link rel="stylesheet" href="./css/core.css" />
+    <link rel="stylesheet" href="./css/hero-demos.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="nav" data-nav>
+      <div class="nav__inner">
+        <a class="brand" href="./index.html">
+          <span class="brand__mark" aria-hidden="true"></span>
+          Movemental
+        </a>
+        <nav class="nav__links" aria-label="Primary">
+          <ul>
+            <li><a href="./index.html">Components</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="demo-page">
+      <section class="hero-e" aria-labelledby="stanza-title">
+        <div class="container">
+          <p class="label reveal">
+            <span class="label__dot" aria-hidden="true"></span>
+            Hero 05 · Gradient + stanza
+          </p>
+          <div class="hero-e__grid">
+            <div>
+              <h1 id="stanza-title" class="hero-e__title reveal" style="--d: 0.06s">
+                Fragmentation is <em>not</em> a tech problem first.
+              </h1>
+              <p class="hero-e__sub reveal" style="--d: 0.12s">
+                It is an information architecture and trust architecture problem — then a tooling
+                problem. This hero pairs a direct claim with a slower stanza for boards who read in
+                pairs.
+              </p>
+            </div>
+            <blockquote class="hero-e__stanza reveal" style="--d: 0.18s" cite=".">
+              <p>
+                When every channel speaks in a different voice, <em>the movement cannot remember
+                itself.</em> The work is to gather without flattening.
+              </p>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <section class="container" style="padding-bottom: var(--section-y)">
+        <p class="demo-kicker reveal">
+          Soft gradient wash behind the section keeps the page warm while staying duotone — no
+          decorative shadows, only tonal stacking.
+        </p>
+      </section>
+
+      <footer class="site-foot">
+        <div class="site-foot__inner">
+          <span>Hero 05</span>
+          <a href="./index.html">Index</a>
+        </div>
+      </footer>
+    </main>
+    <script src="./js/core.js" defer></script>
+  </body>
+</html>

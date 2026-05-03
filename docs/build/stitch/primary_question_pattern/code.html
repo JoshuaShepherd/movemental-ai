@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-container-high": "#e6e8ea",
+                    "secondary-container": "#d6e1e7",
+                    "surface-container": "#eceef0",
+                    "primary-container": "#0053db",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface": "#f7f9fb",
+                    "on-surface-variant": "#434655",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#3f4851",
+                    "tertiary-fixed": "#dbe3ef",
+                    "secondary": "#556065",
+                    "surface-bright": "#f7f9fb",
+                    "secondary-fixed": "#d9e4ea",
+                    "outline-variant": "#c3c6d7",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f2f4f6",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-primary-container": "#ced8ff",
+                    "on-secondary-fixed-variant": "#3e484d",
+                    "on-surface": "#191c1e",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#0053db",
+                    "on-tertiary-container": "#d1d9e4",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary-fixed": "#141c24",
+                    "on-secondary-fixed": "#131d21",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#e0e3e5",
+                    "tertiary": "#3f4751",
+                    "on-secondary-container": "#596469",
+                    "tertiary-fixed-dim": "#bfc7d2",
+                    "primary-fixed": "#dbe1ff",
+                    "on-primary-fixed": "#00174b",
+                    "primary": "#003ea8",
+                    "surface-dim": "#d8dadc",
+                    "on-background": "#191c1e",
+                    "background": "#f7f9fb",
+                    "tertiary-container": "#575f69",
+                    "secondary-fixed-dim": "#bdc8ce",
+                    "inverse-surface": "#2d3133",
+                    "outline": "#737686",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#f7f9fb]/80 dark:bg-[#101820]/80 backdrop-blur-xl transition-opacity">
+<div class="flex justify-between items-center px-8 py-6 max-w-[1200px] mx-auto w-full">
+<div class="text-xl font-semibold tracking-tighter text-[#2a3439] dark:text-[#f7f9fb] font-inter tracking-tight">Movemental</div>
+<div class="flex items-center gap-6">
+<button class="text-[#2a3439]/60 dark:text-[#f7f9fb]/60 hover:opacity-70 transition-opacity">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="flex-grow flex flex-col pt-32 pb-24 px-6 sm:px-12">
+<div class="max-w-[680px] mx-auto w-full">
+<!-- Restrained Progress Indicator -->
+<div class="mb-16">
+<div class="flex gap-2 w-full h-1">
+<div class="h-full flex-1 bg-primary rounded-full"></div>
+<div class="h-full flex-1 bg-primary rounded-full"></div>
+<div class="h-full flex-1 bg-surface-container-high rounded-full"></div>
+<div class="h-full flex-1 bg-surface-container-high rounded-full"></div>
+<div class="h-full flex-1 bg-surface-container-high rounded-full"></div>
+</div>
+<div class="mt-4 flex justify-between">
+<span class="text-[10px] font-bold tracking-[0.05em] uppercase text-primary">Organizational Clarity</span>
+<span class="text-[10px] font-bold tracking-[0.05em] uppercase text-secondary">Step 2 of 5</span>
+</div>
+</div>
+<!-- Question Area -->
+<div class="mb-12">
+<p class="text-[10px] font-bold tracking-[0.05em] uppercase text-outline mb-4">Core Knowledge Assessment</p>
+<h1 class="text-3xl md:text-4xl font-semibold tracking-tight text-on-surface leading-[1.1]">
+                    Our core ideas, teaching, or knowledge are clearly organized in one place.
+                </h1>
+</div>
+<!-- Response Scale -->
+<div class="space-y-4">
+<label class="group relative flex items-center justify-between p-6 rounded-xl bg-surface-container-lowest cursor-pointer transition-all hover:bg-surface-container-low shadow-[0_12px_40px_rgba(42,52,57,0.06)] overflow-hidden">
+<input class="peer sr-only" name="assessment" type="radio" value="not-at-all"/>
+<span class="text-lg font-medium text-on-surface group-hover:text-primary transition-colors">Not at all true</span>
+<div class="w-6 h-6 border-2 border-outline-variant rounded-full flex items-center justify-center peer-checked:border-primary peer-checked:bg-primary transition-all">
+<div class="w-2.5 h-2.5 bg-white rounded-full scale-0 peer-checked:scale-100 transition-transform"></div>
+</div>
+</label>
+<label class="group relative flex items-center justify-between p-6 rounded-xl bg-surface-container-lowest cursor-pointer transition-all hover:bg-surface-container-low shadow-[0_12px_40px_rgba(42,52,57,0.06)] overflow-hidden">
+<input class="peer sr-only" name="assessment" type="radio" value="slightly"/>
+<span class="text-lg font-medium text-on-surface group-hover:text-primary transition-colors">Slightly true</span>
+<div class="w-6 h-6 border-2 border-outline-variant rounded-full flex items-center justify-center peer-checked:border-primary peer-checked:bg-primary transition-all">
+<div class="w-2.5 h-2.5 bg-white rounded-full scale-0 peer-checked:scale-100 transition-transform"></div>
+</div>
+</label>
+<label class="group relative flex items-center justify-between p-6 rounded-xl bg-surface-container-lowest cursor-pointer transition-all hover:bg-surface-container-low shadow-[0_12px_40px_rgba(42,52,57,0.06)] overflow-hidden">
+<input class="peer sr-only" name="assessment" type="radio" value="partly"/>
+<span class="text-lg font-medium text-on-surface group-hover:text-primary transition-colors">Partly true</span>
+<div class="w-6 h-6 border-2 border-outline-variant rounded-full flex items-center justify-center peer-checked:border-primary peer-checked:bg-primary transition-all">
+<div class="w-2.5 h-2.5 bg-white rounded-full scale-0 peer-checked:scale-100 transition-transform"></div>
+</div>
+</label>
+<label class="group relative flex items-center justify-between p-6 rounded-xl bg-surface-container-lowest cursor-pointer transition-all hover:bg-surface-container-low shadow-[0_12px_40px_rgba(42,52,57,0.06)] overflow-hidden">
+<input class="peer sr-only" name="assessment" type="radio" value="mostly"/>
+<span class="text-lg font-medium text-on-surface group-hover:text-primary transition-colors">Mostly true</span>
+<div class="w-6 h-6 border-2 border-outline-variant rounded-full flex items-center justify-center peer-checked:border-primary peer-checked:bg-primary transition-all">
+<div class="w-2.5 h-2.5 bg-white rounded-full scale-0 peer-checked:scale-100 transition-transform"></div>
+</div>
+</label>
+<label class="group relative flex items-center justify-between p-6 rounded-xl bg-surface-container-lowest cursor-pointer transition-all hover:bg-surface-container-low shadow-[0_12px_40px_rgba(42,52,57,0.06)] overflow-hidden">
+<input checked="" class="peer sr-only" name="assessment" type="radio" value="fully"/>
+<span class="text-lg font-medium text-on-surface group-hover:text-primary transition-colors">Fully true</span>
+<div class="w-6 h-6 border-2 border-outline-variant rounded-full flex items-center justify-center peer-checked:border-primary peer-checked:bg-primary transition-all">
+<div class="w-2.5 h-2.5 bg-white rounded-full scale-0 peer-checked:scale-100 transition-transform"></div>
+</div>
+</label>
+</div>
+<!-- Controls -->
+<div class="mt-16 flex items-center justify-between">
+<button class="flex items-center gap-2 text-sm font-semibold tracking-tight text-secondary hover:text-primary transition-colors py-3 pr-6">
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_back">arrow_back</span>
+                    Previous
+                </button>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-10 py-4 rounded-xl font-semibold tracking-tight shadow-lg hover:opacity-90 transition-all flex items-center gap-2">
+                    Continue
+                    <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-[#eceef0] dark:bg-[#101820]">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-[1200px] mx-auto font-inter text-sm leading-[1.75]">
+<div class="text-[#2a3439]/50 dark:text-[#f7f9fb]/50 mb-6 md:mb-0">© 2024 Movemental. All rights reserved.</div>
+<div class="flex gap-8">
+<a class="text-[#2a3439]/50 dark:text-[#f7f9fb]/50 hover:text-[#003ea8] transition-colors" href="#">Privacy Policy</a>
+<a class="text-[#2a3439]/50 dark:text-[#f7f9fb]/50 hover:text-[#003ea8] transition-colors" href="#">Terms of Service</a>
+<a class="text-[#2a3439]/50 dark:text-[#f7f9fb]/50 hover:text-[#003ea8] transition-colors" href="#">Institutional Support</a>
+</div>
+</div>
+</footer>
+</body></html>

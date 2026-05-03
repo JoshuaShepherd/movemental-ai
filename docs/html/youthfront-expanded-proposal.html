@@ -1,0 +1,1645 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Expanded Proposal — Youthfront × Movemental</title>
+  <meta name="description" content="Expanded proposal for a Sandbox-first AI Stewardship engagement with Youthfront. Prepared by Movemental." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --paper: #faf8f4;
+      --paper-alt: #f3efe7;
+      --paper-deep: #ece6d8;
+      --ink: #1f242a;
+      --ink-soft: #3b4247;
+      --muted: #6f757b;
+      --rule: #dcd6c9;
+      --rule-soft: #e7e2d6;
+      --accent: #0053db;
+      --accent-soft: rgba(0, 83, 219, 0.08);
+      --accent-line: rgba(0, 83, 219, 0.4);
+      --flag-green: #0f7a45;
+      --flag-yellow: #a8690b;
+      --flag-red: #9b2a2a;
+
+      --serif: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
+      --sans: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+
+      --page-max: 46rem;
+      --page-pad-y: 4rem;
+      --page-pad-x: 3.5rem;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--paper-alt);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      scroll-behavior: smooth;
+    }
+
+    ::selection { background: var(--accent-soft); color: var(--ink); }
+
+    a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-line); }
+    a:hover { border-bottom-color: var(--accent); }
+
+    /* ───────────────────────────────────────────── Utility Bar */
+    .utility-bar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.75rem 1.25rem;
+      background: rgba(250, 248, 244, 0.92);
+      backdrop-filter: saturate(1.2) blur(10px);
+      -webkit-backdrop-filter: saturate(1.2) blur(10px);
+      border-bottom: 1px solid var(--rule-soft);
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .utility-bar .label { font-weight: 500; }
+    .utility-bar .label span { color: var(--ink-soft); }
+    .utility-bar .crumb { color: var(--muted); }
+    .utility-bar .crumb a { color: var(--ink-soft); border-bottom-color: transparent; }
+    .utility-bar .crumb a:hover { color: var(--accent); border-bottom-color: var(--accent-line); }
+
+    .utility-bar .actions { display: flex; gap: 0.5rem; }
+
+    .btn {
+      appearance: none;
+      border: 1px solid var(--rule);
+      background: transparent;
+      color: var(--ink-soft);
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.45rem 0.9rem;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+    .btn-primary { color: var(--accent); border-color: var(--accent-line); }
+
+    /* ───────────────────────────────────────────── Layout */
+    .shell {
+      display: grid;
+      grid-template-columns: 17rem minmax(0, 1fr);
+      gap: 0;
+      max-width: 78rem;
+      margin: 0 auto;
+    }
+
+    .toc {
+      position: sticky;
+      top: 48px;
+      align-self: start;
+      padding: 4rem 1.5rem 2rem 1.25rem;
+      height: calc(100vh - 48px);
+      overflow-y: auto;
+      font-family: var(--sans);
+      font-size: 13px;
+      border-right: 1px solid var(--rule-soft);
+    }
+
+    .toc h6 {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 0.85rem;
+    }
+
+    .toc ol {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem;
+      counter-reset: toc;
+    }
+
+    .toc ol li {
+      counter-increment: toc;
+      margin-bottom: 0.15rem;
+    }
+
+    .toc ol li a {
+      display: flex;
+      gap: 0.65rem;
+      align-items: baseline;
+      padding: 0.35rem 0.5rem;
+      border: 0;
+      border-radius: 3px;
+      color: var(--ink-soft);
+      font-weight: 500;
+      line-height: 1.35;
+      transition: background-color 120ms ease, color 120ms ease;
+    }
+
+    .toc ol li a::before {
+      content: counter(toc, decimal-leading-zero);
+      font-variant-numeric: tabular-nums;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      min-width: 1.9rem;
+    }
+
+    .toc ol li a:hover { background: var(--paper); color: var(--accent); }
+    .toc ol li a.is-active { background: var(--paper); color: var(--accent); }
+    .toc ol li a.is-active::before { color: var(--accent); }
+
+    .toc-aside {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule-soft);
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ───────────────────────────────────────────── Page */
+    .page {
+      padding: var(--page-pad-y) var(--page-pad-x);
+      background: var(--paper);
+      border-left: 1px solid var(--rule-soft);
+      min-width: 0;
+    }
+
+    /* ───────────────────────────────────────────── Header */
+    .doc-header { margin-bottom: 3.5rem; max-width: var(--page-max); }
+
+    .doc-kicker {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    h1.doc-title {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 2.85rem;
+      line-height: 1.08;
+      letter-spacing: -0.012em;
+      margin: 0 0 0.75rem;
+      color: var(--ink);
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      column-gap: 2rem;
+      row-gap: 0.4rem;
+      padding-top: 1.5rem;
+      margin-top: 1rem;
+      border-top: 1px solid var(--rule);
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+    .meta dt {
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: var(--muted);
+      padding-top: 2px;
+    }
+    .meta dd { margin: 0; }
+
+    /* ───────────────────────────────────────────── Sections */
+    section { margin-top: 3.5rem; max-width: var(--page-max); scroll-margin-top: 72px; }
+
+    .section-number {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.85rem;
+      line-height: 1.2;
+      letter-spacing: -0.008em;
+      margin: 0 0 1.1rem;
+      color: var(--ink);
+    }
+
+    h3 {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.01em;
+      line-height: 1.3;
+      margin: 2rem 0 0.6rem;
+      color: var(--ink);
+    }
+
+    h3.outcome-title {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.2rem;
+      letter-spacing: -0.005em;
+    }
+
+    h4 {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    p { margin: 0 0 1rem; color: var(--ink-soft); }
+    p.lede-block { color: var(--ink); font-size: 1.08rem; line-height: 1.55; }
+
+    .hr {
+      border: 0;
+      height: 1px;
+      background: var(--rule);
+      margin: 3.5rem 0 0;
+    }
+
+    /* ───────────────────────────────────────────── Lists */
+    ul.clean {
+      list-style: none;
+      padding: 0;
+      margin: 0.25rem 0 1.25rem;
+    }
+    ul.clean li {
+      position: relative;
+      padding-left: 1.15rem;
+      margin-bottom: 0.5rem;
+      color: var(--ink-soft);
+    }
+    ul.clean li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 0.42rem;
+      height: 1px;
+      background: var(--muted);
+    }
+
+    ol.prose {
+      padding-left: 1.25rem;
+      margin: 0.25rem 0 1.25rem;
+    }
+    ol.prose li { margin-bottom: 0.5rem; color: var(--ink-soft); }
+    ol.prose li::marker { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+    /* ───────────────────────────────────────────── Emphasis blocks */
+    .emphasis {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.14rem;
+      line-height: 1.55;
+      color: var(--ink);
+      padding: 0 0 0 1.1rem;
+      border-left: 2px solid var(--accent);
+      margin: 1.25rem 0 1.5rem;
+    }
+
+    .callout {
+      background: var(--paper-alt);
+      border: 1px solid var(--rule-soft);
+      border-left: 3px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      font-size: 0.98rem;
+    }
+    .callout h4 { margin-top: 0; }
+
+    /* Sourced block — marks a passage carried verbatim from the Executive Summary */
+    .sourced {
+      position: relative;
+      padding: 1rem 0 0.25rem 1.25rem;
+      margin: 0.5rem 0 1.25rem;
+      border-left: 1px solid var(--rule);
+    }
+    .sourced::before {
+      content: "From the Executive Summary";
+      display: block;
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.65rem;
+    }
+    .sourced > *:last-child { margin-bottom: 0; }
+
+    /* ───────────────────────────────────────────── Progressive disclosure */
+    details.deep {
+      margin: 1rem 0 1.5rem;
+      border-top: 1px solid var(--rule-soft);
+      border-bottom: 1px solid var(--rule-soft);
+      padding: 0.25rem 0;
+    }
+
+    details.deep > summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 0.75rem 0;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: color 120ms ease;
+    }
+    details.deep > summary::-webkit-details-marker { display: none; }
+    details.deep > summary::before {
+      content: "+";
+      font-weight: 600;
+      color: var(--accent);
+      width: 1rem;
+      display: inline-block;
+      text-align: center;
+      font-size: 14px;
+    }
+    details.deep[open] > summary::before { content: "−"; }
+    details.deep > summary:hover { color: var(--accent); }
+
+    details.deep > .deep-body {
+      padding: 0.5rem 0 1rem 1.6rem;
+      border-left: 1px solid var(--rule-soft);
+      margin-left: 0.5rem;
+    }
+
+    /* ───────────────────────────────────────────── Grids */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+      margin: 1rem 0 0.5rem;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin: 1rem 0 0.5rem;
+    }
+    @media (max-width: 720px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      padding: 1.25rem 1.35rem;
+      background: var(--paper-alt);
+      border: 1px solid var(--rule-soft);
+      border-radius: 2px;
+    }
+    .card h4 { margin-top: 0; color: var(--ink); }
+
+    /* ───────────────────────────────────────────── Flag chips */
+    .flag {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 2px;
+      margin-right: 0.4rem;
+      vertical-align: 2px;
+    }
+    .flag-green  { background: rgba(15, 122, 69, 0.10); color: var(--flag-green); }
+    .flag-yellow { background: rgba(168, 105, 11, 0.10); color: var(--flag-yellow); }
+    .flag-red    { background: rgba(155, 42, 42, 0.10); color: var(--flag-red); }
+
+    /* ───────────────────────────────────────────── Timeline */
+    .timeline { border-top: 1px solid var(--rule); margin-top: 1rem; }
+    .timeline .phase {
+      display: grid;
+      grid-template-columns: 7rem 1fr;
+      gap: 1.5rem;
+      padding: 1.25rem 0 1rem;
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    .timeline .phase .month {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-top: 2px;
+    }
+    .timeline .phase .month small {
+      display: block;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      margin-top: 2px;
+    }
+    .timeline .phase h4 {
+      margin: 0 0 0.35rem;
+      color: var(--ink);
+      font-size: 0.95rem;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .timeline .phase p { margin: 0; font-size: 0.95rem; }
+    .timeline .phase.optional .month { color: var(--muted); }
+    .timeline .phase.optional::before {
+      content: "Optional extension";
+      display: block;
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 0.5rem;
+      margin-bottom: -0.5rem;
+      grid-column: 1 / -1;
+    }
+
+    /* ───────────────────────────────────────────── Table */
+    table.clean {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem;
+      font-size: 0.95rem;
+    }
+    table.clean th, table.clean td {
+      text-align: left;
+      padding: 0.7rem 0.9rem;
+      vertical-align: top;
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    table.clean thead th {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--rule);
+      background: transparent;
+    }
+    table.clean tbody tr:last-child td { border-bottom: 0; }
+    table.clean tbody td:first-child {
+      font-family: var(--sans);
+      font-weight: 600;
+      color: var(--ink);
+      font-size: 0.85rem;
+    }
+
+    /* ───────────────────────────────────────────── Investment */
+    .investment-card {
+      margin: 1rem 0 0.5rem;
+      padding: 1.5rem 1.75rem;
+      background: var(--paper-alt);
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--accent);
+    }
+    .investment-card .fee {
+      font-family: var(--serif);
+      font-size: 2.1rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin: 0 0 0.2rem;
+    }
+    .investment-card .fee small {
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+    .investment-card .fee-label {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 0.5rem;
+    }
+
+    /* ───────────────────────────────────────────── Reading list */
+    .reading {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem 1.5rem;
+      margin: 1rem 0 0;
+    }
+    @media (max-width: 720px) { .reading { grid-template-columns: 1fr; } }
+    .reading .group {
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule-soft);
+    }
+    .reading .group h4 { margin-top: 0; color: var(--ink); }
+    .reading ul { list-style: none; padding: 0; margin: 0; }
+    .reading li { margin: 0.35rem 0; }
+    .reading a {
+      font-family: var(--serif);
+      font-size: 0.97rem;
+      color: var(--ink);
+      border-bottom: 1px solid var(--rule);
+    }
+    .reading a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .reading .cat {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-left: 0.4rem;
+    }
+
+    /* ───────────────────────────────────────────── Footer */
+    .doc-footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule-soft);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ───────────────────────────────────────────── Responsive */
+    @media (max-width: 960px) {
+      .shell { grid-template-columns: 1fr; }
+      .toc {
+        position: static;
+        height: auto;
+        padding: 1.5rem 1.25rem;
+        border-right: 0;
+        border-bottom: 1px solid var(--rule-soft);
+        background: var(--paper-alt);
+      }
+      .toc ol { display: grid; grid-template-columns: 1fr 1fr; gap: 0 0.5rem; }
+      .toc-aside { display: none; }
+    }
+
+    @media (max-width: 720px) {
+      :root {
+        --page-pad-y: 2.5rem;
+        --page-pad-x: 1.5rem;
+      }
+      html, body { font-size: 16px; }
+      h1.doc-title { font-size: 2.05rem; }
+      h2 { font-size: 1.45rem; }
+      .toc ol { grid-template-columns: 1fr; }
+      .meta { grid-template-columns: 1fr; row-gap: 0.75rem; }
+      .meta dt { padding-top: 0; }
+      .timeline .phase { grid-template-columns: 1fr; gap: 0.35rem; }
+    }
+
+    /* ───────────────────────────────────────────── Print */
+    @media print {
+      @page { size: Letter; margin: 0.75in; }
+
+      html, body {
+        background: #fff;
+        color: #111;
+        font-size: 11pt;
+        line-height: 1.5;
+      }
+
+      .utility-bar, .toc, .doc-footer, .btn { display: none !important; }
+
+      .shell { display: block; max-width: 100%; }
+      .page { padding: 0; border: 0; background: #fff; max-width: 100%; }
+
+      a { color: inherit; text-decoration: none; }
+
+      /* Let sections flow naturally across pages — no avoid-page on large containers */
+      section {
+        margin-top: 1.25rem;
+        max-width: 100%;
+      }
+
+      /* Tie headings to the content that follows */
+      h1, h2, h3 {
+        break-after: avoid;
+        page-break-after: avoid;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* Orphan / widow control for prose */
+      p, li {
+        orphans: 3;
+        widows: 3;
+      }
+
+      /* Force expansion of deep-dive details, hide the toggle */
+      details.deep { border: 0; margin: 0.75rem 0; }
+      details.deep > summary { display: none; }
+      details.deep[open] > .deep-body,
+      details.deep > .deep-body {
+        display: block !important;
+        border: 0;
+        padding-left: 0;
+        margin-left: 0;
+      }
+
+      /* Small, indivisible blocks: keep together on a single page */
+      .doc-header,
+      .meta,
+      .investment-card,
+      .card,
+      .callout,
+      .sourced,
+      .timeline .phase,
+      .reading .group {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* Tables: repeat header on each page, keep rows from splitting across pages */
+      table.clean thead { display: table-header-group; }
+      table.clean tr { break-inside: avoid; page-break-inside: avoid; }
+
+      /* Flatten visual chrome that reads as noise on paper */
+      .callout, .investment-card, .card, .sourced { background: #fff; border-color: #bbb; }
+      .emphasis, .investment-card { border-left-color: #0053db; }
+
+      /* Tighten inter-section rules */
+      .hr { margin: 1rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="utility-bar" role="toolbar" aria-label="Document toolbar">
+    <div class="label">Movemental · <span>Confidential draft</span></div>
+    <div class="crumb">
+      <a href="./youthfront-executive-summary.html">← Executive summary (1-pager)</a>
+    </div>
+    <div class="actions">
+      <button class="btn" type="button" id="toggle-all">Expand all</button>
+      <button class="btn btn-primary" type="button" onclick="window.print()" aria-label="Print or save as PDF">Print / Save PDF</button>
+    </div>
+  </div>
+
+  <div class="shell">
+
+    <!-- ─────────────────────────────────────────── TOC -->
+    <nav class="toc" aria-label="Table of contents">
+      <h6>Contents</h6>
+      <ol>
+        <li><a href="#s-frame">Executive Summary</a></li>
+        <li><a href="#s-context">Youthfront Context</a></li>
+        <li><a href="#s-problem">The Problem</a></li>
+        <li><a href="#s-approach">The Approach</a></li>
+        <li><a href="#s-structure">Program Structure</a></li>
+        <li><a href="#s-training">Training</a></li>
+        <li><a href="#s-deliverables">Deliverables</a></li>
+        <li><a href="#s-timeline">Timeline</a></li>
+        <li><a href="#s-investment">Investment</a></li>
+        <li><a href="#s-why">Why Movemental</a></li>
+        <li><a href="#s-next">Next Steps</a></li>
+        <li><a href="#s-closing">Closing</a></li>
+        <li><a href="#s-reading">Further Reading</a></li>
+      </ol>
+
+      <div class="toc-aside">
+        For the 1-page version, see the
+        <a href="./youthfront-executive-summary.html">Executive Summary</a>.
+        This expanded proposal opens with the same Executive Summary as its frame, then goes deeper on each topic.
+      </div>
+    </nav>
+
+    <!-- ─────────────────────────────────────────── Page -->
+    <article class="page" role="document">
+
+      <header class="doc-header">
+        <div class="doc-kicker">Expanded Proposal</div>
+        <h1 class="doc-title">Sandbox-first AI Stewardship Engagement for Youthfront</h1>
+
+        <dl class="meta">
+          <dt>Prepared for</dt>
+          <dd>Youthfront</dd>
+          <dt>Primary contact</dt>
+          <dd>Natasha Nikkel, COO</dd>
+          <dt>Prepared by</dt>
+          <dd>Movemental</dd>
+          <dt>Companion document</dt>
+          <dd><a href="./youthfront-executive-summary.html">Executive Summary (1&#8209;pager)</a></dd>
+        </dl>
+      </header>
+
+      <!-- 01 ─────────────────────────── Executive Summary (frame) -->
+      <section id="s-frame" aria-labelledby="h-frame">
+        <div class="section-number">01 · Executive Summary</div>
+        <h2 id="h-frame">The frame for this proposal.</h2>
+
+        <div class="sourced">
+          <p class="lede-block">For faith-based non-profit organizations like Youthfront, AI is not primarily a technology challenge but a human, theological one. AI raises questions for how organizations communicate, plan, decide, relate, and build on the foundation of pre-existing trust they&rsquo;ve already established with their community and constituents.</p>
+
+          <p>To do that well, there must be a foundation of clearly documented ground rules for Safety. My understanding is that Youthfront is developing this response. What comes next is thoughtful, wise experimentation in a safe sandbox so that valuable use cases can be discovered, while the human ethical questions each raises can be simultaneously flagged &mdash; for near-future resolution.</p>
+
+          <p>For mission-driven organizations like Youthfront, the best option is neither a full &ldquo;No AI,&rdquo; which is impossible, nor &ldquo;Go AI&rdquo; (as in full adoption without safety, training, and testing).</p>
+
+          <p>Safety is the first step, but it&rsquo;s not the last. Once clear and complete safety documentation is in place, organizations must find out whether valuable AI applications do exist for them (wisely saving time, steward resources &amp; revenue, and improving the quality of work and relationship) and what human concerns exist for each of them.</p>
+
+          <p class="emphasis">We provide a clear sequence and guidance through the process.</p>
+        </div>
+
+        <p>
+          The sections that follow expand each part of this frame: Youthfront&rsquo;s specific context, the underlying problem, the approach, the program structure (including our LMS cohort and a simple dashboard surface for use cases &amp; ethical documentation), training, deliverables, timeline, investment, why Movemental, and next steps. A Closing reprises the frame, and a Further Reading section links the canon underneath.
+        </p>
+      </section>
+
+      <hr class="hr" />
+
+      <!-- 02 ─────────────────────────── Youthfront Context -->
+      <section id="s-context" aria-labelledby="h-context">
+        <div class="section-number">02 · Youthfront Context</div>
+        <h2 id="h-context">Eight decades of formation, entering a new operating environment.</h2>
+
+        <p class="lede-block">
+          Youthfront is not a typical AI adoption case. It is an 82-year-old, ECFA-accredited nonprofit that has carried youth formation work across Kansas City since 1943 &mdash; with a coherent theology (the Way of Prayer, the Way of Community, the Way of Ministry), a stable leadership team, and a body of work that predates nearly every tool currently under discussion in the AI conversation.
+        </p>
+
+        <p>
+          That history is the starting condition. It is also the reason AI must be approached as a formation question first, and a technology question second. The trust Youthfront has with its churches, camp families, donors, alumni, and pathways participants is not a marketing asset. It is the operating ground of the mission. Any use of AI either compounds that trust or quietly erodes it.
+        </p>
+
+        <h3>The operating surface, briefly</h3>
+
+        <ul class="clean">
+          <li>Five ministry lines &mdash; YF Camp, YF Neighborhood, YF Family, YF Pathways (Arise, Teen Parent Connect), and Presence-Centered Counseling.</li>
+          <li>Church-assisting posture, with 200+ partner churches and historic seminary relationships (including Nazarene Theological Seminary).</li>
+          <li>FY25 revenue of approximately $4.87M against $5.29M in expenses; FY24 revenue of $5.63M against $4.94M. Net assets ~$6.5M.</li>
+          <li>A declared statement of faith (the Apostles&rsquo; Creed) alongside a specific values vocabulary: Community, Trust, Theological Reflection, Playfulness, Christian Formation.</li>
+          <li>Leadership: Mike King (President/CEO), Lisen Tammeus Mann (VP Development), Jim Newberry (VP Ministries), Natasha Nikkel (COO), Topher Philgreen (EVP Strategic Initiatives).</li>
+        </ul>
+
+        <details class="deep">
+          <summary>Deep dive — the full fragmentation snapshot</summary>
+          <div class="deep-body">
+            <p>
+              A more detailed prospective case study of Youthfront&rsquo;s current fragmentation surface is available as a companion document. It walks through the 82-year archive, program knowledge across four ministry lines, church-partner relationships, donor relationships and mid-tier leakage, storytelling pipelines, governance and ethics, and the shape of informal AI adoption already underway.
+            </p>
+            <p>
+              See: <a href="https://movemental.ai/content/articles/case-study-youthfront">From 1943 to 2026 — A Prospective Case Study of an Integrated System at Youthfront</a>.
+            </p>
+          </div>
+        </details>
+      </section>
+
+      <hr class="hr" />
+
+      <!-- 03 ─────────────────────────── The Problem -->
+      <section id="s-problem" aria-labelledby="h-problem">
+        <div class="section-number">03 · The Problem</div>
+        <h2 id="h-problem">Where Youthfront is, and what is missing.</h2>
+
+        <div class="sourced">
+          <p>Youthfront is not starting from zero.</p>
+
+          <p>You already have:</p>
+          <ul class="clean">
+            <li>strong instincts around trust, formation, and relational responsibility</li>
+            <li>leadership awareness of data sensitivity and public credibility</li>
+            <li>internal momentum toward clarity</li>
+            <li>ongoing work to document safe AI usage and rules organization-wide</li>
+          </ul>
+
+          <p>This is the crucial foundation.</p>
+
+          <p>What is missing&mdash;and what most organizations lack&mdash;is:</p>
+
+          <p class="emphasis">a structured way to discover value safely, while building shared skills &amp; wisdom across the team</p>
+        </div>
+
+        <h3>Underneath that gap, three pressures show up at the same time</h3>
+
+        <p>
+          In 2026, AI is already in the fabric for nearly every mature nonprofit. Youthfront&rsquo;s situation is the sector&rsquo;s situation. Without a structured way to discover value safely, three pressures compound.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <h4>Shadow usage</h4>
+            <p>Individuals are already using AI. Without documented ground rules, sensitive content flows through consumer tools, authorship blurs, and no one knows what is actually happening across the organization.</p>
+          </div>
+          <div class="card">
+            <h4>Adoption before evaluation</h4>
+            <p>Vendors sell solutions before the underlying use case is proven. Budget follows tools rather than value. The organization ends up paying for capability it cannot defend at the board level.</p>
+          </div>
+          <div class="card">
+            <h4>Training before context</h4>
+            <p>Generic AI training produces generic confidence. Staff return from workshops able to describe AI in the abstract but unable to judge whether any specific use of it fits Youthfront&rsquo;s mission.</p>
+          </div>
+        </div>
+
+        <details class="deep">
+          <summary>Deep dive — why the two equal errors of “No AI” and “Go AI” both fail</summary>
+          <div class="deep-body">
+            <p>
+              The mirror of &ldquo;adoption without safety&rdquo; is &ldquo;prohibition without learning.&rdquo; Both produce the same outcome: an organization that does not know what AI can and cannot do inside its own work. The first is risky; the second is brittle. A Sandbox season is the escape from both errors.
+            </p>
+            <p>
+              See: <a href="https://movemental.ai/content/articles/the-two-equal-errors">The Two Equal Errors</a>, <a href="https://movemental.ai/content/articles/why-order-matters">Why Order Matters</a>, <a href="https://movemental.ai/content/articles/safety-before-speed">Safety Before Speed</a>, <a href="https://movemental.ai/content/articles/there-is-a-way-through-this">There Is a Way Through This</a>.
+            </p>
+          </div>
+        </details>
+      </section>
+
+      <hr class="hr" />
+
+      <!-- 04 ─────────────────────────── The Approach -->
+      <section id="s-approach" aria-labelledby="h-approach">
+        <div class="section-number">04 · The Approach</div>
+        <h2 id="h-approach">What we propose.</h2>
+
+        <div class="sourced">
+          <p>A Sandbox-first engagement, with Skills layered in.</p>
+
+          <p>This is not a general training program.</p>
+
+          <p>It is a structured discovery system that produces real organizational work product and results (safely).</p>
+
+          <p>The engagement centers on three outcomes:</p>
+
+          <div style="padding-top: 0.5rem;">
+            <h3 class="outcome-title">1. Use Case Portfolio (the core outcome)</h3>
+
+            <ul class="clean">
+              <li>Movemental provides a curated library of nonprofit-relevant AI use cases</li>
+              <li>Youthfront tests these through structured experiments</li>
+              <li>The organization produces a portfolio of as many validated, valuable use cases as we can explore and document together &mdash; starting from the original work of Movemental to get us started</li>
+            </ul>
+
+            <p>Each use case is documented with:</p>
+            <ul class="clean">
+              <li>purpose</li>
+              <li>owner</li>
+              <li>inputs and boundaries</li>
+              <li>estimated time savings, revenue potential, or other quantitative/qualitative metric</li>
+              <li>review requirements</li>
+            </ul>
+
+            <p>Then</p>
+            <ul class="clean">
+              <li>flags for concern about potential ethical and trust violations</li>
+              <li>a clear process for flagging and discerning what is allowed and under what conditions</li>
+            </ul>
+
+            <p>This portfolio becomes:</p>
+            <ul class="clean">
+              <li>the leadership decision surface</li>
+              <li>the board-level narrative</li>
+              <li>the foundation for any future adoption</li>
+            </ul>
+          </div>
+
+          <div style="padding-top: 1.25rem;">
+            <h3 class="outcome-title">2. Structured Evaluation (value + ethics together)</h3>
+
+            <p>Each use case is evaluated through:</p>
+
+            <h4>A. Practical value</h4>
+            <ul class="clean">
+              <li>time saved</li>
+              <li>quality improved</li>
+              <li>repeatability</li>
+              <li>risk introduced</li>
+            </ul>
+
+            <h4>B. Ethical and relational alignment</h4>
+            <ul class="clean">
+              <li>authorship and voice</li>
+              <li>trust and disclosure</li>
+              <li>appropriateness within Youthfront&rsquo;s mission</li>
+            </ul>
+
+            <p>This produces:</p>
+            <ul class="clean">
+              <li>clear green / yellow / red decisions</li>
+              <li>documented reasoning</li>
+              <li>confidence in what moves forward&mdash;and what does not</li>
+            </ul>
+          </div>
+
+          <div style="padding-top: 1.25rem;">
+            <h3 class="outcome-title">3. Skills in Context (not abstract training)</h3>
+
+            <p>Skills are built inside real work, not in isolation.</p>
+
+            <p>Staff learn:</p>
+            <ul class="clean">
+              <li>how to work with AI without losing human intelligence, authorship &amp; creativity</li>
+              <li>how to verify and review outputs</li>
+              <li>how to operate within clear boundaries</li>
+            </ul>
+
+            <p>This ensures:</p>
+
+            <p class="emphasis">capability grows alongside judgment&mdash;not ahead of it</p>
+          </div>
+        </div>
+
+        <h3>What this is &mdash; and what it is not</h3>
+
+        <div class="sourced">
+          <p>This is:</p>
+          <ul class="clean">
+            <li>a Sandbox season</li>
+            <li>focused on discovery, evidence, and shared judgment</li>
+          </ul>
+
+          <p>This is not:</p>
+          <ul class="clean">
+            <li>a full AI rollout</li>
+            <li>a tools-first implementation</li>
+            <li>a generic training program</li>
+          </ul>
+        </div>
+
+        <h3>The underlying sequence: Safety, Sandbox, Skills, Solutions</h3>
+
+        <p>
+          The three outcomes above sit inside a deliberate sequence. Safety is the doorway Youthfront is already walking through. Sandbox is the engine of this engagement. Skills layer in as discovery requires. Solutions &mdash; integration of validated use cases &mdash; come last, and only when the evidence warrants.
+        </p>
+
+        <table class="clean">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What it produces</th>
+              <th>What it is not</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Safety</td>
+              <td>Documented ground rules: what AI is allowed to touch, under what conditions, with what review.</td>
+              <td>A prohibition list.</td>
+            </tr>
+            <tr>
+              <td>Sandbox</td>
+              <td>Structured experiments inside real work, producing the documented Use Case Portfolio described above.</td>
+              <td>Playing with tools.</td>
+            </tr>
+            <tr>
+              <td>Skills</td>
+              <td>Staff capability built inside real experiments &mdash; prompting, verification, voice preservation, boundary operation.</td>
+              <td>Generic AI training.</td>
+            </tr>
+            <tr>
+              <td>Solutions</td>
+              <td>Selective integration of validated use cases &mdash; only when the evidence warrants it.</td>
+              <td>A platform rollout.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <details class="deep">
+          <summary>Deep dive — the SSSS sequence and the three Sandbox layers</summary>
+          <div class="deep-body">
+            <p>
+              The full framework is written up in <a href="https://movemental.ai/content/articles/the-ssss-framework">The SSSS Framework</a>, with a leader-facing field guide in <a href="https://movemental.ai/content/articles/ssss-field-guide-for-organizational-leaders">The SSSS Field Guide for Organizational Leaders</a> and a self-check in <a href="https://movemental.ai/content/articles/the-ssss-journey-assessment-checklist">The SSSS Journey Assessment Checklist</a>. The three-layer Sandbox model &mdash; pattern recognition, structured experiments, synthesis &mdash; is expanded in <a href="https://movemental.ai/content/articles/the-three-layers-of-sandbox-work">The Three Layers of Sandbox Work</a>.
+            </p>
+          </div>
+        </details>
+      </section>
+
+      <hr class="hr" />
+
+      <!-- 05 ─────────────────────────── Program Structure -->
+      <section id="s-structure" aria-labelledby="h-structure">
+        <div class="section-number">05 · Program Structure</div>
+        <h2 id="h-structure">Three surfaces: cohort, dashboard, facilitation.</h2>
+
+        <p>
+          The engagement runs across three connected surfaces. Each one produces something the others depend on. Together they form a working system the organization can continue to operate after the engagement ends.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <h4>1. LMS Cohort</h4>
+            <p>A structured learning environment with modules, assignments, and discussion &mdash; delivered through Movemental&rsquo;s existing LMS. Staff move together through formation-grade content, not drop-in videos.</p>
+          </div>
+          <div class="card">
+            <h4>2. Use Case Dashboard</h4>
+            <p>A simple, shared dashboard surface for the live Use Case Portfolio &mdash; purpose, owner, boundaries, value metrics, ethical flags, review status, and green / yellow / red decisions. Visible to the cohort and to leadership.</p>
+          </div>
+          <div class="card">
+            <h4>3. Facilitated Sandbox</h4>
+            <p>Regular working sessions with a Movemental facilitator &mdash; pattern recognition, experiment design, evaluation reviews, ethics discernment. Real work, reviewed in real time.</p>
+          </div>
+        </div>
+
+        <h3>How the surfaces interact</h3>
+
+        <p>
+          Cohort learning seeds the pattern language the staff use in Sandbox. Sandbox experiments populate the Dashboard. The Dashboard surfaces the portfolio for leadership and board review. Facilitation keeps the loop honest &mdash; turning experiments into evidence rather than anecdote.
+        </p>
+
+        <h3>The Use Case Dashboard, specifically</h3>
+
+        <p>
+          The dashboard is deliberately simple. It is a shared surface &mdash; not a software purchase &mdash; that makes the Sandbox portfolio legible at a glance. It carries exactly the fields the Executive Summary names for each use case:
+        </p>
+
+        <ul class="clean">
+          <li><strong>Purpose.</strong> What is the use case, in one sentence, in Youthfront&rsquo;s own voice.</li>
+          <li><strong>Owner.</strong> Who holds it inside the organization.</li>
+          <li><strong>Inputs and boundaries.</strong> What goes in; what must never go in.</li>
+          <li><strong>Value metric.</strong> Estimated time savings, revenue potential, or other quantitative/qualitative metric &mdash; scored honestly.</li>
+          <li><strong>Review requirements.</strong> Who reviews outputs, and how often.</li>
+          <li><strong>Ethical &amp; trust flags.</strong> Flags for concern about potential ethical and trust violations, with the decision process attached.</li>
+          <li><strong>Decision.</strong> <span class="flag flag-green">Green</span> approved &mdash; <span class="flag flag-yellow">Yellow</span> conditional &mdash; <span class="flag flag-red">Red</span> declined &mdash; with documented reasoning.</li>
+        </ul>
+
+        <p>
+          This dashboard is the leadership decision surface, the board-level narrative, and the foundation for any future adoption. It is also the deliverable Youthfront continues to operate after the engagement ends.
+        </p>
+
+        <details class="deep">
+          <summary>Deep dive — inside the Sandbox portfolio</summary>
+          <div class="deep-body">
+            <ul class="clean">
+              <li><a href="https://movemental.ai/content/articles/the-purpose-of-sandbox">The Purpose of Sandbox</a> — what a Sandbox is, and what it is not.</li>
+              <li><a href="https://movemental.ai/content/articles/building-the-use-case-portfolio">Building the Use Case Portfolio</a> — the core deliverable the engagement produces.</li>
+              <li><a href="https://movemental.ai/content/articles/the-eight-patterns-where-value-hides">The Eight Patterns Where Value Hides</a> — the pattern language staff learn in cohort.</li>
+              <li><a href="https://movemental.ai/content/articles/the-three-kinds-of-value">The Three Kinds of Value</a> — time, quality, relationship.</li>
+              <li><a href="https://movemental.ai/content/articles/the-ethical-and-relational-flag">The Ethical and Relational Flag</a> — how every use case earns a yes, a conditional, or a no.</li>
+              <li><a href="https://movemental.ai/content/articles/scoring-value-honestly">Scoring Value Honestly</a> — why most Sandbox scoring lies, and how to avoid it.</li>
+              <li><a href="https://movemental.ai/content/articles/discovery-engine-not-generator">Discovery Engine, Not Generator</a> — the mental model for Sandbox work.</li>
+              <li><a href="https://movemental.ai/content/articles/claude-enterprise-skills-nonprofit-backbone">Claude Enterprise Skills as Nonprofit Backbone</a> — the platform posture behind the engagement.</li>
+            </ul>
+          </div>
+        </details>
+      </section>
+
+      <hr class="hr" />
+
+      <!-- 06 ─────────────────────────── Training -->
+      <section id="s-training" aria-labelledby="h-training">
+        <div class="section-number">06 · Training</div>
+        <h2 id="h-training">Skills built inside real work, not in a classroom.</h2>
+
+        <div class="sourced">
+          <p>Skills are built inside real work, not in isolation.</p>
+
+          <p>Staff learn:</p>
+          <ul class="clean">
+            <li>how to work with AI without losing human intelligence, authorship &amp; creativity</li>
+            <li>how to verify and review outputs</li>
+            <li>how to operate within clear boundaries</li>
+          </ul>
+
+          <p>This ensures:</p>
+          <p class="emphasis">capability grows alongside judgment&mdash;not ahead of it</p>
+        </div>
+
+        <p>
+          Four questions frame the training layer in practice: <strong>who</strong> does the training, <strong>how</strong> it is delivered, <strong>what</strong> the instruction modes are, and <strong>when</strong> each one happens.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <h4>Who</h4>
+            <p>
+              A Sandbox cohort of approximately <strong>6&ndash;12 staff</strong>, selected together with Youthfront leadership. The shape we recommend:
+            </p>
+            <ul class="clean">
+              <li>One executive sponsor (likely COO or EVP Strategic Initiatives).</li>
+              <li>One representative from each active ministry line (Camp, Neighborhood, Family, Pathways).</li>
+              <li>Communications / storytelling.</li>
+              <li>Development / donor stewardship.</li>
+              <li>Operations / IT / data.</li>
+              <li>Optional: one board or advisory voice auditing, not operating.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>How</h4>
+            <p>
+              Cohort-based, applied, and real-work-first. No abstract prompts. No sandbox copies of made-up scenarios. Every module produces something usable by the person who made it, on work they were already going to do.
+            </p>
+            <ul class="clean">
+              <li>Async LMS modules &mdash; short, substantive, formation-grade.</li>
+              <li>Live facilitated Sandbox sessions &mdash; weekly or bi-weekly.</li>
+              <li>Peer review inside the cohort &mdash; shared language, shared judgment.</li>
+              <li>Leadership checkpoints &mdash; portfolio walkthroughs with the executive team.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>What — the instruction modes</h3>
+
+        <p>
+          Training is delivered in six layered modes. They are sequenced, not parallel; earlier modes are the substrate for later ones.
+        </p>
+
+        <table class="clean">
+          <thead>
+            <tr>
+              <th>Mode</th>
+              <th>Purpose</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Orientation &amp; Safety</td>
+              <td>Shared language, ground rules, risk posture, and the Youthfront frame for AI.</td>
+              <td>A shared safety handshake and a cohort charter.</td>
+            </tr>
+            <tr>
+              <td>Pattern Recognition</td>
+              <td>Training the eye to see where AI might produce value inside real Youthfront work.</td>
+              <td>Candidate use cases, owned by the people who would run them.</td>
+            </tr>
+            <tr>
+              <td>Experiment Design</td>
+              <td>Writing a structured test before running it &mdash; inputs, outputs, success signal, risk flag.</td>
+              <td>Experiment cards attached to candidate use cases.</td>
+            </tr>
+            <tr>
+              <td>Evaluation &amp; Ethics</td>
+              <td>Scoring value honestly and flagging the ethical &amp; relational questions each use case raises.</td>
+              <td>Green / yellow / red decisions with documented reasoning.</td>
+            </tr>
+            <tr>
+              <td>Applied Skills</td>
+              <td>The concrete crafts &mdash; prompting, verification, voice preservation, output review, boundary operation, model selection.</td>
+              <td>Staff who can work <em>with</em> AI without losing authorship.</td>
+            </tr>
+            <tr>
+              <td>Leadership Synthesis</td>
+              <td>Turning the portfolio into language for board, donors, partner churches, and program staff not in the cohort.</td>
+              <td>Executive briefings, board memos, partner-facing summaries.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>When</h3>
+
+        <p>
+          Training runs across the engagement, not as a front-loaded workshop. The rhythm we recommend:
+        </p>
+
+        <ul class="clean">
+          <li><strong>Month 1.</strong> Orientation &amp; Safety; cohort launches LMS modules 1&ndash;2.</li>
+          <li><strong>Month 2.</strong> Pattern Recognition; first candidate use cases identified and entered on the dashboard.</li>
+          <li><strong>Month 3.</strong> Experiment Design &amp; Evaluation; the first 6&ndash;10 experiments run and scored.</li>
+          <li><strong>Month 4.</strong> Applied Skills &amp; Leadership Synthesis; portfolio consolidation and executive briefing.</li>
+          <li><strong>Months 5&ndash;8 (optional extension).</strong> Depth &amp; scale &mdash; more ministry lines, deeper skills, selective Solutions.</li>
+        </ul>
+
+        <details class="deep">
+          <summary>Deep dive — skills as formation, not training</summary>
+          <div class="deep-body">
+            <p>
+              Movemental treats skills as formation &mdash; the slow building of judgment alongside capability &mdash; rather than as training in the corporate sense. The distinction is load-bearing for mission-driven organizations where authorship, voice, and relational trust cannot be mass-produced.
+            </p>
+            <p>
+              See: <a href="https://movemental.ai/content/articles/skills-as-formation-not-training">Skills as Formation, Not Training</a>, <a href="https://movemental.ai/content/articles/the-skill-of-ai">The Skill of AI</a>, <a href="https://movemental.ai/content/articles/recipes-are-not-cooking">Recipes Are Not Cooking</a>.
+            </p>
+          </div>
+        </details>
+      </section>
+
+      <hr class="hr" />
+
+      <!-- 07 ─────────────────────────── Deliverables -->
+      <section id="s-deliverables" aria-labelledby="h-deliverables">
+        <div class="section-number">07 · Deliverables</div>
+        <h2 id="h-deliverables">What Youthfront can expect to hold at the end of the season.</h2>
+
+        <div class="sourced">
+          <p>Outcomes Youthfront can expect:</p>
+          <ul class="clean">
+            <li>A clear, defensible set of approved use cases</li>
+            <li>Reduced shadow experimentation and ambiguity</li>
+            <li>Staff capable of responsible, consistent AI use</li>
+            <li>Concrete work product &amp; documentation for board, donor, and partner conversations</li>
+            <li>A Claude-centered approach to valuable, wise AI use at Youthfront</li>
+          </ul>
+
+          <p>Most importantly:</p>
+          <p class="emphasis">Youthfront will be able to engage AI in a way that remains recognizable as Youthfront.</p>
+        </div>
+
+        <h3>The specific deliverables</h3>
+
+        <p>
+          Those outcomes become specific, durable deliverables &mdash; each designed to be usable by leadership, defensible to the board, understandable to a donor, and reusable by staff who were not in the cohort.
+        </p>
+
+        <ol class="prose">
+          <li><strong>A scored Use Case Portfolio.</strong> Validated, documented use cases with value signal, ethical &amp; trust flags, review requirements, and a green / yellow / red decision.</li>
+          <li><strong>A Youthfront-specific ethics log.</strong> The flagged questions, the reasoning behind each decision, and the conditions under which any yellow use case could move forward.</li>
+          <li><strong>A trained Sandbox cohort.</strong> 6&ndash;12 staff fluent in pattern recognition, experiment design, evaluation, and applied AI skills &mdash; carrying the posture into their teams.</li>
+          <li><strong>The Use Case Dashboard.</strong> The simple, shared surface Youthfront continues to operate after the engagement ends.</li>
+          <li><strong>Leadership &amp; board materials.</strong> Executive briefings, board memo, and partner-facing summaries drawn directly from the portfolio.</li>
+          <li><strong>A decision framework for future AI choices.</strong> The criteria Youthfront will use for any new tool, vendor, or use case going forward.</li>
+          <li><strong>A Claude-centered posture.</strong> Platform guidance, model-selection logic, and skill definitions oriented around Claude Enterprise as the primary backbone.</li>
+          <li><strong>Year-two planning input.</strong> Recommendations for which validated use cases (if any) warrant Solutions-stage integration.</li>
+        </ol>
+      </section>
+
+      <hr class="hr" />
+
+      <!-- 08 ─────────────────────────── Timeline -->
+      <section id="s-timeline" aria-labelledby="h-timeline">
+        <div class="section-number">08 · Timeline</div>
+        <h2 id="h-timeline">Engagement structure: a four-month core, with an optional extension.</h2>
+
+        <div class="sourced">
+          <ul class="clean">
+            <li>Modular timeline (typically 4-8 months)</li>
+            <li>Sandbox as the primary engine</li>
+            <li>Skills layered in as needed</li>
+            <li>Solutions (integration) only if warranted by evidence</li>
+          </ul>
+        </div>
+
+        <p>
+          The core engagement is four months. Organizations that want to move deeper &mdash; adding ministry lines, carrying Skills further, or graduating specific use cases into Solutions &mdash; extend for up to four additional months.
+        </p>
+
+        <div class="timeline" role="list">
+          <div class="phase" role="listitem">
+            <div class="month">Month 1 <small>Orientation</small></div>
+            <div>
+              <h4>Safety doorway and cohort kickoff</h4>
+              <p>Safety handshake with leadership. Cohort selected and onboarded. LMS opens. Pattern language introduced. Dashboard stood up.</p>
+            </div>
+          </div>
+          <div class="phase" role="listitem">
+            <div class="month">Month 2 <small>Discovery</small></div>
+            <div>
+              <h4>Pattern recognition and candidate use cases</h4>
+              <p>Staff identify candidate use cases across ministry lines. First experiment cards written. Ethical &amp; trust flags named honestly.</p>
+            </div>
+          </div>
+          <div class="phase" role="listitem">
+            <div class="month">Month 3 <small>Evaluation</small></div>
+            <div>
+              <h4>Structured experiments and scoring</h4>
+              <p>The first 6&ndash;10 experiments run inside real work. Value signals scored. Ethical flags adjudicated. First green / yellow / red decisions posted to the dashboard.</p>
+            </div>
+          </div>
+          <div class="phase" role="listitem">
+            <div class="month">Month 4 <small>Synthesis</small></div>
+            <div>
+              <h4>Portfolio consolidation and leadership report</h4>
+              <p>Portfolio stabilized. Applied Skills modules close. Executive briefing and board-ready materials delivered. Decision framework handed over.</p>
+            </div>
+          </div>
+
+          <div class="phase optional" role="listitem">
+            <div class="month">Months 5&ndash;6 <small>Depth</small></div>
+            <div>
+              <h4>Deeper ministry-line coverage and selective Solutions</h4>
+              <p>Additional experiments in under-covered ministry lines. Selective movement of high-confidence green use cases into light Solutions work &mdash; only where evidence warrants.</p>
+            </div>
+          </div>
+          <div class="phase optional" role="listitem">
+            <div class="month">Months 7&ndash;8 <small>Scale</small></div>
+            <div>
+              <h4>Scale-out and year-two planning</h4>
+              <p>Cohort alumni carry the posture into their teams. Second-ring staff onboarded via LMS. Year-two plan written with Youthfront leadership.</p>
+            </div>
+          </div>
+        </div>
+
+        <details class="deep">
+          <summary>Deep dive — why Solutions come last</summary>
+          <div class="deep-body">
+            <p>
+              Most AI engagements begin with Solutions &mdash; tooling, platforms, automations &mdash; and back-fill the judgment later. The SSSS sequence inverts this deliberately. Solutions are the cheapest part of the stack once the earlier stages have done their work, and they fail expensively when they have not.
+            </p>
+            <p>
+              See: <a href="https://movemental.ai/content/articles/why-solutions-come-last">Why Solutions Come Last</a>, <a href="https://movemental.ai/content/articles/solutions-deployment">Solutions Deployment</a>, <a href="https://movemental.ai/content/articles/the-work-of-safety">The Work of Safety</a>.
+            </p>
+          </div>
+        </details>
+      </section>
+
+      <hr class="hr" />
+
+      <!-- 09 ─────────────────────────── Investment -->
+      <section id="s-investment" aria-labelledby="h-investment">
+        <div class="section-number">09 · Investment</div>
+        <h2 id="h-investment">A founding-partner rate for the core engagement.</h2>
+
+        <div class="sourced">
+          <p>Youthfront pricing: $10,000 (fixed)</p>
+
+          <p>This reflects:</p>
+          <ul class="clean">
+            <li>a first-season Sandbox engagement</li>
+            <li>full access to Movemental&rsquo;s frameworks and use case library</li>
+            <li>direct collaboration in shaping the model</li>
+          </ul>
+
+          <p>Future engagements of this scope will be priced at a higher standard rate.</p>
+        </div>
+
+        <div class="investment-card">
+          <div class="fee-label">Youthfront pricing &mdash; core four-month engagement</div>
+          <div class="fee">$10,000 <small>Fixed</small></div>
+        </div>
+
+        <h4>What this covers, in operational terms</h4>
+        <ul class="clean">
+          <li>Full Sandbox program infrastructure &mdash; cohort onboarding, facilitation, and synthesis.</li>
+          <li>Access to Movemental&rsquo;s LMS cohort environment and canonical content.</li>
+          <li>Use Case Dashboard setup and ongoing curation during the engagement.</li>
+          <li>The full curated library of nonprofit-relevant AI use cases, with Youthfront-specific adaptation.</li>
+          <li>Executive briefing and board-ready materials at the close of the engagement.</li>
+          <li>Direct working relationship with Josh Shepherd throughout.</li>
+        </ul>
+
+        <h4>Optional extension</h4>
+        <p>
+          Months 5&ndash;8 (depth and scale-out) are scoped separately, based on what the core engagement surfaces. Pricing for the extension is agreed at the Month 4 leadership review &mdash; not before &mdash; so scope follows evidence.
+        </p>
+      </section>
+
+      <hr class="hr" />
+
+      <!-- 10 ─────────────────────────── Why Movemental -->
+      <section id="s-why" aria-labelledby="h-why">
+        <div class="section-number">10 · Why Movemental</div>
+        <h2 id="h-why">A founding-partner relationship, not a vendor arrangement.</h2>
+
+        <div class="sourced">
+          <p>This engagement is structured as a founding partner relationship.</p>
+
+          <p>Youthfront will:</p>
+          <ul class="clean">
+            <li>receive the full Sandbox program and infrastructure</li>
+            <li>help shape how this model is refined in practice</li>
+          </ul>
+        </div>
+
+        <p>
+          Movemental is not a general AI consultancy serving nonprofits as a side audience. It is a body of work built specifically for mission-driven organizations operating under pre-existing trust &mdash; nonprofits, churches, seminaries, and movement leaders whose credibility is the ground of their work.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <h4>A published canon</h4>
+            <p>Over 90 evergreen articles on AI stewardship for mission-driven organizations &mdash; the pattern languages, frameworks, and postures behind this engagement are public and legible, not invented in the contract.</p>
+          </div>
+          <div class="card">
+            <h4>Claude-centered posture</h4>
+            <p>Movemental standardizes on Claude Enterprise as the platform backbone for mission-driven AI work &mdash; chosen deliberately for its stewardship posture, safety orientation, and extensibility via skills.</p>
+          </div>
+          <div class="card">
+            <h4>Sandbox as a method, not a metaphor</h4>
+            <p>The Sandbox is a structured, three-layer discovery system with a documented operating model. It is the core of the engagement &mdash; not a workshop name.</p>
+          </div>
+          <div class="card">
+            <h4>Formation-grade training</h4>
+            <p>LMS cohort infrastructure with modules built for staff formation, not generic literacy. Training produces judgment alongside capability, inside real work.</p>
+          </div>
+        </div>
+
+        <h3>About Josh Shepherd</h3>
+
+        <p>
+          The engagement is led directly by Josh Shepherd, who serves as Youthfront&rsquo;s primary facilitator and partner across the season. Josh is the author of the Movemental canon, a practitioner working across nonprofits, churches, and movement-leader platforms, and carries a specific commitment to helping mission-driven organizations remain recognizable as themselves while engaging AI.
+        </p>
+      </section>
+
+      <hr class="hr" />
+
+      <!-- 11 ─────────────────────────── Next Steps -->
+      <section id="s-next" aria-labelledby="h-next">
+        <div class="section-number">11 · Next Steps</div>
+        <h2 id="h-next">A short, honest path into the engagement.</h2>
+
+        <ol class="prose">
+          <li><strong>Confirm scope and readiness.</strong> Natasha, Mike, and Topher review this proposal with the Movemental team. Any scope adjustments are noted.</li>
+          <li><strong>Safety handshake.</strong> A single working session to confirm Youthfront&rsquo;s existing safety posture and the cohort charter.</li>
+          <li><strong>Contract and kickoff.</strong> Founding-partner agreement signed. Kickoff scheduled.</li>
+          <li><strong>Cohort identification.</strong> Natasha names the 6&ndash;12 staff who will carry the Sandbox. Movemental onboards them into the LMS and dashboard.</li>
+          <li><strong>Month 1 begins.</strong> Orientation modules open. First facilitated session scheduled. The work starts.</li>
+        </ol>
+
+        <div class="callout">
+          <h4>Timing</h4>
+          <p>
+            The engagement can begin within two weeks of signed agreement. A realistic target start for Youthfront is inside the next 30&ndash;45 days; a target close for the core four-month engagement is approximately five months from this document&rsquo;s date.
+          </p>
+        </div>
+      </section>
+
+      <hr class="hr" />
+
+      <!-- 12 ─────────────────────────── Closing -->
+      <section id="s-closing" aria-labelledby="h-closing">
+        <div class="section-number">12 · Closing</div>
+        <h2 id="h-closing">Move clearly, not quickly.</h2>
+
+        <div class="sourced">
+          <p>The goal is not to move quickly.</p>
+
+          <p>The goal is to move clearly&mdash;so that any future adoption is:</p>
+
+          <ul class="clean">
+            <li>evidence-based</li>
+            <li>ethically grounded</li>
+            <li>and led by humans, not technology</li>
+          </ul>
+        </div>
+      </section>
+
+      <hr class="hr" />
+
+      <!-- 13 ─────────────────────────── Further Reading -->
+      <section id="s-reading" aria-labelledby="h-reading">
+        <div class="section-number">13 · Further Reading · The Deep Layer</div>
+        <h2 id="h-reading">The canon underneath this proposal.</h2>
+
+        <p>
+          Everything in this proposal sits on a public body of published work. The links below are direct entry points into that canon, grouped for Youthfront&rsquo;s review. Each article stands alone; together they form the operating model.
+        </p>
+
+        <div class="reading">
+          <div class="group">
+            <h4>Frame &amp; sequence</h4>
+            <ul>
+              <li><a href="https://movemental.ai/content/articles/the-movemental-thesis">The Movemental Thesis</a><span class="cat">Frame</span></li>
+              <li><a href="https://movemental.ai/content/articles/the-ssss-framework">The SSSS Framework</a><span class="cat">Frame</span></li>
+              <li><a href="https://movemental.ai/content/articles/ssss-field-guide-for-organizational-leaders">SSSS Field Guide for Organizational Leaders</a><span class="cat">Frame</span></li>
+              <li><a href="https://movemental.ai/content/articles/the-ssss-journey-assessment-checklist">SSSS Journey Assessment Checklist</a><span class="cat">Self-check</span></li>
+              <li><a href="https://movemental.ai/content/articles/why-order-matters">Why Order Matters</a><span class="cat">Sequence</span></li>
+              <li><a href="https://movemental.ai/content/articles/the-two-equal-errors">The Two Equal Errors</a><span class="cat">Posture</span></li>
+              <li><a href="https://movemental.ai/content/articles/there-is-a-way-through-this">There Is a Way Through This</a><span class="cat">Pastoral</span></li>
+            </ul>
+          </div>
+
+          <div class="group">
+            <h4>Safety</h4>
+            <ul>
+              <li><a href="https://movemental.ai/content/articles/safety-before-speed">Safety Before Speed</a><span class="cat">Canon</span></li>
+              <li><a href="https://movemental.ai/content/articles/the-work-of-safety">The Work of Safety</a><span class="cat">Practice</span></li>
+              <li><a href="https://movemental.ai/content/articles/nonprofits-pii-private-agentic-rag">Nonprofits, PII, and Private Agentic RAG</a><span class="cat">Applied</span></li>
+              <li><a href="https://movemental.ai/content/articles/ai-with-integrity">AI With Integrity</a><span class="cat">Posture</span></li>
+            </ul>
+          </div>
+
+          <div class="group">
+            <h4>Sandbox</h4>
+            <ul>
+              <li><a href="https://movemental.ai/content/articles/the-purpose-of-sandbox">The Purpose of Sandbox</a><span class="cat">Canon</span></li>
+              <li><a href="https://movemental.ai/content/articles/the-three-layers-of-sandbox-work">The Three Layers of Sandbox Work</a><span class="cat">Structure</span></li>
+              <li><a href="https://movemental.ai/content/articles/discovery-engine-not-generator">Discovery Engine, Not Generator</a><span class="cat">Mental model</span></li>
+              <li><a href="https://movemental.ai/content/articles/discovering-value-under-constraint">Discovering Value Under Constraint</a><span class="cat">Practice</span></li>
+              <li><a href="https://movemental.ai/content/articles/the-eight-patterns-where-value-hides">The Eight Patterns Where Value Hides</a><span class="cat">Pattern language</span></li>
+              <li><a href="https://movemental.ai/content/articles/the-three-kinds-of-value">The Three Kinds of Value</a><span class="cat">Evaluation</span></li>
+              <li><a href="https://movemental.ai/content/articles/scoring-value-honestly">Scoring Value Honestly</a><span class="cat">Evaluation</span></li>
+              <li><a href="https://movemental.ai/content/articles/the-ethical-and-relational-flag">The Ethical and Relational Flag</a><span class="cat">Ethics</span></li>
+              <li><a href="https://movemental.ai/content/articles/building-the-use-case-portfolio">Building the Use Case Portfolio</a><span class="cat">Deliverable</span></li>
+              <li><a href="https://movemental.ai/content/articles/recipes-are-not-cooking">Recipes Are Not Cooking</a><span class="cat">Skill posture</span></li>
+              <li><a href="https://movemental.ai/content/articles/sandbox-discovery">Sandbox Discovery</a><span class="cat">Overview</span></li>
+            </ul>
+          </div>
+
+          <div class="group">
+            <h4>Skills</h4>
+            <ul>
+              <li><a href="https://movemental.ai/content/articles/skills-as-formation-not-training">Skills as Formation, Not Training</a><span class="cat">Posture</span></li>
+              <li><a href="https://movemental.ai/content/articles/the-skill-of-ai">The Skill of AI</a><span class="cat">Practice</span></li>
+              <li><a href="https://movemental.ai/content/articles/claude-enterprise-skills-nonprofit-backbone">Claude Enterprise Skills as Nonprofit Backbone</a><span class="cat">Platform</span></li>
+            </ul>
+          </div>
+
+          <div class="group">
+            <h4>Solutions</h4>
+            <ul>
+              <li><a href="https://movemental.ai/content/articles/why-solutions-come-last">Why Solutions Come Last</a><span class="cat">Sequence</span></li>
+              <li><a href="https://movemental.ai/content/articles/solutions-deployment">Solutions Deployment</a><span class="cat">Practice</span></li>
+              <li><a href="https://movemental.ai/content/articles/movemental-stack-nonprofit-use-cases">Movemental Stack — Nonprofit Use Cases</a><span class="cat">Library</span></li>
+            </ul>
+          </div>
+
+          <div class="group">
+            <h4>Youthfront-specific</h4>
+            <ul>
+              <li><a href="https://movemental.ai/content/articles/case-study-youthfront">From 1943 to 2026 — A Prospective Case Study of an Integrated System at Youthfront</a><span class="cat">Case study</span></li>
+              <li><a href="https://movemental.ai/content/articles/playbook-nonprofit">Playbook — Nonprofit</a><span class="cat">Playbook</span></li>
+              <li><a href="https://movemental.ai/content/articles/nonprofit-discovery-lab">Nonprofit Discovery Lab</a><span class="cat">Applied</span></li>
+              <li><a href="https://movemental.ai/content/articles/nonprofit-governance-ethics-build">Nonprofit Governance &amp; Ethics Build</a><span class="cat">Applied</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <footer class="doc-footer">
+        <div>Movemental &times; Youthfront</div>
+        <div>Expanded Proposal — Confidential Draft</div>
+      </footer>
+
+    </article>
+  </div>
+
+  <script>
+    (function () {
+      const btn = document.getElementById('toggle-all');
+      if (!btn) return;
+      let allOpen = false;
+      btn.addEventListener('click', function () {
+        allOpen = !allOpen;
+        document.querySelectorAll('details.deep').forEach(function (d) { d.open = allOpen; });
+        btn.textContent = allOpen ? 'Collapse all' : 'Expand all';
+      });
+    })();
+
+    (function () {
+      const links = Array.from(document.querySelectorAll('.toc a[href^="#"]'));
+      const map = new Map();
+      links.forEach(function (a) {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) map.set(el, a);
+      });
+      if (!('IntersectionObserver' in window) || map.size === 0) return;
+
+      const io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            links.forEach(function (l) { l.classList.remove('is-active'); });
+            const active = map.get(entry.target);
+            if (active) active.classList.add('is-active');
+          }
+        });
+      }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+      map.forEach(function (_link, el) { io.observe(el); });
+    })();
+
+    document.addEventListener('keydown', function (e) {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const tag = (e.target && e.target.tagName) || '';
+      if (/INPUT|TEXTAREA|SELECT/.test(tag)) return;
+      if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        window.print();
+      }
+    });
+  </script>
+</body>
+</html>

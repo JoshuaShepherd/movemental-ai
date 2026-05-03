@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The six stages &mdash; Movemental</title>
+    <meta
+      name="description"
+      content="Six stages. One visualization that morphs. Fragmentation · Integration · Activation · Formation · Multiplication · Movement."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#after">Skip past visualization</a>
+
+    <!-- HEADER ------------------------------------------------------------->
+    <header class="site-head" data-head>
+      <div class="site-head__inner">
+        <a class="brand" href="../homepage-concept-modern/index.html">
+          <span class="brand__mark" aria-hidden="true"></span>
+          Movemental
+        </a>
+        <p class="site-head__crumb">
+          The six stages
+          <span class="site-head__sep" aria-hidden="true">&middot;</span>
+          <em>a continuous arc</em>
+        </p>
+        <a class="btn btn--sm btn--ghost" href="#after">Skip</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- INTRO ---------------------------------------------------------- -->
+      <section class="intro">
+        <div class="container">
+          <p class="label reveal">
+            <span class="label__dot" aria-hidden="true"></span>
+            Six stages, one visualization
+          </p>
+          <h1 class="intro__title reveal" style="--d: .05s">
+            The same intelligence,
+            <em>re-composed</em>.
+          </h1>
+          <p class="intro__body reveal" style="--d: .15s">
+            Scroll to walk through the arc. The panel on the right
+            holds a single visualization &mdash; its twelve nodes keep
+            their identity as they travel from scatter to field.
+          </p>
+        </div>
+      </section>
+
+      <!-- DECK ----------------------------------------------------------- -->
+      <section class="deck" aria-label="The six stages">
+        <!-- Sticky visualization column -->
+        <div class="deck__viz-col">
+          <div class="deck__sticky">
+            <svg
+              id="viz"
+              class="viz"
+              viewBox="0 0 640 640"
+              data-stage="1"
+              role="img"
+              aria-labelledby="viz-title"
+            >
+              <title id="viz-title">
+                Six stages visualization: content scatters, integrates into folders, then activates through a network.
+              </title>
+              <!-- Monotone icon library (24×24, stroke) ------------------ -->
+              <defs>
+                <symbol id="ico-pdf" viewBox="0 0 24 24">
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M14 2v6h6M9 13h6M9 17h4M9 9h1"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                    stroke-linecap="round"
+                  />
+                </symbol>
+                <symbol id="ico-book" viewBox="0 0 24 24">
+                  <path
+                    d="M12 7a2 2 0 0 0-2-2H4v14h6a2 2 0 0 1 2 2 2 2 0 0 1 2-2h6V5h-6a2 2 0 0 0-2 2z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                    stroke-linejoin="round"
+                  />
+                  <path d="M12 7v14" fill="none" stroke="currentColor" stroke-width="1.65" />
+                </symbol>
+                <symbol id="ico-youtube" viewBox="0 0 24 24">
+                  <path
+                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.47 8.6.47 8.6.47s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linejoin="round"
+                  />
+                  <path d="M9.75 15.02l5.75-3.27-5.75-3.27v6.54z" fill="currentColor" stroke="none" />
+                </symbol>
+                <symbol id="ico-podcast" viewBox="0 0 24 24">
+                  <path
+                    d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3zM19 10v1a7 7 0 0 1-14 0v-1M12 18v4M8 22h8"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                    stroke-linecap="round"
+                  />
+                </symbol>
+                <symbol id="ico-slides" viewBox="0 0 24 24">
+                  <rect
+                    x="2"
+                    y="3"
+                    width="20"
+                    height="14"
+                    rx="2"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                  />
+                  <path d="M8 21h8M12 17v4M7 8h10M7 12h6" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" />
+                </symbol>
+                <symbol id="ico-article" viewBox="0 0 24 24">
+                  <path
+                    d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-4h18"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                    stroke-linejoin="round"
+                  />
+                  <path d="M9 6h6M9 10h10M9 14h10M9 18h4" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" />
+                </symbol>
+                <symbol id="ico-mail" viewBox="0 0 24 24">
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                  />
+                  <path d="m22 6-10 7L2 6" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" />
+                </symbol>
+                <symbol id="ico-video" viewBox="0 0 24 24">
+                  <rect x="2" y="5" width="14" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.65" />
+                  <path d="m16 10 6-3v10l-6-3v-4z" fill="currentColor" stroke="none" />
+                </symbol>
+                <symbol id="ico-social" viewBox="0 0 24 24">
+                  <path
+                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                    stroke-linejoin="round"
+                  />
+                </symbol>
+                <symbol id="ico-image" viewBox="0 0 24 24">
+                  <rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.65" />
+                  <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
+                  <path d="m21 15-5-5L5 21" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" />
+                </symbol>
+                <symbol id="ico-notes" viewBox="0 0 24 24">
+                  <path
+                    d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                    stroke-linejoin="round"
+                  />
+                  <path d="M14 2v6h6M8 13h8M8 17h6" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" />
+                </symbol>
+                <symbol id="ico-rss" viewBox="0 0 24 24">
+                  <path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" />
+                  <circle cx="5" cy="19" r="1" fill="currentColor" />
+                </symbol>
+                <symbol id="ico-folder" viewBox="0 0 24 24">
+                  <path
+                    d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.65"
+                    stroke-linejoin="round"
+                  />
+                </symbol>
+              </defs>
+
+              <!-- STAGE 3 · Activation rays (from n07 at grid center) ---- -->
+              <g class="edges edges--activation" stroke="currentColor" stroke-width="1.3" fill="none">
+                <line class="edge edge--ray" style="--d: .1s" x1="400" y1="320" x2="400" y2="180" pathLength="100"/>
+                <line class="edge edge--ray" style="--d: .2s" x1="400" y1="320" x2="120" y2="320" pathLength="100"/>
+                <line class="edge edge--ray" style="--d: .3s" x1="400" y1="320" x2="540" y2="460" pathLength="100"/>
+              </g>
+
+              <!-- STAGE 4 · Formation path segments -------------------- -->
+              <g class="edges edges--formation" stroke="currentColor" stroke-width="1.3" fill="none">
+                <line class="edge edge--path" style="--d: .1s" x1="100" y1="320" x2="220" y2="320" pathLength="100"/>
+                <line class="edge edge--path" style="--d: .2s" x1="220" y1="320" x2="340" y2="320" pathLength="100"/>
+                <line class="edge edge--path" style="--d: .3s" x1="340" y1="320" x2="460" y2="320" pathLength="100"/>
+                <line class="edge edge--path" style="--d: .4s" x1="460" y1="320" x2="580" y2="320" pathLength="100"/>
+              </g>
+
+              <!-- STAGE 5 · Multiplication tree edges ------------------- -->
+              <g class="edges edges--multiplication" stroke="currentColor" stroke-width="1.2" fill="none">
+                <line class="edge edge--branch" style="--d: 0s"   x1="320" y1="80"  x2="180" y2="240" pathLength="100"/>
+                <line class="edge edge--branch" style="--d: 0s"   x1="320" y1="80"  x2="460" y2="240" pathLength="100"/>
+                <line class="edge edge--branch" style="--d: .2s"  x1="180" y1="240" x2="100" y2="400" pathLength="100"/>
+                <line class="edge edge--branch" style="--d: .2s"  x1="180" y1="240" x2="260" y2="400" pathLength="100"/>
+                <line class="edge edge--branch" style="--d: .2s"  x1="460" y1="240" x2="400" y2="400" pathLength="100"/>
+                <line class="edge edge--branch" style="--d: .2s"  x1="460" y1="240" x2="540" y2="400" pathLength="100"/>
+              </g>
+
+              <!-- STAGE 6 · Movement network edges (16) ---------------- -->
+              <g class="edges edges--movement" stroke="currentColor" stroke-width="1.1" fill="none">
+                <line class="edge edge--net" x1="110" y1="100" x2="240" y2="80"/>
+                <line class="edge edge--net" x1="240" y1="80"  x2="370" y2="120"/>
+                <line class="edge edge--net" x1="370" y1="120" x2="500" y2="90"/>
+                <line class="edge edge--net" x1="500" y1="90"  x2="560" y2="220"/>
+                <line class="edge edge--net" x1="560" y1="220" x2="480" y2="340"/>
+                <line class="edge edge--net" x1="480" y1="340" x2="340" y2="280"/>
+                <line class="edge edge--net" x1="340" y1="280" x2="370" y2="120"/>
+                <line class="edge edge--net" x1="340" y1="280" x2="190" y2="220"/>
+                <line class="edge edge--net" x1="190" y1="220" x2="110" y2="100"/>
+                <line class="edge edge--net" x1="190" y1="220" x2="90"  y2="360"/>
+                <line class="edge edge--net" x1="90"  y1="360" x2="220" y2="460"/>
+                <line class="edge edge--net" x1="220" y1="460" x2="380" y2="500"/>
+                <line class="edge edge--net" x1="380" y1="500" x2="560" y2="440"/>
+                <line class="edge edge--net" x1="560" y1="440" x2="480" y2="340"/>
+                <line class="edge edge--net" x1="380" y1="500" x2="340" y2="280"/>
+                <line class="edge edge--net" x1="220" y1="460" x2="340" y2="280"/>
+              </g>
+
+              <!-- NODES — twelve persistent nodes. Position controlled by
+                   [data-stage] CSS. The pulse-wrap is used only by n07
+                   when it is the Activation "live" node.                -->
+              <g class="node" id="n01" data-node="1">
+                <g class="node-frag" transform="translate(-12,-12)" aria-hidden="true">
+                  <use href="#ico-pdf" width="24" height="24" />
+                </g>
+                <g class="node-folder-hit" role="button" tabindex="-1"
+                   data-folder-name="Canon / PDF"
+                   aria-label="Open folder: Canon PDF archive">
+                  <rect class="node-folder-focus" x="-48" y="-30" width="96" height="70" rx="10" fill="transparent"/>
+                  <use class="node-folder-glyph" href="#ico-folder" x="-22" y="-24" width="44" height="44"/>
+                  <text class="node-folder-label" x="0" y="32" text-anchor="middle">Canon · PDF</text>
+                </g>
+                <circle class="node-dot" r="8" fill="currentColor" />
+              </g>
+              <g class="node" id="n02" data-node="2">
+                <g class="node-frag" transform="translate(-12,-12)" aria-hidden="true">
+                  <use href="#ico-book" width="24" height="24" />
+                </g>
+                <g class="node-folder-hit node-folder-hit--featured" role="button" tabindex="-1"
+                   data-folder-name="Books"
+                   aria-label="Open folder: Books — live Forgotten Ways example">
+                  <rect class="node-folder-focus" x="-48" y="-30" width="96" height="70" rx="10" fill="transparent"/>
+                  <use class="node-folder-glyph" href="#ico-folder" x="-22" y="-24" width="44" height="44"/>
+                  <text class="node-folder-label" x="0" y="32" text-anchor="middle">Books</text>
+                  <circle class="node-folder-mark" cx="18" cy="-18" r="4" fill="currentColor"/>
+                </g>
+                <circle class="node-dot" r="8" fill="currentColor" />
+              </g>
+              <g class="node" id="n03" data-node="3">
+                <g class="node-frag" transform="translate(-12,-12)" aria-hidden="true">
+                  <use href="#ico-youtube" width="24" height="24" />
+                </g>
+                <g class="node-folder-hit" role="button" tabindex="-1"
+                   data-folder-name="YouTube / video"
+                   aria-label="Open folder: YouTube video archive">
+                  <rect class="node-folder-focus" x="-48" y="-30" width="96" height="70" rx="10" fill="transparent"/>
+                  <use class="node-folder-glyph" href="#ico-folder" x="-22" y="-24" width="44" height="44"/>
+                  <text class="node-folder-label" x="0" y="32" text-anchor="middle">YouTube</text>
+                </g>
+                <circle class="node-dot" r="8" fill="currentColor" />
+              </g>
+              <g class="node" id="n04" data-node="4">
+                <g class="node-frag" transform="translate(-12,-12)" aria-hidden="true">
+                  <use href="#ico-podcast" width="24" height="24" />
+                </g>
+                <g class="node-folder-hit" role="button" tabindex="-1"
+                   data-folder-name="Podcasts / audio"
+                   aria-label="Open folder: Podcasts and audio">
+                  <rect class="node-folder-focus" x="-48" y="-30" width="96" height="70" rx="10" fill="transparent"/>
+                  <use class="node-folder-glyph" href="#ico-folder" x="-22" y="-24" width="44" height="44"/>
+                  <text class="node-folder-label" x="0" y="32" text-anchor="middle">Podcasts</text>
+                </g>
+                <circle class="node-dot" r="8" fill="currentColor" />
+              </g>
+              <g class="node" id="n05" data-node="5">
+                <g class="node-frag" transform="translate(-12,-12)" aria-hidden="true">
+                  <use href="#ico-slides" width="24" height="24" />
+                </g>
+                <g class="node-folder-hit" role="button" tabindex="-1"
+                   data-folder-name="Slide decks"
+                   aria-label="Open folder: Slide decks">
+                  <rect class="node-folder-focus" x="-48" y="-30" width="96" height="70" rx="10" fill="transparent"/>
+                  <use class="node-folder-glyph" href="#ico-folder" x="-22" y="-24" width="44" height="44"/>
+                  <text class="node-folder-label" x="0" y="32" text-anchor="middle">Slide decks</text>
+                </g>
+                <circle class="node-dot" r="8" fill="currentColor" />
+              </g>
+              <g class="node" id="n06" data-node="6">
+                <g class="node-frag" transform="translate(-12,-12)" aria-hidden="true">
+                  <use href="#ico-article" width="24" height="24" />
+                </g>
+                <g class="node-folder-hit" role="button" tabindex="-1"
+                   data-folder-name="Web articles"
+                   aria-label="Open folder: Web articles">
+                  <rect class="node-folder-focus" x="-48" y="-30" width="96" height="70" rx="10" fill="transparent"/>
+                  <use class="node-folder-glyph" href="#ico-folder" x="-22" y="-24" width="44" height="44"/>
+                  <text class="node-folder-label" x="0" y="32" text-anchor="middle">Web articles</text>
+                </g>
+                <circle class="node-dot" r="8" fill="currentColor" />
+              </g>
+              <g class="node node--live" id="n07" data-node="7">
+                <g class="node-pulse-wrap">
+                  <circle class="node-pulse" r="10" fill="none" stroke="currentColor" stroke-width="1.3" />
+                </g>
+                <g class="node-frag" transform="translate(-12,-12)" aria-hidden="true">
+                  <use href="#ico-mail" width="24" height="24" />
+                </g>
+                <g class="node-folder-hit" role="button" tabindex="-1"
+                   data-folder-name="Correspondence"
+                   aria-label="Open folder: Correspondence">
+                  <rect class="node-folder-focus" x="-48" y="-30" width="96" height="70" rx="10" fill="transparent"/>
+                  <use class="node-folder-glyph" href="#ico-folder" x="-22" y="-24" width="44" height="44"/>
+                  <text class="node-folder-label" x="0" y="32" text-anchor="middle">Correspondence</text>
+                </g>
+                <circle class="node-dot" r="8" fill="currentColor" />
+              </g>
+              <g class="node" id="n08" data-node="8">
+                <g class="node-frag" transform="translate(-12,-12)" aria-hidden="true">
+                  <use href="#ico-video" width="24" height="24" />
+                </g>
+                <g class="node-folder-hit" role="button" tabindex="-1"
+                   data-folder-name="Talk recordings"
+                   aria-label="Open folder: Talk recordings">
+                  <rect class="node-folder-focus" x="-48" y="-30" width="96" height="70" rx="10" fill="transparent"/>
+                  <use class="node-folder-glyph" href="#ico-folder" x="-22" y="-24" width="44" height="44"/>
+                  <text class="node-folder-label" x="0" y="32" text-anchor="middle">Talk videos</text>
+                </g>
+                <circle class="node-dot" r="8" fill="currentColor" />
+              </g>
+              <g class="node" id="n09" data-node="9">
+                <g class="node-frag" transform="translate(-12,-12)" aria-hidden="true">
+                  <use href="#ico-social" width="24" height="24" />
+                </g>
+                <g class="node-folder-hit" role="button" tabindex="-1"
+                   data-folder-name="Social threads"
+                   aria-label="Open folder: Social threads">
+                  <rect class="node-folder-focus" x="-48" y="-30" width="96" height="70" rx="10" fill="transparent"/>
+                  <use class="node-folder-glyph" href="#ico-folder" x="-22" y="-24" width="44" height="44"/>
+                  <text class="node-folder-label" x="0" y="32" text-anchor="middle">Social threads</text>
+                </g>
+                <circle class="node-dot" r="8" fill="currentColor" />
+              </g>
+              <g class="node" id="n10" data-node="10">
+                <g class="node-frag" transform="translate(-12,-12)" aria-hidden="true">
+                  <use href="#ico-image" width="24" height="24" />
+                </g>
+                <g class="node-folder-hit" role="button" tabindex="-1"
+                   data-folder-name="Image library"
+                   aria-label="Open folder: Image library">
+                  <rect class="node-folder-focus" x="-48" y="-30" width="96" height="70" rx="10" fill="transparent"/>
+                  <use class="node-folder-glyph" href="#ico-folder" x="-22" y="-24" width="44" height="44"/>
+                  <text class="node-folder-label" x="0" y="32" text-anchor="middle">Images</text>
+                </g>
+                <circle class="node-dot" r="8" fill="currentColor" />
+              </g>
+              <g class="node" id="n11" data-node="11">
+                <g class="node-frag" transform="translate(-12,-12)" aria-hidden="true">
+                  <use href="#ico-notes" width="24" height="24" />
+                </g>
+                <g class="node-folder-hit" role="button" tabindex="-1"
+                   data-folder-name="Notes / drafts"
+                   aria-label="Open folder: Notes and drafts">
+                  <rect class="node-folder-focus" x="-48" y="-30" width="96" height="70" rx="10" fill="transparent"/>
+                  <use class="node-folder-glyph" href="#ico-folder" x="-22" y="-24" width="44" height="44"/>
+                  <text class="node-folder-label" x="0" y="32" text-anchor="middle">Notes · drafts</text>
+                </g>
+                <circle class="node-dot" r="8" fill="currentColor" />
+              </g>
+              <g class="node" id="n12" data-node="12">
+                <g class="node-frag" transform="translate(-12,-12)" aria-hidden="true">
+                  <use href="#ico-rss" width="24" height="24" />
+                </g>
+                <g class="node-folder-hit" role="button" tabindex="-1"
+                   data-folder-name="RSS / syndication"
+                   aria-label="Open folder: RSS syndication">
+                  <rect class="node-folder-focus" x="-48" y="-30" width="96" height="70" rx="10" fill="transparent"/>
+                  <use class="node-folder-glyph" href="#ico-folder" x="-22" y="-24" width="44" height="44"/>
+                  <text class="node-folder-label" x="0" y="32" text-anchor="middle">RSS · feeds</text>
+                </g>
+                <circle class="node-dot" r="8" fill="currentColor" />
+              </g>
+
+              <!-- STAGE 4 · Traveller (opacity-gated; SMIL runs always) -->
+              <circle class="traveller" r="6" fill="currentColor">
+                <animate
+                  attributeName="cx"
+                  values="100;100;220;220;340;340;460;460;580;580;100"
+                  keyTimes="0;0.08;0.2;0.28;0.4;0.48;0.6;0.68;0.8;0.92;1"
+                  dur="7.5s"
+                  repeatCount="indefinite"
+                  calcMode="spline"
+                  keySplines="0.22 1 0.36 1; 0 0 0 0; 0.22 1 0.36 1; 0 0 0 0; 0.22 1 0.36 1; 0 0 0 0; 0.22 1 0.36 1; 0 0 0 0; 0.22 1 0.36 1; 0.4 0 0.6 1"
+                />
+                <animate attributeName="cy" values="320" dur="7.5s" repeatCount="indefinite"/>
+              </circle>
+            </svg>
+
+            <!-- Stage progress column -->
+            <ol class="stage-progress" aria-hidden="true" data-progress>
+              <li data-step="1"><span class="stage-progress__num">01</span><span class="stage-progress__name">Fragmentation</span></li>
+              <li data-step="2"><span class="stage-progress__num">02</span><span class="stage-progress__name">Integration</span></li>
+              <li data-step="3"><span class="stage-progress__num">03</span><span class="stage-progress__name">Activation</span></li>
+              <li data-step="4"><span class="stage-progress__num">04</span><span class="stage-progress__name">Formation</span></li>
+              <li data-step="5"><span class="stage-progress__num">05</span><span class="stage-progress__name">Multiplication</span></li>
+              <li data-step="6"><span class="stage-progress__num">06</span><span class="stage-progress__name">Movement</span></li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Text column — scrolls past the sticky viz -->
+        <div class="deck__text-col">
+          <article class="stage" data-stage="1" aria-current="step">
+            <p class="label"><span class="label__dot" aria-hidden="true"></span>Stage 01</p>
+            <h2 class="stage__name">Fragmentation</h2>
+            <p class="stage__caption">Your intelligence exists &mdash; <em>but in pieces</em>.</p>
+          </article>
+
+          <article class="stage" data-stage="2">
+            <p class="label"><span class="label__dot" aria-hidden="true"></span>Stage 02</p>
+            <h2 class="stage__name">Integration</h2>
+            <p class="stage__caption"><em>Everything</em> is brought into one system.</p>
+            <p class="stage__hint">
+              In the diagram, click a folder to browse normalized JSON and Markdown artifacts.
+            </p>
+          </article>
+
+          <article class="stage" data-stage="3">
+            <p class="label"><span class="label__dot" aria-hidden="true"></span>Stage 03</p>
+            <h2 class="stage__name">Activation</h2>
+            <p class="stage__caption">Your intelligence becomes <em>usable</em>.</p>
+          </article>
+
+          <article class="stage" data-stage="4">
+            <p class="label"><span class="label__dot" aria-hidden="true"></span>Stage 04</p>
+            <h2 class="stage__name">Formation</h2>
+            <p class="stage__caption">People are <em>shaped</em>, not just informed.</p>
+          </article>
+
+          <article class="stage" data-stage="5">
+            <p class="label"><span class="label__dot" aria-hidden="true"></span>Stage 05</p>
+            <h2 class="stage__name">Multiplication</h2>
+            <p class="stage__caption">Your work begins to <em>scale through systems</em>.</p>
+          </article>
+
+          <article class="stage" data-stage="6">
+            <p class="label"><span class="label__dot" aria-hidden="true"></span>Stage 06</p>
+            <h2 class="stage__name">Movement</h2>
+            <p class="stage__caption">Your work becomes part of a <em>connected field</em>.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- AFTER DECK ----------------------------------------------------- -->
+      <section class="after" id="after">
+        <div class="container">
+          <p class="label">
+            <span class="label__dot" aria-hidden="true"></span>
+            End of the arc
+          </p>
+          <h2 class="after__title">
+            From fragmented pieces to a <em>connected field</em>.
+          </h2>
+          <p class="after__body">
+            Six stages. One library of artifacts. Read the full story in
+            the fragmentation page.
+          </p>
+          <div class="after__ctas">
+            <a class="btn btn--primary" href="../fragmentation-concept-modern/index.html">
+              Read the full story
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="btn btn--ghost" href="../homepage-concept-modern/index.html">
+              Back to home
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-foot">
+      <div class="container">
+        <span>&copy; <span data-year></span> Movemental</span>
+        <span class="site-foot__tag">
+          Twelve nodes. One arc. <em>Same intelligence, re-composed.</em>
+        </span>
+      </div>
+    </footer>
+
+    <!-- Folder + file preview dialogs (Integration stage) ---------------- -->
+    <dialog class="asset-dlg asset-dlg--wide" id="dlg-folder" aria-labelledby="dlg-folder-title">
+      <div class="asset-dlg__head">
+        <div>
+          <p class="asset-dlg__kicker">Integration &middot; folder</p>
+          <h2 class="asset-dlg__title" id="dlg-folder-title" data-folder-title>Books</h2>
+        </div>
+        <button type="button" class="asset-dlg__close" data-close-dialog aria-label="Close">
+          &times;
+        </button>
+      </div>
+      <p class="asset-dlg__lede" data-folder-context>
+        Published books live as a book manifest (JSON) plus one Markdown file per chapter.
+      </p>
+      <div class="tree" data-folder-tree role="tree" aria-label="Folder contents"></div>
+      <p class="asset-dlg__fineprint" data-folder-fineprint>
+        Click any <code>.json</code> or <code>.md</code> file to open it.
+      </p>
+    </dialog>
+
+    <dialog class="asset-dlg asset-dlg--wide" id="dlg-json" aria-labelledby="dlg-json-title">
+      <div class="asset-dlg__head">
+        <div>
+          <p class="asset-dlg__kicker" data-file-kicker>corpus/alan_hirsch/the-forgotten-ways/</p>
+          <h2 class="asset-dlg__title" id="dlg-json-title" data-file-title>the-forgotten-ways-book.json</h2>
+        </div>
+        <button type="button" class="asset-dlg__close" data-close-dialog aria-label="Close">
+          &times;
+        </button>
+      </div>
+      <pre class="asset-pre" id="dlg-json-body"></pre>
+    </dialog>
+
+    <dialog class="asset-dlg asset-dlg--wide" id="dlg-md" aria-labelledby="dlg-md-title">
+      <div class="asset-dlg__head">
+        <div>
+          <p class="asset-dlg__kicker" data-md-kicker>corpus/alan_hirsch/the-forgotten-ways/</p>
+          <h2 class="asset-dlg__title" id="dlg-md-title" data-md-title>the-forgotten-ways-ch04-the-heart-of-it-all-jesus-is-lord.md</h2>
+          <p class="asset-dlg__sub" data-md-sub>The Forgotten Ways &middot; Ch. 4 &middot; Alan Hirsch</p>
+        </div>
+        <button type="button" class="asset-dlg__close" data-close-dialog aria-label="Close">
+          &times;
+        </button>
+      </div>
+      <article class="asset-md" id="dlg-md-body"></article>
+    </dialog>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

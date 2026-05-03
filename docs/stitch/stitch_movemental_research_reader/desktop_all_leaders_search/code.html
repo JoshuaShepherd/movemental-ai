@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Research Library - All Leaders</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#000000",
+                      "secondary-container": "#d0e1fb",
+                      "surface-container": "#f0edef",
+                      "error": "#ba1a1a",
+                      "surface-container-highest": "#e4e2e4",
+                      "on-tertiary-fixed": "#191c1e",
+                      "on-tertiary": "#ffffff",
+                      "outline": "#76777d",
+                      "on-primary-fixed": "#131b2e",
+                      "tertiary-fixed": "#e0e3e5",
+                      "surface-variant": "#e4e2e4",
+                      "on-tertiary-fixed-variant": "#444749",
+                      "secondary-fixed": "#d3e4fe",
+                      "surface-bright": "#fcf8fa",
+                      "on-tertiary-container": "#818486",
+                      "surface": "#fcf8fa",
+                      "background": "#fcf8fa",
+                      "inverse-on-surface": "#f3f0f2",
+                      "surface-container-lowest": "#ffffff",
+                      "on-error": "#ffffff",
+                      "surface-dim": "#dcd9db",
+                      "inverse-primary": "#bec6e0",
+                      "inverse-surface": "#303032",
+                      "primary-fixed-dim": "#bec6e0",
+                      "on-primary": "#ffffff",
+                      "surface-container-high": "#eae7e9",
+                      "on-background": "#1b1b1d",
+                      "outline-variant": "#c6c6cd",
+                      "surface-tint": "#565e74",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "tertiary-container": "#191c1e",
+                      "on-secondary-container": "#54647a",
+                      "on-secondary-fixed": "#0b1c30",
+                      "on-primary-container": "#7c839b",
+                      "primary-fixed": "#dae2fd",
+                      "tertiary-fixed-dim": "#c4c7c9",
+                      "on-secondary": "#ffffff",
+                      "on-surface": "#1b1b1d",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "on-surface-variant": "#45464d",
+                      "secondary": "#505f76",
+                      "surface-container-low": "#f6f3f5",
+                      "tertiary": "#000000",
+                      "primary-container": "#131b2e",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "error-container": "#ffdad6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "content-max-width": "760px",
+                      "unit": "4px",
+                      "gutter": "24px",
+                      "section-gap": "48px",
+                      "sidebar-width": "280px"
+              },
+              "fontFamily": {
+                      "body-ui": [
+                              "inter"
+                      ],
+                      "label-caps": [
+                              "inter"
+                      ],
+                      "h2": [
+                              "inter"
+                      ],
+                      "document-title": [
+                              "Instrument Serif"
+                      ],
+                      "body-reading": [
+                              "inter"
+                      ],
+                      "metadata": [
+                              "inter"
+                      ],
+                      "h1": [
+                              "inter"
+                      ],
+                      "display-title": [
+                              "Instrument Serif"
+                      ]
+              },
+              "fontSize": {
+                      "body-ui": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "11px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h2": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "document-title": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-reading": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "metadata": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h1": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-title": [
+                              "42px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-ui text-body-ui min-h-screen flex flex-col md:flex-row">
+<!-- TopAppBar (Mobile & Top layer) -->
+<header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md docked full-width top-0 z-50 sticky border-b border-slate-200 dark:border-slate-800 flat no shadows tonal layering flex justify-between items-center w-full px-6 h-14 md:hidden">
+<div class="font-serif italic text-xl text-slate-900 dark:text-slate-100">
+            Research Library
+        </div>
+<div class="flex items-center gap-4 text-slate-900 dark:text-slate-50 cursor-pointer active:opacity-70">
+<span class="material-symbols-outlined hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors rounded-full p-1" data-icon="analytics">analytics</span>
+<span class="material-symbols-outlined hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors rounded-full p-1" data-icon="info">info</span>
+</div>
+</header>
+<!-- SideNavBar (Desktop) -->
+<nav class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-50 font-sans text-sm tracking-tight fixed left-0 top-0 h-screen w-[280px] hidden md:flex flex-col border-r border-slate-200 dark:border-slate-800 flat no shadows z-40">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800">
+<div class="font-serif italic text-lg text-slate-900 dark:text-slate-100 mb-1">
+                The Library
+            </div>
+<div class="text-slate-500 text-xs font-label-caps tracking-widest uppercase">
+                Institutional Archive
+            </div>
+</div>
+<div class="flex flex-col p-4 gap-1 flex-grow overflow-y-auto transition-all duration-200 ease-in-out">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200/30 dark:hover:bg-slate-800/30 rounded-md transition-colors" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="dashboard">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200/30 dark:hover:bg-slate-800/30 rounded-md transition-colors" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="query_stats">query_stats</span>
+<span>Analysis</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-slate-200/50 dark:bg-slate-800/50 text-slate-900 dark:text-slate-50 border-l-2 border-slate-900 dark:border-slate-400 font-medium rounded-r-md transition-colors" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="auto_stories">auto_stories</span>
+<span>Content</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200/30 dark:hover:bg-slate-800/30 rounded-md transition-colors" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="inventory_2">inventory_2</span>
+<span>Archive</span>
+</a>
+</div>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center justify-between text-slate-500 text-xs">
+<span>System Status</span>
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:ml-[280px] min-h-screen">
+<!-- Filter & Search Toolbar (Sticky) -->
+<div class="sticky top-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-outline-variant px-6 py-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+<div class="flex items-center gap-4 w-full sm:w-auto">
+<!-- Dropdown -->
+<div class="relative w-full sm:w-64">
+<select class="w-full appearance-none bg-transparent border border-outline text-on-surface text-body-ui font-body-ui py-2 pl-3 pr-10 rounded focus:outline-none focus:ring-1 focus:ring-primary shadow-sm h-10">
+<option selected="" value="all">All Leaders</option>
+<option value="mlk">Martin Luther King Jr.</option>
+<option value="gandhi">Mahatma Gandhi</option>
+<option value="mandela">Nelson Mandela</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-on-surface">
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Search -->
+<div class="relative w-full sm:w-80">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">search</span>
+</div>
+<input class="w-full bg-surface-container-lowest border border-outline text-on-surface text-body-ui font-body-ui py-2 pl-10 pr-3 rounded focus:outline-none focus:ring-1 focus:ring-primary shadow-sm h-10" placeholder="Search archive..." type="text" value="Civil Rights"/>
+</div>
+</div>
+<!-- Content Layout (Sidebar Files + Main Document) -->
+<div class="flex-1 flex flex-col lg:flex-row overflow-hidden">
+<!-- Contextual Sidebar (File List) -->
+<div class="w-full lg:w-[320px] bg-surface border-r border-outline-variant flex flex-col flex-shrink-0 h-[300px] lg:h-auto overflow-hidden">
+<div class="p-4 border-b border-outline-variant bg-surface-container-lowest">
+<h2 class="font-h2 text-h2 text-on-surface">Search Results</h2>
+<p class="font-metadata text-metadata text-on-surface-variant mt-1">Listing 12 files matching "Civil Rights"</p>
+</div>
+<div class="flex-1 overflow-y-auto p-2 space-y-1">
+<!-- File Item Active -->
+<div class="p-3 bg-surface-container-high rounded cursor-pointer border border-transparent">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-surface-variant mt-0.5 text-[20px]" data-icon="description">description</span>
+<div>
+<h3 class="font-body-reading text-[14px] text-on-surface font-semibold leading-tight">Speech Notes</h3>
+<p class="font-metadata text-[11px] text-on-surface-variant mt-1">All Leaders / Martin Luther King Jr.</p>
+</div>
+</div>
+</div>
+<!-- File Item Inactive -->
+<div class="p-3 hover:bg-surface-container rounded cursor-pointer border border-transparent transition-colors">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-outline mt-0.5 text-[20px]" data-icon="draft">draft</span>
+<div>
+<h3 class="font-body-reading text-[14px] text-on-surface leading-tight">Letter from Birmingham Jail Draft</h3>
+<p class="font-metadata text-[11px] text-on-surface-variant mt-1">All Leaders / Martin Luther King Jr.</p>
+</div>
+</div>
+</div>
+<!-- File Item Inactive -->
+<div class="p-3 hover:bg-surface-container rounded cursor-pointer border border-transparent transition-colors">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-outline mt-0.5 text-[20px]" data-icon="article">article</span>
+<div>
+<h3 class="font-body-reading text-[14px] text-on-surface leading-tight">March on Washington Organizing Memo</h3>
+<p class="font-metadata text-[11px] text-on-surface-variant mt-1">All Leaders / Civil Rights Movement</p>
+</div>
+</div>
+</div>
+<!-- File Item Inactive -->
+<div class="p-3 hover:bg-surface-container rounded cursor-pointer border border-transparent transition-colors">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-outline mt-0.5 text-[20px]" data-icon="history_edu">history_edu</span>
+<div>
+<h3 class="font-body-reading text-[14px] text-on-surface leading-tight">Montgomery Bus Boycott Strategy</h3>
+<p class="font-metadata text-[11px] text-on-surface-variant mt-1">All Leaders / Rosa Parks Context</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Document Canvas -->
+<div class="flex-1 bg-surface-container-lowest overflow-y-auto relative">
+<div class="max-w-[content-max-width] mx-auto px-6 py-12">
+<!-- Document Header -->
+<header class="mb-12">
+<div class="flex gap-2 mb-4">
+<span class="bg-surface-container text-on-surface font-label-caps text-label-caps px-2 py-1 rounded">Speech</span>
+<span class="bg-surface-container text-on-surface font-label-caps text-label-caps px-2 py-1 rounded">Draft</span>
+</div>
+<h1 class="font-document-title text-document-title text-primary mb-4 border-b border-outline-variant pb-6">Speech Notes: Reflections on the Civil Rights Movement</h1>
+<div class="flex items-center gap-6 text-on-surface-variant font-metadata text-metadata">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="person">person</span>
+<span>Martin Luther King Jr.</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="calendar_today">calendar_today</span>
+<span>Circa 1964</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="folder">folder</span>
+<span>Archive Box 42</span>
+</div>
+</div>
+</header>
+<!-- Document Prose -->
+<article class="font-body-reading text-body-reading text-on-surface space-y-6">
+<p class="leading-relaxed">
+                            The following notes appear to be preparatory remarks for a speech delivered following the passing of the Civil Rights Act. The text shows signs of extensive revision, with several passages struck through or heavily annotated in the margins.
+                        </p>
+<blockquote class="italic font-inter border-l-2 border-primary pl-4 py-1 my-8 text-on-surface-variant">
+                            "We must recognize that the law can only do so much. It can regulate behavior, but it cannot change hearts. It is now our task, having secured the legal framework of equality, to build the spiritual framework of brotherhood."
+                        </blockquote>
+<h2 class="font-h2 text-h2 text-primary mt-10 mb-4">Key Themes Identified</h2>
+<ul class="list-none space-y-3 pl-4">
+<li class="relative before:content-[''] before:absolute before:left-[-16px] before:top-[10px] before:w-1.5 before:h-1.5 before:bg-outline before:rounded-full">
+                                The transition from legislative struggle to economic justice.
+                            </li>
+<li class="relative before:content-[''] before:absolute before:left-[-16px] before:top-[10px] before:w-1.5 before:h-1.5 before:bg-outline before:rounded-full">
+                                The ongoing need for nonviolent resistance in the face of structural inequality.
+                            </li>
+<li class="relative before:content-[''] before:absolute before:left-[-16px] before:top-[10px] before:w-1.5 before:h-1.5 before:bg-outline before:rounded-full">
+                                A critique of moderate complacency following initial legislative victories.
+                            </li>
+</ul>
+<div class="mt-12 p-6 bg-surface-container-low rounded border border-outline-variant">
+<h3 class="font-h2 text-[16px] text-primary mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">info</span>
+                                Archivist Note
+                            </h3>
+<p class="font-metadata text-metadata text-on-surface-variant">
+                                These notes were recovered from the Southern Christian Leadership Conference (SCLC) archives in Atlanta. Water damage obscures the final paragraph, but cross-referencing with audio recordings from the period suggests it concludes with a call for renewed voter registration efforts in the deep South.
+                            </p>
+</div>
+</article>
+<div class="mt-16 pt-8 border-t border-outline-variant flex justify-between items-center">
+<button class="bg-transparent border border-outline text-on-surface font-body-ui text-body-ui px-4 py-2 rounded hover:bg-surface-container transition-colors">
+                            Previous Document
+                        </button>
+<button class="bg-primary text-on-primary font-body-ui text-body-ui px-4 py-2 rounded hover:bg-surface-tint transition-colors shadow-sm">
+                            Next Document
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

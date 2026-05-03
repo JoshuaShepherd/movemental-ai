@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Movemental Intelligence | Relationship Map</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#faf9f6",
+                        "outline": "#737973",
+                        "on-primary-fixed": "#0b2013",
+                        "surface-container-high": "#e9e8e5",
+                        "surface-container-low": "#f4f3f0",
+                        "surface": "#faf9f6",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2f312f",
+                        "on-surface-variant": "#434843",
+                        "on-secondary-fixed": "#151d1a",
+                        "secondary": "#57605b",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f2f1ee",
+                        "surface-variant": "#e3e2df",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#e7bcbf",
+                        "on-tertiary-container": "#b0898c",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c3c8c1",
+                        "tertiary": "#271013",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#1b1c1a",
+                        "secondary-container": "#dbe5de",
+                        "tertiary-container": "#3f2427",
+                        "on-tertiary-fixed-variant": "#5d3f42",
+                        "on-error-container": "#93000a",
+                        "background": "#faf9f6",
+                        "primary": "#061b0e",
+                        "surface-container": "#efeeeb",
+                        "on-primary-container": "#819986",
+                        "secondary-fixed-dim": "#bfc9c2",
+                        "surface-container-highest": "#e3e2df",
+                        "tertiary-fixed": "#ffd9dc",
+                        "surface-dim": "#dbdad7",
+                        "primary-container": "#1b3022",
+                        "secondary-fixed": "#dbe5de",
+                        "primary-fixed": "#d0e9d4",
+                        "on-secondary-fixed-variant": "#404944",
+                        "on-background": "#1b1c1a",
+                        "on-secondary-container": "#5d6661",
+                        "inverse-primary": "#b4cdb8",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#364c3c",
+                        "on-tertiary-fixed": "#2d1417",
+                        "surface-tint": "#4d6453",
+                        "primary-fixed-dim": "#b4cdb8",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; background-color: #faf9f6; }
+        .serif { font-family: 'Newsreader', serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .node-line { stroke: #c3c8c1; stroke-width: 1; stroke-dasharray: 4; }
+        .glass-panel { background: rgba(250, 249, 246, 0.8); backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 z-50 w-full px-8 h-16 flex justify-between items-center bg-[#faf9f6] border-b-0 transition-all">
+<div class="flex items-center gap-12">
+<span class="text-xl font-bold font-['Newsreader'] tracking-tight text-[#061b0e]">Movemental Intelligence</span>
+<nav class="hidden md:flex gap-8">
+<a class="text-[#061b0e] border-b-2 border-[#061b0e] pb-1 font-['Newsreader'] tracking-tight transition-colors duration-300" href="#">Network</a>
+<a class="text-[#5d6661] hover:text-[#061b0e] font-['Newsreader'] tracking-tight transition-colors duration-300" href="#">Stakeholders</a>
+<a class="text-[#5d6661] hover:text-[#061b0e] font-['Newsreader'] tracking-tight transition-colors duration-300" href="#">Insights</a>
+<a class="text-[#5d6661] hover:text-[#061b0e] font-['Newsreader'] tracking-tight transition-colors duration-300" href="#">Strategy</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center bg-surface-container px-4 py-2 rounded-full">
+<span class="material-symbols-outlined text-sm text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm font-label ml-2 w-48" placeholder="Search nodes..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#061b0e] hover:opacity-70 transition-all" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-[#061b0e] hover:opacity-70 transition-all" data-icon="settings">settings</button>
+<button class="bg-[#061b0e] text-white px-6 py-2 rounded-md font-label text-sm hover:opacity-90 transition-all">Create Node</button>
+<img alt="User profile avatar" class="w-8 h-8 rounded-full object-cover" data-alt="Close-up professional portrait of a man with spectacles in soft natural lighting, editorial style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe_rx08VnVugeXMldNmhHtk6pFf4nmIUfGtEf-T58LgBk0BiW-14rbGJJ6om07aRF_FU8dkHHN0L31f69Nba2PGZUGQmv3nfKjcigbAtmePs1Hdp07zGdcjWIbVyqKlYkw0CICAsKZamshLCzxUroE5hb8RR4JzG9YEEeseTpnd235PS59DJL5C-9lWviOMdT434Y6liHpqiWeQp_I6Pvo9BEjOWK8oEgvACV7BUL5tBR9BqKkpc72xNZZ74DV7-l3xH5hKlXbuks"/>
+</div>
+</div>
+</header>
+<!-- Main Canvas Area -->
+<main class="relative h-screen pt-16 overflow-hidden bg-surface">
+<!-- Canvas Filtering UI -->
+<div class="absolute top-24 left-8 z-40 flex flex-col gap-4">
+<div class="glass-panel p-6 rounded-xl shadow-sm border border-outline-variant/15 max-w-xs">
+<h2 class="serif text-2xl mb-4 font-light text-primary">Relational Intelligence</h2>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Visualizing the collective memory and impact threads of Movemental.</p>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded-sm border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="text-sm font-label text-on-surface group-hover:text-primary transition-colors">Donors</span>
+<span class="ml-auto w-2 h-2 rounded-full bg-primary/40"></span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded-sm border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="text-sm font-label text-on-surface group-hover:text-primary transition-colors">Staff</span>
+<span class="ml-auto w-2 h-2 rounded-full bg-secondary"></span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded-sm border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="text-sm font-label text-on-surface group-hover:text-primary transition-colors">Partners</span>
+<span class="ml-auto w-2 h-2 rounded-full bg-on-primary-container"></span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded-sm border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="text-sm font-label text-on-surface group-hover:text-primary transition-colors">Impact Projects</span>
+<span class="ml-auto w-2 h-2 rounded-full bg-tertiary-container"></span>
+</label>
+</div>
+<div class="mt-8 pt-6 border-t border-outline-variant/20">
+<button class="w-full text-left flex items-center justify-between group">
+<span class="text-xs font-bold tracking-widest uppercase text-outline">Quick Filters</span>
+<span class="material-symbols-outlined text-sm text-outline">expand_more</span>
+</button>
+<div class="mt-4 flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container rounded-full text-[10px] font-bold text-on-secondary-fixed-variant cursor-pointer hover:bg-secondary-container transition-colors">High-Impact</span>
+<span class="px-3 py-1 bg-surface-container rounded-full text-[10px] font-bold text-on-secondary-fixed-variant cursor-pointer hover:bg-secondary-container transition-colors">Regional Board</span>
+<span class="px-3 py-1 bg-surface-container rounded-full text-[10px] font-bold text-on-secondary-fixed-variant cursor-pointer hover:bg-secondary-container transition-colors">Active Q4</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Network Diagram Visualization (Simulated) -->
+<div class="absolute inset-0 z-0">
+<svg class="w-full h-full">
+<!-- Lines representing connections -->
+<line class="node-line" x1="50%" x2="30%" y1="50%" y2="40%"></line>
+<line class="node-line" x1="50%" x2="70%" y1="50%" y2="35%"></line>
+<line class="node-line" x1="50%" x2="65%" y1="50%" y2="65%"></line>
+<line class="node-line" x1="50%" x2="35%" y1="50%" y2="70%"></line>
+<line class="node-line" x1="30%" x2="20%" y1="40%" y2="55%"></line>
+<line class="node-line" x1="70%" x2="85%" y1="35%" y2="45%"></line>
+</svg>
+<!-- Node Elements -->
+<!-- Central Node -->
+<div class="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 group">
+<div class="relative flex flex-col items-center">
+<div class="w-20 h-20 bg-primary-container rounded-full flex items-center justify-center border-4 border-surface shadow-xl z-10 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="hub">hub</span>
+</div>
+<span class="mt-3 serif text-lg font-medium text-primary">Movemental Base</span>
+</div>
+</div>
+<!-- Donor Node (Sarah Jenkins) -->
+<div class="absolute top-[40%] left-[30%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<div class="relative flex flex-col items-center">
+<div class="w-14 h-14 bg-surface-container-lowest rounded-full flex items-center justify-center border-2 border-primary shadow-md z-10 transition-transform group-hover:scale-110">
+<img alt="Sarah Jenkins" class="w-full h-full rounded-full object-cover" data-alt="Editorial portrait of a woman in her 50s, warm studio lighting, professional and approachable, minimal background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC26kmBoeYOempgN1xOhJ37CPjrIbCkjqXTsaXRQxdL-us2gpsjH7g68v9P1k3WGJPv_1ScPYKljoOLvxBeCF6SRW3p4Lb5I9TfgcIJhN41Z-peYo-97T3PRnCXh_DMmviEa7ScKkRDSvZ244X8OpMv0e6hIOzi5SglNUo6uMPUdCBZ1T0QQzz3Z1SZEGY_wFCZF_pEw4WYTNL-G978bafNuXkrmu28mKZROUD_sjSh5WZ3_Vr6dHUgJhQVFLXZe4YCJe8wuaDCNk"/>
+</div>
+<div class="absolute -top-1 -right-1 w-4 h-4 bg-primary rounded-full border-2 border-surface"></div>
+<span class="mt-2 font-label text-xs font-semibold text-primary">Sarah Jenkins</span>
+<span class="text-[10px] text-on-surface-variant font-label">Lead Donor</span>
+</div>
+</div>
+<!-- Staff Node -->
+<div class="absolute top-[35%] left-[70%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<div class="relative flex flex-col items-center">
+<div class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center border-2 border-surface shadow-md z-10 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="person_search">person_search</span>
+</div>
+<span class="mt-2 font-label text-xs font-semibold text-primary">Marcus Thorne</span>
+<span class="text-[10px] text-on-surface-variant font-label">Program Lead</span>
+</div>
+</div>
+<!-- Impact Project Node -->
+<div class="absolute top-[65%] left-[65%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<div class="relative flex flex-col items-center">
+<div class="w-16 h-16 bg-surface-container-lowest rounded-full flex items-center justify-center border-2 border-outline-variant shadow-md z-10 transition-transform group-hover:scale-110 overflow-hidden">
+<img alt="Tuli Project" class="w-full h-full object-cover opacity-80" data-alt="Minimalist architectural shot of a modern community center with wooden textures and large windows, soft morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaySbjeUsx8n_YY4XgeYUp2pmvxLBM1Qj-DuMCjaODwdL1_elmRTHQSXmT8BZ6WvDHrfEzZfTiegVmkmG2z31pv8r3JW5jx_ehkqCSIcVM5wCsFaH9DtYM7NnKNx96ewSStfoRLnCor83FZDl9EnDGavDnzTcmq-KxMla55DtsAjVShpQEmIaYbxYwC3KFYQseko8ym1bm-MZwYsHFEKX0RQAc3Ekey9x8CZ_Xra027_5Eokr18chLUOlz5kWIV5JLP7iJfW78-mA"/>
+<div class="absolute inset-0 bg-primary/20"></div>
+</div>
+<span class="mt-2 font-label text-xs font-semibold text-primary">The Tuli Project</span>
+<span class="text-[10px] text-on-surface-variant font-label">Active Impact</span>
+</div>
+</div>
+<!-- Partner Node -->
+<div class="absolute top-[70%] left-[35%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<div class="relative flex flex-col items-center">
+<div class="w-12 h-12 bg-on-primary-container/10 rounded-full flex items-center justify-center border-2 border-on-primary-container shadow-md z-10 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="corporate_fare">corporate_fare</span>
+</div>
+<span class="mt-2 font-label text-xs font-semibold text-primary">Global Reach Inc.</span>
+<span class="text-[10px] text-on-surface-variant font-label">High-Impact Partner</span>
+</div>
+</div>
+<!-- Institution Node -->
+<div class="absolute top-[55%] left-[20%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<div class="relative flex flex-col items-center">
+<div class="w-10 h-10 bg-surface-container rounded-full flex items-center justify-center border-2 border-surface shadow-sm z-10 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-outline" data-icon="account_balance">account_balance</span>
+</div>
+<span class="mt-2 font-label text-xs font-semibold text-primary">Regional Board</span>
+</div>
+</div>
+<!-- Floating Narrative Badge -->
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 glass-panel px-6 py-3 rounded-full flex items-center gap-4 shadow-xl border border-outline-variant/20">
+<span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+<p class="text-sm font-label text-primary">Viewing <span class="font-bold">Global Network Overlay</span> • 42 Connected Nodes • 12 Active Threads</p>
+</div>
+</div>
+<!-- Details Panel (The 'Intelligence' view) -->
+<aside class="absolute top-0 right-0 h-full w-96 glass-panel border-l border-outline-variant/10 shadow-2xl z-50 transform transition-transform translate-x-0">
+<div class="p-8 h-full flex flex-col">
+<div class="flex justify-between items-start mb-8">
+<div>
+<span class="text-[10px] font-bold tracking-[0.2em] text-outline uppercase">Node Intelligence</span>
+<h3 class="serif text-3xl text-primary mt-2">Sarah Jenkins</h3>
+<p class="font-label text-sm text-on-surface-variant">Lead Donor &amp; Philanthropic Advisor</p>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors" data-icon="close">close</button>
+</div>
+<div class="space-y-8 flex-grow overflow-y-auto pr-2">
+<section>
+<h4 class="text-xs font-bold uppercase tracking-widest text-primary border-b border-outline-variant/20 pb-2 mb-4">Recent Interaction</h4>
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="calendar_today">calendar_today</span>
+<span class="text-xs font-bold font-label">Q3 Strategy Briefing</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed italic">"Discussed expansion into sub-Saharan water equity projects. Sarah expressed interest in a multi-year commitment pending Q4 impact report."</p>
+</div>
+</section>
+<section>
+<h4 class="text-xs font-bold uppercase tracking-widest text-primary border-b border-outline-variant/20 pb-2 mb-4">Intelligence Mesh</h4>
+<div class="space-y-4">
+<div class="flex items-center gap-4 group">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="water_drop">water_drop</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-primary">The Tuli Project</p>
+<p class="text-[10px] text-outline">Primary Funder (Anchor Stakeholder)</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-sm text-outline opacity-0 group-hover:opacity-100 transition-opacity" data-icon="arrow_forward_ios">arrow_forward_ios</span>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-primary">Regional Board</p>
+<p class="text-[10px] text-outline">Vice-Chairperson (Governance)</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-sm text-outline opacity-0 group-hover:opacity-100 transition-opacity" data-icon="arrow_forward_ios">arrow_forward_ios</span>
+</div>
+</div>
+</section>
+<section>
+<h4 class="text-xs font-bold uppercase tracking-widest text-primary border-b border-outline-variant/20 pb-2 mb-4">Sentiment Analysis</h4>
+<div class="flex gap-2">
+<div class="h-1 bg-primary flex-grow rounded-full"></div>
+<div class="h-1 bg-primary flex-grow rounded-full"></div>
+<div class="h-1 bg-primary flex-grow rounded-full"></div>
+<div class="h-1 bg-outline-variant flex-grow rounded-full"></div>
+<div class="h-1 bg-outline-variant flex-grow rounded-full"></div>
+</div>
+<p class="text-[10px] text-outline mt-2 text-right">Highly Engaged (84%)</p>
+</section>
+</div>
+<div class="pt-6 mt-6 border-t border-outline-variant/20">
+<button class="w-full bg-primary text-white py-3 rounded-md font-label text-sm font-semibold hover:opacity-90 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="edit_note">edit_note</span>
+                        Record New Interaction
+                    </button>
+<button class="w-full mt-3 text-primary py-2 font-label text-xs font-bold hover:underline">View Full Profile</button>
+</div>
+</div>
+</aside>
+</main>
+<!-- Footer -->
+<footer class="bg-[#efeeeb] text-[#061b0e] py-12 px-8 font-['Manrope'] text-sm tracking-wide">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6 max-w-7xl mx-auto">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="text-lg font-semibold text-[#061b0e]">Movemental</span>
+<p class="opacity-70 text-xs">Architecting systemic resilience through relational clarity.</p>
+</div>
+<div class="flex gap-8">
+<a class="opacity-70 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+<a class="opacity-70 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+<a class="opacity-70 hover:opacity-100 transition-opacity" href="#">Data Ethics</a>
+<a class="opacity-70 hover:opacity-100 transition-opacity" href="#">Documentation</a>
+</div>
+<div class="opacity-70">
+                © 2024 Movemental. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>

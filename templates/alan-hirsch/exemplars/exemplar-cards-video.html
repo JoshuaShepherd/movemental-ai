@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Video cards — Movemental (draft HTML)</title>
+    <meta name="description" content="Video list card exemplar for the Movemental design system." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../docs/html/site-templates/site-theme.css" />
+    <style>
+      /* —— Video cards exemplar —— */
+
+      .video-hero {
+        padding: var(--section-y-sm) 24px;
+        background: var(--section);
+      }
+      .video-hero .container {
+        max-width: var(--container-max);
+      }
+      .video-hero__copy {
+        max-width: 560px;
+      }
+
+      /* —— Responsive grid —— */
+      .video-grid {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        max-width: var(--container-max);
+        margin: 0 auto;
+      }
+      @media (min-width: 1080px) {
+        .video-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (max-width: 640px) {
+        .video-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* —— Video card (ghost lift on section surface) —— */
+      .vcard {
+        background: var(--card);
+        border-radius: calc(var(--radius) * 1.5);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .band-section .vcard {
+        box-shadow: var(--shadow-ambient);
+      }
+
+      /* Thumbnail area — 16:9 */
+      .vcard__thumb {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        border-radius: calc(var(--radius) * 1.5) calc(var(--radius) * 1.5) 0 0;
+        background: var(--elevated);
+      }
+      .vcard__thumb img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.2s ease;
+      }
+      .vcard:hover .vcard__thumb img {
+        opacity: 0.88;
+      }
+
+      /* Play affordance — glass circle, 48px (>44px hit area) */
+      .vcard__play {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+      }
+      .vcard__play-btn {
+        width: 48px;
+        height: 48px;
+        min-width: 44px;
+        min-height: 44px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: color-mix(in srgb, var(--card) 72%, transparent);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        color: var(--primary);
+        transition: transform 0.15s ease, background 0.15s ease;
+      }
+      .vcard:hover .vcard__play-btn {
+        transform: scale(1.08);
+        background: color-mix(in srgb, var(--card) 88%, transparent);
+      }
+      .vcard__play-btn svg {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        /* slight optical shift right for play triangle */
+        margin-left: 2px;
+      }
+
+      /* Duration pill — bottom-right of thumbnail */
+      .vcard__duration {
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        z-index: 2;
+        padding: 2px 7px;
+        border-radius: calc(var(--radius) * 0.75);
+        font-size: 0.72rem;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.02em;
+        line-height: 1.5;
+        color: color-mix(in srgb, var(--foreground) 92%, transparent);
+        background: color-mix(in srgb, var(--inverse-surface) 72%, transparent);
+        color: var(--inverse-foreground);
+      }
+
+      /* Card body */
+      .vcard__body {
+        padding: 16px 20px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        flex: 1;
+      }
+
+      /* Type label */
+      .vcard__type {
+        font-size: 0.68rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--primary);
+      }
+
+      /* Title */
+      .vcard__title {
+        margin: 0;
+        font-size: 1.02rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        line-height: 1.32;
+        color: var(--foreground);
+      }
+
+      /* Meta row: tier badge + date */
+      .vcard__meta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: auto;
+        padding-top: 10px;
+        font-size: 0.78rem;
+        color: var(--muted-foreground);
+      }
+
+      .vcard__tier {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 2px 8px;
+        border-radius: var(--radius);
+        font-size: 0.68rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        background: color-mix(in srgb, var(--primary) 10%, transparent);
+        color: var(--primary);
+      }
+      .vcard__tier--free {
+        background: color-mix(in srgb, var(--muted-foreground) 10%, transparent);
+        color: var(--muted-foreground);
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-top">
+      <div class="site-top__inner">
+        <a href="../../../docs/html/site-templates/index.html" class="site-brand">Movemental <small>Draft HTML · not production</small></a>
+        <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-nav-list">Menu</button>
+        <nav class="site-nav" aria-label="Primary sections">
+          <ul id="site-nav-list">
+            <li><a href="../../../docs/html/site-templates/index.html">Home</a></li>
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">How it works</a></li>
+            <li><a href="../../../docs/html/audience-concept-modern/movement-leaders.html">Movement leaders</a></li>
+            <li><a href="../../../docs/html/audience-concept-modern/churches.html">Churches &amp; nonprofits</a></li>
+            <li><a href="../../../docs/html/team-concept-modern/index.html">Proof &amp; about</a></li>
+            <li><a href="../../../docs/html/services-pricing-concept-modern.html">Pricing &amp; FAQ</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero -->
+      <section class="video-hero">
+        <div class="container video-hero__copy">
+          <p class="eyebrow" style="color: var(--muted-foreground)">Exemplar &middot; Video cards</p>
+          <h1 class="display" style="font-size: clamp(1.8rem, 3.5vw, 2.6rem)">Video list cards</h1>
+          <p class="lede" style="color: var(--muted-foreground)">
+            16:9 thumbnail tiles with glass play affordance, duration pill, type label, and optional tier badge.
+          </p>
+        </div>
+      </section>
+
+      <!-- Video grid -->
+      <section class="band-section" style="padding-top: 40px;">
+        <div class="video-grid">
+
+          <!-- Card 1 -->
+          <article class="vcard">
+            <div class="vcard__thumb">
+              <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=640&h=360&fit=crop" alt="Speaker on stage at a leadership conference" loading="lazy" />
+              <div class="vcard__play">
+                <button type="button" class="vcard__play-btn" aria-label="Play video: Apostolic genius in the 21st century">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="7,4 20,12 7,20" /></svg>
+                </button>
+              </div>
+              <span class="vcard__duration">24:18</span>
+            </div>
+            <div class="vcard__body">
+              <span class="vcard__type">Keynote</span>
+              <h3 class="vcard__title">Apostolic genius in the 21st century</h3>
+              <div class="vcard__meta">
+                <span class="vcard__tier">Pro</span>
+                <span>Mar 2024</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="vcard">
+            <div class="vcard__thumb">
+              <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=640&h=360&fit=crop" alt="Roundtable discussion with four panelists" loading="lazy" />
+              <div class="vcard__play">
+                <button type="button" class="vcard__play-btn" aria-label="Play video: Missional church in a post-Christian landscape">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="7,4 20,12 7,20" /></svg>
+                </button>
+              </div>
+              <span class="vcard__duration">38:42</span>
+            </div>
+            <div class="vcard__body">
+              <span class="vcard__type">Panel</span>
+              <h3 class="vcard__title">Missional church in a post-Christian landscape</h3>
+              <div class="vcard__meta">
+                <span class="vcard__tier--free vcard__tier">Free</span>
+                <span>Nov 2023</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="vcard">
+            <div class="vcard__thumb">
+              <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=640&h=360&fit=crop" alt="Whiteboard session with diagrams" loading="lazy" />
+              <div class="vcard__play">
+                <button type="button" class="vcard__play-btn" aria-label="Play video: The fivefold framework explained">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="7,4 20,12 7,20" /></svg>
+                </button>
+              </div>
+              <span class="vcard__duration">12:05</span>
+            </div>
+            <div class="vcard__body">
+              <span class="vcard__type">Explainer</span>
+              <h3 class="vcard__title">The fivefold framework explained</h3>
+              <div class="vcard__meta">
+                <span class="vcard__tier">Pro</span>
+                <span>Sep 2023</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="vcard">
+            <div class="vcard__thumb">
+              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=640&h=360&fit=crop" alt="Audience at a workshop event" loading="lazy" />
+              <div class="vcard__play">
+                <button type="button" class="vcard__play-btn" aria-label="Play video: Why movements stall">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="7,4 20,12 7,20" /></svg>
+                </button>
+              </div>
+              <span class="vcard__duration">1:02:14</span>
+            </div>
+            <div class="vcard__body">
+              <span class="vcard__type">Workshop</span>
+              <h3 class="vcard__title">Why movements stall &mdash; and what reignites them</h3>
+              <div class="vcard__meta">
+                <span class="vcard__tier">Pro</span>
+                <span>Jun 2023</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="vcard">
+            <div class="vcard__thumb">
+              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=640&h=360&fit=crop" alt="Small group conversation in a community space" loading="lazy" />
+              <div class="vcard__play">
+                <button type="button" class="vcard__play-btn" aria-label="Play video: Incarnational community in practice">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="7,4 20,12 7,20" /></svg>
+                </button>
+              </div>
+              <span class="vcard__duration">18:33</span>
+            </div>
+            <div class="vcard__body">
+              <span class="vcard__type">Interview</span>
+              <h3 class="vcard__title">Incarnational community in practice</h3>
+              <div class="vcard__meta">
+                <span class="vcard__tier--free vcard__tier">Free</span>
+                <span>Feb 2023</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="vcard">
+            <div class="vcard__thumb">
+              <img src="https://images.unsplash.com/photo-1560439514-4e9645039924?w=640&h=360&fit=crop" alt="Conference stage with projection screen" loading="lazy" />
+              <div class="vcard__play">
+                <button type="button" class="vcard__play-btn" aria-label="Play video: Recovering the priesthood of all believers">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="7,4 20,12 7,20" /></svg>
+                </button>
+              </div>
+              <span class="vcard__duration">45:09</span>
+            </div>
+            <div class="vcard__body">
+              <span class="vcard__type">Lecture</span>
+              <h3 class="vcard__title">Recovering the priesthood of all believers</h3>
+              <div class="vcard__meta">
+                <span class="vcard__tier">Pro</span>
+                <span>Oct 2022</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="site-footer__inner">
+        <div>
+          <h3 class="site-footer__heading">Product</h3>
+          <ul class="site-footer__links">
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">How it works</a></li>
+            <li><a href="../../../docs/html/services-pricing-concept-modern.html">Services</a></li>
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">Walkthrough</a></li>
+            <li><a href="../../../docs/html/services-pricing-concept-modern.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="site-footer__heading">Trust</h3>
+          <ul class="site-footer__links">
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">Evidence</a></li>
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">Methodology</a></li>
+            <li><a href="../../../docs/html/team-concept-modern/index.html">About</a></li>
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="site-footer__heading">Legal</h3>
+          <ul class="site-footer__links">
+            <li><a href="https://movemental.com/terms">Terms</a></li>
+            <li><a href="../../../docs/html/site-templates/index.html">Templates home</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="site-footer__meta">Static HTML in <code>templates/alan-hirsch/exemplars/</code> &middot; tokens aligned with <code>docs/design/DESIGN.md</code></p>
+    </footer>
+    <script src="../../../docs/html/site-templates/site-shell.js" defer></script>
+  </body>
+</html>

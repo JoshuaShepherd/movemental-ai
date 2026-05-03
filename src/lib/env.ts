@@ -1,0 +1,103 @@
+import { z } from "zod";
+
+/**
+ * Runtime-validated environment variables.
+ * Import from this module rather than reading process.env directly.
+ *
+ * See docs/design/DESIGN.md + Vercel env guidance:
+ *   - server-only secrets have no NEXT_PUBLIC_ prefix
+ *   - NEXT_PUBLIC_* values are exposed to the browser bundle
+ *   - `vercel env pull .env.local` provisions local values
+ */
+const serverSchema = z.object({
+  NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
+  DATABASE_URL: z.string().url().optional(),
+  SUPABASE_SERVICE_ROLE_KEY: z.string().min(1).optional(),
+  /** Multi-tenant org scoping — required for data isolation */
+  TENANT_ORG_ID: z.string().uuid().optional(),
+  // Stripe
+  STRIPE_SECRET_KEY: z.string().min(1).optional(),
+  STRIPE_WEBHOOK_SECRET: z.string().min(1).optional(),
+  // Resend (transactional email)
+  RESEND_API_KEY: z.string().min(1).optional(),
+  /** Verified sender, e.g. updates@yourdomain.com — defaults to onboarding@resend.dev in dev */
+  RESEND_FROM_EMAIL: z.string().email().optional(),
+  /** Display name in the From header, e.g. "Movemental" */
+  RESEND_FROM_NAME: z.string().min(1).optional(),
+  /** Internal inbox for `/api/contact` team notifications (optional) */
+  CONTACT_NOTIFY_EMAIL: z.string().email().optional(),
+  /** Signs one-click newsletter unsubscribe links; use at least 16 random bytes in production. */
+  NEWSLETTER_UNSUBSCRIBE_SECRET: z.string().optional(),
+  /** Shared secret for /book/moderate tooling (set in production) */
+  BOOK_MODERATION_TOKEN: z.string().min(8).optional(),
+  // Sentry (optional — monitoring is disabled when DSN is unset)
+  SENTRY_AUTH_TOKEN: z.string().min(1).optional(),
+  SENTRY_ORG: z.string().min(1).optional(),
+  SENTRY_PROJECT: z.string().min(1).optional(),
+});
+
+const clientSchema = z.object({
+  NEXT_PUBLIC_SUPABASE_URL: z.string().url().optional(),
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1).optional(),
+  NEXT_PUBLIC_SITE_URL: z.string().url().optional(),
+  /** Optional footer / JSON-LD profile URLs — set in Vercel when accounts exist */
+  NEXT_PUBLIC_SOCIAL_LINKEDIN_URL: z.string().url().optional(),
+  NEXT_PUBLIC_SOCIAL_X_URL: z.string().url().optional(),
+  NEXT_PUBLIC_SOCIAL_BLUESKY_URL: z.string().url().optional(),
+  // Stripe publishable key
+  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string().min(1).optional(),
+  // Sentry DSN (optional — monitoring is disabled when unset)
+  NEXT_PUBLIC_SENTRY_DSN: z.string().url().optional(),
+});
+
+const processEnv = {
+  NODE_ENV: process.env.NODE_ENV,
+  DATABASE_URL: process.env.DATABASE_URL,
+  SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
+  TENANT_ORG_ID: process.env.TENANT_ORG_ID,
+  STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
+  STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET,
+  RESEND_API_KEY: process.env.RESEND_API_KEY,
+  RESEND_FROM_EMAIL: process.env.RESEND_FROM_EMAIL,
+  RESEND_FROM_NAME: process.env.RESEND_FROM_NAME,
+  CONTACT_NOTIFY_EMAIL: process.env.CONTACT_NOTIFY_EMAIL,
+  NEWSLETTER_UNSUBSCRIBE_SECRET: process.env.NEWSLETTER_UNSUBSCRIBE_SECRET,
+  BOOK_MODERATION_TOKEN: process.env.BOOK_MODERATION_TOKEN,
+  SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN,
+  SENTRY_ORG: process.env.SENTRY_ORG,
+  SENTRY_PROJECT: process.env.SENTRY_PROJECT,
+  NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
+  NEXT_PUBLIC_SOCIAL_LINKEDIN_URL: process.env.NEXT_PUBLIC_SOCIAL_LINKEDIN_URL,
+  NEXT_PUBLIC_SOCIAL_X_URL: process.env.NEXT_PUBLIC_SOCIAL_X_URL,
+  NEXT_PUBLIC_SOCIAL_BLUESKY_URL: process.env.NEXT_PUBLIC_SOCIAL_BLUESKY_URL,
+  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+  NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN,
+} as const;
+
+const serverParsed = serverSchema.safeParse(processEnv);
+const clientParsed = clientSchema.safeParse(processEnv);
+
+if (!serverParsed.success) {
+  console.error(
+    "❌ Invalid server env:",
+    serverParsed.error.flatten().fieldErrors,
+  );
+  throw new Error("Invalid server environment variables");
+}
+
+if (!clientParsed.success) {
+  console.error(
+    "❌ Invalid client env:",
+    clientParsed.error.flatten().fieldErrors,
+  );
+  throw new Error("Invalid client environment variables");
+}
+
+export const env = {
+  ...serverParsed.data,
+  ...clientParsed.data,
+};
+
+export type Env = typeof env;

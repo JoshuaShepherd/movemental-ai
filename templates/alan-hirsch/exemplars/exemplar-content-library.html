@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Content library — Movemental (draft HTML)</title>
+    <meta name="description" content="Browse articles, books, videos, and more — the full Movemental content archive." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../docs/html/site-templates/site-theme.css" />
+    <style>
+      /* —— Content library page —— */
+
+      .library-hero {
+        padding: var(--section-y-sm) 24px var(--section-y-sm);
+        background: var(--section);
+      }
+      .library-hero .container {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      @media (min-width: 768px) {
+        .library-hero .container {
+          flex-direction: row;
+          align-items: flex-end;
+          justify-content: space-between;
+        }
+      }
+      .library-hero__copy {
+        max-width: 560px;
+      }
+      .library-hero__stats {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .library-hero__stat {
+        font-size: 0.82rem;
+        color: var(--muted-foreground);
+      }
+      .library-hero__stat strong {
+        display: block;
+        font-size: 1.6rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--foreground);
+        line-height: 1.2;
+      }
+
+      /* —— Filter bar —— */
+      .filter-bar {
+        position: sticky;
+        top: 49px; /* below nav */
+        z-index: 50;
+        background: color-mix(in srgb, var(--background) 88%, transparent);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        padding: 12px 24px;
+      }
+      .filter-bar__inner {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+      }
+      .filter-pills {
+        display: flex;
+        gap: 4px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        flex: 1;
+        min-width: 0;
+      }
+      .filter-pills::-webkit-scrollbar { display: none; }
+      .filter-pill {
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
+        padding: 7px 16px;
+        border-radius: 999px;
+        font-size: 0.82rem;
+        font-weight: 500;
+        border: none;
+        cursor: pointer;
+        background: transparent;
+        color: var(--muted-foreground);
+        transition: background 0.15s, color 0.15s;
+      }
+      .filter-pill:hover {
+        background: var(--section);
+        color: var(--foreground);
+      }
+      .filter-pill.is-active {
+        background: color-mix(in srgb, var(--primary) 10%, transparent);
+        color: var(--primary);
+        font-weight: 600;
+      }
+      .filter-search {
+        position: relative;
+        width: 100%;
+        max-width: 280px;
+      }
+      .filter-search__icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 16px;
+        height: 16px;
+        color: var(--muted-foreground);
+        pointer-events: none;
+      }
+      .filter-search input {
+        width: 100%;
+        padding: 8px 12px 8px 36px;
+        font-family: var(--font-sans);
+        font-size: 0.85rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--card);
+        color: var(--foreground);
+        outline: none;
+        transition: border-color 0.15s;
+      }
+      .filter-search input::placeholder {
+        color: var(--muted-foreground);
+      }
+      .filter-search input:focus {
+        border-color: color-mix(in srgb, var(--primary) 45%, var(--border));
+      }
+      @media (max-width: 640px) {
+        .filter-search { max-width: 100%; }
+      }
+
+      /* —— Content grid —— */
+      .content-grid {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 24px;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+      @media (max-width: 400px) {
+        .content-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* —— Shared card base —— */
+      .lib-card {
+        background: var(--card);
+        border-radius: calc(var(--radius) * 2);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .lib-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-ambient);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .lib-card:hover {
+          transform: none;
+        }
+      }
+
+      /* —— Badge —— */
+      .lib-badge {
+        display: inline-block;
+        font-size: 0.62rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        padding: 3px 8px;
+        border-radius: var(--radius);
+        background: color-mix(in srgb, var(--primary) 10%, transparent);
+        color: var(--primary);
+      }
+
+      /* —— Book card —— */
+      .lib-card--book .lib-card__cover {
+        aspect-ratio: 3 / 4;
+        background: linear-gradient(135deg, var(--section) 0%, var(--elevated) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .lib-card--book .lib-card__cover-label {
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted-foreground);
+      }
+      .lib-card__body {
+        padding: 18px 20px 20px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .lib-card__title {
+        margin: 8px 0 6px;
+        font-size: 1.02rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--foreground);
+        line-height: 1.3;
+      }
+      .lib-card__excerpt {
+        margin: 0;
+        font-size: 0.88rem;
+        color: var(--muted-foreground);
+        line-height: 1.55;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .lib-card__footer {
+        margin-top: auto;
+        padding-top: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 0.78rem;
+        color: var(--muted-foreground);
+      }
+      .lib-card__footer a {
+        font-weight: 600;
+        font-size: 0.8rem;
+      }
+
+      /* —— Article card —— */
+      .lib-card--article .lib-card__meta-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.75rem;
+        color: var(--muted-foreground);
+      }
+      .lib-card--article .lib-card__image-strip {
+        height: 160px;
+        background: linear-gradient(160deg, var(--elevated) 0%, var(--section) 100%);
+      }
+
+      /* —— Video card —— */
+      .lib-card--video .lib-card__thumb {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        background: linear-gradient(135deg, var(--inverse-surface) 0%, color-mix(in srgb, var(--inverse-surface) 80%, var(--primary)) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .lib-card__play {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: color-mix(in srgb, var(--card) 92%, transparent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      }
+      .lib-card__play svg {
+        width: 20px;
+        height: 20px;
+        color: var(--foreground);
+        margin-left: 2px;
+      }
+      .lib-card__duration {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        padding: 3px 8px;
+        border-radius: var(--radius);
+        background: color-mix(in srgb, var(--inverse-surface) 82%, transparent);
+        color: var(--inverse-foreground);
+      }
+
+      /* —— Load more —— */
+      .load-more {
+        text-align: center;
+        padding: 48px 24px 0;
+      }
+      .load-more .btn {
+        min-width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-top">
+      <div class="site-top__inner">
+        <a href="../../../docs/html/site-templates/index.html" class="site-brand">Movemental <small>Draft HTML · not production</small></a>
+        <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-nav-list">Menu</button>
+        <nav class="site-nav" aria-label="Primary sections">
+          <ul id="site-nav-list">
+            <li><a href="../../../docs/html/site-templates/index.html">Home</a></li>
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">How it works</a></li>
+            <li><a href="../../../docs/html/audience-concept-modern/movement-leaders.html">Movement leaders</a></li>
+            <li><a href="../../../docs/html/audience-concept-modern/churches.html">Churches &amp; nonprofits</a></li>
+            <li><a href="../../../docs/html/team-concept-modern/index.html">Proof &amp; about</a></li>
+            <li><a href="../../../docs/html/services-pricing-concept-modern.html">Pricing &amp; FAQ</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- 1. Hero -->
+      <section class="library-hero">
+        <div class="container">
+          <div class="library-hero__copy">
+            <p class="eyebrow" style="color: var(--muted-foreground)">Archive &amp; collection</p>
+            <h1 class="display" style="font-size: clamp(1.8rem, 3.5vw, 2.6rem)">Content library</h1>
+            <p class="lede" style="color: var(--muted-foreground)">
+              Books, articles, talks, and media — organized by theme so the ideas compound instead of scatter.
+            </p>
+          </div>
+          <div class="library-hero__stats">
+            <div class="library-hero__stat">
+              <strong>24</strong> articles
+            </div>
+            <div class="library-hero__stat">
+              <strong>8</strong> books
+            </div>
+            <div class="library-hero__stat">
+              <strong>12</strong> videos
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Filter bar + search -->
+      <div class="filter-bar">
+        <div class="filter-bar__inner">
+          <div class="filter-pills" role="tablist" aria-label="Filter content by type">
+            <button class="filter-pill is-active" role="tab" aria-selected="true">All</button>
+            <button class="filter-pill" role="tab" aria-selected="false">Articles</button>
+            <button class="filter-pill" role="tab" aria-selected="false">Books</button>
+            <button class="filter-pill" role="tab" aria-selected="false">Videos</button>
+            <button class="filter-pill" role="tab" aria-selected="false">Podcasts</button>
+          </div>
+          <div class="filter-search">
+            <svg class="filter-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
+            </svg>
+            <input type="text" placeholder="Filter by title, topic, or year…" aria-label="Search content library" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Content grid -->
+      <section class="band-section" style="padding-top: 40px;">
+        <div class="content-grid">
+
+          <!-- Book 1 -->
+          <article class="lib-card lib-card--book">
+            <div class="lib-card__cover">
+              <span class="lib-card__cover-label">Book cover</span>
+            </div>
+            <div class="lib-card__body">
+              <span class="lib-badge">Book</span>
+              <h3 class="lib-card__title">The Forgotten Ways</h3>
+              <p class="lib-card__excerpt">
+                Reactivating apostolic genius — the missional DNA that fueled the early church and the underground Chinese movement.
+              </p>
+              <div class="lib-card__footer">
+                <span>2006 · 288 pages</span>
+                <a href="#">Read more →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 1 -->
+          <article class="lib-card lib-card--article">
+            <div class="lib-card__image-strip"></div>
+            <div class="lib-card__body">
+              <div class="lib-card__meta-row">
+                <span class="lib-badge">Article</span>
+                <span>8 min read</span>
+                <span>·</span>
+                <span>Mar 2024</span>
+              </div>
+              <h3 class="lib-card__title">Why movements stall — and what reignites them</h3>
+              <p class="lib-card__excerpt">
+                When the structures designed to sustain a movement begin to calcify, the very thing that gave it life becomes the thing that limits it.
+              </p>
+              <div class="lib-card__footer">
+                <span>Leadership · Movements</span>
+                <a href="#">Read →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Video 1 -->
+          <article class="lib-card lib-card--video">
+            <div class="lib-card__thumb">
+              <div class="lib-card__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,3 20,12 6,21" /></svg>
+              </div>
+              <span class="lib-card__duration">24:18</span>
+            </div>
+            <div class="lib-card__body">
+              <div class="lib-card__meta-row">
+                <span class="lib-badge">Video</span>
+                <span>Keynote · 2023</span>
+              </div>
+              <h3 class="lib-card__title">Apostolic genius in the 21st century</h3>
+              <p class="lib-card__excerpt">
+                A keynote exploring how the fivefold gifting described in Ephesians 4 can reshape institutional leadership today.
+              </p>
+              <div class="lib-card__footer">
+                <span>APEST · Ministry</span>
+                <a href="#">Watch →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Book 2 -->
+          <article class="lib-card lib-card--book">
+            <div class="lib-card__cover">
+              <span class="lib-card__cover-label">Book cover</span>
+            </div>
+            <div class="lib-card__body">
+              <span class="lib-badge">Book</span>
+              <h3 class="lib-card__title">5Q: Reactivating the Original Intelligence</h3>
+              <p class="lib-card__excerpt">
+                A full theological and organizational framework for recovering all five callings of Ephesians 4 in every level of the church.
+              </p>
+              <div class="lib-card__footer">
+                <span>2017 · 320 pages</span>
+                <a href="#">Read more →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 2 -->
+          <article class="lib-card lib-card--article">
+            <div class="lib-card__image-strip"></div>
+            <div class="lib-card__body">
+              <div class="lib-card__meta-row">
+                <span class="lib-badge">Article</span>
+                <span>12 min read</span>
+                <span>·</span>
+                <span>Jan 2024</span>
+              </div>
+              <h3 class="lib-card__title">The priesthood of all believers — and what we lost</h3>
+              <p class="lib-card__excerpt">
+                Recovering the Reformation's most radical idea requires more than doctrinal affirmation — it demands structural change in how we organize.
+              </p>
+              <div class="lib-card__footer">
+                <span>Ecclesiology · Reform</span>
+                <a href="#">Read →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Video 2 -->
+          <article class="lib-card lib-card--video">
+            <div class="lib-card__thumb">
+              <div class="lib-card__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,3 20,12 6,21" /></svg>
+              </div>
+              <span class="lib-card__duration">38:42</span>
+            </div>
+            <div class="lib-card__body">
+              <div class="lib-card__meta-row">
+                <span class="lib-badge">Video</span>
+                <span>Panel · 2022</span>
+              </div>
+              <h3 class="lib-card__title">Missional church in a post-Christian landscape</h3>
+              <p class="lib-card__excerpt">
+                A panel discussion on embodying incarnational mission when the surrounding culture no longer grants Christianity default credibility.
+              </p>
+              <div class="lib-card__footer">
+                <span>Mission · Culture</span>
+                <a href="#">Watch →</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Load more -->
+        <div class="load-more">
+          <button class="btn btn-ghost" type="button">Load more content</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="site-footer__inner">
+        <div>
+          <h3 class="site-footer__heading">Platform &amp; depth</h3>
+          <ul class="site-footer__links">
+            <li><a href="../../../docs/html/team-concept-modern/index.html">About</a></li>
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">Evidence</a></li>
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">Methodology</a></li>
+            <li><a href="../../../docs/html/services-pricing-concept-modern.html">Services</a></li>
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">System</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="site-footer__heading">Support &amp; journeys</h3>
+          <ul class="site-footer__links">
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">FAQ</a></li>
+            <li><a href="../../../docs/html/services-pricing-concept-modern.html">Pricing</a></li>
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">Walkthrough</a></li>
+            <li><a href="../../../docs/html/audience-concept-modern/movement-leaders.html">Who we serve</a></li>
+            <li><a href="https://movemental.com/terms">Terms</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="site-footer__heading">Draft meta</h3>
+          <ul class="site-footer__links">
+            <li><a href="../tabbed-argument-page.html">Argument inventory</a></li>
+            <li><a href="../../../docs/html/site-templates/index.html">Templates home</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="site-footer__meta">Static HTML in <code>templates/alan-hirsch/exemplars/</code> · tokens aligned with <code>docs/design/DESIGN.md</code></p>
+    </footer>
+    <script src="../../../docs/html/site-templates/site-shell.js" defer></script>
+  </body>
+</html>

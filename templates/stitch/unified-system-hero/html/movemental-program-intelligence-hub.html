@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;0,700;1,400&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#4d6453",
+                    "primary-container": "#1b3022",
+                    "inverse-surface": "#2f312f",
+                    "surface": "#faf9f6",
+                    "primary-fixed": "#d0e9d4",
+                    "tertiary": "#271013",
+                    "on-tertiary-fixed": "#2d1417",
+                    "secondary-fixed-dim": "#bfc9c2",
+                    "secondary-container": "#dbe5de",
+                    "on-tertiary-fixed-variant": "#5d3f42",
+                    "on-primary-fixed-variant": "#364c3c",
+                    "on-primary-container": "#819986",
+                    "surface-variant": "#e3e2df",
+                    "surface-container": "#efeeeb",
+                    "on-secondary-fixed-variant": "#404944",
+                    "on-surface": "#1b1c1a",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "outline-variant": "#c3c8c1",
+                    "primary": "#061b0e",
+                    "surface-container-high": "#e9e8e5",
+                    "secondary": "#57605b",
+                    "primary-fixed-dim": "#b4cdb8",
+                    "on-background": "#1b1c1a",
+                    "tertiary-fixed-dim": "#e7bcbf",
+                    "on-primary-fixed": "#0b2013",
+                    "on-tertiary-container": "#b0898c",
+                    "tertiary-container": "#3f2427",
+                    "on-surface-variant": "#434843",
+                    "on-secondary-container": "#5d6661",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#dbe5de",
+                    "outline": "#737973",
+                    "inverse-primary": "#b4cdb8",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#ffd9dc",
+                    "surface-container-highest": "#e3e2df",
+                    "surface-dim": "#dbdad7",
+                    "on-error": "#ffffff",
+                    "surface-container-low": "#f4f3f0",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "background": "#faf9f6",
+                    "surface-bright": "#faf9f6",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#151d1a",
+                    "inverse-on-surface": "#f2f1ee"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; background-color: #faf9f6; }
+        .serif { font-family: 'Newsreader', serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<nav class="bg-[#faf9f6] dark:bg-[#061b0e]/95 backdrop-blur-md flex justify-between items-center px-12 py-6 w-full max-w-[1440px] mx-auto z-50">
+<div class="font-['Newsreader'] font-bold text-2xl text-[#061b0e] dark:text-[#faf9f6]">Intelligence Hub</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-[#061b0e] dark:text-[#faf9f6] border-b-2 border-[#061b0e] dark:border-[#faf9f6] pb-1 font-['Manrope'] font-medium hover:text-[#061b0e] dark:hover:text-white transition-colors duration-300" href="#">Programs</a>
+<a class="text-gray-500 dark:text-gray-400 font-['Manrope'] font-medium hover:text-[#061b0e] dark:hover:text-white transition-colors duration-300" href="#">Impact</a>
+<a class="text-gray-500 dark:text-gray-400 font-['Manrope'] font-medium hover:text-[#061b0e] dark:hover:text-white transition-colors duration-300" href="#">Insights</a>
+<a class="text-gray-500 dark:text-gray-400 font-['Manrope'] font-medium hover:text-[#061b0e] dark:hover:text-white transition-colors duration-300" href="#">Strategy</a>
+</div>
+<div class="flex items-center space-x-6">
+<span class="material-symbols-outlined text-[#061b0e] dark:text-[#faf9f6] cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-[#061b0e] dark:text-[#faf9f6] cursor-pointer">settings</span>
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional male portrait with soft neutral lighting and minimal office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADqW1KNaGLv1KD-vPOsUoUKuPpoWdVBd6Kwz6DUp8JkkkBxgliCNLpULurgG1qzdqCqTN_OsYQG4QCY6V2Xn0q-rWdF-tZaL-ydIU8bGQeS4784dcYcf55twhKYC-8HO390UI8GqZvbGS0hgflh5qEyfWVK1UYRIhc6FZNN3XkD71V-MVaUpJwHhSXwhnrFl0S58Qgi1KYEzvnqXX9lSArxgy5TBElJgID16JO2KjFMP6aBNiKDD-HAvtg4iWyCcwqilxSlhbljYE"/>
+</div>
+</div>
+</nav>
+<!-- Header Section -->
+<header class="max-w-[1440px] mx-auto w-full px-12 pt-16 pb-12">
+<h1 class="font-['Newsreader'] text-6xl font-bold tracking-tight text-primary leading-none">Programs</h1>
+<p class="font-['Newsreader'] italic text-2xl text-on-surface-variant mt-4 max-w-2xl">Connecting initiative outcomes to organizational intelligence.</p>
+</header>
+<!-- Main Content Grid -->
+<main class="max-w-[1440px] mx-auto w-full px-12 flex flex-col lg:flex-row gap-12 flex-grow mb-24">
+<!-- Left Column: Program Cards -->
+<div class="flex-grow space-y-12">
+<!-- Education Initiative Card -->
+<section class="group bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-500 hover:shadow-[0_20px_40px_rgba(27,28,26,0.04)]">
+<div class="flex flex-col md:flex-row h-full">
+<div class="w-full md:w-2/5 relative h-64 md:h-auto overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="minimalist architectural shot of a library interior with vast bookshelves and soft natural morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHN5oulwMsrYS7wNRt-Q4oDDZLS0MyT4kbKihkHCt4ak3nAlNoemo5zOWvyYfy0rQNegIeRojhZNdZGlOj0xm17z6H8_sckGk3p1u6kQhvHKjHlJc5Oyc0Lwhrb1jn4_k9sSX_Tm_6oRyprvI9GxeRMsXSINFYHPDjVI8m3hUHsXzbLd09Vq0CPMH49bo3Vrk0nGf6JwDHoENocar_FVdbozYDPKvl8UAUgfdHNrLaA0erszIOYKcLwFu8CJGWH-HLbdVC-EGyAwA"/>
+<div class="absolute inset-0 bg-primary/20 mix-blend-multiply"></div>
+</div>
+<div class="p-10 flex flex-col flex-grow justify-between bg-surface-container-lowest">
+<div>
+<div class="flex justify-between items-start mb-6">
+<h2 class="font-['Newsreader'] text-4xl font-semibold text-primary">Education Initiative</h2>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded text-xs font-semibold tracking-wider font-['Manrope']">ACTIVE</span>
+</div>
+<div class="grid grid-cols-2 gap-8 mb-8">
+<div>
+<h3 class="text-[10px] uppercase tracking-[0.2em] font-bold text-outline mb-2">Goals</h3>
+<p class="text-on-surface leading-relaxed text-sm">Increase literacy rates by 25% in rural districts</p>
+</div>
+<div>
+<h3 class="text-[10px] uppercase tracking-[0.2em] font-bold text-outline mb-2">Outcomes</h3>
+<p class="text-on-surface leading-relaxed text-sm">14,000 students reached in Q3</p>
+</div>
+</div>
+<div class="space-y-4 pt-4 border-t border-surface-container">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">auto_stories</span>
+<span class="text-sm italic font-['Newsreader']">Maya's Journey to University</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">volunteer_activism</span>
+<span class="text-sm font-['Manrope'] text-on-surface-variant">Donors: The Tuli Project, Global Reach Inc.</span>
+</div>
+</div>
+</div>
+<div class="mt-10 flex items-center justify-between">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-md font-['Manrope'] font-medium text-sm hover:opacity-90 transition-all">View Intelligence</button>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary transition-colors">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Health Access Program Card -->
+<section class="group bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-500 hover:shadow-[0_20px_40px_rgba(27,28,26,0.04)]">
+<div class="flex flex-col md:flex-row h-full">
+<div class="w-full md:w-2/5 relative h-64 md:h-auto overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="clean medical setting with blurred equipment and soft white and sage green tones for a clinical yet warm mood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFFEVTmTKqvuShmKFMAa4_UfLWGKiCyKpSwYEk0C8sbaiJozUif-vHi424On-l1XFc6VeUVMo_Je9-zW1OCA6c6bhfWUT8O0UJE0Ca8OlDCvT3Xk2HvoRDXizuKU_XgCZ_15uSKS1eqiknZAwzHm5SNeYl5lxJfCtVB7QZ4j8XMr08gjhonEtTGETG1CSCCLA92CPzRAl7HxSIX04y52Bp7TjGGNJBDE7VSpKFV3L4vhYDLqecVSH1MSigFyo9vCK1issrToXnHzk"/>
+<div class="absolute inset-0 bg-primary/20 mix-blend-multiply"></div>
+</div>
+<div class="p-10 flex flex-col flex-grow justify-between bg-surface-container-lowest">
+<div>
+<div class="flex justify-between items-start mb-6">
+<h2 class="font-['Newsreader'] text-4xl font-semibold text-primary">Health Access Program</h2>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded text-xs font-semibold tracking-wider font-['Manrope']">SCALING</span>
+</div>
+<div class="grid grid-cols-2 gap-8 mb-8">
+<div>
+<h3 class="text-[10px] uppercase tracking-[0.2em] font-bold text-outline mb-2">Goals</h3>
+<p class="text-on-surface leading-relaxed text-sm">Provide mobile clinic access to 50 under-served communities</p>
+</div>
+<div>
+<h3 class="text-[10px] uppercase tracking-[0.2em] font-bold text-outline mb-2">Outcomes</h3>
+<p class="text-on-surface leading-relaxed text-sm">12 new clinics deployed this year</p>
+</div>
+</div>
+<div class="space-y-4 pt-4 border-t border-surface-container">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">auto_stories</span>
+<span class="text-sm italic font-['Newsreader']">A Village Transformed</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">volunteer_activism</span>
+<span class="text-sm font-['Manrope'] text-on-surface-variant">Donors: Sarah Jenkins, Henderson Family Foundation</span>
+</div>
+</div>
+</div>
+<div class="mt-10 flex items-center justify-between">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-md font-['Manrope'] font-medium text-sm hover:opacity-90 transition-all">Full Detail</button>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary transition-colors">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Sidebar -->
+<aside class="w-full lg:w-96 space-y-8">
+<div class="bg-surface-container-low rounded-xl p-8 sticky top-12">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">insights</span>
+<h2 class="font-['Newsreader'] text-2xl font-semibold">Global Program Insights</h2>
+</div>
+<div class="space-y-8">
+<!-- Impact Stat -->
+<div>
+<div class="flex justify-between items-end mb-2">
+<span class="text-xs uppercase tracking-widest font-bold text-outline">Aggregate Impact</span>
+<span class="font-['Newsreader'] text-2xl font-bold text-primary">84%</span>
+</div>
+<div class="w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[84%]"></div>
+</div>
+<p class="text-xs text-on-surface-variant mt-2 font-medium">Of annual goals achieved across all initiatives.</p>
+</div>
+<!-- Synergy Card -->
+<div class="bg-surface-container-lowest p-6 rounded-lg">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-lg">hub</span>
+<h3 class="text-xs font-bold uppercase tracking-widest">Cross-Program Synergies</h3>
+</div>
+<p class="text-sm leading-relaxed text-on-surface italic">
+                            "Education initiatives are driving <span class="font-bold text-primary">15% higher engagement</span> in Health Access programs."
+                        </p>
+</div>
+<!-- AI Search -->
+<div class="pt-6 border-t border-surface-variant">
+<label class="block text-[10px] uppercase tracking-widest font-bold text-outline mb-3">Ask the System about Programs</label>
+<div class="relative">
+<input class="w-full bg-surface-container-high border-none rounded-md py-4 pl-12 pr-4 text-sm focus:ring-1 focus:ring-primary transition-all placeholder:text-gray-400" placeholder="e.g., 'Compare Q3 student reach vs goals'" type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-lg">spark</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Contextual Knowledge Bits -->
+<div class="px-8 space-y-6">
+<div class="flex gap-4 items-start">
+<div class="w-2 h-2 rounded-full bg-primary mt-1.5 shrink-0"></div>
+<p class="text-xs text-on-surface-variant leading-relaxed">System identified positive correlation between mobile clinics and school attendance in Western Districts.</p>
+</div>
+<div class="flex gap-4 items-start">
+<div class="w-2 h-2 rounded-full bg-outline-variant mt-1.5 shrink-0"></div>
+<p class="text-xs text-on-surface-variant leading-relaxed">Quarterly reporting for Global Reach Inc. is due in 4 days.</p>
+</div>
+</div>
+</aside>
+</main>
+<!-- Footer -->
+<footer class="bg-[#efeeeb] dark:bg-[#1b1c1a] w-full mt-24 py-12">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 w-full max-w-[1440px] mx-auto border-t border-transparent">
+<div class="font-['Newsreader'] text-lg font-semibold text-[#061b0e] dark:text-[#faf9f6] mb-4 md:mb-0">Movemental Intelligence Hub</div>
+<div class="flex space-x-8">
+<a class="font-['Manrope'] text-sm tracking-wide text-gray-600 dark:text-gray-400 hover:text-[#061b0e] transition-opacity" href="#">Privacy Policy</a>
+<a class="font-['Manrope'] text-sm tracking-wide text-gray-600 dark:text-gray-400 hover:text-[#061b0e] transition-opacity" href="#">Terms of Service</a>
+<a class="font-['Manrope'] text-sm tracking-wide text-gray-600 dark:text-gray-400 hover:text-[#061b0e] transition-opacity" href="#">Data Ethics</a>
+<a class="font-['Manrope'] text-sm tracking-wide text-gray-600 dark:text-gray-400 hover:text-[#061b0e] transition-opacity" href="#">Contact</a>
+</div>
+<div class="mt-6 md:mt-0 font-['Manrope'] text-sm tracking-wide text-gray-600 dark:text-gray-400">
+                © 2024 Nonprofit Intelligence Hub. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>

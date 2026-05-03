@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Communication History | Movemental</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#5d3f42",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#bfc9c2",
+                        "surface-bright": "#faf9f6",
+                        "on-primary-fixed-variant": "#364c3c",
+                        "surface-container-low": "#f4f3f0",
+                        "on-secondary-fixed": "#151d1a",
+                        "surface-tint": "#4d6453",
+                        "on-surface-variant": "#434843",
+                        "surface-container-highest": "#e3e2df",
+                        "secondary-container": "#dbe5de",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#faf9f6",
+                        "error": "#ba1a1a",
+                        "on-surface": "#1b1c1a",
+                        "on-primary-container": "#819986",
+                        "on-background": "#1b1c1a",
+                        "primary-fixed": "#d0e9d4",
+                        "on-tertiary-container": "#b0898c",
+                        "tertiary-fixed-dim": "#e7bcbf",
+                        "surface-container": "#efeeeb",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2f312f",
+                        "primary": "#061b0e",
+                        "background": "#faf9f6",
+                        "tertiary-fixed": "#ffd9dc",
+                        "on-secondary-container": "#5d6661",
+                        "inverse-on-surface": "#f2f1ee",
+                        "surface-variant": "#e3e2df",
+                        "secondary-fixed": "#dbe5de",
+                        "surface-container-high": "#e9e8e5",
+                        "outline-variant": "#c3c8c1",
+                        "on-primary-fixed": "#0b2013",
+                        "surface-dim": "#dbdad7",
+                        "tertiary": "#271013",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#1b3022",
+                        "secondary": "#57605b",
+                        "outline": "#737973",
+                        "on-secondary-fixed-variant": "#404944",
+                        "on-tertiary-fixed": "#2d1417",
+                        "tertiary-container": "#3f2427",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#b4cdb8",
+                        "primary-fixed-dim": "#b4cdb8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 21px;
+            top: 40px;
+            bottom: -40px;
+            width: 1px;
+            background-color: #c3c8c1;
+            opacity: 0.4;
+        }
+        .timeline-entry:last-child .timeline-line::before {
+            display: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c3c8c1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar (Shared Component Strategy) -->
+<nav class="bg-[#faf9f6]/80 dark:bg-[#061b0e]/80 backdrop-blur-xl docked full-width top-0 sticky z-50 transition-all duration-200">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-semibold font-['Newsreader'] text-[#061b0e] dark:text-[#faf9f6]">Relational Memory</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-[#061b0e] dark:text-[#faf9f6] font-bold border-b-2 border-[#061b0e] dark:border-[#faf9f6] pb-1 font-['Newsreader'] tracking-tight transition-colors duration-300" href="#">Timeline</a>
+<a class="text-[#5d6661] dark:text-[#c3c8c1] font-['Newsreader'] tracking-tight hover:text-[#061b0e] dark:hover:text-[#ffffff] transition-colors duration-300" href="#">Insights</a>
+<a class="text-[#5d6661] dark:text-[#c3c8c1] font-['Newsreader'] tracking-tight hover:text-[#061b0e] dark:hover:text-[#ffffff] transition-colors duration-300" href="#">Participants</a>
+<a class="text-[#5d6661] dark:text-[#c3c8c1] font-['Newsreader'] tracking-tight hover:text-[#061b0e] dark:hover:text-[#ffffff] transition-colors duration-300" href="#">Archive</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#5d6661] cursor-pointer hover:text-primary">notifications</span>
+<span class="material-symbols-outlined text-[#5d6661] cursor-pointer hover:text-primary">settings</span>
+<div class="w-8 h-8 rounded-full overflow-hidden ml-2 ring-1 ring-outline-variant/30">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Close-up portrait of a professional man in a dark green sweater with warm morning light hitting his face" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLnP0UTfdq0khHZDoRK6Gx4S0vhGITKB41UOBUfoAcwB4AwdbkYprEg-H9b-AwPotF7Sw93bOB05dRl2slxXFal9aQH6J5S99_CKMH_Fnf9mUgAum1qxZhU6R4hkYmviYEw0ZYqC_Qs0Ijjck8a0YQDdWC2ZrAMMKk47wsDP0uM0lV-KDRddfaeFw3RPRL3J8eyKMTTLGCf46QvybPYPBBxF6yrbPhL-xJMMpJQouc-ZggrU8dFNgbnMwl84aQxY7PM9cCs8N5XLw"/>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-screen-2xl mx-auto px-8 py-12 flex flex-col md:flex-row gap-12">
+<!-- Sidebar Filters -->
+<aside class="w-full md:w-72 flex-shrink-0">
+<div class="sticky top-28 space-y-10">
+<header>
+<h1 class="text-4xl font-headline font-semibold text-primary leading-tight">Communication History</h1>
+<p class="text-secondary mt-3 font-body text-sm leading-relaxed italic">Unified relational memory for organizational continuity.</p>
+</header>
+<div class="space-y-8">
+<!-- Category: Person -->
+<section>
+<label class="block font-label text-xs uppercase tracking-widest text-outline mb-4">Search Person</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none focus:ring-0 text-sm font-body py-3 px-4 rounded-lg placeholder:text-outline-variant" placeholder="Filter by individual..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-outline-variant text-sm">search</span>
+</div>
+</section>
+<!-- Category: Program -->
+<section>
+<label class="block font-label text-xs uppercase tracking-widest text-outline mb-4">Program</label>
+<div class="flex flex-col gap-2">
+<button class="flex items-center justify-between px-3 py-2 rounded-lg bg-surface-container text-primary font-medium text-sm">
+<span>All Programs</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="grid grid-cols-1 gap-1">
+<label class="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-surface-container-low rounded-lg transition-colors group">
+<input checked="" class="rounded-sm border-outline-variant text-primary focus:ring-primary h-3 w-3" type="checkbox"/>
+<span class="text-sm font-body text-secondary group-hover:text-primary transition-colors">Urban Development</span>
+</label>
+<label class="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-surface-container-low rounded-lg transition-colors group">
+<input class="rounded-sm border-outline-variant text-primary focus:ring-primary h-3 w-3" type="checkbox"/>
+<span class="text-sm font-body text-secondary group-hover:text-primary transition-colors">Sustainability Initiative</span>
+</label>
+<label class="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-surface-container-low rounded-lg transition-colors group">
+<input class="rounded-sm border-outline-variant text-primary focus:ring-primary h-3 w-3" type="checkbox"/>
+<span class="text-sm font-body text-secondary group-hover:text-primary transition-colors">Internal Growth</span>
+</label>
+</div>
+</div>
+</section>
+<!-- Category: Type -->
+<section>
+<label class="block font-label text-xs uppercase tracking-widest text-outline mb-4">Interaction Type</label>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-1.5 rounded-full bg-primary text-on-primary text-xs font-medium cursor-pointer">All</span>
+<span class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-medium cursor-pointer hover:bg-secondary-container transition-colors">Email</span>
+<span class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-medium cursor-pointer hover:bg-secondary-container transition-colors">Meeting</span>
+<span class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-medium cursor-pointer hover:bg-secondary-container transition-colors">Event</span>
+</div>
+</section>
+</div>
+</div>
+</aside>
+<!-- Main Timeline View -->
+<section class="flex-grow max-w-4xl">
+<div class="relative space-y-12">
+<!-- Timeline Entry 1 -->
+<article class="timeline-entry flex gap-8 relative">
+<div class="timeline-line flex-shrink-0 flex flex-col items-center pt-2">
+<div class="w-11 h-11 rounded-full bg-primary-container flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-white text-lg" data-icon="groups">groups</span>
+</div>
+</div>
+<div class="flex-grow">
+<div class="bg-surface-container-low rounded-xl p-8 hover:bg-surface-container transition-all duration-300 group">
+<div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<time class="text-xs font-label uppercase tracking-widest text-outline">Oct 24, 2023 · 10:30 AM</time>
+<span class="text-xs px-2 py-0.5 rounded bg-secondary-container text-on-secondary-container font-medium">Internal Meeting</span>
+</div>
+<h2 class="text-2xl font-headline font-semibold text-primary">Urban Development Q4 Strategy Review</h2>
+</div>
+<div class="flex -space-x-3">
+<img alt="Elena" class="w-10 h-10 rounded-full ring-4 ring-surface-container-low object-cover" data-alt="Portrait of a creative woman with glasses and confident smile in an architectural office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt7a7hLb5t26zM2qjoOq7WIZskcBsowNLfkVUg2YjsaJkemJQ_QF5m0COCID-qYrdxG2B3nOl9b9gox4o7o81d-G1Vudmp32QL3ZxFzG5ow65UCNVpa8B8u-bph7jg5XIRcAiXCX6oa_4VAtsSYRJHR-tBEjIWBHTdAEulGkLKFWYDgP02Zm3wOo8Pg8YKBFX3VE5sNksd9Gggb4fcPrNC_lpaAGpYd2dzrp3xZsSx9KcCL22t8rd17b2l2OiPrlbcMHOs2uwlj2g"/>
+<img alt="Marcus" class="w-10 h-10 rounded-full ring-4 ring-surface-container-low object-cover" data-alt="Candid headshot of a smiling man with a beard and business casual attire in a bright sunlit space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXsogpyM2a01ksnBUoA872H9mF2OHyppCIyb7uIPDc668_ccIIyVx7_4PjliEuG8yPcMqLpgsR3GrxYliFrS71DK_WGt3rMCstQt6xe6prdsPBVG51Pjbzq9Tj488QG_tFwtXpjXGiVCreCDskZJafsF2hrqMnAfqLqPYrLLr91LAxj1rlEma24e8x-8jHjqIdnpaX0F0FjaygUn-OZhJfV-HYb-L6yK_8pK0MB6uh6Dqn-5h55XLozKSZuuNM8hY8eo4OvbNg0W4"/>
+<div class="w-10 h-10 rounded-full bg-surface-container-high ring-4 ring-surface-container-low flex items-center justify-center text-xs font-bold text-secondary">+3</div>
+</div>
+</div>
+<div class="space-y-6">
+<div>
+<h3 class="font-label text-xs uppercase tracking-widest text-outline mb-2">Summary</h3>
+<p class="text-on-surface leading-relaxed font-body">Reviewed the final blueprints for the East-Side Park reclamation. Discussed potential delays in soil remediation and the upcoming community town hall. Focus shifted towards aligning stakeholder expectations for the 2024 launch.</p>
+</div>
+<div class="p-4 bg-surface-container-highest rounded-lg border-l-4 border-primary">
+<h3 class="font-label text-xs uppercase tracking-widest text-primary mb-2">Outcome / Key Takeaway</h3>
+<p class="text-primary font-medium font-headline italic text-lg leading-snug">Approval granted for phase one excavation pending the environmental audit. Town hall scheduled for November 15th.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Timeline Entry 2 -->
+<article class="timeline-entry flex gap-8 relative">
+<div class="timeline-line flex-shrink-0 flex flex-col items-center pt-2">
+<div class="w-11 h-11 rounded-full bg-white ring-2 ring-primary-container flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="mail">mail</span>
+</div>
+</div>
+<div class="flex-grow">
+<div class="bg-surface-container-low rounded-xl p-8 hover:bg-surface-container transition-all duration-300">
+<div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<time class="text-xs font-label uppercase tracking-widest text-outline">Oct 21, 2023 · 04:15 PM</time>
+<span class="text-xs px-2 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-medium">Correspondence</span>
+</div>
+<h2 class="text-2xl font-headline font-semibold text-primary">Budget Re-allocation Proposal</h2>
+</div>
+<div class="flex -space-x-3">
+<img alt="Sarah" class="w-10 h-10 rounded-full ring-4 ring-surface-container-low object-cover" data-alt="Portrait of a focused professional woman in a grey blazer looking directly into the camera with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyzv0mux_OQczL_4xHtWg1wgwQe6wLrVzLQbRO2GWWL-jaui5c5rMyuK2qo7c0WBT6vEXvIZkPGpYE30w0GaPrxzflhSaPs2SowaIU9hoJN18joHaVUM4X12HsZ03_8FG0GeZ74JxffR4gXDoi4dToLsdp50Tj8qXJeukvIU6UB6M2lwkNAZjY-liKY9vCG9EmJbMSf8vaH4O742HIY44oPEsNxYjwoM6kqYUW9l2zPT5jgEhzdqCVlcNRZrc3okdsG4_zrs_owu0"/>
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary ring-4 ring-surface-container-low flex items-center justify-center text-xs font-bold">JD</div>
+</div>
+</div>
+<div class="space-y-6">
+<div>
+<h3 class="font-label text-xs uppercase tracking-widest text-outline mb-2">Summary</h3>
+<p class="text-on-surface leading-relaxed font-body">Email thread regarding the shifting of funds from the digital marketing reserve to the on-site community engagement workshops. Sarah emphasized the need for face-to-face rapport building.</p>
+</div>
+<div class="p-4 bg-surface-container-highest rounded-lg border-l-4 border-primary">
+<h3 class="font-label text-xs uppercase tracking-widest text-primary mb-2">Outcome / Key Takeaway</h3>
+<p class="text-primary font-medium font-headline italic text-lg leading-snug">Finance team flagged for a 5% shift; awaiting VP signature for final confirmation by end of week.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Timeline Entry 3 -->
+<article class="timeline-entry flex gap-8 relative">
+<div class="timeline-line flex-shrink-0 flex flex-col items-center pt-2">
+<div class="w-11 h-11 rounded-full bg-surface-container-highest flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-secondary text-lg" data-icon="calendar_today">calendar_today</span>
+</div>
+</div>
+<div class="flex-grow">
+<div class="bg-surface-container-low rounded-xl p-8 hover:bg-surface-container transition-all duration-300">
+<div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<time class="text-xs font-label uppercase tracking-widest text-outline">Oct 18, 2023 · 09:00 AM</time>
+<span class="text-xs px-2 py-0.5 rounded bg-tertiary-container text-on-tertiary-container font-medium">Public Event</span>
+</div>
+<h2 class="text-2xl font-headline font-semibold text-primary">Sustainability Initiative Expo</h2>
+</div>
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high ring-4 ring-surface-container-low flex items-center justify-center text-xs font-bold text-secondary">ALL</div>
+</div>
+</div>
+<div class="space-y-6">
+<div>
+<h3 class="font-label text-xs uppercase tracking-widest text-outline mb-2">Summary</h3>
+<p class="text-on-surface leading-relaxed font-body">Large-scale organizational exhibition showcasing the progress of the Sustainability Initiative to local stakeholders and partners. High engagement across all booths.</p>
+</div>
+<div class="p-4 bg-surface-container-highest rounded-lg border-l-4 border-primary">
+<h3 class="font-label text-xs uppercase tracking-widest text-primary mb-2">Outcome / Key Takeaway</h3>
+<p class="text-primary font-medium font-headline italic text-lg leading-snug">Secured three new corporate sponsorships and recorded over 400 unique interactions with program leads.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination/Load More -->
+<div class="mt-20 text-center">
+<button class="px-12 py-4 bg-primary text-on-primary rounded-md font-headline text-lg hover:bg-primary-container transition-all duration-300">Load Older Entries</button>
+<p class="mt-4 text-xs font-label text-outline uppercase tracking-widest">Showing 3 of 412 entries</p>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component Strategy) -->
+<footer class="bg-[#efeeeb] dark:bg-[#1b3022] full-width py-12 mt-20 transition-all duration-200">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 w-full gap-6 max-w-screen-2xl mx-auto">
+<div class="flex flex-col gap-2">
+<span class="font-['Newsreader'] italic text-lg text-[#061b0e] dark:text-[#faf9f6]">Relational Memory</span>
+<p class="font-['Manrope'] text-xs uppercase tracking-widest text-[#5d6661] dark:text-[#c3c8c1]">© 2024 Organizational Intelligence Platform. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-[#5d6661] dark:text-[#c3c8c1] font-['Manrope'] text-sm uppercase tracking-widest hover:text-[#061b0e] dark:hover:text-[#ffffff] transition-colors" href="#">Privacy Policy</a>
+<a class="text-[#5d6661] dark:text-[#c3c8c1] font-['Manrope'] text-sm uppercase tracking-widest hover:text-[#061b0e] dark:hover:text-[#ffffff] transition-colors" href="#">Terms of Service</a>
+<a class="text-[#5d6661] dark:text-[#c3c8c1] font-['Manrope'] text-sm uppercase tracking-widest hover:text-[#061b0e] dark:hover:text-[#ffffff] transition-colors" href="#">Security</a>
+<a class="text-[#5d6661] dark:text-[#c3c8c1] font-['Manrope'] text-sm uppercase tracking-widest hover:text-[#061b0e] dark:hover:text-[#ffffff] transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+</body></html>

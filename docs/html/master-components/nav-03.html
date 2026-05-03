@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Master components — Nav 03 · Underline rail</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+    />
+    <link rel="stylesheet" href="./css/core.css" />
+    <link rel="stylesheet" href="./css/nav-demos.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="nav nav--03 nav--has-drawer" data-nav>
+      <div class="nav__inner">
+        <a class="brand" href="./index.html">
+          <span class="brand__mark" aria-hidden="true"></span>
+          Movemental
+        </a>
+        <nav class="nav__links" aria-label="Primary">
+          <ul>
+            <li><a href="#system" class="is-active">System</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#methodology">Methodology</a></li>
+            <li><a href="#case-studies">Case studies</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="nav__actions">
+          <a class="btn btn--primary btn--sm" href="#contact">
+            Book a call
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+        <button
+          type="button"
+          class="nav__toggle"
+          data-nav-toggle
+          aria-expanded="false"
+          aria-controls="nav-drawer-03"
+        >
+          <span></span><span></span>
+        </button>
+      </div>
+      <div id="nav-drawer-03" class="nav__drawer">
+        <ul>
+          <li><a href="#system">System</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#methodology">Methodology</a></li>
+          <li><a href="#case-studies">Case studies</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav__drawer-cta">
+          <a class="btn btn--primary" href="#contact">Book a call</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="demo-page">
+      <article class="container" style="padding-block: var(--section-y)">
+        <p class="label reveal"><span class="label__dot" aria-hidden="true"></span>Nav 03</p>
+        <h1 class="section-title reveal" style="--d: 0.06s">Underline <em>tab rail</em></h1>
+        <p class="demo-kicker reveal" style="--d: 0.1s">
+          On wide screens the link row sits below the brand row, creating a quiet “app shell” rhythm.
+          Active section uses a persistent ink underline — good for long methodology pages with in-page
+          anchors.
+        </p>
+        <div style="max-width: 56ch; color: var(--ink-muted); line-height: 1.65">
+          <p id="system" class="reveal" style="--d: 0.12s">
+            <strong style="color: var(--ink)">System</strong> — how Movemental holds dual
+            intelligences in one operating picture.
+          </p>
+          <p id="services" class="reveal" style="--d: 0.14s; margin-top: 1.25rem">
+            <strong style="color: var(--ink)">Services</strong> — the three lanes we actually sell:
+            clarity, build, and steward.
+          </p>
+          <p id="methodology" class="reveal" style="--d: 0.16s; margin-top: 1.25rem">
+            <strong style="color: var(--ink)">Methodology</strong> — staged progression with honest
+            gates between phases.
+          </p>
+          <p id="case-studies" class="reveal" style="--d: 0.18s; margin-top: 1.25rem">
+            <strong style="color: var(--ink)">Case studies</strong> — named organizations, named
+            constraints, named outcomes.
+          </p>
+          <p id="contact" class="reveal" style="--d: 0.2s; margin-top: 1.25rem; padding-bottom: 25vh">
+            <strong style="color: var(--ink)">Contact</strong> — we respond with a human calendar link,
+            not an automated nurture gauntlet.
+          </p>
+        </div>
+      </article>
+
+      <footer class="site-foot">
+        <div class="site-foot__inner">
+          <span>Nav 03 · underline rail</span>
+          <a href="./index.html">Index</a>
+        </div>
+      </footer>
+    </main>
+
+    <script src="./js/core.js" defer></script>
+  </body>
+</html>

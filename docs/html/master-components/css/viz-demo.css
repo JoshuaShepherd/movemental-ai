@@ -1,0 +1,69 @@
+/* ============================================================================
+   Master components — visualization shells (monochrome / currentColor)
+   ============================================================================ */
+
+.viz-page {
+  padding-block: calc(var(--nav-h) + clamp(2.5rem, 6vw, 4rem)) var(--section-y);
+}
+
+.viz-head {
+  max-width: 52ch;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.viz-panel {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  color: var(--ink);
+}
+
+.viz-panel__cap {
+  font-size: 0.78rem;
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 1rem;
+}
+
+.viz-svg {
+  width: 100%;
+  height: auto;
+  color: var(--ink);
+}
+
+/* --- Heat matrix ---------------------------------------------------------- */
+.viz-matrix {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 3px;
+  max-width: 520px;
+}
+
+.viz-matrix__cell {
+  aspect-ratio: 1;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--ink) var(--v, 8%), var(--bg));
+  border: 1px solid var(--border-soft);
+}
+
+/* --- Spark row ------------------------------------------------------------ */
+.viz-sparks {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.35rem;
+  height: 72px;
+}
+
+.viz-sparks__bar {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+  background: color-mix(in srgb, var(--ink) 22%, var(--border));
+  min-height: 8px;
+  transition: background 0.2s ease;
+}
+
+.viz-sparks__bar:hover {
+  background: color-mix(in srgb, var(--ink) 45%, var(--border));
+}

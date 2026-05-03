@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f5f4ef",
+                    "primary-container": "#1a2b3c",
+                    "on-tertiary-container": "#b4885d",
+                    "tertiary-fixed-dim": "#eebd8e",
+                    "primary-fixed-dim": "#b7c8de",
+                    "on-primary-fixed-variant": "#38485a",
+                    "outline-variant": "#c4c6cd",
+                    "on-surface-variant": "#44474c",
+                    "inverse-on-surface": "#f2f1ec",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#3f2302",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#d2e4fb",
+                    "outline": "#74777d",
+                    "on-primary-container": "#8192a7",
+                    "on-background": "#1b1c19",
+                    "inverse-surface": "#30312e",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#dbdad5",
+                    "on-secondary-fixed-variant": "#304a55",
+                    "surface-container-highest": "#e3e3de",
+                    "secondary-fixed-dim": "#afcbd8",
+                    "on-secondary-fixed": "#021f29",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#b7c8de",
+                    "secondary-container": "#cbe7f5",
+                    "background": "#faf9f4",
+                    "on-primary-fixed": "#0b1d2d",
+                    "surface-bright": "#faf9f4",
+                    "surface-container-high": "#e9e8e3",
+                    "surface": "#faf9f4",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#61401b",
+                    "secondary": "#48626e",
+                    "surface-variant": "#e3e3de",
+                    "secondary-fixed": "#cbe7f5",
+                    "primary": "#041627",
+                    "on-surface": "#1b1c19",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#231100",
+                    "surface-container": "#efeee9",
+                    "on-secondary-container": "#4e6874",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#ffdcbd",
+                    "surface-tint": "#4f6073",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Inter", "sans-serif"],
+                    "serif": ["Newsreader", "serif"],
+                    "sans": ["Inter", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .serif-tight { font-family: 'Newsreader', serif; letter-spacing: -0.02em; }
+        .glass-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .whisper-shadow { box-shadow: 0 8px 32px rgba(27, 28, 25, 0.05); }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed-dim">
+<!-- SideNavBar (Desktop Only) -->
+<aside class="bg-[#f5f4ef] dark:bg-[#0a1b2e] h-screen w-64 fixed left-0 top-0 hidden lg:flex flex-col select-none z-[60]">
+<div class="flex flex-col h-full p-6 gap-y-2">
+<div class="mb-10 px-2">
+<h1 class="font-serif text-xl font-bold text-[#041627] dark:text-[#ffffff]">The Scholarly Framework</h1>
+<p class="text-xs text-secondary font-medium opacity-70">Intellectual Rigor v1.0</p>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-[#48626e] dark:text-[#e9e8e3] hover:bg-[#e9e8e3] dark:hover:bg-[#1a2b3c]/30 hover:translate-x-1 transition-all duration-200 rounded-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="font-sans text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-[#ffffff] dark:bg-[#1a2b3c] text-[#041627] dark:text-[#ffffff] rounded-md shadow-sm transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="hub">hub</span>
+<span class="font-sans text-sm font-medium">Faculty Network</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#48626e] dark:text-[#e9e8e3] hover:bg-[#e9e8e3] dark:hover:bg-[#1a2b3c]/30 hover:translate-x-1 transition-all duration-200 rounded-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="library_books">library_books</span>
+<span class="font-sans text-sm font-medium">Content Library</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#48626e] dark:text-[#e9e8e3] hover:bg-[#e9e8e3] dark:hover:bg-[#1a2b3c]/30 hover:translate-x-1 transition-all duration-200 rounded-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="description">description</span>
+<span class="font-sans text-sm font-medium">Intelligence Briefs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#48626e] dark:text-[#e9e8e3] hover:bg-[#e9e8e3] dark:hover:bg-[#1a2b3c]/30 hover:translate-x-1 transition-all duration-200 rounded-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="inventory_2">inventory_2</span>
+<span class="font-sans text-sm font-medium">Archival</span>
+</a>
+</nav>
+<div class="mt-8 px-2">
+<button class="w-full py-2.5 px-4 bg-primary text-on-primary rounded-md text-sm font-medium hover:bg-primary-container transition-colors active:scale-95">
+                    New Briefing
+                </button>
+</div>
+<div class="mt-auto pt-6 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-[#48626e] dark:text-[#e9e8e3] hover:bg-[#e9e8e3] dark:hover:bg-[#1a2b3c]/30 transition-all duration-200 rounded-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+<span class="font-sans text-sm font-medium">Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#48626e] dark:text-[#e9e8e3] hover:bg-[#e9e8e3] dark:hover:bg-[#1a2b3c]/30 transition-all duration-200 rounded-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="logout">logout</span>
+<span class="font-sans text-sm font-medium">Sign Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Wrapper -->
+<main class="lg:ml-64 min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-[#faf9f4]/80 dark:bg-[#041627]/80 backdrop-blur-md sticky top-0 z-50 shadow-sm dark:shadow-none w-full">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-serif font-bold text-[#041627] dark:text-[#ffffff]">Faculty Intelligence Hub</span>
+<nav class="hidden md:flex items-center gap-6 font-serif tracking-tight text-lg">
+<a class="text-[#041627] dark:text-[#ffffff] border-b-2 border-[#041627] dark:border-[#ffffff] pb-1 cursor-pointer active:scale-95 transition-transform" href="#">Directory</a>
+<a class="text-[#48626e] dark:text-[#e9e8e3] hover:text-[#041627] dark:hover:text-[#ffffff] transition-colors duration-200 cursor-pointer active:scale-95" href="#">Research</a>
+<a class="text-[#48626e] dark:text-[#e9e8e3] hover:text-[#041627] dark:hover:text-[#ffffff] transition-colors duration-200 cursor-pointer active:scale-95" href="#">Grants</a>
+<a class="text-[#48626e] dark:text-[#e9e8e3] hover:text-[#041627] dark:hover:text-[#ffffff] transition-colors duration-200 cursor-pointer active:scale-95" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined p-2 text-[#48626e] hover:bg-[#f5f4ef]/50 dark:hover:bg-[#1a2b3c]/50 rounded-full transition-all cursor-pointer" data-icon="notifications">notifications</span>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined p-2 text-[#48626e] hover:bg-[#f5f4ef]/50 dark:hover:bg-[#1a2b3c]/50 rounded-full transition-all cursor-pointer" data-icon="settings">settings</span>
+</div>
+<img alt="User faculty profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-surface-container-high cursor-pointer" data-alt="Close-up professional portrait of a distinguished academic in a library setting with soft natural window lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHTTbtjitcPPLbYJ9eoU9qFi3xZtzcPUyMRsaUMWovlOXQbjN3ddZ5PcaAfMASoJSjy72L0NVmcMmnKFTLCssZX619q8MOOcFm_9U72fTd4xIjBQW_4eOmipeMEQWGVwb8M1MmvEFeCPEVsdv7bnutY0GkQod6rxjQ7DFpzSNcxmRabzMaIGcfvtKI4aepU7QdSZWtPAElwpLzFLxf296rFTm-6dxz_OzynjOr5H2iCu9OSkcfL9fGkX3y9YiwwpShJPvr4iHq8qI1"/>
+</div>
+</div>
+<div class="bg-[#e9e8e3] h-[1px] dark:bg-[#1a2b3c]"></div>
+</header>
+<!-- Content Canvas -->
+<div class="flex-1 w-full max-w-[1440px] mx-auto px-8 py-12">
+<!-- Hero Editorial Header -->
+<section class="max-w-3xl mb-16">
+<h2 class="text-5xl font-serif font-bold text-primary tracking-tight leading-none mb-6 italic">
+                    The Collective Intelligence.
+                </h2>
+<p class="text-lg text-secondary leading-relaxed font-body">
+                    Access and organize the collective thought, research, and curriculum of our faculty members. This hub connects the specialized pillars of our institutional knowledge.
+                </p>
+</section>
+<!-- Search & Filters -->
+<section class="mb-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+<!-- Search Input -->
+<div class="lg:col-span-6 space-y-2">
+<label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Query Intelligence Base</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-highest border-none focus:ring-0 rounded-lg text-primary placeholder:text-secondary/50 font-body transition-all focus:shadow-sm" placeholder="Search by faculty name, research area, or publication keyword..." type="text"/>
+</div>
+</div>
+<!-- Quick Filters -->
+<div class="lg:col-span-6 flex flex-wrap gap-4">
+<div class="space-y-2 flex-1 min-w-[140px]">
+<label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Department</label>
+<select class="w-full bg-surface-container-low border-none rounded-lg py-3 text-sm font-medium text-primary cursor-pointer hover:bg-surface-container-highest transition-colors">
+<option>Theology</option>
+<option>Philosophy</option>
+<option>Science</option>
+<option>Humanities</option>
+</select>
+</div>
+<div class="space-y-2 flex-1 min-w-[140px]">
+<label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Rank</label>
+<select class="w-full bg-surface-container-low border-none rounded-lg py-3 text-sm font-medium text-primary cursor-pointer hover:bg-surface-container-highest transition-colors">
+<option>Senior Fellow</option>
+<option>Research Faculty</option>
+<option>Visiting Scholar</option>
+</select>
+</div>
+</div>
+</div>
+</section>
+<!-- Faculty Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+<!-- Faculty Card 1 -->
+<div class="bg-surface-container-lowest p-8 flex flex-col whisper-shadow hover:translate-y-[-4px] transition-transform duration-300">
+<div class="flex items-start justify-between mb-6">
+<img alt="Profile" class="w-20 h-20 grayscale hover:grayscale-0 transition-all duration-500 object-cover" data-alt="Refined professional portrait of a senior female professor with glasses, silver hair, in an academic study" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEtU2Kzs5LROU1iaCr6ufWax3gl72U7HfrmZ56sPRisNryGJ8JA3-I4WCFIoU7sXprBbeJ_boC9sQxV4IsgTgf0JLfdoxdDIKIgXkMUcIh1wIV9YzgQV6gnFwqXZeJ3GVGgJsNpQ3jGMdFOjtbi6H-Rdn7NU-LuhW0eZ31Fsfuf4T8yzD5FF3xHu1kPTj6Fd6HfQGayoYYvno6c77sqIhx6t1q-YYPQ9A8RGX9cCTwJHId3LrfLi2bY4atAdSFv4jxHimjgq0tPa47"/>
+<div class="text-right">
+<span class="inline-block px-2 py-1 bg-tertiary-container/10 text-on-tertiary-container text-[10px] font-bold uppercase tracking-tighter">Senior Fellow</span>
+</div>
+</div>
+<div class="space-y-1 mb-4">
+<h3 class="text-2xl font-serif font-bold text-primary">Dr. Elena Rostova</h3>
+<p class="text-sm text-secondary font-medium">Department of Philosophy</p>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6 font-body">
+                        Investigating the intersection of classical metaphysics and emergent digital consciousness models within late-stage technical frameworks.
+                    </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="text-[11px] px-2 py-0.5 border border-outline-variant text-secondary">Metaphysics</span>
+<span class="text-[11px] px-2 py-0.5 border border-outline-variant text-secondary">AI Ethics</span>
+<span class="text-[11px] px-2 py-0.5 border border-outline-variant text-secondary">Scholasticism</span>
+</div>
+<div class="mt-auto space-y-3 pt-6 border-t border-surface-container-highest">
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline">Content Channels</p>
+<div class="flex gap-4">
+<a class="text-xs font-semibold text-primary hover:text-on-tertiary-container flex items-center gap-1 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="hub">hub</span> Research Lab
+                            </a>
+<a class="text-xs font-semibold text-primary hover:text-on-tertiary-container flex items-center gap-1 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="inventory_2">inventory_2</span> Archive
+                            </a>
+</div>
+</div>
+</div>
+<!-- Faculty Card 2 -->
+<div class="bg-surface-container-lowest p-8 flex flex-col whisper-shadow hover:translate-y-[-4px] transition-transform duration-300">
+<div class="flex items-start justify-between mb-6">
+<img alt="Profile" class="w-20 h-20 grayscale hover:grayscale-0 transition-all duration-500 object-cover" data-alt="Serious male academic in a suit standing in front of a whiteboard filled with complex physics equations" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNU6XAmW9zXmR7s388IApSRNxBEaO2oUXqu-4S2ste3kmoySEojHvWPvSBwAcgb4tpZgvNLBwoyq1w3CcbpjQxtqgYyZl_yWydSKM1TQpGZu2_qPbptkZkivDToQuG0kchvBU4oLC-PSJTC9-PYTU6eZRzSglPP0rUCO3dVa5r4P79BjHMK-xVYEnSb0iLKK5-fwOJIHwAWlKJvpbDPWKq0Rc27VG3c32N2c0X0z0zLoKcU6psy8Eo3a8yKD4c7UFoWJ08AUBrJq63"/>
+<div class="text-right">
+<span class="inline-block px-2 py-1 bg-primary-container/10 text-on-primary-container text-[10px] font-bold uppercase tracking-tighter">Research Faculty</span>
+</div>
+</div>
+<div class="space-y-1 mb-4">
+<h3 class="text-2xl font-serif font-bold text-primary">Prof. Julian Thorne</h3>
+<p class="text-sm text-secondary font-medium">Department of Science</p>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6 font-body">
+                        Developing novel computational methods for mapping neural architectures in avian species to better understand spatial cognition and memory.
+                    </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="text-[11px] px-2 py-0.5 border border-outline-variant text-secondary">Neural Mapping</span>
+<span class="text-[11px] px-2 py-0.5 border border-outline-variant text-secondary">Bio-Computing</span>
+</div>
+<div class="mt-auto space-y-3 pt-6 border-t border-surface-container-highest">
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline">Content Channels</p>
+<div class="flex gap-4">
+<a class="text-xs font-semibold text-primary hover:text-on-tertiary-container flex items-center gap-1 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="science">science</span> Lab
+                            </a>
+<a class="text-xs font-semibold text-primary hover:text-on-tertiary-container flex items-center gap-1 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="auto_stories">auto_stories</span> Publications
+                            </a>
+</div>
+</div>
+</div>
+<!-- Faculty Card 3 -->
+<div class="bg-surface-container-lowest p-8 flex flex-col whisper-shadow hover:translate-y-[-4px] transition-transform duration-300">
+<div class="flex items-start justify-between mb-6">
+<img alt="Profile" class="w-20 h-20 grayscale hover:grayscale-0 transition-all duration-500 object-cover" data-alt="Mid-thirties female faculty member with a welcoming smile, wearing artistic glasses in a sunlit modern library" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk2p8vhwobgbPMRHao2k1SE-kvX34ldmxNb6NWdsLCdFt5pZ1ESH8gmR9U38da9_CrfsJ37fH0k2Qc9By23ehKy_KGfs0h8IzxA9zW4KcxL1-2wwhuT2g4J2y6DtXmKmabZMuWYNYxMYbUO7cxnGp2vhPuLWS8mfY5alkb_m-oP8G2Ij9RCeI7D0EgYst7KzlURH0JBJ9ZQDmuhAXF-igiuYHkxpAylLKGdU-P5YA7pqH9bTQ9-auYF5IyGBj61G2bTU3T9Jha5MwF"/>
+<div class="text-right">
+<span class="inline-block px-2 py-1 bg-tertiary-container/10 text-on-tertiary-container text-[10px] font-bold uppercase tracking-tighter">Visiting Scholar</span>
+</div>
+</div>
+<div class="space-y-1 mb-4">
+<h3 class="text-2xl font-serif font-bold text-primary">Dr. Sarah Khalil</h3>
+<p class="text-sm text-secondary font-medium">Department of Humanities</p>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6 font-body">
+                        Exploring the linguistic evolution of semi-nomadic cultures in the Levant through the lens of archival trade manuscripts and oral history.
+                    </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="text-[11px] px-2 py-0.5 border border-outline-variant text-secondary">Linguistics</span>
+<span class="text-[11px] px-2 py-0.5 border border-outline-variant text-secondary">Levant History</span>
+</div>
+<div class="mt-auto space-y-3 pt-6 border-t border-surface-container-highest">
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline">Content Channels</p>
+<div class="flex gap-4">
+<a class="text-xs font-semibold text-primary hover:text-on-tertiary-container flex items-center gap-1 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="school">school</span> Curriculum Hub
+                            </a>
+</div>
+</div>
+</div>
+<!-- Faculty Card 4 -->
+<div class="bg-surface-container-lowest p-8 flex flex-col whisper-shadow hover:translate-y-[-4px] transition-transform duration-300">
+<div class="flex items-start justify-between mb-6">
+<img alt="Profile" class="w-20 h-20 grayscale hover:grayscale-0 transition-all duration-500 object-cover" data-alt="Distinguished mature man with graying beard, wearing a tweed jacket, in a classic academic library setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsz-Li5zXfFRSTIEbUWflQ0WCEbpOftAyqx7_nNrMp1th2yFcb7DmTfDjMwYUeYelSbghvv1PIGHzqQsmoqogGgZc2yXFV20nAGMSnl6GncDo7I6dNgXALnOv_5riOSI_GkuCnb3sTU-XDetsjDP5mF14lxC9rkDfCTsaK-4etfpdExVd7HDeZ9rl44_XH1fkUtMD6wX_VwxSqL1neh4hXzZeleEvxKoHtpt8xZeVcthYK3VnGMeo7MLRgrX-pg8bUbYUP3NJkTf2P"/>
+<div class="text-right">
+<span class="inline-block px-2 py-1 bg-tertiary-container/10 text-on-tertiary-container text-[10px] font-bold uppercase tracking-tighter">Senior Fellow</span>
+</div>
+</div>
+<div class="space-y-1 mb-4">
+<h3 class="text-2xl font-serif font-bold text-primary">Dr. Marcus Vance</h3>
+<p class="text-sm text-secondary font-medium">Department of Theology</p>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6 font-body">
+                        Theological implications of post-humanism and the preservation of sacred tradition in digitized ecclesial environments.
+                    </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="text-[11px] px-2 py-0.5 border border-outline-variant text-secondary">Ecclesiology</span>
+<span class="text-[11px] px-2 py-0.5 border border-outline-variant text-secondary">Post-Humanism</span>
+</div>
+<div class="mt-auto space-y-3 pt-6 border-t border-surface-container-highest">
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline">Content Channels</p>
+<div class="flex gap-4">
+<a class="text-xs font-semibold text-primary hover:text-on-tertiary-container flex items-center gap-1 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="library_books">library_books</span> Archive
+                            </a>
+<a class="text-xs font-semibold text-primary hover:text-on-tertiary-container flex items-center gap-1 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="record_voice_over">record_voice_over</span> Lectures
+                            </a>
+</div>
+</div>
+</div>
+<!-- Faculty Card 5 (Asymmetric Placeholder for Growth) -->
+<div class="bg-primary p-8 flex flex-col items-center justify-center text-center border-none">
+<span class="material-symbols-outlined text-4xl text-primary-fixed mb-4" data-icon="person_add">person_add</span>
+<h3 class="text-xl font-serif font-bold text-on-primary mb-2">New Fellows Incoming</h3>
+<p class="text-xs text-on-primary-container leading-relaxed">
+                        The directory is updated bi-weekly as new intelligence partners join the institution.
+                    </p>
+<button class="mt-8 px-6 py-2 border border-on-primary/20 text-on-primary text-xs font-bold uppercase tracking-widest hover:bg-on-primary/10 transition-colors">
+                        View Application Process
+                    </button>
+</div>
+</div>
+<!-- Marginalia Section (Footer Metadata) -->
+<footer class="mt-24 pt-12 border-t border-surface-container-highest flex flex-col md:flex-row justify-between items-start gap-8">
+<div class="max-w-xs">
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline mb-4">Institutional Integrity</p>
+<p class="text-xs text-secondary leading-relaxed italic">
+                        "The rigor of our intellectual output is proportional to the freedom of our scholarly inquiry." 
+                        — <span class="not-italic font-bold">Founding Charter, 1922</span>
+</p>
+</div>
+<div class="flex gap-16">
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline mb-4">Metrics</p>
+<ul class="text-xs text-primary space-y-2 font-medium">
+<li>124 Active Fellows</li>
+<li>14 Research Labs</li>
+<li>4.2k Archived Briefs</li>
+</ul>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline mb-4">Compliance</p>
+<ul class="text-xs text-primary space-y-2 font-medium">
+<li>Ethics Committee</li>
+<li>Peer Review Board</li>
+<li>Open Research Access</li>
+</ul>
+</div>
+</div>
+</footer>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface/80 glass-nav border-t border-surface-container-high px-6 py-3 flex justify-around items-center z-[70]">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="hub" style="font-variation-settings: 'FILL' 1;">hub</span>
+<span class="text-[10px] font-bold">Directory</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-secondary" href="#">
+<span class="material-symbols-outlined" data-icon="library_books">library_books</span>
+<span class="text-[10px] font-medium">Library</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-secondary" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</nav>
+</body></html>

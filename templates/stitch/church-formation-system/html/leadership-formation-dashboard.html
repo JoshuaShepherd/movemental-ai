@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=Manrope:wght@300;400;500;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#ccc5bf",
+                    "surface-tint": "#625d59",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#3d3935",
+                    "tertiary-fixed-dim": "#d6c4b1",
+                    "on-error": "#ffffff",
+                    "surface-dim": "#dbdad5",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#1b1c19",
+                    "surface-container-high": "#eae8e3",
+                    "on-primary-container": "#a9a29d",
+                    "surface-variant": "#e4e2dd",
+                    "surface-container-highest": "#e4e2dd",
+                    "surface-container": "#f0eee9",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#655d54",
+                    "secondary-fixed-dim": "#d0c5b9",
+                    "secondary-container": "#e9ded2",
+                    "inverse-surface": "#30312e",
+                    "primary": "#272420",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#514536",
+                    "tertiary-container": "#44382a",
+                    "tertiary-fixed": "#f3dfcc",
+                    "on-secondary-container": "#696158",
+                    "on-primary-fixed-variant": "#4a4642",
+                    "surface-bright": "#fbf9f4",
+                    "on-tertiary-container": "#b2a18f",
+                    "on-secondary-fixed-variant": "#4d463d",
+                    "on-background": "#1b1c19",
+                    "inverse-primary": "#ccc5bf",
+                    "on-secondary-fixed": "#201b14",
+                    "tertiary": "#2d2216",
+                    "outline-variant": "#cec5bc",
+                    "secondary-fixed": "#ece1d5",
+                    "primary-fixed": "#e9e1db",
+                    "inverse-on-surface": "#f2f1ec",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#231a0e",
+                    "surface-container-low": "#f5f3ee",
+                    "surface": "#fbf9f4",
+                    "outline": "#7d766f",
+                    "background": "#fbf9f4",
+                    "on-primary-fixed": "#1e1b18",
+                    "on-surface-variant": "#4c463f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, .serif-text { font-family: 'Newsreader', serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar from Shared Components JSON -->
+<header class="bg-[#fbf9f4]/80 dark:bg-[#272420]/80 backdrop-blur-xl docked full-width top-0 sticky z-50 tonal shift via bg-[#f5f3ee] dark:bg-[#3d3935] flat no shadows">
+<nav class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-serif italic text-[#272420] dark:text-[#fbf9f4] tracking-wider">Movemental</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-[#272420] dark:text-[#fbf9f4] border-b-2 border-[#272420] dark:border-[#fbf9f4] pb-1 font-serif text-display-sm tracking-tight font-light transition-colors duration-500" href="#">Pathways</a>
+<a class="text-[#625d59] dark:text-[#e4e2dd] font-sans text-sm uppercase tracking-widest hover:text-[#272420] dark:hover:text-[#ffffff] transition-colors duration-500" href="#">Huddles</a>
+<a class="text-[#625d59] dark:text-[#e4e2dd] font-sans text-sm uppercase tracking-widest hover:text-[#272420] dark:hover:text-[#ffffff] transition-colors duration-500" href="#">Mentoring</a>
+<a class="text-[#625d59] dark:text-[#e4e2dd] font-sans text-sm uppercase tracking-widest hover:text-[#272420] dark:hover:text-[#ffffff] transition-colors duration-500" href="#">Library</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">auto_awesome</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">account_circle</button>
+</div>
+</nav>
+</header>
+<main class="max-w-screen-2xl mx-auto px-8 py-12 lg:py-20">
+<!-- Welcome & Summary -->
+<section class="mb-20 grid md:grid-cols-12 gap-12 items-end">
+<div class="md:col-span-7">
+<p class="font-label text-sm uppercase tracking-[0.2em] text-surface-tint mb-4">Daily Reflection</p>
+<h1 class="text-5xl md:text-7xl font-light text-primary leading-tight tracking-tight italic">
+                    Peace be with you, Julian. <br/>
+<span class="not-italic">Here is your formation path today.</span>
+</h1>
+</div>
+<div class="md:col-span-5 flex flex-col items-start md:items-end">
+<div class="bg-surface-container-low p-8 rounded-xl w-full max-w-sm">
+<div class="flex justify-between items-center mb-6">
+<span class="font-label text-xs uppercase tracking-widest text-outline">Current Focus</span>
+<span class="text-primary font-headline italic">64% Complete</span>
+</div>
+<!-- Linear Track Progress -->
+<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden mb-4">
+<div class="h-full bg-primary-container w-[64%]"></div>
+</div>
+<p class="text-on-surface-variant text-sm font-body leading-relaxed">
+                        You are currently exploring <span class="text-primary font-medium italic">The Way of the Heart</span>. Today's practice: Silent Stewardship.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Active Formation Pathways (Asymmetric Bento) -->
+<section class="mb-24">
+<div class="flex justify-between items-baseline mb-10">
+<h2 class="text-3xl font-headline italic">Active Formation Pathways</h2>
+<a class="font-label text-xs uppercase tracking-widest border-b border-outline-variant pb-1 hover:text-primary transition-all" href="#">Explore All Paths</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Current Card -->
+<div class="md:col-span-2 bg-surface-container-lowest p-10 rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-8xl" data-weight="fill">favorite</span>
+</div>
+<div class="relative z-10">
+<span class="inline-block px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] uppercase tracking-widest rounded-full mb-6">Active Path</span>
+<h3 class="text-4xl font-headline mb-4">The Way of the Heart</h3>
+<p class="text-on-surface-variant font-body mb-8 max-w-md leading-relaxed">Cultivating inner stillness amidst leadership demands. Exploring the desert tradition as a modern framework for resilience.</p>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-md flex items-center gap-3 hover:bg-primary-container transition-all text-sm uppercase tracking-widest font-medium">
+                            Resume Session
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Next Up Cards (Stacked) -->
+<div class="flex flex-col gap-8">
+<div class="bg-surface-container-low p-8 rounded-xl border border-transparent hover:border-outline-variant transition-all">
+<h4 class="text-xl font-headline italic mb-2">Systems for Flourishing</h4>
+<p class="text-on-surface-variant text-sm font-body mb-4">Integrating spiritual rhythms into organizational structures.</p>
+<div class="flex items-center gap-2 text-xs text-outline font-label uppercase tracking-tighter">
+<span class="material-symbols-outlined text-sm">lock_open</span>
+                            Next Module Starts Oct 12
+                        </div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-xl border border-transparent hover:border-outline-variant transition-all">
+<h4 class="text-xl font-headline italic mb-2">Pastoral Presence</h4>
+<p class="text-on-surface-variant text-sm font-body mb-4">Advanced active listening and conflict reconciliation.</p>
+<div class="flex items-center gap-2 text-xs text-outline font-label uppercase tracking-tighter">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                            Upcoming in November
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Two Column: Huddles & Mentoring -->
+<div class="grid lg:grid-cols-12 gap-16 mb-24">
+<!-- Leadership Huddles -->
+<section class="lg:col-span-5">
+<h2 class="text-3xl font-headline italic mb-8">Leadership Huddles</h2>
+<div class="space-y-6">
+<div class="flex items-center gap-6 p-6 bg-surface-container-low rounded-xl group cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-secondary-fixed flex items-center justify-center text-primary shrink-0">
+<span class="font-headline text-2xl">24</span>
+</div>
+<div class="grow">
+<p class="text-xs font-label uppercase tracking-widest text-surface-tint mb-1">Thursday, 10:00 AM</p>
+<h4 class="text-lg font-headline font-medium">Monthly Vision Huddle</h4>
+<p class="text-sm text-on-surface-variant">Global Leadership Core</p>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">calendar_today</span>
+</div>
+<div class="flex items-center gap-6 p-6 bg-surface-container-low rounded-xl group cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-tertiary-fixed flex items-center justify-center text-primary shrink-0">
+<span class="font-headline text-2xl">28</span>
+</div>
+<div class="grow">
+<p class="text-xs font-label uppercase tracking-widest text-surface-tint mb-1">Monday, 04:30 PM</p>
+<h4 class="text-lg font-headline font-medium">Formation Group #4</h4>
+<p class="text-sm text-on-surface-variant">Peer Mentorship Circle</p>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">video_call</span>
+</div>
+</div>
+</section>
+<!-- Mentoring & Stewardship Circles -->
+<section class="lg:col-span-7">
+<h2 class="text-3xl font-headline italic mb-8">Stewardship Circles</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="p-6 bg-surface-container-lowest rounded-xl border-l-4 border-tertiary-fixed-dim">
+<div class="flex justify-between items-start mb-4">
+<h4 class="text-lg font-headline">Youth Ministry Lead</h4>
+<div class="h-2 w-2 rounded-full bg-secondary"></div>
+</div>
+<div class="flex -space-x-3 mb-4">
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="portrait of a young smiling professional woman in a bright room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXfv28_7EhqqXzXLXHDy4m6eQqU1BIH7TChYFS6aLhs0l25fpxomX9YCT79b_wyYAjnSogcfFI4CR4i7C_zZGAG3GRo4sT7mDkaSOWPCNh7xRAz_uj8IxnZn8fvbHYk0-0D1xVpO7HEp_GWDIglLw9swuThr2Z9Bi7nvo8h-tUxagn4oS5nVYIreX3sD3sRCMh61_s8ci1Fa-lJoxD61Q9oSwhQh-X2n8NTVjuMFLnTvSGGMH54EZ4V1TXP--R3vIuInMnocPC7Oo"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="portrait of a man with spectacles in a workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDot1GnU85kPepT9tmF_yFq4KbfEpbMJBUpN2vzhKcF_1y4SBd9AsTR1NrgLzaQKGGAdc93NtNCwC9wIjPCF3lF7rB76Lyfyy5uPdMDfh478yvyLgcb_fnXipg3k7K8xnPrRCFOlfDT_0v2ggHDkEjy48sRuA39uX5mgJjwAACyHSACky53J3EluhoVQkdWX_9zqK6uAQqoqmWeWR-kyVfPjlwoCE77lMmZr4OWVf1YF6bDf-dMxoOI8DtCFEY4zMLHubAG15F-aiY"/>
+</div>
+<p class="text-xs font-label text-on-surface-variant">Last Check-in: 3 days ago</p>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-xl border-l-4 border-primary-fixed-dim">
+<div class="flex justify-between items-start mb-4">
+<h4 class="text-lg font-headline">New Leader Cohort</h4>
+<div class="h-2 w-2 rounded-full bg-tertiary-fixed-dim animate-pulse"></div>
+</div>
+<div class="flex -space-x-3 mb-4">
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="portrait of a bearded man in a linen shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIMgA0eojBYd14vwbes9NJGX9EkUvkFw_ZFYW_T4VIj2GzoqoFE4Vque58y9p5gQnY1ZOK2WAIFebm0kwMeqdoe3p6_7-PfyKik6_8tvTDQrAUeHl6xhXSvQHDw6JWih8YFn6V3D9MJpEvSjxUVSUbiomEcWPndApQGS0r_mvr7vE2G1kw46ghKym3RSX22uAWRwsjzPy21J3ioow35La_v-iFVAj95-iMPpq1x7Itud7ZNOpIO71GmViVoVIMsA1Q0zlsLg4leJ4"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="confident professional woman in office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMDSoPYIXJd-hS9qvNjslE8Wtw09_B94rDIVgT5es8gQ5rLH0DUz3Cnw2vr6SSJ_XNzD4uYaYKZj3Qk6h5VbdLMTO4c20SzBPj5tW9fDFlPGNtUHRCfsVxVU6sD2qe9fPHlmya5YS4DSwgTd3TaJgW_pc0nu1A2Hrvu84659__VlgqJ6Un2DQgZF0VZgoSidkGWdGaZ4GjDAN4zeXJ55Qq6EacWB8gKj9LN4AsVZwlzmvdaPPGXwD07rIXPxM54r0VoViN2H79BRk"/>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-[10px] font-bold">+2</div>
+</div>
+<p class="text-xs font-label text-on-surface-variant">Scheduled: Tomorrow</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Leader Library (Gallery) -->
+<section class="mb-24">
+<h2 class="text-3xl font-headline italic mb-10">Leader Library</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-lg overflow-hidden bg-surface-container-high mb-4">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="elegant book cover on a wooden table with soft morning sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9inytlG01sClteCtbhYxE_JcszVYcEk3NxMXikNiVJ8xnopSEpJ1JvB62Xs8J15sJD9pxx_PODdnR9AFzddZnPakUaFwR3im2x3PQK_uMdKnQAY2la7kl-SLjlDXyM-AzHJ_gzRce-Ht-A4juzDKnIfEkO4Wm_Q3UbMJ7ULqzy8HqlmnKdusUc2ss3w8v0WZzaRgqmsYZ5nM9pXSXhNLX_8N2_6r3C5Tcg7L8HRTlBhQVMCsO-4oZ09u_I2QTLNwZJcpKE7xXSp4"/>
+</div>
+<p class="font-headline text-lg leading-snug">The Architecture of Silence</p>
+<p class="text-xs font-label text-outline uppercase tracking-widest mt-1">E-Book • 12 min read</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-lg overflow-hidden bg-surface-container-high mb-4">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="a minimalist notebook and fountain pen on a clean stone surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAartI1tsLFvxwNOmdCLkBqEfxUCBT0Gyc10t8uIhZWm0ZE5tFRQud-xCbku-cFmmh6RQX4mCpSFnCe9Dho3PM-lKFhuHoauoiiEYwb7Ujpz4GmCuuaKh9krDdf12WGjOt88OPKtK2ySpOc2L87JlWnGXeizZ22D-QzgYbT4xAZoSsS6E94yvFd4x3NEFrewB2_j8-WgCGCMp62anAyLnfgfaRa_fozzVyCl5DSUXTqa2IZLlxKzMQaKgjTGB5wc1SWCEXCGfCr55M"/>
+</div>
+<p class="font-headline text-lg leading-snug">Sustaining the Soul</p>
+<p class="text-xs font-label text-outline uppercase tracking-widest mt-1">Audio • 45 mins</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-lg overflow-hidden bg-surface-container-high mb-4">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="abstract architectural forms with clean lines and soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBX-D8WR1QlLy7TLrOPIYEaCTzsPv88xZcusbmTaS3KmCE21DzWaowoZ49ZG8lQbS4S_NXbdApHQjrlOeVdZa-z6kaggkHE7P1-vBDqdXHjxsHj0Het8_o-qKHJ-lAxbAPQB0mV1kroQOuYGy0FP2ds4z3iJG65YkTkX3vvMz_Ac_7qdto89nV5j8v5tQNxnJZh9nLp-yKFurwixf3G5y8ygrd47NSAoo04oy9frimoebtbgA5pVRXpH8O0YyRK6MMzge8KZWFA5JQ"/>
+</div>
+<p class="font-headline text-lg leading-snug">Emotional Velocity</p>
+<p class="text-xs font-label text-outline uppercase tracking-widest mt-1">Video • 18 mins</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-lg overflow-hidden bg-surface-container-high mb-4">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="tranquil lake at sunset with mountains in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKonK3yv10ho7Af3Wdz2lS8F7NPjyaltOzIk9wkOhy3w_G2WhVm9eAbcqX8hHCeUqFCksyacjKeq7Q5Jaxu4D4HT05-fQomMsRj-rULnSXzT-bn9QlQBPrzUCBawJG8xeR9hAicDHNYeO_6nJyr2LNEj-AKP8mqBG4KjKhQgK3DCvnsIl6MtrIpSxJU5ebbORyR5zIPmaVjymwCPc_zPrRUFZOzBEF6PDFCt-qzivGAPlyGzVUBowWMAt2J8pY63nYnfXf2nfgQ28"/>
+</div>
+<p class="font-headline text-lg leading-snug">Modern Liturgies</p>
+<p class="text-xs font-label text-outline uppercase tracking-widest mt-1">PDF • 5 pages</p>
+</div>
+</div>
+</section>
+<!-- Leader Intel (AI Guide) -->
+<section class="bg-primary-container text-on-primary-container p-12 rounded-2xl relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-20 pointer-events-none">
+<div class="w-full h-full bg-gradient-to-l from-surface-tint to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-2xl">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-secondary-fixed-dim" data-weight="fill">flare</span>
+<span class="font-label text-sm uppercase tracking-[0.3em] text-secondary-fixed-dim">The Intelligence of Intent</span>
+</div>
+<h2 class="text-4xl font-headline italic mb-6">Guided Perspective</h2>
+<p class="text-lg font-body leading-relaxed text-primary-fixed mb-8">
+                    Based on your upcoming <span class="italic text-white">Monthly Vision Huddle</span>, you might consider reflecting on the balance of "Output vs. Presence." Your recent journals suggest a high cognitive load—this huddle could be an opportunity for communal breath rather than strategic expansion.
+                </p>
+<div class="flex gap-4">
+<button class="bg-surface-container-lowest text-primary px-6 py-3 rounded-md text-sm font-medium hover:bg-white transition-colors">Apply Strategy</button>
+<button class="border border-outline-variant text-primary-fixed px-6 py-3 rounded-md text-sm font-medium hover:text-white transition-colors">Dismiss</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer from Shared Components JSON -->
+<footer class="bg-[#f5f3ee] dark:bg-[#1b1c19] w-full py-12 px-8 tonal transition from surface to surface-container-low flat no shadows">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6 max-w-7xl mx-auto">
+<div class="text-[#625d59] dark:text-[#e4e2dd] font-sans text-label-md tracking-loose font-normal">
+                © 2024 Movemental. Cultivating the Modern Sanctuary.
+            </div>
+<div class="flex items-center gap-8">
+<a class="text-[#272420] dark:text-[#fbf9f4] underline decoration-stone-300 font-sans text-label-md tracking-loose font-normal hover:text-[#272420] dark:hover:text-[#ffffff] transition-all" href="#">The Way</a>
+<a class="text-[#625d59] dark:text-[#e4e2dd] font-sans text-label-md tracking-loose font-normal hover:text-[#272420] dark:hover:text-[#ffffff] transition-all" href="#">Stewardship</a>
+<a class="text-[#625d59] dark:text-[#e4e2dd] font-sans text-label-md tracking-loose font-normal hover:text-[#272420] dark:hover:text-[#ffffff] transition-all" href="#">Privacy</a>
+<a class="text-[#625d59] dark:text-[#e4e2dd] font-sans text-label-md tracking-loose font-normal hover:text-[#272420] dark:hover:text-[#ffffff] transition-all" href="#">Support</a>
+</div>
+</div>
+</footer>
+</body></html>

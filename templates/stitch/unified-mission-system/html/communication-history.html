@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Communication History | Donor Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#424842",
+                    "on-secondary-container": "#7a443a",
+                    "on-error": "#ffffff",
+                    "surface-container": "#f0eee9",
+                    "primary": "#23422a",
+                    "surface-variant": "#e4e2dd",
+                    "on-tertiary-container": "#f3b7c1",
+                    "secondary-container": "#feb4a7",
+                    "on-tertiary-fixed": "#321019",
+                    "secondary-fixed-dim": "#feb4a7",
+                    "on-primary": "#ffffff",
+                    "outline": "#727971",
+                    "inverse-on-surface": "#f2f1ec",
+                    "background": "#fbf9f4",
+                    "surface-container-high": "#eae8e3",
+                    "secondary": "#884f45",
+                    "on-secondary-fixed": "#360e08",
+                    "tertiary-fixed-dim": "#f3b7c1",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#1b1c19",
+                    "primary-container": "#3a5a40",
+                    "on-surface": "#1b1c19",
+                    "tertiary-container": "#73464f",
+                    "surface-dim": "#dbdad5",
+                    "tertiary-fixed": "#ffd9df",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#30312e",
+                    "primary-fixed-dim": "#abd0af",
+                    "on-secondary-fixed-variant": "#6c382f",
+                    "inverse-primary": "#abd0af",
+                    "surface-container-low": "#f5f3ee",
+                    "surface-bright": "#fbf9f4",
+                    "on-primary-container": "#acd0af",
+                    "surface-container-highest": "#e4e2dd",
+                    "outline-variant": "#c2c8bf",
+                    "on-primary-fixed": "#02210c",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#593038",
+                    "primary-fixed": "#c7ecca",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#2e4e35",
+                    "secondary-fixed": "#ffdad4",
+                    "surface": "#fbf9f4",
+                    "surface-tint": "#45664b",
+                    "on-tertiary-fixed-variant": "#653a43"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0px 20px 40px rgba(27, 28, 25, 0.06);
+        }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 1.25rem;
+            top: 2rem;
+            bottom: -2rem;
+            width: 1px;
+            background-color: #c2c8bf;
+        }
+        .timeline-last::before {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Shared TopNavBar -->
+<header class="bg-[#fbf9f4]/80 dark:bg-[#1b1c19]/80 backdrop-blur-md sticky top-0 z-50">
+<nav class="flex justify-between items-center w-full px-16 py-6 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-xl font-['Newsreader'] tracking-tight text-[#23422a] dark:text-[#fbf9f4] font-bold">Donor Intelligence</span>
+<div class="hidden md:flex gap-8">
+<a class="text-[#727971] dark:text-[#e4e2dd] font-['Manrope'] uppercase tracking-widest text-[0.75rem] hover:text-[#884f45] transition-colors duration-300" href="#">Mission</a>
+<a class="text-[#727971] dark:text-[#e4e2dd] font-['Manrope'] uppercase tracking-widest text-[0.75rem] hover:text-[#884f45] transition-colors duration-300" href="#">Repository</a>
+<a class="text-[#23422a] dark:text-[#fbf9f4] font-bold border-b-2 border-[#884f45] pb-1 font-['Manrope'] uppercase tracking-widest text-[0.75rem]" href="#">Impact</a>
+<a class="text-[#727971] dark:text-[#e4e2dd] font-['Manrope'] uppercase tracking-widest text-[0.75rem] hover:text-[#884f45] transition-colors duration-300" href="#">Network</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="bg-surface-container-low border-none text-sm px-10 py-2 w-64 focus:ring-1 focus:ring-primary rounded-lg" placeholder="Search archive..." type="text"/>
+</div>
+<button class="scale-98 active:opacity-80 transition-all text-[#23422a] dark:text-[#fbf9f4]">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</nav>
+</header>
+<main class="max-w-[1440px] mx-auto px-16 pt-16 pb-32">
+<!-- Hero Header -->
+<div class="grid grid-cols-12 gap-8 mb-24">
+<div class="col-span-12 lg:col-span-7">
+<nav class="flex items-center gap-2 mb-6 text-label text-[0.75rem] uppercase tracking-widest text-outline">
+<span>Intelligence</span>
+<span class="text-secondary">/</span>
+<span class="text-on-surface">Communication History</span>
+</nav>
+<h1 class="font-headline text-[3.5rem] leading-tight text-on-surface mb-6 -tracking-[0.02em] font-medium">Communication History</h1>
+<p class="font-body text-lg leading-[1.6] text-on-surface-variant max-w-xl">
+                    A unified memory of engagements, ensuring continuity and shared context across every relationship.
+                </p>
+</div>
+</div>
+<!-- System Controls: Filters -->
+<div class="flex flex-wrap items-center justify-between gap-6 mb-16 pb-8 border-b border-outline-variant/30">
+<div class="flex flex-wrap items-center gap-4">
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-highest/50 rounded-lg">
+<span class="text-[0.75rem] font-medium uppercase tracking-tighter text-outline">Person:</span>
+<select class="bg-transparent border-none p-0 text-sm font-semibold text-on-surface focus:ring-0 cursor-pointer">
+<option>All Participants</option>
+<option>Sarah Mitchell</option>
+<option>Marcus Thorne</option>
+</select>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-highest/50 rounded-lg">
+<span class="text-[0.75rem] font-medium uppercase tracking-tighter text-outline">Program:</span>
+<select class="bg-transparent border-none p-0 text-sm font-semibold text-on-surface focus:ring-0 cursor-pointer">
+<option>All Programs</option>
+<option>Literacy Labs</option>
+<option>Rural Expansion</option>
+</select>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-highest/50 rounded-lg">
+<span class="text-[0.75rem] font-medium uppercase tracking-tighter text-outline">Type:</span>
+<select class="bg-transparent border-none p-0 text-sm font-semibold text-on-surface focus:ring-0 cursor-pointer">
+<option>All Interactions</option>
+<option>Email</option>
+<option>Meeting</option>
+<option>Event</option>
+</select>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg flex items-center gap-2 text-sm font-medium hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                Log Engagement
+            </button>
+</div>
+<!-- Archive Content (The Timeline) -->
+<div class="grid grid-cols-12 gap-12">
+<!-- Timeline Sidebar (Metadata) -->
+<aside class="hidden lg:block lg:col-span-3">
+<div class="sticky top-32 space-y-8">
+<div class="p-6 bg-surface-container-low rounded-lg">
+<h3 class="font-headline italic text-lg mb-4 text-primary">Relational Health</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-[0.75rem] uppercase tracking-widest text-outline mb-1">
+<span>Frequency</span>
+<span>High</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[85%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[0.75rem] uppercase tracking-widest text-outline mb-1">
+<span>Continuity</span>
+<span>Stable</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[70%]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="aspect-square bg-surface-container-highest overflow-hidden rounded-lg relative group">
+<img class="object-cover w-full h-full grayscale opacity-40 group-hover:opacity-60 transition-opacity" data-alt="Black and white architectural photography of a minimalist archive library with tall wooden shelves and soft top lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMNPqOMEJMmkR5wHzbqbpA4IQeihNBCAHgVH5eyoeg-poLuDSJqDnZAL7dwUTZn2aVt1Vj8rPZ_HAeiqkPX3NSNIb-cXUKtYWiG6eQ8Rm8cM8hj24zsm_acPKyB-7_eAI2xHQAbThOzm1hR79wkLmMWuY7EWDHNPwcfO7CybKOS4qSy2zB85Jp_q5dxq--JCaeGsHoBbFFHi1vkRPX7Kjb0EfXvYpsWQEFMKZPVsjI0cB6UiGqWx92_woS4_YRaIEIl9buqePa18w"/>
+<div class="absolute inset-0 p-6 flex flex-col justify-end">
+<span class="font-headline italic text-on-surface leading-tight">"The intelligence of a movement is found in the continuity of its memory."</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Timeline Stream -->
+<div class="col-span-12 lg:col-span-9 space-y-16">
+<!-- Group: October 2024 -->
+<section class="space-y-8">
+<div class="flex items-center gap-4">
+<span class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary font-bold">October 2024</span>
+<div class="h-px flex-1 bg-outline-variant/30"></div>
+</div>
+<!-- Entry: Meeting -->
+<div class="relative pl-12 timeline-line">
+<div class="absolute left-0 top-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-on-primary z-10 shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="groups">groups</span>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg editorial-shadow">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">
+<div>
+<span class="inline-block px-2 py-0.5 bg-primary-container/10 text-primary text-[0.65rem] uppercase tracking-widest font-bold rounded mb-3">Strategic Meeting</span>
+<h4 class="font-headline text-2xl text-on-surface font-medium">Rural Literacy Expansion Workshop</h4>
+</div>
+<time class="text-outline text-sm font-label tabular-nums">Oct 24, 2024 · 2:00 PM</time>
+</div>
+<p class="font-body text-on-surface-variant mb-6 leading-[1.6]">
+                                Discussed expansion of literacy labs in the rural district. Detailed review of existing site infrastructures and community engagement metrics in the Western corridor.
+                            </p>
+<div class="grid md:grid-cols-2 gap-8 pt-6 border-t border-outline-variant/20">
+<div>
+<h5 class="text-[0.75rem] uppercase tracking-widest text-outline font-bold mb-3">Participants</h5>
+<div class="flex items-center gap-2">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-low bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">SM</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-low bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">MT</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-low bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">DC</div>
+</div>
+<span class="text-xs text-on-surface-variant font-medium">Sarah Mitchell, Marcus Thorne, David Chen</span>
+</div>
+</div>
+<div>
+<h5 class="text-[0.75rem] uppercase tracking-widest text-outline font-bold mb-3">Outcome</h5>
+<p class="text-sm text-on-surface-variant italic">Alignment reached on Q3 milestones; follow-up scheduled for site visit next Tuesday.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Entry: Email -->
+<div class="relative pl-12 timeline-line">
+<div class="absolute left-0 top-0 w-10 h-10 bg-secondary rounded-full flex items-center justify-center text-on-primary z-10 shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="mail">mail</span>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg editorial-shadow">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">
+<div>
+<span class="inline-block px-2 py-0.5 bg-secondary-container/10 text-secondary text-[0.65rem] uppercase tracking-widest font-bold rounded mb-3">Follow-up Correspondence</span>
+<h4 class="font-headline text-2xl text-on-surface font-medium">Re: Infrastructure Grants Proposal</h4>
+</div>
+<time class="text-outline text-sm font-label tabular-nums">Oct 18, 2024 · 9:15 AM</time>
+</div>
+<p class="font-body text-on-surface-variant mb-6 leading-[1.6]">
+                                Finalized draft of the systemic grant application. Incorporated feedback regarding sustainability metrics and indigenous knowledge preservation clauses.
+                            </p>
+<div class="grid md:grid-cols-2 gap-8 pt-6 border-t border-outline-variant/20">
+<div>
+<h5 class="text-[0.75rem] uppercase tracking-widest text-outline font-bold mb-3">Participants</h5>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">SM</div>
+<span class="text-xs text-on-surface-variant font-medium">Sarah Mitchell, Elena Rossi</span>
+</div>
+</div>
+<div>
+<h5 class="text-[0.75rem] uppercase tracking-widest text-outline font-bold mb-3">Outcome</h5>
+<p class="text-sm text-on-surface-variant italic">Proposal submitted to the archival board for final peer review.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Group: September 2024 -->
+<section class="space-y-8">
+<div class="flex items-center gap-4">
+<span class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary font-bold">September 2024</span>
+<div class="h-px flex-1 bg-outline-variant/30"></div>
+</div>
+<!-- Entry: Event -->
+<div class="relative pl-12 timeline-line timeline-last">
+<div class="absolute left-0 top-0 w-10 h-10 bg-tertiary-container rounded-full flex items-center justify-center text-on-tertiary-container z-10 shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="festival">festival</span>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg editorial-shadow">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">
+<div>
+<span class="inline-block px-2 py-0.5 bg-tertiary-container/10 text-on-tertiary-fixed-variant text-[0.65rem] uppercase tracking-widest font-bold rounded mb-3">Community Event</span>
+<h4 class="font-headline text-2xl text-on-surface font-medium">Movemental Harvest Gala</h4>
+</div>
+<time class="text-outline text-sm font-label tabular-nums">Sep 12, 2024 · 7:00 PM</time>
+</div>
+<p class="font-body text-on-surface-variant mb-6 leading-[1.6]">
+                                Annual gathering focused on celebration of local intelligence hubs. Secured pledge commitments for the 2025 archival digitisation project.
+                            </p>
+<div class="grid md:grid-cols-2 gap-8 pt-6 border-t border-outline-variant/20">
+<div>
+<h5 class="text-[0.75rem] uppercase tracking-widest text-outline font-bold mb-3">Participants</h5>
+<div class="flex items-center gap-2">
+<span class="text-xs text-on-surface-variant font-medium">142 Community Stakeholders, Board of Directors</span>
+</div>
+</div>
+<div>
+<h5 class="text-[0.75rem] uppercase tracking-widest text-outline font-bold mb-3">Outcome</h5>
+<p class="text-sm text-on-surface-variant italic">$45k raised for Rural Literacy Initiatives.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Action -->
+<div class="flex justify-center pt-12">
+<button class="font-label text-[0.75rem] uppercase tracking-widest text-outline hover:text-primary transition-colors flex items-center gap-2">
+                        View Historical Archive (2023)
+                        <span class="material-symbols-outlined text-sm">arrow_downward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Shared Footer -->
+<footer class="bg-[#f5f3ee] dark:bg-[#1b1c19] full-width py-20 mt-32">
+<div class="flex flex-col md:flex-row justify-between items-start px-16 max-w-[1440px] mx-auto">
+<div class="mb-12 md:mb-0">
+<span class="font-['Newsreader'] italic text-lg text-[#23422a] dark:text-[#fbf9f4] block mb-4">Movemental. The Living Archive.</span>
+<p class="font-['Manrope'] body-lg leading-[1.6] text-[#727971] max-w-xs">
+                    Curating relational memory to foster enduring social impact through systems-level intelligence.
+                </p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-12">
+<div class="flex flex-col gap-4">
+<span class="text-[#727971] uppercase tracking-widest text-[0.7rem] font-bold">Archive</span>
+<a class="text-[#727971] hover:text-[#23422a] transition-colors text-sm" href="#">Terms of Service</a>
+<a class="text-[#727971] hover:text-[#23422a] transition-colors text-sm" href="#">Privacy Policy</a>
+<a class="text-[#727971] hover:text-[#23422a] transition-colors text-sm" href="#">Archival Ethics</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-[#727971] uppercase tracking-widest text-[0.7rem] font-bold">Connect</span>
+<a class="text-[#727971] hover:text-[#23422a] transition-colors text-sm" href="#">Contact</a>
+<a class="text-[#727971] hover:text-[#23422a] transition-colors text-sm" href="#">Network</a>
+<a class="text-[#727971] hover:text-[#23422a] transition-colors text-sm" href="#">Impact Labs</a>
+</div>
+<div class="col-span-2 md:col-span-1">
+<p class="text-[#727971] uppercase tracking-widest text-[0.75rem]">© 2024 Movemental. The Living Archive.</p>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

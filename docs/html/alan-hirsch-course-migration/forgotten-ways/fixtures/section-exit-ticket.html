@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exit ticket — Forgotten Ways fixture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../site-templates/site-theme.css" />
+    <link rel="stylesheet" href="../../_shared/forgotten-ways-shell.css" />
+  </head>
+  <body class="fw-migration">
+    <header class="fw-topbar"><div class="fw-topbar__inner"><a href="../index.html" class="fw-topbar__brand">The Forgotten Ways<small>Fixture · exit_ticket</small></a></div></header>
+    <main class="fw-learn__content" style="max-width: var(--container-max); margin: 0 auto;">
+      <article class="fw-lesson">
+        <div class="fw-lesson__meta">Week 2 · <span class="fw-lesson__type">Exit Ticket</span></div>
+        <h1 class="fw-lesson__title">One takeaway from this week</h1>
+        <p class="fw-lesson__description">A ninety-second check-in before you close the browser. Your cohort facilitator will read the aggregate before the next call.</p>
+
+        <form style="display: grid; gap: 1rem;">
+          <div class="fw-form__group">
+            <label class="fw-form__label" for="xt-keep">What are you taking with you?</label>
+            <textarea id="xt-keep" class="fw-form__textarea" placeholder="One sentence."></textarea>
+          </div>
+          <div class="fw-form__group">
+            <label class="fw-form__label" for="xt-stuck">Where did you get stuck?</label>
+            <textarea id="xt-stuck" class="fw-form__textarea" placeholder="Be specific — this is how your facilitator learns to help."></textarea>
+          </div>
+          <fieldset style="border: none; padding: 0; margin: 0;">
+            <legend style="font-weight: 600; color: var(--foreground);">How confident do you feel about this week's practice?</legend>
+            <label style="display: flex; gap: 0.5rem;"><input type="radio" name="xt-confidence" /> Very low — I need help</label>
+            <label style="display: flex; gap: 0.5rem;"><input type="radio" name="xt-confidence" /> Low — I'll try</label>
+            <label style="display: flex; gap: 0.5rem;"><input type="radio" name="xt-confidence" /> Medium — clear on what to do</label>
+            <label style="display: flex; gap: 0.5rem;"><input type="radio" name="xt-confidence" /> High — already in motion</label>
+          </fieldset>
+          <button type="button" class="btn btn-primary">Submit &amp; close the week</button>
+        </form>
+
+        <div class="fw-lesson-footer">
+          <a href="#" class="fw-lesson-footer__btn">Previous</a>
+          <div class="fw-lesson-footer__center"><button class="fw-lesson-footer__btn fw-lesson-footer__btn--primary" type="button">Mark Complete</button></div>
+          <a href="#" class="fw-lesson-footer__btn" style="justify-content: flex-end;">Next</a>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

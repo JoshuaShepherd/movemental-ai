@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#3d3935",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#ccc5bf",
+                        "on-tertiary-container": "#b2a18f",
+                        "on-surface-variant": "#4c463f",
+                        "on-background": "#1b1c19",
+                        "outline": "#7d766f",
+                        "on-tertiary-fixed": "#231a0e",
+                        "tertiary-fixed-dim": "#d6c4b1",
+                        "outline-variant": "#cec5bc",
+                        "inverse-surface": "#30312e",
+                        "surface-container": "#f0eee9",
+                        "tertiary": "#2d2216",
+                        "surface": "#fbf9f4",
+                        "on-primary-fixed-variant": "#4a4642",
+                        "secondary-fixed-dim": "#d0c5b9",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#1b1c19",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#655d54",
+                        "inverse-primary": "#ccc5bf",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#201b14",
+                        "error": "#ba1a1a",
+                        "background": "#fbf9f4",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#f2f1ec",
+                        "surface-variant": "#e4e2dd",
+                        "surface-dim": "#dbdad5",
+                        "on-tertiary-fixed-variant": "#514536",
+                        "on-primary-fixed": "#1e1b18",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#fbf9f4",
+                        "on-secondary-fixed-variant": "#4d463d",
+                        "on-secondary-container": "#696158",
+                        "on-primary-container": "#a9a29d",
+                        "secondary-container": "#e9ded2",
+                        "tertiary-container": "#44382a",
+                        "surface-container-low": "#f5f3ee",
+                        "surface-container-high": "#eae8e3",
+                        "secondary-fixed": "#ece1d5",
+                        "surface-container-highest": "#e4e2dd",
+                        "primary": "#272420",
+                        "surface-tint": "#625d59",
+                        "tertiary-fixed": "#f3dfcc",
+                        "primary-fixed": "#e9e1db"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; background-color: #fbf9f4; }
+        .font-serif { font-family: 'Newsreader', serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .breath-indicator {
+            animation: pulse 8s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.15; }
+        }
+    </style>
+</head>
+<body class="text-on-surface selection:bg-secondary-container">
+<!-- SideNavBar Shell -->
+<nav class="fixed left-0 top-0 h-full flex flex-col py-8 bg-[#f5f3ee] dark:bg-stone-900 h-full w-72 border-r-0 z-50">
+<div class="px-8 mb-12">
+<h1 class="text-xl font-serif italic text-[#3D3935] dark:text-stone-100">The Modern Sanctuary</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/60 font-medium mt-1">Spiritual Formation Assistant</p>
+</div>
+<div class="flex-1 flex flex-col gap-1 px-4">
+<a class="flex items-center gap-4 px-4 py-3 text-[#625d59] dark:text-stone-400 hover:text-[#272420] hover:bg-[#e4e2dd] dark:hover:bg-stone-800 transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-sm font-medium tracking-wide">Sanctuary</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 bg-[#ffffff] dark:bg-stone-800 text-[#272420] dark:text-white font-semibold rounded-r-full" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-sm tracking-wide">Daily Bread</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#625d59] dark:text-stone-400 hover:text-[#272420] hover:bg-[#e4e2dd] dark:hover:bg-stone-800 transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="self_improvement">self_improvement</span>
+<span class="text-sm tracking-wide">Guided Prayer</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#625d59] dark:text-stone-400 hover:text-[#272420] hover:bg-[#e4e2dd] dark:hover:bg-stone-800 transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span class="text-sm tracking-wide">Formation</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#625d59] dark:text-stone-400 hover:text-[#272420] hover:bg-[#e4e2dd] dark:hover:bg-stone-800 transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="text-sm tracking-wide">Library</span>
+</a>
+</div>
+<div class="mt-auto px-4 flex flex-col gap-1">
+<button class="mx-4 mb-8 bg-primary text-on-primary py-3 rounded-md text-sm font-medium hover:opacity-90 transition-opacity">
+                Begin Ritual
+            </button>
+<a class="flex items-center gap-4 px-4 py-3 text-[#625d59] dark:text-stone-400 hover:text-[#272420] hover:bg-[#e4e2dd] dark:hover:bg-stone-800 transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-sm tracking-wide">Settings</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#625d59] dark:text-stone-400 hover:text-[#272420] hover:bg-[#e4e2dd] dark:hover:bg-stone-800 transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="text-sm tracking-wide">Support</span>
+</a>
+</div>
+</nav>
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-18rem)] h-16 flex items-center justify-between px-8 z-40 bg-[#fbf9f4]/80 dark:bg-stone-950/80 backdrop-blur-xl">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary/40" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-lg font-serif text-[#3D3935] dark:text-stone-200 italic">Sacred Presence</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8 text-sm">
+<span class="text-[#272420] dark:text-white font-bold cursor-pointer">Inquiry</span>
+<span class="text-[#625d59] dark:text-stone-400 hover:opacity-70 transition-opacity cursor-pointer">History</span>
+<span class="text-[#625d59] dark:text-stone-400 hover:opacity-70 transition-opacity cursor-pointer">Reflections</span>
+</div>
+<button class="material-symbols-outlined text-primary p-2 hover:opacity-70 transition-opacity" data-icon="account_circle">account_circle</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-72 pt-24 pb-16 px-12 min-h-screen bg-surface">
+<!-- User Query Context -->
+<div class="max-w-4xl mx-auto mb-16">
+<div class="flex items-start gap-6 opacity-60">
+<span class="material-symbols-outlined mt-1" data-icon="person">person</span>
+<div>
+<p class="text-sm tracking-widest uppercase font-semibold mb-2">Your Inquiry</p>
+<p class="text-2xl font-serif leading-relaxed italic text-primary">"I want to start a daily practice of silence. How should I begin based on our current teaching?"</p>
+</div>
+</div>
+</div>
+<!-- AI Response Container -->
+<div class="max-w-4xl mx-auto space-y-12">
+<!-- Hero Response Section -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+<div class="md:col-span-8">
+<h2 class="text-5xl md:text-7xl font-serif text-primary leading-tight mb-8">The Practice of Silence</h2>
+<p class="text-xl font-body leading-relaxed text-secondary font-light">
+                        In our current series, <span class="italic text-primary-container font-medium">Practicing the Way</span>, we are exploring the foundational rhythms of the spiritual life. Silence is not just the absence of noise, but the presence of God.
+                    </p>
+</div>
+<div class="md:col-span-4 relative group">
+<div class="aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-low relative">
+<img alt="Interior of a minimalist chapel with soft morning light hitting a wooden bench" class="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="Interior of a minimalist chapel with soft morning light hitting a wooden bench, serene atmosphere, high contrast shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClDP8FHnimOX__gwGU8186qvLRwGeAMXb04Wy4aE3KRU9B5nnYq-wCWzBmm-fY7InJW2qZaLH51VRb7SAVQNxY2rsqD1qdhS1DNE8jm1JQl819HsVyQje-lAdptSebAWkDDmym5r-3TMTR6yi5IA8uUl1r5RQxdBn2XBeL3sIPF8Iv2T2IDR0-5EEg3FUp_w9kAtHmHrwOFS6mOPKPs2oHc2bakixd_oCXkSLsCA6ZAFVjSMfJzSAFSWoU0c9ZxDujeBaM-D-zYcI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+</div>
+<div class="absolute -bottom-4 -left-4 w-24 h-24 rounded-full bg-tertiary-container/10 breath-indicator"></div>
+</div>
+</section>
+<!-- Instructions Bento Grid -->
+<section class="space-y-8 pt-12">
+<div class="flex items-center gap-4">
+<div class="h-[1px] flex-1 bg-outline-variant/30"></div>
+<h3 class="text-sm tracking-[0.3em] uppercase font-bold text-primary/40">A Simple Way to Begin</h3>
+<div class="h-[1px] flex-1 bg-outline-variant/30"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Step 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-lg transition-all duration-300 hover:translate-y-[-4px]">
+<span class="text-xs font-bold text-outline-variant mb-6 block">01</span>
+<div class="w-12 h-12 flex items-center justify-center bg-surface-container-low rounded-full mb-6">
+<span class="material-symbols-outlined text-primary/60" data-icon="timer">timer</span>
+</div>
+<p class="text-lg font-body font-medium text-primary leading-snug">Set a timer for 5 minutes.</p>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-lg transition-all duration-300 hover:translate-y-[-4px]">
+<span class="text-xs font-bold text-outline-variant mb-6 block">02</span>
+<div class="w-12 h-12 flex items-center justify-center bg-surface-container-low rounded-full mb-6">
+<span class="material-symbols-outlined text-primary/60" data-icon="air">air</span>
+</div>
+<p class="text-lg font-body font-medium text-primary leading-snug">Choose a breath prayer (e.g., "Come, Holy Spirit").</p>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-lg transition-all duration-300 hover:translate-y-[-4px]">
+<span class="text-xs font-bold text-outline-variant mb-6 block">03</span>
+<div class="w-12 h-12 flex items-center justify-center bg-surface-container-low rounded-full mb-6">
+<span class="material-symbols-outlined text-primary/60" data-icon="psychology">psychology</span>
+</div>
+<p class="text-lg font-body font-medium text-primary leading-snug">Return to the breath when your mind wanders.</p>
+</div>
+</div>
+</section>
+<!-- Context & Community -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8 py-12">
+<div class="flex gap-6 items-start p-8 rounded-xl bg-surface-container-low">
+<span class="material-symbols-outlined text-tertiary-container mt-1" data-icon="route">route</span>
+<div>
+<h4 class="text-xs uppercase tracking-widest font-bold text-on-surface-variant mb-3">Discipleship Pathway</h4>
+<p class="text-primary leading-relaxed">This practice is a key part of your current stage in the <span class="font-bold">Discipleship Pathway (Practice)</span>.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start p-8 rounded-xl bg-surface-container-low">
+<span class="material-symbols-outlined text-tertiary-container mt-1" data-icon="groups">groups</span>
+<div>
+<h4 class="text-xs uppercase tracking-widest font-bold text-on-surface-variant mb-3">Community Life</h4>
+<p class="text-primary leading-relaxed">Your community group is discussing this on <span class="font-bold italic">Tuesday night</span>.</p>
+</div>
+</div>
+</section>
+<!-- Actions Footer -->
+<section class="flex flex-col md:flex-row items-center justify-between gap-8 py-12 border-t border-outline-variant/20">
+<div class="space-y-1 text-center md:text-left">
+<p class="text-sm text-secondary">Ready to deepen your practice?</p>
+<p class="text-xl font-serif italic text-primary">May you find rest in the stillness.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-4">
+<button class="px-8 py-4 bg-primary text-on-primary rounded-md font-medium text-sm flex items-center gap-3 hover:opacity-90 transition-opacity shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                        Download the Silence Guide PDF
+                    </button>
+<button class="px-8 py-4 bg-surface-container-high text-primary rounded-md font-medium text-sm flex items-center gap-3 hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="notifications">notifications</span>
+                        Set a Daily Reminder
+                    </button>
+</div>
+</section>
+</div>
+<!-- Secondary Content Suggestion -->
+<aside class="max-w-4xl mx-auto mt-24">
+<div class="bg-primary-container text-on-primary-container p-12 rounded-2xl flex flex-col md:flex-row items-center gap-12 overflow-hidden relative">
+<div class="relative z-10 flex-1">
+<h3 class="text-3xl font-serif italic mb-4 text-white">Deepening the Well</h3>
+<p class="text-on-primary-container/80 mb-8 max-w-md">Continue your journey with our curated audio liturgies designed for morning and evening stillness.</p>
+<a class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-on-tertiary-container hover:text-white transition-colors" href="#">
+                        Explore Liturgies <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="w-48 h-48 md:w-64 md:h-64 bg-tertiary-container/20 rounded-full blur-3xl absolute -right-12 -bottom-12"></div>
+<div class="relative z-10 flex gap-4">
+<div class="w-24 h-32 bg-white/5 backdrop-blur-md rounded-lg p-4 flex flex-col justify-end">
+<div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-white text-[16px]" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+<p class="text-[10px] uppercase font-bold text-white/60">Audio</p>
+</div>
+<div class="w-24 h-32 bg-white/5 backdrop-blur-md rounded-lg p-4 flex flex-col justify-end">
+<div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-white text-[16px]" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+<p class="text-[10px] uppercase font-bold text-white/60">Prayer</p>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<!-- FAB Suppression Logic: Not rendering on this response/details screen -->
+</body></html>

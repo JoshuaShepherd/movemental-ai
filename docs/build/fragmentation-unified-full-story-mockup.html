@@ -1,0 +1,4066 @@
+P<!DOCTYPE html>
+<html lang="en">
+  <!--
+    Unified mockup — section ids for deep links & ScrollTrigger:
+    #intro · #fragmentation · #scatter · #bridge-part-two · #stage-integration ·
+    #stage-activation · #stage-formation · #stage-multiplication · #stage-movement · #outro-cta
+  -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fragmentation — full story (all audiences) — Movemental (mockup)</title>
+    <meta
+      name="description"
+      content="Unified scroll narrative: four audiences, informational + relational fields, Acts I–V, scatter climax, integration through multiplication, movement placeholder. GSAP ScrollTrigger."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../html/site-templates/site-theme.css" />
+    <script>
+      try {
+        if (/\bdebug=1\b/.test(location.search)) document.documentElement.classList.add("mockup-debug");
+      } catch (e) {}
+    </script>
+
+    <style>
+      /* ------------------------------------------------------------------
+         Mockup-scoped styles. Semantic tokens only. No raw hex.
+         ------------------------------------------------------------------ */
+
+      body {
+        color: var(--foreground);
+        background: var(--background);
+      }
+
+      .page {
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 clamp(1rem, 4vw, 3rem);
+      }
+
+      /* ── Editorial type ────────────────────────────────────────────── */
+
+      .eyebrow {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--muted-foreground);
+        text-transform: uppercase;
+        letter-spacing: var(--tracking-eyebrow-wide);
+        margin-bottom: 1.25rem;
+      }
+
+      .display {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        line-height: var(--leading-display);
+        letter-spacing: var(--tracking-display);
+        font-weight: 600;
+        margin: 0 0 1.5rem;
+        color: var(--foreground);
+        text-wrap: balance;
+      }
+
+      .display--midnight {
+        color: var(--inverse-foreground);
+      }
+
+      .lede {
+        font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+        line-height: 1.55;
+        color: var(--muted-foreground);
+        max-width: var(--prose-max);
+        margin: 0;
+      }
+
+      .lede--midnight {
+        color: color-mix(in srgb, var(--inverse-foreground) 85%, transparent);
+      }
+
+      .chapter-title {
+        font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+        line-height: 1.1;
+        letter-spacing: var(--tracking-display);
+        font-weight: 600;
+        margin: 0 0 1rem;
+        color: var(--inverse-foreground);
+        text-wrap: balance;
+      }
+
+      .chapter-body {
+        font-size: 1.0625rem;
+        line-height: var(--leading-prose);
+        color: color-mix(in srgb, var(--inverse-foreground) 80%, transparent);
+        max-width: 42ch;
+        margin: 0 0 1.25rem;
+      }
+
+      .chapter-body strong {
+        color: var(--inverse-foreground);
+        font-weight: 600;
+      }
+
+      .chapter-meta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.625rem;
+        font-size: 0.75rem;
+        color: color-mix(in srgb, var(--inverse-foreground) 55%, transparent);
+        letter-spacing: var(--tracking-label);
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+      }
+
+      .chapter-meta::before {
+        content: "";
+        width: 1.5rem;
+        height: 1px;
+        background: color-mix(in srgb, var(--inverse-foreground) 35%, transparent);
+      }
+
+      /* ── Midnight intro ────────────────────────────────────────────── */
+
+      .intro {
+        background: var(--inverse-surface);
+        color: var(--inverse-foreground);
+        padding: clamp(5rem, 10vw, 8rem) 0 clamp(4rem, 8vw, 6rem);
+      }
+
+      .intro__grid {
+        display: grid;
+        gap: 3rem;
+      }
+
+      @media (min-width: 48rem) {
+        .intro__grid {
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+          align-items: end;
+          gap: 4rem;
+        }
+      }
+
+      .intro .eyebrow {
+        color: color-mix(in srgb, var(--inverse-foreground) 60%, transparent);
+      }
+
+      /* ── Fragmentation stage ───────────────────────────────────────── */
+
+      .frag {
+        background: var(--inverse-surface);
+        color: var(--inverse-foreground);
+        position: relative;
+      }
+
+      .frag__shell {
+        position: relative;
+        display: grid;
+        gap: 0;
+      }
+
+      @media (min-width: 64rem) {
+        .frag__shell {
+          grid-template-columns: minmax(0, 0.44fr) minmax(0, 0.56fr);
+          gap: clamp(2rem, 4vw, 4rem);
+        }
+      }
+
+      /* Left sticky visual stage */
+      .frag__stage-wrap {
+        position: relative;
+      }
+
+      @media (min-width: 64rem) {
+        .frag__stage-wrap {
+          position: sticky;
+          top: 0;
+          height: 100vh;
+          height: 100dvh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 3rem 0;
+        }
+      }
+
+      @media (max-width: 63.999rem) {
+        .frag__stage-wrap {
+          display: none; /* mobile uses inline chapter images */
+        }
+      }
+
+      .frag__stage {
+        position: relative;
+        width: min(26rem, 100%);
+        aspect-ratio: 4 / 5;
+        margin: 0 auto;
+      }
+
+      /* A single artifact layer inside the stage */
+      .artifact {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        opacity: 0;
+        transform: translate3d(0, 16px, 0) rotate(0deg);
+        transition: opacity 0.3s ease;
+        will-change: transform, opacity;
+      }
+
+      .artifact.is-active {
+        opacity: 1;
+      }
+
+      .artifact__card {
+        position: relative;
+        width: 88%;
+        aspect-ratio: var(--ar, 4 / 5);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        background: var(--card);
+        /* Ambient shadow only — no decorative borders */
+        box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.55),
+          0 10px 20px -10px rgba(0, 0, 0, 0.35);
+      }
+
+      .artifact__card img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Ghost siblings — indicate "other copies exist" */
+      .artifact__ghost {
+        position: absolute;
+        width: 62%;
+        aspect-ratio: var(--ar, 4 / 5);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        background: var(--card);
+        opacity: 0;
+        box-shadow: 0 20px 40px -18px rgba(0, 0, 0, 0.5);
+        will-change: transform, opacity;
+      }
+
+      .artifact__ghost img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Composition tokens — set on each artifact layer */
+      .a--unity .artifact__card {
+        width: 78%;
+      }
+
+      /* Landscape diagram — give it more horizontal presence */
+      .a--first-break .artifact__card {
+        width: 92%;
+      }
+      .a--first-break .artifact__ghost {
+        width: 86%;
+        top: 18%;
+        left: -2%;
+        opacity: 0;
+      }
+
+      .a--divergence .artifact__card {
+        width: 68%;
+      }
+      .a--divergence .artifact__ghost--b {
+        width: 58%;
+        bottom: 8%;
+        right: 2%;
+      }
+      .a--divergence .artifact__ghost--c {
+        width: 52%;
+        top: 6%;
+        right: 0%;
+      }
+
+      .a--channels .artifact__card {
+        width: 62%;
+      }
+      .a--channels .artifact__ghost--b {
+        width: 54%;
+        bottom: 4%;
+        left: 0%;
+      }
+
+      .a--misalignment .artifact__card {
+        width: 58%;
+      }
+      .a--misalignment .artifact__ghost--b {
+        width: 60%;
+        top: 4%;
+        right: 2%;
+      }
+      .a--misalignment .artifact__ghost--c {
+        width: 44%;
+        bottom: 2%;
+        right: 18%;
+      }
+
+      /* Right — copy column */
+      .frag__copy {
+        padding: clamp(4rem, 10vw, 8rem) 0 clamp(4rem, 10vw, 8rem);
+      }
+
+      @media (min-width: 64rem) {
+        .frag__copy {
+          padding: 12rem 0 14rem;
+        }
+      }
+
+      .chapter {
+        max-width: 36rem;
+        padding: clamp(3rem, 10vw, 7rem) 0;
+      }
+
+      .chapter:first-of-type {
+        padding-top: 0;
+      }
+
+      .chapter__inline {
+        display: block;
+        margin-top: 1.5rem;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        background: var(--card);
+        box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
+        aspect-ratio: var(--ar, 4 / 5);
+        max-width: 22rem;
+      }
+
+      .chapter__inline img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      @media (min-width: 64rem) {
+        .chapter__inline {
+          display: none; /* desktop uses sticky left stage */
+        }
+      }
+
+      /* ── Audience dock (from by-audience mockup) ───────────────────── */
+
+      .audience-dock {
+        position: sticky;
+        top: 0;
+        z-index: 60;
+        background: color-mix(in srgb, var(--inverse-surface) 98%, transparent);
+        backdrop-filter: saturate(120%) blur(10px);
+        -webkit-backdrop-filter: saturate(120%) blur(10px);
+        color: var(--inverse-foreground);
+        border-bottom: 1px solid color-mix(in srgb, var(--inverse-foreground) 8%, transparent);
+      }
+
+      .audience-dock__bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem 1rem;
+        min-height: 2.75rem;
+        padding: 0.35rem 0;
+        flex-wrap: wrap;
+      }
+
+      @media (min-width: 48rem) {
+        .audience-dock__bar {
+          flex-wrap: nowrap;
+          min-height: 3rem;
+          padding: 0.4rem 0;
+        }
+      }
+
+      .audience-nav {
+        display: flex;
+        align-items: center;
+        gap: 0.125rem;
+        min-width: 0;
+        flex: 1 1 auto;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        padding: 0.1rem 0;
+      }
+
+      .audience-nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .audience-card {
+        appearance: none;
+        margin: 0;
+        border: 0;
+        cursor: pointer;
+        text-align: left;
+        font: inherit;
+        color: inherit;
+        border-radius: var(--radius-pill);
+        padding: 0.35rem 0.55rem;
+        background: transparent;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        flex-shrink: 0;
+        white-space: nowrap;
+        transition: color 0.15s ease, background 0.15s ease;
+      }
+
+      .audience-card:hover {
+        background: color-mix(in srgb, var(--inverse-foreground) 7%, transparent);
+        color: var(--inverse-foreground);
+      }
+
+      .audience-card:focus-visible {
+        outline: 2px solid color-mix(in srgb, var(--primary) 85%, transparent);
+        outline-offset: 2px;
+      }
+
+      .audience-card.is-active {
+        background: color-mix(in srgb, var(--inverse-foreground) 12%, transparent);
+        color: var(--inverse-foreground);
+        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--primary) 45%, transparent);
+      }
+
+      .audience-card__glyph {
+        width: 1.125rem;
+        height: 1.125rem;
+        border-radius: var(--radius-sm);
+        display: grid;
+        place-items: center;
+        background: transparent;
+        color: color-mix(in srgb, var(--inverse-foreground) 65%, transparent);
+        flex-shrink: 0;
+      }
+
+      .audience-card.is-active .audience-card__glyph {
+        color: color-mix(in srgb, var(--primary) 90%, transparent);
+      }
+
+      .audience-card__glyph svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .audience-card__label {
+        font-size: 0.8125rem;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+      }
+
+      .mode-rail {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        flex-shrink: 0;
+      }
+
+      .mode-rail__label {
+        display: none;
+      }
+
+      @media (min-width: 56rem) {
+        .mode-rail__label {
+          display: block;
+          font-size: 0.625rem;
+          font-weight: 600;
+          letter-spacing: var(--tracking-eyebrow-wide);
+          text-transform: uppercase;
+          color: color-mix(in srgb, var(--inverse-foreground) 45%, transparent);
+          white-space: nowrap;
+        }
+      }
+
+      .mode-rail__track {
+        display: inline-flex;
+        align-items: stretch;
+        background: color-mix(in srgb, var(--inverse-foreground) 6%, transparent);
+        padding: 0.2rem;
+        border-radius: var(--radius-pill);
+        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--inverse-foreground) 9%, transparent);
+        gap: 0.05rem;
+      }
+
+      .mode-rail__opt {
+        appearance: none;
+        border: 0;
+        margin: 0;
+        cursor: pointer;
+        font: inherit;
+        border-radius: var(--radius-pill);
+        padding: 0.3rem 0.65rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        color: color-mix(in srgb, var(--inverse-foreground) 58%, transparent);
+        background: transparent;
+        transition: color 0.15s ease, background 0.15s ease;
+      }
+
+      .mode-rail__opt:hover {
+        color: color-mix(in srgb, var(--inverse-foreground) 92%, transparent);
+      }
+
+      .mode-rail__opt:focus-visible {
+        outline: 2px solid color-mix(in srgb, var(--primary) 85%, transparent);
+        outline-offset: 2px;
+      }
+
+      .mode-rail__opt.is-active {
+        color: var(--foreground);
+        background: var(--inverse-foreground);
+      }
+
+      .mode-rail__title {
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: -0.005em;
+        line-height: 1;
+      }
+
+      .mode-rail__icon {
+        width: 0.8125rem;
+        height: 0.8125rem;
+        opacity: 0.72;
+        flex-shrink: 0;
+      }
+
+      .mode-rail__opt.is-active .mode-rail__icon {
+        opacity: 1;
+        color: var(--primary);
+      }
+
+      /* Stage 06 · Movement (placeholder) */
+      .movement-hold {
+        background: var(--inverse-surface);
+        color: var(--inverse-foreground);
+        padding: clamp(4rem, 10vw, 6rem) 0;
+        min-height: 48vh;
+        display: flex;
+        align-items: center;
+      }
+
+      .movement-hold__void {
+        margin-top: 2rem;
+        min-height: 12rem;
+        border-radius: var(--radius-md);
+        background: color-mix(in srgb, var(--inverse-foreground) 6%, transparent);
+        border: 1px dashed color-mix(in srgb, var(--inverse-foreground) 18%, transparent);
+      }
+
+      /* ── Scatter field + boom climax ───────────────────────────────── */
+
+      .scatter {
+        background: var(--inverse-surface);
+        color: var(--inverse-foreground);
+        position: relative;
+      }
+
+      /* Tall outer scroll track so the pinned stage has scrub room */
+      .scatter__track {
+        position: relative;
+        height: 560vh; /* 5.6× viewport = room for scatter + cost + boom */
+      }
+
+      .scatter__pin {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+      }
+
+      /* The field that holds all 14 artifact tiles */
+      .scatter__field {
+        position: absolute;
+        inset: 0;
+        display: block;
+        will-change: transform, opacity;
+      }
+
+      /* Each tile is absolutely positioned using inline vars. Final transform
+         (target resting state) is authored inline — GSAP animates FROM
+         center/invisible TO the authored composition, then OUT to collapse. */
+      .scatter__tile {
+        position: absolute;
+        top: var(--t, 50%);
+        left: var(--l, 50%);
+        width: var(--w, 14rem);
+        aspect-ratio: var(--ar, 4 / 5);
+        transform: translate(-50%, -50%) rotate(var(--r, 0deg)) scale(var(--s, 1));
+        transform-origin: center center;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        background: var(--card);
+        box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.55),
+          0 10px 24px -12px rgba(0, 0, 0, 0.45);
+        will-change: transform, opacity;
+        opacity: 0; /* GSAP reveals */
+      }
+
+      .scatter__tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* The cost veil — a dark gradient that presses the scattered artifacts
+         into the background so the cost statement can land. Does NOT hide
+         the scatter; it recedes it so text reads cleanly on top. */
+      .scatter__veil {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 80% 62% at 50% 50%,
+          color-mix(in srgb, var(--inverse-surface) 92%, transparent) 0%,
+          color-mix(in srgb, var(--inverse-surface) 70%, transparent) 38%,
+          color-mix(in srgb, var(--inverse-surface) 30%, transparent) 72%,
+          transparent 96%
+        );
+        opacity: 0;
+        z-index: 2;
+        pointer-events: none;
+        will-change: opacity;
+      }
+
+      /* The cost statement — rises over the darkened scatter, holds long
+         enough to be read, then exits before the implosion. */
+      .scatter__cost {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 1.5rem;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 3;
+        will-change: transform, opacity;
+      }
+
+      .scatter__cost-eyebrow {
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: color-mix(in srgb, var(--inverse-foreground) 60%, transparent);
+        text-transform: uppercase;
+        letter-spacing: var(--tracking-eyebrow-wide);
+        margin-bottom: 1.75rem;
+      }
+
+      .scatter__cost-title {
+        font-size: clamp(2.25rem, 6vw, 5rem);
+        line-height: 1;
+        letter-spacing: var(--tracking-display);
+        font-weight: 600;
+        color: var(--inverse-foreground);
+        margin: 0 0 2rem;
+        max-width: 22ch;
+        text-wrap: balance;
+      }
+
+      /* Ledger of costs — one line each, staggered in. */
+      .scatter__cost-ledger {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.625rem;
+        font-size: clamp(1rem, 1.5vw, 1.375rem);
+        line-height: 1.3;
+        color: color-mix(in srgb, var(--inverse-foreground) 82%, transparent);
+        max-width: 32ch;
+      }
+
+      .scatter__cost-ledger li {
+        opacity: 0;
+        will-change: transform, opacity;
+      }
+
+      .scatter__cost-ledger li strong {
+        color: var(--inverse-foreground);
+        font-weight: 600;
+      }
+
+      /* The climax overlay — sits on top of the field, starts invisible,
+         lands as the "boom" as the scatter collapses. */
+      .scatter__climax {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 1.5rem;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 4;
+      }
+
+      .scatter__climax-eyebrow {
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: color-mix(in srgb, var(--inverse-foreground) 60%, transparent);
+        text-transform: uppercase;
+        letter-spacing: var(--tracking-eyebrow-wide);
+        margin-bottom: 1.5rem;
+      }
+
+      .scatter__climax-title {
+        font-size: clamp(3rem, 9vw, 7.5rem);
+        line-height: 0.95;
+        letter-spacing: var(--tracking-display);
+        font-weight: 600;
+        color: var(--inverse-foreground);
+        margin: 0 0 1.25rem;
+        max-width: 18ch;
+        text-wrap: balance;
+      }
+
+      .scatter__climax-title em {
+        font-style: normal;
+        color: var(--primary);
+      }
+
+      .scatter__climax-sub {
+        font-size: clamp(1rem, 1.4vw, 1.25rem);
+        line-height: 1.5;
+        color: color-mix(in srgb, var(--inverse-foreground) 70%, transparent);
+        max-width: 40ch;
+        margin: 0;
+      }
+
+      /* A radial primary flash behind the climax text — the "boom" */
+      .scatter__flash {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 50% 50%,
+          color-mix(in srgb, var(--primary) 35%, transparent) 0%,
+          transparent 55%
+        );
+        opacity: 0;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      /* Mobile: disable pin/scatter, show a compact grid summary */
+      @media (max-width: 47.999rem) {
+        .scatter__track {
+          height: auto;
+        }
+        .scatter__pin {
+          position: relative;
+          height: auto;
+          overflow: visible;
+          padding: 4rem 1.25rem 5rem;
+        }
+        .scatter__field {
+          position: relative;
+          inset: auto;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0.5rem;
+          height: auto;
+        }
+        .scatter__tile {
+          position: relative;
+          top: auto;
+          left: auto;
+          width: 100%;
+          transform: none;
+          opacity: 1;
+        }
+        .scatter__veil {
+          display: none;
+        }
+        .scatter__cost {
+          position: relative;
+          inset: auto;
+          opacity: 1;
+          margin-top: 3rem;
+          padding: 2rem 1rem 0;
+        }
+        .scatter__cost-ledger li {
+          opacity: 1;
+        }
+        .scatter__climax {
+          position: relative;
+          inset: auto;
+          opacity: 1;
+          margin-top: 3rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .scatter__tile {
+          opacity: 1 !important;
+        }
+        .scatter__cost,
+        .scatter__cost-ledger li,
+        .scatter__climax {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      }
+
+      /* ── Outro (back to light) ─────────────────────────────────────── */
+
+      .outro {
+        background: var(--section);
+        padding: clamp(5rem, 10vw, 7.5rem) 0;
+      }
+
+      .outro__grid {
+        display: grid;
+        gap: 2.5rem;
+      }
+
+      @media (min-width: 48rem) {
+        .outro__grid {
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          align-items: end;
+          gap: 4rem;
+        }
+      }
+
+      .outro__pull {
+        font-size: clamp(1.5rem, 2.6vw, 2rem);
+        line-height: 1.25;
+        letter-spacing: var(--tracking-display);
+        color: var(--foreground);
+        font-weight: 500;
+        margin: 0;
+        text-wrap: balance;
+      }
+
+      .outro__pull em {
+        font-style: normal;
+        color: var(--primary);
+      }
+
+      /* ── Reduced motion fallback ───────────────────────────────────── */
+
+      @media (prefers-reduced-motion: reduce) {
+        .artifact {
+          transition: none !important;
+        }
+        .artifact,
+        .artifact__ghost {
+          transform: none !important;
+        }
+      }
+
+      /* ══════════════════════════════════════════════════════════════════
+         PART II — Integration · Activation · Formation · Multiplication
+         Same artifacts, different compositions. Stages are NOT separate
+         hero images — they are arrangements + overlays in code.
+         ══════════════════════════════════════════════════════════════════ */
+
+      /* ── Shared stage shell ────────────────────────────────────────── */
+
+      .stage {
+        position: relative;
+        padding: clamp(5rem, 10vw, 7.5rem) 0;
+      }
+
+      .stage--midnight {
+        background: var(--inverse-surface);
+        color: var(--inverse-foreground);
+      }
+
+      .stage--section {
+        background: var(--section);
+      }
+
+      .stage--elevated {
+        background: var(--elevated);
+      }
+
+      .stage__header {
+        max-width: 44rem;
+        margin: 0 auto clamp(3rem, 6vw, 4.5rem);
+        text-align: center;
+      }
+
+      .stage__number {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.625rem;
+        font-size: 0.75rem;
+        letter-spacing: var(--tracking-label);
+        text-transform: uppercase;
+        color: var(--muted-foreground);
+        margin-bottom: 1.5rem;
+      }
+
+      .stage--midnight .stage__number {
+        color: color-mix(in srgb, var(--inverse-foreground) 60%, transparent);
+      }
+
+      .stage__number::before {
+        content: "";
+        width: 1.75rem;
+        height: 1px;
+        background: currentColor;
+        opacity: 0.5;
+      }
+
+      .stage__title {
+        font-size: clamp(2.25rem, 5vw, 3.75rem);
+        line-height: 1.05;
+        letter-spacing: var(--tracking-display);
+        font-weight: 600;
+        margin: 0 0 1.25rem;
+        text-wrap: balance;
+      }
+
+      .stage--midnight .stage__title {
+        color: var(--inverse-foreground);
+      }
+
+      .stage__lede {
+        font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+        line-height: 1.55;
+        color: var(--muted-foreground);
+        max-width: 38rem;
+        margin: 0 auto;
+      }
+
+      .stage--midnight .stage__lede {
+        color: color-mix(in srgb, var(--inverse-foreground) 78%, transparent);
+      }
+
+      .stage__lede em {
+        font-style: normal;
+        color: var(--foreground);
+        font-weight: 500;
+      }
+
+      .stage--midnight .stage__lede em {
+        color: var(--inverse-foreground);
+      }
+
+      .stage__frame {
+        position: relative;
+        max-width: var(--container-max);
+        margin: 0 auto;
+      }
+
+      /* ── Constellation — shared canvas used by Integration/Activation/
+             Formation/Multiplication with per-stage positioning overrides ─ */
+
+      .constellation {
+        position: relative;
+        aspect-ratio: 16 / 10;
+        width: 100%;
+        max-width: 64rem;
+        margin: 0 auto;
+      }
+
+      .constellation__svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: visible;
+      }
+
+      .constellation__svg line,
+      .constellation__svg path {
+        stroke: currentColor;
+        fill: none;
+        stroke-linecap: round;
+        vector-effect: non-scaling-stroke;
+      }
+
+      .multi__svg line,
+      .pathway__svg path {
+        vector-effect: non-scaling-stroke;
+      }
+
+      .node {
+        position: absolute;
+        top: var(--t, 50%);
+        left: var(--l, 50%);
+        width: var(--w, 8rem);
+        aspect-ratio: var(--ar, 4 / 5);
+        transform: translate(-50%, -50%) rotate(var(--r, 0deg)) scale(var(--s, 1));
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        background: var(--card);
+        box-shadow: 0 20px 40px -18px rgba(0, 0, 0, 0.55),
+          0 6px 14px -8px rgba(0, 0, 0, 0.35);
+        will-change: transform, opacity;
+      }
+
+      .node img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .node--highlight {
+        box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.55),
+          0 0 0 2px var(--primary), 0 0 24px 0 color-mix(in srgb, var(--primary) 55%, transparent);
+      }
+
+      /* The focal node in each constellation sits above the orbit so it's
+         never obscured by a neighbouring artifact. */
+      .node--center {
+        z-index: 3;
+      }
+
+      /* ── INTEGRATION — cluster with connections ───────────────────── */
+
+      .stage--integration .constellation__svg {
+        color: color-mix(in srgb, var(--inverse-foreground) 35%, transparent);
+        stroke-width: 1;
+      }
+
+      .stage--activation .constellation__svg {
+        color: color-mix(in srgb, var(--foreground) 22%, transparent);
+        stroke-width: 1;
+      }
+
+      .constellation__svg line,
+      .constellation__svg path.join {
+        stroke-dasharray: var(--len, 1000);
+        stroke-dashoffset: var(--len, 1000);
+      }
+
+      .stage__captions {
+        display: grid;
+        gap: 1.25rem;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        max-width: 52rem;
+        margin: clamp(2.5rem, 5vw, 4rem) auto 0;
+      }
+
+      @media (max-width: 47.999rem) {
+        .stage__captions {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .stage__caption {
+        padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+        border-radius: var(--radius-md);
+      }
+
+      .stage--midnight .stage__caption {
+        background: color-mix(in srgb, var(--inverse-foreground) 6%, transparent);
+      }
+
+      .stage--section .stage__caption,
+      .stage--elevated .stage__caption {
+        background: var(--card);
+        box-shadow: var(--shadow-ambient);
+      }
+
+      .stage__caption-title {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        margin: 0 0 0.25rem;
+        color: inherit;
+      }
+
+      .stage__caption-body {
+        font-size: 0.875rem;
+        line-height: 1.55;
+        margin: 0;
+        color: inherit;
+        opacity: 0.72;
+      }
+
+      /* ── INTEGRATION IDE — artifacts becoming markdown + JSON ───────
+
+         Second visual inside the Integration stage. The constellation
+         shows the relationships; the IDE shows what those relationships
+         actually look like when the information architecture is built. */
+
+      .ide-handoff {
+        max-width: 44rem;
+        margin: clamp(4rem, 8vw, 6rem) auto clamp(2rem, 4vw, 3rem);
+        text-align: center;
+      }
+
+      .ide-handoff__eyebrow {
+        display: inline-block;
+        font-size: 0.75rem;
+        letter-spacing: var(--tracking-label);
+        text-transform: uppercase;
+        color: color-mix(in srgb, var(--inverse-foreground) 55%, transparent);
+        margin-bottom: 1rem;
+      }
+
+      .ide-handoff__title {
+        font-size: clamp(1.75rem, 3vw, 2.25rem);
+        line-height: 1.1;
+        letter-spacing: var(--tracking-display);
+        font-weight: 600;
+        color: var(--inverse-foreground);
+        margin: 0 0 0.75rem;
+        text-wrap: balance;
+      }
+
+      .ide-handoff__sub {
+        font-size: 1rem;
+        line-height: 1.55;
+        color: color-mix(in srgb, var(--inverse-foreground) 72%, transparent);
+        margin: 0;
+      }
+
+      .ide {
+        position: relative;
+        max-width: 64rem;
+        margin: 0 auto;
+        background: color-mix(in srgb, var(--inverse-foreground) 4%, var(--inverse-surface));
+        border-radius: var(--radius-md);
+        box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.6),
+          0 0 0 1px color-mix(in srgb, var(--inverse-foreground) 8%, transparent);
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 15rem minmax(0, 1fr) 16rem;
+        grid-template-rows: 2.5rem minmax(22rem, auto);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.8125rem;
+      }
+
+      @media (max-width: 63.999rem) {
+        .ide {
+          grid-template-columns: 1fr;
+          grid-template-rows: 2.5rem auto auto auto;
+        }
+      }
+
+      .ide__toolbar {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0 1rem;
+        background: color-mix(in srgb, var(--inverse-foreground) 7%, var(--inverse-surface));
+        border-bottom: 1px solid color-mix(in srgb, var(--inverse-foreground) 8%, transparent);
+      }
+
+      .ide__dot {
+        width: 0.625rem;
+        height: 0.625rem;
+        border-radius: var(--radius-pill);
+        background: color-mix(in srgb, var(--inverse-foreground) 18%, transparent);
+      }
+
+      .ide__tab {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.3125rem 0.625rem;
+        border-radius: var(--radius-sm);
+        font-size: 0.75rem;
+        color: color-mix(in srgb, var(--inverse-foreground) 60%, transparent);
+      }
+
+      .ide__tab[data-active] {
+        background: color-mix(in srgb, var(--inverse-foreground) 10%, transparent);
+        color: var(--inverse-foreground);
+      }
+
+      .ide__tab-icon {
+        width: 0.625rem;
+        height: 0.625rem;
+        border-radius: 2px;
+        background: var(--primary);
+      }
+
+      .ide__toolbar-spacer {
+        flex: 1;
+      }
+
+      .ide__open-count {
+        font-size: 0.6875rem;
+        color: color-mix(in srgb, var(--inverse-foreground) 45%, transparent);
+        letter-spacing: 0.04em;
+      }
+
+      /* File tree */
+      .ide__tree {
+        padding: 0.875rem 0.75rem;
+        background: color-mix(in srgb, var(--inverse-foreground) 2%, var(--inverse-surface));
+        border-right: 1px solid color-mix(in srgb, var(--inverse-foreground) 8%, transparent);
+        overflow: hidden;
+      }
+
+      @media (max-width: 63.999rem) {
+        .ide__tree {
+          border-right: none;
+          border-bottom: 1px solid color-mix(in srgb, var(--inverse-foreground) 8%, transparent);
+        }
+      }
+
+      .ide__tree-group {
+        margin-bottom: 1rem;
+      }
+
+      .ide__folder {
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+        color: color-mix(in srgb, var(--inverse-foreground) 62%, transparent);
+        letter-spacing: 0.02em;
+      }
+
+      .ide__folder::before {
+        content: "";
+        width: 0.5rem;
+        height: 0.5rem;
+        border-right: 1.5px solid currentColor;
+        border-bottom: 1.5px solid currentColor;
+        transform: rotate(-45deg);
+        opacity: 0.65;
+      }
+
+      .ide__tree ul {
+        list-style: none;
+        padding: 0;
+        margin: 0.125rem 0 0 0.75rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.0625rem;
+      }
+
+      .ide__file {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.3125rem 0.5rem;
+        border-radius: var(--radius-sm);
+        color: color-mix(in srgb, var(--inverse-foreground) 80%, transparent);
+        font-size: 0.75rem;
+        cursor: default;
+        opacity: 0;
+        transform: translateX(-6px);
+      }
+
+      .ide__file[data-active] {
+        background: color-mix(in srgb, var(--primary) 18%, transparent);
+        color: var(--inverse-foreground);
+      }
+
+      .ide__file-thumb {
+        width: 1.125rem;
+        height: 1.4rem;
+        border-radius: 2px;
+        overflow: hidden;
+        background: var(--card);
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.5);
+        flex-shrink: 0;
+      }
+
+      .ide__file-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .ide__file-name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .ide__file-ext {
+        font-size: 0.625rem;
+        color: color-mix(in srgb, var(--inverse-foreground) 40%, transparent);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      /* Editor */
+      .ide__editor {
+        position: relative;
+        padding: 1rem 1.25rem;
+        overflow: hidden;
+        line-height: 1.6;
+      }
+
+      .ide__editor pre {
+        margin: 0;
+        font: inherit;
+        color: color-mix(in srgb, var(--inverse-foreground) 75%, transparent);
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      /* Syntax token colors */
+      .tk-delim {
+        color: color-mix(in srgb, var(--inverse-foreground) 30%, transparent);
+      }
+      .tk-key {
+        color: color-mix(in srgb, var(--inverse-foreground) 95%, transparent);
+      }
+      .tk-str {
+        color: var(--primary);
+      }
+      .tk-str-alt {
+        color: color-mix(in srgb, var(--primary) 60%, var(--inverse-foreground));
+      }
+      .tk-num {
+        color: color-mix(in srgb, var(--primary) 55%, var(--inverse-foreground));
+      }
+      .tk-h1 {
+        color: var(--inverse-foreground);
+        font-weight: 600;
+      }
+      .tk-h1::before {
+        content: "# ";
+        color: color-mix(in srgb, var(--primary) 70%, transparent);
+      }
+      .tk-body {
+        color: color-mix(in srgb, var(--inverse-foreground) 65%, transparent);
+      }
+
+      .ide__line {
+        display: block;
+        opacity: 0;
+      }
+
+      /* Schema panel (right) */
+      .ide__schema {
+        padding: 0.875rem 1rem;
+        background: color-mix(in srgb, var(--inverse-foreground) 3%, var(--inverse-surface));
+        border-left: 1px solid color-mix(in srgb, var(--inverse-foreground) 8%, transparent);
+        overflow: hidden;
+      }
+
+      @media (max-width: 63.999rem) {
+        .ide__schema {
+          border-left: none;
+          border-top: 1px solid color-mix(in srgb, var(--inverse-foreground) 8%, transparent);
+        }
+      }
+
+      .ide__schema-title {
+        font-size: 0.6875rem;
+        color: color-mix(in srgb, var(--inverse-foreground) 55%, transparent);
+        letter-spacing: var(--tracking-label);
+        text-transform: uppercase;
+        margin: 0 0 0.875rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .ide__schema-title::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: color-mix(in srgb, var(--inverse-foreground) 10%, transparent);
+      }
+
+      .ide__schema-block {
+        padding: 0.5rem 0.625rem;
+        margin-bottom: 0.375rem;
+        border-radius: var(--radius-sm);
+        background: color-mix(in srgb, var(--inverse-foreground) 4%, transparent);
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      .ide__schema-key {
+        display: block;
+        font-size: 0.6875rem;
+        color: color-mix(in srgb, var(--primary) 80%, var(--inverse-foreground));
+        letter-spacing: 0.02em;
+      }
+
+      .ide__schema-value {
+        display: block;
+        margin-top: 0.125rem;
+        font-size: 0.75rem;
+        color: color-mix(in srgb, var(--inverse-foreground) 82%, transparent);
+      }
+
+      .ide__schema-value .chip-line {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        margin-top: 0.1875rem;
+      }
+
+      .ide__schema-value .chip-line span {
+        padding: 0 0.375rem;
+        height: 1.125rem;
+        line-height: 1.125rem;
+        border-radius: var(--radius-pill);
+        background: color-mix(in srgb, var(--inverse-foreground) 8%, transparent);
+        font-size: 0.6875rem;
+        color: color-mix(in srgb, var(--inverse-foreground) 85%, transparent);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .ide__file,
+        .ide__line,
+        .ide__schema-block {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      }
+
+      /* ── ACTIVATION — workspace chrome ─────────────────────────────── */
+
+      .workspace {
+        position: relative;
+        background: var(--card);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-ambient), 0 40px 80px -40px rgba(42, 52, 57, 0.18);
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 14rem minmax(0, 1fr) 18rem;
+        grid-template-rows: 3.25rem minmax(0, 1fr);
+        min-height: 34rem;
+      }
+
+      @media (max-width: 63.999rem) {
+        .workspace {
+          grid-template-columns: 1fr;
+          grid-template-rows: 3.25rem auto auto auto;
+          min-height: 0;
+        }
+      }
+
+      .workspace__topbar {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0 1.25rem;
+        background: var(--section);
+      }
+
+      .workspace__search {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+        height: 2.125rem;
+        padding: 0 0.875rem;
+        background: var(--card);
+        border-radius: var(--radius-pill);
+        font-size: 0.875rem;
+        color: var(--muted-foreground);
+      }
+
+      .workspace__search-cursor {
+        display: inline-block;
+        width: 1px;
+        height: 1em;
+        background: var(--primary);
+        vertical-align: middle;
+        animation: ws-blink 1.1s steps(1) infinite;
+      }
+
+      @keyframes ws-blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .workspace__chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 0 0.625rem;
+        height: 1.5rem;
+        border-radius: var(--radius-pill);
+        background: var(--elevated);
+        color: var(--muted-foreground);
+        font-size: 0.75rem;
+        letter-spacing: var(--tracking-label);
+        text-transform: uppercase;
+      }
+
+      .workspace__sidebar {
+        padding: 1.25rem 1rem;
+        background: var(--section);
+        border-right: 1px solid var(--border);
+        font-size: 0.8125rem;
+        color: var(--muted-foreground);
+      }
+
+      @media (max-width: 63.999rem) {
+        .workspace__sidebar {
+          border-right: none;
+          border-bottom: 1px solid var(--border);
+        }
+      }
+
+      .workspace__sidebar-title {
+        font-size: 0.6875rem;
+        letter-spacing: var(--tracking-label);
+        text-transform: uppercase;
+        color: var(--muted-foreground);
+        margin: 0 0 0.75rem;
+      }
+
+      .workspace__sidebar ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .workspace__sidebar li {
+        padding: 0.375rem 0.625rem;
+        border-radius: var(--radius-sm);
+        color: var(--foreground);
+      }
+
+      .workspace__sidebar li[data-active] {
+        background: var(--primary);
+        color: var(--primary-foreground);
+      }
+
+      .workspace__canvas {
+        position: relative;
+        padding: 1.5rem;
+        background: var(--background);
+        overflow: hidden;
+      }
+
+      .workspace__canvas .constellation {
+        aspect-ratio: auto;
+        height: 100%;
+        min-height: 24rem;
+      }
+
+      .workspace__aipanel {
+        padding: 1.25rem 1.125rem;
+        border-left: 1px solid var(--border);
+        background: var(--card);
+        font-size: 0.875rem;
+        line-height: 1.55;
+        color: var(--foreground);
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      @media (max-width: 63.999rem) {
+        .workspace__aipanel {
+          border-left: none;
+          border-top: 1px solid var(--border);
+        }
+      }
+
+      .workspace__aipanel-eyebrow {
+        font-size: 0.6875rem;
+        letter-spacing: var(--tracking-label);
+        text-transform: uppercase;
+        color: var(--primary);
+      }
+
+      .workspace__aipanel-body {
+        color: var(--muted-foreground);
+      }
+
+      .workspace__aipanel-body strong {
+        color: var(--foreground);
+      }
+
+      .workspace__aipanel-cite {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.375rem;
+        margin-top: auto;
+        font-size: 0.75rem;
+      }
+
+      .workspace__aipanel-cite span {
+        padding: 0.125rem 0.5rem;
+        border-radius: var(--radius-pill);
+        background: var(--section);
+        color: var(--muted-foreground);
+      }
+
+      /* ── FORMATION — pathway progression ──────────────────────────── */
+
+      .pathway {
+        position: relative;
+        width: 100%;
+        max-width: 64rem;
+        margin: 0 auto;
+        aspect-ratio: 16 / 7;
+      }
+
+      .pathway__svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: visible;
+      }
+
+      .pathway__svg path {
+        fill: none;
+        stroke: color-mix(in srgb, var(--inverse-foreground) 28%, transparent);
+        stroke-width: 1.25;
+        stroke-linecap: round;
+        stroke-dasharray: 4 6;
+      }
+
+      .pathway__svg path.pathway__trail {
+        stroke: var(--primary);
+        stroke-width: 1.75;
+        stroke-dasharray: var(--len, 1500);
+        stroke-dashoffset: var(--len, 1500);
+      }
+
+      .pathway__stop {
+        position: absolute;
+        top: var(--t, 50%);
+        left: var(--l, 50%);
+        width: var(--w, 9rem);
+        aspect-ratio: var(--ar, 4 / 5);
+        transform: translate(-50%, -50%);
+      }
+
+      .pathway__stop-card {
+        width: 100%;
+        height: 100%;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        background: var(--card);
+        box-shadow: 0 20px 40px -18px rgba(0, 0, 0, 0.55);
+      }
+
+      .pathway__stop-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .pathway__pill {
+        position: absolute;
+        top: -0.625rem;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0.125rem 0.625rem;
+        border-radius: var(--radius-pill);
+        background: var(--primary);
+        color: var(--primary-foreground);
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: var(--tracking-label);
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .pathway__label {
+        position: absolute;
+        bottom: -1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.75rem;
+        color: color-mix(in srgb, var(--inverse-foreground) 70%, transparent);
+        white-space: nowrap;
+      }
+
+      /* ── MULTIPLICATION — replication network ─────────────────────── */
+
+      .multi {
+        position: relative;
+        width: 100%;
+        max-width: 64rem;
+        margin: 0 auto;
+        aspect-ratio: 16 / 10;
+      }
+
+      .multi__svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: visible;
+      }
+
+      .multi__svg line {
+        stroke: color-mix(in srgb, var(--foreground) 18%, transparent);
+        stroke-width: 1;
+        stroke-dasharray: 3 5;
+      }
+
+      .multi__cluster {
+        position: absolute;
+        top: var(--t, 50%);
+        left: var(--l, 50%);
+        width: var(--w, 10rem);
+        aspect-ratio: 4 / 3;
+        transform: translate(-50%, -50%) scale(var(--s, 1));
+        will-change: transform, opacity;
+      }
+
+      .multi__cluster--center {
+        z-index: 2;
+      }
+
+      .multi__cluster-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: var(--radius-md);
+        padding: 0.5rem;
+        background: var(--card);
+        box-shadow: var(--shadow-ambient), 0 20px 40px -20px rgba(42, 52, 57, 0.25);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 0.25rem;
+      }
+
+      .multi__cluster--center .multi__cluster-inner {
+        background: var(--inverse-surface);
+      }
+
+      .multi__tile {
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+        background: var(--section);
+      }
+
+      .multi__tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .multi__badge {
+        position: absolute;
+        top: -0.75rem;
+        right: -0.5rem;
+        padding: 0.25rem 0.625rem;
+        border-radius: var(--radius-pill);
+        background: var(--card);
+        color: var(--foreground);
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: var(--tracking-label);
+        text-transform: uppercase;
+        box-shadow: var(--shadow-ambient), 0 0 0 1px var(--border);
+        z-index: 5;
+        white-space: nowrap;
+      }
+
+      .multi__cluster--center .multi__badge {
+        background: var(--primary);
+        color: var(--primary-foreground);
+      }
+
+      /* Tenant variant — replicas are subscribing organizations, not
+         language translations. Each shows org identity + user count +
+         avatars + subscription tier. */
+      .multi__tenant {
+        display: flex !important;
+        flex-direction: column;
+        gap: 0.3125rem !important;
+        padding: 0.625rem !important;
+        justify-content: space-between;
+      }
+
+      .multi__tenant-head {
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+      }
+
+      .multi__tenant-logo {
+        width: 1.125rem;
+        height: 1.125rem;
+        border-radius: var(--radius-sm);
+        background: var(--primary);
+        color: var(--primary-foreground);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.5rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        flex-shrink: 0;
+      }
+
+      .multi__tenant-logo[data-tone="warm"] {
+        background: #a64b14;
+      }
+      .multi__tenant-logo[data-tone="green"] {
+        background: #1f7a4c;
+      }
+      .multi__tenant-logo[data-tone="plum"] {
+        background: #6b21a8;
+      }
+      .multi__tenant-logo[data-tone="teal"] {
+        background: #0e7c82;
+      }
+      .multi__tenant-logo[data-tone="slate"] {
+        background: #334155;
+      }
+
+      .multi__tenant-name {
+        flex: 1;
+        height: 0.3rem;
+        background: color-mix(in srgb, var(--foreground) 28%, transparent);
+        border-radius: 2px;
+      }
+
+      .multi__tenant-metric {
+        display: flex;
+        align-items: baseline;
+        gap: 0.25rem;
+      }
+
+      .multi__tenant-num {
+        font-size: 0.9rem;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--foreground);
+        font-variant-numeric: tabular-nums;
+        letter-spacing: -0.01em;
+      }
+
+      .multi__tenant-label {
+        font-size: 0.5rem;
+        color: color-mix(in srgb, var(--foreground) 55%, transparent);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .multi__tenant-users {
+        display: flex;
+        align-items: center;
+      }
+
+      .multi__tenant-user {
+        width: 0.55rem;
+        height: 0.55rem;
+        border-radius: 50%;
+        background: color-mix(in srgb, var(--foreground) 30%, transparent);
+        border: 1.5px solid var(--card);
+        margin-left: -0.15rem;
+      }
+
+      .multi__tenant-user:first-child {
+        margin-left: 0;
+      }
+
+      .multi__tenant-user--more {
+        background: transparent;
+        border: none;
+        margin-left: 0.25rem;
+        font-size: 0.5rem;
+        color: color-mix(in srgb, var(--foreground) 55%, transparent);
+        letter-spacing: 0.03em;
+        width: auto;
+        height: auto;
+      }
+
+      .multi__tenant-bar {
+        height: 3px;
+        background: color-mix(in srgb, var(--primary) 20%, transparent);
+        border-radius: 2px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .multi__tenant-bar::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: var(--fill, 60%);
+        background: var(--primary);
+        border-radius: 2px;
+      }
+
+      /* Center cluster — platform badge is primary-colored and slightly
+         larger to read as the hub. */
+      .multi__cluster--center .multi__badge {
+        top: -0.875rem;
+      }
+
+      /* ── MULTIPLICATION — infrastructure overlay ──────────────────────
+         Second facet of multiplication: how the system spreads through
+         informational infrastructure (SEO, AI, translation) and relational
+         infrastructure (network, peer propagation). Same artifacts — now
+         replicated through channels. */
+
+      .multi-infra {
+        margin: clamp(2.5rem, 6vw, 4.5rem) auto 0;
+        max-width: 64rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: clamp(0.75rem, 1.5vw, 1.25rem);
+      }
+
+      @media (max-width: 900px) {
+        .multi-infra { grid-template-columns: repeat(2, 1fr); }
+      }
+
+      .multi-infra__channel {
+        position: relative;
+        background: var(--card);
+        border-radius: var(--radius-md);
+        padding: 1rem 1rem 1.125rem;
+        box-shadow: var(--shadow-ambient);
+        display: flex;
+        flex-direction: column;
+        gap: 0.625rem;
+        min-height: 10.5rem;
+        overflow: hidden;
+      }
+
+      .multi-infra__channel[data-kind="rel"] {
+        background: color-mix(in srgb, var(--primary) 7%, var(--card));
+      }
+
+      .multi-infra__head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+      }
+
+      .multi-infra__kind {
+        font-size: 0.625rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--muted-foreground);
+      }
+
+      .multi-infra__channel[data-kind="rel"] .multi-infra__kind {
+        color: var(--primary);
+      }
+
+      .multi-infra__label {
+        font-size: 0.875rem;
+        font-weight: 600;
+        letter-spacing: -0.005em;
+        color: var(--foreground);
+      }
+
+      .multi-infra__body {
+        flex: 1;
+        font-size: 0.75rem;
+        color: var(--muted-foreground);
+        line-height: 1.45;
+      }
+
+      /* SEO / discovery — query + ranked rows */
+      .multi-infra__query {
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.375rem 0.5rem;
+        border-radius: var(--radius-sm);
+        background: var(--section);
+        font-size: 0.6875rem;
+        color: var(--muted-foreground);
+        margin-bottom: 0.375rem;
+      }
+      .multi-infra__query::before {
+        content: "";
+        width: 0.625rem;
+        height: 0.625rem;
+        border-radius: 50%;
+        border: 1.5px solid currentColor;
+      }
+      .multi-infra__rank {
+        display: grid;
+        gap: 0.25rem;
+      }
+      .multi-infra__rank-row {
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+      }
+      .multi-infra__rank-row i {
+        width: 0.875rem;
+        height: 0.875rem;
+        border-radius: 3px;
+        background: var(--outline-variant);
+        flex: 0 0 auto;
+      }
+      .multi-infra__rank-row span {
+        height: 0.4375rem;
+        border-radius: 2px;
+        background: var(--outline-variant);
+        flex: 1;
+      }
+      .multi-infra__rank-row--hit i { background: var(--primary); }
+      .multi-infra__rank-row--hit span { background: color-mix(in srgb, var(--primary) 45%, transparent); }
+
+      /* AI response */
+      .multi-infra__ai {
+        display: grid;
+        gap: 0.3125rem;
+        padding: 0.5rem 0.625rem;
+        border-radius: var(--radius-sm);
+        background: color-mix(in srgb, var(--primary) 10%, transparent);
+      }
+      .multi-infra__ai-lead {
+        font-size: 0.6875rem;
+        font-weight: 600;
+        color: var(--primary);
+        letter-spacing: 0.02em;
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+      }
+      .multi-infra__ai-lead::before {
+        content: "";
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background: var(--primary);
+      }
+      .multi-infra__ai-line {
+        height: 0.375rem;
+        border-radius: 2px;
+        background: color-mix(in srgb, var(--primary) 30%, transparent);
+      }
+      .multi-infra__ai-line.w-90 { width: 90%; }
+      .multi-infra__ai-line.w-70 { width: 70%; }
+      .multi-infra__ai-line.w-55 { width: 55%; }
+
+      /* Translation variants — stack of language tags */
+      .multi-infra__langs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3125rem;
+      }
+      .multi-infra__lang {
+        padding: 0.1875rem 0.5rem;
+        border-radius: var(--radius-pill);
+        background: var(--section);
+        color: var(--foreground);
+        font-size: 0.625rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+      }
+      .multi-infra__lang--active {
+        background: var(--primary);
+        color: var(--inverse-foreground);
+      }
+      .multi-infra__variant {
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+      .multi-infra__variant i {
+        height: 0.3125rem;
+        border-radius: 2px;
+        background: var(--outline-variant);
+      }
+      .multi-infra__variant i.w-90 { width: 90%; }
+      .multi-infra__variant i.w-75 { width: 75%; }
+      .multi-infra__variant i.w-60 { width: 60%; }
+
+      /* Network expansion — nodes + links */
+      .multi-infra__net {
+        position: relative;
+        flex: 1;
+        min-height: 5rem;
+      }
+      .multi-infra__net svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+      .multi-infra__net svg line {
+        stroke: color-mix(in srgb, var(--primary) 50%, transparent);
+        stroke-width: 1;
+        stroke-dasharray: 3 4;
+      }
+      .multi-infra__net-node {
+        position: absolute;
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 50%;
+        background: var(--card);
+        border: 2px solid var(--primary);
+        transform: translate(-50%, -50%);
+      }
+      .multi-infra__net-node--hub {
+        background: var(--primary);
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      /* Infra caption sits with the tenant captions but carries its own
+         header to make clear there are two complementary multiplications. */
+      .multi-infra__title {
+        grid-column: 1 / -1;
+        margin: 0 0 0.25rem;
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      .multi-infra__title .eyebrow {
+        color: var(--muted-foreground);
+      }
+      .multi-infra__title h3 {
+        margin: 0;
+        font-size: clamp(1rem, 1.4vw, 1.125rem);
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--foreground);
+      }
+
+      /* ── Final CTA ─────────────────────────────────────────────────── */
+
+      .cta {
+        background: var(--inverse-surface);
+        color: var(--inverse-foreground);
+        padding: clamp(5rem, 10vw, 8rem) 0;
+        text-align: center;
+      }
+
+      .cta__title {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        line-height: 1;
+        letter-spacing: var(--tracking-display);
+        font-weight: 600;
+        margin: 0 auto 1.5rem;
+        max-width: 22ch;
+        color: var(--inverse-foreground);
+        text-wrap: balance;
+      }
+
+      .cta__title em {
+        font-style: normal;
+        color: var(--primary);
+      }
+
+      .cta__sub {
+        font-size: clamp(1rem, 1.4vw, 1.25rem);
+        line-height: 1.55;
+        color: color-mix(in srgb, var(--inverse-foreground) 75%, transparent);
+        max-width: 46rem;
+        margin: 0 auto 2.5rem;
+      }
+
+      .cta__row {
+        display: inline-flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .cta__btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.875rem 1.5rem;
+        border-radius: var(--radius-md);
+        font-size: 0.9375rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: var(--transition-surface);
+      }
+
+      .cta__btn--primary {
+        background: var(--gradient-primary);
+        color: var(--primary-foreground);
+      }
+
+      .cta__btn--ghost {
+        background: transparent;
+        color: var(--inverse-foreground);
+        border: 1px solid color-mix(in srgb, var(--inverse-foreground) 25%, transparent);
+      }
+
+      .cta__btn:hover {
+        filter: brightness(1.08);
+      }
+
+      /* ── Dev chrome for mockup only ────────────────────────────────── */
+
+      .mockup-bar {
+        display: none;
+        position: fixed;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--card);
+        color: var(--muted-foreground);
+        padding: 0.5rem 0.875rem;
+        border-radius: var(--radius-pill);
+        font-size: 0.75rem;
+        letter-spacing: var(--tracking-label);
+        text-transform: uppercase;
+        box-shadow: var(--shadow-ambient);
+        z-index: 50;
+        pointer-events: none;
+      }
+
+      html.mockup-debug .mockup-bar {
+        display: block;
+      }
+
+      .mockup-bar strong {
+        color: var(--foreground);
+        font-weight: 600;
+        margin-left: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <!-- ─── Intro (Midnight) ───────────────────────────────────────────── -->
+      <section class="intro" id="intro">
+        <div class="container">
+          <div class="intro__grid">
+            <div>
+              <span class="eyebrow">The problem, visually</span>
+              <h1 class="display display--midnight">
+                All of this belongs together. None of it is connected.
+              </h1>
+            </div>
+            <p class="lede lede--midnight" id="intro-lede">
+              Your intelligence—teaching, thinking, conversation, correspondence—exists as a
+              widening spread of artifacts. Each one is real. Each one is partial. None of them
+              knows the others exist. Use the dock below to read the same arc in the shape of your
+              organization and field.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="audience-dock" id="audience-dock">
+        <div class="container audience-dock__bar">
+          <nav class="audience-nav" role="tablist" aria-label="Audience type">
+            <button
+              type="button"
+              class="audience-card is-active"
+              data-tab="leader"
+              role="tab"
+              aria-selected="true"
+            >
+              <span class="audience-card__glyph" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="6" cy="8" r="2.25" />
+                  <circle cx="18" cy="6" r="2.25" />
+                  <circle cx="15" cy="17" r="2.25" />
+                  <path d="M7.8 9.2L13.2 15.5M16.2 7.8L14.8 15M8.5 9.5L13.5 6.5" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="audience-card__label">Leaders</span>
+            </button>
+            <button type="button" class="audience-card" data-tab="nonprofit" role="tab" aria-selected="false">
+              <span class="audience-card__glyph" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 21s-7-4.35-7-11a7 7 0 0 1 14 0c0 6.65-7 11-7 11Z" stroke-linejoin="round" />
+                  <circle cx="12" cy="10" r="2.5" />
+                </svg>
+              </span>
+              <span class="audience-card__label">Nonprofits</span>
+            </button>
+            <button type="button" class="audience-card" data-tab="church" role="tab" aria-selected="false">
+              <span class="audience-card__glyph" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 3 19 8v13H5V8l7-5Z" stroke-linejoin="round" />
+                  <path d="M10 21v-6h4v6" />
+                </svg>
+              </span>
+              <span class="audience-card__label">Churches</span>
+            </button>
+            <button type="button" class="audience-card" data-tab="seminary" role="tab" aria-selected="false">
+              <span class="audience-card__glyph" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M5 19V5M5 19h14M9 7h6M9 11h6M9 15h4" stroke-linecap="round" />
+                  <path d="M19 5v14" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="audience-card__label">Seminaries</span>
+            </button>
+          </nav>
+          <div class="mode-rail" role="group" aria-label="Intelligence field">
+            <span class="mode-rail__label">View</span>
+            <div class="mode-rail__track">
+              <button type="button" class="mode-rail__opt is-active" data-view="info" aria-pressed="true">
+                <svg class="mode-rail__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <rect x="4" y="4" width="7" height="9" rx="1" />
+                  <rect x="13" y="4" width="7" height="5" rx="1" />
+                  <rect x="13" y="11" width="7" height="9" rx="1" />
+                  <rect x="4" y="15" width="7" height="5" rx="1" />
+                </svg>
+                <span class="mode-rail__title">Informational</span>
+              </button>
+              <button type="button" class="mode-rail__opt" data-view="rel" aria-pressed="false">
+                <svg class="mode-rail__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <circle cx="9" cy="10" r="3" />
+                  <circle cx="16" cy="8" r="2.5" />
+                  <path d="M4 20c1.2-3.5 4.5-6 8-6s6.8 2.5 8 6" stroke-linecap="round" />
+                  <path d="M17 12h3v3" stroke-linecap="round" />
+                </svg>
+                <span class="mode-rail__title">Relational</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── Fragmentation stage ────────────────────────────────────────── -->
+      <section class="frag" id="fragmentation">
+        <div class="frag__shell container">
+          <!-- Sticky left stage -->
+          <aside class="frag__stage-wrap" aria-hidden="true">
+            <div class="frag__stage" id="stage">
+              <!-- Act I — Unity (default visible) -->
+              <div class="artifact a--unity is-active" data-chapter="unity">
+                <div class="artifact__card" style="--ar: 927 / 1152">
+                  <img
+                    src="../../public/images/fragmentation-story/order-of-service-structured-units.webp"
+                    alt=""
+                    loading="eager"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+
+              <!-- Act I.b — Session (same unity, second chapter) -->
+              <div class="artifact a--unity" data-chapter="session">
+                <div class="artifact__card" style="--ar: 928 / 1152">
+                  <img
+                    src="../../public/images/fragmentation-story/session-essential-structures-card.webp"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+
+              <!-- Act II — First break (landscape diagram) -->
+              <div class="artifact a--first-break" data-chapter="first-break">
+                <div
+                  class="artifact__ghost"
+                  style="--ar: 1312 / 816; transform: translate(-10%, -4%) rotate(-2deg)"
+                >
+                  <img
+                    src="../../public/images/fragmentation-story/formal-design-systems-split-flow.webp"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div
+                  class="artifact__card"
+                  style="--ar: 1312 / 816; transform: translate(4%, 2%) rotate(1.2deg)"
+                >
+                  <img
+                    src="../../public/images/fragmentation-story/formal-design-systems-split-flow.webp"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+
+              <!-- Act III — Divergence -->
+              <div class="artifact a--divergence" data-chapter="divergence">
+                <div
+                  class="artifact__ghost artifact__ghost--b"
+                  style="--ar: 928 / 1152; transform: translate(14%, 6%) rotate(2.5deg)"
+                >
+                  <img
+                    src="../../public/images/fragmentation-story/module-formal-systems-intro.webp"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div
+                  class="artifact__ghost artifact__ghost--c"
+                  style="--ar: 928 / 1152; transform: translate(-12%, -8%) rotate(-2deg)"
+                >
+                  <img
+                    src="../../public/images/fragmentation-story/cover-principles-design-fragmentation.webp"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div
+                  class="artifact__card"
+                  style="--ar: 896 / 1200; transform: translate(-3%, 2%) rotate(0.8deg)"
+                >
+                  <img
+                    src="../../public/images/fragmentation-story/book-fragments-of-form.webp"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+
+              <!-- Act IV — Channels multiply -->
+              <div class="artifact a--channels" data-chapter="channels">
+                <div
+                  class="artifact__ghost artifact__ghost--b"
+                  style="--ar: 1 / 1; transform: translate(-18%, 6%) rotate(-1.5deg)"
+                >
+                  <img
+                    src="../../public/images/fragmentation-story/podcast-card-abstract-structures.webp"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div
+                  class="artifact__card"
+                  style="--ar: 928 / 1152; transform: translate(10%, -4%) rotate(1.8deg)"
+                >
+                  <img
+                    src="../../public/images/fragmentation-story/mobile-chat-skeleton-bubbles.webp"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+
+              <!-- Act V — Misalignment -->
+              <div class="artifact a--misalignment" data-chapter="misalignment">
+                <div
+                  class="artifact__ghost artifact__ghost--c"
+                  style="--ar: 928 / 1152; transform: translate(-22%, 10%) rotate(-2.2deg)"
+                >
+                  <img
+                    src="../../public/images/fragmentation-story/cover-structural-fragments-investigation.webp"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div
+                  class="artifact__ghost artifact__ghost--b"
+                  style="--ar: 928 / 1152; transform: translate(14%, -8%) rotate(2deg)"
+                >
+                  <img
+                    src="../../public/images/fragmentation-story/message-thread-staggered-fragments.webp"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div
+                  class="artifact__card"
+                  style="--ar: 927 / 1152; transform: translate(-6%, 4%) rotate(-1.2deg)"
+                >
+                  <img
+                    src="../../public/images/fragmentation-story/email-thread-multi-participant.webp"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Right narrative column -->
+          <div class="frag__copy">
+            <article class="chapter" data-chapter="unity">
+              <span class="chapter-meta">Act I · Unity</span>
+              <h2 class="chapter-title">One surface. One sequence.</h2>
+              <p class="chapter-body">
+                At the start, everything you make sits in a single, readable shape. One bulletin.
+                One schedule. One room. A person can hold it in their hands and know what comes
+                next.
+              </p>
+              <p class="chapter-body">
+                This is what <strong>coherence</strong> looks like. Nothing is louder than anything
+                else. Nothing is missing.
+              </p>
+              <figure class="chapter__inline" style="--ar: 927 / 1152">
+                <img
+                  src="../../public/images/fragmentation-story/order-of-service-structured-units.webp"
+                  alt="A structured order of service with numbered units."
+                  loading="lazy"
+                />
+              </figure>
+            </article>
+
+            <article class="chapter" data-chapter="session">
+              <span class="chapter-meta">Act I · Unity</span>
+              <h2 class="chapter-title">Designed to be whole.</h2>
+              <p class="chapter-body">
+                A session card. A teaching plan. A single artifact that carries the whole idea and
+                the order it moves in. It is the <strong>complete unit of meaning</strong>—before
+                anything is copied, forwarded, or restated.
+              </p>
+              <figure class="chapter__inline" style="--ar: 928 / 1152">
+                <img
+                  src="../../public/images/fragmentation-story/session-essential-structures-card.webp"
+                  alt="A session card describing essential structures."
+                  loading="lazy"
+                />
+              </figure>
+            </article>
+
+            <article class="chapter" data-chapter="first-break">
+              <span class="chapter-meta">Act II · First break</span>
+              <h2 class="chapter-title">The same thing—twice.</h2>
+              <p class="chapter-body">
+                Then something subtle happens. The work gets copied. A diagram appears in two
+                places, with two versions. Neither is wrong. Neither is canonical.
+              </p>
+              <p class="chapter-body">
+                This is the first quiet tear. <strong>Duplication without a center.</strong>
+              </p>
+              <figure class="chapter__inline" style="--ar: 1312 / 816; max-width: 28rem">
+                <img
+                  src="../../public/images/fragmentation-story/formal-design-systems-split-flow.webp"
+                  alt="A split flow diagram showing one node branching into many."
+                  loading="lazy"
+                />
+              </figure>
+            </article>
+
+            <article class="chapter" data-chapter="divergence">
+              <span class="chapter-meta">Act III · Divergence</span>
+              <h2 class="chapter-title">A book. A module. A cover. A PDF.</h2>
+              <p class="chapter-body">
+                One body of thought becomes many surfaces. The book says one thing. The course says
+                it differently. The cover promises a third angle. Each is well made. None of them
+                knows about the others.
+              </p>
+              <p class="chapter-body">
+                What started as <strong>one idea</strong> now travels as
+                <strong>four disconnected artifacts</strong>.
+              </p>
+              <figure class="chapter__inline" style="--ar: 896 / 1200">
+                <img
+                  src="../../public/images/fragmentation-story/book-fragments-of-form.webp"
+                  alt="A book titled Fragments of Form."
+                  loading="lazy"
+                />
+              </figure>
+            </article>
+
+            <article class="chapter" data-chapter="channels">
+              <span class="chapter-meta">Act IV · Channels multiply</span>
+              <h2 class="chapter-title">Now it lives, in real time, in parallel.</h2>
+              <p class="chapter-body">
+                Podcasts get recorded. Chat threads answer the same question three different ways.
+                The idea is no longer an object—it is a stream, running through channels that were
+                never designed to stay in sync.
+              </p>
+              <p class="chapter-body">
+                Everything is <strong>findable</strong>. Nothing is <strong>unified</strong>.
+              </p>
+              <figure class="chapter__inline" style="--ar: 928 / 1152">
+                <img
+                  src="../../public/images/fragmentation-story/mobile-chat-skeleton-bubbles.webp"
+                  alt="A mobile chat thread with skeleton message bubbles."
+                  loading="lazy"
+                />
+              </figure>
+            </article>
+
+            <article class="chapter" data-chapter="misalignment">
+              <span class="chapter-meta">Act V · Misalignment</span>
+              <h2 class="chapter-title">The thread loses the plot.</h2>
+              <p class="chapter-body">
+                At the end of the line: an email chain with seven names on it, a staggered reply, a
+                quote pulled from a draft nobody shipped. The signal is still there—just
+                <strong>distributed across people who aren't talking to each other</strong>.
+              </p>
+              <p class="chapter-body">
+                This is the state most work lives in. Not broken. Just
+                <strong>ambient, fragmented, and quietly expensive</strong>.
+              </p>
+              <figure class="chapter__inline" style="--ar: 928 / 1152">
+                <img
+                  src="../../public/images/fragmentation-story/message-thread-staggered-fragments.webp"
+                  alt="A staggered message thread with fragmented replies."
+                  loading="lazy"
+                />
+              </figure>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── Scatter field + boom climax ─────────────────────────────── -->
+      <section class="scatter" id="scatter" aria-label="All of it, all at once">
+        <div class="scatter__track">
+          <div class="scatter__pin">
+            <!-- Radial primary flash (the boom) -->
+            <div class="scatter__flash" id="scatter-flash"></div>
+
+            <!-- 14 scattered artifact tiles. CSS vars authored per-tile set
+                 the resting composition; GSAP animates into and out of it. -->
+            <div class="scatter__field" id="scatter-field">
+              <figure class="scatter__tile" style="--t:14%; --l:8%;  --r:-6deg; --s:1;    --w:12rem; --ar:896/1200;">
+                <img src="../../public/images/fragmentation-story/book-fragments-of-form.webp" alt="" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="scatter__tile" style="--t:10%; --l:32%; --r:3deg;  --s:0.95; --w:13rem; --ar:1/1;">
+                <img src="../../public/images/fragmentation-story/core-hub-to-fragment-nodes.webp" alt="" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="scatter__tile" style="--t:12%; --l:60%; --r:-2deg; --s:1;    --w:12rem; --ar:928/1152;">
+                <img src="../../public/images/fragmentation-story/cover-principles-design-fragmentation.webp" alt="" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="scatter__tile" style="--t:16%; --l:88%; --r:8deg;  --s:0.85; --w:10rem; --ar:928/1152;">
+                <img src="../../public/images/fragmentation-story/cover-structural-fragments-investigation.webp" alt="" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="scatter__tile" style="--t:40%; --l:8%;  --r:4deg;  --s:1;    --w:12rem; --ar:927/1152;">
+                <img src="../../public/images/fragmentation-story/email-thread-multi-participant.webp" alt="" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="scatter__tile" style="--t:38%; --l:40%; --r:-4deg; --s:1.05; --w:17rem; --ar:1312/816;">
+                <img src="../../public/images/fragmentation-story/formal-design-systems-split-flow.webp" alt="" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="scatter__tile" style="--t:42%; --l:68%; --r:7deg;  --s:0.95; --w:12rem; --ar:928/1152;">
+                <img src="../../public/images/fragmentation-story/message-thread-staggered-fragments.webp" alt="" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="scatter__tile" style="--t:46%; --l:92%; --r:-3deg; --s:0.8;  --w:9rem;  --ar:928/1152;">
+                <img src="../../public/images/fragmentation-story/mobile-chat-skeleton-bubbles.webp" alt="" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="scatter__tile" style="--t:70%; --l:8%;  --r:5deg;  --s:0.9;  --w:11rem; --ar:928/1152;">
+                <img src="../../public/images/fragmentation-story/module-formal-systems-intro.webp" alt="" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="scatter__tile" style="--t:72%; --l:32%; --r:-7deg; --s:1;    --w:12rem; --ar:927/1152;">
+                <img src="../../public/images/fragmentation-story/order-of-service-structured-units.webp" alt="" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="scatter__tile" style="--t:68%; --l:58%; --r:2deg;  --s:1.05; --w:13rem; --ar:1/1;">
+                <img src="../../public/images/fragmentation-story/podcast-card-abstract-structures.webp" alt="" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="scatter__tile" style="--t:74%; --l:84%; --r:-5deg; --s:0.85; --w:10rem; --ar:928/1152;">
+                <img src="../../public/images/fragmentation-story/session-essential-structures-card.webp" alt="" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="scatter__tile" style="--t:90%; --l:24%; --r:6deg;  --s:0.8;  --w:11rem; --ar:1/1;">
+                <img src="../../public/images/fragmentation-story/sketch-converge-diverge-flow.webp" alt="" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="scatter__tile" style="--t:88%; --l:64%; --r:-4deg; --s:0.9;  --w:15rem; --ar:1600/872;">
+                <img src="../../public/images/fragmentation-story/stage-presentation-three-shapes.webp" alt="" loading="lazy" decoding="async" />
+              </figure>
+            </div>
+
+            <!-- The cost veil — darkens the scatter without hiding it -->
+            <div class="scatter__veil" id="scatter-veil"></div>
+
+            <!-- The cost statement — lands over the darkened scatter -->
+            <div class="scatter__cost" id="scatter-cost">
+              <span class="scatter__cost-eyebrow">What it's costing you</span>
+              <h2 class="scatter__cost-title" id="scatter-cost-title">
+                You built all of this.<br />None of it can find itself.
+              </h2>
+              <ul class="scatter__cost-ledger" id="scatter-cost-ledger">
+                <li>Every channel is a <strong>search</strong>.</li>
+                <li>Every copy is a <strong>drift</strong>.</li>
+                <li>
+                  Every thread is a <strong>meeting that didn't happen</strong>—and the people who
+                  need the answer aren't in the room.
+                </li>
+              </ul>
+            </div>
+
+            <!-- The boom -->
+            <div class="scatter__climax" id="scatter-climax">
+              <span class="scatter__climax-eyebrow">The answer</span>
+              <h2 class="scatter__climax-title">
+                One intelligence.<br /><em>Many expressions.</em>
+              </h2>
+              <p class="scatter__climax-sub">
+                Every artifact, connected to one source of truth. The scatter stops being a tax and
+                starts being a <strong>surface</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── Bridge: from problem to system ──────────────────────────── -->
+      <section class="outro" id="bridge-part-two">
+        <div class="container outro__grid">
+          <div>
+            <span class="eyebrow">Part II · The system</span>
+            <p class="outro__pull">
+              We don't generate a new scene for each stage.
+              <em>We re-compose the same intelligence.</em>
+            </p>
+          </div>
+          <p class="lede">
+            Every artifact you've just seen is reusable. What changes from here is how they're
+            arranged, what connects them, what interface wraps around them, and how they move and
+            replicate. <strong>Four stages. One library.</strong>
+          </p>
+        </div>
+      </section>
+
+      <!-- ═════ STAGE 02 — INTEGRATION ═════════════════════════════════ -->
+      <section class="stage stage--midnight stage--integration" id="stage-integration">
+        <div class="container">
+          <header class="stage__header">
+            <span class="stage__number">Stage 02 · Integration</span>
+            <h2 class="stage__title">Connection replaces scatter.</h2>
+            <p class="stage__lede">
+              The same artifacts—now clustered, related, aware of each other. The book knows about
+              the course. The thread knows about the deck. <em>One source of truth, many
+              expressions.</em>
+            </p>
+          </header>
+
+          <div class="stage__frame">
+            <div class="constellation" id="integration-constellation">
+              <!-- SVG connection lines; drawn on scroll. Endpoints match
+                   node centers in container percent-space. -->
+              <svg class="constellation__svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <line x1="50" y1="50" x2="18" y2="18" />
+                <line x1="50" y1="50" x2="50" y2="6" />
+                <line x1="50" y1="50" x2="82" y2="18" />
+                <line x1="50" y1="50" x2="94" y2="50" />
+                <line x1="50" y1="50" x2="82" y2="82" />
+                <line x1="50" y1="50" x2="50" y2="94" />
+                <line x1="50" y1="50" x2="18" y2="82" />
+                <line x1="50" y1="50" x2="6" y2="50" />
+              </svg>
+
+              <!-- Central hub + 8 orbital artifacts, well-spaced so the
+                   center is always clear. -->
+              <figure class="node node--center" style="--t:50%; --l:50%; --w:8.5rem; --ar:1/1;">
+                <img src="../../public/images/fragmentation-story/core-hub-to-fragment-nodes.webp" alt="" loading="lazy" />
+              </figure>
+              <figure class="node" style="--t:18%; --l:18%; --w:5.5rem; --ar:927/1152;">
+                <img src="../../public/images/fragmentation-story/order-of-service-structured-units.webp" alt="" loading="lazy" />
+              </figure>
+              <figure class="node" style="--t:6%; --l:50%; --w:5.75rem; --ar:896/1200;">
+                <img src="../../public/images/fragmentation-story/book-fragments-of-form.webp" alt="" loading="lazy" />
+              </figure>
+              <figure class="node" style="--t:18%; --l:82%; --w:5.5rem; --ar:928/1152;">
+                <img src="../../public/images/fragmentation-story/cover-principles-design-fragmentation.webp" alt="" loading="lazy" />
+              </figure>
+              <figure class="node" style="--t:50%; --l:94%; --w:5.75rem; --ar:1/1;">
+                <img src="../../public/images/fragmentation-story/podcast-card-abstract-structures.webp" alt="" loading="lazy" />
+              </figure>
+              <figure class="node" style="--t:82%; --l:82%; --w:5.5rem; --ar:928/1152;">
+                <img src="../../public/images/fragmentation-story/mobile-chat-skeleton-bubbles.webp" alt="" loading="lazy" />
+              </figure>
+              <figure class="node" style="--t:94%; --l:50%; --w:5.75rem; --ar:928/1152;">
+                <img src="../../public/images/fragmentation-story/module-formal-systems-intro.webp" alt="" loading="lazy" />
+              </figure>
+              <figure class="node" style="--t:82%; --l:18%; --w:5.5rem; --ar:927/1152;">
+                <img src="../../public/images/fragmentation-story/email-thread-multi-participant.webp" alt="" loading="lazy" />
+              </figure>
+              <figure class="node" style="--t:50%; --l:6%; --w:6rem; --ar:1312/816;">
+                <img src="../../public/images/fragmentation-story/formal-design-systems-split-flow.webp" alt="" loading="lazy" />
+              </figure>
+            </div>
+          </div>
+
+          <div class="stage__captions" id="integration-captions">
+            <div class="stage__caption">
+              <p class="stage__caption-title">One source, many surfaces</p>
+              <p class="stage__caption-body">
+                Update the book; the course, the deck, and the thread update with it.
+              </p>
+            </div>
+            <div class="stage__caption">
+              <p class="stage__caption-title">Relationships, not folders</p>
+              <p class="stage__caption-body">
+                Every artifact knows what it belongs to. Context travels with the content.
+              </p>
+            </div>
+            <div class="stage__caption">
+              <p class="stage__caption-title">Loss of drift</p>
+              <p class="stage__caption-body">
+                Fewer copies. Fewer versions. Fewer disagreements about what's current.
+              </p>
+            </div>
+          </div>
+
+          <!-- ── Under the hood: artifacts becoming structured IA ── -->
+          <div class="ide-handoff">
+            <span class="ide-handoff__eyebrow">What it looks like underneath</span>
+            <h3 class="ide-handoff__title">Every artifact becomes typed content.</h3>
+            <p class="ide-handoff__sub">
+              The book, the module, the podcast, the thread—each gets a markdown body plus a
+              JSON schema of who it relates to, what it's about, and where it lives. That's the
+              information architecture powering everything that follows.
+            </p>
+          </div>
+
+          <div class="stage__frame">
+            <div class="ide" id="integration-ide">
+              <div class="ide__toolbar">
+                <span class="ide__dot"></span>
+                <span class="ide__dot"></span>
+                <span class="ide__dot"></span>
+                <span class="ide__tab" data-active
+                  ><span class="ide__tab-icon"></span>fragments-of-form.md</span
+                >
+                <span class="ide__tab">formal-systems.md</span>
+                <span class="ide__tab">ep-12-rhythms.md</span>
+                <span class="ide__toolbar-spacer"></span>
+                <span class="ide__open-count">14 files · schema v3</span>
+              </div>
+
+              <!-- File tree (left) -->
+              <aside class="ide__tree" id="ide-tree">
+                <div class="ide__tree-group">
+                  <span class="ide__folder">books/</span>
+                  <ul>
+                    <li class="ide__file" data-active>
+                      <span class="ide__file-thumb"
+                        ><img src="../../public/images/fragmentation-story/book-fragments-of-form.webp" alt="" loading="lazy"
+                      /></span>
+                      <span class="ide__file-name">fragments-of-form</span>
+                      <span class="ide__file-ext">md</span>
+                    </li>
+                    <li class="ide__file">
+                      <span class="ide__file-thumb"
+                        ><img src="../../public/images/fragmentation-story/cover-principles-design-fragmentation.webp" alt="" loading="lazy"
+                      /></span>
+                      <span class="ide__file-name">principles-of-design</span>
+                      <span class="ide__file-ext">md</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="ide__tree-group">
+                  <span class="ide__folder">courses/</span>
+                  <ul>
+                    <li class="ide__file">
+                      <span class="ide__file-thumb"
+                        ><img src="../../public/images/fragmentation-story/module-formal-systems-intro.webp" alt="" loading="lazy"
+                      /></span>
+                      <span class="ide__file-name">formal-systems</span>
+                      <span class="ide__file-ext">md</span>
+                    </li>
+                    <li class="ide__file">
+                      <span class="ide__file-thumb"
+                        ><img src="../../public/images/fragmentation-story/session-essential-structures-card.webp" alt="" loading="lazy"
+                      /></span>
+                      <span class="ide__file-name">essential-structures</span>
+                      <span class="ide__file-ext">md</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="ide__tree-group">
+                  <span class="ide__folder">podcasts/</span>
+                  <ul>
+                    <li class="ide__file">
+                      <span class="ide__file-thumb"
+                        ><img src="../../public/images/fragmentation-story/podcast-card-abstract-structures.webp" alt="" loading="lazy"
+                      /></span>
+                      <span class="ide__file-name">ep-12-rhythms</span>
+                      <span class="ide__file-ext">md</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="ide__tree-group">
+                  <span class="ide__folder">threads/</span>
+                  <ul>
+                    <li class="ide__file">
+                      <span class="ide__file-thumb"
+                        ><img src="../../public/images/fragmentation-story/email-thread-multi-participant.webp" alt="" loading="lazy"
+                      /></span>
+                      <span class="ide__file-name">bi-vocational-07mar</span>
+                      <span class="ide__file-ext">md</span>
+                    </li>
+                    <li class="ide__file">
+                      <span class="ide__file-thumb"
+                        ><img src="../../public/images/fragmentation-story/mobile-chat-skeleton-bubbles.webp" alt="" loading="lazy"
+                      /></span>
+                      <span class="ide__file-name">cohort-chat-12mar</span>
+                      <span class="ide__file-ext">md</span>
+                    </li>
+                  </ul>
+                </div>
+              </aside>
+
+              <!-- Editor (center) -->
+              <div class="ide__editor">
+                <pre id="ide-code"><span class="ide__line"><span class="tk-delim">---</span></span>
+<span class="ide__line"><span class="tk-key">title</span><span class="tk-delim">:</span> <span class="tk-str">"Fragments of Form"</span></span>
+<span class="ide__line"><span class="tk-key">type</span><span class="tk-delim">:</span> <span class="tk-str-alt">book</span></span>
+<span class="ide__line"><span class="tk-key">slug</span><span class="tk-delim">:</span> <span class="tk-str">"fragments-of-form"</span></span>
+<span class="ide__line"><span class="tk-key">author</span><span class="tk-delim">:</span> <span class="tk-str">"Alan Hirsch"</span></span>
+<span class="ide__line"><span class="tk-key">published</span><span class="tk-delim">:</span> <span class="tk-num">2024-09-12</span></span>
+<span class="ide__line"><span class="tk-key">tags</span><span class="tk-delim">:</span> <span class="tk-delim">[</span><span class="tk-str-alt">formation</span><span class="tk-delim">,</span> <span class="tk-str-alt">architecture</span><span class="tk-delim">,</span> <span class="tk-str-alt">movement</span><span class="tk-delim">]</span></span>
+<span class="ide__line"><span class="tk-key">audiences</span><span class="tk-delim">:</span> <span class="tk-delim">[</span><span class="tk-str-alt">movement-leader</span><span class="tk-delim">,</span> <span class="tk-str-alt">church</span><span class="tk-delim">]</span></span>
+<span class="ide__line"><span class="tk-key">connections</span><span class="tk-delim">:</span></span>
+<span class="ide__line">  <span class="tk-delim">-</span> <span class="tk-key">module</span><span class="tk-delim">:</span> <span class="tk-str">"formal-systems"</span></span>
+<span class="ide__line">  <span class="tk-delim">-</span> <span class="tk-key">podcast</span><span class="tk-delim">:</span> <span class="tk-str">"ep-12-rhythms"</span></span>
+<span class="ide__line">  <span class="tk-delim">-</span> <span class="tk-key">thread</span><span class="tk-delim">:</span> <span class="tk-str">"bi-vocational-07mar"</span></span>
+<span class="ide__line"><span class="tk-delim">---</span></span>
+<span class="ide__line"></span>
+<span class="ide__line"><span class="tk-h1">Fragments of Form</span></span>
+<span class="ide__line"></span>
+<span class="ide__line"><span class="tk-body">The cost of coherence loss in a distributed body of work isn't</span></span>
+<span class="ide__line"><span class="tk-body">friction. It's drift — the slow, invisible migration of meaning</span></span>
+<span class="ide__line"><span class="tk-body">away from its source until no version of the work</span></span>
+<span class="ide__line"><span class="tk-body">agrees with any other.</span></span></pre>
+              </div>
+
+              <!-- Schema (right) -->
+              <aside class="ide__schema" id="ide-schema">
+                <h4 class="ide__schema-title">Parsed schema</h4>
+                <div class="ide__schema-block">
+                  <span class="ide__schema-key">type</span>
+                  <span class="ide__schema-value">book</span>
+                </div>
+                <div class="ide__schema-block">
+                  <span class="ide__schema-key">title</span>
+                  <span class="ide__schema-value">Fragments of Form</span>
+                </div>
+                <div class="ide__schema-block">
+                  <span class="ide__schema-key">tags</span>
+                  <span class="ide__schema-value">
+                    <span class="chip-line">
+                      <span>formation</span><span>architecture</span><span>movement</span>
+                    </span>
+                  </span>
+                </div>
+                <div class="ide__schema-block">
+                  <span class="ide__schema-key">audiences</span>
+                  <span class="ide__schema-value">
+                    <span class="chip-line">
+                      <span>movement-leader</span><span>church</span>
+                    </span>
+                  </span>
+                </div>
+                <div class="ide__schema-block">
+                  <span class="ide__schema-key">connections</span>
+                  <span class="ide__schema-value">
+                    <span class="chip-line">
+                      <span>module · formal-systems</span>
+                      <span>podcast · ep-12</span>
+                      <span>thread · 07mar</span>
+                    </span>
+                  </span>
+                </div>
+                <div class="ide__schema-block">
+                  <span class="ide__schema-key">indexed_by</span>
+                  <span class="ide__schema-value">
+                    <span class="chip-line">
+                      <span>search</span><span>AI</span><span>pathway</span>
+                    </span>
+                  </span>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═════ STAGE 03 — ACTIVATION ═══════════════════════════════════ -->
+      <section class="stage stage--section stage--activation" id="stage-activation">
+        <div class="container">
+          <header class="stage__header">
+            <span class="stage__number">Stage 03 · Activation</span>
+            <h2 class="stage__title">The intelligence becomes a workspace.</h2>
+            <p class="stage__lede">
+              The artifacts don't just exist anymore—they <em>respond</em>. Search them, cite them,
+              ask them questions, get answers grounded in your own body of work.
+            </p>
+          </header>
+
+          <div class="stage__frame">
+            <div class="workspace" id="activation-workspace">
+              <div class="workspace__topbar">
+                <span class="workspace__chip">Ask</span>
+                <div class="workspace__search">
+                  <span id="ws-query">How do we frame formation for a bi-vocational team?</span>
+                  <span class="workspace__search-cursor" aria-hidden="true"></span>
+                </div>
+                <span class="workspace__chip">14 sources</span>
+              </div>
+
+              <aside class="workspace__sidebar">
+                <p class="workspace__sidebar-title">Sources</p>
+                <ul>
+                  <li data-active>Fragments of Form — Ch. 4</li>
+                  <li>Module · Formal Systems</li>
+                  <li>Podcast · Ep. 12</li>
+                  <li>Order of Service (v3)</li>
+                  <li>Email thread · 7 Mar</li>
+                  <li>Principles of Design</li>
+                </ul>
+              </aside>
+
+              <div class="workspace__canvas">
+                <div class="constellation">
+                  <svg class="constellation__svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <line x1="50" y1="50" x2="14" y2="18" />
+                    <line x1="50" y1="50" x2="86" y2="18" />
+                    <line x1="50" y1="50" x2="14" y2="82" />
+                    <line x1="50" y1="50" x2="86" y2="82" />
+                    <line x1="50" y1="50" x2="6" y2="50" />
+                    <line x1="50" y1="50" x2="94" y2="50" />
+                  </svg>
+                  <figure class="node node--center node--highlight" style="--t:50%; --l:50%; --w:6rem; --ar:896/1200;">
+                    <img src="../../public/images/fragmentation-story/book-fragments-of-form.webp" alt="" loading="lazy" />
+                  </figure>
+                  <figure class="node" style="--t:18%; --l:14%; --w:4rem; --ar:928/1152;">
+                    <img src="../../public/images/fragmentation-story/module-formal-systems-intro.webp" alt="" loading="lazy" />
+                  </figure>
+                  <figure class="node" style="--t:18%; --l:86%; --w:4rem; --ar:927/1152;">
+                    <img src="../../public/images/fragmentation-story/order-of-service-structured-units.webp" alt="" loading="lazy" />
+                  </figure>
+                  <figure class="node" style="--t:82%; --l:14%; --w:4rem; --ar:1312/816;">
+                    <img src="../../public/images/fragmentation-story/formal-design-systems-split-flow.webp" alt="" loading="lazy" />
+                  </figure>
+                  <figure class="node" style="--t:82%; --l:86%; --w:4rem; --ar:927/1152;">
+                    <img src="../../public/images/fragmentation-story/email-thread-multi-participant.webp" alt="" loading="lazy" />
+                  </figure>
+                  <figure class="node" style="--t:50%; --l:6%; --w:4rem; --ar:1/1;">
+                    <img src="../../public/images/fragmentation-story/podcast-card-abstract-structures.webp" alt="" loading="lazy" />
+                  </figure>
+                  <figure class="node" style="--t:50%; --l:94%; --w:4rem; --ar:928/1152;">
+                    <img src="../../public/images/fragmentation-story/cover-principles-design-fragmentation.webp" alt="" loading="lazy" />
+                  </figure>
+                </div>
+              </div>
+
+              <aside class="workspace__aipanel">
+                <span class="workspace__aipanel-eyebrow">Answer · grounded in your work</span>
+                <p class="workspace__aipanel-body" id="ws-answer">
+                  <strong>Formation for bi-vocational teams</strong> rests on three moves from your
+                  corpus—reframe time as formation (Ch. 4, <em>Fragments of Form</em>), cluster
+                  practices into recurring rhythms (Module · Formal Systems), and anchor the rhythm
+                  with one shared artifact the whole team re-reads weekly.
+                </p>
+                <div class="workspace__aipanel-cite">
+                  <span>Ch. 4</span>
+                  <span>Module 3</span>
+                  <span>Ep. 12 · 04:12</span>
+                  <span>Email · 7 Mar</span>
+                </div>
+              </aside>
+            </div>
+          </div>
+
+          <div class="stage__captions" id="activation-captions">
+            <div class="stage__caption">
+              <p class="stage__caption-title">Ask your own work</p>
+              <p class="stage__caption-body">
+                Questions route through your corpus first; everything else is augmentation.
+              </p>
+            </div>
+            <div class="stage__caption">
+              <p class="stage__caption-title">Citations, not hallucinations</p>
+              <p class="stage__caption-body">
+                Every answer shows which artifacts it came from, down to the chapter and timestamp.
+              </p>
+            </div>
+            <div class="stage__caption">
+              <p class="stage__caption-title">Usable by anyone on the team</p>
+              <p class="stage__caption-body">
+                A staff member, a partner, a new hire—all asking the same system for the same
+                truth.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═════ STAGE 04 — FORMATION ═══════════════════════════════════ -->
+      <section class="stage stage--midnight stage--formation" id="stage-formation">
+        <div class="container">
+          <header class="stage__header">
+            <span class="stage__number">Stage 04 · Formation</span>
+            <h2 class="stage__title">From access to formation.</h2>
+            <p class="stage__lede">
+              Formation follows the arc movements have always used—<em>dissonance</em> to
+              <em>action</em> to <em>reflection</em> in <em>community</em>, landing in
+              <em>local, embodied practice</em>. Your corpus gets re-shaped to that arc.
+            </p>
+          </header>
+
+          <div class="stage__frame">
+            <div class="pathway" id="formation-pathway">
+              <svg class="pathway__svg" viewBox="0 0 1000 440" preserveAspectRatio="none">
+                <path
+                  d="M 60 255 Q 155 120, 250 141 Q 345 170, 440 247 Q 540 280, 640 158 Q 740 120, 830 211"
+                />
+                <path
+                  class="pathway__trail"
+                  d="M 60 255 Q 155 120, 250 141 Q 345 170, 440 247 Q 540 280, 640 158 Q 740 120, 830 211"
+                />
+              </svg>
+
+              <div class="pathway__stop" style="--t:58%; --l:6%; --w:8rem; --ar:927/1152;">
+                <span class="pathway__pill">01</span>
+                <div class="pathway__stop-card">
+                  <img src="../../public/images/fragmentation-story/order-of-service-structured-units.webp" alt="" loading="lazy" />
+                </div>
+                <span class="pathway__label">Dissonance</span>
+              </div>
+              <div class="pathway__stop" style="--t:32%; --l:25%; --w:8rem; --ar:896/1200;">
+                <span class="pathway__pill">02</span>
+                <div class="pathway__stop-card">
+                  <img src="../../public/images/fragmentation-story/book-fragments-of-form.webp" alt="" loading="lazy" />
+                </div>
+                <span class="pathway__label">Action</span>
+              </div>
+              <div class="pathway__stop" style="--t:56%; --l:44%; --w:8rem; --ar:1/1;">
+                <span class="pathway__pill">03</span>
+                <div class="pathway__stop-card">
+                  <img src="../../public/images/fragmentation-story/sketch-converge-diverge-flow.webp" alt="" loading="lazy" />
+                </div>
+                <span class="pathway__label">Reflection</span>
+              </div>
+              <div class="pathway__stop" style="--t:36%; --l:64%; --w:8rem; --ar:928/1152;">
+                <span class="pathway__pill">04</span>
+                <div class="pathway__stop-card">
+                  <img src="../../public/images/fragmentation-story/module-formal-systems-intro.webp" alt="" loading="lazy" />
+                </div>
+                <span class="pathway__label">Community</span>
+              </div>
+              <div class="pathway__stop" style="--t:48%; --l:83%; --w:8rem; --ar:928/1152;">
+                <span class="pathway__pill">05</span>
+                <div class="pathway__stop-card">
+                  <img src="../../public/images/fragmentation-story/session-essential-structures-card.webp" alt="" loading="lazy" />
+                </div>
+                <span class="pathway__label">Local Embodied Practice</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stage__captions" id="formation-captions">
+            <div class="stage__caption">
+              <p class="stage__caption-title">Formation starts with tension</p>
+              <p class="stage__caption-body">
+                Dissonance comes first because formation doesn't begin with content—it begins
+                with the felt gap between what is and what should be.
+              </p>
+            </div>
+            <div class="stage__caption">
+              <p class="stage__caption-title">Action before mastery</p>
+              <p class="stage__caption-body">
+                People take small, real steps, then reflect with a cohort. The corpus serves the
+                arc; the arc doesn't serve the corpus.
+              </p>
+            </div>
+            <div class="stage__caption">
+              <p class="stage__caption-title">Local, embodied, or nothing</p>
+              <p class="stage__caption-body">
+                The path ends in practice on the ground—in a neighbourhood, a team, a room. If
+                it doesn't land there, it didn't form anyone.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═════ STAGE 05 — MULTIPLICATION ═════════════════════════════ -->
+      <section class="stage stage--elevated stage--multiplication" id="stage-multiplication">
+        <div class="container">
+          <header class="stage__header">
+            <span class="stage__number">Stage 05 · Multiplication</span>
+            <h2 class="stage__title">One platform. Many movements.</h2>
+            <p class="stage__lede">
+              Not translated copies—<em>subscribing organizations</em>. Each church, nonprofit, or
+              institution runs on the same intelligence, grows its own community of users, and
+              flows what it learns back to the commons.
+            </p>
+          </header>
+
+          <div class="stage__frame">
+            <div class="multi" id="multi-network">
+              <svg class="multi__svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <line x1="50" y1="50" x2="18" y2="16" />
+                <line x1="50" y1="50" x2="82" y2="16" />
+                <line x1="50" y1="50" x2="18" y2="80" />
+                <line x1="50" y1="50" x2="82" y2="80" />
+                <line x1="50" y1="50" x2="6" y2="50" />
+                <line x1="50" y1="50" x2="94" y2="50" />
+              </svg>
+
+              <!-- Central hub — the platform (source of intelligence) -->
+              <div class="multi__cluster multi__cluster--center" style="--t:50%; --l:50%; --w:16rem;">
+                <span class="multi__badge">Platform</span>
+                <div class="multi__cluster-inner" data-tone="midnight">
+                  <div class="multi__tile"><img src="../../public/images/fragmentation-story/book-fragments-of-form.webp" alt="" loading="lazy" /></div>
+                  <div class="multi__tile"><img src="../../public/images/fragmentation-story/module-formal-systems-intro.webp" alt="" loading="lazy" /></div>
+                  <div class="multi__tile"><img src="../../public/images/fragmentation-story/podcast-card-abstract-structures.webp" alt="" loading="lazy" /></div>
+                  <div class="multi__tile"><img src="../../public/images/fragmentation-story/cover-principles-design-fragmentation.webp" alt="" loading="lazy" /></div>
+                  <div class="multi__tile"><img src="../../public/images/fragmentation-story/email-thread-multi-participant.webp" alt="" loading="lazy" /></div>
+                  <div class="multi__tile"><img src="../../public/images/fragmentation-story/core-hub-to-fragment-nodes.webp" alt="" loading="lazy" /></div>
+                </div>
+              </div>
+
+              <!-- Subscribing organizations — the true multiplication layer -->
+              <div class="multi__cluster" style="--t:16%; --l:18%; --w:9rem; --s:0.92;">
+                <span class="multi__badge">Pro</span>
+                <div class="multi__cluster-inner multi__tenant">
+                  <div class="multi__tenant-head">
+                    <span class="multi__tenant-logo" data-tone="warm">AM</span>
+                    <span class="multi__tenant-name"></span>
+                  </div>
+                  <div class="multi__tenant-metric">
+                    <span class="multi__tenant-num">824</span>
+                    <span class="multi__tenant-label">members</span>
+                  </div>
+                  <div class="multi__tenant-users">
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user multi__tenant-user--more">+819</span>
+                  </div>
+                  <div class="multi__tenant-bar" style="--fill: 64%;"></div>
+                </div>
+              </div>
+
+              <div class="multi__cluster" style="--t:16%; --l:82%; --w:9rem; --s:0.92;">
+                <span class="multi__badge">Team</span>
+                <div class="multi__cluster-inner multi__tenant">
+                  <div class="multi__tenant-head">
+                    <span class="multi__tenant-logo" data-tone="green">RC</span>
+                    <span class="multi__tenant-name"></span>
+                  </div>
+                  <div class="multi__tenant-metric">
+                    <span class="multi__tenant-num">1,240</span>
+                    <span class="multi__tenant-label">members</span>
+                  </div>
+                  <div class="multi__tenant-users">
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user multi__tenant-user--more">+1.2k</span>
+                  </div>
+                  <div class="multi__tenant-bar" style="--fill: 78%;"></div>
+                </div>
+              </div>
+
+              <div class="multi__cluster" style="--t:80%; --l:18%; --w:9rem; --s:0.92;">
+                <span class="multi__badge">Starter</span>
+                <div class="multi__cluster-inner multi__tenant">
+                  <div class="multi__tenant-head">
+                    <span class="multi__tenant-logo" data-tone="plum">HC</span>
+                    <span class="multi__tenant-name"></span>
+                  </div>
+                  <div class="multi__tenant-metric">
+                    <span class="multi__tenant-num">340</span>
+                    <span class="multi__tenant-label">members</span>
+                  </div>
+                  <div class="multi__tenant-users">
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user multi__tenant-user--more">+336</span>
+                  </div>
+                  <div class="multi__tenant-bar" style="--fill: 32%;"></div>
+                </div>
+              </div>
+
+              <div class="multi__cluster" style="--t:80%; --l:82%; --w:9rem; --s:0.92;">
+                <span class="multi__badge">Enterprise</span>
+                <div class="multi__cluster-inner multi__tenant">
+                  <div class="multi__tenant-head">
+                    <span class="multi__tenant-logo" data-tone="slate">FI</span>
+                    <span class="multi__tenant-name"></span>
+                  </div>
+                  <div class="multi__tenant-metric">
+                    <span class="multi__tenant-num">8,412</span>
+                    <span class="multi__tenant-label">seats</span>
+                  </div>
+                  <div class="multi__tenant-users">
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user multi__tenant-user--more">+8.4k</span>
+                  </div>
+                  <div class="multi__tenant-bar" style="--fill: 92%;"></div>
+                </div>
+              </div>
+
+              <div class="multi__cluster" style="--t:50%; --l:6%; --w:8rem; --s:0.84;">
+                <span class="multi__badge">Pro</span>
+                <div class="multi__cluster-inner multi__tenant">
+                  <div class="multi__tenant-head">
+                    <span class="multi__tenant-logo" data-tone="teal">GW</span>
+                    <span class="multi__tenant-name"></span>
+                  </div>
+                  <div class="multi__tenant-metric">
+                    <span class="multi__tenant-num">612</span>
+                    <span class="multi__tenant-label">members</span>
+                  </div>
+                  <div class="multi__tenant-users">
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user multi__tenant-user--more">+608</span>
+                  </div>
+                  <div class="multi__tenant-bar" style="--fill: 54%;"></div>
+                </div>
+              </div>
+
+              <div class="multi__cluster" style="--t:50%; --l:94%; --w:8rem; --s:0.84;">
+                <span class="multi__badge">Enterprise</span>
+                <div class="multi__cluster-inner multi__tenant">
+                  <div class="multi__tenant-head">
+                    <span class="multi__tenant-logo">MF</span>
+                    <span class="multi__tenant-name"></span>
+                  </div>
+                  <div class="multi__tenant-metric">
+                    <span class="multi__tenant-num">2,812</span>
+                    <span class="multi__tenant-label">members</span>
+                  </div>
+                  <div class="multi__tenant-users">
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user"></span>
+                    <span class="multi__tenant-user multi__tenant-user--more">+2.8k</span>
+                  </div>
+                  <div class="multi__tenant-bar" style="--fill: 82%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Infrastructure multiplication — how the same system spreads
+                 through discovery, AI, translation, and peer networks. -->
+            <div class="multi-infra" id="multi-infra">
+              <header class="multi-infra__title">
+                <div>
+                  <span class="eyebrow">How it spreads</span>
+                  <h3>Infrastructure, not just tenants</h3>
+                </div>
+                <span class="eyebrow">Informational + Relational</span>
+              </header>
+
+              <!-- SEO / DISCOVERY -->
+              <article class="multi-infra__channel" data-kind="info">
+                <div class="multi-infra__head">
+                  <span class="multi-infra__label">Search &amp; Discovery</span>
+                  <span class="multi-infra__kind">Informational</span>
+                </div>
+                <div class="multi-infra__query">how to start a missional cohort</div>
+                <div class="multi-infra__rank">
+                  <div class="multi-infra__rank-row multi-infra__rank-row--hit"><i></i><span></span></div>
+                  <div class="multi-infra__rank-row multi-infra__rank-row--hit"><i></i><span></span></div>
+                  <div class="multi-infra__rank-row"><i></i><span></span></div>
+                  <div class="multi-infra__rank-row"><i></i><span></span></div>
+                  <div class="multi-infra__rank-row"><i></i><span></span></div>
+                </div>
+                <p class="multi-infra__body">Platform content surfaces where leaders already search.</p>
+              </article>
+
+              <!-- AI RESPONSE -->
+              <article class="multi-infra__channel" data-kind="info">
+                <div class="multi-infra__head">
+                  <span class="multi-infra__label">AI Response</span>
+                  <span class="multi-infra__kind">Informational</span>
+                </div>
+                <div class="multi-infra__ai">
+                  <span class="multi-infra__ai-lead">Movement DNA · grounded answer</span>
+                  <span class="multi-infra__ai-line w-90"></span>
+                  <span class="multi-infra__ai-line w-70"></span>
+                  <span class="multi-infra__ai-line w-55"></span>
+                </div>
+                <p class="multi-infra__body">Tenant-safe AI quotes the canon, cites the source, carries the voice.</p>
+              </article>
+
+              <!-- TRANSLATION / VARIANTS -->
+              <article class="multi-infra__channel" data-kind="info">
+                <div class="multi-infra__head">
+                  <span class="multi-infra__label">Translation</span>
+                  <span class="multi-infra__kind">Informational</span>
+                </div>
+                <div class="multi-infra__langs">
+                  <span class="multi-infra__lang multi-infra__lang--active">EN</span>
+                  <span class="multi-infra__lang">ES</span>
+                  <span class="multi-infra__lang">PT</span>
+                  <span class="multi-infra__lang">FR</span>
+                  <span class="multi-infra__lang">KO</span>
+                  <span class="multi-infra__lang">SW</span>
+                </div>
+                <div class="multi-infra__variant">
+                  <i class="w-90"></i><i class="w-75"></i><i class="w-60"></i>
+                </div>
+                <p class="multi-infra__body">Every artifact, every language — one source of truth.</p>
+              </article>
+
+              <!-- NETWORK EXPANSION -->
+              <article class="multi-infra__channel" data-kind="rel">
+                <div class="multi-infra__head">
+                  <span class="multi-infra__label">Peer Network</span>
+                  <span class="multi-infra__kind">Relational</span>
+                </div>
+                <div class="multi-infra__net" aria-hidden="true">
+                  <svg viewBox="0 0 100 80" preserveAspectRatio="none">
+                    <line x1="50" y1="40" x2="14" y2="14" />
+                    <line x1="50" y1="40" x2="86" y2="14" />
+                    <line x1="50" y1="40" x2="14" y2="66" />
+                    <line x1="50" y1="40" x2="86" y2="66" />
+                    <line x1="14" y1="14" x2="86" y2="14" />
+                    <line x1="14" y1="66" x2="86" y2="66" />
+                    <line x1="14" y1="14" x2="14" y2="66" />
+                    <line x1="86" y1="14" x2="86" y2="66" />
+                  </svg>
+                  <span class="multi-infra__net-node multi-infra__net-node--hub" style="top:50%; left:50%"></span>
+                  <span class="multi-infra__net-node" style="top:18%; left:14%"></span>
+                  <span class="multi-infra__net-node" style="top:18%; left:86%"></span>
+                  <span class="multi-infra__net-node" style="top:82%; left:14%"></span>
+                  <span class="multi-infra__net-node" style="top:82%; left:86%"></span>
+                </div>
+                <p class="multi-infra__body">Leaders carry the practice to new cohorts — the network is the message.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="stage__captions" id="multiplication-captions">
+            <div class="stage__caption">
+              <p class="stage__caption-title">Tenants, not translations</p>
+              <p class="stage__caption-body">
+                The organizational layer: each subscribing org gets the whole
+                intelligence and builds its own community on top of it.
+              </p>
+            </div>
+            <div class="stage__caption">
+              <p class="stage__caption-title">Informational infrastructure</p>
+              <p class="stage__caption-body">
+                Search, AI answers, and translation carry the same artifacts into every
+                context—discovery and variants without drift.
+              </p>
+            </div>
+            <div class="stage__caption">
+              <p class="stage__caption-title">Relational infrastructure</p>
+              <p class="stage__caption-body">
+                Peer networks propagate the practice. Leaders meet, cohorts spawn cohorts,
+                and the network returns its learnings to the source.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═════ STAGE 06 · MOVEMENT (placeholder) ═══════════════════════ -->
+      <section class="movement-hold" id="stage-movement" aria-labelledby="movement-hold-title">
+        <div class="container">
+          <span class="eyebrow" style="color: color-mix(in srgb, var(--inverse-foreground) 55%, transparent)">Stage 06 · Movement</span>
+          <h2 class="display display--midnight" id="movement-hold-title" style="margin-top: 1rem; font-size: clamp(1.75rem, 3vw, 2.5rem)">
+            How intelligence becomes shared movement — narrative TBD
+          </h2>
+          <p class="lede lede--midnight" style="margin-top: 1rem">
+            This band is reserved for the next chapter of the story (network effects in the field,
+            ordination of practice, sent communities). No scroll choreography here yet.
+          </p>
+          <div class="movement-hold__void" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <!-- ═════ Final CTA ═══════════════════════════════════════════════ -->
+      <section class="cta" id="outro-cta">
+        <div class="container">
+          <h2 class="cta__title">
+            You built the intelligence.<br /><em>Now give it a system.</em>
+          </h2>
+          <p class="cta__sub">
+            Six stages (including movement, still opening). One library of artifacts. Everything
+            you've made, composed into one movement-ready surface.
+          </p>
+          <div class="cta__row">
+            <a class="cta__btn cta__btn--primary" href="#">See the walkthrough</a>
+            <a class="cta__btn cta__btn--ghost" href="#">Bring us your corpus</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="mockup-bar" aria-live="polite">
+      Chapter<strong id="active-chapter">unity</strong>
+    </div>
+
+    <script src="fragmentation-unified-narrative.js"></script>
+
+    <!-- GSAP + ScrollTrigger via CDN (mockup only; React port will use gsap package) -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script>
+      (function () {
+        const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const isDesktop = window.matchMedia("(min-width: 64rem)").matches;
+        const chapters = Array.from(document.querySelectorAll(".chapter"));
+        const artifacts = Array.from(document.querySelectorAll(".artifact"));
+        const activeBar = document.getElementById("active-chapter");
+
+        // Build map: chapter id → artifact layer
+        const byId = new Map();
+        artifacts.forEach((el) => byId.set(el.dataset.chapter, el));
+
+        function setActive(id) {
+          artifacts.forEach((el) => el.classList.remove("is-active"));
+          const target = byId.get(id);
+          if (target) target.classList.add("is-active");
+          if (activeBar) activeBar.textContent = id;
+        }
+
+        if (reduced || !isDesktop || typeof gsap === "undefined") {
+          // Fallback: show unity frame; the inline images in each chapter already tell the story.
+          setActive("unity");
+          return;
+        }
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 1) Active chapter = which copy block is in the reading zone.
+        chapters.forEach((ch) => {
+          ScrollTrigger.create({
+            trigger: ch,
+            start: "top 60%",
+            end: "bottom 40%",
+            onEnter: () => setActive(ch.dataset.chapter),
+            onEnterBack: () => setActive(ch.dataset.chapter),
+          });
+        });
+
+        // 2) Per-artifact entrance choreography.
+        //    Fragment emergence: opacity + subtle y + slight rotate reset.
+        //    Each artifact has its own timeline tied to its chapter's scroll range.
+        artifacts.forEach((art) => {
+          const id = art.dataset.chapter;
+          const chapter = document.querySelector('.chapter[data-chapter="' + id + '"]');
+          if (!chapter) return;
+
+          const card = art.querySelector(".artifact__card");
+          const ghosts = art.querySelectorAll(".artifact__ghost");
+
+          // Capture the inline "final" transforms authored in HTML so we
+          // animate FROM a neutral state TO the authored composition.
+          const snap = (el) => el && el.style.transform;
+          const finalCard = snap(card);
+          const finalGhosts = Array.from(ghosts).map(snap);
+
+          // Reset to neutral for the animation start.
+          if (card) card.style.transform = "translate(0, 12px) rotate(0deg)";
+          ghosts.forEach((g) => (g.style.transform = "translate(0, 8px) rotate(0deg)"));
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: chapter,
+              start: "top 75%",
+              end: "top 25%",
+              scrub: 0.8,
+            },
+          });
+
+          if (card) {
+            tl.fromTo(
+              card,
+              { opacity: 0.85, transform: "translate(0, 12px) rotate(0deg)" },
+              { opacity: 1, transform: finalCard || "none", ease: "power2.out", duration: 1 },
+              0
+            );
+          }
+
+          ghosts.forEach((g, i) => {
+            tl.fromTo(
+              g,
+              { opacity: 0, transform: "translate(0, 8px) rotate(0deg)" },
+              {
+                opacity: 0.55,
+                transform: finalGhosts[i] || "none",
+                ease: "power2.out",
+                duration: 1,
+              },
+              0.15 + i * 0.1 // staggered, asynchronous (fragmentation = not in sync)
+            );
+          });
+        });
+
+        // 3) Scatter field — pinned 3-phase choreography.
+        const scatter = document.getElementById("scatter");
+        const track = scatter && scatter.querySelector(".scatter__track");
+        const field = document.getElementById("scatter-field");
+        const flash = document.getElementById("scatter-flash");
+        const climax = document.getElementById("scatter-climax");
+        const veil = document.getElementById("scatter-veil");
+        const cost = document.getElementById("scatter-cost");
+        const costLedger = document.getElementById("scatter-cost-ledger");
+        const costEyebrow = cost && cost.querySelector(".scatter__cost-eyebrow");
+        const costTitle = cost && cost.querySelector(".scatter__cost-title");
+        const costItems = costLedger ? Array.from(costLedger.querySelectorAll("li")) : [];
+        const tiles = field ? Array.from(field.querySelectorAll(".scatter__tile")) : [];
+
+        const isMobile = window.matchMedia("(max-width: 47.999rem)").matches;
+
+        if (track && tiles.length && !isMobile) {
+          // Capture each tile's authored final transform (from CSS vars) so we
+          // can interrupt it and animate around it.
+          tiles.forEach((tile) => {
+            const cs = getComputedStyle(tile);
+            tile.dataset.finalTransform = cs.transform; // e.g. "matrix(...)"
+          });
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: track,
+              start: "top top",
+              end: "bottom bottom",
+              scrub: 1,
+            },
+          });
+
+          // ────────────────────────────────────────────────────────────────
+          // PHASE A (0 → 0.22) — Scatter emergence.
+          // Tiles start at center, invisible, small. They arrive at their
+          // authored scattered positions with asynchronous stagger.
+          // Fragmentation = not in sync.
+          // ────────────────────────────────────────────────────────────────
+          tiles.forEach((tile, i) => {
+            tl.fromTo(
+              tile,
+              {
+                opacity: 0,
+                top: "50%",
+                left: "50%",
+                xPercent: -50,
+                yPercent: -50,
+                rotate: 0,
+                scale: 0.2,
+              },
+              {
+                opacity: 1,
+                top: tile.style.getPropertyValue("--t"),
+                left: tile.style.getPropertyValue("--l"),
+                xPercent: -50,
+                yPercent: -50,
+                rotate: parseFloat(tile.style.getPropertyValue("--r")) || 0,
+                scale: parseFloat(tile.style.getPropertyValue("--s")) || 1,
+                ease: "power2.out",
+                duration: 0.22,
+              },
+              (i / tiles.length) * 0.18
+            );
+          });
+
+          // ────────────────────────────────────────────────────────────────
+          // PHASE B (0.22 → 0.36) — Rest.
+          // Let the full scatter breathe. This is the moment the reader
+          // SEES the mess before being told what it costs.
+          // ────────────────────────────────────────────────────────────────
+
+          // ────────────────────────────────────────────────────────────────
+          // PHASE C (0.36 → 0.48) — The cost presses in.
+          // Veil darkens the field; tiles dim to recede. Eyebrow + title +
+          // ledger lines stagger up from below.
+          // ────────────────────────────────────────────────────────────────
+          tl.fromTo(
+            veil,
+            { opacity: 0 },
+            { opacity: 1, ease: "power1.out", duration: 0.12 },
+            0.36
+          );
+
+          // Tiles dim — they stay in place (the reader should still see the
+          // scatter they're being told the cost of) but recede behind the
+          // veil and text.
+          tl.to(
+            tiles,
+            { opacity: 0.45, ease: "power1.out", duration: 0.12 },
+            0.36
+          );
+
+          tl.fromTo(
+            cost,
+            { opacity: 0 },
+            { opacity: 1, ease: "power1.out", duration: 0.06 },
+            0.38
+          );
+
+          tl.fromTo(
+            costEyebrow,
+            { y: 20, opacity: 0 },
+            { y: 0, opacity: 1, ease: "power2.out", duration: 0.08 },
+            0.4
+          );
+
+          tl.fromTo(
+            costTitle,
+            { y: 36, opacity: 0 },
+            { y: 0, opacity: 1, ease: "power3.out", duration: 0.1 },
+            0.42
+          );
+
+          costItems.forEach((li, i) => {
+            tl.fromTo(
+              li,
+              { y: 24, opacity: 0 },
+              { y: 0, opacity: 1, ease: "power2.out", duration: 0.08 },
+              0.48 + i * 0.03
+            );
+          });
+
+          // ────────────────────────────────────────────────────────────────
+          // PHASE D (0.58 → 0.72) — Cost holds.
+          // No animation. Scroll travel = read time. At ~560vh track length
+          // this beat spans ~78vh of scroll, enough to actually read.
+          // ────────────────────────────────────────────────────────────────
+
+          // ────────────────────────────────────────────────────────────────
+          // PHASE E (0.72 → 0.82) — Cost exits, field begins to implode.
+          // ────────────────────────────────────────────────────────────────
+          tl.to(
+            [costTitle, costLedger, costEyebrow],
+            { y: -16, opacity: 0, ease: "power2.in", duration: 0.06 },
+            0.72
+          );
+
+          tl.to(
+            cost,
+            { opacity: 0, ease: "power1.in", duration: 0.06 },
+            0.76
+          );
+
+          tl.to(
+            veil,
+            { opacity: 0, ease: "power1.in", duration: 0.08 },
+            0.76
+          );
+
+          // Tiles snap back to full opacity briefly before imploding, so the
+          // collapse reads as a visible destruction of the scatter (not a
+          // quiet fade from the already-dimmed state).
+          tl.to(
+            tiles,
+            { opacity: 1, ease: "power1.out", duration: 0.05 },
+            0.76
+          );
+
+          // ────────────────────────────────────────────────────────────────
+          // PHASE F (0.78 → 0.9) — Implosion.
+          // ────────────────────────────────────────────────────────────────
+          tiles.forEach((tile, i) => {
+            tl.to(
+              tile,
+              {
+                top: "50%",
+                left: "50%",
+                scale: 0,
+                rotate: (i % 2 === 0 ? 1 : -1) * 18,
+                opacity: 0,
+                ease: "power3.in",
+                duration: 0.14,
+              },
+              0.78 + (i % 5) * 0.008
+            );
+          });
+
+          tl.fromTo(
+            flash,
+            { opacity: 0, scale: 0.4 },
+            { opacity: 1, scale: 1.4, ease: "power2.out", duration: 0.1 },
+            0.84
+          );
+
+          // ────────────────────────────────────────────────────────────────
+          // PHASE G (0.9 → 1.0) — Boom. Climax type punches in.
+          // ────────────────────────────────────────────────────────────────
+          tl.fromTo(
+            climax,
+            { opacity: 0, scale: 0.92, y: 24 },
+            { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 0.1 },
+            0.9
+          );
+
+          tl.to(
+            flash,
+            { opacity: 0.55, scale: 1.6, ease: "power2.out", duration: 0.1 },
+            0.94
+          );
+        }
+
+        // ──────────────────────────────────────────────────────────────
+        // PART II — Integration · Activation · Formation · Multiplication
+        // Each stage gets its own small timeline. No pinning here — these
+        // are scroll-triggered reveals, not cinematic hijacks.
+        // ──────────────────────────────────────────────────────────────
+
+        // 4) INTEGRATION — draw connection lines + pop nodes in.
+        const integration = document.getElementById("integration-constellation");
+        if (integration) {
+          const nodes = Array.from(integration.querySelectorAll(".node"));
+          const lines = Array.from(integration.querySelectorAll("line"));
+
+          // Prep line dasharray for draw-on effect (SVG lines don't have a
+          // natural length — we compute and set it).
+          lines.forEach((ln) => {
+            const len = Math.hypot(
+              parseFloat(ln.getAttribute("x2")) - parseFloat(ln.getAttribute("x1")),
+              parseFloat(ln.getAttribute("y2")) - parseFloat(ln.getAttribute("y1"))
+            );
+            ln.style.strokeDasharray = len * 1.4;
+            ln.style.strokeDashoffset = len * 1.4;
+          });
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: integration,
+              start: "top 72%",
+              end: "bottom 40%",
+              scrub: 0.6,
+            },
+          });
+
+          tl.from(
+            nodes,
+            { opacity: 0, scale: 0.6, stagger: 0.04, duration: 0.4, ease: "power2.out" },
+            0
+          );
+          tl.to(
+            lines,
+            { strokeDashoffset: 0, stagger: 0.02, duration: 0.6, ease: "power1.inOut" },
+            0.2
+          );
+        }
+
+        // 4b) INTEGRATION IDE — file tree streams in, frontmatter lines
+        //     reveal top-down, schema blocks pop as their key lands.
+        const ide = document.getElementById("integration-ide");
+        if (ide) {
+          const files = Array.from(ide.querySelectorAll(".ide__file"));
+          const lines = Array.from(ide.querySelectorAll(".ide__line"));
+          const schemaBlocks = Array.from(ide.querySelectorAll(".ide__schema-block"));
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: ide,
+              start: "top 75%",
+              end: "bottom 55%",
+              scrub: 0.8,
+            },
+          });
+
+          // File tree fills in first — top down, staggered.
+          tl.to(
+            files,
+            {
+              opacity: 1,
+              x: 0,
+              stagger: 0.05,
+              duration: 0.35,
+              ease: "power2.out",
+            },
+            0
+          );
+
+          // Frontmatter + body types in line-by-line. A bit slower so the
+          // reader can track which line is landing.
+          tl.to(
+            lines,
+            {
+              opacity: 1,
+              stagger: 0.03,
+              duration: 0.2,
+              ease: "none",
+            },
+            0.25
+          );
+
+          // Schema keys light up after the matching frontmatter lines appear.
+          // Indices are hand-tuned to the line order above:
+          //   block[0] type       ← line 3
+          //   block[1] title      ← line 2
+          //   block[2] tags       ← line 7
+          //   block[3] audiences  ← line 8
+          //   block[4] connections← line 9
+          //   block[5] indexed_by ← derived; fires last
+          const schemaStart = 0.55;
+          schemaBlocks.forEach((block, i) => {
+            tl.to(
+              block,
+              { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" },
+              schemaStart + i * 0.07
+            );
+          });
+        }
+
+        // 5) ACTIVATION — type the query, reveal AI answer, highlight center.
+        const workspace = document.getElementById("activation-workspace");
+        if (workspace) {
+          const queryEl = document.getElementById("ws-query");
+          const answerEl = document.getElementById("ws-answer");
+          const highlightNode = workspace.querySelector(".node--highlight");
+          const wsLines = Array.from(workspace.querySelectorAll("line"));
+
+          wsLines.forEach((ln) => {
+            const len = Math.hypot(
+              parseFloat(ln.getAttribute("x2")) - parseFloat(ln.getAttribute("x1")),
+              parseFloat(ln.getAttribute("y2")) - parseFloat(ln.getAttribute("y1"))
+            );
+            ln.style.strokeDasharray = len * 1.4;
+            ln.style.strokeDashoffset = len * 1.4;
+          });
+
+          const queryText = queryEl ? queryEl.textContent : "";
+          if (queryEl) queryEl.textContent = "";
+          if (answerEl) gsap.set(answerEl, { opacity: 0, y: 10 });
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: workspace,
+              start: "top 70%",
+              end: "bottom 60%",
+              scrub: 0.6,
+            },
+          });
+
+          // Typing effect — length-based scrub. Uses a proxy object so scrub
+          // can drive character count smoothly.
+          const typing = { n: 0 };
+          tl.to(
+            typing,
+            {
+              n: queryText.length,
+              duration: 1.2,
+              ease: "none",
+              onUpdate: () => {
+                if (queryEl) queryEl.textContent = queryText.slice(0, Math.floor(typing.n));
+              },
+            },
+            0
+          );
+
+          tl.to(
+            wsLines,
+            { strokeDashoffset: 0, stagger: 0.03, duration: 0.5 },
+            0.6
+          );
+
+          if (highlightNode) {
+            tl.fromTo(
+              highlightNode,
+              { boxShadow: "0 20px 40px -18px rgba(0,0,0,0.55)" },
+              { duration: 0.3 },
+              0.9
+            );
+          }
+
+          if (answerEl) {
+            tl.to(answerEl, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 1);
+          }
+        }
+
+        // 6) FORMATION — draw the pathway, pop waypoints in sequence.
+        const formation = document.getElementById("formation-pathway");
+        if (formation) {
+          const trail = formation.querySelector(".pathway__trail");
+          const stops = Array.from(formation.querySelectorAll(".pathway__stop"));
+
+          if (trail) {
+            const len = trail.getTotalLength ? trail.getTotalLength() : 2000;
+            trail.style.strokeDasharray = len;
+            trail.style.strokeDashoffset = len;
+
+            const tl = gsap.timeline({
+              scrollTrigger: {
+                trigger: formation,
+                start: "top 70%",
+                end: "bottom 50%",
+                scrub: 0.6,
+              },
+            });
+
+            tl.to(trail, { strokeDashoffset: 0, duration: 1.2, ease: "power1.inOut" }, 0);
+            tl.from(
+              stops,
+              { opacity: 0, y: 20, scale: 0.9, stagger: 0.12, duration: 0.45, ease: "power2.out" },
+              0.1
+            );
+          }
+        }
+
+        // 7) MULTIPLICATION — center first, replicas pop out with stagger.
+        const multi = document.getElementById("multi-network");
+        if (multi) {
+          const center = multi.querySelector(".multi__cluster--center");
+          const replicas = Array.from(multi.querySelectorAll(".multi__cluster:not(.multi__cluster--center)"));
+          const mlines = Array.from(multi.querySelectorAll("line"));
+
+          mlines.forEach((ln) => {
+            const len = Math.hypot(
+              parseFloat(ln.getAttribute("x2")) - parseFloat(ln.getAttribute("x1")),
+              parseFloat(ln.getAttribute("y2")) - parseFloat(ln.getAttribute("y1"))
+            );
+            ln.style.strokeDasharray = len * 1.4;
+            ln.style.strokeDashoffset = len * 1.4;
+          });
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: multi,
+              start: "top 72%",
+              end: "bottom 40%",
+              scrub: 0.6,
+            },
+          });
+
+          if (center) {
+            tl.from(center, { opacity: 0, scale: 0.7, duration: 0.5, ease: "power2.out" }, 0);
+          }
+          tl.from(
+            replicas,
+            {
+              opacity: 0,
+              scale: 0.3,
+              stagger: { each: 0.06, from: "center" },
+              duration: 0.5,
+              ease: "back.out(1.5)",
+            },
+            0.25
+          );
+          tl.to(
+            mlines,
+            { strokeDashoffset: 0, stagger: 0.03, duration: 0.6 },
+            0.4
+          );
+        }
+
+        // 8) Refresh after images load so triggers measure correctly.
+        window.addEventListener("load", () => ScrollTrigger.refresh());
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Master components — Nav 05 · Lab strip</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+    />
+    <link rel="stylesheet" href="./css/core.css" />
+    <link rel="stylesheet" href="./css/nav-demos.css" />
+  </head>
+  <body class="demo-page--sticky-nav">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="nav nav--05 nav--has-drawer" data-nav>
+      <div class="nav__inner">
+        <a class="brand" href="./index.html">
+          <span class="brand__mark" aria-hidden="true"></span>
+          Movemental
+        </a>
+        <span class="nav__tag" aria-hidden="true">LAB · STATIC</span>
+        <nav class="nav__links" aria-label="Primary">
+          <ul>
+            <li><a href="#frame">Frame</a></li>
+            <li><a href="#model">Model</a></li>
+            <li><a href="#viz">Viz</a></li>
+            <li><a href="#motion">Motion</a></li>
+          </ul>
+        </nav>
+        <div class="nav__stage" role="tablist" aria-label="Section dots (demo)">
+          <button type="button" class="nav__dot" aria-label="Section 1"></button>
+          <button type="button" class="nav__dot" aria-current="true" aria-label="Section 2"></button>
+          <button type="button" class="nav__dot" aria-label="Section 3"></button>
+          <button type="button" class="nav__dot" aria-label="Section 4"></button>
+        </div>
+        <div class="nav__actions">
+          <a class="btn btn--ghost btn--sm" href="./index.html">Index</a>
+        </div>
+        <button
+          type="button"
+          class="nav__toggle"
+          data-nav-toggle
+          aria-expanded="false"
+          aria-controls="nav-drawer-05"
+        >
+          <span></span><span></span>
+        </button>
+      </div>
+      <div id="nav-drawer-05" class="nav__drawer">
+        <ul>
+          <li><a href="#frame">Frame</a></li>
+          <li><a href="#model">Model</a></li>
+          <li><a href="#viz">Viz</a></li>
+          <li><a href="#motion">Motion</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main id="main">
+      <article class="container" style="padding-block: var(--section-y)">
+        <p class="label reveal"><span class="label__dot" aria-hidden="true"></span>Nav 05</p>
+        <h1 class="section-title reveal" style="--d: 0.06s">Sticky <em>lab</em> strip</h1>
+        <p class="demo-kicker reveal" style="--d: 0.1s">
+          Borrowed from long-scroll deck prototypes: monospace tag, stage dots, alt surface. The bar
+          stays in document flow (sticky) so below-the-fold heroes are not obscured by a fixed shell.
+        </p>
+        <div style="max-width: 56ch; color: var(--ink-muted); line-height: 1.65">
+          <p id="frame" class="reveal" style="--d: 0.12s">
+            <strong style="color: var(--ink)">Frame</strong> — the question the viz is answering.
+          </p>
+          <p id="model" class="reveal" style="--d: 0.14s; margin-top: 1.25rem">
+            <strong style="color: var(--ink)">Model</strong> — variables, relationships, and what we
+            refuse to simplify away.
+          </p>
+          <p id="viz" class="reveal" style="--d: 0.16s; margin-top: 1.25rem">
+            <strong style="color: var(--ink)">Viz</strong> — monochrome so the diagram reads as part
+            of the page, not a second palette.
+          </p>
+          <p id="motion" class="reveal" style="--d: 0.18s; margin-top: 1.25rem; padding-bottom: 50vh">
+            <strong style="color: var(--ink)">Motion</strong> — scroll-linked choreography that respects
+            reduced motion preferences.
+          </p>
+        </div>
+      </article>
+
+      <footer class="site-foot">
+        <div class="site-foot__inner">
+          <span>Nav 05 · lab strip</span>
+          <a href="./index.html">Index</a>
+        </div>
+      </footer>
+    </main>
+
+    <script src="./js/core.js" defer></script>
+  </body>
+</html>

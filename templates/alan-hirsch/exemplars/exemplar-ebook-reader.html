@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Book Reader — Movemental (exemplar)</title>
+    <meta name="description" content="In-browser book reading experience — chapter navigation, TOC sidebar, editorial prose column." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../docs/html/site-templates/site-theme.css" />
+    <style>
+      /* ── Reader layout ── */
+      .reader {
+        display: flex;
+        min-height: calc(100vh - 56px);
+      }
+
+      /* ── Reader header (sticky bar below site-top) ── */
+      .reader-header {
+        position: sticky;
+        top: 56px;
+        z-index: 90;
+        background: color-mix(in srgb, var(--card) 92%, transparent);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+      }
+      .reader-header__inner {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 10px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .reader-header__back {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: var(--muted-foreground);
+        flex-shrink: 0;
+      }
+      .reader-header__back:hover {
+        color: var(--primary);
+        text-decoration: none;
+      }
+      .reader-header__back svg {
+        width: 16px;
+        height: 16px;
+      }
+      .reader-header__title {
+        flex: 1;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--foreground);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
+      }
+      .reader-header__controls {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        flex-shrink: 0;
+      }
+
+      /* ── Font-size segmented control ── */
+      .font-control {
+        display: flex;
+        background: var(--section);
+        border-radius: var(--radius);
+        padding: 2px;
+      }
+      .font-control__btn {
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: calc(var(--radius) - 1px);
+        font-family: var(--font-sans);
+        font-weight: 600;
+        color: var(--muted-foreground);
+        line-height: 1;
+        transition: background 0.15s, color 0.15s;
+      }
+      .font-control__btn:hover {
+        color: var(--foreground);
+      }
+      .font-control__btn.is-active {
+        background: var(--card);
+        color: var(--foreground);
+        box-shadow: 0 1px 3px rgba(42, 52, 57, 0.08);
+      }
+      .font-control__btn:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 1px;
+      }
+      .font-control__btn--sm { font-size: 0.72rem; }
+      .font-control__btn--md { font-size: 0.85rem; }
+      .font-control__btn--lg { font-size: 1rem; }
+
+      /* ── Sidebar toggle (reader header) ── */
+      .sidebar-toggle {
+        display: none;
+        border: 1px solid var(--border);
+        background: var(--card);
+        border-radius: var(--radius);
+        padding: 6px 10px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        cursor: pointer;
+        color: var(--foreground);
+        font-family: var(--font-sans);
+      }
+      .sidebar-toggle:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 1px;
+      }
+
+      /* ── Reading progress bar ── */
+      .reader-progress {
+        position: sticky;
+        top: calc(56px + 48px);
+        z-index: 89;
+        height: 2px;
+        background: var(--section);
+      }
+      .reader-progress__fill {
+        height: 100%;
+        width: 35%;
+        background: var(--primary);
+        transition: width 0.3s ease;
+      }
+
+      /* ── Sidebar ── */
+      .reader-sidebar {
+        width: 280px;
+        flex-shrink: 0;
+        background: var(--card);
+        border-right: 1px solid var(--border);
+        position: sticky;
+        top: calc(56px + 50px);
+        height: calc(100vh - 56px - 50px);
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+      }
+      .reader-sidebar__header {
+        padding: 20px 20px 16px;
+        border-bottom: 1px solid var(--border);
+      }
+      .reader-sidebar__book-title {
+        margin: 0;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--foreground);
+      }
+      .reader-sidebar__author {
+        margin: 4px 0 0;
+        font-size: 0.8rem;
+        color: var(--muted-foreground);
+      }
+      .reader-sidebar__position {
+        margin: 12px 0 0;
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted-foreground);
+      }
+
+      /* ── Progress ring ── */
+      .progress-ring {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 20px;
+        border-bottom: 1px solid var(--border);
+      }
+      .progress-ring svg {
+        width: 40px;
+        height: 40px;
+        transform: rotate(-90deg);
+      }
+      .progress-ring__track {
+        fill: none;
+        stroke: var(--section);
+        stroke-width: 3;
+      }
+      .progress-ring__fill {
+        fill: none;
+        stroke: var(--primary);
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-dasharray: 100.53;
+        stroke-dashoffset: 65.34;
+        transition: stroke-dashoffset 0.4s ease;
+      }
+      .progress-ring__label {
+        font-size: 0.78rem;
+        color: var(--muted-foreground);
+      }
+      .progress-ring__label strong {
+        color: var(--foreground);
+        font-weight: 600;
+      }
+
+      /* ── TOC list ── */
+      .toc-list {
+        list-style: none;
+        margin: 0;
+        padding: 8px 0;
+        flex: 1;
+        overflow-y: auto;
+      }
+      .toc-list__item a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--muted-foreground);
+        text-decoration: none;
+        transition: background 0.12s, color 0.12s;
+      }
+      .toc-list__item a:hover {
+        background: var(--section);
+        color: var(--foreground);
+        text-decoration: none;
+      }
+      .toc-list__item a:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: -2px;
+      }
+      .toc-list__item.is-active a {
+        color: var(--primary);
+        font-weight: 600;
+        background: color-mix(in srgb, var(--primary) 6%, transparent);
+      }
+      .toc-list__num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        font-size: 0.72rem;
+        font-weight: 600;
+        background: var(--section);
+        color: var(--muted-foreground);
+        flex-shrink: 0;
+      }
+      .toc-list__item.is-active .toc-list__num {
+        background: var(--primary);
+        color: var(--primary-foreground);
+      }
+
+      /* ── Main reading column ── */
+      .reader-main {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        justify-content: center;
+        padding: 0 24px;
+      }
+      .reader-content {
+        width: 100%;
+        max-width: var(--prose-max);
+        padding: 48px 0 80px;
+      }
+
+      /* ── Chapter header ── */
+      .chapter-label {
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: color-mix(in srgb, var(--primary) 70%, var(--muted-foreground));
+        margin: 0 0 10px;
+      }
+      .chapter-title {
+        margin: 0 0 12px;
+        font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1.12;
+        color: var(--foreground);
+      }
+      .chapter-meta {
+        font-size: 0.8rem;
+        color: var(--muted-foreground);
+        margin: 0 0 32px;
+      }
+      .chapter-rule {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 0 0 32px;
+      }
+
+      /* ── Prose body ── */
+      .reader-prose {
+        color: var(--muted-foreground);
+        line-height: 1.78;
+        font-size: 1.05rem;
+      }
+      .reader-prose p {
+        margin: 0 0 1.35rem;
+      }
+      .reader-prose strong {
+        color: var(--foreground);
+      }
+      .reader-prose h2 {
+        margin: 2.5rem 0 1rem;
+        font-size: 1.35rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--foreground);
+        line-height: 1.2;
+      }
+      .reader-prose h3 {
+        margin: 2rem 0 0.75rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--foreground);
+        line-height: 1.25;
+      }
+
+      /* Drop cap (subtle, editorial) */
+      .reader-prose .drop-cap::first-letter {
+        float: left;
+        font-size: 3.4em;
+        line-height: 0.82;
+        font-weight: 600;
+        color: var(--foreground);
+        padding-right: 8px;
+        padding-top: 4px;
+      }
+
+      /* Font-size variants */
+      .reader-prose--sm { font-size: 0.95rem; line-height: 1.72; }
+      .reader-prose--lg { font-size: 1.18rem; line-height: 1.85; }
+
+      /* ── Chapter navigation footer ── */
+      .chapter-nav {
+        display: flex;
+        gap: 12px;
+        margin-top: 48px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+      }
+      .chapter-nav__link {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 16px 18px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: calc(var(--radius) * 1.5);
+        text-decoration: none;
+        transition: border-color 0.15s, background 0.15s;
+      }
+      .chapter-nav__link:hover {
+        border-color: color-mix(in srgb, var(--primary) 35%, var(--border));
+        background: color-mix(in srgb, var(--primary) 3%, var(--card));
+        text-decoration: none;
+      }
+      .chapter-nav__link:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 1px;
+      }
+      .chapter-nav__link--next {
+        text-align: right;
+      }
+      .chapter-nav__dir {
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted-foreground);
+      }
+      .chapter-nav__title {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--foreground);
+        letter-spacing: -0.01em;
+      }
+      .chapter-position {
+        text-align: center;
+        margin-top: 16px;
+        font-size: 0.78rem;
+        color: var(--muted-foreground);
+      }
+
+      /* ── Mobile TOC disclosure ── */
+      .mobile-toc {
+        display: none;
+      }
+      .mobile-toc summary {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 20px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--foreground);
+        cursor: pointer;
+        list-style: none;
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+      }
+      .mobile-toc summary::-webkit-details-marker { display: none; }
+      .mobile-toc summary::after {
+        content: "";
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-right: 2px solid var(--muted-foreground);
+        border-bottom: 2px solid var(--muted-foreground);
+        transform: rotate(45deg);
+        margin-left: auto;
+        transition: transform 0.2s;
+      }
+      .mobile-toc[open] summary::after {
+        transform: rotate(-135deg);
+      }
+      .mobile-toc summary:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: -2px;
+      }
+      .mobile-toc .toc-list {
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+        max-height: 50vh;
+        overflow-y: auto;
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 900px) {
+        .reader-sidebar {
+          display: none;
+        }
+        .sidebar-toggle {
+          display: block;
+        }
+        .mobile-toc {
+          display: block;
+        }
+        .reader-header__inner {
+          padding: 8px 16px;
+        }
+        .reader-main {
+          padding: 0 16px;
+        }
+        .reader-content {
+          padding: 32px 0 64px;
+        }
+        .font-control {
+          display: none;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .chapter-nav {
+          flex-direction: column;
+        }
+        .chapter-nav__link--next {
+          text-align: left;
+        }
+      }
+
+      /* ── Reduced motion ── */
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .reader-progress__fill,
+        .progress-ring__fill,
+        .font-control__btn,
+        .chapter-nav__link {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#chapter-content">Skip to content</a>
+
+    <!-- ── Site nav (shared pattern) ── -->
+    <header class="site-top">
+      <div class="site-top__inner">
+        <a href="../../../docs/html/site-templates/index.html" class="site-brand">Movemental <small>Draft HTML · not production</small></a>
+        <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-nav-list">Menu</button>
+        <nav class="site-nav" aria-label="Primary sections">
+          <ul id="site-nav-list">
+            <li><a href="../../../docs/html/site-templates/index.html">Home</a></li>
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">How it works</a></li>
+            <li><a href="../../../docs/html/audience-concept-modern/movement-leaders.html">Movement leaders</a></li>
+            <li><a href="../../../docs/html/audience-concept-modern/churches.html">Churches &amp; nonprofits</a></li>
+            <li><a href="../../../docs/html/team-concept-modern/index.html">Proof &amp; about</a></li>
+            <li><a href="../../../docs/html/services-pricing-concept-modern.html">Pricing &amp; FAQ</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ── Reader header ── -->
+    <div class="reader-header">
+      <div class="reader-header__inner">
+        <a href="#" class="reader-header__back" aria-label="Back to book">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+          Library
+        </a>
+        <span class="reader-header__title">The Forgotten Ways: Reactivating Apostolic Movements</span>
+        <div class="reader-header__controls">
+          <div class="font-control" role="group" aria-label="Font size">
+            <button type="button" class="font-control__btn font-control__btn--sm" aria-label="Small text" data-size="sm">A</button>
+            <button type="button" class="font-control__btn font-control__btn--md is-active" aria-label="Medium text" data-size="md">A</button>
+            <button type="button" class="font-control__btn font-control__btn--lg" aria-label="Large text" data-size="lg">A</button>
+          </div>
+          <button type="button" class="sidebar-toggle" aria-expanded="false" aria-controls="mobile-toc">Contents</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Reading progress ── -->
+    <div class="reader-progress" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" aria-label="Reading progress">
+      <div class="reader-progress__fill"></div>
+    </div>
+
+    <!-- ── Mobile TOC (disclosure panel) ── -->
+    <details class="mobile-toc" id="mobile-toc">
+      <summary>Chapter 3 of 8 — Table of contents</summary>
+      <ol class="toc-list">
+        <li class="toc-list__item"><a href="#ch1"><span class="toc-list__num">1</span> The Heart of It All</a></li>
+        <li class="toc-list__item"><a href="#ch2"><span class="toc-list__num">2</span> A View from the Edge</a></li>
+        <li class="toc-list__item is-active"><a href="#ch3" aria-current="true"><span class="toc-list__num">3</span> The DNA of Movemental Church</a></li>
+        <li class="toc-list__item"><a href="#ch4"><span class="toc-list__num">4</span> Communitas, Not Community</a></li>
+        <li class="toc-list__item"><a href="#ch5"><span class="toc-list__num">5</span> APEST Culture</a></li>
+        <li class="toc-list__item"><a href="#ch6"><span class="toc-list__num">6</span> Organic Systems</a></li>
+        <li class="toc-list__item"><a href="#ch7"><span class="toc-list__num">7</span> Liminality and Communitas</a></li>
+        <li class="toc-list__item"><a href="#ch8"><span class="toc-list__num">8</span> The Apostolic Genius</a></li>
+      </ol>
+    </details>
+
+    <main id="main">
+      <div class="reader">
+        <!-- ── Sidebar (desktop) ── -->
+        <aside class="reader-sidebar" aria-label="Table of contents">
+          <div class="reader-sidebar__header">
+            <h2 class="reader-sidebar__book-title">The Forgotten Ways</h2>
+            <p class="reader-sidebar__author">Alan Hirsch</p>
+            <p class="reader-sidebar__position">Chapter 3 of 8</p>
+          </div>
+          <div class="progress-ring">
+            <svg viewBox="0 0 36 36">
+              <circle class="progress-ring__track" cx="18" cy="18" r="16" />
+              <circle class="progress-ring__fill" cx="18" cy="18" r="16" />
+            </svg>
+            <span class="progress-ring__label"><strong>35%</strong> complete</span>
+          </div>
+          <ol class="toc-list">
+            <li class="toc-list__item"><a href="#ch1"><span class="toc-list__num">1</span> The Heart of It All</a></li>
+            <li class="toc-list__item"><a href="#ch2"><span class="toc-list__num">2</span> A View from the Edge</a></li>
+            <li class="toc-list__item is-active"><a href="#ch3" aria-current="true"><span class="toc-list__num">3</span> The DNA of Movemental Church</a></li>
+            <li class="toc-list__item"><a href="#ch4"><span class="toc-list__num">4</span> Communitas, Not Community</a></li>
+            <li class="toc-list__item"><a href="#ch5"><span class="toc-list__num">5</span> APEST Culture</a></li>
+            <li class="toc-list__item"><a href="#ch6"><span class="toc-list__num">6</span> Organic Systems</a></li>
+            <li class="toc-list__item"><a href="#ch7"><span class="toc-list__num">7</span> Liminality and Communitas</a></li>
+            <li class="toc-list__item"><a href="#ch8"><span class="toc-list__num">8</span> The Apostolic Genius</a></li>
+          </ol>
+        </aside>
+
+        <!-- ── Reading column ── -->
+        <div class="reader-main">
+          <article class="reader-content" id="chapter-content">
+            <p class="chapter-label">Part Two</p>
+            <h1 class="chapter-title">The DNA of Movemental Church</h1>
+            <p class="chapter-meta">18 min read</p>
+            <hr class="chapter-rule" />
+
+            <div class="reader-prose">
+              <p class="drop-cap">Every significant movement in history has had at its core a set of ideas and practices that define its essential nature — what we might call its mDNA. This concept of movemental DNA helps us understand the intrinsic, reproducible, guiding mechanism of apostolic movement. Just as biological DNA carries the coding for the whole organism, so too there is a simple but comprehensive coding that seems to carry the potential of the whole movement within it.</p>
+
+              <p>What is remarkable about the phenomenon of exponential people movements is not merely their size — although that is certainly impressive — but rather that they seem to be driven by a common set of internal principles. When we strip away the cultural particulars, the historical contexts, the specific personalities involved, we begin to see a pattern so consistent that it demands explanation.</p>
+
+              <p>The early church, the Chinese underground movement, various missionary movements in history — all of these share what I call <strong>Apostolic Genius</strong>: the built-in life force and guiding mechanism of God's people. It is this that accounts for the extraordinary power and reach of these movements, and it is this that we desperately need to recover if we hope to see similar impact in our own time and place.</p>
+
+              <h2>Six Elements of mDNA</h2>
+
+              <p>When analyzed closely, Apostolic Genius expresses itself through six interdependent elements. These are not programs to implement or strategies to adopt; they are more like the essential characteristics that define the very nature of the church when it is operating in its most authentic, powerful mode.</p>
+
+              <p>The first element is <strong>Jesus Is Lord</strong> — the simple but all-encompassing confession that lies at the heart of every authentic Jesus movement. The implications of this confession, when taken seriously and worked out consistently, are nothing short of revolutionary. It affects how we understand authority, power, truth, community, ethics, and mission.</p>
+
+              <p>The second element is <strong>Disciple Making</strong>. Movements grow because they make disciples who make disciples. This is not merely about programs of instruction; it is about a form of spiritual apprenticeship that produces mature followers capable of reproducing the pattern in others. Without this, growth is addition at best; with it, growth becomes multiplication.</p>
+
+              <h3>The Reproducibility Principle</h3>
+
+              <p>What makes mDNA so powerful is its inherent reproducibility. Unlike institutional forms that require significant resources, trained professionals, and elaborate infrastructure to replicate, movemental DNA can reproduce in virtually any context. A small group of committed disciples, armed with the essential gospel message and empowered by the Spirit, can plant the seeds of movement anywhere.</p>
+
+              <p>This is why the most powerful movements in history have typically emerged not from the centers of institutional power but from the margins — from places of poverty, persecution, and apparent powerlessness. The very conditions that seem most hostile to institutional religion often prove most fertile for movemental Christianity.</p>
+
+              <p>Understanding this principle radically reframes how we think about church, mission, and leadership. It suggests that our primary task is not building bigger and better institutions but rather cultivating the conditions in which mDNA can flourish. It means investing in people rather than programs, in relationships rather than structures, in the essential over the elaborate.</p>
+            </div>
+
+            <!-- ── Prev / Next chapter ── -->
+            <nav class="chapter-nav" aria-label="Chapter navigation">
+              <a href="#ch2" class="chapter-nav__link">
+                <span class="chapter-nav__dir">← Previous</span>
+                <span class="chapter-nav__title">A View from the Edge</span>
+              </a>
+              <a href="#ch4" class="chapter-nav__link chapter-nav__link--next">
+                <span class="chapter-nav__dir">Next →</span>
+                <span class="chapter-nav__title">Communitas, Not Community</span>
+              </a>
+            </nav>
+            <p class="chapter-position">Chapter 3 of 8</p>
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Site nav toggle (shared pattern)
+      document.querySelector('.site-nav__toggle')?.addEventListener('click', function () {
+        const nav = this.closest('.site-top').querySelector('.site-nav');
+        const open = nav.classList.toggle('is-open');
+        this.setAttribute('aria-expanded', open);
+      });
+
+      // Font-size control
+      document.querySelectorAll('.font-control__btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.querySelectorAll('.font-control__btn').forEach(function (b) {
+            b.classList.remove('is-active');
+          });
+          btn.classList.add('is-active');
+          var prose = document.querySelector('.reader-prose');
+          prose.classList.remove('reader-prose--sm', 'reader-prose--lg');
+          var size = btn.getAttribute('data-size');
+          if (size === 'sm') prose.classList.add('reader-prose--sm');
+          if (size === 'lg') prose.classList.add('reader-prose--lg');
+        });
+      });
+
+      // Sidebar toggle for mobile — open/close the mobile TOC details
+      document.querySelector('.sidebar-toggle')?.addEventListener('click', function () {
+        var toc = document.getElementById('mobile-toc');
+        if (toc) {
+          toc.open = !toc.open;
+          this.setAttribute('aria-expanded', toc.open);
+        }
+      });
+    </script>
+  </body>
+</html>

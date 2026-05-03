@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select a section — Forgotten Ways learn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../site-templates/site-theme.css" />
+    <link rel="stylesheet" href="../_shared/forgotten-ways-shell.css" />
+    <script src="../_shared/forgotten-ways-learn.js" defer></script>
+  </head>
+  <body class="fw-migration">
+    <header class="fw-topbar">
+      <div class="fw-topbar__inner">
+        <a href="./index.html" class="fw-topbar__brand">The Forgotten Ways<small>Week 2</small></a>
+        <nav class="fw-topbar__nav" aria-label="Course tabs">
+          <a href="./overview.html" class="fw-topbar__tab">Overview</a>
+          <a href="./learn.html" class="fw-topbar__tab is-active">Learn</a>
+          <a href="./cohort.html" class="fw-topbar__tab">Cohort</a>
+          <a href="./resources.html" class="fw-topbar__tab">Resources</a>
+        </nav>
+        <button class="fw-topbar__toggle" type="button" data-fw-sidebar-open>Contents</button>
+      </div>
+    </header>
+    <div class="fw-learn">
+      <aside class="fw-learn__sidebar" data-fw-sidebar>
+        <div class="fw-sidebar__header">
+          <span class="fw-sidebar__eyebrow">The Journey</span>
+          <h2 class="fw-sidebar__title">The Forgotten Ways</h2>
+        </div>
+        <p class="fw-sidebar__section-label">Sections</p>
+        <ul class="fw-sidebar__list">
+          <li><a class="fw-sidebar__link" href="?section=w2-s1">Welcome from Alan</a></li>
+          <li><a class="fw-sidebar__link" href="?section=w2-s2">Anchor scripture</a></li>
+          <li><a class="fw-sidebar__link" href="?section=w2-s3">Dissonance prompt</a></li>
+        </ul>
+      </aside>
+      <main class="fw-learn__content">
+        <div class="fw-empty">
+          <div class="fw-empty__icon" aria-hidden="true">
+            <svg class="fw-icon fw-icon--xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <h2 class="fw-empty__title">Select a section to begin.</h2>
+          <p class="fw-empty__desc">Open the week navigator on the left and choose a lesson to start. Your progress will sync to this cohort automatically.</p>
+          <button type="button" class="btn btn-primary" data-fw-sidebar-open>Open contents</button>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Movemental Works — Video Script (Draft 1)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #1a1816;
+    --bg-deep: #0f0e0d;
+    --fg: #f5f0e8;
+    --fg-muted: #9a8e80;
+    --gold: #b58c4c;
+    --gold-dim: #9a7640;
+    --gold-glow: rgba(181, 140, 76, 0.25);
+    --surface: #1e1c1a;
+    --surface-elevated: #262320;
+    --border: #2e2a26;
+    --teal: #3a8a8a;
+    --sage: #6e916e;
+    --scarlet: #cb3437;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg-deep);
+    color: var(--fg);
+    line-height: 1.7;
+    padding: 0;
+  }
+
+  /* ── Header ── */
+  .hero {
+    background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 100%);
+    padding: 80px 60px 60px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin-bottom: 12px;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero .subtitle {
+    font-size: 18px;
+    color: var(--fg-muted);
+    max-width: 640px;
+    margin-bottom: 32px;
+  }
+  .hero .meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .hero .meta-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+  .hero .meta-item strong {
+    display: block;
+    color: var(--gold);
+    font-size: 15px;
+    margin-bottom: 2px;
+  }
+
+  /* ── Layout ── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  /* ── Approach Section ── */
+  .approach {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 40px;
+    margin-bottom: 60px;
+  }
+  .approach h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--gold);
+  }
+  .approach p {
+    color: var(--fg-muted);
+    margin-bottom: 16px;
+    max-width: 720px;
+  }
+  .approach ul {
+    list-style: none;
+    margin-top: 16px;
+  }
+  .approach ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    color: var(--fg-muted);
+  }
+  .approach ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+  }
+
+  /* ── Act Dividers ── */
+  .act-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 60px 0 32px;
+  }
+  .act-number {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+  .act-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .act-title {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+  }
+  .act-desc {
+    font-size: 14px;
+    color: var(--fg-muted);
+    margin-bottom: 40px;
+  }
+
+  /* ── Scene Cards ── */
+  .scene {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 28px;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .scene:hover {
+    border-color: var(--gold-dim);
+  }
+  .scene-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+  .scene-id {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+  .scene-title {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .scene-meta {
+    font-size: 12px;
+    color: var(--fg-muted);
+    margin-bottom: 20px;
+  }
+
+  /* ── Narration ── */
+  .narration {
+    background: var(--bg);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin: 16px 0;
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--fg);
+  }
+  .narration-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  /* ── On-Screen Text ── */
+  .onscreen {
+    display: inline-block;
+    background: rgba(181, 140, 76, 0.1);
+    border: 1px solid rgba(181, 140, 76, 0.25);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold);
+    margin: 8px 0;
+  }
+
+  /* ── Alan Quote ── */
+  .alan-quote {
+    background: var(--bg);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .alan-quote-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 8px;
+  }
+  .alan-quote blockquote {
+    font-family: 'Lora', Georgia, serif;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--gold);
+  }
+  .alan-quote .attribution {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 13px;
+    color: var(--fg-muted);
+    margin-top: 8px;
+  }
+
+  /* ── Visual Direction ── */
+  .visual {
+    background: var(--bg);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 14px;
+    color: var(--fg-muted);
+    line-height: 1.7;
+  }
+  .visual-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 6px;
+  }
+
+  /* ── Stats Bar ── */
+  .stat-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 16px 0;
+  }
+  .stat-chip {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 18px;
+    text-align: center;
+    min-width: 140px;
+  }
+  .stat-chip .number {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--fg);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+  .stat-chip .label {
+    font-size: 11px;
+    color: var(--fg-muted);
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+
+  /* ── Process Steps ── */
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .process-step {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    position: relative;
+  }
+  .process-step .step-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .process-step .step-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .process-step .step-desc {
+    font-size: 12px;
+    color: var(--fg-muted);
+  }
+
+  /* ── Summary Table ── */
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .summary-table th {
+    text-align: left;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--fg-muted);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .summary-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .summary-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* ── Notes ── */
+  .production-notes {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-top: 60px;
+  }
+  .production-notes h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--gold);
+  }
+  .production-notes p, .production-notes li {
+    font-size: 14px;
+    color: var(--fg-muted);
+    line-height: 1.7;
+  }
+  .production-notes ul {
+    list-style: none;
+    margin-top: 12px;
+  }
+  .production-notes ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+  }
+  .production-notes ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold-dim);
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 40px;
+    font-size: 12px;
+    color: var(--fg-muted);
+    border-top: 1px solid var(--border);
+    margin-top: 60px;
+  }
+
+  /* ── Word Count Badge ── */
+  .word-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(181, 140, 76, 0.1);
+    border: 1px solid rgba(181, 140, 76, 0.2);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* ── Comparison ── */
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .comparison-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .comparison-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .comparison-card.before { border-left: 3px solid var(--scarlet); }
+  .comparison-card.after { border-left: 3px solid var(--sage); }
+  .comparison-card p {
+    font-size: 13px;
+    color: var(--fg-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 40px 24px 32px; }
+    .hero h1 { font-size: 32px; }
+    .container { padding: 40px 20px; }
+    .scene { padding: 24px 20px; }
+    .comparison { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- HEADER                                                   -->
+<!-- ════════════════════════════════════════════════════════ -->
+<div class="hero">
+  <h1>How <span>Movemental</span> Works</h1>
+  <p class="subtitle">
+    Animated explainer — starting with the reality of Alan Hirsch,
+    expanding to the repeatable process for movement leaders.
+  </p>
+  <div class="meta">
+    <div class="meta-item">
+      <strong>Format</strong>
+      Animated explainer (motion graphics + typography)
+    </div>
+    <div class="meta-item">
+      <strong>Duration</strong>
+      3:55 (~570 words at 145 wpm)
+    </div>
+    <div class="meta-item">
+      <strong>Voice</strong>
+      Movemental narrator — measured, documentary tone
+    </div>
+    <div class="meta-item">
+      <strong>Status</strong>
+      Draft 1 — March 2026
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- APPROACH MEMO                                            -->
+<!-- ════════════════════════════════════════════════════════ -->
+<div class="approach">
+  <h2>Creative Approach</h2>
+  <p>
+    Most platform explainers open with the product. This one opens with a person — and that's the advantage.
+    Alan Hirsch's body of work is staggering: 20 published books, 267 chapters, roughly one million words written
+    before AI existed. That weight is the hook. The gap between that weight and its digital absence is the tension.
+  </p>
+  <p>
+    The video builds in four acts, each expanding the frame:
+  </p>
+  <ul>
+    <li><strong>Act 1 — The Weight:</strong> Establish Alan's offline legacy. Counting-up numbers create visceral scale. Then the pivot: almost none of it was online.</li>
+    <li><strong>Act 2 — The Build:</strong> Show what Movemental did with Alan's corpus. Product reveals earn more weight when they follow the gap — don't show the platform before the problem.</li>
+    <li><strong>Act 3 — The Process:</strong> Zoom out. Brad Brisco as proof of repeatability. Walk through the 5-step process. This isn't a custom build — it's a platform.</li>
+    <li><strong>Act 4 — The Network:</strong> Vision shot. Movement of movements. Land on economics last (90/10) — lead with mission, close with the model.</li>
+  </ul>
+  <p style="margin-top: 20px;">
+    <strong>Visual language:</strong> Follows the established brand tokens — warm charcoal backdrop, gold accents,
+    Inter/Lora typography, abstract silhouette figures. Running counters for statistics. No live action required
+    (though Alan portrait stills or video clips would elevate Act 1 significantly).
+  </p>
+  <p>
+    <strong>Key creative decision:</strong> Alan's voice appears via on-screen quotes (Lora italic, gold) —
+    same treatment as the course explainer. If audio of Alan reading any of these passages exists,
+    swap one or two quotes from text to audio for maximum emotional impact.
+  </p>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- SCENE INDEX                                              -->
+<!-- ════════════════════════════════════════════════════════ -->
+<table class="summary-table">
+  <thead>
+    <tr>
+      <th>Scene</th>
+      <th>Title</th>
+      <th>Words</th>
+      <th>Duration</th>
+      <th>Act</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>H01</td><td>A Million Words</td><td>52</td><td>22s</td><td>1 — The Weight</td></tr>
+    <tr><td>H02</td><td>The Invisible Library</td><td>48</td><td>20s</td><td>1 — The Weight</td></tr>
+    <tr><td>H03</td><td>The Digital Absence</td><td>42</td><td>18s</td><td>1 — The Weight</td></tr>
+    <tr><td>H04</td><td>We Read Everything</td><td>55</td><td>23s</td><td>2 — The Build</td></tr>
+    <tr><td>H05</td><td>Learning the Voice</td><td>50</td><td>21s</td><td>2 — The Build</td></tr>
+    <tr><td>H06</td><td>What Came Online</td><td>62</td><td>26s</td><td>2 — The Build</td></tr>
+    <tr><td>H07</td><td>AI That Reads, Not Writes</td><td>44</td><td>19s</td><td>2 — The Build</td></tr>
+    <tr><td>H08</td><td>Not Just Alan</td><td>42</td><td>18s</td><td>3 — The Process</td></tr>
+    <tr><td>H09</td><td>Brad Brisco</td><td>52</td><td>22s</td><td>3 — The Process</td></tr>
+    <tr><td>H10</td><td>The Five Steps</td><td>55</td><td>23s</td><td>3 — The Process</td></tr>
+    <tr><td>H11</td><td>What Leaders Keep</td><td>40</td><td>17s</td><td>3 — The Process</td></tr>
+    <tr><td>H12</td><td>A Movement of Movements</td><td>32</td><td>14s</td><td>4 — The Network</td></tr>
+    <tr><td>H13</td><td>Closing / CTA</td><td>22</td><td>12s</td><td>4 — The Network</td></tr>
+    <tr>
+      <td colspan="2"><strong>Total</strong></td>
+      <td><strong>~596</strong></td>
+      <td><strong>~3:55</strong></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- ACT 1 — THE WEIGHT                                       -->
+<!-- ════════════════════════════════════════════════════════ -->
+<div class="act-header">
+  <span class="act-number">Act 1</span>
+  <div class="act-line"></div>
+</div>
+<div class="act-title">The Weight</div>
+<p class="act-desc">
+  Establish Alan Hirsch's staggering offline body of work — then reveal that almost none of it was online.
+  Emotional arc: awe → surprise → tension.
+</p>
+
+<!-- H01 -->
+<div class="scene">
+  <div class="scene-header">
+    <span class="scene-id">H01</span>
+    <span class="scene-title">A Million Words</span>
+  </div>
+  <p class="scene-meta">22 seconds · 52 words · Opens cold — no logo, no title card</p>
+
+  <div class="narration">
+    <div class="narration-label">Narration</div>
+    Alan Hirsch has been writing for over thirty years. Twenty books. Two hundred and sixty-seven chapters.
+    Roughly one million words — all of it written before AI, before platforms, before any of this.
+    He founded twenty-seven organizations. His assessment tools are used on six continents.
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-chip"><div class="number">20</div><div class="label">books published</div></div>
+    <div class="stat-chip"><div class="number">267</div><div class="label">chapters extracted</div></div>
+    <div class="stat-chip"><div class="number">~1M</div><div class="label">words written</div></div>
+    <div class="stat-chip"><div class="number">27</div><div class="label">organizations founded</div></div>
+  </div>
+
+  <div class="visual">
+    <div class="visual-label">Visual Direction</div>
+    Opens on darkness. A single warm light source — like a desk lamp or firelight.
+    Book spines materialize one by one, stacking vertically: <em>The Forgotten Ways</em>, <em>5Q</em>,
+    <em>Reframation</em>, <em>Metanoia</em>... The stack grows until it fills the frame.
+    A running counter animates in the corner: word count climbing from 0 to 1,000,000.
+    The numbers tick fast — mechanical, relentless.
+    <br><br>
+    <strong>Key motion:</strong> The counter should feel like a machine that can't be stopped —
+    it conveys the sheer volume of output before any technology assisted it.
+  </div>
+
+  <span class="onscreen">20 books. 267 chapters. ~1,000,000 words.</span>
+</div>
+
+<!-- H02 -->
+<div class="scene">
+  <div class="scene-header">
+    <span class="scene-id">H02</span>
+    <span class="scene-title">The Invisible Library</span>
+  </div>
+  <p class="scene-meta">20 seconds · 48 words</p>
+
+  <div class="narration">
+    <div class="narration-label">Narration</div>
+    Sixteen thousand people have rated his books on Goodreads. His ideas have shaped how churches
+    think about mission on every continent. Pastors quote him in sermons. Seminaries assign his work.
+    His language — APEST, mDNA, apostolic genius — has entered the vocabulary of an entire movement.
+  </div>
+
+  <div class="visual">
+    <div class="visual-label">Visual Direction</div>
+    The book stack from H01 radiates outward — lines of influence extending like a network map.
+    Nodes light up across a world map (abstract, not literal). Pin-drops with labels:
+    "16,762 Goodreads ratings," "150K+ direct reach," "APEST assessments on 6 continents."
+    The visual is warm, organic — not a corporate infographic. Think hand-drawn lines on parchment,
+    not a PowerPoint slide.
+  </div>
+
+  <div class="alan-quote">
+    <div class="alan-quote-label">Alan Hirsch — On-Screen Quote</div>
+    <blockquote>
+      "We need not try to think our way into a new way of acting, but rather act our way into a new way of thinking."
+    </blockquote>
+    <div class="attribution">— Alan Hirsch, <em>The Forgotten Ways</em></div>
+  </div>
+</div>
+
+<!-- H03 -->
+<div class="scene">
+  <div class="scene-header">
+    <span class="scene-id">H03</span>
+    <span class="scene-title">The Digital Absence</span>
+  </div>
+  <p class="scene-meta">18 seconds · 42 words · THE PIVOT — tone shifts here</p>
+
+  <div class="narration">
+    <div class="narration-label">Narration</div>
+    But here's what almost no one realizes. Until recently, almost none of Alan's content was online.
+    Not searchable. Not interactive. Not accessible. A million words — and if you wanted to engage with them,
+    you needed a bookshelf.
+  </div>
+
+  <div class="visual">
+    <div class="visual-label">Visual Direction</div>
+    The network map from H02 freezes. Then dims. The lines of influence retract —
+    pulling back toward the original book stack. The warm light narrows.
+    A search bar appears over the stack: someone types "Alan Hirsch missional ecclesiology" —
+    results are sparse, fragmented, scattered across PDFs and third-party summaries.
+    The books are there. But they're closed. Inaccessible.
+    <br><br>
+    <strong>Key beat:</strong> The screen should feel like a locked library.
+    All that weight — and no door.
+  </div>
+
+  <span class="onscreen">A million words. No door.</span>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- ACT 2 — THE BUILD                                        -->
+<!-- ════════════════════════════════════════════════════════ -->
+<div class="act-header">
+  <span class="act-number">Act 2</span>
+  <div class="act-line"></div>
+</div>
+<div class="act-title">The Build</div>
+<p class="act-desc">
+  Show what Movemental did with Alan's corpus — ingestion, voice extraction, and what came online.
+  Emotional arc: discovery → clarity → trust.
+</p>
+
+<!-- H04 -->
+<div class="scene">
+  <div class="scene-header">
+    <span class="scene-id">H04</span>
+    <span class="scene-title">We Read Everything</span>
+  </div>
+  <p class="scene-meta">23 seconds · 55 words</p>
+
+  <div class="narration">
+    <div class="narration-label">Narration</div>
+    So we read everything. Every chapter. Every article. Every sermon transcript.
+    We extracted twenty-nine hundred personal stories. Found five thousand dates,
+    four hundred seventy-three locations, over two thousand organizational references.
+    We didn't summarize Alan's work. We mapped it — structurally, thematically, linguistically —
+    so nothing would be lost.
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-chip"><div class="number">2,901</div><div class="label">stories extracted</div></div>
+    <div class="stat-chip"><div class="number">5,090</div><div class="label">dates found</div></div>
+    <div class="stat-chip"><div class="number">473</div><div class="label">locations</div></div>
+    <div class="stat-chip"><div class="number">2,332</div><div class="label">organizations</div></div>
+  </div>
+
+  <div class="visual">
+    <div class="visual-label">Visual Direction</div>
+    The closed books from H03 begin opening — pages turning, text lifting off the pages
+    and floating into structured columns. Think "data extraction" but organic, not clinical.
+    Text fragments organize themselves into clusters: stories here, dates there, locations,
+    organizations. Running counters for each category. The mess of a bookshelf becomes
+    an ordered constellation of knowledge.
+  </div>
+</div>
+
+<!-- H05 -->
+<div class="scene">
+  <div class="scene-header">
+    <span class="scene-id">H05</span>
+    <span class="scene-title">Learning the Voice</span>
+  </div>
+  <p class="scene-meta">21 seconds · 50 words</p>
+
+  <div class="narration">
+    <div class="narration-label">Narration</div>
+    Then we learned how Alan writes. Not what he says — how he says it.
+    We measured his metaphor density. His question frequency. His ratio of "we" to "you" to "I."
+    We identified five voice markers with specific weights.
+    This wasn't AI guessing. This was humans reading, measuring, and naming.
+  </div>
+
+  <div class="visual">
+    <div class="visual-label">Visual Direction</div>
+    A passage of Alan's text appears on screen — recognizable, warm. Certain words and phrases
+    begin to glow gold: a metaphor here, a question there, a "we" pronoun.
+    Five labeled rings emerge around the text — Christocentric anchoring (30%), Prophetic intensity (25%),
+    Pastoral warmth (20%), Narrative imagery (15%), Theological depth (10%).
+    The rings are like a fingerprint — unique to this voice, measured from this corpus.
+    <br><br>
+    <strong>On-screen data:</strong> "~8.5 metaphors per 1,000 words" · "~3.2 questions per 1,000 words" ·
+    "45% we / 35% you / 20% I"
+  </div>
+</div>
+
+<!-- H06 -->
+<div class="scene">
+  <div class="scene-header">
+    <span class="scene-id">H06</span>
+    <span class="scene-title">What Came Online</span>
+  </div>
+  <p class="scene-meta">26 seconds · 62 words · THE REVEAL — show the platform for the first time</p>
+
+  <div class="narration">
+    <div class="narration-label">Narration</div>
+    And then it came online. A complete digital platform — in Alan's voice, with Alan's content,
+    under Alan's name. His full book library, searchable for the first time.
+    Five transformational courses built around his core frameworks.
+    Evergreen articles grounded in his corpus.
+    An AI Lab where anyone can ask a question and get an answer
+    rooted in what Alan has actually written — not what the internet thinks he said.
+  </div>
+
+  <div class="visual">
+    <div class="visual-label">Visual Direction</div>
+    This is the big reveal. The constellation from H04 coalesces into a browser window —
+    the Alan Hirsch platform materializes. Quick cuts between surfaces:
+    the book reader (pages turning), a course pathway (8 weeks visible),
+    the AI Lab (a question typed, an answer appearing with corpus citations),
+    an article with proper typography. Each surface glows briefly with the gold accent.
+    The locked library from H03 is now open, alive, accessible.
+    <br><br>
+    <strong>Pacing note:</strong> Don't rush this. Let each surface breathe for 3-4 seconds.
+    The audience needs to see that this is real, complete, and beautiful — not a mockup.
+  </div>
+</div>
+
+<!-- H07 -->
+<div class="scene">
+  <div class="scene-header">
+    <span class="scene-id">H07</span>
+    <span class="scene-title">AI That Reads, Not Writes</span>
+  </div>
+  <p class="scene-meta">19 seconds · 44 words</p>
+
+  <div class="narration">
+    <div class="narration-label">Narration</div>
+    But here's what matters most: the AI doesn't write for Alan.
+    It reads his work. It searches his corpus. It cites his books.
+    Every answer is grounded in what he's actually published.
+    The corpus is the authority — not the model.
+  </div>
+
+  <div class="visual">
+    <div class="visual-label">Visual Direction</div>
+    Split screen. Left: the AI Lab chat interface — a user's question.
+    Right: Alan's book corpus, with passages lighting up as they're retrieved.
+    Lines connect the retrieved passages to the AI's response.
+    Citations appear: "[The Forgotten Ways, ch. 5]", "[5Q, ch. 3]".
+    The visual makes the pipeline transparent — question → corpus search → grounded answer.
+    <br><br>
+    <strong>On-screen principle:</strong> "The corpus is the authority."
+  </div>
+
+  <div class="alan-quote">
+    <div class="alan-quote-label">Design Principle — On-Screen</div>
+    <blockquote>
+      The corpus is the authority — not the model.
+    </blockquote>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- ACT 3 — THE PROCESS                                      -->
+<!-- ════════════════════════════════════════════════════════ -->
+<div class="act-header">
+  <span class="act-number">Act 3</span>
+  <div class="act-line"></div>
+</div>
+<div class="act-title">The Process</div>
+<p class="act-desc">
+  Zoom out from Alan to the repeatable platform. Brad Brisco as proof of concept.
+  Walk through the process. Emotional arc: understanding → excitement.
+</p>
+
+<!-- H08 -->
+<div class="scene">
+  <div class="scene-header">
+    <span class="scene-id">H08</span>
+    <span class="scene-title">Not Just Alan</span>
+  </div>
+  <p class="scene-meta">18 seconds · 42 words</p>
+
+  <div class="narration">
+    <div class="narration-label">Narration</div>
+    But this isn't a custom build for one person. Everything we built for Alan —
+    the ingestion pipeline, the voice system, the course architecture, the AI Lab —
+    it's a platform. One codebase. Configurable per leader.
+    And the next leader is already in motion.
+  </div>
+
+  <div class="visual">
+    <div class="visual-label">Visual Direction</div>
+    The Alan Hirsch platform zooms out — the browser window shrinks and becomes one of several
+    slots in a larger framework. The architecture reveals itself: shared chassis underneath,
+    distinct surfaces on top. Other slots are empty but ready — outlines pulsing gently, waiting.
+    One slot begins to fill.
+  </div>
+</div>
+
+<!-- H09 -->
+<div class="scene">
+  <div class="scene-header">
+    <span class="scene-id">H09</span>
+    <span class="scene-title">Brad Brisco</span>
+  </div>
+  <p class="scene-meta">22 seconds · 52 words</p>
+
+  <div class="narration">
+    <div class="narration-label">Narration</div>
+    Brad Brisco has written five books on missional church planting.
+    He's trained pastors for eighteen years. He runs the Missional Church Network
+    and speaks at conferences across the country.
+    His audience is smaller than Alan's — but his content is just as formational.
+    And until now, it had the same problem: locked in print, scattered across the internet.
+  </div>
+
+  <div class="comparison">
+    <div class="comparison-card before">
+      <h4>Before Movemental</h4>
+      <p>5 books in print. Content scattered across blog posts, conference recordings, and third-party sites.
+      No searchable library. No courses. No AI-powered engagement.
+      ~5,600 Twitter followers. Reach limited to speaking events.</p>
+    </div>
+    <div class="comparison-card after">
+      <h4>On Movemental</h4>
+      <p>Full book library online. Transformational courses built from his frameworks.
+      AI Lab trained on his corpus and voice. Evergreen articles.
+      His own platform — his name, his voice, his audience, his revenue.</p>
+    </div>
+  </div>
+
+  <div class="visual">
+    <div class="visual-label">Visual Direction</div>
+    The empty platform slot from H08 fills in with Brad's identity — different colors (perhaps the teal accent),
+    different book covers, but the same architecture underneath.
+    Side by side: Alan's platform and Brad's platform. Same bones. Different skin.
+    The visual should make the repeatability obvious without saying it.
+  </div>
+</div>
+
+<!-- H10 -->
+<div class="scene">
+  <div class="scene-header">
+    <span class="scene-id">H10</span>
+    <span class="scene-title">The Five Steps</span>
+  </div>
+  <p class="scene-meta">23 seconds · 55 words</p>
+
+  <div class="narration">
+    <div class="narration-label">Narration</div>
+    Here's how it works. Step one: we audit your content — books, articles, videos, podcasts,
+    everything you've created. Step two: we ingest it — structured, searchable, citable.
+    Step three: we extract your voice — measured, not guessed.
+    Step four: we configure your platform — your name, your themes, your pricing.
+    Step five: you launch. Three to four weeks. Start to finish.
+  </div>
+
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-name">Content Audit</div>
+      <div class="step-desc">Books, articles, videos, podcasts — everything inventoried</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-name">Ingestion</div>
+      <div class="step-desc">Structured, searchable, citable — nothing lost</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-name">Voice Extraction</div>
+      <div class="step-desc">Measured from your corpus — not guessed by AI</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-name">Platform Config</div>
+      <div class="step-desc">Your name, themes, pricing, feature flags</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">05</div>
+      <div class="step-name">Launch</div>
+      <div class="step-desc">Live in 3–4 weeks</div>
+    </div>
+  </div>
+
+  <div class="visual">
+    <div class="visual-label">Visual Direction</div>
+    Five stages animate left-to-right, each building on the previous.
+    Stage 1: books and media icons flow into a scanner.
+    Stage 2: raw content becomes structured data (columns, tags, connections).
+    Stage 3: the voice fingerprint from H05 reappears — now being generated for a new author.
+    Stage 4: platform chrome wraps around the content (nav, footer, color theme).
+    Stage 5: a launch button pulses, then the platform goes live — confetti is wrong;
+    use a warm light expanding outward instead.
+  </div>
+</div>
+
+<!-- H11 -->
+<div class="scene">
+  <div class="scene-header">
+    <span class="scene-id">H11</span>
+    <span class="scene-title">What Leaders Keep</span>
+  </div>
+  <p class="scene-meta">17 seconds · 40 words</p>
+
+  <div class="narration">
+    <div class="narration-label">Narration</div>
+    Traditional publishers take ninety percent. Digital platforms take seventy to ninety.
+    A custom build costs fifty to one hundred and fifty thousand dollars.
+    On Movemental, leaders keep ninety percent of their revenue.
+    And the platform costs a fraction of what a custom build would.
+  </div>
+
+  <div class="visual">
+    <div class="visual-label">Visual Direction</div>
+    Three stacked bars, each representing a revenue model.
+    <strong>Traditional publisher:</strong> 90% goes to publisher (red), 10% to author (gold — thin sliver).
+    <strong>Digital platform:</strong> 70-90% extracted (red), 10-30% to author.
+    <strong>Movemental:</strong> 90% to author (gold — dominant), 10% to platform.
+    The Movemental bar should feel like a reversal — the gold takes over.
+    Below: "$1,000 vs. $50K–$150K" with a line through the higher number.
+  </div>
+
+  <span class="onscreen">Leaders keep 90%.</span>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- ACT 4 — THE NETWORK                                      -->
+<!-- ════════════════════════════════════════════════════════ -->
+<div class="act-header">
+  <span class="act-number">Act 4</span>
+  <div class="act-line"></div>
+</div>
+<div class="act-title">The Network</div>
+<p class="act-desc">
+  Vision shot — the network effect, the shared infrastructure, the movement of movements.
+  Emotional arc: aspiration → action.
+</p>
+
+<!-- H12 -->
+<div class="scene">
+  <div class="scene-header">
+    <span class="scene-id">H12</span>
+    <span class="scene-title">A Movement of Movements</span>
+  </div>
+  <p class="scene-meta">14 seconds · 32 words</p>
+
+  <div class="narration">
+    <div class="narration-label">Narration</div>
+    When movement leaders share infrastructure, they amplify each other.
+    Alan's readers discover Brad. Brad's community encounters Alan.
+    The platform doesn't just host content. It creates a network —
+    a movement of movements.
+  </div>
+
+  <div class="visual">
+    <div class="visual-label">Visual Direction</div>
+    Alan's platform and Brad's platform — side by side from H09 — begin to connect.
+    Lines of light bridge between them. More empty slots fill: three, five, ten platforms
+    materializing in the grid. Each has its own color accent but shares the same architectural bones.
+    The camera pulls back to reveal the full network — a constellation of movement leaders,
+    connected, distinct, alive. Warm glow.
+  </div>
+</div>
+
+<!-- H13 -->
+<div class="scene">
+  <div class="scene-header">
+    <span class="scene-id">H13</span>
+    <span class="scene-title">Closing / CTA</span>
+  </div>
+  <p class="scene-meta">12 seconds · 22 words</p>
+
+  <div class="narration">
+    <div class="narration-label">Narration</div>
+    Your content already exists. Your audience is already listening.
+    We just built the infrastructure to bring it all together.
+    This is Movemental.
+  </div>
+
+  <div class="visual">
+    <div class="visual-label">Visual Direction</div>
+    The constellation holds for a beat. Then dissolves into the Movemental logo —
+    the spirograph mark settling over the wordmark. Warm hold. Gold glow behind the logo.
+    CTA appears below: URL and a simple "See how it works" or "Talk to the team."
+    <br><br>
+    <strong>End frame:</strong> Logo + CTA on dark background. Hold for 3 seconds.
+  </div>
+
+  <span class="onscreen">movemental.com</span>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- ASSEMBLY GUIDE                                           -->
+<!-- ════════════════════════════════════════════════════════ -->
+<div class="production-notes">
+  <h3>Assembly Guide — Social Cuts</h3>
+  <ul>
+    <li><strong>Full Explainer (~3:55):</strong> H01 → H02 → H03 → H04 → H05 → H06 → H07 → H08 → H09 → H10 → H11 → H12 → H13</li>
+    <li><strong>Social Cut — "The Alan Hirsch Story" (~1:00):</strong> H01 → H02 → H03 (standalone hook — the weight + the gap)</li>
+    <li><strong>Social Cut — "What We Built" (~1:29):</strong> H04 → H05 → H06 → H07 (the build process, works as standalone proof of capability)</li>
+    <li><strong>Social Cut — "How It Works for You" (~1:20):</strong> H08 → H09 → H10 → H11 (the process + economics, for leader outreach)</li>
+    <li><strong>Ad Cut — 30s:</strong> H03 (trimmed to 10s) → H06 (trimmed to 10s) → H13 (10s)</li>
+    <li><strong>Ad Cut — 15s:</strong> H01 counter animation (5s) → H11 "90%" beat (5s) → H13 (5s)</li>
+  </ul>
+</div>
+
+<div class="production-notes">
+  <h3>Production Notes</h3>
+  <ul>
+    <li><strong>Narrator:</strong> Movemental voice (TBD). Documentary tone — measured, warm, confident. Not startup hype. Not pastoral. Think Vox explainer meets Criterion Collection voiceover.</li>
+    <li><strong>Alan's presence:</strong> On-screen quotes only (2 across 13 scenes). If audio of Alan exists for either quote, use it in H02 for maximum emotional impact in Act 1.</li>
+    <li><strong>Brad's presence:</strong> No quotes attributed to Brad. His story is told by the narrator. If Brad records a short testimonial clip ("Here's what changed for me..."), insert between H09 and H10.</li>
+    <li><strong>Statistics:</strong> All numbers sourced from the Movemental content audit docs: 20 books, 267 chapters, 2,901 stories, 5,090 dates, 473 locations, 2,332 orgs, 16,762 Goodreads ratings. Verify latest figures before final script lock.</li>
+    <li><strong>Act transitions:</strong> 1→2 needs a 2-second pause (the "locked library" beat lingers). 2→3 is a smooth zoom-out. 3→4 is the fastest transition — momentum building.</li>
+    <li><strong>Color:</strong> Follow brand-tokens.md. Dark backgrounds, gold accent for quotes and stats, warm neutrals for narration text. Brad's platform uses teal accent to distinguish from Alan's gold.</li>
+    <li><strong>Word count note:</strong> "Roughly one million words" is a conservative estimate. 20 books averaging 50,000–80,000 words each = 1.0–1.6M words from books alone, plus articles, talks, and assessments. The ~1M figure is defensible and understates rather than overstates.</li>
+    <li><strong>What this video is NOT:</strong> Not a product demo. Not a feature tour. Not a pitch deck read aloud. It's a story that happens to explain a platform. If it doesn't feel like a documentary short, it's not right.</li>
+  </ul>
+</div>
+
+<div class="production-notes">
+  <h3>Sources — Alan Hirsch Corpus Statistics</h3>
+  <ul>
+    <li>20 books (16 unique titles, 5 solo / 15 co-authored) across 7 publishers — verified via Movemental content audit</li>
+    <li>267 book chapters extracted and structured</li>
+    <li>2,901 personal stories, 5,090 dates, 473 locations, 2,332 organizations — from ALAN_HIRSCH_COMPLETE_PROFILE.md extraction summary</li>
+    <li>16,762 Goodreads ratings (combined across all titles)</li>
+    <li>~37,900 Twitter/X followers; ~20,800 Facebook followers</li>
+    <li>27 organizations founded/led; 3 assessment tools (APEST, APEST 360, mPULSE); 7 training programs</li>
+    <li>Primary audience reach estimate: 150K–200K unique</li>
+  </ul>
+</div>
+
+<div class="production-notes">
+  <h3>Sources — Brad Brisco</h3>
+  <ul>
+    <li>5 published books (2 solo, 3 co-authored with Lance Ford)</li>
+    <li>18+ years teaching college-level courses (7+ distinct courses)</li>
+    <li>4 organizations (Missional Church Network, Sentralized Conference, Forge KC, KC Sentral)</li>
+    <li>~5,673 Twitter/X followers; direct reach 10K–50K; amplified reach 100K–150K</li>
+    <li>25+ articles, 25+ videos, 25+ podcast appearances</li>
+  </ul>
+</div>
+
+</div><!-- end container -->
+
+<div class="footer">
+  How Movemental Works — Video Script Draft 1 · March 2026 · Movemental
+</div>
+
+</body>
+</html>

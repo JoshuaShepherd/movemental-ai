@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Master components — Hero 04 · Carry band</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+    />
+    <link rel="stylesheet" href="./css/core.css" />
+    <link rel="stylesheet" href="./css/hero-demos.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="nav" data-nav>
+      <div class="nav__inner">
+        <a class="brand" href="./index.html">
+          <span class="brand__mark" aria-hidden="true"></span>
+          Movemental
+        </a>
+        <nav class="nav__links" aria-label="Primary">
+          <ul>
+            <li><a href="./index.html">Components</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="demo-page">
+      <section class="hero-d" aria-labelledby="carry-title">
+        <div class="hero-d__band">
+          <div class="hero-d__band-inner">
+            <p class="hero-d__kicker reveal">Who we serve · Institutions</p>
+            <p class="hero-d__lead reveal" style="--d: 0.08s">
+              Boards, provosts, and general secretaries need <em>one shared map</em> — not another
+              slide deck.
+            </p>
+          </div>
+        </div>
+        <div class="hero-d__body container">
+          <h1 id="carry-title" class="hero-d__title reveal" style="--d: 0.1s">
+            AI <em>without</em><br />
+            drift
+          </h1>
+          <div class="hero-d__ctas reveal" style="--d: 0.16s">
+            <a class="btn btn--primary" href="#explain">
+              See the engagement
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="btn btn--ghost" href="#explain">Pricing</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="explain" class="container" style="padding-bottom: var(--section-y)">
+        <p class="demo-kicker reveal">
+          Carry band borrows fragmentation-page energy: serif italic lead in the alt surface, then an
+          oversized display line on the cream field.
+        </p>
+      </section>
+
+      <footer class="site-foot">
+        <div class="site-foot__inner">
+          <span>Hero 04</span>
+          <a href="./index.html">Index</a>
+        </div>
+      </footer>
+    </main>
+    <script src="./js/core.js" defer></script>
+  </body>
+</html>

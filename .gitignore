@@ -1,0 +1,66 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+/test-results/
+/playwright-report/
+/blob-report/
+
+# next.js
+/.next/
+/out/
+
+# Copied Stitch / exemplar HTML for home hero iframes (see scripts/sync-hero-previews.ts)
+/public/hero-previews/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files — commit only .env.local.example
+.env*
+!.env.local.example
+
+# drizzle
+/drizzle
+!/drizzle/.gitkeep
+
+# local claude state
+.claude/settings.local.json
+.claude/settings.json.bak.*
+
+# vercel
+.vercel
+
+# stitch raw HTML (fetched per-screen during migration)
+/docs/build/_stitch-raw/
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# pre-build-check.ts output
+/reports/
+.env*.local
+
+# Large local PDF text extracts (regenerate with pypdf if needed)
+/docs/movement_leader_research/jr-woodward/_extracted/

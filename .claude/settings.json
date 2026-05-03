@@ -1,0 +1,45 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm:*)",
+      "Bash(pnpm dlx:*)",
+      "Bash(vercel whoami:*)",
+      "Bash(vercel env:*)",
+      "Bash(vercel --version)",
+      "Bash(NODE_OPTIONS=*)",
+      "Skill(react-best-practices)",
+      "Skill(react-best-practices:*)",
+      "Skill(tailwind-design-system)",
+      "Skill(tailwind-design-system:*)",
+      "Skill(frontend-patterns)",
+      "Skill(frontend-patterns:*)",
+      "mcp__plugin_supabase_supabase__list_projects",
+      "Edit(/.claude/skills/visual-storytelling-audit/**)",
+      "mcp__plugin_supabase_supabase__get_project",
+      "mcp__plugin_supabase_supabase__list_tables",
+      "mcp__plugin_supabase_supabase__execute_sql",
+      "mcp__plugin_supabase_supabase__get_project_url",
+      "mcp__plugin_supabase_supabase__get_publishable_keys",
+      "mcp__plugin_supabase_supabase__apply_migration",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__navigate_page",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__take_screenshot",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__evaluate_script",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__list_pages",
+      "Bash([ -L \".claude/skills/$skill\" ])",
+      "Bash(rm .claude/skills/__TRACKED_VAR__)",
+      "Bash(mkdir -p .claude/skills/__TRACKED_VAR__)",
+      "Edit(/.claude/skills/design-audit/**)",
+      "Edit(/.claude/skills/color-audit/**)",
+      "Edit(/.claude/skills/tailwind-cleanup/**)",
+      "Edit(/.claude/skills/page-audit/**)",
+      "Edit(/.claude/skills/responsive-audit/**)"
+    ],
+    "additionalDirectories": [
+      "/Users/joshuashepherd/Desktop/dev/repos/movemental-sites/alan-hirsch/.claude/skills",
+      "/Users/joshuashepherd/Desktop/dev/repos/movemental-sites/alan-hirsch/src",
+      "/Users/joshuashepherd/Desktop/dev/repos/movemental-ai",
+      "/Users/joshuashepherd/Desktop/dev/repos/my-skills",
+      "/Users/joshuashepherd/Desktop/movemental/.claude/skills"
+    ]
+  }
+}

@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The six stages &mdash; Movemental</title>
+    <meta
+      name="description"
+      content="Six stages: Fragmentation · Integration · Activation · Formation · Multiplication · Movement. A horizontal walk through the arc."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#after-deck">Skip past slides</a>
+
+    <!-- ============================================================
+         HEADER — brand · current-stage label · dot indicator
+         ============================================================ -->
+    <header class="deck-header" data-header>
+      <div class="deck-header__inner">
+        <a class="brand" href="../homepage-concept-modern/index.html">
+          <span class="brand__mark" aria-hidden="true"></span>
+          Movemental
+        </a>
+
+        <p class="stage-indicator" aria-live="polite">
+          <span class="stage-indicator__count"
+            ><span data-current-index>01</span>
+            <span class="stage-indicator__sep">/</span> 06</span
+          >
+          <span class="stage-indicator__sep stage-indicator__sep--dim">·</span>
+          <span class="stage-indicator__name" data-current-name
+            >Fragmentation</span
+          >
+        </p>
+
+        <nav class="stage-dots" aria-label="Jump to stage">
+          <button type="button" data-jump="0" aria-label="Fragmentation"></button>
+          <button type="button" data-jump="1" aria-label="Integration"></button>
+          <button type="button" data-jump="2" aria-label="Activation"></button>
+          <button type="button" data-jump="3" aria-label="Formation"></button>
+          <button type="button" data-jump="4" aria-label="Multiplication"></button>
+          <button type="button" data-jump="5" aria-label="Movement"></button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- ============================================================
+           DECK — pinned horizontal track of six slides
+           ============================================================ -->
+      <section
+        class="deck"
+        data-deck
+        aria-roledescription="carousel"
+        aria-label="The six stages"
+      >
+        <div class="deck__track" data-track>
+          <!-- ========== SLIDE 01 · Fragmentation ============================ -->
+          <article
+            class="slide"
+            data-slide
+            data-index="0"
+            aria-roledescription="slide"
+            aria-label="Stage 1 of 6: Fragmentation"
+          >
+            <div class="slide__inner">
+              <div class="slide__text">
+                <p class="slide__label">
+                  <span class="slide__label-dot" aria-hidden="true"></span>
+                  Stage 01
+                </p>
+                <h2 class="slide__title">Fragmentation</h2>
+                <p class="slide__caption">
+                  Your intelligence exists &mdash;
+                  <em>but in pieces</em>.
+                </p>
+              </div>
+
+              <figure class="slide__viz" aria-hidden="true">
+                <!-- Thumbnails: public/images/fragmentation-story (same slugs as FragmentationIntelArtifact) -->
+                <svg viewBox="0 0 640 480" class="viz viz--fragmentation">
+                  <!-- Pack scatter toward center so 2× CSS scale doesn’t read as edge-to-edge -->
+                  <g
+                    class="frag-scatter-pack"
+                    transform="translate(320 240) scale(0.74) translate(-320 -240)"
+                  >
+                  <defs>
+                    <clipPath id="frag-clip-0"><rect x="70" y="50" width="42" height="54" rx="4"/></clipPath>
+                    <clipPath id="frag-clip-1"><rect x="160" y="80" width="40" height="52" rx="4"/></clipPath>
+                    <clipPath id="frag-clip-2"><rect x="250" y="40" width="38" height="50" rx="4"/></clipPath>
+                    <clipPath id="frag-clip-3"><rect x="340" y="90" width="42" height="54" rx="4"/></clipPath>
+                    <clipPath id="frag-clip-4"><rect x="430" y="50" width="40" height="52" rx="4"/></clipPath>
+                    <clipPath id="frag-clip-5"><rect x="520" y="100" width="38" height="50" rx="4"/></clipPath>
+                    <clipPath id="frag-clip-6"><rect x="80" y="200" width="42" height="54" rx="4"/></clipPath>
+                    <clipPath id="frag-clip-7"><rect x="200" y="230" width="40" height="52" rx="4"/></clipPath>
+                    <clipPath id="frag-clip-8"><rect x="300" y="190" width="38" height="50" rx="4"/></clipPath>
+                    <clipPath id="frag-clip-9"><rect x="395" y="240" width="42" height="54" rx="4"/></clipPath>
+                    <clipPath id="frag-clip-10"><rect x="490" y="210" width="40" height="52" rx="4"/></clipPath>
+                    <clipPath id="frag-clip-11"><rect x="130" y="350" width="38" height="50" rx="4"/></clipPath>
+                    <clipPath id="frag-clip-12"><rect x="270" y="380" width="42" height="54" rx="4"/></clipPath>
+                    <clipPath id="frag-clip-13"><rect x="430" y="360" width="40" height="52" rx="4"/></clipPath>
+                  </defs>
+                  <g fill="none">
+                    <g class="frag" style="--d: 0s" transform="rotate(-8 91 77)">
+                      <image href="../../../public/images/fragmentation-story/book-fragments-of-form.webp" x="70" y="50" width="42" height="54" preserveAspectRatio="xMidYMid slice" clip-path="url(#frag-clip-0)"/>
+                      <rect class="frag__stroke" x="70" y="50" width="42" height="54" rx="4"/>
+                    </g>
+                    <g class="frag" style="--d: .4s" transform="rotate(12 180 106)">
+                      <image href="../../../public/images/fragmentation-story/core-hub-to-fragment-nodes.webp" x="160" y="80" width="40" height="52" preserveAspectRatio="xMidYMid slice" clip-path="url(#frag-clip-1)"/>
+                      <rect class="frag__stroke" x="160" y="80" width="40" height="52" rx="4"/>
+                    </g>
+                    <g class="frag" style="--d: .8s" transform="rotate(-5 269 65)">
+                      <image href="../../../public/images/fragmentation-story/cover-principles-design-fragmentation.webp" x="250" y="40" width="38" height="50" preserveAspectRatio="xMidYMid slice" clip-path="url(#frag-clip-2)"/>
+                      <rect class="frag__stroke" x="250" y="40" width="38" height="50" rx="4"/>
+                    </g>
+                    <g class="frag" style="--d: 1.2s" transform="rotate(15 361 117)">
+                      <image href="../../../public/images/fragmentation-story/cover-structural-fragments-investigation.webp" x="340" y="90" width="42" height="54" preserveAspectRatio="xMidYMid slice" clip-path="url(#frag-clip-3)"/>
+                      <rect class="frag__stroke" x="340" y="90" width="42" height="54" rx="4"/>
+                    </g>
+                    <g class="frag" style="--d: 1.6s" transform="rotate(-10 450 76)">
+                      <image href="../../../public/images/fragmentation-story/email-thread-multi-participant.webp" x="430" y="50" width="40" height="52" preserveAspectRatio="xMidYMid slice" clip-path="url(#frag-clip-4)"/>
+                      <rect class="frag__stroke" x="430" y="50" width="40" height="52" rx="4"/>
+                    </g>
+                    <g class="frag" style="--d: 2.0s" transform="rotate(7 539 125)">
+                      <image href="../../../public/images/fragmentation-story/formal-design-systems-split-flow.webp" x="520" y="100" width="38" height="50" preserveAspectRatio="xMidYMid slice" clip-path="url(#frag-clip-5)"/>
+                      <rect class="frag__stroke" x="520" y="100" width="38" height="50" rx="4"/>
+                    </g>
+                    <g class="frag" style="--d: .2s" transform="rotate(8 101 227)">
+                      <image href="../../../public/images/fragmentation-story/message-thread-staggered-fragments.webp" x="80" y="200" width="42" height="54" preserveAspectRatio="xMidYMid slice" clip-path="url(#frag-clip-6)"/>
+                      <rect class="frag__stroke" x="80" y="200" width="42" height="54" rx="4"/>
+                    </g>
+                    <g class="frag" style="--d: .6s" transform="rotate(-12 220 256)">
+                      <image href="../../../public/images/fragmentation-story/mobile-chat-skeleton-bubbles.webp" x="200" y="230" width="40" height="52" preserveAspectRatio="xMidYMid slice" clip-path="url(#frag-clip-7)"/>
+                      <rect class="frag__stroke" x="200" y="230" width="40" height="52" rx="4"/>
+                    </g>
+                    <g class="frag" style="--d: 1.0s" transform="rotate(10 319 215)">
+                      <image href="../../../public/images/fragmentation-story/module-formal-systems-intro.webp" x="300" y="190" width="38" height="50" preserveAspectRatio="xMidYMid slice" clip-path="url(#frag-clip-8)"/>
+                      <rect class="frag__stroke" x="300" y="190" width="38" height="50" rx="4"/>
+                    </g>
+                    <g class="frag" style="--d: 1.4s" transform="rotate(-7 416 267)">
+                      <image href="../../../public/images/fragmentation-story/order-of-service-structured-units.webp" x="395" y="240" width="42" height="54" preserveAspectRatio="xMidYMid slice" clip-path="url(#frag-clip-9)"/>
+                      <rect class="frag__stroke" x="395" y="240" width="42" height="54" rx="4"/>
+                    </g>
+                    <g class="frag" style="--d: 1.8s" transform="rotate(13 510 236)">
+                      <image href="../../../public/images/fragmentation-story/podcast-card-abstract-structures.webp" x="490" y="210" width="40" height="52" preserveAspectRatio="xMidYMid slice" clip-path="url(#frag-clip-10)"/>
+                      <rect class="frag__stroke" x="490" y="210" width="40" height="52" rx="4"/>
+                    </g>
+                    <g class="frag" style="--d: .3s" transform="rotate(-5 149 375)">
+                      <image href="../../../public/images/fragmentation-story/session-essential-structures-card.webp" x="130" y="350" width="38" height="50" preserveAspectRatio="xMidYMid slice" clip-path="url(#frag-clip-11)"/>
+                      <rect class="frag__stroke" x="130" y="350" width="38" height="50" rx="4"/>
+                    </g>
+                    <g class="frag" style="--d: .7s" transform="rotate(11 291 407)">
+                      <image href="../../../public/images/fragmentation-story/sketch-converge-diverge-flow.webp" x="270" y="380" width="42" height="54" preserveAspectRatio="xMidYMid slice" clip-path="url(#frag-clip-12)"/>
+                      <rect class="frag__stroke" x="270" y="380" width="42" height="54" rx="4"/>
+                    </g>
+                    <g class="frag" style="--d: 1.1s" transform="rotate(-9 450 386)">
+                      <image href="../../../public/images/fragmentation-story/stage-presentation-three-shapes.webp" x="430" y="360" width="40" height="52" preserveAspectRatio="xMidYMid slice" clip-path="url(#frag-clip-13)"/>
+                      <rect class="frag__stroke" x="430" y="360" width="40" height="52" rx="4"/>
+                    </g>
+                  </g>
+                  </g>
+                </svg>
+              </figure>
+            </div>
+          </article>
+
+          <!-- ========== SLIDE 02 · Integration ============================ -->
+          <article
+            class="slide"
+            data-slide
+            data-index="1"
+            aria-roledescription="slide"
+            aria-label="Stage 2 of 6: Integration"
+          >
+            <div class="slide__inner slide__inner--integration">
+              <div class="slide__text">
+                <p class="slide__label">
+                  <span class="slide__label-dot" aria-hidden="true"></span>
+                  Stage 02
+                </p>
+                <h2 class="slide__title">Integration</h2>
+                <p class="slide__caption">
+                  <em>Everything</em> is brought into one system.
+                </p>
+              </div>
+
+              <figure class="slide__viz" aria-hidden="true">
+                <!-- Typed markdown library — names mirror FragmentationStoryStageIntegration IntegrationIdePanel -->
+                <svg viewBox="0 0 640 480" class="viz viz--integration">
+                  <g
+                    class="int-grid-shift"
+                    transform="translate(56 0)"
+                  >
+                  <defs>
+                    <clipPath id="int-img-0"><rect x="109" y="163" width="42" height="34" rx="3"/></clipPath>
+                    <clipPath id="int-img-1"><rect x="179" y="163" width="42" height="34" rx="3"/></clipPath>
+                    <clipPath id="int-img-2"><rect x="249" y="163" width="42" height="34" rx="3"/></clipPath>
+                    <clipPath id="int-img-3"><rect x="319" y="163" width="42" height="34" rx="3"/></clipPath>
+                    <clipPath id="int-img-4"><rect x="389" y="163" width="42" height="34" rx="3"/></clipPath>
+                    <clipPath id="int-img-5"><rect x="459" y="163" width="42" height="34" rx="3"/></clipPath>
+                    <clipPath id="int-img-6"><rect x="529" y="163" width="42" height="34" rx="3"/></clipPath>
+                    <clipPath id="int-img-7"><rect x="109" y="243" width="42" height="34" rx="3"/></clipPath>
+                    <clipPath id="int-img-8"><rect x="179" y="243" width="42" height="34" rx="3"/></clipPath>
+                    <clipPath id="int-img-9"><rect x="249" y="243" width="42" height="34" rx="3"/></clipPath>
+                    <clipPath id="int-img-10"><rect x="319" y="243" width="42" height="34" rx="3"/></clipPath>
+                    <clipPath id="int-img-11"><rect x="389" y="243" width="42" height="34" rx="3"/></clipPath>
+                    <clipPath id="int-img-12"><rect x="459" y="243" width="42" height="34" rx="3"/></clipPath>
+                    <clipPath id="int-img-13"><rect x="529" y="243" width="42" height="34" rx="3"/></clipPath>
+                  </defs>
+                  <g stroke="none">
+                    <g class="cell" style="--d: 0s">
+                      <rect class="int-cell__bg" x="109" y="163" width="42" height="54" rx="4"/>
+                      <image href="../../../public/images/fragmentation-story/book-fragments-of-form.webp" x="109" y="163" width="42" height="34" preserveAspectRatio="xMidYMid slice" clip-path="url(#int-img-0)"/>
+                      <rect class="int-cell__band" x="109" y="197" width="42" height="20"/>
+                      <text class="int-cell__folder" x="112" y="206">books</text>
+                      <text class="int-cell__file" x="112" y="215">fragments.md</text>
+                    </g>
+                    <g class="cell" style="--d: .05s">
+                      <rect class="int-cell__bg" x="179" y="163" width="42" height="54" rx="4"/>
+                      <image href="../../../public/images/fragmentation-story/cover-principles-design-fragmentation.webp" x="179" y="163" width="42" height="34" preserveAspectRatio="xMidYMid slice" clip-path="url(#int-img-1)"/>
+                      <rect class="int-cell__band" x="179" y="197" width="42" height="20"/>
+                      <text class="int-cell__folder" x="182" y="206">books</text>
+                      <text class="int-cell__file" x="182" y="215">princ.md</text>
+                    </g>
+                    <g class="cell" style="--d: .10s">
+                      <rect class="int-cell__bg" x="249" y="163" width="42" height="54" rx="4"/>
+                      <image href="../../../public/images/fragmentation-story/module-formal-systems-intro.webp" x="249" y="163" width="42" height="34" preserveAspectRatio="xMidYMid slice" clip-path="url(#int-img-2)"/>
+                      <rect class="int-cell__band" x="249" y="197" width="42" height="20"/>
+                      <text class="int-cell__folder" x="252" y="206">courses</text>
+                      <text class="int-cell__file" x="252" y="215">formal.md</text>
+                    </g>
+                    <g class="cell" style="--d: .15s">
+                      <rect class="int-cell__bg" x="319" y="163" width="42" height="54" rx="4"/>
+                      <image href="../../../public/images/fragmentation-story/session-essential-structures-card.webp" x="319" y="163" width="42" height="34" preserveAspectRatio="xMidYMid slice" clip-path="url(#int-img-3)"/>
+                      <rect class="int-cell__band" x="319" y="197" width="42" height="20"/>
+                      <text class="int-cell__folder" x="322" y="206">courses</text>
+                      <text class="int-cell__file" x="322" y="215">essential.md</text>
+                    </g>
+                    <g class="cell" style="--d: .20s">
+                      <rect class="int-cell__bg" x="389" y="163" width="42" height="54" rx="4"/>
+                      <image href="../../../public/images/fragmentation-story/podcast-card-abstract-structures.webp" x="389" y="163" width="42" height="34" preserveAspectRatio="xMidYMid slice" clip-path="url(#int-img-4)"/>
+                      <rect class="int-cell__band" x="389" y="197" width="42" height="20"/>
+                      <text class="int-cell__folder" x="392" y="206">podcasts</text>
+                      <text class="int-cell__file" x="392" y="215">ep-12.md</text>
+                    </g>
+                    <g class="cell" style="--d: .25s">
+                      <rect class="int-cell__bg" x="459" y="163" width="42" height="54" rx="4"/>
+                      <image href="../../../public/images/fragmentation-story/email-thread-multi-participant.webp" x="459" y="163" width="42" height="34" preserveAspectRatio="xMidYMid slice" clip-path="url(#int-img-5)"/>
+                      <rect class="int-cell__band" x="459" y="197" width="42" height="20"/>
+                      <text class="int-cell__folder" x="462" y="206">threads</text>
+                      <text class="int-cell__file" x="462" y="215">bi-voc.md</text>
+                    </g>
+                    <g class="cell" style="--d: .30s">
+                      <rect class="int-cell__bg" x="529" y="163" width="42" height="54" rx="4"/>
+                      <image href="../../../public/images/fragmentation-story/mobile-chat-skeleton-bubbles.webp" x="529" y="163" width="42" height="34" preserveAspectRatio="xMidYMid slice" clip-path="url(#int-img-6)"/>
+                      <rect class="int-cell__band" x="529" y="197" width="42" height="20"/>
+                      <text class="int-cell__folder" x="532" y="206">threads</text>
+                      <text class="int-cell__file" x="532" y="215">cohort.md</text>
+                    </g>
+                    <g class="cell" style="--d: .35s">
+                      <rect class="int-cell__bg" x="109" y="243" width="42" height="54" rx="4"/>
+                      <image href="../../../public/images/fragmentation-story/formal-design-systems-split-flow.webp" x="109" y="243" width="42" height="34" preserveAspectRatio="xMidYMid slice" clip-path="url(#int-img-7)"/>
+                      <rect class="int-cell__band" x="109" y="277" width="42" height="20"/>
+                      <text class="int-cell__folder" x="112" y="286">systems</text>
+                      <text class="int-cell__file" x="112" y="295">split.md</text>
+                    </g>
+                    <g class="cell" style="--d: .40s">
+                      <rect class="int-cell__bg" x="179" y="243" width="42" height="54" rx="4"/>
+                      <image href="../../../public/images/fragmentation-story/message-thread-staggered-fragments.webp" x="179" y="243" width="42" height="34" preserveAspectRatio="xMidYMid slice" clip-path="url(#int-img-8)"/>
+                      <rect class="int-cell__band" x="179" y="277" width="42" height="20"/>
+                      <text class="int-cell__folder" x="182" y="286">threads</text>
+                      <text class="int-cell__file" x="182" y="295">stagger.md</text>
+                    </g>
+                    <g class="cell" style="--d: .45s">
+                      <rect class="int-cell__bg" x="249" y="243" width="42" height="54" rx="4"/>
+                      <image href="../../../public/images/fragmentation-story/order-of-service-structured-units.webp" x="249" y="243" width="42" height="34" preserveAspectRatio="xMidYMid slice" clip-path="url(#int-img-9)"/>
+                      <rect class="int-cell__band" x="249" y="277" width="42" height="20"/>
+                      <text class="int-cell__folder" x="252" y="286">liturgy</text>
+                      <text class="int-cell__file" x="252" y="295">order.md</text>
+                    </g>
+                    <g class="cell" style="--d: .50s">
+                      <rect class="int-cell__bg" x="319" y="243" width="42" height="54" rx="4"/>
+                      <image href="../../../public/images/fragmentation-story/cover-structural-fragments-investigation.webp" x="319" y="243" width="42" height="34" preserveAspectRatio="xMidYMid slice" clip-path="url(#int-img-10)"/>
+                      <rect class="int-cell__band" x="319" y="277" width="42" height="20"/>
+                      <text class="int-cell__folder" x="322" y="286">books</text>
+                      <text class="int-cell__file" x="322" y="295">structural.md</text>
+                    </g>
+                    <g class="cell" style="--d: .55s">
+                      <rect class="int-cell__bg" x="389" y="243" width="42" height="54" rx="4"/>
+                      <image href="../../../public/images/fragmentation-story/core-hub-to-fragment-nodes.webp" x="389" y="243" width="42" height="34" preserveAspectRatio="xMidYMid slice" clip-path="url(#int-img-11)"/>
+                      <rect class="int-cell__band" x="389" y="277" width="42" height="20"/>
+                      <text class="int-cell__folder" x="392" y="286">graph</text>
+                      <text class="int-cell__file" x="392" y="295">hub.md</text>
+                    </g>
+                    <g class="cell" style="--d: .60s">
+                      <rect class="int-cell__bg" x="459" y="243" width="42" height="54" rx="4"/>
+                      <image href="../../../public/images/fragmentation-story/sketch-converge-diverge-flow.webp" x="459" y="243" width="42" height="34" preserveAspectRatio="xMidYMid slice" clip-path="url(#int-img-12)"/>
+                      <rect class="int-cell__band" x="459" y="277" width="42" height="20"/>
+                      <text class="int-cell__folder" x="462" y="286">sessions</text>
+                      <text class="int-cell__file" x="462" y="295">sketch.md</text>
+                    </g>
+                    <g class="cell" style="--d: .65s">
+                      <rect class="int-cell__bg" x="529" y="243" width="42" height="54" rx="4"/>
+                      <image href="../../../public/images/fragmentation-story/stage-presentation-three-shapes.webp" x="529" y="243" width="42" height="34" preserveAspectRatio="xMidYMid slice" clip-path="url(#int-img-13)"/>
+                      <rect class="int-cell__band" x="529" y="277" width="42" height="20"/>
+                      <text class="int-cell__folder" x="532" y="286">decks</text>
+                      <text class="int-cell__file" x="532" y="295">stage.md</text>
+                    </g>
+                  </g>
+                  </g>
+                </svg>
+              </figure>
+            </div>
+          </article>
+
+          <!-- ========== SLIDE 03 · Activation ============================ -->
+          <article
+            class="slide"
+            data-slide
+            data-index="2"
+            aria-roledescription="slide"
+            aria-label="Stage 3 of 6: Activation"
+          >
+            <div class="slide__inner">
+              <div class="slide__text">
+                <p class="slide__label">
+                  <span class="slide__label-dot" aria-hidden="true"></span>
+                  Stage 03
+                </p>
+                <h2 class="slide__title">Activation</h2>
+                <p class="slide__caption">
+                  Your intelligence becomes <em>usable</em>.
+                </p>
+              </div>
+
+              <figure class="slide__viz" aria-hidden="true">
+                <!-- Viewer sentence: one surface is LIVE — a question is pulling a book chapter, a session, and a cohort thread into a cited answer. -->
+                <svg viewBox="0 0 640 480" class="viz viz--activation">
+                  <defs>
+                    <clipPath id="act-img-book"><rect x="52" y="100" width="78" height="36" rx="5"/></clipPath>
+                    <clipPath id="act-img-session"><rect x="510" y="110" width="78" height="36" rx="5"/></clipPath>
+                    <clipPath id="act-img-thread"><rect x="281" y="378" width="78" height="36" rx="5"/></clipPath>
+                  </defs>
+
+                  <!-- Query bar (plain prompt, Movemental vocabulary) -->
+                  <g class="q-bar" style="--d: 0s">
+                    <rect class="q-bar__bg" x="60" y="32" width="520" height="44" rx="22"/>
+                    <circle class="q-bar__caret" cx="84" cy="54" r="3" fill="currentColor"/>
+                    <text class="q-bar__text" x="100" y="59">How do we teach APEST as culture, not roles?</text>
+                  </g>
+
+                  <!-- Rays: answer card → cited thumbs (terminate on artifact edges) -->
+                  <g stroke="currentColor" stroke-width="1.2" fill="none">
+                    <line class="ray" style="--d: .35s" x1="244" y1="222" x2="130" y2="140" pathLength="100"/>
+                    <line class="ray" style="--d: .50s" x1="396" y1="222" x2="510" y2="140" pathLength="100"/>
+                    <line class="ray" style="--d: .65s" x1="320" y1="278" x2="320" y2="378" pathLength="100"/>
+                  </g>
+
+                  <!-- Ray tags -->
+                  <text class="ray-tag" style="--d: .70s" x="187" y="178" text-anchor="middle">Book</text>
+                  <text class="ray-tag" style="--d: .85s" x="453" y="178" text-anchor="middle">Session</text>
+                  <text class="ray-tag" style="--d: 1.00s" x="338" y="332" text-anchor="start">Thread</text>
+
+                  <!-- Answer card (the live surface) -->
+                  <g class="answer" style="--d: .15s">
+                    <rect class="answer__bg" x="240" y="202" width="160" height="76" rx="6"/>
+                    <rect class="answer__band" x="240" y="202" width="160" height="20"/>
+                    <text class="answer__label" x="248" y="216">ANSWER · CITING 3</text>
+                    <text class="answer__line" x="248" y="240">APEST is a culture—</text>
+                    <text class="answer__line" x="248" y="254">not a role taxonomy.</text>
+                    <g class="answer__dots">
+                      <circle cx="249" cy="268" r="1.7" fill="currentColor"/>
+                      <circle cx="256" cy="268" r="1.7" fill="currentColor"/>
+                      <circle cx="263" cy="268" r="1.7" fill="currentColor"/>
+                    </g>
+                  </g>
+
+                  <!-- Cited thumb: BOOK -->
+                  <g class="cited" style="--d: .55s">
+                    <rect class="cited__bg" x="52" y="100" width="78" height="58" rx="5"/>
+                    <image href="../../../public/images/fragmentation-story/book-fragments-of-form.webp"
+                           x="52" y="100" width="78" height="36" preserveAspectRatio="xMidYMid slice" clip-path="url(#act-img-book)"/>
+                    <rect class="cited__band" x="52" y="136" width="78" height="22"/>
+                    <text class="cited__folder" x="58" y="146">BOOKS</text>
+                    <text class="cited__file" x="58" y="155">fragments §4</text>
+                  </g>
+
+                  <!-- Cited thumb: SESSION -->
+                  <g class="cited" style="--d: .70s">
+                    <rect class="cited__bg" x="510" y="110" width="78" height="58" rx="5"/>
+                    <image href="../../../public/images/fragmentation-story/session-essential-structures-card.webp"
+                           x="510" y="110" width="78" height="36" preserveAspectRatio="xMidYMid slice" clip-path="url(#act-img-session)"/>
+                    <rect class="cited__band" x="510" y="146" width="78" height="22"/>
+                    <text class="cited__folder" x="516" y="156">COURSES</text>
+                    <text class="cited__file" x="516" y="165">essential §2</text>
+                  </g>
+
+                  <!-- Cited thumb: THREAD -->
+                  <g class="cited" style="--d: .85s">
+                    <rect class="cited__bg" x="281" y="378" width="78" height="58" rx="5"/>
+                    <image href="../../../public/images/fragmentation-story/message-thread-staggered-fragments.webp"
+                           x="281" y="378" width="78" height="36" preserveAspectRatio="xMidYMid slice" clip-path="url(#act-img-thread)"/>
+                    <rect class="cited__band" x="281" y="414" width="78" height="22"/>
+                    <text class="cited__folder" x="287" y="424">THREADS</text>
+                    <text class="cited__file" x="287" y="433">cohort §12</text>
+                  </g>
+                </svg>
+              </figure>
+            </div>
+          </article>
+
+          <!-- ========== SLIDE 04 · Formation ============================ -->
+          <article
+            class="slide"
+            data-slide
+            data-index="3"
+            aria-roledescription="slide"
+            aria-label="Stage 4 of 6: Formation"
+          >
+            <div class="slide__inner">
+              <div class="slide__text">
+                <p class="slide__label">
+                  <span class="slide__label-dot" aria-hidden="true"></span>
+                  Stage 04
+                </p>
+                <h2 class="slide__title">Formation</h2>
+                <p class="slide__caption">
+                  People are <em>shaped</em>, not just informed.
+                </p>
+              </div>
+
+              <figure class="slide__viz" aria-hidden="true">
+                <!-- Viewer sentence: a learner at the center is shaped by four forces — Dissonance descending from above, Action leaving outward, Reflection looping down and returning, Community witnessing from the left. When all four have activated, the learner's own mark visibly changes state: filled disc, halo ring, companion dot alongside. Formation requires all four — not one, not three. -->
+                <svg viewBox="0 0 640 480" class="viz viz--formation">
+
+                  <!-- DISSONANCE · top — something interrupts -->
+                  <text class="f-label" style="--d: 0.45s" x="320" y="48" text-anchor="middle">DISSONANCE</text>
+                  <text class="f-sub"   style="--d: 0.45s" x="320" y="64" text-anchor="middle">a rupture</text>
+                  <polyline class="f-force f-dissonance" style="--d: 0.2s"
+                    points="320,80 298,108 340,134 300,162 328,188 318,214"
+                    pathLength="100"/>
+                  <path class="f-arrow" style="--d: 0.9s"
+                    d="M 312 209 L 318 220 L 324 209 Z"/>
+
+                  <!-- ACTION · right — a step is taken -->
+                  <text class="f-label" style="--d: 0.75s" x="470" y="225" text-anchor="middle">ACTION</text>
+                  <text class="f-sub"   style="--d: 0.75s" x="470" y="262" text-anchor="middle">a step</text>
+                  <line class="f-force f-action" style="--d: 0.5s"
+                    x1="345" y1="240" x2="568" y2="240"
+                    pathLength="100"/>
+                  <path class="f-arrow" style="--d: 1.2s"
+                    d="M 568 232 L 582 240 L 568 248 Z"/>
+
+                  <!-- REFLECTION · bottom — meaning returns -->
+                  <text class="f-label" style="--d: 1.05s" x="320" y="406" text-anchor="middle">REFLECTION</text>
+                  <text class="f-sub"   style="--d: 1.05s" x="320" y="422" text-anchor="middle">a return</text>
+                  <path class="f-force f-reflection" style="--d: 0.8s"
+                    d="M 335 258 C 420 300 420 380 320 395 C 220 380 220 300 305 258"
+                    pathLength="100"/>
+                  <path class="f-arrow" style="--d: 1.5s"
+                    d="M 305 258 L 298 269 L 311 266 Z"/>
+
+                  <!-- COMMUNITY · left — a witness accompanies -->
+                  <text class="f-label" style="--d: 1.35s" x="105" y="186" text-anchor="middle">COMMUNITY</text>
+                  <text class="f-sub"   style="--d: 1.35s" x="105" y="202" text-anchor="middle">a witness</text>
+                  <!-- triad edges -->
+                  <line class="f-comm-edge" style="--d: 1.0s"  x1="75"  y1="230" x2="135" y2="220" pathLength="100"/>
+                  <line class="f-comm-edge" style="--d: 1.0s"  x1="75"  y1="230" x2="110" y2="270" pathLength="100"/>
+                  <line class="f-comm-edge" style="--d: 1.0s"  x1="135" y1="220" x2="110" y2="270" pathLength="100"/>
+                  <!-- triad members -->
+                  <circle class="f-comm-user" style="--d: 1.05s" cx="75"  cy="230" r="7"/>
+                  <circle class="f-comm-user" style="--d: 1.10s" cx="135" cy="220" r="7"/>
+                  <circle class="f-comm-user" style="--d: 1.15s" cx="110" cy="270" r="7"/>
+                  <!-- connection into the learner -->
+                  <line class="f-force f-community-link" style="--d: 1.2s"
+                    x1="145" y1="234" x2="302" y2="240"
+                    pathLength="100"/>
+
+                  <!-- LEARNER · centre — state changes when all four have fired -->
+                  <g class="learner">
+                    <circle class="learner-halo"       cx="320" cy="240" r="30"/>
+                    <circle class="learner-dot"        cx="320" cy="240" r="20"/>
+                    <text   class="learner-initial"    x="320" y="240" text-anchor="middle">L</text>
+                    <circle class="learner-companion"  cx="352" cy="228" r="5"/>
+                  </g>
+
+                  <!-- Summary caption — italic-serif emphasis on the thesis -->
+                  <text class="f-summary" x="320" y="462" text-anchor="middle">Not one. Not three. <tspan class="em">Four &mdash; cycling together &mdash; form a person.</tspan></text>
+                </svg>
+              </figure>
+            </div>
+          </article>
+
+          <!-- ========== SLIDE 05 · Multiplication ============================ -->
+          <article
+            class="slide"
+            data-slide
+            data-index="4"
+            aria-roledescription="slide"
+            aria-label="Stage 5 of 6: Multiplication"
+          >
+            <div class="slide__inner">
+              <div class="slide__text">
+                <p class="slide__label">
+                  <span class="slide__label-dot" aria-hidden="true"></span>
+                  Stage 05
+                </p>
+                <h2 class="slide__title">Multiplication</h2>
+                <p class="slide__caption">
+                  Your work begins to <em>scale through systems</em>.
+                </p>
+              </div>
+
+              <figure class="slide__viz" aria-hidden="true">
+                <!-- Viewer sentence: eight ingredients of the platform stack come online one by one — Keywords, Schema, Linking, Performance, then the four E-E-A-T signals — and a bar of "amplification signal" rises above each one, building a staircase that a connecting line then traces across. This is the playbook made infrastructure. -->
+                <svg viewBox="0 0 640 480" class="viz viz--multiplication">
+                  <!-- Eyebrow + baseline -->
+                  <text class="amp-eyebrow" x="50" y="30">Amplification signal</text>
+                  <text class="amp-eyebrow amp-eyebrow--right" x="590" y="30" text-anchor="end">Compounding · left &rarr; right</text>
+                  <line class="amp-baseline" x1="32" y1="260" x2="608" y2="260"/>
+
+                  <!-- Signal bars (rising staircase — each bar belongs to one ingredient) -->
+                  <g class="amp-bars">
+                    <rect class="amp-bar" style="--d: 0.05s" x="35"  y="240" width="30" height="20"/>
+                    <rect class="amp-bar" style="--d: 0.20s" x="110" y="225" width="30" height="35"/>
+                    <rect class="amp-bar" style="--d: 0.35s" x="185" y="205" width="30" height="55"/>
+                    <rect class="amp-bar" style="--d: 0.50s" x="260" y="180" width="30" height="80"/>
+                    <rect class="amp-bar" style="--d: 0.65s" x="335" y="155" width="30" height="105"/>
+                    <rect class="amp-bar" style="--d: 0.80s" x="410" y="125" width="30" height="135"/>
+                    <rect class="amp-bar" style="--d: 0.95s" x="485" y="100" width="30" height="160"/>
+                    <rect class="amp-bar" style="--d: 1.10s" x="560" y="80"  width="30" height="180"/>
+                  </g>
+
+                  <!-- Signal curve connecting bar tops (draws after bars) -->
+                  <polyline class="amp-signal-line"
+                    points="50,240 125,225 200,205 275,180 350,155 425,125 500,100 575,80"
+                    pathLength="100"/>
+                  <circle class="amp-signal-head" cx="575" cy="80" r="3.5"/>
+
+                  <!-- Stack ingredients (cards, bottom row) -->
+                  <g class="stack-card" style="--d: 0.10s">
+                    <rect class="stack-card__bg" x="25"  y="292" width="50" height="50" rx="4"/>
+                    <text class="stack-card__num" x="50"  y="315" text-anchor="middle">01</text>
+                    <text class="stack-card__kind" x="50" y="330" text-anchor="middle">KW</text>
+                  </g>
+                  <text class="stack-label" style="--d: 0.15s" x="50"  y="360" text-anchor="middle">Keywords</text>
+                  <text class="stack-sub"   style="--d: 0.15s" x="50"  y="374" text-anchor="middle">targeting</text>
+
+                  <g class="stack-card" style="--d: 0.25s">
+                    <rect class="stack-card__bg" x="100" y="292" width="50" height="50" rx="4"/>
+                    <text class="stack-card__num" x="125" y="315" text-anchor="middle">02</text>
+                    <text class="stack-card__kind" x="125" y="330" text-anchor="middle">JSON‑LD</text>
+                  </g>
+                  <text class="stack-label" style="--d: 0.30s" x="125" y="360" text-anchor="middle">Schema</text>
+                  <text class="stack-sub"   style="--d: 0.30s" x="125" y="374" text-anchor="middle">structured data</text>
+
+                  <g class="stack-card" style="--d: 0.40s">
+                    <rect class="stack-card__bg" x="175" y="292" width="50" height="50" rx="4"/>
+                    <text class="stack-card__num" x="200" y="315" text-anchor="middle">03</text>
+                    <text class="stack-card__kind" x="200" y="330" text-anchor="middle">GRAPH</text>
+                  </g>
+                  <text class="stack-label" style="--d: 0.45s" x="200" y="360" text-anchor="middle">Linking</text>
+                  <text class="stack-sub"   style="--d: 0.45s" x="200" y="374" text-anchor="middle">internal · backlinks</text>
+
+                  <g class="stack-card" style="--d: 0.55s">
+                    <rect class="stack-card__bg" x="250" y="292" width="50" height="50" rx="4"/>
+                    <text class="stack-card__num" x="275" y="315" text-anchor="middle">04</text>
+                    <text class="stack-card__kind" x="275" y="330" text-anchor="middle">REACT</text>
+                  </g>
+                  <text class="stack-label" style="--d: 0.60s" x="275" y="360" text-anchor="middle">Performance</text>
+                  <text class="stack-sub"   style="--d: 0.60s" x="275" y="374" text-anchor="middle">Core Web Vitals</text>
+
+                  <g class="stack-card" style="--d: 0.70s">
+                    <rect class="stack-card__bg" x="325" y="292" width="50" height="50" rx="4"/>
+                    <text class="stack-card__num" x="350" y="315" text-anchor="middle">05</text>
+                    <text class="stack-card__kind" x="350" y="330" text-anchor="middle">E</text>
+                  </g>
+                  <text class="stack-label" style="--d: 0.75s" x="350" y="360" text-anchor="middle">Experience</text>
+                  <text class="stack-sub"   style="--d: 0.75s" x="350" y="374" text-anchor="middle">first‑hand</text>
+
+                  <g class="stack-card" style="--d: 0.85s">
+                    <rect class="stack-card__bg" x="400" y="292" width="50" height="50" rx="4"/>
+                    <text class="stack-card__num" x="425" y="315" text-anchor="middle">06</text>
+                    <text class="stack-card__kind" x="425" y="330" text-anchor="middle">E</text>
+                  </g>
+                  <text class="stack-label" style="--d: 0.90s" x="425" y="360" text-anchor="middle">Expertise</text>
+                  <text class="stack-sub"   style="--d: 0.90s" x="425" y="374" text-anchor="middle">domain depth</text>
+
+                  <g class="stack-card" style="--d: 1.00s">
+                    <rect class="stack-card__bg" x="475" y="292" width="50" height="50" rx="4"/>
+                    <text class="stack-card__num" x="500" y="315" text-anchor="middle">07</text>
+                    <text class="stack-card__kind" x="500" y="330" text-anchor="middle">A</text>
+                  </g>
+                  <text class="stack-label" style="--d: 1.05s" x="500" y="360" text-anchor="middle">Authority</text>
+                  <text class="stack-sub"   style="--d: 1.05s" x="500" y="374" text-anchor="middle">recognition</text>
+
+                  <g class="stack-card" style="--d: 1.15s">
+                    <rect class="stack-card__bg" x="550" y="292" width="50" height="50" rx="4"/>
+                    <text class="stack-card__num" x="575" y="315" text-anchor="middle">08</text>
+                    <text class="stack-card__kind" x="575" y="330" text-anchor="middle">T</text>
+                  </g>
+                  <text class="stack-label" style="--d: 1.20s" x="575" y="360" text-anchor="middle">Trust</text>
+                  <text class="stack-sub"   style="--d: 1.20s" x="575" y="374" text-anchor="middle">integrity</text>
+
+                  <!-- Bracket under E-E-A-T cards -->
+                  <path class="eeat-bracket" d="M325 400 L325 410 L575 410 L575 400" pathLength="100"/>
+                  <text class="eeat-label" style="--d: 1.35s" x="450" y="428" text-anchor="middle">The E‑E‑A‑T playbook</text>
+
+                  <!-- Throughput -->
+                  <text class="amp-throughput" style="--d: 1.5s" x="320" y="460" text-anchor="middle">Each ingredient compounds the last — eight signals, one voice.</text>
+                </svg>
+              </figure>
+            </div>
+          </article>
+
+          <!-- ========== SLIDE 06 · Movement ============================ -->
+          <article
+            class="slide"
+            data-slide
+            data-index="5"
+            aria-roledescription="slide"
+            aria-label="Stage 6 of 6: Movement"
+          >
+            <div class="slide__inner">
+              <div class="slide__text">
+                <p class="slide__label">
+                  <span class="slide__label-dot" aria-hidden="true"></span>
+                  Stage 06
+                </p>
+                <h2 class="slide__title">Movement</h2>
+                <p class="slide__caption">
+                  Your work becomes part of a
+                  <em>connected field</em>.
+                </p>
+              </div>
+
+              <figure class="slide__viz" aria-hidden="true">
+                <!-- Viewer sentence: sixteen platform users — four named primaries at the core, twelve in the wider network — are connected to one another. Edges come in three weights: primary-to-primary (thick), primary-to-member (medium), member-to-member (thin dashed). Breathing varies by ring to keep the field alive. -->
+                <svg viewBox="0 0 640 480" class="viz viz--movement">
+                  <defs>
+                    <radialGradient id="mov-glow" cx="50%" cy="50%" r="55%">
+                      <stop offset="0%"  stop-color="currentColor" stop-opacity="0.05"/>
+                      <stop offset="75%" stop-color="currentColor" stop-opacity="0"/>
+                    </radialGradient>
+                  </defs>
+                  <rect x="0" y="0" width="640" height="480" fill="url(#mov-glow)"/>
+
+                  <!-- Edges: 6 inter-primary + 9 primary-to-member + 6 member-to-member = 21 -->
+                  <g class="net-edges" fill="none">
+                    <!-- Inter-primary (thick, solid) -->
+                    <line class="net-edge net-edge--inter" x1="320" y1="240" x2="200" y2="170" pathLength="100"/>
+                    <line class="net-edge net-edge--inter" x1="320" y1="240" x2="440" y2="170" pathLength="100"/>
+                    <line class="net-edge net-edge--inter" x1="320" y1="240" x2="320" y2="380" pathLength="100"/>
+                    <line class="net-edge net-edge--inter" x1="200" y1="170" x2="440" y2="170" pathLength="100"/>
+                    <line class="net-edge net-edge--inter" x1="200" y1="170" x2="320" y2="380" pathLength="100"/>
+                    <line class="net-edge net-edge--inter" x1="440" y1="170" x2="320" y2="380" pathLength="100"/>
+                    <!-- Primary to member (medium) -->
+                    <line class="net-edge net-edge--primary" x1="200" y1="170" x2="100" y2="100" pathLength="100"/>
+                    <line class="net-edge net-edge--primary" x1="200" y1="170" x2="260" y2="80"  pathLength="100"/>
+                    <line class="net-edge net-edge--primary" x1="200" y1="170" x2="150" y2="260" pathLength="100"/>
+                    <line class="net-edge net-edge--primary" x1="440" y1="170" x2="440" y2="80"  pathLength="100"/>
+                    <line class="net-edge net-edge--primary" x1="440" y1="170" x2="570" y2="100" pathLength="100"/>
+                    <line class="net-edge net-edge--primary" x1="440" y1="170" x2="580" y2="250" pathLength="100"/>
+                    <line class="net-edge net-edge--primary" x1="320" y1="380" x2="200" y2="430" pathLength="100"/>
+                    <line class="net-edge net-edge--primary" x1="320" y1="380" x2="420" y2="440" pathLength="100"/>
+                    <line class="net-edge net-edge--primary" x1="320" y1="380" x2="480" y2="300" pathLength="100"/>
+                    <!-- Member-to-member (thin dashed) -->
+                    <line class="net-edge net-edge--regular" x1="100" y1="100" x2="260" y2="80"/>
+                    <line class="net-edge net-edge--regular" x1="440" y1="80"  x2="570" y2="100"/>
+                    <line class="net-edge net-edge--regular" x1="570" y1="100" x2="580" y2="250"/>
+                    <line class="net-edge net-edge--regular" x1="150" y1="260" x2="80"  y2="280"/>
+                    <line class="net-edge net-edge--regular" x1="80"  y1="280" x2="90"  y2="400"/>
+                    <line class="net-edge net-edge--regular" x1="90"  y1="400" x2="200" y2="430"/>
+                    <line class="net-edge net-edge--regular" x1="480" y1="300" x2="580" y2="400"/>
+                    <line class="net-edge net-edge--regular" x1="580" y1="400" x2="420" y2="440"/>
+                  </g>
+
+                  <!-- PRIMARY users · named inner ring -->
+                  <g class="net-user net-user--primary" style="--d: 0s">
+                    <circle class="user-halo" cx="320" cy="240" r="19"/>
+                    <circle class="user-dot"  cx="320" cy="240" r="14"/>
+                    <text  class="user-initial" x="320" y="240" text-anchor="middle">S</text>
+                    <text  class="user-name"    x="320" y="276" text-anchor="middle">Sarah</text>
+                    <text  class="user-role"    x="320" y="289" text-anchor="middle">hub · cohort lead</text>
+                  </g>
+                  <g class="net-user net-user--primary" style="--d: .08s">
+                    <circle class="user-halo" cx="200" cy="170" r="19"/>
+                    <circle class="user-dot"  cx="200" cy="170" r="14"/>
+                    <text  class="user-initial" x="200" y="170" text-anchor="middle">M</text>
+                    <text  class="user-name"    x="200" y="206" text-anchor="middle">Marcus</text>
+                    <text  class="user-role"    x="200" y="219" text-anchor="middle">editor · publisher</text>
+                  </g>
+                  <g class="net-user net-user--primary" style="--d: .16s">
+                    <circle class="user-halo" cx="440" cy="170" r="19"/>
+                    <circle class="user-dot"  cx="440" cy="170" r="14"/>
+                    <text  class="user-initial" x="440" y="170" text-anchor="middle">P</text>
+                    <text  class="user-name"    x="440" y="206" text-anchor="middle">Priya</text>
+                    <text  class="user-role"    x="440" y="219" text-anchor="middle">network lead</text>
+                  </g>
+                  <g class="net-user net-user--primary" style="--d: .24s">
+                    <circle class="user-halo" cx="320" cy="380" r="19"/>
+                    <circle class="user-dot"  cx="320" cy="380" r="14"/>
+                    <text  class="user-initial" x="320" y="380" text-anchor="middle">D</text>
+                    <text  class="user-name"    x="320" y="416" text-anchor="middle">David</text>
+                    <text  class="user-role"    x="320" y="429" text-anchor="middle">hub · practitioners</text>
+                  </g>
+
+                  <!-- MEMBER users · outlined, initial only -->
+                  <g class="net-user" style="--d: .42s">
+                    <circle class="user-dot user-dot--regular" cx="100" cy="100" r="10"/>
+                    <text  class="user-initial user-initial--regular" x="100" y="100" text-anchor="middle">J</text>
+                  </g>
+                  <g class="net-user" style="--d: .48s">
+                    <circle class="user-dot user-dot--regular" cx="260" cy="80" r="10"/>
+                    <text  class="user-initial user-initial--regular" x="260" y="80" text-anchor="middle">L</text>
+                  </g>
+                  <g class="net-user" style="--d: .54s">
+                    <circle class="user-dot user-dot--regular" cx="440" cy="80" r="10"/>
+                    <text  class="user-initial user-initial--regular" x="440" y="80" text-anchor="middle">R</text>
+                  </g>
+                  <g class="net-user" style="--d: .60s">
+                    <circle class="user-dot user-dot--regular" cx="570" cy="100" r="10"/>
+                    <text  class="user-initial user-initial--regular" x="570" y="100" text-anchor="middle">K</text>
+                  </g>
+                  <g class="net-user" style="--d: .66s">
+                    <circle class="user-dot user-dot--regular" cx="580" cy="250" r="10"/>
+                    <text  class="user-initial user-initial--regular" x="580" y="250" text-anchor="middle">T</text>
+                  </g>
+                  <g class="net-user" style="--d: .72s">
+                    <circle class="user-dot user-dot--regular" cx="580" cy="400" r="10"/>
+                    <text  class="user-initial user-initial--regular" x="580" y="400" text-anchor="middle">B</text>
+                  </g>
+                  <g class="net-user" style="--d: .78s">
+                    <circle class="user-dot user-dot--regular" cx="420" cy="440" r="10"/>
+                    <text  class="user-initial user-initial--regular" x="420" y="440" text-anchor="middle">E</text>
+                  </g>
+                  <g class="net-user" style="--d: .84s">
+                    <circle class="user-dot user-dot--regular" cx="200" cy="430" r="10"/>
+                    <text  class="user-initial user-initial--regular" x="200" y="430" text-anchor="middle">N</text>
+                  </g>
+                  <g class="net-user" style="--d: .90s">
+                    <circle class="user-dot user-dot--regular" cx="90"  cy="400" r="10"/>
+                    <text  class="user-initial user-initial--regular" x="90"  y="400" text-anchor="middle">H</text>
+                  </g>
+                  <g class="net-user" style="--d: .96s">
+                    <circle class="user-dot user-dot--regular" cx="80"  cy="280" r="10"/>
+                    <text  class="user-initial user-initial--regular" x="80"  y="280" text-anchor="middle">C</text>
+                  </g>
+                  <g class="net-user" style="--d: 1.02s">
+                    <circle class="user-dot user-dot--regular" cx="150" cy="260" r="10"/>
+                    <text  class="user-initial user-initial--regular" x="150" y="260" text-anchor="middle">O</text>
+                  </g>
+                  <g class="net-user" style="--d: 1.08s">
+                    <circle class="user-dot user-dot--regular" cx="480" cy="300" r="10"/>
+                    <text  class="user-initial user-initial--regular" x="480" y="300" text-anchor="middle">V</text>
+                  </g>
+
+                  <!-- Field counter & legend -->
+                  <text class="field-count" style="--d: 1.35s" x="40"  y="464">Platform users · 16 of 100 shown</text>
+                  <text class="field-sub"   style="--d: 1.50s" x="600" y="464" text-anchor="end">actual users, connected</text>
+                </svg>
+              </figure>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           AFTER-DECK — keyboard escape hatch
+           ============================================================ -->
+      <section class="after-deck" id="after-deck">
+        <div class="after-deck__inner">
+          <p class="after-deck__kicker">End of the arc</p>
+          <h2 class="after-deck__title">
+            From fragmented pieces to a
+            <em>connected field</em>.
+          </h2>
+          <p class="after-deck__body">
+            Six stages. One library of artifacts. Read the full story in
+            the fragmentation page.
+          </p>
+          <div class="after-deck__ctas">
+            <a
+              class="btn btn--primary"
+              href="../fragmentation-concept-modern/index.html"
+            >
+              Read the full story
+              <span aria-hidden="true" class="arrow">&rarr;</span>
+            </a>
+            <a
+              class="btn btn--ghost"
+              href="../homepage-concept-modern/index.html"
+            >
+              Back to home
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="deck-footer">
+      <div class="deck-footer__inner">
+        <span>&copy; <span data-year></span> Movemental</span>
+        <span class="deck-footer__tag">
+          The arc &mdash; in six screens.
+        </span>
+      </div>
+    </footer>
+
+    <!-- GSAP + ScrollTrigger ---------------------------------------->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Leadership Network | Sanctuary Network</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#cec5bc",
+                    "surface-container-highest": "#e4e2dd",
+                    "surface-container-low": "#f5f3ee",
+                    "surface-bright": "#fbf9f4",
+                    "on-primary-container": "#a9a29d",
+                    "on-secondary-fixed-variant": "#4d463d",
+                    "inverse-primary": "#ccc5bf",
+                    "primary-fixed-dim": "#ccc5bf",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#30312e",
+                    "tertiary-fixed": "#f3dfcc",
+                    "surface-tint": "#625d59",
+                    "on-tertiary-fixed-variant": "#514536",
+                    "surface": "#fbf9f4",
+                    "secondary-fixed": "#ece1d5",
+                    "on-primary-fixed-variant": "#4a4642",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#2d2216",
+                    "primary-fixed": "#e9e1db",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#1e1b18",
+                    "on-tertiary-fixed": "#231a0e",
+                    "secondary-container": "#e9ded2",
+                    "on-tertiary-container": "#b2a18f",
+                    "surface-variant": "#e4e2dd",
+                    "surface-container": "#f0eee9",
+                    "primary": "#272420",
+                    "on-secondary-container": "#696158",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#4c463f",
+                    "tertiary-container": "#44382a",
+                    "surface-dim": "#dbdad5",
+                    "primary-container": "#3d3935",
+                    "on-surface": "#1b1c19",
+                    "on-background": "#1b1c19",
+                    "tertiary-fixed-dim": "#d6c4b1",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#201b14",
+                    "surface-container-high": "#eae8e3",
+                    "secondary": "#655d54",
+                    "background": "#fbf9f4",
+                    "outline": "#7d766f",
+                    "inverse-on-surface": "#f2f1ec",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#d0c5b9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+      }
+      .node-connection {
+        stroke: #cec5bc;
+        stroke-width: 1;
+        opacity: 0.4;
+      }
+      .node-circle {
+        fill: #ffffff;
+        stroke: #272420;
+        stroke-width: 1;
+      }
+      .mesh-bg {
+        background-image: radial-gradient(#e4e2dd 0.5px, transparent 0.5px);
+        background-size: 24px 24px;
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="docked full-width top-0 sticky z-50 bg-[#fbf9f4]/80 dark:bg-[#272420]/80 backdrop-blur-xl flex justify-between items-center px-8 py-4 w-full max-w-[100vw]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-serif italic text-[#272420] dark:text-[#fbf9f4]">Sanctuary Network</span>
+<div class="hidden md:flex gap-6 items-center text-sm">
+<a class="text-[#272420] dark:text-[#ffffff] border-b-2 border-[#272420] dark:border-[#fbf9f4] pb-1 font-medium" href="#">Relational Map</a>
+<a class="text-[#625d59] dark:text-[#e4e2dd] hover:text-[#272420] transition-colors" href="#">Leadership Paths</a>
+<a class="text-[#625d59] dark:text-[#e4e2dd] hover:text-[#272420] transition-colors" href="#">Spiritual Formation</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="bg-surface-container-high/50 rounded-full px-4 py-1.5 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-40 placeholder:text-outline-variant" placeholder="Search the network..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-[#272420] p-2 hover:bg-[#f5f3ee]/50 rounded-full transition-all duration-300">settings</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container overflow-hidden">
+<img alt="Lead Pastor Profile" class="w-full h-full object-cover" data-alt="Close-up portrait of a mature man with a kind expression and silvering beard in warm natural sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUuX5yleKMVDhcAoT54ikYkZrELWPrhx5B4O8x-jRJUr7qm9zPS9VFp_ek3iLYshRBYCzWb-8hv4jplKSJLB9Rep5fkfp7uu9yHWDl4p6zaP7IVI0bmZ9CR8siRoi6AYWegh4tDyVd7VC0YS8PLy1Rw-0XINYagQeCyM6Bjr8IVDtdsCaWZ0jyvBCS9q8kxtpEUVYbEMgMS8dCni-UHqkRxhPDKGlN6ROrXYuxbcphiiZmsceDilc9KiQc_ufXnHABLpfaqy1V3vg"/>
+</div>
+</div>
+</nav>
+<div class="flex min-h-[calc(100-72px)] relative">
+<!-- SideNavBar (Selection Detail) -->
+<aside class="h-screen w-80 fixed left-0 border-r border-[#272420]/10 bg-[#f5f3ee] dark:bg-[#3d3935] flex flex-col z-40">
+<div class="p-8 space-y-8 flex-1 overflow-y-auto">
+<!-- Header Selection -->
+<div class="space-y-4">
+<div class="w-24 h-24 rounded-2xl overflow-hidden bg-white shadow-sm ring-1 ring-black/5">
+<img alt="Selected Leader Portrait" class="w-full h-full object-cover" data-alt="Professional portrait of Sarah Jenkins, a middle-aged woman with glasses and a soft, confident smile in an office with books in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfkbejgJYQbdecMzqxhKDf5Pl5IWWc4sRTvqsa81i-r2VLVGiMRCai7sTXuM3XKD4LuO58iZHO8exteKwRWcvTgfKaO6u1pYLN8egiwGecFu6ndRGLInC6YTpsVVds1_Ri3XiI1l15Z1W5Cr_d_7Hojz2-nTTvKxpOl5UQrm2688k73ixo6bVYVDvA-270YgSUrDo8rY_VO7OMGwwqTwea8_ORfR-ZhEBNqS-UEh1dpDeAtkJNi37Z_t0VBo51rsE1-pxAbAks_2A"/>
+</div>
+<div>
+<h2 class="text-3xl font-headline font-medium text-primary">Sarah Jenkins</h2>
+<p class="text-xs uppercase tracking-widest text-on-surface-variant/70 mt-1 font-semibold">Formation Status: Active</p>
+</div>
+</div>
+<!-- Mentors -->
+<section class="space-y-4">
+<h3 class="font-headline text-lg italic border-b border-outline-variant/30 pb-2">Mentors</h3>
+<div class="space-y-3">
+<div class="flex items-center gap-3 group cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Mentor" class="w-full h-full object-cover" data-alt="Portrait of an older man with glasses and a thoughtful expression, warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNWy7PxuxolcqwomKN_01jKzWhtL5pDavLGCGcMUALFlSxY0CsOTaMsGYDejEDFH8krUxs6ot43B3k5QBjksyCvaHO_4_szgXDfhGuZWKXs3RS94v8cVkULhgRyz-sbaoVybojgrOB2nU7do9TXXiXCz5n2UyM9wUMgHEMWsdPPnu5FbPNtjmF3af09lwYCj6wzGwX0iBpYpQ3KdcgQWtGYKb3iqHjHmVf5gZ6-ZOZZ1AttEuThl68lu1HM6yhXjUNRqlzPb096P4"/>
+</div>
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-primary">David Abraham</span>
+</div>
+<div class="flex items-center gap-3 group cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Mentor" class="w-full h-full object-cover" data-alt="Portrait of a woman in her 50s with a kind, professional appearance" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNzpoUq2Uyb7_P3u96MfAFfzjJ0ryRcfImokFeYZzXxU-uCGJO-7RAta76eUYv4lRH7NkQXsIGzOYYX5AFUg88sO-esgbEYW44Z5XMkd0YKj9QMm7L9yTAp_oLBwMcTIQn1_Y1JmrMMo7CGKZMgS0GKMNj_PpPis926h9wQlO5CgG4nMSHj26MsxoXwLIOEkzoCxiKeSSamTTsQ3N8XxjKhQnNjNfVmghc6TZGTspjF1FLhyi47Gq26VgRvhV1xzQLCRcL0IT8rGM"/>
+</div>
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-primary">Elena Rodriguez</span>
+</div>
+</div>
+</section>
+<!-- Protégés -->
+<section class="space-y-4">
+<h3 class="font-headline text-lg italic border-b border-outline-variant/30 pb-2">Protégés</h3>
+<div class="grid grid-cols-1 gap-3">
+<div class="p-3 bg-white/60 rounded-lg flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-outline-variant"></div>
+<span class="text-xs font-semibold">Marcus Chen</span>
+</div>
+<div class="p-3 bg-white/60 rounded-lg flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-outline-variant"></div>
+<span class="text-xs font-semibold">Sarah T.</span>
+</div>
+<div class="p-3 bg-white/60 rounded-lg flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-outline-variant"></div>
+<span class="text-xs font-semibold">Julianna V.</span>
+</div>
+</div>
+</section>
+<!-- Tabs (As defined in JSON) -->
+<nav class="space-y-1 pt-4">
+<div class="flex items-center bg-[#ffffff] dark:bg-[#272420] text-[#272420] dark:text-[#ffffff] rounded-md px-4 py-3 cursor-pointer">
+<span class="material-symbols-outlined mr-3 text-sm">hub</span>
+<span class="text-sm font-medium">Overview</span>
+</div>
+<div class="flex items-center text-[#625d59] dark:text-[#e4e2dd] px-4 py-3 hover:bg-[#e4e2dd] dark:hover:bg-[#272420]/30 transition-all rounded-md cursor-pointer">
+<span class="material-symbols-outlined mr-3 text-sm">auto_stories</span>
+<span class="text-sm font-medium">Mentors</span>
+</div>
+<div class="flex items-center text-[#625d59] dark:text-[#e4e2dd] px-4 py-3 hover:bg-[#e4e2dd] dark:hover:bg-[#272420]/30 transition-all rounded-md cursor-pointer">
+<span class="material-symbols-outlined mr-3 text-sm">diversity_1</span>
+<span class="text-sm font-medium">Protégés</span>
+</div>
+<div class="flex items-center text-[#625d59] dark:text-[#e4e2dd] px-4 py-3 hover:bg-[#e4e2dd] dark:hover:bg-[#272420]/30 transition-all rounded-md cursor-pointer">
+<span class="material-symbols-outlined mr-3 text-sm">history_edu</span>
+<span class="text-sm font-medium">Historical Lineage</span>
+</div>
+</nav>
+</div>
+<div class="p-6">
+<button class="w-full bg-primary text-on-primary py-4 rounded-lg text-sm font-bold flex items-center justify-center gap-2 shadow-inner-glow transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-base">send</span>
+                    Send Encouragement
+                </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-80 flex-1 relative bg-surface p-12 mesh-bg">
+<header class="max-w-4xl mb-16">
+<h1 class="text-6xl font-headline font-light text-primary leading-tight">Leadership Network</h1>
+<p class="text-lg text-on-surface-variant/80 font-body max-w-xl mt-4">Visualizing the relational architecture of our community. A map of mutual formation and intergenerational wisdom.</p>
+</header>
+<!-- Relational Map Visualization -->
+<div class="w-full aspect-[16/9] relative rounded-3xl bg-surface-container-low/40 border border-outline-variant/10 overflow-hidden backdrop-blur-sm shadow-sm flex items-center justify-center">
+<!-- SVG Connections Layer -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none">
+<line class="node-connection" x1="50%" x2="30%" y1="50%" y2="40%"></line>
+<line class="node-connection" x1="50%" x2="70%" y1="50%" y2="40%"></line>
+<line class="node-connection" x1="50%" x2="50%" y1="50%" y2="25%"></line>
+<line class="node-connection" x1="50%" x2="40%" y1="50%" y2="70%"></line>
+<line class="node-connection" x1="50%" x2="60%" y1="50%" y2="70%"></line>
+<line class="node-connection" x1="30%" x2="20%" y1="40%" y2="30%"></line>
+<line class="node-connection" x1="70%" x2="80%" y1="40%" y2="35%"></line>
+</svg>
+<!-- Nodes (Leaders) -->
+<!-- Center Node: Sarah -->
+<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 group">
+<div class="w-16 h-16 rounded-full border-4 border-primary bg-white flex items-center justify-center shadow-xl ring-8 ring-primary/5 cursor-pointer">
+<img alt="Sarah Jenkins" class="w-full h-full rounded-full object-cover" data-alt="Portrait circle of woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8-ULvbo97o77Dn0C7hJpIAbwCVwM8fg9Sr6IV4vkJtdxkTO81dyAwAaeMBuyJY-eHQiW3P4-64G1g3Y5Ryt0utRKzo-nHZBApaUhxHz0tILdt2UVkewq-wcYtrZqR_jaSUCLQCyvYaL-YXbUrhVJNc4hDZIKrxXLcIYhYY6yBRF7lsuk9g3fjY1q8RCt2NoahQGI1bf00j0zg8LIk5B_o2NU-9i0hNEFwf9hdj7ZTa3mkYrTGDdowL3tDId39KUgjQwgfUeE16A8"/>
+</div>
+<div class="absolute top-full mt-3 left-1/2 -translate-x-1/2 whitespace-nowrap">
+<span class="bg-primary text-white text-[10px] px-2 py-0.5 rounded uppercase tracking-tighter">Current Selection</span>
+</div>
+</div>
+<!-- Secondary Nodes -->
+<div class="absolute left-[30%] top-[40%] group cursor-pointer">
+<div class="w-12 h-12 rounded-full border-2 border-outline-variant bg-white p-1 hover:border-primary transition-all">
+<img alt="Leader" class="w-full h-full rounded-full object-cover" data-alt="Portrait circle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEKa4yd7UqSej8w0SVwhob9SDgcKjvS1Q0PCYT7C_W6-5pIZnyhoFCn2GDdYy8AzdgPVVmfJyK6P2JN0-5oPk2SjILGWHu4-vI2HiFzM7OiJ2rxT3v8kzHMg3ZuAFXIw1HrJ5ryM4hsl-gaTTkgpwjfHQgGCKmfCVbDo3sumUQIxSAp_LWQXsKRpAv8oWoNPUE1Wwn_kv_gL7aj2NeW5IPWZ-2HeuafdVzDLRIvR_pdDOzPyMBXZpxwRFZcNvwsgYP4W2qgRDFRyk"/>
+</div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[11px] font-semibold opacity-60">David A.</span>
+</div>
+<div class="absolute left-[70%] top-[40%] group cursor-pointer">
+<div class="w-12 h-12 rounded-full border-2 border-outline-variant bg-white p-1 hover:border-primary transition-all">
+<img alt="Leader" class="w-full h-full rounded-full object-cover" data-alt="Portrait circle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDua759IrKUUQhGy2SfQUdzgCL1RXmg34AZA2kMjlzvnAKR3G7Y9Ol5zZZd_AYqkUlnNdM7tMTewNnxWXnFpFyxmNBNxCDlhLXuG5_pcYWagdrjioGe4bOL6P7q6L6i9wfU0x8AsCbo2d572VZTOwMXLe3Y1MhLY7pOtBaLkrzDlN0vWglieWRSIoSsjxDCeo5BYJt6cHlA1NHLscwFtUNcbNPkXU50jLMpzNUhwpsl1WFYeVCiCloOw0qY0Q2XUzV_-EptksnjlOo"/>
+</div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[11px] font-semibold opacity-60">Elena R.</span>
+</div>
+<div class="absolute left-[40%] top-[70%] group cursor-pointer">
+<div class="w-10 h-10 rounded-full border-2 border-outline-variant bg-white p-1 hover:border-primary transition-all">
+<div class="w-full h-full rounded-full bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">MC</div>
+</div>
+</div>
+<div class="absolute left-[60%] top-[70%] group cursor-pointer">
+<div class="w-10 h-10 rounded-full border-2 border-outline-variant bg-white p-1 hover:border-primary transition-all">
+<div class="w-full h-full rounded-full bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">JV</div>
+</div>
+</div>
+<!-- Legend Overlay -->
+<div class="absolute bottom-8 right-8 bg-white/90 backdrop-blur border border-outline-variant/10 p-6 rounded-2xl shadow-sm space-y-3">
+<h4 class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">Relational Key</h4>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-0.5 bg-primary/40"></div>
+<span class="text-xs font-medium text-on-surface-variant">Mentoring</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-0.5 border-t border-dashed border-primary/20"></div>
+<span class="text-xs font-medium text-on-surface-variant">Peer Connection</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary/10 border border-primary/20"></div>
+<span class="text-xs font-medium text-on-surface-variant">Development Path</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Dashboard Style Metrics (Soft Cards) -->
+<div class="grid grid-cols-3 gap-8 mt-12">
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_4px_24px_rgba(27,28,25,0.04)] space-y-4">
+<span class="text-[10px] uppercase tracking-widest text-secondary font-bold">Network Reach</span>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-headline font-light">128</span>
+<span class="text-xs text-on-surface-variant">active leaders</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-2/3"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_4px_24px_rgba(27,28,25,0.04)] space-y-4">
+<span class="text-[10px] uppercase tracking-widest text-secondary font-bold">Formation Ratio</span>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-headline font-light">1:4</span>
+<span class="text-xs text-on-surface-variant">mentor to protégé</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest rounded-full flex gap-1">
+<div class="h-full bg-secondary w-1/4"></div>
+<div class="h-full bg-secondary w-1/4"></div>
+<div class="h-full bg-secondary w-1/4"></div>
+<div class="h-full bg-outline-variant w-1/4"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_4px_24px_rgba(27,28,25,0.04)] space-y-4">
+<span class="text-[10px] uppercase tracking-widest text-secondary font-bold">Deep Lineage</span>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-headline font-light">5</span>
+<span class="text-xs text-on-surface-variant">generational tiers</span>
+</div>
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-white bg-primary-container"></div>
+<div class="w-6 h-6 rounded-full border-2 border-white bg-secondary"></div>
+<div class="w-6 h-6 rounded-full border-2 border-white bg-outline"></div>
+<div class="w-6 h-6 rounded-full border-2 border-white bg-surface-tint"></div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 bg-[#fbf9f4] dark:bg-[#272420] border-t border-surface-container-highest/50">
+<div class="flex flex-col md:flex-row justify-between items-center opacity-70 max-w-7xl mx-auto">
+<p class="text-xs uppercase tracking-widest font-sans text-[#3d3935] dark:text-[#e4e2dd]">© 2024 The Modern Sanctuary Leadership Collective. All rights reserved.</p>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a class="text-xs uppercase tracking-widest font-sans text-[#625d59] hover:text-[#272420] transition-colors" href="#">The Rule of Life</a>
+<a class="text-xs uppercase tracking-widest font-sans text-[#625d59] hover:text-[#272420] transition-colors" href="#">Ethics &amp; Safeguarding</a>
+<a class="text-xs uppercase tracking-widest font-sans text-[#625d59] hover:text-[#272420] transition-colors" href="#">Contact Shepherd</a>
+</div>
+</div>
+</footer>
+</body></html>

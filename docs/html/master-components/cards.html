@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Master components — Card styles</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+    />
+    <link rel="stylesheet" href="./css/core.css" />
+    <link rel="stylesheet" href="./css/cards-demo.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="nav nav--01" data-nav>
+      <div class="nav__inner">
+        <a class="brand" href="./index.html">
+          <span class="brand__mark" aria-hidden="true"></span>
+          Master components
+        </a>
+        <nav class="nav__links" aria-label="Primary">
+          <ul>
+            <li><a href="./index.html">Index</a></li>
+            <li><a href="./cards.html" aria-current="page">Cards</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="demo-page">
+      <section class="cards-hero container" aria-labelledby="cards-title">
+        <p class="label reveal">
+          <span class="label__dot" aria-hidden="true"></span>
+          Component lab
+        </p>
+        <h1 id="cards-title" class="section-title reveal" style="--d: 0.06s">
+          Five <em>card</em> treatments
+        </h1>
+        <p class="demo-kicker reveal" style="--d: 0.12s">
+          Same duotone language: cream fields, ink type, hairlines. Each pattern answers a different
+          content job — featured article, index row, proof tile, pricing column, and grid cell.
+        </p>
+
+        <div class="cards-grid">
+          <article class="card--surface reveal" style="--d: 0.05s">
+            <p class="card__eyebrow">Pattern A · Surface</p>
+            <h2 class="card__title">The <em>writing</em> layer</h2>
+            <p class="card__dek">
+              For evergreen articles and evidence notes: soft border, lift on hover, meta row pinned
+              to the foot.
+            </p>
+            <div class="card__foot">
+              <span>12 min read</span>
+              <a class="card__link" href="#">Open <span class="arrow">&rarr;</span></a>
+            </div>
+          </article>
+
+          <article class="card--line reveal" style="--d: 0.1s">
+            <p class="card__eyebrow">Pattern B · Line</p>
+            <h2 class="card__title">Methodology, <em>unboxed</em></h2>
+            <p class="card__dek">
+              Top and bottom rules only — typography carries the card. Hover adds a wash instead of a
+              shadow.
+            </p>
+            <div class="card__foot">
+              <span>Section</span>
+              <a class="card__link" href="#">Continue <span class="arrow">&rarr;</span></a>
+            </div>
+          </article>
+
+          <article class="card--midnight reveal" style="--d: 0.14s">
+            <p class="card__eyebrow">Pattern C · Midnight</p>
+            <h2 class="card__title">Walkthrough <em>preview</em></h2>
+            <p class="card__dek">
+              Regional band for high-intent CTAs: pricing, contact, or “start with clarity” moments
+              on dark ink.
+            </p>
+            <div class="card__foot">
+              <span>Interactive</span>
+              <a class="card__link" href="#">Launch <span class="arrow">&rarr;</span></a>
+            </div>
+          </article>
+
+          <article class="card--ledger card-span-2 reveal" style="--d: 0.18s">
+            <div>
+              <p class="card__eyebrow">Pattern D · Ledger</p>
+              <h2 class="card__title">Who we serve — <em>institutions</em></h2>
+              <p class="card__dek">
+                Two-column ledger: narrative on the left, monospace meta on the right. Suited to case
+                studies and FAQs where scanning matters.
+              </p>
+              <div class="card__foot">
+                <span>Updated quarterly</span>
+                <a class="card__link" href="#">Details <span class="arrow">&rarr;</span></a>
+              </div>
+            </div>
+            <div class="card__meta-col" aria-label="Status">
+              STATUS<br />
+              READY<br />
+              v0.4
+            </div>
+          </article>
+
+          <article class="card--tile reveal" style="--d: 0.22s">
+            <p class="card__eyebrow">Pattern E · Tile</p>
+            <h2 class="card__title">System <em>modules</em></h2>
+            <p class="card__dek">
+              Border-grid cell: no radius, sharp corners for dense index pages (services grid, book
+              modules, course map).
+            </p>
+            <div class="card__foot">
+              <span>6 modules</span>
+              <a class="card__link" href="#">Map <span class="arrow">&rarr;</span></a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <footer class="site-foot">
+        <div class="site-foot__inner">
+          <span>Movemental · master-components</span>
+          <a href="./index.html">All demos</a>
+        </div>
+      </footer>
+    </main>
+
+    <script src="./js/core.js" defer></script>
+  </body>
+</html>

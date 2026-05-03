@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Master components — Nav 02 · Midnight flip</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+    />
+    <link rel="stylesheet" href="./css/core.css" />
+    <link rel="stylesheet" href="./css/nav-demos.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="nav nav--02 nav--inverse nav--has-drawer" data-nav>
+      <div class="nav__inner">
+        <a class="brand" href="./index.html">
+          <span class="brand__mark brand__mark--inverse" aria-hidden="true"></span>
+          Movemental
+        </a>
+        <nav class="nav__links" aria-label="Primary">
+          <ul>
+            <li><a href="#approach">Approach</a></li>
+            <li><a href="#walkthrough">Walkthrough</a></li>
+            <li><a href="#articles">Articles</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </nav>
+        <div class="nav__actions">
+          <a class="btn btn--ghost-inverse btn--sm" href="#evidence">Evidence</a>
+          <a class="btn btn--primary-inverse btn--sm" href="#start">
+            Start with clarity
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+        <button
+          type="button"
+          class="nav__toggle"
+          data-nav-toggle
+          aria-expanded="false"
+          aria-controls="nav-drawer-02"
+        >
+          <span></span><span></span>
+        </button>
+      </div>
+      <div id="nav-drawer-02" class="nav__drawer">
+        <ul>
+          <li><a href="#approach">Approach</a></li>
+          <li><a href="#walkthrough">Walkthrough</a></li>
+          <li><a href="#articles">Articles</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#evidence">Evidence</a></li>
+        </ul>
+        <div class="nav__drawer-cta">
+          <a class="btn btn--primary" href="#start">Start with clarity</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="demo-page">
+      <section
+        style="
+          min-height: 42vh;
+          background: var(--dark);
+          color: var(--dark-ink);
+          padding: calc(var(--nav-h) + 3rem) var(--gutter) 3rem;
+        "
+      >
+        <div class="container">
+          <p class="label label--on-dark reveal">
+            <span class="label__dot" aria-hidden="true"></span>
+            Nav 02
+          </p>
+          <h1 class="section-title reveal" style="--d: 0.06s; color: var(--dark-ink); max-width: 20ch">
+            Midnight chrome, <em>cream</em> on scroll
+          </h1>
+          <p class="demo-kicker reveal" style="--d: 0.1s; color: var(--dark-muted)">
+            Default state matches a hero band: light links on <code style="font-family: var(--font-mono); font-size: 0.85em">--dark</code>.
+            After a few pixels of scroll the bar becomes the same glass treatment as Nav 01.
+          </p>
+        </div>
+      </section>
+
+      <article class="container" style="padding-block: var(--section-y)">
+        <p id="approach" class="reveal">
+          <strong>Approach</strong> — narrow path between avoidance and reckless adoption.
+        </p>
+        <p id="walkthrough" class="reveal" style="--d: 0.06s; margin-top: 1rem">
+          <strong>Walkthrough</strong> — see the system before you buy the system.
+        </p>
+        <p id="articles" class="reveal" style="--d: 0.08s; margin-top: 1rem">
+          <strong>Articles</strong> — long-form intelligence for leaders who steward attention.
+        </p>
+        <p id="about" class="reveal" style="--d: 0.1s; margin-top: 1rem">
+          <strong>About</strong> — who we are, what we will not do, and how we work.
+        </p>
+        <p id="evidence" class="reveal" style="--d: 0.12s; margin-top: 1rem">
+          <strong>Evidence</strong> — artifacts and outcomes, not vanity metrics.
+        </p>
+        <p id="start" class="reveal" style="--d: 0.14s; margin-top: 2rem; padding-bottom: 40vh">
+          Scroll past this block to watch the nav flip to the cream-field palette.
+        </p>
+      </article>
+
+      <footer class="site-foot">
+        <div class="site-foot__inner">
+          <span>Nav 02 · midnight → glass</span>
+          <a href="./index.html">Index</a>
+        </div>
+      </footer>
+    </main>
+
+    <script src="./js/core.js" defer></script>
+  </body>
+</html>

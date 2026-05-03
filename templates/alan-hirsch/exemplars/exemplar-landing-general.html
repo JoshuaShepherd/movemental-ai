@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About Movemental — exemplar landing (general)</title>
+    <meta
+      name="description"
+      content="Movemental helps movement leaders amplify their life's work through AI-native tools, editorial design, and a platform built for legacy."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../docs/html/site-templates/site-theme.css" />
+    <style>
+      /* Hero split + values grid: site-theme.css (DESIGN.md §14.3 LandingGeneral) */
+
+      /* — Midnight statement — */
+      .midnight-statement {
+        max-width: var(--prose-max);
+      }
+      .midnight-statement h2 {
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1.18;
+        margin: 0 0 16px;
+        color: var(--inverse-foreground);
+      }
+      .midnight-statement p {
+        margin: 0 0 24px;
+        font-size: 1.05rem;
+        line-height: 1.6;
+        color: color-mix(in srgb, var(--inverse-foreground) 74%, transparent);
+      }
+
+      /* — Closing CTA — */
+      .cta-block {
+        text-align: center;
+        max-width: 520px;
+        margin: 0 auto;
+      }
+      .cta-block h2 {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+        margin: 0 0 12px;
+        color: var(--foreground);
+      }
+      .cta-block p {
+        margin: 0 0 28px;
+        font-size: 1.05rem;
+        line-height: 1.55;
+        color: var(--muted-foreground);
+      }
+      .cta-block .btn-row {
+        justify-content: center;
+      }
+      .cta-secondary {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--primary);
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-top">
+      <div class="site-top__inner">
+        <a href="../../../docs/html/site-templates/index.html" class="site-brand">Movemental <small>Draft HTML &middot; not production</small></a>
+        <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-nav-list">Menu</button>
+        <nav class="site-nav" aria-label="Primary sections">
+          <ul id="site-nav-list">
+            <li><a href="../../../docs/html/site-templates/index.html">Home</a></li>
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">How it works</a></li>
+            <li><a href="../../../docs/html/audience-concept-modern/movement-leaders.html">Movement leaders</a></li>
+            <li><a href="../../../docs/html/audience-concept-modern/churches.html">Churches &amp; nonprofits</a></li>
+            <li><a href="../../../docs/html/team-concept-modern/index.html">Proof &amp; about</a></li>
+            <li><a href="../../../docs/html/services-pricing-concept-modern.html">Pricing &amp; FAQ</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+
+      <!-- ── Hero band: split layout ── -->
+      <section class="band-default" style="padding-top: var(--section-y-lg); padding-bottom: var(--section-y-lg);">
+        <div class="container hero-split">
+
+          <!-- Portrait column -->
+          <div class="hero-portrait">
+            <img
+              src="https://placehold.co/840x1050/e1e9ee/566166?text=4%C3%975+portrait"
+              alt="Movemental founder portrait"
+              width="840"
+              height="1050"
+            />
+          </div>
+
+          <!-- Text stack -->
+          <div class="hero-text">
+            <p class="eyebrow" style="color: var(--muted-foreground);">About Movemental</p>
+            <h1 class="display">A platform built for the people who build movements.</h1>
+            <p class="hero-tagline">Stewardship over spectacle. Legacy over virality.</p>
+            <div class="hero-body">
+              <p>
+                Movemental exists because the world's most consequential ideas often
+                sit inside books, courses, and decades of fieldwork that never reach
+                their full audience. We build AI-native tools that amplify a leader's
+                life work — not replace it.
+              </p>
+              <p>
+                Our team brings editorial instinct, deep technical craft, and a
+                conviction that the best platforms feel like <strong>publications</strong>,
+                not dashboards. Every surface is designed to honor the voice it carries.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Values / milestones: 3-up on section surface ── -->
+      <section class="band-section">
+        <div class="container">
+          <p class="eyebrow">What we believe</p>
+          <h2 class="display" style="font-size: clamp(1.5rem, 3vw, 2rem); color: var(--foreground);">Three commitments that shape every decision.</h2>
+
+          <div class="values-grid">
+            <div class="value-item">
+              <span class="value-item__number">01</span>
+              <h3>Voice fidelity</h3>
+              <p>
+                AI should sound like the leader it serves, not like a chatbot.
+                Every model we train is measured against the author's own cadence,
+                vocabulary, and argumentative structure.
+              </p>
+            </div>
+            <div class="value-item">
+              <span class="value-item__number">02</span>
+              <h3>Editorial craft</h3>
+              <p>
+                We treat every screen as a publication surface. Typography, whitespace,
+                and tonal stacking do the heavy lifting — not decoration, not gimmicks.
+              </p>
+            </div>
+            <div class="value-item">
+              <span class="value-item__number">03</span>
+              <h3>Leader-first economics</h3>
+              <p>
+                The platform earns when the leader earns. No hidden fees, no lock-in.
+                We succeed only if the movement we serve succeeds.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Midnight band: punchy statement ── -->
+      <section class="band-midnight">
+        <div class="container midnight-statement">
+          <h2>The best ideas already exist. They just need a better vehicle.</h2>
+          <p>
+            Books sell, then sit on shelves. Courses launch, then fade. Movemental
+            turns a leader's full body of work into an always-on, always-faithful
+            presence — so the ideas keep moving after the conference ends.
+          </p>
+          <a class="btn btn-ghost" href="../../../docs/html/homepage-concept-modern/index.html">See how it works &rarr;</a>
+        </div>
+      </section>
+
+      <!-- ── Closing CTA ── -->
+      <section class="band-default" style="padding-top: var(--section-y-lg); padding-bottom: var(--section-y-lg);">
+        <div class="container cta-block">
+          <h2>Ready to see what your platform could look like?</h2>
+          <p>
+            We work with a small number of leaders at a time. If your life's work
+            deserves a better home, let's talk.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="../../../docs/html/homepage-concept-modern/index.html">Book a walkthrough</a>
+          </div>
+          <p style="margin-top: 16px;">
+            <a class="cta-secondary" href="../../../docs/html/homepage-concept-modern/index.html">Or explore the evidence first &rarr;</a>
+          </p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div>
+          <h3 class="site-footer__heading">Platform</h3>
+          <ul class="site-footer__links">
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">How it works</a></li>
+            <li><a href="../../../docs/html/services-pricing-concept-modern.html">Services</a></li>
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">Evidence</a></li>
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">Methodology</a></li>
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">System</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="site-footer__heading">Support &amp; journeys</h3>
+          <ul class="site-footer__links">
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">FAQ</a></li>
+            <li><a href="../../../docs/html/services-pricing-concept-modern.html">Pricing</a></li>
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">Walkthrough</a></li>
+            <li><a href="../../../docs/html/audience-concept-modern/movement-leaders.html">Who we serve</a></li>
+            <li><a href="https://movemental.com/terms">Terms</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="site-footer__heading">Draft meta</h3>
+          <ul class="site-footer__links">
+            <li><a href="../tabbed-argument-page.html">Argument inventory</a></li>
+            <li><a href="../../../docs/html/site-templates/index.html">Templates home</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="site-footer__meta">Static HTML in <code>templates/alan-hirsch/exemplars/</code> &middot; tokens aligned with <code>docs/design/DESIGN.md</code></p>
+    </footer>
+    <script src="../../../docs/html/site-templates/site-shell.js" defer></script>
+  </body>
+</html>

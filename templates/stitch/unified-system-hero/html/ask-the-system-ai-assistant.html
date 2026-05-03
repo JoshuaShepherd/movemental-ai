@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ask the System | AI Intelligence Partner</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#b4cdb8",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#57605b",
+                    "background": "#faf9f6",
+                    "on-secondary-fixed": "#151d1a",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "surface": "#faf9f6",
+                    "on-primary-fixed-variant": "#364c3c",
+                    "tertiary": "#271013",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#1b1c1a",
+                    "secondary-fixed-dim": "#bfc9c2",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#e7bcbf",
+                    "outline-variant": "#c3c8c1",
+                    "outline": "#737973",
+                    "on-tertiary-fixed": "#2d1417",
+                    "surface-container": "#efeeeb",
+                    "inverse-surface": "#2f312f",
+                    "primary-fixed-dim": "#b4cdb8",
+                    "primary-container": "#1b3022",
+                    "on-error": "#ffffff",
+                    "on-background": "#1b1c1a",
+                    "on-surface-variant": "#434843",
+                    "on-tertiary-container": "#b0898c",
+                    "surface-container-highest": "#e3e2df",
+                    "primary": "#061b0e",
+                    "tertiary-fixed": "#ffd9dc",
+                    "primary-fixed": "#d0e9d4",
+                    "surface-tint": "#4d6453",
+                    "surface-container-high": "#e9e8e5",
+                    "secondary-fixed": "#dbe5de",
+                    "on-secondary-fixed-variant": "#404944",
+                    "on-secondary-container": "#5d6661",
+                    "on-primary-container": "#819986",
+                    "surface-bright": "#faf9f6",
+                    "surface-container-low": "#f4f3f0",
+                    "tertiary-container": "#3f2427",
+                    "secondary-container": "#dbe5de",
+                    "surface-dim": "#dbdad7",
+                    "on-tertiary-fixed-variant": "#5d3f42",
+                    "surface-variant": "#e3e2df",
+                    "inverse-on-surface": "#f2f1ee",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#0b2013",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .font-serif { font-family: 'Newsreader', serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar Implementation from JSON -->
+<header class="bg-[#faf9f6] dark:bg-[#061b0e] w-full border-none flex justify-between items-center px-8 py-6 w-full max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-serif font-bold text-[#061b0e] dark:text-[#faf9f6] tracking-tighter">Ask the System</span>
+<nav class="hidden md:flex gap-6">
+<a class="font-serif italic text-lg tracking-tight text-[#061b0e] dark:text-[#faf9f6] border-b-2 border-[#061b0e] dark:border-[#faf9f6] pb-1 transition-colors duration-300" href="#">Dashboard</a>
+<a class="font-serif italic text-lg tracking-tight text-[#5d6661] dark:text-[#c3c8c1] hover:text-[#061b0e] transition-colors duration-300" href="#">Analytics</a>
+<a class="font-serif italic text-lg tracking-tight text-[#5d6661] dark:text-[#c3c8c1] hover:text-[#061b0e] transition-colors duration-300" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-[#5d6661] dark:text-[#c3c8c1] hover:text-[#061b0e] transition-all">settings</button>
+<button class="material-symbols-outlined text-[#5d6661] dark:text-[#c3c8c1] hover:text-[#061b0e] transition-all">help</button>
+<div class="h-10 w-10 rounded-full overflow-hidden">
+<img alt="User profile avatar" class="h-full w-full object-cover" data-alt="professional profile portrait of a man in a charcoal suit against a clean studio background, soft editorial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANMa0BvosQMBT3nrVJj88q2wCi5uMZoVi-epkFwKtJMHJSR5QaKlgksj6GTjH_LnnQX4lHEcvzkCExetPJG19ut-iVrRL2fBCmjqEbvY07UmC0iv4vHLx7sQZ5QlfNtBzpL0aS5sPeyuojJkgmmfOMcAM_M_ktBuW76z2A4xnT1XoeOc3EN8GL2S0-66PaALfWEtHHRP4T1-f594xUS38WO8P_5nSZiQggpOHxhv6toT8Ut9bVPplsaEvdOEfVZ_CSDvT__DXHubQ"/>
+</div>
+</div>
+</header>
+<!-- Separation Line -->
+<div class="bg-[#f4f3f0] dark:bg-[#1b3022] h-[1px] w-full"></div>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar Implementation from JSON -->
+<aside class="hidden lg:flex flex-col h-full py-10 px-6 space-y-8 bg-[#f4f3f0] dark:bg-[#1b3022] w-80 rounded-none border-none">
+<div class="flex items-center gap-3 mb-4">
+<div class="p-2 bg-primary rounded-lg text-surface">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h2 class="font-serif text-lg text-[#061b0e] dark:text-[#faf9f6]">Context Library</h2>
+<p class="text-[10px] uppercase tracking-widest font-medium text-[#5d6661]">Grounded AI Responses</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-4 py-3 font-sans uppercase text-xs tracking-widest font-medium text-[#061b0e] dark:text-[#faf9f6] font-bold border-l-4 border-[#061b0e] dark:border-[#faf9f6] pl-4 transition-all" href="#">
+<span class="material-symbols-outlined text-sm">chat_bubble</span>
+                    Current Inquiry
+                </a>
+<a class="flex items-center gap-4 py-3 font-sans uppercase text-xs tracking-widest font-medium text-[#5d6661] dark:text-[#c3c8c1] pl-5 hover:bg-[#efeeeb] dark:hover:bg-[#061b0e]/50 transition-all" href="#">
+<span class="material-symbols-outlined text-sm">auto_stories</span>
+                    Impact Stories
+                </a>
+<a class="flex items-center gap-4 py-3 font-sans uppercase text-xs tracking-widest font-medium text-[#5d6661] dark:text-[#c3c8c1] pl-5 hover:bg-[#efeeeb] dark:hover:bg-[#061b0e]/50 transition-all" href="#">
+<span class="material-symbols-outlined text-sm">person_search</span>
+                    Donor Profiles
+                </a>
+<a class="flex items-center gap-4 py-3 font-sans uppercase text-xs tracking-widest font-medium text-[#5d6661] dark:text-[#c3c8c1] pl-5 hover:bg-[#efeeeb] dark:hover:bg-[#061b0e]/50 transition-all" href="#">
+<span class="material-symbols-outlined text-sm">database</span>
+                    Program Data
+                </a>
+</nav>
+<div class="mt-auto">
+<button class="w-full bg-primary text-on-primary py-4 rounded-md font-sans uppercase text-xs tracking-widest font-bold hover:opacity-90 active:scale-[0.99] transition-all">
+                    New Inquiry
+                </button>
+</div>
+</aside>
+<!-- Main Content Area: Conversational Interface -->
+<main class="flex-1 flex flex-col bg-surface relative overflow-y-auto">
+<div class="max-w-3xl mx-auto w-full px-8 py-12 flex flex-col gap-12">
+<!-- Initial Prompt Section -->
+<section class="flex flex-col gap-6">
+<h1 class="font-serif text-4xl text-primary tracking-tight leading-tight">Good afternoon, Curator. How can I assist with your organizational data today?</h1>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<button class="bg-surface-container-low p-6 rounded-xl text-left hover:bg-surface-container-high transition-all flex flex-col gap-3 group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">edit_note</span>
+<span class="font-body text-sm font-semibold tracking-wide">Draft a donor update</span>
+</button>
+<button class="bg-surface-container-low p-6 rounded-xl text-left hover:bg-surface-container-high transition-all flex flex-col gap-3 group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">summarize</span>
+<span class="font-body text-sm font-semibold tracking-wide">Summarize program impact</span>
+</button>
+<button class="bg-surface-container-low p-6 rounded-xl text-left hover:bg-surface-container-high transition-all flex flex-col gap-3 group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">present_to_all</span>
+<span class="font-body text-sm font-semibold tracking-wide">Prepare board briefing</span>
+</button>
+</div>
+</section>
+<!-- Active Conversation Example -->
+<div class="flex flex-col gap-8">
+<!-- User Message -->
+<div class="flex flex-col items-end gap-2 max-w-[85%] self-end">
+<div class="bg-primary text-on-primary p-6 rounded-2xl rounded-tr-none shadow-sm">
+<p class="font-body text-sm leading-relaxed">Draft a personalized update for Thomas Aris. Mention his attendance at the Gala and focus on our progress with the Clean Water initiative.</p>
+</div>
+<span class="text-[10px] uppercase tracking-widest text-secondary font-bold">Today, 2:14 PM</span>
+</div>
+<!-- AI Response -->
+<div class="flex flex-col items-start gap-4 max-w-[90%]">
+<div class="flex gap-4 items-start">
+<div class="h-8 w-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-surface text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div class="flex flex-col gap-6 bg-surface-container-lowest p-8 rounded-2xl rounded-tl-none shadow-sm border border-outline-variant/10">
+<div class="font-serif text-lg leading-relaxed text-on-surface space-y-4">
+<p>Dear Thomas,</p>
+<p>It was a pleasure seeing you at our annual Gala last week. Your presence always brings such warmth to our community, and I particularly enjoyed our brief conversation about the future of our regional outreach.</p>
+<p>Knowing your specific interest in the <span class="font-bold border-b border-primary/20">Clean Water initiative</span>, I wanted to share a milestone we've just reached. Thanks to the sustained support of partners like yourself, we have successfully implemented the first phase of the filtration system in the Northern Province, now providing safe drinking water to over 1,200 households.</p>
+<p>We are currently finalizing the 2024 Impact Report which details these developments further. I would love to walk you through it over coffee next month.</p>
+<p>Best regards,<br/>The Clean Water Team</p>
+</div>
+<div class="flex gap-2 items-center pt-4 border-t border-surface-container">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container-high text-[11px] font-bold uppercase tracking-wider transition-all">
+<span class="material-symbols-outlined text-sm">content_copy</span> Copy
+                                    </button>
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container-high text-[11px] font-bold uppercase tracking-wider transition-all">
+<span class="material-symbols-outlined text-sm">refresh</span> Regenerate
+                                    </button>
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container-high text-[11px] font-bold uppercase tracking-wider transition-all">
+<span class="material-symbols-outlined text-sm">edit</span> Refine
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Chat Input Area -->
+<div class="sticky bottom-0 bg-surface/80 backdrop-blur-md px-8 py-6 w-full max-w-3xl mx-auto">
+<div class="relative flex items-center bg-surface-container-high rounded-full px-6 py-4 transition-all focus-within:ring-1 focus-within:ring-primary shadow-sm">
+<input class="bg-transparent border-none focus:ring-0 w-full text-sm font-body text-on-surface-variant placeholder:text-outline" placeholder="Type a follow-up or a new prompt..." type="text"/>
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-secondary hover:text-primary transition-colors">attach_file</button>
+<button class="h-10 w-10 bg-primary text-on-primary rounded-full flex items-center justify-center hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+</div>
+</div>
+<p class="text-[10px] text-center mt-3 text-outline tracking-wider uppercase font-medium">Grounded in organizational program data and donor records.</p>
+</div>
+</main>
+<!-- Right Panel: Context Sources -->
+<aside class="hidden xl:flex flex-col w-96 bg-surface-container-low p-8 border-l-0 overflow-y-auto">
+<div class="flex flex-col gap-8">
+<header class="flex flex-col gap-1">
+<h3 class="font-serif text-2xl text-primary">Context Sources</h3>
+<p class="text-xs text-secondary font-medium uppercase tracking-widest">Active Verification Layers</p>
+</header>
+<div class="flex flex-col gap-6">
+<!-- Donor Profile Context -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">person</span>
+                                Donor Profiles
+                            </span>
+<span class="text-[10px] text-outline font-bold">2 MATCHES</span>
+</div>
+<div class="bg-surface p-4 rounded-xl shadow-sm border border-outline-variant/10 group cursor-pointer hover:bg-surface-container-lowest transition-all">
+<h4 class="font-serif text-md text-on-surface">Thomas Aris</h4>
+<p class="text-xs text-secondary mt-1 leading-relaxed">Major Donor, Legacy Society. Prefers personalized email correspondence.</p>
+<div class="mt-3 flex gap-2">
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[9px] font-bold rounded uppercase">Key Donor</span>
+</div>
+</div>
+</div>
+<!-- Impact Stories Context -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">auto_stories</span>
+                                Impact Stories
+                            </span>
+<span class="text-[10px] text-outline font-bold">1 MATCH</span>
+</div>
+<div class="bg-surface p-4 rounded-xl shadow-sm border border-outline-variant/10 hover:bg-surface-container-lowest transition-all">
+<h4 class="font-serif text-md text-on-surface">Summer 2024 Report</h4>
+<p class="text-xs text-secondary mt-1 leading-relaxed">Verified progress on Northern filtration units. Completion: 100% Phase 1.</p>
+</div>
+</div>
+<!-- Program Data Context -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">database</span>
+                                Program Data
+                            </span>
+<span class="text-[10px] text-outline font-bold">3 MATCHES</span>
+</div>
+<div class="bg-primary/5 p-4 rounded-xl border border-primary/10">
+<h4 class="font-serif text-md text-primary">Clean Water Initiative</h4>
+<ul class="mt-2 space-y-2">
+<li class="text-[11px] flex items-start gap-2 text-on-surface-variant">
+<span class="text-primary font-bold">01</span>
+<span>KPI: 1,200 households served in Q3.</span>
+</li>
+<li class="text-[11px] flex items-start gap-2 text-on-surface-variant">
+<span class="text-primary font-bold">02</span>
+<span>Resource: Northern Province Well Registry.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Grounding Visualization Card -->
+<div class="mt-4 bg-surface-container-highest p-6 rounded-2xl relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 transition-transform duration-700">
+<span class="material-symbols-outlined text-9xl">verified</span>
+</div>
+<h5 class="font-serif text-lg mb-2 relative z-10">Intellectual Integrity</h5>
+<p class="text-xs text-on-surface-variant leading-relaxed relative z-10">Every sentence drafted is cross-referenced against your internal library to prevent hallucinations.</p>
+<button class="mt-4 text-[10px] font-bold uppercase tracking-widest text-primary border-b border-primary/30 relative z-10">View Audit Log</button>
+</div>
+</div>
+</aside>
+</div>
+</body></html>

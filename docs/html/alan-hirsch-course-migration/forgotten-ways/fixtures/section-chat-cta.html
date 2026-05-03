@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat CTA — Forgotten Ways fixture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../site-templates/site-theme.css" />
+    <link rel="stylesheet" href="../../_shared/forgotten-ways-shell.css" />
+    <script src="../../_shared/forgotten-ways-learn.js" defer></script>
+  </head>
+  <body class="fw-migration">
+    <header class="fw-topbar"><div class="fw-topbar__inner"><a href="../index.html" class="fw-topbar__brand">The Forgotten Ways<small>Fixture · chat_dissonance / chat_action / chat_reflection</small></a></div></header>
+    <main class="fw-learn__content" style="max-width: var(--container-max); margin: 0 auto;">
+      <article class="fw-lesson">
+        <div class="fw-lesson__meta">Week 1 · <span class="fw-lesson__type">Dissonance</span></div>
+        <h1 class="fw-lesson__title">Open the Formation Companion to process the dissonance.</h1>
+        <p class="fw-lesson__description">When a concept lands hard, talk it out loud before your next cohort call. The Companion is scoped to this lesson's context.</p>
+
+        <div class="fw-grid-3" style="margin-top: 1rem;">
+          <article class="card">
+            <p class="fw-pill">chat_dissonance</p>
+            <h3 style="margin: 0.5rem 0;">Work through the discomfort</h3>
+            <p style="color: var(--muted-foreground); margin: 0 0 1rem;">Name the assumption that was jarred. Ask the Companion to help you separate the offense from the invitation.</p>
+            <button type="button" class="btn btn-primary" data-fw-drawer-open>Ask the Formation Companion</button>
+          </article>
+          <article class="card">
+            <p class="fw-pill">chat_action</p>
+            <h3 style="margin: 0.5rem 0;">Plan the next step</h3>
+            <p style="color: var(--muted-foreground); margin: 0 0 1rem;">Draft the specific action you'll take before the next call. Ask the Companion to sharpen it into one sentence.</p>
+            <button type="button" class="btn btn-primary" data-fw-drawer-open>Plan with the Companion</button>
+          </article>
+          <article class="card">
+            <p class="fw-pill">chat_reflection</p>
+            <h3 style="margin: 0.5rem 0;">Integrate the reflection</h3>
+            <p style="color: var(--muted-foreground); margin: 0 0 1rem;">Bring what you've been processing. Ask the Companion for one follow-up question you hadn't considered.</p>
+            <button type="button" class="btn btn-primary" data-fw-drawer-open>Reflect with the Companion</button>
+          </article>
+        </div>
+
+        <div class="fw-lesson-footer">
+          <a href="#" class="fw-lesson-footer__btn">Previous</a>
+          <div class="fw-lesson-footer__center"><button class="fw-lesson-footer__btn fw-lesson-footer__btn--primary" type="button">Mark Complete</button></div>
+          <a href="#" class="fw-lesson-footer__btn" style="justify-content: flex-end;">Next</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="fw-drawer" data-fw-drawer aria-label="Formation Companion">
+      <div class="fw-drawer__header">
+        <span class="fw-drawer__title">Formation Companion</span>
+        <button type="button" class="fw-lesson-footer__btn" data-fw-drawer-close>Close</button>
+      </div>
+      <div class="fw-drawer__body">
+        <p class="fw-pill fw-pill--primary">Context: Dissonance · Week 1</p>
+        <div class="fw-chat-msg" style="margin-top: 0.75rem;">Tell me what's unsettling about the idea that the church hasn't lost its mDNA but covered it over.</div>
+      </div>
+      <div class="fw-drawer__footer">
+        <input type="text" class="fw-form__input" placeholder="Ask a question…" />
+        <button type="button" class="btn btn-primary">Send</button>
+      </div>
+    </aside>
+  </body>
+</html>

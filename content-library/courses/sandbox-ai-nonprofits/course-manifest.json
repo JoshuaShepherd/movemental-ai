@@ -1,0 +1,36 @@
+{
+  "slug": "sandbox-ai-nonprofits",
+  "title": "Sandbox AI for Nonprofits",
+  "subtitle": "From safety and boundaries to honest scoring, ethical flags, and a board-ready use-case portfolio.",
+  "duration_weeks": 8,
+  "course_type": "formation",
+  "playbook_reference_weeks": 12,
+  "lms_model": "eight_week_compressed_playbook",
+  "formation_spine": "movemental_hybrid",
+  "formation_spine_notes": "Christ-centered stewardship framing for people of faith; universal ethics, governance, and neighbor-love language for mixed-faith nonprofit teams. Week 1 states this explicitly.",
+  "sandbox_article_base": "/articles/sandbox",
+  "playbook_doc": "docs/movemental-offering/03-sandbox-playbook.md",
+  "strategy_doc": "docs/articles/COURSE_STRATEGY.md",
+  "lms_week_to_playbook_weeks": {
+    "1": [1],
+    "2": [2],
+    "3": [3],
+    "4": [4, 5],
+    "5": [6],
+    "6": [7, 8],
+    "7": [9, 10],
+    "8": [11, 12]
+  },
+  "week_themes": [
+    { "week": 1, "theme": "Charter, roles, boundaries", "articles": ["the-three-layers-of-sandbox-work"], "playbook": "Template A — Season Charter" },
+    { "week": 2, "theme": "Eight-pattern discovery", "articles": ["the-eight-patterns-where-value-hides"], "playbook": "Template B — 8-Pattern Scan" },
+    { "week": 3, "theme": "Value under constraint and taxonomy", "articles": ["discovering-value-under-constraint", "the-three-kinds-of-value"], "playbook": "Discover / filter to briefs" },
+    { "week": 4, "theme": "Structured experiments I", "articles": ["recipes-are-not-cooking"], "playbook": "Test — Run 1" },
+    { "week": 5, "theme": "Scoring I", "articles": ["scoring-value-honestly"], "playbook": "Test — review / scoring" },
+    { "week": 6, "theme": "Second experiment cycle", "articles": ["recipes-are-not-cooking", "scoring-value-honestly"], "playbook": "Test — Run 2" },
+    { "week": 7, "theme": "Ethical and relational flag", "articles": ["the-ethical-and-relational-flag"], "playbook": "Judge — flag rounds" },
+    { "week": 8, "theme": "Portfolio, discovery posture, sending", "articles": ["building-the-use-case-portfolio", "discovery-engine-not-generator"], "playbook": "Assemble — portfolio + handoff" }
+  ],
+  "video_status": "scripted_placeholders",
+  "static_chrome_module": "src/lib/content/courses/sandbox-ai-nonprofits-ui-static.ts"
+}

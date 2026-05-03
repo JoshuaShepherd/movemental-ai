@@ -1,0 +1,2000 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>For Institutions &mdash; Movemental</title>
+    <meta
+      name="description"
+      content="For institutions navigating coherence across entities, generations, and authority in an AI-disrupted world — stakes, fragmentation shape, Safety &middot; Sandbox &middot; Skills &middot; Solutions, and what becomes possible when the institution is legible again."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+    />
+
+    <style>
+      /* ========================================================================
+         Movemental — Institutions concept · MODERN
+         Single-file mockup. Matches docs/html concept-modern design language:
+         warm cream duotone, Inter + Instrument Serif italics, flat surfaces,
+         tonal stacking for depth, border-separated grids, no drop shadows.
+         ======================================================================== */
+
+      :root {
+        /* Surface — warm cream duotone */
+        --bg: #faf6ee;
+        --bg-alt: #f2ece0;
+        --surface: #ffffff;
+
+        /* Ink */
+        --ink: #19150f;
+        --ink-muted: #6b6660;
+        --ink-soft: #9f978b;
+        --border: #e6ddcb;
+        --border-soft: #efe7d6;
+
+        /* Dark footer */
+        --dark: #141110;
+        --dark-ink: #f4efe5;
+        --dark-muted: rgba(244, 239, 229, 0.62);
+        --dark-border: rgba(244, 239, 229, 0.14);
+
+        /* Type */
+        --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system,
+          "Segoe UI", Roboto, sans-serif;
+        --font-serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+
+        --tr-tight: -0.022em;
+        --tr-display: -0.028em;
+        --tr-label: 0.09em;
+
+        /* Layout */
+        --container: 1200px;
+        --container-narrow: 740px;
+        --reading-max: 640px;
+        --gutter: clamp(1.25rem, 4vw, 2.5rem);
+        --section-y: clamp(5rem, 10vw, 8rem);
+        --nav-h: 4.25rem;
+
+        /* Motion */
+        --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+        --dur: 0.7s;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        text-size-adjust: 100%;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--font-sans);
+        font-size: 17px;
+        line-height: 1.55;
+        font-feature-settings: "kern", "liga", "cv11";
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+      }
+
+      ::selection {
+        background: var(--ink);
+        color: var(--bg);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+
+      p,
+      h1,
+      h2,
+      h3,
+      h4 {
+        margin: 0;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 500;
+        letter-spacing: var(--tr-display);
+        line-height: 1.1;
+      }
+
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: 1rem;
+        background: var(--ink);
+        color: var(--bg);
+        padding: 0.6rem 0.9rem;
+        font-size: 0.82rem;
+        font-weight: 500;
+        border-radius: 6px;
+        z-index: 100;
+      }
+      .skip-link:focus {
+        left: 1rem;
+      }
+
+      /* --- Containers ----------------------------------------------------- */
+      .container {
+        width: 100%;
+        max-width: var(--container);
+        margin-inline: auto;
+        padding-inline: var(--gutter);
+      }
+      .container--narrow {
+        max-width: var(--container-narrow);
+      }
+
+      /* --- Eyebrow label -------------------------------------------------- */
+      .label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: var(--tr-label);
+        text-transform: uppercase;
+        color: var(--ink-muted);
+        margin: 0 0 1.35rem;
+      }
+      .label__dot {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--ink);
+        opacity: 0.8;
+      }
+
+      /* --- Italic accent -------------------------------------------------- */
+      .hero__title em,
+      .hero__subhead em,
+      .hero__aside em,
+      .section-title em,
+      .errors__lead em,
+      .invitation__body em {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        font-size: 1.04em;
+        color: var(--ink);
+      }
+
+      /* --- Buttons -------------------------------------------------------- */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        padding: 0.78rem 1.25rem;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        letter-spacing: -0.005em;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: transform 0.2s var(--ease-out),
+          background-color 0.2s var(--ease-out),
+          color 0.2s var(--ease-out),
+          border-color 0.2s var(--ease-out);
+        white-space: nowrap;
+      }
+      .btn--primary {
+        background: var(--ink);
+        color: var(--bg);
+      }
+      .btn--primary:hover {
+        background: #000;
+        transform: translateY(-1px);
+      }
+      .btn--ghost {
+        background: transparent;
+        color: var(--ink);
+        border-color: var(--border);
+      }
+      .btn--ghost:hover {
+        border-color: var(--ink);
+      }
+      .btn--sm {
+        padding: 0.58rem 1rem;
+        font-size: 0.82rem;
+      }
+      .btn--lg {
+        padding: 0.95rem 1.5rem;
+        font-size: 0.95rem;
+      }
+      .btn .arrow {
+        display: inline-block;
+        transition: transform 0.2s var(--ease-out);
+      }
+      .btn:hover .arrow {
+        transform: translateX(3px);
+      }
+
+      /* --- NAV ------------------------------------------------------------ */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        height: var(--nav-h);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: background-color 0.25s var(--ease-out),
+          border-color 0.25s var(--ease-out),
+          backdrop-filter 0.25s var(--ease-out);
+        border-bottom: 1px solid transparent;
+      }
+      .nav.is-scrolled {
+        background: color-mix(in srgb, var(--bg) 82%, transparent);
+        backdrop-filter: saturate(140%) blur(14px);
+        border-bottom-color: var(--border);
+      }
+      .nav__inner {
+        max-width: var(--container);
+        margin-inline: auto;
+        width: 100%;
+        padding-inline: var(--gutter);
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-weight: 500;
+        font-size: 1rem;
+        letter-spacing: -0.005em;
+        color: var(--ink);
+      }
+      .brand__mark {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--ink);
+        position: relative;
+      }
+      .brand__mark::after {
+        content: "";
+        position: absolute;
+        inset: 5px;
+        border-radius: 50%;
+        background: var(--bg);
+      }
+      .brand__mark--inverse {
+        background: var(--dark-ink);
+      }
+      .brand__mark--inverse::after {
+        background: var(--dark);
+      }
+
+      .nav__links {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+      .nav__links ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 2rem;
+        font-size: 0.9rem;
+      }
+      .nav__links a {
+        color: var(--ink-muted);
+        transition: color 0.15s ease;
+      }
+      .nav__links a:hover {
+        color: var(--ink);
+      }
+
+      .nav__actions {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .nav__toggle {
+        display: none;
+        background: none;
+        border: 0;
+        cursor: pointer;
+        width: 2.2rem;
+        height: 2.2rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+      }
+      .nav__toggle span {
+        display: block;
+        width: 18px;
+        height: 1.4px;
+        background: var(--ink);
+      }
+
+      @media (max-width: 820px) {
+        .nav__inner {
+          flex-wrap: wrap;
+        }
+        .nav__links {
+          order: 3;
+          width: 100%;
+          display: none;
+          flex-direction: column;
+          padding-block: 1rem 0;
+          border-top: 1px solid var(--border);
+          margin-top: 0.35rem;
+        }
+        .nav__links ul {
+          flex-direction: column;
+          gap: 1rem;
+          align-items: flex-start;
+        }
+        .nav__actions {
+          order: 4;
+          width: 100%;
+          display: none;
+          padding-bottom: 1rem;
+        }
+        .nav.is-open .nav__links,
+        .nav.is-open .nav__actions {
+          display: flex;
+        }
+        .nav__toggle {
+          display: inline-flex;
+          margin-left: auto;
+        }
+      }
+
+      /* --- Reading progress ---------------------------------------------- */
+      .nav__progress {
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: transparent;
+        pointer-events: none;
+      }
+      .nav__progress span {
+        display: block;
+        height: 100%;
+        width: var(--reading-progress, 0%);
+        background: var(--ink);
+        transition: width 0.08s linear;
+      }
+
+      /* --- HERO ---------------------------------------------------------- */
+      .hero {
+        padding-top: calc(var(--nav-h) + clamp(4rem, 9vw, 7rem));
+        padding-bottom: clamp(4.5rem, 9vw, 7rem);
+      }
+      .hero__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: clamp(2.5rem, 5vw, 4rem);
+        align-items: start;
+        margin-top: 0.5rem;
+      }
+      /* Single-column hero (spec: tension + CTA; key line lives in Orientation) */
+
+      .hero__title {
+        font-size: clamp(2.6rem, 6.4vw, 5.5rem);
+        letter-spacing: var(--tr-display);
+        line-height: 1.02;
+        font-weight: 500;
+        color: var(--ink);
+        max-width: 16ch;
+        margin: 0;
+      }
+      .hero__title em {
+        font-size: 1.02em;
+      }
+
+      .hero__subhead {
+        font-size: clamp(1.15rem, 1.7vw, 1.3rem);
+        line-height: 1.5;
+        color: var(--ink-muted);
+        max-width: 46ch;
+        margin: clamp(1.5rem, 3vw, 2rem) 0 clamp(2rem, 3.5vw, 2.75rem);
+        letter-spacing: -0.005em;
+      }
+
+      .hero__ctas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .hero__aside {
+        border-left: 2px solid var(--ink);
+        padding-left: 1.25rem;
+        font-size: 1.02rem;
+        line-height: 1.6;
+        color: var(--ink-muted);
+        max-width: 34ch;
+      }
+      .hero__aside p {
+        margin: 0 0 0.45rem;
+      }
+      .hero__aside p:last-child {
+        margin: 0;
+      }
+      .hero__aside--audience p {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        font-size: 1.1rem;
+        line-height: 1.5;
+        color: var(--ink);
+        letter-spacing: -0.01em;
+      }
+      .hero__aside--audience .hero__aside-attr {
+        font-family: var(--font-sans);
+        font-style: normal;
+        font-size: 0.78rem;
+        letter-spacing: var(--tr-label);
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        margin-top: 0.75rem;
+      }
+
+      /* --- Hero tension (two-errors block) -------------------------------- */
+      .hero__tension {
+        margin-top: clamp(1.75rem, 4vw, 2.5rem);
+        padding-top: clamp(1.75rem, 4vw, 2.5rem);
+        padding-bottom: 0.25rem;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .hero__tension-coda {
+        margin-top: 1rem;
+      }
+      .hero__tension .errors__lead {
+        font-size: clamp(1.35rem, 2.8vw, 2rem);
+        max-width: 28ch;
+      }
+      .errors__lead {
+        font-size: clamp(1.35rem, 2.8vw, 2rem);
+        line-height: 1.15;
+        letter-spacing: var(--tr-display);
+        font-weight: 500;
+        color: var(--ink);
+        max-width: 28ch;
+        margin: 0 0 1.25rem;
+      }
+      .errors__pair {
+        font-size: clamp(1.05rem, 1.7vw, 1.2rem);
+        line-height: 1.55;
+        color: var(--ink-muted);
+        margin: 0;
+        padding: 0.9rem 0;
+        border-top: 1px solid var(--border);
+      }
+      .errors__pair:last-of-type {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .stakes__note {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        color: var(--ink-muted);
+        max-width: 58ch;
+        margin: 0;
+      }
+
+      /* --- Section title -------------------------------------------------- */
+      .section-title {
+        font-size: clamp(2rem, 4.4vw, 3.4rem);
+        line-height: 1.1;
+        letter-spacing: var(--tr-display);
+        font-weight: 500;
+        color: var(--ink);
+        max-width: 24ch;
+        margin: 0 0 clamp(2rem, 4vw, 3rem);
+      }
+
+      /* --- STAKES --------------------------------------------------------- */
+      .stakes {
+        padding-block: var(--section-y);
+      }
+
+      /* --- ORIENTATION ---------------------------------------------------- */
+      .orientation {
+        padding-block: var(--section-y);
+        background: var(--bg-alt);
+      }
+      .orientation__body {
+        max-width: var(--reading-max);
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: var(--ink-muted);
+      }
+      .orientation__body p {
+        margin: 0 0 1.2rem;
+      }
+      .orientation__body p:last-child {
+        margin: 0;
+      }
+      .orientation__body ul {
+        margin: 0 0 1.2rem;
+        padding-left: 1.25rem;
+        color: var(--ink-muted);
+      }
+      .orientation__body li {
+        margin-bottom: 0.4rem;
+        line-height: 1.55;
+      }
+      .orientation__body li:last-child {
+        margin-bottom: 0;
+      }
+      .orientation__body strong {
+        color: var(--ink);
+        font-weight: 500;
+      }
+      .orientation__keyline {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: clamp(1.2rem, 2vw, 1.45rem);
+        line-height: 1.35;
+        color: var(--ink);
+        letter-spacing: -0.01em;
+        margin-top: 1.5rem;
+      }
+
+      /* --- SHAPE OF FRAGMENTATION ---------------------------------------- */
+      .shape {
+        padding-block: var(--section-y);
+      }
+      .shape__head {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        margin-bottom: clamp(2.5rem, 5vw, 4rem);
+      }
+      @media (min-width: 880px) {
+        .shape__head {
+          grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+          align-items: end;
+          gap: 3rem;
+        }
+      }
+      .shape__lede {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: var(--ink-muted);
+        max-width: 54ch;
+        margin: 0;
+      }
+      .shape__lede > p {
+        margin: 0 0 0.75rem;
+      }
+      .shape__lede > p:last-child {
+        margin-bottom: 0;
+      }
+      .shape__lede > ul {
+        margin: 0 0 0.85rem;
+        padding-left: 1.15rem;
+      }
+      .shape__lede > ul li {
+        margin-bottom: 0.35rem;
+      }
+      .shape__lede strong {
+        font-weight: 500;
+        color: var(--ink);
+      }
+
+      .shape__grid {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        border-top: 1px solid var(--border);
+      }
+      @media (min-width: 760px) {
+        .shape__grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 1100px) {
+        .shape__grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .failure {
+        padding: 1.75rem 1.25rem 2rem 0;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      @media (min-width: 760px) {
+        .failure {
+          padding-right: 1.75rem;
+          border-right: 1px solid var(--border);
+        }
+        .failure:nth-child(2n) {
+          border-right: 0;
+        }
+      }
+      @media (min-width: 1100px) {
+        .failure {
+          border-right: 1px solid var(--border);
+        }
+        .failure:nth-child(2n) {
+          border-right: 1px solid var(--border);
+        }
+        .failure:nth-child(3n) {
+          border-right: 0;
+        }
+      }
+      .failure__num {
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: var(--tr-label);
+        color: var(--ink-soft);
+        font-feature-settings: "tnum";
+      }
+      .failure__title {
+        font-family: var(--font-serif);
+        font-weight: 400;
+        font-style: italic;
+        font-size: clamp(1.25rem, 1.7vw, 1.45rem);
+        line-height: 1.2;
+        color: var(--ink);
+        letter-spacing: -0.01em;
+        margin: 0;
+      }
+      .failure__body {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: var(--ink-muted);
+        margin: 0;
+      }
+      .failure__body ul {
+        margin: 0.35rem 0 0;
+        padding-left: 1.1rem;
+      }
+      .failure__body li {
+        margin-bottom: 0.2rem;
+      }
+      ul.failure__list {
+        list-style: disc;
+        margin: 0.25rem 0 0.5rem;
+        padding-left: 1.15rem;
+      }
+
+      /* --- AUTHORITY ------------------------------------------------------ */
+      .authority {
+        padding-block: var(--section-y);
+        background: var(--bg-alt);
+      }
+      .authority__coda {
+        font-size: 1.05rem;
+        line-height: 1.65;
+        color: var(--ink-muted);
+        max-width: 56ch;
+        margin: 0;
+      }
+
+      /* --- PATH (4-step row) --------------------------------------------- */
+      .path {
+        padding-block: var(--section-y);
+      }
+      .path__head {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        margin-bottom: clamp(2.5rem, 5vw, 4rem);
+      }
+      @media (min-width: 880px) {
+        .path__head {
+          grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+          align-items: end;
+          gap: 3rem;
+        }
+      }
+      .path__lede {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: var(--ink-muted);
+        max-width: 50ch;
+        margin: 0;
+      }
+      .path__lede > p {
+        margin: 0 0 0.85rem;
+      }
+      .path__lede > p:last-child {
+        margin-bottom: 0;
+      }
+      .path__lede strong {
+        font-weight: 500;
+        color: var(--ink);
+      }
+      .path__stages {
+        font-size: 1.05rem;
+        line-height: 1.5;
+        color: var(--ink);
+        margin: 0 0 1.15rem;
+      }
+      .path__grid {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        border-top: 1px solid var(--border);
+      }
+      @media (min-width: 760px) {
+        .path__grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 1040px) {
+        .path__grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+      .step {
+        padding: 1.75rem 1.5rem 2rem 0;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+      @media (min-width: 760px) {
+        .step {
+          padding-right: 1.5rem;
+          border-right: 1px solid var(--border);
+        }
+        .step:nth-child(2n) {
+          border-right: 0;
+        }
+      }
+      @media (min-width: 1040px) {
+        .step {
+          border-right: 1px solid var(--border);
+        }
+        .step:nth-child(2n) {
+          border-right: 1px solid var(--border);
+        }
+        .step:last-child {
+          border-right: 0;
+        }
+      }
+      .step__num {
+        font-family: var(--font-sans);
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: var(--tr-label);
+        color: var(--ink-soft);
+        font-feature-settings: "tnum";
+      }
+      .step__label {
+        font-family: var(--font-serif);
+        font-weight: 400;
+        font-style: italic;
+        font-size: clamp(1.5rem, 2.2vw, 1.85rem);
+        line-height: 1.1;
+        color: var(--ink);
+        letter-spacing: -0.01em;
+      }
+      .step__stack {
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+      .step__stack p,
+      .step__stack li {
+        font-size: 0.98rem;
+        line-height: 1.55;
+        color: var(--ink-muted);
+        margin: 0;
+      }
+      .step__stack strong {
+        color: var(--ink);
+        font-weight: 500;
+      }
+      .step__stack ul {
+        margin: 0;
+        padding-left: 1.1rem;
+      }
+      .step__stack li {
+        margin-bottom: 0.25rem;
+      }
+
+      /* --- MOVES (long rows, stacked vertically) ------------------------- */
+      .moves {
+        background: var(--bg-alt);
+        padding-block: var(--section-y);
+      }
+      .moves__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border-top: 1px solid var(--border);
+      }
+      .move {
+        padding: clamp(2rem, 4vw, 3rem) 0;
+        border-bottom: 1px solid var(--border);
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      @media (min-width: 880px) {
+        .move {
+          grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+          gap: 3rem;
+          align-items: start;
+        }
+      }
+      .move__head {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+      .move__num {
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: var(--tr-label);
+        color: var(--ink-soft);
+        font-feature-settings: "tnum";
+      }
+      .move__title {
+        font-family: var(--font-serif);
+        font-weight: 400;
+        font-style: italic;
+        font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+        line-height: 1.15;
+        color: var(--ink);
+        letter-spacing: -0.01em;
+        margin: 0;
+        max-width: 22ch;
+      }
+      .move__body {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+        font-size: 1rem;
+        line-height: 1.65;
+        color: var(--ink-muted);
+        max-width: 58ch;
+        margin: 0;
+      }
+      .move__body p {
+        margin: 0;
+      }
+      .move__body strong {
+        color: var(--ink);
+        font-weight: 500;
+      }
+      .move__list {
+        list-style: disc;
+        margin: 0.25rem 0 0;
+        padding-left: 1.15rem;
+      }
+      .move__list li {
+        margin-bottom: 0.3rem;
+      }
+
+      /* --- OUTCOMES ------------------------------------------------------- */
+      .outcomes {
+        padding-block: var(--section-y);
+      }
+      .outcomes__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        border-top: 1px solid var(--border);
+        margin-bottom: 2.5rem;
+      }
+      @media (min-width: 900px) {
+        .outcomes__grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .outcome {
+        padding: 1.75rem 0;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+      @media (min-width: 900px) {
+        .outcome {
+          padding: 2rem 2rem 2rem 0;
+          border-bottom: 0;
+          border-right: 1px solid var(--border);
+        }
+        .outcome:last-child {
+          border-right: 0;
+          padding-right: 0;
+        }
+        .outcome:first-child {
+          padding-left: 0;
+        }
+        .outcome + .outcome {
+          padding-left: 2rem;
+        }
+      }
+      .outcome__num {
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: var(--tr-label);
+        color: var(--ink-soft);
+        font-feature-settings: "tnum";
+      }
+      .outcome__title {
+        font-family: var(--font-serif);
+        font-weight: 400;
+        font-style: italic;
+        font-size: clamp(1.3rem, 1.9vw, 1.6rem);
+        line-height: 1.25;
+        color: var(--ink);
+        letter-spacing: -0.01em;
+      }
+      .outcome__body {
+        font-size: 0.98rem;
+        line-height: 1.55;
+        color: var(--ink-muted);
+        margin: 0;
+      }
+      .outcome__list {
+        list-style: disc;
+        margin: 0.35rem 0 0;
+        padding-left: 1.15rem;
+        font-size: 0.98rem;
+        line-height: 1.55;
+        color: var(--ink-muted);
+      }
+      .outcome__list li {
+        margin-bottom: 0.25rem;
+      }
+
+      /* --- STARTING ------------------------------------------------------- */
+      .starting {
+        background: var(--bg-alt);
+        padding-block: var(--section-y);
+      }
+      .starting__intro {
+        max-width: var(--reading-max);
+        font-size: 1.1rem;
+        line-height: 1.65;
+        color: var(--ink-muted);
+        margin: 0 0 clamp(2rem, 4vw, 3rem);
+      }
+      .starting__intro p {
+        margin: 0 0 1rem;
+      }
+      .starting__intro strong {
+        font-weight: 500;
+        color: var(--ink);
+      }
+      .starting__questions {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border-top: 1px solid var(--border);
+      }
+      .question {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--border);
+        display: grid;
+        grid-template-columns: 3.5rem 1fr;
+        gap: 1.5rem;
+        align-items: baseline;
+      }
+      .question__num {
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: var(--tr-label);
+        color: var(--ink-soft);
+        font-feature-settings: "tnum";
+      }
+      .question__body {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .question__prompt {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+        line-height: 1.3;
+        color: var(--ink);
+        letter-spacing: -0.01em;
+        margin: 0;
+      }
+      @media (max-width: 560px) {
+        .question {
+          grid-template-columns: 1fr;
+          gap: 0.5rem;
+        }
+      }
+
+      /* --- INVITATION ----------------------------------------------------- */
+      .invitation {
+        padding-block: var(--section-y);
+      }
+      .invitation__body {
+        font-size: 1.15rem;
+        line-height: 1.6;
+        color: var(--ink-muted);
+        max-width: 52ch;
+        margin: 0 0 2rem;
+      }
+      .invitation__body p {
+        margin: 0 0 0.75rem;
+      }
+      .invitation__legible {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+        line-height: 1.3;
+        color: var(--ink);
+        margin-top: 1.5rem;
+      }
+      .invitation__ctas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+      }
+
+      /* --- FOOTER --------------------------------------------------------- */
+      .footer {
+        background: var(--dark);
+        color: var(--dark-ink);
+        padding-block: clamp(3.5rem, 6vw, 5rem);
+        font-size: 0.95rem;
+      }
+      .footer__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      @media (min-width: 760px) {
+        .footer__grid {
+          grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+          align-items: start;
+        }
+      }
+      .footer__brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        font-weight: 500;
+        font-size: 1rem;
+        color: var(--dark-ink);
+        margin: 0 0 0.9rem;
+      }
+      .footer__tag {
+        margin: 0;
+        max-width: 44ch;
+        color: var(--dark-muted);
+        line-height: 1.55;
+      }
+      .footer__nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem 1.5rem;
+      }
+      .footer__nav a {
+        color: var(--dark-ink);
+        opacity: 0.85;
+        transition: opacity 0.15s ease;
+      }
+      .footer__nav a:hover {
+        opacity: 1;
+      }
+      .footer__rule {
+        border: 0;
+        height: 1px;
+        background: var(--dark-border);
+        margin-block: 2.5rem 1.25rem;
+      }
+      .footer__meta {
+        font-size: 0.8rem;
+        color: var(--dark-muted);
+      }
+
+      /* --- Reveal on scroll ---------------------------------------------- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity var(--dur) var(--ease-out),
+          transform var(--dur) var(--ease-out);
+        transition-delay: var(--d, 0s);
+        will-change: opacity, transform;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- NAV ---------------------------------------------------------------- -->
+    <header class="nav" data-nav>
+      <div class="nav__inner">
+        <a class="brand" href="#top">
+          <span class="brand__mark" aria-hidden="true"></span>
+          Movemental
+        </a>
+
+        <nav
+          class="nav__links"
+          id="site-nav-links"
+          aria-label="Primary"
+        >
+          <ul>
+            <li><a href="#top">Home</a></li>
+            <li><a href="#path">Approach</a></li>
+            <li><a href="#moves">Writing</a></li>
+            <li><a href="#authority">About</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav__actions">
+          <a class="btn btn--primary btn--sm" href="#stakes">
+            Start with clarity
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+
+        <button
+          class="nav__toggle"
+          type="button"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="site-nav-links"
+        >
+          <span></span><span></span>
+        </button>
+      </div>
+
+      <div class="nav__progress" aria-hidden="true">
+        <span data-reading-fill></span>
+      </div>
+    </header>
+
+    <main id="main">
+      <article id="top">
+        <!-- HERO ---------------------------------------------------------- -->
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="container">
+            <p class="label reveal">
+              <span class="label__dot" aria-hidden="true"></span>
+              For institutions navigating coherence across entities,
+              generations, and authority in an AI-disrupted world
+            </p>
+
+            <div class="hero__grid">
+              <div class="hero__main">
+                <h1
+                  id="hero-title"
+                  class="hero__title reveal"
+                  style="--d: 0.08s"
+                >
+                  Coherence can no longer be <em>assumed</em>.
+                </h1>
+
+                <p class="hero__subhead reveal" style="--d: 0.14s">
+                  Between institutional drift and premature AI adoption,
+                  there is a narrow way forward.
+                </p>
+
+                <div
+                  class="orientation__body hero__support reveal"
+                  style="--d: 0.2s"
+                >
+                  <p>Institutions were built to carry meaning across:</p>
+                  <ul>
+                    <li>campuses</li>
+                    <li>regions</li>
+                    <li>generations</li>
+                  </ul>
+                  <p>That work is now under pressure.</p>
+                  <p>
+                    Not because the institution has lost its
+                    purpose&mdash;
+                  </p>
+                  <p>
+                    but because it has lost the ability to render itself
+                    clearly and consistently.
+                  </p>
+                </div>
+
+                <div
+                  class="hero__tension reveal"
+                  style="--d: 0.26s"
+                  aria-labelledby="hero-tension-title"
+                >
+                  <p class="errors__lead" id="hero-tension-title">
+                    When it comes to this moment, there are
+                    <em>two equal errors</em>:
+                  </p>
+                  <p class="errors__pair">
+                    Attempting to scale authority through AI without a
+                    verifiable foundation.
+                  </p>
+                  <p class="errors__pair">
+                    Continuing to rely on institutional reputation
+                    without making that foundation legible.
+                  </p>
+                  <p class="stakes__note hero__tension-coda">
+                    Neither will hold.
+                  </p>
+                </div>
+
+                <div class="hero__ctas reveal" style="--d: 0.32s">
+                  <a class="btn btn--primary" href="#stakes">
+                    Start with clarity
+                    <span class="arrow" aria-hidden="true">&rarr;</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- STAKES -------------------------------------------------------- -->
+        <section
+          class="stakes"
+          id="stakes"
+          aria-labelledby="stakes-title"
+        >
+          <div class="container container--narrow">
+            <h2
+              id="stakes-title"
+              class="section-title reveal"
+              style="--d: 0.1s"
+            >
+              What&rsquo;s at stake
+            </h2>
+
+            <div class="orientation__body reveal" style="--d: 0.2s">
+              <p>
+                Can an institution still make credible claims about
+                what it is, what it teaches, and what it produces?
+              </p>
+              <p>In the AI era:</p>
+              <ul>
+                <li>content can be generated</li>
+                <li>authority can be simulated</li>
+                <li>coherence can be mimicked</li>
+              </ul>
+              <p>Which means:</p>
+              <p>
+                <strong
+                  >Institutions must now prove what they previously
+                  assumed.</strong
+                >
+              </p>
+              <p>Without a foundation:</p>
+              <ul>
+                <li>credentials drift</li>
+                <li>internal disagreement compounds</li>
+                <li>public credibility erodes</li>
+              </ul>
+              <p>Slowly at first. Then suddenly.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ORIENTATION --------------------------------------------------- -->
+        <section
+          class="orientation"
+          id="orientation"
+          aria-labelledby="orientation-title"
+        >
+          <div class="container container--narrow">
+            <h2
+              id="orientation-title"
+              class="section-title reveal"
+              style="--d: 0.1s"
+            >
+              This is not a technical problem
+            </h2>
+
+            <div class="orientation__body reveal" style="--d: 0.2s">
+              <p>The instinct is to respond with:</p>
+              <ul>
+                <li>better systems</li>
+                <li>improved reporting</li>
+                <li>more consistent communication</li>
+              </ul>
+              <p>But the fragmentation inside institutions is:</p>
+              <ul>
+                <li>political</li>
+                <li>theological</li>
+                <li>historical</li>
+              </ul>
+              <p>before it is technical.</p>
+              <p class="orientation__keyline">
+                Institutions that have not gathered their material into
+                a foundation with verifiable provenance are
+                indistinguishable, to the public, from well-executed
+                fakes.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SHAPE OF FRAGMENTATION --------------------------------------- -->
+        <section class="shape" id="shape" aria-labelledby="shape-title">
+          <div class="container">
+            <div class="shape__head">
+              <div>
+                <h2
+                  id="shape-title"
+                  class="section-title reveal"
+                  style="--d: 0.1s"
+                >
+                  The shape of your fragmentation
+                </h2>
+              </div>
+              <div class="shape__lede reveal" style="--d: 0.2s">
+                <p>
+                  Institutions carry two layers of fragmentation at
+                  once:
+                </p>
+                <ul>
+                  <li>the operational layer every organization has</li>
+                  <li>
+                    the cross-entity layer unique to institutions
+                  </li>
+                </ul>
+                <p>
+                  Where disagreement has been running &mdash; quietly
+                  &mdash; for years.
+                </p>
+              </div>
+            </div>
+
+            <ol class="shape__grid">
+              <li class="failure reveal" style="--d: 0.05s">
+                <span class="failure__num">Failure 01</span>
+                <h3 class="failure__title">Credentialing drift</h3>
+                <p class="failure__body">
+                  The same credential means different things depending
+                  on:
+                </p>
+                <ul class="failure__body failure__list">
+                  <li>year</li>
+                  <li>campus</li>
+                  <li>faculty</li>
+                </ul>
+                <p class="failure__body">
+                  Without a foundation, drift is invisible until it
+                  matters.
+                </p>
+              </li>
+
+              <li class="failure reveal" style="--d: 0.1s">
+                <span class="failure__num">Failure 02</span>
+                <h3 class="failure__title">
+                  Cross-entity incoherence
+                </h3>
+                <p class="failure__body">
+                  Regional bodies drift from the center.
+                </p>
+                <p class="failure__body">
+                  Everyone senses it. Few can see it clearly.
+                </p>
+              </li>
+
+              <li class="failure reveal" style="--d: 0.15s">
+                <span class="failure__num">Failure 03</span>
+                <h3 class="failure__title">Alumni invisibility</h3>
+                <p class="failure__body">
+                  Alumni are:
+                </p>
+                <ul class="failure__body failure__list">
+                  <li>distributed</li>
+                  <li>influential</li>
+                  <li>formative</li>
+                </ul>
+                <p class="failure__body">
+                  And almost entirely unstructured.
+                </p>
+              </li>
+
+              <li class="failure reveal" style="--d: 0.2s">
+                <span class="failure__num">Failure 04</span>
+                <h3 class="failure__title">
+                  Accreditation &amp; regulatory risk
+                </h3>
+                <p class="failure__body">
+                  Evidence must be reconstructed under pressure.
+                </p>
+                <p class="failure__body">
+                  Which reveals how much has never been gathered.
+                </p>
+              </li>
+
+              <li class="failure reveal" style="--d: 0.25s">
+                <span class="failure__num">Failure 05</span>
+                <h3 class="failure__title">Archival illegibility</h3>
+                <p class="failure__body">The institution has a history.</p>
+                <p class="failure__body">It cannot access it.</p>
+                <p class="failure__body">
+                  So debates repeat themselves &mdash; without memory.
+                </p>
+              </li>
+
+              <li class="failure reveal" style="--d: 0.3s">
+                <span class="failure__num">Failure 06</span>
+                <h3 class="failure__title">
+                  Public credibility fragility
+                </h3>
+                <p class="failure__body">
+                  Reputation once carried authority.
+                </p>
+                <p class="failure__body">
+                  Now: authority requires evidence.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- AUTHORITY ----------------------------------------------------- -->
+        <section
+          class="authority"
+          id="authority"
+          aria-labelledby="authority-title"
+        >
+          <div class="container container--narrow">
+            <h2
+              id="authority-title"
+              class="section-title reveal"
+              style="--d: 0.1s"
+            >
+              Why this cannot be solved incrementally
+            </h2>
+
+            <div class="orientation__body reveal" style="--d: 0.15s">
+              <p>This is not solved by:</p>
+              <ul>
+                <li>better documentation alone</li>
+                <li>stronger reporting cycles</li>
+                <li>improved internal communication</li>
+              </ul>
+              <p>It requires:</p>
+              <ul>
+                <li>a canonical foundation</li>
+                <li>structured provenance</li>
+                <li>cross-entity coherence</li>
+              </ul>
+              <p>We work at the intersection of:</p>
+              <ul>
+                <li>institutional leadership</li>
+                <li>theological integrity</li>
+                <li>governance</li>
+                <li>and systems</li>
+              </ul>
+              <p>
+                Not to simplify the institution&mdash;but to make it
+                legible again.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- PATH (Safety / Sandbox / Skills / Solutions) ----------------- -->
+        <section class="path" id="path" aria-labelledby="path-title">
+          <div class="container">
+            <div class="path__head">
+              <div>
+                <h2
+                  id="path-title"
+                  class="section-title reveal"
+                  style="--d: 0.1s"
+                >
+                  There is a way to build this
+                </h2>
+              </div>
+              <div class="path__lede reveal" style="--d: 0.2s">
+                <p>
+                  Institutions that navigate this well do not begin
+                  with scale.
+                </p>
+                <p><strong>They begin with foundation.</strong></p>
+              </div>
+            </div>
+
+            <p class="path__stages reveal" style="--d: 0.12s">
+              <strong>Stages:</strong>
+            </p>
+
+            <ol class="path__grid">
+              <li class="step reveal" style="--d: 0.05s">
+                <span class="step__num">01</span>
+                <h3 class="step__label">Safety</h3>
+                <div class="step__stack">
+                  <p><strong>Define:</strong></p>
+                  <ul>
+                    <li>what is authoritative</li>
+                    <li>what is protected</li>
+                    <li>what must remain invariant</li>
+                  </ul>
+                  <p>Across entities.</p>
+                </div>
+              </li>
+
+              <li class="step reveal" style="--d: 0.15s">
+                <span class="step__num">02</span>
+                <h3 class="step__label">Sandbox</h3>
+                <div class="step__stack">
+                  <p><strong>Create environments where:</strong></p>
+                  <ul>
+                    <li>disagreements can be surfaced</li>
+                    <li>structures can be tested</li>
+                    <li>coherence can be explored</li>
+                  </ul>
+                  <p>Without forcing premature resolution.</p>
+                </div>
+              </li>
+
+              <li class="step reveal" style="--d: 0.25s">
+                <span class="step__num">03</span>
+                <h3 class="step__label">Skills</h3>
+                <div class="step__stack">
+                  <p><strong>Develop leadership capacity to:</strong></p>
+                  <ul>
+                    <li>hold complexity</li>
+                    <li>navigate disagreement</li>
+                    <li>build shared structures</li>
+                  </ul>
+                  <p>Without collapsing difference.</p>
+                </div>
+              </li>
+
+              <li class="step reveal" style="--d: 0.35s">
+                <span class="step__num">04</span>
+                <h3 class="step__label">Solutions</h3>
+                <div class="step__stack">
+                  <p><strong>Only then build:</strong></p>
+                  <ul>
+                    <li>systems</li>
+                    <li>schemas</li>
+                    <li>AI-supported infrastructure</li>
+                  </ul>
+                  <p>that actually reflect the institution.</p>
+                </div>
+              </li>
+            </ol>
+
+            <p
+              class="authority__coda reveal"
+              style="--d: 0.4s; margin-top: 2rem"
+            >
+              Most institutions attempt to scale before they are
+              coherent. That is why the systems fail.
+            </p>
+          </div>
+        </section>
+
+        <!-- MOVES --------------------------------------------------------- -->
+        <section class="moves" id="moves" aria-labelledby="moves-title">
+          <div class="container">
+            <h2
+              id="moves-title"
+              class="section-title reveal"
+              style="--d: 0.1s"
+            >
+              What this looks like in practice
+            </h2>
+
+            <ol class="moves__list">
+              <li class="move reveal">
+                <div class="move__head">
+                  <span class="move__num">Move 01</span>
+                  <h3 class="move__title">The cross-entity schema</h3>
+                </div>
+                <div class="move__body">
+                  <p>A canonical structure that makes visible:</p>
+                  <ul class="move__list">
+                    <li>what is shared</li>
+                    <li>what is different</li>
+                    <li>what is drifting</li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="move reveal">
+                <div class="move__head">
+                  <span class="move__num">Move 02</span>
+                  <h3 class="move__title">
+                    The alumni intelligence layer
+                  </h3>
+                </div>
+                <div class="move__body">
+                  <p>
+                    Alumni become <strong>visible</strong>,
+                    <strong>structured</strong>, and
+                    <strong>connected</strong>.
+                  </p>
+                  <p>
+                    Not just a list&mdash;but an institutional
+                    intelligence.
+                  </p>
+                </div>
+              </li>
+
+              <li class="move reveal">
+                <div class="move__head">
+                  <span class="move__num">Move 03</span>
+                  <h3 class="move__title">
+                    The accreditation evidence layer
+                  </h3>
+                </div>
+                <div class="move__body">
+                  <p>A standing, living foundation:</p>
+                  <ul class="move__list">
+                    <li>not reconstructed</li>
+                    <li>not reactive</li>
+                    <li>but continuously maintained</li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="move reveal">
+                <div class="move__head">
+                  <span class="move__num">Move 04</span>
+                  <h3 class="move__title">Translation infrastructure</h3>
+                </div>
+                <div class="move__body">
+                  <p>The ability to carry coherence across:</p>
+                  <ul class="move__list">
+                    <li>regions</li>
+                    <li>entities</li>
+                    <li>partners</li>
+                  </ul>
+                  <p>Without losing identity.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- OUTCOMES ------------------------------------------------------ -->
+        <section
+          class="outcomes"
+          id="outcomes"
+          aria-labelledby="outcomes-title"
+        >
+          <div class="container">
+            <h2
+              id="outcomes-title"
+              class="section-title reveal"
+              style="--d: 0.1s"
+            >
+              What becomes possible
+            </h2>
+
+            <ol class="outcomes__grid">
+              <li class="outcome reveal" style="--d: 0.05s">
+                <span class="outcome__num">01</span>
+                <h3 class="outcome__title">
+                  Credentials become defensible.
+                </h3>
+                <p class="outcome__body">
+                  The institution can clearly state what its
+                  credentials mean&mdash;now.
+                </p>
+              </li>
+              <li class="outcome reveal" style="--d: 0.15s">
+                <span class="outcome__num">02</span>
+                <h3 class="outcome__title">
+                  Accreditation becomes continuous.
+                </h3>
+                <p class="outcome__body">
+                  Not episodic crisis&mdash;but ongoing clarity.
+                </p>
+              </li>
+              <li class="outcome reveal" style="--d: 0.25s">
+                <span class="outcome__num">03</span>
+                <h3 class="outcome__title">
+                  Institutional memory becomes real.
+                </h3>
+                <p class="outcome__body">The institution remembers:</p>
+                <ul class="outcome__list">
+                  <li>what it decided</li>
+                  <li>why</li>
+                  <li>and what followed</li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- STARTING POINT ----------------------------------------------- -->
+        <section
+          class="starting"
+          id="starting"
+          aria-labelledby="starting-title"
+        >
+          <div class="container container--narrow">
+            <h2
+              id="starting-title"
+              class="section-title reveal"
+              style="--d: 0.1s"
+            >
+              Start where it is most tractable
+            </h2>
+
+            <div class="starting__intro reveal" style="--d: 0.2s">
+              <p>
+                The instinct is to begin with the most visible work.
+              </p>
+              <p>
+                The wiser move is to begin with the most contained.
+              </p>
+              <p>
+                For most institutions:
+                <strong>the accreditation evidence layer</strong>.
+              </p>
+            </div>
+
+            <ol class="starting__questions reveal" style="--d: 0.3s">
+              <li class="question">
+                <span class="question__num">Q. 01</span>
+                <div class="question__body">
+                  <p class="question__prompt">
+                    When is your next major review&mdash;accreditation,
+                    denominational, regulatory, or peer?
+                  </p>
+                </div>
+              </li>
+              <li class="question">
+                <span class="question__num">Q. 02</span>
+                <div class="question__body">
+                  <p class="question__prompt">
+                    Which decisions made by your institution in the
+                    last twenty years have the most load-bearing
+                    reasoning currently not written down anywhere?
+                  </p>
+                </div>
+              </li>
+              <li class="question">
+                <span class="question__num">Q. 03</span>
+                <div class="question__body">
+                  <p class="question__prompt">
+                    Which entity is currently most visibly drifting
+                    from the center, and which is most tightly aligned?
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- INVITATION ---------------------------------------------------- -->
+        <section
+          class="invitation"
+          id="invitation"
+          aria-labelledby="invitation-title"
+        >
+          <div class="container container--narrow">
+            <h2
+              id="invitation-title"
+              class="section-title reveal"
+              style="--d: 0.1s"
+            >
+              Start navigating this well&mdash;before the cost
+              compounds.
+            </h2>
+
+            <div class="invitation__body reveal" style="--d: 0.2s">
+              <p>
+                Institutions are not failing because they lack
+                knowledge.
+              </p>
+              <p>
+                They are failing because they cannot gather and carry
+                it.
+              </p>
+              <p>
+                There is a way to rebuild coherence&mdash;without
+                flattening complexity.
+              </p>
+              <p class="invitation__legible">
+                An institution more itself&mdash;because its self is
+                finally legible.
+              </p>
+            </div>
+
+            <div class="invitation__ctas reveal" style="--d: 0.3s">
+              <a class="btn btn--primary btn--lg" href="#">
+                Start a conversation
+                <span class="arrow" aria-hidden="true">&rarr;</span>
+              </a>
+              <a class="btn btn--ghost btn--lg" href="#">
+                Read the full playbook
+              </a>
+            </div>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <!-- FOOTER ------------------------------------------------------------- -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__brand-block">
+            <p class="footer__brand">
+              <span
+                class="brand__mark brand__mark--inverse"
+                aria-hidden="true"
+              ></span>
+              Movemental
+            </p>
+            <p class="footer__tag">
+              Movemental helps organizations navigate AI with clarity,
+              integrity, and mission in view.
+            </p>
+          </div>
+
+          <nav class="footer__nav" aria-label="Footer">
+            <ul>
+              <li><a href="#top">Home</a></li>
+              <li><a href="#path">Approach</a></li>
+              <li><a href="#moves">Writing</a></li>
+              <li><a href="#authority">About</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <hr class="footer__rule" />
+
+        <div class="footer__meta">
+          <span>&copy; 2026 Movemental</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        "use strict";
+
+        const prefersReduced = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+        const nav = document.querySelector("[data-nav]");
+        const navToggle = document.querySelector(".nav__toggle");
+        if (nav && navToggle) {
+          const setOpen = (open) => {
+            nav.classList.toggle("is-open", open);
+            navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+          };
+          navToggle.addEventListener("click", () => {
+            setOpen(!nav.classList.contains("is-open"));
+          });
+          nav.querySelectorAll(".nav__links a, .nav__actions a").forEach(
+            (a) => {
+              a.addEventListener("click", () => setOpen(false));
+            }
+          );
+          document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") setOpen(false);
+          });
+        }
+        if (nav) {
+          const onScroll = () => {
+            nav.classList.toggle("is-scrolled", window.scrollY > 8);
+          };
+          window.addEventListener("scroll", onScroll, { passive: true });
+          onScroll();
+        }
+
+        const reveals = document.querySelectorAll(".reveal");
+        if (reveals.length) {
+          if (prefersReduced || !("IntersectionObserver" in window)) {
+            reveals.forEach((el) => el.classList.add("is-visible"));
+          } else {
+            const io = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((e) => {
+                  if (e.isIntersecting) {
+                    e.target.classList.add("is-visible");
+                    io.unobserve(e.target);
+                  }
+                });
+              },
+              { threshold: 0.14, rootMargin: "0px 0px -6% 0px" }
+            );
+            reveals.forEach((el) => io.observe(el));
+          }
+        }
+
+        const fill = document.querySelector("[data-reading-fill]");
+        if (fill) {
+          let ticking = false;
+          const update = () => {
+            const max =
+              document.documentElement.scrollHeight - window.innerHeight;
+            const pct =
+              max <= 0
+                ? 0
+                : Math.max(
+                    0,
+                    Math.min(100, (window.scrollY / max) * 100)
+                  );
+            fill.style.setProperty("--reading-progress", pct + "%");
+            ticking = false;
+          };
+          const onScroll = () => {
+            if (!ticking) {
+              requestAnimationFrame(update);
+              ticking = true;
+            }
+          };
+          window.addEventListener("scroll", onScroll, { passive: true });
+          window.addEventListener("resize", onScroll, { passive: true });
+          update();
+        }
+      })();
+    </script>
+  </body>
+</html>

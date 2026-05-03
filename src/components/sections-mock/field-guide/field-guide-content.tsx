@@ -1,0 +1,576 @@
+/** Field guide — translated from docs/html/mock-field-guide.html. */
+
+import type { ReactNode } from "react";
+
+import { BtnPill } from "@/components/sections-mock/primitives";
+
+export function FieldGuideContent() {
+  return (
+    <>
+      <Hero />
+      <WhyThisGuide />
+      <SafetyStage />
+      <SandboxStage />
+      <SkillsStage />
+      <SolutionsStage />
+      <OrderMatters />
+      <FinalCta />
+    </>
+  );
+}
+
+function Hero() {
+  return (
+    <section
+      className="band-midnight hero hero--field-guide"
+      aria-labelledby="hero-h1"
+    >
+      <div className="container">
+        <div className="fg-hero">
+          <figure
+            className="fg-hero__cover"
+            aria-hidden="true"
+            style={{ background: "var(--elevated)", aspectRatio: "896 / 1200" }}
+          >
+            {/* TODO(assets): real field guide cover artwork */}
+          </figure>
+          <div className="fg-hero__body">
+            <p className="eyebrow">A field guide for organizational leaders</p>
+            <h1 className="display" id="hero-h1">
+              The <em>AI Stewardship Sequence</em>.
+            </h1>
+            <p className="lede lede--regular">
+              Safety, Sandbox, Skills, Solutions. Four stages, in order. A
+              field guide written for senior leaders inside churches,
+              nonprofits, and institutions facing AI adoption on the shortest
+              response window any technology has ever given a generation of
+              leaders.
+            </p>
+
+            <ul className="fg-toc" aria-label="Field guide contents">
+              <li>
+                <a href="#stage-safety">
+                  <span>01</span> Safety
+                </a>
+              </li>
+              <li>
+                <a href="#stage-sandbox">
+                  <span>02</span> Sandbox
+                </a>
+              </li>
+              <li>
+                <a href="#stage-skills">
+                  <span>03</span> Skills
+                </a>
+              </li>
+              <li>
+                <a href="#stage-solutions">
+                  <span>04</span> Solutions
+                </a>
+              </li>
+              <li>
+                <a href="#order">
+                  <span>·</span> Why the order matters
+                </a>
+              </li>
+            </ul>
+
+            <div className="hero-proof">
+              <span className="hero-proof__label">Reading time</span>
+              <span>
+                Roughly fifteen minutes. Written so a senior team can read it
+                aloud together in one sitting.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhyThisGuide() {
+  return (
+    <section className="band-default" aria-labelledby="why-h2">
+      <div className="container">
+        <div className="split-row">
+          <div className="split-row__aside">
+            <p className="eyebrow">Why this guide</p>
+            <p>
+              Most AI guidance for organizational leaders is either vendor
+              copy or speculative theology. This piece is neither.
+            </p>
+          </div>
+          <div>
+            <h2 className="display" id="why-h2">
+              A path through this moment that{" "}
+              <em>holds the mission together</em>.
+            </h2>
+            <div
+              style={{
+                maxWidth: "var(--prose-max)",
+                fontSize: "1.05rem",
+                lineHeight: 1.7,
+                color: "var(--muted-foreground)",
+              }}
+            >
+              <p style={{ margin: "0 0 1rem" }}>
+                Mission-driven organizations are being asked to lead inside
+                AI on a timeline no prior technology gave its leaders. The
+                internet, the smartphone, and social media each took years
+                or a decade to settle. AI has compressed that into months.
+                Most of the public guidance available to senior leaders is
+                written by vendors selling tools or by commentators who have
+                not yet had to lead an organization through the transition.
+              </p>
+              <p style={{ margin: 0 }}>
+                This field guide is written from the other side. It names
+                the four-stage path Movemental walks with every partner
+                organization, and the load-bearing reason the order is
+                non-negotiable. Read it once with your senior team. Mark the
+                parts that surprise you. Bring the disagreement to the first
+                conversation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+interface StageProps {
+  id: string;
+  band: "section" | "default";
+  num: string;
+  title: string;
+  sub: string;
+  aside: ReactNode;
+  prose: ReactNode;
+}
+
+function Stage(props: StageProps) {
+  return (
+    <section className={`band-${props.band}`}>
+      <div className="container">
+        <article className="fg-stage" id={props.id}>
+          <header className="fg-stage__head">
+            <p className="fg-stage__num">{props.num}</p>
+            <div>
+              <h2 className="fg-stage__title">{props.title}</h2>
+              <p className="fg-stage__sub">{props.sub}</p>
+            </div>
+          </header>
+          <div className="fg-stage__body">
+            <aside className="fg-stage__aside">{props.aside}</aside>
+            <div className="fg-stage__prose">{props.prose}</div>
+          </div>
+        </article>
+      </div>
+    </section>
+  );
+}
+
+function SafetyStage() {
+  return (
+    <Stage
+      id="stage-safety"
+      band="section"
+      num="Stage 01"
+      title="Safety."
+      sub="What the organization decides AI is allowed to touch, before any tooling."
+      aside={
+        <>
+          <p>
+            <strong>Outputs</strong> A short ratified posture, a list of named
+            refusals, and the conviction to defend both in public.
+          </p>
+          <p>
+            <strong>Length</strong> Two to four weeks of senior-team
+            conversation.
+          </p>
+          <p>
+            <strong>Roles</strong> Senior pastor, ED, provost, or president.
+            Board or elder team. Counsel where required.
+          </p>
+        </>
+      }
+      prose={
+        <>
+          <p>
+            Safety is the first stage and the most often skipped. It is the
+            work of deciding, in writing, what AI is allowed to touch in
+            this organization, and what it is not. The output is one short
+            paragraph the senior team can read aloud, plus a small list of
+            named refusals, plus the conviction to defend both in public.
+          </p>
+          <p>
+            Safety is not a policy template. It is not an acceptable-use
+            document. It is the prior question those documents
+            downstream-from. Most organizations have a draft acceptable-use
+            policy and no posture. The acceptable-use policy is doing the
+            work of a posture, badly, because no one has decided what the
+            posture is.
+          </p>
+          <p>
+            The Safety conversation surfaces the questions every senior team
+            is privately holding.{" "}
+            <em>
+              What does AI change about how we communicate with the people
+              we serve?
+            </em>{" "}
+            <em>What part of our work is human-only, and why?</em>{" "}
+            <em>
+              What kind of organization do we become if we adopt these tools
+              at the rate the market is asking us to?
+            </em>{" "}
+            Asking those questions out loud, with the people who have to
+            live with the answers, is itself the work.
+          </p>
+          <p>
+            A church may decide pastoral correspondence and sermon writing
+            are refused categories. A nonprofit may decide major-donor
+            letters are not generated. An institution may decide AI is
+            allowed in administrative work but not in admissions
+            evaluations. None of these are universal. All of them are
+            decisions the organization can defend.
+          </p>
+          <ul>
+            <li>
+              Safety is signed by the senior leader and ratified by the body
+              that holds them accountable.
+            </li>
+            <li>
+              Safety is written in the language an outsider can read without
+              translation.
+            </li>
+            <li>
+              Safety is not finalized in one meeting. Two weeks is the
+              minimum honest timeline.
+            </li>
+          </ul>
+          <p>
+            Without Safety, every later stage drifts. Sandbox becomes random
+            experimentation. Skills becomes technical training without
+            judgment. Solutions becomes tool sprawl. Get Safety right and
+            the rest of the Sequence has somewhere stable to stand.
+          </p>
+        </>
+      }
+    />
+  );
+}
+
+function SandboxStage() {
+  return (
+    <Stage
+      id="stage-sandbox"
+      band="default"
+      num="Stage 02"
+      title="Sandbox."
+      sub="Real discovery in a low-stakes environment, bounded by Safety, witnessed by the senior team."
+      aside={
+        <>
+          <p>
+            <strong>Outputs</strong> A small body of real experiments, with
+            named surprises, named failures, and named keeps.
+          </p>
+          <p>
+            <strong>Length</strong> A focused six-to-twelve week season.
+          </p>
+          <p>
+            <strong>Roles</strong> Whichever staff function the season is
+            centered on, with senior leadership in the room as observers,
+            not silent.
+          </p>
+        </>
+      }
+      prose={
+        <>
+          <p>
+            Sandbox is real discovery, not a pilot. A pilot asks{" "}
+            <em>does this tool work?</em> A Sandbox asks{" "}
+            <em>
+              what does this technology do to our work and to the people
+              doing the work?
+            </em>{" "}
+            The first question has a yes-or-no answer. The second has the
+            answers the next two stages depend on.
+          </p>
+          <p>
+            A Sandbox season runs for six to twelve weeks, centered on one
+            or two real organizational tasks inside the boundaries Safety
+            drew. The senior team watches in real time. Staff bring back
+            not only what worked but what changed about the work, what
+            changed about themselves doing the work, and what surprised
+            them.
+          </p>
+          <p>
+            Movemental runs Sandbox seasons with our partners as Sandbox
+            Season, a named offering. The substance is more important than
+            the brand: real organizational data, real staff, real outputs,
+            real witnesses, real duration. Two days is not a Sandbox. A
+            demo is not a Sandbox. Letting staff use AI on personal
+            accounts in the dark is anti-Sandbox.
+          </p>
+          <ul>
+            <li>
+              The Sandbox always closes with named keeps and named refusals,
+              both in writing.
+            </li>
+            <li>
+              Senior leadership must be present, not delegate presence to a
+              tech function.
+            </li>
+            <li>What Sandbox produces is judgment, not just output.</li>
+          </ul>
+        </>
+      }
+    />
+  );
+}
+
+function SkillsStage() {
+  return (
+    <Stage
+      id="stage-skills"
+      band="section"
+      num="Stage 03"
+      title="Skills."
+      sub="Formation, not training. The judgment to use these tools well is built over months, not afternoons."
+      aside={
+        <>
+          <p>
+            <strong>Outputs</strong> Formed staff and leaders. Onboarding
+            artifacts. Formation pathways the next hire inherits.
+          </p>
+          <p>
+            <strong>Length</strong> Months. Often longer than leaders
+            expect.
+          </p>
+          <p>
+            <strong>Roles</strong> Staff, formation leads, faculty, board
+            members where governance is shaped by the work.
+          </p>
+        </>
+      }
+      prose={
+        <>
+          <p>
+            Skills is the stage most often confused with training. Training
+            adds capability. Formation changes the person doing the work.
+            AI well-used requires formation, because the person at the
+            keyboard is doing more decisive work than the model.
+          </p>
+          <p>
+            The judgments that matter cannot be pre-installed.{" "}
+            <em>When is this the wrong tool for this task?</em>{" "}
+            <em>
+              When does using this make the work less human in a way the
+              audience will eventually feel?
+            </em>{" "}
+            <em>
+              When does refusing the tool, here, this time, preserve
+              something the organization needs?
+            </em>{" "}
+            Those judgments form across months, not in a workshop. They form
+            by walking real Sandbox seasons with senior leaders watching, by
+            writing in the organization&rsquo;s voice deliberately, and by
+            carrying the tension of the trade-off in public.
+          </p>
+          <p>
+            Skills also has an organizational shape. The judgments form most
+            reliably when they live in onboarding documents, syllabi,
+            faculty handbooks, and the small written customs that survive
+            turnover. A church carries Skills in elder formation and staff
+            onboarding. A nonprofit carries Skills in the development manual
+            and the program leader&rsquo;s annual review. An institution
+            carries Skills in syllabi and faculty development. The artifacts
+            are different. The substance is the same.
+          </p>
+          <ul>
+            <li>A workshop is not formation. Formation runs across a season.</li>
+            <li>The next hire should inherit Skills, not rebuild them.</li>
+            <li>
+              Skills is where the organization changes shape, not just
+              capability.
+            </li>
+          </ul>
+        </>
+      }
+    />
+  );
+}
+
+function SolutionsStage() {
+  return (
+    <Stage
+      id="stage-solutions"
+      band="default"
+      num="Stage 04"
+      title="Solutions."
+      sub="Tools and integrations, deployed only after the human work has decided what to deploy."
+      aside={
+        <>
+          <p>
+            <strong>Outputs</strong> Defensible deployments. A short list of
+            refused categories. An archive of the decisions that led here.
+          </p>
+          <p>
+            <strong>Length</strong> Ongoing. Solutions ship continuously
+            after the prior three stages have stabilized.
+          </p>
+          <p>
+            <strong>Roles</strong> Whoever the organization has formed.
+            Often this is not the technology team alone.
+          </p>
+        </>
+      }
+      prose={
+        <>
+          <p>
+            Solutions is the only stage that looks like software. It is the
+            stage every other &ldquo;AI for X&rdquo; framework starts with.
+            The reason Movemental puts it last is not a matter of taste. It
+            is a load-bearing claim about what makes Solutions hold.
+          </p>
+          <p>
+            A tool deployed after Safety, Sandbox, and Skills is a tool the
+            organization can defend. It can defend the choice to staff, to
+            board, to donors, to regulators. It can defend why this tool,
+            why now, why this scope, why those refusals. A tool deployed
+            before the prior stages is a tool the organization is already
+            retrofitting before the year is out.
+          </p>
+          <p>
+            Solutions also includes the discipline of named refusals. Every
+            Solution has a category of work it is deliberately not used
+            for. Refusals on the record are part of what makes the
+            deployment legible to a serious reader inside or outside the
+            organization.
+          </p>
+          <ul>
+            <li>
+              Solutions are reviewed against the Safety statement, not the
+              marketing materials.
+            </li>
+            <li>
+              Refused categories are as important as deployed capabilities.
+            </li>
+            <li>
+              A Solution that requires Skills the organization has not
+              formed is not yet a Solution.
+            </li>
+          </ul>
+        </>
+      }
+    />
+  );
+}
+
+function OrderMatters() {
+  return (
+    <section className="band-section" aria-labelledby="order-h2">
+      <div className="container">
+        <article className="fg-stage" id="order">
+          <header className="fg-stage__head">
+            <p className="fg-stage__num">A note on order</p>
+            <div>
+              <h2 className="fg-stage__title" id="order-h2">
+                Why the order is <em>load-bearing</em>.
+              </h2>
+              <p className="fg-stage__sub">
+                Skip a stage, or reverse one, and the next collapses. This
+                is the test we apply to every engagement we accept.
+              </p>
+            </div>
+          </header>
+          <div className="fg-stage__body">
+            <aside className="fg-stage__aside">
+              <p>
+                <strong>If you remember nothing else</strong> Solutions
+                cannot carry an organization that has not done Safety,
+                Sandbox, and Skills. The order is the point.
+              </p>
+            </aside>
+            <div className="fg-stage__prose">
+              <p>
+                The Sequence is not four equal options. Each stage borrows
+                trust from the one before it. Solutions shipped without
+                Skills produces output the organization cannot defend.
+                Skills built without Sandbox is training that does not
+                become formation. Sandbox run without Safety is exploration
+                the senior team cannot stand behind. Safety written without
+                the conviction to refuse a category is not yet Safety.
+              </p>
+              <blockquote className="pull-quote">
+                <p>
+                  The order is the point. The technology will move again.
+                  The order is what stays the same. The organizations that
+                  walked these stages out of order are the ones we work
+                  with in year two,{" "}
+                  <em>
+                    retrofitting decisions they should have made
+                    consciously
+                  </em>
+                  .
+                </p>
+                <footer>
+                  <cite>Movemental, the field guide</cite>
+                </footer>
+              </blockquote>
+              <p>
+                Reading the Sequence and skipping ahead is the most common
+                failure pattern. Senior teams read the four stages and
+                assume they will start with Solutions and loop back to
+                Safety later. They do not loop back. They retrofit Safety
+                as a defensive posture after the first uncomfortable
+                conversation with a donor or a board member. The
+                retrofitted Safety statement looks defensive. It reads
+                defensive. It is.
+              </p>
+              <p>
+                The Sequence in order produces something different. An
+                organization that knows what it believes about AI before
+                it adopts AI. A staff that has built judgment through
+                Sandbox before Solutions show up. A board that ratified
+                Safety before the first deployment. That organization can
+                defend its choices in writing, in public, in five years.
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  );
+}
+
+function FinalCta() {
+  return (
+    <section
+      className="band-midnight final-cta"
+      id="cta"
+      aria-labelledby="cta-h2"
+    >
+      <div className="container">
+        <p className="eyebrow">If this resonates</p>
+        <h2 className="display" id="cta-h2">
+          We would like to <em>walk this Sequence with you</em>.
+        </h2>
+        <p className="lede lede--regular">
+          A first conversation is thirty minutes. We will tell you in that
+          time whether the Sequence is a fit, and whether the timing is.
+        </p>
+        <div className="hero-actions">
+          <BtnPill href="/contact" variant="primary">
+            Start a conversation
+          </BtnPill>
+          <BtnPill href="/voices" variant="ghost">
+            See trusted voices
+          </BtnPill>
+        </div>
+      </div>
+    </section>
+  );
+}
+

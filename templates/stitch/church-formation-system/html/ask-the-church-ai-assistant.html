@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#4d463d",
+                    "surface-tint": "#625d59",
+                    "secondary-fixed": "#ece1d5",
+                    "surface-bright": "#fbf9f4",
+                    "surface-variant": "#e4e2dd",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#e9ded2",
+                    "primary-fixed": "#e9e1db",
+                    "tertiary-fixed-dim": "#d6c4b1",
+                    "on-tertiary-container": "#b2a18f",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#e4e2dd",
+                    "inverse-on-surface": "#f2f1ec",
+                    "surface-container-high": "#eae8e3",
+                    "primary": "#272420",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#44382a",
+                    "secondary": "#655d54",
+                    "on-primary-fixed-variant": "#4a4642",
+                    "on-background": "#1b1c19",
+                    "outline-variant": "#cec5bc",
+                    "tertiary": "#2d2216",
+                    "tertiary-fixed": "#f3dfcc",
+                    "surface-container-low": "#f5f3ee",
+                    "on-secondary-fixed": "#201b14",
+                    "on-secondary-container": "#696158",
+                    "on-primary-fixed": "#1e1b18",
+                    "primary-fixed-dim": "#ccc5bf",
+                    "surface": "#fbf9f4",
+                    "surface-container": "#f0eee9",
+                    "inverse-primary": "#ccc5bf",
+                    "surface-dim": "#dbdad5",
+                    "on-surface": "#1b1c19",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#30312e",
+                    "on-primary-container": "#a9a29d",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#231a0e",
+                    "on-tertiary": "#ffffff",
+                    "outline": "#7d766f",
+                    "primary-container": "#3d3935",
+                    "on-secondary": "#ffffff",
+                    "background": "#fbf9f4",
+                    "on-surface-variant": "#4c463f",
+                    "on-tertiary-fixed-variant": "#514536",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#d0c5b9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, .serif-font { font-family: 'Newsreader', serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar -->
+<aside class="h-full w-64 fixed left-0 border-r border-[#e4e2dd]/20 bg-[#f5f3ee] dark:bg-[#1b1c19] flex flex-col py-8 px-4 gap-4 z-50">
+<div class="mb-8 px-2">
+<h1 class="font-serif text-xl text-[#272420] dark:text-[#fbf9f4]">Sanctuary</h1>
+<p class="font-sans uppercase tracking-widest text-[10px] text-[#625d59] dark:text-[#e4e2dd]">Spiritual Formation</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-[#625d59] dark:text-[#e4e2dd] hover:bg-[#e4e2dd] dark:hover:bg-[#3d3935] transition-all duration-500 rounded-md" href="#">
+<span class="material-symbols-outlined" data-icon="air">air</span>
+<span class="font-sans uppercase tracking-widest text-[10px]">Daily Breath</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#625d59] dark:text-[#e4e2dd] hover:bg-[#e4e2dd] dark:hover:bg-[#3d3935] transition-all duration-500 rounded-md" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-sans uppercase tracking-widest text-[10px]">Scripture</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#625d59] dark:text-[#e4e2dd] hover:bg-[#e4e2dd] dark:hover:bg-[#3d3935] transition-all duration-500 rounded-md" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span class="font-sans uppercase tracking-widest text-[10px]">Journal</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-[#ffffff] dark:bg-[#272420] text-[#272420] dark:text-[#ffffff] rounded-md transition-all duration-500" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-sans uppercase tracking-widest text-[10px]">Ask AI</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-[#e4e2dd]/20">
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity">
+                Start Prayer
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen flex flex-col bg-surface overflow-y-auto relative">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-64 h-20 px-8 flex justify-between items-center bg-[#fbf9f4]/80 backdrop-blur-xl z-40">
+<div class="text-2xl font-serif italic text-[#272420] tracking-tight">Ask the Church</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8">
+<a class="text-[#625d59] hover:text-[#272420] transition-colors duration-500 text-sm tracking-wide" href="#">Formation</a>
+<a class="text-[#625d59] hover:text-[#272420] transition-colors duration-500 text-sm tracking-wide" href="#">Liturgy</a>
+<a class="text-[#625d59] hover:text-[#272420] transition-colors duration-500 text-sm tracking-wide" href="#">Community</a>
+</nav>
+<div class="flex items-center gap-4 border-l border-[#e4e2dd]/20 pl-6">
+<span class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer" data-icon="settings">settings</span>
+<img alt="User spiritual formation profile" class="w-8 h-8 rounded-full object-cover border border-surface-container-highest" data-alt="portrait of a woman with a serene expression in soft window light, high-end editorial photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiwr3pZscT3lirZ-jSpYD34Sm9z_kzD5T-QEvcOENp-9Ep-Qu0RQwx8nEwJfj3GLKAxA-RYfImviDuYwtrVtZ5O9MV89hzQ8UZRJsIYj4SxD9_P3uuCJbMTMHDpS63bLx2kvrNa_V49xIE0xu3nBNNRvZUnWQY4J5X1JQrcr1ER0O2IR2yrLKXrplHcXJmp_Js6RiCSmVs1L2YoPWgG-setgxT8nJfgPqBXE2BQDh7pUeYyhpl2r6Z8uzjcuttxD3sY9bJsmFtbss"/>
+</div>
+</div>
+</header>
+<!-- Chat Container -->
+<div class="flex-1 mt-20 pb-32 flex flex-col items-center">
+<div class="w-full max-w-3xl px-6 pt-12 space-y-12">
+<!-- Welcome Section -->
+<section class="text-center space-y-4">
+<div class="inline-flex p-3 rounded-full bg-surface-container-low text-surface-tint mb-4">
+<span class="material-symbols-outlined" data-icon="church" style="font-size: 32px;">church</span>
+</div>
+<h2 class="text-5xl font-serif font-light text-primary leading-tight">Welcome to the Sanctuary.</h2>
+<p class="text-secondary body-lg max-w-lg mx-auto">
+                        This assistant is a quiet companion for your journey, grounded in our community's teachings and the wisdom of the Church.
+                    </p>
+</section>
+<!-- Prompt Cards Bento -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<button class="group p-6 text-left bg-surface-container-lowest rounded-xl hover:bg-surface-container-low transition-all duration-500 border border-transparent hover:border-outline-variant/10">
+<span class="material-symbols-outlined text-surface-tint mb-3" data-icon="directions_walk">directions_walk</span>
+<p class="text-primary font-medium text-sm mb-1">Guided Step</p>
+<p class="text-secondary text-xs italic font-serif">"What should I do next?"</p>
+</button>
+<button class="group p-6 text-left bg-surface-container-lowest rounded-xl hover:bg-surface-container-low transition-all duration-500 border border-transparent hover:border-outline-variant/10">
+<span class="material-symbols-outlined text-surface-tint mb-3" data-icon="menu_book">menu_book</span>
+<p class="text-primary font-medium text-sm mb-1">Deep Learning</p>
+<p class="text-secondary text-xs italic font-serif">"Find teaching on prayer"</p>
+</button>
+<button class="group p-6 text-left bg-surface-container-lowest rounded-xl hover:bg-surface-container-low transition-all duration-500 border border-transparent hover:border-outline-variant/10">
+<span class="material-symbols-outlined text-surface-tint mb-3" data-icon="groups">groups</span>
+<p class="text-primary font-medium text-sm mb-1">Connection</p>
+<p class="text-secondary text-xs italic font-serif">"How can I get involved?"</p>
+</button>
+</div>
+<!-- Chat Interaction Example -->
+<div class="space-y-8 pt-8">
+<!-- User Message -->
+<div class="flex justify-end">
+<div class="max-w-[80%] bg-primary-container text-on-primary rounded-2xl rounded-tr-none px-6 py-4">
+<p class="text-sm leading-relaxed">I'm feeling a bit disconnected from community lately. What's a good next step for me?</p>
+</div>
+</div>
+<!-- AI Response -->
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div class="max-w-[85%] space-y-6">
+<div class="bg-surface-container-low text-on-surface-variant rounded-2xl rounded-tl-none px-6 py-4 leading-relaxed">
+<p class="mb-4">It’s common to feel that ebb and flow in community life, but it’s often an invitation to a deeper level of practice. Looking at your current <span class="text-primary font-semibold underline decoration-surface-tint/30 underline-offset-4">Discipleship Pathway</span>, you’ve recently completed the Foundations module.</p>
+<p class="mb-4 font-serif italic text-lg text-primary">"The soul is not a vessel to be filled, but a fire to be kindled."</p>
+<p class="mb-4">I would suggest visiting the <span class="text-primary font-semibold">Young Adults Group</span> this Tuesday evening. They are currently hosting dinner and discussing the themes from our recent <span class="italic">"Practicing the Way"</span> sermon series on relational health.</p>
+<div class="mt-6 flex flex-wrap gap-2">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-highest text-[10px] uppercase tracking-widest font-bold hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-xs" data-icon="play_circle">play_circle</span> Listen to Sermon
+                                    </button>
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-highest text-[10px] uppercase tracking-widest font-bold hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-xs" data-icon="calendar_today">calendar_today</span> RSVP to Dinner
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Chat Input Fixed -->
+<div class="fixed bottom-10 left-[calc(16rem+2rem)] right-8 max-w-3xl mx-auto z-40">
+<div class="relative flex items-center">
+<input class="w-full bg-surface-container-lowest border-0 rounded-2xl py-6 px-8 shadow-[0_24px_48px_-12px_rgba(27,28,25,0.08)] text-primary placeholder:text-secondary/50 focus:ring-0 focus:outline-none focus:bg-white transition-all" placeholder="Ask about formation, liturgy, or community..." type="text"/>
+<div class="absolute right-4 flex items-center gap-2">
+<button class="p-3 text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+</button>
+<button class="p-3 bg-primary text-on-primary rounded-xl hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="arrow_upward">arrow_upward</span>
+</button>
+</div>
+</div>
+<p class="text-center text-[10px] text-surface-tint/50 mt-4 uppercase tracking-[0.2em] font-sans">
+                A quiet space for spiritual inquiry
+            </p>
+</div>
+<!-- Background Ritual Element (Soft Blur) -->
+<div class="fixed top-1/4 -right-20 w-96 h-96 bg-tertiary-fixed-dim/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
+<div class="fixed bottom-0 left-64 w-full h-32 bg-gradient-to-t from-surface to-transparent pointer-events-none z-30"></div>
+</main>
+<!-- Footer (Suppressed for focused chat intent, but standard component logic preserved as a signature) -->
+<footer class="ml-64 w-auto py-12 mt-auto bg-[#fbf9f4] dark:bg-[#1b1c19] flex flex-col items-center justify-center gap-6 border-t border-[#e4e2dd]/10">
+<p class="text-[#625d59] dark:text-[#e4e2dd] font-sans text-xs tracking-wide">© 2024 The Modern Sanctuary. Built for Spiritual Formation.</p>
+<div class="flex gap-8">
+<a class="text-[#625d59] dark:text-[#e4e2dd] font-sans text-xs tracking-wide hover:text-[#272420] dark:hover:text-[#fbf9f4] transition-all" href="#">Theology</a>
+<a class="text-[#625d59] dark:text-[#e4e2dd] font-sans text-xs tracking-wide hover:text-[#272420] dark:hover:text-[#fbf9f4] transition-all" href="#">Privacy</a>
+<a class="text-[#625d59] dark:text-[#e4e2dd] font-sans text-xs tracking-wide hover:text-[#272420] dark:hover:text-[#fbf9f4] transition-all" href="#">Support</a>
+</div>
+</footer>
+</body></html>

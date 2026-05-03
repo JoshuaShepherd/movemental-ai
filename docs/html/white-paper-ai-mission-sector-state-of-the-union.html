@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>White paper · AI & the mission sector (April 2026)</title>
+    <meta
+      name="description"
+      content="How artificial intelligence currently intersects with nonprofits, churches, and seminaries—adoption, early responses, and the state of the union for mission-driven organizations."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./site-templates/site-theme.css" />
+    <link rel="stylesheet" href="./mock-pages.css" />
+    <style>
+      /* White paper — page-specific (kept in-file per deliverable) */
+      .wp-lead {
+        font-size: 1.15rem;
+        line-height: 1.7;
+        color: var(--muted-foreground);
+        max-width: 52ch;
+        margin: 0 0 2rem;
+      }
+      .wp-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1.5rem;
+        font-size: 0.82rem;
+        color: color-mix(in srgb, var(--foreground) 55%, transparent);
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .wp-layout {
+        display: grid;
+        gap: 2.5rem;
+      }
+      @media (min-width: 960px) {
+        .wp-layout {
+          grid-template-columns: 220px minmax(0, 1fr);
+          align-items: start;
+        }
+      }
+      .wp-toc {
+        position: sticky;
+        top: 5.5rem;
+        font-size: 0.85rem;
+        line-height: 1.45;
+      }
+      .wp-toc__title {
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.72rem;
+        color: var(--muted-foreground);
+        margin: 0 0 0.75rem;
+      }
+      .wp-toc ol {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .wp-toc li {
+        margin-bottom: 0.4rem;
+      }
+      .wp-toc a {
+        color: color-mix(in srgb, var(--foreground) 75%, transparent);
+        text-decoration: none;
+        border-left: 2px solid transparent;
+        padding-left: 0.6rem;
+        display: block;
+      }
+      .wp-toc a:hover,
+      .wp-toc a.is-active {
+        color: var(--primary);
+        border-left-color: var(--primary);
+      }
+      .wp-prose {
+        max-width: var(--prose-max);
+        font-size: 1.02rem;
+        line-height: 1.7;
+        color: var(--foreground);
+      }
+      .wp-prose p {
+        margin: 0 0 1.1rem;
+      }
+      .wp-prose h2 {
+        font-family: var(--font-serif);
+        font-weight: 400;
+        font-size: clamp(1.45rem, 2.5vw, 1.75rem);
+        line-height: 1.2;
+        margin: 2.5rem 0 1rem;
+        letter-spacing: -0.02em;
+      }
+      .wp-prose h2:first-of-type {
+        margin-top: 0;
+      }
+      .wp-prose h3 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        margin: 1.75rem 0 0.6rem;
+        letter-spacing: -0.01em;
+      }
+      .wp-prose ul {
+        margin: 0 0 1.1rem;
+        padding-left: 1.25rem;
+      }
+      .wp-prose li {
+        margin-bottom: 0.45rem;
+      }
+      .wp-callout {
+        background: color-mix(in srgb, var(--primary) 6%, var(--card));
+        border: 1px solid color-mix(in srgb, var(--primary) 18%, var(--border));
+        border-radius: var(--radius-md);
+        padding: 1rem 1.15rem;
+        margin: 1.25rem 0;
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+      .wp-callout strong {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--primary);
+      }
+      .wp-grid {
+        display: grid;
+        gap: 1rem;
+        margin: 1.25rem 0;
+      }
+      @media (min-width: 640px) {
+        .wp-grid--2 {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .wp-stat {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.1rem;
+      }
+      .wp-stat__n {
+        font-family: var(--font-serif);
+        font-size: 1.65rem;
+        font-weight: 400;
+        color: var(--primary);
+        line-height: 1.1;
+      }
+      .wp-stat__lbl {
+        font-size: 0.82rem;
+        color: var(--muted-foreground);
+        margin-top: 0.35rem;
+        line-height: 1.4;
+      }
+      .wp-refs {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border);
+        font-size: 0.82rem;
+        line-height: 1.55;
+        color: var(--muted-foreground);
+      }
+      .wp-refs h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 0 0.75rem;
+        color: var(--foreground);
+      }
+      .wp-refs ol {
+        margin: 0;
+        padding-left: 1.1rem;
+      }
+      .wp-refs li {
+        margin-bottom: 0.5rem;
+      }
+      .wp-refs a {
+        color: var(--primary);
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <p class="mockup-banner">
+      <strong>Internal</strong> · research white paper · April 2026 ·
+      <a href="./mock-index.html">Mockups index</a>
+    </p>
+
+    <header class="site-top">
+      <div class="site-top__inner">
+        <a href="./mock-home.html" class="site-brand">
+          Movemental
+          <small>White paper</small>
+        </a>
+        <button
+          class="site-nav__toggle"
+          type="button"
+          aria-controls="primary-nav"
+          aria-expanded="false"
+        >
+          Menu
+        </button>
+        <nav class="site-nav" id="primary-nav" aria-label="Primary">
+          <ul>
+            <li><a href="./mock-field-guide.html">The Sequence</a></li>
+            <li><a href="./mock-organizations.html">Who we serve</a></li>
+            <li><a href="./mock-voices.html">Trusted voices</a></li>
+            <li><a href="./mock-assess.html">Assess</a></li>
+            <li><a href="./mock-about.html">About</a></li>
+            <li>
+              <a href="./mock-contact.html" class="site-nav__cta">
+                Start a conversation
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="band-midnight hero" aria-labelledby="wp-title">
+        <div class="container">
+          <p class="eyebrow">State of the union · Mission sector &amp; AI</p>
+          <h1 class="display" id="wp-title">
+            Whether they <em>welcome it or not</em>, AI is already
+            inside nonprofit, church, and seminary life.
+          </h1>
+          <p class="lede lede--regular">
+            This paper synthesizes public research through early 2026: where
+            adoption actually sits, what organizations tried first, where
+            pilots stall, and what leaders can know without pretending the
+            landscape is settled.
+          </p>
+        </div>
+      </section>
+
+      <section class="band-default" aria-labelledby="abstract-h">
+        <div class="container">
+          <div class="wp-meta">
+            <span><strong>Version</strong> 1.0 · April 2026</span>
+            <span><strong>Audience</strong> Nonprofits, churches, seminaries &amp; networks</span>
+            <span><strong>Type</strong> Internal synthesis — not legal or investment advice</span>
+          </div>
+
+          <div class="wp-layout">
+            <aside class="wp-toc" aria-label="Table of contents">
+              <p class="wp-toc__title">Contents</p>
+              <ol>
+                <li><a href="#abstract">Abstract</a></li>
+                <li><a href="#intersection">The intersection</a></li>
+                <li><a href="#macro">Macro landscape</a></li>
+                <li><a href="#nonprofits">Nonprofits</a></li>
+                <li><a href="#churches">Churches</a></li>
+                <li><a href="#seminaries">Seminaries &amp; institutions</a></li>
+                <li><a href="#responses">Early responses</a></li>
+                <li><a href="#state">State of the union</a></li>
+                <li><a href="#refs">References</a></li>
+              </ol>
+            </aside>
+
+            <article class="wp-prose" id="article-body">
+              <h2 id="abstract">Abstract</h2>
+              <p>
+                Generative AI reached population-scale adoption faster than the
+                personal computer or the internet in several national samples.
+                Inside organizations, the picture is messier: broad use of
+                chat-style tools, thin governance, and—across many
+                enterprises—a steep drop from pilot to measurable outcomes.
+                Mission-driven organizations mirror that tension: staff and
+                students already use consumer tools; boards ask for strategy;
+                policies often arrive late; and “successful” institutional AI is
+                still rare in sector surveys. Theological education has responded
+                with consortial programming and experiments in curriculum,
+                while public opinion remains wary—especially on AI in spiritual
+                or pastoral roles. The honest summary for April 2026 is
+                <em>pervasive informal use, uneven institutional maturity, and
+                high stakes for trust.</em>
+              </p>
+
+              <div class="wp-callout">
+                <strong>How to read the numbers</strong>
+                Corporate and nonprofit surveys use different populations and
+                wordings. Treat percentages as directional unless you pull the
+                primary PDF. Conflating distinct studies (for example, a “95%”
+                pilot finding vs. a controlled productivity experiment) creates
+                false precision.
+              </div>
+
+              <h2 id="intersection">1. The intersection — like it or not</h2>
+              <p>
+                AI intersects mission organizations in three layers, regardless
+                of official policy.
+              </p>
+              <p>
+                <strong>Individual layer.</strong> Staff, volunteers, and
+                students use ChatGPT-class tools for drafting, research,
+                coding, and administration—often on personal accounts or
+                unsanctioned logins. Industry reporting describes a “shadow”
+                economy of consumer tools that outruns formal procurement.
+                That pattern appears in mission contexts even when leadership
+                has not approved a platform.
+              </p>
+              <p>
+                <strong>Program layer.</strong> Grant writing, fundraising
+                copy, sermon preparation, liturgical language, communications,
+                and curriculum development are all text-heavy. These are
+                exactly the workflows large language models augment—sometimes
+                brilliantly, sometimes dangerously—when tasks sit “inside”
+                current model strengths.
+              </p>
+              <p>
+                <strong>Governance layer.</strong> Data handling, child safety,
+                donor privacy, academic integrity, denominational polity, and
+                accreditation expectations all collide with fast-moving tools.
+                Sector surveys show AI-specific policies among the
+                <em>least</em> implemented data practices in nonprofits—even
+                while “adopting AI tools” has jumped into top operational
+                priorities (NTEN, 2025).
+              </p>
+
+              <h2 id="macro">2. Macro landscape — speed vs. depth</h2>
+              <p>
+                <strong>Stanford HAI AI Index (2026).</strong> The annual AI
+                Index reports very wide organizational uptake of AI (often
+                cited on the order of a large majority of surveyed firms using
+                AI in at least one function), rapid spread of generative AI in
+                business, and—at the same time—early-stage deployment of more
+                autonomous “agentic” systems across functions. The headline:
+                adoption breadth has run ahead of workflow depth.
+              </p>
+              <p>
+                <strong>The GenAI Divide (MIT-associated analysis, 2025).</strong>
+                Secondary reporting on “The GenAI Divide: State of AI in
+                Business 2025” describes roughly <strong>95%</strong> of
+                corporate generative AI pilots failing to deliver meaningful
+                financial returns, with a small minority capturing outsized
+                value—hence a “divide” between experimentation and P&amp;L
+                impact. Authors emphasize integration and learning fit over raw
+                model quality. Mission orgs should not copy enterprise ROI math,
+                but the <em>pilot-to-nothing</em> pattern is recognizable:
+                budget burned, no durable workflow change.
+              </p>
+              <p>
+                <strong>McKinsey workplace surveys (e.g., 2025).</strong> Leaders
+                report heavy planned AI spending alongside limited self-described
+                maturity: very few organizations classify themselves as having
+                AI fully embedded in workflows with strong outcomes; many report
+                modest revenue or cost effects to date while remaining optimistic
+                about future value. That mismatch explains board impatience and
+                staff fatigue.
+              </p>
+              <p>
+                <strong>Jagged frontier (HBS / MIT / BCG field experiment,
+                2023).</strong> On realistic consulting tasks judged inside GPT-4’s
+                capability frontier, AI users delivered substantial gains in
+                throughput and rated quality; on a deliberately “outside
+                frontier” task, AI users were <em>less</em> likely to be correct
+                than those without AI. The lesson for churches and schools is not
+                “ban AI”—it is that similar-looking tasks can have opposite
+                safety profiles. Drafting a newsletter and auditing a spreadsheet
+                are not equivalent risks.
+              </p>
+
+              <div class="wp-grid wp-grid--2">
+                <div class="wp-stat">
+                  <div class="wp-stat__n">~7%</div>
+                  <div class="wp-stat__lbl">
+                    Nonprofits reporting successful AI adoption addressing
+                    operations &amp; mission (TechSoup / Tapp benchmark framing —
+                    verify in primary report).
+                  </div>
+                </div>
+                <div class="wp-stat">
+                  <div class="wp-stat__n">~48%</div>
+                  <div class="wp-stat__lbl">
+                    Respondents with no AI-specific data-use policy (NTEN Data
+                    Empowerment survey framing — confirm in PDF).
+                  </div>
+                </div>
+              </div>
+
+              <h2 id="nonprofits">3. Nonprofits — exploration without scaffolding</h2>
+              <p>
+                The TechSoup / Tapp <cite>State of AI in Nonprofits: 2025</cite>
+                (1,300+ respondents) sketches a sector in motion: strong
+                interest in AI for grant writing, marketing, and operations;
+                adoption skewing toward larger budgets; many organizations still
+                without a formal AI strategy; heavy reliance on one or two people
+                for technology decisions. Benchmark language in public summaries
+                places “successful” integrated adoption in the <strong>low
+                single digits</strong>—parallel to the enterprise GenAI divide.
+              </p>
+              <p>
+                NTEN’s <cite>2025 Data Empowerment Report</cite> (~220
+                organizations) reinforces governance debt: policies for personal
+                data and sharing are more common than policies governing AI use of
+                organizational data. Yet AI adoption has risen to one of the top
+                planned priorities alongside training and impact evaluation—i.e.,
+                organizations want capacity before they have always built safe
+                rails.
+              </p>
+              <p>
+                <strong>Early responses and ends.</strong> The dominant early
+                moves are efficiency plays (content, proposals, admin) and
+                cautious pilots in donor analytics—ends that match stretched
+                staffing. Rarer but growing: explicit ethics frameworks (e.g.,
+                NTEN’s equitable-AI resources), staff training, and partnership
+                with vendors who accept nonprofit constraints.
+              </p>
+
+              <h2 id="churches">4. Churches — cultural formation meets technical opacity</h2>
+              <p>
+                Few nationwide denominational datasets publish comparable adoption
+                metrics to TechSoup’s benchmark; evidence is more indirect.
+                Clergy and lay leaders use the same consumer assistants as other
+                knowledge workers; youth and young-adult ministries contend with
+                congregants’ daily AI use; counseling-adjacent applications raise
+                ethics questions beyond efficiency.
+              </p>
+              <p>
+                <strong>Pew Research Center (2025)</strong> finds that
+                <strong>73%</strong> of U.S. adults say AI should play
+                <strong>no role</strong> in advising people about faith in God—a
+                striking boundary for religious leaders weighing AI-in-worship,
+                AI-in-discipleship, or chatbot “pastoral” experiments. The same
+                body of surveys notes widespread concern that AI could weaken
+                human skills and relationships, even as many people remain open to
+                AI for analytical or logistical tasks. Translation: parishioners
+                may accept AI behind the scenes for operations while resisting AI
+                in roles they regard as properly human and spiritual.
+              </p>
+              <p>
+                <strong>Early responses and ends.</strong> Denominations and
+                networks have mixed experimental policies—everything from
+                blanket caution to curated toolkits. Common ends: protecting
+                theological authenticity, avoiding plagiarism in preaching and
+                education, and preserving pastoral confidentiality when digital
+                tools touch counseling notes or prayer requests. Few churches have
+                solved the harder problem: <em>formation</em>—how leaders and
+                members learn judgment alongside tool use.
+              </p>
+
+              <h2 id="seminaries">5. Seminaries &amp; institutions — accreditation, pedagogy, partnerships</h2>
+              <p>
+                Accredited theological education moves slower than the tech
+                cycle—but not slowly enough to avoid disruption. The Association
+                of Theological Schools (ATS), Atla, and the In Trust Center have
+                convened an ongoing series,
+                <cite>F[AI]thfully Co-Creating: Navigating Artificial
+                Intelligence and Theological Education</cite>, including
+                webinars, strategic-planning conversations, and stackable
+                microcredentials focused on AI policy, pedagogy, and design.
+                Schools publish case-style reflections on responsible
+                experimentation—e.g., embedding AI literacy with ethical and
+                theological framing (see ATS gallery pieces such as “Leading
+                experiments in AI for theological education and the church”).
+              </p>
+              <p>
+                <strong>Early responses and ends.</strong> Ends here differ from
+                the nonprofit sector’s first-wave efficiency story: academic
+                integrity, formation of ministers who will serve AI-shaped
+                congregations, preservation of human mentorship, and alignment
+                with accreditation and library standards. Practical responses
+                include syllabus language, citation norms for AI-assisted work,
+                faculty development, and selective tool adoption in research and
+                administration.
+              </p>
+
+              <h2 id="responses">6. Early responses — a typology</h2>
+              <p>Across sectors, most early moves cluster into five patterns:</p>
+              <ul>
+                <li>
+                  <strong>Ignore / defer.</strong> Policy silence while tools
+                  spread informally—high risk for misconduct and inequality
+                  (power users vs. everyone else).
+                </li>
+                <li>
+                  <strong>Efficiency push.</strong> Grant drafts, social posts,
+                  donor emails—fast wins, often without verification workflows.
+                </li>
+                <li>
+                  <strong>Pilot theater.</strong> High-visibility experiments with
+                  unclear ownership; aligns with enterprise patterns where most
+                  pilots never scale (GenAI Divide reporting).
+                </li>
+                <li>
+                  <strong>Governance-first.</strong> Data policies, acceptable-use
+                  statements, human-in-the-loop rules—slower, closer to NTEN’s
+                  warnings about missing AI-specific guardrails.
+                </li>
+                <li>
+                  <strong>Formation-first.</strong> Training leaders to judge when
+                  AI helps, when it lies confidently, and when human presence is
+                  non-negotiable—aligned with the “jagged frontier” evidence and
+                  with pastoral boundaries flagged by Pew.
+                </li>
+              </ul>
+              <p>
+                <strong>Reliability research.</strong> OpenAI’s 2025 paper
+                <cite>Why Language Models Hallucinate</cite> argues that standard
+                benchmarks reward guessing over calibrated uncertainty—so
+                overconfidence is partly systemic. That matters whenever a mission
+                organization treats fluent prose as authoritative truth.
+              </p>
+
+              <h2 id="state">7. State of the union — what we can say in April 2026</h2>
+              <p>
+                <strong>First:</strong> Informal adoption is already universal at
+                the people layer; institutional maturity is not.
+              </p>
+              <p>
+                <strong>Second:</strong> Nonprofit benchmarks and enterprise
+                studies agree on a strategic gap—lots of exploration, thin written
+                strategy, uneven ROI—while Stanford-scale data show AI becoming
+                omnipresent in the wider economy. Mission organizations feel
+                squeezed between “we’re behind” narratives and “we see no
+                benefit” local reality.
+              </p>
+              <p>
+                <strong>Third:</strong> Public attitude data (Pew) warn against
+                placing AI in spiritually authoritative roles; theological
+                schools and denominations are still negotiating pedagogy and
+                policy; NTEN-style data show governance lagging usage.
+              </p>
+              <p>
+                <strong>Fourth:</strong> The constructive path is not merely more
+                licenses—it is sequence: clarity on data and risk, bounded
+                experiments, skill-building tied to real workflows, then
+                scaled solutions—what Movemental calls Safety → Sandbox →
+                Skills → Solutions. That ordering matches the failure modes the
+                research keeps naming: brittle workflows, unclear ownership, and
+                tools that never learn the organization.
+              </p>
+
+              <div class="wp-refs" id="refs">
+                <h2>References (selected)</h2>
+                <ol>
+                  <li>
+                    Stanford HAI.
+                    <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report/" target="_blank" rel="noopener noreferrer">The 2026 AI Index Report</a>
+                  </li>
+                  <li>
+                    GenAI Divide reporting &amp; PDF:
+                    <a href="https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf" target="_blank" rel="noopener noreferrer">State of AI in Business 2025</a>
+                    · trade coverage:
+                    <a href="https://www.computing.co.uk/news/2025/ai/mit-report-95pc-corporate-generative-ai-pilots-fail" target="_blank" rel="noopener noreferrer">Computing UK</a>
+                  </li>
+                  <li>
+                    Dell’Anna, S. et al.
+                    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321" target="_blank" rel="noopener noreferrer">Navigating the Jagged Technological Frontier</a>
+                    (SSRN / HBS Working Paper 24-013, 2023).
+                  </li>
+                  <li>
+                    McKinsey &amp; Company.
+                    <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-AI-the-next-productivity-frontier" target="_blank" rel="noopener noreferrer">The economic potential of generative AI</a>
+                    ·
+                    <a href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/superagency-in-the-workplace-empowering-people-to-unlock-ais-full-potential-at-work" target="_blank" rel="noopener noreferrer">Superagency in the workplace</a>
+                  </li>
+                  <li>
+                    Tapp Network / TechSoup.
+                    <a href="https://blog.tappnetwork.com/tapp-and-techsoup-release-2025-ai-benchmark-report" target="_blank" rel="noopener noreferrer">State of AI in Nonprofits: 2025</a> (announcement).
+                  </li>
+                  <li>
+                    NTEN.
+                    <a href="https://word.nten.org/wp-content/uploads/2025/07/2025-Data-Empowerment-Report.pdf" target="_blank" rel="noopener noreferrer">2025 Data Empowerment Report</a> (PDF).
+                  </li>
+                  <li>
+                    Pew Research Center.
+                    <a href="https://www.pewresearch.org/science/2025/09/17/how-americans-view-ai-and-its-impact-on-people-and-society/" target="_blank" rel="noopener noreferrer">How Americans View AI and Its Impact</a> (Sept 2025).
+                  </li>
+                  <li>
+                    Atla / ATS / In Trust.
+                    <a href="https://www.atla.com/ai-te-series/" target="_blank" rel="noopener noreferrer">F[AI]thfully Co-Creating: AI &amp; Theological Education</a>
+                  </li>
+                  <li>
+                    OpenAI.
+                    <a href="https://openai.com/research/why-language-models-hallucinate" target="_blank" rel="noopener noreferrer">Why Language Models Hallucinate</a> (2025).
+                  </li>
+                </ol>
+                <p style="margin-top: 1rem">
+                  Internal companion:
+                  <code>docs/build/notes/ai-research-synthesis-mission-audience-april-2026.md</code>
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="band-midnight"
+        style="padding: 3rem 0"
+        aria-labelledby="cta-h2"
+      >
+        <div class="container">
+          <p class="eyebrow">Movemental</p>
+          <h2 class="display" id="cta-h2">
+            The research points to <em>sequence and formation</em>, not panic.
+          </h2>
+          <p class="lede lede--regular" style="max-width: 52ch">
+            If your board wants strategy before your people have safety and
+            skill, you will replay the same pilot-to-nothing pattern the data
+            already describes. We help mission organizations build AI life in
+            the right order.
+          </p>
+          <div class="hero-actions">
+            <a href="./mock-field-guide.html" class="btn-pill btn-pill--primary">
+              Read the field guide
+            </a>
+            <a href="./mock-contact.html" class="btn-pill btn-pill--ghost">
+              Start a conversation
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div>
+          <p class="site-footer__heading">Movemental</p>
+          <p style="font-size: 0.88rem; line-height: 1.55; max-width: 30ch; margin: 0;">
+            Internal white paper — AI &amp; the mission sector (April 2026).
+          </p>
+        </div>
+        <div>
+          <p class="site-footer__heading">Research</p>
+          <ul class="site-footer__links">
+            <li>
+              <a href="./white-paper-ai-mission-sector-state-of-the-union.html">This paper</a>
+            </li>
+            <li><a href="./mock-field-guide.html">Field guide</a></li>
+            <li><a href="./mock-about.html">About</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="site-footer__heading">Who we serve</p>
+          <ul class="site-footer__links">
+            <li><a href="./mock-nonprofits.html">Nonprofits</a></li>
+            <li><a href="./mock-churches.html">Churches</a></li>
+            <li><a href="./mock-institutions.html">Institutions</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="site-footer__heading">Get started</p>
+          <ul class="site-footer__links">
+            <li><a href="./mock-assess.html">Take the diagnostic</a></li>
+            <li><a href="./mock-contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="site-footer__meta">
+        © 2026 Movemental. Internal document.
+      </p>
+    </footer>
+
+    <script src="./site-templates/site-shell.js"></script>
+    <script>
+      (function () {
+        var toc = document.querySelector(".wp-toc");
+        if (!toc || !("IntersectionObserver" in window)) return;
+        var links = toc.querySelectorAll('a[href^="#"]');
+        var sections = [];
+        links.forEach(function (a) {
+          var id = a.getAttribute("href").slice(1);
+          var el = document.getElementById(id);
+          if (el) sections.push({ link: a, el: el });
+        });
+        var obs = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) return;
+              var active = sections.find(function (s) {
+                return s.el === entry.target;
+              });
+              if (!active) return;
+              sections.forEach(function (s) {
+                s.link.classList.toggle("is-active", s.link === active.link);
+              });
+            });
+          },
+          { rootMargin: "-20% 0px -60% 0px", threshold: 0 }
+        );
+        sections.forEach(function (s) {
+          obs.observe(s.el);
+        });
+      })();
+    </script>
+  </body>
+</html>

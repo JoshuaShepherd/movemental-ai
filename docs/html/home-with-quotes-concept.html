@@ -1,0 +1,2190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Home (quote decoration, home-page edition) · Movemental concept
+    </title>
+    <meta
+      name="description"
+      content="Concept page adapting the existing Movemental home page with a home-page-specific quote decoration strategy: pre-hero epigraph, micro-attribution footers at the end of key sections, preserved midnight pull-quote, and a footer rotator. No marginalia, no competing breath bands — home is too dense for either."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+    />
+
+    <style>
+      /* ============================================================================
+         Movemental — Home page with quote decoration (concept)
+         Source of content: src/components/sections/home/home-concept-modern-page-content.tsx
+         Copy is reproduced here as closely as possible so this mockup can be A/B'd
+         against the production home page.
+
+         How this page's quote strategy differs from the Methodology concept:
+
+           Methodology page (docs/html/quotes-in-situ-concept.html) uses all four
+           patterns — pre-hero epigraph, scroll-synced marginalia, full-width
+           section breath bands, and a footer rotator — because it is a longform
+           reading page with a clear central column and generous gutters.
+
+           Home page (this file) is DENSE. It already has:
+             - a hero with a "note to leadership" sidebar
+             - a four-step AI Stewardship Sequence path grid
+             - a four-node Foundation grid
+             - a three-up audience grid
+             - a three-up co-founders grid
+             - a midnight pull-quote band with a quote from the field guide Ch. 5
+
+           On a page this structurally busy, marginalia would compete with existing
+           sidebars/grids, and full-width breath bands would dilute the one
+           midnight pull-quote that's already doing that job well.
+
+         What the home uses instead:
+
+           1. Pre-hero EPIGRAPH — small readable italic quote above the eyebrow.
+              Same pattern as the Methodology page. Hans Urs von Balthasar is the
+              best fit — he frames the page's "there is a wiser way" thesis as
+              recovery rather than invention. Works on all viewports.
+
+           2. MICRO-ATTRIBUTION footers at the foot of 5 key sections. A hairline
+              divider + a one-line Instrument Serif italic quote + a tiny cite.
+              These are footnotes, not pull quotes: they reinforce the claim just
+              made, never interrupt the reader, and borrow authority from the
+              voices Hirsch himself quotes as chapter epigraphs.
+
+              - Two Equal Errors → Brueggemann (imagine vs implement)
+              - What's at Stake → Keynes (struggle of escape from old ideas)
+              - Path Forward / The AI Stewardship Sequence → Ivan Illich (we can only live changes)
+              - Foundation (integration outputs) → John Gall's Law (simple systems)
+              - About (shared recognition) → Eric Hoffer (learners inherit the future)
+
+           3. Existing MIDNIGHT PULL-QUOTE (field guide Ch. 5) — PRESERVED untouched.
+              Using the author's own voice from their own book on the home page is
+              sharper than an external quote. Do not displace.
+
+           4. Footer ROTATOR — same pattern as the Methodology page, same 8s
+              cadence, same prefers-reduced-motion guard. Always on, site-wide.
+
+         Design language: Concept Modern — warm paper + ink, Inter body, Instrument
+         Serif italic for emphasis ONLY. Hairlines, tonal bands, no decorative
+         shadows. Tokens mirror about-modern.html + quotes-in-situ-concept.html
+         so all three pages read as one family.
+         ============================================================================ */
+
+      :root {
+        /* Paper + ink */
+        --bg: #faf6ee;
+        --bg-alt: #f2ece0;
+        --surface: #ffffff;
+        --surface-deep: #efe7d6;
+
+        --ink: #19150f;
+        --ink-muted: #6b6660;
+        --ink-soft: #9f978b;
+        --border: #e6ddcb;
+        --border-soft: #efe7d6;
+
+        /* Midnight regional */
+        --dark: #141110;
+        --dark-ink: #f4efe5;
+        --dark-muted: rgba(244, 239, 229, 0.72);
+        --dark-soft: rgba(244, 239, 229, 0.5);
+        --dark-border: rgba(244, 239, 229, 0.14);
+
+        /* Type */
+        --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system,
+          "Segoe UI", Roboto, sans-serif;
+        --font-serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+
+        --tr-tight: -0.022em;
+        --tr-display: -0.028em;
+        --tr-label: 0.09em;
+
+        /* Layout */
+        --container: 1200px;
+        --container-narrow: 740px;
+        --reading-max: 640px;
+        --gutter: clamp(1.25rem, 4vw, 2.5rem);
+        --section-y: clamp(5rem, 10vw, 8rem);
+        --section-y-sm: clamp(3rem, 6vw, 4.5rem);
+        --nav-h: 4.25rem;
+
+        /* Motion */
+        --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+        --dur: 0.7s;
+        --dur-slow: 1.1s;
+      }
+
+      *, *::before, *::after { box-sizing: border-box; }
+
+      html {
+        scroll-behavior: smooth;
+        text-size-adjust: 100%;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--font-sans);
+        font-size: 17px;
+        line-height: 1.55;
+        font-feature-settings: "kern", "liga", "cv11";
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+      }
+
+      ::selection { background: var(--ink); color: var(--bg); }
+
+      a { color: inherit; text-decoration: none; }
+
+      img, svg { display: block; max-width: 100%; }
+
+      p, h1, h2, h3, h4, h5 { margin: 0; }
+
+      /* ---------- Primitives ---------- */
+
+      .container {
+        width: 100%;
+        max-width: var(--container);
+        margin-inline: auto;
+        padding-inline: var(--gutter);
+      }
+
+      .container--narrow {
+        max-width: var(--container-narrow);
+      }
+
+      .eyebrow {
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: var(--tr-label);
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+      }
+
+      .eyebrow::before {
+        content: "";
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 9999px;
+        background: var(--ink);
+      }
+
+      .display {
+        font-weight: 500;
+        letter-spacing: var(--tr-display);
+        line-height: 1.05;
+      }
+
+      .display em,
+      h2 em,
+      h3 em {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        font-size: 1.04em;
+        letter-spacing: -0.01em;
+      }
+
+      /* Reveal on scroll primitive */
+      .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity var(--dur) var(--ease-out),
+          transform var(--dur) var(--ease-out);
+      }
+
+      .reveal.is-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ---------- Sticky glass header ---------- */
+
+      .site-top {
+        position: sticky;
+        top: 0;
+        z-index: 60;
+        height: var(--nav-h);
+        display: flex;
+        align-items: center;
+        background: color-mix(in srgb, var(--bg) 85%, transparent);
+        backdrop-filter: saturate(150%) blur(8px);
+        -webkit-backdrop-filter: saturate(150%) blur(8px);
+        border-bottom: 1px solid transparent;
+        transition: border-color var(--dur) var(--ease-out);
+      }
+
+      .site-top[data-scrolled="true"] {
+        border-bottom-color: var(--border);
+      }
+
+      .site-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+      }
+
+      .brand {
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        font-size: 1.05rem;
+      }
+
+      .brand em {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        font-size: 1.1em;
+      }
+
+      .nav-links {
+        display: none;
+        gap: 1.75rem;
+        font-size: 14px;
+        color: var(--ink-muted);
+      }
+
+      .nav-links a:hover { color: var(--ink); }
+
+      @media (min-width: 900px) {
+        .nav-links { display: flex; }
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        height: 44px;
+        padding: 0 1.2rem;
+        border-radius: 9999px;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--ink);
+        font: 500 14px/1 var(--font-sans);
+        cursor: pointer;
+        transition: transform 0.2s var(--ease-out),
+          background 0.2s var(--ease-out), color 0.2s var(--ease-out),
+          border-color 0.2s var(--ease-out);
+      }
+
+      .btn:hover { border-color: var(--ink); }
+
+      .btn-primary {
+        background: var(--ink);
+        color: var(--bg);
+        border-color: var(--ink);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        background: #000;
+      }
+
+      .btn-sm { height: 38px; padding: 0 1rem; font-size: 13px; }
+
+      .arrow-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 2px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--ink);
+        transition: border-color 0.2s var(--ease-out);
+      }
+
+      .arrow-link:hover { border-color: var(--ink); }
+      .arrow-link svg { width: 14px; height: 14px; }
+
+      /* ============================================================
+         PATTERN 1 — Pre-hero epigraph
+         ============================================================ */
+
+      .hero {
+        padding: clamp(5rem, 10vw, 8rem) 0 clamp(4rem, 8vw, 6rem);
+        position: relative;
+      }
+
+      .hero__epigraph {
+        max-width: 56ch;
+        margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+        padding-bottom: clamp(2rem, 3vw, 2.5rem);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .hero__epigraph-label {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        margin-bottom: 0.9rem;
+      }
+
+      .hero__epigraph blockquote {
+        margin: 0 0 0.9rem;
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(1.25rem, 1.75vw, 1.625rem);
+        line-height: 1.35;
+        color: var(--ink);
+        letter-spacing: -0.005em;
+        max-width: 48ch;
+      }
+
+      .hero__epigraph blockquote::before {
+        content: "“";
+        margin-right: 0.05em;
+        opacity: 0.55;
+      }
+
+      .hero__epigraph blockquote::after {
+        content: "”";
+        margin-left: 0.05em;
+        opacity: 0.55;
+      }
+
+      .hero__epigraph cite {
+        display: block;
+        font-family: var(--font-sans);
+        font-style: normal;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: var(--tr-label);
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+
+      .hero__epigraph cite .author { color: var(--ink); }
+
+      .hero__main {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: clamp(2rem, 4vw, 3rem);
+        align-items: end;
+      }
+
+      @media (min-width: 1000px) {
+        .hero__main {
+          grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+          gap: clamp(3rem, 5vw, 4.5rem);
+        }
+      }
+
+      .hero__eyebrow { margin-bottom: 1.25rem; }
+
+      .hero__title {
+        font-size: clamp(2.6rem, 6vw, 5rem);
+        letter-spacing: var(--tr-display);
+        line-height: 1.02;
+        max-width: 18ch;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero__lede {
+        max-width: 54ch;
+        color: var(--ink-muted);
+        font-size: clamp(1.15rem, 1.55vw, 1.3rem);
+        line-height: 1.5;
+      }
+
+      .hero__actions {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .hero__aside {
+        max-width: 36ch;
+        border-left: 2px solid var(--ink);
+        padding-left: 1.25rem;
+        color: var(--ink-muted);
+        font-size: 1rem;
+        line-height: 1.55;
+      }
+
+      .hero__aside .eyebrow { margin-bottom: 0.75rem; }
+
+      .hero__aside p + p { margin-top: 0.5rem; }
+
+      .hairline-fade {
+        pointer-events: none;
+        height: 1px;
+        margin: 0 var(--gutter);
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          var(--border) 18%,
+          var(--border) 82%,
+          transparent 100%
+        );
+      }
+
+      /* ---------- Generic section ---------- */
+
+      .sec {
+        padding: var(--section-y) 0;
+      }
+
+      .sec--sm { padding: var(--section-y-sm) 0; }
+      .sec--alt { background: var(--bg-alt); }
+
+      .sec__eyebrow { margin-bottom: 1.25rem; }
+
+      .sec h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 500;
+        line-height: 1.08;
+        letter-spacing: var(--tr-display);
+        max-width: 26ch;
+        margin-bottom: 1.25rem;
+      }
+
+      .sec h2.sm {
+        font-size: clamp(1.65rem, 3.2vw, 2.35rem);
+        line-height: 1.15;
+      }
+
+      .sec p.lede {
+        max-width: 58ch;
+        font-size: clamp(1.08rem, 1.4vw, 1.35rem);
+        line-height: 1.6;
+        color: var(--ink-muted);
+      }
+
+      .sec p + p { margin-top: 0.75rem; }
+
+      /* ============================================================
+         PATTERN 2 — Micro-attribution footer
+         One-line italic quote + tiny cite, sits below a section's main
+         content on a thin hairline. Never interrupts, never competes.
+         ============================================================ */
+
+      .microattr {
+        margin-top: clamp(2.5rem, 4vw, 3.25rem);
+        padding-top: clamp(1rem, 1.5vw, 1.25rem);
+        border-top: 1px solid var(--border);
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
+      }
+
+      @media (min-width: 760px) {
+        .microattr {
+          grid-template-columns: auto 1fr;
+          column-gap: 1.5rem;
+          align-items: baseline;
+        }
+      }
+
+      .microattr__label {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        white-space: nowrap;
+      }
+
+      .microattr__body {
+        display: grid;
+        gap: 0.4rem;
+      }
+
+      .microattr__quote {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(1.0625rem, 1.25vw, 1.25rem);
+        line-height: 1.4;
+        color: var(--ink);
+        letter-spacing: -0.005em;
+        max-width: 62ch;
+      }
+
+      .microattr__quote::before { content: "“"; opacity: 0.45; }
+      .microattr__quote::after { content: "”"; opacity: 0.45; }
+
+      .microattr__cite {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        color: var(--ink-soft);
+      }
+
+      .microattr__cite .author { color: var(--ink); }
+
+      /* ---------- Logo strip ---------- */
+
+      .logo-strip {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .logo-strip__label {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: var(--tr-label);
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+
+      .logo-strip__items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem 2.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+        font-family: var(--font-serif);
+        font-style: italic;
+        color: var(--ink);
+        font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+      }
+
+      /* ---------- Two equal errors ---------- */
+
+      .errors {
+        border-top: 1px solid var(--border);
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      @media (min-width: 640px) {
+        .errors { grid-template-columns: 1fr 1fr; }
+      }
+
+      .errors__item {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+        color: var(--ink);
+      }
+
+      @media (min-width: 640px) {
+        .errors__item { padding: 1.5rem; border-bottom: 0; }
+        .errors__item:first-child { padding-left: 0; border-right: 1px solid var(--border); }
+        .errors__item:last-child { padding-right: 0; }
+      }
+
+      .errors__num {
+        font-size: 11px;
+        letter-spacing: var(--tr-label);
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        font-weight: 500;
+      }
+
+      /* ---------- Stakes grid (three columns) ---------- */
+
+      .stakes {
+        border-top: 1px solid var(--border);
+        padding-top: clamp(2rem, 3.5vw, 2.75rem);
+        margin-top: clamp(2.25rem, 4vw, 3rem);
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.25rem;
+      }
+
+      @media (min-width: 760px) {
+        .stakes { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+      }
+
+      .stakes__item h3 {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+        line-height: 1.15;
+        letter-spacing: -0.005em;
+        margin-bottom: 0.35rem;
+      }
+
+      .stakes__item p { font-size: 1.05rem; color: var(--ink-muted); line-height: 1.55; }
+
+      /* ---------- AI Stewardship Sequence path grid ---------- */
+
+      .path-intro {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        align-items: end;
+      }
+
+      @media (min-width: 1000px) {
+        .path-intro {
+          grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+          gap: 3rem;
+        }
+      }
+
+      .path-intro p.lede {
+        max-width: 54ch;
+        font-size: 1.08rem;
+      }
+
+      .path {
+        margin-top: clamp(2.5rem, 5vw, 3.5rem);
+        border-top: 1px solid var(--border);
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      @media (min-width: 640px) {
+        .path { grid-template-columns: 1fr 1fr; }
+      }
+
+      @media (min-width: 1100px) {
+        .path { grid-template-columns: repeat(4, 1fr); }
+      }
+
+      .path__item {
+        padding: clamp(1.75rem, 3vw, 2.25rem) 0;
+        border-bottom: 1px solid var(--border);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+      }
+
+      @media (min-width: 640px) {
+        .path__item { padding: clamp(1.75rem, 3vw, 2.25rem); }
+        .path__item:nth-child(odd) { padding-left: 0; border-right: 1px solid var(--border); }
+        .path__item:nth-child(even) { padding-right: 0; }
+      }
+
+      @media (min-width: 1100px) {
+        .path__item {
+          padding: clamp(1.75rem, 3vw, 2.25rem);
+          border-bottom: 0;
+          border-right: 1px solid var(--border);
+        }
+        .path__item:first-child { padding-left: 0; }
+        .path__item:last-child { padding-right: 0; border-right: 0; }
+        .path__item:nth-child(odd),
+        .path__item:nth-child(even) {
+          padding-left: clamp(1.75rem, 3vw, 2.25rem);
+          padding-right: clamp(1.75rem, 3vw, 2.25rem);
+        }
+        .path__item:first-child { padding-left: 0; }
+        .path__item:last-child { padding-right: 0; }
+      }
+
+      .path__item::before {
+        content: "";
+        position: absolute;
+        top: -4px;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 9999px;
+        background: var(--ink);
+      }
+
+      .path__num {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: var(--tr-label);
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+
+      .path__title {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+        line-height: 1.1;
+        letter-spacing: -0.005em;
+      }
+
+      .path__body {
+        font-size: 0.98rem;
+        color: var(--ink-muted);
+        line-height: 1.55;
+      }
+
+      /* ---------- Cards grids ---------- */
+
+      .cards {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: clamp(2rem, 4vw, 2.75rem);
+      }
+
+      @media (min-width: 760px) { .cards { gap: 1.1rem; } }
+      @media (min-width: 900px) {
+        .cards--2 { grid-template-columns: 1fr 1fr; }
+        .cards--3 { grid-template-columns: repeat(3, 1fr); }
+      }
+
+      .card {
+        background: var(--surface);
+        border-radius: 14px;
+        padding: clamp(1.5rem, 2.6vw, 2rem);
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+        transition: transform 0.25s var(--ease-out);
+      }
+
+      .card:hover { transform: translateY(-2px); }
+
+      .card__tag {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: var(--tr-label);
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+
+      .card__title {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(1.35rem, 2vw, 1.65rem);
+        line-height: 1.2;
+        letter-spacing: -0.005em;
+      }
+
+      .card__body {
+        font-size: 0.98rem;
+        color: var(--ink-muted);
+        line-height: 1.55;
+      }
+
+      /* ---------- Foundation grid (hairline tiles on border) ---------- */
+
+      .foundation {
+        margin-top: clamp(2.5rem, 5vw, 3.5rem);
+        background: var(--border);
+        border-radius: 14px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1px;
+        overflow: hidden;
+      }
+
+      @media (min-width: 640px) {
+        .foundation { grid-template-columns: 1fr 1fr; }
+      }
+
+      @media (min-width: 1100px) {
+        .foundation { grid-template-columns: repeat(4, 1fr); }
+      }
+
+      .foundation__cell {
+        background: var(--surface);
+        padding: clamp(1.5rem, 2.8vw, 2.2rem);
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+
+      .foundation__icon {
+        width: 28px;
+        height: 28px;
+        color: var(--ink);
+      }
+
+      .foundation__title {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(1.35rem, 2.1vw, 1.65rem);
+        line-height: 1.15;
+        letter-spacing: -0.005em;
+      }
+
+      .foundation__body {
+        font-size: 0.98rem;
+        line-height: 1.55;
+        color: var(--ink-muted);
+      }
+
+      /* ---------- Co-founders ---------- */
+
+      .founders {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.1rem;
+        margin-top: clamp(2.25rem, 4vw, 3rem);
+      }
+
+      @media (min-width: 900px) {
+        .founders { grid-template-columns: repeat(3, 1fr); }
+      }
+
+      .founder {
+        background: var(--surface);
+        border-radius: 14px;
+        padding: clamp(1.5rem, 2.6vw, 2rem);
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .founder__head {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .founder__portrait {
+        width: 64px;
+        height: 64px;
+        border-radius: 9999px;
+        background: var(--bg-alt);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+        color: var(--ink);
+        font-size: 15px;
+        flex-shrink: 0;
+      }
+
+      .founder__name {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        font-size: 1.2rem;
+        line-height: 1.1;
+        letter-spacing: -0.005em;
+      }
+
+      .founder__role {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: var(--tr-label);
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+
+      .founder__body {
+        font-size: 0.98rem;
+        color: var(--ink-muted);
+        line-height: 1.55;
+      }
+
+      .authority {
+        margin-top: clamp(2rem, 4vw, 2.75rem);
+        border-top: 1px solid var(--border);
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      @media (min-width: 900px) {
+        .authority { grid-template-columns: repeat(3, 1fr); }
+      }
+
+      .authority__item {
+        padding: clamp(1.75rem, 3vw, 2.25rem) 0;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+
+      @media (min-width: 900px) {
+        .authority__item {
+          padding: clamp(1.75rem, 3vw, 2.25rem) clamp(1.5rem, 2.5vw, 2rem);
+          border-bottom: 0;
+          border-right: 1px solid var(--border);
+        }
+        .authority__item:first-child { padding-left: 0; }
+        .authority__item:last-child { padding-right: 0; border-right: 0; }
+      }
+
+      .authority__num {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: var(--tr-label);
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+
+      .authority__t {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+        line-height: 1.2;
+        letter-spacing: -0.005em;
+      }
+
+      .authority__b {
+        font-size: 0.98rem;
+        color: var(--ink-muted);
+        line-height: 1.55;
+        max-width: 38ch;
+      }
+
+      /* ---------- Grounding ---------- */
+
+      .grounding {
+        border-top: 1px solid var(--border);
+        padding-top: clamp(2rem, 3.5vw, 2.75rem);
+        margin-top: clamp(2rem, 4vw, 2.75rem);
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.25rem;
+      }
+
+      @media (min-width: 760px) {
+        .grounding {
+          grid-template-columns: 1fr 1fr;
+          gap: 3rem;
+        }
+        .grounding__col + .grounding__col {
+          padding-left: 2.5rem;
+          border-left: 1px solid var(--border);
+        }
+      }
+
+      .grounding__label {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: var(--tr-label);
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        margin-bottom: 1.25rem;
+      }
+
+      .grounding ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        font-size: 1.02rem;
+        line-height: 1.55;
+      }
+
+      .grounding ul li {
+        display: flex;
+        align-items: baseline;
+        gap: 0.75rem;
+      }
+
+      .grounding ul li::before {
+        content: "";
+        display: block;
+        width: 4px;
+        height: 4px;
+        border-radius: 9999px;
+        background: var(--ink-soft);
+        flex-shrink: 0;
+        margin-top: 0.7em;
+      }
+
+      .grounding__col--produces ul { color: var(--ink); }
+      .grounding__col--produces ul li::before { background: var(--ink); }
+      .grounding__col--not ul { color: var(--ink-muted); }
+
+      /* ---------- Midnight pull-quote (preserved) ---------- */
+
+      .midnight {
+        background: var(--dark);
+        color: var(--dark-ink);
+        padding: clamp(5rem, 10vw, 8rem) 0;
+      }
+
+      .midnight blockquote {
+        max-width: 28ch;
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(1.9rem, 4vw, 3rem);
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+        margin: 0 0 1.5rem;
+        color: var(--dark-ink);
+      }
+
+      .midnight figcaption {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: var(--tr-label);
+        text-transform: uppercase;
+        color: var(--dark-soft);
+      }
+
+      /* ---------- Invitation / CTA ---------- */
+
+      .invite {
+        background: linear-gradient(
+          180deg,
+          var(--bg) 0%,
+          var(--bg-alt) 55%,
+          var(--bg) 100%
+        );
+        padding: clamp(5.5rem, 11vw, 9rem) 0;
+      }
+
+      .invite h2 {
+        font-size: clamp(2.4rem, 5.2vw, 4rem);
+        letter-spacing: var(--tr-display);
+        font-weight: 500;
+        line-height: 1.05;
+        max-width: 24ch;
+        margin: 0.5rem 0 0;
+      }
+
+      .invite p.lede { margin-top: 1.75rem; font-size: 1.15rem; }
+
+      .invite__newsletter {
+        margin-top: clamp(2.25rem, 4vw, 3rem);
+        padding-top: clamp(1.5rem, 2.5vw, 2rem);
+        border-top: 1px solid var(--border);
+        max-width: 44ch;
+      }
+
+      .invite__newsletter-label {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: var(--tr-label);
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+
+      .invite__newsletter p {
+        margin: 0.75rem 0 1rem;
+        color: var(--ink-muted);
+      }
+
+      .newsletter-form {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .newsletter-form input[type="email"] {
+        flex: 1;
+        min-width: 0;
+        height: 44px;
+        padding: 0 0.9rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 9999px;
+        font: 400 14px/1 var(--font-sans);
+        color: var(--ink);
+      }
+
+      .newsletter-form input[type="email"]:focus {
+        outline: none;
+        border-color: var(--ink);
+      }
+
+      /* ============================================================
+         PATTERN 4 — Footer rotator + site footer
+         ============================================================ */
+
+      .site-footer {
+        background: var(--dark);
+        color: var(--dark-ink);
+        padding: clamp(3.5rem, 6vw, 5rem) 0 2.5rem;
+      }
+
+      .footer-rotator {
+        border-top: 1px solid var(--dark-border);
+        border-bottom: 1px solid var(--dark-border);
+        padding: 2rem 0;
+        margin-bottom: 2.5rem;
+      }
+
+      .footer-rotator__inner {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        align-items: center;
+      }
+
+      @media (min-width: 800px) {
+        .footer-rotator__inner {
+          grid-template-columns: auto 1fr auto;
+        }
+      }
+
+      .footer-rotator__label {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--dark-soft);
+      }
+
+      .footer-rotator__quote {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(1.15rem, 1.5vw, 1.4rem);
+        line-height: 1.35;
+        color: var(--dark-ink);
+        letter-spacing: -0.005em;
+        transition: opacity 0.4s var(--ease-out);
+      }
+
+      .footer-rotator.is-swapping .footer-rotator__quote,
+      .footer-rotator.is-swapping .footer-rotator__attr {
+        opacity: 0;
+      }
+
+      .footer-rotator__attr {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+        color: var(--dark-muted);
+        line-height: 1.45;
+        transition: opacity 0.4s var(--ease-out);
+      }
+
+      .footer-rotator__attr .author {
+        color: var(--dark-ink);
+        display: block;
+        margin-bottom: 0.15rem;
+      }
+
+      .footer-cols {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 2.5rem;
+      }
+
+      @media (min-width: 800px) {
+        .footer-cols { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
+      }
+
+      .footer-col h4 {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: var(--tr-label);
+        text-transform: uppercase;
+        color: var(--dark-soft);
+        margin-bottom: 0.9rem;
+      }
+
+      .footer-col ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        font-size: 14px;
+        color: var(--dark-muted);
+      }
+
+      .footer-col a:hover { color: var(--dark-ink); }
+
+      .footer-brand p {
+        font-size: 14px;
+        color: var(--dark-muted);
+        max-width: 38ch;
+      }
+
+      .footer-fineprint {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        font-size: 12px;
+        color: var(--dark-soft);
+        border-top: 1px solid var(--dark-border);
+        padding-top: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      /* ---------- Concept reviewer panel ---------- */
+
+      .concept-panel {
+        position: fixed;
+        bottom: 1rem;
+        left: 1rem;
+        z-index: 80;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 0.75rem 0.9rem;
+        font-size: 11px;
+        line-height: 1.45;
+        color: var(--ink-muted);
+        max-width: 280px;
+        box-shadow: 0 24px 80px rgba(25, 21, 15, 0.08);
+      }
+
+      .concept-panel strong { color: var(--ink); font-weight: 600; }
+      .concept-panel ul { margin: 0.5rem 0 0.3rem; padding-left: 1rem; }
+      .concept-panel li { margin-bottom: 0.2rem; }
+      .concept-panel .close {
+        position: absolute;
+        top: 6px;
+        right: 8px;
+        width: 20px;
+        height: 20px;
+        border: none;
+        background: transparent;
+        color: var(--ink-soft);
+        cursor: pointer;
+        font-size: 14px;
+        line-height: 1;
+      }
+      .concept-panel .close:hover { color: var(--ink); }
+
+      @media (max-width: 640px) {
+        .concept-panel { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- =================================================================== -->
+    <!-- Site header                                                         -->
+    <!-- =================================================================== -->
+    <header class="site-top" id="siteTop">
+      <div class="container site-nav">
+        <a href="/" class="brand">Movement<em>al</em></a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#path">Path</a>
+          <a href="#unfold">Two intelligences</a>
+          <a href="#foundation">Foundation</a>
+          <a href="#about">About</a>
+          <a href="#invitation">Begin</a>
+        </nav>
+        <a href="#invitation" class="btn btn-sm btn-primary">Start with clarity</a>
+      </div>
+    </header>
+
+    <!-- =================================================================== -->
+    <!-- HERO — pre-hero epigraph + note-to-leadership sidebar               -->
+    <!-- =================================================================== -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="container">
+        <!-- PATTERN 1 — Pre-hero epigraph (home-page adaptation) -->
+        <div class="hero__epigraph reveal">
+          <p class="hero__epigraph-label">Epigraph</p>
+          <blockquote>
+            The great Christian revolutions came not by the discovery of
+            something that was not there before, but by the realization of
+            something that was always there.
+          </blockquote>
+          <cite>
+            <span class="author">Hans Urs von Balthasar</span>
+            &middot; Epigraph in Hirsch's The Forgotten Ways
+          </cite>
+        </div>
+
+        <p class="eyebrow hero__eyebrow reveal">
+          For organizations navigating AI with people, formation, and mission at
+          stake
+        </p>
+
+        <div class="hero__main">
+          <div>
+            <h1 id="hero-title" class="display hero__title reveal">
+              There is a <em>wiser</em> way to navigate AI.
+            </h1>
+            <p class="hero__lede reveal">
+              Between fearful avoidance and reckless adoption is a narrower,
+              wiser path. We help mission-driven organizations walk it with
+              clarity, judgment, and integrity.
+            </p>
+            <div class="hero__actions reveal">
+              <a href="#invitation" class="btn btn-primary">
+                Start with clarity
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#path" class="btn">See the framework</a>
+            </div>
+          </div>
+          <aside class="hero__aside reveal" aria-label="A note to leadership">
+            <p class="eyebrow">A note to leadership</p>
+            <p>You're not being asked to master AI.</p>
+            <p>You're being asked to lead faithfully on a new frontier.</p>
+            <p>That requires a different path.</p>
+          </aside>
+        </div>
+      </div>
+      <div class="hairline-fade" aria-hidden="true"></div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- PROOF — founder affiliations                                        -->
+    <!-- =================================================================== -->
+    <section class="sec sec--sm" aria-label="Co-founder affiliations">
+      <div class="container">
+        <div class="logo-strip reveal">
+          <span class="logo-strip__label">
+            Our co-founders have built and led
+          </span>
+          <div class="logo-strip__items">
+            <span>Forge</span>
+            <span>100 Movements</span>
+            <span>Movement Leaders Collective</span>
+            <span>North American Mission Board</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TWO EQUAL ERRORS — with micro-attribution (Brueggemann)            -->
+    <!-- =================================================================== -->
+    <section class="sec sec--alt sec--sm" aria-label="The two equal errors">
+      <div class="container container--narrow">
+        <p class="eyebrow sec__eyebrow reveal">Orientation</p>
+        <p class="display reveal" style="font-size: clamp(1.9rem, 4vw, 3.1rem); max-width: 22ch; line-height: 1.12;">
+          When it comes to AI, there are <em>two equal errors.</em>
+        </p>
+        <ol class="errors reveal" style="margin-top: clamp(1.25rem, 2.2vw, 1.75rem); list-style: none; padding: 0;">
+          <li class="errors__item">
+            <span class="errors__num">01</span>
+            <span>To head recklessly down a potentially unsafe path.</span>
+          </li>
+          <li class="errors__item">
+            <span class="errors__num">02</span>
+            <span>To stand still in an already unsafe place.</span>
+          </li>
+        </ol>
+        <p class="reveal" style="margin-top: 1.5rem; max-width: 58ch; font-size: 1.02rem; color: var(--ink-muted); line-height: 1.55;">
+          Most organizations oscillate between these without realizing that
+          <strong style="color: var(--ink); font-weight: 500;">both fail the same way</strong>
+          &mdash; they treat AI as a tool problem when it is, structurally, a
+          problem of <strong style="color: var(--ink); font-weight: 500;">integration</strong>:
+          the informational and relational intelligence an organization runs on
+          has never been brought together into a coherent foundation.
+        </p>
+
+        <!-- PATTERN 2 — Micro-attribution -->
+        <figure class="microattr reveal">
+          <span class="microattr__label">Also heard</span>
+          <div class="microattr__body">
+            <p class="microattr__quote">
+              Our culture is competent to implement almost anything and to
+              imagine almost nothing.
+            </p>
+            <p class="microattr__cite">
+              <span class="author">Walter Brueggemann</span> &middot;
+              The Prophetic Imagination (1978)
+            </p>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- STAKES — Move fast / Move slow / Real challenge                    -->
+    <!-- With micro-attribution (Keynes)                                    -->
+    <!-- =================================================================== -->
+    <section class="sec" id="stakes" aria-labelledby="stakes-title">
+      <div class="container">
+        <p class="eyebrow sec__eyebrow reveal">What's at stake</p>
+        <h2 id="stakes-title" class="reveal">
+          Can your organization's mission, voice, and <em>integrity</em> survive
+          contact with AI?
+        </h2>
+
+        <div class="stakes reveal">
+          <div class="stakes__item">
+            <h3>Move too fast.</h3>
+            <p>You risk losing integrity.</p>
+          </div>
+          <div class="stakes__item">
+            <h3>Move too slow.</h3>
+            <p>You risk losing impact.</p>
+          </div>
+          <div class="stakes__item">
+            <h3>The real challenge.</h3>
+            <p>
+              It is not choosing speed or caution. It is learning to move with
+              integrity.
+            </p>
+          </div>
+        </div>
+
+        <div class="reveal" style="margin-top: clamp(2rem, 3.5vw, 2.75rem); max-width: 58ch;">
+          <p style="font-size: 1.08rem; font-weight: 500; color: var(--ink);">
+            This is not primarily a tool problem.
+          </p>
+          <p style="margin-top: 0.5rem; font-size: 1.05rem; color: var(--ink-muted); line-height: 1.55;">
+            It is a problem of judgment, responsibility, and organizational
+            coherence &mdash; and it is answered by building the foundation
+            before deploying the tools.
+          </p>
+        </div>
+
+        <!-- Micro-attribution -->
+        <figure class="microattr reveal">
+          <span class="microattr__label">Also heard</span>
+          <div class="microattr__body">
+            <p class="microattr__quote">
+              The difficulty lies, not in the new ideas, but in escaping from
+              the old ones, which ramify, for those brought up as most of us
+              have been, into every corner of our minds.
+            </p>
+            <p class="microattr__cite">
+              <span class="author">John Maynard Keynes</span> &middot; Preface
+              to The General Theory (1936), repeated epigraph in The Forgotten
+              Ways
+            </p>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- THE PATH FORWARD — The AI Stewardship Sequence                      -->
+    <!-- With micro-attribution (Ivan Illich)                                -->
+    <!-- =================================================================== -->
+    <section class="sec sec--alt" id="path" aria-labelledby="path-title">
+      <div class="container">
+        <div class="path-intro">
+          <div class="reveal">
+            <p class="eyebrow sec__eyebrow">Process</p>
+            <h2 id="path-title">The path forward</h2>
+          </div>
+          <p class="lede reveal">
+            <strong style="color: var(--ink); font-weight: 500;">
+              Safety is the first step &mdash; but not the end.
+            </strong>
+            From there, organizations build the
+            <strong style="color: var(--ink); font-weight: 500;">foundation</strong>
+            underneath AI: an integrated library, a legible relational graph,
+            a coherent voice, and pathways that actually form people.
+          </p>
+        </div>
+
+        <ol class="path" style="list-style: none; padding: 0;">
+          <li class="path__item reveal">
+            <span class="path__num">01</span>
+            <h3 class="path__title">Safety</h3>
+            <p class="path__body">
+              Set the governance, convictions, and boundaries before
+              experimentation outruns judgment &mdash; so speed never becomes
+              drift.
+            </p>
+            <a class="arrow-link" href="#">
+              Learn more
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="path__item reveal">
+            <span class="path__num">02</span>
+            <h3 class="path__title">Sandbox</h3>
+            <p class="path__body">
+              Create a bounded space for real experimentation and honest
+              learning before any capability reaches the whole organization.
+            </p>
+            <a class="arrow-link" href="#">
+              Learn more
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="path__item reveal">
+            <span class="path__num">03</span>
+            <h3 class="path__title">Skills</h3>
+            <p class="path__body">
+              Build the human capacity to discern, supervise, and lead with
+              these tools &mdash; not just use them.
+            </p>
+            <a class="arrow-link" href="#">
+              Learn more
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="path__item reveal">
+            <span class="path__num">04</span>
+            <h3 class="path__title">Solutions</h3>
+            <p class="path__body">
+              Deploy workflows, agents, and systems only after the foundation
+              can actually hold them.
+            </p>
+            <a class="arrow-link" href="#">
+              Learn more
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </li>
+        </ol>
+
+        <!-- Micro-attribution -->
+        <figure class="microattr reveal">
+          <span class="microattr__label">Also heard</span>
+          <div class="microattr__body">
+            <p class="microattr__quote">
+              We can only live changes: we cannot think our way to humanity.
+              Every one of us, every group, must become the model of that which
+              we desire to create.
+            </p>
+            <p class="microattr__cite">
+              <span class="author">Ivan Illich</span> &middot; Epigraph in
+              Hirsch's The Forgotten Ways ch. 5
+            </p>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TWO INTELLIGENCES — no micro-attr (the claim IS the point)         -->
+    <!-- =================================================================== -->
+    <section class="sec" id="unfold" aria-labelledby="unfold-title">
+      <div class="container">
+        <p class="eyebrow sec__eyebrow reveal">Two intelligences</p>
+        <h2 id="unfold-title" class="reveal">What must come together</h2>
+
+        <div class="cards cards--2">
+          <article class="card reveal">
+            <span class="card__tag">Informational</span>
+            <h3 class="card__title">Informational intelligence</h3>
+            <p class="card__body">
+              The <em>content</em> side of the organization &mdash; frameworks,
+              documents, teaching, pathways, donor letters, pastoral care
+              notes, faculty knowledge, institutional memory. Scattered, it
+              cannot compound or form people. Integrated, it becomes something
+              an organization &mdash; and eventually its models &mdash; can
+              actually stand on.
+            </p>
+          </article>
+          <article class="card reveal">
+            <span class="card__tag">Relational</span>
+            <h3 class="card__title">Relational intelligence</h3>
+            <p class="card__body">
+              The <em>people</em> side of the organization &mdash; trust,
+              authority, communication, leadership, and the graph of real
+              relationships that carries a mission forward. AI cannot replace
+              this layer; it can only be useful when the relational layer is
+              coherent enough to supervise it.
+            </p>
+          </article>
+        </div>
+
+        <div class="reveal" style="margin-top: clamp(2rem, 3.5vw, 2.75rem); max-width: 58ch;">
+          <p style="font-size: 1.08rem; font-weight: 500; color: var(--ink);">
+            AI becomes genuinely useful only when both are coherent enough to
+            support responsible action.
+          </p>
+          <p style="margin-top: 0.75rem; font-size: 1.02rem; color: var(--ink-muted); line-height: 1.55;">
+            <strong style="color: var(--ink); font-weight: 500;">Ungrounded AI produces fluent approximation</strong>
+            on top of organizational scatter &mdash; confident text that sounds
+            like you and isn't.
+            <strong style="color: var(--ink); font-weight: 500;">Grounded AI</strong>
+            &mdash; retrieval over an integrated informational corpus routed
+            through a legible relational graph &mdash; produces faithful
+            extension of the work. The difference is the foundation underneath.
+          </p>
+          <a class="arrow-link" href="#" style="margin-top: 1rem;">
+            Read Chapter 2 &mdash; Two intelligences
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- WHERE THIS LANDS — audience grid, no micro-attr (grid IS content)  -->
+    <!-- =================================================================== -->
+    <section class="sec sec--alt" id="audiences" aria-labelledby="audiences-title">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; align-items: end;">
+          <h2 id="audiences-title" class="sm reveal">Where this lands</h2>
+          <p class="lede reveal">
+            The same path applies across contexts.
+            <strong style="color: var(--ink); font-weight: 500;">
+              What changes is where fragmentation appears and what must be
+              integrated first.
+            </strong>
+          </p>
+        </div>
+
+        <div class="cards cards--3">
+          <a class="card reveal" href="#">
+            <span class="card__tag">Nonprofits</span>
+            <h3 class="card__title">For nonprofits</h3>
+            <p class="card__body">
+              Donor letters, impact reports, and program frameworks scattered
+              across drives &mdash; and donor histories, partner dynamics, and
+              staff memory held in individual heads. Integrate both, and the
+              story the world hears still sounds like yours.
+            </p>
+            <span class="arrow-link" style="margin-top: auto;">
+              Go deeper
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+          <a class="card reveal" href="#">
+            <span class="card__tag">Churches</span>
+            <h3 class="card__title">For churches</h3>
+            <p class="card__body">
+              Teaching archives, pastoral care notes, and discipleship pathways
+              in five tools &mdash; and relational memory of who is in what
+              season living only in the staff that happens to still be there.
+              Integrate both, and formation becomes architectural.
+            </p>
+            <span class="arrow-link" style="margin-top: auto;">
+              Go deeper
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+          <a class="card reveal" href="#">
+            <span class="card__tag">Institutions</span>
+            <h3 class="card__title">For institutions</h3>
+            <p class="card__body">
+              Curriculum, faculty knowledge, and accreditation artifacts across
+              decades of systems &mdash; and alumni, donor, and partner
+              relationships no single department sees whole. Integrate both,
+              and the institution remembers itself.
+            </p>
+            <span class="arrow-link" style="margin-top: auto;">
+              Go deeper
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- FOUNDATION — 4-tile hairline grid                                   -->
+    <!-- With micro-attribution (Gall's Law — PERFECT fit)                  -->
+    <!-- =================================================================== -->
+    <section class="sec" id="foundation" aria-labelledby="foundation-title">
+      <div class="container">
+        <p class="eyebrow sec__eyebrow reveal">The foundation</p>
+        <h2 id="foundation-title" class="reveal">
+          What integration actually produces, underneath the path.
+        </h2>
+
+        <div class="foundation" aria-label="The four integration outputs">
+          <div class="foundation__cell reveal">
+            <svg class="foundation__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            </svg>
+            <h3 class="foundation__title">Library</h3>
+            <p class="foundation__body">
+              Your knowledge, frameworks, documents, and media &mdash; gathered
+              into one coherent, queryable whole.
+            </p>
+          </div>
+          <div class="foundation__cell reveal">
+            <svg class="foundation__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="3"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 6l3 4M17 6l-3 4M7 18l3-4M17 18l-3-4"/>
+            </svg>
+            <h3 class="foundation__title">Graph</h3>
+            <p class="foundation__body">
+              The people, relationships, and trust the mission actually moves
+              through &mdash; made legible to the whole organization.
+            </p>
+          </div>
+          <div class="foundation__cell reveal">
+            <svg class="foundation__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+            <h3 class="foundation__title">Voice</h3>
+            <p class="foundation__body">
+              A canonical articulation of how the work sounds &mdash; so
+              extensions of it still sound like the work.
+            </p>
+          </div>
+          <div class="foundation__cell reveal">
+            <svg class="foundation__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>
+            </svg>
+            <h3 class="foundation__title">Pathways</h3>
+            <p class="foundation__body">
+              The routes by which people move through what's integrated &mdash;
+              so formation becomes architectural, not accidental.
+            </p>
+          </div>
+        </div>
+
+        <div class="reveal" style="margin-top: clamp(2rem, 3.5vw, 2.5rem);">
+          <a class="arrow-link" href="#">
+            Read Chapter 11 &mdash; The library, the pathways, the voice
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Micro-attribution — Gall's Law pairs perfectly with this claim -->
+        <figure class="microattr reveal">
+          <span class="microattr__label">Also heard</span>
+          <div class="microattr__body">
+            <p class="microattr__quote">
+              A complex system that works is invariably found to have evolved
+              from a simple system that worked. A complex system designed from
+              scratch never works and cannot be patched up to make it work.
+            </p>
+            <p class="microattr__cite">
+              <span class="author">John Gall</span> &middot; Systemantics (1977)
+              &mdash; Gall's Law
+            </p>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- ABOUT — co-founders + origin + authority                           -->
+    <!-- With micro-attribution (Eric Hoffer — learners inherit the future) -->
+    <!-- =================================================================== -->
+    <section class="sec sec--alt" id="about" aria-labelledby="authority-title">
+      <div class="container">
+        <p class="eyebrow sec__eyebrow reveal">About</p>
+        <h2 id="authority-title" class="reveal">
+          We work at the intersection of leadership, formation, technology, and
+          <em>mission</em>.
+        </h2>
+        <p class="reveal" style="margin-top: clamp(1.25rem, 2.5vw, 1.75rem); max-width: 54ch; font-size: clamp(1.15rem, 2vw, 1.35rem); font-weight: 500; line-height: 1.45; color: var(--ink);">
+          We do not begin with AI tools. We begin with the foundation layer
+          &mdash; the integrated library, graph, voice, and pathways underneath
+          AI &mdash; because nothing downstream holds without it.
+        </p>
+
+        <div class="founders">
+          <article class="founder reveal">
+            <div class="founder__head">
+              <span class="founder__portrait">AH</span>
+              <div>
+                <p class="founder__name">Alan Hirsch</p>
+                <p class="founder__role">Co-founder</p>
+              </div>
+            </div>
+            <p class="founder__body">
+              Author of The Forgotten Ways and co-founder of Forge, 100
+              Movements, and Movement Leaders Collective. The missional
+              movement work the field has relied on for thirty years.
+            </p>
+          </article>
+          <article class="founder reveal">
+            <div class="founder__head">
+              <span class="founder__portrait">BB</span>
+              <div>
+                <p class="founder__name">Brad Brisco</p>
+                <p class="founder__role">Co-founder</p>
+              </div>
+            </div>
+            <p class="founder__body">
+              Director of Bi-Vocational Church Planting at the North American
+              Mission Board. Author of Missional Essentials and Next Door as It
+              Is In Heaven. Missional practice inside institutions.
+            </p>
+          </article>
+          <article class="founder reveal">
+            <div class="founder__head">
+              <span class="founder__portrait">JS</span>
+              <div>
+                <p class="founder__name">Josh Shepherd</p>
+                <p class="founder__role">Co-founder</p>
+              </div>
+            </div>
+            <p class="founder__body">
+              Founder and operator. A decade building content, community, and
+              infrastructure for movement leaders. The platform came out of
+              that work.
+            </p>
+          </article>
+        </div>
+
+        <p class="reveal" style="margin-top: clamp(2rem, 3.5vw, 2.75rem); max-width: 64ch; font-size: 1.05rem; color: var(--ink-muted); line-height: 1.6;">
+          Movemental came together around a shared recognition. The arrival of
+          AI was about to make something visible that had always been there:
+          the informational and relational fragmentation underneath
+          mission-driven organizations. For Alan, that fragmentation had been
+          the quiet cost inside the movement question for thirty years. For
+          Brad, it was the invisible tax inside the institutions he serves.
+          For Josh, it was the problem every leader he had tried to help
+          compounding their work had hit. The three of us stopped working
+          around it separately and started building the foundation layer
+          together.
+        </p>
+
+        <ol class="authority" style="list-style: none; padding: 0;">
+          <li class="authority__item reveal">
+            <span class="authority__num">01</span>
+            <p class="authority__t">Leadership and formation, not tools.</p>
+            <p class="authority__b">
+              AI pressures judgment, voice, trust, and organizational
+              coherence. Those are leadership problems &mdash; and they
+              precede any tool choice. Our work begins where the leadership
+              work begins.
+            </p>
+          </li>
+          <li class="authority__item reveal">
+            <span class="authority__num">02</span>
+            <p class="authority__t">
+              Shaped inside real organizational questions.
+            </p>
+            <p class="authority__b">
+              Movemental was built alongside real movement, church, nonprofit,
+              and institutional work &mdash; not imported from generic software
+              logic. The product reflects what the work asked for.
+            </p>
+          </li>
+          <li class="authority__item reveal">
+            <span class="authority__num">03</span>
+            <p class="authority__t">Conditions before capabilities.</p>
+            <p class="authority__b">
+              Before tools, workflows, and agents can be trustworthy, the
+              foundation has to hold. That is where we begin &mdash; and why
+              downstream deployments last.
+            </p>
+          </li>
+        </ol>
+
+        <!-- Micro-attribution: Hoffer echoes the "shared recognition" origin -->
+        <figure class="microattr reveal">
+          <span class="microattr__label">Also heard</span>
+          <div class="microattr__body">
+            <p class="microattr__quote">
+              In a time of drastic change it is the learners who inherit the
+              future. The learned usually find themselves equipped to live in
+              a world that no longer exists.
+            </p>
+            <p class="microattr__cite">
+              <span class="author">Eric Hoffer</span> &middot; Epigraph in
+              Hirsch's The Forgotten Ways ch. 2
+            </p>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- GROUNDING — What this is not / what this produces                  -->
+    <!-- =================================================================== -->
+    <section class="sec" id="grounding" aria-labelledby="grounding-title">
+      <div class="container container--narrow">
+        <p class="eyebrow sec__eyebrow reveal">Grounding</p>
+        <h2 id="grounding-title" class="sm reveal">
+          What this is &mdash; and what it is not.
+        </h2>
+
+        <div class="grounding">
+          <div class="grounding__col grounding__col--not reveal">
+            <p class="grounding__label">What this is not</p>
+            <ul>
+              <li>Not a content refresh. The ache is not that you need a better deck.</li>
+              <li>Not a new platform. The ache is not that you need another tool.</li>
+              <li>Not AI adoption. AI made the fragmentation tax visible; it is not the work itself.</li>
+              <li>Not a shortcut around leadership. Integration surfaces the decisions you have been avoiding.</li>
+            </ul>
+          </div>
+          <div class="grounding__col grounding__col--produces reveal">
+            <p class="grounding__label">What this produces</p>
+            <ul>
+              <li>An integrated library of your core knowledge, frameworks, and media.</li>
+              <li>A legible relational graph of the people and networks the work actually moves through.</li>
+              <li>A recoverable voice &mdash; a canonical articulation of how your work sounds.</li>
+              <li>Pathways that form people, not just inform them.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="reveal" style="margin-top: clamp(1.75rem, 3vw, 2.25rem);">
+          <a class="arrow-link" href="#">
+            Read the field guide
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- MIDNIGHT PULL-QUOTE — preserved from the production page           -->
+    <!-- Internal voice (field guide Ch. 5) — sharper than an external one  -->
+    <!-- =================================================================== -->
+    <section class="midnight" aria-label="From the field guide">
+      <div class="container container--narrow">
+        <figure class="reveal" style="display: flex; flex-direction: column; gap: 1.5rem;">
+          <blockquote>
+            The map, read honestly, is not six mountains to climb one after
+            the other. It is one landscape, seen from progressively closer in.
+          </blockquote>
+          <figcaption>From the field guide &mdash; Chapter 5</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- INVITATION — gradient CTA                                           -->
+    <!-- =================================================================== -->
+    <section class="invite" id="invitation" aria-labelledby="invitation-title">
+      <div class="container container--narrow">
+        <p class="eyebrow reveal">Begin</p>
+        <h2 id="invitation-title" class="reveal">
+          Start <span>before the cost of confusion compounds.</span>
+        </h2>
+        <p class="lede reveal">
+          Don't guess your way through AI. Begin with a path that can hold its
+          shape in year three &mdash;
+          <strong style="color: var(--ink); font-weight: 500;">
+            a coherent voice, pathways that still form people, and judgment
+            that still travels with the work
+          </strong>.
+        </p>
+        <p class="reveal" style="margin-top: 0.75rem; font-size: 1.02rem; color: var(--ink-soft);">
+          You don't have to figure this out alone. We'll help you begin
+          &mdash; wisely.
+        </p>
+        <div class="reveal" style="margin-top: clamp(2rem, 3.5vw, 2.5rem);">
+          <a href="#" class="btn btn-primary">
+            Start with clarity
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="invite__newsletter reveal">
+          <p class="invite__newsletter-label">Or begin quieter</p>
+          <p>
+            One note per month on formation, infrastructure, and what we're
+            learning.
+          </p>
+          <form class="newsletter-form" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="you@organization.org" aria-label="Email" />
+            <button type="submit" class="btn">
+              Subscribe
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- FOOTER — PATTERN 4: rotator band + standard columns                -->
+    <!-- =================================================================== -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-rotator" id="footerRotator">
+          <div class="footer-rotator__inner">
+            <span class="footer-rotator__label">From the margins</span>
+            <div>
+              <p class="footer-rotator__quote" id="rotQuote">
+                There is no such thing as an unsent Christian!
+              </p>
+            </div>
+            <p class="footer-rotator__attr" id="rotAttr">
+              <span class="author">Alan Hirsch</span>
+              On the Verge &mdash; ch. 5
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-cols">
+          <div class="footer-brand">
+            <p class="brand">Movement<em>al</em></p>
+            <p style="margin-top: 0.6rem;">
+              The foundation layer underneath AI for mission-driven
+              organizations. Leadership, formation, technology, and mission.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Platform</h4>
+            <ul>
+              <li><a href="#">Methodology</a></li>
+              <li><a href="#">The path forward</a></li>
+              <li><a href="#">The foundation</a></li>
+              <li><a href="#">Walkthrough</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Audiences</h4>
+            <ul>
+              <li><a href="#">Nonprofits</a></li>
+              <li><a href="#">Churches</a></li>
+              <li><a href="#">Institutions</a></li>
+              <li><a href="#">Movement leaders</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Begin</h4>
+            <ul>
+              <li><a href="#">Start with clarity</a></li>
+              <li><a href="#">Newsletter</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Field guide</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-fineprint">
+          <span>© 2026 Movemental Collective</span>
+          <span>Quotes verified against primary sources &middot; docs/research/quotations</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- =================================================================== -->
+    <!-- Concept reviewer panel (remove in production)                      -->
+    <!-- =================================================================== -->
+    <aside class="concept-panel" id="conceptPanel" aria-label="Concept notes">
+      <button class="close" aria-label="Dismiss" id="conceptClose">×</button>
+      <strong>Home-page quote strategy</strong>
+      <ul>
+        <li>Pre-hero epigraph (Balthasar)</li>
+        <li>5× micro-attribution footers</li>
+        <li>Midnight pull-quote (preserved)</li>
+        <li>Footer rotator (8s)</li>
+      </ul>
+      <span>
+        No marginalia. No full-width breaths. Home is too dense; those patterns
+        belong on longform pages.
+      </span>
+    </aside>
+
+    <script>
+      (function () {
+        "use strict";
+
+        const reduced = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+        // Sticky nav shadow
+        const siteTop = document.getElementById("siteTop");
+        const onScroll = () => {
+          siteTop.dataset.scrolled = window.scrollY > 20 ? "true" : "false";
+        };
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+
+        // Reveal on scroll
+        if ("IntersectionObserver" in window && !reduced) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((e) => {
+                if (e.isIntersecting) {
+                  e.target.classList.add("is-in");
+                  io.unobserve(e.target);
+                }
+              });
+            },
+            { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+          );
+          document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+        } else {
+          document.querySelectorAll(".reveal").forEach((el) =>
+            el.classList.add("is-in")
+          );
+        }
+
+        // Footer rotator — cross-theme pool
+        const rotatorPool = [
+          {
+            q: "There is no such thing as an unsent Christian!",
+            a: "Alan Hirsch",
+            s: "On the Verge — ch. 5",
+          },
+          {
+            q: "Breakthroughs come to those who break with mere convention. Only through unlearning are we capable of true learning.",
+            a: "Alan Hirsch",
+            s: "5Q — ch. 17 Preface",
+          },
+          {
+            q: "Apostolic Genius lies dormant in you, me, and every local church that seeks to follow Jesus faithfully in any time.",
+            a: "Alan Hirsch",
+            s: "The Forgotten Ways Handbook — ch. 1",
+          },
+          {
+            q: "Every system is perfectly designed to get the result it gets.",
+            a: "W. Edwards Deming",
+            s: "Epigraph in Hirsch's Metanoia ch. 8",
+          },
+          {
+            q: "You cannot buy the Revolution. You cannot make the Revolution. You can only be the Revolution.",
+            a: "Ursula K. Le Guin",
+            s: "The Dispossessed (1974)",
+          },
+          {
+            q: "It is not so much that the church has a mission as that the mission has a church.",
+            a: "Alan Hirsch",
+            s: "On the Verge — ch. 4",
+          },
+          {
+            q: "The first responsibility of a leader is to define reality.",
+            a: "Max De Pree",
+            s: "Leadership Is an Art (1987), epigraph in The Forgotten Ways",
+          },
+          {
+            q: "The place God calls you to is the place where your deep gladness and the world's deep hunger meet.",
+            a: "Frederick Buechner",
+            s: "Wishful Thinking (1973)",
+          },
+          {
+            q: "Attention is the rarest and purest form of generosity.",
+            a: "Simone Weil",
+            s: "Letter to Joë Bousquet (1942)",
+          },
+          {
+            q: "Technologies are not simply inventions which people employ but are the means by which people are re-invented.",
+            a: "Marshall McLuhan",
+            s: "The Gutenberg Galaxy (1962)",
+          },
+        ];
+
+        const rotatorEl = document.getElementById("footerRotator");
+        const rotQuote = document.getElementById("rotQuote");
+        const rotAttr = document.getElementById("rotAttr");
+        let rotIdx = Math.floor(Math.random() * rotatorPool.length);
+
+        const renderRotator = () => {
+          const item = rotatorPool[rotIdx];
+          rotatorEl.classList.add("is-swapping");
+          setTimeout(
+            () => {
+              rotQuote.textContent = item.q;
+              rotAttr.innerHTML =
+                '<span class="author">' + item.a + "</span>" + item.s;
+              rotatorEl.classList.remove("is-swapping");
+            },
+            reduced ? 0 : 400
+          );
+        };
+
+        renderRotator();
+
+        if (!reduced) {
+          setInterval(() => {
+            rotIdx = (rotIdx + 1) % rotatorPool.length;
+            renderRotator();
+          }, 8000);
+        }
+
+        // Concept panel dismiss
+        const panel = document.getElementById("conceptPanel");
+        const close = document.getElementById("conceptClose");
+        if (close && panel) {
+          close.addEventListener("click", () => {
+            panel.style.display = "none";
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

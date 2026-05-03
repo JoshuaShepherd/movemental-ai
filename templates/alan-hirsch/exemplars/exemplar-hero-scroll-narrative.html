@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scroll Narrative Hero — Movemental (draft HTML)</title>
+    <meta name="description" content="Pinned multi-phase narrative hero using CSS scroll-driven animations — Movemental design tokens." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../docs/html/site-templates/site-theme.css" />
+
+    <!-- Scoped styles: CSS scroll-driven animation experiment.
+
+         Browser support (as of 2026-04):
+         - Chrome/Edge 115+: full scroll-timeline + animation-timeline support
+         - Firefox 110+: behind flag (layout.css.scroll-driven-animations.enabled)
+         - Safari: no support yet
+
+         Fallback: all three phases display as a stacked vertical sequence.
+         prefers-reduced-motion: reduce → disables scroll-linked transforms, shows all phases stacked.
+         No external JS libraries. -->
+    <style>
+      /* ── Scroll region: tall wrapper that drives the timeline ── */
+      .scroll-narrative {
+        position: relative;
+        background: var(--inverse-surface);
+        color: var(--inverse-foreground);
+      }
+
+      /* The scroll space — phases are placed inside this tall container.
+         Without @supports, this collapses to auto height (stacked fallback). */
+      .scroll-narrative__track {
+        position: relative;
+      }
+
+      /* Sticky viewport — pins the visible area while user scrolls through the track */
+      .scroll-narrative__viewport {
+        position: relative;
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 24px;
+      }
+
+      /* Individual phase blocks */
+      .scroll-narrative__phase {
+        max-width: 48rem;
+        text-align: center;
+        padding: 80px 0;
+      }
+
+      .scroll-narrative__phase-text {
+        font-family: var(--font-sans);
+        font-size: clamp(1.3rem, 3vw, 2rem);
+        font-weight: 400;
+        line-height: 1.5;
+        color: var(--inverse-foreground);
+        margin: 0;
+      }
+
+      .scroll-narrative__phase-text + .scroll-narrative__phase-text {
+        margin-top: 1.2em;
+      }
+
+      .scroll-narrative__phase-accent {
+        font-size: clamp(1.6rem, 4vw, 2.8rem);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+        margin-top: 2rem;
+      }
+
+      .scroll-narrative__phase-coda {
+        font-size: clamp(2rem, 5vw, 3.4rem);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+      }
+
+      /* ── Skip link for keyboard users to escape the tall scroll region ── */
+      .scroll-narrative__skip {
+        position: absolute;
+        left: -9999px;
+        top: 16px;
+        background: var(--primary);
+        color: var(--primary-foreground);
+        padding: 10px 16px;
+        border-radius: var(--radius);
+        font-size: 0.8rem;
+        font-weight: 600;
+        z-index: 10;
+      }
+      .scroll-narrative__skip:focus {
+        left: 24px;
+      }
+
+      /* ── Enhanced experience: browsers with scroll-driven animation support ──
+           Uses CSS scroll-timeline (Chrome/Edge 115+).
+           The track becomes tall (300vh) and the viewport pins via sticky.
+           Each phase fades in/out based on scroll position using view(). -->
+
+      @supports (animation-timeline: scroll()) {
+        .scroll-narrative__track {
+          height: 300vh; /* total scroll space for 3 phases */
+        }
+
+        .scroll-narrative__viewport {
+          position: sticky;
+          top: 0;
+          height: 100vh;
+          height: 100dvh;
+          overflow: hidden;
+        }
+
+        /* All phases stack absolutely within the viewport */
+        .scroll-narrative__phase {
+          position: absolute;
+          padding: 0 24px;
+          opacity: 0;
+          transform: translateY(24px);
+          animation: phase-reveal linear both;
+          animation-timeline: scroll(nearest block);
+        }
+
+        /* Phase timing: each phase gets roughly 1/3 of the scroll range.
+           entry-crossing percentages control when each fades in and out. */
+        .scroll-narrative__phase:nth-child(1) {
+          animation-range: 0% 33%;
+          opacity: 1;
+          transform: translateY(0);
+        }
+        .scroll-narrative__phase:nth-child(2) {
+          animation-range: 28% 66%;
+        }
+        .scroll-narrative__phase:nth-child(3) {
+          animation-range: 60% 95%;
+        }
+
+        @keyframes phase-reveal {
+          0%   { opacity: 0; transform: translateY(24px); }
+          20%  { opacity: 1; transform: translateY(0); }
+          75%  { opacity: 1; transform: translateY(0); }
+          100% { opacity: 0; transform: translateY(-16px); }
+        }
+
+        /* First phase starts visible */
+        .scroll-narrative__phase:nth-child(1) {
+          animation-name: phase-first;
+        }
+        @keyframes phase-first {
+          0%   { opacity: 1; transform: translateY(0); }
+          70%  { opacity: 1; transform: translateY(0) scale(1.03); }
+          100% { opacity: 0; transform: translateY(-24px); }
+        }
+
+        /* Last phase holds at the end */
+        .scroll-narrative__phase:nth-child(3) {
+          animation-name: phase-last;
+        }
+        @keyframes phase-last {
+          0%   { opacity: 0; transform: translateY(24px); }
+          30%  { opacity: 1; transform: translateY(0); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+      }
+
+      /* ── Reduced motion: disable scroll-linked transforms, show all stacked ── */
+      @media (prefers-reduced-motion: reduce) {
+        .scroll-narrative__track {
+          height: auto !important;
+        }
+        .scroll-narrative__viewport {
+          position: relative !important;
+          height: auto !important;
+          min-height: auto !important;
+        }
+        .scroll-narrative__phase {
+          position: relative !important;
+          opacity: 1 !important;
+          transform: none !important;
+          animation: none !important;
+        }
+      }
+
+      /* ── Intro paragraph before the pinned region ── */
+      .scroll-narrative__intro {
+        max-width: var(--prose-max);
+        margin: 0 auto;
+        padding: 80px 24px 48px;
+        text-align: center;
+      }
+
+      .scroll-narrative__intro p {
+        font-size: 1rem;
+        line-height: 1.65;
+        color: color-mix(in srgb, var(--inverse-foreground) 68%, transparent);
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-top">
+      <div class="site-top__inner">
+        <a href="../../../docs/html/site-templates/index.html" class="site-brand">Movemental <small>Draft HTML · not production</small></a>
+        <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-nav-list">Menu</button>
+        <nav class="site-nav" aria-label="Primary sections">
+          <ul id="site-nav-list">
+            <li><a href="../../../docs/html/site-templates/index.html">Home</a></li>
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">How it works</a></li>
+            <li><a href="../../../docs/html/audience-concept-modern/movement-leaders.html">Movement leaders</a></li>
+            <li><a href="../../../docs/html/audience-concept-modern/churches.html">Churches &amp; nonprofits</a></li>
+            <li><a href="../../../docs/html/team-concept-modern/index.html">Proof &amp; about</a></li>
+            <li><a href="../../../docs/html/services-pricing-concept-modern.html">Pricing &amp; FAQ</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ═══ SCROLL NARRATIVE HERO ═══ -->
+      <div class="scroll-narrative">
+        <!-- Skip link to escape the pinned scroll region (keyboard safety) -->
+        <a class="scroll-narrative__skip" href="#post-hero">Skip scroll narrative</a>
+
+        <!-- Intro paragraph — context before the pinned region -->
+        <div class="scroll-narrative__intro">
+          <p>
+            Most movement leaders have already done the hard work — decades of
+            writing, teaching, and mentoring. The content exists. The question
+            is what happens next.
+          </p>
+        </div>
+
+        <!-- Pinned scroll region: ~300vh of scroll space (in supported browsers) -->
+        <div class="scroll-narrative__track">
+          <div class="scroll-narrative__viewport">
+
+            <!-- Phase 1: "What if..." -->
+            <div class="scroll-narrative__phase">
+              <p class="scroll-narrative__phase-text">
+                What if your best work already exists — but the people who
+                need it can't find it?
+              </p>
+              <p class="scroll-narrative__phase-text">
+                What if your life's work could live on one platform you own
+                but didn't have to build — e-books, courses, articles, AI tools,
+                all in one place?
+              </p>
+              <p class="scroll-narrative__phase-text scroll-narrative__phase-accent">
+                In under 2 weeks.
+              </p>
+            </div>
+
+            <!-- Phase 2: "This week..." -->
+            <div class="scroll-narrative__phase">
+              <p class="scroll-narrative__phase-text">
+                And what if that platform was part of a credibility network
+                of 100 movement leaders — linking to each other, collaborating
+                in new ways, publishing their best work?
+              </p>
+            </div>
+
+            <!-- Phase 3: "Here is the move" -->
+            <div class="scroll-narrative__phase">
+              <p class="scroll-narrative__phase-text scroll-narrative__phase-coda">
+                This is the move.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ POST-HERO — proves the page continues ═══ -->
+      <section id="post-hero" class="band-default">
+        <div class="container" style="max-width: var(--prose-max);">
+          <span class="eyebrow">The platform</span>
+          <h2 class="display" style="font-size: clamp(1.6rem, 3vw, 2.2rem);">Built for movement leaders</h2>
+          <p class="prose">
+            Movemental gives you a complete digital ecosystem — books, courses,
+            articles, and AI tools — structured around your content and your
+            audience. No tech team required.
+          </p>
+          <div class="btn-row">
+            <a href="#learn-more" class="btn btn-primary">Learn more</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div>
+          <h3 class="site-footer__heading">Product</h3>
+          <ul class="site-footer__links">
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">How it works</a></li>
+            <li><a href="../../../docs/html/services-pricing-concept-modern.html">Services</a></li>
+            <li><a href="../../../docs/html/services-pricing-concept-modern.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="site-footer__heading">Trust</h3>
+          <ul class="site-footer__links">
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">Evidence</a></li>
+            <li><a href="../../../docs/html/homepage-concept-modern/index.html">Methodology</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="site-footer__heading">Legal</h3>
+          <ul class="site-footer__links">
+            <li><a href="https://movemental.com/terms">Terms</a></li>
+            <li><a href="https://movemental.com/privacy">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="site-footer__meta">Movemental draft HTML · <code>site-theme.css</code> tokens</p>
+    </footer>
+
+    <script>
+      document.querySelector('.site-nav__toggle')?.addEventListener('click', function () {
+        const nav = this.closest('header').querySelector('.site-nav');
+        const open = nav.classList.toggle('is-open');
+        this.setAttribute('aria-expanded', open);
+      });
+    </script>
+  </body>
+</html>

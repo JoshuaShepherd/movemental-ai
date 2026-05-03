@@ -1,0 +1,1217 @@
+/* ============================================================================
+   Movemental — Fragmentation stages · horizontal GSAP deck
+   Six slides, one title + one viz + one caption each. Warm cream + ink
+   duotone; typography is the star, visualizations are monochrome diagrams.
+   ============================================================================ */
+
+:root {
+  --bg: #faf6ee;
+  --bg-alt: #f2ece0;
+  --ink: #19150f;
+  --ink-muted: #6b6660;
+  --ink-soft: #9f978b;
+  --border: #e6ddcb;
+  --dark: #141110;
+  --dark-ink: #f4efe5;
+  --dark-muted: rgba(244, 239, 229, 0.72);
+  --dark-border: rgba(244, 239, 229, 0.14);
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+  --font-serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+
+  --tr-display: -0.028em;
+  --tr-label: 0.09em;
+
+  --container: 1280px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --header-h: 4.25rem;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* --- Reset & base ---------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.55;
+  font-feature-settings: "kern", "liga", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+::selection {
+  background: var(--ink);
+  color: var(--bg);
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+svg,
+img {
+  display: block;
+  max-width: 100%;
+}
+p,
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 1rem;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.6rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 6px;
+  z-index: 100;
+}
+.skip-link:focus {
+  left: 1rem;
+}
+
+/* Shared italic emphasis */
+.slide__caption em,
+.after-deck__title em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  font-size: 1.05em;
+  color: inherit;
+}
+
+/* --- Buttons --------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.78rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease-out),
+    background-color 0.2s var(--ease-out),
+    color 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
+  white-space: nowrap;
+}
+.btn--primary {
+  background: var(--ink);
+  color: var(--bg);
+}
+.btn--primary:hover {
+  background: #000;
+  transform: translateY(-1px);
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--border);
+}
+.btn--ghost:hover {
+  border-color: var(--ink);
+}
+.btn .arrow {
+  display: inline-block;
+  transition: transform 0.2s var(--ease-out);
+}
+.btn:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* ============================================================================
+   HEADER — brand · stage indicator · dots
+   ============================================================================ */
+.deck-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  background: color-mix(in srgb, var(--bg) 84%, transparent);
+  backdrop-filter: saturate(140%) blur(14px);
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+}
+.deck-header__inner {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: -0.005em;
+}
+.brand__mark {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ink);
+  position: relative;
+}
+.brand__mark::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+.stage-indicator {
+  text-align: center;
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.55rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  font-feature-settings: "tnum";
+}
+.stage-indicator__count {
+  color: var(--ink);
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: baseline;
+}
+.stage-indicator__sep {
+  color: var(--ink-soft);
+}
+.stage-indicator__sep--dim {
+  color: var(--ink-soft);
+}
+.stage-indicator__name {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-transform: none;
+  line-height: 1;
+}
+
+.stage-dots {
+  display: inline-flex;
+  gap: 0.45rem;
+  justify-self: end;
+}
+.stage-dots button {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 6px;
+  cursor: pointer;
+  display: inline-flex;
+}
+.stage-dots button::after {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink);
+  opacity: 0.22;
+  transition: opacity 0.2s ease, transform 0.2s var(--ease-out);
+}
+.stage-dots button:hover::after {
+  opacity: 0.55;
+}
+.stage-dots button.is-active::after {
+  opacity: 1;
+  transform: scale(1.25);
+}
+
+@media (max-width: 720px) {
+  .stage-indicator__name {
+    display: none;
+  }
+  .stage-dots {
+    gap: 0.3rem;
+  }
+}
+
+/* ============================================================================
+   DECK — pinned horizontal scroll deck
+   ============================================================================ */
+.deck {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  height: 100dvh;
+  padding-top: var(--header-h);
+  background: var(--bg);
+}
+.deck__track {
+  display: flex;
+  height: 100%;
+  width: max-content;
+  will-change: transform;
+}
+.slide {
+  flex: 0 0 100vw;
+  width: 100vw;
+  height: 100%;
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 5vw, 4rem);
+  display: flex;
+}
+.slide__inner {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  max-width: var(--container);
+  margin-inline: auto;
+  width: 100%;
+  min-width: 0;
+}
+/* Intel panels (fragmentation scatter + integration grid) at 2× */
+.slide[data-index="0"],
+.slide[data-index="1"] {
+  overflow: visible;
+}
+.slide[data-index="0"] .slide__inner,
+.slide[data-index="1"] .slide__inner {
+  overflow: visible;
+}
+.slide[data-index="0"] .slide__viz {
+  transform: scale(2);
+  transform-origin: center center;
+}
+/* Bias growth toward the gutter so the grid doesn’t ride over the headline */
+.slide[data-index="1"] .slide__viz {
+  width: 100%;
+  justify-content: flex-end;
+  transform: scale(2);
+  transform-origin: 100% 50%;
+}
+@media (min-width: 960px) {
+  .slide__inner {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+  /* Slightly more column width for the title on Integration */
+  .slide__inner--integration {
+    grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  }
+}
+
+/* Slide text column */
+.slide__text {
+  min-width: 0;
+}
+.slide__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0 0 1.5rem;
+}
+.slide__label-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink);
+  opacity: 0.8;
+}
+.slide__title {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: clamp(3.4rem, 9vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: var(--tr-display);
+  color: var(--ink);
+  margin: 0 0 clamp(1.25rem, 2vw, 1.75rem);
+}
+.slide__caption {
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  line-height: 1.35;
+  color: var(--ink-muted);
+  max-width: 32ch;
+  letter-spacing: -0.005em;
+}
+
+/* Slide viz column */
+.slide__viz {
+  margin: 0;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+.slide__viz svg {
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  aspect-ratio: 4 / 3;
+}
+
+/* ============================================================================
+   VIZ 01 · Fragmentation — scattered rectangles with subtle drift
+   ============================================================================ */
+.viz--fragmentation .frag {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: fragDrift 6.5s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+}
+/* Intel thumbnails — same raster set as /fragmentation FragmentationIntelArtifact */
+.viz--fragmentation .frag__stroke {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.15;
+  pointer-events: none;
+}
+.viz--fragmentation image {
+  opacity: 0.97;
+}
+
+.viz--integration .int-cell__bg {
+  fill: color-mix(in srgb, var(--ink) 4%, var(--bg));
+  stroke: currentColor;
+  stroke-width: 0.9;
+}
+.viz--integration .int-cell__band {
+  fill: color-mix(in srgb, var(--ink) 8%, var(--bg));
+}
+.viz--integration .int-cell__folder {
+  font-family: var(--font-sans);
+  font-size: 4.75px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  fill: var(--ink-soft);
+}
+.viz--integration .int-cell__file {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 6.25px;
+  font-weight: 500;
+  fill: var(--ink);
+}
+.viz--integration image {
+  opacity: 0.95;
+}
+@keyframes fragDrift {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -3px; }
+}
+
+/* ============================================================================
+   VIZ 02 · Integration — 7×2 grid. Gentle entry on active.
+   ============================================================================ */
+.viz--integration .cell {
+  transform-box: view-box;
+  transform-origin: center;
+  opacity: 0;
+  scale: 0.9;
+  transition: opacity 0.65s var(--ease-out), scale 0.65s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+.slide.is-active .viz--integration .cell {
+  opacity: 1;
+  scale: 1;
+}
+
+/* ============================================================================
+   VIZ 03 · Activation — query bar · live answer card · three cited thumbs
+   ============================================================================ */
+.viz--activation .q-bar,
+.viz--activation .answer,
+.viz--activation .cited {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  scale: 0.96;
+  transition: opacity 0.6s var(--ease-out), scale 0.6s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+.slide.is-active .viz--activation .q-bar,
+.slide.is-active .viz--activation .answer,
+.slide.is-active .viz--activation .cited {
+  opacity: 1;
+  scale: 1;
+}
+.viz--activation .q-bar__bg {
+  fill: color-mix(in srgb, var(--ink) 4%, var(--bg));
+  stroke: currentColor;
+  stroke-width: 0.9;
+}
+.viz--activation .q-bar__text {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  fill: var(--ink);
+}
+.viz--activation .q-bar__caret {
+  animation: qCaret 1.1s steps(2, jump-none) infinite;
+}
+@keyframes qCaret {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+.viz--activation .answer__bg {
+  fill: var(--bg);
+  stroke: currentColor;
+  stroke-width: 1.1;
+}
+.viz--activation .answer__band {
+  fill: color-mix(in srgb, var(--ink) 9%, var(--bg));
+}
+.viz--activation .answer__label {
+  font-family: var(--font-sans);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  fill: var(--ink-muted);
+}
+.viz--activation .answer__line {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  fill: var(--ink);
+}
+.viz--activation .answer__dots circle {
+  animation: answerDots 1.4s ease-in-out infinite;
+}
+.viz--activation .answer__dots circle:nth-child(2) { animation-delay: .16s; }
+.viz--activation .answer__dots circle:nth-child(3) { animation-delay: .32s; }
+@keyframes answerDots {
+  0%, 100% { opacity: 0.25; }
+  50%      { opacity: 1; }
+}
+.viz--activation .cited__bg {
+  fill: color-mix(in srgb, var(--ink) 3%, var(--bg));
+  stroke: currentColor;
+  stroke-width: 1.1;
+}
+.viz--activation .cited__band {
+  fill: color-mix(in srgb, var(--ink) 9%, var(--bg));
+}
+.viz--activation .cited__folder {
+  font-family: var(--font-sans);
+  font-size: 7.5px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  fill: var(--ink-muted);
+}
+.viz--activation .cited__file {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 8px;
+  font-weight: 500;
+  fill: var(--ink);
+}
+.viz--activation image {
+  opacity: 0.96;
+}
+.viz--activation .ray {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 0.8s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+.slide.is-active .viz--activation .ray {
+  stroke-dashoffset: 0;
+}
+.viz--activation .ray-tag {
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+  paint-order: stroke;
+  stroke: var(--bg);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: var(--d, 0s);
+}
+.slide.is-active .viz--activation .ray-tag {
+  opacity: 1;
+}
+
+/* ============================================================================
+   VIZ 04 · Formation — a learner at the crossing of four forces.
+   Dissonance (above), Action (right), Reflection (below, looping back),
+   Community (left, a witness). When all four have fired, the learner's own
+   mark transforms — outlined circle becomes a filled disc with a halo ring
+   and a companion dot. Formation requires all four, not one, not three.
+   ============================================================================ */
+
+/* Force lines (dissonance zigzag, action arrow, reflection loop, community link) */
+.viz--formation .f-force {
+  stroke: var(--ink);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 0.7s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+.slide.is-active .viz--formation .f-force {
+  stroke-dashoffset: 0;
+}
+
+/* Arrowheads — fade in after their line draws (staggered via --d) */
+.viz--formation .f-arrow {
+  fill: var(--ink);
+  stroke: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  transition-delay: var(--d, 1s);
+}
+.slide.is-active .viz--formation .f-arrow {
+  opacity: 1;
+}
+
+/* Labels + descriptors */
+.viz--formation .f-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  fill: var(--ink);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: var(--d, 0s);
+}
+.viz--formation .f-sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: -0.005em;
+  fill: var(--ink-muted);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: var(--d, 0s);
+}
+.slide.is-active .viz--formation .f-label,
+.slide.is-active .viz--formation .f-sub {
+  opacity: 1;
+}
+
+/* Community triad — edges between members + filled members */
+.viz--formation .f-comm-edge {
+  stroke: var(--ink);
+  stroke-width: 0.9;
+  stroke-opacity: 0.5;
+  fill: none;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 0.5s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+.slide.is-active .viz--formation .f-comm-edge {
+  stroke-dashoffset: 0;
+}
+.viz--formation .f-comm-user {
+  fill: var(--bg);
+  stroke: var(--ink);
+  stroke-width: 1.1;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  scale: 0.6;
+  transition: opacity 0.45s var(--ease-out), scale 0.5s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+.slide.is-active .viz--formation .f-comm-user {
+  opacity: 1;
+  scale: 1;
+}
+
+/* Learner — transforms after all four forces have fired */
+.viz--formation .learner-dot {
+  fill: var(--bg);
+  stroke: var(--ink);
+  stroke-width: 1.3;
+  transition: fill 0.55s var(--ease-out);
+  transition-delay: 1.7s;
+}
+.slide.is-active .viz--formation .learner-dot {
+  fill: var(--ink);
+}
+.viz--formation .learner-initial {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0;
+  fill: var(--bg);
+  dominant-baseline: central;
+  opacity: 0;
+  transition: opacity 0.45s var(--ease-out);
+  transition-delay: 1.9s;
+}
+.slide.is-active .viz--formation .learner-initial {
+  opacity: 1;
+}
+.viz--formation .learner-halo {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 0.9;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  scale: 0.6;
+  transition: opacity 0.65s var(--ease-out), scale 0.7s var(--ease-out);
+  transition-delay: 1.7s;
+}
+.slide.is-active .viz--formation .learner-halo {
+  opacity: 0.28;
+  scale: 1;
+}
+.viz--formation .learner-companion {
+  fill: var(--ink);
+  transform-box: fill-box;
+  transform-origin: center;
+  scale: 0;
+  transition: scale 0.55s var(--ease-out);
+  transition-delay: 2.05s;
+}
+.slide.is-active .viz--formation .learner-companion {
+  scale: 1;
+}
+
+/* Summary caption */
+.viz--formation .f-summary {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  fill: var(--ink-muted);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  transition-delay: 2.25s;
+}
+.viz--formation .f-summary .em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  fill: var(--ink);
+}
+.slide.is-active .viz--formation .f-summary {
+  opacity: 1;
+}
+
+/* ============================================================================
+   VIZ 05 · Multiplication — E-E-A-T stack ingredients + growing amplification
+   signal. Each card activates with a stagger; a bar of compounding signal
+   rises above it; a connecting polyline traces the staircase at the end.
+   ============================================================================ */
+.viz--multiplication .amp-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.slide.is-active .viz--multiplication .amp-eyebrow {
+  opacity: 1;
+}
+.viz--multiplication .amp-eyebrow--right {
+  opacity: 0;
+  transition: opacity 0.5s ease 0.1s;
+  font-style: italic;
+}
+
+.viz--multiplication .amp-baseline {
+  stroke: var(--ink);
+  stroke-width: 1;
+  opacity: 0;
+  transition: opacity 0.5s ease 0.05s;
+}
+.slide.is-active .viz--multiplication .amp-baseline {
+  opacity: 0.55;
+}
+
+.viz--multiplication .amp-bar {
+  fill: var(--ink);
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  transform: scaleY(0);
+  transition: transform 0.6s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+.slide.is-active .viz--multiplication .amp-bar {
+  transform: scaleY(1);
+}
+
+.viz--multiplication .amp-signal-line {
+  stroke: var(--ink);
+  stroke-width: 1.6;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 1s var(--ease-out) 1.3s;
+}
+.slide.is-active .viz--multiplication .amp-signal-line {
+  stroke-dashoffset: 0;
+}
+.viz--multiplication .amp-signal-head {
+  fill: var(--ink);
+  opacity: 0;
+  transition: opacity 0.4s ease 2.3s;
+}
+.slide.is-active .viz--multiplication .amp-signal-head {
+  opacity: 1;
+}
+
+/* Stack cards */
+.viz--multiplication .stack-card {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  scale: 0.92;
+  transition: opacity 0.5s var(--ease-out), scale 0.5s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+.slide.is-active .viz--multiplication .stack-card {
+  opacity: 1;
+  scale: 1;
+}
+.viz--multiplication .stack-card__bg {
+  fill: var(--bg);
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+.viz--multiplication .stack-card__num {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0;
+  fill: var(--ink-muted);
+  font-feature-settings: "tnum";
+}
+.viz--multiplication .stack-card__kind {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: -0.005em;
+  fill: var(--ink);
+}
+.viz--multiplication .stack-label {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  fill: var(--ink);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  transition-delay: var(--d, 0s);
+}
+.slide.is-active .viz--multiplication .stack-label {
+  opacity: 1;
+}
+.viz--multiplication .stack-sub {
+  font-family: var(--font-sans);
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  transition-delay: var(--d, 0s);
+}
+.slide.is-active .viz--multiplication .stack-sub {
+  opacity: 1;
+}
+
+/* E-E-A-T bracket spanning the last four cards */
+.viz--multiplication .eeat-bracket {
+  stroke: var(--ink-muted);
+  stroke-width: 1;
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 0.7s var(--ease-out) 1.3s;
+}
+.slide.is-active .viz--multiplication .eeat-bracket {
+  stroke-dashoffset: 0;
+}
+.viz--multiplication .eeat-label {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: -0.005em;
+  fill: var(--ink-soft);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: var(--d, 0s);
+}
+.slide.is-active .viz--multiplication .eeat-label {
+  opacity: 1;
+}
+
+.viz--multiplication .amp-throughput {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  fill: var(--ink-soft);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  transition-delay: var(--d, 0s);
+}
+.slide.is-active .viz--multiplication .amp-throughput {
+  opacity: 1;
+}
+
+/* ============================================================================
+   VIZ 06 · Movement — actual platform users connected. Named inner ring of
+   four primary users; twelve member users in the wider network. Three edge
+   weights mirror the fragmentation/page.tsx Movement stage (inter-primary /
+   primary-to-member / member-to-member dashed).
+   ============================================================================ */
+.viz--movement .net-edge {
+  stroke: currentColor;
+  stroke-linecap: round;
+  fill: none;
+}
+.viz--movement .net-edge--inter,
+.viz--movement .net-edge--primary {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 1s var(--ease-out) 0.2s;
+}
+.slide.is-active .viz--movement .net-edge--inter,
+.slide.is-active .viz--movement .net-edge--primary {
+  stroke-dashoffset: 0;
+}
+.viz--movement .net-edge--inter {
+  stroke-width: 1.35;
+  stroke-opacity: 0.8;
+}
+.viz--movement .net-edge--primary {
+  stroke-width: 0.9;
+  stroke-opacity: 0.55;
+}
+.viz--movement .net-edge--regular {
+  stroke-width: 0.65;
+  stroke-opacity: 0.45;
+  stroke-dasharray: 1.8 2.6;
+  opacity: 0;
+  transition: opacity 0.65s ease 0.9s;
+}
+.slide.is-active .viz--movement .net-edge--regular {
+  opacity: 1;
+}
+
+.viz--movement .net-user {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  scale: 0.85;
+  transition: opacity 0.5s var(--ease-out), scale 0.5s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+.slide.is-active .viz--movement .net-user {
+  opacity: 1;
+  scale: 1;
+}
+
+/* Primary user: halo ring + filled disk with initial reversed out */
+.viz--movement .user-halo {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 0.9;
+  opacity: 0.28;
+}
+.viz--movement .user-dot {
+  fill: var(--ink);
+  stroke: none;
+}
+.viz--movement .user-initial {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  fill: var(--bg);
+  dominant-baseline: central;
+}
+.viz--movement .user-name {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  fill: var(--ink);
+}
+.viz--movement .user-role {
+  font-family: var(--font-sans);
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+}
+
+/* Member user: outlined only, small initial in ink */
+.viz--movement .user-dot--regular {
+  fill: var(--bg);
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+.viz--movement .user-initial--regular {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0;
+  fill: var(--ink);
+  dominant-baseline: central;
+}
+
+/* Subtle breathing — primaries slow, members moderate */
+.slide.is-active .viz--movement .net-user--primary {
+  animation: netBreatheSlow 8s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+}
+.slide.is-active .viz--movement .net-user:not(.net-user--primary) {
+  animation: netBreathe 6s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+}
+@keyframes netBreathe {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -2px; }
+}
+@keyframes netBreatheSlow {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -3px; }
+}
+
+/* Field count + caption */
+.viz--movement .field-count {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: var(--d, 0s);
+}
+.viz--movement .field-sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 11px;
+  letter-spacing: -0.005em;
+  fill: var(--ink-soft);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: var(--d, 0s);
+}
+.slide.is-active .viz--movement .field-count,
+.slide.is-active .viz--movement .field-sub {
+  opacity: 1;
+}
+
+/* ============================================================================
+   AFTER-DECK — keyboard escape + simple closing band
+   ============================================================================ */
+.after-deck {
+  padding-block: clamp(5rem, 9vw, 7rem);
+  padding-inline: var(--gutter);
+  background: var(--bg-alt);
+}
+.after-deck__inner {
+  max-width: 740px;
+  margin-inline: auto;
+  text-align: center;
+}
+.after-deck__kicker {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0 0 1.25rem;
+}
+.after-deck__title {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: clamp(2rem, 4.2vw, 3.2rem);
+  line-height: 1.08;
+  letter-spacing: var(--tr-display);
+  color: var(--ink);
+  margin: 0 0 1.5rem;
+}
+.after-deck__body {
+  color: var(--ink-muted);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  max-width: 44ch;
+  margin: 0 auto 2rem;
+}
+.after-deck__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+}
+
+/* ============================================================================
+   FOOTER
+   ============================================================================ */
+.deck-footer {
+  background: var(--dark);
+  color: var(--dark-muted);
+  padding-block: 1.5rem;
+  font-size: 0.82rem;
+}
+.deck-footer__inner {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+.deck-footer__tag {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--dark-ink);
+  opacity: 0.82;
+}
+
+/* ============================================================================
+   REDUCED MOTION — collapse deck to vertical stack, disable all loops.
+   ============================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .deck {
+    height: auto;
+    overflow: visible;
+    padding-bottom: 4rem;
+  }
+  .deck__track {
+    flex-direction: column;
+    width: 100%;
+    transform: none !important;
+  }
+  .slide {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    min-height: 60vh;
+    padding-block: 4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .stage-dots,
+  .stage-indicator {
+    display: none;
+  }
+  /* Freeze all animations in their revealed states. */
+  .viz--fragmentation .frag,
+  .viz--activation .q-bar__caret,
+  .viz--activation .answer__dots circle,
+  .viz--movement .net-user {
+    animation: none !important;
+  }
+  .viz--integration .cell,
+  .viz--activation .q-bar,
+  .viz--activation .answer,
+  .viz--activation .cited,
+  .viz--activation .ray,
+  .viz--activation .ray-tag,
+  .viz--formation .f-force,
+  .viz--formation .f-arrow,
+  .viz--formation .f-label,
+  .viz--formation .f-sub,
+  .viz--formation .f-comm-edge,
+  .viz--formation .f-comm-user,
+  .viz--formation .learner-dot,
+  .viz--formation .learner-halo,
+  .viz--formation .learner-initial,
+  .viz--formation .learner-companion,
+  .viz--formation .f-summary,
+  .viz--multiplication .amp-eyebrow,
+  .viz--multiplication .amp-baseline,
+  .viz--multiplication .amp-bar,
+  .viz--multiplication .amp-signal-line,
+  .viz--multiplication .amp-signal-head,
+  .viz--multiplication .stack-card,
+  .viz--multiplication .stack-label,
+  .viz--multiplication .stack-sub,
+  .viz--multiplication .eeat-bracket,
+  .viz--multiplication .eeat-label,
+  .viz--multiplication .amp-throughput,
+  .viz--movement .net-edge,
+  .viz--movement .net-edge--regular,
+  .viz--movement .net-user,
+  .viz--movement .field-count,
+  .viz--movement .field-sub {
+    opacity: 1 !important;
+    stroke-dashoffset: 0 !important;
+    scale: 1 !important;
+    transform: scaleY(1) !important;
+  }
+}
+
+/* --- Small screen: trim typography --------------------------------------- */
+@media (max-width: 640px) {
+  .slide__title {
+    font-size: clamp(2.8rem, 11vw, 4.2rem);
+  }
+  .stage-indicator {
+    font-size: 0.72rem;
+  }
+}

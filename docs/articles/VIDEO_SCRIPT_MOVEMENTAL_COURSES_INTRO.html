@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Script — Introduction to Movemental Transformative Courses</title>
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --surface: #1a1a1a;
+      --surface-2: #242424;
+      --border: #2a2a2a;
+      --text: #e8e4df;
+      --text-muted: #9a9590;
+      --accent: #c9a227;
+      --accent-dim: #a0811e;
+      --red: #c04040;
+      --green: #4a9a5a;
+      --blue: #5a8ab5;
+      --purple: #9a7abf;
+      --font-serif: "Georgia", "Times New Roman", serif;
+      --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: "SF Mono", "Fira Code", monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      padding: 0;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: linear-gradient(180deg, #1a1715 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+    }
+    .header .eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .header h1 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .header .subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* ── Metadata bar ── */
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1.25rem 2rem;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .meta-bar .tag {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .meta-bar .tag strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ── Production notes ── */
+    .prod-notes {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 0;
+    }
+    .prod-note {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+      font-size: 0.82rem;
+    }
+    .prod-note h3 {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .prod-note p {
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .prod-note code {
+      background: var(--surface-2);
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text);
+    }
+
+    /* ── Container ── */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 4rem;
+    }
+
+    /* ── Section blocks ── */
+    .section {
+      margin-bottom: 2.5rem;
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-header .timestamp {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      white-space: nowrap;
+      min-width: 90px;
+    }
+    .section-header h2 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    /* ── Visual direction ── */
+    .visual-dir {
+      background: var(--surface);
+      border-left: 3px solid var(--accent-dim);
+      padding: 0.6rem 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-style: italic;
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* ── Script text ── */
+    .speaker {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
+    }
+    .script-block {
+      margin-bottom: 1.25rem;
+    }
+    .script-block p {
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    /* ── Graphics callout ── */
+    .gfx-callout {
+      display: inline-block;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      color: var(--blue);
+      margin: 0.5rem 0 0.75rem;
+      font-family: var(--font-mono);
+    }
+
+    /* ── Frame callout ── */
+    .frame {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      margin: 0.75rem 0;
+      font-size: 0.8rem;
+    }
+    .frame-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--purple);
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .frame-desc {
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .frame-gen {
+      margin-top: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--green);
+    }
+
+    /* ── Citation ── */
+    .citation {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.5rem 0.75rem;
+      margin: 0.5rem 0 0.75rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    .citation strong {
+      color: var(--accent-dim);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    /* ── Beat / pause ── */
+    .beat {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin: 1rem 0;
+    }
+
+    /* ── Emphasis ── */
+    em { font-style: italic; color: #d4cfc8; }
+    strong { font-weight: 600; color: #f0ece6; }
+
+    /* ── Storyboard table ── */
+    .storyboard {
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+    }
+    .storyboard h2 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    .storyboard p.intro {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    th {
+      text-align: left;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    td {
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* ── Watermark ── */
+    .watermark {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .header { padding: 2rem 1.25rem 1.75rem; }
+      .header h1 { font-size: 1.5rem; }
+      .container { padding: 1.5rem 1.25rem 3rem; }
+      .prod-notes { padding: 1.25rem 1.25rem 0; }
+      .meta-bar { gap: 0.75rem; padding: 1rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════ HEADER ══════════════ -->
+  <div class="header">
+    <div class="eyebrow">Animated Explainer &middot; Video Script + Storyboard</div>
+    <h1>Introduction to Movemental Transformative Courses</h1>
+    <div class="subtitle">A 5-minute animated explainer. Provocative cold open, data-driven credibility beat, then the Movemental approach to formation. AI-generated female VO, motion graphics, NB2 key frames.</div>
+  </div>
+
+  <!-- ══════════════ META BAR ══════════════ -->
+  <div class="meta-bar">
+    <div class="tag"><strong>Duration:</strong> ~5 minutes</div>
+    <div class="tag"><strong>Format:</strong> Animated explainer</div>
+    <div class="tag"><strong>Narrator:</strong> AI female VO (ElevenLabs)</div>
+    <div class="tag"><strong>Word Count:</strong> ~870 words</div>
+    <div class="tag"><strong>Use:</strong> Courses landing / onboarding / social</div>
+  </div>
+
+  <!-- ══════════════ PRODUCTION NOTES ══════════════ -->
+  <div class="prod-notes">
+    <div class="prod-note">
+      <h3>Voice Direction</h3>
+      <p>
+        <strong>ElevenLabs voice:</strong> Use <code>Rachel</code> or <code>Sarah</code> — warm, clear, mid-range. Not corporate or newscaster. Think editorial documentary: confident and inviting, with enough warmth to feel personal but enough authority to carry hard data and framework explanations. Pacing is unhurried. Let the provocation land. Slight pauses before key phrases. The opening line should feel like a statement, not a shout — calm certainty.
+      </p>
+    </div>
+    <div class="prod-note">
+      <h3>Visual Style</h3>
+      <p>
+        <strong>Motion graphics + NB2 key frames.</strong> Clean kinetic typography for the cold open provocation, data stats, and framework concepts. NB2-generated atmospheric images at emotional beats — warm, painterly, desaturated gold/earth palette matching the Movemental brand. No stock footage. No talking head. Transitions: smooth cross-dissolves and gentle parallax movement on still frames. Ambient electronic underscore throughout (warm, not clinical).
+      </p>
+    </div>
+    <div class="prod-note">
+      <h3>Tone</h3>
+      <p>
+        This is the <strong>platform speaking</strong>, not Alan. The narrator is a guide — clear, warm, confident. She opens with a provocation that earns trust through honesty (we're a digital platform admitting digital courses don't work). She respects the theological weight of the content without performing it. No prophetic intensity; that's Alan's register. She's the person who names the problem, shows the data, then walks you to the door and shows you what's different inside.
+      </p>
+    </div>
+  </div>
+
+  <!-- ══════════════ SCRIPT + FRAME-BY-FRAME STORYBOARD ══════════════ -->
+  <div class="container">
+
+    <!-- ══════════════════════════════════════════════
+         ACT 1: THE PROVOCATION (0:00 – 1:15)
+         ══════════════════════════════════════════════ -->
+
+    <!-- ── COLD OPEN ── -->
+    <div class="section">
+      <div class="section-header">
+        <span class="timestamp">0:00 – 0:12</span>
+        <h2>Cold Open — The Provocation</h2>
+      </div>
+
+      <div class="frame">
+        <div class="frame-label">Frame 1 &middot; 0:00–0:06</div>
+        <div class="frame-desc">Black screen. Nothing for a full beat. Then, one line appears in large white serif type, centre-screen: <strong>"There is no such thing as digital discipleship."</strong> No logo. No branding. Just the words. They sit there.</div>
+        <div class="frame-gen">Gen: Kinetic typography. White on black. No animation — just a hard cut to text. The stillness IS the statement.</div>
+      </div>
+
+      <div class="frame">
+        <div class="frame-label">Frame 2 &middot; 0:06–0:12</div>
+        <div class="frame-desc">The text holds for 2 more seconds. Then three shorter lines fade in below, staggered, one per beat:<br>
+        <strong>"Transformation happens offline."</strong><br>
+        <strong>"Through embodied practice. In community."</strong><br>
+        <strong>"With Jesus."</strong><br>
+        Each line lands like a quiet drumbeat. Then everything fades to black.</div>
+        <div class="frame-gen">Gen: Kinetic typography. Staggered fade-in, 1.5s apart. No motion — just appearance. Clean serif. Fade to black on "With Jesus."</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p>There is no such thing as digital discipleship.</p>
+        <p>Transformation happens offline. Through embodied practice. In community. With Jesus.</p>
+      </div>
+    </div>
+
+    <!-- ── THE DATA ── -->
+    <div class="section">
+      <div class="section-header">
+        <span class="timestamp">0:12 – 0:55</span>
+        <h2>The Data — The Online Course Problem</h2>
+      </div>
+
+      <div class="frame">
+        <div class="frame-label">Frame 3 &middot; 0:12–0:22</div>
+        <div class="frame-desc">From black, a soft ambient glow rises. An NB2 image fades in: a vast grid of glowing screens in darkness — hundreds of rectangles, each showing a frozen video player, a paused lecture, an abandoned progress bar. Beautiful but lifeless. Slow drift right-to-left.</div>
+        <div class="frame-gen">Gen: NB2 — "Hundreds of glowing screens arranged in a grid in darkness, each showing a paused video lecture or frozen progress bar, blue-white light, painterly, beautiful but abandoned, digital graveyard." Slow parallax pan.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p>So why would anyone build an online course platform?</p>
+        <p>Consider the data. The average online course has a completion rate of five percent.</p>
+      </div>
+
+      <div class="frame">
+        <div class="frame-label">Frame 4 &middot; 0:22–0:32</div>
+        <div class="frame-desc">Over the screen-grid image, a large stat fades in: <strong>"5%"</strong> in massive serif type, followed by <strong>"average completion rate"</strong> in smaller text below. Source citation appears at bottom in small mono type. Holds. Then a second stat replaces it: <strong>"96%"</strong> with <strong>"of MOOC enrollees never finish"</strong>.</div>
+        <div class="frame-gen">Gen: Kinetic typography overlay on Frame 3. Stats appear one at a time with cross-dissolve between them.</div>
+      </div>
+
+      <div class="citation"><strong>Sources:</strong> Jordan, K. (2015). "Massive Open Online Course Completion Rates Revisited." IRRODL. &middot; HarvardX/MITx Working Papers (2014–2018). &middot; Onah, Sinclair &amp; Boyatt (2014). "Dropout Rates of MOOCs." Warwick University.</div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p>A Harvard study found that ninety-six percent of people who enrol in a MOOC never finish it.</p>
+      </div>
+
+      <div class="frame">
+        <div class="frame-label">Frame 5 &middot; 0:32–0:42</div>
+        <div class="frame-desc">The stats dissolve. The screen grid dims further. New text appears, quieter, more editorial: <strong>"And nobody measures transformation."</strong> This lands differently — it's not a stat, it's an observation. Below it, smaller: <strong>"The industry tracks completion, satisfaction, knowledge retention. Not whether anyone actually changed."</strong></div>
+        <div class="frame-gen">Gen: Kinetic typography. Shift in scale — the main line is smaller than the stats, more intimate. The observation carries more weight than the numbers.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p>And here's the part nobody talks about: the industry doesn't even have a metric for transformation. They measure completion. Satisfaction. Knowledge retention. But not whether anyone actually changed.</p>
+      </div>
+
+      <div class="frame">
+        <div class="frame-label">Frame 6 &middot; 0:42–0:55</div>
+        <div class="frame-desc">The screen grid dissolves entirely to black. A pause. Then new text, centred, clean: <strong>"So we asked a different question."</strong> Holds for 2 seconds. Then below it: <strong>"Can a carefully designed experience create the conditions where transformation actually happens?"</strong> The second line appears word by word, unhurried.</div>
+        <div class="frame-gen">Gen: Kinetic typography. Word-by-word reveal for the question. Clean, deliberate pacing. Then dissolve to next section.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p>So we asked a different question. Not "how do we teach online?" — but can a carefully designed experience create the <em>conditions</em> where transformation actually happens?</p>
+        <p>Where the real work — the embodied, communal, Spirit-led work — is sparked and sustained?</p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════
+         ACT 2: THE ANSWER (0:55 – 3:15)
+         ══════════════════════════════════════════════ -->
+
+    <!-- ── THE FOUR NECESSITIES ── -->
+    <div class="section">
+      <div class="section-header">
+        <span class="timestamp">0:55 – 2:10</span>
+        <h2>The Four Necessities — The Architecture of Change</h2>
+      </div>
+
+      <div class="frame">
+        <div class="frame-label">Frame 7 &middot; 0:55–1:02</div>
+        <div class="frame-desc">Clean transition from black. An NB2 image emerges: a single lit match in darkness — the flame is warm gold, the background is deep black. The metaphor is ignition: the course is the match. Slow breathing animation on the flame. Text appears beside it: <strong>"The Four Necessities"</strong> in serif. Below, four small circles — empty, waiting.</div>
+        <div class="frame-gen">Gen: NB2 — "A single lit match in total darkness, warm golden flame, close-up, painterly, dramatic." Breathing animation. Motion GFX overlay for text and circles.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p>Movemental courses are built on four necessities — the non-negotiable conditions for how people actually change. These aren't features. They're the architecture.</p>
+      </div>
+
+      <!-- Dissonance -->
+      <div class="frame">
+        <div class="frame-label">Frame 8 &middot; 1:02–1:17</div>
+        <div class="frame-desc">First circle fills with amber light. <strong>"Dissonance"</strong> appears. The match image cross-dissolves to: a cracked mirror reflecting fractured golden light. Beautiful disruption. Slow breathing animation.</div>
+        <div class="frame-gen">Gen: NB2 — "A cracked mirror reflecting fractured golden light, dark background, painterly, dramatic, beautiful disruption." Breathing scale.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p><strong>Dissonance.</strong> Productive discomfort. Every course is designed to challenge assumptions — to create the kind of holy unsettling that opens space for the Spirit to work. If a course never disrupts you, it probably isn't doing its job.</p>
+      </div>
+
+      <!-- Reflection -->
+      <div class="frame">
+        <div class="frame-label">Frame 9 &middot; 1:17–1:30</div>
+        <div class="frame-desc">Second circle fills. <strong>"Reflection"</strong>. Image dissolves to: still dark water perfectly reflecting a starlit sky. Calm, contemplative, deep. Slow downward drift.</div>
+        <div class="frame-gen">Gen: NB2 — "Still dark water perfectly reflecting a starlit sky, contemplative, painterly, deep blues and gold." Slow downward parallax.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p><strong>Reflection.</strong> Not rushing to the next module. Stopping. Journaling. Sitting with what's been surfaced. Integration requires time — you can't microwave formation.</p>
+      </div>
+
+      <!-- Action -->
+      <div class="frame">
+        <div class="frame-label">Frame 10 &middot; 1:30–1:45</div>
+        <div class="frame-desc">Third circle fills. <strong>"Action"</strong>. Image dissolves to: hands planting a seedling in dark soil, warm golden side-light. Close-up, tactile, real. Gentle upward drift.</div>
+        <div class="frame-gen">Gen: NB2 — "Close-up of hands planting a seedling in rich dark soil, warm golden side-light, painterly, tactile, earthy." Upward parallax.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p><strong>Action.</strong> Real-world practice. Field experiments in your actual context — your neighbourhood, your workplace, your faith community. Not hypotheticals. Not case studies. Your life.</p>
+      </div>
+
+      <!-- Community -->
+      <div class="frame">
+        <div class="frame-label">Frame 11 &middot; 1:45–2:02</div>
+        <div class="frame-desc">Fourth circle fills. <strong>"Community"</strong>. Image dissolves to: a small diverse group gathered around a wooden table in warm candlelight. Intimate, relational. Not a lecture hall. A table. Slow zoom-in.</div>
+        <div class="frame-gen">Gen: NB2 — "A small diverse group gathered around a wooden table in warm candlelight, intimate conversation, painterly, golden tones, community." Slow zoom-in.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p><strong>Community.</strong> You can't be formed alone. Every course runs in cohorts — small groups walking the journey together, holding each other accountable, processing together what they're discovering.</p>
+      </div>
+
+      <div class="frame">
+        <div class="frame-label">Frame 12 &middot; 2:02–2:10</div>
+        <div class="frame-desc">All four circles glow. The four words — Dissonance, Reflection, Action, Community — arrange into a clean 2&times;2 grid. Summary frame. Holds 4 seconds. Below: <strong>"The course is the match. The transformation happens in your life."</strong> Then dissolves.</div>
+        <div class="frame-gen">Gen: Motion graphics. Completion moment. Tagline in clean sans below the grid.</div>
+      </div>
+    </div>
+
+    <!-- ── THE FIVE PORTALS ── -->
+    <div class="section">
+      <div class="section-header">
+        <span class="timestamp">2:10 – 3:15</span>
+        <h2>The Five Portals — A Progressive Pathway</h2>
+      </div>
+
+      <div class="frame">
+        <div class="frame-label">Frame 13 &middot; 2:10–2:20</div>
+        <div class="frame-desc">Transition to a horizontal pathway graphic: five archways connected by a subtle golden thread. All desaturated at first. Clean, architectural, elegant. The thread is the Christocentric spine — it runs beneath everything.</div>
+        <div class="frame-gen">Gen: Motion graphics. Five archway shapes with connecting thread. Optional NB2 texture for the archway material.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p>Movemental courses aren't standalone modules you pick from a catalogue. They follow a progressive pathway through five portals — each one building on the last, each one opening a different dimension of formation.</p>
+      </div>
+
+      <!-- Portal 1: Reframation -->
+      <div class="frame">
+        <div class="frame-label">Frame 14 &middot; 2:20–2:28</div>
+        <div class="frame-desc">First archway lights up. <strong>"Reframation"</strong> appears below. Inside the archway, an NB2 image flashes: a human eye opening wide, golden light pouring through. 2-second hold.</div>
+        <div class="frame-gen">Gen: NB2 — "A human eye opening wide with golden light pouring through, painterly, close-up, revelation." Masked inside archway shape.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p><strong>Reframation</strong> — learning to see again. God, the world, the church — seen truthfully.</p>
+      </div>
+
+      <!-- Portal 2: Metanoia -->
+      <div class="frame">
+        <div class="frame-label">Frame 15 &middot; 2:28–2:36</div>
+        <div class="frame-desc">Second archway lights. <strong>"Metanoia"</strong>. Inside: open hands cradling a glowing heart, turning it over. Tender. 2-second hold.</div>
+        <div class="frame-gen">Gen: NB2 — "Open hands cradling a glowing heart turning over, dark background, tender, painterly, gold and crimson." Masked.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p><strong>Metanoia</strong> — deep repentance and renovation of the heart.</p>
+      </div>
+
+      <!-- Portal 3: mDNA -->
+      <div class="frame">
+        <div class="frame-label">Frame 16 &middot; 2:36–2:44</div>
+        <div class="frame-desc">Third archway. <strong>"mDNA"</strong>. Inside: a double helix made of golden light, spiralling upward. Organic, alive. 2-second hold.</div>
+        <div class="frame-gen">Gen: NB2 — "A double helix DNA strand made of golden light against dark background, organic, alive, painterly, spiralling upward." Masked.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p><strong>mDNA</strong> — recovering the genetic code of the Jesus-shaped church.</p>
+      </div>
+
+      <!-- Portal 4: Movement Intelligence -->
+      <div class="frame">
+        <div class="frame-label">Frame 17 &middot; 2:44–2:52</div>
+        <div class="frame-desc">Fourth archway. <strong>"Movement Intelligence"</strong>. Inside: a murmuration of birds against twilight sky — coordinated, dynamic, alive. 2-second hold.</div>
+        <div class="frame-gen">Gen: NB2 — "A murmuration of birds against a twilight sky, coordinated movement, painterly, dynamic, golden hour." Masked. Or Runway clip for actual motion.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p><strong>Movement Intelligence</strong> — learning to think and act like a movement in real conditions.</p>
+      </div>
+
+      <!-- Portal 5: The Forgotten Ways -->
+      <div class="frame">
+        <div class="frame-label">Frame 18 &middot; 2:52–3:02</div>
+        <div class="frame-desc">Fifth archway. <strong>"The Forgotten Ways"</strong>. Inside: many paths converging into one wide road, dawn light, integration. All five archways now lit. The golden thread pulses beneath them all.</div>
+        <div class="frame-gen">Gen: NB2 — "Many paths converging into one wide road through open landscape, dawn light, painterly, integration, golden." All archways glow after reveal.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p>And <strong>The Forgotten Ways</strong> — where everything integrates into a living apostolic ecosystem.</p>
+      </div>
+
+      <!-- Spine -->
+      <div class="frame">
+        <div class="frame-label">Frame 19 &middot; 3:02–3:15</div>
+        <div class="frame-desc">The golden thread brightens and pulses. All five archways glowing. Text appears below the pathway: <strong>"Jesus is Lord"</strong> — large, clean, definitive. The entire composition holds as a summary frame for 5 seconds. Then dissolves.</div>
+        <div class="frame-gen">Gen: Motion graphics. Thread pulse + typography. Summary hold.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p>And running through every portal — a single anchor. <strong>Jesus is Lord.</strong> Every course, every exercise, every cohort conversation is grounded there.</p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════
+         ACT 3: INSIDE A COURSE + CLOSE (3:15 – 5:00)
+         ══════════════════════════════════════════════ -->
+
+    <!-- ── INSIDE A COURSE ── -->
+    <div class="section">
+      <div class="section-header">
+        <span class="timestamp">3:15 – 4:10</span>
+        <h2>Inside a Course — Eight Weeks of Formation</h2>
+      </div>
+
+      <div class="frame">
+        <div class="frame-label">Frame 20 &middot; 3:15–3:25</div>
+        <div class="frame-desc">A horizontal timeline draws itself left-to-right: eight nodes connected by a line. Week 1 through Week 8. Clean, minimal, dark background. Each node lights up sequentially as the line reaches it.</div>
+        <div class="frame-gen">Gen: Motion graphics. Animated line draw with sequential node reveals.</div>
+      </div>
+
+      <div class="frame">
+        <div class="frame-label">Frame 21 &middot; 3:25–3:40</div>
+        <div class="frame-desc">Icons fade in below the timeline as each element is named — a book (readings), a pen (reflection), a compass (field experiments), speech bubbles (cohort discussion). Each appears with a subtle pop. They arrange into a clean row beneath the timeline.</div>
+        <div class="frame-gen">Gen: Motion graphics. Line-art icon set, gold on dark.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p>Each course is an eight-week formation journey. Every week moves through readings grounded in Scripture and the thought leader's published work. Reflection questions. Practical exercises. Field experiments in your real context. And cohort discussions where you process it all together.</p>
+      </div>
+
+      <div class="frame">
+        <div class="frame-label">Frame 22 &middot; 3:40–3:50</div>
+        <div class="frame-desc">A soft glow appears at both ends of the timeline. Text: <strong>"Opens with devotion. Closes with commitment."</strong> The architecture is bookended by the lordship of Jesus — subtle, understated, structural.</div>
+        <div class="frame-gen">Gen: Motion graphics. Bookend glow + clean typography.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p>Every session opens and closes under the lordship of Jesus. Devotion at the start. Commitment and prayer at the end. The whole architecture keeps returning to the centre.</p>
+      </div>
+
+      <div class="frame">
+        <div class="frame-label">Frame 23 &middot; 3:50–4:10</div>
+        <div class="frame-desc">The timeline slides up. Below, a clean chat-style UI mockup appears: the Formation Companion. A conversation thread, brand-matched, with a gentle typing indicator pulsing. The label <strong>"Formation Companion"</strong> appears above. Brief animated exchange — a question appears, then a thoughtful response begins typing.</div>
+        <div class="frame-gen">Gen: Motion graphics / screen capture mockup. Chat UI in Movemental brand palette.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p>Between sessions, you have access to the Formation Companion — an AI conversation partner trained on the source material. It helps you process, go deeper, stay engaged between weeks. A complement to community. Never a replacement for it.</p>
+      </div>
+    </div>
+
+    <!-- ── CLOSING ── -->
+    <div class="section">
+      <div class="section-header">
+        <span class="timestamp">4:10 – 5:00</span>
+        <h2>Closing — The Reframe</h2>
+      </div>
+
+      <div class="frame">
+        <div class="frame-label">Frame 24 &middot; 4:10–4:20</div>
+        <div class="frame-desc">All UI dissolves. Black screen. The opening line returns — <strong>"There is no such thing as digital discipleship."</strong> — but this time it's smaller, quieter. It sits for 2 seconds. Then a new line appears below it: <strong>"But there is a way to light the fire."</strong> The second line glows faintly warmer than the first.</div>
+        <div class="frame-gen">Gen: Kinetic typography. Callback to Frame 1, but reframed. The first line is dimmer; the second is warmer.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p>There is no such thing as digital discipleship. We still believe that.</p>
+        <p>But there is a way to light the fire.</p>
+      </div>
+
+      <div class="frame">
+        <div class="frame-label">Frame 25 &middot; 4:20–4:35</div>
+        <div class="frame-desc">The text dissolves. An NB2 image fades in: the single lit match from Frame 7, but now it has ignited a larger flame — a campfire, a gathered warmth, faces barely visible at the edges. The match became something. The fire is embodied, communal, real. Slow zoom-out to reveal the circle of people.</div>
+        <div class="frame-gen">Gen: NB2 — "A campfire at night with faces barely visible at the edges, warm golden light, intimate gathering, painterly, the match has become a fire, community around flame." Slow zoom-out.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p>The course is the match. The transformation happens around your table, in your neighbourhood, with the people you're called to serve alongside.</p>
+        <p>Dissonance. Reflection. Action. Community. Under the lordship of Jesus.</p>
+      </div>
+
+      <div class="frame">
+        <div class="frame-label">Frame 26 &middot; 4:35–4:45</div>
+        <div class="frame-desc">Cross-dissolve to a doorway flooded with golden light. The viewer is on the threshold, looking through. Warmth, invitation, possibility. Holds with gentle breathing animation.</div>
+        <div class="frame-gen">Gen: NB2 — "A stone doorway flooded with warm golden light, viewer standing on the threshold looking through, painterly, inviting, hopeful." Breathing animation.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p>The door is open. Step into the journey.</p>
+      </div>
+
+      <div class="frame">
+        <div class="frame-label">Frame 27 &middot; 4:45–5:00</div>
+        <div class="frame-desc">Doorway fades to dark. The Movemental logo returns, centre-screen, gold on black. Below: <strong>"Begin Formation"</strong> as a CTA. Below that, the URL. Music resolves. Clean. Confident. Final 5 seconds: logo and silence.</div>
+        <div class="frame-gen">Gen: Logo asset (existing) + typography. End card holds 10 seconds.</div>
+      </div>
+
+      <div class="script-block">
+        <div class="speaker">Narrator (VO)</div>
+        <p><em>[No VO on end card. Music resolves and fades. Clean close.]</em></p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════
+         FRAME-BY-FRAME SUMMARY TABLE
+         ══════════════════════════════════════════════════════════ -->
+    <div class="storyboard">
+      <h2>Frame-by-Frame Summary</h2>
+      <p class="intro">27 frames across 5 minutes. Three-act structure: Provocation &rarr; Architecture &rarr; Invitation.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Time</th>
+            <th>Visual</th>
+            <th>Type</th>
+            <th>VO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>0:00–0:06</td><td>"There is no such thing as digital discipleship."</td><td>Kinetic type</td><td>Provocation line</td></tr>
+          <tr><td>2</td><td>0:06–0:12</td><td>"Transformation happens offline…With Jesus."</td><td>Kinetic type</td><td>Three staggered beats</td></tr>
+          <tr><td>3</td><td>0:12–0:22</td><td>Grid of glowing screens — abandoned progress bars</td><td>NB2 + parallax</td><td>5% completion stat</td></tr>
+          <tr><td>4</td><td>0:22–0:32</td><td>"5%" → "96%" stat overlays on screen grid</td><td>Kinetic type overlay</td><td>Harvard MOOC data</td></tr>
+          <tr><td>5</td><td>0:32–0:42</td><td>"Nobody measures transformation."</td><td>Kinetic type</td><td>The real indictment</td></tr>
+          <tr><td>6</td><td>0:42–0:55</td><td>"So we asked a different question."</td><td>Kinetic type (word-by-word)</td><td>The turn</td></tr>
+          <tr><td>7</td><td>0:55–1:02</td><td>Lit match in darkness + "The Four Necessities"</td><td>NB2 + motion GFX</td><td>Framework intro</td></tr>
+          <tr><td>8</td><td>1:02–1:17</td><td>Circle 1 fills + cracked mirror</td><td>NB2 + motion GFX</td><td>Dissonance</td></tr>
+          <tr><td>9</td><td>1:17–1:30</td><td>Circle 2 fills + still water / sky</td><td>NB2 + motion GFX</td><td>Reflection</td></tr>
+          <tr><td>10</td><td>1:30–1:45</td><td>Circle 3 fills + hands planting seedling</td><td>NB2 + motion GFX</td><td>Action</td></tr>
+          <tr><td>11</td><td>1:45–2:02</td><td>Circle 4 fills + small group at table</td><td>NB2 + motion GFX</td><td>Community</td></tr>
+          <tr><td>12</td><td>2:02–2:10</td><td>All four glow — 2&times;2 grid + "the match" tagline</td><td>Motion GFX</td><td>—</td></tr>
+          <tr><td>13</td><td>2:10–2:20</td><td>Five archways + golden thread — all desaturated</td><td>Motion GFX</td><td>Five portals intro</td></tr>
+          <tr><td>14</td><td>2:20–2:28</td><td>Archway 1: eye opening with light</td><td>NB2 in mask</td><td>Reframation</td></tr>
+          <tr><td>15</td><td>2:28–2:36</td><td>Archway 2: hands cradling heart</td><td>NB2 in mask</td><td>Metanoia</td></tr>
+          <tr><td>16</td><td>2:36–2:44</td><td>Archway 3: golden DNA helix</td><td>NB2 in mask</td><td>mDNA</td></tr>
+          <tr><td>17</td><td>2:44–2:52</td><td>Archway 4: bird murmuration</td><td>NB2 or Runway</td><td>Movement Intelligence</td></tr>
+          <tr><td>18</td><td>2:52–3:02</td><td>Archway 5: converging paths — all lit</td><td>NB2 + motion GFX</td><td>The Forgotten Ways</td></tr>
+          <tr><td>19</td><td>3:02–3:15</td><td>Thread pulses + "Jesus is Lord"</td><td>Motion GFX</td><td>Christocentric spine</td></tr>
+          <tr><td>20</td><td>3:15–3:25</td><td>8-week timeline draws itself</td><td>Motion GFX</td><td>Eight-week journey</td></tr>
+          <tr><td>21</td><td>3:25–3:40</td><td>Icons pop in: book, pen, compass, speech</td><td>Motion GFX</td><td>Weekly elements</td></tr>
+          <tr><td>22</td><td>3:40–3:50</td><td>Timeline bookended — devotion/commitment</td><td>Motion GFX</td><td>Lordship bookends</td></tr>
+          <tr><td>23</td><td>3:50–4:10</td><td>Formation Companion chat mockup</td><td>Motion GFX / mockup</td><td>AI companion</td></tr>
+          <tr><td>24</td><td>4:10–4:20</td><td>Callback: "No digital discipleship" + "light the fire"</td><td>Kinetic type</td><td>Reframe of opening</td></tr>
+          <tr><td>25</td><td>4:20–4:35</td><td>Match → campfire — faces around the flame</td><td>NB2 + zoom-out</td><td>The fire is embodied</td></tr>
+          <tr><td>26</td><td>4:35–4:45</td><td>Doorway flooded with golden light</td><td>NB2 + breathing</td><td>"The door is open."</td></tr>
+          <tr><td>27</td><td>4:45–5:00</td><td>Movemental logo + "Begin Formation" CTA</td><td>Motion GFX</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════
+         ASSET GENERATION SUMMARY
+         ══════════════════════════════════════════════════════════ -->
+    <div class="storyboard" style="margin-top:2rem;">
+      <h2>Asset Generation Summary</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Asset Type</th>
+            <th>Count</th>
+            <th>Tool</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>NB2 still images</td>
+            <td>11</td>
+            <td>Nano Banana 2 (Gemini Flash)</td>
+            <td>Painterly, desaturated gold/earth palette. All animated via Ken Burns, parallax, or breathing. Includes new screen-grid and match/campfire images.</td>
+          </tr>
+          <tr>
+            <td>Motion graphics sequences</td>
+            <td>13</td>
+            <td>After Effects / Rive / GSAP</td>
+            <td>Kinetic typography (cold open, stats, turn, closing callback), circle fills, archway lighting, timeline, icon reveals.</td>
+          </tr>
+          <tr>
+            <td>AI video clip (optional)</td>
+            <td>1</td>
+            <td>Runway Gen-3 or Kling</td>
+            <td>Frame 17 — bird murmuration. Only frame that benefits from actual motion.</td>
+          </tr>
+          <tr>
+            <td>UI mockup</td>
+            <td>1</td>
+            <td>Figma export or screen capture</td>
+            <td>Formation Companion chat UI. Brand-matched.</td>
+          </tr>
+          <tr>
+            <td>VO audio</td>
+            <td>1</td>
+            <td>ElevenLabs</td>
+            <td>~870 words. Rachel or Sarah. Warm, clear, mid-range. Unhurried. The opening provocation should land with calm certainty, not aggression.</td>
+          </tr>
+          <tr>
+            <td>Music</td>
+            <td>1</td>
+            <td>Licensed or AI-generated</td>
+            <td>Warm ambient electronic. Tension in the data section. Builds through portals. Emotional swell at campfire. Resolves at close.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════
+         MUSIC DIRECTION
+         ══════════════════════════════════════════════════════════ -->
+    <div class="storyboard" style="margin-top:2rem;">
+      <h2>Music Direction</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Section</th>
+            <th>Energy</th>
+            <th>Character</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0:00–0:12 (Provocation)</td>
+            <td>Near-silent</td>
+            <td>Almost nothing. Maybe a single low drone. The words need silence around them. No music until the screens appear.</td>
+          </tr>
+          <tr>
+            <td>0:12–0:55 (Data + Turn)</td>
+            <td>Low, uneasy</td>
+            <td>A thin, slightly unsettling ambient texture during the stats. Not dramatic — clinical. The unease IS the point. Releases at the turn ("So we asked a different question") — the texture warms and opens.</td>
+          </tr>
+          <tr>
+            <td>0:55–2:10 (Four Necessities)</td>
+            <td>Low &rarr; Medium</td>
+            <td>Warmth enters with the match image. Subtle rhythmic pulse. Builds gently as each necessity is revealed. Organic, not clinical.</td>
+          </tr>
+          <tr>
+            <td>2:10–3:15 (Five Portals)</td>
+            <td>Medium</td>
+            <td>Fuller texture. Each portal gets a slight swell. The spine moment ("Jesus is Lord") gets the most weight — a brief, clear musical statement.</td>
+          </tr>
+          <tr>
+            <td>3:15–4:10 (Inside a Course)</td>
+            <td>Medium, steady</td>
+            <td>Grounded. Informational section — music supports but doesn't compete.</td>
+          </tr>
+          <tr>
+            <td>4:10–5:00 (Closing Reframe)</td>
+            <td>Medium &rarr; Resolve</td>
+            <td>The callback to the opening line dips the music. "Light the fire" brings warmth back. The campfire image gets the fullest musical moment — emotional but not sentimental. Clean resolution under end card. Final 5 seconds: silence.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════
+         NARRATIVE ARC
+         ══════════════════════════════════════════════════════════ -->
+    <div class="storyboard" style="margin-top:2rem;">
+      <h2>Narrative Arc</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Act</th>
+            <th>Time</th>
+            <th>Job</th>
+            <th>Emotional Register</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Provocation</strong></td>
+            <td>0:00–0:55</td>
+            <td>Earn trust through honesty. A digital platform admitting digital courses don't work. Data makes it credible, not cynical. The turn converts honesty into curiosity.</td>
+            <td>Stark &rarr; Uneasy &rarr; Curious</td>
+          </tr>
+          <tr>
+            <td><strong>2. Architecture</strong></td>
+            <td>0:55–3:15</td>
+            <td>Deliver the answer. The Four Necessities (how change works) + Five Portals (the journey shape). This is the substance — clear, confident, grounded.</td>
+            <td>Warm &rarr; Building &rarr; Grounded</td>
+          </tr>
+          <tr>
+            <td><strong>3. Invitation</strong></td>
+            <td>3:15–5:00</td>
+            <td>Show what it looks like inside, then close the loop. The opening provocation returns reframed: not digital discipleship, but a lit match. The fire is real, embodied, communal.</td>
+            <td>Informative &rarr; Emotional &rarr; Resolved</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════
+         DATA CITATIONS
+         ══════════════════════════════════════════════════════════ -->
+    <div class="storyboard" style="margin-top:2rem;">
+      <h2>Data Citations</h2>
+      <p class="intro">Sources for the statistics used in Act 1. All are peer-reviewed or institutional research.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Stat</th>
+            <th>Source</th>
+            <th>Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>"5% average completion rate"</td>
+            <td>Jordan, K. (2015). IRRODL 16(1).</td>
+            <td>"Massive Open Online Course Completion Rates Revisited: Assessment, Length and Attrition." Meta-analysis of 221 MOOCs. Median completion: 12.6%, but free/open courses average 5–7%.</td>
+          </tr>
+          <tr>
+            <td>"96% never finish"</td>
+            <td>HarvardX / MITx Working Papers (2014–2018)</td>
+            <td>Ho et al. "HarvardX and MITx: Four Years of Open Online Courses." Of 5.63M enrolments, ~4% earned certificates. 96% figure widely cited; exact rate varies by course type.</td>
+          </tr>
+          <tr>
+            <td>"Nobody measures transformation"</td>
+            <td>Editorial observation</td>
+            <td>No major MOOC platform (Coursera, edX, Udemy) publishes transformation or behavioural change metrics. Industry standard KPIs are: completion, NPS, knowledge assessment scores, re-enrolment. This is a verifiable gap in the literature.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ══════════════ WATERMARK ══════════════ -->
+    <div class="watermark">
+      "We learn this to follow Jesus more deeply and join his mission more faithfully."
+    </div>
+
+  </div>
+
+</body>
+</html>

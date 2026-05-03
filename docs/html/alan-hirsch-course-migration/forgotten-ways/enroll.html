@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enroll — The Forgotten Ways</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../site-templates/site-theme.css" />
+    <link rel="stylesheet" href="../_shared/forgotten-ways-shell.css" />
+  </head>
+  <body class="fw-migration">
+    <header class="site-top"><div class="site-top__inner"><a href="./index.html" class="site-brand">The Forgotten Ways<small>Enroll</small></a></div></header>
+    <main>
+      <section class="band-default">
+        <div class="container" style="display: grid; grid-template-columns: 1fr; gap: 3rem;">
+          <style>@media (min-width: 900px) { .fw-enroll { grid-template-columns: 1.2fr 1fr; } }</style>
+          <div class="fw-enroll" style="display: grid; gap: 3rem;">
+            <div>
+              <p class="fw-eyebrow">Join the next cohort</p>
+              <h1 class="fw-display">Enroll in The Forgotten Ways</h1>
+              <p class="fw-lede">An 8-week facilitated transformation. Cohort begins SEPT 15. Meetings Thursdays, 7:00 PM EST.</p>
+
+              <form novalidate style="margin-top: 2rem; display: grid; gap: 0.25rem;">
+                <div class="fw-form__group">
+                  <label class="fw-form__label" for="enroll-name">Full name</label>
+                  <input class="fw-form__input" id="enroll-name" name="name" type="text" required autocomplete="name" />
+                </div>
+                <div class="fw-form__group">
+                  <label class="fw-form__label" for="enroll-email">Email</label>
+                  <input class="fw-form__input" id="enroll-email" name="email" type="email" required autocomplete="email" />
+                  <span class="fw-form__help">We'll send cohort calendar invites and facilitator intros here.</span>
+                </div>
+                <div class="fw-form__group">
+                  <label class="fw-form__label" for="enroll-context">Ministry context</label>
+                  <select class="fw-form__select" id="enroll-context" name="context">
+                    <option value="">Select one</option>
+                    <option>Local church (lead pastor / team lead)</option>
+                    <option>Local church (staff / lay leader)</option>
+                    <option>Church plant or new community</option>
+                    <option>Denomination / network role</option>
+                    <option>Marketplace with ministry intent</option>
+                    <option>Academic / seminary</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="fw-form__group">
+                  <label class="fw-form__label" for="enroll-cohort">Cohort</label>
+                  <select class="fw-form__select" id="enroll-cohort" name="cohort">
+                    <option>SEPT 15 — OCT 10 · Thursdays 7:00 PM EST</option>
+                    <option>OCT 20 — DEC 15 · Wednesdays 9:00 AM EST</option>
+                  </select>
+                </div>
+                <div class="fw-form__group">
+                  <label class="fw-form__label" for="enroll-goal">What draws you to this journey?</label>
+                  <textarea class="fw-form__textarea" id="enroll-goal" name="goal" placeholder="Optional — your facilitator will read this before the first call."></textarea>
+                </div>
+                <div class="fw-row" style="margin-top: 1rem;">
+                  <button class="btn btn-primary" type="submit">Continue to payment</button>
+                  <a class="btn btn-ghost" href="./index.html">Back to overview</a>
+                </div>
+              </form>
+            </div>
+
+            <aside style="display: grid; gap: 1rem; align-content: start;">
+              <div class="card" style="padding: 1.75rem;">
+                <p class="fw-eyebrow">Individual Access</p>
+                <p style="font-size: 2rem; font-weight: 700; margin: 0;">$495</p>
+                <p style="color: var(--muted-foreground); margin: 0.35rem 0 1.25rem;">One-time payment · 12-month Library access</p>
+                <ul class="fw-checklist">
+                  <li>8-week facilitated transformation</li>
+                  <li>Access to all learning modules</li>
+                  <li>1 year access to the Practitioner Library</li>
+                  <li>Certificate of Apostolic Leadership</li>
+                </ul>
+              </div>
+              <div class="card" style="padding: 1.25rem 1.5rem; background: var(--inverse-surface); color: var(--inverse-foreground);">
+                <p class="fw-eyebrow" style="color: color-mix(in srgb, var(--inverse-foreground) 65%, transparent);">Need a group license?</p>
+                <p style="margin: 0 0 0.75rem;">Leader License covers 5 concurrent leaders plus facilitator training.</p>
+                <a href="./enroll.html?tier=leader" class="btn btn-ghost" style="color: var(--inverse-foreground); border-color: color-mix(in srgb, var(--inverse-foreground) 30%, transparent);">Switch to Leader License</a>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
