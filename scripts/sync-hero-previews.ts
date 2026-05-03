@@ -2,9 +2,9 @@
  * Copies Stitch homepage HTML + optional Alan Hirsch static `pages/*.html` shell
  * into `public/hero-previews/` for home hero iframe previews.
  *
- * If `templates/alan-hirsch/pages/` is missing or has no `.html` files (e.g. after
+ * If `docs/templates/alan-hirsch/pages/` is missing or has no `.html` files (e.g. after
  * removing the sibling template tree), `leaders/index.html` is generated from
- * `templates/alan-hirsch/exemplars/exemplar-landing-general.html` so Vercel `prebuild` still passes.
+ * `docs/templates/alan-hirsch/exemplars/exemplar-landing-general.html` so Vercel `prebuild` still passes.
  *
  * Run via `pnpm sync:hero-previews` or automatically before `pnpm dev` / `pnpm prebuild`.
  */
@@ -17,20 +17,26 @@ const root = join(__dirname, "..");
 const out = join(root, "public", "hero-previews");
 
 const STITCH = {
-  nonprofits: join(root, "templates/stitch/unified-mission-system/html/movemental-homepage.html"),
-  churches: join(root, "templates/stitch/church-formation-system/html/movemental-homepage-mockup.html"),
+  nonprofits: join(
+    root,
+    "docs/templates/stitch/unified-mission-system/html/movemental-homepage.html"
+  ),
+  churches: join(
+    root,
+    "docs/templates/stitch/church-formation-system/html/movemental-homepage-mockup.html"
+  ),
   institutions: join(
     root,
-    "templates/stitch/institutional-intelligence-system/html/movemental-institutional-intelligence-homepage.html"
+    "docs/templates/stitch/institutional-intelligence-system/html/movemental-institutional-intelligence-homepage.html"
   ),
 } as const;
 
 /** Static shell pages (optional). When empty/removed, leaders preview uses `FALLBACK_LEADERS_HTML`. */
-const ALAN_HIRSCH_PAGES = join(root, "templates/alan-hirsch/pages");
+const ALAN_HIRSCH_PAGES = join(root, "docs/templates/alan-hirsch/pages");
 /** Exemplar HTML copied to `public/hero-previews/leaders/index.html` when `pages/` has no `.html` files. */
 const FALLBACK_LEADERS_HTML = join(
   root,
-  "templates/alan-hirsch/exemplars/exemplar-landing-general.html"
+  "docs/templates/alan-hirsch/exemplars/exemplar-landing-general.html"
 );
 const SITE_THEME = join(root, "docs/html/site-templates/site-theme.css");
 const SITE_SHELL = join(root, "docs/html/site-templates/site-shell.js");
