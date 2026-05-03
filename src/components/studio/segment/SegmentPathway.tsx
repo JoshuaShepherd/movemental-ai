@@ -48,11 +48,33 @@ const commonDeliverables = {
 
 const segmentData = {
   churches: {
-    heroTitle: "The Pathway, tailored for Churches",
-    paragraphs: [
-      "Churches face an AI question their tradition didn't anticipate. The technology is here, the staff has questions, the congregation has opinions, and the elder board needs a position. We help you start where it matters: a charter your leadership can sign, a sandbox where staff can experiment without theological or pastoral risk, eight weeks of formation in AI wisdom for the people who'll lead this for years, and — when you're ready — a digital infrastructure rebuild that integrates your sermon archive, your member care, your formation pathways, and your communications into one coherent intelligence layer.",
-      "Most churches we work with begin at Safety Documentation because the governance question is loudest. Some begin at Sandbox Discovery because the staff is already experimenting and needs a structured environment. The Pathway works either way.",
-    ],
+    hero: {
+      h1: "Your church is being asked to take a position on AI.",
+      subhead:
+        "Most churches don’t have a clean answer yet. The Movemental AI Path is a four-step sequence — Safety Documentation, Sandbox Discovery, Skills Development, Solutions Deployment — designed so AI lands on a church that’s ready for it, instead of amplifying problems that were already there.",
+      nonNegotiable:
+        "Step 1 is the human work. We won’t build solutions on top of a church that hasn’t done it — ours or yours.",
+      cards: [
+        {
+          heading: "Our board is asking and we need a position.",
+          body: "Start with Step 1: Safety Documentation. A 14-document governance package drafted in two weeks, ratified in your voice.",
+          cta: "Start with Safety Documentation",
+          href: "/pathway/foundations",
+        },
+        {
+          heading: "Our staff is already experimenting and we need a framework.",
+          body: "Start with Step 2: Sandbox Discovery. A structured environment where your team identifies what’s worth building and what isn’t.",
+          cta: "Start with Sandbox Discovery",
+          href: "/pathway/lab",
+        },
+        {
+          heading: "We’re ready to rebuild our digital infrastructure.",
+          body: "Start a conversation about Step 4: Solutions Deployment. We’ll confirm your Safety Documentation is in place — ours or yours — before we build.",
+          cta: "Talk about Solutions Deployment",
+          href: "/contact?interest=solutions-deployment-churches",
+        },
+      ],
+    },
     stops: [
       {
         num: "01",
@@ -102,16 +124,38 @@ const segmentData = {
       },
       {
         q: "Do we have to do all four stages?",
-        a: "No. Most begin at Foundations or Lab. Many continue. None are forced.",
+        a: "No. Many continue; none are forced.",
       },
     ],
   },
   nonprofits: {
-    heroTitle: "The Pathway, tailored for Nonprofits",
-    paragraphs: [
-      "Mission-driven nonprofits face a sharper version of the AI question because the stakes of getting it wrong are personal. Donor data is sacred. Beneficiary data is sacred. Theological or organizational integrity, where it applies, is non-negotiable. We help you start with governance that respects that, move into a Lab where your team can identify the specific use cases that serve your mission rather than warp it, build the AI fluency your staff needs to lead the work themselves, and — when the foundation is ready — integrate the digital infrastructure that lets your mission compound rather than dilute.",
-      "Most nonprofits we work with begin at Safety Documentation because boards want clarity before staff experiments. Some begin at Sandbox Discovery because the executive director is already piloting and needs a structured way to evaluate.",
-    ],
+    hero: {
+      h1: "Your nonprofit can’t afford to get AI wrong.",
+      subhead:
+        "Donor data is sacred. Beneficiary data is sacred. Mission integrity is non-negotiable. The Movemental AI Path is a four-step sequence — Safety Documentation, Sandbox Discovery, Skills Development, Solutions Deployment — designed to protect what matters most while the organization adopts what matters next.",
+      nonNegotiable:
+        "Step 1 is the human work. We won’t build solutions on top of a nonprofit that hasn’t done it — ours or yours.",
+      cards: [
+        {
+          heading: "Our board wants clarity before our staff goes further.",
+          body: "Start with Step 1: Safety Documentation. A governance package built around your mission, your data, and your beneficiaries — drafted in two weeks.",
+          cta: "Start with Safety Documentation",
+          href: "/pathway/foundations",
+        },
+        {
+          heading: "We have ideas. We need a way to evaluate them honestly.",
+          body: "Start with Step 2: Sandbox Discovery. Structured discovery that surfaces real opportunities and names real risks — before you commit to any tool.",
+          cta: "Start with Sandbox Discovery",
+          href: "/pathway/lab",
+        },
+        {
+          heading: "We’re ready to integrate the work we already have.",
+          body: "Start a conversation about Step 4: Solutions Deployment. We’ll confirm your Safety Documentation is in place — ours or yours — before we build.",
+          cta: "Talk about Solutions Deployment",
+          href: "/contact?interest=solutions-deployment-nonprofits",
+        },
+      ],
+    },
     stops: [
       {
         num: "01",
@@ -166,11 +210,33 @@ const segmentData = {
     ],
   },
   institutions: {
-    heroTitle: "The Pathway, tailored for Institutions",
-    paragraphs: [
-      "Seminaries, training networks, and denominational bodies face the AI question on two timelines simultaneously: their own institutional adoption, and what they teach the next generation of leaders about AI. We help you address both — governance for your institution, a Lab that doubles as a learning artifact for your students or member organizations, AI fluency formation that you can extend to your network, and a Build engagement that integrates your training material, your member-org relationships, and your scholarly output into a multiplied intelligence layer.",
-      "Institutions typically benefit most from the full Pathway, because the same architecture you adopt internally becomes the architecture you can teach. Many of our institutional clients also become referral partners for the churches and nonprofits in their network.",
-    ],
+    hero: {
+      h1: "Your institution is being asked to lead on AI — internally and externally.",
+      subhead:
+        "Seminaries, training networks, and denominational bodies face the AI question twice — for their own institution, and for the leaders they’re forming. The Movemental AI Path is a four-step sequence — Safety Documentation, Sandbox Discovery, Skills Development, Solutions Deployment — designed to address both at once.",
+      nonNegotiable:
+        "Step 1 is the human work. We won’t build solutions on top of an institution that hasn’t done it — ours or yours.",
+      cards: [
+        {
+          heading: "We need an institutional position and a teachable framework.",
+          body: "Start with Step 1: Safety Documentation. A charter that governs your institution and serves as a teaching artifact for the leaders and organizations you serve.",
+          cta: "Start with Safety Documentation",
+          href: "/pathway/foundations",
+        },
+        {
+          heading: "We want a Lab that doubles as a learning case study.",
+          body: "Start with Step 2: Sandbox Discovery. Structured discovery that produces both internal use cases and a published artifact you can extend to your network.",
+          cta: "Start with Sandbox Discovery",
+          href: "/pathway/lab",
+        },
+        {
+          heading: "We’re ready to rebuild our infrastructure and connect our network.",
+          body: "Start a conversation about Step 4: Solutions Deployment, including network deployment across member entities. We’ll confirm your Safety Documentation is in place — ours or yours — before we build.",
+          cta: "Talk about Solutions Deployment",
+          href: "/contact?interest=network-engagement",
+        },
+      ],
+    },
     stops: [
       {
         num: "01",
@@ -280,17 +346,34 @@ export function SegmentPathway({ audience }: SegmentPathwayProps) {
       <section className="band-default border-border border-b pt-24 pb-12 md:pt-32">
         <Container>
           <Reveal>
-            <h1 className="font-serif-display mb-8 max-w-4xl text-4xl text-foreground italic md:text-5xl lg:text-6xl">
-              {data.heroTitle}
+            <h1 className="font-serif-display mb-6 max-w-4xl text-4xl text-foreground italic md:text-5xl lg:text-6xl">
+              {data.hero.h1}
             </h1>
-            <div className="mb-12 max-w-4xl space-y-6 text-lg leading-relaxed text-foreground/80 md:text-xl">
-              {data.paragraphs.map((p, i) => (
-                <p key={i}>{p}</p>
+            <p className="mb-6 max-w-4xl text-lg leading-relaxed text-foreground/80 md:text-xl">
+              {data.hero.subhead}
+            </p>
+            <p className="mb-12 max-w-4xl text-base text-muted-foreground italic">
+              {data.hero.nonNegotiable}
+            </p>
+
+            <div className="mb-16 grid gap-6 md:grid-cols-3">
+              {data.hero.cards.map((card, i) => (
+                <div
+                  key={i}
+                  className="bg-card border-border hover:border-primary/40 flex flex-col rounded-2xl border p-8 transition-colors"
+                >
+                  <h2 className="mb-4 text-lg font-semibold leading-snug text-foreground md:text-xl">
+                    {card.heading}
+                  </h2>
+                  <p className="text-muted-foreground mb-6 grow text-[1.0625rem] leading-relaxed">{card.body}</p>
+                  <Link
+                    href={card.href}
+                    className="text-primary mt-auto inline-flex items-center text-sm font-semibold transition-opacity hover:opacity-80"
+                  >
+                    {card.cta} <ArrowUpRight className="ml-1 h-3 w-3" aria-hidden="true" />
+                  </Link>
+                </div>
               ))}
-            </div>
-            <div className="mb-16 max-w-4xl text-sm text-muted-foreground italic">
-              Most organizations enter at Foundations or Lab. The order matters; the entry point depends on where you
-              already are.
             </div>
 
             <div className="bg-section border-border mx-auto mb-8 max-w-6xl rounded-2xl border p-8 md:p-10">
