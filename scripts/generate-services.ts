@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+import { extractPgTableVarNames } from "./extract-schema-pg-tables";
 
 /**
  * Generates a service file for each Drizzle table that extends SimplifiedService.
@@ -11,12 +12,9 @@ const outputDir = path.join(__dirname, "..", "src", "lib", "services", "simplifi
 
 const schemaContent = fs.readFileSync(schemaPath, "utf-8");
 
-const tableRegex = /export const (\w+) = pgTable\("(\w+)"/g;
-const tables: { varName: string; tableName: string }[] = [];
-let match: RegExpExecArray | null;
-while ((match = tableRegex.exec(schemaContent)) !== null) {
-  tables.push({ varName: match[1], tableName: match[2] });
-}
+const tables = extractPgTableVarNames(schemaContent).map((varName) => ({
+  varName,
+}));
 
 function toPascalCase(s: string): string {
   return s.charAt(0).toUpperCase() + s.slice(1);

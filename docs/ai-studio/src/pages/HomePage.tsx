@@ -75,9 +75,6 @@ function PathwayFold() {
           <PathwayComponent stops={homePathwayStops} />
           
           <div className="mt-8 flex flex-col md:flex-row items-baseline justify-between gap-4">
-            <div className="text-[1.0625rem] text-muted-foreground italic">
-              Most organizations enter at Foundations or Lab. The order matters; the entry point depends on where you already are.
-            </div>
             <div className="text-sm text-foreground/70 bg-background/50 px-4 py-2 rounded-md">
               Timelines reflect agentic-native delivery. Traditional consultancies quote 3 to 6 times longer for comparable scope.
             </div>

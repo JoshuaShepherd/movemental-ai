@@ -1,5 +1,5 @@
 // Auto-generated service index
-// Generated at: 2026-04-13T06:52:23.199Z
+// Generated at: 2026-05-03T05:38:57.307Z
 // Do not edit manually - regenerate with: pnpm generate:services
 
 export { SimplifiedService } from "./base.service";
@@ -114,6 +114,10 @@ export * from "./lesson-progress.service";
 export * from "./media-items.service";
 export * from "./media-usage-tracking.service";
 export * from "./neighborhood-exegesis-entries.service";
+export * from "./book-email-subscribers.service";
+export * from "./book-margin-notes.service";
+export * from "./book-revisions.service";
+export * from "./book-endorsements.service";
 export * from "./newsletter-subscribers.service";
 export * from "./notebook-artifacts.service";
 export * from "./notebook-conversations.service";
@@ -174,3 +178,9 @@ export * from "./writing-interactions.service";
 export * from "./writing-session-feedback.service";
 export * from "./writing-sessions.service";
 export * from "./writing-style-preferences.service";
+export * from "./contact-submissions.service";
+export * from "./leader-applications.service";
+export * from "./organization-inquiries.service";
+export * from "./assessment-results.service";
+export * from "./system-readiness-assessments.service";
+export * from "./dual-intelligence-assessments.service";

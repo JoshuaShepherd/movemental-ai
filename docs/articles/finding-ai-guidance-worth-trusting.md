@@ -2,9 +2,11 @@
 title: "Finding AI Guidance Worth Trusting"
 slug: finding-ai-guidance-worth-trusting
 shape: canon
+canon_section: moment
+canon_order: 24
 author: Josh Shepherd
 audience: [any]
-topics: [ai-posture, trust, guidance, discernment]
+topics: [ai-posture, ai-credibility, integrity]
 featured: true
 ---
 

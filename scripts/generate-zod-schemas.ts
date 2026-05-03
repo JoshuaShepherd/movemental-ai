@@ -11,12 +11,18 @@ const outputPath = path.join(__dirname, "..", "src", "lib", "schemas", "index.ts
 
 const schemaContent = fs.readFileSync(schemaPath, "utf-8");
 
-// Extract all: export const varName = pgTable("table_name", { ... and export const varName: Type = pgTable("table_name",
-const tableRegex = /export const (\w+)\s*(?::\s*[^=]+)?\s*=\s*pgTable\("(\w+)"/g;
+// Extract all pgTable exports. Table SQL name may start on the next line after `pgTable(`.
+const tableDeclRegex =
+  /export const (\w+)\s*(?::\s*[^=]+)?\s*=\s*pgTable\s*\(\s*/g;
 const tables: { varName: string; tableName: string }[] = [];
 let match: RegExpExecArray | null;
-while ((match = tableRegex.exec(schemaContent)) !== null) {
-  tables.push({ varName: match[1], tableName: match[2] });
+while ((match = tableDeclRegex.exec(schemaContent)) !== null) {
+  const varName = match[1];
+  const afterOpen = match.index + match[0].length;
+  const tail = schemaContent.slice(afterOpen);
+  const nameMatch = tail.match(/^["']([^"']+)["']/);
+  const tableName = nameMatch ? nameMatch[1] : varName;
+  tables.push({ varName, tableName });
 }
 
 console.log(`Found ${tables.length} tables in schema.ts`);

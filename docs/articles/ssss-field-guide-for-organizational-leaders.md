@@ -4,7 +4,7 @@ slug: ssss-field-guide-for-organizational-leaders
 shape: field-guide
 author: Josh Shepherd
 audience: [leader, nonprofit, church, institution]
-topics: [ai-stewardship-sequence]
+topics: [ssss]
 featured: true
 ---
 > **How this pairs with the book:** This guide is the **operating sequence** — the AI Stewardship Sequence: Safety, Sandbox, Skills, Solutions — for adopting AI without skipping trust. The book *[From Fragmentation to Movement](/book)* (free, in progress) is the **long thesis**: two intelligences, the fragmentation tax, the **six-stage** map, and why **integration** is the hinge where the arc turns. Read the book for the arc; use this guide when you need the sequence in a room.

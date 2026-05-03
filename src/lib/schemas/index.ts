@@ -1,5 +1,5 @@
 // Auto-generated Zod schemas from Drizzle schema
-// Generated at: 2026-04-13T14:09:03.621Z
+// Generated at: 2026-05-03T05:38:26.806Z
 // Do not edit manually - regenerate with: pnpm generate:schemas
 
 import { z } from "zod";
@@ -183,6 +183,7 @@ import {
   organizationInquiries,
   assessmentResults,
   systemReadinessAssessments,
+  dualIntelligenceAssessments,
   integrityDiagnosticSubmissions,
 } from "@/lib/db/schema";
 
@@ -2638,12 +2639,26 @@ export type SystemReadinessAssessmentsCreate = z.infer<typeof SystemReadinessAss
 export type SystemReadinessAssessmentsUpdate = z.infer<typeof SystemReadinessAssessmentsUpdateSchema>;
 export type SystemReadinessAssessmentsFilters = z.infer<typeof SystemReadinessAssessmentsFiltersSchema>;
 
+// DualIntelligenceAssessments
+export const DualIntelligenceAssessmentsSelectSchema = createSelectSchema(dualIntelligenceAssessments);
+export const DualIntelligenceAssessmentsInsertSchema = createInsertSchema(dualIntelligenceAssessments);
+export const DualIntelligenceAssessmentsUpdateSchema = createUpdateSchema(dualIntelligenceAssessments);
+export const DualIntelligenceAssessmentsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type DualIntelligenceAssessments = z.infer<typeof DualIntelligenceAssessmentsSelectSchema>;
+export type DualIntelligenceAssessmentsCreate = z.infer<typeof DualIntelligenceAssessmentsInsertSchema>;
+export type DualIntelligenceAssessmentsUpdate = z.infer<typeof DualIntelligenceAssessmentsUpdateSchema>;
+export type DualIntelligenceAssessmentsFilters = z.infer<typeof DualIntelligenceAssessmentsFiltersSchema>;
+
 // IntegrityDiagnosticSubmissions
 export const IntegrityDiagnosticSubmissionsSelectSchema = createSelectSchema(integrityDiagnosticSubmissions);
 export const IntegrityDiagnosticSubmissionsInsertSchema = createInsertSchema(integrityDiagnosticSubmissions);
 export const IntegrityDiagnosticSubmissionsUpdateSchema = createUpdateSchema(integrityDiagnosticSubmissions);
 export const IntegrityDiagnosticSubmissionsFiltersSchema = BaseFiltersSchema.extend({
   id: z.string().uuid().optional(),
+  status: z.string().optional(),
 });
 
 export type IntegrityDiagnosticSubmissions = z.infer<typeof IntegrityDiagnosticSubmissionsSelectSchema>;

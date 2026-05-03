@@ -1,5 +1,5 @@
 // Auto-generated hooks index
-// Generated at: 2026-04-13T06:52:32.664Z
+// Generated at: 2026-05-03T05:39:29.423Z
 // Do not edit manually - regenerate with: pnpm generate:hooks
 
 export { buildQueryString } from "./query-utils";
@@ -112,6 +112,10 @@ export * from "./lesson-progress.hooks";
 export * from "./media-items.hooks";
 export * from "./media-usage-tracking.hooks";
 export * from "./neighborhood-exegesis-entries.hooks";
+export * from "./book-email-subscribers.hooks";
+export * from "./book-margin-notes.hooks";
+export * from "./book-revisions.hooks";
+export * from "./book-endorsements.hooks";
 export * from "./newsletter-subscribers.hooks";
 export * from "./notebook-artifacts.hooks";
 export * from "./notebook-conversations.hooks";
@@ -172,3 +176,10 @@ export * from "./writing-interactions.hooks";
 export * from "./writing-session-feedback.hooks";
 export * from "./writing-sessions.hooks";
 export * from "./writing-style-preferences.hooks";
+export * from "./contact-submissions.hooks";
+export * from "./leader-applications.hooks";
+export * from "./organization-inquiries.hooks";
+export * from "./assessment-results.hooks";
+export * from "./system-readiness-assessments.hooks";
+export * from "./dual-intelligence-assessments.hooks";
+export * from "./integrity-diagnostic-submissions.hooks";

@@ -1,4 +1,8 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+} from "@tanstack/react-query";
 import type {
   SystemReadinessAssessments,
   SystemReadinessAssessmentsCreate,
@@ -7,14 +11,17 @@ import type {
 } from "@/lib/schemas";
 import { buildQueryString } from "./query-utils";
 
+// ---- Query Keys ----
+
 export const systemReadinessAssessmentsKeys = {
   all: ["systemReadinessAssessments"] as const,
   lists: () => [...systemReadinessAssessmentsKeys.all, "list"] as const,
-  list: (filters?: SystemReadinessAssessmentsFilters) =>
-    [...systemReadinessAssessmentsKeys.lists(), filters] as const,
+  list: (filters?: SystemReadinessAssessmentsFilters) => [...systemReadinessAssessmentsKeys.lists(), filters] as const,
   details: () => [...systemReadinessAssessmentsKeys.all, "detail"] as const,
   detail: (id: string) => [...systemReadinessAssessmentsKeys.details(), id] as const,
 };
+
+// ---- Fetch Helpers ----
 
 async function fetchApi<T>(url: string, options?: RequestInit): Promise<T> {
   const res = await fetch(url, options);
@@ -25,13 +32,13 @@ async function fetchApi<T>(url: string, options?: RequestInit): Promise<T> {
   return json.data;
 }
 
+// ---- Hooks ----
+
 export function useSystemReadinessAssessmentsList(filters?: SystemReadinessAssessmentsFilters) {
   return useQuery({
     queryKey: systemReadinessAssessmentsKeys.list(filters),
     queryFn: () =>
-      fetchApi<SystemReadinessAssessments[]>(
-        `/api/simplified/system-readiness-assessments${buildQueryString(filters)}`,
-      ),
+      fetchApi<SystemReadinessAssessments[]>(`/api/simplified/system-readiness-assessments${buildQueryString(filters)}`),
   });
 }
 

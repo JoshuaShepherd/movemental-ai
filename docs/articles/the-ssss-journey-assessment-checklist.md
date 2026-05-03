@@ -4,7 +4,7 @@ slug: the-ssss-journey-assessment-checklist
 shape: methodology
 author: Josh Shepherd
 audience: [leader]
-topics: [ai-stewardship-sequence]
+topics: [ssss]
 ---
 # The AI Stewardship Sequence as Operational Infrastructure
 

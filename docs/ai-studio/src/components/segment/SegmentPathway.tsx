@@ -160,9 +160,6 @@ export function SegmentPathway({ audience }: SegmentPathwayProps) {
                 <p key={i}>{p}</p>
               ))}
             </div>
-            <div className="text-sm text-muted-foreground italic mb-16 max-w-4xl">
-              Most organizations enter at Foundations or Lab. The order matters; the entry point depends on where you already are.
-            </div>
 
             {/* Deliverables Above the Fold */}
             <div className="mt-12 bg-section border border-border rounded-2xl p-8 md:p-10 mb-8 max-w-6xl mx-auto">

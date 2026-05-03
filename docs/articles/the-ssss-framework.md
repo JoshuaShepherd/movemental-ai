@@ -6,7 +6,7 @@ canon_section: path
 canon_order: 12
 author: Josh Shepherd
 audience: [any]
-topics: [ai-stewardship-sequence]
+topics: [ssss]
 ---
 # The AI Stewardship Sequence
 

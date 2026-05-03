@@ -1,46 +1,6 @@
-import * as fs from "fs";
-import * as path from "path";
-import { extractPgTableVarNames } from "./extract-schema-pg-tables";
-
-/**
- * Generates API route files for each entity.
- * Output: src/app/api/simplified/<kebab-entity>/route.ts
- */
-
-const schemaPath = path.join(__dirname, "..", "src", "lib", "db", "schema.ts");
-const outputBase = path.join(__dirname, "..", "src", "app", "api", "simplified");
-
-const schemaContent = fs.readFileSync(schemaPath, "utf-8");
-
-const tables = extractPgTableVarNames(schemaContent).map((varName) => ({
-  varName,
-}));
-
-function toPascalCase(s: string): string {
-  return s.charAt(0).toUpperCase() + s.slice(1);
-}
-
-function toKebabCase(s: string): string {
-  return s.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
-}
-
-let count = 0;
-
-for (const { varName } of tables) {
-  const pascal = toPascalCase(varName);
-  const kebab = toKebabCase(varName);
-  const serviceKebab = kebab;
-
-  const routeDir = path.join(outputBase, kebab);
-  if (!fs.existsSync(routeDir)) {
-    fs.mkdirSync(routeDir, { recursive: true });
-  }
-
-  const routeFile = path.join(routeDir, "route.ts");
-
-  const content = `import { NextRequest, NextResponse } from "next/server";
-import { ${varName}Service } from "@/lib/services/simplified/${serviceKebab}.service";
-import { ${pascal}InsertSchema, ${pascal}UpdateSchema, ${pascal}FiltersSchema } from "@/lib/schemas";
+import { NextRequest, NextResponse } from "next/server";
+import { dualIntelligenceAssessmentsService } from "@/lib/services/simplified/dual-intelligence-assessments.service";
+import { DualIntelligenceAssessmentsInsertSchema, DualIntelligenceAssessmentsUpdateSchema, DualIntelligenceAssessmentsFiltersSchema } from "@/lib/schemas";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -49,7 +9,7 @@ export async function GET(request: NextRequest) {
     rawFilters[key] = value;
   });
 
-  const parsed = ${pascal}FiltersSchema.safeParse({
+  const parsed = DualIntelligenceAssessmentsFiltersSchema.safeParse({
     ...rawFilters,
     limit: rawFilters.limit ? Number(rawFilters.limit) : undefined,
     offset: rawFilters.offset ? Number(rawFilters.offset) : undefined,
@@ -62,7 +22,7 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  const result = await ${varName}Service.list(parsed.data);
+  const result = await dualIntelligenceAssessmentsService.list(parsed.data);
   if (!result.success) {
     return NextResponse.json({ error: result.error }, { status: 500 });
   }
@@ -80,7 +40,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const parsed = ${pascal}InsertSchema.safeParse(body);
+  const parsed = DualIntelligenceAssessmentsInsertSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
       { error: { code: "VALIDATION_ERROR", message: parsed.error.message } },
@@ -88,7 +48,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const result = await ${varName}Service.create(parsed.data);
+  const result = await dualIntelligenceAssessmentsService.create(parsed.data);
   if (!result.success) {
     return NextResponse.json({ error: result.error }, { status: 500 });
   }
@@ -114,7 +74,7 @@ export async function PATCH(request: NextRequest) {
     );
   }
 
-  const parsed = ${pascal}UpdateSchema.safeParse(updateData);
+  const parsed = DualIntelligenceAssessmentsUpdateSchema.safeParse(updateData);
   if (!parsed.success) {
     return NextResponse.json(
       { error: { code: "VALIDATION_ERROR", message: parsed.error.message } },
@@ -122,7 +82,7 @@ export async function PATCH(request: NextRequest) {
     );
   }
 
-  const result = await ${varName}Service.update(id, parsed.data);
+  const result = await dualIntelligenceAssessmentsService.update(id, parsed.data);
   if (!result.success) {
     const status = result.error.code === "NOT_FOUND" ? 404 : 500;
     return NextResponse.json({ error: result.error }, { status });
@@ -141,17 +101,10 @@ export async function DELETE(request: NextRequest) {
     );
   }
 
-  const result = await ${varName}Service.delete(id);
+  const result = await dualIntelligenceAssessmentsService.delete(id);
   if (!result.success) {
     const status = result.error.code === "NOT_FOUND" ? 404 : 500;
     return NextResponse.json({ error: result.error }, { status });
   }
   return new NextResponse(null, { status: 204 });
 }
-`;
-
-  fs.writeFileSync(routeFile, content);
-  count++;
-}
-
-console.log(`Generated ${count} API route files in ${outputBase}`);

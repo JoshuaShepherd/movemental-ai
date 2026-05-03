@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+import { extractPgTableVarNames } from "./extract-schema-pg-tables";
 
 /**
  * Generates React Query hooks for each entity.
@@ -11,12 +12,9 @@ const outputDir = path.join(__dirname, "..", "src", "hooks", "simplified");
 
 const schemaContent = fs.readFileSync(schemaPath, "utf-8");
 
-const tableRegex = /export const (\w+) = pgTable\("(\w+)"/g;
-const tables: { varName: string }[] = [];
-let match: RegExpExecArray | null;
-while ((match = tableRegex.exec(schemaContent)) !== null) {
-  tables.push({ varName: match[1] });
-}
+const tables = extractPgTableVarNames(schemaContent).map((varName) => ({
+  varName,
+}));
 
 function toPascalCase(s: string): string {
   return s.charAt(0).toUpperCase() + s.slice(1);

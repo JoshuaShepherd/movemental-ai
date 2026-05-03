@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { systemReadinessAssessmentsService } from "@/lib/services/simplified/system-readiness-assessments.service";
-import {
-  SystemReadinessAssessmentsInsertSchema,
-  SystemReadinessAssessmentsUpdateSchema,
-  SystemReadinessAssessmentsFiltersSchema,
-} from "@/lib/schemas";
+import { SystemReadinessAssessmentsInsertSchema, SystemReadinessAssessmentsUpdateSchema, SystemReadinessAssessmentsFiltersSchema } from "@/lib/schemas";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
