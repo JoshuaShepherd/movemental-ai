@@ -21,6 +21,9 @@
     "reader:serve": "python3 -m http.server 8765 -d docs",
     "env:local-from-shared": "node scripts/merge-env-local-from-shared.mjs",
     "vercel:env:sync": "node scripts/sync-vercel-env-from-shared.mjs",
+    "vercel:link": "vercel link",
+    "vercel:git:connect": "vercel git connect --yes",
+    "vercel:pull": "vercel env pull .env.local --yes",
     "db:check": "tsx scripts/validate-db-alignment.ts",
     "contracts:check": "tsx scripts/validate-semantic-alignment.ts",
     "services:check": "tsx scripts/validate-services-alignment.ts",
@@ -102,6 +105,7 @@
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "typescript": "^5",
+    "vercel": "^53.1.0",
     "vitest": "^4.1.4"
   }
 }
