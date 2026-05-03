@@ -24,6 +24,7 @@
     "vercel:link": "vercel link",
     "vercel:git:connect": "vercel git connect --yes",
     "vercel:pull": "vercel env pull .env.local --yes",
+    "env:vercel:pull-all": "vercel env pull .env.vercel.production --environment production --yes && vercel env pull .env.vercel.preview --environment preview --yes && vercel env pull .env.vercel.development --environment development --yes && node scripts/sync-env-local-from-vercel-pulls.mjs",
     "db:check": "tsx scripts/validate-db-alignment.ts",
     "contracts:check": "tsx scripts/validate-semantic-alignment.ts",
     "services:check": "tsx scripts/validate-services-alignment.ts",
