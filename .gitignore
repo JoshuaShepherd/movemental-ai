@@ -64,3 +64,5 @@ next-env.d.ts
 
 # Large local PDF text extracts (regenerate with pypdf if needed)
 /docs/movement_leader_research/jr-woodward/_extracted/
+
+.env*.local
