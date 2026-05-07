@@ -199,7 +199,7 @@ export function FaqPage() {
               Clarity is the antidote to anxiety. Here are the questions we hear constantly from leaders sitting exactly where you are.
             </p>
             <div className="hero-actions flex flex-wrap gap-4">
-              <Link href="/contact" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Talk With Us</Link>
+              <Link href="/contact" className="btn-pill btn-pill--primary">Talk With Us</Link>
               <Link href="/path" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Read the Path</Link>
             </div>
           </Reveal>
@@ -261,7 +261,7 @@ export function FaqPage() {
               Then it is exactly the <em dangerouslySetInnerHTML={{__html: 'call we want.'}} /> Talk to us to find clarity.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Talk With Us</Link>
+              <Link href="/contact" className="btn-pill btn-pill--primary">Talk With Us</Link>
               <Link href="/start-with-safety" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Start with Safety</Link>
             </div>
           </Reveal>

@@ -23,7 +23,7 @@ export function SafetyContent() {
             ))}
           </ul>
           
-          <details className="group [&_summary::-webkit-details-marker]:hidden border border-border rounded-xl bg-card overflow-hidden">
+          <details className="group [&_summary::-webkit-details-marker]:hidden border border-border rounded-card bg-card overflow-hidden">
             <summary className="flex cursor-pointer items-center justify-between p-6 text-foreground font-semibold hover:bg-muted/50 transition-colors">
               <span className="flex items-center gap-4">
                 <span>View full 14-item checklist</span>

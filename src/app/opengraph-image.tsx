@@ -15,8 +15,8 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 72,
-          background: "linear-gradient(145deg, #0f1419 0%, #1a2229 48%, #0f1419 100%)",
-          color: "#f4f6f8",
+          background: "linear-gradient(145deg, #141110 0%, #1b1714 48%, #141110 100%)",
+          color: "#f4efe5",
           fontFamily:
             'ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
         }}
@@ -27,7 +27,7 @@ export default function OpengraphImage() {
               fontSize: 26,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
-              color: "rgba(244,246,248,0.55)",
+              color: "rgba(244,239,229,0.55)",
               fontWeight: 600,
             }}
           >
@@ -43,7 +43,7 @@ export default function OpengraphImage() {
             alignItems: "center",
             justifyContent: "space-between",
             fontSize: 24,
-            color: "rgba(244,246,248,0.65)",
+            color: "rgba(244,239,229,0.65)",
           }}
         >
           <span>movemental.com</span>

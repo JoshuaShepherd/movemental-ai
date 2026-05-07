@@ -240,7 +240,7 @@ export function LibraryPage() {
                   <Reveal key={item.id} delay={i * 50}>
                     <Link href="#" className="group flex flex-col h-full bg-card border border-border rounded-xl overflow-hidden hover:border-primary/40 transition-all duration-300 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset">
                       <div className={`aspect-[4/3] flex items-center justify-center p-8 ${item.colorClass} relative overflow-hidden`}>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent mix-blend-overlay"></div>
+                        <div className="absolute inset-0 bg-linear-to-t from-foreground/5 to-transparent mix-blend-overlay"></div>
                         <div className="group-hover:scale-125 group-hover:rotate-3 transition-transform duration-700 ease-out z-10">
                           {item.icon}
                         </div>

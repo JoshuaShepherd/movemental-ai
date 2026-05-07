@@ -7,9 +7,9 @@ export function Container({ children, className, width = 'default' }: { children
   return (
     <div className={cn(
       "mx-auto px-4 sm:px-6 lg:px-12 w-full",
-      width === 'default' && "max-w-[1200px]",
-      width === 'narrow' && "max-w-[740px]",
-      width === 'reading' && "max-w-[640px]",
+      width === 'default' && "max-w-max",
+      width === 'narrow' && "max-w-narrow",
+      width === 'reading' && "max-w-(--prose-max)",
       className
     )}>
       {children}

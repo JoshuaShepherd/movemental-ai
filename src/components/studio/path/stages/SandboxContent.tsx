@@ -58,10 +58,10 @@ export function SandboxContent() {
                   <h6 className="font-bold text-foreground mt-0 mb-2">Step 05 — Governance review:</h6>
                   <p className="text-sm mb-4">At the end of the eight weeks, your decision group reviews each use case — its value, and any concerns staff flagged — and assigns one of three lights:</p>
                   
-                  <ul className="list-none p-0 m-0 space-y-3 bg-card border border-border rounded-lg p-5">
-                     <li className="flex gap-4 text-sm"><div className="w-4 h-4 rounded-full bg-emerald-500 mt-0.5 shrink-0" /><span className="leading-tight"><strong className="text-foreground font-semibold">Green light</strong> — Clear value, no concerns. Ready to use across the team.</span></li>
-                     <li className="flex gap-4 text-sm"><div className="w-4 h-4 rounded-full bg-amber-500 mt-0.5 shrink-0" /><span className="leading-tight"><strong className="text-foreground font-semibold">Yellow light</strong> — Real value, but only with specific guardrails — <em dangerouslySetInnerHTML={{ __html: "used this way, and only this way." }} /></span></li>
-                     <li className="flex gap-4 text-sm"><div className="w-4 h-4 rounded-full bg-rose-500 mt-0.5 shrink-0" /><span className="leading-tight"><strong className="text-foreground font-semibold">Red light</strong> — Off the table. Added to the "never" list, alongside the boundaries from Safety.</span></li>
+                  <ul className="list-none m-0 space-y-3 bg-card border border-border rounded-lg p-5">
+                     <li className="flex gap-4 text-sm"><div className="w-4 h-4 rounded-full bg-status-go mt-0.5 shrink-0" /><span className="leading-tight"><strong className="text-foreground font-semibold">Green light</strong> — Clear value, no concerns. Ready to use across the team.</span></li>
+                     <li className="flex gap-4 text-sm"><div className="w-4 h-4 rounded-full bg-status-caution mt-0.5 shrink-0" /><span className="leading-tight"><strong className="text-foreground font-semibold">Yellow light</strong> — Real value, but only with specific guardrails — <em dangerouslySetInnerHTML={{ __html: "used this way, and only this way." }} /></span></li>
+                     <li className="flex gap-4 text-sm"><div className="w-4 h-4 rounded-full bg-status-stop mt-0.5 shrink-0" /><span className="leading-tight"><strong className="text-foreground font-semibold">Red light</strong> — Off the table. Added to the "never" list, alongside the boundaries from Safety.</span></li>
                   </ul>
                 </div>
              </div>

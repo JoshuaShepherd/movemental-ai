@@ -24,7 +24,7 @@ export function EvidencePage() {
               The reality of the moment, the coherence of the system, the work already happening, and the people behind it — without hype, without invented metrics.
             </p>
             <div className="hero-actions flex flex-wrap gap-4">
-              <Link href="/start-with-safety" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Start with Safety</Link>
+              <Link href="/start-with-safety" className="btn-pill btn-pill--primary">Start with Safety</Link>
               <Link href="/contact" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Talk With Us</Link>
             </div>
           </Reveal>
@@ -195,7 +195,7 @@ export function EvidencePage() {
               Clear. Sequenced. Missional.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/start-with-safety" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Start with Safety</Link>
+              <Link href="/start-with-safety" className="btn-pill btn-pill--primary">Start with Safety</Link>
               <Link href="/contact" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Talk With Us</Link>
             </div>
           </Reveal>

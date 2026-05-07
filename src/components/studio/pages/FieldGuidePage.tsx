@@ -332,7 +332,7 @@ export function FieldGuidePage() {
               The framework works best when guided by practitioners who understand the nuance of missional spaces.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Start a conversation</Link>
+              <Link href="/contact" className="btn-pill btn-pill--primary">Start a conversation</Link>
               <Link href="/voices" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">See trusted voices</Link>
             </div>
           </Reveal>

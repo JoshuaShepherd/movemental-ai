@@ -24,7 +24,7 @@ export function WorkWithUsPage() {
               Move beyond scattered policy conversations and fragmented tool adoption. Build real capability across your leadership.
             </p>
             <div className="hero-actions flex flex-wrap gap-4">
-              <Link href="/contact" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Talk With Us</Link>
+              <Link href="/contact" className="btn-pill btn-pill--primary">Talk With Us</Link>
               <Link href="/start-with-safety" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Start with Safety</Link>
             </div>
           </Reveal>
@@ -283,7 +283,7 @@ export function WorkWithUsPage() {
               Start the conversation. Let's find your baseline.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Talk With Us</Link>
+              <Link href="/contact" className="btn-pill btn-pill--primary">Talk With Us</Link>
               <Link href="/start-with-safety" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Start with Safety</Link>
             </div>
           </Reveal>

@@ -138,16 +138,16 @@ export function TechnologyPage() {
                   </p>
                 </div>
               </div>
-              <div className="bg-background/5 border border-white/10 p-8 rounded-2xl">
+              <div className="bg-background/5 border border-background/10 p-8 rounded-2xl">
                 <table className="w-full text-sm text-left align-top">
                   <thead>
-                    <tr className="border-b border-white/10">
+                    <tr className="border-b border-background/10">
                       <th className="py-3 font-medium text-background/50">Phase</th>
                       <th className="py-3 font-medium text-background/50">What happens</th>
                       <th className="py-3 font-medium text-background/50 text-right">Typical timing</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-white/10 text-background/90">
+                  <tbody className="divide-y divide-background/10 text-background/90">
                     {buildPhases.map((b, i) => (
                       <tr key={i}>
                         <td className="py-4 pr-4 font-semibold">{b.phase}</td>
@@ -157,7 +157,7 @@ export function TechnologyPage() {
                     ))}
                   </tbody>
                 </table>
-                <div className="mt-6 text-center text-xs text-background/50 italic border-t border-white/10 pt-4">Standard 8-to-12-week build. Network Engagements scale by scope.</div>
+                <div className="mt-6 text-center text-xs text-background/50 italic border-t border-background/10 pt-4">Standard 8-to-12-week build. Network Engagements scale by scope.</div>
               </div>
             </div>
           </Reveal>

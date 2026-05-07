@@ -14,11 +14,8 @@ import { StageDetail } from "../StageDetail";
  * Renders: pact intro + 2 rules → italic-serif bridge → 5-step process →
  * 3-up green/yellow/red traffic lights → italic-serif outcome.
  *
- * Note on the dot colors: `bg-[#6b7e3f]`, `bg-[#b89033]`, `bg-[#9c2d20]`
- * are the only raw hex values allowed in this file because they encode
- * semantic green / yellow / red status indicators per DESIGN.md and the
- * source mockup. Token surface intentionally does not expose these as
- * named utilities.
+ * Status dot colors come from the semantic --color-status-{go,caution,stop}
+ * tokens defined in globals.css (warm Concept Modern signal palette).
  */
 export function SandboxContent() {
   return (
@@ -91,13 +88,12 @@ export function SandboxContent() {
               {i === sandboxSteps.length - 1 && (
                 <div className="mt-5 pt-3.5 border-t border-dashed border-border">
                   {sandboxLights.map((light) => {
-                    // Semantic status colors — see component docblock above.
                     const dot =
                       light.tone === "green"
-                        ? "bg-[#6b7e3f]"
+                        ? "bg-status-go"
                         : light.tone === "yellow"
-                          ? "bg-[#b89033]"
-                          : "bg-[#9c2d20]";
+                          ? "bg-status-caution"
+                          : "bg-status-stop";
                     return (
                       <div
                         key={light.tone}

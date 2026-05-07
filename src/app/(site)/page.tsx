@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { HomePage as StudioHomePage } from "@/components/studio/pages/HomePage";
+import { HomeContent } from "@/components/sections-mock/home/home-content";
 
 export const metadata: Metadata = {
   title: "A wiser way to navigate AI",
@@ -9,6 +9,6 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <StudioHomePage />
+    <HomeContent />
   );
 }

@@ -657,7 +657,7 @@ export function IvSvgHubNode({
           cx={cx - r * 0.3}
           cy={cy - r * 0.3}
           r={r * 0.25}
-          className="fill-white/40"
+          className="fill-primary-foreground/40"
         />
       ) : null}
     </g>

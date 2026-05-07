@@ -196,7 +196,7 @@ export function AssessPage() {
               Two or three colleagues in the room. No score. A six-page read-back inside a week, read with you on a thirty-minute call.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="#begin" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Take the diagnostic</a>
+              <a href="#begin" className="btn-pill btn-pill--primary">Take the diagnostic</a>
               <Link href="/contact" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Start a conversation first</Link>
             </div>
           </Reveal>

@@ -65,6 +65,13 @@
   --color-inverse-muted: var(--inverse-muted);
   --color-inverse-border: var(--inverse-border);
 
+  /* Status — go / caution / stop signals (e.g. Sandbox green/yellow/red lights).
+     Warm Concept Modern signals — desaturated to live next to cream paper and
+     ink without competing with the duotone register. Theme-stable. */
+  --color-status-go: #6b7e3f;
+  --color-status-caution: #b89033;
+  --color-status-stop: #9c2d20;
+
   /* Editorial aliases — kept for components that imported the Concept Modern
      token namespace explicitly (bg-editorial-paper, text-editorial-foreground).
      They now resolve to the same base ramp and can be retired over time. */
@@ -153,10 +160,10 @@
   --border: #e6ddcb;                   /* hairline */
   --border-soft: #efe7d6;              /* softer card border */
   --input: #e6ddcb;
-  --ring: rgba(25, 21, 15, 0.2);       /* ink @ 20% */
+  --ring: rgba(25, 21, 15, 0.5);       /* ink @ 50% — clears WCAG 2.4.13 3:1 for focus indicators (3.35:1 on paper) */
   --popover: #ffffff;
   --popover-foreground: #19150f;
-  --outline: #9f978b;
+  --outline: #7e786f;                  /* darkened 2026-05-06 to clear WCAG AA UI 3:1 (prev #9f978b was 2.66:1); matches --ink-soft */
 
   /* Inverse ("Midnight" regional bands — always deep ink + cream, both themes). */
   --inverse-surface: #141110;
@@ -238,7 +245,7 @@
   --border: rgba(244, 239, 229, 0.14);
   --border-soft: rgba(244, 239, 229, 0.08);
   --input: rgba(244, 239, 229, 0.18);
-  --ring: rgba(244, 239, 229, 0.28);
+  --ring: rgba(244, 239, 229, 0.5);    /* cream @ 50% — clears WCAG 2.4.13 3:1 for focus indicators in dark */
   --popover: #211c18;
   --popover-foreground: #f4efe5;
   --outline: rgba(244, 239, 229, 0.42);

@@ -56,7 +56,7 @@ export function ContactPage() {
               You don't need to have a plan yet — just start the conversation.
             </p>
             <div className="hero-actions flex flex-wrap gap-4">
-              <a href="#contact-method" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Send a note</a>
+              <a href="#contact-method" className="btn-pill btn-pill--primary">Send a note</a>
             </div>
           </Reveal>
         </Container>

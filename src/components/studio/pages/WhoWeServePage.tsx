@@ -24,12 +24,12 @@ export function WhoWeServePage() {
               We guide churches, nonprofits, and institutions through the identical AI Stewardship Sequence, mapping it directly to their distinct operational realities.
             </p>
             <div className="hero-actions flex flex-wrap gap-4">
-              <Link href="/field-guide" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Read the field guide</Link>
+              <Link href="/field-guide" className="btn-pill btn-pill--primary">Read the field guide</Link>
               <Link href="/contact" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Start a conversation</Link>
             </div>
             <div className="mt-12 flex items-center gap-3 border-t border-inverse-border/30 pt-6 max-w-2xl">
                <span className="text-inverse-foreground/60 text-sm font-medium uppercase tracking-widest">A note on language:</span>
-               <Link href="/movement-leaders" className="text-inverse-foreground hover:text-white text-sm font-medium hover:underline flex items-center gap-1 group">
+               <Link href="/movement-leaders" className="text-inverse-foreground hover:text-inverse-foreground text-sm font-medium hover:underline flex items-center gap-1 group">
                  See the definition of Movement Leaders
                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                </Link>
@@ -179,7 +179,7 @@ export function WhoWeServePage() {
               The Sequence is the same. <em dangerouslySetInnerHTML={{__html: 'The work is yours.'}} />
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Start a conversation</Link>
+              <Link href="/contact" className="btn-pill btn-pill--primary">Start a conversation</Link>
               <Link href="/assess" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Take the diagnostic</Link>
             </div>
           </Reveal>

@@ -50,7 +50,7 @@ export function CaseStudy({ audience }: { audience: 'churches' | 'nonprofits' | 
              </div>
           </div>
           
-          <details className="group [&_summary::-webkit-details-marker]:hidden border-border bg-card mt-8 overflow-hidden rounded-xl border shadow-ambient" open>
+          <details className="group [&_summary::-webkit-details-marker]:hidden border-border bg-card mt-8 overflow-hidden rounded-card border shadow-ambient" open>
             <summary className="flex cursor-pointer items-center justify-between p-6 md:px-8 text-foreground font-semibold hover:bg-muted/50 transition-colors border-b border-border">
               <span className="text-lg">Read the full case study</span>
                <span className="relative flex h-5 w-5 shrink-0 items-center justify-center">

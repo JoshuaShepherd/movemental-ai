@@ -82,7 +82,7 @@ export function TeamPage() {
               Brad Brisco, Alan Hirsch, and Joshua Shepherd. Movement leadership, missional theology, and the infrastructure to hold both.
             </p>
             <div className="hero-actions flex flex-wrap gap-4">
-              <Link href="/contact" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Start a conversation</Link>
+              <Link href="/contact" className="btn-pill btn-pill--primary">Start a conversation</Link>
               <Link href="/voices" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">See trusted voices</Link>
             </div>
           </Reveal>
@@ -211,7 +211,7 @@ export function TeamPage() {
               A thirty-minute call to see if there is a fit and if the timing is right.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Start a conversation</Link>
+              <Link href="/contact" className="btn-pill btn-pill--primary">Start a conversation</Link>
               <Link href="/field-guide" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Read the field guide</Link>
             </div>
           </Reveal>

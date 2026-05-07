@@ -24,17 +24,17 @@ export function PathFootnote({ audience }: { audience: 'churches' | 'nonprofits'
                 <h4 className="text-xs uppercase tracking-widest font-semibold mb-6 text-inverse-foreground/60">The Path</h4>
                 <ul className="space-y-3 text-sm">
                   {stageMeta.map((s) => (
-                    <li key={s.num}><a href={`#stage-${s.num}`} className="hover:text-primary transition-colors">{s.name}</a></li>
+                    <li key={s.num}><a href={`#stage-${s.num}`} className="hover:text-inverse-foreground transition-colors">{s.name}</a></li>
                   ))}
                 </ul>
               </div>
               <div>
                 <h4 className="text-xs uppercase tracking-widest font-semibold mb-6 text-inverse-foreground/60">Go further</h4>
                 <ul className="space-y-3 text-sm">
-                  <li><Link href="/contact" className="hover:text-primary transition-colors">Start a conversation</Link></li>
-                  <li><a href="#case-study" className="hover:text-primary transition-colors">Read the case study</a></li>
-                  <li><Link href="/path" className="hover:text-primary transition-colors">The full path</Link></li>
-                  <li><Link href="/" className="hover:text-primary transition-colors">Movemental.com</Link></li>
+                  <li><Link href="/contact" className="hover:text-inverse-foreground transition-colors">Start a conversation</Link></li>
+                  <li><a href="#case-study" className="hover:text-inverse-foreground transition-colors">Read the case study</a></li>
+                  <li><Link href="/path" className="hover:text-inverse-foreground transition-colors">The full path</Link></li>
+                  <li><Link href="/" className="hover:text-inverse-foreground transition-colors">Movemental.com</Link></li>
                 </ul>
               </div>
            </div>

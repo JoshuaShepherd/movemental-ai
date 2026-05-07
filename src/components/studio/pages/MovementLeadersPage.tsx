@@ -24,7 +24,7 @@ export function MovementLeadersPage() {
               What we mean by movement leader. Practitioners whose discipleship of place and people gives weight to whatever Movemental publishes — an ecosystem layer, not a fourth audience.
             </p>
             <div className="hero-actions flex flex-wrap gap-4 mb-16">
-              <Link href="/voices" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">See the named voices</Link>
+              <Link href="/voices" className="btn-pill btn-pill--primary">See the named voices</Link>
               <Link href="/field-guide" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Read the field guide</Link>
             </div>
 
@@ -184,7 +184,7 @@ export function MovementLeadersPage() {
               Movemental is an organization in motion. If you want to critique the architecture, read early drafts, or push back on a premise, use the same contact door everyone else uses. We read everything. There is no separate track.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Start a conversation</Link>
+              <Link href="/contact" className="btn-pill btn-pill--primary">Start a conversation</Link>
               <Link href="/field-guide" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Read the field guide</Link>
             </div>
           </Reveal>

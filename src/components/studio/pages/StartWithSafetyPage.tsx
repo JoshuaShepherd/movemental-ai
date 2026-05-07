@@ -25,7 +25,7 @@ export function StartWithSafetyPage() {
               Safety is the first stage of the Movemental Sequence. It protects your data, your people, and your mission before experimentation ever begins.
             </p>
             <div className="hero-actions flex flex-wrap gap-4">
-              <Link href="/contact" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Begin the Safety Step</Link>
+              <Link href="/contact" className="btn-pill btn-pill--primary">Begin the Safety Step</Link>
               <a href="#foundation" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">See What Safety Includes</a>
             </div>
           </Reveal>
@@ -241,7 +241,7 @@ export function StartWithSafetyPage() {
               Stop guessing. Baseline your risk and set your policy now.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Begin the Safety Step</Link>
+              <Link href="/contact" className="btn-pill btn-pill--primary">Begin the Safety Step</Link>
               <Link href="/contact" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Talk With Us</Link>
             </div>
           </Reveal>

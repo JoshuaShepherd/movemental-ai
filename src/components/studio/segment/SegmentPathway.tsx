@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
@@ -15,6 +15,12 @@ import { cn } from "@/lib/utils";
 interface SegmentPathwayProps {
   audience: "churches" | "nonprofits" | "institutions";
 }
+
+const FAQ_SECTION_TITLE: Record<SegmentPathwayProps["audience"], string> = {
+  churches: "Common questions from church leaders",
+  nonprofits: "Common questions from nonprofit leaders",
+  institutions: "Common questions from institutional leaders",
+};
 
 const commonDeliverables = {
   safety: [
@@ -296,48 +302,84 @@ export function SegmentPathway({ audience }: SegmentPathwayProps) {
   const data = segmentData[audience];
 
   const [activeStage, setActiveStage] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const pathwaySectionRef = useRef<HTMLElement>(null);
+  const panelRefs = useRef<Array<HTMLElement | null>>([]);
   const meterRef = useRef<HTMLDivElement>(null);
 
+  // Active panel — IntersectionObserver center band (parity with path/PathStickySection).
   useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current || !meterRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
+    const observers: IntersectionObserver[] = [];
+    const visible = new Map<number, number>();
 
-      const sections = containerRef.current.querySelectorAll(".stage-panel");
-      sections.forEach((section, index) => {
-        const secRect = section.getBoundingClientRect();
-        if (secRect.top <= viewportHeight * 0.5 && secRect.bottom >= viewportHeight * 0.5) {
-          setActiveStage(index);
-        }
+    panelRefs.current.forEach((el, i) => {
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              visible.set(i, entry.intersectionRatio || 0.001);
+            } else {
+              visible.delete(i);
+            }
+          }
+          if (visible.size > 0) {
+            let bestIndex = 0;
+            let bestRatio = -1;
+            visible.forEach((ratio, idx) => {
+              if (ratio > bestRatio) {
+                bestRatio = ratio;
+                bestIndex = idx;
+              }
+            });
+            setActiveStage(bestIndex);
+          }
+        },
+        { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.5, 1] },
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
+  // Meter fill — same progress model as path/PathStickySection.
+  useEffect(() => {
+    let raf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const el = pathwaySectionRef.current;
+        if (!el || !meterRef.current) return;
+        const rect = el.getBoundingClientRect();
+        const viewport = window.innerHeight || 0;
+        const total = rect.height + viewport;
+        const traveled = viewport - rect.top;
+        const pct = Math.max(0, Math.min(1, traveled / total));
+        meterRef.current.style.height = `${pct * 100}%`;
       });
-
-      const totalHeight = Math.max(1, rect.height - viewportHeight);
-      const currentScroll = Math.max(0, -rect.top);
-      const progress = Math.min(100, Math.max(0, (currentScroll / totalHeight) * 100));
-
-      meterRef.current.style.height = `${progress}%`;
     };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    const t = window.setTimeout(handleScroll, 100);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.clearTimeout(t);
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
     };
   }, []);
 
-  const handleJump = (index: number) => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const sections = document.querySelectorAll(".stage-panel");
-    if (sections[index]) {
-      sections[index].scrollIntoView({
-        block: "start",
-        behavior: prefersReducedMotion ? "auto" : "smooth",
-      });
-    }
-  };
+  const handleJump = useCallback((index: number) => {
+    const target = panelRefs.current[index];
+    if (!target) return;
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    target.scrollIntoView({
+      behavior: prefersReduced ? "auto" : "smooth",
+      block: "start",
+    });
+  }, []);
 
   const StageComponents = [SafetyContent, SandboxContent, SkillsContent, SolutionsContent];
 
@@ -360,7 +402,7 @@ export function SegmentPathway({ audience }: SegmentPathwayProps) {
               {data.hero.cards.map((card, i) => (
                 <div
                   key={i}
-                  className="bg-card border-border hover:border-primary/40 flex flex-col rounded-2xl border p-8 transition-colors"
+                  className="bg-card border-border hover:border-primary/40 flex flex-col rounded-card border p-8 transition-colors"
                 >
                   <h2 className="mb-4 text-lg font-semibold leading-snug text-foreground md:text-xl">
                     {card.heading}
@@ -376,7 +418,7 @@ export function SegmentPathway({ audience }: SegmentPathwayProps) {
               ))}
             </div>
 
-            <div className="bg-section border-border mx-auto mb-8 max-w-6xl rounded-2xl border p-8 md:p-10">
+            <div className="bg-section border-border mx-auto mb-8 max-w-6xl rounded-card border p-8 md:p-10">
               <h3 className="font-serif-display mb-8 text-2xl italic">What are the outcomes?</h3>
               <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                 {data.stops.map((stop, i) => (
@@ -425,12 +467,21 @@ export function SegmentPathway({ audience }: SegmentPathwayProps) {
         </Container>
       </section>
 
-      <section className="band-section bg-background border-border border-b" id="pathway-details">
-        <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-12" ref={containerRef}>
+      <section
+        ref={pathwaySectionRef}
+        className="band-section bg-background border-border border-b"
+        id="pathway-details"
+      >
+        <div className="mx-auto w-full max-w-max px-4 sm:px-6 lg:px-12">
           <div className="grid min-h-0 grid-cols-1 gap-10 min-[960px]:grid-cols-[33%_1fr] min-[960px]:gap-12 lg:gap-16">
-            <div className="relative hidden h-full min-[960px]:block" aria-label="Path stages">
-              <div className="rounded-card bg-section border-border relative flex gap-8 border p-8">
-                <div className="rounded-card pointer-events-none absolute inset-0 bg-gradient-to-br from-background/40 to-transparent" />
+            <div
+              className="relative hidden min-[960px]:block min-[960px]:self-start"
+              aria-label="Path stages"
+            >
+              <div
+                className="rounded-card bg-section border-border relative flex gap-8 border p-8 min-[960px]:sticky min-[960px]:top-[var(--site-chrome-total,4.25rem)] min-[960px]:max-h-[calc(100dvh-var(--site-chrome-total,4.25rem))] min-[960px]:overflow-y-auto"
+              >
+                <div className="rounded-card pointer-events-none absolute inset-0 bg-linear-to-br from-background/40 to-transparent" />
 
                 <div className="relative h-[400px] w-1 flex-shrink-0 rounded-full bg-border">
                   <div
@@ -497,8 +548,11 @@ export function SegmentPathway({ audience }: SegmentPathwayProps) {
                 return (
                   <article
                     key={i}
+                    ref={(el) => {
+                      panelRefs.current[i] = el;
+                    }}
                     id={`stage-${stop.num}`}
-                    className="stage-panel border-border min-h-[70vh] border-b py-16 last:min-h-[50vh] last:border-b-0 lg:py-24"
+                    className="stage-panel scroll-mt-[calc(var(--site-chrome-total,4.25rem)+1rem)] border-border min-h-[70vh] border-b py-16 last:min-h-[50vh] last:border-b-0 lg:py-24"
                   >
                     <div className="mb-10 flex items-center gap-4 md:hidden">
                       <span className="text-foreground/60 text-sm font-semibold uppercase tracking-widest">
@@ -519,11 +573,11 @@ export function SegmentPathway({ audience }: SegmentPathwayProps) {
         <Container>
           <Reveal>
             <h2 className="font-serif-display mb-12 text-3xl text-foreground italic md:text-4xl">
-              Questions from {audience}
+              {FAQ_SECTION_TITLE[audience]}
             </h2>
             <div className="max-w-4xl space-y-8">
               {data.faqs.map((faq, i) => (
-                <div key={i} className="bg-card border-border rounded-2xl border p-8">
+                <div key={i} className="bg-card border-border rounded-card border p-8">
                   <h3 className="mb-4 text-lg font-medium text-foreground md:text-xl">{faq.q}</h3>
                   <p className="text-muted-foreground text-[1.0625rem] leading-relaxed">{faq.a}</p>
                 </div>
@@ -531,7 +585,7 @@ export function SegmentPathway({ audience }: SegmentPathwayProps) {
             </div>
 
             {audience === "institutions" ? (
-              <div className="border-primary/20 bg-primary/5 mt-12 max-w-4xl rounded-2xl border p-8">
+              <div className="border-primary/20 bg-primary/5 mt-12 max-w-4xl rounded-card border p-8">
                 <h3 className="mb-3 text-xl font-semibold text-foreground">Network Engagements</h3>
                 <p className="text-primary/90 mb-6 text-[1.0625rem] leading-relaxed">
                   For denominations, training networks, and multi-site organizations, Build extends across entities —

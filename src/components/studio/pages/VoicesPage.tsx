@@ -35,7 +35,7 @@ export function VoicesPage() {
               Movemental is a growing conversation among leaders navigating AI, formation, and mission in real time.
             </p>
             <div className="hero-actions flex flex-wrap gap-4">
-              <Link href="/contact" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Start a Conversation</Link>
+              <Link href="/contact" className="btn-pill btn-pill--primary">Start a Conversation</Link>
               <Link href="/path" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Explore the Path</Link>
             </div>
           </Reveal>
@@ -174,7 +174,7 @@ export function VoicesPage() {
               Start with safety. Build capability. Lead with clarity.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/start-with-safety" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Start with Safety</Link>
+              <Link href="/start-with-safety" className="btn-pill btn-pill--primary">Start with Safety</Link>
               <Link href="/contact" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Start a Conversation</Link>
             </div>
           </Reveal>
