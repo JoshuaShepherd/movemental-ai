@@ -75,7 +75,7 @@ Examples include:
 	•	generating structured outlines
 	•	automating repetitive communications
 
-These are often the easiest wins. They do not require deep changes to how work is conceptualized; they simply make existing processes faster.
+These are often the easiest wins. They do not require deep changes to how work is conceptualized; they simply make existing processes faster. Often we should look for the technological processes first. 
 
 However, the Discovery Lab treats these not as trivial improvements, but as strategic signals. When an organization discovers that a task that once took two hours can now be completed in twenty minutes, the question is not just “how do we save time?” but:
 
