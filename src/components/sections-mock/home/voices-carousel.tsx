@@ -56,7 +56,7 @@ export function VoiceCarousel({ voices, ariaLabel }: VoiceCarouselProps) {
     <div className="relative">
       <div className="mb-6 flex items-end justify-between gap-6">
         <p className="text-xs font-medium uppercase tracking-eyebrow text-muted-foreground">
-          Movemental Voices
+          Movement Voices
         </p>
         <div className="flex items-center gap-2">
           <CarouselButton
@@ -85,7 +85,7 @@ export function VoiceCarousel({ voices, ariaLabel }: VoiceCarouselProps) {
         {voices.map((voice) => (
           <li
             key={voice.name}
-            className="flex w-72 shrink-0 snap-start flex-col gap-4 pt-6 sm:w-80"
+            className="flex w-[19rem] shrink-0 snap-start flex-col gap-4 pt-6 sm:w-[21rem]"
           >
             <div className="relative aspect-4/5 w-full overflow-hidden rounded-xl bg-muted shadow-sm ring-1 ring-border/60">
               <Image
@@ -94,7 +94,7 @@ export function VoiceCarousel({ voices, ariaLabel }: VoiceCarouselProps) {
                 width={960}
                 height={1200}
                 className="h-full w-full object-cover"
-                sizes="(max-width: 640px) 288px, 320px"
+                sizes="(max-width: 640px) 304px, 336px"
               />
               <span
                 aria-hidden
@@ -103,11 +103,11 @@ export function VoiceCarousel({ voices, ariaLabel }: VoiceCarouselProps) {
                 {voice.initials}
               </span>
             </div>
-            <div className="flex flex-col gap-1.5">
-              <h3 className="text-lg font-semibold tracking-tight text-foreground">
+            <div className="flex min-h-[5.5rem] flex-col gap-1.5">
+              <h3 className="text-lg font-semibold leading-tight tracking-tight text-foreground break-words">
                 {voice.name}
               </h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">
+              <p className="text-sm leading-relaxed text-muted-foreground break-words">
                 {voice.title}
               </p>
             </div>

@@ -84,7 +84,7 @@ export function SiteFooter() {
                 href="/voices"
                 className="decoration-primary/30 underline-offset-4 transition-colors hover:text-primary hover:underline hover:decoration-primary"
               >
-                Trusted voices
+                Movement Voices
               </Link>
             </li>
             <li>

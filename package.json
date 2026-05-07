@@ -16,6 +16,7 @@
     "db:studio": "drizzle-kit studio",
     "check:env": "tsx scripts/check-env.ts",
     "smoke:comms": "tsx scripts/smoke-comms-env.ts",
+    "ssot:movemental-ai-path:markdown": "node scripts/ssot-raw-txt-to-markdown.mjs",
     "reader:sync": "node docs/reader/sync-manifest.mjs",
     "reader:check": "node docs/reader/sync-manifest.mjs --check",
     "reader:serve": "python3 -m http.server 8765 -d docs",

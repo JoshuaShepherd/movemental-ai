@@ -43,7 +43,7 @@ export function VoiceDetailPageContent({ voice }: Props) {
           <RevealOnScroll>
             <AudienceLabel>
               <Link href="/voices" className="hover:text-foreground">
-                Trusted voices
+                Movement Voices
               </Link>
               <span aria-hidden className="mx-2 text-ink-soft">
                 ›

@@ -272,7 +272,7 @@ export const primaryNavGroups: NavGroup[] = [
             description: "Five failures, five moves — practitioner fit",
           },
           {
-            label: "Trusted voices",
+            label: "Movement Voices",
             href: "/voices",
             description: "Named leaders shaping the work",
           },
@@ -371,7 +371,7 @@ export const primaryNavGroups: NavGroup[] = [
             description: "Who is behind the work",
           },
           {
-            label: "Trusted voices",
+            label: "Movement Voices",
             href: "/voices",
             description: "Named movement leaders shaping the work",
           },
@@ -445,7 +445,7 @@ export const siteNavSections: NavSection[] = [
       { label: "Institutions", href: "/institutions" },
       { label: "Who is a movement leader?", href: "/who-is-a-movement-leader" },
       { label: "For movement leaders", href: "/movement-leaders" },
-      { label: "Trusted voices", href: "/voices" },
+      { label: "Movement Voices", href: "/voices" },
     ],
   },
   {
@@ -467,7 +467,7 @@ export const siteNavSections: NavSection[] = [
     links: [
       { label: "About", href: "/about" },
       { label: "Team", href: "/team" },
-      { label: "Trusted voices", href: "/voices" },
+      { label: "Movement Voices", href: "/voices" },
       { label: "FAQ", href: "/faq" },
       { label: "Contact", href: "/contact" },
     ],

@@ -308,7 +308,7 @@ function MovementLeadersFold() {
           mistake. Movement leaders are an ecosystem layer that sits next to
           all three of the audiences above, not a parallel funnel that competes
           with them. We have a separate definitional surface for the term. The
-          named ecosystem layer lives on the Trusted voices page.
+          named ecosystem layer lives on the Movement Voices page.
         </p>
 
         <div className="btn-row">

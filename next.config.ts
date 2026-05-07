@@ -164,6 +164,49 @@ const nextConfig: NextConfig = {
         destination: "/contact",
         permanent: true,
       },
+      // Pathway stage rename: Foundations/Lab → Safety/Sandbox.
+      // Skills/Solutions did not previously live under /pathway; canonical
+      // detail pages are now /pathway/skills and /pathway/solutions.
+      {
+        source: "/pathway/foundations",
+        destination: "/pathway/safety",
+        permanent: true,
+      },
+      {
+        source: "/pathway/foundations/:path*",
+        destination: "/pathway/safety/:path*",
+        permanent: true,
+      },
+      {
+        source: "/pathway/lab",
+        destination: "/pathway/sandbox",
+        permanent: true,
+      },
+      {
+        source: "/pathway/lab/:path*",
+        destination: "/pathway/sandbox/:path*",
+        permanent: true,
+      },
+      {
+        source: "/pathway/fluency",
+        destination: "/pathway/skills",
+        permanent: true,
+      },
+      {
+        source: "/pathway/fluency/:path*",
+        destination: "/pathway/skills/:path*",
+        permanent: true,
+      },
+      {
+        source: "/pathway/build",
+        destination: "/pathway/solutions",
+        permanent: true,
+      },
+      {
+        source: "/pathway/build/:path*",
+        destination: "/pathway/solutions/:path*",
+        permanent: true,
+      },
       ...legacyBookReads,
     ];
   },

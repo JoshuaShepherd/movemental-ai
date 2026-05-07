@@ -13,7 +13,7 @@ import { COMMITTED_VOICES } from "@/lib/committed-voices";
 import { VoiceCard } from "./voice-card";
 
 /**
- * `/voices` — Trusted voices hub.
+ * `/voices` — Movement Voices hub.
  *
  * Canonical doctrine: `docs/build/strategy/movement-leaders-as-ecosystem-layer.md`.
  * Related plan: `docs/build/plans/movement-leaders-network-social-proof.md`.
@@ -35,7 +35,7 @@ export function VoicesPageContent() {
       >
         <Container>
           <RevealOnScroll>
-            <AudienceLabel>Trusted voices</AudienceLabel>
+            <AudienceLabel>Movement Voices</AudienceLabel>
           </RevealOnScroll>
           <div className="mt-2 grid gap-10 lg:grid-cols-[minmax(0,8fr)_minmax(0,4fr)] lg:items-end lg:gap-[clamp(3rem,6vw,5.5rem)]">
             <div>
@@ -173,7 +173,7 @@ export function VoicesPageContent() {
           <div className="grid gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-end lg:gap-12">
             <div>
               <RevealOnScroll>
-                <AudienceLabel>Trusted voices</AudienceLabel>
+                <AudienceLabel>Movement Voices</AudienceLabel>
               </RevealOnScroll>
               <RevealOnScroll delaySec={0.06}>
                 <h2

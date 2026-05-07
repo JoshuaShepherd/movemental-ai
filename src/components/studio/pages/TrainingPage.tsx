@@ -10,7 +10,7 @@ export function TrainingPage() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
   useEffect(() => {
-    document.title = "Fluency Training | Movemental";
+    document.title = "Skills Development | Movemental";
   }, []);
 
   const curriculum = [
@@ -36,8 +36,8 @@ export function TrainingPage() {
               Eight weeks of structured practice on your own material, with people who'll be doing this work alongside you for years. Available as a facilitated cohort or as a self-paced license for your whole organization.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact?interest=Fluency%20Cohort" className="btn-pill btn-pill--primary">Start a Cohort</Link>
-              <Link href="/contact?interest=Fluency%20Self-Paced" className="btn-pill btn-pill--ghost">License the Curriculum</Link>
+              <Link href="/contact?interest=skills-cohort" className="btn-pill btn-pill--primary">Start a Cohort</Link>
+              <Link href="/contact?interest=skills-self-paced" className="btn-pill btn-pill--ghost">License the Curriculum</Link>
             </div>
           </div>
         </Reveal>
@@ -48,7 +48,7 @@ export function TrainingPage() {
           <Reveal>
             <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
               <div className="bg-card border border-border p-8 md:p-10 rounded-2xl flex flex-col">
-                <h3 className="font-serif-display text-3xl italic mb-2 text-foreground">Fluency Cohort</h3>
+                <h3 className="font-serif-display text-3xl italic mb-2 text-foreground">Skills Cohort</h3>
                 <p className="text-muted-foreground mb-6">Eight weeks. Your team becomes the people who can actually do this.</p>
                 <div className="font-semibold text-2xl text-primary mb-8">$15,000</div>
                 <ul className="space-y-4 text-[1.0625rem] text-muted-foreground mb-8 flex-grow">
@@ -63,7 +63,7 @@ export function TrainingPage() {
               </div>
               
               <div className="bg-background border border-border p-8 md:p-10 rounded-2xl flex flex-col">
-                <h3 className="font-serif-display text-3xl italic mb-2 text-foreground">Fluency Self-Paced</h3>
+                <h3 className="font-serif-display text-3xl italic mb-2 text-foreground">Skills Self-Paced</h3>
                 <p className="text-muted-foreground mb-6">The same curriculum, on your team's schedule.</p>
                 <div className="font-semibold text-2xl text-primary mb-8">$4,800 <span className="text-muted-foreground text-[1.0625rem] font-normal">/year</span></div>
                 <ul className="space-y-4 text-[1.0625rem] text-muted-foreground mb-8 flex-grow">
@@ -151,8 +151,8 @@ export function TrainingPage() {
       <Container className="py-20 md:py-32 text-center max-w-2xl mx-auto">
         <Reveal>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-4">
-            <Link href="/contact?interest=Fluency%20Cohort" className="btn-pill btn-pill--primary">Start a Cohort conversation</Link>
-            <Link href="/contact?interest=Fluency%20Self-Paced" className="btn-pill btn-pill--ghost">License the curriculum</Link>
+            <Link href="/contact?interest=skills-cohort" className="btn-pill btn-pill--primary">Start a Cohort conversation</Link>
+            <Link href="/contact?interest=skills-self-paced" className="btn-pill btn-pill--ghost">License the curriculum</Link>
           </div>
           <button onClick={() => window.alert('PDF download logic would be hooked up here')} className="text-sm text-primary hover:underline underline-offset-4 mt-4 inline-block">Download the syllabus (PDF)</button>
         </Reveal>

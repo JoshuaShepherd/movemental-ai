@@ -4,11 +4,9 @@ import { TechnologyPage as StudioTechnologyPage } from "@/components/studio/page
 
 export const metadata: Metadata = {
   title: "Solutions Deployment",
-  description: "Mile Marker 04 — custom agentic CMS/LMS builds and deployment.",
+  description: "Stage 04 — custom agentic CMS/LMS builds and deployment.",
 };
 
 export default function Page() {
-  return (
-    <StudioTechnologyPage />
-  );
+  return <StudioTechnologyPage />;
 }

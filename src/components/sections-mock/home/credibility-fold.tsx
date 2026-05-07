@@ -13,6 +13,9 @@ interface Founder {
   portrait: string;
 }
 
+// TODO(founders): Brad Brisco and Joshua Shepherd portraits are from one shoot;
+// Alan Hirsch's is from a different source with different lighting and crop
+// conventions. Replace all three with a single unified shoot when scheduled.
 const FOUNDERS: readonly Founder[] = [
   {
     name: "Brad Brisco",
@@ -145,7 +148,7 @@ export function CredibilityFold() {
         <div className="mt-16 border-t border-border pt-12 md:mt-20 md:pt-16">
           <VoiceCarousel
             voices={VOICES}
-            ariaLabel="Movemental Voices — leaders shaping the conversation"
+            ariaLabel="Movement Voices — leaders shaping the conversation"
           />
         </div>
 

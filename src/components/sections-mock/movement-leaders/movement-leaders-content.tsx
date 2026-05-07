@@ -23,7 +23,7 @@ function Hero() {
   return (
     <section className="band-midnight hero" aria-labelledby="hero-h1">
       <div className="container">
-        <p className="eyebrow">Trusted voices · Definition</p>
+        <p className="eyebrow">Movement Voices · Definition</p>
         <h1 className="display" id="hero-h1">
           What we mean by <em>movement leader</em>.
         </h1>
@@ -216,14 +216,14 @@ function PointerToVoices() {
     <section className="band-section" id="voices" aria-labelledby="voices-h2">
       <div className="container">
         <SectionHead
-          eyebrow="Trusted voices"
+          eyebrow="Movement Voices"
           display={
             <>
               Where these names are <em>visible</em>.
             </>
           }
           displayId="voices-h2"
-          lede="Movemental's named ecosystem layer is published, with bios and roles, on the Trusted voices page."
+          lede="Movemental's named ecosystem layer is published, with bios and roles, on the Movement Voices page."
         />
         <p className="prose" style={{ marginTop: "1.5rem" }}>
           There is no separate roster. There is no nominate-a-leader form.
@@ -284,7 +284,7 @@ function EditorialBoundary() {
               href="/voices"
               style={{ color: "var(--primary)", fontStyle: "normal" }}
             >
-              Trusted voices page
+              Movement Voices page
             </Link>
             ; the implementation audiences are at{" "}
             <Link

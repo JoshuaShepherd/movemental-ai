@@ -23,11 +23,11 @@ export function HeroFold() {
           what matters most.
         </p>
         <div className="hero-actions">
-          <BtnPill href="/field-guide" variant="primary">
+          <BtnPill href="#how" variant="primary">
             See the Path
           </BtnPill>
-          <BtnPill href="/field-guide#stage-safety" variant="ghost">
-            Start with Safety
+          <BtnPill href="/contact" variant="ghost">
+            Start a Conversation
           </BtnPill>
         </div>
       </div>

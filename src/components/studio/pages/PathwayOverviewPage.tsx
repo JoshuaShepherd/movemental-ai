@@ -38,7 +38,7 @@ const commonDeliverables = {
     "Up to 15 participant seats included",
     "Weekly in-person or live-virtual teaching sessions",
     "LMS-hosted recipe library (refreshed quarterly)",
-    "Practice modules tied exactly to use cases from the Lab",
+    "Practice modules tied exactly to use cases from the Sandbox",
     "Facilitator Track (2-4 internal staff certified as leaders)",
     "Pre/post capability assessments",
     "Lifetime access to course library",
@@ -162,7 +162,7 @@ export function PathwayOverviewPage() {
                   </div>
                   <h3 className="font-semibold text-xl text-foreground mb-4">Bundled Commitment Offer</h3>
                   <p className="text-muted-foreground leading-relaxed text-[1.0625rem] mb-6">
-                    Commit to the full Pathway upfront and engage all four Mile Markers under a single agreement.
+                    Commit to the full Pathway upfront and engage all four stages under a single agreement.
                   </p>
                   <div className="font-semibold text-xl text-primary mb-2">
                     <span className="font-serif-display italic text-4xl">$58,500</span>
@@ -184,7 +184,7 @@ export function PathwayOverviewPage() {
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="font-serif-display text-3xl italic text-foreground mb-4">Network Engagements</h2>
               <p className="text-lg text-muted-foreground mb-8">
-                For denominations, training networks, and multi-site organizations, Build extends across entities — shared governance, linked platforms, federated intelligence. These engagements are quoted per conversation. Most start at $60,000 and scale with scope.
+                For denominations, training networks, and multi-site organizations, Solutions Deployment extends across entities — shared governance, linked platforms, federated intelligence. These engagements are quoted per conversation. Most start at $60,000 and scale with scope.
               </p>
               <Link href="/contact" className="btn-pill btn-pill--ghost text-sm">Talk about a Network Engagement</Link>
             </div>
@@ -197,10 +197,10 @@ export function PathwayOverviewPage() {
           <div className="max-w-2xl mx-auto">
             <h2 className="font-serif-display text-4xl italic mb-6">Talk to us about the full Pathway</h2>
             <p className="text-muted-foreground text-lg mb-10">
-              Whether you are ready to commit to the full sequence or just want to start with a conversation about Foundations, the next step is a quick discovery call.
+              Whether you are ready to commit to the full sequence or just want to start with a conversation about Safety Documentation, the next step is a quick discovery call.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link href="/pathway/foundations" className="btn-pill btn-pill--primary">Start with Safety Documentation</Link>
+              <Link href="/pathway/safety" className="btn-pill btn-pill--primary">Start with Safety Documentation</Link>
               <Link href="/contact" className="btn-pill btn-pill--ghost">Talk to us about the full Pathway</Link>
             </div>
           </div>

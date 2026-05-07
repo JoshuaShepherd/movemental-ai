@@ -1,0 +1,751 @@
+
+
+The Movemental AI Path  ·  Parts Nine and Ten
+The Movemental AI Path
+Source-of-truth extension
+Part nine: the Movemental technological foundation
+Part ten: consolidated pricing across the path
+A Movemental field paper extension  ·  May 2026
+This document extends the prior source-of-truth document. It picks up where Part Eight ended — at the 
+cross-stage productization summary — and adds two parts that the prior document acknowledged but 
+did not fully develop. Part Nine documents the Movemental technological foundation: the architecture 
+that makes Solutions deployment possible, what is built and operating, what is built and adjacent, and 
+what would be built per engagement. Part Ten consolidates pricing across all four stages and all 
+configurations into a single reference, including the platform-tenant and network-platform 
+configurations the prior Solutions section described in summary form.
+Part Nine deepens the Solutions framing of Part Seven. It does not replace Part Seven; it documents the 
+technological substrate that gives Configurations B through F their credibility. Part Ten replaces the 
+scattered pricing references throughout Parts Three, Five, Six, Seven, and Eight with a single 
+consolidated reference table that names every offering, every level, and every segment.
+Stage 04 (continued): Solutions
+Part nine: the Movemental technological foundation
+Solutions Deployment as described in Part Seven assumes a technological foundation that the prior 
+document referenced but did not document. This part documents that foundation honestly. It names 
+what Movemental has built, what is operating, what is adjacent, and where engagement-specific work 
+begins. It does so because the credibility of the Solutions configurations — particularly Configurations D, 
+E, and F at the network-platform end of the spectrum — depends on the technological foundation being 
+real and being readable.
+Nine-A: What was built, and what that means
+Movemental was incorporated and began operating in late 2025. The technological foundation was built 
+primarily by a single architect over approximately seven months, on top of agentic development 
+Page 1 of 18
+
+The Movemental AI Path  ·  Parts Nine and Ten
+infrastructure that compresses the work-hours-to-output ratio significantly relative to conventional 
+engineering. The result is a multi-tenant content and intelligence platform with a typed entity chain, an 
+agent inventory, a credibility scoring layer, a course scaffolding system, a deterministic content ingest 
+pipeline, and an audit document that catalogs what is in the canonical repository versus what lives in 
+sibling repositories versus what remains aspirational.
+The honest framing is this. The architecture is industrial in its discipline. Most companies of comparable 
+scope arrive at this kind of architecture after eighteen to twenty-four months of team engineering. 
+Movemental arrived at it solo in seven months because of the agentic development infrastructure. 
+Some pieces are fully implemented in the canonical repository; some are documented and live in sibling 
+repositories under active development; some are architectural plans not yet built. The audit document 
+maintained internally distinguishes among these categories rigorously and is updated with each 
+repository survey. This rigor matters because a clear-eyed view of what is built today is the basis for 
+what can be deployed tomorrow.
+What follows describes the foundation at five layers: the data and content pipeline, the typed entity 
+chain, the multi-tenant model, the agent inventory and governance integration, and the operational 
+integrations including CRM and voice intake.
+Nine-B: The content and data pipeline
+The content pipeline is, in our judgment, Movemental's most distinctive technical asset. Most AI-for-
+organizations companies are wrappers around a model provider. Movemental holds a substrate that 
+converts organizational content from heterogeneous source forms into structured, queryable, AI-
+grounded data. The substrate compounds: each piece of content added becomes part of an 
+organization's active intelligence layer rather than a static archive.
+The pipeline accepts:
+•Books and long-form manuscripts (PDF or other source) converted to structured markup, stored as 
+relational rows with chapter-level granularity, with pricing and commerce identifiers integrated 
+where applicable.
+•Articles in markdown with YAML frontmatter, deterministically validated and migrated as 
+conventions evolve, ingested into content tables via scripts rather than model-based upload.
+•Course content authored as markdown week-files that serve as single-source-of-truth slices, 
+scaffolded into structured course/module/lesson rows with cohort and drip-schedule support.
+•Video and audio inputs extracted and transcribed (FFmpeg, Whisper-class transcription), 
+structured into searchable text grounded in courses and archive search.
+Page 2 of 18
+
+The Movemental AI Path  ·  Parts Nine and Ten
+•Translation and batch NLP for multilingual deployments, particularly relevant for Spanish-language 
+and Portuguese-language network engagements where Movemental's warm network is 
+positioned to serve.
+What this means commercially: when an organization deploys with Movemental, their existing content 
+— sermons, program documentation, donor communications, curriculum, faculty writing, podcast 
+archives, training materials — becomes the substrate the AI operates on. The recipes (Claude skills) the 
+organization uses are grounded in their content, their voice, their tradition. The credibility scoring, the 
+SEO work, the formation companion — all draw from the organization's own material. This is what 
+allows Movemental's deployments to land in the organization's actual voice rather than producing the 
+generic AI output that everyone has learned to recognize.
+Nine-C: The typed entity chain
+The architecture is structured as a six-layer chain that runs from database to user interface, with five of 
+the six layers generated and validated automatically and the sixth (the user interface) hand-built from 
+design specifications. The discipline this enforces is that backend changes propagate predictably, 
+schemas and services stay in sync, and the user interface remains under deliberate design control rather 
+than being mechanically generated from data shapes.
+The chain runs as follows. The PostgreSQL database schema is defined in Drizzle ORM as the system of 
+record. From the schema, a Zod validation layer is generated. From Zod, a service layer is generated 
+using a result-pattern that handles success and failure cases consistently. From the services, REST API 
+routes are generated. From the routes, TanStack Query hooks are generated. The user interface is built 
+by hand using semantic Tailwind tokens locked to a pinned design source, ensuring that the visual 
+surface remains a deliberate craft layer rather than a mechanical projection of the schema.
+The practical commercial implication: when Movemental builds a deployment for an organization, 
+schema changes specific to their work propagate automatically through the validation, service, route, 
+and hook layers. The hand-built user interface is the only surface that requires deliberate engineering 
+attention per organization. This is what allows custom deployments to ship in weeks rather than months 
+— the substrate is generated; the surface is composed from a designed component library that is itself 
+accelerated by a Stitch-to-React workflow that locks visual design as a single source of truth.
+Nine-D: The multi-tenant model
+The architecture was built multi-tenant from inception rather than retrofitted. This is significant because 
+retrofitting multi-tenancy into a single-tenant codebase is one of the most painful migrations in 
+software, and the difficulty of it is the reason most platform offerings in adjacent sectors are built single-
+tenant and then re-architected at substantial cost when the platform business model becomes the right 
+business model.
+Page 3 of 18
+
+The Movemental AI Path  ·  Parts Nine and Ten
+The model is built on Supabase Postgres with row-level security and an organization-id-based isolation 
+pattern. Every relevant table carries an organization scope. The organizations table itself includes plan, 
+subdomain, custom domain, and settings configuration. A tenant-organization-id pattern allows single-
+tenant deployments to use the same codebase as multi-tenant network deployments — meaning that 
+the Configuration A tool optimization, the Configuration D platform tenant, and the Configuration E 
+multi-node network all run on the same architectural foundation, with the network deployment being 
+the multi-tenant case the architecture was designed for from day one.
+What this means for Configuration E specifically: when an institution engages Movemental for a network 
+deployment, each member organization receives its own tenant with its own data, its own 
+configuration, its own user base, and its own user interface customization, while sharing the institutional 
+governance framework, the cross-tenant content pipeline where authorized, and the SEO and 
+discoverability propagation across the network. The platform was built for this case. The pricing for 
+Configuration E reflects that an institution buying it is not buying engineering hours; it is buying a 
+structural capacity for network-scale intelligence that compounds across the member organizations.
+Nine-E: Agent inventory and governance integration
+Movemental maintains an inventory of approximately twenty-two named AI agents documented with 
+explicit behavior boundaries. The agents fall into five functional themes: search and discovery (SEO 
+scoring, keyword research, schema generation, related content semantic discovery); credibility and 
+voice (voice-and-vocation coaching, voice authenticity, credibility scoring against organizational rubrics, 
+theological integrity review, writing assistance with human-in-the-loop control); writing and structure 
+(content structure, article companion, sermon shaping with multi-sub-agent orchestration, translation, 
+agent orchestration); learning and formation (formation companion for learners, formation coach for 
+staff developers, course companion for in-course assistance, missional-DNA assessment, assessment 
+interpretation); and research and lab (AI Lab agent with corpus-grounded vector store and themed 
+instructions, archive explorer, contextual book reading help).
+The agents operate against governance constraints documented at the system level: human publish 
+required for any externally-facing content, theological integrity review for content touching tradition or 
+doctrine, no silent strategy execution without authorization, credibility scoring against organization-
+specific rubrics, and a system of explicit behavior boundaries that names what each agent will and will 
+not do.
+What this means in deployment: when a Solutions configuration is delivered, the agents that operate 
+within it carry the organization's Safety documentation as constraints. The Acceptable Use Policy 
+informs what the agents are permitted to do. The Data Handling Standards constrain what data the 
+agents can touch. The Care Boundaries shape what work the agents are structurally prevented from 
+entering. The Disclosure and Attribution Standard governs what the agents annotate as AI-assisted. The 
+Page 4 of 18
+
+The Movemental AI Path  ·  Parts Nine and Ten
+governance is not adjacent to the deployment; it is wired into it. This is the practical instantiation of the 
+thesis that AI built on a coherent foundation compounds rather than corroding.
+Nine-F: CRM and voice intake
+Movemental has solved the constituent-relationship-management layer through a combination of 
+established CRM stack components and a cutting-edge capability that warrants specific naming: a voice-
+based intake system that automatically sorts relational intelligence as it captures conversations.
+The CRM stack covers the standard work of a constituent relationship system: pipeline for prospects, 
+learners, donors; lifecycle email sequences with deliverability handling; segmentation; integration with 
+existing organizational systems where the organization already operates a CRM (Planning Center for 
+churches, Bloomerang or Salesforce Nonprofit Cloud for nonprofits, denominational membership 
+systems for institutions). For organizations without an existing CRM, Movemental can deploy the CRM as 
+part of the platform tenant; for organizations with an existing CRM, Movemental integrates rather than 
+replacing.
+The voice-based intake capability is the more distinctive part. The system captures voice conversations 
+— discovery calls, member onboarding, donor stewardship, pastoral intake — and automatically 
+extracts and structures the relational intelligence those conversations contain. Names, relationships, 
+history, areas of interest, prayer requests where appropriate, donor capacity signals where appropriate, 
+follow-up commitments, and the texture of the conversation itself become structured records that route 
+to the right people in the organization with the right context. The capability addresses a real pain point 
+— the relational intelligence inside ministry and nonprofit conversations is constantly lost because no 
+one has time to take notes — and it does so in a way that preserves the human warmth of the 
+conversation rather than imposing a clipboard between the conversational partners.
+What this means commercially: Configurations D and E include CRM and voice intake as integrated 
+capabilities rather than as components the organization must source separately and integrate 
+themselves. This significantly compresses the time-to-value for the deployment and removes one of the 
+most common failure modes in AI deployments at adjacent vendors — the gap between the AI capability 
+and the relationship-management substrate it must operate within.
+Nine-G: Honest accounting
+The audit document Movemental maintains internally tracks what is fully implemented in the canonical 
+repository, what is documented and operating in sibling repositories under active development, and 
+what is architectural plan not yet built. Some examples of how this distinction matters in conversation 
+with prospective customers and investors:
+Page 5 of 18
+
+The Movemental AI Path  ·  Parts Nine and Ten
+•Markdown ingestion to content tables, course markdown scaffolding, the typed entity chain, the 
+multi-tenant organization model, the Stitch-to-React design workflow, the studio component 
+package, the agent inventory documentation, the Safety governance integration pattern, and the 
+Sentry-Resend-Supabase-Vercel operational stack are operating in the canonical repository.
+•The full agent runtime, the Liveblocks collaborative editing layer, the context engine for packet 
+assembly, the Stripe and Shopify SDK integration, and the dashboard surfaces are documented 
+and operating in sibling repositories that this organizational site does not directly contain. 
+Verification requires the sibling repository for runtime confirmation in any specific deployment.
+•CRM live integration is documented as solved at the architectural level with the stack components 
+named. Specific deployment requires customer-environment configuration. The voice intake 
+capability is real and demonstrable.
+We name this rigor because it matters. Most companies overclaim their architecture and underdeliver 
+their deployments. Movemental's practice is to maintain a distinction between what is built, what is 
+adjacent, and what is planned, and to be honest about each in conversation. This protects buyers from 
+disappointment and protects Movemental from engagements scoped against capabilities that did not 
+actually exist when the contract was signed. The audit document is the artifact that enforces this 
+discipline; it is updated with each repository survey.
+Nine-H: The Solutions configurations, refined
+Part Seven of the prior document described five Solutions configurations. Given the technological 
+foundation documented in this part, the configuration set is refined to six configurations that better 
+describe the actual offering spectrum, with explicit acknowledgment that the architecture supports the 
+network-platform configuration as a credible offering rather than as an aspirational claim.
+Configuration A — Tool Optimization.  Claude Enterprise or comparable enterprise-tier AI tool, 
+configured with custom skills, prompts, and Safety integration against the organization's 
+Acceptable Use Policy and Data Handling Standards. Documentation, staff training, and 90-day 
+operational support included. Suitable for organizations whose Sandbox surfaced strong use 
+cases that do not require new infrastructure. Most organizations should consider this 
+configuration first.
+Configuration B — Composed Application.  A focused web application built on Movemental's 
+typed-entity stack for one or two specific workflows, integrated with the organization's existing 
+systems via API. The application is deployed to the organization's infrastructure or hosted by 
+Movemental as preferred. Suitable for organizations with specific high-value workflows that 
+exceed what tool optimization can deliver but do not require a full platform.
+Page 6 of 18
+
+The Movemental AI Path  ·  Parts Nine and Ten
+Configuration C — Content and Intelligence Platform.  The organization's archive — sermon 
+library, program documentation, curriculum, faculty writing, podcast archive — converted into a 
+queryable, AI-grounded, workflow-integrated platform. Configuration C is particularly relevant 
+for institutions with substantial accumulated content that is currently static and underutilized. 
+Includes the content pipeline, agent layer for archive interaction, and integration into the 
+organization's existing communication and learning surfaces.
+Configuration D — Movemental Platform Tenant.  The organization receives a dedicated tenant 
+of the full Movemental architecture: typed entity chain, multi-tenant organization model, agent 
+inventory, learning management, content pipeline, studio components, CRM integration with 
+voice intake, and Safety governance integration. The tenant is configured for the organization's 
+specific work, branded to the organization's identity, and operated under the organization's 
+governance. This is the integrated-platform configuration that the architecture was designed to 
+support, made available as a service.
+Configuration E — Network Platform with Multi-Node Deployment.  For institutions, 
+denominational bodies, training networks, and multi-site organizations, Configuration D is 
+extended into a network deployment. The institution receives the platform tenant, and 
+additionally receives the capacity to deploy sub-tenants for connected nodes within their 
+network — member churches, special ministries within the institution, partnered organizations, 
+leader platforms within the network. Each sub-tenant is its own configured platform; all sub-
+tenants share the institutional governance framework and the cross-node content and 
+discoverability propagation. The institution becomes a platform for its own network, with the 
+network compounding through SEO, discoverability, and shared intelligence in ways no single-
+organization deployment could achieve. This is the architectural innovation Movemental is 
+structurally positioned to offer.
+Configuration F — Hybrid and Bespoke.  Combinations of the prior configurations and custom 
+requirements scoped per conversation. Includes engagements where Configuration A is 
+appropriate for some workflows while Configuration C or D is appropriate for others, where 
+international or multilingual deployment requires specific architecture, or where the 
+organization's existing technical environment requires bespoke integration work.
+A candid note.  Most organizations should buy at the lower end of this spectrum, not the 
+higher end. Configuration A serves more organizations well than Configurations D and E 
+combined. The 2026 nonprofit data showed 92% of nonprofits using AI with only 7% 
+reporting major capability improvement; the bottleneck is rarely the technology, and 
+Movemental will not pretend otherwise. An organization that completes the Safety, 
+Page 7 of 18
+
+The Movemental AI Path  ·  Parts Nine and Ten
+Sandbox, and Skills work and then deploys Configuration A with care will get more value 
+than an organization that buys Configuration E without the upstream work. Configurations D 
+and E are correct for institutions and organizations whose Sandbox surfaced platform-scale 
+opportunity and whose Skills capacity is sufficient to operate platform-scale capability. They 
+are not for everyone, and we will say so before, during, and after a sales conversation.
+Nine-I: The network multiplication thesis
+Configuration E deserves explicit framing because it is the configuration where Movemental's 
+architecture delivers value that no alternative offering in the sector currently delivers.
+The thesis is this. A denominational network with fifty member churches, each running its own AI tools 
+independently, produces fifty parallel AI deployments that do not compound. Each church reinvents 
+prompts. Each church builds its own recipes. Each church surfaces independently in search. The 
+denomination, despite holding the relational and theological coherence of fifty congregations, gets no 
+platform value from that coherence at the AI layer. The same is true for a training network with its 
+institutes, a seminary with its partner programs, a multi-site church with its campuses, a nonprofit 
+network with its chapters.
+When the same network deploys Configuration E, the institution holds the platform; the member 
+organizations operate as sub-tenants with their own configured slice of it; the institutional governance 
+framework propagates across the network; content produced by any node becomes discoverable across 
+the network where authorized; SEO and content optimization compound rather than competing; agent 
+capability matures across the network as the network learns. The network self-perpetuates as a 
+platform-scale intelligence rather than as fifty independent deployments.
+This is the structural innovation Movemental is positioned to offer. It is not a feature; it is the 
+architectural premise the platform was built on. Configurations D and E are priced accordingly because 
+the value an institution receives is not engineering hours but the platform-scale advantage their network 
+gains. An institution that deploys Configuration E for fifty member organizations is buying something 
+that no off-the-shelf tool can deliver and that no consulting firm can build in a reasonable timeline 
+starting from scratch. It is buying multi-tenant platform value that exists because the architecture was 
+designed for it from inception.
+Nine-J: What deployment actually requires from the organization
+The technological foundation does work, but it does not eliminate the work the organization must do. A 
+clean-eyed view of what each Solutions configuration requires from the organization itself:
+•Configuration A. The organization needs Safety documentation, named green-light use cases from 
+Sandbox, staff capacity to operate the configured tools (Skills or equivalent), and a designated 
+Page 8 of 18
+
+The Movemental AI Path  ·  Parts Nine and Ten
+leader who owns the deployment after the 90-day operational support window. Time 
+commitment from the organization: roughly 20-40 hours of staff time during the deployment 
+phase.
+•Configuration B. All of the above plus a clear specification of the workflows to be deployed and 
+access to the systems the application will integrate with. Time commitment: 60-100 hours of staff 
+time during build and deployment.
+•Configuration C. All of the above plus a content inventory commitment — the organization must 
+work with Movemental to identify, locate, and prepare the content that will be ingested. The 
+content preparation work is often the gating item in the timeline. Time commitment: 100-200 
+hours, with the bulk of it in content preparation.
+•Configuration D. All of the above plus an executive sponsor with sustained leadership attention 
+through the build phase, plus integration access to the organization's existing CRM and 
+communication systems, plus a designated operations leader who will own the platform after 
+deployment. Time commitment: 200-400 hours over the deployment period.
+•Configuration E. All of the above at the institutional level, plus participating commitment from 
+member organizations within the network, plus a network-level governance body that holds the 
+institutional framework. Configuration E is not a platform purchase; it is a network-formation 
+engagement. Time commitment varies dramatically with network size: typically 400-1000 hours at 
+the institutional level plus 50-150 hours per member organization.
+The honest framing is that Configurations D and E require institutional-level commitment to deploy well. 
+They are not engagements an organization can run in the margins. They become possible when the 
+organization has decided that platform-scale AI capability is part of their next chapter and is willing to 
+invest the leadership attention deployment requires.
+Part ten: consolidated pricing across the path
+This part consolidates pricing across all four stages, all productization levels, and all segments into a 
+single reference. The pricing replaces the scattered pricing references throughout the prior parts of the 
+document. When pricing is updated — based on engagement learning, market positioning, or scope 
+refinement — the update happens here first; downstream marketing, sales, and contractual references 
+regenerate from this source.
+Pricing is presented in three sections. First, a master reference table covering every offering at every 
+level. Second, segment-specific pricing notes that name where churches, nonprofits, and institutions 
+encounter different price points or different configuration emphasis. Third, the bundling and 
+Page 9 of 18
+
+The Movemental AI Path  ·  Parts Nine and Ten
+progression pricing — the discounts that apply when an organization commits to multi-stage 
+engagement.
+Ten-A: Master pricing reference
+The following table covers every Movemental offering at every productization level. Prices are in U.S. 
+dollars and reflect first-engagement pricing as of May 2026. Renewal pricing for ongoing platform 
+subscriptions and annual licenses is named separately where applicable.
+Stage 01: Safety Documentation
+OfferingWhat is deliveredPriceSegments
+Field Guide (Free Toolkit)Downloadable seven-
+item toolkit with 
+boilerplate, decision 
+worksheets, sector-
+specific data category 
+templates, and reference 
+card. Email gate; no 
+support.
+FreeAll
+AI-Assisted Safety 
+Product
+Structured intake plus AI 
+generation of customized 
+seven-item safety 
+documentation. Async 
+Q&A support during 
+ratification. Quarterly-
+updated tools reference.
+$1,997All
+Facilitated MVP 
+Engagement
+Two-week facilitator-led 
+engagement producing all 
+seven artifacts ratified by 
+leadership. Includes 
+leadership working 
+sessions, board 
+ratification support, and 
+custom voice tuning for 
+the constituent letter.
+$5,000All
+Safety + Care Boundaries 
+Add-on
+Optional add-on for AI-
+Assisted Safety Product: 
+30-minute facilitator 
+consultation specifically 
+for the Care Boundaries 
+item, where AI assistance 
+most needs human 
+review.
+$300All
+Page 10 of 18
+
+The Movemental AI Path  ·  Parts Nine and Ten
+Stage 02: Sandbox Discovery
+OfferingWhat is deliveredPriceSegments
+Self-Service Sandbox 
+Toolkit
+Downloadable 
+assessment artifact, 
+starter recipe library, Use 
+Case Portfolio template, 
+Discernment Memo 
+template, Readiness 
+Assessment template, 
+four-week internal 
+facilitator guide, and 60-
+minute orientation call.
+$497All
+AI-Assisted SandboxConfigured Claude skills 
+tuned to segment and 
+Safety documentation, 
+pre-customized 
+assessment artifact, Use 
+Case Portfolio web 
+interface, asynchronous 
+facilitator support across 
+four weeks (2-3 hours per 
+week).
+$3,997All
+Facilitated Sandbox 
+Discovery
+Movemental facilitator 
+runs full four-week 
+engagement: assessment, 
+recipe configuration, 
+weekly working sessions, 
+collaborative 
+adjudication, 
+Discernment Memo, 
+Readiness Assessment, 
+leadership conversation.
+$15,000All
+Network Sandbox 
+(Institutions)
+Sandbox engagement 
+extended to institution 
+plus 3-10 member 
+organizations, with 
+shared discovery, shared 
+portfolio, and a teaching 
+artifact published to the 
+network at conclusion.
+From $60,000Institutions only
+Stage 03: Skills Development
+OfferingWhat is deliveredPriceSegments
+Page 11 of 18
+
+The Movemental AI Path  ·  Parts Nine and Ten
+Self-Paced LicenseAnnual license: full eight-
+module course delivered 
+self-paced, agentic 
+tutoring throughout, up 
+to 25 participants per 
+organization, quarterly 
+virtual cohort moments 
+across the network of 
+licensed organizations, 
+annual content updates.
+$4,800/yearAll
+Cohort FacilitationMovemental facilitator 
+runs eight-week cohort 
+for 8-15 participants from 
+a single organization (or 
+multi-org cohorts at 
+institutional level). 
+Weekly synchronous 
+sessions, asynchronous 
+discussion, exercise 
+review, closing 
+integration conversation.
+$15,000All
+Network SkillsSkills delivered as part of 
+network engagement: 
+institutional cohort plus 
+3-10 member-
+organization cohorts, 
+with shared resources, 
+cross-cohort moments, 
+institution-level 
+integration.
+From $60,000Institutions only
+Train-the-Facilitator 
+Certification
+Twelve-week certification 
+program for institutions 
+that want to deliver Skills 
+internally. Certified 
+facilitators can run the 
+course under license with 
+annual recertification.
+$25,000Institutions; large orgs
+Stage 04: Solutions Deployment
+OfferingWhat is deliveredPriceSegments
+Scoping Consultation2-3 week scoping 
+engagement producing a 
+Solutions Brief without 
+committing to build. Brief 
+$5,000All
+Page 12 of 18
+
+The Movemental AI Path  ·  Parts Nine and Ten
+is portable; pricing 
+credited toward build 
+engagement if customer 
+returns within 90 days.
+Configuration A — Tool 
+Optimization
+Enterprise AI tool 
+configured with custom 
+skills, prompts, and Safety 
+integration. 
+Documentation, staff 
+training, 90-day 
+operational support.
+$30,000-$50,000All
+Configuration B — 
+Composed Application
+Focused custom web 
+application for one or two 
+workflows, built on 
+Movemental stack, 
+integrated with existing 
+systems. 90-day 
+operational support.
+$80,000-$150,000All
+Configuration C — 
+Content & Intelligence 
+Platform
+Archive-active platform 
+with content pipeline, 
+agent layer, workflow 
+integration. Plus annual 
+platform licensing.
+$80,000-$150,000Content-heavy orgs
+Configuration D — 
+Movemental Platform 
+Tenant
+Full platform tenant: 
+typed entity chain, agent 
+inventory, LMS, content 
+pipeline, studio 
+components, CRM with 
+voice intake, governance 
+integration. Plus annual 
+platform licensing.
+$180,000-$320,000All
+Configuration E — 
+Network Platform
+Configuration D plus 
+multi-node sub-tenant 
+capacity for member 
+organizations. Cross-node 
+content and 
+discoverability 
+propagation. Tiered 
+annual licensing per 
+node.
+$350,000-$650,000+Institutions; networks
+Configuration F — 
+Hybrid/Bespoke
+Combinations and custom 
+requirements. Scoped per 
+conversation.
+ScopedAll
+Page 13 of 18
+
+The Movemental AI Path  ·  Parts Nine and Ten
+Annual platform licensing (post-deployment, where applicable)
+ConfigurationAnnual platform licenseWhat is includedSegments
+Configuration C$15,000-$30,000/yrPlatform hosting, content 
+pipeline maintenance, 
+agent updates, quarterly 
+capability review.
+Content-heavy orgs
+Configuration D$24,000-$48,000/yrFull platform hosting, all 
+updates, CRM and voice 
+intake operations, 
+quarterly review, priority 
+support.
+All
+Configuration E 
+(institutional)
+$36,000-$72,000/yrInstitutional platform 
+hosting, network 
+governance services, 
+cross-node propagation, 
+quarterly review.
+Institutions only
+Configuration E (per 
+node)
+$6,000-$12,000/yr per 
+node
+Sub-tenant hosting, 
+configuration 
+maintenance, node-level 
+support.
+Member orgs in network
+Ongoing engagement after deployment
+Engagement typeWhat is includedPriceNotes
+Annual retainer (org-
+hosted)
+Periodic optimization, 
+agent updates, 
+governance review, on-
+call advisory. For 
+deployments where the 
+organization hosts.
+$10,000-$30,000/yrConfigurations A, B
+Quarterly review (any 
+config)
+Quarterly working 
+session: deployment 
+review, governance 
+update, capability 
+planning.
+Included with annual 
+licensing
+C, D, E
+As-needed engagementHourly or project-based 
+work post-deployment 
+for organizations that 
+have transitioned to self-
+operation.
+$300/hour or scopedAll
+Add-on Skills cohorts 
+(post-deployment)
+Additional Skills cohorts 
+to expand internal 
+capacity beyond initial 
+Standard Skills pricingAll
+Page 14 of 18
+
+The Movemental AI Path  ·  Parts Nine and Ten
+deployment team.
+Ten-B: Segment-specific pricing notes
+The master pricing reference applies across segments, but each segment has texture that affects which 
+offerings are most relevant and where configurations land within their pricing ranges.
+Churches
+Most churches engage at the Safety and Sandbox levels first. The Field Guide and Facilitated Safety MVP 
+serve solo pastors and smaller congregations well; the AI-Assisted Safety Product serves mid-size 
+churches with a small staff. Sandbox engagement at the facilitated level is appropriate for churches with 
+budget for substantive discovery; the AI-Assisted Sandbox serves churches that want strong support 
+without full facilitation. Skills cohort facilitation is well-positioned for multi-staff churches whose staff 
+will benefit from formation as a group. Configuration A is the most common Solutions deployment for 
+churches; Configurations C and D become relevant for large churches with substantial sermon archives 
+or multi-site operations. Configuration E is the configuration for denominational bodies, networks of 
+churches, and church-planting organizations engaging at the network level.
+Nonprofits
+Nonprofits often arrive with stronger AI adoption than they have governance for, which makes the 
+Safety stage particularly valuable as a corrective rather than as foundational work. The AI-Assisted 
+Safety Product serves the typical mid-size nonprofit well; the Facilitated MVP serves nonprofits where 
+the board needs the structured engagement to ratify governance with confidence. Sandbox at the 
+facilitated level is high-value for nonprofits with operational complexity — multi-program organizations, 
+advocacy groups, social-service nonprofits with beneficiary-facing programs. Skills serves nonprofit 
+teams whose work spans development, programs, and operations. Configurations B and C are the most 
+common Solutions deployments for nonprofits, with Configuration B serving focused workflow needs 
+(donor stewardship, grant writing) and Configuration C serving organizations with substantial program 
+documentation. Configuration D becomes relevant for large nonprofits with platform-scale operational 
+complexity.
+Institutions: seminaries, training networks, denominational bodies
+Institutions typically engage at the network level from the start, which positions them toward Network 
+Sandbox, Network Skills, Train-the-Facilitator certification, and Configuration E from the Solutions menu. 
+The institutional engagement model means Movemental is engaged not only by the institution but by 
+the institution's member or partner organizations through the same framework. Pricing for institutions 
+reflects the network-scale value: Configuration E in particular is priced to reflect that the institution is 
+Page 15 of 18
+
+The Movemental AI Path  ·  Parts Nine and Ten
+buying network platform value that compounds across member organizations rather than buying 
+engineering hours for a single deployment. Train-the-Facilitator certification is highly relevant for 
+institutions that want Skills capacity to live inside their walls and propagate through their formation 
+programs over time.
+Ten-C: Bundling and full-path pricing
+Movemental does not require organizations to commit to the full path at intake; most engagements 
+begin at one stage and continue based on what emerges. However, organizations that commit to multi-
+stage engagement at the time of first contract receive bundled pricing that reflects the engagement 
+efficiency of working with a single partner across the path.
+Two-stage bundles
+BundleComponentsBundled priceDiscount
+Safety + SandboxFacilitated Safety MVP + 
+Facilitated Sandbox 
+Discovery
+$18,000~10% off ($20,000 
+separately)
+Sandbox + SkillsFacilitated Sandbox 
+Discovery + Cohort Skills 
+Facilitation
+$27,000~10% off ($30,000 
+separately)
+Skills + Solutions ACohort Skills Facilitation + 
+Configuration A Solutions 
+Deployment
+From $40,000~10% off (varies)
+Full-path bundles
+BundleComponentsBundled priceNotes
+Full Path (Configuration 
+A)
+Safety MVP + Sandbox 
+Discovery + Skills Cohort 
++ Configuration A 
+Solutions
+$58,50010% off $65,000 
+separately
+Full Path (Configuration 
+B/C)
+Safety MVP + Sandbox 
+Discovery + Skills Cohort 
++ Configuration B or C 
+Solutions
+From $108,00010% off (varies by 
+Solutions config)
+Full Path (Configuration 
+D)
+Safety MVP + Sandbox 
+Discovery + Skills Cohort 
++ Configuration D 
+Solutions
+From $200,00010% off (varies)
+Network Path Network Sandbox + From $440,00010% off institutional 
+Page 16 of 18
+
+The Movemental AI Path  ·  Parts Nine and Ten
+(Configuration E)Network Skills + 
+Configuration E Network 
+Platform
+engagement (varies by 
+network size)
+What the bundling discount reflects
+The bundle discount is not a margin sacrifice; it reflects engagement efficiency. When Movemental 
+knows from contract signing that an organization will move through multiple stages, the team 
+configures the engagement for continuity: the facilitator who runs Safety transitions to Sandbox; the 
+recipe library configured during Sandbox feeds Skills directly; the Skills cohort produces the staff who 
+will operate the Solutions deployment. The 10% discount captures the margin Movemental gains from 
+this continuity and shares it with the customer who committed to the full path.
+Organizations that choose to engage stage-by-stage are not penalized; they pay standard pricing per 
+stage. The choice between stage-by-stage and bundled is a customer choice based on their certainty 
+about the path. Movemental does not pressure organizations into bundles before they are ready.
+Ten-D: Pricing posture
+A note on the pricing posture overall, because it informs how the team should hold pricing in 
+conversation with customers and prospects.
+Movemental's pricing reflects three convictions. First, that the work is real and the value is real, and 
+pricing should reflect that rather than reflecting the discount-anxiety patterns that consulting and SaaS 
+pricing often falls into. The Safety MVP is not priced at $5,000 because that's what the market will bear; 
+it's priced at $5,000 because two weeks of facilitator time on an outcome that protects the organization 
+is honestly worth that and is honestly worth more, and the lower-priced AI-Assisted product exists for 
+organizations whose budget cannot reach $5,000.
+Second, that segment-specific pricing is reductive of the work and Movemental will not do it. A church 
+and a nonprofit and an institution doing the same work receive the same price for the same work. 
+Discounts exist for full-path commitment, for network-scale engagement, and for context where 
+Movemental and the organization mutually agree that the work warrants it. Discounts do not exist by 
+category of organization.
+Third, that pricing is honest about what Movemental does and does not provide. Configuration A does 
+not pretend to be Configuration D. Configuration E does not pretend to be available to every 
+organization. The pricing structure is transparent so that the conversation between Movemental and a 
+prospective customer can focus on what the organization actually needs rather than on what the 
+salesperson is trying to sell.
+Page 17 of 18
+
+The Movemental AI Path  ·  Parts Nine and Ten
+The path is the path. The pricing reflects the path. This document keeps both coherent.
+Update protocol for Parts Nine and Ten
+Parts Nine and Ten are subject to the same update protocol as the rest of the source-of-truth document. 
+The technological foundation evolves as Movemental's repository evolves; the pricing evolves as 
+engagement learning informs the team. Updates happen in this document first; downstream marketing, 
+sales, and contractual references regenerate from this source. Quarterly review by the Movemental 
+team. Annual review of pricing against engagement margin and market position. The audit document 
+referenced in Part Nine is updated with each repository survey.
+The path is the path. This document keeps the path coherent.
+Page 18 of 18

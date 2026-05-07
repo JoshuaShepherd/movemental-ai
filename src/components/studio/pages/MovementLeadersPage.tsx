@@ -16,7 +16,7 @@ export function MovementLeadersPage() {
       <section className="band-midnight hero" aria-labelledby="hero-h1">
         <Container>
           <Reveal>
-            <span className="section-eyebrow">Trusted voices · Definition</span>
+            <span className="section-eyebrow">Movement Voices · Definition</span>
             <h1 id="hero-h1" className="display hero-headline max-w-4xl">
               What we mean by <em dangerouslySetInnerHTML={{__html: 'movement leader'}} />.
             </h1>
@@ -131,9 +131,9 @@ export function MovementLeadersPage() {
         <Container>
           <Reveal>
             <SectionHead 
-              eyebrow="Trusted voices"
+              eyebrow="Movement Voices"
               display={<>Where these names are <em dangerouslySetInnerHTML={{__html: 'visible'}} />.</>}
-              lede="Our named ecosystem lives on the Trusted voices page."
+              lede="Our named ecosystem lives on the Movement Voices page."
             />
             
             <p className="prose max-w-[640px] text-[1.0625rem] leading-[1.75] text-muted-foreground mb-10">
@@ -162,7 +162,7 @@ export function MovementLeadersPage() {
                   <p>If we build surfaces for this group in the future, they will be editorial surfaces (roundtables, anthologies, structured critiques) — not consulting products.</p>
                   
                   <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-border-soft">
-                     <Link href="/voices" className="text-primary font-medium hover:underline inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span> Trusted voices page</Link>
+                     <Link href="/voices" className="text-primary font-medium hover:underline inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span> Movement Voices page</Link>
                      <Link href="/who-we-serve" className="text-primary font-medium hover:underline inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span> Who we serve</Link>
                   </div>
                </div>

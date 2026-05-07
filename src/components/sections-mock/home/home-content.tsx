@@ -3,19 +3,19 @@
  *
  * Decision-driven sequence:
  *   Hero (recognition) →
- *   Audience (orientation) →
+ *   Audience (segment routing) →
  *   Path (the framework, including stage outcomes inline) →
- *   Consequence (what happens if you don't lead this) →
- *   Credibility (who is behind this) →
+ *   Credibility (who is behind this — founders + Movement Voices) →
+ *   Proof beat (the path is being walked) →
  *   Final CTA (action).
  */
 
 import { AudienceFold } from "./audience-fold";
-import { ConsequenceFold } from "./consequence-fold";
 import { CredibilityFold } from "./credibility-fold";
 import { FinalCta } from "./final-cta";
 import { HeroFold } from "./hero-fold";
 import { PathFold } from "./path-fold";
+import { ProofBeatFold } from "./proof-beat-fold";
 
 export function HomeContent() {
   return (
@@ -23,8 +23,8 @@ export function HomeContent() {
       <HeroFold />
       <AudienceFold />
       <PathFold />
-      <ConsequenceFold />
       <CredibilityFold />
+      <ProofBeatFold />
       <FinalCta />
     </>
   );

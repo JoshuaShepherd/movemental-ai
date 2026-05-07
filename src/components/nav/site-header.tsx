@@ -100,7 +100,7 @@ export function SiteHeader() {
             </Link>
             <div className="invisible absolute top-full left-0 z-50 w-64 translate-y-2 rounded-xl border border-border bg-card p-2 opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
               <Link
-                href="/pathway/foundations"
+                href="/pathway/safety"
                 className="block rounded-lg px-4 py-3 transition-colors hover:bg-section"
               >
                 <div className="text-sm font-semibold text-foreground">
@@ -111,7 +111,7 @@ export function SiteHeader() {
                 </div>
               </Link>
               <Link
-                href="/pathway/lab"
+                href="/pathway/sandbox"
                 className="block rounded-lg px-4 py-3 transition-colors hover:bg-section"
               >
                 <div className="text-sm font-semibold text-foreground">
@@ -122,18 +122,18 @@ export function SiteHeader() {
                 </div>
               </Link>
               <Link
-                href="/training"
+                href="/pathway/skills"
                 className="block rounded-lg px-4 py-3 transition-colors hover:bg-section"
               >
                 <div className="text-sm font-semibold text-foreground">
                   03. Skills Development
                 </div>
                 <div className="mt-1 text-xs text-muted-foreground">
-                  Cohorts & self-paced fluency
+                  Cohorts & self-paced training
                 </div>
               </Link>
               <Link
-                href="/technology"
+                href="/pathway/solutions"
                 className="block rounded-lg px-4 py-3 transition-colors hover:bg-section"
               >
                 <div className="text-sm font-semibold text-foreground">
@@ -242,18 +242,18 @@ export function SiteHeader() {
               Products
             </span>
             <Link
-              href="/training"
+              href="/pathway/skills"
               onClick={() => setIsMenuOpen(false)}
               className="rounded-md p-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
             >
-              Training
+              Skills Development
             </Link>
             <Link
-              href="/technology"
+              href="/pathway/solutions"
               onClick={() => setIsMenuOpen(false)}
               className="rounded-md p-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
             >
-              Technology
+              Solutions Deployment
             </Link>
           </div>
           <div className="border-border ml-2 flex flex-col gap-2 border-l-2 py-1 pl-4">

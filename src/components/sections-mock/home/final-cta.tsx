@@ -17,10 +17,7 @@ export function FinalCta() {
           Start with safety. Build capability. Lead with clarity.
         </p>
         <div className="hero-actions final-cta__actions">
-          <BtnPill href="/start-with-safety" variant="primary">
-            Start with Safety
-          </BtnPill>
-          <BtnPill href="/contact" variant="ghost">
+          <BtnPill href="/contact" variant="primary">
             Start a Conversation
           </BtnPill>
         </div>

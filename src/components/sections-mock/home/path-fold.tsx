@@ -11,7 +11,7 @@ export function PathFold() {
     >
       <div className="container path-section__inner">
         <header className="path-section__header">
-          <p className="section-eyebrow">The Movemental AI path</p>
+          <p className="section-eyebrow">The Movemental AI Path</p>
           <h2 className="path-section__title" id="path-heading">
             A clear order for leading your organization through AI.
           </h2>
@@ -27,11 +27,8 @@ export function PathFold() {
         <InteractivePath />
 
         <div className="path-section__cta mt-12 md:mt-16">
-          <BtnPill href="/field-guide#stage-safety" variant="primary">
+          <BtnPill href="/pathway/safety" variant="primary">
             Start with Safety
-          </BtnPill>
-          <BtnPill href="/field-guide" variant="ghost">
-            See the Full Path
           </BtnPill>
         </div>
       </div>

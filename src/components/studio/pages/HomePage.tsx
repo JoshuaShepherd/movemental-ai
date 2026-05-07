@@ -10,8 +10,8 @@ import { VOICES } from '@/data/home-data';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const homePathwayStops = [
-  { num: '01', name: 'Safety Documentation', duration: '2 weeks', price: '$5,000', outcome: 'Your AI policy, drafted and board-ready.', href: '/pathway/foundations' },
-  { num: '02', name: 'Sandbox Discovery', duration: '4 weeks', price: '$15,000', outcome: 'Use cases proven, risks documented.', href: '/pathway/lab' },
+  { num: '01', name: 'Safety Documentation', duration: '2 weeks', price: '$5,000', outcome: 'Your AI policy, drafted and board-ready.', href: '/pathway/safety' },
+  { num: '02', name: 'Sandbox Discovery', duration: '4 weeks', price: '$15,000', outcome: 'Use cases proven, risks documented.', href: '/pathway/sandbox' },
   { num: '03', name: 'Skills Development', duration: '8 weeks', price: 'from $4,800/yr', outcome: 'Your team trained to lead this work.', href: '/training' },
   { num: '04', name: 'Solutions Deployment', duration: '8–12 weeks', price: 'from $30,000', outcome: 'Your intelligence integrated, activated, multiplied.', href: '/technology' }
 ];
@@ -52,7 +52,7 @@ function WhyThisOrderFold() {
                 When AI lands on top of a fragmented organization — scattered knowledge, unclear decision rights, mixed signals about what's safe to share, and no shared vocabulary for risk — it doesn't help. It accelerates the fragmentation. The organization moves faster, but in more directions. The leaders who said yes to AI start to feel like they invited a problem they don't know how to name.
               </p>
               <p>
-                The way out is not slower AI. It's earlier human work. Foundations, Lab, and Fluency are not pre-AI hesitation; they're the work that makes the AI investment compound rather than corrode. Skip them and you'll spend the next two years undoing damage. Do them and Build is the easiest decision your board makes that year.
+                The way out is not slower AI. It's earlier human work. Safety, Sandbox, and Skills are not pre-AI hesitation; they're the work that makes the AI investment compound rather than corrode. Skip them and you'll spend the next two years undoing damage. Do them and Solutions Deployment is the easiest decision your board makes that year.
               </p>
               <p>
                 We tell you this up front because most vendors won't. Their incentive is to sell you the chatbot today. Ours is to build something that lasts long enough to be worth what you'll spend on it.
