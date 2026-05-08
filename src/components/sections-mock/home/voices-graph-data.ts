@@ -1,6 +1,9 @@
 /**
  * Movement Voices graph — single source for the credibility-band network.
  * IDs are stable slugs for layout and React Flow keys.
+ *
+ * Topology: Alan Hirsch sits at the center, all other voices in a ring around
+ * him; every voice connects to every other voice (all-channel network).
  */
 
 export interface VoiceGraphVoice {
@@ -11,17 +14,7 @@ export interface VoiceGraphVoice {
   imageSrc: string;
 }
 
-/** Abstract anchor nodes: shared field (formation, mission, place) — scenius backbone, not a roster. */
-export interface VoiceThemeAnchor {
-  id: string;
-  label: string;
-}
-
-export const VOICE_THEME_ANCHORS: readonly VoiceThemeAnchor[] = [
-  { id: "theme-formation", label: "Formation" },
-  { id: "theme-mission", label: "Mission" },
-  { id: "theme-place", label: "Place" },
-];
+export const CENTER_VOICE_ID = "alan-hirsch";
 
 export const MOVEMENT_VOICES: readonly VoiceGraphVoice[] = [
   {
@@ -30,6 +23,20 @@ export const MOVEMENT_VOICES: readonly VoiceGraphVoice[] = [
     title: "Founder, 100Movements & Forge Mission Training Network",
     initials: "AH",
     imageSrc: "/images/voices/alan-hirsch.webp",
+  },
+  {
+    id: "brad-brisco",
+    name: "Brad Brisco",
+    title: "CEO & Co-founder, Movemental",
+    initials: "BB",
+    imageSrc: "/images/voices/brad-brisco.webp",
+  },
+  {
+    id: "josh-shepherd",
+    name: "Joshua Shepherd",
+    title: "CTO & Founder, Movemental",
+    initials: "JS",
+    imageSrc: "/images/voices/josh-shepherd.webp",
   },
   {
     id: "liz-rios",
@@ -74,22 +81,3 @@ export const MOVEMENT_VOICES: readonly VoiceGraphVoice[] = [
     imageSrc: "/images/voices/rob-wegner.webp",
   },
 ];
-
-/**
- * Curated voice↔theme edges (light hub). Adjust as the public story evolves.
- */
-export const MOVEMENT_VOICE_THEME_LINKS: readonly { source: string; target: string }[] =
-  [
-    { source: "alan-hirsch", target: "theme-formation" },
-    { source: "alan-hirsch", target: "theme-mission" },
-    { source: "liz-rios", target: "theme-formation" },
-    { source: "liz-rios", target: "theme-place" },
-    { source: "rowland-smith", target: "theme-mission" },
-    { source: "jr-woodward", target: "theme-mission" },
-    { source: "jr-woodward", target: "theme-place" },
-    { source: "lucas-pulley", target: "theme-mission" },
-    { source: "lucas-pulley", target: "theme-place" },
-    { source: "tim-catchim", target: "theme-formation" },
-    { source: "rob-wegner", target: "theme-place" },
-    { source: "rob-wegner", target: "theme-mission" },
-  ];

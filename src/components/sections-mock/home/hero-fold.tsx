@@ -7,20 +7,23 @@ export function HeroFold() {
       aria-labelledby="hero-h1"
     >
       <div className="container">
-        <p className="eyebrow">For organizational leaders</p>
         <h1 className="display hero-headline" id="hero-h1">
           <span className="hero-headline__line">
             AI is already inside your organization.
           </span>
-          <span className="hero-headline__line">
-            The question is whether you’re{" "}
-            <em>leading it—or reacting to it.</em>
-          </span>
         </h1>
         <p className="lede lede--regular hero-subhead">
-          We give mission-driven organizations a clear path to adopt AI safely,
-          build real capability, and lead their people through it—without losing
-          trust, credibility, or identity.
+          We built a path to walk you through the organizational and
+          technological challenges posed by AI.
+        </p>
+        <p className="lede lede--regular hero-subhead">
+          Four stages, ordered to ensure a strong human foundation precedes any
+          technological implementation. Safety first: the governance that
+          answers the questions your people are asking. Sandbox: disciplined
+          exploration of valuable AI use cases and ethical concerns, without the
+          risks of publication and privacy issues. Skills: formation that
+          produces leaders, not just users. Solutions: AI-integrated
+          technological deployment built on the secure foundation.
         </p>
         <div className="hero-actions">
           <BtnPill href="#pathway" variant="primary">

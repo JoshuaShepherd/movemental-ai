@@ -23,19 +23,15 @@ import { Button } from "@/components/ui/button";
 
 import {
   layoutMovementVoices,
-  THEME_NODE_H,
-  THEME_NODE_W,
   VOICE_AVATAR_PX,
 } from "./layout-movement-voices";
 import {
+  CENTER_VOICE_ID,
   MOVEMENT_VOICES,
-  MOVEMENT_VOICE_THEME_LINKS,
-  VOICE_THEME_ANCHORS,
   type VoiceGraphVoice,
 } from "./voices-graph-data";
 
-type VoiceFlowData = { voice: VoiceGraphVoice };
-type ThemeFlowData = { label: string };
+type VoiceFlowData = { voice: VoiceGraphVoice; isCenter: boolean };
 
 const VoiceAvatarNode = memo(function VoiceAvatarNode({
   data,
@@ -43,7 +39,13 @@ const VoiceAvatarNode = memo(function VoiceAvatarNode({
   const v = data.voice;
   return (
     <div className="flex w-[72px] flex-col items-center gap-0 touch-manipulation">
-      <div className="relative h-[72px] w-[72px] shrink-0 overflow-hidden rounded-full bg-muted ring-1 ring-border">
+      <div
+        className={`relative h-[72px] w-[72px] shrink-0 overflow-hidden rounded-full bg-muted transition-shadow ${
+          data.isCenter
+            ? "ring-2 ring-foreground/80 ring-offset-2 ring-offset-card"
+            : "ring-1 ring-border"
+        }`}
+      >
         <Image
           src={v.imageSrc}
           alt=""
@@ -54,32 +56,13 @@ const VoiceAvatarNode = memo(function VoiceAvatarNode({
           priority={false}
           aria-hidden
         />
-        <span
-          aria-hidden
-          className="pointer-events-none absolute left-1.5 top-1.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-background/90 text-[10px] font-semibold tracking-tight text-foreground backdrop-blur-sm"
-        >
-          {v.initials}
-        </span>
       </div>
-    </div>
-  );
-});
-
-const ThemeAnchorNode = memo(function ThemeAnchorNode({
-  data,
-}: NodeProps<Node<ThemeFlowData>>) {
-  return (
-    <div className="pointer-events-none flex max-w-28 touch-none items-center justify-center rounded-full border border-border bg-muted/90 px-3 py-1.5 text-center backdrop-blur-sm">
-      <span className="text-[10px] font-medium uppercase tracking-eyebrow text-muted-foreground">
-        {data.label}
-      </span>
     </div>
   );
 });
 
 const nodeTypes = {
   voice: VoiceAvatarNode,
-  theme: ThemeAnchorNode,
 };
 
 function subscribeReducedMotion(onChange: () => void): () => void {
@@ -97,19 +80,6 @@ function flowNodesFromLayout(
 ): Node[] {
   const out: Node[] = [];
 
-  for (const t of VOICE_THEME_ANCHORS) {
-    const p = positions.get(t.id);
-    if (!p) continue;
-    out.push({
-      id: t.id,
-      type: "theme",
-      position: { x: p.x - THEME_NODE_W / 2, y: p.y - THEME_NODE_H / 2 },
-      data: { label: t.label },
-      draggable: false,
-      selectable: false,
-    });
-  }
-
   for (const v of MOVEMENT_VOICES) {
     const p = positions.get(v.id);
     if (!p) continue;
@@ -117,7 +87,7 @@ function flowNodesFromLayout(
       id: v.id,
       type: "voice",
       position: { x: p.x - VOICE_AVATAR_PX / 2, y: p.y - VOICE_AVATAR_PX / 2 },
-      data: { voice: v },
+      data: { voice: v, isCenter: v.id === CENTER_VOICE_ID },
       draggable: false,
       selectable: false,
     });
@@ -126,17 +96,34 @@ function flowNodesFromLayout(
   return out;
 }
 
-const edges: Edge[] = MOVEMENT_VOICE_THEME_LINKS.map((l, i) => ({
-  id: `mv-${i}`,
-  source: l.source,
-  target: l.target,
-  style: {
-    stroke: "var(--border)",
-    strokeWidth: 1,
-    strokeOpacity: 0.42,
-  },
-  interactionWidth: 20,
-}));
+/**
+ * All-channel mesh — every voice connects to every other voice (K_n). Lines
+ * touching the center voice render a hair stronger so Alan reads as the hub
+ * without breaking the all-channel intent.
+ */
+const allChannelEdges: Edge[] = (() => {
+  const edges: Edge[] = [];
+  for (let i = 0; i < MOVEMENT_VOICES.length; i++) {
+    for (let j = i + 1; j < MOVEMENT_VOICES.length; j++) {
+      const a = MOVEMENT_VOICES[i].id;
+      const b = MOVEMENT_VOICES[j].id;
+      const touchesCenter = a === CENTER_VOICE_ID || b === CENTER_VOICE_ID;
+      edges.push({
+        id: `mv-${a}-${b}`,
+        source: a,
+        target: b,
+        type: "straight",
+        style: {
+          stroke: "var(--foreground)",
+          strokeWidth: touchesCenter ? 1 : 0.75,
+          strokeOpacity: touchesCenter ? 0.28 : 0.16,
+        },
+        interactionWidth: 0,
+      });
+    }
+  }
+  return edges;
+})();
 
 interface MovementVoicesNetworkProps {
   ariaLabel: string;
@@ -160,7 +147,7 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
       const r = entries[0]?.contentRect;
       if (!r) return;
       const w = Math.max(320, r.width);
-      const h = Math.max(360, Math.min(540, w * 0.58));
+      const h = Math.max(360, Math.min(540, w * 0.62));
       setDims({ w, h });
     });
     ro.observe(el);
@@ -168,42 +155,31 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
   }, []);
 
   const positions = useMemo(
-    () =>
-      layoutMovementVoices(
-        MOVEMENT_VOICES,
-        VOICE_THEME_ANCHORS,
-        MOVEMENT_VOICE_THEME_LINKS,
-        dims.w,
-        dims.h,
-        reducedMotion,
-      ),
-    [dims.w, dims.h, reducedMotion],
+    () => layoutMovementVoices(MOVEMENT_VOICES, dims.w, dims.h),
+    [dims.w, dims.h],
   );
 
   const nodes = useMemo(() => flowNodesFromLayout(positions), [positions]);
 
   const onInit = useCallback((inst: ReactFlowInstance) => {
     rfRef.current = inst;
-    inst.fitView({ padding: 0.18, duration: 0 });
+    inst.fitView({ padding: 0.16, duration: 0 });
   }, []);
 
   useEffect(() => {
     const inst = rfRef.current;
     if (!inst) return;
     inst.fitView({
-      padding: 0.18,
+      padding: 0.16,
       duration: reducedMotion ? 0 : 220,
     });
   }, [dims.w, dims.h, positions, reducedMotion]);
 
-  const onNodeEnter = useCallback(
-    (_: React.MouseEvent, n: Node) => {
-      if (n.type === "voice" && n.data && "voice" in n.data) {
-        setHoverVoice((n.data as VoiceFlowData).voice);
-      }
-    },
-    [],
-  );
+  const onNodeEnter = useCallback((_: React.MouseEvent, n: Node) => {
+    if (n.type === "voice" && n.data && "voice" in n.data) {
+      setHoverVoice((n.data as VoiceFlowData).voice);
+    }
+  }, []);
 
   const onNodeLeave = useCallback(() => {
     setHoverVoice(null);
@@ -223,7 +199,7 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
             className="text-xs"
             onClick={() =>
               rfRef.current?.fitView({
-                padding: 0.18,
+                padding: 0.16,
                 duration: reducedMotion ? 0 : 280,
               })
             }
@@ -231,8 +207,8 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
             Reset view
           </Button>
           <p className="max-w-sm text-xs text-muted-foreground md:text-right">
-            Drag to pan, scroll or pinch to zoom. Hover a portrait for detail — a
-            shared field of formation, mission, and place.
+            Drag to pan, scroll or pinch to zoom. Hover a portrait for detail —
+            an all-channel network of trusted voices around the conversation.
           </p>
         </div>
       </div>
@@ -242,7 +218,7 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
           <div
             ref={wrapRef}
             className="relative w-full overflow-hidden rounded-xl bg-card ring-1 ring-border"
-            style={{ height: "min(520px, 70vh)", minHeight: 360 }}
+            style={{ height: "min(540px, 72vh)", minHeight: 360 }}
           >
             <div
               className="h-full w-full"
@@ -252,7 +228,7 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
               <ReactFlow
                 className="h-full w-full"
                 nodes={nodes}
-                edges={edges}
+                edges={allChannelEdges}
                 nodeTypes={nodeTypes}
                 onInit={onInit}
                 onNodeMouseEnter={onNodeEnter}
