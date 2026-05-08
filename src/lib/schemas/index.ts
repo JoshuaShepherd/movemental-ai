@@ -1,5 +1,5 @@
 // Auto-generated Zod schemas from Drizzle schema
-// Generated at: 2026-05-03T05:38:26.806Z
+// Generated at: 2026-05-08T13:16:00.744Z
 // Do not edit manually - regenerate with: pnpm generate:schemas
 
 import { z } from "zod";
@@ -18,6 +18,9 @@ import {
   affiliateReferrals,
   agentGuardrailAssignments,
   agentGuardrails,
+  corpusBindings,
+  promptPacks,
+  promptPackLayers,
   agents,
   agentHandoffs,
   agentInstances,
@@ -377,6 +380,47 @@ export type AgentGuardrails = z.infer<typeof AgentGuardrailsSelectSchema>;
 export type AgentGuardrailsCreate = z.infer<typeof AgentGuardrailsInsertSchema>;
 export type AgentGuardrailsUpdate = z.infer<typeof AgentGuardrailsUpdateSchema>;
 export type AgentGuardrailsFilters = z.infer<typeof AgentGuardrailsFiltersSchema>;
+
+// CorpusBindings
+export const CorpusBindingsSelectSchema = createSelectSchema(corpusBindings);
+export const CorpusBindingsInsertSchema = createInsertSchema(corpusBindings);
+export const CorpusBindingsUpdateSchema = createUpdateSchema(corpusBindings);
+export const CorpusBindingsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  status: z.string().optional(),
+});
+
+export type CorpusBindings = z.infer<typeof CorpusBindingsSelectSchema>;
+export type CorpusBindingsCreate = z.infer<typeof CorpusBindingsInsertSchema>;
+export type CorpusBindingsUpdate = z.infer<typeof CorpusBindingsUpdateSchema>;
+export type CorpusBindingsFilters = z.infer<typeof CorpusBindingsFiltersSchema>;
+
+// PromptPacks
+export const PromptPacksSelectSchema = createSelectSchema(promptPacks);
+export const PromptPacksInsertSchema = createInsertSchema(promptPacks);
+export const PromptPacksUpdateSchema = createUpdateSchema(promptPacks);
+export const PromptPacksFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  status: z.string().optional(),
+});
+
+export type PromptPacks = z.infer<typeof PromptPacksSelectSchema>;
+export type PromptPacksCreate = z.infer<typeof PromptPacksInsertSchema>;
+export type PromptPacksUpdate = z.infer<typeof PromptPacksUpdateSchema>;
+export type PromptPacksFilters = z.infer<typeof PromptPacksFiltersSchema>;
+
+// PromptPackLayers
+export const PromptPackLayersSelectSchema = createSelectSchema(promptPackLayers);
+export const PromptPackLayersInsertSchema = createInsertSchema(promptPackLayers);
+export const PromptPackLayersUpdateSchema = createUpdateSchema(promptPackLayers);
+export const PromptPackLayersFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type PromptPackLayers = z.infer<typeof PromptPackLayersSelectSchema>;
+export type PromptPackLayersCreate = z.infer<typeof PromptPackLayersInsertSchema>;
+export type PromptPackLayersUpdate = z.infer<typeof PromptPackLayersUpdateSchema>;
+export type PromptPackLayersFilters = z.infer<typeof PromptPackLayersFiltersSchema>;
 
 // Agents
 export const AgentsSelectSchema = createSelectSchema(agents);

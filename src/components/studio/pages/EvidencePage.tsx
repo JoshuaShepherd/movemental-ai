@@ -41,19 +41,19 @@ export function EvidencePage() {
             />
             
             <div className="grid md:grid-cols-2 gap-8 mb-12">
-               <div className="bg-card p-8 border border-border rounded-xl shadow-sm">
+               <div className="bg-card p-8 border border-border rounded-xl">
                   <h3 className="text-xl font-medium text-foreground mb-4">Shadow IT is expanding daily.</h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">Your staff is using AI to draft emails, summarize meetings, and generate content. If you haven't set the boundaries, the boundaries are being set by individual discretion.</p>
                </div>
-               <div className="bg-card p-8 border border-border rounded-xl shadow-sm">
+               <div className="bg-card p-8 border border-border rounded-xl">
                   <h3 className="text-xl font-medium text-foreground mb-4">Data is vulnerable.</h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">Pastoral care notes, internal strategy, and donor profiles are being pasted into public LLMs. The liability is quiet, but it is real.</p>
                </div>
-               <div className="bg-card p-8 border border-border rounded-xl shadow-sm">
+               <div className="bg-card p-8 border border-border rounded-xl">
                   <h3 className="text-xl font-medium text-foreground mb-4">Trust is fragile.</h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">Congregations and donors are highly sensitive to authenticity. Discovering undisclosed AI use fractures relational trust faster than almost any other misstep.</p>
                </div>
-               <div className="bg-card p-8 border border-border rounded-xl shadow-sm">
+               <div className="bg-card p-8 border border-border rounded-xl">
                   <h3 className="text-xl font-medium text-foreground mb-4">Theology is embedded.</h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">Large Language Models are not neutral processors; they are worldviews encoded in statistics. Using them unreflectively imports foreign theology into the heart of your mission.</p>
                </div>
@@ -76,20 +76,20 @@ export function EvidencePage() {
             />
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-               <div className="bg-card p-6 border-l-4 border-foreground shadow-sm">
-                  <h4 className="font-bold text-foreground mb-2">Safety</h4>
+               <div className="bg-card p-6 border-l-4 border-foreground">
+                  <h4 className="text-foreground mb-2">Safety</h4>
                   <p className="text-xs text-muted-foreground">Create boundaries. Protect data.</p>
                </div>
-               <div className="bg-card p-6 border-l-4 border-foreground/70 shadow-sm">
-                  <h4 className="font-bold text-foreground mb-2">Sandbox</h4>
+               <div className="bg-card p-6 border-l-4 border-foreground/70">
+                  <h4 className="text-foreground mb-2">Sandbox</h4>
                   <p className="text-xs text-muted-foreground">Experiment in isolated security.</p>
                </div>
-               <div className="bg-card p-6 border-l-4 border-foreground/40 shadow-sm">
-                  <h4 className="font-bold text-foreground mb-2">Skills</h4>
+               <div className="bg-card p-6 border-l-4 border-foreground/40">
+                  <h4 className="text-foreground mb-2">Skills</h4>
                   <p className="text-xs text-muted-foreground">Form human judgment.</p>
                </div>
-               <div className="bg-card p-6 border-l-4 border-foreground/20 shadow-sm">
-                  <h4 className="font-bold text-foreground mb-2">Solutions</h4>
+               <div className="bg-card p-6 border-l-4 border-foreground/20">
+                  <h4 className="text-foreground mb-2">Solutions</h4>
                   <p className="text-xs text-muted-foreground">Deploy systemic impact.</p>
                </div>
             </div>
@@ -100,11 +100,11 @@ export function EvidencePage() {
 
             <div className="grid md:grid-cols-2 gap-px bg-border rounded-card overflow-hidden mb-12 max-w-4xl">
                <div className="bg-card p-8">
-                  <h3 className="text-sm font-semibold uppercase tracking-widest text-destructive mb-4">Out of order</h3>
+                  <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-destructive mb-4">Out of order</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed block">Focusing on tools first leads to fragmented adoption, ethical oversights, and data vulnerabilities.</p>
                </div>
                <div className="bg-card p-8">
-                  <h3 className="text-sm font-semibold uppercase tracking-widest text-primary mb-4">In order</h3>
+                  <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-primary mb-4">In order</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed block">Establishing a foundation of safety and sandbox testing creates the freedom to build real skills and robust solutions calmly.</p>
                </div>
             </div>
@@ -124,15 +124,15 @@ export function EvidencePage() {
                />
                <div className="grid md:grid-cols-3 gap-8">
                  <div className="bg-section p-8 rounded-xl border border-border">
-                    <h3 className="text-sm font-semibold uppercase tracking-widest text-ink-soft mb-6 border-b border-border-soft pb-4">Nonprofit Executive Teams</h3>
+                    <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-ink-soft mb-6 border-b border-border-soft pb-4">Nonprofit Executive Teams</h3>
                     <p className="text-[0.98rem] leading-relaxed text-foreground">Locking down acceptable use policies that protect donor confidentiality before implementing AI-driven qualitative grant analysis.</p>
                  </div>
                  <div className="bg-section p-8 rounded-xl border border-border">
-                    <h3 className="text-sm font-semibold uppercase tracking-widest text-ink-soft mb-6 border-b border-border-soft pb-4">Church Planters</h3>
+                    <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-ink-soft mb-6 border-b border-border-soft pb-4">Church Planters</h3>
                     <p className="text-[0.98rem] leading-relaxed text-foreground">Using secure sandboxes to map demographic data while explicitly drawing theological red-lines around pastoral care communication.</p>
                  </div>
                  <div className="bg-section p-8 rounded-xl border border-border">
-                    <h3 className="text-sm font-semibold uppercase tracking-widest text-ink-soft mb-6 border-b border-border-soft pb-4">Seminary Faculties</h3>
+                    <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-ink-soft mb-6 border-b border-border-soft pb-4">Seminary Faculties</h3>
                     <p className="text-[0.98rem] leading-relaxed text-foreground">Aligning institutional AI posture across diverse academic disciplines to craft coherent syllabus expectations for students.</p>
                  </div>
                </div>

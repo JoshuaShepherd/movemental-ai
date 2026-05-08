@@ -87,14 +87,14 @@ export function VoicesPage() {
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
                {VOICES_LIST.map((voice, i) => (
-                  <div key={i} className="group bg-card rounded-2xl overflow-hidden ring-1 ring-border/40 flex flex-col h-full hover:ring-primary/30 transition-all duration-300 shadow-sm hover:shadow-md cursor-default">
+                  <div key={i} className="group bg-card rounded-2xl overflow-hidden ring-1 ring-border/40 flex flex-col h-full hover:ring-primary/30 transition-all duration-300 cursor-default">
                      <div className="aspect-[4/5] bg-section w-full relative overflow-hidden mb-0">
                         <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500 z-10 mix-blend-multiply"></div>
                         <img src={voice.image} alt={voice.name} referrerPolicy="no-referrer" className="w-full h-full object-cover grayscale transition-all duration-700 ease-out group-hover:grayscale-0 group-hover:scale-105 relative z-0" onError={(e) => { e.currentTarget.src = 'https://ui-avatars.com/api/?name='+encodeURI(voice.name)+'&size=400&background=F3EFEA'; }} />
                      </div>
                      <div className="p-6 md:p-8 flex flex-col flex-grow relative z-20 bg-card">
                         <h3 className="font-serif-display text-3xl italic text-foreground mb-2 group-hover:text-primary transition-colors">{voice.name}</h3>
-                        <p className="text-xs uppercase tracking-widest font-semibold text-primary/80 mb-5 pb-5 border-b border-border/60">{voice.descriptor}</p>
+                        <p className="text-xs uppercase tracking-eyebrow font-semibold text-primary/80 mb-5 pb-5 border-b border-border/60">{voice.descriptor}</p>
                         <p className="text-[0.98rem] text-muted-foreground leading-relaxed mt-auto">{voice.note}</p>
                      </div>
                   </div>

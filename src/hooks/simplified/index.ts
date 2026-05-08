@@ -1,5 +1,5 @@
 // Auto-generated hooks index
-// Generated at: 2026-05-03T05:39:29.423Z
+// Generated at: 2026-05-08T13:16:04.425Z
 // Do not edit manually - regenerate with: pnpm generate:hooks
 
 export { buildQueryString } from "./query-utils";
@@ -16,6 +16,9 @@ export * from "./purchases.hooks";
 export * from "./affiliate-referrals.hooks";
 export * from "./agent-guardrail-assignments.hooks";
 export * from "./agent-guardrails.hooks";
+export * from "./corpus-bindings.hooks";
+export * from "./prompt-packs.hooks";
+export * from "./prompt-pack-layers.hooks";
 export * from "./agents.hooks";
 export * from "./agent-handoffs.hooks";
 export * from "./agent-instances.hooks";

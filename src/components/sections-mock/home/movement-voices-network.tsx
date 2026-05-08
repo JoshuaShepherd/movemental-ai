@@ -56,7 +56,7 @@ const VoiceAvatarNode = memo(function VoiceAvatarNode({
         />
         <span
           aria-hidden
-          className="pointer-events-none absolute left-1.5 top-1.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-background/90 text-[10px] font-semibold tracking-tight text-foreground shadow-sm backdrop-blur-sm"
+          className="pointer-events-none absolute left-1.5 top-1.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-background/90 text-[10px] font-semibold tracking-tight text-foreground backdrop-blur-sm"
         >
           {v.initials}
         </span>
@@ -69,7 +69,7 @@ const ThemeAnchorNode = memo(function ThemeAnchorNode({
   data,
 }: NodeProps<Node<ThemeFlowData>>) {
   return (
-    <div className="pointer-events-none flex max-w-28 touch-none items-center justify-center rounded-full border border-border bg-muted/90 px-3 py-1.5 text-center shadow-sm backdrop-blur-sm">
+    <div className="pointer-events-none flex max-w-28 touch-none items-center justify-center rounded-full border border-border bg-muted/90 px-3 py-1.5 text-center backdrop-blur-sm">
       <span className="text-[10px] font-medium uppercase tracking-eyebrow text-muted-foreground">
         {data.label}
       </span>

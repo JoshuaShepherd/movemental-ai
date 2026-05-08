@@ -146,7 +146,7 @@ export function ContactPage() {
           <Reveal>
             <div className="mx-auto flex max-w-4xl flex-col gap-16 md:flex-row">
               <div className="md:w-1/3">
-                <span className="mb-4 block text-sm font-semibold uppercase tracking-widest text-muted-foreground">Low pressure</span>
+                <span className="mb-4 block text-sm font-semibold uppercase tracking-eyebrow text-muted-foreground">Low pressure</span>
                 <h2 className="mb-6 font-serif-display text-4xl italic text-foreground">
                   This is <em>not a sales call.</em>
                 </h2>
@@ -184,14 +184,14 @@ export function ContactPage() {
             <div className="relative grid gap-8 md:grid-cols-3">
               <div className="pointer-events-none absolute left-[10%] right-[10%] top-6 z-0 hidden h-px bg-border/50 md:block" aria-hidden />
               <div className="relative z-10 flex flex-col items-center px-4 text-center">
-                <div className="mb-6 flex h-12 w-12 items-center justify-center border border-border bg-background text-xs font-semibold uppercase tracking-widest text-primary">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center border border-border bg-background text-xs font-semibold uppercase tracking-eyebrow text-primary">
                   01
                 </div>
                 <h3 className="mb-4 font-serif-display text-2xl italic text-foreground">We reply</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">Within two business days, a founder will reply to your note.</p>
               </div>
               <div className="relative z-10 flex flex-col items-center px-4 pt-12 text-center md:pt-0">
-                <div className="mb-6 flex h-12 w-12 items-center justify-center border border-border bg-background text-xs font-semibold uppercase tracking-widest text-primary">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center border border-border bg-background text-xs font-semibold uppercase tracking-eyebrow text-primary">
                   02
                 </div>
                 <h3 className="mb-4 font-serif-display text-2xl italic text-foreground">Initial call</h3>
@@ -200,7 +200,7 @@ export function ContactPage() {
                 </p>
               </div>
               <div className="relative z-10 flex flex-col items-center px-4 pt-12 text-center md:pt-0">
-                <div className="mb-6 flex h-12 w-12 items-center justify-center border border-border bg-background text-xs font-semibold uppercase tracking-widest text-primary">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center border border-border bg-background text-xs font-semibold uppercase tracking-eyebrow text-primary">
                   03
                 </div>
                 <h3 className="mb-4 font-serif-display text-2xl italic text-foreground">Clarify</h3>
@@ -218,7 +218,7 @@ export function ContactPage() {
           <Reveal>
             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 md:grid-cols-2">
               <div className="space-y-6 bg-section p-10 md:p-12">
-                <span className="block text-sm font-semibold uppercase tracking-widest text-muted-foreground">Who this is for</span>
+                <span className="block text-sm font-semibold uppercase tracking-eyebrow text-muted-foreground">Who this is for</span>
                 <h3 className="font-serif-display text-3xl italic leading-snug text-foreground">
                   This conversation is most helpful <em>if you are:</em>
                 </h3>
@@ -233,7 +233,7 @@ export function ContactPage() {
                 </ul>
               </div>
               <div className="space-y-6 bg-section p-10 md:p-12">
-                <span className="block text-sm font-semibold uppercase tracking-widest text-muted-foreground">Who this is not for</span>
+                <span className="block text-sm font-semibold uppercase tracking-eyebrow text-muted-foreground">Who this is not for</span>
                 <h3 className="font-serif-display text-3xl italic leading-snug text-foreground">
                   Movemental is likely <em>not the right fit</em> if you are:
                 </h3>
@@ -308,7 +308,7 @@ export function ContactPage() {
               </div>
 
               <div>
-                <label htmlFor="org_type" className="mb-2 block font-sans text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                <label htmlFor="org_type" className="mb-2 block font-sans text-xs font-semibold uppercase tracking-eyebrow text-muted-foreground">
                   What kind of organization? (required)
                 </label>
                 <select
@@ -330,7 +330,7 @@ export function ContactPage() {
               </div>
 
               <div>
-                <label htmlFor="message" className="mb-2 block font-sans text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                <label htmlFor="message" className="mb-2 block font-sans text-xs font-semibold uppercase tracking-eyebrow text-muted-foreground">
                   What is on your desk? (required)
                 </label>
                 <p className="mb-3 text-xs text-muted-foreground">
@@ -405,7 +405,7 @@ function TypeField({
 
   return (
     <div className="flex flex-col">
-      <label htmlFor={htmlFor} className="mb-2 block font-sans text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+      <label htmlFor={htmlFor} className="mb-2 block font-sans text-xs font-semibold uppercase tracking-eyebrow text-muted-foreground">
         {label}
       </label>
       {component === "input" ? (

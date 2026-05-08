@@ -46,7 +46,7 @@ export function PathwayComponent({ stops }: PathwayComponentProps) {
             >
               <div className="flex-1">
                 <div className="flex items-center gap-4 mb-3">
-                  <span className="text-sm font-semibold uppercase tracking-widest text-primary/70">{stop.num}</span>
+                  <span className="text-sm font-semibold uppercase tracking-eyebrow text-primary/70">{stop.num}</span>
                   <div className="flex gap-3 text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     <span className="bg-section px-2 py-1 rounded-md">{stop.duration}</span>
                     <span className="bg-section px-2 py-1 rounded-md">{stop.price}</span>
@@ -73,7 +73,7 @@ export function PathwayComponent({ stops }: PathwayComponentProps) {
               >
                 <div className="overflow-hidden">
                   <div className="p-6 md:p-8 pt-0 border-t border-border bg-section/30 mt-4">
-                    <h4 className="text-sm font-semibold uppercase tracking-widest text-foreground mb-6 mt-6">Included Deliverables</h4>
+                    <h4 className="text-sm font-semibold uppercase tracking-eyebrow text-foreground mb-6 mt-6">Included Deliverables</h4>
                     <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
                       {stop.deliverables?.map((item, i) => (
                         <div key={i} className="flex items-start text-[1.0625rem] text-muted-foreground">

@@ -28,7 +28,7 @@ const LIBRARY_ITEMS: LibraryItem[] = [
     type: 'Podcast',
     topic: 'Theology',
     icon: <Mic className="w-16 h-16 opacity-80" />,
-    colorClass: 'bg-emerald-800/20 text-emerald-600 dark:text-emerald-400'
+    colorClass: 'bg-secondary text-foreground'
   },
   {
     id: '2',
@@ -37,7 +37,7 @@ const LIBRARY_ITEMS: LibraryItem[] = [
     type: 'Document',
     topic: 'Policy',
     icon: <Shield className="w-16 h-16 opacity-80" />,
-    colorClass: 'bg-blue-800/20 text-blue-600 dark:text-blue-400'
+    colorClass: 'bg-secondary text-foreground'
   },
   {
     id: '3',
@@ -46,7 +46,7 @@ const LIBRARY_ITEMS: LibraryItem[] = [
     type: 'Article',
     topic: 'Leadership',
     icon: <MessageSquare className="w-16 h-16 opacity-80" />,
-    colorClass: 'bg-orange-800/20 text-orange-600 dark:text-orange-400'
+    colorClass: 'bg-secondary text-foreground'
   },
   {
     id: '4',
@@ -55,7 +55,7 @@ const LIBRARY_ITEMS: LibraryItem[] = [
     type: 'Video',
     topic: 'Practice',
     icon: <Video className="w-16 h-16 opacity-80" />,
-    colorClass: 'bg-purple-800/20 text-purple-600 dark:text-purple-400'
+    colorClass: 'bg-secondary text-foreground'
   },
   {
     id: '5',
@@ -64,7 +64,7 @@ const LIBRARY_ITEMS: LibraryItem[] = [
     type: 'Webinar',
     topic: 'Theology',
     icon: <Zap className="w-16 h-16 opacity-80" />,
-    colorClass: 'bg-amber-800/20 text-amber-600 dark:text-amber-400'
+    colorClass: 'bg-secondary text-foreground'
   },
   {
     id: '6',
@@ -73,7 +73,7 @@ const LIBRARY_ITEMS: LibraryItem[] = [
     type: 'Article',
     topic: 'Practice',
     icon: <Briefcase className="w-16 h-16 opacity-80" />,
-    colorClass: 'bg-rose-800/20 text-rose-600 dark:text-rose-400'
+    colorClass: 'bg-secondary text-foreground'
   },
   {
     id: '7',
@@ -82,7 +82,7 @@ const LIBRARY_ITEMS: LibraryItem[] = [
     type: 'Document',
     topic: 'Policy',
     icon: <Lock className="w-16 h-16 opacity-80" />,
-    colorClass: 'bg-indigo-800/20 text-indigo-600 dark:text-indigo-400'
+    colorClass: 'bg-secondary text-foreground'
   },
   {
     id: '8',
@@ -91,7 +91,7 @@ const LIBRARY_ITEMS: LibraryItem[] = [
     type: 'Podcast',
     topic: 'Leadership',
     icon: <Mic className="w-16 h-16 opacity-80" />,
-    colorClass: 'bg-teal-800/20 text-teal-600 dark:text-teal-400'
+    colorClass: 'bg-secondary text-foreground'
   },
   {
     id: '9',
@@ -100,7 +100,7 @@ const LIBRARY_ITEMS: LibraryItem[] = [
     type: 'Document',
     topic: 'Practice',
     icon: <BookOpen className="w-16 h-16 opacity-80" />,
-    colorClass: 'bg-stone-800/20 text-stone-600 dark:text-stone-400'
+    colorClass: 'bg-secondary text-foreground'
   }
 ];
 
@@ -141,17 +141,17 @@ export function LibraryPage() {
             </div>
             
             <div className="flex flex-col gap-4 min-w-[280px]">
-               <div className="bg-card border border-border p-6 rounded-xl flex flex-col gap-3 group hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer relative overflow-hidden">
+               <div className="bg-card border border-border p-6 rounded-xl flex flex-col gap-3 group hover:border-primary/50 transition-all duration-300 cursor-pointer relative overflow-hidden">
                  <div className="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary transition-colors"></div>
-                 <div className="text-xs font-semibold uppercase tracking-widest text-primary/80">Featured</div>
+                 <div className="text-xs font-semibold uppercase tracking-eyebrow text-primary/80">Featured</div>
                  <h4 className="font-serif-display text-xl text-foreground group-hover:text-primary transition-colors line-clamp-2">The Permanent Revolution Playbook in an AI Context</h4>
-                 <div className="text-xs text-muted-foreground pt-3 border-t border-border/50 uppercase tracking-widest">May 15, 2026</div>
+                 <div className="text-xs text-muted-foreground pt-3 border-t border-border/50 uppercase tracking-eyebrow">May 15, 2026</div>
                </div>
-               <div className="bg-card border border-border p-6 rounded-xl flex flex-col gap-3 group hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer relative overflow-hidden">
+               <div className="bg-card border border-border p-6 rounded-xl flex flex-col gap-3 group hover:border-primary/50 transition-all duration-300 cursor-pointer relative overflow-hidden">
                  <div className="absolute top-0 left-0 w-1 h-full bg-border group-hover:bg-primary/50 transition-colors"></div>
-                 <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">New Framework</div>
+                 <div className="text-xs font-semibold uppercase tracking-eyebrow text-muted-foreground">New Framework</div>
                  <h4 className="font-serif-display text-xl text-foreground group-hover:text-primary transition-colors line-clamp-2">Assessing Organizational Readiness for AI</h4>
-                 <div className="text-xs text-muted-foreground pt-3 border-t border-border/50 uppercase tracking-widest">May 10, 2026</div>
+                 <div className="text-xs text-muted-foreground pt-3 border-t border-border/50 uppercase tracking-eyebrow">May 10, 2026</div>
                </div>
             </div>
           </div>
@@ -161,7 +161,7 @@ export function LibraryPage() {
           {/* Sidebar */}
           <aside className="space-y-10 hidden lg:block">
             <div>
-              <h4 className="text-sm font-semibold uppercase tracking-widest text-foreground/50 mb-4 border-b border-border pb-2">Filter and sort</h4>
+              <h4 className="text-sm font-semibold uppercase tracking-eyebrow text-foreground/50 mb-4 border-b border-border pb-2">Filter and sort</h4>
             </div>
 
             <div>
@@ -229,7 +229,7 @@ export function LibraryPage() {
                 />
               </div>
               <div className="flex items-center gap-2 border border-border rounded-md p-1 bg-section">
-                <button className="p-1.5 rounded bg-background shadow-sm text-foreground"><Grid className="w-4 h-4" /></button>
+                <button className="p-1.5 rounded bg-background text-foreground"><Grid className="w-4 h-4" /></button>
                 <button className="p-1.5 rounded text-muted-foreground hover:text-foreground"><List className="w-4 h-4" /></button>
               </div>
             </div>
@@ -238,7 +238,7 @@ export function LibraryPage() {
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredItems.map((item, i) => (
                   <Reveal key={item.id} delay={i * 50}>
-                    <Link href="#" className="group flex flex-col h-full bg-card border border-border rounded-xl overflow-hidden hover:border-primary/40 transition-all duration-300 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset">
+                    <Link href="#" className="group flex flex-col h-full bg-card border border-border rounded-xl overflow-hidden hover:border-primary/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset">
                       <div className={`aspect-[4/3] flex items-center justify-center p-8 ${item.colorClass} relative overflow-hidden`}>
                         <div className="absolute inset-0 bg-linear-to-t from-foreground/5 to-transparent mix-blend-overlay"></div>
                         <div className="group-hover:scale-125 group-hover:rotate-3 transition-transform duration-700 ease-out z-10">
@@ -301,7 +301,7 @@ export function LibraryPage() {
                  <BookOpen className="w-96 h-96" />
                </div>
                <div className="flex-1 relative z-10">
-                  <div className="flex items-center gap-2 text-primary font-semibold uppercase tracking-widest text-xs mb-4">
+                  <div className="flex items-center gap-2 text-primary font-semibold uppercase tracking-eyebrow text-xs mb-4">
                     <BookOpen className="w-4 h-4" /> Comprehensive Guide
                   </div>
                   <h2 className="font-serif-display italic text-3xl md:text-5xl mb-6">Building trusted AI in mission-driven organizations</h2>

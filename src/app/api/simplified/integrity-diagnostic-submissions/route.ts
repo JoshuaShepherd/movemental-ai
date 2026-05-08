@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { integrityDiagnosticSubmissionsService } from "@/lib/services/simplified/integrity-diagnostic-submissions.service";
-import {
-  IntegrityDiagnosticSubmissionsInsertSchema,
-  IntegrityDiagnosticSubmissionsUpdateSchema,
-  IntegrityDiagnosticSubmissionsFiltersSchema,
-} from "@/lib/schemas";
+import { IntegrityDiagnosticSubmissionsInsertSchema, IntegrityDiagnosticSubmissionsUpdateSchema, IntegrityDiagnosticSubmissionsFiltersSchema } from "@/lib/schemas";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);

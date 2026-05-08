@@ -22,7 +22,7 @@ export function ProofBeatFold() {
 
         <div className="mx-auto w-32 border-t border-border pt-12" />
 
-        <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+        <p className="text-xs font-medium uppercase tracking-eyebrow text-muted-foreground">
           Engagements completing. Voices joining. Networks beginning to form.
         </p>
       </div>

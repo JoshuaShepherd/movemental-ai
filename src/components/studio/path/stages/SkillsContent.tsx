@@ -10,7 +10,7 @@ export function SkillsContent() {
         <p className="font-serif-display text-3xl md:text-4xl leading-tight mb-8 text-foreground/90" dangerouslySetInnerHTML={{ __html: stageMeta[2].sentence }} />
         
         <div className="mt-12 bg-section p-8 rounded-card border border-border">
-          <div className="text-xs font-semibold text-primary uppercase tracking-widest mb-4">The deliverable</div>
+          <div className="text-xs font-semibold text-primary uppercase tracking-eyebrow mb-4">The deliverable</div>
           <h4 className="text-xl font-medium text-foreground mb-2 m-0">AI Wisdom & Maturity</h4>
           <p className="text-sm font-medium text-muted-foreground mb-6"><strong className="text-foreground">Eight weeks</strong> · Live cohort · Customizable for your organization</p>
           
@@ -21,11 +21,11 @@ export function SkillsContent() {
           </p>
           
           <div className="border-t border-border pt-10 mb-10">
-             <div className="text-xs font-semibold text-primary uppercase tracking-widest mb-6">The eight-week arc</div>
+             <div className="text-xs font-semibold text-primary uppercase tracking-eyebrow mb-6">The eight-week arc</div>
              <div className="grid gap-4">
                 {formationWeeks.map((week) => (
                    <div key={week.week} className="bg-card p-5 rounded-lg border border-border grid md:grid-cols-[100px_200px_1fr] gap-4 items-start">
-                      <div className="font-mono text-xs font-semibold text-primary uppercase tracking-widest mt-1">{week.week}</div>
+                      <div className="font-mono text-xs font-semibold text-primary uppercase tracking-eyebrow mt-1">{week.week}</div>
                       <div className="font-semibold text-foreground">{week.name}</div>
                       <div className="text-[0.95rem] text-muted-foreground leading-relaxed">{week.description}</div>
                    </div>
@@ -35,7 +35,7 @@ export function SkillsContent() {
           
           <div className="grid md:grid-cols-2 gap-10 border-t border-border pt-10">
              <div>
-                <div className="text-xs font-semibold text-primary uppercase tracking-widest mb-6">Inside each week</div>
+                <div className="text-xs font-semibold text-primary uppercase tracking-eyebrow mb-6">Inside each week</div>
                 <ul className="space-y-4 m-0 p-0 list-none text-[0.95rem]">
                    {lessonTypes.map((type, i) => (
                       <li key={i} className="flex flex-col">
@@ -46,11 +46,11 @@ export function SkillsContent() {
                 </ul>
              </div>
              <div>
-                <div className="text-xs font-semibold text-primary uppercase tracking-widest mb-6">What people walk away with</div>
+                <div className="text-xs font-semibold text-primary uppercase tracking-eyebrow mb-6">What people walk away with</div>
                 <ul className="space-y-3 m-0 p-0 list-none text-[0.95rem]">
                    {formationMarkers.map((marker, i) => (
                       <li key={i} className="flex items-start">
-                         <span className="text-primary mr-3 mt-1 font-bold text-xs uppercase tracking-widest">{i + 1}.</span>
+                         <span className="text-primary mr-3 mt-1 font-bold text-xs uppercase tracking-eyebrow">{i + 1}.</span>
                          <span dangerouslySetInnerHTML={{ __html: marker }} />
                       </li>
                    ))}

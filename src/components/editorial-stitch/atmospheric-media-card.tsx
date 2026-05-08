@@ -45,7 +45,7 @@ export function AtmosphericMediaCard({
         className="object-cover opacity-30 grayscale transition-transform duration-1000 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
         sizes="(min-width: 1024px) 1200px, 100vw"
       />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-background via-background/60 to-transparent" />
       <div className="relative z-10 max-w-xl">
         <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground [&_svg]:size-6">
           {icon}

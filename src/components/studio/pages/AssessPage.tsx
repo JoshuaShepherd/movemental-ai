@@ -39,7 +39,7 @@ export function AssessPage() {
             </div>
             
             <div className="border-l-2 border-inverse-border pl-6 max-w-[36ch]">
-               <span className="text-xs font-semibold uppercase tracking-widest text-inverse-foreground/60 mb-2 block">No score, no benchmark</span>
+               <span className="text-xs font-semibold uppercase tracking-eyebrow text-inverse-foreground/60 mb-2 block">No score, no benchmark</span>
                <p className="text-sm text-inverse-foreground/80 leading-relaxed">The diagnostic produces a narrative, not a number. See the editorial note below.</p>
             </div>
           </Reveal>
@@ -124,7 +124,7 @@ export function AssessPage() {
             />
             
             <aside className="border border-border-soft bg-background p-8 rounded-card max-w-3xl">
-               <span className="text-xs font-semibold uppercase tracking-widest text-ink-soft mb-4 block">Editorial note</span>
+               <span className="text-xs font-semibold uppercase tracking-eyebrow text-ink-soft mb-4 block">Editorial note</span>
                <div className="prose max-w-none text-muted-foreground text-[0.98rem] leading-relaxed">
                   <p><strong>This is not a maturity model.</strong> It is not a benchmark against peers, a quantifiable index, or a score to report to a board. The outputs are purely qualitative.</p>
                   <p>All inputs are held confidentially by Movemental's founders. We do not aggregate your responses into industry reports without explicit permission, and we do not use your data to train public models.</p>

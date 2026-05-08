@@ -1,5 +1,5 @@
 // Auto-generated service index
-// Generated at: 2026-05-03T05:38:57.307Z
+// Generated at: 2026-05-08T13:16:03.402Z
 // Do not edit manually - regenerate with: pnpm generate:services
 
 export { SimplifiedService } from "./base.service";
@@ -18,6 +18,9 @@ export * from "./purchases.service";
 export * from "./affiliate-referrals.service";
 export * from "./agent-guardrail-assignments.service";
 export * from "./agent-guardrails.service";
+export * from "./corpus-bindings.service";
+export * from "./prompt-packs.service";
+export * from "./prompt-pack-layers.service";
 export * from "./agents.service";
 export * from "./agent-handoffs.service";
 export * from "./agent-instances.service";
@@ -184,3 +187,4 @@ export * from "./organization-inquiries.service";
 export * from "./assessment-results.service";
 export * from "./system-readiness-assessments.service";
 export * from "./dual-intelligence-assessments.service";
+export * from "./integrity-diagnostic-submissions.service";

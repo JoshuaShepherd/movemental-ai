@@ -72,22 +72,22 @@ export function WorkWithUsPage() {
             
             <div className="grid md:grid-cols-4 gap-4 mb-12">
                <div className="bg-card p-6 border border-border rounded-xl">
-                 <span className="text-xs font-semibold uppercase tracking-widest text-ink-soft mb-3 block">01</span>
+                 <span className="text-xs font-semibold uppercase tracking-eyebrow text-ink-soft mb-3 block">01</span>
                  <h4 className="font-medium text-foreground mb-2">Listen</h4>
                  <p className="text-sm text-muted-foreground">Map where you actually are.</p>
                </div>
                <div className="bg-card p-6 border border-border rounded-xl">
-                 <span className="text-xs font-semibold uppercase tracking-widest text-ink-soft mb-3 block">02</span>
+                 <span className="text-xs font-semibold uppercase tracking-eyebrow text-ink-soft mb-3 block">02</span>
                  <h4 className="font-medium text-foreground mb-2">Clarify</h4>
                  <p className="text-sm text-muted-foreground">Establish boundaries and safety.</p>
                </div>
                <div className="bg-card p-6 border border-border rounded-xl">
-                 <span className="text-xs font-semibold uppercase tracking-widest text-ink-soft mb-3 block">03</span>
+                 <span className="text-xs font-semibold uppercase tracking-eyebrow text-ink-soft mb-3 block">03</span>
                  <h4 className="font-medium text-foreground mb-2">Equip</h4>
                  <p className="text-sm text-muted-foreground">Build the internal capacity to discern.</p>
                </div>
                <div className="bg-card p-6 border border-border rounded-xl">
-                 <span className="text-xs font-semibold uppercase tracking-widest text-ink-soft mb-3 block">04</span>
+                 <span className="text-xs font-semibold uppercase tracking-eyebrow text-ink-soft mb-3 block">04</span>
                  <h4 className="font-medium text-foreground mb-2">Build</h4>
                  <p className="text-sm text-muted-foreground">Implement restrained solutions.</p>
                </div>
@@ -146,10 +146,10 @@ export function WorkWithUsPage() {
                   <p className="text-muted-foreground text-sm leading-relaxed mb-6 h-12">Establish immediate guardrails and baseline policy.</p>
                   
                   <div className="mb-6 flex-grow">
-                     <p className="text-xs uppercase tracking-widest font-semibold text-foreground mb-3">Best for</p>
+                     <p className="text-xs uppercase tracking-eyebrow font-semibold text-foreground mb-3">Best for</p>
                      <p className="text-sm text-muted-foreground mb-6">Organizations that know they are exposed and need immediate structural clarity.</p>
                      
-                     <p className="text-xs uppercase tracking-widest font-semibold text-foreground mb-3">Includes</p>
+                     <p className="text-xs uppercase tracking-eyebrow font-semibold text-foreground mb-3">Includes</p>
                      <ul className="space-y-2 text-sm text-muted-foreground">
                         <li>• Policy drafting workshop</li>
                         <li>• Acceptable Use template</li>
@@ -161,15 +161,15 @@ export function WorkWithUsPage() {
                </div>
                
                <div className="bg-card border-2 border-primary/20 p-8 rounded-card flex flex-col relative">
-                  <div className="absolute top-0 right-6 -translate-y-1/2 bg-primary text-primary-foreground text-[0.65rem] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Most common</div>
+                  <div className="absolute top-0 right-6 -translate-y-1/2 bg-primary text-primary-foreground text-[0.65rem] font-bold uppercase tracking-eyebrow px-3 py-1 rounded-full">Most common</div>
                   <h3 className="font-serif-display text-2xl italic mb-2 text-foreground">Guided Pathway</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-6 h-12">Walk the entire Sequence with direct facilitation.</p>
                   
                   <div className="mb-6 flex-grow">
-                     <p className="text-xs uppercase tracking-widest font-semibold text-foreground mb-3">Best for</p>
+                     <p className="text-xs uppercase tracking-eyebrow font-semibold text-foreground mb-3">Best for</p>
                      <p className="text-sm text-muted-foreground mb-6">Organizations ready to build internal capability across multiple departments or ministries.</p>
                      
-                     <p className="text-xs uppercase tracking-widest font-semibold text-foreground mb-3">Includes</p>
+                     <p className="text-xs uppercase tracking-eyebrow font-semibold text-foreground mb-3">Includes</p>
                      <ul className="space-y-2 text-sm text-muted-foreground">
                         <li>• Diagnostics and readbacks</li>
                         <li>• Facilitated sandbox design</li>
@@ -185,10 +185,10 @@ export function WorkWithUsPage() {
                   <p className="text-muted-foreground text-sm leading-relaxed mb-6 h-12">Custom systemic integration after safety is established.</p>
                   
                   <div className="mb-6 flex-grow">
-                     <p className="text-xs uppercase tracking-widest font-semibold text-foreground mb-3">Best for</p>
+                     <p className="text-xs uppercase tracking-eyebrow font-semibold text-foreground mb-3">Best for</p>
                      <p className="text-sm text-muted-foreground mb-6">Mature organizations that have completed the sequence and need architectural help.</p>
                      
-                     <p className="text-xs uppercase tracking-widest font-semibold text-foreground mb-3">Includes</p>
+                     <p className="text-xs uppercase tracking-eyebrow font-semibold text-foreground mb-3">Includes</p>
                      <ul className="space-y-2 text-sm text-muted-foreground">
                         <li>• Tech stack evaluation</li>
                         <li>• Custom agent/workflow mapping</li>

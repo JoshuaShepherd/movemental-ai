@@ -21,7 +21,7 @@ export function PathClosingCta() {
             The path
           </span>
           
-          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-6 mb-12 text-sm md:text-base uppercase tracking-widest font-semibold text-inverse-foreground/60" aria-label="The four stages">
+          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-6 mb-12 text-sm md:text-base uppercase tracking-eyebrow font-semibold text-inverse-foreground/60" aria-label="The four stages">
              <span>01 Safety</span>
              <span className="text-inverse-border font-light">|</span>
              <span>02 Sandbox</span>

@@ -22,6 +22,7 @@ import {
   text,
   timestamp,
   uuid,
+  unique,
 } from "drizzle-orm/pg-core";
 import type { AnyPgColumn } from "drizzle-orm/pg-core";
 
@@ -344,6 +345,59 @@ export const agentGuardrails = pgTable("agent_guardrails", {
   organization_id: uuid("organization_id").notNull().references(() => organizations.id),
 });
 
+/** Retrieval / file-search backend binding per tenant (vector store id, RAG corpus, etc.). */
+export const corpusBindings = pgTable(
+  "corpus_bindings",
+  {
+    id: id("id"),
+    organization_id: uuid("organization_id")
+      .notNull()
+      .references(() => organizations.id, { onDelete: "cascade" }),
+    slug: text("slug").notNull(),
+    /** e.g. openai_vector_store | openai_file_search | supabase_pgvector | gemini_file | vertex_rag */
+    provider: text("provider").notNull(),
+    provider_resource_id: text("provider_resource_id"),
+    provider_secondary_id: text("provider_secondary_id"),
+    filter_defaults: jsonb("filter_defaults").notNull().default({}),
+    metadata: jsonb("metadata").notNull().default({}),
+    status: text("status").default("active"),
+    created_at: createdAt("created_at"),
+    updated_at: updatedAt("updated_at"),
+  },
+  (t) => [unique("corpus_bindings_organization_id_slug_unique").on(t.organization_id, t.slug)],
+);
+
+/** Versioned composable prompt (layers assembled server-side into system prompt). */
+export const promptPacks = pgTable(
+  "prompt_packs",
+  {
+    id: id("id"),
+    organization_id: uuid("organization_id")
+      .notNull()
+      .references(() => organizations.id, { onDelete: "cascade" }),
+    slug: text("slug").notNull(),
+    version: integer("version").notNull().default(1),
+    label: text("label"),
+    status: text("status").default("active"),
+    created_at: createdAt("created_at"),
+    updated_at: updatedAt("updated_at"),
+  },
+  (t) => [unique("prompt_packs_organization_id_slug_version_unique").on(t.organization_id, t.slug, t.version)],
+);
+
+export const promptPackLayers = pgTable("prompt_pack_layers", {
+  id: id("id"),
+  prompt_pack_id: uuid("prompt_pack_id")
+    .notNull()
+    .references(() => promptPacks.id, { onDelete: "cascade" }),
+  /** Convention: base | voice | safety | surface */
+  layer_key: text("layer_key").notNull(),
+  content: text("content").notNull(),
+  sort_order: integer("sort_order").default(0),
+  created_at: createdAt("created_at"),
+  updated_at: updatedAt("updated_at"),
+});
+
 export const agents = pgTable("agents", {
   id: id("id"),
   name: text("name").notNull(),
@@ -366,6 +420,10 @@ export const agents = pgTable("agents", {
   stream_enabled: boolean("stream_enabled").default(true),
   stream_chunk_size: integer("stream_chunk_size").default(100),
   stream_format: text("stream_format").default("text"),
+  corpus_binding_id: uuid("corpus_binding_id").references(() => corpusBindings.id, {
+    onDelete: "set null",
+  }),
+  prompt_pack_id: uuid("prompt_pack_id").references(() => promptPacks.id, { onDelete: "set null" }),
 });
 
 export const agentHandoffs = pgTable("agent_handoffs", {

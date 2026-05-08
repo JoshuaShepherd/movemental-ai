@@ -36,7 +36,7 @@ export function PathFootnote({
            
            <div className="flex gap-12 md:gap-24">
               <div>
-                <h4 className="text-xs uppercase tracking-widest font-semibold mb-6 text-inverse-foreground/60">The Path</h4>
+                <h4 className="text-xs uppercase tracking-eyebrow font-semibold mb-6 text-inverse-foreground/60">The Path</h4>
                 <ul className="space-y-3 text-sm">
                   {stageMeta.map((s) => (
                     <li key={s.num}>
@@ -55,7 +55,7 @@ export function PathFootnote({
                 </ul>
               </div>
               <div>
-                <h4 className="text-xs uppercase tracking-widest font-semibold mb-6 text-inverse-foreground/60">Go further</h4>
+                <h4 className="text-xs uppercase tracking-eyebrow font-semibold mb-6 text-inverse-foreground/60">Go further</h4>
                 <ul className="space-y-3 text-sm">
                   <li><Link href="/contact" className="hover:text-inverse-foreground transition-colors">Start a conversation</Link></li>
                   <li><a href="#case-study" className="hover:text-inverse-foreground transition-colors">Read the case study</a></li>

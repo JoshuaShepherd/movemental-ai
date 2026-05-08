@@ -243,7 +243,7 @@ function FeaturedVoicesFold() {
 function VoiceCard({ voice }: { voice: MovementalVoice }) {
   return (
     <article className="matters-block">
-      <div className="relative mb-5 aspect-4/5 w-full max-w-[280px] overflow-hidden rounded-xl bg-muted shadow-sm ring-1 ring-border/40">
+      <div className="relative mb-5 aspect-4/5 w-full max-w-[280px] overflow-hidden rounded-xl bg-muted ring-1 ring-border/40">
         <Image
           src={voice.imageSrc}
           alt={`Portrait of ${voice.name}`}

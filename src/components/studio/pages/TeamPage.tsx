@@ -115,7 +115,7 @@ export function TeamPage() {
                      <div className="border-t border-border pt-6 md:border-t-0 md:pt-0">
                         <p className="text-[1.0625rem] leading-[1.75] text-muted-foreground mb-8 max-w-2xl">{person.bio}</p>
                         
-                        <h4 className="text-xs uppercase tracking-widest font-semibold text-foreground mb-4">Credentials & Context</h4>
+                        <h4 className="text-xs uppercase tracking-eyebrow font-semibold text-foreground mb-4">Credentials & Context</h4>
                         <ul className="space-y-2 mb-8 text-[0.98rem] text-muted-foreground">
                            {person.credentials.map((cred, j) => (
                               <li key={j} className="flex items-start"><span className="text-primary mr-3 mt-1">•</span>{cred}</li>

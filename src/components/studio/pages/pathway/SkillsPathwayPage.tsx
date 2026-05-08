@@ -79,7 +79,7 @@ export function SkillsPathwayPage() {
         <Reveal>
           <section className="mb-24 grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
             <div className="space-y-8 lg:col-span-6">
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              <p className="text-xs font-semibold uppercase tracking-eyebrow text-muted-foreground">
                 Stage 03 of the Movemental AI Path
               </p>
               <h1 className="font-serif-display text-5xl italic leading-tight tracking-tight text-foreground md:text-7xl">
@@ -158,7 +158,7 @@ export function SkillsPathwayPage() {
               <div className="grid grid-cols-1 gap-x-16 gap-y-0 md:grid-cols-2">
                 {learningOutcomes.map((line, i) => (
                   <div key={line} className="flex items-baseline gap-4 border-b border-border py-4">
-                    <span className="w-12 shrink-0 font-mono text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                    <span className="w-12 shrink-0 font-mono text-xs font-semibold uppercase tracking-eyebrow text-muted-foreground">
                       {(i + 1).toString().padStart(2, "0")}
                     </span>
                     <span className="text-lg text-foreground">{line}</span>
@@ -181,7 +181,7 @@ export function SkillsPathwayPage() {
               <div className="grid grid-cols-1 gap-px bg-border lg:grid-cols-4">
                 {modules.map((m) => (
                   <div key={m.num} className="flex h-full flex-col bg-section p-8">
-                    <span className="mb-4 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                    <span className="mb-4 block text-xs font-semibold uppercase tracking-eyebrow text-muted-foreground">
                       Module {m.num}
                     </span>
                     <h3 className="mb-4 font-serif-display text-2xl italic text-foreground">{m.title}</h3>
@@ -213,8 +213,8 @@ export function SkillsPathwayPage() {
                       <span
                         className={
                           tier.variant === "midnight"
-                            ? "absolute -top-3 left-8 bg-card px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-foreground"
-                            : "absolute -top-3 left-8 bg-inverse-surface px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-inverse-foreground"
+                            ? "absolute -top-3 left-8 bg-card px-3 py-1 text-[10px] font-semibold uppercase tracking-eyebrow text-foreground"
+                            : "absolute -top-3 left-8 bg-inverse-surface px-3 py-1 text-[10px] font-semibold uppercase tracking-eyebrow text-inverse-foreground"
                         }
                       >
                         {tier.badge}
@@ -226,7 +226,7 @@ export function SkillsPathwayPage() {
                     {tier.variant === "midnight" ? (
                       <Link
                         href={tier.href}
-                        className="w-full bg-inverse-foreground py-3 text-center text-sm font-semibold uppercase tracking-widest text-inverse-surface hover:opacity-90"
+                        className="w-full bg-inverse-foreground py-3 text-center text-sm font-semibold uppercase tracking-eyebrow text-inverse-surface hover:opacity-90"
                       >
                         {tier.cta}
                       </Link>
@@ -237,7 +237,7 @@ export function SkillsPathwayPage() {
                     ) : (
                       <Link
                         href={tier.href}
-                        className="w-full border border-border py-3 text-center text-sm font-semibold uppercase tracking-widest hover:border-primary hover:text-primary"
+                        className="w-full border border-border py-3 text-center text-sm font-semibold uppercase tracking-eyebrow hover:border-primary hover:text-primary"
                       >
                         {tier.cta}
                       </Link>
@@ -296,7 +296,7 @@ export function SkillsPathwayPage() {
         <Container>
           <div className="flex flex-col items-stretch justify-between gap-10 md:flex-row md:items-center">
             <Link href="/pathway/sandbox" className="group flex flex-col gap-2 text-muted-foreground hover:text-foreground">
-              <span className="text-xs font-semibold uppercase tracking-widest">Previous stage</span>
+              <span className="text-xs font-semibold uppercase tracking-eyebrow">Previous stage</span>
               <span className="font-serif-display inline-flex items-center gap-2 text-2xl italic transition-all group-hover:translate-x-0.5">
                 <ArrowRight className="size-6 rotate-180" aria-hidden />
                 Stage 02 Sandbox
@@ -304,7 +304,7 @@ export function SkillsPathwayPage() {
             </Link>
             <div className="hidden h-16 w-px bg-border md:block" />
             <Link href="/pathway/solutions" className="group flex flex-col items-end gap-2 text-muted-foreground hover:text-foreground md:text-right">
-              <span className="text-xs font-semibold uppercase tracking-widest">Next stage</span>
+              <span className="text-xs font-semibold uppercase tracking-eyebrow">Next stage</span>
               <span className="font-serif-display inline-flex items-center gap-2 text-2xl italic transition-all group-hover:translate-x-0.5">
                 Stage 04 Solutions
                 <ArrowRight className="size-6" aria-hidden />

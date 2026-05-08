@@ -29,7 +29,7 @@ export function MovementLeadersPage() {
             </div>
 
             <div className="border-l-2 border-inverse-border pl-6 max-w-[40ch]">
-               <span className="text-xs font-semibold uppercase tracking-widest text-inverse-foreground/60 mb-2 block">Editorial posture</span>
+               <span className="text-xs font-semibold uppercase tracking-eyebrow text-inverse-foreground/60 mb-2 block">Editorial posture</span>
                <p className="text-sm text-inverse-foreground/80 leading-relaxed">This page is descriptive, not recruiting. There is no form below it, by design.</p>
             </div>
           </Reveal>
@@ -155,7 +155,7 @@ export function MovementLeadersPage() {
             />
             
             <aside className="border border-border-soft bg-card p-8 rounded-card max-w-3xl relative overflow-hidden">
-               <span className="text-xs font-semibold uppercase tracking-widest text-ink-soft mb-4 block relative z-10">Editorial note</span>
+               <span className="text-xs font-semibold uppercase tracking-eyebrow text-ink-soft mb-4 block relative z-10">Editorial note</span>
                <div className="prose max-w-none text-muted-foreground text-[0.98rem] leading-relaxed relative z-10 flex flex-col gap-4">
                   <p><strong>Movement leaders do not buy from Movemental.</strong> We do not offer special pricing, certification programs, or "movement-level" product tiers.</p>
                   

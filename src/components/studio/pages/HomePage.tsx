@@ -46,7 +46,7 @@ function WhyThisOrderFold() {
       <Container>
         <Reveal>
           <div className="max-w-4xl">
-            <h2 className="text-sm font-semibold uppercase tracking-widest text-primary mb-8 border-b border-border pb-4">Why this order, and why we say so</h2>
+            <h2 className="text-sm font-semibold uppercase tracking-eyebrow text-primary mb-8 border-b border-border pb-4">Why this order, and why we say so</h2>
             <div className="space-y-6 text-[1.125rem] md:text-xl text-foreground/90 leading-relaxed">
               <p>
                 When AI lands on top of a fragmented organization — scattered knowledge, unclear decision rights, mixed signals about what's safe to share, and no shared vocabulary for risk — it doesn't help. It accelerates the fragmentation. The organization moves faster, but in more directions. The leaders who said yes to AI start to feel like they invited a problem they don't know how to name.
@@ -136,7 +136,7 @@ function SegmentCardsFold() {
                 <p className="text-[1.0625rem] leading-relaxed text-muted-foreground mb-8 flex-grow">
                   For congregations and church-planting movements navigating AI without losing pastoral integrity.
                 </p>
-                <Link href="/for-churches" className="text-sm font-semibold uppercase tracking-widest text-primary hover:text-primary/80 transition-colors inline-flex items-center">
+                <Link href="/for-churches" className="text-sm font-semibold uppercase tracking-eyebrow text-primary hover:text-primary/80 transition-colors inline-flex items-center">
                   Pathway for Churches <ArrowUpRight className="w-4 h-4 ml-1" />
                 </Link>
               </div>
@@ -148,7 +148,7 @@ function SegmentCardsFold() {
                 <p className="text-[1.0625rem] leading-relaxed text-muted-foreground mb-8 flex-grow">
                   For mission-driven nonprofits where AI must serve the work, not warp it.
                 </p>
-                <Link href="/for-nonprofits" className="text-sm font-semibold uppercase tracking-widest text-primary hover:text-primary/80 transition-colors inline-flex items-center">
+                <Link href="/for-nonprofits" className="text-sm font-semibold uppercase tracking-eyebrow text-primary hover:text-primary/80 transition-colors inline-flex items-center">
                   Pathway for Nonprofits <ArrowUpRight className="w-4 h-4 ml-1" />
                 </Link>
               </div>
@@ -160,7 +160,7 @@ function SegmentCardsFold() {
                 <p className="text-[1.0625rem] leading-relaxed text-muted-foreground mb-8 flex-grow">
                   For seminaries, training networks, and denominational bodies preparing the next generation.
                 </p>
-                <Link href="/for-institutions" className="text-sm font-semibold uppercase tracking-widest text-primary hover:text-primary/80 transition-colors inline-flex items-center">
+                <Link href="/for-institutions" className="text-sm font-semibold uppercase tracking-eyebrow text-primary hover:text-primary/80 transition-colors inline-flex items-center">
                   Pathway for Institutions <ArrowUpRight className="w-4 h-4 ml-1" />
                 </Link>
               </div>
@@ -198,7 +198,7 @@ function CredibilityFold() {
         
         <Reveal delay={100}>
           <div className="mb-20">
-            <span className="text-sm uppercase tracking-widest font-semibold mb-6 block border-b border-border pb-4">Founders</span>
+            <span className="text-sm uppercase tracking-eyebrow font-semibold mb-6 block border-b border-border pb-4">Founders</span>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
               {founders.map((f, i) => (
                 <div key={i} className="group">
@@ -216,7 +216,7 @@ function CredibilityFold() {
         <Reveal delay={200}>
           <div className="relative">
             <div className="flex justify-between items-end mb-8 border-b border-border pb-4">
-              <span className="text-sm uppercase tracking-widest font-semibold">Voices</span>
+              <span className="text-sm uppercase tracking-eyebrow font-semibold">Voices</span>
               <div className="flex gap-2">
                 <button onClick={() => scrollRef.current?.scrollBy({ left: -300, behavior: 'smooth' })} className="p-2 border border-border rounded-full hover:bg-section transition-colors" aria-label="Previous">
                   <ChevronLeft className="w-5 h-5"/>
@@ -239,7 +239,7 @@ function CredibilityFold() {
               ))}
             </div>
             
-            <Link href="/voices" className="inline-flex items-center text-sm font-semibold uppercase tracking-widest text-primary hover:text-primary/80 transition-colors mt-6">
+            <Link href="/voices" className="inline-flex items-center text-sm font-semibold uppercase tracking-eyebrow text-primary hover:text-primary/80 transition-colors mt-6">
               See all voices <ArrowUpRight className="w-4 h-4 ml-1" />
             </Link>
           </div>

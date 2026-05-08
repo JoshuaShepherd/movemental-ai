@@ -5,7 +5,7 @@ import React from 'react';
 const churchesNarrative = (
   <div className="prose prose-neutral max-w-none text-muted-foreground text-[1.0625rem] leading-[1.8]">
     <div className="mb-8 p-4 bg-muted/30 rounded-lg border border-border inline-block">
-       <span className="text-xs uppercase tracking-widest font-semibold text-foreground/70">Illustrative composite — not a specific client</span>
+       <span className="text-xs uppercase tracking-eyebrow font-semibold text-foreground/70">Illustrative composite — not a specific client</span>
     </div>
     
     <h3 className="text-3xl font-serif-display italic text-foreground mb-4">Riverside Church</h3>
@@ -80,7 +80,7 @@ const churchesNarrative = (
 const nonprofitsNarrative = (
   <div className="prose prose-neutral max-w-none text-muted-foreground text-[1.0625rem] leading-[1.8]">
     <div className="mb-8 p-4 bg-muted/30 rounded-lg border border-border inline-block">
-       <span className="text-xs uppercase tracking-widest font-semibold text-foreground/70">Illustrative composite — not a specific client</span>
+       <span className="text-xs uppercase tracking-eyebrow font-semibold text-foreground/70">Illustrative composite — not a specific client</span>
     </div>
     
     <h3 className="text-3xl font-serif-display italic text-foreground mb-4">Northbridge Youth Mission</h3>
@@ -155,7 +155,7 @@ const nonprofitsNarrative = (
 const institutionsNarrative = (
   <div className="prose prose-neutral max-w-none text-muted-foreground text-[1.0625rem] leading-[1.8]">
     <div className="mb-8 p-4 bg-muted/30 rounded-lg border border-border inline-block">
-       <span className="text-xs uppercase tracking-widest font-semibold text-foreground/70">Illustrative composite — not a specific client</span>
+       <span className="text-xs uppercase tracking-eyebrow font-semibold text-foreground/70">Illustrative composite — not a specific client</span>
     </div>
     
     <h3 className="text-3xl font-serif-display italic text-foreground mb-4">Westbridge Seminary</h3>

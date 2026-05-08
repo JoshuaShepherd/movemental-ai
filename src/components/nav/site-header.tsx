@@ -47,7 +47,7 @@ export function SiteHeader() {
       className={cn(
         "sticky top-0 z-50 transition-all duration-300",
         isScrolled
-          ? "border-b border-border bg-card/95 py-2 shadow-sm backdrop-blur-md"
+          ? "border-b border-border bg-card/95 py-2 backdrop-blur-md"
           : "border-b border-transparent bg-transparent py-4",
       )}
       role="banner"
@@ -98,7 +98,7 @@ export function SiteHeader() {
                 />
               </svg>
             </Link>
-            <div className="invisible absolute top-full left-0 z-50 w-64 translate-y-2 rounded-xl border border-border bg-card p-2 opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+            <div className="invisible absolute top-full left-0 z-50 w-64 translate-y-2 rounded-xl border border-border bg-card p-2 opacity-0 shadow-ambient transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
               <Link
                 href="/pathway/safety"
                 className="block rounded-lg px-4 py-3 transition-colors hover:bg-section"
@@ -174,7 +174,7 @@ export function SiteHeader() {
                 />
               </svg>
             </button>
-            <div className="invisible absolute top-full left-0 z-50 w-48 translate-y-2 rounded-xl border border-border bg-card p-2 opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+            <div className="invisible absolute top-full left-0 z-50 w-48 translate-y-2 rounded-xl border border-border bg-card p-2 opacity-0 shadow-ambient transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
               <Link
                 href="/for-churches"
                 className="block rounded-lg px-4 py-2.5 text-sm font-medium transition-colors hover:bg-section"
@@ -230,7 +230,7 @@ export function SiteHeader() {
 
       <div
         className={cn(
-          "absolute top-full right-0 left-0 flex flex-col gap-2 overflow-hidden border-b border-border bg-card shadow-lg transition-all duration-300 ease-in-out lg:hidden",
+          "absolute top-full right-0 left-0 flex flex-col gap-2 overflow-hidden border-b border-border bg-card shadow-ambient transition-all duration-300 ease-in-out lg:hidden",
           isMenuOpen
             ? "max-h-[80vh] px-6 py-6 opacity-100"
             : "pointer-events-none max-h-0 px-6 py-0 opacity-0",

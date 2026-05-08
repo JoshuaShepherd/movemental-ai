@@ -28,7 +28,7 @@ export function WhoWeServePage() {
               <Link href="/contact" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Start a conversation</Link>
             </div>
             <div className="mt-12 flex items-center gap-3 border-t border-inverse-border/30 pt-6 max-w-2xl">
-               <span className="text-inverse-foreground/60 text-sm font-medium uppercase tracking-widest">A note on language:</span>
+               <span className="text-inverse-foreground/60 text-sm font-medium uppercase tracking-eyebrow">A note on language:</span>
                <Link href="/movement-leaders" className="text-inverse-foreground hover:text-inverse-foreground text-sm font-medium hover:underline flex items-center gap-1 group">
                  See the definition of Movement Leaders
                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
@@ -48,23 +48,23 @@ export function WhoWeServePage() {
             />
             
             <div className="grid md:grid-cols-2 gap-6 mt-12">
-               <div className="bg-card p-8 border border-border shadow-sm rounded-xl">
-                  <span className="text-xs font-semibold uppercase tracking-widest text-ink-soft mb-4 block">Shared 01</span>
+               <div className="bg-card p-8 border border-border rounded-xl">
+                  <span className="text-xs font-semibold uppercase tracking-eyebrow text-ink-soft mb-4 block">Shared 01</span>
                   <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">Relational Equity</h3>
                   <p className="text-[0.98rem] text-muted-foreground leading-relaxed">Unlike B2B companies, your primary capital is trust. Undisclosed or reckless use of automation risks fracturing your relationship with your congregation or donor base.</p>
                </div>
-               <div className="bg-card p-8 border border-border shadow-sm rounded-xl">
-                  <span className="text-xs font-semibold uppercase tracking-widest text-ink-soft mb-4 block">Shared 02</span>
+               <div className="bg-card p-8 border border-border rounded-xl">
+                  <span className="text-xs font-semibold uppercase tracking-eyebrow text-ink-soft mb-4 block">Shared 02</span>
                   <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">Constrained Resources</h3>
                   <p className="text-[0.98rem] text-muted-foreground leading-relaxed">You cannot afford dedicated AI engineering teams. You need structural safety protocols that operational staff can uphold without high technical barriers.</p>
                </div>
-               <div className="bg-card p-8 border border-border shadow-sm rounded-xl">
-                  <span className="text-xs font-semibold uppercase tracking-widest text-ink-soft mb-4 block">Shared 03</span>
+               <div className="bg-card p-8 border border-border rounded-xl">
+                  <span className="text-xs font-semibold uppercase tracking-eyebrow text-ink-soft mb-4 block">Shared 03</span>
                   <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">The "Shadow IT" Reality</h3>
                   <p className="text-[0.98rem] text-muted-foreground leading-relaxed">Your staff is already using consumer LLMs to draft emails and write reports. If you haven't set the boundaries, they are currently guessing.</p>
                </div>
-               <div className="bg-card p-8 border border-border shadow-sm rounded-xl">
-                  <span className="text-xs font-semibold uppercase tracking-widest text-ink-soft mb-4 block">Shared 04</span>
+               <div className="bg-card p-8 border border-border rounded-xl">
+                  <span className="text-xs font-semibold uppercase tracking-eyebrow text-ink-soft mb-4 block">Shared 04</span>
                   <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">Higher Stakes for Formation</h3>
                   <p className="text-[0.98rem] text-muted-foreground leading-relaxed">You are in the business of forming humans, not just delivering services. Your tools must never short-circuit the actual work of human care.</p>
                </div>
@@ -82,7 +82,7 @@ export function WhoWeServePage() {
               lede="While the order—Safety, Sandbox, Skills, Solutions—applies to everyone, the content of those stages changes radically."
             />
             
-            <div className="overflow-x-auto mt-12 bg-card rounded-xl border border-border shadow-sm">
+            <div className="overflow-x-auto mt-12 bg-card rounded-xl border border-border">
                <table role="table" className="w-full min-w-[800px] text-left border-collapse">
                   <thead>
                      <tr className="border-b border-border bg-section">
@@ -128,17 +128,17 @@ export function WhoWeServePage() {
             />
             
             <div className="grid md:grid-cols-3 gap-6 mt-12 bg-section p-2 rounded-xl">
-               <Link href="/nonprofits" className="bg-card border border-border hover:border-primary p-8 rounded-lg shadow-sm group">
+               <Link href="/nonprofits" className="bg-card border border-border hover:border-primary p-8 rounded-lg group">
                   <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">Nonprofits</h3>
                   <p className="text-[0.98rem] text-muted-foreground leading-relaxed mb-8">For executives balancing rapid scale with rigorous donor trust and compliance.</p>
                   <span className="text-primary font-medium text-sm border-b border-primary/30 group-hover:border-primary pb-0.5 inline-block">Read the nonprofit path →</span>
                </Link>
-               <Link href="/churches" className="bg-card border border-border hover:border-primary p-8 rounded-lg shadow-sm group">
+               <Link href="/churches" className="bg-card border border-border hover:border-primary p-8 rounded-lg group">
                   <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">Churches</h3>
                   <p className="text-[0.98rem] text-muted-foreground leading-relaxed mb-8">For pastors protecting theological depth while equipping staff to lead efficiently.</p>
                   <span className="text-primary font-medium text-sm border-b border-primary/30 group-hover:border-primary pb-0.5 inline-block">Read the church path →</span>
                </Link>
-               <Link href="/institutions" className="bg-card border border-border hover:border-primary p-8 rounded-lg shadow-sm group">
+               <Link href="/institutions" className="bg-card border border-border hover:border-primary p-8 rounded-lg group">
                   <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">Institutions</h3>
                   <p className="text-[0.98rem] text-muted-foreground leading-relaxed mb-8">For leaders standardizing policy across faculties, departments, and operations.</p>
                   <span className="text-primary font-medium text-sm border-b border-primary/30 group-hover:border-primary pb-0.5 inline-block">Read the institutional path →</span>

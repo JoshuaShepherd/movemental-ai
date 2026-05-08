@@ -158,7 +158,7 @@ function BundleCard() {
       <div className="flex flex-wrap items-center gap-3">
         <Eyebrow className="text-left">{BUNDLE.eyebrow}</Eyebrow>
         {BUNDLE.badge ? (
-          <span className="rounded-full border border-primary/40 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-widest text-primary">
+          <span className="rounded-full border border-primary/40 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-eyebrow text-primary">
             {BUNDLE.badge}
           </span>
         ) : null}
@@ -333,7 +333,7 @@ export function PricingPageContent() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             <Reveal>
               <div className="space-y-2">
-                <h3 className="text-sm font-semibold uppercase tracking-widest text-foreground">Payment terms</h3>
+                <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-foreground">Payment terms</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">
                   Safety MVP is Net 15 from signing. Sandbox and Skills cohorts are 50% at signing and 50% at completion.
                   Solutions engagements are milestone-based, typically 30/30/40 across signing, midpoint, and validation.
@@ -343,7 +343,7 @@ export function PricingPageContent() {
             </Reveal>
             <Reveal>
               <div className="space-y-2">
-                <h3 className="text-sm font-semibold uppercase tracking-widest text-foreground">Discounting</h3>
+                <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-foreground">Discounting</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">
                   We do not discount our standard offerings. The Path Bundle is the published commitment discount. We
                   hold a small number of scholarship slots per quarter for under-resourced organizations whose mission
@@ -354,7 +354,7 @@ export function PricingPageContent() {
             </Reveal>
             <Reveal>
               <div className="space-y-2">
-                <h3 className="text-sm font-semibold uppercase tracking-widest text-foreground">
+                <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-foreground">
                   Currency and international
                 </h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">
@@ -390,19 +390,19 @@ export function PricingPageContent() {
             <div className="flex flex-col flex-wrap gap-4 sm:flex-row sm:items-center">
               <Link
                 href="/field-guide"
-                className="btn-pill btn-pill--primary inline-flex items-center justify-center px-8 py-4 text-center text-xs font-semibold uppercase tracking-widest"
+                className="btn-pill btn-pill--primary inline-flex items-center justify-center px-8 py-4 text-center text-xs font-semibold uppercase tracking-eyebrow"
               >
                 Read the Field Guide
               </Link>
               <Link
                 href="/assess"
-                className="btn-pill btn-pill--ghost inline-flex items-center justify-center border border-border px-8 py-4 text-center text-xs font-semibold uppercase tracking-widest text-foreground hover:border-primary"
+                className="btn-pill btn-pill--ghost inline-flex items-center justify-center border border-border px-8 py-4 text-center text-xs font-semibold uppercase tracking-eyebrow text-foreground hover:border-primary"
               >
                 Take the Movemental AI Assessment
               </Link>
               <Link
                 href="/contact"
-                className="btn-pill btn-pill--ghost inline-flex items-center justify-center border border-border px-8 py-4 text-center text-xs font-semibold uppercase tracking-widest text-foreground hover:border-primary"
+                className="btn-pill btn-pill--ghost inline-flex items-center justify-center border border-border px-8 py-4 text-center text-xs font-semibold uppercase tracking-eyebrow text-foreground hover:border-primary"
               >
                 Start a conversation
               </Link>

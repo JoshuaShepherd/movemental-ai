@@ -14,15 +14,15 @@ export function SolutionsContent() {
         <div className="bg-card p-6 md:p-8 rounded-card border border-border mb-12 relative overflow-hidden">
            <div className="absolute left-0 top-0 bottom-0 w-2 bg-primary" />
            <div className="flex flex-col gap-6 font-serif-display text-2xl md:text-3xl text-foreground">
-              <div className="opacity-60 flex gap-3 text-lg md:text-2xl"><span className="uppercase tracking-widest text-xs font-sans font-bold mt-2.5">Not:</span> "What AI tool should we buy?"</div>
-              <div className="text-primary flex gap-3"><span className="uppercase tracking-widest text-xs font-sans font-bold mt-2.5 text-foreground">But:</span> <em dangerouslySetInnerHTML={{ __html: `"What should we build around the way our organization actually works?"` }} /></div>
+              <div className="opacity-60 flex gap-3 text-lg md:text-2xl"><span className="uppercase tracking-eyebrow text-xs font-sans font-bold mt-2.5">Not:</span> "What AI tool should we buy?"</div>
+              <div className="text-primary flex gap-3"><span className="uppercase tracking-eyebrow text-xs font-sans font-bold mt-2.5 text-foreground">But:</span> <em dangerouslySetInnerHTML={{ __html: `"What should we build around the way our organization actually works?"` }} /></div>
            </div>
         </div>
         
         <div className="mt-12 bg-section p-8 rounded-card border border-border">
           <div className="grid lg:grid-cols-5 gap-12">
             <div className="lg:col-span-3">
-               <div className="text-xs font-semibold text-primary uppercase tracking-widest mb-4">The custom AI build blueprint</div>
+               <div className="text-xs font-semibold text-primary uppercase tracking-eyebrow mb-4">The custom AI build blueprint</div>
                <p className="mb-8 font-medium">A custom AI solution is designed around six things.</p>
                
                <div className="grid gap-4">
@@ -40,7 +40,7 @@ export function SolutionsContent() {
             
             <div className="lg:col-span-2 space-y-12">
                <div>
-                  <div className="text-xs font-semibold text-primary uppercase tracking-widest mb-6">What this can produce</div>
+                  <div className="text-xs font-semibold text-primary uppercase tracking-eyebrow mb-6">What this can produce</div>
                   <ul className="space-y-3 m-0 p-0 list-none text-sm">
                      {solutionsProduces.map((item, i) => (
                         <li key={i} className="flex"><span className="text-primary font-bold mr-3">✓</span> {item}</li>
@@ -49,7 +49,7 @@ export function SolutionsContent() {
                </div>
                
                <div className="bg-card p-6 rounded-lg border border-border">
-                  <div className="text-xs font-semibold text-foreground uppercase tracking-widest mb-4">Why this matters</div>
+                  <div className="text-xs font-semibold text-foreground uppercase tracking-eyebrow mb-4">Why this matters</div>
                   <ol className="space-y-4 m-0 p-0 list-decimal list-inside text-sm text-muted-foreground">
                      {solutionsWhyMatters.map((item, i) => (
                         <li key={i} dangerouslySetInnerHTML={{ __html: item }} />

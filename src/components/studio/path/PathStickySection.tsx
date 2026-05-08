@@ -98,7 +98,7 @@ export function PathStickySection() {
         <div className="grid grid-cols-1 gap-10 min-[960px]:grid-cols-[33%_1fr] min-[960px]:gap-12 lg:gap-16">
           <div className="relative hidden min-[960px]:block min-[960px]:self-start" aria-label="Path stages">
             <div className="sticky top-[var(--site-chrome-total,4.25rem)] flex max-h-[calc(100dvh-var(--site-chrome-total,4.25rem))] gap-8 overflow-y-auto rounded-card border border-border bg-section p-8">
-              <div className="pointer-events-none absolute inset-0 rounded-card bg-gradient-to-br from-background/40 to-transparent" />
+              <div className="pointer-events-none absolute inset-0 rounded-card bg-linear-to-br from-background/40 to-transparent" />
 
               <div className="relative h-[400px] w-1 flex-shrink-0 rounded-full bg-border">
                 <div
@@ -134,7 +134,7 @@ export function PathStickySection() {
                     />
                   ))}
                 </div>
-                <div className="mb-2 text-xs font-semibold uppercase tracking-widest text-foreground/50 transition-all">
+                <div className="mb-2 text-xs font-semibold uppercase tracking-eyebrow text-foreground/50 transition-all">
                   Stage {stageMeta[activeStage].num} of 04
                 </div>
                 <h3 className="font-serif-display mb-6 text-3xl italic transition-all">{stageMeta[activeStage].name}</h3>
@@ -166,7 +166,7 @@ export function PathStickySection() {
                   className="stage-panel scroll-mt-[calc(var(--site-chrome-total,4.25rem)+1rem)] min-h-[90vh] border-b border-border py-16 last:min-h-[70vh] last:border-b-0 lg:py-24"
                 >
                   <div className="mb-10 flex items-center gap-4 md:hidden">
-                    <span className="text-sm font-semibold uppercase tracking-widest text-foreground/60">
+                    <span className="text-sm font-semibold uppercase tracking-eyebrow text-foreground/60">
                       Stage {stage.num} of 04 <span className="mx-2 text-border">/</span>{" "}
                       <em className="text-foreground">{stage.name}</em>
                     </span>

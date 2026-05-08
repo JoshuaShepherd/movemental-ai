@@ -10,7 +10,7 @@ export function SafetyContent() {
         <p className="font-serif-display text-3xl md:text-4xl leading-tight mb-8 text-foreground/90" dangerouslySetInnerHTML={{ __html: stageMeta[0].sentence }} />
         
         <div className="mt-12 bg-section p-8 rounded-card border border-border">
-          <div className="text-xs font-semibold text-primary uppercase tracking-widest mb-4">Safety checklist</div>
+          <div className="text-xs font-semibold text-primary uppercase tracking-eyebrow mb-4">Safety checklist</div>
           <h4 className="text-xl font-medium text-foreground mb-4 m-0">The governance baseline.</h4>
           <p className="mb-8">Before staff use AI on real work, leadership needs a clear governance baseline. These are the essential pieces that make AI use safe enough to begin.</p>
           
@@ -27,7 +27,7 @@ export function SafetyContent() {
             <summary className="flex cursor-pointer items-center justify-between p-6 text-foreground font-semibold hover:bg-muted/50 transition-colors">
               <span className="flex items-center gap-4">
                 <span>View full 14-item checklist</span>
-                <span className="bg-muted px-2 py-0.5 rounded text-xs font-medium text-muted-foreground uppercase tracking-widest">14 items</span>
+                <span className="bg-muted px-2 py-0.5 rounded text-xs font-medium text-muted-foreground uppercase tracking-eyebrow">14 items</span>
               </span>
               <span className="relative flex h-5 w-5 shrink-0 items-center justify-center text-xl font-medium text-muted-foreground group-open:rotate-45 transition-transform duration-300">+</span>
             </summary>

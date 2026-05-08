@@ -11,7 +11,7 @@ export function FinalCta() {
         <h2 className="display mx-auto max-w-5xl" id="final-cta-heading">
           When it comes to AI, we&apos;re all beginners and no one asked for this.
         </h2>
-        <p className="final-cta__mantra mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-4 text-xs font-semibold uppercase tracking-widest text-inverse-muted">
+        <p className="final-cta__mantra mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-4 text-xs font-semibold uppercase tracking-eyebrow text-inverse-muted">
           <span className="text-inverse-foreground">Lead anyway.</span>
           <span aria-hidden className="text-inverse-foreground/30">
             •

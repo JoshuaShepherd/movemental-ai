@@ -59,10 +59,10 @@ export function TechnologyPage() {
                   The technological deployment built on a grounded human foundation.
                 </p>
                 <div className="mb-10 flex flex-col gap-4 sm:flex-row">
-                  <Link href="/contact?interest=solutions" className="btn-pill bg-foreground px-8 py-4 text-center text-xs font-semibold uppercase tracking-widest text-background hover:opacity-90">
+                  <Link href="/contact?interest=solutions" className="btn-pill bg-foreground px-8 py-4 text-center text-xs font-semibold uppercase tracking-eyebrow text-background hover:opacity-90">
                     Talk about Solutions →
                   </Link>
-                  <Link href="/field-guide" className="border border-border px-8 py-4 text-center text-xs font-semibold uppercase tracking-widest text-foreground hover:border-primary rounded-full transition-colors inline-flex justify-center items-center">
+                  <Link href="/field-guide" className="border border-border px-8 py-4 text-center text-xs font-semibold uppercase tracking-eyebrow text-foreground hover:border-primary rounded-full transition-colors inline-flex justify-center items-center">
                     Field Guide
                   </Link>
                 </div>
@@ -110,7 +110,7 @@ export function TechnologyPage() {
                 { n: "04", h: "Executive", sub: "Alignment", p: "Board and leadership sign-off on sequence, budget, and posture before build spend." },
               ].map((cell) => (
                 <div key={cell.n} className="flex flex-col gap-6 bg-background p-10 md:p-12">
-                  <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">{cell.n}</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-eyebrow text-muted-foreground">{cell.n}</span>
                   <h3 className="font-serif-display text-3xl leading-tight text-foreground md:text-4xl">
                     {cell.h} <span className="block text-muted-foreground font-light italic">{cell.sub}</span>
                   </h3>
@@ -173,7 +173,7 @@ export function TechnologyPage() {
                 See a live build <ArrowUpRight className="w-4 h-4 ml-1 inline" />
               </a>
             </div>
-            <div className="relative w-full aspect-video bg-muted/20 border border-border rounded-xl overflow-hidden shadow-sm">
+            <div className="relative w-full aspect-video bg-muted/20 border border-border rounded-xl overflow-hidden">
               <div className="absolute inset-0 flex flex-col items-center justify-center text-muted-foreground">
                 <Play className="w-12 h-12 mb-4 text-primary opacity-50" />
                 <span className="text-sm font-medium">Hero Walkthrough Loop</span>
@@ -194,13 +194,13 @@ export function TechnologyPage() {
                   <div className="aspect-video bg-muted/20 rounded-xl border border-border flex items-center justify-center text-sm text-muted-foreground relative group cursor-pointer" onClick={() => window.open('https://alanhirsch.com', '_blank')}>
                     Demo Loop: {cap.title}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-background/50">
-                      <span className="bg-primary text-primary-foreground px-4 py-2 rounded-full font-medium shadow-sm">See it live</span>
+                      <span className="bg-primary text-primary-foreground px-4 py-2 rounded-full font-medium">See it live</span>
                     </div>
                   </div>
                   <div>
                     <h3 className="text-2xl font-semibold mb-3">{cap.title}</h3>
                     <p className="text-[1.0625rem] leading-relaxed text-muted-foreground mb-4">{cap.desc}</p>
-                    <button className="text-sm font-semibold uppercase tracking-widest text-primary hover:text-primary/80 transition-colors inline-flex items-center">Watch the walkthrough <Play className="w-3 h-3 ml-1 fill-current" /></button>
+                    <button className="text-sm font-semibold uppercase tracking-eyebrow text-primary hover:text-primary/80 transition-colors inline-flex items-center">Watch the walkthrough <Play className="w-3 h-3 ml-1 fill-current" /></button>
                   </div>
                 </div>
               ))}

@@ -88,7 +88,7 @@ export function SafetyPage() {
           <Reveal>
             <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-12 lg:grid-cols-12">
               <div className="flex flex-col lg:col-span-8 lg:col-start-3">
-                <span className="mb-6 block text-sm font-semibold uppercase tracking-widest text-muted-foreground">Stage 01</span>
+                <span className="mb-6 block text-sm font-semibold uppercase tracking-eyebrow text-muted-foreground">Stage 01</span>
                 <h1 className="mb-8 font-serif-display text-6xl italic leading-[0.95] tracking-tight text-foreground md:text-7xl lg:text-8xl">
                   Safety Documentation
                 </h1>
@@ -101,7 +101,7 @@ export function SafetyPage() {
                   </Link>
                   <p className="text-sm text-muted-foreground">Standard engagement. Timeline and scope adapt to your situation.</p>
                 </div>
-                <div className="w-full border-t border-border pt-4 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+                <div className="w-full border-t border-border pt-4 text-[10px] font-semibold uppercase tracking-eyebrow text-muted-foreground">
                   2 Weeks · $5,000
                 </div>
               </div>
@@ -126,13 +126,13 @@ export function SafetyPage() {
                 </div>
                 <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2">
                   <div className="border-t border-primary/30 bg-section p-8">
-                    <h3 className="mb-4 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">Before you start</h3>
+                    <h3 className="mb-4 text-[10px] font-semibold uppercase tracking-eyebrow text-muted-foreground">Before you start</h3>
                     <p className="text-sm leading-relaxed text-foreground">
                       You need executive buy-in for establishing baseline AI rules and a designated point of contact for review cycles.
                     </p>
                   </div>
                   <div className="border-t border-primary/30 bg-section p-8">
-                    <h3 className="mb-4 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">You&apos;re finished when</h3>
+                    <h3 className="mb-4 text-[10px] font-semibold uppercase tracking-eyebrow text-muted-foreground">You&apos;re finished when</h3>
                     <p className="text-sm leading-relaxed text-foreground">
                       The full documentation suite is delivered, reviewed, and signed off by key stakeholders, ready for immediate operational deployment.
                     </p>
@@ -149,7 +149,7 @@ export function SafetyPage() {
           <Reveal>
             <div className="mx-auto mb-16 flex max-w-7xl flex-col items-baseline justify-between gap-6 md:flex-row">
               <h2 className="font-serif-display text-4xl italic tracking-tight text-foreground md:text-5xl">Five pillars of Safety.</h2>
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">The structural defense</p>
+              <p className="text-xs font-semibold uppercase tracking-eyebrow text-muted-foreground">The structural defense</p>
             </div>
             <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {fivePillars.map(({ title, body, Icon }) => (
@@ -167,7 +167,7 @@ export function SafetyPage() {
               >
                 <BarChart3 className="mb-4 size-10 text-primary" aria-hidden />
                 <h3 className="mb-2 font-serif-display text-2xl text-foreground">Take the AI Assessment</h3>
-                <p className="mt-4 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+                <p className="mt-4 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-eyebrow text-muted-foreground">
                   Evaluate your readiness <span aria-hidden>→</span>
                 </p>
               </Link>
@@ -183,7 +183,7 @@ export function SafetyPage() {
               <div className="lg:col-span-7">
                 <h2 className="mb-16 font-serif-display text-4xl italic tracking-tight text-foreground md:text-5xl">What Safety produces.</h2>
                 <div className="mb-12 border-b border-primary/30 pb-4">
-                  <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">The core artifacts of record</span>
+                  <span className="text-xs font-semibold uppercase tracking-eyebrow text-muted-foreground">The core artifacts of record</span>
                 </div>
                 <div className="flex flex-col">
                   {ledgerProduces.map((row) => (
@@ -224,24 +224,24 @@ export function SafetyPage() {
             <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-3">
               <div className="flex flex-col justify-between border-t border-primary/30 bg-card p-10 transition-colors hover:bg-section">
                 <div>
-                  <span className="mb-6 block text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">Self-guided</span>
+                  <span className="mb-6 block text-[10px] font-semibold uppercase tracking-eyebrow text-muted-foreground">Self-guided</span>
                   <h3 className="mb-4 font-serif-display text-3xl text-foreground">Field Guide</h3>
                   <p className="mb-8 min-h-[6rem] text-muted-foreground">The foundational reading required to understand the landscape. Access the raw theory.</p>
-                  <div className="mb-12 text-xs font-semibold uppercase tracking-widest text-foreground">Free access</div>
+                  <div className="mb-12 text-xs font-semibold uppercase tracking-eyebrow text-foreground">Free access</div>
                 </div>
-                <Link href="/field-guide" className="w-full border border-border py-4 text-center text-xs font-semibold uppercase tracking-widest hover:border-primary">
+                <Link href="/field-guide" className="w-full border border-border py-4 text-center text-xs font-semibold uppercase tracking-eyebrow hover:border-primary">
                   Read the Field Guide
                 </Link>
               </div>
               <div className="relative flex flex-col justify-between bg-card p-10">
                 <div className="absolute left-0 top-0 h-1 w-full bg-primary" aria-hidden />
                 <div className="pt-2">
-                  <span className="mb-6 block text-[10px] font-semibold uppercase tracking-widest text-primary">Accelerated toolkit</span>
+                  <span className="mb-6 block text-[10px] font-semibold uppercase tracking-eyebrow text-primary">Accelerated toolkit</span>
                   <h3 className="mb-4 font-serif-display text-3xl text-foreground">AI-assisted Safety product</h3>
                   <p className="mb-8 min-h-[6rem] text-muted-foreground">
                     Utilize our proprietary toolset to draft your artifacts faster. The fastest path to a documented baseline.
                   </p>
-                  <div className="mb-12 text-xs font-semibold uppercase tracking-widest text-foreground">
+                  <div className="mb-12 text-xs font-semibold uppercase tracking-eyebrow text-foreground">
                     $1,997 <span className="ml-1 lowercase tracking-normal opacity-50">one-time</span>
                   </div>
                 </div>
@@ -251,16 +251,16 @@ export function SafetyPage() {
               </div>
               <div className="flex flex-col justify-between border-t border-primary/30 bg-card p-10 transition-colors hover:bg-section">
                 <div>
-                  <span className="mb-6 block text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">Consultative</span>
+                  <span className="mb-6 block text-[10px] font-semibold uppercase tracking-eyebrow text-muted-foreground">Consultative</span>
                   <h3 className="mb-4 font-serif-display text-3xl text-foreground">Facilitated MVP engagement</h3>
                   <p className="mb-8 min-h-[6rem] text-muted-foreground">
                     Two weeks. One leadership meeting. We execute the heavy lifting to deliver a bespoke safety perimeter for your specific context.
                   </p>
-                  <div className="mb-12 text-xs font-semibold uppercase tracking-widest text-foreground">
+                  <div className="mb-12 text-xs font-semibold uppercase tracking-eyebrow text-foreground">
                     $2,500 <span className="ml-1 lowercase tracking-normal opacity-50">engagement fee</span>
                   </div>
                 </div>
-                <Link href="/contact?interest=safety-facilitated" className="w-full bg-foreground py-4 text-center text-xs font-semibold uppercase tracking-widest text-background hover:opacity-90">
+                <Link href="/contact?interest=safety-facilitated" className="w-full bg-foreground py-4 text-center text-xs font-semibold uppercase tracking-eyebrow text-background hover:opacity-90">
                   Schedule intake
                 </Link>
               </div>
@@ -274,7 +274,7 @@ export function SafetyPage() {
           <div className="mx-auto aspect-[21/9] max-w-5xl bg-muted" aria-hidden>
             {/* Stitch export used remote boardroom imagery; tonal placeholder until on-brand photography is wired. */}
           </div>
-          <p className="mx-auto mt-4 max-w-5xl text-right text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+          <p className="mx-auto mt-4 max-w-5xl text-right text-[10px] font-semibold uppercase tracking-eyebrow text-muted-foreground">
             Exemplar architectural space
           </p>
         </Container>
@@ -298,7 +298,7 @@ export function SafetyPage() {
         <Container>
           <Reveal>
             <div className="mx-auto flex max-w-4xl flex-col items-center gap-8 border-b border-inverse-border pb-24 text-center">
-              <span className="text-[10px] font-semibold uppercase tracking-widest text-inverse-muted">What happens next</span>
+              <span className="text-[10px] font-semibold uppercase tracking-eyebrow text-inverse-muted">What happens next</span>
               <h2 className="font-serif-display text-5xl tracking-tight text-inverse-foreground">Move from theory to practice.</h2>
               <p className="max-w-2xl text-lg leading-relaxed text-inverse-foreground/80">
                 Once governance is established and constraints are clear, the next step is safely testing the technology against your actual work. Sandbox Discovery is ready.
@@ -307,7 +307,7 @@ export function SafetyPage() {
                 <Link href="/contact?interest=safety-documentation" className="btn-pill bg-background px-8 py-4 text-foreground hover:bg-muted">
                   Ready to start Safety?
                 </Link>
-                <Link href="/pathway/sandbox" className="inline-flex items-center justify-center border border-inverse-border px-8 py-4 text-xs font-semibold uppercase tracking-widest text-inverse-foreground hover:border-inverse-foreground">
+                <Link href="/pathway/sandbox" className="inline-flex items-center justify-center border border-inverse-border px-8 py-4 text-xs font-semibold uppercase tracking-eyebrow text-inverse-foreground hover:border-inverse-foreground">
                   Explore Stage 02: Sandbox Discovery
                 </Link>
               </div>

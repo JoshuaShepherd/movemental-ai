@@ -29,5 +29,4 @@ export class IntegrityDiagnosticSubmissionsService extends SimplifiedService<
   }
 }
 
-export const integrityDiagnosticSubmissionsService =
-  new IntegrityDiagnosticSubmissionsService();
+export const integrityDiagnosticSubmissionsService = new IntegrityDiagnosticSubmissionsService();

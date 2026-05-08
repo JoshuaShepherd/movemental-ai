@@ -95,7 +95,7 @@ export function AboutPage() {
         <Container>
           <Reveal>
             <div className="bg-card border border-border rounded-card p-10 md:p-16 lg:p-20 text-center max-w-5xl mx-auto overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none"></div>
+              <div className="absolute inset-0 bg-linear-to-b from-primary/5 to-transparent pointer-events-none"></div>
               <div className="relative z-10">
                 <span className="section-eyebrow">The Platform</span>
                 <h2 className="font-serif-display italic text-3xl md:text-4xl text-foreground mb-6 max-w-2xl mx-auto">

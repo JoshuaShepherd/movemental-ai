@@ -423,7 +423,7 @@ export function SegmentPathway({ audience }: SegmentPathwayProps) {
               <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                 {data.stops.map((stop, i) => (
                   <div key={i} className="flex h-full flex-col">
-                    <div className="text-primary mb-2 text-xs font-semibold uppercase tracking-widest">
+                    <div className="text-primary mb-2 text-xs font-semibold uppercase tracking-eyebrow">
                       Stage {stop.num}
                     </div>
                     <h4 className="mb-4 font-medium text-foreground">{stop.name}</h4>
@@ -436,7 +436,7 @@ export function SegmentPathway({ audience }: SegmentPathwayProps) {
                     <div className="mb-6 flex-grow text-sm leading-relaxed font-medium text-foreground">{stop.outcome}</div>
 
                     <div className="mb-6">
-                      <h5 className="text-muted-foreground mb-3 text-[10px] font-bold uppercase tracking-widest">
+                      <h5 className="text-muted-foreground mb-3 text-[10px] font-bold uppercase tracking-eyebrow">
                         Key Deliverables
                       </h5>
                       <ul className="space-y-2">
@@ -517,7 +517,7 @@ export function SegmentPathway({ audience }: SegmentPathwayProps) {
                       />
                     ))}
                   </div>
-                  <div className="text-foreground/50 mb-2 text-xs font-semibold uppercase tracking-widest transition-all">
+                  <div className="text-foreground/50 mb-2 text-xs font-semibold uppercase tracking-eyebrow transition-all">
                     Stage {data.stops[activeStage]?.num} of 04
                   </div>
                   <h3 className="font-serif-display mb-6 text-3xl italic transition-all">
@@ -555,7 +555,7 @@ export function SegmentPathway({ audience }: SegmentPathwayProps) {
                     className="stage-panel scroll-mt-[calc(var(--site-chrome-total,4.25rem)+1rem)] border-border min-h-[70vh] border-b py-16 last:min-h-[50vh] last:border-b-0 lg:py-24"
                   >
                     <div className="mb-10 flex items-center gap-4 md:hidden">
-                      <span className="text-foreground/60 text-sm font-semibold uppercase tracking-widest">
+                      <span className="text-foreground/60 text-sm font-semibold uppercase tracking-eyebrow">
                         Stage {stop.num} of 04 <span className="text-border mx-2">/</span>{" "}
                         <em className="text-foreground shrink-0">{stop.name}</em>
                       </span>

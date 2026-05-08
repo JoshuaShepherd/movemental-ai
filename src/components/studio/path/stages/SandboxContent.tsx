@@ -10,17 +10,17 @@ export function SandboxContent() {
         <p className="font-serif-display text-3xl md:text-4xl leading-tight mb-8 text-foreground/90" dangerouslySetInnerHTML={{ __html: stageMeta[1].sentence }} />
         
         <div className="mt-12 bg-section p-8 rounded-card border border-border">
-          <div className="text-xs font-semibold text-primary uppercase tracking-widest mb-4">The Sandbox pact</div>
+          <div className="text-xs font-semibold text-primary uppercase tracking-eyebrow mb-4">The Sandbox pact</div>
           <p className="mb-8 font-medium text-foreground">Sandbox is not "everyone try whatever you want." It is structured experimentation inside boundaries. Two rules make it safe enough to actually learn from. If either one is missing, the experiment doesn't run yet.</p>
           
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="bg-card p-6 rounded-lg border border-border">
-               <div className="text-xs uppercase tracking-widest font-semibold text-primary mb-2">Rule 01</div>
+               <div className="text-xs uppercase tracking-eyebrow font-semibold text-primary mb-2">Rule 01</div>
                <h5 className="text-lg font-bold text-foreground mb-3 mt-0">Nothing made in the sandbox gets published.</h5>
                <p className="text-sm m-0 text-muted-foreground">While experiments are running, AI-generated work doesn't leave the organization. Not to donors, not to the public, not to the people you serve. The sandbox is for learning what works — not for shipping it. Anything that ships goes through a separate approval step after the experiment is done.</p>
             </div>
             <div className="bg-card p-6 rounded-lg border border-border">
-               <div className="text-xs uppercase tracking-widest font-semibold text-primary mb-2">Rule 02</div>
+               <div className="text-xs uppercase tracking-eyebrow font-semibold text-primary mb-2">Rule 02</div>
                <h5 className="text-lg font-bold text-foreground mb-3 mt-0">Private information stays private — by process, not by promise.</h5>
                <p className="text-sm m-0 text-muted-foreground">Before any experiment runs, you have a real, trained procedure for keeping sensitive information out of AI tools. Not a memo people skim — an actual process every staff member has been walked through. If a privacy breach is even possible, the experiment doesn't run yet.</p>
             </div>
@@ -29,7 +29,7 @@ export function SandboxContent() {
           <p className="mb-10 text-muted-foreground">With both rules in place, your team is free to actually explore — to find where AI saves time on tedious work, helps generate revenue, or raises the quality of what you produce. Those three places are where most of the value lives.</p>
           
           <div className="border-t border-border pt-10">
-             <div className="text-xs font-semibold text-primary uppercase tracking-widest mb-6">How the experiment runs</div>
+             <div className="text-xs font-semibold text-primary uppercase tracking-eyebrow mb-6">How the experiment runs</div>
              <p className="mb-8 font-medium">An eight-week structured process for finding, documenting, and reviewing AI use cases that fit your organization.</p>
              
              <div className="space-y-8">

@@ -70,7 +70,7 @@ export function CredibilityFold() {
                 key={founder.name}
                 className="flex items-start gap-4"
               >
-                <div className="relative aspect-4/5 w-24 shrink-0 overflow-hidden rounded-lg bg-muted shadow-sm ring-1 ring-border/60 sm:w-28">
+                <div className="relative aspect-4/5 w-24 shrink-0 overflow-hidden rounded-lg bg-muted ring-1 ring-border/60 sm:w-28">
                   <Image
                     src={founder.portrait}
                     alt={`Portrait of ${founder.name}`}
@@ -81,7 +81,7 @@ export function CredibilityFold() {
                   />
                   <span
                     aria-hidden
-                    className="pointer-events-none absolute left-2 top-2 inline-flex h-7 w-7 items-center justify-center rounded-full bg-background/90 text-[10px] font-semibold tracking-tight text-foreground shadow-sm backdrop-blur-sm"
+                    className="pointer-events-none absolute left-2 top-2 inline-flex h-7 w-7 items-center justify-center rounded-full bg-background/90 text-[10px] font-semibold tracking-tight text-foreground backdrop-blur-sm"
                   >
                     {founder.initials}
                   </span>

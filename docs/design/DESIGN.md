@@ -108,7 +108,7 @@ Depth is **tonal stacking** between paper tones, plus **hairline** structure for
 | Muted fill (alias of section) | `--muted` | `bg-muted` | `#f2ece0` |
 | Primary ink | `--foreground` | `text-foreground` | `#19150f` |
 | Secondary ink | `--muted-foreground` | `text-muted-foreground` | `#6b6660` |
-| Tertiary ink / meta | `--ink-soft` | `text-ink-soft` | `#9f978b` |
+| Tertiary ink / meta | `--ink-soft` | `text-ink-soft` | `#7e786f` |
 | Midnight band | `--inverse-surface` | `bg-inverse-surface` | `#141110` |
 | On midnight | `--inverse-foreground` | `text-inverse-foreground` | `#f4efe5` |
 
@@ -141,9 +141,9 @@ Depth is **tonal stacking** between paper tones, plus **hairline** structure for
 | ---- | ------------ | --------- | ----- |
 | Hairline (structural) | `--border` | `border-border` | Cream `#e6ddcb` — hairline structure between cards, rows, grids |
 | Hairline (softer) | `--border-soft` | `border-border-soft` | `#efe7d6` — inside cards or groups where the main hairline feels heavy |
-| Field chrome | `--input` | `border-input` | `#e6ddcb` |
+| Field chrome | `--input` | `border-input` | `#8b8479` (clears WCAG 1.4.11 UI 3:1 against paper) |
 | Focus ring | `--ring` | `ring-ring` | Ink at 20% opacity |
-| Outline reference | `--outline` | (use via border token) | `#9f978b` (ink-soft) |
+| Outline reference | `--outline` | (use via border token) | `#7e786f` (ink-soft) |
 | Popover surface | `--popover` | `bg-popover` | `#ffffff` |
 | Midnight hairline | `--inverse-border` | — | Cream at 14% opacity (for rules on Midnight) |
 

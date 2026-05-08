@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Implementation prompt — Modular agents across Movemental (multi-repo)</title>
+  <style>
+    :root {
+      --ink: #2a3439;
+      --muted: #5c6670;
+      --surface: #f7f8fa;
+      --card: #ffffff;
+      --border: rgba(42, 52, 57, 0.12);
+      --primary: #0053db;
+      --primary-soft: rgba(0, 83, 219, 0.08);
+      --warn-bg: #fff8e6;
+      --warn-border: rgba(180, 130, 0, 0.35);
+      --radius: 12px;
+      --maxw: 920px;
+      --font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--surface);
+    }
+    header {
+      background: linear-gradient(145deg, #0f1419 0%, #1a2332 55%, #0f1419 100%);
+      color: #f0f3f6;
+      padding: 2.5rem 1.5rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    header .inner { max-width: var(--maxw); margin: 0 auto; }
+    header h1 {
+      font-size: 1.65rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.5rem;
+      line-height: 1.25;
+    }
+    header .sub {
+      color: rgba(240,243,246,0.78);
+      font-size: 1rem;
+      max-width: 52ch;
+      margin: 0;
+    }
+    header .badge {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: #c8d9ff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    main { max-width: var(--maxw); margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    h2 {
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+      margin: 2.5rem 0 0.75rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+    }
+    h2:first-of-type { border-top: none; margin-top: 0; padding-top: 0; }
+    h3 { font-size: 1.1rem; margin: 1.75rem 0 0.5rem; color: var(--ink); }
+    p { margin: 0.65rem 0; color: var(--ink); }
+    .muted { color: var(--muted); font-size: 0.95rem; }
+    ul, ol { margin: 0.5rem 0 1rem; padding-left: 1.35rem; }
+    li { margin: 0.35rem 0; }
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.35rem;
+      margin: 1rem 0;
+      box-shadow: 0 12px 40px rgba(42, 52, 57, 0.06);
+    }
+    .callout {
+      background: var(--warn-bg);
+      border: 1px solid var(--warn-border);
+      border-radius: var(--radius);
+      padding: 1rem 1.15rem;
+      margin: 1.25rem 0;
+    }
+    .callout strong { color: var(--ink); }
+    pre, code {
+      font-family: var(--mono);
+      font-size: 0.84rem;
+    }
+    pre {
+      background: #0f1419;
+      color: #e8ecf1;
+      padding: 1rem 1.15rem;
+      border-radius: 10px;
+      overflow-x: auto;
+      margin: 0.85rem 0;
+      line-height: 1.45;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      margin: 1rem 0;
+    }
+    th, td {
+      text-align: left;
+      padding: 0.65rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      font-weight: 600;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+    .pill {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+    .diagram {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      line-height: 1.5;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      white-space: pre;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    footer {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 1.25rem 3rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    a { color: var(--primary); text-underline-offset: 2px; }
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+    #implementer-prompt {
+      border: 2px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.35rem;
+      background: #fafcfe;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="inner">
+      <p class="badge">Build prompt · Agents architecture</p>
+      <h1>Modular Movemental agents — author-swappable retrieval, prompts, and tools</h1>
+      <p class="sub">
+        This document is both a product/engineering brief and a paste-ready implementer prompt.
+        It describes how <strong>ai-lab-agent</strong>, <strong>movemental-ai-agents</strong>, the
+        <strong>Alan Hirsch</strong> tenant app (AI Lab UI), and this <strong>movemental-ai</strong>
+        repo relate — and the remaining work to make every agent configurable per author/tenant
+        without code forks.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2 style="margin-top:0;border:none;padding:0;">Goals (definition of done)</h2>
+      <ul>
+        <li><strong>Author swap</strong>: Replace corpus, voice layer, file-search / vector backend, and model defaults by changing <em>data + config</em>, not scattered code edits.</li>
+        <li><strong>Tenant isolation</strong>: Every runtime binding resolves through <code>organization_id</code> (or equivalent tenant key) from DB or signed server config.</li>
+        <li><strong>Single orchestration contract</strong>: All agents (AI Lab, companions, coaches, content agents) resolve prompts, tools, and retrieval from the same abstraction layer.</li>
+        <li><strong>Operational clarity</strong>: Dashboard or migrations can clone an “agent profile” from one tenant to another with explicit overrides.</li>
+      </ul>
+    </section>
+
+    <h2>1. Repository map (same ecosystem, different responsibilities)</h2>
+    <p class="muted">The following repos are referenced across Movemental docs; they are not all inside the <code>movemental-ai</code> workspace clone.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Surface</th>
+          <th>Role today</th>
+          <th>Modularity gap</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="pill">movemental-ai</span> (this repo)</td>
+          <td>Org/marketing site; Drizzle schema includes <code>agents</code>, <code>agent_tools</code>, <code>agent_tool_assignments</code>, guardrails, traces; simplified REST under <code>/api/simplified/*</code>; AI Lab conversation tables (<code>ai_lab_*</code>).</td>
+          <td>Schema supports configurability, but runtime agent execution for the tenant AI Lab does not live here. Risk of two sources of truth unless services converge.</td>
+        </tr>
+        <tr>
+          <td><span class="pill">movemental-ai-agents</span></td>
+          <td>Central agent runtime (npm <code>ai-agents</code>): tool wiring, OpenAI Agents SDK patterns, service API auth, Redis, DB access — documented as requiring <code>TENANT_ORG_ID</code>, Supabase keys, etc.</td>
+          <td>Implementation detail for retrieval (OpenAI <code>file_search</code> vs Supabase/pgvector vs Gemini) likely hard-coded or env-driven per deployment; must become tenant-scoped rows + adapters.</td>
+        </tr>
+        <tr>
+          <td><span class="pill">ai-lab-agent</span></td>
+          <td>Focused service for AI Lab traffic (OpenAI-centric paths per bootstrap docs).</td>
+          <td>Almost certainly author-specific prompts and vector store IDs unless fully DB-driven.</td>
+        </tr>
+        <tr>
+          <td><span class="pill">alan-hirsch</span> tenant app</td>
+          <td>Public UX: <code>/ai-lab</code>, notebook, corpus helpers (e.g. Gemini upload scripts referenced in internal docs).</td>
+          <td>UI + client wiring may assume Alan corpus and voice; tenant config must drive labels and agent endpoints.</td>
+        </tr>
+        <tr>
+          <td><span class="pill">movemental-visual-editor</span></td>
+          <td>Studio: authoring, agents UI (per Alan Hirsch platform README in this repo’s docs).</td>
+          <td>Needs parity fields for “corpus binding” and prompt packs when editing agents.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="diagram">Browser (AI Lab UI)
+        │
+        ▼
+┌───────────────────┐     ┌────────────────────────┐
+│  Tenant Next app  │────▶│  ai-lab-agent /        │
+│  (alan-hirsch)    │     │  movemental-ai-agents  │
+└───────────────────┘     └───────────┬────────────┘
+                                      │
+                                      ▼
+                            ┌─────────────────────┐
+                            │ Supabase Postgres   │
+                            │ agents · tools ·    │
+                            │ assignments · orgs  │
+                            └─────────────────────┘</div>
+
+    <p class="muted">Canonical bootstrap references: <code>docs/build/plans/movemental-multi-repo-env-bootstrap.md</code> and <code>docs/projects/alan-hirsch/README.md</code>.</p>
+
+    <h2>2. Database reality check (Movemental Supabase project)</h2>
+    <p>Live inspection (read-only) of the Movemental-hosted database shows useful signals about how far configurability has progressed:</p>
+    <ul>
+      <li><strong><code>agents</code> rows</strong> exist with slugs such as <code>ai-lab-agent</code>, <code>voice-coach</code>, <code>formation-companion</code>, <code>seo-expert</code>, etc.</li>
+      <li><strong>Tenant concentration</strong>: At time of investigation, all agent definitions observed belonged to a <em>single</em> <code>organizations</code> row (the Alan Hirsch tenant). Other organizations in <code>organizations</code> did not yet have parallel agent rows — so multi-tenant agent catalogs are not populated.</li>
+      <li><strong><code>agents.metadata</code></strong>: Mostly empty objects for key slugs (e.g. AI Lab). One legacy note existed for voice-coach migration provenance — not a structured retrieval binding.</li>
+      <li><strong><code>agent_tools</code></strong>: Definitions exist (parameter JSON schemas for tools like <code>search_corpus</code>). Tool rows are scoped to the same organization as above.</li>
+      <li><strong><code>agent_tool_assignments</code></strong>: Example — <code>ai-lab-agent</code> is assigned <code>search_corpus</code> with an empty per-assignment <code>config</code> object. That means the runtime must be inferring corpus routing from code/env, not from assignment config.</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Implication:</strong> The relational model is a strong foundation, but <em>author-swappable behavior</em> is not yet encoded in rows. Until bindings live in <code>metadata</code>, <code>tool_config</code>/<code>config</code>, or new normalized tables, swapping authors requires engineering changes across services.
+    </div>
+
+    <h2>3. Coupling hotspots (what blocks “swap author” today)</h2>
+    <h3>3.1 Prompts</h3>
+    <ul>
+      <li>Long <code>system_prompt</code> text in <code>agents</code> still reads Alan-specific / Movemental-default in previews — acceptable for one tenant, fragile for N tenants.</li>
+      <li>No versioning UX tied to releases; <code>version</code> column exists but operational workflow unclear.</li>
+      <li>Layered prompts (identity · theme · mode · style) should be composable blobs keyed by slug, not one monolithic string — aligns with internal skills (<code>write-instructions</code>, <code>agent-instructions</code>).</li>
+    </ul>
+
+    <h3>3.2 Retrieval &amp; file search</h3>
+    <ul>
+      <li>OpenAI <strong>vector store</strong> / <strong>file_search</strong> IDs are naturally deployment-specific; they must map to <strong>CorpusBinding</strong> records per org (see §4), not env globals.</li>
+      <li>Alan tenant docs describe alternate stacks (Gemini File API, Vertex RAG). Multiple backends imply an adapter interface in <code>movemental-ai-agents</code>, not conditional spaghetti per route.</li>
+      <li><code>search_corpus</code> tool parameters include <code>book_filter</code> — domain-specific to book corpus; other authors may need tags, collections, or media types. Parameter schemas may need <code>tenant_extension</code> or tool variants.</li>
+    </ul>
+
+    <h3>3.3 Tools &amp; guardrails</h3>
+    <ul>
+      <li><code>agent_tools.implementation</code> may be null in DB while code registers handlers by name — fragile rename surface.</li>
+      <li>Guardrails and handoffs tables exist in schema; ensure every agent class uses them consistently (not only DB-backed agents).</li>
+    </ul>
+
+    <h3>3.4 Conversation storage</h3>
+    <ul>
+      <li><code>ai_lab_conversations</code> carries <code>theme</code>, <code>mode</code>, <code>style</code>, <code>organization_id</code> — good for UX state; tie these enums to validated catalog rows so new authors cannot drift strings silently.</li>
+    </ul>
+
+    <h2>4. Target modular model (recommended abstractions)</h2>
+    <p>Introduce explicit concepts (names illustrative — implement as tables or structured JSON with Zod validation):</p>
+
+    <h3>4.1 <code>AuthorProfile</code> / tenant AI persona</h3>
+    <ul>
+      <li>FK: <code>organization_id</code></li>
+      <li>Fields: display name, public bio snippet, voice marker IDs, forbidden topics, citation format</li>
+      <li>Links to default model routing profile</li>
+    </ul>
+
+    <h3>4.2 <code>CorpusBinding</code></h3>
+    <ul>
+      <li>FK: <code>organization_id</code></li>
+      <li><code>provider</code>: <code>openai_vector_store</code> | <code>openai_file_search</code> | <code>supabase_pgvector</code> | <code>gemini_file</code> | <code>vertex_rag</code> | …</li>
+      <li><code>provider_resource_id</code> (encrypted-at-rest if sensitive)</li>
+      <li><code>filter_defaults</code> JSON (e.g. book slugs, series IDs)</li>
+      <li><code>health_check_policy</code> (last sync, embedding model version)</li>
+    </ul>
+
+    <h3>4.3 <code>PromptPack</code></h3>
+    <ul>
+      <li>Versioned layers: <code>base</code>, <code>voice</code>, <code>safety</code>, <code>product_surface</code> (ai-lab vs companion)</li>
+      <li>Rendered → final system string server-side; hash stored on traces</li>
+    </ul>
+
+    <h3>4.4 <code>AgentRuntimeSpec</code></h3>
+    <p>Either extend <code>agents.metadata</code> with a strict schema or add a child table:</p>
+    <pre>{
+  "slug": "ai-lab-agent",
+  "corpus_binding_id": "uuid",
+  "prompt_pack_id": "uuid",
+  "model_defaults": { "primary": "gpt-5.x", "fallback": "gpt-4.1" },
+  "tool_allowlist_ref": "uuid",
+  "feature_flags": { "notebook_enabled": true }
+}</pre>
+
+    <h3>4.5 Uniform resolver API (inside movemental-ai-agents)</h3>
+    <p>Pseudocode contract:</p>
+    <pre>resolveAgentRuntime({ organizationId, agentSlug, surface })
+  → { systemPrompt, tools[], retrievalAdapter, modelParams }</pre>
+    <p>Every HTTP handler and worker calls this once per request; no parallel shortcut paths.</p>
+
+    <h2>5. Phased work backlog</h2>
+
+    <h3>Phase A — Schema &amp; validation (no behavior change)</h3>
+    <ol>
+      <li>Add Zod schemas for <code>agents.metadata</code>, <code>agent_tools.config</code>, and <code>agent_tool_assignments.config</code> documenting allowed keys.</li>
+      <li>Migration: create <code>corpus_bindings</code> (or equivalent) + optional <code>prompt_packs</code> / <code>prompt_layers</code>.</li>
+      <li>Backfill: Alan Hirsch tenant — move vector store / retrieval IDs from env into binding rows; keep env as dev-only override.</li>
+    </ol>
+
+    <h3>Phase B — Runtime resolver (movemental-ai-agents + ai-lab-agent)</h3>
+    <ol>
+      <li>Implement <code>resolveAgentRuntime</code> with caching (Redis key: org + slug + prompt pack version).</li>
+      <li>Teach <code>search_corpus</code> (and siblings) to read <code>CorpusBinding</code> + assignment <code>config</code> overrides.</li>
+      <li>Align <code>ai-lab-agent</code> with the same resolver library (shared package or git submodule) to eliminate drift.</li>
+    </ol>
+
+    <h3>Phase C — Multi-tenant catalog</h3>
+    <ol>
+      <li>For each org that needs AI: clone “template agent set” with org FKs; parameterize slugs or use namespaced slugs (<code>ai-lab-agent__orgSlug</code>) — pick one convention and enforce uniqueness.</li>
+      <li>Studio UI: forms for corpus binding, prompt layers, tool toggles.</li>
+    </ol>
+
+    <h3>Phase D — Tenant apps &amp; org site</h3>
+    <ol>
+      <li>Alan Hirsch app: read agent slug + API base URL from <code>tenant.config.ts</code> (or DB-backed tenant settings) — zero hardcoded “Alan” in shared components.</li>
+      <li><code>movemental-ai</code>: if it exposes agents API publicly, gate by org membership and document that it mirrors the same resolver semantics.</li>
+    </ol>
+
+    <h3>Phase E — Observability &amp; safety</h3>
+    <ol>
+      <li>Emit trace metadata: corpus binding ID, prompt hash, embedding model.</li>
+      <li>Guardrails from DB mandatory on external-facing routes.</li>
+    </ol>
+
+    <h2>6. Acceptance criteria (binary checks)</h2>
+    <ul>
+      <li>New organization can receive a working <code>ai-lab-agent</code> by inserting rows only + valid corpus credentials — no new TypeScript for standard cases.</li>
+      <li>Switching Alan’s vector store ID requires a DB update or studio save, not redeploy (except when secrets rotate).</li>
+      <li>Renaming a tool in code fails CI unless DB <code>implementation</code> map or registry is updated (contract test).</li>
+      <li>All agents that call retrieval use the same adapter interface with unit tests per provider.</li>
+    </ul>
+
+    <h2>7. Risks &amp; non-goals</h2>
+    <ul>
+      <li><strong>Risk — dual runtime</strong>: If <code>ai-lab-agent</code> and <code>movemental-ai-agents</code> diverge, modularity regresses. Prefer one shared npm workspace package for resolution logic.</li>
+      <li><strong>Risk — secret sprawl</strong>: Corpus provider keys must stay server-side; bindings reference IDs, not raw files in JSON.</li>
+      <li><strong>Non-goal</strong>: Forcing every author onto OpenAI file_search; the abstraction must allow Gemini-first tenants.</li>
+    </ul>
+
+    <hr />
+
+    <section id="implementer-prompt">
+      <h2 style="border:none;margin-top:0;padding-top:0;">8. Paste-ready implementer prompt (for coding agents / engineers)</h2>
+      <p class="muted">Use this block verbatim to drive implementation work in <code>movemental-ai-agents</code>, <code>ai-lab-agent</code>, tenant apps, and migrations.</p>
+      <pre>You are implementing multi-tenant, author-swappable AI agents for Movemental.
+
+Context:
+- Postgres schema already includes agents, agent_tools, agent_tool_assignments, agent_guardrails, agent_handoffs, and ai_lab_* conversation tables on the shared Movemental Supabase project.
+- Live data currently concentrates agent rows under one organization; metadata and per-assignment tool config are sparse — retrieval routing still depends on code/env.
+- Repos: movemental-ai-agents (primary runtime), ai-lab-agent (AI Lab entrypoint), alan-hirsch (AI Lab UI), movemental-ai (schema + simplified APIs).
+
+Objective:
+Make prompts, corpus/file-search backends, and tool wiring configurable per organization_id without code forks.
+
+Requirements:
+1. Introduce a typed CorpusBinding (or equivalent) with provider enum and resource IDs; migrate Alan tenant values from environment variables into DB rows with dev overrides.
+2. Implement resolveAgentRuntime({ organizationId, agentSlug }) in a shared module used by both movemental-ai-agents and ai-lab-agent. It must assemble system prompt from versioned PromptPack layers and attach tools from DB assignments + configs.
+3. Extend agent_tool_assignments.config to carry per-agent overrides (limits, default filters). Validate with Zod at load time.
+4. Add CI contract tests: every tool name in DB maps to a registered handler; every agent slug used by the tenant app exists for that org.
+5. Document clone workflow for provisioning a new organization’s agent set from templates.
+
+Deliver migrations, runtime code, and minimal studio/dashboard fields to edit corpus bindings and prompt pack versions. Avoid duplicating author-specific strings in React components — tenant config only.
+
+Non-goals: Changing UX copy for movemental marketing site unless needed for API wiring.</pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Investigation notes: Movemental Supabase agents/tools snapshot and multi-repo map —
+      internal engineering prompt. Update database observations whenever tenant rollout expands
+      beyond a single-org agent catalog.
+    </p>
+  </footer>
+</body>
+</html>

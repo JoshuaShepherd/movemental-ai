@@ -93,7 +93,7 @@ export function TrainingPage() {
               <div className="grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
                 {buyersMeanCards.map((c) => (
                   <div key={c.num} className="flex flex-col gap-4 bg-section p-8">
-                    <span className="text-xs font-semibold uppercase tracking-widest text-primary">{c.num}</span>
+                    <span className="text-xs font-semibold uppercase tracking-eyebrow text-primary">{c.num}</span>
                     <h3 className="text-lg font-semibold text-foreground">{c.title}</h3>
                     <p className="text-sm leading-relaxed text-muted-foreground">{c.body}</p>
                   </div>
@@ -117,7 +117,7 @@ export function TrainingPage() {
                   <div className="space-y-6">
                     <div className="flex items-center gap-3 border-b border-border pb-4">
                       <CheckCircle className="size-5 text-primary" aria-hidden />
-                      <h3 className="text-xs font-semibold uppercase tracking-widest text-foreground">Where it works</h3>
+                      <h3 className="text-xs font-semibold uppercase tracking-eyebrow text-foreground">Where it works</h3>
                     </div>
                     <ul className="space-y-4 text-sm leading-relaxed text-muted-foreground">
                       {whereWorks.map((item) => (
@@ -131,7 +131,7 @@ export function TrainingPage() {
                   <div className="space-y-6">
                     <div className="flex items-center gap-3 border-b border-border pb-4">
                       <XCircle className="size-5 text-destructive" aria-hidden />
-                      <h3 className="text-xs font-semibold uppercase tracking-widest text-foreground">Where it falls short</h3>
+                      <h3 className="text-xs font-semibold uppercase tracking-eyebrow text-foreground">Where it falls short</h3>
                     </div>
                     <ul className="space-y-4 text-sm leading-relaxed text-muted-foreground">
                       {whereFallsShort.map((item) => (
@@ -148,7 +148,7 @@ export function TrainingPage() {
                     <p className="mb-6 font-serif-display text-2xl italic leading-snug text-foreground">
                       &ldquo;92% of mission-driven leaders believe AI is a lever. Only 7% believe they have the judgment to pull it safely.&rdquo;
                     </p>
-                    <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Source: Virtuous-2026</p>
+                    <p className="text-xs font-semibold uppercase tracking-eyebrow text-muted-foreground">Source: Virtuous-2026</p>
                   </div>
                 </div>
               </div>
@@ -188,7 +188,7 @@ export function TrainingPage() {
           <Reveal>
             <div className="mx-auto max-w-6xl space-y-12">
               <div>
-                <span className="mb-6 block text-xs font-semibold uppercase tracking-widest text-primary">Our guidance</span>
+                <span className="mb-6 block text-xs font-semibold uppercase tracking-eyebrow text-primary">Our guidance</span>
                 <h2 className="max-w-4xl font-serif-display text-5xl italic leading-tight text-foreground md:text-6xl">
                   If you came here for training, <span className="italic text-primary">here&apos;s what we recommend.</span>
                 </h2>
@@ -200,7 +200,7 @@ export function TrainingPage() {
                     <p className="text-sm text-muted-foreground">{g.context}</p>
                     <div className="mt-8 flex items-center gap-3">
                       <ArrowRight className="size-5 text-primary shrink-0" aria-hidden />
-                      <Link href={g.href} className="text-sm font-semibold uppercase tracking-widest text-foreground hover:text-primary">
+                      <Link href={g.href} className="text-sm font-semibold uppercase tracking-eyebrow text-foreground hover:text-primary">
                         {g.label}
                       </Link>
                     </div>
@@ -227,7 +227,7 @@ export function TrainingPage() {
               </Link>
               <Link
                 href="/field-guide"
-                className="inline-flex items-center justify-center border border-inverse-border px-10 py-5 text-xs font-semibold uppercase tracking-widest text-inverse-foreground hover:border-inverse-foreground"
+                className="inline-flex items-center justify-center border border-inverse-border px-10 py-5 text-xs font-semibold uppercase tracking-eyebrow text-inverse-foreground hover:border-inverse-foreground"
               >
                 Read the Field Guide
               </Link>

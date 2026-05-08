@@ -67,9 +67,11 @@
 
   /* Status — go / caution / stop signals (e.g. Sandbox green/yellow/red lights).
      Warm Concept Modern signals — desaturated to live next to cream paper and
-     ink without competing with the duotone register. Theme-stable. */
+     ink without competing with the duotone register. Theme-stable.
+     `--color-status-caution` darkened 2026-05-08 from #b89033 to clear WCAG
+     1.4.11 UI 3:1 on cream paper (was 2.75:1, now 3.67:1). */
   --color-status-go: #6b7e3f;
-  --color-status-caution: #b89033;
+  --color-status-caution: #a07a25;
   --color-status-stop: #9c2d20;
 
   /* Editorial aliases — kept for components that imported the Concept Modern
@@ -159,7 +161,7 @@
   /* Chrome — hairlines only. */
   --border: #e6ddcb;                   /* hairline */
   --border-soft: #efe7d6;              /* softer card border */
-  --input: #e6ddcb;
+  --input: #8b8479;                    /* darkened 2026-05-08 from #e6ddcb to clear WCAG 1.4.11 UI 3:1 on cream paper (was 1.25:1, now 3.43:1 on paper, 3.70:1 on card) */
   --ring: rgba(25, 21, 15, 0.5);       /* ink @ 50% — clears WCAG 2.4.13 3:1 for focus indicators (3.35:1 on paper) */
   --popover: #ffffff;
   --popover-foreground: #19150f;
@@ -244,7 +246,7 @@
   /* Hairlines — cream at 14% */
   --border: rgba(244, 239, 229, 0.14);
   --border-soft: rgba(244, 239, 229, 0.08);
-  --input: rgba(244, 239, 229, 0.18);
+  --input: rgba(244, 239, 229, 0.42);  /* darkened 2026-05-08 from 0.18 to clear WCAG 1.4.11 UI 3:1 on dark paper (was 1.64:1, now 3.71:1) */
   --ring: rgba(244, 239, 229, 0.5);    /* cream @ 50% — clears WCAG 2.4.13 3:1 for focus indicators in dark */
   --popover: #211c18;
   --popover-foreground: #f4efe5;

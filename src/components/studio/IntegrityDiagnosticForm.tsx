@@ -62,7 +62,7 @@ export function IntegrityDiagnosticForm() {
 
   if (step === 8) {
     return (
-      <div className="bg-card border border-border p-8 md:p-16 rounded-card max-w-4xl mx-auto shadow-sm" aria-live="polite">
+      <div className="bg-card border border-border p-8 md:p-16 rounded-card max-w-4xl mx-auto" aria-live="polite">
         <div className="text-center py-12">
           <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-primary">
             <Check size={32} />
@@ -81,7 +81,7 @@ export function IntegrityDiagnosticForm() {
 
   return (
     <div className="max-w-4xl mx-auto" id="begin" ref={containerRef}>
-      <div className="bg-card border border-border p-8 md:p-12 rounded-card shadow-sm">
+      <div className="bg-card border border-border p-8 md:p-12 rounded-card">
         
         {error && (
           <div className="mb-8 p-4 bg-destructive/10 text-destructive border border-destructive/20 rounded-md text-sm font-medium">
@@ -158,7 +158,7 @@ export function IntegrityDiagnosticForm() {
               return (
                 <>
                   <div className="mb-12">
-                    <span className="text-xs font-semibold uppercase tracking-widest text-ink-soft mb-4 block">Section {dimension.num}</span>
+                    <span className="text-xs font-semibold uppercase tracking-eyebrow text-ink-soft mb-4 block">Section {dimension.num}</span>
                     <h3 className="text-3xl font-serif-display italic mb-4 text-foreground">{dimension.title}.</h3>
                     <p className="text-muted-foreground text-[1.0625rem] leading-[1.75] max-w-2xl">{dimension.body}</p>
                   </div>
@@ -238,7 +238,7 @@ export function IntegrityDiagnosticForm() {
             </div>
             
             <div className="bg-section rounded-card p-8 mb-10">
-              <h3 className="text-sm font-semibold uppercase tracking-widest text-ink-soft mb-6">Summary</h3>
+              <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-ink-soft mb-6">Summary</h3>
               <dl className="grid sm:grid-cols-2 gap-y-6 gap-x-8 text-[0.98rem]">
                 <div>
                   <dt className="text-muted-foreground mb-1 text-sm">Name</dt>

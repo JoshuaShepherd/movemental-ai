@@ -32,14 +32,20 @@
       "Edit(/.claude/skills/color-audit/**)",
       "Edit(/.claude/skills/tailwind-cleanup/**)",
       "Edit(/.claude/skills/page-audit/**)",
-      "Edit(/.claude/skills/responsive-audit/**)"
+      "Edit(/.claude/skills/responsive-audit/**)",
+      "Bash(mkdir -p /home/josh/dev/01-Movemental-Core/movemental-ai/docs/research/competitors && ls -la /home/josh/dev/01-Movemental-Core/movemental-ai/docs/research/competitors/)",
+      "WebSearch",
+      "WebFetch(domain:www.subsplash.com)",
+      "Skill(typography-polish)",
+      "Skill(typography-polish:*)"
     ],
     "additionalDirectories": [
       "/Users/joshuashepherd/Desktop/dev/repos/movemental-sites/alan-hirsch/.claude/skills",
       "/Users/joshuashepherd/Desktop/dev/repos/movemental-sites/alan-hirsch/src",
       "/Users/joshuashepherd/Desktop/dev/repos/movemental-ai",
       "/Users/joshuashepherd/Desktop/dev/repos/my-skills",
-      "/Users/joshuashepherd/Desktop/movemental/.claude/skills"
+      "/Users/joshuashepherd/Desktop/movemental/.claude/skills",
+      "/home/josh/dev/01-Movemental-Core/movemental-ai/docs/research"
     ]
   }
 }

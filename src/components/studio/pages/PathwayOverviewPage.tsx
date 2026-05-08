@@ -102,7 +102,7 @@ export function PathwayOverviewPage() {
       <Container>
         <Reveal>
           <div className="max-w-4xl mb-16">
-            <p className="mb-5 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+            <p className="mb-5 text-[10px] font-semibold uppercase tracking-eyebrow text-muted-foreground">
               The AI Stewardship Sequence
             </p>
             <h1 className="font-serif-display text-5xl md:text-6xl lg:text-7xl italic mb-6">
@@ -128,7 +128,7 @@ export function PathwayOverviewPage() {
         <Container>
           <Reveal>
             <div className="max-w-4xl">
-              <h2 className="text-sm font-semibold uppercase tracking-widest text-primary mb-8 border-b border-border pb-4">Why this order</h2>
+              <h2 className="text-sm font-semibold uppercase tracking-eyebrow text-primary mb-8 border-b border-border pb-4">Why this order</h2>
               <div className="space-y-6 text-[1.125rem] md:text-xl text-foreground/90 leading-relaxed">
                 <p>
                   When AI lands on top of a fragmented organization — scattered knowledge, unclear decision rights, mixed signals about what's safe to share, and no shared vocabulary for risk — it doesn't help. It accelerates the fragmentation. The organization moves faster, but in more directions. The leaders who said yes to AI start to feel like they invited a problem they don't know how to name.
@@ -201,7 +201,7 @@ export function PathwayOverviewPage() {
                 
                 <div className="bg-primary/5 border border-primary/20 p-8 rounded-2xl relative overflow-hidden flex flex-col justify-center">
                   <div className="absolute top-0 right-0 p-4">
-                    <span className="bg-primary text-primary-foreground text-xs font-bold uppercase tracking-widest py-1 px-3 rounded-full">The Bundle</span>
+                    <span className="bg-primary text-primary-foreground text-xs font-bold uppercase tracking-eyebrow py-1 px-3 rounded-full">The Bundle</span>
                   </div>
                   <h3 className="font-semibold text-xl text-foreground mb-4">Bundled Commitment Offer</h3>
                   <p className="text-muted-foreground leading-relaxed text-[1.0625rem] mb-6">

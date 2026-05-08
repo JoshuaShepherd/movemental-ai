@@ -17,7 +17,7 @@ export function FieldGuidePage() {
           <Reveal>
             <div className="grid lg:grid-cols-[1fr_20rem] gap-12 fg-hero">
                <div>
-                  <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">A field guide for organizational leaders</span>
+                  <span className="text-sm font-semibold uppercase tracking-eyebrow text-primary mb-4 block">A field guide for organizational leaders</span>
                   <h1 className="font-serif-display text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight mb-6">
                      The <em dangerouslySetInnerHTML={{__html: 'AI Stewardship Sequence.'}} />
                   </h1>
@@ -45,13 +45,13 @@ export function FieldGuidePage() {
                </div>
                
                <div className="hidden lg:block">
-                  <div className="aspect-[3/4] bg-section border border-border shadow-md rounded-xl flex items-center justify-center p-8 text-center relative overflow-hidden">
+                  <div className="aspect-[3/4] bg-section border border-border rounded-xl flex items-center justify-center p-8 text-center relative overflow-hidden">
                      {/* Placeholder cover figure (TODO artwork) */}
-                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"></div>
-                     <p className="text-muted-foreground text-sm uppercase tracking-widest font-semibold font-serif-display italic relative z-10">[ Artwork Placeholder ]</p>
+                     <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent"></div>
+                     <p className="text-muted-foreground text-sm uppercase tracking-eyebrow font-semibold font-serif-display italic relative z-10">[ Artwork Placeholder ]</p>
                   </div>
                   <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground border-t border-border pt-4 hero-proof">
-                     <span className="uppercase tracking-widest font-semibold">Reading time</span>
+                     <span className="uppercase tracking-eyebrow font-semibold">Reading time</span>
                      <span>Fifteen minutes</span>
                   </div>
                </div>
@@ -129,7 +129,7 @@ export function FieldGuidePage() {
                      <li className="flex"><span className="text-primary font-bold mr-3">•</span> The organization transparently discloses where AI shapes its core outputs.</li>
                   </ul>
                   
-                  <p className="bg-card p-6 rounded-lg border border-border shadow-sm text-sm">
+                  <p className="bg-card p-6 rounded-lg border border-border text-sm">
                      <strong>If you skip Safety:</strong> Staff will use consumer tools anyway (shadow IT), creating massive data leaks and risking devastating fractures in community trust when discovered.
                   </p>
                </div>
@@ -283,7 +283,7 @@ export function FieldGuidePage() {
         <Container>
           <Reveal>
              <div className="max-w-4xl mx-auto">
-                <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">A note on order</span>
+                <span className="text-sm font-semibold uppercase tracking-eyebrow text-primary mb-4 block">A note on order</span>
                 <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground mb-6">
                    Why the order is <em dangerouslySetInnerHTML={{__html: 'load-bearing.'}} />
                 </h2>
@@ -293,7 +293,7 @@ export function FieldGuidePage() {
                 
                 <div className="flex flex-col md:flex-row gap-12">
                    <div className="md:w-1/3">
-                      <div className="bg-card p-6 border-l-4 border-primary rounded-r-lg shadow-sm text-sm italic text-foreground">
+                      <div className="bg-card p-6 border-l-4 border-primary rounded-r-lg text-sm italic text-foreground">
                          If you remember nothing else, remember that Safety must precede Solutions, and Sandbox must precede Skills.
                       </div>
                    </div>
@@ -306,7 +306,7 @@ export function FieldGuidePage() {
                       <blockquote className="pull-quote pl-6 border-l-2 border-border italic text-xl text-foreground font-serif-display my-8 mb-4">
                          "Technology scales whatever it is handed. If you hand it organizational ambiguity, it will scale chaos. If you hand it theological clarity, it will scale mission."
                       </blockquote>
-                      <cite className="block text-sm text-muted-foreground uppercase tracking-widest font-semibold mb-8 pl-6">— Movemental, the field guide</cite>
+                      <cite className="block text-sm text-muted-foreground uppercase tracking-eyebrow font-semibold mb-8 pl-6">— Movemental, the field guide</cite>
                       
                       <p className="mb-6">
                          The speed of the Sequence depends entirely on the size of the organization. A church of 200 can run the Sequence in three weeks. A global NGO will take eight months. But the order applies uniformly to both.
