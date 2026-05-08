@@ -6,7 +6,22 @@ import { Container } from '@/components/studio/Container';
 import { caseStudies } from '@/data/path-data';
 import { stageMeta } from '@/data/shared-path-data';
 
-export function PathFootnote({ audience }: { audience: 'churches' | 'nonprofits' | 'institutions' }) {
+const pathwayHrefByStageNum: Record<string, string> = {
+  "01": "/pathway/safety",
+  "02": "/pathway/sandbox",
+  "03": "/pathway/skills",
+  "04": "/pathway/solutions",
+};
+
+export type PathStageHrefMode = "hash" | "pathway";
+
+export function PathFootnote({
+  audience,
+  pathStageHrefMode = "hash",
+}: {
+  audience: 'churches' | 'nonprofits' | 'institutions';
+  pathStageHrefMode?: PathStageHrefMode;
+}) {
   const label = caseStudies[audience].audienceLabel;
   return (
     <aside className="band-midnight py-12" aria-label="Page wrap-up">
@@ -24,7 +39,18 @@ export function PathFootnote({ audience }: { audience: 'churches' | 'nonprofits'
                 <h4 className="text-xs uppercase tracking-widest font-semibold mb-6 text-inverse-foreground/60">The Path</h4>
                 <ul className="space-y-3 text-sm">
                   {stageMeta.map((s) => (
-                    <li key={s.num}><a href={`#stage-${s.num}`} className="hover:text-inverse-foreground transition-colors">{s.name}</a></li>
+                    <li key={s.num}>
+                      {pathStageHrefMode === "pathway" ? (
+                        <Link
+                          href={pathwayHrefByStageNum[s.num] ?? "/path"}
+                          className="hover:text-inverse-foreground transition-colors"
+                        >
+                          {s.name}
+                        </Link>
+                      ) : (
+                        <a href={`#stage-${s.num}`} className="hover:text-inverse-foreground transition-colors">{s.name}</a>
+                      )}
+                    </li>
                   ))}
                 </ul>
               </div>
