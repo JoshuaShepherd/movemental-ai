@@ -10,17 +10,18 @@
  *   Final CTA (action).
  */
 
+import { TopographicHero } from "@/components/studio/hero/TopographicHero";
+
 import { AudienceFold } from "./audience-fold";
 import { CredibilityFold } from "./credibility-fold";
 import { FinalCta } from "./final-cta";
-import { HeroFold } from "./hero-fold";
 import { PathFold } from "./path-fold";
 import { ProofBeatFold } from "./proof-beat-fold";
 
 export function HomeContent() {
   return (
     <>
-      <HeroFold />
+      <TopographicHero />
       <AudienceFold />
       <PathFold />
       <CredibilityFold />
