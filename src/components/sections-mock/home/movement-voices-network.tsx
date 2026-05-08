@@ -22,7 +22,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 import { VOICE_AVATAR_PX } from "./layout-movement-voices";
-import { useMovementVoicesSimulation } from "./simulate-movement-voices";
+import { settleNetworkPositions } from "./settle-movement-voices";
 import {
   CENTER_VOICE_ID,
   MOVEMENT_VOICES,
@@ -86,6 +86,10 @@ function flowNodesFromLayout(
       type: "voice",
       position: { x: p.x - VOICE_AVATAR_PX / 2, y: p.y - VOICE_AVATAR_PX / 2 },
       data: { voice: v, isCenter: v.id === CENTER_VOICE_ID },
+      // Pre-declared measured size so React Flow can fit the view without
+      // waiting on async DOM measurement of the custom node.
+      width: VOICE_AVATAR_PX,
+      height: VOICE_AVATAR_PX,
       draggable: false,
       selectable: false,
     });
@@ -97,15 +101,21 @@ function flowNodesFromLayout(
 /**
  * All-channel mesh — every voice connects to every other voice (K_n). Lines
  * touching the center voice render a hair stronger so Alan reads as the hub
- * without breaking the all-channel intent.
+ * without breaking the all-channel intent. Each edge gets a flowing-dash
+ * animation with a per-edge phase offset so the network reads as alive
+ * without all lines pulsing in sync.
  */
 const allChannelEdges: Edge[] = (() => {
   const edges: Edge[] = [];
+  let pairIdx = 0;
   for (let i = 0; i < MOVEMENT_VOICES.length; i++) {
     for (let j = i + 1; j < MOVEMENT_VOICES.length; j++) {
       const a = MOVEMENT_VOICES[i].id;
       const b = MOVEMENT_VOICES[j].id;
       const touchesCenter = a === CENTER_VOICE_ID || b === CENTER_VOICE_ID;
+      // Stagger animation so edges don't all flow in lockstep.
+      const delaySec = ((pairIdx * 137.5) % 360) / 360 * -2.4;
+      const durationSec = touchesCenter ? 2.0 : 2.6 + ((pairIdx * 7) % 9) * 0.05;
       edges.push({
         id: `mv-${a}-${b}`,
         source: a,
@@ -114,10 +124,15 @@ const allChannelEdges: Edge[] = (() => {
         style: {
           stroke: "var(--foreground)",
           strokeWidth: touchesCenter ? 1.4 : 1,
-          strokeOpacity: touchesCenter ? 0.55 : 0.3,
+          strokeOpacity: touchesCenter ? 0.55 : 0.28,
+          strokeDasharray: "2 6",
+          strokeLinecap: "round",
+          animation: `movement-voices-flow ${durationSec}s linear infinite`,
+          animationDelay: `${delaySec}s`,
         },
         interactionWidth: 0,
       });
+      pairIdx++;
     }
   }
   return edges;
@@ -130,7 +145,7 @@ interface MovementVoicesNetworkProps {
 export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps) {
   const wrapRef = useRef<HTMLDivElement | null>(null);
   const rfRef = useRef<ReactFlowInstance | null>(null);
-  const [dims, setDims] = useState({ w: 640, h: 420 });
+  const [dims, setDims] = useState<{ w: number; h: number } | null>(null);
   const reducedMotion = useSyncExternalStore(
     subscribeReducedMotion,
     snapshotReducedMotion,
@@ -141,18 +156,37 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return;
+    // Seed dims synchronously so the first render after mount already has real
+    // values — avoids a frame where positions are computed for a default canvas
+    // and then thrash when ResizeObserver fires.
+    const initial = el.getBoundingClientRect();
+    setDims({
+      w: Math.max(320, initial.width),
+      h: Math.max(360, Math.min(540, initial.width * 0.62)),
+    });
+
     const ro = new ResizeObserver((entries) => {
       const r = entries[0]?.contentRect;
       if (!r) return;
       const w = Math.max(320, r.width);
       const h = Math.max(360, Math.min(540, w * 0.62));
-      setDims({ w, h });
+      setDims((prev) =>
+        prev && Math.abs(prev.w - w) < 1 && Math.abs(prev.h - h) < 1
+          ? prev
+          : { w, h },
+      );
     });
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
 
-  const positions = useMovementVoicesSimulation(dims.w, dims.h, reducedMotion);
+  const positions = useMemo(
+    () =>
+      dims
+        ? settleNetworkPositions(dims.w, dims.h)
+        : new Map<string, { x: number; y: number }>(),
+    [dims],
+  );
 
   const nodes = useMemo(() => flowNodesFromLayout(positions), [positions]);
 
@@ -161,16 +195,20 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
     inst.fitView({ padding: 0.16, duration: 0 });
   }, []);
 
-  // Refit only on dimension changes — not on every simulation tick — so the
-  // viewport doesn't constantly shift while nodes drift.
+  // Refit on dimension changes and when nodes first populate, so the viewport
+  // tracks the real canvas after ResizeObserver lands and the layout pass
+  // produces nodes. RAF defers the call until React Flow has the new nodes.
   useEffect(() => {
     const inst = rfRef.current;
-    if (!inst) return;
-    inst.fitView({
-      padding: 0.16,
-      duration: reducedMotion ? 0 : 240,
+    if (!inst || !dims || nodes.length === 0) return;
+    const id = requestAnimationFrame(() => {
+      inst.fitView({
+        padding: 0.16,
+        duration: reducedMotion ? 0 : 240,
+      });
     });
-  }, [dims.w, dims.h, reducedMotion]);
+    return () => cancelAnimationFrame(id);
+  }, [dims, nodes.length, reducedMotion]);
 
   const onNodeEnter = useCallback((_: React.MouseEvent, n: Node) => {
     if (n.type === "voice" && n.data && "voice" in n.data) {
