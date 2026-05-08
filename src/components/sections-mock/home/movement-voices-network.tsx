@@ -21,10 +21,8 @@ import {
 
 import { Button } from "@/components/ui/button";
 
-import {
-  layoutMovementVoices,
-  VOICE_AVATAR_PX,
-} from "./layout-movement-voices";
+import { VOICE_AVATAR_PX } from "./layout-movement-voices";
+import { useMovementVoicesSimulation } from "./simulate-movement-voices";
 import {
   CENTER_VOICE_ID,
   MOVEMENT_VOICES,
@@ -115,8 +113,8 @@ const allChannelEdges: Edge[] = (() => {
         type: "straight",
         style: {
           stroke: "var(--foreground)",
-          strokeWidth: touchesCenter ? 1 : 0.75,
-          strokeOpacity: touchesCenter ? 0.28 : 0.16,
+          strokeWidth: touchesCenter ? 1.4 : 1,
+          strokeOpacity: touchesCenter ? 0.55 : 0.3,
         },
         interactionWidth: 0,
       });
@@ -154,10 +152,7 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
     return () => ro.disconnect();
   }, []);
 
-  const positions = useMemo(
-    () => layoutMovementVoices(MOVEMENT_VOICES, dims.w, dims.h),
-    [dims.w, dims.h],
-  );
+  const positions = useMovementVoicesSimulation(dims.w, dims.h, reducedMotion);
 
   const nodes = useMemo(() => flowNodesFromLayout(positions), [positions]);
 
@@ -166,14 +161,16 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
     inst.fitView({ padding: 0.16, duration: 0 });
   }, []);
 
+  // Refit only on dimension changes — not on every simulation tick — so the
+  // viewport doesn't constantly shift while nodes drift.
   useEffect(() => {
     const inst = rfRef.current;
     if (!inst) return;
     inst.fitView({
       padding: 0.16,
-      duration: reducedMotion ? 0 : 220,
+      duration: reducedMotion ? 0 : 240,
     });
-  }, [dims.w, dims.h, positions, reducedMotion]);
+  }, [dims.w, dims.h, reducedMotion]);
 
   const onNodeEnter = useCallback((_: React.MouseEvent, n: Node) => {
     if (n.type === "voice" && n.data && "voice" in n.data) {
@@ -208,7 +205,8 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
           </Button>
           <p className="max-w-sm text-xs text-muted-foreground md:text-right">
             Drag to pan, scroll or pinch to zoom. Hover a portrait for detail —
-            an all-channel network of trusted voices around the conversation.
+            a live, all-channel network of trusted voices around the
+            conversation.
           </p>
         </div>
       </div>

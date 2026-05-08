@@ -3,6 +3,7 @@
 import React from 'react';
 import { Reveal } from '@/components/studio/Reveal';
 import { Container } from '@/components/studio/Container';
+import { TopographicHero } from '@/components/studio/hero/TopographicHero';
 import Link from "next/link";
 import { ArrowUpRight } from 'lucide-react';
 import { PathwayComponent } from '@/components/studio/PathwayComponent';
@@ -15,30 +16,6 @@ const homePathwayStops = [
   { num: '03', name: 'Skills Development', duration: '8 weeks', price: 'from $4,800/yr', outcome: 'Your team trained to lead this work.', href: '/pathway/skills' },
   { num: '04', name: 'Solutions Deployment', duration: '8–12 weeks', price: 'from $30,000', outcome: 'Your intelligence integrated, activated, multiplied.', href: '/technology' }
 ];
-
-function HeroFold() {
-  return (
-    <section className="band-midnight pt-24 pb-20 md:pt-32 md:pb-28" aria-labelledby="hero-h1">
-      <Container>
-        <Reveal>
-          <h1 id="hero-h1" className="font-serif-display italic text-5xl md:text-6xl lg:text-[5rem] leading-[1.05] text-inverse-foreground mb-8 max-w-5xl">
-            AI built on a broken organization breaks the organization faster.
-          </h1>
-          <p className="text-xl md:text-2xl text-inverse-foreground/80 leading-relaxed mb-10 max-w-4xl">
-            We rebuild the human layer first — governance, capability, and shared language — then build the technology that compounds rather than corrodes. A four-stop pathway for churches, nonprofits, and the institutions that train them.
-          </p>
-          <div className="flex flex-wrap gap-4 items-center mb-6">
-            <Link href="/contact" className="btn-pill bg-inverse-foreground text-inverse-surface hover:bg-inverse-muted font-semibold px-8 py-4 text-base transition-colors">Start with a conversation</Link>
-            <a href="#pathway" className="font-medium text-base text-inverse-foreground hover:text-inverse-foreground/80 transition-colors underline-offset-4 hover:underline px-6 py-4">See the Pathway</a>
-          </div>
-          <p className="text-sm text-inverse-foreground/60 max-w-4xl italic">
-            Trusted by Alan Hirsch, Brad Brisco, Hugh Halter, JR Woodward, Dave Ferguson, Roland Smith, Tim Catchim, Liz Rios, and the organizations they lead.
-          </p>
-        </Reveal>
-      </Container>
-    </section>
-  );
-}
 
 function WhyThisOrderFold() {
   return (
@@ -270,7 +247,7 @@ function FinalCta() {
 export function HomePage() {
   return (
     <div className="home-page">
-      <HeroFold />
+      <TopographicHero />
       <WhyThisOrderFold />
       <PathwayFold />
       <DemoTeaserFold />
