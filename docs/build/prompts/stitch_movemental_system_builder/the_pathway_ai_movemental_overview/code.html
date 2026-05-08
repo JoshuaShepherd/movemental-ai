@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Pathway - Movemental</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,800;1,6..72,400;1,6..72,600;1,6..72,800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#faf2ef",
+                        "inverse-on-surface": "#9f9d96",
+                        "surface-container-highest": "#ece8d7",
+                        "primary-container": "#ebe1d7",
+                        "on-tertiary-fixed-variant": "#6a6563",
+                        "on-surface-variant": "#666557",
+                        "secondary": "#68645b",
+                        "primary-dim": "#58514a",
+                        "on-secondary-fixed": "#423f37",
+                        "on-secondary-container": "#555249",
+                        "secondary-dim": "#5b584f",
+                        "secondary-fixed-dim": "#d9d4c8",
+                        "error-container": "#fe8b70",
+                        "surface-bright": "#fffbff",
+                        "tertiary": "#686362",
+                        "surface-container-low": "#fdf9ef",
+                        "surface": "#fffbff",
+                        "on-background": "#39382c",
+                        "on-primary": "#fff6ee",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#fff5ea",
+                        "surface-container-high": "#f2eedf",
+                        "tertiary-fixed": "#faf2ef",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#f7f4e7",
+                        "primary-fixed": "#ebe1d7",
+                        "outline": "#838172",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#575149",
+                        "on-primary-fixed-variant": "#615b53",
+                        "tertiary-dim": "#5c5756",
+                        "primary-fixed-dim": "#dcd3c9",
+                        "on-surface": "#39382c",
+                        "on-error-container": "#742410",
+                        "on-primary-fixed": "#443e37",
+                        "primary": "#645d55",
+                        "outline-variant": "#bcbaa9",
+                        "on-tertiary-fixed": "#4d4947",
+                        "on-tertiary-container": "#605b59",
+                        "on-secondary-fixed-variant": "#5f5b52",
+                        "error": "#a54731",
+                        "secondary-fixed": "#e8e2d6",
+                        "surface-dim": "#e6e3cf",
+                        "surface-variant": "#ece8d7",
+                        "tertiary-fixed-dim": "#ece4e1",
+                        "background": "#fffbff",
+                        "error-dim": "#5c1202",
+                        "surface-tint": "#645d55",
+                        "inverse-surface": "#0f0e0a",
+                        "secondary-container": "#e8e2d6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "display": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.surface'); color: theme('colors.on-surface'); }
+    </style>
+</head>
+<body class="font-body antialiased min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl">
+<div class="flex justify-between items-center px-12 py-6 w-full max-w-full mx-auto">
+<div class="font-headline text-2xl italic font-semibold text-primary dark:text-primary-dim">Movemental</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-primary dark:text-primary-dim font-bold border-b-2 border-primary font-body uppercase tracking-widest text-[10px] hover:opacity-100 transition-opacity duration-200" href="#">Pathway</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant opacity-70 font-body uppercase tracking-widest text-[10px] hover:opacity-100 transition-opacity duration-200" href="#">Safety</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant opacity-70 font-body uppercase tracking-widest text-[10px] hover:opacity-100 transition-opacity duration-200" href="#">Sandbox</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant opacity-70 font-body uppercase tracking-widest text-[10px] hover:opacity-100 transition-opacity duration-200" href="#">Skills</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant opacity-70 font-body uppercase tracking-widest text-[10px] hover:opacity-100 transition-opacity duration-200" href="#">Solutions</a>
+</nav>
+<button class="bg-primary text-on-primary px-6 py-2 text-sm font-medium hover:bg-primary-dim transition-colors duration-200">
+                Get Started
+            </button>
+</div>
+</header>
+<main class="flex-grow pt-32 pb-24 space-y-32">
+<!-- Hero Section -->
+<section class="px-12 md:px-24 max-w-7xl mx-auto">
+<div class="max-w-3xl space-y-8">
+<p class="font-body uppercase tracking-widest text-[10px] text-on-surface-variant">The AI Stewardship Sequence</p>
+<h1 class="font-headline text-5xl md:text-7xl tracking-tight text-on-surface italic">The Pathway</h1>
+<p class="font-body text-xl md:text-2xl text-on-surface leading-relaxed">We rebuild the human layer first — governance, capability, and shared language — then build the technology that compounds rather than corrodes.</p>
+<div class="flex flex-col sm:flex-row gap-4 pt-8">
+<button class="bg-primary text-on-primary px-8 py-4 font-medium hover:bg-primary-dim transition-colors duration-200">Discuss the full Pathway</button>
+<button class="border border-outline/20 text-on-surface px-8 py-4 font-medium hover:border-outline transition-colors duration-200">Start with Safety Documentation</button>
+</div>
+</div>
+</section>
+<!-- Pathway Map -->
+<section class="px-12 md:px-24 max-w-7xl mx-auto space-y-16">
+<div class="space-y-4">
+<p class="font-body uppercase tracking-widest text-[10px] text-on-surface-variant">Four mile markers</p>
+<h2 class="font-headline text-4xl md:text-5xl tracking-tight text-on-surface">From policy to platform — without skipping the human work</h2>
+</div>
+<div class="space-y-12 border-l border-outline/20 pl-8 ml-4">
+<div class="relative">
+<div class="absolute -left-[41px] top-1 w-8 h-[1px] bg-outline-variant"></div>
+<div class="bg-surface-container-low p-8 lg:p-12 space-y-6">
+<div class="flex justify-between items-start flex-wrap gap-4">
+<div>
+<span class="font-body text-sm font-bold text-primary">01</span>
+<h3 class="font-headline text-2xl mt-2 italic">Safety Documentation</h3>
+</div>
+<div class="text-right">
+<p class="font-body text-sm text-on-surface-variant">2 weeks</p>
+<p class="font-body text-sm font-medium">$5,000</p>
+</div>
+</div>
+<p class="font-body text-lg font-medium text-on-surface">Outcome: Your AI policy, drafted and board-ready.</p>
+<ul class="list-none space-y-2 font-body text-on-surface-variant">
+<li class="flex gap-3 before:content-['—'] before:text-primary">Policy Framework</li>
+<li class="flex gap-3 before:content-['—'] before:text-primary">Acceptable Use Guidelines</li>
+<li class="flex gap-3 before:content-['—'] before:text-primary">Board Presentation Deck</li>
+</ul>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -left-[41px] top-1 w-8 h-[1px] bg-outline-variant"></div>
+<div class="bg-surface-container-low p-8 lg:p-12 space-y-6">
+<div class="flex justify-between items-start flex-wrap gap-4">
+<div>
+<span class="font-body text-sm font-bold text-primary">02</span>
+<h3 class="font-headline text-2xl mt-2 italic">Sandbox Discovery</h3>
+</div>
+<div class="text-right">
+<p class="font-body text-sm text-on-surface-variant">4 weeks</p>
+<p class="font-body text-sm font-medium">$15,000</p>
+</div>
+</div>
+<p class="font-body text-lg font-medium text-on-surface">Outcome: Use cases proven, risks documented, decisions ready.</p>
+<ul class="list-none space-y-2 font-body text-on-surface-variant">
+<li class="flex gap-3 before:content-['—'] before:text-primary">Technical Feasibility Report</li>
+<li class="flex gap-3 before:content-['—'] before:text-primary">Risk Matrix</li>
+<li class="flex gap-3 before:content-['—'] before:text-primary">Prototype Blueprint</li>
+</ul>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -left-[41px] top-1 w-8 h-[1px] bg-outline-variant"></div>
+<div class="bg-surface-container-low p-8 lg:p-12 space-y-6">
+<div class="flex justify-between items-start flex-wrap gap-4">
+<div>
+<span class="font-body text-sm font-bold text-primary">03</span>
+<h3 class="font-headline text-2xl mt-2 italic">Skills Development</h3>
+</div>
+<div class="text-right">
+<p class="font-body text-sm text-on-surface-variant">8 weeks (cohort) · ongoing</p>
+<p class="font-body text-sm font-medium">from $4,800/yr</p>
+</div>
+</div>
+<p class="font-body text-lg font-medium text-on-surface">Outcome: Your team trained to lead this work — with credentials and shared language.</p>
+<ul class="list-none space-y-2 font-body text-on-surface-variant">
+<li class="flex gap-3 before:content-['—'] before:text-primary">Stewardship Certification</li>
+<li class="flex gap-3 before:content-['—'] before:text-primary">Monthly Practice Clinics</li>
+<li class="flex gap-3 before:content-['—'] before:text-primary">Community Access</li>
+</ul>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -left-[41px] top-1 w-8 h-[1px] bg-outline-variant"></div>
+<div class="bg-surface-container-low p-8 lg:p-12 space-y-6">
+<div class="flex justify-between items-start flex-wrap gap-4">
+<div>
+<span class="font-body text-sm font-bold text-primary">04</span>
+<h3 class="font-headline text-2xl mt-2 italic">Solutions Deployment</h3>
+</div>
+<div class="text-right">
+<p class="font-body text-sm text-on-surface-variant">8–12 weeks</p>
+<p class="font-body text-sm font-medium">from $30,000</p>
+</div>
+</div>
+<p class="font-body text-lg font-medium text-on-surface">Outcome: Your intelligence integrated, activated, and ready to multiply.</p>
+<p class="font-body text-sm text-on-surface-variant">Custom CMS, LMS, and CRM surfaces designed for human-in-the-loop workflows.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Why this order Section (Midnight Band) -->
+<section class="bg-inverse-surface py-24 px-12 md:px-24">
+<div class="max-w-4xl mx-auto space-y-12">
+<p class="font-body uppercase tracking-widest text-[10px] text-on-primary-fixed-variant">Why this order</p>
+<div class="space-y-8 font-headline text-2xl md:text-3xl leading-relaxed text-on-primary italic">
+<p>We build the human layer first because technology that precedes governance is simply accelerated risk.</p>
+<p>Safety documentation provides the perimeter. Sandbox discovery provides the proof. Skills development provides the operators.</p>
+<p>Only then do we deploy solutions, ensuring they land in a prepared environment ready to compound value rather than corrode trust.</p>
+</div>
+</div>
+</section>
+<!-- Comparative Value -->
+<section class="px-12 md:px-24 max-w-7xl mx-auto space-y-16">
+<div class="space-y-4">
+<h2 class="font-headline text-4xl md:text-5xl tracking-tight text-on-surface">What you’d pay elsewhere</h2>
+<p class="font-body text-on-surface-variant">Anchored ranges based on industry averages for mid-market institutional strategy.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+<div class="lg:col-span-2">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant/20 font-body uppercase tracking-widest text-[10px] text-on-surface-variant">
+<th class="py-4 font-normal">Service</th>
+<th class="py-4 font-normal">Movemental</th>
+<th class="py-4 font-normal">Big 4 consultancy</th>
+<th class="py-4 font-normal">Boutique AI</th>
+</tr>
+</thead>
+<tbody class="font-body text-sm">
+<tr class="border-b border-outline-variant/20">
+<td class="py-6 font-medium">Safety Doc</td>
+<td class="py-6">$5k</td>
+<td class="py-6 text-on-surface-variant">$25k+</td>
+<td class="py-6 text-on-surface-variant">$10k</td>
+</tr>
+<tr class="border-b border-outline-variant/20">
+<td class="py-6 font-medium">Sandbox</td>
+<td class="py-6">$15k</td>
+<td class="py-6 text-on-surface-variant">$75k+</td>
+<td class="py-6 text-on-surface-variant">$30k</td>
+</tr>
+<tr class="border-b border-outline-variant/20">
+<td class="py-6 font-medium">Skills (10 pax)</td>
+<td class="py-6">$15k</td>
+<td class="py-6 text-on-surface-variant">$50k+</td>
+<td class="py-6 text-on-surface-variant">$20k</td>
+</tr>
+<tr class="border-b border-outline-variant/20">
+<td class="py-6 font-medium">Deployment</td>
+<td class="py-6">$30k</td>
+<td class="py-6 text-on-surface-variant">$150k+</td>
+<td class="py-6 text-on-surface-variant">$50k</td>
+</tr>
+<tr>
+<td class="py-6 font-bold">Total</td>
+<td class="py-6 font-bold">$65k</td>
+<td class="py-6 font-bold text-on-surface-variant">$300k+</td>
+<td class="py-6 font-bold text-on-surface-variant">$110k</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="bg-surface-container p-8 h-fit space-y-6">
+<span class="inline-block bg-primary text-on-primary font-body uppercase tracking-widest text-[10px] px-3 py-1">The Bundle</span>
+<h3 class="font-headline text-2xl italic">Bundled Commitment Offer</h3>
+<div class="text-4xl font-headline">$58,500</div>
+<p class="font-body text-sm text-on-surface-variant">Includes a 10% reduction when committing to the full four-stage sequence upfront.</p>
+<button class="w-full bg-primary text-on-primary py-3 font-medium hover:bg-primary-dim transition-colors duration-200 mt-4">Discuss a full Pathway engagement</button>
+</div>
+</div>
+</section>
+<!-- Closing CTA -->
+<section class="px-12 md:px-24 max-w-3xl mx-auto text-center space-y-8 pb-24">
+<h2 class="font-headline text-4xl md:text-5xl tracking-tight text-on-surface italic">Talk to us about the full Pathway</h2>
+<div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+<button class="bg-primary text-on-primary px-8 py-4 font-medium hover:bg-primary-dim transition-colors duration-200">Start with Safety Documentation</button>
+<button class="border border-outline/20 text-on-surface px-8 py-4 font-medium hover:border-outline transition-colors duration-200">Talk to us about the full Pathway</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full min-h-[400px] flex flex-col justify-end p-16 bg-inverse-surface dark:bg-inverse-surface grid grid-cols-1 md:grid-cols-2 gap-24 px-16 py-24 border-t border-outline-variant/20">
+<div>
+<div class="font-headline italic text-on-primary text-3xl mb-8">Movemental</div>
+<p class="font-body text-on-primary-fixed-variant text-sm max-w-md">© 2024 Movemental · The Living Manifesto of AI Stewardship. Built for Institutional Strength.</p>
+</div>
+<div class="flex flex-col gap-4">
+<a class="font-body text-on-primary-fixed-variant opacity-60 hover:opacity-100 hover:text-on-primary transition-all duration-200" href="#">Strategic Pillars</a>
+<a class="font-body text-on-primary-fixed-variant opacity-60 hover:opacity-100 hover:text-on-primary transition-all duration-200" href="#">Archive of Record</a>
+<a class="font-body text-on-primary-fixed-variant opacity-60 hover:opacity-100 hover:text-on-primary transition-all duration-200" href="#">Privacy Protocol</a>
+<a class="font-body text-on-primary-fixed-variant opacity-60 hover:opacity-100 hover:text-on-primary transition-all duration-200" href="#">Terms of Engagement</a>
+</div>
+</footer>
+</body></html>

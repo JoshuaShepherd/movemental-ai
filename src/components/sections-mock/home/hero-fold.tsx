@@ -20,13 +20,13 @@ export function HeroFold() {
         <p className="lede lede--regular hero-subhead">
           We give mission-driven organizations a clear path to adopt AI safely,
           build real capability, and lead their people through it—without losing
-          what matters most.
+          trust, credibility, or identity.
         </p>
         <div className="hero-actions">
-          <BtnPill href="#how" variant="primary">
+          <BtnPill href="#pathway" variant="primary">
             See the Path
           </BtnPill>
-          <BtnPill href="/contact" variant="ghost">
+          <BtnPill href="#contact" variant="ghost">
             Start a Conversation
           </BtnPill>
         </div>

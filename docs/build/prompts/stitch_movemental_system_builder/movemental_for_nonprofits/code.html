@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Movemental for Nonprofits</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "secondary": "#68645b",
+                "tertiary": "#686362",
+                "surface-bright": "#fffbff",
+                "on-tertiary-fixed": "#4d4947",
+                "on-primary": "#fff6ee",
+                "surface-container-low": "#fdf9ef",
+                "on-background": "#39382c",
+                "secondary-dim": "#5b584f",
+                "surface": "#fffbff",
+                "secondary-fixed-dim": "#d9d4c8",
+                "tertiary-fixed-dim": "#ece4e1",
+                "surface-tint": "#645d55",
+                "tertiary-container": "#faf2ef",
+                "on-primary-fixed-variant": "#615b53",
+                "on-tertiary": "#ffffff",
+                "secondary-fixed": "#e8e2d6",
+                "on-secondary-container": "#555249",
+                "error-dim": "#5c1202",
+                "surface-container-high": "#f2eedf",
+                "error-container": "#fe8b70",
+                "primary-fixed": "#ebe1d7",
+                "on-primary-fixed": "#443e37",
+                "surface-container-highest": "#ece8d7",
+                "primary-container": "#ebe1d7",
+                "surface-container": "#f7f4e7",
+                "surface-dim": "#e6e3cf",
+                "on-tertiary-fixed-variant": "#6a6563",
+                "on-surface-variant": "#666557",
+                "on-secondary-fixed-variant": "#5f5b52",
+                "inverse-on-surface": "#9f9d96",
+                "secondary-container": "#e8e2d6",
+                "on-secondary-fixed": "#423f37",
+                "tertiary-fixed": "#faf2ef",
+                "on-tertiary-container": "#605b59",
+                "on-secondary": "#ffffff",
+                "primary-fixed-dim": "#dcd3c9",
+                "tertiary-dim": "#5c5756",
+                "on-error": "#ffffff",
+                "surface-container-lowest": "#ffffff",
+                "background": "#fffbff",
+                "primary-dim": "#58514a",
+                "outline": "#838172",
+                "on-primary-container": "#575149",
+                "primary": "#645d55",
+                "on-surface": "#39382c",
+                "surface-variant": "#ece8d7",
+                "outline-variant": "#bcbaa9",
+                "inverse-primary": "#fff5ea",
+                "inverse-surface": "#0f0e0a",
+                "on-error-container": "#742410",
+                "error": "#a54731"
+        },
+        "borderRadius": {
+                "DEFAULT": "0px",
+                "sm": "0px",
+                "md": "0px",
+                "lg": "0px",
+                "xl": "0px",
+                "2xl": "0px",
+                "3xl": "0px",
+                "full": "0px"
+        },
+        "spacing": {},
+        "fontFamily": {
+                "headline": [
+                        "Instrument Serif", "serif"
+                ],
+                "display": [
+                        "Instrument Serif", "serif"
+                ],
+                "body": [
+                        "Inter", "sans-serif"
+                ],
+                "label": [
+                        "Inter", "sans-serif"
+                ]
+        },
+        "fontSize": {}
+},
+    },
+  }
+</script>
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5, h6, .font-headline, .font-display {
+    font-family: 'Instrument Serif', serif;
+  }
+  .label-sm {
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body class="bg-surface text-on-surface antialiased selection:bg-primary selection:text-on-primary">
+<div class="relative flex min-h-screen w-full flex-col md:flex-row group/design-root overflow-x-hidden">
+<!-- Shared Component Included: TopAppBar navigation equivalent for Destination View -->
+<!-- Modifying layout to match sidebar design system while preserving shared nav logic/structure where possible -->
+<header class="md:hidden flex items-center justify-between whitespace-nowrap border-b border-solid border-outline-variant/20 px-6 py-4 bg-surface/80 backdrop-blur-[20px] sticky top-0 z-50">
+<div class="flex items-center gap-3 text-on-surface">
+<div class="size-5">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-on-surface text-lg font-headline font-bold leading-tight tracking-[-0.015em]">Movemental</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</header>
+<!-- Left Sidebar (Desktop) -->
+<aside class="hidden md:flex flex-col w-[280px] shrink-0 border-r border-solid border-outline-variant/20 h-screen sticky top-0 bg-surface">
+<div class="flex flex-col h-full p-8 justify-between">
+<div class="flex flex-col gap-12">
+<div class="flex gap-4 items-center">
+<div class="size-8 text-on-surface">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<div class="flex flex-col">
+<span class="font-headline text-lg leading-tight text-on-surface">Movemental</span>
+</div>
+</div>
+<nav class="flex flex-col gap-6">
+<div class="flex flex-col gap-1 border-l-2 border-primary pl-4">
+<h3 class="label-sm text-on-surface">For Nonprofits</h3>
+</div>
+<ul class="flex flex-col gap-4 text-on-surface-variant font-body text-sm pl-4">
+<li><a class="hover:text-on-surface transition-colors flex items-center gap-3" href="#reasons"><span class="material-symbols-outlined text-[18px]" data-icon="adjust">adjust</span> Reasons</a></li>
+<li><a class="hover:text-on-surface transition-colors flex items-center gap-3" href="#path"><span class="material-symbols-outlined text-[18px]" data-icon="conversion_path">conversion_path</span> The Path</a></li>
+<li><a class="hover:text-on-surface transition-colors flex items-center gap-3" href="#artifacts"><span class="material-symbols-outlined text-[18px]" data-icon="description">description</span> Artifacts</a></li>
+<li><a class="hover:text-on-surface transition-colors flex items-center gap-3" href="#questions"><span class="material-symbols-outlined text-[18px]" data-icon="help">help</span> Questions</a></li>
+</ul>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<button class="flex w-full items-center justify-center bg-primary text-on-primary h-12 text-sm font-semibold tracking-wide transition-colors hover:bg-primary-dim uppercase label-sm">
+          Begin
+        </button>
+</div>
+</div>
+</aside>
+<!-- Right Column Content -->
+<main class="flex-1 flex flex-col bg-surface relative">
+<!-- Hero Section -->
+<section class="px-6 py-20 md:px-16 md:py-32 max-w-[1000px] mx-auto w-full">
+<div class="flex flex-col gap-8 md:gap-12">
+<h1 class="font-headline text-5xl md:text-7xl font-normal leading-[1.05] tracking-tight text-on-surface">
+          Movemental for <i class="italic text-primary">Nonprofits.</i>
+</h1>
+<div class="flex flex-col gap-6 max-w-[600px] border-l border-outline-variant/50 pl-6 md:pl-8">
+<h2 class="font-body text-xl md:text-2xl font-medium text-on-surface leading-snug">
+            Your mission is not generic. Your AI response shouldn't be either. You cannot afford to get AI wrong, and your donors won't wait for you to catch up.
+          </h2>
+<p class="font-body text-base md:text-lg text-on-surface-variant leading-relaxed">
+            Movemental guides mission-driven nonprofits through a four-stage path for adopting AI without compromising donor trust, beneficiary safety, or mission integrity.
+          </p>
+</div>
+</div>
+</section>
+<!-- Reasons Section -->
+<section class="bg-surface-container py-24 px-6 md:px-16 w-full" id="reasons">
+<div class="max-w-[1000px] mx-auto flex flex-col gap-16">
+<div class="flex flex-col gap-4 border-l border-outline-variant/50 pl-6">
+<span class="label-sm text-on-surface-variant">01. Context</span>
+<h2 class="font-headline text-4xl md:text-5xl text-on-surface leading-tight">Four documented reasons to lead AI governance now.</h2>
+</div>
+<div class="flex flex-col w-full border-t border-outline-variant/30">
+<!-- Ledger Row 01 -->
+<div class="flex flex-col md:flex-row gap-4 md:gap-12 py-8 border-b border-outline-variant/30">
+<div class="w-12 shrink-0">
+<span class="font-headline text-2xl text-on-surface-variant">01</span>
+</div>
+<div class="flex-1 flex flex-col md:flex-row gap-4 md:gap-8">
+<h3 class="font-body text-lg font-semibold text-on-surface w-full md:w-1/3">Governance Gap</h3>
+<p class="font-body text-base text-on-surface-variant leading-relaxed w-full md:w-2/3">Many nonprofits lack the governance structures to adopt AI safely.</p>
+</div>
+</div>
+<!-- Ledger Row 02 -->
+<div class="flex flex-col md:flex-row gap-4 md:gap-12 py-8 border-b border-outline-variant/30">
+<div class="w-12 shrink-0">
+<span class="font-headline text-2xl text-on-surface-variant">02</span>
+</div>
+<div class="flex-1 flex flex-col md:flex-row gap-4 md:gap-8">
+<h3 class="font-body text-lg font-semibold text-on-surface w-full md:w-1/3">Donor Trust</h3>
+<p class="font-body text-base text-on-surface-variant leading-relaxed w-full md:w-2/3">Donors expect transparency and ethical use of AI in operations.</p>
+</div>
+</div>
+<!-- Ledger Row 03 -->
+<div class="flex flex-col md:flex-row gap-4 md:gap-12 py-8 border-b border-outline-variant/30">
+<div class="w-12 shrink-0">
+<span class="font-headline text-2xl text-on-surface-variant">03</span>
+</div>
+<div class="flex-1 flex flex-col md:flex-row gap-4 md:gap-8">
+<h3 class="font-body text-lg font-semibold text-on-surface w-full md:w-1/3">Beneficiary Safety</h3>
+<p class="font-body text-base text-on-surface-variant leading-relaxed w-full md:w-2/3">Beneficiary data must be protected from misuse or bias.</p>
+</div>
+</div>
+<!-- Ledger Row 04 -->
+<div class="flex flex-col md:flex-row gap-4 md:gap-12 py-8 border-b border-outline-variant/30">
+<div class="w-12 shrink-0">
+<span class="font-headline text-2xl text-on-surface-variant">04</span>
+</div>
+<div class="flex-1 flex flex-col md:flex-row gap-4 md:gap-8">
+<h3 class="font-body text-lg font-semibold text-on-surface w-full md:w-1/3">Less is More</h3>
+<p class="font-body text-base text-on-surface-variant leading-relaxed w-full md:w-2/3">Most nonprofits need less complex AI solutions than they realize.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- The Path Section -->
+<section class="py-24 px-6 md:px-16 max-w-[1000px] mx-auto w-full" id="path">
+<div class="flex flex-col gap-16">
+<div class="flex flex-col gap-4 border-l border-outline-variant/50 pl-6">
+<span class="label-sm text-on-surface-variant">02. Methodology</span>
+<h2 class="font-headline text-4xl md:text-5xl text-on-surface leading-tight">The Movemental AI Path</h2>
+<p class="font-body text-lg text-on-surface-variant max-w-[600px] mt-4">
+            Four stages — Safety, Sandbox, Skills, Solutions — in order. The same path applied to mission-driven reality.
+          </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 flex items-center justify-center border border-outline-variant/30 text-on-surface mb-2">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+</div>
+<h3 class="font-headline text-2xl text-on-surface">Stage 1: Safety</h3>
+<p class="font-body text-base text-on-surface-variant leading-relaxed">Establish foundational guardrails. Define acceptable use, data handling, and beneficiary protection before any tools are deployed.</p>
+</div>
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 flex items-center justify-center border border-outline-variant/30 text-on-surface mb-2">
+<span class="material-symbols-outlined" data-icon="extension">extension</span>
+</div>
+<h3 class="font-headline text-2xl text-on-surface">Stage 2: Sandbox</h3>
+<p class="font-body text-base text-on-surface-variant leading-relaxed">Controlled experimentation. Selectively test closed-loop AI models on non-critical administrative tasks to gauge impact and risk.</p>
+</div>
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 flex items-center justify-center border border-outline-variant/30 text-on-surface mb-2">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+</div>
+<h3 class="font-headline text-2xl text-on-surface">Stage 3: Skills</h3>
+<p class="font-body text-base text-on-surface-variant leading-relaxed">Develop organizational literacy. Train staff on prompting, bias detection, and ethical oversight specific to your mission context.</p>
+</div>
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 flex items-center justify-center border border-outline-variant/30 text-on-surface mb-2">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</div>
+<h3 class="font-headline text-2xl text-on-surface">Stage 4: Solutions</h3>
+<p class="font-body text-base text-on-surface-variant leading-relaxed">Strategic deployment. Implement targeted AI workflows that demonstrably increase mission impact without compromising human-centric care.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Artifacts Section -->
+<section class="bg-surface-container py-24 px-6 md:px-16 w-full" id="artifacts">
+<div class="max-w-[1000px] mx-auto flex flex-col gap-16">
+<div class="flex flex-col gap-4 border-l border-outline-variant/50 pl-6">
+<span class="label-sm text-on-surface-variant">03. Deliverables</span>
+<h2 class="font-headline text-4xl md:text-5xl text-on-surface leading-tight">Safety produces seven artifacts.</h2>
+<p class="font-body text-lg text-on-surface-variant max-w-[600px] mt-4">
+            Tangible governance documents tailored for non-profit operations.
+          </p>
+</div>
+<div class="flex flex-col gap-1 w-full">
+<!-- Simple List format instead of standard cards to follow Ledger rules -->
+<div class="flex items-center justify-between py-6 border-b border-outline-variant/30 group">
+<h3 class="font-body text-lg font-medium text-on-surface">1. AI Use Charter</h3>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div class="flex items-center justify-between py-6 border-b border-outline-variant/30 group">
+<h3 class="font-body text-lg font-medium text-on-surface">2. Acceptable Use Policy</h3>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div class="flex items-center justify-between py-6 border-b border-outline-variant/30 group">
+<h3 class="font-body text-lg font-medium text-on-surface">3. Data Handling Standards</h3>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div class="flex items-center justify-between py-6 border-b border-outline-variant/30 group">
+<h3 class="font-body text-lg font-medium text-on-surface">4. Disclosure Standard</h3>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div class="flex items-center justify-between py-6 border-b border-outline-variant/30 group">
+<h3 class="font-body text-lg font-medium text-on-surface">5. Care Boundaries</h3>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div class="flex items-center justify-between py-6 border-b border-outline-variant/30 group">
+<h3 class="font-body text-lg font-medium text-on-surface">6. Impersonation Response Plan</h3>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div class="flex items-center justify-between py-6 border-b border-outline-variant/30 group">
+<h3 class="font-body text-lg font-medium text-on-surface">7. Constituent Communication</h3>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Midnight Band / Footer Emphasis -->
+<section class="bg-inverse-surface py-32 px-6 md:px-16 w-full mt-auto" id="begin">
+<div class="max-w-[800px] mx-auto flex flex-col gap-12 items-center text-center">
+<h2 class="font-headline text-5xl md:text-6xl text-on-primary leading-tight">
+          Ready to lead your organization <i class="italic text-surface-tint">forward?</i>
+</h2>
+<div class="flex flex-col md:flex-row gap-6 w-full justify-center pt-8">
+<button class="bg-primary text-on-primary px-8 py-4 font-body font-semibold text-sm tracking-wide uppercase hover:bg-primary-dim transition-colors">
+              Schedule Consultation
+           </button>
+<button class="bg-transparent border border-outline/40 text-on-primary px-8 py-4 font-body font-semibold text-sm tracking-wide uppercase hover:border-outline transition-colors">
+              Read the Manifesto
+           </button>
+<button class="bg-transparent border border-outline/40 text-on-primary px-8 py-4 font-body font-semibold text-sm tracking-wide uppercase hover:border-outline transition-colors">
+              View Pricing
+           </button>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

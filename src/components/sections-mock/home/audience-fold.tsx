@@ -12,48 +12,44 @@ interface SegmentCard {
 
 const SEGMENT_CARDS: readonly SegmentCard[] = [
   {
-    href: "/churches",
+    href: "/for-churches",
     title: "Churches",
     body:
-      "Your staff is using AI in ways your elder board hasn't approved. Your congregation has questions you don't have answers for. The position you take in the next year will shape how your church relates to formation, presence, and discernment for a decade.",
-    ctaLabel: "See the path for churches",
+      "Guiding congregations through theological implications, staff efficiency, and ethical deployment in ministry contexts.",
+    ctaLabel: "Find out more",
   },
   {
-    href: "/nonprofits",
+    href: "/for-nonprofits",
     title: "Nonprofits",
     body:
-      "Donor data is sacred. Beneficiary data is sacred. Mission integrity is non-negotiable. AI is already in your operations whether you authorized it or not, and the cost of getting it wrong is paid by people who trust you.",
-    ctaLabel: "See the path for nonprofits",
+      "Helping mission-driven entities scale impact, automate back-office operations, and maintain donor trust.",
+    ctaLabel: "Find out more",
   },
   {
-    href: "/institutions",
+    href: "/for-institutions",
     title: "Institutions",
     body:
-      "Seminaries, training networks, and denominational bodies face the AI question on two timelines simultaneously: their own institutional adoption, and what they teach the next generation of leaders. Both have to be answered well, in the same season.",
-    ctaLabel: "See the path for institutions",
+      "Providing networks and large agencies with systematic frameworks, governance, and enterprise-level solutions.",
+    ctaLabel: "Find out more",
   },
 ];
 
 /**
- * Where are you starting from? — recognition-language routing into the three
- * segment pages. Replaces the prior "Who this is for" feature-bullet treatment.
+ * Who Movemental serves — three segment entry points (aligned to Stitch home).
  */
 export function AudienceFold() {
   return (
     <section
       className="band-default audience-section"
+      id="audiences"
       aria-labelledby="audience-heading"
     >
       <div className="container audience-section__inner">
         <SectionHead
-          eyebrow="Where to begin"
-          display={
-            <>
-              Where are you <em>starting from?</em>
-            </>
-          }
+          eyebrow="Who Movemental serves"
+          display={<>Tailored for mission-driven organizations.</>}
           displayId="audience-heading"
-          lede="Most organizations enter the path at one of two places. The right starting point depends on what's already in motion."
+          lede="We guide different types of organizations through the AI transition, meeting them where they are with custom training and technology."
         />
 
         <div className="mt-12 grid gap-x-10 gap-y-12 md:mt-16 md:grid-cols-3">

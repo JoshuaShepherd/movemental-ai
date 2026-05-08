@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Movemental - Stage 03: Skills</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#615b53",
+                        "secondary-container": "#e8e2d6",
+                        "background": "#fffbff",
+                        "outline-variant": "#bcbaa9",
+                        "on-primary-fixed": "#443e37",
+                        "tertiary-fixed-dim": "#ece4e1",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#ebe1d7",
+                        "error": "#a54731",
+                        "surface-container-high": "#f2eedf",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#605b59",
+                        "secondary-dim": "#5b584f",
+                        "on-surface": "#39382c",
+                        "surface-bright": "#fffbff",
+                        "on-primary-container": "#575149",
+                        "secondary-fixed": "#e8e2d6",
+                        "on-background": "#39382c",
+                        "surface-variant": "#ece8d7",
+                        "surface-dim": "#e6e3cf",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#fff5ea",
+                        "primary-fixed": "#ebe1d7",
+                        "primary-dim": "#58514a",
+                        "on-tertiary-fixed": "#4d4947",
+                        "surface-container": "#f7f4e7",
+                        "secondary": "#68645b",
+                        "on-secondary-fixed": "#423f37",
+                        "tertiary-dim": "#5c5756",
+                        "outline": "#838172",
+                        "on-surface-variant": "#666557",
+                        "surface-tint": "#645d55",
+                        "primary-fixed-dim": "#dcd3c9",
+                        "inverse-surface": "#0f0e0a",
+                        "error-dim": "#5c1202",
+                        "tertiary": "#686362",
+                        "on-error-container": "#742410",
+                        "on-secondary-container": "#555249",
+                        "surface-container-low": "#fdf9ef",
+                        "inverse-on-surface": "#9f9d96",
+                        "surface-container-highest": "#ece8d7",
+                        "on-secondary-fixed-variant": "#5f5b52",
+                        "surface": "#fffbff",
+                        "secondary-fixed-dim": "#d9d4c8",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#faf2ef",
+                        "tertiary-container": "#faf2ef",
+                        "on-tertiary-fixed-variant": "#6a6563",
+                        "primary": "#645d55",
+                        "error-container": "#fe8b70",
+                        "on-primary": "#fff6ee"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "display": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "serif": ["Instrument Serif", "serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf6ee; /* base surface */
+            color: #39382c; /* on-surface */
+            -webkit-font-smoothing: antialiased;
+        }
+        .editorial-rhythm {
+            margin-bottom: 6rem;
+        }
+        .midnight-band {
+            background-color: #141110;
+            color: #f4efe5;
+        }
+        .hairline-bottom {
+            border-bottom: 0.5px solid rgba(131, 129, 114, 0.2); /* outline-variant at 20% */
+        }
+        .hairline-left {
+            border-left: 0.5px solid rgba(131, 129, 114, 0.2);
+        }
+        .tonal-stack {
+            background-color: #f2eedf; /* surface-container-high */
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- TopNavBar -->
+<nav class="bg-[#faf6ee]/90 dark:bg-[#141110]/90 backdrop-blur-xl fixed top-0 w-full z-50 rounded-none border-none border-b-[0.5px] border-[#838172]/20 flat no shadows flex justify-between items-center px-12 py-6 max-w-screen-2xl mx-auto">
+<div class="font-['Instrument_Serif'] italic text-2xl font-bold tracking-tighter text-[#141110] dark:text-[#faf6ee]">MOVEMENTAL</div>
+<div class="hidden md:flex space-x-8">
+<!-- Simulated Navigation Items. None active here as this is a specific interior page, but showing structure. -->
+<a class="text-[#838172] hover:text-[#141110] transition-colors font-['Instrument_Serif'] italic tracking-tight text-lg hover:opacity-80 transition-opacity duration-300 linear-fade 200ms" href="#">Theology</a>
+<a class="text-[#838172] hover:text-[#141110] transition-colors font-['Instrument_Serif'] italic tracking-tight text-lg hover:opacity-80 transition-opacity duration-300 linear-fade 200ms" href="#">Pillars</a>
+<a class="text-[#838172] hover:text-[#141110] transition-colors font-['Instrument_Serif'] italic tracking-tight text-lg hover:opacity-80 transition-opacity duration-300 linear-fade 200ms" href="#">Archive</a>
+<a class="text-[#838172] hover:text-[#141110] transition-colors font-['Instrument_Serif'] italic tracking-tight text-lg hover:opacity-80 transition-opacity duration-300 linear-fade 200ms" href="#">Seminary</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 font-label uppercase tracking-widest text-xs font-medium hover:bg-primary-dim transition-colors duration-200">Join Movement</button>
+</nav>
+<main class="pt-32 pb-24">
+<!-- 1. StageHeroSection -->
+<section class="max-w-screen-xl mx-auto px-6 md:px-12 editorial-rhythm">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<div class="lg:col-span-6 space-y-8">
+<p class="font-label uppercase tracking-[0.05em] text-sm text-secondary">Stage 03 of the Movemental AI Path</p>
+<h1 class="font-headline text-5xl md:text-7xl leading-tight tracking-tight text-on-surface">Skills Development.</h1>
+<p class="font-body text-xl md:text-2xl leading-relaxed text-secondary-dim max-w-2xl">
+                        Eight weeks. Eight modules. The formational deepening that turns practitioners into discerners — staff who can lead AI work in your organization with wisdom, not just operate it competently.
+                    </p>
+<div class="space-y-6 pt-4">
+<div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+<a class="bg-primary text-on-primary px-8 py-4 font-body font-medium hover:bg-primary-dim transition-colors duration-200 inline-block" href="#engagement-levels">Begin a Skills Cohort →</a>
+<a class="border border-outline/20 text-on-surface px-8 py-4 font-body font-medium hover:border-outline/100 transition-colors duration-200 inline-block" href="#">Field Guide</a>
+</div>
+<div>
+<a class="font-body text-primary hover:text-primary-dim transition-colors underline underline-offset-4" href="#">Why Skills comes third →</a>
+</div>
+</div>
+<p class="font-serif italic text-lg text-secondary pt-8 hairline-top">8 weeks · $15,000 cohort · self-paced / network / train-the-facilitator</p>
+</div>
+<div class="lg:col-span-6">
+<img alt="Abstract architectural details" class="w-full h-[600px] object-cover grayscale opacity-90" data-alt="A highly detailed close-up of classical architectural stone carving, bathed in warm, soft natural light against a minimalist cream background. The image evokes a sense of enduring craftsmanship, permanence, and high-end editorial photography. The aesthetic is strictly monochrome with subtle sepia tones, focusing on texture, shadow, and timeless structural integrity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbgmaxTXK2MmK7HfRK5UP-5LWYy0oqCptisS1YDB_iMPdSd25HqLawEAQa7OtwfAv7ARFTVIHQul-6-25-D1LVJPbb4WAG3fQRKoXfBpyLpLE2oA2GXXpB4Hc184CtljpsUUuPkab7Lya6f_KVAGrFfG9mDjXFcvUGaXAMjdgKY7Z_PrIGR0D0_F7Hq54fYTYGJEPkXsyFZcbJlfze5SDwGJ_Bwa0Y-6cjQb-Ki6ZJ3TfoQdpqgN_MP8LPgOT6dKerbAeBaNcbA_g"/>
+</div>
+</div>
+</section>
+<!-- 2. Section: Practitioner to discerner -->
+<section class="bg-surface-container py-24 editorial-rhythm px-6 md:px-12">
+<div class="max-w-screen-xl mx-auto space-y-16">
+<h2 class="font-headline text-4xl text-on-surface border-b-[0.5px] border-outline-variant/20 pb-4">Practitioner to Discerner</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8 font-body text-lg leading-relaxed text-on-surface-variant">
+<div>
+<p class="mb-6">A practitioner knows the tools. They can navigate interfaces, construct complex prompts, and extract functional outputs. They are efficient operators of the machine.</p>
+<p>However, an organization built solely on practitioners will eventually hit a ceiling of innovation—or worse, a crisis of alignment. Technical proficiency without philosophical grounding is inherently fragile in the face of exponential change.</p>
+</div>
+<div>
+<p class="mb-6">A discerner transcends operation. They understand not just how to prompt an AI, but why they are doing it, and what the secondary and tertiary effects of that action might be on the organization's culture and mission.</p>
+<p>Skills development at Movemental is not merely software training; it is philosophical calibration. It equips your leaders to navigate the ambiguity of the AI era with institutional wisdom.</p>
+</div>
+</div>
+<div class="md:col-span-1 hairline-left pl-8 flex items-center">
+<blockquote class="font-headline italic text-2xl leading-snug text-on-surface">
+                            "A practitioner runs the recipe well. A discerner understands the chemistry of the ingredients, and knows when to rewrite the book entirely."
+                        </blockquote>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Section: Learning outcomes -->
+<section class="max-w-screen-xl mx-auto px-6 md:px-12 editorial-rhythm">
+<h2 class="font-headline text-4xl text-on-surface mb-12">Learning outcomes.</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-4">
+<div class="flex items-baseline py-4 hairline-bottom">
+<span class="font-label text-xs tracking-widest text-secondary w-12 shrink-0">01</span>
+<span class="font-body text-lg text-on-surface">Mastery of intentional prompting frameworks.</span>
+</div>
+<div class="flex items-baseline py-4 hairline-bottom">
+<span class="font-label text-xs tracking-widest text-secondary w-12 shrink-0">02</span>
+<span class="font-body text-lg text-on-surface">Ethical navigation of synthetic outputs.</span>
+</div>
+<div class="flex items-baseline py-4 hairline-bottom">
+<span class="font-label text-xs tracking-widest text-secondary w-12 shrink-0">03</span>
+<span class="font-body text-lg text-on-surface">Integration of AI into strategic planning workflows.</span>
+</div>
+<div class="flex items-baseline py-4 hairline-bottom">
+<span class="font-label text-xs tracking-widest text-secondary w-12 shrink-0">04</span>
+<span class="font-body text-lg text-on-surface">Development of organizational AI guidelines.</span>
+</div>
+<div class="flex items-baseline py-4 hairline-bottom">
+<span class="font-label text-xs tracking-widest text-secondary w-12 shrink-0">05</span>
+<span class="font-body text-lg text-on-surface">Critical evaluation of generative models vs. human insight.</span>
+</div>
+<div class="flex items-baseline py-4 hairline-bottom">
+<span class="font-label text-xs tracking-widest text-secondary w-12 shrink-0">06</span>
+<span class="font-body text-lg text-on-surface">Data privacy and security best practices in AI contexts.</span>
+</div>
+<div class="flex items-baseline py-4 hairline-bottom">
+<span class="font-label text-xs tracking-widest text-secondary w-12 shrink-0">07</span>
+<span class="font-body text-lg text-on-surface">Fostering a culture of responsible AI experimentation.</span>
+</div>
+<div class="flex items-baseline py-4 hairline-bottom">
+<span class="font-label text-xs tracking-widest text-secondary w-12 shrink-0">08</span>
+<span class="font-body text-lg text-on-surface">Long-term vision casting for AI alignment with core mission.</span>
+</div>
+</div>
+</section>
+<!-- 4. Section: Course architecture -->
+<section class="bg-surface-container py-24 editorial-rhythm px-6 md:px-12">
+<div class="max-w-screen-xl mx-auto">
+<div class="max-w-3xl mb-16">
+<h2 class="font-headline text-4xl text-on-surface mb-6">Course architecture.</h2>
+<p class="font-body text-xl leading-relaxed text-secondary-dim">
+                        An eight-module rhythm designed for deep immersion and practical application. Each module builds upon the previous, creating a comprehensive framework for institutional discernment.
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-outline-variant/20">
+<!-- Module Grid Items -->
+<div class="bg-surface-container p-8 h-full flex flex-col">
+<span class="font-label text-xs tracking-widest text-secondary mb-4 block">MODULE 01</span>
+<h3 class="font-headline text-2xl text-on-surface mb-4">Foundations of Synthesis</h3>
+<p class="font-body text-sm text-on-surface-variant mt-auto">Understanding the transition from information retrieval to generative synthesis.</p>
+</div>
+<div class="bg-surface-container p-8 h-full flex flex-col">
+<span class="font-label text-xs tracking-widest text-secondary mb-4 block">MODULE 02</span>
+<h3 class="font-headline text-2xl text-on-surface mb-4">The Architecture of Prompting</h3>
+<p class="font-body text-sm text-on-surface-variant mt-auto">Deconstructing complex requests into structured, logical parameters.</p>
+</div>
+<div class="bg-surface-container p-8 h-full flex flex-col">
+<span class="font-label text-xs tracking-widest text-secondary mb-4 block">MODULE 03</span>
+<h3 class="font-headline text-2xl text-on-surface mb-4">Ethical Friction</h3>
+<p class="font-body text-sm text-on-surface-variant mt-auto">Identifying and navigating the moral ambiguities of synthetic generation.</p>
+</div>
+<div class="bg-surface-container p-8 h-full flex flex-col">
+<span class="font-label text-xs tracking-widest text-secondary mb-4 block">MODULE 04</span>
+<h3 class="font-headline text-2xl text-on-surface mb-4">Strategic Integration</h3>
+<p class="font-body text-sm text-on-surface-variant mt-auto">Embedding AI workflows seamlessly into existing institutional processes.</p>
+</div>
+<div class="bg-surface-container p-8 h-full flex flex-col">
+<span class="font-label text-xs tracking-widest text-secondary mb-4 block">MODULE 05</span>
+<h3 class="font-headline text-2xl text-on-surface mb-4">Data Stewardship</h3>
+<p class="font-body text-sm text-on-surface-variant mt-auto">Protecting organizational knowledge in an era of open models.</p>
+</div>
+<div class="bg-surface-container p-8 h-full flex flex-col">
+<span class="font-label text-xs tracking-widest text-secondary mb-4 block">MODULE 06</span>
+<h3 class="font-headline text-2xl text-on-surface mb-4">The Limits of the Machine</h3>
+<p class="font-body text-sm text-on-surface-variant mt-auto">Recognizing when human intuition and context must override algorithmic output.</p>
+</div>
+<div class="bg-surface-container p-8 h-full flex flex-col">
+<span class="font-label text-xs tracking-widest text-secondary mb-4 block">MODULE 07</span>
+<h3 class="font-headline text-2xl text-on-surface mb-4">Cultural Adoption</h3>
+<p class="font-body text-sm text-on-surface-variant mt-auto">Leading teams through the anxiety and disruption of technological shifts.</p>
+</div>
+<div class="bg-surface-container p-8 h-full flex flex-col">
+<span class="font-label text-xs tracking-widest text-secondary mb-4 block">MODULE 08</span>
+<h3 class="font-headline text-2xl text-on-surface mb-4">The Discerning Organization</h3>
+<p class="font-body text-sm text-on-surface-variant mt-auto">Finalizing a localized thesis for AI utilization within your specific mission context.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Section: Four ways to engage Skills -->
+<section class="max-w-screen-xl mx-auto px-6 md:px-12 editorial-rhythm" id="engagement-levels">
+<h2 class="font-headline text-4xl text-on-surface mb-12 border-b-[0.5px] border-outline-variant/20 pb-4">Four ways to engage Skills.</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+<!-- Level 1 -->
+<div class="bg-surface border border-outline/20 p-8 flex flex-col hover:bg-surface-container-low transition-colors duration-300">
+<h3 class="font-headline text-2xl text-on-surface mb-2">Self-Paced License</h3>
+<p class="font-serif italic text-xl text-secondary mb-8">$4,800/year</p>
+<p class="font-body text-sm text-on-surface-variant mb-8 flex-grow">Independent access to the core curriculum for individuals seeking immediate upskilling without cohort constraints.</p>
+<button class="w-full bg-primary text-on-primary py-3 font-label text-sm uppercase tracking-widest hover:bg-primary-dim transition-colors">Select</button>
+</div>
+<!-- Level 2 -->
+<div class="tonal-stack p-8 flex flex-col border border-outline/20 relative">
+<div class="absolute -top-3 left-8 bg-inverse-surface text-on-primary px-3 py-1 font-label text-[10px] uppercase tracking-widest">Recommended</div>
+<h3 class="font-headline text-2xl text-on-surface mb-2">Cohort</h3>
+<p class="font-serif italic text-xl text-secondary mb-8">$15,000</p>
+<p class="font-body text-sm text-on-surface-variant mb-8 flex-grow">The definitive 8-week guided experience. Facilitated discussion, peer learning, and direct access to Movemental strategists.</p>
+<button class="w-full bg-inverse-surface text-on-primary py-3 font-label text-sm uppercase tracking-widest hover:opacity-90 transition-opacity">Select</button>
+</div>
+<!-- Level 3 -->
+<div class="bg-surface border border-outline/20 p-8 flex flex-col hover:bg-surface-container-low transition-colors duration-300">
+<h3 class="font-headline text-2xl text-on-surface mb-2">Network Skills</h3>
+<p class="font-serif italic text-xl text-secondary mb-8">from $60,000</p>
+<p class="font-body text-sm text-on-surface-variant mb-8 flex-grow">Enterprise-scale deployment for large organizations. Custom cohorts run internally to align entire departments simultaneously.</p>
+<button class="w-full border border-outline/20 text-on-surface py-3 font-label text-sm uppercase tracking-widest hover:border-outline/100 transition-colors">Inquire</button>
+</div>
+<!-- Level 4 -->
+<div class="bg-surface border border-outline/20 p-8 flex flex-col hover:bg-surface-container-low transition-colors duration-300">
+<h3 class="font-headline text-2xl text-on-surface mb-2">Train-the-Facilitator</h3>
+<p class="font-serif italic text-xl text-secondary mb-8">$25,000</p>
+<p class="font-body text-sm text-on-surface-variant mb-8 flex-grow">Equip your internal leadership to teach the Movemental Skills curriculum autonomously, ensuring long-term institutional knowledge.</p>
+<button class="w-full border border-outline/20 text-on-surface py-3 font-label text-sm uppercase tracking-widest hover:border-outline/100 transition-colors">Inquire</button>
+</div>
+</div>
+</section>
+<!-- 6. Section: Why this stage matters -->
+<section class="midnight-band py-32 editorial-rhythm px-6 md:px-12">
+<div class="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+<div class="md:col-span-7">
+<blockquote class="font-headline text-4xl md:text-5xl leading-tight text-on-primary">
+                        "The primary constraint on organizational adaptation is no longer technological access; it is the philosophical capacity of staff to wield new tools thoughtfully."
+                    </blockquote>
+</div>
+<div class="md:col-span-5 font-body text-lg text-[#f4efe5]/80 space-y-6">
+<p>
+                        As noted in the <em>Virtuous 2026 Strategic Foresight Report</em>, the democratization of AI means every employee is now a potential point of leverage—or a point of failure. Without a shared framework for discernment, decentralized AI use leads to brand dilution, ethical breaches, and strategic drift.
+                    </p>
+<p>
+                        Investing in 'Skills' is not an operational expense; it is a vital risk mitigation strategy and a necessary precursor to scalable innovation.
+                    </p>
+</div>
+</div>
+</section>
+<!-- 7. Section: Where Skills fits -->
+<section class="max-w-screen-xl mx-auto px-6 md:px-12 editorial-rhythm text-center">
+<div class="max-w-3xl mx-auto space-y-8">
+<h2 class="font-headline text-4xl text-on-surface">The Critical Third Step.</h2>
+<p class="font-body text-xl text-secondary-dim">
+                    Skills cannot be rushed. It must follow the foundational understanding built in Stage 01 and the unconstrained exploration of Stage 02 Sandbox. Only then are teams prepared to codify their practices into institutional competencies. Are you ready to begin?
+                </p>
+<div class="flex flex-col sm:flex-row justify-center gap-6 pt-8">
+<a class="bg-primary text-on-primary px-8 py-4 font-body font-medium hover:bg-primary-dim transition-colors duration-200" href="#engagement-levels">View Cohort Options</a>
+<a class="border border-outline/20 text-on-surface px-8 py-4 font-body font-medium hover:border-outline/100 transition-colors duration-200" href="#">Read Field Guide</a>
+<a class="text-primary hover:text-primary-dim transition-colors underline underline-offset-4 py-4 px-2" href="#">Contact Advisory</a>
+</div>
+</div>
+</section>
+</main>
+<!-- 8. PathContinuityFooter (Customized based on prompt) -->
+<footer class="bg-surface-container py-16 px-12 border-t-[0.5px] border-outline-variant/20">
+<div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<a class="group flex flex-col items-start text-secondary hover:text-on-surface transition-colors" href="#">
+<span class="font-label text-xs uppercase tracking-widest mb-2">Previous Stage</span>
+<span class="font-headline text-2xl group-hover:italic transition-all">← Stage 02 Sandbox</span>
+</a>
+<div class="h-16 w-[1px] bg-outline-variant/30 hidden md:block"></div>
+<a class="group flex flex-col items-end text-secondary hover:text-on-surface transition-colors" href="#">
+<span class="font-label text-xs uppercase tracking-widest mb-2">Next Stage</span>
+<span class="font-headline text-2xl group-hover:italic transition-all">Stage 04 Solutions →</span>
+</a>
+</div>
+</footer>
+<!-- Global Footer -->
+<footer class="bg-[#141110] dark:bg-black w-full px-12 py-24 flex flex-col md:flex-row justify-between items-start gap-12 rounded-none border-none tonal-shift midnight-band flat no shadows static editorial placement">
+<div>
+<div class="font-['Instrument_Serif'] italic text-3xl text-[#faf6ee] mb-8">MOVEMENTAL</div>
+<p class="font-['Inter'] uppercase tracking-[0.2em] text-[10px] font-medium text-[#faf6ee]">© 2024 MOVEMENTAL STRATEGIC SEMINARY. AN ARCHIVE OF RECORD.</p>
+</div>
+<div class="flex flex-col md:flex-row gap-8 lg:gap-16">
+<a class="font-['Inter'] uppercase tracking-[0.2em] text-[10px] font-medium text-[#838172] hover:text-white transition-colors duration-300" href="#">The Manifesto</a>
+<a class="font-['Inter'] uppercase tracking-[0.2em] text-[10px] font-medium text-[#838172] hover:text-white transition-colors duration-300" href="#">Strategic Pillars</a>
+<a class="font-['Inter'] uppercase tracking-[0.2em] text-[10px] font-medium text-[#838172] hover:text-white transition-colors duration-300" href="#">Privacy Ledger</a>
+<a class="font-['Inter'] uppercase tracking-[0.2em] text-[10px] font-medium text-[#838172] hover:text-white transition-colors duration-300" href="#">Institutional Ethics</a>
+<a class="font-['Inter'] uppercase tracking-[0.2em] text-[10px] font-medium text-[#838172] hover:text-white transition-colors duration-300" href="#">Contact</a>
+</div>
+</footer>
+</body></html>

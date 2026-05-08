@@ -4,11 +4,11 @@ import React, { useEffect } from 'react';
 import { Container } from '@/components/studio/Container';
 import { Reveal } from '@/components/studio/Reveal';
 import Link from "next/link";
-import { Play, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Binary, Bot, Building2, GitBranch, Phone, Play } from 'lucide-react';
 
 export function TechnologyPage() {
   useEffect(() => {
-    document.title = "Build Technology | Movemental";
+    document.title = "Solutions & Technology | Movemental";
   }, []);
 
   const capabilities = [
@@ -43,22 +43,136 @@ export function TechnologyPage() {
 
   return (
     <div className="pt-24 pb-20 md:pt-32">
-      <Container>
+      {/* Stage 04 — Solutions editorial (stitch_movemental_system_builder/stage_04_solutions_refined_layout) */}
+      <section className="border-b border-border pb-24 pt-12 md:pb-48 md:pt-20">
+        <Container>
+          <div className="mx-auto flex max-w-7xl flex-col gap-16 md:flex-row md:items-start">
+            <Reveal>
+              <div className="w-full max-w-4xl">
+                <span className="font-mono mb-8 block text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+                  Stage 04 of the Movemental AI Path
+                </span>
+                <h1 className="mb-10 font-serif-display text-6xl leading-[0.9] tracking-tight text-foreground md:text-7xl lg:text-[5.75rem]">
+                  Solutions <span className="block text-muted-foreground/90 font-light italic">Deployment.</span>
+                </h1>
+                <p className="mb-12 max-w-xl text-xl font-light leading-relaxed text-muted-foreground md:text-2xl">
+                  The technological deployment built on a grounded human foundation.
+                </p>
+                <div className="mb-10 flex flex-col gap-4 sm:flex-row">
+                  <Link href="/contact?interest=solutions" className="btn-pill bg-foreground px-8 py-4 text-center text-xs font-semibold uppercase tracking-widest text-background hover:opacity-90">
+                    Talk about Solutions →
+                  </Link>
+                  <Link href="/field-guide" className="border border-border px-8 py-4 text-center text-xs font-semibold uppercase tracking-widest text-foreground hover:border-primary rounded-full transition-colors inline-flex justify-center items-center">
+                    Field Guide
+                  </Link>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </Container>
+      </section>
+
+      <section className="border-b border-border bg-card py-24 md:py-48">
+        <Container>
+          <Reveal>
+            <div className="mx-auto max-w-3xl">
+              <h2 className="mb-12 font-serif-display text-4xl leading-tight tracking-tight text-foreground md:text-5xl">
+                Before we describe the configurations,{" "}
+                <span className="text-muted-foreground font-light italic">the honest part.</span>
+              </h2>
+              <div className="space-y-8 text-lg leading-relaxed text-foreground md:text-xl font-light">
+                <p>
+                  In adoption work across mission-driven organizations, a familiar pattern emerges: leadership understands deployment in principle, yet only a minority carries integration past isolated pilots — not because the models fail, but because sequencing was skipped or compressed.
+                </p>
+                <p>
+                  This is not principally a failure of technology. It is a failure of order. Solutions work holds when Safety, Sandbox iteration, and skill formation precede procurement and build commitments.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      <section className="border-b border-border bg-background py-24 md:py-48">
+        <Container>
+          <Reveal>
+            <div className="mx-auto mb-24 max-w-2xl text-center">
+              <h2 className="mb-6 font-serif-display text-5xl leading-tight tracking-tight text-foreground md:text-[4rem]">
+                Readiness <span className="text-muted-foreground font-light italic">threshold.</span>
+              </h2>
+              <p className="text-lg font-light text-muted-foreground">Deployment is contingent upon these four verified states.</p>
+            </div>
+            <div className="mx-auto grid max-w-7xl grid-cols-1 gap-px border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
+              {[
+                { n: "01", h: "Safety", sub: "Documentation", p: "Ratified protocols governing data flow and entity interaction." },
+                { n: "02", h: "Sandbox", sub: "Complete", p: "Stress-tested operational constraints and utility validation." },
+                { n: "03", h: "Skills", sub: "Capacity", p: "Internal baseline established for human-machine collaboration." },
+                { n: "04", h: "Executive", sub: "Alignment", p: "Board and leadership sign-off on sequence, budget, and posture before build spend." },
+              ].map((cell) => (
+                <div key={cell.n} className="flex flex-col gap-6 bg-background p-10 md:p-12">
+                  <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">{cell.n}</span>
+                  <h3 className="font-serif-display text-3xl leading-tight text-foreground md:text-4xl">
+                    {cell.h} <span className="block text-muted-foreground font-light italic">{cell.sub}</span>
+                  </h3>
+                  <p className="mt-auto pt-8 text-sm leading-relaxed text-muted-foreground font-light">{cell.p}</p>
+                </div>
+              ))}
+            </div>
+            <blockquote className="mx-auto mt-24 max-w-4xl text-center font-serif-display text-3xl italic leading-tight text-foreground font-light md:text-4xl">
+              &quot;The threshold is not a barrier; it is the guarantee that the deployment will hold the weight of the institution.&quot;
+            </blockquote>
+          </Reveal>
+        </Container>
+      </section>
+
+      <section id="foundation" className="bg-inverse-surface py-24 text-inverse-foreground md:py-48 scroll-mt-24">
+        <Container>
+          <Reveal>
+            <div className="mb-16 border-b border-inverse-foreground/10 pb-12 md:mb-24">
+              <h2 className="font-serif-display text-5xl leading-tight tracking-tight text-inverse-foreground md:text-[4rem]">
+                The foundation <span className="block text-inverse-foreground/60 font-light italic">Solutions deploys on.</span>
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 gap-px bg-inverse-foreground/10 md:grid-cols-3">
+              {[
+                { title: "Content Pipeline", Icon: GitBranch },
+                { title: "Typed Entity Chain", Icon: Binary },
+                { title: "Multi-Tenant", Icon: Building2 },
+                { title: "Agent Inventory", Icon: Bot },
+                { title: "CRM/Voice Intake", Icon: Phone },
+              ].map(({ title, Icon }) => (
+                <div key={title} className="flex min-h-48 flex-col justify-center gap-6 bg-inverse-surface p-10 md:min-h-64">
+                  <Icon className="size-9 text-muted-foreground" aria-hidden />
+                  <h3 className="font-serif-display text-2xl font-light text-inverse-foreground">{title}</h3>
+                </div>
+              ))}
+              <Link
+                href="/technology#capabilities"
+                className="flex min-h-48 flex-col justify-between bg-inverse-foreground p-10 text-inverse-surface transition-colors hover:bg-background hover:text-foreground md:min-h-64"
+              >
+                <h3 className="font-serif-display mt-6 text-3xl font-light leading-tight">
+                  See capabilities &amp; <span className="block">live builds</span>
+                </h3>
+                <ArrowUpRight className="size-8 self-end" aria-hidden />
+              </Link>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      <Container className="pt-16 md:pt-24">
         <Reveal>
-          <div className="max-w-4xl mb-12">
-            <h1 className="font-serif-display text-5xl md:text-6xl lg:text-7xl italic mb-6">
-              Your fragmented intelligence, integrated.
-            </h1>
-            <p className="lede text-xl md:text-2xl text-muted-foreground leading-relaxed mb-10">
+          <div className="max-w-4xl mb-12" id="capabilities">
+            <h2 className="font-serif-display text-4xl italic mb-4 md:text-5xl">Capabilities in depth</h2>
+            <p className="lede text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8">
               A full agentic platform — content, knowledge, learning, and relationships, in one coherent infrastructure. Built for movements, denominations, networks, and the institutions that train them.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 mb-16">
+            <div className="flex flex-col gap-4 sm:flex-row mb-12">
               <Link href="/contact?interest=Build" className="btn-pill btn-pill--primary">Book a live walkthrough</Link>
               <a href="https://alanhirsch.com" target="_blank" rel="noopener noreferrer" className="btn-pill btn-pill--ghost">
                 See a live build <ArrowUpRight className="w-4 h-4 ml-1 inline" />
               </a>
             </div>
-            
             <div className="relative w-full aspect-video bg-muted/20 border border-border rounded-xl overflow-hidden shadow-sm">
               <div className="absolute inset-0 flex flex-col items-center justify-center text-muted-foreground">
                 <Play className="w-12 h-12 mb-4 text-primary opacity-50" />

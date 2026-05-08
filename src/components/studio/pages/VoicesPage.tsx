@@ -19,7 +19,7 @@ const VOICES_LIST = [
 
 export function VoicesPage() {
   useEffect(() => {
-    document.title = "Movemental Voices | Movemental";
+    document.title = "Trusted Voices | Movemental";
   }, []);
 
   return (
@@ -27,7 +27,7 @@ export function VoicesPage() {
       <section className="band-midnight hero hero--fold" aria-labelledby="hero-h1">
         <Container>
           <Reveal>
-            <span className="section-eyebrow">Movemental Voices</span>
+            <span className="section-eyebrow">Trusted voices</span>
             <h1 id="hero-h1" className="display hero-headline max-w-4xl">
               Leaders helping <em dangerouslySetInnerHTML={{__html: 'shape this moment.'}} />
             </h1>

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 
-import { TrainingPage as StudioTrainingPage } from "@/components/studio/pages/TrainingPage";
+import { SkillsPathwayPage } from "@/components/studio/pages/pathway/SkillsPathwayPage";
 
 export const metadata: Metadata = {
-  title: "Skills Development",
-  description: "Stage 03 — cohorts and self-paced skills development for your team.",
+  title: "Stage 03: Skills Development",
+  description:
+    "Eight weeks. Eight modules. The formational deepening that turns practitioners into discerners — Movemental Stage 03.",
 };
 
 export default function Page() {
-  return <StudioTrainingPage />;
+  return <SkillsPathwayPage />;
 }

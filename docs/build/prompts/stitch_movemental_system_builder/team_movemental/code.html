@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Team | Movemental</title>
+<meta content="Brad Brisco, Alan Hirsch, and Joshua Shepherd. Missional theology meets infrastructure." name="description"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400;1,6..72,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#605b59",
+                        "tertiary-container": "#faf2ef",
+                        "primary-fixed-dim": "#dcd3c9",
+                        "secondary-dim": "#5b584f",
+                        "primary-container": "#ebe1d7",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#fdf9ef",
+                        "surface-container-highest": "#ece8d7",
+                        "surface-variant": "#ece8d7",
+                        "secondary-container": "#e8e2d6",
+                        "surface-bright": "#fffbff",
+                        "on-secondary-fixed-variant": "#5f5b52",
+                        "on-error-container": "#742410",
+                        "on-surface": "#39382c",
+                        "on-primary": "#fff6ee",
+                        "error-dim": "#5c1202",
+                        "secondary": "#68645b",
+                        "tertiary-dim": "#5c5756",
+                        "outline": "#838172",
+                        "surface-tint": "#645d55",
+                        "on-tertiary-fixed-variant": "#6a6563",
+                        "tertiary-fixed-dim": "#ece4e1",
+                        "surface-container": "#f7f4e7",
+                        "primary": "#645d55",
+                        "on-background": "#39382c",
+                        "on-secondary-container": "#555249",
+                        "on-tertiary": "#ffffff",
+                        "error": "#a54731",
+                        "tertiary-fixed": "#faf2ef",
+                        "on-secondary-fixed": "#423f37",
+                        "primary-dim": "#58514a",
+                        "outline-variant": "#bcbaa9",
+                        "on-primary-fixed": "#443e37",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#9f9d96",
+                        "inverse-primary": "#fff5ea",
+                        "tertiary": "#686362",
+                        "on-surface-variant": "#666557",
+                        "error-container": "#fe8b70",
+                        "inverse-surface": "#0f0e0a",
+                        "surface-dim": "#e6e3cf",
+                        "surface": "#fffbff",
+                        "surface-container-high": "#f2eedf",
+                        "on-tertiary-fixed": "#4d4947",
+                        "background": "#fffbff",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#d9d4c8",
+                        "on-primary-container": "#575149",
+                        "secondary-fixed": "#e8e2d6",
+                        "primary-fixed": "#ebe1d7",
+                        "on-primary-fixed-variant": "#615b53"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": [
+                            "Newsreader"
+                        ],
+                        "display": [
+                            "Newsreader"
+                        ],
+                        "body": [
+                            "Inter"
+                        ],
+                        "label": [
+                            "Inter"
+                        ]
+                    },
+                    "fontSize": {}
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: theme('colors.surface');
+            color: theme('colors.on-surface');
+            -webkit-font-smoothing: antialiased;
+        }
+        .italic-serif {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+        }
+        .display-serif {
+            font-family: 'Newsreader', serif;
+        }
+        .ledger-row {
+            border-bottom: 0.5px solid theme('colors.outline-variant');
+        }
+        .ledger-row:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 rounded-none bg-surface/80 backdrop-blur-xl dark:bg-inverse-surface/80">
+<div class="flex justify-between items-center px-12 py-6 w-full max-w-screen-2xl mx-auto">
+<a class="font-headline italic text-2xl text-primary dark:text-primary-fixed-dim tracking-tight" href="/">Movemental</a>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200" href="/manifesto">Manifesto</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200" href="/archive">Archive</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200" href="/methodology">Methodology</a>
+</div>
+<a class="hidden md:inline-flex items-center justify-center px-6 py-3 bg-primary text-on-primary hover:bg-primary-dim transition-all duration-200 ease-linear rounded-none text-sm font-medium tracking-wide uppercase" href="/contact">Connect</a>
+</div>
+</nav>
+<!-- Hero Section (Midnight Band) -->
+<section class="bg-inverse-surface text-on-primary pt-48 pb-32 px-6 md:px-12 flex flex-col items-center justify-center text-center">
+<div class="max-w-4xl mx-auto flex flex-col items-center">
+<span class="font-label text-sm uppercase tracking-[0.05em] text-on-primary/70 mb-8">The team</span>
+<h1 class="display-serif text-5xl md:text-7xl lg:text-8xl font-normal leading-tight tracking-tight mb-8">
+                Three people. <span class="italic-serif text-primary-fixed">One posture.</span>
+</h1>
+<p class="font-body text-xl md:text-2xl text-on-primary/80 max-w-2xl leading-relaxed mb-12">
+                Brad Brisco, Alan Hirsch, and Joshua Shepherd.
+            </p>
+<div class="flex flex-col sm:flex-row gap-6 justify-center w-full max-w-md">
+<a class="inline-flex items-center justify-center px-8 py-4 bg-primary-fixed text-on-primary-fixed hover:bg-primary-fixed-dim transition-colors duration-200 rounded-none text-sm font-medium uppercase tracking-wider w-full" href="/contact">Start a conversation</a>
+<a class="inline-flex items-center justify-center px-8 py-4 border border-outline/20 text-on-primary hover:border-outline transition-colors duration-200 rounded-none text-sm font-medium uppercase tracking-wider w-full" href="/voices">See trusted voices</a>
+</div>
+</div>
+</section>
+<!-- Section: Founders -->
+<section class="bg-surface py-32 px-6 md:px-12">
+<div class="max-w-screen-xl mx-auto">
+<div class="mb-24 md:w-2/3">
+<span class="font-label text-sm uppercase tracking-[0.05em] text-primary mb-6 block">Founders</span>
+<h2 class="display-serif text-4xl md:text-6xl font-normal leading-tight tracking-tight mb-6 text-on-surface">
+                    The people <span class="italic-serif text-primary">holding the pen.</span>
+</h2>
+<p class="font-body text-xl text-on-surface-variant max-w-2xl leading-relaxed">
+                    Each carries decades of missional and technical experience.
+                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12">
+<!-- Brad Brisco -->
+<article class="flex flex-col">
+<img alt="Portrait of Brad Brisco" class="w-full aspect-[3/4] object-cover mb-8 grayscale opacity-90" data-alt="A sophisticated black and white portrait photograph of a professional man, intended to represent Brad Brisco. He is framed from the chest up against a neutral, high-key cream background. The lighting is soft and directional, highlighting his features while maintaining a serious, institutional tone appropriate for a high-end strategy firm's team page. The image strictly adheres to a minimalist, low-contrast aesthetic with sharp clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9q8BgvUyyMLS_ZwYAJLWbn3-X34deyZbgiGcQVan2EtgEMj7z_7JNdgbSi6X5JAM3i4WC6p57fLe_6_oOqO6JqUhBUun6twz6Gp7gtKDVOOQSndDQvOLKdhCGujHeoEb7xms5uJuVZycz20nH0bXPdkIAh5B1CRjFMlJiOJm8Qo40DPfhSq4BdpODo6pRzX4Of9eeEXxp7lbNP914SNtCOthkRMA0LmJavNAlmx0p4SUVFTtS9zsC_yu_OWWpMSO98gvF3RTll0I"/>
+<h3 class="display-serif text-3xl text-on-surface mb-2">Brad Brisco</h3>
+<p class="font-label text-sm uppercase tracking-widest text-primary mb-1">Co-Founder &amp; Missiologist</p>
+<p class="font-body text-sm text-on-surface-variant mb-6">Kansas City, MO</p>
+<p class="font-body text-base text-on-surface leading-relaxed mb-8">
+                        Brad brings deep expertise in church planting and missional theology, focusing on the intersection of movement dynamics and local context.
+                    </p>
+<div class="mb-8 flex-grow">
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant block mb-4 border-b border-outline-variant pb-2">Credentials &amp; Context</span>
+<ul class="font-body text-sm text-on-surface space-y-3">
+<li class="ledger-row py-2">Author of multiple missional texts</li>
+<li class="ledger-row py-2">Director of Bivocational Church Planting</li>
+<li class="ledger-row py-2">Decades of pastoral coaching</li>
+</ul>
+</div>
+</article>
+<!-- Alan Hirsch -->
+<article class="flex flex-col">
+<img alt="Portrait of Alan Hirsch" class="w-full aspect-[3/4] object-cover mb-8 grayscale opacity-90" data-alt="A sophisticated black and white portrait photograph of a professional man, intended to represent Alan Hirsch. He is framed from the chest up against a neutral, high-key cream background. The lighting is soft and directional, highlighting his features while maintaining a serious, institutional tone appropriate for a high-end strategy firm's team page. The image strictly adheres to a minimalist, low-contrast aesthetic with sharp clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCjHll-VLRDL9yGU6z-q5Tdg8SOXRx3TY3iAmCuHkC5O5nacOwNUQ26IXfV6vm678QPsbGem_zaKnhYORuK12xZ8EMNcfNubzDd4voy8IUlOg4S3cpVPuxMeOzpad4Ad4RMLpzLvfqUKzh20hKRDAbXREMCldg3XW-zRzPgy75AKSyaLwU6HzsXr49YHs4NSCwEkDs0FVS7by97alc05J0KbqUPoNnha2uxl2_A5JuRcWVZqPTHqLMwIOznAUEyet1zTDLQJ1SsDM"/>
+<h3 class="display-serif text-3xl text-on-surface mb-2">Alan Hirsch</h3>
+<p class="font-label text-sm uppercase tracking-widest text-primary mb-1">Co-Founder &amp; Thought Leader</p>
+<p class="font-body text-sm text-on-surface-variant mb-6">Melbourne, AUS</p>
+<p class="font-body text-base text-on-surface leading-relaxed mb-8">
+                        Recognized globally for his work on movemental ecclesiology, Alan's thinking forms the foundational architecture of our approach.
+                    </p>
+<div class="mb-8 flex-grow">
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant block mb-4 border-b border-outline-variant pb-2">Credentials &amp; Context</span>
+<ul class="font-body text-sm text-on-surface space-y-3">
+<li class="ledger-row py-2">Founder of 100Movements</li>
+<li class="ledger-row py-2">Author of The Forgotten Ways</li>
+<li class="ledger-row py-2">Global movement architect</li>
+</ul>
+</div>
+</article>
+<!-- Joshua Shepherd -->
+<article class="flex flex-col">
+<img alt="Portrait of Joshua Shepherd" class="w-full aspect-[3/4] object-cover mb-8 grayscale opacity-90" data-alt="A sophisticated black and white portrait photograph of a professional man, intended to represent Joshua Shepherd. He is framed from the chest up against a neutral, high-key cream background. The lighting is soft and directional, highlighting his features while maintaining a serious, institutional tone appropriate for a high-end strategy firm's team page. The image strictly adheres to a minimalist, low-contrast aesthetic with sharp clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASGmO4fw5lBwv20no7Ans-JtuQkqpJidYqlyPvn4jkzrVFnpnsAo6y3tVoNSamRqJDmrv57prbKmetg5PaqxeQ2lFnQnSBG6s3SL7BaRiFzpCmY7eHvopSjUiMnErINzIhNz1r2wGMWmHmja-JfuxfRP5C3-nqnRKH0L108RWS79dyFAk1VjmlI2DeOIJ5EEgJMW1vSFwiOHIVMQN_Id0hxYI5a_NZ7TGeG_v3NyXKcYGLXEgqqqGOxS9tKj2OkHw-YdaI3NJEtIs"/>
+<h3 class="display-serif text-3xl text-on-surface mb-2">Joshua Shepherd</h3>
+<p class="font-label text-sm uppercase tracking-widest text-primary mb-1">Co-Founder &amp; Technologist</p>
+<p class="font-body text-sm text-on-surface-variant mb-6">Austin, TX</p>
+<p class="font-body text-base text-on-surface leading-relaxed mb-8">
+                        Joshua translates complex missiological concepts into scalable digital infrastructure, ensuring the theology finds practical application.
+                    </p>
+<div class="mb-8 flex-grow">
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant block mb-4 border-b border-outline-variant pb-2">Credentials &amp; Context</span>
+<ul class="font-body text-sm text-on-surface space-y-3">
+<li class="ledger-row py-2">Platform Architect</li>
+<li class="ledger-row py-2">Systems Design Specialist</li>
+<li class="ledger-row py-2">Digital Ministry Innovator</li>
+</ul>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- Section: How we lead (Tonal Shift) -->
+<section class="bg-surface-container py-32 px-6 md:px-12">
+<div class="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8">
+<div class="md:col-span-4 flex flex-col">
+<span class="font-label text-sm uppercase tracking-[0.05em] text-primary mb-6 block">How we lead</span>
+<p class="font-body text-lg text-on-surface-variant leading-relaxed">
+                    Our methodology is not abstract theory; it is the practiced reality of our own work together.
+                </p>
+</div>
+<div class="md:col-span-8 md:pl-12">
+<h2 class="display-serif text-3xl md:text-5xl font-normal leading-tight tracking-tight mb-12 text-on-surface">
+                    The same Sequence we ask of you, <span class="italic-serif text-primary">we walk ourselves.</span>
+</h2>
+<div class="space-y-8">
+<div class="flex items-start">
+<span class="font-label text-sm text-primary w-8 pt-1">01</span>
+<div>
+<h4 class="font-body text-xl font-medium text-on-surface mb-2">Safety</h4>
+<p class="font-body text-base text-on-surface-variant">Establishing trust and baseline security before attempting complex movemental shifts.</p>
+</div>
+</div>
+<div class="flex items-start">
+<span class="font-label text-sm text-primary w-8 pt-1">02</span>
+<div>
+<h4 class="font-body text-xl font-medium text-on-surface mb-2">Sandbox</h4>
+<p class="font-body text-base text-on-surface-variant">Creating low-stakes environments for experimentation and learning without catastrophic risk.</p>
+</div>
+</div>
+<div class="flex items-start">
+<span class="font-label text-sm text-primary w-8 pt-1">03</span>
+<div>
+<h4 class="font-body text-xl font-medium text-on-surface mb-2">Skills</h4>
+<p class="font-body text-base text-on-surface-variant">Developing the specific competencies required to sustain movement dynamics over time.</p>
+</div>
+</div>
+<div class="flex items-start">
+<span class="font-label text-sm text-primary w-8 pt-1">04</span>
+<div>
+<h4 class="font-body text-xl font-medium text-on-surface mb-2">Solutions</h4>
+<p class="font-body text-base text-on-surface-variant">Deploying robust, contextually appropriate answers to systemic challenges.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Closing CTA (Midnight Band) -->
+<section class="bg-inverse-surface text-on-primary py-32 px-6 md:px-12 flex flex-col items-center justify-center text-center mt-auto">
+<div class="max-w-3xl mx-auto">
+<span class="font-label text-sm uppercase tracking-[0.05em] text-on-primary/70 mb-8 block">If this resonates</span>
+<h2 class="display-serif text-4xl md:text-6xl font-normal leading-tight tracking-tight mb-8">
+                We would like to hear <span class="italic-serif text-primary-fixed">what you are facing.</span>
+</h2>
+<p class="font-body text-xl text-on-primary/80 mb-12 max-w-2xl mx-auto leading-relaxed">
+                Schedule a thirty-minute introductory call to explore alignment and potential pathways forward.
+            </p>
+<div class="flex flex-col sm:flex-row gap-6 justify-center">
+<a class="inline-flex items-center justify-center px-8 py-4 bg-primary-fixed text-on-primary-fixed hover:bg-primary-fixed-dim transition-colors duration-200 rounded-none text-sm font-medium uppercase tracking-wider" href="/contact">Start a conversation</a>
+<a class="inline-flex items-center justify-center px-8 py-4 border border-outline/20 text-on-primary hover:border-outline transition-colors duration-200 rounded-none text-sm font-medium uppercase tracking-wider" href="/field-guide">Read the field guide</a>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full rounded-none bg-inverse-surface dark:bg-surface-dim pt-0 pb-24 px-12 border-t border-outline/10">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 pt-12">
+<a class="font-headline italic text-3xl text-on-primary dark:text-on-surface" href="/">Movemental</a>
+<div class="flex flex-col md:flex-row gap-8 md:gap-16">
+<a class="font-body text-sm tracking-widest uppercase text-on-primary/60 dark:text-on-surface/60 hover:text-on-primary transition-opacity duration-200" href="/strategic-pillars">Strategic Pillars</a>
+<a class="font-body text-sm tracking-widest uppercase text-on-primary/60 dark:text-on-surface/60 hover:text-on-primary transition-opacity duration-200" href="/institutional-strength">Institutional Strength</a>
+<a class="font-body text-sm tracking-widest uppercase text-on-primary/60 dark:text-on-surface/60 hover:text-on-primary transition-opacity duration-200" href="/contact">Contact</a>
+</div>
+<p class="font-body text-sm tracking-widest text-on-primary/40 uppercase">© 2024 Movemental · The Living Manifesto. All rights reserved.</p>
+</div>
+</footer>
+</body></html>

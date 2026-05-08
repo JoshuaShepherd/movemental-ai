@@ -6,21 +6,18 @@ export function PathFold() {
   return (
     <section
       className="band-section path-section"
-      id="how"
+      id="pathway"
       aria-labelledby="path-heading"
     >
       <div className="container path-section__inner">
         <header className="path-section__header">
           <p className="section-eyebrow">The Movemental AI Path</p>
           <h2 className="path-section__title" id="path-heading">
-            A clear order for leading your organization through AI.
+            A clear path for leading your organization through AI.
           </h2>
           <p className="path-section__intro">
-            Most organizations jump straight to tools.
-            <br />
-            Movemental starts earlier—with safety, shared language, and human
-            capability—so anything you build is grounded, aligned, and
-            trustworthy.
+            Most organizations jump straight to tech, or freeze in place.
+            Movemental&apos;s path is clear, human-first, and rooted in safety.
           </p>
         </header>
 

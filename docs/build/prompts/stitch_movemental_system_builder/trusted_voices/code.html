@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trusted Voices - Movemental</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "outline-variant": "#bcbaa9",
+                "on-secondary-fixed-variant": "#5f5b52",
+                "on-error": "#ffffff",
+                "tertiary": "#686362",
+                "primary-fixed": "#ebe1d7",
+                "on-tertiary-container": "#605b59",
+                "surface-bright": "#fffbff",
+                "tertiary-container": "#faf2ef",
+                "on-secondary": "#ffffff",
+                "surface-container-low": "#fdf9ef",
+                "error": "#a54731",
+                "outline": "#838172",
+                "tertiary-dim": "#5c5756",
+                "on-secondary-fixed": "#423f37",
+                "surface-tint": "#645d55",
+                "secondary-container": "#e8e2d6",
+                "secondary-fixed": "#e8e2d6",
+                "on-surface-variant": "#666557",
+                "inverse-primary": "#fff5ea",
+                "on-tertiary": "#ffffff",
+                "on-primary": "#fff6ee",
+                "surface-container-highest": "#ece8d7",
+                "error-dim": "#5c1202",
+                "primary-fixed-dim": "#dcd3c9",
+                "on-primary-fixed": "#443e37",
+                "inverse-surface": "#0f0e0a",
+                "surface-container-lowest": "#ffffff",
+                "surface-container": "#f7f4e7",
+                "primary-dim": "#58514a",
+                "primary": "#645d55",
+                "on-error-container": "#742410",
+                "inverse-on-surface": "#9f9d96",
+                "tertiary-fixed": "#faf2ef",
+                "on-surface": "#39382c",
+                "surface-dim": "#e6e3cf",
+                "surface-variant": "#ece8d7",
+                "on-primary-fixed-variant": "#615b53",
+                "on-secondary-container": "#555249",
+                "secondary": "#68645b",
+                "secondary-fixed-dim": "#d9d4c8",
+                "on-background": "#39382c",
+                "surface": "#fffbff",
+                "primary-container": "#ebe1d7",
+                "tertiary-fixed-dim": "#ece4e1",
+                "on-tertiary-fixed": "#4d4947",
+                "secondary-dim": "#5b584f",
+                "error-container": "#fe8b70",
+                "background": "#fffbff",
+                "on-primary-container": "#575149",
+                "surface-container-high": "#f2eedf",
+                "on-tertiary-fixed-variant": "#6a6563"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {},
+        "fontFamily": {
+                "headline": [
+                        "Newsreader", "serif"
+                ],
+                "display": [
+                        "Newsreader", "serif"
+                ],
+                "body": [
+                        "Inter", "sans-serif"
+                ],
+                "label": [
+                        "Inter", "sans-serif"
+                ]
+        },
+        "fontSize": {}
+},
+    },
+  }
+</script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+        }
+        /* Enforce sharp corners globally */
+        * { border-radius: 0 !important; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased min-h-screen flex flex-col selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar Component -->
+<nav class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl fixed top-0 w-full z-50 rounded-none flat no shadows flex justify-between items-center w-full px-8 py-6 max-w-full mx-auto border-b-0">
+<div class="text-2xl font-headline italic tracking-tighter text-on-surface dark:text-surface-bright">Movemental</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant dark:text-outline-variant font-label uppercase tracking-widest text-xs hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Manifesto</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-label uppercase tracking-widest text-xs hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Strategy</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-label uppercase tracking-widest text-xs hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Archives</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-label uppercase tracking-widest text-xs hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Principles</a>
+</div>
+<div class="flex gap-4">
+<button class="font-label uppercase tracking-widest text-xs text-primary dark:text-primary-fixed-dim hover:text-primary-dim transition-colors duration-200">Inquire</button>
+<button class="bg-primary text-on-primary font-label uppercase tracking-widest text-xs px-6 py-3 hover:bg-primary-dim transition-colors duration-200">Contact</button>
+</div>
+</nav>
+<!-- Root: div.voices-page -->
+<div class="voices-page pt-24 flex-grow">
+<!-- Section: Hero (band-midnight) -->
+<section class="bg-inverse-surface text-on-primary py-32 px-8 md:px-16 flex flex-col items-center text-center">
+<div class="max-w-4xl mx-auto space-y-8">
+<p class="font-label uppercase tracking-[0.05em] text-xs text-inverse-primary/80">Movemental Voices</p>
+<h1 class="font-headline text-6xl md:text-8xl tracking-tight leading-none text-on-primary">Leaders helping <em class="italic">shape this moment.</em></h1>
+<p class="font-body text-lg md:text-xl text-inverse-primary/90 max-w-2xl mx-auto leading-relaxed">Movemental is a growing network of movement leaders committed to movement DNA, scenius formation, credibility amplification, innovative business, and wise AI leadership</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4 pt-8">
+<button class="bg-primary text-on-primary font-label uppercase tracking-[0.05em] text-sm px-8 py-4 hover:bg-primary-dim transition-colors duration-200">Start a Conversation</button>
+<button class="border border-outline/20 text-on-primary font-label uppercase tracking-[0.05em] text-sm px-8 py-4 hover:border-outline/100 transition-colors duration-200">Explore the Path</button>
+</div>
+</div>
+</section>
+<!-- Section 'featured-voices' (band-section) -->
+<section class="bg-surface-container py-32 px-8 md:px-16">
+<div class="max-w-7xl mx-auto">
+<div class="mb-20">
+<p class="font-label uppercase tracking-[0.05em] text-xs text-primary mb-4">Early voices</p>
+<h2 class="font-headline text-5xl md:text-6xl text-on-surface leading-tight">A growing circle <em class="italic">of leaders.</em></h2>
+<p class="font-body text-on-surface-variant mt-6 text-lg max-w-2xl">Those who have contributed to the shaping of Movemental through dialogue, critique, and shared exploration.</p>
+</div>
+<!-- Grid of VOICES_LIST -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+<!-- Voice Card: Alan Hirsch -->
+<div class="group">
+<div class="aspect-[3/4] mb-6 overflow-hidden bg-surface-container-high">
+<img alt="Alan Hirsch" class="w-full h-full object-cover filter grayscale opacity-90 group-hover:opacity-100 transition-opacity duration-500" data-alt="A distinguished black and white portrait of an intellectual leader in a thoughtful pose, captured in sharp focus against a minimalist studio background. The lighting is dramatic yet soft, casting subtle shadows that emphasize wisdom and experience. The aesthetic aligns with a high-end, premium editorial strategy paper style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0qEw8wJCE8xrUUML3NZk9UKjbXD95vg1h3nqL-Esi6upJl_3xKtHn55pt3DgnEGfz4Mt-3G9wP1rI9a18X-0DQxY3p6jMyIxWnbhyueEnNHSYqIz6KGQnKEm9c6jDkKYf22x5lhvPvG027sK_Kni0jynYpKYV0bOACc1RcYICSnEfhxY09CtFPJOU-Ako9GxzwiB4ClvYBVkczDzrLAFuvedy6SH2jkDnSaT_D0kFUQB4lyT7R-Q_t05Vf7tpt_j2ETY9xVZn-x8"/>
+</div>
+<h3 class="font-headline text-2xl text-on-surface mb-1">Alan Hirsch</h3>
+<p class="font-label uppercase tracking-[0.05em] text-xs text-primary mb-3">Author &amp; Missiologist</p>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed border-t border-outline-variant/20 pt-3">A foundational voice in missional theology, challenging the structural paradigms of the established church.</p>
+</div>
+<!-- Voice Card: Brad Brisco -->
+<div class="group">
+<div class="aspect-[3/4] mb-6 overflow-hidden bg-surface-container-high">
+<img alt="Brad Brisco" class="w-full h-full object-cover filter grayscale opacity-90 group-hover:opacity-100 transition-opacity duration-500" data-alt="A distinguished black and white portrait of an intellectual leader in a thoughtful pose, captured in sharp focus against a minimalist studio background. The lighting is dramatic yet soft, casting subtle shadows that emphasize wisdom and experience. The aesthetic aligns with a high-end, premium editorial strategy paper style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALHT_f16UQKQS_svUnJ_AK4AmY9q2J9lkrVpHNOQWAZvVFatZF980SAUJbT1e5Nz2959GCVQaf5c-zN9hGPD3C6uJjLOUdpB9WMx2FeqFbIYI7gi788L090WMzSQ2kyWmFS-ziwokYuGjhAA5RxdlXdmHkjR1lG8ogoncrThQJ7yg0cpatKqEXYp8Wy4nRjjSJjUI49z5FnLLVjAc0__-UbwuCmiiTKl18hbD4Pl6j09sKmdDXCLOu03WYgvSPuE_C8byPsk_Sm2w"/>
+</div>
+<h3 class="font-headline text-2xl text-on-surface mb-1">Brad Brisco</h3>
+<p class="font-label uppercase tracking-[0.05em] text-xs text-primary mb-3">Missional Strategist</p>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed border-t border-outline-variant/20 pt-3">Focused on equipping leaders for local context engagement and the decentralization of ministry models.</p>
+</div>
+<!-- Voice Card: JR Woodward -->
+<div class="group">
+<div class="aspect-[3/4] mb-6 overflow-hidden bg-surface-container-high">
+<img alt="JR Woodward" class="w-full h-full object-cover filter grayscale opacity-90 group-hover:opacity-100 transition-opacity duration-500" data-alt="A distinguished black and white portrait of an intellectual leader in a thoughtful pose, captured in sharp focus against a minimalist studio background. The lighting is dramatic yet soft, casting subtle shadows that emphasize wisdom and experience. The aesthetic aligns with a high-end, premium editorial strategy paper style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPmr5S6FaETV4jAjjg5xYhff8CU6x-pCmU5JRJmE7w_kgkpyLFimsqUvGZOm0JeLOekOt9ZLd_wUrLF_OjjsHDBYd2HRVfHA4L-NQ9i_09AS9izl-T5TAi4SthUe0w8UDMbVe5ZGEKUEMQ7KeFj6JM_eKOKeF_L-8myaH4jsVdo9tpumndgcYWlcybC2NXFAi8J1TeOrV0rIpYygmOVYQfuKX2zaIQ8_3PAiexWVUkGzsuJ_pZCy9TgEupwGdaZN7Yqkkoo1yqXYE"/>
+</div>
+<h3 class="font-headline text-2xl text-on-surface mb-1">JR Woodward</h3>
+<p class="font-label uppercase tracking-[0.05em] text-xs text-primary mb-3">Theologian &amp; Catalyst</p>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed border-t border-outline-variant/20 pt-3">Advocating for polycentric leadership structures and a robust theology of culture.</p>
+</div>
+<!-- Voice Card: Liz Rios -->
+<div class="group">
+<div class="aspect-[3/4] mb-6 overflow-hidden bg-surface-container-high">
+<img alt="Liz Rios" class="w-full h-full object-cover filter grayscale opacity-90 group-hover:opacity-100 transition-opacity duration-500" data-alt="A distinguished black and white portrait of a female intellectual leader in a thoughtful pose, captured in sharp focus against a minimalist studio background. The lighting is dramatic yet soft, casting subtle shadows that emphasize wisdom and experience. The aesthetic aligns with a high-end, premium editorial strategy paper style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4siYC_oNrkuAc8B4LEcY6PEB1mFjOGUg6Hv-iPCbFvxPUW43osgBusfEp4Ihjnyl7Wst_8nkpb3IMXvUOpYU7Dq-PN2xo19UyT7LNTdRMRESRHkbzCRAuyY4nnz9ipjKjqTw-mm-1ZZ3pyxAW6zRbSoQdu3l3FbdAbnKQ3kHTpqIGcJi0_lPWqlYo8wbg1CThrxzkFNnKT0BFAbRULeANxGDWr_8nnz240xLBHoWLGEDgtOWP5EhvojBnUsCEruhxv_9OzLuNm-k"/>
+</div>
+<h3 class="font-headline text-2xl text-on-surface mb-1">Liz Rios</h3>
+<p class="font-label uppercase tracking-[0.05em] text-xs text-primary mb-3">Movement Architect</p>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed border-t border-outline-variant/20 pt-3">Pioneering equitable spaces and voices in church planting and urban movemental frameworks.</p>
+</div>
+<!-- Voice Card: Rowland Smith -->
+<div class="group">
+<div class="aspect-[3/4] mb-6 overflow-hidden bg-surface-container-high">
+<img alt="Rowland Smith" class="w-full h-full object-cover filter grayscale opacity-90 group-hover:opacity-100 transition-opacity duration-500" data-alt="A distinguished black and white portrait of an intellectual leader in a thoughtful pose, captured in sharp focus against a minimalist studio background. The lighting is dramatic yet soft, casting subtle shadows that emphasize wisdom and experience. The aesthetic aligns with a high-end, premium editorial strategy paper style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1wRhXlYrYZJcQEreip87OyJoXpywvwjlS7mRUraiP7w9HKikuW3npachjKe8NmD0PtWvlymzVfdf-3Rk4lr4xTf4qBKDyAIECk62kK87yAEPbJC4QfyHh_AgZJywQyrktYFAA3xkESUNpG33_mw6IKBVhyLNacmX4fi5j9H2IwuTXBOEFCNyurCl1mXgUNx76NFGkLgvG5smX2drU47kVtDZZjSzKYXXBfU1TUg8JQtbLnH9LZCDOepqL6GW_48qJh9SeldNeHtI"/>
+</div>
+<h3 class="font-headline text-2xl text-on-surface mb-1">Rowland Smith</h3>
+<p class="font-label uppercase tracking-[0.05em] text-xs text-primary mb-3">Network Director</p>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed border-t border-outline-variant/20 pt-3">Guiding practical implementation of micro-church networks in complex cultural landscapes.</p>
+</div>
+<!-- Voice Card: Lucas Pulley -->
+<div class="group">
+<div class="aspect-[3/4] mb-6 overflow-hidden bg-surface-container-high">
+<img alt="Lucas Pulley" class="w-full h-full object-cover filter grayscale opacity-90 group-hover:opacity-100 transition-opacity duration-500" data-alt="A distinguished black and white portrait of an intellectual leader in a thoughtful pose, captured in sharp focus against a minimalist studio background. The lighting is dramatic yet soft, casting subtle shadows that emphasize wisdom and experience. The aesthetic aligns with a high-end, premium editorial strategy paper style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYCmOrHtokZcK9ztLsNpdaXMCxGNHZNGseEjQs1ttoqSLKKKBxmPd_o0XDR92URkZ2fz2ma9iaKwGoeP8qlJjiv4usvBTl8H1fcvOTSIt8OFndO__EhF1JLc1BBNufCijHtRNe3h8cDrk0qQt5iFxrdfVdgjx76OYnrqOxnx0Gt1xI5tOGbgY8a8fHc6EXLOEsgfrvTrMvbhJuF8lyuqHvdgwUEZ2F0Vbaygoow1hZdUYQb_qbGivH9kTOEEe-RkErC8aOFYRn-Po"/>
+</div>
+<h3 class="font-headline text-2xl text-on-surface mb-1">Lucas Pulley</h3>
+<p class="font-label uppercase tracking-[0.05em] text-xs text-primary mb-3">Practitioner</p>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed border-t border-outline-variant/20 pt-3">Integrating deep discipleship with innovative organizational models for sustainable ministry.</p>
+</div>
+<!-- Voice Card: Tim Catchim -->
+<div class="group">
+<div class="aspect-[3/4] mb-6 overflow-hidden bg-surface-container-high">
+<img alt="Tim Catchim" class="w-full h-full object-cover filter grayscale opacity-90 group-hover:opacity-100 transition-opacity duration-500" data-alt="A distinguished black and white portrait of an intellectual leader in a thoughtful pose, captured in sharp focus against a minimalist studio background. The lighting is dramatic yet soft, casting subtle shadows that emphasize wisdom and experience. The aesthetic aligns with a high-end, premium editorial strategy paper style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSINqr1umpqFWTvQgJ5uV8ir81H1Vu6zJuA1D1dV1Tz10cO8z8o9cSVhld77vOVv68xD5k_fGWp8PtHYP3p6RNvquys83CAky8DOatXrrdUOFjjgMYC2QDMHondVNvjKqW10592WTlOqClhdAJMj_udDMZN8_haCqK_swswblzKNaHlWCntYKfjwQF1ySGbR1LcEeEzHEoCCSzNpgx3hmAuero31Whk51IWKVdGPhuyTMCRev-8SlPDhHhbsKm1TyVBIaZml4jWDg"/>
+</div>
+<h3 class="font-headline text-2xl text-on-surface mb-1">Tim Catchim</h3>
+<p class="font-label uppercase tracking-[0.05em] text-xs text-primary mb-3">ApeSt Specialist</p>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed border-t border-outline-variant/20 pt-3">Specializing in assessing and equipping vocational diversity within leadership teams.</p>
+</div>
+<!-- Voice Card: Rob Wegner -->
+<div class="group">
+<div class="aspect-[3/4] mb-6 overflow-hidden bg-surface-container-high">
+<img alt="Rob Wegner" class="w-full h-full object-cover filter grayscale opacity-90 group-hover:opacity-100 transition-opacity duration-500" data-alt="A distinguished black and white portrait of an intellectual leader in a thoughtful pose, captured in sharp focus against a minimalist studio background. The lighting is dramatic yet soft, casting subtle shadows that emphasize wisdom and experience. The aesthetic aligns with a high-end, premium editorial strategy paper style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZyoBsit-pWn3lALjxJjJhjKuGFNkorpALSZhdf5LRtfPziwk04PPumX_4-KIk16j8cpvD2OJA-voutKeDUjfV2JqCnvpblbNgVAnO_tizx1kGo7UlQjjUCcpKVg2ggBuYQ0pbmUXDH2MyEnN70qhDsfTyyjWdk2TUsAAarl5fA6Yp83qWxpQvbPw4AZrQrnCWr8GWmFOVzPIkLouMlbtFA3VOq2Dh_V8ffuO4njvdYPUiAIWt6qezlpAOnLDSs4X8j-LDqXx3Ie8"/>
+</div>
+<h3 class="font-headline text-2xl text-on-surface mb-1">Rob Wegner</h3>
+<p class="font-label uppercase tracking-[0.05em] text-xs text-primary mb-3">Author &amp; Planter</p>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed border-t border-outline-variant/20 pt-3">A leading voice in the Starfish movement, advocating for viral, decentralized church planting.</p>
+</div>
+</div>
+<p class="font-headline italic text-2xl text-on-surface-variant text-center mt-16 max-w-2xl mx-auto">"The future of the church is not formed in isolation, but in the crucible of shared wisdom."</p>
+</div>
+</section>
+<!-- Section 'why-voices-matter' (band-default) -->
+<section class="bg-surface py-32 px-8 md:px-16">
+<div class="max-w-7xl mx-auto">
+<div class="mb-24 max-w-3xl">
+<p class="font-label uppercase tracking-[0.05em] text-xs text-primary mb-4">Why voices matter</p>
+<h2 class="font-headline text-5xl md:text-6xl text-on-surface leading-tight">AI credibility cannot be carried by <em class="italic">one person alone.</em></h2>
+<p class="font-body text-on-surface-variant mt-6 text-lg max-w-2xl">The integration of technology and theology requires a multiplicity of voices to prevent blind spots and hubris.</p>
+</div>
+<div class="flex flex-col md:flex-row gap-12 mt-16">
+<!-- Column 1 -->
+<div class="flex-1 bg-surface-container-low p-10 border-t-2 border-primary">
+<span class="material-symbols-outlined text-4xl text-primary mb-6 block">group</span>
+<h3 class="font-headline text-3xl text-on-surface mb-4">Trust is relational</h3>
+<p class="font-body text-on-surface-variant leading-relaxed text-sm">We build tools for the church, and the church is fundamentally relational. Trust in our systems is built through the relationships we maintain with proven leaders.</p>
+</div>
+<!-- Column 2 -->
+<div class="flex-1 bg-surface-container-low p-10 border-t-2 border-primary">
+<span class="material-symbols-outlined text-4xl text-primary mb-6 block">share</span>
+<h3 class="font-headline text-3xl text-on-surface mb-4">Wisdom is distributed</h3>
+<p class="font-body text-on-surface-variant leading-relaxed text-sm">The complexities of AI require insights from theology, sociology, and practical ministry. No single discipline holds the entire truth.</p>
+</div>
+<!-- Column 3 -->
+<div class="flex-1 bg-surface-container-low p-10 border-t-2 border-primary">
+<span class="material-symbols-outlined text-4xl text-primary mb-6 block">waterfall_chart</span>
+<h3 class="font-headline text-3xl text-on-surface mb-4">Movements are carried by people</h3>
+<p class="font-body text-on-surface-variant leading-relaxed text-sm">Technology is merely an accelerant. True movemental dynamics are carried by the faithful obedience of practitioners on the ground.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 'the-conversation' (band-section) -->
+<section class="bg-surface-container-high py-32 px-8 md:px-16">
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20">
+<div class="lg:w-1/2">
+<p class="font-label uppercase tracking-[0.05em] text-xs text-primary mb-4">The shared question</p>
+<h2 class="font-headline text-5xl md:text-6xl text-on-surface leading-tight mb-8">How do we lead through AI without losing <em class="italic">what makes us human?</em></h2>
+<p class="font-body text-on-surface-variant text-lg mb-12">This is the central inquiry driving the Movemental dialogue. We are examining the structural implications of AI on missiology.</p>
+<ul class="space-y-6">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-4 mt-1">remove</span>
+<span class="font-body text-on-surface-variant">Theological implications of generative language in pastoral care.</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-4 mt-1">remove</span>
+<span class="font-body text-on-surface-variant">Maintaining genuine incarnational presence in a digital-first context.</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-4 mt-1">remove</span>
+<span class="font-body text-on-surface-variant">The democratization of theological resources vs. institutional gatekeeping.</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-4 mt-1">remove</span>
+<span class="font-body text-on-surface-variant">Designing digital systems that foster dependence on the Holy Spirit.</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-4 mt-1">remove</span>
+<span class="font-body text-on-surface-variant">Data ethics and the sanctity of congregational information.</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-4 mt-1">remove</span>
+<span class="font-body text-on-surface-variant">Accelerating multiplication structures without sacrificing formational depth.</span>
+</li>
+</ul>
+</div>
+<div class="lg:w-1/2 flex items-center">
+<div class="bg-surface p-12 border-l-4 border-primary">
+<p class="font-headline italic text-4xl text-on-surface leading-snug mb-8">"We are not merely adopting new tools; we are actively shaping the architectural framework of how the church will multiply in the next era."</p>
+<p class="font-label uppercase tracking-[0.05em] text-xs text-primary">— A Movemental Contributor</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA (band-midnight) -->
+<section class="bg-inverse-surface py-32 px-8 md:px-16 text-center">
+<div class="max-w-4xl mx-auto space-y-8">
+<h2 class="font-headline text-5xl md:text-7xl tracking-tight leading-none text-on-primary">Every robust missional idea is <em class="italic">pressure-tested.</em></h2>
+<p class="font-body text-lg md:text-xl text-inverse-primary/80 max-w-2xl mx-auto leading-relaxed">Join the conversation. We are actively seeking leaders who want to engage critically with the future of church architecture.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-6 pt-12">
+<button class="bg-primary text-on-primary font-label uppercase tracking-[0.05em] text-sm px-10 py-5 hover:bg-primary-dim transition-colors duration-200">Start a Conversation</button>
+<button class="border border-outline/20 text-on-primary font-label uppercase tracking-[0.05em] text-sm px-10 py-5 hover:border-outline/100 transition-colors duration-200">Explore the Path</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Component -->
+<footer class="bg-inverse-surface dark:bg-surface-container-lowest w-full rounded-none flat no shadows flex flex-col md:flex-row justify-between items-start w-full px-12 py-24 gap-12">
+<div class="flex flex-col gap-8">
+<div class="text-4xl font-headline italic text-on-primary dark:text-on-surface-variant">Movemental</div>
+<p class="text-on-primary dark:text-on-surface font-body text-sm tracking-tight max-w-sm">© 2024 Movemental Strategy Group. All rights reserved. Recorded in structural precision.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-x-12 gap-y-6 font-body text-sm tracking-tight text-on-primary/70 dark:text-on-surface/70">
+<a class="hover:text-on-primary dark:hover:text-primary transition-opacity duration-200" href="#">Strategic Pillars</a>
+<a class="hover:text-on-primary dark:hover:text-primary transition-opacity duration-200" href="#">Institutional Records</a>
+<a class="hover:text-on-primary dark:hover:text-primary transition-opacity duration-200" href="#">Privacy Protocol</a>
+<a class="hover:text-on-primary dark:hover:text-primary transition-opacity duration-200" href="#">Terms of Engagement</a>
+<a class="hover:text-on-primary dark:hover:text-primary transition-opacity duration-200" href="#">LinkedIn</a>
+<a class="hover:text-on-primary dark:hover:text-primary transition-opacity duration-200" href="#">Newsletter</a>
+</div>
+</footer>
+</body></html>

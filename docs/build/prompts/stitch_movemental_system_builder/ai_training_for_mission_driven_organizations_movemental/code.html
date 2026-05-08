@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Training for Mission-Driven Organizations — Movemental</title>
+<meta content="Most AI training transfers techniques. Movemental forms judgment. Both matter; the difference matters more — particularly for churches, nonprofits, and institutions." name="description"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#605b59",
+                        "on-secondary-fixed-variant": "#5f5b52",
+                        "on-tertiary-fixed": "#4d4947",
+                        "inverse-surface": "#0f0e0a",
+                        "on-background": "#39382c",
+                        "surface-container-highest": "#ece8d7",
+                        "secondary-dim": "#5b584f",
+                        "surface-tint": "#645d55",
+                        "on-primary-fixed": "#443e37",
+                        "surface": "#fffbff",
+                        "tertiary": "#686362",
+                        "primary-container": "#ebe1d7",
+                        "secondary-fixed-dim": "#d9d4c8",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#742410",
+                        "secondary-container": "#e8e2d6",
+                        "on-primary": "#fff6ee",
+                        "tertiary-fixed-dim": "#ece4e1",
+                        "inverse-primary": "#fff5ea",
+                        "surface-container-high": "#f2eedf",
+                        "error-container": "#fe8b70",
+                        "tertiary-fixed": "#faf2ef",
+                        "background": "#fffbff",
+                        "tertiary-container": "#faf2ef",
+                        "error": "#a54731",
+                        "surface-variant": "#ece8d7",
+                        "on-secondary-container": "#555249",
+                        "on-secondary": "#ffffff",
+                        "primary-dim": "#58514a",
+                        "surface-container-low": "#fdf9ef",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#9f9d96",
+                        "on-surface": "#39382c",
+                        "secondary": "#68645b",
+                        "on-secondary-fixed": "#423f37",
+                        "primary-fixed-dim": "#dcd3c9",
+                        "on-tertiary-fixed-variant": "#6a6563",
+                        "error-dim": "#5c1202",
+                        "tertiary-dim": "#5c5756",
+                        "surface-container": "#f7f4e7",
+                        "on-surface-variant": "#666557",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#615b53",
+                        "primary": "#645d55",
+                        "outline": "#838172",
+                        "primary-fixed": "#ebe1d7",
+                        "outline-variant": "#bcbaa9",
+                        "surface-bright": "#fffbff",
+                        "secondary-fixed": "#e8e2d6",
+                        "surface-dim": "#e6e3cf",
+                        "on-primary-container": "#575149"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Instrument Serif", "serif"],
+                        "display": ["Instrument Serif", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.surface'); color: theme('colors.on-surface'); font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, .font-headline { font-family: 'Instrument Serif', serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl flex justify-between items-center px-12 py-6 w-full max-w-full">
+<a class="font-headline text-2xl font-bold tracking-tighter text-primary dark:text-primary-fixed-dim" href="/">Movemental</a>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200" href="/manifesto">Manifesto</a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200" href="/archives">Archives</a>
+<a class="text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary" href="/methodology">Methodology</a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200" href="/exemplars">Exemplars</a>
+</div>
+<a class="hidden md:inline-flex items-center justify-center px-6 py-2 bg-primary text-on-primary font-label text-sm uppercase tracking-widest hover:bg-primary-dim transition-colors duration-200" href="/connect">Connect</a>
+<!-- Mobile Menu Button (Icon only) -->
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+<main class="flex-grow pt-32">
+<!-- Hero Section -->
+<section class="max-w-6xl mx-auto px-6 md:px-12 py-24 lg:py-32 flex flex-col items-start gap-8 border-b border-outline-variant/20">
+<h1 class="font-headline text-6xl md:text-8xl tracking-tight leading-[0.95] text-on-surface max-w-4xl">
+                AI training for mission-driven organizations.
+            </h1>
+<p class="font-headline italic text-3xl md:text-4xl text-primary max-w-3xl leading-tight">
+                Techniques transfer how to use tools. Judgment forms how to use power.
+            </p>
+<div class="flex flex-col gap-8 w-full max-w-3xl mt-8">
+<p class="font-body text-lg md:text-xl text-on-surface-variant leading-relaxed">
+                    In the Movemental framework, Training is synonymous with Stage 03: Skills. It is where we move from experimentation to industrial-grade proficiency. Both matter; the difference matters more — particularly for churches, nonprofits, and institutions.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 mt-4">
+<a class="inline-flex items-center justify-center px-8 py-4 bg-primary text-on-primary font-label text-sm uppercase tracking-widest hover:bg-primary-dim transition-colors duration-200 group" href="/pathway/skills">
+                        Read about Stage 03: Skills
+                        <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+<a class="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-outline/20 text-on-surface font-label text-sm uppercase tracking-widest hover:border-outline transition-colors duration-200" href="/field-guide">
+                        Read the Field Guide
+                    </a>
+</div>
+</div>
+</section>
+<!-- What buyers usually mean -->
+<section class="bg-surface-container-high py-24 px-6 md:px-12 w-full mt-24">
+<div class="max-w-6xl mx-auto">
+<div class="mb-16 max-w-3xl">
+<h2 class="font-headline text-4xl md:text-5xl text-on-surface mb-6">What buyers usually mean by AI training.</h2>
+<p class="font-headline italic text-2xl text-primary leading-snug">Most offerings focus on the 'how' of the tool rather than the 'why' of the mission.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-outline-variant/20 p-px">
+<!-- Card 1 -->
+<div class="bg-surface-container-high p-8 flex flex-col gap-4">
+<span class="font-label text-xs uppercase tracking-widest text-primary mb-2">01</span>
+<h3 class="font-body font-semibold text-lg text-on-surface">Workshops</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">One-off sessions focused on prompt engineering basics.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-high p-8 flex flex-col gap-4">
+<span class="font-label text-xs uppercase tracking-widest text-primary mb-2">02</span>
+<h3 class="font-body font-semibold text-lg text-on-surface">Courses</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">Pre-recorded video series on generic productivity tools.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-high p-8 flex flex-col gap-4">
+<span class="font-label text-xs uppercase tracking-widest text-primary mb-2">03</span>
+<h3 class="font-body font-semibold text-lg text-on-surface">Certifications</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">High-level badges that confirm completion but not competence.</p>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-high p-8 flex flex-col gap-4">
+<span class="font-label text-xs uppercase tracking-widest text-primary mb-2">04</span>
+<h3 class="font-body font-semibold text-lg text-on-surface">Bootcamps</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">Intensive technique-heavy sprints with limited institutional context.</p>
+</div>
+</div>
+<div class="mt-16 pt-8 border-t border-outline-variant/20 max-w-2xl">
+<p class="font-body text-lg text-on-surface font-medium">This category does technique transfer. It does not do institutional formation.</p>
+</div>
+</div>
+</section>
+<!-- Where standard training works / doesn't -->
+<section class="max-w-6xl mx-auto py-32 px-6 md:px-12">
+<h2 class="font-headline text-4xl md:text-5xl text-on-surface mb-16 max-w-2xl">Where standard AI training works and where it doesn't.</h2>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+<!-- Columns -->
+<div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 border-b border-outline-variant/20 pb-4">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<h3 class="font-label text-sm uppercase tracking-widest text-on-surface">Where it works</h3>
+</div>
+<ul class="font-body text-on-surface-variant space-y-4 text-sm leading-relaxed">
+<li class="flex gap-4"><span class="w-1.5 h-1.5 bg-primary mt-2 flex-shrink-0"></span>Tool discovery</li>
+<li class="flex gap-4"><span class="w-1.5 h-1.5 bg-primary mt-2 flex-shrink-0"></span>Individual productivity</li>
+<li class="flex gap-4"><span class="w-1.5 h-1.5 bg-primary mt-2 flex-shrink-0"></span>Low-stakes automation</li>
+<li class="flex gap-4"><span class="w-1.5 h-1.5 bg-primary mt-2 flex-shrink-0"></span>Generic drafting</li>
+<li class="flex gap-4"><span class="w-1.5 h-1.5 bg-primary mt-2 flex-shrink-0"></span>Technique fluency</li>
+</ul>
+</div>
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 border-b border-outline-variant/20 pb-4">
+<span class="material-symbols-outlined text-error">cancel</span>
+<h3 class="font-label text-sm uppercase tracking-widest text-on-surface">Where it falls short</h3>
+</div>
+<ul class="font-body text-on-surface-variant space-y-4 text-sm leading-relaxed">
+<li class="flex gap-4"><span class="w-1.5 h-1.5 bg-error mt-2 flex-shrink-0"></span>Theological alignment</li>
+<li class="flex gap-4"><span class="w-1.5 h-1.5 bg-error mt-2 flex-shrink-0"></span>Institutional governance</li>
+<li class="flex gap-4"><span class="w-1.5 h-1.5 bg-error mt-2 flex-shrink-0"></span>Mission-critical logic</li>
+<li class="flex gap-4"><span class="w-1.5 h-1.5 bg-error mt-2 flex-shrink-0"></span>Multi-tenant security</li>
+<li class="flex gap-4"><span class="w-1.5 h-1.5 bg-error mt-2 flex-shrink-0"></span>Formation of judgment</li>
+</ul>
+</div>
+</div>
+<!-- Highlight Box -->
+<div class="lg:col-span-4">
+<div class="bg-surface-container-high p-8 h-full flex flex-col justify-center border-l-2 border-primary">
+<p class="font-headline italic text-2xl text-on-surface leading-snug mb-6">
+                            "92% of mission-driven leaders believe AI is a lever. Only 7% believe they have the judgment to pull it safely."
+                        </p>
+<p class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Source: Virtuous-2026</p>
+</div>
+</div>
+</div>
+</section>
+<!-- What Movemental does instead -->
+<section class="max-w-6xl mx-auto py-32 px-6 md:px-12 border-t border-outline-variant/20">
+<h2 class="font-headline text-5xl text-on-surface mb-8">What Movemental does instead.</h2>
+<p class="font-body text-xl text-primary max-w-3xl mb-16">An introduction to Stage 03: Skills.</p>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-24">
+<div class="flex flex-col gap-8">
+<p class="font-body text-lg text-on-surface-variant leading-relaxed">
+                        The Movemental path is built on the belief that skill without safety is a liability. We don't just teach prompts; we build workflows that respect the unique intellectual architecture of your organization.
+                    </p>
+<div class="mt-8">
+<a class="inline-flex items-center justify-center px-8 py-4 bg-primary text-on-primary font-label text-sm uppercase tracking-widest hover:bg-primary-dim transition-colors duration-200 group" href="/pathway/skills">
+                            Read the full Stage 03: Skills page
+                            <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Eight Modules Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+<div class="border-b border-outline-variant/20 pb-4">
+<span class="font-label text-xs text-primary tracking-widest">01</span>
+<h4 class="font-body text-base text-on-surface mt-1">Governance</h4>
+</div>
+<div class="border-b border-outline-variant/20 pb-4">
+<span class="font-label text-xs text-primary tracking-widest">02</span>
+<h4 class="font-body text-base text-on-surface mt-1">Ingestion</h4>
+</div>
+<div class="border-b border-outline-variant/20 pb-4">
+<span class="font-label text-xs text-primary tracking-widest">03</span>
+<h4 class="font-body text-base text-on-surface mt-1">Chain-of-Thought</h4>
+</div>
+<div class="border-b border-outline-variant/20 pb-4">
+<span class="font-label text-xs text-primary tracking-widest">04</span>
+<h4 class="font-body text-base text-on-surface mt-1">Relational Map</h4>
+</div>
+<div class="border-b border-outline-variant/20 pb-4">
+<span class="font-label text-xs text-primary tracking-widest">05</span>
+<h4 class="font-body text-base text-on-surface mt-1">Agent Specs</h4>
+</div>
+<div class="border-b border-outline-variant/20 pb-4">
+<span class="font-label text-xs text-primary tracking-widest">06</span>
+<h4 class="font-body text-base text-on-surface mt-1">Validation</h4>
+</div>
+<div class="border-b border-outline-variant/20 pb-4">
+<span class="font-label text-xs text-primary tracking-widest">07</span>
+<h4 class="font-body text-base text-on-surface mt-1">Scaling</h4>
+</div>
+<div class="border-b border-outline-variant/20 pb-4">
+<span class="font-label text-xs text-primary tracking-widest">08</span>
+<h4 class="font-body text-base text-on-surface mt-1">Gov Refresher</h4>
+</div>
+</div>
+</div>
+</section>
+<!-- Our Guidance -->
+<section class="max-w-6xl mx-auto py-32 px-6 md:px-12 border-t border-outline-variant/20">
+<div class="mb-20">
+<span class="font-label text-xs uppercase tracking-widest text-primary mb-6 block">Our Guidance</span>
+<h2 class="font-headline text-5xl md:text-6xl text-on-surface max-w-4xl leading-tight">
+                    If you came here for training, <span class="italic text-primary">here's what we recommend.</span>
+</h2>
+<p class="font-body text-xl text-on-surface-variant mt-8 max-w-2xl">Deployment depends on actual readiness, not wished-for skill.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-outline-variant/20 p-px">
+<!-- Card 1 -->
+<div class="bg-surface p-10 flex flex-col justify-between min-h-[240px] hover:bg-surface-container-low transition-colors duration-300">
+<p class="font-body text-sm text-on-surface-variant">If you lack governance</p>
+<div class="mt-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">arrow_forward</span>
+<a class="font-label text-sm uppercase tracking-widest text-on-surface hover:text-primary transition-colors" href="#">Start with Safety</a>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface p-10 flex flex-col justify-between min-h-[240px] hover:bg-surface-container-low transition-colors duration-300">
+<p class="font-body text-sm text-on-surface-variant">If you have Safety only</p>
+<div class="mt-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">arrow_forward</span>
+<a class="font-label text-sm uppercase tracking-widest text-on-surface hover:text-primary transition-colors" href="#">Move to Sandbox</a>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface p-10 flex flex-col justify-between min-h-[240px] hover:bg-surface-container-low transition-colors duration-300">
+<p class="font-body text-sm text-on-surface-variant">If you have Safety + Sandbox</p>
+<div class="mt-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">arrow_forward</span>
+<a class="font-label text-sm uppercase tracking-widest text-on-surface hover:text-primary transition-colors" href="/pathway/skills">Focus on Skills</a>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface p-10 flex flex-col justify-between min-h-[240px] hover:bg-surface-container-low transition-colors duration-300">
+<p class="font-body text-sm text-on-surface-variant">If you have all three</p>
+<div class="mt-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">arrow_forward</span>
+<a class="font-label text-sm uppercase tracking-widest text-on-surface hover:text-primary transition-colors" href="#">See the Solutions refresher</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Closing CTA -->
+<section class="bg-inverse-surface py-32 px-6 md:px-12 flex flex-col items-center justify-center text-center mt-12">
+<h2 class="font-headline text-5xl md:text-7xl text-on-primary mb-8 max-w-4xl">
+                The path is <span class="italic text-primary-fixed-dim">the path.</span>
+</h2>
+<p class="font-body text-xl text-surface-variant max-w-2xl mb-12">Don't ask 'what training?' Ask 'where are we?'</p>
+<div class="flex flex-col sm:flex-row gap-6">
+<a class="inline-flex items-center justify-center px-10 py-5 bg-primary-fixed text-on-primary-fixed font-label text-sm uppercase tracking-widest hover:bg-primary-fixed-dim transition-colors duration-200" href="/connect">
+                    Start a Conversation
+                </a>
+<a class="inline-flex items-center justify-center px-10 py-5 bg-transparent border border-outline/40 text-on-primary font-label text-sm uppercase tracking-widest hover:border-outline transition-colors duration-200" href="/field-guide">
+                    Read the Field Guide
+                </a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full min-h-[400px] flex flex-col justify-between p-16 bg-inverse-surface dark:bg-surface-container-highest">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 w-full mb-24">
+<div class="flex flex-col gap-6">
+<a class="font-label uppercase tracking-widest text-xs text-outline dark:text-outline-variant hover:text-on-primary-fixed transition-opacity duration-300" href="/strategic-pillars">Strategic Pillars</a>
+<a class="font-label uppercase tracking-widest text-xs text-outline dark:text-outline-variant hover:text-on-primary-fixed transition-opacity duration-300" href="/privacy-ledger">Privacy Ledger</a>
+<a class="font-label uppercase tracking-widest text-xs text-outline dark:text-outline-variant hover:text-on-primary-fixed transition-opacity duration-300" href="/accessibility">Accessibility Standard</a>
+<a class="font-label uppercase tracking-widest text-xs text-outline dark:text-outline-variant hover:text-on-primary-fixed transition-opacity duration-300" href="/terms">Terms of Record</a>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-end gap-8 pt-8 border-t border-outline/20">
+<span class="font-headline text-3xl italic text-on-primary dark:text-on-surface">Movemental</span>
+<span class="font-label uppercase tracking-widest text-xs text-outline dark:text-outline-variant">© 2024 Movemental Institutional Archive. All Rights Reserved.</span>
+</div>
+</footer>
+</body></html>

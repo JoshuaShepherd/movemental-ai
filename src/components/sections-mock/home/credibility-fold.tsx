@@ -87,7 +87,7 @@ export function CredibilityFold() {
   return (
     <section
       className="band-default"
-      id="credibility"
+      id="about"
       aria-labelledby="credibility-heading"
     >
       <div className="container">

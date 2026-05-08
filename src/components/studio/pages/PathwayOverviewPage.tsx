@@ -54,10 +54,42 @@ const commonDeliverables = {
 };
 
 const overviewPathwayStops = [
-  { num: '01', name: 'Safety Documentation', duration: '2 weeks', price: '$5,000', outcome: 'Your AI policy, drafted and board-ready.', deliverables: commonDeliverables.safety },
-  { num: '02', name: 'Sandbox Discovery', duration: '4 weeks', price: '$15,000', outcome: 'Use cases proven, risks documented.', deliverables: commonDeliverables.sandbox },
-  { num: '03', name: 'Skills Development', duration: '8 weeks', price: 'from $4,800/yr', outcome: 'Your team trained to lead this work.', deliverables: commonDeliverables.skills },
-  { num: '04', name: 'Solutions Deployment', duration: '8-12 weeks', price: 'from $30,000', outcome: 'Your intelligence integrated, activated, multiplied.', deliverables: commonDeliverables.solutions }
+  {
+    num: "01",
+    name: "Safety Documentation",
+    duration: "2 weeks",
+    price: "$5,000",
+    outcome: "Your AI policy, drafted and board-ready.",
+    deliverables: commonDeliverables.safety,
+    href: "/pathway/safety",
+  },
+  {
+    num: "02",
+    name: "Sandbox Discovery",
+    duration: "4 weeks",
+    price: "$15,000",
+    outcome: "Use cases proven, risks documented.",
+    deliverables: commonDeliverables.sandbox,
+    href: "/pathway/sandbox",
+  },
+  {
+    num: "03",
+    name: "Skills Development",
+    duration: "8 weeks",
+    price: "from $4,800/yr",
+    outcome: "Your team trained to lead this work.",
+    deliverables: commonDeliverables.skills,
+    href: "/pathway/skills",
+  },
+  {
+    num: "04",
+    name: "Solutions Deployment",
+    duration: "8-12 weeks",
+    price: "from $30,000",
+    outcome: "Your intelligence integrated, activated, multiplied.",
+    deliverables: commonDeliverables.solutions,
+    href: "/pathway/solutions",
+  },
 ];
 
 export function PathwayOverviewPage() {
@@ -70,12 +102,23 @@ export function PathwayOverviewPage() {
       <Container>
         <Reveal>
           <div className="max-w-4xl mb-16">
+            <p className="mb-5 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+              The AI Stewardship Sequence
+            </p>
             <h1 className="font-serif-display text-5xl md:text-6xl lg:text-7xl italic mb-6">
               The Pathway
             </h1>
             <p className="lede text-xl md:text-2xl text-muted-foreground leading-relaxed">
               We rebuild the human layer first — governance, capability, and shared language — then build the technology that compounds rather than corrodes.
             </p>
+            <div className="flex flex-col gap-4 pt-10 sm:flex-row">
+              <Link href="/contact" className="btn-pill btn-pill--primary px-8 py-4 text-base">
+                Discuss the full pathway
+              </Link>
+              <Link href="/pathway/safety" className="btn-pill btn-pill--ghost px-8 py-4 text-base">
+                Start with Safety Documentation
+              </Link>
+            </div>
           </div>
           <PathwayComponent stops={overviewPathwayStops} />
         </Reveal>

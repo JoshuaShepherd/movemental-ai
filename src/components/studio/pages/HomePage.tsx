@@ -12,7 +12,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const homePathwayStops = [
   { num: '01', name: 'Safety Documentation', duration: '2 weeks', price: '$5,000', outcome: 'Your AI policy, drafted and board-ready.', href: '/pathway/safety' },
   { num: '02', name: 'Sandbox Discovery', duration: '4 weeks', price: '$15,000', outcome: 'Use cases proven, risks documented.', href: '/pathway/sandbox' },
-  { num: '03', name: 'Skills Development', duration: '8 weeks', price: 'from $4,800/yr', outcome: 'Your team trained to lead this work.', href: '/training' },
+  { num: '03', name: 'Skills Development', duration: '8 weeks', price: 'from $4,800/yr', outcome: 'Your team trained to lead this work.', href: '/pathway/skills' },
   { num: '04', name: 'Solutions Deployment', duration: '8–12 weeks', price: 'from $30,000', outcome: 'Your intelligence integrated, activated, multiplied.', href: '/technology' }
 ];
 

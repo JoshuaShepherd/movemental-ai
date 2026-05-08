@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sandbox Discovery - Movemental</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "primary-dim": "#58514a",
+                        "background": "#fffbff",
+                        "outline-variant": "#bcbaa9",
+                        "tertiary-dim": "#5c5756",
+                        "error-dim": "#5c1202",
+                        "inverse-on-surface": "#9f9d96",
+                        "error-container": "#fe8b70",
+                        "on-error-container": "#742410",
+                        "on-surface": "#39382c",
+                        "primary-fixed": "#ebe1d7",
+                        "on-surface-variant": "#666557",
+                        "surface-container-low": "#fdf9ef",
+                        "surface-container-high": "#f2eedf",
+                        "on-primary-fixed-variant": "#615b53",
+                        "primary-fixed-dim": "#dcd3c9",
+                        "on-background": "#39382c",
+                        "surface": "#fffbff",
+                        "inverse-surface": "#0f0e0a",
+                        "on-primary-fixed": "#443e37",
+                        "on-tertiary-fixed": "#4d4947",
+                        "primary-container": "#ebe1d7",
+                        "on-secondary-container": "#555249",
+                        "surface-container": "#f7f4e7",
+                        "on-primary": "#fff6ee",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#fffbff",
+                        "secondary-fixed": "#e8e2d6",
+                        "surface-dim": "#e6e3cf",
+                        "outline": "#838172",
+                        "on-primary-container": "#575149",
+                        "on-secondary-fixed-variant": "#5f5b52",
+                        "secondary-fixed-dim": "#d9d4c8",
+                        "surface-container-highest": "#ece8d7",
+                        "inverse-primary": "#fff5ea",
+                        "on-secondary": "#ffffff",
+                        "primary": "#645d55",
+                        "tertiary-fixed": "#faf2ef",
+                        "surface-tint": "#645d55",
+                        "tertiary-fixed-dim": "#ece4e1",
+                        "tertiary": "#686362",
+                        "secondary-dim": "#5b584f",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#423f37",
+                        "on-tertiary-fixed-variant": "#6a6563",
+                        "error": "#a54731",
+                        "tertiary-container": "#faf2ef",
+                        "on-tertiary-container": "#605b59",
+                        "secondary": "#68645b",
+                        "secondary-container": "#e8e2d6",
+                        "surface-variant": "#ece8d7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "display": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {}
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #faf6ee; /* surface */
+            color: #39382c; /* on-surface */
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        h1, h2, h3, h4, h5, h6, .font-headline, .font-display {
+            font-family: 'Newsreader', serif;
+        }
+        .text-balance {
+            text-wrap: balance;
+        }
+        .hairline-b {
+            border-bottom: 0.5px solid rgba(188, 186, 169, 0.5); /* outline-variant */
+        }
+        .hairline-t {
+            border-top: 0.5px solid rgba(188, 186, 169, 0.5);
+        }
+        .hairline-l {
+            border-left: 0.5px solid rgba(188, 186, 169, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 py-6 max-w-full mx-auto bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl transition-opacity duration-200">
+<div class="font-headline text-2xl italic font-medium text-on-surface dark:text-surface-bright">
+<a class="hover:opacity-80 transition-opacity" href="#">Movemental</a>
+</div>
+<div class="hidden md:flex items-center gap-8 font-label uppercase tracking-widest text-[10px]">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200" href="#">Strategy</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200" href="#">Manifesto</a>
+<a class="text-primary dark:text-primary-fixed border-b-2 border-primary pb-1" href="#">Archive</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200" href="#">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 font-label uppercase tracking-widest text-[10px] hover:bg-primary-dim transition-colors duration-200">
+            Inquire
+        </button>
+</nav>
+<main class="flex-grow pt-32 pb-24 px-8 md:px-16 max-w-6xl mx-auto w-full">
+<!-- Hero Section -->
+<header class="mb-24 md:mb-32 max-w-4xl">
+<div class="mb-6 font-label uppercase tracking-widest text-[10px] text-on-surface-variant">
+                Stage 02
+            </div>
+<h1 class="font-headline text-6xl md:text-7xl font-bold tracking-tight mb-8 text-balance">
+                Sandbox Discovery
+            </h1>
+<p class="font-body text-xl md:text-2xl text-on-surface-variant leading-relaxed max-w-3xl text-balance">
+                Run a small set of approved experiments without sensitive data, and capture what you learn somewhere leadership can actually see it.
+            </p>
+</header>
+<!-- The Sandbox Pact -->
+<section class="mb-32 bg-surface-container-high p-12 md:p-16">
+<h2 class="font-headline italic text-4xl mb-12">The Sandbox pact</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
+<div class="relative">
+<div class="absolute -left-6 top-0 bottom-0 w-px bg-primary/20"></div>
+<h3 class="font-headline text-2xl font-medium mb-4">1. Nothing made in the sandbox gets published.</h3>
+<p class="font-body text-on-surface-variant leading-relaxed text-sm md:text-base">
+                        The purpose of the sandbox is learning, not production. Code written here, models trained here, and prompts refined here are strictly prototypes. This absolute boundary gives the team permission to fail fast and experiment widely without the risk of accidental deployment.
+                    </p>
+</div>
+<div class="relative">
+<div class="absolute -left-6 top-0 bottom-0 w-px bg-primary/20 md:hidden"></div>
+<h3 class="font-headline text-2xl font-medium mb-4">2. Private information stays private — by process, not by promise.</h3>
+<p class="font-body text-on-surface-variant leading-relaxed text-sm md:text-base">
+                        No PII, no sensitive client data, no unreleased financials enter the sandbox environment. We rely on strict data sanitization protocols and mock datasets, ensuring that even if an experiment goes awry, organizational integrity remains uncompromised.
+                    </p>
+</div>
+</div>
+</section>
+<!-- How the experiment runs -->
+<section class="mb-32">
+<div class="mb-16">
+<h2 class="font-headline text-4xl font-bold mb-4">How the experiment runs</h2>
+<p class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant">8-Week Timeline</p>
+</div>
+<div class="space-y-0">
+<!-- Step 01 -->
+<div class="flex flex-col md:flex-row gap-8 py-8 hairline-b group hover:bg-surface-container-low transition-colors duration-200 -mx-8 px-8">
+<div class="w-full md:w-32 flex-shrink-0 pt-1">
+<span class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant">Step 01</span>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline text-2xl mb-2 group-hover:text-primary transition-colors">Recipes</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed max-w-2xl">
+                            Identify and document specific, testable use cases. These "recipes" outline the precise inputs, expected outputs, and the business hypothesis being tested.
+                        </p>
+</div>
+</div>
+<!-- Step 02 -->
+<div class="flex flex-col md:flex-row gap-8 py-8 hairline-b group hover:bg-surface-container-low transition-colors duration-200 -mx-8 px-8">
+<div class="w-full md:w-32 flex-shrink-0 pt-1">
+<span class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant">Step 02</span>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline text-2xl mb-2 group-hover:text-primary transition-colors">Experiment</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed max-w-2xl">
+                            Execute the recipes within the isolated sandbox environment. Focus on speed and iteration, adjusting prompts and parameters to find the edges of the capability.
+                        </p>
+</div>
+</div>
+<!-- Step 03 -->
+<div class="flex flex-col md:flex-row gap-8 py-8 hairline-b group hover:bg-surface-container-low transition-colors duration-200 -mx-8 px-8">
+<div class="w-full md:w-32 flex-shrink-0 pt-1">
+<span class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant">Step 03</span>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline text-2xl mb-2 group-hover:text-primary transition-colors">Log the value</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed max-w-2xl">
+                            Quantify the results. Did it save time? Did it improve quality? Document the tangible outcomes of the experiment to build a case for broader adoption.
+                        </p>
+</div>
+</div>
+<!-- Step 04 -->
+<div class="flex flex-col md:flex-row gap-8 py-8 hairline-b group hover:bg-surface-container-low transition-colors duration-200 -mx-8 px-8">
+<div class="w-full md:w-32 flex-shrink-0 pt-1">
+<span class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant">Step 04</span>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline text-2xl mb-2 group-hover:text-primary transition-colors">Open visibility</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed max-w-2xl">
+                            Share the findings openly across the organization. Transparency prevents duplicated effort and sparks new ideas in adjacent teams.
+                        </p>
+</div>
+</div>
+<!-- Step 05 -->
+<div class="flex flex-col md:flex-row gap-8 py-8 group hover:bg-surface-container-low transition-colors duration-200 -mx-8 px-8">
+<div class="w-full md:w-32 flex-shrink-0 pt-1">
+<span class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant">Step 05</span>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline text-2xl mb-4 group-hover:text-primary transition-colors">Governance review</h3>
+<div class="space-y-4">
+<p class="font-body text-sm text-on-surface-variant leading-relaxed max-w-2xl mb-4">
+                                Formal evaluation of the experiment's outcomes against organizational risk and strategic alignment.
+                            </p>
+<ul class="space-y-3 font-body text-sm">
+<li class="flex items-center gap-3">
+<span class="w-2 h-2 bg-[#645d55]"></span>
+<span><strong>Green:</strong> Approved for wider pilot or restricted production use.</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="w-2 h-2 bg-[#bcbaa9]"></span>
+<span><strong>Yellow:</strong> Promising, but requires further refinement or risk mitigation.</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="w-2 h-2 bg-[#39382c]"></span>
+<span><strong>Red:</strong> Unviable due to cost, risk, or lack of value. Terminate experiment.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Conclusion -->
+<section class="mb-32 text-center py-16 bg-surface-container border border-outline-variant/20">
+<h2 class="font-headline italic text-3xl md:text-4xl text-balance max-w-3xl mx-auto text-primary">
+                "What you walk away with is a recipe book your organization actually agreed on."
+            </h2>
+</section>
+<!-- Stage Meta -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 hairline-t pt-16">
+<div>
+<h4 class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant mb-6">Required before proceeding</h4>
+<ul class="space-y-4 font-body text-sm">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-sm mt-0.5 text-primary">check_circle</span>
+<span>Clear definition of success metrics for each recipe.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-sm mt-0.5 text-primary">check_circle</span>
+<span>Approval from InfoSec on the isolated sandbox environment.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-sm mt-0.5 text-primary">check_circle</span>
+<span>Commitment from leadership to review the findings openly.</span>
+</li>
+</ul>
+</div>
+<div>
+<h4 class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant mb-6">If you skip this stage</h4>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">
+                    Bypassing the sandbox invites immediate technical debt and unacceptable risk. Implementing untested "recipes" in production environments often leads to data leaks, hallucinated outputs affecting client deliverables, and a rapid erosion of trust in the technology across the organization. You will build solutions nobody agreed upon.
+                </p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full flex flex-col md:flex-row justify-between items-start gap-8 px-12 py-20 border-t border-outline-variant/20 bg-inverse-surface dark:bg-surface-container-lowest text-on-primary dark:text-on-surface mt-auto">
+<div class="font-headline italic text-xl">
+            Movemental
+        </div>
+<div class="flex flex-col md:flex-row gap-8 md:gap-16">
+<div class="flex flex-col gap-4 font-label uppercase tracking-widest text-[10px] leading-relaxed">
+<a class="text-inverse-on-surface dark:text-outline hover:text-on-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-inverse-on-surface dark:text-outline hover:text-on-primary transition-colors" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-4 font-label uppercase tracking-widest text-[10px] leading-relaxed">
+<a class="text-inverse-on-surface dark:text-outline hover:text-on-primary transition-colors" href="#">Institutional Ethics</a>
+<a class="text-inverse-on-surface dark:text-outline hover:text-on-primary transition-colors" href="#">Contact</a>
+</div>
+</div>
+<div class="font-label uppercase tracking-widest text-[10px] leading-relaxed text-inverse-on-surface dark:text-outline mt-8 md:mt-0">
+            © 2024 Movemental · A Strategic Archive of Record.
+        </div>
+</footer>
+</body></html>
