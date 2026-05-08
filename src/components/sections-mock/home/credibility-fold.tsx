@@ -100,7 +100,7 @@ export function CredibilityFold() {
         </div>
 
         <div className="mt-16 border-t border-border pt-12 md:mt-20 md:pt-16">
-          <MovementVoicesNetwork ariaLabel="Movement Voices — an all-channel network of trusted leaders shaping the conversation, with Alan Hirsch at the center" />
+          <MovementVoicesNetwork ariaLabel="Movement Voices — an all-channel network of trusted leaders shaping the conversation, with Movemental at the center" />
         </div>
 
         <Link

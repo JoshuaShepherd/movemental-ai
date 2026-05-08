@@ -8,6 +8,10 @@
    — ported from docs/html/site-templates/site-theme.css + docs/html/mock-pages.css. */
 @import "./recipes.css";
 
+/* Citation system (Ledger). Inline highlighter chips, popovers, body marker,
+   and references rail. See docs/build/prompts/inline-citation-system-with-references-rail.md. */
+@import "./citations.css";
+
 /* shadcn + Tailwind `dark:` utilities — `html.dark` is set by next-themes when
    the user chooses dark (see ThemeProvider). Regional Midnight bands also
    use `data-variant="midnight"` to pin to the deep-ink surface even in light. */
@@ -83,6 +87,14 @@
   --color-editorial-foreground: var(--foreground);
   --color-editorial-muted-foreground: var(--muted-foreground);
   --color-editorial-border: var(--border);
+
+  /* Citation system — Ledger highlighter. Amber annotation register reserved
+     exclusively for the inline citation chips, popovers, marker underline, and
+     references rail. Never used for general UI accents. */
+  --color-cite-hl: var(--cite-hl);
+  --color-cite-hl-strong: var(--cite-hl-strong);
+  --color-cite-hl-ink: var(--cite-hl-ink);
+  --color-cite-hl-soft: var(--cite-hl-soft);
 
   /* Radius — cards/dialogs at 14px, pills at 9999px. Tailwind scale stays
      anchored to the shared `--radius` base so `rounded-md/lg/xl` keep working. */
@@ -206,6 +218,14 @@
     var(--primary) 0%,
     var(--primary-dim) 100%
   );
+
+  /* Citation system (Ledger). Amber highlighter palette dedicated to the
+     inline-citation chip, popover, marker underline, and references rail.
+     See docs/build/prompts/inline-citation-system-with-references-rail.md. */
+  --cite-hl: #fde68a;
+  --cite-hl-strong: #f59e0b;
+  --cite-hl-ink: #78350f;
+  --cite-hl-soft: #fef3c7;
 }
 
 /* ---------------------------------------------------------------------------
@@ -268,6 +288,13 @@
     var(--primary) 0%,
     var(--primary-dim) 100%
   );
+
+  /* Citation system — softened amber for dark theme. Chip ink stays warm so
+     the annotation register reads as an editorial mark, not a UI accent. */
+  --cite-hl: #f5c450;
+  --cite-hl-strong: #f59e0b;
+  --cite-hl-ink: #fde68a;
+  --cite-hl-soft: rgba(253, 230, 138, 0.12);
 }
 
 /* ---------------------------------------------------------------------------

@@ -1,15 +1,20 @@
-import { CENTER_VOICE_ID, type VoiceGraphVoice } from "./voices-graph-data";
+import {
+  CENTER_NODE_ID,
+  MOVEMENT_VOICES,
+  type VoiceGraphVoice,
+} from "./voices-graph-data";
 
 const AVATAR = 72;
+const CENTER = 92;
 
 /**
- * Hub-and-ring layout: center voice (Alan Hirsch) pinned at the middle, all
- * other voices arranged on a circle around him at equal angular spacing. The
- * radius scales with the smaller viewport dimension so the ring stays inside
- * the canvas at every breakpoint.
+ * Hub-and-ring layout: the Movemental center node pinned at the middle, all
+ * voices arranged on a circle around it at equal angular spacing. The radius
+ * scales with the smaller viewport dimension so the ring stays inside the
+ * canvas at every breakpoint.
  *
  * This is deterministic — no force simulation — so the constellation looks
- * the same every render. Reduced-motion preferences don't matter for layout.
+ * the same every render.
  */
 export function layoutMovementVoices(
   voices: readonly VoiceGraphVoice[],
@@ -22,22 +27,15 @@ export function layoutMovementVoices(
   const cy = h / 2;
 
   const out = new Map<string, { x: number; y: number }>();
+  out.set(CENTER_NODE_ID, { x: cx, y: cy });
 
-  const center = voices.find((v) => v.id === CENTER_VOICE_ID);
-  if (center) {
-    out.set(center.id, { x: cx, y: cy });
-  }
+  if (voices.length === 0) return out;
 
-  const ring = voices.filter((v) => v.id !== CENTER_VOICE_ID);
-  if (ring.length === 0) return out;
-
-  // Reserve room for the avatar diameter plus a small breathing margin so the
-  // outer voices never crop against the canvas edge.
   const radius = Math.min(w, h) * 0.36;
-  const startAngle = -Math.PI / 2; // first voice sits directly above center
+  const startAngle = -Math.PI / 2;
 
-  ring.forEach((v, i) => {
-    const angle = startAngle + (i / ring.length) * Math.PI * 2;
+  voices.forEach((v, i) => {
+    const angle = startAngle + (i / voices.length) * Math.PI * 2;
     out.set(v.id, {
       x: cx + Math.cos(angle) * radius,
       y: cy + Math.sin(angle) * radius,
@@ -48,3 +46,6 @@ export function layoutMovementVoices(
 }
 
 export const VOICE_AVATAR_PX = AVATAR;
+export const CENTER_NODE_PX = CENTER;
+
+void MOVEMENT_VOICES;

@@ -2,8 +2,14 @@
  * Movement Voices graph — single source for the credibility-band network.
  * IDs are stable slugs for layout and React Flow keys.
  *
- * Topology: Alan Hirsch sits at the center, all other voices in a ring around
- * him; every voice connects to every other voice (all-channel network).
+ * Topology:
+ *   - A square Movemental brand node sits at the center.
+ *   - Trusted voices form a ring around it.
+ *   - Every node connects to every other node (all-channel mesh) so the
+ *     visualization reads as a relational network, not a roster.
+ *
+ * The `appearOrder` field drives the stagger reveal in
+ * `movement-voices-network.tsx` — lower numbers animate in first.
  */
 
 export interface VoiceGraphVoice {
@@ -12,10 +18,38 @@ export interface VoiceGraphVoice {
   title: string;
   initials: string;
   imageSrc: string;
+  /**
+   * 1-indexed reveal order. Voice with `appearOrder: 1` animates in first
+   * after the center, voice with `appearOrder: 9` animates in last.
+   */
+  appearOrder: number;
 }
 
-export const CENTER_VOICE_ID = "alan-hirsch";
+/** ID for the synthetic center node (the Movemental square). */
+export const CENTER_NODE_ID = "movemental";
 
+/**
+ * The center node is not a voice — it's the platform anchor. We model it
+ * separately so the voices list stays clean and typed for avatar rendering.
+ */
+export const MOVEMENTAL_CENTER = {
+  id: CENTER_NODE_ID,
+  label: "Movemental",
+} as const;
+
+/**
+ * Trusted voices in the ring. `appearOrder` matches the home-page reveal
+ * sequence requested by product:
+ *   1. Alan Hirsch
+ *   2. Brad Brisco
+ *   3. Joshua Shepherd
+ *   4. Tim Catchim
+ *   5. JR Woodward
+ *   6. Rowland Smith
+ *   7. Liz Rios
+ *   8. Lucas Pulley   (kept in the ring; reveals after the named seven)
+ *   9. Rob Wegner     (kept in the ring; reveals last)
+ */
 export const MOVEMENT_VOICES: readonly VoiceGraphVoice[] = [
   {
     id: "alan-hirsch",
@@ -23,6 +57,7 @@ export const MOVEMENT_VOICES: readonly VoiceGraphVoice[] = [
     title: "Founder, 100Movements & Forge Mission Training Network",
     initials: "AH",
     imageSrc: "/images/voices/alan-hirsch.webp",
+    appearOrder: 1,
   },
   {
     id: "brad-brisco",
@@ -30,6 +65,7 @@ export const MOVEMENT_VOICES: readonly VoiceGraphVoice[] = [
     title: "CEO & Co-founder, Movemental",
     initials: "BB",
     imageSrc: "/images/voices/brad-brisco.webp",
+    appearOrder: 2,
   },
   {
     id: "josh-shepherd",
@@ -37,34 +73,7 @@ export const MOVEMENT_VOICES: readonly VoiceGraphVoice[] = [
     title: "CTO & Founder, Movemental",
     initials: "JS",
     imageSrc: "/images/voices/josh-shepherd.webp",
-  },
-  {
-    id: "liz-rios",
-    name: "Dr. Liz Rios",
-    title: "Founder, Passion2Plant · Director, Púlpito Fellows",
-    initials: "LR",
-    imageSrc: "/images/voices/liz-rios.webp",
-  },
-  {
-    id: "rowland-smith",
-    name: "Dr. Rowland Smith",
-    title: "National Director, Forge America · Founder, The Pando Collective",
-    initials: "RS",
-    imageSrc: "/images/voices/rowland-smith.webp",
-  },
-  {
-    id: "jr-woodward",
-    name: "Dr. JR Woodward",
-    title: "National Director, V3 Church Planting Movement",
-    initials: "JW",
-    imageSrc: "/images/voices/jr-woodward.webp",
-  },
-  {
-    id: "lucas-pulley",
-    name: "Lucas Pulley",
-    title: "Movements Director, Underground Network",
-    initials: "LP",
-    imageSrc: "/images/voices/lucas-pulley.webp",
+    appearOrder: 3,
   },
   {
     id: "tim-catchim",
@@ -72,6 +81,39 @@ export const MOVEMENT_VOICES: readonly VoiceGraphVoice[] = [
     title: "APE practitioner · Co-author, The Permanent Revolution",
     initials: "TC",
     imageSrc: "/images/voices/tim-catchim.webp",
+    appearOrder: 4,
+  },
+  {
+    id: "jr-woodward",
+    name: "Dr. JR Woodward",
+    title: "National Director, V3 Church Planting Movement",
+    initials: "JW",
+    imageSrc: "/images/voices/jr-woodward.webp",
+    appearOrder: 5,
+  },
+  {
+    id: "rowland-smith",
+    name: "Dr. Rowland Smith",
+    title: "National Director, Forge America · Founder, The Pando Collective",
+    initials: "RS",
+    imageSrc: "/images/voices/rowland-smith.webp",
+    appearOrder: 6,
+  },
+  {
+    id: "liz-rios",
+    name: "Dr. Liz Rios",
+    title: "Founder, Passion2Plant · Director, Púlpito Fellows",
+    initials: "LR",
+    imageSrc: "/images/voices/liz-rios.webp",
+    appearOrder: 7,
+  },
+  {
+    id: "lucas-pulley",
+    name: "Lucas Pulley",
+    title: "Movements Director, Underground Network",
+    initials: "LP",
+    imageSrc: "/images/voices/lucas-pulley.webp",
+    appearOrder: 8,
   },
   {
     id: "rob-wegner",
@@ -79,5 +121,12 @@ export const MOVEMENT_VOICES: readonly VoiceGraphVoice[] = [
     title: "Founding Leader, Kansas City Underground",
     initials: "RW",
     imageSrc: "/images/voices/rob-wegner.webp",
+    appearOrder: 9,
   },
 ];
+
+/**
+ * Total reveal steps for the stagger animation: one for the center, plus
+ * one per voice. The component drives the reveal index from 0 → TOTAL_STEPS.
+ */
+export const TOTAL_REVEAL_STEPS = 1 + MOVEMENT_VOICES.length;

@@ -21,29 +21,40 @@ import {
 
 import { Button } from "@/components/ui/button";
 
-import { VOICE_AVATAR_PX } from "./layout-movement-voices";
+import {
+  CENTER_NODE_PX,
+  VOICE_AVATAR_PX,
+} from "./layout-movement-voices";
 import { settleNetworkPositions } from "./settle-movement-voices";
 import {
-  CENTER_VOICE_ID,
+  CENTER_NODE_ID,
   MOVEMENT_VOICES,
+  MOVEMENTAL_CENTER,
+  TOTAL_REVEAL_STEPS,
   type VoiceGraphVoice,
 } from "./voices-graph-data";
 
-type VoiceFlowData = { voice: VoiceGraphVoice; isCenter: boolean };
+type VoiceFlowData = { voice: VoiceGraphVoice; revealed: boolean };
+type CenterFlowData = { revealed: boolean };
+
+/* ------------------------------------------------------------------ NODES */
 
 const VoiceAvatarNode = memo(function VoiceAvatarNode({
   data,
 }: NodeProps<Node<VoiceFlowData>>) {
   const v = data.voice;
   return (
-    <div className="flex w-[72px] flex-col items-center gap-0 touch-manipulation">
-      <div
-        className={`relative h-[72px] w-[72px] shrink-0 overflow-hidden rounded-full bg-muted transition-shadow ${
-          data.isCenter
-            ? "ring-2 ring-foreground/80 ring-offset-2 ring-offset-card"
-            : "ring-1 ring-border"
-        }`}
-      >
+    <div
+      className="flex w-[72px] flex-col items-center gap-0 touch-manipulation"
+      style={{
+        opacity: data.revealed ? 1 : 0,
+        transform: data.revealed ? "scale(1)" : "scale(0.4)",
+        transition:
+          "opacity 360ms cubic-bezier(0.22, 0.61, 0.36, 1), transform 360ms cubic-bezier(0.22, 0.61, 0.36, 1)",
+        willChange: "opacity, transform",
+      }}
+    >
+      <div className="relative h-[72px] w-[72px] shrink-0 overflow-hidden rounded-full bg-muted ring-1 ring-border shadow-ambient">
         <Image
           src={v.imageSrc}
           alt=""
@@ -59,9 +70,65 @@ const VoiceAvatarNode = memo(function VoiceAvatarNode({
   );
 });
 
+/**
+ * Square Movemental brand node — distinctly different from the circular
+ * voice avatars, anchoring the network as the platform hub.
+ */
+const CenterBrandNode = memo(function CenterBrandNode({
+  data,
+}: NodeProps<Node<CenterFlowData>>) {
+  return (
+    <div
+      className="flex flex-col items-center justify-center gap-1.5 rounded-md bg-foreground text-inverse-foreground shadow-ambient ring-2 ring-foreground/90"
+      style={{
+        width: CENTER_NODE_PX,
+        height: CENTER_NODE_PX,
+        opacity: data.revealed ? 1 : 0,
+        transform: data.revealed ? "scale(1)" : "scale(0.5)",
+        transition:
+          "opacity 420ms cubic-bezier(0.22, 0.61, 0.36, 1), transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1)",
+        willChange: "opacity, transform",
+      }}
+      aria-label="Movemental"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        className="h-5 w-5"
+        aria-hidden
+      >
+        <circle cx="12" cy="12" r="3.4" fill="currentColor" />
+        <circle
+          cx="12"
+          cy="12"
+          r="7.5"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          opacity="0.65"
+        />
+        <circle
+          cx="12"
+          cy="12"
+          r="10.5"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1"
+          opacity="0.35"
+        />
+      </svg>
+      <span className="text-[9px] font-semibold uppercase tracking-eyebrow leading-none">
+        Movemental
+      </span>
+    </div>
+  );
+});
+
 const nodeTypes = {
   voice: VoiceAvatarNode,
+  center: CenterBrandNode,
 };
+
+/* ----------------------------------------------------------- ENVIRONMENT */
 
 function subscribeReducedMotion(onChange: () => void): () => void {
   const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -73,21 +140,41 @@ function snapshotReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
+/* ---------------------------------------------------------------- LAYOUT */
+
 function flowNodesFromLayout(
   positions: Map<string, { x: number; y: number }>,
+  revealStep: number,
 ): Node[] {
   const out: Node[] = [];
+
+  // Center first so it renders behind the voice nodes if they overlap on
+  // small viewports during the layout pass.
+  const cp = positions.get(CENTER_NODE_ID);
+  if (cp) {
+    out.push({
+      id: CENTER_NODE_ID,
+      type: "center",
+      position: { x: cp.x - CENTER_NODE_PX / 2, y: cp.y - CENTER_NODE_PX / 2 },
+      data: { revealed: revealStep >= 1 } satisfies CenterFlowData,
+      width: CENTER_NODE_PX,
+      height: CENTER_NODE_PX,
+      draggable: false,
+      selectable: false,
+    });
+  }
 
   for (const v of MOVEMENT_VOICES) {
     const p = positions.get(v.id);
     if (!p) continue;
+    // Voices reveal at step = 1 + appearOrder so the center always lands
+    // first (revealStep === 1) before any voice (revealStep === 2..N).
+    const revealed = revealStep >= 1 + v.appearOrder;
     out.push({
       id: v.id,
       type: "voice",
       position: { x: p.x - VOICE_AVATAR_PX / 2, y: p.y - VOICE_AVATAR_PX / 2 },
-      data: { voice: v, isCenter: v.id === CENTER_VOICE_ID },
-      // Pre-declared measured size so React Flow can fit the view without
-      // waiting on async DOM measurement of the custom node.
+      data: { voice: v, revealed } satisfies VoiceFlowData,
       width: VOICE_AVATAR_PX,
       height: VOICE_AVATAR_PX,
       draggable: false,
@@ -98,45 +185,78 @@ function flowNodesFromLayout(
   return out;
 }
 
+/* ----------------------------------------------------------------- EDGES */
+
+interface EdgeRecipe {
+  id: string;
+  source: string;
+  target: string;
+  touchesCenter: boolean;
+  /**
+   * Highest of the two endpoints' reveal indices — the edge becomes visible
+   * only after both endpoints have appeared.
+   */
+  revealAt: number;
+}
+
+/** Reveal index for any node id (center = 1, voice = 1 + appearOrder). */
+function revealIndexFor(id: string): number {
+  if (id === CENTER_NODE_ID) return 1;
+  const v = MOVEMENT_VOICES.find((mv) => mv.id === id);
+  return v ? 1 + v.appearOrder : Number.POSITIVE_INFINITY;
+}
+
+const ALL_NODE_IDS: readonly string[] = [
+  CENTER_NODE_ID,
+  ...MOVEMENT_VOICES.map((v) => v.id),
+];
+
 /**
- * All-channel mesh — every voice connects to every other voice (K_n). Lines
- * touching the center voice render a hair stronger so Alan reads as the hub
- * without breaking the all-channel intent. Each edge gets a flowing-dash
- * animation with a per-edge phase offset so the network reads as alive
- * without all lines pulsing in sync.
+ * All-channel mesh — every node connects to every other node. Edges that
+ * touch the Movemental center read brighter so the hub is unmistakable.
  */
-const allChannelEdges: Edge[] = (() => {
-  const edges: Edge[] = [];
-  let pairIdx = 0;
-  for (let i = 0; i < MOVEMENT_VOICES.length; i++) {
-    for (let j = i + 1; j < MOVEMENT_VOICES.length; j++) {
-      const a = MOVEMENT_VOICES[i].id;
-      const b = MOVEMENT_VOICES[j].id;
-      const touchesCenter = a === CENTER_VOICE_ID || b === CENTER_VOICE_ID;
-      // Stagger animation so edges don't all flow in lockstep.
-      const delaySec = ((pairIdx * 137.5) % 360) / 360 * -2.4;
-      const durationSec = touchesCenter ? 2.0 : 2.6 + ((pairIdx * 7) % 9) * 0.05;
-      edges.push({
+const EDGE_RECIPES: readonly EdgeRecipe[] = (() => {
+  const out: EdgeRecipe[] = [];
+  for (let i = 0; i < ALL_NODE_IDS.length; i++) {
+    for (let j = i + 1; j < ALL_NODE_IDS.length; j++) {
+      const a = ALL_NODE_IDS[i];
+      const b = ALL_NODE_IDS[j];
+      out.push({
         id: `mv-${a}-${b}`,
         source: a,
         target: b,
-        type: "straight",
-        style: {
-          stroke: "var(--foreground)",
-          strokeWidth: touchesCenter ? 1.4 : 1,
-          strokeOpacity: touchesCenter ? 0.55 : 0.28,
-          strokeDasharray: "2 6",
-          strokeLinecap: "round",
-          animation: `movement-voices-flow ${durationSec}s linear infinite`,
-          animationDelay: `${delaySec}s`,
-        },
-        interactionWidth: 0,
+        touchesCenter: a === CENTER_NODE_ID || b === CENTER_NODE_ID,
+        revealAt: Math.max(revealIndexFor(a), revealIndexFor(b)),
       });
-      pairIdx++;
     }
   }
-  return edges;
+  return out;
 })();
+
+function buildEdges(revealStep: number): Edge[] {
+  return EDGE_RECIPES.map((r) => {
+    const visible = revealStep >= r.revealAt;
+    const baseOpacity = r.touchesCenter ? 0.7 : 0.32;
+    return {
+      id: r.id,
+      source: r.source,
+      target: r.target,
+      type: "straight",
+      style: {
+        stroke: "var(--foreground)",
+        strokeWidth: r.touchesCenter ? 1.4 : 1,
+        strokeOpacity: visible ? baseOpacity : 0,
+        strokeLinecap: "round",
+        transition: "stroke-opacity 320ms ease-out",
+      },
+      interactionWidth: 0,
+    } satisfies Edge;
+  });
+}
+
+/* --------------------------------------------------------------- COMPONENT */
+
+const STAGGER_MS = 380;
 
 interface MovementVoicesNetworkProps {
   ariaLabel: string;
@@ -152,13 +272,13 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
     () => false,
   );
   const [hoverVoice, setHoverVoice] = useState<VoiceGraphVoice | null>(null);
+  const [revealStep, setRevealStep] = useState(0);
+
+  /* Resize observer ----------------------------------------------------- */
 
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return;
-    // Seed dims synchronously so the first render after mount already has real
-    // values — avoids a frame where positions are computed for a default canvas
-    // and then thrash when ResizeObserver fires.
     const initial = el.getBoundingClientRect();
     setDims({
       w: Math.max(320, initial.width),
@@ -180,6 +300,62 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
     return () => ro.disconnect();
   }, []);
 
+  /**
+   * Reduced-motion users see the network fully revealed every render — we
+   * derive the visible step instead of fast-forwarding state in an effect,
+   * which keeps render output deterministic and avoids cascading renders.
+   */
+  const effectiveRevealStep = reducedMotion ? TOTAL_REVEAL_STEPS : revealStep;
+
+  /* Stagger reveal — kicks off when the section scrolls into view -------- */
+
+  useEffect(() => {
+    if (reducedMotion) return;
+    const el = wrapRef.current;
+    if (!el) return;
+
+    let started = false;
+    let intervalId: ReturnType<typeof setInterval> | undefined;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+    const start = () => {
+      if (started) return;
+      started = true;
+      timeoutId = setTimeout(() => setRevealStep(1), 80);
+      intervalId = setInterval(() => {
+        setRevealStep((prev) => {
+          const next = prev + 1;
+          if (next >= TOTAL_REVEAL_STEPS && intervalId) {
+            clearInterval(intervalId);
+          }
+          return Math.min(next, TOTAL_REVEAL_STEPS);
+        });
+      }, STAGGER_MS);
+    };
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            start();
+            io.disconnect();
+            break;
+          }
+        }
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+
+    return () => {
+      io.disconnect();
+      if (intervalId) clearInterval(intervalId);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [reducedMotion]);
+
+  /* Layout + react flow data ------------------------------------------- */
+
   const positions = useMemo(
     () =>
       dims
@@ -188,16 +364,22 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
     [dims],
   );
 
-  const nodes = useMemo(() => flowNodesFromLayout(positions), [positions]);
+  const nodes = useMemo(
+    () => flowNodesFromLayout(positions, effectiveRevealStep),
+    [positions, effectiveRevealStep],
+  );
+
+  const edges = useMemo(
+    () => buildEdges(effectiveRevealStep),
+    [effectiveRevealStep],
+  );
 
   const onInit = useCallback((inst: ReactFlowInstance) => {
     rfRef.current = inst;
     inst.fitView({ padding: 0.16, duration: 0 });
   }, []);
 
-  // Refit on dimension changes and when nodes first populate, so the viewport
-  // tracks the real canvas after ResizeObserver lands and the layout pass
-  // produces nodes. RAF defers the call until React Flow has the new nodes.
+  // Refit on dimension changes and when nodes first populate.
   useEffect(() => {
     const inst = rfRef.current;
     if (!inst || !dims || nodes.length === 0) return;
@@ -210,6 +392,8 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
     return () => cancelAnimationFrame(id);
   }, [dims, nodes.length, reducedMotion]);
 
+  /* Hover detail -------------------------------------------------------- */
+
   const onNodeEnter = useCallback((_: React.MouseEvent, n: Node) => {
     if (n.type === "voice" && n.data && "voice" in n.data) {
       setHoverVoice((n.data as VoiceFlowData).voice);
@@ -219,6 +403,31 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
   const onNodeLeave = useCallback(() => {
     setHoverVoice(null);
   }, []);
+
+  /* Manual replay (Reset view also restarts the reveal) ----------------- */
+
+  const onReset = useCallback(() => {
+    rfRef.current?.fitView({
+      padding: 0.16,
+      duration: reducedMotion ? 0 : 280,
+    });
+    if (!reducedMotion) {
+      setRevealStep(0);
+      setTimeout(() => setRevealStep(1), 120);
+    }
+  }, [reducedMotion]);
+
+  // After a manual reset, advance the stagger one step at a time.
+  // Reduced-motion users see everything revealed via `effectiveRevealStep`,
+  // so this effect intentionally no-ops for them.
+  useEffect(() => {
+    if (reducedMotion) return;
+    if (revealStep === 0 || revealStep >= TOTAL_REVEAL_STEPS) return;
+    const t = setTimeout(() => {
+      setRevealStep((prev) => Math.min(prev + 1, TOTAL_REVEAL_STEPS));
+    }, STAGGER_MS);
+    return () => clearTimeout(t);
+  }, [revealStep, reducedMotion]);
 
   return (
     <div>
@@ -232,19 +441,13 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
             size="sm"
             variant="outline"
             className="text-xs"
-            onClick={() =>
-              rfRef.current?.fitView({
-                padding: 0.16,
-                duration: reducedMotion ? 0 : 280,
-              })
-            }
+            onClick={onReset}
           >
             Reset view
           </Button>
           <p className="max-w-sm text-xs text-muted-foreground md:text-right">
-            Drag to pan, scroll or pinch to zoom. Hover a portrait for detail —
-            a live, all-channel network of trusted voices around the
-            conversation.
+            An all-channel network of trusted voices around Movemental — drag
+            to pan, scroll or pinch to zoom, hover a portrait for detail.
           </p>
         </div>
       </div>
@@ -264,7 +467,7 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
               <ReactFlow
                 className="h-full w-full"
                 nodes={nodes}
-                edges={allChannelEdges}
+                edges={edges}
                 nodeTypes={nodeTypes}
                 onInit={onInit}
                 onNodeMouseEnter={onNodeEnter}
@@ -307,19 +510,23 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
             </div>
           ) : (
             <p className="text-sm leading-relaxed text-muted-foreground">
-              Hover a portrait to see who shapes the Movemental conversation —
-              trusted voices in a shared ecosystem, not a flat directory.
+              {MOVEMENTAL_CENTER.label} sits at the center of a relational
+              network of trusted voices — hover a portrait to read who shapes
+              the conversation.
             </p>
           )}
         </aside>
       </div>
 
       <ul className="sr-only">
-        {MOVEMENT_VOICES.map((v) => (
-          <li key={v.id}>
-            {v.name}: {v.title}
-          </li>
-        ))}
+        <li>{MOVEMENTAL_CENTER.label} (center node)</li>
+        {[...MOVEMENT_VOICES]
+          .sort((a, b) => a.appearOrder - b.appearOrder)
+          .map((v) => (
+            <li key={v.id}>
+              {v.name}: {v.title}
+            </li>
+          ))}
       </ul>
     </div>
   );

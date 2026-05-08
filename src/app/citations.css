@@ -1,0 +1,350 @@
+/* ---------------------------------------------------------------------------
+ * Citation system (Ledger edition).
+ *
+ * Inline highlighter chips, popovers, body marker underline, and the bottom
+ * references rail. Visual contract is the mockup at
+ * `docs/html/home-citations-ledger.html` — re-translate from there if anything
+ * drifts.
+ *
+ * Tokens used (declared in globals.css):
+ *   --cite-hl, --cite-hl-strong, --cite-hl-ink, --cite-hl-soft.
+ * No raw amber hex appears in this file.
+ * ------------------------------------------------------------------------- */
+
+/* Chip wrapper — inline span hosting the trigger + popover -------------- */
+.cite {
+  position: relative;
+  display: inline-block;
+  line-height: 0; /* prevents shifting baseline */
+}
+
+.cite__btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5em;
+  height: 1.5em;
+  padding: 0 0.35em;
+  margin: 0 0.05em;
+  font-family: var(--font-sans);
+  font-size: 0.65em;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--cite-hl-ink);
+  background: var(--cite-hl);
+  border: 1px solid color-mix(in srgb, var(--cite-hl-strong) 30%, transparent);
+  border-radius: 9999px;
+  cursor: pointer;
+  translate: 0 -0.35em;
+  transition:
+    background 150ms ease,
+    color 150ms ease,
+    transform 150ms ease,
+    box-shadow 150ms ease;
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--cite-hl-strong) 30%, transparent);
+}
+
+.cite__btn::before {
+  content: "";
+  position: absolute;
+  inset: -2px -3px;
+  border-radius: 9999px;
+  background: var(--cite-hl);
+  opacity: 0;
+  transition: opacity 200ms ease;
+  z-index: -1;
+  filter: blur(6px);
+}
+
+.cite__btn:hover,
+.cite__btn:focus-visible {
+  background: var(--cite-hl-strong);
+  color: #fff;
+  outline: none;
+}
+
+.cite__btn:hover::before,
+.cite__btn:focus-visible::before {
+  opacity: 0.45;
+}
+
+.cite__btn[aria-expanded="true"] {
+  background: var(--cite-hl-ink);
+  color: var(--cite-hl);
+}
+
+.cite__btn:focus-visible {
+  outline: 2px solid var(--cite-hl-strong);
+  outline-offset: 3px;
+}
+
+/* Midnight bands — invert the chip palette so it stays readable on
+   inverse-surface backgrounds. */
+[data-variant="midnight"] .cite__btn,
+.band-midnight .cite__btn {
+  background: var(--cite-hl);
+  color: var(--cite-hl-ink);
+}
+
+[data-variant="midnight"] .cite__btn[aria-expanded="true"],
+.band-midnight .cite__btn[aria-expanded="true"] {
+  background: var(--cite-hl-soft);
+  color: var(--cite-hl-ink);
+}
+
+/* Popover — anchored beneath the trigger ----------------------------- */
+.cite__pop {
+  position: absolute;
+  top: calc(100% + 0.65rem);
+  left: 50%;
+  transform: translate(-50%, 4px);
+  width: min(360px, 86vw);
+  padding: 1rem 1.1rem 0.95rem;
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--cite-hl-strong) 30%, transparent),
+    0 18px 40px rgba(25, 21, 15, 0.12),
+    0 4px 12px rgba(25, 21, 15, 0.06);
+  font-size: 0.83rem;
+  line-height: 1.55;
+  color: var(--foreground);
+  text-align: left;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 30;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.cite__pop::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 8px;
+  background: var(--cite-hl);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.cite__btn[aria-expanded="true"] + .cite__pop {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+.cite__pop__source {
+  display: block;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--cite-hl-ink);
+  margin-bottom: 0.5rem;
+}
+
+.cite__pop__source::before {
+  content: attr(data-tag);
+  display: inline-block;
+  background: var(--cite-hl);
+  color: var(--cite-hl-ink);
+  padding: 0.18em 0.55em;
+  border-radius: 9999px;
+  margin-right: 0.5rem;
+  font-size: 0.62rem;
+}
+
+.cite__pop__claim {
+  margin: 0 0 0.65rem;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.cite__pop__claim strong {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.cite__pop__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.85rem;
+  font-size: 0.72rem;
+  color: var(--muted-foreground);
+  margin-top: 0.4rem;
+}
+
+.cite__pop__meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.cite__pop__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.7rem;
+  font-size: 0.78rem;
+  color: var(--cite-hl-ink);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid var(--cite-hl);
+}
+
+.cite__pop__link:hover {
+  color: var(--foreground);
+  border-bottom-color: var(--foreground);
+}
+
+/* Body-text marker — paints a 38%-tall amber underline behind a phrase. */
+.marker {
+  background: linear-gradient(180deg, transparent 62%, var(--cite-hl) 62%);
+  padding: 0 0.06em;
+}
+
+[data-variant="midnight"] .marker,
+.band-midnight .marker {
+  background: linear-gradient(
+    180deg,
+    transparent 62%,
+    color-mix(in srgb, var(--cite-hl) 70%, transparent) 62%
+  );
+}
+
+/* References rail — bottom-of-page numbered list ------------------- */
+.refs-section__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.refs-section__title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 2rem;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.refs-section__meta {
+  font-size: 0.78rem;
+  color: var(--muted-foreground);
+  max-width: 36rem;
+}
+
+.refs-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: ref;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+
+.refs-list li {
+  counter-increment: ref;
+  position: relative;
+  padding: 1.4rem 0 1.4rem 4rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+  scroll-margin-top: calc(var(--site-chrome-total, 4.25rem) + 1.5rem);
+}
+
+.refs-list li::before {
+  content: counter(ref);
+  position: absolute;
+  left: 0;
+  top: 1.45rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.7em;
+  height: 1.7em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--cite-hl-ink);
+  background: var(--cite-hl);
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--cite-hl-strong) 30%, transparent);
+  padding: 0 0.45em;
+}
+
+.refs-list li strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.refs-list li em {
+  font-style: italic;
+  color: var(--foreground);
+}
+
+.refs-list li a {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+
+.refs-list li a:hover {
+  text-decoration-color: var(--cite-hl-strong);
+}
+
+.refs-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+  margin-top: 0.45rem;
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+}
+
+.refs-meta-row span::before {
+  content: "·";
+  margin-right: 0.5rem;
+  color: var(--border);
+}
+
+.refs-meta-row span:first-child::before {
+  content: none;
+}
+
+/* Print — render popover content inline as a footnote so the page is
+   self-documenting on paper. */
+@media print {
+  .cite__pop {
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    width: auto;
+    box-shadow: none;
+    border: 0;
+    padding: 0.25rem 0;
+    background: transparent;
+  }
+  .cite__pop::before {
+    display: none;
+  }
+}
+
+/* Reduced motion — drop the popover open/close transition. */
+@media (prefers-reduced-motion: reduce) {
+  .cite__pop,
+  .cite__btn,
+  .cite__btn::before {
+    transition: none !important;
+  }
+}
