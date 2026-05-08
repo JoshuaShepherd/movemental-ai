@@ -143,6 +143,13 @@ export function SiteHeader() {
                   Custom agentic CMS/LMS builds
                 </div>
               </Link>
+              <Link
+                href="/pricing"
+                className="block rounded-lg border-t border-border px-4 py-3 transition-colors hover:bg-section"
+              >
+                <div className="text-sm font-semibold text-foreground">Published pricing</div>
+                <div className="mt-1 text-xs text-muted-foreground">Fees for each stage and the Path Bundle</div>
+              </Link>
             </div>
           </div>
 
@@ -236,6 +243,13 @@ export function SiteHeader() {
             className="rounded-md p-2 text-lg font-medium transition-colors hover:bg-section"
           >
             The Pathway
+          </Link>
+          <Link
+            href="/pricing"
+            onClick={() => setIsMenuOpen(false)}
+            className="rounded-md p-2 text-base font-medium text-muted-foreground transition-colors hover:bg-section hover:text-foreground"
+          >
+            Published pricing
           </Link>
           <div className="border-border ml-2 flex flex-col gap-2 border-l-2 py-1 pl-4">
             <span className="px-2 text-sm font-semibold tracking-widest text-muted-foreground uppercase">

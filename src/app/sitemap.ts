@@ -24,6 +24,7 @@ const ROUTES: ReadonlyArray<{
   { path: "/voices", changeFrequency: "monthly", priority: 0.75 },
   { path: "/evidence", changeFrequency: "monthly", priority: 0.75 },
   { path: "/field-guide", changeFrequency: "monthly", priority: 0.85 },
+  { path: "/pricing", changeFrequency: "monthly", priority: 0.85 },
   { path: "/assess", changeFrequency: "monthly", priority: 0.8 },
   { path: "/about", changeFrequency: "yearly", priority: 0.6 },
   { path: "/team", changeFrequency: "yearly", priority: 0.6 },

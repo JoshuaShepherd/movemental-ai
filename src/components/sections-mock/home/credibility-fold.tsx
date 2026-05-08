@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { SectionHead } from "@/components/sections-mock/primitives";
 
-import { VoiceCarousel, type CarouselVoice } from "./voices-carousel";
+import { MovementVoicesNetwork } from "./movement-voices-network";
 
 interface Founder {
   name: string;
@@ -34,52 +34,6 @@ const FOUNDERS: readonly Founder[] = [
     title: "CTO & Founder",
     initials: "JS",
     portrait: "/images/voices/josh-shepherd.webp",
-  },
-];
-
-const VOICES: readonly CarouselVoice[] = [
-  {
-    name: "Alan Hirsch",
-    title: "Founder, 100Movements & Forge Mission Training Network",
-    initials: "AH",
-    imageSrc: "/images/voices/alan-hirsch.webp",
-  },
-  {
-    name: "Dr. Liz Rios",
-    title: "Founder, Passion2Plant · Director, Púlpito Fellows",
-    initials: "LR",
-    imageSrc: "/images/voices/liz-rios.webp",
-  },
-  {
-    name: "Dr. Rowland Smith",
-    title:
-      "National Director, Forge America · Founder, The Pando Collective",
-    initials: "RS",
-    imageSrc: "/images/voices/rowland-smith.webp",
-  },
-  {
-    name: "Dr. JR Woodward",
-    title: "National Director, V3 Church Planting Movement",
-    initials: "JW",
-    imageSrc: "/images/voices/jr-woodward.webp",
-  },
-  {
-    name: "Lucas Pulley",
-    title: "Movements Director, Underground Network",
-    initials: "LP",
-    imageSrc: "/images/voices/lucas-pulley.webp",
-  },
-  {
-    name: "Tim Catchim",
-    title: "APE practitioner · Co-author, The Permanent Revolution",
-    initials: "TC",
-    imageSrc: "/images/voices/tim-catchim.webp",
-  },
-  {
-    name: "Rob Wegner",
-    title: "Founding Leader, Kansas City Underground",
-    initials: "RW",
-    imageSrc: "/images/voices/rob-wegner.webp",
   },
 ];
 
@@ -146,10 +100,7 @@ export function CredibilityFold() {
         </div>
 
         <div className="mt-16 border-t border-border pt-12 md:mt-20 md:pt-16">
-          <VoiceCarousel
-            voices={VOICES}
-            ariaLabel="Movement Voices — leaders shaping the conversation"
-          />
+          <MovementVoicesNetwork ariaLabel="Movement Voices — leaders shaping the conversation in a shared field of formation, mission, and place" />
         </div>
 
         <Link
