@@ -1,27 +1,24 @@
 "use client";
 
-import React from "react";
-
-import { PathClosingCta } from "@/components/studio/path/PathClosingCta";
+import { AudienceClosingCta } from "@/components/studio/path/AudienceClosingCta";
 import { CaseStudy } from "@/components/studio/path/CaseStudy";
 import { PathFootnote } from "@/components/studio/path/PathFootnote";
-import { StitchEditorialAudience } from "@/components/studio/segment/StitchEditorialAudience";
-import { SegmentPathway } from "@/components/studio/segment/SegmentPathway";
+import { AudienceHero } from "@/components/studio/segment/AudienceHero";
+import { AudiencePathBridge } from "@/components/studio/segment/AudiencePathBridge";
+import { audienceContactHref, type AudienceKind } from "@/components/studio/segment/audience-contact";
 
-export function AudiencePage({ audience }: { audience: "churches" | "nonprofits" | "institutions" }) {
-  /** Nonprofit editorial already ends with a full narrative + midnight CTA; SegmentPathway would duplicate the entire pathway scroll. */
-  const includeSegmentPathway = audience !== "nonprofits";
+export function AudiencePage({ audience }: { audience: AudienceKind }) {
+  const contactHref = audienceContactHref(audience);
 
   return (
     <div className="audience-page">
-      <StitchEditorialAudience audience={audience} />
-      {includeSegmentPathway ? <SegmentPathway audience={audience} /> : null}
+      <AudienceHero audience={audience} />
       <CaseStudy audience={audience} />
-      <PathClosingCta />
-      <PathFootnote
-        audience={audience}
-        pathStageHrefMode={includeSegmentPathway ? "hash" : "pathway"}
-      />
+      <AudiencePathBridge audience={audience} />
+      <AudienceClosingCta audience={audience} />
+      <PathFootnote audience={audience} pathStageHrefMode="pathway" contactHref={contactHref} goFurtherLinks="slim" />
     </div>
   );
 }
+
+export type { AudienceKind } from "@/components/studio/segment/audience-contact";

@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Movemental · A wiser way to navigate AI · Ledger edition</title>
+    <meta
+      name="description"
+      content="Home page mock — editorial register with inline highlighted numbered footnotes. Every claim sits next to its source."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./site-templates/site-theme.css" />
+    <style>
+      /* ==========================================================
+         LEDGER · concept 1 of 3
+         A newsroom register. Inline highlighter footnotes carry
+         every empirical claim back to its source; a numbered
+         references rail closes the page like a research brief.
+         ========================================================== */
+
+      :root {
+        /* Highlighter accent — warm amber sits inside the cream/ink palette
+           without breaking the duotone discipline. */
+        --hl: #fde68a;
+        --hl-strong: #f59e0b;
+        --hl-ink: #78350f;
+        --hl-soft: #fef3c7;
+      }
+
+      .ledger-banner {
+        margin: 0;
+        padding: 0.55rem 1.2rem;
+        background: var(--hl-ink);
+        color: var(--hl);
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        text-align: center;
+      }
+      .ledger-banner a {
+        color: var(--hl);
+        text-decoration: underline;
+        text-decoration-color: color-mix(in srgb, var(--hl) 40%, transparent);
+        text-underline-offset: 3px;
+      }
+
+      /* HERO — typographic and wide ----------------------------- */
+      .hero-ledger {
+        position: relative;
+        padding: 7rem 0 5.5rem;
+        border-bottom: 1px solid var(--border);
+        overflow: hidden;
+      }
+      .hero-ledger::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 70%, var(--section));
+        pointer-events: none;
+      }
+      .hero-ledger__inner {
+        position: relative;
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+      .hero-ledger__kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted-foreground);
+        margin-bottom: 1.75rem;
+      }
+      .hero-ledger__kicker::before {
+        content: "";
+        display: inline-block;
+        width: 28px;
+        height: 1px;
+        background: var(--foreground);
+      }
+      .hero-ledger__title {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(2.6rem, 6.4vw, 5.4rem);
+        line-height: 1.02;
+        letter-spacing: -0.025em;
+        color: var(--foreground);
+        max-width: 22ch;
+        margin: 0 0 1.6rem;
+      }
+      .hero-ledger__title em {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        color: var(--hl-ink);
+        background: linear-gradient(180deg, transparent 60%, var(--hl) 60%);
+        padding: 0 0.08em;
+      }
+      .hero-ledger__lede {
+        max-width: 40rem;
+        font-size: 1.18rem;
+        line-height: 1.6;
+        color: var(--muted-foreground);
+        margin: 0 0 2.4rem;
+      }
+      .hero-ledger__lede strong {
+        color: var(--foreground);
+        font-weight: 500;
+      }
+      .hero-ledger__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+      }
+
+      /* STAT STRIP — four numbers, all with citations ---------- */
+      .stat-strip {
+        background: var(--section);
+        border-bottom: 1px solid var(--border);
+      }
+      .stat-strip__inner {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 4rem 1.5rem;
+        display: grid;
+        gap: 0;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+      .stat-cell {
+        position: relative;
+        padding: 1.5rem 1.75rem 1.25rem;
+        border-right: 1px solid var(--border);
+      }
+      .stat-cell:last-child {
+        border-right: 0;
+      }
+      @media (max-width: 720px) {
+        .stat-cell {
+          border-right: 0;
+          border-bottom: 1px solid var(--border);
+          padding: 1.25rem 0;
+        }
+        .stat-cell:last-child {
+          border-bottom: 0;
+        }
+      }
+      .stat-cell__value {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: clamp(2.6rem, 5vw, 3.6rem);
+        line-height: 1;
+        letter-spacing: -0.03em;
+        color: var(--foreground);
+        margin: 0 0 0.6rem;
+      }
+      .stat-cell__label {
+        font-size: 0.92rem;
+        line-height: 1.45;
+        color: var(--muted-foreground);
+        max-width: 26ch;
+        margin: 0;
+      }
+
+      /* SECTION: The gap argument — long-form prose w/ inline cites */
+      .gap-section {
+        padding: 6rem 0;
+        background: var(--background);
+        border-bottom: 1px solid var(--border);
+      }
+      .gap-section__inner {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr);
+        gap: 5rem;
+      }
+      @media (max-width: 900px) {
+        .gap-section__inner {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+      }
+      .gap-section__eyebrow {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted-foreground);
+        margin: 0 0 1rem;
+      }
+      .gap-section__heading {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(2rem, 3.6vw, 3rem);
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        color: var(--foreground);
+        margin: 0;
+      }
+      .gap-section__prose {
+        max-width: 36rem;
+        font-size: 1.06rem;
+        line-height: 1.7;
+        color: var(--foreground);
+      }
+      .gap-section__prose p {
+        margin: 0 0 1.4rem;
+      }
+      .gap-section__prose p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* THE PATH — 4 stages with hairline grid ------------------ */
+      .path-section {
+        padding: 6rem 0;
+        background: var(--section);
+        border-bottom: 1px solid var(--border);
+      }
+      .path-section__inner {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+      .path-section__lede {
+        max-width: 52rem;
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+        line-height: 1.25;
+        letter-spacing: -0.015em;
+        color: var(--foreground);
+        margin: 0 0 3.5rem;
+      }
+      .path-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      @media (max-width: 900px) {
+        .path-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 540px) {
+        .path-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .path-step {
+        padding: 2.5rem 1.75rem 2.25rem;
+        border-right: 1px solid var(--border);
+        position: relative;
+      }
+      .path-grid > .path-step:last-child {
+        border-right: 0;
+      }
+      @media (max-width: 900px) {
+        .path-step {
+          border-bottom: 1px solid var(--border);
+        }
+        .path-step:nth-child(even) {
+          border-right: 0;
+        }
+        .path-grid > .path-step:nth-last-child(-n + 2) {
+          border-bottom: 0;
+        }
+      }
+      @media (max-width: 540px) {
+        .path-step {
+          border-right: 0;
+          border-bottom: 1px solid var(--border);
+        }
+        .path-grid > .path-step:last-child {
+          border-bottom: 0;
+        }
+      }
+      .path-step__num {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: 1.4rem;
+        color: var(--hl-strong);
+        margin: 0 0 0.6rem;
+      }
+      .path-step__name {
+        font-size: 1.4rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--foreground);
+        margin: 0 0 0.6rem;
+      }
+      .path-step__outcome {
+        font-size: 0.95rem;
+        line-height: 1.55;
+        color: var(--muted-foreground);
+        margin: 0;
+      }
+
+      /* HIGHLIGHTER FOOTNOTE SYSTEM ----------------------------
+         A button-shaped pill rendered inline as a superscript-ish
+         element. Wrapping the trigger and tooltip in a single
+         element keeps focus management trivial. */
+
+      .cite {
+        position: relative;
+        display: inline-block;
+        line-height: 0; /* prevents shifting baseline */
+      }
+      .cite__btn {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 1.5em;
+        height: 1.5em;
+        padding: 0 0.35em;
+        margin: 0 0.05em;
+        font-family: "Inter", system-ui, sans-serif;
+        font-size: 0.65em;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--hl-ink);
+        background: var(--hl);
+        border: 1px solid color-mix(in srgb, var(--hl-strong) 30%, transparent);
+        border-radius: 999px;
+        cursor: pointer;
+        translate: 0 -0.35em;
+        transition:
+          background 150ms ease,
+          transform 150ms ease,
+          box-shadow 150ms ease;
+        box-shadow: 0 1px 0 color-mix(in srgb, var(--hl-strong) 30%, transparent);
+      }
+      .cite__btn::before {
+        content: "";
+        position: absolute;
+        inset: -2px -3px;
+        border-radius: 999px;
+        background: var(--hl);
+        opacity: 0;
+        transition: opacity 200ms ease;
+        z-index: -1;
+        filter: blur(6px);
+      }
+      .cite__btn:hover,
+      .cite__btn:focus-visible {
+        background: var(--hl-strong);
+        color: #fff;
+        outline: none;
+      }
+      .cite__btn:hover::before,
+      .cite__btn:focus-visible::before {
+        opacity: 0.45;
+      }
+      .cite__btn[aria-expanded="true"] {
+        background: var(--hl-ink);
+        color: var(--hl);
+      }
+
+      /* The popover — anchored beneath the trigger ------------ */
+      .cite__pop {
+        position: absolute;
+        top: calc(100% + 0.65rem);
+        left: 50%;
+        transform: translate(-50%, 4px);
+        width: min(360px, 86vw);
+        padding: 1rem 1.1rem 0.95rem;
+        background: var(--card);
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        box-shadow:
+          0 1px 0 color-mix(in srgb, var(--hl-strong) 30%, transparent) inset,
+          0 18px 40px rgba(25, 21, 15, 0.12),
+          0 4px 12px rgba(25, 21, 15, 0.06);
+        font-size: 0.83rem;
+        line-height: 1.55;
+        color: var(--foreground);
+        text-align: left;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 30;
+        transition:
+          opacity 180ms ease,
+          transform 180ms ease;
+      }
+      .cite__pop::before {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 28px;
+        height: 8px;
+        background: var(--hl);
+        clip-path: polygon(50% 0, 100% 100%, 0 100%);
+      }
+      .cite__btn[aria-expanded="true"] + .cite__pop {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, 0);
+      }
+      .cite__pop__source {
+        display: block;
+        font-size: 0.66rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--hl-ink);
+        margin-bottom: 0.5rem;
+      }
+      .cite__pop__source::before {
+        content: attr(data-tag);
+        display: inline-block;
+        background: var(--hl);
+        color: var(--hl-ink);
+        padding: 0.18em 0.55em;
+        border-radius: 999px;
+        margin-right: 0.5rem;
+        font-size: 0.62rem;
+      }
+      .cite__pop__claim {
+        margin: 0 0 0.65rem;
+        font-weight: 500;
+      }
+      .cite__pop__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem 0.85rem;
+        font-size: 0.72rem;
+        color: var(--muted-foreground);
+        margin-top: 0.4rem;
+      }
+      .cite__pop__meta span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+      .cite__pop__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin-top: 0.7rem;
+        font-size: 0.78rem;
+        color: var(--hl-ink);
+        font-weight: 500;
+        text-decoration: none;
+        border-bottom: 1px solid var(--hl);
+      }
+      .cite__pop__link:hover {
+        color: var(--foreground);
+        border-bottom-color: var(--foreground);
+      }
+
+      /* When highlighting in body, render with a subtle marker */
+      .marker {
+        background: linear-gradient(180deg, transparent 62%, var(--hl) 62%);
+        padding: 0 0.06em;
+      }
+
+      /* CLOSING CTA — quiet, ledger-style ---------------------- */
+      .closing-section {
+        padding: 6rem 0 7rem;
+        background: var(--inverse-surface);
+        color: var(--inverse-foreground);
+      }
+      .closing-section__inner {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+      .closing-section__title {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(2.4rem, 5vw, 4rem);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        color: var(--inverse-foreground);
+        max-width: 22ch;
+        margin: 0 0 1.5rem;
+      }
+      .closing-section__lede {
+        max-width: 36rem;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: color-mix(in srgb, var(--inverse-foreground) 78%, transparent);
+        margin: 0 0 2.4rem;
+      }
+      .closing-section__actions {
+        display: flex;
+        gap: 0.85rem;
+        flex-wrap: wrap;
+      }
+      .closing-section .btn-primary {
+        background: var(--hl);
+        color: var(--hl-ink);
+        border-color: var(--hl);
+      }
+      .closing-section .btn-primary:hover {
+        background: #fff;
+        color: var(--hl-ink);
+      }
+      .closing-section .btn-ghost {
+        background: transparent;
+        color: var(--inverse-foreground);
+        border-color: color-mix(in srgb, var(--inverse-foreground) 35%, transparent);
+      }
+      .closing-section .btn-ghost:hover {
+        background: color-mix(in srgb, var(--inverse-foreground) 10%, transparent);
+      }
+
+      /* REFERENCES RAIL ---------------------------------------- */
+      .refs-section {
+        padding: 4rem 0 6rem;
+        background: var(--section);
+        border-top: 1px solid var(--border);
+      }
+      .refs-section__inner {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+      .refs-section__head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 2.5rem;
+      }
+      .refs-section__title {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: 2rem;
+        margin: 0;
+        color: var(--foreground);
+      }
+      .refs-section__meta {
+        font-size: 0.78rem;
+        color: var(--muted-foreground);
+      }
+      .refs-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        counter-reset: ref;
+        display: grid;
+        gap: 0;
+        border-top: 1px solid var(--border);
+      }
+      .refs-list li {
+        counter-increment: ref;
+        position: relative;
+        padding: 1.4rem 0 1.4rem 4rem;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: var(--muted-foreground);
+      }
+      .refs-list li::before {
+        content: counter(ref);
+        position: absolute;
+        left: 0;
+        top: 1.45rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 1.7em;
+        height: 1.7em;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--hl-ink);
+        background: var(--hl);
+        border-radius: 999px;
+        border: 1px solid color-mix(in srgb, var(--hl-strong) 30%, transparent);
+        padding: 0 0.45em;
+      }
+      .refs-list li strong {
+        color: var(--foreground);
+        font-weight: 600;
+      }
+      .refs-list li a {
+        color: var(--foreground);
+        text-decoration: underline;
+        text-decoration-color: var(--border);
+        text-underline-offset: 3px;
+      }
+      .refs-list li a:hover {
+        text-decoration-color: var(--hl-strong);
+      }
+      .refs-meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem 0.9rem;
+        margin-top: 0.45rem;
+        font-size: 0.76rem;
+        color: var(--ink-soft);
+      }
+      .refs-meta-row span::before {
+        content: "·";
+        margin-right: 0.5rem;
+        color: var(--border);
+      }
+      .refs-meta-row span:first-child::before {
+        content: none;
+      }
+
+      .btn-row {
+        display: inline-flex;
+        gap: 0.85rem;
+        flex-wrap: wrap;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--hl-strong);
+        outline-offset: 3px;
+        border-radius: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <p class="ledger-banner">
+      Mockup · home / ledger · every empirical claim carries its source ·
+      <a href="./mock-index.html">all mockups</a>
+    </p>
+
+    <header class="site-top">
+      <div class="site-top__inner">
+        <a href="./mock-home.html" class="site-brand">
+          Movemental
+          <small>For organizational leaders</small>
+        </a>
+        <button
+          class="site-nav__toggle"
+          type="button"
+          aria-controls="primary-nav"
+          aria-expanded="false"
+        >
+          Menu
+        </button>
+        <nav class="site-nav" id="primary-nav" aria-label="Primary">
+          <ul>
+            <li><a href="./mock-field-guide.html">The Sequence</a></li>
+            <li><a href="./mock-organizations.html">Who we serve</a></li>
+            <li><a href="./mock-voices.html">Trusted voices</a></li>
+            <li><a href="./mock-assess.html">Assess</a></li>
+            <li><a href="./mock-about.html">About</a></li>
+            <li>
+              <a href="./mock-contact.html" class="site-nav__cta">
+                Start a conversation
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ===================== HERO ===================== -->
+      <section class="hero-ledger" aria-labelledby="hero-h1">
+        <div class="hero-ledger__inner">
+          <p class="hero-ledger__kicker">For organizational leaders · evidence edition</p>
+          <h1 class="hero-ledger__title" id="hero-h1">
+            AI is already <em>inside</em> your organization.
+          </h1>
+          <p class="hero-ledger__lede">
+            <strong>92%</strong> of nonprofits already use AI<span class="cite">
+              <button class="cite__btn" aria-expanded="false" aria-controls="cite-pop-1" aria-label="Source 1">1</button>
+              <span class="cite__pop" id="cite-pop-1" role="dialog">
+                <span class="cite__pop__source" data-tag="Verified">Virtuous &amp; Fundraising.AI</span>
+                <p class="cite__pop__claim"><strong>92%</strong> of nonprofits report using AI in some capacity. Only <strong>7%</strong> report major capability improvement.</p>
+                <span class="cite__pop__meta">
+                  <span>2026 Nonprofit AI Adoption Report</span>
+                  <span>n = 346</span>
+                  <span>Feb 16, 2026</span>
+                </span>
+                <a class="cite__pop__link" href="#ref-1">See source ↗</a>
+              </span>
+            </span>. Most use is reactive, individual, and ad-hoc<span class="cite">
+              <button class="cite__btn" aria-expanded="false" aria-controls="cite-pop-2" aria-label="Source 2">2</button>
+              <span class="cite__pop" id="cite-pop-2" role="dialog">
+                <span class="cite__pop__source" data-tag="Verified">Virtuous &amp; Fundraising.AI</span>
+                <p class="cite__pop__claim"><strong>81%</strong> of organizations report using AI individually and on an ad hoc basis. <strong>4%</strong> have documented, repeatable AI workflows.</p>
+                <span class="cite__pop__meta">
+                  <span>2026 Nonprofit AI Adoption Report</span>
+                  <span>n = 346</span>
+                </span>
+                <a class="cite__pop__link" href="#ref-1">See source ↗</a>
+              </span>
+            </span> — and the gap between adoption and actual capability is now the single most documented finding in the field.
+          </p>
+          <p class="hero-ledger__lede">
+            We built a path to walk you through the organizational and technological challenges posed by AI: <strong>Safety, Sandbox, Skills, Solutions</strong>, in order.
+          </p>
+          <div class="hero-ledger__actions btn-row">
+            <a class="btn btn-primary" href="./mock-field-guide.html">See the path</a>
+            <a class="btn btn-ghost" href="./mock-contact.html">Start a conversation</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== STAT STRIP ===================== -->
+      <section class="stat-strip" aria-labelledby="stat-strip-h">
+        <div class="stat-strip__inner">
+          <div class="stat-cell">
+            <p class="stat-cell__value">7%<span class="cite">
+              <button class="cite__btn" aria-expanded="false" aria-controls="cite-pop-3" aria-label="Source 3">3</button>
+              <span class="cite__pop" id="cite-pop-3" role="dialog">
+                <span class="cite__pop__source" data-tag="Cross-sector">McKinsey · BCG · MIT NANDA</span>
+                <p class="cite__pop__claim">Across nonprofit, enterprise, and faith-sector studies the high-performer cohort lands at <strong>5–7%</strong>. McKinsey: 6% AI high performers (n=1,993). BCG: 5% &ldquo;future-built&rdquo; (n=1,250). MIT NANDA: 95% of GenAI pilots fail.</p>
+                <span class="cite__pop__meta">
+                  <span>2025 / converged finding</span>
+                  <span>4 independent studies</span>
+                </span>
+                <a class="cite__pop__link" href="#ref-3">See sources ↗</a>
+              </span>
+            </span></p>
+            <p class="stat-cell__label">of nonprofits report <span class="marker">major capability gain</span> from AI. The rest run pilots that don't move the metrics.</p>
+          </div>
+          <div class="stat-cell">
+            <p class="stat-cell__value">47%<span class="cite">
+              <button class="cite__btn" aria-expanded="false" aria-controls="cite-pop-4" aria-label="Source 4">4</button>
+              <span class="cite__pop" id="cite-pop-4" role="dialog">
+                <span class="cite__pop__source" data-tag="Verified">Virtuous &amp; Fundraising.AI</span>
+                <p class="cite__pop__claim"><strong>47%</strong> of nonprofits have <strong>no</strong> AI governance policy. TechSoup's adjacent measure: <strong>76%</strong> have no formal AI strategy (n=1,321).</p>
+                <span class="cite__pop__meta">
+                  <span>Reports cited side-by-side as a range</span>
+                </span>
+                <a class="cite__pop__link" href="#ref-1">See source ↗</a>
+              </span>
+            </span></p>
+            <p class="stat-cell__label">of nonprofits operate with <span class="marker">no AI governance policy</span> — and only 5% of churches have one.</p>
+          </div>
+          <div class="stat-cell">
+            <p class="stat-cell__value">$893M<span class="cite">
+              <button class="cite__btn" aria-expanded="false" aria-controls="cite-pop-5" aria-label="Source 5">5</button>
+              <span class="cite__pop" id="cite-pop-5" role="dialog">
+                <span class="cite__pop__source" data-tag="FBI · IC3">2025 IC3 Annual Report</span>
+                <p class="cite__pop__claim"><strong>$893M</strong> in adjusted losses tied to AI-related scams in 2025 alone. <strong>22,364</strong> AI-flagged complaints. <strong>$352M</strong> of those losses sustained by Americans 60+. Voice-cloning fraud rose <strong>400%+</strong> year-over-year.</p>
+                <span class="cite__pop__meta">
+                  <span>FBI Internet Crime Complaint Center</span>
+                  <span>Published 2026</span>
+                </span>
+                <a class="cite__pop__link" href="#ref-5">See source ↗</a>
+              </span>
+            </span></p>
+            <p class="stat-cell__label">in <span class="marker">AI-fraud losses</span> reported to the FBI in 2025. The threat against your staff and donors is no longer theoretical.</p>
+          </div>
+          <div class="stat-cell">
+            <p class="stat-cell__value">1 in 3<span class="cite">
+              <button class="cite__btn" aria-expanded="false" aria-controls="cite-pop-6" aria-label="Source 6">6</button>
+              <span class="cite__pop" id="cite-pop-6" role="dialog">
+                <span class="cite__pop__source" data-tag="Barna · Gloo">State of the Church 2026 — AI Series</span>
+                <p class="cite__pop__claim">Nearly <strong>1 in 3</strong> U.S. adults agree spiritual advice from AI is as trustworthy as advice from a pastor. <strong>2 in 5</strong> among Gen Z and Millennials. Yet only <strong>12%</strong> of pastors say they feel comfortable teaching about AI.</p>
+                <span class="cite__pop__meta">
+                  <span>n = 1,514</span>
+                  <span>Nov 2025</span>
+                </span>
+                <a class="cite__pop__link" href="#ref-6">See source ↗</a>
+              </span>
+            </span></p>
+            <p class="stat-cell__label">U.S. adults already trust AI for <span class="marker">spiritual guidance</span> on par with a pastor. The conversation is happening with or without you.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== THE GAP ARGUMENT ===================== -->
+      <section class="gap-section" aria-labelledby="gap-h">
+        <div class="gap-section__inner">
+          <div>
+            <p class="gap-section__eyebrow">The pattern</p>
+            <h2 class="gap-section__heading" id="gap-h">
+              Adoption without <em>capability</em>.
+            </h2>
+          </div>
+          <div class="gap-section__prose">
+            <p>
+              The pattern is now documented across at least four independent 2025–2026 studies in nonprofit, enterprise, and faith-sector research<span class="cite">
+                <button class="cite__btn" aria-expanded="false" aria-controls="cite-pop-7" aria-label="Source 7">7</button>
+                <span class="cite__pop" id="cite-pop-7" role="dialog">
+                  <span class="cite__pop__source" data-tag="Cross-sector">Convergent finding</span>
+                  <p class="cite__pop__claim">Virtuous (nonprofit, n=346) · McKinsey (cross-sector, n=1,993) · BCG (n=1,250) · MIT NANDA (GenAI Divide). High-performer cohort consistently <strong>5–7%</strong>. <strong>Workflow redesign</strong> is the single strongest correlate of AI EBIT impact in McKinsey's data.</p>
+                  <span class="cite__pop__meta">
+                    <span>2025</span>
+                    <span>Pattern, not a single study</span>
+                  </span>
+                  <a class="cite__pop__link" href="#ref-3">See sources ↗</a>
+                </span>
+              </span>: widespread adoption, a <span class="marker">5–7% high-performer cohort</span>, and a governance/workflow gap that consistently predicts who lands in that cohort.
+            </p>
+            <p>
+              In churches the picture rhymes. <strong>60%</strong> of church leaders personally use AI at least monthly, but only <strong>33%</strong> of churches use AI in any part of operations<span class="cite">
+                <button class="cite__btn" aria-expanded="false" aria-controls="cite-pop-8" aria-label="Source 8">8</button>
+                <span class="cite__pop" id="cite-pop-8" role="dialog">
+                  <span class="cite__pop__source" data-tag="Barna · Pushpay">State of Church Tech 2026</span>
+                  <p class="cite__pop__claim"><strong>60%</strong> of church leaders use AI monthly · <strong>33%</strong> church-wide use · <strong>5%</strong> with formal policy · <strong>64%</strong> believe a policy is important.</p>
+                  <span class="cite__pop__meta">
+                    <span>n = 1,306</span>
+                    <span>Released March 9, 2026</span>
+                  </span>
+                  <a class="cite__pop__link" href="#ref-8">See source ↗</a>
+                </span>
+              </span>. Only <strong>5%</strong> have a formal policy. Among Protestant pastors, <strong>42%</strong> are using AI for ministry today<span class="cite">
+                <button class="cite__btn" aria-expanded="false" aria-controls="cite-pop-9" aria-label="Source 9">9</button>
+                <span class="cite__pop" id="cite-pop-9" role="dialog">
+                  <span class="cite__pop__source" data-tag="Lifeway">Pastors' Views on AI</span>
+                  <p class="cite__pop__claim"><strong>10%</strong> regular AI users · <strong>32%</strong> experimenting · <strong>56%</strong> non-users. <strong>84%</strong> worry about reliability of generated content. <strong>55%</strong> say "AI isn't a person."</p>
+                  <span class="cite__pop__meta">
+                    <span>n = 1,003 Protestant senior pastors</span>
+                    <span>Phone survey · ±3.3%</span>
+                    <span>Conducted Sept 2025 · released April 21, 2026</span>
+                  </span>
+                  <a class="cite__pop__link" href="#ref-9">See source ↗</a>
+                </span>
+              </span> — without a charter, a sandbox, or a stewardship frame.
+            </p>
+            <p>
+              This is not a tools problem. It is an <span class="marker">organizational, formation, and workflow problem</span>. The data supports the thesis you will hear us say throughout this site: <strong>formation precedes deployment</strong>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== THE PATH ===================== -->
+      <section class="path-section" aria-labelledby="path-h">
+        <div class="path-section__inner">
+          <p class="gap-section__eyebrow">The Movemental AI Path</p>
+          <h2 class="gap-section__heading" id="path-h" style="margin-bottom: 1.5rem">
+            Four stages, in order.
+          </h2>
+          <p class="path-section__lede">
+            A strong human foundation precedes any technological implementation. Skip a stage and the work compounds in the wrong direction<span class="cite">
+              <button class="cite__btn" aria-expanded="false" aria-controls="cite-pop-10" aria-label="Source 10">10</button>
+              <span class="cite__pop" id="cite-pop-10" role="dialog">
+                <span class="cite__pop__source" data-tag="McKinsey">State of AI 2025</span>
+                <p class="cite__pop__claim"><strong>55%</strong> of high-performers have fundamentally redesigned at least some workflows; the rest of the field sits near <strong>20%</strong>. Workflow redesign is McKinsey's strongest correlate of AI EBIT impact (3.6&times; for transformative-change pursuers).</p>
+                <span class="cite__pop__meta">
+                  <span>n = 1,993 across 105 nations</span>
+                  <span>Nov 2025</span>
+                </span>
+                <a class="cite__pop__link" href="#ref-10">See source ↗</a>
+              </span>
+            </span>.
+          </p>
+          <div class="path-grid">
+            <article class="path-step">
+              <p class="path-step__num">01</p>
+              <h3 class="path-step__name">Safety</h3>
+              <p class="path-step__outcome">A 14-document governance package and AI charter your board can ratify in two weeks. Closes the policy gap that 47% of nonprofits and 95% of churches sit inside.</p>
+            </article>
+            <article class="path-step">
+              <p class="path-step__num">02</p>
+              <h3 class="path-step__name">Sandbox</h3>
+              <p class="path-step__outcome">Cohort-based discovery across your teams. Use cases triaged, risks named, ethical concerns surfaced — without the consequences of publication.</p>
+            </article>
+            <article class="path-step">
+              <p class="path-step__num">03</p>
+              <h3 class="path-step__name">Skills</h3>
+              <p class="path-step__outcome">Formation that produces leaders, not just users. Grounded in adult learning research (Kolb) and intrinsic motivation (Pink), not vendor certifications.</p>
+            </article>
+            <article class="path-step">
+              <p class="path-step__num">04</p>
+              <h3 class="path-step__name">Solutions</h3>
+              <p class="path-step__outcome">AI-integrated technological deployment built on the secure foundation. Workflow redesign, not bolt-on automation.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CLOSING ===================== -->
+      <section class="closing-section" aria-labelledby="closing-h">
+        <div class="closing-section__inner">
+          <h2 class="closing-section__title" id="closing-h">
+            The path is being <em style="color: var(--hl); background: linear-gradient(180deg, transparent 60%, color-mix(in srgb, var(--hl) 40%, transparent) 60%); padding: 0 0.08em">walked</em>.
+          </h2>
+          <p class="closing-section__lede">
+            Movemental walks church and nonprofit leaders through Safety, Sandbox, Skills, Solutions — in order. Begin where you actually are.
+          </p>
+          <div class="closing-section__actions btn-row">
+            <a class="btn btn-primary" href="./mock-contact.html">Start a conversation</a>
+            <a class="btn btn-ghost" href="./mock-field-guide.html">See the full field guide</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== REFERENCES ===================== -->
+      <section class="refs-section" aria-labelledby="refs-h">
+        <div class="refs-section__inner">
+          <div class="refs-section__head">
+            <h2 class="refs-section__title" id="refs-h">References</h2>
+            <p class="refs-section__meta">All claims on this page are tied back to primary sources. Confidence tags follow the Movemental research corpus (May 8, 2026).</p>
+          </div>
+          <ol class="refs-list" id="refs-list">
+            <li id="ref-1">
+              <strong>Virtuous &amp; Fundraising.AI.</strong> <em>The 2026 Nonprofit AI Adoption Report.</em> February 16, 2026.
+              <span class="refs-meta-row">
+                <span>n = 346</span>
+                <span>Tag: VERIFIED</span>
+                <span><a href="https://virtuous.org/resource/the-2026-nonprofit-ai-adoption-report-download/" rel="noopener">virtuous.org</a></span>
+              </span>
+            </li>
+            <li id="ref-2">
+              <strong>Virtuous &amp; Fundraising.AI</strong> (same report). Cited for the 81% individual ad-hoc use and 4% repeatable workflows finding.
+              <span class="refs-meta-row">
+                <span>Tag: VERIFIED</span>
+                <span>Wording: "use AI individually and on an ad hoc basis"</span>
+              </span>
+            </li>
+            <li id="ref-3">
+              <strong>Convergent: McKinsey, BCG, MIT NANDA, Virtuous.</strong> McKinsey, <em>The State of AI in 2025</em> (Nov 2025, n=1,993). BCG, <em>The Widening AI Value Gap</em> (Sept 2025, n=1,250). MIT NANDA, <em>The GenAI Divide</em> (July 2025).
+              <span class="refs-meta-row">
+                <span>5–7% high-performer cohort across studies</span>
+                <span>Tag: VERIFIED</span>
+              </span>
+            </li>
+            <li id="ref-4">
+              <strong>Virtuous</strong> (47%, governance) and <strong>TechSoup &amp; Tapp Network</strong>, <em>State of AI in Nonprofits 2025</em> (Jan 24, 2025, n=1,321) for the 76% no-strategy adjacent measure.
+              <span class="refs-meta-row">
+                <span>Range cited side-by-side</span>
+                <span>Tag: VERIFIED</span>
+              </span>
+            </li>
+            <li id="ref-5">
+              <strong>FBI Internet Crime Complaint Center.</strong> <em>2025 IC3 Annual Report</em>, published 2026.
+              <span class="refs-meta-row">
+                <span>$893M in AI-attributed losses · $352M from victims 60+</span>
+                <span>Tag: VERIFIED</span>
+                <span><a href="https://www.ic3.gov/" rel="noopener">ic3.gov</a></span>
+              </span>
+            </li>
+            <li id="ref-6">
+              <strong>Barna Group &amp; Gloo.</strong> <em>State of the Church 2026 — AI Series.</em> November 2025.
+              <span class="refs-meta-row">
+                <span>n = 1,514 U.S. adults</span>
+                <span>Tag: NEW</span>
+                <span><a href="https://www.barna.com/research/state-of-the-church-2026-trends/" rel="noopener">barna.com</a></span>
+              </span>
+            </li>
+            <li id="ref-7">
+              <strong>Pattern, not a single study.</strong> See refs 1, 3, 8, 9. Cited as a converged finding across at least four independent 2025–2026 studies.
+              <span class="refs-meta-row">
+                <span>Tag: VERIFIED</span>
+              </span>
+            </li>
+            <li id="ref-8">
+              <strong>Barna Group &amp; Pushpay.</strong> <em>Technology for Missional Impact: State of Church Tech 2026.</em> Released March 9, 2026.
+              <span class="refs-meta-row">
+                <span>n = 1,306 U.S. church leaders</span>
+                <span>Tag: NEW</span>
+                <span><a href="https://www.barna.com/research/church-leaders-ai-usage-concerns/" rel="noopener">barna.com</a></span>
+              </span>
+            </li>
+            <li id="ref-9">
+              <strong>Lifeway Research.</strong> <em>Pastors' Views on Artificial Intelligence.</em> Conducted Sept 2–24, 2025; released April 21, 2026.
+              <span class="refs-meta-row">
+                <span>n = 1,003 Protestant senior pastors · phone · ±3.3%</span>
+                <span>Tag: VERIFIED — corrects a previously circulated 91% figure</span>
+                <span><a href="https://research.lifeway.com/" rel="noopener">research.lifeway.com</a></span>
+              </span>
+            </li>
+            <li id="ref-10">
+              <strong>McKinsey &amp; Company.</strong> <em>The State of AI in 2025: Agents, Innovation, and Transformation.</em> November 2025.
+              <span class="refs-meta-row">
+                <span>n = 1,993 across 105 nations</span>
+                <span>Tag: NEW</span>
+                <span><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" rel="noopener">mckinsey.com</a></span>
+              </span>
+            </li>
+          </ol>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p>© Movemental · This is a design mockup. Not a live page.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Highlighter footnote popovers — click/keyboard, single-instance.
+      (function () {
+        const triggers = document.querySelectorAll(".cite__btn");
+        let openTrigger = null;
+
+        function close(t) {
+          if (!t) return;
+          t.setAttribute("aria-expanded", "false");
+          openTrigger = null;
+        }
+
+        function open(t) {
+          close(openTrigger);
+          t.setAttribute("aria-expanded", "true");
+          openTrigger = t;
+        }
+
+        triggers.forEach((t) => {
+          t.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isOpen = t.getAttribute("aria-expanded") === "true";
+            isOpen ? close(t) : open(t);
+          });
+        });
+
+        document.addEventListener("click", (e) => {
+          if (
+            openTrigger &&
+            !openTrigger.parentElement.contains(e.target)
+          ) {
+            close(openTrigger);
+          }
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") close(openTrigger);
+        });
+      })();
+
+      // Mobile nav (matches site-shell.js behavior)
+      document.querySelector(".site-nav__toggle")?.addEventListener("click", function () {
+        const expanded = this.getAttribute("aria-expanded") === "true";
+        this.setAttribute("aria-expanded", String(!expanded));
+        document.querySelector(".site-nav")?.classList.toggle("is-open");
+      });
+    </script>
+  </body>
+</html>

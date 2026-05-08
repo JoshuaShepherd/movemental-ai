@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { ChurchesContent } from "@/components/sections-mock/churches/churches-content";
+import { AudiencePage as StudioAudiencePage } from "@/components/studio/pages/AudiencePage";
 
 export const metadata: Metadata = {
   title: "For Churches | Movemental",
@@ -9,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <ChurchesContent />;
+  return <StudioAudiencePage audience="churches" />;
 }

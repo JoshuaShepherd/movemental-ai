@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Movemental Institutions - CTA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#f8f8ff",
+                        "surface-container-high": "#e1e9ee",
+                        "tertiary-fixed": "#dae2fd",
+                        "on-secondary-fixed": "#324053",
+                        "tertiary": "#575f75",
+                        "on-secondary-container": "#455367",
+                        "tertiary-dim": "#4b5369",
+                        "primary": "#0053db",
+                        "surface-container-highest": "#d9e4ea",
+                        "inverse-primary": "#618bff",
+                        "secondary-fixed-dim": "#c7d5ed",
+                        "on-surface": "#2a3439",
+                        "background": "#f7f9fb",
+                        "on-tertiary-container": "#4a5167",
+                        "on-tertiary-fixed": "#373f54",
+                        "on-background": "#2a3439",
+                        "on-tertiary-fixed-variant": "#535b71",
+                        "on-tertiary": "#f9f8ff",
+                        "surface-container": "#e8eff3",
+                        "surface-variant": "#d9e4ea",
+                        "on-primary-container": "#0048bf",
+                        "secondary": "#526074",
+                        "outline": "#717c82",
+                        "secondary-container": "#d5e3fc",
+                        "tertiary-fixed-dim": "#ccd4ee",
+                        "inverse-surface": "#0b0f10",
+                        "primary-fixed-dim": "#c7d3ff",
+                        "on-primary-fixed": "#003798",
+                        "secondary-fixed": "#d5e3fc",
+                        "on-error": "#fff7f6",
+                        "surface": "#f7f9fb",
+                        "on-surface-variant": "#566166",
+                        "inverse-on-surface": "#9a9d9f",
+                        "primary-container": "#dbe1ff",
+                        "on-error-container": "#752121",
+                        "error-dim": "#4e0309",
+                        "surface-dim": "#cfdce3",
+                        "on-secondary-fixed-variant": "#4e5c71",
+                        "on-primary": "#f8f7ff",
+                        "tertiary-container": "#dae2fd",
+                        "error-container": "#fe8983",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-bright": "#f7f9fb",
+                        "error": "#9f403d",
+                        "secondary-dim": "#465468",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "on-primary-fixed-variant": "#0050d4",
+                        "surface-container-low": "#f0f4f7",
+                        "primary-dim": "#0048c1",
+                        "outline-variant": "#a9b4b9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "display": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    "fontSize": {}
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined', sans-serif;
+            font-size: 24px;
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-inverse-surface dark:bg-surface-container-lowest docked full-width top-0 z-50">
+<div class="flex justify-between items-center px-12 py-6 w-full max-w-none">
+<div class="text-xl font-display font-bold tracking-tight text-on-secondary dark:text-primary">
+                MissionCurator
+            </div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-on-secondary-fixed-variant dark:text-on-surface-variant hover:text-primary-fixed-dim transition-colors duration-300 font-headline tracking-tighter" href="#">Solutions</a>
+<a class="text-on-secondary-fixed-variant dark:text-on-surface-variant hover:text-primary-fixed-dim transition-colors duration-300 font-headline tracking-tighter" href="#">Resources</a>
+<a class="text-on-secondary dark:text-primary font-bold border-b-2 border-primary font-headline tracking-tighter pb-1" href="#">Stages</a>
+<a class="text-on-secondary-fixed-variant dark:text-on-surface-variant hover:text-primary-fixed-dim transition-colors duration-300 font-headline tracking-tighter" href="#">Pricing</a>
+</nav>
+<div class="flex items-center space-x-4">
+<a class="text-on-secondary-fixed-variant dark:text-on-surface-variant hover:text-primary-fixed-dim transition-colors duration-300 font-headline tracking-tighter hidden sm:block" href="#">Login</a>
+<button class="bg-primary text-on-primary font-headline tracking-tighter px-6 py-2 rounded-md hover:bg-primary-dim transition-colors duration-300 scale-95 ease-in-out">
+                    Get Toolkit
+                </button>
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center justify-center py-24 px-6 md:px-12 bg-surface">
+<!-- CTA Band Component -->
+<section class="w-full max-w-5xl mx-auto bg-inverse-surface rounded-xl overflow-hidden py-24 px-8 md:px-16 text-center shadow-[0_12px_40px_rgba(42,52,57,0.06)] relative isolate">
+<!-- Ambient Background Glow -->
+<div class="absolute inset-0 -z-10 bg-gradient-to-br from-inverse-surface via-[#0b0f10] to-[#1a2327] opacity-80"></div>
+<div class="max-w-3xl mx-auto space-y-12">
+<!-- Eyebrow & Headline -->
+<div class="space-y-6">
+<p class="font-label text-sm tracking-[0.05em] text-on-secondary uppercase opacity-60">
+                        WHERE TO BEGIN
+                    </p>
+<h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-on-secondary leading-tight">
+                        Most institutions begin with Safety.
+                    </h2>
+</div>
+<!-- Body Copy -->
+<div class="space-y-8 max-w-2xl mx-auto">
+<p class="font-body text-lg md:text-xl text-on-secondary opacity-75 leading-relaxed">
+                        Most institutions who walk the Movemental path begin with Safety. Two weeks of facilitated work produces the seven artifacts your board, accreditation context, and faculty governance require. The cost is $1,000.
+                    </p>
+<p class="font-body text-base md:text-lg italic text-on-secondary opacity-50">
+                        Or download the free toolkit and start with the self-assessment. No commitment. Sixteen pages. Read it in an evening.
+                    </p>
+</div>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
+<button class="w-full sm:w-auto bg-on-secondary text-inverse-surface font-headline font-semibold px-8 py-4 rounded-md hover:bg-surface-container-high transition-colors duration-300 whitespace-nowrap">
+                        Download the free Safety toolkit
+                    </button>
+<a class="w-full sm:w-auto border border-on-secondary border-opacity-20 text-on-secondary font-headline font-medium px-8 py-4 rounded-md hover:bg-on-secondary hover:bg-opacity-5 transition-colors duration-300 whitespace-nowrap text-center" href="/contact?interest=for-institutions">
+                        Start a conversation
+                    </a>
+</div>
+<!-- Tertiary Nav Row -->
+<div class="pt-12 mt-12 border-t border-on-secondary border-opacity-10">
+<nav class="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm font-label text-on-secondary opacity-50 tracking-wide">
+<a class="hover:opacity-100 transition-opacity" href="#">Safety</a>
+<span aria-hidden="true">·</span>
+<a class="hover:opacity-100 transition-opacity" href="#">Sandbox</a>
+<span aria-hidden="true">·</span>
+<a class="hover:opacity-100 transition-opacity" href="#">Skills</a>
+<span aria-hidden="true">·</span>
+<a class="hover:opacity-100 transition-opacity" href="#">Solutions</a>
+<span aria-hidden="true">·</span>
+<a class="hover:opacity-100 transition-opacity" href="#">Pricing</a>
+</nav>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface dark:bg-surface-container-lowest full-width bottom-0 mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-none">
+<div class="text-lg font-headline font-bold text-on-secondary dark:text-primary mb-8 md:mb-0">
+                MissionCurator
+            </div>
+<nav class="flex flex-wrap justify-center gap-8 mb-8 md:mb-0">
+<a class="font-body text-sm tracking-wide text-on-secondary-fixed-variant dark:text-on-surface-variant hover:text-on-secondary dark:hover:text-primary opacity-80 hover:opacity-100 transition-all" href="#">Safety Toolkit</a>
+<a class="font-body text-sm tracking-wide text-on-secondary-fixed-variant dark:text-on-surface-variant hover:text-on-secondary dark:hover:text-primary opacity-80 hover:opacity-100 transition-all" href="#">Stages</a>
+<a class="font-body text-sm tracking-wide text-on-secondary-fixed-variant dark:text-on-surface-variant hover:text-on-secondary dark:hover:text-primary opacity-80 hover:opacity-100 transition-all" href="#">Pricing</a>
+<a class="font-body text-sm tracking-wide text-on-secondary-fixed-variant dark:text-on-surface-variant hover:text-on-secondary dark:hover:text-primary opacity-80 hover:opacity-100 transition-all" href="#">Privacy Policy</a>
+</nav>
+<div class="font-body text-sm tracking-wide text-on-secondary-fixed-variant dark:text-on-surface-variant text-center md:text-right">
+                © 2024 MissionCurator. For Churches, Nonprofits, and Institutions.
+            </div>
+</div>
+</footer>
+</body></html>

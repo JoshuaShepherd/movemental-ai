@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Movemental · A wiser way to navigate AI · Margin edition</title>
+    <meta
+      name="description"
+      content="Home page mock — Tufte-style sidenotes. Citations live in the margin alongside the body, never below it."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./site-templates/site-theme.css" />
+    <style>
+      /* ==========================================================
+         MARGIN · concept 2 of 3
+         Tufte-style sidenotes: every claim's source sits in the
+         right margin on desktop, inline on mobile. The reader
+         never has to leave the column to inspect the evidence.
+         ========================================================== */
+
+      :root {
+        /* Highlighter accent — hot pink; bolder, more energetic */
+        --hl: #fbcfe8;
+        --hl-strong: #ec4899;
+        --hl-ink: #831843;
+        --hl-soft: #fce7f3;
+      }
+
+      .margin-banner {
+        margin: 0;
+        padding: 0.55rem 1.2rem;
+        background: var(--hl-ink);
+        color: var(--hl);
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        text-align: center;
+      }
+      .margin-banner a {
+        color: var(--hl);
+        text-decoration: underline;
+      }
+
+      /* Two-column layout: prose + side rail.
+         On <1080px the rail collapses into inline cards. */
+      .essay {
+        position: relative;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      .essay__col {
+        max-width: 38rem;
+        position: relative;
+      }
+      @media (min-width: 1080px) {
+        .essay__col {
+          max-width: 40rem;
+        }
+      }
+
+      /* HERO ----------------------------------------------------- */
+      .hero-margin {
+        padding: 7rem 0 5rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .hero-margin__kicker {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--hl-ink);
+        margin: 0 0 1.5rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .hero-margin__kicker::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        background: var(--hl-strong);
+        border-radius: 999px;
+        box-shadow: 0 0 0 4px var(--hl);
+      }
+      .hero-margin__title {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(2.6rem, 6.4vw, 5.2rem);
+        line-height: 1.04;
+        letter-spacing: -0.025em;
+        color: var(--foreground);
+        margin: 0 0 1.6rem;
+        max-width: 22ch;
+      }
+      .hero-margin__title em {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        background: linear-gradient(180deg, transparent 60%, var(--hl) 60%);
+        padding: 0 0.08em;
+      }
+      .hero-margin__lede {
+        font-size: 1.18rem;
+        line-height: 1.7;
+        color: var(--foreground);
+        margin: 0 0 2.4rem;
+      }
+      .hero-margin__lede em {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: 1.04em;
+      }
+
+      /* SIDENOTE TRIGGER (in body) ------------------------------ */
+      /* A small numbered chip in hot pink. */
+      .sn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 1.45em;
+        height: 1.45em;
+        padding: 0 0.4em;
+        margin: 0 0.05em;
+        font-family: "Inter", system-ui, sans-serif;
+        font-size: 0.62em;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--hl-ink);
+        background: var(--hl);
+        border: 1px solid color-mix(in srgb, var(--hl-strong) 35%, transparent);
+        border-radius: 999px;
+        cursor: pointer;
+        translate: 0 -0.4em;
+        transition:
+          background 150ms ease,
+          color 150ms ease,
+          transform 150ms ease;
+      }
+      .sn:hover,
+      .sn:focus-visible {
+        background: var(--hl-strong);
+        color: #fff;
+        outline: none;
+        transform: translateY(-0.4em) scale(1.06);
+      }
+      .sn[aria-current="true"] {
+        background: var(--hl-ink);
+        color: var(--hl);
+      }
+
+      /* SIDENOTE — desktop margin -------------------------------- */
+      .sidenote {
+        position: absolute;
+        width: 18rem;
+        right: -19rem;
+        font-size: 0.78rem;
+        line-height: 1.55;
+        color: var(--foreground);
+        background: var(--card);
+        border-left: 3px solid var(--hl-strong);
+        border-radius: 0 8px 8px 0;
+        padding: 0.85rem 1rem 0.85rem 0.85rem;
+        box-shadow: 0 1px 0 var(--border);
+        opacity: 0;
+        transform: translateY(8px);
+        transition: opacity 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+      }
+      .sidenote.is-revealed {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .sidenote.is-active {
+        box-shadow:
+          0 0 0 2px color-mix(in srgb, var(--hl-strong) 40%, transparent),
+          0 12px 28px rgba(131, 24, 67, 0.12);
+      }
+      @media (max-width: 1080px) {
+        .sidenote {
+          position: static;
+          width: auto;
+          opacity: 1;
+          transform: none;
+          margin: 0.85rem 0;
+          font-size: 0.82rem;
+        }
+      }
+      .sidenote__num {
+        display: inline-block;
+        min-width: 1.4em;
+        height: 1.4em;
+        padding: 0 0.4em;
+        margin-right: 0.5rem;
+        font-size: 0.7rem;
+        font-weight: 700;
+        line-height: 1.4em;
+        color: var(--hl-ink);
+        background: var(--hl);
+        border-radius: 999px;
+        text-align: center;
+      }
+      .sidenote__claim {
+        margin: 0 0 0.45rem;
+        color: var(--foreground);
+      }
+      .sidenote__claim strong {
+        color: var(--hl-ink);
+        background: var(--hl-soft);
+        padding: 0 0.2em;
+      }
+      .sidenote__source {
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--hl-ink);
+        margin-bottom: 0.35rem;
+      }
+      .sidenote__meta {
+        margin: 0;
+        font-size: 0.7rem;
+        color: var(--muted-foreground);
+      }
+      .sidenote__meta span {
+        display: inline-block;
+        margin-right: 0.7rem;
+      }
+
+      /* The body text is wrapped so absolutely-positioned sidenotes
+         can land next to their referenced paragraph. */
+      .essay__body p {
+        font-size: 1.06rem;
+        line-height: 1.78;
+        color: var(--foreground);
+        margin: 0 0 1.6rem;
+        position: relative; /* anchor for sidenote absolute positioning */
+      }
+      .essay__body p strong {
+        font-weight: 600;
+      }
+      .essay__body p em {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: 1.04em;
+      }
+
+      /* Body marker (hover-style highlight) */
+      .marker {
+        background: linear-gradient(180deg, transparent 62%, var(--hl) 62%);
+        padding: 0 0.04em;
+      }
+
+      /* SECTION DIVIDERS ---------------------------------------- */
+      .section-rule {
+        height: 1px;
+        background: var(--border);
+        margin: 5rem 0 4rem;
+      }
+
+      .section-eyebrow {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted-foreground);
+        margin: 0 0 1.4rem;
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+      }
+      .section-eyebrow::before,
+      .section-eyebrow::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+      .section-eyebrow::before {
+        max-width: 28px;
+      }
+      .section-heading {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        color: var(--foreground);
+        margin: 0 0 2rem;
+      }
+      .section-heading em {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        background: linear-gradient(180deg, transparent 60%, var(--hl) 60%);
+        padding: 0 0.08em;
+      }
+
+      /* DATA RIBBON — alternative dense citation ---------------- */
+      .data-ribbon {
+        background: var(--section);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: 4rem 0;
+      }
+      .data-ribbon__inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      .data-ribbon__head {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--hl-ink);
+        margin: 0 0 1.5rem;
+      }
+      .data-ribbon__title {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1.06;
+        margin: 0 0 3rem;
+        max-width: 30ch;
+      }
+      .data-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 0;
+        border-top: 1px solid var(--border);
+      }
+      .data-card {
+        position: relative;
+        padding: 2rem 1.5rem 1.75rem;
+        border-right: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      @media (max-width: 720px) {
+        .data-card {
+          border-right: 0;
+        }
+      }
+      .data-card__badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: var(--hl-ink);
+        background: var(--hl);
+        padding: 0.18em 0.6em;
+        border-radius: 999px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .data-card__big {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: clamp(2.4rem, 4.8vw, 3.5rem);
+        line-height: 1;
+        letter-spacing: -0.025em;
+        color: var(--foreground);
+        margin: 0 0 0.6rem;
+      }
+      .data-card__claim {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: var(--muted-foreground);
+        margin: 0 0 0.85rem;
+      }
+      .data-card__src {
+        font-size: 0.72rem;
+        color: var(--ink-soft);
+      }
+      .data-card__src strong {
+        color: var(--hl-ink);
+      }
+
+      /* PATH ---------------------------------------------------- */
+      .path-row {
+        display: grid;
+        grid-template-columns: 4rem 1fr;
+        gap: 2rem;
+        padding: 2rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .path-row:last-child {
+        border-bottom: 0;
+      }
+      .path-row__num {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: 2.4rem;
+        line-height: 1;
+        color: var(--hl-strong);
+      }
+      .path-row__name {
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin: 0 0 0.6rem;
+      }
+      .path-row__outcome {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--muted-foreground);
+        margin: 0;
+      }
+
+      /* CLOSING ------------------------------------------------- */
+      .closing {
+        background: var(--inverse-surface);
+        color: var(--inverse-foreground);
+        padding: 7rem 0 8rem;
+        margin-top: 4rem;
+      }
+      .closing__inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      .closing__title {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: clamp(2.4rem, 5vw, 4rem);
+        line-height: 1.04;
+        max-width: 22ch;
+        margin: 0 0 1.5rem;
+      }
+      .closing__title em {
+        background: linear-gradient(180deg, transparent 60%, var(--hl-strong) 60%);
+        padding: 0 0.08em;
+        color: #fff;
+      }
+      .closing__lede {
+        max-width: 36rem;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: color-mix(in srgb, var(--inverse-foreground) 80%, transparent);
+        margin: 0 0 2.4rem;
+      }
+      .closing .btn-primary {
+        background: var(--hl-strong);
+        color: #fff;
+        border-color: var(--hl-strong);
+      }
+      .closing .btn-primary:hover {
+        background: var(--hl);
+        color: var(--hl-ink);
+      }
+      .closing .btn-ghost {
+        color: var(--inverse-foreground);
+        border-color: color-mix(in srgb, var(--inverse-foreground) 35%, transparent);
+        background: transparent;
+      }
+
+      .btn-row {
+        display: inline-flex;
+        gap: 0.85rem;
+        flex-wrap: wrap;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--hl-strong);
+        outline-offset: 3px;
+        border-radius: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <p class="margin-banner">
+      Mockup · home / margin · sidenotes in the margin, Tufte-style ·
+      <a href="./mock-index.html">all mockups</a>
+    </p>
+
+    <header class="site-top">
+      <div class="site-top__inner">
+        <a href="./mock-home.html" class="site-brand">
+          Movemental
+          <small>For organizational leaders</small>
+        </a>
+        <button
+          class="site-nav__toggle"
+          type="button"
+          aria-controls="primary-nav"
+          aria-expanded="false"
+        >
+          Menu
+        </button>
+        <nav class="site-nav" id="primary-nav" aria-label="Primary">
+          <ul>
+            <li><a href="./mock-field-guide.html">The Sequence</a></li>
+            <li><a href="./mock-organizations.html">Who we serve</a></li>
+            <li><a href="./mock-voices.html">Trusted voices</a></li>
+            <li><a href="./mock-assess.html">Assess</a></li>
+            <li><a href="./mock-about.html">About</a></li>
+            <li>
+              <a href="./mock-contact.html" class="site-nav__cta">
+                Start a conversation
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ===================== HERO ===================== -->
+      <section class="hero-margin essay" aria-labelledby="hero-h1">
+        <div class="essay__col essay__body">
+          <p class="hero-margin__kicker">Annotated edition · for organizational leaders</p>
+          <h1 class="hero-margin__title" id="hero-h1">
+            AI is already <em>inside</em> your organization.
+          </h1>
+          <p class="hero-margin__lede">
+            Your staff are already using it. Your members are already trusting it for spiritual guidance<button class="sn" data-sn="1" aria-label="Sidenote 1">1</button>. Your board is asking what your policy is — and most likely you don't have one yet<button class="sn" data-sn="2" aria-label="Sidenote 2">2</button>. <em>This is the situation.</em> We built a path to walk you through it.
+          </p>
+
+          <!-- Sidenotes anchored to this paragraph -->
+          <aside class="sidenote" data-for="1">
+            <span class="sidenote__source">Barna · Gloo · Nov 2025</span>
+            <p class="sidenote__claim">Nearly <strong>1 in 3 U.S. adults</strong> say spiritual advice from AI is as trustworthy as advice from a pastor. <strong>2 in 5</strong> among Gen Z and Millennials. Yet only <strong>12% of pastors</strong> say they feel comfortable teaching about AI.</p>
+            <p class="sidenote__meta">
+              <span>n = 1,514</span>
+              <span>State of the Church 2026</span>
+            </p>
+          </aside>
+          <aside class="sidenote" data-for="2">
+            <span class="sidenote__source">Virtuous · Barna/Pushpay · 2026</span>
+            <p class="sidenote__claim"><strong>47%</strong> of nonprofits have no AI governance policy (n=346). Only <strong>5%</strong> of churches have an established AI policy (n=1,306) — though <strong>64%</strong> of leaders say a policy is important.</p>
+            <p class="sidenote__meta">
+              <span>2026 Nonprofit AI Adoption Report</span>
+              <span>State of Church Tech 2026</span>
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ===================== ESSAY: THE GAP ===================== -->
+      <section class="essay" aria-labelledby="essay-h">
+        <div class="essay__col essay__body" style="padding: 5rem 0">
+          <p class="section-eyebrow">The argument</p>
+          <h2 class="section-heading" id="essay-h">
+            Adoption is universal. <em>Capability</em> is not.
+          </h2>
+
+          <p>
+            The 2025–2026 evidence is unusually consistent. Across at least four independent studies — nonprofit, enterprise, and faith-sector — adoption has converged near saturation while a high-performer cohort has converged near <strong>5–7%</strong><button class="sn" data-sn="3" aria-label="Sidenote 3">3</button>. Most organizations are in between: pilots are running, individual staff are using AI ad hoc, and the metrics are not moving<button class="sn" data-sn="4" aria-label="Sidenote 4">4</button>.
+          </p>
+
+          <p>
+            What separates the small high-performer cohort from everyone else is not a tool license. It is <span class="marker">workflow redesign and governance</span>. McKinsey's data identifies fundamental workflow redesign as the single strongest correlate of AI EBIT impact<button class="sn" data-sn="5" aria-label="Sidenote 5">5</button>. The Virtuous data identifies the same pattern in nonprofits: organizations with shared workflows and outcome measurement land in the high-performer slice; everyone else stays reactive and individual.
+          </p>
+
+          <p>
+            For mission-driven organizations the stakes are sharper. <strong>$893M</strong> in AI-related fraud losses were reported to the FBI in 2025 alone<button class="sn" data-sn="6" aria-label="Sidenote 6">6</button>. Voice-cloning scams now layer into BEC attacks against nonprofit finance staff. Meanwhile, deepfake impersonations of Catholic and evangelical leaders are happening dozens of times per day<button class="sn" data-sn="7" aria-label="Sidenote 7">7</button>. The question is no longer whether AI will reach you. It already has.
+          </p>
+
+          <p>
+            The good news in the data: the gap between adoption and capability is solvable. The pattern is <span class="marker">organizational, formational, and procedural</span> — not a missing model or a missing license. It responds to clear governance, structured discovery, and workflow design. <em>Formation precedes deployment.</em>
+          </p>
+
+          <!-- Sidenotes for this section -->
+          <aside class="sidenote" data-for="3">
+            <span class="sidenote__source">Cross-sector · 2025</span>
+            <p class="sidenote__claim">Virtuous (nonprofit, n=346): <strong>7%</strong> major capability improvement. McKinsey (n=1,993): <strong>6%</strong> AI high performers. BCG (n=1,250): <strong>5%</strong> "future-built." MIT NANDA: <strong>95%</strong> of GenAI pilots fail.</p>
+            <p class="sidenote__meta">
+              <span>4 independent studies</span>
+              <span>Converged finding</span>
+            </p>
+          </aside>
+          <aside class="sidenote" data-for="4">
+            <span class="sidenote__source">Virtuous · 2026</span>
+            <p class="sidenote__claim"><strong>81%</strong> of organizations report using AI individually and on an ad-hoc basis. Only <strong>4%</strong> have documented, repeatable AI workflows. <strong>65%</strong> describe their AI use as reactive and individual.</p>
+            <p class="sidenote__meta">
+              <span>n = 346 nonprofits</span>
+              <span>Released Feb 16, 2026</span>
+            </p>
+          </aside>
+          <aside class="sidenote" data-for="5">
+            <span class="sidenote__source">McKinsey · Nov 2025</span>
+            <p class="sidenote__claim">High performers are <strong>3.6&times;</strong> more likely to pursue transformative change. <strong>55%</strong> have fundamentally redesigned at least some workflows, vs. ~<strong>20%</strong> sector-wide.</p>
+            <p class="sidenote__meta">
+              <span>State of AI 2025 · n = 1,993</span>
+            </p>
+          </aside>
+          <aside class="sidenote" data-for="6">
+            <span class="sidenote__source">FBI · IC3 · 2026</span>
+            <p class="sidenote__claim"><strong>$893M</strong> in adjusted losses tied to AI scams in 2025. <strong>22,364</strong> AI-flagged complaints. <strong>$352M</strong> from victims aged 60+. Voice-cloning fraud rose <strong>400%+</strong> year-over-year (industry data).</p>
+            <p class="sidenote__meta">
+              <span>2025 IC3 Annual Report</span>
+            </p>
+          </aside>
+          <aside class="sidenote" data-for="7">
+            <span class="sidenote__source">WIRED · OSV · ASIS</span>
+            <p class="sidenote__claim">Vatican Dicastery for Communication reports receiving "dozens of deepfake reports per day" involving Pope Leo XIV. Father Mike Schmitz (1.2M YouTube subscribers) impersonated. T.D. Jakes faced an investigation tracing <strong>44,000</strong> bot accounts spreading AI-generated rumors.</p>
+            <p class="sidenote__meta">
+              <span>Nov 2025 – Jan 2026 reporting</span>
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ===================== DATA RIBBON ===================== -->
+      <section class="data-ribbon" aria-labelledby="data-h">
+        <div class="data-ribbon__inner">
+          <p class="data-ribbon__head">The numbers, with sources</p>
+          <h2 class="data-ribbon__title" id="data-h">
+            What the field actually shows.
+          </h2>
+          <div class="data-grid">
+            <div class="data-card">
+              <span class="data-card__badge">Verified</span>
+              <p class="data-card__big">42%</p>
+              <p class="data-card__claim">of Protestant pastors use AI for ministry today (10% regular, 32% experimenting). <strong>56%</strong> are non-users.</p>
+              <p class="data-card__src"><strong>Lifeway Research</strong> · n=1,003 · phone · ±3.3%<br />Conducted Sept 2025; released April 21, 2026.</p>
+            </div>
+            <div class="data-card">
+              <span class="data-card__badge">Verified</span>
+              <p class="data-card__big">5%</p>
+              <p class="data-card__claim">of churches have an established AI policy. <strong>64%</strong> of leaders say a policy is important. <strong>83%</strong> are concerned about data privacy.</p>
+              <p class="data-card__src"><strong>Barna &amp; Pushpay</strong> · n=1,306 · State of Church Tech 2026<br />Released March 9, 2026.</p>
+            </div>
+            <div class="data-card">
+              <span class="data-card__badge">New</span>
+              <p class="data-card__big">~80%</p>
+              <p class="data-card__claim">of university students now use generative AI. Adoption is reaching saturation faster than any tool in recent education history.</p>
+              <p class="data-card__src"><strong>Stanford HAI</strong> · AI Index Report 2026<br />Released April/May 2026.</p>
+            </div>
+            <div class="data-card">
+              <span class="data-card__badge">Verified</span>
+              <p class="data-card__big">31%</p>
+              <p class="data-card__claim">of practicing Christians want guidance from pastors on how to navigate AI. Only <strong>12%</strong> of pastors say they feel comfortable teaching about it.</p>
+              <p class="data-card__src"><strong>Barna &amp; Gloo</strong> · n=1,514 · State of the Church 2026 — AI Series<br />November 2025.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== PATH ===================== -->
+      <section class="essay" aria-labelledby="path-h">
+        <div class="essay__col" style="padding: 5rem 0">
+          <p class="section-eyebrow">The path</p>
+          <h2 class="section-heading" id="path-h">
+            Four stages, <em>in order</em>.
+          </h2>
+          <p style="font-size: 1.06rem; line-height: 1.7; color: var(--muted-foreground); margin: 0 0 2.5rem">
+            Safety first, then disciplined exploration, then formation, then deployment. The order matters. Skipping a stage produces the pattern the data describes: adoption without capability.
+          </p>
+
+          <article class="path-row">
+            <p class="path-row__num">01</p>
+            <div>
+              <h3 class="path-row__name">Safety</h3>
+              <p class="path-row__outcome">A 14-document governance package and AI charter your board can ratify in two weeks. Closes the policy gap that 47% of nonprofits and 95% of churches sit inside.</p>
+            </div>
+          </article>
+          <article class="path-row">
+            <p class="path-row__num">02</p>
+            <div>
+              <h3 class="path-row__name">Sandbox</h3>
+              <p class="path-row__outcome">Cohort discovery across your teams. Use cases triaged, risks named, ethical concerns surfaced — without the consequences of publication.</p>
+            </div>
+          </article>
+          <article class="path-row">
+            <p class="path-row__num">03</p>
+            <div>
+              <h3 class="path-row__name">Skills</h3>
+              <p class="path-row__outcome">Formation that produces leaders, not just users. Grounded in adult-learning theory (Kolb) and intrinsic motivation (Pink), not vendor certifications.</p>
+            </div>
+          </article>
+          <article class="path-row">
+            <p class="path-row__num">04</p>
+            <div>
+              <h3 class="path-row__name">Solutions</h3>
+              <p class="path-row__outcome">AI-integrated technological deployment built on the secure foundation. Workflow redesign, not bolt-on automation — the variable that separates the 5–7% high-performer cohort from everyone else.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===================== CLOSING ===================== -->
+      <section class="closing" aria-labelledby="closing-h">
+        <div class="closing__inner">
+          <h2 class="closing__title" id="closing-h">
+            The path is being <em>walked</em>.
+          </h2>
+          <p class="closing__lede">
+            Movemental walks church and nonprofit leaders through Safety, Sandbox, Skills, Solutions — in order. Begin where you actually are.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="./mock-contact.html">Start a conversation</a>
+            <a class="btn btn-ghost" href="./mock-field-guide.html">See the full field guide</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p>© Movemental · Mockup. All claims grounded in the verified Movemental research corpus (May 8, 2026).</p>
+      </div>
+    </footer>
+
+    <script>
+      // ============================================================
+      // Sidenote engine
+      // - On wide screens, position .sidenote in the right margin,
+      //   vertically aligned to its trigger.
+      // - On narrow screens, render inline (CSS handles that already).
+      // - Highlight the linked sidenote on trigger hover/focus.
+      // ============================================================
+      (function () {
+        const isWide = () => window.innerWidth >= 1080;
+        const triggers = document.querySelectorAll(".sn");
+        const sidenotes = document.querySelectorAll(".sidenote");
+
+        function positionAll() {
+          if (!isWide()) {
+            sidenotes.forEach((n) => {
+              n.style.top = "";
+              n.style.right = "";
+              n.classList.add("is-revealed");
+            });
+            return;
+          }
+          // Wide layout: align each sidenote to its trigger
+          const usedTops = [];
+          triggers.forEach((t) => {
+            const id = t.dataset.sn;
+            const note = document.querySelector(`.sidenote[data-for="${id}"]`);
+            if (!note) return;
+
+            const para = t.closest("p, section, .essay__body");
+            if (!para) return;
+            const paraRect = para.getBoundingClientRect();
+            const triggerRect = t.getBoundingClientRect();
+
+            // Position relative to the paragraph (parent has position:relative)
+            let top = triggerRect.top - paraRect.top;
+
+            // Avoid overlap: nudge if any prior note already lives within 96px
+            for (const u of usedTops) {
+              if (Math.abs(top - u) < 110) {
+                top = u + 110;
+              }
+            }
+            usedTops.push(top);
+
+            note.style.top = `${top}px`;
+            note.classList.add("is-revealed");
+          });
+        }
+
+        // Trigger ↔ sidenote highlighting
+        triggers.forEach((t) => {
+          const id = t.dataset.sn;
+          const note = document.querySelector(`.sidenote[data-for="${id}"]`);
+          if (!note) return;
+
+          const setActive = (on) => {
+            t.setAttribute("aria-current", on ? "true" : "false");
+            note.classList.toggle("is-active", on);
+          };
+
+          t.addEventListener("mouseenter", () => setActive(true));
+          t.addEventListener("mouseleave", () => setActive(false));
+          t.addEventListener("focus", () => setActive(true));
+          t.addEventListener("blur", () => setActive(false));
+          t.addEventListener("click", (e) => {
+            e.preventDefault();
+            note.scrollIntoView({ behavior: "smooth", block: "center" });
+            setActive(true);
+            setTimeout(() => setActive(false), 1500);
+          });
+        });
+
+        window.addEventListener("load", positionAll);
+        window.addEventListener("resize", positionAll);
+      })();
+
+      // Mobile nav
+      document.querySelector(".site-nav__toggle")?.addEventListener("click", function () {
+        const expanded = this.getAttribute("aria-expanded") === "true";
+        this.setAttribute("aria-expanded", String(!expanded));
+        document.querySelector(".site-nav")?.classList.toggle("is-open");
+      });
+    </script>
+  </body>
+</html>
