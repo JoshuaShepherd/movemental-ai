@@ -21,7 +21,7 @@ import { VoiceCard } from "./voice-card";
  * Posture: credibility, corpus, and ecosystem — **not** audience funnel and
  * **not** recruitment. Movement leaders are a distinct trusted-voice layer,
  * not a parallel audience segment beside churches / nonprofits / institutions.
- * Founders live on `/team`; this page names the trusted voices whose public
+ * Founders live on `/about`; this page names the trusted voices whose public
  * work shapes the platform.
  */
 export function VoicesPageContent() {
@@ -54,7 +54,7 @@ export function VoicesPageContent() {
               >
                 <p>
                   Movemental is stewarded by three founders —{" "}
-                  <Link href="/team" className="font-medium text-primary underline-offset-4 hover:underline">
+                  <Link href="/about" className="font-medium text-primary underline-offset-4 hover:underline">
                     Brad Brisco, Alan Hirsch, and Joshua Shepherd
                   </Link>{" "}
                   — and shaped in conversation with trusted movement leaders whose public work
@@ -69,7 +69,7 @@ export function VoicesPageContent() {
                   <Link href="#voices">Meet the trusted voices</Link>
                 </Button>
                 <Button asChild variant="ghost" size="lg">
-                  <Link href="/team">Read about the team</Link>
+                  <Link href="/about">Read about the team</Link>
                 </Button>
               </RevealOnScroll>
             </div>
@@ -125,7 +125,7 @@ export function VoicesPageContent() {
             </p>
             <p className="text-sm">
               <Link
-                href="/team"
+                href="/about"
                 className="font-medium text-primary underline-offset-4 hover:underline"
               >
                 Team
@@ -223,7 +223,7 @@ export function VoicesPageContent() {
           </p>
         }
         primaryCta={{ label: "Read the fragmentation story", href: "/fragmentation" }}
-        secondaryCta={{ label: "Meet the team", href: "/team" }}
+        secondaryCta={{ label: "Meet the team", href: "/about" }}
         tertiaryCta={{ label: "Start a conversation", href: "/contact" }}
       />
     </div>

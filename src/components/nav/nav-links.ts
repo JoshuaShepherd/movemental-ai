@@ -354,7 +354,7 @@ export const primaryNavGroups: NavGroup[] = [
     kind: "menu",
     id: "about",
     label: "About",
-    activeWhenPathMatches: ["/about", "/team", "/voices", "/faq", "/contact"],
+    activeWhenPathMatches: ["/about", "/voices", "/faq", "/contact"],
     columns: [
       {
         id: "about-movemental",
@@ -363,12 +363,7 @@ export const primaryNavGroups: NavGroup[] = [
           {
             label: "About",
             href: "/about",
-            description: "What we are and why we exist",
-          },
-          {
-            label: "Team",
-            href: "/team",
-            description: "Who is behind the work",
+            description: "Founders, origin, and the commitments behind the path",
           },
           {
             label: "Movement Voices",
@@ -466,7 +461,6 @@ export const siteNavSections: NavSection[] = [
     title: "Trust & next step",
     links: [
       { label: "About", href: "/about" },
-      { label: "Team", href: "/team" },
       { label: "Movement Voices", href: "/voices" },
       { label: "FAQ", href: "/faq" },
       { label: "Contact", href: "/contact" },

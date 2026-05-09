@@ -340,7 +340,7 @@ export function VoiceDetailPageContent({ voice }: Props) {
           </p>
         }
         primaryCta={{ label: "Read the fragmentation story", href: "/fragmentation" }}
-        secondaryCta={{ label: "Meet the team", href: "/team" }}
+        secondaryCta={{ label: "Meet the founders", href: "/about" }}
         tertiaryCta={{ label: "Start a conversation", href: "/contact" }}
       />
     </div>

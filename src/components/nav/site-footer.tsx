@@ -73,14 +73,6 @@ export function SiteFooter() {
             </li>
             <li>
               <Link
-                href="/team"
-                className="decoration-primary/30 underline-offset-4 transition-colors hover:text-primary hover:underline hover:decoration-primary"
-              >
-                Team
-              </Link>
-            </li>
-            <li>
-              <Link
                 href="/voices"
                 className="decoration-primary/30 underline-offset-4 transition-colors hover:text-primary hover:underline hover:decoration-primary"
               >

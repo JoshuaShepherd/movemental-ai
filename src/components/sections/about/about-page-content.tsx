@@ -1074,10 +1074,10 @@ export function AboutPageContent() {
             className="mt-[clamp(2rem,4vw,2.5rem)] text-[0.95rem] text-muted-foreground"
           >
             <Link
-              href="/team"
+              href="/about"
               className="border-b border-border pb-px font-medium text-foreground transition-colors hover:border-foreground"
             >
-              See full team &rarr;
+              Meet the founders &rarr;
             </Link>
           </RevealOnScroll>
         </Container>

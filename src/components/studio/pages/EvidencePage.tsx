@@ -162,7 +162,7 @@ export function EvidencePage() {
                      <p className="text-[0.98rem] leading-relaxed text-muted-foreground">Pressure-tested continuously by our network of Trusted Voices—practitioners actively executing on the ground.</p>
                   </div>
                </div>
-               <Link href="/team" className="btn-pill btn-pill--ghost">Meet the team</Link>
+               <Link href="/about" className="btn-pill btn-pill--ghost">Meet the founders</Link>
             </Reveal>
          </Container>
       </section>

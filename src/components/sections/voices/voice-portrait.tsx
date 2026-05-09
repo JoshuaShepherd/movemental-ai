@@ -10,8 +10,6 @@ type Props = {
 
 /**
  * Editorial portrait used by `VoiceCard` and the per-voice detail page.
- * Mirrors `TeamPortrait` in `team-page-content.tsx` so /team and /voices stay
- * visually parallel while remaining distinct sections of the site.
  */
 export function VoicePortrait({
   imageSrc,

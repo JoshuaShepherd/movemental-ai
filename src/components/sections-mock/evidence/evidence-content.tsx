@@ -382,8 +382,8 @@ function PeopleBehindItFold() {
         </div>
 
         <div className="path-section__cta" style={{ marginTop: "2rem" }}>
-          <BtnPill href="/team" variant="ghost">
-            Meet the team
+          <BtnPill href="/about" variant="ghost">
+            Meet the founders
           </BtnPill>
         </div>
       </div>
