@@ -37,7 +37,9 @@
       "WebSearch",
       "WebFetch(domain:www.subsplash.com)",
       "Skill(typography-polish)",
-      "Skill(typography-polish:*)"
+      "Skill(typography-polish:*)",
+      "Bash(cat ~/.claude/projects/*/tool-results/bgxunzncs.txt | sort > /tmp/components_full.txt && wc -l /tmp/components_full.txt)",
+      "Read(//home/josh/.claude/projects/**)"
     ],
     "additionalDirectories": [
       "/Users/joshuashepherd/Desktop/dev/repos/movemental-sites/alan-hirsch/.claude/skills",

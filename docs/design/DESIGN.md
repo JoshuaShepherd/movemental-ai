@@ -387,8 +387,29 @@ Tailwind exposes these as **`duration-fast` / `duration-normal` / `duration-slow
 | `Timeline` / `TimelineItem` | `timeline.tsx` | Vertical process / roadmap with primary node + spine between items. |
 | `PullQuote` | `pull-quote.tsx` | L2b attributed quotation; variants `default` and `midnight`. |
 | `TestimonialRail` / `TestimonialSlide` | `testimonial-rail.tsx` | Horizontal scroll-snap rail of `SurfaceCard` quotes; no auto-advance (reduced-motion safe). |
+| `TopographicHero` | `studio/hero/TopographicHero.tsx` | The midnight / topographic hero on the home page. Eyebrow / italic display / lede / CTA-row composition with the home terrain image as ambient backdrop. |
+| `LightTextureHero` | `studio/hero/LightTextureHero.tsx` | Light-default companion to `TopographicHero`. Same terrain image inverted to dark linework with `mix-blend-multiply` over cream paper. Use on light-themed marketing pages where a topographic hero is wanted but a midnight band is wrong. |
 
 Each primitive sets a `data-slot` attribute for debugging and stable styling hooks.
+
+### 7.1 Editorial Stitch palette (composed primitives)
+
+Reusable cards, quotes, CTAs, and intros translated from the Stitch design-tool galleries. Authored against the [stitch-to-react migration prompt](../build/prompts/stitch-to-react-migration.md); semantic tokens only, lucide icons (not Material), `data-slot` attributes for debugging. All exports live at `@/components/editorial-stitch`.
+
+| Component | File | Purpose |
+| --------- | ---- | ------- |
+| `AtmosphericMediaCard` | `editorial-stitch/atmospheric-media-card.tsx` | Full-bleed image card with gradient scrim, icon anchor, `ArrowLink` CTA. Min height 28rem. Use as a magazine-style feature card. |
+| `DotTextureCard` | `editorial-stitch/dot-texture-card.tsx` | Tonal "dot field" surface with side media. Pattern uses `var(--outline)` so the texture stays on the semantic ramp. |
+| `IconFeatureCard` | `editorial-stitch/icon-feature-card.tsx` | Icon-forward feature panel on a lifted inner surface (Ghost Lift). Requires per-card `eyebrow`. Pair with §12 Cards. |
+| `MidnightStatementQuote` | `editorial-stitch/midnight-statement-quote.tsx` | Midnight band pull-quote with decorative `Quote` watermark. Distinct from `PullQuote variant="midnight"` (bar variant) — use this when the quote is the section's full editorial moment, not an inline quotation. |
+| `GhostCtaPanel` | `editorial-stitch/ghost-cta-panel.tsx` | Centered Ghost Lift CTA slab — `shadow-ambient` + a single primary gradient button. **Single CTA only.** Multi-CTA closing panels stay bespoke. |
+| `EditorialShowcaseIntro` | `editorial-stitch/showcase-intro.tsx` | Page-level intro lockup: eyebrow + display + description, left or center. Pass `titleAs="h2"` when the page already has an `h1`. |
+| `EditorialPreviewWell` | `editorial-stitch/preview-well.tsx` | Tonal well for nesting nav / layout previews. |
+| `StitchGlassTopBar` | `editorial-stitch/stitch-glass-top-bar.tsx` | Fixed glass top bar for **focused flows / assess-only layouts**. Marketing pages keep `SiteNav` from `(site)/layout.tsx`. |
+
+**When to reach for one.** Before authoring a new card, quote, or intro lockup on a marketing page, check whether one of the above already covers the pattern. Improvising over the palette is the most common way the design system fragments. Conversely, **do not force a fit**: the green-light conditions in the [editorial-stitch promotion prompt](../build/prompts/editorial-stitch-and-light-texture-hero-promotion.md) §4 are load-bearing — numerals are not icons, multi-CTA is not single-CTA, midnight is not light. If the live pattern doesn't satisfy all green-lights, leave the existing code and file the gap in the palette gap log.
+
+A 2026-05-08 audit ([`docs/build/plans/editorial-stitch-promotion-audit-2026-05-08.md`](../build/plans/editorial-stitch-promotion-audit-2026-05-08.md)) found the live marketing tree currently has zero qualifying swaps — pages were authored with their own idioms (numerals, comparison columns, multi-CTA panels) that the palette doesn't yet cover. The components remain canonical for new work.
 
 ---
 
