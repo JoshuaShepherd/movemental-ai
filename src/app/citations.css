@@ -1,10 +1,9 @@
 /* ---------------------------------------------------------------------------
  * Citation system (Ledger edition).
  *
- * Inline highlighter chips, popovers, body marker underline, and the bottom
- * references rail. Visual contract is the mockup at
- * `docs/html/home-citations-ledger.html` — re-translate from there if anything
- * drifts.
+ * Inline highlighter chips, popovers, and body marker underline. Bibliography
+ * rows moved to `/footnotes` (EEAT registry). Ledger chip visuals still follow
+ * `docs/html/home-citations-ledger.html` where they overlap.
  *
  * Tokens used (declared in globals.css):
  *   --cite-hl, --cite-hl-strong, --cite-hl-ink, --cite-hl-soft.
@@ -144,51 +143,14 @@
   transform: translate(-50%, 0);
 }
 
-.cite__pop__source {
-  display: block;
-  font-size: 0.66rem;
-  font-weight: 600;
-  letter-spacing: var(--tracking-eyebrow);
-  text-transform: uppercase;
-  color: var(--cite-hl-ink);
-  margin-bottom: 0.5rem;
-}
-
-.cite__pop__source::before {
-  content: attr(data-tag);
-  display: inline-block;
-  background: var(--cite-hl);
-  color: var(--cite-hl-ink);
-  padding: 0.18em 0.55em;
-  border-radius: 9999px;
-  margin-right: 0.5rem;
-  font-size: 0.62rem;
-}
-
-.cite__pop__claim {
-  margin: 0 0 0.65rem;
-  font-weight: 500;
-  line-height: 1.55;
-}
-
-.cite__pop__claim strong {
-  font-weight: 600;
+/* Tooltip body — reader-facing prose only (matches EEAT registry footnotes). */
+.cite__pop__footnote {
+  margin: 0;
+  font-family: var(--font-serif, ui-serif, Georgia, serif);
+  font-size: 0.88rem;
+  font-weight: 400;
+  line-height: 1.6;
   color: var(--foreground);
-}
-
-.cite__pop__meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem 0.85rem;
-  font-size: 0.72rem;
-  color: var(--muted-foreground);
-  margin-top: 0.4rem;
-}
-
-.cite__pop__meta span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
 }
 
 .cite__pop__link {

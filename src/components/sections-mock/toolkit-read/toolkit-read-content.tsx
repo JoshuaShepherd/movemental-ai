@@ -7,9 +7,10 @@
  * print pipeline is chosen later, the PDF generator should consume the same
  * data tables and JSX defined here; do not maintain a parallel copy.
  *
- * Citations are wired through the same `<CitationsProvider />` chip + rail
- * mechanism the home page uses. Every research claim in this file traces to
- * a row in `src/lib/citations/claims.ts`. Do NOT invent or paraphrase a
+ * Citations use `<CitationsProvider />` plus inline `<Cite />` chips. Tooltip
+ * prose and bibliography entries live in `eeat-site-claims.json` and on
+ * `/footnotes`. Every research claim traces to `src/lib/citations/claims.ts`.
+ * Do NOT invent or paraphrase a
  * statistic without first adding the corresponding claim to that catalog
  * with a verified source. The Movemental Research Corpus
  * (`docs/research/state-of-ai-2026/movemental-research-corpus-v1.md`)
@@ -24,7 +25,7 @@
 
 import Link from "next/link";
 
-import { Cite, CitationsProvider, ReferencesRail } from "@/components/citations";
+import { Cite, CitationsProvider } from "@/components/citations";
 import type { CitationId } from "@/lib/citations/claims";
 import { Container } from "@/components/studio/Container";
 import { Reveal } from "@/components/studio/Reveal";
@@ -32,7 +33,7 @@ import { Section } from "@/components/primitives";
 import { ToolkitOpenButton } from "@/components/toolkit/ToolkitOpenButton";
 
 /* -------------------------------------------------------------------------- */
-/*  Citation order — chip numbers and the references rail track this array.  */
+/*  Citation order — chip numbers follow this array (document order).        */
 /*  Add new chips at the position they are first cited in document order.    */
 /* -------------------------------------------------------------------------- */
 
@@ -481,7 +482,6 @@ export function ToolkitReadContent() {
       <MvpPreview />
       <NamedRefusals />
       <BackMatter />
-      <ReferencesRail />
     </CitationsProvider>
   );
 }

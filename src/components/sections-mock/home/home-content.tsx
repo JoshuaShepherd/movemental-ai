@@ -9,15 +9,12 @@
  *   Final CTA (action).
  *
  * Citations: where existing copy makes a statistical claim, an inline
- * `<Cite />` chip is wired through `<CitationsProvider />`. The page closes
- * with `<ReferencesRail />` listing every chip's source. See
- * `docs/build/prompts/inline-citation-system-with-references-rail.md`.
+ * `<Cite />` chip is wired through `<CitationsProvider />`. Tooltip copy and
+ * bibliography-style sources live in `src/lib/citations/eeat-site-claims.json`
+ * and render on `/footnotes`. See `docs/build/prompts/site-footnotes-eeat-registry.md`.
  */
 
-import {
-  CitationsProvider,
-  ReferencesRail,
-} from "@/components/citations";
+import { CitationsProvider } from "@/components/citations";
 import type { CitationId } from "@/lib/citations/claims";
 import { TopographicHero } from "@/components/studio/hero/TopographicHero";
 
@@ -27,8 +24,8 @@ import { FinalCta } from "./final-cta";
 import { PathFold } from "./path-fold";
 
 /**
- * Page-scoped citation order. Listed in document order so chip numbers and
- * the references rail line up. Each entry corresponds to a single statistical
+ * Page-scoped citation order. Listed in document order so chip numbers line up.
+ * Each entry corresponds to a single statistical
  * claim made by the existing copy on this page; framework / values / slogan
  * lines are intentionally not chipped.
  *
@@ -50,7 +47,6 @@ export function HomeContent() {
       <PathFold />
       <CredibilityFold />
       <FinalCta />
-      {HOME_CLAIMS.length > 0 ? <ReferencesRail /> : null}
     </CitationsProvider>
   );
 }

@@ -13,12 +13,11 @@ import type { CitationId } from "@/lib/citations/claims";
  *
  *   <CitationsProvider claims={HOME_CLAIMS}>
  *     <HeroLedger />
- *     <ReferencesRail />
  *   </CitationsProvider>
  *
  * `<Cite />` calls `useCitationNumber(claimId)` to look up its index in the
- * array (1-based) and renders that as the chip number. `<ReferencesRail />`
- * iterates the same array to render the matching `<ol>`. The provider is
+ * array (1-based) and renders that as the chip number. Full bibliography rows
+ * live on `/footnotes`. The provider is
  * pure derivation — no state, no effects — so SSR renders the right numbers
  * on first paint and the page does not flicker.
  */
@@ -62,7 +61,7 @@ export function CitationsProvider({
 
 /**
  * Strict accessor — throws when no provider is present. Use from components
- * that *require* citations (e.g. `<ReferencesRail />`).
+ * that *require* citations (e.g. rail-less pages that still chip statistics).
  */
 export function useCitations(): CitationsContextValue {
   const ctx = useContext(CitationsContext);

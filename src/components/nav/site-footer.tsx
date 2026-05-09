@@ -113,6 +113,14 @@ export function SiteFooter() {
             </li>
             <li>
               <Link
+                href="/footnotes"
+                className="decoration-primary/30 underline-offset-4 transition-colors hover:text-primary hover:underline hover:decoration-primary"
+              >
+                Claims and sources
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/contact"
                 className="decoration-primary/30 underline-offset-4 transition-colors hover:text-primary hover:underline hover:decoration-primary"
               >

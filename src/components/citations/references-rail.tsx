@@ -8,12 +8,10 @@ import { Container, Section } from "@/components/primitives";
 import { useCitations } from "./citations-provider";
 
 /**
- * `<ReferencesRail />` — the page-closing references list.
+ * `<ReferencesRail />` — legacy page-closing references list (Ledger edition).
  *
- * Iterates the same array the `<CitationsProvider />` was given so the
- * numbers in the chips and the `<ol>` here line up exactly. Each `<li>`
- * carries `id="ref-{claimId}"` so the chip's "See source ↗" anchor lands on
- * the correct row.
+ * Prefer `/footnotes` + EEAT registry for new work; avoid mounting this above
+ * the global footer. Kept for archived compositions and design previews.
  */
 
 export function ReferencesRail({ note }: { note?: string } = {}) {

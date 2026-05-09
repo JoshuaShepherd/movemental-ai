@@ -1,0 +1,556 @@
+[
+  {
+    "id": "home-ai-already-inside-org",
+    "rank": 1,
+    "page": "/",
+    "claimType": "Purported fact",
+    "claim": "AI is already inside your organization.",
+    "cite": {
+      "author": "Virtuous & Fundraising.AI",
+      "title": "The 2026 Nonprofit AI Adoption Report",
+      "date": "February 2026",
+      "detail": "Survey of 346 nonprofit organizations.",
+      "url": "https://virtuous.org/resource/the-2026-nonprofit-ai-adoption-report-download/"
+    },
+    "footnote": "In this benchmark, ninety-two percent of nonprofits report using AI in some capacity, while much of that use is described as individual and reactive rather than organization-wide and governed. That combination is what researchers mean when they say tools have arrived before the rulebook—exactly the situation your sentence names.",
+    "citationIds": [
+      "nonprofit-92-adoption"
+    ]
+  },
+  {
+    "id": "home-human-foundation-workflow",
+    "rank": 1,
+    "page": "/",
+    "claimType": "Purported fact",
+    "claim": "Human foundation precedes technological implementation (workflow redesign correlate).",
+    "cite": {
+      "author": "McKinsey & Company",
+      "title": "The State of AI in 2025: Agents, Innovation, and Transformation",
+      "date": "November 2025",
+      "detail": "Survey of 1,993 organizations across 105 countries.",
+      "url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai"
+    },
+    "footnote": "McKinsey’s analysis ties meaningful financial impact from AI to organizations that have redesigned workflows—not merely deployed models. Readers can fairly hear your ordering of stages as tracking that finding: structural and human readiness comes before scaling technical solutions.",
+    "citationIds": [
+      "mckinsey-workflow-redesign"
+    ]
+  },
+  {
+    "id": "home-high-performer-tech-freeze",
+    "rank": 1,
+    "page": "/",
+    "claimType": "Purported fact",
+    "claim": "Most organizations jump straight to tech or freeze; ~5–7% high-performer cohort.",
+    "cite": {
+      "author": "McKinsey & Company; Boston Consulting Group; MIT NANDA Initiative",
+      "title": "Convergent surveys on AI adoption versus realized value (2025)",
+      "date": "2025",
+      "detail": "McKinsey n = 1,993 · BCG n = 1,250 firms · MIT NANDA interviews and deployment review.",
+      "url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai"
+    },
+    "footnote": "Independent studies in the corporate and nonprofit literature repeatedly find broad experimentation paired with a narrow band reporting strong outcomes—often summarized as roughly five to seven percent of organizations in a “high performer” posture. Your language compresses that pattern; footnotes on the live site can name each study when you quote a number.",
+    "citationIds": [
+      "high-performer-cohort-5-7"
+    ]
+  },
+  {
+    "id": "home-safety-nist-rmf",
+    "rank": 1,
+    "page": "/",
+    "claimType": "Opinion",
+    "claim": "Safety first — governance that answers the questions your people are asking.",
+    "cite": {
+      "author": "National Institute of Standards and Technology (NIST)",
+      "title": "AI Risk Management Framework (AI RMF 1.0)",
+      "date": "January 2023",
+      "detail": "Voluntary U.S. consensus framework for managing AI risks.",
+      "url": "https://www.nist.gov/itl/ai-risk-management-framework"
+    },
+    "footnote": "NIST’s framework is written so that boards and operating leaders can ask repeatable questions about risk, trustworthiness, and accountability before systems spread. It does not dictate theology or mission, but it gives civil-society organizations a publicly recognized vocabulary for what “Safety” means in practice.",
+    "citationIds": []
+  },
+  {
+    "id": "home-staged-maturity-vatican",
+    "rank": 1,
+    "page": "/",
+    "claimType": "Opinion",
+    "claim": "Sandbox, Skills, Solutions — staged maturity.",
+    "cite": {
+      "author": "Vatican (Dicastery for the Doctrine of the Faith and Dicastery for Culture and Education)",
+      "title": "Antiqua et Nova: Note on the Relationship Between AI and Human Intelligence",
+      "date": "January 28, 2025",
+      "detail": "",
+      "url": "https://www.vatican.va/roman_curia/congregations/cfaith/documents/rc_ddf_doc_20250128_antiqua-et-nova_en.html"
+    },
+    "footnote": "The note insists that artificial intelligence should complement human intelligence rather than replace its moral and relational depth, and warns against deskilling and surrendering judgment to machines. That ethical stance aligns with treating experimentation and formation as stages before wholesale automation—without claiming any one vendor methodology.",
+    "citationIds": [
+      "antiqua-et-nova-complement"
+    ]
+  },
+  {
+    "id": "home-credibility-relational-pew",
+    "rank": 1,
+    "page": "/",
+    "claimType": "Opinion",
+    "claim": "Credibility is increasingly relational in an AI-saturated world.",
+    "cite": {
+      "author": "Pew Research Center",
+      "title": "Americans’ Views on Identifying AI Use in What They See and Read",
+      "date": "June 2025",
+      "detail": "Survey of 5,023 U.S. adults (June 9–15, 2025 fieldwork); reported Sept. 2025.",
+      "url": "https://www.pewresearch.org/science/2025/09/17/how-americans-view-ai-and-its-impact-on-people-and-society/"
+    },
+    "footnote": "Pew finds that large majorities of Americans say it matters whether images, video, and text are human- or AI-made, while only a minority feel confident they can tell the difference. That gap between importance and confidence is one rigorous way to describe why credibility today travels through trusted people and institutions—not through polish alone.",
+    "citationIds": []
+  },
+  {
+    "id": "home-beginners-exhortation",
+    "rank": 1,
+    "page": "/",
+    "claimType": "Opinion",
+    "claim": "We're all beginners; lead anyway — start with safety; build for movement.",
+    "cite": null,
+    "footnote": "This line is pastoral and rhetorical rather than a statistical claim. On the public site it gains credibility when it sits beside named surveys (above) and named governance frameworks—not when it pretends to be a finding from a lab.",
+    "citationIds": []
+  },
+  {
+    "id": "home-tailored-audiences-corpus",
+    "rank": 1,
+    "page": "/",
+    "claimType": "Offer / positioning",
+    "claim": "Tailored for nonprofits, churches, institutions.",
+    "cite": {
+      "author": "Movemental",
+      "title": "Research Corpus: AI Adoption, Governance, and Formation (v1.0)",
+      "date": "May 2026",
+      "detail": "Internal synthesis with verified primary citations.",
+      "url": ""
+    },
+    "footnote": "The corpus gathers sector-specific adoption and governance evidence for nonprofits and churches (including Virtuous, TechSoup, Lifeway, Barna/Pushpay, and Barna/Gloo), alongside cross-sector studies used for context. It exists so sentences like yours can be unpacked into footnotes readers can actually verify.",
+    "citationIds": []
+  },
+  {
+    "id": "path-rush-vs-freeze",
+    "rank": 2,
+    "page": "/path",
+    "claimType": "Opinion",
+    "claim": "Rush ahead vs stand still — two traps; neither yields responsible adoption.",
+    "cite": {
+      "author": "Virtuous & Fundraising.AI",
+      "title": "The 2026 Nonprofit AI Adoption Report",
+      "date": "February 2026",
+      "detail": "n = 346 nonprofits.",
+      "url": "https://virtuous.org/resource/the-2026-nonprofit-ai-adoption-report-download/"
+    },
+    "footnote": "The nonprofit data describe both unchecked individual adoption and reactive use without shared workflows—patterns leadership teams often experience as “too fast in the shadows” or “frozen while staff move anyway.” Your two-column framing dramatizes tensions those surveys measure rather than invent.",
+    "citationIds": []
+  },
+  {
+    "id": "path-sequence-forvis-fiduciary",
+    "rank": 2,
+    "page": "/path",
+    "claimType": "Opinion",
+    "claim": "Sequence matters — skipping stages fragments the organization.",
+    "cite": {
+      "author": "Forvis Mazars",
+      "title": "AI Governance for Nonprofit Boards",
+      "date": "February 13, 2026",
+      "detail": "",
+      "url": "https://www.forvismazars.us/forsights/2026/02/ai-governance-for-nonprofit-boards"
+    },
+    "footnote": "Forvis Mazars argues that AI expands nonprofit boards’ traditional fiduciary duties—care, loyalty, and obedience—and should be folded into enterprise risk management rather than treated as a siloed tech experiment. That legal-and-governance framing supports treating early governance (Safety) as structurally prior to scaled deployment.",
+    "citationIds": [
+      "forvis-fiduciary-ai"
+    ]
+  },
+  {
+    "id": "path-no-master-ai-counsel",
+    "rank": 2,
+    "page": "/path",
+    "claimType": "Opinion",
+    "claim": "You don't need to master AI — you need a path for leading through it.",
+    "cite": null,
+    "footnote": "This is leadership counsel, not a citation to a single paper. Pair it on the site with McKinsey’s distinction between tool adoption and workflow transformation so readers see both humility about technique and seriousness about organizational change.",
+    "citationIds": []
+  },
+  {
+    "id": "evidence-staff-no-org-boundaries",
+    "rank": 3,
+    "page": "/evidence",
+    "claimType": "Purported fact",
+    "claim": "Staff use AI for email, summaries, content without org-set boundaries.",
+    "cite": {
+      "author": "Virtuous & Fundraising.AI",
+      "title": "The 2026 Nonprofit AI Adoption Report",
+      "date": "February 2026",
+      "detail": "",
+      "url": "https://virtuous.org/resource/the-2026-nonprofit-ai-adoption-report-download/"
+    },
+    "footnote": "The report documents pervasive use coupled with reactive, individual patterns and the absence of shared workflows for most respondents—precisely the “boundaries set by individual discretion” situation your copy describes.",
+    "citationIds": [
+      "nonprofit-81-adhoc"
+    ]
+  },
+  {
+    "id": "evidence-sensitive-data-liability-fbi",
+    "rank": 3,
+    "page": "/evidence",
+    "claimType": "Purported fact",
+    "claim": "Sensitive ministry or donor-adjacent data in consumer AI tools creates liability.",
+    "cite": {
+      "author": "FBI Internet Crime Complaint Center",
+      "title": "2025 IC3 Annual Report (AI-related complaints and losses)",
+      "date": "Published 2026",
+      "detail": "",
+      "url": "https://www.ic3.gov/"
+    },
+    "footnote": "Federal complaint data document large and rising dollar losses tied to AI-enabled fraud—including categories such as voice cloning—showing that “quiet liability” is not hypothetical at national scale. Pair this with your own counsel on what must never be pasted into unmanaged models.",
+    "citationIds": [
+      "fbi-ic3-893m"
+    ]
+  },
+  {
+    "id": "evidence-undisclosed-ai-authenticity-barna",
+    "rank": 3,
+    "page": "/evidence",
+    "claimType": "Opinion",
+    "claim": "Undisclosed AI damages authenticity and trust.",
+    "cite": {
+      "author": "Barna Group & Pushpay",
+      "title": "Technology for Missional Impact: State of Church Tech 2026",
+      "date": "March 2026",
+      "detail": "n = 1,306 U.S. church leaders.",
+      "url": "https://www.barna.com/research/church-leaders-ai-usage-concerns/"
+    },
+    "footnote": "Church leaders surveyed report intense concern that AI could erode congregational trust and undermine authenticity in preaching. Those attitudes supply empirical texture for why undisclosed machine-generated pastoral voice is not merely a technical breach but a relational one.",
+    "citationIds": []
+  },
+  {
+    "id": "evidence-llm-worldviews-gloo",
+    "rank": 3,
+    "page": "/evidence",
+    "claimType": "Opinion",
+    "claim": "Large language models carry embedded worldviews; uncritical use imports assumptions.",
+    "cite": {
+      "author": "Gloo",
+      "title": "Flourishing AI Christian (FAI-C) Benchmark",
+      "date": "December 2025",
+      "detail": "",
+      "url": "https://gloo.com/press/releases/gloo-unveils-the-first-benchmark-exposing-how-ai-misses-christian-worldview-and-values"
+    },
+    "footnote": "Gloo’s benchmark documents systematic gaps between leading models and Christian theological and ethical priorities across curated question sets—empirical support for the claim that models are not culturally neutral processors.",
+    "citationIds": []
+  },
+  {
+    "id": "evidence-skipping-safety-nist",
+    "rank": 3,
+    "page": "/evidence",
+    "claimType": "Opinion",
+    "claim": "Skipping Safety before Solutions invites breach and broken trust.",
+    "cite": {
+      "author": "National Institute of Standards and Technology (NIST)",
+      "title": "AI Risk Management Framework",
+      "date": "2023 (ongoing guidance)",
+      "detail": "",
+      "url": "https://www.nist.gov/itl/ai-risk-management-framework"
+    },
+    "footnote": "NIST’s framework is explicitly about managing risk across the lifecycle of AI systems—mapping, measuring, and governing before reliance scales. It gives readers an independent anchor for why “order” is not cosmetic.",
+    "citationIds": []
+  },
+  {
+    "id": "work-with-us-guided-path-corpus",
+    "rank": 4,
+    "page": "/work-with-us",
+    "claimType": "Offer",
+    "claim": "Guided path: safety, capability, mission-aligned solutions.",
+    "cite": {
+      "author": "Movemental",
+      "title": "Research Corpus v1.0 (problem framing)",
+      "date": "May 2026",
+      "detail": "",
+      "url": ""
+    },
+    "footnote": "The corpus narrative sections summarize convergent evidence that organizations adopt AI faster than they govern it and faster than they capture durable value—exactly the tension a staged consulting path claims to address.",
+    "citationIds": []
+  },
+  {
+    "id": "start-with-safety-already-inside-techsoup",
+    "rank": 5,
+    "page": "/start-with-safety",
+    "claimType": "Purported fact",
+    "claim": "AI is already being used inside your organization.",
+    "cite": {
+      "author": "TechSoup & Tapp Network",
+      "title": "State of AI in Nonprofits 2025",
+      "date": "January 2025",
+      "detail": "Survey of 1,321 nonprofit professionals.",
+      "url": "https://page.techsoup.org/ai-benchmark-report-2025"
+    },
+    "footnote": "TechSoup’s benchmark finds extremely high rates of AI awareness and exploration among surveyed nonprofits, with only a minority reporting a formal strategy—another angle on the same reality: usage and curiosity precede institution-wide guardrails.",
+    "citationIds": []
+  },
+  {
+    "id": "start-with-safety-shared-boundaries-playbook",
+    "rank": 5,
+    "page": "/start-with-safety",
+    "claimType": "Opinion",
+    "claim": "Safety gives leaders shared boundaries without panic.",
+    "cite": {
+      "author": "National Institute of Standards and Technology (NIST)",
+      "title": "AI Risk Management Framework Playbook",
+      "date": "Ongoing",
+      "detail": "",
+      "url": "https://www.nist.gov/itl/ai-risk-management-framework/nist-ai-rmf-playbook"
+    },
+    "footnote": "The Playbook translates the framework into actionable tasks—exactly the sort of structured calm your sentence promises when leaders fear either hype or paralysis.",
+    "citationIds": []
+  },
+  {
+    "id": "nonprofits-adoption-governance-snapshot",
+    "rank": 9,
+    "page": "/nonprofits",
+    "claimType": "Purported fact",
+    "claim": "Very high nonprofit AI use; low documented workflows; nearly half without governance policy.",
+    "cite": {
+      "author": "Virtuous & Fundraising.AI",
+      "title": "The 2026 Nonprofit AI Adoption Report",
+      "date": "February 2026",
+      "detail": "n = 346.",
+      "url": "https://virtuous.org/resource/the-2026-nonprofit-ai-adoption-report-download/"
+    },
+    "footnote": "Key figures from the study: ninety-two percent use AI in some capacity; eighty-one percent report individual rather than shared workflows; forty-seven percent report no AI governance policy; four percent report documented repeatable workflows. Together they justify urgency about collective standards.",
+    "citationIds": [
+      "nonprofit-47-no-policy"
+    ]
+  },
+  {
+    "id": "churches-using-policy-rare-barna",
+    "rank": 8,
+    "page": "/churches",
+    "claimType": "Purported fact",
+    "claim": "Pastors and churches are actively using or experimenting with AI; formal policies are rare.",
+    "cite": {
+      "author": "Barna Group & Pushpay",
+      "title": "Technology for Missional Impact: State of Church Tech 2026",
+      "date": "March 2026",
+      "detail": "n = 1,306 U.S. church leaders.",
+      "url": "https://www.barna.com/research/church-leaders-ai-usage-concerns/"
+    },
+    "footnote": "Sixty percent of church leaders personally use AI at least monthly; thirty-three percent say their church uses AI in ministry or operations; only five percent report an established AI policy—numbers that ground “shadow ministry AI” narratives in survey evidence rather than rumor.",
+    "citationIds": [
+      "barna-pushpay-church-tech-2026"
+    ]
+  },
+  {
+    "id": "churches-pastors-worry-lifeway",
+    "rank": 8,
+    "page": "/churches",
+    "claimType": "Purported fact",
+    "claim": "Large shares of pastors worry about reliability, disclosure, and whether AI is a fitting substitute for human ministry.",
+    "cite": {
+      "author": "Lifeway Research",
+      "title": "Pastors' Views on Artificial Intelligence",
+      "date": "September 2025 survey; released April 2026",
+      "detail": "n = 1,003 Protestant senior pastors.",
+      "url": "https://research.lifeway.com/2026/04/21/pastors-churchgoers-see-ai-as-concerning-and-confusing/"
+    },
+    "footnote": "Four in five pastors worry generated content must be edited for errors; three in five express concern about non-disclosure; fifty-five percent affirm that God has shared his Word through people and “AI isn’t a person.” Those findings lend empirical weight to ethics-first messaging.",
+    "citationIds": [
+      "lifeway-pastor-42-use"
+    ]
+  },
+  {
+    "id": "churches-composite-case-disclaimer",
+    "rank": 8,
+    "page": "/churches",
+    "claimType": "Disclaimer",
+    "claim": "Reconstructed case study — illustrative composite, not one named client.",
+    "cite": null,
+    "footnote": "Standard scholarly practice for composite illustrations is to label them clearly on the page itself so readers do not mistake narrative vividness for a testimonial. No survey substitutes for that honesty.",
+    "citationIds": []
+  },
+  {
+    "id": "faq-exposure-consumer-ai-virtuous",
+    "rank": 13,
+    "page": "/faq",
+    "claimType": "Purported fact",
+    "claim": "If staff already use consumer AI, the organization is already exposed.",
+    "cite": {
+      "author": "Virtuous & Fundraising.AI",
+      "title": "The 2026 Nonprofit AI Adoption Report",
+      "date": "February 2026",
+      "detail": "",
+      "url": "https://virtuous.org/resource/the-2026-nonprofit-ai-adoption-report-download/"
+    },
+    "footnote": "High measured prevalence of AI use among nonprofits implies that “no official AI program” does not mean “no AI touchpoints.” Exposure here means operational reality, not moral blame—a distinction worth keeping in the FAQ voice.",
+    "citationIds": []
+  },
+  {
+    "id": "faq-adaptive-leadership-smith",
+    "rank": 13,
+    "page": "/faq",
+    "claimType": "Opinion",
+    "claim": "This is adaptive leadership and formation, not primarily an IT ticket.",
+    "cite": {
+      "author": "James K. A. Smith",
+      "title": "You Are What You Love",
+      "date": "Brazos Press, 2016",
+      "detail": "",
+      "url": "https://bakerpublishinggroup.com/books/you-are-what-you-love/385920"
+    },
+    "footnote": "Smith’s argument that habits and technologies shape desire helps readers see AI adoption as a formation question—what kind of people and communities we become—not only a procurement question.",
+    "citationIds": []
+  },
+  {
+    "id": "faq-tools-culture-pink",
+    "rank": 13,
+    "page": "/faq",
+    "claimType": "Opinion",
+    "claim": "Tools shape culture; untethered tool use fragments norms.",
+    "cite": {
+      "author": "Daniel H. Pink",
+      "title": "Drive: The Surprising Truth About What Motivates Us",
+      "date": "Riverhead Books, 2009",
+      "detail": "",
+      "url": "https://www.danpink.com/books/drive/"
+    },
+    "footnote": "Pink’s synthesis on autonomy, mastery, and purpose is frequently used in adult learning design to explain why scattershot tool adoption without shared practice fails to build collective competence—supporting your cultural claim at the level of organizational psychology.",
+    "citationIds": [
+      "pink-drive"
+    ]
+  },
+  {
+    "id": "about-transparent-infrastructure-vatican",
+    "rank": 11,
+    "page": "/about",
+    "claimType": "Opinion",
+    "claim": "Transparent AI use; infrastructure not ghostwritten authorship.",
+    "cite": {
+      "author": "Vatican (Dicastery for the Doctrine of the Faith and Dicastery for Culture and Education)",
+      "title": "Antiqua et Nova",
+      "date": "January 28, 2025",
+      "detail": "",
+      "url": "https://www.vatican.va/roman_curia/congregations/cfaith/documents/rc_ddf_doc_20250128_antiqua-et-nova_en.html"
+    },
+    "footnote": "The note warns against treating AI as a substitute for human moral agency and encourages discernment about where machine assistance complements rather than supplants human responsibility—parallel to your distinction between infrastructure and authored voice.",
+    "citationIds": []
+  },
+  {
+    "id": "pathway-skills-kolb-formation",
+    "rank": 7,
+    "page": "/pathway/skills",
+    "claimType": "Opinion",
+    "claim": "Formation-led skills building (cohort learning).",
+    "cite": {
+      "author": "David A. Kolb",
+      "title": "Experiential Learning: Experience as the Source of Learning and Development",
+      "date": "Pearson, 1984 (2nd ed. 2014)",
+      "detail": "",
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/experiential-learning-experience-as-the-source-of-learning-and-development/P200000005942"
+    },
+    "footnote": "Kolb’s cycle—concrete experience, reflective observation, abstract conceptualization, active experimentation—is the standard academic basis for cohort-based adult learning. It explains to readers why “Skills” is framed as formation, not a one-hour webinar.",
+    "citationIds": [
+      "kolb-experiential"
+    ]
+  },
+  {
+    "id": "who-we-serve-consumer-llms-barna",
+    "rank": 17,
+    "page": "/who-we-serve",
+    "claimType": "Purported fact",
+    "claim": "Staff already use consumer LLMs when leadership has not set boundaries.",
+    "cite": {
+      "author": "Barna Group & Pushpay",
+      "title": "State of Church Tech 2026",
+      "date": "March 2026",
+      "detail": "",
+      "url": "https://www.barna.com/research/church-leaders-ai-usage-concerns/"
+    },
+    "footnote": "Personal monthly AI use among church leaders is common even while formal church-wide adoption and written policies lag—a church-facing illustration of the broader “shadow IT” pattern.",
+    "citationIds": []
+  },
+  {
+    "id": "who-we-serve-trust-afp",
+    "rank": 17,
+    "page": "/who-we-serve",
+    "claimType": "Opinion",
+    "claim": "Mission organizations trade in trust; automation choices affect relationships.",
+    "cite": {
+      "author": "Association of Fundraising Professionals",
+      "title": "Code of Ethical Standards (and related guidance on integrity in outreach)",
+      "date": "Ongoing",
+      "detail": "",
+      "url": "https://afpglobal.org/ethics"
+    },
+    "footnote": "Professional fundraising ethics foreground honesty, transparency, and stewardship of donor trust—canonical language for why undisclosed automation in constituent-facing work is not a niche IT concern.",
+    "citationIds": []
+  },
+  {
+    "id": "voices-trusted-practitioners",
+    "rank": 14,
+    "page": "/voices",
+    "claimType": "Opinion",
+    "claim": "Trusted practitioners anchor judgment about AI and formation.",
+    "cite": null,
+    "footnote": "Named leaders listed on the Voices page should carry short bibliographic lines (books, institutions, publisher pages) in the UI proper—footnotes here cannot replace primary bio verification each time you quote someone.",
+    "citationIds": []
+  },
+  {
+    "id": "movement-leaders-ecosystem-doctrine",
+    "rank": 15,
+    "page": "/movement-leaders",
+    "claimType": "Doctrine",
+    "claim": "Movement leaders are an ecosystem layer, not a fourth sales audience.",
+    "cite": {
+      "author": "Movemental",
+      "title": "Movement Leaders as Ecosystem Layer (strategy memorandum)",
+      "date": "Internal doctrine document",
+      "detail": "",
+      "url": ""
+    },
+    "footnote": "This memorandum defines information architecture and voice rules for how Movemental distinguishes implementation audiences from movement-leader ecology. Publish a reader-facing summary if you want external readers to verify the claim without internal file access.",
+    "citationIds": []
+  },
+  {
+    "id": "pricing-published-contractual",
+    "rank": 12,
+    "page": "/pricing",
+    "claimType": "Offer",
+    "claim": "Published prices for Safety, Sandbox, Skills, Solutions, Bundle.",
+    "cite": null,
+    "footnote": "Pricing is contractual fact: the authoritative “source” is the quote or order form the customer signs. On the site, match every dollar figure across pages so readers never see conflicting menus.",
+    "citationIds": []
+  },
+  {
+    "id": "editorial-retired-fragile-stats",
+    "rank": 99,
+    "page": "(editorial hygiene)",
+    "claimType": "Retired statistics",
+    "claim": "Do not publish uncited “68%” detection or “40–60% AI web” lines without primary sources.",
+    "cite": {
+      "author": "Movemental",
+      "title": "AI Credibility Crisis — Internal Evidence Synthesis",
+      "date": "April 2026",
+      "detail": "",
+      "url": ""
+    },
+    "footnote": "That memo traces how fragile headline numbers entered Movemental copy and points to stronger replacements—such as Pew’s importance-versus-confidence gap for detection, or detector-limited web prevalence studies—so public footnotes stay honest.",
+    "citationIds": []
+  },
+  {
+    "id": "home-ai-macro-stanford-index",
+    "rank": 1,
+    "page": "/",
+    "claimType": "Purported fact (macro context)",
+    "claim": "AI capability and adoption are moving quickly worldwide.",
+    "cite": {
+      "author": "Stanford Institute for Human-Centered AI",
+      "title": "AI Index Report",
+      "date": "2026 edition",
+      "detail": "",
+      "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report"
+    },
+    "footnote": "The AI Index compiles annual indicators on models, investment, and usage—useful backstop when you want readers to feel the sheer pace of change without leaning on any one vendor infographic.",
+    "citationIds": []
+  }
+]

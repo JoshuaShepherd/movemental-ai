@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claims, sources, and footnotes</title>
+<style>
+:root {
+  --bg: #fbfbf9;
+  --paper: #ffffff;
+  --ink: #1c1917;
+  --muted: #57534e;
+  --rule: #e7e5e4;
+  --accent: #0053db;
+  --fn-bar: #78716c;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.55; font-size: 16px; }
+header {
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+  padding: 2rem 1.25rem;
+}
+header .inner { max-width: 960px; margin: 0 auto; }
+header h1 {
+  margin: 0 0 0.75rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-family: Georgia, "Times New Roman", serif;
+}
+header .lede {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 52rem;
+}
+.wrap { max-width: 1280px; margin: 0 auto; padding: 1.25rem 1rem 3rem; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-bottom: 1.25rem; }
+#filter {
+  flex: 1;
+  min-width: 240px;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  font-size: 1rem;
+}
+#count { font-size: 0.875rem; color: var(--muted); }
+.legend {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+.legend strong { color: var(--ink); }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+}
+th, td {
+  text-align: left;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+th {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  background: #fafaf9;
+}
+tr:last-child td { border-bottom: none; }
+.rank { font-weight: 600; color: var(--accent); font-variant-numeric: tabular-nums; width: 3rem; }
+.page { font-size: 0.875rem; white-space: nowrap; font-family: ui-monospace, monospace; }
+.type { font-size: 0.8rem; color: var(--muted); max-width: 7rem; }
+.claim {
+  font-size: 0.95rem;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.45;
+}
+.citation {
+  padding: 0.85rem 1rem;
+  background: #fafaf9;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+}
+.cite-author { font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.25rem; }
+.cite-title { font-style: italic; font-size: 0.92rem; font-family: Georgia, serif; display: block; margin-bottom: 0.35rem; }
+.cite-meta { font-size: 0.8rem; color: var(--muted); display: block; margin-bottom: 0.5rem; line-height: 1.4; }
+.cite-link {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+}
+.cite-link:hover { text-decoration: underline; }
+.cite-none { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+.footnote {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: #44403c;
+  padding-left: 1.15rem;
+  border-left: 2px solid var(--fn-bar);
+  font-family: Georgia, "Times New Roman", serif;
+}
+footer {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.85rem;
+  color: var(--muted);
+  max-width: 44rem;
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="inner">
+    <h1>Claims, sources, and footnotes</h1>
+    <p class="lede">This table is meant to read like the bottom of a serious nonfiction chapter: the <strong>claim</strong> is what we assert on the site; the <strong>source</strong> is styled the way a reader should see it in a bibliography or citation drawer; the <strong>footnote</strong> explains what the evidence actually shows and how it connects to the claim—no staff-only jargon.</p>
+  </div>
+</header>
+<div class="wrap">
+  <div class="legend">
+    <strong>Source column.</strong> Author or organization first, then title in italics (handled by CSS), then date and any reader-relevant detail line. When a public link exists, you get a single clear “view publication” action.<br><br>
+    <strong>Footnote column.</strong> Written for the public: additional context, scope, and interpretation—like a book note—not instructions for editors.
+  </div>
+  <div class="toolbar">
+    <label for="filter" style="font-size:0.875rem;color:var(--muted)">Search</label>
+    <input type="search" id="filter" placeholder="Filter…" autocomplete="off">
+    <span id="count"></span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Page</th>
+        <th>Type</th>
+        <th>Claim</th>
+        <th>Source</th>
+        <th>Footnote</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+  <footer>
+    Matches the citations Movemental publishes on the live site. Where no external URL exists, the source line still names what a reader would ask for in principle—signed agreements, primary bios, or internal memoranda—while the footnote explains what to publish instead.
+  </footer>
+</div>
+<script type="application/json" id="claims-data">[{"rank": 1, "page": "/", "type": "Purported fact", "claim": "AI is already inside your organization.", "cite": {"author": "Virtuous & Fundraising.AI", "title": "The 2026 Nonprofit AI Adoption Report", "date": "February 2026", "detail": "Benchmark survey of 346 nonprofits.", "url": "https://virtuous.org/resource/the-2026-nonprofit-ai-adoption-report-download/"}, "footnote": "The survey finds ninety-two percent of nonprofits using AI in some capacity, with individual and reactive use dominating—so “already inside” is not speculation about the future; it describes present field conditions in their sample."}, {"rank": 1, "page": "/", "type": "Purported fact", "claim": "Human foundation precedes technological implementation (workflow redesign correlate).", "cite": {"author": "McKinsey & Company", "title": "The State of AI in 2025: Agents, Innovation, and Transformation", "date": "November 2025", "detail": "1,993 respondents · 105 countries.", "url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai"}, "footnote": "McKinsey reports that organizations seeing outsized returns are far more likely to have redesigned workflows—not merely plugged in models. That empirical pattern is what makes “human foundation first” more than a slogan: it tracks how value actually shows up in their data."}, {"rank": 1, "page": "/", "type": "Purported fact", "claim": "Broad experimentation, narrow slice reporting strong outcomes (~5–7% “high performer” pattern).", "cite": {"author": "McKinsey & Company; Boston Consulting Group; MIT NANDA Initiative", "title": "Independent 2025 studies on AI adoption and value capture", "date": "2025", "detail": "See McKinsey State of AI; BCG Widening AI Value Gap; MIT GenAI Divide.", "url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai"}, "footnote": "Readers should understand this as a convergent pattern across separate studies—enterprises and institutions reporting widespread pilots but only a small cohort claiming durable financial or capability gains. Your site should name each study wherever you print a percentage."}, {"rank": 1, "page": "/", "type": "Opinion", "claim": "Safety first — governance that answers the questions your people are asking.", "cite": {"author": "National Institute of Standards and Technology", "title": "Artificial Intelligence Risk Management Framework (AI RMF 1.0)", "date": "2023", "detail": "U.S. voluntary consensus standard.", "url": "https://www.nist.gov/itl/ai-risk-management-framework"}, "footnote": "NIST frames AI risk management as an organization-wide discipline—mapping, measuring, and governing risks before systems become entrenched. That is the same moral center as “Safety”: answerable criteria, not ad hoc heroics."}, {"rank": 1, "page": "/", "type": "Opinion", "claim": "Sandbox, Skills, Solutions — staged depth before scaled deployment.", "cite": {"author": "Holy See (Vatican)", "title": "Antiqua et Nova — Note on the Relationship Between AI and Human Intelligence", "date": "January 28, 2025", "detail": "", "url": "https://www.vatican.va/roman_curia/congregations/cfaith/documents/rc_ddf_doc_20250128_antiqua-et-nova_en.html"}, "footnote": "The text warns against replacing human moral agency and relational depth with automation, and against deskilling communities of practice. A staged path—experiment under constraint, form people, then systematize—is faithful to that caution without naming any commercial methodology."}, {"rank": 1, "page": "/", "type": "Opinion", "claim": "Credibility is increasingly relational in an AI-saturated information environment.", "cite": {"author": "Pew Research Center", "title": "Research on Americans and AI-generated content (importance vs. confidence)", "date": "2025", "detail": "Representative U.S. adult surveys on AI and society.", "url": "https://www.pewresearch.org/topic/science/science-issues/artificial-intelligence/"}, "footnote": "Pew’s 2025 reporting shows most Americans consider it important to distinguish AI- from human-made content, while many lack confidence they can do so—an empirical portrait of why trust shifts toward known people and institutions rather than anonymous polish."}, {"rank": 1, "page": "/", "type": "Opinion", "claim": "We're all beginners; lead anyway — start with safety; build for movement.", "cite": null, "footnote": "This is exhortation, not a statistic. Its credibility comes from tone and from sitting beside verifiable claims elsewhere on the page—not from pretending one study measured “beginnerhood.”"}, {"rank": 1, "page": "/", "type": "Purported fact (context)", "claim": "AI capability and investment are accelerating globally.", "cite": {"author": "Stanford Institute for Human-Centered AI", "title": "AI Index Report", "date": "2026", "detail": "Annual compendium of R&D, investment, and adoption indicators.", "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report"}, "footnote": "The AI Index aggregates cross-national indicators; readers treating AI as “someday” rather than “now” can be oriented here without leaning on any single vendor headline."}, {"rank": 2, "page": "/path", "type": "Opinion", "claim": "Rush ahead vs. stand still — two traps; real organizations oscillate between them.", "cite": {"author": "Virtuous & Fundraising.AI", "title": "The 2026 Nonprofit AI Adoption Report", "date": "February 2026", "detail": "n = 346 nonprofits.", "url": "https://virtuous.org/resource/the-2026-nonprofit-ai-adoption-report-download/"}, "footnote": "The report’s portrait—pervasive use, reactive patterns, missing shared workflows—matches leaders who feel they moved too fast in the shadows or froze while staff experimented anyway. The footnote grounds your metaphor in nonprofit field data."}, {"rank": 2, "page": "/path", "type": "Opinion", "claim": "Governance belongs with fiduciary duty — not in an IT silo.", "cite": {"author": "Forvis Mazars", "title": "AI Governance for Nonprofit Boards", "date": "February 13, 2026", "detail": "", "url": "https://www.forvismazars.us/forsights/2026/02/ai-governance-for-nonprofit-boards"}, "footnote": "The piece explicitly folds AI into traditional board duties of care, loyalty, and obedience—language directors recognize. That is the bridge from “Safety” to governance readers can take to the boardroom."}, {"rank": 2, "page": "/path", "type": "Opinion", "claim": "Skipping stages fragments trust and practice.", "cite": {"author": "National Institute of Standards and Technology", "title": "AI Risk Management Framework Playbook", "date": "Ongoing", "detail": "", "url": "https://www.nist.gov/itl/ai-risk-management-framework/nist-ai-rmf-playbook"}, "footnote": "The Playbook sequences practical tasks—identify context, map risks, measure, manage—before relying on systems at scale. It is an independent, plain-English analogue of why order is not optional."}, {"rank": 3, "page": "/evidence", "type": "Purported fact", "claim": "Staff already use AI for everyday writing and summarization; boundaries are often personal, not organizational.", "cite": {"author": "Virtuous & Fundraising.AI", "title": "The 2026 Nonprofit AI Adoption Report", "date": "February 2026", "url": "https://virtuous.org/resource/the-2026-nonprofit-ai-adoption-report-download/"}, "footnote": "High adoption with reactive, individual patterns means policies are often replaced by private judgment—exactly the “shadow” dynamic your Evidence section names."}, {"rank": 3, "page": "/evidence", "type": "Purported fact", "claim": "AI-enabled fraud and scams produce large, measurable harm.", "cite": {"author": "FBI Internet Crime Complaint Center", "title": "Annual Internet Crime Report (AI-related complaints and losses)", "date": "2026 publication (2025 data year)", "url": "https://www.ic3.gov/"}, "footnote": "Federal complaint data document nine-figure losses tied to AI-enabled schemes in recent reporting cycles—one hard anchor for why “quiet liability” language is not melodrama when counseling leaders."}, {"rank": 3, "page": "/evidence", "type": "Opinion", "claim": "Congregations and donors care intensely about authenticity and trust.", "cite": {"author": "Barna Group & Pushpay", "title": "Technology for Missional Impact: State of Church Tech 2026", "date": "March 2026", "detail": "1,306 U.S. church leaders.", "url": "https://www.barna.com/research/church-leaders-ai-usage-concerns/"}, "footnote": "Majorities worry AI could erode trust and undermine authentic preaching; those anxieties are survey-measured, not invented by consultants—your copy can cite them directly when you add inline citations."}, {"rank": 3, "page": "/evidence", "type": "Purported fact", "claim": "Leading models diverge from Christian theological and ethical priorities on structured tests.", "cite": {"author": "Gloo", "title": "Flourishing AI Christian (FAI-C) Benchmark", "date": "December 2025", "url": "https://gloo.com/press/releases/gloo-unveils-the-first-benchmark-exposing-how-ai-misses-christian-worldview-and-values"}, "footnote": "The benchmark uses curated question sets across dimensions of Christian belief and practice; it is empirical support for “not neutral” language without pretending every pastor needs a computer-science theorem."}, {"rank": 4, "page": "/work-with-us", "type": "Offer", "claim": "Facilitated path through Safety → Sandbox → Skills → Solutions.", "cite": {"author": "Movemental", "title": "Research Corpus v1.0 — verified adoption and governance synthesis", "date": "May 2026", "detail": "", "url": ""}, "footnote": "The corpus assembles the nonprofit and church statistics above plus cross-sector studies on the adoption–value gap; it is the intellectual warrant that your sequence responds to documented field conditions rather than to novelty alone."}, {"rank": 5, "page": "/start-with-safety", "type": "Purported fact", "claim": "Exploration is widespread even where formal strategy is thin.", "cite": {"author": "TechSoup & Tapp Network", "title": "State of AI in Nonprofits 2025", "date": "January 2025", "detail": "1,321 nonprofit professionals surveyed.", "url": "https://page.techsoup.org/ai-benchmark-report-2025"}, "footnote": "TechSoup reports extremely broad exploration of AI tools alongside low rates of formal strategy for many respondents—another angle on “already happening before the slide deck exists.”"}, {"rank": 8, "page": "/churches", "type": "Purported fact", "claim": "Personal AI use among church leaders outpaces church-wide policy and documentation.", "cite": {"author": "Barna Group & Pushpay", "title": "State of Church Tech 2026", "date": "March 2026", "url": "https://www.barna.com/research/church-leaders-ai-usage-concerns/"}, "footnote": "Sixty percent use AI personally at least monthly; only five percent report an established church AI policy—the gap is the quantitative spine for pastoral “shadow AI” stories told responsibly."}, {"rank": 8, "page": "/churches", "type": "Purported fact", "claim": "Pastors register deep unease about reliability, disclosure, and spiritual fitness of AI.", "cite": {"author": "Lifeway Research", "title": "Pastors' Views on Artificial Intelligence", "date": "September 2025 fieldwork; April 2026 release", "detail": "1,003 Protestant senior pastors.", "url": "https://research.lifeway.com/2026/04/21/pastors-churchgoers-see-ai-as-concerning-and-confusing/"}, "footnote": "Large majorities worry about errors and sourcing; a majority explicitly resist treating AI as interchangeable with human ministry—numbers your ethics sections can quote verbatim with a footnote."}, {"rank": 8, "page": "/churches", "type": "Disclaimer", "claim": "Composite case study — illustrative, not a single identified church.", "cite": null, "footnote": "Readers deserve a visible label that the narrative is a composite; integrity here increases trust more than any statistic. Footnotes cannot substitute for clear on-page disclosure."}, {"rank": 9, "page": "/nonprofits", "type": "Purported fact", "claim": "Nine in ten nonprofits use AI; fewer than half have a governance policy; shared workflows are rare.", "cite": {"author": "Virtuous & Fundraising.AI", "title": "The 2026 Nonprofit AI Adoption Report", "date": "February 2026", "url": "https://virtuous.org/resource/the-2026-nonprofit-ai-adoption-report-download/"}, "footnote": "Ninety-two percent report AI use; forty-seven percent report no governance policy; eighty-one percent describe individual rather than shared workflows—three statistics that land the nonprofit case in one breath."}, {"rank": 10, "page": "/institutions", "type": "Purported fact (sector)", "claim": "Higher education and seminary contexts face syllabus integrity, assessment, and cross-disciplinary alignment pressures as AI spreads.", "cite": {"author": "Movemental", "title": "Research Corpus v1.0 — § higher education & theological education snapshot", "date": "May 2026", "url": ""}, "footnote": "The corpus summarizes published discussions of academic integrity and institutional policy—not as a substitute for your seminary’s own faculty vote, but as peer-context for why institutions need shared guardrails."}, {"rank": 11, "page": "/about", "type": "Opinion", "claim": "AI should complement human judgment and voice rather than forge public teaching under someone’s name.", "cite": {"author": "Holy See (Vatican)", "title": "Antiqua et Nova", "date": "2025", "url": "https://www.vatican.va/roman_curia/congregations/cfaith/documents/rc_ddf_doc_20250128_antiqua-et-nova_en.html"}, "footnote": "The note’s insistence on complementarity and its warnings about deskilling give a primary ecclesial source for Movemental’s “infrastructure, not ghostwriting” posture—readable in plain English alongside Protestant audiences when framed carefully."}, {"rank": 11, "page": "/about", "type": "Purported fact (biography)", "claim": "Founders’ books, roles, and institutional affiliations.", "cite": {"author": "Publisher and employer primary pages", "title": "Author bibliographies and institutional appointments (e.g., Lifeway, NAMB, publisher catalogs)", "date": "Varies", "url": ""}, "footnote": "Readers verify people through primary bibliographies and institutional bios—not through an internal markdown file. Your live About page should link each bold claim to its checkable home."}, {"rank": 12, "page": "/pricing", "type": "Offer", "claim": "Listed dollar prices for stages and bundles.", "cite": {"author": "Movemental customer agreements", "title": "Executed quotes, statements of work, and checkout terms", "date": "As dated per engagement", "url": ""}, "footnote": "The only authoritative source for price is what a buyer signs. The website should mirror that exactly and stay internally consistent across every route (some pages have historically diverged—readers notice)."}, {"rank": 13, "page": "/faq", "type": "Purported fact", "claim": "High prevalence means “we don’t have an AI program” often coexists with active tool use.", "cite": {"author": "Virtuous & Fundraising.AI", "title": "The 2026 Nonprofit AI Adoption Report", "date": "February 2026", "url": "https://virtuous.org/resource/the-2026-nonprofit-ai-adoption-report-download/"}, "footnote": "When ninety-two percent of surveyed nonprofits report AI use, “exposure” is less a prediction than a description—your FAQ can cite the survey directly."}, {"rank": 13, "page": "/faq", "type": "Opinion", "claim": "Formation and habit—not only policy pdf’s—shape how organizations adopt tools.", "cite": {"author": "James K. A. Smith", "title": "You Are What You Love", "date": "Brazos Press, 2016", "url": "https://bakerpublishinggroup.com/books/you-are-what-you-love/385920"}, "footnote": "Smith’s account of formation through practices and desires gives readers a serious philosophical paragraph beneath the FAQ answer—why Movemental speaks of discipleship-like patience rather than checkbox compliance."}, {"rank": 13, "page": "/faq", "type": "Opinion", "claim": "Intrinsic motivation matters for adult skill-building.", "cite": {"author": "Daniel H. Pink", "title": "Drive: The Surprising Truth About What Motivates Us", "date": "Riverhead Books, 2009", "url": "https://www.danpink.com/books/drive/"}, "footnote": "Autonomy, mastery, and purpose are widely cited in learning design; they explain why “Skills” is framed as capability and dignity, not vendor badges."}, {"rank": 7, "page": "/pathway/skills", "type": "Opinion", "claim": "Cohort learning modeled on experiential learning cycles.", "cite": {"author": "David A. Kolb", "title": "Experiential Learning", "date": "Pearson, 1984 (rev. 2014)", "url": "https://www.pearson.com/en-us/subject-catalog/p/experiential-learning-experience-as-the-source-of-learning-and-development/P200000005942"}, "footnote": "Kolb’s learning cycle is standard in adult-education footnotes; it tells readers your Skills stage is grounded in a named pedagogy, not a made-up acronym factory."}, {"rank": 17, "page": "/who-we-serve", "type": "Opinion", "claim": "Donor and congregational trust turns on honesty and stewardship.", "cite": {"author": "Association of Fundraising Professionals", "title": "Code of Ethical Standards", "date": "Ongoing", "url": "https://afpglobal.org/ethics"}, "footnote": "AFP’s code foregrounds truthfulness, stewardship of confidences, and public trust—classic nonprofit footnote material when you argue that AI disclosure is not optional ornament."}, {"rank": 14, "page": "/voices", "type": "Purported fact (when asserted)", "claim": "Biographical claims about listed leaders.", "cite": {"author": "Named individual publishers and employers", "title": "Official bios, book catalogs, seminary pages", "date": "Varies", "url": ""}, "footnote": "Every bullet on a Voices card should resolve to a primary page a reader can open—publisher imprint, university appointment, or personal site—not to an internal research note."}, {"rank": 15, "page": "/movement-leaders", "type": "Doctrine", "claim": "Movement leaders are defined as an ecosystem layer, not a fourth implementation funnel.", "cite": {"author": "Movemental strategy memorandum", "title": "Movement leaders as ecosystem layer", "date": "Internal · canonical IA", "url": ""}, "footnote": "Until a public essay repeats this distinction, external readers treat it as Movemental’s editorial policy; publish a reader-facing version if you want the claim independently citable."}, {"rank": 99, "page": "(editorial)", "type": "Retired or fragile statistics", "claim": "Replace uncited “68% detection” or unfounded web-wide AI share figures.", "cite": {"author": "Movemental", "title": "Internal synthesis — AI credibility crisis evidence review", "date": "April 2026", "url": ""}, "footnote": "That memorandum lists which viral numbers failed verification and suggests peer-reviewed or survey-based replacements (for example Pew on importance versus confidence, or detector-limited web studies)—so public footnotes stay defensible."}, {"rank": 6, "page": "/pathway", "type": "Offer", "claim": "Stage descriptions and deliverables on the Pathway overview.", "cite": {"author": "Movemental product copy & statements of work", "title": "Customer-facing pathway description matching executed deliverables", "date": "Current", "url": ""}, "footnote": "Readers trust what you actually ship. Keep marketing language traceable to artifacts named in contracts; mismatched prices across routes undermine the whole table."}, {"rank": 16, "page": "/assess", "type": "Offer", "claim": "Self-assessment instrument and time estimate.", "cite": {"author": "Movemental", "title": "Published assessment instrument", "date": "Live version", "url": ""}, "footnote": "If you promise fifteen minutes and specific outputs, the footnote readers deserve is the instrument itself—questions, scoring, and limits—hosted plainly alongside the claim."}, {"rank": 13, "page": "/faq", "type": "Opinion", "claim": "Pilot-heavy adoption with frequent failure to scale is a documented enterprise pattern.", "cite": {"author": "MIT NANDA Initiative", "title": "The GenAI Divide: State of AI in Business 2025", "date": "July 2025", "url": "https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/"}, "footnote": "MIT’s industry-facing report documents extremely high pilot-failure rates relative to scaled value—useful when FAQ answers need a sober counterweight to vendor hype (phrase carefully; it is cross-sector, not parish-specific)."}, {"rank": 2, "page": "/path", "type": "Purported fact (enterprise mirror)", "claim": "A small minority of firms capture outsized AI value; most pilots stall.", "cite": {"author": "Boston Consulting Group", "title": "The Widening AI Value Gap — Build for the Future 2025", "date": "September 2025", "detail": "1,250 firms.", "url": "https://media-publications.bcg.com/The-Widening-AI-Value-Gap-October-2025.pdf"}, "footnote": "BCG’s survey narrative parallels McKinsey’s “high performer” concentration—helpful when you explain to readers why Movemental worries about capability, not tool counting."}]</script>
+<script>
+(function () {
+  var rows = JSON.parse(document.getElementById('claims-data').textContent);
+  var tbody = document.getElementById('tbody');
+  var filter = document.getElementById('filter');
+  var countEl = document.getElementById('count');
+
+  function esc(s) {
+    if (s == null) return '';
+    var d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  function formatCite(cite) {
+    if (!cite || (!cite.author && !cite.title)) {
+      return '<div class="cite-none">No published study stands alone as the source for this sentence—see the footnote.</div>';
+    }
+    var h = '<div class="citation">';
+    if (cite.author) h += '<span class="cite-author">' + esc(cite.author) + '</span>';
+    if (cite.title) h += '<span class="cite-title">' + esc(cite.title) + '</span>';
+    var meta = [cite.date, cite.detail].filter(Boolean).join(' · ');
+    if (meta) h += '<span class="cite-meta">' + esc(meta) + '</span>';
+    if (cite.url) {
+      h += '<a class="cite-link" href="' + esc(cite.url) + '" target="_blank" rel="noopener noreferrer">View publication ↗</a>';
+    }
+    h += '</div>';
+    return h;
+  }
+
+  function render(list) {
+    tbody.innerHTML = list.map(function (r) {
+      return '<tr>' +
+        '<td class="rank">' + esc(String(r.rank)) + '</td>' +
+        '<td class="page">' + esc(r.page) + '</td>' +
+        '<td class="type">' + esc(r.type) + '</td>' +
+        '<td class="claim">' + esc(r.claim) + '</td>' +
+        '<td>' + formatCite(r.cite) + '</td>' +
+        '<td><p class="footnote">' + esc(r.footnote) + '</p></td>' +
+        '</tr>';
+    }).join('');
+    countEl.textContent = list.length + ' entries';
+  }
+
+  render(rows);
+
+  filter.addEventListener('input', function () {
+    var q = filter.value.trim().toLowerCase();
+    if (!q) { render(rows); return; }
+    render(rows.filter(function (r) {
+      return JSON.stringify(r).toLowerCase().indexOf(q) !== -1;
+    }));
+  });
+})();
+</script>
+</body>
+</html>

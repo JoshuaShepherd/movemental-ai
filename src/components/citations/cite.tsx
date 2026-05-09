@@ -2,8 +2,11 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 
-import { citations, resolveTag, type CitationId } from "@/lib/citations/claims";
-import { getSource } from "@/lib/citations/sources";
+import { type CitationId } from "@/lib/citations/claims";
+import {
+  getRegistryIdForCitation,
+  getTooltipFootnoteForCitation,
+} from "@/lib/citations/eeat-registry";
 
 import { useCitationNumber } from "./citations-provider";
 
@@ -12,8 +15,9 @@ import { useCitationNumber } from "./citations-provider";
  *
  * Renders a small amber-pill button inline with the surrounding prose. Click
  * (or Enter / Space when focused) opens a popover anchored beneath the chip
- * that shows the source eyebrow + tag, the claim sentence, the meta row, and
- * a "See source" anchor link to the page's references rail.
+ * with reader-facing note text only (no confidence tags or sample metadata).
+ * A link opens the matching row on `/footnotes` for the full bibliography-style
+ * source block.
  *
  * Single-instance behavior: opening one chip's popover closes any other one.
  * Esc closes. Click outside closes. Matches the JS in the original mockup
@@ -25,16 +29,15 @@ import { useCitationNumber } from "./citations-provider";
 
 export type CiteProps = {
   claimId: CitationId;
-  /** Optional aria-label override; defaults to "Source N: {Author}" */
+  /** Optional aria-label override; defaults to a trimmed preview of the EEAT note */
   ariaLabel?: string;
   className?: string;
 };
 
 export function Cite({ claimId, ariaLabel, className }: CiteProps) {
   const number = useCitationNumber(claimId);
-  const claim = citations[claimId];
-  const source = getSource(claim.source);
-  const tag = resolveTag(claimId);
+  const registryId = getRegistryIdForCitation(claimId);
+  const footnote = registryId ? getTooltipFootnoteForCitation(claimId) : "";
 
   const [open, setOpen] = useState(false);
   const popoverId = useId();
@@ -101,7 +104,8 @@ export function Cite({ claimId, ariaLabel, className }: CiteProps) {
   }
 
   const labelText =
-    ariaLabel ?? `Source ${number || "?"}: ${source.author}`;
+    ariaLabel ??
+    `Source note ${number || "?"}${footnote ? `: ${footnote.slice(0, 120)}${footnote.length > 120 ? "…" : ""}` : ""}`;
 
   return (
     <span className={`cite${className ? ` ${className}` : ""}`} ref={wrapperRef}>
@@ -119,27 +123,14 @@ export function Cite({ claimId, ariaLabel, className }: CiteProps) {
         className="cite__pop"
         id={popoverId}
         role="dialog"
-        aria-label={`Citation: ${source.author}`}
+        aria-label={`Source note ${number || "?"}`}
       >
-        <span className="cite__pop__source" data-tag={tag}>
-          {source.author}
-        </span>
-        <p
-          className="cite__pop__claim"
-          // Authored, sanitized content — numbers are wrapped in <strong>.
-          // Source: src/lib/citations/claims.ts (curated by maintainers).
-          dangerouslySetInnerHTML={{ __html: claim.claim }}
-        />
-        {claim.meta && claim.meta.length > 0 ? (
-          <span className="cite__pop__meta">
-            {claim.meta.map((line) => (
-              <span key={line}>{line}</span>
-            ))}
-          </span>
+        <p className="cite__pop__footnote">{footnote}</p>
+        {registryId ? (
+          <a className="cite__pop__link" href={`/footnotes#ref-${registryId}`}>
+            Full source and citation ↗
+          </a>
         ) : null}
-        <a className="cite__pop__link" href={`#ref-${claim.id}`}>
-          See source ↗
-        </a>
       </span>
     </span>
   );

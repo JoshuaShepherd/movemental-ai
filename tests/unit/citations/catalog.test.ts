@@ -13,7 +13,8 @@
 
 import { describe, expect, it } from "vitest";
 
-import { citations, type Citation } from "@/lib/citations/claims";
+import { citations, type Citation, type CitationId } from "@/lib/citations/claims";
+import { getRegistryIdForCitation } from "@/lib/citations/eeat-registry";
 import { sources } from "@/lib/citations/sources";
 
 const claims: Citation[] = Object.values(citations);
@@ -70,6 +71,13 @@ describe("citation claims catalog", () => {
       for (const phrase of droppedPhrases) {
         expect(lower, claim.id).not.toContain(phrase.toLowerCase());
       }
+    }
+  });
+
+  it("every live citation id maps to exactly one EEAT registry row", () => {
+    const ids = Object.keys(citations) as CitationId[];
+    for (const id of ids) {
+      expect(getRegistryIdForCitation(id), id).toBeDefined();
     }
   });
 
