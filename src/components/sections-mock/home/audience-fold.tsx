@@ -12,21 +12,21 @@ interface SegmentCard {
 
 const SEGMENT_CARDS: readonly SegmentCard[] = [
   {
-    href: "/for-churches",
+    href: "/churches",
     title: "Churches",
     body:
       "Guiding congregations through theological implications, staff efficiency, and ethical deployment in ministry contexts.",
     ctaLabel: "Find out more",
   },
   {
-    href: "/for-nonprofits",
+    href: "/nonprofits",
     title: "Nonprofits",
     body:
       "Helping mission-driven entities scale impact, automate back-office operations, and maintain donor trust.",
     ctaLabel: "Find out more",
   },
   {
-    href: "/for-institutions",
+    href: "/institutions",
     title: "Institutions",
     body:
       "Providing networks and large agencies with systematic frameworks, governance, and enterprise-level solutions.",

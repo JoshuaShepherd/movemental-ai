@@ -1,0 +1,240 @@
+/* ---------------------------------------------------------------------------
+ * Case-study layout — hero + sticky sidebar TOC + article prose.
+ * Used by /churches, /nonprofits, /institutions.
+ * ------------------------------------------------------------------------- */
+
+.case-study-grid {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 960px) {
+  .case-study-grid {
+    grid-template-columns: 14rem minmax(0, 1fr);
+    gap: 4.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .case-study-grid {
+    grid-template-columns: 16rem minmax(0, 1fr);
+    gap: 5.5rem;
+  }
+}
+
+.case-study-grid__sidebar {
+  /* Mobile: scrolls with the article. Desktop: sticky to the chrome. */
+  position: relative;
+}
+
+@media (min-width: 960px) {
+  .case-study-grid__sidebar {
+    position: sticky;
+    top: calc(var(--site-chrome-total, 4.25rem) + 1.5rem);
+    align-self: start;
+    max-height: calc(100vh - var(--site-chrome-total, 4.25rem) - 3rem);
+    overflow-y: auto;
+  }
+}
+
+.case-study-grid__main {
+  min-width: 0;
+}
+
+/* Section spacing inside the article body */
+.case-study-section + .case-study-section {
+  margin-top: 4rem;
+}
+
+.case-study-section__divider {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 4rem 0;
+}
+
+/* Lede paragraph (first paragraph after a heading) */
+.case-study-lede {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--foreground);
+  margin-block: 0 1.5rem;
+}
+
+/* Callout — used for "what they had", "what they spent" data blocks */
+.case-study-callout {
+  margin: 2.25rem 0;
+  padding: 1.5rem 1.6rem 1.4rem;
+  background: var(--section);
+  border-left: 2px solid var(--cite-hl-strong);
+  border-radius: 0 6px 6px 0;
+}
+
+.case-study-callout__label {
+  margin: 0 0 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--cite-hl-ink);
+}
+
+.case-study-callout__title {
+  margin: 0 0 0.8rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  line-height: 1.25;
+  color: var(--foreground);
+  letter-spacing: -0.01em;
+}
+
+.case-study-callout__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--foreground);
+}
+
+.case-study-callout__list li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.case-study-callout__list li::before {
+  content: "·";
+  position: absolute;
+  left: 0.25rem;
+  top: -0.05em;
+  color: var(--cite-hl-strong);
+  font-weight: 700;
+}
+
+/* TOC ---------------------------------------------------------------- */
+
+.case-study-toc {
+  font-family: var(--font-sans);
+}
+
+.case-study-toc__details {
+  margin: 0;
+}
+
+.case-study-toc__summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.85rem;
+}
+
+.case-study-toc__summary::-webkit-details-marker {
+  display: none;
+}
+
+.case-study-toc__eyebrow {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.case-study-toc__chevron {
+  font-size: 0.7rem;
+  color: var(--muted-foreground);
+  transition: transform 200ms ease;
+}
+
+.case-study-toc__details[open] .case-study-toc__chevron {
+  transform: rotate(180deg);
+}
+
+@media (min-width: 960px) {
+  /* On desktop the TOC stays open and the chevron is hidden. */
+  .case-study-toc__details {
+    /* Force open for desktop while keeping the markup interactive on mobile. */
+  }
+  .case-study-toc__chevron {
+    display: none;
+  }
+  .case-study-toc__summary {
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+.case-study-toc__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: toc;
+  display: grid;
+  gap: 0.1rem;
+}
+
+.case-study-toc__item {
+  position: relative;
+}
+
+.case-study-toc__link {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.25rem;
+  padding: 0.55rem 0.5rem 0.55rem 0;
+  border-left: 2px solid transparent;
+  margin-left: -0.5rem;
+  padding-left: 0.5rem;
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition:
+    color 150ms ease,
+    border-color 150ms ease,
+    background 150ms ease;
+  border-radius: 0 4px 4px 0;
+}
+
+.case-study-toc__link:hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--cite-hl-soft) 60%, transparent);
+}
+
+.case-study-toc__item[data-active="true"] .case-study-toc__link {
+  color: var(--foreground);
+  border-left-color: var(--cite-hl-strong);
+  background: color-mix(in srgb, var(--cite-hl-soft) 70%, transparent);
+}
+
+.case-study-toc__num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--cite-hl-strong);
+}
+
+.case-study-toc__label {
+  display: block;
+}
+
+.case-study-toc__item[data-active="true"] .case-study-toc__label {
+  font-weight: 500;
+}
+
+/* When the TOC is in the sticky sidebar, prevent the active background from
+   bleeding past the sidebar's right edge. */
+@media (min-width: 960px) {
+  .case-study-toc__link {
+    margin-right: -0.5rem;
+    padding-right: 0.5rem;
+  }
+}

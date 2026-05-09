@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 
-import { AudiencePage as StudioAudiencePage } from "@/components/studio/pages/AudiencePage";
+import { CaseStudyLayout } from "@/components/case-study";
+import { institutionsCaseStudy } from "@/components/case-study/data/institutions";
 
 export const metadata: Metadata = {
-  title: "For Institutions | Movemental",
+  title: "Movemental for Institutions",
   description:
-    "Move at the pace governance can defend. The Movemental AI Pathway translated for seminaries and training organizations.",
+    "A reconstructed case study of a graduate seminary engaging the Movemental process — three constituencies (faculty, students, board) ratifying the same seven artifacts in parallel.",
 };
 
 export default function Page() {
-  return (
-    <StudioAudiencePage audience="institutions" />
-  );
+  return <CaseStudyLayout content={institutionsCaseStudy} />;
 }

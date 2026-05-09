@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 
-import { AudiencePage as StudioAudiencePage } from "@/components/studio/pages/AudiencePage";
+import { CaseStudyLayout } from "@/components/case-study";
+import { nonprofitsCaseStudy } from "@/components/case-study/data/nonprofits";
 
 export const metadata: Metadata = {
-  title: "For Nonprofits | Movemental",
+  title: "Movemental for Nonprofits",
   description:
-    "Adopt AI without losing donor trust. The Movemental AI Pathway translated into a nonprofit context.",
+    "A reconstructed case study of a faith-based nonprofit engaging the Movemental process — clinical, donor, and board considerations all in scope.",
 };
 
 export default function Page() {
-  return (
-    <StudioAudiencePage audience="nonprofits" />
-  );
+  return <CaseStudyLayout content={nonprofitsCaseStudy} />;
 }

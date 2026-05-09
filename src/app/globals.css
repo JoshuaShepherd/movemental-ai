@@ -12,6 +12,10 @@
    and references rail. See docs/build/prompts/inline-citation-system-with-references-rail.md. */
 @import "./citations.css";
 
+/* Case-study layout — hero + sticky sidebar TOC + article prose. Used by
+   /churches, /nonprofits, /institutions. */
+@import "../components/case-study/case-study.css";
+
 /* shadcn + Tailwind `dark:` utilities — `html.dark` is set by next-themes when
    the user chooses dark (see ThemeProvider). Regional Midnight bands also
    use `data-variant="midnight"` to pin to the deep-ink surface even in light. */

@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 
-import { AudiencePage as StudioAudiencePage } from "@/components/studio/pages/AudiencePage";
+import { CaseStudyLayout } from "@/components/case-study";
+import { churchesCaseStudy } from "@/components/case-study/data/churches";
 
 export const metadata: Metadata = {
-  title: "For Churches | Movemental",
+  title: "Movemental for Churches",
   description:
-    "Your church is being asked to take a position on AI. We help church leaders answer it well — through The Movemental AI Path.",
+    "A reconstructed case study of a multisite church engaging the Movemental process — Safety, Sandbox, Skills, Solutions — through ratified governance and a formed staff.",
 };
 
 export default function Page() {
-  return <StudioAudiencePage audience="churches" />;
+  return <CaseStudyLayout content={churchesCaseStudy} />;
 }

@@ -178,19 +178,19 @@ export function SiteHeader() {
             </button>
             <div className="invisible absolute top-full left-0 z-50 w-48 translate-y-2 rounded-xl border border-border bg-card p-2 opacity-0 shadow-ambient transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
               <Link
-                href="/for-churches"
+                href="/churches"
                 className="block rounded-lg px-4 py-2.5 text-sm font-medium transition-colors hover:bg-section"
               >
                 For Churches
               </Link>
               <Link
-                href="/for-nonprofits"
+                href="/nonprofits"
                 className="block rounded-lg px-4 py-2.5 text-sm font-medium transition-colors hover:bg-section"
               >
                 For Nonprofits
               </Link>
               <Link
-                href="/for-institutions"
+                href="/institutions"
                 className="block rounded-lg px-4 py-2.5 text-sm font-medium transition-colors hover:bg-section"
               >
                 For Institutions
@@ -285,21 +285,21 @@ export function SiteHeader() {
               Audiences
             </span>
             <Link
-              href="/for-churches"
+              href="/churches"
               onClick={() => setIsMenuOpen(false)}
               className="rounded-md p-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
             >
               For Churches
             </Link>
             <Link
-              href="/for-nonprofits"
+              href="/nonprofits"
               onClick={() => setIsMenuOpen(false)}
               className="rounded-md p-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
             >
               For Nonprofits
             </Link>
             <Link
-              href="/for-institutions"
+              href="/institutions"
               onClick={() => setIsMenuOpen(false)}
               className="rounded-md p-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
             >
