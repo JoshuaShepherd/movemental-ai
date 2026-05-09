@@ -8,6 +8,11 @@ const AVATAR = 72;
 const CENTER = 92;
 
 /**
+ * `VOICE_AVATAR_PX` / `CENTER_NODE_PX` are used by the home Movement Voices
+ * network (`settle-movement-voices.ts`, React Flow). `layoutMovementVoices`
+ * itself is not wired into that surface — kept as an optional deterministic
+ * hub-and-ring helper.
+ *
  * Hub-and-ring layout: the Movemental center node pinned at the middle, all
  * voices arranged on a circle around it at equal angular spacing. The radius
  * scales with the smaller viewport dimension so the ring stays inside the

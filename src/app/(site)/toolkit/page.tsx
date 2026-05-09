@@ -158,9 +158,13 @@ export default function ToolkitPage() {
               </h2>
               <p className="text-lg leading-relaxed text-muted-foreground">
                 The Safety stage page details the seven artifacts, the two-week process, and the $1,000 fee.
-                You can also start a conversation directly — the toolkit will follow if it&apos;s useful.
+                You can read the full field guide in your browser, or start a conversation directly &mdash;
+                the toolkit will follow if it&apos;s useful.
               </p>
               <div className="flex flex-wrap gap-4">
+                <Link href="/toolkit/read" className="btn-pill btn-pill--ghost">
+                  Read the field guide
+                </Link>
                 <Link href="/pathway/safety" className="btn-pill btn-pill--ghost">
                   See the Safety stage
                 </Link>

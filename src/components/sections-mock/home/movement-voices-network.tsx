@@ -25,6 +25,10 @@ import {
   CENTER_NODE_PX,
   VOICE_AVATAR_PX,
 } from "./layout-movement-voices";
+import {
+  MovementVoicesFlowEdge,
+  type MovementVoicesFlowEdgeData,
+} from "./movement-voices-flow-edge";
 import { settleNetworkPositions } from "./settle-movement-voices";
 import {
   CENTER_NODE_ID,
@@ -126,6 +130,10 @@ const CenterBrandNode = memo(function CenterBrandNode({
 const nodeTypes = {
   voice: VoiceAvatarNode,
   center: CenterBrandNode,
+};
+
+const edgeTypes = {
+  movementVoicesFlow: MovementVoicesFlowEdge,
 };
 
 /* ----------------------------------------------------------- ENVIRONMENT */
@@ -233,22 +241,25 @@ const EDGE_RECIPES: readonly EdgeRecipe[] = (() => {
   return out;
 })();
 
-function buildEdges(revealStep: number): Edge[] {
+function buildEdges(revealStep: number, prefersReducedMotion: boolean): Edge[] {
+  const fullyRevealed = revealStep >= TOTAL_REVEAL_STEPS;
+  const animateFlow = fullyRevealed && !prefersReducedMotion;
+
   return EDGE_RECIPES.map((r) => {
     const visible = revealStep >= r.revealAt;
-    const baseOpacity = r.touchesCenter ? 0.7 : 0.32;
+    const baseOpacity = r.touchesCenter ? 0.56 : 0.42;
+    const data: MovementVoicesFlowEdgeData = {
+      animateFlow,
+      baseOpacity,
+      strokeWidth: r.touchesCenter ? 1.32 : 1,
+      visible,
+    };
     return {
       id: r.id,
       source: r.source,
       target: r.target,
-      type: "straight",
-      style: {
-        stroke: "var(--foreground)",
-        strokeWidth: r.touchesCenter ? 1.4 : 1,
-        strokeOpacity: visible ? baseOpacity : 0,
-        strokeLinecap: "round",
-        transition: "stroke-opacity 320ms ease-out",
-      },
+      type: "movementVoicesFlow",
+      data,
       interactionWidth: 0,
     } satisfies Edge;
   });
@@ -370,8 +381,8 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
   );
 
   const edges = useMemo(
-    () => buildEdges(effectiveRevealStep),
-    [effectiveRevealStep],
+    () => buildEdges(effectiveRevealStep, reducedMotion),
+    [effectiveRevealStep, reducedMotion],
   );
 
   const onInit = useCallback((inst: ReactFlowInstance) => {
@@ -469,6 +480,7 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
                 nodes={nodes}
                 edges={edges}
                 nodeTypes={nodeTypes}
+                edgeTypes={edgeTypes}
                 onInit={onInit}
                 onNodeMouseEnter={onNodeEnter}
                 onNodeMouseLeave={onNodeLeave}

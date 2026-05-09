@@ -3,10 +3,10 @@
  * IDs are stable slugs for layout and React Flow keys.
  *
  * Topology:
- *   - A square Movemental brand node sits at the center.
- *   - Trusted voices form a ring around it.
- *   - Every node connects to every other node (all-channel mesh) so the
- *     visualization reads as a relational network, not a roster.
+ *   - A square Movemental brand node is pinned at the canvas center.
+ *   - Voice positions are force-settled (D3) into an irregular mesh, not a ring.
+ *   - Every node connects to every other node (complete graph / all-channel mesh)
+ *     with Bezier edges and optional flow animation in React Flow.
  *
  * The `appearOrder` field drives the stagger reveal in
  * `movement-voices-network.tsx` — lower numbers animate in first.
@@ -38,7 +38,7 @@ export const MOVEMENTAL_CENTER = {
 } as const;
 
 /**
- * Trusted voices in the ring. `appearOrder` matches the home-page reveal
+ * Trusted voices in the graph. `appearOrder` matches the home-page reveal
  * sequence requested by product:
  *   1. Alan Hirsch
  *   2. Brad Brisco

@@ -1,5 +1,4 @@
 import {
-  forceCenter,
   forceCollide,
   forceLink,
   forceManyBody,
@@ -47,20 +46,26 @@ function seedNodes(width: number, height: number): SimNode[] {
   const cx = width / 2;
   const cy = height / 2;
   const minDim = Math.min(width, height);
+  const maxDim = Math.max(width, height);
 
   return NODE_IDS.map((id, i) => {
     if (id === CENTER_NODE_ID) {
       // Pin Movemental dead center so the network reads as hub-and-mesh.
       return { id, x: cx, y: cy, fx: cx, fy: cy };
     }
-    // Golden-angle spiral seed — irregular, non-circular starting positions
-    // that the force sim then organicizes into a network.
+    // Golden-angle spiral seed — irregular starting positions; mild elliptical
+    // stretch + per-index bias breaks radial symmetry after the sim settles.
     const angle = i * 2.3999632 + 0.31;
     const radius = minDim * (0.2 + ((i * 13) % 17) / 90);
+    const biasX = ((i * 47) % 23) / 22 - 0.5;
+    const biasY = ((i * 31) % 19) / 18 - 0.5;
+    const stretch = maxDim / minDim;
+    const ex = stretch > 1.12 ? 1.05 + biasX * 0.09 : 1 + biasX * 0.06;
+    const ey = stretch > 1.12 ? 1 + biasY * 0.06 : 1.05 + biasY * 0.09;
     return {
       id,
-      x: cx + Math.cos(angle) * radius,
-      y: cy + Math.sin(angle) * radius,
+      x: cx + Math.cos(angle) * radius * ex,
+      y: cy + Math.sin(angle) * radius * ey,
     } satisfies SimNode;
   });
 }
@@ -115,22 +120,21 @@ export function settleNetworkPositions(
     )
     .force(
       "collide",
-      forceCollide<SimNode>(VOICE_AVATAR_PX * 0.72).iterations(2),
+      forceCollide<SimNode>(VOICE_AVATAR_PX * 0.76).iterations(3),
     )
-    .force("center", forceCenter(cx, cy).strength(0.04))
     .force(
       "link",
       forceLink<SimNode, SimLink>(links)
         .id((d) => d.id)
         .distance((l) => l.distance)
-        .strength((l) => (l.touchesCenter ? 0.22 : 0.04)),
+        .strength((l) => (l.touchesCenter ? 0.14 : 0.11)),
     )
     .alpha(1)
     .alphaDecay(0.04)
     .alphaMin(0.01)
     .stop();
 
-  for (let i = 0; i < 400; i++) {
+  for (let i = 0; i < 520; i++) {
     sim.tick();
     if (sim.alpha() < sim.alphaMin()) break;
   }

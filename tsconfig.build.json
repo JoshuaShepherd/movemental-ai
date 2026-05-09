@@ -10,5 +10,11 @@
     "src/**/*.tsx",
     ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "scripts/**/*", "tests/**/*", "_docs/**/*"]
+  "exclude": [
+    "node_modules",
+    "scripts/**/*",
+    "tests/**/*",
+    "_docs/**/*",
+    "**/_archive/**"
+  ]
 }

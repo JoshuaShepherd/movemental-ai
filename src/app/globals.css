@@ -691,12 +691,14 @@
  * global because React Flow renders edge paths into its own SVG layer.
  * ------------------------------------------------------------------------- */
 @keyframes movement-voices-flow {
-  from {
-    stroke-dashoffset: 16;
-  }
   to {
-    stroke-dashoffset: 0;
+    stroke-dashoffset: -13;
   }
+}
+
+/* Dash period matches stroke-dasharray on the overlay path (2 + 11). */
+.movement-voices-edge-flow-dash {
+  animation: movement-voices-flow 2.75s linear infinite;
 }
 
 /* ---------------------------------------------------------------------------
