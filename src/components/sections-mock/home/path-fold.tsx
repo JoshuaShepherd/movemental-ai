@@ -1,3 +1,4 @@
+import { Cite } from "@/components/citations";
 import { BtnPill } from "@/components/sections-mock/primitives";
 
 import { InteractivePath } from "./interactive-path";
@@ -16,8 +17,9 @@ export function PathFold() {
             A clear path for leading your organization through AI.
           </h2>
           <p className="path-section__intro">
-            Most organizations jump straight to tech, or freeze in place.
-            Movemental&apos;s path is clear, human-first, and rooted in safety.
+            Most organizations jump straight to tech, or freeze in place
+            <Cite claimId="high-performer-cohort-5-7" />. Movemental&apos;s
+            path is clear, human-first, and rooted in safety.
           </p>
         </header>
 

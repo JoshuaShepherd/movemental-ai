@@ -81,6 +81,13 @@ export function Cite({ claimId, ariaLabel, className }: CiteProps) {
     return () => document.removeEventListener("movemental:cite-opened", handleOpened);
   }, [popoverId]);
 
+  // No provider in scope (the host page hasn't opted into citations) — render
+  // nothing so shared components stay usable in standalone contexts. Placed
+  // after all hooks to keep call order stable across renders.
+  if (number === 0) {
+    return null;
+  }
+
   function toggle() {
     setOpen((prev) => {
       const next = !prev;

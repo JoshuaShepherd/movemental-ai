@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { Cite } from "@/components/citations";
 import { Container } from "@/components/studio/Container";
 import { Reveal } from "@/components/studio/Reveal";
 
@@ -66,13 +67,14 @@ export function TopographicHero({ hideImageOnMobile = false }: TopographicHeroPr
 
             <p className="mt-12 max-w-[640px] text-[17px] leading-[1.6] text-inverse-muted md:text-[18px]">
               Four stages, ordered to ensure a strong human foundation
-              precedes any technological implementation. Safety first: the
-              governance that answers the questions your people are asking.
-              Sandbox: disciplined exploration of valuable AI use cases and
-              ethical concerns, without the risks of publication and privacy
-              issues. Skills: formation that produces leaders, not just
-              users. Solutions: AI-integrated technological deployment built
-              on the secure foundation.
+              precedes any technological implementation
+              <Cite claimId="mckinsey-workflow-redesign" />. Safety first:
+              the governance that answers the questions your people are
+              asking. Sandbox: disciplined exploration of valuable AI use
+              cases and ethical concerns, without the risks of publication
+              and privacy issues. Skills: formation that produces leaders,
+              not just users. Solutions: AI-integrated technological
+              deployment built on the secure foundation.
             </p>
 
             <div className="mt-10 flex flex-col gap-3 md:flex-row md:gap-4">

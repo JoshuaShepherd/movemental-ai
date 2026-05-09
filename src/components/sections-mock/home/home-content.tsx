@@ -1,27 +1,56 @@
 /**
- * Home page composition (Ledger edition).
+ * Home page composition.
  *
- * Translated from `docs/html/home-citations-ledger.html`. Every empirical
- * claim renders next to a citation chip, and the page closes with a
- * numbered references rail. The catalog of source claims rendered here
- * lives in `src/lib/citations/{sources,claims}.ts` and is anchored to the
- * Movemental Research Corpus v1.0.
+ * Decision-driven sequence:
+ *   Hero (recognition) →
+ *   Audience (segment routing) →
+ *   Path (the framework, including stage outcomes inline) →
+ *   Credibility (who is behind this — founders + Movement Voices) →
+ *   Final CTA (action).
  *
- * Sequence:
- *   Hero (recognition + 92% / 81% chips) →
- *   Stat strip (7% / 47% / $893M / 1-in-3) →
- *   Gap argument (long-form prose with three chips) →
- *   Path (four-stage hairline grid + workflow-redesign chip) →
- *   Closing (midnight CTA) →
- *   References rail.
- *
- * The previous TopographicHero / AudienceFold / PathFold / CredibilityFold /
- * FinalCta composition is preserved in git history; the section files remain
- * in this folder for incremental reuse.
+ * Citations: where existing copy makes a statistical claim, an inline
+ * `<Cite />` chip is wired through `<CitationsProvider />`. The page closes
+ * with `<ReferencesRail />` listing every chip's source. See
+ * `docs/build/prompts/inline-citation-system-with-references-rail.md`.
  */
 
-import { HomeLedger } from "./home-ledger";
+import {
+  CitationsProvider,
+  ReferencesRail,
+} from "@/components/citations";
+import type { CitationId } from "@/lib/citations/claims";
+import { TopographicHero } from "@/components/studio/hero/TopographicHero";
+
+import { AudienceFold } from "./audience-fold";
+import { CredibilityFold } from "./credibility-fold";
+import { FinalCta } from "./final-cta";
+import { PathFold } from "./path-fold";
+
+/**
+ * Page-scoped citation order. Listed in document order so chip numbers and
+ * the references rail line up. Each entry corresponds to a single statistical
+ * claim made by the existing copy on this page; framework / values / slogan
+ * lines are intentionally not chipped.
+ *
+ *   1. TopographicHero — "human foundation precedes any technological
+ *      implementation" → McKinsey workflow-redesign correlate.
+ *   2. PathFold — "Most organizations jump straight to tech, or freeze in
+ *      place" → 5–7% high-performer cohort (cross-sector convergent finding).
+ */
+const HOME_CLAIMS = [
+  "mckinsey-workflow-redesign",
+  "high-performer-cohort-5-7",
+] as const satisfies ReadonlyArray<CitationId>;
 
 export function HomeContent() {
-  return <HomeLedger />;
+  return (
+    <CitationsProvider claims={HOME_CLAIMS}>
+      <TopographicHero />
+      <AudienceFold />
+      <PathFold />
+      <CredibilityFold />
+      <FinalCta />
+      {HOME_CLAIMS.length > 0 ? <ReferencesRail /> : null}
+    </CitationsProvider>
+  );
 }

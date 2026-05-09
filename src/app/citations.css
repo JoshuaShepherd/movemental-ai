@@ -23,12 +23,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 1.5em;
-  height: 1.5em;
-  padding: 0 0.35em;
-  margin: 0 0.05em;
+  /* Absolute sizing — the chip is always the same physical pill regardless of
+     the surrounding text size. (Earlier `em`-based sizing made the chip scale
+     with hero numbers, producing a 3.5rem chip next to a 3.6rem number.) */
+  min-width: 1.35rem;
+  height: 1.35rem;
+  padding: 0 0.4rem;
+  margin: 0 0.15em;
   font-family: var(--font-sans);
-  font-size: 0.65em;
+  font-size: 0.72rem;
   font-weight: 700;
   line-height: 1;
   color: var(--cite-hl-ink);
@@ -36,7 +39,10 @@
   border: 1px solid color-mix(in srgb, var(--cite-hl-strong) 30%, transparent);
   border-radius: 9999px;
   cursor: pointer;
+  /* Lift stays in `em` so the chip rides correctly above its baseline whether
+     it sits in body prose or a 3.6rem hero number. */
   translate: 0 -0.35em;
+  vertical-align: baseline;
   transition:
     background 150ms ease,
     color 150ms ease,

@@ -60,6 +60,10 @@ export function CitationsProvider({
   );
 }
 
+/**
+ * Strict accessor — throws when no provider is present. Use from components
+ * that *require* citations (e.g. `<ReferencesRail />`).
+ */
 export function useCitations(): CitationsContextValue {
   const ctx = useContext(CitationsContext);
   if (!ctx) {
@@ -70,6 +74,17 @@ export function useCitations(): CitationsContextValue {
   return ctx;
 }
 
+/**
+ * Optional accessor — returns null when no provider is in scope. Use from
+ * shared components (e.g. heroes) that may render either inside a citations-
+ * scoped page or in standalone contexts. Caller decides what to render when
+ * null.
+ */
+export function useOptionalCitations(): CitationsContextValue | null {
+  return useContext(CitationsContext);
+}
+
 export function useCitationNumber(id: CitationId): number {
-  return useCitations().numberFor(id);
+  const ctx = useOptionalCitations();
+  return ctx?.numberFor(id) ?? 0;
 }
