@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<title>About — Movemental</title>
+<meta name="description" content="A company built by movement leaders, for movement leaders. Meet Brad Brisco, Alan Hirsch, and Joshua Shepherd, read the origin story, and see the five commitments that bind the network." />
+
+<!-- Tailwind CDN, matching prior Movemental templates -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+<!-- Editorial type stack — Inter + Instrument Serif (matches the production
+     `--font-sans` and `--font-serif` tokens in src/app/globals.css). -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+<style>
+  /* ---------------------------------------------------------------
+     Tokens mirrored 1:1 from src/app/globals.css (light theme :root).
+     Each declaration is annotated with the canonical Tailwind token
+     name so the Next.js migration can drop these custom properties
+     and apply the utility class directly.
+     --------------------------------------------------------------- */
+  :root {
+    /* Surface ramp — warm editorial paper */
+    --background:        #faf6ee;             /* bg-background */
+    --section:           #f2ece0;             /* bg-section */
+    --surface-highest:   #efe7d6;             /* deepest paper tone */
+
+    /* Ink scale */
+    --foreground:        #19150f;             /* text-foreground */
+    --muted-foreground:  #6b6660;             /* text-muted-foreground */
+    --ink-soft:          #7e786f;             /* text-ink-soft */
+
+    /* Hairlines — the editorial system avoids 1px solid borders for
+       sectioning; rule-hairline is for the divider above the story
+       only, voice-cards, and accessible card seams. */
+    --border:            #e6ddcb;             /* border-border */
+    --border-soft:       #efe7d6;             /* border-border-soft */
+
+    /* Midnight regional bands (deep ink + cream — pinned in both themes). */
+    --inverse-surface:    #141110;            /* bg-inverse-surface */
+    --inverse-foreground: #f4efe5;            /* text-inverse-foreground */
+    --inverse-muted:      rgba(244, 239, 229, 0.68); /* text-inverse-muted */
+    --inverse-low:        rgba(244, 239, 229, 0.55); /* low-emphasis cream */
+    --inverse-border:     rgba(244, 239, 229, 0.14); /* border-inverse-border */
+
+    /* Status — caution amber. The only general-UI amber in the production
+       palette (`--color-status-caution`). The citation amber palette
+       (`--cite-hl*`) is reserved exclusively for inline citations. */
+    --status-caution:    #a07a25;
+
+    /* Focus ring — ink @ 50% (clears WCAG 2.4.13 3:1 on paper). */
+    --ring:              rgba(25, 21, 15, 0.5);
+
+    /* Type — matches `--font-sans` / `--font-serif` in globals.css. */
+    --font-sans:  'Inter', ui-sans-serif, system-ui, -apple-system,
+                  'Segoe UI', Roboto, sans-serif;
+    --font-serif: 'Instrument Serif', 'Iowan Old Style', ui-serif,
+                  Georgia, serif;
+
+    --tracking-display: -0.028em;
+    --tracking-tight:   -0.022em;
+    --tracking-eyebrow:  0.09em;
+
+    /* Layout — `--container-max`, `--prose-max`, section rhythm. */
+    --container-max: 1200px;
+    --prose-max:      640px;
+    --section-y-lg:  clamp(5rem, 10vw, 8rem);
+    --section-y-sm:  clamp(3rem, 6vw, 4.5rem);
+
+    /* Radius — pills for CTAs (matches `.btn-pill` recipe). */
+    --radius-card: 0.875rem;   /* 14px — bg-card surfaces */
+    --radius-pill: 9999px;     /* rounded-pill — CTA pills */
+  }
+
+  html { scroll-behavior: smooth; color-scheme: light; }
+  body {
+    font-family: var(--font-sans);
+    background: var(--background);
+    color: var(--foreground);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern", "liga", "cv11";
+  }
+  ::selection { background-color: var(--foreground); color: var(--background); }
+
+  .font-display        { font-family: var(--font-serif); font-weight: 500; letter-spacing: var(--tracking-display); }
+  .font-display-italic { font-family: var(--font-serif); font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+  .font-body           { font-family: var(--font-sans); }
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow);
+    font-weight: 500;
+  }
+
+  /* Surface utilities — kept as aliases so the markup reads cleanly. */
+  .bg-cream                          { background: var(--background); }
+  .bg-cream-deep                     { background: var(--section); }
+  .bg-midnight, .bg-midnight-deep    { background: var(--inverse-surface); }
+
+  .text-ink         { color: var(--foreground); }
+  .text-ink-muted   { color: var(--muted-foreground); }
+  .text-ink-soft    { color: var(--ink-soft); }
+  .text-cream       { color: var(--inverse-foreground); }
+  .text-cream-mut   { color: var(--inverse-muted); }
+  .text-cream-low   { color: var(--inverse-low); }
+  .text-amber       { color: var(--status-caution); }
+
+  .rule-hairline    { border-top: 1px solid var(--border); }
+  .rule-cream-hair  { border-top: 1px solid var(--inverse-border); }
+
+  /* Long-form prose — `--prose-max` rhythm matches `.article-prose`. */
+  .prose-narrow { max-width: var(--prose-max); }
+  .prose-narrow p { font-size: 17px; line-height: 1.75; color: var(--foreground); }
+  .prose-narrow p + p { margin-top: 1.4em; }
+
+  /* Founder placeholder tile — warm cream gradient drawn from the
+     production paper ramp (background → section → surface-highest). */
+  .founder-tile {
+    aspect-ratio: 1 / 1;
+    background:
+      radial-gradient(120% 120% at 30% 25%,
+        var(--background)      0%,
+        var(--section)        60%,
+        var(--surface-highest) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .founder-tile::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0) 60%, rgba(25,21,15,0.04) 100%);
+    pointer-events: none;
+  }
+  .founder-letter {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(120px, 18vw, 220px);
+    line-height: 1;
+    color: rgba(25, 21, 15, 0.18);
+    letter-spacing: -0.02em;
+    user-select: none;
+  }
+
+  /* Pull-quote — Instrument Serif italic with hairline border-left. */
+  .pullquote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(22px, 2.4vw, 28px);
+    line-height: 1.45;
+    color: var(--foreground);
+    border-left: 1px solid var(--border);
+    padding-left: 28px;
+    margin-top: 2.25em;
+    margin-bottom: 2.25em;
+    letter-spacing: -0.01em;
+  }
+
+  /* Arrow link — quiet underline that thickens on hover. */
+  .arrow-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45em;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--foreground);
+    border-bottom: 1px solid rgba(25, 21, 15, 0.15);
+    padding-bottom: 2px;
+    transition: color 200ms ease, border-color 200ms ease, transform 200ms ease;
+  }
+  .arrow-link .arrow { transition: transform 200ms ease; display: inline-block; }
+  .arrow-link:hover { color: var(--foreground); border-color: var(--foreground); }
+  .arrow-link:hover .arrow { transform: translateX(3px); }
+  .arrow-link.on-midnight { color: var(--inverse-foreground); border-color: rgba(244, 239, 229, 0.25); }
+  .arrow-link.on-midnight:hover { border-color: var(--inverse-foreground); }
+
+  /* Buttons — pill CTAs (matches the production `.btn-pill` recipe). */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: var(--radius-pill);
+    transition: background 200ms ease, color 200ms ease, border-color 200ms ease, transform 200ms ease;
+  }
+  .btn-primary-on-midnight {
+    background: var(--inverse-foreground);
+    color: var(--inverse-surface);
+  }
+  .btn-primary-on-midnight:hover { background: #ffffff; }
+  .btn-ghost-on-midnight {
+    background: transparent;
+    color: var(--inverse-foreground);
+    border: 1px solid rgba(244, 239, 229, 0.30);
+  }
+  .btn-ghost-on-midnight:hover {
+    border-color: var(--inverse-foreground);
+    background: rgba(244, 239, 229, 0.06);
+  }
+
+  /* Glass nav header — paper @ 78% with a hairline border. */
+  .glass-header {
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    background: rgba(250, 246, 238, 0.78);
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Commitment row */
+  .commitment-row { padding-top: 36px; padding-bottom: 36px; }
+  .commitment-row + .commitment-row { border-top: 1px solid rgba(244, 239, 229, 0.12); }
+  .commitment-numeral {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(36px, 4vw, 52px);
+    line-height: 1;
+    color: var(--inverse-foreground);
+    opacity: 0.55;
+    letter-spacing: -0.01em;
+  }
+
+  /* Voices grid card */
+  .voice-card {
+    border-top: 1px solid var(--border);
+    padding: 28px 0 32px;
+  }
+  .voice-card .voice-name {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 1.2;
+    color: var(--foreground);
+    letter-spacing: -0.01em;
+  }
+  .voice-card .voice-role {
+    font-size: 14px;
+    color: var(--muted-foreground);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+  .voice-card .voice-line {
+    font-size: 15px;
+    color: var(--foreground);
+    margin-top: 14px;
+    line-height: 1.55;
+    max-width: 36ch;
+  }
+
+  /* Focus states — match production `--ring` (ink @ 50%) on paper,
+     cream @ 50% on midnight. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+  .bg-midnight :focus-visible,
+  .bg-midnight-deep :focus-visible {
+    outline-color: rgba(244, 239, 229, 0.5);
+  }
+
+  /* Section vertical rhythm — clamp() matches `--section-y-lg`. */
+  .section-pad {
+    padding-top: var(--section-y-lg);
+    padding-bottom: var(--section-y-lg);
+  }
+
+  /* Container — matches `--container-max` (1200px) with px gutters
+     that step at the same breakpoints as the production layout. */
+  .container-x {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  @media (min-width: 768px)  { .container-x { padding-left: 48px; padding-right: 48px; } }
+  @media (min-width: 1280px) { .container-x { padding-left: 72px; padding-right: 72px; } }
+
+  /* Display sizes — heading scale matches production headings (weight 500). */
+  .display-1 { font-size: clamp(40px, 5.6vw, 60px); line-height: 1.05; letter-spacing: var(--tracking-display); font-weight: 500; }
+  .display-2 { font-size: clamp(32px, 4.4vw, 44px); line-height: 1.1;  letter-spacing: var(--tracking-display); font-weight: 500; }
+  .display-3 { font-size: clamp(26px, 3vw, 32px);   line-height: 1.2;  letter-spacing: var(--tracking-tight);  font-weight: 500; }
+
+  /* Reveal-on-scroll (mirrors the production `.reveal` / <Reveal> primitive). */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity   700ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .fade-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fade-up { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* Print sanity */
+  @media print {
+    header.glass-header, .toolkit-link { display: none; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ============================================================ -->
+<!-- Site nav (placeholder — production renders <SiteNav />)       -->
+<!-- ============================================================ -->
+<header class="glass-header fixed top-0 left-0 right-0 z-50">
+  <div class="container-x flex items-center justify-between h-16">
+    <a href="/" class="font-display text-xl text-ink" aria-label="Movemental — home">Movemental</a>
+    <nav class="hidden md:flex items-center gap-9" aria-label="Primary">
+      <a class="text-sm text-ink-muted hover:text-ink transition-colors" href="/who-we-serve">Who we serve</a>
+      <a class="text-sm text-ink-muted hover:text-ink transition-colors" href="/methodology">Methodology</a>
+      <a class="text-sm text-ink-muted hover:text-ink transition-colors" href="/voices">Voices</a>
+      <a class="text-sm text-ink-muted hover:text-ink transition-colors" href="/walkthrough">Walkthrough</a>
+      <a class="text-sm font-medium text-ink border-b border-ink pb-0.5" href="/about" aria-current="page">About</a>
+    </nav>
+    <a class="hidden md:inline-flex text-xs uppercase tracking-[0.14em] font-medium text-ink-muted hover:text-ink transition-colors" href="/contact">Start a conversation</a>
+  </div>
+</header>
+
+<main id="content" class="pt-16">
+
+  <!-- ============================================================ -->
+  <!-- Section 1 — Hero                                              -->
+  <!-- ============================================================ -->
+  <section aria-labelledby="hero-heading" class="bg-midnight section-pad">
+    <div class="container-x">
+      <p class="eyebrow text-cream-low mb-8 fade-up">About Movemental</p>
+      <h1 id="hero-heading"
+          class="font-display display-1 text-cream max-w-[20ch] fade-up">
+        A company built by movement leaders, for movement leaders.
+      </h1>
+      <p class="font-body text-cream-mut text-lg md:text-xl leading-relaxed mt-10 max-w-[40rem] fade-up">
+        Movemental exists because three people who had spent decades in mission-driven work together
+        saw something coming and decided to build the answer themselves.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Section 2 — The founders                                      -->
+  <!-- ============================================================ -->
+  <section aria-labelledby="founders-heading" class="bg-cream section-pad">
+    <div class="container-x">
+
+      <div class="max-w-[44rem]">
+        <p class="eyebrow text-ink-muted mb-6 fade-up">The founders</p>
+        <h2 id="founders-heading" class="font-display display-2 text-ink fade-up">
+          Three people, one company.
+        </h2>
+        <p class="font-body text-ink-muted text-lg leading-relaxed mt-8 max-w-[40rem] fade-up">
+          Each founder carries decades of work in missional leadership, theological scholarship,
+          or digital infrastructure for movement organizations. The team came together for a specific reason
+          at a specific moment, which the section below explains.
+        </p>
+      </div>
+
+      <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10 lg:gap-14">
+
+        <!-- Card 1 — Brad Brisco -->
+        <article class="fade-up" aria-labelledby="founder-brad">
+          <div class="founder-tile" role="img" aria-label="Editorial portrait placeholder for Brad Brisco">
+            <span class="founder-letter" aria-hidden="true">B</span>
+          </div>
+          <h3 id="founder-brad" class="font-display-italic text-ink mt-7" style="font-size: clamp(28px, 2.6vw, 34px); line-height: 1.15;">
+            Brad Brisco
+          </h3>
+          <p class="text-ink mt-2 text-[15px] font-medium">Co-founder &amp; CEO</p>
+          <p class="text-ink-muted text-sm mt-1">United States</p>
+          <p class="font-body text-ink mt-5 text-[16px] leading-relaxed">
+            Brad has led church planting strategy at the North American Mission Board for over a decade
+            and is one of the most-respected voices in the missional church movement in North America.
+            He has authored and co-authored multiple books on missional ecclesiology, including
+            <em>The Missional Quest</em> and <em>Missional Essentials</em>. Brad's relationships across
+            senior pastors, church planters, and denominational leaders are how Movemental's warm-distribution
+            model became possible.
+          </p>
+
+          <div class="mt-7">
+            <p class="eyebrow text-ink-muted mb-3">Credentials &amp; context</p>
+            <ul class="font-body text-ink text-[15px] leading-relaxed space-y-2">
+              <li>— North American Mission Board / Send Network leadership</li>
+              <li>— Multiple-book arc on missional practice and church planting</li>
+              <li>— Practitioner-theologian bridging institutional evangelicalism and missional theology</li>
+              <li>— Long-standing relationships across denominations and planting networks</li>
+            </ul>
+          </div>
+
+          <div class="mt-7 flex flex-wrap gap-x-6 gap-y-2">
+            <a class="arrow-link" href="#" rel="noopener">LinkedIn <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="arrow-link" href="#" rel="noopener">Books <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <!-- Card 2 — Alan Hirsch -->
+        <article class="fade-up" aria-labelledby="founder-alan">
+          <div class="founder-tile" role="img" aria-label="Editorial portrait placeholder for Alan Hirsch">
+            <span class="founder-letter" aria-hidden="true">A</span>
+          </div>
+          <h3 id="founder-alan" class="font-display-italic text-ink mt-7" style="font-size: clamp(28px, 2.6vw, 34px); line-height: 1.15;">
+            Alan Hirsch
+          </h3>
+          <p class="text-ink mt-2 text-[15px] font-medium">Co-founder &amp; Chief Missiologist</p>
+          <p class="text-ink-muted text-sm mt-1">Six continents</p>
+          <p class="font-body text-ink mt-5 text-[16px] leading-relaxed">
+            Alan is the missiologist behind <em>The Forgotten Ways</em> and the APEST and 5Q frameworks,
+            which have been adopted across denominations, planting networks, and seminaries on six continents.
+            He coined the term <em>Movemental</em>. His missiological depth shapes the theological foundation
+            of Movemental's path: that human formation must precede technological deployment, and that a
+            movement is held together by the credibility of its practitioners, not by the platforms that
+            distribute them.
+          </p>
+
+          <div class="mt-7">
+            <p class="eyebrow text-ink-muted mb-3">Credentials &amp; context</p>
+            <ul class="font-body text-ink text-[15px] leading-relaxed space-y-2">
+              <li>— <em>The Forgotten Ways</em> and APEST architect</li>
+              <li>— Twenty-book published corpus</li>
+              <li>— Founder of Forge Mission Training Network, 5Q, Movement Leaders Collective, 100Movements</li>
+              <li>— Frameworks adopted across denominations and seminaries globally</li>
+            </ul>
+          </div>
+
+          <div class="mt-7 flex flex-wrap gap-x-6 gap-y-2">
+            <a class="arrow-link" href="https://alanhirsch.org" rel="noopener">alanhirsch.org <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="arrow-link" href="https://www.100movements.com" rel="noopener">100Movements <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <!-- Card 3 — Joshua Shepherd -->
+        <article class="fade-up" aria-labelledby="founder-josh">
+          <div class="founder-tile" role="img" aria-label="Editorial portrait placeholder for Joshua Shepherd">
+            <span class="founder-letter" aria-hidden="true">J</span>
+          </div>
+          <h3 id="founder-josh" class="font-display-italic text-ink mt-7" style="font-size: clamp(28px, 2.6vw, 34px); line-height: 1.15;">
+            Joshua Shepherd
+          </h3>
+          <p class="text-ink mt-2 text-[15px] font-medium">Founder &amp; CTO</p>
+          <p class="text-ink-muted text-sm mt-1">United States</p>
+          <p class="font-body text-ink mt-5 text-[16px] leading-relaxed">
+            Josh is the technical founder behind Movemental's platform. He came into this work from inside it,
+            having spent years as a Methodist pastor and then as a founder and leader of a neomonastic, communal,
+            mission-driven nonprofit where he and his wife lived alongside roughly a hundred young adults at a time.
+            The digital work emerged later, from inside that ministry — a way to tell its stories, then a way to
+            amplify others' stories, then a platform that could hold a network. Bilingual in English and Spanish.
+          </p>
+
+          <div class="mt-7">
+            <p class="eyebrow text-ink-muted mb-3">Credentials &amp; context</p>
+            <ul class="font-body text-ink text-[15px] leading-relaxed space-y-2">
+              <li>— Founder, CTO, and majority equity holder</li>
+              <li>— Architect of Movemental's multi-tenant AI-native platform</li>
+              <li>— Background in pastoral ministry, communal nonprofit leadership, and digital infrastructure for movement organizations</li>
+              <li>— Bilingual facilitator across English-speaking and Spanish-speaking contexts</li>
+            </ul>
+          </div>
+
+          <div class="mt-7 flex flex-wrap gap-x-6 gap-y-2">
+            <a class="arrow-link" href="#" rel="noopener">LinkedIn <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="arrow-link" href="#" rel="noopener">GitHub <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Section 3 — The story                                         -->
+  <!-- ============================================================ -->
+  <section aria-labelledby="story-heading" class="bg-cream-deep">
+    <div class="container-x">
+      <div class="rule-hairline"></div>
+    </div>
+
+    <div class="container-x section-pad">
+      <div class="max-w-[44rem]">
+        <p class="eyebrow text-ink-muted mb-6 fade-up">How Movemental came to exist</p>
+        <h2 id="story-heading" class="font-display display-2 text-ink fade-up">
+          It started with a question Josh sent to Brad <span class="font-display-italic">in mid-2024.</span>
+        </h2>
+      </div>
+
+      <div class="prose-narrow mt-14 fade-up">
+        <p>
+          Josh was a long-time reader of two missional voices he considered formative — Brad Brisco's work
+          in church planting and missional ecclesiology, and Alan Hirsch's work on the framework that gives
+          Movemental its name. Brad was already in his life directly, serving on the board of the neomonastic
+          nonprofit Josh and his wife had founded, where they lived alongside young adults in extended communal
+          residency. Alan came into Josh's life first through reading, then through ministries that taught
+          Alan's work explicitly, and only later through digital work that began to remediate Alan's content
+          into forms the internet could carry.
+        </p>
+
+        <p>
+          In mid-2024, Josh reached out to Brad with a question. Generative AI was reaching mass adoption.
+          The implications for mission-driven organizations were starting to surface, and so were the concerns —
+          about authorship, about formation, about the pressure these tools were going to place on the trust
+          missional work depends on. Josh wrote to Brad and asked, in effect, are you seeing this. Brad was.
+          The conversation extended.
+        </p>
+
+        <blockquote class="pullquote">
+          What started as a check-in among three people who had been circling each other's work for years
+          became a sustained conversation about authorship, formation, and what to build.
+        </blockquote>
+
+        <p>
+          Over the next two years, what started as a check-in among three people who had been circling each
+          other's work for years became a sustained conversation about three intersecting questions. What does
+          AI mean for authorship — for the integrity of voice, for the difference between thinking and
+          producing? What does AI mean for formation — for the way leaders are shaped, for what tools make
+          of their users? And what would it look like to build, for Alan specifically, a digital platform
+          that could hold his work in ways his existing organizations and partners had not been able to?
+        </p>
+
+        <p>
+          Alan came to trust that Josh might be the right person to build that platform. Josh came to want
+          to build, for Alan, what the largest digital agency would have built if Alan had gone to one. As
+          the platform took shape, a recognition arrived that did not arrive all at once but in stages. What
+          was being built for Alan would also serve Brad, with adjustments. What served Brad and Alan would
+          serve other movement leaders whose situations were structurally similar. And eventually, more
+          recently, what served movement leaders would also serve organizations — churches, nonprofits,
+          institutions — because their underlying technological needs were ultimately the same as the leaders
+          who shape and serve them.
+        </p>
+
+        <p>
+          Movemental is what came of those recognitions. The platform is what makes the methodology operational
+          at scale. Brad and Alan are co-founders not as advisors lending names to a tech founder's deck, but
+          as the people whose decades of work define the substance of what the company exists to protect.
+          Josh is the person who saw what was coming, asked the right two people to build it with him, and
+          shipped the platform that made the answer real.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Section 4 — What movement leaders commit to                   -->
+  <!-- ============================================================ -->
+  <section aria-labelledby="commitments-heading" class="bg-midnight section-pad">
+    <div class="container-x">
+
+      <div class="max-w-[44rem]">
+        <p class="eyebrow text-cream-low mb-6 fade-up">What movement leaders commit to</p>
+        <h2 id="commitments-heading" class="font-display display-2 text-cream fade-up">
+          Five commitments that bind this network.
+        </h2>
+        <p class="font-body text-cream-mut text-lg leading-relaxed mt-8 max-w-[40rem] fade-up">
+          Movement leaders who join Movemental share more than a platform. They make five specific commitments
+          to each other and to the people their work serves. These commitments are not slogans. They shape
+          every line of code Movemental ships and every artifact the path facilitates.
+        </p>
+      </div>
+
+      <ol class="mt-16 list-none p-0">
+
+        <li class="commitment-row fade-up">
+          <div class="grid grid-cols-12 gap-6 md:gap-10">
+            <div class="col-span-12 md:col-span-2">
+              <span class="commitment-numeral" aria-hidden="true">01</span>
+            </div>
+            <div class="col-span-12 md:col-span-10 max-w-[44rem]">
+              <h3 class="font-display text-cream" style="font-size: clamp(22px, 2.4vw, 28px); line-height: 1.25; letter-spacing: -0.01em;">
+                Shared missional DNA
+              </h3>
+              <p class="text-cream-mut mt-4 text-[17px] leading-relaxed">
+                Movement leaders who join Movemental share what Alan Hirsch named <em>missional DNA</em> —
+                a centrality of Christ, a posture of mission, a theology of incarnation, and the disciplines
+                of formation that follow from those. This is the tacit ground that makes everything else
+                possible. It is not branded or marketed. It is what makes the commitments below coherent.
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="commitment-row fade-up">
+          <div class="grid grid-cols-12 gap-6 md:gap-10">
+            <div class="col-span-12 md:col-span-2">
+              <span class="commitment-numeral" aria-hidden="true">02</span>
+            </div>
+            <div class="col-span-12 md:col-span-10 max-w-[44rem]">
+              <h3 class="font-display text-cream" style="font-size: clamp(22px, 2.4vw, 28px); line-height: 1.25; letter-spacing: -0.01em;">
+                Scenius over guru
+              </h3>
+              <p class="text-cream-mut mt-4 text-[17px] leading-relaxed">
+                Movemental is built on the conviction that movement leaders sharpen each other in ways that
+                do not happen alone. Joining the platform is a commitment to participate in <em>scenius</em> —
+                a peer network in which leaders refine, amplify, and recommend each other's work. The
+                infrastructure makes this possible in ways that simply do not happen offline, and that have
+                not happened even for our most-networked founders online before now.
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="commitment-row fade-up">
+          <div class="grid grid-cols-12 gap-6 md:gap-10">
+            <div class="col-span-12 md:col-span-2">
+              <span class="commitment-numeral" aria-hidden="true">03</span>
+            </div>
+            <div class="col-span-12 md:col-span-10 max-w-[44rem]">
+              <h3 class="font-display text-cream" style="font-size: clamp(22px, 2.4vw, 28px); line-height: 1.25; letter-spacing: -0.01em;">
+                Mutual credibility
+              </h3>
+              <p class="text-cream-mut mt-4 text-[17px] leading-relaxed">
+                Movement leaders who join Movemental commit to amplifying each other's existing credibility —
+                the credibility built over decades of offline human work, prior to AI. Each leader's voice
+                is strengthened by the fact that other trusted voices have publicly recognized and recommended
+                that voice. This commitment to mutual recommendation is what makes the network more credible
+                than any individual platform could be on its own.
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="commitment-row fade-up">
+          <div class="grid grid-cols-12 gap-6 md:gap-10">
+            <div class="col-span-12 md:col-span-2">
+              <span class="commitment-numeral" aria-hidden="true">04</span>
+            </div>
+            <div class="col-span-12 md:col-span-10 max-w-[44rem]">
+              <h3 class="font-display text-cream" style="font-size: clamp(22px, 2.4vw, 28px); line-height: 1.25; letter-spacing: -0.01em;">
+                Transparent, mature AI use
+              </h3>
+              <p class="text-cream-mut mt-4 text-[17px] leading-relaxed">
+                Movement leaders who join Movemental commit to using AI in ways that are honest and modeled.
+                We do not use AI to author content under our names. We use AI as infrastructure — to make our
+                work findable, to extend our reach, to surface what is in our existing corpus, and to support
+                the operational work of running our platforms. The distinction between authorship and
+                infrastructure matters, and we model it publicly so that the people we serve can see that
+                another way of using AI is available.
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="commitment-row fade-up">
+          <div class="grid grid-cols-12 gap-6 md:gap-10">
+            <div class="col-span-12 md:col-span-2">
+              <span class="commitment-numeral" aria-hidden="true">05</span>
+            </div>
+            <div class="col-span-12 md:col-span-10 max-w-[44rem]">
+              <h3 class="font-display text-cream" style="font-size: clamp(22px, 2.4vw, 28px); line-height: 1.25; letter-spacing: -0.01em;">
+                A redemptive business
+              </h3>
+              <p class="text-cream-mut mt-4 text-[17px] leading-relaxed">
+                Movement leaders who join Movemental commit to a business model that flips the historically
+                extractive logic of publication. The traditional model — institutional gatekeepers retaining
+                the majority of an author's revenue in exchange for marketing and distribution — was structurally
+                necessary in an era when readers had no other way to discover credible authors. We propose
+                that one hundred movement leaders mutually recommending each other can constitute a credibility
+                infrastructure that surpasses any publisher, and that the revenue this generates flows back
+                to the leaders who built the credibility in the first place. The path this opens for the next
+                generation of covocational movement leaders, smaller in audience but no less called, is part
+                of why we say this work explicitly rather than leaving it implicit.
+              </p>
+            </div>
+          </div>
+        </li>
+
+      </ol>
+
+      <div class="mt-16 fade-up">
+        <p class="font-display-italic text-amber text-[17px] md:text-[19px] leading-relaxed max-w-[44rem]" style="opacity: 0.92;">
+          These commitments are not aspirational. They are operational, and they shape the architecture
+          of the platform itself.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Section 5 — The voices already participating                  -->
+  <!-- ============================================================ -->
+  <section aria-labelledby="voices-heading" class="bg-cream section-pad">
+    <div class="container-x">
+      <div class="max-w-[44rem]">
+        <p class="eyebrow text-ink-muted mb-6 fade-up">Beyond the founders</p>
+        <h2 id="voices-heading" class="font-display display-2 text-ink fade-up">
+          The work is held by more than three of us.
+        </h2>
+        <p class="font-body text-ink-muted text-lg leading-relaxed mt-8 max-w-[40rem] fade-up">
+          Movemental's first cohort of Movement Voices includes leaders whose decades of work in missional
+          infrastructure, theological scholarship, and movement leadership shape what we build and how we
+          facilitate. The list is not a marketing roster. It is the actual community whose work the platform
+          is being built to hold.
+        </p>
+      </div>
+
+      <!-- Voices grid is rendered from data so the migration to Next.js
+           can simply pass the COMMITTED_VOICES array from
+           src/lib/committed-voices.ts into the same template. -->
+      <div id="voices-grid"
+           class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-2 fade-up"
+           role="list"></div>
+
+      <div class="mt-14 fade-up">
+        <a class="arrow-link" href="/voices">
+          See all Movement Voices <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- Section 6 — Closing                                           -->
+  <!-- ============================================================ -->
+  <section aria-labelledby="closing-heading" class="bg-midnight section-pad">
+    <div class="container-x">
+      <div class="max-w-[44rem]">
+        <p class="eyebrow text-cream-low mb-6 fade-up">If this resonates</p>
+        <h2 id="closing-heading" class="font-display display-2 text-cream fade-up">
+          We would value a conversation.
+        </h2>
+        <p class="font-body text-cream-mut text-lg leading-relaxed mt-8 max-w-[38rem] fade-up">
+          Movemental works through conversation. If you lead a mission-driven organization, advise or fund
+          movement leaders, or are a movement leader yourself wondering whether this network is one you should
+          join — reach out. The conversation is 30 minutes. We listen, ask honest questions, and tell you
+          whether the path or the network is the right fit for where you are.
+        </p>
+
+        <div class="mt-12 flex flex-col sm:flex-row gap-4 fade-up">
+          <a href="/contact" class="btn btn-primary-on-midnight">Start a conversation</a>
+          <a href="/field-guide" class="btn btn-ghost-on-midnight">Read the field guide</a>
+        </div>
+
+        <p class="font-display-italic text-cream-low mt-10 text-[16px] fade-up">
+          Or download the free Safety toolkit. Sixteen pages. Read it in an evening.
+        </p>
+        <a href="#" id="toolkit-link" class="arrow-link on-midnight mt-3 toolkit-link fade-up">
+          Download the toolkit <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- Footer (placeholder — production renders <SiteFooter />)      -->
+<!-- ============================================================ -->
+<footer class="bg-midnight-deep text-cream">
+  <div class="container-x py-16">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
+      <div class="col-span-2 md:col-span-1">
+        <a href="/" class="font-display text-2xl text-cream">Movemental</a>
+        <p class="text-cream-low text-sm mt-4 max-w-[16rem] leading-relaxed">
+          A company built by movement leaders, for movement leaders.
+        </p>
+      </div>
+      <div>
+        <p class="eyebrow text-cream-low mb-4">Path</p>
+        <ul class="space-y-3 text-sm">
+          <li><a class="text-cream-mut hover:text-cream" href="/methodology">Methodology</a></li>
+          <li><a class="text-cream-mut hover:text-cream" href="/walkthrough">Walkthrough</a></li>
+          <li><a class="text-cream-mut hover:text-cream" href="/pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow text-cream-low mb-4">Network</p>
+        <ul class="space-y-3 text-sm">
+          <li><a class="text-cream-mut hover:text-cream" href="/who-we-serve">Who we serve</a></li>
+          <li><a class="text-cream-mut hover:text-cream" href="/voices">Voices</a></li>
+          <li><a class="text-cream-mut hover:text-cream" href="/about" aria-current="page">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow text-cream-low mb-4">Connect</p>
+        <ul class="space-y-3 text-sm">
+          <li><a class="text-cream-mut hover:text-cream" href="/contact">Contact</a></li>
+          <li><a class="text-cream-mut hover:text-cream" href="/field-guide">Field guide</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rule-cream-hair mt-14 pt-8 flex flex-col md:flex-row justify-between gap-4">
+      <p class="text-cream-low text-xs uppercase tracking-[0.14em]">© 2026 Movemental</p>
+      <div class="flex gap-6 text-xs uppercase tracking-[0.14em] text-cream-low">
+        <a class="hover:text-cream" href="/privacy">Privacy</a>
+        <a class="hover:text-cream" href="/terms">Terms</a>
+        <a class="hover:text-cream" href="/cookies">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---------------------------------------------------------------
+  // Movement Voices data — mirrors src/lib/committed-voices.ts so the
+  // template review reflects the actual published roster. The Next.js
+  // implementation should import the canonical COMMITTED_VOICES array.
+  // ---------------------------------------------------------------
+  const COMMITTED_VOICES = [
+    {
+      slug: "liz-rios",
+      displayName: "Rev. Dr. Liz Rios",
+      role: "Founder, Passion2Plant · Director, Púlpito Fellows",
+      shortTagline:
+        "Afro-Boricua theologian and church-planter building the only national BIPOC-woman-led planting network in the U.S.",
+    },
+    {
+      slug: "jr-woodward",
+      displayName: "JR Woodward",
+      role: "National Director, V3 Church Planting Movement",
+      shortTagline:
+        "Three decades of church planting, three published books, and a Manchester Ph.D. on the powers of leadership.",
+    },
+    {
+      slug: "rowland-smith",
+      displayName: "L. Rowland Smith",
+      role: "National Director, Forge America · Founder, The Pando Collective",
+      shortTagline:
+        "National Forge leader, micro-church network founder, pastor, and curator of the Red Skies conversation.",
+    },
+  ];
+
+  function renderVoices() {
+    const grid = document.getElementById("voices-grid");
+    if (!grid) return;
+    const html = COMMITTED_VOICES.map(function (v) {
+      const href = "/voices/" + v.slug;
+      return [
+        '<a class="voice-card" role="listitem" href="' + href + '">',
+        '<p class="voice-name">' + v.displayName + '</p>',
+        '<p class="voice-role">' + v.role + '</p>',
+        '<p class="voice-line">' + v.shortTagline + '</p>',
+        '</a>',
+      ].join("");
+    }).join("");
+    grid.innerHTML = html;
+  }
+  renderVoices();
+
+  // Make voice cards clickable while staying restrained typographically.
+  // The cards behave as anchors but render as plain text-blocks per
+  // editorial system rules (no buttons, no rounded corners, no shadows).
+  document.querySelectorAll("#voices-grid .voice-card").forEach(function (a) {
+    a.style.display = "block";
+    a.style.textDecoration = "none";
+  });
+
+  // ---------------------------------------------------------------
+  // Toolkit link — placeholder hook for the existing toolkit modal.
+  // In Next.js this opens the shared <ToolkitModal /> trigger.
+  // ---------------------------------------------------------------
+  document.getElementById("toolkit-link").addEventListener("click", function (e) {
+    e.preventDefault();
+    // Production: dispatch toolkit modal open event.
+    // For the template review we simply scroll the user to the closing CTA.
+    window.alert("Toolkit modal trigger — wire to existing <ToolkitModal /> in Next.js implementation.");
+  });
+
+  // ---------------------------------------------------------------
+  // Subtle reveal on scroll. Honors prefers-reduced-motion via CSS.
+  // ---------------------------------------------------------------
+  const reveal = document.querySelectorAll(".fade-up");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.05 }
+    );
+    reveal.forEach(function (el) { io.observe(el); });
+  } else {
+    reveal.forEach(function (el) { el.classList.add("is-visible"); });
+  }
+</script>
+
+</body>
+</html>

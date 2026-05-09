@@ -113,7 +113,7 @@ function SegmentCardsFold() {
                 <p className="text-[1.0625rem] leading-relaxed text-muted-foreground mb-8 flex-grow">
                   For congregations and church-planting movements navigating AI without losing pastoral integrity.
                 </p>
-                <Link href="/for-churches" className="text-sm font-semibold uppercase tracking-eyebrow text-primary hover:text-primary/80 transition-colors inline-flex items-center">
+                <Link href="/churches" className="text-sm font-semibold uppercase tracking-eyebrow text-primary hover:text-primary/80 transition-colors inline-flex items-center">
                   Pathway for Churches <ArrowUpRight className="w-4 h-4 ml-1" />
                 </Link>
               </div>
@@ -125,7 +125,7 @@ function SegmentCardsFold() {
                 <p className="text-[1.0625rem] leading-relaxed text-muted-foreground mb-8 flex-grow">
                   For mission-driven nonprofits where AI must serve the work, not warp it.
                 </p>
-                <Link href="/for-nonprofits" className="text-sm font-semibold uppercase tracking-eyebrow text-primary hover:text-primary/80 transition-colors inline-flex items-center">
+                <Link href="/nonprofits" className="text-sm font-semibold uppercase tracking-eyebrow text-primary hover:text-primary/80 transition-colors inline-flex items-center">
                   Pathway for Nonprofits <ArrowUpRight className="w-4 h-4 ml-1" />
                 </Link>
               </div>
@@ -137,7 +137,7 @@ function SegmentCardsFold() {
                 <p className="text-[1.0625rem] leading-relaxed text-muted-foreground mb-8 flex-grow">
                   For seminaries, training networks, and denominational bodies preparing the next generation.
                 </p>
-                <Link href="/for-institutions" className="text-sm font-semibold uppercase tracking-eyebrow text-primary hover:text-primary/80 transition-colors inline-flex items-center">
+                <Link href="/institutions" className="text-sm font-semibold uppercase tracking-eyebrow text-primary hover:text-primary/80 transition-colors inline-flex items-center">
                   Pathway for Institutions <ArrowUpRight className="w-4 h-4 ml-1" />
                 </Link>
               </div>

@@ -25,13 +25,13 @@ interface LightTextureHeroProps {
 
 /**
  * Light-default companion to TopographicHero. Uses the same terrain image as
- * a low-opacity texture on the right edge — `filter: invert()` flips the
- * source to dark linework, `mix-blend-multiply` lets it gently darken the
- * cream surface, and a left-to-right wash keeps the text column clean.
+ * a low-opacity texture on the right edge — `invert` flips the source for
+ * multiply on paper in light mode; in dark mode `mix-blend-screen` (still on
+ * inverted art) keeps contour lines visible instead of disappearing under
+ * multiply on `--background`.
  *
- * Reserve TopographicHero (midnight) for the home entrance and closing CTAs;
- * use this for audience landings so the system keeps a tonal arc instead of
- * three back-to-back midnight bands.
+ * Reserve TopographicHero for the home entrance; use this for audience-style
+ * landings so the system keeps a tonal arc instead of stacked midnight bands.
  */
 export function LightTextureHero({
   eyebrow,
@@ -49,8 +49,8 @@ export function LightTextureHero({
     >
       {/*
         Desktop-only terrain: absolute-positioned to the section so it can
-        bleed off the right edge. Inverted + multiplied + heavily washed so the
-        topography reads as ambient texture, never as a picture.
+        bleed off the right edge. Inverted + multiply (light) / screen (dark)
+        + gradient wash so the topography reads as ambient texture.
       */}
       <div
         aria-hidden="true"
@@ -63,10 +63,9 @@ export function LightTextureHero({
             fill
             priority
             sizes="(max-width: 1023px) 0px, 58vw"
-            style={{ filter: "invert(1)" }}
-            className="object-cover object-left opacity-[0.16] mix-blend-multiply"
+            className="object-cover object-left invert opacity-[0.16] mix-blend-multiply dark:opacity-[0.12] dark:mix-blend-screen"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/35" />
+          <div className="absolute inset-0 bg-linear-to-r from-background via-background/85 to-background/35 dark:via-background/88 dark:to-background/40" />
         </div>
       </div>
 
@@ -110,10 +109,9 @@ export function LightTextureHero({
                 alt=""
                 fill
                 sizes="(max-width: 1023px) 100vw, 0px"
-                style={{ filter: "invert(1)" }}
-                className="object-cover opacity-[0.18] mix-blend-multiply"
+                className="object-cover invert opacity-[0.18] mix-blend-multiply dark:opacity-[0.13] dark:mix-blend-screen"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-background via-background/40 to-background/80" />
+              <div className="absolute inset-0 bg-linear-to-b from-background via-background/40 to-background/80 dark:via-background/45 dark:to-background/85" />
             </div>
           </div>
         ) : null}

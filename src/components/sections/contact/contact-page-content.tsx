@@ -1,149 +1,186 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
-import { CircleHelp, DollarSign, Mail } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-import {
-  ArrowLink,
-  Container,
-  Display,
-  Eyebrow,
-  Prose,
-  Reveal,
-  Section,
-} from "@/components/primitives";
-import { IconFeatureCard } from "@/components/editorial-stitch";
-import { ContactForm } from "@/components/forms/contact-form";
-import { SSSS_FIELD_GUIDE_PATH } from "@/lib/canon-routes";
+import { ContactConversationForm } from "@/components/forms/contact-conversation-form";
+import { Container, Reveal, Section } from "@/components/primitives";
+import { type ContactInterest, contactInterestToOrgType } from "@/lib/contact-interest";
 
-export function ContactPageContent() {
+function TextLink({
+  href,
+  children,
+  external,
+}: {
+  href: string;
+  children: ReactNode;
+  external?: boolean;
+}) {
+  return (
+    <Link
+      href={href}
+      className="group inline-flex items-center gap-1 font-medium text-primary transition-colors hover:text-primary-dim"
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+    >
+      {children}
+      <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden strokeWidth={2} />
+    </Link>
+  );
+}
+
+export function ContactPageContent({ contactInterest }: { contactInterest?: ContactInterest | null }) {
+  const presetOrgType = contactInterest ? contactInterestToOrgType(contactInterest) : undefined;
+
   return (
     <>
-      <Section spacing="lg" className="text-center">
-        <Container>
-          <Eyebrow className="mb-4 animate-fade-in [animation-delay:100ms]">Invitation</Eyebrow>
-          <Display size="lg" className="mx-auto max-w-4xl animate-fade-up">Start a conversation</Display>
-          <Prose className="mx-auto mt-6 max-w-2xl text-lg animate-fade-up [animation-delay:200ms]">
-            <p>Movemental grows through relationships and careful work. If you are responsible for formation — as a movement leader, organization, or partner — this page is the front door.</p>
-          </Prose>
-          <div className="mt-8 flex flex-wrap justify-center gap-6 animate-fade-up [animation-delay:400ms]">
-            <ArrowLink href="#message" size="lg">
-              Go to the form
-            </ArrowLink>
-            <ArrowLink href="mailto:hello@movemental.com" tone="foreground" size="lg">
-              Email hello@movemental.com
-            </ArrowLink>
-          </div>
+      <Section
+        variant="midnight"
+        spacing="lg"
+        aria-labelledby="contact-hero-title"
+        className="scroll-mt-(--site-chrome-total) pt-8 md:pt-12"
+      >
+        <Container width="default" className="max-w-4xl">
+          <Reveal>
+            <p className="text-sm font-semibold uppercase tracking-eyebrow text-inverse-muted">Start a conversation</p>
+            <h1
+              id="contact-hero-title"
+              className="mt-8 font-serif text-5xl font-medium italic leading-none tracking-tight text-inverse-foreground md:text-7xl lg:text-8xl"
+            >
+              Tell us what you&apos;re working on.
+            </h1>
+            <div className="mt-8 max-w-2xl space-y-6 text-lg leading-relaxed text-inverse-muted">
+              <p>
+                A 30-minute conversation with Brad, Alan, or Josh. We listen, ask honest questions, and tell you whether
+                Safety is the right starting place for your organization or whether you&apos;d be better served waiting
+                or starting elsewhere.
+              </p>
+              <p className="text-sm font-semibold uppercase tracking-eyebrow text-inverse-muted/90">
+                We respond within one business day.
+              </p>
+            </div>
+          </Reveal>
         </Container>
       </Section>
 
-      <Section variant="section">
-        <Reveal>
-        <Container>
-          <Display size="md" as="h2">Who this is for</Display>
-          <Prose className="mt-4"><p>We serve multiple audiences with the same underlying posture.</p></Prose>
-          <div className="mt-6 flex flex-wrap gap-3">
-            {["Movement leaders building a durable body of work", "Denominations, networks, and institutions", "Nonprofits and ministries", "Media, research, and aligned partners"].map((a) => (
-              <span key={a} className="rounded-full bg-card px-5 py-2 text-sm font-medium text-foreground">{a}</span>
-            ))}
-          </div>
-          <Prose className="mt-6">
-            <p>
-              For movement leaders, churches, nonprofits, and institutions — use the form below or email and we will
-              route the conversation.
-            </p>
-          </Prose>
+      <Section variant="default" spacing="lg">
+        <Container width="default" className="max-w-6xl">
+          <Reveal>
+            <h2 className="font-serif text-4xl font-medium tracking-tight text-foreground">
+              Three steps from here to a working conversation.
+            </h2>
+            <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-3 lg:gap-24">
+              <div className="space-y-4">
+                <p className="text-sm font-semibold uppercase tracking-eyebrow text-muted-foreground">Step 01</p>
+                <h3 className="font-serif text-2xl italic text-foreground">You send a note.</h3>
+                <p className="leading-relaxed text-muted-foreground">
+                  Use the form below or email{" "}
+                  <a
+                    href="mailto:josh@movemental.ai"
+                    className="font-medium text-primary underline underline-offset-4 transition-colors hover:text-primary-dim"
+                  >
+                    josh@movemental.ai
+                  </a>{" "}
+                  directly. Include enough context that we can come to the conversation prepared.
+                </p>
+              </div>
+              <div className="space-y-4">
+                <p className="text-sm font-semibold uppercase tracking-eyebrow text-muted-foreground">Step 02</p>
+                <h3 className="font-serif text-2xl italic text-foreground">A founder responds.</h3>
+                <p className="leading-relaxed text-muted-foreground">
+                  Within one business day. Brad, Alan, or Josh — depending on the fit. We propose two or three times for a
+                  30-minute call.
+                </p>
+              </div>
+              <div className="space-y-4">
+                <p className="text-sm font-semibold uppercase tracking-eyebrow text-muted-foreground">Step 03</p>
+                <h3 className="font-serif text-2xl italic text-foreground">We talk.</h3>
+                <p className="leading-relaxed text-muted-foreground">
+                  30 minutes. No slide deck, no demo. We listen to what you&apos;re navigating and tell you honestly what
+                  we&apos;d recommend — including &ldquo;you don&apos;t need us yet&rdquo; when that&apos;s the answer.
+                </p>
+              </div>
+            </div>
+          </Reveal>
         </Container>
-        </Reveal>
       </Section>
 
-      <Section>
-        <Reveal>
-        <Container>
-          <Display size="md" as="h2">What to expect</Display>
-          <Prose className="mt-6"><p>We read what you send. We may respond slowly when depth matters more than speed. If your note needs a human with context, you will get one — not an automated funnel pretending to be instant.</p><p>Referrals and warm introductions still matter. If someone we trust pointed you here, say so — it helps us route with care.</p></Prose>
+      <Section variant="section" spacing="lg" id="message">
+        <Container width="reading" className="max-w-3xl">
+          <Reveal>
+            <div className="mb-16 space-y-6">
+              <p className="text-sm font-semibold uppercase tracking-eyebrow text-muted-foreground">Send a note</p>
+              <h2 className="font-serif text-5xl font-medium italic tracking-tight text-foreground">
+                Tell us what&apos;s on your desk.
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                The more context you can share, the better the first conversation will be.
+              </p>
+            </div>
+            <ContactConversationForm initialOrgType={presetOrgType} />
+          </Reveal>
         </Container>
-        </Reveal>
       </Section>
 
-      <Section variant="section">
-        <Reveal>
-        <Container>
-          <Display size="md" as="h2">How to start</Display>
-          <div className="mt-8 grid gap-8 sm:grid-cols-3">
-            <IconFeatureCard
-              icon={<Mail className="size-10" aria-hidden />}
-              eyebrow="Step 1"
-              title="Email outline"
-              description='Share context, links, and what "success" would mean in 12–18 months — enough signal for a human to route with care.'
-            />
-            <IconFeatureCard
-              icon={<CircleHelp className="size-10" aria-hidden />}
-              eyebrow="Step 2"
-              title="FAQ first"
-              description="Many logistics questions are pre-answered — reading there first saves both sides a round-trip."
-            />
-            <IconFeatureCard
-              icon={<DollarSign className="size-10" aria-hidden />}
-              eyebrow="Step 3"
-              title="Economics in conversation"
-              description="Commercial shape is discussed directly once we understand your context — no separate pricing sheet required to start."
-            />
-          </div>
-          <Prose className="mt-8 text-center text-sm">
-            <p>
-              <Link href="/faq" className="text-primary hover:underline">
-                Read the FAQ
-              </Link>
-            </p>
-          </Prose>
+      <Section variant="default" spacing="lg">
+        <Container width="default" className="max-w-6xl">
+          <Reveal>
+            <h2 className="font-serif text-4xl font-medium tracking-tight text-foreground">Or skip the form.</h2>
+            <div className="mt-16 grid grid-cols-1 gap-12 border-b border-border pb-0 md:grid-cols-3 lg:gap-24">
+              <div className="space-y-4 border-b border-border pb-8 md:border-b-0 md:pb-0">
+                <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-foreground">Email directly</h3>
+                <p className="text-muted-foreground">For visitors who&apos;d rather just write.</p>
+                <a
+                  href="mailto:josh@movemental.ai"
+                  className="mt-4 inline-block font-medium text-primary transition-colors hover:text-primary-dim"
+                >
+                  josh@movemental.ai
+                </a>
+              </div>
+              <div className="space-y-4 border-b border-border pb-8 md:border-b-0 md:pb-0">
+                <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-foreground">Book a slot</h3>
+                <p className="text-muted-foreground">Pick a time on Josh&apos;s calendar.</p>
+                <div className="mt-4">
+                  <TextLink href="/contact">See available times</TextLink>
+                </div>
+              </div>
+              <div className="space-y-4 pb-8 md:pb-0">
+                <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-foreground">Read first</h3>
+                <p className="text-muted-foreground">If you&apos;re not yet sure whether to reach out.</p>
+                <div className="mt-4">
+                  <TextLink href="/toolkit">Download the Safety toolkit</TextLink>
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </Container>
-        </Reveal>
       </Section>
 
-      <Section>
-        <Reveal>
-        <Container>
-          <Display size="md" as="h2">Trust &amp; inspectability</Display>
-          <ul className="mt-6 space-y-3 text-muted-foreground">
-            <li><Link href="/faq" className="text-primary hover:underline">FAQ</Link> — logistics, scope, and how we work</li>
-            <li><Link href="/privacy" className="text-primary hover:underline">Privacy</Link> — how we handle information you share</li>
-          </ul>
+      <Section variant="default" spacing="lg">
+        <Container width="default" className="max-w-4xl">
+          <Reveal>
+            <div className="flex flex-col items-start gap-12 md:flex-row md:gap-24">
+              <div className="md:w-1/3">
+                <h2 className="font-serif text-3xl font-medium italic tracking-tight text-foreground">
+                  A 30-minute conversation works best when you&apos;re already past &apos;curious.&apos;
+                </h2>
+              </div>
+              <div className="md:w-2/3 space-y-8 border-l border-primary pl-8">
+                <p className="text-lg leading-relaxed text-muted-foreground">
+                  The conversation is most useful when you can name a specific situation your organization is navigating.
+                  A board member raised AI at the last meeting. Staff are using AI tools individually and you&apos;re not
+                  sure what&apos;s happening. Your accreditor is asking about AI policy. A donor wants to know your
+                  posture. Something has surfaced that you need to think through with someone who has done this work
+                  before.
+                </p>
+                <p className="text-lg leading-relaxed text-muted-foreground">
+                  If you&apos;re earlier than that — exploring whether AI matters for your organization, reading broadly,
+                  not yet at a specific question — the field guide is probably a better starting place than a 30-minute
+                  call.
+                </p>
+                <TextLink href="/field-guide">Read the field guide first</TextLink>
+              </div>
+            </div>
+          </Reveal>
         </Container>
-        </Reveal>
-      </Section>
-
-      <Section variant="section" id="message">
-        <Reveal>
-        <Container>
-          <Display size="md" as="h2">Message</Display>
-          <Prose className="mt-4"><p>Tell us about your work, your goals, and what led you here.</p></Prose>
-          <div className="mt-8 max-w-2xl">
-            <ContactForm />
-          </div>
-          <p className="mt-4 text-sm text-muted-foreground">
-            You can also reach us directly at{" "}
-            <a href="mailto:hello@movemental.com" className="text-primary hover:underline">hello@movemental.com</a>
-          </p>
-        </Container>
-        </Reveal>
-      </Section>
-
-      <Section>
-        <Reveal>
-        <Container>
-          <Display size="sm" as="h2">Prefer to explore first?</Display>
-          <Prose className="mt-4">
-            <p>
-              The fragmentation story, the book (<em className="font-serif not-italic">From Fragmentation to Movement</em>
-              ), and the AI Stewardship Sequence field guide — scatter, structure, and a safe adoption sequence.
-            </p>
-          </Prose>
-          <div className="mt-6 flex flex-wrap gap-4">
-            <Link href="/fragmentation" className="text-sm font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm">Fragmentation story &rarr;</Link>
-            <Link href="/book" className="text-sm font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm">Book &rarr;</Link>
-            <Link href={SSSS_FIELD_GUIDE_PATH} className="text-sm font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm">AI Stewardship Sequence field guide &rarr;</Link>
-          </div>
-        </Container>
-        </Reveal>
       </Section>
     </>
   );

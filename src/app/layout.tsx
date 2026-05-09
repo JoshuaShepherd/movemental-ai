@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Inter } from "next/font/google";
+import { headers } from "next/headers";
 
 import { SiteFooter } from "@/components/nav/site-footer";
 import { SiteHeader } from "@/components/nav/site-header";
@@ -48,11 +49,14 @@ export const viewport: Viewport = {
   themeColor: "#faf6ee",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const h = await headers();
+  const dashboardShell = h.get("x-movemental-shell") === "dashboard";
+
   return (
     <html
       lang="en"
@@ -64,11 +68,11 @@ export default function RootLayout({
           <a href="#main" className="skip-link">
             Skip to content
           </a>
-          <SiteHeader />
+          {!dashboardShell ? <SiteHeader /> : null}
           <main id="main" className="flex flex-1 flex-col">
             {children}
           </main>
-          <SiteFooter />
+          {!dashboardShell ? <SiteFooter /> : null}
         </Providers>
       </body>
     </html>

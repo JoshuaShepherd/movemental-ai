@@ -1,49 +1,29 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
+import { ArrowRight, BarChart3, BookOpen, Check, Circle, MessageSquare } from "lucide-react";
 
 import { NewsletterForm } from "@/components/forms/newsletter-form";
-import {
-  ArrowLink,
-  Container,
-  Display,
-  Eyebrow,
-  Prose,
-  Reveal,
-  Section,
-  SurfaceCard,
-} from "@/components/primitives";
-type StageOffering = {
+import { Container, Reveal, Section } from "@/components/primitives";
+import { cn } from "@/lib/utils";
+
+type StageCard = {
   stageEyebrow: string;
   title: string;
-  priceLine: string;
-  subPrice?: string;
-  body: string;
-  whatYouGet: readonly string[];
+  price: ReactNode;
+  intro: string;
+  deliverables: readonly string[];
   payment: string;
   ctaLabel: string;
   ctaHref: string;
 };
 
-type BundleOffering = {
-  eyebrow: string;
-  badge?: string;
-  title: string;
-  priceLine: string;
-  subPrice: string;
-  body: string;
-  whatYouGet: readonly string[];
-  payment: string;
-  ctaLabel: string;
-  ctaHref: string;
-};
-
-const STAGE_OFFERINGS: readonly StageOffering[] = [
+const STAGES: readonly StageCard[] = [
   {
     stageEyebrow: "Stage 01",
     title: "Safety Documentation",
-    priceLine: "$1,000",
-    subPrice: "Free toolkit available",
-    body: "Two weeks of facilitated work. Roughly eight hours synchronous plus async drafting support. Seven ratifiable governance artifacts produced and customized to your organization. The free \"It Starts With Safety\" toolkit is the 16-page field guide for organizations that prefer to run the self-assessment first or do the work themselves.",
-    whatYouGet: [
+    price: "$1,000",
+    intro: "Two weeks of facilitated work. Free toolkit available.",
+    deliverables: [
       "Acceptable Use Statement",
       "Care Boundaries",
       "Disclosure Standards",
@@ -52,314 +32,266 @@ const STAGE_OFFERINGS: readonly StageOffering[] = [
       "Incident Response Plan",
       "Named Refusals",
     ],
-    payment: "Net 15 from signing.",
+    payment: "Payment: Net 15 from signing",
     ctaLabel: "Begin Safety",
-    ctaHref: "/contact?interest=safety",
+    ctaHref: "/pathway/safety",
   },
   {
     stageEyebrow: "Stage 02",
     title: "Sandbox Discovery",
-    priceLine: "$15,000",
-    subPrice: "Standard engagement",
-    body: "Four weeks of disciplined exploration. Real recipes against real work. Module-based facilitation calibrated to your team’s calendar. Variance: scope flexes meaningfully smaller or larger than standard depending on team count and organizational size; institutional and network-scale Sandbox engagements are priced separately and scoped per conversation.",
-    whatYouGet: [
+    price: "$15,000",
+    intro: "Four weeks of disciplined exploration. Real recipes against real work.",
+    deliverables: [
       "Use Case Portfolio with green/yellow/red adjudication",
       "Discernment Memo",
       "Readiness Assessment",
+      "Module-based facilitation",
     ],
-    payment: "50% at signing, 50% at completion.",
+    payment: "Payment: 50% signing / 50% completion",
     ctaLabel: "Begin a Sandbox",
-    ctaHref: "/contact?interest=sandbox",
+    ctaHref: "/pathway/sandbox",
   },
   {
     stageEyebrow: "Stage 03",
     title: "Skills Development",
-    priceLine: "$15,000",
-    subPrice: "Cohort facilitation · $5,000/year self-paced LMS license also available",
-    body: "Eight modules over eight weeks. Cohort of 8 to 15 participants from your organization. The formational deepening that turns practitioners into discerners. Self-paced LMS license is currently in build for organizations integrating Skills into ongoing staff onboarding; license includes up to 15 participants per organization annually.",
-    whatYouGet: [
-      "Eight learning outcomes demonstrated",
-      "Certified practitioner-to-discerner capacity in your staff",
-      "Curriculum tuned to your team’s actual Sandbox-surfaced use cases",
+    price: "$15,000",
+    intro: "Cohort facilitation. $5,000/year self-paced LMS license also available.",
+    deliverables: [
+      "8 modules / 8 weeks",
+      "Cohort of 8-15",
+      "Formational deepening",
+      "Self-paced LMS license",
     ],
-    payment: "50% at signing, 50% at completion (cohort). Annual licensing (LMS).",
+    payment: "Payment: 50/50 cohort; Annual LMS",
     ctaLabel: "Begin a Skills cohort",
-    ctaHref: "/contact?interest=skills",
+    ctaHref: "/pathway/skills",
   },
   {
     stageEyebrow: "Stage 04",
     title: "Solutions Deployment",
-    priceLine: "from $30,000",
-    subPrice: "Scoped per conversation",
-    body: "A configured deployment built on the foundation the upstream stages produced. Scope, configuration, and timeline are determined by what your Sandbox surfaced and what your Skills cohort prepared your staff to operate. The Movemental platform deployment is the architectural reference; specific configurations vary by what your situation warrants. Larger institutional and network-scale deployments are scoped separately.",
-    whatYouGet: [
-      "A configured deployment",
+    price: (
+      <>
+        <span className="font-sans text-xl not-italic font-medium text-muted-foreground">from </span>
+        $30,000
+      </>
+    ),
+    intro: "Scoped per conversation. Configurations vary by situation.",
+    deliverables: [
+      "Configured deployment",
       "Governance integration document",
-      "90 days of operational support",
-      "Ongoing relationship structure determined per engagement",
+      "90 days support",
+      "Ongoing relationship structure",
     ],
-    payment: "Milestone-based, typically 30% at signing, 30% at build midpoint, 40% at validation and handoff.",
-    ctaLabel: "Begin a Solutions conversation",
-    ctaHref: "/contact?interest=solutions",
+    payment: "Payment: 30/30/40 milestones",
+    ctaLabel: "Begin Solutions",
+    ctaHref: "/pathway/solutions",
   },
 ];
 
-const BUNDLE: BundleOffering = {
-  eyebrow: "The full commitment",
-  badge: "Full path",
+const BUNDLE = {
+  eyebrow: "Comprehensive",
   title: "The Path Bundle",
-  priceLine: "$50,000",
-  subPrice: "Safety + Sandbox + Skills + foundational Solutions",
-  body: "For organizations ready to commit to the full path at the start. Approximately 20% below the cost of paying tier-by-tier. Foundational Solutions delivery is calibrated to what the upstream stages surface; engagements requiring expanded Solutions scope are addressed separately.",
-  whatYouGet: ["Everything in Stages 01 through 04 of the Movemental AI Path, sequenced and integrated."],
-  payment: "25% at each stage start (signing, Sandbox start, Skills start, Solutions delivery).",
+  price: "$50,000",
+  intro: "Safety + Sandbox + Skills + foundational Solutions integration.",
+  details: [
+    "Everything in Stages 01-04 integrated",
+    "18% below cost of tier-by-tier",
+    "Foundational Solutions delivery",
+  ] as const,
+  payment: "Payment: 25% at each stage start",
   ctaLabel: "Begin the full path",
   ctaHref: "/contact?interest=bundle",
 };
 
-function StageCard({ offering }: { offering: StageOffering }) {
+const INSTITUTIONAL = [
+  { title: "Sandbox/Skills Institution-wide", meta: "from $60k" },
+  { title: "Dedicated Institutional Tenant", meta: "Scoped integration" },
+  { title: "Train-the-Facilitator", meta: "Capacity building" },
+  { title: "Hybrid/Bespoke", meta: "Per requirements" },
+] as const;
+
+function StageOfferingCard({
+  offering,
+  columnIndex,
+}: {
+  offering: StageCard;
+  columnIndex: number;
+}) {
   return (
-    <SurfaceCard tone="on-background" className="h-full gap-4">
-      <Eyebrow className="text-left">{offering.stageEyebrow}</Eyebrow>
-      <h3 className="text-left font-sans text-xl font-medium tracking-tight text-foreground">{offering.title}</h3>
-      <p
-        className="font-serif-display text-4xl font-normal italic leading-tight text-foreground sm:text-5xl"
-        aria-label={`Price ${offering.priceLine}`}
-      >
-        {offering.priceLine}
-      </p>
-      {offering.subPrice ? (
-        <p className="text-sm font-medium text-muted-foreground">{offering.subPrice}</p>
-      ) : null}
-      <Prose className="text-[0.94rem] leading-relaxed [&_p]:text-muted-foreground">
-        <p>{offering.body}</p>
-      </Prose>
+    <div
+      className={cn(
+        "flex flex-col space-y-8",
+        columnIndex > 0 && "lg:border-l lg:border-border/50 lg:pl-8",
+      )}
+    >
       <div>
-        <p className="text-[0.72rem] font-medium uppercase tracking-eyebrow text-muted-foreground">What you get</p>
-        <ul className="mt-2 list-inside list-disc space-y-1.5 text-sm text-muted-foreground">
-          {offering.whatYouGet.map((item) => (
-            <li key={item}>{item}</li>
+        <p className="mb-2 text-[0.65rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">
+          {offering.stageEyebrow}
+        </p>
+        <h3 className="font-serif text-2xl font-medium text-foreground">{offering.title}</h3>
+      </div>
+      <div className="font-serif text-4xl italic leading-tight text-primary">{offering.price}</div>
+      <p className="border-b border-border/50 pb-6 text-sm leading-relaxed text-muted-foreground">{offering.intro}</p>
+      <div className="grow space-y-6">
+        <p className="text-[0.65rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">Deliverables</p>
+        <ul className="space-y-3 text-sm text-foreground">
+          {offering.deliverables.map((item) => (
+            <li key={item} className="flex items-start gap-2">
+              <Check className="mt-1 size-4 shrink-0 text-primary/50" aria-hidden strokeWidth={2} />
+              <span>{item}</span>
+            </li>
           ))}
         </ul>
       </div>
-      <p className="text-sm text-muted-foreground">
-        <span className="font-medium text-foreground">Payment:</span> {offering.payment}
-      </p>
-      <ArrowLink href={offering.ctaHref} className="mt-2">
-        {offering.ctaLabel}
-      </ArrowLink>
-    </SurfaceCard>
+      <div className="space-y-4 border-t border-border/50 pt-6">
+        <p className="text-[0.65rem] text-muted-foreground">{offering.payment}</p>
+        <Link
+          href={offering.ctaHref}
+          className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-eyebrow text-primary transition-colors hover:text-primary-dim"
+        >
+          {offering.ctaLabel}
+          <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden strokeWidth={2} />
+        </Link>
+      </div>
+    </div>
   );
 }
 
-function BundleCard() {
+function BundleOfferingCard() {
   return (
-    <SurfaceCard tone="on-section" className="relative gap-4 border-2 border-primary/25 shadow-ambient">
-      <div className="flex flex-wrap items-center gap-3">
-        <Eyebrow className="text-left">{BUNDLE.eyebrow}</Eyebrow>
-        {BUNDLE.badge ? (
-          <span className="rounded-full border border-primary/40 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-eyebrow text-primary">
-            {BUNDLE.badge}
-          </span>
-        ) : null}
-      </div>
-      <h3 className="text-left font-sans text-xl font-medium tracking-tight text-foreground">{BUNDLE.title}</h3>
-      <p
-        className="font-serif-display text-4xl font-normal italic leading-tight text-foreground sm:text-5xl"
-        aria-label={`Price ${BUNDLE.priceLine}`}
-      >
-        {BUNDLE.priceLine}
-      </p>
-      <p className="text-sm font-medium text-muted-foreground">{BUNDLE.subPrice}</p>
-      <Prose className="text-[0.94rem] leading-relaxed [&_p]:text-muted-foreground">
-        <p>{BUNDLE.body}</p>
-      </Prose>
+    <div className="flex flex-col space-y-8 bg-section p-6 lg:border-l-2 lg:border-primary lg:bg-transparent lg:px-0 lg:pl-8">
       <div>
-        <p className="text-[0.72rem] font-medium uppercase tracking-eyebrow text-muted-foreground">What you get</p>
-        <ul className="mt-2 list-inside list-disc space-y-1.5 text-sm text-muted-foreground">
-          {BUNDLE.whatYouGet.map((item) => (
-            <li key={item}>{item}</li>
+        <p className="mb-2 text-[0.65rem] font-semibold uppercase tracking-eyebrow text-primary">{BUNDLE.eyebrow}</p>
+        <h3 className="font-serif text-2xl font-medium text-foreground">{BUNDLE.title}</h3>
+      </div>
+      <div className="font-serif text-4xl italic leading-tight text-primary">{BUNDLE.price}</div>
+      <p className="border-b border-border/50 pb-6 text-sm leading-relaxed text-muted-foreground lg:border-primary/20">
+        {BUNDLE.intro}
+      </p>
+      <div className="grow space-y-6">
+        <p className="text-[0.65rem] font-semibold uppercase tracking-eyebrow text-muted-foreground lg:text-primary">
+          Details
+        </p>
+        <ul className="space-y-3 text-sm text-foreground">
+          {BUNDLE.details.map((item) => (
+            <li key={item} className="flex items-start gap-2">
+              <Circle className="mt-1 size-4 shrink-0 fill-primary text-primary" aria-hidden strokeWidth={1.5} />
+              <span>{item}</span>
+            </li>
           ))}
         </ul>
       </div>
-      <p className="text-sm text-muted-foreground">
-        <span className="font-medium text-foreground">Payment:</span> {BUNDLE.payment}
-      </p>
-      <ArrowLink href={BUNDLE.ctaHref} className="mt-2">
-        {BUNDLE.ctaLabel}
-      </ArrowLink>
-    </SurfaceCard>
+      <div className="space-y-4 border-t border-border/50 pt-6 lg:border-primary/20">
+        <p className="text-[0.65rem] text-muted-foreground">{BUNDLE.payment}</p>
+        <Link
+          href={BUNDLE.ctaHref}
+          className="inline-flex w-full items-center justify-center gap-2 bg-primary px-4 py-3 text-xs font-semibold uppercase tracking-eyebrow text-primary-foreground transition-colors hover:bg-primary-dim"
+        >
+          {BUNDLE.ctaLabel}
+        </Link>
+      </div>
+    </div>
   );
 }
 
 export function PricingPageContent() {
   return (
     <>
-      <Section variant="midnight" spacing="lg" className="text-center">
-        <Container>
+      <Section variant="midnight" spacing="lg" className="scroll-mt-(--site-chrome-total) border-b border-inverse-border/10 pt-8 md:pt-10">
+        <Container width="default" className="max-w-4xl">
           <Reveal>
-            <Eyebrow className="mb-4 text-inverse-foreground/70">Pricing</Eyebrow>
-            <Display size="lg" as="h1" className="mx-auto max-w-4xl text-inverse-foreground">
-              Honest prices for honest work.
-            </Display>
-            <Prose className="mx-auto mt-6 max-w-2xl text-lg text-inverse-foreground/80 [&_p]:text-inverse-foreground/80">
-              <p>
-                Movemental publishes its prices because most organizations evaluating AI work need to know whether the
-                conversation is even worth starting. Five lines of pricing cover most of what we do. Network and
-                institutional engagements are scoped per conversation because the variance is too real to publish as a
-                single number. We will tell you specifically what your situation warrants, including when the answer is
-                &ldquo;begin smaller&rdquo; or &ldquo;you do not need us yet.&rdquo;
-              </p>
-            </Prose>
+            <p className="text-xs font-semibold uppercase tracking-eyebrow text-inverse-muted">Pricing</p>
+            <h1 className="mt-8 font-serif text-5xl font-medium leading-tight tracking-tight text-inverse-foreground md:text-6xl lg:text-7xl lg:leading-[1.05]">
+              What it costs <br />
+              <span className="italic">to walk the path.</span>
+            </h1>
+            <p className="mt-8 max-w-2xl text-base leading-relaxed text-inverse-muted md:text-lg">
+              Five prices for the four-stage path. Most organizations begin with Safety at $1,000 and decide what comes
+              next from there. Larger institutional engagements are scoped per conversation.
+            </p>
           </Reveal>
         </Container>
       </Section>
 
-      <Section variant="default" spacing="lg">
-        <Container>
+      <Section variant="default" spacing="lg" className="border-t border-border/20">
+        <Container width="default" className="max-w-7xl space-y-24">
           <Reveal>
-            <div className="mb-10 max-w-4xl">
-              <Eyebrow className="mb-4">The path</Eyebrow>
-              <Display size="md" as="h2" className="text-balance">
+            <div className="max-w-3xl space-y-6">
+              <p className="text-xs font-semibold uppercase tracking-eyebrow text-muted-foreground">The path</p>
+              <h2 className="font-serif text-4xl font-medium tracking-tight text-foreground md:text-5xl">
                 Five prices on the four-stage path.
-              </Display>
-              <Prose className="mt-4 max-w-3xl">
-                <p>
-                  Most organizations begin with Safety, continue to Sandbox, and decide what comes next from there. The
-                  bundle is for organizations ready to commit to the full path at the start. Each price reflects what
-                  the work actually costs to deliver well. We do not discount our standard offerings; the bundle is the
-                  published commitment discount.
-                </p>
-              </Prose>
-            </div>
-          </Reveal>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-12">
-            {STAGE_OFFERINGS.map((offering) => (
-              <Reveal key={offering.title} className="md:col-span-1 xl:col-span-3">
-                <StageCard offering={offering} />
-              </Reveal>
-            ))}
-            <Reveal delay={80} className="md:col-span-2 xl:col-span-12">
-              <BundleCard />
-            </Reveal>
-          </div>
-        </Container>
-      </Section>
-
-      <Section variant="default" spacing="lg">
-        <Container>
-          <Reveal>
-            <div className="mb-10 max-w-3xl">
-              <Eyebrow className="mb-4">Network and institutional engagements</Eyebrow>
-              <Display size="md" as="h2" className="text-balance">
-                Larger engagements, scoped per conversation.
-              </Display>
-              <Prose className="mt-4 max-w-3xl">
-                <p>
-                  Denominations, training networks, multi-site organizations, and institutional bodies engage Movemental
-                  on a different scale than standalone churches and nonprofits. The variance between engagements is too
-                  large to publish as a single number, and the buyer expects a real conversation rather than a sticker
-                  price.
-                </p>
-                <p className="mt-4 font-medium text-foreground">Available engagements include:</p>
-              </Prose>
-            </div>
-          </Reveal>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <Reveal>
-              <SurfaceCard tone="on-background" className="gap-3 border border-border/60 bg-card/80">
-                <h3 className="font-medium text-foreground">Network Sandbox or Skills</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  Sandbox or Skills work delivered across the institution and its member organizations with
-                  cross-cohort learning and institutional synthesis. Typically begin at $60,000.
-                </p>
-              </SurfaceCard>
-            </Reveal>
-            <Reveal>
-              <SurfaceCard tone="on-background" className="gap-3 border border-border/60 bg-card/80">
-                <h3 className="font-medium text-foreground">Institutional platform deployments</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  Movemental platform deployed as a dedicated institutional tenant with member-organization sub-tenants,
-                  federated governance, and shared agent capability. Engagement value reflects the scope of the network.
-                </p>
-              </SurfaceCard>
-            </Reveal>
-            <Reveal>
-              <SurfaceCard tone="on-background" className="gap-3 border border-border/60 bg-card/80">
-                <h3 className="font-medium text-foreground">Train-the-Facilitator certification</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  Twelve-week certification program preparing institutional staff to deliver Skills internally under
-                  license. Currently in development for institutional partners.
-                </p>
-              </SurfaceCard>
-            </Reveal>
-            <Reveal>
-              <SurfaceCard tone="on-background" className="gap-3 border border-border/60 bg-card/80">
-                <h3 className="font-medium text-foreground">Hybrid and bespoke arrangements</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  Custom engagements that do not map cleanly to the above. Always preceded by a Solutions Scoping
-                  engagement that produces a written specification before further commitment.
-                </p>
-              </SurfaceCard>
-            </Reveal>
-          </div>
-          <Reveal>
-            <Prose className="mx-auto mt-10 max-w-3xl">
-              <p>
-                Each engagement is scoped through a conversation with our team. Most begin with a small written brief
-                that names what the institution is trying to accomplish and what the upstream work has surfaced.
+              </h2>
+              <p className="text-base leading-relaxed text-muted-foreground">
+                Most organizations begin with Safety, continue to Sandbox, and decide what comes next from there. The
+                bundle is for organizations ready to commit to the full path at the start.
               </p>
-            </Prose>
-            <div className="mt-8">
-              <ArrowLink href="/contact?interest=institutional">Discuss an institutional engagement</ArrowLink>
+            </div>
+          </Reveal>
+
+          <Reveal delay={80}>
+            <div className="grid grid-cols-1 gap-8 border-t border-border pt-12 md:grid-cols-3 lg:grid-cols-5">
+              {STAGES.map((offering, i) => (
+                <StageOfferingCard key={offering.title} offering={offering} columnIndex={i} />
+              ))}
+              <BundleOfferingCard />
             </div>
           </Reveal>
         </Container>
       </Section>
 
-      <Section variant="section" spacing="lg">
-        <Container>
+      <Section variant="default" spacing="lg" className="relative border-t border-border/20">
+        <div className="pointer-events-none absolute inset-y-0 left-[clamp(1.25rem,4vw,2.5rem)] hidden border-l border-border/20 md:block" aria-hidden />
+        <Container width="default" className="max-w-5xl space-y-16 md:pl-16">
           <Reveal>
-            <div className="mb-8 max-w-3xl">
-              <Eyebrow className="mb-4">Terms</Eyebrow>
-              <Display size="md" as="h2" className="text-balance">
-                Honest about money.
-              </Display>
-              <Prose className="mt-4 max-w-3xl">
-                <p>Three things worth saying directly.</p>
-              </Prose>
+            <h2 className="max-w-2xl font-serif text-4xl font-medium text-foreground md:text-5xl">
+              Larger engagements scoped per conversation.
+            </h2>
+            <div className="grid grid-cols-1 gap-px border border-border/20 bg-border/20 md:grid-cols-2">
+              {INSTITUTIONAL.map((cell) => (
+                <div
+                  key={cell.title}
+                  className="space-y-4 bg-background p-12 transition-colors hover:bg-section"
+                >
+                  <h4 className="font-serif text-2xl text-foreground">{cell.title}</h4>
+                  <p className="text-sm text-muted-foreground">{cell.meta}</p>
+                </div>
+              ))}
             </div>
+            <Link
+              href="/contact?interest=institutional"
+              className="inline-flex items-center gap-2 border border-border px-6 py-4 text-xs font-semibold uppercase tracking-eyebrow text-primary transition-colors hover:bg-section"
+            >
+              Discuss an institutional engagement
+              <ArrowRight className="size-4" aria-hidden strokeWidth={2} />
+            </Link>
           </Reveal>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        </Container>
+      </Section>
+
+      <Section variant="section" spacing="lg" className="border-t border-border/20">
+        <Container width="default" className="max-w-7xl">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
             <Reveal>
-              <div className="space-y-2">
-                <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-foreground">Payment terms</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  Safety MVP is Net 15 from signing. Sandbox and Skills cohorts are 50% at signing and 50% at completion.
-                  Solutions engagements are milestone-based, typically 30/30/40 across signing, midpoint, and validation.
-                  The Path Bundle is 25% at each stage start. Institutional engagements are structured per conversation.
+              <div className="space-y-4">
+                <h5 className="text-xs font-semibold uppercase tracking-eyebrow text-muted-foreground">Payment Terms</h5>
+                <p className="text-sm leading-relaxed text-foreground">
+                  Detailed per stage. Standard net 15 on invoice unless otherwise structured in agreement.
                 </p>
               </div>
             </Reveal>
-            <Reveal>
-              <div className="space-y-2">
-                <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-foreground">Discounting</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  We do not discount our standard offerings. The Path Bundle is the published commitment discount. We
-                  hold a small number of scholarship slots per quarter for under-resourced organizations whose mission
-                  warrants the work; these are arranged through direct conversation and documented as scholarship rather
-                  than negotiated as discount.
+            <Reveal delay={40}>
+              <div className="space-y-4">
+                <h5 className="text-xs font-semibold uppercase tracking-eyebrow text-muted-foreground">Discounting</h5>
+                <p className="text-sm leading-relaxed text-foreground">
+                  No standard discount. Scholarships available upon request and qualification.
                 </p>
               </div>
             </Reveal>
-            <Reveal>
-              <div className="space-y-2">
-                <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-foreground">
-                  Currency and international
-                </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  Prices are in US dollars. Engagements with international organizations are available; pricing in other
-                  currencies and adjustments for purchasing-power parity are arranged per engagement.
+            <Reveal delay={80}>
+              <div className="space-y-4">
+                <h5 className="text-xs font-semibold uppercase tracking-eyebrow text-muted-foreground">Currency</h5>
+                <p className="text-sm leading-relaxed text-foreground">
+                  Base pricing in USD. International PPP (Purchasing Power Parity) adjustments available.
                 </p>
               </div>
             </Reveal>
@@ -368,61 +300,46 @@ export function PricingPageContent() {
       </Section>
 
       <Section variant="default" spacing="lg">
-        <Container>
+        <Container width="default" className="max-w-4xl text-center">
           <Reveal>
-            <div className="mb-10 max-w-3xl">
-              <Eyebrow className="mb-4">Where to start</Eyebrow>
-              <Display size="md" as="h2" className="text-balance">
-                Begin where you actually are.
-              </Display>
-              <Prose className="mt-4 max-w-3xl">
-                <p>
-                  Most organizations evaluating Movemental should not begin by selecting an offering. Start by
-                  understanding where your organization actually sits on the path. The Field Guide is a 30-minute read
-                  that summarizes the path. The Movemental AI Assessment is a 15-minute structured intake that produces
-                  a read-back naming your current posture and the recommended next step. A conversation is the right
-                  starting point when reading and assessment have not produced clarity.
-                </p>
-              </Prose>
-            </div>
-          </Reveal>
-          <Reveal>
-            <div className="flex flex-col flex-wrap gap-4 sm:flex-row sm:items-center">
+            <h2 className="font-serif text-4xl font-medium text-foreground">Where to begin</h2>
+            <div className="mt-16 flex flex-col justify-center gap-8 md:flex-row md:flex-wrap">
               <Link
                 href="/field-guide"
-                className="btn-pill btn-pill--primary inline-flex items-center justify-center px-8 py-4 text-center text-xs font-semibold uppercase tracking-eyebrow"
+                className="group flex flex-col items-center gap-4 border border-border p-8 transition-colors hover:border-primary"
               >
-                Read the Field Guide
+                <BookOpen className="size-10 text-muted-foreground transition-colors group-hover:text-primary" aria-hidden strokeWidth={1.25} />
+                <span className="text-xs font-semibold uppercase tracking-eyebrow text-foreground">Read the field guide</span>
               </Link>
               <Link
                 href="/assess"
-                className="btn-pill btn-pill--ghost inline-flex items-center justify-center border border-border px-8 py-4 text-center text-xs font-semibold uppercase tracking-eyebrow text-foreground hover:border-primary"
+                className="group flex flex-col items-center gap-4 border border-border p-8 transition-colors hover:border-primary"
               >
-                Take the Movemental AI Assessment
+                <BarChart3 className="size-10 text-muted-foreground transition-colors group-hover:text-primary" aria-hidden strokeWidth={1.25} />
+                <span className="text-xs font-semibold uppercase tracking-eyebrow text-foreground">
+                  Take the AI Assessment
+                </span>
               </Link>
               <Link
                 href="/contact"
-                className="btn-pill btn-pill--ghost inline-flex items-center justify-center border border-border px-8 py-4 text-center text-xs font-semibold uppercase tracking-eyebrow text-foreground hover:border-primary"
+                className="group flex flex-col items-center gap-4 border border-border bg-section p-8 transition-colors hover:bg-elevated"
               >
-                Start a conversation
+                <MessageSquare className="size-10 text-muted-foreground transition-colors group-hover:text-primary" aria-hidden strokeWidth={1.25} />
+                <span className="text-xs font-semibold uppercase tracking-eyebrow text-foreground">
+                  Start a conversation
+                </span>
               </Link>
             </div>
           </Reveal>
         </Container>
       </Section>
 
-      <Section id="invitation" variant="section" spacing="lg">
-        <Container className="mx-auto max-w-lg text-center">
+      <Section variant="midnight" spacing="lg">
+        <Container width="narrow" className="max-w-2xl text-center">
           <Reveal>
-            <Eyebrow className="mb-4">Stay close</Eyebrow>
-            <Display size="sm" as="h2" className="text-balance">
-              Or begin quieter
-            </Display>
-            <p className="mt-4 text-base text-muted-foreground">
-              One note per month on formation, infrastructure, and what we are learning.
-            </p>
-            <div className="relative mt-6">
-              <NewsletterForm source="pricing-invitation" />
+            <h3 className="font-serif text-3xl text-inverse-foreground">Occasional notes from the work.</h3>
+            <div className="relative mt-8">
+              <NewsletterForm source="pricing-band" appearance="inverseBand" />
             </div>
           </Reveal>
         </Container>

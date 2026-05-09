@@ -105,6 +105,14 @@ export function SiteFooter() {
             </li>
             <li>
               <Link
+                href="/how-we-use-ai"
+                className="decoration-primary/30 underline-offset-4 transition-colors hover:text-primary hover:underline hover:decoration-primary"
+              >
+                How we use AI
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/contact"
                 className="decoration-primary/30 underline-offset-4 transition-colors hover:text-primary hover:underline hover:decoration-primary"
               >

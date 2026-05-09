@@ -1,5 +1,5 @@
 // Auto-generated hooks index
-// Generated at: 2026-05-08T13:16:04.425Z
+// Generated at: 2026-05-09T05:45:19.689Z
 // Do not edit manually - regenerate with: pnpm generate:hooks
 
 export { buildQueryString } from "./query-utils";
@@ -186,3 +186,9 @@ export * from "./assessment-results.hooks";
 export * from "./system-readiness-assessments.hooks";
 export * from "./dual-intelligence-assessments.hooks";
 export * from "./integrity-diagnostic-submissions.hooks";
+export * from "./onboarding-tasks.hooks";
+export * from "./signed-agreements.hooks";
+export * from "./organization-assets.hooks";
+export * from "./corpus-review-items.hooks";
+export * from "./consent-records.hooks";
+export * from "./staff-users.hooks";

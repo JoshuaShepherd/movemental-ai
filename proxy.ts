@@ -1,4 +1,4 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { type NextRequest } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
 
 /**
@@ -12,9 +12,17 @@ import { updateSession } from "@/lib/supabase/middleware";
  * See docs/design/DESIGN.md — this file enforces system containment.
  */
 export async function proxy(request: NextRequest) {
-  // Always refresh the Supabase session so Server Components see a fresh user.
-  const response = await updateSession(request);
-  return response ?? NextResponse.next();
+  const pathname = request.nextUrl.pathname;
+  const dashboardShell =
+    pathname.startsWith("/dashboard") ||
+    pathname.startsWith("/welcome") ||
+    pathname.startsWith("/onboarding") ||
+    pathname.startsWith("/admin/onboarding");
+
+  return updateSession(
+    request,
+    dashboardShell ? { "x-movemental-shell": "dashboard" } : undefined,
+  );
 }
 
 export const config = {

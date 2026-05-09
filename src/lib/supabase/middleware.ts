@@ -5,9 +5,21 @@ import { NextResponse, type NextRequest } from "next/server";
  * Refreshes the Supabase session cookie on every request.
  * Called from proxy.ts (Next 16's renamed middleware file).
  */
-export async function updateSession(request: NextRequest) {
+export async function updateSession(
+  request: NextRequest,
+  injectHeaders?: Record<string, string>,
+) {
+  const requestHeaders = new Headers(request.headers);
+  if (injectHeaders) {
+    for (const [key, value] of Object.entries(injectHeaders)) {
+      requestHeaders.set(key, value);
+    }
+  }
+
   let supabaseResponse = NextResponse.next({
-    request,
+    request: {
+      headers: requestHeaders,
+    },
   });
 
   const supabase = createServerClient(
@@ -23,7 +35,9 @@ export async function updateSession(request: NextRequest) {
             request.cookies.set(name, value);
           });
           supabaseResponse = NextResponse.next({
-            request,
+            request: {
+              headers: requestHeaders,
+            },
           });
           cookiesToSet.forEach(({ name, value, options }) => {
             supabaseResponse.cookies.set(name, value, options);

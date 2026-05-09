@@ -1,5 +1,5 @@
 // Auto-generated service index
-// Generated at: 2026-05-08T13:16:03.402Z
+// Generated at: 2026-05-09T05:45:18.634Z
 // Do not edit manually - regenerate with: pnpm generate:services
 
 export { SimplifiedService } from "./base.service";
@@ -188,3 +188,9 @@ export * from "./assessment-results.service";
 export * from "./system-readiness-assessments.service";
 export * from "./dual-intelligence-assessments.service";
 export * from "./integrity-diagnostic-submissions.service";
+export * from "./onboarding-tasks.service";
+export * from "./signed-agreements.service";
+export * from "./organization-assets.service";
+export * from "./corpus-review-items.service";
+export * from "./consent-records.service";
+export * from "./staff-users.service";

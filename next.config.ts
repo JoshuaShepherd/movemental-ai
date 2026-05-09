@@ -32,6 +32,19 @@ const nextConfig: NextConfig = {
         destination: "/articles",
         permanent: true,
       },
+      // /team has been folded into /about — the rebuilt About page now carries
+      // founder bios, the origin story, and the five commitments. Defensive
+      // 301 catches any external links or bookmarks that still point at /team.
+      {
+        source: "/team",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/team/:path*",
+        destination: "/about",
+        permanent: true,
+      },
       {
         source: "/assessment-new",
         destination: "/assess",

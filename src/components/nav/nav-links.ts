@@ -221,7 +221,7 @@ export const primaryNavGroups: NavGroup[] = [
     // from the audience funnel so they do not read as a fourth peer segment.
     kind: "menu",
     id: "audiences",
-    label: "Who it serves",
+    label: "Audience",
     activeWhenPathMatches: [
       "/organizations",
       "/movement-leaders",

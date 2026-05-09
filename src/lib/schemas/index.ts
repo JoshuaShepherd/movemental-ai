@@ -1,5 +1,5 @@
 // Auto-generated Zod schemas from Drizzle schema
-// Generated at: 2026-05-08T13:16:00.744Z
+// Generated at: 2026-05-09T05:45:15.292Z
 // Do not edit manually - regenerate with: pnpm generate:schemas
 
 import { z } from "zod";
@@ -188,6 +188,12 @@ import {
   systemReadinessAssessments,
   dualIntelligenceAssessments,
   integrityDiagnosticSubmissions,
+  onboardingTasks,
+  signedAgreements,
+  organizationAssets,
+  corpusReviewItems,
+  consentRecords,
+  staffUsers,
 } from "@/lib/db/schema";
 
 // ---- Base Filters ----
@@ -2709,3 +2715,84 @@ export type IntegrityDiagnosticSubmissions = z.infer<typeof IntegrityDiagnosticS
 export type IntegrityDiagnosticSubmissionsCreate = z.infer<typeof IntegrityDiagnosticSubmissionsInsertSchema>;
 export type IntegrityDiagnosticSubmissionsUpdate = z.infer<typeof IntegrityDiagnosticSubmissionsUpdateSchema>;
 export type IntegrityDiagnosticSubmissionsFilters = z.infer<typeof IntegrityDiagnosticSubmissionsFiltersSchema>;
+
+// OnboardingTasks
+export const OnboardingTasksSelectSchema = createSelectSchema(onboardingTasks);
+export const OnboardingTasksInsertSchema = createInsertSchema(onboardingTasks);
+export const OnboardingTasksUpdateSchema = createUpdateSchema(onboardingTasks);
+export const OnboardingTasksFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  status: z.string().optional(),
+});
+
+export type OnboardingTasks = z.infer<typeof OnboardingTasksSelectSchema>;
+export type OnboardingTasksCreate = z.infer<typeof OnboardingTasksInsertSchema>;
+export type OnboardingTasksUpdate = z.infer<typeof OnboardingTasksUpdateSchema>;
+export type OnboardingTasksFilters = z.infer<typeof OnboardingTasksFiltersSchema>;
+
+// SignedAgreements
+export const SignedAgreementsSelectSchema = createSelectSchema(signedAgreements);
+export const SignedAgreementsInsertSchema = createInsertSchema(signedAgreements);
+export const SignedAgreementsUpdateSchema = createUpdateSchema(signedAgreements);
+export const SignedAgreementsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type SignedAgreements = z.infer<typeof SignedAgreementsSelectSchema>;
+export type SignedAgreementsCreate = z.infer<typeof SignedAgreementsInsertSchema>;
+export type SignedAgreementsUpdate = z.infer<typeof SignedAgreementsUpdateSchema>;
+export type SignedAgreementsFilters = z.infer<typeof SignedAgreementsFiltersSchema>;
+
+// OrganizationAssets
+export const OrganizationAssetsSelectSchema = createSelectSchema(organizationAssets);
+export const OrganizationAssetsInsertSchema = createInsertSchema(organizationAssets);
+export const OrganizationAssetsUpdateSchema = createUpdateSchema(organizationAssets);
+export const OrganizationAssetsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type OrganizationAssets = z.infer<typeof OrganizationAssetsSelectSchema>;
+export type OrganizationAssetsCreate = z.infer<typeof OrganizationAssetsInsertSchema>;
+export type OrganizationAssetsUpdate = z.infer<typeof OrganizationAssetsUpdateSchema>;
+export type OrganizationAssetsFilters = z.infer<typeof OrganizationAssetsFiltersSchema>;
+
+// CorpusReviewItems
+export const CorpusReviewItemsSelectSchema = createSelectSchema(corpusReviewItems);
+export const CorpusReviewItemsInsertSchema = createInsertSchema(corpusReviewItems);
+export const CorpusReviewItemsUpdateSchema = createUpdateSchema(corpusReviewItems);
+export const CorpusReviewItemsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  status: z.string().optional(),
+});
+
+export type CorpusReviewItems = z.infer<typeof CorpusReviewItemsSelectSchema>;
+export type CorpusReviewItemsCreate = z.infer<typeof CorpusReviewItemsInsertSchema>;
+export type CorpusReviewItemsUpdate = z.infer<typeof CorpusReviewItemsUpdateSchema>;
+export type CorpusReviewItemsFilters = z.infer<typeof CorpusReviewItemsFiltersSchema>;
+
+// ConsentRecords
+export const ConsentRecordsSelectSchema = createSelectSchema(consentRecords);
+export const ConsentRecordsInsertSchema = createInsertSchema(consentRecords);
+export const ConsentRecordsUpdateSchema = createUpdateSchema(consentRecords);
+export const ConsentRecordsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  userId: z.string().uuid().optional(),
+});
+
+export type ConsentRecords = z.infer<typeof ConsentRecordsSelectSchema>;
+export type ConsentRecordsCreate = z.infer<typeof ConsentRecordsInsertSchema>;
+export type ConsentRecordsUpdate = z.infer<typeof ConsentRecordsUpdateSchema>;
+export type ConsentRecordsFilters = z.infer<typeof ConsentRecordsFiltersSchema>;
+
+// StaffUsers
+export const StaffUsersSelectSchema = createSelectSchema(staffUsers);
+export const StaffUsersInsertSchema = createInsertSchema(staffUsers);
+export const StaffUsersUpdateSchema = createUpdateSchema(staffUsers);
+export const StaffUsersFiltersSchema = BaseFiltersSchema.extend({
+  userId: z.string().uuid().optional(),
+});
+
+export type StaffUsers = z.infer<typeof StaffUsersSelectSchema>;
+export type StaffUsersCreate = z.infer<typeof StaffUsersInsertSchema>;
+export type StaffUsersUpdate = z.infer<typeof StaffUsersUpdateSchema>;
+export type StaffUsersFilters = z.infer<typeof StaffUsersFiltersSchema>;

@@ -66,7 +66,7 @@
   margin: 2.25rem 0;
   padding: 1.5rem 1.6rem 1.4rem;
   background: var(--section);
-  border-left: 2px solid var(--cite-hl-strong);
+  border-left: 2px solid color-mix(in srgb, var(--foreground) 28%, transparent);
   border-radius: 0 6px 6px 0;
 }
 
@@ -76,7 +76,7 @@
   font-weight: 600;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--cite-hl-ink);
+  color: var(--muted-foreground);
 }
 
 .case-study-callout__title {
@@ -110,7 +110,7 @@
   position: absolute;
   left: 0.25rem;
   top: -0.05em;
-  color: var(--cite-hl-strong);
+  color: color-mix(in srgb, var(--foreground) 55%, transparent);
   font-weight: 700;
 }
 
@@ -206,20 +206,20 @@
 
 .case-study-toc__link:hover {
   color: var(--foreground);
-  background: color-mix(in srgb, var(--cite-hl-soft) 60%, transparent);
+  background: color-mix(in srgb, var(--foreground) 6%, transparent);
 }
 
 .case-study-toc__item[data-active="true"] .case-study-toc__link {
   color: var(--foreground);
-  border-left-color: var(--cite-hl-strong);
-  background: color-mix(in srgb, var(--cite-hl-soft) 70%, transparent);
+  border-left-color: color-mix(in srgb, var(--foreground) 45%, transparent);
+  background: color-mix(in srgb, var(--foreground) 8%, transparent);
 }
 
 .case-study-toc__num {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 0.95rem;
-  color: var(--cite-hl-strong);
+  color: var(--muted-foreground);
 }
 
 .case-study-toc__label {

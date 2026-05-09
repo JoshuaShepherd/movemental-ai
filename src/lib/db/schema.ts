@@ -142,6 +142,16 @@ export const organizations = pgTable("organizations", {
   member_count: integer("member_count").default(0),
   type: text("type"),
   is_verified: boolean("is_verified").default(false),
+  onboarding_started_at: timestamp("onboarding_started_at", {
+    withTimezone: true,
+    mode: "string",
+  }),
+  onboarding_completed_at: timestamp("onboarding_completed_at", {
+    withTimezone: true,
+    mode: "string",
+  }),
+  onboarding_state: jsonb("onboarding_state").notNull().default({}),
+  cohort_start_date: date("cohort_start_date"),
 });
 
 export const contentCategories = pgTable("content_categories", {
@@ -3195,3 +3205,81 @@ export const integrityDiagnosticSubmissions = pgTable(
     created_at: createdAt("created_at"),
   },
 );
+
+/** Per-organization onboarding checklist rows — definition in code (`src/lib/onboarding/tasks.ts`). */
+export const onboardingTasks = pgTable(
+  "onboarding_tasks",
+  {
+    id: id("id"),
+    organization_id: uuid("organization_id")
+      .notNull()
+      .references(() => organizations.id, { onDelete: "cascade" }),
+    task_key: text("task_key").notNull(),
+    status: text("status").notNull().default("locked"),
+    movemental_unlocked: boolean("movemental_unlocked").notNull().default(true),
+    completed_at: timestamp("completed_at", { withTimezone: true, mode: "string" }),
+    completed_by_user_id: uuid("completed_by_user_id").references(() => userProfiles.id),
+    metadata: jsonb("metadata").notNull().default({}),
+    created_at: createdAt("created_at"),
+    updated_at: updatedAt("updated_at"),
+  },
+  (t) => [unique("onboarding_tasks_organization_id_task_key_unique").on(t.organization_id, t.task_key)],
+);
+
+export const signedAgreements = pgTable("signed_agreements", {
+  id: id("id"),
+  organization_id: uuid("organization_id")
+    .notNull()
+    .references(() => organizations.id, { onDelete: "cascade" }),
+  agreement_type: text("agreement_type").notNull(),
+  agreement_version: text("agreement_version").notNull(),
+  signed_at: timestamp("signed_at", { withTimezone: true, mode: "string" }).notNull().defaultNow(),
+  signed_by_user_id: uuid("signed_by_user_id").references(() => userProfiles.id),
+  document_url: text("document_url"),
+  metadata: jsonb("metadata").notNull().default({}),
+});
+
+export const organizationAssets = pgTable("organization_assets", {
+  id: id("id"),
+  organization_id: uuid("organization_id")
+    .notNull()
+    .references(() => organizations.id, { onDelete: "cascade" }),
+  asset_type: text("asset_type").notNull(),
+  storage_path: text("storage_path").notNull(),
+  uploaded_at: timestamp("uploaded_at", { withTimezone: true, mode: "string" }).notNull().defaultNow(),
+  uploaded_by_user_id: uuid("uploaded_by_user_id").references(() => userProfiles.id),
+  metadata: jsonb("metadata").notNull().default({}),
+});
+
+export const corpusReviewItems = pgTable("corpus_review_items", {
+  id: id("id"),
+  organization_id: uuid("organization_id")
+    .notNull()
+    .references(() => organizations.id, { onDelete: "cascade" }),
+  item_type: text("item_type").notNull(),
+  movemental_compiled_data: jsonb("movemental_compiled_data").notNull(),
+  leader_feedback: jsonb("leader_feedback"),
+  status: text("status").notNull().default("pending_review"),
+  reviewed_at: timestamp("reviewed_at", { withTimezone: true, mode: "string" }),
+  reviewed_by_user_id: uuid("reviewed_by_user_id").references(() => userProfiles.id),
+});
+
+export const consentRecords = pgTable("consent_records", {
+  id: id("id"),
+  organization_id: uuid("organization_id")
+    .notNull()
+    .references(() => organizations.id, { onDelete: "cascade" }),
+  user_id: uuid("user_id").notNull().references(() => userProfiles.id),
+  consent_type: text("consent_type").notNull(),
+  granted: boolean("granted").notNull(),
+  granted_at: timestamp("granted_at", { withTimezone: true, mode: "string" }).notNull().defaultNow(),
+  consent_version: text("consent_version").notNull(),
+  metadata: jsonb("metadata").notNull().default({}),
+});
+
+/** Movemental staff allowlist — drives admin onboarding tools and RLS `is_movemental_staff`. */
+export const staffUsers = pgTable("staff_users", {
+  user_id: uuid("user_id").primaryKey().references(() => userProfiles.id, { onDelete: "cascade" }),
+  granted_at: timestamp("granted_at", { withTimezone: true, mode: "string" }).notNull().defaultNow(),
+  granted_by: uuid("granted_by").references(() => userProfiles.id),
+});
