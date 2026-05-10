@@ -19,6 +19,34 @@
 
   var showLabels = true;
   var simulation = null;
+  var activeAudienceFilters = new Set();
+  var lastNodeGroupForFilters = null;
+
+  function strengthRank(s) {
+    var m = { none: 0, light: 1, moderate: 2, strong: 3 };
+    return m[s] || 0;
+  }
+
+  function matchesAudienceFilters(d) {
+    if (activeAudienceFilters.size === 0) return true;
+    if (!d.imageUrl) return false;
+    if (d.researchPending) return true;
+    var cred = d.audienceCredentials;
+    if (!cred || !cred.segments) return false;
+    var segs = cred.segments;
+    var it = activeAudienceFilters.values();
+    var next;
+    while (!(next = it.next()).done) {
+      if (strengthRank(segs[next.value]) >= strengthRank("moderate")) return true;
+    }
+    return false;
+  }
+
+  function applyAudienceOpacity(sel) {
+    sel.attr("opacity", function (n) {
+      return matchesAudienceFilters(n) ? 1 : 0.32;
+    });
+  }
 
   function mulberry32(seed) {
     return function () {
@@ -136,6 +164,8 @@
 
   function setHoverPanel(d, visible) {
     var panel = document.getElementById("hover-panel");
+    var credHost = document.getElementById("hp-credentials");
+    credHost.innerHTML = "";
     if (!visible || !d) {
       panel.classList.remove("is-visible");
       panel.setAttribute("aria-hidden", "true");
@@ -153,6 +183,47 @@
       span.textContent = t;
       th.appendChild(span);
     });
+    if (d.researchPending) {
+      var p = document.createElement("p");
+      p.textContent =
+        "Audience-specific EEAT credentials are not mapped for this profile yet.";
+      credHost.appendChild(p);
+    } else if (d.audienceCredentials && d.audienceCredentials.segments) {
+      var order = ["churches", "nonprofits", "institutions"];
+      var labels = {
+        churches: "Churches",
+        nonprofits: "Nonprofits",
+        institutions: "Institutions",
+      };
+      var rankLabel = {
+        none: "—",
+        light: "Light",
+        moderate: "Moderate",
+        strong: "Strong",
+      };
+      var segs = d.audienceCredentials.segments;
+      var sums = d.audienceCredentials.summaries || {};
+      order.forEach(function (key) {
+        var st = segs[key];
+        if (!st) return;
+        var div = document.createElement("div");
+        div.className = "cred-line";
+        var head = document.createElement("div");
+        head.innerHTML =
+          '<span class="cred-label">' +
+          labels[key] +
+          "</span> · " +
+          rankLabel[st];
+        div.appendChild(head);
+        if (sums[key]) {
+          var sub = document.createElement("div");
+          sub.style.opacity = "0.88";
+          sub.textContent = sums[key];
+          div.appendChild(sub);
+        }
+        credHost.appendChild(div);
+      });
+    }
   }
 
   function runGraph() {
@@ -306,6 +377,9 @@
         .style("pointer-events", "all");
     });
 
+    lastNodeGroupForFilters = nodeGroup;
+    applyAudienceOpacity(nodeGroup);
+
     nodeGroup
       .style("cursor", "pointer")
       .on("mouseover", function (event, d) {
@@ -337,7 +411,7 @@
       .on("mouseout", function () {
         setHoverPanel(null, false);
         link.attr("stroke", EDGE_STROKE).attr("stroke-opacity", linkBaseOpacity).attr("stroke-width", linkBaseWidth);
-        nodeGroup.attr("opacity", 1);
+        applyAudienceOpacity(nodeGroup);
       })
       .on("click", function (event, d) {
         if (d.imageUrl) {
@@ -397,6 +471,16 @@
     showLabels = !showLabels;
     this.textContent = showLabels ? "Hide Labels" : "Show Labels";
     if (typeof window.__sceniusV3SyncLabels === "function") window.__sceniusV3SyncLabels();
+  });
+
+  document.querySelectorAll("#audience-filters input[type=checkbox]").forEach(function (el) {
+    el.addEventListener("change", function () {
+      activeAudienceFilters.clear();
+      document.querySelectorAll("#audience-filters input[type=checkbox]").forEach(function (box) {
+        if (box.checked) activeAudienceFilters.add(box.getAttribute("data-audience"));
+      });
+      if (lastNodeGroupForFilters) applyAudienceOpacity(lastNodeGroupForFilters);
+    });
   });
 
   var resizeScheduled = false;

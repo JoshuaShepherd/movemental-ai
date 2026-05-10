@@ -28,6 +28,18 @@
           <button type="button" id="toggle-labels" class="link-btn">Hide Labels</button>
         </div>
         <div id="legend-topics"></div>
+        <div class="audience-filters" id="audience-filters">
+          <span class="controls-label">Audience relevance</span>
+          <label class="filter-label"
+            ><input type="checkbox" data-audience="churches" /> Churches</label
+          >
+          <label class="filter-label"
+            ><input type="checkbox" data-audience="nonprofits" /> Nonprofits</label
+          >
+          <label class="filter-label"
+            ><input type="checkbox" data-audience="institutions" /> Institutions</label
+          >
+        </div>
         <div class="legend-extended">
           <span class="dot-extended"></span>
           <span class="legend-muted">Remaining Movement Leader Seats</span>
@@ -38,7 +50,8 @@
         <h2 id="hp-name"></h2>
         <p id="hp-role" class="hp-role"></p>
         <div id="hp-topics"></div>
-        <p class="hp-hint">Click to view full profile</p>
+        <div id="hp-credentials" class="hp-credentials"></div>
+        <p class="hp-hint">Click to pin hash route (demo)</p>
       </div>
 
       <div id="graph-host" class="graph-host">

@@ -30,6 +30,16 @@ import {
 } from "./movement-voices-flow-edge";
 import { settleNetworkPositions } from "./settle-movement-voices";
 import {
+  AUDIENCE_SEGMENTS,
+  AUDIENCE_SEGMENT_LABEL,
+  CREDENTIAL_STRENGTH_LABEL,
+  getVoiceAudienceCredentials,
+  voiceMatchesAudienceFilters,
+  type AudienceCredentialStrength,
+  type AudienceSegment,
+  type VoiceAudienceCredentials,
+} from "./voice-audience-credentials";
+import {
   CENTER_NODE_ID,
   MOVEMENT_VOICES,
   MOVEMENTAL_CENTER,
@@ -37,20 +47,56 @@ import {
   type VoiceGraphVoice,
 } from "./voices-graph-data";
 
-type VoiceFlowData = { voice: VoiceGraphVoice; revealed: boolean };
+type VoiceFlowData = {
+  voice: VoiceGraphVoice;
+  revealed: boolean;
+  credentials: VoiceAudienceCredentials | undefined;
+  audienceDimmed: boolean;
+};
 type CenterFlowData = { revealed: boolean };
 
 /* ------------------------------------------------------------------ NODES */
+
+function segmentStrengthOpacity(
+  strength: AudienceCredentialStrength | undefined,
+): number {
+  switch (strength) {
+    case "strong":
+      return 1;
+    case "moderate":
+      return 0.78;
+    case "light":
+      return 0.48;
+    case "none":
+      return 0.18;
+    default:
+      return 0.12;
+  }
+}
+
+function segmentDotClass(seg: AudienceSegment): string {
+  switch (seg) {
+    case "churches":
+      return "bg-primary";
+    case "nonprofits":
+      return "bg-pathway-accent";
+    case "institutions":
+      return "bg-status-go";
+    default:
+      return "bg-muted-foreground";
+  }
+}
 
 const VoiceAvatarNode = memo(function VoiceAvatarNode({
   data,
 }: NodeProps<Node<VoiceFlowData>>) {
   const v = data.voice;
+  const creds = data.credentials;
   return (
     <div
-      className="flex w-[72px] flex-col items-center gap-0 touch-manipulation"
+      className="flex w-[72px] flex-col items-center gap-1 touch-manipulation"
       style={{
-        opacity: data.revealed ? 1 : 0,
+        opacity: data.revealed ? (data.audienceDimmed ? 0.38 : 1) : 0,
         transform: data.revealed ? "scale(1)" : "scale(0.4)",
         transition:
           "opacity 360ms cubic-bezier(0.22, 0.61, 0.36, 1), transform 360ms cubic-bezier(0.22, 0.61, 0.36, 1)",
@@ -68,6 +114,23 @@ const VoiceAvatarNode = memo(function VoiceAvatarNode({
           priority={false}
           aria-hidden
         />
+      </div>
+      <div
+        className="flex gap-1"
+        aria-hidden
+        title="Audience credential depth: churches · nonprofits · institutions"
+      >
+        {AUDIENCE_SEGMENTS.map((seg) => (
+          <span
+            key={seg}
+            className={`h-1.5 w-1.5 shrink-0 rounded-full ${segmentDotClass(seg)}`}
+            style={{
+              opacity: creds?.researchPending
+                ? 0.2
+                : segmentStrengthOpacity(creds?.segments[seg]),
+            }}
+          />
+        ))}
       </div>
     </div>
   );
@@ -162,6 +225,7 @@ function snapshotReducedMotion(): boolean {
 function flowNodesFromLayout(
   positions: Map<string, { x: number; y: number }>,
   revealStep: number,
+  activeAudienceSegments: ReadonlySet<AudienceSegment>,
 ): Node[] {
   const out: Node[] = [];
 
@@ -187,13 +251,22 @@ function flowNodesFromLayout(
     // Voices reveal at step = 1 + appearOrder so the center always lands
     // first (revealStep === 1) before any voice (revealStep === 2..N).
     const revealed = revealStep >= 1 + v.appearOrder;
+    const credentials = getVoiceAudienceCredentials(v.id);
+    const audienceDimmed =
+      activeAudienceSegments.size > 0 &&
+      !voiceMatchesAudienceFilters(credentials, activeAudienceSegments);
     out.push({
       id: v.id,
       type: "voice",
       position: { x: p.x - VOICE_AVATAR_PX / 2, y: p.y - VOICE_AVATAR_PX / 2 },
-      data: { voice: v, revealed } satisfies VoiceFlowData,
+      data: {
+        voice: v,
+        revealed,
+        credentials,
+        audienceDimmed,
+      } satisfies VoiceFlowData,
       width: VOICE_AVATAR_PX,
-      height: VOICE_AVATAR_PX,
+      height: VOICE_AVATAR_PX + 12,
       draggable: false,
       selectable: false,
     });
@@ -292,7 +365,23 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
     () => false,
   );
   const [hoverVoice, setHoverVoice] = useState<VoiceGraphVoice | null>(null);
+  const [activeAudienceSegments, setActiveAudienceSegments] = useState<
+    ReadonlySet<AudienceSegment>
+  >(() => new Set());
   const [revealStep, setRevealStep] = useState(0);
+
+  const toggleAudienceSegment = useCallback((seg: AudienceSegment) => {
+    setActiveAudienceSegments((prev) => {
+      const next = new Set(prev);
+      if (next.has(seg)) next.delete(seg);
+      else next.add(seg);
+      return next;
+    });
+  }, []);
+
+  const clearAudienceFilters = useCallback(() => {
+    setActiveAudienceSegments(new Set());
+  }, []);
 
   /* Resize observer ----------------------------------------------------- */
 
@@ -381,8 +470,13 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
   );
 
   const nodes = useMemo(
-    () => flowNodesFromLayout(positions, effectiveRevealStep),
-    [positions, effectiveRevealStep],
+    () =>
+      flowNodesFromLayout(
+        positions,
+        effectiveRevealStep,
+        activeAudienceSegments,
+      ),
+    [positions, effectiveRevealStep, activeAudienceSegments],
   );
 
   const edges = useMemo(
@@ -468,6 +562,45 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
         </div>
       </div>
 
+      <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
+        <p className="text-[10px] font-medium uppercase tracking-eyebrow text-muted-foreground">
+          Audience relevance
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {AUDIENCE_SEGMENTS.map((seg) => {
+            const on = activeAudienceSegments.has(seg);
+            return (
+              <Button
+                key={seg}
+                type="button"
+                size="sm"
+                variant={on ? "default" : "outline"}
+                className="h-8 text-xs"
+                aria-pressed={on}
+                onClick={() => toggleAudienceSegment(seg)}
+              >
+                {AUDIENCE_SEGMENT_LABEL[seg]}
+              </Button>
+            );
+          })}
+          <Button
+            type="button"
+            size="sm"
+            variant="ghost"
+            className="h-8 text-xs text-muted-foreground"
+            disabled={activeAudienceSegments.size === 0}
+            onClick={clearAudienceFilters}
+          >
+            Clear filters
+          </Button>
+        </div>
+        <p className="max-w-xl text-[11px] leading-snug text-muted-foreground">
+          Filters emphasize voices with moderate-or-strong documented depth for
+          churches, nonprofits, or institutions — how Movemental frames buyer
+          contexts on the home audience fold.
+        </p>
+      </div>
+
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,260px)] lg:items-start">
         <div>
           <div
@@ -509,7 +642,7 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
           aria-live="polite"
         >
           {hoverVoice ? (
-            <div className="space-y-2">
+            <div className="space-y-3">
               <p className="text-[10px] font-medium uppercase tracking-eyebrow text-muted-foreground">
                 Voice
               </p>
@@ -519,6 +652,49 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
               <p className="text-sm leading-relaxed text-muted-foreground">
                 {hoverVoice.title}
               </p>
+              {(() => {
+                const row = getVoiceAudienceCredentials(hoverVoice.id);
+                if (row?.researchPending) {
+                  return (
+                    <p className="border-t border-border pt-3 text-xs leading-relaxed text-muted-foreground">
+                      Audience-specific EEAT credentials are not mapped for this
+                      profile yet — product leadership role without a movement
+                      leader research dossier in-repo.
+                    </p>
+                  );
+                }
+                if (!row) return null;
+                return (
+                  <div className="border-t border-border pt-3 space-y-2">
+                    <p className="text-[10px] font-medium uppercase tracking-eyebrow text-muted-foreground">
+                      Audience credentials
+                    </p>
+                    <ul className="space-y-2 text-xs leading-relaxed">
+                      {AUDIENCE_SEGMENTS.map((seg) => {
+                        const st = row.segments[seg];
+                        const summary = row.summaryBySegment?.[seg];
+                        if (!st) return null;
+                        return (
+                          <li key={seg}>
+                            <span className="font-medium text-foreground">
+                              {AUDIENCE_SEGMENT_LABEL[seg]}
+                            </span>
+                            <span className="text-muted-foreground">
+                              {" "}
+                              · {CREDENTIAL_STRENGTH_LABEL[st]}
+                            </span>
+                            {summary ? (
+                              <span className="mt-0.5 block text-muted-foreground">
+                                {summary}
+                              </span>
+                            ) : null}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                );
+              })()}
             </div>
           ) : (
             <p className="text-sm leading-relaxed text-muted-foreground">

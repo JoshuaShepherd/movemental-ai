@@ -20,97 +20,352 @@ VOICES_MEDIA_BASE = (
     "media-library/movemental/voices/"
 )
 
-# Audience segments — legend + placeholder topic assignment for extras (Movemental IA)
-TOPICS = [
-    {"slug": "church", "name": "Church", "description": "Congregations and church networks.", "leaderCount": 0, "contentCount": 0},
-    {"slug": "nonprofit", "name": "NonProfit", "description": "Nonprofit and mission-driven organizations.", "leaderCount": 0, "contentCount": 0},
-    {"slug": "institution", "name": "Institution", "description": "Institutions and enterprise-scale organizations.", "leaderCount": 0, "contentCount": 0},
-]
+# Maps legend slugs → credential segment keys (aligned with voice-audience-credentials.ts)
+SEG_MAP = {
+    "church": "churches",
+    "nonprofit": "nonprofits",
+    "institution": "institutions",
+}
 
-LEADERS = [
+STRENGTH_RANK = {"none": 0, "light": 1, "moderate": 2, "strong": 3}
+
+# Editorial source: docs/movement_leader_research/site-voices-eeat-audience-credentials.md
+VOICE_ROWS = [
     {
-        "id": "1",
+        "slug": "alan-hirsch",
         "name": "Alan Hirsch",
-        "role": "Theologian & Author",
-        "bio": "Dr. Sarah Chen is a leading voice at the intersection of systematic theology and cultural anthropology. Her work focuses on how ancient texts speak to modern crises of meaning.",
-        "imageUrl": f"{VOICES_MEDIA_BASE}alan-hirsch.webp",
-        "topics": ["church"],
-        "themes": ["kingdom-mission"],
-        "connections": ["2", "4"],
-        "organization": "Center for Public Theology",
-        "books": [{"slug": "the-meaning-crisis", "title": "The Meaning Crisis", "year": "2023", "coverUrl": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=400&h=600"}],
+        "role": "Founder, 100Movements & Forge Mission Training Network",
+        "bio": (
+            "Triple-layer credibility: congregations, mission organizations, "
+            "and graduate theological education."
+        ),
+        "image": "alan-hirsch.webp",
+        "research_pending": False,
+        "segments": {
+            "churches": "strong",
+            "nonprofits": "moderate",
+            "institutions": "strong",
+        },
+        "summaries": {
+            "churches": (
+                "Decades leading and planting congregations; Forge, 100Movements, "
+                "and movement mentorship at national scale."
+            ),
+            "nonprofits": (
+                "Embedded consulting and mission-organizational change "
+                "(e.g. Redeemer City to City, CRM lineage)."
+            ),
+            "institutions": (
+                "Co-founded Wheaton's M.A. in Missional Church Movements; "
+                "multi-seminary faculty across years."
+            ),
+        },
     },
     {
-        "id": "2",
+        "slug": "brad-brisco",
         "name": "Dr. Brad Brisco",
         "role": "CEO & Co-founder, Movemental",
-        "bio": "Marcus Weaver has spent two decades catalyzing decentralized movements in urban contexts. He writes about polycentric leadership and network dynamics.",
-        "imageUrl": f"{VOICES_MEDIA_BASE}brad-brisco.webp",
-        "topics": ["church"],
-        "themes": ["apest", "missional-church"],
-        "connections": ["1", "3", "5"],
-        "organization": "Urban Catalyst Network",
-        "books": [
-            {"slug": "decentralized", "title": "Decentralized", "year": "2021", "coverUrl": "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=400&h=600"},
-            {"slug": "the-polycentric-church", "title": "The Polycentric Church", "year": "2024", "coverUrl": "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=400&h=600"},
-        ],
+        "bio": (
+            "National church multiplication systems plus training-network "
+            "authority for cohort-style graduate formation."
+        ),
+        "image": "brad-brisco.webp",
+        "research_pending": False,
+        "segments": {
+            "churches": "strong",
+            "nonprofits": "light",
+            "institutions": "moderate",
+        },
+        "summaries": {
+            "churches": (
+                "National multiplication leadership (Send Network / NAMB); "
+                "Forge Kansas City; covocational planting expertise."
+            ),
+            "nonprofits": (
+                "Primary documented lane is denominations and networks rather "
+                "than secular-style NGOs."
+            ),
+            "institutions": (
+                "Long college-level teaching and D.Min. trajectory; "
+                "training-network authority for cohort leaders."
+            ),
+        },
     },
     {
-        "id": "3",
+        "slug": "josh-shepherd",
         "name": "Joshua Shepherd",
-        "role": "Author & Psychologist",
-        "bio": "Elena integrates clinical psychology with spiritual formation, helping leaders navigate burnout, trauma, and the emotional weight of movement leadership.",
-        "imageUrl": f"{VOICES_MEDIA_BASE}josh-shepherd.webp",
-        "topics": ["nonprofit"],
-        "themes": ["spiritual-formation"],
-        "connections": ["2", "4"],
-        "books": [{"slug": "leading-from-the-deep", "title": "Leading from the Deep", "year": "2022", "coverUrl": "https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&q=80&w=400&h=600"}],
+        "role": "CTO & Founder, Movemental",
+        "bio": "Product and technology leadership for Movemental.",
+        "image": "josh-shepherd.webp",
+        "research_pending": True,
+        "segments": {},
+        "summaries": {},
     },
     {
-        "id": "4",
+        "slug": "tim-catchim",
         "name": "Tim Catchim",
-        "role": "Academic & Practitioner",
-        "bio": "David bridges the gap between the academy and the streets, focusing on systemic justice and the theology of the city.",
-        "imageUrl": f"{VOICES_MEDIA_BASE}tim-catchim.webp",
-        "topics": ["church"],
-        "themes": ["kingdom-mission", "missional-church"],
-        "connections": ["1", "3"],
-        "organization": "Institute for Urban Justice",
-        "books": [{"slug": "city-of-god-city-of-man", "title": "City of God, City of Man", "year": "2020", "coverUrl": "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=400&h=600"}],
+        "role": "APE practitioner · Co-author, The Permanent Revolution",
+        "bio": (
+            "Strong church and movement practitioner credibility with nonprofit "
+            "adjacency via entrepreneurship; lighter traditional academy signals."
+        ),
+        "image": "tim-catchim.webp",
+        "research_pending": False,
+        "segments": {
+            "churches": "strong",
+            "nonprofits": "moderate",
+            "institutions": "light",
+        },
+        "summaries": {
+            "churches": (
+                "Movemental church leadership and planting; IVP co-author on "
+                "APEST and organizational design."
+            ),
+            "nonprofits": (
+                "Early nonprofit and social-enterprise formation; community "
+                "development and youth-facing work."
+            ),
+            "institutions": (
+                "Publisher-backed authority; seminary faculty / accrediting depth "
+                "not documented in research files."
+            ),
+        },
     },
     {
-        "id": "5",
+        "slug": "jr-woodward",
         "name": "Dr. JR Woodward",
-        "role": "Creative Director",
-        "bio": "Aisha explores the intersection of liturgy, art, and embodied worship. She designs experiences that form communities through beauty.",
-        "imageUrl": f"{VOICES_MEDIA_BASE}jr-woodward.webp",
-        "topics": ["nonprofit"],
-        "themes": ["spiritual-formation"],
-        "connections": ["2"],
-        "books": [],
+        "role": "National Director, V3 Church Planting Movement",
+        "bio": (
+            "National planting leadership, international nonprofit-adjacent work, "
+            "and doctoral / seminary gravity."
+        ),
+        "image": "jr-woodward.webp",
+        "research_pending": False,
+        "segments": {
+            "churches": "strong",
+            "nonprofits": "moderate",
+            "institutions": "strong",
+        },
+        "summaries": {
+            "churches": (
+                "National V3 church-planting leadership; decades planting and "
+                "polycentric movement culture."
+            ),
+            "nonprofits": (
+                "International development posture (e.g. Solis Foundation era) "
+                "adjacent to ecclesial networks."
+            ),
+            "institutions": (
+                "Ph.D.; adjunct across multiple seminaries; doctoral cohort "
+                "leadership and society memberships."
+            ),
+        },
     },
     {
-        "id": "6",
+        "slug": "rowland-smith",
         "name": "Dr. Rowland Smith",
-        "role": "Theologian",
-        "bio": "Focusing on historical theology and its implications for modern ecclesiology.",
-        "imageUrl": f"{VOICES_MEDIA_BASE}rowland-smith.webp",
-        "topics": ["institution"],
-        "themes": ["missional-church"],
-        "connections": ["1"],
-        "books": [],
+        "role": "National Director, Forge America · Founder, The Pando Collective",
+        "bio": (
+            "Forge America + microchurch operator credibility with doctoral "
+            "seminary teaching lanes."
+        ),
+        "image": "rowland-smith.webp",
+        "research_pending": False,
+        "segments": {
+            "churches": "strong",
+            "nonprofits": "light",
+            "institutions": "strong",
+        },
+        "summaries": {
+            "churches": (
+                "Forge America national director; Pando microchurch network; "
+                "missional culture in large congregational context."
+            ),
+            "nonprofits": (
+                "Community / BAM-adjacent initiatives; not primarily secular NGO "
+                "board service on file."
+            ),
+            "institutions": (
+                "DMiss and adjunct teaching across seminaries; doctoral cohort "
+                "design for leaders."
+            ),
+        },
     },
     {
-        "id": "7",
+        "slug": "liz-rios",
+        "name": "Dr. Liz Rios",
+        "role": "Founder, Passion2Plant · Director, Púlpito Fellows",
+        "bio": (
+            "Balanced credentials across congregations, justice-facing nonprofits, "
+            "and higher-ed / seminary contexts."
+        ),
+        "image": "liz-rios.webp",
+        "research_pending": False,
+        "segments": {
+            "churches": "strong",
+            "nonprofits": "strong",
+            "institutions": "strong",
+        },
+        "summaries": {
+            "churches": (
+                "Ordained ministry, denominational commission work, and national "
+                "Passion2Plant / Púlpito Fellows leadership."
+            ),
+            "nonprofits": (
+                "Board and consulting depth across justice-facing faith nonprofits "
+                "and grant-funded programs."
+            ),
+            "institutions": (
+                "Higher-ed teaching and advancement; doctoral credentials; "
+                "seminary adjunct and publisher-backed scholarship."
+            ),
+        },
+    },
+    {
+        "slug": "lucas-pulley",
         "name": "Lucas Pulley",
         "role": "Movements Director, Underground Network",
-        "bio": "Lucas Pulley leads movement formation with the Underground Network — microchurch practice, neighborhood presence, and systems thinking shaped by years in the field.",
-        "imageUrl": f"{VOICES_MEDIA_BASE}lucas-pulley.webp",
-        "topics": ["church"],
-        "themes": ["missional-church"],
-        "connections": ["2", "4"],
-        "organization": "Underground Network",
+        "bio": (
+            "Microchurch and nonprofit-style network operations with lighter "
+            "traditional seminary-chair signals."
+        ),
+        "image": "lucas-pulley.webp",
+        "research_pending": False,
+        "segments": {
+            "churches": "strong",
+            "nonprofits": "moderate",
+            "institutions": "light",
+        },
+        "summaries": {
+            "churches": (
+                "Underground Network movements director; microchurch operator and "
+                "national movement-facing teaching."
+            ),
+            "nonprofits": (
+                "Chartered campus ministry formation (InterVarsity) and "
+                "nonprofit-style network operations."
+            ),
+            "institutions": (
+                "Graduate credential without seminary faculty seat on file; "
+                "practitioner credibility vs accreditation committees."
+            ),
+        },
+    },
+    {
+        "slug": "rob-wegner",
+        "name": "Rob Wegner",
+        "role": "Founding Leader, Kansas City Underground",
+        "bio": (
+            "Megachurch-to-microchurch bridge plus mission-agency and national "
+            "association leadership."
+        ),
+        "image": "rob-wegner.webp",
+        "research_pending": False,
+        "segments": {
+            "churches": "strong",
+            "nonprofits": "moderate",
+            "institutions": "moderate",
+        },
+        "summaries": {
+            "churches": (
+                "Rare bridge: years in large teaching-pastor roles plus founding "
+                "decentralized microchurch infrastructure."
+            ),
+            "nonprofits": (
+                "Mission-agency and national association leadership (Exponential / "
+                "NewThing lineage)."
+            ),
+            "institutions": (
+                "Training-network institutionality and conference-scale authority "
+                "vs traditional seminary chair."
+            ),
+        },
+    },
+]
+
+
+def _topics_for_row(row):
+    if row["research_pending"]:
+        return ["church"]
+    chips = []
+    segs = row["segments"]
+    for slug, seg_key in SEG_MAP.items():
+        tier = STRENGTH_RANK.get(segs.get(seg_key, "none"), 0)
+        if tier >= STRENGTH_RANK["moderate"]:
+            chips.append(slug)
+    if chips:
+        return chips
+    order = ["churches", "nonprofits", "institutions"]
+    best_k = None
+    best_r = -1
+    for k in order:
+        r = STRENGTH_RANK.get(segs.get(k, "none"), 0)
+        if r > best_r:
+            best_r = r
+            best_k = k
+    inv = {v: k for k, v in SEG_MAP.items()}
+    return [inv.get(best_k, "church")]
+
+
+def _audience_cred_payload(row):
+    if row["research_pending"]:
+        return {"segments": {}, "summaries": {}}
+    return {"segments": dict(row["segments"]), "summaries": dict(row["summaries"])}
+
+
+def _build_leader(row):
+    return {
+        "id": row["slug"],
+        "name": row["name"],
+        "role": row["role"],
+        "bio": row["bio"],
+        "imageUrl": f"{VOICES_MEDIA_BASE}{row['image']}",
+        "topics": _topics_for_row(row),
+        "themes": [],
+        "connections": [],
         "books": [],
+        "researchPending": row["research_pending"],
+        "audienceCredentials": _audience_cred_payload(row),
+    }
+
+
+LEADERS = [_build_leader(r) for r in VOICE_ROWS]
+
+
+def _leader_count_at_least(topic_slug, minimum="moderate"):
+    seg_key = SEG_MAP[topic_slug]
+    need = STRENGTH_RANK[minimum]
+    n = 0
+    for row in VOICE_ROWS:
+        if row["research_pending"]:
+            continue
+        tier = STRENGTH_RANK.get(row["segments"].get(seg_key, "none"), 0)
+        if tier >= need:
+            n += 1
+    return n
+
+
+TOPICS = [
+    {
+        "slug": "church",
+        "name": "Church",
+        "description": "Congregations and church networks.",
+        "leaderCount": _leader_count_at_least("church"),
+        "contentCount": 0,
+    },
+    {
+        "slug": "nonprofit",
+        "name": "NonProfit",
+        "description": "Nonprofit and mission-driven organizations.",
+        "leaderCount": _leader_count_at_least("nonprofit"),
+        "contentCount": 0,
+    },
+    {
+        "slug": "institution",
+        "name": "Institution",
+        "description": "Institutions and enterprise-scale organizations.",
+        "leaderCount": _leader_count_at_least("institution"),
+        "contentCount": 0,
     },
 ]
 
@@ -144,6 +399,18 @@ INDEX_HTML = """<!DOCTYPE html>
           <button type="button" id="toggle-labels" class="link-btn">Hide Labels</button>
         </div>
         <div id="legend-topics"></div>
+        <div class="audience-filters" id="audience-filters">
+          <span class="controls-label">Audience relevance</span>
+          <label class="filter-label"
+            ><input type="checkbox" data-audience="churches" /> Churches</label
+          >
+          <label class="filter-label"
+            ><input type="checkbox" data-audience="nonprofits" /> Nonprofits</label
+          >
+          <label class="filter-label"
+            ><input type="checkbox" data-audience="institutions" /> Institutions</label
+          >
+        </div>
         <div class="legend-extended">
           <span class="dot-extended"></span>
           <span class="legend-muted">Remaining Movement Leader Seats</span>
@@ -154,7 +421,8 @@ INDEX_HTML = """<!DOCTYPE html>
         <h2 id="hp-name"></h2>
         <p id="hp-role" class="hp-role"></p>
         <div id="hp-topics"></div>
-        <p class="hp-hint">Click to view full profile</p>
+        <div id="hp-credentials" class="hp-credentials"></div>
+        <p class="hp-hint">Click to pin hash route (demo)</p>
       </div>
 
       <div id="graph-host" class="graph-host">
@@ -344,6 +612,51 @@ body {
   color: var(--inverse-muted);
 }
 
+.audience-filters {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--inverse-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.audience-filters .controls-label {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.filter-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--inverse-muted);
+  cursor: pointer;
+}
+
+.filter-label input {
+  accent-color: var(--brand-blue);
+}
+
+.hp-credentials {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--inverse-muted);
+  margin: 0.75rem 0 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--inverse-border);
+}
+
+.hp-credentials .cred-line {
+  margin-bottom: 0.5rem;
+}
+
+.hp-credentials .cred-label {
+  font-weight: 600;
+  color: var(--inverse-foreground);
+}
+
 .hover-panel {
   position: absolute;
   bottom: 3rem;
@@ -456,6 +769,34 @@ APP_JS = r"""/**
 
   var showLabels = true;
   var simulation = null;
+  var activeAudienceFilters = new Set();
+  var lastNodeGroupForFilters = null;
+
+  function strengthRank(s) {
+    var m = { none: 0, light: 1, moderate: 2, strong: 3 };
+    return m[s] || 0;
+  }
+
+  function matchesAudienceFilters(d) {
+    if (activeAudienceFilters.size === 0) return true;
+    if (!d.imageUrl) return false;
+    if (d.researchPending) return true;
+    var cred = d.audienceCredentials;
+    if (!cred || !cred.segments) return false;
+    var segs = cred.segments;
+    var it = activeAudienceFilters.values();
+    var next;
+    while (!(next = it.next()).done) {
+      if (strengthRank(segs[next.value]) >= strengthRank("moderate")) return true;
+    }
+    return false;
+  }
+
+  function applyAudienceOpacity(sel) {
+    sel.attr("opacity", function (n) {
+      return matchesAudienceFilters(n) ? 1 : 0.32;
+    });
+  }
 
   function mulberry32(seed) {
     return function () {
@@ -573,6 +914,8 @@ APP_JS = r"""/**
 
   function setHoverPanel(d, visible) {
     var panel = document.getElementById("hover-panel");
+    var credHost = document.getElementById("hp-credentials");
+    credHost.innerHTML = "";
     if (!visible || !d) {
       panel.classList.remove("is-visible");
       panel.setAttribute("aria-hidden", "true");
@@ -590,6 +933,47 @@ APP_JS = r"""/**
       span.textContent = t;
       th.appendChild(span);
     });
+    if (d.researchPending) {
+      var p = document.createElement("p");
+      p.textContent =
+        "Audience-specific EEAT credentials are not mapped for this profile yet.";
+      credHost.appendChild(p);
+    } else if (d.audienceCredentials && d.audienceCredentials.segments) {
+      var order = ["churches", "nonprofits", "institutions"];
+      var labels = {
+        churches: "Churches",
+        nonprofits: "Nonprofits",
+        institutions: "Institutions",
+      };
+      var rankLabel = {
+        none: "—",
+        light: "Light",
+        moderate: "Moderate",
+        strong: "Strong",
+      };
+      var segs = d.audienceCredentials.segments;
+      var sums = d.audienceCredentials.summaries || {};
+      order.forEach(function (key) {
+        var st = segs[key];
+        if (!st) return;
+        var div = document.createElement("div");
+        div.className = "cred-line";
+        var head = document.createElement("div");
+        head.innerHTML =
+          '<span class="cred-label">' +
+          labels[key] +
+          "</span> · " +
+          rankLabel[st];
+        div.appendChild(head);
+        if (sums[key]) {
+          var sub = document.createElement("div");
+          sub.style.opacity = "0.88";
+          sub.textContent = sums[key];
+          div.appendChild(sub);
+        }
+        credHost.appendChild(div);
+      });
+    }
   }
 
   function runGraph() {
@@ -743,6 +1127,9 @@ APP_JS = r"""/**
         .style("pointer-events", "all");
     });
 
+    lastNodeGroupForFilters = nodeGroup;
+    applyAudienceOpacity(nodeGroup);
+
     nodeGroup
       .style("cursor", "pointer")
       .on("mouseover", function (event, d) {
@@ -774,7 +1161,7 @@ APP_JS = r"""/**
       .on("mouseout", function () {
         setHoverPanel(null, false);
         link.attr("stroke", EDGE_STROKE).attr("stroke-opacity", linkBaseOpacity).attr("stroke-width", linkBaseWidth);
-        nodeGroup.attr("opacity", 1);
+        applyAudienceOpacity(nodeGroup);
       })
       .on("click", function (event, d) {
         if (d.imageUrl) {
@@ -834,6 +1221,16 @@ APP_JS = r"""/**
     showLabels = !showLabels;
     this.textContent = showLabels ? "Hide Labels" : "Show Labels";
     if (typeof window.__sceniusV3SyncLabels === "function") window.__sceniusV3SyncLabels();
+  });
+
+  document.querySelectorAll("#audience-filters input[type=checkbox]").forEach(function (el) {
+    el.addEventListener("change", function () {
+      activeAudienceFilters.clear();
+      document.querySelectorAll("#audience-filters input[type=checkbox]").forEach(function (box) {
+        if (box.checked) activeAudienceFilters.add(box.getAttribute("data-audience"));
+      });
+      if (lastNodeGroupForFilters) applyAudienceOpacity(lastNodeGroupForFilters);
+    });
   });
 
   var resizeScheduled = false;
