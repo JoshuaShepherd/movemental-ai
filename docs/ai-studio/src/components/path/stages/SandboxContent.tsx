@@ -9,18 +9,18 @@ export function SandboxContent() {
         
         <div className="mt-12 bg-section p-8 rounded-card border border-border">
           <div className="text-xs font-semibold text-primary uppercase tracking-widest mb-4">The Sandbox pact</div>
-          <p className="mb-8 font-medium text-foreground">Sandbox is not "everyone try whatever you want." It is structured experimentation inside boundaries. Two rules make it safe enough to actually learn from. If either one is missing, the experiment doesn't run yet.</p>
+          <p className="mb-8 font-medium text-foreground">Sandbox is not &quot;everyone try whatever you want.&quot; It is structured experimentation inside boundaries. Two rules make it safe enough to actually learn from. If either one is missing, the experiment doesn&apos;t run yet.</p>
           
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="bg-card p-6 rounded-lg border border-border">
                <div className="text-xs uppercase tracking-widest font-semibold text-primary mb-2">Rule 01</div>
                <h5 className="text-lg font-bold text-foreground mb-3 mt-0">Nothing made in the sandbox gets published.</h5>
-               <p className="text-sm m-0 text-muted-foreground">While experiments are running, AI-generated work doesn't leave the organization. Not to donors, not to the public, not to the people you serve. The sandbox is for learning what works — not for shipping it. Anything that ships goes through a separate approval step after the experiment is done.</p>
+               <p className="text-sm m-0 text-muted-foreground">While experiments are running, AI-generated work doesn&apos;t leave the organization. Not to donors, not to the public, not to the people you serve. The sandbox is for learning what works — not for shipping it. Anything that ships goes through a separate approval step after the experiment is done.</p>
             </div>
             <div className="bg-card p-6 rounded-lg border border-border">
                <div className="text-xs uppercase tracking-widest font-semibold text-primary mb-2">Rule 02</div>
                <h5 className="text-lg font-bold text-foreground mb-3 mt-0">Private information stays private — by process, not by promise.</h5>
-               <p className="text-sm m-0 text-muted-foreground">Before any experiment runs, you have a real, trained procedure for keeping sensitive information out of AI tools. Not a memo people skim — an actual process every staff member has been walked through. If a privacy breach is even possible, the experiment doesn't run yet.</p>
+               <p className="text-sm m-0 text-muted-foreground">Before any experiment runs, you have a real, trained procedure for keeping sensitive information out of AI tools. Not a memo people skim — an actual process every staff member has been walked through. If a privacy breach is even possible, the experiment doesn&apos;t run yet.</p>
             </div>
           </div>
           
@@ -59,7 +59,7 @@ export function SandboxContent() {
                   <ul className="list-none p-0 m-0 space-y-3 bg-card border border-border rounded-lg p-5">
                      <li className="flex gap-4 text-sm"><div className="w-4 h-4 rounded-full bg-emerald-500 mt-0.5 shrink-0" /><span className="leading-tight"><strong className="text-foreground font-semibold">Green light</strong> — Clear value, no concerns. Ready to use across the team.</span></li>
                      <li className="flex gap-4 text-sm"><div className="w-4 h-4 rounded-full bg-amber-500 mt-0.5 shrink-0" /><span className="leading-tight"><strong className="text-foreground font-semibold">Yellow light</strong> — Real value, but only with specific guardrails — <em dangerouslySetInnerHTML={{ __html: "used this way, and only this way." }} /></span></li>
-                     <li className="flex gap-4 text-sm"><div className="w-4 h-4 rounded-full bg-rose-500 mt-0.5 shrink-0" /><span className="leading-tight"><strong className="text-foreground font-semibold">Red light</strong> — Off the table. Added to the "never" list, alongside the boundaries from Safety.</span></li>
+                     <li className="flex gap-4 text-sm"><div className="w-4 h-4 rounded-full bg-rose-500 mt-0.5 shrink-0" /><span className="leading-tight"><strong className="text-foreground font-semibold">Red light</strong> — Off the table. Added to the &quot;never&quot; list, alongside the boundaries from Safety.</span></li>
                   </ul>
                 </div>
              </div>

@@ -12,7 +12,7 @@ const churchesNarrative = (
     <h4 className="text-xl font-medium text-foreground mb-8">How a growing church introduced AI without compromising voice, pastoral care, or trust.</h4>
     
     <p className="mb-6">
-      Riverside Church is not a real congregation with that name on a sign — it is a <strong>fictional composite</strong>, stitched together from patterns we see repeatedly in multi-staff churches: AI shows up in pockets long before it shows up on an agenda. Riverside is a growing church of about <strong>1,200 people</strong>, with <strong>14 staff</strong> spanning ministry, communications, and operations, and more than <strong>three distinct pastoral domains</strong> — teaching, small groups, and counseling — where "voice" and trust are not abstract ideas; they are the currency of the institution.
+      Riverside Church is not a real congregation with that name on a sign — it is a <strong>fictional composite</strong>, stitched together from patterns we see repeatedly in multi-staff churches: AI shows up in pockets long before it shows up on an agenda. Riverside is a growing church of about <strong>1,200 people</strong>, with <strong>14 staff</strong> spanning ministry, communications, and operations, and more than <strong>three distinct pastoral domains</strong> — teaching, small groups, and counseling — where &quot;voice&quot; and trust are not abstract ideas; they are the currency of the institution.
     </p>
 
     <h4 className="text-foreground font-medium mt-10 mb-4">The situation they were actually in</h4>
@@ -20,7 +20,7 @@ const churchesNarrative = (
       AI did not arrive at Riverside through a strategy meeting. It arrived in <strong>staff workflows</strong>, one person at a time. A communications staff member used ChatGPT to draft email announcements. A teaching pastor experimented with summarizing research notes. Someone on youth ministry used AI to generate discussion questions. No one had made a church-wide decision about AI — yet it was already in use: quietly, individually, and differently depending on the role. From the outside, Sunday mornings and midweek programs looked normal. From the inside, leadership felt a pressure that was hard to name until someone said it aloud: <em>What happens to our voice, our people, and our responsibility if we don’t lead this?</em>
     </p>
     <p className="mb-6">
-      That question is the hinge. Riverside’s story is not "we banned AI" or "we embraced AI." It is: <strong>we stopped improvising in isolation</strong> and started leading with clarity.
+      That question is the hinge. Riverside’s story is not &quot;we banned AI&quot; or &quot;we embraced AI.&quot; It is: <strong>we stopped improvising in isolation</strong> and started leading with clarity.
     </p>
 
     <h4 className="text-foreground font-medium mt-10 mb-4 text-xl">Step 01 · Safety — They clarified what they believed</h4>
@@ -39,10 +39,10 @@ const churchesNarrative = (
 
     <h4 className="text-foreground font-medium mt-10 mb-4 text-xl">Step 02 · Sandbox — They experimented intentionally</h4>
     <p className="mb-6">
-      Boundaries in place, Riverside still did not "roll out AI." They ran a <strong>small set of intentional experiments</strong>: drafting internal communications using anonymized content; generating first-pass small group questions <strong>with human review</strong>; summarizing research notes for sermon prep — explicitly <strong>not</strong> writing sermons. Each experiment had three non-negotiables: a clear boundary, a named owner, and a place where outcomes were shared.
+      Boundaries in place, Riverside still did not &quot;roll out AI.&quot; They ran a <strong>small set of intentional experiments</strong>: drafting internal communications using anonymized content; generating first-pass small group questions <strong>with human review</strong>; summarizing research notes for sermon prep — explicitly <strong>not</strong> writing sermons. Each experiment had three non-negotiables: a clear boundary, a named owner, and a place where outcomes were shared.
     </p>
     <p className="mb-6">
-      Some experiments helped. Some did not. AI sped up internal communication drafts, but tone still needed a human editor. Small-group question drafts were sometimes useful as a starting point — and sometimes pastorally thin. Occasionally the output was technically fine but spiritually "off." The breakthrough was not the win rate of any single tool — it was cultural: <strong>staff stopped guessing individually and started learning collectively.</strong>
+      Some experiments helped. Some did not. AI sped up internal communication drafts, but tone still needed a human editor. Small-group question drafts were sometimes useful as a starting point — and sometimes pastorally thin. Occasionally the output was technically fine but spiritually &quot;off.&quot; The breakthrough was not the win rate of any single tool — it was cultural: <strong>staff stopped guessing individually and started learning collectively.</strong>
     </p>
 
     <h4 className="text-foreground font-medium mt-10 mb-4 text-xl">Step 03 · Skills — They trained for judgment, not just usage</h4>
@@ -69,10 +69,10 @@ const churchesNarrative = (
 
     <h4 className="text-foreground font-medium mt-10 mb-4 text-xl">What this actually produced — and why the order held</h4>
     <p className="mb-6">
-      Riverside did not rebranding itself as an "AI church." It became <strong>clearer about convictions</strong>, <strong>more aligned as a team</strong>, and <strong>more capable in daily work</strong> — and it adopted AI <strong>without quietly weakening</strong> what matters most in a church.
+      Riverside did not rebranding itself as an &quot;AI church.&quot; It became <strong>clearer about convictions</strong>, <strong>more aligned as a team</strong>, and <strong>more capable in daily work</strong> — and it adopted AI <strong>without quietly weakening</strong> what matters most in a church.
     </p>
     <p className="mb-6">
-      Nothing about Riverside was unusual in scale or sophistication. The difference was <strong>sequence</strong>: clarify what matters, experiment carefully, form people, <strong>then</strong> build tools. That order is load-bearing — skip it, and tools outrun conscience; keep it, and technology serves mission instead of improvising around it.
+      Nothing about Riverside was unusual in scale or sophistication. The difference was <strong>the Movemental Path</strong>: clarify what matters, experiment carefully, form people, <strong>then</strong> build tools. That order is load-bearing — skip it, and tools outrun conscience; keep it, and technology serves mission instead of improvising around it.
     </p>
   </div>
 );
@@ -114,7 +114,7 @@ const nonprofitsNarrative = (
 
     <h4 className="text-foreground font-medium mt-10 mb-4 text-xl">Step 02 · Sandbox — They experimented — but safely</h4>
     <p className="mb-6">
-      Clear boundaries enabled disciplined curiosity. Northbridge still refused a "rollout." Instead, they green-lit a short list of experiments: drafting donor newsletter sections from <strong>anonymized</strong> content; summarizing <strong>program patterns</strong> without real case identifiers; testing internal planning scenarios. Each trial required an owner, explicit <strong>no-sensitive-data</strong> guardrails, and a log of results.
+      Clear boundaries enabled disciplined curiosity. Northbridge still refused a &quot;rollout.&quot; Instead, they green-lit a short list of experiments: drafting donor newsletter sections from <strong>anonymized</strong> content; summarizing <strong>program patterns</strong> without real case identifiers; testing internal planning scenarios. Each trial required an owner, explicit <strong>no-sensitive-data</strong> guardrails, and a log of results.
     </p>
     <p className="mb-6">
       Some efforts saved time; some misfired on voice; one promising idea proved <strong>too risky</strong> to continue once tradeoffs became visible. For the first time, the organization could articulate not only wins but <strong>why</strong> a dead end was dead: <strong>a shared understanding of what was useful, what wasn’t, and what wasn’t worth the risk.</strong>
@@ -144,10 +144,10 @@ const nonprofitsNarrative = (
 
     <h4 className="text-foreground font-medium mt-10 mb-4 text-xl">What this actually produced — and why the order held</h4>
     <p className="mb-6">
-      Northbridge did not market itself as an "AI-powered nonprofit." It grew <strong>clearer about boundaries</strong>, <strong>more consistent operationally</strong>, and <strong>more capable as a team</strong> — and it used AI <strong>without slowly eroding trust</strong> forged over decades.
+      Northbridge did not market itself as an &quot;AI-powered nonprofit.&quot; It grew <strong>clearer about boundaries</strong>, <strong>more consistent operationally</strong>, and <strong>more capable as a team</strong> — and it used AI <strong>without slowly eroding trust</strong> forged over decades.
     </p>
     <p className="mb-6">
-      Again, the institution wasn’t unique; <strong>the sequence was</strong>: decide what matters, experiment safely, build capability, <strong>then</strong> build tools. In nonprofits where one leaked prompt can wound real children or donors, order is not bureaucracy — it is stewardship.
+      Again, the institution wasn’t unique; <strong>the Movemental Path still applied</strong>: decide what matters, experiment safely, build capability, <strong>then</strong> build tools. In nonprofits where one leaked prompt can wound real children or donors, order is not bureaucracy — it is stewardship.
     </p>
   </div>
 );
@@ -208,15 +208,15 @@ const institutionsNarrative = (
       They explicitly avoided <strong>automated paper-writing tools</strong> and anything that <strong>obscured authorship</strong>. For the most formation-critical work, they avoided a tool-first answer altogether — opting instead for <strong>a faculty guide on how to teach <em>with</em> AI — not merely how to detect it.</strong>
     </p>
     <p className="mb-6">
-      The institution did not magically become "more efficient." It became <strong>more intentional</strong>: students engaged more critically; faculty shared expectations; AI entered syllabi as a named conversation partner rather than a hidden shortcut.
+      The institution did not magically become &quot;more efficient.&quot; It became <strong>more intentional</strong>: students engaged more critically; faculty shared expectations; AI entered syllabi as a named conversation partner rather than a hidden shortcut.
     </p>
 
     <h4 className="text-foreground font-medium mt-10 mb-4 text-xl">What this actually produced — and why the order held</h4>
     <p className="mb-6">
-      Westbridge did not "solve" AI — no honest school has. It did something more durable: <strong>integrated emerging tools without losing the purpose of theological education.</strong>
+      Westbridge did not &quot;solve&quot; AI — no honest school has. It did something more durable: <strong>integrated emerging tools without losing the purpose of theological education.</strong>
     </p>
     <p className="mb-6">
-      The obstacle was never merely GPT; it was what GPT exposed — fragile assumptions about learning, authorship, and the relationship between effort and formation. The remedy was neither blanket prohibition nor naive optimism; it was <strong>sequence</strong>: clarify purpose, explore carefully, train for judgment, <strong>then</strong> integrate tools.
+      The obstacle was never merely GPT; it was what GPT exposed — fragile assumptions about learning, authorship, and the relationship between effort and formation. The remedy was neither blanket prohibition nor naive optimism; it was <strong>the Movemental Path</strong>: clarify purpose, explore carefully, train for judgment, <strong>then</strong> integrate tools.
     </p>
   </div>
 );

@@ -155,7 +155,7 @@ export function MovementLeadersPage() {
             <aside className="border border-border-soft bg-card p-8 rounded-card max-w-3xl relative overflow-hidden">
                <span className="text-xs font-semibold uppercase tracking-widest text-ink-soft mb-4 block relative z-10">Editorial note</span>
                <div className="prose max-w-none text-muted-foreground text-[0.98rem] leading-relaxed relative z-10 flex flex-col gap-4">
-                  <p><strong>Movement leaders do not buy from Movemental.</strong> We do not offer special pricing, certification programs, or "movement-level" product tiers.</p>
+                  <p><strong>Movement leaders do not buy from Movemental.</strong> We do not offer special pricing, certification programs, or &quot;movement-level&quot; product tiers.</p>
                   
                   <p>If we build surfaces for this group in the future, they will be editorial surfaces (roundtables, anthologies, structured critiques) — not consulting products.</p>
                   

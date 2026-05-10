@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { ContactConversationForm } from "@/components/forms/contact-conversation-form";
-import { Container, Reveal, Section } from "@/components/primitives";
+import { Container, HumanHighlightEx3, Reveal, Section } from "@/components/primitives";
 import { type ContactInterest, contactInterestToOrgType } from "@/lib/contact-interest";
 
 function TextLink({
@@ -49,9 +49,11 @@ export function ContactPageContent({ contactInterest }: { contactInterest?: Cont
             </h1>
             <div className="mt-8 max-w-2xl space-y-6 text-lg leading-relaxed text-inverse-muted">
               <p>
-                A 30-minute conversation with Brad, Alan, or Josh. We listen, ask honest questions, and tell you whether
-                Safety is the right starting place for your organization or whether you&apos;d be better served waiting
-                or starting elsewhere.
+                A 30-minute conversation with Brad, Alan, or Josh. We listen, ask honest questions, and tell you{" "}
+                <HumanHighlightEx3 inverse>
+                  whether Safety is the right starting place for your organization or whether you&apos;d be better served
+                  waiting or starting elsewhere.
+                </HumanHighlightEx3>
               </p>
               <p className="text-sm font-semibold uppercase tracking-eyebrow text-inverse-muted/90">
                 We respond within one business day.

@@ -1,26 +1,44 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { cn } from '@/lib/utils';
+
+// Subscribe to `prefers-reduced-motion` via `useSyncExternalStore` so the
+// initial value comes from `matchMedia` (no `setState` inside `useEffect` —
+// lint: react-hooks/set-state-in-effect) and updates flow through if the
+// user changes their OS preference mid-session.
+const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
+
+const subscribeReducedMotion = (callback: () => void) => {
+  const mql = window.matchMedia(REDUCED_MOTION_QUERY);
+  mql.addEventListener('change', callback);
+  return () => mql.removeEventListener('change', callback);
+};
+
+const getReducedMotionSnapshot = () =>
+  window.matchMedia(REDUCED_MOTION_QUERY).matches;
+
+const getReducedMotionServerSnapshot = () => false;
 
 export const Reveal: React.FC<{
   children: React.ReactNode;
   className?: string;
   delay?: number;
 }> = ({ children, className, delay = 0 }) => {
-  const [isRevealed, setIsRevealed] = useState(false);
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotionSnapshot,
+    getReducedMotionServerSnapshot,
+  );
+  const [isInView, setIsInView] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      setIsRevealed(true);
-      return;
-    }
+    if (prefersReducedMotion) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setTimeout(() => {
-            setIsRevealed(true);
+            setIsInView(true);
           }, delay);
           observer.unobserve(entry.target);
         }
@@ -38,7 +56,9 @@ export const Reveal: React.FC<{
     return () => {
       observer.disconnect();
     };
-  }, [delay]);
+  }, [delay, prefersReducedMotion]);
+
+  const isRevealed = prefersReducedMotion || isInView;
 
   return (
     <div

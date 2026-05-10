@@ -28,7 +28,7 @@ export function FragmentationStoryOutroCta() {
             size="lg"
             className="text-inverse-foreground hover:bg-inverse-foreground/10"
           >
-            <Link href={SSSS_FIELD_GUIDE_PATH}>AI Stewardship Sequence field guide</Link>
+            <Link href={SSSS_FIELD_GUIDE_PATH}>Movemental Path field guide</Link>
           </Button>
           <Button
             asChild
@@ -36,7 +36,7 @@ export function FragmentationStoryOutroCta() {
             size="lg"
             className="text-inverse-foreground hover:bg-inverse-foreground/10"
           >
-            <Link href="/assess">AI Stewardship Sequence assessment</Link>
+            <Link href="/assess">Movemental Path assessment</Link>
           </Button>
           <Button
             asChild

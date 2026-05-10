@@ -4,7 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, Moon, Sun, Download } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState, useSyncExternalStore } from "react";
+
+// Empty subscribe — the snapshot never changes after hydration, so we never
+// need to notify React of an update. Defined at module scope so the function
+// identity is stable across renders.
+const subscribeNoop = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
 
 import { Container } from "@/components/studio/Container";
 import { useToolkitModal } from "@/components/toolkit/toolkit-modal-context";
@@ -22,10 +30,18 @@ const LOGO_DARK_SRC =
  * Theme follows `next-themes` via {@link ThemeToggle} and the mobile row below.
  */
 export function SiteHeader() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  // Hydration gate — `useSyncExternalStore` returns the server snapshot
+  // (false) during SSR/first paint and the client snapshot (true) once
+  // hydrated. Avoids `setState` in `useEffect` (lint: react-hooks/set-state-in-effect).
+  const mounted = useSyncExternalStore(
+    subscribeNoop,
+    getClientSnapshot,
+    getServerSnapshot,
+  );
   const { open: openToolkitModal } = useToolkitModal();
 
   useEffect(() => {
@@ -34,10 +50,6 @@ export function SiteHeader() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    setMounted(true);
   }, []);
 
   const toggleTheme = () => {
@@ -84,7 +96,7 @@ export function SiteHeader() {
               href="/pathway"
               className="flex items-center gap-1 py-4 text-sm font-medium transition-all duration-200 hover:text-primary"
             >
-              The Pathway{" "}
+              Movemental Path{" "}
               <svg
                 className="h-4 w-4 opacity-70"
                 fill="none"
@@ -103,10 +115,14 @@ export function SiteHeader() {
             <div className="invisible absolute top-full left-0 z-50 w-64 translate-y-2 rounded-xl border border-border bg-card p-2 opacity-0 shadow-ambient transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
               <Link
                 href="/pathway/safety"
-                className="block rounded-lg px-4 py-3 transition-colors hover:bg-section"
+                className={cn(
+                  "block rounded-lg px-4 py-3 transition-colors hover:bg-section",
+                  pathname.startsWith("/pathway/safety") &&
+                    "border-l-2 border-pathway-accent bg-section",
+                )}
               >
                 <div className="text-sm font-semibold text-foreground">
-                  01. Safety Documentation
+                  01. Safety
                 </div>
                 <div className="mt-1 text-xs text-muted-foreground">
                   AI use & trust charters
@@ -114,13 +130,17 @@ export function SiteHeader() {
               </Link>
               <Link
                 href="/pathway/sandbox"
-                className="block rounded-lg px-4 py-3 transition-colors hover:bg-section"
+                className={cn(
+                  "block rounded-lg px-4 py-3 transition-colors hover:bg-section",
+                  pathname.startsWith("/pathway/sandbox") &&
+                    "border-l-2 border-pathway-accent bg-section",
+                )}
               >
                 <div className="text-sm font-semibold text-foreground">
-                  02. Sandbox Discovery
+                  02. Sandbox
                 </div>
                 <div className="mt-1 text-xs text-muted-foreground">
-                  Facilitated use case sprints
+                  Safe exploration · Tested use cases · Real work
                 </div>
               </Link>
               <Link
@@ -128,7 +148,7 @@ export function SiteHeader() {
                 className="block rounded-lg px-4 py-3 transition-colors hover:bg-section"
               >
                 <div className="text-sm font-semibold text-foreground">
-                  03. Skills Development
+                  03. Skills
                 </div>
                 <div className="mt-1 text-xs text-muted-foreground">
                   Cohorts & self-paced training
@@ -139,7 +159,7 @@ export function SiteHeader() {
                 className="block rounded-lg px-4 py-3 transition-colors hover:bg-section"
               >
                 <div className="text-sm font-semibold text-foreground">
-                  04. Solutions Deployment
+                  04. Solutions
                 </div>
                 <div className="mt-1 text-xs text-muted-foreground">
                   Custom agentic CMS/LMS builds
@@ -252,7 +272,7 @@ export function SiteHeader() {
             onClick={() => setIsMenuOpen(false)}
             className="rounded-md p-2 text-lg font-medium transition-colors hover:bg-section"
           >
-            The Pathway
+            Movemental Path
           </Link>
           <Link
             href="/pricing"
@@ -263,6 +283,29 @@ export function SiteHeader() {
           </Link>
           <div className="border-border ml-2 flex flex-col gap-2 border-l-2 py-1 pl-4">
             <span className="px-2 text-sm font-semibold tracking-widest text-muted-foreground uppercase">
+              Path stages
+            </span>
+            <Link
+              href="/pathway/safety"
+              onClick={() => setIsMenuOpen(false)}
+              className={cn(
+                "rounded-md p-2 text-[1.0625rem] font-medium transition-colors hover:bg-section",
+                pathname.startsWith("/pathway/safety") && "bg-section",
+              )}
+            >
+              Safety
+            </Link>
+            <Link
+              href="/pathway/sandbox"
+              onClick={() => setIsMenuOpen(false)}
+              className={cn(
+                "rounded-md p-2 text-[1.0625rem] font-medium transition-colors hover:bg-section",
+                pathname.startsWith("/pathway/sandbox") && "bg-section",
+              )}
+            >
+              Sandbox
+            </Link>
+            <span className="px-2 pt-2 text-sm font-semibold tracking-widest text-muted-foreground uppercase">
               Products
             </span>
             <Link
@@ -270,14 +313,14 @@ export function SiteHeader() {
               onClick={() => setIsMenuOpen(false)}
               className="rounded-md p-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
             >
-              Skills Development
+              Skills
             </Link>
             <Link
               href="/pathway/solutions"
               onClick={() => setIsMenuOpen(false)}
               className="rounded-md p-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
             >
-              Solutions Deployment
+              Solutions
             </Link>
           </div>
           <div className="border-border ml-2 flex flex-col gap-2 border-l-2 py-1 pl-4">

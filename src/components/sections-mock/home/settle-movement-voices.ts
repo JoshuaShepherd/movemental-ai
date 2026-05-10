@@ -3,6 +3,8 @@ import {
   forceLink,
   forceManyBody,
   forceSimulation,
+  forceX,
+  forceY,
   type SimulationLinkDatum,
   type SimulationNodeDatum,
 } from "d3";
@@ -19,7 +21,7 @@ interface SimLink extends SimulationLinkDatum<SimNode> {
   touchesCenter: boolean;
 }
 
-const PADDING = Math.max(VOICE_AVATAR_PX, CENTER_NODE_PX) / 2 + 8;
+const PADDING = Math.max(VOICE_AVATAR_PX, CENTER_NODE_PX) / 2 + 18;
 
 /** Mulberry32 — small seeded PRNG so the layout is identical on every load. */
 function makeRandom(seed: number): () => number {
@@ -72,7 +74,7 @@ function seedNodes(width: number, height: number): SimNode[] {
 
 function buildLinks(width: number, height: number): SimLink[] {
   const minDim = Math.min(width, height);
-  const baseDist = minDim * 0.32;
+  const baseDist = minDim * 0.38;
   const out: SimLink[] = [];
 
   for (let i = 0; i < NODE_IDS.length; i++) {
@@ -81,7 +83,7 @@ function buildLinks(width: number, height: number): SimLink[] {
       const b = NODE_IDS[j];
       const touchesCenter = a === CENTER_NODE_ID || b === CENTER_NODE_ID;
       const jitter = (((i + 1) * 17 + (j + 1) * 11) % 27) - 13;
-      const distance = touchesCenter ? baseDist * 0.78 : baseDist * 1.18 + jitter;
+      const distance = touchesCenter ? baseDist * 0.92 : baseDist * 1.38 + jitter;
       out.push({ source: a, target: b, distance, touchesCenter });
     }
   }
@@ -107,9 +109,9 @@ export function settleNetworkPositions(
   // Per-node charge variance so the all-channel mesh doesn't settle into a
   // regular polygon around the hub.
   const chargeFor = (n: SimNode) => {
-    if (n.id === CENTER_NODE_ID) return -560;
+    if (n.id === CENTER_NODE_ID) return -760;
     const idx = NODE_IDS.indexOf(n.id);
-    return -220 - ((idx * 53) % 161);
+    return -340 - ((idx * 53) % 181);
   };
 
   const sim = forceSimulation<SimNode>(nodes)
@@ -120,17 +122,19 @@ export function settleNetworkPositions(
     )
     .force(
       "collide",
-      forceCollide<SimNode>(VOICE_AVATAR_PX * 0.76).iterations(3),
+      forceCollide<SimNode>(VOICE_AVATAR_PX * 0.94).iterations(4),
     )
     .force(
       "link",
       forceLink<SimNode, SimLink>(links)
         .id((d) => d.id)
         .distance((l) => l.distance)
-        .strength((l) => (l.touchesCenter ? 0.14 : 0.11)),
+        .strength((l) => (l.touchesCenter ? 0.08 : 0.035)),
     )
+    .force("x", forceX<SimNode>(cx).strength(0.035))
+    .force("y", forceY<SimNode>(cy).strength(0.035))
     .alpha(1)
-    .alphaDecay(0.04)
+    .alphaDecay(0.035)
     .alphaMin(0.01)
     .stop();
 

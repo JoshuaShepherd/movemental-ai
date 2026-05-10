@@ -17,7 +17,7 @@ export function SkillsContent() {
           <p className="mb-8" dangerouslySetInnerHTML={{ __html: `Training teaches people how to use tools. Formation teaches people how to carry responsibility when the tool is in the room. <strong>This course gives staff practical AI skills while forming the judgment, review habits, and shared language needed to use AI responsibly.</strong>` }} />
           
           <p className="font-serif-display italic text-2xl text-primary border-l-4 border-primary pl-6 py-2 mb-10">
-             "What you are building is not a faster team. It is a wiser one."
+             &quot;What you are building is not a faster team. It is a wiser one.&quot;
           </p>
           
           <div className="border-t border-border pt-10 mb-10">

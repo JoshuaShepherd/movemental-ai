@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<title>Movemental | Sandbox — Stage 02 of the Movemental Path</title>
+<meta name="description" content="Stage 02 — safe exploration of AI inside your organization. Around ten hours of in-person training, plus a curated portfolio of tested use cases for churches, nonprofits, and institutions. $15,000." />
+<link href="https://fonts.googleapis.com" rel="preconnect" />
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500;1,6..72,600;1,6..72,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: "#645d55",
+          "primary-dim": "#4f4942",
+          "on-surface": "#39382c",
+          background: "#faf8f4",
+          "surface-container-low": "#faf8f4",
+          "surface-container-high": "#f2eedf",
+          "on-background": "#39382c",
+          "on-surface-variant": "#666557",
+          "inverse-surface": "#141110",
+          "on-primary": "#faf8f4",
+          surface: "#faf8f4",
+          "surface-container": "#f2ece0",
+          outline: "#838172",
+          "outline-variant": "#bcbaa9",
+          "amber-accent": "#B8893A",
+          "amber-accent-dim": "#8a6628",
+          midnight: "#0E1726",
+        },
+        borderRadius: { DEFAULT: "0px", lg: "0px", xl: "0px", full: "0px" },
+        fontFamily: {
+          headline: ["Newsreader", "serif"],
+          display: ["Newsreader", "serif"],
+          body: ["Inter", "sans-serif"],
+          label: ["Inter", "sans-serif"],
+        },
+        letterSpacing: { eyebrow: "0.18em" },
+      },
+    },
+  };
+</script>
+<style>
+  :root {
+    --surface: #faf8f4;
+    --surface-container: #f2ece0;
+    --surface-container-high: #f2eedf;
+    --on-surface: #39382c;
+    --on-surface-variant: #666557;
+    --outline-variant: #bcbaa9;
+    --amber-accent: #B8893A;
+    --midnight: #0E1726;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Inter", sans-serif;
+    line-height: 1.6;
+    font-size: 17px;
+    background-color: var(--surface);
+    color: var(--on-surface);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, .font-display { font-family: "Newsreader", serif; font-style: italic; letter-spacing: -0.01em; }
+  .material-symbols-outlined { font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24; }
+  .ledger-row { border-bottom: 0.5px solid rgba(188, 186, 169, 0.55); }
+  .hairline { border-color: rgba(131, 129, 114, 0.22); }
+  .voice-portrait {
+    background: var(--surface-container);
+    aspect-ratio: 4 / 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.5rem;
+    border: 0.5px solid rgba(188, 186, 169, 0.5);
+  }
+  .voice-portrait .initials {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-size: 4.5rem;
+    line-height: 1;
+    color: var(--on-surface);
+    letter-spacing: -0.04em;
+  }
+  .voice-portrait .label {
+    margin-top: 1.5rem;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--on-surface-variant);
+    font-weight: 500;
+    max-width: 18ch;
+  }
+  .toolkit-cover {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    background: var(--surface-container);
+    color: var(--on-surface);
+    box-shadow: 0 12px 40px rgba(42, 52, 57, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .toolkit-cover::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 0.5px solid rgba(131, 129, 114, 0.32);
+  }
+  .toolkit-cover .cover-eyebrow-tr {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--on-surface-variant);
+    font-weight: 500;
+    text-align: right;
+    max-width: 14ch;
+    line-height: 1.35;
+  }
+  .toolkit-cover .cover-title {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-size: 3rem;
+    line-height: 0.92;
+    letter-spacing: -0.015em;
+    margin-bottom: 1.25rem;
+  }
+  .toolkit-cover .cover-rule {
+    width: 38px;
+    height: 0.5px;
+    background: rgba(131, 129, 114, 0.4);
+    margin: 0.75rem auto 1.25rem;
+  }
+  .toolkit-cover .cover-sub {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--on-surface-variant);
+    max-width: 28ch;
+    line-height: 1.45;
+    font-weight: 500;
+  }
+  .toolkit-cover .cover-foot {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--on-surface-variant);
+    font-weight: 500;
+  }
+  .pull-rule { width: 2px; background: var(--amber-accent); }
+  .deliverable-cell { transition: background-color 240ms ease; }
+  .deliverable-cell:hover { background-color: var(--surface-container-high); }
+  .deliverable-cell.midnight:hover { background-color: #0E1726; }
+  .brand-mark { width: 28px; height: 28px; flex: none; }
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--amber-accent);
+    outline-offset: 3px;
+  }
+  .midnight-noise {
+    background-image: radial-gradient(rgba(255, 246, 238, 0.04) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+  details.path-dropdown > summary { list-style: none; }
+  details.path-dropdown > summary::-webkit-details-marker { display: none; }
+</style>
+</head>
+<body class="bg-surface selection:bg-amber-accent/20 selection:text-on-surface">
+<nav class="fixed top-0 left-0 right-0 z-50 bg-surface/85 backdrop-blur-md border-b hairline border-b-[0.5px]">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-8 md:px-12 py-5">
+    <a href="/" class="flex items-center gap-3" aria-label="Movemental — home">
+      <img src="../../public/images/brand/brand-mark.svg" alt="" class="brand-mark" aria-hidden="true" />
+      <span class="font-display italic text-[1.35rem] text-on-surface leading-none">Movemental</span>
+    </a>
+    <div class="hidden md:flex items-center gap-9">
+      <details class="path-dropdown relative group">
+        <summary class="text-on-surface font-body text-[0.7rem] uppercase tracking-eyebrow font-semibold border-b border-on-surface pb-1 cursor-pointer">The Path</summary>
+        <div class="absolute left-0 top-full pt-3 min-w-[220px] bg-surface border hairline shadow-[0_12px_40px_rgba(42,52,57,0.06)] py-2 z-50">
+          <a href="/pathway/safety" class="block px-4 py-3 text-[0.68rem] uppercase tracking-eyebrow text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors">Stage 01 — Safety</a>
+          <a href="/pathway/sandbox" class="block px-4 py-3 text-[0.68rem] uppercase tracking-eyebrow text-on-surface bg-surface-container border-l-2 border-amber-accent" aria-current="page">Stage 02 — Sandbox</a>
+        </div>
+      </details>
+      <a href="/organizations" class="text-on-surface-variant font-body text-[0.7rem] uppercase tracking-eyebrow hover:text-on-surface transition-colors">Who we serve</a>
+      <a href="/field-guide" class="text-on-surface-variant font-body text-[0.7rem] uppercase tracking-eyebrow hover:text-on-surface transition-colors">Field Guide</a>
+      <a href="/pricing" class="text-on-surface-variant font-body text-[0.7rem] uppercase tracking-eyebrow hover:text-on-surface transition-colors">Pricing</a>
+      <a href="/about" class="text-on-surface-variant font-body text-[0.7rem] uppercase tracking-eyebrow hover:text-on-surface transition-colors">About</a>
+    </div>
+    <div class="flex items-center gap-5">
+      <a href="#field-guide" class="hidden md:inline text-[0.62rem] uppercase tracking-eyebrow text-on-surface-variant font-medium hover:text-on-surface transition-colors">Field Guide</a>
+      <a href="/contact?interest=sandbox" class="bg-midnight text-on-primary px-5 py-2.5 text-[0.66rem] uppercase tracking-eyebrow font-semibold hover:opacity-90 transition-opacity">Start a conversation</a>
+    </div>
+  </div>
+</nav>
+<main class="pt-20">
+
+  <section class="px-8 md:px-12 pt-14 pb-8 bg-surface" aria-label="Movemental Path — stage 02 of 04">
+    <div class="max-w-7xl mx-auto">
+      <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-6">The Movemental Path</p>
+      <ol class="grid grid-cols-2 md:grid-cols-4 gap-x-2 gap-y-6 ledger-row pb-6">
+        <li class="flex flex-col border-l border-outline-variant/60 pl-4 py-1 opacity-70">
+          <span class="text-[0.6rem] uppercase tracking-eyebrow font-bold text-on-surface-variant">Completed</span>
+          <span class="font-display italic text-xl md:text-2xl text-on-surface mt-1">Stage 01 — Safety</span>
+          <span class="text-[0.7rem] text-on-surface-variant mt-1">Governance · Commitments · Boundaries</span>
+        </li>
+        <li class="flex flex-col border-l-2 border-amber-accent pl-4 py-1">
+          <span class="text-[0.6rem] uppercase tracking-eyebrow font-bold text-amber-accent">Active</span>
+          <span class="font-display italic text-xl md:text-2xl text-on-surface mt-1">Stage 02 — Sandbox</span>
+          <span class="text-[0.7rem] text-on-surface-variant mt-1">Safe exploration · Tested use cases · Real organizational work</span>
+        </li>
+        <li class="flex flex-col border-l border-outline-variant/60 pl-4 py-1 opacity-40">
+          <span class="text-[0.6rem] uppercase tracking-eyebrow font-bold text-on-surface-variant">Upcoming</span>
+          <span class="font-display italic text-xl md:text-2xl mt-1">Stage 03 — Skills</span>
+          <span class="text-[0.7rem] text-on-surface-variant mt-1">Capability across the team</span>
+        </li>
+        <li class="flex flex-col border-l border-outline-variant/60 pl-4 py-1 opacity-40">
+          <span class="text-[0.6rem] uppercase tracking-eyebrow font-bold text-on-surface-variant">Upcoming</span>
+          <span class="font-display italic text-xl md:text-2xl mt-1">Stage 04 — Solutions</span>
+          <span class="text-[0.7rem] text-on-surface-variant mt-1">Durable deployments</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="px-8 md:px-12 py-20 md:py-28 lg:py-32 bg-surface-container" id="hero" aria-labelledby="hero-title">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-start">
+      <div class="lg:col-span-7">
+        <span class="block text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-6">Stage 02 — Sandbox</span>
+        <h1 id="hero-title" class="font-display italic text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-8 text-on-surface max-w-4xl">
+          You cannot determine the value, or ethics, of AI for your organization until you have actually used it organizationally.
+        </h1>
+        <p class="text-lg md:text-xl text-on-surface-variant max-w-2xl mb-6 leading-relaxed">
+          Sandbox is the work of discovering, through experiment and experience, what valuable custom AI use cases exist for your organization. We pause publication, set clear privacy guardrails, and use the time to explore — alongside a curated library of AI use cases Movemental has tested across churches, nonprofits, and institutions for years.
+        </p>
+        <p class="font-display italic text-xl md:text-2xl text-on-surface mb-12 leading-snug max-w-xl">
+          $15,000. Around ten hours of in-person training. A curated set of use cases proven across the field, applied to your specific work.
+        </p>
+        <div class="flex flex-wrap gap-4 items-center">
+          <a href="/contact?interest=sandbox" class="bg-midnight text-on-primary px-7 py-4 text-[0.7rem] uppercase tracking-eyebrow font-semibold hover:opacity-90 transition-opacity">Begin Sandbox</a>
+          <a href="#field-guide" class="text-[0.7rem] uppercase tracking-eyebrow font-semibold text-on-surface border-b border-on-surface pb-1 hover:text-amber-accent hover:border-amber-accent transition-colors">Read the Field Guide first</a>
+        </div>
+        <p class="mt-10 text-sm text-on-surface-variant max-w-2xl">
+          Sandbox builds on the seven decisions produced in Safety. If you have not yet completed Safety, <a href="/pathway/safety" class="text-on-surface underline underline-offset-4 decoration-amber-accent decoration-1 hover:decoration-2">start there</a> first.
+        </p>
+      </div>
+      <aside class="lg:col-span-5 bg-surface p-10 md:p-12 border-t hairline">
+        <span class="block text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-2">What this produces</span>
+        <p class="font-display italic text-2xl md:text-3xl text-on-surface mb-8 leading-tight">A living laboratory, plus the documents that hold what you learn.</p>
+        <ul class="space-y-1">
+          <li class="grid grid-cols-[2.5rem_1fr] items-baseline gap-3 py-3 ledger-row">
+            <span class="font-display italic text-xl text-amber-accent">01</span>
+            <span class="text-[0.95rem] text-on-surface">Use Case Portfolio</span>
+          </li>
+          <li class="grid grid-cols-[2.5rem_1fr] items-baseline gap-3 py-3 ledger-row">
+            <span class="font-display italic text-xl text-amber-accent">02</span>
+            <span class="text-[0.95rem] text-on-surface">Discernment Memo</span>
+          </li>
+          <li class="grid grid-cols-[2.5rem_1fr] items-baseline gap-3 py-3">
+            <span class="font-display italic text-xl text-amber-accent">03</span>
+            <span class="text-[0.95rem] text-on-surface">Sandbox Readiness Assessment</span>
+          </li>
+        </ul>
+        <p class="mt-8 text-xs text-on-surface-variant italic leading-relaxed">Each one drafted with your team and used as an active working tool — not filed as a deliverable.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="px-8 md:px-12 py-20 md:py-28 lg:py-32 bg-surface" aria-labelledby="why-sandbox-title">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl mb-16">
+        <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-4">Why this stage exists</p>
+        <h2 id="why-sandbox-title" class="font-display italic text-4xl md:text-5xl text-on-surface mb-8 leading-tight">Sandbox is not a pilot. It is safe exploration of what AI is for in your organization.</h2>
+        <p class="text-lg text-on-surface-variant leading-relaxed max-w-2xl">A pilot asks whether a vendor tool works. Sandbox asks what your organization is becoming as it uses AI. Three commitments make the exploration safe enough to be honest.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-outline-variant/30">
+        <div class="bg-surface p-10 md:p-12">
+          <span class="font-display italic text-3xl text-amber-accent block mb-6">i.</span>
+          <h3 class="text-xl text-on-surface mb-4">Safe scope</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed max-w-2xl">We pause publication. AI use during Sandbox stays internal — no donor-facing edges, no signature-gravity communications, no public output under your name. Failure inside the sandbox costs nothing; what we learn from it costs nothing either.</p>
+        </div>
+        <div class="bg-surface p-10 md:p-12">
+          <span class="font-display italic text-3xl text-amber-accent block mb-6">ii.</span>
+          <h3 class="text-xl text-on-surface mb-4">Privacy guardrails</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed max-w-2xl">We set clear rules for what data may be used, by whom, with which tools. Donor records, member directories, clinical notes, and protected information stay outside the sandbox unless explicit guardrails permit otherwise. Once those rules are set, your team is free to explore.</p>
+        </div>
+        <div class="bg-surface p-10 md:p-12">
+          <span class="font-display italic text-3xl text-amber-accent block mb-6">iii.</span>
+          <h3 class="text-xl text-on-surface mb-4">Real work</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed max-w-2xl">Inside the boundaries, your team applies AI to actual organizational work. The learning comes from doing — drafting, research, analysis, planning, communication — not from speculating about what AI might be useful for in some other organization.</p>
+        </div>
+      </div>
+      <blockquote class="mt-20 md:mt-24 max-w-3xl pl-6 md:pl-10 border-l-2 border-amber-accent/80 py-2">
+        <p class="font-display italic text-2xl md:text-3xl text-on-surface leading-snug">The test we apply to every use case: take the AI out of the story. If what remains is people doing valuable human work that AI helped them do faster, the use is humanly valuable. If what remains is AI output dressed up to look like human work, the use is suspect.</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="px-8 md:px-12 py-20 md:py-28 lg:py-32 bg-surface-container-high" aria-labelledby="library-title">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl mb-8">
+        <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-4">What Movemental brings</p>
+        <h2 id="library-title" class="font-display italic text-4xl md:text-5xl text-on-surface mb-8 leading-tight">Years of tested AI use cases, applied to your specific organization.</h2>
+        <p class="text-lg text-on-surface-variant leading-relaxed max-w-2xl mb-6">Sandbox is not your team starting from scratch. Movemental has spent years compiling, testing, and verifying AI use cases specifically as they intersect with the functions of churches, nonprofits, and theological institutions. Your sandbox engagement opens that library to your team and applies it to your actual work.</p>
+        <p class="text-base text-on-surface-variant leading-relaxed max-w-2xl mb-8">The library includes use cases for sermon and teaching preparation, donor communications, grant writing, administrative workflows, pastoral correspondence templates, board materials, curriculum development, research synthesis, member care, program reporting, and dozens of other functions specific to mission-driven organizations. Each use case comes with a tested recipe: the prompt structure, the guardrails, the failure modes Movemental has already encountered, and the adjudication (green, yellow, or red) that emerged from prior testing.</p>
+        <p class="font-display italic text-lg md:text-xl text-on-surface max-w-2xl leading-snug">Your team does not have to invent the use cases. You evaluate them — applied to your specific context — and decide which belong in your organization's portfolio.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-8 md:px-12 py-20 md:py-28 lg:py-32 bg-surface" aria-labelledby="produces-title">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl mb-16">
+        <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-4">What this stage produces</p>
+        <h2 id="produces-title" class="font-display italic text-4xl md:text-5xl text-on-surface mb-6 leading-tight">Three working documents. Each one drafted, used, and ready to ratify.</h2>
+        <p class="text-lg text-on-surface-variant leading-relaxed max-w-2xl">Each document is produced through real exploration, not authored in isolation and handed back. By the end of the engagement, your organization has the evidence it needs to decide what comes next — and the documents to defend that decision to your board.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 border-t border-l hairline">
+        <article class="deliverable-cell p-10 md:p-12 border-r border-b hairline min-h-[320px] flex flex-col">
+          <span class="font-display italic text-3xl text-amber-accent">01</span>
+          <h3 class="font-display italic text-2xl md:text-3xl text-on-surface mt-4 mb-4 leading-tight">Use Case Portfolio</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-6">The catalog of AI use cases your team explored, each adjudicated as green, yellow, or red.</p>
+          <ul class="space-y-0 text-sm text-on-surface-variant leading-relaxed border-t hairline">
+            <li class="py-4 ledger-row"><strong class="text-on-surface font-medium">Green light:</strong> Clear human benefit, no meaningful negative consequences. Deploy readily.</li>
+            <li class="py-4 ledger-row"><strong class="text-on-surface font-medium">Yellow light:</strong> Real benefit only with sufficient guardrails in place. Most use cases land here.</li>
+            <li class="py-4 ledger-row"><strong class="text-on-surface font-medium">Red light:</strong> Causes harm regardless of how carefully it is deployed. Goes into the Named Refusals document from Safety.</li>
+          </ul>
+          <p class="mt-auto pt-6 text-sm text-on-surface-variant italic">The portfolio is the operational memory of the work.</p>
+        </article>
+        <article class="deliverable-cell p-10 md:p-12 border-r border-b hairline min-h-[320px] flex flex-col">
+          <span class="font-display italic text-3xl text-amber-accent">02</span>
+          <h3 class="font-display italic text-2xl md:text-3xl text-on-surface mt-4 mb-4 leading-tight">Discernment Memo</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed flex-1">The leadership document that names what your organization learned about AI in your specific context. Surfaces the patterns the use case adjudications make visible. Names what your team would deploy, what it would refuse, and what it needs to learn before deciding.</p>
+          <p class="mt-8 text-sm text-on-surface-variant italic">The memo is what your board reads.</p>
+        </article>
+        <article class="deliverable-cell p-10 md:p-12 border-r border-b hairline min-h-[320px] flex flex-col">
+          <span class="font-display italic text-3xl text-amber-accent">03</span>
+          <h3 class="font-display italic text-2xl md:text-3xl text-on-surface mt-4 mb-4 leading-tight">Sandbox Readiness Assessment</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed flex-1">The honest evaluation of whether your organization is ready to move to Skills, and where the readiness gaps are. Specific to your team's actual capacity, not a generic readiness checklist.</p>
+          <p class="mt-8 text-sm text-on-surface-variant italic">The assessment is what determines what comes next.</p>
+        </article>
+        <div class="deliverable-cell midnight bg-midnight text-on-primary p-10 md:p-12 border-r border-b border-midnight min-h-[320px] flex flex-col justify-between">
+          <div>
+            <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-primary/60 mb-4">Bridge to Skills</p>
+            <p class="font-display italic text-2xl md:text-3xl leading-tight mb-6">Sandbox is not the end of the path.</p>
+            <p class="text-sm text-on-primary/75 leading-relaxed">The Readiness Assessment names where your team has the capacity to lead AI work and where it does not. Most organizations leave Sandbox knowing they are ready for Skills in some areas and not others — and that knowledge is what makes Skills worthwhile when it happens.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-8 md:px-12 py-20 md:py-28 lg:py-32 bg-surface" aria-labelledby="how-work-title">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl mb-16">
+        <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-4">How the work happens</p>
+        <h2 id="how-work-title" class="font-display italic text-4xl md:text-5xl text-on-surface mb-6 leading-tight">Around ten hours of in-person training, structured around your team's pace.</h2>
+        <p class="text-lg text-on-surface-variant leading-relaxed max-w-2xl">The Sandbox course structure is flexible. Most engagements run over four to six weeks, with around ten hours of in-person training delivered in sessions calibrated to your team's availability. Between sessions, your working group runs use cases against real organizational work using Movemental's training materials, recipe library, and supporting technology.</p>
+      </div>
+      <ol class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
+        <li class="relative pl-6 border-l-2 border-amber-accent">
+          <span class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-amber-accent block mb-2">Phase 01</span>
+          <h3 class="font-display italic text-2xl text-on-surface mb-3 leading-tight">Scoping</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">A two-hour session with your working group and senior leadership. We translate the seven decisions from Safety into the rules of the sandbox: which use cases are in bounds, which data may be used, what gets logged, what triggers escalation. Sets the constraints for the rest of the engagement.</p>
+        </li>
+        <li class="relative pl-6 border-l-2 border-amber-accent">
+          <span class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-amber-accent block mb-2">Phase 02</span>
+          <h3 class="font-display italic text-2xl text-on-surface mb-3 leading-tight">Exploration</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Your working group runs use cases against real organizational work, drawing from Movemental's tested library and adapting to your specific functions. Every use case is logged with hypothesis, output, observation, and a draft adjudication. We facilitate working sessions during this stretch to surface patterns, sharpen adjudications, and adjust scope as needed.</p>
+        </li>
+        <li class="relative pl-6 border-l-2 border-amber-accent">
+          <span class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-amber-accent block mb-2">Phase 03</span>
+          <h3 class="font-display italic text-2xl text-on-surface mb-3 leading-tight">Adjudication</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">A three-hour synchronous session where the working group and senior leadership read the experiment log together. Each use case gets its final color. Patterns are named. The Use Case Portfolio is finalized.</p>
+        </li>
+        <li class="relative pl-6 border-l-2 border-amber-accent">
+          <span class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-amber-accent block mb-2">Phase 04</span>
+          <h3 class="font-display italic text-2xl text-on-surface mb-3 leading-tight">Discernment and handoff</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">We draft the Discernment Memo and Sandbox Readiness Assessment based on the portfolio and the working group's experience. Senior leadership reviews and refines. Final documents delivered as a working set — not as a finished deliverable, but as the operational foundation for what comes next.</p>
+        </li>
+      </ol>
+      <p class="mt-16 max-w-2xl text-base font-display italic text-on-surface-variant leading-relaxed">Sandbox is run by your working group, not by us. We facilitate, we provide the tested library, we hold the boundaries — but the evidence is yours and the decisions are yours.</p>
+    </div>
+  </section>
+
+  <section class="px-8 md:px-12 py-24 md:py-32 bg-surface-container" aria-label="Pull quote from the field">
+    <div class="max-w-5xl mx-auto relative flex">
+      <div class="pull-rule self-stretch mr-10 md:mr-12 flex-none"></div>
+      <div class="max-w-4xl">
+        <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-8">From the field</p>
+        <p class="font-display italic text-3xl md:text-4xl lg:text-5xl text-on-surface leading-snug mb-10">We thought we knew what AI was good for. The Sandbox showed us we were wrong about half of it, and right about the other half in ways we hadn't articulated. The Use Case Portfolio is the document I show our board when they ask what our actual position on AI is.</p>
+        <div class="hairline border-t border-outline-variant/40 pt-6 mt-2">
+          <p class="text-sm text-on-surface-variant">Executive director, $8M nonprofit</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-8 md:px-12 py-20 md:py-28 lg:py-32 bg-surface" aria-labelledby="pricing-title">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 ledger-row pb-10 mb-16 items-end">
+        <div class="md:col-span-2">
+          <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-4">What it costs</p>
+          <h2 id="pricing-title" class="font-display italic text-4xl md:text-5xl text-on-surface leading-tight">Fifteen thousand dollars. Around ten hours of in-person training. Structured around your team.</h2>
+        </div>
+        <div class="font-body font-light tracking-tight md:text-right md:col-span-1">
+          <div class="text-5xl md:text-6xl lg:text-7xl text-on-surface leading-none">$15,000</div>
+          <div class="text-[0.62rem] uppercase tracking-eyebrow text-on-surface-variant mt-3">USD · 50% at signing, 50% at completion</div>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+        <div>
+          <h3 class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-amber-accent mb-5">What's included</h3>
+          <ul class="space-y-3 text-sm text-on-surface-variant leading-relaxed">
+            <li class="flex gap-3"><span aria-hidden="true" class="text-amber-accent shrink-0">+</span><span>Around ten hours of in-person training across the engagement</span></li>
+            <li class="flex gap-3"><span aria-hidden="true" class="text-amber-accent shrink-0">+</span><span>Access to Movemental's tested library of AI use cases for churches, nonprofits, and institutions</span></li>
+            <li class="flex gap-3"><span aria-hidden="true" class="text-amber-accent shrink-0">+</span><span>Use Case Portfolio adjudicated against your organization</span></li>
+            <li class="flex gap-3"><span aria-hidden="true" class="text-amber-accent shrink-0">+</span><span>Discernment Memo</span></li>
+            <li class="flex gap-3"><span aria-hidden="true" class="text-amber-accent shrink-0">+</span><span>Sandbox Readiness Assessment</span></li>
+            <li class="flex gap-3"><span aria-hidden="true" class="text-amber-accent shrink-0">+</span><span>Working experiment log infrastructure for your team</span></li>
+            <li class="flex gap-3"><span aria-hidden="true" class="text-amber-accent shrink-0">+</span><span>One follow-up call within 30 days of completion</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface mb-5">What's not included</h3>
+          <ul class="space-y-3 text-sm text-on-surface-variant leading-relaxed">
+            <li class="flex gap-3"><span aria-hidden="true">—</span><span>Production deployment of any use case</span></li>
+            <li class="flex gap-3"><span aria-hidden="true">—</span><span>Custom integrations or build work</span></li>
+            <li class="flex gap-3"><span aria-hidden="true">—</span><span>Ongoing facilitation beyond the engagement</span></li>
+            <li class="flex gap-3"><span aria-hidden="true">—</span><span>Software tools or platform fees for AI vendors</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface mb-5">Terms</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">50% invoiced at engagement start, 50% at completion. Payment Net 15 on each invoice. Engagement requires a designated working group of three to five staff plus participation from at least two senior leaders authorized to ratify governance decisions. Sandbox requires Safety to be complete or in active engagement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-8 md:px-12 py-20 md:py-28 lg:py-32 bg-surface-container-high" aria-labelledby="fit-title">
+    <div class="max-w-7xl mx-auto">
+      <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-4">Who this is for</p>
+      <h2 id="fit-title" class="font-display italic text-4xl md:text-5xl text-on-surface mb-16 leading-tight max-w-4xl">Begin here, or wait — depending on where you actually are.</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+        <div>
+          <h3 class="font-display italic text-2xl md:text-3xl text-on-surface mb-10">Begin here if&hellip;</h3>
+          <ul class="space-y-1">
+            <li class="ledger-row py-6"><p class="text-lg text-on-surface leading-snug">You have completed Safety, or you are willing to complete Safety alongside Sandbox.</p></li>
+            <li class="ledger-row py-6"><p class="text-lg text-on-surface leading-snug">Your team is asking what AI is actually for in your specific work, and you cannot answer the question from the outside.</p></li>
+            <li class="ledger-row py-6"><p class="text-lg text-on-surface leading-snug">You have at least three to five staff who can commit to the in-person training and the work between sessions.</p></li>
+            <li class="ledger-row py-6"><p class="text-lg text-on-surface leading-snug">You want evidence about AI in your organization before you commit to deployment, training, or vendor selection.</p></li>
+            <li class="py-6"><p class="text-lg text-on-surface leading-snug">You are willing to use the Use Case Portfolio internally and let it shape actual decisions.</p></li>
+          </ul>
+        </div>
+        <div class="bg-surface p-10 md:p-12 border hairline">
+          <h3 class="font-display italic text-2xl md:text-3xl text-on-surface mb-10 opacity-90">Wait if&hellip;</h3>
+          <ul class="space-y-1">
+            <li class="ledger-row py-6 opacity-70"><p class="text-lg text-on-surface-variant leading-snug">You have not yet completed Safety. Sandbox without Safety is exploration without rules; it produces enthusiasm and confusion in roughly equal measure.</p></li>
+            <li class="ledger-row py-6 opacity-70"><p class="text-lg text-on-surface-variant leading-snug">You are looking for vendor recommendations rather than organizational learning.</p></li>
+            <li class="ledger-row py-6 opacity-70"><p class="text-lg text-on-surface-variant leading-snug">Your team cannot commit to the in-person training. Sandbox does not work as a side project run by one staff member.</p></li>
+            <li class="ledger-row py-6 opacity-70"><p class="text-lg text-on-surface-variant leading-snug">You expect to deploy at the end of Sandbox regardless of what the evidence shows. The Readiness Assessment exists to surface real gaps; if you are not willing to act on those gaps, the work is wasted.</p></li>
+            <li class="py-6 opacity-70"><p class="text-lg text-on-surface-variant leading-snug">You want a pilot of a specific tool. Sandbox is methodology-driven, not vendor-driven.</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-8 md:px-12 py-20 md:py-28 lg:py-32 bg-surface" aria-labelledby="voices-title">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
+        <div class="max-w-2xl">
+          <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-4">Movement Voices</p>
+          <h2 id="voices-title" class="font-display italic text-4xl md:text-5xl text-on-surface leading-tight">The methodology is shaped with leaders whose work and credibility predate AI.</h2>
+        </div>
+        <a href="/voices" class="text-[0.7rem] uppercase tracking-eyebrow font-semibold text-on-surface border-b border-on-surface pb-1 hover:text-amber-accent hover:border-amber-accent transition-colors self-start md:self-end">See all Movement Voices →</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+        <article>
+          <div class="voice-portrait mb-5">
+            <span class="initials">LR</span>
+            <span class="label">Editorial portrait in production</span>
+          </div>
+          <h3 class="font-display italic text-xl text-on-surface mb-1">Rev. Dr. Liz Rios</h3>
+          <p class="text-[0.62rem] uppercase tracking-eyebrow text-on-surface-variant font-medium">Founder, Passion2Plant · Director, Púlpito Fellows</p>
+          <p class="mt-3 text-sm text-on-surface-variant leading-relaxed">Latina theologian and church planter. Brings a mujerista lens to questions of language, voice, and what mission-driven organizations owe the people they serve.</p>
+        </article>
+        <article>
+          <div class="voice-portrait mb-5">
+            <span class="initials">JW</span>
+            <span class="label">Editorial portrait in production</span>
+          </div>
+          <h3 class="font-display italic text-xl text-on-surface mb-1">JR Woodward</h3>
+          <p class="text-[0.62rem] uppercase tracking-eyebrow text-on-surface-variant font-medium">National Director, V3 · Author, The Scandal of Leadership</p>
+          <p class="mt-3 text-sm text-on-surface-variant leading-relaxed">Church planting strategist with three decades in the field. His Manchester PhD on the misuse of leadership power shapes how Movement Voices think about authority and AI.</p>
+        </article>
+        <article>
+          <div class="voice-portrait mb-5">
+            <span class="initials">RS</span>
+            <span class="label">Editorial portrait in production</span>
+          </div>
+          <h3 class="font-display italic text-xl text-on-surface mb-1">L. Rowland Smith</h3>
+          <p class="text-[0.62rem] uppercase tracking-eyebrow text-on-surface-variant font-medium">National Director, Forge America · Founder, Pando Collective</p>
+          <p class="mt-3 text-sm text-on-surface-variant leading-relaxed">Veteran missional practitioner based in the Colorado Front Range. Brings curatorial judgment and decades of micro-church practice to questions of what mission-driven organizations should and should not publish.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-8 md:px-12 py-20 md:py-28 lg:py-32 bg-surface-container" id="field-guide" aria-labelledby="field-guide-title">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      <div class="lg:col-span-7 order-2 lg:order-1">
+        <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-4">Read before you commit</p>
+        <h2 id="field-guide-title" class="font-display italic text-4xl md:text-5xl text-on-surface mb-8 leading-tight">Start with the Field Guide.</h2>
+        <p class="text-lg text-on-surface-variant max-w-xl mb-10 leading-relaxed">It Starts With Safety is a sixteen-page Field Guide that walks through the full Movemental Path, with Safety as the foundation and Sandbox as the next step. It includes a self-assessment your leadership team can take together in 30 minutes to determine whether you are ready for Sandbox or need to begin with Safety. The Field Guide is free, and we would rather you do this work well on your own than sign an engagement you do not need.</p>
+        <form class="space-y-6 max-w-md" id="field-guide-form">
+          <div>
+            <label for="work-email" class="block text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-3">WORK EMAIL ADDRESS</label>
+            <input id="work-email" name="email" type="email" placeholder="name@organization.org" autocomplete="email" class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-amber-accent focus:ring-0 text-lg py-3 px-0 text-on-surface placeholder:text-on-surface-variant/50" />
+          </div>
+          <div>
+            <label for="organization" class="block text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-3">ORGANIZATION</label>
+            <input id="organization" name="organization" type="text" placeholder="Church, nonprofit, or institution" autocomplete="organization" class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-amber-accent focus:ring-0 text-lg py-3 px-0 text-on-surface placeholder:text-on-surface-variant/50" />
+          </div>
+          <button type="submit" class="w-full bg-midnight text-on-primary py-4 text-[0.7rem] uppercase tracking-eyebrow font-semibold hover:opacity-90 transition-opacity">Send me the Field Guide</button>
+          <p class="text-xs text-on-surface-variant leading-relaxed">No drip campaign. We send the Field Guide and one follow-up email a week later asking how it went.</p>
+        </form>
+      </div>
+      <div class="lg:col-span-5 order-1 lg:order-2 max-w-sm w-full mx-auto lg:mx-0">
+        <picture>
+          <img src="./assets/books/field-guide-cover.webp" alt="It Starts With Safety — a sixteen-page Movemental Field Guide" class="w-full aspect-[3/4] object-cover shadow-[0_12px_40px_rgba(42,52,57,0.08)] block" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        </picture>
+        <div class="toolkit-cover" style="display:none;">
+          <span class="cover-eyebrow-tr">Movemental<br/>Field Guide</span>
+          <div class="text-center px-8 pt-12">
+            <div class="cover-title">It Starts<br/>With Safety</div>
+            <div class="cover-rule"></div>
+            <div class="cover-sub">A sixteen-page protocol for organizational leaders.</div>
+          </div>
+          <div class="cover-foot">Stage 01 · Vol. 01</div>
+        </div>
+        <p class="mt-5 text-center text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant">Movemental · Vol. 01 · 16 pages</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-8 md:px-12 py-40 md:py-48 lg:py-52 bg-midnight text-on-primary midnight-noise relative" aria-labelledby="closing-title">
+    <div class="max-w-3xl mx-auto text-center relative z-10">
+      <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-amber-accent mb-8">Begin Sandbox</p>
+      <h2 id="closing-title" class="font-display italic text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-10 leading-[0.95]">You cannot determine what AI is for from the outside. Begin the work.</h2>
+      <p class="text-lg text-on-primary/75 mb-14 max-w-2xl mx-auto leading-relaxed">Sandbox is the stage where most organizations discover what they actually think about AI in their context. Until that work happens, every later decision — about deployment, about training, about vendor selection — is built on guessing rather than evidence.</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-5">
+        <a href="/contact?interest=sandbox" class="bg-surface text-on-surface px-10 py-4 text-[0.7rem] uppercase tracking-eyebrow font-semibold hover:bg-on-primary transition-colors">Start a conversation</a>
+        <a href="#field-guide" class="border border-on-primary text-on-primary px-10 py-4 text-[0.7rem] uppercase tracking-eyebrow font-semibold hover:bg-on-primary hover:text-midnight transition-colors">Read the Field Guide first</a>
+      </div>
+      <p class="mt-12 text-xs text-on-primary/55 max-w-xl mx-auto leading-relaxed">$15,000. Around ten hours of in-person training. A tested library applied to your work. The work is yours when it's done.</p>
+    </div>
+  </section>
+
+  <footer class="bg-inverse-surface text-on-primary px-8 md:px-12 py-16">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-10">
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <img src="../../public/images/brand/brand-mark.svg" alt="" class="brand-mark invert opacity-90" />
+          <span class="font-display italic text-xl">Movemental</span>
+        </div>
+        <p class="text-on-primary/60 text-sm max-w-md leading-relaxed">The Movemental Path: Safety, Sandbox, Skills, Solutions. The order is the methodology.</p>
+        <p class="text-on-primary/40 text-xs mt-6">© 2026 Movemental. All rights reserved.</p>
+      </div>
+      <nav class="flex flex-wrap gap-x-10 gap-y-3 text-sm" aria-label="Footer">
+        <a href="/about" class="text-on-primary/70 hover:text-on-primary transition-colors">About</a>
+        <a href="/voices" class="text-on-primary/70 hover:text-on-primary transition-colors">Trusted voices</a>
+        <a href="/field-guide" class="text-on-primary/70 hover:text-on-primary transition-colors">Field Guide</a>
+        <a href="/contact" class="text-on-primary/70 hover:text-on-primary transition-colors">Contact</a>
+        <a href="/privacy" class="text-on-primary/70 hover:text-on-primary transition-colors">Privacy</a>
+        <a href="/terms" class="text-on-primary/70 hover:text-on-primary transition-colors">Terms</a>
+      </nav>
+    </div>
+  </footer>
+
+</main>
+<script>
+(function () {
+  var form = document.getElementById("field-guide-form");
+  if (form) form.addEventListener("submit", function (e) { e.preventDefault(); });
+  document.querySelectorAll("details.path-dropdown").forEach(function (d) {
+    d.addEventListener("click", function (ev) {
+      if (ev.target.closest("a")) d.removeAttribute("open");
+    });
+  });
+  document.addEventListener("click", function (ev) {
+    document.querySelectorAll("details.path-dropdown").forEach(function (d) {
+      if (!d.contains(ev.target)) d.removeAttribute("open");
+    });
+  });
+})();
+</script>
+</body>
+</html>

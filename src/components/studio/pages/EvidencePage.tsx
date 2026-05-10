@@ -43,7 +43,7 @@ export function EvidencePage() {
             <div className="grid md:grid-cols-2 gap-8 mb-12">
                <div className="bg-card p-8 border border-border rounded-xl">
                   <h3 className="text-xl font-medium text-foreground mb-4">Shadow IT is expanding daily.</h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">Your staff is using AI to draft emails, summarize meetings, and generate content. If you haven't set the boundaries, the boundaries are being set by individual discretion.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Your staff is using AI to draft emails, summarize meetings, and generate content. If you haven&apos;t set the boundaries, the boundaries are being set by individual discretion.</p>
                </div>
                <div className="bg-card p-8 border border-border rounded-xl">
                   <h3 className="text-xl font-medium text-foreground mb-4">Data is vulnerable.</h3>
@@ -95,7 +95,7 @@ export function EvidencePage() {
             </div>
             
             <p className="prose max-w-[640px] text-[1.0625rem] leading-[1.75] text-muted-foreground mb-12">
-               Our conviction is that moving out of this sequence is what causes failure. Rushing to Solutions without Safety causes breaches.
+               Our conviction is that skipping or reversing stages on the Movemental Path is what causes failure. Rushing to Solutions without Safety causes breaches.
             </p>
 
             <div className="grid md:grid-cols-2 gap-px bg-border rounded-card overflow-hidden mb-12 max-w-4xl">
@@ -176,7 +176,7 @@ export function EvidencePage() {
               lede="We are not pretending this is solved."
             />
             <p className="prose max-w-[640px] text-[1.0625rem] leading-[1.75] text-muted-foreground mb-8">
-               If a consultancy promises you they have the final answer to how AI will shape religion and philanthropy, they are lying. Movemental's highest evidence of integrity is our commitment to building in public, alongside the organizations we serve.
+               If a consultancy promises you they have the final answer to how AI will shape religion and philanthropy, they are lying. Movemental&apos;s highest evidence of integrity is our commitment to building in public, alongside the organizations we serve.
             </p>
             <p className="text-xl md:text-2xl font-serif-display italic text-foreground max-w-3xl">
                Authority comes from sustained, honest engagement — not from appearing certain.

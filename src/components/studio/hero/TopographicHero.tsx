@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { FlaskConical, GraduationCap, Rocket, ShieldCheck } from "lucide-react";
 
-import { Cite } from "@/components/citations";
 import { Container } from "@/components/studio/Container";
 import { Reveal } from "@/components/studio/Reveal";
 
@@ -12,8 +11,8 @@ const STAGES = [
   {
     icon: ShieldCheck,
     label: "Stage 1",
-    title: "Safety first",
-    body: "The governance that answers the questions your people are asking.",
+    title: "Safety",
+    body: "Decide in writing what AI may and may not do in your organization, before anyone else decides for you.",
   },
   {
     icon: FlaskConical,
@@ -31,7 +30,7 @@ const STAGES = [
     icon: Rocket,
     label: "Stage 4",
     title: "Solutions",
-    body: "AI-integrated technological deployment built on the secure foundation.",
+    body: "AI integrated into how the organization actually runs, owned by formed people, governed by working policy.",
   },
 ] as const;
 
@@ -86,10 +85,10 @@ export function TopographicHero() {
             </h1>
 
             <p className="mt-5 max-w-2xl text-[18px] leading-[1.55] text-foreground md:mt-6 md:text-[20px] md:leading-[1.5]">
-              We built a path to walk you through the adaptive leadership
-              challenges posed by AI — four stages, ordered so a strong human
-              foundation precedes any technological implementation
-              <Cite claimId="mckinsey-workflow-redesign" />.
+              AI is being used by people inside your organization right now.
+              Most leaders have not yet decided what is safe, valuable, or
+              ethical for their work. The four-stage path below is how you
+              decide, in writing, before you build anything else.
             </p>
           </div>
 
@@ -119,7 +118,7 @@ export function TopographicHero() {
               href="/pathway"
               className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3.5 text-base font-medium text-primary-foreground transition-transform duration-200 ease-out motion-safe:hover:-translate-y-0.5"
             >
-              See the Path
+              See the Movemental Path
             </Link>
             <Link
               href="/contact"

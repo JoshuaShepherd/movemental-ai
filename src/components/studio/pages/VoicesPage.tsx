@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from 'react';
+import { HumanHighlightEx3 } from '@/components/primitives/human-highlight';
 import { Reveal } from '@/components/studio/Reveal';
 import { Container } from '@/components/studio/Container';
 import { SectionHead } from '@/components/studio/SectionHead';
@@ -32,7 +33,8 @@ export function VoicesPage() {
               Leaders helping <em dangerouslySetInnerHTML={{__html: 'shape this moment.'}} />
             </h1>
             <p className="hero-subhead lede lede--regular text-inverse-foreground/80 mb-10 max-w-3xl">
-              Movemental is a growing conversation among leaders navigating AI, formation, and mission in real time.
+              Movemental is a growing conversation among leaders navigating{" "}
+              <HumanHighlightEx3 inverse>AI, formation, and mission in real time.</HumanHighlightEx3>
             </p>
             <div className="hero-actions flex flex-wrap gap-4">
               <Link href="/contact" className="btn-pill btn-pill--primary">Start a Conversation</Link>
@@ -128,7 +130,7 @@ export function VoicesPage() {
                </div>
                <div>
                   <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">Movements are carried by people</h3>
-                  <p className="text-[0.98rem] leading-relaxed text-muted-foreground">We are ultimately trying to change how an entire sector adopts technology. That only happens if the sector's own leaders own the conversation.</p>
+                  <p className="text-[0.98rem] leading-relaxed text-muted-foreground">We are ultimately trying to change how an entire sector adopts technology. That only happens if the sector&apos;s own leaders own the conversation.</p>
                </div>
             </div>
           </Reveal>

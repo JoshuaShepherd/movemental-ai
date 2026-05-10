@@ -4,7 +4,7 @@ import { FieldGuidePage as StudioFieldGuidePage } from "@/components/studio/page
 
 export const metadata: Metadata = {
   title: "Field guide",
-  description: "The AI Stewardship Sequence in plain language.",
+  description: "The Movemental Path in plain language.",
 };
 
 export default function Page() {

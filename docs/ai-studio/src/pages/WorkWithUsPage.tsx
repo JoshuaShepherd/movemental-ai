@@ -221,7 +221,7 @@ export function WorkWithUsPage() {
                </div>
                <div className="border-t border-border pt-6">
                   <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">Protected trust</h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">Maintain the relational equity you've built with your community by using technology transparently.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Maintain the relational equity you&apos;ve built with your community by using technology transparently.</p>
                </div>
                <div className="border-t border-border pt-6">
                   <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">Calibrated capability</h3>
@@ -251,19 +251,19 @@ export function WorkWithUsPage() {
             
             <div className="grid sm:grid-cols-2 gap-px bg-border rounded-card overflow-hidden">
                <div className="bg-card p-8 md:p-12">
-                  <h3 className="text-lg font-medium text-foreground mb-3 flex items-center gap-2"><span className="text-destructive font-bold">✕</span> We don't sell software</h3>
+                  <h3 className="text-lg font-medium text-foreground mb-3 flex items-center gap-2"><span className="text-destructive font-bold">✕</span> We don&apos;t sell software</h3>
                   <p className="text-[0.98rem] text-muted-foreground leading-relaxed">Our advice is financially decoupled from the tools you choose to adopt.</p>
                </div>
                <div className="bg-card p-8 md:p-12">
-                  <h3 className="text-lg font-medium text-foreground mb-3 flex items-center gap-2"><span className="text-destructive font-bold">✕</span> We don't push speed</h3>
+                  <h3 className="text-lg font-medium text-foreground mb-3 flex items-center gap-2"><span className="text-destructive font-bold">✕</span> We don&apos;t push speed</h3>
                   <p className="text-[0.98rem] text-muted-foreground leading-relaxed">We will actively advise you to slow down if your adoption outpaces your formation.</p>
                </div>
                <div className="bg-card p-8 md:p-12">
-                  <h3 className="text-lg font-medium text-foreground mb-3 flex items-center gap-2"><span className="text-destructive font-bold">✕</span> We don't build generic solutions</h3>
+                  <h3 className="text-lg font-medium text-foreground mb-3 flex items-center gap-2"><span className="text-destructive font-bold">✕</span> We don&apos;t build generic solutions</h3>
                   <p className="text-[0.98rem] text-muted-foreground leading-relaxed">We build architectures specific to the unique constraints of mission-driven spaces.</p>
                </div>
                <div className="bg-card p-8 md:p-12">
-                  <h3 className="text-lg font-medium text-foreground mb-3 flex items-center gap-2"><span className="text-destructive font-bold">✕</span> We don't replace discernment</h3>
+                  <h3 className="text-lg font-medium text-foreground mb-3 flex items-center gap-2"><span className="text-destructive font-bold">✕</span> We don&apos;t replace discernment</h3>
                   <p className="text-[0.98rem] text-muted-foreground leading-relaxed">AI cannot replace human pastoral care, leadership instinct, or missiology.</p>
                </div>
             </div>
@@ -278,7 +278,7 @@ export function WorkWithUsPage() {
               Ready to take the <em dangerouslySetInnerHTML={{__html: 'first responsible step?'}} />
             </h2>
             <p className="lede text-inverse-foreground/80 mx-auto mb-10">
-              Start the conversation. Let's find your baseline.
+              Start the conversation. Let&apos;s find your baseline.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link to="/contact" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Talk With Us</Link>

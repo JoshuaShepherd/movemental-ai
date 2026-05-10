@@ -116,10 +116,10 @@ const GROUPS: readonly FaqGroup[] = [
     items: [
       {
         slug: "what-is-the-path",
-        q: "What is the Movemental AI Path?",
+        q: "What is the Movemental Path?",
         a: (
           <>
-            A four-stage sequence for adopting AI without losing trust,
+            A four-stage path for adopting AI without losing trust,
             formation, or mission: <strong>Safety</strong> (boundaries first),{" "}
             <strong>Sandbox</strong> (guided exploration next),{" "}
             <strong>Skills</strong> (capability before systems),{" "}

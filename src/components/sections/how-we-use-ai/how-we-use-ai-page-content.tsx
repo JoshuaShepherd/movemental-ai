@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Container, Reveal, Section } from "@/components/primitives";
+import { Container, HumanHighlightEx3, Reveal, Section } from "@/components/primitives";
 import { cn } from "@/lib/utils";
 
 import { HowWeUseAiToolkitTrigger } from "./how-we-use-ai-toolkit-trigger";
@@ -181,7 +181,8 @@ export function HowWeUseAiPageContent() {
             <p className="max-w-160 text-lg leading-relaxed text-inverse-muted md:text-xl">
               This page exists because the people we work with deserve to know what we believe
               about AI and how we use it. The rest of our website describes what we do. This page
-              describes the values and commitments behind that work.
+              describes{" "}
+              <HumanHighlightEx3 inverse>the values and commitments behind that work.</HumanHighlightEx3>
             </p>
           </Reveal>
         </Container>

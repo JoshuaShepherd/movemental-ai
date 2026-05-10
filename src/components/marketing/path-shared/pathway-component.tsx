@@ -5,14 +5,14 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 /**
- * Reusable display of the four stages of The Movemental AI Path. Used on the
+ * Reusable display of the four stages of the Movemental Path. Used on the
  * homepage, segment pages (churches/nonprofits/institutions), and the Pathway
- * overview page. Stage numbering is two-digit; full names per stop:
+ * overview page. Stage numbering is two-digit; public stage names:
  *
- *   01 Safety       (full: Safety Documentation)
- *   02 Sandbox      (full: Sandbox Discovery)
- *   03 Skills       (full: Skills Development)
- *   04 Solutions    (full: Solutions Deployment)
+ *   01 Safety
+ *   02 Sandbox
+ *   03 Skills
+ *   04 Solutions
  */
 
 export type PathwayStageShort = "Safety" | "Sandbox" | "Skills" | "Solutions";
@@ -82,7 +82,7 @@ export function PathwayComponent({
       ) : null}
 
       <ol
-        aria-label="The Movemental AI Path"
+        aria-label="The Movemental Path"
         className="grid grid-cols-1 gap-x-0 gap-y-4 md:grid-cols-4 md:gap-x-0"
       >
         {stops.map((stop, idx) => {

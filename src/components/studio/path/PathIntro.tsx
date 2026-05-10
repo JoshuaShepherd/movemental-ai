@@ -10,7 +10,7 @@ export function PathIntro() {
     <section className="band-default" aria-labelledby="path-intro-title">
       <Container>
         <Reveal>
-          <span className="section-eyebrow">The Movemental AI Path</span>
+          <span className="section-eyebrow">The Movemental Path</span>
           <h1 id="path-intro-title" className="display mb-8 max-w-3xl">
             One commitment <em>per stage</em> — before you move on.
           </h1>

@@ -212,7 +212,7 @@ export function IntegrityDiagnosticForm() {
 
                     <div className="pt-8 border-t border-border-soft">
                       <label htmlFor={`followup-${dimension.id}`} className="block text-lg font-medium mb-2 text-foreground">Show your work <span className="text-muted-foreground font-normal text-base">(optional)</span></label>
-                      <p className="text-sm text-muted-foreground mb-4 max-w-2xl">One or two sentences. What is true on the ground that the multiple choice didn't quite capture? The read-back is built from these notes. Plain language helps more than the right word.</p>
+                      <p className="text-sm text-muted-foreground mb-4 max-w-2xl">One or two sentences. What is true on the ground that the multiple choice didn&apos;t quite capture? The read-back is built from these notes. Plain language helps more than the right word.</p>
                       <textarea 
                         id={`followup-${dimension.id}`}
                         maxLength={2000}

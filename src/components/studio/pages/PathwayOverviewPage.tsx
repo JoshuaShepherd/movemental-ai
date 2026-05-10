@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from 'react';
+import { HumanHighlightEx3 } from '@/components/primitives/human-highlight';
 import { Container } from '@/components/studio/Container';
 import { Reveal } from '@/components/studio/Reveal';
 import Link from "next/link";
@@ -56,7 +57,7 @@ const commonDeliverables = {
 const overviewPathwayStops = [
   {
     num: "01",
-    name: "Safety Documentation",
+    name: "Safety",
     duration: "2 weeks",
     price: "$5,000",
     outcome: "Your AI policy, drafted and board-ready.",
@@ -65,7 +66,7 @@ const overviewPathwayStops = [
   },
   {
     num: "02",
-    name: "Sandbox Discovery",
+    name: "Sandbox",
     duration: "4 weeks",
     price: "$15,000",
     outcome: "Use cases proven, risks documented.",
@@ -74,7 +75,7 @@ const overviewPathwayStops = [
   },
   {
     num: "03",
-    name: "Skills Development",
+    name: "Skills",
     duration: "8 weeks",
     price: "from $4,800/yr",
     outcome: "Your team trained to lead this work.",
@@ -83,7 +84,7 @@ const overviewPathwayStops = [
   },
   {
     num: "04",
-    name: "Solutions Deployment",
+    name: "Solutions",
     duration: "8-12 weeks",
     price: "from $30,000",
     outcome: "Your intelligence integrated, activated, multiplied.",
@@ -94,7 +95,7 @@ const overviewPathwayStops = [
 
 export function PathwayOverviewPage() {
   useEffect(() => {
-    document.title = "The Pathway | Movemental";
+    document.title = "Movemental Path | Movemental";
   }, []);
 
   return (
@@ -102,21 +103,20 @@ export function PathwayOverviewPage() {
       <Container>
         <Reveal>
           <div className="max-w-4xl mb-16">
-            <p className="mb-5 text-[10px] font-semibold uppercase tracking-eyebrow text-muted-foreground">
-              The AI Stewardship Sequence
-            </p>
             <h1 className="font-serif-display text-5xl md:text-6xl lg:text-7xl italic mb-6">
-              The Pathway
+              Movemental Path
             </h1>
             <p className="lede text-xl md:text-2xl text-muted-foreground leading-relaxed">
-              We rebuild the human layer first — governance, capability, and shared language — then build the technology that compounds rather than corrodes.
+              We rebuild the human layer first —{" "}
+              <HumanHighlightEx3>governance, capability, and shared language</HumanHighlightEx3> — then build the technology
+              that compounds rather than corrodes.
             </p>
             <div className="flex flex-col gap-4 pt-10 sm:flex-row">
               <Link href="/contact" className="btn-pill btn-pill--primary px-8 py-4 text-base">
-                Discuss the full pathway
+                Discuss the full Movemental Path
               </Link>
               <Link href="/pathway/safety" className="btn-pill btn-pill--ghost px-8 py-4 text-base">
-                Start with Safety Documentation
+                Start with Safety
               </Link>
             </div>
           </div>
@@ -131,13 +131,13 @@ export function PathwayOverviewPage() {
               <h2 className="text-sm font-semibold uppercase tracking-eyebrow text-primary mb-8 border-b border-border pb-4">Why this order</h2>
               <div className="space-y-6 text-[1.125rem] md:text-xl text-foreground/90 leading-relaxed">
                 <p>
-                  When AI lands on top of a fragmented organization — scattered knowledge, unclear decision rights, mixed signals about what's safe to share, and no shared vocabulary for risk — it doesn't help. It accelerates the fragmentation. The organization moves faster, but in more directions. The leaders who said yes to AI start to feel like they invited a problem they don't know how to name.
+                  When AI lands on top of a fragmented organization — scattered knowledge, unclear decision rights, mixed signals about what&apos;s safe to share, and no shared vocabulary for risk — it doesn&apos;t help. It accelerates the fragmentation. The organization moves faster, but in more directions. The leaders who said yes to AI start to feel like they invited a problem they don&apos;t know how to name.
                 </p>
                 <p>
-                  The way out is not slower AI. It's earlier human work. Safety Documentation, Sandbox Discovery, and Skills Development are not pre-AI hesitation; they're the work that makes the AI investment compound rather than corrode. Skip them and you'll spend the next two years undoing damage. Do them and Solutions Deployment is the easiest decision your board makes that year.
+                  The way out is not slower AI. It&apos;s earlier human work. Safety, Sandbox, and Skills are not pre-AI hesitation; they&apos;re the work that makes the AI investment compound rather than corrode. Skip them and you&apos;ll spend the next two years undoing damage. Do them and Solutions is the easiest decision your board makes that year.
                 </p>
                 <p>
-                  We tell you this up front because most vendors won't. Their incentive is to sell you the chatbot today. Ours is to build something that lasts long enough to be worth what you'll spend on it.
+                  We tell you this up front because most vendors won&apos;t. Their incentive is to sell you the chatbot today. Ours is to build something that lasts long enough to be worth what you&apos;ll spend on it.
                 </p>
               </div>
             </div>
@@ -149,7 +149,7 @@ export function PathwayOverviewPage() {
         <Container>
           <Reveal>
             <div className="max-w-5xl mx-auto">
-              <h2 className="text-3xl font-serif-display italic mb-10 text-center">What you'd pay elsewhere</h2>
+              <h2 className="text-3xl font-serif-display italic mb-10 text-center">What you&apos;d pay elsewhere</h2>
               <div className="grid md:grid-cols-3 gap-8">
                 <div className="bg-card border border-border p-8 rounded-2xl col-span-2">
                   <table className="w-full text-left border-collapse">
@@ -187,7 +187,7 @@ export function PathwayOverviewPage() {
                         <td className="py-4 text-muted-foreground hidden sm:table-cell">$100K+</td>
                       </tr>
                       <tr className="bg-primary/5">
-                        <td className="py-4 font-semibold text-foreground px-2">Full pathway</td>
+                        <td className="py-4 font-semibold text-foreground px-2">Full Movemental Path</td>
                         <td className="py-4 font-semibold text-primary px-2">$65,000</td>
                         <td className="py-4 font-semibold text-muted-foreground hidden sm:table-cell px-2">$400K+</td>
                         <td className="py-4 font-semibold text-muted-foreground hidden sm:table-cell px-2">$200K+</td>
@@ -195,7 +195,7 @@ export function PathwayOverviewPage() {
                     </tbody>
                   </table>
                   <p className="mt-8 text-sm text-muted-foreground italic">
-                    We are not cheaper because we are smaller. We are cheaper because the work is built agentically and the pathway is integrated. Each engagement compounds with the next instead of starting from zero.
+                    We are not cheaper because we are smaller. We are cheaper because the work is built agentically and the path is integrated. Each engagement compounds with the next instead of starting from zero.
                   </p>
                 </div>
                 
@@ -205,15 +205,15 @@ export function PathwayOverviewPage() {
                   </div>
                   <h3 className="font-semibold text-xl text-foreground mb-4">Bundled Commitment Offer</h3>
                   <p className="text-muted-foreground leading-relaxed text-[1.0625rem] mb-6">
-                    Commit to the full Pathway upfront and engage all four stages under a single agreement.
+                    Commit to the full Movemental Path upfront and engage all four stages under a single agreement.
                   </p>
                   <div className="font-semibold text-xl text-primary mb-2">
                     <span className="font-serif-display italic text-4xl">$58,500</span>
                   </div>
                   <p className="text-foreground/80 font-medium mb-6">— a 10% reduction on the standalone total.</p>
-                  <p className="text-sm text-foreground/70 mb-8">Most committed Pathway engagements complete in 6 to 9 months.</p>
+                  <p className="text-sm text-foreground/70 mb-8">Most committed Movemental Path engagements complete in 6 to 9 months.</p>
                   
-                  <Link href="/contact" className="btn-pill btn-pill--primary text-center">Discuss a full Pathway engagement</Link>
+                  <Link href="/contact" className="btn-pill btn-pill--primary text-center">Discuss a full Movemental Path engagement</Link>
                 </div>
               </div>
             </div>
@@ -227,7 +227,7 @@ export function PathwayOverviewPage() {
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="font-serif-display text-3xl italic text-foreground mb-4">Network Engagements</h2>
               <p className="text-lg text-muted-foreground mb-8">
-                For denominations, training networks, and multi-site organizations, Solutions Deployment extends across entities — shared governance, linked platforms, federated intelligence. These engagements are quoted per conversation. Most start at $60,000 and scale with scope.
+                For denominations, training networks, and multi-site organizations, Solutions extend across entities — shared governance, linked platforms, federated intelligence. These engagements are quoted per conversation. Most start at $60,000 and scale with scope.
               </p>
               <Link href="/contact" className="btn-pill btn-pill--ghost text-sm">Talk about a Network Engagement</Link>
             </div>
@@ -238,13 +238,13 @@ export function PathwayOverviewPage() {
       <Container className="py-20 md:py-28 text-center max-w-2xl mx-auto">
         <Reveal>
           <div className="max-w-2xl mx-auto">
-            <h2 className="font-serif-display text-4xl italic mb-6">Talk to us about the full Pathway</h2>
+            <h2 className="font-serif-display text-4xl italic mb-6">Talk to us about the full Movemental Path</h2>
             <p className="text-muted-foreground text-lg mb-10">
-              Whether you are ready to commit to the full sequence or just want to start with a conversation about Safety Documentation, the next step is a quick discovery call.
+              Whether you are ready to commit to the full Movemental Path or just want to start with a conversation about Safety, the next step is a quick discovery call.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link href="/pathway/safety" className="btn-pill btn-pill--primary">Start with Safety Documentation</Link>
-              <Link href="/contact" className="btn-pill btn-pill--ghost">Talk to us about the full Pathway</Link>
+              <Link href="/pathway/safety" className="btn-pill btn-pill--primary">Start with Safety</Link>
+              <Link href="/contact" className="btn-pill btn-pill--ghost">Talk to us about the Movemental Path</Link>
             </div>
           </div>
         </Reveal>

@@ -129,7 +129,7 @@ export function PathStickySection() {
       ref={sectionRef}
     >
       <h2 id="path-section-title" className="sr-only">
-        The four stages of the Movemental AI Path
+        The four stages of the Movemental Path
       </h2>
       <Container>
         <div className="grid grid-cols-1 min-[960px]:grid-cols-[33%_1fr] gap-10 min-[960px]:gap-12 lg:gap-16">

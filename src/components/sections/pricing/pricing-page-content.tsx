@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, BarChart3, BookOpen, Check, Circle, MessageSquare } from "lucide-react";
 
 import { NewsletterForm } from "@/components/forms/newsletter-form";
-import { Container, Reveal, Section } from "@/components/primitives";
+import { Container, HumanHighlightEx3, Reveal, Section } from "@/components/primitives";
 import { cn } from "@/lib/utils";
 
 type StageCard = {
@@ -20,7 +20,7 @@ type StageCard = {
 const STAGES: readonly StageCard[] = [
   {
     stageEyebrow: "Stage 01",
-    title: "Safety Documentation",
+    title: "Safety",
     price: "$1,000",
     intro: "Two weeks of facilitated work. Free toolkit available.",
     deliverables: [
@@ -38,7 +38,7 @@ const STAGES: readonly StageCard[] = [
   },
   {
     stageEyebrow: "Stage 02",
-    title: "Sandbox Discovery",
+    title: "Sandbox",
     price: "$15,000",
     intro: "Four weeks of disciplined exploration. Real recipes against real work.",
     deliverables: [
@@ -53,7 +53,7 @@ const STAGES: readonly StageCard[] = [
   },
   {
     stageEyebrow: "Stage 03",
-    title: "Skills Development",
+    title: "Skills",
     price: "$15,000",
     intro: "Cohort facilitation. $5,000/year self-paced LMS license also available.",
     deliverables: [
@@ -68,7 +68,7 @@ const STAGES: readonly StageCard[] = [
   },
   {
     stageEyebrow: "Stage 04",
-    title: "Solutions Deployment",
+    title: "Solutions",
     price: (
       <>
         <span className="font-sans text-xl not-italic font-medium text-muted-foreground">from </span>
@@ -206,8 +206,11 @@ export function PricingPageContent() {
               <span className="italic">to walk the path.</span>
             </h1>
             <p className="mt-8 max-w-2xl text-base leading-relaxed text-inverse-muted md:text-lg">
-              Five prices for the four-stage path. Most organizations begin with Safety at $1,000 and decide what comes
-              next from there. Larger institutional engagements are scoped per conversation.
+              Five prices for the four-stage path.{" "}
+              <HumanHighlightEx3 inverse>
+                Most organizations begin with Safety at $1,000 and decide what comes next from there.
+              </HumanHighlightEx3>{" "}
+              Larger institutional engagements are scoped per conversation.
             </p>
           </Reveal>
         </Container>

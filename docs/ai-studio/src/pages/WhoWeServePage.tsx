@@ -58,8 +58,8 @@ export function WhoWeServePage() {
                </div>
                <div className="bg-card p-8 border border-border shadow-sm rounded-xl">
                   <span className="text-xs font-semibold uppercase tracking-widest text-ink-soft mb-4 block">Shared 03</span>
-                  <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">The "Shadow IT" Reality</h3>
-                  <p className="text-[0.98rem] text-muted-foreground leading-relaxed">Your staff is already using consumer LLMs to draft emails and write reports. If you haven't set the boundaries, they are currently guessing.</p>
+                  <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">The &quot;Shadow IT&quot; Reality</h3>
+                  <p className="text-[0.98rem] text-muted-foreground leading-relaxed">Your staff is already using consumer LLMs to draft emails and write reports. If you haven&apos;t set the boundaries, they are currently guessing.</p>
                </div>
                <div className="bg-card p-8 border border-border shadow-sm rounded-xl">
                   <span className="text-xs font-semibold uppercase tracking-widest text-ink-soft mb-4 block">Shared 04</span>

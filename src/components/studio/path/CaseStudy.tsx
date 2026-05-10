@@ -21,7 +21,7 @@ export function CaseStudy({ audience }: { audience: 'churches' | 'nonprofits' | 
           <div className="grid lg:grid-cols-[1fr_300px] gap-12 lg:gap-24 mb-16">
              <div className="prose max-w-none">
                  <p className="font-serif-display italic text-3xl md:text-4xl text-primary leading-snug border-l-4 border-primary pl-6 mb-12 py-2">
-                    "{data.PullQuote}"
+                    &quot;{data.PullQuote}&quot;
                  </p>
                  
                  <h3 className="text-2xl font-semibold mb-6">Why this worked</h3>

@@ -20,6 +20,8 @@
     "reader:sync": "node docs/reader/sync-manifest.mjs",
     "reader:check": "node docs/reader/sync-manifest.mjs --check",
     "reader:serve": "python3 -m http.server 8765 -d docs",
+    "docs:sync-movement-voices-html": "tsx scripts/sync-movement-voices-html-data.ts && python3 scripts/generate-movement-voices-html-app-js.py",
+    "docs:generate-scenius-network-v3": "python3 scripts/generate-scenius-network-v3-html.py",
     "env:local-from-shared": "node scripts/merge-env-local-from-shared.mjs",
     "vercel:env:sync": "node scripts/sync-vercel-env-from-shared.mjs",
     "vercel:link": "vercel link",

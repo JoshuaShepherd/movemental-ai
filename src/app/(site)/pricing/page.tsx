@@ -5,7 +5,7 @@ import { canonicalPageUrl } from "@/lib/site-url";
 
 const title = "Pricing";
 const description =
-  "Published prices for Stage 01–04 of the Movemental AI Path plus the Path Bundle. Network and institutional engagements scoped per conversation.";
+  "Published prices for Stage 01–04 of the Movemental Path plus the Path Bundle. Network and institutional engagements scoped per conversation.";
 const ogTitle = "Pricing — Movemental";
 
 export const metadata: Metadata = {

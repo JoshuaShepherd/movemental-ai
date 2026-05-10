@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-import { Container, Reveal, Section } from "@/components/primitives";
+import { Container, HumanHighlightEx3, Reveal, Section } from "@/components/primitives";
 import { COMMITTED_VOICES, VOICES_HUB_PATH } from "@/lib/committed-voices";
 import { cn } from "@/lib/utils";
 
@@ -10,8 +10,8 @@ import { AboutToolkitTrigger } from "./about-toolkit-trigger";
 /**
  * /about — A company built by movement leaders, for movement leaders.
  *
- * Migration source: `docs/build/stitch_movemental_system_builder/about_page_movemental/code.html`
- * (template-fidelity rebuild approved 2026-05-09; replaces the prior AI-generated
+ * Originally rebuilt from archived Stitch HTML (sources removed from the repo).
+ * Template-fidelity pass approved 2026-05-09; replaces the prior AI-generated
  * "late-2025 discovery" narrative archived under
  * `_archive/about-page-pre-rewrite-2026-05-09/`).
  *
@@ -264,10 +264,7 @@ function FounderArrowLink({ href, label }: FounderLink) {
   );
 }
 
-/**
- * About — production editorial page rebuilt from the approved HTML template
- * (`docs/build/stitch_movemental_system_builder/about_page_movemental/`).
- */
+/** About — production editorial page (original Stitch HTML sources removed from repo). */
 export function AboutPageContent() {
   return (
     <div className="text-pretty">
@@ -293,7 +290,10 @@ export function AboutPageContent() {
             </h1>
             <p className="max-w-160 text-lg leading-relaxed text-inverse-muted md:text-xl">
               Movemental exists because three people who had spent decades in mission-driven work
-              together saw something coming and decided to build the answer themselves.
+              together{" "}
+              <HumanHighlightEx3 inverse>
+                saw something coming and decided to build the answer themselves.
+              </HumanHighlightEx3>
             </p>
           </Reveal>
         </Container>

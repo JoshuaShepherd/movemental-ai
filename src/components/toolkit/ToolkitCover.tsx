@@ -8,7 +8,16 @@ import { cn } from "@/lib/utils";
  * tokens — so it stays crisp at any size and theme-tracks via semantic
  * variables.
  */
-export function ToolkitCover({ className, size = "lg" }: { className?: string; size?: "sm" | "lg" }) {
+export function ToolkitCover({
+  className,
+  size = "lg",
+  /** Footer strip (e.g. Stage 01 · Vol. 01). Defaults to Stage 01. */
+  stageFoot = "Stage 01",
+}: {
+  className?: string;
+  size?: "sm" | "lg";
+  stageFoot?: string;
+}) {
   return (
     <div
       className={cn(
@@ -51,11 +60,11 @@ export function ToolkitCover({ className, size = "lg" }: { className?: string; s
       </div>
       <span
         className={cn(
-          "absolute bottom-6 text-[10px] font-medium uppercase tracking-eyebrow text-muted-foreground",
+          "absolute bottom-6 max-w-[90%] px-2 text-center text-[10px] font-medium uppercase tracking-eyebrow text-muted-foreground",
         )}
         aria-hidden
       >
-        Stage 01
+        {stageFoot}
       </span>
     </div>
   );

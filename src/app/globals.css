@@ -11,6 +11,7 @@
 /* Citation system (Ledger). Inline highlighter chips, popovers, body marker,
    and references rail. See docs/build/prompts/inline-citation-system-with-references-rail.md. */
 @import "./citations.css";
+@import "./human-highlight.css";
 
 /* Case-study layout — hero + sticky sidebar TOC + article prose. Used by
    /churches, /nonprofits, /institutions. */
@@ -81,6 +82,10 @@
   --color-status-go: #6b7e3f;
   --color-status-caution: #a07a25;
   --color-status-stop: #9c2d20;
+
+  /* Pathway editorial (Safety / Sandbox HTML migration) — burnished accent for
+     italic numerals, active stage rules, and pull-quote rails. Not for citations. */
+  --color-pathway-accent: #b8893a;
 
   /* Editorial aliases — kept for components that imported the Concept Modern
      token namespace explicitly (bg-editorial-paper, text-editorial-foreground).

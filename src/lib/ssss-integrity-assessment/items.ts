@@ -128,7 +128,7 @@ export const SSSS_INTEGRITY_ITEMS: readonly SsssIntegrityItem[] = [
     category: "honest_location",
     weight: 2,
     prompt:
-      "We know **where we are** in the sequence—and where we **skipped**—without self-deception.",
+      "We know **where we are** on the Movemental Path—and where we **skipped**—without self-deception.",
   },
   {
     id: "Q18",

@@ -106,7 +106,7 @@ export function PathFootnote({ audienceLabel }: { audienceLabel: string }) {
           <span className="font-serif italic text-inverse-foreground">
             {audienceLabel}
           </span>
-          <span>© Movemental · The Movemental AI Path</span>
+          <span>© Movemental · The Movemental Path</span>
         </div>
       </Container>
     </Section>

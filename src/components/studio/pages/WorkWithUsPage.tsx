@@ -67,7 +67,7 @@ export function WorkWithUsPage() {
             <SectionHead 
               eyebrow="How we work"
               display={<>We do not start with tools. We start with <em dangerouslySetInnerHTML={{__html: 'leadership clarity.'}} /></>}
-              lede="The AI Stewardship Sequence creates a predictable container for unpredictable technology."
+              lede="The Movemental Path creates a predictable container for unpredictable technology."
             />
             
             <div className="grid md:grid-cols-4 gap-4 mb-12">
@@ -163,7 +163,7 @@ export function WorkWithUsPage() {
                <div className="bg-card border-2 border-primary/20 p-8 rounded-card flex flex-col relative">
                   <div className="absolute top-0 right-6 -translate-y-1/2 bg-primary text-primary-foreground text-[0.65rem] font-bold uppercase tracking-eyebrow px-3 py-1 rounded-full">Most common</div>
                   <h3 className="font-serif-display text-2xl italic mb-2 text-foreground">Guided Pathway</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-6 h-12">Walk the entire Sequence with direct facilitation.</p>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-6 h-12">Walk the entire Movemental Path with direct facilitation.</p>
                   
                   <div className="mb-6 flex-grow">
                      <p className="text-xs uppercase tracking-eyebrow font-semibold text-foreground mb-3">Best for</p>
@@ -186,7 +186,7 @@ export function WorkWithUsPage() {
                   
                   <div className="mb-6 flex-grow">
                      <p className="text-xs uppercase tracking-eyebrow font-semibold text-foreground mb-3">Best for</p>
-                     <p className="text-sm text-muted-foreground mb-6">Mature organizations that have completed the sequence and need architectural help.</p>
+                     <p className="text-sm text-muted-foreground mb-6">Mature organizations that have completed the Movemental Path and need architectural help.</p>
                      
                      <p className="text-xs uppercase tracking-eyebrow font-semibold text-foreground mb-3">Includes</p>
                      <ul className="space-y-2 text-sm text-muted-foreground">
@@ -223,7 +223,7 @@ export function WorkWithUsPage() {
                </div>
                <div className="border-t border-border pt-6">
                   <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">Protected trust</h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">Maintain the relational equity you've built with your community by using technology transparently.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Maintain the relational equity you&apos;ve built with your community by using technology transparently.</p>
                </div>
                <div className="border-t border-border pt-6">
                   <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">Calibrated capability</h3>
@@ -253,19 +253,19 @@ export function WorkWithUsPage() {
             
             <div className="grid sm:grid-cols-2 gap-px bg-border rounded-card overflow-hidden">
                <div className="bg-card p-8 md:p-12">
-                  <h3 className="text-lg font-medium text-foreground mb-3 flex items-center gap-2"><span className="text-destructive font-bold">✕</span> We don't sell software</h3>
+                  <h3 className="text-lg font-medium text-foreground mb-3 flex items-center gap-2"><span className="text-destructive font-bold">✕</span> We don&apos;t sell software</h3>
                   <p className="text-[0.98rem] text-muted-foreground leading-relaxed">Our advice is financially decoupled from the tools you choose to adopt.</p>
                </div>
                <div className="bg-card p-8 md:p-12">
-                  <h3 className="text-lg font-medium text-foreground mb-3 flex items-center gap-2"><span className="text-destructive font-bold">✕</span> We don't push speed</h3>
+                  <h3 className="text-lg font-medium text-foreground mb-3 flex items-center gap-2"><span className="text-destructive font-bold">✕</span> We don&apos;t push speed</h3>
                   <p className="text-[0.98rem] text-muted-foreground leading-relaxed">We will actively advise you to slow down if your adoption outpaces your formation.</p>
                </div>
                <div className="bg-card p-8 md:p-12">
-                  <h3 className="text-lg font-medium text-foreground mb-3 flex items-center gap-2"><span className="text-destructive font-bold">✕</span> We don't build generic solutions</h3>
+                  <h3 className="text-lg font-medium text-foreground mb-3 flex items-center gap-2"><span className="text-destructive font-bold">✕</span> We don&apos;t build generic solutions</h3>
                   <p className="text-[0.98rem] text-muted-foreground leading-relaxed">We build architectures specific to the unique constraints of mission-driven spaces.</p>
                </div>
                <div className="bg-card p-8 md:p-12">
-                  <h3 className="text-lg font-medium text-foreground mb-3 flex items-center gap-2"><span className="text-destructive font-bold">✕</span> We don't replace discernment</h3>
+                  <h3 className="text-lg font-medium text-foreground mb-3 flex items-center gap-2"><span className="text-destructive font-bold">✕</span> We don&apos;t replace discernment</h3>
                   <p className="text-[0.98rem] text-muted-foreground leading-relaxed">AI cannot replace human pastoral care, leadership instinct, or missiology.</p>
                </div>
             </div>
@@ -280,7 +280,7 @@ export function WorkWithUsPage() {
               Ready to take the <em dangerouslySetInnerHTML={{__html: 'first responsible step?'}} />
             </h2>
             <p className="lede text-inverse-foreground/80 mx-auto mb-10">
-              Start the conversation. Let's find your baseline.
+              Start the conversation. Let&apos;s find your baseline.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/contact" className="btn-pill btn-pill--primary">Talk With Us</Link>

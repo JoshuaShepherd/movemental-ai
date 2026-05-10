@@ -126,7 +126,7 @@ export function VoicesPage() {
                </div>
                <div>
                   <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">Movements are carried by people</h3>
-                  <p className="text-[0.98rem] leading-relaxed text-muted-foreground">We are ultimately trying to change how an entire sector adopts technology. That only happens if the sector's own leaders own the conversation.</p>
+                  <p className="text-[0.98rem] leading-relaxed text-muted-foreground">We are ultimately trying to change how an entire sector adopts technology. That only happens if the sector&apos;s own leaders own the conversation.</p>
                </div>
             </div>
           </Reveal>

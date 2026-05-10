@@ -15,21 +15,21 @@ const SEGMENT_CARDS: readonly SegmentCard[] = [
     href: "/churches",
     title: "Churches",
     body:
-      "Guiding congregations through theological implications, staff efficiency, and ethical deployment in ministry contexts.",
+      "For executive pastors and elder teams navigating AI in pastoral work, communications, and ministry without losing what makes the church a church.",
     ctaLabel: "Find out more",
   },
   {
     href: "/nonprofits",
     title: "Nonprofits",
     body:
-      "Helping mission-driven entities scale impact, automate back-office operations, and maintain donor trust.",
+      "For executive directors and boards facing AI as a fiduciary responsibility — donor trust, beneficiary protection, regulatory exposure — not just an operational question.",
     ctaLabel: "Find out more",
   },
   {
     href: "/institutions",
     title: "Institutions",
     body:
-      "Providing networks and large agencies with systematic frameworks, governance, and enterprise-level solutions.",
+      "For seminary presidents, denominational executives, and training networks managing AI across faculty, students, and accreditation simultaneously.",
     ctaLabel: "Find out more",
   },
 ];
@@ -47,9 +47,15 @@ export function AudienceFold() {
       <div className="container audience-section__inner">
         <SectionHead
           eyebrow="Who Movemental serves"
-          display={<>Tailored for mission-driven organizations.</>}
+          display={<>Three audiences, one path.</>}
           displayId="audience-heading"
-          lede="We guide different types of organizations through the AI transition, meeting them where they are with custom training and technology."
+          lede={
+            <>
+              Churches, nonprofits, and theological institutions face different
+              stakes — pastoral, fiduciary, accreditational — but the underlying
+              decisions are the same. The path adapts to your situation.
+            </>
+          }
         />
 
         <div className="mt-12 grid gap-x-10 gap-y-12 md:mt-16 md:grid-cols-3">

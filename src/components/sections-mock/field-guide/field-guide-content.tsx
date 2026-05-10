@@ -37,7 +37,7 @@ function Hero() {
           <div className="fg-hero__body">
             <p className="eyebrow">A field guide for organizational leaders</p>
             <h1 className="display" id="hero-h1">
-              The <em>AI Stewardship Sequence</em>.
+              The <em>Movemental Path</em>.
             </h1>
             <p className="lede lede--regular">
               Safety, Sandbox, Skills, Solutions. Four stages, in order. A

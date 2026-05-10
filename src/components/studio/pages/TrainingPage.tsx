@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle, XCircle } from "lucide-react";
 import Link from "next/link";
 import { useEffect } from "react";
 
+import { HumanHighlightEx3 } from "@/components/primitives/human-highlight";
 import { Container } from "@/components/studio/Container";
 import { Reveal } from "@/components/studio/Reveal";
 
@@ -66,7 +67,10 @@ export function TrainingPage() {
             </p>
             <div className="mt-4 flex max-w-3xl flex-col gap-8">
               <p className="text-lg leading-relaxed text-muted-foreground md:text-xl">
-                In the Movemental framework, Training is synonymous with Stage 03: Skills. It is where we move from experimentation to industrial-grade proficiency. Both matter; the difference matters more — particularly for churches, nonprofits, and institutions.
+                In the Movemental framework, Training is synonymous with Stage 03: Skills. It is where we move from
+                experimentation to industrial-grade proficiency.{" "}
+                <HumanHighlightEx3>Both matter; the difference matters more</HumanHighlightEx3> — particularly for
+                churches, nonprofits, and institutions.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Link href="/pathway/skills" className="btn-pill btn-pill--primary inline-flex items-center gap-2 px-8 py-4">
@@ -164,7 +168,7 @@ export function TrainingPage() {
               <div className="grid gap-24 lg:grid-cols-2">
                 <div className="space-y-8 text-lg leading-relaxed text-muted-foreground">
                   <p>
-                    The Movemental path is built on the belief that skill without safety is a liability. We don&apos;t just teach prompts; we build workflows that respect the unique intellectual architecture of your organization.
+                    The Movemental Path is built on the belief that skill without safety is a liability. We don&apos;t just teach prompts; we build workflows that respect the unique intellectual architecture of your organization.
                   </p>
                   <Link href="/pathway/skills" className="btn-pill btn-pill--primary inline-flex items-center gap-2 px-8 py-4">
                     Read the full Stage 03: Skills page

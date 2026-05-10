@@ -42,7 +42,7 @@ export function SafetyContent() {
                     </div>
                     <details className="mt-2 group/sub [&_summary::-webkit-details-marker]:hidden">
                       <summary className="cursor-pointer text-sm font-medium text-primary hover:text-primary/80 transition-colors">
-                        An "A" grade looks like
+                        An &quot;A&quot; grade looks like
                       </summary>
                       <div className="mt-4 text-[0.95rem] text-muted-foreground bg-section p-5 rounded-lg border border-border leading-relaxed" dangerouslySetInnerHTML={{ __html: row.example }} />
                     </details>

@@ -64,7 +64,7 @@ const drawerFeaturedLinks = [
   },
   {
     label: "Field Guide",
-    description: "The AI Stewardship Sequence for organizational leaders",
+    description: "The Movemental Path for organizational leaders",
     href: SSSS_FIELD_GUIDE_PATH,
   },
   {

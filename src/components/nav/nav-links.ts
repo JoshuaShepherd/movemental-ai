@@ -25,11 +25,10 @@ import { BOOK_HUB_PATH, SSSS_FIELD_GUIDE_PATH } from "@/lib/canon-routes";
  * `docs/build/prompts/site-wide-navigation-ia-proposal.md`.
  *
  * Non-negotiables encoded here:
- *  - Book (/book), AI Stewardship Sequence field guide (SSSS_FIELD_GUIDE_PATH),
+ *  - Book (/book), Movemental Path field guide (SSSS_FIELD_GUIDE_PATH),
  *    and Assess (/assess) remain three distinct destinations with distinct
  *    labels. The `SSSS_FIELD_GUIDE_PATH` constant retains its historical name
- *    for route stability; the user-visible label is "AI Stewardship Sequence
- *    field guide."
+ *    for route stability; the user-visible label is "Movemental Path field guide."
  *  - No header targets for URLs that 301 away (see next.config.ts redirects()).
  *  - No token-gated routes (e.g. /book/moderate) in public nav.
  */
@@ -111,7 +110,7 @@ export const primaryNavGroups: NavGroup[] = [
             description: "Full manuscript — From Fragmentation to Movement",
           },
           {
-            label: "AI Stewardship Sequence field guide",
+            label: "Movemental Path field guide",
             href: SSSS_FIELD_GUIDE_PATH,
             description: "Safety, Sandbox, Skills, Solutions — in that order",
           },
@@ -407,7 +406,7 @@ export const siteNavSections: NavSection[] = [
     title: "Story",
     links: [
       { label: "The Book", href: BOOK_HUB_PATH },
-      { label: "AI Stewardship Sequence field guide", href: SSSS_FIELD_GUIDE_PATH },
+      { label: "Movemental Path field guide", href: SSSS_FIELD_GUIDE_PATH },
       { label: "The fragmentation story", href: "/fragmentation" },
       { label: "Platform", href: "/platform" },
       { label: "System", href: "/system" },

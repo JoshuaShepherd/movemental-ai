@@ -57,26 +57,26 @@ const segmentData = {
     hero: {
       h1: "Your church is being asked to take a position on AI.",
       subhead:
-        "Most churches don’t have a clean answer yet. The Movemental AI Path is a four-step sequence — Safety Documentation, Sandbox Discovery, Skills Development, Solutions Deployment — designed so AI lands on a church that’s ready for it, instead of amplifying problems that were already there.",
+        "Most churches don’t have a clean answer yet. The Movemental Path is four stages — Safety, Sandbox, Skills, Solutions — designed so AI lands on a church that’s ready for it, instead of amplifying problems that were already there.",
       nonNegotiable:
         "Step 1 is the human work. We won’t build solutions on top of a church that hasn’t done it — ours or yours.",
       cards: [
         {
           heading: "Our board is asking and we need a position.",
-          body: "Start with Step 1: Safety Documentation. A 14-document governance package drafted in two weeks, ratified in your voice.",
-          cta: "Start with Safety Documentation",
+          body: "Start with Step 1: Safety. A 14-document governance package drafted in two weeks, ratified in your voice.",
+          cta: "Start with Safety",
           href: "/pathway/safety",
         },
         {
           heading: "Our staff is already experimenting and we need a framework.",
-          body: "Start with Step 2: Sandbox Discovery. A structured environment where your team identifies what’s worth building and what isn’t.",
-          cta: "Start with Sandbox Discovery",
+          body: "Start with Step 2: Sandbox. A structured environment where your team identifies what’s worth building and what isn’t.",
+          cta: "Start with Sandbox",
           href: "/pathway/sandbox",
         },
         {
           heading: "We’re ready to rebuild our digital infrastructure.",
-          body: "Start a conversation about Step 4: Solutions Deployment. We’ll confirm your Safety Documentation is in place — ours or yours — before we build.",
-          cta: "Talk about Solutions Deployment",
+          body: "Start a conversation about Step 4: Solutions. We’ll confirm your Safety is in place — ours or yours — before we build.",
+          cta: "Talk about Solutions",
           href: "/contact?interest=solutions-deployment-churches",
         },
       ],
@@ -84,7 +84,7 @@ const segmentData = {
     stops: [
       {
         num: "01",
-        name: "Safety Documentation",
+        name: "Safety",
         duration: "2 weeks",
         price: "$5,000",
         outcome: "A charter your elder board can sign.",
@@ -93,7 +93,7 @@ const segmentData = {
       },
       {
         num: "02",
-        name: "Sandbox Discovery",
+        name: "Sandbox",
         duration: "4 weeks",
         price: "$15,000",
         outcome: "Pastoral and operational use cases proven safe.",
@@ -102,7 +102,7 @@ const segmentData = {
       },
       {
         num: "03",
-        name: "Skills Development",
+        name: "Skills",
         duration: "8 weeks",
         price: "from $4,800/yr",
         outcome: "Staff trained to lead AI work without losing the plot.",
@@ -111,7 +111,7 @@ const segmentData = {
       },
       {
         num: "04",
-        name: "Solutions Deployment",
+        name: "Solutions",
         duration: "8-12 weeks",
         price: "from $30K",
         outcome: "Sermons, formation, member care, and communications, integrated.",
@@ -122,11 +122,11 @@ const segmentData = {
     faqs: [
       {
         q: "Will this conflict with our theology around discernment, presence, and pastoral care?",
-        a: "No. The path is designed precisely so AI serves pastoral work rather than replacing it. Safety Documentation specifically codifies where AI must not go.",
+        a: "No. The path is designed precisely so AI serves pastoral work rather than replacing it. Safety specifically codifies where AI must not go.",
       },
       {
         q: "What if our staff isn't technical?",
-        a: "Most aren't. The path assumes that. Skills Development is built for non-technical staff to become competent — not engineers, leaders.",
+        a: "Most aren't. The path assumes that. Skills is built for non-technical staff to become competent — not engineers, leaders.",
       },
       {
         q: "Do we have to do all four stages?",
@@ -138,26 +138,26 @@ const segmentData = {
     hero: {
       h1: "Your nonprofit can’t afford to get AI wrong.",
       subhead:
-        "Donor data is sacred. Beneficiary data is sacred. Mission integrity is non-negotiable. The Movemental AI Path is a four-step sequence — Safety Documentation, Sandbox Discovery, Skills Development, Solutions Deployment — designed to protect what matters most while the organization adopts what matters next.",
+        "Donor data is sacred. Beneficiary data is sacred. Mission integrity is non-negotiable. The Movemental Path is four stages — Safety, Sandbox, Skills, Solutions — designed to protect what matters most while the organization adopts what matters next.",
       nonNegotiable:
         "Step 1 is the human work. We won’t build solutions on top of a nonprofit that hasn’t done it — ours or yours.",
       cards: [
         {
           heading: "Our board wants clarity before our staff goes further.",
-          body: "Start with Step 1: Safety Documentation. A governance package built around your mission, your data, and your beneficiaries — drafted in two weeks.",
-          cta: "Start with Safety Documentation",
+          body: "Start with Step 1: Safety. A governance package built around your mission, your data, and your beneficiaries — drafted in two weeks.",
+          cta: "Start with Safety",
           href: "/pathway/safety",
         },
         {
           heading: "We have ideas. We need a way to evaluate them honestly.",
-          body: "Start with Step 2: Sandbox Discovery. Structured discovery that surfaces real opportunities and names real risks — before you commit to any tool.",
-          cta: "Start with Sandbox Discovery",
+          body: "Start with Step 2: Sandbox. Structured discovery that surfaces real opportunities and names real risks — before you commit to any tool.",
+          cta: "Start with Sandbox",
           href: "/pathway/sandbox",
         },
         {
           heading: "We’re ready to integrate the work we already have.",
-          body: "Start a conversation about Step 4: Solutions Deployment. We’ll confirm your Safety Documentation is in place — ours or yours — before we build.",
-          cta: "Talk about Solutions Deployment",
+          body: "Start a conversation about Step 4: Solutions. We’ll confirm your Safety is in place — ours or yours — before we build.",
+          cta: "Talk about Solutions",
           href: "/contact?interest=solutions-deployment-nonprofits",
         },
       ],
@@ -165,7 +165,7 @@ const segmentData = {
     stops: [
       {
         num: "01",
-        name: "Safety Documentation",
+        name: "Safety",
         duration: "2 weeks",
         price: "$5,000",
         outcome: "Donor and beneficiary data, governed and protected.",
@@ -174,7 +174,7 @@ const segmentData = {
       },
       {
         num: "02",
-        name: "Sandbox Discovery",
+        name: "Sandbox",
         duration: "4 weeks",
         price: "$15,000",
         outcome: "Mission-aligned use cases, validated.",
@@ -183,7 +183,7 @@ const segmentData = {
       },
       {
         num: "03",
-        name: "Skills Development",
+        name: "Skills",
         duration: "8 weeks",
         price: "from $4,800/yr",
         outcome: "A team that can lead AI work without compromising the mission.",
@@ -192,7 +192,7 @@ const segmentData = {
       },
       {
         num: "04",
-        name: "Solutions Deployment",
+        name: "Solutions",
         duration: "8-12 weeks",
         price: "from $30K",
         outcome: "Programs, donors, communications, integrated and multiplied.",
@@ -203,7 +203,7 @@ const segmentData = {
     faqs: [
       {
         q: "How do you protect beneficiary and donor data?",
-        a: "The Sandbox is privacy-protected and publishing-prevented by design. Safety Documentation codifies the data handling standards before anything touches a model.",
+        a: "The Sandbox is privacy-protected and publishing-prevented by design. Safety codifies the data handling standards before anything touches a model.",
       },
       {
         q: "Can we afford this?",
@@ -211,7 +211,7 @@ const segmentData = {
       },
       {
         q: "What if we're already using ChatGPT informally?",
-        a: "That's exactly when Safety Documentation matters most. Informal use without a charter is the most common path to a problem.",
+        a: "That's exactly when Safety matters most. Informal use without a charter is the most common path to a problem.",
       },
     ],
   },
@@ -219,26 +219,26 @@ const segmentData = {
     hero: {
       h1: "Your institution is being asked to lead on AI — internally and externally.",
       subhead:
-        "Seminaries, training networks, and denominational bodies face the AI question twice — for their own institution, and for the leaders they’re forming. The Movemental AI Path is a four-step sequence — Safety Documentation, Sandbox Discovery, Skills Development, Solutions Deployment — designed to address both at once.",
+        "Seminaries, training networks, and denominational bodies face the AI question twice — for their own institution, and for the leaders they’re forming. The Movemental Path is four stages — Safety, Sandbox, Skills, Solutions — designed to address both at once.",
       nonNegotiable:
         "Step 1 is the human work. We won’t build solutions on top of an institution that hasn’t done it — ours or yours.",
       cards: [
         {
           heading: "We need an institutional position and a teachable framework.",
-          body: "Start with Step 1: Safety Documentation. A charter that governs your institution and serves as a teaching artifact for the leaders and organizations you serve.",
-          cta: "Start with Safety Documentation",
+          body: "Start with Step 1: Safety. A charter that governs your institution and serves as a teaching artifact for the leaders and organizations you serve.",
+          cta: "Start with Safety",
           href: "/pathway/safety",
         },
         {
           heading: "We want a Sandbox that doubles as a learning case study.",
-          body: "Start with Step 2: Sandbox Discovery. Structured discovery that produces both internal use cases and a published artifact you can extend to your network.",
-          cta: "Start with Sandbox Discovery",
+          body: "Start with Step 2: Sandbox. Structured discovery that produces both internal use cases and a published artifact you can extend to your network.",
+          cta: "Start with Sandbox",
           href: "/pathway/sandbox",
         },
         {
           heading: "We’re ready to rebuild our infrastructure and connect our network.",
-          body: "Start a conversation about Step 4: Solutions Deployment, including network deployment across member entities. We’ll confirm your Safety Documentation is in place — ours or yours — before we build.",
-          cta: "Talk about Solutions Deployment",
+          body: "Start a conversation about Step 4: Solutions, including network deployment across member entities. We’ll confirm your Safety is in place — ours or yours — before we build.",
+          cta: "Talk about Solutions",
           href: "/contact?interest=network-engagement",
         },
       ],
@@ -246,7 +246,7 @@ const segmentData = {
     stops: [
       {
         num: "01",
-        name: "Safety Documentation",
+        name: "Safety",
         duration: "2 weeks",
         price: "$5,000",
         outcome: "Institutional charter and a teachable governance framework.",
@@ -255,7 +255,7 @@ const segmentData = {
       },
       {
         num: "02",
-        name: "Sandbox Discovery",
+        name: "Sandbox",
         duration: "4 weeks",
         price: "$15,000",
         outcome: "Use cases proven, plus a living teaching artifact.",
@@ -264,7 +264,7 @@ const segmentData = {
       },
       {
         num: "03",
-        name: "Skills Development",
+        name: "Skills",
         duration: "8 weeks",
         price: "from $4,800/yr",
         outcome: "Your staff and your students learning the same wisdom.",
@@ -273,7 +273,7 @@ const segmentData = {
       },
       {
         num: "04",
-        name: "Solutions Deployment",
+        name: "Solutions",
         duration: "8-12 weeks",
         price: "from $30K",
         outcome: "Curriculum, network, and scholarship, integrated as infrastructure.",
@@ -288,11 +288,11 @@ const segmentData = {
       },
       {
         q: "Does this work for accredited programs?",
-        a: "Yes. Skills Development includes assessment, certification, and credentialing structures compatible with accredited learning environments.",
+        a: "Yes. Skills includes assessment, certification, and credentialing structures compatible with accredited learning environments.",
       },
       {
-        q: "What does Solutions Deployment look like for a multi-entity institution?",
-        a: "Multi-entity Solutions Deployment engagements are quoted custom under our Network Engagements structure, typically starting at $60,000 and scaling by scope.",
+        q: "What does Solutions look like for a multi-entity institution?",
+        a: "Multi-entity Solutions engagements are quoted custom under our Network Engagements structure, typically starting at $60,000 and scaling by scope.",
       },
     ],
   },
@@ -588,7 +588,7 @@ export function SegmentPathway({ audience }: SegmentPathwayProps) {
               <div className="border-primary/20 bg-primary/5 mt-12 max-w-4xl rounded-card border p-8">
                 <h3 className="mb-3 text-xl font-semibold text-foreground">Network Engagements</h3>
                 <p className="text-primary/90 mb-6 text-[1.0625rem] leading-relaxed">
-                  For denominations, training networks, and multi-site organizations, Solutions Deployment extends across entities —
+                  For denominations, training networks, and multi-site organizations, Solutions extends across entities —
                   shared governance, linked platforms, federated intelligence. These engagements are quoted per
                   conversation. Most start at $60,000 and scale with scope.
                 </p>

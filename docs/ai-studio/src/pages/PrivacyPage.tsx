@@ -17,7 +17,7 @@ export function PrivacyPage() {
 
           <h2 className="text-xl font-bold mt-8 mb-4">Summary</h2>
           <ul className="list-disc pl-5 mb-6">
-             <li>We collect only what is necessary to evaluate your organization's context.</li>
+             <li>We collect only what is necessary to evaluate your organization&apos;s context.</li>
              <li>We never sell your data, nor do we train AI models on your private information.</li>
              <li>You have the right to request deletion of your information at any time.</li>
           </ul>

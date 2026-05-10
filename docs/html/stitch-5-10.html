@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Movemental - The Living Manifesto</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-surface": "#0f0e0a",
+                        "on-tertiary-container": "#605b59",
+                        "primary-fixed-dim": "#dcd3c9",
+                        "inverse-on-surface": "#9f9d96",
+                        "on-error-container": "#742410",
+                        "on-primary-container": "#575149",
+                        "on-secondary-fixed": "#423f37",
+                        "on-surface-variant": "#666557",
+                        "error-dim": "#5c1202",
+                        "on-primary-fixed": "#443e37",
+                        "on-tertiary-fixed-variant": "#6a6563",
+                        "surface": "#fffbff",
+                        "secondary-dim": "#5b584f",
+                        "on-surface": "#39382c",
+                        "surface-container-low": "#fdf9ef",
+                        "error-container": "#fe8b70",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#f2eedf",
+                        "inverse-primary": "#fff5ea",
+                        "surface-variant": "#ece8d7",
+                        "secondary-container": "#e8e2d6",
+                        "secondary": "#68645b",
+                        "primary-container": "#ebe1d7",
+                        "surface-tint": "#645d55",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#bcbaa9",
+                        "tertiary-container": "#faf2ef",
+                        "tertiary": "#686362",
+                        "on-primary-fixed-variant": "#615b53",
+                        "on-secondary-fixed-variant": "#5f5b52",
+                        "surface-container": "#f7f4e7",
+                        "surface-bright": "#fffbff",
+                        "outline": "#838172",
+                        "primary": "#645d55",
+                        "background": "#fffbff",
+                        "secondary-fixed": "#e8e2d6",
+                        "surface-container-highest": "#ece8d7",
+                        "on-primary": "#fff6ee",
+                        "tertiary-fixed": "#faf2ef",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#39382c",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#ebe1d7",
+                        "tertiary-fixed-dim": "#ece4e1",
+                        "on-tertiary-fixed": "#4d4947",
+                        "surface-dim": "#e6e3cf",
+                        "tertiary-dim": "#5c5756",
+                        "primary-dim": "#58514a",
+                        "error": "#a54731",
+                        "secondary-fixed-dim": "#d9d4c8",
+                        "on-secondary-container": "#555249",
+                        
+                        "theme-cream": "#FAF8F4",
+                        "theme-ink": "#1A1A1A",
+                        "theme-muted": "#6B6660",
+                        "theme-rule": "#E8E2D6",
+                        "theme-amber": "#B8893A",
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    fontFamily: {
+                        "headline": ["Newsreader", "serif"],
+                        "display": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "instrument": ["Instrument Serif", "serif"],
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom styles to enforce the "Living Manifesto" aesthetic */
+        body {
+            background-color: theme('colors.surface');
+            color: theme('colors.on-surface');
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* The Highlighter Effect */
+        .highlight-yellow { background-color: rgba(235, 225, 215, 0.6); padding: 0 4px; }
+        .highlight-pink { background-color: rgba(250, 242, 239, 0.8); padding: 0 4px; }
+        /* Editorial Asides */
+        .editorial-aside {
+            border-left: 1px solid theme('colors.primary');
+            padding-left: 1rem;
+        }
+        /* Ledger Row */
+        .ledger-row {
+            border-bottom: 0.5px solid theme('colors.outline-variant');
+        }
+        .ledger-row:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-primary selection:text-on-primary">
+<a class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:bg-inverse-surface focus:text-on-primary p-4 z-[100]" href="#main-content">Skip to content</a>
+<!-- TopNavBar (From JSON) -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 py-6 max-w-full mx-auto bg-surface/80 backdrop-blur-xl transition-all duration-300 ease-in-out">
+<div class="flex items-center gap-12">
+<a class="font-headline text-2xl font-bold tracking-tighter text-on-surface" href="#">Movemental</a>
+<div class="hidden md:flex gap-8">
+<!-- Navigation Items -->
+<div class="relative group">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-medium" href="#pathway">The Pathway</a>
+<!-- Sublinks Dropdown (from prompt verbatim) -->
+<div class="absolute top-full left-0 mt-4 w-80 bg-surface-container border border-outline-variant/20 p-6 hidden group-hover:block shadow-sm">
+<ul class="space-y-4 font-body text-sm">
+<li class=""><a class="hover:text-primary transition-colors block" href="#"><span class="font-bold text-xs uppercase tracking-widest text-outline block mb-1">01.</span> Safety Documentation — AI use &amp; trust charters</a></li>
+<li class=""><a class="hover:text-primary transition-colors block" href="#"><span class="font-bold text-xs uppercase tracking-widest text-outline block mb-1">02.</span> Sandbox Discovery — Facilitated use case sprints</a></li>
+<li class=""><a class="hover:text-primary transition-colors block" href="#"><span class="font-bold text-xs uppercase tracking-widest text-outline block mb-1">03.</span> Skills Development — Cohorts &amp; self-paced training</a></li>
+<li class=""><a class="hover:text-primary transition-colors block" href="#"><span class="font-bold text-xs uppercase tracking-widest text-outline block mb-1">04.</span> Solutions Deployment — Custom agentic CMS/LMS builds</a></li>
+</ul>
+</div>
+</div>
+<div class="relative group">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-medium" href="#audiences">Audiences</a>
+<div class="absolute top-full left-0 mt-4 w-48 bg-surface-container border border-outline-variant/20 p-6 hidden group-hover:block shadow-sm">
+<ul class="space-y-3 font-body text-sm">
+<li class=""><a class="hover:text-primary transition-colors" href="#">For Churches</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#">For Nonprofits</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#">For Institutions</a></li>
+</ul>
+</div>
+</div>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-medium" href="#about">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-medium" href="#contact">Contact</a>
+</div>
+</div>
+<div class="hidden md:block">
+<a class="inline-block bg-primary text-on-primary px-6 py-3 font-label text-sm uppercase tracking-widest hover:bg-primary-dim transition-colors duration-200" href="#contact">Start a Conversation</a>
+</div>
+<button aria-label="Menu" class="md:hidden text-on-surface">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</nav>
+<main id="main-content">
+<!-- Hero Section (Midnight Band) -->
+<section class="bg-inverse-surface text-on-primary pt-48 pb-32 px-8 lg:px-24">
+<div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+<div class="lg:col-span-3">
+<p class="font-label text-xs uppercase tracking-widest text-inverse-on-surface">For organizational leaders</p>
+</div>
+<div class="lg:col-span-9 space-y-12">
+<h1 class="font-headline text-5xl md:text-7xl leading-tight tracking-tight">
+                        AI is already inside your organization.</h1>
+<p class="font-body text-xl md:text-2xl text-inverse-on-surface max-w-3xl leading-relaxed">
+                        We give mission-driven organizations a clear path to adopt AI safely, build real capability, and lead their people through it—without losing trust, crediblity, or identity.</p>
+<div class="flex flex-col items-start gap-4 pt-8">
+<div class="flex flex-wrap gap-6">
+<a class="inline-block bg-surface text-on-surface px-8 py-4 font-label text-sm uppercase tracking-widest hover:bg-surface-container transition-colors duration-200" href="/pathway/safety">Begin with Safety</a>
+<a class="inline-block border-b border-transparent text-on-primary py-4 font-label text-sm uppercase tracking-widest hover:border-on-primary transition-colors duration-200" href="/pathway">See the full path →</a>
+</div>
+<a class="font-body text-sm text-inverse-on-surface hover:text-on-primary transition-colors duration-200" href="/contact">Or start a conversation →</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Who Movemental Serves -->
+<section class="bg-surface py-20 px-8 lg:px-24" id="audiences">
+<div class="max-w-6xl mx-auto">
+<div class="border-t border-outline-variant/30 pt-16 grid grid-cols-1 lg:grid-cols-12 gap-12">
+<div class="lg:col-span-4">
+<h2 class="font-label text-xs uppercase tracking-widest text-outline mb-4">Who Movemental Serves</h2>
+<h3 class="font-headline text-3xl md:text-4xl mb-4">Tailored for mission-driven organizations.</h3>
+<p class="font-body text-base text-on-surface-variant leading-relaxed">
+                        We guide different types of organizations through the AI transition, meeting them where they are with custom training &amp; tech.</p>
+</div>
+<div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Column 1 -->
+<div class="border-t border-outline-variant/20 pt-6">
+<h4 class="font-headline italic text-xl mb-3 text-on-surface">Churches</h4>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed mb-4">
+                            Guiding congregations through theological implications, staff efficiency, and ethical deployment in ministry contexts.
+                        </p>
+<a class="font-label text-xs uppercase tracking-widest text-primary flex items-center gap-2 group hover:text-on-surface transition-colors" href="#">
+                            Find out more <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Column 2 -->
+<div class="border-t border-outline-variant/20 pt-6">
+<h4 class="font-headline italic text-xl mb-3 text-on-surface">Nonprofits</h4>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed mb-4">
+                            Helping mission-driven entities scale impact, automate back-office operations, and maintain donor trust.
+                        </p>
+<a class="font-label text-xs uppercase tracking-widest text-primary flex items-center gap-2 group hover:text-on-surface transition-colors" href="#">
+                            Find out more <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Column 3 -->
+<div class="border-t border-outline-variant/20 pt-6">
+<h4 class="font-headline italic text-xl mb-3 text-on-surface">Institutions</h4>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed mb-4">
+                            Providing networks and large agencies with systematic frameworks, governance, and enterprise-level solutions.
+                        </p>
+<a class="font-label text-xs uppercase tracking-widest text-primary flex items-center gap-2 group hover:text-on-surface transition-colors" href="#">
+                            Find out more <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- The Movemental AI Path (Tonal Shift) -->
+<section class="bg-theme-cream py-32 px-8 lg:px-24" id="pathway">
+<div class="max-w-6xl mx-auto"><!-- Header Row -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
+<div class="lg:col-span-3">
+<h2 class="font-label text-xs uppercase tracking-widest text-theme-muted">The Movemental AI Path</h2>
+</div>
+<div class="lg:col-span-8">
+<h3 class="font-headline text-5xl md:text-6xl text-theme-ink italic leading-tight">A clear path for leading your organization through AI.</h3>
+<p class="font-body text-lg text-theme-muted leading-relaxed mt-6">
+            Most organizations jump straight to tech, or freeze in place. Movemental's path is clear, human-first, and rooted in safety.
+        </p>
+</div>
+</div>
+<!-- Path Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-0 mb-20">
+<!-- Stage 01: Boxed Feature -->
+<div class="lg:col-span-4 border border-outline/30 p-10 flex flex-col">
+<div class="font-instrument italic text-[120px] leading-none text-theme-amber mb-8">01</div>
+<h4 class="font-headline text-4xl text-theme-ink mb-4">Safety</h4>
+<p class="font-body text-[13px] text-theme-muted mb-8 italic">$1,000 · two weeks · seven deliverables.</p>
+<p class="font-body text-lg text-theme-ink mb-12 leading-relaxed">
+            The governance that answers the questions your people are already asking.
+        </p>
+<div class="mt-auto">
+<a class="inline-block bg-theme-ink text-theme-cream px-8 py-4 font-label text-sm uppercase tracking-widest hover:bg-theme-muted transition-colors duration-200 mb-6 w-full text-center" href="/pathway/safety">Begin with Safety</a>
+<a class="font-body text-sm text-theme-ink hover:underline" href="/pathway/safety">Read more →</a>
+</div>
+</div>
+<!-- Stages 02, 03, 04: Parallel Columns -->
+<div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-3">
+<!-- Stage 02 -->
+<div class="p-10 border-b md:border-b-0 md:border-r border-theme-rule flex flex-col">
+<div class="font-instrument italic text-[64px] leading-none text-theme-ink/30 mb-8 pb-4 border-b border-theme-rule">02</div>
+<h4 class="font-headline italic text-2xl text-theme-ink mb-3">Sandbox</h4>
+<p class="font-body text-[11px] uppercase tracking-widest text-theme-muted mb-4">$15,000 · four weeks · disciplined exploration</p>
+<p class="font-body text-sm text-theme-muted leading-relaxed mb-12 hidden md:block">
+                Disciplined exploration of valuable AI use cases without the risks of publication.
+            </p>
+<div class="mt-auto">
+<a class="font-body text-sm text-theme-ink hover:underline" href="/pathway/sandbox">Read more →</a>
+</div>
+</div>
+<!-- Stage 03 -->
+<div class="p-10 border-b md:border-b-0 md:border-r border-theme-rule flex flex-col">
+<div class="font-instrument italic text-[64px] leading-none text-theme-ink/30 mb-8 pb-4 border-b border-theme-rule">03</div>
+<h4 class="font-headline italic text-2xl text-theme-ink mb-3">Skills</h4>
+<p class="font-body text-[11px] uppercase tracking-widest text-theme-muted mb-4">$15,000 · eight weeks · cohort formation</p>
+<p class="font-body text-sm text-theme-muted leading-relaxed mb-12 hidden md:block">
+                Formation that produces leaders who understand AI, not just users who operate it.
+            </p>
+<div class="mt-auto">
+<a class="font-body text-sm text-theme-ink hover:underline" href="/pathway/skills">Read more →</a>
+</div>
+</div>
+<!-- Stage 04 -->
+<div class="p-10 flex flex-col">
+<div class="font-instrument italic text-[64px] leading-none text-theme-ink/30 mb-8 pb-4 border-b border-theme-rule">04</div>
+<h4 class="font-headline italic text-2xl text-theme-ink mb-3">Solutions</h4>
+<p class="font-body text-[11px] uppercase tracking-widest text-theme-muted mb-4">From $30,000 · scoped deployment</p>
+<p class="font-body text-sm text-theme-muted leading-relaxed mb-12 hidden md:block">
+                AI-integrated technological deployment built on the secure foundation.
+            </p>
+<div class="mt-auto">
+<a class="font-body text-sm text-theme-ink hover:underline" href="/pathway/solutions">Read more →</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Doctrine -->
+<div class="text-center">
+<p class="font-instrument italic text-[22px] text-theme-ink mb-6 max-w-2xl mx-auto">Most organizations begin with Safety. The path is sequential because the work is sequential.</p>
+<a class="inline-block border-b border-theme-ink text-theme-ink pb-1 font-label text-sm uppercase tracking-widest hover:text-theme-muted hover:border-theme-muted transition-colors duration-200" href="/pathway">See the full path →</a>
+</div></div>
+</section>
+<!-- Credibility Section (Paper Base) -->
+<section class="bg-surface py-32 px-8 lg:px-24" id="about">
+<div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
+<div class="lg:col-span-5 space-y-8">
+<h2 class="font-headline text-4xl md:text-5xl leading-tight">Built with and shaped by movement leaders.</h2>
+<div class="editorial-aside">
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">
+                            Movemental is a growing conversation among leaders navigating AI, formation, and mission in real time.
+                        </p>
+</div>
+<p class="font-headline italic text-xl text-on-surface">
+                        "Credibility in an AI-saturated world is increasingly relational."
+                    </p>
+</div>
+<div class="lg:col-span-6 lg:col-start-7 space-y-16">
+<!-- Founders -->
+<div>
+<h3 class="font-label text-xs uppercase tracking-widest text-outline mb-6 border-b border-outline-variant/30 pb-2">Founders</h3>
+<ul class="space-y-4">
+<li class="flex justify-between items-baseline border-b border-outline-variant/10 pb-2">
+<span class="font-body text-base font-medium">Brad Brisco</span>
+<span class="font-body text-sm text-outline">Co-Founder</span>
+</li>
+<li class="flex justify-between items-baseline border-b border-outline-variant/10 pb-2">
+<span class="font-body text-base font-medium">Alan Hirsch</span>
+<span class="font-body text-sm text-outline">Co-Founder</span>
+</li>
+<li class="flex justify-between items-baseline border-b border-outline-variant/10 pb-2">
+<span class="font-body text-base font-medium">Joshua Shepherd</span>
+<span class="font-body text-sm text-outline">Co-Founder</span>
+</li>
+</ul>
+</div>
+<!-- Movement Voices -->
+<div>
+<h3 class="font-label text-xs uppercase tracking-widest text-outline mb-6 border-b border-outline-variant/30 pb-2">Movement Voices</h3>
+<ul class="space-y-4">
+<li class="flex justify-between items-baseline border-b border-outline-variant/10 pb-2">
+<span class="font-body text-base">Rich Robinson</span>
+<span class="font-body text-xs text-outline text-right max-w-[50%]">Catalyse Change</span>
+</li>
+<li class="flex justify-between items-baseline border-b border-outline-variant/10 pb-2">
+<span class="font-body text-base">Dave Ferguson</span>
+<span class="font-body text-xs text-outline text-right max-w-[50%]">Exponential</span>
+</li>
+<li class="flex justify-between items-baseline border-b border-outline-variant/10 pb-2">
+<span class="font-body text-base">Brian Sanders</span>
+<span class="font-body text-xs text-outline text-right max-w-[50%]">Underground Network</span>
+</li>
+<li class="flex justify-between items-baseline border-b border-outline-variant/10 pb-2">
+<span class="font-body text-base">Deb Hirsch</span>
+<span class="font-body text-xs text-outline text-right max-w-[50%]">Forge International</span>
+</li>
+<li class="flex justify-between items-baseline border-b border-outline-variant/10 pb-2">
+<span class="font-body text-base">Michael Frost</span>
+<span class="font-body text-xs text-outline text-right max-w-[50%]">Morling College</span>
+</li>
+<li class="flex justify-between items-baseline border-b border-outline-variant/10 pb-2">
+<span class="font-body text-base">Jeff Vanderstelt</span>
+<span class="font-body text-xs text-outline text-right max-w-[50%]">Soma</span>
+</li>
+<li class="flex justify-between items-baseline border-b border-outline-variant/10 pb-2">
+<span class="font-body text-base">Hugh Halter</span>
+<span class="font-body text-xs text-outline text-right max-w-[50%]">Brave Cities</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Proof Beat (Tonal Shift) -->
+<section class="bg-surface-container-high py-32 px-8 lg:px-24">
+<div class="max-w-4xl mx-auto text-center space-y-8">
+<h2 class="font-headline italic text-4xl md:text-5xl text-on-surface"><br/></h2>
+<p class="font-body text-lg text-on-surface-variant leading-relaxed max-w-2xl mx-auto"><br/></p>
+<div class="pt-8 border-t border-outline-variant/30 w-24 mx-auto"></div>
+<p class="font-label text-sm uppercase tracking-widest text-outline"><br/></p>
+</div>
+</section>
+<!-- Final CTA (Midnight Band) -->
+<section class="bg-inverse-surface text-on-primary py-40 px-8 lg:px-24" id="contact">
+<div class="max-w-5xl mx-auto text-center space-y-12">
+<h2 class="font-headline text-5xl md:text-7xl leading-tight tracking-tight">When it comes to AI, we're all beginners and no one asked for this.</h2>
+<p class="font-label text-sm uppercase tracking-widest text-inverse-on-surface space-x-4"><span class="">Lead Anyway.</span>
+<span class="text-on-primary/30">• STart With safety.</span> <span class="text-on-primary/30">•</span> Build for Movement.</p>
+<div class="pt-8">
+<a class="inline-block bg-primary text-on-primary px-10 py-5 font-label text-sm uppercase tracking-widest hover:bg-primary-dim transition-colors duration-200" href="#contact">Start a Conversation</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (From JSON) -->
+<footer class="w-full py-20 px-12 grid grid-cols-1 md:grid-cols-4 gap-12 border-t border-outline-variant/20 bg-inverse-surface text-on-primary">
+<div class="md:col-span-1">
+<a class="font-headline text-3xl italic text-on-primary block mb-6" href="#">Movemental</a>
+<p class="font-body text-sm text-on-primary/60 max-w-xs">
+                Guiding mission-driven organizations through the AI transition with safety, capability, and clarity.
+            </p>
+</div>
+<div class="md:col-span-2 grid grid-cols-2 gap-8">
+<ul class="space-y-4">
+<li class=""><a class="font-body text-label-md uppercase tracking-widest text-on-primary/60 hover:text-on-primary transition-colors duration-300" href="#">Safety</a></li>
+<li class=""><a class="font-body text-label-md uppercase tracking-widest text-on-primary/60 hover:text-on-primary transition-colors duration-300" href="#">Sandbox</a></li>
+<li class=""><a class="font-body text-label-md uppercase tracking-widest text-on-primary/60 hover:text-on-primary transition-colors duration-300" href="#">Skills</a></li>
+<li class=""><a class="font-body text-label-md uppercase tracking-widest text-on-primary/60 hover:text-on-primary transition-colors duration-300" href="#">Solutions</a></li>
+</ul>
+<ul class="space-y-4">
+<li class=""><a class="font-body text-label-md uppercase tracking-widest text-on-primary/60 hover:text-on-primary transition-colors duration-300" href="#">Privacy Policy</a></li>
+<li class=""><a class="font-body text-label-md uppercase tracking-widest text-on-primary/60 hover:text-on-primary transition-colors duration-300" href="#">Terms of Service</a></li>
+<li class=""><a class="font-body text-label-md uppercase tracking-widest text-on-primary/60 hover:text-on-primary transition-colors duration-300" href="#">Accessibility</a></li>
+</ul>
+</div>
+<div class="md:col-span-1 flex flex-col justify-end text-right">
+<!-- Used verbatim copy from prompt instead of JSON copyright as per standard overrides, though JSON said 2024 -->
+<p class="font-body text-xs text-on-primary/40">© 2026 Movemental. All rights reserved.</p>
+</div>
+</footer>
+</body></html>

@@ -1,3 +1,4 @@
+import { HumanHighlightEx3 } from "@/components/primitives/human-highlight";
 import { BtnPill } from "@/components/sections-mock/primitives";
 
 export function FinalCta() {
@@ -16,11 +17,15 @@ export function FinalCta() {
           <span aria-hidden className="text-inverse-foreground/30">
             •
           </span>
-          <span>Start with safety.</span>
+          <span>
+            <HumanHighlightEx3 inverse>Start with Safety.</HumanHighlightEx3>
+          </span>
           <span aria-hidden className="text-inverse-foreground/30">
             •
           </span>
-          <span>Build for movement.</span>
+          <span className="text-inverse-foreground">
+            The path takes care of the order.
+          </span>
         </p>
         <div className="hero-actions final-cta__actions mt-12 justify-center">
           <BtnPill href="/contact" variant="primary">

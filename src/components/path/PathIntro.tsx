@@ -5,7 +5,7 @@ import { StageMap } from "./StageMap";
 /**
  * PathIntro — page lede + 4-up StageMap.
  *
- * Renders the eyebrow ("The Movemental AI Path"), the H1, the lede paragraph,
+ * Renders the eyebrow ("The Movemental Path"), the H1, the lede paragraph,
  * and the four-stage `StageMap` overview card.
  */
 export function PathIntro() {
@@ -14,7 +14,7 @@ export function PathIntro() {
       <Container>
         <Reveal>
           <Eyebrow withDot className="mb-5">
-            The Movemental AI Path
+            The Movemental Path
           </Eyebrow>
         </Reveal>
         <Reveal>

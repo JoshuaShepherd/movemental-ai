@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Scenius — v3 (reference v2 static remake)</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="context-panel">
+        <h1>The Scenius</h1>
+        <p class="blurb">
+          This is the Movemental credibility graph — a living map of how movement leaders reference,
+          reinforce, and amplify one another&apos;s work.
+        </p>
+      </div>
+
+      <div class="controls-panel">
+        <div class="controls-head">
+          <span class="controls-label">Controls</span>
+          <button type="button" id="toggle-labels" class="link-btn">Hide Labels</button>
+        </div>
+        <div id="legend-topics"></div>
+        <div class="legend-extended">
+          <span class="dot-extended"></span>
+          <span class="legend-muted">Extended Network</span>
+        </div>
+      </div>
+
+      <div id="hover-panel" class="hover-panel" aria-hidden="true">
+        <h2 id="hp-name"></h2>
+        <p id="hp-role" class="hp-role"></p>
+        <div id="hp-topics"></div>
+        <p class="hp-hint">Click to view full profile</p>
+      </div>
+
+      <div id="graph-host" class="graph-host">
+        <svg id="viz"></svg>
+      </div>
+    </div>
+
+    <p class="foot-note">
+      Static remake of <code>docs/reference/scenius-network-visualization/v2-movemental-latest/scenius-graph.tsx</code>.
+      Serve from repo root: <code>python3 -m http.server 8080</code> →
+      <code>/docs/html/scenius-network-v3/</code>
+    </p>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+    <script src="./scenius-graph-data-embedded.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

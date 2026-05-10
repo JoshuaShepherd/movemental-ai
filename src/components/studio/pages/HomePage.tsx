@@ -11,10 +11,10 @@ import { VOICES } from '@/data/home-data';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const homePathwayStops = [
-  { num: '01', name: 'Safety Documentation', duration: '2 weeks', price: '$5,000', outcome: 'Your AI policy, drafted and board-ready.', href: '/pathway/safety' },
-  { num: '02', name: 'Sandbox Discovery', duration: '4 weeks', price: '$15,000', outcome: 'Use cases proven, risks documented.', href: '/pathway/sandbox' },
-  { num: '03', name: 'Skills Development', duration: '8 weeks', price: 'from $4,800/yr', outcome: 'Your team trained to lead this work.', href: '/pathway/skills' },
-  { num: '04', name: 'Solutions Deployment', duration: '8–12 weeks', price: 'from $30,000', outcome: 'Your intelligence integrated, activated, multiplied.', href: '/technology' }
+  { num: '01', name: 'Safety', duration: '2 weeks', price: '$5,000', outcome: 'Your AI policy, drafted and board-ready.', href: '/pathway/safety' },
+  { num: '02', name: 'Sandbox', duration: '4 weeks', price: '$15,000', outcome: 'Use cases proven, risks documented.', href: '/pathway/sandbox' },
+  { num: '03', name: 'Skills', duration: '8 weeks', price: 'from $4,800/yr', outcome: 'Your team trained to lead this work.', href: '/pathway/skills' },
+  { num: '04', name: 'Solutions', duration: '8–12 weeks', price: 'from $30,000', outcome: 'Your intelligence integrated, activated, multiplied.', href: '/technology' }
 ];
 
 function WhyThisOrderFold() {
@@ -26,13 +26,13 @@ function WhyThisOrderFold() {
             <h2 className="text-sm font-semibold uppercase tracking-eyebrow text-primary mb-8 border-b border-border pb-4">Why this order, and why we say so</h2>
             <div className="space-y-6 text-[1.125rem] md:text-xl text-foreground/90 leading-relaxed">
               <p>
-                When AI lands on top of a fragmented organization — scattered knowledge, unclear decision rights, mixed signals about what's safe to share, and no shared vocabulary for risk — it doesn't help. It accelerates the fragmentation. The organization moves faster, but in more directions. The leaders who said yes to AI start to feel like they invited a problem they don't know how to name.
+                When AI lands on top of a fragmented organization — scattered knowledge, unclear decision rights, mixed signals about what&apos;s safe to share, and no shared vocabulary for risk — it doesn&apos;t help. It accelerates the fragmentation. The organization moves faster, but in more directions. The leaders who said yes to AI start to feel like they invited a problem they don&apos;t know how to name.
               </p>
               <p>
-                The way out is not slower AI. It's earlier human work. Safety, Sandbox, and Skills are not pre-AI hesitation; they're the work that makes the AI investment compound rather than corrode. Skip them and you'll spend the next two years undoing damage. Do them and Solutions Deployment is the easiest decision your board makes that year.
+                The way out is not slower AI. It&apos;s earlier human work. Safety, Sandbox, and Skills are not pre-AI hesitation; they&apos;re the work that makes the AI investment compound rather than corrode. Skip them and you&apos;ll spend the next two years undoing damage. Do them and Solutions is the easiest decision your board makes that year.
               </p>
               <p>
-                We tell you this up front because most vendors won't. Their incentive is to sell you the chatbot today. Ours is to build something that lasts long enough to be worth what you'll spend on it.
+                We tell you this up front because most vendors won&apos;t. Their incentive is to sell you the chatbot today. Ours is to build something that lasts long enough to be worth what you&apos;ll spend on it.
               </p>
             </div>
           </div>
@@ -48,7 +48,7 @@ function PathwayFold() {
       <Container>
         <Reveal>
           <div className="mb-12">
-            <h2 className="font-serif-display text-4xl md:text-5xl italic text-foreground mb-4">The Pathway</h2>
+            <h2 className="font-serif-display text-4xl md:text-5xl italic text-foreground mb-4">Movemental Path</h2>
           </div>
           
           <PathwayComponent stops={homePathwayStops} />
@@ -74,7 +74,7 @@ function DemoTeaserFold() {
               See what we build.
             </h2>
             <p className="text-xl md:text-2xl text-foreground/80 leading-relaxed mb-10 max-w-3xl">
-              A live look at platforms we've shipped — including alanhirsch.com, fully active with a custom dashboard, content library, AI Lab, and integrated learning pathways. Built agentically. Yours can be too.
+              A live look at platforms we&apos;ve shipped — including alanhirsch.com, fully active with a custom dashboard, content library, AI Lab, and integrated learning pathways. Built agentically. Yours can be too.
             </p>
             
             <div className="aspect-video bg-background border border-border rounded-xl overflow-hidden mb-8 relative flex items-center justify-center">
@@ -232,7 +232,7 @@ function FinalCta() {
       <Container width="narrow">
         <Reveal>
           <h2 id="final-cta-heading" className="font-serif-display italic text-4xl md:text-5xl lg:text-6xl mb-8 leading-tight text-inverse-foreground">
-            You don't need to master AI.<br />
+            You don&apos;t need to master AI.<br />
             You need a clear path for leading through it.
           </h2>
           <div className="flex flex-wrap justify-center gap-4 mt-12">

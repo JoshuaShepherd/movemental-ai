@@ -24,7 +24,7 @@ function Hero() {
     <section className="band-midnight hero" aria-labelledby="hero-h1">
       <div className="container">
         <p className="eyebrow">
-          AI Stewardship Sequence · Integrity Diagnostic
+          Movemental Path · Integrity Diagnostic
         </p>
         <h1 className="display" id="hero-h1">
           Where is your organization <em>actually starting</em>?

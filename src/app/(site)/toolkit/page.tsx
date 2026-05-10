@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { HumanHighlightEx3 } from "@/components/primitives/human-highlight";
 import { Container } from "@/components/studio/Container";
 import { Reveal } from "@/components/studio/Reveal";
 import { ToolkitCover } from "@/components/toolkit/ToolkitCover";
@@ -79,8 +80,9 @@ export default function ToolkitPage() {
                 <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
                   Sixteen pages. Read it in an evening. Run the 30-minute self-assessment with your leadership team
                   before you commit to a vendor, a tool, or a policy. The toolkit names the seven governance artifacts
-                  that come out of a Safety engagement, walks through why governance precedes deployment, and gives
-                  your team a shared vocabulary for the conversations you&apos;re already having.
+                  that come out of a Safety engagement, walks through{" "}
+                  <HumanHighlightEx3>why governance precedes deployment</HumanHighlightEx3>, and gives your team a shared
+                  vocabulary for the conversations you&apos;re already having.
                 </p>
               </div>
               <div className="mx-auto w-full max-w-sm lg:col-span-5 lg:mx-0">

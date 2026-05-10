@@ -37,7 +37,7 @@ const FAQ_GROUPS = [
     lede: "What to do before you book…",
     items: [
       { slug: "what-first", q: "What should we do first?", a: <>Start with Safety. Reach out via our <Link href="/contact" className="text-primary hover:underline">Contact page</Link> to schedule a diagnostic call.</> },
-      { slug: "technical-expertise", q: "Do we need technical expertise to begin?", a: "No. The AI Stewardship Sequence begins with leadership alignment, not software engineering." },
+      { slug: "technical-expertise", q: "Do we need technical expertise to begin?", a: "No. The Movemental Path begins with leadership alignment, not software engineering." },
       { slug: "what-is-it", q: "Is this a tool, a course, or a consulting engagement?", a: <>It is a consulting engagement mapped to a specific architecture. See <Link href="/work-with-us" className="text-primary hover:underline">Ways to Engage</Link>.</> },
       { slug: "first-call", q: "What does the first call look like?", a: "Thirty minutes mapping your specific friction points without any sales pressure." },
       { slug: "are-we-ready", q: "How do we know if we are ready?", a: "If your staff is already using ChatGPT implicitly, you are ready because you are already exposed." },
@@ -51,13 +51,13 @@ const FAQ_GROUPS = [
     display: "The four stages, in order.",
     lede: "Safety, Sandbox…",
     items: [
-      { slug: "what-is-path", q: "What is the Movemental AI Path?", a: <>It is the four-stage AI Stewardship Sequence: Safety, Sandbox, Skills, Solutions. Read it in the <Link href="/path" className="text-primary hover:underline">Path summary</Link>.</> },
+      { slug: "what-is-path", q: "What is the Movemental Path?", a: <>It is Movemental&apos;s public methodology — four stages in order: Safety, Sandbox, Skills, Solutions. Read it in the <Link href="/path" className="text-primary hover:underline">Path summary</Link>.</> },
       { slug: "why-order", q: "Why this order? Why not all four in parallel?", a: "Attempting solutions before safety opens you to data breaches. Changing the order collapses the required human formation." },
       { slug: "can-we-skip", q: "Can we skip stages if we have already done some of this?", a: "We will audit any work you've done. If it holds up, we move forward. Most organizations discover gaps in their safety foundation." },
       { slug: "do-stages-overlap", q: "Do the stages overlap?", a: "Chronologically, yes. But you cannot start a subsequent stage until the prerequisite is locked." },
       { slug: "safety-covers", q: "What does Safety actually cover?", a: <>Acceptable use policies, data boundary definitions, and theological red lines. See <Link href="/start-with-safety" className="text-primary hover:underline">Start with Safety</Link>.</> },
       { slug: "sandbox-means", q: "What does Sandbox mean in practice?", a: "Isolated environments where staff can securely learn prompts and limits without risking public trust or constituent data." },
-      { slug: "skills-solutions", q: "What do Skills and Solutions include?", a: "Skills focuses on forming human judgment; Solutions deploys organization-wide architectural implementations safely." },
+      { slug: "skills-solutions", q: "What do Skills and Solutions include?", a: "Skills focuses on forming human judgment; Solutions means organization-wide architectural implementations, deployed safely." },
     ]
   },
   {

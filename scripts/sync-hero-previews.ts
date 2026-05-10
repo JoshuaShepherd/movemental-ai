@@ -1,6 +1,7 @@
 /**
- * Copies Stitch homepage HTML + optional Alan Hirsch static `pages/*.html` shell
- * into `public/hero-previews/` for home hero iframe previews.
+ * Copies optional audience homepage HTML into `public/hero-previews/` for home hero iframe previews.
+ *
+ * When source HTML under `docs/templates/` is missing, writes a minimal stub so `prebuild` still passes.
  *
  * If `docs/templates/alan-hirsch/pages/` is missing or has no `.html` files (e.g. after
  * removing the sibling template tree), `leaders/index.html` is generated from
@@ -16,20 +17,37 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
 const out = join(root, "public", "hero-previews");
 
-const STITCH = {
-  nonprofits: join(
-    root,
-    "docs/templates/stitch/unified-mission-system/html/movemental-homepage.html"
-  ),
-  churches: join(
-    root,
-    "docs/templates/stitch/church-formation-system/html/movemental-homepage-mockup.html"
-  ),
-  institutions: join(
-    root,
-    "docs/templates/stitch/institutional-intelligence-system/html/movemental-institutional-intelligence-homepage.html"
-  ),
+/** Optional static HTML for audience iframe previews; absent files produce a stub. */
+const AUDIENCE_PREVIEW_HTML = {
+  nonprofits: join(root, "docs/templates/audience-previews/nonprofits.html"),
+  churches: join(root, "docs/templates/audience-previews/churches.html"),
+  institutions: join(root, "docs/templates/audience-previews/institutions.html"),
 } as const;
+
+const AUDIENCE_PREVIEW_STUB = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hero preview</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 2rem; margin: 0; }
+  </style>
+</head>
+<body>
+  <p>No static preview HTML found. Add <code>docs/templates/audience-previews/&lt;audience&gt;.html</code> or adjust <code>scripts/sync-hero-previews.ts</code>.</p>
+</body>
+</html>
+`;
+
+async function copyAudiencePreviewOrStub(srcPath: string, destPath: string) {
+  try {
+    await copyFile(srcPath, destPath);
+  } catch {
+    console.warn(`sync-hero-previews: missing ${srcPath} — writing stub`);
+    await writeFile(destPath, AUDIENCE_PREVIEW_STUB, "utf8");
+  }
+}
 
 /** Static shell pages (optional). When empty/removed, leaders preview uses `FALLBACK_LEADERS_HTML`. */
 const ALAN_HIRSCH_PAGES = join(root, "docs/templates/alan-hirsch/pages");
@@ -53,8 +71,8 @@ async function main() {
   await mkdir(join(out, "churches"), { recursive: true });
   await mkdir(join(out, "institutions"), { recursive: true });
 
-  for (const [key, srcPath] of Object.entries(STITCH)) {
-    await copyFile(srcPath, join(out, key, "index.html"));
+  for (const [key, srcPath] of Object.entries(AUDIENCE_PREVIEW_HTML)) {
+    await copyAudiencePreviewOrStub(srcPath, join(out, key, "index.html"));
   }
 
   let pageFiles: string[] = [];

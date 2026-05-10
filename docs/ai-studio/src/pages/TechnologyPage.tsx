@@ -98,7 +98,7 @@ export function TechnologyPage() {
           <Reveal>
             <div className="max-w-3xl mb-12">
               <h2 className="font-serif-display text-4xl italic mb-4">Live builds you can visit.</h2>
-              <p className="text-xl text-muted-foreground">These are real, active platforms running on the Movemental stack. Click through and see what's possible.</p>
+              <p className="text-xl text-muted-foreground">These are real, active platforms running on the Movemental stack. Click through and see what&apos;s possible.</p>
             </div>
             
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl">
@@ -129,7 +129,7 @@ export function TechnologyPage() {
                 <h2 className="font-serif-display text-4xl italic mb-6">Why this stack</h2>
                 <div className="space-y-4 text-[1.0625rem] text-background/80 leading-relaxed">
                   <p>
-                    The Movemental stack is built agentic-native. Most "AI-enabled" platforms layer AI on top of legacy CMS, LMS, and CRM systems that were designed before generative models existed. The architectures don't fit. The integrations leak. The promise underdelivers. We started from a different place: build the integrated intelligence layer first, then expose it through the surfaces — content management, learning delivery, relationship management — that your organization actually uses.
+                    The Movemental stack is built agentic-native. Most &quot;AI-enabled&quot; platforms layer AI on top of legacy CMS, LMS, and CRM systems that were designed before generative models existed. The architectures don&apos;t fit. The integrations leak. The promise underdelivers. We started from a different place: build the integrated intelligence layer first, then expose it through the surfaces — content management, learning delivery, relationship management — that your organization actually uses.
                   </p>
                   <p>
                     The result is a platform where your knowledge compounds rather than scatters. Where your content trains your AI rather than competing with it. Where your audience, your members, and your peers are connected through infrastructure that makes each more credible, not less. The same architecture we built for Alan Hirsch, tuned to your work and yours alone.
@@ -190,7 +190,7 @@ export function TechnologyPage() {
       <Container className="pb-20 md:pb-32 text-center max-w-2xl mx-auto">
         <Reveal>
           <Link to="/contact?interest=Walkthrough" className="btn-pill btn-pill--primary text-lg px-8 py-4 mb-4">Book a 30-minute live walkthrough</Link>
-          <p className="text-muted-foreground italic">You'll see the actual platform in action. No slides.</p>
+          <p className="text-muted-foreground italic">You&apos;ll see the actual platform in action. No slides.</p>
         </Reveal>
       </Container>
     </div>

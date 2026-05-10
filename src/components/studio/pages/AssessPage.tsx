@@ -8,7 +8,7 @@ import Link from "next/link";
 import { IntegrityDiagnosticForm } from '@/components/studio/IntegrityDiagnosticForm';
 
 const MEASURES = [
-  { num: '01', title: 'Sequence integrity', body: 'Are we building solutions before we have established safety?' },
+  { num: '01', title: 'Path integrity', body: 'Are we building solutions before we have established safety?' },
   { num: '02', title: 'Posture clarity', body: 'Do our people know what we believe about AI, or just what tools we bought?' },
   { num: '03', title: 'Refusal capacity', body: 'Do we have criteria for saying no?' },
   { num: '04', title: 'Sandbox truth', body: 'Are we experimenting in contained spaces, or risking real data?' },
@@ -26,7 +26,7 @@ export function AssessPage() {
       <section className="band-midnight hero" aria-labelledby="assess-hero-h1">
         <Container>
           <Reveal>
-            <span className="section-eyebrow">AI Stewardship Sequence · Integrity Diagnostic</span>
+            <span className="section-eyebrow">Movemental Path · Integrity Diagnostic</span>
             <h1 id="assess-hero-h1" className="display hero-headline max-w-5xl">
               Where is your organization <em dangerouslySetInnerHTML={{__html: 'actually'}} /> starting?
             </h1>
@@ -52,7 +52,7 @@ export function AssessPage() {
             <SectionHead 
               eyebrow="Six dimensions"
               display={<>Six honest questions, <em dangerouslySetInnerHTML={{__html: 'in order'}} />.</>}
-              lede="The diagnostic walks the same Sequence the engagement walks: Safety, Sandbox, Skills, Solutions — broken into six readable dimensions, each with its own short section."
+              lede="The diagnostic walks the same Movemental Path as the engagement: Safety, Sandbox, Skills, Solutions — broken into six readable dimensions, each with its own short section."
             />
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-border rounded-card overflow-hidden">
@@ -104,7 +104,7 @@ export function AssessPage() {
                </li>
                <li className="pl-4">
                  <strong className="block text-foreground mb-2">A short list of next moves</strong>
-                 <span className="font-normal text-muted-foreground text-base">Three things we would focus on first. Often "do less, slower" or "you are further along than you think."</span>
+                 <span className="font-normal text-muted-foreground text-base">Three things we would focus on first. Often &quot;do less, slower&quot; or &quot;you are further along than you think.&quot;</span>
                </li>
                <li className="pl-4">
                  <strong className="block text-foreground mb-2">Permission to share it</strong>
@@ -127,7 +127,7 @@ export function AssessPage() {
                <span className="text-xs font-semibold uppercase tracking-eyebrow text-ink-soft mb-4 block">Editorial note</span>
                <div className="prose max-w-none text-muted-foreground text-[0.98rem] leading-relaxed">
                   <p><strong>This is not a maturity model.</strong> It is not a benchmark against peers, a quantifiable index, or a score to report to a board. The outputs are purely qualitative.</p>
-                  <p>All inputs are held confidentially by Movemental's founders. We do not aggregate your responses into industry reports without explicit permission, and we do not use your data to train public models.</p>
+                  <p>All inputs are held confidentially by Movemental&apos;s founders. We do not aggregate your responses into industry reports without explicit permission, and we do not use your data to train public models.</p>
                </div>
             </aside>
           </Reveal>

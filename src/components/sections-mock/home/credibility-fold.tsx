@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { HumanHighlightEx3 } from "@/components/primitives/human-highlight";
 import { SectionHead } from "@/components/sections-mock/primitives";
 
 import { MovementVoicesNetwork } from "./movement-voices-network";
@@ -53,11 +54,11 @@ export function CredibilityFold() {
             </>
           }
           displayId="credibility-heading"
-          lede="Movemental is a growing conversation among leaders navigating AI, formation, and mission in real time."
+          lede="Movemental was built by missional practitioners with decades of work that predates AI. The network around us is the credibility infrastructure for this category — leaders whose names carry weight in the world your organization works in."
         />
 
         <p className="mt-6 max-w-(--prose-max) text-sm leading-relaxed text-muted-foreground md:text-base">
-          Credibility in an AI-saturated world is increasingly relational.
+          <HumanHighlightEx3>Credibility in an AI-saturated world is increasingly relational.</HumanHighlightEx3>
         </p>
 
         <div className="mt-14 md:mt-16">
@@ -99,7 +100,7 @@ export function CredibilityFold() {
           </ul>
         </div>
 
-        <div className="mt-16 border-t border-border pt-12 md:mt-20 md:pt-16">
+        <div className="mt-16 pt-4 md:mt-20 md:pt-6">
           <MovementVoicesNetwork ariaLabel="Movement Voices — an all-channel network of trusted leaders shaping the conversation, with Movemental at the center" />
         </div>
 

@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<title>Movemental | Safety — Stage 01 of the Movemental Path</title>
+<meta name="description" content="Stage 01 — two weeks of facilitated work. Seven decisions your board can ratify. $1,000. Net 15." />
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect" />
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500;1,6..72,600;1,6..72,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: "#645d55",
+          "primary-dim": "#4f4942",
+          "on-surface": "#39382c",
+          background: "#fffbff",
+          "surface-container-low": "#fdf9ef",
+          "surface-container-high": "#f2eedf",
+          "on-background": "#39382c",
+          "on-surface-variant": "#666557",
+          "inverse-surface": "#141110",
+          "on-primary": "#fff6ee",
+          surface: "#faf6ee",
+          "surface-container": "#f2ece0",
+          outline: "#838172",
+          "outline-variant": "#bcbaa9",
+          "amber-accent": "#B8893A",
+          "amber-accent-dim": "#8a6628",
+          midnight: "#0E1726",
+        },
+        borderRadius: { DEFAULT: "0px", lg: "0px", xl: "0px", full: "0px" },
+        fontFamily: {
+          headline: ["Newsreader", "serif"],
+          display: ["Newsreader", "serif"],
+          body: ["Inter", "sans-serif"],
+          label: ["Inter", "sans-serif"],
+        },
+        letterSpacing: { eyebrow: "0.18em" },
+      },
+    },
+  };
+</script>
+
+<style>
+  :root {
+    --surface: #faf6ee;
+    --surface-container: #f2ece0;
+    --surface-container-high: #f2eedf;
+    --on-surface: #39382c;
+    --on-surface-variant: #666557;
+    --outline-variant: #bcbaa9;
+    --amber-accent: #B8893A;
+    --midnight: #0E1726;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Inter", sans-serif;
+    line-height: 1.6;
+    font-size: 17px;
+    background-color: var(--surface);
+    color: var(--on-surface);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, .font-display { font-family: "Newsreader", serif; font-style: italic; letter-spacing: -0.01em; }
+  .material-symbols-outlined { font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24; }
+
+  .ledger-row { border-bottom: 0.5px solid rgba(188, 186, 169, 0.55); }
+  .hairline { border-color: rgba(131, 129, 114, 0.22); }
+
+  /* Initials portrait — mirrors the in-app `VoicePortrait` editorial fallback */
+  .voice-portrait {
+    background: var(--surface-container);
+    aspect-ratio: 4 / 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.5rem;
+    border: 0.5px solid rgba(188, 186, 169, 0.5);
+  }
+  .voice-portrait .initials {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-size: 4.5rem;
+    line-height: 1;
+    color: var(--on-surface);
+    letter-spacing: -0.04em;
+  }
+  .voice-portrait .label {
+    margin-top: 1.5rem;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--on-surface-variant);
+    font-weight: 500;
+    max-width: 18ch;
+  }
+
+  /* Field Guide cover — typographic option, same as the in-app ToolkitCover */
+  .toolkit-cover {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    background: var(--surface-container);
+    color: var(--on-surface);
+    box-shadow: 0 12px 40px rgba(42, 52, 57, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .toolkit-cover::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 0.5px solid rgba(131, 129, 114, 0.32);
+  }
+  .toolkit-cover .cover-eyebrow {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--on-surface-variant);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+  .toolkit-cover .cover-title {
+    font-family: "Newsreader", serif;
+    font-style: italic;
+    font-size: 3rem;
+    line-height: 0.92;
+    letter-spacing: -0.015em;
+    margin-bottom: 1.25rem;
+  }
+  .toolkit-cover .cover-rule {
+    width: 38px;
+    height: 0.5px;
+    background: rgba(131, 129, 114, 0.4);
+    margin: 0.75rem auto 1.25rem;
+  }
+  .toolkit-cover .cover-sub {
+    font-size: 0.78rem;
+    color: var(--on-surface-variant);
+    max-width: 22ch;
+    line-height: 1.4;
+  }
+  .toolkit-cover .cover-foot {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--on-surface-variant);
+    font-weight: 500;
+  }
+
+  /* Pull quote rule */
+  .pull-rule { width: 2px; background: var(--amber-accent); }
+
+  /* Cell hover ghost-lift on the seven-decision grid */
+  .decision-cell { transition: background-color 240ms ease; }
+  .decision-cell:hover { background-color: var(--surface-container-high); }
+
+  /* Brand mark sizing in nav */
+  .brand-mark { width: 28px; height: 28px; flex: none; }
+
+  /* Smooth focus rings */
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--amber-accent);
+    outline-offset: 3px;
+  }
+
+  /* Dotted texture for closing band */
+  .midnight-noise {
+    background-image: radial-gradient(rgba(255, 246, 238, 0.04) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+</style>
+</head>
+
+<body class="bg-surface selection:bg-amber-accent/20 selection:text-on-surface">
+
+<!-- ==============================================================
+     NAV — Movemental shared chrome (semantic tokens, sharp edges)
+     ============================================================== -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-surface/85 backdrop-blur-md border-b hairline border-b-[0.5px]">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-8 md:px-12 py-5">
+    <a href="/" class="flex items-center gap-3" aria-label="Movemental — home">
+      <img src="../../public/images/brand/brand-mark.svg" alt="" class="brand-mark" aria-hidden="true" />
+      <span class="font-display italic text-[1.35rem] text-on-surface leading-none">Movemental</span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-9">
+      <a href="/pathway" class="text-on-surface font-body text-[0.7rem] uppercase tracking-eyebrow font-semibold border-b border-on-surface pb-1">The Path</a>
+      <a href="/organizations" class="text-on-surface-variant font-body text-[0.7rem] uppercase tracking-eyebrow hover:text-on-surface transition-colors">Who we serve</a>
+      <a href="/field-guide" class="text-on-surface-variant font-body text-[0.7rem] uppercase tracking-eyebrow hover:text-on-surface transition-colors">Field Guide</a>
+      <a href="/pricing" class="text-on-surface-variant font-body text-[0.7rem] uppercase tracking-eyebrow hover:text-on-surface transition-colors">Pricing</a>
+      <a href="/about" class="text-on-surface-variant font-body text-[0.7rem] uppercase tracking-eyebrow hover:text-on-surface transition-colors">About</a>
+    </div>
+
+    <div class="flex items-center gap-5">
+      <a href="#field-guide" class="hidden md:inline text-[0.62rem] uppercase tracking-eyebrow text-on-surface-variant font-medium hover:text-on-surface transition-colors">Free safety Field Guide</a>
+      <a href="/contact?interest=safety" class="bg-on-surface text-on-primary px-5 py-2.5 text-[0.66rem] uppercase tracking-eyebrow font-semibold hover:bg-primary-dim transition-colors">Start a conversation</a>
+    </div>
+  </div>
+</nav>
+
+<main class="pt-20">
+
+  <!-- ==============================================================
+       1 · STAGE INDICATOR — four stages of the Movemental Path
+       ============================================================== -->
+  <section class="px-8 md:px-12 pt-14 pb-8 bg-surface" aria-label="Movemental Path — stage 01 of 04">
+    <div class="max-w-7xl mx-auto">
+      <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-6">
+        The Movemental Path
+      </p>
+      <ol class="grid grid-cols-2 md:grid-cols-4 gap-x-2 gap-y-6 ledger-row pb-6">
+        <li class="flex flex-col border-l-2 border-amber-accent pl-4 py-1">
+          <span class="text-[0.6rem] uppercase tracking-eyebrow font-bold text-amber-accent">Active</span>
+          <span class="font-display italic text-xl md:text-2xl text-on-surface mt-1">Stage 01 — Safety</span>
+          <span class="text-[0.7rem] text-on-surface-variant mt-1">Governance · Commitments · Boundaries</span>
+        </li>
+        <li class="flex flex-col border-l border-outline-variant/60 pl-4 py-1 opacity-50">
+          <span class="text-[0.6rem] uppercase tracking-eyebrow font-bold text-on-surface-variant">Upcoming</span>
+          <span class="font-display italic text-xl md:text-2xl mt-1">Stage 02 — Sandbox</span>
+          <span class="text-[0.7rem] text-on-surface-variant mt-1">Bounded experimentation</span>
+        </li>
+        <li class="flex flex-col border-l border-outline-variant/60 pl-4 py-1 opacity-40">
+          <span class="text-[0.6rem] uppercase tracking-eyebrow font-bold text-on-surface-variant">Upcoming</span>
+          <span class="font-display italic text-xl md:text-2xl mt-1">Stage 03 — Skills</span>
+          <span class="text-[0.7rem] text-on-surface-variant mt-1">Capability across the team</span>
+        </li>
+        <li class="flex flex-col border-l border-outline-variant/60 pl-4 py-1 opacity-40">
+          <span class="text-[0.6rem] uppercase tracking-eyebrow font-bold text-on-surface-variant">Upcoming</span>
+          <span class="font-display italic text-xl md:text-2xl mt-1">Stage 04 — Solutions</span>
+          <span class="text-[0.7rem] text-on-surface-variant mt-1">Durable deployments</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       2 · HERO — canonical copy + "what this produces" panel
+       ============================================================== -->
+  <section class="px-8 md:px-12 py-20 md:py-28 bg-surface-container" id="hero" aria-labelledby="hero-title">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-start">
+
+      <div class="lg:col-span-7">
+        <span class="block text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-6">
+          Stage 01 — Safety
+        </span>
+        <h1 id="hero-title" class="font-display italic text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-8 text-on-surface">
+          AI is being used inside your organization. <br/>Most leaders <em class="not-italic font-display italic">have not yet decided</em> what is safe.
+        </h1>
+        <p class="text-lg md:text-xl text-on-surface-variant max-w-xl mb-6 leading-relaxed">
+          Two weeks of facilitated work. Your senior leadership writes down seven decisions about how AI is and isn't used in your organization. Your board ratifies them. The work is yours when it's done.
+        </p>
+        <p class="font-display italic text-xl md:text-2xl text-on-surface mb-12 leading-snug max-w-lg">
+          Two weeks. $1,000. Seven decisions your board can ratify.
+        </p>
+
+        <div class="flex flex-wrap gap-4 items-center">
+          <a href="#field-guide" class="bg-on-surface text-on-primary px-7 py-4 text-[0.7rem] uppercase tracking-eyebrow font-semibold hover:bg-primary-dim transition-colors">
+            Download the free Safety Field Guide
+          </a>
+          <a href="/contact?interest=safety" class="text-[0.7rem] uppercase tracking-eyebrow font-semibold text-on-surface border-b border-on-surface pb-1 hover:text-amber-accent hover:border-amber-accent transition-colors">
+            Start a conversation
+          </a>
+        </div>
+
+        <p class="mt-10 text-sm text-on-surface-variant max-w-md">
+          Read the <a href="/articles/safety-before-speed" class="text-on-surface underline underline-offset-4 decoration-amber-accent decoration-1 hover:decoration-2">Safety Before Speed</a> field essay first if you'd like to know how we think before we work together.
+        </p>
+      </div>
+
+      <aside class="lg:col-span-5 bg-surface p-10 md:p-12 border-t hairline">
+        <span class="block text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-2">
+          What this produces
+        </span>
+        <p class="font-display italic text-2xl md:text-3xl text-on-surface mb-8 leading-tight">
+          Seven decisions, <br/><span class="text-on-surface-variant/80">each written and ready for review and ratification.</span>
+        </p>
+        <ul class="space-y-1">
+          <li class="grid grid-cols-[2.5rem_1fr] items-baseline gap-3 py-3 ledger-row">
+            <span class="font-display italic text-xl text-amber-accent">01</span>
+            <span class="text-[0.95rem] text-on-surface">Acceptable Use Statement</span>
+          </li>
+          <li class="grid grid-cols-[2.5rem_1fr] items-baseline gap-3 py-3 ledger-row">
+            <span class="font-display italic text-xl text-amber-accent">02</span>
+            <span class="text-[0.95rem] text-on-surface">Care Boundaries</span>
+          </li>
+          <li class="grid grid-cols-[2.5rem_1fr] items-baseline gap-3 py-3 ledger-row">
+            <span class="font-display italic text-xl text-amber-accent">03</span>
+            <span class="text-[0.95rem] text-on-surface">Disclosure Standards</span>
+          </li>
+          <li class="grid grid-cols-[2.5rem_1fr] items-baseline gap-3 py-3 ledger-row">
+            <span class="font-display italic text-xl text-amber-accent">04</span>
+            <span class="text-[0.95rem] text-on-surface">Vendor &amp; Tool Inventory</span>
+          </li>
+          <li class="grid grid-cols-[2.5rem_1fr] items-baseline gap-3 py-3 ledger-row">
+            <span class="font-display italic text-xl text-amber-accent">05</span>
+            <span class="text-[0.95rem] text-on-surface">Data Handling Protocol</span>
+          </li>
+          <li class="grid grid-cols-[2.5rem_1fr] items-baseline gap-3 py-3 ledger-row">
+            <span class="font-display italic text-xl text-amber-accent">06</span>
+            <span class="text-[0.95rem] text-on-surface">Incident Response Plan</span>
+          </li>
+          <li class="grid grid-cols-[2.5rem_1fr] items-baseline gap-3 py-3">
+            <span class="font-display italic text-xl text-amber-accent">07</span>
+            <span class="text-[0.95rem] text-on-surface">Named Refusals</span>
+          </li>
+        </ul>
+        <p class="mt-8 text-xs text-on-surface-variant italic leading-relaxed">
+          Plus a one-page summary your board, elder team, or trustees can ratify in a single meeting.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       3 · WHY SAFETY FIRST — three-layer doctrine
+       ============================================================== -->
+  <section class="px-8 md:px-12 py-20 md:py-28 bg-surface" aria-labelledby="three-layer-title">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl mb-16">
+        <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-4">
+          Why this stage exists
+        </p>
+        <h2 id="three-layer-title" class="font-display italic text-4xl md:text-5xl text-on-surface mb-8 leading-tight">
+          Safety is not a ban. <br/>It is the first step toward exploring the value of AI within your own organization. Skip it and the exploration itself is uncertain and risky.
+        </h2>
+        <p class="text-lg text-on-surface-variant leading-relaxed">
+          AI is being used inside your organization right now — on personal accounts, in the margins of real work, with no shared frame for what's allowed. Safety brings that use into the open by naming three layers your senior leadership owns together.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-outline-variant/30">
+        <div class="bg-surface p-10 md:p-12">
+          <span class="font-display italic text-3xl text-amber-accent block mb-6">i.</span>
+          <h3 class="text-xl text-on-surface mb-4">Governance</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">
+            Who decides what, with what authority, under what review. Plain enough to read aloud in three minutes. Specific enough to apply when a staff member asks at 9pm.
+          </p>
+        </div>
+        <div class="bg-surface p-10 md:p-12">
+          <span class="font-display italic text-3xl text-amber-accent block mb-6">ii.</span>
+          <h3 class="text-xl text-on-surface mb-4">Commitments</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">
+            The handful of sentences your leadership agrees are true enough to lose money over. What you owe the people you serve in language. What you refuse to automate about their stories.
+          </p>
+        </div>
+        <div class="bg-surface p-10 md:p-12">
+          <span class="font-display italic text-3xl text-amber-accent block mb-6">iii.</span>
+          <h3 class="text-xl text-on-surface mb-4">Boundaries</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">
+            Explicit statements about where AI belongs and where it does not. Fundraising. Pastoral correspondence. Board materials. Donor research. Implicit norms feel adequate until pressure arrives.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       4 · SEVEN DECISIONS
+       ============================================================== -->
+  <section class="px-8 md:px-12 py-20 md:py-28 bg-surface-container-high" aria-labelledby="decisions-title">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl mb-16">
+        <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-4">
+          What you'll produce
+        </p>
+        <h2 id="decisions-title" class="font-display italic text-4xl md:text-5xl text-on-surface mb-6 leading-tight">
+          Seven decisions. Each one written, scoped, and ready to ratify.
+        </h2>
+        <p class="text-lg text-on-surface-variant leading-relaxed">
+          Each decision is drafted with your leadership team and written in language your board can read without translation. By week two, your organization has the foundation any later stage of the Path is built on. The work is yours when it's done.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-l hairline">
+        <article class="decision-cell p-10 md:p-12 border-r border-b hairline aspect-square flex flex-col justify-between">
+          <span class="font-display italic text-3xl text-amber-accent">01</span>
+          <div>
+            <h3 class="font-display italic text-2xl text-on-surface mb-3 leading-tight">Acceptable Use Statement</h3>
+            <p class="text-sm text-on-surface-variant leading-relaxed">What AI may and may not do in your organization, written clearly enough that any staff member can apply it without asking.</p>
+          </div>
+        </article>
+        <article class="decision-cell p-10 md:p-12 border-r border-b hairline aspect-square flex flex-col justify-between">
+          <span class="font-display italic text-3xl text-amber-accent">02</span>
+          <div>
+            <h3 class="font-display italic text-2xl text-on-surface mb-3 leading-tight">Care Boundaries</h3>
+            <p class="text-sm text-on-surface-variant leading-relaxed">The categories of human relationship — pastoral, clinical, counseling, member care — that remain fully human regardless of what AI can do.</p>
+          </div>
+        </article>
+        <article class="decision-cell p-10 md:p-12 border-r border-b hairline aspect-square flex flex-col justify-between">
+          <span class="font-display italic text-3xl text-amber-accent">03</span>
+          <div>
+            <h3 class="font-display italic text-2xl text-on-surface mb-3 leading-tight">Disclosure Standards</h3>
+            <p class="text-sm text-on-surface-variant leading-relaxed">When AI involvement must be communicated to the people you serve, and how.</p>
+          </div>
+        </article>
+        <article class="decision-cell p-10 md:p-12 border-r border-b hairline aspect-square flex flex-col justify-between">
+          <span class="font-display italic text-3xl text-amber-accent">04</span>
+          <div>
+            <h3 class="font-display italic text-2xl text-on-surface mb-3 leading-tight">Vendor &amp; Tool Inventory</h3>
+            <p class="text-sm text-on-surface-variant leading-relaxed">Every AI tool currently in use across your staff, by whom, with what data, under what terms.</p>
+          </div>
+        </article>
+        <article class="decision-cell p-10 md:p-12 border-r border-b hairline aspect-square flex flex-col justify-between">
+          <span class="font-display italic text-3xl text-amber-accent">05</span>
+          <div>
+            <h3 class="font-display italic text-2xl text-on-surface mb-3 leading-tight">Data Handling Protocol</h3>
+            <p class="text-sm text-on-surface-variant leading-relaxed">What data may be shared with AI, by whom, under what circumstances, with what review.</p>
+          </div>
+        </article>
+        <article class="decision-cell p-10 md:p-12 border-r border-b hairline aspect-square flex flex-col justify-between">
+          <span class="font-display italic text-3xl text-amber-accent">06</span>
+          <div>
+            <h3 class="font-display italic text-2xl text-on-surface mb-3 leading-tight">Incident Response Plan</h3>
+            <p class="text-sm text-on-surface-variant leading-relaxed">What happens when AI produces harmful or inaccurate output under your name — who decides, who communicates, who fixes it.</p>
+          </div>
+        </article>
+        <article class="decision-cell p-10 md:p-12 border-r border-b hairline aspect-square flex flex-col justify-between">
+          <span class="font-display italic text-3xl text-amber-accent">07</span>
+          <div>
+            <h3 class="font-display italic text-2xl text-on-surface mb-3 leading-tight">Named Refusals</h3>
+            <p class="text-sm text-on-surface-variant leading-relaxed">The specific applications of AI your organization commits to refusing on principle, regardless of vendor pitch or operational pressure.</p>
+          </div>
+        </article>
+
+        <!-- 8th cell: board-ready packet -->
+        <div class="bg-midnight text-on-primary p-10 md:p-12 border-r border-b border-midnight aspect-square flex flex-col justify-between">
+          <span class="material-symbols-outlined text-amber-accent text-3xl">folder_managed</span>
+          <div>
+            <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-primary/60 mb-3">Ratification packet</p>
+            <p class="font-display italic text-2xl leading-tight">All seven decisions compiled in a format your board, elder team, or trustees can review and ratify in a single meeting.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       5 · HOW THE WORK HAPPENS — actual two-week process
+       ============================================================== -->
+  <section class="px-8 md:px-12 py-20 md:py-28 bg-surface" aria-labelledby="process-title">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl mb-16">
+        <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-4">
+          How the work happens
+        </p>
+        <h2 id="process-title" class="font-display italic text-4xl md:text-5xl text-on-surface mb-6 leading-tight">
+          Two weeks of facilitated work.
+        </h2>
+        <p class="text-lg text-on-surface-variant leading-relaxed">
+          Two weeks. Four phases. Eight hours of synchronous work plus drafting between sessions. We facilitate with your leadership team — we do not draft policy alone and hand it over.
+        </p>
+      </div>
+
+      <ol class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
+        <li class="relative pl-6 border-l-2 border-amber-accent">
+          <span class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-amber-accent block mb-2">Week 1 — Step 01</span>
+          <h3 class="font-display italic text-2xl text-on-surface mb-3 leading-tight">Day-one alignment</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">A 90-minute facilitated session with your senior leadership. We surface what you already know, what is contested, and what nobody has decided yet. Sets the boundaries for the next two weeks.</p>
+        </li>
+        <li class="relative pl-6 border-l-2 border-amber-accent">
+          <span class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-amber-accent block mb-2">Week 1 — Step 02</span>
+          <h3 class="font-display italic text-2xl text-on-surface mb-3 leading-tight">Drafting</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">We author the seven decisions against your specific organizational context. You review iteratively, asynchronously, with one named owner per decision on your side.</p>
+        </li>
+        <li class="relative pl-6 border-l-2 border-amber-accent">
+          <span class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-amber-accent block mb-2">Week 2 — Step 03</span>
+          <h3 class="font-display italic text-2xl text-on-surface mb-3 leading-tight">Synchronous review</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">A two-hour session in week two. Leadership reads the drafts together, surfaces remaining disagreement, and decides what to keep, what to revise, and what to refuse.</p>
+        </li>
+        <li class="relative pl-6 border-l-2 border-amber-accent">
+          <span class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-amber-accent block mb-2">Week 2 — Step 04</span>
+          <h3 class="font-display italic text-2xl text-on-surface mb-3 leading-tight">Ratification handoff</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Final versions delivered as a board-ready packet. You walk into your next leadership meeting with the answer.</p>
+        </li>
+      </ol>
+
+      <p class="mt-16 max-w-2xl text-base font-display italic text-on-surface-variant leading-relaxed">
+        Your senior team owns this work from day one. We facilitate. We do not delegate Safety to a side project, and we do not let you delegate it to your most technical staff member.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       6 · PULL QUOTE — from "Safety Before Speed"
+       ============================================================== -->
+  <section class="px-8 md:px-12 py-24 md:py-32 bg-surface-container" aria-label="Pull quote">
+    <div class="max-w-4xl mx-auto relative flex">
+      <div class="pull-rule self-stretch mr-10 md:mr-12 flex-none"></div>
+      <div>
+        <p class="font-display italic text-3xl md:text-4xl lg:text-5xl text-on-surface leading-snug mb-8">
+          Safety is not the enemy of speed. It is the condition under which your organization is still itself when the speed arrives.
+        </p>
+        <cite class="block text-[0.7rem] uppercase tracking-eyebrow font-semibold not-italic text-on-surface-variant">
+          — Safety Before Speed · <a href="/articles/safety-before-speed" class="underline underline-offset-4 decoration-amber-accent hover:text-on-surface transition-colors">Movemental field essay</a>
+        </cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       7 · PRICING — $1,000 · Net 15
+       ============================================================== -->
+  <section class="px-8 md:px-12 py-20 md:py-28 bg-surface" aria-labelledby="pricing-title">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between ledger-row pb-10 mb-16 gap-6">
+        <div>
+          <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-4">
+            What it costs
+          </p>
+          <h2 id="pricing-title" class="font-display italic text-4xl md:text-5xl text-on-surface leading-tight">
+            One thousand dollars. Two weeks. Net 15.
+          </h2>
+        </div>
+        <div class="font-body font-light tracking-tight md:text-right">
+          <div class="text-5xl md:text-6xl text-on-surface leading-none">$1,000</div>
+          <div class="text-[0.62rem] uppercase tracking-eyebrow text-on-surface-variant mt-2">USD · Net 15 from signing</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+        <div>
+          <h3 class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-amber-accent mb-5">
+            What's included
+          </h3>
+          <ul class="space-y-3 text-sm text-on-surface-variant leading-relaxed">
+            <li class="flex gap-3"><span aria-hidden="true" class="text-amber-accent">+</span><span>Two weeks of facilitated work</span></li>
+            <li class="flex gap-3"><span aria-hidden="true" class="text-amber-accent">+</span><span>All seven decisions drafted, reviewed, and finalized</span></li>
+            <li class="flex gap-3"><span aria-hidden="true" class="text-amber-accent">+</span><span>Board-ready ratification packet</span></li>
+            <li class="flex gap-3"><span aria-hidden="true" class="text-amber-accent">+</span><span>One follow-up call within 30 days of completion</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface mb-5">
+            What's not included
+          </h3>
+          <ul class="space-y-3 text-sm text-on-surface-variant leading-relaxed">
+            <li class="flex gap-3"><span aria-hidden="true">—</span><span>Ongoing legal counsel</span></li>
+            <li class="flex gap-3"><span aria-hidden="true">—</span><span>Implementation beyond the leadership team</span></li>
+            <li class="flex gap-3"><span aria-hidden="true">—</span><span>Software tools or platform fees</span></li>
+            <li class="flex gap-3"><span aria-hidden="true">—</span><span>Custom integrations or build work</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface mb-5">
+            Terms
+          </h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">
+            Invoiced at engagement start. Payment Net 15. Final packet releases on payment. Engagement requires participation from at least two senior leaders authorized to ratify governance decisions on the organization's behalf.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       8 · BEGIN HERE / WAIT IF — fit/no-fit comparison
+       ============================================================== -->
+  <section class="px-8 md:px-12 py-20 md:py-28 bg-surface-container-high" aria-labelledby="fit-title">
+    <div class="max-w-7xl mx-auto">
+      <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-4">
+        Who this is for
+      </p>
+      <h2 id="fit-title" class="font-display italic text-4xl md:text-5xl text-on-surface mb-16 leading-tight max-w-3xl">
+        Begin here, or wait — depending on where you actually are.
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+        <div>
+          <h3 class="font-display italic text-3xl text-on-surface mb-10">Begin here if&hellip;</h3>
+          <ul class="space-y-1">
+            <li class="ledger-row py-6">
+              <p class="text-lg text-on-surface leading-snug">You know AI is being used by staff and you have not yet decided what is permitted.</p>
+            </li>
+            <li class="ledger-row py-6">
+              <p class="text-lg text-on-surface leading-snug">Your board, elders, denomination, accreditor, or major donors have asked about your AI position — and you do not have one yet in writing.</p>
+            </li>
+            <li class="ledger-row py-6">
+              <p class="text-lg text-on-surface leading-snug">You want to move on the obvious AI opportunities, but not before you have decided what your organization will and won't do.</p>
+            </li>
+            <li class="py-6">
+              <p class="text-lg text-on-surface leading-snug">At least two senior leaders are willing to commit four hours over two weeks.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-surface p-10 md:p-12 border hairline">
+          <h3 class="font-display italic text-3xl text-on-surface mb-10">Wait if&hellip;</h3>
+          <ul class="space-y-1">
+            <li class="ledger-row py-6 opacity-70">
+              <p class="text-lg text-on-surface-variant leading-snug">You are looking for software to buy rather than decisions to make.</p>
+            </li>
+            <li class="ledger-row py-6 opacity-70">
+              <p class="text-lg text-on-surface-variant leading-snug">Your organization has already written and ratified all seven decisions in a form your senior team can defend in public.</p>
+            </li>
+            <li class="ledger-row py-6 opacity-70">
+              <p class="text-lg text-on-surface-variant leading-snug">You prefer to wait for the legal and regulatory landscape to settle before deciding what your organization stands for.</p>
+            </li>
+            <li class="py-6 opacity-70">
+              <p class="text-lg text-on-surface-variant leading-snug">You want a policy PDF you can file in a drive no one opens. The seven decisions are written to be used, not stored.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       9 · TRUSTED VOICES — replaces "Strategists in Residence"
+            (canonical doctrine: voices are an ecosystem layer, not strategists)
+       ============================================================== -->
+  <section class="px-8 md:px-12 py-20 md:py-28 bg-surface" aria-labelledby="voices-title">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
+        <div class="max-w-2xl">
+          <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-4">
+            Movement Voices
+          </p>
+          <h2 id="voices-title" class="font-display italic text-4xl md:text-5xl text-on-surface leading-tight">
+            The methodology is shaped with leaders whose work and credibility predate AI.
+          </h2>
+        </div>
+        <a href="/voices" class="text-[0.7rem] uppercase tracking-eyebrow font-semibold text-on-surface border-b border-on-surface pb-1 hover:text-amber-accent hover:border-amber-accent transition-colors self-start md:self-end">
+          See all trusted voices →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+        <article>
+          <div class="voice-portrait mb-5">
+            <span class="initials">LR</span>
+            <span class="label">Editorial portrait in production</span>
+          </div>
+          <h3 class="font-display italic text-xl text-on-surface mb-1">Rev. Dr. Liz Rios</h3>
+          <p class="text-[0.62rem] uppercase tracking-eyebrow text-on-surface-variant font-medium">Founder, Passion2Plant · Director, Púlpito Fellows</p>
+          <p class="mt-3 text-sm text-on-surface-variant leading-relaxed">Latina theologian and church planter. Brings a mujerista lens to questions of language, voice, and what mission-driven organizations owe the people they serve.</p>
+        </article>
+        <article>
+          <div class="voice-portrait mb-5">
+            <span class="initials">JW</span>
+            <span class="label">Editorial portrait in production</span>
+          </div>
+          <h3 class="font-display italic text-xl text-on-surface mb-1">JR Woodward</h3>
+          <p class="text-[0.62rem] uppercase tracking-eyebrow text-on-surface-variant font-medium">National Director, V3 · Author, The Scandal of Leadership</p>
+          <p class="mt-3 text-sm text-on-surface-variant leading-relaxed">Church planting strategist with three decades in the field. His Manchester PhD on the misuse of leadership power shapes how Movement Voices think about authority and AI.</p>
+        </article>
+        <article>
+          <div class="voice-portrait mb-5">
+            <span class="initials">RS</span>
+            <span class="label">Editorial portrait in production</span>
+          </div>
+          <h3 class="font-display italic text-xl text-on-surface mb-1">L. Rowland Smith</h3>
+          <p class="text-[0.62rem] uppercase tracking-eyebrow text-on-surface-variant font-medium">National Director, Forge America · Founder, Pando Collective</p>
+          <p class="mt-3 text-sm text-on-surface-variant leading-relaxed">Veteran missional practitioner based in the Colorado Front Range. Brings curatorial judgment and decades of micro-church practice to questions of what mission-driven organizations should and should not publish.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       10 · FIELD GUIDE — lead capture (uses field-guide-cover.webp)
+       ============================================================== -->
+  <section class="px-8 md:px-12 py-20 md:py-28 bg-surface-container" id="field-guide" aria-labelledby="field-guide-title">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      <div class="lg:col-span-7 order-2 lg:order-1">
+        <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-4">
+          Read before you commit
+        </p>
+        <h2 id="field-guide-title" class="font-display italic text-4xl md:text-5xl text-on-surface mb-8 leading-tight">
+          Start with the Field Guide.
+        </h2>
+        <p class="text-lg text-on-surface-variant max-w-xl mb-10 leading-relaxed">
+          <em class="font-display not-italic">It Starts With Safety</em> is a sixteen-page Field Guide that walks through the seven decisions in detail and includes a self-assessment your leadership team can take together in 30 minutes. If after reading you decide to walk through the framework yourselves, do it. The Field Guide is free, and we would rather you do this work well on your own than sign an engagement you do not need.
+        </p>
+
+        <form class="space-y-6 max-w-md" onsubmit="event.preventDefault();">
+          <div>
+            <label for="email" class="block text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-3">Work email address</label>
+            <input id="email" type="email" placeholder="name@organization.org"
+              class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-amber-accent focus:ring-0 text-lg py-3 px-0 text-on-surface placeholder:text-on-surface-variant/50" />
+          </div>
+          <div>
+            <label for="org" class="block text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant mb-3">Organization</label>
+            <input id="org" type="text" placeholder="Church, nonprofit, or institution"
+              class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-amber-accent focus:ring-0 text-lg py-3 px-0 text-on-surface placeholder:text-on-surface-variant/50" />
+          </div>
+          <button type="submit" class="w-full bg-on-surface text-on-primary py-4 text-[0.7rem] uppercase tracking-eyebrow font-semibold hover:bg-primary-dim transition-colors">
+            Send me the Field Guide
+          </button>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            No drip campaign. We send the Field Guide and one follow-up email a week later asking how it went.
+          </p>
+        </form>
+      </div>
+
+      <div class="lg:col-span-5 order-1 lg:order-2 max-w-sm w-full mx-auto lg:mx-0">
+        <!-- Use the actual field-guide cover image we have on disk -->
+        <picture>
+          <img
+            src="./assets/books/field-guide-cover.webp"
+            alt='"It Starts With Safety" — a 16-page Movemental Field Guide'
+            class="w-full aspect-[3/4] object-cover shadow-[0_12px_40px_rgba(42,52,57,0.08)] block"
+            loading="lazy"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        </picture>
+
+        <!-- Typographic fallback (matches the in-app ToolkitCover) -->
+        <div class="toolkit-cover" style="display:none;">
+          <div class="text-center">
+            <div class="cover-eyebrow">Movemental Field Guide</div>
+            <div class="cover-title">It Starts<br/>With Safety</div>
+            <div class="cover-rule"></div>
+            <div class="cover-sub">A sixteen-page protocol for organizational leaders.</div>
+          </div>
+          <div class="cover-foot">Stage 01 · Vol. 01</div>
+        </div>
+
+        <p class="mt-5 text-center text-[0.62rem] uppercase tracking-eyebrow font-semibold text-on-surface-variant">
+          Movemental · Vol. 01 · 16 pages
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       11 · CLOSING CTA — Midnight band
+       ============================================================== -->
+  <section class="px-8 md:px-12 py-32 md:py-48 bg-midnight text-on-primary midnight-noise relative" aria-labelledby="closing-title">
+    <div class="max-w-3xl mx-auto text-center relative z-10">
+      <p class="text-[0.62rem] uppercase tracking-eyebrow font-semibold text-amber-accent mb-8">
+        Begin Safety
+      </p>
+      <h2 id="closing-title" class="font-display italic text-4xl md:text-5xl lg:text-6xl mb-10 leading-tight">
+        AI is already inside your organization. <br/>
+        <span class="text-on-primary/55">Start with what is safe.</span>
+      </h2>
+      <p class="text-lg text-on-primary/75 mb-14 max-w-2xl mx-auto leading-relaxed">
+        Most organizations who walk the Path begin here. Safety is the prerequisite for every later stage. Without it, what comes next is built on assumptions you have not made.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-5">
+        <a href="#field-guide" class="bg-surface text-on-surface px-10 py-4 text-[0.7rem] uppercase tracking-eyebrow font-semibold hover:bg-on-primary transition-colors">
+          Download the free Field Guide
+        </a>
+        <a href="/contact?interest=safety" class="border border-on-primary text-on-primary px-10 py-4 text-[0.7rem] uppercase tracking-eyebrow font-semibold hover:bg-on-primary hover:text-midnight transition-colors">
+          Start a conversation
+        </a>
+      </div>
+      <p class="mt-12 text-xs text-on-primary/55">
+        Two weeks. $1,000. Seven decisions. The work is yours when it's done.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       FOOTER
+       ============================================================== -->
+  <footer class="bg-inverse-surface text-on-primary px-8 md:px-12 py-16">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-10">
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <img src="../../public/images/brand/brand-mark.svg" alt="" class="brand-mark invert opacity-90" />
+          <span class="font-display italic text-xl">Movemental</span>
+        </div>
+        <p class="text-on-primary/60 text-sm max-w-md leading-relaxed">
+          The Movemental Path: Safety, Sandbox, Skills, Solutions. The order is the methodology.
+        </p>
+        <p class="text-on-primary/40 text-xs mt-6">
+          © 2026 Movemental. All rights reserved.
+        </p>
+      </div>
+      <nav class="flex flex-wrap gap-x-10 gap-y-3 text-sm" aria-label="Footer">
+        <a href="/about" class="text-on-primary/70 hover:text-on-primary transition-colors">About</a>
+        <a href="/voices" class="text-on-primary/70 hover:text-on-primary transition-colors">Trusted voices</a>
+        <a href="/field-guide" class="text-on-primary/70 hover:text-on-primary transition-colors">Field Guide</a>
+        <a href="/contact" class="text-on-primary/70 hover:text-on-primary transition-colors">Contact</a>
+        <a href="/privacy" class="text-on-primary/70 hover:text-on-primary transition-colors">Privacy</a>
+        <a href="/terms" class="text-on-primary/70 hover:text-on-primary transition-colors">Terms</a>
+      </nav>
+    </div>
+  </footer>
+
+</main>
+
+</body>
+</html>

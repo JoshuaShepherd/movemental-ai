@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Movement Voices network — static preview (home parity)</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <p class="page-note">
+      Static preview of the home-page <strong>Movement Voices</strong> graph. Same data as
+      <code>voices-graph-data.ts</code>, same D3 settlement as <code>settle-movement-voices.ts</code>.
+      Sync: <code>pnpm docs:sync-movement-voices-html</code>.
+    </p>
+
+    <div class="page">
+      <div class="toolbar">
+        <p class="toolbar-eyebrow">Movement Voices</p>
+        <div class="toolbar-actions">
+          <button type="button" id="btn-reset">Reset view</button>
+          <p class="toolbar-hint">
+            Pan/zoom; hover a portrait for detail. Click → <code>/voices</code>.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <div id="canvas-wrap" class="canvas-wrap">
+            <svg id="viz" role="img" aria-label="Movement Voices network with Movemental at the center"></svg>
+          </div>
+        </div>
+        <aside id="detail-panel" class="detail-panel" aria-live="polite">
+          <p class="placeholder" id="detail-placeholder">Hover a portrait for detail.</p>
+          <div id="detail-active" hidden>
+            <p class="eyebrow">Voice</p>
+            <p class="name" id="detail-name"></p>
+            <p class="title" id="detail-title"></p>
+          </div>
+        </aside>
+      </div>
+
+      <ul id="sr-list" class="sr-only"></ul>
+    </div>
+
+    <p class="page-note" style="border-top: 1px solid rgba(42,52,57,0.15); margin-top: 2rem">
+      Serve from <strong>repo root</strong>:
+      <code>python3 -m http.server 8080</code> →
+      <code>http://localhost:8080/docs/html/scenius-network-v2/</code>
+    </p>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+    <script src="./movement-voices-graph-embedded.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

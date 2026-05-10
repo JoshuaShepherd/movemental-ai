@@ -80,6 +80,9 @@ importers:
       drizzle-zod:
         specifier: ^0.8.3
         version: 0.8.3(drizzle-orm@0.45.2(@opentelemetry/api@1.9.1)(@types/pg@8.15.6)(postgres@3.4.9))(zod@4.3.6)
+      github:
+        specifier: ^14.0.0
+        version: 14.0.0
       graphology:
         specifier: ^0.26.0
         version: 0.26.0(graphology-types@0.24.8)
@@ -174,6 +177,9 @@ importers:
       eslint-config-next:
         specifier: 16.2.3
         version: 16.2.3(@typescript-eslint/parser@8.58.1(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
+      marked:
+        specifier: ^18.0.3
+        version: 18.0.3
       sharp:
         specifier: ^0.34.5
         version: 0.34.5
@@ -5104,6 +5110,10 @@ packages:
     resolution: {integrity: sha512-b1O07XYq8eRuVzBNgJLstU6FYc1tS6wnMtF1I1D9lE8LxZSOGZ7LhxN54yPP6mGw5f2CkXY2BQUL9Fx41qvcIg==}
     engines: {node: '>= 14'}
 
+  github@14.0.0:
+    resolution: {integrity: sha512-34/VqwhYGeYN0VHBSH49TmRWMF7emy32qjK6POiW47T/QI2u/cpuKsmrWt7a218ew/73dF4dQSJE68/HXdNfPw==}
+    deprecated: '''github'' has been renamed to ''@octokit/rest'' (https://git.io/vNB11)'
+
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
     engines: {node: '>= 6'}
@@ -5748,6 +5758,11 @@ packages:
 
   markdown-table@3.0.4:
     resolution: {integrity: sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw==}
+
+  marked@18.0.3:
+    resolution: {integrity: sha512-7VT90JOkDeaRWpfjOReRGPEKn0ecdARBkDGL+tT1wZY0efPPqkUxLUSmzy/C7TIylQYJC9STISEsCHrqb/7VIA==}
+    engines: {node: '>= 20'}
+    hasBin: true
 
   math-intrinsics@1.1.0:
     resolution: {integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==}
@@ -12483,6 +12498,8 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  github@14.0.0: {}
+
   glob-parent@5.1.2:
     dependencies:
       is-glob: 4.0.3
@@ -13067,6 +13084,8 @@ snapshots:
       semver: 7.7.4
 
   markdown-table@3.0.4: {}
+
+  marked@18.0.3: {}
 
   math-intrinsics@1.1.0: {}
 

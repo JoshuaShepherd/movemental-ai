@@ -18,10 +18,10 @@ export function WhoWeServePage() {
           <Reveal>
             <span className="section-eyebrow">Who we serve</span>
             <h1 id="hero-h1" className="display hero-headline max-w-4xl">
-              Three organizations, <em dangerouslySetInnerHTML={{__html: 'one Sequence.'}} />
+              Three organizations, <em dangerouslySetInnerHTML={{__html: 'one Path.'}} />
             </h1>
             <p className="hero-subhead lede lede--regular text-inverse-foreground/80 mb-10 max-w-3xl">
-              We guide churches, nonprofits, and institutions through the identical AI Stewardship Sequence, mapping it directly to their distinct operational realities.
+              We guide churches, nonprofits, and institutions through the identical Movemental Path, mapping it directly to their distinct operational realities.
             </p>
             <div className="hero-actions flex flex-wrap gap-4">
               <Link href="/field-guide" className="btn-pill btn-pill--primary">Read the field guide</Link>
@@ -60,8 +60,8 @@ export function WhoWeServePage() {
                </div>
                <div className="bg-card p-8 border border-border rounded-xl">
                   <span className="text-xs font-semibold uppercase tracking-eyebrow text-ink-soft mb-4 block">Shared 03</span>
-                  <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">The "Shadow IT" Reality</h3>
-                  <p className="text-[0.98rem] text-muted-foreground leading-relaxed">Your staff is already using consumer LLMs to draft emails and write reports. If you haven't set the boundaries, they are currently guessing.</p>
+                  <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">The &quot;Shadow IT&quot; Reality</h3>
+                  <p className="text-[0.98rem] text-muted-foreground leading-relaxed">Your staff is already using consumer LLMs to draft emails and write reports. If you haven&apos;t set the boundaries, they are currently guessing.</p>
                </div>
                <div className="bg-card p-8 border border-border rounded-xl">
                   <span className="text-xs font-semibold uppercase tracking-eyebrow text-ink-soft mb-4 block">Shared 04</span>
@@ -78,7 +78,7 @@ export function WhoWeServePage() {
           <Reveal>
             <SectionHead 
               eyebrow="What the organization shapes"
-              display={<>The Sequence holds. The work inside it is <em dangerouslySetInnerHTML={{__html: 'shaped by who you are.'}} /></>}
+              display={<>The Movemental Path holds. The work inside it is <em dangerouslySetInnerHTML={{__html: 'shaped by who you are.'}} /></>}
               lede="While the order—Safety, Sandbox, Skills, Solutions—applies to everyone, the content of those stages changes radically."
             />
             

@@ -42,7 +42,7 @@ function MovementVoicesFlowEdgeInner(props: EdgeProps) {
         id={id}
         path={path}
         style={{
-          stroke: "var(--foreground)",
+          stroke: "var(--muted-foreground)",
           strokeWidth,
           strokeOpacity: opacity,
           strokeLinecap: "round",
@@ -54,11 +54,11 @@ function MovementVoicesFlowEdgeInner(props: EdgeProps) {
           d={path}
           fill="none"
           className="react-flow__edge-path movement-voices-edge-flow-dash"
-          stroke="var(--foreground)"
-          strokeWidth={Math.max(0.85, strokeWidth * 0.88)}
+          stroke="var(--primary)"
+          strokeWidth={Math.max(0.9, strokeWidth * 0.92)}
           strokeLinecap="round"
-          strokeOpacity={opacity * 0.72}
-          strokeDasharray="2 11"
+          strokeOpacity={opacity * 0.9}
+          strokeDasharray="3 10"
         />
       ) : null}
     </>

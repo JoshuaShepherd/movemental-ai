@@ -143,7 +143,7 @@ function EcosystemFold() {
                 Has a board, elders, or executive team that ratifies posture.
               </li>
               <li>
-                Walks the AI Stewardship Sequence inside the organization.
+                Walks the Movemental Path inside the organization.
               </li>
               <li>Carries the Sequence forward by example.</li>
             </ul>

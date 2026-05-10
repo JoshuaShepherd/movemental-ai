@@ -32,7 +32,7 @@ const STAGE_DESCRIPTIONS: Record<string, string> = {
   Solutions:
     "Workflows with instruments inside them — owners, gates, outcomes, tool independence.",
   Cross:
-    "Honest location — where you actually are in the sequence, and how you respond when things break.",
+    "Honest location — where you actually are on the Movemental Path, and how you respond when things break.",
 };
 
 const ILLUSION_COPY: Record<Exclude<SsssIllusionId, "none">, string> = {
@@ -259,7 +259,7 @@ export function SsssIntegrityDiagnostic() {
       {!isResults && (
         <div className="flex flex-col gap-1">
           <div className="flex items-center justify-between gap-4 text-[10px] font-bold uppercase tracking-eyebrow text-muted-foreground">
-            <span>AI Stewardship Sequence — integrity</span>
+            <span>Movemental Path — integrity</span>
             <span>
               {isIntro
                 ? "Start"
@@ -295,12 +295,12 @@ export function SsssIntegrityDiagnostic() {
       {isIntro && (
         <SurfaceCard className="p-6 sm:p-8">
           <h2 className="text-xl font-semibold tracking-tight text-foreground md:text-2xl">
-            AI Stewardship Sequence — integrity diagnostic
+            Movemental Path — integrity diagnostic
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
             Eighteen statements about how your organization actually operates across the{" "}
             <strong className="font-medium text-foreground">
-              AI Stewardship Sequence: Safety, Sandbox, Skills, Solutions
+              Movemental Path: Safety, Sandbox, Skills, Solutions
             </strong>
             . The same item bank as the{" "}
             <Link
@@ -488,7 +488,7 @@ export function SsssIntegrityDiagnostic() {
               ) : null}
             </p>
             <h2 className="mt-2 text-xl font-semibold tracking-tight text-foreground md:text-2xl">
-              Your AI Stewardship Sequence integrity
+              Your Movemental Path integrity
             </h2>
             <p className="mt-3 text-sm text-muted-foreground">
               Overall signal:{" "}

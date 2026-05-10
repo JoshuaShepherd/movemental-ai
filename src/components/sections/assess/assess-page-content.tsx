@@ -15,12 +15,12 @@ export function AssessPageContent() {
           </RevealOnScroll>
           <RevealOnScroll delaySec={0.06}>
             <h1 className="mt-2 text-balance text-display text-foreground">
-              AI Stewardship Sequence — integrity diagnostic
+              Movemental Path — integrity diagnostic
             </h1>
           </RevealOnScroll>
           <RevealOnScroll delaySec={0.1} className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground">
             <p>
-              One diagnostic for the full sequence:{" "}
+              One diagnostic for the full Movemental Path:{" "}
               <strong className="font-medium text-foreground">Safety, Sandbox, Skills, Solutions</strong>. It is
               operational infrastructure — governance and evidence before workflows and tools — not a generic AI
               maturity quiz.
@@ -42,7 +42,7 @@ export function AssessPageContent() {
       <Section variant="section" spacing="lg" aria-labelledby="ssss-assess-title">
         <Container width="narrow">
           <h2 id="ssss-assess-title" className="sr-only">
-            AI Stewardship Sequence — integrity diagnostic
+            Movemental Path — integrity diagnostic
           </h2>
           <RevealOnScroll>
             <SsssIntegrityDiagnostic />

@@ -92,7 +92,7 @@ export function PathStickySection() {
   return (
     <section ref={sectionRef} className="band-section" id="path" aria-labelledby="path-section-title">
       <h2 id="path-section-title" className="sr-only">
-        The four stages of the Movemental AI Path
+        The four stages of the Movemental Path
       </h2>
       <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-12">
         <div className="grid grid-cols-1 gap-10 min-[960px]:grid-cols-[33%_1fr] min-[960px]:gap-12 lg:gap-16">

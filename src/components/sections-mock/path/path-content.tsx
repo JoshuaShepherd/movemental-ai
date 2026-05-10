@@ -1,5 +1,5 @@
 /**
- * Movemental AI Path — the structured, scannable explanation of the
+ * Movemental Path — the structured, scannable explanation of the
  * four-stage system (Safety → Sandbox → Skills → Solutions).
  *
  * Sister surface to /field-guide (long-form, literary). This page is the
@@ -11,6 +11,7 @@
 
 import type { ReactNode } from "react";
 
+import { HumanHighlightEx3 } from "@/components/primitives/human-highlight";
 import { BtnPill, SectionHead } from "@/components/sections-mock/primitives";
 
 export function PathContent() {
@@ -63,15 +64,18 @@ function Hero() {
       aria-labelledby="path-hero-h1"
     >
       <div className="container">
-        <p className="eyebrow">The Movemental AI Path</p>
+        <p className="eyebrow">The Movemental Path</p>
         <h1 className="display" id="path-hero-h1">
           A clear path for leading your organization{" "}
           <em>through AI.</em>
         </h1>
         <p className="lede lede--regular">
           Most organizations either rush into AI or avoid it. Movemental
-          provides a wiser way — an ordered path that builds safety, develops
-          real capability, and leads to solutions your organization can trust.
+          provides a wiser way —{" "}
+          <HumanHighlightEx3 inverse>
+            an ordered path that builds safety, develops real capability, and leads to solutions your organization can
+            trust.
+          </HumanHighlightEx3>
         </p>
         <div className="hero-actions">
           <BtnPill href="/start-with-safety" variant="primary">
@@ -198,7 +202,7 @@ function OverviewFold() {
         <header className="path-section__header">
           <p className="section-eyebrow">The model</p>
           <h2 className="path-section__title" id="path-overview-h2">
-            There is a better sequence.
+            There is a better order.
           </h2>
           <p className="path-section__intro">
             Movemental organizes AI adoption into four stages. Each builds on

@@ -31,7 +31,7 @@ export function TrainingPage() {
               AI fluency, taught the way it should be.
             </h1>
             <p className="lede text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8">
-              Eight weeks of structured practice on your own material, with people who'll be doing this work alongside you for years. Available as a facilitated cohort or as a self-paced license for your whole organization.
+              Eight weeks of structured practice on your own material, with people who&apos;ll be doing this work alongside you for years. Available as a facilitated cohort or as a self-paced license for your whole organization.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/contact?interest=Fluency%20Cohort" className="btn-pill btn-pill--primary">Start a Cohort</Link>
@@ -62,7 +62,7 @@ export function TrainingPage() {
               
               <div className="bg-background border border-border p-8 md:p-10 rounded-2xl flex flex-col">
                 <h3 className="font-serif-display text-3xl italic mb-2 text-foreground">Fluency Self-Paced</h3>
-                <p className="text-muted-foreground mb-6">The same curriculum, on your team's schedule.</p>
+                <p className="text-muted-foreground mb-6">The same curriculum, on your team&apos;s schedule.</p>
                 <div className="font-semibold text-2xl text-primary mb-8">$4,800 <span className="text-muted-foreground text-[1.0625rem] font-normal">/year</span></div>
                 <ul className="space-y-4 text-[1.0625rem] text-muted-foreground mb-8 flex-grow">
                   <li className="flex gap-3 text-foreground"><span className="text-primary">—</span> Annual license, self-paced</li>

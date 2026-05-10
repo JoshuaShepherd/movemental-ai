@@ -10,6 +10,7 @@
 
 import Link from "next/link";
 
+import { HumanHighlightEx3 } from "@/components/primitives/human-highlight";
 import { BtnPill, SectionHead } from "@/components/sections-mock/primitives";
 
 export function WorkWithUsContent() {
@@ -46,7 +47,7 @@ function Hero() {
         <p className="lede lede--regular">
           Movemental helps churches, nonprofits, and institutions establish
           safety, build capability, and develop AI solutions that serve their
-          mission instead of reshaping it.
+          mission <HumanHighlightEx3 inverse>instead of reshaping it.</HumanHighlightEx3>
         </p>
         <div className="hero-actions">
           <BtnPill href="/contact" variant="primary">
@@ -172,7 +173,7 @@ function EngagementModelFold() {
             We do not start with tools. We start with leadership clarity.
           </h2>
           <p className="path-section__intro">
-            Every engagement follows the Movemental AI Path: Safety, Sandbox,
+            Every engagement follows the Movemental Path: Safety, Sandbox,
             Skills, and Solutions. The pace and depth depend on your
             organization, but the order matters.
           </p>

@@ -11,7 +11,6 @@ import {
   useSyncExternalStore,
 } from "react";
 import {
-  Background,
   ReactFlow,
   type Edge,
   type Node,
@@ -136,6 +135,16 @@ const edgeTypes = {
   movementVoicesFlow: MovementVoicesFlowEdge,
 };
 
+function readGraphDimensions(rect: Pick<DOMRectReadOnly, "width" | "height">): {
+  w: number;
+  h: number;
+} {
+  return {
+    w: Math.max(320, rect.width),
+    h: Math.max(360, rect.height),
+  };
+}
+
 /* ----------------------------------------------------------- ENVIRONMENT */
 
 function subscribeReducedMotion(onChange: () => void): () => void {
@@ -247,11 +256,11 @@ function buildEdges(revealStep: number, prefersReducedMotion: boolean): Edge[] {
 
   return EDGE_RECIPES.map((r) => {
     const visible = revealStep >= r.revealAt;
-    const baseOpacity = r.touchesCenter ? 0.56 : 0.42;
+    const baseOpacity = r.touchesCenter ? 0.5 : 0.36;
     const data: MovementVoicesFlowEdgeData = {
       animateFlow,
       baseOpacity,
-      strokeWidth: r.touchesCenter ? 1.32 : 1,
+      strokeWidth: r.touchesCenter ? 1.28 : 0.95,
       visible,
     };
     return {
@@ -291,16 +300,12 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
     const el = wrapRef.current;
     if (!el) return;
     const initial = el.getBoundingClientRect();
-    setDims({
-      w: Math.max(320, initial.width),
-      h: Math.max(360, Math.min(540, initial.width * 0.62)),
-    });
+    setDims(readGraphDimensions(initial));
 
     const ro = new ResizeObserver((entries) => {
       const r = entries[0]?.contentRect;
       if (!r) return;
-      const w = Math.max(320, r.width);
-      const h = Math.max(360, Math.min(540, w * 0.62));
+      const { w, h } = readGraphDimensions(r);
       setDims((prev) =>
         prev && Math.abs(prev.w - w) < 1 && Math.abs(prev.h - h) < 1
           ? prev
@@ -387,7 +392,7 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
 
   const onInit = useCallback((inst: ReactFlowInstance) => {
     rfRef.current = inst;
-    inst.fitView({ padding: 0.16, duration: 0 });
+    inst.fitView({ padding: 0.1, duration: 0 });
   }, []);
 
   // Refit on dimension changes and when nodes first populate.
@@ -396,7 +401,7 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
     if (!inst || !dims || nodes.length === 0) return;
     const id = requestAnimationFrame(() => {
       inst.fitView({
-        padding: 0.16,
+        padding: 0.1,
         duration: reducedMotion ? 0 : 240,
       });
     });
@@ -419,7 +424,7 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
 
   const onReset = useCallback(() => {
     rfRef.current?.fitView({
-      padding: 0.16,
+      padding: 0.1,
       duration: reducedMotion ? 0 : 280,
     });
     if (!reducedMotion) {
@@ -467,8 +472,8 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
         <div>
           <div
             ref={wrapRef}
-            className="relative w-full overflow-hidden rounded-xl bg-card ring-1 ring-border"
-            style={{ height: "min(540px, 72vh)", minHeight: 360 }}
+            className="relative w-full overflow-hidden rounded-4xl"
+            style={{ height: "clamp(380px, 62vw, 640px)" }}
           >
             <div
               className="h-full w-full"
@@ -493,19 +498,14 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
                 minZoom={0.4}
                 maxZoom={1.65}
                 proOptions={{ hideAttribution: true }}
-              >
-                <Background
-                  gap={22}
-                  color="var(--border)"
-                  className="opacity-[0.35]"
-                />
-              </ReactFlow>
+                style={{ background: "transparent" }}
+              />
             </div>
           </div>
         </div>
 
         <aside
-          className="rounded-xl border border-border bg-card p-4 shadow-ambient lg:min-h-[200px]"
+          className="rounded-xl bg-section/70 p-4 lg:min-h-[200px]"
           aria-live="polite"
         >
           {hoverVoice ? (
@@ -522,9 +522,9 @@ export function MovementVoicesNetwork({ ariaLabel }: MovementVoicesNetworkProps)
             </div>
           ) : (
             <p className="text-sm leading-relaxed text-muted-foreground">
-              {MOVEMENTAL_CENTER.label} sits at the center of a relational
-              network of trusted voices — hover a portrait to read who shapes
-              the conversation.
+              These are the voices whose work and judgment shape how Movemental
+              thinks. Their participation is what makes this category different
+              from generic AI for nonprofits. Hover a portrait for detail.
             </p>
           )}
         </aside>

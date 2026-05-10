@@ -86,13 +86,13 @@ export function PathwayOverviewPage() {
               <h2 className="text-sm font-semibold uppercase tracking-widest text-primary mb-8 border-b border-border pb-4">Why this order</h2>
               <div className="space-y-6 text-[1.125rem] md:text-xl text-foreground/90 leading-relaxed">
                 <p>
-                  When AI lands on top of a fragmented organization — scattered knowledge, unclear decision rights, mixed signals about what's safe to share, and no shared vocabulary for risk — it doesn't help. It accelerates the fragmentation. The organization moves faster, but in more directions. The leaders who said yes to AI start to feel like they invited a problem they don't know how to name.
+                  When AI lands on top of a fragmented organization — scattered knowledge, unclear decision rights, mixed signals about what&apos;s safe to share, and no shared vocabulary for risk — it doesn&apos;t help. It accelerates the fragmentation. The organization moves faster, but in more directions. The leaders who said yes to AI start to feel like they invited a problem they don&apos;t know how to name.
                 </p>
                 <p>
-                  The way out is not slower AI. It's earlier human work. Safety Documentation, Sandbox Discovery, and Skills Development are not pre-AI hesitation; they're the work that makes the AI investment compound rather than corrode. Skip them and you'll spend the next two years undoing damage. Do them and Solutions Deployment is the easiest decision your board makes that year.
+                  The way out is not slower AI. It&apos;s earlier human work. Safety Documentation, Sandbox Discovery, and Skills Development are not pre-AI hesitation; they&apos;re the work that makes the AI investment compound rather than corrode. Skip them and you&apos;ll spend the next two years undoing damage. Do them and Solutions Deployment is the easiest decision your board makes that year.
                 </p>
                 <p>
-                  We tell you this up front because most vendors won't. Their incentive is to sell you the chatbot today. Ours is to build something that lasts long enough to be worth what you'll spend on it.
+                  We tell you this up front because most vendors won&apos;t. Their incentive is to sell you the chatbot today. Ours is to build something that lasts long enough to be worth what you&apos;ll spend on it.
                 </p>
               </div>
             </div>
@@ -104,7 +104,7 @@ export function PathwayOverviewPage() {
         <Container>
           <Reveal>
             <div className="max-w-5xl mx-auto">
-              <h2 className="text-3xl font-serif-display italic mb-10 text-center">What you'd pay elsewhere</h2>
+              <h2 className="text-3xl font-serif-display italic mb-10 text-center">What you&apos;d pay elsewhere</h2>
               <div className="grid md:grid-cols-3 gap-8">
                 <div className="bg-card border border-border p-8 rounded-2xl col-span-2">
                   <table className="w-full text-left border-collapse">

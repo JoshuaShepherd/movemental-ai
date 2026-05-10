@@ -9,7 +9,7 @@ export const DIMENSIONS = [
   {
     id: "sequence-integrity",
     num: "01",
-    title: "Sequence integrity",
+    title: "Path integrity",
     description:
       "Are we building solutions before we have established safety?",
   },

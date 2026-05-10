@@ -167,7 +167,7 @@ export function FieldGuidePage() {
                   
                   <h4 className="text-foreground font-medium mt-8 mb-4">Pilot vs. Sandbox</h4>
                   <p className="mb-6">
-                     A pilot implies an impending rollout. A sandbox implies experimentation where the expected outcome might be "we shouldn't use this tool at all." Sandboxes lower the stakes, allowing staff to evaluate vendor claims aggressively rather than passively accepting them.
+                     A pilot implies an impending rollout. A sandbox implies experimentation where the expected outcome might be &quot;we shouldn&apos;t use this tool at all.&quot; Sandboxes lower the stakes, allowing staff to evaluate vendor claims aggressively rather than passively accepting them.
                   </p>
                   
                   <h4 className="text-foreground font-medium mt-8 mb-4">The Sandbox Season Goals</h4>
@@ -208,12 +208,12 @@ export function FieldGuidePage() {
                      Software training teaches you which buttons to press. Skill formation teaches you what the buttons actually mean.
                   </p>
                   <p className="mb-6">
-                     We strongly differentiate between training and formation. Training assumes the tool is neutral. Formation assumes the tool will shape your staff's mindset over time, so the staff must be equipped to push back. The Skills stage equips your team to view AI not as an oracle providing truth, but as an intern requiring editing, oversight, and direction.
+                     We strongly differentiate between training and formation. Training assumes the tool is neutral. Formation assumes the tool will shape your staff&apos;s mindset over time, so the staff must be equipped to push back. The Skills stage equips your team to view AI not as an oracle providing truth, but as an intern requiring editing, oversight, and direction.
                   </p>
                   
                   <h4 className="text-foreground font-medium mt-8 mb-4">Forming Judgments</h4>
                   <p className="mb-6">
-                     The core skill is discernment: knowing when a task is too relationally intimate, too theologically complex, or too contextually nuanced to delegate to statistics. Staff must learn to detect "flattened" language—the generically agreeable but vacuous tone characteristic of unedited AI output.
+                     The core skill is discernment: knowing when a task is too relationally intimate, too theologically complex, or too contextually nuanced to delegate to statistics. Staff must learn to detect &quot;flattened&quot; language—the generically agreeable but vacuous tone characteristic of unedited AI output.
                   </p>
                   
                   <h4 className="text-foreground font-medium mt-8 mb-4">Organizational Shapes</h4>
@@ -262,7 +262,7 @@ export function FieldGuidePage() {
                   
                   <h4 className="text-foreground font-medium mt-8 mb-4">Named Refusals</h4>
                   <p className="mb-6">
-                     A mature organization knows not only what it will build, but what it officially refuses to build. We document "Named Refusals"—explicit boundaries where the organization formally rejects a technological capability (e.g., "We will never deploy an AI chatbot to handle first-touch crisis care").
+                     A mature organization knows not only what it will build, but what it officially refuses to build. We document &quot;Named Refusals&quot;—explicit boundaries where the organization formally rejects a technological capability (e.g., &quot;We will never deploy an AI chatbot to handle first-touch crisis care&quot;).
                   </p>
                   
                   <h4 className="text-foreground font-medium mt-8 mb-4">Integration Reality</h4>
@@ -302,7 +302,7 @@ export function FieldGuidePage() {
                       </p>
                       
                       <blockquote className="pull-quote pl-6 border-l-2 border-border italic text-xl text-foreground font-serif-display my-8 mb-4">
-                         "Technology scales whatever it is handed. If you hand it organizational ambiguity, it will scale chaos. If you hand it theological clarity, it will scale mission."
+                         &quot;Technology scales whatever it is handed. If you hand it organizational ambiguity, it will scale chaos. If you hand it theological clarity, it will scale mission.&quot;
                       </blockquote>
                       <cite className="block text-sm text-muted-foreground uppercase tracking-widest font-semibold mb-8 pl-6">— Movemental, the field guide</cite>
                       

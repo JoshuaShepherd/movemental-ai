@@ -1,7 +1,7 @@
 export const INTERACTIVE_PATH_STAGES = [
   {
     num: "01",
-    name: "Safety Documentation",
+    name: "Safety",
     body: "Before adopting any tool, an organization must define what is safe. This means establishing guardrails for data, privacy, and missional alignment so staff can experiment without risking the organization's reputation or the trust of the people it serves.",
     workProducts: [
       "AI Safety & Ethics Policy established.",
@@ -22,7 +22,7 @@ export const INTERACTIVE_PATH_STAGES = [
   },
   {
     num: "02",
-    name: "Sandbox Discovery",
+    name: "Sandbox",
     body: "Once safety is defined, the organization creates a contained environment for structured experimentation. The goal is not rapid deployment, but rather building fluency and evaluating capabilities without pressure to perform.",
     workProducts: [
       "Secure, private AI environment (e.g., Enterprise/Team accounts).",
@@ -43,7 +43,7 @@ export const INTERACTIVE_PATH_STAGES = [
   },
   {
     num: "03",
-    name: "Skills Development",
+    name: "Skills",
     body: "The findings from the sandbox are translated into formal training for the broader team. This stage shifts the focus from individual exploration to organizational capability, ensuring everyone shares a common language and baseline skill.",
     workProducts: [
       "Organization-wide AI literacy training.",
@@ -64,7 +64,7 @@ export const INTERACTIVE_PATH_STAGES = [
   },
   {
     num: "04",
-    name: "Solutions Deployment",
+    name: "Solutions",
     body: "Only after safety, experimentation, and skills are established does the organization move to building integrated solutions. At this stage, AI is thoughtfully woven into operations, workflows, and perhaps even products or ministry delivery.",
     workProducts: [
       "Custom GPTs or internal agents for specific workflows.",

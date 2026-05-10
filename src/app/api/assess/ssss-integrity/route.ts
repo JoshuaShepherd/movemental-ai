@@ -17,7 +17,7 @@ const EVENT_CATEGORY = "assessment" as const;
 const EVENT_ACTION = "completed" as const;
 
 /**
- * AI Stewardship Sequence — integrity diagnostic. The single live assessment.
+ * Movemental Path — integrity diagnostic. The single live assessment.
  * GET — item bank, Likert labels, and audience options for clients that prefer fetching.
  * POST — validate, compute result; optional analytics when TENANT_ORG_ID is set.
  */

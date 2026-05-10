@@ -37,7 +37,7 @@ export function LabPage() {
               Lab
             </h1>
             <p className="lede text-xl md:text-2xl text-muted-foreground leading-relaxed mb-6">
-              Find what's worth building. Prove it. Document the cost of getting it wrong.
+              Find what&apos;s worth building. Prove it. Document the cost of getting it wrong.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-4">
               <Link to="/contact?interest=Lab" className="btn-pill btn-pill--primary">Start a Lab</Link>
@@ -68,7 +68,7 @@ export function LabPage() {
                 </div>
               </div>
               <div className="bg-card border border-border p-8 rounded-2xl">
-                <h3 className="font-semibold text-lg text-foreground mb-6">What's included</h3>
+                <h3 className="font-semibold text-lg text-foreground mb-6">What&apos;s included</h3>
                 <ul className="space-y-3">
                   {deliverables.map((item, i) => (
                     <li key={i} className="flex gap-3 text-[1.0625rem] text-muted-foreground"><span className="text-primary">—</span> {item}</li>
@@ -105,7 +105,7 @@ export function LabPage() {
               <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">What happens next</span>
               <h2 className="font-serif-display text-3xl italic mb-6">Equip the whole organization.</h2>
               <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
-                The Lab proves what's possible for a small team. Fluency scales that capability across the organization so everyone shares the same language.
+                The Lab proves what&apos;s possible for a small team. Fluency scales that capability across the organization so everyone shares the same language.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link to="/pathway/fluency" className="btn-pill btn-pill--ghost">Explore Mile Marker 03: Fluency</Link>

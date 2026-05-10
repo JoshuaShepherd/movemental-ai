@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
  */
 
 export const ENTRY_CARDS_GUARANTEE =
-  "We'll confirm your Safety Documentation is in place — ours or yours — before we build.";
+  "We'll confirm Safety is in place — ours or yours — before we build.";
 
 export interface EntryCard {
   heading: string;

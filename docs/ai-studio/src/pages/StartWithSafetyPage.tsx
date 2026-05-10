@@ -40,7 +40,7 @@ export function StartWithSafetyPage() {
             />
             
             <p className="prose max-w-[640px] text-[1.0625rem] leading-[1.75] text-muted-foreground mb-12">
-              Many leaders avoid setting AI policy because they feel they don't understand the technology well enough yet. But setting boundaries does not require technical mastery—it requires organizational clarity.
+              Many leaders avoid setting AI policy because they feel they don&apos;t understand the technology well enough yet. But setting boundaries does not require technical mastery—it requires organizational clarity.
             </p>
 
             <div className="grid md:grid-cols-2 gap-8 md:gap-16 border-t border-border pt-12">
@@ -78,7 +78,7 @@ export function StartWithSafetyPage() {
                <div className="bg-card p-8 border border-border rounded-xl">
                   <ShieldCheck strokeWidth={1.5} className="w-10 h-10 text-primary mb-6" />
                   <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">Acceptable Use</h3>
-                  <p className="text-[0.98rem] text-muted-foreground leading-relaxed">Where is AI explicitly prohibited? Where is it encouraged? Vague guidelines like "use it wisely" are not sufficient.</p>
+                  <p className="text-[0.98rem] text-muted-foreground leading-relaxed">Where is AI explicitly prohibited? Where is it encouraged? Vague guidelines like &quot;use it wisely&quot; are not sufficient.</p>
                </div>
                <div className="bg-card p-8 border border-border rounded-xl">
                   <Lock strokeWidth={1.5} className="w-10 h-10 text-primary mb-6" />
@@ -93,7 +93,7 @@ export function StartWithSafetyPage() {
                <div className="bg-card p-8 border border-border rounded-xl">
                   <MessageSquare strokeWidth={1.5} className="w-10 h-10 text-primary mb-6" />
                   <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">Voice and Trust</h3>
-                  <p className="text-[0.98rem] text-muted-foreground leading-relaxed">Deciding what communication must remain organically human to preserve the organization's relational authenticity.</p>
+                  <p className="text-[0.98rem] text-muted-foreground leading-relaxed">Deciding what communication must remain organically human to preserve the organization&apos;s relational authenticity.</p>
                </div>
                <div className="bg-card p-8 border border-border rounded-xl md:col-span-2 lg:col-span-1 lg:max-w-md">
                   <Compass strokeWidth={1.5} className="w-10 h-10 text-primary mb-6" />
@@ -135,7 +135,7 @@ export function StartWithSafetyPage() {
                </ul>
             </div>
             
-            <p className="mt-8 text-muted-foreground text-sm italic max-w-3xl">If your answers are mostly "No" or "I don't know," a Movemental Safety Session is the highest leverage move you can make today.</p>
+            <p className="mt-8 text-muted-foreground text-sm italic max-w-3xl">If your answers are mostly &quot;No&quot; or &quot;I don&apos;t know,&quot; a Movemental Safety Session is the highest leverage move you can make today.</p>
           </Reveal>
         </Container>
       </section>

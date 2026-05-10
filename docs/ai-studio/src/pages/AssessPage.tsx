@@ -102,7 +102,7 @@ export function AssessPage() {
                </li>
                <li className="pl-4">
                  <strong className="block text-foreground mb-2">A short list of next moves</strong>
-                 <span className="font-normal text-muted-foreground text-base">Three things we would focus on first. Often "do less, slower" or "you are further along than you think."</span>
+                 <span className="font-normal text-muted-foreground text-base">Three things we would focus on first. Often &quot;do less, slower&quot; or &quot;you are further along than you think.&quot;</span>
                </li>
                <li className="pl-4">
                  <strong className="block text-foreground mb-2">Permission to share it</strong>
@@ -125,7 +125,7 @@ export function AssessPage() {
                <span className="text-xs font-semibold uppercase tracking-widest text-ink-soft mb-4 block">Editorial note</span>
                <div className="prose max-w-none text-muted-foreground text-[0.98rem] leading-relaxed">
                   <p><strong>This is not a maturity model.</strong> It is not a benchmark against peers, a quantifiable index, or a score to report to a board. The outputs are purely qualitative.</p>
-                  <p>All inputs are held confidentially by Movemental's founders. We do not aggregate your responses into industry reports without explicit permission, and we do not use your data to train public models.</p>
+                  <p>All inputs are held confidentially by Movemental&apos;s founders. We do not aggregate your responses into industry reports without explicit permission, and we do not use your data to train public models.</p>
                </div>
             </aside>
           </Reveal>

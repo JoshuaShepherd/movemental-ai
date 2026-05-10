@@ -29,13 +29,10 @@ import { PathFold } from "./path-fold";
  * claim made by the existing copy on this page; framework / values / slogan
  * lines are intentionally not chipped.
  *
- *   1. TopographicHero — "human foundation precedes any technological
- *      implementation" → McKinsey workflow-redesign correlate.
- *   2. PathFold — "Most organizations jump straight to tech, or freeze in
- *      place" → 5–7% high-performer cohort (cross-sector convergent finding).
+ *   1. PathFold — organizational posture toward AI adoption → 5–7%
+ *      high-performer cohort (cross-sector convergent finding).
  */
 const HOME_CLAIMS = [
-  "mckinsey-workflow-redesign",
   "high-performer-cohort-5-7",
 ] as const satisfies ReadonlyArray<CitationId>;
 

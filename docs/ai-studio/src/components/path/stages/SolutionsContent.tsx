@@ -12,7 +12,7 @@ export function SolutionsContent() {
         <div className="bg-card p-6 md:p-8 rounded-card border border-border mb-12 relative overflow-hidden">
            <div className="absolute left-0 top-0 bottom-0 w-2 bg-primary" />
            <div className="flex flex-col gap-6 font-serif-display text-2xl md:text-3xl text-foreground">
-              <div className="opacity-60 flex gap-3 text-lg md:text-2xl"><span className="uppercase tracking-widest text-xs font-sans font-bold mt-2.5">Not:</span> "What AI tool should we buy?"</div>
+              <div className="opacity-60 flex gap-3 text-lg md:text-2xl"><span className="uppercase tracking-widest text-xs font-sans font-bold mt-2.5">Not:</span> &quot;What AI tool should we buy?&quot;</div>
               <div className="text-primary flex gap-3"><span className="uppercase tracking-widest text-xs font-sans font-bold mt-2.5 text-foreground">But:</span> <em dangerouslySetInnerHTML={{ __html: `"What should we build around the way our organization actually works?"` }} /></div>
            </div>
         </div>

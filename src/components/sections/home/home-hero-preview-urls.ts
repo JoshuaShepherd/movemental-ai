@@ -5,6 +5,7 @@ export type HomeHeroAudienceTab = "leaders" | "nonprofits" | "churches" | "insti
  * `leaders` is vendored from `docs/templates/alan-hirsch/pages/` when present; otherwise
  * `scripts/sync-hero-previews.ts` copies `docs/templates/alan-hirsch/exemplars/exemplar-landing-general.html`
  * to `leaders/index.html` so builds keep working.
+ * Other audiences use `docs/templates/audience-previews/*.html` when present; otherwise a stub is written.
  */
 export const HOME_HERO_PREVIEW_URLS: Record<HomeHeroAudienceTab, string> = {
   leaders: "/hero-previews/leaders/index.html",

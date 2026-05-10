@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
 
-import { PathwayOverviewPage as StudioPathwayOverviewPage } from "@/components/studio/pages/PathwayOverviewPage";
+import { PathwayOverviewTemplate } from "@/components/pathway/pathway-overview-template";
+import { canonicalPageUrl } from "@/lib/site-url";
 
 export const metadata: Metadata = {
-  title: "The Pathway",
-  description: "The Movemental AI Pathway — foundations, lab, training, and technology in sequence.",
+  title: "Movemental Path",
+  description:
+    "Four stages in order — Safety, Sandbox, Skills, Solutions. Why sequence matters, pricing bands, and institutional timelines.",
+  alternates: { canonical: canonicalPageUrl("/pathway") },
+  openGraph: {
+    url: canonicalPageUrl("/pathway"),
+    title: "Movemental Path — Movemental",
+  },
 };
 
 export default function Page() {
-  return (
-    <StudioPathwayOverviewPage />
-  );
+  return <PathwayOverviewTemplate />;
 }

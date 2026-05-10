@@ -131,7 +131,7 @@ export function PathFootnote({
 
         <div className="flex flex-col items-center justify-center gap-4 text-sm text-inverse-foreground/60">
           <div className="font-serif-display text-lg italic">{label}</div>
-          <div>© {new Date().getFullYear()} Movemental · The Movemental AI Path</div>
+          <div>© {new Date().getFullYear()} Movemental · The Movemental Path</div>
         </div>
       </Container>
     </aside>

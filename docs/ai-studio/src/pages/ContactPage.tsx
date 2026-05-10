@@ -34,7 +34,7 @@ export function ContactPage() {
         <Container width="narrow">
           <div className="bg-card border border-border p-12 rounded-card text-center">
             <h2 className="text-3xl font-serif-display italic mb-4 text-foreground">Thanks.</h2>
-            <p className="text-muted-foreground text-lg">We'll write back within two business days.</p>
+            <p className="text-muted-foreground text-lg">We&apos;ll write back within two business days.</p>
           </div>
         </Container>
       </div>
@@ -48,10 +48,10 @@ export function ContactPage() {
           <Reveal>
             <span className="section-eyebrow">Start the conversation</span>
             <h1 id="contact-hero-h1" className="display hero-headline max-w-4xl">
-              Let's talk about where your organization <em dangerouslySetInnerHTML={{__html: 'actually is.'}} />
+              Let&apos;s talk about where your organization <em dangerouslySetInnerHTML={{__html: 'actually is.'}} />
             </h1>
             <p className="hero-subhead lede lede--regular text-inverse-foreground/80 mb-10 max-w-3xl">
-              You don't need to have a plan yet — just start the conversation.
+              You don&apos;t need to have a plan yet — just start the conversation.
             </p>
             <div className="hero-actions flex flex-wrap gap-4">
               <a href="#contact-method" className="btn-pill bg-[#FDFBF7] text-[#101828] hover:bg-[#E5E0D8]">Send a note</a>
@@ -71,7 +71,7 @@ export function ContactPage() {
             <ul className="space-y-6 max-w-3xl border-t border-border pt-8">
               <li className="flex items-start">
                 <span className="text-primary mr-4 mt-1 font-bold text-lg">•</span>
-                <p className="text-muted-foreground text-[1.0625rem] leading-[1.75]">We don't pitch software or tools. We listen to where your organization is currently feeling the tension.</p>
+                <p className="text-muted-foreground text-[1.0625rem] leading-[1.75]">We don&apos;t pitch software or tools. We listen to where your organization is currently feeling the tension.</p>
               </li>
               <li className="flex items-start">
                 <span className="text-primary mr-4 mt-1 font-bold text-lg">•</span>
@@ -79,7 +79,7 @@ export function ContactPage() {
               </li>
               <li className="flex items-start">
                 <span className="text-primary mr-4 mt-1 font-bold text-lg">•</span>
-                <p className="text-muted-foreground text-[1.0625rem] leading-[1.75]">If Movemental isn't the right fit, we will point you to resources that are.</p>
+                <p className="text-muted-foreground text-[1.0625rem] leading-[1.75]">If Movemental isn&apos;t the right fit, we will point you to resources that are.</p>
               </li>
             </ul>
           </Reveal>
@@ -108,7 +108,7 @@ export function ContactPage() {
               <div className="bg-card p-8 rounded-2xl border border-border hover:border-primary/30 transition-colors shadow-sm relative z-10 group mt-8 md:mt-0">
                 <span className="w-8 h-8 rounded-full bg-background border border-border text-foreground flex items-center justify-center text-xs font-semibold uppercase tracking-widest mb-6 shadow-sm transition-transform group-hover:scale-110 group-hover:border-primary">03</span>
                 <h3 className="font-serif-display text-3xl italic mb-3 text-foreground">Clarify</h3>
-                <p className="text-[1.0625rem] leading-relaxed text-muted-foreground">If it's a fit, we map out a structured diagnostic or a specific engagement path.</p>
+                <p className="text-[1.0625rem] leading-relaxed text-muted-foreground">If it&apos;s a fit, we map out a structured diagnostic or a specific engagement path.</p>
               </div>
             </div>
           </Reveal>
@@ -179,7 +179,7 @@ export function ContactPage() {
 
               <div>
                 <label htmlFor="message" className="form-label mb-1">What is on your desk?</label>
-                <p className="text-xs text-muted-foreground mb-3">Share a bit about context, where the friction is, and what you're hoping to achieve.</p>
+                <p className="text-xs text-muted-foreground mb-3">Share a bit about context, where the friction is, and what you&apos;re hoping to achieve.</p>
                 <textarea id="message" required rows={5} className="form-input bg-input/50 resize-y" value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})}></textarea>
               </div>
 

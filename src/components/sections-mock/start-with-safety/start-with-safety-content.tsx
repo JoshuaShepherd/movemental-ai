@@ -1,5 +1,5 @@
 /**
- * Start with Safety — first step of the Movemental AI Path.
+ * Start with Safety — first step of the Movemental Path.
  *
  * Composition mirrors the home page chain: midnight hero → reframe →
  * foundation cards → diagnostic → outputs → mini path → midnight final CTA.
@@ -11,6 +11,7 @@
 import { Check, Compass, Eye, Lock, MessageSquare, ShieldCheck } from "lucide-react";
 import type { ReactNode } from "react";
 
+import { HumanHighlightEx3 } from "@/components/primitives/human-highlight";
 import { BtnPill, SectionHead } from "@/components/sections-mock/primitives";
 
 export function StartWithSafetyContent() {
@@ -46,8 +47,8 @@ function Hero() {
         </h1>
         <p className="lede lede--regular">
           AI is already being used inside your organization. Safety gives
-          leaders a shared way to protect people, clarify boundaries, and move
-          forward without panic.
+          leaders a shared way to protect people, clarify boundaries, and move{" "}
+          <HumanHighlightEx3 inverse>forward without panic.</HumanHighlightEx3>
         </p>
         <div className="hero-actions">
           <BtnPill href="/contact" variant="primary">
@@ -409,14 +410,14 @@ function PathFold() {
           </h2>
           <p className="path-section__intro">
             Movemental does not stop at policy. Safety prepares your
-            organization for a healthier sequence: Sandbox, Skills, and
+            organization for a healthier path: Sandbox, Skills, and
             Solutions. Once boundaries are clear, your team can explore real
             use cases, build practical capability, and create tools that serve
             your mission instead of reshaping it.
           </p>
         </header>
 
-        <ol className="path-steps" aria-label="The Movemental AI Path">
+        <ol className="path-steps" aria-label="The Movemental Path">
           {PATH_STEPS.map((step) => (
             <li key={step.title} className="path-step">
               <div className="path-step__number" aria-hidden="true">

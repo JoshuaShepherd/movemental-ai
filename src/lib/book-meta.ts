@@ -8,7 +8,7 @@ export const BOOK_TITLE = "From Fragmentation to Movement";
 /** Raster cover art (WebP) — full book jacket. */
 export const BOOK_COVER_IMAGE = "/images/books/organizational-intelligence-book.webp";
 
-/** Companion cover art (WebP) — homepage book block alternate visual (AI Stewardship Sequence field guide tone). */
+/** Companion cover art (WebP) — homepage book block alternate visual (Movemental Path field guide tone). */
 export const FIELD_GUIDE_COVER_IMAGE = "/images/books/field-guide-cover.webp";
 
 export const BOOK_SUBTITLE =

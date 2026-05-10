@@ -258,8 +258,8 @@ export const SERIES_META: Record<SeriesKey, { title: string; deck: string }> = {
     deck: "Nine pieces that form the public argument behind the Sandbox Season.",
   },
   ssss: {
-    title: "The AI Stewardship Sequence",
-    deck: "Safety, Sandbox, Skills, Solutions — the core operating sequence.",
+    title: "The Movemental Path",
+    deck: "Safety, Sandbox, Skills, Solutions — the core public methodology.",
   },
   "two-intelligences": {
     title: "Two intelligences",
@@ -273,7 +273,7 @@ export const SERIES_META: Record<SeriesKey, { title: string; deck: string }> = {
 
 export const TOPIC_META: Record<Topic, { title: string; deck: string }> = {
   fragmentation: { title: "Fragmentation", deck: "Work exists but does not connect." },
-  ssss: { title: "AI Stewardship Sequence", deck: "Safety, Sandbox, Skills, Solutions." },
+  ssss: { title: "Movemental Path", deck: "Safety, Sandbox, Skills, Solutions." },
   integrity: { title: "Integrity", deck: "Structural coherence between what you say, what you ship, and who you are." },
   signal: { title: "Signal", deck: "Why real expertise is becoming invisible, and what still reads as credible." },
   formation: { title: "Formation", deck: "What skill becomes once it's judgment." },

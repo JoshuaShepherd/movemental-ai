@@ -71,7 +71,7 @@ export function FoundationsPage() {
                 </div>
               </div>
               <div className="bg-card border border-border p-8 rounded-2xl">
-                <h3 className="font-semibold text-lg text-foreground mb-6">What's included</h3>
+                <h3 className="font-semibold text-lg text-foreground mb-6">What&apos;s included</h3>
                 <ul className="space-y-3">
                   {deliverables.map((item, i) => (
                     <li key={i} className="flex gap-3 text-[1.0625rem] text-muted-foreground"><span className="text-primary">—</span> {item}</li>

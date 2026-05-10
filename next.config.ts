@@ -36,6 +36,11 @@ const nextConfig: NextConfig = {
       // founder bios, the origin story, and the five commitments. Defensive
       // 301 catches any external links or bookmarks that still point at /team.
       {
+        source: "/skills",
+        destination: "/pathway/skills",
+        permanent: true,
+      },
+      {
         source: "/team",
         destination: "/about",
         permanent: true,

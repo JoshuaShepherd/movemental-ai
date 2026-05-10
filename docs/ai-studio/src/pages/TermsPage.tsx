@@ -17,12 +17,12 @@ export function TermsPage() {
 
           <h2 className="text-xl font-bold mt-8 mb-4">Use of the Service</h2>
           <p className="mb-4">
-             By accessing and using the Movemental website, including any diagnostic tools, guides, or resources published on the site ("the Service"), you agree to abide by these Terms. The Service is provided for informational and educational scaffolding regarding organizational adoption of AI.
+             By accessing and using the Movemental website, including any diagnostic tools, guides, or resources published on the site (&quot;the Service&quot;), you agree to abide by these Terms. The Service is provided for informational and educational scaffolding regarding organizational adoption of AI.
           </p>
 
           <h2 className="text-xl font-bold mt-8 mb-4">Intellectual property</h2>
           <p className="mb-4">
-             All frameworks, content, phrasing, structure (including the "Movemental AI Path" and "AI Stewardship Sequence"), and design on this site are the intellectual property of Movemental. You may not reproduce, distribute, or create derivative works from this content for commercial purposes without explicit, written permission from Movemental.
+             All frameworks, content, phrasing, structure (including the &quot;Movemental AI Path&quot; and &quot;AI Stewardship Sequence&quot;), and design on this site are the intellectual property of Movemental. You may not reproduce, distribute, or create derivative works from this content for commercial purposes without explicit, written permission from Movemental.
           </p>
 
           <h2 className="text-xl font-bold mt-8 mb-4">User content</h2>
@@ -32,7 +32,7 @@ export function TermsPage() {
 
           <h2 className="text-xl font-bold mt-8 mb-4">Disclaimers</h2>
           <p className="mb-4">
-             The guidance provided on this website does not constitute legal, medical, or technical operational insurance. Our frameworks are provided "as is." We disclaim all warranties, express or implied, including the fitness for a particular organizational context unless we are explicitly contracted via a Separate Agreement.
+             The guidance provided on this website does not constitute legal, medical, or technical operational insurance. Our frameworks are provided &quot;as is.&quot; We disclaim all warranties, express or implied, including the fitness for a particular organizational context unless we are explicitly contracted via a Separate Agreement.
           </p>
 
           <h2 className="text-xl font-bold mt-8 mb-4">Limitation of liability</h2>

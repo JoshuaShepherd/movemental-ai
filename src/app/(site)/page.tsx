@@ -4,7 +4,7 @@ import { HomeContent } from "@/components/sections-mock/home/home-content";
 
 export const metadata: Metadata = {
   title: "A wiser way to navigate AI",
-  description: "Movemental walks church and nonprofit leaders through the AI Stewardship Sequence: Safety, Sandbox, Skills, Solutions, in order.",
+  description: "Movemental walks church and nonprofit leaders through the Movemental Path: Safety, Sandbox, Skills, Solutions, in order.",
 };
 
 export default function Page() {

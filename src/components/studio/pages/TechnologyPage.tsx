@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from 'react';
+import { HumanHighlightEx3 } from '@/components/primitives/human-highlight';
 import { Container } from '@/components/studio/Container';
 import { Reveal } from '@/components/studio/Reveal';
 import Link from "next/link";
@@ -43,20 +44,21 @@ export function TechnologyPage() {
 
   return (
     <div className="pt-24 pb-20 md:pt-32">
-      {/* Stage 04 — Solutions editorial (stitch_movemental_system_builder/stage_04_solutions_refined_layout) */}
+      {/* Stage 04 — Solutions editorial (legacy Stitch layout reference removed) */}
       <section className="border-b border-border pb-24 pt-12 md:pb-48 md:pt-20">
         <Container>
           <div className="mx-auto flex max-w-7xl flex-col gap-16 md:flex-row md:items-start">
             <Reveal>
               <div className="w-full max-w-4xl">
                 <span className="font-mono mb-8 block text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
-                  Stage 04 of the Movemental AI Path
+                  Stage 04 of the Movemental Path
                 </span>
                 <h1 className="mb-10 font-serif-display text-6xl leading-[0.9] tracking-tight text-foreground md:text-7xl lg:text-[5.75rem]">
-                  Solutions <span className="block text-muted-foreground/90 font-light italic">Deployment.</span>
+                  Solutions
                 </h1>
                 <p className="mb-12 max-w-xl text-xl font-light leading-relaxed text-muted-foreground md:text-2xl">
-                  The technological deployment built on a grounded human foundation.
+                  The technological deployment{" "}
+                  <HumanHighlightEx3>built on a grounded human foundation.</HumanHighlightEx3>
                 </p>
                 <div className="mb-10 flex flex-col gap-4 sm:flex-row">
                   <Link href="/contact?interest=solutions" className="btn-pill bg-foreground px-8 py-4 text-center text-xs font-semibold uppercase tracking-eyebrow text-background hover:opacity-90">
@@ -82,7 +84,7 @@ export function TechnologyPage() {
               </h2>
               <div className="space-y-8 text-lg leading-relaxed text-foreground md:text-xl font-light">
                 <p>
-                  In adoption work across mission-driven organizations, a familiar pattern emerges: leadership understands deployment in principle, yet only a minority carries integration past isolated pilots — not because the models fail, but because sequencing was skipped or compressed.
+                  In adoption work across mission-driven organizations, a familiar pattern emerges: leadership understands deployment in principle, yet only a minority carries integration past isolated pilots — not because the models fail, but because stages on the Movemental Path were skipped or compressed.
                 </p>
                 <p>
                   This is not principally a failure of technology. It is a failure of order. Solutions work holds when Safety, Sandbox iteration, and skill formation precede procurement and build commitments.
@@ -107,7 +109,7 @@ export function TechnologyPage() {
                 { n: "01", h: "Safety", sub: "Documentation", p: "Ratified protocols governing data flow and entity interaction." },
                 { n: "02", h: "Sandbox", sub: "Complete", p: "Stress-tested operational constraints and utility validation." },
                 { n: "03", h: "Skills", sub: "Capacity", p: "Internal baseline established for human-machine collaboration." },
-                { n: "04", h: "Executive", sub: "Alignment", p: "Board and leadership sign-off on sequence, budget, and posture before build spend." },
+                { n: "04", h: "Executive", sub: "Alignment", p: "Board and leadership sign-off on path, budget, and posture before build spend." },
               ].map((cell) => (
                 <div key={cell.n} className="flex flex-col gap-6 bg-background p-10 md:p-12">
                   <span className="text-[10px] font-semibold uppercase tracking-eyebrow text-muted-foreground">{cell.n}</span>
@@ -214,7 +216,7 @@ export function TechnologyPage() {
           <Reveal>
             <div className="max-w-3xl mb-12">
               <h2 className="font-serif-display text-4xl italic mb-4">Live builds you can visit.</h2>
-              <p className="text-xl text-muted-foreground">These are real, active platforms running on the Movemental stack. Click through and see what's possible.</p>
+              <p className="text-xl text-muted-foreground">These are real, active platforms running on the Movemental stack. Click through and see what&apos;s possible.</p>
             </div>
             
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl">
@@ -245,7 +247,7 @@ export function TechnologyPage() {
                 <h2 className="font-serif-display text-4xl italic mb-6">Why this stack</h2>
                 <div className="space-y-4 text-[1.0625rem] text-background/80 leading-relaxed">
                   <p>
-                    The Movemental stack is built agentic-native. Most "AI-enabled" platforms layer AI on top of legacy CMS, LMS, and CRM systems that were designed before generative models existed. The architectures don't fit. The integrations leak. The promise underdelivers. We started from a different place: build the integrated intelligence layer first, then expose it through the surfaces — content management, learning delivery, relationship management — that your organization actually uses.
+                    The Movemental stack is built agentic-native. Most &quot;AI-enabled&quot; platforms layer AI on top of legacy CMS, LMS, and CRM systems that were designed before generative models existed. The architectures don&apos;t fit. The integrations leak. The promise underdelivers. We started from a different place: build the integrated intelligence layer first, then expose it through the surfaces — content management, learning delivery, relationship management — that your organization actually uses.
                   </p>
                   <p>
                     The result is a platform where your knowledge compounds rather than scatters. Where your content trains your AI rather than competing with it. Where your audience, your members, and your peers are connected through infrastructure that makes each more credible, not less. The same architecture we built for Alan Hirsch, tuned to your work and yours alone.
@@ -306,7 +308,7 @@ export function TechnologyPage() {
       <Container className="pb-20 md:pb-32 text-center max-w-2xl mx-auto">
         <Reveal>
           <Link href="/contact?interest=Walkthrough" className="btn-pill btn-pill--primary text-lg px-8 py-4 mb-4">Book a 30-minute live walkthrough</Link>
-          <p className="text-muted-foreground italic">You'll see the actual platform in action. No slides.</p>
+          <p className="text-muted-foreground italic">You&apos;ll see the actual platform in action. No slides.</p>
         </Reveal>
       </Container>
     </div>
