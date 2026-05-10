@@ -92,7 +92,7 @@ export const VOICES = [
     image: "https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/movemental/voices/alan-hirsch.webp"
   },
   {
-    name: "Brad Brisco",
+    name: "Dr. Brad Brisco",
     title: "NAMB / Send Network multiplication strategies director; covocational ministry; five books; missional theology ↔ evangelical systems translator.",
     image: "https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/movemental/voices/brad-brisco.webp"
   },

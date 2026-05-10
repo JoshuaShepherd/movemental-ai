@@ -5,14 +5,84 @@
   "use strict";
 
   var PACK = window.__SCIENIUS_V3_DATA__;
-  var COLOR_RANGE = ["#DC2626", "#E11D48", "#BE123C", "#9F1239", "#881337", "#4C1D95", "#5B21B6", "#6D28D9"];
-  var LEGEND_COLORS = ["#DC2626", "#E11D48", "#BE123C", "#9F1239"];
+  /* Church → brand blue; NonProfit → pathway gold; Institution → signal sage (site tokens) */
+  var LEGEND_COLORS = ["#0053db", "#b8893a", "#6b7e3f"];
+  var EDGE_STROKE = "rgba(244, 239, 229, 0.13)";
+  var EDGE_HIGHLIGHT = "#0053db";
+  var NODE_FILL_EMPTY = "rgba(244, 239, 229, 0.07)";
+  var NODE_STROKE_EMPTY = "rgba(244, 239, 229, 0.18)";
+  var NODE_RING_PORTRAIT = "rgba(244, 239, 229, 0.88)";
+  var LABEL_FILL = "rgba(244, 239, 229, 0.88)";
+
+  /** Fixed seed → deterministic extras (topic assignment + radii). */
+  var SCIENIUS_V3_SEED = 0xc0010203;
 
   var showLabels = true;
   var simulation = null;
 
+  function mulberry32(seed) {
+    return function () {
+      var t = (seed += 0x6d2b79f5);
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  /** Full mesh: default view. Distinct / curated edges can be layered in a future overlay. */
+  function buildCompleteGraphLinks(nodes) {
+    var links = [];
+    var n = nodes.length;
+    for (var i = 0; i < n; i++) {
+      for (var j = i + 1; j < n; j++) {
+        links.push({ source: nodes[i].id, target: nodes[j].id, value: 1 });
+      }
+    }
+    return links;
+  }
+
+  /**
+   * Elliptical golden spiral + deterministic jitter — breaks perfect circle read,
+   * uses most of the viewport. Portrait nodes bias slightly inward (hub seeds).
+   */
+  function seedNodePositions(nodes, width, height) {
+    var cx = width / 2;
+    var cy = height / 2;
+    var rx = width * 0.49;
+    var ry = height * 0.44;
+    var n = nodes.length;
+    var golden = 2.39996322972865332;
+    var jitterRng = mulberry32((SCIENIUS_V3_SEED ^ 0x85ebca6b) >>> 0);
+    for (var i = 0; i < n; i++) {
+      var d = nodes[i];
+      var angle = i * golden + (jitterRng() - 0.5) * 0.62;
+      var t = Math.sqrt((i + 0.5) / n);
+      var hubPull = d.imageUrl ? 0.68 : 1.06;
+      var radial = t * hubPull * (0.86 + jitterRng() * 0.26);
+      d.x = cx + Math.cos(angle) * rx * radial;
+      d.y = cy + Math.sin(angle) * ry * radial;
+    }
+  }
+
+  var graphTopologyCache = { key: "", data: null };
+
+  function getTopology(leaders, topics) {
+    var key = leaders.length + "|" + leaders
+      .map(function (l) {
+        return l.id;
+      })
+      .join(",");
+    if (graphTopologyCache.key === key && graphTopologyCache.data) {
+      return graphTopologyCache.data;
+    }
+    graphTopologyCache.key = key;
+    graphTopologyCache.data = generateGraphData(leaders, topics);
+    return graphTopologyCache.data;
+  }
+
   function generateGraphData(leaders, topics) {
     var TARGET_TOTAL_NODES = 100;
+    var rng = mulberry32(SCIENIUS_V3_SEED >>> 0);
 
     var nodes = leaders.map(function (l) {
       var copy = {};
@@ -21,45 +91,35 @@
       copy.radius = 20;
       return copy;
     });
-    var links = [];
-
-    leaders.forEach(function (source) {
-      source.connections.forEach(function (targetId) {
-        links.push({ source: source.id, target: targetId, value: 2 });
-      });
-    });
 
     var extraCount = Math.max(0, TARGET_TOTAL_NODES - leaders.length);
+    var ti = topics.length;
     for (var i = 0; i < extraCount; i++) {
       var id = "extra-" + i;
-      var randomTopic = topics[Math.floor(Math.random() * topics.length)].slug;
-      var targetPool = nodes;
-      var targetId = targetPool[Math.floor(Math.random() * targetPool.length)].id;
-
+      var topicSlug = topics[Math.floor(rng() * ti)].slug;
       nodes.push({
         id: id,
         name: "",
         role: "",
         bio: "",
         imageUrl: "",
-        topics: [randomTopic],
+        topics: [topicSlug],
         themes: [],
         connections: [],
         books: [],
-        group: randomTopic,
-        radius: 8 + Math.random() * 8,
+        group: topicSlug,
+        radius: 8 + rng() * 8,
       });
-
-      links.push({ source: id, target: targetId, value: 1 });
     }
 
+    var links = buildCompleteGraphLinks(nodes);
     return { nodes: nodes, links: links };
   }
 
   function buildLegend(topics) {
     var host = document.getElementById("legend-topics");
     host.innerHTML = "";
-    topics.slice(0, 4).forEach(function (topic, i) {
+    topics.slice(0, 3).forEach(function (topic, i) {
       var row = document.createElement("div");
       row.className = "legend-row";
       var dot = document.createElement("span");
@@ -107,7 +167,8 @@
     var width = container.clientWidth || 800;
     var height = container.clientHeight || 600;
 
-    var data = generateGraphData(leaders, topics);
+    var data = getTopology(leaders, topics);
+    seedNodePositions(data.nodes, width, height);
 
     if (simulation) simulation.stop();
     d3.select(svgEl).selectAll("*").remove();
@@ -125,8 +186,8 @@
       .attr("cx", "50%")
       .attr("cy", "50%")
       .attr("r", "50%");
-    gradient.append("stop").attr("offset", "0%").attr("stop-color", "#1F2937").attr("stop-opacity", 0.3);
-    gradient.append("stop").attr("offset", "100%").attr("stop-color", "#0F172A").attr("stop-opacity", 0);
+    gradient.append("stop").attr("offset", "0%").attr("stop-color", "#0053db").attr("stop-opacity", 0.14);
+    gradient.append("stop").attr("offset", "100%").attr("stop-color", "#141110").attr("stop-opacity", 0);
 
     svg.append("rect").attr("width", width).attr("height", height).style("fill", "url(#bg-gradient)");
 
@@ -141,27 +202,51 @@
 
     svg.call(zoom);
 
-    var colorScale = d3.scaleOrdinal().domain(topics.map(function (t) { return t.slug; })).range(COLOR_RANGE);
-    colorScale.unknown("#DC2626");
+    var linkBaseOpacity = 0.095;
+    var linkBaseWidth = 0.48;
+
+    var dim = Math.min(width, height);
+    var radialPortrait = dim * 0.13;
+    var radialExtra = dim * 0.39;
 
     simulation = d3
       .forceSimulation(data.nodes)
       .force(
         "link",
-        d3.forceLink(data.links).id(function (d) { return d.id; }).distance(function (l) { return l.value >= 2 ? 95 : 72; })
+        d3
+          .forceLink(data.links)
+          .id(function (d) {
+            return d.id;
+          })
+          .distance(46)
+          .strength(0.028)
       )
-      .force("charge", d3.forceManyBody().strength(-320))
-      .force("center", d3.forceCenter(width / 2, height / 2))
-      .force("collide", d3.forceCollide().radius(function (d) { return d.radius + 8; }).iterations(3));
+      .force(
+        "charge",
+        d3.forceManyBody().strength(function (d) {
+          return d.imageUrl ? -395 : -705;
+        })
+      )
+      .force("center", d3.forceCenter(width / 2, height / 2).strength(0.065))
+      .force(
+        "radial",
+        d3
+          .forceRadial(function (d) {
+            return d.imageUrl ? radialPortrait : radialExtra;
+          }, width / 2, height / 2)
+          .strength(0.078)
+      )
+      .force("collide", d3.forceCollide().radius(function (d) { return d.radius + (d.imageUrl ? 10 : 7); }).iterations(3))
+      .alphaDecay(0.041);
 
     var link = g
       .append("g")
-      .attr("stroke", "#374151")
-      .attr("stroke-opacity", 0.4)
+      .attr("stroke", EDGE_STROKE)
+      .attr("stroke-opacity", linkBaseOpacity)
       .selectAll("line")
       .data(data.links)
       .join("line")
-      .attr("stroke-width", function (d) { return Math.sqrt(d.value); });
+      .attr("stroke-width", linkBaseWidth);
 
     var nodeGroup = g
       .append("g")
@@ -182,8 +267,8 @@
         sel
           .append("circle")
           .attr("r", d.radius)
-          .attr("fill", "#1F2937")
-          .attr("stroke", "#374151")
+          .attr("fill", NODE_FILL_EMPTY)
+          .attr("stroke", NODE_STROKE_EMPTY)
           .attr("stroke-width", 1)
           .style("pointer-events", "none");
       } else {
@@ -209,7 +294,7 @@
           .append("circle")
           .attr("r", d.radius)
           .attr("fill", "none")
-          .attr("stroke", "#fff")
+          .attr("stroke", NODE_RING_PORTRAIT)
           .attr("stroke-width", 2)
           .style("pointer-events", "none");
       }
@@ -228,10 +313,13 @@
           setHoverPanel(d, true);
           link
             .attr("stroke", function (l) {
-              return l.source.id === d.id || l.target.id === d.id ? "#DC2626" : "#374151";
+              return l.source.id === d.id || l.target.id === d.id ? EDGE_HIGHLIGHT : EDGE_STROKE;
             })
             .attr("stroke-opacity", function (l) {
-              return l.source.id === d.id || l.target.id === d.id ? 1 : 0.1;
+              return l.source.id === d.id || l.target.id === d.id ? 0.55 : linkBaseOpacity * 0.35;
+            })
+            .attr("stroke-width", function (l) {
+              return l.source.id === d.id || l.target.id === d.id ? 0.85 : linkBaseWidth;
             });
           nodeGroup.attr("opacity", function (n) {
             return n.id === d.id ||
@@ -248,7 +336,7 @@
       })
       .on("mouseout", function () {
         setHoverPanel(null, false);
-        link.attr("stroke", "#374151").attr("stroke-opacity", 0.4);
+        link.attr("stroke", EDGE_STROKE).attr("stroke-opacity", linkBaseOpacity).attr("stroke-width", linkBaseWidth);
         nodeGroup.attr("opacity", 1);
       })
       .on("click", function (event, d) {
@@ -266,7 +354,7 @@
       .attr("y", 4)
       .style("font-family", "Inter, sans-serif")
       .style("font-size", "10px")
-      .style("fill", "#D1D5DB")
+      .style("fill", LABEL_FILL)
       .style("pointer-events", "none");
 
     simulation.on("tick", function () {

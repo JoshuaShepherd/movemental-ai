@@ -19,7 +19,7 @@ interface Founder {
 // conventions. Replace all three with a single unified shoot when scheduled.
 const FOUNDERS: readonly Founder[] = [
   {
-    name: "Brad Brisco",
+    name: "Dr. Brad Brisco",
     title: "CEO & Co-founder",
     initials: "BB",
     portrait: "/images/voices/brad-brisco.webp",

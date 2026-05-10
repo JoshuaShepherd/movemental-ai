@@ -44,7 +44,7 @@ export const MOVEMENTAL_CENTER = {
  * Trusted voices in the graph. `appearOrder` matches the home-page reveal
  * sequence requested by product:
  *   1. Alan Hirsch
- *   2. Brad Brisco
+ *   2. Dr. Brad Brisco
  *   3. Joshua Shepherd
  *   4. Tim Catchim
  *   5. JR Woodward
@@ -64,7 +64,7 @@ export const MOVEMENT_VOICES: readonly VoiceGraphVoice[] = [
   },
   {
     id: "brad-brisco",
-    name: "Brad Brisco",
+    name: "Dr. Brad Brisco",
     title: "CEO & Co-founder, Movemental",
     initials: "BB",
     imageSrc: "/images/voices/brad-brisco.webp",

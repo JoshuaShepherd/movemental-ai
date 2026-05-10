@@ -1,15 +1,13 @@
-/* Reference: v2 SceniusGraph — sage / snow palette */
+/* Movemental — midnight band + brand blue (globals.css / DESIGN.md) */
 :root {
-  --sage-950: #101916;
-  --sage-900: #1a2820;
-  --sage-800: #243028;
-  --snow-300: #d1d5db;
-  --snow-400: #9ca3af;
-  --snow-500: #6b7280;
-  --snow-700: #374151;
-  --snow-800: #1f2937;
-  --scarlet-400: #f87171;
-  --scarlet-300: #fca5a5;
+  --inverse-surface: #141110;
+  --inverse-foreground: #f4efe5;
+  --inverse-muted: rgba(244, 239, 229, 0.68);
+  --inverse-border: rgba(244, 239, 229, 0.14);
+  --brand-blue: #0053db;
+  --brand-blue-dim: rgba(0, 83, 219, 0.65);
+  --glass-fill: rgba(20, 17, 16, 0.82);
+  --shadow-ambient: 0 12px 40px rgba(42, 52, 57, 0.12);
   --pt-top: 5rem;
 }
 
@@ -27,8 +25,8 @@ body {
 
 body {
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-  background: var(--sage-950);
-  color: var(--snow-300);
+  background: var(--inverse-surface);
+  color: var(--inverse-foreground);
   overflow: hidden;
 }
 
@@ -56,23 +54,25 @@ body {
 }
 
 .context-panel h1 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   font-size: 2.25rem;
-  font-weight: 400;
-  color: #fff;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--inverse-foreground);
   margin: 0 0 1rem;
 }
 
 .context-panel .blurb {
   font-size: 0.875rem;
   line-height: 1.6;
-  color: var(--snow-400);
-  background: rgba(16, 25, 22, 0.8);
-  backdrop-filter: blur(8px);
+  color: var(--inverse-muted);
+  background: var(--glass-fill);
+  backdrop-filter: blur(10px);
   padding: 1rem;
   border-radius: 0.75rem;
-  border: 1px solid rgba(31, 41, 55, 0.5);
+  border: 1px solid var(--inverse-border);
   margin: 0;
+  box-shadow: var(--shadow-ambient);
 }
 
 .controls-panel {
@@ -80,12 +80,12 @@ body {
   bottom: 3rem;
   left: 1.5rem;
   z-index: 10;
-  background: rgba(26, 40, 32, 0.8);
+  background: var(--glass-fill);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(31, 41, 55, 0.5);
+  border: 1px solid var(--inverse-border);
   border-radius: 0.75rem;
   padding: 1rem;
-  max-width: 16rem;
+  max-width: 19rem;
 }
 
 @media (min-width: 1024px) {
@@ -104,14 +104,15 @@ body {
 .controls-label {
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--snow-300);
+  color: var(--inverse-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .link-btn {
   font-size: 0.75rem;
-  color: var(--scarlet-400);
+  font-weight: 500;
+  color: var(--brand-blue);
   background: none;
   border: none;
   padding: 0;
@@ -119,7 +120,7 @@ body {
 }
 
 .link-btn:hover {
-  color: var(--scarlet-300);
+  color: var(--brand-blue-dim);
 }
 
 .legend-row {
@@ -138,29 +139,32 @@ body {
 
 .legend-name {
   font-size: 0.75rem;
-  color: var(--snow-400);
+  color: var(--inverse-muted);
 }
 
 .legend-extended {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.5rem;
   margin-top: 0.5rem;
   padding-top: 0.5rem;
-  border-top: 1px solid rgba(31, 41, 55, 0.5);
+  border-top: 1px solid var(--inverse-border);
 }
 
 .dot-extended {
   width: 0.75rem;
   height: 0.75rem;
   border-radius: 999px;
-  background: var(--sage-800);
-  border: 1px solid var(--snow-700);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  background: rgba(244, 239, 229, 0.08);
+  border: 1px solid var(--inverse-border);
 }
 
 .legend-muted {
   font-size: 0.75rem;
-  color: var(--snow-500);
+  line-height: 1.45;
+  color: var(--inverse-muted);
 }
 
 .hover-panel {
@@ -168,16 +172,17 @@ body {
   bottom: 3rem;
   right: 1.5rem;
   z-index: 10;
-  background: var(--sage-900);
-  border: 1px solid rgba(55, 65, 81, 0.5);
+  background: var(--glass-fill);
+  border: 1px solid var(--inverse-border);
   border-radius: 0.75rem;
   padding: 1.5rem;
   max-width: 20rem;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-ambient);
   pointer-events: none;
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 0.2s ease, transform 0.2s ease;
+  backdrop-filter: blur(12px);
 }
 
 .hover-panel.is-visible {
@@ -192,16 +197,17 @@ body {
 }
 
 .hover-panel h2 {
-  font-family: Georgia, serif;
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: #fff;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--inverse-foreground);
   margin: 0 0 0.25rem;
 }
 
 .hp-role {
   font-size: 0.875rem;
-  color: var(--scarlet-400);
+  color: var(--inverse-muted);
   margin: 0 0 0.75rem;
 }
 
@@ -210,19 +216,19 @@ body {
   font-size: 10px;
   padding: 0.25rem 0.5rem;
   margin: 0 0.35rem 0.35rem 0;
-  background: var(--sage-950);
-  color: var(--snow-400);
+  background: rgba(244, 239, 229, 0.06);
+  color: var(--inverse-muted);
   border-radius: 0.25rem;
-  border: 1px solid rgba(31, 41, 55, 0.5);
+  border: 1px solid var(--inverse-border);
   text-transform: capitalize;
 }
 
 .hp-hint {
   font-size: 0.75rem;
-  color: var(--snow-500);
+  color: var(--inverse-muted);
   margin: 1rem 0 0;
   padding-top: 1rem;
-  border-top: 1px solid rgba(31, 41, 55, 0.5);
+  border-top: 1px solid var(--inverse-border);
 }
 
 .graph-host {
@@ -245,8 +251,8 @@ body {
   margin: 0;
   padding: 0.35rem 1rem;
   font-size: 10px;
-  color: var(--snow-500);
-  background: rgba(16, 25, 22, 0.92);
-  border-top: 1px solid rgba(31, 41, 55, 0.35);
+  color: var(--inverse-muted);
+  background: rgba(20, 17, 16, 0.94);
+  border-top: 1px solid var(--inverse-border);
   z-index: 20;
 }
