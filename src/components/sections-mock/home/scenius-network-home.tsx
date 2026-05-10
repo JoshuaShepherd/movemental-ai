@@ -380,12 +380,18 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
     nodeGroup.each(function (d) {
       const sel = d3.select(this);
       if (!d.imageUrl) {
+        /* Empty cells: --muted/--border sit on --background and disappear in both
+         * themes; ink-soft is the tertiary ramp built for readable UI on paper/ink. */
         sel
           .append("circle")
           .attr("r", d.radius)
-          .attr("fill", "var(--muted)")
-          .attr("stroke", "var(--border)")
-          .attr("stroke-width", 1)
+          .attr(
+            "fill",
+            "color-mix(in srgb, var(--ink-soft) 38%, var(--background))",
+          )
+          .attr("stroke", "var(--ink-soft)")
+          .attr("stroke-opacity", 0.92)
+          .attr("stroke-width", 1.35)
           .style("pointer-events", "none");
       } else {
         const clipId = `scenius-clip-${String(d.id).replace(/[^a-zA-Z0-9_-]/g, "_")}-${width}`;

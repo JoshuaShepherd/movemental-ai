@@ -228,7 +228,8 @@ export function linkHighlightsPortraitHover(
   return a.id === hoveredPortraitId || b.id === hoveredPortraitId;
 }
 
-export const OPACITY_EXTRA_IDLE = 0.42;
+/** Field / capacity nodes — keep grid legible on cream + deep ink backgrounds. */
+export const OPACITY_EXTRA_IDLE = 0.66;
 export const OPACITY_EXTRA_HOVER = 0.1;
 export const OPACITY_EXTRA_FILTER = 0.2;
 export const OPACITY_PORTRAIT_DIM_FILTER = 0.32;
