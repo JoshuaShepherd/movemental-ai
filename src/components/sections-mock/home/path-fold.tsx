@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import { Cite } from "@/components/citations";
-import { HumanHighlightEx3 } from "@/components/primitives/human-highlight";
 
 /**
  * Home — "The Movemental Path" fold.
@@ -53,10 +52,10 @@ export function PathFold() {
               Most organizations jump to deployment without deciding what they
               value, or freeze and let staff decide individually
               <Cite claimId="high-performer-cohort-5-7" />.{" "}
-              <HumanHighlightEx3>
+              
                 The path is the order — Safety first, then Sandbox, Skills,
                 Solutions.
-              </HumanHighlightEx3>
+              
             </p>
           </div>
         </div>

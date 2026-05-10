@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect } from 'react';
-import { HumanHighlightEx3 } from '@/components/primitives/human-highlight';
 import { Reveal } from '@/components/studio/Reveal';
 import { Container } from '@/components/studio/Container';
 import { SectionHead } from '@/components/studio/SectionHead';
@@ -34,7 +33,7 @@ export function VoicesPage() {
             </h1>
             <p className="hero-subhead lede lede--regular text-inverse-foreground/80 mb-10 max-w-3xl">
               Movemental is a growing conversation among leaders navigating{" "}
-              <HumanHighlightEx3 inverse>AI, formation, and mission in real time.</HumanHighlightEx3>
+              AI, formation, and mission in real time.
             </p>
             <div className="hero-actions flex flex-wrap gap-4">
               <Link href="/contact" className="btn-pill btn-pill--primary">Start a Conversation</Link>

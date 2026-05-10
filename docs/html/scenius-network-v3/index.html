@@ -16,33 +16,26 @@
     <div class="page">
       <div class="context-panel">
         <h1>The Scenius</h1>
-        <p class="blurb">
-          This is the Movemental credibility graph — a living map of how movement leaders reference,
-          reinforce, and amplify one another&apos;s work.
-        </p>
       </div>
 
       <div class="controls-panel">
         <div class="controls-head">
-          <span class="controls-label">Controls</span>
+          <span class="controls-label">Filter</span>
           <button type="button" id="toggle-labels" class="link-btn">Hide Labels</button>
         </div>
-        <div id="legend-topics"></div>
+        <p class="sr-only">
+          Optional audience filters emphasize voices with moderate or stronger credentials in the checked segments.
+        </p>
         <div class="audience-filters" id="audience-filters">
-          <span class="controls-label">Audience relevance</span>
-          <label class="filter-label"
+          <label class="filter-label filter-label--churches"
             ><input type="checkbox" data-audience="churches" /> Churches</label
           >
-          <label class="filter-label"
+          <label class="filter-label filter-label--nonprofits"
             ><input type="checkbox" data-audience="nonprofits" /> Nonprofits</label
           >
-          <label class="filter-label"
+          <label class="filter-label filter-label--institutions"
             ><input type="checkbox" data-audience="institutions" /> Institutions</label
           >
-        </div>
-        <div class="legend-extended">
-          <span class="dot-extended"></span>
-          <span class="legend-muted">Remaining Movement Leader Seats</span>
         </div>
       </div>
 
@@ -51,7 +44,6 @@
         <p id="hp-role" class="hp-role"></p>
         <div id="hp-topics"></div>
         <div id="hp-credentials" class="hp-credentials"></div>
-        <p class="hp-hint">Click to pin hash route (demo)</p>
       </div>
 
       <div id="graph-host" class="graph-host">

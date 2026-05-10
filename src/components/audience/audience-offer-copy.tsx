@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 
-import { HumanHighlightEx3 } from "@/components/primitives/human-highlight";
 import type { AudienceKind } from "@/components/studio/segment/audience-contact";
 
 export type PathStage = {
@@ -326,7 +325,7 @@ export const AUDIENCE_HERO_COPY: Record<
         Your staff are using AI to draft sermons, communications, and pastoral correspondence. Your elders are starting to
         ask what your position is. The vendors offering help are either tech companies that don&apos;t understand church
         or consultants who don&apos;t understand the technology.{" "}
-        <HumanHighlightEx3 inverse>We built the path that does both.</HumanHighlightEx3>
+        We built the path that does both.
       </>
     ),
     finePrint: "Two weeks. $1,000. Seven artifacts your elders can ratify.",
@@ -339,9 +338,9 @@ export const AUDIENCE_HERO_COPY: Record<
         Your staff are using AI individually. Your therapists or case managers may be using AI in ways that touch
         protected information. Your donors are reading governance commentary that names AI as a fiduciary expansion.
         Your board chair has noticed.{" "}
-        <HumanHighlightEx3 inverse>
+        
           We help nonprofits build the documented posture all three audiences expect.
-        </HumanHighlightEx3>
+        
       </>
     ),
     finePrint: "Two weeks. $1,000. Seven artifacts your board can ratify.",
@@ -355,9 +354,9 @@ export const AUDIENCE_HERO_COPY: Record<
         operational decisions about admissions, advancement, and student services. Your accreditor is starting to ask
         about AI governance at standards review. The next academic-integrity case, the next FERPA-adjacent question, the
         next denominational query is coming. The seminaries, denominations, and networks who walk this path{" "}
-        <HumanHighlightEx3 inverse>
+        
           build the institutional posture that handles those cases before they arrive.
-        </HumanHighlightEx3>
+        
       </>
     ),
     finePrint:

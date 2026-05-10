@@ -1,4 +1,3 @@
-import { HumanHighlightEx3 } from "@/components/primitives/human-highlight";
 import { BtnPill } from "@/components/sections-mock/primitives";
 
 export function FinalCta() {
@@ -18,7 +17,7 @@ export function FinalCta() {
             •
           </span>
           <span>
-            <HumanHighlightEx3 inverse>Start with Safety.</HumanHighlightEx3>
+            Start with Safety.
           </span>
           <span aria-hidden className="text-inverse-foreground/30">
             •

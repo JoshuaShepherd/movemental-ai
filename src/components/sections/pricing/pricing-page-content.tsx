@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, BarChart3, BookOpen, Check, Circle, MessageSquare } from "lucide-react";
 
 import { NewsletterForm } from "@/components/forms/newsletter-form";
-import { Container, HumanHighlightEx3, Reveal, Section } from "@/components/primitives";
+import { Container, Reveal, Section } from "@/components/primitives";
 import { cn } from "@/lib/utils";
 
 type StageCard = {
@@ -207,9 +207,9 @@ export function PricingPageContent() {
             </h1>
             <p className="mt-8 max-w-2xl text-base leading-relaxed text-inverse-muted md:text-lg">
               Five prices for the four-stage path.{" "}
-              <HumanHighlightEx3 inverse>
+              
                 Most organizations begin with Safety at $1,000 and decide what comes next from there.
-              </HumanHighlightEx3>{" "}
+              {" "}
               Larger institutional engagements are scoped per conversation.
             </p>
           </Reveal>

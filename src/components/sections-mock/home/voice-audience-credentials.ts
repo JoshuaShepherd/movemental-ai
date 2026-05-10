@@ -3,7 +3,6 @@
  * Editorial source: docs/movement_leader_research/site-voices-eeat-audience-credentials.md
  *
  * Strength levels align with the cross-voice matrix (●●● strong, ●● moderate, ● light).
- * Joshua Shepherd: researchPending — do not infer church/nonprofit/institution EEAT here.
  */
 
 export type AudienceSegment = "churches" | "nonprofits" | "institutions";
@@ -109,8 +108,19 @@ const BY_SLUG: Record<string, VoiceAudienceCredentials> = {
   },
   "josh-shepherd": {
     slug: "josh-shepherd",
-    segments: {},
-    researchPending: true,
+    segments: {
+      churches: "strong",
+      nonprofits: "strong",
+      institutions: "moderate",
+    },
+    summaryBySegment: {
+      churches:
+        "United Methodist pastoral ministry; years leading communal formation alongside ~100 young adults at a time (Mission House Network), per public /about founder narrative.",
+      nonprofits:
+        "Founder and director of Mission House Network; assistant director at QuadW Missional Outreach (multi-city cohorts and LMS). Co-founder Brad Brisco served on the nonprofit board.",
+      institutions:
+        "Leadership Formation Program (Kansas Leadership Center); scaled cohort and digital systems for mission organizations — formation-facing depth, not seminary faculty or accrediting committee roles.",
+    },
   },
   "tim-catchim": {
     slug: "tim-catchim",

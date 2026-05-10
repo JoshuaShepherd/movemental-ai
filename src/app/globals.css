@@ -11,7 +11,6 @@
 /* Citation system (Ledger). Inline highlighter chips, popovers, body marker,
    and references rail. See docs/build/prompts/inline-citation-system-with-references-rail.md. */
 @import "./citations.css";
-@import "./human-highlight.css";
 
 /* Case-study layout — hero + sticky sidebar TOC + article prose. Used by
    /churches, /nonprofits, /institutions. */
@@ -227,6 +226,12 @@
     var(--primary) 0%,
     var(--primary-dim) 100%
   );
+
+  /* Credibility graph — audience segment ring (Movemental action blue + pathway
+     accent + status go; matches DESIGN / org-site primary switch + editorial signals). */
+  --audience-ring-churches: #0053db;
+  --audience-ring-nonprofits: #b8893a;
+  --audience-ring-institutions: #6b7e3f;
 
   /* Citation system (Ledger). Amber highlighter palette dedicated to the
      inline-citation chip, popover, marker underline, and references rail.

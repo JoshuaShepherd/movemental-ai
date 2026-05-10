@@ -125,7 +125,7 @@ export function Cite({ claimId, ariaLabel, className }: CiteProps) {
         role="dialog"
         aria-label={`Source note ${number || "?"}`}
       >
-        <p className="cite__pop__footnote">{footnote}</p>
+        <span className="cite__pop__footnote">{footnote}</span>
         {registryId ? (
           <a className="cite__pop__link" href={`/footnotes#ref-${registryId}`}>
             Full source and citation ↗

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect } from 'react';
-import { HumanHighlightEx3 } from '@/components/primitives/human-highlight';
 import { Reveal } from '@/components/studio/Reveal';
 import { Container } from '@/components/studio/Container';
 import { SectionHead } from '@/components/studio/SectionHead';
@@ -24,7 +23,7 @@ export function MovementLeadersPage() {
             <p className="hero-subhead lede lede--regular text-inverse-foreground/80 mb-10 max-w-3xl">
               What we mean by movement leader. Practitioners whose discipleship of place and people gives weight to
               whatever Movemental publishes —{" "}
-              <HumanHighlightEx3 inverse>an ecosystem layer, not a fourth audience.</HumanHighlightEx3>
+              an ecosystem layer, not a fourth audience.
             </p>
             <div className="hero-actions flex flex-wrap gap-4 mb-16">
               <Link href="/voices" className="btn-pill btn-pill--primary">See the named voices</Link>

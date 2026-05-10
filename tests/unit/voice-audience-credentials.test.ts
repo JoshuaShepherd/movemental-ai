@@ -14,13 +14,8 @@ describe("voice-audience-credentials", () => {
       expect(slugs.has(v.id), `missing credentials for ${v.id}`).toBe(true);
       const row = getVoiceAudienceCredentials(v.id);
       expect(row).toBeDefined();
-      if (v.id === "josh-shepherd") {
-        expect(row!.researchPending).toBe(true);
-        expect(Object.keys(row!.segments)).toHaveLength(0);
-      } else {
-        expect(row!.researchPending).not.toBe(true);
-        expect(Object.keys(row!.segments).length).toBeGreaterThan(0);
-      }
+      expect(row!.researchPending).not.toBe(true);
+      expect(Object.keys(row!.segments).length).toBeGreaterThan(0);
     }
     expect(rows.length).toBe(MOVEMENT_VOICES.length);
   });

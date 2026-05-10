@@ -10,7 +10,7 @@ The **credibility graph** (Alan-centric scenius mesh + trusted voices) should st
 
 - [`docs/movement_leader_research/site-voices-eeat-audience-credentials.md`](../../movement_leader_research/site-voices-eeat-audience-credentials.md)
 
-Do **not** invent nonprofit/church/institution claims for voices where that doc says **do not infer** (notably **Joshua Shepherd** until a research dossier exists).
+Do **not** invent nonprofit/church/institution claims: every row must trace to **`site-voices-eeat-audience-credentials.md`** and its cited sources (research folders, `/about`, etc.).
 
 ---
 
@@ -70,7 +70,7 @@ export interface VoiceAudienceCredentials {
 
 1. **Authoritative pass**: For each voice in `MOVEMENT_VOICES`, copy **strength** from the cross-voice matrix + prose section headers in `site-voices-eeat-audience-credentials.md`.
 2. **Summaries**: Distill **one sentence per segment** from the doc’s Experience / Expertise / Authoritativeness / Trust bullets—reader-facing, no internal methodology jargon.
-3. **Gaps**: **Joshua Shepherd** — `segments` empty or explicit `researchPending: true`; UI shows product/tech credibility separately or neutral node styling, never fabricated NGO/church chair claims.
+3. **Gaps**: If a voice has **no** documented segment mapping, use `researchPending: true` and neutral UI until the EEAT doc is updated — never fabricate chair, board, or faculty claims.
 
 **Regression guard** (optional but valuable): a Vitest test that every `MOVEMENT_VOICES` id has a credentials row **or** an explicit exception list reviewed in PR.
 
@@ -126,7 +126,7 @@ On focus / click:
 
 | Layer | Done means |
 | --- | --- |
-| **Data** | One joinable credentials artifact keyed by voice slug; matrix strengths match `site-voices-eeat-audience-credentials.md`; Joshua Shepherd not inferred. |
+| **Data** | One joinable credentials artifact keyed by voice slug; matrix strengths match `site-voices-eeat-audience-credentials.md`. |
 | **React graph** | Filters + panel read credentials blob; motion/accessibility preserved (`prefers-reduced-motion`, focus order). |
 | **Static v3** | Regenerated HTML demonstrates the same segment encoding + real summaries for stakeholder review on `:8080`. |
 | **Docs** | When named voices change, EEAT doc + `voices-graph-data` + credentials blob updated together (per EEAT file footer). |

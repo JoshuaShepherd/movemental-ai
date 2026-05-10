@@ -11,8 +11,8 @@
  *   - Every node connects to every other node (complete graph / all-channel mesh)
  *     with Bezier edges and optional flow animation in React Flow.
  *
- * The `appearOrder` field drives the stagger reveal in
- * `movement-voices-network.tsx` — lower numbers animate in first.
+ * The `appearOrder` field was used by the legacy React Flow graph; the v3 D3
+ * home graph (`scenius-network-home.tsx`) lists all voices without stagger.
  */
 
 export interface VoiceGraphVoice {

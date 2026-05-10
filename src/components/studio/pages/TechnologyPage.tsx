@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect } from 'react';
-import { HumanHighlightEx3 } from '@/components/primitives/human-highlight';
 import { Container } from '@/components/studio/Container';
 import { Reveal } from '@/components/studio/Reveal';
 import Link from "next/link";
@@ -58,7 +57,7 @@ export function TechnologyPage() {
                 </h1>
                 <p className="mb-12 max-w-xl text-xl font-light leading-relaxed text-muted-foreground md:text-2xl">
                   The technological deployment{" "}
-                  <HumanHighlightEx3>built on a grounded human foundation.</HumanHighlightEx3>
+                  built on a grounded human foundation.
                 </p>
                 <div className="mb-10 flex flex-col gap-4 sm:flex-row">
                   <Link href="/contact?interest=solutions" className="btn-pill bg-foreground px-8 py-4 text-center text-xs font-semibold uppercase tracking-eyebrow text-background hover:opacity-90">

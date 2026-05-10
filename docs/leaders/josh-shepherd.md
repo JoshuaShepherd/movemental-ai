@@ -2,7 +2,7 @@
 
 > **Naming:** Public copy sometimes uses **Joshua Shepherd** (`docs/team/team-bios.md`, `src/app/(site)/about/page.tsx`); legal / equity docs use **Josh Shepherd**. Treat as one person; prefer display name per surface.  
 > **SSOT for business role:** `docs/business-docs/core-docs/09-founder-narrative.md`, `documentation-index/15-operating-model.md`.  
-> **There is no** `docs/movement_leader_research/josh-shepherd/` OSINT tree — profile is **internal + approved public bio**, not a third-party corpus.
+> **Research pack:** `docs/movement_leader_research/josh-shepherd/` (local / identity / summary — not a third-party OSINT corpus). **Public SSOT** for founder narrative: `src/components/sections/about/about-page-content.tsx`.
 
 **Profile version:** 1.0  
 **Last updated:** 2026-04-13

@@ -95,11 +95,31 @@ VOICE_ROWS = [
         "slug": "josh-shepherd",
         "name": "Joshua Shepherd",
         "role": "CTO & Founder, Movemental",
-        "bio": "Product and technology leadership for Movemental.",
+        "bio": (
+            "Technical founder of Movemental; prior United Methodist ministry and "
+            "a decade leading Mission House Network and QuadW mission formation work."
+        ),
         "image": "josh-shepherd.webp",
-        "research_pending": True,
-        "segments": {},
-        "summaries": {},
+        "research_pending": False,
+        "segments": {
+            "churches": "strong",
+            "nonprofits": "strong",
+            "institutions": "moderate",
+        },
+        "summaries": {
+            "churches": (
+                "United Methodist pastoral ministry; communal formation with ~100 "
+                "young adults at a time (Mission House Network), per /about."
+            ),
+            "nonprofits": (
+                "Founded and directed Mission House Network; QuadW Missional Outreach "
+                "(cohorts, LMS); Brad Brisco on the nonprofit board."
+            ),
+            "institutions": (
+                "Kansas Leadership Center formation program; multi-city mission "
+                "training systems — not seminary chair, but ops- and cohort-facing."
+            ),
+        },
     },
     {
         "slug": "tim-catchim",
@@ -387,33 +407,26 @@ INDEX_HTML = """<!DOCTYPE html>
     <div class="page">
       <div class="context-panel">
         <h1>The Scenius</h1>
-        <p class="blurb">
-          This is the Movemental credibility graph — a living map of how movement leaders reference,
-          reinforce, and amplify one another&apos;s work.
-        </p>
       </div>
 
       <div class="controls-panel">
         <div class="controls-head">
-          <span class="controls-label">Controls</span>
+          <span class="controls-label">Filter</span>
           <button type="button" id="toggle-labels" class="link-btn">Hide Labels</button>
         </div>
-        <div id="legend-topics"></div>
+        <p class="sr-only">
+          Optional audience filters emphasize voices with moderate or stronger credentials in the checked segments.
+        </p>
         <div class="audience-filters" id="audience-filters">
-          <span class="controls-label">Audience relevance</span>
-          <label class="filter-label"
+          <label class="filter-label filter-label--churches"
             ><input type="checkbox" data-audience="churches" /> Churches</label
           >
-          <label class="filter-label"
+          <label class="filter-label filter-label--nonprofits"
             ><input type="checkbox" data-audience="nonprofits" /> Nonprofits</label
           >
-          <label class="filter-label"
+          <label class="filter-label filter-label--institutions"
             ><input type="checkbox" data-audience="institutions" /> Institutions</label
           >
-        </div>
-        <div class="legend-extended">
-          <span class="dot-extended"></span>
-          <span class="legend-muted">Remaining Movement Leader Seats</span>
         </div>
       </div>
 
@@ -422,7 +435,6 @@ INDEX_HTML = """<!DOCTYPE html>
         <p id="hp-role" class="hp-role"></p>
         <div id="hp-topics"></div>
         <div id="hp-credentials" class="hp-credentials"></div>
-        <p class="hp-hint">Click to pin hash route (demo)</p>
       </div>
 
       <div id="graph-host" class="graph-host">
@@ -454,6 +466,10 @@ STYLES_CSS = """/* Movemental — midnight band + brand blue (globals.css / DESI
   --glass-fill: rgba(20, 17, 16, 0.82);
   --shadow-ambient: 0 12px 40px rgba(42, 52, 57, 0.12);
   --pt-top: 5rem;
+  /* Align with site globals — action blue, pathway accent, status go */
+  --audience-ring-churches: #0053db;
+  --audience-ring-nonprofits: #b8893a;
+  --audience-ring-institutions: #6b7e3f;
 }
 
 *,
@@ -529,8 +545,8 @@ body {
   backdrop-filter: blur(12px);
   border: 1px solid var(--inverse-border);
   border-radius: 0.75rem;
-  padding: 1rem;
-  max-width: 19rem;
+  padding: 1rem 1.1rem 1.15rem;
+  max-width: 24rem;
 }
 
 @media (min-width: 1024px) {
@@ -539,11 +555,23 @@ body {
   }
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .controls-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .controls-label {
@@ -566,6 +594,69 @@ body {
 
 .link-btn:hover {
   color: var(--brand-blue-dim);
+}
+
+.controls-lede {
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--inverse-muted);
+  margin: 0 0 0.55rem;
+}
+
+.controls-lede strong {
+  color: var(--inverse-foreground);
+  font-weight: 600;
+}
+
+.controls-lede--tight {
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--inverse-border);
+}
+
+.controls-section {
+  margin-top: 0.65rem;
+}
+
+.controls-section:first-of-type {
+  margin-top: 0;
+}
+
+.controls-copy {
+  font-size: 0.68rem;
+  line-height: 1.45;
+  color: var(--inverse-muted);
+  margin: 0.35rem 0 0.55rem;
+}
+
+.controls-copy strong {
+  color: rgba(244, 239, 229, 0.92);
+  font-weight: 600;
+}
+
+.legend-topics-wrap {
+  margin-top: 0.25rem;
+}
+
+.swatch {
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 1px;
+  margin: 0 0.06rem;
+  vertical-align: 0.05em;
+}
+
+.swatch--churches {
+  background: var(--audience-ring-churches);
+}
+
+.swatch--nonprofits {
+  background: var(--audience-ring-nonprofits);
+}
+
+.swatch--institutions {
+  background: var(--audience-ring-institutions);
 }
 
 .legend-row {
@@ -613,26 +704,42 @@ body {
 }
 
 .audience-filters {
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--inverse-border);
   display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.audience-filters .controls-label {
-  display: block;
-  margin-bottom: 0.25rem;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.65rem;
+  margin-top: 0.15rem;
 }
 
 .filter-label {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.75rem;
+  gap: 0.45rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
   color: var(--inverse-muted);
   cursor: pointer;
+  padding: 0.28rem 0.45rem 0.28rem 0.35rem;
+  border-radius: 0.35rem;
+  border: 1px solid var(--inverse-border);
+  background: rgba(244, 239, 229, 0.03);
+  border-left-width: 3px;
+  border-left-color: transparent;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.filter-label:has(input:checked).filter-label--churches {
+  border-left-color: var(--audience-ring-churches);
+  background: rgba(0, 83, 219, 0.08);
+}
+
+.filter-label:has(input:checked).filter-label--nonprofits {
+  border-left-color: var(--audience-ring-nonprofits);
+  background: rgba(184, 137, 58, 0.1);
+}
+
+.filter-label:has(input:checked).filter-label--institutions {
+  border-left-color: var(--audience-ring-institutions);
+  background: rgba(107, 126, 63, 0.1);
 }
 
 .filter-label input {
@@ -655,6 +762,46 @@ body {
 .hp-credentials .cred-label {
   font-weight: 600;
   color: var(--inverse-foreground);
+}
+
+.cred-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.cred-rank {
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: var(--inverse-muted);
+}
+
+.cred-meter {
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(244, 239, 229, 0.08);
+  overflow: hidden;
+  margin-bottom: 0.35rem;
+}
+
+.cred-meter-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+}
+
+.cred-meter-fill--churches {
+  background: var(--audience-ring-churches);
+}
+
+.cred-meter-fill--nonprofits {
+  background: var(--audience-ring-nonprofits);
+}
+
+.cred-meter-fill--institutions {
+  background: var(--audience-ring-institutions);
 }
 
 .hover-panel {
@@ -755,10 +902,86 @@ APP_JS = r"""/**
   "use strict";
 
   var PACK = window.__SCIENIUS_V3_DATA__;
-  /* Church → brand blue; NonProfit → pathway gold; Institution → signal sage (site tokens) */
-  var LEGEND_COLORS = ["#0053db", "#b8893a", "#6b7e3f"];
+  var SEGMENT_KEYS = ["churches", "nonprofits", "institutions"];
+  var SEGMENT_LABELS = ["Churches", "Nonprofits", "Institutions"];
+  var RING_STROKE_CSS = [
+    "var(--audience-ring-churches)",
+    "var(--audience-ring-nonprofits)",
+    "var(--audience-ring-institutions)",
+  ];
   var EDGE_STROKE = "rgba(244, 239, 229, 0.13)";
-  var EDGE_HIGHLIGHT = "#0053db";
+  var EDGE_HIGHLIGHT = "var(--brand-blue)";
+  var LINK_BASE_OPACITY = 0.072;
+  var LINK_BASE_WIDTH = 0.42;
+  var lastLinkSelection = null;
+
+  function strengthTickOpacity(st) {
+    if (!st) return 0.16;
+    var m = { none: 0.22, light: 0.48, moderate: 0.84, strong: 1 };
+    return m[st] !== undefined ? m[st] : 0.16;
+  }
+
+  function rankLabel(st) {
+    if (!st) return "—";
+    var m = { none: "—", light: "Light", moderate: "Moderate", strong: "Strong" };
+    return m[st] || "—";
+  }
+
+  /** Three 120° arcs on the portrait rim — CSS vars match site palette. */
+  function ringSegmentPath(r, segmentIndex) {
+    var sweep = (2 * Math.PI) / 3;
+    var a0 = -Math.PI / 2 + segmentIndex * sweep;
+    var a1 = a0 + sweep;
+    var x0 = r * Math.cos(a0);
+    var y0 = r * Math.sin(a0);
+    var x1 = r * Math.cos(a1);
+    var y1 = r * Math.sin(a1);
+    return "M " + x0 + " " + y0 + " A " + r + " " + r + " 0 0 1 " + x1 + " " + y1;
+  }
+
+  function strengthRingStrokeWidth(st) {
+    if (!st) return 1.85;
+    var m = { none: 1.95, light: 2.5, moderate: 3.25, strong: 4.05 };
+    return m[st] !== undefined ? m[st] : 1.85;
+  }
+
+  function appendAudienceRingArcs(portraitSel, d) {
+    var g = portraitSel
+      .append("g")
+      .attr("class", "audience-ring")
+      .style("pointer-events", "none");
+    var rRing = d.radius + 2.85;
+    if (d.researchPending) {
+      for (var ri = 0; ri < 3; ri++) {
+        var pr = g
+          .append("path")
+          .attr("d", ringSegmentPath(rRing, ri))
+          .attr("fill", "none")
+          .attr("stroke", RING_STROKE_CSS[ri])
+          .attr("stroke-width", 2.1)
+          .attr("stroke-linecap", "round")
+          .attr("opacity", 0.28);
+        pr.append("title").text("Audience credentials not mapped for this profile yet.");
+      }
+      return;
+    }
+    var segs =
+      d.audienceCredentials && d.audienceCredentials.segments
+        ? d.audienceCredentials.segments
+        : {};
+    SEGMENT_KEYS.forEach(function (key, i) {
+      var st = segs[key];
+      var pr = g
+        .append("path")
+        .attr("d", ringSegmentPath(rRing, i))
+        .attr("fill", "none")
+        .attr("stroke", RING_STROKE_CSS[i])
+        .attr("stroke-width", strengthRingStrokeWidth(st))
+        .attr("stroke-linecap", "round")
+        .attr("opacity", strengthTickOpacity(st));
+      pr.append("title").text(SEGMENT_LABELS[i] + " · " + rankLabel(st));
+    });
+  }
   var NODE_FILL_EMPTY = "rgba(244, 239, 229, 0.07)";
   var NODE_STROKE_EMPTY = "rgba(244, 239, 229, 0.18)";
   var NODE_RING_PORTRAIT = "rgba(244, 239, 229, 0.88)";
@@ -771,6 +994,13 @@ APP_JS = r"""/**
   var simulation = null;
   var activeAudienceFilters = new Set();
   var lastNodeGroupForFilters = null;
+  /** When set, hover emphasis is portrait↔portrait only (extras stay atmosphere). */
+  var hoveredPortraitId = null;
+
+  var OPACITY_EXTRA_IDLE = 0.42;
+  var OPACITY_EXTRA_HOVER = 0.1;
+  var OPACITY_EXTRA_FILTER = 0.2;
+  var OPACITY_PORTRAIT_DIM_FILTER = 0.32;
 
   function strengthRank(s) {
     var m = { none: 0, light: 1, moderate: 2, strong: 3 };
@@ -792,9 +1022,32 @@ APP_JS = r"""/**
     return false;
   }
 
-  function applyAudienceOpacity(sel) {
+  function isPortraitNode(n) {
+    return !!(n && n.imageUrl);
+  }
+
+  /**
+   * Blue edge only for voice↔voice links incident to the hovered portrait.
+   * Links touching "empty seats" stay in the quiet hairball.
+   */
+  function linkHighlightsPortraitHover(l, hid) {
+    var a = l.source;
+    var b = l.target;
+    if (typeof a !== "object" || typeof b !== "object" || !a || !b) return false;
+    if (!isPortraitNode(a) || !isPortraitNode(b)) return false;
+    return a.id === hid || b.id === hid;
+  }
+
+  function applyVisualState(sel) {
     sel.attr("opacity", function (n) {
-      return matchesAudienceFilters(n) ? 1 : 0.32;
+      if (!isPortraitNode(n)) {
+        if (hoveredPortraitId) return OPACITY_EXTRA_HOVER;
+        if (activeAudienceFilters.size > 0) return OPACITY_EXTRA_FILTER;
+        return OPACITY_EXTRA_IDLE;
+      }
+      if (hoveredPortraitId) return 1;
+      if (activeAudienceFilters.size === 0) return 1;
+      return matchesAudienceFilters(n) ? 1 : OPACITY_PORTRAIT_DIM_FILTER;
     });
   }
 
@@ -894,24 +1147,6 @@ APP_JS = r"""/**
     return { nodes: nodes, links: links };
   }
 
-  function buildLegend(topics) {
-    var host = document.getElementById("legend-topics");
-    host.innerHTML = "";
-    topics.slice(0, 3).forEach(function (topic, i) {
-      var row = document.createElement("div");
-      row.className = "legend-row";
-      var dot = document.createElement("span");
-      dot.className = "legend-dot";
-      dot.style.backgroundColor = LEGEND_COLORS[i];
-      var name = document.createElement("span");
-      name.className = "legend-name";
-      name.textContent = topic.name;
-      row.appendChild(dot);
-      row.appendChild(name);
-      host.appendChild(row);
-    });
-  }
-
   function setHoverPanel(d, visible) {
     var panel = document.getElementById("hover-panel");
     var credHost = document.getElementById("hp-credentials");
@@ -953,17 +1188,25 @@ APP_JS = r"""/**
       };
       var segs = d.audienceCredentials.segments;
       var sums = d.audienceCredentials.summaries || {};
+      var meterPw = { none: 9, light: 34, moderate: 64, strong: 100 };
       order.forEach(function (key) {
         var st = segs[key];
         if (!st) return;
         var div = document.createElement("div");
         div.className = "cred-line";
         var head = document.createElement("div");
+        var mw = meterPw[st] !== undefined ? meterPw[st] : 9;
         head.innerHTML =
-          '<span class="cred-label">' +
+          '<div class="cred-head"><span class="cred-label">' +
           labels[key] +
-          "</span> · " +
-          rankLabel[st];
+          '</span><span class="cred-rank">' +
+          rankLabel[st] +
+          "</span></div>" +
+          '<div class="cred-meter"><span class="cred-meter-fill cred-meter-fill--' +
+          key +
+          '" style="width:' +
+          mw +
+          '%"></span></div>';
         div.appendChild(head);
         if (sums[key]) {
           var sub = document.createElement("div");
@@ -983,7 +1226,6 @@ APP_JS = r"""/**
 
     var leaders = PACK.leaders;
     var topics = PACK.topics;
-    buildLegend(topics);
 
     var width = container.clientWidth || 800;
     var height = container.clientHeight || 600;
@@ -1023,8 +1265,8 @@ APP_JS = r"""/**
 
     svg.call(zoom);
 
-    var linkBaseOpacity = 0.095;
-    var linkBaseWidth = 0.48;
+    var linkBaseOpacity = LINK_BASE_OPACITY;
+    var linkBaseWidth = LINK_BASE_WIDTH;
 
     var dim = Math.min(width, height);
     var radialPortrait = dim * 0.13;
@@ -1057,7 +1299,15 @@ APP_JS = r"""/**
           }, width / 2, height / 2)
           .strength(0.078)
       )
-      .force("collide", d3.forceCollide().radius(function (d) { return d.radius + (d.imageUrl ? 10 : 7); }).iterations(3))
+      .force(
+        "collide",
+        d3
+          .forceCollide()
+          .radius(function (d) {
+            return d.radius + (d.imageUrl ? 14 : 7);
+          })
+          .iterations(3)
+      )
       .alphaDecay(0.041);
 
     var link = g
@@ -1068,6 +1318,7 @@ APP_JS = r"""/**
       .data(data.links)
       .join("line")
       .attr("stroke-width", linkBaseWidth);
+    lastLinkSelection = link;
 
     var nodeGroup = g
       .append("g")
@@ -1118,50 +1369,49 @@ APP_JS = r"""/**
           .attr("stroke", NODE_RING_PORTRAIT)
           .attr("stroke-width", 2)
           .style("pointer-events", "none");
+        appendAudienceRingArcs(sel, d);
       }
       sel
         .append("circle")
-        .attr("r", d.radius)
+        .attr("r", d.imageUrl ? d.radius + 12 : d.radius)
         .attr("fill", "transparent")
         .attr("stroke", "none")
         .style("pointer-events", "all");
     });
 
     lastNodeGroupForFilters = nodeGroup;
-    applyAudienceOpacity(nodeGroup);
+    hoveredPortraitId = null;
+    applyVisualState(nodeGroup);
 
     nodeGroup
       .style("cursor", "pointer")
       .on("mouseover", function (event, d) {
         if (d.imageUrl) {
+          hoveredPortraitId = d.id;
           setHoverPanel(d, true);
           link
             .attr("stroke", function (l) {
-              return l.source.id === d.id || l.target.id === d.id ? EDGE_HIGHLIGHT : EDGE_STROKE;
+              return linkHighlightsPortraitHover(l, d.id) ? EDGE_HIGHLIGHT : EDGE_STROKE;
             })
             .attr("stroke-opacity", function (l) {
-              return l.source.id === d.id || l.target.id === d.id ? 0.55 : linkBaseOpacity * 0.35;
+              return linkHighlightsPortraitHover(l, d.id)
+                ? 0.52
+                : linkBaseOpacity * 0.28;
             })
             .attr("stroke-width", function (l) {
-              return l.source.id === d.id || l.target.id === d.id ? 0.85 : linkBaseWidth;
+              return linkHighlightsPortraitHover(l, d.id) ? 0.92 : linkBaseWidth * 0.88;
             });
-          nodeGroup.attr("opacity", function (n) {
-            return n.id === d.id ||
-              data.links.some(function (l) {
-                return (
-                  (l.source.id === d.id && l.target.id === n.id) ||
-                  (l.target.id === d.id && l.source.id === n.id)
-                );
-              })
-              ? 1
-              : 0.2;
-          });
+          applyVisualState(nodeGroup);
         }
       })
       .on("mouseout", function () {
+        hoveredPortraitId = null;
         setHoverPanel(null, false);
-        link.attr("stroke", EDGE_STROKE).attr("stroke-opacity", linkBaseOpacity).attr("stroke-width", linkBaseWidth);
-        applyAudienceOpacity(nodeGroup);
+        link
+          .attr("stroke", EDGE_STROKE)
+          .attr("stroke-opacity", LINK_BASE_OPACITY)
+          .attr("stroke-width", LINK_BASE_WIDTH);
+        applyVisualState(nodeGroup);
       })
       .on("click", function (event, d) {
         if (d.imageUrl) {
@@ -1225,11 +1475,19 @@ APP_JS = r"""/**
 
   document.querySelectorAll("#audience-filters input[type=checkbox]").forEach(function (el) {
     el.addEventListener("change", function () {
+      hoveredPortraitId = null;
+      setHoverPanel(null, false);
+      if (lastLinkSelection) {
+        lastLinkSelection
+          .attr("stroke", EDGE_STROKE)
+          .attr("stroke-opacity", LINK_BASE_OPACITY)
+          .attr("stroke-width", LINK_BASE_WIDTH);
+      }
       activeAudienceFilters.clear();
       document.querySelectorAll("#audience-filters input[type=checkbox]").forEach(function (box) {
         if (box.checked) activeAudienceFilters.add(box.getAttribute("data-audience"));
       });
-      if (lastNodeGroupForFilters) applyAudienceOpacity(lastNodeGroupForFilters);
+      if (lastNodeGroupForFilters) applyVisualState(lastNodeGroupForFilters);
     });
   });
 

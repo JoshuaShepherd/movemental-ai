@@ -1,4 +1,3 @@
-export { HumanHighlightEx3 } from "./human-highlight";
 export { ArrowLink } from "./arrow-link";
 export { Container } from "./container";
 export { Display } from "./display";

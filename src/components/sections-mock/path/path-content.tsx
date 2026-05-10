@@ -11,7 +11,6 @@
 
 import type { ReactNode } from "react";
 
-import { HumanHighlightEx3 } from "@/components/primitives/human-highlight";
 import { BtnPill, SectionHead } from "@/components/sections-mock/primitives";
 
 export function PathContent() {
@@ -72,10 +71,10 @@ function Hero() {
         <p className="lede lede--regular">
           Most organizations either rush into AI or avoid it. Movemental
           provides a wiser way —{" "}
-          <HumanHighlightEx3 inverse>
+          
             an ordered path that builds safety, develops real capability, and leads to solutions your organization can
             trust.
-          </HumanHighlightEx3>
+          
         </p>
         <div className="hero-actions">
           <BtnPill href="/start-with-safety" variant="primary">

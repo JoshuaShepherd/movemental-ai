@@ -143,8 +143,11 @@
   transform: translate(-50%, 0);
 }
 
-/* Tooltip body — reader-facing prose only (matches EEAT registry footnotes). */
+/* Tooltip body — reader-facing prose only (matches EEAT registry footnotes).
+   Rendered as <span> + display:block so the popover is legal inside inline body
+   text (the chip ships inside <p> prose; <p>/<div> here would break HTML nesting). */
 .cite__pop__footnote {
+  display: block;
   margin: 0;
   font-family: var(--font-serif, ui-serif, Georgia, serif);
   font-size: 0.88rem;

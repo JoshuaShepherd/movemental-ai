@@ -8,7 +8,7 @@
 |------------|----------------|-------------------------|
 | `alan-hirsch` | Alan Hirsch | `docs/movement_leader_research/alan-hirsch/` |
 | `brad-brisco` | Brad Brisco | `docs/movement_leader_research/brad-brisco/` |
-| `josh-shepherd` | Joshua Shepherd | *(no `josh-shepherd` research folder — not expanded below)* |
+| `josh-shepherd` | Joshua Shepherd | `docs/movement_leader_research/josh-shepherd/` + `/about` founder card |
 | `tim-catchim` | Tim Catchim | `docs/movement_leader_research/tim-catchim/` |
 | `jr-woodward` | JR Woodward | `docs/movement_leader_research/jr-woodward/` |
 | `rowland-smith` | Rowland (Leo) Smith | `docs/movement_leader_research/rowland-smith/` |
@@ -18,7 +18,7 @@
 
 **Method**: Audience mapping is **inferred from documented roles** in each leader’s `summary.md`, `profile/biography.md`, `profile/identity.md`, and (for Liz) `network/affiliations.md`. This is **not** a claim that every org listed is a 501(c)(3); “nonprofit” here follows Movemental’s **public** framing (faith-based orgs, justice NGOs, networks with fiduciary boards, funders like Lilly Endowment, etc.).
 
-**Last updated**: 2026-05-10
+**Last updated**: 2026-05-11
 
 ---
 
@@ -249,13 +249,30 @@ For each person: **Experience** (what they did), **Expertise** (domain depth), *
 
 ## Joshua Shepherd
 
-**Research folder**: None under `docs/movement_leader_research/josh-shepherd/` at time of writing.
+**Research**: `josh-shepherd/summary.md`; **public founder narrative**: `src/components/sections/about/about-page-content.tsx` (founder bio, credentials list, origin story — Mission House Network, board relationship with Brad Brisco, bilingual note).
 
-**Public site role**: CTO & Founder, Movemental — **technology product leadership**, not a separately documented “movement leader” research dossier in this repo.
+### Churches — **Strong**
 
-**Audience intersection (provisional, not from movement_leader_research)**:
+- **Experience**: **United Methodist pastor** before full-time platform work; **Mission House Network** (2011–2022) — neomonastic, communal, mission-driven community; lived alongside **roughly a hundred young adults at a time** with his wife (about page).
+- **Expertise**: Extended **formation and pastoral** leadership in a high-touch residential context; bridges into **digital infrastructure for movement organizations** (credentials line on /about).
+- **Authoritativeness**: Public /about positions him as **co-equal founder** with practitioner-theologians; origin story ties his question in mid-2024 to Brad and Alan as peers shaping the company.
+- **Trust**: Bilingual **English and Spanish** facilitator (about); long arc inside missional ecosystem before Movemental LLC.
 
-- **Churches / nonprofits / institutions**: EEAT for Movemental segments should be built from **published case work, denominational references, advisory roles, or speaking** if/when those are documented elsewhere — **not inferred** here.
+### Nonprofits — **Strong**
+
+- **Experience**: **Founder and leader** of Mission House Network; **Assistant Director (Marketing / Content / Comms), QuadW Missional Outreach** (2019–2022) — mentored directors across **12 cities**, built **LMS + cohort model** (summary).
+- **Expertise**: Nonprofit governance and storytelling at scale; Brad Brisco **served on the board** of the nonprofit Josh and his wife founded (about origin story).
+- **Authoritativeness**: Parallel consulting to **Movement Leaders Collective, 100 Movements, 100 Movements Publishing** (summary).
+- **Trust**: Documented **decade-long** nonprofit operator identity before SpecChem and Movemental.
+
+### Institutions — **Moderate**
+
+- **Education / formation**: **Leadership Formation Program, Kansas Leadership Center**; B.S. Communications / Spanish, University of Kansas (summary).
+- **Experience**: **QuadW** multi-city **training and cohort infrastructure**; enterprise-scale **digital marketing and product** at SpecChem (summary) — credible to **operations- and formation-facing** buyers, not seminary accreditation committees.
+- **Expertise**: **Architect of multi-tenant AI-native platform** (about credentials) — “institutions” in Movemental’s buyer sense includes organizations that need inspectable, governable systems; Josh’s proof is **shipping infrastructure**, not faculty titles.
+- **Authoritativeness**: **Not** seminary faculty; pair with Alan / JR / Liz when the conversation is **accreditation-primary**.
+
+**Audience intersection summary**: **Churches + nonprofits** are the clearest documented lanes from ministry and nonprofit leadership; **institutions** = **formation programs + mission-training systems + enterprise product depth**, not academy chair.
 
 ---
 
@@ -271,9 +288,9 @@ For each person: **Experience** (what they did), **Expertise** (domain depth), *
 | Lucas Pulley | ●●● | ●● | ● |
 | Tim Catchim | ●●● | ●● | ● |
 | Rob Wegner | ●●● | ●● | ●● |
-| Joshua Shepherd | — | — | — |
+| Joshua Shepherd | ●●● | ●●● | ●● |
 
-Legend: **●●●** = documented, substantial EEAT in research files; **●●** = meaningful but secondary; **●** = light / edge case; **—** = no research dossier / do not infer.
+Legend: **●●●** = documented, substantial EEAT in research files; **●●** = meaningful but secondary; **●** = light / edge case; **—** = not used on current roster.
 
 ---
 
@@ -284,6 +301,7 @@ Legend: **●●●** = documented, substantial EEAT in research files; **●●
 3. **Church multiplication systems (denominations / Send)**: **Brad Brisco** is the strongest **NAMB / Send Network**-shaped credential on the site — different trust graph than Forge/V3.
 4. **Megachurch → decentralized bridge**: **Rob Wegner** is the unique **large-church executive** + **microchurch network operator** proof point.
 5. **Microchurch / network operator without seminary chair**: **Lucas Pulley** and **Tim Catchim** — excellent for **practitioner trust** with churches and some nonprofits; pair with an **institutions** voice when the buyer is accreditation-facing.
+6. **Builder-founder with ministry + nonprofit ground**: **Joshua Shepherd** — strongest when buyers care about **who shipped the platform** and **who lived inside formation and nonprofit operations** before building AI infrastructure; not interchangeable with bibliographic or seminary EEAT.
 
 ---
 
@@ -299,6 +317,7 @@ Legend: **●●●** = documented, substantial EEAT in research files; **●●
 | Lucas Pulley | `lucas-pulley/profile/biography.md`, `lucas-pulley/summary.md` |
 | Tim Catchim | `tim-catchim/summary.md`, `tim-catchim/identity-verification.md` |
 | Rob Wegner | `rob-wegner/profile/biography.md`, `rob-wegner/summary.md` |
+| Joshua Shepherd | `josh-shepherd/summary.md`; `src/components/sections/about/about-page-content.tsx` |
 
 ---
 

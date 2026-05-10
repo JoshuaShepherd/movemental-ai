@@ -4,7 +4,6 @@ import { ArrowRight, CheckCircle, XCircle } from "lucide-react";
 import Link from "next/link";
 import { useEffect } from "react";
 
-import { HumanHighlightEx3 } from "@/components/primitives/human-highlight";
 import { Container } from "@/components/studio/Container";
 import { Reveal } from "@/components/studio/Reveal";
 
@@ -69,7 +68,7 @@ export function TrainingPage() {
               <p className="text-lg leading-relaxed text-muted-foreground md:text-xl">
                 In the Movemental framework, Training is synonymous with Stage 03: Skills. It is where we move from
                 experimentation to industrial-grade proficiency.{" "}
-                <HumanHighlightEx3>Both matter; the difference matters more</HumanHighlightEx3> — particularly for
+                Both matter; the difference matters more — particularly for
                 churches, nonprofits, and institutions.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">

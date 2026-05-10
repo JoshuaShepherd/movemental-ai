@@ -11,7 +11,6 @@
 import { Check, Compass, Eye, Lock, MessageSquare, ShieldCheck } from "lucide-react";
 import type { ReactNode } from "react";
 
-import { HumanHighlightEx3 } from "@/components/primitives/human-highlight";
 import { BtnPill, SectionHead } from "@/components/sections-mock/primitives";
 
 export function StartWithSafetyContent() {
@@ -48,7 +47,7 @@ function Hero() {
         <p className="lede lede--regular">
           AI is already being used inside your organization. Safety gives
           leaders a shared way to protect people, clarify boundaries, and move{" "}
-          <HumanHighlightEx3 inverse>forward without panic.</HumanHighlightEx3>
+          forward without panic.
         </p>
         <div className="hero-actions">
           <BtnPill href="/contact" variant="primary">

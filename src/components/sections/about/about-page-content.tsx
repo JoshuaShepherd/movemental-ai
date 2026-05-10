@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-import { Container, HumanHighlightEx3, Reveal, Section } from "@/components/primitives";
+import { Container, Reveal, Section } from "@/components/primitives";
 import { COMMITTED_VOICES, VOICES_HUB_PATH } from "@/lib/committed-voices";
 import { cn } from "@/lib/utils";
 
@@ -291,9 +291,9 @@ export function AboutPageContent() {
             <p className="max-w-160 text-lg leading-relaxed text-inverse-muted md:text-xl">
               Movemental exists because three people who had spent decades in mission-driven work
               together{" "}
-              <HumanHighlightEx3 inverse>
+              
                 saw something coming and decided to build the answer themselves.
-              </HumanHighlightEx3>
+              
             </p>
           </Reveal>
         </Container>

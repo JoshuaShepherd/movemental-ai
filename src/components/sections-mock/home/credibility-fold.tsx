@@ -2,10 +2,9 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { HumanHighlightEx3 } from "@/components/primitives/human-highlight";
 import { SectionHead } from "@/components/sections-mock/primitives";
 
-import { MovementVoicesNetwork } from "./movement-voices-network";
+import { SceniusNetworkHome } from "./scenius-network-home";
 
 interface Founder {
   name: string;
@@ -58,7 +57,7 @@ export function CredibilityFold() {
         />
 
         <p className="mt-6 max-w-(--prose-max) text-sm leading-relaxed text-muted-foreground md:text-base">
-          <HumanHighlightEx3>Credibility in an AI-saturated world is increasingly relational.</HumanHighlightEx3>
+          Credibility in an AI-saturated world is increasingly relational.
         </p>
 
         <div className="mt-14 md:mt-16">
@@ -101,7 +100,7 @@ export function CredibilityFold() {
         </div>
 
         <div className="mt-16 pt-4 md:mt-20 md:pt-6">
-          <MovementVoicesNetwork ariaLabel="Movement Voices — an all-channel network of trusted leaders shaping the conversation, with Movemental at the center" />
+          <SceniusNetworkHome ariaLabel="Movement Voices — trusted leaders in a full mesh; hover a portrait for audience credentials, drag to pan, scroll to zoom" />
         </div>
 
         <Link

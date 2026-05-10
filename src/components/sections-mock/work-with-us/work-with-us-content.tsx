@@ -10,7 +10,6 @@
 
 import Link from "next/link";
 
-import { HumanHighlightEx3 } from "@/components/primitives/human-highlight";
 import { BtnPill, SectionHead } from "@/components/sections-mock/primitives";
 
 export function WorkWithUsContent() {
@@ -47,7 +46,7 @@ function Hero() {
         <p className="lede lede--regular">
           Movemental helps churches, nonprofits, and institutions establish
           safety, build capability, and develop AI solutions that serve their
-          mission <HumanHighlightEx3 inverse>instead of reshaping it.</HumanHighlightEx3>
+          mission instead of reshaping it.
         </p>
         <div className="hero-actions">
           <BtnPill href="/contact" variant="primary">

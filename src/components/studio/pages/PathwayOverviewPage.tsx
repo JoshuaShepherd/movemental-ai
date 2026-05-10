@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect } from 'react';
-import { HumanHighlightEx3 } from '@/components/primitives/human-highlight';
 import { Container } from '@/components/studio/Container';
 import { Reveal } from '@/components/studio/Reveal';
 import Link from "next/link";
@@ -108,7 +107,7 @@ export function PathwayOverviewPage() {
             </h1>
             <p className="lede text-xl md:text-2xl text-muted-foreground leading-relaxed">
               We rebuild the human layer first —{" "}
-              <HumanHighlightEx3>governance, capability, and shared language</HumanHighlightEx3> — then build the technology
+              governance, capability, and shared language — then build the technology
               that compounds rather than corrodes.
             </p>
             <div className="flex flex-col gap-4 pt-10 sm:flex-row">
