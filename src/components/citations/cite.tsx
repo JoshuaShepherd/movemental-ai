@@ -108,17 +108,23 @@ export function Cite({ claimId, ariaLabel, className }: CiteProps) {
     `Source note ${number || "?"}${footnote ? `: ${footnote.slice(0, 120)}${footnote.length > 120 ? "…" : ""}` : ""}`;
 
   return (
-    <span className={`cite${className ? ` ${className}` : ""}`} ref={wrapperRef}>
-      <button
-        type="button"
-        className="cite__btn"
-        aria-expanded={open}
-        aria-controls={popoverId}
-        aria-label={labelText}
-        onClick={toggle}
-      >
-        {number || "?"}
-      </button>
+    <span
+      className={`cite${className ? ` ${className}` : ""}`}
+      ref={wrapperRef}
+      data-cite-open={open ? "true" : undefined}
+    >
+      <span className="cite__trigger-wrap">
+        <button
+          type="button"
+          className="cite__btn"
+          aria-expanded={open}
+          aria-controls={popoverId}
+          aria-label={labelText}
+          onClick={toggle}
+        >
+          {number || "?"}
+        </button>
+      </span>
       <span
         className="cite__pop"
         id={popoverId}

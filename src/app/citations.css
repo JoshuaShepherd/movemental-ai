@@ -14,7 +14,16 @@
 .cite {
   position: relative;
   display: inline-block;
-  line-height: 0; /* prevents shifting baseline */
+  vertical-align: baseline;
+}
+
+/* Collapse the line box around the pill only. Putting `line-height: 0` on the
+   outer `.cite` used to shrink the popover’s inherited line-height and collapse
+   tooltip prose (hero headings + tight leading made this obvious). */
+.cite__trigger-wrap {
+  display: inline-block;
+  line-height: 0;
+  vertical-align: baseline;
 }
 
 .cite__btn {
@@ -115,6 +124,8 @@
     0 4px 12px rgba(25, 21, 15, 0.06);
   font-size: 0.83rem;
   line-height: 1.55;
+  font-style: normal;
+  font-weight: 400;
   color: var(--foreground);
   text-align: left;
   opacity: 0;
@@ -137,7 +148,7 @@
   clip-path: polygon(50% 0, 100% 100%, 0 100%);
 }
 
-.cite__btn[aria-expanded="true"] + .cite__pop {
+.cite[data-cite-open="true"] .cite__pop {
   opacity: 1;
   pointer-events: auto;
   transform: translate(-50%, 0);
@@ -152,6 +163,7 @@
   font-family: var(--font-serif, ui-serif, Georgia, serif);
   font-size: 0.88rem;
   font-weight: 400;
+  font-style: normal;
   line-height: 1.6;
   color: var(--foreground);
 }
@@ -162,8 +174,11 @@
   gap: 0.35rem;
   margin-top: 0.7rem;
   font-size: 0.78rem;
+  line-height: 1.45;
   color: var(--cite-hl-ink);
   font-weight: 500;
+  font-style: normal;
+  font-family: var(--font-sans);
   text-decoration: none;
   border-bottom: 1px solid var(--cite-hl);
 }

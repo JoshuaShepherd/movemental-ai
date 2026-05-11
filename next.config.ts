@@ -6,6 +6,27 @@ import { fileURLToPath } from "node:url";
 // walk up the filesystem and pick up an unrelated parent lockfile.
 const projectRoot = dirname(fileURLToPath(import.meta.url));
 
+/**
+ * Production CSP for Movemental. Allows Cloudflare Web Analytics / Insights
+ * (`static.cloudflareinsights.com` script + `cloudflareinsights.com` RUM posts).
+ *
+ * If Cloudflare or another proxy **also** sends a `Content-Security-Policy`
+ * header, browsers enforce the **intersection** of all policies — both must
+ * allow a origin for it to work. In that case update the edge rule when you
+ * can reach the dashboard, or this header alone may not unblock the beacon.
+ */
+const CONTENT_SECURITY_POLICY = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https:",
+  "font-src 'self' data:",
+  "connect-src 'self' https://cloudflareinsights.com https://*.cloudflareinsights.com https://*.supabase.co wss://*.supabase.co",
+  "frame-ancestors 'self'",
+  "base-uri 'self'",
+  "form-action 'self'",
+].join("; ");
+
 const nextConfig: NextConfig = {
   turbopack: {
     root: projectRoot,
@@ -320,6 +341,19 @@ const nextConfig: NextConfig = {
         source: "/training/:path*",
         destination: "/pathway/skills",
         permanent: true,
+      },
+    ];
+  },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: CONTENT_SECURITY_POLICY,
+          },
+        ],
       },
     ];
   },
