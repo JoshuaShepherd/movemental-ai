@@ -1,11 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import * as React from "react";
 import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { Container } from "@/components/primitives/container";
-import { Eyebrow } from "@/components/primitives/eyebrow";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/client";
 
@@ -38,52 +38,113 @@ function LoginForm() {
   };
 
   return (
-    <Container width="reading" className="py-16">
-      <Eyebrow className="mb-2">Sign in</Eyebrow>
-      <h1 className="text-2xl font-semibold tracking-[-0.02em] text-foreground">Dashboard access</h1>
-      <p className="mt-3 text-sm text-muted-foreground">
-        Enter the email address associated with your Movemental workspace. We will send you a secure
-        link.
-      </p>
-      {reason === "no_org" ? (
-        <p className="mt-4 text-sm text-muted-foreground">
-          No organization membership was found for this account yet. Contact Movemental if you believe
-          this is a mistake.
+    <Container width="reading" className="py-20 md:py-28">
+      <div className="max-w-xl">
+        <p className="mb-6 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">
+          Sign in · Movemental Dashboard
         </p>
-      ) : null}
-      {err === "auth" ? (
-        <p className="mt-4 text-sm text-muted-foreground">Authentication did not complete. Try again.</p>
-      ) : null}
+        <h1 className="font-serif-display text-5xl italic leading-tight tracking-tight text-foreground md:text-6xl">
+          Welcome back.
+        </h1>
+        <p className="mt-8 text-lg leading-relaxed text-foreground">
+          Your dashboard is where the work lives — your Field Guide, your Sandbox phases, your recipe
+          library, and your Future Plan.
+        </p>
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+          Enter the email address associated with your Movemental workspace. We&apos;ll send you a secure
+          sign-in link.
+        </p>
 
-      <form onSubmit={submit} className="mt-8 flex flex-col gap-4">
-        <label className="flex flex-col gap-2 text-sm text-foreground">
-          <span className="font-medium">Email</span>
-          <input
-            type="email"
-            required
-            autoComplete="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="rounded-lg bg-background px-3 py-2 text-foreground outline-none ring-1 ring-border focus-visible:ring-2 focus-visible:ring-ring"
-          />
-        </label>
-        <Button type="submit" variant="primary" disabled={status === "loading" || status === "sent"}>
-          {status === "sent" ? "Link sent" : status === "loading" ? "Sending…" : "Email me a link"}
-        </Button>
-        {status === "error" ? (
-          <p className="text-sm text-muted-foreground">Could not send link. Try again shortly.</p>
+        {reason === "no_org" ? (
+          <p className="mt-6 border-l-2 border-pathway-accent bg-section/60 px-5 py-4 text-sm leading-relaxed text-foreground">
+            No organization membership was found for this account yet. If you believe this is a mistake,{" "}
+            <Link href="/contact" className="text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary">
+              reach out to us
+            </Link>
+            .
+          </p>
         ) : null}
-        {status === "sent" ? (
-          <p className="text-sm text-muted-foreground">Check your inbox for the sign-in link.</p>
+        {err === "auth" ? (
+          <p className="mt-6 border-l-2 border-pathway-accent bg-section/60 px-5 py-4 text-sm leading-relaxed text-foreground">
+            Authentication did not complete. Request a new sign-in link below.
+          </p>
         ) : null}
-      </form>
+
+        <form onSubmit={submit} className="mt-12 flex flex-col gap-5">
+          <label className="flex flex-col gap-2">
+            <span className="text-[0.62rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">
+              Email address
+            </span>
+            <input
+              type="email"
+              required
+              autoComplete="email"
+              placeholder="name@organization.org"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full rounded-lg bg-background px-4 py-3 text-base text-foreground outline-none ring-1 ring-border transition-shadow placeholder:text-muted-foreground/60 focus-visible:ring-2 focus-visible:ring-ring"
+            />
+          </label>
+          <Button type="submit" variant="primary" disabled={status === "loading" || status === "sent"}>
+            {status === "sent" ? "Link sent" : status === "loading" ? "Sending…" : "Email me a sign-in link"}
+          </Button>
+          {status === "error" ? (
+            <p className="text-sm text-muted-foreground">
+              Could not send the link. Try again in a moment.
+            </p>
+          ) : null}
+          {status === "sent" ? (
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              Check your inbox for the sign-in link. It will be from{" "}
+              <span className="text-foreground">josh@movemental.ai</span> — check spam if you don&apos;t see
+              it within a minute or two.
+            </p>
+          ) : null}
+        </form>
+
+        <nav
+          aria-label="Sign-in help"
+          className="mt-16 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border pt-8 text-sm text-muted-foreground"
+        >
+          <Link
+            href="/field-guides/safety"
+            className="transition-colors hover:text-foreground"
+          >
+            Not yet a customer? Read the field guide.
+          </Link>
+          <span aria-hidden className="text-muted-foreground/40">
+            ·
+          </span>
+          <Link
+            href="/contact"
+            className="transition-colors hover:text-foreground"
+          >
+            Need help signing in?
+          </Link>
+          <span aria-hidden className="text-muted-foreground/40">
+            ·
+          </span>
+          <Link
+            href="/about"
+            className="transition-colors hover:text-foreground"
+          >
+            About Movemental
+          </Link>
+        </nav>
+      </div>
     </Container>
   );
 }
 
 export default function LoginPage() {
   return (
-    <Suspense fallback={<div className="py-16 text-center text-sm text-muted-foreground">Loading…</div>}>
+    <Suspense
+      fallback={
+        <Container width="reading" className="py-20">
+          <p className="text-sm text-muted-foreground">Loading…</p>
+        </Container>
+      }
+    >
       <LoginForm />
     </Suspense>
   );

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ClipboardCheck, ListOrdered, Route, ScrollText, Users } from "lucide-react";
+import { BookOpen, FileText, MapPin, Ruler, Siren, Users } from "lucide-react";
 import { Fragment } from "react";
 import Link from "next/link";
 
@@ -17,7 +17,7 @@ const fieldGuideDisclaimer = (
 );
 
 function MetaStrip() {
-  const items = ["Sixteen pages", "Free", "Self-assessment included", "No drip campaign"];
+  const items = ["33 pages", "Free", "Self-assessment included", "No drip campaign"];
   return (
     <div
       className="my-4 flex flex-wrap items-center gap-x-4 gap-y-2 border-y border-border py-4 font-sans text-sm font-semibold uppercase tracking-wider text-outline"
@@ -47,7 +47,7 @@ export function FieldGuideSafetyLanding() {
               It Starts With Safety.
             </h1>
             <p className="max-w-xl font-sans text-xl leading-relaxed text-muted-foreground md:text-2xl">
-              A sixteen-page protocol defining the seven foundational decisions required to protect your
+              A 33-page protocol defining the seven foundational decisions required to protect your
               organization&apos;s mission and people in the era of artificial intelligence.
             </p>
             <MetaStrip />
@@ -80,39 +80,83 @@ export function FieldGuideSafetyLanding() {
           </figure>
         </section>
 
-        {/* Grid */}
+        {/* Five-layer architecture */}
         <section className="bg-section px-8 py-24 md:py-32">
           <div className="mx-auto max-w-7xl">
-            <h2 className="mx-auto mb-16 max-w-3xl text-center font-serif-display text-4xl font-semibold italic md:text-5xl">
-              The seven decisions, the self-assessment, and the framework that holds them.
+            <h2 className="mx-auto mb-6 max-w-3xl text-center font-serif-display text-4xl font-semibold italic md:text-5xl">
+              Five layers. Seven deliverables. One ratifiable framework.
             </h2>
-            <div className="grid grid-cols-1 gap-px bg-border md:grid-cols-2">
+            <p className="mx-auto mb-16 max-w-2xl text-center font-sans text-lg leading-relaxed text-muted-foreground">
+              The Field Guide organizes Safety into five layers — from the values statement at the top to the
+              response plans at the bottom. Seven specific documents live across those layers. Each one is
+              ratifiable by a board.
+            </p>
+            <div className="grid grid-cols-1 gap-px bg-border md:grid-cols-2 lg:grid-cols-3">
               {[
                 {
-                  icon: ScrollText,
-                  title: "Why Safety First",
-                  body: "Before leveraging AI for operational efficiency or missional reach, leaders must establish boundaries. The guide articulates why technological adoption without theological and ethical constraints is a profound risk to institutional trust.",
+                  icon: BookOpen,
+                  number: "Layer 01",
+                  title: "Statement",
+                  body: "The values and posture the organization is willing to ratify in public. Sits above every other document and explains why this work exists at all.",
+                  deliverables: ["AI Use Charter"],
                 },
                 {
-                  icon: ListOrdered,
-                  title: "The Seven Decisions",
-                  body: "We outline the specific, actionable policies every organization needs: Acceptable Use Statement, Care Boundaries, Disclosure Standards, Vendor and Tool Inventory, Data Handling Protocol, Incident Response Plan, and Named Refusals.",
+                  icon: FileText,
+                  number: "Layer 02",
+                  title: "Policy",
+                  body: "The operational guidance staff actually read. Translates the Charter into sanctioned tools, welcomed tasks, constrained tasks, and forbidden tasks.",
+                  deliverables: ["Acceptable Use Policy"],
                 },
                 {
-                  icon: ClipboardCheck,
-                  title: "The Self-Assessment",
-                  body: "A ten-point diagnostic tool designed for leadership teams to take together. It reveals gaps in current practice and provides a clear, objective starting point for necessary conversations.",
+                  icon: MapPin,
+                  number: "Layer 03",
+                  title: "Context",
+                  body: "Where the organization names the relational and pastoral situations that AI cannot enter. Specific to your ministry, your beneficiaries, your room.",
+                  deliverables: ["Care Boundaries"],
                 },
                 {
-                  icon: Route,
-                  title: "Next Stages",
-                  body: "Safety is Stage 01. The guide previews how establishing these boundaries prepares an organization for Stage 02 (Strategy) and Stage 03 (Deployment), ensuring future integration is built on solid ground.",
+                  icon: Ruler,
+                  number: "Layer 04",
+                  title: "Rules",
+                  body: "The concrete standards that govern day-to-day practice — what data may be handled where, and how AI involvement is disclosed to readers and constituents.",
+                  deliverables: [
+                    "Data Handling Standards",
+                    "Disclosure and Attribution Standard",
+                  ],
                 },
-              ].map(({ icon: Icon, title, body }) => (
-                <div key={title} className="flex flex-col gap-6 bg-section p-12">
-                  <Icon className="size-8 text-primary" strokeWidth={1.25} aria-hidden />
+                {
+                  icon: Siren,
+                  number: "Layer 05",
+                  title: "Response Plans",
+                  body: "What the organization does when an incident actually happens. Pre-written so the response is calm, fast, and consistent — not improvised under pressure.",
+                  deliverables: [
+                    "Voice Cloning and Impersonation Response Plan",
+                    "Constituent Communication template",
+                  ],
+                },
+                {
+                  icon: Users,
+                  number: "Plus",
+                  title: "Self-Assessment",
+                  body: "A 30-minute diagnostic your leadership team takes together. Surfaces which of the five layers are weak, which deliverables are missing, and where to start.",
+                  deliverables: [],
+                },
+              ].map(({ icon: Icon, number, title, body, deliverables }) => (
+                <div key={title} className="flex flex-col gap-4 bg-section p-10">
+                  <Icon className="size-7 text-primary" strokeWidth={1.25} aria-hidden />
+                  <p className="font-sans text-xs font-semibold uppercase tracking-widest text-primary">{number}</p>
                   <h3 className="font-serif-display text-2xl font-semibold italic">{title}</h3>
-                  <p className="font-sans text-lg leading-relaxed text-muted-foreground">{body}</p>
+                  <p className="font-sans text-base leading-relaxed text-muted-foreground">{body}</p>
+                  {deliverables.length > 0 ? (
+                    <ul className="mt-2 space-y-1.5 border-t border-border pt-4 font-sans text-sm text-foreground">
+                      {deliverables.map((d) => (
+                        <li key={d} className="flex gap-2">
+                          <span className="text-primary" aria-hidden>·</span>
+                          <span>{d}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
                 </div>
               ))}
             </div>
@@ -169,7 +213,7 @@ export function FieldGuideSafetyLanding() {
           <div className="mx-auto flex max-w-3xl flex-col gap-12 text-center">
             <div>
               <h2 className="mb-4 font-serif-display text-4xl font-semibold italic md:text-5xl">
-                Sixteen pages. Free. Read it in an evening.
+                Thirty-three pages. Free. Read it in an evening.
               </h2>
               <p className="font-sans text-lg text-inverse-muted">The definitive starting point for institutional AI safety.</p>
             </div>
