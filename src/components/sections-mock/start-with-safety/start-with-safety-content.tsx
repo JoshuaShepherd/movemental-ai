@@ -1,25 +1,26 @@
 /**
- * Start with Safety — first step of the Movemental Path.
+ * Safety Self-Assessment — the public, narrower Safety-readiness check.
  *
- * Composition mirrors the home page chain: midnight hero → reframe →
- * foundation cards → diagnostic → outputs → mini path → midnight final CTA.
- * Recipe classes from src/app/recipes.css carry the visual language; this
- * file owns content, typed data, and a few small local components for the
- * page-specific surfaces (comparison columns, diagnostic checklist).
+ * Distinct from /assess (the broader path-integrity diagnostic, 45 min,
+ * human-reviewed read-back). This page produces an automated client-side
+ * read-back from seven foundational Safety questions. Built per Prompt 07
+ * Option B (transform /start-with-safety from a third Safety overview into
+ * the public Safety Self-Assessment).
  */
 
-import { Check, Compass, Eye, Lock, MessageSquare, ShieldCheck } from "lucide-react";
+import { Compass, Eye, Lock, MessageSquare, ShieldCheck } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { BtnPill, SectionHead } from "@/components/sections-mock/primitives";
+
+import { SafetySelfAssessment } from "./safety-self-assessment";
 
 export function StartWithSafetyContent() {
   return (
     <>
       <Hero />
-      <ReframeFold />
-      <FoundationFold />
-      <DiagnosticFold />
+      <MeasuresFold />
+      <AssessmentFold />
       <OutputsFold />
       <PathFold />
       <FinalCta />
@@ -38,24 +39,32 @@ function Hero() {
       aria-labelledby="safety-hero-h1"
     >
       <div className="container">
-        <p className="eyebrow">Start with Safety</p>
+        <p className="eyebrow">Safety Self-Assessment</p>
         <h1 className="display" id="safety-hero-h1">
-          Before your organization adopts more AI,
+          Where is your organization
           <br />
-          <em>establish the ground rules.</em>
+          <em>actually starting with AI?</em>
         </h1>
         <p className="lede lede--regular">
-          AI is already being used inside your organization. Safety gives
-          leaders a shared way to protect people, clarify boundaries, and move{" "}
-          forward without panic.
+          Seven questions. Ten minutes. A read-back written to your situation —
+          not a score, not a benchmark, no email required. The read-back tells
+          you whether Volume One is enough or whether SafeStart facilitation
+          would accelerate the work.
         </p>
         <div className="hero-actions">
-          <BtnPill href="/contact" variant="primary">
-            Begin the Safety Step
+          <BtnPill href="#assessment" variant="primary">
+            Take the assessment
           </BtnPill>
-          <BtnPill href="#foundation" variant="ghost">
-            See What Safety Includes
+          <BtnPill href="/field-guides/safety" variant="ghost">
+            Read Volume One first
           </BtnPill>
+        </div>
+        <div className="hero-proof">
+          <span className="hero-proof__label">Narrow check — Safety stage only</span>
+          <span>
+            For the full path-integrity diagnostic across all four stages,
+            see <a href="/assess">/assess</a>.
+          </span>
         </div>
       </div>
     </section>
@@ -63,90 +72,7 @@ function Hero() {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Section 2 — Safety Reframe (two-column comparison)                        */
-/* -------------------------------------------------------------------------- */
-
-interface ComparisonColumn {
-  label: string;
-  title: string;
-  bullets: readonly string[];
-}
-
-const COMPARISON_COLUMNS: readonly ComparisonColumn[] = [
-  {
-    label: "Without Safety",
-    title: "Adoption happens in private, in fragments.",
-    bullets: [
-      "Staff use tools quietly and inconsistently",
-      "Sensitive information may enter the wrong systems",
-      "Leaders react after problems surface",
-      "Teams develop habits before standards exist",
-    ],
-  },
-  {
-    label: "With Safety",
-    title: "Adoption happens in the open, in agreement.",
-    bullets: [
-      "Everyone understands the boundaries",
-      "Risk is named before adoption accelerates",
-      "Leaders have visibility and shared language",
-      "Experimentation happens inside trusted limits",
-    ],
-  },
-];
-
-function ReframeFold() {
-  return (
-    <section
-      className="band-default"
-      id="reframe"
-      aria-labelledby="safety-reframe-h2"
-    >
-      <div className="container">
-        <SectionHead
-          eyebrow="Safety is not stalling"
-          display={
-            <>
-              Safety is what makes <em>wise adoption possible.</em>
-            </>
-          }
-          displayId="safety-reframe-h2"
-          lede="Many leaders hear “AI safety” and imagine delay, restriction, or bureaucracy. Movemental means something different. Safety is the shared foundation that lets your team experiment with confidence because the boundaries are clear."
-        />
-
-        <p
-          className="prose"
-          style={{ marginTop: "1.5rem", marginBottom: "2.25rem" }}
-        >
-          Without safety, AI adoption becomes private, inconsistent, and
-          reactive. With safety, leaders can name what is allowed, what is
-          off-limits, who is responsible, and how the organization will learn
-          together.
-        </p>
-
-        <div
-          className="problem-grid"
-          aria-label="The shift safety creates inside an organization"
-        >
-          {COMPARISON_COLUMNS.map((col) => (
-            <article key={col.label} className="problem-card">
-              <p className="problem-card__label">{col.label}</p>
-              <h3>{col.title}</h3>
-              <ul className="path-step__list" style={{ marginTop: "0.4rem" }}>
-                {col.bullets.map((b) => (
-                  <li key={b}>{b}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/*  Section 3 — What Safety Includes (5 foundation cards)                     */
+/*  Section 2 — What the assessment measures (5 areas)                        */
 /* -------------------------------------------------------------------------- */
 
 interface SafetyArea {
@@ -173,7 +99,7 @@ const SAFETY_AREAS: readonly SafetyArea[] = [
   },
   {
     title: "Voice and Trust",
-    body: "How will AI support communication without flattening the organization’s voice or simulating human care?",
+    body: "How will AI support communication without flattening the organization's voice or simulating human care?",
     icon: <MessageSquare strokeWidth={1.5} />,
   },
   {
@@ -183,23 +109,24 @@ const SAFETY_AREAS: readonly SafetyArea[] = [
   },
 ];
 
-function FoundationFold() {
+function MeasuresFold() {
   return (
     <section
       className="band-section build-section"
-      id="foundation"
-      aria-labelledby="safety-foundation-h2"
+      id="measures"
+      aria-labelledby="safety-measures-h2"
     >
       <div className="container build-section__inner">
         <header className="build-section__header">
-          <p className="section-eyebrow">The safety foundation</p>
-          <h2 className="build-section__title" id="safety-foundation-h2">
+          <p className="section-eyebrow">What this assessment measures</p>
+          <h2 className="build-section__title" id="safety-measures-h2">
             Five areas every organization should clarify first.
           </h2>
           <p className="build-section__intro">
-            Before building AI workflows or custom tools, your organization
-            needs a shared safety foundation. These are the first questions
-            Movemental helps leaders answer.
+            The seven questions on the next page test whether your senior team
+            can answer the foundational questions across five areas. Each is an
+            alternate articulation of the five Field Guide layers — Statement,
+            Policy, Context, Rules, and Response Plans.
           </p>
         </header>
 
@@ -220,81 +147,35 @@ function FoundationFold() {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Section 4 — Safety Diagnostic (static checklist)                          */
+/*  Section 3 — The assessment (interactive)                                  */
 /* -------------------------------------------------------------------------- */
 
-const DIAGNOSTIC_QUESTIONS: readonly string[] = [
-  "Do you know which AI tools your staff are already using?",
-  "Do you have written guidance for acceptable and unacceptable use?",
-  "Have you defined what information should never enter AI tools?",
-  "Do leaders agree on when human review is required?",
-  "Do staff know how to handle confidential, pastoral, donor, student, or client information?",
-  "Do you have a process for reviewing new AI use cases?",
-  "Can your team explain why your AI boundaries exist?",
-];
-
-function DiagnosticFold() {
+function AssessmentFold() {
   return (
     <section
       className="band-default"
-      id="diagnostic"
-      aria-labelledby="safety-diagnostic-h2"
+      id="assessment"
+      aria-labelledby="safety-assessment-h2"
     >
       <div className="container">
         <SectionHead
-          eyebrow="Quick diagnostic"
+          eyebrow="The assessment"
           display={
             <>
               How safe is your <em>current AI usage?</em>
             </>
           }
-          displayId="safety-diagnostic-h2"
-          lede="You do not need a perfect strategy to begin. Start by asking whether your organization can answer the basic questions."
+          displayId="safety-assessment-h2"
+          lede="Answer honestly. Each question has four choices. The read-back at the end will tell you what is foundational, what is refinement, and what next step fits your situation."
         />
-
-        <ul
-          className="mt-10 grid gap-3 max-w-[42rem] list-none p-0"
-          aria-label="Self-assessment checklist"
-        >
-          {DIAGNOSTIC_QUESTIONS.map((q) => (
-            <ChecklistItem key={q}>{q}</ChecklistItem>
-          ))}
-        </ul>
-
-        <p
-          className="prose"
-          style={{ marginTop: "1.75rem", maxWidth: "42rem" }}
-        >
-          If several of these questions are unclear, safety is the right place
-          to begin.
-        </p>
+        <SafetySelfAssessment />
       </div>
     </section>
   );
 }
 
-interface ChecklistItemProps {
-  children: ReactNode;
-}
-
-function ChecklistItem({ children }: ChecklistItemProps) {
-  return (
-    <li className="flex gap-3 items-start py-3 px-4 rounded-lg bg-card border border-border/70">
-      <span
-        className="flex-shrink-0 inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary/10 text-primary mt-0.5"
-        aria-hidden="true"
-      >
-        <Check size={14} strokeWidth={2.5} />
-      </span>
-      <span className="text-foreground text-[0.95rem] leading-snug">
-        {children}
-      </span>
-    </li>
-  );
-}
-
 /* -------------------------------------------------------------------------- */
-/*  Section 5 — What You Get (6 output cards)                                 */
+/*  Section 4 — What the full Safety step produces (6 output cards)           */
 /* -------------------------------------------------------------------------- */
 
 interface SafetyOutput {
@@ -338,13 +219,15 @@ function OutputsFold() {
     >
       <div className="container">
         <header className="matters-section__header">
-          <p className="section-eyebrow">What this step produces</p>
+          <p className="section-eyebrow">What the full Safety step produces</p>
           <h2 className="matters-section__title" id="safety-outputs-h2">
-            Safety turns anxiety into shared clarity.
+            The assessment is the start. Safety produces the artifacts.
           </h2>
           <p className="matters-section__intro">
-            The Safety step gives your organization practical decisions and
-            leadership alignment before adoption accelerates.
+            The read-back tells you whether the work is foundational or
+            refinement. The work itself — done either on your own with Volume
+            One or facilitated through SafeStart — produces these six artifacts
+            your board, staff, and team can actually use.
           </p>
         </header>
 
@@ -362,7 +245,7 @@ function OutputsFold() {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Section 6 — Mini Path (Safety → Sandbox → Skills → Solutions)             */
+/*  Section 5 — Mini Path (Safety → Sandbox → Skills → Solutions)             */
 /* -------------------------------------------------------------------------- */
 
 interface PathStep {
@@ -439,7 +322,7 @@ function PathFold() {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Section 7 — Final CTA                                                     */
+/*  Section 6 — Final CTA                                                     */
 /* -------------------------------------------------------------------------- */
 
 function FinalCta() {
@@ -451,18 +334,20 @@ function FinalCta() {
     >
       <div className="container final-cta__inner">
         <h2 className="display" id="safety-final-cta-h2">
-          Start with the step that <em>makes every other step safer.</em>
+          The assessment is the first honest conversation about{" "}
+          <em>where AI already lives in your organization.</em>
         </h2>
         <p className="lede lede--regular">
-          Before you rush into tools or wait until confusion grows, establish
-          the foundation your organization can trust.
+          Take the seven questions to your senior team and run them together.
+          Then read the volume, draft the artifacts, and decide whether you
+          need facilitation. The path begins here.
         </p>
         <div className="hero-actions final-cta__actions">
-          <BtnPill href="/contact" variant="primary">
-            Begin the Safety Step
+          <BtnPill href="#assessment" variant="primary">
+            Take the assessment
           </BtnPill>
-          <BtnPill href="/contact" variant="ghost">
-            Talk With Us
+          <BtnPill href="/contact?interest=safestart" variant="ghost">
+            Talk about SafeStart
           </BtnPill>
         </div>
       </div>

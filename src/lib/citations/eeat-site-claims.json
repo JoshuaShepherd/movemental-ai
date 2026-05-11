@@ -276,7 +276,7 @@
   {
     "id": "start-with-safety-already-inside-techsoup",
     "rank": 5,
-    "page": "/start-with-safety",
+    "page": "/pathway/safety",
     "claimType": "Purported fact",
     "claim": "AI is already being used inside your organization.",
     "cite": {
@@ -292,7 +292,7 @@
   {
     "id": "start-with-safety-shared-boundaries-playbook",
     "rank": 5,
-    "page": "/start-with-safety",
+    "page": "/pathway/safety",
     "claimType": "Opinion",
     "claim": "Safety gives leaders shared boundaries without panic.",
     "cite": {

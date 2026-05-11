@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { StartWithSafetyContent } from "@/components/sections-mock/start-with-safety/start-with-safety-content";
 
 export const metadata: Metadata = {
-  title: "Start with Safety",
+  title: "Safety Self-Assessment",
   description:
-    "Safety is the foundation that makes responsible AI adoption possible. The first step of the Movemental Path: clear boundaries, shared language, and leadership alignment before adoption accelerates.",
+    "Seven questions, ten minutes, a read-back written to your situation. The narrower Safety-readiness check from Movemental — tells you whether Volume One is enough or whether SafeStart facilitation would accelerate the work.",
 };
 
 export default function StartWithSafetyPage() {
