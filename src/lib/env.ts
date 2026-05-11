@@ -1,5 +1,17 @@
 import { z } from "zod";
 
+/** Dotenv often yields ""; treat as unset before `.url()` validation. */
+function optionalEnvUrl() {
+  return z.preprocess(
+    (val) => {
+      if (val === undefined || val === null) return undefined;
+      const s = String(val).trim();
+      return s === "" ? undefined : s;
+    },
+    z.string().url().optional(),
+  );
+}
+
 /**
  * Runtime-validated environment variables.
  * Import from this module rather than reading process.env directly.
@@ -11,7 +23,7 @@ import { z } from "zod";
  */
 const serverSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
-  DATABASE_URL: z.string().url().optional(),
+  DATABASE_URL: optionalEnvUrl(),
   SUPABASE_SERVICE_ROLE_KEY: z.string().min(1).optional(),
   /** Multi-tenant org scoping — required for data isolation */
   TENANT_ORG_ID: z.string().uuid().optional(),
@@ -41,17 +53,17 @@ const serverSchema = z.object({
 });
 
 const clientSchema = z.object({
-  NEXT_PUBLIC_SUPABASE_URL: z.string().url().optional(),
+  NEXT_PUBLIC_SUPABASE_URL: optionalEnvUrl(),
   NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1).optional(),
-  NEXT_PUBLIC_SITE_URL: z.string().url().optional(),
+  NEXT_PUBLIC_SITE_URL: optionalEnvUrl(),
   /** Optional footer / JSON-LD profile URLs — set in Vercel when accounts exist */
-  NEXT_PUBLIC_SOCIAL_LINKEDIN_URL: z.string().url().optional(),
-  NEXT_PUBLIC_SOCIAL_X_URL: z.string().url().optional(),
-  NEXT_PUBLIC_SOCIAL_BLUESKY_URL: z.string().url().optional(),
+  NEXT_PUBLIC_SOCIAL_LINKEDIN_URL: optionalEnvUrl(),
+  NEXT_PUBLIC_SOCIAL_X_URL: optionalEnvUrl(),
+  NEXT_PUBLIC_SOCIAL_BLUESKY_URL: optionalEnvUrl(),
   // Stripe publishable key
   NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string().min(1).optional(),
   // Sentry DSN (optional — monitoring is disabled when unset)
-  NEXT_PUBLIC_SENTRY_DSN: z.string().url().optional(),
+  NEXT_PUBLIC_SENTRY_DSN: optionalEnvUrl(),
 });
 
 const processEnv = {
