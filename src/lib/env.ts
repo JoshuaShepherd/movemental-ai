@@ -28,6 +28,10 @@ const serverSchema = z.object({
   CONTACT_NOTIFY_EMAIL: z.string().email().optional(),
   /** Signs one-click newsletter unsubscribe links; use at least 16 random bytes in production. */
   NEWSLETTER_UNSUBSCRIBE_SECRET: z.string().optional(),
+  /** Protects `/api/cron/*` routes (e.g. Vercel Cron Authorization header). */
+  CRON_SECRET: z.string().min(8).optional(),
+  /** Stripe amount for leader onboarding PaymentIntent (USD cents). Example: 50000 = $500. */
+  ONBOARDING_PAYMENT_AMOUNT_CENTS: z.coerce.number().int().positive().optional(),
   /** Shared secret for /book/moderate tooling (set in production) */
   BOOK_MODERATION_TOKEN: z.string().min(8).optional(),
   // Sentry (optional — monitoring is disabled when DSN is unset)
@@ -62,6 +66,8 @@ const processEnv = {
   RESEND_FROM_NAME: process.env.RESEND_FROM_NAME,
   CONTACT_NOTIFY_EMAIL: process.env.CONTACT_NOTIFY_EMAIL,
   NEWSLETTER_UNSUBSCRIBE_SECRET: process.env.NEWSLETTER_UNSUBSCRIBE_SECRET,
+  CRON_SECRET: process.env.CRON_SECRET,
+  ONBOARDING_PAYMENT_AMOUNT_CENTS: process.env.ONBOARDING_PAYMENT_AMOUNT_CENTS,
   BOOK_MODERATION_TOKEN: process.env.BOOK_MODERATION_TOKEN,
   SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN,
   SENTRY_ORG: process.env.SENTRY_ORG,

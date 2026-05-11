@@ -1,0 +1,44 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "safestart_dashboard_pre_kickoff_editorial",
+  "screenFamily": "safestart-hero-timeline",
+  "documentTitle": "Movemental - SafeStart Dashboard",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": "MOVEMENTAL",
+    "tenantName": "Northridge Community Center",
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "Welcome to your engagement.",
+    "supportingCopy": "Your SafeStart engagement begins with a one-hour kickoff Zoom tomorrow at 10:00 AM Central with Joshua Shepherd. Below is what to expect over the next two weeks. Your dashboard will become more active after kickoff — for now, this page is your engagement summary.",
+    "eyebrow": "SAFESTART DASHBOARD"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Welcome to your engagement."
+        },
+        {
+          "level": 2,
+          "text": "A few things to bring to the kickoff."
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

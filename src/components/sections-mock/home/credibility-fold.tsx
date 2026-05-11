@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Cite } from "@/components/citations";
 import { SectionHead } from "@/components/sections-mock/primitives";
 
 import { SceniusNetworkHome } from "./scenius-network-home";
@@ -57,7 +58,8 @@ export function CredibilityFold() {
         />
 
         <p className="mt-6 max-w-(--prose-max) text-sm leading-relaxed text-muted-foreground md:text-base">
-          Credibility in an AI-saturated world is increasingly relational.
+          Credibility in an AI-saturated world is increasingly relational
+          <Cite claimId="pew-ai-detection-attribution-gap" />.
         </p>
 
         <div className="mt-14 md:mt-16">
@@ -100,7 +102,7 @@ export function CredibilityFold() {
         </div>
 
         <div className="mt-16 pt-4 md:mt-20 md:pt-6">
-          <SceniusNetworkHome ariaLabel="Movement Voices — trusted leaders in a full mesh; hover a portrait for audience credentials, drag to pan, scroll to zoom" />
+          <SceniusNetworkHome ariaLabel="Movement Voices — trusted leaders in a full mesh; hover or tap a portrait for a name label and audience credentials, drag to pan, scroll to zoom" />
         </div>
 
         <Link

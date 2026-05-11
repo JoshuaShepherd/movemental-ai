@@ -205,6 +205,16 @@ export const sources = {
     url: "https://gloo.com/press/releases/gloo-unveils-the-first-benchmark-exposing-how-ai-misses-christian-worldview-and-values",
     corpusSection: "8.3.1",
   },
+  "pew-ai-impact-2025": {
+    id: "pew-ai-impact-2025",
+    author: "Pew Research Center",
+    title: "How Americans View AI and Its Impact on People and Society",
+    date: "September 17, 2025",
+    sample: "n = 5,023 U.S. adults · ATP · June 9–15, 2025 fieldwork",
+    tag: "VERIFIED",
+    url: "https://www.pewresearch.org/science/2025/09/17/how-americans-view-ai-and-its-impact-on-people-and-society/",
+    corpusSection: "Trust · public AI literacy",
+  },
 } as const satisfies Record<string, CitationSource>;
 
 export type SourceId = keyof typeof sources;

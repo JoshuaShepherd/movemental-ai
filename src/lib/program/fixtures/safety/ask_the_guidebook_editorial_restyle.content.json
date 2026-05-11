@@ -1,0 +1,44 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "ask_the_guidebook_editorial_restyle",
+  "screenFamily": "governance-document",
+  "documentTitle": "Governance AI - Ask the Guidebook",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "What does our Guidebook say?",
+    "supportingCopy": "Ask in plain language. The Guidebook returns the relevant clauses, the rationale behind them, and the linked Rules that apply.",
+    "eyebrow": "Governance AI"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "What does our Guidebook say?"
+        },
+        {
+          "level": 2,
+          "text": "Yes, with constraints."
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

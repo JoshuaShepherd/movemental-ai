@@ -1,0 +1,84 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "safestart_dashboard_ratification_phase",
+  "screenFamily": "ratification-flow",
+  "documentTitle": "SafeStart Dashboard - Ratification",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": "MOVEMENTAL",
+    "tenantName": null,
+    "userInitials": "LO",
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "Your Guidebook is ready for ratification.",
+    "supportingCopy": "All five layers of your AI Organizational Guidebook have been drafted, reviewed, revised, and prepared for ratification. The next step is yours. Linda Ozawa signs the Statement as Executive Director; the Northridge Board of Directors ratifies the full Guidebook through your standard governance process. Movemental is not in that room. We're available by phone if questions arise.",
+    "eyebrow": "PDF, 1.2 MB"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 3,
+          "text": "Guidebook"
+        },
+        {
+          "level": 3,
+          "text": "Engagement"
+        },
+        {
+          "level": 3,
+          "text": "Settings"
+        },
+        {
+          "level": 1,
+          "text": "Your Guidebook is ready for ratification."
+        },
+        {
+          "level": 2,
+          "text": "Export the packet for Thursday's meeting."
+        },
+        {
+          "level": 3,
+          "text": "1. Statement"
+        },
+        {
+          "level": 3,
+          "text": "2. Policy"
+        },
+        {
+          "level": 3,
+          "text": "3. Context"
+        },
+        {
+          "level": 3,
+          "text": "4. Rules"
+        },
+        {
+          "level": 3,
+          "text": "5. Response Plans"
+        },
+        {
+          "level": 2,
+          "text": "Three actions complete ratification."
+        },
+        {
+          "level": 3,
+          "text": "Board of Directors Meeting"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

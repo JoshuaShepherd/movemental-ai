@@ -157,6 +157,15 @@ export const citations = {
       "Three intrinsic motivators predict performance on cognitive work: <strong>autonomy</strong>, <strong>mastery</strong>, and <strong>purpose</strong>. Vendor certifications target none of these.",
     meta: ["Drive (2009)"],
   },
+
+  // -- Public trust / attribution (Pew) ------------------------------------
+  "pew-ai-detection-attribution-gap": {
+    id: "pew-ai-detection-attribution-gap",
+    source: "pew-ai-impact-2025",
+    claim:
+      "About <strong>76%</strong> of U.S. adults say it is extremely or very important to tell whether pictures, videos, or text were made by AI or by people; <strong>53%</strong> are not too or not at all confident they can spot the difference.",
+    meta: ["n = 5,023", "June 9–15, 2025", "Sept. 2025 report"],
+  },
 } as const satisfies Record<string, Citation>;
 
 export type CitationId = keyof typeof citations;

@@ -92,7 +92,7 @@ This component is the canonical light-themed hero. Any light-themed hero on a ma
 | --- | --- | --- | --- |
 | **Closing CTA (midnight)** | Midnight band with display + lede + 2 CTAs. | **Keep.** Two-CTA pattern; `GhostCtaPanel` supports one. |
 | **Pricing tier line** ("$1,000. Net 15 from signing.") | Plain section. | **Keep.** Doesn't match any palette pattern. |
-| **The seven artifacts grid** | 4-col grid of `<article>` blocks with serif-display number + title + body. | Evaluate **`IconFeatureCard`** — but the artifact cards have no icon. The numbered serif display is the eyebrow equivalent. **Keep**; the artifact card is its own established pattern. |
+| **The seven decisions grid** | 4-col grid of `<article>` blocks with serif-display number + title + body. | Evaluate **`IconFeatureCard`** — but the decision cards have no icon. The numbered serif display is the eyebrow equivalent. **Keep**; the decision card is its own established pattern. |
 
 **Net effect:** likely **zero swaps**. Note in PR.
 

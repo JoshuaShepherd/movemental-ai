@@ -1,0 +1,48 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "sandboxlive_dashboard_active_engagement_state",
+  "screenFamily": "sandboxlive-shell",
+  "documentTitle": "SandboxLive Dashboard",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": "SANDBOX"
+  },
+  "page": {
+    "headline": "Your Sandbox this week.",
+    "supportingCopy": "Your cohort is mid-stream. Two phases active, four trials run in the last seven days, three more scheduled before the next teaching session on Tuesday. Below is what's pending for you personally and what the cohort is working on together.",
+    "eyebrow": "GUIDEBOOK"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Your Sandbox this week."
+        },
+        {
+          "level": 2,
+          "text": "Three items waiting on you."
+        },
+        {
+          "level": 3,
+          "text": "Tuesday, June 10"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

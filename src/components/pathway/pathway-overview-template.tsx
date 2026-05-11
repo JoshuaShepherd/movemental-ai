@@ -10,7 +10,7 @@ export function PathwayOverviewTemplate() {
     <div className="bg-background text-foreground">
       <div className="pt-24 md:pt-28">
         {/* Hero */}
-        <section className="mx-auto grid max-w-[1440px] grid-cols-1 gap-16 px-8 py-16 lg:grid-cols-12 lg:gap-24 lg:py-24">
+        <section className="mx-auto grid max-w-[1440px] grid-cols-1 gap-16 px-8 py-16 lg:grid-cols-12 lg:gap-12 lg:py-24 xl:gap-16">
           <div className="flex flex-col justify-center space-y-8 lg:col-span-7">
             <h1 className="font-serif-display text-5xl italic leading-tight tracking-tight text-foreground md:text-6xl lg:text-7xl">
               Four stages, in the order that makes them work.

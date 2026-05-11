@@ -45,7 +45,7 @@ const otherPaths = {
     {
       num: "01",
       title: "Read the field guide",
-      body: "Sixteen pages naming the seven artifacts and how to draft them. Free. Read it with your team and decide together.",
+      body: "Sixteen pages naming the seven decisions and how to draft them. Free. Read it with your team and decide together.",
       href: "/field-guide",
       linkLabel: "Field guide",
     },
@@ -73,7 +73,7 @@ const institutionsOtherPaths = {
     {
       num: "01",
       title: "Read the field guide",
-      body: "Sixteen pages naming the seven artifacts and the framework. Useful as a starting point for institutional leadership teams to read together before a conversation.",
+      body: "Sixteen pages naming the seven decisions and the framework. Useful as a starting point for institutional leadership teams to read together before a conversation.",
       href: "/field-guide",
       linkLabel: "Field guide",
     },
@@ -154,12 +154,12 @@ export const AUDIENCE_OFFER_COPY: Record<AudienceKind, AudienceOfferCopy> = {
     ),
     patterns: [
       {
-        lead: "The seven artifacts have the same names in every engagement.",
+        lead: "The seven decisions have the same names in every engagement.",
         body: "Their content is completely specific to your church. Care Boundaries protects pastoral relationships at your church in language only your team would write. The framework is portable. The content cannot be templated.",
       },
       {
-        lead: "Named Refusals is the most-cited artifact across our church engagements.",
-        body: "The act of publicly committing to specific refusals is the most distinctive thing Movemental customers do, and it is the artifact that creates the most external visibility. Churches share their Named Refusals with their congregations. Other churches see them and ask their own pastors what their position is.",
+        lead: "Named Refusals is the most-cited decision across our church engagements.",
+        body: "The act of publicly committing to specific refusals is the most distinctive thing Movemental customers do, and it is the decision that creates the most external visibility. Churches share their Named Refusals with their congregations. Other churches see them and ask their own pastors what their position is.",
       },
       {
         lead: "The path scales with the church.",
@@ -169,7 +169,7 @@ export const AUDIENCE_OFFER_COPY: Record<AudienceKind, AudienceOfferCopy> = {
     closingEyebrow: "Where to begin",
     closingHeading: "Most churches begin with Safety.",
     closingBody:
-      "Two weeks of facilitated work. $1,000. Seven artifacts your elders can ratify. The cost is calibrated as a funnel-entry move — most churches don't know whether facilitation is needed until they're inside it, and Safety lets you find out without committing to the full path.",
+      "Two weeks of facilitated work. $1,000. Seven decisions your elders can ratify. The cost is calibrated as a funnel-entry move — most churches don't know whether facilitation is needed until they're inside it, and Safety lets you find out without committing to the full path.",
     closingItalic:
       "Or download the free toolkit and start with the self-assessment. Sixteen pages. Read it in an evening. No commitment.",
     closingConversationPrimary: false,
@@ -222,12 +222,12 @@ export const AUDIENCE_OFFER_COPY: Record<AudienceKind, AudienceOfferCopy> = {
     ),
     patterns: [
       {
-        lead: "The Care Boundaries document is often the artifact nonprofits are most proud of.",
-        body: "For nonprofits with clinical practice, trauma-affected populations, or beneficiary populations protected by law, the Care Boundaries document does work no other governance artifact does. It names — explicitly, in language the board has ratified — exactly which categories of work AI cannot touch. Donors read these documents and remark on them. Peer organizations request them as references.",
+        lead: "The Care Boundaries document is often what nonprofits are most proud of.",
+        body: "For nonprofits with clinical practice, trauma-affected populations, or beneficiary populations protected by law, the Care Boundaries document does work no other governance decision does. It names — explicitly, in language the board has ratified — exactly which categories of work AI cannot touch. Donors read these documents and remark on them. Peer organizations request them as references.",
       },
       {
         lead: "The Forvis Mazars fiduciary framing converts board chairs.",
-        body: "Most nonprofit ED engagements with Movemental are made possible by the board chair, not blocked by them. The Forvis Mazars framing — AI governance as fiduciary expansion of board responsibility — has shifted the conversation in many boardrooms from “Is this premature?” to “Have we discharged our governance duty here?” The seven artifacts read as the operational answer.",
+        body: "Most nonprofit ED engagements with Movemental are made possible by the board chair, not blocked by them. The Forvis Mazars framing — AI governance as fiduciary expansion of board responsibility — has shifted the conversation in many boardrooms from “Is this premature?” to “Have we discharged our governance duty here?” The seven decisions read as the operational answer.",
       },
       {
         lead: "The path scales with the organization.",
@@ -237,7 +237,7 @@ export const AUDIENCE_OFFER_COPY: Record<AudienceKind, AudienceOfferCopy> = {
     closingEyebrow: "Where to begin",
     closingHeading: "Most nonprofits begin with Safety.",
     closingBody:
-      "Two weeks of facilitated work. $1,000. Seven artifacts your board can ratify, including a Care Boundaries document tuned to your specific protected populations and a Data Handling Protocol that addresses HIPAA, donor data, and beneficiary identity explicitly. Most nonprofit boards approve Safety without controversy because the cost is small and the deliverables are concrete.",
+      "Two weeks of facilitated work. $1,000. Seven decisions your board can ratify, including a Care Boundaries document tuned to your specific protected populations and a Data Handling Protocol that addresses HIPAA, donor data, and beneficiary identity explicitly. Most nonprofit boards approve Safety without controversy because the cost is small and the deliverables are concrete.",
     closingItalic:
       "Or download the free toolkit and start with the self-assessment. Sixteen pages. Read it in an evening.",
     closingConversationPrimary: false,
@@ -290,21 +290,21 @@ export const AUDIENCE_OFFER_COPY: Record<AudienceKind, AudienceOfferCopy> = {
     patterns: [
       {
         lead: "The three-track structure is what makes institutional Safety ratifiable.",
-        body: "Single-team Safety engagements work for churches and nonprofits because the leadership team can speak for the organization. Institutions cannot. The faculty senate will not ratify artifacts the faculty did not draft. The student senate has its own consent expectations. The administrative council has operational realities the other two tracks may not see. Cross-track integration sessions resolve disagreements by identifying which constituency has the strongest claim on each provision, rather than by averaging positions.",
+        body: "Single-team Safety engagements work for churches and nonprofits because the leadership team can speak for the organization. Institutions cannot. The faculty senate will not ratify decisions the faculty did not draft. The student senate has its own consent expectations. The administrative council has operational realities the other two tracks may not see. Cross-track integration sessions resolve disagreements by identifying which constituency has the strongest claim on each provision, rather than by averaging positions.",
       },
       {
         lead: "Outside legal review is part of the work, not an optional add-on.",
         body: "Every institutional engagement we have run has required outside legal review of the Data Handling Protocol, typically running $5,000 in addition to the Movemental engagement. FERPA, institutional Data Processing Agreements, and accreditation reporting requirements cannot be addressed without counsel. We name this in the engagement scope from the beginning so institutions can budget for it accurately.",
       },
       {
-        lead: "The Named Refusals document tends to become the institution's most-cited artifact.",
+        lead: "The Named Refusals document tends to become the institution's most-cited decision.",
         body: "Three peer-reviewed articles in theological education have cited Named Refusals documents from Movemental institutional engagements. Two ATS member institutions have adopted modified versions of a peer institution's Care Boundaries document with permission. Network effects compound across the institutional landscape in ways the individual church or nonprofit Named Refusals do not.",
       },
     ],
     closingEyebrow: "Where to begin",
     closingHeading: "Most institutions begin with an expanded Safety.",
     closingBody:
-      "Six weeks. From $7,500. Seven artifacts ratified across faculty senate, student senate, administrative council, and the board. The expanded scope reflects what institutions need: parallel working tracks for the three constituencies, cross-track integration sessions to reconcile differences, and sequential ratification through the institution's governance bodies. Outside legal review of the Data Handling Protocol is a separate engagement, typically $5,000.",
+      "Six weeks. From $7,500. Seven decisions ratified across faculty senate, student senate, administrative council, and the board. The expanded scope reflects what institutions need: parallel working tracks for the three constituencies, cross-track integration sessions to reconcile differences, and sequential ratification through the institution's governance bodies. Outside legal review of the Data Handling Protocol is a separate engagement, typically $5,000.",
     closingItalic:
       "We can also start with a 30-minute conversation about your institution's specific complexity. Most institutional engagements begin there rather than with the toolkit.",
     closingConversationPrimary: true,
@@ -328,7 +328,7 @@ export const AUDIENCE_HERO_COPY: Record<
         We built the path that does both.
       </>
     ),
-    finePrint: "Two weeks. $1,000. Seven artifacts your elders can ratify.",
+    finePrint: "Two weeks. $1,000. Seven decisions your elders can ratify.",
   },
   nonprofits: {
     eyebrow: "Movemental for nonprofits",
@@ -343,7 +343,7 @@ export const AUDIENCE_HERO_COPY: Record<
         
       </>
     ),
-    finePrint: "Two weeks. $1,000. Seven artifacts your board can ratify.",
+    finePrint: "Two weeks. $1,000. Seven decisions your board can ratify.",
   },
   institutions: {
     eyebrow: "Movemental for institutions",

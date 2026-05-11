@@ -2,132 +2,188 @@
 
 import Link from "next/link";
 
+import { FieldGuideAuthorBios } from "@/components/pathway/field-guide-author-bios";
+import { FieldGuideSeriesMast } from "@/components/pathway/field-guide-series-mast";
 import { PathwayStageRail } from "@/components/pathway/pathway-stage-rail";
 import { PathwayVoiceFallback } from "@/components/pathway/pathway-voice-fallback";
 import { Reveal } from "@/components/studio/Reveal";
 import { ToolkitCover } from "@/components/toolkit/ToolkitCover";
-import { ToolkitDownloadForm } from "@/components/toolkit/ToolkitDownloadForm";
+import {
+  SANDBOX_FIELD_GUIDE_COVER_IMAGE,
+  SANDBOX_FIELD_GUIDE_DISPLAY_TITLE,
+} from "@/lib/sandbox-field-guide";
 import { cn } from "@/lib/utils";
 
 const MAX = "mx-auto w-full max-w-[var(--container-max)] px-6 sm:px-8 lg:px-12";
 const SECTION = "py-16 md:py-24 lg:py-28";
 
-const PHASES: readonly { eyebrow: string; title: string; body: string }[] = [
+/**
+ * The eight canonical phases of Sandbox, as the field guide names them.
+ * Boundaries → Assessment → Experimenting → Iteration → Reflection → Ethics Review
+ * → Discerning → Future Plan. Together they produce a board-facing Future Plan.
+ */
+const PHASES: ReadonlyArray<{ eyebrow: string; title: string; body: string }> = [
   {
     eyebrow: "Phase 01",
-    title: "Scoping",
-    body: "A two-hour session with your working group and senior leadership. We translate the seven decisions from Safety into the rules of the sandbox: which use cases are in bounds, which data may be used, what gets logged, what triggers escalation. Sets the constraints for the rest of the engagement.",
+    title: "Boundaries",
+    body: "We set the three boundaries — Publication, Privacy, Personal — that make the Sandbox safe enough to be honest. The boundaries become the operating environment for everything that follows.",
   },
   {
     eyebrow: "Phase 02",
-    title: "Exploration",
-    body: "Your working group runs use cases against real organizational work, drawing from Movemental's tested library and adapting to your specific functions. Every use case is logged with hypothesis, output, observation, and a draft adjudication. We facilitate working sessions during this stretch to surface patterns, sharpen adjudications, and adjust scope as needed.",
+    title: "Assessment",
+    body: "We assess where each member of the working group is — current AI familiarity, role-specific exposure, comfort with the tools — and adapt the Sandbox curriculum to meet your team where they are.",
   },
   {
     eyebrow: "Phase 03",
-    title: "Adjudication",
-    body: "A three-hour synchronous session where the working group and senior leadership read the experiment log together. Each use case gets its final color. Patterns are named. The Use Case Portfolio is finalized.",
+    title: "Experimenting",
+    body: "Your team runs Movemental’s pre-tested starter use cases against real organizational work, documenting findings in your private dashboard. The library is configured to your work before your team touches it.",
   },
   {
     eyebrow: "Phase 04",
-    title: "Discernment and handoff",
-    body: "We draft the Discernment Memo and Sandbox Readiness Assessment based on the portfolio and the working group's experience. Senior leadership reviews and refines. Final documents delivered as a working set — not as a finished deliverable, but as the operational foundation for what comes next.",
+    title: "Iteration",
+    body: "What worked is refined; what didn’t is rebuilt or set aside. The point is not to defend the first attempt — the point is to discover, through iteration, what produces real value in your context.",
   },
+  {
+    eyebrow: "Phase 05",
+    title: "Reflection",
+    body: "We hold a session that asks not what AI did, but what the people doing the work noticed in themselves. Personal boundaries — fatigue, parasocial attachment, reality recalibration — surface here.",
+  },
+  {
+    eyebrow: "Phase 06",
+    title: "Ethics Review",
+    body: "We surface the ethical questions each use case raises — about voice, disclosure, whose work is being represented. Some resolve cleanly; others surface tensions worth holding in writing.",
+  },
+  {
+    eyebrow: "Phase 07",
+    title: "Discerning",
+    body: "Every use case is adjudicated green, yellow, or red — what to deploy readily, what to deploy with guardrails, what to refuse outright. The result is the Use Case Portfolio.",
+  },
+  {
+    eyebrow: "Phase 08",
+    title: "Future Plan",
+    body: "Your leadership reads the evidence and decides: what to deploy, what to defer, what to refuse, what to learn next. The Future Plan is the board-facing output of Sandbox.",
+  },
+];
+
+const FIELD_GUIDE_INSIDE: ReadonlyArray<string> = [
+  "The eight phases — Boundaries through Future Plan — and what each one produces.",
+  "The three boundaries: Publication, Privacy, Personal — including the personal boundaries no other Sandbox work names.",
+  "Movemental’s adjudication framework: green / yellow / red, with worked examples.",
+  "Templates for the Use Case Portfolio, Discernment Memo, and Sandbox Readiness Assessment.",
+  "A SandboxGuide vs. SandboxLive comparison so you can choose between running it yourselves or hiring facilitation.",
+  "Citations across MIT NANDA, BCG, McKinsey, and the leading nonprofit AI benchmarks.",
 ];
 
 export function SandboxPage() {
   return (
     <div className="pathway-sandbox">
       <PathwayStageRail variant="sandbox" />
+      <FieldGuideSeriesMast active="vol-02" />
+
+      {/* Cross-promotion to Safety — visible to readers who land on Sandbox directly */}
+      <section className="bg-section" aria-label="If you haven’t completed Safety">
+        <div className={cn(MAX, "flex flex-col gap-3 py-6 md:flex-row md:items-center md:justify-between")}>
+          <p className="text-sm leading-relaxed text-foreground">
+            <span className="font-semibold uppercase tracking-eyebrow text-pathway-accent">You’re on Sandbox.</span>{" "}
+            If you haven’t completed Safety yet, start there — Sandbox depends on it.
+          </p>
+          <Link
+            href="/pathway/safety"
+            className="text-[0.7rem] font-semibold uppercase tracking-eyebrow text-foreground underline decoration-pathway-accent underline-offset-4 hover:decoration-2"
+          >
+            Go to Stage 01 · Safety →
+          </Link>
+        </div>
+      </section>
 
       {/* Hero */}
-      <section className={cn(SECTION, "bg-section")} id="hero" aria-labelledby="sandbox-hero-title">
+      <section className={cn(SECTION, "bg-background")} id="hero" aria-labelledby="sandbox-hero-title">
         <Reveal>
           <div className={cn(MAX, "grid grid-cols-1 items-start gap-16 lg:grid-cols-12 lg:gap-20")}>
             <div className="lg:col-span-7">
               <span className="mb-6 block text-[0.62rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">
-                Stage 02 — Sandbox
+                Stage 02 // Sandbox
               </span>
               <h1
                 id="sandbox-hero-title"
-                className="mb-8 max-w-4xl font-serif-display text-5xl italic leading-[0.95] tracking-tight text-foreground md:text-6xl lg:text-7xl"
+                className="mb-8 max-w-4xl font-serif-display text-[clamp(2.25rem,7vw,4.5rem)] italic leading-[0.95] tracking-tight text-foreground"
               >
-                You cannot determine the value, or ethics, of AI for your organization until you have actually used it
-                organizationally.
+                Safety told you what’s allowed. Sandbox is where you find out{" "}
+                <span className="font-serif-display italic">what’s valuable.</span>
               </h1>
-              <p className="mb-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-                Sandbox is the work of discovering, through experiment and experience, what valuable custom AI use cases
-                exist for your organization. We pause publication, set clear privacy guardrails, and use the time to
-                explore — alongside a curated library of AI use cases Movemental has tested across churches, nonprofits,
-                and institutions for years.
+              <p className="mb-10 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+                The Sandbox stage is where your team tries AI against your actual work, in eight bounded phases, and
+                produces a board-ready Future Plan naming what your organization will deploy, modify, or refuse. The
+                free field guide walks you through the work. SandboxLive is the facilitated version, with roughly ten
+                hours of in-person teaching per cohort.
               </p>
-              <p className="mb-12 max-w-xl font-serif-display text-xl italic leading-snug text-foreground md:text-2xl">
-                $15,000. Around ten hours of in-person training. A curated set of use cases proven across the field,
-                applied to your specific work.
-              </p>
-              <div className="flex flex-wrap items-center gap-4">
-                <Link
-                  href="/contact?interest=sandbox"
-                  className="inline-flex bg-inverse-surface px-7 py-4 text-[0.7rem] font-semibold uppercase tracking-eyebrow text-primary-foreground transition-opacity hover:opacity-90"
-                >
-                  Begin Sandbox
-                </Link>
+              <div className="mb-6 flex flex-wrap items-center gap-4">
                 <Link
                   href="#field-guide"
+                  className="inline-flex items-center gap-2 bg-pathway-accent px-7 py-4 text-[0.7rem] font-semibold uppercase tracking-eyebrow text-foreground transition-opacity hover:opacity-90"
+                >
+                  <LockIcon className="h-3.5 w-3.5" aria-hidden />
+                  Read the Sandbox Field Guide
+                </Link>
+                <Link
+                  href="/contact?interest=sandboxlive"
                   className="border-b border-foreground pb-1 text-[0.7rem] font-semibold uppercase tracking-eyebrow text-foreground transition-colors hover:border-pathway-accent hover:text-pathway-accent"
                 >
-                  Read the Field Guide first
+                  Talk to us about SandboxLive
                 </Link>
               </div>
-              <p className="mt-10 max-w-2xl text-sm text-muted-foreground">
-                Sandbox builds on the seven decisions produced in Safety. If you have not yet completed Safety,{" "}
-                <Link
-                  href="/pathway/safety"
-                  className="text-foreground underline decoration-pathway-accent decoration-1 underline-offset-4 hover:decoration-2"
-                >
-                  start there
-                </Link>{" "}
-                first.
+              <p className="mb-8 max-w-md text-xs italic leading-relaxed text-muted-foreground">
+                For organizations that have completed Safety. Three paths through the gate — completed SafeStart,
+                self-attestation, or Movemental review.
+              </p>
+              <p className="max-w-xl text-sm italic leading-relaxed text-muted-foreground">
+                Volume Two of the Movemental Field Guides. 48 pages. By Brad Brisco, Alan Hirsch, and Joshua Shepherd.
               </p>
             </div>
 
-            <aside className="border-t border-border/40 bg-background p-10 md:p-12 lg:col-span-5">
+            <aside className="border-t border-border/40 bg-section p-10 md:p-12 lg:col-span-5">
               <span className="mb-2 block text-[0.62rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">
                 What this produces
               </span>
               <p className="mb-8 font-serif-display text-2xl italic leading-tight tracking-tight text-foreground md:text-3xl">
-                A living laboratory, plus the documents that hold what you learn.
+                A Future Plan.{" "}
+                <span className="text-muted-foreground/90">
+                  Together, three documents constitute the board-facing output of Sandbox.
+                </span>
               </p>
               <ul className="space-y-1">
                 {(
                   [
-                    ["01", "Use Case Portfolio"],
-                    ["02", "Discernment Memo"],
-                    ["03", "Sandbox Readiness Assessment"],
+                    ["01", "Use Case Portfolio", "Green / yellow / red verdicts on every use case the Sandbox surfaced (from Phase 07)."],
+                    ["02", "Discernment Memo", "The synthesis of what the cohort learned and what your organization commits to (from Phase 08)."],
+                    ["03", "Sandbox Readiness Assessment", "Whether you’re ready to move to Skills, and where the readiness gaps are."],
                   ] as const
-                ).map(([num, label], i) => (
+                ).map(([num, label, body], i) => (
                   <li
                     key={num}
                     className={cn(
-                      "grid grid-cols-[2.5rem_1fr] items-baseline gap-3 py-3",
+                      "grid grid-cols-[2.5rem_1fr] items-baseline gap-3 py-4",
                       i < 2 && "border-b border-border/55",
                     )}
                   >
                     <span className="font-serif-display text-xl italic text-pathway-accent">{num}</span>
-                    <span className="text-[0.95rem] text-foreground">{label}</span>
+                    <div>
+                      <p className="text-[0.95rem] text-foreground">{label}</p>
+                      <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{body}</p>
+                    </div>
                   </li>
                 ))}
               </ul>
-              <p className="mt-8 text-xs italic leading-relaxed text-muted-foreground">
-                Each one drafted with your team and used as an active working tool — not filed as a deliverable.
+              <p className="mt-8 text-xs italic leading-relaxed text-foreground">
+                Together, these three documents constitute your Future Plan — the board-facing output of Sandbox.
               </p>
             </aside>
           </div>
         </Reveal>
       </section>
 
-      {/* Why Sandbox exists */}
-      <section className={cn(SECTION, "bg-background")} aria-labelledby="why-sandbox-title">
+      {/* Why Sandbox exists — replaces the pilot framing */}
+      <section className={cn(SECTION, "bg-section")} aria-labelledby="why-sandbox-title">
         <Reveal>
           <div className={MAX}>
             <div className="mb-16 max-w-3xl">
@@ -138,19 +194,31 @@ export function SandboxPage() {
                 id="why-sandbox-title"
                 className="mb-8 font-serif-display text-4xl italic leading-tight tracking-tight text-foreground md:text-5xl"
               >
-                Sandbox is not a pilot. It is safe exploration of what AI is for in your organization.
+                Sandbox is a place to play, learn, and discover, safely.
               </h2>
               <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
-                A pilot asks whether a vendor tool works. Sandbox asks what your organization is becoming as it uses AI.
-                Three commitments make the exploration safe enough to be honest.
+                It cannot be turned into more than that. Or less. The three boundaries — Publication, Privacy, Personal
+                — make the exploration safe enough to be honest about what you find.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-px bg-border/30 md:grid-cols-3">
               {(
                 [
-                  ["i.", "Safe scope", "We pause publication. AI use during Sandbox stays internal — no donor-facing edges, no signature-gravity communications, no public output under your name. Failure inside the sandbox costs nothing; what we learn from it costs nothing either."],
-                  ["ii.", "Privacy guardrails", "We set clear rules for what data may be used, by whom, with which tools. Donor records, member directories, clinical notes, and protected information stay outside the sandbox unless explicit guardrails permit otherwise. Once those rules are set, your team is free to explore."],
-                  ["iii.", "Real work", "Inside the boundaries, your team applies AI to actual organizational work. The learning comes from doing — drafting, research, analysis, planning, communication — not from speculating about what AI might be useful for in some other organization."],
+                  [
+                    "i.",
+                    "Publication",
+                    "What may leave the Sandbox during exploration. Default: nothing. No donor-facing edges, no signature-gravity communications, no public output under your name. Failure inside the sandbox costs nothing; what we learn from it costs nothing either.",
+                  ],
+                  [
+                    "ii.",
+                    "Privacy",
+                    "What data may enter the Sandbox. Drawn from your Guidebook’s Data Handling Rules — donor records, member directories, clinical notes, and protected information stay outside unless explicit guardrails permit otherwise.",
+                  ],
+                  [
+                    "iii.",
+                    "Personal",
+                    "Safeguards for the people doing the work — cognitive fatigue, parasocial attachment, and reality recalibration that prolonged AI work produces. No other Sandbox consulting work names this. It is the field guide’s most distinctive contribution.",
+                  ],
                 ] as const
               ).map(([roman, title, body]) => (
                 <div key={title} className="bg-background p-10 md:p-12">
@@ -162,17 +230,20 @@ export function SandboxPage() {
             </div>
             <blockquote className="mt-20 max-w-3xl border-l-2 border-pathway-accent/80 py-2 pl-6 md:mt-24 md:pl-10">
               <p className="font-serif-display text-2xl italic leading-snug tracking-tight text-foreground md:text-3xl">
-                The test we apply to every use case: take the AI out of the story. If what remains is people doing
-                valuable human work that AI helped them do faster, the use is humanly valuable. If what remains is AI
-                output dressed up to look like human work, the use is suspect.
+                You cannot decide what AI is for in your organization by reading about other organizations. The value,
+                the risks, and the ethical questions specific to your work only become visible when your team has
+                actually done the work with AI alongside it.
               </p>
+              <cite className="mt-6 block text-[0.7rem] font-semibold uppercase tracking-eyebrow not-italic text-muted-foreground">
+                — <em className="not-italic">It Continues With Exploration</em>, Movemental Field Guide Vol. 2
+              </cite>
             </blockquote>
           </div>
         </Reveal>
       </section>
 
       {/* What Movemental brings */}
-      <section className={cn(SECTION, "bg-surface-highest")} aria-labelledby="library-title">
+      <section className={cn(SECTION, "bg-background")} aria-labelledby="library-title">
         <Reveal>
           <div className={MAX}>
             <div className="max-w-3xl">
@@ -188,68 +259,69 @@ export function SandboxPage() {
               <p className="mb-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
                 Sandbox is not your team starting from scratch. Movemental has spent years compiling, testing, and
                 verifying AI use cases specifically as they intersect with the functions of churches, nonprofits, and
-                theological institutions. Your sandbox engagement opens that library to your team and applies it to your
+                theological institutions. Your Sandbox engagement opens that library to your team and applies it to your
                 actual work.
               </p>
               <p className="mb-8 max-w-2xl text-base leading-relaxed text-muted-foreground">
                 The library includes use cases for sermon and teaching preparation, donor communications, grant writing,
                 administrative workflows, pastoral correspondence templates, board materials, curriculum development,
-                research synthesis, member care, program reporting, and dozens of other functions specific to mission-driven
-                organizations. Each use case comes with a tested recipe: the prompt structure, the guardrails, the failure
-                modes Movemental has already encountered, and the adjudication (green, yellow, or red) that emerged from
-                prior testing.
+                research synthesis, member care, program reporting, and dozens of other functions specific to
+                mission-driven organizations. Each use case comes with a tested recipe: the prompt structure, the
+                guardrails, the failure modes Movemental has already encountered, and the adjudication (green, yellow,
+                or red) that emerged from prior testing.
               </p>
               <p className="max-w-2xl font-serif-display text-lg italic leading-snug text-foreground md:text-xl">
-                Your team does not have to invent the use cases. You evaluate them — applied to your specific context —
-                and decide which belong in your organization&apos;s portfolio.
+                Your team does not invent the use cases from scratch. You evaluate Movemental’s pre-tested library
+                against your specific work, document what produces value and what does not, and decide which use cases
+                belong in your organization’s portfolio.
               </p>
             </div>
           </div>
         </Reveal>
       </section>
 
-      {/* What this stage produces */}
-      <section className={cn(SECTION, "bg-background")} aria-labelledby="produces-title">
+      {/* The Future Plan — three documents that compose it */}
+      <section className={cn(SECTION, "bg-surface-highest")} aria-labelledby="produces-title">
         <Reveal>
           <div className={MAX}>
             <div className="mb-16 max-w-3xl">
               <p className="mb-4 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">
-                What this stage produces
+                The Future Plan
               </p>
               <h2
                 id="produces-title"
                 className="mb-6 font-serif-display text-4xl italic leading-tight tracking-tight text-foreground md:text-5xl"
               >
-                Three working documents. Each one drafted, used, and ready to ratify.
+                Three documents. Together, they constitute the board-facing output of Sandbox.
               </h2>
               <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
-                Each document is produced through real exploration, not authored in isolation and handed back. By the end
-                of the engagement, your organization has the evidence it needs to decide what comes next — and the
+                Each document is produced through real exploration, not authored in isolation and handed back. By the
+                end of the engagement, your organization has the evidence it needs to decide what comes next — and the
                 documents to defend that decision to your board.
               </p>
             </div>
 
             <div className="grid grid-cols-1 border-t border-l border-border/40 md:grid-cols-2">
-              <article className="flex min-h-[320px] flex-col border-r border-b border-border/40 p-10 transition-colors hover:bg-surface-highest md:p-12">
+              <article className="flex min-h-[320px] flex-col border-r border-b border-border/40 bg-background p-10 transition-colors hover:bg-section md:p-12">
                 <span className="font-serif-display text-3xl italic text-pathway-accent">01</span>
                 <h3 className="mt-4 mb-4 font-serif-display text-2xl italic tracking-tight text-foreground md:text-3xl">
                   Use Case Portfolio
                 </h3>
                 <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
-                  The catalog of AI use cases your team explored, each adjudicated as green, yellow, or red.
+                  From Phase 07 — green / yellow / red verdicts on every AI use case the Sandbox surfaced.
                 </p>
                 <ul className="space-y-0 border-t border-border/40 text-sm text-muted-foreground">
                   <li className="border-b border-border/55 py-4">
-                    <strong className="text-foreground">Green light:</strong> Clear human benefit, no meaningful negative
-                    consequences. Deploy readily.
+                    <strong className="text-foreground">Green light:</strong> Clear human benefit, no meaningful
+                    negative consequences. Deploy readily.
                   </li>
                   <li className="border-b border-border/55 py-4">
-                    <strong className="text-foreground">Yellow light:</strong> Real benefit only with sufficient guardrails
-                    in place. Most use cases land here.
+                    <strong className="text-foreground">Yellow light:</strong> Real benefit only with sufficient
+                    guardrails in place. Most use cases land here.
                   </li>
                   <li className="py-4">
-                    <strong className="text-foreground">Red light:</strong> Causes harm regardless of how carefully it is
-                    deployed. Goes into the Named Refusals document from Safety.
+                    <strong className="text-foreground">Red light:</strong> Causes harm regardless of how carefully it
+                    is deployed. Goes into the Named Refusals document from Safety.
                   </li>
                 </ul>
                 <p className="mt-auto pt-6 text-sm italic text-muted-foreground">
@@ -257,27 +329,27 @@ export function SandboxPage() {
                 </p>
               </article>
 
-              <article className="flex min-h-[320px] flex-col border-r border-b border-border/40 p-10 transition-colors hover:bg-surface-highest md:p-12">
+              <article className="flex min-h-[320px] flex-col border-r border-b border-border/40 bg-background p-10 transition-colors hover:bg-section md:p-12">
                 <span className="font-serif-display text-3xl italic text-pathway-accent">02</span>
                 <h3 className="mt-4 mb-4 font-serif-display text-2xl italic tracking-tight text-foreground md:text-3xl">
                   Discernment Memo
                 </h3>
                 <p className="flex-1 text-sm leading-relaxed text-muted-foreground">
-                  The leadership document that names what your organization learned about AI in your specific context.
-                  Surfaces the patterns the use case adjudications make visible. Names what your team would deploy, what
-                  it would refuse, and what it needs to learn before deciding.
+                  From Phase 08 — the synthesis of what the cohort learned and what your organization commits to. The
+                  patterns the adjudications make visible, named in leadership language. What your team would deploy,
+                  what it would refuse, and what it needs to learn before deciding.
                 </p>
                 <p className="mt-8 text-sm italic text-muted-foreground">The memo is what your board reads.</p>
               </article>
 
-              <article className="flex min-h-[320px] flex-col border-r border-b border-border/40 p-10 transition-colors hover:bg-surface-highest md:p-12">
+              <article className="flex min-h-[320px] flex-col border-r border-b border-border/40 bg-background p-10 transition-colors hover:bg-section md:p-12">
                 <span className="font-serif-display text-3xl italic text-pathway-accent">03</span>
                 <h3 className="mt-4 mb-4 font-serif-display text-2xl italic tracking-tight text-foreground md:text-3xl">
                   Sandbox Readiness Assessment
                 </h3>
                 <p className="flex-1 text-sm leading-relaxed text-muted-foreground">
-                  The honest evaluation of whether your organization is ready to move to Skills, and where the readiness
-                  gaps are. Specific to your team&apos;s actual capacity, not a generic readiness checklist.
+                  Companion to Phase 08 — the honest evaluation of whether your organization is ready to move to Skills,
+                  and where the readiness gaps are. Specific to your team’s actual capacity, not a generic checklist.
                 </p>
                 <p className="mt-8 text-sm italic text-muted-foreground">
                   The assessment is what determines what comes next.
@@ -287,15 +359,15 @@ export function SandboxPage() {
               <div className="flex min-h-[320px] flex-col justify-between border-r border-b border-inverse-surface bg-inverse-surface p-10 text-primary-foreground md:p-12">
                 <div>
                   <p className="mb-4 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-primary-foreground/60">
-                    Bridge to Skills
+                    Together, the Future Plan
                   </p>
                   <p className="mb-6 font-serif-display text-2xl italic leading-tight md:text-3xl">
-                    Sandbox is not the end of the path.
+                    The board-facing output of Sandbox.
                   </p>
                   <p className="text-sm leading-relaxed text-primary-foreground/75">
-                    The Readiness Assessment names where your team has the capacity to lead AI work and where it does
-                    not. Most organizations leave Sandbox knowing they are ready for Skills in some areas and not others
-                    — and that knowledge is what makes Skills worthwhile when it happens.
+                    The three documents live together in your private organizational dashboard alongside the experiment
+                    log. Read together, they tell your board what your organization has decided about AI in your
+                    context, and what would have to be true to move to Skills.
                   </p>
                 </div>
               </div>
@@ -304,64 +376,48 @@ export function SandboxPage() {
         </Reveal>
       </section>
 
-      {/* How the work happens */}
+      {/* How the work happens — eight phases */}
       <section className={cn(SECTION, "bg-background")} aria-labelledby="how-work-title">
         <Reveal>
           <div className={MAX}>
             <div className="mb-16 max-w-3xl">
-              <p className="mb-4 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">
-                How the work happens
+              <p className="mb-4 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-pathway-accent">
+                SandboxLive — the facilitated version of Sandbox. $15,000.
               </p>
               <h2
                 id="how-work-title"
                 className="mb-6 font-serif-display text-4xl italic tracking-tight text-foreground md:text-5xl"
               >
-                Around ten hours of in-person training, structured around your team&apos;s pace.
+                Eight phases. Built around your team&apos;s actual work, supported by your private dashboard, learning
+                surfaces, and pre-tested use case library.
               </h2>
               <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
-                The Sandbox course structure is flexible. Most engagements run over four to six weeks, with around ten
-                hours of in-person training delivered in sessions calibrated to your team&apos;s availability. Between
-                sessions, your working group runs use cases against real organizational work using Movemental&apos;s
-                training materials, recipe library, and supporting technology.
+                The course structure is flexible — most engagements run four to six weeks at a cadence calibrated to
+                your team&apos;s availability. Around ten hours of in-person training are distributed across the eight
+                phases below. Between sessions, your working group runs use cases against real organizational work,
+                supported by your private dashboard, Movemental&apos;s adaptive learning surfaces, the pre-tested recipe
+                library, and the guided experimentation tools.
               </p>
             </div>
-            <ol className="grid grid-cols-1 gap-10 md:grid-cols-4 md:gap-8">
+            <ol className="grid grid-cols-1 gap-10 md:grid-cols-4 md:gap-8 lg:grid-cols-4">
               {PHASES.map((step) => (
                 <li key={step.title} className="relative border-l-2 border-pathway-accent pl-6">
                   <span className="mb-2 block text-[0.62rem] font-semibold uppercase tracking-eyebrow text-pathway-accent">
                     {step.eyebrow}
                   </span>
-                  <h3 className="mb-3 font-serif-display text-2xl italic tracking-tight text-foreground">{step.title}</h3>
+                  <h3 className="mb-3 font-serif-display text-2xl italic tracking-tight text-foreground">
+                    {step.title}
+                  </h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">{step.body}</p>
                 </li>
               ))}
             </ol>
             <p className="mt-16 max-w-2xl font-serif-display text-base italic leading-relaxed text-muted-foreground">
-              Sandbox is run by your working group, not by us. We facilitate, we provide the tested library, we hold the
-              boundaries — but the evidence is yours and the decisions are yours.
+              Movemental teaches the recipes and the process — testing for value in the form of wise efficiency,
+              revenue, or work quality, and surfacing ethical questions worth resolving. We then guide your leadership
+              through what to do with the evidence. The discernment and the deployment decisions are yours; we equip you
+              to make them well.
             </p>
-          </div>
-        </Reveal>
-      </section>
-
-      {/* Pull quote */}
-      <section className={cn(SECTION, "bg-section")} aria-label="Pull quote from the field">
-        <Reveal>
-          <div className={cn(MAX, "flex max-w-5xl")}>
-            <div className="mr-10 w-0.5 shrink-0 self-stretch bg-pathway-accent md:mr-12" aria-hidden />
-            <div className="max-w-4xl">
-              <p className="mb-8 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">
-                From the field
-              </p>
-              <p className="mb-10 font-serif-display text-3xl italic leading-snug tracking-tight text-foreground md:text-4xl lg:text-5xl">
-                We thought we knew what AI was good for. The Sandbox showed us we were wrong about half of it, and right
-                about the other half in ways we hadn&apos;t articulated. The Use Case Portfolio is the document I show
-                our board when they ask what our actual position on AI is.
-              </p>
-              <div className="border-t border-border/40 pt-6">
-                <p className="text-sm text-muted-foreground">Executive director, $8M nonprofit</p>
-              </div>
-            </div>
           </div>
         </Reveal>
       </section>
@@ -370,104 +426,78 @@ export function SandboxPage() {
       <section className={cn(SECTION, "bg-background")} aria-labelledby="sandbox-pricing-title">
         <Reveal>
           <div className={MAX}>
+            <p className="mb-3 max-w-2xl text-sm italic leading-relaxed text-muted-foreground">
+              Or read the free field guide and run Sandbox with your own team.
+            </p>
             <div className="mb-16 grid grid-cols-1 items-end gap-8 border-b border-border/55 pb-10 md:grid-cols-3 md:gap-12">
               <div className="md:col-span-2">
                 <p className="mb-4 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">
-                  What it costs
+                  SandboxLive engagement
                 </p>
                 <h2
                   id="sandbox-pricing-title"
                   className="font-serif-display text-4xl italic leading-tight tracking-tight text-foreground md:text-5xl"
                 >
-                  Fifteen thousand dollars. Around ten hours of in-person training. Structured around your team.
+                  Fifteen thousand dollars. Around ten hours of in-person training.
                 </h2>
               </div>
               <div className="text-left font-light tracking-tight md:col-span-1 md:text-right">
                 <div className="text-5xl leading-none text-foreground md:text-6xl lg:text-7xl">$15,000</div>
                 <div className="mt-3 text-[0.62rem] uppercase tracking-eyebrow text-muted-foreground">
-                  USD · 50% at signing, 50% at completion
+                  USD · Four-to-six-week engagement
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-16">
-              <div>
-                <h3 className="mb-5 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-pathway-accent">
-                  What&apos;s included
-                </h3>
-                <ul className="space-y-3 text-sm leading-relaxed text-muted-foreground">
-                  {[
-                    "Around ten hours of in-person training across the engagement",
-                    "Access to Movemental's tested library of AI use cases for churches, nonprofits, and institutions",
-                    "Use Case Portfolio adjudicated against your organization",
-                    "Discernment Memo",
-                    "Sandbox Readiness Assessment",
-                    "Working experiment log infrastructure for your team",
-                    "One follow-up call within 30 days of completion",
-                  ].map((item) => (
-                    <li key={item} className="flex gap-3">
-                      <span aria-hidden className="shrink-0 text-pathway-accent">
-                        +
-                      </span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="mb-5 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-foreground">
-                  What&apos;s not included
-                </h3>
-                <ul className="space-y-3 text-sm leading-relaxed text-muted-foreground">
-                  {[
-                    "Production deployment of any use case",
-                    "Custom integrations or build work",
-                    "Ongoing facilitation beyond the engagement",
-                    "Software tools or platform fees for AI vendors",
-                  ].map((item) => (
-                    <li key={item} className="flex gap-3">
-                      <span aria-hidden>—</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="mb-5 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-foreground">Terms</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  50% invoiced at engagement start, 50% at completion. Payment Net 15 on each invoice. Engagement
-                  requires a designated working group of three to five staff plus participation from at least two senior
-                  leaders authorized to ratify governance decisions. Sandbox requires Safety to be complete or in active
-                  engagement.
-                </p>
-              </div>
+            <div className="max-w-2xl">
+              <h3 className="mb-5 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-pathway-accent">
+                What&apos;s included
+              </h3>
+              <ul className="space-y-3 text-sm leading-relaxed text-muted-foreground">
+                {[
+                  "Around ten hours of in-person training across the engagement",
+                  "Access to Movemental's pre-tested AI use case library for churches, nonprofits, and institutions",
+                  "Org-adapted starter use cases configured to your work",
+                  "Private organizational dashboard for the engagement, with experiment log, learning surfaces, and guided experimentation tools",
+                  "Use Case Portfolio adjudicated against your organization",
+                  "Discernment Memo",
+                  "Sandbox Readiness Assessment",
+                  "One follow-up call within 30 days of completion",
+                ].map((item) => (
+                  <li key={item} className="flex gap-3">
+                    <span aria-hidden className="shrink-0 text-pathway-accent">
+                      +
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </Reveal>
       </section>
 
-      {/* Who this is for */}
+      {/* Begin here or wait */}
       <section className={cn(SECTION, "bg-surface-highest")} aria-labelledby="sandbox-fit-title">
         <Reveal>
           <div className={MAX}>
             <p className="mb-4 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">
-              Who this is for
+              Begin here or wait
             </p>
             <h2
               id="sandbox-fit-title"
               className="mb-16 max-w-4xl font-serif-display text-4xl italic leading-tight tracking-tight text-foreground md:text-5xl"
             >
-              Begin here, or wait — depending on where you actually are.
+              Begin here if this is your situation. Wait if it isn’t — Sandbox depends on Safety.
             </h2>
             <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:gap-20">
               <div>
                 <h3 className="mb-10 font-serif-display text-2xl italic text-foreground md:text-3xl">Begin here if…</h3>
                 <ul className="space-y-1">
                   {[
-                    "You have completed Safety, or you are willing to complete Safety alongside Sandbox.",
+                    "You have completed Safety — through SafeStart, your own work, or another partner.",
                     "Your team is asking what AI is actually for in your specific work, and you cannot answer the question from the outside.",
                     "You have at least three to five staff who can commit to the in-person training and the work between sessions.",
                     "You want evidence about AI in your organization before you commit to deployment, training, or vendor selection.",
-                    "You are willing to use the Use Case Portfolio internally and let it shape actual decisions.",
                   ].map((t, i, arr) => (
                     <li key={t} className={cn("py-6", i < arr.length - 1 && "border-b border-border/55")}>
                       <p className="text-lg leading-snug text-foreground">{t}</p>
@@ -476,22 +506,49 @@ export function SandboxPage() {
                 </ul>
               </div>
               <div className="border border-border/40 bg-background p-10 md:p-12">
-                <h3 className="mb-10 font-serif-display text-2xl italic text-foreground opacity-90 md:text-3xl">
+                <h3 className="mb-8 font-serif-display text-2xl italic text-foreground opacity-90 md:mb-10 md:text-3xl">
                   Wait if…
                 </h3>
                 <ul className="space-y-1">
                   {[
-                    "You have not yet completed Safety. Sandbox without Safety is exploration without rules; it produces enthusiasm and confusion in roughly equal measure.",
-                    "You are looking for vendor recommendations rather than organizational learning.",
-                    "Your team cannot commit to the in-person training. Sandbox does not work as a side project run by one staff member.",
-                    "You expect to deploy at the end of Sandbox regardless of what the evidence shows. The Readiness Assessment exists to surface real gaps; if you are not willing to act on those gaps, the work is wasted.",
-                    "You want a pilot of a specific tool. Sandbox is methodology-driven, not vendor-driven.",
-                  ].map((t, i, arr) => (
-                    <li
-                      key={t}
-                      className={cn("py-6 opacity-70", i < arr.length - 1 && "border-b border-border/55")}
-                    >
-                      <p className="text-lg leading-snug text-muted-foreground">{t}</p>
+                    {
+                      title: "You have not yet done the Safety work.",
+                      body: (
+                        <>
+                          Read the{" "}
+                          <Link
+                            href="/pathway/safety#field-guide"
+                            className="text-foreground underline decoration-pathway-accent underline-offset-4 hover:decoration-2"
+                          >
+                            Safety field guide
+                          </Link>{" "}
+                          first — Sandbox depends on it. Reading Sandbox without Safety in place will frustrate you.
+                        </>
+                      ),
+                    },
+                    {
+                      title: "You can’t commit three to five staff to the work.",
+                      body: (
+                        <>
+                          Sandbox is a team practice, not an individual study. If only one or two staff can commit,
+                          you’re better off reading the field guide first and revisiting in a season when more
+                          attention is available.
+                        </>
+                      ),
+                    },
+                    {
+                      title: "You want a vendor pilot, not exploration.",
+                      body: (
+                        <>
+                          Sandbox is a place to play, learn, and discover, safely. It cannot be turned into more than
+                          that. Or less. If you need a vendor pilot, do that work separately.
+                        </>
+                      ),
+                    },
+                  ].map((c, i, arr) => (
+                    <li key={c.title} className={cn("py-6", i < arr.length - 1 && "border-b border-border/55")}>
+                      <p className="text-lg leading-snug text-foreground">{c.title}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.body}</p>
                     </li>
                   ))}
                 </ul>
@@ -521,7 +578,7 @@ export function SandboxPage() {
                 href="/voices"
                 className="self-start border-b border-foreground pb-1 text-[0.7rem] font-semibold uppercase tracking-eyebrow text-foreground transition-colors hover:border-pathway-accent hover:text-pathway-accent md:self-end"
               >
-                See all Movement Voices →
+                See all trusted voices →
               </Link>
             </div>
             <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-12">
@@ -538,8 +595,8 @@ export function SandboxPage() {
                 name="JR Woodward"
                 role="National Director, V3 · Author, The Scandal of Leadership"
               >
-                Church planting strategist with three decades in the field. His Manchester PhD on the misuse of leadership
-                power shapes how Movement Voices think about authority and AI.
+                Church planting strategist with three decades in the field. His Manchester PhD on the misuse of
+                leadership power shapes how Movement Voices think about authority and AI.
               </PathwayVoiceFallback>
               <PathwayVoiceFallback
                 initials="RS"
@@ -547,57 +604,104 @@ export function SandboxPage() {
                 role="National Director, Forge America · Founder, Pando Collective"
               >
                 Veteran missional practitioner based in the Colorado Front Range. Brings curatorial judgment and decades
-                of micro-church practice to questions of what mission-driven organizations should and should not publish.
+                of micro-church practice to questions of what mission-driven organizations should and should not put
+                their name on.
               </PathwayVoiceFallback>
             </div>
           </div>
         </Reveal>
       </section>
 
-      {/* Field Guide */}
+      {/* Field Guide — gated lead magnet */}
       <section className={cn(SECTION, "bg-section")} id="field-guide" aria-labelledby="sandbox-field-guide-title">
         <Reveal>
-          <div className={cn(MAX, "grid grid-cols-1 items-center gap-16 lg:grid-cols-12")}>
+          <div className={cn(MAX, "grid grid-cols-1 items-start gap-16 lg:grid-cols-12")}>
             <div className="order-2 lg:order-1 lg:col-span-7">
-              <p className="mb-4 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">
-                Read before you commit
+              <p className="mb-4 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-pathway-accent">
+                The Movemental Field Guides · Volume Two
               </p>
               <h2
                 id="sandbox-field-guide-title"
-                className="mb-8 font-serif-display text-4xl italic tracking-tight text-foreground md:text-5xl"
+                className="mb-6 font-serif-display text-4xl italic tracking-tight text-foreground md:text-5xl"
               >
-                Start with the Field Guide.
+                It Continues With Exploration.
               </h2>
-              <p className="mb-10 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                It Starts With Safety is a sixteen-page Field Guide that walks through the full Movemental Path, with
-                Safety as the foundation and Sandbox as the next step. It includes a self-assessment your leadership team
-                can take together in 30 minutes to determine whether you are ready for Sandbox or need to begin with
-                Safety. The Field Guide is free, and we would rather you do this work well on your own than sign an
-                engagement you do not need.
+              <p className="mb-3 max-w-xl text-lg leading-relaxed text-foreground">
+                A field guide for running your AI Sandbox — eight phases that produce a board-ready Future Plan.
               </p>
-              <ToolkitDownloadForm
-                source="pathway-sandbox-field-guide"
-                variant="page"
-                layout="stacked"
-                submitLabel="Send me the Field Guide"
-                emailLabel="Work email address"
-                organizationLabel="Organization"
-                successMessage="Check your email for the Field Guide."
-                inputClassName="focus:border-pathway-accent"
-                disclaimer={
-                  <>
-                    No drip campaign. We send the Field Guide and one follow-up email a week later asking how it went.
-                  </>
-                }
-                buttonClassName="bg-inverse-surface text-primary-foreground hover:opacity-90"
-                className="max-w-md"
-              />
+              <p className="mb-8 max-w-xl text-sm italic leading-relaxed text-muted-foreground">
+                By Brad Brisco, Alan Hirsch, and Joshua Shepherd. 48 pages. Approximately 105 minutes of focused reading.
+                Edition 1.0 · May 2026.
+              </p>
+              <ul className="mb-10 space-y-3 border-y border-border/40 py-6">
+                {FIELD_GUIDE_INSIDE.map((item) => (
+                  <li
+                    key={item}
+                    className="grid grid-cols-[1.25rem_1fr] items-baseline gap-3 text-sm leading-relaxed text-foreground"
+                  >
+                    <span aria-hidden className="text-pathway-accent">
+                      +
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mb-8 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                The Sandbox field guide is sequenced after Safety because the work it describes depends on Safety being
+                substantially complete. The three-path download gate ships in the next release; for now, complete Safety
+                first, then{" "}
+                <Link href="/contact?interest=sandbox-field-guide" className="text-foreground underline decoration-pathway-accent underline-offset-4 hover:decoration-2">
+                  contact us
+                </Link>{" "}
+                if you need the PDF before then.
+              </p>
+              <div
+                className="max-w-xl border border-border/40 bg-background p-6 text-sm leading-relaxed text-muted-foreground"
+                aria-live="polite"
+              >
+                <p className="text-[0.62rem] font-semibold uppercase tracking-eyebrow text-foreground">
+                  Field guide access
+                </p>
+                <p className="mt-2">
+                  Gated delivery for Volume Two is temporarily simplified while we finish server-side verification. Start
+                  with{" "}
+                  <Link href="/pathway/safety" className="text-foreground underline decoration-pathway-accent underline-offset-4 hover:decoration-2">
+                    Safety
+                  </Link>{" "}
+                  if you have not already.
+                </p>
+              </div>
+              <FieldGuideAuthorBios className="mt-16" />
             </div>
-            <div className="order-1 mx-auto w-full max-w-sm lg:order-2 lg:col-span-5 lg:mx-0">
-              <ToolkitCover stageFoot="Stage 01 · Vol. 01" />
+            <div className="order-1 mx-auto w-full max-w-lg lg:order-2 lg:col-span-5 lg:mx-0">
+              <ToolkitCover
+                appearance="raster"
+                coverSrc={SANDBOX_FIELD_GUIDE_COVER_IMAGE}
+                title={SANDBOX_FIELD_GUIDE_DISPLAY_TITLE}
+                ariaLabel={`${SANDBOX_FIELD_GUIDE_DISPLAY_TITLE} — Movemental Field Guide Volume Two`}
+              />
               <p className="mt-5 text-center text-[0.62rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">
-                Movemental · Vol. 01 · 16 pages
+                Movemental Field Guides · Vol. 02 · 48 pages
               </p>
+              <div className="mt-6 border border-border/40 bg-background p-6 text-sm leading-relaxed text-muted-foreground">
+                <p className="mb-3 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-foreground">
+                  Series
+                </p>
+                <p>
+                  Vol. 01 · <em className="not-italic">It Starts With Safety</em> ·{" "}
+                  <Link
+                    href="/pathway/safety#field-guide"
+                    className="text-foreground underline decoration-pathway-accent underline-offset-4 hover:decoration-2"
+                  >
+                    Read Vol. 01
+                  </Link>
+                </p>
+                <p>
+                  Vol. 02 · <em className="not-italic">It Continues With Exploration</em> · this volume
+                </p>
+                <p>Vol. 03 · Skills · forthcoming</p>
+                <p>Vol. 04 · Solutions · forthcoming</p>
+              </div>
             </div>
           </div>
         </Reveal>
@@ -614,34 +718,54 @@ export function SandboxPage() {
               id="sandbox-closing-title"
               className="mx-auto mb-10 max-w-3xl font-serif-display text-4xl italic leading-[0.95] tracking-tight text-inverse-foreground md:text-5xl lg:text-6xl xl:text-7xl"
             >
-              You cannot determine what AI is for from the outside. Begin the work.
+              Safety told you what’s allowed.{" "}
+              <span className="text-inverse-foreground/55">Sandbox is where you find out what’s valuable.</span>
             </h2>
             <p className="lede mx-auto mb-14 max-w-2xl text-inverse-foreground/80">
-              Sandbox is the stage where most organizations discover what they actually think about AI in their context.
-              Until that work happens, every later decision — about deployment, about training, about vendor selection —
-              is built on guessing rather than evidence.
+              Sandbox is the stage where most organizations discover what they actually think about AI in their
+              context. Until that work happens, every later decision — about deployment, about training, about vendor
+              selection — is built on guessing rather than evidence.
             </p>
-            <div className="flex flex-col justify-center gap-4 sm:flex-row sm:gap-5">
-              <Link
-                href="/contact?interest=sandbox"
-                className="inline-flex bg-background px-10 py-4 text-[0.7rem] font-semibold uppercase tracking-eyebrow text-foreground transition-colors hover:bg-primary-foreground"
-              >
-                Start a conversation
-              </Link>
+            <div className="flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:gap-5">
               <Link
                 href="#field-guide"
-                className="inline-flex border border-primary-foreground px-10 py-4 text-[0.7rem] font-semibold uppercase tracking-eyebrow text-primary-foreground transition-colors hover:bg-primary-foreground hover:text-inverse-surface"
+                className="inline-flex items-center justify-center gap-2 bg-pathway-accent px-10 py-4 text-[0.7rem] font-semibold uppercase tracking-eyebrow text-foreground transition-opacity hover:opacity-90"
               >
-                Read the Field Guide first
+                <LockIcon className="h-3.5 w-3.5" aria-hidden />
+                Read the Sandbox Field Guide
+              </Link>
+              <Link
+                href="/contact?interest=sandboxlive"
+                className="inline-flex items-center justify-center border border-primary-foreground px-10 py-4 text-[0.7rem] font-semibold uppercase tracking-eyebrow text-primary-foreground transition-colors hover:bg-primary-foreground hover:text-inverse-surface"
+              >
+                Talk to us about SandboxLive
               </Link>
             </div>
             <p className="mx-auto mt-12 max-w-xl text-xs leading-relaxed text-inverse-foreground/55">
-              $15,000. Around ten hours of in-person training. A tested library applied to your work. The work is yours
-              when it&apos;s done.
+              $15,000. Around ten hours of in-person training. A pre-tested library applied to your work. The
+              discernment and the decisions are yours, equipped to be made well.
             </p>
           </Reveal>
         </div>
       </section>
     </div>
+  );
+}
+
+function LockIcon({ className, ...props }: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      {...props}
+    >
+      <rect x="3" y="7" width="10" height="6.5" rx="1.5" />
+      <path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" />
+    </svg>
   );
 }

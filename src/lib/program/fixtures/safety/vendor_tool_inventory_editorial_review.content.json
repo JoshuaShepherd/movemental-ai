@@ -1,0 +1,48 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "vendor_tool_inventory_editorial_review",
+  "screenFamily": "governance-document",
+  "documentTitle": "Vendor & Tool Inventory - SafeStart",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "Vendor and Tool Inventory",
+    "supportingCopy": "Institutional Strategy",
+    "eyebrow": "Statement"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 2,
+          "text": "GUIDEBOOK"
+        },
+        {
+          "level": 1,
+          "text": "Vendor and Tool Inventory"
+        },
+        {
+          "level": 3,
+          "text": "Attention Required"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

@@ -36,17 +36,17 @@ export const sharedClosingSection: CaseStudySection = {
     {
       type: "p",
       text:
-        "The seven artifacts have the same names in every engagement. Their content is completely specific to the organization. The Care Boundaries document protects pastoral relationships at a church, clinical relationships at a nonprofit, and formative academic relationships at a seminary. The framework is portable. The content cannot be templated.",
+        "The seven decisions have the same names in every engagement. Their content is completely specific to the organization. The Care Boundaries document protects pastoral relationships at a church, clinical relationships at a nonprofit, and formative academic relationships at a seminary. The framework is portable. The content cannot be templated.",
     },
     {
       type: "p",
       text:
-        "Named Refusals is the most-cited artifact across all three engagements. The act of publicly committing to specific refusals is the most distinctive thing Movemental customers do, and it is the artifact that creates the most external visibility. Every Movemental customer should expect this.",
+        "Named Refusals is the most-cited decision across all three engagements. The act of publicly committing to specific refusals is the most distinctive thing Movemental customers do, and it is the decision that creates the most external visibility. Every Movemental customer should expect this.",
     },
     {
       type: "p",
       text:
-        "The path scales with the organization. The church spent $26,000 over the first year. The nonprofit will spend a similar amount on a similar arc. The institution will spend $600,000–$800,000 over a multi-year arc. Same path. Same artifacts. Different scope. Movemental's pricing scales with institutional complexity, not as a fixed menu but as a path whose cost reflects the scope of the work the organization actually needs.",
+        "The path scales with the organization. The church spent $26,000 over the first year. The nonprofit will spend a similar amount on a similar arc. The institution will spend $600,000–$800,000 over a multi-year arc. Same path. Same decisions. Different scope. Movemental's pricing scales with institutional complexity, not as a fixed menu but as a path whose cost reflects the scope of the work the organization actually needs.",
     },
     {
       type: "p",
@@ -56,7 +56,7 @@ export const sharedClosingSection: CaseStudySection = {
     {
       type: "p",
       text:
-        "This is what Movemental does. The path is real. The artifacts are real. The seven names are not marketing categories. They are the actual deliverables of an actual engagement that produces actual ratifiable governance for organizations that need it.",
+        "This is what Movemental does. The path is real. The decisions are real. The seven names are not marketing categories. They are the actual deliverables of an actual engagement that produces actual ratifiable governance for organizations that need it.",
     },
     {
       type: "p",

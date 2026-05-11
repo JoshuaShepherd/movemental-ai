@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { db } from "@/lib/db";
 import { newsletterSubscribers } from "@/lib/db/schema";
-import { sendSafetyToolkitEmail } from "@/lib/email/send-safety-toolkit-email";
+import { sendToolkitLeadEmail } from "@/lib/email/send-safety-toolkit-email";
 import { env } from "@/lib/env";
 import { createNewsletterUnsubscribeToken } from "@/lib/newsletter-unsubscribe-token";
 import { createSlidingWindowRateLimiter } from "@/lib/rate-limit-in-memory";
@@ -13,25 +13,27 @@ import { getTenantOrgId } from "@/lib/tenant";
 const ToolkitSchema = z.object({
   email: z.string().email("Valid email is required"),
   organization: z.string().max(200).optional(),
-  source: z.string().max(50).optional(),
+  source: z.string().max(80).optional(),
+  /** When `sandbox`, sends the Sandbox Field Guide PDF and tags `sandbox-toolkit:*`. Default: Safety. */
+  fieldGuide: z.enum(["safety", "sandbox"]).optional(),
+  /** Sandbox gate only — when `review`, the lead is stored but no PDF email is sent. */
+  gatePath: z.enum(["safestart", "attestation", "review"]).optional(),
+  metadata: z.any().optional(),
 });
 
 const toolkitRateLimitIp = createSlidingWindowRateLimiter(10, 60 * 60 * 1000);
-
-const SOURCE_PREFIX = "safety-toolkit";
 
 function siteUrlForUnsub(): string {
   return env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.com";
 }
 
 /**
- * Lead capture for the "It Starts With Safety" toolkit.
+ * Lead capture for field guide downloads (Safety by default; Sandbox when `fieldGuide: "sandbox"`).
  *
  * Reuses the `newsletter_subscribers` table with `source` of the form
- * `safety-toolkit:{surface}` (e.g. `safety-toolkit:modal`,
- * `safety-toolkit:safety-page`). Unlike the general newsletter signup, the
+ * `safety-toolkit:{surface}` or `sandbox-toolkit:{surface}`. Unlike the general newsletter signup, the
  * toolkit is transactional: status is set to "confirmed" immediately and the
- * day-0 toolkit email is sent without a double-opt-in step.
+ * day-0 toolkit email is sent without a double-opt-in step (except Sandbox `gatePath: "review"`).
  *
  * Day 3 / Day 7 follow-ups are not yet wired — see the TODO in
  * `src/lib/email/send-safety-toolkit-email.ts`.
@@ -78,9 +80,17 @@ export async function POST(request: NextRequest) {
   }
 
   const emailNorm = parsed.data.email.toLowerCase().trim();
-  const surface = (parsed.data.source ?? "modal").replace(/[^a-z0-9_-]/gi, "-").slice(0, 32);
-  const source = `${SOURCE_PREFIX}:${surface}`;
+  const fieldGuide = parsed.data.fieldGuide ?? "safety";
+  const surface = (parsed.data.source ?? "modal").replace(/[^a-z0-9_-]/gi, "-").slice(0, 48);
+  const sourcePrefix = fieldGuide === "sandbox" ? "sandbox-toolkit" : "safety-toolkit";
+  const source = `${sourcePrefix}:${surface}`;
   const organization = parsed.data.organization?.trim() || null;
+  const skipSandboxEmail =
+    fieldGuide === "sandbox" && parsed.data.gatePath === "review";
+
+  if (fieldGuide === "sandbox" && parsed.data.metadata) {
+    console.info("[toolkit-download] sandbox lead metadata", parsed.data.metadata);
+  }
   const ts = new Date().toISOString();
 
   try {
@@ -141,11 +151,15 @@ export async function POST(request: NextRequest) {
         ? `${siteUrlForUnsub()}/api/newsletter/unsubscribe?token=${encodeURIComponent(createNewsletterUnsubscribeToken(subscriberId, secret))}`
         : null;
 
-    const emailSent = await sendSafetyToolkitEmail(emailNorm, { unsubscribeUrl });
+    const emailSent = skipSandboxEmail
+      ? false
+      : await sendToolkitLeadEmail(emailNorm, fieldGuide === "sandbox" ? "sandbox" : "safety", {
+          unsubscribeUrl,
+        });
 
     return NextResponse.json({
       success: true,
-      state: "delivered" as const,
+      state: skipSandboxEmail ? ("recorded" as const) : ("delivered" as const),
       emailSent,
     });
   } catch (err) {

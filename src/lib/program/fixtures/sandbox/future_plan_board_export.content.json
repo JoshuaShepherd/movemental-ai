@@ -1,0 +1,56 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "future_plan_board_export",
+  "screenFamily": "future-plan-editor",
+  "documentTitle": "Future Plan Ready",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "Your Future Plan is ready.",
+    "supportingCopy": "PHASE 08 — FUTURE PLAN · EXPORT",
+    "eyebrow": null
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Your Future Plan is ready."
+        },
+        {
+          "level": 2,
+          "text": "Northridge"
+        },
+        {
+          "level": 3,
+          "text": "Future Plan"
+        },
+        {
+          "level": 3,
+          "text": "EXPORT FOR YOUR BOARD"
+        },
+        {
+          "level": 3,
+          "text": "Three things happen after your board ratifies the Future Plan."
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

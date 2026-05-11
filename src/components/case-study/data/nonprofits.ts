@@ -66,7 +66,7 @@ export const nonprofitsCaseStudy: CaseStudyContent = {
         },
         {
           type: "p",
-          text: "The third question reframed the engagement. The team was not just developing internal policy. They were developing a public-facing governance posture donors and grant-makers could review. The artifacts would have two audiences — internal operations and external trust.",
+          text: "The third question reframed the engagement. The team was not just developing internal policy. They were developing a public-facing governance posture donors and grant-makers could review. The documents would have two audiences — internal operations and external trust.",
         },
         {
           type: "p",
@@ -74,7 +74,7 @@ export const nonprofitsCaseStudy: CaseStudyContent = {
         },
         {
           type: "p",
-          text: "The facilitator did not give a legal opinion. She named the question for the artifact. The Data Handling Protocol would have to address PHI specifically and would require outside legal review before ratification. The executive director agreed to budget $2,000 for legal review separate from the Movemental engagement.",
+          text: "The facilitator did not give a legal opinion. She named the question for the decision. The Data Handling Protocol would have to address PHI specifically and would require outside legal review before ratification. The executive director agreed to budget $2,000 for legal review separate from the Movemental engagement.",
         },
         {
           type: "h3",
@@ -90,7 +90,7 @@ export const nonprofitsCaseStudy: CaseStudyContent = {
         },
         {
           type: "p",
-          text: "The list was long because the work was sensitive. The team did not negotiate the length. Once they began naming categories, they could not stop until they were satisfied. The Care Boundaries document became the artifact the executive director was most proud of and the one she most wanted to share with donors.",
+          text: "The list was long because the work was sensitive. The team did not negotiate the length. Once they began naming categories, they could not stop until they were satisfied. The Care Boundaries document became the decision the executive director was most proud of and the one she most wanted to share with donors.",
         },
         {
           type: "h3",
@@ -110,7 +110,7 @@ export const nonprofitsCaseStudy: CaseStudyContent = {
         },
         {
           type: "p",
-          text: "The Data Handling Protocol was the artifact requiring outside legal review. PHI could not be processed by any AI tool that did not have a Business Associate Agreement in place. Client identifying information could not be shared with consumer AI tools. Donor data was treated with the same protection as PHI. Financial records were entirely off-limits.",
+          text: "The Data Handling Protocol was the decision requiring outside legal review. PHI could not be processed by any AI tool that did not have a Business Associate Agreement in place. Client identifying information could not be shared with consumer AI tools. Donor data was treated with the same protection as PHI. Financial records were entirely off-limits.",
         },
         {
           type: "h3",
@@ -138,11 +138,11 @@ export const nonprofitsCaseStudy: CaseStudyContent = {
         },
         {
           type: "p",
-          text: "The team reviewed all seven artifacts as a complete document. The legal review of the Data Handling Protocol came back during the review session with three suggested revisions, all incorporated. The Care Boundaries document was reviewed by the clinical director against clinical ethics literature and required no changes.",
+          text: "The team reviewed all seven decisions as a complete document. The legal review of the Data Handling Protocol came back during the review session with three suggested revisions, all incorporated. The Care Boundaries document was reviewed by the clinical director against clinical ethics literature and required no changes.",
         },
         {
           type: "p",
-          text: "At the next board meeting, the executive director presented the seven artifacts as a packet. The Movemental facilitator answered three questions from board members about how the artifacts compared to peer nonprofit governance frameworks. The board voted to ratify all seven artifacts unanimously.",
+          text: "At the next board meeting, the executive director presented the seven decisions as a packet. The Movemental facilitator answered three questions from board members about how the decisions compared to peer nonprofit governance frameworks. The board voted to ratify all seven decisions unanimously.",
         },
         {
           type: "p",
@@ -157,7 +157,7 @@ export const nonprofitsCaseStudy: CaseStudyContent = {
       body: [
         {
           type: "p",
-          text: "Seven artifacts, all board-approved. A clinical practice that had paused unauthorized AI use and was reviewing what authorized AI use should look like. A donor-facing transparency commitment several major donors affirmed within weeks. A public Named Refusals document that would later be quoted by two peer organizations and one funder.",
+          text: "Seven decisions, all board-approved. A clinical practice that had paused unauthorized AI use and was reviewing what authorized AI use should look like. A donor-facing transparency commitment several major donors affirmed within weeks. A public Named Refusals document that would later be quoted by two peer organizations and one funder.",
         },
         {
           type: "callout",
@@ -166,7 +166,7 @@ export const nonprofitsCaseStudy: CaseStudyContent = {
           body: [
             "$1,000 for Movemental Safety",
             "$2,000 for outside legal review of the Data Handling Protocol",
-            "Seven artifacts ratified unanimously by the board",
+            "Seven decisions ratified unanimously by the board",
             "Care Boundaries adopted as a public-facing document",
           ],
         },
@@ -184,7 +184,7 @@ export const nonprofitsCaseStudy: CaseStudyContent = {
         },
         {
           type: "p",
-          text: "Over four weeks, the team tested each use case against the artifacts the board had ratified. Case management documentation came out green-light with three specific guardrails added. Grant writing came out green-light with disclosure standards extended. Donor communication came out yellow-light, requiring additional staff training before deployment. The Use Case Portfolio became the operational addendum to the seven artifacts.",
+          text: "Over four weeks, the team tested each use case against the decisions the board had ratified. Case management documentation came out green-light with three specific guardrails added. Grant writing came out green-light with disclosure standards extended. Donor communication came out yellow-light, requiring additional staff training before deployment. The Use Case Portfolio became the operational addendum to the seven decisions.",
         },
       ],
     },

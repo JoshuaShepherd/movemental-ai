@@ -54,6 +54,15 @@ const config: Config = {
           "ui-serif",
           "serif",
         ],
+        /** Stitch program templates — headline italic Instrument layer */
+        headline: [
+          "var(--font-serif-display)",
+          "Instrument Serif",
+          "Iowan Old Style",
+          "Georgia",
+          "ui-serif",
+          "serif",
+        ],
         body: [
           "var(--font-sans)",
           "Inter",

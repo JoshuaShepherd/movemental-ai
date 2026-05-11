@@ -1,0 +1,172 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "phase_01_boundaries_workspace_movemental",
+  "screenFamily": "phase-workspace",
+  "documentTitle": "Boundaries - SandboxLive Dashboard",
+  "draftApiMapping": {
+    "shell.topLinks": "workspace.exec_nav[]",
+    "sidebar.journeyTitle": "sandbox.journey_title",
+    "sidebar.phaseNav": "sandbox.internal_phase_nav[]",
+    "page.headline": "artifacts.current.title",
+    "page.subtitle": "artifacts.current.tagline",
+    "page.metadataStrip": "artifacts.signatures_summary",
+    "sections.documentSections": "artifacts.structured_sections[]"
+  },
+  "shell": {
+    "brandLine": "Movemental",
+    "modeBadge": "SANDBOX",
+    "userInitials": "LO",
+    "topLinks": [
+      {
+        "label": "Executive Summary",
+        "href": "#"
+      },
+      {
+        "label": "Strategy Map",
+        "href": "#"
+      },
+      {
+        "label": "Governance",
+        "href": "#"
+      }
+    ]
+  },
+  "sidebar": {
+    "journeyTitle": "Sandbox Journey",
+    "journeySubtitle": "Strategic Transformation",
+    "phaseNav": [
+      {
+        "label": "Phase 1: Inception",
+        "state": "active",
+        "icon": "lightbulb"
+      },
+      {
+        "label": "Phase 2: Alignment",
+        "state": "default",
+        "icon": "handshake"
+      },
+      {
+        "label": "Phase 3: Logic",
+        "state": "default",
+        "icon": "psychology"
+      },
+      {
+        "label": "Phase 4: Structure",
+        "state": "default",
+        "icon": "account_tree"
+      },
+      {
+        "label": "Phase 5: Governance",
+        "state": "default",
+        "icon": "policy"
+      },
+      {
+        "label": "Phase 6: Deployment",
+        "state": "default",
+        "icon": "rocket_launch"
+      },
+      {
+        "label": "Phase 7: Review",
+        "state": "default",
+        "icon": "rate_review"
+      },
+      {
+        "label": "Phase 8: Mastery",
+        "state": "default",
+        "icon": "verified"
+      }
+    ]
+  },
+  "page": {
+    "breadcrumb": [
+      "Sandbox",
+      "Phase 01",
+      "Boundaries"
+    ],
+    "headline": "Boundaries",
+    "subtitle": "What this Sandbox protects",
+    "metadataStrip": "Drafted by the cohort with Joshua Shepherd · 3 of 7 cohort members signed · Sponsor countersign pending",
+    "intro": "The Boundaries agreement establishes the safe operating environment for the Northridge Community Center Sandbox. It defines three critical categories: Publication Boundaries govern what information may leave this space; Privacy Boundaries dictate what data may enter it; and Personal Boundaries establish the safeguards necessary to protect the cognitive and emotional well-being of the cohort members undertaking this deeply transformative work."
+  },
+  "sections": [
+    {
+      "id": "publication",
+      "kind": "documentSection",
+      "eyebrow": "Publication Boundaries",
+      "title": "What may leave the Sandbox",
+      "body": [
+        "All outputs, transcripts, synthetic data, and strategic mappings generated within this Sandbox are strictly internal to the cohort. They may not be published, shared, or referenced outside of defined review cycles.",
+        "Exceptions: Finalized summary reports presented to the Sponsor (Linda Ozawa) and methodological frameworks retained by the facilitator (Joshua Shepherd) for continuous improvement, provided all identifying organizational data is abstracted."
+      ],
+      "cta": {
+        "label": "View source clause",
+        "href": "#"
+      }
+    },
+    {
+      "id": "privacy",
+      "kind": "tableSection",
+      "eyebrow": "Privacy Boundaries",
+      "title": "What data may enter the Sandbox",
+      "columns": [
+        "Data Tier",
+        "Status",
+        "Description"
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Tier 1: Public Organizational Data",
+            "Permitted",
+            "Mission statements, public reports, structural diagrams."
+          ]
+        },
+        {
+          "cells": [
+            "Tier 2: Aggregated Internal Data",
+            "Permitted",
+            "De-identified operational metrics, program participation rates."
+          ]
+        },
+        {
+          "cells": [
+            "Tier 3: Sensitive Individual Data",
+            "Synthetic Only",
+            "Client feedback, staff performance. Must be synthesized before entry."
+          ]
+        },
+        {
+          "cells": [
+            "Tier 4: PII & Financial Data",
+            "Excluded",
+            "Names, addresses, direct financial accounts. Strictly prohibited."
+          ]
+        }
+      ],
+      "cta": {
+        "label": "View full Data Handling Rules",
+        "href": "#"
+      }
+    },
+    {
+      "id": "personal",
+      "kind": "splitListSection",
+      "eyebrow": "Personal Boundaries",
+      "title": "Safeguards for the people doing the work",
+      "columns": [
+        {
+          "title": "Identified Patterns",
+          "bullets": [
+            "Cognitive fatigue from sustained abstraction.",
+            "Parasocial attachment to synthetic entities.",
+            "Reality recalibration during transition periods."
+          ]
+        },
+        {
+          "title": "Agreed Safeguards",
+          "draftField": "artifacts.personal_boundaries.safeguards_richtext"
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { DashboardShell } from "@/components/dashboard/dashboard-shell";
@@ -20,7 +21,9 @@ export default async function DashboardLayout({
   } = await supabase.auth.getUser();
 
   if (!user?.id) {
-    redirect("/login?next=/dashboard");
+    const h = await headers();
+    const path = h.get("x-pathname") ?? "/dashboard";
+    redirect(`/login?next=${encodeURIComponent(path)}`);
   }
 
   const membershipsRaw = await listMembershipOrganizations(user.id);

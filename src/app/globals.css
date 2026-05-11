@@ -86,6 +86,15 @@
      italic numerals, active stage rules, and pull-quote rails. Not for citations. */
   --color-pathway-accent: #b8893a;
 
+  /* Stitch program surfaces (authenticated /program/**) — aligned with stitch manifest/design-tokens.json */
+  --color-movemental-midnight: #0e1726;
+  --color-safestart-bg: #faf8f4;
+  --color-safestart-ink: #1a1a1a;
+  --color-safestart-muted: #666557;
+  --color-safestart-hairline: #ece8d7;
+  --color-safestart-completed: #4a6b47;
+  --color-safestart-surface-container: #f7f4e7;
+
   /* Editorial aliases — kept for components that imported the Concept Modern
      token namespace explicitly (bg-editorial-paper, text-editorial-foreground).
      They now resolve to the same base ramp and can be retired over time. */
@@ -1015,4 +1024,23 @@
     opacity: 1;
     transform: none;
   }
+}
+
+/* ---------------------------------------------------------------------------
+ * Viewport horizontal overflow guard.
+ *
+ * Citation popovers (`.cite__pop`, `width: min(360px, 86vw)`) and the
+ * ambient credibility-network SVG can extend past narrow viewports because
+ * they're absolutely-positioned children of in-flow content. Without a clip
+ * on the viewport, this triggers a horizontal scrollbar on mobile.
+ *
+ * Declared at file end, outside `@layer base`, with the !important guard —
+ * Lightning CSS minification was dropping the property when it appeared
+ * inside the base layer on root elements (suspected over-aggressive
+ * propagation/dedup pass). `overflow-x: clip` is preferred over `hidden` so
+ * descendant `position: sticky` keeps working.
+ * ------------------------------------------------------------------------- */
+html,
+body {
+  overflow-x: clip !important;
 }

@@ -1,6 +1,6 @@
 import "server-only";
 
-import { and, desc, eq, inArray, or, sql } from "drizzle-orm";
+import { and, desc, eq, inArray, isNotNull, isNull, or, sql } from "drizzle-orm";
 
 import { db } from "@/lib/db";
 import {
@@ -652,4 +652,345 @@ export async function listAdminOnboardingSummaries(): Promise<AdminOnboardingOrg
       prepTaskStates,
     };
   });
+}
+
+/** Dashboard `AdminOnboardingOrgRow` — active onboardings only for staff list. */
+export interface DashboardAdminOnboardingOrgRow {
+  organizationId: string;
+  name: string;
+  slug: string;
+  onboardingStartedAt: string | null;
+  onboardingCompletedAt: string | null;
+  currentPhase: string | null;
+  phaseSummaries: Array<{ phase: string; completed: number; total: number; available: number }>;
+  prepLocks: Array<{ taskKey: string; locked: boolean }>;
+  lastActivityAt: string | null;
+  notesCount: number;
+}
+
+function staffNotesFromState(raw: unknown): unknown[] {
+  if (!raw || typeof raw !== "object") return [];
+  const sn = (raw as { staff_notes?: unknown }).staff_notes;
+  return Array.isArray(sn) ? sn : [];
+}
+
+async function buildDashboardAdminOrgRow(orgId: string): Promise<DashboardAdminOnboardingOrgRow | null> {
+  const [org] = await db.select().from(organizations).where(eq(organizations.id, orgId)).limit(1);
+  if (!org) return null;
+
+  const payload = await buildOnboardingStatePayload(orgId);
+  if (!payload) return null;
+
+  const rows = await db
+    .select()
+    .from(onboardingTasks)
+    .where(eq(onboardingTasks.organization_id, orgId));
+
+  const leaderPayments = readLeaderPaymentsEnabled(org.settings);
+  const lastActivityAt =
+    rows.length === 0
+      ? null
+      : rows.reduce<string | null>((acc, r) => {
+          const u = r.updated_at;
+          if (!acc || u > acc) return u;
+          return acc;
+        }, null);
+
+  const phaseLabel = currentPhaseLabelForOrg(rows, leaderPayments);
+  const currentPhase = phaseLabel === "complete" ? null : phaseLabel;
+
+  const prepLocks = ONBOARDING_TASKS.filter((d) => d.requiresMovementalPrep).map((def) => {
+    const r = rows.find((x) => x.task_key === def.key);
+    return {
+      taskKey: def.key,
+      locked: !(r?.movemental_unlocked ?? false),
+    };
+  });
+
+  const notesCount = staffNotesFromState(org.onboarding_state).length;
+
+  return {
+    organizationId: org.id,
+    name: org.name,
+    slug: org.slug,
+    onboardingStartedAt: org.onboarding_started_at,
+    onboardingCompletedAt: org.onboarding_completed_at,
+    currentPhase,
+    phaseSummaries: payload.phaseSummaries,
+    prepLocks,
+    lastActivityAt,
+    notesCount,
+  };
+}
+
+/** Staff list: started, not completed. */
+export async function listDashboardAdminOnboardingOrgs(): Promise<DashboardAdminOnboardingOrgRow[]> {
+  const orgs = await db
+    .select({ id: organizations.id })
+    .from(organizations)
+    .where(and(isNotNull(organizations.onboarding_started_at), isNull(organizations.onboarding_completed_at)))
+    .orderBy(organizations.name);
+
+  const out: DashboardAdminOnboardingOrgRow[] = [];
+  for (const o of orgs) {
+    const row = await buildDashboardAdminOrgRow(o.id);
+    if (row) out.push(row);
+  }
+  return out;
+}
+
+export interface DashboardAdminOnboardingNote {
+  id: string;
+  authorUserId: string;
+  authorName?: string;
+  body: string;
+  createdAt: string;
+}
+
+export interface DashboardAdminAuditEntry {
+  id: string;
+  actorUserId: string;
+  actorName?: string;
+  action: string;
+  taskKey?: string;
+  note?: string;
+  createdAt: string;
+}
+
+export async function addStaffOnboardingNote(params: {
+  staffUserId: string;
+  organizationId: string;
+  body: string;
+}): Promise<Result<DashboardAdminOnboardingNote>> {
+  const staff = await isUserStaff(params.staffUserId);
+  if (!staff) return err("forbidden", "Staff access required.");
+
+  const trimmed = params.body.trim();
+  if (!trimmed) return err("validation_error", "Note body is required.");
+
+  const [org] = await db
+    .select({ onboarding_state: organizations.onboarding_state })
+    .from(organizations)
+    .where(eq(organizations.id, params.organizationId))
+    .limit(1);
+  if (!org) return err("not_found", "Organization not found.");
+
+  const cur =
+    org.onboarding_state && typeof org.onboarding_state === "object"
+      ? { ...(org.onboarding_state as Record<string, unknown>) }
+      : {};
+  const notes = Array.isArray(cur.staff_notes)
+    ? [...(cur.staff_notes as DashboardAdminOnboardingNote[])]
+    : [];
+
+  const [actor] = await db
+    .select({ first_name: userProfiles.first_name, last_name: userProfiles.last_name })
+    .from(userProfiles)
+    .where(eq(userProfiles.id, params.staffUserId))
+    .limit(1);
+  const authorName = [actor?.first_name, actor?.last_name].filter(Boolean).join(" ").trim() || undefined;
+
+  const note: DashboardAdminOnboardingNote = {
+    id: crypto.randomUUID(),
+    authorUserId: params.staffUserId,
+    authorName,
+    body: trimmed,
+    createdAt: nowIso(),
+  };
+  notes.push(note);
+
+  await db
+    .update(organizations)
+    .set({
+      onboarding_state: { ...cur, staff_notes: notes } as unknown as Record<string, unknown>,
+      updated_at: nowIso(),
+    })
+    .where(eq(organizations.id, params.organizationId));
+
+  await db.insert(auditLogs).values({
+    user_id: params.staffUserId,
+    action: "onboarding_staff_note",
+    resource_type: "organization",
+    resource_id: params.organizationId,
+    changes: { note_id: note.id },
+  });
+
+  return ok(note);
+}
+
+export async function adminCompleteOnboardingTaskOnBehalf(params: {
+  staffUserId: string;
+  organizationId: string;
+  taskKey: string;
+  note: string;
+}): Promise<Result<{ organizationId: string }>> {
+  const staff = await isUserStaff(params.staffUserId);
+  if (!staff) return err("forbidden", "Staff access required.");
+
+  const noteTrim = params.note.trim();
+  if (!noteTrim) return err("validation_error", "A note is required when completing on behalf.");
+
+  const def = taskDefinitionByKey(params.taskKey);
+  if (!def) return err("unknown_task", "Unknown task key.");
+
+  const [owner] = await db
+    .select({
+      id: userProfiles.id,
+      email: userProfiles.email,
+      first_name: userProfiles.first_name,
+    })
+    .from(organizations)
+    .innerJoin(userProfiles, eq(organizations.account_owner_id, userProfiles.id))
+    .where(eq(organizations.id, params.organizationId))
+    .limit(1);
+
+  const result = await completeOnboardingTask({
+    organizationId: params.organizationId,
+    userId: owner?.id ?? params.staffUserId,
+    userEmail: owner?.email ?? "",
+    firstName: owner?.first_name ?? null,
+    taskKey: params.taskKey,
+    metadata: { completed_on_behalf_by: params.staffUserId, staff_note: noteTrim },
+  });
+
+  if (!result.success) return result;
+
+  await db.insert(auditLogs).values({
+    user_id: params.staffUserId,
+    action: "onboarding_complete_on_behalf",
+    resource_type: "organization",
+    resource_id: params.organizationId,
+    changes: { task_key: params.taskKey, note: noteTrim },
+  });
+
+  return ok({ organizationId: params.organizationId });
+}
+
+export async function finalizeLeaderOnboarding(params: {
+  organizationId: string;
+  userId: string;
+  userEmail: string;
+  firstName: string | null;
+  attestationAccepted: boolean;
+  cohortPrepReflection?: string;
+}): Promise<Result<{ onboardingCompletedAt: string }>> {
+  if (!params.attestationAccepted) {
+    return err("validation_error", "You must confirm accuracy before finishing.");
+  }
+
+  const meta: Record<string, unknown> = { attestationAccepted: true };
+  if (params.cohortPrepReflection?.trim()) {
+    meta.cohortPrepReflection = params.cohortPrepReflection.trim();
+  }
+
+  const result = await completeOnboardingTask({
+    organizationId: params.organizationId,
+    userId: params.userId,
+    userEmail: params.userEmail,
+    firstName: params.firstName,
+    taskKey: "final_confirmation",
+    metadata: meta,
+  });
+
+  if (!result.success) return result;
+
+  const [org] = await db
+    .select({ onboarding_completed_at: organizations.onboarding_completed_at })
+    .from(organizations)
+    .where(eq(organizations.id, params.organizationId))
+    .limit(1);
+
+  return ok({ onboardingCompletedAt: org?.onboarding_completed_at ?? nowIso() });
+}
+
+export async function fetchAdminOnboardingAudit(organizationId: string): Promise<DashboardAdminAuditEntry[]> {
+  const rows = await db
+    .select()
+    .from(auditLogs)
+    .where(
+      and(eq(auditLogs.resource_type, "organization"), eq(auditLogs.resource_id, organizationId)),
+    )
+    .orderBy(desc(auditLogs.created_at))
+    .limit(100);
+
+  const out: DashboardAdminAuditEntry[] = [];
+  for (const r of rows) {
+    if (
+      ![
+        "onboarding_task_completed",
+        "onboarding_admin_unlock",
+        "onboarding_staff_note",
+        "onboarding_complete_on_behalf",
+      ].includes(r.action)
+    ) {
+      continue;
+    }
+    const changes = (r.changes && typeof r.changes === "object" ? r.changes : {}) as Record<
+      string,
+      unknown
+    >;
+    let actorName: string | undefined;
+    if (r.user_id) {
+      const [p] = await db
+        .select({ first_name: userProfiles.first_name, last_name: userProfiles.last_name })
+        .from(userProfiles)
+        .where(eq(userProfiles.id, r.user_id))
+        .limit(1);
+      actorName = [p?.first_name, p?.last_name].filter(Boolean).join(" ").trim() || undefined;
+    }
+    out.push({
+      id: r.id,
+      actorUserId: r.user_id ?? "",
+      actorName,
+      action: r.action,
+      taskKey: typeof changes.task_key === "string" ? changes.task_key : undefined,
+      note: typeof changes.note === "string" ? changes.note : undefined,
+      createdAt: r.created_at,
+    });
+  }
+  return out;
+}
+
+type OnboardingStatePayloadNonNull = NonNullable<Awaited<ReturnType<typeof buildOnboardingStatePayload>>>;
+
+export async function buildAdminOnboardingDetail(params: {
+  organizationId: string;
+}): Promise<{
+  organization: DashboardAdminOnboardingOrgRow;
+  tasks: OnboardingStatePayloadNonNull["tasks"];
+  notes: DashboardAdminOnboardingNote[];
+  audit: DashboardAdminAuditEntry[];
+} | null> {
+  const orgRow = await buildDashboardAdminOrgRow(params.organizationId);
+  if (!orgRow) return null;
+
+  const payload = await buildOnboardingStatePayload(params.organizationId);
+  if (!payload) return null;
+
+  const [org] = await db
+    .select({ onboarding_state: organizations.onboarding_state })
+    .from(organizations)
+    .where(eq(organizations.id, params.organizationId))
+    .limit(1);
+
+  const notesRaw = staffNotesFromState(org?.onboarding_state);
+  const notes: DashboardAdminOnboardingNote[] = notesRaw
+    .filter(
+      (n): n is DashboardAdminOnboardingNote =>
+        typeof n === "object" &&
+        n !== null &&
+        "id" in n &&
+        "body" in n &&
+        typeof (n as { id: unknown }).id === "string",
+    )
+    .map((n) => n as DashboardAdminOnboardingNote);
+
+  const audit = await fetchAdminOnboardingAudit(params.organizationId);
+
+  return {
+    organization: orgRow,
+    tasks: payload.tasks,
+    notes,
+    audit,
+  };
 }

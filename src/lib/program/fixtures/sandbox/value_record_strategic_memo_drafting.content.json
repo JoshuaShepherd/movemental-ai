@@ -1,0 +1,40 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "value_record_strategic_memo_drafting",
+  "screenFamily": "strategic-memo",
+  "documentTitle": "Strategic Memo Drafting — Trial 01 Value Record",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "Value Record",
+    "supportingCopy": "Workspace Session Log",
+    "eyebrow": "System"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Value Record"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

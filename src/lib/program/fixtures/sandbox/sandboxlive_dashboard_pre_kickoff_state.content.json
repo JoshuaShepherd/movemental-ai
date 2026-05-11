@@ -1,0 +1,160 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "sandboxlive_dashboard_pre_kickoff_state",
+  "screenFamily": "sandboxlive-shell",
+  "documentTitle": "SandboxLive Dashboard - Movemental AI",
+  "draftApiMapping": {
+    "shell.tenantName": "organizations.display_name",
+    "sidebar.engagementTitle": "cohorts.strategic_engagement_title",
+    "sidebar.phaseCaption": "cohorts.active_phase_caption",
+    "sidebar.phaseLinks": "sandbox.phase_nav_items[]",
+    "page.headline": "cohorts.welcome_headline",
+    "sections.timeline.milestones": "sandbox.progress_milestones[]",
+    "sections.cohortList.items": "cohorts.members[]"
+  },
+  "shell": {
+    "brandLine": "Movemental AI",
+    "tenantName": "Northridge Community Center",
+    "userInitials": "LO",
+    "modeBadge": "SANDBOX"
+  },
+  "sidebar": {
+    "engagementTitle": "Strategic Engagement",
+    "phaseCaption": "Phase II: Assessment",
+    "groups": [
+      {
+        "label": "GUIDEBOOK",
+        "links": [
+          {
+            "label": "View your AI Organizational Guidebook",
+            "icon": "menu_book",
+            "draftField": "guidebook.url"
+          }
+        ]
+      },
+      {
+        "label": "PHASES",
+        "links": [
+          {
+            "label": "01 Boundaries",
+            "badge": "STARTS TUESDAY",
+            "icon": "security"
+          },
+          {
+            "label": "02 Assessment",
+            "icon": "analytics"
+          },
+          {
+            "label": "03 Experimenting",
+            "icon": "biotech"
+          },
+          {
+            "label": "04 Iteration",
+            "icon": "sync"
+          },
+          {
+            "label": "05 Reflection",
+            "icon": "psychology"
+          },
+          {
+            "label": "06 Ethics Review",
+            "icon": "gavel"
+          },
+          {
+            "label": "07 Discerning",
+            "icon": "explore"
+          },
+          {
+            "label": "08 Future Plan",
+            "icon": "flag"
+          }
+        ]
+      },
+      {
+        "label": "LEARNING",
+        "links": [
+          {
+            "label": "Modules",
+            "badge": "AVAILABLE NOW",
+            "icon": "school"
+          },
+          {
+            "label": "Recipe library",
+            "icon": "library_books"
+          }
+        ]
+      },
+      {
+        "label": "COHORT",
+        "links": [
+          {
+            "label": "Members",
+            "icon": "group"
+          },
+          {
+            "label": "Sessions",
+            "icon": "calendar_month"
+          }
+        ]
+      }
+    ]
+  },
+  "page": {
+    "eyebrow": "SANDBOXLIVE DASHBOARD",
+    "statusChip": "ENGAGEMENT ACTIVE",
+    "headline": "It continues with exploration.",
+    "supportingCopy": "Welcome to your Sandbox. Your cohort begins in person next Tuesday at 9:00 AM Central with Joshua Shepherd. Please review your guidebook and the pre-kickoff materials below."
+  },
+  "sections": [
+    {
+      "id": "progress",
+      "kind": "timeline",
+      "title": "Engagement Progress",
+      "milestones": [
+        {
+          "label": "Kickoff",
+          "state": "complete"
+        },
+        {
+          "label": "01 Boundaries",
+          "state": "current"
+        },
+        {
+          "label": "02 Assess",
+          "state": "upcoming"
+        },
+        {
+          "label": "03 Exper",
+          "state": "upcoming"
+        },
+        {
+          "label": "04 Iter",
+          "state": "upcoming"
+        },
+        {
+          "label": "08 Plan",
+          "state": "upcoming"
+        }
+      ]
+    },
+    {
+      "id": "cohort",
+      "kind": "rosterColumns",
+      "title": "YOUR COHORT",
+      "items": [
+        {
+          "name": "Linda Ozawa",
+          "subtitle": "Executive Director"
+        },
+        {
+          "name": "Marcus Vance",
+          "subtitle": "Director of Operations"
+        },
+        {
+          "name": "Sarah Kim",
+          "subtitle": "Community Outreach Lead"
+        }
+      ]
+    }
+  ]
+}

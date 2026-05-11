@@ -15,7 +15,7 @@ This part documents the strategic logic across the four stages of the path and p
 
 The Movemental AI Path is one path, expressed in four stages. Each stage presupposes the work of the prior stage. Each stage produces specific artifacts that the subsequent stage can build on. The path is not a menu where customers pick favorites; it is a sequence with logic. At the same time, organizations enter the path at different points, hold different paces through it, and can pause between stages when their season requires it. The path is firm in structure and accommodating in pace.
 
-- Safety. Two-week MVP. Seven artifacts. The non-negotiable foundation. Free Toolkit, AI-Assisted
+- Safety. Two-week MVP. Seven decisions. The non-negotiable foundation. Free Toolkit, AI-Assisted
 
 Product (~$1,997), or Facilitated MVP ($5,000).
 
@@ -39,7 +39,7 @@ Movemental productizes the path at three levels, with one level adapted per stag
 
 ### Eight-D: The integration view
 
-The four stages produce artifacts that compound. Safety produces the seven governance artifacts plus the constituent communication. Sandbox produces the Use Case Portfolio plus the Discernment Memo plus the Readiness Assessment, all referencing Safety. Skills produces personal commitments, adjudication documentation, and ongoing formation plans, all building on Sandbox findings and Safety documentation. Solutions produces the deployment, the deployment governance integration document, and the operational handoff, all explicitly grounded in everything upstream. At the end of the full path, the organization holds approximately 18-22 working artifacts that together constitute its AI infrastructure: governance documents, adjudicated use cases, formed staff, deployed capability, and a documented integration that connects all of it. This infrastructure is durable. It survives staff turnover. It survives technology changes. It survives the organization's next season of work. It is, quite literally, the foundation Movemental promised at the beginning of the path.
+The four stages produce artifacts that compound. Safety produces the seven governance decisions plus the constituent communication. Sandbox produces the Use Case Portfolio plus the Discernment Memo plus the Readiness Assessment, all referencing Safety. Skills produces personal commitments, adjudication documentation, and ongoing formation plans, all building on Sandbox findings and Safety documentation. Solutions produces the deployment, the deployment governance integration document, and the operational handoff, all explicitly grounded in everything upstream. At the end of the full path, the organization holds approximately 18-22 working artifacts that together constitute its AI infrastructure: governance documents, adjudicated use cases, formed staff, deployed capability, and a documented integration that connects all of it. This infrastructure is durable. It survives staff turnover. It survives technology changes. It survives the organization's next season of work. It is, quite literally, the foundation Movemental promised at the beginning of the path.
 
 ### Eight-E: The build sequence for Movemental over 12 months
 

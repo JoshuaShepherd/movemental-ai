@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { FieldGuideSafetyLanding } from "@/components/field-guide/field-guide-safety-landing";
 import { getFieldGuide } from "@/lib/field-guide";
+import { SAFETY_FIELD_GUIDE_COVER_IMAGE } from "@/lib/safety-field-guide";
 import { canonicalPageUrl } from "@/lib/site-url";
 
 const SLUG = "it-starts-with-safety";
@@ -20,11 +21,13 @@ export const metadata: Metadata = {
     title: ogTitle,
     description: guide.description,
     authors: guide.authors,
+    images: [{ url: SAFETY_FIELD_GUIDE_COVER_IMAGE, width: 1600, height: 873, alt: ogTitle }],
   },
   twitter: {
     card: "summary_large_image",
     title: ogTitle,
     description: guide.description,
+    images: [SAFETY_FIELD_GUIDE_COVER_IMAGE],
   },
 };
 
@@ -43,6 +46,7 @@ export default function FieldGuideSafetyPage() {
     datePublished: guide.date,
     dateModified: guide.date,
     inLanguage: "en-US",
+    image: canonicalPageUrl(SAFETY_FIELD_GUIDE_COVER_IMAGE),
     mainEntityOfPage: { "@type": "WebPage", "@id": canonicalPageUrl("/field-guide/safety") },
   };
 

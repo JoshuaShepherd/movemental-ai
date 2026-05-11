@@ -83,9 +83,7 @@
       "url": "https://www.vatican.va/roman_curia/congregations/cfaith/documents/rc_ddf_doc_20250128_antiqua-et-nova_en.html"
     },
     "footnote": "The note insists that artificial intelligence should complement human intelligence rather than replace its moral and relational depth, and warns against deskilling and surrendering judgment to machines. That ethical stance aligns with treating experimentation and formation as stages before wholesale automation—without claiming any one vendor methodology.",
-    "citationIds": [
-      "antiqua-et-nova-complement"
-    ]
+    "citationIds": []
   },
   {
     "id": "home-credibility-relational-pew",
@@ -100,8 +98,10 @@
       "detail": "Survey of 5,023 U.S. adults (June 9–15, 2025 fieldwork); reported Sept. 2025.",
       "url": "https://www.pewresearch.org/science/2025/09/17/how-americans-view-ai-and-its-impact-on-people-and-society/"
     },
-    "footnote": "Pew finds that large majorities of Americans say it matters whether images, video, and text are human- or AI-made, while only a minority feel confident they can tell the difference. That gap between importance and confidence is one rigorous way to describe why credibility today travels through trusted people and institutions—not through polish alone.",
-    "citationIds": []
+    "footnote": "Pew finds that about 76% of U.S. adults say it is extremely or very important to tell whether pictures, videos, or text were made by AI or by people, while 53% are not too or not at all confident they can spot the difference. That gap between importance and confidence is one rigorous way to describe why credibility today travels through trusted people and institutions—not through polish alone.",
+    "citationIds": [
+      "pew-ai-detection-attribution-gap"
+    ]
   },
   {
     "id": "home-beginners-exhortation",

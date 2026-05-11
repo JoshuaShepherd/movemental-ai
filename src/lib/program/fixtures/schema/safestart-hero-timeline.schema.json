@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://movemental.local/schemas/safestart-hero-timeline.json",
+  "title": "SafeStartHeroTimelineFixture",
+  "type": "object",
+  "required": ["fixtureVersion", "templateId", "screenFamily", "shell", "page"],
+  "additionalProperties": true,
+  "properties": {
+    "fixtureVersion": { "type": "integer", "minimum": 1 },
+    "templateId": { "type": "string", "minLength": 1 },
+    "screenFamily": { "const": "safestart-hero-timeline" },
+    "$schemaRef": { "type": "string" },
+    "documentTitle": { "type": "string" },
+    "draftApiMapping": { "type": "object", "additionalProperties": true },
+    "shell": {
+      "type": "object",
+      "required": ["brandLine"],
+      "additionalProperties": true,
+      "properties": {
+        "brandLine": { "type": "string" },
+        "tenantName": { "type": ["string", "null"] },
+        "userInitials": { "type": ["string", "null"] },
+        "footerLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label"],
+            "properties": {
+              "label": { "type": "string" },
+              "href": { "type": "string" },
+              "draftField": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "eyebrow": { "type": "string" },
+        "headline": { "type": "string" },
+        "supportingCopy": { "type": "string" }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind"],
+        "properties": {
+          "id": { "type": "string" },
+          "kind": {
+            "type": "string",
+            "enum": ["timeline", "rosterColumns", "prepChecklist", "richText"]
+          }
+        }
+      }
+    }
+  }
+}

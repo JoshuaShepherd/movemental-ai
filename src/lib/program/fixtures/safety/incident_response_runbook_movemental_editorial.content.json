@@ -1,0 +1,72 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "incident_response_runbook_movemental_editorial",
+  "screenFamily": "governance-document",
+  "documentTitle": "Incident Response Runbook - SafeStart",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "SafeStart",
+    "supportingCopy": "INCIDENT RESPONSE RUNBOOK",
+    "eyebrow": "Statement"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "SafeStart"
+        },
+        {
+          "level": 1,
+          "text": "SafeStart"
+        },
+        {
+          "level": 1,
+          "text": "Voice cloning attempt — May 31, 2026"
+        },
+        {
+          "level": 2,
+          "text": "Stage 01: Confirm the incident"
+        },
+        {
+          "level": 2,
+          "text": "Stage 02: Activate verification protocols"
+        },
+        {
+          "level": 2,
+          "text": "Stage 03: Contain financial exposure"
+        },
+        {
+          "level": 2,
+          "text": "Stage 04: Report to authorities"
+        },
+        {
+          "level": 3,
+          "text": "Incident Metadata"
+        },
+        {
+          "level": 3,
+          "text": "Incident Log"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

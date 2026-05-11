@@ -1,0 +1,64 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "phase_07_discerning_adjudication_workspace",
+  "screenFamily": "phase-workspace",
+  "documentTitle": "SandboxLive Dashboard - Phase 07",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": "SANDBOX"
+  },
+  "page": {
+    "headline": "Major-Donor Meeting Prep Briefs",
+    "supportingCopy": "Sandbox · Phase 07 · Discerning · Major-Donor Meeting Prep Briefs",
+    "eyebrow": "Proceed"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Major-Donor Meeting Prep Briefs"
+        },
+        {
+          "level": 3,
+          "text": "Value from Experimenting"
+        },
+        {
+          "level": 3,
+          "text": "Boundaries"
+        },
+        {
+          "level": 3,
+          "text": "Guidebook"
+        },
+        {
+          "level": 3,
+          "text": "Ethics Review"
+        },
+        {
+          "level": 2,
+          "text": "Adjudication Verdict"
+        },
+        {
+          "level": 3,
+          "text": "Required Governance Conditions"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

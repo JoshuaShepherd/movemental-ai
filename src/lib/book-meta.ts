@@ -3,13 +3,15 @@
  * Single source of truth for titles in metadata, email, and share copy.
  */
 
+import { SAFETY_FIELD_GUIDE_COVER_IMAGE } from "@/lib/safety-field-guide";
+
 export const BOOK_TITLE = "From Fragmentation to Movement";
 
 /** Raster cover art (WebP) — full book jacket. */
 export const BOOK_COVER_IMAGE = "/images/books/organizational-intelligence-book.webp";
 
-/** Companion cover art (WebP) — homepage book block alternate visual (Movemental Path field guide tone). */
-export const FIELD_GUIDE_COVER_IMAGE = "/images/books/field-guide-cover.webp";
+/** Safety Field Guide (*It Starts With Safety*) cover — lead magnet + `/book` field-guide variant. */
+export const FIELD_GUIDE_COVER_IMAGE = SAFETY_FIELD_GUIDE_COVER_IMAGE;
 
 export const BOOK_SUBTITLE =
   "A structural path from scatter field to field — for movement leaders, nonprofits, churches, and institutions.";

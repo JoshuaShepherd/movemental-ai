@@ -19,10 +19,10 @@ export async function proxy(request: NextRequest) {
     pathname.startsWith("/onboarding") ||
     pathname.startsWith("/admin/onboarding");
 
-  return updateSession(
-    request,
-    dashboardShell ? { "x-movemental-shell": "dashboard" } : undefined,
-  );
+  const inject: Record<string, string> = { "x-pathname": pathname };
+  if (dashboardShell) inject["x-movemental-shell"] = "dashboard";
+
+  return updateSession(request, inject);
 }
 
 export const config = {

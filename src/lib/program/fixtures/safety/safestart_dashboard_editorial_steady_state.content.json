@@ -1,0 +1,52 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "safestart_dashboard_editorial_steady_state",
+  "screenFamily": "safestart-editorial-workspace",
+  "documentTitle": "SafeStart Dashboard",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": "MOVEMENTAL",
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": "SANDBOX"
+  },
+  "page": {
+    "headline": "Your Guidebook is live.",
+    "supportingCopy": "Guidebook",
+    "eyebrow": "GUIDEBOOK RATIFIED — MAY 21, 2026"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 2,
+          "text": "Movemental"
+        },
+        {
+          "level": 1,
+          "text": "Your Guidebook is live."
+        },
+        {
+          "level": 2,
+          "text": "What's happened in your Guidebook this week."
+        },
+        {
+          "level": 3,
+          "text": "Move to the Sandbox"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

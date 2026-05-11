@@ -1,0 +1,88 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "safestart_dashboard_drafting_async_review",
+  "screenFamily": "safestart-editorial-workspace",
+  "documentTitle": "SafeStart Dashboard",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": "MOVEMENTAL",
+    "tenantName": null,
+    "userInitials": "LO",
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "Movemental",
+    "supportingCopy": "Institutional Strategy",
+    "eyebrow": "Northridge Community Center"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Movemental"
+        },
+        {
+          "level": 2,
+          "text": "GUIDEBOOK"
+        },
+        {
+          "level": 3,
+          "text": "Guidebook"
+        },
+        {
+          "level": 3,
+          "text": "Engagement"
+        },
+        {
+          "level": 1,
+          "text": "Your engagement is in active drafting."
+        },
+        {
+          "level": 2,
+          "text": "Layer Status"
+        },
+        {
+          "level": 3,
+          "text": "Statement"
+        },
+        {
+          "level": 3,
+          "text": "Policy"
+        },
+        {
+          "level": 3,
+          "text": "Context"
+        },
+        {
+          "level": 3,
+          "text": "Rules"
+        },
+        {
+          "level": 3,
+          "text": "Response Plans"
+        },
+        {
+          "level": 3,
+          "text": "Recent Activity"
+        },
+        {
+          "level": 3,
+          "text": "What's Next"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

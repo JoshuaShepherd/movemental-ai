@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://movemental.local/schemas/program-fixture-core.json",
+  "title": "ProgramFixtureCore",
+  "type": "object",
+  "required": ["fixtureVersion", "templateId", "screenFamily", "shell", "page"],
+  "additionalProperties": true,
+  "properties": {
+    "fixtureVersion": { "type": "integer", "minimum": 1 },
+    "templateId": { "type": "string", "minLength": 1 },
+    "screenFamily": {
+      "type": "string",
+      "enum": [
+        "safestart-hero-timeline",
+        "safestart-editorial-workspace",
+        "editorial-thread",
+        "governance-document",
+        "ratification-flow",
+        "sandboxlive-shell",
+        "phase-workspace",
+        "ethics-workspace",
+        "future-plan-editor",
+        "strategic-memo",
+        "recipe-library",
+        "oversight-modules",
+        "generic-dashboard"
+      ]
+    },
+    "$schemaRef": { "type": "string" },
+    "documentTitle": { "type": "string" },
+    "draftApiMapping": { "type": "object", "additionalProperties": true },
+    "shell": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "brandLine": { "type": ["string", "null"] },
+        "tenantName": { "type": ["string", "null"] },
+        "userInitials": { "type": ["string", "null"] },
+        "modeBadge": { "type": ["string", "null"] },
+        "footerLinks": { "type": "array" }
+      }
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "eyebrow": { "type": "string" },
+        "headline": { "type": ["string", "null"] },
+        "supportingCopy": { "type": ["string", "null"] },
+        "statusChip": { "type": "string" }
+      }
+    },
+    "sidebar": { "type": "object", "additionalProperties": true },
+    "sections": { "type": "array" },
+    "editorialThread": { "type": "object", "additionalProperties": true }
+  }
+}

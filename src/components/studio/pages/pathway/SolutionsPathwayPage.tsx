@@ -110,7 +110,8 @@ const PRICING_INCLUDED = [
   "Solutions Brief (signed scoping document)",
   "Configured working deployment to your specifications",
   "Integration with the seven Safety decisions and Skills capacity",
-  "Milestone-based build with synchronous testing",
+  "Safety, Sandbox, and Skills complete before build begins — stable foundation for configuration",
+  "Phased build with synchronous testing at each stage",
   "Documentation and role-based training",
   "90-day operational support window",
   "Transition path to subscription, retainer, or full handoff",
@@ -367,7 +368,7 @@ export function SolutionsPathwayPage() {
                     Every deployment carries the seven decisions inside it.
                   </h3>
                   <p className="mt-4 text-sm leading-relaxed text-inverse-muted">
-                    Solutions deployments are configured against the Safety artifacts. Disclosure, data handling, named
+                    Solutions deployments are configured against the Safety decisions. Disclosure, data handling, named
                     refusals, incident response — these are not separate documents the deployment ignores. They are
                     wired into how the system operates, monitored, and held accountable.
                   </p>
@@ -459,12 +460,12 @@ export function SolutionsPathwayPage() {
                   <p className="font-serif-display text-3xl italic text-foreground md:text-4xl">From $30,000</p>
                   <p className="mt-1 font-serif-display text-xl italic text-muted-foreground">Configuration-dependent</p>
                   <p className="mt-4 text-[0.65rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">
-                    Milestone-based · typical 30/30/40
+                    USD · Scoped timeline per engagement
                   </p>
                 </div>
               </div>
               <hr className="mt-10 border-border" />
-              <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-10">
+              <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-10">
                 <div>
                   <h3 className="text-xs font-semibold uppercase tracking-eyebrow text-pathway-accent">
                     What&apos;s included (varies by configuration)
@@ -494,15 +495,6 @@ export function SolutionsPathwayPage() {
                       </li>
                     ))}
                   </ul>
-                </div>
-                <div>
-                  <h3 className="text-xs font-semibold uppercase tracking-eyebrow text-muted-foreground">Terms</h3>
-                  <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-                    Milestone-based pricing, typically 30% at Brief signing, 30% at build midpoint, 40% at validation and
-                    handoff. Payment Net 15 on each milestone invoice. Solutions requires Safety, Sandbox, and Skills to
-                    be complete; we do not start build work against an unstable foundation. Configurations from $30,000
-                    (Tool Optimization) to $300,000+ (Network Deployment); most engagements scope per conversation.
-                  </p>
                 </div>
               </div>
             </div>
@@ -595,7 +587,7 @@ export function SolutionsPathwayPage() {
         <Container>
           <Reveal>
             <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-12">
-              <div className="order-2 mx-auto w-full max-w-sm lg:order-1 lg:col-span-5 lg:mx-0">
+              <div className="order-2 mx-auto w-full max-w-lg lg:order-1 lg:col-span-5 lg:mx-0">
                 <ToolkitCover />
               </div>
               <div className="order-1 lg:order-2 lg:col-span-7">

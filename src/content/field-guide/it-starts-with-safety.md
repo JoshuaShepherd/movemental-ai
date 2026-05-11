@@ -9,7 +9,7 @@ version: 1.0
 date: 2026-05-09
 publisher: Movemental
 slug: it-starts-with-safety
-description: A 16-page field guide for executive directors, senior pastors, board chairs, and institutional leads who need to govern AI before they deploy it. Names the seven Safety artifacts, walks through the data, gives a 30-minute self-assessment, and includes the public refusals that hold under pressure.
+description: A 16-page field guide for executive directors, senior pastors, board chairs, and institutional leads who need to govern AI before they deploy it. Names the seven Safety decisions, walks through the data, gives a 30-minute self-assessment, and includes the public refusals that hold under pressure.
 ---
 
 # It Starts With Safety
@@ -34,7 +34,7 @@ We run a company that helps organizations do this work. The Field Guide reflects
 ## Contents
 
 1. *Why Safety is first*
-2. *The seven artifacts*
+2. *The seven decisions*
 3. *The self-assessment*
 4. *Common mistakes*
 5. *The two-week MVP*
@@ -70,21 +70,21 @@ Safety is not the work of slowing AI down. It is the work of being able to say, 
 
 ---
 
-## 2. The seven artifacts
+## 2. The seven decisions
 
-The Safety stage produces seven artifacts. Six are written documents. The seventh is a single act of organizational communication. Together they take roughly two weeks to draft and ratify when an experienced facilitator is involved, somewhat longer when the organization works through them independently. They are not a complete risk-management program. They are the minimum that responsibly addresses the documented harms now arriving and the governance gaps the data has named.
+The Safety stage produces seven decisions. Six are written documents. The seventh is a single act of organizational communication. Together they take roughly two weeks to draft and ratify when an experienced facilitator is involved, somewhat longer when the organization works through them independently. They are not a complete risk-management program. They are the minimum that responsibly addresses the documented harms now arriving and the governance gaps the data has named.
 
-Each artifact is small enough to be remembered, concrete enough to be applied, and honest enough to be revised when reality teaches you something. None of them are templates to copy. They are documents your organization writes, in your own language, that pass through your own governance.
+Each decision is small enough to be remembered, concrete enough to be applied, and honest enough to be revised when reality teaches you something. None of them are templates to copy. They are documents your organization writes, in your own language, that pass through your own governance.
 
 ### 01 *AI Use Charter*
 
 The principles and posture document. The Charter is the highest-level statement your organization makes about its relationship to AI. It names the values that will hold under pressure: what AI is for in your context, what it is not for, what convictions guide your choices, and how those convictions connect to the mission your organization already exists to serve.
 
-The Charter is short by design. Two pages is enough. Longer than that and it stops being readable in a single sitting; shorter than that and it usually has not done the theological or ethical work the moment requires. Its purpose is to give your staff, your board, and the people you serve a single document they can point to when the question "what do we believe about this" comes up. It is the document that makes the rest of the artifacts coherent rather than arbitrary.
+The Charter is short by design. Two pages is enough. Longer than that and it stops being readable in a single sitting; shorter than that and it usually has not done the theological or ethical work the moment requires. Its purpose is to give your staff, your board, and the people you serve a single document they can point to when the question "what do we believe about this" comes up. It is the document that makes the rest of the decisions coherent rather than arbitrary.
 
 A Charter that is doing its work names at least three things explicitly: the relational and mission commitments that AI use must serve rather than displace; the categories of work where the organization will not let efficiency be the deciding criterion; and the posture the organization holds toward both fear and uncritical enthusiasm. It is signed by the senior leadership and ratified by the board.
 
-What is at stake without it: every other artifact reads as arbitrary administrative compliance. Staff cannot tell what the rules mean because the rules are not connected to anything they recognize as the organization's identity. The first hard case produces an internal argument with no grounding to settle it.
+What is at stake without it: every other decision reads as arbitrary administrative compliance. Staff cannot tell what the rules mean because the rules are not connected to anything they recognize as the organization's identity. The first hard case produces an internal argument with no grounding to settle it.
 
 ### 02 *Acceptable Use Policy*
 
@@ -96,7 +96,7 @@ What is at stake without it: shadow use. Staff use whatever is convenient becaus
 
 ### 03 *Data Handling Standards*
 
-What data may touch which tools. Of the seven artifacts, this is the one with the most operational weight, because it is the one that protects the people you serve. Donor records, member directories, client files, pastoral notes, financial details, employee data — none of these should leave your governed perimeter into a public AI tool without an explicit decision that says they may. Most organizations have not made that decision because no one has framed it as a decision.
+What data may touch which tools. Of the seven decisions, this is the one with the most operational weight, because it is the one that protects the people you serve. Donor records, member directories, client files, pastoral notes, financial details, employee data — none of these should leave your governed perimeter into a public AI tool without an explicit decision that says they may. Most organizations have not made that decision because no one has framed it as a decision.
 
 The Data Handling Standard tiers your data — typically into something like public, internal, sensitive, and confidential — and pairs each tier with the categories of AI tool that may handle it. Enterprise tools with appropriate data processing agreements may handle different data than public consumer tools. Some categories of data may not be processed by any external AI tool at all. The Standard is operational, not theoretical: it gives staff a clear answer to the question "can I put this in this tool" before they have to guess.
 
@@ -106,7 +106,7 @@ What is at stake without it: a Blackbaud-style breach. The 2020 ransomware attac
 
 ### 04 *Disclosure and Attribution Standard*
 
-When AI involvement is named publicly. The Disclosure Standard is the smallest of the seven artifacts and one of the most reputationally consequential. It defines, in advance, the conditions under which your organization tells the people you serve that AI was involved in producing what they are reading, hearing, or receiving. It is not a blanket disclaimer; it is a discrimination rule.
+When AI involvement is named publicly. The Disclosure Standard is the smallest of the seven decisions and one of the most reputationally consequential. It defines, in advance, the conditions under which your organization tells the people you serve that AI was involved in producing what they are reading, hearing, or receiving. It is not a blanket disclaimer; it is a discrimination rule.
 
 A useful Standard distinguishes between routine operational tasks where AI assistance is unremarkable — formatting, scheduling, summarizing internal documents — and personal communication where the absence of disclosure would be experienced as deception. A pastoral letter to a grieving family is the test case. A fundraising appeal in the personal voice of an executive director is another. The Lifeway *Pastors' Views on Artificial Intelligence* survey released in April 2026 found that 62 percent of pastors are concerned about non-disclosure of AI involvement; among Protestant churchgoers, 43 percent disagree with their pastor using AI for sermon preparation, with 24 percent disagreeing strongly.[^9] The trust gap is already present; the Standard prevents you from violating it without realizing.
 
@@ -116,7 +116,7 @@ What is at stake without it: a slow erosion of trust your organization will not 
 
 ### 05 *Pastoral, Programmatic, and Educational Care Boundaries*
 
-Where AI must not go. This is the artifact that protects the human covenant at the center of mission-driven work. It names the categories of work where the presence of a human being is the irreducible input — where substituting AI is not a question of efficiency but of category error. It is also the artifact that requires the most theological and clinical judgment to draft, because the boundary is not always obvious in advance.
+Where AI must not go. This is the decision that protects the human covenant at the center of mission-driven work. It names the categories of work where the presence of a human being is the irreducible input — where substituting AI is not a question of efficiency but of category error. It is also the decision that requires the most theological and clinical judgment to draft, because the boundary is not always obvious in advance.
 
 A useful Care Boundaries document names specific work, not categories alone. "Pastoral care" as a category will not survive a Tuesday afternoon when a chaplain is short-staffed and a chatbot is available. "Initial pastoral conversation following the death of a family member," named explicitly, will. The same logic applies to clinical counseling intake, crisis-line first contact, programmatic eligibility determinations, end-of-life conversation support, and disciplinary or corrective conversations with staff. Every organization has its own list. The work of drafting it is the work of asking what kinds of human presence your mission cannot abdicate.
 
@@ -126,7 +126,7 @@ What is at stake without it: a slow displacement of human presence in exactly th
 
 ### 06 *Voice Cloning and Impersonation Response Plan*
 
-The protocol for the active criminal threat. Of the seven artifacts, this one addresses harm that is already arriving. The FBI's 2025 IC3 Annual Report named voice cloning as a layered component of business email compromise schemes; senior officials, including current and former federal officials, are being impersonated in messaging and voice campaigns at industrial scale.[^5] The same pattern is appearing in mission-driven organizations: pastors in at least six U.S. states have been impersonated by AI voice cloning over the last twelve months.[^7]
+The protocol for the active criminal threat. Of the seven decisions, this one addresses harm that is already arriving. The FBI's 2025 IC3 Annual Report named voice cloning as a layered component of business email compromise schemes; senior officials, including current and former federal officials, are being impersonated in messaging and voice campaigns at industrial scale.[^5] The same pattern is appearing in mission-driven organizations: pastors in at least six U.S. states have been impersonated by AI voice cloning over the last twelve months.[^7]
 
 A useful Response Plan answers four questions explicitly: how impersonation is reported by the constituent who encountered it; how the organization verifies whether the impersonation is real (including pre-arranged code-words for senior staff and standing protocols for fund-transfer requests); how the organization communicates publicly when an incident is confirmed; and how the organization works with law enforcement, including the IC3 reporting workflow at ic3.gov.
 
@@ -136,13 +136,13 @@ What is at stake without it: improvised response during an active fraud, slower 
 
 ### 07 *Communication to the Constituent Base*
 
-The public act. The seventh item is not a document. It is a single deliberate piece of public communication — a letter from the executive director, a paragraph in the next newsletter, a board statement on the website — that names what the organization has decided about AI and where the people you serve can read more. It is the act that makes the previous six artifacts visible.
+The public act. The seventh item is not a document. It is a single deliberate piece of public communication — a letter from the executive director, a paragraph in the next newsletter, a board statement on the website — that names what the organization has decided about AI and where the people you serve can read more. It is the act that makes the previous six decisions visible.
 
 The Communication is short and substantive. It does not promise that the organization will never use AI; that promise is unkeepable, and constituents who have read the data know it. It does not claim a sophisticated AI strategy; that claim invites questions the organization is not yet equipped to answer. It says, in plain language, that the organization has done the work of governing AI in advance of deploying it, names the principles that guided the work, and points to the public-facing summary documents (typically the Charter and the Disclosure Standard) for those who want detail.
 
 A useful Communication is signed by the senior leader and ratified by the board. It anchors the organization's position in a moment when most peer organizations have not anchored theirs, and it does so with a posture that is neither alarmed nor triumphalist.
 
-What is at stake without it: the work of the previous six artifacts remains internal, and the trust dividend they exist to produce never reaches the people they were drafted to protect.
+What is at stake without it: the work of the previous six decisions remains internal, and the trust dividend they exist to produce never reaches the people they were drafted to protect.
 
 ---
 
@@ -214,15 +214,15 @@ Five patterns of failure recur across the organizations we work with. Each one i
 
 This is the only section of the Field Guide that describes Movemental's facilitated process. Read it as you would any other section: a description of an option, with an honest account of when it is appropriate and when it is not.
 
-*What the two-week engagement is.* Four working sessions across two weeks, totaling roughly eight hours of synchronous facilitation, plus drafting and editing in between. We work with your senior leadership team and a small working group. By the end of the second week, your organization has the seven artifacts described in this guide, drafted in your own language, ready for board ratification.
+*What the two-week engagement is.* Four working sessions across two weeks, totaling roughly eight hours of synchronous facilitation, plus drafting and editing in between. We work with your senior leadership team and a small working group. By the end of the second week, your organization has the seven decisions described in this guide, drafted in your own language, ready for board ratification.
 
 *What it costs.* One thousand dollars. Flat. The price is set deliberately low so the engagement is approachable for small and mid-sized organizations and so the cost cannot be the reason a leadership team postpones the work. We do not view this as a profit center; we view it as the front door to a longer relationship for the organizations who decide they want one.
 
 *What you get.* Seven ratifiable documents — the AI Use Charter, the Acceptable Use Policy, the Data Handling Standards, the Disclosure and Attribution Standard, the Care Boundaries document, the Voice Cloning and Impersonation Response Plan, and the draft Constituent Communication — plus a one-page board summary, plus a Sandbox Readiness Assessment that names whether your organization is positioned to move into bounded experimentation next, and what would have to be true if it is not.
 
-*When to work with us.* When your leadership team has been unable to make progress on the artifacts independently and you are now several months past the moment a Charter would have been useful. When an external facilitator would help adjudicate disagreements that internal politics cannot resolve cleanly. When you want the work of drafting to be paced by a structure rather than added to a calendar that is already full. When your board would benefit from naming the work as a deliberate engagement with an outside party who is accountable to a deliverable.
+*When to work with us.* When your leadership team has been unable to make progress on the decisions independently and you are now several months past the moment a Charter would have been useful. When an external facilitator would help adjudicate disagreements that internal politics cannot resolve cleanly. When you want the work of drafting to be paced by a structure rather than added to a calendar that is already full. When your board would benefit from naming the work as a deliberate engagement with an outside party who is accountable to a deliverable.
 
-*When to do this yourselves.* When you have the team capacity, the time, and the alignment to do the drafting work without outside facilitation. The Field Guide gives you the framework. The seven artifacts are not proprietary. If your senior leadership team can devote roughly twenty hours collectively over two weeks, you can produce the documents we would produce. The only thing you cannot replicate without us is the third-party voice in the room when a hard call has to be made; for many organizations, that is not what is missing.
+*When to do this yourselves.* When you have the team capacity, the time, and the alignment to do the drafting work without outside facilitation. The Field Guide gives you the framework. The seven decisions are not proprietary. If your senior leadership team can devote roughly twenty hours collectively over two weeks, you can produce the documents we would produce. The only thing you cannot replicate without us is the third-party voice in the room when a hard call has to be made; for many organizations, that is not what is missing.
 
 The honest answer is that the value of the engagement is not the documents. The documents are public. The value is the process — the structure, the pacing, the third-party adjudication, the discipline of saying out loud the things that have been left unsaid. If you have those internally, you do not need us. If you do not, this is the lowest-cost way we know to assemble them.
 
@@ -230,7 +230,7 @@ The honest answer is that the value of the engagement is not the documents. The 
 
 ## 6. Named Refusals
 
-The strategic and editorial heart of Safety. Of all the documents that come out of the seven artifacts, the Named Refusals statement is the one that changes the conversation. It is the public commitment, signed by senior leadership and ratified by the board, that names specific applications of AI your organization will not pursue regardless of pressure, regardless of demonstration, regardless of efficiency. It is what the act of public refusal does that makes the rest of the artifacts hold.
+The strategic and editorial heart of Safety. Of all the documents that come out of the seven decisions, the Named Refusals statement is the one that changes the conversation. It is the public commitment, signed by senior leadership and ratified by the board, that names specific applications of AI your organization will not pursue regardless of pressure, regardless of demonstration, regardless of efficiency. It is what the act of public refusal does that makes the rest of the decisions hold.
 
 A Named Refusal is not a prediction. It is a covenant. The point is not whether you happen to think a particular use is unwise; the point is that you have decided in advance, in public, with the people who would be affected, that you will not pursue it. The decision is durable in the way private convictions are not. It can be cited. It can be defended. It can be referenced in the moment a vendor pitches the use anyway.
 

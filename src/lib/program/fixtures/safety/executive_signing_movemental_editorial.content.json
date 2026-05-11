@@ -1,0 +1,52 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "executive_signing_movemental_editorial",
+  "screenFamily": "ratification-flow",
+  "documentTitle": "Executive Signing - SafeStart Dashboard",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "Signing the AI Organizational Statement",
+    "supportingCopy": "RATIFICATION · ACTION 01",
+    "eyebrow": null
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Signing the AI Organizational Statement"
+        },
+        {
+          "level": 2,
+          "text": "WHAT YOU'RE SIGNING"
+        },
+        {
+          "level": 3,
+          "text": "AI Organizational Statement of Principles"
+        },
+        {
+          "level": 2,
+          "text": "YOUR SIGNATURE"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

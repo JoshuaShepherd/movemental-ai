@@ -1,0 +1,44 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "safestart_dashboard_revised_statement_view_revised_statement",
+  "screenFamily": "ratification-flow",
+  "documentTitle": "Revised Version - Layer 01",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "Guidebook",
+    "supportingCopy": "Senior Leadership Portal",
+    "eyebrow": "REVISED PER COMMENT"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Guidebook"
+        },
+        {
+          "level": 3,
+          "text": "REVISION HISTORY"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

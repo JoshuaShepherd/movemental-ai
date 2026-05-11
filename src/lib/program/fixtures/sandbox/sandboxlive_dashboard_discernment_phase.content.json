@@ -1,0 +1,56 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "sandboxlive_dashboard_discernment_phase",
+  "screenFamily": "sandboxlive-shell",
+  "documentTitle": "SandboxLive Dashboard - Discernment",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": "LO",
+    "modeBadge": "SANDBOX"
+  },
+  "page": {
+    "headline": "Twelve use cases. Five still need a verdict.",
+    "supportingCopy": "Strategic Governance",
+    "eyebrow": "Executive Summary"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 2,
+          "text": "Movemental"
+        },
+        {
+          "level": 1,
+          "text": "Twelve use cases. Five still need a verdict."
+        },
+        {
+          "level": 3,
+          "text": "Verdict Ledger"
+        },
+        {
+          "level": 3,
+          "text": "Three themes from the cohort's reflection"
+        },
+        {
+          "level": 3,
+          "text": "Your Future Plan is taking shape"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

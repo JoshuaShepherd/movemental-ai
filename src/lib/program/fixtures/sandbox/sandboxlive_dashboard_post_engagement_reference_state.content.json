@@ -1,0 +1,72 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "sandboxlive_dashboard_post_engagement_reference_state",
+  "screenFamily": "sandboxlive-shell",
+  "documentTitle": "Movemental - Reference State",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": "MOVEMENTAL",
+    "tenantName": null,
+    "userInitials": "LO",
+    "modeBadge": "SANDBOX"
+  },
+  "page": {
+    "headline": "Your Sandbox is complete.",
+    "supportingCopy": "Strategic Archive",
+    "eyebrow": "SANDBOX COMPLETE"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 2,
+          "text": "Movemental"
+        },
+        {
+          "level": 1,
+          "text": "Your Sandbox is complete."
+        },
+        {
+          "level": 2,
+          "text": "The complete record, accessible permanently."
+        },
+        {
+          "level": 3,
+          "text": "FUTURE PLAN"
+        },
+        {
+          "level": 3,
+          "text": "VERDICT PORTFOLIO"
+        },
+        {
+          "level": 3,
+          "text": "RECIPE TRIAL ARCHIVE"
+        },
+        {
+          "level": 3,
+          "text": "REFLECTION ARCHIVE"
+        },
+        {
+          "level": 3,
+          "text": "LMS COURSE MATERIALS"
+        },
+        {
+          "level": 3,
+          "text": "The path continues."
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

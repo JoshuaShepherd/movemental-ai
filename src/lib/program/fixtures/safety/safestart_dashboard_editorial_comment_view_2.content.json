@@ -1,0 +1,54 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "safestart_dashboard_editorial_comment_view_2",
+  "screenFamily": "editorial-thread",
+  "documentTitle": "Executive Insights - Leave Comment",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "Guidebook",
+    "supportingCopy": "Senior Leadership Portal",
+    "eyebrow": "NEW COMMENT"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Guidebook"
+        },
+        {
+          "level": 2,
+          "text": "The Future of AI Integration"
+        },
+        {
+          "level": 3,
+          "text": "Leave a comment on this passage"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  },
+  "editorialThread": {
+    "variant": "focused",
+    "draftApiMapping": {
+      "note": "Prefer shared editorial-thread fixture shape across comment_view_1 vs _2 where DOM allows."
+    }
+  }
+}

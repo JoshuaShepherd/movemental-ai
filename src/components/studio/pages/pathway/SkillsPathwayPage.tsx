@@ -408,11 +408,11 @@ export function SkillsPathwayPage() {
                   $5,000<span className="text-xl font-light text-muted-foreground md:text-2xl"> / year platform</span>
                 </div>
                 <div className="mt-4 text-[0.62rem] uppercase tracking-eyebrow text-muted-foreground">
-                  USD · 50% at signing, 50% at cohort start
+                  USD · Eight-week cohort · Annual platform license
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-16">
+            <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
               <div>
                 <h3 className="mb-5 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-pathway-accent">
                   What&apos;s included
@@ -426,6 +426,7 @@ export function SkillsPathwayPage() {
                     "Recipe library, working agent infrastructure, voice-fidelity tooling",
                     "Certification on demonstrated capacity",
                     "Cohort alumni access for peer learning beyond the eight weeks",
+                    "Sandbox stage complete is required before Skills cohort enrollment (path sequence).",
                   ].map((item) => (
                     <li key={item} className="flex gap-3">
                       <span aria-hidden className="shrink-0 text-pathway-accent">
@@ -453,15 +454,6 @@ export function SkillsPathwayPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
-              <div>
-                <h3 className="mb-5 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-foreground">Terms</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  Cohort fee: 50% invoiced at registration, 50% at cohort start. Platform license: invoiced annually at
-                  cohort start, renewable. Payment Net 15. Each organization may send up to two leaders to a cohort. Skills
-                  requires Sandbox to be complete; certification requires participation in at least seven of eight cohort
-                  sessions.
-                </p>
               </div>
             </div>
           </div>
@@ -613,7 +605,7 @@ export function SkillsPathwayPage() {
                 className="max-w-md"
               />
             </div>
-            <div className="order-1 mx-auto w-full max-w-sm lg:order-2 lg:col-span-5 lg:mx-0">
+            <div className="order-1 mx-auto w-full max-w-lg lg:order-2 lg:col-span-5 lg:mx-0">
               <ToolkitCover stageFoot="Stage 01 · Vol. 01" />
               <p className="mt-5 text-center text-[0.62rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">
                 Movemental · Vol. 01 · 16 pages

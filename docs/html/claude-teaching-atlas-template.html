@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Claude Teaching Atlas — Visual reference (template)</title>
+  <meta name="description" content="Self-contained HTML template: how Claude fits together — products, context, skills, enterprise, and nonprofit-safe practice." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #2a3439;
+      --muted: #5c6670;
+      --faint: #8a939c;
+      --bg: #f6f7f8;
+      --bg-elevated: #ffffff;
+      --bg-band: #0f1419;
+      --on-band: #e8eaed;
+      --on-band-muted: #a8b0ba;
+      --primary: #0053db;
+      --primary-dim: #003ead;
+      --hairline: rgba(42, 52, 57, 0.12);
+      --shadow: 0 12px 40px rgba(42, 52, 57, 0.06);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --max: 1120px;
+      --toc-width: 240px;
+      --font: "Inter", system-ui, sans-serif;
+    }
+    html.theme-dark {
+      --ink: #e8eaed;
+      --muted: #b4bcc6;
+      --faint: #8892a0;
+      --bg: #0f1215;
+      --bg-elevated: #171b20;
+      --hairline: rgba(232, 234, 237, 0.12);
+      --shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--primary); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a:hover { color: var(--primary-dim); }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.65rem 1.25rem;
+      background: color-mix(in srgb, var(--bg-elevated) 92%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .topbar__brand {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .topbar__actions { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-end; }
+    .btn {
+      font: inherit;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--hairline);
+      background: var(--bg-elevated);
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .btn:hover { border-color: color-mix(in srgb, var(--primary) 35%, var(--hairline)); }
+    .btn--primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dim));
+      color: #fff;
+      border-color: transparent;
+    }
+    .btn--ghost { background: transparent; }
+
+    .hero {
+      background: var(--bg-band);
+      color: var(--on-band);
+      padding: clamp(2.5rem, 6vw, 4.5rem) 1.5rem 3rem;
+    }
+    .hero__inner { max-width: var(--max); margin: 0 auto; }
+    .hero__eyebrow {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--on-band-muted);
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.85rem, 4.5vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    .hero__lead {
+      max-width: 52ch;
+      margin: 0 0 1.75rem;
+      font-size: 1.0625rem;
+      color: var(--on-band-muted);
+      line-height: 1.65;
+    }
+    .hero__stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      max-width: 640px;
+    }
+    .stat {
+      padding: 1rem 1.1rem;
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .stat__n { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; color: #fff; }
+    .stat__l { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--on-band-muted); margin-top: 0.25rem; }
+
+    .shell {
+      max-width: calc(var(--max) + var(--toc-width) + 3rem);
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media (min-width: 960px) {
+      .shell {
+        grid-template-columns: var(--toc-width) 1fr;
+        align-items: start;
+      }
+    }
+
+    .toc { position: sticky; top: 3.5rem; }
+    .toc__title {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin: 0 0 0.75rem;
+    }
+    .toc nav { display: flex; flex-direction: column; gap: 0.15rem; }
+    .toc a {
+      display: block;
+      padding: 0.35rem 0.5rem;
+      margin-left: -0.5rem;
+      border-radius: 6px;
+      font-size: 0.8125rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-left: 2px solid transparent;
+    }
+    .toc a:hover { color: var(--ink); background: color-mix(in srgb, var(--primary) 6%, transparent); }
+    .toc a.is-active {
+      color: var(--primary);
+      font-weight: 600;
+      border-left-color: var(--primary);
+      background: color-mix(in srgb, var(--primary) 8%, transparent);
+    }
+    .toc__mobile { display: none; }
+    @media (max-width: 959px) {
+      .toc--desktop { display: none; }
+      .toc__mobile { display: block; margin-bottom: 0.5rem; }
+      .toc__mobile select {
+        width: 100%;
+        font: inherit;
+        padding: 0.65rem 0.75rem;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--hairline);
+        background: var(--bg-elevated);
+        color: var(--ink);
+      }
+    }
+
+    main section {
+      scroll-margin-top: 5rem;
+      margin-bottom: 3.25rem;
+    }
+    .section-head {
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .section-head h2 {
+      margin: 0 0 0.35rem;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .section-head p { margin: 0; color: var(--muted); font-size: 0.9375rem; max-width: 65ch; }
+
+    .card {
+      background: var(--bg-elevated);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.35rem;
+      border: 1px solid var(--hairline);
+      box-shadow: var(--shadow);
+    }
+    .grid2 { display: grid; gap: 1rem; }
+    @media (min-width: 640px) {
+      .grid2 { grid-template-columns: 1fr 1fr; }
+    }
+    .grid3 { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+    .stack-flow { display: flex; flex-direction: column; gap: 0; max-width: 520px; counter-reset: step 0; }
+    .stack-step {
+      position: relative;
+      padding: 1rem 1rem 1rem 3rem;
+      background: var(--bg-elevated);
+      border: 1px solid var(--hairline);
+    }
+    .stack-step:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+    .stack-step:last-child { border-radius: 0 0 var(--radius) var(--radius); border-top: none; }
+    .stack-step:not(:first-child) { border-top: none; }
+    .stack-step::before {
+      content: counter(step);
+      counter-increment: step;
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--primary) 15%, transparent);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .stack-step strong { display: block; font-size: 0.875rem; margin-bottom: 0.2rem; }
+    .stack-step span { font-size: 0.8125rem; color: var(--muted); }
+
+    table.compare {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+      background: var(--bg-elevated);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--hairline);
+    }
+    .compare th, .compare td {
+      padding: 0.65rem 0.85rem;
+      text-align: left;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .compare th { background: color-mix(in srgb, var(--bg) 50%, var(--bg-elevated)); font-weight: 600; }
+    .compare tr:last-child td { border-bottom: none; }
+    .pill {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.45rem;
+      border-radius: 4px;
+      background: color-mix(in srgb, var(--primary) 12%, transparent);
+      color: var(--primary);
+    }
+
+    .meter-wrap { margin-top: 1rem; }
+    .meter {
+      height: 10px;
+      border-radius: 99px;
+      background: var(--hairline);
+      overflow: hidden;
+      display: flex;
+    }
+    .meter span { height: 100%; transition: width 0.25s ease; }
+    .meter span:nth-child(1) { background: var(--primary); }
+    .meter span:nth-child(2) { background: color-mix(in srgb, var(--primary) 45%, var(--muted)); }
+    .meter span:nth-child(3) { background: var(--muted); }
+    .meter-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    input[type="range"] {
+      width: 100%;
+      margin-top: 1rem;
+      accent-color: var(--primary);
+    }
+
+    details.accordion {
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-sm);
+      background: var(--bg-elevated);
+      margin-bottom: 0.5rem;
+    }
+    details.accordion summary {
+      cursor: pointer;
+      padding: 0.85rem 1rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    details.accordion summary::-webkit-details-marker { display: none; }
+    details.accordion summary::after {
+      content: "+";
+      font-weight: 400;
+      color: var(--faint);
+      font-size: 1.1rem;
+    }
+    details.accordion[open] summary::after { content: "\2212"; }
+    details.accordion .acc-body {
+      padding: 0 1rem 1rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      border-top: 1px solid var(--hairline);
+    }
+
+    .checklist label {
+      display: flex;
+      gap: 0.65rem;
+      align-items: flex-start;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--hairline);
+      cursor: pointer;
+      font-size: 0.875rem;
+    }
+    .checklist label:last-child { border-bottom: none; }
+    .checklist input { margin-top: 0.2rem; accent-color: var(--primary); }
+
+    .callout {
+      border-left: 3px solid var(--primary);
+      padding: 0.85rem 1rem;
+      margin: 1rem 0 0;
+      background: color-mix(in srgb, var(--primary) 6%, var(--bg-elevated));
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .footer-note {
+      font-size: 0.75rem;
+      color: var(--faint);
+      max-width: var(--max);
+      margin: 2rem auto 0;
+      padding: 0 1.25rem 2rem;
+      text-align: center;
+    }
+
+    /* Main tabs: Atlas | Skills lab */
+    .tabstrip-wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .tabstrip {
+      display: flex;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+    }
+    .tabstrip__btn {
+      font: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.85rem 1.1rem;
+      margin-bottom: -1px;
+      border: none;
+      border-bottom: 2px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    }
+    .tabstrip__btn:hover { color: var(--ink); background: color-mix(in srgb, var(--primary) 5%, transparent); }
+    .tabstrip__btn[aria-selected="true"] {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+      background: var(--bg-elevated);
+    }
+    .tab-panel[hidden] { display: none !important; }
+
+    /* Skills lab: wider reading column */
+    .shell--skills {
+      max-width: calc(var(--max) + var(--toc-width) + 4rem);
+    }
+    .prose-tight p { margin: 0 0 0.85rem; font-size: 0.9rem; color: var(--muted); max-width: 72ch; }
+    .prose-tight p:last-child { margin-bottom: 0; }
+    .prose-tight strong { color: var(--ink); }
+
+    .layer-cake {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--hairline);
+      font-size: 0.8125rem;
+    }
+    .layer-cake__row {
+      padding: 0.75rem 1rem 0.75rem 1rem;
+      border-bottom: 1px solid var(--hairline);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem;
+      align-items: start;
+    }
+    .layer-cake__row:last-child { border-bottom: none; }
+    .layer-cake__row small { display: block; font-size: 0.72rem; color: var(--faint); margin-top: 0.2rem; }
+    .layer-cake__tag {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.45rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      align-self: start;
+    }
+    .lc-immutable { background: color-mix(in srgb, var(--muted) 18%, transparent); color: var(--ink); }
+    .lc-org { background: color-mix(in srgb, var(--primary) 14%, transparent); color: var(--primary-dim); }
+    .lc-skill { background: color-mix(in srgb, #0a7 12%, transparent); color: #047857; }
+    html.theme-dark .lc-skill { color: #6ee7b7; }
+    .lc-user { background: color-mix(in srgb, #c2410c 12%, transparent); color: #c2410c; }
+    html.theme-dark .lc-user { color: #fdba74; }
+
+    .opt-cards {
+      display: grid;
+      gap: 0.75rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .opt-card {
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--hairline);
+      background: var(--bg-elevated);
+      font-size: 0.8125rem;
+      color: var(--muted);
+    }
+    .opt-card h4 { margin: 0 0 0.4rem; font-size: 0.8rem; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+    .opt-card ul { margin: 0; padding-left: 1rem; line-height: 1.55; }
+
+    .preblock {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.72rem;
+      line-height: 1.45;
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      background: color-mix(in srgb, var(--ink) 6%, var(--bg-elevated));
+      border: 1px solid var(--hairline);
+      overflow-x: auto;
+      color: var(--ink);
+    }
+    html.theme-dark .preblock {
+      background: #0d1014;
+      color: #e2e8f0;
+    }
+
+    .matrix-note { font-size: 0.75rem; color: var(--faint); margin-top: 0.5rem; }
+
+    .tag-muted {
+      font-size: 0.62rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--faint);
+    }
+
+    code { font-size: 0.84em; background: color-mix(in srgb, var(--muted) 12%, transparent); padding: 0.1em 0.35em; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <span class="topbar__brand">Template · docs/html</span>
+    <div class="topbar__actions">
+      <button type="button" class="btn" id="btn-theme" aria-label="Toggle dark theme">Theme</button>
+      <button type="button" class="btn btn--primary" id="btn-open-skills" title="Switch to Skills lab">Skills lab</button>
+      <a class="btn btn--ghost" href="#glossary">Glossary</a>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow">Teaching visualization · verify vendor details at source</p>
+      <h1>Claude teaching atlas</h1>
+      <p class="hero__lead">
+        One page to see how the pieces connect: accounts and products, what flows into the model,
+        skills and artifacts, and the extra layer mission-driven orgs need — boundaries and formation — so tooling does not outrun judgment.
+      </p>
+      <div class="hero__stats" aria-label="Page map">
+        <div class="stat"><div class="stat__n">9</div><div class="stat__l">Topic bands</div></div>
+        <div class="stat"><div class="stat__n">1</div><div class="stat__l">Context meter</div></div>
+        <div class="stat"><div class="stat__n">∞</div><div class="stat__l">Revise in place</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabstrip-wrap">
+    <div class="tabstrip" role="tablist" aria-label="Primary views">
+      <button type="button" class="tabstrip__btn is-active" role="tab" id="tab-atlas" aria-selected="true" aria-controls="panel-atlas" tabindex="0">Atlas</button>
+      <button type="button" class="tabstrip__btn" role="tab" id="tab-skills" aria-selected="false" aria-controls="panel-skills" tabindex="-1">Skills lab</button>
+    </div>
+  </div>
+
+  <div id="panel-atlas" class="tab-panel" role="tabpanel" aria-labelledby="tab-atlas">
+  <div class="shell">
+    <aside class="toc">
+      <div class="toc__mobile">
+        <label class="toc__title" for="toc-jump">Jump to</label>
+        <select id="toc-jump" aria-label="Section navigation"></select>
+      </div>
+      <p class="toc__title toc--desktop">On this page</p>
+      <nav class="toc--desktop" id="toc-nav" aria-label="Table of contents"></nav>
+    </aside>
+
+    <main>
+      <section id="atlas">
+        <div class="section-head">
+          <h2>How to read this atlas</h2>
+          <p>Top to bottom is the conceptual stack; on wide screens the left column is your map. Product names and limits change — use this as a teaching scaffold, not procurement law.</p>
+        </div>
+        <div class="card">
+          <p style="margin:0 0 0.75rem;font-size:0.9375rem;color:var(--muted);">
+            <strong style="color:var(--ink);">Claude</strong> is a family of large language models from <strong>Anthropic</strong>, usually experienced through chat, API, or developer tools. In staff conversations, "Claude" often means the <em>whole assistant experience</em> (interface, defaults, and your inputs), not only the model weights.
+          </p>
+          <div class="callout">
+            For churches and nonprofits: the first risk is usually not "which model" but <strong>what entered the context</strong>, <strong>who approved it</strong>, and <strong>what habit that trains</strong> in people who turn over every season.
+          </div>
+        </div>
+      </section>
+
+      <section id="stack">
+        <div class="section-head">
+          <h2>From intent to answer</h2>
+          <p>A simplified stack — many layers shape what you see before token math runs.</p>
+        </div>
+        <div class="grid2">
+          <div class="stack-flow" aria-label="Conceptual layer stack">
+            <div class="stack-step"><strong>Human intent</strong><span>Goal, audience, tone, constraints, what "good" looks like.</span></div>
+            <div class="stack-step"><strong>System and product defaults</strong><span>Safety policies, tool rules, UI behavior (varies by tier).</span></div>
+            <div class="stack-step"><strong>Optional: skills and project memory</strong><span>Reusable instructions or scoped context the product attaches.</span></div>
+            <div class="stack-step"><strong>Your messages</strong><span>Prompts, pasted text, files — explicit payload this turn.</span></div>
+            <div class="stack-step"><strong>Model</strong><span>Probabilistic completion: fluent, not infallible; verify on high-stakes work.</span></div>
+          </div>
+          <div class="card">
+            <p class="pill" style="margin-bottom:0.75rem;">When output is wrong</p>
+            <p style="margin:0;font-size:0.9rem;color:var(--muted);">
+              Walk <em>up</em> the stack, not only the last prompt: unclear goal? Oversharing PII? A skill encoding bad assumptions? No accountable reviewer before send?
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="products">
+        <div class="section-head">
+          <h2>Products (mental model)</h2>
+          <p>Tiers rename over time; this captures the <em>kind</em> of difference leaders should care about.</p>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="compare">
+            <thead>
+              <tr>
+                <th>Surface</th>
+                <th>Who it is for</th>
+                <th>Org lens</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="pill">Individual</span> Consumer / Pro</td>
+                <td>Solo knowledge work, experiments</td>
+                <td>No shared admin; discipline is personal</td>
+              </tr>
+              <tr>
+                <td><span class="pill">Team</span> Shared workspace</td>
+                <td>Small groups piloting shared workflows</td>
+                <td>Shared defaults; still needs written governance</td>
+              </tr>
+              <tr>
+                <td><span class="pill">Enterprise</span> SSO and admin</td>
+                <td>IT-managed rollout, joiners and leavers</td>
+                <td>Identity lifecycle, data boundaries, approved-tool lists</td>
+              </tr>
+              <tr>
+                <td><span class="pill">API</span> Build your own</td>
+                <td>Product teams, agencies, integrators</td>
+                <td>You own logging, PII flow, retention, change management</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.8125rem;color:var(--faint);margin-top:0.75rem;">Verify plans, privacy, and retention on anthropic.com before contracts.</p>
+      </section>
+
+      <section id="skills-artifacts">
+        <div class="section-head">
+          <h2>Skills, projects, artifacts</h2>
+          <p>Three labels people conflate — keep the distinctions visible.</p>
+        </div>
+        <div class="grid3">
+          <div class="card">
+            <p class="pill">Skill</p>
+            <p style="margin:0.5rem 0 0;font-size:0.875rem;color:var(--muted);">
+              Packaged instructions the assistant can load for a <strong>class of tasks</strong> (for example board memo in house voice). Repeatable method, not one-off chat.
+            </p>
+            <p style="margin:0.75rem 0 0;">
+              <button type="button" class="btn btn--primary" id="card-open-skills" style="font-size:0.8125rem;">Open the Skills lab tab →</button>
+            </p>
+          </div>
+          <div class="card">
+            <p class="pill">Project</p>
+            <p style="margin:0.5rem 0 0;font-size:0.875rem;color:var(--muted);">
+              A <strong>scoped workspace</strong> for a stream of work — briefs, files, continuity — still needs curation of what belongs inside.
+            </p>
+          </div>
+          <div class="card">
+            <p class="pill">Artifact</p>
+            <p style="margin:0.5rem 0 0;font-size:0.875rem;color:var(--muted);">
+              A <strong>side document or editable output</strong> kept alongside chat — good for drafts leaders review before they become official.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="context">
+        <div class="section-head">
+          <h2>Context is a budget</h2>
+          <p>Move the slider: watch how room for your actual task shrinks as reference material grows.</p>
+        </div>
+        <div class="card">
+          <span class="pill">Interactive</span>
+          <p style="margin:0.75rem 0 0;font-size:0.875rem;color:var(--muted);">
+            Stylized bar for teaching — not literal token accounting.
+          </p>
+          <div class="meter-wrap">
+            <div class="meter" id="ctx-meter" role="img" aria-label="Context allocation">
+              <span id="m-sys" style="width:22%"></span>
+              <span id="m-ref" style="width:18%"></span>
+              <span id="m-you" style="width:60%"></span>
+            </div>
+            <div class="meter-labels">
+              <span>System / product</span>
+              <span>Reference and files</span>
+              <span>Your turn and headroom</span>
+            </div>
+          </div>
+          <label for="ctx-slider" style="display:block;margin-top:1rem;font-size:0.8125rem;font-weight:600;color:var(--ink);">Load more reference material</label>
+          <input type="range" id="ctx-slider" min="0" max="100" value="35" />
+          <p id="ctx-caption" style="font-size:0.8125rem;color:var(--muted);margin-top:0.5rem;"></p>
+        </div>
+      </section>
+
+      <section id="nonprofit">
+        <div class="section-head">
+          <h2>Nonprofit and church lens</h2>
+          <p>Enterprise seats do not create shared judgment. Pair access with explicit boundaries and formation.</p>
+        </div>
+        <div class="grid2">
+          <div class="card">
+            <p class="pill">Before rollout</p>
+            <ul style="margin:0.5rem 0 0;padding-left:1.1rem;font-size:0.875rem;color:var(--muted);line-height:1.7;">
+              <li>One-page "never paste raw" categories (donor IDs, pastoral notes, HR, legal).</li>
+              <li>Named approvers for external or compliance-bound outputs.</li>
+              <li>Volunteer and seasonal offboarding tied to SSO groups.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <p class="pill">After rollout</p>
+            <ul style="margin:0.5rem 0 0;padding-left:1.1rem;font-size:0.875rem;color:var(--muted);line-height:1.7;">
+              <li>Promote wins to <strong>skills</strong> only after review — avoid baking bad habits.</li>
+              <li>Log near-misses as training for <em>people</em>, not as model truth.</li>
+              <li>Re-read acceptable-use and vendor terms when features ship.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="practice">
+        <div class="section-head">
+          <h2>Readiness checklist</h2>
+          <p>Local-only ticks for leadership conversation — nothing is transmitted.</p>
+        </div>
+        <div class="card checklist" id="readiness">
+          <label><input type="checkbox" /> We can name what is confidential for <em>our</em> mission.</label>
+          <label><input type="checkbox" /> We know who approves AI-assisted content before it ships.</label>
+          <label><input type="checkbox" /> We separate pilot experiments from production workflows.</label>
+          <label><input type="checkbox" /> We have a plan for volunteers and contractors leaving mid-project.</label>
+          <label><input type="checkbox" /> We review outputs that cite facts, numbers, or policies.</label>
+        </div>
+      </section>
+
+      <section id="glossary">
+        <div class="section-head">
+          <h2>Glossary</h2>
+          <p>Short definitions for sticky conversations.</p>
+        </div>
+        <details class="accordion" open>
+          <summary>Prompt</summary>
+          <div class="acc-body">Instructions and content for a turn — structured intent, constraints, and examples beat magic spell phrases.</div>
+        </details>
+        <details class="accordion">
+          <summary>Hallucination (practical)</summary>
+          <div class="acc-body">Confident text without grounding. Mitigate with trusted sources, retrieval over approved corpora, and human review on high-stakes outputs.</div>
+        </details>
+        <details class="accordion">
+          <summary>Grounding</summary>
+          <div class="acc-body">Anchoring answers in material your org controls or trusts.</div>
+        </details>
+        <details class="accordion">
+          <summary>SSO</summary>
+          <div class="acc-body">Sign-in through your identity provider — central to enterprise offboarding hygiene.</div>
+        </details>
+        <details class="accordion">
+          <summary>Claude Code</summary>
+          <div class="acc-body">Developer-oriented workflow from Anthropic — distinct from org-wide document and comms use, same context discipline applies.</div>
+        </details>
+      </section>
+
+      <section id="repo-links">
+        <div class="section-head">
+          <h2>Related files in this repo</h2>
+          <p>Paths relative to repository root.</p>
+        </div>
+        <div class="card" style="font-size:0.875rem;color:var(--muted);">
+          <ul style="margin:0;padding-left:1.1rem;line-height:1.85;">
+            <li><code>docs/articles/sandbox/claude-enterprise-skills-nonprofit-backbone.md</code></li>
+            <li><code>docs/markdown/SSOT/movemental-full-path/part-07-solutions-deployment.md</code></li>
+            <li><code>docs/articles/nonprofits-pii-private-agentic-rag.md</code></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+  </div>
+
+
+  <div id="panel-skills" class="tab-panel" hidden role="tabpanel" aria-labelledby="tab-skills">
+  <div class="shell shell--skills">
+    <aside class="toc toc--skills">
+      <div class="toc__mobile">
+        <label class="toc__title" for="toc-skills-jump">Jump to</label>
+        <select id="toc-skills-jump" aria-label="Skills lab sections"></select>
+      </div>
+      <p class="toc__title toc--desktop">Skills lab</p>
+      <nav class="toc--desktop" id="toc-skills-nav" aria-label="Skills deep dive"></nav>
+    </aside>
+    <main class="skills-main">
+
+      <section id="sk-intro">
+        <div class="section-head">
+          <h2>Why skills exist</h2>
+          <p>Skills are how you turn occasional clever prompting into <strong>repeatable organizational method</strong> — with enough structure to govern, version, and retire.</p>
+        </div>
+        <div class="card prose-tight">
+          <p><strong>Without skills,</strong> every staff member re-invents tone, steps, and guardrails in the chat box. Quality varies by fatigue. Donor-facing drafts drift. Nobody can audit what “the org’s way” actually is.</p>
+          <p><strong>With well-designed skills,</strong> you encode the boring parts once: voice, checklist, refusal rules, output shape, and where to look for truth. The model still needs supervision — but the <em>baseline</em> becomes shareable.</p>
+          <div class="callout" style="margin-top:1rem;">
+            Teaching distinction: a <strong>skill</strong> is not “a long prompt you saved.” It is a <strong>scoped capability contract</strong>: when it applies, what it must never do, what it must ask a human, and what shape the deliverable takes.
+          </div>
+        </div>
+      </section>
+
+      <section id="sk-spectrum">
+        <div class="section-head">
+          <h2>Spectrum of “skill-ness”</h2>
+          <p>Same word, very different maturity. Know where you are before you invest in packaging.</p>
+        </div>
+        <div class="layer-cake" style="margin-bottom:1rem;">
+          <div class="layer-cake__row" style="background:var(--bg-elevated);">
+            <div><strong>Level A — Snippet library</strong><small>Copy/paste blocks in Notion or email templates. No machine-readable contract.</small></div>
+            <span class="layer-cake__tag lc-user">Ad hoc</span>
+          </div>
+          <div class="layer-cake__row" style="background:var(--bg-elevated);">
+            <div><strong>Level B — Saved prompt / “cookbook step”</strong><small>One-shot instructions the human pastes when they remember. Easy; drifts fast.</small></div>
+            <span class="layer-cake__tag lc-user">Personal</span>
+          </div>
+          <div class="layer-cake__row" style="background:var(--bg-elevated);">
+            <div><strong>Level C — Project-scoped instructions</strong><small>Rules that ride along with a workspace or thread: good for one initiative, still needs dedup across projects.</small></div>
+            <span class="layer-cake__tag lc-org">Scoped</span>
+          </div>
+          <div class="layer-cake__row" style="background:var(--bg-elevated);">
+            <div><strong>Level D — Registered skill pack</strong><small>Named capability with discovery metadata, versioning, owners, and (ideally) test prompts + eval notes.</small></div>
+            <span class="layer-cake__tag lc-skill">Org-grade</span>
+          </div>
+          <div class="layer-cake__row" style="background:var(--bg-elevated);">
+            <div><strong>Level E — Agentic / code-coupled skill</strong><small>Instructions plus tools: filesystem, MCP, HTTP, DB — with logging, secrets handling, and CI. This is “platform,” not “prompting.”</small></div>
+            <span class="layer-cake__tag lc-immutable">Engineering</span>
+          </div>
+        </div>
+        <p class="matrix-note">Movemental’s nonprofit/church deployments usually need to graduate teams from B → D before they touch E.</p>
+      </section>
+
+      <section id="sk-seven-layers">
+        <div class="section-head">
+          <h2>Seven layers (what stacks on what)</h2>
+          <p>When two instructions disagree, the winner is usually the <strong>higher, stricter, or more recently ratified</strong> layer — but products differ; this is a teaching map, not a court ruling.</p>
+        </div>
+        <div class="grid2">
+          <div class="layer-cake">
+            <div class="layer-cake__row" style="background:color-mix(in srgb,var(--muted) 8%,var(--bg-elevated));">
+              <div>
+                <strong>Layer 1 — Model &amp; platform safety</strong>
+                <small>Classifier policies, abuse blocks, capability refusals. You do not override this with a skill.</small>
+              </div>
+              <span class="layer-cake__tag lc-immutable">Immutable</span>
+            </div>
+            <div class="layer-cake__row">
+              <div>
+                <strong>Layer 2 — Tenant / org policy connectors</strong>
+                <small>SSO claims, DLP, allowed URLs, MCP allowlists, audit sinks. Shapes what tools and retrieval are even legal.</small>
+              </div>
+              <span class="layer-cake__tag lc-org">Governance</span>
+            </div>
+            <div class="layer-cake__row">
+              <div>
+                <strong>Layer 3 — Workspace defaults</strong>
+                <small>Org-wide “how we write,” citation rules, brand tokens, languages, footnote style — the air everyone breathes.</small>
+              </div>
+              <span class="layer-cake__tag lc-org">Baseline</span>
+            </div>
+            <div class="layer-cake__row">
+              <div>
+                <strong>Layer 4 — Skill registry (metadata)</strong>
+                <small>Titles, descriptions, tags, owners, version pins. Discovery happens here; bodies load only when relevant.</small>
+              </div>
+              <span class="layer-cake__tag lc-skill">Registry</span>
+            </div>
+            <div class="layer-cake__row">
+              <div>
+                <strong>Layer 5 — Activated skill body</strong>
+                <small>The instructions actually injected / retrieved for this run: procedures, examples, edge cases.</small>
+              </div>
+              <span class="layer-cake__tag lc-skill">Active</span>
+            </div>
+            <div class="layer-cake__row">
+              <div>
+                <strong>Layer 6 — Project memory &amp; files</strong>
+                <small>Uploaded PDFs, style guides, prior drafts in this initiative. Highest risk of PII creep — curate ruthlessly.</small>
+              </div>
+              <span class="layer-cake__tag lc-org">Context</span>
+            </div>
+            <div class="layer-cake__row">
+              <div>
+                <strong>Layer 7 — This-turn user message</strong>
+                <small>Immediate ask, corrections, “try again with…” — can contradict lower layers if the product allows; that is a feature and a foot-gun.</small>
+              </div>
+              <span class="layer-cake__tag lc-user">Ephemeral</span>
+            </div>
+          </div>
+          <div class="card prose-tight">
+            <p><strong>Design rule:</strong> Put immovable law in Layer 2–3 (policy + workspace). Put <em>method</em> in Layer 4–5 (skill). Put <em>facts for this case</em> in Layer 6–7 (files + prompt).</p>
+            <p><strong>Anti-pattern:</strong> Pasting your entire employee handbook into a skill (Layer 5) instead of summarizing handling rules into Layer 3 and linking canonical HR in a controlled repository (Layer 6).</p>
+            <p><strong>Nonprofit note:</strong> pastoral care examples, donor stories, and youth identifiers should <em>never</em> live as “few-shot examples” inside a shared skill. Use synthetic or public-domain examples.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="sk-invocation">
+        <div class="section-head">
+          <h2>Invocation modes (options matrix)</h2>
+          <p>How a skill <em>enters</em> a run changes cost, surprise, and auditability. Pick deliberately per workflow.</p>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="compare">
+            <thead>
+              <tr>
+                <th>Mode</th>
+                <th>When it loads</th>
+                <th>Strengths</th>
+                <th>Risks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="pill">Pinned / always</span></td>
+                <td>Every message until unpinned</td>
+                <td>Consistent voice; hard to “forget” the rules</td>
+                <td>Context bloat; conflicting pins; stale policy</td>
+              </tr>
+              <tr>
+                <td><span class="pill">User-invoked</span></td>
+                <td>Human selects from menu / slash / prompt</td>
+                <td>Transparent; easy consent; good for rare workflows</td>
+                <td>People skip it under pressure; uneven adoption</td>
+              </tr>
+              <tr>
+                <td><span class="pill">Model-routed</span></td>
+                <td>Product may attach skill when description matches intent</td>
+                <td>Low friction; feels magical for experts</td>
+                <td>Wrong skill surprise; needs crisp descriptions + evals</td>
+              </tr>
+              <tr>
+                <td><span class="pill">API tool</span></td>
+                <td>Developer supplies tool definitions + handler code</td>
+                <td>Strongest guarantees; logging; typed I/O</td>
+                <td>Engineering burden; security review surface</td>
+              </tr>
+              <tr>
+                <td><span class="pill">Hybrid</span></td>
+                <td>Thin always-on “router skill” + fat specialist on demand</td>
+                <td>Balances context vs coverage</td>
+                <td>Router errors cascade; needs monitoring</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="matrix-note">Enterprise reality: combine <strong>user-invoked</strong> for high-stakes (finance, HR) with <strong>pinned thin baselines</strong> for voice and citation — never pin ten “fat” skills at once.</p>
+      </section>
+
+      <section id="sk-routing-meta">
+        <div class="section-head">
+          <h2>Routing, metadata, and progressive disclosure</h2>
+          <p>Most “wrong skill attached” bugs are bad <strong>routing text</strong>, not bad steps. Treat the short description as an API contract.</p>
+        </div>
+        <div class="grid2">
+          <div class="card prose-tight">
+            <p><strong>Name (human):</strong> 2–5 words staff recognize in a menu — “Board memo coach,” not “BMv3 helper.”</p>
+            <p><strong>Description (machine + human):</strong> One tight paragraph: <em>triggers</em> (inputs that must be true), <em>deliverable</em>, <em>non-goals</em> (“not legal advice”), and <em>escalate when</em>.</p>
+            <p><strong>Tags / domain prefix:</strong> e.g. <code>comms.donor-letter</code> — makes search, ACL, and analytics honest.</p>
+          </div>
+          <div class="card prose-tight">
+            <p><strong>Progressive disclosure tiers:</strong> (T0) registry line only. (T1) 400-token “always” preamble. (T2) full procedure loaded when invoked or routed. (T3) <code>references/</code> pulled only for named edge cases.</p>
+            <p><strong>Evaluation hooks:</strong> keep 3–5 golden prompts per skill; rerun when the base model changes; log regression deltas in CHANGELOG.</p>
+            <div class="callout" style="margin-top:0.75rem;">If the description could match half the org’s chat traffic, the router will — and you will get “skill spam.” Narrow wins.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sk-pack-anatomy">
+        <div class="section-head">
+          <h2>Anatomy of a serious skill pack</h2>
+          <p>Think like a tiny internal product: README for humans, contract for the model, tests for regressions.</p>
+        </div>
+        <div class="grid2">
+          <div>
+            <p class="tag-muted" style="margin:0 0 0.5rem;">Filesystem shape (Claude Code–style repos often look like this)</p>
+            <div class="preblock">.claude/skills/
+  grant-letter-coach/
+    SKILL.md          ← name, when-to-use, steps, guardrails
+    references/
+      tone-samples.md ← optional deep docs (load on demand)
+    scripts/          ← optional helpers (review carefully)
+    CHANGELOG.md</div>
+          </div>
+          <div class="card prose-tight">
+            <p><strong>SKILL.md front matter</strong> (conceptual): machine-readable <em>description</em> so routing does not misfire; human-readable <em>name</em>; optional triggers / audience tags.</p>
+            <p><strong>Body sections</strong> we recommend: <em>Identity</em> (who the assistant is in this skill), <em> Preconditions</em> (inputs you must gather first), <em> Procedure</em> (ordered steps), <em> Output schema</em> (headings, tables, JSON), <em> Refusal &amp; escalate</em> (when to stop), <em> Quality bar</em> (what “done” means).</p>
+            <p><strong>Progressive disclosure:</strong> keep the always-loaded surface small; push long law and edge cases into <code>references/</code> and teach the skill to pull only what applies.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="sk-surfaces">
+        <div class="section-head">
+          <h2>Two surfaces: chat product vs developer tooling</h2>
+          <p>Same word “skill,” different packaging and blast radius.</p>
+        </div>
+        <div class="opt-cards">
+          <div class="opt-card">
+            <h4>Claude (team / enterprise chat)</h4>
+            <ul>
+              <li>Audience: program staff, comms, leadership pilots</li>
+              <li>Skills as <strong>governed prompts + optional files</strong> in a workspace</li>
+              <li>Win: low code; fast iteration; easy demos</li>
+              <li>Watch: PII in uploads; pin proliferation; who can publish</li>
+            </ul>
+          </div>
+          <div class="opt-card">
+            <h4>Claude Code / agent repos</h4>
+            <ul>
+              <li>Audience: engineers, technical PMs, integrators</li>
+              <li>Skills as <strong>markdown + tools + symlinks</strong> to shared libraries</li>
+              <li>Win: composability; CI; typed boundaries</li>
+              <li>Watch: secrets in env; unreviewed scripts; supply chain</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:1rem;">
+          Teaching line for exec briefings: <strong>Chat skills shape how people work.</strong> <strong>Code skills shape how software is built.</strong> Nonprofits usually need both — but different approvers and different SLAs.
+        </div>
+      </section>
+
+      <section id="sk-precedence">
+        <div class="section-head">
+          <h2>Precedence, conflicts, namespaces</h2>
+          <p>When two skills both “fit,” ambiguity becomes a random number generator.</p>
+        </div>
+        <div class="card prose-tight">
+          <p><strong>Namespace discipline:</strong> prefix skills by domain — <code>fin.</code>, <code>hr.</code>, <code>comms.</code> — so humans and routers parse intent faster.</p>
+          <p><strong>Precedence habits:</strong> (1) Global workspace rules beat generic skills. (2) Narrow skills beat broad “god skills.” (3) Newer <em>published</em> version beats draft — never let two semver ranges float silently.</p>
+          <p><strong>Conflict resolution meeting:</strong> once per quarter, print the top 10 skills by usage; search for overlapping descriptions; merge or split.</p>
+        </div>
+      </section>
+
+      <section id="sk-lifecycle">
+        <div class="section-head">
+          <h2>Lifecycle: cradle to archive</h2>
+          <p>Skills rot faster than blog posts. Treat them like internal software.</p>
+        </div>
+        <div class="stack-flow" style="max-width:100%;">
+          <div class="stack-step"><strong>0 — Spark</strong><span>Someone ships a great one-off prompt in a crisis. Capture it raw (no PII).</span></div>
+          <div class="stack-step"><strong>1 — Draft skill</strong><span>Peer review with checklist (below). Pilot with 2–3 trusted users.</span></div>
+          <div class="stack-step"><strong>2 — Publish v1</strong><span>Semver tag, owner, support channel, deprecation date if experimental.</span></div>
+          <div class="stack-step"><strong>3 — Instrument</strong><span>Light telemetry: optional thumbs + “what failed?” taxonomy — not surveillance.</span></div>
+          <div class="stack-step"><strong>4 — Revise / split</strong><span>If failure clusters around one step, fork a specialized child skill instead of bloating parent.</span></div>
+          <div class="stack-step"><strong>5 — Archive</strong><span>Retire with redirect note to replacement; never silent-delete.</span></div>
+        </div>
+      </section>
+
+      <section id="sk-governance">
+        <div class="section-head">
+          <h2>Governance &amp; data classes per skill</h2>
+          <p>Attach a data label to every skill the way you label databases.</p>
+        </div>
+        <div class="grid2">
+          <div class="card">
+            <p class="pill">Public-safe</p>
+            <p style="margin:0.5rem 0 0;font-size:0.875rem;color:var(--muted);">May be demonstrated in all-staff training. Examples use synthetic donors.</p>
+          </div>
+          <div class="card">
+            <p class="pill">Internal-only</p>
+            <p style="margin:0.5rem 0 0;font-size:0.875rem;color:var(--muted);">May reference real policy titles but not case files. No volunteer access by default.</p>
+          </div>
+          <div class="card">
+            <p class="pill">Restricted</p>
+            <p style="margin:0.5rem 0 0;font-size:0.875rem;color:var(--muted);">Finance, HR, legal: dual control on edits; quarterly access review.</p>
+          </div>
+          <div class="card">
+            <p class="pill">Ephemeral assist</p>
+            <p style="margin:0.5rem 0 0;font-size:0.875rem;color:var(--muted);">Never stores examples from live runs; instruct user to paste redacted snippets only.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="sk-composition">
+        <div class="section-head">
+          <h2>Composition patterns</h2>
+          <p>How skills meet retrieval, humans, and other skills without spaghetti.</p>
+        </div>
+        <div class="opt-cards">
+          <div class="opt-card">
+            <h4>Skill + approved corpus</h4>
+            <ul>
+              <li>Skill states <em>how</em> to reason; RAG supplies <em>facts</em>.</li>
+              <li>Never let the skill “invent” policy — quote corpus or escalate.</li>
+            </ul>
+          </div>
+          <div class="opt-card">
+            <h4>Thin router → fat specialist</h4>
+            <ul>
+              <li>Router classifies intent; loads one specialist skill body.</li>
+              <li>Prevents loading five 30-page skills “just in case.”</li>
+            </ul>
+          </div>
+          <div class="opt-card">
+            <h4>Human-in-the-loop gates</h4>
+            <ul>
+              <li>Skill ends at draft + checklist; human clicks “approved to send.”</li>
+              <li>Best pattern for donor-facing comms in regulated orgs.</li>
+            </ul>
+          </div>
+          <div class="opt-card">
+            <h4>Handoff to specialist staff</h4>
+            <ul>
+              <li>Skill outputs a structured handoff packet (facts, unknowns, risks).</li>
+              <li>Counselor / attorney / ED takes over — model stops.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="sk-failure">
+        <div class="section-head">
+          <h2>Failure modes (recognize early)</h2>
+        </div>
+        <div class="card prose-tight">
+          <p><strong>Context obesity:</strong> skills so long that your actual question gets starved — latency up, quality down.</p>
+          <p><strong>Policy archaeology:</strong> copying 2022 board PDFs into a skill instead of summarizing live policy into three non-negotiables.</p>
+          <p><strong>Skill sprawl:</strong> 40 overlapping “writing helpers” — pick winners or staff will roll dice.</p>
+          <p><strong>Example poisoning:</strong> real beneficiary quotes embedded “for quality” — irreversible overshare risk.</p>
+          <p><strong>Silent routing errors:</strong> vague descriptions → wrong skill attached → confident wrong answer.</p>
+        </div>
+      </section>
+
+      <section id="sk-rubric">
+        <div class="section-head">
+          <h2>Publication rubric (tick before ship)</h2>
+          <p>Local-only checklist — same spirit as your Atlas readiness list, tuned for skills.</p>
+        </div>
+        <div class="card checklist" id="skill-rubric">
+          <label><input type="checkbox" /> Single clear trigger sentence (when should this run?).</label>
+          <label><input type="checkbox" /> Output schema defined (headings, max length, tone ladder).</label>
+          <label><input type="checkbox" /> Refusal path for missing info / sensitive domains.</label>
+          <label><input type="checkbox" /> Examples are synthetic or public; no donor/youth/HR identifiers.</label>
+          <label><input type="checkbox" /> Owner + changelog + review date recorded.</label>
+          <label><input type="checkbox" /> Pilot notes captured; at least three real runs reviewed.</label>
+          <label><input type="checkbox" /> Conflicts with sibling skills resolved or namespaced.</label>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  </div>
+
+  <p class="footer-note">
+    Internal teaching template — duplicate under <code>docs/html/</code>. Vendor claims: verify at source.
+  </p>
+
+  <script>
+(function () {
+  var sections = [
+    { id: "atlas", label: "Atlas overview" },
+    { id: "stack", label: "Intent to answer" },
+    { id: "products", label: "Products" },
+    { id: "skills-artifacts", label: "Skills / projects / artifacts" },
+    { id: "context", label: "Context budget" },
+    { id: "nonprofit", label: "Nonprofit lens" },
+    { id: "practice", label: "Checklist" },
+    { id: "glossary", label: "Glossary" },
+    { id: "repo-links", label: "Repo links" }
+  ];
+
+  var tocNav = document.getElementById("toc-nav");
+  var tocSelect = document.getElementById("toc-jump");
+  sections.forEach(function (s) {
+    var a = document.createElement("a");
+    a.href = "#" + s.id;
+    a.textContent = s.label;
+    a.dataset.target = s.id;
+    tocNav.appendChild(a);
+    var opt = document.createElement("option");
+    opt.value = "#" + s.id;
+    opt.textContent = s.label;
+    tocSelect.appendChild(opt);
+  });
+
+  tocSelect.addEventListener("change", function () {
+    if (tocSelect.value) location.hash = tocSelect.value.slice(1);
+  });
+
+  var links = tocNav.querySelectorAll("a");
+  var obs = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var id = en.target.id;
+        links.forEach(function (a) {
+          a.classList.toggle("is-active", a.dataset.target === id);
+        });
+        for (var i = 0; i < tocSelect.options.length; i++) {
+          if (tocSelect.options[i].value === "#" + id) tocSelect.selectedIndex = i;
+        }
+      });
+    },
+    { rootMargin: "-38% 0px -42% 0px", threshold: 0 }
+  );
+  sections.forEach(function (s) {
+    var el = document.getElementById(s.id);
+    if (el) obs.observe(el);
+  });
+
+  document.getElementById("btn-theme").addEventListener("click", function () {
+    var h = document.documentElement;
+    if (h.classList.contains("theme-dark")) {
+      h.classList.remove("theme-dark");
+      h.classList.add("theme-light");
+    } else {
+      h.classList.remove("theme-light");
+      h.classList.add("theme-dark");
+    }
+  });
+
+  var slider = document.getElementById("ctx-slider");
+  var mSys = document.getElementById("m-sys");
+  var mRef = document.getElementById("m-ref");
+  var mYou = document.getElementById("m-you");
+  var cap = document.getElementById("ctx-caption");
+
+  function updateMeter() {
+    var v = Number(slider.value) / 100;
+    var refPct = 12 + v * 38;
+    var sysPct = 18;
+    var youPct = Math.max(15, 100 - sysPct - refPct);
+    mSys.style.width = sysPct + "%";
+    mRef.style.width = refPct.toFixed(1) + "%";
+    mYou.style.width = youPct.toFixed(1) + "%";
+    cap.textContent =
+      "Reference and files about " +
+      Math.round(refPct) +
+      "% of this teaching bar — roughly " +
+      Math.round(youPct) +
+      "% left for your instructions, rolling chat, and headroom. When the last slice feels tight, split the task or summarize first.";
+  }
+  slider.addEventListener("input", updateMeter);
+  updateMeter();
+
+  /* ---- Primary tabs: Atlas / Skills lab ---- */
+  var tabAtlas = document.getElementById("tab-atlas");
+  var tabSkills = document.getElementById("tab-skills");
+  var panelAtlas = document.getElementById("panel-atlas");
+  var panelSkills = document.getElementById("panel-skills");
+
+  function activateTab(which) {
+    var isSkills = which === "skills";
+    tabAtlas.setAttribute("aria-selected", !isSkills);
+    tabSkills.setAttribute("aria-selected", isSkills);
+    tabAtlas.tabIndex = isSkills ? -1 : 0;
+    tabSkills.tabIndex = isSkills ? 0 : -1;
+    panelAtlas.hidden = isSkills;
+    panelSkills.hidden = !isSkills;
+    tabAtlas.classList.toggle("is-active", !isSkills);
+    tabSkills.classList.toggle("is-active", isSkills);
+  }
+
+  function openSkillsTab() {
+    activateTab("skills");
+    tabSkills.focus();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  if (tabAtlas && tabSkills) {
+    tabAtlas.addEventListener("click", function () { activateTab("atlas"); });
+    tabSkills.addEventListener("click", function () { activateTab("skills"); });
+    tabAtlas.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { e.preventDefault(); tabSkills.focus(); }
+    });
+    tabSkills.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") { e.preventDefault(); tabAtlas.focus(); }
+    });
+  }
+  var bOpen = document.getElementById("btn-open-skills");
+  if (bOpen) bOpen.addEventListener("click", openSkillsTab);
+  var cOpen = document.getElementById("card-open-skills");
+  if (cOpen) cOpen.addEventListener("click", openSkillsTab);
+
+  /* ---- Skills lab TOC ---- */
+  var skillSections = [
+    { id: "sk-intro", label: "Why skills" },
+    { id: "sk-spectrum", label: "Spectrum" },
+    { id: "sk-seven-layers", label: "Seven layers" },
+    { id: "sk-invocation", label: "Invocation modes" },
+    { id: "sk-routing-meta", label: "Routing & metadata" },
+    { id: "sk-pack-anatomy", label: "Pack anatomy" },
+    { id: "sk-surfaces", label: "Chat vs code" },
+    { id: "sk-precedence", label: "Precedence" },
+    { id: "sk-lifecycle", label: "Lifecycle" },
+    { id: "sk-governance", label: "Governance" },
+    { id: "sk-composition", label: "Composition" },
+    { id: "sk-failure", label: "Failure modes" },
+    { id: "sk-rubric", label: "Publication rubric" }
+  ];
+  var sn = document.getElementById("toc-skills-nav");
+  var ss = document.getElementById("toc-skills-jump");
+  if (sn && ss) {
+    skillSections.forEach(function (s) {
+      var a = document.createElement("a");
+      a.href = "#" + s.id;
+      a.textContent = s.label;
+      a.dataset.target = s.id;
+      sn.appendChild(a);
+      var o = document.createElement("option");
+      o.value = "#" + s.id;
+      o.textContent = s.label;
+      ss.appendChild(o);
+    });
+    ss.addEventListener("change", function () {
+      if (ss.value) {
+        openSkillsTab();
+        location.hash = ss.value.slice(1);
+      }
+    });
+    var slinks = sn.querySelectorAll("a");
+    slinks.forEach(function (a) {
+      a.addEventListener("click", function () { openSkillsTab(); });
+    });
+    var sobs = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          var id = en.target.id;
+          slinks.forEach(function (a) {
+            a.classList.toggle("is-active", a.dataset.target === id);
+          });
+          for (var j = 0; j < ss.options.length; j++) {
+            if (ss.options[j].value === "#" + id) ss.selectedIndex = j;
+          }
+        });
+      },
+      { root: null, rootMargin: "-35% 0px -40% 0px", threshold: 0 }
+    );
+    skillSections.forEach(function (s) {
+      var el = document.getElementById(s.id);
+      if (el) sobs.observe(el);
+    });
+  }
+
+  if (location.hash && location.hash.indexOf("sk-") === 1) {
+    openSkillsTab();
+  }
+})();
+  </script>
+</body>
+</html>

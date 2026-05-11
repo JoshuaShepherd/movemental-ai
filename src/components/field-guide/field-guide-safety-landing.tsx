@@ -1,10 +1,14 @@
+import Image from "next/image";
 import { ClipboardCheck, ListOrdered, Route, ScrollText, Users } from "lucide-react";
 import { Fragment } from "react";
 import Link from "next/link";
 
 import { ToolkitDownloadForm } from "@/components/toolkit/ToolkitDownloadForm";
-
-const PDF_HREF = "/downloads/it-starts-with-safety-v1.pdf";
+import {
+  SAFETY_FIELD_GUIDE_COVER_IMAGE,
+  SAFETY_FIELD_GUIDE_DOWNLOAD_FILENAME,
+  SAFETY_FIELD_GUIDE_PDF_PATH,
+} from "@/lib/safety-field-guide";
 
 const fieldGuideDisclaimer = (
   <>
@@ -63,31 +67,17 @@ export function FieldGuideSafetyLanding() {
               />
             </div>
           </div>
-          <div className="relative flex aspect-3/4 w-full items-center justify-center border border-border bg-section p-12 shadow-ambient">
-            <div className="absolute inset-0 bg-linear-to-br from-background to-section opacity-50" aria-hidden />
-            <div className="relative z-10 flex h-full w-full flex-col justify-between border-2 border-primary bg-card p-8">
-              <div className="flex items-start justify-between">
-                <span className="font-serif-display text-2xl font-semibold text-primary">Movemental</span>
-                <span className="font-sans text-xs font-semibold uppercase tracking-widest text-outline">
-                  STAGE 01 · VOL. 01
-                </span>
-              </div>
-              <div className="text-center">
-                <h2 className="mb-4 font-serif-display text-5xl font-semibold italic leading-tight text-foreground">
-                  The AI Safety
-                  <br />
-                  Field Guide
-                </h2>
-                <div className="mx-auto mb-4 h-px w-16 bg-primary" aria-hidden />
-                <p className="font-sans text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-                  Seven Decisions for Leaders
-                </p>
-              </div>
-              <div className="text-right">
-                <span className="font-serif-display text-lg italic text-primary">A Protocol for Action</span>
-              </div>
-            </div>
-          </div>
+          <figure className="relative w-full overflow-hidden border border-border bg-section shadow-ambient aspect-video">
+            <Image
+              src={SAFETY_FIELD_GUIDE_COVER_IMAGE}
+              alt="It Starts With Safety — Movemental Safety Field Guide cover"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+            />
+            <figcaption className="sr-only">Movemental Safety Field Guide — Stage 01 · Vol. 01</figcaption>
+          </figure>
         </section>
 
         {/* Grid */}
@@ -202,7 +192,11 @@ export function FieldGuideSafetyLanding() {
             />
             <p className="font-sans text-sm text-inverse-muted">
               Prefer a file right now?{" "}
-              <a href={PDF_HREF} className="underline underline-offset-4 hover:text-inverse-foreground" download>
+              <a
+                href={SAFETY_FIELD_GUIDE_PDF_PATH}
+                className="underline underline-offset-4 hover:text-inverse-foreground"
+                download={SAFETY_FIELD_GUIDE_DOWNLOAD_FILENAME}
+              >
                 Download the PDF
               </a>{" "}
               ·{" "}

@@ -1,0 +1,48 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "module_02_how_to_talk_to_it_sandboxlive_dashboard",
+  "screenFamily": "oversight-modules",
+  "documentTitle": "Module 02: How to Talk to It - Movemental",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": "MOVEMENTAL",
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "How to talk to it.",
+    "supportingCopy": "Institutional Panel",
+    "eyebrow": "Strategic Pillars"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "How to talk to it."
+        },
+        {
+          "level": 2,
+          "text": "Five things matter."
+        },
+        {
+          "level": 3,
+          "text": "Try a request with and without context."
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

@@ -304,14 +304,14 @@ The draft’s bones align with the **AI Stewardship Sequence** field guide and t
 | Proposed revision | Align verb “sentences true enough to lose money over” from field guide — draft partially has this in advance criteria; pull into §5.1 for parity. |
 | Change type | Sharpening
 
-**R25 — Seven Safety artifacts (missing)**
+**R25 — Seven Safety decisions (missing)**
 
 | Field | Content |
 | ----- | ------- |
 | Section | §5 (new bullet or appendix) |
 | Draft currently says | One-page governance sketch only |
 | Source material says | Part 3 / productization: Safety stage produces **seven items** (Part 00 references “seven item toolkit”; cross-stage summary ~18–22 artifacts — `part-08-cross-stage-productization.md`). |
-| Proposed revision | Internal deep-dive should name that Safety is **seven documented artifacts**, not merely “one page” — one page may be exec summary only. |
+| Proposed revision | Internal deep-dive should name that Safety is **seven documented decisions**, not merely “one page” — one page may be exec summary only. |
 | Change type | Correction / deepening
 
 ---

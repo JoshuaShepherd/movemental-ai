@@ -1,0 +1,96 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "recipe_library_movemental_sandbox_dashboard",
+  "screenFamily": "recipe-library",
+  "documentTitle": "Movemental - Recipe Library",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": "MOVEMENTAL",
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "Grant Proposal Drafting Assistant",
+    "supportingCopy": "Institutional Grade",
+    "eyebrow": "Recipe Library"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 2,
+          "text": "Strategy Archive"
+        },
+        {
+          "level": 2,
+          "text": "Your customized library."
+        },
+        {
+          "level": 3,
+          "text": "Grant Proposal Drafting Assistant"
+        },
+        {
+          "level": 3,
+          "text": "Donor Thank-You Pipeline"
+        },
+        {
+          "level": 3,
+          "text": "Major-Donor Meeting Prep"
+        },
+        {
+          "level": 3,
+          "text": "Foundation Prospect Research"
+        },
+        {
+          "level": 3,
+          "text": "Year-Over-Year Fundraising Analysis"
+        },
+        {
+          "level": 3,
+          "text": "Voice-Calibrated Style-Checker"
+        },
+        {
+          "level": 3,
+          "text": "Newsletter Drafting from Activity Log"
+        },
+        {
+          "level": 1,
+          "text": "Grant Proposal Drafting Assistant"
+        },
+        {
+          "level": 3,
+          "text": "HYPOTHESIS"
+        },
+        {
+          "level": 3,
+          "text": "Workflow Structure"
+        },
+        {
+          "level": 3,
+          "text": "Failure Modes"
+        },
+        {
+          "level": 3,
+          "text": "Expected Value"
+        },
+        {
+          "level": 3,
+          "text": "Institution Trial Record"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

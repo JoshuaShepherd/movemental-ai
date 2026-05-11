@@ -4,7 +4,7 @@
 
 Upon leadership setting part front matter (`status`) to **canonical**, the following holds:
 
-This markdown bundle, derived from **`movemental_full_path_source_of_truth_v2.pdf`** and **`movemental_parts_nine_and_ten.pdf`**, becomes the authoritative internal description of the **Movemental AI Path**: stage sequence (**Safety → Sandbox → Skills → Solutions**), MVP Safety artifacts (seven-item checklist), Sandbox / Skills / Solutions deliverables as written, productization levels, consolidated pricing orientation (see Part ten), and the technological foundation narrative (Part nine).
+This markdown bundle, derived from **`movemental_full_path_source_of_truth_v2.pdf`** and **`movemental_parts_nine_and_ten.pdf`**, becomes the authoritative internal description of the **Movemental AI Path**: stage sequence (**Safety → Sandbox → Skills → Solutions**), MVP Safety decisions (seven-item checklist), Sandbox / Skills / Solutions deliverables as written, productization levels, consolidated pricing orientation (see Part ten), and the technological foundation narrative (Part nine).
 
 Where any prior internal prose (including repo docs not yet bannered, slide decks, and working notes dated before the PDF hash dates recorded in [`INDEX.md`](./INDEX.md)) **conflicts** with this bundle, **this bundle wins** after reconciliation is logged in [`CONTRADICTIONS.md`](./CONTRADICTIONS.md).
 

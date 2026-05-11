@@ -5,11 +5,12 @@ import { Container } from "@/components/studio/Container";
 import { Reveal } from "@/components/studio/Reveal";
 import { ToolkitCover } from "@/components/toolkit/ToolkitCover";
 import { ToolkitPageForm } from "@/components/toolkit/ToolkitPageForm";
+import { SAFETY_FIELD_GUIDE_COVER_IMAGE } from "@/lib/safety-field-guide";
 import { canonicalPageUrl } from "@/lib/site-url";
 
-const title = "It Starts With Safety — the free toolkit";
+const title = "It Starts With Safety — free Safety Field Guide";
 const description =
-  "A 16-page Movemental field guide for organizational leaders navigating AI. Names the seven Safety artifacts, walks through why governance precedes deployment, and includes a 30-minute self-assessment for your leadership team.";
+  "A 16-page Movemental field guide for organizational leaders navigating AI. Names the seven Safety decisions, walks through why governance precedes deployment, and includes a 30-minute self-assessment for your leadership team.";
 const ogTitle = "It Starts With Safety — Movemental";
 
 export const metadata: Metadata = {
@@ -21,11 +22,13 @@ export const metadata: Metadata = {
     title: ogTitle,
     description,
     type: "website",
+    images: [{ url: SAFETY_FIELD_GUIDE_COVER_IMAGE, width: 1600, height: 873, alt: ogTitle }],
   },
   twitter: {
     card: "summary_large_image",
     title: ogTitle,
     description,
+    images: [SAFETY_FIELD_GUIDE_COVER_IMAGE],
   },
 };
 
@@ -35,7 +38,7 @@ const INSIDE_SECTIONS: readonly { title: string; body: string }[] = [
     body: "The argument for governance preceding deployment, in plain terms a board can ratify in one sitting.",
   },
   {
-    title: "The seven artifacts named",
+    title: "The seven decisions named",
     body: "Acceptable Use, Care Boundaries, Disclosure Standards, Vendor Inventory, Data Handling, Incident Response, and Named Refusals.",
   },
   {
@@ -78,13 +81,13 @@ export default function ToolkitPage() {
                 </p>
                 <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
                   Sixteen pages. Read it in an evening. Run the 30-minute self-assessment with your leadership team
-                  before you commit to a vendor, a tool, or a policy. The toolkit names the seven governance artifacts
+                  before you commit to a vendor, a tool, or a policy. The Field Guide names the seven governance decisions
                   that come out of a Safety engagement, walks through{" "}
                   why governance precedes deployment, and gives your team a shared
                   vocabulary for the conversations you&apos;re already having.
                 </p>
               </div>
-              <div className="mx-auto w-full max-w-sm lg:col-span-5 lg:mx-0">
+              <div className="mx-auto w-full max-w-lg lg:col-span-5 lg:mx-0">
                 <ToolkitCover />
               </div>
             </div>
@@ -136,7 +139,7 @@ export default function ToolkitPage() {
                 id="toolkit-form-title"
                 className="mb-6 font-serif-display text-4xl italic tracking-tight text-foreground md:text-5xl"
               >
-                Download the toolkit.
+                Download the Field Guide.
               </h2>
               <p className="mb-12 text-lg leading-relaxed text-muted-foreground">
                 We&apos;ll send the PDF immediately and follow up once over the following week. That&apos;s it.
@@ -158,9 +161,9 @@ export default function ToolkitPage() {
                 If you already know Safety is your next move.
               </h2>
               <p className="text-lg leading-relaxed text-muted-foreground">
-                The Safety stage page details the seven artifacts, the two-week process, and the $1,000 fee.
+                The Safety stage page details the seven decisions, the two-week process, and the $1,000 fee.
                 You can read the full field guide in your browser, or start a conversation directly &mdash;
-                the toolkit will follow if it&apos;s useful.
+                the PDF will follow if it&apos;s useful.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link href="/toolkit/read" className="btn-pill btn-pill--ghost">
@@ -190,7 +193,7 @@ export default function ToolkitPage() {
               </h3>
               <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
                 <p>
-                  <span className="text-foreground">Day 0.</span> The toolkit PDF lands in your inbox immediately.
+                  <span className="text-foreground">Day 0.</span> The Field Guide PDF lands in your inbox immediately.
                   Read it on your own time.
                 </p>
                 <p>

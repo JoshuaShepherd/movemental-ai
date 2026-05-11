@@ -1,0 +1,60 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "phase_05_reflection_sandboxlive_workspace",
+  "screenFamily": "phase-workspace",
+  "documentTitle": "SandboxLive Dashboard - Phase 05 Reflection",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": "MOVEMENTAL",
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": "SANDBOX"
+  },
+  "page": {
+    "headline": "Stepping back.",
+    "supportingCopy": "Editorial Archive",
+    "eyebrow": "Sandbox"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 2,
+          "text": "Strategic AI"
+        },
+        {
+          "level": 1,
+          "text": "Stepping back."
+        },
+        {
+          "level": 3,
+          "text": "Voice is everything."
+        },
+        {
+          "level": 3,
+          "text": "AI raises the floor; humans set the ceiling."
+        },
+        {
+          "level": 3,
+          "text": "What about cohort members whose voice is still forming?"
+        },
+        {
+          "level": 2,
+          "text": "Thursday, June 26 · 90 minutes"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

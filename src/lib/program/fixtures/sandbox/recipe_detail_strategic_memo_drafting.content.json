@@ -1,0 +1,96 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "recipe_detail_strategic_memo_drafting",
+  "screenFamily": "strategic-memo",
+  "documentTitle": "SafeStart - Recipe Detail",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "Strategic Memo Drafting",
+    "supportingCopy": "Institutional Strategy",
+    "eyebrow": "DEV"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 2,
+          "text": "GUIDEBOOK"
+        },
+        {
+          "level": 1,
+          "text": "Strategic Memo Drafting"
+        },
+        {
+          "level": 2,
+          "text": "lightbulb Hypothesis"
+        },
+        {
+          "level": 2,
+          "text": "account_tree Workflow Execution"
+        },
+        {
+          "level": 3,
+          "text": "Establish the Thesis Narrative"
+        },
+        {
+          "level": 3,
+          "text": "Data Aggregation & Audit"
+        },
+        {
+          "level": 3,
+          "text": "Structural Outlining"
+        },
+        {
+          "level": 3,
+          "text": "First Draft: The \"Ugly\" Version"
+        },
+        {
+          "level": 3,
+          "text": "Peer Review & Stress Testing"
+        },
+        {
+          "level": 3,
+          "text": "Prose Refinement"
+        },
+        {
+          "level": 3,
+          "text": "Final Proof & Typesetting"
+        },
+        {
+          "level": 3,
+          "text": "warning Failure Modes"
+        },
+        {
+          "level": 3,
+          "text": "Expected Value"
+        },
+        {
+          "level": 3,
+          "text": "experiment Cohort Trial Activity"
+        },
+        {
+          "level": 3,
+          "text": "Ready to try this recipe?"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

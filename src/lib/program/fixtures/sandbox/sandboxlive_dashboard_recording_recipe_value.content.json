@@ -1,0 +1,64 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "sandboxlive_dashboard_recording_recipe_value",
+  "screenFamily": "sandboxlive-shell",
+  "documentTitle": "Movemental - Sandbox Phase 03",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": "MOVEMENTAL",
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": "SANDBOX"
+  },
+  "page": {
+    "headline": "Grant Proposal Drafting Assistant",
+    "supportingCopy": "Strategic Archive v.4.1",
+    "eyebrow": "Northridge Community Center"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 2,
+          "text": "Collections"
+        },
+        {
+          "level": 1,
+          "text": "Grant Proposal Drafting Assistant"
+        },
+        {
+          "level": 3,
+          "text": "Hypothesis"
+        },
+        {
+          "level": 3,
+          "text": "Baselines"
+        },
+        {
+          "level": 3,
+          "text": "Success Criteria"
+        },
+        {
+          "level": 2,
+          "text": "Trial Ledger"
+        },
+        {
+          "level": 2,
+          "text": "Value Record Drafting"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

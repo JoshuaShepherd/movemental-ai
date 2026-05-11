@@ -51,11 +51,9 @@ export function PathFold() {
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
               Most organizations jump to deployment without deciding what they
               value, or freeze and let staff decide individually
-              <Cite claimId="high-performer-cohort-5-7" />.{" "}
-              
-                The path is the order — Safety first, then Sandbox, Skills,
-                Solutions.
-              
+              <Cite claimId="high-performer-cohort-5-7" />. The path is the
+              order — Safety first, then Sandbox, Skills, Solutions
+              <Cite claimId="mckinsey-workflow-redesign" />.
             </p>
           </div>
         </div>

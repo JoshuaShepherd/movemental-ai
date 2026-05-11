@@ -1,0 +1,44 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "ratification_confirmation_movemental_editorial",
+  "screenFamily": "ratification-flow",
+  "documentTitle": "Post-Ratification Confirmation - Executive Intelligence",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "Your Guidebook is live.",
+    "supportingCopy": "The AI Organizational Guidebook of Northridge Community Center was ratified by the Board of Directors on May 21, 2026. The final document is now permanently sealed and distributed to the required stakeholders.",
+    "eyebrow": null
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Your Guidebook is live."
+        },
+        {
+          "level": 2,
+          "text": "What's Next"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

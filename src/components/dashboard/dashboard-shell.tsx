@@ -59,6 +59,12 @@ export function DashboardShell({
                 Dashboard
               </Link>
               <nav className="flex flex-wrap items-center gap-3 text-[0.85rem] text-muted-foreground">
+                <Link href="/program" className="hover:text-foreground">
+                  Program
+                </Link>
+                <Link href="/dashboard/teaching/claude-skills" className="hover:text-foreground">
+                  Teaching library
+                </Link>
                 <Link href="/welcome" className="hover:text-foreground">
                   Onboarding
                 </Link>

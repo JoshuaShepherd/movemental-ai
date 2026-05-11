@@ -153,7 +153,7 @@ const mistakes = extractMistakes(tsx);
 const refusals = extractRefusals(tsx);
 const section1Paragraphs = extractWhySafetyParagraphsHtml(tsx);
 
-if (artifacts.length !== 7) throw new Error(`Expected 7 artifacts, got ${artifacts.length}`);
+if (artifacts.length !== 7) throw new Error(`Expected 7 decisions, got ${artifacts.length}`);
 if (assessment.length !== 15) throw new Error(`Expected 15 questions, got ${assessment.length}`);
 if (mistakes.length !== 5) throw new Error(`Expected 5 mistakes, got ${mistakes.length}`);
 if (refusals.length !== 7) throw new Error(`Expected 7 refusals, got ${refusals.length}`);
@@ -165,7 +165,7 @@ const landingInside = [
     body: "The argument for governance preceding deployment, in plain terms a board can ratify in one sitting.",
   },
   {
-    title: "The seven artifacts named",
+    title: "The seven decisions named",
     body: "Acceptable Use, Care Boundaries, Disclosure Standards, Vendor Inventory, Data Handling, Incident Response, and Named Refusals.",
   },
   {
@@ -409,7 +409,7 @@ const html = `<!DOCTYPE html>
       <a href="#read-meta">/toolkit/read metadata</a>
       <a href="#read-hero">Read · Hero &amp; intros</a>
       <a href="#read-s1">Read · §1 Why Safety</a>
-      <a href="#read-s2">Read · §2 Artifacts</a>
+      <a href="#read-s2">Read · §2 Decisions</a>
       <a href="#read-s3">Read · §3 Assessment</a>
       <a href="#read-s4">Read · §4 Mistakes</a>
       <a href="#read-s5">Read · §5 MVP</a>
@@ -422,13 +422,13 @@ const html = `<!DOCTYPE html>
         <p class="eyebrow">/toolkit</p>
         <table class="meta">
           <tr><td>title</td><td>${escapeHtml("It Starts With Safety — the free toolkit")}</td></tr>
-          <tr><td>description</td><td>${escapeHtml("A 16-page Movemental field guide for organizational leaders navigating AI. Names the seven Safety artifacts, walks through why governance precedes deployment, and includes a 30-minute self-assessment for your leadership team.")}</td></tr>
+          <tr><td>description</td><td>${escapeHtml("A 16-page Movemental field guide for organizational leaders navigating AI. Names the seven Safety decisions, walks through why governance precedes deployment, and includes a 30-minute self-assessment for your leadership team.")}</td></tr>
           <tr><td>openGraph.title</td><td>${escapeHtml("It Starts With Safety — Movemental")}</td></tr>
         </table>
         <p class="eyebrow">/toolkit/read</p>
         <table class="meta">
           <tr><td>title</td><td>${escapeHtml("It Starts With Safety — read the toolkit")}</td></tr>
-          <tr><td>description</td><td>${escapeHtml("The full Movemental Safety field guide on the web: why governance precedes deployment, the seven artifacts, the 15-question self-assessment your leadership team takes together, the named refusals, and the two-week facilitated engagement.")}</td></tr>
+          <tr><td>description</td><td>${escapeHtml("The full Movemental Safety field guide on the web: why governance precedes deployment, the seven decisions, the 15-question self-assessment your leadership team takes together, the named refusals, and the two-week facilitated engagement.")}</td></tr>
           <tr><td>openGraph.title</td><td>${escapeHtml("It Starts With Safety — Movemental field guide")}</td></tr>
         </table>
       </section>
@@ -440,7 +440,7 @@ const html = `<!DOCTYPE html>
           <p><strong class="label">Eyebrow:</strong> A free field guide</p>
           <p><strong class="label">H1:</strong> It Starts With <em>Safety.</em></p>
           <p><strong class="label">Subhead (italic):</strong> A field guide for organizational leaders navigating AI.</p>
-          <p>Sixteen pages. Read it in an evening. Run the 30-minute self-assessment with your leadership team before you commit to a vendor, a tool, or a policy. The toolkit names the seven governance artifacts that come out of a Safety engagement, walks through why governance precedes deployment, and gives your team a shared vocabulary for the conversations you're already having.</p>
+          <p>Sixteen pages. Read it in an evening. Run the 30-minute self-assessment with your leadership team before you commit to a vendor, a tool, or a policy. The toolkit names the seven governance decisions that come out of a Safety engagement, walks through why governance precedes deployment, and gives your team a shared vocabulary for the conversations you're already having.</p>
 
           <span class="eyebrow">What's inside</span>
           <p><strong class="label">Eyebrow:</strong> What's inside</p>
@@ -464,7 +464,7 @@ const html = `<!DOCTYPE html>
           <span class="eyebrow">Or skip ahead</span>
           <p><strong class="label">Eyebrow:</strong> Or skip ahead</p>
           <p><strong class="label">H2:</strong> If you already know Safety is your next move.</p>
-          <p>The Safety stage page details the seven artifacts, the two-week process, and the $1,000 fee. You can read the full field guide in your browser, or start a conversation directly — the toolkit will follow if it's useful.</p>
+          <p>The Safety stage page details the seven decisions, the two-week process, and the $1,000 fee. You can read the full field guide in your browser, or start a conversation directly — the toolkit will follow if it's useful.</p>
           <p><strong class="label">Buttons:</strong> Read the field guide · See the Safety stage · Start a conversation</p>
 
           <span class="eyebrow">After download</span>
@@ -531,7 +531,7 @@ const html = `<!DOCTYPE html>
           <span class="eyebrow">How to use this field guide</span>
           <p><strong class="label">H2:</strong> Read it with the team that will live with the answers.</p>
           <p>Most of the value in this document comes from reading it with the leadership team that will be responsible for AI governance at your organization. That is usually some combination of the senior leader, the executive team, the board chair, the staff lead for technology, and one or two trusted longtime members.</p>
-          <p>The arc is straightforward. Section 1 makes the argument for putting Safety first. Section 2 names the seven artifacts a Safety engagement produces. Section 3 is the self-assessment — the part you take together. Section 4 names the patterns of failure most organizations stumble into. Section 5 describes the two-week facilitated engagement Movemental offers, and is honest about when you should not hire us. Section 6 names refusals — the AI applications we believe mission-driven organizations should refuse on principle.</p>
+          <p>The arc is straightforward. Section 1 makes the argument for putting Safety first. Section 2 names the seven decisions a Safety engagement produces. Section 3 is the self-assessment — the part you take together. Section 4 names the patterns of failure most organizations stumble into. Section 5 describes the two-week facilitated engagement Movemental offers, and is honest about when you should not hire us. Section 6 names refusals — the AI applications we believe mission-driven organizations should refuse on principle.</p>
           <p><em>Disagreement among your team is the point of the self-assessment, not a problem with it. If your team aligns easily on all fifteen questions, either you are unusually well-formed or the questions need to be taken more seriously.</em></p>
         </div>
       </section>
@@ -546,11 +546,11 @@ const html = `<!DOCTYPE html>
       </section>
 
       <section id="read-s2" class="doc-section">
-        <h2>Read · Section 2 — The seven artifacts</h2>
+        <h2>Read · Section 2 — The seven decisions</h2>
         <div class="prose">
           <p class="eyebrow">Section 2</p>
-          <p style="font-family:Georgia,serif;font-style:italic;font-size:1.4rem;color:var(--ink);">The seven artifacts.</p>
-          <p>A Safety engagement produces seven concrete documents. Each one is short. Each one is signed and ratified. Together they make up the foundation any later AI deployment can stand on. The descriptions below are substantively richer than the public landing page's; they are written so a senior team can begin drafting their own first versions.</p>
+          <p style="font-family:Georgia,serif;font-style:italic;font-size:1.4rem;color:var(--ink);">The seven decisions.</p>
+          <p>A Safety engagement produces seven concrete decisions, each written and scoped for ratification. Each one is short. Each one is signed and ratified. Together they make up the foundation any later AI deployment can stand on. The descriptions below are substantively richer than the public landing page's; they are written so a senior team can begin drafting their own first versions.</p>
         </div>
         ${artifacts
           .map(
@@ -597,7 +597,7 @@ const html = `<!DOCTYPE html>
         <div class="prose" style="margin-top:2rem;">
           <p class="eyebrow">What to do with what you discovered</p>
           <p style="font-family:Georgia,serif;font-style:italic;font-size:1.25rem;color:var(--ink);">Read the disagreement, then decide.</p>
-          <p><em>If your team disagreed on three to five questions:</em> this is the typical pattern, and it indicates that the team is ready to do Safety work but has not yet aligned. The facilitated Safety engagement is designed for exactly this situation: two weeks, seven ratifiable artifacts, the disagreement adjudicated and recorded.</p>
+          <p><em>If your team disagreed on three to five questions:</em> this is the typical pattern, and it indicates that the team is ready to do Safety work but has not yet aligned. The facilitated Safety engagement is designed for exactly this situation: two weeks, seven ratifiable decisions, the disagreement adjudicated and recorded.</p>
           <p><em>If your team disagreed on six or more questions:</em> this indicates significant fragmentation in the organization's posture. Safety is essential, and the Sandbox engagement that follows is likely to surface use-case-specific disagreements that need facilitation as well.</p>
           <p><em>If your team disagreed on fewer than three:</em> this indicates either unusual alignment (in which case you may be ready for Sandbox directly) or that the team has not engaged the questions seriously. Re-take the assessment with each member writing their honest answer privately first; the disagreement that emerges is usually larger than the in-person conversation suggested.</p>
           <p>In all cases the next step is the same: have the conversation about what you discovered. With your team if you want to do the work yourselves. With Movemental if you want help.</p>
@@ -629,9 +629,9 @@ const html = `<!DOCTYPE html>
           <p class="eyebrow">Section 5</p>
           <p style="font-family:Georgia,serif;font-style:italic;font-size:1.4rem;color:var(--ink);">The two-week facilitated Safety engagement.</p>
           <p>This is the only openly promotional section of the field guide. We have tried to make it useful even if you decide to do the work yourselves.</p>
-          <p><strong class="label">What we do</strong><br />Two weeks. Four working sessions, roughly eight hours of synchronous facilitation, plus asynchronous drafting and editing. The output is the seven artifacts named in Section 2 — fully drafted, ready for board ratification — plus a Sandbox Readiness Assessment that names what the next stage of the path looks like for your specific organization.</p>
+          <p><strong class="label">What we do</strong><br />Two weeks. Four working sessions, roughly eight hours of synchronous facilitation, plus asynchronous drafting and editing. The output is the seven decisions named in Section 2 — fully drafted, ready for board ratification — plus a Sandbox Readiness Assessment that names what the next stage of the path looks like for your specific organization.</p>
           <p><strong class="label">What it costs</strong><br />$1,000. Net 15 from signing. No retainers. No success fees. The flat fee is part of the design: pricing is not the place we hide misalignment about scope.</p>
-          <p><strong class="label">When you should work with us</strong><br />When the leadership team has been unable to make progress on the seven artifacts on their own. When internal disagreement on the assessment questions would benefit from external facilitation. When the timeline to a board meeting, an audit, or a major deployment decision means six months of intermittent internal drafting is not available. When the cost of getting this wrong is larger than the engagement fee.</p>
+          <p><strong class="label">When you should work with us</strong><br />When the leadership team has been unable to make progress on the seven decisions on their own. When internal disagreement on the assessment questions would benefit from external facilitation. When the timeline to a board meeting, an audit, or a major deployment decision means six months of intermittent internal drafting is not available. When the cost of getting this wrong is larger than the engagement fee.</p>
           <p><strong class="label">When you should do this yourselves</strong><br />When you have the team capacity to dedicate to drafting. When the senior team is already in alignment and the work is to write down what is already known. When there is no external timeline pressure. When you would rather invest the engagement fee in formation or staff time. The toolkit, taken seriously, is enough. We mean that.</p>
           <p><strong class="label">CTAs:</strong> Start a conversation · See the Safety stage page</p>
         </div>

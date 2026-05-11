@@ -1,0 +1,73 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "ethics_review_preparation_view",
+  "screenFamily": "ethics-workspace",
+  "documentTitle": "Ethics Review Preparation · Movemental",
+  "draftApiMapping": {
+    "sidebar.nav": "dashboard.secondary_nav[]",
+    "page.phaseLabel": "ethics_review.phase_label",
+    "page.headline": "ethics_review.preparation.title",
+    "sections.useCases": "ethics_review.use_cases[]"
+  },
+  "shell": {
+    "brandLine": "Movemental",
+    "searchPlaceholder": "Search"
+  },
+  "sidebar": {
+    "title": "Movemental",
+    "subtitle": "Dashboard",
+    "nav": [
+      {
+        "label": "Dashboard",
+        "icon": "dashboard"
+      },
+      {
+        "label": "Cohorts",
+        "icon": "group"
+      },
+      {
+        "label": "Recipes",
+        "icon": "menu_book"
+      },
+      {
+        "label": "Analytics",
+        "icon": "bar_chart"
+      },
+      {
+        "label": "Ethics Review",
+        "icon": "shield",
+        "state": "active"
+      }
+    ]
+  },
+  "page": {
+    "phaseLabel": "Phase 06 — Ethics Review · Preparation",
+    "headline": "Preparing seven use cases for outside review.",
+    "supportingCopy": "These descriptions are what your reviewers will read. Plain language. No cohort jargon."
+  },
+  "sections": [
+    {
+      "id": "use-case-ledger",
+      "kind": "cardLedger",
+      "cards": [
+        {
+          "category": "Communication",
+          "title": "Quarterly Update Newsletter",
+          "status": "Ready",
+          "body": "Automated distribution of quarterly progress reports to stakeholders, segmented by interest areas to ensure relevance."
+        },
+        {
+          "category": "Fundraising",
+          "title": "Major-Donor Meeting Prep",
+          "status": "Needs Editing",
+          "body": "Compiling background profiles on high-net-worth individuals to brief leadership before major cultivation events.",
+          "reviewNote": "Marcus suggested the description should explicitly name the surveillance concern.",
+          "draftFields": {
+            "status": "ethics_review.use_cases[].workflow_status",
+            "reviewNote": "ethics_review.use_cases[].latest_comment.body"
+          }
+        }
+      ]
+    }
+  ]
+}

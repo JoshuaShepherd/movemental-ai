@@ -52,13 +52,13 @@ const TOOLKIT_CLAIMS = [
 ] as const satisfies ReadonlyArray<CitationId>;
 
 /* -------------------------------------------------------------------------- */
-/*  Section 2 data — the seven artifacts                                      */
+/*  Section 2 data — the seven decisions                                      */
 /* -------------------------------------------------------------------------- */
 
 interface Artifact {
   number: string;
   title: string;
-  /** One-sentence definition the artifact's name resolves into. */
+  /** One-sentence definition the decision's title resolves into. */
   definition: string;
   /** 2–3 paragraphs of substance: what it is, why it matters, what's at stake. */
   body: readonly string[];
@@ -98,7 +98,7 @@ const ARTIFACTS: readonly Artifact[] = [
       "The rules your organization follows when AI has substantially shaped a communication, content piece, or decision.",
     body: [
       "Disclosure is what tells the people you serve that the relationship is still real. When AI has substantially shaped a sermon, a letter, an email signed in a leader's name, or a decision affecting them, the people on the other side have a stake in knowing. Quiet substitution erodes trust slowly, then all at once.",
-      "The Disclosure Standard names the threshold (when does AI's contribution become substantial enough to disclose?), the form (footer line, in-body acknowledgment, separate notice?), and the exceptions (what's purely operational and does not require disclosure?). It is one of the artifacts most often skipped, and one of the artifacts an outside reader will judge you on most quickly when an incident surfaces.",
+      "The Disclosure Standard names the threshold (when does AI's contribution become substantial enough to disclose?), the form (footer line, in-body acknowledgment, separate notice?), and the exceptions (what's purely operational and does not require disclosure?). It is one of the decisions most often skipped, and one an outside reader will judge you on most quickly when an incident surfaces.",
     ],
     inPractice:
       "Sample threshold: communication is disclosed when AI generated more than a draft skeleton, when AI selected the framing, when AI authored the tone in the leader's voice, or when AI made or recommended a decision affecting the recipient.",
@@ -122,7 +122,7 @@ const ARTIFACTS: readonly Artifact[] = [
       "The standard for what data may be shared with AI tools, by whom, under what circumstances, with what review.",
     body: [
       "The Data Handling Protocol protects donor, member, student, client, and staff information from being silently absorbed into third-party systems. It names the categories of data that must never leave the organization's controlled environment, the categories that may be shared with named tools under named conditions, and the categories that are routinely permissible.",
-      "Without this artifact, the organization's data perimeter is whatever a junior staff member happens to assume on a Tuesday afternoon. With it, the protocol is the answer when a development associate asks whether to paste a major-donor list into a chat tool to draft thank-you letters.",
+      "Without this decision on record, the organization's data perimeter is whatever a junior staff member happens to assume on a Tuesday afternoon. With it, the protocol is the answer when a development associate asks whether to paste a major-donor list into a chat tool to draft thank-you letters.",
     ],
     inPractice:
       "Three tiers most teams settle on: never (PII tied to spiritual-care, clinical, or legal proceedings; financial account data; identifiable minors); only with named tools and named approvals (donor records, payroll, member rolls); routinely permissible (public materials, anonymized case examples, the organization's own published content).",
@@ -134,10 +134,10 @@ const ARTIFACTS: readonly Artifact[] = [
       "The procedure your organization follows when AI produces harmful, inaccurate, deceptive, or impersonating output that reaches the people you serve.",
     body: [
       "AI incidents are coming. They will arrive as a fabricated quote in a sermon citation, a hallucinated grant deadline that was missed, a deepfake voicemail in the senior pastor's voice asking for a wire transfer, an unauthorized chatbot deployed by a volunteer that gives counseling advice with the church's name attached. The question is whether the response is improvised on the day or executed against a plan written before the day.",
-      "The Incident Response Plan names the on-call leader, the first-hour communication path, the criteria for public statement, the regulatory and accreditation reporting obligations (where they exist), and the post-incident review cycle. It is short. It is rehearsed. It is the artifact insurance underwriters and accreditors will eventually expect to see.",
+      "The Incident Response Plan names the on-call leader, the first-hour communication path, the criteria for public statement, the regulatory and accreditation reporting obligations (where they exist), and the post-incident review cycle. It is short. It is rehearsed. It is what insurance underwriters and accreditors will eventually expect to see.",
     ],
     inPractice:
-      "Minimum sections: who gets called in the first hour, who decides whether to communicate publicly, what is said in the first 24 hours, what is documented, what is reviewed at 30 days, and how the relevant Safety artifacts are revised in light of what happened.",
+      "Minimum sections: who gets called in the first hour, who decides whether to communicate publicly, what is said in the first 24 hours, what is documented, what is reviewed at 30 days, and how the relevant Safety decisions are revised in light of what happened.",
   },
   {
     number: "07",
@@ -145,7 +145,7 @@ const ARTIFACTS: readonly Artifact[] = [
     definition:
       "The specific applications of AI your organization commits to refuse on principle, regardless of pressure or efficiency gains.",
     body: [
-      "Named Refusals are the artifact most directly tied to identity. The Acceptable Use Statement describes the boundaries your organization currently holds; Named Refusals describe what your organization will not do, and would not do, under pressure to grow, raise more, or move faster.",
+      "Named Refusals are the decision most directly tied to identity. The Acceptable Use Statement describes the boundaries your organization currently holds; Named Refusals describe what your organization will not do, and would not do, under pressure to grow, raise more, or move faster.",
       "Most organizations have refusals in their unwritten norms. Writing them down is the moment they become institutional rather than personal. A refusal that lives only in the senior leader's head leaves with the senior leader. A refusal on the record outlasts the person who held it. See Section 6 of this guide for Movemental's own list of refusals and the rationale for each.",
     ],
     inPractice:
@@ -300,7 +300,7 @@ const ASSESSMENT_QUESTIONS: readonly AssessmentQuestion[] = [
     question:
       "Is your organization currently using AI tools that no one in leadership has explicitly authorized?",
     tension:
-      "The answer is almost certainly yes, and the work is to surface the tools rather than to litigate the answer. The vendor inventory is the artifact that closes this gap. Until it exists, this question functions as a temperature check — how surprised would the senior team be by a complete list of AI tools in use across the organization today?",
+      "The answer is almost certainly yes, and the work is to surface the tools rather than to litigate the answer. The vendor inventory is what closes this gap. Until it exists, this question functions as a temperature check — how surprised would the senior team be by a complete list of AI tools in use across the organization today?",
     positionA:
       "Position A — Probably not many; staff would have flagged most of them. The senior team has high confidence in what is in use.",
     positionB:
@@ -333,9 +333,9 @@ const ASSESSMENT_QUESTIONS: readonly AssessmentQuestion[] = [
     question:
       "Are you ready, today, to defend your organization's AI posture to a board member, a major donor, or an accreditor who asked sharp questions about it?",
     tension:
-      "This is the integration question the assessment closes on. It tests whether the artifacts cohere and whether the senior team can speak from them under pressure. The answer is rarely yes for organizations that have not done the Safety work; the answer is rarely no for organizations that have.",
+      "This is the integration question the assessment closes on. It tests whether the decisions cohere and whether the senior team can speak from them under pressure. The answer is rarely yes for organizations that have not done the Safety work; the answer is rarely no for organizations that have.",
     positionA:
-      "Position A — Yes, with confidence. The senior team can articulate the posture, point to the artifacts, and walk a serious questioner through the reasoning behind each.",
+      "Position A — Yes, with confidence. The senior team can articulate the posture, point to the decisions, and walk a serious questioner through the reasoning behind each.",
     positionB:
       "Position B — Not yet. The senior team has views but cannot assemble them into a defensible account on the spot. The toolkit, taken seriously, closes this gap.",
   },
@@ -362,7 +362,7 @@ const COMMON_MISTAKES: readonly Mistake[] = [
     number: "02",
     title: "The technology-first trap",
     body:
-      "The organization picks a tool, a vendor, or a platform before deciding what they want it to do or what they want it not to do. The vendor's defaults become the organization's posture. Six months later the organization is editing a vendor's positioning into its own materials and discovering that the things it would have refused on principle are now embedded in workflows. The remedy is the order of the Sequence — Safety first, Solutions last — applied at the smallest scale: any tool decision is preceded by the relevant Safety artifact.",
+      "The organization picks a tool, a vendor, or a platform before deciding what they want it to do or what they want it not to do. The vendor's defaults become the organization's posture. Six months later the organization is editing a vendor's positioning into its own materials and discovering that the things it would have refused on principle are now embedded in workflows. The remedy is the order of the Sequence — Safety first, Solutions last — applied at the smallest scale: any tool decision is preceded by the relevant Safety decision.",
   },
   {
     number: "03",
@@ -380,7 +380,7 @@ const COMMON_MISTAKES: readonly Mistake[] = [
     number: "05",
     title: "The fiduciary blind spot",
     body:
-      "The board has not engaged AI governance because no one has framed it as a fiduciary question. Boards are designed to govern risk, finance, and reputational exposure; AI is all three. The senior leader who treats AI as an operational matter alone is carrying a board-level risk without the board's explicit cover. The remedy is a single twenty-minute item on the next board agenda: 'AI posture, current state, artifacts in development, recommended cadence for review.'",
+      "The board has not engaged AI governance because no one has framed it as a fiduciary question. Boards are designed to govern risk, finance, and reputational exposure; AI is all three. The senior leader who treats AI as an operational matter alone is carrying a board-level risk without the board's explicit cover. The remedy is a single twenty-minute item on the next board agenda: 'AI posture, current state, decisions in development, recommended cadence for review.'",
   },
 ];
 
@@ -617,7 +617,7 @@ function HowToUse() {
               <p>
                 The arc is straightforward. Section&nbsp;1 makes the
                 argument for putting Safety first. Section&nbsp;2 names the
-                seven artifacts a Safety engagement produces.
+                seven decisions a Safety engagement produces.
                 Section&nbsp;3 is the self-assessment &mdash; the part you
                 take together. Section&nbsp;4 names the patterns of
                 failure most organizations stumble into. Section&nbsp;5
@@ -772,12 +772,12 @@ function WhySafetyIsFirst() {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Section 2 — The seven artifacts                                           */
+/*  Section 2 — The seven decisions                                           */
 /* -------------------------------------------------------------------------- */
 
 function SevenArtifacts() {
   return (
-    <Section variant="default" spacing="lg" aria-labelledby="toolkit-read-artifacts-title">
+    <Section variant="default" spacing="lg" aria-labelledby="toolkit-read-decisions-title">
       <Container>
         <Reveal>
           <div className="mb-16 max-w-3xl">
@@ -785,10 +785,10 @@ function SevenArtifacts() {
               Section 2
             </span>
             <h2
-              id="toolkit-read-artifacts-title"
+              id="toolkit-read-decisions-title"
               className="mb-6 font-serif-display text-4xl italic tracking-tight text-foreground md:text-5xl"
             >
-              The seven artifacts.
+              The seven decisions.
             </h2>
             <p className="text-lg leading-relaxed text-muted-foreground">
               A Safety engagement produces seven concrete documents. Each one
@@ -930,7 +930,7 @@ function SelfAssessment() {
                 this is the typical pattern, and it indicates that the team
                 is ready to do Safety work but has not yet aligned. The
                 facilitated Safety engagement is designed for exactly this
-                situation: two weeks, seven ratifiable artifacts, the
+                situation: two weeks, seven ratifiable decisions, the
                 disagreement adjudicated and recorded.
               </p>
               <p>
@@ -1049,7 +1049,7 @@ function MvpPreview() {
                 <p>
                   Two weeks. Four working sessions, roughly eight hours
                   of synchronous facilitation, plus asynchronous drafting
-                  and editing. The output is the seven artifacts named in
+                  and editing. The output is the seven decisions named in
                   Section&nbsp;2 &mdash; fully drafted, ready for board
                   ratification &mdash; plus a Sandbox Readiness Assessment
                   that names what the next stage of the path looks like
@@ -1060,7 +1060,7 @@ function MvpPreview() {
               <div>
                 <h3 className="mb-3 font-serif-display text-xl text-foreground">What it costs</h3>
                 <p>
-                  $1,000. Net 15 from signing. No retainers. No success
+                  $1,000. Two-week engagement. No retainers. No success
                   fees. The flat fee is part of the design: pricing is not
                   the place we hide misalignment about scope.
                 </p>
@@ -1070,7 +1070,7 @@ function MvpPreview() {
                 <h3 className="mb-3 font-serif-display text-xl text-foreground">When you should work with us</h3>
                 <p>
                   When the leadership team has been unable to make
-                  progress on the seven artifacts on their own. When
+                  progress on the seven decisions on their own. When
                   internal disagreement on the assessment questions would
                   benefit from external facilitation. When the timeline
                   to a board meeting, an audit, or a major deployment

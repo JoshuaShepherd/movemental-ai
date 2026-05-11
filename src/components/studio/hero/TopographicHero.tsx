@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FlaskConical, GraduationCap, Rocket, ShieldCheck } from "lucide-react";
 
+import { Cite } from "@/components/citations";
 import { Container } from "@/components/studio/Container";
 import { Reveal } from "@/components/studio/Reveal";
 
@@ -81,12 +82,14 @@ export function TopographicHero() {
               id="hero-h1"
               className="font-serif italic font-normal text-foreground leading-[1.05] tracking-[-0.02em] text-[clamp(2.75rem,7vw,5.5rem)]"
             >
-              AI is already inside your organization.
+              AI is already inside your organization
+              <Cite claimId="nonprofit-92-adoption" />.
             </h1>
 
             <p className="mt-5 max-w-2xl text-[18px] leading-[1.55] text-foreground md:mt-6 md:text-[20px] md:leading-[1.5]">
-              AI is being used by people inside your organization right now.
-              Most leaders have not yet decided what is safe, valuable, or
+              AI is being used by people inside your organization right now
+              <Cite claimId="nonprofit-81-adhoc" />. Most leaders have not yet
+              decided what is safe, valuable, or
               ethical for their work. The four-stage path below is how you
               decide, in writing, before you build anything else.
             </p>

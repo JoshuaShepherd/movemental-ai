@@ -1,0 +1,133 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "future_plan_drafting_editor",
+  "screenFamily": "future-plan-editor",
+  "documentTitle": "Future Plan Drafting · Movemental",
+  "draftApiMapping": {
+    "shell.navLinks": "workspace.primary_nav[]",
+    "sidebar.phaseLabel": "future_plan.phase_label",
+    "sidebar.workspaceNav": "future_plan.workspace_nav[]",
+    "editor.tabs": "future_plan.section_tabs[]",
+    "editor.activeSectionId": "future_plan.active_section_id",
+    "editor.body": "future_plan.drafts[].body_markdown",
+    "assistant.title": "ai_assistant.title",
+    "assistant.messages": "ai_assistant.thread[]"
+  },
+  "page": {
+    "headline": "Future Plan Workspace",
+    "supportingCopy": "Two-column drafting workspace with synthesis assistant (see editor + assistant sections)."
+  },
+  "shell": {
+    "brandLine": "MOVEMENTAL",
+    "navLinks": [
+      {
+        "label": "STRATEGY",
+        "href": "#"
+      },
+      {
+        "label": "ASSETS",
+        "href": "#"
+      },
+      {
+        "label": "ARCHIVE",
+        "href": "#"
+      }
+    ],
+    "utilityActions": [
+      {
+        "label": "SPONSOR VIEW",
+        "kind": "button"
+      }
+    ]
+  },
+  "sidebar": {
+    "phaseLabel": "PHASE 02: ANALYSIS",
+    "workspaceTitle": "ENGAGEMENT",
+    "workspaceNav": [
+      {
+        "label": "Safety",
+        "icon": "shield"
+      },
+      {
+        "label": "Sandbox",
+        "icon": "science"
+      },
+      {
+        "label": "Skills",
+        "icon": "psychology"
+      },
+      {
+        "label": "Solutions",
+        "icon": "lightbulb",
+        "state": "active"
+      },
+      {
+        "label": "Guidebook",
+        "icon": "menu_book"
+      }
+    ],
+    "primaryAction": {
+      "label": "NEW ARTIFACT",
+      "kind": "button"
+    },
+    "footerLinks": [
+      {
+        "label": "Settings",
+        "icon": "settings"
+      },
+      {
+        "label": "Support",
+        "icon": "help"
+      }
+    ]
+  },
+  "editor": {
+    "workspaceTitle": "Future Plan Workspace",
+    "saveStatusLabel": "Draft Saved",
+    "tabs": [
+      {
+        "id": "01",
+        "label": "01: Context"
+      },
+      {
+        "id": "02",
+        "label": "02: Vision"
+      },
+      {
+        "id": "03",
+        "label": "03: Strategy"
+      },
+      {
+        "id": "04",
+        "label": "04: What we refuse",
+        "state": "active"
+      },
+      {
+        "id": "05",
+        "label": "05: Roadmap"
+      },
+      {
+        "id": "06",
+        "label": "06: Metrics"
+      }
+    ],
+    "sectionLabel": "Section 04",
+    "sectionTitle": "Defining the boundaries: What we refuse to do.",
+    "body": "To achieve the architectural clarity required for this next phase, we must articulate not only our trajectory but the paths we explicitly choose to ignore.\n\nA strategy is defined as much by its exclusions as its inclusions. We refuse the temptation to dilute our focus across tangential markets. Specifically, we will not engage in consumer-facing retail operations, nor will we adopt short-term discount strategies to inflate quarterly metrics.\n\nOur commitment is to long-term institutional value. Therefore, any initiative that prioritizes immediate scale over structural integrity is inherently contrary to our mandate. We reject the 'growth at all costs' paradigm.",
+    "placeholder": "Begin drafting..."
+  },
+  "assistant": {
+    "title": "Synthesis Assistant",
+    "subtitle": "Pulling context from Sandbox records.",
+    "messages": [
+      {
+        "role": "assistant",
+        "body": "I notice you are drafting the 'What we refuse' section. Would you like me to pull the key constraints we defined during the Q2 Sandbox sessions?",
+        "contextCard": {
+          "label": "Sandbox Record: 2023-11-04",
+          "draftField": "sandbox.records[].summary"
+        }
+      }
+    ]
+  }
+}

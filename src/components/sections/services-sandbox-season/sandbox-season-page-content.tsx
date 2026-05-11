@@ -260,15 +260,13 @@ function Pricing() {
           <div className="mb-12 max-w-3xl">
             <Eyebrow className="mb-4">Pricing</Eyebrow>
             <Display size="md" as="h2" className="text-balance">
-              Fixed fee, <em>milestone-weighted</em>, published zones.
+              Fixed fee, <em>published zones</em>, clear duration.
             </Display>
             <Prose className="mt-6">
               <p>
-                Not hourly. Not a retainer. Not outcome-based. A fixed fee
-                scoped to your organization&rsquo;s size, paid in installments against
-                milestones. Milestones reward completion; monthly payments
-                reward drag. Enterprise and multi-cohort scopes are custom; the
-                full table lives on the pricing page.
+                Not hourly. Not a retainer. Not outcome-based. A fixed fee scoped to your organization&rsquo;s size, with
+                a defined program length. Cadence and operational details are confirmed in your engagement letter.
+                Enterprise and multi-cohort scopes are custom; the full table lives on the pricing page.
               </p>
             </Prose>
             <div className="mt-6 flex flex-wrap gap-6">
@@ -304,7 +302,7 @@ function Pricing() {
                   </div>
                   <div>
                     <dt className="text-[0.72rem] font-medium uppercase tracking-eyebrow text-ink-soft">
-                      Payment
+                      Timeline
                     </dt>
                     <dd className="mt-1">{zone.payment}</dd>
                   </div>

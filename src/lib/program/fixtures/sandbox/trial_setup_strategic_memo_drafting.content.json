@@ -1,0 +1,40 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "trial_setup_strategic_memo_drafting",
+  "screenFamily": "strategic-memo",
+  "documentTitle": "SafeStart - Trial Setup",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "Setting up your trial of Strategic Memo Drafting",
+    "supportingCopy": null,
+    "eyebrow": null
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Setting up your trial of Strategic Memo Drafting"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

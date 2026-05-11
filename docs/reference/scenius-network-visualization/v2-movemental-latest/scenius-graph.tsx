@@ -2,18 +2,45 @@
 
 import { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
+import type { D3DragEvent, SimulationLinkDatum } from 'd3';
 import { useRouter } from 'next/navigation';
 import { leaders, topics } from '@/lib/data';
 import { motion, AnimatePresence } from 'motion/react';
 
+interface LeaderDatum {
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+  imageUrl: string;
+  topics: string[];
+  themes: string[];
+  connections: string[];
+  books: unknown[];
+}
+
+interface GraphNode extends LeaderDatum, d3.SimulationNodeDatum {
+  group: string;
+  radius: number;
+}
+
+type GraphLinkInitial = SimulationLinkDatum<GraphNode> & { value: number };
+
 // Generate more mock nodes and links to make the graph look impressive
-const generateGraphData = () => {
-  const nodes = [...leaders].map(l => ({ ...l, group: l.topics[0] || 'general', radius: 20 }));
-  const links = [];
+const generateGraphData = (): {
+  nodes: GraphNode[];
+  links: GraphLinkInitial[];
+} => {
+  const nodes: GraphNode[] = [...leaders].map((l) => ({
+    ...(l as LeaderDatum),
+    group: l.topics[0] || 'general',
+    radius: 20,
+  }));
+  const links: GraphLinkInitial[] = [];
 
   // Add real connections
-  leaders.forEach(source => {
-    source.connections.forEach(targetId => {
+  leaders.forEach((source) => {
+    source.connections.forEach((targetId: string) => {
       links.push({ source: source.id, target: targetId, value: 2 });
     });
   });
@@ -33,11 +60,11 @@ const generateGraphData = () => {
       connections: [],
       books: [],
       group: randomTopic,
-      radius: 8 + Math.random() * 8
+      radius: 8 + Math.random() * 8,
     });
 
     // Connect fake nodes to real nodes or other fake nodes
-    const targetNode = nodes[Math.floor(Math.random() * nodes.length)];
+    const targetNode = nodes[Math.floor(Math.random() * nodes.length)]!;
     if (targetNode.id !== id) {
       links.push({ source: id, target: targetNode.id, value: 1 });
     }
@@ -50,7 +77,7 @@ export function SceniusGraph() {
   const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  const [hoveredNode, setHoveredNode] = useState<any>(null);
+  const [hoveredNode, setHoveredNode] = useState<GraphNode | null>(null);
   const [showLabels, setShowLabels] = useState(true);
 
   useEffect(() => {
@@ -100,44 +127,85 @@ export function SceniusGraph() {
       .domain(topics.map(t => t.slug))
       .range(['#DC2626', '#E11D48', '#BE123C', '#9F1239', '#881337', '#4C1D95', '#5B21B6', '#6D28D9']); // Scarlet to Orchid hues
 
-    const simulation = d3.forceSimulation(data.nodes as d3.SimulationNodeDatum[])
-      .force("link", d3.forceLink(data.links).id((d: any) => d.id).distance(100))
+    const simulation = d3
+      .forceSimulation<GraphNode>(data.nodes)
+      .force(
+        "link",
+        d3
+          .forceLink<GraphNode, GraphLinkInitial>(data.links)
+          .id((d) => d.id)
+          .distance(100),
+      )
       .force("charge", d3.forceManyBody().strength(-200))
       .force("center", d3.forceCenter(width / 2, height / 2))
-      .force("collide", d3.forceCollide().radius((d: any) => d.radius + 10).iterations(2));
+      .force(
+        "collide",
+        d3.forceCollide<GraphNode>().radius((d) => d.radius + 10).iterations(2),
+      );
 
-    const link = g.append("g")
+    const link = g
+      .append("g")
       .attr("stroke", "#374151") // snow-800
       .attr("stroke-opacity", 0.4)
       .selectAll("line")
       .data(data.links)
       .join("line")
-      .attr("stroke-width", (d: any) => Math.sqrt(d.value));
+      .attr("stroke-width", (d) => Math.sqrt(d.value));
 
-    const nodeGroup = g.append("g")
+    const nodeGroup = g
+      .append("g")
       .selectAll("g")
       .data(data.nodes)
       .join("g")
-      .call(d3.drag<SVGGElement, any>()
-        .on("start", dragstarted)
-        .on("drag", dragged)
-        .on("end", dragended) as any);
+      .call(
+        d3
+          .drag<SVGGElement, GraphNode>()
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended),
+      );
+
+    function linkEndpoints(l: GraphLinkInitial): { s: GraphNode; t: GraphNode } {
+      const s = typeof l.source === "object" ? l.source : data.nodes.find((n) => n.id === l.source)!;
+      const t = typeof l.target === "object" ? l.target : data.nodes.find((n) => n.id === l.target)!;
+      return { s, t };
+    }
 
     // Node circles
-    nodeGroup.append("circle")
-      .attr("r", (d: any) => d.radius)
-      .attr("fill", (d: any) => d.id.startsWith('fake') ? '#1F2937' : colorScale(d.group) as string)
-      .attr("stroke", (d: any) => d.id.startsWith('fake') ? '#374151' : '#fff')
-      .attr("stroke-width", (d: any) => d.id.startsWith('fake') ? 1 : 2)
+    nodeGroup
+      .append("circle")
+      .attr("r", (d) => d.radius)
+      .attr("fill", (d) =>
+        d.id.startsWith("fake") ? "#1F2937" : (colorScale(d.group) as string),
+      )
+      .attr("stroke", (d) => (d.id.startsWith("fake") ? "#374151" : "#fff"))
+      .attr("stroke-width", (d) => (d.id.startsWith("fake") ? 1 : 2))
       .style("cursor", "pointer")
-      .on("mouseover", (event, d: any) => {
-        if (!d.id.startsWith('fake')) {
+      .on("mouseover", (_event, d) => {
+        if (!d.id.startsWith("fake")) {
           setHoveredNode(d);
           // Highlight connected links
-          link.attr("stroke", (l: any) => l.source.id === d.id || l.target.id === d.id ? "#DC2626" : "#374151")
-              .attr("stroke-opacity", (l: any) => l.source.id === d.id || l.target.id === d.id ? 1 : 0.1);
+          link
+            .attr("stroke", (l) => {
+              const { s, t } = linkEndpoints(l);
+              return s.id === d.id || t.id === d.id ? "#DC2626" : "#374151";
+            })
+            .attr("stroke-opacity", (l) => {
+              const { s, t } = linkEndpoints(l);
+              return s.id === d.id || t.id === d.id ? 1 : 0.1;
+            });
           // Dim other nodes
-          nodeGroup.attr("opacity", (n: any) => n.id === d.id || data.links.some((l:any) => (l.source.id === d.id && l.target.id === n.id) || (l.target.id === d.id && l.source.id === n.id)) ? 1 : 0.2);
+          nodeGroup.attr("opacity", (n) =>
+            n.id === d.id ||
+            data.links.some((l) => {
+              const { s, t } = linkEndpoints(l);
+              return (
+                (s.id === d.id && t.id === n.id) || (t.id === d.id && s.id === n.id)
+              );
+            })
+              ? 1
+              : 0.2,
+          );
         }
       })
       .on("mouseout", () => {
@@ -145,17 +213,18 @@ export function SceniusGraph() {
         link.attr("stroke", "#374151").attr("stroke-opacity", 0.4);
         nodeGroup.attr("opacity", 1);
       })
-      .on("click", (event, d: any) => {
-        if (!d.id.startsWith('fake')) {
+      .on("click", (_event, d) => {
+        if (!d.id.startsWith("fake")) {
           router.push(`/profile/${d.id}`);
         }
       });
 
     // Node labels
     if (showLabels) {
-      nodeGroup.append("text")
-        .text((d: any) => !d.id.startsWith('fake') ? d.name : '')
-        .attr("x", (d: any) => d.radius + 5)
+      nodeGroup
+        .append("text")
+        .text((d) => (!d.id.startsWith("fake") ? d.name : ""))
+        .attr("x", (d) => d.radius + 5)
         .attr("y", 4)
         .style("font-family", "Inter, sans-serif")
         .style("font-size", "10px")
@@ -165,27 +234,26 @@ export function SceniusGraph() {
 
     simulation.on("tick", () => {
       link
-        .attr("x1", (d: any) => d.source.x)
-        .attr("y1", (d: any) => d.source.y)
-        .attr("x2", (d: any) => d.target.x)
-        .attr("y2", (d: any) => d.target.y);
+        .attr("x1", (d) => linkEndpoints(d).s.x ?? 0)
+        .attr("y1", (d) => linkEndpoints(d).s.y ?? 0)
+        .attr("x2", (d) => linkEndpoints(d).t.x ?? 0)
+        .attr("y2", (d) => linkEndpoints(d).t.y ?? 0);
 
-      nodeGroup
-        .attr("transform", (d: any) => `translate(${d.x},${d.y})`);
+      nodeGroup.attr("transform", (d) => `translate(${d.x ?? 0},${d.y ?? 0})`);
     });
 
-    function dragstarted(event: any) {
+    function dragstarted(event: D3DragEvent<SVGGElement, GraphNode, GraphNode>) {
       if (!event.active) simulation.alphaTarget(0.3).restart();
       event.subject.fx = event.subject.x;
       event.subject.fy = event.subject.y;
     }
 
-    function dragged(event: any) {
+    function dragged(event: D3DragEvent<SVGGElement, GraphNode, GraphNode>) {
       event.subject.fx = event.x;
       event.subject.fy = event.y;
     }
 
-    function dragended(event: any) {
+    function dragended(event: D3DragEvent<SVGGElement, GraphNode, GraphNode>) {
       if (!event.active) simulation.alphaTarget(0);
       event.subject.fx = null;
       event.subject.fy = null;

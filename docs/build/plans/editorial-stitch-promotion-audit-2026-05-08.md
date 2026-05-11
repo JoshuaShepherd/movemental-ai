@@ -39,7 +39,7 @@ The `editorial-stitch/` library was authored to a Stitch design-tool card galler
 ### `/pathway/safety` — `src/components/studio/pages/pathway/SafetyPage.tsx`
 
 - **Hero (lines 95–138).** Midnight band, dual CTA. **KEEP.**
-- **Seven artifacts grid (lines 143–174).** Serif italic numerals (01–07), no icons. **KEEP.**
+- **Seven decisions grid (lines 143–174).** Serif italic numerals (01–07), no icons. **KEEP.**
 - **Process steps (lines 179–222).** 4-column timeline with dot connectors. **KEEP.** Timeline not card.
 - **Toolkit section (lines 227–261).** Image + heading + body + form. **KEEP.** Form embed.
 - **Pricing section (lines 263–319).** Three-column included / not / payment terms. **KEEP.** Not a palette pattern.

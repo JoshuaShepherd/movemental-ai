@@ -1,0 +1,52 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "ethics_review_external_reviewer_interface",
+  "screenFamily": "ethics-workspace",
+  "documentTitle": "Movemental - Ethics Review",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": "MOVEMENTAL",
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "You've been invited to review.",
+    "supportingCopy": "AI Ethics Review Invitation",
+    "eyebrow": "Visible to Reviewers"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "You've been invited to review."
+        },
+        {
+          "level": 2,
+          "text": "Grant Narrative Drafting"
+        },
+        {
+          "level": 2,
+          "text": "Volunteer Scheduling Optimization"
+        },
+        {
+          "level": 2,
+          "text": "Anything else worth saying?"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

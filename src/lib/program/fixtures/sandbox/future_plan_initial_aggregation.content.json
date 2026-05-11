@@ -1,0 +1,72 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "future_plan_initial_aggregation",
+  "screenFamily": "future-plan-editor",
+  "documentTitle": "Aggregation View - Movemental",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": "MOVEMENTAL",
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": "SANDBOX"
+  },
+  "page": {
+    "headline": "Everything your Sandbox produced.",
+    "supportingCopy": "PHASE 02: ANALYSIS",
+    "eyebrow": "Verdict Portfolio"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 2,
+          "text": "ENGAGEMENT"
+        },
+        {
+          "level": 1,
+          "text": "Everything your Sandbox produced."
+        },
+        {
+          "level": 2,
+          "text": "Your Future Plan, in six sections, pre-drafted."
+        },
+        {
+          "level": 3,
+          "text": "Summary"
+        },
+        {
+          "level": 3,
+          "text": "What we learned"
+        },
+        {
+          "level": 3,
+          "text": "What we commit to"
+        },
+        {
+          "level": 3,
+          "text": "What we refuse"
+        },
+        {
+          "level": 3,
+          "text": "Governance updates"
+        },
+        {
+          "level": 3,
+          "text": "Case for next steps"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

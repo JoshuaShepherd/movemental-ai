@@ -5,7 +5,7 @@ import { canonicalPageUrl } from "@/lib/site-url";
 
 const title = "It Starts With Safety — read the toolkit";
 const description =
-  "The full Movemental Safety field guide on the web: why governance precedes deployment, the seven artifacts, the 15-question self-assessment your leadership team takes together, the named refusals, and the two-week facilitated engagement.";
+  "The full Movemental Safety field guide on the web: why governance precedes deployment, the seven decisions, the 15-question self-assessment your leadership team takes together, the named refusals, and the two-week facilitated engagement.";
 const ogTitle = "It Starts With Safety — Movemental field guide";
 
 export const metadata: Metadata = {

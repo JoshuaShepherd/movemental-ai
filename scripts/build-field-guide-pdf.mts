@@ -1,13 +1,16 @@
 /**
- * Build the Field Guide PDF by rendering /field-guide/safety in headless
- * Chromium with print-media emulation. Runs against an already-running dev or
- * production server; this script does not start one for you.
+ * Optional: regenerate a PDF from the `/field-guide/safety` web view (markdown-driven).
+ *
+ * The **canonical lead-magnet file** in production is usually the designed PDF at
+ * `public/downloads/movemental-it-starts-with-safety-field-guide.pdf`, maintained outside this script.
+ * Run this only when you intentionally want a printout of the web page (e.g. internal drafts).
+ *
+ * Requires an already-running dev or preview server — this script does not start one.
  *
  *   pnpm dev                       # in another terminal
  *   pnpm field-guide:pdf           # this script
  *
- * Override the source URL with FIELD_GUIDE_URL=http://... if you've started
- * `next start` on a non-default port.
+ * Override the source URL with FIELD_GUIDE_URL=http://... if needed.
  */
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
@@ -17,7 +20,7 @@ import { chromium } from "@playwright/test";
 
 const URL = process.env.FIELD_GUIDE_URL ?? "http://localhost:3000/field-guide/safety";
 const OUT_DIR = path.join(process.cwd(), "public/downloads");
-const OUT_FILE = path.join(OUT_DIR, "it-starts-with-safety-v1.pdf");
+const OUT_FILE = path.join(OUT_DIR, "movemental-it-starts-with-safety-field-guide-web-export.pdf");
 
 async function main() {
   await mkdir(OUT_DIR, { recursive: true });

@@ -1,0 +1,64 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "ethics_review_aggregated_feedback_view",
+  "screenFamily": "ethics-workspace",
+  "documentTitle": "Phase 06 Workspace - Aggregated Feedback",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "Cohort Workspace",
+    "supportingCopy": "Phase 06 Workspace Cohort Workspace Phase 06",
+    "eyebrow": "Review period closed June 24. 8 of 11 reviewers responded. 23 comments received."
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 2,
+          "text": "Phase 06 Workspace"
+        },
+        {
+          "level": 1,
+          "text": "Cohort Workspace"
+        },
+        {
+          "level": 1,
+          "text": "Aggregated Feedback"
+        },
+        {
+          "level": 2,
+          "text": "Use Case Synthesis"
+        },
+        {
+          "level": 2,
+          "text": "Open Questions & Thematic Observations"
+        },
+        {
+          "level": 3,
+          "text": "Theme Alpha: Resource Bottlenecks"
+        },
+        {
+          "level": 3,
+          "text": "Theme Beta: Documentation Clarity"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "ai_organizational_policy_detailed_view",
+  "screenFamily": "governance-document",
+  "documentTitle": "AI Organizational Policy - Movemental",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": "MOVEMENTAL",
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "AI Organizational Policy",
+    "supportingCopy": "What we will do, and what we refuse to do, operationally",
+    "eyebrow": "Guidebook"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "AI Organizational Policy"
+        },
+        {
+          "level": 2,
+          "text": "Named Refusals"
+        },
+        {
+          "level": 3,
+          "text": "Eligibility determinations"
+        },
+        {
+          "level": 3,
+          "text": "Behavioral surveillance"
+        },
+        {
+          "level": 3,
+          "text": "Personal voice"
+        },
+        {
+          "level": 3,
+          "text": "AI substitution in care"
+        },
+        {
+          "level": 3,
+          "text": "Deepfakes"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

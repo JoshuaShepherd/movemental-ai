@@ -1,0 +1,84 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "cohort_view_sandboxlive_dashboard",
+  "screenFamily": "oversight-modules",
+  "documentTitle": "SandboxLive Dashboard - Cohort View",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": "SANDBOX"
+  },
+  "page": {
+    "headline": "What your cohort is working on.",
+    "supportingCopy": "Sandbox is a shared learning experience. This view shows what other cohort members are testing, what's gaining traction, and what's worth a conversation...",
+    "eyebrow": "Strategic Pillar"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "What your cohort is working on."
+        },
+        {
+          "level": 2,
+          "text": "Five recipes have been tried by multiple cohort members."
+        },
+        {
+          "level": 3,
+          "text": "Grant Proposal Drafting Assistant"
+        },
+        {
+          "level": 3,
+          "text": "Strategic Memo Drafting"
+        },
+        {
+          "level": 3,
+          "text": "Voice-Calibrated Style-Checker"
+        },
+        {
+          "level": 3,
+          "text": "Plain-Language Accessibility Reformatter"
+        },
+        {
+          "level": 3,
+          "text": "Process Documentation from Staff Interviews"
+        },
+        {
+          "level": 2,
+          "text": "Three discoveries from your cohort this week."
+        },
+        {
+          "level": 3,
+          "text": "\"Voice preservation works differently when your voice is still forming.\""
+        },
+        {
+          "level": 3,
+          "text": "\"Process documentation is harder than it looks.\""
+        },
+        {
+          "level": 3,
+          "text": "\"The Style-Checker pays for itself in the first hour.\""
+        },
+        {
+          "level": 2,
+          "text": "Seven members. Where each one is right now."
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

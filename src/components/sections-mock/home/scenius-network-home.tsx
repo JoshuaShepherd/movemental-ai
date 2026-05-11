@@ -103,10 +103,14 @@ const RING_STROKE = [
   "var(--audience-ring-institutions)",
 ] as const;
 
-function appendAudienceRingArcs(
-  portraitSel: d3.Selection<SVGGElement, SceniusV3GraphNode, any, any>,
-  d: SceniusV3GraphNode,
-) {
+type NodeLayerSel = d3.Selection<
+  SVGGElement,
+  SceniusV3GraphNode,
+  SVGGElement,
+  SceniusV3GraphNode | undefined
+>;
+
+function appendAudienceRingArcs(portraitSel: NodeLayerSel, d: SceniusV3GraphNode) {
   const g = portraitSel
     .append("g")
     .attr("class", "audience-ring")
@@ -159,7 +163,7 @@ function segmentStrengthPct(
 }
 
 function applyNodeOpacity(
-  sel: d3.Selection<SVGGElement, SceniusV3GraphNode, any, any>,
+  sel: NodeLayerSel,
   activeFilters: ReadonlySet<AudienceSegment>,
   hoveredPortraitId: string | null,
 ) {
@@ -192,11 +196,12 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
     unknown
   > | null>(null);
   const [dims, setDims] = useState<{ w: number; h: number } | null>(null);
-  const [showLabels, setShowLabels] = useState(true);
   const [filters, setFilters] = useState<ReadonlySet<AudienceSegment>>(
     () => new Set(),
   );
   const [hoverNode, setHoverNode] = useState<SceniusV3GraphNode | null>(null);
+  /** Tap a portrait to pin the detail panel + name tag (esp. coarse pointers). */
+  const [tappedNode, setTappedNode] = useState<SceniusV3GraphNode | null>(null);
   const reducedMotion = useSyncExternalStore(
     subscribeReducedMotion,
     snapshotReducedMotion,
@@ -207,6 +212,12 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
   filtersRef.current = filters;
   const hoverIdRef = useRef<string | null>(null);
   hoverIdRef.current = hoverNode?.id ?? null;
+  const tappedNodeRef = useRef<SceniusV3GraphNode | null>(null);
+  tappedNodeRef.current = tappedNode;
+  const setTappedNodeRef = useRef(setTappedNode);
+  setTappedNodeRef.current = setTappedNode;
+
+  const displayNode = hoverNode ?? tappedNode;
 
   const leaders = useMemo(() => buildLeadersFromMovementVoices(), []);
 
@@ -218,11 +229,21 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
       return next;
     });
     setHoverNode(null);
+    setTappedNode(null);
   }, []);
 
   const clearAudienceFilters = useCallback(() => {
     setFilters(new Set());
     setHoverNode(null);
+    setTappedNode(null);
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setTappedNode(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   useEffect(() => {
@@ -286,7 +307,7 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
       .attr("width", width)
       .attr("height", height)
       .attr("fill", "url(#scenius-home-bg)")
-      .attr("class", "pointer-events-none");
+      .attr("class", "scenius-home-bg pointer-events-none");
 
     const rootG = svg.append("g").attr("class", "scenius-zoom-inner");
 
@@ -420,36 +441,72 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
           .attr("stroke-opacity", 0.2)
           .attr("stroke-width", 2)
           .style("pointer-events", "none");
-        appendAudienceRingArcs(
-          sel as d3.Selection<SVGGElement, SceniusV3GraphNode, any, any>,
-          d,
-        );
+        appendAudienceRingArcs(sel as unknown as NodeLayerSel, d);
       }
       sel
         .append("circle")
         .attr("r", d.imageUrl ? d.radius + 12 : d.radius)
         .attr("fill", "transparent")
         .attr("stroke", "none")
+        .attr("data-scenius-node-hit", d.imageUrl ? "1" : null)
         .style("pointer-events", "all");
     });
 
     applyNodeOpacity(nodeGroup, activeFilters, null);
 
-    const labelSel = nodeGroup
-      .append("text")
-      .text((d) => (d.imageUrl && showLabels ? d.name : ""))
-      .attr("x", (d) => d.radius + 5)
-      .attr("y", 4)
-      .style("font-family", "var(--font-sans), ui-sans-serif, system-ui")
-      .style("font-size", "10px")
-      .style("fill", "var(--foreground)")
-      .style("fill-opacity", 0.75)
-      .style("pointer-events", "none");
+    const nameTagLayer = rootG
+      .append("g")
+      .attr("class", "scenius-name-tag")
+      .style("pointer-events", "none")
+      .style("opacity", 0);
 
-    const syncLabels = () => {
-      labelSel.text((d) => (d.imageUrl && showLabels ? d.name : ""));
-    };
-    syncLabels();
+    const nameTagBg = nameTagLayer
+      .append("rect")
+      .attr("rx", 7)
+      .attr("ry", 7)
+      .attr("fill", "var(--card)")
+      .attr("stroke", "var(--border)")
+      .attr("stroke-width", 1);
+
+    const nameTagText = nameTagLayer
+      .append("text")
+      .attr("text-anchor", "middle")
+      .attr("dominant-baseline", "middle")
+      .style("font-family", "var(--font-sans), ui-sans-serif, system-ui")
+      .style("font-size", "11px")
+      .style("font-weight", "600")
+      .style("fill", "var(--foreground)");
+
+    function layoutNameTag(n: SceniusV3GraphNode) {
+      const label = n.name;
+      nameTagText.text(label);
+      const approxW = Math.min(220, Math.max(72, label.length * 7 + 20));
+      const h = 26;
+      nameTagBg
+        .attr("x", -approxW / 2)
+        .attr("y", -h / 2)
+        .attr("width", approxW)
+        .attr("height", h);
+      nameTagText.attr("x", 0).attr("y", 0);
+      const gap = 8;
+      nameTagLayer.attr(
+        "transform",
+        `translate(${n.x ?? 0},${(n.y ?? 0) - n.radius - h / 2 - gap})`,
+      );
+      nameTagLayer.style("opacity", 1);
+    }
+
+    function syncNameTag() {
+      const id = hoverIdRef.current ?? tappedNodeRef.current?.id ?? null;
+      const n = id
+        ? nodes.find((node) => node.id === id && node.imageUrl)
+        : undefined;
+      if (!n || n.x == null || n.y == null) {
+        nameTagLayer.style("opacity", 0);
+        return;
+      }
+      layoutNameTag(n);
+    }
 
     const ticked = () => {
       link
@@ -462,6 +519,7 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
         "transform",
         (d) => `translate(${d.x ?? 0},${d.y ?? 0})`,
       );
+      syncNameTag();
     };
 
     if (reducedMotion) {
@@ -493,16 +551,33 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
         );
     };
 
+    svg.on("click.tapclear", (event: Event) => {
+      const path = event.composedPath() as Element[];
+      const hitPortrait = path.some(
+        (el) =>
+          el instanceof Element && el.hasAttribute("data-scenius-node-hit"),
+      );
+      if (!hitPortrait) {
+        setTappedNodeRef.current(null);
+      }
+    });
+
     nodeGroup
-      .style("cursor", "grab")
+      .style("cursor", (d) => (d.imageUrl ? "pointer" : "grab"))
       .on("mouseover", (_event, d) => {
         if (!d.imageUrl) return;
         hoverIdRef.current = d.id;
         setHoverNode(d);
         setLinkHover(d.id);
         applyNodeOpacity(nodeGroup, filtersRef.current, d.id);
+        syncNameTag();
       })
-      .on("mouseout", () => {
+      .on("mouseout", (event) => {
+        const rt = event.relatedTarget as Node | null;
+        if (rt && host.contains(rt)) {
+          const panel = host.querySelector("[data-scenius-home-detail]");
+          if (panel?.contains(rt)) return;
+        }
         hoverIdRef.current = null;
         setHoverNode(null);
         setLinkHover(null);
@@ -511,11 +586,12 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
           .attr("stroke-opacity", LINK_BASE_OPACITY)
           .attr("stroke-width", LINK_BASE_WIDTH);
         applyNodeOpacity(nodeGroup, filtersRef.current, null);
+        syncNameTag();
       })
-      .on("click", (_event, d) => {
-        if (d.imageUrl) {
-          window.location.hash = `#/profile/${d.id}`;
-        }
+      .on("click", (event, d) => {
+        if (!d.imageUrl) return;
+        event.stopPropagation();
+        setTappedNodeRef.current((prev) => (prev?.id === d.id ? null : d));
       });
 
     const filterListener = () => {
@@ -524,15 +600,20 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
     };
     (host as HTMLElement & { __sceniusFilter?: () => void }).__sceniusFilter =
       filterListener;
+    (host as HTMLElement & { __sceniusSyncTag?: () => void }).__sceniusSyncTag =
+      syncNameTag;
 
     return () => {
       simulation.stop();
       svg.on(".zoom", null);
+      svg.on("click.tapclear", null);
       zoomBehaviorRef.current = null;
       delete (host as HTMLElement & { __sceniusFilter?: () => void })
         .__sceniusFilter;
+      delete (host as HTMLElement & { __sceniusSyncTag?: () => void })
+        .__sceniusSyncTag;
     };
-  }, [dims, leaders, reducedMotion, showLabels]);
+  }, [dims, leaders, reducedMotion]);
 
   useEffect(() => {
     const host = wrapRef.current;
@@ -541,9 +622,12 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
     if (fn) fn();
   }, [filters]);
 
-  const onToggleLabels = useCallback(() => {
-    setShowLabels((v) => !v);
-  }, []);
+  useEffect(() => {
+    const host = wrapRef.current;
+    const sync = (host as HTMLElement & { __sceniusSyncTag?: () => void })
+      .__sceniusSyncTag;
+    if (sync) sync();
+  }, [tappedNode]);
 
   const onResetView = useCallback(() => {
     zoomTransformRef.current = d3.zoomIdentity;
@@ -553,6 +637,7 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
       d3.select(el).transition().duration(200).call(zb.transform, d3.zoomIdentity);
     }
     setHoverNode(null);
+    setTappedNode(null);
   }, []);
 
   return (
@@ -581,17 +666,10 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
       >
         <div className="pointer-events-none absolute inset-0 z-10 flex flex-col justify-end p-3 sm:p-4">
           <div className="pointer-events-auto max-w-xs rounded-xl border border-border/80 bg-card/95 p-3 shadow-ambient backdrop-blur-md">
-            <div className="mb-2 flex items-center justify-between gap-2">
+            <div className="mb-2">
               <span className="text-[10px] font-medium uppercase tracking-eyebrow text-muted-foreground">
                 Filter
               </span>
-              <button
-                type="button"
-                className="text-[10px] font-medium text-primary hover:underline"
-                onClick={onToggleLabels}
-              >
-                {showLabels ? "Hide labels" : "Show labels"}
-              </button>
             </div>
             <p className="sr-only">
               Optional audience filters emphasize voices with moderate or
@@ -645,20 +723,23 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
           className="pointer-events-none absolute right-3 top-3 z-10 max-w-[min(18rem,calc(100%-1.5rem))] rounded-xl border border-border/80 bg-card/95 p-4 shadow-ambient backdrop-blur-md sm:right-4 sm:top-4"
           aria-live="polite"
         >
-          {hoverNode?.imageUrl ? (
-            <div className="pointer-events-auto space-y-3 text-left">
+          {displayNode?.imageUrl ? (
+            <div
+              className="pointer-events-auto space-y-3 text-left"
+              data-scenius-home-detail
+            >
               <p className="text-[10px] font-medium uppercase tracking-eyebrow text-muted-foreground">
                 Voice
               </p>
               <p className="text-base font-semibold leading-snug text-foreground">
-                {hoverNode.name}
+                {displayNode.name}
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                {hoverNode.role}
+                {displayNode.role}
               </p>
-              {hoverNode.topics.length > 0 ? (
+              {displayNode.topics.length > 0 ? (
                 <div className="flex flex-wrap gap-1">
-                  {hoverNode.topics.map((t) => (
+                  {displayNode.topics.map((t) => (
                     <span
                       key={t}
                       className="rounded border border-border/80 bg-muted/50 px-1.5 py-0.5 text-[10px] capitalize text-muted-foreground"
@@ -668,7 +749,7 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
                   ))}
                 </div>
               ) : null}
-              {hoverNode.researchPending ? (
+              {displayNode.researchPending ? (
                 <p className="border-t border-border pt-3 text-xs text-muted-foreground">
                   Credentials not mapped for this profile yet.
                 </p>
@@ -679,9 +760,9 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
                   </p>
                   <ul className="space-y-3">
                     {SEGMENT_KEYS.map((seg) => {
-                      const st = hoverNode.audienceCredentials?.segments[seg];
+                      const st = displayNode.audienceCredentials?.segments[seg];
                       const summary =
-                        hoverNode.audienceCredentials?.summaries[seg];
+                        displayNode.audienceCredentials?.summaries[seg];
                       if (!st) return null;
                       const pct = segmentStrengthPct(st);
                       return (
@@ -714,11 +795,20 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
                   </ul>
                 </div>
               )}
+              <p className="border-t border-border pt-3">
+                <a
+                  href={`#/profile/${displayNode.id}`}
+                  className="text-xs font-medium text-primary hover:underline"
+                >
+                  Open profile
+                </a>
+              </p>
             </div>
           ) : (
             <div className="pointer-events-auto text-left">
               <p className="text-xs leading-snug text-muted-foreground">
-                Hover a portrait for audience signal and credentials.
+                Hover or tap a portrait for audience signal and credentials. Tap
+                again to deselect, or press Escape.
               </p>
             </div>
           )}

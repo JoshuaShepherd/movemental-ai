@@ -86,7 +86,7 @@ export const churchesCaseStudy: CaseStudyContent = {
         },
         {
           type: "p",
-          text: "In that session, the team produced first drafts of two artifacts. The Acceptable Use Statement named what AI may and may not do at the church — broadly permissive for back-office work, sharply restrictive for direct pastoral correspondence and sermon authorship. The Care Boundaries document named four categories where AI could not be used at all — grief and bereavement communication, marriage and family counseling, baptism and membership conversations, end-of-life pastoral care.",
+          text: "In that session, the team produced first drafts of two decisions. The Acceptable Use Statement named what AI may and may not do at the church — broadly permissive for back-office work, sharply restrictive for direct pastoral correspondence and sermon authorship. The Care Boundaries document named four categories where AI could not be used at all — grief and bereavement communication, marriage and family counseling, baptism and membership conversations, end-of-life pastoral care.",
         },
         {
           type: "p",
@@ -102,7 +102,7 @@ export const churchesCaseStudy: CaseStudyContent = {
         },
         {
           type: "p",
-          text: "Disclosure was the most contested artifact. The team disagreed about whether the congregation needed to know every time AI was used in any communication or only in specific categories. After 45 minutes of discussion, they landed on the principle: disclosure is required whenever AI substantially shapes content the congregation receives as the personal voice of a staff member. A sermon that used AI for research and outlining did not require disclosure. A sermon that used AI to write significant prose did. An email that used AI to clean up grammar did not. An email that used AI to generate the substance did.",
+          text: "Disclosure was the most contested decision. The team disagreed about whether the congregation needed to know every time AI was used in any communication or only in specific categories. After 45 minutes of discussion, they landed on the principle: disclosure is required whenever AI substantially shapes content the congregation receives as the personal voice of a staff member. A sermon that used AI for research and outlining did not require disclosure. A sermon that used AI to write significant prose did. An email that used AI to clean up grammar did not. An email that used AI to generate the substance did.",
         },
         {
           type: "p",
@@ -126,7 +126,7 @@ export const churchesCaseStudy: CaseStudyContent = {
         },
         {
           type: "p",
-          text: "The Named Refusals document was the artifact the senior pastor most wanted to be involved in. He joined this session. The team named six specific applications of AI the church committed to refuse on principle, regardless of pressure — AI-generated sermons delivered without disclosure, AI chatbots impersonating pastoral staff, AI-generated images of biblical figures presented as real, AI used to surveil congregant attendance or giving, AI used to generate fundraising appeals in the personal voice of pastoral staff, and AI used to replace prayer in any form.",
+          text: "The Named Refusals document was the decision the senior pastor most wanted to be involved in. He joined this session. The team named six specific applications of AI the church committed to refuse on principle, regardless of pressure — AI-generated sermons delivered without disclosure, AI chatbots impersonating pastoral staff, AI-generated images of biblical figures presented as real, AI used to surveil congregant attendance or giving, AI used to generate fundraising appeals in the personal voice of pastoral staff, and AI used to replace prayer in any form.",
         },
         {
           type: "p",
@@ -138,7 +138,7 @@ export const churchesCaseStudy: CaseStudyContent = {
         },
         {
           type: "p",
-          text: "The team reviewed all seven artifacts as a complete document. The executive pastor identified language that needed tightening. The team resolved one place where two artifacts appeared to contradict each other by clarifying that Care Boundaries took precedence over Acceptable Use in any conflict. They agreed the Named Refusals would be made public on the church website alongside an accessible version of the Acceptable Use Statement.",
+          text: "The team reviewed all seven decisions as a complete document. The executive pastor identified language that needed tightening. The team resolved one place where two decisions appeared to contradict each other by clarifying that Care Boundaries took precedence over Acceptable Use in any conflict. They agreed the Named Refusals would be made public on the church website alongside an accessible version of the Acceptable Use Statement.",
         },
         {
           type: "h3",
@@ -146,7 +146,7 @@ export const churchesCaseStudy: CaseStudyContent = {
         },
         {
           type: "p",
-          text: "The Movemental facilitator walked through the seven artifacts with the senior pastor, the executive pastor, and the elder chair. She confirmed completion. She delivered a Sandbox Readiness Assessment showing the church was ready to begin Sandbox work in the next six months if they chose to. The engagement closed.",
+          text: "The Movemental facilitator walked through the seven decisions with the senior pastor, the executive pastor, and the elder chair. She confirmed completion. She delivered a Sandbox Readiness Assessment showing the church was ready to begin Sandbox work in the next six months if they chose to. The engagement closed.",
         },
       ],
     },
@@ -157,7 +157,7 @@ export const churchesCaseStudy: CaseStudyContent = {
       body: [
         {
           type: "p",
-          text: "Seven artifacts, ratified by the elder team at the next monthly meeting. A staff that had worked through actual disagreements rather than hiding them. A congregation that would be told, going forward, when AI substantially shaped content they received. The unauthorized chatbot was gone. Two unsanctioned vendors were gone. The Care Boundaries were public.",
+          text: "Seven decisions, ratified by the elder team at the next monthly meeting. A staff that had worked through actual disagreements rather than hiding them. A congregation that would be told, going forward, when AI substantially shaped content they received. The unauthorized chatbot was gone. Two unsanctioned vendors were gone. The Care Boundaries were public.",
         },
         {
           type: "callout",
@@ -183,7 +183,7 @@ export const churchesCaseStudy: CaseStudyContent = {
       body: [
         {
           type: "p",
-          text: "Three months later, the executive pastor came back to Movemental. The Safety artifacts had surfaced about a dozen specific AI use cases the team wanted to explore further but had not been ready to commit to during Safety. They wanted facilitated space to test them — to actually try the use cases, evaluate them honestly, and decide whether to deploy, modify, or refuse each one.",
+          text: "Three months later, the executive pastor came back to Movemental. The Safety decisions had surfaced about a dozen specific AI use cases the team wanted to explore further but had not been ready to commit to during Safety. They wanted facilitated space to test them — to actually try the use cases, evaluate them honestly, and decide whether to deploy, modify, or refuse each one.",
         },
         {
           type: "p",
@@ -191,7 +191,7 @@ export const churchesCaseStudy: CaseStudyContent = {
         },
         {
           type: "p",
-          text: "Over four weeks, the team worked through the use cases methodically. Each use case got a structured evaluation — what it would do, what it would cost, what risks it carried, what alternatives existed. By the end of Sandbox, the team had a Use Case Portfolio with three categories: green-light (deploy with the existing artifacts as guardrails), yellow-light (deploy after additional work or staff training), and red-light (refuse, with the reasons documented). Of the twelve use cases that entered Sandbox, four came out green, five yellow, and three red.",
+          text: "Over four weeks, the team worked through the use cases methodically. Each use case got a structured evaluation — what it would do, what it would cost, what risks it carried, what alternatives existed. By the end of Sandbox, the team had a Use Case Portfolio with three categories: green-light (deploy with the existing decisions as guardrails), yellow-light (deploy after additional work or staff training), and red-light (refuse, with the reasons documented). Of the twelve use cases that entered Sandbox, four came out green, five yellow, and three red.",
         },
         {
           type: "p",
@@ -211,7 +211,7 @@ export const churchesCaseStudy: CaseStudyContent = {
         },
         {
           type: "p",
-          text: "The associate pastor and the communications director went through the cohort together. They came back at the end able to lead AI conversations with other staff, to draft AI policy revisions when the church updated its artifacts the following year, and to mentor other staff in using AI tools well. They became the church's internal capacity for what had previously required outside facilitation.",
+          text: "The associate pastor and the communications director went through the cohort together. They came back at the end able to lead AI conversations with other staff, to draft AI policy revisions when the church updated its decisions the following year, and to mentor other staff in using AI tools well. They became the church's internal capacity for what had previously required outside facilitation.",
         },
       ],
     },
@@ -223,7 +223,7 @@ export const churchesCaseStudy: CaseStudyContent = {
       body: [
         {
           type: "p",
-          text: "The church has not yet engaged Solutions. The senior pastor has said publicly that he wants the church to live with the artifacts and the formed leaders for a full year before deciding whether to deploy any new AI infrastructure. Movemental agrees with that posture. Solutions is for organizations ready to deploy on a foundation they can defend. The church will know when they are ready.",
+          text: "The church has not yet engaged Solutions. The senior pastor has said publicly that he wants the church to live with the decisions and the formed leaders for a full year before deciding whether to deploy any new AI infrastructure. Movemental agrees with that posture. Solutions is for organizations ready to deploy on a foundation they can defend. The church will know when they are ready.",
         },
       ],
     },

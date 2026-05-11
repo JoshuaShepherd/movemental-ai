@@ -6,7 +6,7 @@ export const institutionsCaseStudy: CaseStudyContent = {
   hero: {
     kicker: "Case study · An institution",
     title: "Movemental for Institutions.",
-    lede: "What happens when a graduate seminary engages the Movemental process — three constituencies (faculty, students, board) drafting and ratifying the same seven artifacts in parallel. Reconstructed from common patterns. The process is the actual process.",
+    lede: "What happens when a graduate seminary engages the Movemental process — three constituencies (faculty, students, board) drafting and ratifying the same seven decisions in parallel. Reconstructed from common patterns. The process is the actual process.",
   },
   sections: [
     {
@@ -50,11 +50,11 @@ export const institutionsCaseStudy: CaseStudyContent = {
       body: [
         {
           type: "p",
-          text: "Institutions are different from churches and nonprofits. They have multiple constituencies that all need to be involved in governance — faculty (whose tenure protects them and whose buy-in cannot be commanded), students (whose enrollment determines viability), and the board and denomination (who hold ultimate authority). A single working team could not produce artifacts that all three constituencies would ratify.",
+          text: "Institutions are different from churches and nonprofits. They have multiple constituencies that all need to be involved in governance — faculty (whose tenure protects them and whose buy-in cannot be commanded), students (whose enrollment determines viability), and the board and denomination (who hold ultimate authority). A single working team could not produce deliverables that all three constituencies would ratify.",
         },
         {
           type: "p",
-          text: "For institutional engagements, Safety expands to a three-track structure. Each constituency forms its own working team. The artifacts are drafted by all three teams in parallel, with cross-track integration sessions to reconcile differences before final ratification. The engagement runs six weeks rather than two and is priced at $7,500 — three times the standard Safety price.",
+          text: "For institutional engagements, Safety expands to a three-track structure. Each constituency forms its own working team. The decisions are drafted by all three teams in parallel, with cross-track integration sessions to reconcile differences before final ratification. The engagement runs six weeks rather than two and is priced at $7,500 — three times the standard Safety price.",
         },
         {
           type: "p",
@@ -70,7 +70,7 @@ export const institutionsCaseStudy: CaseStudyContent = {
         },
         {
           type: "p",
-          text: "The Faculty track surfaced the deepest tensions. Three faculty members held the position that AI was fundamentally incompatible with theological education, which they understood as a formative practice involving the embodied transmission of tradition from teacher to student. Four faculty members held that AI was a tool students would encounter in ministry and that teaching them to use it well was part of the seminary's responsibility. The remaining faculty were somewhere between. The track facilitator's job was not to resolve this disagreement but to surface it and generate artifacts that could function across it.",
+          text: "The Faculty track surfaced the deepest tensions. Three faculty members held the position that AI was fundamentally incompatible with theological education, which they understood as a formative practice involving the embodied transmission of tradition from teacher to student. Four faculty members held that AI was a tool students would encounter in ministry and that teaching them to use it well was part of the seminary's responsibility. The remaining faculty were somewhere between. The track facilitator's job was not to resolve this disagreement but to surface it and generate decisions that could function across it.",
         },
         {
           type: "p",
@@ -90,7 +90,7 @@ export const institutionsCaseStudy: CaseStudyContent = {
         },
         {
           type: "p",
-          text: "The integration sessions were the engagement's distinguishing feature. After each track drafted its artifacts independently, the integration sessions brought representatives from all three tracks together to reconcile differences. The faculty's preferred Acceptable Use Statement was more restrictive than the administrative track's. The student track's preferred Disclosure Standards were more demanding than the faculty's. The integration sessions did not resolve these tensions by averaging them. They resolved them by identifying which constituency had the strongest claim on each provision.",
+          text: "The integration sessions were the engagement's distinguishing feature. After each track drafted its decisions independently, the integration sessions brought representatives from all three tracks together to reconcile differences. The faculty's preferred Acceptable Use Statement was more restrictive than the administrative track's. The student track's preferred Disclosure Standards were more demanding than the faculty's. The integration sessions did not resolve these tensions by averaging them. They resolved them by identifying which constituency had the strongest claim on each provision.",
         },
         {
           type: "p",
@@ -118,7 +118,7 @@ export const institutionsCaseStudy: CaseStudyContent = {
         },
         {
           type: "p",
-          text: "The Named Refusals document was the most discussed artifact. The faculty senate spent three hours on it. The final document named eight specific applications the institution committed to refuse — AI-generated dissertations or theses presented as student work, AI used to make admission or scholarship decisions, AI used to generate sermons or liturgical materials presented as student or faculty work without disclosure, AI used to assess spiritual formation, AI chatbots impersonating faculty for student engagement, AI used to predict student attrition for resource allocation, AI used to generate fundraising appeals in the personal voice of faculty or alumni, and AI used to deepfake or impersonate any member of the institution's tradition.",
+          text: "The Named Refusals document was the most discussed decision. The faculty senate spent three hours on it. The final document named eight specific applications the institution committed to refuse — AI-generated dissertations or theses presented as student work, AI used to make admission or scholarship decisions, AI used to generate sermons or liturgical materials presented as student or faculty work without disclosure, AI used to assess spiritual formation, AI chatbots impersonating faculty for student engagement, AI used to predict student attrition for resource allocation, AI used to generate fundraising appeals in the personal voice of faculty or alumni, and AI used to deepfake or impersonate any member of the institution's tradition.",
         },
         {
           type: "p",
@@ -130,11 +130,11 @@ export const institutionsCaseStudy: CaseStudyContent = {
         },
         {
           type: "p",
-          text: "Faculty senate, student senate, administrative council, and finally the board of trustees. Each body received the artifacts in the form most relevant to it. The faculty senate received the faculty-specific provisions in detail. The student senate received the student-specific provisions. The administrative council received the operations-specific provisions. The board received the complete set with executive summary.",
+          text: "Faculty senate, student senate, administrative council, and finally the board of trustees. Each body received the packet in the form most relevant to it. The faculty senate received the faculty-specific provisions in detail. The student senate received the student-specific provisions. The administrative council received the operations-specific provisions. The board received the complete set with executive summary.",
         },
         {
           type: "p",
-          text: "The board ratification meeting included a 45-minute presentation by the president, the academic dean, and the Movemental facilitator. The board voted to ratify all seven artifacts unanimously. The board chair specifically commended the Care Boundaries and Named Refusals documents as exemplary.",
+          text: "The board ratification meeting included a 45-minute presentation by the president, the academic dean, and the Movemental facilitator. The board voted to ratify all seven decisions unanimously. The board chair specifically commended the Care Boundaries and Named Refusals documents as exemplary.",
         },
         {
           type: "p",
@@ -149,7 +149,7 @@ export const institutionsCaseStudy: CaseStudyContent = {
       body: [
         {
           type: "p",
-          text: "Seven artifacts, ratified by faculty senate, student senate, administrative council, and the board of trustees. A faculty handbook supplement specific to AI in theological education that was now being shared with ATS as a reference. A student handbook supplement being shared with the institution's accreditation body during its standards review. A public Named Refusals document that would later be requested by eleven peer institutions.",
+          text: "Seven decisions, ratified by faculty senate, student senate, administrative council, and the board of trustees. A faculty handbook supplement specific to AI in theological education that was now being shared with ATS as a reference. A student handbook supplement being shared with the institution's accreditation body during its standards review. A public Named Refusals document that would later be requested by eleven peer institutions.",
         },
         {
           type: "callout",
@@ -158,7 +158,7 @@ export const institutionsCaseStudy: CaseStudyContent = {
           body: [
             "$7,500 for Movemental Safety (institutional scope, three tracks)",
             "$5,000 for outside legal review of the Data Handling Protocol",
-            "Seven artifacts ratified by faculty senate, student senate, administrative council, and the board",
+            "Seven decisions ratified by faculty senate, student senate, administrative council, and the board",
             "Care Boundaries and Named Refusals adopted as public documents",
           ],
         },

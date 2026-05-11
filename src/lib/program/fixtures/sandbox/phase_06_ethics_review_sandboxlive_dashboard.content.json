@@ -1,0 +1,60 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "phase_06_ethics_review_sandboxlive_dashboard",
+  "screenFamily": "phase-workspace",
+  "documentTitle": "Phase 06 Ethics Review",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": "MOVEMENTAL",
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": "SANDBOX"
+  },
+  "page": {
+    "headline": "What outside voices are saying",
+    "supportingCopy": "AI Strategic Ledger",
+    "eyebrow": "USE CASES UNDER REVIEW"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 2,
+          "text": "Engagement Path"
+        },
+        {
+          "level": 1,
+          "text": "What outside voices are saying"
+        },
+        {
+          "level": 2,
+          "text": "Click any use case for full reviewer comments"
+        },
+        {
+          "level": 3,
+          "text": "Grant Proposal Drafting Assistant"
+        },
+        {
+          "level": 3,
+          "text": "Strategic Memo Generator"
+        },
+        {
+          "level": 2,
+          "text": "Three questions surfaced by the review"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

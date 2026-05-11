@@ -1,0 +1,60 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "sponsor_oversight_view_sandboxlive",
+  "screenFamily": "oversight-modules",
+  "documentTitle": "Sponsor Oversight View - SandboxLive",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": "MOVEMENTAL",
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": "SANDBOX"
+  },
+  "page": {
+    "headline": "Where your Sandbox stands.",
+    "supportingCopy": "Aggregated cohort progress, decisions waiting on you, and items that warrant senior attention.",
+    "eyebrow": "SPONSOR VIEW"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Where your Sandbox stands."
+        },
+        {
+          "level": 2,
+          "text": "Three items need your attention."
+        },
+        {
+          "level": 3,
+          "text": "BOUNDARY COUNTERSIGN"
+        },
+        {
+          "level": 3,
+          "text": "USE CASE FLAGGED"
+        },
+        {
+          "level": 3,
+          "text": "DISCERNMENT SESSION SCHEDULING"
+        },
+        {
+          "level": 3,
+          "text": "Boundary and Guidebook Alignment"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

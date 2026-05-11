@@ -326,7 +326,7 @@ At Level 3 (Facilitated MVP, $5,000):
 A Movemental facilitator runs a 90-minute leadership conversation that surfaces the answers to the 
 decision questions in the room. The facilitator drafts the charter within 72 hours, returns it for one 
 round of leadership feedback, and supports the board ratification meeting (attending if helpful). The 
-Charter is one of seven artifacts produced in the two-week engagement. The facilitator handles 
+Charter is one of seven decisions produced in the two-week engagement. The facilitator handles 
 voice, language, theological texture, and the political navigation of getting the document ratified. 
 The Charter is finalized by end of week one of the engagement.
 Page 10 of 61
@@ -1943,7 +1943,7 @@ prior stage. Each stage produces specific artifacts that the subsequent stage ca
 a menu where customers pick favorites; it is a sequence with logic. At the same time, organizations 
 enter the path at different points, hold different paces through it, and can pause between stages when 
 their season requires it. The path is firm in structure and accommodating in pace.
-•Safety. Two-week MVP. Seven artifacts. The non-negotiable foundation. Free Toolkit, AI-Assisted 
+•Safety. Two-week MVP. Seven decisions. The non-negotiable foundation. Free Toolkit, AI-Assisted 
 Product (~$1,997), or Facilitated MVP ($5,000).
 •Sandbox. Four weeks. Use Case Portfolio plus Discernment Memo plus Readiness Assessment. The 
 exploratory disciplined discovery. Self-Service Toolkit (~$497), AI-Assisted Sandbox (~$3,997), or 

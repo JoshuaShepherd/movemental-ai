@@ -522,7 +522,7 @@ export function HowWeUseAiPageContent() {
               </h2>
               <p className="mt-8 max-w-152 text-lg leading-relaxed text-inverse-muted">
                 The free Safety toolkit is the most direct way to see how Movemental&apos;s
-                commitments translate into actual work. Sixteen pages. The seven artifacts
+                commitments translate into actual work. Sixteen pages. The seven decisions
                 described in detail. A self-assessment your team can take together. Read it in an
                 evening.
               </p>

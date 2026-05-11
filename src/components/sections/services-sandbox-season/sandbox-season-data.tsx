@@ -136,28 +136,28 @@ export const pricingZones: readonly PricingZone[] = [
     revenueBand: "Under $2M annual revenue",
     scope: "Single department, four participants",
     fee: "$18,000 fixed",
-    payment: "50% kickoff · 50% Week 12",
+    payment: "Twelve-week engagement",
   },
   {
     zone: "Mid",
     revenueBand: "$2M–$10M annual revenue",
     scope: "Multi-department, five to six participants",
     fee: "$32,000 fixed",
-    payment: "$10K kickoff · $11K Week 6 · $11K Week 12",
+    payment: "Twelve-week engagement",
   },
   {
     zone: "Large",
     revenueBand: "$10M–$50M annual revenue",
     scope: "Org-wide, six to eight participants plus observers",
     fee: "$55,000 fixed",
-    payment: "$18K kickoff · $18K Week 6 · $19K Week 12",
+    payment: "Twelve-week engagement",
   },
   {
     zone: "Enterprise",
     revenueBand: "$50M+ annual revenue",
     scope: "Org-wide, multiple cohorts",
     fee: "Custom fixed fee",
-    payment: "Milestone structure agreed in writing",
+    payment: "Custom timeline per scope",
   },
 ] as const;
 

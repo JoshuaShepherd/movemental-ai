@@ -1,0 +1,56 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "recipe_library_filtered_by_map",
+  "screenFamily": "recipe-library",
+  "documentTitle": "Filtered Recipe Library - SafeStart",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "Library.",
+    "supportingCopy": "Institutional Strategy",
+    "eyebrow": null
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 2,
+          "text": "GUIDEBOOK"
+        },
+        {
+          "level": 1,
+          "text": "Library."
+        },
+        {
+          "level": 3,
+          "text": "Strategic Memo Drafting"
+        },
+        {
+          "level": 3,
+          "text": "Executive Summary Distillation"
+        },
+        {
+          "level": 3,
+          "text": "Crisis Response Holding Statements"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

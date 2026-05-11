@@ -15,11 +15,11 @@ const AUDIENCE_LABEL: Record<AudienceKind, string> = {
 
 const AUDIENCE_BODY: Record<AudienceKind, string> = {
   churches:
-    "Most churches who walk the Movemental path begin with Safety. Two weeks of facilitated work produces the seven artifacts your board, staff, and elders need to govern AI before any tools get deployed. The cost is $1,000.",
+    "Most churches who walk the Movemental path begin with Safety. Two weeks of facilitated work produces the seven decisions your board, staff, and elders need to govern AI before any tools get deployed. The cost is $1,000.",
   nonprofits:
-    "Most nonprofits who walk the Movemental path begin with Safety. Two weeks of facilitated work produces the seven artifacts your board needs to govern AI as part of fiduciary responsibility. The cost is $1,000.",
+    "Most nonprofits who walk the Movemental path begin with Safety. Two weeks of facilitated work produces the seven decisions your board needs to govern AI as part of fiduciary responsibility. The cost is $1,000.",
   institutions:
-    "Most institutions who walk the Movemental path begin with Safety. Two weeks of facilitated work produces the seven artifacts your board, accreditation context, and faculty governance require. The cost is $1,000.",
+    "Most institutions who walk the Movemental path begin with Safety. Two weeks of facilitated work produces the seven decisions your board, accreditation context, and faculty governance require. The cost is $1,000.",
 };
 
 const STAGE_LINKS: readonly { label: string; href: string }[] = [

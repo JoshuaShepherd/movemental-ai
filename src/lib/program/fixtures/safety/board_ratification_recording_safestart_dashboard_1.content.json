@@ -1,0 +1,48 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "board_ratification_recording_safestart_dashboard_1",
+  "screenFamily": "ratification-flow",
+  "documentTitle": "Board Ratification Recording - Executive Intelligence",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "Recording the board's ratification",
+    "supportingCopy": "Yesterday's board meeting included the ratification motion. Please record the official outcome and upload the signed minutes to finalize this policy implementation.",
+    "eyebrow": "Back to Dashboard"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Recording the board's ratification"
+        },
+        {
+          "level": 2,
+          "text": "RATIFICATION DETAILS"
+        },
+        {
+          "level": 2,
+          "text": "WHAT HAPPENS AFTER YOU RECORD THIS"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

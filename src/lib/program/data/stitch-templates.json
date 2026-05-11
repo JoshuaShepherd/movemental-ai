@@ -1,0 +1,762 @@
+{
+  "version": 1,
+  "generated": "2026-05-11",
+  "consolidatedFrom": [
+    "stitch_1/stitch_movemental_system_builder",
+    "stitch_2/stitch_2",
+    "stitch_2/stitch_3",
+    "stitch_2/stitch_4"
+  ],
+  "note": "Duplicate exports under stitch_2/stitch_1 were identical to stitch_2/stitch_2 and were not copied twice.",
+  "count": 45,
+  "subgroupLabels": {
+    "safestart-dashboard": "SafeStart dashboard",
+    "ratification-recording": "Ratification & recording",
+    "governance-tools": "Governance & readiness",
+    "editorial": "Editorial surfaces",
+    "sandboxlive-dashboard": "SandboxLive dashboard",
+    "phase-workspaces": "Phase workspaces",
+    "ethics-review": "Ethics review",
+    "future-plan": "Future plan",
+    "strategic-memo": "Strategic memo drafting",
+    "recipe-library": "Recipe library",
+    "oversight-modules": "Sponsor & cohort modules",
+    "labs": "Additional sandbox"
+  },
+  "templates": [
+    {
+      "id": "ai_organizational_policy_detailed_view",
+      "category": "safety",
+      "subgroup": "governance-tools",
+      "title": "AI organizational policy (detailed)",
+      "path": "templates/safety/ai_organizational_policy_detailed_view/index.html",
+      "thumbnail": "templates/safety/ai_organizational_policy_detailed_view/screen.png",
+      "provenance": [
+        "stitch_1: stitch_1/stitch_movemental_system_builder/ai_organizational_policy_detailed_view",
+        "stitch_2: stitch_2/stitch_2/ai_organizational_policy_detailed_view"
+      ],
+      "reactRoute": "/safety/ai_organizational_policy_detailed_view",
+      "reactMigration": {
+        "suggestedRouteParam": "ai_organizational_policy_detailed_view",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "ask_the_guidebook_editorial_restyle",
+      "category": "safety",
+      "subgroup": "governance-tools",
+      "title": "Ask the guidebook (editorial)",
+      "path": "templates/safety/ask_the_guidebook_editorial_restyle/index.html",
+      "thumbnail": "templates/safety/ask_the_guidebook_editorial_restyle/screen.png",
+      "provenance": [
+        "stitch_1: stitch_1/stitch_movemental_system_builder/ask_the_guidebook_editorial_restyle",
+        "stitch_2: stitch_2/stitch_2/ask_the_guidebook_editorial_restyle"
+      ],
+      "reactRoute": "/safety/ask_the_guidebook_editorial_restyle",
+      "reactMigration": {
+        "suggestedRouteParam": "ask_the_guidebook_editorial_restyle",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "board_ratification_recording_safestart_dashboard_1",
+      "category": "safety",
+      "subgroup": "ratification-recording",
+      "title": "Board Ratification Recording Safestart Dashboard 1",
+      "path": "templates/safety/board_ratification_recording_safestart_dashboard_1/index.html",
+      "thumbnail": "templates/safety/board_ratification_recording_safestart_dashboard_1/screen.png",
+      "provenance": [
+        "stitch_2: stitch_2/stitch_2/board_ratification_recording_safestart_dashboard_1"
+      ],
+      "reactRoute": "/safety/board_ratification_recording_safestart_dashboard_1",
+      "reactMigration": {
+        "suggestedRouteParam": "board_ratification_recording_safestart_dashboard_1",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "board_ratification_recording_safestart_dashboard_2",
+      "category": "safety",
+      "subgroup": "ratification-recording",
+      "title": "Board Ratification Recording Safestart Dashboard 2",
+      "path": "templates/safety/board_ratification_recording_safestart_dashboard_2/index.html",
+      "thumbnail": "templates/safety/board_ratification_recording_safestart_dashboard_2/screen.png",
+      "provenance": [
+        "stitch_2: stitch_2/stitch_2/board_ratification_recording_safestart_dashboard_2"
+      ],
+      "reactRoute": "/safety/board_ratification_recording_safestart_dashboard_2",
+      "reactMigration": {
+        "suggestedRouteParam": "board_ratification_recording_safestart_dashboard_2",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "executive_signing_movemental_editorial",
+      "category": "safety",
+      "subgroup": "ratification-recording",
+      "title": "Executive Signing Movemental Editorial",
+      "path": "templates/safety/executive_signing_movemental_editorial/index.html",
+      "thumbnail": "templates/safety/executive_signing_movemental_editorial/screen.png",
+      "provenance": [
+        "stitch_2: stitch_2/stitch_2/executive_signing_movemental_editorial"
+      ],
+      "reactRoute": "/safety/executive_signing_movemental_editorial",
+      "reactMigration": {
+        "suggestedRouteParam": "executive_signing_movemental_editorial",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "incident_response_runbook_movemental_editorial",
+      "category": "safety",
+      "subgroup": "governance-tools",
+      "title": "Incident Response Runbook Movemental Editorial",
+      "path": "templates/safety/incident_response_runbook_movemental_editorial/index.html",
+      "thumbnail": "templates/safety/incident_response_runbook_movemental_editorial/screen.png",
+      "provenance": [
+        "stitch_1: stitch_1/stitch_movemental_system_builder/incident_response_runbook_movemental_editorial",
+        "stitch_2: stitch_2/stitch_2/incident_response_runbook_movemental_editorial"
+      ],
+      "reactRoute": "/safety/incident_response_runbook_movemental_editorial",
+      "reactMigration": {
+        "suggestedRouteParam": "incident_response_runbook_movemental_editorial",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "ratification_confirmation_movemental_editorial",
+      "category": "safety",
+      "subgroup": "ratification-recording",
+      "title": "Ratification Confirmation Movemental Editorial",
+      "path": "templates/safety/ratification_confirmation_movemental_editorial/index.html",
+      "thumbnail": "templates/safety/ratification_confirmation_movemental_editorial/screen.png",
+      "provenance": [
+        "stitch_2: stitch_2/stitch_2/ratification_confirmation_movemental_editorial"
+      ],
+      "reactRoute": "/safety/ratification_confirmation_movemental_editorial",
+      "reactMigration": {
+        "suggestedRouteParam": "ratification_confirmation_movemental_editorial",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "safestart_dashboard_drafting_async_review",
+      "category": "safety",
+      "subgroup": "safestart-dashboard",
+      "title": "Safestart Dashboard Drafting Async Review",
+      "path": "templates/safety/safestart_dashboard_drafting_async_review/index.html",
+      "thumbnail": "templates/safety/safestart_dashboard_drafting_async_review/screen.png",
+      "provenance": [
+        "stitch_1: stitch_1/stitch_movemental_system_builder/safestart_dashboard_drafting_async_review",
+        "stitch_2: stitch_2/stitch_2/safestart_dashboard_drafting_async_review"
+      ],
+      "reactRoute": "/safety/safestart_dashboard_drafting_async_review",
+      "reactMigration": {
+        "suggestedRouteParam": "safestart_dashboard_drafting_async_review",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "safestart_dashboard_editorial_comment_view_1",
+      "category": "safety",
+      "subgroup": "safestart-dashboard",
+      "title": "Safestart Dashboard Editorial Comment View 1",
+      "path": "templates/safety/safestart_dashboard_editorial_comment_view_1/index.html",
+      "thumbnail": "templates/safety/safestart_dashboard_editorial_comment_view_1/screen.png",
+      "provenance": [
+        "stitch_1: stitch_1/stitch_movemental_system_builder/safestart_dashboard_editorial_comment_view_1",
+        "stitch_2: stitch_2/stitch_2/safestart_dashboard_editorial_comment_view_1"
+      ],
+      "reactRoute": "/safety/safestart_dashboard_editorial_comment_view_1",
+      "reactMigration": {
+        "suggestedRouteParam": "safestart_dashboard_editorial_comment_view_1",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "safestart_dashboard_editorial_comment_view_2",
+      "category": "safety",
+      "subgroup": "safestart-dashboard",
+      "title": "Safestart Dashboard Editorial Comment View 2",
+      "path": "templates/safety/safestart_dashboard_editorial_comment_view_2/index.html",
+      "thumbnail": "templates/safety/safestart_dashboard_editorial_comment_view_2/screen.png",
+      "provenance": [
+        "stitch_1: stitch_1/stitch_movemental_system_builder/safestart_dashboard_editorial_comment_view_2",
+        "stitch_2: stitch_2/stitch_2/safestart_dashboard_editorial_comment_view_2"
+      ],
+      "reactRoute": "/safety/safestart_dashboard_editorial_comment_view_2",
+      "reactMigration": {
+        "suggestedRouteParam": "safestart_dashboard_editorial_comment_view_2",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "safestart_dashboard_editorial_ratification_phase",
+      "category": "safety",
+      "subgroup": "safestart-dashboard",
+      "title": "Safestart Dashboard Editorial Ratification Phase",
+      "path": "templates/safety/safestart_dashboard_editorial_ratification_phase/index.html",
+      "thumbnail": "templates/safety/safestart_dashboard_editorial_ratification_phase/screen.png",
+      "provenance": [
+        "stitch_1: stitch_1/stitch_movemental_system_builder/safestart_dashboard_editorial_ratification_phase",
+        "stitch_2: stitch_2/stitch_2/safestart_dashboard_editorial_ratification_phase"
+      ],
+      "reactRoute": "/safety/safestart_dashboard_editorial_ratification_phase",
+      "reactMigration": {
+        "suggestedRouteParam": "safestart_dashboard_editorial_ratification_phase",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "safestart_dashboard_editorial_steady_state",
+      "category": "safety",
+      "subgroup": "safestart-dashboard",
+      "title": "Safestart Dashboard Editorial Steady State",
+      "path": "templates/safety/safestart_dashboard_editorial_steady_state/index.html",
+      "thumbnail": "templates/safety/safestart_dashboard_editorial_steady_state/screen.png",
+      "provenance": [
+        "stitch_1: stitch_1/stitch_movemental_system_builder/safestart_dashboard_editorial_steady_state",
+        "stitch_2: stitch_2/stitch_2/safestart_dashboard_editorial_steady_state"
+      ],
+      "reactRoute": "/safety/safestart_dashboard_editorial_steady_state",
+      "reactMigration": {
+        "suggestedRouteParam": "safestart_dashboard_editorial_steady_state",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "safestart_dashboard_editorial_style_update",
+      "category": "safety",
+      "subgroup": "safestart-dashboard",
+      "title": "Safestart Dashboard Editorial Style Update",
+      "path": "templates/safety/safestart_dashboard_editorial_style_update/index.html",
+      "thumbnail": "templates/safety/safestart_dashboard_editorial_style_update/screen.png",
+      "provenance": [
+        "stitch_1: stitch_1/stitch_movemental_system_builder/safestart_dashboard_editorial_style_update",
+        "stitch_2: stitch_2/stitch_2/safestart_dashboard_editorial_style_update"
+      ],
+      "reactRoute": "/safety/safestart_dashboard_editorial_style_update",
+      "reactMigration": {
+        "suggestedRouteParam": "safestart_dashboard_editorial_style_update",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "safestart_dashboard_home_pre_kickoff",
+      "category": "safety",
+      "subgroup": "safestart-dashboard",
+      "title": "Safestart Dashboard Home Pre Kickoff",
+      "path": "templates/safety/safestart_dashboard_home_pre_kickoff/index.html",
+      "thumbnail": "templates/safety/safestart_dashboard_home_pre_kickoff/screen.png",
+      "provenance": [
+        "stitch_1: stitch_1/stitch_movemental_system_builder/safestart_dashboard_home_pre_kickoff",
+        "stitch_2: stitch_2/stitch_2/safestart_dashboard_home_pre_kickoff"
+      ],
+      "reactRoute": "/safety/safestart_dashboard_home_pre_kickoff",
+      "reactMigration": {
+        "suggestedRouteParam": "safestart_dashboard_home_pre_kickoff",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "safestart_dashboard_leave_comment_drawer",
+      "category": "safety",
+      "subgroup": "safestart-dashboard",
+      "title": "Safestart Dashboard Leave Comment Drawer",
+      "path": "templates/safety/safestart_dashboard_leave_comment_drawer/index.html",
+      "thumbnail": "templates/safety/safestart_dashboard_leave_comment_drawer/screen.png",
+      "provenance": [
+        "stitch_1: stitch_1/stitch_movemental_system_builder/safestart_dashboard_leave_comment_drawer",
+        "stitch_2: stitch_2/stitch_2/safestart_dashboard_leave_comment_drawer"
+      ],
+      "reactRoute": "/safety/safestart_dashboard_leave_comment_drawer",
+      "reactMigration": {
+        "suggestedRouteParam": "safestart_dashboard_leave_comment_drawer",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "safestart_dashboard_pre_kickoff_editorial",
+      "category": "safety",
+      "subgroup": "safestart-dashboard",
+      "title": "Safestart Dashboard Pre Kickoff Editorial",
+      "path": "templates/safety/safestart_dashboard_pre_kickoff_editorial/index.html",
+      "thumbnail": "templates/safety/safestart_dashboard_pre_kickoff_editorial/screen.png",
+      "provenance": [
+        "stitch_1: stitch_1/stitch_movemental_system_builder/safestart_dashboard_pre_kickoff_editorial",
+        "stitch_2: stitch_2/stitch_2/safestart_dashboard_pre_kickoff_editorial"
+      ],
+      "reactRoute": "/safety/safestart_dashboard_pre_kickoff_editorial",
+      "reactMigration": {
+        "suggestedRouteParam": "safestart_dashboard_pre_kickoff_editorial",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "safestart_dashboard_ratification_phase",
+      "category": "safety",
+      "subgroup": "ratification-recording",
+      "title": "Safestart Dashboard Ratification Phase",
+      "path": "templates/safety/safestart_dashboard_ratification_phase/index.html",
+      "thumbnail": "templates/safety/safestart_dashboard_ratification_phase/screen.png",
+      "provenance": [
+        "stitch_1: stitch_1/stitch_movemental_system_builder/safestart_dashboard_ratification_phase",
+        "stitch_2: stitch_2/stitch_2/safestart_dashboard_ratification_phase"
+      ],
+      "reactRoute": "/safety/safestart_dashboard_ratification_phase",
+      "reactMigration": {
+        "suggestedRouteParam": "safestart_dashboard_ratification_phase",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "safestart_dashboard_revised_statement_view_revised_statement",
+      "category": "safety",
+      "subgroup": "ratification-recording",
+      "title": "Safestart Dashboard Revised Statement View Revised Statement",
+      "path": "templates/safety/safestart_dashboard_revised_statement_view_revised_statement/index.html",
+      "thumbnail": "templates/safety/safestart_dashboard_revised_statement_view_revised_statement/screen.png",
+      "provenance": [
+        "stitch_2: stitch_2/stitch_2/safestart_dashboard_revised_statement_view_revised_statement"
+      ],
+      "reactRoute": "/safety/safestart_dashboard_revised_statement_view_revised_statement",
+      "reactMigration": {
+        "suggestedRouteParam": "safestart_dashboard_revised_statement_view_revised_statement",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "vendor_tool_inventory_editorial_review",
+      "category": "safety",
+      "subgroup": "governance-tools",
+      "title": "Vendor Tool Inventory Editorial Review",
+      "path": "templates/safety/vendor_tool_inventory_editorial_review/index.html",
+      "thumbnail": "templates/safety/vendor_tool_inventory_editorial_review/screen.png",
+      "provenance": [
+        "stitch_1: stitch_1/stitch_movemental_system_builder/vendor_tool_inventory_editorial_review",
+        "stitch_2: stitch_2/stitch_2/vendor_tool_inventory_editorial_review"
+      ],
+      "reactRoute": "/safety/vendor_tool_inventory_editorial_review",
+      "reactMigration": {
+        "suggestedRouteParam": "vendor_tool_inventory_editorial_review",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "cohort_view_sandboxlive_dashboard",
+      "category": "sandbox",
+      "subgroup": "oversight-modules",
+      "title": "Cohort View Sandboxlive Dashboard",
+      "path": "templates/sandbox/cohort_view_sandboxlive_dashboard/index.html",
+      "thumbnail": "templates/sandbox/cohort_view_sandboxlive_dashboard/screen.png",
+      "provenance": [
+        "stitch_3: stitch_2/stitch_3/cohort_view_sandboxlive_dashboard"
+      ],
+      "reactRoute": "/sandbox/cohort_view_sandboxlive_dashboard",
+      "reactMigration": {
+        "suggestedRouteParam": "cohort_view_sandboxlive_dashboard",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "ethics_review_aggregated_feedback_view",
+      "category": "sandbox",
+      "subgroup": "ethics-review",
+      "title": "Ethics Review Aggregated Feedback View",
+      "path": "templates/sandbox/ethics_review_aggregated_feedback_view/index.html",
+      "thumbnail": "templates/sandbox/ethics_review_aggregated_feedback_view/screen.png",
+      "provenance": [
+        "stitch_3: stitch_2/stitch_3/ethics_review_aggregated_feedback_view"
+      ],
+      "reactRoute": "/sandbox/ethics_review_aggregated_feedback_view",
+      "reactMigration": {
+        "suggestedRouteParam": "ethics_review_aggregated_feedback_view",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "ethics_review_external_reviewer_interface",
+      "category": "sandbox",
+      "subgroup": "ethics-review",
+      "title": "Ethics Review External Reviewer Interface",
+      "path": "templates/sandbox/ethics_review_external_reviewer_interface/index.html",
+      "thumbnail": "templates/sandbox/ethics_review_external_reviewer_interface/screen.png",
+      "provenance": [
+        "stitch_4: stitch_2/stitch_4/ethics_review_external_reviewer_interface"
+      ],
+      "reactRoute": "/sandbox/ethics_review_external_reviewer_interface",
+      "reactMigration": {
+        "suggestedRouteParam": "ethics_review_external_reviewer_interface",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "ethics_review_preparation_view",
+      "category": "sandbox",
+      "subgroup": "ethics-review",
+      "title": "Ethics Review Preparation View",
+      "path": "templates/sandbox/ethics_review_preparation_view/index.html",
+      "thumbnail": "templates/sandbox/ethics_review_preparation_view/screen.png",
+      "provenance": [
+        "stitch_3: stitch_2/stitch_3/ethics_review_preparation_view"
+      ],
+      "reactRoute": "/sandbox/ethics_review_preparation_view",
+      "reactMigration": {
+        "suggestedRouteParam": "ethics_review_preparation_view",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "future_plan_board_export",
+      "category": "sandbox",
+      "subgroup": "future-plan",
+      "title": "Future Plan Board Export",
+      "path": "templates/sandbox/future_plan_board_export/index.html",
+      "thumbnail": "templates/sandbox/future_plan_board_export/screen.png",
+      "provenance": [
+        "stitch_4: stitch_2/stitch_4/future_plan_board_export"
+      ],
+      "reactRoute": "/sandbox/future_plan_board_export",
+      "reactMigration": {
+        "suggestedRouteParam": "future_plan_board_export",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "future_plan_drafting_editor",
+      "category": "sandbox",
+      "subgroup": "future-plan",
+      "title": "Future Plan Drafting Editor",
+      "path": "templates/sandbox/future_plan_drafting_editor/index.html",
+      "thumbnail": "templates/sandbox/future_plan_drafting_editor/screen.png",
+      "provenance": [
+        "stitch_4: stitch_2/stitch_4/future_plan_drafting_editor"
+      ],
+      "reactRoute": "/sandbox/future_plan_drafting_editor",
+      "reactMigration": {
+        "suggestedRouteParam": "future_plan_drafting_editor",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "future_plan_initial_aggregation",
+      "category": "sandbox",
+      "subgroup": "future-plan",
+      "title": "Future Plan Initial Aggregation",
+      "path": "templates/sandbox/future_plan_initial_aggregation/index.html",
+      "thumbnail": "templates/sandbox/future_plan_initial_aggregation/screen.png",
+      "provenance": [
+        "stitch_4: stitch_2/stitch_4/future_plan_initial_aggregation"
+      ],
+      "reactRoute": "/sandbox/future_plan_initial_aggregation",
+      "reactMigration": {
+        "suggestedRouteParam": "future_plan_initial_aggregation",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "module_02_how_to_talk_to_it_sandboxlive_dashboard",
+      "category": "sandbox",
+      "subgroup": "oversight-modules",
+      "title": "Module 02 How To Talk To It Sandboxlive Dashboard",
+      "path": "templates/sandbox/module_02_how_to_talk_to_it_sandboxlive_dashboard/index.html",
+      "thumbnail": "templates/sandbox/module_02_how_to_talk_to_it_sandboxlive_dashboard/screen.png",
+      "provenance": [
+        "stitch_3: stitch_2/stitch_3/module_02_how_to_talk_to_it_sandboxlive_dashboard"
+      ],
+      "reactRoute": "/sandbox/module_02_how_to_talk_to_it_sandboxlive_dashboard",
+      "reactMigration": {
+        "suggestedRouteParam": "module_02_how_to_talk_to_it_sandboxlive_dashboard",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "phase_01_boundaries_workspace_movemental",
+      "category": "sandbox",
+      "subgroup": "phase-workspaces",
+      "title": "Phase 01 Boundaries Workspace Movemental",
+      "path": "templates/sandbox/phase_01_boundaries_workspace_movemental/index.html",
+      "thumbnail": "templates/sandbox/phase_01_boundaries_workspace_movemental/screen.png",
+      "provenance": [
+        "stitch_2: stitch_2/stitch_2/phase_01_boundaries_workspace_movemental"
+      ],
+      "reactRoute": "/sandbox/phase_01_boundaries_workspace_movemental",
+      "reactMigration": {
+        "suggestedRouteParam": "phase_01_boundaries_workspace_movemental",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "phase_02_assessment_sandboxlive_workspace",
+      "category": "sandbox",
+      "subgroup": "phase-workspaces",
+      "title": "Phase 02 Assessment Sandboxlive Workspace",
+      "path": "templates/sandbox/phase_02_assessment_sandboxlive_workspace/index.html",
+      "thumbnail": "templates/sandbox/phase_02_assessment_sandboxlive_workspace/screen.png",
+      "provenance": [
+        "stitch_2: stitch_2/stitch_2/phase_02_assessment_sandboxlive_workspace"
+      ],
+      "reactRoute": "/sandbox/phase_02_assessment_sandboxlive_workspace",
+      "reactMigration": {
+        "suggestedRouteParam": "phase_02_assessment_sandboxlive_workspace",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "phase_04_iteration_sandboxlive_workspace",
+      "category": "sandbox",
+      "subgroup": "phase-workspaces",
+      "title": "Phase 04 Iteration Sandboxlive Workspace",
+      "path": "templates/sandbox/phase_04_iteration_sandboxlive_workspace/index.html",
+      "thumbnail": "templates/sandbox/phase_04_iteration_sandboxlive_workspace/screen.png",
+      "provenance": [
+        "stitch_3: stitch_2/stitch_3/phase_04_iteration_sandboxlive_workspace"
+      ],
+      "reactRoute": "/sandbox/phase_04_iteration_sandboxlive_workspace",
+      "reactMigration": {
+        "suggestedRouteParam": "phase_04_iteration_sandboxlive_workspace",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "phase_05_reflection_sandboxlive_workspace",
+      "category": "sandbox",
+      "subgroup": "phase-workspaces",
+      "title": "Phase 05 Reflection Sandboxlive Workspace",
+      "path": "templates/sandbox/phase_05_reflection_sandboxlive_workspace/index.html",
+      "thumbnail": "templates/sandbox/phase_05_reflection_sandboxlive_workspace/screen.png",
+      "provenance": [
+        "stitch_3: stitch_2/stitch_3/phase_05_reflection_sandboxlive_workspace"
+      ],
+      "reactRoute": "/sandbox/phase_05_reflection_sandboxlive_workspace",
+      "reactMigration": {
+        "suggestedRouteParam": "phase_05_reflection_sandboxlive_workspace",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "phase_06_ethics_review_sandboxlive_dashboard",
+      "category": "sandbox",
+      "subgroup": "phase-workspaces",
+      "title": "Phase 06 Ethics Review Sandboxlive Dashboard",
+      "path": "templates/sandbox/phase_06_ethics_review_sandboxlive_dashboard/index.html",
+      "thumbnail": "templates/sandbox/phase_06_ethics_review_sandboxlive_dashboard/screen.png",
+      "provenance": [
+        "stitch_3: stitch_2/stitch_3/phase_06_ethics_review_sandboxlive_dashboard"
+      ],
+      "reactRoute": "/sandbox/phase_06_ethics_review_sandboxlive_dashboard",
+      "reactMigration": {
+        "suggestedRouteParam": "phase_06_ethics_review_sandboxlive_dashboard",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "phase_07_discerning_adjudication_workspace",
+      "category": "sandbox",
+      "subgroup": "phase-workspaces",
+      "title": "Phase 07 Discerning Adjudication Workspace",
+      "path": "templates/sandbox/phase_07_discerning_adjudication_workspace/index.html",
+      "thumbnail": "templates/sandbox/phase_07_discerning_adjudication_workspace/screen.png",
+      "provenance": [
+        "stitch_3: stitch_2/stitch_3/phase_07_discerning_adjudication_workspace"
+      ],
+      "reactRoute": "/sandbox/phase_07_discerning_adjudication_workspace",
+      "reactMigration": {
+        "suggestedRouteParam": "phase_07_discerning_adjudication_workspace",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "phase_08_future_plan_editor_sandboxlive_workspace",
+      "category": "sandbox",
+      "subgroup": "phase-workspaces",
+      "title": "Phase 08 Future Plan Editor Sandboxlive Workspace",
+      "path": "templates/sandbox/phase_08_future_plan_editor_sandboxlive_workspace/index.html",
+      "thumbnail": "templates/sandbox/phase_08_future_plan_editor_sandboxlive_workspace/screen.png",
+      "provenance": [
+        "stitch_3: stitch_2/stitch_3/phase_08_future_plan_editor_sandboxlive_workspace"
+      ],
+      "reactRoute": "/sandbox/phase_08_future_plan_editor_sandboxlive_workspace",
+      "reactMigration": {
+        "suggestedRouteParam": "phase_08_future_plan_editor_sandboxlive_workspace",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "recipe_detail_strategic_memo_drafting",
+      "category": "sandbox",
+      "subgroup": "strategic-memo",
+      "title": "Recipe Detail Strategic Memo Drafting",
+      "path": "templates/sandbox/recipe_detail_strategic_memo_drafting/index.html",
+      "thumbnail": "templates/sandbox/recipe_detail_strategic_memo_drafting/screen.png",
+      "provenance": [
+        "stitch_4: stitch_2/stitch_4/recipe_detail_strategic_memo_drafting"
+      ],
+      "reactRoute": "/sandbox/recipe_detail_strategic_memo_drafting",
+      "reactMigration": {
+        "suggestedRouteParam": "recipe_detail_strategic_memo_drafting",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "recipe_library_filtered_by_map",
+      "category": "sandbox",
+      "subgroup": "recipe-library",
+      "title": "Recipe Library Filtered By Map",
+      "path": "templates/sandbox/recipe_library_filtered_by_map/index.html",
+      "thumbnail": "templates/sandbox/recipe_library_filtered_by_map/screen.png",
+      "provenance": [
+        "stitch_3: stitch_2/stitch_3/recipe_library_filtered_by_map"
+      ],
+      "reactRoute": "/sandbox/recipe_library_filtered_by_map",
+      "reactMigration": {
+        "suggestedRouteParam": "recipe_library_filtered_by_map",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "recipe_library_movemental_sandbox_dashboard",
+      "category": "sandbox",
+      "subgroup": "recipe-library",
+      "title": "Recipe Library Movemental Sandbox Dashboard",
+      "path": "templates/sandbox/recipe_library_movemental_sandbox_dashboard/index.html",
+      "thumbnail": "templates/sandbox/recipe_library_movemental_sandbox_dashboard/screen.png",
+      "provenance": [
+        "stitch_3: stitch_2/stitch_3/recipe_library_movemental_sandbox_dashboard"
+      ],
+      "reactRoute": "/sandbox/recipe_library_movemental_sandbox_dashboard",
+      "reactMigration": {
+        "suggestedRouteParam": "recipe_library_movemental_sandbox_dashboard",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "sandboxlive_dashboard_active_engagement_state",
+      "category": "sandbox",
+      "subgroup": "sandboxlive-dashboard",
+      "title": "Sandboxlive Dashboard Active Engagement State",
+      "path": "templates/sandbox/sandboxlive_dashboard_active_engagement_state/index.html",
+      "thumbnail": "templates/sandbox/sandboxlive_dashboard_active_engagement_state/screen.png",
+      "provenance": [
+        "stitch_2: stitch_2/stitch_2/sandboxlive_dashboard_active_engagement_state"
+      ],
+      "reactRoute": "/sandbox/sandboxlive_dashboard_active_engagement_state",
+      "reactMigration": {
+        "suggestedRouteParam": "sandboxlive_dashboard_active_engagement_state",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "sandboxlive_dashboard_discernment_phase",
+      "category": "sandbox",
+      "subgroup": "sandboxlive-dashboard",
+      "title": "Sandboxlive Dashboard Discernment Phase",
+      "path": "templates/sandbox/sandboxlive_dashboard_discernment_phase/index.html",
+      "thumbnail": "templates/sandbox/sandboxlive_dashboard_discernment_phase/screen.png",
+      "provenance": [
+        "stitch_2: stitch_2/stitch_2/sandboxlive_dashboard_discernment_phase"
+      ],
+      "reactRoute": "/sandbox/sandboxlive_dashboard_discernment_phase",
+      "reactMigration": {
+        "suggestedRouteParam": "sandboxlive_dashboard_discernment_phase",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "sandboxlive_dashboard_post_engagement_reference_state",
+      "category": "sandbox",
+      "subgroup": "sandboxlive-dashboard",
+      "title": "Sandboxlive Dashboard Post Engagement Reference State",
+      "path": "templates/sandbox/sandboxlive_dashboard_post_engagement_reference_state/index.html",
+      "thumbnail": "templates/sandbox/sandboxlive_dashboard_post_engagement_reference_state/screen.png",
+      "provenance": [
+        "stitch_2: stitch_2/stitch_2/sandboxlive_dashboard_post_engagement_reference_state"
+      ],
+      "reactRoute": "/sandbox/sandboxlive_dashboard_post_engagement_reference_state",
+      "reactMigration": {
+        "suggestedRouteParam": "sandboxlive_dashboard_post_engagement_reference_state",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "sandboxlive_dashboard_pre_kickoff_state",
+      "category": "sandbox",
+      "subgroup": "sandboxlive-dashboard",
+      "title": "Sandboxlive Dashboard Pre Kickoff State",
+      "path": "templates/sandbox/sandboxlive_dashboard_pre_kickoff_state/index.html",
+      "thumbnail": "templates/sandbox/sandboxlive_dashboard_pre_kickoff_state/screen.png",
+      "provenance": [
+        "stitch_2: stitch_2/stitch_2/sandboxlive_dashboard_pre_kickoff_state"
+      ],
+      "reactRoute": "/sandbox/sandboxlive_dashboard_pre_kickoff_state",
+      "reactMigration": {
+        "suggestedRouteParam": "sandboxlive_dashboard_pre_kickoff_state",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "sandboxlive_dashboard_recording_recipe_value",
+      "category": "sandbox",
+      "subgroup": "sandboxlive-dashboard",
+      "title": "Sandboxlive Dashboard Recording Recipe Value",
+      "path": "templates/sandbox/sandboxlive_dashboard_recording_recipe_value/index.html",
+      "thumbnail": "templates/sandbox/sandboxlive_dashboard_recording_recipe_value/screen.png",
+      "provenance": [
+        "stitch_2: stitch_2/stitch_2/sandboxlive_dashboard_recording_recipe_value"
+      ],
+      "reactRoute": "/sandbox/sandboxlive_dashboard_recording_recipe_value",
+      "reactMigration": {
+        "suggestedRouteParam": "sandboxlive_dashboard_recording_recipe_value",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "sponsor_oversight_view_sandboxlive",
+      "category": "sandbox",
+      "subgroup": "oversight-modules",
+      "title": "Sponsor Oversight View Sandboxlive",
+      "path": "templates/sandbox/sponsor_oversight_view_sandboxlive/index.html",
+      "thumbnail": "templates/sandbox/sponsor_oversight_view_sandboxlive/screen.png",
+      "provenance": [
+        "stitch_3: stitch_2/stitch_3/sponsor_oversight_view_sandboxlive"
+      ],
+      "reactRoute": "/sandbox/sponsor_oversight_view_sandboxlive",
+      "reactMigration": {
+        "suggestedRouteParam": "sponsor_oversight_view_sandboxlive",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "trial_setup_strategic_memo_drafting",
+      "category": "sandbox",
+      "subgroup": "strategic-memo",
+      "title": "Trial Setup Strategic Memo Drafting",
+      "path": "templates/sandbox/trial_setup_strategic_memo_drafting/index.html",
+      "thumbnail": "templates/sandbox/trial_setup_strategic_memo_drafting/screen.png",
+      "provenance": [
+        "stitch_4: stitch_2/stitch_4/trial_setup_strategic_memo_drafting"
+      ],
+      "reactRoute": "/sandbox/trial_setup_strategic_memo_drafting",
+      "reactMigration": {
+        "suggestedRouteParam": "trial_setup_strategic_memo_drafting",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    },
+    {
+      "id": "value_record_strategic_memo_drafting",
+      "category": "sandbox",
+      "subgroup": "strategic-memo",
+      "title": "Value Record Strategic Memo Drafting",
+      "path": "templates/sandbox/value_record_strategic_memo_drafting/index.html",
+      "thumbnail": "templates/sandbox/value_record_strategic_memo_drafting/screen.png",
+      "provenance": [
+        "stitch_4: stitch_2/stitch_4/value_record_strategic_memo_drafting"
+      ],
+      "reactRoute": "/sandbox/value_record_strategic_memo_drafting",
+      "reactMigration": {
+        "suggestedRouteParam": "value_record_strategic_memo_drafting",
+        "note": "Each template is a full HTML document with Tailwind CDN; migrate by lifting the body subtree into a route component and replacing static lists with data-driven props."
+      }
+    }
+  ]
+}

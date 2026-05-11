@@ -343,7 +343,7 @@ function OutputsFold() {
             Safety turns anxiety into shared clarity.
           </h2>
           <p className="matters-section__intro">
-            The Safety step gives your organization practical artifacts and
+            The Safety step gives your organization practical decisions and
             leadership alignment before adoption accelerates.
           </p>
         </header>

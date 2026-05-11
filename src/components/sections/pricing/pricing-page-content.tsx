@@ -32,7 +32,7 @@ const STAGES: readonly StageCard[] = [
       "Incident Response Plan",
       "Named Refusals",
     ],
-    payment: "Payment: Net 15 from signing",
+    payment: "Two-week engagement",
     ctaLabel: "Begin Safety",
     ctaHref: "/pathway/safety",
   },
@@ -47,7 +47,7 @@ const STAGES: readonly StageCard[] = [
       "Readiness Assessment",
       "Module-based facilitation",
     ],
-    payment: "Payment: 50% signing / 50% completion",
+    payment: "Four-week engagement",
     ctaLabel: "Begin a Sandbox",
     ctaHref: "/pathway/sandbox",
   },
@@ -62,7 +62,7 @@ const STAGES: readonly StageCard[] = [
       "Formational deepening",
       "Self-paced LMS license",
     ],
-    payment: "Payment: 50/50 cohort; Annual LMS",
+    payment: "Eight-week cohort · Annual platform license",
     ctaLabel: "Begin a Skills cohort",
     ctaHref: "/pathway/skills",
   },
@@ -82,7 +82,7 @@ const STAGES: readonly StageCard[] = [
       "90 days support",
       "Ongoing relationship structure",
     ],
-    payment: "Payment: 30/30/40 milestones",
+    payment: "Scoped timeline per engagement",
     ctaLabel: "Begin Solutions",
     ctaHref: "/pathway/solutions",
   },
@@ -98,7 +98,7 @@ const BUNDLE = {
     "18% below cost of tier-by-tier",
     "Foundational Solutions delivery",
   ] as const,
-  payment: "Payment: 25% at each stage start",
+  payment: "Full-path engagement — timeline in your agreement",
   ctaLabel: "Begin the full path",
   ctaHref: "/contact?interest=bundle",
 };
@@ -276,9 +276,10 @@ export function PricingPageContent() {
           <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
             <Reveal>
               <div className="space-y-4">
-                <h5 className="text-xs font-semibold uppercase tracking-eyebrow text-muted-foreground">Payment Terms</h5>
+                <h5 className="text-xs font-semibold uppercase tracking-eyebrow text-muted-foreground">Engagement terms</h5>
                 <p className="text-sm leading-relaxed text-foreground">
-                  Detailed per stage. Standard net 15 on invoice unless otherwise structured in agreement.
+                  Operational terms for each stage are confirmed in your engagement letter. What you see here is price
+                  and duration only.
                 </p>
               </div>
             </Reveal>

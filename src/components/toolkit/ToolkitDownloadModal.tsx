@@ -163,7 +163,7 @@ function DownloadState({
         <ToolkitCover size="sm" />
       </div>
       <h2 id={titleId} className="font-serif-display text-3xl tracking-tight text-foreground sm:text-4xl">
-        Send the toolkit to your inbox.
+        Send the Field Guide to your inbox.
       </h2>
       <p id={descriptionId} className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
         We&apos;ll send the PDF immediately and follow up once over the following week. That&apos;s it.
@@ -182,7 +182,7 @@ function DownloadState({
         href="/toolkit"
         className="mt-6 inline-flex items-center gap-1 border-b border-transparent pb-0.5 text-[11px] font-semibold uppercase tracking-eyebrow text-foreground transition-colors hover:border-foreground"
       >
-        Read more about the toolkit first <span aria-hidden>→</span>
+        Read more about the Field Guide first <span aria-hidden>→</span>
       </Link>
     </div>
   );

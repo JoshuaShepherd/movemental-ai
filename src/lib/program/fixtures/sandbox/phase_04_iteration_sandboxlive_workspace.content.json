@@ -1,0 +1,72 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "phase_04_iteration_sandboxlive_workspace",
+  "screenFamily": "phase-workspace",
+  "documentTitle": "Iteration: Grant Proposal Drafting Assistant",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": "MOVEMENTAL",
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": "SANDBOX"
+  },
+  "page": {
+    "headline": "Grant Proposal Drafting Assistant",
+    "supportingCopy": "Phase II: Assessment",
+    "eyebrow": "Boundaries"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 2,
+          "text": "Strategic Engagement"
+        },
+        {
+          "level": 1,
+          "text": "Grant Proposal Drafting Assistant"
+        },
+        {
+          "level": 2,
+          "text": "Trial Trajectory"
+        },
+        {
+          "level": 2,
+          "text": "What Changed Across Your Trials"
+        },
+        {
+          "level": 3,
+          "text": "Original Prompt"
+        },
+        {
+          "level": 3,
+          "text": "Project Context Injection"
+        },
+        {
+          "level": 3,
+          "text": "Program Data + Stats Verification"
+        },
+        {
+          "level": 2,
+          "text": "What Other Cohort Members Did"
+        },
+        {
+          "level": 2,
+          "text": "Your Judgment"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

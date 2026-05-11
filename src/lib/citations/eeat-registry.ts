@@ -45,9 +45,32 @@ const TOOLKIT_BARN_GLOO_SPIRITUAL_TRUST: EeatRegistryEntry = {
   citationIds: ["barna-gloo-spiritual-trust-1-in-3"],
 };
 
+/** Inline Antiqua et Nova chip on `/toolkit/read` — row lives off the home JSON bundle. */
+const TOOLKIT_ANTQUA_ET_NOVA: EeatRegistryEntry = {
+  id: "toolkit-antiqua-et-nova-complement",
+  rank: 3,
+  page: "/toolkit/read",
+  claimType: "Opinion",
+  claim:
+    "Sandbox, Skills, Solutions — staged maturity; magisterial frame for complementing rather than replacing human judgment.",
+  cite: {
+    author:
+      "Vatican (Dicastery for the Doctrine of the Faith and Dicastery for Culture and Education)",
+    title:
+      "Antiqua et Nova: Note on the Relationship Between AI and Human Intelligence",
+    date: "January 28, 2025",
+    detail: "",
+    url: "https://www.vatican.va/roman_curia/congregations/cfaith/documents/rc_ddf_doc_20250128_antiqua-et-nova_en.html",
+  },
+  footnote:
+    "The note insists that artificial intelligence should complement human intelligence rather than replace its moral and relational depth, and warns against deskilling and surrendering judgment to machines. That ethical stance aligns with treating experimentation and formation as stages before wholesale automation—without claiming any one vendor methodology.",
+  citationIds: ["antiqua-et-nova-complement"],
+};
+
 export const EEAT_REGISTRY: EeatRegistryEntry[] = [
   ...(siteClaims as EeatRegistryEntry[]),
   TOOLKIT_BARN_GLOO_SPIRITUAL_TRUST,
+  TOOLKIT_ANTQUA_ET_NOVA,
 ];
 
 const citationToRegistryId = new Map<CitationId, string>();

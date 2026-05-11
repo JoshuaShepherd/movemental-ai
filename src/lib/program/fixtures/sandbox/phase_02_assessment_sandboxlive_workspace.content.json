@@ -1,0 +1,60 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "phase_02_assessment_sandboxlive_workspace",
+  "screenFamily": "phase-workspace",
+  "documentTitle": "SandboxLive Phase 02 Assessment - Movemental",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": "SANDBOX"
+  },
+  "page": {
+    "headline": "Your Current Reality Map",
+    "supportingCopy": "Worked through with an AI assistant. Editable by you. Visible to your cohort.",
+    "eyebrow": "JUST ADDED"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Your Current Reality Map"
+        },
+        {
+          "level": 2,
+          "text": "forum INTERVIEW IN PROGRESS"
+        },
+        {
+          "level": 2,
+          "text": "map YOUR MAP — UPDATING LIVE"
+        },
+        {
+          "level": 3,
+          "text": "I. What You Do"
+        },
+        {
+          "level": 3,
+          "text": "II. Friction Points"
+        },
+        {
+          "level": 3,
+          "text": "III. What You'd Want Better"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

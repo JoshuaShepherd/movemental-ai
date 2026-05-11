@@ -1,0 +1,456 @@
+{
+  "version": 1,
+  "generated": "2026-05-11",
+  "entries": [
+    {
+      "templateId": "ai_organizational_policy_detailed_view",
+      "category": "safety",
+      "subgroup": "governance-tools",
+      "screenFamily": "governance-document",
+      "fixturePath": "fixtures/safety/ai_organizational_policy_detailed_view.content.json",
+      "htmlPath": "templates/safety/ai_organizational_policy_detailed_view/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "ask_the_guidebook_editorial_restyle",
+      "category": "safety",
+      "subgroup": "governance-tools",
+      "screenFamily": "governance-document",
+      "fixturePath": "fixtures/safety/ask_the_guidebook_editorial_restyle.content.json",
+      "htmlPath": "templates/safety/ask_the_guidebook_editorial_restyle/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "board_ratification_recording_safestart_dashboard_1",
+      "category": "safety",
+      "subgroup": "ratification-recording",
+      "screenFamily": "ratification-flow",
+      "fixturePath": "fixtures/safety/board_ratification_recording_safestart_dashboard_1.content.json",
+      "htmlPath": "templates/safety/board_ratification_recording_safestart_dashboard_1/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "board_ratification_recording_safestart_dashboard_2",
+      "category": "safety",
+      "subgroup": "ratification-recording",
+      "screenFamily": "ratification-flow",
+      "fixturePath": "fixtures/safety/board_ratification_recording_safestart_dashboard_2.content.json",
+      "htmlPath": "templates/safety/board_ratification_recording_safestart_dashboard_2/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "executive_signing_movemental_editorial",
+      "category": "safety",
+      "subgroup": "ratification-recording",
+      "screenFamily": "ratification-flow",
+      "fixturePath": "fixtures/safety/executive_signing_movemental_editorial.content.json",
+      "htmlPath": "templates/safety/executive_signing_movemental_editorial/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "incident_response_runbook_movemental_editorial",
+      "category": "safety",
+      "subgroup": "governance-tools",
+      "screenFamily": "governance-document",
+      "fixturePath": "fixtures/safety/incident_response_runbook_movemental_editorial.content.json",
+      "htmlPath": "templates/safety/incident_response_runbook_movemental_editorial/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "ratification_confirmation_movemental_editorial",
+      "category": "safety",
+      "subgroup": "ratification-recording",
+      "screenFamily": "ratification-flow",
+      "fixturePath": "fixtures/safety/ratification_confirmation_movemental_editorial.content.json",
+      "htmlPath": "templates/safety/ratification_confirmation_movemental_editorial/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "safestart_dashboard_drafting_async_review",
+      "category": "safety",
+      "subgroup": "safestart-dashboard",
+      "screenFamily": "safestart-editorial-workspace",
+      "fixturePath": "fixtures/safety/safestart_dashboard_drafting_async_review.content.json",
+      "htmlPath": "templates/safety/safestart_dashboard_drafting_async_review/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "safestart_dashboard_editorial_comment_view_1",
+      "category": "safety",
+      "subgroup": "safestart-dashboard",
+      "screenFamily": "editorial-thread",
+      "fixturePath": "fixtures/safety/safestart_dashboard_editorial_comment_view_1.content.json",
+      "htmlPath": "templates/safety/safestart_dashboard_editorial_comment_view_1/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "safestart_dashboard_editorial_comment_view_2",
+      "category": "safety",
+      "subgroup": "safestart-dashboard",
+      "screenFamily": "editorial-thread",
+      "fixturePath": "fixtures/safety/safestart_dashboard_editorial_comment_view_2.content.json",
+      "htmlPath": "templates/safety/safestart_dashboard_editorial_comment_view_2/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "safestart_dashboard_editorial_ratification_phase",
+      "category": "safety",
+      "subgroup": "safestart-dashboard",
+      "screenFamily": "safestart-editorial-workspace",
+      "fixturePath": "fixtures/safety/safestart_dashboard_editorial_ratification_phase.content.json",
+      "htmlPath": "templates/safety/safestart_dashboard_editorial_ratification_phase/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "safestart_dashboard_editorial_steady_state",
+      "category": "safety",
+      "subgroup": "safestart-dashboard",
+      "screenFamily": "safestart-editorial-workspace",
+      "fixturePath": "fixtures/safety/safestart_dashboard_editorial_steady_state.content.json",
+      "htmlPath": "templates/safety/safestart_dashboard_editorial_steady_state/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "safestart_dashboard_editorial_style_update",
+      "category": "safety",
+      "subgroup": "safestart-dashboard",
+      "screenFamily": "safestart-editorial-workspace",
+      "fixturePath": "fixtures/safety/safestart_dashboard_editorial_style_update.content.json",
+      "htmlPath": "templates/safety/safestart_dashboard_editorial_style_update/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "safestart_dashboard_home_pre_kickoff",
+      "category": "safety",
+      "subgroup": "safestart-dashboard",
+      "screenFamily": "safestart-hero-timeline",
+      "fixturePath": "fixtures/safety/safestart_dashboard_home_pre_kickoff.content.json",
+      "htmlPath": "templates/safety/safestart_dashboard_home_pre_kickoff/index.html",
+      "schemaPath": "fixtures/schema/safestart-hero-timeline.schema.json",
+      "seedUsed": true
+    },
+    {
+      "templateId": "safestart_dashboard_leave_comment_drawer",
+      "category": "safety",
+      "subgroup": "safestart-dashboard",
+      "screenFamily": "editorial-thread",
+      "fixturePath": "fixtures/safety/safestart_dashboard_leave_comment_drawer.content.json",
+      "htmlPath": "templates/safety/safestart_dashboard_leave_comment_drawer/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "safestart_dashboard_pre_kickoff_editorial",
+      "category": "safety",
+      "subgroup": "safestart-dashboard",
+      "screenFamily": "safestart-hero-timeline",
+      "fixturePath": "fixtures/safety/safestart_dashboard_pre_kickoff_editorial.content.json",
+      "htmlPath": "templates/safety/safestart_dashboard_pre_kickoff_editorial/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "safestart_dashboard_ratification_phase",
+      "category": "safety",
+      "subgroup": "ratification-recording",
+      "screenFamily": "ratification-flow",
+      "fixturePath": "fixtures/safety/safestart_dashboard_ratification_phase.content.json",
+      "htmlPath": "templates/safety/safestart_dashboard_ratification_phase/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "safestart_dashboard_revised_statement_view_revised_statement",
+      "category": "safety",
+      "subgroup": "ratification-recording",
+      "screenFamily": "ratification-flow",
+      "fixturePath": "fixtures/safety/safestart_dashboard_revised_statement_view_revised_statement.content.json",
+      "htmlPath": "templates/safety/safestart_dashboard_revised_statement_view_revised_statement/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "vendor_tool_inventory_editorial_review",
+      "category": "safety",
+      "subgroup": "governance-tools",
+      "screenFamily": "governance-document",
+      "fixturePath": "fixtures/safety/vendor_tool_inventory_editorial_review.content.json",
+      "htmlPath": "templates/safety/vendor_tool_inventory_editorial_review/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "cohort_view_sandboxlive_dashboard",
+      "category": "sandbox",
+      "subgroup": "oversight-modules",
+      "screenFamily": "oversight-modules",
+      "fixturePath": "fixtures/sandbox/cohort_view_sandboxlive_dashboard.content.json",
+      "htmlPath": "templates/sandbox/cohort_view_sandboxlive_dashboard/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "ethics_review_aggregated_feedback_view",
+      "category": "sandbox",
+      "subgroup": "ethics-review",
+      "screenFamily": "ethics-workspace",
+      "fixturePath": "fixtures/sandbox/ethics_review_aggregated_feedback_view.content.json",
+      "htmlPath": "templates/sandbox/ethics_review_aggregated_feedback_view/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "ethics_review_external_reviewer_interface",
+      "category": "sandbox",
+      "subgroup": "ethics-review",
+      "screenFamily": "ethics-workspace",
+      "fixturePath": "fixtures/sandbox/ethics_review_external_reviewer_interface.content.json",
+      "htmlPath": "templates/sandbox/ethics_review_external_reviewer_interface/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "ethics_review_preparation_view",
+      "category": "sandbox",
+      "subgroup": "ethics-review",
+      "screenFamily": "ethics-workspace",
+      "fixturePath": "fixtures/sandbox/ethics_review_preparation_view.content.json",
+      "htmlPath": "templates/sandbox/ethics_review_preparation_view/index.html",
+      "schemaPath": null,
+      "seedUsed": true
+    },
+    {
+      "templateId": "future_plan_board_export",
+      "category": "sandbox",
+      "subgroup": "future-plan",
+      "screenFamily": "future-plan-editor",
+      "fixturePath": "fixtures/sandbox/future_plan_board_export.content.json",
+      "htmlPath": "templates/sandbox/future_plan_board_export/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "future_plan_drafting_editor",
+      "category": "sandbox",
+      "subgroup": "future-plan",
+      "screenFamily": "future-plan-editor",
+      "fixturePath": "fixtures/sandbox/future_plan_drafting_editor.content.json",
+      "htmlPath": "templates/sandbox/future_plan_drafting_editor/index.html",
+      "schemaPath": null,
+      "seedUsed": true
+    },
+    {
+      "templateId": "future_plan_initial_aggregation",
+      "category": "sandbox",
+      "subgroup": "future-plan",
+      "screenFamily": "future-plan-editor",
+      "fixturePath": "fixtures/sandbox/future_plan_initial_aggregation.content.json",
+      "htmlPath": "templates/sandbox/future_plan_initial_aggregation/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "module_02_how_to_talk_to_it_sandboxlive_dashboard",
+      "category": "sandbox",
+      "subgroup": "oversight-modules",
+      "screenFamily": "oversight-modules",
+      "fixturePath": "fixtures/sandbox/module_02_how_to_talk_to_it_sandboxlive_dashboard.content.json",
+      "htmlPath": "templates/sandbox/module_02_how_to_talk_to_it_sandboxlive_dashboard/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "phase_01_boundaries_workspace_movemental",
+      "category": "sandbox",
+      "subgroup": "phase-workspaces",
+      "screenFamily": "phase-workspace",
+      "fixturePath": "fixtures/sandbox/phase_01_boundaries_workspace_movemental.content.json",
+      "htmlPath": "templates/sandbox/phase_01_boundaries_workspace_movemental/index.html",
+      "schemaPath": null,
+      "seedUsed": true
+    },
+    {
+      "templateId": "phase_02_assessment_sandboxlive_workspace",
+      "category": "sandbox",
+      "subgroup": "phase-workspaces",
+      "screenFamily": "phase-workspace",
+      "fixturePath": "fixtures/sandbox/phase_02_assessment_sandboxlive_workspace.content.json",
+      "htmlPath": "templates/sandbox/phase_02_assessment_sandboxlive_workspace/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "phase_04_iteration_sandboxlive_workspace",
+      "category": "sandbox",
+      "subgroup": "phase-workspaces",
+      "screenFamily": "phase-workspace",
+      "fixturePath": "fixtures/sandbox/phase_04_iteration_sandboxlive_workspace.content.json",
+      "htmlPath": "templates/sandbox/phase_04_iteration_sandboxlive_workspace/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "phase_05_reflection_sandboxlive_workspace",
+      "category": "sandbox",
+      "subgroup": "phase-workspaces",
+      "screenFamily": "phase-workspace",
+      "fixturePath": "fixtures/sandbox/phase_05_reflection_sandboxlive_workspace.content.json",
+      "htmlPath": "templates/sandbox/phase_05_reflection_sandboxlive_workspace/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "phase_06_ethics_review_sandboxlive_dashboard",
+      "category": "sandbox",
+      "subgroup": "phase-workspaces",
+      "screenFamily": "phase-workspace",
+      "fixturePath": "fixtures/sandbox/phase_06_ethics_review_sandboxlive_dashboard.content.json",
+      "htmlPath": "templates/sandbox/phase_06_ethics_review_sandboxlive_dashboard/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "phase_07_discerning_adjudication_workspace",
+      "category": "sandbox",
+      "subgroup": "phase-workspaces",
+      "screenFamily": "phase-workspace",
+      "fixturePath": "fixtures/sandbox/phase_07_discerning_adjudication_workspace.content.json",
+      "htmlPath": "templates/sandbox/phase_07_discerning_adjudication_workspace/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "phase_08_future_plan_editor_sandboxlive_workspace",
+      "category": "sandbox",
+      "subgroup": "phase-workspaces",
+      "screenFamily": "phase-workspace",
+      "fixturePath": "fixtures/sandbox/phase_08_future_plan_editor_sandboxlive_workspace.content.json",
+      "htmlPath": "templates/sandbox/phase_08_future_plan_editor_sandboxlive_workspace/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "recipe_detail_strategic_memo_drafting",
+      "category": "sandbox",
+      "subgroup": "strategic-memo",
+      "screenFamily": "strategic-memo",
+      "fixturePath": "fixtures/sandbox/recipe_detail_strategic_memo_drafting.content.json",
+      "htmlPath": "templates/sandbox/recipe_detail_strategic_memo_drafting/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "recipe_library_filtered_by_map",
+      "category": "sandbox",
+      "subgroup": "recipe-library",
+      "screenFamily": "recipe-library",
+      "fixturePath": "fixtures/sandbox/recipe_library_filtered_by_map.content.json",
+      "htmlPath": "templates/sandbox/recipe_library_filtered_by_map/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "recipe_library_movemental_sandbox_dashboard",
+      "category": "sandbox",
+      "subgroup": "recipe-library",
+      "screenFamily": "recipe-library",
+      "fixturePath": "fixtures/sandbox/recipe_library_movemental_sandbox_dashboard.content.json",
+      "htmlPath": "templates/sandbox/recipe_library_movemental_sandbox_dashboard/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "sandboxlive_dashboard_active_engagement_state",
+      "category": "sandbox",
+      "subgroup": "sandboxlive-dashboard",
+      "screenFamily": "sandboxlive-shell",
+      "fixturePath": "fixtures/sandbox/sandboxlive_dashboard_active_engagement_state.content.json",
+      "htmlPath": "templates/sandbox/sandboxlive_dashboard_active_engagement_state/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "sandboxlive_dashboard_discernment_phase",
+      "category": "sandbox",
+      "subgroup": "sandboxlive-dashboard",
+      "screenFamily": "sandboxlive-shell",
+      "fixturePath": "fixtures/sandbox/sandboxlive_dashboard_discernment_phase.content.json",
+      "htmlPath": "templates/sandbox/sandboxlive_dashboard_discernment_phase/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "sandboxlive_dashboard_post_engagement_reference_state",
+      "category": "sandbox",
+      "subgroup": "sandboxlive-dashboard",
+      "screenFamily": "sandboxlive-shell",
+      "fixturePath": "fixtures/sandbox/sandboxlive_dashboard_post_engagement_reference_state.content.json",
+      "htmlPath": "templates/sandbox/sandboxlive_dashboard_post_engagement_reference_state/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "sandboxlive_dashboard_pre_kickoff_state",
+      "category": "sandbox",
+      "subgroup": "sandboxlive-dashboard",
+      "screenFamily": "sandboxlive-shell",
+      "fixturePath": "fixtures/sandbox/sandboxlive_dashboard_pre_kickoff_state.content.json",
+      "htmlPath": "templates/sandbox/sandboxlive_dashboard_pre_kickoff_state/index.html",
+      "schemaPath": null,
+      "seedUsed": true
+    },
+    {
+      "templateId": "sandboxlive_dashboard_recording_recipe_value",
+      "category": "sandbox",
+      "subgroup": "sandboxlive-dashboard",
+      "screenFamily": "sandboxlive-shell",
+      "fixturePath": "fixtures/sandbox/sandboxlive_dashboard_recording_recipe_value.content.json",
+      "htmlPath": "templates/sandbox/sandboxlive_dashboard_recording_recipe_value/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "sponsor_oversight_view_sandboxlive",
+      "category": "sandbox",
+      "subgroup": "oversight-modules",
+      "screenFamily": "oversight-modules",
+      "fixturePath": "fixtures/sandbox/sponsor_oversight_view_sandboxlive.content.json",
+      "htmlPath": "templates/sandbox/sponsor_oversight_view_sandboxlive/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "trial_setup_strategic_memo_drafting",
+      "category": "sandbox",
+      "subgroup": "strategic-memo",
+      "screenFamily": "strategic-memo",
+      "fixturePath": "fixtures/sandbox/trial_setup_strategic_memo_drafting.content.json",
+      "htmlPath": "templates/sandbox/trial_setup_strategic_memo_drafting/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    },
+    {
+      "templateId": "value_record_strategic_memo_drafting",
+      "category": "sandbox",
+      "subgroup": "strategic-memo",
+      "screenFamily": "strategic-memo",
+      "fixturePath": "fixtures/sandbox/value_record_strategic_memo_drafting.content.json",
+      "htmlPath": "templates/sandbox/value_record_strategic_memo_drafting/index.html",
+      "schemaPath": null,
+      "seedUsed": false
+    }
+  ]
+}

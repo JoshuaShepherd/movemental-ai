@@ -1,0 +1,48 @@
+{
+  "fixtureVersion": 1,
+  "templateId": "safestart_dashboard_editorial_style_update",
+  "screenFamily": "safestart-editorial-workspace",
+  "documentTitle": "Layer Detail - Draft State",
+  "draftApiMapping": {
+    "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
+    "shell_brand": "brand.assets.wordmark_text",
+    "shell_tenant": "organizations.display_name",
+    "shell_user_initials": "users.avatar_initials",
+    "page_copy": "artifacts.route_copy_fields"
+  },
+  "shell": {
+    "brandLine": null,
+    "tenantName": null,
+    "userInitials": null,
+    "modeBadge": null
+  },
+  "page": {
+    "headline": "AI Organizational Statement",
+    "supportingCopy": "Senior Leadership Portal",
+    "eyebrow": "DRAFT — REVIEW THIS LAYER BEFORE THE REVISION ZOOM ON MAY 19"
+  },
+  "sections": [
+    {
+      "id": "outline",
+      "kind": "outline",
+      "headings": [
+        {
+          "level": 2,
+          "text": "Guidebook"
+        },
+        {
+          "level": 1,
+          "text": "AI Organizational Statement"
+        },
+        {
+          "level": 3,
+          "text": "Implementation Timelines"
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "quality": "auto",
+    "generator": "scripts/build-fixtures.js"
+  }
+}

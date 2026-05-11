@@ -244,7 +244,7 @@ Safety is **not** a default ban, nor a PDF nobody cites. It is a **living frame*
 
 ### 5.2 Artifacts, not vibes
 
-Movemental’s Safety stage productizes **seven governance artifacts** (charter, acceptable use, data handling, disclosure, care boundaries, constituent communication, etc.) — Path SSOT Part 3. A one-page exec sketch is a summary layer, not the whole stage.
+Movemental’s Safety stage productizes **seven governance decisions** (charter, acceptable use, data handling, disclosure, care boundaries, constituent communication, etc.) — Path SSOT Part 3. A one-page exec sketch is a summary layer, not the whole stage.
 
 ### 5.3 Why Safety comes first
 
