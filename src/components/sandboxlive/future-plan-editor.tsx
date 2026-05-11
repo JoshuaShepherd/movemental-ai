@@ -7,7 +7,7 @@ import {
   FUTURE_PLAN_SECTIONS,
   type FuturePlanContent,
   type FuturePlanSectionSlug,
-} from "@/lib/sandboxlive/future-plan.server";
+} from "@/lib/sandboxlive/future-plan.catalog";
 import { cn } from "@/lib/utils";
 
 import type { SaveSectionResult } from "@/app/(dashboard)/sandboxlive/phase/08-future-plan/actions";

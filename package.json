@@ -7,7 +7,7 @@
     "sync:hero-previews": "tsx scripts/sync-hero-previews.ts",
     "prebuild": "tsx scripts/sync-hero-previews.ts && tsx scripts/pre-build-check.ts",
     "build:check": "tsx scripts/pre-build-check.ts",
-    "build": "next build",
+    "build": "NODE_OPTIONS=\"--max-old-space-size=8192\" next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "NODE_OPTIONS=\"--max-old-space-size=8192\" tsc --noEmit",
