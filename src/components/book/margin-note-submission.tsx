@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { Plus } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -20,6 +22,7 @@ type Props = {
 };
 
 export function MarginNoteSubmission({ chapterSlug, defaultAnchorId }: Props) {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [type, setType] = useState<"question" | "feedback" | "criticism">("question");
   const [anchorId, setAnchorId] = useState(defaultAnchorId);
@@ -30,7 +33,23 @@ export function MarginNoteSubmission({ chapterSlug, defaultAnchorId }: Props) {
   const [contactEmail, setContactEmail] = useState("");
   const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
-  const [magicStatus, setMagicStatus] = useState<"idle" | "sent" | "error">("idle");
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+
+  const returnTo = pathname && pathname.startsWith("/") ? pathname : `/book/read/${chapterSlug}`;
+  const signInHref = `/login?next=${encodeURIComponent(returnTo)}`;
+
+  useEffect(() => {
+    if (!open) return;
+    let cancelled = false;
+    void createClient()
+      .auth.getUser()
+      .then(({ data }) => {
+        if (!cancelled) setUserEmail(data.user?.email ?? null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [open]);
 
   const submit = async () => {
     if (!consent || !name.trim() || body.trim().length < 10) return;
@@ -57,23 +76,6 @@ export function MarginNoteSubmission({ chapterSlug, defaultAnchorId }: Props) {
       setStatus("done");
     } catch {
       setStatus("error");
-    }
-  };
-
-  const sendMagicLink = async () => {
-    if (!contactEmail.trim()) return;
-    setMagicStatus("idle");
-    try {
-      const supabase = createClient();
-      const origin = window.location.origin;
-      const { error } = await supabase.auth.signInWithOtp({
-        email: contactEmail.trim(),
-        options: { emailRedirectTo: `${origin}/book/read/${chapterSlug}` },
-      });
-      if (error) throw error;
-      setMagicStatus("sent");
-    } catch {
-      setMagicStatus("error");
     }
   };
 
@@ -191,28 +193,36 @@ export function MarginNoteSubmission({ chapterSlug, defaultAnchorId }: Props) {
             </div>
 
             <div className="rounded-lg bg-section p-3">
-              <p className="text-xs font-medium text-foreground">Verify identity (optional)</p>
-              <p className="mt-1 text-xs text-muted-foreground">
-                Magic link ties submissions to your account when you are signed in.
-              </p>
-              <div className="mt-2 flex gap-2">
-                <input
-                  type="email"
-                  value={contactEmail}
-                  onChange={(e) => setContactEmail(e.target.value)}
-                  placeholder="Email for magic link"
-                  className="min-w-0 flex-1 rounded-md border border-border bg-card px-2 py-1.5 text-xs"
-                />
-                <Button type="button" size="sm" variant="secondary" onClick={sendMagicLink}>
-                  Send link
+              <p className="text-xs font-medium text-foreground">Account</p>
+              {userEmail ? (
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Signed in as <span className="text-foreground">{userEmail}</span>. This note will be tied to your
+                  account when you submit.
+                </p>
+              ) : (
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Sign in to tie this note to your Movemental account (optional for submission).
+                </p>
+              )}
+              {!userEmail ? (
+                <Button type="button" size="sm" variant="secondary" className="mt-3" asChild>
+                  <Link href={signInHref}>Sign in</Link>
                 </Button>
-              </div>
-              {magicStatus === "sent" && (
-                <p className="mt-2 text-xs text-muted-foreground">Check your inbox to finish sign-in.</p>
-              )}
-              {magicStatus === "error" && (
-                <p className="mt-2 text-xs text-destructive">Could not send magic link.</p>
-              )}
+              ) : null}
+            </div>
+
+            <div>
+              <label htmlFor="contact-email" className="text-xs font-medium text-muted-foreground">
+                Contact email (optional)
+              </label>
+              <input
+                id="contact-email"
+                type="email"
+                value={contactEmail}
+                onChange={(e) => setContactEmail(e.target.value)}
+                placeholder="For follow-up only"
+                className="mt-1 w-full rounded-md border border-border bg-card px-3 py-2 text-sm"
+              />
             </div>
 
             <label className="flex items-start gap-2 text-xs text-muted-foreground">
