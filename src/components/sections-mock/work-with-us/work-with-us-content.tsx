@@ -191,7 +191,7 @@ function EngagementModelFold() {
         </ol>
 
         <div className="path-section__cta">
-          <BtnPill href="/path" variant="ghost">
+          <BtnPill href="/pathway" variant="ghost">
             See the full path
           </BtnPill>
         </div>
@@ -323,7 +323,7 @@ const ENGAGEMENT_OPTIONS: readonly EngagementOption[] = [
       "Team training",
     ],
     cta: "Explore the Pathway",
-    href: "/path",
+    href: "/pathway",
   },
   {
     title: "Solutions Partnership",

@@ -690,7 +690,7 @@ export function SandboxPage() {
                 <p>
                   Vol. 01 · <em className="not-italic">It Starts With Safety</em> ·{" "}
                   <Link
-                    href="/pathway/safety#field-guide"
+                    href="/field-guides/safety"
                     className="text-foreground underline decoration-pathway-accent underline-offset-4 hover:decoration-2"
                   >
                     Read Vol. 01

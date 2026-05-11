@@ -7,8 +7,7 @@ import { useEffect } from "react";
 import { Container } from "@/components/studio/Container";
 import { PathwayStageRail } from "@/components/pathway/pathway-stage-rail";
 import { Reveal } from "@/components/studio/Reveal";
-import { ToolkitCover } from "@/components/toolkit/ToolkitCover";
-import { ToolkitDownloadForm } from "@/components/toolkit/ToolkitDownloadForm";
+import { EditorialFieldGuideCta } from "@/components/field-guide/editorial-field-guide-cta";
 import { proofRows } from "@/components/sections/home/home-data";
 
 const DEPLOYMENT_CONFIGURATIONS = [
@@ -184,7 +183,7 @@ export function SolutionsPathwayPage() {
                   >
                     Begin Solutions
                   </Link>
-                  <Link href="/field-guide" className="btn-pill btn-pill--ghost px-8 py-4 text-base">
+                  <Link href="/field-guides" className="btn-pill btn-pill--ghost px-8 py-4 text-base">
                     Read the Field Guide first
                   </Link>
                 </div>
@@ -582,44 +581,11 @@ export function SolutionsPathwayPage() {
         </Container>
       </section>
 
-      {/* Section 11 — Field guide */}
+      {/* Section 11 — Field guide (editorial CTA, capture lives on /field-guides/safety) */}
       <section className="border-b border-border bg-section py-16 md:py-28" aria-labelledby="solutions-field-guide-title">
         <Container>
           <Reveal>
-            <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-12">
-              <div className="order-2 mx-auto w-full max-w-lg lg:order-1 lg:col-span-5 lg:mx-0">
-                <ToolkitCover />
-              </div>
-              <div className="order-1 lg:order-2 lg:col-span-7">
-                <p className="text-xs font-semibold uppercase tracking-eyebrow text-muted-foreground">
-                  Read before you commit
-                </p>
-                <h2
-                  id="solutions-field-guide-title"
-                  className="mt-4 font-serif-display text-[clamp(2rem,4vw,3.25rem)] italic leading-tight text-foreground"
-                >
-                  Start with the Field Guide.
-                </h2>
-                <p className="mt-8 max-w-[30rem] text-lg leading-relaxed text-muted-foreground">
-                  It Starts With Safety is a sixteen-page Field Guide that walks through the full Movemental Path. If you
-                  are considering Solutions, the Field Guide will help you see whether your organization is ready, or
-                  whether earlier stages need attention first. The Field Guide is free, and we would rather route you
-                  correctly than build a deployment your foundation cannot hold.
-                </p>
-                <div className="mt-10 max-w-xl">
-                  <ToolkitDownloadForm
-                    source="solutions-pathway-page"
-                    variant="page"
-                    layout="inline"
-                    disclaimer={
-                      <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
-                        We use your email only to send the PDF and occasional Path-related updates. Unsubscribe anytime.
-                      </p>
-                    }
-                  />
-                </div>
-              </div>
-            </div>
+            <EditorialFieldGuideCta volume="safety" titleId="solutions-field-guide-title" />
           </Reveal>
         </Container>
       </section>
@@ -646,7 +612,7 @@ export function SolutionsPathwayPage() {
                 <Link href="/contact?interest=solutions" className="btn-pill btn-pill--primary px-8 py-4 text-base">
                   Start a conversation
                 </Link>
-                <Link href="/field-guide" className="btn-pill btn-pill--ghost px-8 py-4 text-base">
+                <Link href="/field-guides" className="btn-pill btn-pill--ghost px-8 py-4 text-base">
                   Read the Field Guide first
                 </Link>
               </div>

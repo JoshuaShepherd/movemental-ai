@@ -38,7 +38,7 @@ function Hero() {
           <BtnPill href="/voices" variant="primary">
             See the named voices
           </BtnPill>
-          <BtnPill href="/field-guide" variant="ghost">
+          <BtnPill href="/field-guides" variant="ghost">
             Read the field guide
           </BtnPill>
         </div>
@@ -323,7 +323,7 @@ function FinalCta() {
           <BtnPill href="/contact" variant="primary">
             Start a conversation
           </BtnPill>
-          <BtnPill href="/field-guide" variant="ghost">
+          <BtnPill href="/field-guides" variant="ghost">
             Read the field guide
           </BtnPill>
         </div>

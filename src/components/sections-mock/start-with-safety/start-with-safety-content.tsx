@@ -429,8 +429,8 @@ function PathFold() {
         </ol>
 
         <div className="path-section__cta">
-          <BtnPill href="/field-guide" variant="ghost">
-            See the full path
+          <BtnPill href="/field-guides/safety" variant="ghost">
+            Read Volume One
           </BtnPill>
         </div>
       </div>

@@ -46,7 +46,7 @@ const otherPaths = {
       num: "01",
       title: "Read the field guide",
       body: "Sixteen pages naming the seven decisions and how to draft them. Free. Read it with your team and decide together.",
-      href: "/field-guide",
+      href: "/field-guides/safety",
       linkLabel: "Field guide",
     },
     {
@@ -74,7 +74,7 @@ const institutionsOtherPaths = {
       num: "01",
       title: "Read the field guide",
       body: "Sixteen pages naming the seven decisions and the framework. Useful as a starting point for institutional leadership teams to read together before a conversation.",
-      href: "/field-guide",
+      href: "/field-guides/safety",
       linkLabel: "Field guide",
     },
     {

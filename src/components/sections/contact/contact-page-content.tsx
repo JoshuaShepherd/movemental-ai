@@ -148,7 +148,7 @@ export function ContactPageContent({ contactInterest }: { contactInterest?: Cont
                 <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-foreground">Read first</h3>
                 <p className="text-muted-foreground">If you&apos;re not yet sure whether to reach out.</p>
                 <div className="mt-4">
-                  <TextLink href="/toolkit">Download the Safety toolkit</TextLink>
+                  <TextLink href="/field-guides/safety">Read the Safety Field Guide</TextLink>
                 </div>
               </div>
             </div>
@@ -178,7 +178,7 @@ export function ContactPageContent({ contactInterest }: { contactInterest?: Cont
                   not yet at a specific question — the field guide is probably a better starting place than a 30-minute
                   call.
                 </p>
-                <TextLink href="/field-guide">Read the field guide first</TextLink>
+                <TextLink href="/field-guides">Read the field guide first</TextLink>
               </div>
             </div>
           </Reveal>

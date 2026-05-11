@@ -76,7 +76,7 @@ export function TrainingPage() {
                   Read about Stage 03: Skills
                   <ArrowRight className="size-4" aria-hidden />
                 </Link>
-                <Link href="/field-guide" className="btn-pill btn-pill--ghost px-8 py-4">
+                <Link href="/field-guides" className="btn-pill btn-pill--ghost px-8 py-4">
                   Read the Field Guide
                 </Link>
               </div>
@@ -229,7 +229,7 @@ export function TrainingPage() {
                 Start a conversation
               </Link>
               <Link
-                href="/field-guide"
+                href="/field-guides"
                 className="inline-flex items-center justify-center border border-inverse-border px-10 py-5 text-xs font-semibold uppercase tracking-eyebrow text-inverse-foreground hover:border-inverse-foreground"
               >
                 Read the Field Guide

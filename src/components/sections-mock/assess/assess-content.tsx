@@ -40,7 +40,7 @@ function Hero() {
           <BtnPill href="#begin" variant="primary">
             Take the diagnostic
           </BtnPill>
-          <BtnPill href="/field-guide" variant="ghost">
+          <BtnPill href="/field-guides" variant="ghost">
             Read the field guide first
           </BtnPill>
         </div>
@@ -261,7 +261,7 @@ function WhereInEngagement() {
           from what it surfaces.
         </p>
         <div className="btn-row">
-          <BtnPill href="/field-guide" variant="ghost">
+          <BtnPill href="/field-guides" variant="ghost">
             Read the field guide for the full Sequence
           </BtnPill>
         </div>

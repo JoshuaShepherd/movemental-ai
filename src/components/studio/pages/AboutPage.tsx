@@ -289,7 +289,7 @@ function PathCompact() {
           </div>
           <div className="mt-12">
             <Link
-              href="/path"
+              href="/pathway"
               className="group inline-flex items-center gap-2 text-sm text-foreground transition-colors hover:text-muted-foreground"
             >
               See the full path
@@ -380,17 +380,17 @@ function ClosingCta() {
               <Link href="/contact" className="btn-pill btn-pill--primary">
                 Start a conversation
               </Link>
-              <Link href="/field-guide" className="btn-pill btn-pill--ghost">
+              <Link href="/field-guides" className="btn-pill btn-pill--ghost">
                 Read the field guide first
               </Link>
             </div>
             <p className="font-serif-display italic text-muted-foreground">
               Or{" "}
               <Link
-                href="/toolkit"
+                href="/field-guides/safety"
                 className="underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
               >
-                download the free Safety toolkit
+                read the free Safety Field Guide
               </Link>
               .
             </p>

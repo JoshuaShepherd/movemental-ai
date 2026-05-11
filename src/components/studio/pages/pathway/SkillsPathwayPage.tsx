@@ -5,8 +5,7 @@ import Link from "next/link";
 import { PathwayStageRail } from "@/components/pathway/pathway-stage-rail";
 import { PathwayVoiceFallback } from "@/components/pathway/pathway-voice-fallback";
 import { Reveal } from "@/components/studio/Reveal";
-import { ToolkitCover } from "@/components/toolkit/ToolkitCover";
-import { ToolkitDownloadForm } from "@/components/toolkit/ToolkitDownloadForm";
+import { EditorialFieldGuideCta } from "@/components/field-guide/editorial-field-guide-cta";
 import { cn } from "@/lib/utils";
 
 const MAX = "mx-auto w-full max-w-[var(--container-max)] px-6 sm:px-8 lg:px-12";
@@ -567,50 +566,11 @@ export function SkillsPathwayPage() {
         </Reveal>
       </section>
 
-      {/* Field Guide */}
+      {/* Field Guide — editorial CTA, capture lives on /field-guides/safety */}
       <section className={cn(SECTION, "bg-section")} id="field-guide" aria-labelledby="skills-field-guide-title">
         <Reveal>
-          <div className={cn(MAX, "grid grid-cols-1 items-center gap-16 lg:grid-cols-12")}>
-            <div className="order-2 lg:order-1 lg:col-span-7">
-              <p className="mb-4 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">
-                Read before you commit
-              </p>
-              <h2
-                id="skills-field-guide-title"
-                className="mb-8 font-serif-display text-4xl italic tracking-tight text-foreground md:text-5xl"
-              >
-                Start with the Field Guide.
-              </h2>
-              <p className="mb-10 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                It Starts With Safety is a sixteen-page Field Guide that walks through the full Movemental Path. The
-                self-assessment included will help you evaluate whether your organization is ready for Skills, or whether
-                you should begin earlier in the path. The Field Guide is free, and we would rather you do this work well in
-                the right order than skip stages and have to backfill later.
-              </p>
-              <ToolkitDownloadForm
-                source="pathway-skills-field-guide"
-                variant="page"
-                layout="stacked"
-                submitLabel="Send me the Field Guide"
-                emailLabel="Work email address"
-                organizationLabel="Organization"
-                successMessage="Check your email for the Field Guide."
-                inputClassName="focus:border-pathway-accent"
-                disclaimer={
-                  <>
-                    No drip campaign. We send the Field Guide and one follow-up email a week later asking how it went.
-                  </>
-                }
-                buttonClassName="bg-inverse-surface text-primary-foreground hover:opacity-90"
-                className="max-w-md"
-              />
-            </div>
-            <div className="order-1 mx-auto w-full max-w-lg lg:order-2 lg:col-span-5 lg:mx-0">
-              <ToolkitCover stageFoot="Stage 01 · Vol. 01" />
-              <p className="mt-5 text-center text-[0.62rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">
-                Movemental · Vol. 01 · 16 pages
-              </p>
-            </div>
+          <div className={MAX}>
+            <EditorialFieldGuideCta volume="safety" titleId="skills-field-guide-title" />
           </div>
         </Reveal>
       </section>

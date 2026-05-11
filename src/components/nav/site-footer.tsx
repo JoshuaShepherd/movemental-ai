@@ -89,7 +89,7 @@ export function SiteFooter() {
             </li>
             <li>
               <Link
-                href="/field-guide"
+                href="/field-guides"
                 className="decoration-primary/30 underline-offset-4 transition-colors hover:text-primary hover:underline hover:decoration-primary"
               >
                 Field guide
@@ -197,7 +197,7 @@ export function SiteFooter() {
             </li>
             <li>
               <Link
-                href="/field-guide"
+                href="/field-guides"
                 className="decoration-primary/30 underline-offset-4 transition-colors hover:text-primary hover:underline hover:decoration-primary"
               >
                 Read the field guide

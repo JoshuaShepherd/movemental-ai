@@ -309,7 +309,7 @@ export function PricingPageContent() {
             <h2 className="font-serif text-4xl font-medium text-foreground">Where to begin</h2>
             <div className="mt-16 flex flex-col justify-center gap-8 md:flex-row md:flex-wrap">
               <Link
-                href="/field-guide"
+                href="/field-guides"
                 className="group flex flex-col items-center gap-4 border border-border p-8 transition-colors hover:border-primary"
               >
                 <BookOpen className="size-10 text-muted-foreground transition-colors group-hover:text-primary" aria-hidden strokeWidth={1.25} />

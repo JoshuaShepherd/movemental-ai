@@ -3,14 +3,16 @@
  *
  *   1. What is this?         → The Path
  *   2. Is this for me?       → Who It's For (dropdown)
- *   3. Is there a real way?  → How It Works
- *   4. Who else sees this?   → Voices
- *   5. Can I trust it?       → Evidence
- *   6. Who is behind this?   → About
- *   7. What do I do next?    → Start a Conversation (CTA)
+ *   3. Who else sees this?   → Voices
+ *   4. Can I trust it?       → Evidence
+ *   5. Who is behind this?   → About
+ *   6. What do I do next?    → Start a Conversation (CTA)
  *
  * Voices vs. Evidence: Voices is leaders joining the conversation; Evidence is
  * proof of the framework, problem, and practice. Distinct surfaces.
+ *
+ * The Path (/pathway) carries both the four-stage overview and the engagement
+ * options, so the old "How It Works" link is folded into it.
  */
 
 export type NavLeaf = {
@@ -29,7 +31,7 @@ export type NavGroup =
     };
 
 export const PRIMARY_NAV: readonly NavGroup[] = [
-  { kind: "link", label: "The Path", href: "/path" },
+  { kind: "link", label: "The Path", href: "/pathway" },
   {
     kind: "dropdown",
     label: "Who It's For",
@@ -52,7 +54,6 @@ export const PRIMARY_NAV: readonly NavGroup[] = [
       },
     ],
   },
-  { kind: "link", label: "How It Works", href: "/work-with-us" },
   { kind: "link", label: "Voices", href: "/voices" },
   { kind: "link", label: "Evidence", href: "/evidence" },
   { kind: "link", label: "About", href: "/about" },

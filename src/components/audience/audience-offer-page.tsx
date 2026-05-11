@@ -14,7 +14,6 @@ import { Eyebrow } from "@/components/primitives/eyebrow";
 import { Section } from "@/components/primitives/section";
 import type { AudienceKind } from "@/components/studio/segment/audience-contact";
 import { audienceContactHref } from "@/components/studio/segment/audience-contact";
-import { ToolkitOpenButton } from "@/components/toolkit/ToolkitOpenButton";
 import { audienceOfferCaseStudySections } from "@/lib/audience-case-study";
 import { cn } from "@/lib/utils";
 
@@ -33,9 +32,9 @@ export function AudienceOfferPage({
 
   const midnightBtnRow = (
     <div className="mt-10 flex flex-wrap items-center gap-3 md:gap-4">
-      <ToolkitOpenButton source={`audience-${audience}-hero`} variant="midnight-primary">
-        Download the free Safety toolkit
-      </ToolkitOpenButton>
+      <Link href="/field-guides/safety" className="btn-pill btn-pill--primary inline-flex items-center justify-center px-6 py-3 text-[0.95rem] font-medium">
+        Read the Safety Field Guide
+      </Link>
       <Link href={contactHref} className="btn-pill btn-pill--ghost inline-flex items-center justify-center px-6 py-3 text-[0.95rem] font-medium">
         Start a conversation
       </Link>
@@ -50,9 +49,9 @@ export function AudienceOfferPage({
       >
         Start an institutional conversation
       </Link>
-      <ToolkitOpenButton source={`audience-${audience}-closing`} variant="midnight-primary">
-        Download the free Safety toolkit
-      </ToolkitOpenButton>
+      <Link href="/field-guides/safety" className="btn-pill btn-pill--ghost inline-flex items-center justify-center px-6 py-3 text-[0.95rem] font-medium">
+        Read the Safety Field Guide
+      </Link>
       <Link
         href="/pathway"
         className="inline-flex items-center px-2 py-3 text-[0.95rem] font-medium text-inverse-foreground/85 underline decoration-inverse-border decoration-1 underline-offset-4 hover:text-inverse-foreground"
@@ -62,9 +61,9 @@ export function AudienceOfferPage({
     </div>
   ) : (
     <div className="mt-10 flex flex-wrap items-center gap-3 md:gap-4">
-      <ToolkitOpenButton source={`audience-${audience}-closing`} variant="midnight-primary">
-        Download the free Safety toolkit
-      </ToolkitOpenButton>
+      <Link href="/field-guides/safety" className="btn-pill btn-pill--primary inline-flex items-center justify-center px-6 py-3 text-[0.95rem] font-medium">
+        Read the Safety Field Guide
+      </Link>
       <Link href={contactHref} className="btn-pill btn-pill--ghost inline-flex items-center justify-center px-6 py-3 text-[0.95rem] font-medium">
         Start a conversation
       </Link>

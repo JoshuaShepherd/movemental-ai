@@ -1,31 +1,24 @@
-"use client";
-
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
-import { useToolkitModal } from "@/components/toolkit/toolkit-modal-context";
 import { cn } from "@/lib/utils";
 
 /**
- * AboutToolkitTrigger — small client island that opens the shared
- * `<ToolkitDownloadModal />` from inside the otherwise-static `/about` page.
- * Rendered as the closing arrow link in the closing CTA section.
+ * Inverse-surface arrow link that points at the canonical Field Guide
+ * landing page. Capture happens on `/field-guides/safety`, not inline.
  *
- * The `source` prop is recorded on the lead so day-0 / day-3 / day-7
- * sequences can segment by surface (matches the convention used by
- * `ToolkitOpenButton`).
+ * The legacy export name (and `source` prop) is preserved so existing call
+ * sites continue to compile; the `source` value is no longer used.
  */
 export function AboutToolkitTrigger({
-  source = "about-closing",
   className,
 }: {
   source?: string;
   className?: string;
 }) {
-  const { open } = useToolkitModal();
   return (
-    <button
-      type="button"
-      onClick={() => open({ source })}
+    <Link
+      href="/field-guides/safety"
       className={cn(
         "group/arrow inline-flex items-center gap-2 rounded-sm text-sm font-medium",
         "text-inverse-foreground/85 hover:text-inverse-foreground",
@@ -34,12 +27,12 @@ export function AboutToolkitTrigger({
         className,
       )}
     >
-      Download the toolkit
+      Read the Field Guide
       <ArrowRight
         aria-hidden="true"
         className="h-4 w-4 shrink-0 transition-transform group-hover/arrow:translate-x-1"
         strokeWidth={1.5}
       />
-    </button>
+    </Link>
   );
 }

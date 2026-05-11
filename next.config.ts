@@ -36,17 +36,51 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/blog",
-        destination: "/field-guide",
+        destination: "/field-guides",
         permanent: true,
       },
       {
         source: "/book",
-        destination: "/field-guide",
+        destination: "/field-guides",
         permanent: true,
       },
       {
         source: "/book/:path*",
-        destination: "/field-guide",
+        destination: "/field-guides",
+        permanent: true,
+      },
+      // Path-surface consolidation (2026-05): /path, /work-with-us, and /field-guide
+      // were four overlapping surfaces describing the same territory. They are
+      // now consolidated into /pathway (structured overview), /the-path
+      // (long-form essay), and /field-guides (series catalog).
+      {
+        source: "/path",
+        destination: "/pathway",
+        permanent: true,
+      },
+      {
+        source: "/path/:slug*",
+        destination: "/pathway/:slug*",
+        permanent: true,
+      },
+      {
+        source: "/work-with-us",
+        destination: "/pathway",
+        permanent: true,
+      },
+      {
+        source: "/work-with-us/:slug*",
+        destination: "/pathway",
+        permanent: true,
+      },
+      {
+        source: "/field-guide",
+        destination: "/field-guides",
+        permanent: true,
+      },
+      {
+        source: "/field-guide/:slug*",
+        destination: "/field-guides/:slug*",
         permanent: true,
       },
       // /team has been folded into /about — the rebuilt About page now carries
@@ -124,12 +158,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/content/articles/sandbox",
-        destination: "/field-guide",
+        destination: "/field-guides",
         permanent: true,
       },
       {
         source: "/content/articles/sandbox/:path*",
-        destination: "/field-guide",
+        destination: "/field-guides",
         permanent: true,
       },
       {
@@ -260,6 +294,16 @@ const nextConfig: NextConfig = {
       {
         source: "/pathway/build/:path*",
         destination: "/pathway/solutions/:path*",
+        permanent: true,
+      },
+      {
+        source: "/toolkit",
+        destination: "/field-guides/safety",
+        permanent: true,
+      },
+      {
+        source: "/toolkit/:path*",
+        destination: "/field-guides/safety",
         permanent: true,
       },
     ];

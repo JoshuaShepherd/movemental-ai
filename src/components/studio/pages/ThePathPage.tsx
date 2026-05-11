@@ -5,13 +5,13 @@ import { Container } from '@/components/studio/Container';
 import { Reveal } from '@/components/studio/Reveal';
 import Link from "next/link";
 
-export function FieldGuidePage() {
+export function ThePathPage() {
   useEffect(() => {
     document.title = "The Movemental Path | Movemental";
   }, []);
 
   return (
-    <div className="field-guide-page bg-background text-foreground">
+    <div className="the-path-page bg-background text-foreground">
       <section className="pt-24 lg:pt-32 pb-16 border-b border-border">
         <Container>
           <Reveal>

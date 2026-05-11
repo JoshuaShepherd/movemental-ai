@@ -10,9 +10,9 @@
 export const BOOK_HUB_PATH = "/book" as const;
 
 /**
- * Public field guide / Movemental Path literary hub (`FieldGuidePage`).
+ * Public field guide landing page — Volume One (*It Starts With Safety*),
+ * the canonical lead-magnet capture surface.
  *
- * Constant name retains historical `SSSS_` prefix for import stability; the
- * user-visible label is typically "Movemental Path field guide" or "Field guide."
+ * Constant name retains historical `SSSS_` prefix for import stability.
  */
-export const SSSS_FIELD_GUIDE_PATH = "/field-guide" as const;
+export const SSSS_FIELD_GUIDE_PATH = "/field-guides/safety" as const;

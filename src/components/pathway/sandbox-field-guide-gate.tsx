@@ -104,7 +104,7 @@ export function SandboxFieldGuideGate({
         body: JSON.stringify({
           email,
           organization,
-          source: `pathway-sandbox-field-guide:${path}`,
+          source: `field-guide-sandbox-gate:${path}`,
           fieldGuide: "sandbox",
           gatePath: path,
           metadata: {

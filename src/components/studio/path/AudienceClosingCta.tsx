@@ -1,11 +1,8 @@
-"use client";
-
 import Link from "next/link";
 
 import { Container } from "@/components/studio/Container";
 import { Reveal } from "@/components/studio/Reveal";
 import { audienceContactHref, type AudienceKind } from "@/components/studio/segment/audience-contact";
-import { ToolkitOpenButton } from "@/components/toolkit/ToolkitOpenButton";
 
 const AUDIENCE_LABEL: Record<AudienceKind, string> = {
   churches: "churches",
@@ -62,14 +59,14 @@ export function AudienceClosingCta({ audience }: { audience: AudienceKind }) {
             {AUDIENCE_BODY[audience]}
           </p>
           <p className="mx-auto mb-10 max-w-2xl text-base italic leading-relaxed text-inverse-foreground/70">
-            Or download the free toolkit and start with the self-assessment. No commitment. Sixteen pages. Read it
+            Or read the free Field Guide and start with the self-assessment. No commitment. 33 pages. Read it
             in an evening.
           </p>
 
           <div className="mb-10 flex flex-wrap items-center justify-center gap-4 md:gap-6">
-            <ToolkitOpenButton source={`audience-${audience}`} variant="midnight-primary">
-              Download the free Safety toolkit
-            </ToolkitOpenButton>
+            <Link href="/field-guides/safety" className="btn-pill btn-pill--primary">
+              Read the Safety Field Guide
+            </Link>
             <Link href={contactHref} className="btn-pill btn-pill--ghost">
               Start a conversation
             </Link>

@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 import { FieldGuideAuthorBios } from "@/components/pathway/field-guide-author-bios";
@@ -8,7 +9,6 @@ import { PathwayStageRail } from "@/components/pathway/pathway-stage-rail";
 import { PathwayVoiceFallback } from "@/components/pathway/pathway-voice-fallback";
 import { Reveal } from "@/components/studio/Reveal";
 import { ToolkitCover } from "@/components/toolkit/ToolkitCover";
-import { ToolkitDownloadForm } from "@/components/toolkit/ToolkitDownloadForm";
 import { cn } from "@/lib/utils";
 
 const MAX = "mx-auto w-full max-w-[var(--container-max)] px-6 sm:px-8 lg:px-12";
@@ -83,14 +83,6 @@ const PROCESS: ReadonlyArray<{ eyebrow: string; title: string; body: string }> =
     title: "Ratification handoff",
     body: "Final versions land inside your private organizational dashboard, where your leadership team reviews, comments, revises, and ratifies each artifact. You walk into your next leadership meeting with the answer approved, or with the dashboard open in front of the room.",
   },
-];
-
-const FIELD_GUIDE_INSIDE: ReadonlyArray<string> = [
-  "The five layers — Statement, Policy, Context, Rules, Response Plans — with the seven artifacts that sit inside them.",
-  "Five Named Refusals: the specific applications of AI your organization commits to refusing on principle.",
-  "A self-assessment your leadership team can take together in 30 minutes.",
-  "A SafeGuide vs. SafeStart comparison so you can choose between running the work yourselves or hiring facilitation.",
-  "Citations across MIT NANDA, BCG, McKinsey, the FBI Internet Crime Report, Forvis Mazars, Virtuous, and Barna.",
 ];
 
 export function SafetyPage() {
@@ -496,47 +488,19 @@ export function SafetyPage() {
               <p className="mb-3 max-w-xl text-lg leading-relaxed text-foreground">
                 A field guide for building your AI Organizational Guidebook.
               </p>
-              <p className="mb-8 max-w-xl text-sm italic leading-relaxed text-muted-foreground">
-                By Brad Brisco, Alan Hirsch, and Joshua Shepherd. 33 pages. Approximately 75 minutes of focused reading.
-                Edition 1.1 · May 2026.
+              <p className="mb-10 max-w-xl text-sm italic leading-relaxed text-muted-foreground">
+                By Brad Brisco, Alan Hirsch, and Joshua Shepherd. 33 pages. Read free.
               </p>
-              <ul className="mb-10 space-y-3 border-y border-border/40 py-6">
-                {FIELD_GUIDE_INSIDE.map((item) => (
-                  <li
-                    key={item}
-                    className="grid grid-cols-[1.25rem_1fr] items-baseline gap-3 text-sm leading-relaxed text-foreground"
-                  >
-                    <span aria-hidden className="text-pathway-accent">
-                      +
-                    </span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mb-8 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                Grounded in current research from MIT NANDA, BCG, McKinsey, the FBI Internet Crime Report, Forvis Mazars,
-                Virtuous, and Barna. The guide is free. We would rather you do this work well on your own than sign an
-                engagement you do not need.
-              </p>
-              <ToolkitDownloadForm
-                source="pathway-safety-field-guide"
-                variant="page"
-                layout="stacked"
-                submitLabel="Read the Field Guide"
-                emailLabel="Work email address"
-                organizationLabel="Organization"
-                organizationOptional={false}
-                successMessage="Check your email — the field guide is on its way."
-                inputClassName="focus:border-pathway-accent"
-                disclaimer={
-                  <>
-                    We send the guide immediately, plus three short follow-up emails over the next two weeks extending
-                    its argument. Unsubscribe at any time. No marketing drip.
-                  </>
-                }
-                buttonClassName="bg-inverse-surface text-primary-foreground hover:opacity-90"
-                className="max-w-md"
-              />
+              <Link
+                href="/field-guides/safety"
+                className="group/arrow inline-flex items-center gap-3 rounded-sm text-base font-bold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              >
+                Read Volume One
+                <ArrowRight
+                  aria-hidden
+                  className="h-5 w-5 shrink-0 transition-transform group-hover/arrow:translate-x-1"
+                />
+              </Link>
               <FieldGuideAuthorBios className="mt-16" />
             </div>
             <div className="order-1 mx-auto w-full max-w-lg lg:order-2 lg:col-span-5 lg:mx-0">

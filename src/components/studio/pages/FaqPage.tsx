@@ -38,7 +38,7 @@ const FAQ_GROUPS = [
     items: [
       { slug: "what-first", q: "What should we do first?", a: <>Start with Safety. Reach out via our <Link href="/contact" className="text-primary hover:underline">Contact page</Link> to schedule a diagnostic call.</> },
       { slug: "technical-expertise", q: "Do we need technical expertise to begin?", a: "No. The Movemental Path begins with leadership alignment, not software engineering." },
-      { slug: "what-is-it", q: "Is this a tool, a course, or a consulting engagement?", a: <>It is a consulting engagement mapped to a specific architecture. See <Link href="/work-with-us" className="text-primary hover:underline">Ways to Engage</Link>.</> },
+      { slug: "what-is-it", q: "Is this a tool, a course, or a consulting engagement?", a: <>It is a consulting engagement mapped to a specific architecture. See <Link href="/pathway" className="text-primary hover:underline">Ways to Engage</Link>.</> },
       { slug: "first-call", q: "What does the first call look like?", a: "Thirty minutes mapping your specific friction points without any sales pressure." },
       { slug: "are-we-ready", q: "How do we know if we are ready?", a: "If your staff is already using ChatGPT implicitly, you are ready because you are already exposed." },
       { slug: "have-strategy", q: "Do we need to have an AI strategy already?", a: "No. We help you build a durable system rather than a fragile temporary strategy." },
@@ -51,7 +51,7 @@ const FAQ_GROUPS = [
     display: "The four stages, in order.",
     lede: "Safety, Sandbox…",
     items: [
-      { slug: "what-is-path", q: "What is the Movemental Path?", a: <>It is Movemental&apos;s public methodology — four stages in order: Safety, Sandbox, Skills, Solutions. Read it in the <Link href="/path" className="text-primary hover:underline">Path summary</Link>.</> },
+      { slug: "what-is-path", q: "What is the Movemental Path?", a: <>It is Movemental&apos;s public methodology — four stages in order: Safety, Sandbox, Skills, Solutions. Read it in the <Link href="/pathway" className="text-primary hover:underline">Path summary</Link>.</> },
       { slug: "why-order", q: "Why this order? Why not all four in parallel?", a: "Attempting solutions before safety opens you to data breaches. Changing the order collapses the required human formation." },
       { slug: "can-we-skip", q: "Can we skip stages if we have already done some of this?", a: "We will audit any work you've done. If it holds up, we move forward. Most organizations discover gaps in their safety foundation." },
       { slug: "do-stages-overlap", q: "Do the stages overlap?", a: "Chronologically, yes. But you cannot start a subsequent stage until the prerequisite is locked." },
@@ -97,7 +97,7 @@ const FAQ_GROUPS = [
     display: "Ways to engage.",
     lede: "One Sequence, three shapes…",
     items: [
-      { slug: "options", q: "What are the engagement options?", a: <>Safety Sessions, Guided Pathways, and Solutions Partnerships. See <Link href="/work-with-us" className="text-primary hover:underline">Work with Us</Link>.</> },
+      { slug: "options", q: "What are the engagement options?", a: <>Safety Sessions, Guided Pathways, and Solutions Partnerships. See <Link href="/pathway" className="text-primary hover:underline">Work with Us</Link>.</> },
       { slug: "model", q: "What is the engagement model?", a: "We partner intensively over a set timeline rather than selling ongoing software subscriptions." },
       { slug: "who-attends", q: "Who needs to attend from our side?", a: "Senior leadership for the initial Safety Session; department heads for Sandbox and Skills phases." },
       { slug: "virtual-in-person", q: "Is this virtual or in-person?", a: "Typically virtual, though we offer in-person executive retreats for large network adoptions." },
@@ -173,7 +173,7 @@ const FAQ_GROUPS = [
     lede: "How the work continues…",
     items: [
       { slug: "walk-away-with", q: "What do we walk away with?", a: "Written policies, trained staff, safe sandboxes, and architectural alignment. You walk away with capacity." },
-      { slug: "after-safety", q: "What happens after Safety?", a: <>You are free to safely experiment inside structured Sandboxes. Read the <Link href="/field-guide" className="text-primary hover:underline">Field Guide</Link>.</> },
+      { slug: "after-safety", q: "What happens after Safety?", a: <>You are free to safely experiment inside structured Sandboxes. Read the <Link href="/field-guides" className="text-primary hover:underline">Field Guide</Link>.</> },
       { slug: "ongoing-relationship", q: "Do we have an ongoing relationship with Movemental after the engagement?", a: "We offer retention/advisory availability for previous pathway clients to assist with subsequent vendor evaluations." },
       { slug: "team-changes", q: "What if our team changes mid-engagement or after?", a: "Because we have written the policies down, new team members can be seamlessly onboarded to the system." },
       { slug: "still-questions", q: "Where do we go if we still have questions?", a: <>Reach out through our <Link href="/contact" className="text-primary hover:underline">Contact page</Link>. We are here.</> },
@@ -200,7 +200,7 @@ export function FaqPage() {
             </p>
             <div className="hero-actions flex flex-wrap gap-4">
               <Link href="/contact" className="btn-pill btn-pill--primary">Talk With Us</Link>
-              <Link href="/path" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Read the Path</Link>
+              <Link href="/pathway" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Read the Path</Link>
             </div>
           </Reveal>
         </Container>

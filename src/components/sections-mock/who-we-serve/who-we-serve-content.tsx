@@ -32,7 +32,7 @@ function Hero() {
           by the organization.
         </p>
         <div className="hero-actions">
-          <BtnPill href="/field-guide" variant="primary">
+          <BtnPill href="/field-guides" variant="primary">
             Read the field guide
           </BtnPill>
           <BtnPill href="/contact" variant="ghost">

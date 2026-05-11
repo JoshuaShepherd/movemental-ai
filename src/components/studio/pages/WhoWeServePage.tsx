@@ -24,7 +24,7 @@ export function WhoWeServePage() {
               We guide churches, nonprofits, and institutions through the identical Movemental Path, mapping it directly to their distinct operational realities.
             </p>
             <div className="hero-actions flex flex-wrap gap-4">
-              <Link href="/field-guide" className="btn-pill btn-pill--primary">Read the field guide</Link>
+              <Link href="/field-guides" className="btn-pill btn-pill--primary">Read the field guide</Link>
               <Link href="/contact" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Start a conversation</Link>
             </div>
             <div className="mt-12 flex items-center gap-3 border-t border-inverse-border/30 pt-6 max-w-2xl">

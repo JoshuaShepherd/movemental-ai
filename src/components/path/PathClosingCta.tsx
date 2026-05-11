@@ -59,7 +59,7 @@ export function PathClosingCta() {
                 <span aria-hidden="true">→</span>
               </Link>
               <Link
-                href="/path"
+                href="/pathway"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-pill bg-transparent text-inverse-foreground border border-inverse-border text-[0.95rem] font-medium tracking-tight transition-[border-color] duration-200 ease-out hover:border-inverse-foreground"
               >
                 Explore the Full Path

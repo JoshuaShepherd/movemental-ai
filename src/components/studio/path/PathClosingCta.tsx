@@ -45,7 +45,7 @@ export function PathClosingCta() {
             >
               Start a Conversation
             </Link>
-            <Link href="/path" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Explore the Full Path</Link>
+            <Link href="/pathway" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Explore the Full Path</Link>
           </div>
         </Reveal>
       </Container>

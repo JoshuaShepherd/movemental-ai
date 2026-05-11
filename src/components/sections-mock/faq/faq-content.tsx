@@ -69,7 +69,7 @@ const GROUPS: readonly FaqGroup[] = [
             It is a guided pathway. Engagements include facilitated work,
             written artifacts, and — when appropriate — solutions built on a
             human foundation. It is not software you buy.{" "}
-            <Link href="/work-with-us">See Work With Us</Link>.
+            <Link href="/pathway">See Work With Us</Link>.
           </>
         ),
       },
@@ -124,7 +124,7 @@ const GROUPS: readonly FaqGroup[] = [
             <strong>Sandbox</strong> (guided exploration next),{" "}
             <strong>Skills</strong> (capability before systems),{" "}
             <strong>Solutions</strong> (tools built on a human foundation).{" "}
-            <Link href="/path">See the full Path</Link>.
+            <Link href="/pathway">See the full Path</Link>.
           </>
         ),
       },
@@ -176,7 +176,7 @@ const GROUPS: readonly FaqGroup[] = [
             controlled scope, leadership-guided. The point is to develop
             judgment in cases that resemble the organization’s real work —
             without that work being put at risk.{" "}
-            <Link href="/path">See the Path</Link>.
+            <Link href="/pathway">See the Path</Link>.
           </>
         ),
       },
@@ -190,7 +190,7 @@ const GROUPS: readonly FaqGroup[] = [
             <strong>Solutions</strong>: workflow integration, custom
             assistants, organization-specific tools — built only after Safety,
             Sandbox, and Skills are in place.{" "}
-            <Link href="/path">See the Path</Link>.
+            <Link href="/pathway">See the Path</Link>.
           </>
         ),
       },
@@ -308,7 +308,7 @@ const GROUPS: readonly FaqGroup[] = [
         a: (
           <>
             Movemental is built for organizations. Individual leaders can read
-            along — <Link href="/path">the Path</Link>,{" "}
+            along — <Link href="/pathway">the Path</Link>,{" "}
             <Link href="/start-with-safety">Start with Safety</Link>, and{" "}
             <Link href="/voices">Voices</Link> are open — but engagements are
             built around senior teams that carry organizational responsibility.
@@ -350,7 +350,7 @@ const GROUPS: readonly FaqGroup[] = [
             organizations ready to move through Safety, Sandbox, and Skills;
             and a <strong>Solutions Partnership</strong> for organizations
             ready to build on a human foundation.{" "}
-            <Link href="/work-with-us">See the engagement options</Link>.
+            <Link href="/pathway">See the engagement options</Link>.
           </>
         ),
       },
@@ -363,7 +363,7 @@ const GROUPS: readonly FaqGroup[] = [
             context, risks, and current AI use. We establish shared language,
             safety boundaries, and leadership alignment. We train your people.
             We build tools — last, on a human foundation.{" "}
-            <Link href="/work-with-us">More on how we work</Link>.
+            <Link href="/pathway">More on how we work</Link>.
           </>
         ),
       },
@@ -500,7 +500,7 @@ const GROUPS: readonly FaqGroup[] = [
             Yes — in the Solutions stage, on a human foundation. Custom
             assistants are scoped to your voice, constraints, and mission. We
             do not build them as a first move.{" "}
-            <Link href="/path">See Solutions on the Path</Link>.
+            <Link href="/pathway">See Solutions on the Path</Link>.
           </>
         ),
       },
@@ -596,7 +596,7 @@ const GROUPS: readonly FaqGroup[] = [
         a: (
           <>
             No. Tools come after Safety, Sandbox, and Skills.{" "}
-            <Link href="/work-with-us">See our boundaries</Link>.
+            <Link href="/pathway">See our boundaries</Link>.
           </>
         ),
       },
@@ -640,7 +640,7 @@ const GROUPS: readonly FaqGroup[] = [
             leadership alignment, a risk register, review standards, and a
             next-step roadmap. After larger engagements: a portfolio of
             validated use cases and a governance one-pager your board can read
-            together. <Link href="/work-with-us">See outcomes</Link>.
+            together. <Link href="/pathway">See outcomes</Link>.
           </>
         ),
       },
@@ -664,7 +664,7 @@ const GROUPS: readonly FaqGroup[] = [
         q: "Where do we go if we still have questions?",
         a: (
           <>
-            Read <Link href="/path">the Path</Link>,{" "}
+            Read <Link href="/pathway">the Path</Link>,{" "}
             <Link href="/voices">Voices</Link>, and{" "}
             <Link href="/evidence">Evidence</Link> — and then write us. Our
             most useful first calls start from a question we have not yet
@@ -708,7 +708,7 @@ function Hero() {
           <BtnPill href="/contact" variant="primary">
             Talk With Us
           </BtnPill>
-          <BtnPill href="/path" variant="ghost">
+          <BtnPill href="/pathway" variant="ghost">
             Read the Path
           </BtnPill>
         </div>

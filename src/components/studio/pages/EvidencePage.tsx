@@ -109,7 +109,7 @@ export function EvidencePage() {
                </div>
             </div>
             
-            <Link href="/path" className="btn-pill btn-pill--ghost">See the full path</Link>
+            <Link href="/pathway" className="btn-pill btn-pill--ghost">See the full path</Link>
           </Reveal>
         </Container>
       </section>

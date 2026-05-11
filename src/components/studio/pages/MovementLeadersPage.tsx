@@ -27,7 +27,7 @@ export function MovementLeadersPage() {
             </p>
             <div className="hero-actions flex flex-wrap gap-4 mb-16">
               <Link href="/voices" className="btn-pill btn-pill--primary">See the named voices</Link>
-              <Link href="/field-guide" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Read the field guide</Link>
+              <Link href="/field-guides" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Read the field guide</Link>
             </div>
 
             <div className="border-l-2 border-inverse-border pl-6 max-w-[40ch]">
@@ -187,7 +187,7 @@ export function MovementLeadersPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/contact" className="btn-pill btn-pill--primary">Start a conversation</Link>
-              <Link href="/field-guide" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Read the field guide</Link>
+              <Link href="/field-guides" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Read the field guide</Link>
             </div>
           </Reveal>
         </Container>

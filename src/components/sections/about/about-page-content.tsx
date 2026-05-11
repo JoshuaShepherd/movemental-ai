@@ -635,7 +635,7 @@ export function AboutPageContent() {
                 <Link href="/contact" className="btn-pill btn-pill--primary">
                   Start a conversation
                 </Link>
-                <Link href="/field-guide" className="btn-pill btn-pill--ghost">
+                <Link href="/field-guides" className="btn-pill btn-pill--ghost">
                   Read the field guide
                 </Link>
               </div>

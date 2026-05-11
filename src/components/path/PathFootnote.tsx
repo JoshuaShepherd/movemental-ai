@@ -84,7 +84,7 @@ export function PathFootnote({ audienceLabel }: { audienceLabel: string }) {
               </li>
               <li>
                 <Link
-                  href="/path"
+                  href="/pathway"
                   className="text-inverse-foreground hover:underline underline-offset-4"
                 >
                   The full path

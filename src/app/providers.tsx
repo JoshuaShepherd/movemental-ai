@@ -9,8 +9,6 @@ import { useTheme } from "next-themes";
 import * as React from "react";
 
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { ToolkitDownloadModal } from "@/components/toolkit/ToolkitDownloadModal";
-import { ToolkitModalProvider } from "@/components/toolkit/toolkit-modal-context";
 
 /** Matches `globals.css` `--background` light / `.dark` paper — Safari UI chrome. */
 const THEME_COLOR_LIGHT = "#faf6ee";
@@ -69,12 +67,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider>
       <ThemeColorSync />
-      <QueryClientProvider client={queryClient}>
-        <ToolkitModalProvider>
-          {children}
-          <ToolkitDownloadModal />
-        </ToolkitModalProvider>
-      </QueryClientProvider>
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </ThemeProvider>
   );
 }

@@ -63,7 +63,7 @@ export function TechnologyPage() {
                   <Link href="/contact?interest=solutions" className="btn-pill bg-foreground px-8 py-4 text-center text-xs font-semibold uppercase tracking-eyebrow text-background hover:opacity-90">
                     Talk about Solutions →
                   </Link>
-                  <Link href="/field-guide" className="border border-border px-8 py-4 text-center text-xs font-semibold uppercase tracking-eyebrow text-foreground hover:border-primary rounded-full transition-colors inline-flex justify-center items-center">
+                  <Link href="/field-guides" className="border border-border px-8 py-4 text-center text-xs font-semibold uppercase tracking-eyebrow text-foreground hover:border-primary rounded-full transition-colors inline-flex justify-center items-center">
                     Field Guide
                   </Link>
                 </div>

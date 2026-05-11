@@ -35,7 +35,7 @@ export function AssessPage() {
             </p>
             <div className="hero-actions flex flex-wrap gap-4 mb-16">
               <a href="#begin" className="btn-pill btn-pill--primary">Take the diagnostic</a>
-              <Link href="/field-guide" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Read the field guide first</Link>
+              <Link href="/field-guides" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Read the field guide first</Link>
             </div>
             
             <div className="border-l-2 border-inverse-border pl-6 max-w-[36ch]">
@@ -144,7 +144,7 @@ export function AssessPage() {
             <p className="prose max-w-[640px] text-[1.0625rem] leading-[1.75] text-muted-foreground mb-10">
               The diagnostic is the first step of an engagement, or it can be taken independently to test organizational alignment. Taking it requires no commitment to further work.
             </p>
-            <Link href="/field-guide" className="btn-pill btn-pill--ghost">Read the field guide for the full Sequence</Link>
+            <Link href="/field-guides" className="btn-pill btn-pill--ghost">Read the field guide for the full Sequence</Link>
           </Reveal>
         </Container>
       </section>

@@ -49,7 +49,7 @@ export function PathFootnote({
                 {stageMeta.map((s) => (
                   <li key={s.num}>
                     {pathStageHrefMode === "pathway" ? (
-                      <Link href={pathwayHrefByStageNum[s.num] ?? "/path"} className="transition-colors hover:text-inverse-foreground">
+                      <Link href={pathwayHrefByStageNum[s.num] ?? "/pathway"} className="transition-colors hover:text-inverse-foreground">
                         {s.name}
                       </Link>
                     ) : (
@@ -114,7 +114,7 @@ export function PathFootnote({
                     </a>
                   </li>
                   <li>
-                    <Link href="/path" className="transition-colors hover:text-inverse-foreground">
+                    <Link href="/pathway" className="transition-colors hover:text-inverse-foreground">
                       The full path
                     </Link>
                   </li>

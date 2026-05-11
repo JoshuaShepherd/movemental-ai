@@ -226,7 +226,7 @@ export function StartWithSafetyPage() {
                </div>
             </div>
             
-            <Link href="/field-guide" className="btn-pill btn-pill--ghost">See the full path</Link>
+            <Link href="/field-guides" className="btn-pill btn-pill--ghost">See the full path</Link>
           </Reveal>
         </Container>
       </section>

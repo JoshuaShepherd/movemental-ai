@@ -24,12 +24,12 @@ export type EeatRegistryEntry = {
 /**
  * Editorial supplement: the public 35-row “Claims, sources, and footnotes” table
  * does not include a dedicated row for the Barna × Gloo spiritual-trust chip on
- * `/toolkit/read`. This entry keeps that tooltip wired without splitting the map.
+ * `/field-guides/safety`. This entry keeps that tooltip wired without splitting the map.
  */
 const TOOLKIT_BARN_GLOO_SPIRITUAL_TRUST: EeatRegistryEntry = {
   id: "toolkit-barna-gloo-spiritual-trust",
   rank: 3,
-  page: "/toolkit/read",
+  page: "/field-guides/safety",
   claimType: "Purported fact",
   claim:
     "Public openness to AI-shaped spiritual guidance runs ahead of pastoral comfort; large majorities of pastors treat AI as a concerning tool, not a substitute for human ministry.",
@@ -45,11 +45,11 @@ const TOOLKIT_BARN_GLOO_SPIRITUAL_TRUST: EeatRegistryEntry = {
   citationIds: ["barna-gloo-spiritual-trust-1-in-3"],
 };
 
-/** Inline Antiqua et Nova chip on `/toolkit/read` — row lives off the home JSON bundle. */
+/** Inline Antiqua et Nova chip on `/field-guides/safety` — row lives off the home JSON bundle. */
 const TOOLKIT_ANTQUA_ET_NOVA: EeatRegistryEntry = {
   id: "toolkit-antiqua-et-nova-complement",
   rank: 3,
-  page: "/toolkit/read",
+  page: "/field-guides/safety",
   claimType: "Opinion",
   claim:
     "Sandbox, Skills, Solutions — staged maturity; magisterial frame for complementing rather than replacing human judgment.",

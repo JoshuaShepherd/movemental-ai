@@ -15,7 +15,6 @@ const getClientSnapshot = () => true;
 const getServerSnapshot = () => false;
 
 import { Container } from "@/components/studio/Container";
-import { useToolkitModal } from "@/components/toolkit/toolkit-modal-context";
 import { cn } from "@/lib/utils";
 
 import { ThemeToggle } from "./theme-toggle";
@@ -42,8 +41,6 @@ export function SiteHeader() {
     getClientSnapshot,
     getServerSnapshot,
   );
-  const { open: openToolkitModal } = useToolkitModal();
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -240,14 +237,13 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <button
-            type="button"
-            onClick={() => openToolkitModal({ source: "nav" })}
+          <Link
+            href="/field-guides/safety"
             className="inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-eyebrow text-muted-foreground transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             <Download className="size-3.5" aria-hidden />
             FIELD GUIDE
-          </button>
+          </Link>
           <ThemeToggle size="comfortable" />
           <Link href="/contact" className="btn-pill btn-pill--primary py-2.5">
             Start a Conversation
@@ -377,17 +373,14 @@ export function SiteHeader() {
           >
             Contact
           </Link>
-          <button
-            type="button"
-            onClick={() => {
-              setIsMenuOpen(false);
-              openToolkitModal({ source: "nav-mobile" });
-            }}
+          <Link
+            href="/field-guides/safety"
+            onClick={() => setIsMenuOpen(false)}
             className="mt-2 inline-flex items-center justify-center gap-2 rounded-md bg-section p-3 text-sm font-medium text-foreground transition-colors hover:bg-border"
           >
             <Download className="size-4" aria-hidden />
             FIELD GUIDE
-          </button>
+          </Link>
           <button
             type="button"
             onClick={() => toggleTheme()}

@@ -262,7 +262,7 @@ function SystemIsCoherentFold() {
         </div>
 
         <div className="path-section__cta" style={{ marginTop: "2rem" }}>
-          <BtnPill href="/path" variant="ghost">
+          <BtnPill href="/pathway" variant="ghost">
             See the full path
           </BtnPill>
         </div>

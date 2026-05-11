@@ -252,7 +252,7 @@ function FinalCta() {
           <BtnPill href="/contact" variant="primary">
             Start a conversation
           </BtnPill>
-          <BtnPill href="/field-guide" variant="ghost">
+          <BtnPill href="/field-guides" variant="ghost">
             Read the field guide
           </BtnPill>
         </div>

@@ -149,7 +149,7 @@ function Hero() {
           <BtnPill href="/contact" variant="primary">
             Start a Conversation
           </BtnPill>
-          <BtnPill href="/path" variant="ghost">
+          <BtnPill href="/pathway" variant="ghost">
             Explore the Path
           </BtnPill>
         </div>

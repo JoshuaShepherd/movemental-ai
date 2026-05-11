@@ -14,10 +14,10 @@ const ogTitle = `${guide.title} — Movemental Field Guide`;
 export const metadata: Metadata = {
   title: guide.title,
   description: guide.description,
-  alternates: { canonical: canonicalPageUrl("/field-guide/safety") },
+  alternates: { canonical: canonicalPageUrl("/field-guides/safety") },
   openGraph: {
     type: "article",
-    url: canonicalPageUrl("/field-guide/safety"),
+    url: canonicalPageUrl("/field-guides/safety"),
     title: ogTitle,
     description: guide.description,
     authors: guide.authors,
@@ -47,7 +47,7 @@ export default function FieldGuideSafetyPage() {
     dateModified: guide.date,
     inLanguage: "en-US",
     image: canonicalPageUrl(SAFETY_FIELD_GUIDE_COVER_IMAGE),
-    mainEntityOfPage: { "@type": "WebPage", "@id": canonicalPageUrl("/field-guide/safety") },
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonicalPageUrl("/field-guides/safety") },
   };
 
   return (

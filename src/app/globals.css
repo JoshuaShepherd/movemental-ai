@@ -931,7 +931,7 @@
   }
 }
 
-/* Print styles — the same /field-guide/safety URL renders as a clean PDF when
+/* Print styles — the same /field-guides/safety URL renders as a clean PDF when
  * printed. The site nav, footer, hero CTA cluster, sticky TOC, and trailing
  * email-capture section all hide; the prose reflows to a generous reading
  * measure on letter-sized paper. */
