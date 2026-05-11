@@ -3,6 +3,11 @@ import type { ProgramFixturePage } from "@/lib/program/types/stitch-screen-famil
 export function ProgramPageHeader({ page }: { page: ProgramFixturePage }) {
   return (
     <section className="flex flex-col gap-4">
+      {page.phaseLabel ? (
+        <span className="font-body text-[11px] font-bold uppercase tracking-[0.08em] text-safestart-muted">
+          {page.phaseLabel}
+        </span>
+      ) : null}
       {page.eyebrow ? (
         <span className="font-body text-[11px] font-bold uppercase tracking-[0.08em] text-pathway-accent">
           {page.eyebrow}

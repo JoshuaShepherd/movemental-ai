@@ -1,4 +1,5 @@
 import type {
+  RosterColumn,
   SafeStartHeroTimelineFixture,
   SafeStartSection,
   TimelineStage,
@@ -46,7 +47,12 @@ function normalizeTimeline(raw: RawTimeline): SafeStartSection | null {
 
 function normalizeRoster(raw: RawRoster): SafeStartSection | null {
   if (raw.columns?.length) {
-    return { id: raw.id ?? "roster", kind: "rosterColumns", columns: raw.columns };
+    const columns = raw.columns.map((c) => ({
+      title: c.title,
+      items: c.items,
+      aside: c.aside as RosterColumn["aside"],
+    }));
+    return { id: raw.id ?? "roster", kind: "rosterColumns", columns };
   }
   if (raw.items?.length) {
     return {

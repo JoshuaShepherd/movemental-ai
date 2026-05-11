@@ -66,7 +66,7 @@ export async function loadProgramTemplateData(
     fixture.shell.tenantName = row.orgName;
   }
 
-  let sourceBadge = "fixture + active organization";
+  const baseBadge = "fixture + active organization";
 
   const supabase = await createClient();
   // Table is optional until `docs/build/sql/program_engagements.sql` is applied to the project database.
@@ -80,16 +80,16 @@ export async function loadProgramTemplateData(
 
   if (error) {
     if (isMissingProgramEngagementsTable(error.message)) {
-      return { fixture, sourceBadge };
+      return { fixture, sourceBadge: baseBadge };
     }
     return {
       fixture,
-      sourceBadge: `${sourceBadge} · DB merge skipped (${error.message})`,
+      sourceBadge: `${baseBadge} · DB merge skipped (${error.message})`,
     };
   }
 
   if (!engagement) {
-    return { fixture, sourceBadge };
+    return { fixture, sourceBadge: baseBadge };
   }
 
   if (fixture.screenFamily === "safestart-hero-timeline" && engagement.milestones) {

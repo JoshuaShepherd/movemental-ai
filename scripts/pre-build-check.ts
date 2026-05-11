@@ -235,6 +235,13 @@ class PreBuildValidator {
       description: `TypeScript Type Checking (using tsconfig.build.json, test files excluded)`,
     });
 
+    validationSteps.push({
+      name: "program-stitch-fixtures",
+      command: "pnpm program:fixtures:check",
+      critical: true,
+      description: "Stitch program fixtures + manifest alignment",
+    });
+
     // Note: Next.js doesn't support --dry-run for build validation.
     // TypeScript checking with tsconfig.build.json already validates build-blocking issues.
     // The actual build will catch Next.js-specific issues (server/client boundaries, etc.)

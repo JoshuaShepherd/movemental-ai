@@ -10,22 +10,7 @@ Persisted milestones, summary copy, and roster merges (per Stitch `draftApiMappi
 
 ## Suggested table shape (after DB migration)
 
-Illustrative SQL — adjust naming and RLS to match Movemental conventions:
-
-```sql
-create table public.program_engagements (
-  id uuid primary key default gen_random_uuid(),
-  organization_id uuid not null references public.organizations (id) on delete cascade,
-  template_slug text not null,
-  summary_markdown text,
-  milestones jsonb not null default '[]'::jsonb,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now(),
-  unique (organization_id, template_slug)
-);
-
--- Enable RLS + policies for org members (mirror patterns from docs/architecture as applicable).
-```
+Ready-to-apply SQL (review RLS with security): [`docs/build/sql/program_engagements.sql`](./sql/program_engagements.sql).
 
 ## Downstream regeneration
 

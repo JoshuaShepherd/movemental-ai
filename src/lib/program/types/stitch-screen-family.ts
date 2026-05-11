@@ -24,6 +24,7 @@ export type ProgramFixtureShell = {
 
 export type ProgramFixturePage = {
   eyebrow?: string;
+  phaseLabel?: string;
   headline?: string | null;
   supportingCopy?: string | null;
   statusChip?: string;

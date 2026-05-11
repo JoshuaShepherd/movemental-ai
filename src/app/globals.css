@@ -95,6 +95,12 @@
   --color-safestart-completed: #4a6b47;
   --color-safestart-surface-container: #f7f4e7;
 
+  /* SandboxLive / phase workspace sidebars — midnight-adjacent rail */
+  --color-sandbox-sidebar: #0f1624;
+  --color-sandbox-sidebar-ink: #f4f1ea;
+  --color-sandbox-border: #1e2a3d;
+  --color-sandbox-muted: #9aa4b5;
+
   /* Editorial aliases — kept for components that imported the Concept Modern
      token namespace explicitly (bg-editorial-paper, text-editorial-foreground).
      They now resolve to the same base ramp and can be retired over time. */
