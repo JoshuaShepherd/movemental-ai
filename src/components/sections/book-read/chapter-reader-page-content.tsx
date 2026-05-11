@@ -87,9 +87,7 @@ export async function ChapterReaderPageContent({ params, searchParams }: Chapter
       : canonicalPageUrl(canonicalPath);
   const defaultAnchor = chapter.paragraphs[0]?.id ?? "p-0";
 
-  const readMeta = isComingSoon
-    ? "Coming soon"
-    : `${chapter.readingTime} min read`;
+  const readMeta = isComingSoon ? "In preparation" : `${chapter.readingTime} min read`;
 
   return (
     <>

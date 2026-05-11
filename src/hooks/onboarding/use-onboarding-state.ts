@@ -36,6 +36,16 @@ export type OnboardingStateResponse = {
     onboarding_completed_at: string | null;
     onboarding_started_at: string | null;
     cohort_start_date: string | null;
+    /** Where to land after `final_confirmation` (from `organizations.settings.engagement_type`). */
+    postOnboardingHref: string;
+    logo_url: string | null;
+    leader_headshot_url: string | null;
+    description: string | null;
+    website: string | null;
+    contact_email: string | null;
+    city: string | null;
+    country: string | null;
+    aiReadiness: number | null;
   };
   tasks: Array<{
     key: string;

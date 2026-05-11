@@ -27,7 +27,12 @@ const SCREEN_FAMILIES = new Set([
 
 type Manifest = {
   count: number;
-  templates: Array<{ id: string; category: "safety" | "sandbox" }>;
+  templates: Array<{
+    id: string;
+    category: "safety" | "sandbox";
+    path: string;
+    thumbnail: string;
+  }>;
 };
 
 type IndexDoc = { entries: Array<{ templateId: string; screenFamily: string }> };
@@ -113,6 +118,17 @@ function main() {
         errors++;
       });
     }
+
+    const htmlPath = path.join(ROOT, "public", t.path);
+    const thumbPath = path.join(ROOT, "public", t.thumbnail);
+    if (!fs.existsSync(htmlPath)) {
+      console.error("Missing static HTML (run pnpm sync:stitch-spec with STITCH_REPO_PATH):", htmlPath);
+      errors++;
+    }
+    if (!fs.existsSync(thumbPath)) {
+      console.error("Missing static thumbnail (run pnpm sync:stitch-spec):", thumbPath);
+      errors++;
+    }
   }
 
   for (const id of indexIds) {
@@ -126,7 +142,9 @@ function main() {
     console.error(`validate-stitch-fixtures: ${errors} issue(s)`);
     process.exit(1);
   }
-  console.log(`validate-stitch-fixtures: OK (${manifest.templates.length} fixtures)`);
+  console.log(
+    `validate-stitch-fixtures: OK (${manifest.templates.length} fixtures + public/templates static exports)`,
+  );
 }
 
 main();

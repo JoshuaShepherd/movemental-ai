@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sponsor Oversight View - SandboxLive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "background": "#fffbff",
+                        "secondary-dim": "#5b584f",
+                        "on-tertiary-container": "#605b59",
+                        "surface-bright": "#fffbff",
+                        "inverse-primary": "#fff5ea",
+                        "error": "#a54731",
+                        "surface-tint": "#645d55",
+                        "on-secondary-container": "#555249",
+                        "secondary-container": "#e8e2d6",
+                        "on-tertiary": "#ffffff",
+                        "primary-dim": "#58514a",
+                        "on-background": "#39382c",
+                        "tertiary-fixed-dim": "#ece4e1",
+                        "on-error-container": "#742410",
+                        "on-secondary-fixed": "#423f37",
+                        "on-primary": "#fff6ee",
+                        "secondary-fixed": "#e8e2d6",
+                        "on-primary-fixed": "#443e37",
+                        "secondary-fixed-dim": "#d9d4c8",
+                        "tertiary-container": "#faf2ef",
+                        "secondary": "#68645b",
+                        "inverse-surface": "#0f0e0a",
+                        "tertiary-fixed": "#faf2ef",
+                        "surface-container-high": "#f2eedf",
+                        "surface": "#fffbff",
+                        "error-container": "#fe8b70",
+                        "on-secondary-fixed-variant": "#5f5b52",
+                        "inverse-on-surface": "#9f9d96",
+                        "surface-container-low": "#fdf9ef",
+                        "on-error": "#ffffff",
+                        "error-dim": "#5c1202",
+                        "tertiary-dim": "#5c5756",
+                        "surface-container-highest": "#ece8d7",
+                        "on-primary-container": "#575149",
+                        "on-surface-variant": "#666557",
+                        "primary-fixed": "#ebe1d7",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#686362",
+                        "outline": "#838172",
+                        "primary-container": "#ebe1d7",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#615b53",
+                        "surface-container": "#f7f4e7",
+                        "primary-fixed-dim": "#dcd3c9",
+                        "surface-dim": "#e6e3cf",
+                        "primary": "#645d55",
+                        "on-tertiary-fixed-variant": "#6a6563",
+                        "surface-variant": "#ece8d7",
+                        "on-tertiary-fixed": "#4d4947",
+                        "on-surface": "#39382c",
+                        "outline-variant": "#bcbaa9"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    fontFamily: {
+                        "headline": ["Instrument Serif", "serif"],
+                        "display": ["Instrument Serif", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "newsreader": ["Newsreader", "serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #faf6ee; color: #39382c; }
+        .font-newsreader { font-family: 'Newsreader', serif; }
+        .font-instrument { font-family: 'Instrument Serif', serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-surface">
+<!-- TopAppBar -->
+<header class="bg-inverse-surface dark:bg-inverse-surface text-on-primary dark:text-on-primary font-display italic tracking-tight text-headline-sm flex justify-between items-center w-full px-8 h-16 docked full-width top-0 rounded-none border-none flat no shadows z-50 fixed">
+<div class="flex items-center gap-4">
+<div class="font-display italic text-2xl text-on-primary tracking-tighter">Movemental</div>
+<span class="font-label text-[10px] uppercase font-bold tracking-widest text-primary-fixed bg-secondary-dim px-2 py-0.5 ml-2">SPONSOR VIEW</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-primary/70 font-label hover:text-on-primary transition-colors duration-200 text-sm tracking-wide" href="#">Engagement</a>
+<a class="text-on-primary/70 font-label hover:text-on-primary transition-colors duration-200 text-sm tracking-wide" href="#">Archive</a>
+<a class="text-on-primary/70 font-label hover:text-on-primary transition-colors duration-200 text-sm tracking-wide" href="#">Strategy</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 hover:text-on-primary transition-colors duration-200">
+<span class="font-label text-sm uppercase tracking-widest">Secure Access</span>
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</button>
+</div>
+</header>
+<div class="flex flex-1 pt-16">
+<!-- SideNavBar -->
+<aside class="bg-surface-container-low dark:bg-surface-container-low text-primary dark:text-primary font-body text-label-sm uppercase tracking-widest docked left-0 h-screen w-72 rounded-none border-r border-outline-variant/20 flat no shadows flex flex-col pt-8 fixed z-40 hidden md:flex">
+<div class="px-8 pb-8 border-b border-outline-variant/20 mb-4">
+<div class="font-display italic text-on-surface text-2xl mb-1">Engagement Path</div>
+<div class="text-on-surface-variant text-xs opacity-70 font-normal normal-case">AI Strategic Ledger</div>
+</div>
+<div class="px-4 mb-4">
+<div class="text-[10px] text-on-surface-variant tracking-[0.2em] mb-2 px-4">SPONSOR</div>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors mb-1" href="#">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span>Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-surface-container-highest text-primary font-bold border-l-2 border-primary transition-colors mb-4" href="#">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span>Sponsor View</span>
+</a>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<div class="text-[10px] text-on-surface-variant tracking-[0.2em] mb-2 mt-4 px-4">AREAS</div>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">security</span>
+<span>Safety</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">science</span>
+<span>Sandbox</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">psychology</span>
+<span>Skills</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">architecture</span>
+<span>Solutions</span>
+</a>
+</nav>
+<div class="p-8 border-t border-outline-variant/20">
+<button class="w-full py-3 bg-primary text-on-primary font-label text-xs uppercase tracking-widest hover:bg-primary-dim transition-colors duration-200">Export Analysis</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 md:ml-72 p-12 md:p-24 bg-[#faf6ee]">
+<!-- Context Header -->
+<div class="max-w-4xl mx-auto mb-20">
+<div class="font-label text-[10px] uppercase tracking-[0.15em] text-on-surface-variant mb-4">Sandbox · Sponsor View</div>
+<div class="font-label text-[11px] uppercase font-bold tracking-[0.2em] text-error mb-6">SANDBOXLIVE — SPONSOR VIEW</div>
+<h1 class="font-newsreader italic text-5xl md:text-[3.5rem] leading-[1.1] text-on-surface mb-6 tracking-tight">Where your Sandbox stands.</h1>
+<p class="font-body text-lg text-on-surface-variant max-w-2xl leading-relaxed">Aggregated cohort progress, decisions waiting on you, and items that warrant senior attention.</p>
+</div>
+<!-- Decisions Pending Section -->
+<section class="max-w-4xl mx-auto mb-24">
+<h2 class="font-label text-xs uppercase tracking-[0.2em] text-on-surface mb-8">Three items need your attention.</h2>
+<div class="space-y-0 border-t border-outline-variant/20">
+<!-- Item 1 -->
+<div class="border-b border-outline-variant/20 py-6 hover:bg-surface-container-low transition-colors duration-200 flex flex-col md:flex-row md:items-start justify-between gap-4 px-4 -mx-4 group cursor-pointer">
+<div class="flex-1">
+<div class="font-label text-[10px] uppercase tracking-widest text-error mb-2">REQUIRED ACTION</div>
+<h3 class="font-body font-semibold text-base text-on-surface mb-2 group-hover:text-primary transition-colors">BOUNDARY COUNTERSIGN</h3>
+<p class="font-body text-sm text-on-surface-variant">All seven cohort members have signed. Required Sponsor countersign to finalize protocol.</p>
+</div>
+<div class="mt-4 md:mt-0">
+<button class="bg-primary text-on-primary px-6 py-2 font-label text-[11px] uppercase tracking-widest hover:bg-primary-dim transition-colors">Review &amp; Sign</button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="border-b border-outline-variant/20 py-6 hover:bg-surface-container-low transition-colors duration-200 flex flex-col md:flex-row md:items-start justify-between gap-4 px-4 -mx-4 group cursor-pointer">
+<div class="flex-1">
+<div class="font-label text-[10px] uppercase tracking-widest text-outline mb-2">SENIOR REVIEW</div>
+<h3 class="font-body font-semibold text-base text-on-surface mb-2 group-hover:text-primary transition-colors">USE CASE FLAGGED</h3>
+<p class="font-body text-sm text-on-surface-variant">Major-Donor Meeting Prep recipe Trial 02 flagged by Marcus Vance for review.</p>
+</div>
+<div class="mt-4 md:mt-0">
+<button class="border border-outline/20 text-on-surface px-6 py-2 font-label text-[11px] uppercase tracking-widest hover:bg-surface-container-highest transition-colors">Open Trial</button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="border-b border-outline-variant/20 py-6 hover:bg-surface-container-low transition-colors duration-200 flex flex-col md:flex-row md:items-start justify-between gap-4 px-4 -mx-4 group cursor-pointer">
+<div class="flex-1">
+<div class="font-label text-[10px] uppercase tracking-widest text-outline mb-2">SCHEDULING</div>
+<h3 class="font-body font-semibold text-base text-on-surface mb-2 group-hover:text-primary transition-colors">DISCERNMENT SESSION SCHEDULING</h3>
+<p class="font-body text-sm text-on-surface-variant">Schedule Phase 07 (90 min session) for week 6. Availability needed from all parties.</p>
+</div>
+<div class="mt-4 md:mt-0">
+<button class="border border-outline/20 text-on-surface px-6 py-2 font-label text-[11px] uppercase tracking-widest hover:bg-surface-container-highest transition-colors">Propose Times</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Section - Split -->
+<div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 mb-32">
+<!-- Left Col (60%) -->
+<div class="md:col-span-7">
+<div class="bg-surface-container-high p-10 h-full flex flex-col justify-between">
+<div>
+<div class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-6">SUMMARY</div>
+<h3 class="font-newsreader italic text-3xl text-on-surface mb-4">Boundary and Guidebook Alignment</h3>
+<p class="font-body text-sm text-on-surface-variant mb-8 max-w-sm leading-relaxed">Overall adherence to established protocols remains high across the current active trials.</p>
+</div>
+<div class="grid grid-cols-3 gap-6 pt-8 border-t border-outline-variant/20">
+<div>
+<div class="font-newsreader text-4xl text-on-surface mb-1">28</div>
+<div class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Trials</div>
+</div>
+<div>
+<div class="font-newsreader text-4xl text-on-surface mb-1">24</div>
+<div class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Clean</div>
+</div>
+<div>
+<div class="font-newsreader text-4xl text-on-surface mb-1">0</div>
+<div class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Refusals</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Col (40%) -->
+<div class="md:col-span-5 relative pl-8 border-l border-outline-variant/20">
+<div class="absolute top-0 left-0 w-[1px] h-full bg-error opacity-50"></div>
+<div class="font-label text-[10px] uppercase tracking-[0.2em] text-error mb-6 flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-error"></span>
+                        RED-FLAG ITEMS
+                    </div>
+<div class="mt-8">
+<h4 class="font-body font-semibold text-base text-on-surface mb-3">Donor Data Tier Review</h4>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed mb-6">Tier 2 donor data usage detected in current active session without explicit Sponsor sign-off. Requires immediate verification of protocol adherence.</p>
+<a class="inline-flex items-center gap-2 text-primary font-label text-[11px] uppercase tracking-widest hover:text-on-surface transition-colors" href="#">
+<span>Investigate</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-t border-outline-variant/10 fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 pb-safe">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[24px]">account_tree</span>
+<span class="font-label uppercase text-[9px] tracking-widest">Workflow</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary font-bold transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[24px]">visibility</span>
+<span class="font-label uppercase text-[9px] tracking-widest">Sponsor</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[24px]">arrow_forward</span>
+<span class="font-label uppercase text-[9px] tracking-widest">Next</span>
+</a>
+</nav>
+<!-- Sponsor Responsibilities Band (Footer) -->
+<footer class="bg-surface-container-high py-12 px-12 md:pl-84 md:pr-24 border-t border-outline-variant/20 relative z-30 ml-0 md:ml-72 mb-16 md:mb-0">
+<div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 justify-between items-start md:items-center">
+<div class="max-w-md">
+<div class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-2">SPONSOR MANDATE</div>
+<div class="font-newsreader italic text-xl text-on-surface">Maintain the boundary, direct discernment, authorize future plans, and present the board case.</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-outline-variant text-[32px] font-light">balance</span>
+</div>
+</div>
+</footer>
+</body></html>

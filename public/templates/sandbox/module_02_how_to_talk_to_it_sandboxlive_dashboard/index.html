@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Module 02: How to Talk to It - Movemental</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#a54731",
+                      "secondary": "#68645b",
+                      "primary-container": "#ebe1d7",
+                      "inverse-on-surface": "#9f9d96",
+                      "on-tertiary-container": "#605b59",
+                      "on-secondary-container": "#555249",
+                      "surface-container": "#f7f4e7",
+                      "surface-container-highest": "#ece8d7",
+                      "tertiary-fixed": "#faf2ef",
+                      "primary-fixed": "#ebe1d7",
+                      "secondary-fixed": "#e8e2d6",
+                      "surface-tint": "#645d55",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed-dim": "#ece4e1",
+                      "surface": "#fffbff",
+                      "tertiary-container": "#faf2ef",
+                      "on-primary-fixed-variant": "#615b53",
+                      "outline-variant": "#bcbaa9",
+                      "primary": "#645d55",
+                      "on-surface": "#39382c",
+                      "on-background": "#39382c",
+                      "error-container": "#fe8b70",
+                      "tertiary": "#686362",
+                      "secondary-container": "#e8e2d6",
+                      "on-surface-variant": "#666557",
+                      "on-primary-fixed": "#443e37",
+                      "on-primary-container": "#575149",
+                      "on-secondary-fixed": "#423f37",
+                      "on-tertiary-fixed": "#4d4947",
+                      "surface-variant": "#ece8d7",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-low": "#fdf9ef",
+                      "surface-container-high": "#f2eedf",
+                      "surface-container-lowest": "#ffffff",
+                      "on-error-container": "#742410",
+                      "primary-fixed-dim": "#dcd3c9",
+                      "surface-bright": "#fffbff",
+                      "outline": "#838172",
+                      "on-tertiary-fixed-variant": "#6a6563",
+                      "on-error": "#ffffff",
+                      "secondary-fixed-dim": "#d9d4c8",
+                      "inverse-primary": "#fff5ea",
+                      "primary-dim": "#58514a",
+                      "on-primary": "#fff6ee",
+                      "inverse-surface": "#0f0e0a",
+                      "surface-dim": "#e6e3cf",
+                      "secondary-dim": "#5b584f",
+                      "background": "#fffbff",
+                      "tertiary-dim": "#5c5756",
+                      "error-dim": "#5c1202",
+                      "on-secondary-fixed-variant": "#5f5b52",
+                      "amber": "#b8860b", 
+                      "forest": "#2e8b57"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "0px"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": [
+                              "Newsreader", "serif"
+                      ],
+                      "display": [
+                              "Newsreader", "serif"
+                      ],
+                      "body": [
+                              "Inter", "sans-serif"
+                      ],
+                      "label": [
+                              "Inter", "sans-serif"
+                      ]
+              },
+              "fontSize": {}
+      },
+          },
+        }
+      </script>
+<style>
+        body { background-color: #faf6ee; color: #39382c; }
+    </style>
+</head>
+<body class="font-body text-on-surface antialiased bg-surface min-h-screen flex flex-col md:flex-row selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar (from JSON) -->
+<nav class="bg-surface-container dark:bg-surface-dim border-r border-outline-variant/20 hidden md:flex flex-col h-full py-8 px-6 space-y-6 fixed left-0 top-0 w-72 z-40">
+<div class="mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">menu_book</span>
+<span class="font-headline text-lg italic text-primary dark:text-primary-fixed font-bold">Movemental</span>
+</div>
+<div class="mb-6">
+<p class="font-headline text-lg italic text-primary dark:text-primary-fixed">Institutional Panel</p>
+<p class="font-body uppercase tracking-widest text-xs text-secondary mt-1">Directorial Access</p>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-high transition-colors text-sm font-body" href="#">
+<span class="material-symbols-outlined text-sm">account_balance</span>
+<span class="uppercase tracking-widest text-xs">Strategic Pillars</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary text-on-primary font-medium text-sm font-body" href="#">
+<span class="material-symbols-outlined text-sm">hub</span>
+<span class="uppercase tracking-widest text-xs">AI Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-high transition-colors text-sm font-body" href="#">
+<span class="material-symbols-outlined text-sm">security</span>
+<span class="uppercase tracking-widest text-xs">Risk Ledger</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-high transition-colors text-sm font-body" href="#">
+<span class="material-symbols-outlined text-sm">analytics</span>
+<span class="uppercase tracking-widest text-xs">Board Review</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-high transition-colors text-sm font-body" href="#">
+<span class="material-symbols-outlined text-sm">menu_book</span>
+<span class="uppercase tracking-widest text-xs">Policy Library</span>
+</a>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 uppercase tracking-widest text-xs font-medium hover:bg-primary-dim transition-colors mb-6">
+            New Initiative
+        </button>
+<div class="border-t border-outline-variant/20 pt-6 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-colors text-sm font-body" href="#">
+<span class="material-symbols-outlined text-sm">help_outline</span>
+<span class="uppercase tracking-widest text-xs">Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-colors text-sm font-body" href="#">
+<span class="material-symbols-outlined text-sm">logout</span>
+<span class="uppercase tracking-widest text-xs">Sign Out</span>
+</a>
+</div>
+</nav>
+<!-- TopNavBar (Mobile only since desktop uses sidenav for navigation in this layout, but adhering to requested top nav) -->
+<header class="md:ml-72 bg-inverse-surface dark:bg-surface-dim/80 w-full z-50 flex justify-between items-center px-6 md:px-12 py-4">
+<div class="flex items-center gap-4">
+<span class="font-headline text-2xl font-bold tracking-tighter text-on-primary dark:text-primary-fixed md:hidden">Movemental</span>
+<div class="hidden md:flex items-center gap-6 text-sm font-body">
+<span class="text-on-primary/60 uppercase tracking-widest text-xs">Module 02 Active</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-primary hover:opacity-80 transition-opacity"><span class="material-symbols-outlined">notifications</span></button>
+<button class="text-on-primary hover:opacity-80 transition-opacity"><span class="material-symbols-outlined">settings</span></button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-72 flex flex-col pt-4 md:pt-0 pb-24">
+<!-- Module Navigator -->
+<div class="w-full bg-surface-container-low border-b border-outline-variant/20 py-4 px-6 md:px-12 flex items-center justify-between font-label uppercase tracking-widest text-xs text-secondary sticky top-0 md:top-auto z-30">
+<a class="text-amber hover:text-amber/80 transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[16px]">arrow_left</span> Module 01
+            </a>
+<div class="flex flex-col items-center gap-2">
+<span class="font-bold text-on-surface">MODULE 02 OF 11</span>
+<div class="flex gap-1.5">
+<div class="w-1.5 h-1.5 rounded-none bg-forest"></div>
+<div class="w-1.5 h-1.5 rounded-none bg-amber"></div>
+<div class="w-1.5 h-1.5 rounded-none bg-outline-variant/50"></div>
+<div class="w-1.5 h-1.5 rounded-none bg-outline-variant/50"></div>
+<div class="w-1.5 h-1.5 rounded-none bg-outline-variant/50"></div>
+<div class="w-1.5 h-1.5 rounded-none bg-outline-variant/50"></div>
+<div class="w-1.5 h-1.5 rounded-none bg-outline-variant/50"></div>
+<div class="w-1.5 h-1.5 rounded-none bg-outline-variant/50"></div>
+<div class="w-1.5 h-1.5 rounded-none bg-outline-variant/50"></div>
+<div class="w-1.5 h-1.5 rounded-none bg-outline-variant/50"></div>
+<div class="w-1.5 h-1.5 rounded-none bg-outline-variant/50"></div>
+</div>
+</div>
+<a class="text-amber hover:text-amber/80 transition-colors flex items-center gap-2" href="#">
+                Module 03 <span class="material-symbols-outlined text-[16px]">arrow_right</span>
+</a>
+</div>
+<!-- Centered Reading Column -->
+<article class="w-full max-w-[720px] mx-auto px-6 md:px-0 mt-16 md:mt-24 space-y-24">
+<!-- Header Section -->
+<header class="space-y-6">
+<div class="font-label uppercase tracking-widest text-xs text-amber font-semibold">
+                    MODULE 02 · HOW TO TALK TO IT
+                </div>
+<div>
+<h1 class="font-headline italic text-4xl md:text-[36px] leading-tight text-on-surface tracking-tight">How to talk to it.</h1>
+<p class="font-headline italic text-xl md:text-[16px] text-on-surface-variant mt-2 tracking-tight">The five core AI interaction skills.</p>
+</div>
+<div class="font-body text-sm text-secondary pt-4 border-t border-outline-variant/20 flex flex-wrap gap-x-4 gap-y-2">
+<span>Estimated 25 minutes</span>
+<span class="hidden md:inline">·</span>
+<span>Includes 1 video (8 min)</span>
+<span class="hidden md:inline">·</span>
+<span>Permanently accessible</span>
+</div>
+</header>
+<!-- Video Card -->
+<section class="space-y-4">
+<div class="relative w-full aspect-video border border-outline-variant bg-surface-container-high group cursor-pointer overflow-hidden">
+<img alt="Video Placeholder" class="w-full h-full object-cover mix-blend-multiply opacity-80 group-hover:opacity-100 transition-opacity duration-300" data-alt="A medium shot of an academic or professional speaking confidently in a minimalist, well-lit studio environment. The background is a stark, clean cream color matching the website's surface token. The lighting is soft and cinematic, emphasizing authority and clarity. The mood is instructional and high-end, aligned with a premium corporate strategy or architectural seminar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz4uCCowwZ6zyAPSqnfU_mBX0tDl8c_q3RlqG4ctMGqSEVdNSPccifyUe4cBgZU3pXd27qj8e4wf_AsQOKzwBEyx6fzmPfwhKhE-f4ln-GU8UuDmM4jca8TuzL_LFtAOh78H1QwFKsgeWV2H7kp85bz-T3MdYZk0UHCK5PLY3TIFzWLXkSyHXdfAVrTyFbVu-pgTkRjZsY7MH4URJbmBZGiDFMlzJm9HKt3hKXPN-nGpVD5Pp921PKp-k4pkHqfUh-lzbaOxw8wjE"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<button class="w-20 h-16 bg-amber text-on-primary flex items-center justify-center hover:bg-amber/90 transition-colors">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+</div>
+<div class="flex justify-between items-start font-body text-sm border-b border-outline-variant/20 pb-4">
+<div>
+<p class="font-semibold text-on-surface">Joshua Shepherd — How to think about AI conversation</p>
+<p class="text-secondary mt-1">8 minutes · Watched June 21</p>
+</div>
+<a class="text-amber hover:text-amber/80 font-medium flex items-center gap-1 transition-colors" href="#">
+                        Read transcript <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+</a>
+</div>
+</section>
+<!-- Reading Section -->
+<section class="space-y-8 relative">
+<!-- Editorial Aside (Gutter) -->
+<aside class="hidden xl:block absolute -left-48 top-0 w-32 font-body text-xs text-secondary pl-3 border-l border-primary/30">
+<p class="uppercase tracking-widest text-[10px] text-amber mb-2">Note</p>
+<p>The concept of 'prompt engineering' is rapidly evolving. Focus on clear articulation over syntax tricks.</p>
+</aside>
+<div class="font-label uppercase tracking-widest text-xs text-secondary">
+                    READING — 17 MINUTES
+                </div>
+<h2 class="font-headline italic text-2xl text-on-surface">Five things matter.</h2>
+<div class="prose prose-neutral font-body text-on-surface leading-relaxed max-w-none">
+<p>Most of what gets called 'prompt engineering' is overcomplicated. The industry has spawned a cottage industry of complex templates, nested brackets, and pseudo-code meant to constrain the model. While technical precision has its place in automated pipelines, for the daily operational user—the strategist, the director, the analyst—it is an unnecessary barrier.</p>
+<p>When you talk to it, you are not writing code; you are providing instructions to an entity that understands nuance, context, and intent. The critical failure point is rarely the syntax of the prompt; it is the clarity of the thinker providing it.</p>
+<p>We have identified five core skills that separate effective AI utilization from mere curiosity. These are not technical tricks, but communication fundamentals adapted for a non-human counterpart. They require you to be explicit where you are usually implicit, and structured where you are usually casual.</p>
+</div>
+<div class="pt-8 border-t border-outline-variant/20 flex items-center justify-between">
+<div class="flex items-center gap-4 w-1/2">
+<div class="h-1 bg-surface-container-high w-full">
+<div class="h-1 bg-primary w-[40%]"></div>
+</div>
+<span class="font-label text-xs text-secondary">40%</span>
+</div>
+<a class="font-body text-sm text-primary hover:text-primary-dim font-medium flex items-center gap-1 transition-colors" href="#">
+                        Continue reading <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+</a>
+</div>
+</section>
+<!-- Exercise Block -->
+<section class="bg-surface-container-high p-8 md:p-12 border-l-2 border-primary relative">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-outline-variant/30 text-4xl">edit_document</span>
+</div>
+<div class="font-label uppercase tracking-widest text-[10px] text-secondary mb-4">
+                    EXERCISE — RECOMMENDED, NOT REQUIRED
+                </div>
+<h3 class="font-headline text-xl text-on-surface mb-4">Try a request with and without context.</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8 max-w-lg">
+                    Take a real task from your work this week. Draft a simple, one-sentence request for it. Run it. Then, rewrite the request adding specific contextual framing (who you are, who the audience is, what the stakes are). Compare the tonal difference.
+                </p>
+<a class="font-body text-sm text-amber hover:text-amber/80 font-medium inline-flex items-center gap-2 border-b border-amber pb-1 transition-colors" href="#">
+                    Bring this exercise to Tuesday's session <span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</a>
+</section>
+<!-- Downloads Section -->
+<section class="space-y-6 pt-12 border-t border-outline-variant/20">
+<div class="font-label uppercase tracking-widest text-xs text-secondary mb-6">
+                    TEMPLATES AND REFERENCES
+                </div>
+<!-- Ledger Rows -->
+<div class="flex flex-col">
+<div class="flex justify-between items-center py-4 border-b border-outline-variant/20 group hover:bg-surface-container-low transition-colors px-2 -mx-2">
+<span class="font-body text-sm text-on-surface">Five skills reference card (PDF)</span>
+<a class="font-label uppercase tracking-widest text-[10px] text-amber hover:text-amber/80 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity" href="#">
+                            Download <span class="material-symbols-outlined text-[14px]">download</span>
+</a>
+</div>
+<div class="flex justify-between items-center py-4 border-b border-outline-variant/20 group hover:bg-surface-container-low transition-colors px-2 -mx-2">
+<span class="font-body text-sm text-on-surface">Sample requests by work category (PDF)</span>
+<a class="font-label uppercase tracking-widest text-[10px] text-amber hover:text-amber/80 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity" href="#">
+                            Download <span class="material-symbols-outlined text-[14px]">download</span>
+</a>
+</div>
+<div class="flex justify-between items-center py-4 border-b border-outline-variant/20 group hover:bg-surface-container-low transition-colors px-2 -mx-2">
+<span class="font-body text-sm text-on-surface">Glossary of AI terms used in the Sandbox (PDF)</span>
+<a class="font-label uppercase tracking-widest text-[10px] text-amber hover:text-amber/80 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity" href="#">
+                            Download <span class="material-symbols-outlined text-[14px]">download</span>
+</a>
+</div>
+</div>
+</section>
+</article>
+</main>
+<!-- Bottom Nav (Footer Block) -->
+<footer class="md:ml-72 bg-inverse-surface w-full mt-auto text-on-primary">
+<div class="max-w-[720px] mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+<a class="font-body text-sm text-on-primary/60 hover:text-on-primary transition-colors flex items-center gap-2 w-full md:w-auto justify-start" href="#">
+<span class="material-symbols-outlined text-[16px]">arrow_left</span>
+<span class="truncate max-w-[200px]">Module 01 — Understanding Your Working Partner</span>
+</a>
+<span class="font-label uppercase tracking-widest text-[10px] text-on-primary/40 text-center w-full md:w-auto">
+                All modules permanently accessible to your cohort
+            </span>
+<a class="font-body text-sm text-on-primary hover:text-amber transition-colors flex items-center gap-2 w-full md:w-auto justify-end" href="#">
+<span class="truncate max-w-[200px]">Module 03 — Sandbox Boundaries</span>
+<span class="material-symbols-outlined text-[16px]">arrow_right</span>
+</a>
+</div>
+</footer>
+</body></html>

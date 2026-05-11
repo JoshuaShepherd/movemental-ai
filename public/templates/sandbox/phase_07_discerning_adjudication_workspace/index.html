@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SandboxLive Dashboard - Phase 07</title>
+<!-- Fonts: Instrument Serif (Proxy for Newsreader/Display if needed, using config's Newsreader) & Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config injected from Design System -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed": "#443e37",
+                      "error-dim": "#5c1202",
+                      "surface-variant": "#ece8d7",
+                      "tertiary-dim": "#5c5756",
+                      "secondary": "#68645b",
+                      "primary": "#645d55",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-high": "#f2eedf",
+                      "on-primary-fixed-variant": "#615b53",
+                      "secondary-fixed": "#e8e2d6",
+                      "inverse-surface": "#0f0e0a",
+                      "on-tertiary-container": "#605b59",
+                      "tertiary-fixed-dim": "#ece4e1",
+                      "on-secondary-container": "#555249",
+                      "outline": "#838172",
+                      "on-secondary-fixed-variant": "#5f5b52",
+                      "on-background": "#39382c",
+                      "primary-container": "#ebe1d7",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#fdf9ef",
+                      "secondary-container": "#e8e2d6",
+                      "tertiary-fixed": "#faf2ef",
+                      "secondary-dim": "#5b584f",
+                      "primary-fixed-dim": "#dcd3c9",
+                      "on-primary": "#fff6ee",
+                      "inverse-on-surface": "#9f9d96",
+                      "on-error": "#ffffff",
+                      "surface-bright": "#fffbff",
+                      "surface": "#fffbff",
+                      "inverse-primary": "#fff5ea",
+                      "surface-container-highest": "#ece8d7",
+                      "on-tertiary-fixed-variant": "#6a6563",
+                      "on-tertiary-fixed": "#4d4947",
+                      "surface-tint": "#645d55",
+                      "primary-fixed": "#ebe1d7",
+                      "surface-dim": "#e6e3cf",
+                      "tertiary": "#686362",
+                      "primary-dim": "#58514a",
+                      "on-secondary-fixed": "#423f37",
+                      "tertiary-container": "#faf2ef",
+                      "secondary-fixed-dim": "#d9d4c8",
+                      "on-surface-variant": "#666557",
+                      "on-surface": "#39382c",
+                      "on-secondary": "#ffffff",
+                      "surface-container": "#f7f4e7",
+                      "error-container": "#fe8b70",
+                      "error": "#a54731",
+                      "on-primary-container": "#575149",
+                      "outline-variant": "#bcbaa9",
+                      "background": "#fffbff",
+                      "on-error-container": "#742410"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "0px"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": ["Newsreader", "serif"],
+                      "display": ["Newsreader", "serif"],
+                      "body": ["Inter", "sans-serif"],
+                      "label": ["Inter", "sans-serif"]
+              },
+              "fontSize": {}
+      },
+          },
+        }
+    </script>
+<style>
+        /* Base overrides to ensure sharp edges globally as per system */
+        * { border-radius: 0px !important; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased min-h-screen relative pb-32">
+<!-- Main Workspace Canvas -->
+<main class="w-full max-w-[1600px] mx-auto px-8 pt-8">
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" class="mb-8">
+<p class="font-label text-[12px] text-on-surface-variant tracking-wide">
+                Sandbox · Phase 07 · Discerning · Major-Donor Meeting Prep Briefs
+            </p>
+</nav>
+<!-- Queue indicator row (Ledger hairline below) -->
+<div class="flex flex-col md:flex-row md:items-center justify-between pb-4 mb-12 border-b border-outline-variant/20">
+<div class="font-label text-[10px] uppercase tracking-[0.2em] text-primary mb-2 md:mb-0">
+                Phase 07 — Discerning
+            </div>
+<div class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-2 md:mb-0">
+                Use case 8 of 12 · 5 pending
+            </div>
+<div class="flex items-center gap-4 text-primary font-label text-[10px] uppercase tracking-widest cursor-pointer">
+<span class="hover:text-primary-dim transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_left</span> Previous
+                </span>
+<span class="text-outline-variant/30">·</span>
+<span class="hover:text-primary-dim transition-colors flex items-center gap-1">
+                    Next <span class="material-symbols-outlined text-[14px]">arrow_right</span>
+</span>
+</div>
+</div>
+<!-- Header Area -->
+<header class="mb-16 max-w-3xl">
+<div class="font-label text-[10px] font-bold uppercase tracking-[0.15em] text-primary mb-4">
+                Development &amp; Fundraising
+            </div>
+<h1 class="font-headline italic text-4xl tracking-tight text-on-surface mb-6 leading-tight">
+                Major-Donor Meeting Prep Briefs
+            </h1>
+<p class="font-body italic text-sm text-on-surface-variant leading-relaxed">
+                Pre-meeting briefs on major donors generated from giving history and prior conversation notes. Internal-only.
+            </p>
+</header>
+<!-- Inputs Grid (Ledger Rows / Grid pattern) -->
+<section class="grid grid-cols-1 md:grid-cols-4 border-y border-outline-variant/20 divide-y md:divide-y-0 md:divide-x divide-outline-variant/20 mb-16">
+<!-- Col 1 -->
+<div class="p-6 md:px-6 md:py-8 bg-surface hover:bg-surface-container-low transition-colors duration-300">
+<h3 class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-4">Value from Experimenting</h3>
+<ul class="font-body text-sm text-on-surface space-y-2">
+<li class="flex items-start gap-2">
+<span class="text-outline-variant mt-1 text-[10px]">■</span>
+                        ~40 min saved per brief
+                    </li>
+<li class="flex items-start gap-2">
+<span class="text-outline-variant mt-1 text-[10px]">■</span>
+                        Projected marginal revenue lift
+                    </li>
+<li class="flex items-start gap-2">
+<span class="text-outline-variant mt-1 text-[10px]">■</span>
+                        Higher quality preparation
+                    </li>
+</ul>
+</div>
+<!-- Col 2 -->
+<div class="p-6 md:px-6 md:py-8 bg-surface hover:bg-surface-container-low transition-colors duration-300">
+<h3 class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-4">Boundaries</h3>
+<ul class="font-body text-sm text-on-surface space-y-2">
+<li class="flex items-start gap-2">
+<span class="text-primary mt-1 text-[10px] material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check</span>
+                        Publication clears
+                    </li>
+<li class="flex items-start gap-2">
+<span class="text-outline-variant mt-1 text-[10px] material-symbols-outlined">warning</span>
+                        Privacy requires review
+                    </li>
+<li class="flex items-start gap-2">
+<span class="text-primary mt-1 text-[10px] material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check</span>
+                        Personal patterns ok
+                    </li>
+</ul>
+</div>
+<!-- Col 3 -->
+<div class="p-6 md:px-6 md:py-8 bg-surface hover:bg-surface-container-low transition-colors duration-300">
+<h3 class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-4">Guidebook</h3>
+<ul class="font-body text-sm text-on-surface space-y-2">
+<li class="flex items-start gap-2">
+<span class="text-outline-variant mt-1 text-[10px]">■</span>
+                        Convictions consistent
+                    </li>
+<li class="flex items-start gap-2">
+<span class="text-outline-variant mt-1 text-[10px]">■</span>
+                        Policy constrained
+                    </li>
+<li class="flex items-start gap-2">
+<span class="text-outline-variant mt-1 text-[10px]">■</span>
+                        No Refusals crossed
+                    </li>
+</ul>
+</div>
+<!-- Col 4 -->
+<div class="p-6 md:px-6 md:py-8 bg-surface hover:bg-surface-container-low transition-colors duration-300">
+<h3 class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-4 flex items-center gap-2">
+                    Ethics Review
+                </h3>
+<div class="font-body text-sm text-on-surface mb-6 flex items-start gap-3">
+<div class="w-2 h-2 bg-primary mt-1.5 flex-shrink-0"></div> <!-- Square "dot" to maintain 0px radius rule -->
+<span class="leading-relaxed">Mixed with sharp concern regarding data permanence.</span>
+</div>
+<a class="font-label text-[10px] uppercase tracking-widest text-primary hover:text-primary-dim transition-colors inline-flex items-center gap-1 border-b border-primary/30 pb-0.5" href="#">
+                    Read all 3 comments <span class="material-symbols-outlined text-[14px]">arrow_right_alt</span>
+</a>
+</div>
+</section>
+<!-- Reflection Inset (Asymmetric Editorial Aside) -->
+<aside class="bg-surface-container-high ml-0 md:ml-12 mr-0 md:mr-24 px-8 py-10 mb-20 border-l-[1px] border-primary">
+<h4 class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-4">Cohort Reflection — Theme 03</h4>
+<p class="font-body italic text-sm text-on-surface leading-loose">
+                "The cohort's reflection surfaced a related concern regarding authorship integrity when presenting generated briefs to leadership. As noted in the transcripts: 'We can do this well or do it badly, and the difference is strictly governance.'"
+            </p>
+</aside>
+<!-- Verdict Section -->
+<section class="mb-16">
+<h2 class="font-label text-[10px] font-bold uppercase tracking-widest text-primary mb-8">Adjudication Verdict</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Green Light Card -->
+<div class="h-[180px] border border-outline-variant/20 bg-surface flex flex-col justify-center items-center p-6 cursor-pointer hover:bg-surface-container-low transition-colors duration-200 group">
+<div class="w-12 h-12 border border-outline-variant/30 flex items-center justify-center mb-4 group-hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">check</span>
+</div>
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant group-hover:text-on-surface transition-colors">Proceed</span>
+</div>
+<!-- Yellow Light Card (Active State) -->
+<div class="h-[180px] border-[2px] border-primary bg-surface flex flex-col justify-center items-center p-6 relative">
+<div class="absolute -top-3 right-4 bg-surface px-2 font-label text-[10px] uppercase tracking-wider text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">arrow_left</span> Linda's current selection
+                    </div>
+<div class="w-12 h-12 bg-primary flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">tune</span>
+</div>
+<span class="font-label text-xs font-bold uppercase tracking-widest text-primary">Proceed with Conditions</span>
+</div>
+<!-- Red Light Card -->
+<div class="h-[180px] border border-outline-variant/20 bg-surface flex flex-col justify-center items-center p-6 cursor-pointer hover:bg-surface-container-low transition-colors duration-200 group">
+<div class="w-12 h-12 border border-outline-variant/30 flex items-center justify-center mb-4 group-hover:border-error/50 transition-colors">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-error transition-colors">close</span>
+</div>
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant group-hover:text-on-surface transition-colors">Halt</span>
+</div>
+</div>
+</section>
+<!-- Conditions/Reasoning Area (Context for Active Yellow Light) -->
+<section class="border-t border-outline-variant/20 pt-12 mb-20 bg-surface-container-low px-8 pb-12">
+<h3 class="font-headline italic text-xl text-on-surface mb-8">Required Governance Conditions</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div>
+<h4 class="font-label text-[10px] uppercase tracking-widest text-primary mb-4">Modifications Required</h4>
+<p class="font-body text-sm text-on-surface leading-relaxed border-l border-outline-variant/30 pl-4">
+                        Briefs remain strictly internal — no copy ever leaves the development office. Briefs must be securely deleted from local storage immediately after meetings conclude.
+                    </p>
+</div>
+<div>
+<h4 class="font-label text-[10px] uppercase tracking-widest text-primary mb-4">Re-review Timeline</h4>
+<p class="font-body text-sm text-on-surface leading-relaxed border-l border-outline-variant/30 pl-4">
+                        Six months <br/>
+<span class="text-on-surface-variant text-xs mt-1 block">Scheduled for January 2027</span>
+</p>
+</div>
+<div>
+<h4 class="font-label text-[10px] uppercase tracking-widest text-primary mb-4">Escalation Triggers (To Red)</h4>
+<p class="font-body text-sm text-on-surface leading-relaxed border-l border-outline-variant/30 pl-4">
+                        Any sign of constituent discomfort regarding inferred knowledge. Any fundamental vendor change in the underlying LLM. Any cohort member's instinct overriding the process.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Sign-off Section -->
+<section class="border-t border-outline-variant/20 pt-16 mb-8 flex flex-col md:flex-row gap-16 md:items-start max-w-4xl">
+<div class="flex-1">
+<h4 class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Senior Adjudicator (Sponsor)</h4>
+<p class="font-headline text-2xl text-on-surface">Linda Ozawa</p>
+</div>
+<div class="flex-1 w-full relative">
+<!-- Typewriter Input Field styling strictly adhering to Design System -->
+<label class="font-label text-[10px] uppercase tracking-widest text-primary absolute -top-6 left-0" for="signature">Digital Signature</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 text-on-surface font-headline text-xl italic placeholder:text-outline-variant/50 focus:ring-0 focus:border-b-2 focus:border-primary transition-all duration-200" id="signature" placeholder="Type your full name to sign" type="text"/>
+</div>
+</section>
+</main>
+<!-- Fixed Action Band (Bottom Shell) -->
+<div class="fixed bottom-0 left-0 w-full h-[100px] bg-surface-container-highest border-t border-outline-variant/20 px-8 flex flex-col md:flex-row justify-between items-center z-50 shadow-none">
+<div class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant hidden md:block">
+            Auto-saved 12 seconds ago
+        </div>
+<div class="flex items-center gap-6 w-full md:w-auto justify-between md:justify-end">
+<button class="font-label text-xs uppercase tracking-widest text-on-surface hover:text-primary transition-colors duration-200 border-b border-transparent hover:border-primary pb-0.5 hidden md:block">
+                Save reasoning, continue later
+            </button>
+<button class="font-label text-xs uppercase tracking-widest text-on-surface hover:text-primary transition-colors duration-200 hidden lg:block">
+                Save and skip to next pending
+            </button>
+<!-- Primary Block Action Button -->
+<button class="bg-primary text-on-primary font-label text-[10px] font-bold uppercase tracking-[0.15em] px-8 py-4 hover:bg-primary-dim transition-colors duration-200 flex items-center gap-2 w-full md:w-auto justify-center">
+                Sign verdict &amp; advance
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</body></html>

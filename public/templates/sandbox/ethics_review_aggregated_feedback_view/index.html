@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Phase 06 Workspace - Aggregated Feedback</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "secondary-fixed-dim": "#d9d4c8",
+                  "inverse-surface": "#0f0e0a",
+                  "on-error-container": "#742410",
+                  "inverse-primary": "#fff5ea",
+                  "outline": "#838172",
+                  "on-secondary-fixed-variant": "#5f5b52",
+                  "on-primary-fixed": "#443e37",
+                  "primary-container": "#ebe1d7",
+                  "surface": "#fffbff",
+                  "surface-container-low": "#fdf9ef",
+                  "on-secondary-fixed": "#423f37",
+                  "tertiary-dim": "#5c5756",
+                  "surface-dim": "#e6e3cf",
+                  "surface-container-lowest": "#ffffff",
+                  "primary-fixed": "#ebe1d7",
+                  "on-primary-fixed-variant": "#615b53",
+                  "surface-tint": "#645d55",
+                  "error-container": "#fe8b70",
+                  "on-surface-variant": "#666557",
+                  "on-background": "#39382c",
+                  "error": "#a54731",
+                  "primary-dim": "#58514a",
+                  "secondary-container": "#e8e2d6",
+                  "on-tertiary-container": "#605b59",
+                  "on-secondary-container": "#555249",
+                  "surface-container-highest": "#ece8d7",
+                  "outline-variant": "#bcbaa9",
+                  "surface-container-high": "#f2eedf",
+                  "primary": "#645d55",
+                  "tertiary-fixed-dim": "#ece4e1",
+                  "on-tertiary-fixed": "#4d4947",
+                  "tertiary-container": "#faf2ef",
+                  "tertiary": "#686362",
+                  "on-tertiary": "#ffffff",
+                  "secondary": "#68645b",
+                  "secondary-fixed": "#e8e2d6",
+                  "on-primary": "#fff6ee",
+                  "surface-container": "#f7f4e7",
+                  "background": "#fffbff",
+                  "secondary-dim": "#5b584f",
+                  "surface-bright": "#fffbff",
+                  "on-tertiary-fixed-variant": "#6a6563",
+                  "on-secondary": "#ffffff",
+                  "tertiary-fixed": "#faf2ef",
+                  "inverse-on-surface": "#9f9d96",
+                  "surface-variant": "#ece8d7",
+                  "on-error": "#ffffff",
+                  "error-dim": "#5c1202",
+                  "on-primary-container": "#575149",
+                  "primary-fixed-dim": "#dcd3c9",
+                  "on-surface": "#39382c"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0px",
+                  "sm": "0px",
+                  "md": "0px",
+                  "lg": "0px",
+                  "xl": "0px",
+                  "2xl": "0px",
+                  "3xl": "0px",
+                  "full": "0px"
+          },
+          "spacing": {},
+          "fontFamily": {
+                  "headline": [
+                          "Instrument Serif", "serif"
+                  ],
+                  "display": [
+                          "Instrument Serif", "serif"
+                  ],
+                  "body": [
+                          "Inter", "sans-serif"
+                  ],
+                  "label": [
+                          "Inter", "sans-serif"
+                  ]
+          },
+          "fontSize": {}
+  },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3, h4, h5, h6, .font-headline, .font-display {
+      font-family: 'Instrument Serif', serif;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-8 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1 w-full gap-8">
+<!-- Shared TopAppBar (Destination Screen) -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-outline-variant px-10 py-4 bg-surface-container-low">
+<div class="flex items-center gap-4 text-on-surface">
+<div class="size-6">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-on-surface text-xl font-headline font-bold leading-tight tracking-[-0.015em]">Phase 06 Workspace</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="bg-center bg-no-repeat aspect-square bg-cover size-10 border border-outline-variant" data-alt="A sophisticated, minimalist profile placeholder avatar featuring sharp geometric lines in a cream and charcoal color palette, reflecting a high-end corporate strategy firm aesthetic." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARPCri3q1pO5cMboVXI_q4HuiLEswhnNYm-H6cIpbt3vEG6_Xe3zgVy7e-XJg2IxTq1VK2Lrd0pRllRfi65uGlvWL5fMU1vuqebsX2-na-pi2tbRur9bqyV035_hDnvrc2_Tn75-_gVmKoBtjNh7oDKZiSp-DG1pTaweuzxO9KTuKTCA6jrcislrHPIklUPTqi9TxFT0m8CGOt7qLQKeNtl5I1I_FFVrhM4-wVRxcR2aM4i2jjFO9uvI6srA1oU6bGnE6MNlQANwM");'></div>
+</div>
+</header>
+<div class="flex flex-row w-full gap-12">
+<!-- Sidebar Navigation -->
+<div class="w-64 shrink-0 flex flex-col justify-start bg-surface-container-low p-6 border-r border-outline-variant min-h-[700px]">
+<div class="flex flex-col gap-6">
+<div class="flex gap-4 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover size-12 border border-outline-variant" data-alt="A square architectural emblem representing a cohort workspace, utilizing stark cream and dark grey tones. The design is institutional and solid." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBPqfjdaxgzKZSFJd1K6wDUkAMtbnELg_vwPfqDsAZJs4GdtYx5ij4VxeAUbensgOgUUio1QUcbBfCaez9Ur794O4d7ICOwRl81bkUA8v8iv_C0lyB2Kju3brDx07ju9EVSSh3D3yqD8z_o38HvYJov14fy6_M-k4LboIjDfcmscR0fINj_Ym9iE98IgAn9CEKjIturAzQ_N60hr2ip6o79PGGlPYlDn4SN3cRE88hBQxVJahrzjwcUvZMRCIegwofItmOq67p8Oog");'></div>
+<div class="flex flex-col">
+<h1 class="text-on-surface text-base font-semibold font-body leading-normal">Cohort Workspace</h1>
+<p class="text-on-surface-variant text-sm font-normal font-body uppercase tracking-[0.05em]">Phase 06</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 mt-4">
+<div class="flex items-center gap-3 px-3 py-2 border-l-2 border-transparent hover:bg-surface-container-highest cursor-pointer transition-colors duration-200">
+<span class="material-symbols-outlined text-on-surface" data-icon="home">home</span>
+<p class="text-on-surface text-sm font-medium font-body leading-normal">Dashboard</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 border-l-2 border-transparent hover:bg-surface-container-highest cursor-pointer transition-colors duration-200">
+<span class="material-symbols-outlined text-on-surface" data-icon="list">list</span>
+<p class="text-on-surface text-sm font-medium font-body leading-normal">Use Cases</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 bg-surface-container-highest border-l-2 border-primary">
+<span class="material-symbols-outlined text-on-surface" data-icon="chat" style="font-variation-settings: 'FILL' 1;">chat</span>
+<p class="text-on-surface text-sm font-medium font-body leading-normal">Feedback</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 border-l-2 border-transparent hover:bg-surface-container-highest cursor-pointer transition-colors duration-200">
+<span class="material-symbols-outlined text-on-surface" data-icon="settings">settings</span>
+<p class="text-on-surface text-sm font-medium font-body leading-normal">Settings</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col pt-6 pb-12 gap-8">
+<!-- Review Complete Band -->
+<div class="w-full bg-[#1e3b2e] text-on-primary py-3 px-6 flex items-center shadow-none">
+<span class="font-body text-sm font-medium tracking-wide uppercase">Review period closed June 24. 8 of 11 reviewers responded. 23 comments received.</span>
+</div>
+<div class="flex flex-col gap-2 px-2">
+<h1 class="text-on-surface font-headline text-5xl leading-tight tracking-tight">Aggregated Feedback</h1>
+<p class="text-on-surface-variant font-body text-base max-w-[800px] mt-2">
+        A synthesis of responses gathered during the Phase 06 evaluation cycle. Data indicates a general consensus on architectural principles with targeted concerns regarding execution timelines.
+      </p>
+</div>
+<!-- Use Case Feedback Table -->
+<div class="mt-8 flex flex-col gap-4">
+<h2 class="font-headline text-3xl text-on-surface px-2">Use Case Synthesis</h2>
+<div class="w-full bg-surface-container-low pt-4 px-6 pb-6">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant font-body uppercase text-xs tracking-[0.05em] text-on-surface-variant">
+<th class="py-4 font-semibold w-1/3">Use Case</th>
+<th class="py-4 font-semibold w-1/3">Tenor</th>
+<th class="py-4 font-semibold w-1/3">Comments Received</th>
+</tr>
+</thead>
+<tbody class="font-body text-sm">
+<!-- Row 1 -->
+<tr class="border-b border-outline-variant opacity-90 hover:bg-surface-container-high transition-colors">
+<td class="py-5 font-medium text-on-surface">Use Case 1: Structural Integrity</td>
+<td class="py-5">
+<div class="flex items-center gap-2">
+<span class="size-2 bg-[#2d5a27] inline-block"></span>
+<span class="text-on-surface">Positive</span>
+</div>
+</td>
+<td class="py-5 text-on-surface-variant">3 comments</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-outline-variant opacity-90 hover:bg-surface-container-high transition-colors">
+<td class="py-5 font-medium text-on-surface">Use Case 2: Material Sourcing</td>
+<td class="py-5">
+<div class="flex items-center gap-2">
+<span class="size-2 bg-[#8b2b1a] inline-block"></span>
+<span class="text-on-surface">Concern</span>
+</div>
+</td>
+<td class="py-5 text-on-surface-variant">5 comments</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-outline-variant opacity-90 hover:bg-surface-container-high transition-colors">
+<td class="py-5 font-medium text-on-surface">Use Case 3: Vendor Allocation</td>
+<td class="py-5">
+<div class="flex items-center gap-2">
+<span class="size-2 bg-outline inline-block"></span>
+<span class="text-on-surface">Neutral</span>
+</div>
+</td>
+<td class="py-5 text-on-surface-variant">1 comment</td>
+</tr>
+<!-- Row 4 -->
+<tr class="border-b border-outline-variant opacity-90 hover:bg-surface-container-high transition-colors">
+<td class="py-5 font-medium text-on-surface">Use Case 4: Timeline Phasing</td>
+<td class="py-5">
+<div class="flex items-center gap-2">
+<span class="size-2 bg-[#2d5a27] inline-block"></span>
+<span class="text-on-surface">Positive</span>
+</div>
+</td>
+<td class="py-5 text-on-surface-variant">4 comments</td>
+</tr>
+<!-- Row 5 -->
+<tr class="border-b border-outline-variant opacity-90 hover:bg-surface-container-high transition-colors">
+<td class="py-5 font-medium text-on-surface">Use Case 5: Budgetary Alignment</td>
+<td class="py-5">
+<div class="flex items-center gap-2">
+<span class="size-2 bg-[#8b2b1a] inline-block"></span>
+<span class="text-on-surface">Concern</span>
+</div>
+</td>
+<td class="py-5 text-on-surface-variant">6 comments</td>
+</tr>
+<!-- Row 6 -->
+<tr class="border-b border-outline-variant opacity-90 hover:bg-surface-container-high transition-colors">
+<td class="py-5 font-medium text-on-surface">Use Case 6: Compliance Review</td>
+<td class="py-5">
+<div class="flex items-center gap-2">
+<span class="size-2 bg-[#2d5a27] inline-block"></span>
+<span class="text-on-surface">Positive</span>
+</div>
+</td>
+<td class="py-5 text-on-surface-variant">2 comments</td>
+</tr>
+<!-- Row 7 -->
+<tr class="border-b border-outline-variant opacity-90 hover:bg-surface-container-high transition-colors">
+<td class="py-5 font-medium text-on-surface">Use Case 7: Final Delivery Logistics</td>
+<td class="py-5">
+<div class="flex items-center gap-2">
+<span class="size-2 bg-outline inline-block"></span>
+<span class="text-on-surface">Neutral</span>
+</div>
+</td>
+<td class="py-5 text-on-surface-variant">2 comments</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Open Questions Section -->
+<div class="mt-12 flex flex-col gap-6 px-2">
+<h2 class="font-headline text-3xl text-on-surface">Open Questions &amp; Thematic Observations</h2>
+<div class="flex flex-col gap-8 mt-2 border-l border-primary pl-6">
+<div class="flex flex-col gap-2">
+<h3 class="font-body font-semibold text-base text-on-surface uppercase tracking-wide">Theme Alpha: Resource Bottlenecks</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed max-w-[800px]">
+            Reviewers repeatedly flagged potential delays in Use Case 2 (Material Sourcing) and Use Case 5 (Budgetary Alignment). The consensus suggests that while the architectural theory is sound, practical execution may stall without an immediate reallocation of Q3 funding. <span class="font-headline italic text-lg text-on-surface ml-2">"The framework is pristine, but the ledger does not support the timeline." — Reviewer 04</span>
+</p>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="font-body font-semibold text-base text-on-surface uppercase tracking-wide">Theme Beta: Documentation Clarity</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed max-w-[800px]">
+            While structural integrity received high marks, there is ambiguity surrounding the final compliance thresholds. Recommendations point towards developing a supplemental ledger detailing exact tolerances for Phase 07 preparation.
+          </p>
+</div>
+</div>
+</div>
+<!-- Action Band -->
+<div class="mt-16 pt-8 border-t border-outline-variant flex justify-start px-2">
+<button class="bg-primary text-on-primary font-body text-sm font-semibold uppercase tracking-wider py-4 px-8 hover:bg-primary-dim transition-colors duration-200">
+        Open Discerning Preparation
+      </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -143,8 +143,8 @@
   /* Type — next/font on <html> sets --font-sans + --font-serif-display. */
   --font-sans: "Inter", "Inter Fallback", ui-sans-serif, system-ui,
     -apple-system, "Segoe UI", Roboto, sans-serif;
-  /* Instrument first from next/font; string fallbacks match Concept Modern HTML. */
-  --font-serif: var(--font-serif-display), "Instrument Serif", "Iowan Old Style",
+  /* Newsreader from next/font (Phase 01 swap); string fallbacks degrade gracefully. */
+  --font-serif: var(--font-serif-display), "Newsreader", "Iowan Old Style",
     ui-serif, Georgia, serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 

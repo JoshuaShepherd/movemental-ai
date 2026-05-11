@@ -23,7 +23,10 @@ const nextConfig: NextConfig = {
    * edge setups where `/dashboard/**` is the only segment guaranteed to hit this app).
    */
   async rewrites() {
-    return [{ source: "/onboarding/:step", destination: "/dashboard/onboarding/:step" }];
+    return [
+      { source: "/onboarding/leader/:leaderStep", destination: "/dashboard/onboarding/leader/:leaderStep" },
+      { source: "/onboarding/:step", destination: "/dashboard/onboarding/:step" },
+    ];
   },
   async redirects() {
     return [

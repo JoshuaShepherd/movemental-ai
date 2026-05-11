@@ -605,15 +605,42 @@ export async function buildOnboardingStatePayload(organizationId: string) {
     if (t.phase === "commitment") commitmentRemainingMinutes += add;
   }
 
+  const settingsObj =
+    org.settings && typeof org.settings === "object" && org.settings !== null
+      ? (org.settings as Record<string, unknown>)
+      : {};
+  const engagementType = settingsObj.engagement_type;
+  const postOnboardingHref =
+    engagementType === "safestart" || engagementType === "safe_start"
+      ? "/safestart"
+      : "/sandboxlive";
+  const aiReadinessRaw = settingsObj.ai_readiness;
+  const aiReadiness =
+    typeof aiReadinessRaw === "number" && aiReadinessRaw >= 1 && aiReadinessRaw <= 5
+      ? aiReadinessRaw
+      : typeof aiReadinessRaw === "string" && /^[1-5]$/.test(aiReadinessRaw)
+        ? Number(aiReadinessRaw)
+        : null;
+
   return {
     dashboardPersona,
     organization: {
       id: org.id,
       name: org.name,
       slug: org.slug,
+      description: org.description,
+      website: org.website,
+      contact_email: org.contact_email,
+      city: org.city,
+      country: org.country,
+      logo_url: org.logo_url,
+      leader_headshot_url:
+        typeof settingsObj.leader_headshot_url === "string" ? settingsObj.leader_headshot_url : null,
+      aiReadiness,
       onboarding_completed_at: org.onboarding_completed_at,
       onboarding_started_at: org.onboarding_started_at,
       cohort_start_date: org.cohort_start_date,
+      postOnboardingHref,
     },
     tasks,
     phaseSummaries,

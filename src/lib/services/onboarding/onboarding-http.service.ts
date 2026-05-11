@@ -53,6 +53,29 @@ async function mergeOrgOnboardingState(
     .where(eq(organizations.id, organizationId));
 }
 
+async function mergeOrganizationSettings(
+  organizationId: string,
+  patch: Record<string, unknown>,
+): Promise<void> {
+  const [org] = await db
+    .select({ settings: organizations.settings })
+    .from(organizations)
+    .where(eq(organizations.id, organizationId))
+    .limit(1);
+  if (!org) return;
+  const cur =
+    org.settings && typeof org.settings === "object" && !Array.isArray(org.settings)
+      ? { ...(org.settings as Record<string, unknown>) }
+      : {};
+  await db
+    .update(organizations)
+    .set({
+      settings: { ...cur, ...patch } as unknown as typeof organizations.$inferInsert.settings,
+      updated_at: nowIso(),
+    })
+    .where(eq(organizations.id, organizationId));
+}
+
 export async function createOnboardingPaymentIntent(params: {
   organizationId: string;
 }): Promise<Result<{ clientSecret: string; paymentIntentId: string; amount?: number; currency?: string }>> {
@@ -98,6 +121,12 @@ export interface OrganizationProfilePayload {
   primaryContactEmail: string;
   secondaryContactName?: string;
   secondaryContactEmail?: string;
+  /** Legal / public mission statement — maps to `organizations.description`. */
+  mission?: string;
+  city?: string;
+  country?: string;
+  /** 1–5 self-rating stored on `organizations.settings.ai_readiness`. */
+  aiReadiness?: number;
 }
 
 export async function persistOrganizationProfile(params: {
@@ -107,15 +136,40 @@ export async function persistOrganizationProfile(params: {
   const p = params.profile;
   const domain = p.primaryDomain.trim().replace(/^https?:\/\//i, "");
   try {
-    await db
-      .update(organizations)
-      .set({
-        name: p.publicName.trim(),
-        website: domain ? `https://${domain}` : null,
-        contact_email: p.primaryContactEmail.trim(),
-        updated_at: nowIso(),
-      })
-      .where(eq(organizations.id, params.organizationId));
+    const ai =
+      typeof p.aiReadiness === "number" && p.aiReadiness >= 1 && p.aiReadiness <= 5
+        ? Math.round(p.aiReadiness)
+        : undefined;
+
+    const orgPatch: {
+      name: string;
+      website: string | null;
+      contact_email: string;
+      updated_at: string;
+      description?: string | null;
+      city?: string | null;
+      country?: string | null;
+    } = {
+      name: p.publicName.trim(),
+      website: domain ? `https://${domain}` : null,
+      contact_email: p.primaryContactEmail.trim(),
+      updated_at: nowIso(),
+    };
+    if (p.mission !== undefined) {
+      orgPatch.description = p.mission.trim() ? p.mission.trim() : null;
+    }
+    if (p.city !== undefined) {
+      orgPatch.city = p.city.trim() ? p.city.trim() : null;
+    }
+    if (p.country !== undefined) {
+      orgPatch.country = p.country.trim() ? p.country.trim() : null;
+    }
+
+    await db.update(organizations).set(orgPatch).where(eq(organizations.id, params.organizationId));
+
+    if (ai !== undefined) {
+      await mergeOrganizationSettings(params.organizationId, { ai_readiness: ai });
+    }
 
     await mergeOrgOnboardingState(params.organizationId, {
       organization_profile: {
@@ -173,6 +227,10 @@ export async function persistBrandGuidelines(params: {
   guidelines: BrandGuidelinesPayload;
 }): Promise<Result<{ ok: true }>> {
   try {
+    const md = params.guidelines.freeText?.trim();
+    if (md) {
+      await mergeOrganizationSettings(params.organizationId, { brand_guidelines: md });
+    }
     await mergeOrgOnboardingState(params.organizationId, {
       brand_guidelines: params.guidelines,
     });
@@ -187,7 +245,9 @@ export type ConsentTypePayload =
   | "likeness_marks"
   | "ai_usage"
   | "authorized_to_bind"
-  | "comms_recording";
+  | "comms_recording"
+  /** AI-assisted work falls under the org’s existing data policies (Phase 07). */
+  | "data_processing_ai";
 
 export async function persistConsentGrants(params: {
   organizationId: string;
@@ -231,6 +291,8 @@ export interface TaxFormPayload {
   taxIdentifier?: string;
   countryOfResidence?: string;
   notes?: string;
+  /** Signed PDF or scan URL stored on `organizations.settings.tax_form_document_url`. */
+  documentUrl?: string | null;
 }
 
 export async function persistTaxForm(params: {
@@ -238,8 +300,79 @@ export async function persistTaxForm(params: {
   taxForm: TaxFormPayload;
 }): Promise<Result<{ ok: true }>> {
   try {
+    if (params.taxForm.documentUrl !== undefined) {
+      await mergeOrganizationSettings(params.organizationId, {
+        tax_form_document_url: params.taxForm.documentUrl?.trim() || null,
+      });
+    }
     await mergeOrgOnboardingState(params.organizationId, {
       tax_form: params.taxForm,
+    });
+    return ok({ ok: true });
+  } catch (e) {
+    return err("save_failed", e instanceof Error ? e.message : "Unknown error");
+  }
+}
+
+export async function persistOrganizationImageUrls(params: {
+  organizationId: string;
+  logoUrl?: string | null;
+  leaderHeadshotUrl?: string | null;
+}): Promise<Result<{ ok: true }>> {
+  try {
+    if (params.leaderHeadshotUrl !== undefined) {
+      await mergeOrganizationSettings(params.organizationId, {
+        leader_headshot_url: params.leaderHeadshotUrl?.trim() || null,
+      });
+    }
+    if (params.logoUrl !== undefined) {
+      await db
+        .update(organizations)
+        .set({
+          logo_url: params.logoUrl?.trim() || null,
+          updated_at: nowIso(),
+        })
+        .where(eq(organizations.id, params.organizationId));
+    }
+    return ok({ ok: true });
+  } catch (e) {
+    return err("save_failed", e instanceof Error ? e.message : "Unknown error");
+  }
+}
+
+export async function persistOrientationAcknowledgement(params: {
+  organizationId: string;
+}): Promise<Result<{ ok: true }>> {
+  try {
+    await mergeOrgOnboardingState(params.organizationId, {
+      orientation_acknowledged_at: nowIso(),
+    });
+    return ok({ ok: true });
+  } catch (e) {
+    return err("save_failed", e instanceof Error ? e.message : "Unknown error");
+  }
+}
+
+export async function persistPlatformTourChecklist(params: {
+  organizationId: string;
+  checklist: Record<string, boolean>;
+}): Promise<Result<{ ok: true }>> {
+  try {
+    await mergeOrgOnboardingState(params.organizationId, {
+      platform_tour_checklist: params.checklist,
+    });
+    return ok({ ok: true });
+  } catch (e) {
+    return err("save_failed", e instanceof Error ? e.message : "Unknown error");
+  }
+}
+
+export async function persistCohortPrepRead(params: {
+  organizationId: string;
+}): Promise<Result<{ ok: true }>> {
+  try {
+    await mergeOrgOnboardingState(params.organizationId, {
+      cohort_prep_read_at: nowIso(),
     });
     return ok({ ok: true });
   } catch (e) {

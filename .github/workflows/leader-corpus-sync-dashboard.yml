@@ -1,0 +1,28 @@
+# Phase 06 — optional manual / scheduled sync into shared Supabase tables.
+# Configure repo secrets: DATABASE_URL, ANTHROPIC_API_KEY (optional), MOVEMENT_LEADER_CORPUS_SYNC_SECRET (unused here).
+name: Leader corpus sync (dashboard tables)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * *"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+      - run: pnpm install --frozen-lockfile
+      # Skip Anthropic in CI by default (cost + rate limits). Run locally or via the dashboard
+      # admin button with ANTHROPIC_API_KEY on movemental-ai for full framing regeneration.
+      - name: Sync all active leaders (files only)
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: pnpm leader:sync-corpus-dashboard -- --all-active --no-ai

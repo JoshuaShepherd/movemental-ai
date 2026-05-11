@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Filtered Recipe Library - SafeStart</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#575149",
+                    "on-primary-fixed-variant": "#615b53",
+                    "inverse-on-surface": "#9f9d96",
+                    "secondary-container": "#e8e2d6",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#fffbff",
+                    "primary-fixed": "#ebe1d7",
+                    "surface-tint": "#645d55",
+                    "inverse-surface": "#0f0e0a",
+                    "secondary-fixed": "#e8e2d6",
+                    "surface-variant": "#ece8d7",
+                    "background": "#fffbff",
+                    "tertiary-dim": "#5c5756",
+                    "tertiary-fixed": "#faf2ef",
+                    "on-tertiary-fixed-variant": "#6a6563",
+                    "on-error": "#ffffff",
+                    "error-container": "#fe8b70",
+                    "primary-fixed-dim": "#dcd3c9",
+                    "secondary": "#68645b",
+                    "surface-dim": "#e6e3cf",
+                    "tertiary": "#686362",
+                    "secondary-fixed-dim": "#d9d4c8",
+                    "on-tertiary": "#ffffff",
+                    "primary-dim": "#58514a",
+                    "error-dim": "#5c1202",
+                    "surface-container-low": "#fdf9ef",
+                    "outline": "#838172",
+                    "surface-container-highest": "#ece8d7",
+                    "tertiary-fixed-dim": "#ece4e1",
+                    "on-tertiary-container": "#605b59",
+                    "on-surface": "#39382c",
+                    "surface-container-high": "#f2eedf",
+                    "on-background": "#39382c",
+                    "on-primary-fixed": "#443e37",
+                    "surface-container": "#f7f4e7",
+                    "inverse-primary": "#fff5ea",
+                    "error": "#a54731",
+                    "on-primary": "#fff6ee",
+                    "on-secondary-fixed-variant": "#5f5b52",
+                    "on-surface-variant": "#666557",
+                    "primary-container": "#ebe1d7",
+                    "secondary-dim": "#5b584f",
+                    "outline-variant": "#bcbaa9",
+                    "primary": "#645d55",
+                    "on-tertiary-fixed": "#4d4947",
+                    "on-secondary-fixed": "#423f37",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error-container": "#742410",
+                    "tertiary-container": "#faf2ef",
+                    "surface": "#fffbff",
+                    "on-secondary-container": "#555249",
+                    "amber": "#b45309"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "0px",
+                    "md": "0px",
+                    "sm": "0px"
+            },
+            "spacing": {},
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "display": ["Newsreader", "serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Inter", "sans-serif"]
+            },
+            "fontSize": {}
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #faf6ee; color: #39382c; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-body antialiased flex h-screen overflow-hidden bg-surface">
+<!-- TopNavBar (Docked top, full width, midnight band) -->
+<div class="fixed top-0 left-0 w-full z-50 bg-inverse-surface dark:bg-inverse-surface border-b border-outline-variant/20 h-16 flex justify-between items-center px-6">
+<div class="flex items-center gap-8">
+<div class="font-headline italic text-2xl text-on-primary">SafeStart</div>
+<nav class="hidden md:flex gap-6 h-full items-center">
+<a class="text-on-primary/70 hover:text-on-primary transition-colors duration-200 font-headline italic text-xl tracking-tight font-display h-full flex items-center" href="#">Dashboard</a>
+<a class="text-on-primary/70 hover:text-on-primary transition-colors duration-200 font-headline italic text-xl tracking-tight font-display h-full flex items-center" href="#">Reports</a>
+<a class="text-on-primary border-b border-on-primary pb-1 hover:text-on-primary transition-colors duration-200 font-headline italic text-xl tracking-tight font-display h-full flex items-center" href="#">Directory</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-on-primary/70 hover:text-on-primary transition-colors duration-200 font-headline italic text-xl tracking-tight font-display cursor-pointer">Help</span>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-primary/70 hover:text-on-primary transition-colors duration-200 cursor-pointer" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-primary/70 hover:text-on-primary transition-colors duration-200 cursor-pointer" data-icon="settings">settings</span>
+</div>
+<img alt="User profile" class="w-8 h-8 rounded-none border border-outline-variant/20 object-cover" data-alt="A close up, high key, professional headshot of a person looking directly into the camera. The lighting is soft and even, typical of a corporate portrait. The background is a pure, minimalist light grey, allowing the subject to stand out. The styling aligns with a serious, high trust institutional aesthetic, avoiding any overly dramatic shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHcT9GfXvzX7X7dCWf-86_sCfzrpV7zMeyw3DAhnzCPPsSnlsx2aFhXZdmN38K0ZZnmmOOdWY-kPYWugo7f8kd1a8YPqnYNyInVixjvRZoop_HL6IKrxgZ_PwhX25nyUEyt3VEaS_mZNEPvIcWZSfcbhnbJcZSSsoC5_BR4Kziud5GVAmdGxifdpG5fhHTwNhlvHEXAo2pnYhDfXPnDHHml9rN_vAa8J4DaxUYSLEPhW9oG7NlNrlK_JTFa8Og8_Pwbjh7F18fQEU"/>
+</div>
+</div>
+<!-- SideNavBar -->
+<div class="hidden md:flex flex-col bg-inverse-surface dark:bg-inverse-surface border-r border-outline-variant/20 w-64 h-full pt-24 pb-8 fixed left-0 top-0 z-40">
+<div class="px-6 mb-8">
+<h2 class="font-headline italic text-lg text-on-primary">GUIDEBOOK</h2>
+<p class="font-label uppercase tracking-widest text-xs font-body text-on-primary/60 mt-1">Institutional Strategy</p>
+</div>
+<nav class="flex flex-col space-y-1 overflow-y-auto no-scrollbar w-full">
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary/60 hover:bg-surface-variant/10 hover:bg-primary-dim/50 transition-all duration-200 font-label uppercase tracking-widest text-xs font-body w-full" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="description">description</span>
+<span>Statement</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 bg-primary-dim text-on-primary border-l-2 border-on-primary hover:bg-primary-dim/50 transition-all duration-200 font-label uppercase tracking-widest text-xs font-body w-full" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="policy">policy</span>
+<span>Policy</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary/60 hover:bg-surface-variant/10 hover:bg-primary-dim/50 transition-all duration-200 font-label uppercase tracking-widest text-xs font-body w-full" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="auto_stories">auto_stories</span>
+<span>Context</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary/60 hover:bg-surface-variant/10 hover:bg-primary-dim/50 transition-all duration-200 font-label uppercase tracking-widest text-xs font-body w-full" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="gavel">gavel</span>
+<span>Rules</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary/60 hover:bg-surface-variant/10 hover:bg-primary-dim/50 transition-all duration-200 font-label uppercase tracking-widest text-xs font-body w-full" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="emergency_share">emergency_share</span>
+<span>Response Plans</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary/60 hover:bg-surface-variant/10 hover:bg-primary-dim/50 transition-all duration-200 font-label uppercase tracking-widest text-xs font-body w-full" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="home">home</span>
+<span>Home</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary/60 hover:bg-surface-variant/10 hover:bg-primary-dim/50 transition-all duration-200 font-label uppercase tracking-widest text-xs font-body w-full" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="history">history</span>
+<span>Timeline</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary/60 hover:bg-surface-variant/10 hover:bg-primary-dim/50 transition-all duration-200 font-label uppercase tracking-widest text-xs font-body w-full" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="group">group</span>
+<span>Team</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary/60 hover:bg-surface-variant/10 hover:bg-primary-dim/50 transition-all duration-200 font-label uppercase tracking-widest text-xs font-body w-full" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="forum">forum</span>
+<span>Comments</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary/60 hover:bg-surface-variant/10 hover:bg-primary-dim/50 transition-all duration-200 font-label uppercase tracking-widest text-xs font-body w-full mt-auto" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-0 md:ml-64 pt-16 overflow-y-auto no-scrollbar relative flex flex-col min-h-screen">
+<!-- Filter Band -->
+<div class="w-full bg-surface-container border-b border-outline-variant/20 px-8 py-6">
+<div class="max-w-5xl mx-auto">
+<div class="font-label uppercase tracking-widest text-[10px] text-amber-700 font-bold mb-4">FILTERED BY YOUR CURRENT REALITY MAP</div>
+<div class="flex flex-wrap gap-3">
+<button class="px-4 py-2 border border-outline-variant/40 text-on-surface/70 font-label text-xs uppercase tracking-wider hover:bg-surface-container-high transition-colors">
+                        Major-donor letter drafting
+                    </button>
+<button class="px-4 py-2 bg-primary text-on-primary font-label text-xs uppercase tracking-wider shadow-none border-none hover:bg-primary-dim transition-colors">
+                        Strategic memo drafting
+                    </button>
+<button class="px-4 py-2 border border-outline-variant/40 text-on-surface/70 font-label text-xs uppercase tracking-wider hover:bg-surface-container-high transition-colors">
+                        Foundation prospect research
+                    </button>
+</div>
+</div>
+</div>
+<!-- Recipe Library Content -->
+<div class="flex-1 px-8 py-12">
+<div class="max-w-5xl mx-auto">
+<h1 class="font-headline italic text-4xl text-on-surface mb-12 tracking-tight">Library.</h1>
+<!-- Recommended Recipe Row -->
+<div class="w-full border-b border-outline-variant/20 pb-8 mb-8 relative group cursor-pointer hover:bg-surface-container-low transition-colors p-4 -ml-4 rounded-none">
+<div class="flex justify-between items-start">
+<div class="w-2/3 pr-8">
+<div class="font-label uppercase tracking-widest text-[10px] text-amber-700 font-bold mb-3 flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-amber-700 block"></span>
+                                RECOMMENDED FROM YOUR MAP
+                            </div>
+<h3 class="font-headline text-3xl text-on-surface mb-4 group-hover:text-primary transition-colors">Strategic Memo Drafting</h3>
+<p class="font-body text-on-surface-variant text-sm leading-relaxed mb-6">A structural template for outlining high-stakes strategic initiatives. Designed to clarify intent, assign responsibility, and define success metrics before operationalization begins.</p>
+<div class="flex items-center gap-6 font-label text-xs uppercase tracking-widest text-on-surface/60">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">schedule</span> 45 MIN</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">signal_cellular_alt</span> ADVANCED</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">group</span> LEADERSHIP</span>
+</div>
+</div>
+<div class="w-1/3 flex justify-end">
+<div class="w-32 h-40 bg-surface-container-highest border border-outline-variant/20 flex items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0iIzM5MzgyYyIvPjwvc3ZnPg==')]"></div>
+<span class="material-symbols-outlined text-4xl text-on-surface/40 font-light">edit_document</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Recipe Row -->
+<div class="w-full border-b border-outline-variant/20 pb-8 mb-8 relative group cursor-pointer hover:bg-surface-container-low transition-colors p-4 -ml-4 rounded-none opacity-80 hover:opacity-100">
+<div class="flex justify-between items-start">
+<div class="w-2/3 pr-8">
+<h3 class="font-headline text-2xl text-on-surface mb-3 group-hover:text-primary transition-colors">Executive Summary Distillation</h3>
+<p class="font-body text-on-surface-variant text-sm leading-relaxed mb-4">Techniques for compressing 50-page reports into 2-page briefing documents without losing critical nuance or actionable insights.</p>
+<div class="flex items-center gap-6 font-label text-xs uppercase tracking-widest text-on-surface/50">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">schedule</span> 30 MIN</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">signal_cellular_alt</span> INTERMEDIATE</span>
+</div>
+</div>
+<div class="w-1/3 flex justify-end items-center">
+<button class="px-6 py-2 border border-outline-variant/40 text-on-surface font-label text-xs uppercase tracking-wider hover:bg-surface-container-high transition-colors group-hover:border-primary">
+                                View Recipe
+                            </button>
+</div>
+</div>
+</div>
+<!-- Secondary Recipe Row -->
+<div class="w-full border-b border-outline-variant/20 pb-8 mb-8 relative group cursor-pointer hover:bg-surface-container-low transition-colors p-4 -ml-4 rounded-none opacity-80 hover:opacity-100">
+<div class="flex justify-between items-start">
+<div class="w-2/3 pr-8">
+<h3 class="font-headline text-2xl text-on-surface mb-3 group-hover:text-primary transition-colors">Crisis Response Holding Statements</h3>
+<p class="font-body text-on-surface-variant text-sm leading-relaxed mb-4">Pre-approved architectural structures for immediate external communication during organizational friction events.</p>
+<div class="flex items-center gap-6 font-label text-xs uppercase tracking-widest text-on-surface/50">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">schedule</span> 15 MIN</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">signal_cellular_alt</span> EXPERT</span>
+</div>
+</div>
+<div class="w-1/3 flex justify-end items-center">
+<button class="px-6 py-2 border border-outline-variant/40 text-on-surface font-label text-xs uppercase tracking-wider hover:bg-surface-container-high transition-colors group-hover:border-primary">
+                                View Recipe
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-auto bg-inverse-surface dark:bg-inverse-surface border-t border-outline-variant/20 w-full px-8 py-4 flex justify-between items-center z-10 relative">
+<div class="font-body text-xs tracking-normal text-on-primary/50">© 2024 SafeStart Institutional. All rights reserved.</div>
+<div class="font-headline italic text-sm text-on-primary/80 absolute left-1/2 -translate-x-1/2">SafeStart</div>
+<div class="flex gap-6">
+<a class="font-body text-xs tracking-normal text-on-primary/50 hover:text-on-primary transition-colors" href="#">Support</a>
+<a class="font-body text-xs tracking-normal text-on-primary/50 hover:text-on-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body text-xs tracking-normal text-on-primary/50 hover:text-on-primary transition-colors" href="#">Terms of Service</a>
+</div>
+</footer>
+</main>
+</body></html>

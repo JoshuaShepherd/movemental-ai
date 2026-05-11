@@ -152,6 +152,13 @@ export const organizations = pgTable("organizations", {
   }),
   onboarding_state: jsonb("onboarding_state").notNull().default({}),
   cohort_start_date: date("cohort_start_date"),
+  /**
+   * SandboxLive cohort grouping. Nullable uuid (no FK enforcement yet — the
+   * SandboxLive cohort table is a future migration). Two organizations sharing
+   * the same cohort_id are members of the same cohort and appear together in
+   * `/sandboxlive/cohort` and `/sandboxlive/sponsor-oversight`.
+   */
+  cohort_id: uuid("cohort_id"),
 });
 
 export const contentCategories = pgTable("content_categories", {
@@ -3337,6 +3344,129 @@ export const programEngagements = pgTable(
 );
 
 // ---------------------------------------------------------------------------
+// SandboxLive — recipe library and cohort members.
+// Added in Phase 02 (SandboxLive product shell). Migration is NOT yet applied;
+// `pnpm drizzle:gen && pnpm drizzle:push` to materialize.
+// ---------------------------------------------------------------------------
+
+/**
+ * `recipes` — the SandboxLive Recipe Library. A recipe is a working pattern
+ * (drafting, research, analysis, etc.) the cohort has tried and would teach
+ * to another organization. `cohort_specific_for` makes a recipe visible only
+ * to organizations sharing that cohort id; null means visible publicly.
+ */
+export const recipes = pgTable("recipes", {
+  id: id("id"),
+  slug: text("slug").notNull().unique(),
+  title: text("title").notNull(),
+  /** Function category: writing | research | analysis | planning | communication | operations. */
+  function: text("function").notNull(),
+  working_time_minutes: integer("working_time_minutes").notNull(),
+  /** Data sensitivity: public | internal | confidential. */
+  data_sensitivity: text("data_sensitivity").notNull(),
+  description: text("description").notNull(),
+  /** Markdown body of the recipe. Rendered server-side. */
+  recipe_document: text("recipe_document").notNull(),
+  video_url: text("video_url"),
+  transcript_excerpt: text("transcript_excerpt"),
+  /** When set, the recipe is only visible inside this cohort (org.cohort_id match). */
+  cohort_specific_for: uuid("cohort_specific_for"),
+  published_at: timestamp("published_at", { withTimezone: true, mode: "string" }),
+  created_at: createdAt("created_at"),
+  updated_at: updatedAt("updated_at"),
+});
+
+/**
+ * `cohort_members` — extends an organization in a SandboxLive cohort with the
+ * leader who represents it. One row per organization per cohort engagement.
+ * The bio renders on the cohort view card.
+ */
+export const cohortMembers = pgTable(
+  "cohort_members",
+  {
+    id: id("id"),
+    organization_id: uuid("organization_id")
+      .notNull()
+      .references(() => organizations.id, { onDelete: "cascade" }),
+    leader_name: text("leader_name").notNull(),
+    leader_role: text("leader_role"),
+    leader_bio: text("leader_bio"),
+    created_at: createdAt("created_at"),
+    updated_at: updatedAt("updated_at"),
+  },
+  (t) =>
+    [unique("cohort_members_organization_id_key").on(t.organization_id)],
+);
+
+/**
+ * `future_plans` — the SandboxLive Phase 08 board-facing deliverable. One row
+ * per organization. `content` is structured JSON keyed by section slug
+ * (context | vision | strategy | refusals | roadmap | metrics). `status`
+ * walks draft → under_review → ratified → archived. `current_version` points
+ * at the latest `future_plan_versions.version_number` for fast reads.
+ */
+export const futurePlans = pgTable(
+  "future_plans",
+  {
+    id: id("id"),
+    organization_id: uuid("organization_id")
+      .notNull()
+      .references(() => organizations.id, { onDelete: "cascade" }),
+    cohort_id: uuid("cohort_id"),
+    status: text("status").notNull().default("draft"),
+    /** JSONB shape: `{ context: { body_md }, vision: { body_md }, ... }` */
+    content: jsonb("content").notNull().default({}),
+    current_version: integer("current_version").notNull().default(1),
+    created_at: createdAt("created_at"),
+    updated_at: updatedAt("updated_at"),
+  },
+  (t) => [unique("future_plans_organization_id_key").on(t.organization_id)],
+);
+
+export const futurePlanVersions = pgTable(
+  "future_plan_versions",
+  {
+    id: id("id"),
+    future_plan_id: uuid("future_plan_id")
+      .notNull()
+      .references(() => futurePlans.id, { onDelete: "cascade" }),
+    version_number: integer("version_number").notNull(),
+    /** Snapshot of the future_plans.content JSON at this version. */
+    content_snapshot: jsonb("content_snapshot").notNull().default({}),
+    edited_by_user_id: uuid("edited_by_user_id").references(() => userProfiles.id, {
+      onDelete: "set null",
+    }),
+    /** Which section the edit targeted, when known. Null for batch edits. */
+    section_slug: text("section_slug"),
+    note: text("note"),
+    created_at: createdAt("created_at"),
+  },
+  (t) =>
+    [unique("future_plan_versions_plan_version_key").on(t.future_plan_id, t.version_number)],
+);
+
+export const futurePlanRatifications = pgTable(
+  "future_plan_ratifications",
+  {
+    id: id("id"),
+    future_plan_id: uuid("future_plan_id")
+      .notNull()
+      .references(() => futurePlans.id, { onDelete: "cascade" }),
+    version_id: uuid("version_id")
+      .notNull()
+      .references(() => futurePlanVersions.id, { onDelete: "cascade" }),
+    ratified_by_user_id: uuid("ratified_by_user_id").references(() => userProfiles.id, {
+      onDelete: "set null",
+    }),
+    ratified_at: timestamp("ratified_at", { withTimezone: true, mode: "string" })
+      .notNull()
+      .defaultNow(),
+    /** Free-form notes from the board meeting (motion text, abstentions, etc.). */
+    notes: text("notes"),
+  },
+);
+
+// ---------------------------------------------------------------------------
 // Safety artifacts (parent → versions → publications)
 // Enum columns map to text(); DB type is `safety_artifact_status` (draft|published|archived).
 // ---------------------------------------------------------------------------
@@ -3416,4 +3546,96 @@ export const stageTransitions = pgTable("stage_transitions", {
     .notNull()
     .defaultNow(),
   notes: text("notes"),
+});
+
+// ---------------------------------------------------------------------------
+// Movement leaders — author reflection, public page, applications, signings
+// (Phase 06). Migrations applied separately; helpers degrade when tables are absent.
+// ---------------------------------------------------------------------------
+
+export const movementLeaders = pgTable("movement_leaders", {
+  id: id("id"),
+  slug: text("slug").notNull().unique(),
+  full_name: text("full_name").notNull(),
+  email: text("email").notNull().unique(),
+  photo_url: text("photo_url"),
+  primary_role: text("primary_role"),
+  primary_organization: text("primary_organization"),
+  bio_short: text("bio_short"),
+  bio_long: text("bio_long"),
+  personal_piece: text("personal_piece"),
+  /** Corpus + generated sections (identity, reflected_understanding markdown, etc.). */
+  movement_leader_data: jsonb("movement_leader_data").notNull().default({}),
+  reflected_understanding_endorsed_at: timestamp("reflected_understanding_endorsed_at", {
+    withTimezone: true,
+    mode: "string",
+  }),
+  public_page_approved_at: timestamp("public_page_approved_at", {
+    withTimezone: true,
+    mode: "string",
+  }),
+  public_page_published_at: timestamp("public_page_published_at", {
+    withTimezone: true,
+    mode: "string",
+  }),
+  status: text("status").notNull().default("pending"),
+  created_at: createdAt("created_at"),
+  updated_at: updatedAt("updated_at"),
+});
+
+export const movementLeaderGenerated = pgTable("movement_leader_generated", {
+  id: id("id"),
+  leader_id: uuid("leader_id")
+    .notNull()
+    .references(() => movementLeaders.id, { onDelete: "cascade" }),
+  section: text("section").notNull(),
+  content: text("content").notNull(),
+  generated_at: createdAt("generated_at"),
+  model_version: text("model_version").notNull(),
+});
+
+export const leaderRevisionRequests = pgTable("leader_revision_requests", {
+  id: id("id"),
+  leader_id: uuid("leader_id")
+    .notNull()
+    .references(() => movementLeaders.id, { onDelete: "cascade" }),
+  section: text("section").notNull(),
+  requester_email: text("requester_email").notNull(),
+  request_text: text("request_text").notNull(),
+  status: text("status").notNull().default("open"),
+  created_at: createdAt("created_at"),
+  addressed_at: timestamp("addressed_at", { withTimezone: true, mode: "string" }),
+});
+
+export const movementLeaderSignings = pgTable(
+  "movement_leader_signings",
+  {
+    id: id("id"),
+    leader_id: uuid("leader_id")
+      .notNull()
+      .references(() => movementLeaders.id, { onDelete: "cascade" }),
+    document_slug: text("document_slug").notNull(),
+    signed_at: createdAt("signed_at"),
+    version_signed: text("version_signed").notNull(),
+  },
+  (t) => [unique("movement_leader_signings_leader_document_unique").on(t.leader_id, t.document_slug)],
+);
+
+export const movementLeaderApplications = pgTable("movement_leader_applications", {
+  id: id("id"),
+  full_name: text("full_name").notNull(),
+  email: text("email").notNull(),
+  organization: text("organization"),
+  role: text("role"),
+  why_leader: text("why_leader").notNull(),
+  bio: text("bio").notNull(),
+  photo_url: text("photo_url"),
+  /** [{ name, email, relationship }, …] */
+  reference_entries: jsonb("references").notNull().default([]),
+  status: text("status").notNull().default("pending"),
+  reviewed_by_user_id: uuid("reviewed_by_user_id").references(() => userProfiles.id, {
+    onDelete: "set null",
+  }),
+  reviewed_at: timestamp("reviewed_at", { withTimezone: true, mode: "string" }),
+  created_at: createdAt("created_at"),
 });

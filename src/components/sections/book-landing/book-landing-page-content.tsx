@@ -172,7 +172,7 @@ export async function BookLandingPageContent({ searchParams }: BookLandingPagePr
                           </span>
                           {c.publicationStatus === "coming_soon" ? (
                             <span className="shrink-0 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                              Coming soon
+                              Not yet published
                             </span>
                           ) : (
                             <span className="shrink-0 text-xs text-muted-foreground/65">

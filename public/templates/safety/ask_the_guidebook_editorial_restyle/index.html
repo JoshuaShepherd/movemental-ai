@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Governance AI - Ask the Guidebook</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "primary-fixed-dim": "#dcd3c9",
+                "surface-variant": "#ece8d7",
+                "on-surface-variant": "#666557",
+                "background": "#fffbff",
+                "secondary": "#68645b",
+                "on-tertiary-container": "#605b59",
+                "tertiary-container": "#faf2ef",
+                "on-primary-container": "#575149",
+                "on-primary-fixed": "#443e37",
+                "primary-dim": "#58514a",
+                "inverse-primary": "#fff5ea",
+                "on-surface": "#39382c",
+                "tertiary": "#686362",
+                "primary-fixed": "#ebe1d7",
+                "inverse-surface": "#0f0e0a",
+                "secondary-dim": "#5b584f",
+                "on-secondary-container": "#555249",
+                "tertiary-fixed-dim": "#ece4e1",
+                "surface": "#fffbff",
+                "secondary-container": "#e8e2d6",
+                "secondary-fixed": "#e8e2d6",
+                "on-secondary-fixed-variant": "#5f5b52",
+                "error-dim": "#5c1202",
+                "surface-container-high": "#f2eedf",
+                "surface-bright": "#fffbff",
+                "on-tertiary": "#ffffff",
+                "surface-container": "#f7f4e7",
+                "tertiary-dim": "#5c5756",
+                "outline-variant": "#bcbaa9",
+                "surface-container-low": "#fdf9ef",
+                "on-error": "#ffffff",
+                "inverse-on-surface": "#9f9d96",
+                "on-tertiary-fixed": "#4d4947",
+                "error-container": "#fe8b70",
+                "surface-tint": "#645d55",
+                "on-primary": "#fff6ee",
+                "error": "#a54731",
+                "primary-container": "#ebe1d7",
+                "outline": "#838172",
+                "on-primary-fixed-variant": "#615b53",
+                "on-secondary": "#ffffff",
+                "surface-container-lowest": "#ffffff",
+                "surface-container-highest": "#ece8d7",
+                "surface-dim": "#e6e3cf",
+                "on-background": "#39382c",
+                "primary": "#645d55",
+                "secondary-fixed-dim": "#d9d4c8",
+                "on-error-container": "#742410",
+                "tertiary-fixed": "#faf2ef",
+                "on-secondary-fixed": "#423f37",
+                "on-tertiary-fixed-variant": "#6a6563"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+            "section-gap": "64px",
+            "major-gap": "48px",
+            "item-gap": "24px",
+            "component-padding": "24px",
+            "dense-gap": "16px"
+        },
+        "fontFamily": {
+                "headline": [
+                        "Newsreader"
+                ],
+                "display": [
+                        "Newsreader"
+                ],
+                "body": [
+                        "Inter"
+                ],
+                "label": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+            "display-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "400" }],
+            "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+            "body-md": ["15px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "body-sm": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "button": ["14px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "eyebrow": ["11px", { "lineHeight": "1.5", "letterSpacing": "0.08em", "fontWeight": "700" }]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col font-body">
+<!-- TopNavBar (JSON Injected) -->
+<nav class="bg-background/90 dark:bg-background/90 backdrop-blur-md fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 py-4 max-w-full mx-auto border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-12">
+<span class="font-display text-headline-lg text-on-surface uppercase tracking-tight">Governance AI</span>
+<div class="hidden md:flex gap-8 items-center h-full">
+<a class="text-on-surface-variant font-label text-button uppercase tracking-wider hover:text-primary transition-colors duration-200 py-2" href="#">Strategy</a>
+<a class="text-primary font-bold border-b-2 border-primary py-2 transition-opacity duration-150" href="#">Oversight</a>
+<a class="text-on-surface-variant font-label text-button uppercase tracking-wider hover:text-primary transition-colors duration-200 py-2" href="#">Insights</a>
+<a class="text-on-surface-variant font-label text-button uppercase tracking-wider hover:text-primary transition-colors duration-200 py-2" href="#">Archive</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">search</span>
+<input class="bg-surface-container border-b border-outline-variant focus:border-primary focus:ring-0 pl-10 pr-4 py-2 w-64 text-body-md font-body text-on-surface placeholder:text-on-surface-variant transition-colors rounded-none" placeholder="Search..." type="text"/>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+<button class="bg-primary text-on-primary font-label text-button px-6 py-3 hover:bg-primary/90 transition-colors rounded hidden sm:block">Executive Briefing</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[120px] pb-section-gap px-6 md:px-0">
+<div class="max-w-[720px] mx-auto w-full">
+<!-- Navigation Back -->
+<a class="inline-flex items-center gap-2 text-on-surface-variant font-body text-body-sm mb-major-gap hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                Back to dashboard
+            </a>
+<!-- Header Section -->
+<header class="mb-section-gap">
+<span class="font-label text-eyebrow text-on-surface-variant uppercase block mb-dense-gap tracking-widest">ASK THE GUIDEBOOK</span>
+<h1 class="font-display text-display-xl text-on-surface mb-item-gap font-serif italic">What does our Guidebook say?</h1>
+<p class="font-body text-body-md text-on-surface-variant leading-relaxed">Ask in plain language. The Guidebook returns the relevant clauses, the rationale behind them, and the linked Rules that apply.</p>
+</header>
+<!-- Search Interaction -->
+<div class="mb-major-gap">
+<div class="flex w-full">
+<input class="flex-grow bg-surface-container h-[64px] px-6 border border-outline-variant focus:border-primary focus:ring-0 text-body-lg font-body text-on-surface rounded-l" placeholder="Ask a question..." type="text" value="Can I use ChatGPT to summarize prospect research notes for tomorrow's meeting?"/>
+<button class="bg-primary text-on-primary font-label text-button h-[64px] px-8 hover:bg-primary/90 transition-colors border border-primary rounded-r">Ask</button>
+</div>
+</div>
+<!-- Query Context -->
+<div class="mb-item-gap">
+<p class="font-body text-body-md text-on-surface-variant italic">
+<span class="font-semibold not-italic">You asked:</span> "Can I use ChatGPT to summarize prospect research notes for tomorrow's meeting?"
+                </p>
+</div>
+<hr class="border-t border-outline-variant mb-major-gap"/>
+<!-- Verdict Section -->
+<section class="mb-major-gap">
+<span class="font-label text-eyebrow text-on-surface-variant uppercase block mb-item-gap tracking-wider">VERDICT</span>
+<div class="flex items-center gap-3 mb-dense-gap">
+<div class="w-3 h-3 bg-[#2E7D32] rounded-full"></div>
+<h2 class="font-headline text-headline-md font-serif italic text-on-surface">Yes, with constraints.</h2>
+</div>
+<p class="font-body text-body-lg text-on-surface leading-relaxed">
+                    You may use ChatGPT to summarize research notes, provided the notes contain only publicly available information (Tier 3 data). You must not input any non-public personal details, financial estimates derived internally, or confidential donor history (Tier 2 or Tier 1 data) into any public AI tool, including standard ChatGPT.
+                </p>
+</section>
+<!-- Referenced Clauses -->
+<section class="mb-major-gap">
+<span class="font-label text-eyebrow text-on-surface-variant uppercase block mb-item-gap tracking-wider">GUIDEBOOK CLAUSES REFERENCED</span>
+<div class="flex flex-col">
+<!-- Card 1 -->
+<div class="py-item-gap border-b border-outline-variant">
+<span class="font-label text-eyebrow text-on-surface-variant uppercase block mb-dense-gap">LAYER 02 · POLICY · CONSTRAINED USE</span>
+<p class="font-body text-body-md text-on-surface italic mb-dense-gap leading-relaxed">"Employees may utilize public generative AI tools for administrative efficiency, provided no confidential, proprietary, or Tier 1/Tier 2 personal data is entered into the prompt or context window."</p>
+<a class="font-label text-button text-primary hover:underline inline-flex items-center gap-1" href="#">Read full clause <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+<!-- Card 2 -->
+<div class="py-item-gap border-b border-outline-variant">
+<span class="font-label text-eyebrow text-on-surface-variant uppercase block mb-dense-gap">LAYER 03 · GUIDELINE · DATA CLASSIFICATION</span>
+<p class="font-body text-body-md text-on-surface italic mb-dense-gap leading-relaxed">"Prospect wealth estimates generated internally are considered Tier 2 (Confidential) data. Public biographical information sourced from news articles is considered Tier 3 (Public) data."</p>
+<a class="font-label text-button text-primary hover:underline inline-flex items-center gap-1" href="#">Read full clause <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+<!-- Card 3 -->
+<div class="py-item-gap border-b border-outline-variant">
+<span class="font-label text-eyebrow text-on-surface-variant uppercase block mb-dense-gap">LAYER 01 · PRINCIPLE · TRANSPARENCY</span>
+<p class="font-body text-body-md text-on-surface italic mb-dense-gap leading-relaxed">"We maintain an obligation to protect stakeholder privacy above operational expediency. If the classification of data is uncertain, it must be treated as Confidential until verified."</p>
+<a class="font-label text-button text-primary hover:underline inline-flex items-center gap-1" href="#">Read full clause <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+</div>
+</section>
+<!-- What To Do -->
+<section class="mb-major-gap py-section-gap border-t border-b border-outline-variant">
+<span class="font-label text-eyebrow text-on-surface-variant uppercase block mb-item-gap tracking-wider">WHAT TO DO NEXT</span>
+<ol class="list-decimal list-outside ml-5 space-y-4 font-body text-body-md text-on-surface">
+<li class="pl-2"><strong>Review your notes:</strong> Manually strip out any internal wealth estimates, donor history, or private contact information before pasting into ChatGPT.</li>
+<li class="pl-2"><strong>Consider Enterprise tools:</strong> If your department has access to the approved internal AI assistant (Governance AI Enterprise), use that instead, as it is approved for Tier 2 data.</li>
+<li class="pl-2"><strong>When in doubt, flag it:</strong> If you are unsure if a piece of information is Tier 2 or Tier 3, do not use the public AI tool. Contact the data governance lead.</li>
+</ol>
+</section>
+<!-- Interaction Footer -->
+<div class="flex flex-col sm:flex-row items-center justify-between py-item-gap mb-major-gap">
+<div class="flex items-center gap-item-gap mb-4 sm:mb-0">
+<span class="font-body text-body-sm text-on-surface-variant">Was this answer helpful?</span>
+<div class="flex gap-dense-gap">
+<button class="px-4 py-2 border border-outline-variant text-on-surface font-label text-button hover:bg-surface-container rounded transition-colors">Yes</button>
+<button class="px-4 py-2 border border-outline-variant text-on-surface font-label text-button hover:bg-surface-container rounded transition-colors">Not quite...</button>
+</div>
+</div>
+<button class="text-primary font-label text-button hover:underline">Ask another question</button>
+</div>
+<!-- Related Questions -->
+<section>
+<span class="font-label text-eyebrow text-on-surface-variant uppercase block mb-item-gap tracking-wider">RELATED QUESTIONS</span>
+<div class="flex flex-col border-t border-outline-variant">
+<a class="py-4 border-b border-outline-variant text-on-surface font-body text-body-md hover:text-primary transition-colors flex justify-between items-center group" href="#">
+                        Can I use AI to draft a sympathy letter to a donor?
+                        <span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">arrow_forward</span>
+</a>
+<a class="py-4 border-b border-outline-variant text-on-surface font-body text-body-md hover:text-primary transition-colors flex justify-between items-center group" href="#">
+                        What is the difference between Tier 2 and Tier 3 data?
+                        <span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">arrow_forward</span>
+</a>
+<a class="py-4 border-b border-outline-variant text-on-surface font-body text-body-md hover:text-primary transition-colors flex justify-between items-center group" href="#">
+                        How do I get access to the Enterprise AI assistant?
+                        <span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">arrow_forward</span>
+</a>
+<a class="py-4 border-b border-outline-variant text-on-surface font-body text-body-md hover:text-primary transition-colors flex justify-between items-center group" href="#">
+                        Are we allowed to use grammar checking tools like Grammarly?
+                        <span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">arrow_forward</span>
+</a>
+<a class="py-4 border-b border-outline-variant text-on-surface font-body text-body-md hover:text-primary transition-colors flex justify-between items-center group" href="#">
+                        Who is the data governance lead for my department?
+                        <span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">arrow_forward</span>
+</a>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer (JSON Injected) -->
+<footer class="bg-surface-container w-full px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-item-gap border-t border-outline-variant mt-auto">
+<div class="col-span-1 md:col-span-4 mb-item-gap">
+<span class="font-display text-headline-md text-on-surface block font-serif">Governance AI</span>
+</div>
+<div class="col-span-1 md:col-span-3 flex flex-wrap gap-8">
+<a class="font-label text-button text-on-surface-variant hover:text-primary transition-colors" href="#">Charter</a>
+<a class="font-label text-button text-on-surface-variant hover:text-primary transition-colors" href="#">Compliance</a>
+<a class="font-label text-button text-on-surface-variant hover:text-primary transition-colors" href="#">Methodology</a>
+<a class="font-label text-button text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="font-label text-button text-on-surface-variant hover:text-primary transition-colors" href="#">Support</a>
+<a class="font-label text-button text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<div class="col-span-1 md:col-span-4 mt-8">
+<p class="font-body text-body-sm text-on-surface-variant">© 2024 AI Governance Editorial. All rights reserved. Intellectual Rigor &amp; Transparency.</p>
+</div>
+</footer>
+</body></html>

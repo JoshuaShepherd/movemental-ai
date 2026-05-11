@@ -244,12 +244,12 @@ export async function BookContributorsPageContent() {
             </p>
           </RevealOnScroll>
           <RevealOnScroll delaySec={0.14} className="mt-10 border border-border bg-card p-6">
-            <p className="text-label font-medium uppercase tracking-eyebrow text-ink-soft">Coming soon</p>
+            <p className="text-label font-medium uppercase tracking-eyebrow text-ink-soft">In preparation</p>
             <ul className="mt-4 divide-y divide-border">
               {COMING_ITEMS.map((title) => (
                 <li key={title} className="flex items-center justify-between gap-4 py-3 text-sm">
                   <span className="font-medium text-foreground">{title}</span>
-                  <span className="shrink-0 text-xs text-ink-soft">Coming soon</span>
+                  <span className="shrink-0 text-xs text-ink-soft">In preparation</span>
                 </li>
               ))}
             </ul>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Organizational Policy - Movemental</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600;1,6..72,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#68645b",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#ece8d7",
+                        "primary-container": "#ebe1d7",
+                        "outline-variant": "#bcbaa9",
+                        "outline": "#838172",
+                        "primary-fixed": "#ebe1d7",
+                        "on-tertiary-container": "#605b59",
+                        "tertiary-container": "#faf2ef",
+                        "surface-container-highest": "#ece8d7",
+                        "inverse-primary": "#fff5ea",
+                        "surface-bright": "#fffbff",
+                        "tertiary": "#686362",
+                        "surface-dim": "#e6e3cf",
+                        "surface-tint": "#645d55",
+                        "on-tertiary-fixed": "#4d4947",
+                        "on-error-container": "#742410",
+                        "error-dim": "#5c1202",
+                        "primary-fixed-dim": "#dcd3c9",
+                        "on-surface-variant": "#666557",
+                        "surface-container-low": "#fdf9ef",
+                        "on-primary-fixed-variant": "#615b53",
+                        "secondary-container": "#e8e2d6",
+                        "primary-dim": "#58514a",
+                        "primary": "#645d55",
+                        "background": "#fffbff",
+                        "surface-container-high": "#f2eedf",
+                        "on-surface": "#39382c",
+                        "surface-container": "#f7f4e7",
+                        "secondary-fixed": "#e8e2d6",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#d9d4c8",
+                        "surface": "#fffbff",
+                        "on-primary": "#fff6ee",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-dim": "#5c5756",
+                        "error-container": "#fe8b70",
+                        "inverse-surface": "#0f0e0a",
+                        "on-primary-fixed": "#443e37",
+                        "on-primary-container": "#575149",
+                        "on-secondary-fixed": "#423f37",
+                        "on-tertiary-fixed-variant": "#6a6563",
+                        "secondary-dim": "#5b584f",
+                        "on-secondary-container": "#555249",
+                        "error": "#a54731",
+                        "on-background": "#39382c",
+                        "tertiary-fixed-dim": "#ece4e1",
+                        "inverse-on-surface": "#9f9d96",
+                        "tertiary-fixed": "#faf2ef",
+                        "on-secondary-fixed-variant": "#5f5b52",
+                        "midnight": "#0E1726",
+                        "amber-accent": "#D97706",
+                        "cream-bg": "#FAF8F4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "sm": "0px",
+                        "md": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "2xl": "0px",
+                        "3xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "display": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {}
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-cream-bg text-on-surface font-body antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-midnight text-on-primary font-display italic text-2xl tracking-tight fixed top-0 w-full z-50 flex justify-between items-center px-8 py-4 w-full h-16 border-b border-white/10">
+<div class="flex items-center">
+<span class="font-display italic text-2xl text-on-primary tracking-tight">Movemental</span>
+</div>
+<div class="flex items-center space-x-6 text-base font-body not-italic text-on-primary/80">
+<span class="text-sm tracking-wide">Northridge Community Center</span>
+<div class="w-8 h-8 bg-surface-tint text-on-primary flex items-center justify-center text-xs font-semibold tracking-wider">
+                LO
+            </div>
+</div>
+</header>
+<div class="flex flex-1 pt-16">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-full py-8 space-y-10 fixed left-0 top-16 w-64 border-r border-outline-variant/20 bg-midnight text-on-primary">
+<!-- GUIDEBOOK Section -->
+<div class="flex flex-col space-y-2">
+<span class="font-label uppercase tracking-[0.2em] text-[10px] text-on-primary/50 px-8 pb-2">Guidebook</span>
+<a class="text-on-primary/70 hover:text-on-primary transition-colors duration-200 px-8 py-2 text-sm flex items-center group" href="#">
+<span class="material-symbols-outlined mr-3 text-[18px] opacity-70 group-hover:opacity-100 transition-opacity">book</span>
+                    Principles
+                </a>
+<a class="text-amber-accent border-l-2 border-amber-accent pl-[30px] pr-8 py-2 text-sm flex items-center bg-white/5" href="#">
+<span class="material-symbols-outlined mr-3 text-[18px]">gavel</span>
+                    Policy
+                </a>
+<a class="text-on-primary/70 hover:text-on-primary transition-colors duration-200 px-8 py-2 text-sm flex items-center group" href="#">
+<span class="material-symbols-outlined mr-3 text-[18px] opacity-70 group-hover:opacity-100 transition-opacity">account_tree</span>
+                    Procedures
+                </a>
+</div>
+<!-- OPERATIONS Section -->
+<div class="flex flex-col space-y-2">
+<span class="font-label uppercase tracking-[0.2em] text-[10px] text-on-primary/50 px-8 pb-2">Operations</span>
+<a class="text-on-primary/70 hover:text-on-primary transition-colors duration-200 px-8 py-2 text-sm flex items-center group" href="#">
+<span class="material-symbols-outlined mr-3 text-[18px] opacity-70 group-hover:opacity-100 transition-opacity">group</span>
+                    Directory
+                </a>
+<a class="text-on-primary/70 hover:text-on-primary transition-colors duration-200 px-8 py-2 text-sm flex items-center group" href="#">
+<span class="material-symbols-outlined mr-3 text-[18px] opacity-70 group-hover:opacity-100 transition-opacity">inventory_2</span>
+                    Assets
+                </a>
+</div>
+<!-- SETTINGS Section -->
+<div class="flex flex-col space-y-2 mt-auto pb-12">
+<span class="font-label uppercase tracking-[0.2em] text-[10px] text-on-primary/50 px-8 pb-2">Settings</span>
+<a class="text-on-primary/70 hover:text-on-primary transition-colors duration-200 px-8 py-2 text-sm flex items-center group" href="#">
+<span class="material-symbols-outlined mr-3 text-[18px] opacity-70 group-hover:opacity-100 transition-opacity">settings</span>
+                    Organization
+                </a>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 ml-0 md:ml-64 relative bg-cream-bg">
+<div class="max-w-[760px] mx-auto px-8 py-24 min-h-screen">
+<!-- Breadcrumb -->
+<nav class="font-label uppercase tracking-widest text-[10px] text-outline mb-16 flex items-center space-x-2">
+<a class="hover:text-primary transition-colors" href="#">AI Organizational Guidebook</a>
+<span>/</span>
+<a class="hover:text-primary transition-colors" href="#">Layer 02</a>
+<span>/</span>
+<span class="text-primary">AI Organizational Policy</span>
+</nav>
+<!-- Header -->
+<header class="mb-16">
+<span class="font-label uppercase tracking-widest text-[11px] font-bold text-amber-accent block mb-4">LAYER 02</span>
+<h1 class="font-headline italic text-[42px] leading-tight text-on-surface mb-6 tracking-tight">AI Organizational Policy</h1>
+<p class="font-headline italic text-[18px] text-on-surface-variant leading-relaxed max-w-2xl">
+                        What we will do, and what we refuse to do, operationally
+                    </p>
+<div class="mt-8 font-label uppercase tracking-widest text-[10px] text-outline flex flex-wrap gap-4 items-center">
+<span>Ratified May 21, 2026</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>Last revised May 18, 2026</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>Annual review due May 2027</span>
+</div>
+</header>
+<hr class="border-t border-outline-variant/30 mb-16"/>
+<!-- Editorial Body -->
+<div class="prose prose-lg max-w-none text-on-surface mb-24 space-y-8 font-body text-[16px] leading-[28px]">
+<p>
+                        This policy establishes the boundaries of artificial intelligence deployment within the Northridge Community Center ecosystem. It is designed to preserve human agency, dignity, and direct relational care while leveraging computational systems for structural and administrative support. The integration of AI is not viewed as an inevitable progression to be accepted passively, but as a specific capability to be governed tightly.
+                    </p>
+<p>
+                        We operate from the theological and ethical premise that computational systems lack moral agency, spiritual discernment, and the capacity for true empathy. Therefore, any task requiring pastoral care, final judgment on human standing, or the representation of a human's sincere voice must remain exclusively within the human domain. AI serves as a tool for amplification of human intent, not a substitute for human presence.
+                    </p>
+<p>
+                        The following directives are binding upon all staff, volunteers, and contracted partners operating within our technical infrastructure. Violations of these operational boundaries are considered breaches of community trust and will be addressed through the standard governance accountability processes outlined in Layer 01 of the Guidebook.
+                    </p>
+</div>
+<!-- Named Refusals Section -->
+<section class="mb-24" id="named-refusals">
+<div class="mb-12">
+<span class="font-label uppercase tracking-widest text-[11px] font-bold text-amber-accent block mb-3">CORE BOUNDARIES</span>
+<h2 class="font-headline italic text-[30px] leading-tight text-on-surface mb-4">Named Refusals</h2>
+<p class="font-headline italic text-[16px] text-on-surface-variant">
+                            Specific applications of AI technology that are explicitly prohibited within our operational context.
+                        </p>
+</div>
+<div class="space-y-12">
+<!-- Refusal 01 -->
+<div class="relative pl-12 border-b border-outline-variant/30 pb-12">
+<span class="absolute left-0 top-1 font-headline italic text-amber-accent text-[22px]">01</span>
+<h3 class="font-headline text-[22px] text-on-surface mb-4">Eligibility determinations</h3>
+<p class="font-body text-[16px] leading-[28px] text-on-surface/80">
+                                AI systems shall not be used to autonomously determine an individual's eligibility for community resources, pastoral care, financial assistance, or leadership roles. Algorithmic sorting or scoring of community members based on engagement metrics or demographic data to restrict access is strictly forbidden.
+                            </p>
+</div>
+<!-- Refusal 02 -->
+<div class="relative pl-12 border-b border-outline-variant/30 pb-12">
+<span class="absolute left-0 top-1 font-headline italic text-amber-accent text-[22px]">02</span>
+<h3 class="font-headline text-[22px] text-on-surface mb-4">Behavioral surveillance</h3>
+<p class="font-body text-[16px] leading-[28px] text-on-surface/80">
+                                We refuse the deployment of AI-driven facial recognition, sentiment analysis, or predictive behavioral modeling on our campuses or within our digital platforms. The gathering of community members must be characterized by trust and freedom, not automated scrutiny or the creation of behavioral dossiers.
+                            </p>
+</div>
+<!-- Refusal 03 -->
+<div class="relative pl-12 border-b border-outline-variant/30 pb-12">
+<span class="absolute left-0 top-1 font-headline italic text-amber-accent text-[22px]">03</span>
+<h3 class="font-headline text-[22px] text-on-surface mb-4">Personal voice</h3>
+<p class="font-body text-[16px] leading-[28px] text-on-surface/80">
+                                AI shall not be used to generate personal communications—including pastoral emails, counseling responses, or direct relational messaging—under the guise of a specific human author. All AI-assisted communications must be clearly demarcated as institutional or administrative, never masquerading as personal human interaction.
+                            </p>
+</div>
+<!-- Refusal 04 -->
+<div class="relative pl-12 border-b border-outline-variant/30 pb-12">
+<span class="absolute left-0 top-1 font-headline italic text-amber-accent text-[22px]">04</span>
+<h3 class="font-headline text-[22px] text-on-surface mb-4">AI substitution in care</h3>
+<p class="font-body text-[16px] leading-[28px] text-on-surface/80">
+                                The deployment of "AI chaplains," automated counseling chatbots, or synthetic companions for congregant care is prohibited. Spiritual guidance, crisis intervention, and emotional support remain the sacred obligation of human caregivers within the community.
+                            </p>
+</div>
+<!-- Refusal 05 -->
+<div class="relative pl-12 border-b border-outline-variant/30 pb-12">
+<span class="absolute left-0 top-1 font-headline italic text-amber-accent text-[22px]">05</span>
+<h3 class="font-headline text-[22px] text-on-surface mb-4">Deepfakes</h3>
+<p class="font-body text-[16px] leading-[28px] text-on-surface/80">
+                                The creation, distribution, or utilization of synthetic media designed to mimic the exact likeness or voice of a real individual (deepfakes) is banned across all community communications, educational materials, and creative expressions, regardless of the intended context or consent.
+                            </p>
+</div>
+</div>
+</section>
+<!-- Section Footer -->
+<div class="mt-24 pt-12 border-t border-outline-variant/30">
+<span class="font-label uppercase tracking-widest text-[11px] font-bold text-outline block mb-6">EXPORT &amp; SHARE</span>
+<div class="flex flex-col sm:flex-row gap-6 font-body text-sm text-primary">
+<button class="flex items-center hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined mr-2 text-[18px]">picture_as_pdf</span>
+                            Export as PDF
+                        </button>
+<button class="flex items-center hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined mr-2 text-[18px]">content_copy</span>
+                            Copy public version
+                        </button>
+<button class="flex items-center hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined mr-2 text-[18px]">link</span>
+                            Share link
+                        </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Right Floating Panel (Table of Contents) -->
+<aside class="hidden xl:block w-[240px] fixed right-12 top-32">
+<div class="bg-surface-container-low p-6 border-l-2 border-surface-tint/20">
+<span class="font-label uppercase tracking-widest text-[10px] text-outline block mb-6">ON THIS PAGE</span>
+<nav class="flex flex-col space-y-4 font-body text-[13px] text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Sanctioned use</a>
+<a class="hover:text-primary transition-colors" href="#">Constrained use</a>
+<a class="hover:text-primary transition-colors" href="#">Prohibited use</a>
+<a class="text-amber-accent font-medium flex items-center" href="#named-refusals">
+<span class="w-1 h-1 bg-amber-accent rounded-full mr-2"></span>
+                        Named Refusals
+                    </a>
+<a class="hover:text-primary transition-colors mt-4 pt-4 border-t border-outline-variant/20" href="#">Export &amp; share</a>
+</nav>
+</div>
+</aside>
+</div>
+</body></html>

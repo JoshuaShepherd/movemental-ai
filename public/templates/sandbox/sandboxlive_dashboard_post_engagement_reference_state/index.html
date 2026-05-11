@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Movemental - Reference State</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "inverse-on-surface": "#9f9d96",
+                  "tertiary-container": "#faf2ef",
+                  "tertiary": "#686362",
+                  "surface-container-lowest": "#ffffff",
+                  "error-container": "#fe8b70",
+                  "background": "#fffbff",
+                  "secondary-fixed-dim": "#d9d4c8",
+                  "on-secondary-fixed-variant": "#5f5b52",
+                  "on-secondary": "#ffffff",
+                  "on-tertiary-container": "#605b59",
+                  "on-primary-fixed-variant": "#615b53",
+                  "secondary-fixed": "#e8e2d6",
+                  "secondary": "#68645b",
+                  "error-dim": "#5c1202",
+                  "primary-fixed": "#ebe1d7",
+                  "primary": "#645d55",
+                  "tertiary-fixed": "#faf2ef",
+                  "surface-container-low": "#fdf9ef",
+                  "surface-bright": "#fffbff",
+                  "surface-dim": "#e6e3cf",
+                  "primary-container": "#ebe1d7",
+                  "on-primary-fixed": "#443e37",
+                  "secondary-container": "#e8e2d6",
+                  "tertiary-dim": "#5c5756",
+                  "on-tertiary-fixed-variant": "#6a6563",
+                  "surface": "#fffbff",
+                  "on-primary": "#fff6ee",
+                  "surface-variant": "#ece8d7",
+                  "on-background": "#39382c",
+                  "tertiary-fixed-dim": "#ece4e1",
+                  "error": "#a54731",
+                  "secondary-dim": "#5b584f",
+                  "on-error": "#ffffff",
+                  "on-surface": "#39382c",
+                  "on-error-container": "#742410",
+                  "primary-fixed-dim": "#dcd3c9",
+                  "outline-variant": "#bcbaa9",
+                  "on-secondary-container": "#555249",
+                  "on-primary-container": "#575149",
+                  "surface-container-highest": "#ece8d7",
+                  "primary-dim": "#58514a",
+                  "on-tertiary-fixed": "#4d4947",
+                  "on-surface-variant": "#666557",
+                  "surface-tint": "#645d55",
+                  "on-secondary-fixed": "#423f37",
+                  "surface-container-high": "#f2eedf",
+                  "surface-container": "#f7f4e7",
+                  "on-tertiary": "#ffffff",
+                  "outline": "#838172",
+                  "inverse-primary": "#fff5ea",
+                  "inverse-surface": "#0f0e0a"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0px",
+                  "lg": "0px",
+                  "xl": "0px",
+                  "full": "0px"
+          },
+          "spacing": {},
+          "fontFamily": {
+                  "headline": [
+                          "Instrument Serif", "serif"
+                  ],
+                  "display": [
+                          "Instrument Serif", "serif"
+                  ],
+                  "body": [
+                          "Inter", "sans-serif"
+                  ],
+                  "label": [
+                          "Inter", "sans-serif"
+                  ]
+          },
+          "fontSize": {}
+  },
+      },
+    }
+  </script>
+<style>
+    body { font-family: 'Inter', sans-serif; background-color: #faf6ee; color: #39382c; }
+    h1, h2, h3, .font-headline { font-family: 'Instrument Serif', serif; }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface/80 backdrop-blur-xl dark:bg-surface-dim/80 docked full-width top-0 rounded-none flat no-shadows flex justify-between items-center w-full px-8 py-4 border-b border-outline-variant/20 sticky z-50">
+<div class="flex items-center gap-4">
+<span class="font-headline italic text-2xl text-on-surface dark:text-on-surface-variant">Movemental</span>
+</div>
+<div class="hidden md:flex gap-8">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Strategy</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Phases</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Archive</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-sm font-medium">Northridge Community Center</span>
+<span class="w-[1px] h-4 bg-outline-variant/40"></span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-[#2E7D32]">SANDBOX COMPLETE</span>
+<span class="w-[1px] h-4 bg-outline-variant/40"></span>
+<div class="w-8 h-8 bg-surface-container-highest flex items-center justify-center text-sm font-bold text-on-surface">LO</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors duration-200">settings</button>
+</div>
+</header>
+<div class="flex flex-1">
+<!-- SideNavBar -->
+<nav class="bg-inverse-surface dark:bg-black docked left-0 h-full w-72 rounded-none flat no-shadows flex flex-col h-full border-r border-outline-variant/10 hidden md:flex shrink-0">
+<div class="p-8 pb-4">
+<h2 class="font-headline italic text-xl text-surface">Movemental</h2>
+<p class="font-label uppercase tracking-[0.05em] text-xs text-surface-variant opacity-70 mt-1">Strategic Archive</p>
+</div>
+<div class="flex-1 overflow-y-auto py-4">
+<a class="text-surface-variant px-6 py-4 opacity-70 hover:bg-surface-container-low hover:text-on-surface transition-all duration-200 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">insights</span>
+<span class="font-label uppercase tracking-[0.05em] text-xs">Strategic Guidance</span>
+</a>
+<a class="text-surface-variant px-6 py-4 opacity-70 hover:bg-surface-container-low hover:text-on-surface transition-all duration-200 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+<span class="font-label uppercase tracking-[0.05em] text-xs">Phase Progress</span>
+</a>
+<a class="bg-surface-container-highest text-on-surface-variant border-l-4 border-primary px-6 py-4 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+<span class="font-label uppercase tracking-[0.05em] text-xs">Permanent Archive</span>
+</a>
+<a class="text-surface-variant px-6 py-4 opacity-70 hover:bg-surface-container-low hover:text-on-surface transition-all duration-200 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label uppercase tracking-[0.05em] text-xs">Peer Network</span>
+</a>
+<a class="text-surface-variant px-6 py-4 opacity-70 hover:bg-surface-container-low hover:text-on-surface transition-all duration-200 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="font-label uppercase tracking-[0.05em] text-xs">Executive Briefs</span>
+</a>
+</div>
+<div class="p-6 border-t border-outline-variant/10">
+<button class="w-full bg-primary text-on-primary py-3 px-4 font-label uppercase tracking-widest text-xs hover:bg-primary-dim transition-colors duration-200">New Initiative</button>
+</div>
+<div class="pb-6">
+<a class="text-surface-variant px-6 py-3 opacity-70 hover:text-surface transition-all duration-200 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-sm">verified</span>
+<span class="font-label uppercase tracking-[0.05em] text-[10px]">System Status</span>
+</a>
+<a class="text-surface-variant px-6 py-3 opacity-70 hover:text-surface transition-all duration-200 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-sm">support_agent</span>
+<span class="font-label uppercase tracking-[0.05em] text-[10px]">Help Desk</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 max-w-6xl mx-auto w-full px-8 py-16 md:px-16 lg:px-24">
+<header class="mb-16">
+<div class="flex items-center gap-3 mb-4">
+<span class="font-label uppercase tracking-widest text-xs text-[#D84315] font-bold">SANDBOXLIVE DASHBOARD</span>
+<span class="w-1 h-1 bg-outline-variant/50 rounded-none"></span>
+<span class="font-body text-sm text-on-surface-variant">Reference state · Engagement completed July 8</span>
+</div>
+<h1 class="font-headline italic text-5xl md:text-6xl text-on-surface mb-6 tracking-tight">Your Sandbox is complete.</h1>
+<p class="font-body text-lg text-on-surface-variant leading-relaxed max-w-3xl">
+          The Future Plan was formally ratified on July 8, 2026. This dashboard now serves as your permanent reference archive, maintaining access to all trials, reflections, and strategic materials generated during the engagement.
+        </p>
+</header>
+<!-- Outcome Strip -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-outline-variant/20 mb-24 border-b border-outline-variant/20">
+<div class="bg-surface p-8 flex flex-col justify-between h-48">
+<span class="font-label uppercase tracking-widest text-[10px] text-[#D84315] font-bold">USE CASES IN ACTIVE USE</span>
+<div>
+<div class="font-headline italic text-4xl text-on-surface mb-2">3</div>
+<p class="font-body text-xs text-on-surface-variant leading-snug">From the four Greens. The fourth is queued for Q4.</p>
+</div>
+</div>
+<div class="bg-surface p-8 flex flex-col justify-between h-48">
+<span class="font-label uppercase tracking-widest text-[10px] text-[#D84315] font-bold">DAYS SINCE RATIFICATION</span>
+<div>
+<div class="font-headline italic text-4xl text-on-surface mb-2">92</div>
+<p class="font-body text-xs text-on-surface-variant leading-snug">Next quarterly review October 12.</p>
+</div>
+</div>
+<div class="bg-surface p-8 flex flex-col justify-between h-48">
+<span class="font-label uppercase tracking-widest text-[10px] text-[#D84315] font-bold">TIME SAVED THIS QUARTER</span>
+<div>
+<div class="font-headline italic text-4xl text-on-surface mb-2">~340 hrs</div>
+<p class="font-body text-xs text-on-surface-variant leading-snug">Across the three deployed use cases.</p>
+</div>
+</div>
+<div class="bg-surface p-8 flex flex-col justify-between h-48">
+<span class="font-label uppercase tracking-widest text-[10px] text-[#D84315] font-bold">NAMED REFUSALS ADDED</span>
+<div>
+<div class="font-headline italic text-4xl text-on-surface mb-2">1</div>
+<p class="font-body text-xs text-on-surface-variant leading-snug">From the Sandbox's Red Light verdict.</p>
+</div>
+</div>
+</section>
+<!-- Two Column Grid -->
+<div class="flex flex-col lg:flex-row gap-16 lg:gap-24 mb-24">
+<!-- Left Column -->
+<div class="lg:w-2/3">
+<h2 class="font-headline italic text-3xl text-on-surface mb-8">The complete record, accessible permanently.</h2>
+<div class="flex flex-col gap-0 border-t border-outline-variant/20">
+<!-- Ledger Row 1 -->
+<div class="py-6 border-b border-outline-variant/20 flex flex-col md:flex-row md:items-start justify-between gap-4 group hover:bg-surface-container-lowest transition-colors duration-200">
+<div class="flex-1">
+<h3 class="font-label uppercase tracking-widest text-xs text-on-surface font-bold mb-2">FUTURE PLAN</h3>
+<p class="font-body text-sm text-on-surface mb-1">Your Future Plan — Ratified July 8, 2026</p>
+<p class="font-body text-xs text-on-surface-variant">Signed by Linda Ozawa and the Northridge Board...</p>
+</div>
+<a class="font-label text-xs text-primary hover:text-on-surface transition-colors duration-200 flex items-center gap-1 shrink-0 mt-2 md:mt-0" href="#">
+                Open the Future Plan <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- Ledger Row 2 -->
+<div class="py-6 border-b border-outline-variant/20 flex flex-col md:flex-row md:items-start justify-between gap-4 group hover:bg-surface-container-lowest transition-colors duration-200">
+<div class="flex-1">
+<h3 class="font-label uppercase tracking-widest text-xs text-on-surface font-bold mb-2">VERDICT PORTFOLIO</h3>
+<p class="font-body text-sm text-on-surface mb-1">Twelve use cases adjudicated</p>
+<p class="font-body text-xs text-on-surface-variant">Four Green, two Yellow, one Red...</p>
+</div>
+<a class="font-label text-xs text-primary hover:text-on-surface transition-colors duration-200 flex items-center gap-1 shrink-0 mt-2 md:mt-0" href="#">
+                View verdict portfolio <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- Ledger Row 3 -->
+<div class="py-6 border-b border-outline-variant/20 flex flex-col md:flex-row md:items-start justify-between gap-4 group hover:bg-surface-container-lowest transition-colors duration-200">
+<div class="flex-1">
+<h3 class="font-label uppercase tracking-widest text-xs text-on-surface font-bold mb-2">RECIPE TRIAL ARCHIVE</h3>
+<p class="font-body text-sm text-on-surface mb-1">Twenty-three recipes tried, sixty-eight trial runs</p>
+</div>
+<a class="font-label text-xs text-primary hover:text-on-surface transition-colors duration-200 flex items-center gap-1 shrink-0 mt-2 md:mt-0" href="#">
+                Browse trial archive <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- Ledger Row 4 -->
+<div class="py-6 border-b border-outline-variant/20 flex flex-col md:flex-row md:items-start justify-between gap-4 group hover:bg-surface-container-lowest transition-colors duration-200">
+<div class="flex-1">
+<h3 class="font-label uppercase tracking-widest text-xs text-on-surface font-bold mb-2">REFLECTION ARCHIVE</h3>
+<p class="font-body text-sm text-on-surface mb-1">Cohort reflections from all eight phases</p>
+</div>
+<a class="font-label text-xs text-primary hover:text-on-surface transition-colors duration-200 flex items-center gap-1 shrink-0 mt-2 md:mt-0" href="#">
+                Read the reflections <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- Ledger Row 5 -->
+<div class="py-6 border-b border-outline-variant/20 flex flex-col md:flex-row md:items-start justify-between gap-4 group hover:bg-surface-container-lowest transition-colors duration-200">
+<div class="flex-1">
+<h3 class="font-label uppercase tracking-widest text-xs text-on-surface font-bold mb-2">LMS COURSE MATERIALS</h3>
+<p class="font-body text-sm text-on-surface mb-1">Eleven modules, permanently accessible</p>
+</div>
+<a class="font-label text-xs text-primary hover:text-on-surface transition-colors duration-200 flex items-center gap-1 shrink-0 mt-2 md:mt-0" href="#">
+                Open the LMS <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Right Column -->
+<div class="lg:w-1/3">
+<div class="bg-surface-container-high p-8 border-l border-primary/20 h-full">
+<h3 class="font-headline italic text-2xl text-on-surface mb-4">The path continues.</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8">
+              With the initial engagement complete, the focus shifts to broad organizational capability. Consider moving to the Skills stage to scale these practices across all teams.
+            </p>
+<div class="flex flex-col gap-4 mb-8">
+<a class="font-label text-sm text-on-surface hover:text-primary transition-colors duration-200 flex items-center justify-between border-b border-outline-variant/30 pb-2" href="#">
+                Schedule a Skills conversation <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<a class="font-label text-sm text-on-surface hover:text-primary transition-colors duration-200 flex items-center justify-between border-b border-outline-variant/30 pb-2" href="#">
+                Start a second Sandbox cycle <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<p class="font-body text-xs text-outline italic">
+              Note: You retain full access to run independent Sandbox cycles utilizing the provided LMS materials and framework documentation.
+            </p>
+</div>
+</div>
+</div>
+<!-- Callout Bands -->
+<div class="flex flex-col gap-1">
+<div class="bg-surface-container h-[90px] px-8 flex items-center justify-between border-l-2 border-[#D84315]/50">
+<p class="font-body text-sm text-on-surface">Two Yellow Light use cases are scheduled for re-evaluation October 18.</p>
+<a class="font-label text-xs uppercase tracking-widest text-primary hover:text-on-surface transition-colors duration-200 flex items-center gap-2" href="#">
+            Open review queue <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<div class="bg-surface-container h-[90px] px-8 flex items-center justify-between border-l-2 border-primary/50">
+<div class="flex flex-col justify-center">
+<span class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant font-bold mb-1">Help another organization start.</span>
+<p class="font-body text-sm text-on-surface">Publish an anonymized case study of your engagement.</p>
+</div>
+<a class="font-label text-xs uppercase tracking-widest text-primary hover:text-on-surface transition-colors duration-200 flex items-center gap-2" href="#">
+            Discuss case study with Josh <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-inverse-surface dark:bg-black full-width rounded-none flat no-shadows w-full py-12 px-12 flex justify-between items-center mt-auto">
+<div class="font-headline italic text-lg text-surface">Movemental</div>
+<div class="flex gap-8">
+<a class="text-surface-variant text-[10px] tracking-widest uppercase font-label hover:text-surface transition-opacity duration-200 opacity-80 hover:opacity-100" href="#">Manifesto</a>
+<a class="text-surface-variant text-[10px] tracking-widest uppercase font-label hover:text-surface transition-opacity duration-200 opacity-80 hover:opacity-100" href="#">Terms of Record</a>
+<a class="text-surface-variant text-[10px] tracking-widest uppercase font-label hover:text-surface transition-opacity duration-200 opacity-80 hover:opacity-100" href="#">Privacy Protocol</a>
+</div>
+<div class="text-on-primary font-label text-[10px] tracking-widest uppercase">© 2024 MOVEMENTAL STRATEGIC ARCHIVE. ALL RIGHTS RESERVED.</div>
+</footer>
+</body></html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aggregation View - Movemental</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed": "#4d4947",
+                      "surface-container-highest": "#ece8d7",
+                      "secondary": "#68645b",
+                      "surface-dim": "#e6e3cf",
+                      "tertiary": "#686362",
+                      "secondary-dim": "#5b584f",
+                      "secondary-container": "#e8e2d6",
+                      "on-tertiary-container": "#605b59",
+                      "surface-container-high": "#f2eedf",
+                      "primary": "#645d55",
+                      "on-primary": "#fff6ee",
+                      "error": "#a54731",
+                      "surface-tint": "#645d55",
+                      "inverse-surface": "#0f0e0a",
+                      "on-secondary-container": "#555249",
+                      "error-container": "#fe8b70",
+                      "primary-dim": "#58514a",
+                      "error-dim": "#5c1202",
+                      "background": "#fffbff",
+                      "on-primary-fixed": "#443e37",
+                      "primary-fixed": "#ebe1d7",
+                      "surface-container-low": "#fdf9ef",
+                      "on-primary-fixed-variant": "#615b53",
+                      "inverse-on-surface": "#9f9d96",
+                      "surface-bright": "#fffbff",
+                      "tertiary-container": "#faf2ef",
+                      "primary-container": "#ebe1d7",
+                      "on-secondary-fixed": "#423f37",
+                      "tertiary-fixed-dim": "#ece4e1",
+                      "tertiary-dim": "#5c5756",
+                      "on-error-container": "#742410",
+                      "on-surface": "#39382c",
+                      "secondary-fixed-dim": "#d9d4c8",
+                      "on-error": "#ffffff",
+                      "inverse-primary": "#fff5ea",
+                      "tertiary-fixed": "#faf2ef",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed-dim": "#dcd3c9",
+                      "outline": "#838172",
+                      "outline-variant": "#bcbaa9",
+                      "on-secondary-fixed-variant": "#5f5b52",
+                      "surface-variant": "#ece8d7",
+                      "surface": "#fffbff",
+                      "secondary-fixed": "#e8e2d6",
+                      "on-surface-variant": "#666557",
+                      "on-tertiary-fixed-variant": "#6a6563",
+                      "on-background": "#39382c",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-container": "#575149",
+                      "surface-container": "#f7f4e7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "0px"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": [
+                              "Newsreader"
+                      ],
+                      "display": [
+                              "Newsreader"
+                      ],
+                      "body": [
+                              "Inter"
+                      ],
+                      "label": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {}
+      },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased selection:bg-primary-container selection:text-on-primary-container flex min-h-screen">
+<!-- SideNavBar -->
+<nav class="hidden md:flex fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 rounded-none border-r border-outline-variant/20 bg-surface-container flex flex-col py-6 gap-2 z-40">
+<div class="px-8 pb-8 pt-4">
+<h2 class="font-headline text-lg font-bold tracking-tight text-primary">ENGAGEMENT</h2>
+<p class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant mt-1">PHASE 02: ANALYSIS</p>
+<button class="mt-6 w-full bg-primary text-on-primary font-label text-xs uppercase tracking-widest py-3 hover:bg-primary-dim transition-colors duration-200">
+                NEW ARTIFACT
+            </button>
+</div>
+<div class="flex-1 flex flex-col gap-1 overflow-y-auto">
+<a class="text-on-surface-variant hover:bg-surface-container-low pl-4 py-3 flex items-center gap-3 font-body text-sm transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+<span>Safety</span>
+</a>
+<a class="bg-surface-container-highest text-primary border-l-2 border-primary pl-4 py-3 flex items-center gap-3 font-body text-sm transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">science</span>
+<span class="font-bold">Sandbox</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low pl-4 py-3 flex items-center gap-3 font-body text-sm transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+<span>Skills</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low pl-4 py-3 flex items-center gap-3 font-body text-sm transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">lightbulb</span>
+<span>Solutions</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low pl-4 py-3 flex items-center gap-3 font-body text-sm transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">menu_book</span>
+<span>Guidebook</span>
+</a>
+</div>
+<div class="mt-auto border-t border-outline-variant/20 pt-4 flex flex-col gap-1">
+<a class="text-on-surface-variant hover:bg-surface-container-low pl-4 py-3 flex items-center gap-3 font-body text-sm transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span>Settings</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low pl-4 py-3 flex items-center gap-3 font-body text-sm transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span>Support</span>
+</a>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 border-b border-outline-variant/20 bg-surface/80 backdrop-blur-xl flex justify-between items-center h-16 px-8 max-w-full">
+<div class="flex items-center gap-8">
+<div class="font-headline text-2xl font-bold tracking-tighter text-primary dark:text-on-primary-fixed">MOVEMENTAL</div>
+<nav class="hidden md:flex gap-8 h-full items-center pt-2">
+<a class="text-on-surface-variant font-medium font-label uppercase tracking-widest text-[11px] hover:text-primary transition-colors duration-200" href="#">STRATEGY</a>
+<a class="text-on-surface-variant font-medium font-label uppercase tracking-widest text-[11px] hover:text-primary transition-colors duration-200" href="#">ASSETS</a>
+<a class="text-on-surface-variant font-medium font-label uppercase tracking-widest text-[11px] hover:text-primary transition-colors duration-200" href="#">ARCHIVE</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="bg-transparent border-b border-outline-variant focus:border-primary w-48 pl-6 py-1 text-sm text-on-surface focus:outline-none transition-colors duration-200" placeholder="Search..." type="text"/>
+</div>
+<button class="text-primary font-label text-[11px] uppercase tracking-widest font-bold hover:text-primary-dim transition-colors duration-200">
+                SPONSOR VIEW
+            </button>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<button class="hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 pt-24 pb-32 px-8 lg:px-16 max-w-6xl mx-auto w-full">
+<!-- Header Section -->
+<header class="mb-16 max-w-3xl">
+<div class="font-label uppercase tracking-[0.1em] text-[10px] text-tertiary mb-6">
+                PHASE 08 — FUTURE PLAN · AGGREGATION
+            </div>
+<h1 class="font-headline italic text-4xl lg:text-5xl font-medium tracking-tight text-on-surface mb-6 leading-tight">
+                Everything your Sandbox produced.
+            </h1>
+<p class="font-headline italic text-xl text-on-surface-variant leading-relaxed">
+                Pre-aggregated from the prior seven phases. Ready for you to shape into your Future Plan.
+            </p>
+</header>
+<!-- Outputs Summary Grid -->
+<section class="mb-24">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-surface-container-high border border-outline-variant/20 p-6 flex flex-col gap-2">
+<span class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant">Verdict Portfolio</span>
+<span class="font-headline text-3xl text-on-surface">12</span>
+<span class="font-body text-xs text-on-surface-variant">adjudicated</span>
+</div>
+<div class="bg-surface-container-high border border-outline-variant/20 p-6 flex flex-col gap-2">
+<span class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant">Value Records</span>
+<span class="font-headline text-3xl text-on-surface">68</span>
+<span class="font-body text-xs text-on-surface-variant">recorded</span>
+</div>
+<div class="bg-surface-container-high border border-outline-variant/20 p-6 flex flex-col gap-2">
+<span class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant">Reflection Themes</span>
+<span class="font-headline text-3xl text-on-surface">7</span>
+<span class="font-body text-xs text-on-surface-variant">themes</span>
+</div>
+<div class="bg-surface-container-high border border-outline-variant/20 p-6 flex flex-col gap-2">
+<span class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant">Ethics Review Responses</span>
+<span class="font-headline text-3xl text-on-surface">23</span>
+<span class="font-body text-xs text-on-surface-variant">comments</span>
+</div>
+</div>
+</section>
+<!-- Pre-drafted Structure Section -->
+<section class="mb-24">
+<h2 class="font-headline italic text-2xl tracking-tight text-on-surface mb-8">
+                Your Future Plan, in six sections, pre-drafted.
+            </h2>
+<div class="flex flex-col gap-4">
+<!-- Row 1 -->
+<div class="bg-surface border-b border-outline-variant/20 p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex flex-col gap-1">
+<h3 class="font-headline text-xl text-on-surface">Summary</h3>
+<p class="font-body text-sm text-on-surface-variant">High-level synthesis of findings and strategic direction.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-[#2E5A44]"></span>
+<span class="font-label uppercase tracking-widest text-[10px] text-[#2E5A44]">Pre-drafted — your editing pending</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="bg-surface border-b border-outline-variant/20 p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex flex-col gap-1">
+<h3 class="font-headline text-xl text-on-surface">What we learned</h3>
+<p class="font-body text-sm text-on-surface-variant">Core insights drawn from Sandbox experiments and data analysis.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-[#2E5A44]"></span>
+<span class="font-label uppercase tracking-widest text-[10px] text-[#2E5A44]">Pre-drafted — your editing pending</span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="bg-surface border-b border-outline-variant/20 p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex flex-col gap-1">
+<h3 class="font-headline text-xl text-on-surface">What we commit to</h3>
+<p class="font-body text-sm text-on-surface-variant">Firm strategic commitments formulated during Phase 06.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-[#2E5A44]"></span>
+<span class="font-label uppercase tracking-widest text-[10px] text-[#2E5A44]">Pre-drafted — your editing pending</span>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="bg-surface border-b border-outline-variant/20 p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex flex-col gap-1">
+<h3 class="font-headline text-xl text-on-surface">What we refuse</h3>
+<p class="font-body text-sm text-on-surface-variant">Explicit boundaries and anti-goals derived from ethics reviews.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-tertiary"></span>
+<span class="font-label uppercase tracking-widest text-[10px] text-tertiary">Empty — your drafting required</span>
+</div>
+</div>
+<!-- Row 5 -->
+<div class="bg-surface border-b border-outline-variant/20 p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex flex-col gap-1">
+<h3 class="font-headline text-xl text-on-surface">Governance updates</h3>
+<p class="font-body text-sm text-on-surface-variant">Proposed changes to policy and oversight structures.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-tertiary"></span>
+<span class="font-label uppercase tracking-widest text-[10px] text-tertiary">Empty — your drafting required</span>
+</div>
+</div>
+<!-- Row 6 -->
+<div class="bg-surface border-b border-outline-variant/20 p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex flex-col gap-1">
+<h3 class="font-headline text-xl text-on-surface">Case for next steps</h3>
+<p class="font-body text-sm text-on-surface-variant">Resource allocation and timeline justification for Phase 09.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-[#2E5A44]"></span>
+<span class="font-label uppercase tracking-widest text-[10px] text-[#2E5A44]">Pre-drafted — your editing pending</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Action Band -->
+<section class="mt-32 pt-8 border-t border-outline-variant/20 flex flex-col sm:flex-row sm:items-center justify-between gap-6 bg-surface-container-low p-8">
+<div class="font-body text-sm text-on-surface-variant max-w-lg">
+                Review the pre-drafted sections carefully. You must complete the empty sections before this Future Plan can be submitted for final adjudication in Phase 09.
+            </div>
+<button class="bg-tertiary text-on-tertiary font-label text-xs uppercase tracking-widest py-4 px-8 hover:bg-tertiary-dim transition-colors duration-200 whitespace-nowrap">
+                Open the editor
+            </button>
+</section>
+</main>
+</body></html>

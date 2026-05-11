@@ -351,7 +351,7 @@ export async function BookConceptModernPageContent({ searchParams }: BookConcept
                             ) : (
                               <div
                                 className={cn(rowClass, "cursor-default opacity-60")}
-                                aria-label={`${c.title} — coming soon`}
+                                aria-label={`${c.title} — not yet available to read`}
                               >
                                 <span className="text-[0.78rem] font-medium uppercase tabular-nums tracking-eyebrow text-ink-soft">
                                   {compactLabel}
@@ -360,7 +360,7 @@ export async function BookConceptModernPageContent({ searchParams }: BookConcept
                                   {c.title}
                                 </span>
                                 <span className="shrink-0 text-[0.78rem] font-medium uppercase tabular-nums tracking-eyebrow whitespace-nowrap text-ink-soft">
-                                  Coming soon
+                                  Not yet live
                                 </span>
                               </div>
                             )}

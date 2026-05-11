@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Layer Detail - Draft State</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "primary-dim": "#58514a",
+                "on-secondary-fixed": "#423f37",
+                "on-secondary-container": "#555249",
+                "inverse-on-surface": "#9f9d96",
+                "on-error-container": "#742410",
+                "surface-container-low": "#fdf9ef",
+                "outline-variant": "#bcbaa9",
+                "on-primary-fixed-variant": "#615b53",
+                "tertiary-dim": "#5c5756",
+                "on-primary": "#fff6ee",
+                "on-primary-container": "#575149",
+                "secondary-dim": "#5b584f",
+                "primary-fixed-dim": "#dcd3c9",
+                "surface-bright": "#fffbff",
+                "secondary-container": "#e8e2d6",
+                "on-surface-variant": "#666557",
+                "primary": "#645d55",
+                "outline": "#838172",
+                "tertiary-fixed": "#faf2ef",
+                "error": "#a54731",
+                "tertiary-container": "#faf2ef",
+                "surface-container-high": "#f2eedf",
+                "secondary-fixed-dim": "#d9d4c8",
+                "on-surface": "#39382c",
+                "primary-fixed": "#ebe1d7",
+                "error-dim": "#5c1202",
+                "on-background": "#39382c",
+                "primary-container": "#ebe1d7",
+                "on-tertiary-fixed-variant": "#6a6563",
+                "on-primary-fixed": "#443e37",
+                "on-tertiary-fixed": "#4d4947",
+                "on-tertiary-container": "#605b59",
+                "surface-tint": "#645d55",
+                "surface": "#fffbff",
+                "error-container": "#fe8b70",
+                "tertiary-fixed-dim": "#ece4e1",
+                "surface-container-highest": "#ece8d7",
+                "surface-variant": "#ece8d7",
+                "secondary-fixed": "#e8e2d6",
+                "inverse-surface": "#0f0e0a",
+                "on-tertiary": "#ffffff",
+                "inverse-primary": "#fff5ea",
+                "on-secondary": "#ffffff",
+                "on-error": "#ffffff",
+                "on-secondary-fixed-variant": "#5f5b52",
+                "surface-container": "#f7f4e7",
+                "surface-dim": "#e6e3cf",
+                "tertiary": "#686362",
+                "background": "#fffbff",
+                "surface-container-lowest": "#ffffff",
+                "secondary": "#68645b"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "major-gap": "48px",
+                "section-gap": "32px",
+                "dense-gap": "8px",
+                "component-padding": "24px",
+                "item-gap": "16px"
+        },
+        "fontFamily": {
+                "headline": [
+                        "Newsreader"
+                ],
+                "display": [
+                        "Newsreader"
+                ],
+                "body": [
+                        "Inter"
+                ],
+                "label": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {}
+},
+    },
+  }
+</script>
+</head>
+<body class="bg-background text-on-background font-body antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen text-[15px] leading-[1.628]">
+<!-- Top Alert Strip -->
+<div class="fixed top-0 w-full z-[60] bg-on-background text-background h-8 flex items-center justify-center">
+<span class="font-label text-[11px] font-bold uppercase tracking-[0.08em]">DRAFT — REVIEW THIS LAYER BEFORE THE REVISION ZOOM ON MAY 19</span>
+</div>
+<!-- TopAppBar -->
+<header class="bg-surface/90 backdrop-blur-md fixed top-8 w-full z-50 border-b border-outline-variant transition-all duration-200 ease-in-out flex justify-between items-center px-6 h-16">
+<div class="flex items-center gap-4">
+<div class="md:hidden">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<div class="font-display text-[24px] italic text-on-background tracking-tight">
+                Executive Insights
+            </div>
+</div>
+<div class="flex items-center gap-6 hidden md:flex">
+<!-- Placeholder for top nav items if any were here, but usually side nav handles main routing -->
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-2 mr-4 border-b border-outline-variant pb-1">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-[13px] font-body text-on-surface w-32 placeholder-on-surface-variant p-0" placeholder="Search..." type="text"/>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Executive Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a senior executive, well-lit, sharp focus, neutral background, conveying quiet authority and approachability. The image fits within a light-mode, minimalist corporate dashboard aesthetic with warm grey and cream tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJo3xy0q9aqt92VZYGXnAzSG250WuJSZ0WHVQtlFEmuFpETmMO_Ur9I29OFicr42r5UKBkdoEKsUW_WC5IFJukYQiV-Pe7KXP1dyiwVYNmCLymZ1QvTUBKDzXYtzQXTB409f-wKL_3qt6WXiUkSxfIaNQYWSTQk_CoOfxD0PTuyUXzgWf8r5q-vdz0N5mdB3Mi5zlTa3wn5uU-vwnN4zj53l9WxKTDLlVfTVh0JTKujuIiGuNerXf87KX671W3ejKYpUAxcQ6OkKo"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="bg-surface-container fixed left-0 top-8 h-[calc(100vh-32px)] w-[280px] z-40 border-r border-outline-variant transition-all duration-200 flex flex-col py-12 gap-4 hidden md:flex pt-24">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest border border-outline-variant flex items-center justify-center text-on-background">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<div>
+<h2 class="font-display text-[20px] text-on-background leading-tight">Guidebook</h2>
+<p class="font-body text-[13px] text-on-surface-variant mt-1">Senior Leadership Portal</p>
+</div>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<a class="text-on-surface-variant pl-6 py-3 flex items-center gap-4 hover:bg-surface-container-high transition-colors font-body text-[15px]" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="text-on-background font-medium border-l-2 border-on-background pl-[22px] py-3 flex items-center gap-4 bg-surface-container-high transition-colors font-body text-[15px]" href="#">
+<span class="material-symbols-outlined text-[20px]">layers</span>
+<span>Strategic Layers</span>
+</a>
+<a class="text-on-surface-variant pl-6 py-3 flex items-center gap-4 hover:bg-surface-container-high transition-colors font-body text-[15px]" href="#">
+<span class="material-symbols-outlined text-[20px]">insights</span>
+<span>Market Intel</span>
+</a>
+<a class="text-on-surface-variant pl-6 py-3 flex items-center gap-4 hover:bg-surface-container-high transition-colors font-body text-[15px]" href="#">
+<span class="material-symbols-outlined text-[20px]">menu_book</span>
+<span>Archives</span>
+</a>
+<a class="text-on-surface-variant pl-6 py-3 flex items-center gap-4 hover:bg-surface-container-high transition-colors font-body text-[15px]" href="#">
+<span class="material-symbols-outlined text-[20px]">assessment</span>
+<span>Reports</span>
+</a>
+</div>
+<div class="mt-auto flex flex-col gap-1 px-4 border-t border-outline-variant pt-4 mx-2">
+<a class="text-on-surface-variant pl-4 py-2 flex items-center gap-4 hover:bg-surface-container-high transition-colors font-body text-[13px]" href="#">
+<span class="material-symbols-outlined text-[18px]">help_outline</span>
+<span>Support</span>
+</a>
+<a class="text-on-surface-variant pl-4 py-2 flex items-center gap-4 hover:bg-surface-container-high transition-colors font-body text-[13px]" href="#">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="md:ml-[280px] pt-32 pb-12 px-6 md:px-12 flex justify-center">
+<div class="w-full max-w-5xl relative grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Reading Canvas -->
+<article class="lg:col-span-8 xl:col-span-9 bg-surface p-8 md:p-16 relative min-h-[800px] border border-outline-variant shadow-sm">
+<!-- Header Metadata -->
+<header class="mb-12 border-b border-outline-variant pb-8">
+<div class="font-label text-[11px] font-bold text-on-surface-variant uppercase tracking-[0.08em] mb-4">LAYER 01 · STATEMENT · DRAFT</div>
+<h1 class="font-display text-[48px] text-on-background mb-6 leading-[1.1] tracking-tight">AI Organizational Statement</h1>
+<p class="font-display text-[24px] italic text-on-surface-variant mb-8 leading-[1.3]">A proposed framework for integrating artificial intelligence into our core operational methodology without compromising human-centric values.</p>
+<div class="flex flex-wrap items-center gap-4 text-[13px] font-body text-on-surface-variant border-t border-outline-variant pt-6">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">edit_calendar</span> Drafted May 13, 2026 by Joshua Shepherd</span>
+<span class="text-outline-variant">|</span>
+<span class="text-on-background font-medium">Awaiting your review</span>
+<span class="text-outline-variant">|</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">chat_bubble</span> 1 comment from your team</span>
+</div>
+</header>
+<!-- Body Content -->
+<div class="font-body text-[16px] md:text-[18px] text-on-background space-y-8 leading-[1.628] relative max-w-[65ch]">
+<p>The advent of generative artificial intelligence presents a profound inflection point for modern institutions. It is not merely a tool for efficiency, but a structural shift in how knowledge is synthesized, decisions are formulated, and value is generated. As an organization committed to long-term impact, we must approach this transition with both rigorous optimism and deliberate caution.</p>
+<!-- Paragraph with comment highlight -->
+<div class="relative group">
+<div class="absolute -left-6 top-0 bottom-0 w-[3px] bg-primary-container"></div>
+<p>Our primary mandate is not technological adoption for its own sake, but the prudent application of technology to amplify our core mission. <span class="bg-primary-container/40 px-1 -mx-1 cursor-text relative">
+<!-- Floating Action Menu over selection -->
+</span></p><div class="absolute -top-12 left-1/2 -translate-x-1/2 z-10 bg-on-background text-background px-3 py-2 text-[12px] font-label font-medium rounded-sm flex items-center gap-2 shadow-sm whitespace-nowrap opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">add_comment</span>
+                                + Comment
+                                <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-on-background rotate-45"></div>
+</div>
+                            Northridge believes that the tools of our age — including AI — must always serve the irreducibly human work of building relationships with the people we are called to serve. We reject the premise that automation equates to abdication of responsibility. Instead, we view AI as a capability multiplier that frees our team to focus on higher-order strategic thinking and deep empathy.<p></p>
+</div>
+<p>To ensure this alignment, we propose a three-tiered framework for AI integration across our operational layers. First, foundational augmentation: deploying secure, private models to handle routine data processing and initial synthesis. Second, strategic partnership: utilizing advanced reasoning models to challenge assumptions and model complex scenarios during the planning phase. Third, and most critically, human-in-the-loop oversight: mandating that all outputs involving sensitive stakeholder communication or core strategic shifts are reviewed, refined, and ultimately owned by a senior leader.</p>
+<h3 class="font-display text-[32px] text-on-background mt-16 mb-8 tracking-tight">Implementation Timelines</h3>
+<ul class="space-y-8">
+<li class="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-6 py-6 border-t border-outline-variant">
+<div class="font-display text-[24px] italic text-on-surface-variant">Q3 2026</div>
+<div class="text-[16px]">Initial rollout of secure internal LLM sandbox for the research and analytics team. Mandatory training on prompt engineering and data privacy protocols.</div>
+</li>
+<li class="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-6 py-6 border-t border-b border-outline-variant">
+<div class="font-display text-[24px] italic text-on-surface-variant">Q4 2026</div>
+<div class="text-[16px]">Pilot program integrating AI-assisted drafting in external communications, limited to non-critical updates. Establishment of the AI Ethics Oversight Committee.</div>
+</li>
+</ul>
+</div>
+<!-- Bottom Action Area -->
+<div class="mt-16 pt-8 flex justify-between items-center">
+<button class="bg-surface-container hover:bg-surface-container-high text-on-background border border-outline-variant font-label text-[14px] font-medium px-6 py-3 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span> Previous Layer
+                    </button>
+<button class="bg-on-background text-background hover:bg-primary-dim font-label text-[14px] font-medium px-6 py-3 transition-colors flex items-center gap-2">
+                        Approve Statement <span class="material-symbols-outlined text-[18px]">check_circle</span>
+</button>
+</div>
+</article>
+<!-- Floating Right Navigation Panel -->
+<aside class="hidden lg:block lg:col-span-4 xl:col-span-3">
+<div class="sticky top-32 bg-surface border border-outline-variant p-6 shadow-sm">
+<h4 class="font-label text-[11px] font-bold uppercase text-on-surface-variant tracking-[0.08em] mb-4 border-b border-outline-variant pb-2">On This Page</h4>
+<ul class="space-y-3 font-body text-[13px] text-on-surface mb-8">
+<li>
+<a class="text-on-background font-medium flex items-center gap-2" href="#">
+<span class="w-[3px] h-[3px] rounded-full bg-on-background inline-block"></span>
+                                Strategic Premise
+                            </a>
+</li>
+<li>
+<a class="text-on-surface-variant hover:text-on-background transition-colors pl-3" href="#">
+                                Framework Tiers
+                            </a>
+</li>
+<li>
+<a class="text-on-surface-variant hover:text-on-background transition-colors pl-3" href="#">
+                                Implementation Timelines
+                            </a>
+</li>
+</ul>
+<div class="pt-6 border-t border-outline-variant">
+<h4 class="font-label text-[11px] font-bold uppercase text-on-surface-variant tracking-[0.08em] mb-4">Reviewers</h4>
+<div class="flex items-center gap-3 mb-4 opacity-60">
+<div class="w-8 h-8 rounded-full bg-surface-container border border-outline-variant overflow-hidden grayscale">
+<img alt="Joshua Shepherd" class="w-full h-full object-cover" data-alt="Small profile picture of Joshua Shepherd, professional headshot in an editorial minimalist style, warm lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWon5_I3Xligl0k6v7nXxzYi8511ZLFSemjRlSPbCraCmawoMK0mkldjmhO72MZkJC67k9JhW6qz5yRBjTZ3HDNagIm1-PNIaL4n5v4ysIeGA89kPQiA9YKFjpxAKpoUG7mZ6A6bZERGu_iqBm-wGgOd2GFHwUHkwtRgRlT_9DMQwPPHwzt67Ql1cV3FAw9wjscvavPrD7r3SSz--fApIKqRpAqObcAlspSSTYVFpiHItSi3IjZ1-MkIfnKaRdI4Sw5SqQFAZZb48"/>
+</div>
+<span class="font-body text-[13px] text-on-surface-variant">Joshua S. (Drafted)</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container border-[1.5px] border-on-background overflow-hidden">
+<img alt="Marcus Vance" class="w-full h-full object-cover" data-alt="Small profile picture of Marcus Vance, current user, professional headshot, sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-aFiaRA-0Q2iZfJ_CKnMc2OKLRupwuw3yzrRL2xfwiqCPh2OWBUWXoBc2X6GnPWmlOMukwr9OnTRYt7G6PVR5XMWY7s8ejXaNoUdRB-n2ArAHw5qPsDrXzghMhBy7utEaaYHkisF-NP6lCbfWsUv3LupsGAtVW9yifNLLgk_7ENMwc_1njCAOVXKfeFARpyjq_kz7xew7aUsBIFRq8J-nWMPUP0BPiQGHHzGxgebgN8RY5L7n3O6S5Ltn7yCmMBO1s4-sLJniteA"/>
+</div>
+<span class="font-body text-[13px] text-on-background font-medium">You (Reviewing)</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SandboxLive Dashboard - Phase 08 Future Plan</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#fff6ee",
+                        "inverse-on-surface": "#9f9d96",
+                        "surface": "#fffbff",
+                        "inverse-primary": "#fff5ea",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#fffbff",
+                        "surface-container-highest": "#ece8d7",
+                        "on-tertiary-fixed-variant": "#6a6563",
+                        "on-tertiary-fixed": "#4d4947",
+                        "tertiary": "#686362",
+                        "surface-dim": "#e6e3cf",
+                        "on-secondary-fixed": "#423f37",
+                        "primary-dim": "#58514a",
+                        "surface-tint": "#645d55",
+                        "primary-fixed": "#ebe1d7",
+                        "on-surface-variant": "#666557",
+                        "secondary-fixed-dim": "#d9d4c8",
+                        "tertiary-container": "#faf2ef",
+                        "error-container": "#fe8b70",
+                        "on-surface": "#39382c",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#f7f4e7",
+                        "error": "#a54731",
+                        "on-primary-container": "#575149",
+                        "background": "#fffbff",
+                        "on-error-container": "#742410",
+                        "outline-variant": "#bcbaa9",
+                        "on-primary-fixed": "#443e37",
+                        "error-dim": "#5c1202",
+                        "secondary": "#68645b",
+                        "primary": "#645d55",
+                        "tertiary-dim": "#5c5756",
+                        "surface-variant": "#ece8d7",
+                        "secondary-fixed": "#e8e2d6",
+                        "inverse-surface": "#0f0e0a",
+                        "surface-container-high": "#f2eedf",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#615b53",
+                        "on-secondary-container": "#555249",
+                        "on-tertiary-container": "#605b59",
+                        "tertiary-fixed-dim": "#ece4e1",
+                        "on-secondary-fixed-variant": "#5f5b52",
+                        "outline": "#838172",
+                        "primary-container": "#ebe1d7",
+                        "on-background": "#39382c",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#fdf9ef",
+                        "secondary-container": "#e8e2d6",
+                        "tertiary-fixed": "#faf2ef",
+                        "secondary-dim": "#5b584f",
+                        "primary-fixed-dim": "#dcd3c9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "display": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body overflow-hidden h-screen flex antialiased">
+<!-- JSON Anchor: SideNavBar -->
+<aside class="bg-inverse-surface dark:bg-inverse-surface docked left-0 h-full w-64 rounded-none border-r border-outline-variant/20 flex flex-col h-full py-6 flex-shrink-0">
+<div class="px-6 mb-12">
+<h2 class="font-headline italic text-on-primary text-xl mb-1">Strategic AI</h2>
+<p class="font-label uppercase tracking-widest text-[10px] text-inverse-on-surface">Editorial Archive</p>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="text-on-primary-fixed-variant px-4 py-3 hover:bg-surface-container-highest/10 linear duration-200 font-label uppercase tracking-widest text-xs flex items-center gap-4" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="text-on-primary-fixed-variant px-4 py-3 hover:bg-surface-container-highest/10 linear duration-200 font-label uppercase tracking-widest text-xs flex items-center gap-4" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="analytics">analytics</span>
+                Emerging Consensus
+            </a>
+<a class="text-on-primary-fixed-variant px-4 py-3 hover:bg-surface-container-highest/10 linear duration-200 font-label uppercase tracking-widest text-xs flex items-center gap-4" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="pending_actions">pending_actions</span>
+                Pending Reflections
+            </a>
+<a class="text-on-primary-fixed-variant px-4 py-3 hover:bg-surface-container-highest/10 linear duration-200 font-label uppercase tracking-widest text-xs flex items-center gap-4" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="visibility">visibility</span>
+                Session Previews
+            </a>
+<!-- Active State: Semantic Match for "Future Plan" -->
+<a class="bg-primary-dim text-on-primary border-l-2 border-on-primary px-4 py-3 linear duration-200 font-label uppercase tracking-widest text-xs flex items-center gap-4" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="menu_book">menu_book</span>
+                Manifesto
+            </a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full bg-primary text-on-primary font-label uppercase tracking-widest text-xs py-4 rounded-none hover:bg-primary-dim transition-colors duration-200">
+                New Reflection
+            </button>
+</div>
+</aside>
+<div class="flex-1 flex flex-col h-full overflow-hidden">
+<!-- JSON Anchor: TopNavBar -->
+<header class="bg-inverse-surface dark:bg-inverse-surface docked full-width top-0 rounded-none bg-inverse-surface flex justify-between items-center w-full px-8 h-16 flex-shrink-0 z-10 relative shadow-sm">
+<div class="flex items-center gap-12">
+<span class="font-headline italic text-2xl text-on-primary">Movemental</span>
+<nav class="hidden md:flex items-center gap-8 h-full pt-1">
+<!-- Active State: Semantic Match for "Strategy Editor" -->
+<a class="text-on-primary border-b border-on-primary pb-1 font-headline italic tracking-tight text-lg transition-all duration-200 ease-linear hover:text-on-primary" href="#">Strategy</a>
+<a class="text-on-primary-fixed-variant hover:text-on-primary transition-colors duration-200 font-headline italic tracking-tight text-lg transition-all duration-200 ease-linear hover:text-on-primary" href="#">Pillars</a>
+<a class="text-on-primary-fixed-variant hover:text-on-primary transition-colors duration-200 font-headline italic tracking-tight text-lg transition-all duration-200 ease-linear hover:text-on-primary" href="#">Archive</a>
+<a class="text-on-primary-fixed-variant hover:text-on-primary transition-colors duration-200 font-headline italic tracking-tight text-lg transition-all duration-200 ease-linear hover:text-on-primary" href="#">Cohorts</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-primary-fixed-variant hover:text-on-primary transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<button class="text-on-primary-fixed-variant hover:text-on-primary transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Workspace Canvas -->
+<main class="flex-1 overflow-y-auto bg-surface relative flex flex-col">
+<div class="px-12 py-16 max-w-[1400px] mx-auto w-full flex-1 flex flex-col">
+<!-- Spanning Header Area -->
+<header class="mb-14 w-full">
+<p class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant mb-6">Sandbox · Phase 08 · Future Plan</p>
+<div class="flex justify-between items-end mb-4">
+<p class="font-label uppercase tracking-widest text-xs text-primary">PHASE 08 — FUTURE PLAN</p>
+<p class="font-body text-xs text-on-surface-variant">Draft state · Section 4 of 6 complete · Last edited 8 minutes ago</p>
+</div>
+<h1 class="font-headline italic text-5xl text-on-surface mb-4 tracking-tight">Drafting your Future Plan</h1>
+<p class="font-body text-lg italic text-on-surface-variant mb-8 max-w-3xl">Board-facing. Two to four pages. The document your board will receive and act on.</p>
+<!-- Progress Bar Component -->
+<div class="w-full h-[2px] bg-surface-container-highest relative">
+<div class="absolute top-0 left-0 h-full bg-primary" style="width: 65%;"></div>
+</div>
+<!-- Hairline Divider -->
+<div class="w-full h-px bg-outline-variant/20 mt-12 mb-12"></div>
+</header>
+<!-- Two Column Layout -->
+<div class="flex w-full relative flex-1 gap-12 pb-24">
+<!-- 1px Vertical Separator (Absolute) -->
+<div class="absolute left-[65%] top-0 bottom-0 w-px bg-outline-variant/20 -ml-6"></div>
+<!-- Left Column: Editor (65%) -->
+<div class="w-[65%] flex flex-col pr-6">
+<!-- Section Navigator Tabs -->
+<nav class="flex flex-wrap gap-x-8 gap-y-4 border-b border-outline-variant/20 pb-0 mb-10">
+<!-- Completed Tabs -->
+<div class="flex items-center gap-2 pb-3 cursor-pointer group">
+<div class="w-1.5 h-1.5 bg-on-surface rounded-none"></div>
+<span class="font-label text-[11px] uppercase tracking-widest text-on-surface-variant group-hover:text-on-surface transition-colors">01 SUMMARY</span>
+</div>
+<div class="flex items-center gap-2 pb-3 cursor-pointer group">
+<div class="w-1.5 h-1.5 bg-on-surface rounded-none"></div>
+<span class="font-label text-[11px] uppercase tracking-widest text-on-surface-variant group-hover:text-on-surface transition-colors">02 WHAT WE LEARNED</span>
+</div>
+<div class="flex items-center gap-2 pb-3 cursor-pointer group">
+<div class="w-1.5 h-1.5 bg-on-surface rounded-none"></div>
+<span class="font-label text-[11px] uppercase tracking-widest text-on-surface-variant group-hover:text-on-surface transition-colors">03 WHAT WE COMMIT TO</span>
+</div>
+<!-- Active Tab -->
+<div class="flex items-center gap-2 pb-3 relative">
+<div class="w-1.5 h-1.5 bg-primary rounded-none"></div>
+<span class="font-label text-[11px] uppercase tracking-widest text-on-surface font-semibold">04 WHAT WE REFUSE</span>
+<!-- Active Underline -->
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary"></div>
+</div>
+<!-- Incomplete Tabs -->
+<div class="flex items-center gap-2 pb-3 cursor-pointer group">
+<div class="w-1.5 h-1.5 border border-outline-variant rounded-none"></div>
+<span class="font-label text-[11px] uppercase tracking-widest text-on-surface-variant group-hover:text-on-surface transition-colors">05 GOVERNANCE UPDATES</span>
+</div>
+<div class="flex items-center gap-2 pb-3 cursor-pointer group">
+<div class="w-1.5 h-1.5 border border-outline-variant rounded-none"></div>
+<span class="font-label text-[11px] uppercase tracking-widest text-on-surface-variant group-hover:text-on-surface transition-colors">06 CASE FOR NEXT</span>
+</div>
+</nav>
+<h2 class="font-headline italic text-3xl text-on-surface mb-8">Section 04 — What we refuse.</h2>
+<!-- Rich Text Editor Container -->
+<div class="flex-1 border border-outline-variant bg-surface-container-lowest flex flex-col relative group">
+<!-- Toolbar -->
+<div class="flex items-center justify-between border-b border-outline-variant/30 p-3 bg-surface text-on-surface-variant">
+<div class="flex items-center gap-4">
+<button class="hover:text-on-surface hover:bg-surface-container-high p-1 transition-colors"><span class="material-symbols-outlined text-[20px]" data-icon="format_bold">format_bold</span></button>
+<button class="hover:text-on-surface hover:bg-surface-container-high p-1 transition-colors"><span class="material-symbols-outlined text-[20px]" data-icon="format_italic">format_italic</span></button>
+<div class="w-px h-4 bg-outline-variant/50 mx-1"></div>
+<button class="hover:text-on-surface hover:bg-surface-container-high p-1 transition-colors"><span class="material-symbols-outlined text-[20px]" data-icon="format_list_bulleted">format_list_bulleted</span></button>
+<button class="hover:text-on-surface hover:bg-surface-container-high p-1 transition-colors"><span class="material-symbols-outlined text-[20px]" data-icon="format_h1">format_h1</span></button>
+</div>
+<button class="font-label text-[11px] uppercase tracking-widest text-primary hover:text-primary-dim flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="lightbulb">lightbulb</span>
+                                    Show citation hints →
+                                </button>
+</div>
+<!-- Content Area -->
+<div class="p-8 flex-1 outline-none font-body text-[17px] leading-[1.8] text-on-surface max-w-3xl selection:bg-primary-container selection:text-on-surface cursor-text">
+<p class="mb-4">Of the twelve AI use cases our Sandbox surfaced, one was discerned as Red Light and refused outright. Two were discerned as Yellow Light with significant conditions.</p>
+<p class="mb-4">The refused use case is added to the Named Refusals in our AI Organizational Guidebook. The Red Light: AI summarization of case-management notes for our youth and family programs<span class="inline-block w-0.5 h-5 bg-on-surface animate-pulse align-middle ml-0.5"></span></p>
+</div>
+</div>
+</div>
+<!-- Right Column: Sources + AI (35%) -->
+<div class="w-[35%] flex flex-col pl-6">
+<h3 class="font-label text-[11px] uppercase tracking-widest text-on-surface-variant mb-6">SOURCES FOR THIS SECTION</h3>
+<!-- Source Cards Stack -->
+<div class="flex flex-col gap-4">
+<!-- Card 1 -->
+<div class="border border-outline-variant/30 p-5 bg-surface-container-lowest hover:bg-surface-container-low transition-colors duration-200 cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-label font-bold text-[11px] uppercase tracking-widest text-on-surface">Red Light Verdict</h4>
+<span class="font-label text-[10px] uppercase text-outline">Phase 05</span>
+</div>
+<p class="font-body text-sm italic text-on-surface-variant mb-4 leading-relaxed">Decision to permanently halt auto-summarization due to PII risk.</p>
+<div class="flex justify-end">
+<span class="font-label text-[10px] uppercase tracking-widest text-primary opacity-0 group-hover:opacity-100 transition-opacity">View Details →</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="border border-outline-variant/30 p-5 bg-surface-container-lowest hover:bg-surface-container-low transition-colors duration-200 cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-label font-bold text-[11px] uppercase tracking-widest text-on-surface">Ethics Review Feedback</h4>
+<span class="font-label text-[10px] uppercase text-outline">Phase 06</span>
+</div>
+<p class="font-body text-sm italic text-on-surface-variant mb-4 leading-relaxed">Board noted concern over vendor data-retention policies.</p>
+<div class="flex justify-end">
+<span class="font-label text-[10px] uppercase tracking-widest text-primary opacity-0 group-hover:opacity-100 transition-opacity">View Details →</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="border border-outline-variant/30 p-5 bg-surface-container-lowest hover:bg-surface-container-low transition-colors duration-200 cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-label font-bold text-[11px] uppercase tracking-widest text-on-surface">Reflection Theme 03</h4>
+<span class="font-label text-[10px] uppercase text-outline">Phase 07</span>
+</div>
+<p class="font-body text-sm italic text-on-surface-variant mb-4 leading-relaxed">Staff expressed relief when boundaries were clearly defined.</p>
+<div class="flex justify-end">
+<span class="font-label text-[10px] uppercase tracking-widest text-primary opacity-0 group-hover:opacity-100 transition-opacity">View Details →</span>
+</div>
+</div>
+</div>
+<!-- Hairline Divider -->
+<div class="w-full h-px bg-outline-variant/20 my-8"></div>
+<!-- AI Assistant Interface -->
+<div class="flex flex-col flex-1">
+<h3 class="font-label text-[11px] uppercase tracking-widest text-on-surface-variant mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]" data-icon="lightbulb">lightbulb</span>
+                                AI ASSISTANT — DRAFTING HELP
+                            </h3>
+<div class="flex-1 flex flex-col gap-4 bg-surface-container p-5 border border-outline-variant/20 mb-4 overflow-y-auto">
+<!-- AI Message -->
+<div class="pr-8">
+<div class="bg-surface-container-lowest border border-outline-variant/20 p-4 text-sm font-body text-on-surface-variant leading-relaxed inline-block rounded-none shadow-sm">
+                                        Would you like me to insert a standard template for detailing the Yellow Light conditions based on your Phase 05 frameworks?
+                                    </div>
+</div>
+<!-- User Message -->
+<div class="pl-8 flex justify-end">
+<div class="bg-primary text-on-primary p-4 text-sm font-body leading-relaxed inline-block rounded-none shadow-sm">
+                                        Yes, please add that below my current paragraph.
+                                    </div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="relative">
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-primary focus:ring-0 p-3 font-body text-sm text-on-surface placeholder:text-outline transition-colors pb-4" placeholder="Ask for drafting help..." type="text"/>
+<button class="absolute right-2 top-2 text-primary hover:text-primary-dim p-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="send">send</span>
+</button>
+</div>
+<p class="font-body text-[11px] text-on-surface-variant italic mt-4 text-center leading-tight">The AI assistant uses your prior Sandbox materials as context. It doesn't write the Future Plan for you — only helps you draft.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Bottom Action Band -->
+<div class="sticky bottom-0 w-full bg-surface-container-high h-[100px] border-t border-outline-variant/20 flex justify-between items-center px-12 z-20 shadow-[0_-4px_20px_rgba(0,0,0,0.02)]">
+<div class="text-on-surface-variant font-body text-sm italic">
+                    Auto-saved 8 minutes ago · Section 04 in progress
+                </div>
+<div class="flex items-center gap-4">
+<button class="border border-outline/30 px-6 py-3 font-label text-[11px] uppercase tracking-widest text-on-surface hover:border-outline hover:bg-surface-container-highest transition-colors duration-200 rounded-none flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="visibility">visibility</span>
+                        Preview as PDF
+                    </button>
+<button class="border border-outline/30 px-6 py-3 font-label text-[11px] uppercase tracking-widest text-on-surface hover:border-outline hover:bg-surface-container-highest transition-colors duration-200 rounded-none">
+                        Save draft
+                    </button>
+<button class="bg-primary text-on-primary px-8 py-3 font-label text-[11px] uppercase tracking-widest hover:bg-primary-dim transition-colors duration-200 rounded-none shadow-sm">
+                        Submit for board review
+                    </button>
+<!-- Disabled State -->
+<button class="bg-surface-dim text-outline px-6 py-3 font-label text-[11px] uppercase tracking-widest cursor-not-allowed opacity-60 rounded-none border border-outline-variant/20" disabled="">
+                        Generate final PDF
+                    </button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

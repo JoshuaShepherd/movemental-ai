@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Executive Insights - Leave Comment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "secondary-container": "#e8e2d6",
+                "primary-fixed-dim": "#dcd3c9",
+                "surface": "#fffbff",
+                "primary-container": "#ebe1d7",
+                "on-error": "#ffffff",
+                "surface-container-low": "#fdf9ef",
+                "primary-fixed": "#ebe1d7",
+                "on-tertiary-container": "#605b59",
+                "secondary-fixed": "#e8e2d6",
+                "error": "#a54731",
+                "on-background": "#39382c",
+                "on-surface-variant": "#666557",
+                "surface-dim": "#e6e3cf",
+                "surface-tint": "#645d55",
+                "secondary": "#68645b",
+                "inverse-surface": "#0f0e0a",
+                "on-tertiary-fixed-variant": "#6a6563",
+                "error-container": "#fe8b70",
+                "tertiary-fixed": "#faf2ef",
+                "tertiary": "#686362",
+                "error-dim": "#5c1202",
+                "surface-container": "#f7f4e7",
+                "on-tertiary": "#ffffff",
+                "outline": "#838172",
+                "secondary-fixed-dim": "#d9d4c8",
+                "tertiary-container": "#faf2ef",
+                "primary": "#645d55",
+                "on-secondary-fixed": "#423f37",
+                "on-error-container": "#742410",
+                "on-primary-container": "#575149",
+                "surface-variant": "#ece8d7",
+                "on-primary-fixed": "#443e37",
+                "on-surface": "#39382c",
+                "tertiary-fixed-dim": "#ece4e1",
+                "on-tertiary-fixed": "#4d4947",
+                "inverse-primary": "#fff5ea",
+                "outline-variant": "#bcbaa9",
+                "on-primary-fixed-variant": "#615b53",
+                "surface-container-lowest": "#ffffff",
+                "on-primary": "#fff6ee",
+                "on-secondary-container": "#555249",
+                "tertiary-dim": "#5c5756",
+                "surface-container-high": "#f2eedf",
+                "surface-bright": "#fffbff",
+                "on-secondary-fixed-variant": "#5f5b52",
+                "secondary-dim": "#5b584f",
+                "primary-dim": "#58514a",
+                "on-secondary": "#ffffff",
+                "background": "#fffbff",
+                "surface-container-highest": "#ece8d7",
+                "inverse-on-surface": "#9f9d96"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+            "major-gap": "48px",
+            "section-gap": "32px",
+            "dense-gap": "8px",
+            "component-padding": "24px",
+            "item-gap": "16px"
+        },
+        "fontFamily": {
+                "headline": [
+                        "Newsreader"
+                ],
+                "display": [
+                        "Newsreader"
+                ],
+                "body": [
+                        "Inter"
+                ],
+                "label": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+            "body-md": ["15px", { lineHeight: "1.5", fontWeight: "400" }],
+            "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+            "body-sm": ["13px", { lineHeight: "1.5", fontWeight: "400" }],
+            "headline-lg": ["32px", { lineHeight: "1.2", fontWeight: "400" }],
+            "eyebrow": ["11px", { lineHeight: "1.5", letterSpacing: "0.08em", fontWeight: "700" }],
+            "button": ["14px", { lineHeight: "1", letterSpacing: "0.02em", fontWeight: "600" }],
+            "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "400" }],
+            "display-xl": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "400" }]
+        }
+},
+    },
+  }
+</script>
+</head>
+<body class="bg-background text-on-background font-body antialiased overflow-hidden text-body-md">
+<!-- Dimming Overlay -->
+<div class="fixed inset-0 bg-inverse-surface/30 z-40"></div>
+<!-- Top Navigation (Background) -->
+<header class="fixed top-0 w-full z-30 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md flex justify-between items-center px-component-padding h-16 pointer-events-none opacity-50">
+<div class="font-headline text-headline-md italic text-primary">Executive Insights</div>
+<nav class="hidden md:flex gap-item-gap">
+<a class="text-on-surface-variant font-label text-button px-2 py-1" href="#">Dashboard</a>
+<a class="text-on-surface-variant font-label text-button px-2 py-1" href="#">Strategic Layers</a>
+<a class="text-primary font-bold border-b border-primary px-2 py-1 font-label text-button" href="#">Market Intel</a>
+</nav>
+<div class="flex items-center gap-dense-gap">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline-variant"></div>
+</div>
+</header>
+<!-- Side Navigation (Background) -->
+<nav class="fixed left-0 top-0 h-full w-[280px] z-30 bg-surface-container flex flex-col py-major-gap gap-item-gap pointer-events-none opacity-50 pt-24 hidden md:flex border-r border-outline-variant">
+<div class="px-component-padding mb-section-gap">
+<h1 class="font-headline text-headline-md text-primary">Guidebook</h1>
+<p class="font-body text-body-sm text-on-surface-variant">Senior Leadership Portal</p>
+</div>
+<div class="flex flex-col gap-dense-gap flex-grow">
+<a class="text-on-surface-variant pl-5 py-2 flex items-center gap-2" href="#"><span class="material-symbols-outlined">dashboard</span> Dashboard</a>
+<a class="text-on-surface-variant pl-5 py-2 flex items-center gap-2" href="#"><span class="material-symbols-outlined">layers</span> Strategic Layers</a>
+<a class="text-primary font-bold border-l-4 border-primary pl-4 py-2 flex items-center gap-2 bg-surface-container-high" href="#"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">insights</span> Market Intel</a>
+<a class="text-on-surface-variant pl-5 py-2 flex items-center gap-2" href="#"><span class="material-symbols-outlined">menu_book</span> Archives</a>
+<a class="text-on-surface-variant pl-5 py-2 flex items-center gap-2" href="#"><span class="material-symbols-outlined">assessment</span> Reports</a>
+</div>
+</nav>
+<!-- Main Content Canvas (Background) -->
+<main class="fixed inset-0 z-20 pt-24 pl-[280px] px-component-padding overflow-y-auto pointer-events-none">
+<div class="max-w-4xl mx-auto pb-major-gap grid grid-cols-12 gap-6">
+<div class="col-span-12 lg:col-span-8">
+<article class="bg-surface-container p-section-gap mb-major-gap relative z-10 border border-outline-variant">
+<h2 class="font-headline text-headline-lg text-on-surface mb-item-gap">The Future of AI Integration</h2>
+<p class="font-body text-body-md text-on-surface-variant mb-4">
+                        As we move into the next quarter, the strategic deployment of artificial intelligence within our operational framework must be handled with nuance. The goal is not merely efficiency, but an enhancement of our core capabilities.
+                    </p>
+<p class="font-body text-body-md text-on-surface-variant mb-4">
+                        However, we must remain vigilant regarding the framing of these new technologies.
+                    </p>
+<div class="relative inline-block mb-4">
+<!-- Highlighted Sentence -->
+<span class="bg-primary-fixed text-on-primary-fixed px-1 font-semibold rounded-sm relative z-50">It is essential that we view AI as a co-equal partner in our organizational mission, working alongside human talent to redefine what is possible in service of our core values.</span>
+</div>
+<p class="font-body text-body-md text-on-surface-variant mb-4">
+                        This perspective will require significant adjustments to our current training protocols and a re-evaluation of performance metrics across all departments.
+                    </p>
+</article>
+</div>
+</div>
+</main>
+<!-- Side Drawer -->
+<aside class="fixed right-0 top-0 bottom-0 w-[400px] bg-surface shadow-2xl flex flex-col transform translate-x-0 transition-transform duration-300 z-50 border-l border-outline-variant">
+<header class="p-component-padding">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label text-eyebrow uppercase text-primary tracking-widest font-bold">NEW COMMENT</span>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<h3 class="font-headline text-headline-md italic text-on-surface">Leave a comment on this passage</h3>
+</header>
+<div class="flex-grow overflow-y-auto p-component-padding flex flex-col gap-section-gap pt-0">
+<!-- Context Card -->
+<div class="bg-surface-container-high p-4 relative border border-outline-variant/30">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<p class="font-headline text-body-md italic text-on-surface-variant">
+                    "It is essential that we view AI as a co-equal partner in our organizational mission, working alongside human talent to redefine what is possible in service of our core values."
+                </p>
+</div>
+<!-- Input Area -->
+<div class="flex flex-col gap-dense-gap">
+<textarea class="w-full bg-surface border-0 focus:ring-0 p-4 font-body text-body-md text-on-surface min-h-[200px] resize-none" placeholder="Add your thoughts...">This sentence reads as if AI is being granted moral status alongside human work, which I don't think we want. Can we recast it to make clear that AI is a tool we use to support human work, not a co-equal partner in it? Something like: 'Northridge uses AI as a tool in service of the irreducibly human work of building relationships with the people we are called to serve.'</textarea>
+</div>
+<!-- Metadata / Options -->
+<div class="flex flex-col gap-item-gap pb-4 border-b border-outline-variant/50">
+<div class="flex items-center gap-2">
+<span class="font-label text-eyebrow text-on-surface-variant uppercase font-bold">TAG:</span>
+<button class="bg-primary-fixed text-on-primary-fixed font-label text-button px-3 py-1 rounded-none flex items-center gap-1 border border-primary-fixed-dim">
+                        Wording
+                        <span class="material-symbols-outlined text-[14px]">check</span>
+</button>
+<button class="bg-surface-container-low text-on-surface-variant font-label text-button px-3 py-1 rounded-none hover:bg-surface-container-high border border-outline-variant/50">
+                        Fact Check
+                    </button>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span class="font-label text-body-sm">Visible to: your contributor team + Joshua Shepherd</span>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<footer class="p-component-padding flex justify-end gap-item-gap mt-auto">
+<button class="font-label text-button text-on-surface-variant hover:text-on-surface px-4 py-2">
+                Cancel
+            </button>
+<button class="bg-primary text-on-primary font-label text-button px-6 py-2 hover:bg-primary-dim transition-colors rounded-none">
+                Post comment
+            </button>
+</footer>
+</aside>
+</body></html>

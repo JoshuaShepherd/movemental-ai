@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Board Ratification Recording - Executive Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Newsreader:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface": "#fef9eb",
+                "primary-container": "#b8893a",
+                "outline-variant": "#d3c4b2",
+                "surface-container": "#f3eedf",
+                "on-tertiary-fixed": "#001d35",
+                "primary-fixed-dim": "#f3be69",
+                "on-secondary-container": "#5c6577",
+                "secondary-fixed-dim": "#bec7db",
+                "on-surface": "#1d1c13",
+                "error-container": "#ffdad6",
+                "on-tertiary": "#ffffff",
+                "surface-container-highest": "#e7e2d4",
+                "on-primary": "#ffffff",
+                "tertiary-fixed": "#d0e4ff",
+                "secondary-container": "#dae2f8",
+                "outline": "#817566",
+                "tertiary-fixed-dim": "#9ccaff",
+                "inverse-surface": "#323127",
+                "on-secondary-fixed": "#131c2b",
+                "on-tertiary-container": "#002c4d",
+                "on-primary-fixed-variant": "#604100",
+                "surface-container-lowest": "#ffffff",
+                "surface-bright": "#fef9eb",
+                "secondary": "#565f70",
+                "surface-tint": "#7e5706",
+                "background": "#fef9eb",
+                "surface-container-low": "#f9f3e5",
+                "inverse-on-surface": "#f6f0e2",
+                "primary": "#7e5706",
+                "on-surface-variant": "#4f4538",
+                "on-tertiary-fixed-variant": "#104977",
+                "tertiary": "#306190",
+                "on-secondary-fixed-variant": "#3e4758",
+                "on-primary-container": "#3b2600",
+                "on-secondary": "#ffffff",
+                "on-error-container": "#93000a",
+                "on-error": "#ffffff",
+                "error": "#ba1a1a",
+                "surface-dim": "#dfdacc",
+                "primary-fixed": "#ffddae",
+                "tertiary-container": "#6795c7",
+                "secondary-fixed": "#dae2f8",
+                "on-background": "#1d1c13",
+                "surface-container-high": "#ede8da",
+                "surface-variant": "#e7e2d4",
+                "inverse-primary": "#f3be69",
+                "on-primary-fixed": "#281800"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "component-padding": "24px",
+                "major-gap": "48px",
+                "item-gap": "16px",
+                "section-gap": "32px",
+                "dense-gap": "8px"
+        },
+        "fontFamily": {
+                "headline-md": ["Newsreader"],
+                "eyebrow": ["Inter"],
+                "display-xl": ["Newsreader"],
+                "button": ["Inter"],
+                "body-sm": ["Inter"],
+                "body-lg": ["Inter"],
+                "headline-lg": ["Newsreader"],
+                "body-md": ["Inter"]
+        },
+        "fontSize": {
+                "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                "eyebrow": ["11px", {"lineHeight": "1.5", "letterSpacing": "0.08em", "fontWeight": "700"}],
+                "display-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                "button": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                "body-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                "body-md": ["15px", {"lineHeight": "1.5", "fontWeight": "400"}]
+        }
+},
+    },
+  }
+</script>
+<style>
+  /* Custom utility for hairline borders specific to this design system */
+  .border-hairline { border-color: #B0AC9F; }
+  .bg-base { background-color: #FAF8F4; }
+  .bg-inset { background-color: #F2EEDF; }
+  .text-amber { color: #b8893a; }
+  .italic-title { font-family: 'Newsreader', serif; font-style: italic; font-size: 36px; line-height: 1.2; font-weight: 400; }
+  
+  /* Form input overrides to match styling */
+  input[type="text"], input[type="date"], select, textarea {
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px solid #B0AC9F;
+      border-radius: 0;
+      padding-left: 0;
+      padding-right: 0;
+      box-shadow: none !important;
+  }
+  input[type="text"]:focus, input[type="date"]:focus, select:focus, textarea:focus {
+      border-bottom-color: #7e5706;
+      ring: 0;
+  }
+</style>
+</head>
+<body class="bg-base text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar (Linear intent: suppressed to focus on Canvas. But TopNavBar component exists in JSON, however prompt explicitly says "no sidebar" and layout is "centered 720px content". We suppress shell to focus on task.) -->
+<header class="w-full flex justify-between items-center px-component-padding py-item-gap border-b border-hairline">
+<div class="flex items-center gap-2 text-on-surface-variant cursor-pointer">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+<span class="font-eyebrow uppercase">Back to Dashboard</span>
+</div>
+<div class="font-headline-md text-headline-md text-primary">Executive Intelligence</div>
+</header>
+<main class="flex-grow w-full flex justify-center py-major-gap px-component-padding">
+<div class="w-full max-w-[720px] flex flex-col gap-section-gap">
+<!-- Header Section -->
+<div class="flex flex-col gap-item-gap">
+<span class="font-eyebrow uppercase text-amber">RATIFICATION · ACTION 03</span>
+<h1 class="italic-title text-on-surface">Recording the board's ratification</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl">Yesterday's board meeting included the ratification motion. Please record the official outcome and upload the signed minutes to finalize this policy implementation.</p>
+</div>
+<div class="w-full h-px bg-[#B0AC9F]"></div>
+<!-- Ratification Details Section -->
+<section class="flex flex-col gap-major-gap">
+<h2 class="font-eyebrow uppercase text-on-surface tracking-widest">RATIFICATION DETAILS</h2>
+<div class="flex flex-col gap-section-gap">
+<!-- Date & Type -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-component-padding">
+<div class="flex flex-col gap-dense-gap">
+<label class="font-eyebrow uppercase text-on-surface-variant">Meeting date</label>
+<input class="w-full font-body-md text-on-surface pb-2" readonly="" type="text" value="May 21, 2026"/>
+</div>
+<div class="flex flex-col gap-dense-gap">
+<label class="font-eyebrow uppercase text-on-surface-variant">Meeting type</label>
+<input class="w-full font-body-md text-on-surface pb-2" readonly="" type="text" value="Regular monthly meeting"/>
+</div>
+</div>
+<div class="w-full h-px bg-[#B0AC9F] opacity-50"></div>
+<!-- Outcome -->
+<div class="flex flex-col gap-item-gap">
+<label class="font-eyebrow uppercase text-on-surface-variant">Ratification outcome</label>
+<div class="flex flex-col gap-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="w-5 h-5 rounded-full border border-primary flex items-center justify-center">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+</div>
+<span class="font-body-md text-on-surface">Ratified as drafted</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group opacity-60">
+<div class="w-5 h-5 rounded-full border border-hairline flex items-center justify-center"></div>
+<span class="font-body-md text-on-surface">Ratified with amendments</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group opacity-60">
+<div class="w-5 h-5 rounded-full border border-hairline flex items-center justify-center"></div>
+<span class="font-body-md text-on-surface">Motion failed or tabled</span>
+</label>
+</div>
+</div>
+<div class="w-full h-px bg-[#B0AC9F] opacity-50"></div>
+<!-- Vote Count -->
+<div class="flex flex-col gap-item-gap">
+<label class="font-eyebrow uppercase text-on-surface-variant">Vote count</label>
+<div class="grid grid-cols-3 gap-component-padding">
+<div class="flex flex-col gap-dense-gap">
+<span class="text-sm text-on-surface-variant">In favor</span>
+<input class="w-full font-body-md text-on-surface pb-2 border-b border-hairline text-center" type="text" value="9"/>
+</div>
+<div class="flex flex-col gap-dense-gap">
+<span class="text-sm text-on-surface-variant">Opposed</span>
+<input class="w-full font-body-md text-on-surface pb-2 border-b border-hairline text-center" type="text" value="0"/>
+</div>
+<div class="flex flex-col gap-dense-gap">
+<span class="text-sm text-on-surface-variant">Abstained</span>
+<input class="w-full font-body-md text-on-surface pb-2 border-b border-hairline text-center" type="text" value="1"/>
+</div>
+</div>
+</div>
+<div class="w-full h-px bg-[#B0AC9F] opacity-50"></div>
+<!-- Board Chair -->
+<div class="flex flex-col gap-dense-gap">
+<label class="font-eyebrow uppercase text-on-surface-variant">Board chair name</label>
+<input class="w-full font-body-md text-on-surface pb-2" type="text" value="Margaret Singh"/>
+</div>
+<div class="w-full h-px bg-[#B0AC9F] opacity-50"></div>
+<!-- File Upload -->
+<div class="flex flex-col gap-item-gap">
+<label class="font-eyebrow uppercase text-on-surface-variant">Meeting minutes</label>
+<div class="bg-inset border border-hairline p-component-padding flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="font-body-md text-on-surface">Northridge_BoardMeeting_May21_2026.pdf</span>
+</div>
+<button class="text-primary font-button uppercase text-xs tracking-wider border-b border-primary pb-0.5 hover:text-on-surface transition-colors">Replace</button>
+</div>
+</div>
+<div class="w-full h-px bg-[#B0AC9F] opacity-50"></div>
+<!-- Additional Notes -->
+<div class="flex flex-col gap-dense-gap">
+<label class="font-eyebrow uppercase text-on-surface-variant">Additional notes</label>
+<textarea class="w-full font-body-md text-on-surface pb-2 resize-none" placeholder="Enter any context or stipulations noted by the board..." rows="3"></textarea>
+</div>
+</div>
+</section>
+<div class="w-full h-px bg-[#B0AC9F]"></div>
+<!-- After Recording Section -->
+<section class="flex flex-col gap-item-gap bg-inset border border-hairline p-component-padding">
+<h2 class="font-eyebrow uppercase text-on-surface tracking-widest mb-2">WHAT HAPPENS AFTER YOU RECORD THIS</h2>
+<div class="flex flex-col gap-item-gap">
+<p class="font-body-sm text-on-surface-variant leading-relaxed">
+<strong class="text-on-surface font-semibold">1. Guidebook Finalization.</strong> The SafeStart framework will transition from "Draft" to "Active Policy" within the organizational repository.
+                </p>
+<p class="font-body-sm text-on-surface-variant leading-relaxed">
+<strong class="text-on-surface font-semibold">2. Staff Onboarding.</strong> Automated communications will be dispatched to department heads initiating the protocol training sequence.
+                </p>
+<p class="font-body-sm text-on-surface-variant leading-relaxed">
+<strong class="text-on-surface font-semibold">3. Public Surfaces.</strong> Approved public-facing summaries will be automatically staged for publishing on the institutional site.
+                </p>
+</div>
+</section>
+<div class="w-full h-px bg-[#B0AC9F]"></div>
+<!-- Action Row -->
+<div class="flex justify-between items-center pt-item-gap pb-major-gap">
+<button class="font-button text-on-surface-variant border-b border-hairline pb-1 hover:text-on-surface transition-colors">Save as draft</button>
+<button class="bg-[#1d1c13] text-white font-button w-[320px] py-4 hover:bg-surface-tint transition-colors flex items-center justify-center gap-2">
+<span>Record ratification</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>

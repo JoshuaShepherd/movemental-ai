@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SafeStart Dashboard - Ratification</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-container-low": "#fdf9ef",
+                "error": "#a54731",
+                "on-primary-fixed-variant": "#615b53",
+                "on-secondary-fixed-variant": "#5f5b52",
+                "outline-variant": "#bcbaa9",
+                "on-primary-container": "#575149",
+                "on-tertiary-fixed": "#4d4947",
+                "on-secondary-fixed": "#423f37",
+                "secondary": "#68645b",
+                "primary": "#645d55",
+                "on-primary-fixed": "#443e37",
+                "surface-container-high": "#f2eedf",
+                "primary-dim": "#58514a",
+                "surface-dim": "#e6e3cf",
+                "secondary-fixed": "#e8e2d6",
+                "on-surface-variant": "#666557",
+                "on-secondary": "#ffffff",
+                "on-tertiary-container": "#605b59",
+                "outline": "#838172",
+                "inverse-surface": "#0f0e0a",
+                "tertiary-fixed-dim": "#ece4e1",
+                "surface-container-highest": "#ece8d7",
+                "inverse-on-surface": "#9f9d96",
+                "tertiary": "#686362",
+                "surface-tint": "#645d55",
+                "on-tertiary-fixed-variant": "#6a6563",
+                "surface-container": "#f7f4e7",
+                "secondary-fixed-dim": "#d9d4c8",
+                "surface-variant": "#ece8d7",
+                "tertiary-container": "#faf2ef",
+                "background": "#fffbff",
+                "on-background": "#39382c",
+                "inverse-primary": "#fff5ea",
+                "tertiary-fixed": "#faf2ef",
+                "primary-fixed-dim": "#dcd3c9",
+                "on-surface": "#39382c",
+                "on-error-container": "#742410",
+                "tertiary-dim": "#5c5756",
+                "surface": "#fffbff",
+                "error-dim": "#5c1202",
+                "primary-container": "#ebe1d7",
+                "secondary-container": "#e8e2d6",
+                "error-container": "#fe8b70",
+                "on-error": "#ffffff",
+                "surface-container-lowest": "#ffffff",
+                "on-secondary-container": "#555249",
+                "surface-bright": "#fffbff",
+                "on-primary": "#fff6ee",
+                "primary-fixed": "#ebe1d7",
+                "secondary-dim": "#5b584f",
+                "on-tertiary": "#ffffff"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {},
+        "fontFamily": {
+                "headline": [
+                        "Newsreader"
+                ],
+                "display": [
+                        "Newsreader"
+                ],
+                "body": [
+                        "Inter"
+                ],
+                "label": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {}
+},
+    },
+  }
+</script>
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+    .font-newsreader {
+        font-family: 'Newsreader', serif;
+    }
+</style>
+</head>
+<body class="text-on-background bg-surface-container flex h-screen overflow-hidden">
+<!-- Left Sidebar -->
+<aside class="w-[280px] bg-inverse-surface text-inverse-on-surface h-full overflow-y-auto shrink-0 flex flex-col pt-8 pb-8 z-40 border-r border-outline-variant/10">
+<div class="px-8 mb-12">
+<div class="font-newsreader italic text-inverse-primary text-2xl tracking-tight">Movemental</div>
+</div>
+<div class="mb-10 px-8">
+<h3 class="font-label text-[11px] font-semibold text-outline mb-4 uppercase tracking-[0.08em]">Guidebook</h3>
+<ul class="flex flex-col gap-4">
+<li class="flex items-center gap-3 text-[14px] text-inverse-on-surface hover:text-white transition-colors cursor-pointer">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed shrink-0"></span>
+<span class="truncate">Statement</span>
+</li>
+<li class="flex items-center gap-3 text-[14px] text-inverse-on-surface hover:text-white transition-colors cursor-pointer">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed shrink-0"></span>
+<span class="truncate">Policy</span>
+</li>
+<li class="flex items-center gap-3 text-[14px] text-inverse-on-surface hover:text-white transition-colors cursor-pointer">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed shrink-0"></span>
+<span class="truncate">Context</span>
+</li>
+<li class="flex items-center gap-3 text-[14px] text-inverse-on-surface hover:text-white transition-colors cursor-pointer">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed shrink-0"></span>
+<span class="truncate">Rules</span>
+</li>
+<li class="flex items-center gap-3 text-[14px] text-inverse-on-surface hover:text-white transition-colors cursor-pointer">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed shrink-0"></span>
+<span class="truncate">Response Plans</span>
+</li>
+</ul>
+</div>
+<div class="mb-10">
+<h3 class="font-label text-[11px] font-semibold text-outline mb-4 px-8 uppercase tracking-[0.08em]">Engagement</h3>
+<ul class="flex flex-col">
+<li class="flex items-center h-10 px-8 bg-on-surface/5 border-l-2 border-primary-fixed text-[14px] text-white">
+<span>Home</span>
+</li>
+<li class="flex items-center h-10 px-8 text-[14px] hover:text-white transition-colors cursor-pointer">
+<span>Timeline</span>
+</li>
+<li class="flex items-center h-10 px-8 text-[14px] hover:text-white transition-colors cursor-pointer">
+<span>Team</span>
+</li>
+<li class="flex items-center h-10 px-8 text-[14px] hover:text-white transition-colors cursor-pointer">
+<span>Comments</span>
+</li>
+</ul>
+</div>
+<div class="mt-auto px-8">
+<h3 class="font-label text-[11px] font-semibold text-outline mb-4 uppercase tracking-[0.08em] cursor-pointer hover:text-white transition-colors">Settings</h3>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-full overflow-hidden">
+<!-- Top NavBar -->
+<header class="h-[72px] flex items-center justify-end px-12 shrink-0 w-full border-b border-outline-variant/30">
+<div class="flex items-center gap-4 text-on-surface text-[13px]">
+<span class="font-medium text-on-surface-variant">Northridge Community Center</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-semibold">LO</div>
+</div>
+</header>
+<!-- Scrollable Main Content -->
+<main class="flex-1 overflow-y-auto p-12 lg:p-16">
+<div class="max-w-[1080px] mx-auto">
+<!-- Header Section -->
+<div class="max-w-[680px] mb-16">
+<div class="font-label text-[11px] font-semibold text-primary mb-6 uppercase tracking-[0.1em]">SafeStart Dashboard</div>
+<h1 class="font-newsreader italic text-4xl lg:text-5xl text-on-surface mb-8 leading-tight tracking-tight">Your Guidebook is ready for ratification.</h1>
+<p class="font-body text-[15px] text-on-surface-variant leading-relaxed">
+                    All five layers of your AI Organizational Guidebook have been drafted, reviewed, revised, and prepared for ratification. The next step is yours. Linda Ozawa signs the Statement as Executive Director; the Northridge Board of Directors ratifies the full Guidebook through your standard governance process. Movemental is not in that room. We're available by phone if questions arise.
+                </p>
+</div>
+<!-- Board Ratification Packet Band -->
+<div class="bg-surface-container-high rounded-xl p-8 lg:p-10 mb-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 border border-outline-variant/20">
+<div class="max-w-[500px]">
+<div class="font-label text-[11px] font-semibold text-on-surface-variant mb-3 uppercase tracking-[0.1em]">Board Ratification Packet</div>
+<h2 class="font-newsreader italic text-2xl text-on-surface mb-3">Export the packet for Thursday's meeting.</h2>
+<p class="font-body text-[14px] text-on-surface-variant">
+                        Twelve-page PDF including the full Guidebook, a one-page executive summary for the board, and the ratification motion text.
+                    </p>
+</div>
+<div class="flex flex-col items-start md:items-end gap-3 shrink-0">
+<button class="bg-primary text-on-primary font-label text-[14px] font-medium px-6 py-3 rounded-full hover:bg-primary-dim transition-colors shadow-sm">
+                        Export ratification packet
+                    </button>
+<span class="text-[11px] text-on-surface-variant font-medium uppercase tracking-[0.05em] px-2">PDF, 1.2 MB</span>
+</div>
+</div>
+<!-- Five-layer grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-20">
+<!-- Layer 1 -->
+<div class="bg-surface rounded-xl p-6 flex flex-col border border-outline-variant/30 shadow-sm">
+<div class="flex items-center gap-2 mb-6">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed"></span>
+<span class="font-label text-[10px] font-semibold text-on-surface-variant uppercase tracking-[0.08em]">Ready for Ratification</span>
+</div>
+<h3 class="font-newsreader italic text-[20px] text-on-surface mb-3">1. Statement</h3>
+<p class="font-body text-[13px] text-on-surface-variant mb-8 flex-1 leading-relaxed">Executive commitment to responsible AI adoption and core principles.</p>
+<div class="text-[10px] text-outline font-medium uppercase tracking-[0.08em] pt-4 border-t border-outline-variant/30">Final Version — May 18, 2026</div>
+</div>
+<!-- Layer 2 -->
+<div class="bg-surface rounded-xl p-6 flex flex-col border border-outline-variant/30 shadow-sm">
+<div class="flex items-center gap-2 mb-6">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed"></span>
+<span class="font-label text-[10px] font-semibold text-on-surface-variant uppercase tracking-[0.08em]">Ready for Ratification</span>
+</div>
+<h3 class="font-newsreader italic text-[20px] text-on-surface mb-3">2. Policy</h3>
+<p class="font-body text-[13px] text-on-surface-variant mb-8 flex-1 leading-relaxed">Organizational boundaries, approved systems, and acceptable use cases.</p>
+<div class="text-[10px] text-outline font-medium uppercase tracking-[0.08em] pt-4 border-t border-outline-variant/30">Final Version — May 18, 2026</div>
+</div>
+<!-- Layer 3 -->
+<div class="bg-surface rounded-xl p-6 flex flex-col border border-outline-variant/30 shadow-sm">
+<div class="flex items-center gap-2 mb-6">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed"></span>
+<span class="font-label text-[10px] font-semibold text-on-surface-variant uppercase tracking-[0.08em]">Ready for Ratification</span>
+</div>
+<h3 class="font-newsreader italic text-[20px] text-on-surface mb-3">3. Context</h3>
+<p class="font-body text-[13px] text-on-surface-variant mb-8 flex-1 leading-relaxed">The strategic reasoning and landscape analysis driving these decisions.</p>
+<div class="text-[10px] text-outline font-medium uppercase tracking-[0.08em] pt-4 border-t border-outline-variant/30">Final Version — May 18, 2026</div>
+</div>
+<!-- Layer 4 -->
+<div class="bg-surface rounded-xl p-6 flex flex-col border border-outline-variant/30 shadow-sm">
+<div class="flex items-center gap-2 mb-6">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed"></span>
+<span class="font-label text-[10px] font-semibold text-on-surface-variant uppercase tracking-[0.08em]">Ready for Ratification</span>
+</div>
+<h3 class="font-newsreader italic text-[20px] text-on-surface mb-3">4. Rules</h3>
+<p class="font-body text-[13px] text-on-surface-variant mb-8 flex-1 leading-relaxed">Specific workflows, data handling procedures, and review requirements.</p>
+<div class="text-[10px] text-outline font-medium uppercase tracking-[0.08em] pt-4 border-t border-outline-variant/30">Final Version — May 18, 2026</div>
+</div>
+<!-- Layer 5 -->
+<div class="bg-surface rounded-xl p-6 flex flex-col border border-outline-variant/30 shadow-sm">
+<div class="flex items-center gap-2 mb-6">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed"></span>
+<span class="font-label text-[10px] font-semibold text-on-surface-variant uppercase tracking-[0.08em]">Ready for Ratification</span>
+</div>
+<h3 class="font-newsreader italic text-[20px] text-on-surface mb-3">5. Response Plans</h3>
+<p class="font-body text-[13px] text-on-surface-variant mb-8 flex-1 leading-relaxed">Pre-approved protocols for managing AI-related incidents or breaches.</p>
+<div class="text-[10px] text-outline font-medium uppercase tracking-[0.08em] pt-4 border-t border-outline-variant/30">Final Version — May 18, 2026</div>
+</div>
+</div>
+<!-- Two-column section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+<!-- Left Column (8/12) -->
+<div class="lg:col-span-8">
+<div class="font-label text-[11px] font-semibold text-on-surface-variant mb-4 uppercase tracking-[0.1em]">What Needs To Happen</div>
+<h2 class="font-newsreader italic text-[28px] text-on-surface mb-10">Three actions complete ratification.</h2>
+<div class="flex flex-col">
+<!-- Action 1 -->
+<div class="py-8 border-t border-outline-variant/30 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+<div class="max-w-[440px]">
+<h4 class="font-body text-[16px] font-medium text-on-surface mb-2">Action 01: Executive Signature</h4>
+<p class="font-body text-[14px] text-on-surface-variant leading-relaxed">Linda Ozawa must sign the Statement layer to formally establish the organizational mandate.</p>
+</div>
+<a class="font-label text-[13px] font-medium text-primary hover:text-primary-dim inline-flex items-center gap-1 transition-colors group" href="#">
+                                Sign now <span class="group-hover:translate-x-1 transition-transform">→</span>
+</a>
+</div>
+<!-- Action 2 -->
+<div class="py-8 border-t border-outline-variant/30 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+<div class="max-w-[440px]">
+<h4 class="font-body text-[16px] font-medium text-on-surface mb-2">Action 02: Board Ratification</h4>
+<p class="font-body text-[14px] text-on-surface-variant leading-relaxed">The Board of Directors reviews the packet and votes to ratify the Guidebook into official policy.</p>
+</div>
+<a class="font-label text-[13px] font-medium text-primary hover:text-primary-dim inline-flex items-center gap-1 transition-colors group" href="#">
+                                View motion text <span class="group-hover:translate-x-1 transition-transform">→</span>
+</a>
+</div>
+<!-- Action 3 -->
+<div class="py-8 border-t border-outline-variant/30 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+<div class="max-w-[440px]">
+<h4 class="font-body text-[16px] font-medium text-on-surface mb-2">Action 03: Record Ratification</h4>
+<p class="font-body text-[14px] text-on-surface-variant leading-relaxed">Once approved, log the formal date of ratification here to transition the Guidebook to Active status.</p>
+</div>
+<a class="font-label text-[13px] font-medium text-primary hover:text-primary-dim inline-flex items-center gap-1 transition-colors group" href="#">
+                                Record ratification <span class="group-hover:translate-x-1 transition-transform">→</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Right Column (4/12) -->
+<div class="lg:col-span-4">
+<div class="font-label text-[11px] font-semibold text-on-surface-variant mb-4 uppercase tracking-[0.1em]">Your Governance Path</div>
+<div class="bg-surface-container-high rounded-xl p-8 border border-outline-variant/20">
+<h3 class="font-newsreader italic text-[22px] text-on-surface mb-6">Board of Directors Meeting</h3>
+<div class="mb-6">
+<div class="font-label text-[13px] font-medium text-on-surface mb-2">Date &amp; Time</div>
+<div class="font-body text-[14px] text-on-surface-variant leading-relaxed">Thursday, May 21, 2026<br/>7:00 PM - 9:00 PM</div>
+</div>
+<div class="mb-8">
+<div class="font-label text-[13px] font-medium text-on-surface mb-2">Location</div>
+<div class="font-body text-[14px] text-on-surface-variant leading-relaxed">Main Boardroom<br/>Northridge Community Center</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/30">
+<div class="font-label text-[10px] font-semibold text-outline uppercase mb-3 tracking-[0.08em]">Movemental Contact</div>
+<div class="font-label text-[14px] font-medium text-on-surface mb-1">Joshua Shepherd</div>
+<div class="font-body text-[14px] text-on-surface-variant leading-relaxed">joshua@movemental.org<br/>555-019-8273</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

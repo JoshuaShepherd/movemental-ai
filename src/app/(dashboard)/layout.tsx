@@ -2,14 +2,21 @@ import { Suspense } from "react";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { DashboardShell } from "@/components/dashboard/dashboard-shell";
+import { AuthenticatedShell } from "@/components/authenticated/authenticated-shell";
 import { OnboardingPanel } from "@/components/onboarding/onboarding-panel";
+import { resolveAuthenticatedShellContext } from "@/lib/authenticated/product-context";
+import { getMovementLeaderByEmail } from "@/lib/movement-leaders/movement-leaders.server";
 import {
   isUserStaff,
   listMembershipOrganizations,
   loadDashboardPersonaMapForUser,
 } from "@/lib/services/onboarding/onboarding.service";
 import { createClient } from "@/lib/supabase/server";
+
+function isLeaderWorkspacePath(pathname: string): boolean {
+  if (pathname === "/leader/apply") return false;
+  return pathname === "/leader" || pathname.startsWith("/leader/");
+}
 
 export default async function DashboardLayout({
   children,
@@ -27,9 +34,16 @@ export default async function DashboardLayout({
     redirect(`/login?next=${encodeURIComponent(path)}`);
   }
 
+  const h = await headers();
+  const pathname = h.get("x-pathname") ?? "/dashboard";
+
   const membershipsRaw = await listMembershipOrganizations(user.id);
+  const leaderRow = await getMovementLeaderByEmail(user.email ?? "");
+
   if (membershipsRaw.length === 0) {
-    redirect("/login?reason=no_org");
+    if (!(isLeaderWorkspacePath(pathname) && leaderRow)) {
+      redirect("/login?reason=no_org");
+    }
   }
 
   const memberships = membershipsRaw.map((m) => ({
@@ -42,20 +56,28 @@ export default async function DashboardLayout({
   const initialSlug = memberships[0]?.orgSlug ?? "";
   const personaByOrgSlug = await loadDashboardPersonaMapForUser(user.id);
 
+  const { productContext, sidebar } = resolveAuthenticatedShellContext(pathname);
+
+  const showOnboardingPanel = !pathname.startsWith("/leader");
+
   return (
-    <Suspense
-      fallback={<div className="min-h-dvh bg-section" aria-hidden />}
-    >
-      <DashboardShell
+    <Suspense fallback={<div className="min-h-dvh bg-section" aria-hidden />}>
+      <AuthenticatedShell
         initialOrgSlug={initialSlug}
         userEmail={user.email ?? ""}
         memberships={memberships}
         personaByOrgSlug={personaByOrgSlug}
         showAdminLink={staff}
+        productContext={productContext}
+        sidebar={sidebar}
+        hasLeaderWorkspace={Boolean(leaderRow)}
+        workspaceFallbackLabel={
+          memberships.length === 0 && leaderRow ? leaderRow.full_name : null
+        }
       >
-        <OnboardingPanel />
+        {showOnboardingPanel ? <OnboardingPanel /> : null}
         {children}
-      </DashboardShell>
+      </AuthenticatedShell>
     </Suspense>
   );
 }

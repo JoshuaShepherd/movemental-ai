@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Movemental - SafeStart Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "error": "#a54731",
+                "surface-bright": "#fffbff",
+                "inverse-primary": "#fff5ea",
+                "primary-dim": "#58514a",
+                "secondary-container": "#e8e2d6",
+                "on-tertiary": "#ffffff",
+                "surface-tint": "#645d55",
+                "on-secondary-container": "#555249",
+                "secondary-dim": "#5b584f",
+                "background": "#fffbff",
+                "on-tertiary-container": "#605b59",
+                "on-background": "#39382c",
+                "on-secondary-fixed": "#423f37",
+                "tertiary-fixed-dim": "#ece4e1",
+                "on-error-container": "#742410",
+                "on-primary-fixed": "#443e37",
+                "secondary-fixed": "#e8e2d6",
+                "secondary-fixed-dim": "#d9d4c8",
+                "on-primary": "#fff6ee",
+                "surface-container-high": "#f2eedf",
+                "surface": "#fffbff",
+                "error-container": "#fe8b70",
+                "tertiary-fixed": "#faf2ef",
+                "on-secondary-fixed-variant": "#5f5b52",
+                "inverse-on-surface": "#9f9d96",
+                "secondary": "#68645b",
+                "inverse-surface": "#0f0e0a",
+                "tertiary-container": "#faf2ef",
+                "on-surface-variant": "#666557",
+                "tertiary-dim": "#5c5756",
+                "error-dim": "#5c1202",
+                "surface-container-low": "#fdf9ef",
+                "on-error": "#ffffff",
+                "on-primary-container": "#575149",
+                "surface-container-highest": "#ece8d7",
+                "primary-fixed": "#ebe1d7",
+                "surface-container-lowest": "#ffffff",
+                "surface-container": "#f7f4e7",
+                "on-primary-fixed-variant": "#615b53",
+                "on-secondary": "#ffffff",
+                "outline": "#838172",
+                "tertiary": "#686362",
+                "primary-container": "#ebe1d7",
+                "outline-variant": "#bcbaa9",
+                "on-surface": "#39382c",
+                "on-tertiary-fixed-variant": "#6a6563",
+                "surface-dim": "#e6e3cf",
+                "primary": "#645d55",
+                "primary-fixed-dim": "#dcd3c9",
+                "surface-variant": "#ece8d7",
+                "on-tertiary-fixed": "#4d4947"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {},
+        "fontFamily": {
+                "headline": [
+                        "Newsreader", "serif"
+                ],
+                "display": [
+                        "Newsreader", "serif"
+                ],
+                "body": [
+                        "Inter", "sans-serif"
+                ],
+                "label": [
+                        "Inter", "sans-serif"
+                ]
+        },
+        "fontSize": {}
+},
+    },
+  }
+</script>
+</head>
+<body class="bg-background text-on-surface font-body antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNav -->
+<header class="bg-surface/90 backdrop-blur-md h-20 flex justify-between items-center px-12 w-full sticky top-0 z-50 rounded-none shrink-0 border-b border-outline-variant/30">
+<div class="text-2xl font-display italic font-bold text-on-surface tracking-tighter">
+            MOVEMENTAL
+        </div>
+<div class="flex items-center gap-4 text-on-surface-variant font-label text-[13px] font-medium">
+<span>Northridge Community Center</span>
+<span class="opacity-50">•</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-xs font-bold text-on-surface border border-outline-variant/30">
+                LO
+            </div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-[1000px] mx-auto px-8 md:px-16 py-20 flex flex-col gap-16">
+<!-- Header Section -->
+<section class="flex flex-col gap-5">
+<span class="text-primary font-label font-bold text-[11px] uppercase tracking-[0.1em]">
+                SAFESTART DASHBOARD
+            </span>
+<h1 class="font-display italic text-5xl leading-[1.1] text-on-surface">
+                Welcome to your engagement.
+            </h1>
+<p class="font-body text-lg leading-relaxed text-on-surface-variant max-w-[800px]">
+                Your SafeStart engagement begins with a one-hour kickoff Zoom tomorrow at 10:00 AM Central with Joshua Shepherd. Below is what to expect over the next two weeks. Your dashboard will become more active after kickoff — for now, this page is your engagement summary.
+            </p>
+</section>
+<div class="h-px w-full bg-outline-variant/30"></div>
+<!-- Timeline -->
+<section class="flex flex-col gap-8 overflow-x-auto pb-6">
+<div class="relative flex min-w-max pt-2">
+<!-- Line -->
+<div class="absolute top-[15px] left-6 right-6 h-[2px] bg-surface-container-highest z-0"></div>
+<div class="absolute top-[15px] left-6 w-[240px] h-[2px] bg-primary z-0"></div>
+<!-- Stage 1 -->
+<div class="flex flex-col gap-4 w-52 relative z-10 group">
+<div class="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<span class="font-display italic text-[17px] text-primary">Stage 1</span>
+<span class="font-label text-[15px] font-medium text-on-surface">Engagement signed</span>
+<span class="font-label text-[13px] text-on-surface-variant">May 10, 2026</span>
+</div>
+</div>
+<!-- Stage 2 (Current) -->
+<div class="flex flex-col gap-4 w-60 relative z-10">
+<div class="flex items-center justify-center w-8 h-8 rounded-full bg-surface border-2 border-primary shadow-sm relative">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<div class="absolute inset-0 rounded-full bg-primary animate-ping opacity-20"></div>
+</div>
+<div class="flex flex-col gap-1.5">
+<span class="font-display italic text-[17px] text-primary">Stage 2</span>
+<span class="font-label text-[15px] font-semibold text-on-surface">Kickoff Zoom</span>
+<span class="font-label text-[13px] text-primary font-medium">Tomorrow, May 12, 10:00 AM CT</span>
+</div>
+</div>
+<!-- Stages 3-6 (Muted) -->
+<div class="flex gap-6 text-on-surface-variant/60">
+<div class="flex flex-col gap-4 w-44 relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface border-2 border-surface-container-highest flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+</div>
+<div class="flex flex-col gap-1.5">
+<span class="font-display italic text-[17px] text-on-surface-variant/70">Stage 3</span>
+<span class="font-label text-[15px] text-on-surface-variant">Asynchronous review</span>
+</div>
+</div>
+<div class="flex flex-col gap-4 w-44 relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface border-2 border-surface-container-highest flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+</div>
+<div class="flex flex-col gap-1.5">
+<span class="font-display italic text-[17px] text-on-surface-variant/70">Stage 4</span>
+<span class="font-label text-[15px] text-on-surface-variant">Revision Zoom</span>
+</div>
+</div>
+<div class="flex flex-col gap-4 w-44 relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface border-2 border-surface-container-highest flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+</div>
+<div class="flex flex-col gap-1.5">
+<span class="font-display italic text-[17px] text-on-surface-variant/70">Stage 5</span>
+<span class="font-label text-[15px] text-on-surface-variant">Internal ratification</span>
+</div>
+</div>
+<div class="flex flex-col gap-4 w-52 relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface border-2 border-surface-container-highest flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+</div>
+<div class="flex flex-col gap-1.5">
+<span class="font-display italic text-[17px] text-on-surface-variant/70">Stage 6</span>
+<span class="font-label text-[15px] text-on-surface-variant">Publication and rollout</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="h-px w-full bg-outline-variant/30"></div>
+<!-- Three Column Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+<!-- Col 1 -->
+<div class="flex flex-col gap-6">
+<span class="font-label text-[11px] uppercase tracking-[0.1em] text-on-surface-variant font-semibold">
+                    YOUR CONTRIBUTORS
+                </span>
+<ul class="flex flex-col gap-5">
+<li>
+<div class="font-label text-[15px] font-medium text-on-surface">Linda Ozawa</div>
+<div class="font-body text-[13px] text-on-surface-variant mt-0.5">Executive Director</div>
+</li>
+<li>
+<div class="font-label text-[15px] font-medium text-on-surface">Marcus Vance</div>
+<div class="font-body text-[13px] text-on-surface-variant mt-0.5">Director of Development</div>
+</li>
+<li>
+<div class="font-label text-[15px] font-medium text-on-surface">Sarah Kim</div>
+<div class="font-body text-[13px] text-on-surface-variant mt-0.5">Communications Director</div>
+</li>
+<li>
+<div class="font-label text-[15px] font-medium text-on-surface">James Brennan</div>
+<div class="font-body text-[13px] text-on-surface-variant mt-0.5">Director of Programs</div>
+</li>
+<li>
+<div class="font-label text-[15px] font-medium text-on-surface">Amelia Torres</div>
+<div class="font-body text-[13px] text-on-surface-variant mt-0.5">Chief Financial Officer</div>
+</li>
+</ul>
+</div>
+<!-- Col 2 -->
+<div class="flex flex-col gap-6">
+<span class="font-label text-[11px] uppercase tracking-[0.1em] text-on-surface-variant font-semibold">
+                    YOUR DECIDERS
+                </span>
+<ul class="flex flex-col gap-5">
+<li>
+<div class="font-label text-[15px] font-medium text-on-surface">Linda Ozawa</div>
+<div class="font-body text-[13px] text-on-surface-variant mt-0.5">Executive Director (signing)</div>
+</li>
+<li>
+<div class="font-label text-[15px] font-medium text-on-surface">The Northridge Board of Directors</div>
+<div class="font-body text-[13px] text-on-surface-variant mt-0.5">(ratifying)</div>
+</li>
+</ul>
+</div>
+<!-- Col 3 -->
+<div class="flex flex-col gap-6">
+<span class="font-label text-[11px] uppercase tracking-[0.1em] text-on-surface-variant font-semibold">
+                    YOUR FACILITATOR
+                </span>
+<ul class="flex flex-col gap-5">
+<li>
+<div class="font-label text-[15px] font-medium text-on-surface">Joshua Shepherd</div>
+<div class="font-body text-[13px] text-on-surface-variant mt-0.5">Founder &amp; CTO, Movemental</div>
+</li>
+</ul>
+<div class="mt-2 pt-6 border-t border-outline-variant/30 font-body text-[13px] text-on-surface-variant leading-relaxed">
+                    Available during engagement:<br/>
+<a class="text-primary hover:text-on-surface transition-colors font-medium mt-1 inline-block" href="mailto:josh@movemental.ai">josh@movemental.ai</a><br/>
+                    (816) 555-0142
+                </div>
+</div>
+</section>
+<!-- Prep Section -->
+<section class="flex flex-col md:flex-row gap-8 lg:gap-16 items-start bg-surface-container-low p-10 rounded-xl mt-4">
+<div class="flex flex-col gap-3 min-w-[240px]">
+<span class="font-label text-[11px] uppercase tracking-[0.1em] text-primary font-bold">
+                    BEFORE THE KICKOFF ZOOM
+                </span>
+<h2 class="font-display italic text-[28px] text-on-surface leading-tight">
+                    A few things to bring to the kickoff.
+                </h2>
+</div>
+<div class="flex flex-col gap-5 max-w-[540px]">
+<p class="font-body text-base leading-relaxed text-on-surface-variant">
+                    The kickoff is one hour. We will use this time to align on objectives, confirm the timeline, and establish the operational cadence. Please be ready to discuss or provide the following during our session.
+                </p>
+<ul class="flex flex-col gap-3 font-body text-base text-on-surface">
+<li class="flex items-start gap-3">
+<span class="text-primary mt-1 text-[10px] material-symbols-outlined">circle</span>
+<span>Existing AI policy drafts (if any)</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="text-primary mt-1 text-[10px] material-symbols-outlined">circle</span>
+<span>Relevant Board documents from Q1</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="text-primary mt-1 text-[10px] material-symbols-outlined">circle</span>
+<span>Specific concerns regarding data privacy</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="text-primary mt-1 text-[10px] material-symbols-outlined">circle</span>
+<span>Current list of sanctioned AI tools</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="text-primary mt-1 text-[10px] material-symbols-outlined">circle</span>
+<span>Primary Donor/Board stakeholders</span>
+</li>
+</ul>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface mt-auto flex flex-col md:flex-row justify-between items-center px-12 h-24 w-full shrink-0">
+<div class="text-xl font-display italic text-inverse-on-surface tracking-wide">
+            MOVEMENTAL
+        </div>
+<nav class="flex gap-8 font-label text-[13px] text-inverse-on-surface font-medium">
+<a class="opacity-70 hover:opacity-100 hover:text-white transition-colors" href="#">Help</a>
+<a class="opacity-70 hover:opacity-100 hover:text-white transition-colors" href="#">Contact Josh</a>
+<a class="opacity-70 hover:opacity-100 hover:text-white transition-colors" href="#">Sign out</a>
+</nav>
+</footer>
+</body></html>

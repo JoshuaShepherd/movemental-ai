@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Phase 06 Ethics Review</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600;1,6..72,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#605b59",
+                      "surface-variant": "#ece8d7",
+                      "on-secondary-fixed-variant": "#5f5b52",
+                      "on-secondary-fixed": "#423f37",
+                      "on-background": "#39382c",
+                      "on-error-container": "#742410",
+                      "on-secondary": "#ffffff",
+                      "secondary-dim": "#5b584f",
+                      "error-container": "#fe8b70",
+                      "surface-container-highest": "#ece8d7",
+                      "surface": "#fffbff",
+                      "on-error": "#ffffff",
+                      "tertiary-dim": "#5c5756",
+                      "surface-tint": "#645d55",
+                      "primary-container": "#ebe1d7",
+                      "secondary": "#68645b",
+                      "secondary-fixed": "#e8e2d6",
+                      "surface-container": "#f7f4e7",
+                      "inverse-primary": "#fff5ea",
+                      "tertiary": "#686362",
+                      "error": "#a54731",
+                      "on-surface": "#39382c",
+                      "primary-fixed-dim": "#dcd3c9",
+                      "error-dim": "#5c1202",
+                      "outline": "#838172",
+                      "surface-container-high": "#f2eedf",
+                      "surface-bright": "#fffbff",
+                      "secondary-fixed-dim": "#d9d4c8",
+                      "secondary-container": "#e8e2d6",
+                      "on-primary-fixed-variant": "#615b53",
+                      "on-primary-container": "#575149",
+                      "primary": "#645d55",
+                      "primary-dim": "#58514a",
+                      "primary-fixed": "#ebe1d7",
+                      "on-secondary-container": "#555249",
+                      "on-surface-variant": "#666557",
+                      "tertiary-fixed-dim": "#ece4e1",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed": "#faf2ef",
+                      "on-tertiary-fixed-variant": "#6a6563",
+                      "on-primary-fixed": "#443e37",
+                      "tertiary-container": "#faf2ef",
+                      "outline-variant": "#bcbaa9",
+                      "inverse-on-surface": "#9f9d96",
+                      "inverse-surface": "#0f0e0a",
+                      "background": "#fffbff",
+                      "on-tertiary": "#ffffff",
+                      "surface-dim": "#e6e3cf",
+                      "surface-container-low": "#fdf9ef",
+                      "on-primary": "#fff6ee",
+                      "on-tertiary-fixed": "#4d4947"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": [
+                              "Newsreader"
+                      ],
+                      "display": [
+                              "Newsreader"
+                      ],
+                      "body": [
+                              "Inter"
+                      ],
+                      "label": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {}
+      },
+          },
+        }
+    </script>
+<style>
+        body { background-color: #FAF8F4; } /* Custom cream per instructions, overriding config background for main area if needed, but sticking to classes where possible */
+        .no-radius { border-radius: 0px !important; }
+        .hairline-b { border-bottom: 0.5px solid rgba(188, 186, 169, 0.5); }
+        .hairline-t { border-top: 0.5px solid rgba(188, 186, 169, 0.5); }
+        .hairline-l { border-left: 0.5px solid rgba(188, 186, 169, 0.5); }
+        .hairline { border: 0.5px solid rgba(188, 186, 169, 0.5); }
+    </style>
+</head>
+<body class="font-body text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container flex h-screen overflow-hidden">
+<!-- JSON Component: SideNavBar -->
+<nav class="hidden md:flex flex-col h-full pt-8 bg-surface-container-low dark:bg-surface-container-low text-primary dark:text-primary font-body text-label-sm uppercase tracking-widest docked left-0 h-screen w-72 rounded-none border-r border-outline-variant/20 flat no shadows shrink-0 z-40">
+<div class="px-8 pb-8">
+<h2 class="font-display italic text-on-surface text-xl">Engagement Path</h2>
+<p class="text-xs text-on-surface-variant mt-1 normal-case tracking-normal">AI Strategic Ledger</p>
+</div>
+<div class="flex-1 overflow-y-auto">
+<ul class="flex flex-col space-y-1 w-full">
+<li>
+<a class="flex items-center w-full px-8 py-3 text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-colors linear 200ms fade on tab switch" href="#">
+<span class="material-symbols-outlined mr-4 text-[20px]" data-icon="security" data-weight="regular">security</span>
+                        Safety
+                    </a>
+</li>
+<li>
+<a class="flex items-center w-full px-8 py-3 bg-surface-container-highest text-primary font-bold border-l-2 border-primary linear 200ms fade on tab switch" href="#">
+<span class="material-symbols-outlined mr-4 text-[20px]" data-icon="science" data-weight="fill" style="font-variation-settings: 'FILL' 1;">science</span>
+                        Sandbox
+                    </a>
+</li>
+<li>
+<a class="flex items-center w-full px-8 py-3 text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-colors linear 200ms fade on tab switch" href="#">
+<span class="material-symbols-outlined mr-4 text-[20px]" data-icon="psychology" data-weight="regular">psychology</span>
+                        Skills
+                    </a>
+</li>
+<li>
+<a class="flex items-center w-full px-8 py-3 text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high transition-colors linear 200ms fade on tab switch" href="#">
+<span class="material-symbols-outlined mr-4 text-[20px]" data-icon="architecture" data-weight="regular">architecture</span>
+                        Solutions
+                    </a>
+</li>
+</ul>
+</div>
+<div class="p-8 border-t border-outline-variant/20">
+<button class="w-full py-3 border border-outline/20 text-primary hover:bg-surface-container-high transition-colors duration-200 no-radius text-xs tracking-widest uppercase font-medium">
+                Export Analysis
+            </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-full overflow-hidden bg-[#FAF8F4]">
+<!-- JSON Component: TopAppBar -->
+<header class="bg-inverse-surface dark:bg-inverse-surface text-on-primary dark:text-on-primary font-display italic tracking-tight text-headline-sm docked full-width top-0 rounded-none border-none flat no shadows flex justify-between items-center w-full px-8 h-16 shrink-0 z-50">
+<div class="flex items-center">
+<span class="font-display italic text-2xl text-on-primary tracking-tighter">Movemental</span>
+</div>
+<nav class="hidden md:flex space-x-8">
+<a class="text-on-primary/70 font-label hover:text-on-primary transition-colors duration-200 Active: opacity-80 transition-all duration-200" href="#">Engagement</a>
+<a class="text-on-primary/70 font-label hover:text-on-primary transition-colors duration-200 Active: opacity-80 transition-all duration-200" href="#">Archive</a>
+<a class="text-on-primary/70 font-label hover:text-on-primary transition-colors duration-200 Active: opacity-80 transition-all duration-200" href="#">Strategy</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="flex items-center text-on-primary/70 hover:text-on-primary transition-colors duration-200">
+<span class="material-symbols-outlined text-[20px]" data-icon="lock" data-weight="regular">lock</span>
+</button>
+<button class="bg-primary text-on-primary px-4 py-2 text-sm normal-case tracking-normal font-body no-radius hover:bg-primary-dim transition-colors duration-200">
+                    Secure Access
+                </button>
+</div>
+</header>
+<!-- Scrollable Canvas -->
+<main class="flex-1 overflow-y-auto px-12 pt-16 pb-32">
+<div class="max-w-[960px] mx-auto">
+<!-- Breadcrumb & Header -->
+<div class="mb-12">
+<p class="text-xs text-on-surface-variant font-body mb-6">Sandbox · Phase 06 · Ethics Review</p>
+<div class="flex items-center mb-4 font-body text-xs tracking-widest uppercase">
+<span class="text-[#b45309] font-medium">PHASE 06 — ETHICS REVIEW</span>
+<span class="mx-3 text-on-surface-variant">·</span>
+<span class="text-on-surface-variant normal-case tracking-normal">Cohort view · 8 of 11 reviewers responded</span>
+</div>
+<h1 class="font-display italic text-4xl text-on-surface mb-2 tracking-tight">What outside voices are saying</h1>
+<p class="font-display italic text-lg text-on-surface-variant mb-6">The cohort weighs this input. Decisions come in the next phase.</p>
+<p class="font-body text-[15px] leading-relaxed text-on-surface max-w-[720px]">
+                        Seven use cases are open for review. Eleven reviewers were invited; eight have responded. Twenty-three comments received. Below is what's surfacing across the feedback. The reviewers' words are their own; the themes are what the cohort can see in aggregate.
+                    </p>
+</div>
+<div class="hairline-b w-full mb-12"></div>
+<!-- Metric Strip -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+<div class="flex flex-col border-l border-outline-variant/30 pl-4">
+<span class="font-body text-[10px] tracking-widest uppercase text-on-surface-variant mb-2">USE CASES UNDER REVIEW</span>
+<span class="font-display text-4xl text-on-surface">7</span>
+</div>
+<div class="flex flex-col border-l border-outline-variant/30 pl-4">
+<span class="font-body text-[10px] tracking-widest uppercase text-on-surface-variant mb-2">REVIEWERS INVITED</span>
+<span class="font-display text-4xl text-on-surface">11</span>
+</div>
+<div class="flex flex-col border-l border-outline-variant/30 pl-4">
+<span class="font-body text-[10px] tracking-widest uppercase text-on-surface-variant mb-2">RESPONSES RECEIVED</span>
+<div class="flex items-baseline space-x-2">
+<span class="font-display text-4xl text-on-surface">8</span>
+<span class="font-body text-xs text-on-surface-variant">73% response rate</span>
+</div>
+</div>
+<div class="flex flex-col border-l border-outline-variant/30 pl-4">
+<span class="font-body text-[10px] tracking-widest uppercase text-on-surface-variant mb-2">COMMENTS RECEIVED</span>
+<div class="flex items-baseline space-x-2">
+<span class="font-display text-4xl text-on-surface">23</span>
+<span class="font-body text-xs text-on-surface-variant">Across 6 of 7 use cases</span>
+</div>
+</div>
+</div>
+<div class="hairline-b w-full mb-16"></div>
+<!-- Feedback Grid -->
+<div class="mb-20">
+<p class="font-body text-xs tracking-widest uppercase text-on-surface-variant mb-4">USE CASES UNDER REVIEW — WITH FEEDBACK SUMMARY</p>
+<h2 class="font-display italic text-2xl text-on-surface mb-8">Click any use case for full reviewer comments</h2>
+<div class="flex flex-col space-y-0">
+<!-- Card 01 -->
+<div class="border border-outline-variant/40 bg-surface-container-low hover:bg-surface-container transition-colors duration-200 cursor-pointer p-8 no-radius">
+<div class="flex justify-between items-start mb-4">
+<span class="font-body text-[10px] tracking-widest uppercase text-[#b45309]">DEVELOPMENT &amp; FUNDRAISING</span>
+<span class="font-body text-xs text-on-surface-variant">5 comments</span>
+</div>
+<h3 class="font-display text-xl text-on-surface mb-2">Grant Proposal Drafting Assistant</h3>
+<p class="font-body text-sm text-on-surface-variant mb-6 leading-relaxed max-w-[80%]">AI helps draft first versions of grant proposals using past winning examples and program outcomes.</p>
+<div class="bg-surface p-4 border border-outline-variant/20 no-radius">
+<div class="flex items-center mb-2">
+<div class="w-2 h-2 rounded-full bg-[#166534] mr-2"></div>
+<span class="font-body text-xs font-medium text-on-surface">Largely supportive</span>
+</div>
+<p class="font-body text-sm text-on-surface italic">"Reviewers see this as a clear stewardship win. One board member raised: how do we know AI didn't fabricate outcome statistics? The cohort's verification protocol addresses this directly."</p>
+</div>
+</div>
+<!-- Card 02 -->
+<div class="border-b border-l border-r border-t-0 border-outline-variant/40 bg-surface hover:bg-surface-container transition-colors duration-200 cursor-pointer p-8 no-radius">
+<div class="flex justify-between items-start mb-4">
+<span class="font-body text-[10px] tracking-widest uppercase text-[#b45309]">LEADERSHIP</span>
+<span class="font-body text-xs text-on-surface-variant">4 comments</span>
+</div>
+<h3 class="font-display text-xl text-on-surface mb-2">Strategic Memo Generator</h3>
+<p class="font-body text-sm text-on-surface-variant mb-6 leading-relaxed max-w-[80%]">Compiles notes from leadership retreats into structured strategic memos for board review.</p>
+<div class="bg-surface-container-low p-4 border border-outline-variant/20 no-radius">
+<div class="flex items-center mb-2">
+<div class="w-2 h-2 rounded-full bg-[#ca8a04] mr-2"></div>
+<span class="font-body text-xs font-medium text-on-surface">Mixed feedback</span>
+</div>
+<p class="font-body text-sm text-on-surface italic">"Concerns around AI homogenizing the organizational voice. Suggestion to keep this internal-only for drafting, requiring heavy manual editing before distribution."</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Open Questions -->
+<div class="mb-24">
+<p class="font-body text-xs tracking-widest uppercase text-on-surface-variant mb-4">QUESTIONS THE COHORT NEEDS TO ANSWER</p>
+<h2 class="font-display italic text-2xl text-on-surface mb-8">Three questions surfaced by the review</h2>
+<ol class="list-decimal list-outside pl-5 font-body text-sm text-on-surface space-y-6 max-w-[720px] leading-relaxed">
+<li class="pl-2">If a reviewer fundamentally objects to an AI use case on theological grounds, what is the escalation path for that objection?</li>
+<li class="pl-2">How much manual review time is required to verify the 'Grant Proposal' outputs, and does it negate the time saved?</li>
+<li class="pl-2">Are we prepared to disclose our AI usage policies to major donors before they ask?</li>
+</ol>
+</div>
+</div>
+</main>
+<!-- Bottom Action Band -->
+<div class="bg-surface-tint w-full h-[90px] px-12 flex justify-between items-center shrink-0 z-40 border-t border-inverse-surface/10">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-on-primary mr-3 text-[20px]" data-icon="schedule">schedule</span>
+<p class="font-body text-sm text-on-primary">Reviewer response deadline: June 24. Three more days for late responses.</p>
+</div>
+<div class="flex items-center space-x-4">
+<button class="px-6 py-2.5 border border-on-primary/30 text-on-primary hover:bg-on-primary/10 transition-colors duration-200 font-body text-sm no-radius">
+                    Send reminder to non-responders
+                </button>
+<button class="px-6 py-2.5 bg-inverse-surface text-on-primary hover:bg-inverse-surface/90 transition-colors duration-200 font-body text-sm font-medium no-radius">
+                    Move to Discerning preparation
+                </button>
+</div>
+</div>
+</div>
+<!-- JSON Component: BottomNavBar (Hidden on md and up, visible on mobile if needed, but specs focus on desktop layout) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-center items-center h-16 bg-surface/90 backdrop-blur-xl border-t border-outline-variant/20 px-4">
+<!-- Simplified mobile nav placeholder to respect json component inclusion -->
+<div class="flex justify-around w-full">
+<button class="flex flex-col items-center text-primary p-2">
+<span class="material-symbols-outlined text-[24px]" data-icon="account_tree">account_tree</span>
+<span class="font-label uppercase text-[10px] tracking-widest mt-1">Stage</span>
+</button>
+</div>
+</nav>
+</body></html>

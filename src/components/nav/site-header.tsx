@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, Moon, Sun, Download } from "lucide-react";
@@ -28,7 +29,14 @@ const LOGO_DARK_SRC =
  * Primary header — AI Studio template IA (Pathway mega-menu, Audiences, About, Contact).
  * Theme follows `next-themes` via {@link ThemeToggle} and the mobile row below.
  */
-export function SiteHeader() {
+export function SiteHeader({
+  authDesktopCta,
+  authMobileCta,
+}: {
+  /** Server-rendered slot (e.g. {@link SiteHeaderCta}) — session-aware dashboard / leader / contact. */
+  authDesktopCta?: ReactNode;
+  authMobileCta?: ReactNode;
+}) {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -245,9 +253,11 @@ export function SiteHeader() {
             FIELD GUIDE
           </Link>
           <ThemeToggle size="comfortable" />
-          <Link href="/contact" className="btn-pill btn-pill--primary py-2.5">
-            Start a Conversation
-          </Link>
+          {authDesktopCta ?? (
+            <Link href="/contact" className="btn-pill btn-pill--primary py-2.5">
+              Start a Conversation
+            </Link>
+          )}
         </div>
 
         <button
@@ -381,6 +391,15 @@ export function SiteHeader() {
             <Download className="size-4" aria-hidden />
             FIELD GUIDE
           </Link>
+          {authMobileCta ?? (
+            <Link
+              href="/contact"
+              onClick={() => setIsMenuOpen(false)}
+              className="btn-pill btn-pill--primary mt-4 flex w-full justify-center py-3 text-center"
+            >
+              Start a Conversation
+            </Link>
+          )}
           <button
             type="button"
             onClick={() => toggleTheme()}

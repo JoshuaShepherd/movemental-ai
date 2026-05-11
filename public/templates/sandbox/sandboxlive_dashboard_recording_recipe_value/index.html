@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Movemental - Sandbox Phase 03</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600;1,6..72,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-dim": "#5c5756",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#ece4e1",
+                    "on-tertiary-container": "#605b59",
+                    "secondary": "#68645b",
+                    "surface-variant": "#ece8d7",
+                    "outline-variant": "#bcbaa9",
+                    "surface-container": "#f7f4e7",
+                    "surface-container-low": "#fdf9ef",
+                    "on-tertiary-fixed-variant": "#6a6563",
+                    "inverse-on-surface": "#9f9d96",
+                    "on-error-container": "#742410",
+                    "inverse-surface": "#0f0e0a",
+                    "tertiary-fixed": "#faf2ef",
+                    "on-surface": "#39382c",
+                    "primary-fixed": "#ebe1d7",
+                    "error": "#a54731",
+                    "surface-tint": "#645d55",
+                    "inverse-primary": "#fff5ea",
+                    "tertiary-container": "#faf2ef",
+                    "surface-container-highest": "#ece8d7",
+                    "primary-container": "#ebe1d7",
+                    "on-secondary-container": "#555249",
+                    "secondary-dim": "#5b584f",
+                    "on-primary-fixed": "#443e37",
+                    "on-tertiary-fixed": "#4d4947",
+                    "on-primary-container": "#575149",
+                    "surface-bright": "#fffbff",
+                    "surface": "#fffbff",
+                    "on-secondary-fixed": "#423f37",
+                    "on-secondary-fixed-variant": "#5f5b52",
+                    "secondary-fixed-dim": "#d9d4c8",
+                    "on-primary-fixed-variant": "#615b53",
+                    "secondary-container": "#e8e2d6",
+                    "on-tertiary": "#ffffff",
+                    "primary-dim": "#58514a",
+                    "on-primary": "#fff6ee",
+                    "surface-container-high": "#f2eedf",
+                    "primary-fixed-dim": "#dcd3c9",
+                    "primary": "#645d55",
+                    "outline": "#838172",
+                    "on-surface-variant": "#666557",
+                    "tertiary": "#686362",
+                    "on-background": "#39382c",
+                    "background": "#fffbff",
+                    "error-container": "#fe8b70",
+                    "on-error": "#ffffff",
+                    "surface-dim": "#e6e3cf",
+                    "on-secondary": "#ffffff",
+                    "error-dim": "#5c1202",
+                    "secondary-fixed": "#e8e2d6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0rem",
+                    "lg": "0rem",
+                    "xl": "0rem",
+                    "full": "0rem"
+            },
+            "spacing": {},
+            "fontFamily": {
+                    "headline": [
+                            "Newsreader"
+                    ],
+                    "display": [
+                            "Newsreader"
+                    ],
+                    "body": [
+                            "Inter"
+                    ],
+                    "label": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {}
+    },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .font-display, .font-headline { font-family: 'Newsreader', serif; }
+        .font-label { font-family: 'Inter', sans-serif; }
+        .font-body { font-family: 'Inter', sans-serif; }
+        
+        /* Hide scrollbar for clean editorial look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #bcbaa9;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim docked full-width top-0 z-50 sticky hidden md:flex">
+<div class="flex flex-col items-center w-full pt-8 pb-4 px-12 gap-6 bg-surface dark:bg-surface-dim flat no shadows border-b border-outline-variant/20">
+<div class="w-full flex justify-between items-center">
+<div class="font-display text-4xl italic text-primary dark:text-primary-fixed-dim tracking-tight">Movemental</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<span class="font-label uppercase tracking-widest text-xs text-on-surface">Northridge Community Center</span>
+<span class="bg-surface-tint text-on-primary px-3 py-1 font-label uppercase tracking-widest text-[10px] bg-secondary text-on-secondary">Sandbox</span>
+</div>
+<div class="w-8 h-8 bg-surface-container-high flex items-center justify-center border border-outline-variant/20 font-label text-xs uppercase text-on-surface">
+                        LO
+                    </div>
+</div>
+</div>
+<nav class="w-full flex justify-center gap-8 border-t border-outline-variant/20 pt-4">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200 font-label uppercase tracking-widest text-xs" href="#">Archives</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200 font-label uppercase tracking-widest text-xs" href="#">Frameworks</a>
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary pb-1 font-label uppercase tracking-widest text-xs opacity-80 transition-opacity" href="#">Sandbox</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200 font-label uppercase tracking-widest text-xs" href="#">Policy</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200 font-label uppercase tracking-widest text-xs" href="#">Journal</a>
+</nav>
+</div>
+</header>
+<div class="flex flex-1 w-full">
+<!-- SideNavBar -->
+<aside class="bg-surface-container-low dark:bg-surface-container w-72 h-screen fixed left-0 top-0 border-r border-outline-variant/20 flat no shadows hidden lg:flex flex-col z-40 mt-[140px]">
+<div class="flex flex-col h-full py-8">
+<div class="px-6 mb-8">
+<h2 class="font-label uppercase text-[10px] tracking-widest text-on-surface-variant">Collections</h2>
+<p class="font-body text-xs text-on-surface-variant mt-1">Strategic Archive v.4.1</p>
+</div>
+<nav class="flex-1 overflow-y-auto">
+<ul class="flex flex-col">
+<li><a class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-6 py-3 hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors font-label uppercase text-[10px] tracking-widest" href="#"><span class="material-symbols-outlined text-[16px]">article</span> Article</a></li>
+<li><a class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-6 py-3 hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors font-label uppercase text-[10px] tracking-widest" href="#"><span class="material-symbols-outlined text-[16px]">architecture</span> Framework</a></li>
+<li><a class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-6 py-3 hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors font-label uppercase text-[10px] tracking-widest" href="#"><span class="material-symbols-outlined text-[16px]">podcasts</span> Podcast</a></li>
+<li><a class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-6 py-3 hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors font-label uppercase text-[10px] tracking-widest" href="#"><span class="material-symbols-outlined text-[16px]">videocam</span> Video</a></li>
+<li><a class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-6 py-3 hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors font-label uppercase text-[10px] tracking-widest" href="#"><span class="material-symbols-outlined text-[16px]">gavel</span> Policy</a></li>
+<li><a class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-6 py-3 hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors font-label uppercase text-[10px] tracking-widest" href="#"><span class="material-symbols-outlined text-[16px]">security</span> Safety</a></li>
+<li class="relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary"></div>
+<a class="flex items-center gap-3 text-primary dark:text-primary-fixed font-bold bg-surface-container-highest dark:bg-surface-dim px-6 py-3 scale-[0.99] transition-transform font-label uppercase text-[10px] tracking-widest" href="#"><span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">science</span> Sandbox</a>
+</li>
+<li><a class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-6 py-3 hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors font-label uppercase text-[10px] tracking-widest" href="#"><span class="material-symbols-outlined text-[16px]">psychology</span> Skills</a></li>
+<li><a class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-6 py-3 hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors font-label uppercase text-[10px] tracking-widest" href="#"><span class="material-symbols-outlined text-[16px]">lightbulb</span> Solutions</a></li>
+<li><a class="flex items-center gap-3 text-on-surface-variant dark:text-outline-variant px-6 py-3 hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors font-label uppercase text-[10px] tracking-widest" href="#"><span class="material-symbols-outlined text-[16px]">menu_book</span> Theology</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 w-full lg:ml-72 min-h-screen bg-surface pb-32">
+<div class="max-w-5xl mx-auto px-8 md:px-12 py-12">
+<!-- Breadcrumbs -->
+<div class="mb-12 font-label uppercase tracking-widest text-[10px] text-on-surface-variant flex items-center gap-2">
+<a class="hover:text-primary" href="#">Sandbox</a>
+<span>·</span>
+<a class="hover:text-primary" href="#">Phase 03</a>
+<span>·</span>
+<a class="hover:text-primary" href="#">Experimenting</a>
+<span>·</span>
+<span class="text-on-surface font-semibold">Grant Proposal Drafting Assistant · Trial 02</span>
+</div>
+<!-- Hero -->
+<div class="mb-16 max-w-3xl">
+<h1 class="font-display italic text-4xl md:text-5xl text-on-surface mb-4 tracking-tight leading-tight">Grant Proposal Drafting Assistant</h1>
+<p class="font-body text-lg text-on-surface-variant">Recipe customized to your Development &amp; Fundraising context.</p>
+</div>
+<!-- Main Grid Layout -->
+<div class="grid grid-cols-1 gap-16">
+<!-- Recipe Summary Band -->
+<section class="bg-surface-container px-8 py-10 border border-outline-variant/30">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div>
+<h3 class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant mb-3">Hypothesis</h3>
+<p class="font-body text-sm text-on-surface leading-relaxed">By utilizing Claude.ai trained on past successful Hartfield proposals, we can reduce the first-draft generation time by 75% while maintaining narrative quality.</p>
+</div>
+<div>
+<h3 class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant mb-3">Baselines</h3>
+<p class="font-body text-sm text-on-surface leading-relaxed">Manual drafting averages 3 hours (180 minutes) for a standard 5-page initial narrative proposal.</p>
+</div>
+<div>
+<h3 class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant mb-3">Success Criteria</h3>
+<p class="font-body text-sm text-on-surface leading-relaxed">Draft complete under 45 minutes; requires zero factual corrections; requires standard stylistic editing only.</p>
+</div>
+</div>
+</section>
+<!-- Trial Detail Ledger Rows -->
+<section>
+<h2 class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant mb-4 border-b border-outline-variant/30 pb-2">Trial Ledger</h2>
+<div class="flex flex-col">
+<div class="flex py-4 border-b border-outline-variant/20">
+<div class="w-1/4 font-label uppercase tracking-widest text-[10px] text-on-surface-variant pt-1">Subject</div>
+<div class="w-3/4 font-body text-sm text-on-surface">Hartfield Foundation Q3 Community Grant Proposal</div>
+</div>
+<div class="flex py-4 border-b border-outline-variant/20">
+<div class="w-1/4 font-label uppercase tracking-widest text-[10px] text-on-surface-variant pt-1">Data Tier</div>
+<div class="w-3/4 flex items-center gap-2">
+<span class="w-2 h-2 bg-secondary rounded-full"></span>
+<span class="font-body text-sm text-on-surface">Internal Public (No PII)</span>
+</div>
+</div>
+<div class="flex py-4 border-b border-outline-variant/20">
+<div class="w-1/4 font-label uppercase tracking-widest text-[10px] text-on-surface-variant pt-1">Tool Executed</div>
+<div class="w-3/4 font-body text-sm text-on-surface">Claude.ai (Anthropic) - Pro Tier</div>
+</div>
+<div class="flex py-4 border-b border-outline-variant/20">
+<div class="w-1/4 font-label uppercase tracking-widest text-[10px] text-on-surface-variant pt-1">Failure Modes Noted</div>
+<div class="w-3/4 font-body text-sm text-on-surface italic text-on-surface-variant">None recorded during execution phase.</div>
+</div>
+</div>
+</section>
+<!-- Recording Section (Main Feature) -->
+<section class="grid grid-cols-1 lg:grid-cols-5 gap-12 pt-8">
+<!-- Left: Editable Value Record -->
+<div class="lg:col-span-3 flex flex-col gap-8">
+<div class="border-b border-primary/20 pb-4 mb-4">
+<h2 class="font-display text-2xl text-on-surface">Value Record Drafting</h2>
+<p class="font-body text-xs text-on-surface-variant mt-2">Assistant is analyzing the trial parameters to draft the initial record.</p>
+</div>
+<div class="bg-surface-container-low p-8 border border-outline-variant/20 shadow-sm relative group">
+<div class="absolute -left-[1px] top-0 bottom-0 w-[2px] bg-secondary opacity-50"></div>
+<!-- Time Saved Field -->
+<div class="mb-8">
+<label class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant block mb-2">Quantifiable Time Saved</label>
+<div class="flex items-baseline gap-3 border-b border-outline-variant/40 pb-2">
+<span class="font-display italic text-4xl text-secondary">152</span>
+<span class="font-body text-sm text-on-surface-variant">minutes</span>
+</div>
+<p class="font-body text-xs text-secondary/80 mt-2 italic">Calculated: 180m baseline - 28m actual execution.</p>
+</div>
+<!-- Quality Assessment Field -->
+<div class="mb-8">
+<label class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant block mb-2">Work Quality Assessment</label>
+<textarea class="w-full bg-transparent border-0 border-b border-outline-variant/40 focus:border-primary focus:ring-0 px-0 py-2 font-body text-sm text-on-surface resize-none h-24" placeholder="Describe the quality of the output..."></textarea>
+</div>
+</div>
+</div>
+<!-- Right: AI Chat Interface -->
+<div class="lg:col-span-2 flex flex-col bg-surface border border-outline-variant/30 h-[500px]">
+<div class="px-4 py-3 border-b border-outline-variant/20 bg-surface-container-low flex justify-between items-center">
+<span class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant">Sandbox Assistant</span>
+<span class="material-symbols-outlined text-[16px] text-primary">psychology</span>
+</div>
+<div class="flex-1 overflow-y-auto p-4 flex flex-col gap-4">
+<!-- AI Msg -->
+<div class="self-start max-w-[90%]">
+<div class="bg-surface-container px-4 py-3 border border-outline-variant/20 font-body text-xs text-on-surface leading-relaxed">
+                                        I've calculated the time delta. Based on your 28-minute execution time and the 180-minute baseline, you saved 152 minutes. Shall I apply this to the Value Record?
+                                    </div>
+<span class="font-label uppercase text-[8px] tracking-widest text-on-surface-variant mt-1 ml-1 block">Assistant</span>
+</div>
+<!-- User Msg -->
+<div class="self-end max-w-[90%]">
+<div class="bg-surface-container-high px-4 py-3 border border-outline-variant/30 font-body text-xs text-on-surface leading-relaxed">
+                                        Yes, apply the time savings. Also, note that the narrative flow was surprisingly strong, requiring only minor tone adjustments.
+                                    </div>
+<span class="font-label uppercase text-[8px] tracking-widest text-on-surface-variant mt-1 mr-1 block text-right">Marcus Vance</span>
+</div>
+</div>
+<div class="p-3 border-t border-outline-variant/20 bg-surface">
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-outline-variant/30 focus:border-primary focus:ring-0 px-3 py-2 font-body text-xs text-on-surface" placeholder="Refine the record..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+<!-- Bottom Action Band -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-container border-t border-outline-variant/30 z-50 lg:pl-72 py-4 px-8 md:px-12 flex justify-end gap-4 shadow-[0_-4px_20px_rgba(0,0,0,0.02)]">
+<button class="px-6 py-2 border border-outline-variant/50 text-on-surface hover:bg-surface transition-colors font-label uppercase tracking-widest text-xs">
+            Save as Draft
+        </button>
+<button class="px-6 py-2 bg-secondary text-on-secondary hover:bg-secondary-dim transition-colors font-label uppercase tracking-widest text-xs border border-transparent shadow-sm">
+            Save &amp; Complete Value Record
+        </button>
+</div>
+</body></html>

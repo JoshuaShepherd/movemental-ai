@@ -5,7 +5,8 @@ import {
   toSafeStartHeroTimelineFixture,
 } from "@/lib/program/normalize-hero-timeline";
 
-import { ProgramDocumentView } from "./program-document-view";
+import { StitchDocumentView } from "@/components/stitch/stitch-document-view";
+
 import { SafeStartHomeView } from "./safe-start/safe-start-home-view";
 
 export function ProgramStitchTemplateView({
@@ -22,5 +23,5 @@ export function ProgramStitchTemplateView({
     }
   }
 
-  return <ProgramDocumentView fixture={fixture} sourceBadge={sourceBadge} />;
+  return <StitchDocumentView fixture={fixture} sourceBadge={sourceBadge} />;
 }

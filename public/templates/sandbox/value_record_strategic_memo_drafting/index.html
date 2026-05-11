@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Strategic Memo Drafting — Trial 01 Value Record</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        @theme {
+            --color-on-primary-container: #575149;
+            --color-on-primary-fixed-variant: #615b53;
+            --color-inverse-on-surface: #9f9d96;
+            --color-secondary-container: #e8e2d6;
+            --color-on-secondary: #ffffff;
+            --color-surface-bright: #fffbff;
+            --color-primary-fixed: #ebe1d7;
+            --color-surface-tint: #645d55;
+            --color-inverse-surface: #0f0e0a;
+            --color-secondary-fixed: #e8e2d6;
+            --color-surface-variant: #ece8d7;
+            --color-background: #fffbff;
+            --color-tertiary-dim: #5c5756;
+            --color-tertiary-fixed: #faf2ef;
+            --color-on-tertiary-fixed-variant: #6a6563;
+            --color-on-error: #ffffff;
+            --color-error-container: #fe8b70;
+            --color-primary-fixed-dim: #dcd3c9;
+            --color-secondary: #68645b;
+            --color-surface-dim: #e6e3cf;
+            --color-tertiary: #686362;
+            --color-secondary-fixed-dim: #d9d4c8;
+            --color-on-tertiary: #ffffff;
+            --color-primary-dim: #58514a;
+            --color-error-dim: #5c1202;
+            --color-surface-container-low: #fdf9ef;
+            --color-outline: #838172;
+            --color-surface-container-highest: #ece8d7;
+            --color-tertiary-fixed-dim: #ece4e1;
+            --color-on-tertiary-container: #605b59;
+            --color-on-surface: #39382c;
+            --color-surface-container-high: #f2eedf;
+            --color-on-background: #39382c;
+            --color-on-primary-fixed: #443e37;
+            --color-surface-container: #f7f4e7;
+            --color-inverse-primary: #fff5ea;
+            --color-error: #a54731;
+            --color-on-primary: #fff6ee;
+            --color-on-secondary-fixed-variant: #5f5b52;
+            --color-on-surface-variant: #666557;
+            --color-primary-container: #ebe1d7;
+            --color-secondary-dim: #5b584f;
+            --color-outline-variant: #bcbaa9;
+            --color-primary: #645d55;
+            --color-on-tertiary-fixed: #4d4947;
+            --color-on-secondary-fixed: #423f37;
+            --color-surface-container-lowest: #ffffff;
+            --color-on-error-container: #742410;
+            --color-tertiary-container: #faf2ef;
+            --color-surface: #fffbff;
+            --color-on-secondary-container: #555249;
+            
+            --font-headline: 'Instrument Serif', serif;
+            --font-display: 'Newsreader', serif;
+            --font-body: 'Inter', sans-serif;
+            --font-label: 'Inter', sans-serif;
+        }
+
+        /* Enforce No-Line and Sharp Geometry Rules */
+        * {
+            border-radius: 0 !important;
+        }
+        
+        .typewriter-input {
+            border: none;
+            border-bottom: 1px solid var(--color-outline-variant);
+            background: transparent;
+            font-family: 'Inter', sans-serif;
+        }
+        .typewriter-input:focus {
+            outline: none;
+            border-bottom: 2px solid var(--color-primary);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar (Shared Component) -->
+<!-- Content logic: Settings/Focus mode, suppressing standard global nav links -->
+<header class="flex justify-between items-center w-full px-6 h-16 bg-inverse-surface border-b border-outline-variant/20 sticky top-0 z-50">
+<div class="flex items-center space-x-4">
+<span class="font-headline italic text-2xl text-on-primary">SafeStart</span>
+<span class="text-on-primary/50 mx-2 font-display">|</span>
+<span class="font-display text-lg tracking-tight text-on-primary/80">Strategic Memo Drafting — Trial 01</span>
+</div>
+<div class="flex items-center space-x-6">
+<button class="text-on-primary/70 hover:text-on-primary transition-colors duration-200">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</header>
+<main class="flex-grow flex flex-col md:flex-row w-full max-w-[1600px] mx-auto">
+<!-- Left Panel: AI Assistant Conversation (Experimenting Workspace) -->
+<section class="w-full md:w-[40%] bg-surface-container-low border-r border-outline-variant/20 flex flex-col h-[calc(100vh-4rem)] overflow-y-auto">
+<div class="p-8 pb-4">
+<p class="font-label uppercase tracking-widest text-xs text-on-surface-variant mb-6">Workspace Session Log</p>
+<div class="space-y-8">
+<!-- AI Message -->
+<div class="flex flex-col space-y-2">
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-on-primary" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<span class="font-label uppercase text-[10px] tracking-widest text-on-surface-variant">System</span>
+</div>
+<div class="pl-9 pr-4 text-sm text-on-surface leading-relaxed border-l border-outline-variant/20">
+                            I've reviewed the provided background data and integrated the recent survey results. Here is the first draft of the Strategic Memo. I adopted a formal, analytical tone as requested.
+                        </div>
+</div>
+<!-- User Message -->
+<div class="flex flex-col space-y-2">
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 bg-surface-container-high border border-outline-variant/50 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-on-surface">person</span>
+</div>
+<span class="font-label uppercase text-[10px] tracking-widest text-on-surface-variant">Analyst</span>
+</div>
+<div class="pl-9 pr-4 text-sm text-on-surface leading-relaxed border-l border-outline-variant/20">
+                            The structure is good, but the tone is slightly too academic. Can we adjust it to sound more like a top-tier management consultant? Focus heavily on actionable outcomes in the executive summary.
+                        </div>
+</div>
+<!-- AI Message -->
+<div class="flex flex-col space-y-2">
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-on-primary" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<span class="font-label uppercase text-[10px] tracking-widest text-on-surface-variant">System</span>
+</div>
+<div class="pl-9 pr-4 text-sm text-on-surface leading-relaxed border-l border-outline-variant/20">
+                            Understood. I have revised the draft to reflect a more decisive, consulting-oriented voice. The executive summary now prioritizes immediate strategic levers. Please review iteration v2.
+                        </div>
+</div>
+</div>
+</div>
+<div class="mt-auto p-6 bg-surface-container border-t border-outline-variant/20">
+<div class="flex items-center text-xs text-on-surface-variant space-x-2">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>Session locked. Trial complete.</span>
+</div>
+</div>
+</section>
+<!-- Right Panel: Value Record Canvas -->
+<section class="w-full md:w-[60%] bg-surface flex flex-col h-[calc(100vh-4rem)] overflow-y-auto relative">
+<div class="max-w-3xl mx-auto w-full px-12 pt-16 pb-32">
+<header class="mb-16">
+<h1 class="font-headline italic text-5xl text-on-surface mb-4">Value Record</h1>
+<p class="text-on-surface-variant text-lg max-w-xl leading-relaxed">Quantifying the impact of the experimental workflow against baseline operational metrics.</p>
+</header>
+<!-- Quantitative Metrics Bento -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-1 mb-16 bg-outline-variant/20 p-[1px]">
+<div class="bg-surface-container-low p-8 flex flex-col justify-between">
+<span class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant mb-6">Time Taken</span>
+<div class="flex items-baseline space-x-2">
+<span class="font-display text-4xl text-on-surface">26</span>
+<span class="text-sm text-on-surface-variant">mins</span>
+</div>
+</div>
+<div class="bg-surface-container-highest p-8 flex flex-col justify-between col-span-2 relative overflow-hidden">
+<!-- Decorative gradient to imply value -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container opacity-20 blur-2xl"></div>
+<span class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant mb-6 relative z-10">Net Efficiency Gain</span>
+<div class="flex items-baseline space-x-3 relative z-10">
+<span class="font-display italic text-4xl" style="color: #d97706;">64 minutes saved</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-2 relative z-10">Projected impact: <span class="text-on-surface font-medium">4.3 hours/month</span> retrieved per analyst.</p>
+</div>
+</div>
+<!-- Qualitative Assessment Form -->
+<div class="space-y-12">
+<div class="space-y-4">
+<label class="block font-label uppercase tracking-widest text-[11px] text-on-surface mb-2">Work Quality &amp; Alignment</label>
+<p class="text-sm text-on-surface-variant mb-4">Assess the subjective quality of the output, specifically noting adherence to the requested 'consultant-y' voice and data integration accuracy.</p>
+<textarea class="typewriter-input w-full p-2 text-sm text-on-surface leading-relaxed resize-none h-32" placeholder="Record observations here...">The data integration was surprisingly robust, accurately parsing the Q3 survey results without hallucination. The initial draft required prompting to achieve the correct tone, but iteration v2 successfully captured the authoritative, concise voice required for executive memos.</textarea>
+</div>
+<div class="space-y-4">
+<label class="block font-label uppercase tracking-widest text-[11px] text-on-surface mb-2">Revenue Plausibility</label>
+<p class="text-sm text-on-surface-variant mb-4">How likely is this workflow to impact billable hours or client retention?</p>
+<textarea class="typewriter-input w-full p-2 text-sm text-on-surface leading-relaxed resize-none h-24" placeholder="Detail potential financial impact...">High plausibility. By reducing drafting time by &gt;60%, senior analysts can increase client-facing hours or handle higher volumes of strategic deliverables without quality degradation.</textarea>
+</div>
+</div>
+</div>
+<!-- Bottom Action Band -->
+<div class="sticky bottom-0 w-full bg-surface-container border-t border-outline-variant/20 px-12 py-6 flex justify-between items-center mt-auto">
+<button class="text-sm text-primary hover:text-primary-dim transition-colors flex items-center space-x-2">
+<span class="material-symbols-outlined text-[18px]">queue</span>
+<span>Save trial · queue Trial 02</span>
+</button>
+<button class="bg-primary text-on-primary px-8 py-3 text-sm font-medium hover:bg-primary-dim transition-colors flex items-center space-x-2">
+<span>Complete Value Record</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</section>
+</main>
+</body></html>

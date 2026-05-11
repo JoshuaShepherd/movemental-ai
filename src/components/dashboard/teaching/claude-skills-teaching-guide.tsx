@@ -1,13 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
 import { ClaudeSkillsGuideBody } from "./claude-skills-guide-body";
-
-const TOTAL_CHAPTERS = 8;
 
 const tocItems = [
   { id: "ch-1", num: "01", label: "What a skill actually is" },
@@ -20,18 +17,13 @@ const tocItems = [
   { id: "ch-8", num: "08", label: "Where to begin" },
 ] as const;
 
+/**
+ * Phase 01 chrome rationalization: the sticky midnight nav and chapter-counter
+ * progress rail were removed. The outer AuthenticatedShell provides chrome.
+ * Intersection-based TOC active-item tracking is preserved.
+ */
 export function ClaudeSkillsTeachingGuide() {
   const [activeId, setActiveId] = useState<string>("ch-1");
-
-  const activeChapterNum = useMemo(() => {
-    const m = /^ch-(\d+)$/.exec(activeId);
-    return m ? parseInt(m[1], 10) : 1;
-  }, [activeId]);
-
-  const progressPct = useMemo(
-    () => (activeChapterNum / TOTAL_CHAPTERS) * 100,
-    [activeChapterNum],
-  );
 
   const scrollToId = useCallback((id: string) => {
     const el = document.getElementById(id);
@@ -61,42 +53,7 @@ export function ClaudeSkillsTeachingGuide() {
   }, []);
 
   return (
-    <div className="font-body text-safestart-ink selection:bg-pathway-accent/25 [&_em]:font-serif [&_em]:italic [&_em]:font-normal [&_em]:tracking-tight">
-      <nav className="sticky top-0 z-50 bg-movemental-midnight text-white">
-        <div className="flex h-14 items-center px-4 sm:h-16 sm:px-6">
-          <div className="mx-auto flex w-full max-w-[1240px] items-center justify-between gap-3">
-            <div className="flex min-w-0 flex-wrap items-center gap-3 sm:gap-4">
-              <span className="font-serif text-lg italic text-white">Movemental</span>
-              <span className="hidden h-3.5 w-px bg-white/25 sm:block" aria-hidden />
-              <span className="hidden text-[11px] font-medium uppercase tracking-[0.08em] text-white/70 sm:inline">
-                Teaching Library
-              </span>
-              <span className="bg-pathway-accent px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-white">
-                Skills
-              </span>
-            </div>
-            <div className="flex shrink-0 items-center gap-3">
-              <span className="hidden text-xs tabular-nums text-white/70 sm:inline">
-                Chapter <strong className="font-medium text-pathway-accent">{activeChapterNum}</strong> of{" "}
-                {TOTAL_CHAPTERS}
-              </span>
-              <Link
-                href="/dashboard"
-                className="text-xs font-medium text-white/80 underline-offset-4 hover:text-white hover:underline"
-              >
-                Dashboard
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className="h-0.5 w-full bg-white/10">
-          <div
-            className="h-full bg-pathway-accent transition-[width] duration-300 ease-out"
-            style={{ width: `${progressPct}%` }}
-          />
-        </div>
-      </nav>
-
+    <div className="-mx-[clamp(1.25rem,4vw,2.5rem)] -my-8 font-body text-safestart-ink selection:bg-pathway-accent/25 [&_em]:font-serif [&_em]:italic [&_em]:font-normal [&_em]:tracking-tight">
       <div className="bg-safestart-bg pb-16 sm:pb-24">
         <section className="mx-auto max-w-[1240px] px-4 pb-10 pt-14 sm:px-8 sm:pb-16 sm:pt-24">
           <div className="max-w-[800px]">

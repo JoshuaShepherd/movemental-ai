@@ -1,5 +1,8 @@
 /**
- * Copies Stitch manifest + fixtures + JSON schemas into this repo.
+ * Full Stitch → movemental sync:
+ * - manifest JSON + template-content index
+ * - program fixtures (safety / sandbox / schema)
+ * - static HTML + thumbnails under public/templates/ (served at /templates/…)
  *
  * Default source: sibling directory ../stitch (override with STITCH_REPO_PATH).
  */
@@ -21,16 +24,33 @@ function copyDir(src: string, dest: string) {
   }
 }
 
+function countFilesRecursive(dir: string): number {
+  if (!fs.existsSync(dir)) return 0;
+  let n = 0;
+  for (const name of fs.readdirSync(dir)) {
+    const p = path.join(dir, name);
+    if (fs.statSync(p).isDirectory()) n += countFilesRecursive(p);
+    else n += 1;
+  }
+  return n;
+}
+
 function main() {
   const stitchRoot = process.env.STITCH_REPO_PATH ?? path.join(REPO_ROOT, "..", "stitch");
   const manifestDir = path.join(stitchRoot, "manifest");
   const fixturesSafety = path.join(stitchRoot, "fixtures", "safety");
   const fixturesSandbox = path.join(stitchRoot, "fixtures", "sandbox");
   const fixturesSchema = path.join(stitchRoot, "fixtures", "schema");
+  const srcTemplates = path.join(stitchRoot, "templates");
 
   if (!fs.existsSync(manifestDir)) {
     console.error(`sync-stitch-spec: Stitch repo not found at ${stitchRoot}`);
     console.error("Set STITCH_REPO_PATH or clone stitch next to movemental-ai.");
+    process.exit(1);
+  }
+
+  if (!fs.existsSync(srcTemplates)) {
+    console.error(`sync-stitch-spec: missing HTML export tree at ${srcTemplates}`);
     process.exit(1);
   }
 
@@ -55,10 +75,16 @@ function main() {
   copyDir(fixturesSandbox, path.join(outFixtures, "sandbox"));
   copyDir(fixturesSchema, path.join(outFixtures, "schema"));
 
+  const outTemplates = path.join(REPO_ROOT, "public", "templates");
+  fs.mkdirSync(path.join(REPO_ROOT, "public"), { recursive: true });
+  fs.rmSync(outTemplates, { recursive: true, force: true });
+  copyDir(srcTemplates, outTemplates);
+
   const safetyCount = fs.readdirSync(path.join(outFixtures, "safety")).filter((f) => f.endsWith(".json")).length;
   const sandboxCount = fs.readdirSync(path.join(outFixtures, "sandbox")).filter((f) => f.endsWith(".json")).length;
+  const staticCount = countFilesRecursive(outTemplates);
   console.log(
-    `sync-stitch-spec: OK from ${stitchRoot} → manifests + ${safetyCount} safety + ${sandboxCount} sandbox fixtures + schema`,
+    `sync-stitch-spec: OK from ${stitchRoot} → manifests + ${safetyCount} safety + ${sandboxCount} sandbox fixtures + schema + ${staticCount} static template files → public/templates`,
   );
 }
 

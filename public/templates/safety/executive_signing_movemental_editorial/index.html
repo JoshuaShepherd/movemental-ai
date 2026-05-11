@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Executive Signing - SafeStart Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Newsreader:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-container-low": "#fdf9ef",
+                "primary-fixed-dim": "#dcd3c9",
+                "primary-container": "#ebe1d7",
+                "error": "#a54731",
+                "on-tertiary-fixed": "#4d4947",
+                "surface-bright": "#fffbff",
+                "surface-container-lowest": "#ffffff",
+                "tertiary-fixed-dim": "#ece4e1",
+                "surface-tint": "#645d55",
+                "surface": "#fffbff",
+                "on-primary-fixed": "#443e37",
+                "tertiary-fixed": "#faf2ef",
+                "secondary-container": "#e8e2d6",
+                "on-primary-fixed-variant": "#615b53",
+                "on-error-container": "#742410",
+                "secondary-fixed": "#e8e2d6",
+                "on-tertiary-fixed-variant": "#6a6563",
+                "primary-dim": "#58514a",
+                "on-secondary-container": "#555249",
+                "tertiary-dim": "#5c5756",
+                "on-surface-variant": "#666557",
+                "inverse-primary": "#fff5ea",
+                "surface-container-highest": "#ece8d7",
+                "secondary": "#68645b",
+                "primary": "#645d55",
+                "on-primary-container": "#575149",
+                "on-secondary": "#ffffff",
+                "on-tertiary": "#ffffff",
+                "on-primary": "#fff6ee",
+                "surface-dim": "#e6e3cf",
+                "outline": "#838172",
+                "tertiary-container": "#faf2ef",
+                "surface-container": "#f7f4e7",
+                "on-error": "#ffffff",
+                "on-surface": "#39382c",
+                "inverse-surface": "#0f0e0a",
+                "background": "#fffbff",
+                "primary-fixed": "#ebe1d7",
+                "on-secondary-fixed": "#423f37",
+                "on-secondary-fixed-variant": "#5f5b52",
+                "tertiary": "#686362",
+                "surface-variant": "#ece8d7",
+                "error-container": "#fe8b70",
+                "on-background": "#39382c",
+                "inverse-on-surface": "#9f9d96",
+                "secondary-dim": "#5b584f",
+                "on-tertiary-container": "#605b59",
+                "error-dim": "#5c1202",
+                "secondary-fixed-dim": "#d9d4c8",
+                "outline-variant": "#bcbaa9",
+                "surface-container-high": "#f2eedf"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {},
+        "fontFamily": {
+                "headline": [
+                        "Newsreader"
+                ],
+                "display": [
+                        "Newsreader"
+                ],
+                "body": [
+                        "Inter"
+                ],
+                "label": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {}
+},
+    },
+  }
+</script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #fffbff;
+            border-left: 1px solid #ece8d7;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #ece8d7;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen antialiased flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="bg-surface-container-lowest text-on-surface font-headline text-2xl w-full px-6 md:px-12 h-20 sticky top-0 z-50 flex justify-between items-center border-b border-surface-variant">
+<div class="flex items-center gap-12">
+<div class="font-display text-3xl font-bold tracking-tight text-on-surface italic">Executive Intelligence</div>
+<div class="hidden md:flex gap-8 font-body text-sm font-medium tracking-wide">
+<!-- Transactional page, suppressing active states for main nav -->
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-300 cursor-pointer" href="#">Perspective</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-300 cursor-pointer" href="#">Strategy</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-300 cursor-pointer" href="#">Quarterly</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-300 cursor-pointer" href="#">Archive</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant hover:text-on-surface transition-colors duration-300 cursor-pointer">
+<span class="material-symbols-outlined font-light text-2xl">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors duration-300 cursor-pointer">
+<span class="material-symbols-outlined font-light text-2xl">account_circle</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex justify-center w-full bg-surface-container-lowest">
+<div class="w-full max-w-[800px] px-6 pt-24 pb-32 flex flex-col">
+<!-- Header Section -->
+<header class="mb-16">
+<p class="font-label text-xs text-on-surface-variant uppercase tracking-[0.2em] mb-6 font-semibold">RATIFICATION · ACTION 01</p>
+<h1 class="font-display text-5xl md:text-6xl italic leading-[1.1] tracking-tight mb-8 text-on-surface">Signing the AI Organizational Statement</h1>
+<p class="font-body text-lg text-on-surface-variant leading-relaxed max-w-[600px]">As Executive Director, your signature on the Statement is the first action of ratification, committing Northridge Community Center to the ethical principles outlined below.</p>
+</header>
+<!-- What You're Signing Section -->
+<section class="mb-16">
+<h2 class="font-label text-xs text-on-surface-variant uppercase tracking-[0.2em] font-semibold mb-6">WHAT YOU'RE SIGNING</h2>
+<div class="bg-surface-container-low p-8 md:p-12 h-[500px] overflow-y-auto custom-scrollbar border border-surface-variant rounded-sm shadow-sm">
+<div class="prose prose-sm max-w-none text-on-surface font-body space-y-6 leading-relaxed">
+<h3 class="font-headline text-2xl font-bold mb-6 text-on-surface">AI Organizational Statement of Principles</h3>
+<p class="text-base text-on-surface-variant">We, the undersigned, recognizing the profound impact of Artificial Intelligence on society and our operations, hereby commit to the following principles:</p>
+<div class="space-y-6 text-sm text-on-surface-variant">
+<p><span class="font-bold text-on-surface">I. Transparency and Accountability:</span> We commit to maintaining clear transparency regarding our use of AI systems. All decisions made or influenced by AI that significantly affect individuals or communities must be explainable and subject to human oversight. We accept full accountability for the outcomes of these systems.</p>
+<p><span class="font-bold text-on-surface">II. Fairness and Equity:</span> We pledge to actively mitigate bias in our AI implementations. We will continuously monitor our systems to ensure they do not discriminate against protected groups or exacerbate existing societal inequalities. Our AI tools will be designed and deployed to serve all constituents fairly.</p>
+<p><span class="font-bold text-on-surface">III. Privacy and Security:</span> We uphold the fundamental right to privacy. Any data collected, processed, or stored by our AI systems will be handled with the highest standards of security and in strict compliance with relevant data protection regulations. We will minimize data collection to what is strictly necessary for the intended purpose.</p>
+<p><span class="font-bold text-on-surface">IV. Beneficence and Non-Maleficence:</span> Our AI initiatives will prioritize the well-being of humanity and the environment. We will rigorously assess potential risks and harms prior to deployment, ensuring that the benefits of our technology significantly outweigh any negative consequences.</p>
+<p><span class="font-bold text-on-surface">V. Continuous Monitoring and Adaptation:</span> We recognize that AI is rapidly evolving. We commit to ongoing education, regular audits of our systems, and the willingness to adapt or discontinue AI practices that no longer align with these principles or emerging ethical standards.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Your Signature Section -->
+<section class="mb-16 bg-surface-container-low p-8 md:p-12 border border-surface-variant rounded-sm shadow-sm">
+<h2 class="font-label text-xs text-on-surface-variant uppercase tracking-[0.2em] font-semibold mb-8">YOUR SIGNATURE</h2>
+<div class="mb-10 flex items-start gap-4">
+<div class="flex items-center h-6 mt-0.5">
+<input class="w-5 h-5 rounded-sm border-outline-variant text-primary focus:ring-primary focus:ring-offset-surface-container-low bg-surface cursor-pointer transition-colors" id="confirm-checkbox" type="checkbox"/>
+</div>
+<label class="font-body text-base text-on-surface cursor-pointer leading-relaxed" for="confirm-checkbox">
+                        I, Linda Ozawa, as Executive Director of Northridge Community Center, have read and agree to be bound by the AI Organizational Statement.
+                    </label>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+<div class="md:col-span-2">
+<label class="block font-label text-xs text-on-surface-variant uppercase tracking-[0.1em] font-medium mb-3" for="signature-name">Your full name (type to sign)</label>
+<input class="w-full h-14 px-4 bg-surface border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-sm font-headline text-xl text-on-surface placeholder:text-on-surface-variant/50 transition-all" id="signature-name" placeholder="Linda Marie Ozawa" type="text"/>
+</div>
+<div>
+<label class="block font-label text-xs text-on-surface-variant uppercase tracking-[0.1em] font-medium mb-3" for="signature-date">Date</label>
+<input class="w-full h-14 px-4 bg-surface-container-lowest border border-outline-variant/50 rounded-sm font-body text-base text-on-surface-variant cursor-not-allowed opacity-70" disabled="" id="signature-date" type="text" value="May 18, 2026"/>
+</div>
+</div>
+<button class="w-full md:w-auto px-10 h-14 bg-inverse-surface text-inverse-on-surface font-label text-sm font-semibold tracking-wide uppercase rounded-sm flex items-center justify-center opacity-50 cursor-not-allowed transition-all hover:bg-on-surface hover:text-surface">
+                    Sign and commit
+                </button>
+</section>
+<!-- Bottom Utility Row -->
+<footer class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-on-surface-variant font-body text-sm pt-8 border-t border-surface-variant">
+<a class="flex items-center gap-3 hover:text-on-surface transition-colors duration-300 group font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] font-light group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                    Return to dashboard
+                </a>
+<div class="text-right tracking-wide">
+                    Questions? Contact Joshua Shepherd: <a class="underline decoration-outline-variant hover:decoration-on-surface hover:text-on-surface transition-all duration-300 underline-offset-4" href="mailto:josh@movemental.ai">josh@movemental.ai</a>
+</div>
+</footer>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container text-on-surface-variant font-body text-xs tracking-wider uppercase border-t border-surface-variant flex flex-col md:flex-row justify-between items-center px-6 md:px-12 py-10 w-full cursor-default">
+<div class="opacity-70">© 2024 Institutional Oversight Committee. Confidential and Proprietary.</div>
+<div class="flex gap-8 mt-6 md:mt-0 font-medium">
+<a class="opacity-70 hover:opacity-100 hover:text-on-surface transition-all duration-300" href="#">Terms of Governance</a>
+<a class="opacity-70 hover:opacity-100 hover:text-on-surface transition-all duration-300" href="#">Privacy Protocol</a>
+<a class="opacity-70 hover:opacity-100 hover:text-on-surface transition-all duration-300" href="#">Data Ethics</a>
+</div>
+</footer>
+</body></html>

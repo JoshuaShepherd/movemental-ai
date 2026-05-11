@@ -39,7 +39,12 @@
       "Skill(typography-polish)",
       "Skill(typography-polish:*)",
       "Bash(cat ~/.claude/projects/*/tool-results/bgxunzncs.txt | sort > /tmp/components_full.txt && wc -l /tmp/components_full.txt)",
-      "Read(//home/josh/.claude/projects/**)"
+      "Read(//home/josh/.claude/projects/**)",
+      "Bash(mkdir -p /home/josh/dev/01-Movemental-Core/movemental-ai/src/app/\\\\\\(dashboard\\\\\\)/sandboxlive/phase/\\\\[slug\\\\] /home/josh/dev/01-Movemental-Core/movemental-ai/src/app/\\\\\\(dashboard\\\\\\)/sandboxlive/recipes /home/josh/dev/01-Movemental-Core/movemental-ai/src/app/\\\\\\(dashboard\\\\\\)/sandboxlive/cohort /home/josh/dev/01-Movemental-Core/movemental-ai/src/app/\\\\\\(dashboard\\\\\\)/sandboxlive/sponsor-oversight && ls /home/josh/dev/01-Movemental-Core/movemental-ai/src/app/\\\\\\(dashboard\\\\\\)/sandboxlive/)",
+      "Bash(python3 -c \"import json; d = json.load\\(open\\('/home/josh/dev/01-Movemental-Core/movemental-ai/src/lib/program/fixtures/sandbox/recipe_library_movemental_sandbox_dashboard.content.json'\\)\\); print\\('keys:', list\\(d.keys\\(\\)\\)\\); print\\('sections kinds:', [s.get\\('kind'\\) for s in d.get\\('sections', []\\)]\\)\")",
+      "Bash(mkdir -p /home/josh/dev/01-Movemental-Core/movemental-ai/src/app/\\\\\\(dashboard\\\\\\)/safestart/\\\\[workspace\\\\] /home/josh/dev/01-Movemental-Core/movemental-ai/src/app/\\\\\\(dashboard\\\\\\)/safestart/guidebook && ls /home/josh/dev/01-Movemental-Core/movemental-ai/src/app/\\\\\\(dashboard\\\\\\)/safestart/)",
+      "Bash(python3 -c ' *)",
+      "Bash(mkdir -p /home/josh/dev/01-Movemental-Core/movemental-ai/src/app/\\\\\\(dashboard\\\\\\)/safestart/ratification/\\\\[step\\\\])"
     ],
     "additionalDirectories": [
       "/Users/joshuashepherd/Desktop/dev/repos/movemental-sites/alan-hirsch/.claude/skills",
@@ -47,7 +52,10 @@
       "/Users/joshuashepherd/Desktop/dev/repos/movemental-ai",
       "/Users/joshuashepherd/Desktop/dev/repos/my-skills",
       "/Users/joshuashepherd/Desktop/movemental/.claude/skills",
-      "/home/josh/dev/01-Movemental-Core/movemental-ai/docs/research"
+      "/home/josh/dev/01-Movemental-Core/movemental-ai/docs/research",
+      "/home/josh/dev/01-Movemental-Core/movemental-ai/src/app/(dashboard)/sandboxlive/phase",
+      "/home/josh/dev/01-Movemental-Core/movemental-ai/src/app/(dashboard)/safestart",
+      "/home/josh/dev/01-Movemental-Core/movemental-ai/src/app/(dashboard)/safestart/ratification"
     ]
   }
 }

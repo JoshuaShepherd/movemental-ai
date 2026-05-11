@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Movemental - Recipe Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400;1,6..72,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#39382c",
+                    "primary-fixed": "#ebe1d7",
+                    "surface-bright": "#fffbff",
+                    "secondary-dim": "#5b584f",
+                    "on-secondary-fixed": "#423f37",
+                    "inverse-primary": "#fff5ea",
+                    "on-tertiary-fixed-variant": "#6a6563",
+                    "on-primary": "#fff6ee",
+                    "tertiary-fixed": "#faf2ef",
+                    "surface-container-highest": "#ece8d7",
+                    "inverse-surface": "#0f0e0a",
+                    "on-primary-fixed": "#443e37",
+                    "tertiary": "#686362",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#645d55",
+                    "on-secondary-fixed-variant": "#5f5b52",
+                    "surface-dim": "#e6e3cf",
+                    "on-tertiary-container": "#605b59",
+                    "primary-fixed-dim": "#dcd3c9",
+                    "on-surface-variant": "#666557",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#575149",
+                    "inverse-on-surface": "#9f9d96",
+                    "on-background": "#39382c",
+                    "error-dim": "#5c1202",
+                    "background": "#fffbff",
+                    "primary": "#645d55",
+                    "secondary-fixed": "#e8e2d6",
+                    "outline-variant": "#bcbaa9",
+                    "on-tertiary-fixed": "#4d4947",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#f2eedf",
+                    "outline": "#838172",
+                    "secondary-fixed-dim": "#d9d4c8",
+                    "on-error-container": "#742410",
+                    "tertiary-container": "#faf2ef",
+                    "primary-dim": "#58514a",
+                    "on-secondary-container": "#555249",
+                    "error-container": "#fe8b70",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#ece8d7",
+                    "primary-container": "#ebe1d7",
+                    "surface-container": "#f7f4e7",
+                    "surface-container-low": "#fdf9ef",
+                    "secondary": "#68645b",
+                    "error": "#a54731",
+                    "surface": "#fffbff",
+                    "on-primary-fixed-variant": "#615b53",
+                    "tertiary-dim": "#5c5756",
+                    "secondary-container": "#e8e2d6",
+                    "tertiary-fixed-dim": "#ece4e1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "0px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "display": ["Newsreader", "serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Inter", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for webkit to keep UI clean */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant');
+            opacity: 0.2;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.outline');
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased overflow-hidden selection:bg-primary-container selection:text-on-primary-container">
+<div class="flex h-screen w-full">
+<!-- SideNavBar Shared Component -->
+<aside class="flex flex-col h-screen w-64 pt-16 pb-8 left-0 bg-surface-container border-r border-outline-variant/20 flex-shrink-0 z-20">
+<div class="px-8 mb-12">
+<h2 class="font-headline italic text-primary text-xl">Strategy Archive</h2>
+<p class="font-label uppercase tracking-widest text-[10px] text-on-surface-variant mt-1">Institutional Grade</p>
+</div>
+<nav class="flex-1 flex flex-col px-4 gap-1">
+<!-- Active Item: Recipe Library -->
+<a class="flex items-center gap-4 px-4 py-3 bg-primary text-on-primary font-bold rounded-none transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">menu_book</span>
+<span class="font-label uppercase tracking-widest text-[10px]">Recipe Library</span>
+</a>
+<!-- Inactive Items -->
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-colors duration-200 rounded-none" href="#">
+<span class="material-symbols-outlined text-[20px]">architecture</span>
+<span class="font-label uppercase tracking-widest text-[10px]">Strategy Pillars</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-colors duration-200 rounded-none" href="#">
+<span class="material-symbols-outlined text-[20px]">history_edu</span>
+<span class="font-label uppercase tracking-widest text-[10px]">Trial Archives</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-colors duration-200 rounded-none" href="#">
+<span class="material-symbols-outlined text-[20px]">map</span>
+<span class="font-label uppercase tracking-widest text-[10px]">Movement Maps</span>
+</a>
+</nav>
+<div class="px-8 mt-auto">
+<a class="flex items-center gap-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-colors duration-200 rounded-none" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="font-label uppercase tracking-widest text-[10px]">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Workspace Stack -->
+<div class="flex flex-col flex-1 min-w-0">
+<!-- TopNavBar Shared Component -->
+<header class="flex justify-between items-center w-full px-6 h-16 bg-inverse-surface flex-shrink-0 z-30">
+<div class="font-headline text-2xl font-bold italic text-on-primary">
+                    Movemental
+                </div>
+<div class="flex items-center gap-6">
+<!-- Search is hidden per JSON, but actions are present -->
+<button class="text-on-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="text-on-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</header>
+<!-- 2-Pane Content Area -->
+<main class="flex flex-1 overflow-hidden bg-surface-container">
+<!-- Left Pane: Browse (40%) -->
+<section class="w-[40%] min-w-[320px] max-w-[480px] bg-surface-container border-r border-outline-variant/20 flex flex-col h-full z-10 shadow-[4px_0_24px_rgba(0,0,0,0.02)]">
+<!-- Browse Header & Filters -->
+<div class="px-8 pt-10 pb-6 shrink-0">
+<div class="uppercase font-label font-bold text-[11px] tracking-[0.15em] text-error">
+                            RECIPE LIBRARY
+                        </div>
+<h2 class="font-headline italic text-2xl text-on-surface mt-2 tracking-tight">
+                            Your customized library.
+                        </h2>
+<!-- Chips -->
+<div class="flex flex-wrap gap-2 mt-6">
+<button class="px-3 py-1.5 bg-on-surface text-surface font-label text-[10px] uppercase tracking-wider rounded-none transition-colors">
+                                All recipes (17)
+                            </button>
+<button class="px-3 py-1.5 border border-outline-variant/30 text-on-surface-variant font-label text-[10px] uppercase tracking-wider rounded-none hover:border-outline transition-colors">
+                                By function (8)
+                            </button>
+<button class="px-3 py-1.5 border border-outline-variant/30 text-on-surface-variant font-label text-[10px] uppercase tracking-wider rounded-none hover:border-outline transition-colors">
+                                By trial status
+                            </button>
+<button class="px-3 py-1.5 border border-outline-variant/30 text-on-surface-variant font-label text-[10px] uppercase tracking-wider rounded-none hover:border-outline transition-colors">
+                                By value tier
+                            </button>
+</div>
+<!-- Typewriter Search Field -->
+<div class="mt-8 relative">
+<input class="w-full bg-transparent border-0 border-b border-outline-variant py-2 pl-0 pr-8 font-body text-sm text-on-surface placeholder:text-on-surface-variant focus:ring-0 focus:border-primary focus:border-b-2 rounded-none transition-all" placeholder="Search the library" type="text"/>
+<span class="material-symbols-outlined absolute right-0 top-2 text-on-surface-variant text-[18px]">search</span>
+</div>
+</div>
+<!-- Ledger Rows (List Items) -->
+<div class="flex-1 overflow-y-auto">
+<ul class="flex flex-col pb-8">
+<!-- Active Item -->
+<li class="relative bg-surface-container-highest border-b border-outline-variant/20 cursor-pointer group">
+<div class="absolute left-0 top-0 bottom-0 w-[2px] bg-error"></div>
+<div class="p-6 pl-8">
+<div class="flex items-baseline justify-between mb-2">
+<span class="font-label text-[9px] uppercase tracking-[0.1em] text-on-surface-variant">DEV &amp; FUNDRAISING</span>
+<span class="font-label text-[9px] uppercase tracking-[0.1em] text-error font-medium">6 TRIALS BY YOU</span>
+</div>
+<h3 class="font-headline italic text-lg text-on-surface leading-tight group-hover:text-primary transition-colors">Grant Proposal Drafting Assistant</h3>
+</div>
+</li>
+<!-- Inactive Items -->
+<li class="relative border-b border-outline-variant/20 cursor-pointer hover:bg-surface-container-highest/50 transition-colors group">
+<div class="p-6 pl-8">
+<div class="flex items-baseline justify-between mb-2">
+<span class="font-label text-[9px] uppercase tracking-[0.1em] text-on-surface-variant">DEV &amp; FUNDRAISING</span>
+<span class="font-label text-[9px] uppercase tracking-[0.1em] text-on-surface-variant">2 TRIALS</span>
+</div>
+<h3 class="font-headline italic text-lg text-on-surface leading-tight group-hover:text-primary transition-colors">Donor Thank-You Pipeline</h3>
+</div>
+</li>
+<li class="relative border-b border-outline-variant/20 cursor-pointer hover:bg-surface-container-highest/50 transition-colors group">
+<div class="p-6 pl-8">
+<div class="flex items-baseline justify-between mb-2">
+<span class="font-label text-[9px] uppercase tracking-[0.1em] text-on-surface-variant">DEV &amp; FUNDRAISING</span>
+<span class="font-label text-[9px] uppercase tracking-[0.1em] text-on-surface-variant">3 TRIALS</span>
+</div>
+<h3 class="font-headline italic text-lg text-on-surface leading-tight group-hover:text-primary transition-colors">Major-Donor Meeting Prep</h3>
+</div>
+</li>
+<li class="relative border-b border-outline-variant/20 cursor-pointer hover:bg-surface-container-highest/50 transition-colors group">
+<div class="p-6 pl-8">
+<div class="flex items-baseline justify-between mb-2">
+<span class="font-label text-[9px] uppercase tracking-[0.1em] text-on-surface-variant">DEV &amp; FUNDRAISING</span>
+<span class="font-label text-[9px] uppercase tracking-[0.1em] text-on-surface-variant/50">0 TRIALS</span>
+</div>
+<h3 class="font-headline italic text-lg text-on-surface leading-tight group-hover:text-primary transition-colors text-on-surface/70">Foundation Prospect Research</h3>
+</div>
+</li>
+<li class="relative border-b border-outline-variant/20 cursor-pointer hover:bg-surface-container-highest/50 transition-colors group">
+<div class="p-6 pl-8">
+<div class="flex items-baseline justify-between mb-2">
+<span class="font-label text-[9px] uppercase tracking-[0.1em] text-on-surface-variant">DEV &amp; FUNDRAISING</span>
+<span class="font-label text-[9px] uppercase tracking-[0.1em] text-on-surface-variant/50">0 TRIALS</span>
+</div>
+<h3 class="font-headline italic text-lg text-on-surface leading-tight group-hover:text-primary transition-colors text-on-surface/70">Year-Over-Year Fundraising Analysis</h3>
+</div>
+</li>
+<li class="relative border-b border-outline-variant/20 cursor-pointer hover:bg-surface-container-highest/50 transition-colors group">
+<div class="p-6 pl-8">
+<div class="flex items-baseline justify-between mb-2">
+<span class="font-label text-[9px] uppercase tracking-[0.1em] text-on-surface-variant">COMMUNICATIONS</span>
+<span class="font-label text-[9px] uppercase tracking-[0.1em] text-primary">3 TRIALS BY COHORT</span>
+</div>
+<h3 class="font-headline italic text-lg text-on-surface leading-tight group-hover:text-primary transition-colors">Voice-Calibrated Style-Checker</h3>
+</div>
+</li>
+<li class="relative border-b border-outline-variant/20 cursor-pointer hover:bg-surface-container-highest/50 transition-colors group">
+<div class="p-6 pl-8">
+<div class="flex items-baseline justify-between mb-2">
+<span class="font-label text-[9px] uppercase tracking-[0.1em] text-on-surface-variant">COMMUNICATIONS</span>
+<span class="font-label text-[9px] uppercase tracking-[0.1em] text-on-surface-variant">1 TRIAL</span>
+</div>
+<h3 class="font-headline italic text-lg text-on-surface leading-tight group-hover:text-primary transition-colors">Newsletter Drafting from Activity Log</h3>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<!-- Right Pane: Detail (60%) -->
+<section class="flex-1 bg-surface flex flex-col relative h-full">
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto px-16 pt-16 pb-32">
+<!-- Header Block -->
+<div class="max-w-3xl">
+<div class="uppercase font-label font-bold text-[10px] tracking-[0.15em] text-error mb-4 flex items-center gap-2">
+<span class="w-4 h-[1px] bg-error"></span> DEVELOPMENT &amp; FUNDRAISING
+                            </div>
+<h1 class="font-headline italic text-4xl lg:text-5xl text-on-surface tracking-tight leading-tight">
+                                Grant Proposal Drafting Assistant
+                            </h1>
+<p class="font-headline italic text-lg text-on-surface-variant mt-4 max-w-2xl border-l-2 border-outline-variant/30 pl-4">
+                                Customized to Northridge's grant portfolio and Marcus's prior winning proposals.
+                            </p>
+</div>
+<!-- Quick Facts Row -->
+<div class="grid grid-cols-3 gap-8 mt-16 mb-16 max-w-3xl border-y border-outline-variant/20 py-8">
+<div>
+<span class="block font-label text-[9px] uppercase tracking-[0.1em] text-on-surface-variant mb-1">Basis</span>
+<span class="font-headline text-lg text-on-surface">Claude 3.5 Sonnet</span>
+</div>
+<div>
+<span class="block font-label text-[9px] uppercase tracking-[0.1em] text-on-surface-variant mb-1">Data Tier</span>
+<span class="font-headline text-lg text-on-surface">Level 2 (Internal Docs)</span>
+</div>
+<div>
+<span class="block font-label text-[9px] uppercase tracking-[0.1em] text-on-surface-variant mb-1">Trial Activity</span>
+<span class="font-headline text-lg text-on-surface">10 Global Trials</span>
+</div>
+</div>
+<!-- Core Details Structure -->
+<div class="max-w-3xl space-y-16">
+<!-- Hypothesis -->
+<div class="relative">
+<h3 class="uppercase font-label font-bold text-[10px] tracking-[0.15em] text-error mb-3">HYPOTHESIS</h3>
+<p class="font-body text-sm leading-relaxed text-on-surface">
+                                    By ingesting successful historical grant applications and combining them with raw program updates, we can reduce the initial drafting time of new foundation proposals by <span class="font-semibold">60-80%</span>, while maintaining the specific theological and structural language expected by key funding partners.
+                                </p>
+</div>
+<!-- Workflow -->
+<div>
+<h3 class="uppercase font-label font-bold text-[11px] tracking-[0.15em] text-on-surface mb-6 border-b border-outline-variant/20 pb-2">Workflow Structure</h3>
+<ol class="list-decimal list-outside ml-4 space-y-4 font-body text-sm text-on-surface-variant">
+<li class="pl-2"><strong class="text-on-surface font-semibold">Claude Project Context:</strong> Load the "Northridge Grant Archive" project containing 5 winning proposals from 2022-2023.</li>
+<li class="pl-2"><strong class="text-on-surface font-semibold">Program Data Input:</strong> User uploads raw bullet points, budget drafts, or interview transcripts related to the new initiative.</li>
+<li class="pl-2"><strong class="text-on-surface font-semibold">Prompt Template Application:</strong> Execute the standardized Development prompt (see template).</li>
+<li class="pl-2"><strong class="text-on-surface font-semibold">Initial Generation:</strong> System outputs a structured 4-page draft.</li>
+<li class="pl-2"><strong class="text-on-surface font-semibold">Human Verification:</strong> Mandatory review of all statistical claims and timeline projections against internal records.</li>
+<li class="pl-2"><strong class="text-on-surface font-semibold">Voice Iteration:</strong> Optional prompt to adjust tone (e.g., "Make the impact section more data-driven" or "Soften the transitional language").</li>
+<li class="pl-2"><strong class="text-on-surface font-semibold">Value Record:</strong> Log time saved in the Trial Archive upon completion.</li>
+</ol>
+</div>
+<!-- Two Column: Failures & Value -->
+<div class="grid grid-cols-2 gap-12">
+<div>
+<h3 class="uppercase font-label font-bold text-[11px] tracking-[0.15em] text-on-surface mb-6 border-b border-outline-variant/20 pb-2">Failure Modes</h3>
+<ul class="list-disc list-outside ml-4 space-y-3 font-body text-sm text-on-surface-variant">
+<li class="pl-2">AI may invent specific impact statistics if gaps exist in the raw data input (hallucination risk).</li>
+<li class="pl-2">Language can default to generic non-profit jargon if the historical archive context is ignored.</li>
+<li class="pl-2">Missing the nuanced theological framing required by certain conservative family foundations.</li>
+</ul>
+</div>
+<div>
+<h3 class="uppercase font-label font-bold text-[11px] tracking-[0.15em] text-on-surface mb-6 border-b border-outline-variant/20 pb-2">Expected Value</h3>
+<ul class="space-y-4 font-body text-sm text-on-surface">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[16px] text-primary mt-0.5">schedule</span>
+<span><strong class="font-semibold block">Time Saved</strong> Average 6-8 hours returned per major proposal drafted.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[16px] text-primary mt-0.5">trending_up</span>
+<span><strong class="font-semibold block">Revenue Plausibility</strong> Allows development team to submit 30% more applications per quarter.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[16px] text-primary mt-0.5">verified</span>
+<span><strong class="font-semibold block">Work Quality</strong> Higher baseline quality for initial drafts, allowing seniors to focus on strategic nuance.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Trial Activity Table (Ledger Style) -->
+<div class="pt-8">
+<h3 class="uppercase font-label font-bold text-[11px] tracking-[0.15em] text-on-surface mb-6 border-b border-outline-variant/20 pb-2">Institution Trial Record</h3>
+<div class="w-full text-sm font-body">
+<div class="grid grid-cols-12 gap-4 pb-3 border-b border-outline-variant/40 text-[9px] uppercase tracking-[0.1em] text-on-surface-variant font-semibold">
+<div class="col-span-4">Practitioner</div>
+<div class="col-span-3">Activity Level</div>
+<div class="col-span-5">Latest Status / Notes</div>
+</div>
+<div class="grid grid-cols-12 gap-4 py-4 border-b border-outline-variant/20 items-center">
+<div class="col-span-4 font-medium text-on-surface">Marcus Vance</div>
+<div class="col-span-3 text-on-surface-variant">6 logged trials</div>
+<div class="col-span-5 text-on-surface-variant italic">Refined the prompt specifically for the Lilly Endowment format.</div>
+</div>
+<div class="grid grid-cols-12 gap-4 py-4 border-b border-outline-variant/20 items-center">
+<div class="col-span-4 font-medium text-on-surface">Linda Ozawa</div>
+<div class="col-span-3 text-on-surface-variant">3 logged trials</div>
+<div class="col-span-5 text-on-surface-variant italic">Noted issues with overly verbose executive summaries.</div>
+</div>
+<div class="grid grid-cols-12 gap-4 py-4 border-b border-outline-variant/20 items-center">
+<div class="col-span-4 font-medium text-on-surface">Maria Chen</div>
+<div class="col-span-3 text-on-surface-variant">1 logged trial</div>
+<div class="col-span-5 text-on-surface-variant italic">Initial onboarding complete. Testing with Q3 appeals.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Action Band -->
+<div class="absolute bottom-0 left-0 w-full h-[80px] bg-surface-container-highest border-t border-outline-variant/30 px-12 flex justify-between items-center shadow-[0_-4px_24px_rgba(0,0,0,0.02)] backdrop-blur-sm bg-opacity-95 z-20">
+<a class="text-error font-body font-medium text-sm flex items-center gap-2 hover:opacity-70 transition-opacity" href="#">
+                            View prompt template <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2.5 border border-outline-variant/40 text-on-surface font-body text-sm font-medium hover:bg-surface-container-low hover:border-outline-variant transition-all rounded-none">
+                                View your trial history
+                            </button>
+<button class="px-6 py-2.5 bg-primary text-on-primary font-body text-sm font-medium hover:bg-primary-dim transition-colors rounded-none flex items-center gap-2">
+                                Start a new trial of this recipe
+                                <span class="material-symbols-outlined text-[16px]">play_arrow</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+</div>
+</div>
+</body></html>

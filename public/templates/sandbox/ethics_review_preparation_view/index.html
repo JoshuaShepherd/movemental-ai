@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Movemental - Ethics Review</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed-dim": "#d9d4c8",
+            "inverse-surface": "#0f0e0a",
+            "on-error-container": "#742410",
+            "inverse-primary": "#fff5ea",
+            "outline": "#838172",
+            "on-secondary-fixed-variant": "#5f5b52",
+            "on-primary-fixed": "#443e37",
+            "primary-container": "#ebe1d7",
+            "surface": "#fffbff",
+            "surface-container-low": "#fdf9ef",
+            "on-secondary-fixed": "#423f37",
+            "tertiary-dim": "#5c5756",
+            "surface-dim": "#e6e3cf",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed": "#ebe1d7",
+            "on-primary-fixed-variant": "#615b53",
+            "surface-tint": "#645d55",
+            "error-container": "#fe8b70",
+            "on-surface-variant": "#666557",
+            "on-background": "#39382c",
+            "error": "#a54731",
+            "primary-dim": "#58514a",
+            "secondary-container": "#e8e2d6",
+            "on-tertiary-container": "#605b59",
+            "on-secondary-container": "#555249",
+            "surface-container-highest": "#ece8d7",
+            "outline-variant": "#bcbaa9",
+            "surface-container-high": "#f2eedf",
+            "primary": "#645d55",
+            "tertiary-fixed-dim": "#ece4e1",
+            "on-tertiary-fixed": "#4d4947",
+            "tertiary-container": "#faf2ef",
+            "tertiary": "#686362",
+            "on-tertiary": "#ffffff",
+            "secondary": "#68645b",
+            "secondary-fixed": "#e8e2d6",
+            "on-primary": "#fff6ee",
+            "surface-container": "#f7f4e7",
+            "background": "#fffbff",
+            "secondary-dim": "#5b584f",
+            "surface-bright": "#fffbff",
+            "on-tertiary-fixed-variant": "#6a6563",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed": "#faf2ef",
+            "inverse-on-surface": "#9f9d96",
+            "surface-variant": "#ece8d7",
+            "on-error": "#ffffff",
+            "error-dim": "#5c1202",
+            "on-primary-container": "#575149",
+            "primary-fixed-dim": "#dcd3c9",
+            "on-surface": "#39382c"
+          },
+          "borderRadius": {
+            "DEFAULT": "0px",
+            "lg": "0px",
+            "xl": "0px",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Instrument Serif", "serif"],
+            "display": ["Instrument Serif", "serif"],
+            "body": ["Inter", "sans-serif"],
+            "label": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, .font-headline { font-family: 'Instrument Serif', serif; }
+  </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body selection:bg-primary-container selection:text-on-primary-container">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-8 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col w-full max-w-[1200px] flex-1">
+<!-- TopAppBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-outline-variant px-0 py-4 lg:px-10 lg:py-6">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-on-surface">
+<div class="size-6">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-on-surface font-headline text-2xl font-bold leading-tight tracking-[-0.015em]">Movemental</h2>
+</div>
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch h-full border-b border-outline-variant focus-within:border-primary focus-within:border-b-2 transition-all">
+<div class="text-on-surface-variant flex items-center justify-center pl-2" data-icon="search" data-size="20px" data-weight="regular">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 resize-none overflow-hidden text-on-surface focus:outline-0 focus:ring-0 border-none bg-transparent focus:border-none h-full placeholder:text-on-surface-variant px-4 pl-2 text-sm font-normal leading-normal" placeholder="Search" value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="bg-surface-container-high bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 flex items-center justify-center text-on-surface" data-alt="A minimal, abstract profile placeholder image featuring subtle geometric patterns in warm cream and soft grey tones, suitable for a sophisticated web application." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCqmICzIdw3ZOvhwD5H2-HP2ge0Ed2_RUx5N34ajD8WavRiklxLQAO_VNK-j8P5ffuCjcwgTr4n3KrxGYJc75eRiIqcOestkqYEYAudg7tQ9SejmOUMIr2XLEQ-BLmiTz7va2_R8NlGps4OULu_RS5T1A9VKVngn_ucmqZyJ9mexlTUDYv9pk0tTNuxoiCuMsFNB_bDbq_ZVRG6wNGbQYhgLh0qoKP9xibnetzueckcfk2Q_auou8jhu1vATnsiHx3HQ1PDlwsmJ0w");'></div>
+</div>
+</header>
+<div class="flex flex-col lg:flex-row h-full min-h-[700px] gap-12 lg:gap-24 py-12">
+<!-- Sidebar -->
+<div class="w-full lg:w-64 flex-shrink-0 flex flex-col gap-8">
+<div class="flex gap-4 items-center px-4">
+<div class="bg-surface-container-high bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" data-alt="A minimalistic abstract logo representation with subtle geometric forms, rendered in warm, muted tones appropriate for a sophisticated digital platform." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCVmhuPdvyDxifCY1SgGYAgzIhnxZtcvJfehWdhuimcJZBCFYOWLaBrU4xSszVaq-gbwqYHDXCJgADgzyRmGS7nHDS3aP7sMSoUMs-LXYDRMxpUy0xmdAwX9AIchKgF2BJkWarHkDQeOW1ts8ANSB_esLiCKZXwiyVmXGLabmjOuE5IY9Hm_5cIAlUeE2ORD7xP6bR5zgA2kMtCRuFjnNNL1DKAfOVFtPe8G_-JcwbN3Z7seHxLR4-fDx-MzhAy9qjwM2BH9dG8Y5E");'></div>
+<div class="flex flex-col">
+<h1 class="text-on-surface font-headline text-xl font-medium leading-normal">Movemental</h1>
+<p class="text-on-surface-variant text-sm font-normal uppercase tracking-wider">Dashboard</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-low transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-low transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="group">group</span>
+<span class="text-sm font-medium">Cohorts</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-low transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="menu_book">menu_book</span>
+<span class="text-sm font-medium">Recipes</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-low transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="bar_chart">bar_chart</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-surface-container-high text-on-surface border-l-2 border-primary" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="shield" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="text-sm font-medium">Ethics Review</span>
+</a>
+</nav>
+</div>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col gap-12 max-w-[800px]">
+<header class="flex flex-col gap-4">
+<p class="text-error font-label text-xs font-semibold tracking-widest uppercase">Phase 06 — Ethics Review · Preparation</p>
+<h2 class="text-on-surface font-headline italic text-4xl leading-tight">Preparing seven use cases for outside review.</h2>
+<p class="text-on-surface-variant text-lg font-normal leading-relaxed max-w-[65ch]">
+                These descriptions are what your reviewers will read. Plain language. No cohort jargon.
+              </p>
+</header>
+<!-- Ledger Rows (Cards) -->
+<div class="flex flex-col gap-8">
+<!-- Card 1 (Ready) -->
+<div class="flex flex-col gap-4 border-b border-outline-variant pb-8">
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-1">
+<p class="text-on-surface-variant font-label text-xs font-semibold tracking-widest uppercase">Communication</p>
+<h3 class="text-on-surface font-headline italic text-2xl">Quarterly Update Newsletter</h3>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-primary text-sm font-medium">Ready</span>
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6">
+<p class="text-on-surface text-base leading-relaxed">
+                    Automated distribution of quarterly progress reports to stakeholders, segmented by interest areas to ensure relevance.
+                  </p>
+</div>
+</div>
+<!-- Card 2 (Needs Editing) -->
+<div class="flex flex-col gap-4 border-b border-outline-variant pb-8 relative">
+<div class="absolute left-[-16px] top-0 bottom-0 w-[2px] bg-error hidden lg:block"></div>
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-1">
+<p class="text-on-surface-variant font-label text-xs font-semibold tracking-widest uppercase">Fundraising</p>
+<h3 class="text-on-surface font-headline italic text-2xl">Major-Donor Meeting Prep</h3>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-error text-sm font-medium">Needs Editing</span>
+<span class="material-symbols-outlined text-error text-[20px]" data-icon="error" style="font-variation-settings: 'FILL' 1;">error</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 border-l-2 border-error">
+<p class="text-on-surface text-base leading-relaxed mb-4">
+                    Compiling background profiles on high-net-worth individuals to brief leadership before major cultivation events.
+                  </p>
+<p class="text-error text-sm font-medium flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="comment">comment</span>
+                    Marcus suggested the description should explicitly name the surveillance concern.
+                  </p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SafeStart Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400;1,6..72,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "error-dim": "#5c1202",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#575149",
+                        "inverse-on-surface": "#9f9d96",
+                        "secondary-dim": "#5b584f",
+                        "surface-variant": "#ece8d7",
+                        "surface-bright": "#fffbff",
+                        "primary": "#645d55",
+                        "error": "#a54731",
+                        "surface-container-high": "#f2eedf",
+                        "tertiary-dim": "#5c5756",
+                        "on-secondary-container": "#555249",
+                        "surface-dim": "#e6e3cf",
+                        "error-container": "#fe8b70",
+                        "background": "#fffbff",
+                        "tertiary": "#686362",
+                        "surface-container-highest": "#ece8d7",
+                        "surface-container": "#f7f4e7",
+                        "secondary": "#68645b",
+                        "on-tertiary-container": "#605b59",
+                        "on-surface": "#39382c",
+                        "primary-fixed-dim": "#dcd3c9",
+                        "on-primary-fixed-variant": "#615b53",
+                        "surface": "#fffbff",
+                        "secondary-fixed-dim": "#d9d4c8",
+                        "on-tertiary-fixed": "#4d4947",
+                        "primary-container": "#ebe1d7",
+                        "outline-variant": "#bcbaa9",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#ebe1d7",
+                        "on-secondary-fixed": "#423f37",
+                        "inverse-surface": "#0f0e0a",
+                        "secondary-fixed": "#e8e2d6",
+                        "surface-container-low": "#fdf9ef",
+                        "on-background": "#39382c",
+                        "on-secondary-fixed-variant": "#5f5b52",
+                        "surface-tint": "#645d55",
+                        "on-surface-variant": "#666557",
+                        "on-primary": "#fff6ee",
+                        "tertiary-fixed-dim": "#ece4e1",
+                        "tertiary-fixed": "#faf2ef",
+                        "tertiary-container": "#faf2ef",
+                        "secondary-container": "#e8e2d6",
+                        "on-error-container": "#742410",
+                        "outline": "#838172",
+                        "on-tertiary-fixed-variant": "#6a6563",
+                        "on-primary-fixed": "#443e37",
+                        "inverse-primary": "#fff5ea",
+                        "primary-dim": "#58514a",
+                        "on-tertiary": "#ffffff",
+                        "amber-brand": "#B8893A" // Required from prompt spec, mapping to a custom token since standard palette doesn't have an exact amber.
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": [
+                            "Newsreader"
+                        ],
+                        "display": [
+                            "Newsreader"
+                        ],
+                        "body": [
+                            "Inter"
+                        ],
+                        "label": [
+                            "Inter"
+                        ]
+                    },
+                    "fontSize": {}
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #FAF8F4; }
+        .hairline-b { border-bottom: 1px solid #B0AC9F; }
+        .hairline-t { border-top: 1px solid #B0AC9F; }
+        .hairline-l { border-left: 1px solid #B0AC9F; }
+        .hairline-r { border-right: 1px solid #B0AC9F; }
+        .hairline-all { border: 1px solid #B0AC9F; }
+    </style>
+</head>
+<body class="font-body text-on-surface antialiased flex flex-col min-h-screen">
+<!-- TopNavBar (Shared Component JSON) -->
+<header class="bg-inverse-surface border-b border-outline-variant/20 flex justify-between items-center w-full px-6 h-16 z-50 sticky top-0">
+<div class="flex items-center space-x-8">
+<h1 class="font-headline italic text-2xl text-on-primary">Movemental</h1>
+<!-- Navigation links hidden on mobile, visible on md -->
+<nav class="hidden md:flex space-x-6">
+<!-- 'Dashboard' is active state logic based on page content -->
+<a class="font-headline italic text-xl tracking-tight text-on-primary font-display border-b border-on-primary pb-1" href="#">Dashboard</a>
+<a class="font-headline italic text-xl tracking-tight text-on-primary font-display text-on-primary/70 hover:text-on-primary transition-colors duration-200" href="#">Reports</a>
+<a class="font-headline italic text-xl tracking-tight text-on-primary font-display text-on-primary/70 hover:text-on-primary transition-colors duration-200" href="#">Directory</a>
+</nav>
+</div>
+<div class="flex items-center space-x-6">
+<span class="text-on-primary/70 font-label uppercase tracking-widest text-xs hidden md:inline-block">Northridge Community Center</span>
+<div class="flex items-center space-x-4">
+<a class="text-on-primary/70 hover:text-on-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">help</span>
+</a>
+<a class="text-on-primary/70 hover:text-on-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">notifications</span>
+</a>
+<a class="text-on-primary/70 hover:text-on-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+</a>
+<div class="w-8 h-8 bg-surface-variant flex items-center justify-center font-label text-on-surface-variant text-xs">LO</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar (Shared Component JSON) -->
+<aside class="bg-inverse-surface border-r border-outline-variant/20 flex flex-col h-full py-8 space-y-1 w-64 hidden md:flex shrink-0">
+<div class="px-6 mb-8">
+<div class="w-10 h-10 bg-surface-variant flex items-center justify-center mb-4">
+<img alt="SafeStart Logo" class="w-8 h-8 object-cover mix-blend-multiply" data-alt="A striking minimalist 3D rendering of abstract geometric shapes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuJlfFOm6TJiWtH33QPL70-pC5l-OItMqxF4v2doywpdj1IvvqTBtVg1G-NnNSMFmzM5JvNywBncphuOSm77gQkdD6BYu0nk6U9h3vmy7tLEQCC-mFQXa_VH-TshElwY399Q8Vm4s6haHHFkDREbEDWMUraG9z3_fcaSUfzc2hHDTn9mg4l4k0DsD6QDb4b8vhnEnnrBkahd72aGjPI8qET4HP6_q0YzJQkKmTeEx00eFmKhxSDmpV5HT9bFoPV-Axm7YMAcj8STM"/>
+</div>
+<h2 class="font-headline italic text-lg text-on-primary">GUIDEBOOK</h2>
+<p class="font-label uppercase tracking-widest text-[10px] text-on-primary/50 mt-1">Institutional Strategy</p>
+</div>
+<nav class="flex-1 overflow-y-auto space-y-6">
+<!-- Main Nav Section -->
+<div>
+<!-- Active State: Home -->
+<a class="bg-primary-dim text-on-primary border-l-2 border-amber-brand flex items-center px-6 py-2 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3 text-sm">home</span>
+<span class="font-label uppercase tracking-widest text-xs">Home</span>
+</a>
+</div>
+<!-- GUIDEBOOK Section -->
+<div class="px-6">
+<h3 class="font-label uppercase tracking-widest text-[10px] text-on-primary/40 mb-3">Guidebook</h3>
+<div class="space-y-1">
+<a class="text-on-primary/60 hover:bg-surface-variant/10 flex items-center px-2 py-2 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-sm group-hover:text-on-primary">description</span>
+<span class="font-label uppercase tracking-widest text-xs flex-1">Statement</span>
+<div class="w-2 h-2 rounded-none bg-amber-brand"></div>
+</a>
+<a class="text-on-primary/60 hover:bg-surface-variant/10 flex items-center px-2 py-2 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-sm group-hover:text-on-primary">policy</span>
+<span class="font-label uppercase tracking-widest text-xs flex-1">Policy</span>
+<span class="text-[9px] bg-amber-brand text-inverse-surface px-1.5 py-0.5 font-label font-medium uppercase">NEW</span>
+</a>
+<a class="text-on-primary/60 hover:bg-surface-variant/10 flex items-center px-2 py-2 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-sm group-hover:text-on-primary">auto_stories</span>
+<span class="font-label uppercase tracking-widest text-xs flex-1">Context</span>
+<span class="text-[9px] border border-outline-variant/30 text-on-primary/40 px-1.5 py-0.5 font-label uppercase">Drafting</span>
+</a>
+<a class="text-on-primary/60 hover:bg-surface-variant/10 flex items-center px-2 py-2 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-sm group-hover:text-on-primary">gavel</span>
+<span class="font-label uppercase tracking-widest text-xs flex-1">Rules</span>
+<span class="text-[9px] border border-outline-variant/30 text-on-primary/40 px-1.5 py-0.5 font-label uppercase">Drafting</span>
+</a>
+<a class="text-on-primary/60 hover:bg-surface-variant/10 flex items-center px-2 py-2 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-sm group-hover:text-on-primary">emergency_share</span>
+<span class="font-label uppercase tracking-widest text-xs flex-1">Response Plans</span>
+<span class="text-[9px] border border-outline-variant/30 text-on-primary/40 px-1.5 py-0.5 font-label uppercase">Drafting</span>
+</a>
+</div>
+</div>
+<!-- ENGAGEMENT Section -->
+<div class="px-6">
+<h3 class="font-label uppercase tracking-widest text-[10px] text-on-primary/40 mb-3">Engagement</h3>
+<div class="space-y-1">
+<a class="text-on-primary/60 hover:bg-surface-variant/10 flex items-center px-2 py-2 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-sm group-hover:text-on-primary">history</span>
+<span class="font-label uppercase tracking-widest text-xs flex-1">Timeline</span>
+</a>
+<a class="text-on-primary/60 hover:bg-surface-variant/10 flex items-center px-2 py-2 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-sm group-hover:text-on-primary">group</span>
+<span class="font-label uppercase tracking-widest text-xs flex-1">Team</span>
+</a>
+<a class="text-on-primary/60 hover:bg-surface-variant/10 flex items-center px-2 py-2 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-sm group-hover:text-on-primary">forum</span>
+<span class="font-label uppercase tracking-widest text-xs flex-1">Comments</span>
+<span class="w-4 h-4 bg-amber-brand text-inverse-surface flex items-center justify-center text-[10px] font-label font-bold">4</span>
+</a>
+</div>
+</div>
+<!-- SETTINGS Section -->
+<div class="px-6 pb-8">
+<a class="text-on-primary/60 hover:bg-surface-variant/10 flex items-center px-2 py-2 transition-all duration-200 group mt-4 pt-4 border-t border-outline-variant/20" href="#">
+<span class="material-symbols-outlined mr-3 text-sm group-hover:text-on-primary">settings</span>
+<span class="font-label uppercase tracking-widest text-xs flex-1">Settings</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto px-8 md:px-16 py-16 lg:py-24">
+<div class="max-w-6xl mx-auto space-y-16">
+<!-- Header Section -->
+<header class="space-y-6">
+<p class="font-label uppercase tracking-widest text-xs text-amber-brand font-medium">SAFESTART DASHBOARD</p>
+<h1 class="font-headline italic text-4xl md:text-5xl lg:text-6xl text-on-surface tracking-tight leading-tight max-w-3xl">
+                        Your engagement is in active drafting.
+                    </h1>
+<p class="font-body text-on-surface-variant text-base leading-relaxed max-w-2xl">
+                        Two of five layers are published for your review. Three are still being drafted. The next revision Zoom is scheduled for Tuesday, May 19 at 2:00 PM Central. Comments left in the dashboard before that meeting will be addressed during it.
+                    </p>
+</header>
+<!-- Layer Status Grid (Bento style) -->
+<section>
+<h2 class="sr-only">Layer Status</h2>
+<div class="grid grid-cols-1 md:grid-cols-5 gap-0 hairline-all">
+<!-- Card 01 -->
+<div class="p-6 hairline-b md:hairline-b-0 md:hairline-r flex flex-col justify-between min-h-[160px] bg-surface hover:bg-surface-container-low transition-colors duration-300">
+<div class="space-y-1">
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">01</span>
+<h3 class="font-headline text-lg text-on-surface">Statement</h3>
+</div>
+<div class="mt-8">
+<div class="flex items-center space-x-2 mb-2">
+<div class="w-1.5 h-1.5 bg-secondary"></div>
+<span class="font-label text-[10px] uppercase tracking-widest text-secondary font-medium">PUBLISHED — 2 COMMENTS</span>
+</div>
+<p class="font-body text-xs text-on-surface-variant line-clamp-1">Core institutional posture established.</p>
+</div>
+</div>
+<!-- Card 02 -->
+<div class="p-6 hairline-b md:hairline-b-0 md:hairline-r flex flex-col justify-between min-h-[160px] bg-surface hover:bg-surface-container-low transition-colors duration-300">
+<div class="space-y-1">
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">02</span>
+<h3 class="font-headline text-lg text-on-surface">Policy</h3>
+</div>
+<div class="mt-8">
+<div class="flex items-center space-x-2 mb-2">
+<div class="w-1.5 h-1.5 bg-amber-brand"></div>
+<span class="font-label text-[10px] uppercase tracking-widest text-amber-brand font-medium">PUBLISHED TODAY</span>
+</div>
+<p class="font-body text-xs text-on-surface-variant line-clamp-1">Operational guidelines documented.</p>
+</div>
+</div>
+<!-- Card 03 -->
+<div class="p-6 hairline-b md:hairline-b-0 md:hairline-r flex flex-col justify-between min-h-[160px] bg-surface-container-low">
+<div class="space-y-1">
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60">03</span>
+<h3 class="font-headline text-lg text-on-surface/60">Context</h3>
+</div>
+<div class="mt-8">
+<div class="flex items-center space-x-2 mb-2">
+<div class="w-1.5 h-1.5 bg-outline-variant"></div>
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60">IN DRAFTING</span>
+</div>
+<p class="font-body text-xs text-on-surface-variant/60 line-clamp-1">Awaiting historical data synthesis.</p>
+</div>
+</div>
+<!-- Card 04 -->
+<div class="p-6 hairline-b md:hairline-b-0 md:hairline-r flex flex-col justify-between min-h-[160px] bg-surface-container-low">
+<div class="space-y-1">
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60">04</span>
+<h3 class="font-headline text-lg text-on-surface/60">Rules</h3>
+</div>
+<div class="mt-8">
+<div class="flex items-center space-x-2 mb-2">
+<div class="w-1.5 h-1.5 bg-outline-variant"></div>
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60">IN DRAFTING</span>
+</div>
+<p class="font-body text-xs text-on-surface-variant/60 line-clamp-1">Legal review pending on sub-clauses.</p>
+</div>
+</div>
+<!-- Card 05 -->
+<div class="p-6 flex flex-col justify-between min-h-[160px] bg-surface-container-low">
+<div class="space-y-1">
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60">05</span>
+<h3 class="font-headline text-lg text-on-surface/60">Response Plans</h3>
+</div>
+<div class="mt-8">
+<div class="flex items-center space-x-2 mb-2">
+<div class="w-1.5 h-1.5 bg-outline-variant"></div>
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60">IN DRAFTING</span>
+</div>
+<p class="font-body text-xs text-on-surface-variant/60 line-clamp-1">Scenario mapping underway.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Activity & Next Steps Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-24">
+<!-- Recent Activity (2/3) -->
+<section class="lg:col-span-2">
+<h3 class="font-label uppercase tracking-widest text-xs text-on-surface-variant mb-6 border-b border-outline-variant/30 pb-4">Recent Activity</h3>
+<div class="flex flex-col">
+<!-- Activity Item -->
+<div class="py-4 hairline-b border-outline-variant/30 flex justify-between items-start group hover:bg-surface-container-low transition-colors -mx-4 px-4">
+<div>
+<p class="font-body text-sm text-on-surface">Joshua Shepherd published <span class="font-headline italic text-base">Policy</span> layer.</p>
+<p class="font-body text-xs text-on-surface-variant mt-1">Ready for primary stakeholder review.</p>
+</div>
+<span class="font-label text-[10px] text-on-surface-variant/70 uppercase tracking-wider whitespace-nowrap ml-4 mt-1">Today, 9:14 AM</span>
+</div>
+<!-- Activity Item -->
+<div class="py-4 hairline-b border-outline-variant/30 flex justify-between items-start group hover:bg-surface-container-low transition-colors -mx-4 px-4">
+<div>
+<p class="font-body text-sm text-on-surface">Marcus Vance left a comment on <span class="font-headline italic text-base">Statement</span>.</p>
+<p class="font-body text-xs text-on-surface-variant mt-1">"We need to clarify the scope in paragraph three."</p>
+</div>
+<span class="font-label text-[10px] text-on-surface-variant/70 uppercase tracking-wider whitespace-nowrap ml-4 mt-1">Yesterday</span>
+</div>
+<!-- Activity Item -->
+<div class="py-4 hairline-b border-outline-variant/30 flex justify-between items-start group hover:bg-surface-container-low transition-colors -mx-4 px-4">
+<div>
+<p class="font-body text-sm text-on-surface">Joshua Shepherd updated drafted status for <span class="font-headline italic text-base">Context</span>.</p>
+<p class="font-body text-xs text-on-surface-variant mt-1">Moved from outline to drafting phase.</p>
+</div>
+<span class="font-label text-[10px] text-on-surface-variant/70 uppercase tracking-wider whitespace-nowrap ml-4 mt-1">May 12</span>
+</div>
+<!-- Activity Item -->
+<div class="py-4 hairline-b border-outline-variant/30 flex justify-between items-start group hover:bg-surface-container-low transition-colors -mx-4 px-4">
+<div>
+<p class="font-body text-sm text-on-surface">Sarah Jenkins left a comment on <span class="font-headline italic text-base">Statement</span>.</p>
+<p class="font-body text-xs text-on-surface-variant mt-1">"Approved from legal perspective."</p>
+</div>
+<span class="font-label text-[10px] text-on-surface-variant/70 uppercase tracking-wider whitespace-nowrap ml-4 mt-1">May 11</span>
+</div>
+<!-- Activity Item -->
+<div class="py-4 flex justify-between items-start group hover:bg-surface-container-low transition-colors -mx-4 px-4">
+<div>
+<p class="font-body text-sm text-on-surface">Joshua Shepherd published <span class="font-headline italic text-base">Statement</span> layer.</p>
+<p class="font-body text-xs text-on-surface-variant mt-1">Initial draft published to dashboard.</p>
+</div>
+<span class="font-label text-[10px] text-on-surface-variant/70 uppercase tracking-wider whitespace-nowrap ml-4 mt-1">May 10</span>
+</div>
+</div>
+</section>
+<!-- What's Next (1/3) -->
+<aside class="lg:col-span-1">
+<div class="bg-surface-container-high p-8 hairline-l border-primary/20 h-full relative">
+<!-- Architectural hairline inset -->
+<div class="absolute left-0 top-8 bottom-8 w-px bg-primary hidden lg:block"></div>
+<h3 class="font-label uppercase tracking-widest text-xs text-primary mb-8">What's Next</h3>
+<div class="space-y-6">
+<div>
+<p class="font-headline italic text-2xl text-on-surface mb-1">Revision Zoom</p>
+<p class="font-body text-sm text-on-surface-variant">Scheduled Sync</p>
+</div>
+<div class="space-y-4 pt-4 border-t border-outline-variant/20">
+<div class="flex justify-between items-baseline">
+<span class="font-label text-xs uppercase tracking-wider text-on-surface-variant/70">Date</span>
+<span class="font-body text-sm text-on-surface">Tuesday, May 19</span>
+</div>
+<div class="flex justify-between items-baseline">
+<span class="font-label text-xs uppercase tracking-wider text-on-surface-variant/70">Time</span>
+<span class="font-body text-sm text-on-surface">2:00 PM Central</span>
+</div>
+<div class="flex flex-col space-y-1">
+<span class="font-label text-xs uppercase tracking-wider text-on-surface-variant/70">Attendees</span>
+<span class="font-body text-sm text-on-surface">Your contributor team and Joshua Shepherd</span>
+</div>
+</div>
+<div class="pt-8">
+<button class="w-full bg-[#B8893A] text-inverse-surface font-label text-xs uppercase tracking-widest py-4 px-6 hover:bg-[#A37832] transition-colors duration-200 flex items-center justify-center group">
+<span>Add to calendar</span>
+<span class="material-symbols-outlined ml-2 text-sm group-hover:translate-x-1 transition-transform duration-200">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer (Shared Component JSON) -->
+<footer class="bg-inverse-surface border-t border-outline-variant/20 flex justify-between items-center w-full px-8 py-4 mt-auto z-40">
+<span class="font-headline italic text-sm text-on-primary/80">Movemental</span>
+<div class="flex space-x-6">
+<a class="font-body text-xs tracking-normal text-on-primary/50 hover:text-on-primary transition-colors" href="#">Support</a>
+<a class="font-body text-xs tracking-normal text-on-primary/50 hover:text-on-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body text-xs tracking-normal text-on-primary/50 hover:text-on-primary transition-colors" href="#">Terms of Service</a>
+</div>
+<span class="font-body text-xs tracking-normal text-on-primary/50">© 2024 SafeStart Institutional. All rights reserved.</span>
+</footer>
+</body></html>

@@ -36,10 +36,11 @@ const config: Config = {
           "Roboto",
           "sans-serif",
         ],
-        /** Instrument Serif — italic emphasis layer (headings, pull quotes). */
+        /** Newsreader — italic emphasis layer (headings, pull quotes).
+         *  Swapped from Instrument Serif in Phase 01 chrome rationalization. */
         serif: [
           "var(--font-serif-display)",
-          "Instrument Serif",
+          "Newsreader",
           "Iowan Old Style",
           "Georgia",
           "ui-serif",
@@ -48,16 +49,16 @@ const config: Config = {
         /** Kept as alias for components still importing the Stitch-era name. */
         "serif-display": [
           "var(--font-serif-display)",
-          "Instrument Serif",
+          "Newsreader",
           "Iowan Old Style",
           "Georgia",
           "ui-serif",
           "serif",
         ],
-        /** Stitch program templates — headline italic Instrument layer */
+        /** Stitch program templates — headline italic editorial layer */
         headline: [
           "var(--font-serif-display)",
-          "Instrument Serif",
+          "Newsreader",
           "Iowan Old Style",
           "Georgia",
           "ui-serif",

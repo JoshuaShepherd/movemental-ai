@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SafeStart - Recipe Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#575149",
+                        "on-primary-fixed-variant": "#615b53",
+                        "inverse-on-surface": "#9f9d96",
+                        "secondary-container": "#e8e2d6",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#fffbff",
+                        "primary-fixed": "#ebe1d7",
+                        "surface-tint": "#645d55",
+                        "inverse-surface": "#0f0e0a",
+                        "secondary-fixed": "#e8e2d6",
+                        "surface-variant": "#ece8d7",
+                        "background": "#fffbff",
+                        "tertiary-dim": "#5c5756",
+                        "tertiary-fixed": "#faf2ef",
+                        "on-tertiary-fixed-variant": "#6a6563",
+                        "on-error": "#ffffff",
+                        "error-container": "#fe8b70",
+                        "primary-fixed-dim": "#dcd3c9",
+                        "secondary": "#68645b",
+                        "surface-dim": "#e6e3cf",
+                        "tertiary": "#686362",
+                        "secondary-fixed-dim": "#d9d4c8",
+                        "on-tertiary": "#ffffff",
+                        "primary-dim": "#58514a",
+                        "error-dim": "#5c1202",
+                        "surface-container-low": "#fdf9ef",
+                        "outline": "#838172",
+                        "surface-container-highest": "#ece8d7",
+                        "tertiary-fixed-dim": "#ece4e1",
+                        "on-tertiary-container": "#605b59",
+                        "on-surface": "#39382c",
+                        "surface-container-high": "#f2eedf",
+                        "on-background": "#39382c",
+                        "on-primary-fixed": "#443e37",
+                        "surface-container": "#f7f4e7",
+                        "inverse-primary": "#fff5ea",
+                        "error": "#a54731",
+                        "on-primary": "#fff6ee",
+                        "on-secondary-fixed-variant": "#5f5b52",
+                        "on-surface-variant": "#666557",
+                        "primary-container": "#ebe1d7",
+                        "secondary-dim": "#5b584f",
+                        "outline-variant": "#bcbaa9",
+                        "primary": "#645d55",
+                        "on-tertiary-fixed": "#4d4947",
+                        "on-secondary-fixed": "#423f37",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#742410",
+                        "tertiary-container": "#faf2ef",
+                        "surface": "#fffbff",
+                        "on-secondary-container": "#555249"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "display": ["Newsreader"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    "fontSize": {}
+                },
+            },
+        }
+    </script>
+<style>
+        .font-instrument { font-family: 'Instrument Serif', serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        
+        /* Suppress global scrollbar for clean editorial look */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background-color: #bcbaa9; border-radius: 0; }
+        
+        /* 0px radius enforcement */
+        * { border-radius: 0 !important; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-inter min-h-screen flex flex-col antialiased selection:bg-surface-variant selection:text-on-surface">
+<!-- TopNavBar (Shared Component) -->
+<!-- Content logic: Dashboard is active intent, though this is a detail page, we hide nav based on rules if it's task focused. But user says "Maintain the Movemental Editorial dashboard architecture." Assuming we keep the global shell. -->
+<header class="bg-inverse-surface dark:bg-inverse-surface border-b border-outline-variant/20 flex justify-between items-center w-full px-6 h-16 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<span class="font-headline italic text-2xl text-on-primary">SafeStart</span>
+<!-- Navigation Links - Hidden on mobile -->
+<nav class="hidden md:flex items-center gap-6">
+<!-- Assuming Dashboard as base context -->
+<a class="text-on-primary border-b border-on-primary pb-1 font-body text-sm hover:text-on-primary transition-colors duration-200" href="#">Dashboard</a>
+<a class="text-on-primary/70 font-body text-sm hover:text-on-primary transition-colors duration-200" href="#">Reports</a>
+<a class="text-on-primary/70 font-body text-sm hover:text-on-primary transition-colors duration-200" href="#">Directory</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<a class="text-on-primary/70 font-body text-sm hover:text-on-primary transition-colors duration-200 hidden md:block" href="#">Help</a>
+<div class="flex items-center gap-4 text-on-primary/70">
+<button aria-label="notifications" class="hover:text-on-primary transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<button aria-label="settings" class="hover:text-on-primary transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Layout -->
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar (Shared Component) - Hidden on mobile -->
+<aside class="hidden md:flex flex-col h-full py-8 space-y-1 bg-inverse-surface dark:bg-inverse-surface border-r border-outline-variant/20 w-64 shrink-0 overflow-y-auto">
+<div class="px-6 mb-8">
+<h2 class="font-headline italic text-lg text-on-primary mb-1">GUIDEBOOK</h2>
+<p class="font-label uppercase tracking-widest text-xs font-body text-on-primary/60">Institutional Strategy</p>
+</div>
+<nav class="flex-1 flex flex-col gap-1 w-full">
+<!-- Intent mapping: Home is closest to Dashboard/Recipe exploration base -->
+<a class="text-on-primary/60 hover:bg-surface-variant/10 font-label uppercase tracking-widest text-xs font-body flex items-center gap-3 px-6 py-3 hover:bg-primary-dim/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">description</span> Statement
+                </a>
+<a class="text-on-primary/60 hover:bg-surface-variant/10 font-label uppercase tracking-widest text-xs font-body flex items-center gap-3 px-6 py-3 hover:bg-primary-dim/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">policy</span> Policy
+                </a>
+<a class="text-on-primary/60 hover:bg-surface-variant/10 font-label uppercase tracking-widest text-xs font-body flex items-center gap-3 px-6 py-3 hover:bg-primary-dim/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">auto_stories</span> Context
+                </a>
+<a class="text-on-primary/60 hover:bg-surface-variant/10 font-label uppercase tracking-widest text-xs font-body flex items-center gap-3 px-6 py-3 hover:bg-primary-dim/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">gavel</span> Rules
+                </a>
+<a class="text-on-primary/60 hover:bg-surface-variant/10 font-label uppercase tracking-widest text-xs font-body flex items-center gap-3 px-6 py-3 hover:bg-primary-dim/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">emergency_share</span> Response Plans
+                </a>
+<a class="bg-primary-dim text-on-primary border-l-2 border-on-primary font-label uppercase tracking-widest text-xs font-body flex items-center gap-3 px-6 py-3 hover:bg-primary-dim/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span> Home
+                </a>
+<a class="text-on-primary/60 hover:bg-surface-variant/10 font-label uppercase tracking-widest text-xs font-body flex items-center gap-3 px-6 py-3 hover:bg-primary-dim/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">history</span> Timeline
+                </a>
+<a class="text-on-primary/60 hover:bg-surface-variant/10 font-label uppercase tracking-widest text-xs font-body flex items-center gap-3 px-6 py-3 hover:bg-primary-dim/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">group</span> Team
+                </a>
+<a class="text-on-primary/60 hover:bg-surface-variant/10 font-label uppercase tracking-widest text-xs font-body flex items-center gap-3 px-6 py-3 hover:bg-primary-dim/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">forum</span> Comments
+                </a>
+<a class="text-on-primary/60 hover:bg-surface-variant/10 font-label uppercase tracking-widest text-xs font-body flex items-center gap-3 px-6 py-3 hover:bg-primary-dim/50 transition-all duration-200 mt-auto" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span> Settings
+                </a>
+</nav>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 overflow-y-auto bg-surface flex flex-col relative pb-32">
+<!-- Breadcrumb / Back Navigation -->
+<div class="px-8 pt-8 pb-4 flex items-center gap-2">
+<a class="text-on-surface-variant flex items-center gap-1 font-body text-sm hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                    Back to Recipes
+                </a>
+</div>
+<div class="max-w-4xl mx-auto w-full px-8 xl:px-0">
+<!-- Editorial Header -->
+<header class="mb-16 mt-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="font-label uppercase tracking-widest text-xs font-body text-primary border border-outline-variant px-2 py-1">DEV</span>
+<span class="font-label uppercase tracking-widest text-xs font-body text-primary border border-outline-variant px-2 py-1">FUNDRAISING</span>
+</div>
+<h1 class="font-instrument text-6xl md:text-7xl leading-tight text-on-surface mb-6 tracking-tight">Strategic Memo Drafting</h1>
+<div class="w-full h-px bg-outline-variant mt-12 mb-12"></div>
+</header>
+<!-- Content Grid (Asymmetric) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+<!-- Main Narrative Column -->
+<div class="lg:col-span-8 space-y-16">
+<!-- Hypothesis Section -->
+<section>
+<h2 class="font-label uppercase tracking-widest text-sm text-on-surface-variant mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">lightbulb</span> Hypothesis
+                            </h2>
+<p class="font-instrument italic text-3xl leading-relaxed text-on-surface">
+                                By replacing standard pitch decks with meticulously researched, long-form strategic memos, organizations force a deeper level of diligence internally while projecting higher institutional authority to prospective capital partners.
+                            </p>
+</section>
+<!-- Workflow Section -->
+<section>
+<h2 class="font-label uppercase tracking-widest text-sm text-on-surface-variant mb-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">account_tree</span> Workflow Execution
+                            </h2>
+<div class="space-y-0">
+<!-- Ledger Rows -->
+<div class="flex gap-6 py-6 border-b border-outline-variant/30 group">
+<div class="font-label uppercase text-xs text-on-surface-variant pt-1 w-8 shrink-0">01</div>
+<div>
+<h3 class="font-body font-medium text-lg text-on-surface mb-2">Establish the Thesis Narrative</h3>
+<p class="font-body text-on-surface-variant text-base leading-relaxed">Define the core institutional problem and the proposed architectural solution before compiling any supporting data.</p>
+</div>
+</div>
+<div class="flex gap-6 py-6 border-b border-outline-variant/30 group">
+<div class="font-label uppercase text-xs text-on-surface-variant pt-1 w-8 shrink-0">02</div>
+<div>
+<h3 class="font-body font-medium text-lg text-on-surface mb-2">Data Aggregation &amp; Audit</h3>
+<p class="font-body text-on-surface-variant text-base leading-relaxed">Collect all relevant market metrics, internal performance data, and competitive analysis into a raw ledger.</p>
+</div>
+</div>
+<div class="flex gap-6 py-6 border-b border-outline-variant/30 group">
+<div class="font-label uppercase text-xs text-on-surface-variant pt-1 w-8 shrink-0">03</div>
+<div>
+<h3 class="font-body font-medium text-lg text-on-surface mb-2">Structural Outlining</h3>
+<p class="font-body text-on-surface-variant text-base leading-relaxed">Draft the primary headings and sub-arguments to ensure logical flow and argumentative rigor.</p>
+</div>
+</div>
+<div class="flex gap-6 py-6 border-b border-outline-variant/30 group">
+<div class="font-label uppercase text-xs text-on-surface-variant pt-1 w-8 shrink-0">04</div>
+<div>
+<h3 class="font-body font-medium text-lg text-on-surface mb-2">First Draft: The "Ugly" Version</h3>
+<p class="font-body text-on-surface-variant text-base leading-relaxed">Prioritize speed over prose. Get all arguments and data points onto the page to establish volume.</p>
+</div>
+</div>
+<div class="flex gap-6 py-6 border-b border-outline-variant/30 group">
+<div class="font-label uppercase text-xs text-on-surface-variant pt-1 w-8 shrink-0">05</div>
+<div>
+<h3 class="font-body font-medium text-lg text-on-surface mb-2">Peer Review &amp; Stress Testing</h3>
+<p class="font-body text-on-surface-variant text-base leading-relaxed">Circulate the draft internally to challenge assumptions, identify weak logic, and surface counter-arguments.</p>
+</div>
+</div>
+<div class="flex gap-6 py-6 border-b border-outline-variant/30 group">
+<div class="font-label uppercase text-xs text-on-surface-variant pt-1 w-8 shrink-0">06</div>
+<div>
+<h3 class="font-body font-medium text-lg text-on-surface mb-2">Prose Refinement</h3>
+<p class="font-body text-on-surface-variant text-base leading-relaxed">Edit for clarity, tone, and conciseness. Adopt the formal, institutional voice required for capital deployment contexts.</p>
+</div>
+</div>
+<div class="flex gap-6 py-6 border-b border-outline-variant/30 group">
+<div class="font-label uppercase text-xs text-on-surface-variant pt-1 w-8 shrink-0">07</div>
+<div>
+<h3 class="font-body font-medium text-lg text-on-surface mb-2">Final Proof &amp; Typesetting</h3>
+<p class="font-body text-on-surface-variant text-base leading-relaxed">Format the document according to strict typographic standards to ensure visual authority matches intellectual rigor.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Marginalia / Context Column -->
+<div class="lg:col-span-4 space-y-12">
+<!-- Editorial Aside -->
+<aside class="pl-6 border-l border-primary/30">
+<h3 class="font-label uppercase tracking-widest text-xs text-on-surface mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">warning</span> Failure Modes
+                            </h3>
+<ul class="space-y-4 font-body text-sm text-on-surface-variant leading-relaxed">
+<li><strong>Excessive Verbosity:</strong> Substituting length for depth. The memo must remain dense and actionable.</li>
+<li><strong>Data Dumping:</strong> Presenting metrics without clear narrative synthesis or strategic implications.</li>
+<li><strong>Stylistic Inconsistency:</strong> Wavering between formal institutional tone and informal marketing language.</li>
+</ul>
+</aside>
+<!-- Data Card -->
+<div class="bg-surface-container p-6">
+<h3 class="font-label uppercase tracking-widest text-xs text-on-surface mb-4">Expected Value</h3>
+<div class="font-instrument text-4xl text-primary mb-2">High</div>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">Organizations adopting memo-based pitching report a 40% reduction in secondary diligence questions from capital partners.</p>
+</div>
+<!-- Trial Activity -->
+<div class="bg-surface-container p-6">
+<h3 class="font-label uppercase tracking-widest text-xs text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">experiment</span> Cohort Trial Activity
+                            </h3>
+<div class="flex items-center gap-4 mb-4">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 bg-surface-variant border border-surface flex items-center justify-center font-label text-xs">AB</div>
+<div class="w-8 h-8 bg-surface-variant border border-surface flex items-center justify-center font-label text-xs">CD</div>
+<div class="w-8 h-8 bg-primary text-on-primary border border-surface flex items-center justify-center font-label text-xs">+4</div>
+</div>
+<span class="font-body text-xs text-on-surface-variant">Active Implementations</span>
+</div>
+<p class="font-body text-xs text-on-surface-variant leading-relaxed">6 partner organizations are currently testing this framework in their Q3 fundraising cycles.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Prominent Action Card (Bottom Docked) -->
+<div class="fixed bottom-0 left-0 right-0 bg-surface-tint text-on-primary border-t border-inverse-surface/10 shadow-2xl md:left-64 z-40">
+<div class="max-w-4xl mx-auto w-full px-8 xl:px-0 h-[120px] flex items-center justify-between">
+<div>
+<h3 class="font-instrument text-3xl mb-1">Ready to try this recipe?</h3>
+<p class="font-body text-sm text-on-primary/80 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">schedule</span> Est. setup time: 45 minutes
+                </p>
+</div>
+<!-- Primary Button overriding generic primary to match amber request implicitly through primary palette if needed, but strict design system says solid primary. User asked for "white on amber" - we must map amber to the closest semantic token or use standard primary if amber isn't defined. The prompt says "primary button should be... white on amber" but the token list doesn't have amber. We'll use the primary button style as defined in the design system to ensure compliance. -->
+<button class="bg-primary text-on-primary font-label uppercase tracking-widest text-sm px-8 py-4 hover:bg-primary-dim transition-colors duration-200">
+                Set up your trial
+            </button>
+</div>
+</div>
+</body></html>

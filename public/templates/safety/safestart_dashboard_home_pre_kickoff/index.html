@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Movemental - SafeStart Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#fe8b70",
+                        "error": "#a54731",
+                        "inverse-on-surface": "#9f9d96",
+                        "inverse-primary": "#fff5ea",
+                        "surface-container-highest": "#ece8d7",
+                        "surface-bright": "#fffbff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#fff6ee",
+                        "primary-fixed": "#ebe1d7",
+                        "tertiary-fixed": "#faf2ef",
+                        "inverse-surface": "#0E1726", 
+                        "on-background": "#1A1A1A",
+                        "on-tertiary-fixed-variant": "#6a6563",
+                        "secondary-fixed": "#e8e2d6",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#e8e2d6",
+                        "on-surface-variant": "#666557",
+                        "on-surface": "#1A1A1A",
+                        "tertiary": "#686362",
+                        "surface-container-high": "#f2eedf",
+                        "outline-variant": "#B0AC9F", 
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-dim": "#5b584f",
+                        "background": "#FAF8F4", 
+                        "surface-tint": "#645d55",
+                        "on-primary-container": "#575149",
+                        "surface-dim": "#e6e3cf",
+                        "primary-fixed-dim": "#dcd3c9",
+                        "primary-container": "#ebe1d7",
+                        "surface": "#FAF8F4", 
+                        "primary-dim": "#58514a",
+                        "on-primary-fixed": "#443e37",
+                        "on-primary-fixed-variant": "#615b53",
+                        "on-secondary-fixed": "#423f37",
+                        "error-dim": "#5c1202",
+                        "surface-variant": "#ece8d7",
+                        "on-error-container": "#742410",
+                        "tertiary-container": "#faf2ef",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#fdf9ef",
+                        "on-tertiary-fixed": "#4d4947",
+                        "secondary": "#68645b",
+                        "on-secondary-fixed-variant": "#5f5b52",
+                        "tertiary-fixed-dim": "#ece4e1",
+                        "outline": "#838172",
+                        "secondary-fixed-dim": "#d9d4c8",
+                        "primary": "#B8893A", 
+                        "on-tertiary-container": "#605b59",
+                        "tertiary-dim": "#5c5756",
+                        "surface-container": "#f7f4e7",
+                        "on-secondary-container": "#555249",
+                        "completed": "#4A6B47" 
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "display": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body antialiased min-h-screen flex flex-col selection:bg-primary/20">
+<!-- region: shell.topNav -->
+<header class="bg-inverse-surface h-20 flex justify-between items-center px-12 w-full z-50 rounded-none shrink-0 border-b border-outline-variant/20">
+<div class="text-2xl font-display italic font-bold text-on-primary tracking-tighter">
+            MOVEMENTAL
+        </div>
+<div class="flex items-center gap-4 text-on-primary font-body text-[13px]">
+<span>Northridge Community Center</span>
+<span class="opacity-50">•</span>
+<div class="w-8 h-8 rounded-full bg-surface/10 flex items-center justify-center text-xs font-bold border border-outline-variant/30">
+                LO
+            </div>
+</div>
+</header>
+<!-- endregion shell.topNav -->
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-[960px] mx-auto px-16 py-20 flex flex-col gap-12">
+<!-- region: page.hero -->
+<section class="flex flex-col gap-4">
+<span class="text-primary font-label font-bold text-[11px] uppercase tracking-[0.08em]">
+                SAFESTART DASHBOARD
+            </span>
+<h1 class="font-display italic text-[44px] leading-tight text-on-surface">
+                Welcome to your engagement.
+            </h1>
+<p class="font-body text-base leading-relaxed text-on-surface max-w-[800px]">
+                Your SafeStart engagement begins with a one-hour kickoff Zoom tomorrow at 10:00 AM Central with Joshua Shepherd. Below is what to expect over the next two weeks. Your dashboard will become more active after kickoff — for now, this page is your engagement summary.
+            </p>
+</section>
+<!-- endregion page.hero -->
+<hr class="border-t border-outline-variant opacity-50 my-2"/>
+<!-- region: sections.timeline -->
+<section class="flex flex-col gap-8 overflow-x-auto pb-4">
+<div class="relative flex min-w-max">
+<!-- Line -->
+<div class="absolute top-[11px] left-4 right-4 h-px bg-outline-variant opacity-30 z-0"></div>
+<!-- Stage 1 -->
+<div class="flex flex-col gap-3 w-48 relative z-10">
+<div class="flex items-center justify-center w-6 h-6 rounded-full bg-background border border-completed">
+<div class="w-2 h-2 rounded-full bg-completed"></div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-display italic text-base text-primary">Stage 1</span>
+<span class="font-body text-sm font-semibold">Engagement signed</span>
+<span class="font-label text-xs text-on-surface-variant">May 10, 2026</span>
+</div>
+</div>
+<!-- Stage 2 (Current) -->
+<div class="flex flex-col gap-3 w-56 relative z-10">
+<div class="flex items-center justify-center w-8 h-8 -ml-1 rounded-full bg-background border border-primary">
+<div class="w-3 h-3 rounded-full bg-primary animate-pulse"></div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-display italic text-base text-primary">Stage 2</span>
+<span class="font-body text-sm font-bold text-on-surface">Kickoff Zoom</span>
+<span class="font-label text-xs text-primary font-semibold">Tomorrow, May 12, 10:00 AM CT</span>
+</div>
+</div>
+<!-- Stages 3-6 (Muted) -->
+<div class="flex gap-4 text-on-surface-variant/60">
+<div class="flex flex-col gap-3 w-40 relative z-10">
+<div class="w-6 h-6 rounded-full bg-background border border-outline-variant/50 flex items-center justify-center">
+<div class="w-1.5 h-1.5 rounded-full bg-outline-variant/30"></div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-display italic text-base text-outline-variant">Stage 3</span>
+<span class="font-body text-sm">Asynchronous review</span>
+</div>
+</div>
+<div class="flex flex-col gap-3 w-40 relative z-10">
+<div class="w-6 h-6 rounded-full bg-background border border-outline-variant/50 flex items-center justify-center">
+<div class="w-1.5 h-1.5 rounded-full bg-outline-variant/30"></div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-display italic text-base text-outline-variant">Stage 4</span>
+<span class="font-body text-sm">Revision Zoom</span>
+</div>
+</div>
+<div class="flex flex-col gap-3 w-40 relative z-10">
+<div class="w-6 h-6 rounded-full bg-background border border-outline-variant/50 flex items-center justify-center">
+<div class="w-1.5 h-1.5 rounded-full bg-outline-variant/30"></div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-display italic text-base text-outline-variant">Stage 5</span>
+<span class="font-body text-sm">Internal ratification</span>
+</div>
+</div>
+<div class="flex flex-col gap-3 w-48 relative z-10">
+<div class="w-6 h-6 rounded-full bg-background border border-outline-variant/50 flex items-center justify-center">
+<div class="w-1.5 h-1.5 rounded-full bg-outline-variant/30"></div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-display italic text-base text-outline-variant">Stage 6</span>
+<span class="font-body text-sm">Publication and rollout</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- endregion sections.timeline -->
+<hr class="border-t border-outline-variant opacity-50 my-2"/>
+<!-- region: sections.rosterColumns -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Col 1 -->
+<div class="flex flex-col gap-4">
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant font-semibold">
+                    YOUR CONTRIBUTORS
+                </span>
+<ul class="flex flex-col gap-3 font-body text-sm">
+<li>
+<div class="font-semibold">Linda Ozawa</div>
+<div class="text-xs text-on-surface-variant">Executive Director</div>
+</li>
+<li>
+<div class="font-semibold">Marcus Vance</div>
+<div class="text-xs text-on-surface-variant">Director of Development</div>
+</li>
+<li>
+<div class="font-semibold">Sarah Kim</div>
+<div class="text-xs text-on-surface-variant">Communications Director</div>
+</li>
+<li>
+<div class="font-semibold">James Brennan</div>
+<div class="text-xs text-on-surface-variant">Director of Programs</div>
+</li>
+<li>
+<div class="font-semibold">Amelia Torres</div>
+<div class="text-xs text-on-surface-variant">Chief Financial Officer</div>
+</li>
+</ul>
+</div>
+<!-- Col 2 -->
+<div class="flex flex-col gap-4">
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant font-semibold">
+                    YOUR DECIDERS
+                </span>
+<ul class="flex flex-col gap-3 font-body text-sm">
+<li>
+<div class="font-semibold">Linda Ozawa</div>
+<div class="text-xs text-on-surface-variant">Executive Director (signing)</div>
+</li>
+<li>
+<div class="font-semibold">The Northridge Board of Directors</div>
+<div class="text-xs text-on-surface-variant">(ratifying)</div>
+</li>
+</ul>
+</div>
+<!-- Col 3 -->
+<div class="flex flex-col gap-4">
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant font-semibold">
+                    YOUR FACILITATOR
+                </span>
+<ul class="flex flex-col gap-3 font-body text-sm">
+<li>
+<div class="font-semibold">Joshua Shepherd</div>
+<div class="text-xs text-on-surface-variant">Founder &amp; CTO, Movemental</div>
+</li>
+</ul>
+<div class="mt-4 pt-4 border-t border-outline-variant/30 text-xs text-on-surface-variant leading-relaxed">
+                    Available during engagement:<br/>
+<a class="hover:text-primary transition-colors" href="mailto:josh@movemental.ai">josh@movemental.ai</a><br/>
+                    (816) 555-0142
+                </div>
+</div>
+</section>
+<!-- endregion sections.rosterColumns -->
+<hr class="border-t border-outline-variant opacity-50 my-2"/>
+<!-- region: sections.prepChecklist -->
+<section class="flex flex-col md:flex-row gap-8 lg:gap-16 items-start bg-surface-container-low p-8 border-l border-primary">
+<div class="flex flex-col gap-2 min-w-[200px]">
+<span class="font-label text-xs uppercase tracking-widest text-primary font-semibold">
+                    BEFORE THE KICKOFF ZOOM
+                </span>
+<h2 class="font-display italic text-2xl text-on-surface leading-tight">
+                    A few things to bring to the kickoff.
+                </h2>
+</div>
+<div class="flex flex-col gap-4 max-w-[500px]">
+<p class="font-body text-[15px] leading-relaxed text-on-surface">
+                    The kickoff is one hour. We will use this time to align on objectives, confirm the timeline, and establish the operational cadence. Please be ready to discuss or provide the following during our session.
+                </p>
+<ul class="flex flex-col gap-2 font-body text-[15px] text-on-surface-variant">
+<li class="flex items-start gap-2">
+<span class="text-primary mt-1 text-xs">▪</span>
+<span>Existing AI policy drafts (if any)</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-primary mt-1 text-xs">▪</span>
+<span>Relevant Board documents from Q1</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-primary mt-1 text-xs">▪</span>
+<span>Specific concerns regarding data privacy</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-primary mt-1 text-xs">▪</span>
+<span>Current list of sanctioned AI tools</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-primary mt-1 text-xs">▪</span>
+<span>Primary Donor/Board stakeholders</span>
+</li>
+</ul>
+</div>
+</section>
+<!-- endregion sections.prepChecklist -->
+</main>
+<!-- region: shell.footer -->
+<footer class="bg-inverse-surface mt-auto flex flex-col md:flex-row justify-between items-center px-12 h-20 w-full shrink-0">
+<div class="text-lg font-display italic text-on-primary">
+            MOVEMENTAL
+        </div>
+<nav class="flex gap-6 font-body text-[13px] text-on-primary">
+<a class="opacity-80 hover:opacity-100 hover:text-primary transition-colors" href="#">Help</a>
+<a class="opacity-80 hover:opacity-100 hover:text-primary transition-colors" href="#">Contact Josh</a>
+<a class="opacity-80 hover:opacity-100 hover:text-primary transition-colors" href="#">Sign out</a>
+</nav>
+</footer>
+<!-- endregion shell.footer -->
+</body></html>

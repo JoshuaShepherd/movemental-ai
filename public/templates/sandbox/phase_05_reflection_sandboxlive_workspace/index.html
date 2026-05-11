@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SandboxLive Dashboard - Phase 05 Reflection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-dim": "#5c1202",
+                        "outline": "#838172",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#f7f4e7",
+                        "tertiary-fixed": "#faf2ef",
+                        "tertiary": "#686362",
+                        "on-primary-container": "#575149",
+                        "on-secondary-fixed": "#423f37",
+                        "on-error-container": "#742410",
+                        "on-surface": "#39382c",
+                        "surface-variant": "#ece8d7",
+                        "on-primary-fixed": "#443e37",
+                        "secondary-fixed-dim": "#d9d4c8",
+                        "tertiary-container": "#faf2ef",
+                        "primary": "#645d55",
+                        "outline-variant": "#bcbaa9",
+                        "inverse-primary": "#fff5ea",
+                        "tertiary-fixed-dim": "#ece4e1",
+                        "on-tertiary-fixed": "#4d4947",
+                        "surface-bright": "#fffbff",
+                        "on-secondary-fixed-variant": "#5f5b52",
+                        "surface-container-high": "#f2eedf",
+                        "tertiary-dim": "#5c5756",
+                        "surface-container-highest": "#ece8d7",
+                        "inverse-on-surface": "#9f9d96",
+                        "background": "#fffbff",
+                        "on-secondary": "#ffffff",
+                        "secondary-dim": "#5b584f",
+                        "primary-dim": "#58514a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#615b53",
+                        "on-secondary-container": "#555249",
+                        "on-primary": "#fff6ee",
+                        "surface": "#faf6ee",
+                        "on-tertiary-container": "#605b59",
+                        "surface-container-low": "#fdf9ef",
+                        "primary-fixed": "#ebe1d7",
+                        "primary-container": "#ebe1d7",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#dcd3c9",
+                        "secondary-container": "#e8e2d6",
+                        "on-surface-variant": "#666557",
+                        "on-background": "#39382c",
+                        "secondary-fixed": "#e8e2d6",
+                        "error": "#a54731",
+                        "surface-dim": "#e6e3cf",
+                        "error-container": "#fe8b70",
+                        "on-tertiary-fixed-variant": "#6a6563",
+                        "secondary": "#68645b",
+                        "surface-tint": "#645d55",
+                        "inverse-surface": "#141110",
+                        "accent": "#B8893A"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "display": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-inverse-surface flex justify-between items-center w-full px-8 h-16 docked full-width top-0 rounded-none z-50">
+<div class="flex items-center gap-6">
+<span class="font-headline italic text-2xl text-on-primary">Movemental</span>
+<span class="px-3 py-1 bg-surface-container-highest/20 text-on-primary font-label text-xs tracking-widest uppercase border border-outline-variant/30">Sandbox</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-primary-fixed-variant hover:text-on-primary transition-colors duration-200 font-label tracking-wide text-sm" href="#">Strategy</a>
+<a class="text-on-primary-fixed-variant hover:text-on-primary transition-colors duration-200 font-label tracking-wide text-sm" href="#">Pillars</a>
+<a class="text-on-primary-fixed-variant hover:text-on-primary transition-colors duration-200 font-label tracking-wide text-sm" href="#">Archive</a>
+<a class="text-on-primary border-b border-on-primary pb-1 font-label tracking-wide text-sm" href="#">Cohorts</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="text-on-primary hover:text-outline-variant transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="text-on-primary hover:text-outline-variant transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar -->
+<aside class="bg-inverse-surface border-r border-outline-variant/20 flex flex-col h-full py-6 w-64 rounded-none shrink-0 overflow-y-auto">
+<div class="px-6 mb-8 flex flex-col gap-1">
+<img alt="Consultancy Logo" class="w-12 h-12 object-cover mb-3 grayscale contrast-125" data-alt="A minimalist geometric logo featuring intersecting black and gold lines on a crisp white background, evoking a sense of structure, strategy, and premium institutional quality in a well-lit studio setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAVfnvdHbh8gPUYOIRNLJxQAA3FISFTmRJotGf442oFF308cRNZc0q0-dhtaM0D_GDbFLyL6Ln02HH2_j6-Kqjixo26Ip_wL2iBjt6J6Xap_w7noSeruLMtnPHHI37Pfm0Kt9iJY7QXjz8dWjrgXTSHOrmWfdlJjfhhz4JmmVkaMNNuA7RnX5h1NcBg4-sMkG7idcGwSQDI3CIegU8XVVoJYkaN07L7--Vmia8tt9YvRml142zKKYGCuG9-Oj1TsW0xWUS5gZOF3A"/>
+<h2 class="text-on-primary font-headline italic text-xl">Strategic AI</h2>
+<p class="text-outline-variant font-label text-xs uppercase tracking-widest">Editorial Archive</p>
+</div>
+<nav class="flex-1 flex flex-col space-y-1">
+<a class="text-on-primary-fixed-variant px-4 py-3 hover:bg-surface-container-highest/10 hover:text-on-primary transition-colors linear duration-200 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="font-label uppercase tracking-widest text-xs">Dashboard</span>
+</a>
+<a class="text-on-primary-fixed-variant px-4 py-3 hover:bg-surface-container-highest/10 hover:text-on-primary transition-colors linear duration-200 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+<span class="font-label uppercase tracking-widest text-xs">Emerging Consensus</span>
+</a>
+<a class="bg-primary-dim text-on-primary border-l-2 border-[#B8893A] px-4 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]">pending_actions</span>
+<span class="font-label uppercase tracking-widest text-xs">Pending Reflections</span>
+</a>
+<a class="text-on-primary-fixed-variant px-4 py-3 hover:bg-surface-container-highest/10 hover:text-on-primary transition-colors linear duration-200 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+<span class="font-label uppercase tracking-widest text-xs">Session Previews</span>
+</a>
+<a class="text-on-primary-fixed-variant px-4 py-3 hover:bg-surface-container-highest/10 hover:text-on-primary transition-colors linear duration-200 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]">menu_book</span>
+<span class="font-label uppercase tracking-widest text-xs">Manifesto</span>
+</a>
+</nav>
+<div class="px-4 mt-8">
+<button class="w-full bg-primary text-on-primary font-label text-xs uppercase tracking-widest py-3 border border-transparent hover:bg-primary-dim transition-colors">
+                    New Reflection
+                </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto bg-surface pt-16 px-12 pb-24">
+<div class="max-w-4xl mx-auto space-y-16">
+<!-- Header Section -->
+<header class="space-y-6">
+<div class="flex items-center gap-2 text-xs font-label text-outline uppercase tracking-wider">
+<span>Sandbox</span>
+<span>·</span>
+<span>Phase 05</span>
+<span>·</span>
+<span class="text-on-surface">Reflection</span>
+</div>
+<div class="flex items-center gap-3 text-xs font-label uppercase tracking-widest text-[#B8893A]">
+<span>PHASE 05 — REFLECTION</span>
+<span class="w-1 h-1 bg-[#B8893A] rounded-none"></span>
+<span class="text-outline">3 of 7 cohort reflections complete · Cohort session Thursday</span>
+</div>
+<div>
+<h1 class="font-headline italic text-5xl text-on-surface mb-4 tracking-tight">Stepping back.</h1>
+<p class="font-headline italic text-2xl text-outline max-w-2xl">What you learned about AI, about your work, about yourself.</p>
+</div>
+</header>
+<!-- Tab Navigation -->
+<div class="border-b border-outline-variant/30 flex gap-8">
+<button class="pb-4 font-label text-xs uppercase tracking-widest text-outline hover:text-on-surface transition-colors border-b-2 border-transparent">
+                        MY REFLECTION
+                    </button>
+<button class="pb-4 font-label text-xs uppercase tracking-widest text-on-surface border-b-2 border-[#B8893A]">
+                        COHORT REFLECTION
+                    </button>
+</div>
+<!-- Tab Content -->
+<div class="space-y-12">
+<p class="font-body text-base text-on-surface max-w-2xl leading-relaxed">
+                        Themes emerging across the cohort as members complete their individual reflections...
+                    </p>
+<!-- Theme Cards Container -->
+<div class="space-y-6">
+<!-- Theme 01 -->
+<article class="p-8 border border-outline-variant/30 bg-surface-container-low hover:bg-surface-container transition-colors duration-300">
+<div class="mb-4">
+<span class="font-label text-xs uppercase tracking-widest text-[#B8893A]">EMERGING — STRONG CONSENSUS</span>
+</div>
+<h3 class="font-headline italic text-3xl text-on-surface mb-6">Voice is everything.</h3>
+<div class="space-y-4 mb-8">
+<p class="font-body text-on-surface-variant leading-relaxed">
+                                    The cohort strongly aligns on the necessity of preserving human nuance. As the baseline of generated content rises, the premium on distinct, idiosyncratic human voice increases exponentially.
+                                </p>
+<blockquote class="border-l border-[#B8893A] pl-4 font-headline italic text-lg text-outline-variant">
+                                    "If we sound like the machine, we are competing with the machine. We must sound inextricably like ourselves."
+                                </blockquote>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-inverse-surface text-on-primary flex items-center justify-center font-label text-xs">MV</div>
+<div class="w-8 h-8 bg-surface-variant text-on-surface flex items-center justify-center font-label text-xs">LO</div>
+<div class="w-8 h-8 bg-surface-variant text-on-surface flex items-center justify-center font-label text-xs">SK</div>
+</div>
+</article>
+<!-- Theme 02 -->
+<article class="p-8 border border-outline-variant/30 bg-surface-container-low hover:bg-surface-container transition-colors duration-300">
+<div class="mb-4">
+<span class="font-label text-xs uppercase tracking-widest text-outline">EMERGING — PARTIAL CONSENSUS</span>
+</div>
+<h3 class="font-headline italic text-3xl text-on-surface mb-6">AI raises the floor; humans set the ceiling.</h3>
+<div class="space-y-4 mb-8">
+<p class="font-body text-on-surface-variant leading-relaxed">
+                                    General agreement that while AI establishes a new minimum viable standard for structural and analytical work, breakthrough insights remain firmly human territory.
+                                </p>
+<blockquote class="border-l border-outline-variant pl-4 font-headline italic text-lg text-outline-variant">
+                                    "The middle is hollowed out. We must either operate at the absolute foundational level of execution, or the absolute pinnacle of strategic abstraction."
+                                </blockquote>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-inverse-surface text-on-primary flex items-center justify-center font-label text-xs">MV</div>
+<div class="w-8 h-8 bg-surface-variant text-on-surface flex items-center justify-center font-label text-xs">SK</div>
+</div>
+</article>
+<!-- Theme 03 -->
+<article class="p-8 border border-outline-variant/30 bg-surface-container-low hover:bg-surface-container transition-colors duration-300 relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-[2px] bg-error-dim/20"></div>
+<div class="mb-4">
+<span class="font-label text-xs uppercase tracking-widest text-error-dim">EMERGING — TENSION TO RESOLVE</span>
+</div>
+<h3 class="font-headline italic text-3xl text-on-surface mb-6">What about cohort members whose voice is still forming?</h3>
+<div class="space-y-4 mb-8">
+<p class="font-body text-on-surface-variant leading-relaxed">
+                                    A complex discussion point regarding junior members. If "voice is everything," how do we accommodate those who historically relied on emulation and iterative feedback to develop their distinct perspective?
+                                </p>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-surface-variant text-on-surface flex items-center justify-center font-label text-xs">LO</div>
+<div class="w-8 h-8 bg-surface-variant text-on-surface flex items-center justify-center font-label text-xs">SK</div>
+<div class="w-8 h-8 border border-dashed border-outline-variant text-outline flex items-center justify-center font-label text-xs">?</div>
+</div>
+</article>
+</div>
+</div>
+<!-- Pending Reflections Section (Ledger Row Pattern) -->
+<section class="mt-24">
+<h4 class="font-label text-xs uppercase tracking-widest text-outline mb-6">PENDING REFLECTIONS</h4>
+<div class="border-t border-outline-variant/30">
+<div class="flex items-center justify-between py-4 border-b border-outline-variant/30 hover:bg-surface-container-low transition-colors px-2">
+<div class="flex items-center gap-4 w-1/3">
+<div class="w-8 h-8 bg-surface-variant text-on-surface flex items-center justify-center font-label text-xs">JW</div>
+<span class="font-body text-sm font-medium">James</span>
+</div>
+<div class="w-1/3 font-label text-xs text-outline">Started Jun 22</div>
+<div class="w-1/3 flex justify-end">
+<span class="font-label text-xs">80%</span>
+</div>
+</div>
+<div class="flex items-center justify-between py-4 border-b border-outline-variant/30 hover:bg-surface-container-low transition-colors px-2">
+<div class="flex items-center gap-4 w-1/3">
+<div class="w-8 h-8 bg-surface-variant text-on-surface flex items-center justify-center font-label text-xs">AR</div>
+<span class="font-body text-sm font-medium">Amelia</span>
+</div>
+<div class="w-1/3 font-label text-xs text-outline">Started Jun 23</div>
+<div class="w-1/3 flex justify-end">
+<span class="font-label text-xs">45%</span>
+</div>
+</div>
+<div class="flex items-center justify-between py-4 border-b border-outline-variant/30 hover:bg-surface-container-low transition-colors px-2">
+<div class="flex items-center gap-4 w-1/3">
+<div class="w-8 h-8 bg-surface-variant text-on-surface flex items-center justify-center font-label text-xs">DP</div>
+<span class="font-body text-sm font-medium">David</span>
+</div>
+<div class="w-1/3 font-label text-xs text-outline">Not started</div>
+<div class="w-1/3 flex justify-end">
+<span class="font-label text-xs text-error-dim">0%</span>
+</div>
+</div>
+</div>
+<p class="font-label text-xs text-outline mt-4 italic">Reflections are due before Thursday's cohort session.</p>
+</section>
+<!-- Session Preview -->
+<section class="mt-24 bg-surface-container-high p-8 border-l-4 border-[#B8893A] flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+<div class="space-y-2">
+<span class="font-label text-xs uppercase tracking-widest text-outline">COHORT REFLECTION SESSION</span>
+<h2 class="font-headline italic text-3xl text-on-surface">Thursday, June 26 · 90 minutes</h2>
+<p class="font-body text-sm text-on-surface-variant max-w-lg mt-2">
+                            A facilitated discussion synthesizing the emerging themes. Please review all individual reflections prior to joining the session.
+                        </p>
+</div>
+<button class="bg-[#B8893A] text-white px-6 py-3 font-label text-xs uppercase tracking-widest hover:bg-[#a07732] transition-colors shrink-0 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+                        Add to calendar
+                    </button>
+</section>
+</div>
+</main>
+</div>
+</body></html>

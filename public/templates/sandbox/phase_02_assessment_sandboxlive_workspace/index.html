@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SandboxLive Phase 02 Assessment - Movemental</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#f2eedf",
+                        "on-background": "#39382c",
+                        "on-primary-fixed": "#443e37",
+                        "tertiary-fixed-dim": "#ece4e1",
+                        "on-tertiary-container": "#605b59",
+                        "on-surface": "#39382c",
+                        "outline": "#838172",
+                        "surface-container-highest": "#ece8d7",
+                        "surface-container-low": "#fdf9ef",
+                        "surface-container": "#f7f4e7",
+                        "outline-variant": "#bcbaa9",
+                        "primary": "#645d55",
+                        "on-tertiary-fixed": "#4d4947",
+                        "primary-container": "#ebe1d7",
+                        "secondary-dim": "#5b584f",
+                        "on-primary": "#fff6ee",
+                        "on-secondary-fixed-variant": "#5f5b52",
+                        "on-surface-variant": "#666557",
+                        "inverse-primary": "#fff5ea",
+                        "error": "#a54731",
+                        "surface": "#fffbff",
+                        "on-secondary-container": "#555249",
+                        "tertiary-container": "#faf2ef",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#742410",
+                        "on-secondary-fixed": "#423f37",
+                        "secondary-fixed": "#e8e2d6",
+                        "surface-variant": "#ece8d7",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#fffbff",
+                        "primary-fixed": "#ebe1d7",
+                        "surface-tint": "#645d55",
+                        "inverse-surface": "#0f0e0a",
+                        "on-primary-container": "#575149",
+                        "on-primary-fixed-variant": "#615b53",
+                        "inverse-on-surface": "#9f9d96",
+                        "secondary-container": "#e8e2d6",
+                        "on-tertiary-fixed-variant": "#6a6563",
+                        "on-error": "#ffffff",
+                        "error-container": "#fe8b70",
+                        "primary-fixed-dim": "#dcd3c9",
+                        "tertiary-dim": "#5c5756",
+                        "tertiary-fixed": "#faf2ef",
+                        "background": "#fffbff",
+                        "surface-dim": "#e6e3cf",
+                        "secondary": "#68645b",
+                        "secondary-fixed-dim": "#d9d4c8",
+                        "on-tertiary": "#ffffff",
+                        "primary-dim": "#58514a",
+                        "error-dim": "#5c1202",
+                        "tertiary": "#686362"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Instrument Serif", "serif"],
+                        "display": ["Instrument Serif", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {}
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-surface text-primary dark:text-primary-dim font-body docked full-width top-0 bg-surface/80 backdrop-blur-md flat no shadows flex justify-between items-center px-12 h-20 w-full z-50 sticky transition-all duration-200 ease-linear">
+<div class="flex items-center gap-8">
+<div class="text-2xl font-headline italic text-primary dark:text-primary-dim tracking-tight">Movemental</div>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant font-medium text-sm font-label uppercase tracking-widest hover:text-primary transition-colors duration-200" href="#">Strategic Pillars</a>
+<a class="text-on-surface-variant font-medium text-sm font-label uppercase tracking-widest hover:text-primary transition-colors duration-200" href="#">Executive Summary</a>
+<a class="text-on-surface-variant font-medium text-sm font-label uppercase tracking-widest hover:text-primary transition-colors duration-200" href="#">Digital Archive</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:text-primary transition-colors duration-200 flex items-center justify-center p-2">
+<span class="material-symbols-outlined text-2xl">account_circle</span>
+</button>
+</div>
+</nav>
+<!-- Main Workspace -->
+<main class="flex-grow flex flex-col relative w-full max-w-screen-2xl mx-auto">
+<!-- Top Section -->
+<header class="w-full px-6 md:px-12 pt-8 pb-12 bg-surface flex flex-col gap-6 relative z-10">
+<!-- Breadcrumbs -->
+<nav class="text-xs font-label uppercase tracking-[0.05em] text-on-surface-variant flex items-center gap-2">
+<a class="hover:text-primary transition-colors" href="#">Sandbox</a>
+<span>·</span>
+<a class="hover:text-primary transition-colors" href="#">Phase 02</a>
+<span>·</span>
+<span class="text-primary font-semibold">Assessment</span>
+<span>·</span>
+<span>Marcus Vance</span>
+</nav>
+<div class="flex flex-col gap-2 max-w-4xl">
+<!-- Eyebrow -->
+<div class="text-xs font-label uppercase tracking-[0.05em] text-primary-dim flex items-center gap-3">
+<span class="font-bold text-primary">PHASE 02 — ASSESSMENT</span>
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<span>Current Reality Map in progress</span>
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<span>14 of 22 questions answered</span>
+</div>
+<!-- Title & Descriptor -->
+<h1 class="text-4xl md:text-5xl font-headline italic text-on-surface tracking-tight mt-2 mb-1">Your Current Reality Map</h1>
+<p class="font-headline italic text-lg text-on-surface-variant">Worked through with an AI assistant. Editable by you. Visible to your cohort.</p>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-1 bg-surface-container-high mt-4 overflow-hidden relative">
+<div class="absolute left-0 top-0 h-full bg-primary" style="width: 64%;"></div>
+</div>
+<div class="w-full h-px bg-outline-variant/30 mt-8 absolute bottom-0 left-0"></div>
+</header>
+<!-- Two Column Layout -->
+<div class="flex-grow flex flex-col lg:flex-row w-full bg-surface relative">
+<!-- Center Hairline Divider (Desktop) -->
+<div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-outline-variant/20 -translate-x-1/2 z-0"></div>
+<!-- Left Column: AI Interview -->
+<section class="w-full lg:w-1/2 flex flex-col h-[calc(100vh-280px)] min-h-[600px] border-b lg:border-b-0 lg:border-r border-outline-variant/20 relative bg-surface z-10">
+<!-- Header -->
+<div class="px-8 py-6 flex items-center justify-between bg-surface/90 backdrop-blur-sm sticky top-0 z-20 border-b border-outline-variant/10">
+<h2 class="text-xs font-label uppercase tracking-[0.05em] text-primary font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">forum</span>
+                        INTERVIEW IN PROGRESS
+                    </h2>
+</div>
+<!-- Chat Canvas -->
+<div class="flex-grow overflow-y-auto px-8 py-8 flex flex-col gap-8 scroll-smooth" id="chat-canvas">
+<!-- AI Message -->
+<div class="flex gap-4 max-w-[85%]">
+<div class="w-8 h-8 shrink-0 bg-primary-container text-on-primary-container flex items-center justify-center font-headline italic font-bold text-lg">M</div>
+<div class="bg-surface-container-low px-5 py-4 text-sm font-body text-on-surface leading-relaxed border border-outline-variant/10 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
+                            Got it — so prospect research takes about six hours of your week, and most of that is finding rather than synthesizing. That's useful. Let's keep going.
+                        </div>
+</div>
+<!-- User Message -->
+<div class="flex gap-4 max-w-[85%] self-end flex-row-reverse">
+<div class="bg-surface-container-highest px-5 py-4 text-sm font-body text-on-surface leading-relaxed border border-outline-variant/10">
+                            Yes that's right. The synthesis is the easier part.
+                        </div>
+</div>
+<!-- AI Message -->
+<div class="flex gap-4 max-w-[85%]">
+<div class="w-8 h-8 shrink-0 bg-primary-container text-on-primary-container flex items-center justify-center font-headline italic font-bold text-lg">M</div>
+<div class="bg-surface-container-low px-5 py-4 text-sm font-body text-on-surface leading-relaxed border border-outline-variant/10 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
+                            Let's name some friction points specifically. When you think about your week last week, what work made you think "this is taking longer than it should" or "I wish this were easier"? Try to name two or three specific tasks, not categories.
+                        </div>
+</div>
+<!-- User Message -->
+<div class="flex gap-4 max-w-[85%] self-end flex-row-reverse">
+<div class="bg-surface-container-highest px-5 py-4 text-sm font-body text-on-surface leading-relaxed border border-outline-variant/10">
+                            Definitely the major donor thank-you letters. Each one takes about 45 minutes because I want them to feel personal. I write twelve to fifteen of these a month.
+                        </div>
+</div>
+<!-- AI Message -->
+<div class="flex gap-4 max-w-[85%]">
+<div class="w-8 h-8 shrink-0 bg-primary-container text-on-primary-container flex items-center justify-center font-headline italic font-bold text-lg">M</div>
+<div class="bg-surface-container-low px-5 py-4 text-sm font-body text-on-surface leading-relaxed border border-outline-variant/10 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
+                            That's a strong example — high frequency, time-intensive, and personalness is the very thing AI assistance has to be careful with. Let's hold that one and find one or two more. What else this week felt like more effort than the output justified?
+                        </div>
+</div>
+<!-- User Message Active Input -->
+<div class="flex gap-4 max-w-[85%] self-end flex-row-reverse mb-4">
+<div class="bg-surface-container-highest px-5 py-4 text-sm font-body text-on-surface leading-relaxed border border-outline-variant/10 relative">
+                            Honestly the foundation prospect rese<span class="w-2 h-4 bg-primary inline-block align-middle ml-[2px] animate-pulse"></span>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="px-8 pb-8 pt-4 bg-surface mt-auto flex flex-col gap-3">
+<div class="relative w-full flex">
+<textarea class="w-full bg-surface-container-low border border-outline-variant focus:border-primary focus:ring-0 text-sm font-body p-4 resize-none min-h-[60px] placeholder:text-outline" placeholder="Type your response..." rows="1"></textarea>
+<button class="absolute right-2 top-2 bottom-2 bg-primary text-on-primary px-6 flex items-center justify-center font-label text-xs uppercase tracking-widest hover:bg-primary-dim transition-colors">
+                            Send
+                        </button>
+</div>
+<p class="text-xs text-on-surface-variant font-body">The AI assistant uses only this conversation to build your Map. Nothing leaves the Sandbox.</p>
+</div>
+</section>
+<!-- Right Column: Current Reality Map -->
+<section class="w-full lg:w-1/2 flex flex-col h-[calc(100vh-280px)] min-h-[600px] overflow-y-auto bg-surface z-10 relative">
+<!-- Header -->
+<div class="px-12 py-6 flex items-center justify-between bg-surface/90 backdrop-blur-sm sticky top-0 z-20 border-b border-outline-variant/10">
+<h2 class="text-xs font-label uppercase tracking-[0.05em] text-primary font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">map</span>
+                        YOUR MAP — UPDATING LIVE
+                    </h2>
+<a class="text-xs font-label uppercase tracking-[0.05em] text-primary hover:text-primary-dim transition-colors flex items-center gap-1 group" href="#">
+                        Edit Map directly <span class="material-symbols-outlined text-[14px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Map Content Canvas -->
+<div class="px-12 py-10 flex flex-col gap-12 pb-24">
+<!-- Section 1 -->
+<div class="flex flex-col gap-6">
+<h3 class="text-sm font-label uppercase tracking-widest text-on-surface border-b border-outline-variant/30 pb-2">I. What You Do</h3>
+<div class="flex flex-col">
+<!-- Ledger Row -->
+<div class="flex justify-between items-start py-4 border-b border-outline-variant/20">
+<span class="font-body text-on-surface">Major donor cultivation</span>
+<span class="font-label text-xs tracking-widest text-outline">12 HRS</span>
+</div>
+<!-- Ledger Row -->
+<div class="flex justify-between items-start py-4 border-b border-outline-variant/20">
+<span class="font-body text-on-surface">Prospect research</span>
+<span class="font-label text-xs tracking-widest text-outline">6 HRS</span>
+</div>
+<!-- Ledger Row -->
+<div class="flex justify-between items-start py-4 border-b border-outline-variant/20">
+<span class="font-body text-on-surface">Internal team alignment</span>
+<span class="font-label text-xs tracking-widest text-outline">4 HRS</span>
+</div>
+</div>
+</div>
+<!-- Section 2: Live Updating Area -->
+<div class="flex flex-col gap-6 bg-surface-container-low -mx-6 px-6 py-8 border-y border-outline-variant/10">
+<h3 class="text-sm font-label uppercase tracking-widest text-on-surface border-b border-outline-variant/30 pb-2 flex justify-between items-center">
+                            II. Friction Points
+                            <span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-40"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+</h3>
+<div class="flex flex-col gap-2">
+<!-- Just Added Row -->
+<div class="flex flex-col py-4 border-b border-outline-variant/20 relative pl-4 border-l-2 border-l-primary bg-primary/5 transition-all duration-500">
+<div class="flex justify-between items-center mb-1">
+<span class="font-body text-on-surface font-medium">Major donor thank-you letters</span>
+<span class="text-[10px] font-label uppercase bg-primary text-on-primary px-1.5 py-0.5 tracking-wider">JUST ADDED</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Takes ~45 min each (12-15/month). High desire for personal touch creates bottleneck.</p>
+</div>
+<!-- Updating Row -->
+<div class="flex flex-col py-4 border-b border-outline-variant/20 relative pl-4">
+<div class="flex items-center gap-3">
+<span class="font-body text-on-surface text-outline">Foundation prospect research</span>
+<span class="text-xs text-primary-dim italic font-headline animate-pulse">Synthesizing...</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3 -->
+<div class="flex flex-col gap-6 opacity-70 hover:opacity-100 transition-opacity">
+<h3 class="text-sm font-label uppercase tracking-widest text-on-surface border-b border-outline-variant/30 pb-2">III. What You'd Want Better</h3>
+<div class="flex flex-col">
+<!-- Ledger Row -->
+<div class="flex flex-col py-4 border-b border-outline-variant/20">
+<span class="font-body text-on-surface">Synthesis of research data</span>
+<p class="text-sm text-on-surface-variant mt-1">Currently finding is hard, synthesis is easy. Desire to flip this dynamic.</p>
+</div>
+<!-- Empty State Rows -->
+<div class="flex py-4 border-b border-outline-variant/10 items-center gap-3 text-outline border-dashed">
+<span class="material-symbols-outlined text-sm">add</span>
+<span class="text-sm font-body italic">Pending interview insights...</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Bottom Action Band -->
+<div class="w-full bg-surface-container-high py-6 px-12 flex flex-col sm:flex-row justify-between items-center gap-6 border-t border-outline-variant/20 z-20 relative shadow-[0_-4px_20px_rgba(0,0,0,0.03)]">
+<div class="text-sm text-on-surface-variant font-body">
+                Map visibility is restricted to <span class="font-medium text-on-surface">Cohort Alpha</span>. 
+            </div>
+<div class="flex gap-4">
+<button class="px-6 py-3 border border-outline/20 text-on-surface font-label text-xs uppercase tracking-widest hover:bg-surface-container-highest transition-colors flex items-center gap-2 bg-surface">
+<span class="material-symbols-outlined text-[16px]">pause</span>
+                    Pause
+                </button>
+<button class="px-8 py-3 bg-primary text-on-primary font-label text-xs uppercase tracking-widest hover:bg-primary-dim transition-colors flex items-center gap-2">
+                    Continue Interview
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface dark:bg-inverse-surface text-on-primary dark:text-on-primary font-label text-xs uppercase tracking-[0.2em] text-on-primary font-headline w-full py-12 px-12 bg-inverse-surface flat no shadows flex flex-col md:flex-row justify-between items-center w-full z-10 relative">
+<div class="mb-6 md:mb-0 text-center md:text-left text-on-primary-fixed-variant">
+            © 2024 MOVEMENTAL STRATEGY CORP. ALL RIGHTS RESERVED.
+        </div>
+<div class="flex flex-col md:flex-row gap-8 items-center">
+<a class="text-on-primary-fixed-variant hover:text-on-primary transition-opacity duration-200" href="#">Terms of Record</a>
+<a class="text-on-primary-fixed-variant hover:text-on-primary transition-opacity duration-200" href="#">Confidentiality Protocol</a>
+<a class="text-on-primary-fixed-variant hover:text-on-primary transition-opacity duration-200" href="#">Contact Bureau</a>
+</div>
+</footer>
+</body></html>

@@ -28,6 +28,7 @@ This file is the **canonical design charter** for the Movemental organizational 
 | Imagery, performance, forms polish | §15 |
 | Change control | §16 |
 | Concept Modern (marketing editorial) | §17 |
+| Stitch-surface tokens (`safestart-*`, product rails) | §18 |
 | Concept Modern HTML → React agent prompts | [docs/build/prompts/concept-modern-html-to-react-prompts.md](../build/prompts/concept-modern-html-to-react-prompts.md) |
 
 ---
@@ -640,7 +641,7 @@ Each row is a **composition reference** for IA and stacking; React pages should 
 
 When you intentionally evolve the system (new token, new primitive, altered ramp):
 
-1. Update **`src/app/globals.css`** and this document **together**.
+1. Update **`src/app/globals.css`** and this document **together** (including §18 when Stitch-surface or program-rail tokens change, and the staff swatch page `src/app/(dashboard)/admin/design-tokens/page.tsx`).
 2. For **static** patterns used by `templates/alan-hirsch/exemplars/` HTML, other `docs/html` prototypes, or shared templates, update **`docs/html/site-templates/site-theme.css`** (and **`prototype-pages.css`** when the change affects root prototypes) **together with this document** and [STATIC_HTML_AND_TEMPLATES.md](./STATIC_HTML_AND_TEMPLATES.md). If root HTML regains pasted chrome CSS, run **`python3 scripts/dedupe-docs-html-chrome-css.py`** after fixing the shared stylesheet. If root pages regain pasted **`:root` / `html` / `body` resets**, run **`python3 scripts/strip-docs-html-inline-l0-l1.py`**.
 3. Run **`pnpm typecheck`** and **`pnpm lint`**.
 4. If the change affects Stitch translation rules, add a row to section 11 (and optionally to the migration prompt table for agent ergonomics).
@@ -691,3 +692,40 @@ These live in `:root` / `@theme inline` as Tailwind colors—**never** paste pro
 ### 17.5 Stitch coexistence
 
 Stitch project `2208910962065880866` remains the source for **productized** flows not covered by Concept Modern HTML. Where both exist, **merge layout intent from Stitch into these tokens**—do not fork parallel hex palettes per page.
+
+---
+
+## 18. Stitch-surface token namespace (`safestart-*` and product rails)
+
+**Status:** Load-bearing. These names are the **canonical register** for authenticated product surfaces that are lifted from Stitch HTML (`public/templates/`) or intentionally match that MD3-forward register—not a deprecated alias layer.
+
+### 18.1 What this namespace is for
+
+- **`safestart-*`** — Warm paper, ink, hairlines, and container tones that map directly to MD3-style tokens in Stitch exports (e.g. surface containers, outline variants, completed-state green). They sit **alongside** Concept Modern marketing tokens (`bg-background`, `text-foreground`, …) without replacing them.
+- **`movemental-midnight`** — Deep ink header/sidebar chrome shared across authenticated shell and Stitch-derived bands.
+- **`sandbox-sidebar*`, `sandbox-border`, `sandbox-muted`** — Midnight-adjacent rail for `/sandboxlive` and phase workspaces.
+- **`pathway-accent`** — Burnished editorial accent for Safety/Sandbox pathways (stage labels, active rules, pull-quote energy). Reserved for that product register; do not use for generic marketing highlights or citation UI (Ledger uses `cite-hl*` only).
+- **`status-go`, `status-caution`, `status-stop`** — Desaturated program signals (e.g. Sandbox “lights”) tuned to read on cream paper.
+
+### 18.2 Why a parallel namespace exists
+
+Concept Modern (§17) optimizes the **marketing** story: cream paper, ink pill, Instrument moments. Stitch-derived **product** HTML encodes a slightly different MD3 ramp (slightly different creams, hairlines, and container stacks). Rather than forcing every lifted screen through a lossy remap into marketing tokens, we **name and own** the Stitch register in `@theme inline` so lifts stay faithful and grep-friendly. Translation tables for agents still live in the Stitch migration prompt; this section is the **charter** for when those utilities are correct.
+
+### 18.3 When to use these tokens
+
+**Use** `safestart-*`, `movemental-midnight`, `sandbox-sidebar*`, `pathway-accent`, and related utilities when:
+
+- Building or maintaining routes under **`/sandboxlive`**, **`/safestart`**, **`/program`**, or other authenticated product shells that consume Stitch fixtures or parity HTML.
+- Lifting `<main>` subtrees from `public/templates/**` where the source uses MD3-adjacent classes mapped to this namespace (see migration prompt mechanical tables).
+
+**Do not** default to this namespace for:
+
+- Marketing / `(site)` routes, primitives, legal pages, or editorial hubs—use **semantic Concept Modern** tokens (`bg-background`, `bg-section`, `text-foreground`, …) unless a specific Stitch lift explicitly requires a local exception (then document it in the PR).
+
+### 18.4 Where values are defined
+
+All of the above are registered as **`--color-*`** entries inside **`@theme inline`** in **`src/app/globals.css`** (same block as Concept Modern and status colors). Tailwind v4 exposes them as utilities such as `bg-safestart-bg`, `text-safestart-ink`, `border-safestart-hairline`, `bg-movemental-midnight`, `bg-sandbox-sidebar`, `text-pathway-accent`. **Do not delete** these entries in favor of ad-hoc hex in TSX—if a value changes, update `globals.css`, this section, and the **`TOKEN_GROUPS`** hex labels on **`/admin/design-tokens`** together (see §16).
+
+### 18.5 Staff reference
+
+A read-only **swatch index** for every token in this namespace ships at **`/admin/design-tokens`** (staff-gated). Use it when lifting templates to confirm class names and hex without spelunking `globals.css`.

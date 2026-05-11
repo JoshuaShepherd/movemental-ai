@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SandboxLive Dashboard - Movemental AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#645d55",
+                      "on-primary-container": "#575149",
+                      "inverse-primary": "#fff5ea",
+                      "surface": "#fffbff",
+                      "primary-container": "#ebe1d7",
+                      "inverse-surface": "#0f0e0a",
+                      "on-primary-fixed": "#443e37",
+                      "secondary": "#68645b",
+                      "secondary-dim": "#5b584f",
+                      "inverse-on-surface": "#9f9d96",
+                      "on-secondary-fixed-variant": "#5f5b52",
+                      "on-error-container": "#742410",
+                      "tertiary-fixed": "#faf2ef",
+                      "on-tertiary-fixed": "#4d4947",
+                      "surface-container-low": "#fdf9ef",
+                      "surface-container-highest": "#ece8d7",
+                      "primary-dim": "#58514a",
+                      "surface-bright": "#fffbff",
+                      "tertiary-container": "#faf2ef",
+                      "on-surface-variant": "#666557",
+                      "outline-variant": "#bcbaa9",
+                      "tertiary": "#686362",
+                      "surface-container": "#f7f4e7",
+                      "on-tertiary": "#ffffff",
+                      "on-background": "#39382c",
+                      "on-primary-fixed-variant": "#615b53",
+                      "on-primary": "#fff6ee",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed-dim": "#dcd3c9",
+                      "error-dim": "#5c1202",
+                      "error-container": "#fe8b70",
+                      "secondary-fixed-dim": "#d9d4c8",
+                      "surface-dim": "#e6e3cf",
+                      "error": "#a54731",
+                      "on-secondary-fixed": "#423f37",
+                      "surface-tint": "#645d55",
+                      "surface-container-lowest": "#ffffff",
+                      "background": "#fffbff",
+                      "secondary-container": "#e8e2d6",
+                      "on-surface": "#39382c",
+                      "tertiary-dim": "#5c5756",
+                      "on-tertiary-container": "#605b59",
+                      "on-secondary-container": "#555249",
+                      "tertiary-fixed-dim": "#ece4e1",
+                      "surface-variant": "#ece8d7",
+                      "surface-container-high": "#f2eedf",
+                      "secondary-fixed": "#e8e2d6",
+                      "primary-fixed": "#ebe1d7",
+                      "on-tertiary-fixed-variant": "#6a6563",
+                      "outline": "#838172",
+                      "on-error": "#ffffff",
+                      "brand-midnight": "#0E1726",
+                      "brand-amber": "#B8893A",
+                      "brand-cream": "#FAF8F4",
+                      "brand-green": "#2E7D32"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "0px"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": [
+                              "Newsreader", "serif"
+                      ],
+                      "display": [
+                              "Newsreader", "serif"
+                      ],
+                      "body": [
+                              "Inter", "sans-serif"
+                      ],
+                      "label": [
+                              "Inter", "sans-serif"
+                      ]
+              },
+              "fontSize": {}
+            },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: theme('colors.brand-cream');
+            color: theme('colors.on-background');
+        }
+        .hairline-b {
+            border-bottom: 0.5px solid theme('colors.outline-variant');
+        }
+        .hairline-t {
+            border-top: 0.5px solid theme('colors.outline-variant');
+        }
+        .hairline-l {
+            border-left: 0.5px solid theme('colors.outline-variant');
+        }
+        .hairline-r {
+            border-right: 0.5px solid theme('colors.outline-variant');
+        }
+        .text-brand-amber { color: theme('colors.brand-amber'); }
+        .bg-brand-amber { background-color: theme('colors.brand-amber'); }
+        .border-brand-amber { border-color: theme('colors.brand-amber'); }
+      </style>
+</head>
+<body class="font-body antialiased min-h-screen flex flex-col">
+<!-- TopNavBar (Simulated based on requirements and JSON logic) -->
+<header class="bg-brand-midnight dark:bg-brand-midnight flex justify-between items-center w-full px-8 h-16 z-50 sticky top-0 shrink-0">
+<div class="flex items-center gap-4">
+<span class="font-headline italic text-2xl text-on-primary">Movemental AI</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-on-primary font-body text-sm tracking-wide opacity-80 hidden md:block">Northridge Community Center</span>
+<span class="bg-brand-amber text-on-primary text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-0">SANDBOX</span>
+<div class="flex gap-4 items-center">
+<button class="text-on-primary opacity-70 hover:opacity-100 transition-opacity duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<button class="text-on-primary opacity-70 hover:opacity-100 transition-opacity duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+<div class="w-8 h-8 bg-surface-container-low text-brand-midnight flex items-center justify-center font-bold text-sm">
+                    LO
+                </div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col bg-brand-midnight dark:bg-brand-midnight h-full w-64 rounded-0 border-r-0 z-40 shrink-0 overflow-y-auto pt-8 pb-4">
+<div class="flex flex-col mb-8 px-6">
+<h2 class="font-headline italic text-on-primary text-xl mb-1">Strategic Engagement</h2>
+<p class="font-body text-xs text-on-primary opacity-60 uppercase tracking-widest">Phase II: Assessment</p>
+</div>
+<div class="flex-1 flex flex-col gap-6">
+<!-- Home -->
+<div class="flex flex-col gap-1">
+<a class="bg-primary-dim text-on-primary border-l-2 border-brand-amber px-6 py-2 flex items-center gap-3 font-body text-sm tracking-wide uppercase transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">home</span>
+                        HOME
+                    </a>
+</div>
+<!-- Guidebook -->
+<div class="flex flex-col gap-1">
+<span class="text-[10px] text-on-primary opacity-50 uppercase tracking-widest px-6 mb-1">GUIDEBOOK</span>
+<a class="text-on-primary opacity-70 hover:bg-primary-dim hover:opacity-100 px-6 py-2 flex items-center gap-3 font-body text-sm transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">menu_book</span>
+                        View your AI Organizational Guidebook
+                    </a>
+</div>
+<!-- Phases -->
+<div class="flex flex-col gap-1">
+<span class="text-[10px] text-on-primary opacity-50 uppercase tracking-widest px-6 mb-1">PHASES</span>
+<a class="text-on-primary hover:bg-primary-dim hover:opacity-100 px-6 py-2 flex items-center gap-3 font-body text-sm transition-all duration-200 justify-between" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">security</span>
+<span>01 Boundaries</span>
+</div>
+<span class="text-[9px] text-brand-amber uppercase tracking-wider">STARTS TUESDAY</span>
+</a>
+<a class="text-on-primary opacity-60 hover:bg-primary-dim hover:opacity-100 px-6 py-2 flex items-center gap-3 font-body text-sm transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">analytics</span>
+                        02 Assessment
+                    </a>
+<a class="text-on-primary opacity-60 hover:bg-primary-dim hover:opacity-100 px-6 py-2 flex items-center gap-3 font-body text-sm transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">biotech</span>
+                        03 Experimenting
+                    </a>
+<a class="text-on-primary opacity-60 hover:bg-primary-dim hover:opacity-100 px-6 py-2 flex items-center gap-3 font-body text-sm transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">sync</span>
+                        04 Iteration
+                    </a>
+<a class="text-on-primary opacity-60 hover:bg-primary-dim hover:opacity-100 px-6 py-2 flex items-center gap-3 font-body text-sm transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">psychology</span>
+                        05 Reflection
+                    </a>
+<a class="text-on-primary opacity-60 hover:bg-primary-dim hover:opacity-100 px-6 py-2 flex items-center gap-3 font-body text-sm transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">gavel</span>
+                        06 Ethics Review
+                    </a>
+<a class="text-on-primary opacity-60 hover:bg-primary-dim hover:opacity-100 px-6 py-2 flex items-center gap-3 font-body text-sm transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">explore</span>
+                        07 Discerning
+                    </a>
+<a class="text-on-primary opacity-60 hover:bg-primary-dim hover:opacity-100 px-6 py-2 flex items-center gap-3 font-body text-sm transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">flag</span>
+                        08 Future Plan
+                    </a>
+</div>
+<!-- Learning -->
+<div class="flex flex-col gap-1">
+<span class="text-[10px] text-on-primary opacity-50 uppercase tracking-widest px-6 mb-1">LEARNING</span>
+<a class="text-on-primary hover:bg-primary-dim hover:opacity-100 px-6 py-2 flex items-center gap-3 font-body text-sm transition-all duration-200 justify-between" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">school</span>
+<span>Modules</span>
+</div>
+<span class="text-[9px] text-brand-amber uppercase tracking-wider">AVAILABLE NOW</span>
+</a>
+<a class="text-on-primary opacity-60 hover:bg-primary-dim hover:opacity-100 px-6 py-2 flex items-center gap-3 font-body text-sm transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">library_books</span>
+                        Recipe library
+                    </a>
+</div>
+<!-- Cohort -->
+<div class="flex flex-col gap-1">
+<span class="text-[10px] text-on-primary opacity-50 uppercase tracking-widest px-6 mb-1">COHORT</span>
+<a class="text-on-primary opacity-60 hover:bg-primary-dim hover:opacity-100 px-6 py-2 flex items-center gap-3 font-body text-sm transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">group</span>
+                        Members
+                    </a>
+<a class="text-on-primary opacity-60 hover:bg-primary-dim hover:opacity-100 px-6 py-2 flex items-center gap-3 font-body text-sm transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">calendar_month</span>
+                        Sessions
+                    </a>
+</div>
+</div>
+<div class="mt-auto px-6 py-4 flex flex-col gap-4">
+<a class="text-on-primary opacity-60 hover:opacity-100 flex items-center gap-3 font-body text-sm transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">help_outline</span>
+                    Support
+                </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-brand-cream relative">
+<div class="max-w-6xl mx-auto px-8 md:px-16 py-16 md:py-24">
+<!-- Hero Header -->
+<div class="mb-16">
+<div class="flex items-center gap-3 mb-6">
+<span class="text-brand-amber font-body font-bold text-[11px] tracking-widest uppercase">SANDBOXLIVE DASHBOARD</span>
+<span class="text-outline-variant text-xs">•</span>
+<div class="flex items-center gap-1.5 px-2 py-0.5 border border-brand-green/30">
+<div class="w-1.5 h-1.5 rounded-full bg-brand-green"></div>
+<span class="text-brand-green font-body font-semibold text-[10px] tracking-widest uppercase">ENGAGEMENT ACTIVE</span>
+</div>
+</div>
+<h1 class="font-headline italic text-4xl md:text-5xl text-on-background tracking-tight mb-6 max-w-3xl">
+                        It continues with exploration.
+                    </h1>
+<p class="font-body text-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                        Welcome to your Sandbox. Your cohort begins in person next Tuesday at 9:00 AM Central with Joshua Shepherd. Please review your guidebook and the pre-kickoff materials below.
+                    </p>
+</div>
+<div class="hairline-b w-full mb-12"></div>
+<!-- Engagement Timeline -->
+<div class="mb-12">
+<h3 class="font-body text-xs text-on-surface-variant tracking-widest uppercase mb-8">Engagement Progress</h3>
+<div class="relative w-full flex items-center justify-between px-2">
+<!-- Connecting Line -->
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[1px] bg-outline-variant/30 -z-10"></div>
+<!-- Milestones -->
+<div class="flex flex-col items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-brand-green z-10 outline outline-4 outline-brand-cream"></div>
+<span class="font-body text-[10px] text-brand-green uppercase tracking-wider">Kickoff</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-4 h-4 rounded-full bg-brand-amber z-10 outline outline-4 outline-brand-cream relative">
+<div class="absolute inset-0 rounded-full animate-ping bg-brand-amber opacity-30"></div>
+</div>
+<span class="font-body text-[10px] text-brand-amber font-bold uppercase tracking-wider">01 Boundaries</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant z-10 outline outline-4 outline-brand-cream"></div>
+<span class="font-body text-[10px] text-on-surface-variant uppercase tracking-wider opacity-60">02 Assess</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant z-10 outline outline-4 outline-brand-cream"></div>
+<span class="font-body text-[10px] text-on-surface-variant uppercase tracking-wider opacity-60">03 Exper</span>
+</div>
+<div class="flex flex-col items-center gap-2 hidden md:flex">
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant z-10 outline outline-4 outline-brand-cream"></div>
+<span class="font-body text-[10px] text-on-surface-variant uppercase tracking-wider opacity-60">04 Iter</span>
+</div>
+<div class="flex flex-col items-center gap-2 hidden lg:flex">
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant z-10 outline outline-4 outline-brand-cream"></div>
+<span class="font-body text-[10px] text-on-surface-variant uppercase tracking-wider opacity-60">08 Plan</span>
+</div>
+</div>
+</div>
+<div class="hairline-b w-full mb-16"></div>
+<!-- 3-Column Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-16">
+<!-- Column 1 -->
+<div class="flex flex-col">
+<h3 class="font-body text-xs text-on-background tracking-widest uppercase mb-6 font-semibold">YOUR COHORT</h3>
+<ul class="space-y-4 font-body text-sm text-on-surface-variant">
+<li>
+<span class="block text-on-background font-medium">Linda Ozawa</span>
+<span class="opacity-70 text-xs">Executive Director</span>
+</li>
+<li>
+<span class="block text-on-background font-medium">Marcus Vance</span>
+<span class="opacity-70 text-xs">Director of Operations</span>
+</li>
+<li>
+<span class="block text-on-background font-medium">Sarah Kim</span>
+<span class="opacity-70 text-xs">Community Outreach Lead</span>
+</li>
+<li>
+<span class="block text-on-background font-medium">David Chen</span>
+<span class="opacity-70 text-xs">IT Administrator</span>
+</li>
+<li>
+<span class="block text-on-background font-medium">Elena Rodriguez</span>
+<span class="opacity-70 text-xs">Program Coordinator</span>
+</li>
+<li>
+<span class="block text-on-background font-medium">James Thompson</span>
+<span class="opacity-70 text-xs">Financial Director</span>
+</li>
+<li>
+<span class="block text-on-background font-medium">Anita Patel</span>
+<span class="opacity-70 text-xs">Volunteer Manager</span>
+</li>
+</ul>
+</div>
+<!-- Column 2 -->
+<div class="flex flex-col">
+<h3 class="font-body text-xs text-on-background tracking-widest uppercase mb-6 font-semibold">YOUR FACILITATOR</h3>
+<div class="mb-8">
+<p class="font-body text-sm text-on-background font-medium">Joshua Shepherd</p>
+<p class="font-body text-xs text-on-surface-variant opacity-80 mt-1">Founder &amp; CTO, Movemental</p>
+</div>
+<div class="hairline-b w-full mb-6"></div>
+<h3 class="font-body text-[10px] text-outline tracking-widest uppercase mb-3">SCHEDULING</h3>
+<a class="text-brand-amber font-body text-sm hover:underline flex items-center gap-1 transition-all" href="#">
+                            View scheduled sessions 
+                            <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- Column 3 -->
+<div class="flex flex-col">
+<h3 class="font-body text-xs text-on-background tracking-widest uppercase mb-6 font-semibold">YOUR FOUNDATION</h3>
+<div class="mb-8">
+<p class="font-headline italic text-lg text-on-background mb-2">Your AI Organizational Guidebook</p>
+<p class="font-body text-xs text-on-surface-variant opacity-80">Ratified Jan 16, 2026. Version 1.2.</p>
+</div>
+<div class="hairline-b w-full mb-6"></div>
+<div class="flex flex-col gap-3">
+<a class="text-brand-amber font-body text-sm hover:underline flex items-center gap-1 transition-all" href="#">
+                                View your Guidebook 
+                                <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+<a class="text-brand-amber font-body text-sm hover:underline flex items-center gap-1 transition-all" href="#">
+                                Download PDF summary 
+                                <span class="material-symbols-outlined text-[14px]">download</span>
+</a>
+</div>
+</div>
+</div>
+<div class="hairline-b w-full mb-16"></div>
+<!-- Available Now Cards -->
+<div class="mb-16">
+<h3 class="font-body text-xs text-on-surface-variant tracking-widest uppercase mb-8">AVAILABLE NOW</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Card 1 -->
+<div class="bg-[#F2EEDF] p-8 border border-outline-variant/30 group hover:border-brand-amber/50 transition-colors duration-300">
+<h4 class="font-headline italic text-2xl text-on-background mb-4">The LMS is open.</h4>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8">
+                                Access the pre-kickoff learning modules. Completing the "Introduction to Ethical Frameworks" module before Tuesday is highly recommended for all cohort members.
+                            </p>
+<a class="text-brand-amber font-body text-sm font-semibold hover:text-brand-amber/80 flex items-center gap-2 transition-all" href="#">
+                                Open the LMS 
+                                <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Card 2 -->
+<div class="bg-[#F2EEDF] p-8 border border-outline-variant/30 group hover:border-brand-amber/50 transition-colors duration-300">
+<h4 class="font-headline italic text-2xl text-on-background mb-4">Your recipe library.</h4>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8">
+                                Browse a curated collection of AI interaction patterns and prompts specific to non-profit operational workflows and community engagement strategies.
+                            </p>
+<a class="text-brand-amber font-body text-sm font-semibold hover:text-brand-amber/80 flex items-center gap-2 transition-all" href="#">
+                                Browse the library 
+                                <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<div class="hairline-b w-full mb-16"></div>
+<!-- Prep Section -->
+<div class="mb-24">
+<span class="font-body text-[10px] text-brand-amber font-bold tracking-widest uppercase block mb-4">BEFORE TUESDAY</span>
+<h2 class="font-headline text-2xl text-on-background mb-8">A few things to bring to the first session.</h2>
+<ul class="space-y-4 font-body text-base text-on-surface-variant max-w-2xl">
+<li class="flex items-start gap-3">
+<span class="text-brand-amber mt-0.5">▪</span>
+<span>Review Section 2 of your Organizational Guidebook regarding immediate communication boundaries.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="text-brand-amber mt-0.5">▪</span>
+<span>Identify one current operational bottleneck you believe AI could ethically alleviate.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="text-brand-amber mt-0.5">▪</span>
+<span>Ensure all cohort members have successfully logged into the LMS platform.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="text-brand-amber mt-0.5">▪</span>
+<span>Prepare any initial questions regarding the Experimenting phase timeline.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="text-brand-amber mt-0.5">▪</span>
+<span>A quiet, distraction-free environment for the 90-minute virtual session.</span>
+</li>
+</ul>
+</div>
+<!-- Bottom Utility Links -->
+<div class="flex flex-wrap items-center gap-2 font-body text-xs text-outline opacity-80 mb-8 justify-center md:justify-start">
+<a class="hover:text-brand-amber transition-colors" href="#">Open the LMS</a>
+<span>·</span>
+<a class="hover:text-brand-amber transition-colors" href="#">View scheduled sessions</a>
+<span>·</span>
+<a class="hover:text-brand-amber transition-colors" href="#">Questions? Contact Josh</a>
+</div>
+</div>
+<!-- Footer -->
+<footer class="bg-brand-midnight dark:bg-brand-midnight h-20 w-full flex items-center justify-between px-8 md:px-16 shrink-0 mt-auto">
+<span class="font-headline italic text-lg text-on-primary opacity-80">Movemental</span>
+<div class="flex items-center gap-6 font-body text-xs text-on-primary">
+<a class="hover:opacity-70 transition-opacity" href="#">Help</a>
+<a class="hover:opacity-70 transition-opacity" href="#">Contact Josh</a>
+<a class="hover:opacity-70 transition-opacity" href="#">Sign out</a>
+</div>
+</footer>
+</main>
+</div>
+</body></html>
