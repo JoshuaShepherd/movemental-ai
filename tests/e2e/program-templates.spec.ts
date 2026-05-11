@@ -9,7 +9,9 @@ const run = process.env.RUN_PROGRAM_E2E === "1";
  *
  *   RUN_PROGRAM_E2E=1 pnpm test:e2e tests/e2e/program-templates.spec.ts
  */
-test.describe.skip(!run, "/program templates (unauthenticated)", () => {
+test.describe("/program templates (unauthenticated)", () => {
+  test.skip(!run, "Set RUN_PROGRAM_E2E=1 to enable");
+
   test("redirects pilot safety route to login", async ({ page }) => {
     await page.goto("/program/safety/safestart_dashboard_home_pre_kickoff");
     await expect(page).toHaveURL(/\/login/);

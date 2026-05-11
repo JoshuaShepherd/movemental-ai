@@ -1,5 +1,5 @@
 // Auto-generated Zod schemas from Drizzle schema
-// Generated at: 2026-05-09T05:45:15.292Z
+// Generated at: 2026-05-11T08:54:49.885Z
 // Do not edit manually - regenerate with: pnpm generate:schemas
 
 import { z } from "zod";
@@ -194,6 +194,12 @@ import {
   corpusReviewItems,
   consentRecords,
   staffUsers,
+  bookPdfEditions,
+  programEngagements,
+  safetyArtifacts,
+  safetyArtifactVersions,
+  safetyArtifactPublications,
+  stageTransitions,
 } from "@/lib/db/schema";
 
 // ---- Base Filters ----
@@ -2796,3 +2802,82 @@ export type StaffUsers = z.infer<typeof StaffUsersSelectSchema>;
 export type StaffUsersCreate = z.infer<typeof StaffUsersInsertSchema>;
 export type StaffUsersUpdate = z.infer<typeof StaffUsersUpdateSchema>;
 export type StaffUsersFilters = z.infer<typeof StaffUsersFiltersSchema>;
+
+// BookPdfEditions
+export const BookPdfEditionsSelectSchema = createSelectSchema(bookPdfEditions);
+export const BookPdfEditionsInsertSchema = createInsertSchema(bookPdfEditions);
+export const BookPdfEditionsUpdateSchema = createUpdateSchema(bookPdfEditions);
+export const BookPdfEditionsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type BookPdfEditions = z.infer<typeof BookPdfEditionsSelectSchema>;
+export type BookPdfEditionsCreate = z.infer<typeof BookPdfEditionsInsertSchema>;
+export type BookPdfEditionsUpdate = z.infer<typeof BookPdfEditionsUpdateSchema>;
+export type BookPdfEditionsFilters = z.infer<typeof BookPdfEditionsFiltersSchema>;
+
+// ProgramEngagements
+export const ProgramEngagementsSelectSchema = createSelectSchema(programEngagements);
+export const ProgramEngagementsInsertSchema = createInsertSchema(programEngagements);
+export const ProgramEngagementsUpdateSchema = createUpdateSchema(programEngagements);
+export const ProgramEngagementsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type ProgramEngagements = z.infer<typeof ProgramEngagementsSelectSchema>;
+export type ProgramEngagementsCreate = z.infer<typeof ProgramEngagementsInsertSchema>;
+export type ProgramEngagementsUpdate = z.infer<typeof ProgramEngagementsUpdateSchema>;
+export type ProgramEngagementsFilters = z.infer<typeof ProgramEngagementsFiltersSchema>;
+
+// SafetyArtifacts
+export const SafetyArtifactsSelectSchema = createSelectSchema(safetyArtifacts);
+export const SafetyArtifactsInsertSchema = createInsertSchema(safetyArtifacts);
+export const SafetyArtifactsUpdateSchema = createUpdateSchema(safetyArtifacts);
+export const SafetyArtifactsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  status: z.string().optional(),
+});
+
+export type SafetyArtifacts = z.infer<typeof SafetyArtifactsSelectSchema>;
+export type SafetyArtifactsCreate = z.infer<typeof SafetyArtifactsInsertSchema>;
+export type SafetyArtifactsUpdate = z.infer<typeof SafetyArtifactsUpdateSchema>;
+export type SafetyArtifactsFilters = z.infer<typeof SafetyArtifactsFiltersSchema>;
+
+// SafetyArtifactVersions
+export const SafetyArtifactVersionsSelectSchema = createSelectSchema(safetyArtifactVersions);
+export const SafetyArtifactVersionsInsertSchema = createInsertSchema(safetyArtifactVersions);
+export const SafetyArtifactVersionsUpdateSchema = createUpdateSchema(safetyArtifactVersions);
+export const SafetyArtifactVersionsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type SafetyArtifactVersions = z.infer<typeof SafetyArtifactVersionsSelectSchema>;
+export type SafetyArtifactVersionsCreate = z.infer<typeof SafetyArtifactVersionsInsertSchema>;
+export type SafetyArtifactVersionsUpdate = z.infer<typeof SafetyArtifactVersionsUpdateSchema>;
+export type SafetyArtifactVersionsFilters = z.infer<typeof SafetyArtifactVersionsFiltersSchema>;
+
+// SafetyArtifactPublications
+export const SafetyArtifactPublicationsSelectSchema = createSelectSchema(safetyArtifactPublications);
+export const SafetyArtifactPublicationsInsertSchema = createInsertSchema(safetyArtifactPublications);
+export const SafetyArtifactPublicationsUpdateSchema = createUpdateSchema(safetyArtifactPublications);
+export const SafetyArtifactPublicationsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type SafetyArtifactPublications = z.infer<typeof SafetyArtifactPublicationsSelectSchema>;
+export type SafetyArtifactPublicationsCreate = z.infer<typeof SafetyArtifactPublicationsInsertSchema>;
+export type SafetyArtifactPublicationsUpdate = z.infer<typeof SafetyArtifactPublicationsUpdateSchema>;
+export type SafetyArtifactPublicationsFilters = z.infer<typeof SafetyArtifactPublicationsFiltersSchema>;
+
+// StageTransitions
+export const StageTransitionsSelectSchema = createSelectSchema(stageTransitions);
+export const StageTransitionsInsertSchema = createInsertSchema(stageTransitions);
+export const StageTransitionsUpdateSchema = createUpdateSchema(stageTransitions);
+export const StageTransitionsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type StageTransitions = z.infer<typeof StageTransitionsSelectSchema>;
+export type StageTransitionsCreate = z.infer<typeof StageTransitionsInsertSchema>;
+export type StageTransitionsUpdate = z.infer<typeof StageTransitionsUpdateSchema>;
+export type StageTransitionsFilters = z.infer<typeof StageTransitionsFiltersSchema>;

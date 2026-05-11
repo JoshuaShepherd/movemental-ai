@@ -1,5 +1,5 @@
 // Auto-generated service index
-// Generated at: 2026-05-09T05:45:18.634Z
+// Generated at: 2026-05-11T08:54:54.197Z
 // Do not edit manually - regenerate with: pnpm generate:services
 
 export { SimplifiedService } from "./base.service";
@@ -194,3 +194,9 @@ export * from "./organization-assets.service";
 export * from "./corpus-review-items.service";
 export * from "./consent-records.service";
 export * from "./staff-users.service";
+export * from "./book-pdf-editions.service";
+export * from "./program-engagements.service";
+export * from "./safety-artifacts.service";
+export * from "./safety-artifact-versions.service";
+export * from "./safety-artifact-publications.service";
+export * from "./stage-transitions.service";

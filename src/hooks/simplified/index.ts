@@ -1,5 +1,5 @@
 // Auto-generated hooks index
-// Generated at: 2026-05-09T05:45:19.689Z
+// Generated at: 2026-05-11T08:54:55.036Z
 // Do not edit manually - regenerate with: pnpm generate:hooks
 
 export { buildQueryString } from "./query-utils";
@@ -192,3 +192,9 @@ export * from "./organization-assets.hooks";
 export * from "./corpus-review-items.hooks";
 export * from "./consent-records.hooks";
 export * from "./staff-users.hooks";
+export * from "./book-pdf-editions.hooks";
+export * from "./program-engagements.hooks";
+export * from "./safety-artifacts.hooks";
+export * from "./safety-artifact-versions.hooks";
+export * from "./safety-artifact-publications.hooks";
+export * from "./stage-transitions.hooks";

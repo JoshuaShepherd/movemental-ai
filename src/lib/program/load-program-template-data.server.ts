@@ -1,5 +1,9 @@
 import "server-only";
 
+import { and, eq } from "drizzle-orm";
+
+import { db } from "@/lib/db";
+import { programEngagements } from "@/lib/db/schema";
 import type { ProgramFixtureBase } from "@/lib/program/types/stitch-screen-family";
 import { loadProgramFixtureJson } from "@/lib/program/load-program-fixture.server";
 import { toSafeStartHeroTimelineFixture } from "@/lib/program/normalize-hero-timeline";
@@ -8,17 +12,8 @@ import {
   listMembershipOrganizations,
   resolveActiveOrganizationId,
 } from "@/lib/services/onboarding/onboarding.service";
-import { createClient } from "@/lib/supabase/server";
 
 type MilestoneRow = { label?: string; state?: string; title?: string; detail?: string };
-
-function isMissingProgramEngagementsTable(message: string | undefined): boolean {
-  if (!message) return false;
-  return (
-    message.includes("program_engagements") &&
-    (message.includes("does not exist") || message.includes("schema cache"))
-  );
-}
 
 function applyMilestonesToHeroFixture(
   base: SafeStartHeroTimelineFixture,
@@ -68,23 +63,27 @@ export async function loadProgramTemplateData(
 
   const baseBadge = "fixture + active organization";
 
-  const supabase = await createClient();
-  // Table is optional until `docs/build/sql/program_engagements.sql` is applied to the project database.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- not yet in generated Supabase Database typings
-  const { data: engagement, error } = await (supabase as any)
-    .from("program_engagements")
-    .select("summary_markdown, milestones")
-    .eq("organization_id", resolved.data.organizationId)
-    .eq("template_slug", templateId)
-    .maybeSingle();
-
-  if (error) {
-    if (isMissingProgramEngagementsTable(error.message)) {
-      return { fixture, sourceBadge: baseBadge };
-    }
+  let engagement: { summary_markdown: string | null; milestones: unknown } | null = null;
+  try {
+    const rows = await db
+      .select({
+        summary_markdown: programEngagements.summary_markdown,
+        milestones: programEngagements.milestones,
+      })
+      .from(programEngagements)
+      .where(
+        and(
+          eq(programEngagements.organization_id, resolved.data.organizationId),
+          eq(programEngagements.template_slug, templateId),
+        ),
+      )
+      .limit(1);
+    engagement = rows[0] ?? null;
+  } catch (e) {
+    const message = e instanceof Error ? e.message : "unknown error";
     return {
       fixture,
-      sourceBadge: `${baseBadge} · DB merge skipped (${error.message})`,
+      sourceBadge: `${baseBadge} · DB merge skipped (${message})`,
     };
   }
 

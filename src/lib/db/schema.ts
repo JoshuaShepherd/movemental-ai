@@ -3283,3 +3283,137 @@ export const staffUsers = pgTable("staff_users", {
   granted_at: timestamp("granted_at", { withTimezone: true, mode: "string" }).notNull().defaultNow(),
   granted_by: uuid("granted_by").references(() => userProfiles.id),
 });
+
+// ---------------------------------------------------------------------------
+// Book PDF editions — uploaded full-PDF assets per book per org
+// ---------------------------------------------------------------------------
+
+export const bookPdfEditions = pgTable(
+  "book_pdf_editions",
+  {
+    id: id("id"),
+    book_id: uuid("book_id").notNull().references(() => books.id, { onDelete: "cascade" }),
+    organization_id: uuid("organization_id").notNull().references(() => organizations.id),
+    label: text("label").notNull().default("full_pdf"),
+    storage_bucket: text("storage_bucket").notNull(),
+    storage_path: text("storage_path").notNull(),
+    file_name: text("file_name").notNull(),
+    mime_type: text("mime_type").notNull().default("application/pdf"),
+    byte_size: integer("byte_size").notNull(),
+    checksum: text("checksum"),
+    uploaded_by: uuid("uploaded_by").references(() => userProfiles.id),
+    cover_image_url: text("cover_image_url"),
+    cover_media_item_id: uuid("cover_media_item_id").references(() => mediaItems.id, { onDelete: "set null" }),
+    created_at: createdAt("created_at"),
+    updated_at: updatedAt("updated_at"),
+  },
+  (t) => [unique("book_pdf_editions_book_id_label_unique").on(t.book_id, t.label)],
+);
+
+// ---------------------------------------------------------------------------
+// Program engagements — per-org overlay for program template fixtures
+// ---------------------------------------------------------------------------
+
+export const programEngagements = pgTable(
+  "program_engagements",
+  {
+    id: id("id"),
+    organization_id: uuid("organization_id")
+      .notNull()
+      .references(() => organizations.id, { onDelete: "cascade" }),
+    template_slug: text("template_slug").notNull(),
+    summary_markdown: text("summary_markdown"),
+    milestones: jsonb("milestones").notNull().default([]),
+    created_at: createdAt("created_at"),
+    updated_at: updatedAt("updated_at"),
+  },
+  (t) =>
+    [
+      unique("program_engagements_organization_id_template_slug_key").on(
+        t.organization_id,
+        t.template_slug,
+      ),
+    ],
+);
+
+// ---------------------------------------------------------------------------
+// Safety artifacts (parent → versions → publications)
+// Enum columns map to text(); DB type is `safety_artifact_status` (draft|published|archived).
+// ---------------------------------------------------------------------------
+
+export const safetyArtifacts = pgTable(
+  "safety_artifacts",
+  {
+    id: id("id"),
+    organization_id: uuid("organization_id")
+      .notNull()
+      .references(() => organizations.id, { onDelete: "cascade" }),
+    title: text("title").notNull(),
+    slug: text("slug").notNull(),
+    kind: text("kind").notNull().default("named_refusals"),
+    status: text("status").notNull().default("draft"),
+    created_by_user_id: uuid("created_by_user_id").references(() => userProfiles.id, {
+      onDelete: "set null",
+    }),
+    created_at: createdAt("created_at"),
+    updated_at: updatedAt("updated_at"),
+  },
+  (t) => [unique("safety_artifacts_org_slug_unique").on(t.organization_id, t.slug)],
+);
+
+export const safetyArtifactVersions = pgTable(
+  "safety_artifact_versions",
+  {
+    id: id("id"),
+    artifact_id: uuid("artifact_id")
+      .notNull()
+      .references(() => safetyArtifacts.id, { onDelete: "cascade" }),
+    version_number: integer("version_number").notNull(),
+    body_md: text("body_md").notNull().default(""),
+    created_by_user_id: uuid("created_by_user_id").references(() => userProfiles.id, {
+      onDelete: "set null",
+    }),
+    created_at: createdAt("created_at"),
+  },
+  (t) =>
+    [unique("safety_artifact_versions_artifact_version_unique").on(t.artifact_id, t.version_number)],
+);
+
+export const safetyArtifactPublications = pgTable("safety_artifact_publications", {
+  id: id("id"),
+  artifact_id: uuid("artifact_id")
+    .notNull()
+    .references(() => safetyArtifacts.id, { onDelete: "cascade" }),
+  version_id: uuid("version_id")
+    .notNull()
+    .references(() => safetyArtifactVersions.id, { onDelete: "cascade" }),
+  public_slug: text("public_slug").notNull().unique(),
+  is_active: boolean("is_active").notNull().default(true),
+  published_at: timestamp("published_at", { withTimezone: true, mode: "string" })
+    .notNull()
+    .defaultNow(),
+  published_by_user_id: uuid("published_by_user_id").references(() => userProfiles.id, {
+    onDelete: "set null",
+  }),
+});
+
+// ---------------------------------------------------------------------------
+// Stage transitions — audit log of org pilot-stage moves
+// Enum columns map to text(); DB type is `org_current_stage` (safety|sandbox|skills|solutions).
+// ---------------------------------------------------------------------------
+
+export const stageTransitions = pgTable("stage_transitions", {
+  id: id("id"),
+  organization_id: uuid("organization_id")
+    .notNull()
+    .references(() => organizations.id, { onDelete: "cascade" }),
+  from_stage: text("from_stage"),
+  to_stage: text("to_stage").notNull(),
+  transitioned_by_user_id: uuid("transitioned_by_user_id").references(() => userProfiles.id, {
+    onDelete: "set null",
+  }),
+  transitioned_at: timestamp("transitioned_at", { withTimezone: true, mode: "string" })
+    .notNull()
+    .defaultNow(),
+  notes: text("notes"),
+});

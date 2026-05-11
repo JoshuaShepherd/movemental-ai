@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Internal — Resend / dashboard, Storage + images, Walkthrough vs demo vs views</title>
+  <style>
+    :root {
+      --ink: #1a1f24;
+      --muted: #4a5560;
+      --bg: #f6f7f9;
+      --card: #fff;
+      --accent: #0053db;
+      --border: rgba(42, 52, 57, 0.12);
+      --code-bg: #eef1f4;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.55;
+      color: var(--ink);
+      background: var(--bg);
+      font-size: 1rem;
+    }
+    header {
+      background: var(--ink);
+      color: #fff;
+      padding: 2rem 1.5rem 2.5rem;
+    }
+    header h1 { font-size: 1.35rem; font-weight: 600; margin: 0 0 0.5rem; letter-spacing: -0.02em; }
+    header p { margin: 0; opacity: 0.85; font-size: 0.95rem; max-width: 56rem; }
+    main { max-width: 52rem; margin: -1.25rem auto 3rem; padding: 0 1.25rem; }
+    section {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 1.5rem 1.5rem 1.75rem;
+      margin-bottom: 1.25rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 40px rgba(42, 52, 57, 0.06);
+    }
+    h2 {
+      font-size: 1.15rem;
+      margin: 0 0 1rem;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+    h3 { font-size: 0.95rem; margin: 1.25rem 0 0.5rem; color: var(--ink); }
+    p, li { color: var(--muted); }
+    ul { margin: 0.5rem 0 0; padding-left: 1.2rem; }
+    li { margin-bottom: 0.35rem; }
+    code, .path {
+      font-family: ui-monospace, "Cascadia Code", monospace;
+      font-size: 0.84em;
+      background: var(--code-bg);
+      padding: 0.12em 0.35em;
+      border-radius: 4px;
+    }
+    .path { display: inline; word-break: break-all; }
+    .note {
+      font-size: 0.9rem;
+      border-left: 3px solid var(--accent);
+      padding: 0.5rem 0 0.5rem 1rem;
+      margin: 1rem 0 0;
+      background: rgba(0, 83, 219, 0.06);
+      border-radius: 0 8px 8px 0;
+    }
+    .note strong { color: var(--ink); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-top: 0.75rem; }
+    th, td { text-align: left; padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { color: var(--ink); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .toc { font-size: 0.95rem; }
+    .toc a { color: var(--accent); }
+    footer { text-align: center; font-size: 0.8rem; color: var(--muted); padding: 2rem 1rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Internal instructions — email (Resend + dashboard), images (Supabase + public), product surfaces (walkthrough / demo / views)</h1>
+    <p>For Movemental engineering and ops. This repo is <code>movemental-ai</code> (organizational / marketing stack). Sibling repos are referenced where internal docs already name them.</p>
+  </header>
+  <main>
+    <section class="toc">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#s1">movemental-dashboard (or visual editor) and Resend — how Movemental uses email for leads and subscribers</a></li>
+        <li><a href="#s2">Supabase Storage, <code>public/images</code>, and Next.js + Tailwind best practice</a></li>
+        <li><a href="#s3">Walkthrough vs demo vs views — when to use each (UI + design)</a></li>
+      </ol>
+    </section>
+
+    <section id="s1">
+      <h2>1. Dashboard repo and Resend — lead magnets, submissions, and mail</h2>
+
+      <h3>What to open first</h3>
+      <p>Internal agent docs refer to the admin / dashboard backend as <strong>movemental-visual-editor</strong> (paths like <span class="path">~/Desktop/dev/repos/movemental-visual-editor/</span>). If your clone is named <strong>movemental-dashboard</strong>, treat it as the same class of app: the internal tool that sends or previews transactional mail and may orchestrate campaigns.</p>
+      <p><strong>Your task:</strong> In that repo, read:</p>
+      <ul>
+        <li><span class="path">src/lib/email/client.ts</span> and <span class="path">src/lib/email/send.ts</span> — how the dashboard invokes Resend.</li>
+        <li><span class="path">src/lib/email/templates/*.tsx</span> (or equivalent) — React Email templates and <code>resend.emails.send({ react: … })</code> pattern.</li>
+        <li><span class="path">src/app/api/email/preview/route.tsx</span> — <strong>dev-only</strong> HTML preview of templates; must not ship exposed in production.</li>
+      </ul>
+
+      <h3>How the marketing site (<code>movemental-ai</code>) already uses Resend</h3>
+      <p>The public site does <strong>not</strong> require the dashboard to send every mail. Today, transactional sends live in this repo:</p>
+      <ul>
+        <li><strong>Client:</strong> <span class="path">src/lib/email/resend.ts</span> — lazy <code>getResend()</code>; returns <code>null</code> if <code>RESEND_API_KEY</code> is unset (no crash at import).</li>
+        <li><strong>From header:</strong> <span class="path">src/lib/email/from.ts</span> — <code>resendFromHeader()</code> from <code>RESEND_FROM_EMAIL</code> + optional <code>RESEND_FROM_NAME</code>.</li>
+        <li><strong>Contact:</strong> <span class="path">src/lib/email/contact-notifications.ts</span> + <span class="path">src/app/api/contact/route.ts</span> — Postgres row is source of truth; optional team copy to <code>CONTACT_NOTIFY_EMAIL</code> with <strong>Reply-To = submitter</strong>; submitter gets acknowledgment when Resend is configured.</li>
+        <li><strong>Newsletter / list growth:</strong> <span class="path">src/app/api/newsletter/route.ts</span> + <span class="path">src/lib/email/send-newsletter-confirmation.ts</span> — double opt-in; rows in <code>newsletter_subscribers</code> scoped by <code>TENANT_ORG_ID</code> (503 without it).</li>
+        <li><strong>Book flows:</strong> <span class="path">src/lib/book-email.ts</span> — welcome and export confirmation.</li>
+        <li><strong>Other:</strong> onboarding / toolkit / integrity notifications under <span class="path">src/lib/email/</span> as applicable.</li>
+      </ul>
+
+      <h3>How Movemental should use the dashboard for lead magnets and email ops</h3>
+      <p>Use this split so there is <strong>one source of truth</strong> for consent and message history:</p>
+      <table>
+        <thead>
+          <tr><th>Concern</th><th>Where it should live</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Subscriber state, double opt-in, unsubscribe</td>
+            <td>Postgres (e.g. <code>newsletter_subscribers</code>) on the site or shared org DB</td>
+            <td>Do not duplicate into Resend Audiences without a documented sync plan.</td>
+          </tr>
+          <tr>
+            <td>Rich templates, previews, marketing experiments</td>
+            <td>Dashboard (React Email, preview route)</td>
+            <td>Align visual language with Movemental editorial tokens, not generic SaaS.</td>
+          </tr>
+          <tr>
+            <td>Actually sending mail</td>
+            <td>Either API routes in <code>movemental-ai</code> <em>or</em> dashboard/server actions calling the same Resend account</td>
+            <td>Same <code>RESEND_API_KEY</code> and verified domain; env names may differ between repos — align in Vercel.</td>
+          </tr>
+          <tr>
+            <td>Lead magnet delivery (PDF, sequence)</td>
+            <td>Server-side route after DB write; Resend <code>attachments</code> when needed</td>
+            <td>See execution brief: <span class="path">docs/build/markdown/resend-email-forms-and-lead-magnets-prompt.md</span></td>
+          </tr>
+          <tr>
+            <td>Ops playbook (who reads which inbox)</td>
+            <td><span class="path">docs/build/markdown/contact-newsletter-operations-playbook.md</span></td>
+            <td>Includes smoke checks and env table.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note">
+        <strong>Practical workflow:</strong> Implement or change templates in the dashboard; copy the proven <code>send</code> pattern into this repo’s <span class="path">src/lib/email/</span> (or call a shared internal API) so production sends stay audited, rate-limited, and DB-backed. Use Resend’s dashboard for delivery logs, bounces, and domain health.
+      </div>
+    </section>
+
+    <section id="s2">
+      <h2>2. Supabase Storage and <code>public/images</code> — best practice in this stack</h2>
+
+      <h3>Two layers (both valid)</h3>
+      <ul>
+        <li><strong><code>public/images/…</code></strong> — Static assets shipped with the Next.js app (SVG logos, small icons, anything that rarely changes and does not need a CDN outside the deployment). Good for <strong>source files</strong> before upload (e.g. optimized WebP in <span class="path">public/images/voices/</span>).</li>
+        <li><strong>Supabase Storage (public bucket)</strong> — CDN-backed URLs for larger or frequently updated media, multi-tenant paths, and assets shared across apps. This repo uses bucket <strong><code>media-library</code></strong> with paths like <code>movemental/voices/*.webp</code> and full URLs of the form <code>https://&lt;project&gt;.supabase.co/storage/v1/object/public/media-library/…</code>.</li>
+      </ul>
+
+      <h3>Upload pipeline (pattern in this repo)</h3>
+      <p>Script: <span class="path">scripts/upload-voices-to-supabase-storage.ts</span> — reads from <span class="path">public/images/voices/*.webp</span>, uploads with service role, <code>upsert: true</code>, correct <code>contentType</code>. Run locally with <code>.env.local</code> containing <code>NEXT_PUBLIC_SUPABASE_URL</code> and <code>SUPABASE_SERVICE_ROLE_KEY</code>.</p>
+
+      <h3>Next.js + Tailwind consumption</h3>
+      <ul>
+        <li>Allow remote images in <span class="path">next.config.ts</span> under <code>images.remotePatterns</code> for <code>*.supabase.co</code> with pathname <code>/storage/**</code> (already present).</li>
+        <li>Use <strong><code>next/image</code></strong> with explicit <code>width</code>/<code>height</code> or <code>fill</code> and a correct <strong><code>sizes</code></strong> attribute for responsive layouts (see components such as <span class="path">src/components/sections/voices/voice-portrait.tsx</span>).</li>
+        <li>Prefer <strong>WebP</strong> (or AVIF where supported) at sensible dimensions; avoid shipping multi-megabyte originals to the browser.</li>
+        <li>Keep <strong>tenant-scoped folders</strong> in the bucket (<code>movemental/…</code>, <code>alan-hirsch/…</code>) so RLS and human navigation stay clear.</li>
+        <li>For <strong>private</strong> assets, use a non-public bucket and signed URLs — do not expose sensitive files on <code>…/object/public/…</code>.</li>
+      </ul>
+
+      <h3>Tailwind / design tokens</h3>
+      <p>Images are still wrapped in semantic layout (e.g. rounded cards, <code>aspect-*</code> boxes). Per Movemental design rules, avoid arbitrary hex on image frames; use token classes (<code>bg-card</code>, <code>border-border</code>, etc.) in TSX — the HTML file cannot import Tailwind, but components should.</p>
+    </section>
+
+    <section id="s3">
+      <h2>3. Walkthrough vs demo vs views — when and how (UI + design)</h2>
+      <p>For a serious B2B / institution-facing platform (Alan Hirsch–style tenant), buyers need <strong>three different proofs</strong>. They answer different anxieties; mixing them up creates “demo theater” without trust.</p>
+
+      <h3>Definitions</h3>
+      <ul>
+        <li><strong>Walkthrough</strong> — Narrated, often linear explanation of <em>how work flows</em> through the product (problem → action → outcome). Can be live (Zoom + screen share), recorded (Loom / MP4), or a guided in-product tour (step highlights). Best for <strong>judgment and fit</strong>: “Do we actually work this way?”</li>
+        <li><strong>Demo</strong> — Controlled scenario showing <em>capabilities</em> in ideal conditions (sample data, happy path). Best for <strong>breadth and wow</strong>: “What does this thing do?” Higher risk of feeling synthetic if it is the only surface.</li>
+        <li><strong>Views</strong> (live build / “see it in the wild”) — The real deployed product (or read-only shadow) that prospects can <strong>click themselves</strong> or that you point to as evidence. Best for <strong>authenticity and craft</strong>: “This is not a mock.”</li>
+      </ul>
+
+      <h3>When to use each</h3>
+      <table>
+        <thead>
+          <tr><th>Buyer stage</th><th>Lead with</th><th>Support with</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cold / curious</td>
+            <td>Short <strong>demo</strong> clip or hero loop (under 2 minutes)</td>
+            <td>Link to <strong>live view</strong> for one or two safe pages (marketing, public library)</td>
+          </tr>
+          <tr>
+            <td>Evaluation / committee</td>
+            <td>Structured <strong>walkthrough</strong> mapped to their jobs-to-be-done</td>
+            <td>Demo data only where it clarifies; otherwise live view</td>
+          </tr>
+          <tr>
+            <td>Security / procurement</td>
+            <td>Architecture and data-flow narrative (often doc-led)</td>
+            <td>Screenshots or short walkthrough clips with <strong>no PII</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>UI and design guidance (concrete)</h3>
+      <ul>
+        <li><strong>Hero / technology page:</strong> Use a single <strong>aspect-video</strong> container with clear label: e.g. “Hero walkthrough loop” + subcopy that says it is a <strong>cinematic MP4</strong> (dashboard, workflow, AI lab, CMS). Primary CTA: <strong>Book a live walkthrough</strong>; secondary: <strong>See a live build</strong> (external link). This mirrors the pattern on <span class="path">src/components/studio/pages/TechnologyPage.tsx</span>.</li>
+        <li><strong>Capability rows:</strong> Pair each block with a <strong>thumbnail or loop placeholder</strong> plus text; use “Watch the walkthrough” as a text button with play affordance, not only a mystery click target.</li>
+        <li><strong>Live builds grid:</strong> Card with subtle “Live” indicator (pulse dot), real URL, and explicit line: <em>live platform, not a sandbox demo</em> — reduces cynicism.</li>
+        <li><strong>Contact / positioning pages:</strong> When the brand promise is conversation-first (no slide deck), say so plainly; do not bury the user in autoplay video.</li>
+        <li><strong>Motion:</strong> Respect <code>prefers-reduced-motion</code>; do not autoplay heavy video above the fold without mute and a pause control.</li>
+      </ul>
+
+      <div class="note">
+        <strong>Rule of thumb:</strong> <em>Demo</em> earns attention; <em>walkthrough</em> earns understanding; <em>live view</em> earns trust. Ship all three in different UI zones rather than collapsing them into one generic “video.”
+      </div>
+    </section>
+  </main>
+  <footer>Internal — Movemental — not for public distribution without review.</footer>
+</body>
+</html>
