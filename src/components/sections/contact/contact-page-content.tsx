@@ -88,8 +88,8 @@ export function ContactPageContent({ contactInterest }: { contactInterest?: Cont
                 <p className="text-sm font-semibold uppercase tracking-eyebrow text-muted-foreground">Step 02</p>
                 <h3 className="font-serif text-2xl italic text-foreground">A founder responds.</h3>
                 <p className="leading-relaxed text-muted-foreground">
-                  Within one business day. Brad, Alan, or Josh — depending on the fit. We propose two or three times for a
-                  30-minute call.
+                  Within one business day. Josh typically responds first; Brad or Alan join the conversation when the
+                  situation calls for it. We propose two or three times for a 30-minute call.
                 </p>
               </div>
               <div className="space-y-4">
@@ -110,8 +110,8 @@ export function ContactPageContent({ contactInterest }: { contactInterest?: Cont
           <Reveal>
             <div className="mb-16 space-y-6">
               <p className="text-sm font-semibold uppercase tracking-eyebrow text-muted-foreground">Send a note</p>
-              <h2 className="font-serif text-5xl font-medium italic tracking-tight text-foreground">
-                Tell us what&apos;s on your desk.
+              <h2 className="font-serif text-3xl font-medium italic tracking-tight text-foreground md:text-4xl">
+                What&apos;s on your desk?
               </h2>
               <p className="text-lg text-muted-foreground">
                 The more context you can share, the better the first conversation will be.
@@ -126,29 +126,38 @@ export function ContactPageContent({ contactInterest }: { contactInterest?: Cont
         <Container width="default" className="max-w-6xl">
           <Reveal>
             <h2 className="font-serif text-4xl font-medium tracking-tight text-foreground">Or skip the form.</h2>
-            <div className="mt-16 grid grid-cols-1 gap-12 border-b border-border pb-0 md:grid-cols-3 lg:gap-24">
-              <div className="space-y-4 border-b border-border pb-8 md:border-b-0 md:pb-0">
-                <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-foreground">Email directly</h3>
-                <p className="text-muted-foreground">For visitors who&apos;d rather just write.</p>
-                <a
-                  href="mailto:josh@movemental.ai"
-                  className="mt-4 inline-block font-medium text-primary transition-colors hover:text-primary-dim"
-                >
-                  josh@movemental.ai
-                </a>
-              </div>
-              <div className="space-y-4 border-b border-border pb-8 md:border-b-0 md:pb-0">
-                <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-foreground">Book a slot</h3>
-                <p className="text-muted-foreground">Pick a time on Josh&apos;s calendar.</p>
-                <div className="mt-4">
-                  <TextLink href="/contact">See available times</TextLink>
-                </div>
-              </div>
-              <div className="space-y-4 pb-8 md:pb-0">
-                <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-foreground">Read first</h3>
-                <p className="text-muted-foreground">If you&apos;re not yet sure whether to reach out.</p>
-                <div className="mt-4">
+            <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
+              <article className="flex flex-col gap-6 border-l-4 border-primary bg-section p-10">
+                <p className="text-sm font-semibold uppercase tracking-eyebrow text-primary">Read first</p>
+                <h3 className="font-serif text-3xl font-medium italic tracking-tight text-foreground md:text-4xl">
+                  Not yet sure whether to reach out?
+                </h3>
+                <p className="text-lg leading-relaxed text-muted-foreground">
+                  The Safety Field Guide is 33 pages and free. It walks your leadership team through the seven
+                  ratifiable decisions before you have a single conversation with us. Many organizations are best
+                  served reading it together first.
+                </p>
+                <div className="mt-2">
                   <TextLink href="/field-guides/safety">Read the Safety Field Guide</TextLink>
+                </div>
+              </article>
+              <div className="grid grid-cols-1 gap-12">
+                <div className="space-y-3 border-b border-border pb-12 md:pb-12">
+                  <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-foreground">Email directly</h3>
+                  <p className="text-muted-foreground">For visitors who&apos;d rather just write.</p>
+                  <a
+                    href="mailto:josh@movemental.ai"
+                    className="mt-2 inline-block font-medium text-primary transition-colors hover:text-primary-dim"
+                  >
+                    josh@movemental.ai
+                  </a>
+                </div>
+                <div className="space-y-3">
+                  <h3 className="text-sm font-semibold uppercase tracking-eyebrow text-foreground">Book a slot</h3>
+                  <p className="text-muted-foreground">Pick a time on Josh&apos;s calendar.</p>
+                  <div className="mt-2">
+                    <TextLink href="/contact">See available times</TextLink>
+                  </div>
                 </div>
               </div>
             </div>
@@ -159,13 +168,13 @@ export function ContactPageContent({ contactInterest }: { contactInterest?: Cont
       <Section variant="default" spacing="lg">
         <Container width="default" className="max-w-4xl">
           <Reveal>
-            <div className="flex flex-col items-start gap-12 md:flex-row md:gap-24">
-              <div className="md:w-1/3">
+            <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-3 md:gap-16">
+              <div className="md:col-span-1">
                 <h2 className="font-serif text-3xl font-medium italic tracking-tight text-foreground">
                   A 30-minute conversation works best when you&apos;re already past &apos;curious.&apos;
                 </h2>
               </div>
-              <div className="md:w-2/3 space-y-8 border-l border-primary pl-8">
+              <div className="space-y-8 border-l border-primary pl-8 md:col-span-2">
                 <p className="text-lg leading-relaxed text-muted-foreground">
                   The conversation is most useful when you can name a specific situation your organization is navigating.
                   A board member raised AI at the last meeting. Staff are using AI tools individually and you&apos;re not
