@@ -14,6 +14,8 @@ import {
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 
+import type { DashboardPersona } from "@/lib/dashboard/dashboard-persona";
+
 type Membership = {
   organizationId: string;
   orgName: string;
@@ -24,12 +26,14 @@ export function DashboardShell({
   initialOrgSlug,
   userEmail,
   memberships,
+  personaByOrgSlug,
   showAdminLink,
   children,
 }: {
   initialOrgSlug: string;
   userEmail: string;
   memberships: Membership[];
+  personaByOrgSlug: Record<string, DashboardPersona>;
   showAdminLink: boolean;
   children: React.ReactNode;
 }) {
@@ -46,6 +50,10 @@ export function DashboardShell({
 
   const active = memberships.find((m) => m.orgSlug === currentSlug) ?? memberships[0];
 
+  const persona: DashboardPersona =
+    personaByOrgSlug[currentSlug] ?? personaByOrgSlug[initialOrgSlug] ?? "movement_leader";
+  const programNavLabel = persona === "implementation_org" ? "Safety & Sandbox" : "Program";
+
   return (
     <DashboardOrgProvider initialSlug={currentSlug}>
       <div className="min-h-dvh bg-section text-foreground">
@@ -60,7 +68,7 @@ export function DashboardShell({
               </Link>
               <nav className="flex flex-wrap items-center gap-3 text-[0.85rem] text-muted-foreground">
                 <Link href="/program" className="hover:text-foreground">
-                  Program
+                  {programNavLabel}
                 </Link>
                 <Link href="/dashboard/teaching/claude-skills" className="hover:text-foreground">
                   Teaching library

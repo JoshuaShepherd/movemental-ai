@@ -7,6 +7,7 @@ import { OnboardingPanel } from "@/components/onboarding/onboarding-panel";
 import {
   isUserStaff,
   listMembershipOrganizations,
+  loadDashboardPersonaMapForUser,
 } from "@/lib/services/onboarding/onboarding.service";
 import { createClient } from "@/lib/supabase/server";
 
@@ -39,6 +40,7 @@ export default async function DashboardLayout({
 
   const staff = await isUserStaff(user.id);
   const initialSlug = memberships[0]?.orgSlug ?? "";
+  const personaByOrgSlug = await loadDashboardPersonaMapForUser(user.id);
 
   return (
     <Suspense
@@ -48,6 +50,7 @@ export default async function DashboardLayout({
         initialOrgSlug={initialSlug}
         userEmail={user.email ?? ""}
         memberships={memberships}
+        personaByOrgSlug={personaByOrgSlug}
         showAdminLink={staff}
       >
         <OnboardingPanel />

@@ -27,6 +27,7 @@ export function useOnboardingState(organizationSlug: string | null) {
 }
 
 export type OnboardingStateResponse = {
+  dashboardPersona: "movement_leader" | "implementation_org";
   userFirstName: string | null;
   organization: {
     id: string;

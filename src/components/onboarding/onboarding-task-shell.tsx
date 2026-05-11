@@ -56,7 +56,15 @@ export function OnboardingTaskShell({
           {done ? "Saved" : pending ? "Saving…" : "Mark complete"}
         </Button>
         <Button variant="ghost" size="sm" asChild>
-          <Link href={`/welcome?org=${encodeURIComponent(organizationSlug)}`}>Back to checklist</Link>
+          <Link
+            href={
+              organizationSlug
+                ? `/welcome?org=${encodeURIComponent(organizationSlug)}`
+                : "/welcome"
+            }
+          >
+            Back to checklist
+          </Link>
         </Button>
       </div>
     </div>

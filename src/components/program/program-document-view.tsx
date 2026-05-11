@@ -57,6 +57,11 @@ export function ProgramDocumentView({
 }) {
   const sections = (fixture.sections ?? []) as unknown[];
   const editorial = fixture.editorialThread;
+  const headline =
+    (fixture.page.headline && String(fixture.page.headline).trim()) ||
+    (fixture.documentTitle && fixture.documentTitle.replace(/\s*-\s*Movemental\s*$/i, "").trim()) ||
+    "Program template";
+  const pageForHeader = { ...fixture.page, headline };
 
   return (
     <ProgramShell shell={fixture.shell} sourceBadge={sourceBadge}>
@@ -69,9 +74,24 @@ export function ProgramDocumentView({
               Editorial · {editorial.variant}
             </p>
           ) : null}
-          <ProgramPageHeader page={fixture.page} />
+          <ProgramPageHeader page={pageForHeader} />
           <RichPageIntro fixture={fixture} />
-          <ProgramSectionRenderer sections={sections} />
+          {sections.length === 0 ? (
+            <section
+              className="rounded border border-safestart-hairline bg-safestart-surface-container/80 p-6 font-body text-sm text-safestart-muted"
+              aria-live="polite"
+            >
+              <p className="font-medium text-safestart-ink">No sections in this template fixture yet.</p>
+              <p className="mt-2 leading-relaxed">
+                The route is valid, but <code className="rounded bg-white/80 px-1 text-xs">{fixture.templateId}</code>{" "}
+                has no <code className="rounded bg-white/80 px-1 text-xs">sections</code> array. Add fixture content
+                under <code className="rounded bg-white/80 px-1 text-xs">src/lib/program/fixtures/</code> or report a
+                migration gap to Movemental.
+              </p>
+            </section>
+          ) : (
+            <ProgramSectionRenderer sections={sections} />
+          )}
         </main>
       </div>
     </ProgramShell>

@@ -10,6 +10,9 @@ export type StitchManifestTemplate = {
   path: string;
   thumbnail?: string;
   reactRoute?: string;
+  /** Optional manifest metadata for dashboard curation (ignored if absent). */
+  audience?: ("all" | "implementation" | "movement_leader")[];
+  opsTags?: string[];
 };
 
 export type StitchSubgroupLabels = Record<string, string>;

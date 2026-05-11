@@ -4,7 +4,7 @@ import * as React from "react";
 
 import { OnboardingTaskShell } from "@/components/onboarding/onboarding-task-shell";
 import { useDashboardOrganizationSlug } from "@/components/dashboard/dashboard-org-context";
-import { taskDefinitionByKey } from "@/lib/onboarding/tasks";
+import { useOnboardingTaskPresentation } from "@/hooks/onboarding/use-onboarding-task-presentation";
 
 type CorpusItem = {
   id: string;
@@ -16,7 +16,7 @@ type CorpusItem = {
 
 export function CorpusReviewTaskPage() {
   const organizationSlug = useDashboardOrganizationSlug();
-  const def = taskDefinitionByKey("corpus_review");
+  const { title, description, estimatedMinutes } = useOnboardingTaskPresentation("corpus_review");
   const [items, setItems] = React.useState<CorpusItem[] | null>(null);
   const [error, setError] = React.useState<string | null>(null);
 
@@ -43,15 +43,7 @@ export function CorpusReviewTaskPage() {
   }, [organizationSlug]);
 
   return (
-    <OnboardingTaskShell
-      taskKey="corpus_review"
-      title={def?.title ?? "Review your research corpus"}
-      description={
-        def?.description ??
-        "Books, articles, and source material we have compiled. Add what is missing, flag what should not be there."
-      }
-      estimatedMinutes={def?.estimatedMinutes ?? 20}
-    >
+    <OnboardingTaskShell taskKey="corpus_review" title={title} description={description} estimatedMinutes={estimatedMinutes}>
       {error ? (
         <p className="text-sm text-destructive">{error}</p>
       ) : items === null ? (

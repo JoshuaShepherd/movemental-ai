@@ -27,8 +27,12 @@ import {
   type TaskRowLike,
   type TaskRowStatus,
 } from "@/lib/onboarding/state";
+import { resolveDashboardPersona, type DashboardPersona } from "@/lib/dashboard/dashboard-persona";
+import { presentOnboardingTaskForPersona } from "@/lib/onboarding/onboarding-persona-present";
 import { ONBOARDING_PHASES, ONBOARDING_TASKS, taskDefinitionByKey } from "@/lib/onboarding/tasks";
 import type { Result } from "@/lib/services/simplified/base.service";
+
+export type { DashboardPersona } from "@/lib/dashboard/dashboard-persona";
 
 function ok<T>(data: T): Result<T> {
   return { success: true, data };
@@ -195,6 +199,55 @@ export async function resolveActiveOrganizationId(
     return ok({ organizationId: match.organizationId, slug: match.orgSlug });
   }
   return ok({ organizationId: list[0].organizationId, slug: list[0].orgSlug });
+}
+
+/** Active organization + dashboard persona for authenticated dashboard pages. */
+export async function resolveDashboardContextForSessionUser(
+  userId: string,
+  orgSlugParam?: string | null,
+): Promise<{ slug: string; organizationId: string; persona: DashboardPersona } | null> {
+  const resolved = await resolveActiveOrganizationId(userId, orgSlugParam ?? undefined);
+  if (!resolved.success) return null;
+
+  const [row] = await db
+    .select({
+      organization_type: organizations.organization_type,
+      settings: organizations.settings,
+      slug: organizations.slug,
+    })
+    .from(organizations)
+    .where(eq(organizations.id, resolved.data.organizationId))
+    .limit(1);
+
+  if (!row) return null;
+
+  return {
+    slug: resolved.data.slug,
+    organizationId: resolved.data.organizationId,
+    persona: resolveDashboardPersona(row),
+  };
+}
+
+/** Persona per org slug for the signed-in user's memberships (dashboard chrome). */
+export async function loadDashboardPersonaMapForUser(userId: string): Promise<Record<string, DashboardPersona>> {
+  const memberships = await listMembershipOrganizations(userId);
+  if (memberships.length === 0) return {};
+
+  const ids = memberships.map((m) => m.organizationId);
+  const rows = await db
+    .select({
+      slug: organizations.slug,
+      organization_type: organizations.organization_type,
+      settings: organizations.settings,
+    })
+    .from(organizations)
+    .where(inArray(organizations.id, ids));
+
+  const map: Record<string, DashboardPersona> = {};
+  for (const r of rows) {
+    map[r.slug] = resolveDashboardPersona(r);
+  }
+  return map;
 }
 
 export async function isUserStaff(userId: string): Promise<boolean> {
@@ -476,6 +529,12 @@ export async function buildOnboardingStatePayload(organizationId: string) {
     .limit(1);
   if (!org) return null;
 
+  const dashboardPersona = resolveDashboardPersona({
+    slug: org.slug,
+    organization_type: org.organization_type,
+    settings: org.settings,
+  });
+
   const rows = await db
     .select()
     .from(onboardingTasks)
@@ -496,11 +555,18 @@ export async function buildOnboardingStatePayload(organizationId: string) {
 
     const uiStatus = like ? evaluateTaskUiStatus(def, like, rowByKey) : "locked";
 
+    const presented = presentOnboardingTaskForPersona(
+      dashboardPersona,
+      def.key,
+      def.title,
+      def.description,
+    );
+
     return {
       key: def.key,
       phase: def.phase,
-      title: def.title,
-      description: def.description,
+      title: presented.title,
+      description: presented.description,
       estimatedMinutes: def.estimatedMinutes,
       route: def.route,
       requirement: def.requirement,
@@ -540,6 +606,7 @@ export async function buildOnboardingStatePayload(organizationId: string) {
   }
 
   return {
+    dashboardPersona,
     organization: {
       id: org.id,
       name: org.name,
@@ -562,6 +629,7 @@ export interface AdminOnboardingOrgSummary {
   organizationId: string;
   name: string;
   slug: string;
+  dashboardPersona: DashboardPersona;
   cohortStartDate: string | null;
   onboardingCompletedAt: string | null;
   currentPhaseLabel: string;
@@ -644,6 +712,11 @@ export async function listAdminOnboardingSummaries(): Promise<AdminOnboardingOrg
       organizationId: org.id,
       name: org.name,
       slug: org.slug,
+      dashboardPersona: resolveDashboardPersona({
+        slug: org.slug,
+        organization_type: org.organization_type,
+        settings: org.settings,
+      }),
       cohortStartDate: org.cohort_start_date,
       onboardingCompletedAt: org.onboarding_completed_at,
       currentPhaseLabel: currentPhaseLabelForOrg(rows, leaderPayments),

@@ -55,6 +55,7 @@ export function AdminOnboardingClient({
           <thead>
             <tr className="text-muted-foreground">
               <th className="px-4 py-3 font-medium">Organization</th>
+              <th className="px-4 py-3 font-medium">Persona</th>
               <th className="px-4 py-3 font-medium">Phase</th>
               <th className="px-4 py-3 font-medium">Last activity</th>
               <th className="px-4 py-3 font-medium">Cohort start</th>
@@ -68,6 +69,11 @@ export function AdminOnboardingClient({
                 <td className="px-4 py-3">
                   <div className="font-medium">{row.name}</div>
                   <div className="text-xs text-muted-foreground">{row.slug}</div>
+                </td>
+                <td className="px-4 py-3 text-muted-foreground">
+                  <span className="rounded-full bg-section px-2 py-0.5 text-xs capitalize">
+                    {row.dashboardPersona.replace(/_/g, " ")}
+                  </span>
                 </td>
                 <td className="px-4 py-3 capitalize text-muted-foreground">{row.currentPhaseLabel}</td>
                 <td className="px-4 py-3 text-muted-foreground">

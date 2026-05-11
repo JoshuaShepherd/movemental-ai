@@ -9,16 +9,19 @@ import { OnboardingTaskShell } from "@/components/onboarding/onboarding-task-she
 import { useDashboardOrganizationSlug } from "@/components/dashboard/dashboard-org-context";
 import { Button } from "@/components/ui/button";
 import { useCompleteOnboardingTask } from "@/hooks/onboarding/use-onboarding-state";
+import { useOnboardingTaskPresentation } from "@/hooks/onboarding/use-onboarding-task-presentation";
 
 const DOCUSIGN_URL = process.env.NEXT_PUBLIC_DOCUSIGN_ENGAGEMENT_URL;
 
 export function AgreementTaskPage() {
+  const { title, description, estimatedMinutes } = useOnboardingTaskPresentation("sign_agreement");
+
   return (
     <OnboardingTaskShell
       taskKey="sign_agreement"
-      title="Sign your engagement agreement"
-      description="Review and sign the Master Services Agreement and Statement of Work for this engagement. When you are finished with signing, return here and mark this step complete."
-      estimatedMinutes={15}
+      title={title}
+      description={description}
+      estimatedMinutes={estimatedMinutes}
     >
       <div className="rounded-xl bg-section px-4 py-4 text-sm text-muted-foreground">
         <p>
@@ -43,12 +46,14 @@ export function AgreementTaskPage() {
 }
 
 export function PaymentTaskPage() {
+  const { title, description, estimatedMinutes } = useOnboardingTaskPresentation("confirm_payment");
+
   return (
     <OnboardingTaskShell
       taskKey="confirm_payment"
-      title="Confirm your payment"
-      description="Confirm that payment for this engagement is arranged according to your Statement of Work."
-      estimatedMinutes={5}
+      title={title}
+      description={description}
+      estimatedMinutes={estimatedMinutes}
     >
       <p className="text-sm text-muted-foreground">
         If you pay through an invoice or shared checkout link, confirm here once payment has been
@@ -60,6 +65,7 @@ export function PaymentTaskPage() {
 
 export function CohortTaskPage() {
   const organizationSlug = useDashboardOrganizationSlug();
+  const { description: cohortDescription } = useOnboardingTaskPresentation("choose_cohort");
   const router = useRouter();
   const complete = useCompleteOnboardingTask(organizationSlug || null);
   const [date, setDate] = React.useState("");
@@ -93,10 +99,7 @@ export function CohortTaskPage() {
       <h1 className="mt-2 text-2xl font-semibold tracking-[-0.02em] text-foreground">
         Choose your cohort start date
       </h1>
-      <p className="mt-3 text-muted-foreground">
-        Pick the cohort start date that matches your calendar. You can adjust later with Movemental if
-        plans change.
-      </p>
+      <p className="mt-3 text-muted-foreground">{cohortDescription}</p>
       <p className="mt-2 text-sm text-muted-foreground">Estimated time: 5 minutes</p>
 
       <label className="mt-8 flex flex-col gap-2 text-sm text-foreground">
@@ -118,7 +121,9 @@ export function CohortTaskPage() {
           {done ? "Saved" : pending ? "Saving…" : "Save date and mark complete"}
         </Button>
         <Button variant="ghost" size="sm" asChild>
-          <Link href={`/welcome?org=${encodeURIComponent(organizationSlug)}`}>Back to checklist</Link>
+          <Link href={organizationSlug ? `/welcome?org=${encodeURIComponent(organizationSlug)}` : "/welcome"}>
+            Back to checklist
+          </Link>
         </Button>
       </div>
     </div>
