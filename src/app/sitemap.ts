@@ -4,7 +4,7 @@ import { canonicalPageUrl } from "@/lib/site-url";
 
 /**
  * Public-facing routes for movemental.com. Keep this list aligned with
- * pages under `src/app/(site)/`. Anything gated, archived, or in the
+ * pages under `src/app/(site)/`. Anything gated, archived, or in an
  * `_archive` tree should not appear here.
  */
 const ROUTES: ReadonlyArray<{
@@ -14,6 +14,11 @@ const ROUTES: ReadonlyArray<{
 }> = [
   { path: "/", changeFrequency: "weekly", priority: 1.0 },
   { path: "/path", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/pathway", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/pathway/safety", changeFrequency: "monthly", priority: 0.88 },
+  { path: "/pathway/sandbox", changeFrequency: "monthly", priority: 0.88 },
+  { path: "/pathway/skills", changeFrequency: "monthly", priority: 0.85 },
+  { path: "/pathway/solutions", changeFrequency: "monthly", priority: 0.85 },
   { path: "/start-with-safety", changeFrequency: "monthly", priority: 0.9 },
   { path: "/work-with-us", changeFrequency: "monthly", priority: 0.85 },
   { path: "/who-we-serve", changeFrequency: "monthly", priority: 0.8 },
@@ -24,8 +29,15 @@ const ROUTES: ReadonlyArray<{
   { path: "/voices", changeFrequency: "monthly", priority: 0.75 },
   { path: "/evidence", changeFrequency: "monthly", priority: 0.75 },
   { path: "/field-guide", changeFrequency: "monthly", priority: 0.85 },
+  { path: "/field-guide/safety", changeFrequency: "monthly", priority: 0.85 },
   { path: "/toolkit", changeFrequency: "monthly", priority: 0.9 },
   { path: "/toolkit/read", changeFrequency: "monthly", priority: 0.85 },
+  { path: "/library", changeFrequency: "monthly", priority: 0.55 },
+  { path: "/technology", changeFrequency: "monthly", priority: 0.55 },
+  { path: "/training", changeFrequency: "monthly", priority: 0.55 },
+  { path: "/how-we-use-ai", changeFrequency: "monthly", priority: 0.5 },
+  { path: "/footnotes", changeFrequency: "monthly", priority: 0.5 },
+  { path: "/safety/sign", changeFrequency: "yearly", priority: 0.45 },
   { path: "/pricing", changeFrequency: "monthly", priority: 0.85 },
   { path: "/assess", changeFrequency: "monthly", priority: 0.8 },
   { path: "/about", changeFrequency: "yearly", priority: 0.6 },

@@ -2,8 +2,6 @@ import type { NextConfig } from "next";
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { LEGACY_BOOK_READ_SLUGS } from "./src/lib/book-legacy-read-redirects";
-
 // Pin Turbopack's workspace root to this directory so Next 16 doesn't
 // walk up the filesystem and pick up an unrelated parent lockfile.
 const projectRoot = dirname(fileURLToPath(import.meta.url));
@@ -20,16 +18,35 @@ const nextConfig: NextConfig = {
     "sharp",
   ],
   async redirects() {
-    const legacyBookReads = LEGACY_BOOK_READ_SLUGS.map((slug) => ({
-      source: `/book/read/${slug}`,
-      destination: "/book",
-      permanent: true,
-    }));
-
     return [
       {
+        source: "/downloads/it-starts-with-safety-v1.pdf",
+        destination: "/downloads/movemental-it-starts-with-safety-field-guide.pdf",
+        permanent: true,
+      },
+      {
+        source: "/toolkit/safety-toolkit.pdf",
+        destination: "/downloads/movemental-it-starts-with-safety-field-guide.pdf",
+        permanent: true,
+      },
+      {
+        source: "/downloads/movemental-sandbox-field-guide-it-continues-with-exploration.pdf",
+        destination: "/downloads/movemental-it-continues-with-exploration-field-guide.pdf",
+        permanent: true,
+      },
+      {
         source: "/blog",
-        destination: "/articles",
+        destination: "/field-guide",
+        permanent: true,
+      },
+      {
+        source: "/book",
+        destination: "/field-guide",
+        permanent: true,
+      },
+      {
+        source: "/book/:path*",
+        destination: "/field-guide",
         permanent: true,
       },
       // /team has been folded into /about — the rebuilt About page now carries
@@ -57,7 +74,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/fragmentation-old",
-        destination: "/fragmentation",
+        destination: "/about",
         permanent: true,
       },
       {
@@ -92,32 +109,32 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/fragmentation-intel",
-        destination: "/fragmentation",
+        destination: "/about",
         permanent: true,
       },
       {
         source: "/movemental-at-100",
-        destination: "/fragmentation",
+        destination: "/about",
         permanent: true,
       },
       {
         source: "/knowledge-ecosystem",
-        destination: "/fragmentation",
+        destination: "/about",
         permanent: true,
       },
       {
         source: "/content/articles/sandbox",
-        destination: "/articles/sandbox",
+        destination: "/field-guide",
         permanent: true,
       },
       {
         source: "/content/articles/sandbox/:path*",
-        destination: "/articles/sandbox/:path*",
+        destination: "/field-guide",
         permanent: true,
       },
       {
         source: "/vision",
-        destination: "/fragmentation",
+        destination: "/about",
         permanent: true,
       },
       // Archived legacy services sub-routes (replaced by /services/sandbox-season as of 2026-04).
@@ -139,17 +156,37 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/who-its-for",
-        destination: "/organizations",
+        destination: "/pricing",
+        permanent: true,
+      },
+      {
+        source: "/organizations",
+        destination: "/pricing",
+        permanent: true,
+      },
+      {
+        source: "/organizations/:path*",
+        destination: "/pricing",
+        permanent: true,
+      },
+      {
+        source: "/fragmentation",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/fragmentation/:path*",
+        destination: "/about",
         permanent: true,
       },
       {
         source: "/how-it-works",
-        destination: "/fragmentation",
+        destination: "/about",
         permanent: true,
       },
       {
         source: "/how-it-works/:path*",
-        destination: "/fragmentation",
+        destination: "/about",
         permanent: true,
       },
       {
@@ -225,7 +262,6 @@ const nextConfig: NextConfig = {
         destination: "/pathway/solutions/:path*",
         permanent: true,
       },
-      ...legacyBookReads,
     ];
   },
   images: {

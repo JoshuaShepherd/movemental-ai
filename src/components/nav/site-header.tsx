@@ -196,7 +196,14 @@ export function SiteHeader() {
                 />
               </svg>
             </button>
-            <div className="invisible absolute top-full left-0 z-50 w-48 translate-y-2 rounded-xl border border-border bg-card p-2 opacity-0 shadow-ambient transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+            <div className="invisible absolute top-full left-0 z-50 w-56 translate-y-2 rounded-xl border border-border bg-card p-2 opacity-0 shadow-ambient transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+              <Link
+                href="/who-we-serve"
+                className="block rounded-lg border-b border-border px-4 py-3 transition-colors hover:bg-section"
+              >
+                <div className="text-sm font-semibold text-foreground">Who we serve</div>
+                <div className="mt-1 text-xs text-muted-foreground">Overview of audiences</div>
+              </Link>
               <Link
                 href="/churches"
                 className="block rounded-lg px-4 py-2.5 text-sm font-medium transition-colors hover:bg-section"
@@ -239,7 +246,7 @@ export function SiteHeader() {
             className="inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-eyebrow text-muted-foreground transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             <Download className="size-3.5" aria-hidden />
-            Free Safety Toolkit
+            FIELD GUIDE
           </button>
           <ThemeToggle size="comfortable" />
           <Link href="/contact" className="btn-pill btn-pill--primary py-2.5">
@@ -328,6 +335,13 @@ export function SiteHeader() {
               Audiences
             </span>
             <Link
+              href="/who-we-serve"
+              onClick={() => setIsMenuOpen(false)}
+              className="rounded-md p-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
+            >
+              Who we serve
+            </Link>
+            <Link
               href="/churches"
               onClick={() => setIsMenuOpen(false)}
               className="rounded-md p-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
@@ -372,7 +386,7 @@ export function SiteHeader() {
             className="mt-2 inline-flex items-center justify-center gap-2 rounded-md bg-section p-3 text-sm font-medium text-foreground transition-colors hover:bg-border"
           >
             <Download className="size-4" aria-hidden />
-            Free Safety Toolkit
+            FIELD GUIDE
           </button>
           <button
             type="button"

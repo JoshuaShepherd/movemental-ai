@@ -1,6 +1,7 @@
 /**
  * Slugs that existed under `/book/read/[slug]` for the prior *Content That Moves*
- * manuscript. Each redirects to `/book` so external links do not 404.
+ * manuscript. Each redirects to `/field-guide` so external links resolve to the
+ * live field-guide hub (the `/book` route is not shipped).
  */
 export const LEGACY_BOOK_READ_SLUGS: readonly string[] = [
   "preface-the-story",

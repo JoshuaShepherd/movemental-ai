@@ -3,14 +3,16 @@
  * so "book" vs "Movemental Path field guide" never drift to the wrong href.
  */
 
-/** Living manuscript: two intelligences, six stages, integration thesis. */
+/**
+ * Legacy book hub slug; the `/book` app route is not shipped — Next redirects
+ * `/book` to `/field-guide`. Prefer linking to the field guide hub directly.
+ */
 export const BOOK_HUB_PATH = "/book" as const;
 
 /**
- * Compiled Movemental Path field guide (Safety, Sandbox, Skills, Solutions).
- * Separate from `/book`; links to the book for the longer fragmentation arc.
+ * Public field guide / Movemental Path literary hub (`FieldGuidePage`).
  *
- * Constant name retains historical `SSSS_` prefix for route stability; the
- * user-visible label is "Movemental Path field guide."
+ * Constant name retains historical `SSSS_` prefix for import stability; the
+ * user-visible label is typically "Movemental Path field guide" or "Field guide."
  */
-export const SSSS_FIELD_GUIDE_PATH = "/articles/ssss-field-guide-for-organizational-leaders" as const;
+export const SSSS_FIELD_GUIDE_PATH = "/field-guide" as const;

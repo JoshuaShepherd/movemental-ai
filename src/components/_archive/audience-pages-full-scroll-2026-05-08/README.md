@@ -1,1 +1,0 @@
-Superseded by slim audience composition (hero + case study + path bridge + conversation CTA). See `src/components/studio/pages/AudiencePage.tsx`, `AudienceHero`, `AudiencePathBridge`, `AudienceClosingCta`.
