@@ -131,7 +131,7 @@ const FAQ_GROUPS = [
       { slug: "recommend-tools", q: "Do you recommend specific tools?", a: "Yes, but strictly relative to your established data boundaries and acceptable use policy." },
       { slug: "vendor-relationships", q: "Do you have a vendor relationship with ChatGPT, Claude, Copilot, or Gemini?", a: "No. We remain strictly agnostically independent." },
       { slug: "never-enter", q: "What data should never enter an AI tool?", a: "Unless you have a zero-retention enterprise agreement, PII, pastoral counseling notes, payroll data, and proprietary intellectual property must be locked out." },
-      { slug: "real-harms", q: "What about the real harms — labor, environment, copyright, hallucination, bias?", a: "We confront these directly in the Safety Stage when we draft your theological and ethical rubrics." },
+      { slug: "real-harms", q: "How does Movemental think about the harder questions — labor displacement, environmental cost, copyright, hallucination, bias?", a: "These are the questions the Safety stage is built around. They surface in your theological and ethical rubrics, in the named refusals, and in how data boundaries get drawn. We do not treat them as objections to manage; they are the substance of the work." },
       { slug: "custom-assistants", q: "Do you build custom assistants?", a: "Yes, during the Solutions stage, but only after human oversight protocols are thoroughly defined and tested." },
       { slug: "who-owns", q: "Who owns what we produce together?", a: "You own all contextual policies and architectures we draft together." },
       { slug: "data-privacy", q: "What about data privacy and security?", a: "Data security is the literal purpose of starting our sequence with Safety." },
@@ -145,8 +145,8 @@ const FAQ_GROUPS = [
     lede: "How to read the proof…",
     items: [
       { slug: "voices-vs-evidence", q: "What is the difference between Voices and Evidence?", a: <>Evidence explains the problem structure; Voices are the actual practitioners validating it. See <Link href="/evidence" className="text-primary hover:underline">Evidence</Link>.</> },
-      { slug: "case-studies", q: "Where are your case studies?", a: <>They are embedded in the audience path pages. See <Link href="/churches" className="text-primary hover:underline">Churches</Link> for an example.</> },
-      { slug: "no-logo-wall", q: "Why no logo wall?", a: "Because trust in this arena shouldn't rely on generic brand association. It depends on coherent structural integrity." },
+      { slug: "case-studies", q: "Where are your case studies?", a: <>Named case studies are being developed and will live at <Link href="/case-studies" className="text-primary hover:underline">/case-studies</Link> as we publish them with written permission from each client. Until then, the audience pages (<Link href="/churches" className="text-primary hover:underline">Churches</Link>, <Link href="/nonprofits" className="text-primary hover:underline">Nonprofits</Link>, <Link href="/institutions" className="text-primary hover:underline">Institutions</Link>) carry the case patterns and the kinds of organizations we serve. Specific named clients come once we have the permission to publish them, not before.</> },
+      { slug: "no-logo-wall", q: "Why doesn't your site have a logo wall?", a: "Because we do not show client logos without explicit permission, and because the kind of trust this work requires is not transferred by brand association. The proof is the structural integrity of the system we deliver. Named case studies — with permission — are how this surface will grow, not a wall of borrowed credibility." },
       { slug: "who-is-voice", q: "Who counts as a \"voice\"?", a: "Active, missional practitioners who prioritize human formation over simple organizational scaling." },
       { slug: "talk-to-partner", q: "Can we talk to a current partner?", a: "Yes. Once an engagement scope is defined, we are happy to provide references." },
     ]
@@ -181,6 +181,51 @@ const FAQ_GROUPS = [
   }
 ];
 
+type BoundariesGroup = (typeof FAQ_GROUPS)[number];
+
+function BoundariesSection({ group }: { group: BoundariesGroup }) {
+  return (
+    <section id={`faq-${group.id}`} className="band-midnight">
+      <Container>
+        <Reveal>
+          <div className="max-w-3xl">
+            <span className="section-eyebrow text-pathway-accent">{group.eyebrow}</span>
+            <h2 className="display mt-4 mb-6 text-inverse-foreground">
+              <em dangerouslySetInnerHTML={{ __html: "What we will not do." }} />
+            </h2>
+            <p className="lede text-inverse-foreground/75 max-w-2xl">
+              The work has a shape. These are the lines we will not cross — for ourselves, and for the
+              organizations we serve. Read them as commitments, not concessions.
+            </p>
+          </div>
+
+          <ol className="mt-16 grid grid-cols-1 gap-px bg-inverse-border md:grid-cols-2">
+            {group.items.map((item, i) => (
+              <li
+                key={item.slug}
+                id={`faq-${group.id}--${item.slug}`}
+                className="flex flex-col gap-5 bg-inverse-surface p-10 md:p-12"
+              >
+                <div className="flex items-baseline justify-between gap-4 border-b border-inverse-border/60 pb-4">
+                  <span className="text-[0.62rem] font-semibold uppercase tracking-eyebrow text-pathway-accent">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-[0.7rem] italic leading-snug text-inverse-foreground/55">
+                    {item.q}
+                  </span>
+                </div>
+                <p className="font-serif-display text-2xl italic leading-snug text-inverse-foreground md:text-3xl">
+                  {item.a}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </Reveal>
+      </Container>
+    </section>
+  );
+}
+
 export function FaqPage() {
   useEffect(() => {
     document.title = "FAQ | Movemental";
@@ -196,7 +241,7 @@ export function FaqPage() {
               Honest answers to <em dangerouslySetInnerHTML={{__html: 'real questions.'}} />
             </h1>
             <p className="hero-subhead lede lede--regular text-inverse-foreground/80 mb-10 max-w-3xl">
-              Clarity is the antidote to anxiety. Here are the questions we hear constantly from leaders sitting exactly where you are.
+              These are the questions we hear most often from leaders sitting exactly where you are. The answers are honest. Some will be reasons we are right for you. Some will be reasons we are not.
             </p>
             <div className="hero-actions flex flex-wrap gap-4">
               <Link href="/contact" className="btn-pill btn-pill--primary">Talk With Us</Link>
@@ -209,47 +254,68 @@ export function FaqPage() {
       <section className="band-default" id="toc">
         <Container>
           <Reveal>
-            <SectionHead 
+            <SectionHead
               eyebrow="In this FAQ"
               display="Ten short groups."
-              lede="Jump directly to the answers you need."
+              lede="Jump directly to the answers you need. Each group is a stand-alone read."
             />
-            
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-12">
-              {FAQ_GROUPS.map((group, i) => (
-                <a key={group.id} href={`#faq-${group.id}`} className="group block bg-card rounded-xl p-6 border border-border hover:border-primary/50 transition-colors">
-                  <span className="text-secondary font-medium block mb-2">{String(i + 1).padStart(2, '0')}</span>
-                  <strong className="text-foreground font-medium group-hover:text-primary transition-colors">{group.eyebrow}</strong>
-                </a>
-              ))}
-            </div>
+
+            <nav aria-label="FAQ groups" className="mt-12 grid grid-cols-1 gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+              {FAQ_GROUPS.map((group, i) => {
+                const count = group.items.length;
+                return (
+                  <a
+                    key={group.id}
+                    href={`#faq-${group.id}`}
+                    className="group flex flex-col gap-3 bg-card p-8 transition-colors hover:bg-section"
+                  >
+                    <div className="flex items-baseline justify-between gap-4">
+                      <span className="text-[0.62rem] font-semibold uppercase tracking-eyebrow text-pathway-accent">
+                        {String(i + 1).padStart(2, "0")} · {group.eyebrow}
+                      </span>
+                      <span className="text-[0.62rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">
+                        {count} {count === 1 ? "question" : "questions"}
+                      </span>
+                    </div>
+                    <h3 className="font-serif-display text-xl italic leading-snug text-foreground transition-colors group-hover:text-primary md:text-2xl">
+                      {group.display}
+                    </h3>
+                  </a>
+                );
+              })}
+            </nav>
           </Reveal>
         </Container>
       </section>
 
-      {FAQ_GROUPS.map((group) => (
-        <section key={group.id} id={`faq-${group.id}`} className={group.band}>
-          <Container width="narrow">
-            <Reveal>
-              <SectionHead 
-                eyebrow={group.eyebrow}
-                display={group.display}
-                lede={group.lede}
-              />
-              <div className="mt-12 max-w-3xl border-t border-border/60">
-                {group.items.map((item) => (
-                  <AccordionItem 
-                    key={item.slug} 
-                    id={`faq-${group.id}--${item.slug}`} 
-                    question={item.q} 
-                    answer={item.a} 
-                  />
-                ))}
-              </div>
-            </Reveal>
-          </Container>
-        </section>
-      ))}
+      {FAQ_GROUPS.map((group) => {
+        if (group.id === "boundaries") {
+          return <BoundariesSection key={group.id} group={group} />;
+        }
+        return (
+          <section key={group.id} id={`faq-${group.id}`} className={group.band}>
+            <Container width="narrow">
+              <Reveal>
+                <SectionHead
+                  eyebrow={group.eyebrow}
+                  display={group.display}
+                  lede={group.lede}
+                />
+                <div className="mt-12 max-w-3xl border-t border-border/60">
+                  {group.items.map((item) => (
+                    <AccordionItem
+                      key={item.slug}
+                      id={`faq-${group.id}--${item.slug}`}
+                      question={item.q}
+                      answer={item.a}
+                    />
+                  ))}
+                </div>
+              </Reveal>
+            </Container>
+          </section>
+        );
+      })}
 
       <section className="band-midnight final-cta text-center">
         <Container width="narrow">
