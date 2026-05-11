@@ -38,9 +38,17 @@ export function AssessPage() {
               <Link href="/field-guides" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Read the field guide first</Link>
             </div>
             
-            <div className="border-l-2 border-inverse-border pl-6 max-w-[36ch]">
-               <span className="text-xs font-semibold uppercase tracking-eyebrow text-inverse-foreground/60 mb-2 block">No score, no benchmark</span>
-               <p className="text-sm text-inverse-foreground/80 leading-relaxed">The diagnostic produces a narrative, not a number. See the editorial note below.</p>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
+              <div className="border-l-2 border-inverse-border pl-6 max-w-[36ch]">
+                 <span className="text-xs font-semibold uppercase tracking-eyebrow text-inverse-foreground/60 mb-2 block">No score, no benchmark</span>
+                 <p className="text-sm text-inverse-foreground/80 leading-relaxed">The diagnostic produces a narrative, not a number. See the editorial note below.</p>
+              </div>
+              <div className="border-l-2 border-inverse-border pl-6 max-w-[36ch]">
+                 <span className="text-xs font-semibold uppercase tracking-eyebrow text-inverse-foreground/60 mb-2 block">Looking for a narrower check?</span>
+                 <p className="text-sm text-inverse-foreground/80 leading-relaxed">
+                   The <Link href="/start-with-safety" className="underline decoration-inverse-border underline-offset-4 hover:decoration-inverse-foreground">Safety Self-Assessment</Link> is the narrower Safety-stage-only check — seven questions, ten minutes, automated read-back.
+                 </p>
+              </div>
             </div>
           </Reveal>
         </Container>
@@ -137,12 +145,15 @@ export function AssessPage() {
       <section className="band-default" id="when">
         <Container>
           <Reveal>
-            <SectionHead 
+            <SectionHead
               eyebrow="Where this sits"
               display={<>Before the first proposal, <em dangerouslySetInnerHTML={{__html: 'not after'}} />.</>}
             />
-            <p className="prose max-w-[640px] text-[1.0625rem] leading-[1.75] text-muted-foreground mb-10">
+            <p className="prose max-w-[640px] text-[1.0625rem] leading-[1.75] text-muted-foreground mb-6">
               The diagnostic is the first step of an engagement, or it can be taken independently to test organizational alignment. Taking it requires no commitment to further work.
+            </p>
+            <p className="prose max-w-[640px] text-[1.0625rem] leading-[1.75] text-muted-foreground mb-10">
+              This is the broader path-integrity diagnostic. If you only want to test whether your organization is ready for Safety as a starting point, the <Link href="/start-with-safety" className="text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary">Safety Self-Assessment</Link> is the narrower ten-minute check.
             </p>
             <Link href="/field-guides" className="btn-pill btn-pill--ghost">Read the field guide for the full Sequence</Link>
           </Reveal>

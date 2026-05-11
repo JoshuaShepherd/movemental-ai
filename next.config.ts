@@ -306,6 +306,21 @@ const nextConfig: NextConfig = {
         destination: "/field-guides/safety",
         permanent: true,
       },
+      // /training was a standalone positioning page (AI training for mission-
+      // driven organizations) that duplicated /pathway/skills's framing. Its
+      // three useful blocks — "what buyers mean by training," "where standard
+      // training works/falls short," and the readiness-routing matrix — were
+      // folded into /pathway/skills directly. Route retired 2026-05.
+      {
+        source: "/training",
+        destination: "/pathway/skills",
+        permanent: true,
+      },
+      {
+        source: "/training/:path*",
+        destination: "/pathway/skills",
+        permanent: true,
+      },
     ];
   },
   images: {

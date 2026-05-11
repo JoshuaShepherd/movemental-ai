@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowRight, CheckCircle, XCircle } from "lucide-react";
 import Link from "next/link";
 
 import { PathwayStageRail } from "@/components/pathway/pathway-stage-rail";
@@ -7,6 +8,36 @@ import { PathwayVoiceFallback } from "@/components/pathway/pathway-voice-fallbac
 import { Reveal } from "@/components/studio/Reveal";
 import { EditorialFieldGuideCta } from "@/components/field-guide/editorial-field-guide-cta";
 import { cn } from "@/lib/utils";
+
+const ROUTING_CARDS: ReadonlyArray<{ context: string; label: string; href: string }> = [
+  { context: "If you lack governance", label: "Start with Safety", href: "/pathway/safety" },
+  { context: "If you have Safety only", label: "Move to Sandbox", href: "/pathway/sandbox" },
+  { context: "If you have Safety + Sandbox", label: "Focus on Skills", href: "#hero" },
+  { context: "If you have all three", label: "See Solutions", href: "/pathway/solutions" },
+];
+
+const BUYERS_MEAN_CARDS: ReadonlyArray<{ num: string; title: string; body: string }> = [
+  { num: "01", title: "Workshops", body: "One-off sessions focused on prompt engineering basics." },
+  { num: "02", title: "Courses", body: "Pre-recorded video series on generic productivity tools." },
+  { num: "03", title: "Certifications", body: "High-level badges that confirm completion but not competence." },
+  { num: "04", title: "Bootcamps", body: "Intensive technique-heavy sprints with limited institutional context." },
+];
+
+const TRAINING_WHERE_WORKS: readonly string[] = [
+  "Tool discovery",
+  "Individual productivity",
+  "Low-stakes automation",
+  "Generic drafting",
+  "Technique fluency",
+];
+
+const TRAINING_WHERE_FALLS_SHORT: readonly string[] = [
+  "Theological alignment",
+  "Institutional governance",
+  "Mission-critical logic",
+  "Multi-tenant security",
+  "Formation of judgment",
+];
 
 const MAX = "mx-auto w-full max-w-[var(--container-max)] px-6 sm:px-8 lg:px-12";
 const SECTION = "py-16 md:py-24 lg:py-28";
@@ -125,6 +156,53 @@ export function SkillsPathwayPage() {
         </Reveal>
       </section>
 
+      {/* Routing aid — for visitors arriving with the "AI training" mental model.
+          Migrated from the retired /training page; deployment depends on
+          readiness, not wished-for skill. */}
+      <section
+        className={cn(SECTION, "bg-background border-t border-border")}
+        aria-labelledby="skills-routing-title"
+      >
+        <Reveal>
+          <div className={MAX}>
+            <div className="mb-12 max-w-3xl">
+              <p className="mb-4 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-pathway-accent">
+                If you came here looking for AI training
+              </p>
+              <h2
+                id="skills-routing-title"
+                className="mb-6 font-serif-display text-3xl italic leading-tight tracking-tight text-foreground md:text-4xl"
+              >
+                Skills is the third stage, not the first. Here is what we recommend based on where you actually are.
+              </h2>
+              <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
+                Deployment depends on actual readiness, not wished-for skill. If governance and use cases are not in
+                place yet, the most useful thing Skills can do is wait while you stabilize the earlier stages.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
+              {ROUTING_CARDS.map((card) => (
+                <div
+                  key={card.label}
+                  className="flex min-h-[200px] flex-col justify-between bg-card p-8 transition-colors hover:bg-section"
+                >
+                  <p className="text-sm leading-relaxed text-muted-foreground">{card.context}</p>
+                  <div className="mt-6 flex items-center gap-3">
+                    <ArrowRight className="size-4 shrink-0 text-pathway-accent" aria-hidden />
+                    <Link
+                      href={card.href}
+                      className="text-[0.7rem] font-semibold uppercase tracking-eyebrow text-foreground transition-colors hover:text-pathway-accent"
+                    >
+                      {card.label}
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
       {/* Why Skills exists */}
       <section className={cn(SECTION, "bg-background")} aria-labelledby="why-skills-title">
         <Reveal>
@@ -172,6 +250,99 @@ export function SkillsPathwayPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* What standard AI training does and does not do — migrated from /training.
+          Positions Skills against the generic AI training category buyers are
+          comparing against. */}
+      <section
+        className={cn(SECTION, "bg-section")}
+        aria-labelledby="standard-training-title"
+      >
+        <Reveal>
+          <div className={MAX}>
+            <div className="mb-12 max-w-3xl">
+              <p className="mb-4 text-[0.62rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">
+                What standard AI training does — and does not — do
+              </p>
+              <h2
+                id="standard-training-title"
+                className="mb-6 font-serif-display text-3xl italic leading-tight tracking-tight text-foreground md:text-4xl"
+              >
+                What buyers usually mean by &ldquo;AI training.&rdquo;
+              </h2>
+              <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
+                Most offerings in this category focus on the <em>how</em> of the tool rather than the <em>why</em> of
+                the mission. Useful for technique transfer; insufficient for the formation Movemental does.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
+              {BUYERS_MEAN_CARDS.map((c) => (
+                <div key={c.num} className="flex flex-col gap-4 bg-card p-8">
+                  <span className="text-[0.62rem] font-semibold uppercase tracking-eyebrow text-pathway-accent">
+                    {c.num}
+                  </span>
+                  <h3 className="text-lg font-semibold text-foreground">{c.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{c.body}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-16 grid grid-cols-1 gap-12 lg:grid-cols-12">
+              <div className="grid gap-12 md:grid-cols-2 lg:col-span-8">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3 border-b border-border pb-4">
+                    <CheckCircle className="size-5 text-pathway-accent" aria-hidden />
+                    <h3 className="text-[0.62rem] font-semibold uppercase tracking-eyebrow text-foreground">
+                      Where it works
+                    </h3>
+                  </div>
+                  <ul className="space-y-3 text-sm leading-relaxed text-muted-foreground">
+                    {TRAINING_WHERE_WORKS.map((item) => (
+                      <li key={item} className="flex gap-3">
+                        <span className="mt-2 size-1.5 shrink-0 bg-pathway-accent" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3 border-b border-border pb-4">
+                    <XCircle className="size-5 text-destructive" aria-hidden />
+                    <h3 className="text-[0.62rem] font-semibold uppercase tracking-eyebrow text-foreground">
+                      Where it falls short
+                    </h3>
+                  </div>
+                  <ul className="space-y-3 text-sm leading-relaxed text-muted-foreground">
+                    {TRAINING_WHERE_FALLS_SHORT.map((item) => (
+                      <li key={item} className="flex gap-3">
+                        <span className="mt-2 size-1.5 shrink-0 bg-destructive" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div className="lg:col-span-4">
+                <div className="flex h-full flex-col justify-center border-l-2 border-pathway-accent bg-card p-8">
+                  <p className="mb-6 font-serif-display text-xl italic leading-snug text-foreground md:text-2xl">
+                    &ldquo;92% of mission-driven leaders believe AI is a lever. Only 7% believe they have the
+                    judgment to pull it safely.&rdquo;
+                  </p>
+                  <p className="text-[0.62rem] font-semibold uppercase tracking-eyebrow text-muted-foreground">
+                    Source: Virtuous · 2026
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <p className="mt-12 max-w-2xl text-base font-medium leading-relaxed text-foreground">
+              This category does technique transfer. Skills does institutional formation. Both matter; the difference
+              matters more — particularly for churches, nonprofits, and institutions whose mission cannot be optimized
+              by tool fluency alone.
+            </p>
           </div>
         </Reveal>
       </section>

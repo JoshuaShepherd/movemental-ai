@@ -31,7 +31,6 @@ const ROUTES: ReadonlyArray<{
   { path: "/field-guides/safety", changeFrequency: "monthly", priority: 0.85 },
   { path: "/library", changeFrequency: "monthly", priority: 0.55 },
   { path: "/technology", changeFrequency: "monthly", priority: 0.55 },
-  { path: "/training", changeFrequency: "monthly", priority: 0.55 },
   { path: "/how-we-use-ai", changeFrequency: "monthly", priority: 0.5 },
   { path: "/footnotes", changeFrequency: "monthly", priority: 0.5 },
   { path: "/safety/sign", changeFrequency: "yearly", priority: 0.45 },
