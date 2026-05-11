@@ -43,7 +43,7 @@ export async function sendOnboardingPhase1CompleteEmail(
   const resend = getResend();
   if (!resend) return;
   const name = firstName?.trim() || "there";
-  const welcomeUrl = `${siteUrl()}/dashboard/welcome`;
+  const welcomeUrl = `${siteUrl()}/welcome`;
   await resend.emails.send({
     from: movementalFrom(),
     replyTo: "hello@movemental.com",
@@ -65,7 +65,7 @@ export async function sendCorpusReadyEmail(toEmail: string, firstName: string | 
   const resend = getResend();
   if (!resend) return;
   const name = firstName?.trim() || "there";
-  const url = `${siteUrl()}/dashboard/onboarding/corpus`;
+  const url = `${siteUrl()}/onboarding/corpus`;
   await resend.emails.send({
     from: movementalFrom(),
     replyTo: "hello@movemental.com",
@@ -87,7 +87,7 @@ export async function sendAgentReadyEmail(toEmail: string, firstName: string | n
   const resend = getResend();
   if (!resend) return;
   const name = firstName?.trim() || "there";
-  const url = `${siteUrl()}/dashboard/onboarding/agent`;
+  const url = `${siteUrl()}/onboarding/agent`;
   await resend.emails.send({
     from: movementalFrom(),
     replyTo: "hello@movemental.com",
@@ -112,7 +112,7 @@ export async function sendOnboardingPhase2ReminderEmail(
   const resend = getResend();
   if (!resend) return;
   const name = firstName?.trim() || "there";
-  const welcomeUrl = `${siteUrl()}/dashboard/welcome`;
+  const welcomeUrl = `${siteUrl()}/welcome`;
   await resend.emails.send({
     from: movementalFrom(),
     replyTo: "hello@movemental.com",
@@ -138,7 +138,7 @@ export async function sendPreCohortOnboardingReminderEmail(
   const resend = getResend();
   if (!resend) return;
   const name = firstName?.trim() || "there";
-  const welcomeUrl = `${siteUrl()}/dashboard/welcome`;
+  const welcomeUrl = `${siteUrl()}/welcome`;
   await resend.emails.send({
     from: movementalFrom(),
     replyTo: "hello@movemental.com",
