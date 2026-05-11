@@ -42,6 +42,15 @@ function err(code: string, message: string): Result<never> {
   return { success: false, error: { code, message } };
 }
 
+/** postgres.js / node-postgres unique_violation — e.g. concurrent onboarding init for the same org. */
+function isPostgresUniqueViolation(e: unknown): boolean {
+  if (typeof e === "object" && e !== null && "code" in e && (e as { code: string }).code === "23505") {
+    return true;
+  }
+  const msg = e instanceof Error ? e.message : "";
+  return /duplicate key|unique constraint/i.test(msg);
+}
+
 function nowIso(): string {
   return new Date().toISOString();
 }
@@ -141,7 +150,15 @@ export async function initializeOnboardingTasksForOrganization(
       };
     });
 
-    await db.insert(onboardingTasks).values(inserts);
+    let insertedNewRows = true;
+    try {
+      await db.insert(onboardingTasks).values(inserts);
+    } catch (e) {
+      if (!isPostgresUniqueViolation(e)) throw e;
+      const afterRace = await organizationHasInitializedTasks(organizationId);
+      if (!afterRace) throw e;
+      insertedNewRows = false;
+    }
 
     const [orgRow] = await db
       .select({ settings: organizations.settings })
@@ -154,7 +171,7 @@ export async function initializeOnboardingTasksForOrganization(
       await promoteAndSkipTax(tx, organizationId, leaderPayments);
     });
 
-    return ok({ inserted: true });
+    return ok({ inserted: insertedNewRows });
   } catch (e) {
     return err("init_failed", e instanceof Error ? e.message : "Unknown error");
   }
