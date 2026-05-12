@@ -5,13 +5,12 @@ import { useRouter } from "next/navigation";
 import * as React from "react";
 
 import { Eyebrow } from "@/components/primitives/eyebrow";
+import { AgreementSigningPanel } from "@/components/onboarding/agreement-signing-panel";
 import { OnboardingTaskShell } from "@/components/onboarding/onboarding-task-shell";
 import { useDashboardOrganizationSlug } from "@/components/dashboard/dashboard-org-context";
+import { TrainingSchedulePanel } from "@/components/scheduling/training-schedule-panel";
 import { Button } from "@/components/ui/button";
-import { useCompleteOnboardingTask } from "@/hooks/onboarding/use-onboarding-state";
 import { useOnboardingTaskPresentation } from "@/hooks/onboarding/use-onboarding-task-presentation";
-
-const DOCUSIGN_URL = process.env.NEXT_PUBLIC_DOCUSIGN_ENGAGEMENT_URL;
 
 export function AgreementTaskPage() {
   const { title, description, estimatedMinutes } = useOnboardingTaskPresentation("sign_agreement");
@@ -22,25 +21,9 @@ export function AgreementTaskPage() {
       title={title}
       description={description}
       estimatedMinutes={estimatedMinutes}
+      className="max-w-3xl"
     >
-      <div className="rounded-xl bg-section px-4 py-4 text-sm text-muted-foreground">
-        <p>
-          Signing is handled through our e-sign provider. Use the link below when your agreement is
-          ready.
-        </p>
-        {DOCUSIGN_URL ? (
-          <p className="mt-4">
-            <Link href={DOCUSIGN_URL} className="font-medium text-primary hover:underline">
-              Open signing envelope
-            </Link>
-          </p>
-        ) : (
-          <p className="mt-4">
-            Your Movemental contact will send a signing link. Until then, you can continue by marking
-            this step complete after you have signed offline.
-          </p>
-        )}
-      </div>
+      <AgreementSigningPanel />
     </OnboardingTaskShell>
   );
 }
@@ -67,34 +50,14 @@ export function CohortTaskPage() {
   const organizationSlug = useDashboardOrganizationSlug();
   const { description: cohortDescription } = useOnboardingTaskPresentation("choose_cohort");
   const router = useRouter();
-  const complete = useCompleteOnboardingTask(organizationSlug || null);
-  const [date, setDate] = React.useState("");
-  const [pending, setPending] = React.useState(false);
   const [done, setDone] = React.useState(false);
 
-  const saveAndComplete = async () => {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return;
-    setPending(true);
-    try {
-      const res = await fetch("/api/onboarding/cohort", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ cohortStartDate: date, organizationSlug }),
-      });
-      if (!res.ok) throw new Error("Could not save cohort date.");
-      await complete.mutateAsync({ taskKey: "choose_cohort" });
-      setDone(true);
-      window.setTimeout(() => {
-        const q = organizationSlug ? `?org=${encodeURIComponent(organizationSlug)}` : "";
-        router.push(`/welcome${q}`);
-      }, 1400);
-    } finally {
-      setPending(false);
-    }
-  };
+  const backHref = organizationSlug
+    ? `/welcome?org=${encodeURIComponent(organizationSlug)}`
+    : "/welcome";
 
   return (
-    <div className="mx-auto max-w-prose">
+    <div className="mx-auto max-w-3xl">
       <Eyebrow>Onboarding</Eyebrow>
       <h1 className="mt-2 text-2xl font-semibold tracking-[-0.02em] text-foreground">
         Choose your cohort start date
@@ -102,28 +65,27 @@ export function CohortTaskPage() {
       <p className="mt-3 text-muted-foreground">{cohortDescription}</p>
       <p className="mt-2 text-sm text-muted-foreground">Estimated time: 5 minutes</p>
 
-      <label className="mt-8 flex flex-col gap-2 text-sm text-foreground">
-        <span className="font-medium">Cohort start date</span>
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          className="max-w-xs rounded-lg bg-background px-3 py-2 text-foreground outline-none ring-1 ring-border focus-visible:ring-2 focus-visible:ring-ring"
+      <div className="mt-8">
+        <TrainingSchedulePanel
+          organizationSlug={organizationSlug || null}
+          showManualDateAndComplete
+          onManualCompleteSuccess={() => {
+            setDone(true);
+            window.setTimeout(() => {
+              const q = organizationSlug ? `?org=${encodeURIComponent(organizationSlug)}` : "";
+              router.push(`/welcome${q}`);
+            }, 1400);
+          }}
         />
-      </label>
-      <div className="mt-10 flex flex-wrap gap-3">
-        <Button
-          type="button"
-          variant="primary"
-          disabled={pending || done || !date}
-          onClick={() => void saveAndComplete()}
-        >
-          {done ? "Saved" : pending ? "Saving…" : "Save date and mark complete"}
-        </Button>
+      </div>
+
+      {done ? (
+        <p className="mt-6 text-sm font-medium text-pathway-accent">Saved — returning to your checklist…</p>
+      ) : null}
+
+      <div className="mt-8">
         <Button variant="ghost" size="sm" asChild>
-          <Link href={organizationSlug ? `/welcome?org=${encodeURIComponent(organizationSlug)}` : "/welcome"}>
-            Back to checklist
-          </Link>
+          <Link href={backHref}>Back to checklist</Link>
         </Button>
       </div>
     </div>

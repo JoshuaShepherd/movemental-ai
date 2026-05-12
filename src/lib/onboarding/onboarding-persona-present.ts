@@ -9,7 +9,7 @@ const IMPLEMENTATION_ORG_TASK_COPY: Partial<
 > = {
   sign_agreement: {
     description:
-      "Review and sign the Master Services Agreement and Statement of Work for your organization’s engagement. When signing is complete, return here so operations and Movemental share one audit trail.",
+      "Review and sign the Memorandum of Understanding (relationship, governance, and shared expectations) and the Master Services Agreement / engagement documents for your organization. When e-sign completes, Movemental records them automatically; you can also mark this step complete if counsel had you sign offline.",
   },
   confirm_payment: {
     description:

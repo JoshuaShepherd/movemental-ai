@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Youthfront — 2026 Organizational Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1a1f24;
+      --muted: #4a5560;
+      --line: #e2e6ea;
+      --accent: #0053db;
+      --accent-soft: rgba(0, 83, 219, 0.08);
+      --paper: #fafbfc;
+    }
+    * { box-sizing: border-box; }
+    html { font-size: 11.5pt; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      line-height: 1.55;
+      margin: 0;
+      background: #fff;
+    }
+    @page { size: A4; margin: 14mm 16mm 16mm 16mm; }
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem 0 4rem;
+      page-break-after: always;
+      background: linear-gradient(165deg, var(--accent-soft) 0%, #fff 45%);
+      border-bottom: 4px solid var(--accent);
+    }
+    .cover-inner { max-width: 36rem; margin: 0 auto; padding: 0 1.5rem; }
+    .eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    h1 {
+      font-size: 2.35rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      margin: 0 0 0.5rem;
+    }
+    .subtitle { font-size: 1.05rem; color: var(--muted); margin: 0 0 2rem; }
+    .meta-line { font-size: 0.85rem; color: var(--muted); }
+    .provenance {
+      margin-top: 2.5rem;
+      padding: 1rem 1.1rem;
+      background: #fff;
+      border-left: 3px solid var(--accent);
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .provenance strong { color: var(--ink); }
+    main { max-width: 42rem; margin: 0 auto; padding: 0 1.5rem 3rem; }
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 2.25rem 0 0.75rem;
+      padding-top: 0.25rem;
+      border-top: 1px solid var(--line);
+      page-break-after: avoid;
+    }
+    h2:first-of-type { border-top: none; margin-top: 0; }
+    h3 { font-size: 1.05rem; font-weight: 600; margin: 1.35rem 0 0.5rem; color: var(--ink); }
+    p { margin: 0 0 0.75rem; }
+    ul, ol { margin: 0 0 0.85rem; padding-left: 1.25rem; }
+    li { margin-bottom: 0.35rem; }
+    .toc { page-break-after: always; padding-bottom: 1rem; }
+    .toc ol { list-style: none; padding: 0; counter-reset: toc; }
+    .toc li { counter-increment: toc; margin-bottom: 0.45rem; padding-left: 0; }
+    .toc li::before { content: counter(toc) ". "; font-weight: 600; color: var(--accent); }
+    .toc a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin: 0.75rem 0 1rem;
+    }
+    th, td { text-align: left; padding: 0.45rem 0.55rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { font-weight: 600; background: var(--paper); color: var(--ink); }
+    .small { font-size: 0.8rem; color: var(--muted); }
+    .callout {
+      background: var(--paper);
+      padding: 0.85rem 1rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+      font-size: 0.88rem;
+    }
+    .sources { font-size: 0.78rem; color: var(--muted); margin-top: 0.35rem; }
+    .page-footer-note {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 2rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--line);
+    }
+    @media print {
+      .cover { min-height: auto; }
+      a { color: var(--ink); text-decoration: none; }
+      h2 { page-break-before: auto; }
+      .avoid-break { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="cover">
+    <div class="cover-inner">
+      <p class="eyebrow">Single source of truth · 2026 edition</p>
+      <h1>A Guide to Youthfront</h1>
+      <p class="subtitle">Identity, programs, governance, and knowledge systems — compiled for research, onboarding, and stewardship of organizational memory.</p>
+      <p class="meta-line">Compiled <strong>April–May 2026</strong> · Not an official Youthfront publication</p>
+      <p class="meta-line small" style="margin-top:0.75rem">The <strong>printable PDF</strong> in this folder is the <strong>full corpus edition</strong>: it merges every markdown file under <code>yf-np-dashboard/_docs/_public</code> (governance, stakeholder registry, guides, articles) plus Movemental engagement docs. Regenerate with <code>pnpm docs:youthfront-2026-guide:pdf</code>. Set <code>YF_NP_DASHBOARD_PUBLIC_DOCS</code> if that repo lives elsewhere.</p>
+      <div class="provenance">
+        <strong>How this document was produced.</strong> This guide was assembled through <strong>agentic research</strong> (automated gathering, synthesis, and structuring) from Youthfront’s public materials, filings (IRS Form 990, GuideStar, ECFA), official website content, and the internal documentation library maintained alongside the <em>Youthfront nonprofit donor-intelligence dashboard</em> prototype (<code>yf-np-dashboard</code>). It is intended both as a <strong>working reference</strong> and as an <strong>example of a process</strong> for compiling an organization’s single source of truth: cite primary sources, separate verified facts from planning narratives, date your extracts, and route gaps to human verification.
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <nav class="toc" aria-label="Table of contents">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#ssot">Building and maintaining a single source of truth</a></li>
+        <li><a href="#facts">Legal identity, accountability, and scale</a></li>
+        <li><a href="#mission">Mission, vision, values, and intention</a></li>
+        <li><a href="#programs">Programs: Camp, Neighborhood, and Family</a></li>
+        <li><a href="#gov">Governance and leadership</a></li>
+        <li><a href="#ai">AI stewardship and executive ownership</a></li>
+        <li><a href="#intel">Donor intelligence dashboard and stakeholder knowledge base</a></li>
+        <li><a href="#gaps">Known research gaps</a></li>
+        <li><a href="#appendix">Appendix: related Movemental engagement materials</a></li>
+        <li><a href="#sources">Primary sources and links</a></li>
+      </ol>
+    </nav>
+
+    <section id="ssot">
+      <h2>1. Building and maintaining a single source of truth</h2>
+      <p>A <strong>single source of truth (SSOT)</strong> for a nonprofit is not one PDF — it is a <strong>disciplined system</strong>: authoritative documents, clear ownership, version dates, and explicit separation between (a) what the organization says about itself, (b) what public records prove, and (c) what partners or vendors propose.</p>
+      <p>This guide demonstrates that pattern:</p>
+      <ul>
+        <li><strong>Layer public vs. internal research.</strong> Official statements and URLs sit beside Form 990, GuideStar, and ECFA. Internal research (stakeholder profiles, pipeline metrics) is labeled with <em>last updated</em> timestamps and may lag reality.</li>
+        <li><strong>Prefer primary sources.</strong> Legal name, EIN, board composition, and fiscal data should be traced to IRS filings and the organization’s own pages — then rechecked periodically.</li>
+        <li><strong>Name the compiler and method.</strong> Agentic research accelerates discovery; it does not replace staff review for personnel details, pastoral facts, or anything that could affect people’s privacy or reputation.</li>
+        <li><strong>Track gaps explicitly.</strong> A healthy SSOT includes a “what we don’t know yet” register so leaders know where human input is required (see §8).</li>
+      </ul>
+    </section>
+
+    <section id="facts">
+      <h2>2. Legal identity, accountability, and scale</h2>
+      <div class="avoid-break">
+        <table>
+          <thead><tr><th>Field</th><th>Detail (verify periodically)</th></tr></thead>
+          <tbody>
+            <tr><td>Legal name</td><td>YouthFront, Inc. (commonly styled <em>Youthfront</em>)</td></tr>
+            <tr><td>Tax status</td><td>501(c)(3) public charity</td></tr>
+            <tr><td>EIN</td><td>48-6088974</td></tr>
+            <tr><td>Headquarters (public record)</td><td>4600 Rainbow Blvd, Kansas City, KS 66103</td></tr>
+            <tr><td>Fiscal year end</td><td>August 31</td></tr>
+            <tr><td>ECFA</td><td>Member since May 2, 1990 (member profile lists donor contact)</td></tr>
+            <tr><td>Camp accreditation</td><td>American Camping Association (noted as since 2007 in internal VIM compilation)</td></tr>
+            <tr><td>History (summary)</td><td>Founded 1943 as Kansas City Youth for Christ; later independent from YFC; name change to Youthfront in the late 1990s (per official history narrative summarized in internal docs)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Recent financial snapshot (Form 990–derived)</h3>
+      <p>Internal governance documentation cites ProPublica Nonprofit Explorer / Form 990 summaries, for example: fiscal year ending August 2024 — revenue approximately <strong>$5.63M</strong>, expenses <strong>$4.94M</strong>; fiscal year ending August 2025 — revenue approximately <strong>$4.87M</strong>, expenses <strong>$5.29M</strong>. <span class="small">Use live 990 / GuideStar for board-ready figures; rounding and classification can differ by filing year.</span></p>
+      <p class="sources">Sources: ProPublica Nonprofit Explorer, GuideStar, ECFA member profile — see §10.</p>
+    </section>
+
+    <section id="mission">
+      <h2>3. Mission, vision, values, and intention</h2>
+      <p><strong>Mission (stated).</strong> “Bringing youth into a growing relationship with Jesus Christ.” Wider vision language on Youthfront materials includes belonging across dividing lines; neighborhood programs are described as helping “unmake the dividing walls” and imagining community without walls.</p>
+      <p><strong>Formation posture.</strong> Youthfront describes holistic, missional environments for Christian formation — emphasizing that transformation is the Spirit’s work, “not a formula,” and that staff create space, time, dialogue, hospitality, and community so young people can discover and experience God.</p>
+      <p><strong>Church relationship.</strong> The organization presents itself as <strong>church-assisting</strong>: camps, training, resources, and initiatives are framed as assisting churches in contextualizing the gospel, not replacing local congregations.</p>
+      <p><strong>Core values (strategic)</strong> as summarized in internal governance copy: <em>Community</em>, <em>Trust</em>, <em>Theological Reflection</em>, <em>Playfulness</em>, and <em>Christian Formation, Prayer and Ministry</em> — with practices such as shared prayer rhythms, communal life, and ministry “from true empathy and love.”</p>
+      <p class="sources">Sources: youthfront.com Our Story, Mission &amp; Vision, Our Work, Our History; internal <em>values</em> and <em>vim</em> markdown in yf-np-dashboard <code>_docs/_public/content/governance/</code>.</p>
+    </section>
+
+    <section id="programs">
+      <h2>4. Programs: Camp, Neighborhood, and Family</h2>
+      <h3>YF Camp</h3>
+      <p>Two camp properties (historically Circle C / Camp West and L-Bar-C / Camp LaCygne) totaling <strong>more than 1,000 acres</strong>. Overnight and day camps for grades 1–12. Public materials describe camp as a “theological playground”: prayer rhythms, imaginative Scripture engagement, and viewing children and youth as participants in God’s mission. Scale cited in research compilation: <strong>6,000+ youth and families annually</strong>; training and interaction with <strong>200+ churches per year</strong>; regular engagement with theological scholars.</p>
+      <h3>YF Neighborhood</h3>
+      <p>Neighborhood-focused initiatives including shared meals, neighborhood-designed projects, and missional journeys. <strong>Something To Eat™</strong> — meal packaging and distribution with partners such as Harvesters; monthly distribution cited at Franklin Center (KCK) for <strong>350+ households</strong>. <strong>ImagineX</strong> and <strong>Snack Shack KC</strong> (Argentine) appear as entrepreneurship and safe after-school community examples. <strong>The Commons</strong> — meeting and rental space in Argentine.</p>
+      <h3>YF Family</h3>
+      <p>Support for parents and families; <strong>Presence-Centered Counseling</strong> as an in-house affiliate for therapy across ages; programs including <strong>Arise</strong> (juvenile justice), <strong>Teen Parent Connect</strong>, and related family resources.</p>
+      <p class="sources">Sources: youthfront.com Local Impact, Something To Eat, Our History; internal <em>vim.md</em> compilation (March 2026).</p>
+    </section>
+
+    <section id="gov">
+      <h2>5. Governance and leadership</h2>
+      <h3>Board of directors (FY 2025 roster pattern)</h3>
+      <p>Board leadership per Form 990–aligned summary: <strong>Tim Smith</strong>, Chair; <strong>Cheryl Reinhardt</strong>, Vice Chair. Members listed in board roster documentation include Dean Blevins, Ed Garlich, Tina Harris, Mike King (also CEO), Aaron Mitchum, Jeanette Thomas, and Jeff Smith. <strong>Ed Garlich</strong> serves both as board member and staff (Creative Giving Advisor / development-related role) — a structurally important dual line to document for conflicts-of-interest clarity.</p>
+      <h3>Executive team (public “Our Team” alignment)</h3>
+      <table>
+        <thead><tr><th>Role</th><th>Name</th></tr></thead>
+        <tbody>
+          <tr><td>President &amp; CEO (principal officer)</td><td>Mike King</td></tr>
+          <tr><td>Chief Operating Officer</td><td>Natasha Nikkel</td></tr>
+          <tr><td>VP Development &amp; Marketing (ECFA donor contact)</td><td>Lisen Tammeus Mann</td></tr>
+          <tr><td>VP Ministries</td><td>Jim Newberry</td></tr>
+          <tr><td>EVP Strategic Initiatives</td><td>Topher Philgreen</td></tr>
+        </tbody>
+      </table>
+      <p class="small">Draft org-chart note: confirm current treasurer and any reporting-line updates with Youthfront HR or executive office; Form 990 line items can lag leadership changes.</p>
+      <p class="sources">Sources: youthfront.com/our-team; Form 990 Part VII; GuideStar; ECFA; <code>org-chart-draft.md</code>, <code>board-roster.md</code> in yf-np-dashboard governance folder.</p>
+    </section>
+
+    <section id="ai">
+      <h2>6. AI stewardship and executive ownership</h2>
+      <p>Youthfront’s leadership-facing AI guide (March 2026) frames AI as already present in donor communications, drafts, program administration, and strategy — requiring a coherent answer for ECFA, major donors, and staff.</p>
+      <p><strong>Ownership model (summary).</strong></p>
+      <ul>
+        <li><strong>Board + CEO:</strong> adopt and speak to the organizational <em>stance</em> on AI.</li>
+        <li><strong>Topher Philgreen (EVP Strategic Initiatives):</strong> strategy, roadmap, prioritization, and linkage to documented knowledge (e.g. “single source of truth” in systems like Base).</li>
+        <li><strong>Lisen Tammeus Mann:</strong> fundraising and external communications — no donor PII in unvetted tools; human approval on donor-facing messages.</li>
+        <li><strong>Natasha Nikkel (COO):</strong> operations and cross-cutting <em>inventory</em> of tools and uses.</li>
+        <li><strong>Jim Newberry (VP Ministries):</strong> formation and program boundary — gate for youth-facing and formation-adjacent uses.</li>
+      </ul>
+      <p><strong>Ten leadership rules (condensed from the internal guide):</strong> (1) Board adopts stance; execs execute. (2) One named owner per domain. (3) Inventory before hardening policy. (4) No youth or vulnerable-family data in public or unvetted AI. (5) Donor-facing and formation-adjacent content requires human approval. (6) Deliberate adoption order: safety and governance first. (7) Development can answer donors/ECFA with a one-page stance. (8) Operations stay inside approved scope. (9) VP Ministries is the formation gate. (10) Annual (or event-driven) leadership review of stance and inventory.</p>
+      <p class="sources">Source: <code>ai-core-leadership-youthfront/index.md</code> in yf-np-dashboard (last updated 2026-03-08).</p>
+    </section>
+
+    <section id="intel">
+      <h2>7. Donor intelligence dashboard and stakeholder knowledge base</h2>
+      <p>The <strong>yf-np-dashboard</strong> repository (internal name “Donor Intel”) is a prototype <strong>prospect research and connection-mapping</strong> web application: authenticated workflows, prospect tiers, enrichment services, an AI assistant surface, and a <strong>Docs Library</strong> fed from markdown under <code>_docs/_public/</code>.</p>
+      <h3>Documentation layout (SSOT pattern in code)</h3>
+      <ul>
+        <li><code>_docs/_public/</code> — reader-facing guides, governance copy, stakeholder research (indexed by the app’s <code>/docs</code> routes).</li>
+        <li><code>_docs/_build/</code> — agentic and technical artifacts (type notes, specs, harvest outputs) not shown in the public docs UI.</li>
+        <li><code>_docs/_prompts/</code> — executable build prompts.</li>
+      </ul>
+      <h3>Stakeholder registry (connection mapping)</h3>
+      <p>A canonical registry (last updated <strong>2026-03-22</strong>) documents board members, executives, and key staff with affiliations and LinkedIn-derived notes where available — to power <strong>warm-path</strong> donor introductions. Principle stated in that knowledge base: internal relationship data often outperforms purchased prospect lists for cultivation ROI.</p>
+      <h3>Pipeline snapshot (example export)</h3>
+      <p>One March 2026 pipeline summary in the dashboard repo listed approximately <strong>19,649</strong> identified prospects across scoring tiers (e.g. Tier 1 “Steward” ~48, Tier 4 long tail ~18k+), with most records not yet enriched — illustrating the difference between <em>discovered names</em> and <em>cultivation-ready intelligence</em>.</p>
+      <p class="callout"><strong>Privacy note.</strong> This PDF summarizes categories and public leadership roles. It does not reproduce full LinkedIn dossiers, private contact data, or prospect rows. Operational use of prospect data must follow Youthfront’s own data policies and consent rules.</p>
+    </section>
+
+    <section id="gaps">
+      <h2>8. Known research gaps</h2>
+      <p>The stakeholder research pack explicitly flags items that require <strong>human verification</strong>, including: several board members with name-only 990 listings; VP Development LinkedIn gap; church affiliations rarely inferable from public data; social and club memberships. Treat those fields as <strong>unknown until staff confirm</strong>.</p>
+    </section>
+
+    <section id="appendix">
+      <h2>9. Appendix: related Movemental engagement materials</h2>
+      <p>The <strong>movemental-ai</strong> repository contains <em>proposal and capability artifacts</em> (April 2026) describing a potential <strong>“Sandbox Season”</strong> engagement: a twelve-week facilitated cohort to build a validated AI use-case portfolio and board-ready governance framing. Those documents include illustrative schedules, fee structure, named roles (e.g. Portfolio Owner / Safety Owner), and explicit out-of-scope boundaries for formation- and youth-facing work.</p>
+      <p class="callout"><strong>Important distinction.</strong> This appendix describes <strong>third-party consulting materials</strong> stored for engagement planning — not Youthfront board-approved policy and not a statement of work unless executed by contract. Financial or calendar details in those files should never be cited as Youthfront facts without Youthfront’s confirmation.</p>
+      <p class="sources">Location in repo: <code>docs/engagements/youthfront/</code> (artifacts 05–08).</p>
+    </section>
+
+    <section id="sources">
+      <h2>10. Primary sources and links</h2>
+      <table>
+        <thead><tr><th>Source</th><th>URL or origin</th></tr></thead>
+        <tbody>
+          <tr><td>Youthfront — Our Team</td><td>https://youthfront.com/our-team/</td></tr>
+          <tr><td>Youthfront — Our Story</td><td>https://youthfront.com/our-story/</td></tr>
+          <tr><td>Youthfront — Our History</td><td>https://youthfront.com/our-story/our-history/</td></tr>
+          <tr><td>Youthfront — Mission &amp; Vision</td><td>https://youthfront.com/our-work/mission-vision/</td></tr>
+          <tr><td>Youthfront — Our Work</td><td>https://youthfront.com/our-work/</td></tr>
+          <tr><td>Youthfront — Local Impact</td><td>https://youthfront.com/local-impact/</td></tr>
+          <tr><td>Youthfront — Something To Eat</td><td>https://youthfront.com/something-to-eat/</td></tr>
+          <tr><td>ProPublica Nonprofit Explorer (EIN 48-6088974)</td><td>https://projects.propublica.org/nonprofits/organizations/48-6088974</td></tr>
+          <tr><td>GuideStar Profile</td><td>https://www.guidestar.org/profile/48-6088974</td></tr>
+          <tr><td>ECFA Member Profile</td><td>https://www.ecfa.org/MemberProfile.aspx?ID=11533</td></tr>
+          <tr><td>yf-np-dashboard internal docs</td><td><code>_docs/_public/</code> (governance, guides, stakeholders)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <p class="page-footer-note">End of guide · HTML source in this folder · PDF generated via <code>pnpm docs:youthfront-2026-guide:pdf</code> (PDFKit) after editing the HTML or the generator script.</p>
+  </main>
+</body>
+</html>

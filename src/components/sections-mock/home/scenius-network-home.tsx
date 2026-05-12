@@ -3,7 +3,6 @@
 import * as d3 from "d3";
 import {
   memo,
-  useCallback,
   useEffect,
   useMemo,
   useRef,
@@ -11,25 +10,18 @@ import {
   useSyncExternalStore,
 } from "react";
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-
 import {
-  OPACITY_EXTRA_FILTER,
   OPACITY_EXTRA_HOVER,
   OPACITY_EXTRA_IDLE,
-  OPACITY_PORTRAIT_DIM_FILTER,
   buildLeadersFromMovementVoices,
   generateGraphData,
   isPortraitNode,
   linkHighlightsPortraitHover,
-  matchesAudienceFilters,
   seedNodePositions,
   type SceniusV3GraphLink,
   type SceniusV3GraphNode,
 } from "./scenius-v3-topology";
 import {
-  AUDIENCE_SEGMENTS,
   AUDIENCE_SEGMENT_LABEL,
   CREDENTIAL_STRENGTH_LABEL,
   type AudienceCredentialStrength,
@@ -164,20 +156,13 @@ function segmentStrengthPct(
 
 function applyNodeOpacity(
   sel: NodeLayerSel,
-  activeFilters: ReadonlySet<AudienceSegment>,
   hoveredPortraitId: string | null,
 ) {
   sel.attr("opacity", (n) => {
     if (!isPortraitNode(n)) {
-      if (hoveredPortraitId) return OPACITY_EXTRA_HOVER;
-      if (activeFilters.size > 0) return OPACITY_EXTRA_FILTER;
-      return OPACITY_EXTRA_IDLE;
+      return hoveredPortraitId ? OPACITY_EXTRA_HOVER : OPACITY_EXTRA_IDLE;
     }
-    if (hoveredPortraitId) return 1;
-    if (activeFilters.size === 0) return 1;
-    return matchesAudienceFilters(n, activeFilters)
-      ? 1
-      : OPACITY_PORTRAIT_DIM_FILTER;
+    return 1;
   });
 }
 
@@ -190,15 +175,7 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
 }: SceniusNetworkHomeProps) {
   const wrapRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
-  const zoomTransformRef = useRef(d3.zoomIdentity);
-  const zoomBehaviorRef = useRef<d3.ZoomBehavior<
-    SVGSVGElement,
-    unknown
-  > | null>(null);
   const [dims, setDims] = useState<{ w: number; h: number } | null>(null);
-  const [filters, setFilters] = useState<ReadonlySet<AudienceSegment>>(
-    () => new Set(),
-  );
   const [hoverNode, setHoverNode] = useState<SceniusV3GraphNode | null>(null);
   /** Tap a portrait to pin the detail panel + name tag (esp. coarse pointers). */
   const [tappedNode, setTappedNode] = useState<SceniusV3GraphNode | null>(null);
@@ -208,8 +185,6 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
     () => false,
   );
 
-  const filtersRef = useRef(filters);
-  filtersRef.current = filters;
   const hoverIdRef = useRef<string | null>(null);
   hoverIdRef.current = hoverNode?.id ?? null;
   const tappedNodeRef = useRef<SceniusV3GraphNode | null>(null);
@@ -220,23 +195,6 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
   const displayNode = hoverNode ?? tappedNode;
 
   const leaders = useMemo(() => buildLeadersFromMovementVoices(), []);
-
-  const toggleAudienceSegment = useCallback((seg: AudienceSegment) => {
-    setFilters((prev) => {
-      const next = new Set(prev);
-      if (next.has(seg)) next.delete(seg);
-      else next.add(seg);
-      return next;
-    });
-    setHoverNode(null);
-    setTappedNode(null);
-  }, []);
-
-  const clearAudienceFilters = useCallback(() => {
-    setFilters(new Set());
-    setHoverNode(null);
-    setTappedNode(null);
-  }, []);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -270,7 +228,6 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
 
     const width = dims.w;
     const height = dims.h;
-    const activeFilters = filtersRef.current;
 
     const { nodes, links } = generateGraphData(leaders);
     seedNodePositions(nodes, width, height);
@@ -285,42 +242,8 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
       .style("display", "block");
 
     const defs = svg.append("defs");
-    const gradient = defs
-      .append("radialGradient")
-      .attr("id", "scenius-home-bg")
-      .attr("cx", "50%")
-      .attr("cy", "50%")
-      .attr("r", "55%");
-    gradient
-      .append("stop")
-      .attr("offset", "0%")
-      .attr("stop-color", "var(--primary)")
-      .attr("stop-opacity", 0.07);
-    gradient
-      .append("stop")
-      .attr("offset", "100%")
-      .attr("stop-color", "var(--background)")
-      .attr("stop-opacity", 0);
-
-    svg
-      .append("rect")
-      .attr("width", width)
-      .attr("height", height)
-      .attr("fill", "url(#scenius-home-bg)")
-      .attr("class", "scenius-home-bg pointer-events-none");
 
     const rootG = svg.append("g").attr("class", "scenius-zoom-inner");
-
-    const zoom = d3
-      .zoom<SVGSVGElement, unknown>()
-      .scaleExtent([0.45, 2.2])
-      .on("zoom", (event) => {
-        zoomTransformRef.current = event.transform;
-        rootG.attr("transform", event.transform.toString());
-      });
-    zoomBehaviorRef.current = zoom;
-
-    svg.call(zoom).call(zoom.transform, zoomTransformRef.current);
 
     const dim = Math.min(width, height);
     const radialPortrait = dim * 0.13;
@@ -378,25 +301,7 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
       .append("g")
       .selectAll<SVGGElement, SceniusV3GraphNode>("g")
       .data(nodes)
-      .join("g")
-      .call(
-        d3
-          .drag<SVGGElement, SceniusV3GraphNode>()
-          .on("start", (event) => {
-            if (!event.active) simulation.alphaTarget(0.3).restart();
-            event.subject.fx = event.subject.x;
-            event.subject.fy = event.subject.y;
-          })
-          .on("drag", (event) => {
-            event.subject.fx = event.x;
-            event.subject.fy = event.y;
-          })
-          .on("end", (event) => {
-            if (!event.active) simulation.alphaTarget(0);
-            event.subject.fx = null;
-            event.subject.fy = null;
-          }),
-      );
+      .join("g");
 
     nodeGroup.each(function (d) {
       const sel = d3.select(this);
@@ -452,7 +357,7 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
         .style("pointer-events", "all");
     });
 
-    applyNodeOpacity(nodeGroup, activeFilters, null);
+    applyNodeOpacity(nodeGroup, null);
 
     const nameTagLayer = rootG
       .append("g")
@@ -530,10 +435,6 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
       simulation.on("tick", ticked);
     }
 
-    const applyFilterVisuals = () => {
-      applyNodeOpacity(nodeGroup, filtersRef.current, hoverIdRef.current);
-    };
-
     const setLinkHover = (hid: string | null) => {
       link
         .attr("stroke", (l) =>
@@ -563,13 +464,13 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
     });
 
     nodeGroup
-      .style("cursor", (d) => (d.imageUrl ? "pointer" : "grab"))
+      .style("cursor", (d) => (d.imageUrl ? "pointer" : "default"))
       .on("mouseover", (_event, d) => {
         if (!d.imageUrl) return;
         hoverIdRef.current = d.id;
         setHoverNode(d);
         setLinkHover(d.id);
-        applyNodeOpacity(nodeGroup, filtersRef.current, d.id);
+        applyNodeOpacity(nodeGroup, d.id);
         syncNameTag();
       })
       .on("mouseout", (event) => {
@@ -585,7 +486,7 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
           .attr("stroke", EDGE_DEFAULT)
           .attr("stroke-opacity", LINK_BASE_OPACITY)
           .attr("stroke-width", LINK_BASE_WIDTH);
-        applyNodeOpacity(nodeGroup, filtersRef.current, null);
+        applyNodeOpacity(nodeGroup, null);
         syncNameTag();
       })
       .on("click", (event, d) => {
@@ -594,33 +495,16 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
         setTappedNodeRef.current((prev) => (prev?.id === d.id ? null : d));
       });
 
-    const filterListener = () => {
-      applyFilterVisuals();
-      setLinkHover(hoverIdRef.current);
-    };
-    (host as HTMLElement & { __sceniusFilter?: () => void }).__sceniusFilter =
-      filterListener;
     (host as HTMLElement & { __sceniusSyncTag?: () => void }).__sceniusSyncTag =
       syncNameTag;
 
     return () => {
       simulation.stop();
-      svg.on(".zoom", null);
       svg.on("click.tapclear", null);
-      zoomBehaviorRef.current = null;
-      delete (host as HTMLElement & { __sceniusFilter?: () => void })
-        .__sceniusFilter;
       delete (host as HTMLElement & { __sceniusSyncTag?: () => void })
         .__sceniusSyncTag;
     };
   }, [dims, leaders, reducedMotion]);
-
-  useEffect(() => {
-    const host = wrapRef.current;
-    const fn = (host as HTMLElement & { __sceniusFilter?: () => void })
-      .__sceniusFilter;
-    if (fn) fn();
-  }, [filters]);
 
   useEffect(() => {
     const host = wrapRef.current;
@@ -629,96 +513,13 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
     if (sync) sync();
   }, [tappedNode]);
 
-  const onResetView = useCallback(() => {
-    zoomTransformRef.current = d3.zoomIdentity;
-    const el = svgRef.current;
-    const zb = zoomBehaviorRef.current;
-    if (el && zb) {
-      d3.select(el).transition().duration(200).call(zb.transform, d3.zoomIdentity);
-    }
-    setHoverNode(null);
-    setTappedNode(null);
-  }, []);
-
   return (
     <div>
-      <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
-        <div className="flex flex-wrap items-center gap-3">
-          <p className="text-xs font-medium uppercase tracking-eyebrow text-muted-foreground">
-            Movement Voices
-          </p>
-          <Button
-            type="button"
-            size="sm"
-            variant="outline"
-            className="h-8 text-xs"
-            onClick={onResetView}
-          >
-            Reset view
-          </Button>
-        </div>
-      </div>
-
       <div
         ref={wrapRef}
-        className="relative w-full overflow-hidden rounded-4xl border border-border/60 bg-background/40"
+        className="relative w-full overflow-hidden"
         style={{ height: "clamp(380px, 62vw, 640px)" }}
       >
-        <div className="pointer-events-none absolute inset-0 z-10 flex flex-col justify-end p-3 sm:p-4">
-          <div className="pointer-events-auto max-w-xs rounded-xl border border-border/80 bg-card/95 p-3 shadow-ambient backdrop-blur-md">
-            <div className="mb-2">
-              <span className="text-[10px] font-medium uppercase tracking-eyebrow text-muted-foreground">
-                Filter
-              </span>
-            </div>
-            <p className="sr-only">
-              Optional audience filters emphasize voices with moderate or
-              stronger credentials in the checked segments.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {AUDIENCE_SEGMENTS.map((seg) => {
-                const on = filters.has(seg);
-                return (
-                  <label
-                    key={seg}
-                    className={cn(
-                      "flex cursor-pointer items-center gap-1.5 rounded-md border border-border bg-background/80 px-2 py-1.5 text-[11px] font-medium text-muted-foreground transition-colors",
-                      "border-l-[3px] border-l-transparent",
-                      on &&
-                        seg === "churches" &&
-                        "border-l-[var(--audience-ring-churches)] bg-primary/8 text-foreground",
-                      on &&
-                        seg === "nonprofits" &&
-                        "border-l-[var(--audience-ring-nonprofits)] bg-muted/90 text-foreground",
-                      on &&
-                        seg === "institutions" &&
-                        "border-l-[var(--audience-ring-institutions)] bg-muted/90 text-foreground",
-                    )}
-                  >
-                    <input
-                      type="checkbox"
-                      className="size-3.5 rounded border-border accent-primary"
-                      checked={on}
-                      onChange={() => toggleAudienceSegment(seg)}
-                    />
-                    {AUDIENCE_SEGMENT_LABEL[seg]}
-                  </label>
-                );
-              })}
-              <Button
-                type="button"
-                size="sm"
-                variant="ghost"
-                className="h-7 px-2 text-[11px] text-muted-foreground"
-                disabled={filters.size === 0}
-                onClick={clearAudienceFilters}
-              >
-                Clear
-              </Button>
-            </div>
-          </div>
-        </div>
-
         <aside
           className="pointer-events-none absolute right-3 top-3 z-10 max-w-[min(18rem,calc(100%-1.5rem))] rounded-xl border border-border/80 bg-card/95 p-4 shadow-ambient backdrop-blur-md sm:right-4 sm:top-4"
           aria-live="polite"
@@ -814,7 +615,7 @@ export const SceniusNetworkHome = memo(function SceniusNetworkHome({
           )}
         </aside>
 
-        <div className="h-full w-full [&_svg]:cursor-grab" role="img" aria-label={ariaLabel}>
+        <div className="h-full w-full" role="img" aria-label={ariaLabel}>
           <svg ref={svgRef} className="h-full w-full" aria-hidden />
         </div>
       </div>

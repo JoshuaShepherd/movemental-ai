@@ -1,8 +1,10 @@
 # Authenticated dashboard surface — reconnaissance audit
 
-**Scope:** Read-only inventory of the movemental-ai codebase as of the audit date. No build plan, no refactors.
+> **Staleness warning (2026-05):** Sections below mix historical snapshots with the current tree. For **accurate routing and chrome**, read first: [`dashboard-route-prefix-matrix.md`](./dashboard-route-prefix-matrix.md), [`nested-chrome-exceptions.md`](./nested-chrome-exceptions.md), and [`docs/build/prompts/dashboard-shell-and-navigation-architecture-prompt.md`](../prompts/dashboard-shell-and-navigation-architecture-prompt.md). The live shell is **`AuthenticatedShell`** (not `DashboardShell`). Product sidebars exist for **SandboxLive**, **SafeStart**, and **Leader** under `(dashboard)`.
 
-**Primary code locations:** `src/app/(dashboard)/`, `src/app/(studio)/`, `src/components/dashboard/`, `src/components/program/`, `src/components/onboarding/`, `proxy.ts`, `src/lib/supabase/middleware.ts`, `next.config.ts`, `src/lib/program/`, `src/lib/db/schema.ts`.
+**Scope:** Read-only inventory of the movemental-ai codebase. No build plan, no refactors.
+
+**Primary code locations:** `src/app/(dashboard)/`, `src/app/(studio)/`, `src/components/authenticated/`, `src/components/dashboard/`, `src/components/program/`, `src/components/onboarding/`, `proxy.ts`, `src/lib/authenticated/product-context.ts`, `src/lib/supabase/middleware.ts`, `next.config.ts`, `src/lib/program/`, `src/lib/db/schema.ts`.
 
 ---
 
@@ -12,29 +14,29 @@
 
 | Segment (route group) | URL prefix(es) | Layout / gate file |
 |----------------------|----------------|-------------------|
-| `(dashboard)` | `/dashboard`, `/dashboard/*`, `/welcome`, `/program`, `/program/*`, `/admin/onboarding` | `src/app/(dashboard)/layout.tsx` |
+| `(dashboard)` | `/dashboard`, `/dashboard/*`, `/welcome`, `/onboarding` (rewrites), `/program`, `/program/*`, `/admin`, `/admin/*`, `/sandboxlive`, `/sandboxlive/*`, `/safestart`, `/safestart/*`, `/leader`, `/leader/*` (except public `/leader/apply` when shipped) | `src/app/(dashboard)/layout.tsx` |
 | `(studio)` | `/agent-runtime` | `src/app/(studio)/layout.tsx` |
 
-There is **no** separate `(app)`, `(authenticated)`, or `(admin)` route group covering the whole shell. Admin tooling is a **single page** under `(dashboard)`: `/admin/onboarding`.
+There is **no** separate `(app)` or `(authenticated)` route group beyond these. Staff admin includes **`/admin/onboarding`**, **`/admin/leaders`**, **`/admin/design-tokens`**.
 
 ### More than one segment?
 
 **Yes — two:**
 
-1. **`(dashboard)`** — Customer / tenant workspace: org switching, program (Stitch) previews, onboarding checklist and step flows, teaching library, staff-only link to admin onboarding.
-2. **`(studio)`** — Staff-only **agent runtime** configuration (corpus binding + prompt pack assignment). Uses a minimal wrapper layout, **not** `DashboardShell`.
+1. **`(dashboard)`** — Customer / tenant workspace: `AuthenticatedShell`, org switching (`?org=`), onboarding panel, Program, SandboxLive, SafeStart, Leader, teaching, staff admin links.
+2. **`(studio)`** — Staff-only **agent runtime** (`isUserStaff`). Minimal content wrapper; **same marketing chrome suppression** as dashboard via `proxy.ts` (`x-movemental-shell: dashboard`).
 
-**Conceptual distinction:** `(dashboard)` is the shared “signed-in hub” for users with at least one organization membership. `(studio)` is internal operator tooling gated to `isUserStaff`.
+**Conceptual distinction:** `(dashboard)` is the shared signed-in hub. `(studio)` is internal operator tooling.
 
-Personas inside `(dashboard)` are **not** separate route trees: `implementation_org` vs `movement_leader` is resolved in services (`resolveDashboardPersona`, `resolveDashboardContextForSessionUser`) and changes copy, nav label (“Safety & Sandbox” vs “Program”), and template ordering — same routes for everyone.
+Personas inside `(dashboard)` are **not** separate route trees: `implementation_org` vs `movement_leader` is resolved in services and changes copy, Program nav label, and template ordering.
 
 ### Authentication mechanism
 
 - **Supabase Auth (SSR)** via `@supabase/ssr` in `src/lib/supabase/middleware.ts` (`updateSession`): refreshes session on matched requests; uses `getAll` / `setAll` for cookies.
-- **Login UI:** `src/app/(site)/login/page.tsx` — **email + password** (`signInWithPassword`). **Not** magic-link primary flow (forgot-password exists at `(site)/forgot-password`).
-- **`(dashboard)/layout.tsx`:** If no `user`, redirects to `/login?next=…`. If user has **zero** org memberships, redirects to `/login?reason=no_org`.
+- **Login UI:** `src/app/(site)/login/page.tsx` — **email + password** (`signInWithPassword`).
+- **`(dashboard)/layout.tsx`:** If no `user`, redirects to `/login?next=…`. If user has **zero** org memberships, redirects **unless** the path is an allowed **Leader workspace** path and a movement leader row exists.
 - **`(studio)/layout.tsx`:** If no user → `/login?next=…`. If user is not staff → redirect to `/dashboard`.
-- **`proxy.ts`:** Sets `x-movemental-shell: dashboard` and `x-pathname` only when pathname starts with `/dashboard`, `/welcome`, `/onboarding`, or `/admin/onboarding`. **Does not** include `/program` or `/agent-runtime` (see Section 8).
+- **`proxy.ts`:** Sets `x-movemental-shell: dashboard`, `x-pathname`, and optional `x-dashboard-org-slug` for every prefix in `AUTHENTICATED_PATH_PREFIXES` (see `proxy.ts` and [`dashboard-route-prefix-matrix.md`](./dashboard-route-prefix-matrix.md)).
 
 ---
 
@@ -44,50 +46,26 @@ Personas inside `(dashboard)` are **not** separate route trees: `implementation_
 
 | Route | File path | What it does | Status | Linked from nav? | Design notes |
 |-------|-------------|--------------|--------|------------------|--------------|
-| `/dashboard` | `src/app/(dashboard)/dashboard/page.tsx` | Overview: eyebrow, persona-aware copy, cards to Program, Teaching library, onboarding | **Live** (for overview) | Yes (`DashboardShell` → “Dashboard”) | Semantic tokens (`bg-section`, `bg-card`, primitives) |
-| `/welcome` | `src/app/(dashboard)/welcome/page.tsx` | Full onboarding checklist (client) | **Partial** | Yes (“Onboarding”) | Matches dashboard shell tokens |
-| `/dashboard/welcome` | `src/app/(dashboard)/dashboard/welcome/page.tsx` | Re-exports `welcome/page` | **Partial** (duplicate surface) | **No** (not in shell links) | Same as `/welcome` |
-| `/dashboard/teaching/claude-skills` | `src/app/(dashboard)/dashboard/teaching/claude-skills/page.tsx` | Renders `ClaudeSkillsTeachingGuide` | **Live** | Yes (“Teaching library”) | **Different chrome:** internal sticky midnight nav + `safestart-*` tokens inside page (Section 3 / 8) |
-| `/program` | `src/app/(dashboard)/program/page.tsx` | Lists Safety + Sandbox templates from manifest | **Live** (index) | Yes | Simple typography; `font-headline` italic section titles |
-| `/admin/onboarding` | `src/app/(dashboard)/admin/onboarding/page.tsx` | Staff table + unlock actions (`AdminOnboardingClient`) | **Live** (staff) | Yes (if `showAdminLink`) | Table + cards; dashboard shell |
+| `/dashboard` | `src/app/(dashboard)/dashboard/page.tsx` | Workspace overview: persona copy, at-a-glance tiles, next onboarding steps, module cards | **Live** | Yes (`AuthenticatedShell` / Workspace nav) | Semantic tokens |
+| `/welcome` | `src/app/(dashboard)/welcome/page.tsx` | Full onboarding checklist (client) | **Partial** | Yes | Workspace nav |
+| `/dashboard/teaching/claude-skills` | `src/app/(dashboard)/dashboard/teaching/claude-skills/page.tsx` | Claude skills guide | **Live** | Yes | See nested chrome note |
+| `/program` | `src/app/(dashboard)/program/page.tsx` | Safety + Sandbox template index | **Live** | Yes | — |
+| `/sandboxlive`, `/sandboxlive/*` | `src/app/(dashboard)/sandboxlive/**` | SandboxLive product (phases, cohort, org admin) | **Live** | Yes | Sidebar from manifest |
+| `/safestart`, `/safestart/*` | `src/app/(dashboard)/safestart/**` | SafeStart product | **Live** | Yes | Sidebar |
+| `/leader`, `/leader/*` | `src/app/(dashboard)/leader/**` | Leader workspace | **Live** | Yes | Sidebar |
+| `/admin/onboarding` | `src/app/(dashboard)/admin/onboarding/page.tsx` | Staff onboarding table | **Live** (staff) | Yes | — |
+| `/admin/leaders` | `src/app/(dashboard)/admin/leaders/page.tsx` | Staff leaders list | **Live** (staff) | Yes | — |
+| `/admin/design-tokens` | `src/app/(dashboard)/admin/design-tokens/page.tsx` | Staff design QA | **Live** (staff) | Yes | — |
 
-**Onboarding step routes**
-
-| Route pattern | File path | What it does | Status | Linked? | Design notes |
-|---------------|-----------|--------------|--------|---------|--------------|
-| `/onboarding/:step` | *(rewrite)* → `/dashboard/onboarding/:step` | `next.config.ts` rewrites friendly URLs | **Live** (routing) | Yes (checklist `Link` uses `/onboarding/…` from `tasks.ts`) | — |
-| `/dashboard/onboarding/[step]` | `src/app/(dashboard)/dashboard/onboarding/[step]/page.tsx` | Maps `step` to task; switches real task UIs vs placeholder | **Partial** | Via rewrite URLs | Uses `OnboardingTaskShell` / task components |
-
-**Per-step behavior (implementation):**
-
-| Step segment | Component | Status |
-|--------------|-----------|--------|
-| `agreement`, `payment`, `cohort` | `phase1-task-pages.tsx` | **Live** (forms/API-backed) |
-| `corpus` | `corpus-review-task-page.tsx` | **Live** |
-| `agent` | `agent-onboarding-task-page.tsx` | **Live** |
-| All other defined `ONBOARDING_TASKS` segments | `PlaceholderOnboardingStep` | **Stub** (copy + mark complete; no full flows) |
-
-**Dynamic program routes (manifest-driven)**
-
-| Route pattern | File path | Count | What it does | Status |
-|---------------|-----------|-------|--------------|--------|
-| `/program/safety/[templateId]` | `src/app/(dashboard)/program/safety/[templateId]/page.tsx` | 19 templates | Loads JSON fixture + optional `program_engagements` merge; `ProgramStitchTemplateView` | **Partial** (fixture fidelity varies; SafeStart hero path is special-cased) |
-| `/program/sandbox/[templateId]` | `src/app/(dashboard)/program/sandbox/[templateId]/page.tsx` | 26 templates | Same pipeline | **Partial** |
-
-Template IDs and subgroup labels come from `src/lib/program/data/stitch-templates.json` (45 templates). Fixtures live under `src/lib/program/fixtures/safety/*.content.json` and `sandbox/*.content.json`.
+**Onboarding step routes** — unchanged pattern: `/onboarding/:step` rewrites to `/dashboard/onboarding/:step`.
 
 **Studio route**
 
 | Route | File path | What it does | Status | Linked? |
 |-------|-----------|--------------|--------|---------|
-| `/agent-runtime` | `src/app/(studio)/agent-runtime/page.tsx` | Client table: agents × corpus bindings × prompt packs; save | **Live** (staff) | **No** (direct URL only) |
+| `/agent-runtime` | `src/app/(studio)/agent-runtime/page.tsx` | Agent × corpus × prompt packs | **Live** (staff) | **Yes** (staff: “Agent runtime” in Workspace nav / dropdown) |
 
-**Public auth pages (not under dashboard layout but part of “getting in”)**
-
-| Route | File path | Notes |
-|-------|-----------|-------|
-| `/login` | `src/app/(site)/login/page.tsx` | Password sign-in; marketing-style layout (root `SiteHeader` applies — not dashboard shell) |
-| `/forgot-password` | `src/app/(site)/forgot-password/page.tsx` | Password recovery flow |
+**Public auth pages** — `/login`, `/forgot-password` under `(site)` with marketing chrome.
 
 ---
 
@@ -97,30 +75,26 @@ Template IDs and subgroup labels come from `src/lib/program/data/stitch-template
 
 | Element | File path | Role |
 |---------|-----------|------|
-| Dashboard chrome (header nav, org switcher, email) | `src/components/dashboard/dashboard-shell.tsx` | Top **horizontal** bar only — **no sidebar** |
-| Org context for client descendants | `src/components/dashboard/dashboard-org-context.tsx` | `?org=` slug + provider |
-| Global onboarding strip | `src/components/onboarding/onboarding-panel.tsx` | Rendered **inside** `DashboardShell` above `children` (`layout.tsx`) |
-| Root chrome suppression | `src/app/layout.tsx` | When `x-movemental-shell === "dashboard"`, **omits** `SiteHeader` / `SiteFooter` |
+| Workspace chrome | `src/components/authenticated/authenticated-shell.tsx` | Midnight header; org switcher; **Tier A** links from `getWorkspacePrimaryNavItems` (`src/lib/authenticated/workspace-primary-nav.ts`); **Workspace** dropdown on small screens and when a product badge hides horizontal links; optional **product sidebar** |
+| Product + sidebar resolution | `src/lib/authenticated/product-context.ts` + `(dashboard)/layout.tsx` | Pathname → `productContext` + sidebar sections |
+| Org context | `src/components/dashboard/dashboard-org-context.tsx` | `?org=` + provider |
+| Onboarding strip | `src/components/onboarding/onboarding-panel.tsx` | Inside layout above `children` (hidden on Leader-only product paths per layout rules) |
+| Root chrome suppression | `src/app/layout.tsx` | When `x-movemental-shell === "dashboard"`, omits `SiteHeader` / `SiteFooter` |
 
 ### Sidebar nav items
 
-**There is no sidebar.** Header links (in order): **Dashboard** → **Program** (label “Safety & Sandbox” for `implementation_org`, else “Program”) → **Teaching library** → **Onboarding** → **Admin** (staff only).
+**Product sidebars** (desktop, `md+`): SandboxLive phases + cohort + optional org admin; SafeStart workspaces + guidebook; Leader reflection + publish sections. See `sandboxlive-sidebar.ts` and `product-context.ts`.
 
-### Design system vs other treatments
+### Nested / competing in-content chrome
 
-- **Shell:** `bg-section`, `bg-card` header, Inter via root, **not** the warm midnight / cream / Newsreader stack described in the prompt. Root layout fonts are **Inter + Instrument Serif** (`layout.tsx`), not Newsreader.
-- **Program templates:** `ProgramShell` uses **`bg-movemental-midnight`** header/footer + **`safestart-*`** semantic colors (`src/components/program/layout/program-shell.tsx`) — a **second visual system** nested inside the dashboard shell.
-- **Teaching guide:** Own **sticky midnight top bar** + `safestart-*` body (`claude-skills-teaching-guide.tsx`) — third treatment inside the same authenticated area.
-
-### Competing layouts
-
-- **`(dashboard)/layout.tsx`:** Wraps all dashboard routes in `DashboardShell` + `OnboardingPanel`.
-- **`(studio)/layout.tsx`:** Separate; no `DashboardShell`.
-- **Per-route:** No additional `layout.tsx` files under `(dashboard)` beyond the segment root (only three `layout.tsx` files exist under `src/app/` total: root, `(dashboard)`, `(studio)`).
+See [`nested-chrome-exceptions.md`](./nested-chrome-exceptions.md) (Program shell, teaching guide).
 
 ---
 
-## 4. Customer-facing surfaces (SandboxLive & SafeStart)
+## 4. Older notes (SandboxLive / program-only model)
+
+The following sections may still describe an earlier model where SandboxLive lived only under **`/program/sandbox/...`**. The repo now ships a first-class **`/sandboxlive`** tree; treat §4+ as **archive context** unless reconciled in a future edit.
+
 
 ### SandboxLive — eight “phase” workspaces (Stitch / manifest)
 

@@ -102,7 +102,7 @@ export function CredibilityFold() {
         </div>
 
         <div className="mt-16 pt-4 md:mt-20 md:pt-6">
-          <SceniusNetworkHome ariaLabel="Movement Voices — trusted leaders in a full mesh; hover or tap a portrait for a name label and audience credentials, drag to pan, scroll to zoom" />
+          <SceniusNetworkHome ariaLabel="Movement Voices — trusted leaders in a full mesh; hover or tap a portrait to see their audience credentials" />
         </div>
 
         <Link

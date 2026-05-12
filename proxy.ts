@@ -28,6 +28,12 @@ import { updateSession } from "@/lib/supabase/middleware";
  * `/leader/apply` will be a public route under `(site)` per Phase 06. When
  * that route lands, it must be opted out of the dashboard shell here
  * (e.g. by checking `pathname !== "/leader/apply"`).
+ *
+ * **Prefix matrix** (layout + product chrome) — keep in sync with
+ * `docs/build/notes/dashboard-route-prefix-matrix.md` and
+ * `resolveAuthenticatedShellContext` in `src/lib/authenticated/product-context.ts`.
+ * Future Plan lives under `/sandboxlive/phase/08-future-plan`, not a top-level
+ * `/future-plan` route.
  */
 const AUTHENTICATED_PATH_PREFIXES = [
   "/dashboard",
@@ -38,7 +44,6 @@ const AUTHENTICATED_PATH_PREFIXES = [
   "/agent-runtime",
   "/sandboxlive",
   "/safestart",
-  "/future-plan",
   "/leader",
 ];
 

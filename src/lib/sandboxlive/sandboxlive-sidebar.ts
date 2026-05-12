@@ -5,6 +5,7 @@ import { SANDBOXLIVE_PHASES } from "@/lib/sandboxlive/phase-manifest";
 const SANDBOXLIVE_COHORT_ITEMS: AuthenticatedSidebarSection["items"] = [
   { label: "Recipe Library", href: "/sandboxlive/recipes" },
   { label: "Cohort view", href: "/sandboxlive/cohort" },
+  { label: "Schedule training", href: "/sandboxlive/cohort/schedule" },
   { label: "Sponsor oversight", href: "/sandboxlive/sponsor-oversight" },
 ];
 

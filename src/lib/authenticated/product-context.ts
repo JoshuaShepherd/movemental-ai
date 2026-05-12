@@ -10,9 +10,23 @@ import { buildSafeStartSidebarSections, buildSandboxLiveSidebarSections } from "
  * wraps every authenticated route — including future product shells — without
  * forcing each segment to redeclare the chrome.
  *
- * Sidebar configurations are intentionally static here. If a product later
- * needs per-request sidebar items (e.g. Leader sections vary per user),
- * promote that product's sidebar to a server-side resolver instead.
+ * **When to add a branch here** — Add a new `if (pathname === "/foo" || …)`
+ * when an entire URL subtree should show a **distinct product badge** and a
+ * **static or manifest-driven sidebar** owned by that product. Keep the branch
+ * thin: delegate section arrays to `src/lib/<product>/…-sidebar.ts` or a
+ * manifest mapper (see `buildSandboxLiveSidebarSections`).
+ *
+ * **When *not* to add a branch** — Deep links that belong inside an existing
+ * product (e.g. Future Plan at `/sandboxlive/phase/08-future-plan`, recipes at
+ * `/sandboxlive/recipes`) stay under the parent prefix so `productContext`
+ * stays `sandbox` and the sidebar stays driven by phase manifests—no new
+ * `ProductContext` enum value.
+ *
+ * **Dynamic sidebars (per user / per org)** — Do not grow JSX inside
+ * `AuthenticatedShell`. Resolve sections in `(dashboard)/layout.tsx` (or a
+ * product layout) using server data, then pass `sidebar` into the shell—as
+ * SandboxLive already does for the Organization admin block via
+ * `buildSandboxLiveSidebarSections({ includeOrganizationAdmin })`.
  */
 
 export interface AuthenticatedShellContext {

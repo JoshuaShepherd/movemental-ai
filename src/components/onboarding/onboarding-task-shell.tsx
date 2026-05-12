@@ -7,6 +7,7 @@ import * as React from "react";
 import { Eyebrow } from "@/components/primitives/eyebrow";
 import { useDashboardOrganizationSlug } from "@/components/dashboard/dashboard-org-context";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { useCompleteOnboardingTask } from "@/hooks/onboarding/use-onboarding-state";
 
 export function OnboardingTaskShell({
@@ -17,6 +18,7 @@ export function OnboardingTaskShell({
   children,
   afterCompleteHref = "/welcome",
   beforeMarkComplete,
+  className,
 }: {
   taskKey: string;
   title: string;
@@ -26,6 +28,8 @@ export function OnboardingTaskShell({
   afterCompleteHref?: string;
   /** When set, runs before marking the task complete — return `{ ok: false }` to block completion. */
   beforeMarkComplete?: () => Promise<{ ok: boolean; message?: string }>;
+  /** Optional root width / spacing (e.g. wider agreement step). */
+  className?: string;
 }) {
   const organizationSlug = useDashboardOrganizationSlug();
   const router = useRouter();
@@ -57,7 +61,7 @@ export function OnboardingTaskShell({
   };
 
   return (
-    <div className="mx-auto max-w-prose">
+    <div className={cn("mx-auto max-w-prose", className)}>
       <Eyebrow>Onboarding</Eyebrow>
       <h1 className="mt-2 text-2xl font-semibold tracking-[-0.02em] text-foreground">{title}</h1>
       <p className="mt-3 text-muted-foreground">{description}</p>

@@ -42,4 +42,5 @@ Describe the authenticated Movemental dashboard landing page that greets leaders
 ## Dependencies
 - Feature flags for modules (Media Lab, Research Hub).
 - Role-based permissions for org admins vs. individual creators.
+- Engineering implementation map: [`docs/build/prompts/dashboard-shell-and-navigation-architecture-prompt.md`](../../../../build/prompts/dashboard-shell-and-navigation-architecture-prompt.md).
 

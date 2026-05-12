@@ -5,6 +5,10 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ChevronDown, LogOut } from "lucide-react";
 
 import { DashboardOrgProvider } from "@/components/dashboard/dashboard-org-context";
+import {
+  getWorkspacePrimaryNavItems,
+  withOrgIfNeeded,
+} from "@/lib/authenticated/workspace-primary-nav";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -30,20 +34,18 @@ import type { DashboardPersona } from "@/lib/dashboard/dashboard-persona";
  * dashboard layout). One persistent top nav, an optional product sidebar, and
  * an optional onboarding progress rail beneath the nav.
  *
- * Product shells (SandboxLive, SafeStart, Recipes, Future Plan, Leader) opt in
- * via `productContext` and pass a `sidebar` configuration. The general
- * workspace (/dashboard, /welcome, /admin/onboarding) passes nothing and keeps
- * a minimal horizontal nav so users can still reach Program / Teaching /
- * Onboarding before later phases land.
+ * Product shells (SandboxLive, SafeStart, Leader) opt in via `productContext`
+ * and pass a `sidebar` configuration. Cohort recipes and Future Plan live
+ * under SandboxLive URLs (`/sandboxlive/recipes`, phase `08-future-plan`), not
+ * separate top-level product contexts.
+ *
+ * The general workspace passes `productContext: null` and shows Tier A links
+ * from `getWorkspacePrimaryNavItems`. When a product sidebar is active, the
+ * same links are available from the **Workspace** dropdown (one click to open,
+ * second click to navigate).
  */
 
-export type ProductContext =
-  | "sandbox"
-  | "safe"
-  | "recipes"
-  | "future-plan"
-  | "leader"
-  | null;
+export type ProductContext = "sandbox" | "safe" | "leader" | null;
 
 type Membership = {
   organizationId: string;
@@ -67,8 +69,6 @@ export type AuthenticatedSidebarSection = {
 const PRODUCT_LABELS: Record<Exclude<ProductContext, null>, string> = {
   sandbox: "SandboxLive",
   safe: "SafeStart",
-  recipes: "Recipes",
-  "future-plan": "Future Plan",
   leader: "Leader",
 };
 
@@ -138,6 +138,42 @@ export function AuthenticatedShell({
 
   const renderSidebar = sidebar && productContext;
 
+  const workspaceNavItems = getWorkspacePrimaryNavItems({
+    programNavLabel,
+    showStaff: showAdminLink,
+  });
+
+  const workspaceMenuDropdown = (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          type="button"
+          variant="ghost"
+          size="sm"
+          className="gap-1 rounded-none text-[13px] text-white/80 hover:bg-white/10 hover:text-white"
+        >
+          Workspace
+          <ChevronDown className="size-4 shrink-0 opacity-70" aria-hidden />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start" className="min-w-[14rem]">
+        {workspaceNavItems.map((item) => (
+          <DropdownMenuItem key={item.href + item.label} asChild>
+            <Link href={withOrgIfNeeded(item, currentSlug)} className="cursor-pointer">
+              {item.label}
+            </Link>
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+
+  const renderWorkspaceNavLink = (item: (typeof workspaceNavItems)[number], className: string) => (
+    <Link key={item.href + item.label} href={withOrgIfNeeded(item, currentSlug)} className={className}>
+      {item.label}
+    </Link>
+  );
+
   return (
     <DashboardOrgProvider initialSlug={currentSlug}>
       <div className="flex min-h-dvh flex-col bg-background text-foreground">
@@ -152,38 +188,23 @@ export function AuthenticatedShell({
               </Link>
               {productLabel ? (
                 <>
-                  <span aria-hidden className="h-4 w-[0.5px] shrink-0 bg-white/25" />
+                  <span aria-hidden className="hidden h-4 w-[0.5px] shrink-0 bg-white/25 sm:block" />
                   <span className="rounded-none border border-[0.5px] border-pathway-accent/55 bg-pathway-accent/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-pathway-accent">
                     {productLabel}
                   </span>
                 </>
+              ) : null}
+              <div className="lg:hidden">{workspaceMenuDropdown}</div>
+              {productLabel ? (
+                <div className="hidden lg:block">{workspaceMenuDropdown}</div>
               ) : (
-                <nav className="hidden flex-wrap items-center gap-4 text-[13px] text-white/70 sm:flex">
-                  <Link href="/program" className="hover:text-white">
-                    {programNavLabel}
-                  </Link>
-                  <Link
-                    href="/dashboard/teaching/claude-skills"
-                    className="hover:text-white"
-                  >
-                    Teaching library
-                  </Link>
-                  <Link href="/welcome" className="hover:text-white">
-                    Onboarding
-                  </Link>
-                  {showAdminLink ? (
-                    <>
-                      <Link href="/admin/onboarding" className="hover:text-white">
-                        Admin
-                      </Link>
-                      <Link href="/admin/leaders" className="hover:text-white">
-                        Leaders
-                      </Link>
-                      <Link href="/admin/design-tokens" className="hover:text-white">
-                        Tokens
-                      </Link>
-                    </>
-                  ) : null}
+                <nav
+                  className="hidden max-w-[min(52rem,calc(100vw-14rem))] flex-wrap items-center gap-x-4 gap-y-1 text-[13px] text-white/70 lg:flex"
+                  aria-label="Workspace"
+                >
+                  {workspaceNavItems.map((item) =>
+                    renderWorkspaceNavLink(item, "shrink-0 hover:text-white"),
+                  )}
                 </nav>
               )}
             </div>

@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { createClient } from "@/lib/supabase/server";
+import { setOrganizationCohortStartDateFromIso } from "@/lib/onboarding/cohort-start-date";
 import { resolveActiveOrganizationId } from "@/lib/services/onboarding/onboarding.service";
-import { db } from "@/lib/db";
-import { eq } from "drizzle-orm";
-import { organizations } from "@/lib/db/schema";
 
 export async function POST(request: NextRequest) {
   const supabase = await createClient();
@@ -49,10 +47,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: resolved.error }, { status: 400 });
   }
 
-  await db
-    .update(organizations)
-    .set({ cohort_start_date: cohortStartDate, updated_at: new Date().toISOString() })
-    .where(eq(organizations.id, resolved.data.organizationId));
+  await setOrganizationCohortStartDateFromIso(resolved.data.organizationId, `${cohortStartDate}T12:00:00.000Z`);
 
   return NextResponse.json({ success: true });
 }
