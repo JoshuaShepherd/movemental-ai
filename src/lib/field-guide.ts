@@ -3,7 +3,7 @@ import "server-only";
 import fs from "node:fs";
 import path from "node:path";
 
-import { slugifyHeading } from "@/lib/articles";
+import { slugifyHeading } from "@/lib/slugify-heading";
 
 export type FieldGuideTocEntry = {
   id: string;

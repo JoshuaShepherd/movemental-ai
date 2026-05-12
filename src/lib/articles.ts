@@ -10,6 +10,7 @@ import {
   type Topic,
   type SeriesKey,
 } from "@/lib/articles-schema";
+import { slugifyHeading } from "@/lib/slugify-heading";
 
 /**
  * Server-only loader for long-form articles stored as markdown in `docs/articles`.
@@ -222,17 +223,6 @@ function parseFrontmatterBlock(block: string): Record<string, unknown> {
     out[key] = rawVal;
   }
   return out;
-}
-
-/** GitHub-style heading id. */
-export function slugifyHeading(input: string): string {
-  return input
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9\s-]/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-")
-    .replace(/^-|-$/g, "");
 }
 
 function humanize(slug: string): string {

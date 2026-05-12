@@ -2,7 +2,7 @@ import type { Components } from "react-markdown";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-import { slugifyHeading } from "@/lib/articles";
+import { slugifyHeading } from "@/lib/slugify-heading";
 
 function childrenToText(children: React.ReactNode): string {
   if (typeof children === "string" || typeof children === "number") return String(children);

@@ -2,7 +2,7 @@ import type { Components } from "react-markdown";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-import { slugifyHeading } from "@/lib/articles";
+import { slugifyHeading } from "@/lib/slugify-heading";
 
 /**
  * Extract plain text from a react-markdown children prop so we can derive a
