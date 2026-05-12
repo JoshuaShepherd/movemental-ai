@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState, useTransition, type ReactNode } from "react";
 
+import { DashboardPublicSiteLink } from "@/components/authenticated/dashboard-public-site-link";
 import { MovementLeaderPublicPageView } from "@/components/movement-leaders/movement-leader-public-page-view";
 import { Button } from "@/components/ui/button";
 import {
@@ -89,14 +90,12 @@ function PreviewBanner({
         <p className="mt-3 max-w-[680px] text-sm leading-relaxed text-muted-foreground">
           Visitors see this content on the public site. You can still edit sections below; use{" "}
           <span className="font-medium text-foreground">Update and re-publish</span> when you are ready for changes to
-          go live, or <span className="font-medium text-foreground">Unpublish</span> to remove the page from the
-          directory while you revise.
+          go live, or <span className="font-medium text-foreground">Unpublish</span> to remove the page from the{" "}
+          <DashboardPublicSiteLink href="/voices">trusted-voices directory</DashboardPublicSiteLink> while you revise.
         </p>
         {siteBase ? (
           <p className="mt-2 text-xs text-muted-foreground">
-            <Link href={absolute} className="text-foreground underline underline-offset-4">
-              Open public page
-            </Link>
+            <DashboardPublicSiteLink href={absolute}>Open the live public page →</DashboardPublicSiteLink>
           </p>
         ) : null}
       </div>
@@ -111,8 +110,9 @@ function PreviewBanner({
         This is what the world would see. Approve when ready.
       </p>
       <p className="mt-3 max-w-[680px] text-[14px] leading-relaxed text-muted-foreground">
-        Once approved, your page becomes visible at {publicPath} and appears in the public directory. You can request
-        changes or withdraw at any time.
+        Once approved, your page becomes visible at {publicPath} and appears in the{" "}
+        <DashboardPublicSiteLink href="/voices">public directory of trusted voices</DashboardPublicSiteLink>. You can
+        request changes or withdraw at any time.
       </p>
     </div>
   );
@@ -214,7 +214,9 @@ export function LeaderPublicPageRatificationClient({
     <div className="space-y-10">
       <header className="space-y-2">
         <p className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground">Trusted voices</p>
-        <h1 className="text-2xl font-semibold tracking-[-0.02em] text-foreground">Public page</h1>
+        <h1 className="font-serif text-[clamp(1.75rem,3.5vw,2.25rem)] italic leading-tight tracking-tight text-foreground">
+          Public page
+        </h1>
         <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
           <Link href="/leader/public-page/history" className="text-foreground underline underline-offset-4">
             Version history
@@ -231,7 +233,7 @@ export function LeaderPublicPageRatificationClient({
 
       {error ? <p className="text-sm text-destructive">{error}</p> : null}
 
-      <div className="overflow-hidden rounded-xl border border-border-soft bg-background">
+      <div className="overflow-hidden border-[0.5px] border-border-soft bg-background">
         <MovementLeaderPublicPageView model={model} sectionActions={sectionActions} wrapWithSection={false} />
       </div>
 
@@ -240,8 +242,8 @@ export function LeaderPublicPageRatificationClient({
           {!isLive ? (
             <Button
               type="button"
+              variant="pathway"
               disabled={pending}
-              className="bg-pathway-accent text-white hover:bg-pathway-accent/90"
               onClick={() => setApproveOpen(true)}
             >
               Approve for publication
@@ -249,8 +251,8 @@ export function LeaderPublicPageRatificationClient({
           ) : (
             <Button
               type="button"
+              variant="pathway"
               disabled={pending}
-              className="bg-pathway-accent text-white hover:bg-pathway-accent/90"
               onClick={() =>
                 run(async () => {
                   await republishPublicPageAction(snapshot);
@@ -260,21 +262,21 @@ export function LeaderPublicPageRatificationClient({
               Update and re-publish
             </Button>
           )}
-          <Button type="button" variant="outline" disabled={pending} onClick={() => setRequestOpen(true)}>
+          <Button type="button" variant="outline" disabled={pending} onClick={() => setRequestOpen(true)} className="rounded-none">
             Request edits
           </Button>
           <Button
             type="button"
             variant="ghost"
             disabled={pending}
-            className="text-muted-foreground"
+            className="rounded-none text-muted-foreground"
             onClick={() =>
               run(async () => {
                 await savePublicPageDraftAction(snapshot);
               })
             }
           >
-            Save preview, do not publish
+            Record a preview without publishing
           </Button>
           {isLive ? (
             <Button type="button" variant="ghost" disabled={pending} onClick={() => setUnpublishOpen(true)}>
@@ -296,11 +298,11 @@ export function LeaderPublicPageRatificationClient({
           </DialogHeader>
           <Textarea value={editText} onChange={(e) => setEditText(e.target.value)} rows={12} className="font-mono text-sm" />
           <DialogFooter className="gap-2 sm:gap-0">
-            <Button type="button" variant="ghost" onClick={() => setEditSection(null)}>
-              Cancel
+            <Button type="button" variant="ghost" className="rounded-none" onClick={() => setEditSection(null)}>
+              Close editor
             </Button>
-            <Button type="button" onClick={applySectionEdit}>
-              Update preview
+            <Button type="button" variant="pathway" onClick={applySectionEdit}>
+              Apply to preview
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -316,12 +318,12 @@ export function LeaderPublicPageRatificationClient({
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="gap-2 sm:gap-0">
-            <Button type="button" variant="ghost" onClick={() => setApproveOpen(false)}>
-              Cancel
+            <Button type="button" variant="ghost" className="rounded-none" onClick={() => setApproveOpen(false)}>
+              Not now
             </Button>
             <Button
               type="button"
-              className="bg-pathway-accent text-white hover:bg-pathway-accent/90"
+              variant="pathway"
               disabled={pending}
               onClick={() => {
                 setApproveOpen(false);
@@ -346,11 +348,12 @@ export function LeaderPublicPageRatificationClient({
           </DialogHeader>
           <Textarea value={requestText} onChange={(e) => setRequestText(e.target.value)} rows={6} />
           <DialogFooter className="gap-2 sm:gap-0">
-            <Button type="button" variant="ghost" onClick={() => setRequestOpen(false)}>
-              Cancel
+            <Button type="button" variant="ghost" className="rounded-none" onClick={() => setRequestOpen(false)}>
+              Close
             </Button>
             <Button
               type="button"
+              variant="pathway"
               disabled={pending}
               onClick={() => {
                 const t = requestText;
@@ -376,12 +379,13 @@ export function LeaderPublicPageRatificationClient({
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="gap-2 sm:gap-0">
-            <Button type="button" variant="ghost" onClick={() => setUnpublishOpen(false)}>
-              Cancel
+            <Button type="button" variant="ghost" className="rounded-none" onClick={() => setUnpublishOpen(false)}>
+              Keep published
             </Button>
             <Button
               type="button"
               variant="destructive"
+              className="rounded-none"
               disabled={pending}
               onClick={() => {
                 setUnpublishOpen(false);

@@ -45,7 +45,7 @@ const TOKEN_GROUPS: Array<{
   {
     title: "Midnight chrome",
     description: "Authenticated header/sidebar and Stitch midnight bands.",
-    tokens: [{ label: "movemental-midnight", swatchClass: "bg-movemental-midnight", textClass: "text-white", hex: "#0e1726" }],
+    tokens: [{ label: "movemental-midnight", swatchClass: "bg-movemental-midnight", textClass: "text-white", hex: "#141110" }],
   },
   {
     title: "SandboxLive sidebar rail",
@@ -105,9 +105,9 @@ function TokenSwatch({
   notes?: string;
 }) {
   return (
-    <div className="flex flex-col gap-2 rounded-xl border border-border-soft bg-card p-4">
+    <div className="flex flex-col gap-2 border-[0.5px] border-border-soft bg-card p-4">
       <div
-        className={`flex min-h-[4.5rem] items-end justify-start rounded-lg p-3 ${swatchClass} ${textClass ?? ""}`}
+        className={`flex min-h-[4.5rem] items-end justify-start border-[0.5px] border-border/40 p-3 ${swatchClass} ${textClass ?? ""}`}
       >
         <span className="text-[0.7rem] font-medium uppercase tracking-[0.06em] opacity-90">Aa</span>
       </div>
@@ -154,7 +154,7 @@ export default async function AdminDesignTokensPage() {
       </header>
 
       {TOKEN_GROUPS.map((group) => (
-        <Section key={group.title} variant="section" spacing="sm" className="rounded-xl">
+        <Section key={group.title} variant="section" spacing="sm" className="border-[0.5px] border-border-soft">
           <h2 className="font-serif text-lg font-medium text-foreground">{group.title}</h2>
           <p className="mt-2 max-w-(--prose-max) text-sm text-muted-foreground">{group.description}</p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

@@ -7,12 +7,12 @@ export const editorialHome = {
   eyebrow: "text-[11px] font-medium uppercase tracking-[0.1em] text-pathway-accent",
   display: "font-serif text-[clamp(3rem,5.5vw,4rem)] italic leading-[1.05] tracking-tight text-foreground",
   lede: "max-w-[600px] text-[17px] leading-[1.65] text-muted-foreground",
-  hairline: "border-t border-border",
+  hairline: "border-t border-[0.5px] border-rule",
   bandGap: "flex flex-col gap-10 pt-[clamp(3rem,6vw,4.5rem)]",
   bandSubhead: "font-serif text-[22px] italic leading-snug text-foreground",
   bandLede: "max-w-[600px] text-[15px] leading-[1.65] text-muted-foreground",
   editorialStatus: "font-serif text-[17px] italic leading-relaxed text-foreground",
-  rowWrap: "border-t border-border first:border-t-0",
+  rowWrap: "border-t border-[0.5px] border-rule first:border-t-0",
   rowLink:
     "group flex gap-6 py-6 pl-4 transition-colors hover:bg-section/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
   rowCurrent: "border-l-[3px] border-pathway-accent pl-[calc(1rem-3px)]",
@@ -23,11 +23,11 @@ export const editorialHome = {
   rowDesc14: "text-[14px] leading-snug text-muted-foreground",
   rowMeta11: "text-[11px] italic leading-snug text-muted-foreground",
   textLink:
-    "text-[15px] font-medium text-foreground underline decoration-border underline-offset-[0.22em] transition-colors hover:text-pathway-accent hover:decoration-pathway-accent/50",
+    "text-[15px] font-medium text-foreground underline decoration-border decoration-[0.5px] underline-offset-[0.22em] transition-colors hover:text-pathway-accent hover:decoration-pathway-accent/50",
   libraryLink:
-    "font-medium text-foreground underline decoration-border underline-offset-[0.22em] transition-colors hover:text-pathway-accent hover:decoration-pathway-accent/50",
+    "font-medium text-pathway-accent underline decoration-pathway-accent/50 decoration-[0.5px] underline-offset-[0.22em] transition-colors hover:decoration-pathway-accent",
   primaryCta:
-    "inline-flex w-fit items-center bg-pathway-accent px-6 py-3 text-[14px] font-medium text-[#19150f] transition-opacity hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+    "inline-flex w-fit items-center rounded-none border border-pathway-accent bg-pathway-accent px-6 py-3 text-[14px] font-medium text-white shadow-none transition-opacity hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
 } as const;
 
 /** First-line style preview from markdown for editorial row subtitles. */

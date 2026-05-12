@@ -65,8 +65,8 @@ export type AuthenticatedSidebarSection = {
 };
 
 const PRODUCT_LABELS: Record<Exclude<ProductContext, null>, string> = {
-  sandbox: "Sandbox",
-  safe: "Safe",
+  sandbox: "SandboxLive",
+  safe: "SafeStart",
   recipes: "Recipes",
   "future-plan": "Future Plan",
   leader: "Leader",
@@ -152,8 +152,8 @@ export function AuthenticatedShell({
               </Link>
               {productLabel ? (
                 <>
-                  <span aria-hidden className="h-4 w-px bg-white/25" />
-                  <span className="text-[11px] font-medium uppercase tracking-[0.08em] text-white/70">
+                  <span aria-hidden className="h-4 w-[0.5px] shrink-0 bg-white/25" />
+                  <span className="rounded-none border border-[0.5px] border-pathway-accent/55 bg-pathway-accent/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-pathway-accent">
                     {productLabel}
                   </span>
                 </>
@@ -188,17 +188,17 @@ export function AuthenticatedShell({
               )}
             </div>
             <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-              {memberships.length > 1 ? (
+              {memberships.length >= 1 ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button
                       type="button"
                       variant="ghost"
                       size="sm"
-                      className="gap-1 text-white/80 hover:bg-white/10 hover:text-white"
+                      className="max-w-[14rem] gap-1 rounded-none text-white/80 hover:bg-white/10 hover:text-white"
                     >
-                      {active?.orgName ?? "Organization"}
-                      <ChevronDown className="size-4 opacity-70" aria-hidden />
+                      <span className="truncate">{active?.orgName ?? "Organization"}</span>
+                      <ChevronDown className="size-4 shrink-0 opacity-70" aria-hidden />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="min-w-[12rem]">
@@ -206,6 +206,7 @@ export function AuthenticatedShell({
                       <DropdownMenuItem
                         key={m.organizationId}
                         onClick={() => setOrgSlug(m.orgSlug)}
+                        className={cn(m.orgSlug === currentSlug && "bg-section")}
                       >
                         {m.orgName}
                       </DropdownMenuItem>
@@ -220,22 +221,16 @@ export function AuthenticatedShell({
                     ) : null}
                   </DropdownMenuContent>
                 </DropdownMenu>
-              ) : memberships.length === 1 ? (
-                <span className="max-w-[10rem] truncate text-[13px] text-white/70 sm:max-w-[14rem]">
-                  {active?.orgName}
-                </span>
               ) : workspaceFallbackLabel ? (
-                <span className="max-w-[14rem] truncate text-[13px] text-white/70">
-                  {workspaceFallbackLabel}
-                </span>
+                <span className="max-w-[14rem] truncate text-[13px] text-white/70">{workspaceFallbackLabel}</span>
               ) : null}
-              {hasLeaderWorkspace && !onLeaderProduct ? (
+              {hasLeaderWorkspace && !onLeaderProduct && memberships.length === 0 ? (
                 <Button
                   type="button"
                   variant="ghost"
                   size="sm"
                   asChild
-                  className="hidden text-white/80 hover:bg-white/10 hover:text-white sm:inline-flex"
+                  className="rounded-none text-white/80 hover:bg-white/10 hover:text-white"
                 >
                   <Link href="/leader">Leader workspace</Link>
                 </Button>
@@ -246,20 +241,9 @@ export function AuthenticatedShell({
                   variant="ghost"
                   size="sm"
                   asChild
-                  className="text-white/80 hover:bg-white/10 hover:text-white"
+                  className="rounded-none text-white/80 hover:bg-white/10 hover:text-white"
                 >
                   <Link href="/dashboard">Dashboard</Link>
-                </Button>
-              ) : null}
-              {hasLeaderWorkspace && !onLeaderProduct && memberships.length <= 1 ? (
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  asChild
-                  className="text-white/80 hover:bg-white/10 hover:text-white sm:hidden"
-                >
-                  <Link href="/leader">Leader</Link>
                 </Button>
               ) : null}
               <span className="hidden text-[12px] text-white/60 md:inline">
@@ -270,7 +254,7 @@ export function AuthenticatedShell({
                 variant="ghost"
                 size="sm"
                 onClick={handleSignOut}
-                className="text-white/70 hover:bg-white/10 hover:text-white"
+                className="rounded-none text-white/70 hover:bg-white/10 hover:text-white"
                 aria-label="Sign out"
               >
                 <LogOut className="size-4" aria-hidden />
@@ -297,9 +281,15 @@ export function AuthenticatedShell({
         {renderSidebar ? (
           <div className="flex flex-1">
             <aside className="hidden w-60 shrink-0 bg-movemental-midnight text-white md:block print:hidden">
-              <nav className="flex flex-col py-4" aria-label="Product sections">
+              <nav className="flex flex-col py-2" aria-label="Product sections">
                 {sidebar.map((section, sectionIdx) => (
-                  <div key={sectionIdx} className="flex flex-col">
+                  <div
+                    key={sectionIdx}
+                    className={cn(
+                      "flex flex-col",
+                      sectionIdx > 0 && "border-t border-[0.5px] border-white/12",
+                    )}
+                  >
                     {section.label ? (
                       <div className="px-5 py-3 text-[10px] font-medium uppercase tracking-[0.1em] text-white/40">
                         {section.label}
@@ -314,7 +304,7 @@ export function AuthenticatedShell({
                           key={item.href}
                           href={item.href}
                           className={cn(
-                            "flex items-baseline gap-3 border-b border-l-2 border-white/[0.06] px-5 py-3 text-[13px] transition-colors",
+                            "flex items-baseline gap-3 border-b border-[0.5px] border-white/[0.08] border-l-[3px] px-5 py-[12px] font-sans text-[13px] leading-snug transition-colors last:border-b-0",
                             isActive
                               ? "border-l-pathway-accent bg-white/[0.03] text-pathway-accent"
                               : "border-l-transparent text-white/70 hover:bg-white/[0.03] hover:text-white",

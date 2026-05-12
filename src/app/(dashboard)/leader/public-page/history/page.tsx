@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { EditorialEmptyState } from "@/components/authenticated/editorial-empty-state";
 import { Button } from "@/components/ui/button";
 import { getMovementLeaderByEmail } from "@/lib/movement-leaders/movement-leaders.server";
 import { PUBLIC_PAGE_SNAPSHOT_KEYS, type PublicPageSnapshot } from "@/lib/movement-leaders/public-page-model";
@@ -52,7 +53,9 @@ export default async function LeaderPublicPageHistoryPage() {
     <div className="space-y-10">
       <header className="space-y-3">
         <p className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground">Trusted voices</p>
-        <h1 className="text-2xl font-semibold tracking-[-0.02em] text-foreground">Public page version history</h1>
+        <h1 className="font-serif text-[clamp(2rem,4vw,2.5rem)] italic leading-tight tracking-tight text-foreground">
+          Public page version history
+        </h1>
         <p className="max-w-prose text-sm text-muted-foreground">
           Each save, publish, or revert creates a new row. Compare adjacent versions to see what changed, or revert a
           past version into a fresh draft on your preview workspace.
@@ -67,7 +70,7 @@ export default async function LeaderPublicPageHistoryPage() {
           const older = ordered[idx + 1] ?? null;
           const changes = diffSnapshots(older?.snapshot ?? null, v.snapshot);
           return (
-            <li key={v.id} className="rounded-xl border border-border-soft bg-card p-6">
+            <li key={v.id} className="border-[0.5px] border-border-soft bg-card p-6">
               <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <p className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
@@ -101,7 +104,7 @@ export default async function LeaderPublicPageHistoryPage() {
                           <p className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
                             {FIELD_LABEL[c.key] ?? c.key} — before
                           </p>
-                          <pre className="mt-1 max-h-48 overflow-auto whitespace-pre-wrap rounded-lg bg-section p-3 text-xs text-muted-foreground">
+                          <pre className="mt-1 max-h-48 overflow-auto whitespace-pre-wrap bg-section p-3 text-xs text-muted-foreground">
                             {c.before}
                           </pre>
                         </div>
@@ -109,7 +112,7 @@ export default async function LeaderPublicPageHistoryPage() {
                           <p className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
                             {FIELD_LABEL[c.key] ?? c.key} — after
                           </p>
-                          <pre className="mt-1 max-h-48 overflow-auto whitespace-pre-wrap rounded-lg bg-section p-3 text-xs text-muted-foreground">
+                          <pre className="mt-1 max-h-48 overflow-auto whitespace-pre-wrap bg-section p-3 text-xs text-muted-foreground">
                             {c.after}
                           </pre>
                         </div>
@@ -124,7 +127,17 @@ export default async function LeaderPublicPageHistoryPage() {
       </ol>
 
       {ordered.length === 0 ? (
-        <p className="text-sm text-muted-foreground">No versions yet. Save a preview on the public page tab to begin.</p>
+        <EditorialEmptyState
+          eyebrow="Version history"
+          title="No recorded versions yet."
+          tone="default"
+          className="max-w-xl"
+        >
+          <p>
+            When you record a preview on your public page, each milestone appears here so you can compare changes or
+            return to an earlier shape of the work.
+          </p>
+        </EditorialEmptyState>
       ) : null}
     </div>
   );

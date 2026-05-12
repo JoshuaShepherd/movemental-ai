@@ -19,7 +19,7 @@ export function SignCommitmentsForm({ disabled }: { disabled?: boolean }) {
     setPending(true);
     const res = await signVoiceCommitmentsAction();
     setPending(false);
-    setMessage(res.message ?? (res.ok ? "Saved." : "Something went wrong."));
+    setMessage(res.message ?? (res.ok ? "Your commitment is on file." : "Something went wrong."));
     if (res.ok) setAgreed(false);
   }
 
@@ -39,8 +39,8 @@ export function SignCommitmentsForm({ disabled }: { disabled?: boolean }) {
           voice work with Movemental.
         </Label>
       </div>
-      <Button type="submit" disabled={!agreed || pending || disabled}>
-        {pending ? "Saving…" : "Sign and record"}
+      <Button type="submit" variant="pathway" disabled={!agreed || pending || disabled}>
+        {pending ? "Recording…" : "Sign and record"}
       </Button>
       {message ? (
         <p className="text-sm text-muted-foreground" role="status">

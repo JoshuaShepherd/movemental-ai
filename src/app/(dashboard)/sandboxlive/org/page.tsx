@@ -65,8 +65,7 @@ export default async function SandboxLiveOrgHomePage({
           <p className={editorialHome.eyebrow}>Profile</p>
           <h2 className={editorialHome.bandSubhead}>What the cohort sees on the roster</h2>
           <p className={editorialHome.bandLede}>
-            Save changes explicitly. Logo URL accepts any HTTPS image you already host (full upload
-            wiring ships with onboarding assets).
+            Record updates deliberately. The logo field expects an HTTPS image URL you already host.
           </p>
         </header>
 
@@ -115,21 +114,21 @@ export default async function SandboxLiveOrgHomePage({
               id="engagementType"
               name="engagementType"
               defaultValue={engagementValue}
-              className="flex h-10 w-full rounded-md border border-border bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="flex h-10 w-full rounded-none border border-border bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <option value="sandboxlive">SandboxLive</option>
               <option value="safestart">SafeStart</option>
             </select>
           </div>
-          <div className="rounded-lg bg-section px-4 py-3 text-[14px] text-muted-foreground">
+          <div className="border-[0.5px] border-border bg-section px-4 py-3 text-[14px] text-muted-foreground">
             <p className="font-medium text-foreground">Engagement status</p>
             <p className="mt-1">{statusLine}</p>
             <p className="mt-2">
               Current product label: <span className="text-foreground">{engagement}</span>
             </p>
           </div>
-          <Button type="submit" className="w-fit bg-primary text-primary-foreground hover:bg-primary/90">
-            Save profile
+          <Button type="submit" variant="pathway" className="w-fit">
+            Record profile
           </Button>
         </form>
       </section>

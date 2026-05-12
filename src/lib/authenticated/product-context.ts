@@ -22,7 +22,7 @@ export interface AuthenticatedShellContext {
 
 const LEADER_SIDEBAR: AuthenticatedSidebarSection[] = [
   {
-    label: "Reflected understanding",
+    label: "Author reflection",
     items: [
       { label: "Overview", href: "/leader", number: "00" },
       { label: "Calling", href: "/leader/calling", number: "01" },

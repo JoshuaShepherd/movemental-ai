@@ -105,7 +105,7 @@ export function ClaudeSkillsTeachingGuide() {
                     type="button"
                     onClick={() => scrollToId(item.id)}
                     className={cn(
-                      "flex items-baseline gap-3 border-l-2 py-2.5 pl-3 text-left text-sm transition-colors",
+                      "flex items-baseline gap-3 border-l-[3px] py-[12px] pl-3 text-left text-[13px] font-sans transition-colors",
                       active
                         ? "border-pathway-accent font-medium text-safestart-ink"
                         : "border-transparent text-safestart-muted hover:text-safestart-ink",

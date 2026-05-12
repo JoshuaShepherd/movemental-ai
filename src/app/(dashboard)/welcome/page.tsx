@@ -12,7 +12,7 @@ export default function WelcomePage() {
     return isError ? (
       <p className="text-sm text-muted-foreground">{error?.message ?? "Could not load onboarding."}</p>
     ) : (
-      <div className="h-40 animate-pulse rounded-xl bg-card" aria-hidden />
+      <div className="h-40 animate-pulse border-[0.5px] border-border-soft bg-card" aria-hidden />
     );
   }
 

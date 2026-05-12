@@ -55,14 +55,14 @@ function bothCtas(variant: "desktop" | "mobile") {
   if (!isDesktop) {
     return (
       <div className="mt-4 flex flex-col gap-2">
-        <Link href="/dashboard" className="btn-pill btn-pill--primary flex w-full justify-center py-3 text-center">
-          Go to your dashboard →
+        <Link href="/leader" className="btn-pill btn-pill--primary flex w-full justify-center py-3 text-center">
+          Go to your Leader workspace →
         </Link>
         <Link
-          href="/leader"
-          className="rounded-md border border-border bg-card px-4 py-3 text-center text-sm font-medium text-foreground transition-colors hover:bg-section"
+          href="/dashboard"
+          className="border border-border bg-card px-4 py-3 text-center text-sm font-medium text-foreground transition-colors hover:bg-section"
         >
-          Leader workspace →
+          Organization dashboard →
         </Link>
       </div>
     );
@@ -70,13 +70,13 @@ function bothCtas(variant: "desktop" | "mobile") {
   return (
     <div className="flex flex-wrap items-center justify-end gap-3">
       <Link
-        href="/leader"
+        href="/dashboard"
         className="text-sm font-medium text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
       >
-        Leader workspace →
+        Organization dashboard →
       </Link>
-      <Link href="/dashboard" className="btn-pill btn-pill--primary py-2.5">
-        Go to your dashboard →
+      <Link href="/leader" className="btn-pill btn-pill--primary py-2.5">
+        Go to your Leader workspace →
       </Link>
     </div>
   );

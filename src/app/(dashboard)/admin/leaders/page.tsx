@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
+import { EditorialEmptyState } from "@/components/authenticated/editorial-empty-state";
 import { Display } from "@/components/primitives/display";
 import { Eyebrow } from "@/components/primitives/eyebrow";
 import { Section } from "@/components/primitives/section";
@@ -38,15 +39,24 @@ export default async function AdminLeadersPage() {
           Movement leaders
         </Display>
         <p className="max-w-(--prose-max) text-sm text-muted-foreground">
-          Provisioned leader rows and inbound applications. Editing flows land with Stitch admin
-          templates; this console is a read-first index until those surfaces ship.
+          Provisioned leader rows and inbound applications — a read-first index for staff until deeper admin flows
+          ship.
         </p>
       </header>
 
-      <Section variant="section" spacing="sm" className="rounded-xl">
+      <Section variant="section" spacing="sm" className="border-[0.5px] border-border-soft">
         <h2 className="font-serif text-lg font-medium text-foreground">Leader profiles</h2>
         {leaders.length === 0 ? (
-          <p className="mt-4 text-sm text-muted-foreground">No rows (or tables not migrated).</p>
+          <div className="mt-4">
+            <EditorialEmptyState
+              eyebrow="Leader roster"
+              title="No leader profiles in the index yet."
+              tone="default"
+              className="max-w-xl"
+            >
+              <p>When leaders are provisioned, each row will appear here with slug, email, status, and publication signal.</p>
+            </EditorialEmptyState>
+          </div>
         ) : (
           <div className="mt-4 overflow-x-auto">
             <table className="w-full min-w-[36rem] border-collapse text-left text-sm">
@@ -77,10 +87,19 @@ export default async function AdminLeadersPage() {
         )}
       </Section>
 
-      <Section variant="section" spacing="sm" className="rounded-xl">
+      <Section variant="section" spacing="sm" className="border-[0.5px] border-border-soft">
         <h2 className="font-serif text-lg font-medium text-foreground">Applications</h2>
         {applications.length === 0 ? (
-          <p className="mt-4 text-sm text-muted-foreground">No applications yet.</p>
+          <div className="mt-4">
+            <EditorialEmptyState
+              eyebrow="Applications"
+              title="No inbound applications at the moment."
+              tone="default"
+              className="max-w-xl"
+            >
+              <p>New trusted-voice applications will land here as they arrive.</p>
+            </EditorialEmptyState>
+          </div>
         ) : (
           <div className="mt-4 overflow-x-auto">
             <table className="w-full min-w-[32rem] border-collapse text-left text-sm">

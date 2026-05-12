@@ -26,7 +26,7 @@
  *
  * This project's design system is the "warm editorial" ramp documented in
  * docs/design/DESIGN.md: cream paper, near-black ink, hairline sectioning,
- * Inter + Instrument Serif (italic for emphasis), ink-filled pill CTAs.
+ * Inter + Newsreader (italic for emphasis in display lines), ink-filled pill CTAs.
  *
  * Tokens exposed here feed Tailwind utilities (bg-*, text-*, border-*, etc.)
  * at parse time. Do not reference runtime CSS vars from inside @theme inline
@@ -86,8 +86,12 @@
      italic numerals, active stage rules, and pull-quote rails. Not for citations. */
   --color-pathway-accent: #b8893a;
 
+  /* Hairline rules (0.5px) — dashboard + editorial dividers; pairs with `border-[0.5px] border-rule`. */
+  --color-rule: var(--rule);
+
   /* Stitch program surfaces (authenticated /program/**) — aligned with stitch manifest/design-tokens.json */
-  --color-movemental-midnight: #0e1726;
+  /* Warm midnight chrome (dashboard header/sidebar) — aligned with inverse ink, not cool slate. */
+  --color-movemental-midnight: #141110;
   --color-safestart-bg: #faf8f4;
   --color-safestart-ink: #1a1a1a;
   --color-safestart-muted: #666557;
@@ -196,6 +200,7 @@
   /* Chrome — hairlines only. */
   --border: #e6ddcb;                   /* hairline */
   --border-soft: #efe7d6;              /* softer card border */
+  --rule: rgba(25, 21, 15, 0.14);      /* 0.5px editorial rules on paper */
   --input: #8b8479;                    /* darkened 2026-05-08 from #e6ddcb to clear WCAG 1.4.11 UI 3:1 on cream paper (was 1.25:1, now 3.43:1 on paper, 3.70:1 on card) */
   --ring: rgba(25, 21, 15, 0.5);       /* ink @ 50% — clears WCAG 2.4.13 3:1 for focus indicators (3.35:1 on paper) */
   --popover: #ffffff;
@@ -265,6 +270,7 @@
  * the page. Midnight regional bands stay pinned (they already use cream/ink).
  * ------------------------------------------------------------------------- */
 .dark {
+  --rule: rgba(244, 239, 229, 0.14);
   /* Surface — deep ink duotone */
   --background: #141110;               /* paper → ink */
   --foreground: #f4efe5;               /* ink → cream */

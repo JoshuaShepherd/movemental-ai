@@ -53,6 +53,9 @@ const buttonVariants = cva(
         destructive:
           "rounded-md bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:ring-destructive/30",
         link: "rounded-none p-0 text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground",
+        /** Burnished amber fill — primary actions inside AuthenticatedShell (no pill radius). */
+        pathway:
+          "rounded-none border border-pathway-accent bg-pathway-accent text-white shadow-none hover:bg-pathway-accent/88 hover:-translate-y-0",
       },
       size: {
         /** Default pill — 0.78rem y / 1.25rem x. */

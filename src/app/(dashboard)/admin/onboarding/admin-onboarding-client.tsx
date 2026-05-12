@@ -50,7 +50,7 @@ export function AdminOnboardingClient({
         deliberate and single-org.
       </p>
 
-      <div className="mt-8 overflow-x-auto rounded-xl bg-card">
+      <div className="mt-8 overflow-x-auto border-[0.5px] border-border-soft bg-card">
         <table className="w-full min-w-[720px] border-collapse text-left text-sm">
           <thead>
             <tr className="text-muted-foreground">
@@ -71,7 +71,7 @@ export function AdminOnboardingClient({
                   <div className="text-xs text-muted-foreground">{row.slug}</div>
                 </td>
                 <td className="px-4 py-3 text-muted-foreground">
-                  <span className="rounded-full bg-section px-2 py-0.5 text-xs capitalize">
+                  <span className="bg-section px-2 py-0.5 text-xs capitalize">
                     {row.dashboardPersona.replace(/_/g, " ")}
                   </span>
                 </td>

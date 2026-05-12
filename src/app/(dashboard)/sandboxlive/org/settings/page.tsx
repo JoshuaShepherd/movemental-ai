@@ -63,7 +63,7 @@ export default async function SandboxLiveOrgSettingsPage({
               id="emailFrequency"
               name="emailFrequency"
               defaultValue={emailFrequency}
-              className="flex h-10 w-full rounded-md border border-border bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="flex h-10 w-full rounded-none border border-border bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <option value="digest">Digest — batched a few times per week</option>
               <option value="immediate">Immediate — each operational event</option>
@@ -71,14 +71,14 @@ export default async function SandboxLiveOrgSettingsPage({
             </select>
           </div>
 
-          <div className="flex flex-col gap-3 rounded-lg border border-border bg-section px-4 py-4">
+          <div className="flex flex-col gap-3 border-[0.5px] border-border bg-section px-4 py-4">
             <p className="text-[13px] font-medium text-foreground">Notification routing</p>
             <label className="flex items-center gap-2 text-[14px] text-foreground">
-              <input type="checkbox" name="notifyProduct" defaultChecked={notifyProduct} className="size-4 rounded border-border" />
+              <input type="checkbox" name="notifyProduct" defaultChecked={notifyProduct} className="size-4 rounded-none border-border" />
               Product & cohort updates to primary contact
             </label>
             <label className="flex items-center gap-2 text-[14px] text-foreground">
-              <input type="checkbox" name="notifyOps" defaultChecked={notifyOps} className="size-4 rounded border-border" />
+              <input type="checkbox" name="notifyOps" defaultChecked={notifyOps} className="size-4 rounded-none border-border" />
               Operational notices (session changes, facilitator notes)
             </label>
           </div>
@@ -89,7 +89,7 @@ export default async function SandboxLiveOrgSettingsPage({
               id="persona"
               name="persona"
               defaultValue={profile.persona}
-              className="flex h-10 w-full rounded-md border border-border bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="flex h-10 w-full rounded-none border border-border bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <option value="movement_leader">Movement leader</option>
               <option value="implementation_org">Implementation organization</option>
@@ -109,8 +109,8 @@ export default async function SandboxLiveOrgSettingsPage({
             <Input id="timezone" name="timezone" placeholder="e.g. America/Chicago" defaultValue={timezone} />
           </div>
 
-          <Button type="submit" className="w-fit bg-primary text-primary-foreground">
-            Save settings
+          <Button type="submit" variant="pathway" className="w-fit">
+            Record settings
           </Button>
         </form>
       </section>

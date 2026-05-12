@@ -8,8 +8,8 @@ type DisplaySize = "lg" | "md" | "sm";
  * Display — hero-scale heading in the Concept Modern register.
  *
  * Weight is 500 (not 700); hierarchy comes from scale + `-0.028em` tracking.
- * Wrap emphasised words in `<em>` — the base layer swaps them to Instrument
- * Serif italic at ~1.04em optical compensation automatically.
+ * Wrap emphasised words in `<em>` — the base layer swaps them to Newsreader
+ * italic at ~1.04em optical compensation automatically.
  *
  * Sizes use fluid `clamp` so the proportions hold from phone to wide desktop.
  */

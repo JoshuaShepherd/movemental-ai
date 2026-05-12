@@ -30,7 +30,7 @@ export default async function SandboxLiveOrgBillingPage({
       <div className={editorialHome.hairline} aria-hidden />
 
       <section className={cn(editorialHome.bandGap, "pb-[clamp(3rem,8vw,5rem)]")}>
-        <div className="mx-auto max-w-[40rem] space-y-4 rounded-xl bg-section px-6 py-8 text-[15px] leading-relaxed text-muted-foreground">
+        <div className="mx-auto max-w-[40rem] space-y-4 border-[0.5px] border-border-soft bg-section px-6 py-8 text-[15px] leading-relaxed text-muted-foreground">
           <p className="text-foreground">
             Your engagement is billed by Movemental. For invoices, purchase orders, or procurement questions, contact
             your facilitator or write to{" "}

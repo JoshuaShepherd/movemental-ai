@@ -72,7 +72,9 @@ export default async function DashboardHomePage({
     <div className="flex flex-col gap-10">
       <header className="max-w-prose">
         <Eyebrow className="mb-2">Workspace</Eyebrow>
-        <h1 className="text-2xl font-semibold tracking-[-0.02em] text-foreground">Overview</h1>
+        <h1 className="font-serif text-[clamp(1.75rem,3.5vw,2.25rem)] italic leading-tight tracking-tight text-foreground">
+          Overview
+        </h1>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
           {persona === "implementation_org" ? (
             <>
@@ -102,14 +104,16 @@ export default async function DashboardHomePage({
             <li key={href}>
               <Link
                 href={href}
-                className="flex h-full flex-col rounded-xl bg-card px-5 py-5 text-left transition-colors hover:bg-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-section"
+                className="flex h-full flex-col border-[0.5px] border-border-soft bg-card px-5 py-5 text-left transition-colors hover:bg-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-section"
               >
-                <span className="flex size-9 items-center justify-center rounded-lg bg-section text-primary">
+                <span className="flex size-9 items-center justify-center bg-section text-primary">
                   <Icon className="size-5" aria-hidden />
                 </span>
                 <span className="mt-4 text-[0.95rem] font-semibold text-foreground">{title}</span>
                 <span className="mt-2 text-sm leading-relaxed text-muted-foreground">{description}</span>
-                <span className="mt-4 text-sm font-medium text-primary">Open →</span>
+                <span className="mt-4 text-sm font-medium text-pathway-accent underline decoration-pathway-accent/50 decoration-[0.5px] underline-offset-4">
+                  Open →
+                </span>
               </Link>
             </li>
           ))}

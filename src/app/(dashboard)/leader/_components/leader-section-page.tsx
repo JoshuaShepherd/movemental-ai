@@ -296,7 +296,7 @@ export async function LeaderSectionPage({ section }: { section: LeaderReflection
         </Display>
         <p className="max-w-(--prose-max) text-muted-foreground">{meta.intro}</p>
       </header>
-      <Section variant="section" spacing="sm" className="rounded-xl">
+      <Section variant="section" spacing="sm" className="border-[0.5px] border-border-soft">
         {md ? (
           <Prose>
             <FieldGuideMarkdown markdown={md} />

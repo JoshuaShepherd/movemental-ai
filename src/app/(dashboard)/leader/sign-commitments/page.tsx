@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
+import { DashboardPublicSiteLink } from "@/components/authenticated/dashboard-public-site-link";
 import { Display } from "@/components/primitives/display";
 import { Eyebrow } from "@/components/primitives/eyebrow";
 import { Prose } from "@/components/primitives/prose";
@@ -30,18 +30,18 @@ export default async function SignCommitmentsPage() {
     <div className="space-y-10">
       <header className="space-y-3">
         <Eyebrow>Movemental Voice Commitments</Eyebrow>
-        <Display as="h1" size="sm" className="text-balance">
+        <Display as="h1" size="sm" className="font-serif font-normal italic tracking-tight text-balance">
           Sign the commitments
         </Display>
         <p className="max-w-(--prose-max) text-muted-foreground">
-          This records your agreement alongside the public document at{" "}
-          <Link href="/movement-voice-commitments" className="text-foreground underline">
-            /movement-voice-commitments
-          </Link>
+          This records your agreement alongside the public document:{" "}
+          <DashboardPublicSiteLink href="/movement-voice-commitments">
+            Movemental Voice Commitments (public reference)
+          </DashboardPublicSiteLink>
           . Version <span className="text-foreground">{MOVEMENT_VOICE_COMMITMENTS_VERSION}</span>.
         </p>
       </header>
-      <Section variant="section" spacing="sm" className="rounded-xl">
+      <Section variant="section" spacing="sm" className="border-[0.5px] border-border-soft">
         {signed ? (
           <Prose>
             <p>
