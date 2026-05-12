@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
-import { EditorialEmptyState } from "@/components/authenticated/editorial-empty-state";
+import { ProgramEditorialFallbackBody } from "@/components/program/program-editorial-fallback-body";
+import { SandboxLivePhase03ExperimentingView } from "@/components/sandboxlive/phase-03-experimenting-view";
 import { StitchDocumentView } from "@/components/stitch/stitch-document-view";
 import { loadProgramTemplateData } from "@/lib/program/load-program-template-data.server";
 import type { ProgramFixtureBase } from "@/lib/program/types/stitch-screen-family";
@@ -76,10 +77,12 @@ export default async function SandboxLivePhasePage({
             ← SandboxLive
           </Link>
           <p className="text-[11px] font-medium uppercase tracking-[0.1em] text-pathway-accent">
-            Phase {phase.number} — {phase.name}
+            {phase.slug === "03-experimenting"
+              ? `PHASE ${phase.number} — EXPERIMENTING`
+              : `Phase ${phase.number} — ${phase.name}`}
           </p>
           <h1 className="font-serif text-[clamp(2.25rem,4.5vw,2.75rem)] italic leading-[1.05] tracking-tight text-safestart-ink">
-            {phase.name}
+            {phase.slug === "03-experimenting" ? "Experimenting" : phase.name}
           </h1>
           <p className="max-w-[680px] text-[15px] leading-relaxed text-safestart-muted">
             {phase.produces}
@@ -88,28 +91,21 @@ export default async function SandboxLivePhasePage({
       </header>
 
       {/* Workspace body */}
-      {fixture ? (
+      {phase.slug === "03-experimenting" ? (
+        <SandboxLivePhase03ExperimentingView
+          userId={user.id}
+          orgSlug={sp.org}
+          orgQuery={orgQuery}
+        />
+      ) : fixture ? (
         <StitchDocumentView fixture={fixture} sourceBadge={sourceBadge} embedded />
       ) : (
-        <div className="mx-auto w-full max-w-3xl px-6 py-16 md:px-12">
-          <EditorialEmptyState
-            tone="safestart"
-            eyebrow="Phase in preparation"
-            title="This phase’s working surface is still being finished."
-          >
-            <p>
-              Navigation stays available so facilitators can rehearse the journey. The full workspace for{" "}
-              <span className="font-medium text-safestart-ink">
-                Phase {phase.number} — {phase.name}
-              </span>{" "}
-              will appear here once Movemental completes the editorial pass. Until then, this is the outcome the phase is
-              designed to produce:
-            </p>
-          </EditorialEmptyState>
-          <p className="mt-6 border-l-2 border-pathway-accent pl-4 font-serif text-[18px] italic leading-relaxed text-safestart-ink">
-            {phase.produces}
-          </p>
-        </div>
+        <ProgramEditorialFallbackBody
+          variant="sandboxlive_phase"
+          title={phase.name}
+          description={phase.description}
+          produces={phase.produces}
+        />
       )}
 
       {/* What's next */}

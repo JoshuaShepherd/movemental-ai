@@ -35,13 +35,20 @@ const SENSITIVITY_FILTERS: { value: SensitivityFilter; label: string }[] = [
 
 export function RecipeLibrary({
   recipes,
+  initialSelectedSlug = null,
 }: {
   recipes: readonly SandboxLiveRecipe[];
+  /** Deep-link from Phase 03 (or email) — opens the drawer when the slug exists. */
+  initialSelectedSlug?: string | null;
 }) {
   const [functionFilter, setFunctionFilter] = useState<FunctionFilter>("all");
   const [sensitivityFilter, setSensitivityFilter] =
     useState<SensitivityFilter>("all");
-  const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
+  const [selectedSlug, setSelectedSlug] = useState<string | null>(() =>
+    initialSelectedSlug && recipes.some((r) => r.slug === initialSelectedSlug)
+      ? initialSelectedSlug
+      : null,
+  );
 
   const filtered = useMemo(
     () =>

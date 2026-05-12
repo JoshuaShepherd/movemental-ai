@@ -45,9 +45,9 @@ export async function loadSandboxLiveEngagementState(
 
   const cohortName = org?.name ?? "Your cohort";
 
-  const templateSlugs = SANDBOXLIVE_PHASES
-    .map((p) => p.templateId)
-    .filter((id): id is string => Boolean(id));
+  const templateSlugs = SANDBOXLIVE_PHASES.map((p) => p.templateId ?? p.engagementTemplateSlug).filter(
+    (id): id is string => Boolean(id),
+  );
 
   // `program_engagements` may not yet exist in some environments — degrade
   // gracefully to "no data" rather than 500-ing the home page.
@@ -79,8 +79,9 @@ export async function loadSandboxLiveEngagementState(
   const byTemplate = new Map(rows.map((r) => [r.template_slug, r] as const));
 
   const phases: SandboxLivePhaseStatus[] = SANDBOXLIVE_PHASES.map((p) => {
-    if (!p.templateId) return { slug: p.slug, status: "not_started" };
-    const row = byTemplate.get(p.templateId);
+    const slugKey = p.templateId ?? p.engagementTemplateSlug;
+    if (!slugKey) return { slug: p.slug, status: "not_started" };
+    const row = byTemplate.get(slugKey);
     if (!row) return { slug: p.slug, status: "not_started" };
 
     if (Array.isArray(row.milestones) && row.milestones.length > 0) {

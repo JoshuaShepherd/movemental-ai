@@ -7,9 +7,9 @@
  *   - a one-line description for the home-page phase grid
  *   - what the phase produces (used in the per-phase lede paragraph)
  *
- * The eight phases are the canonical SandboxLive arc. Phase 03 has no Stitch
- * fixture today; its workspace renders an editorial placeholder until a
- * fixture lands.
+ * The eight phases are the canonical SandboxLive arc. Phase 03 is authored in
+ * React (`SandboxLivePhase03ExperimentingView`); engagement rows use
+ * {@link SANDBOXLIVE_PHASE_03_ENGAGEMENT_SLUG}.
  */
 
 export type SandboxLivePhaseSlug =
@@ -33,7 +33,16 @@ export interface SandboxLivePhaseEntry {
   produces: string;
   /** Template ID in `stitch-templates.json`. `null` when no fixture exists. */
   templateId: string | null;
+  /**
+   * When `templateId` is null, cohort progress for this phase may still be
+   * tracked in `program_engagements` under this slug (React workspace only).
+   */
+  engagementTemplateSlug?: string;
 }
+
+/** `program_engagements.template_slug` for Phase 03 — no Stitch fixture. */
+export const SANDBOXLIVE_PHASE_03_ENGAGEMENT_SLUG =
+  "phase_03_experimenting_workspace" as const;
 
 export const SANDBOXLIVE_PHASES: readonly SandboxLivePhaseEntry[] = [
   {
@@ -65,6 +74,7 @@ export const SANDBOXLIVE_PHASES: readonly SandboxLivePhaseEntry[] = [
     produces:
       "A portfolio of small experiments — each one a recipe that the cohort can review, refuse, or refine.",
     templateId: null,
+    engagementTemplateSlug: SANDBOXLIVE_PHASE_03_ENGAGEMENT_SLUG,
   },
   {
     slug: "04-iteration",

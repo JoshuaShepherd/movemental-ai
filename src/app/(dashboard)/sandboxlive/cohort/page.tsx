@@ -131,8 +131,9 @@ export default async function SandboxLiveCohortPage({
                       ) : null}
                     </p>
                   ) : (
-                    <p className="text-[12px] italic text-muted-foreground">
-                      Leader profile coming soon.
+                    <p className="text-[12px] leading-relaxed text-muted-foreground">
+                      Representative leader name and role will appear here once your
+                      cohort roster is linked to this organization record.
                     </p>
                   )}
                   <div className="mt-auto flex items-baseline gap-3 border-t border-border-soft pt-4">

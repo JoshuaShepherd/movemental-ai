@@ -8,7 +8,11 @@ export const metadata = {
   title: "Recipe Library · SandboxLive",
 };
 
-export default async function SandboxLiveRecipesPage() {
+export default async function SandboxLiveRecipesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ recipe?: string }>;
+}) {
   const supabase = await createClient();
   const {
     data: { user },
@@ -16,6 +20,8 @@ export default async function SandboxLiveRecipesPage() {
   if (!user?.id) {
     redirect("/login?next=/sandboxlive/recipes");
   }
+
+  const sp = await searchParams;
 
   return (
     <div className="flex flex-col gap-12">
@@ -33,7 +39,10 @@ export default async function SandboxLiveRecipesPage() {
         </p>
       </header>
 
-      <RecipeLibrary recipes={RECIPE_CATALOG} />
+      <RecipeLibrary
+        recipes={RECIPE_CATALOG}
+        initialSelectedSlug={sp.recipe ?? null}
+      />
     </div>
   );
 }
