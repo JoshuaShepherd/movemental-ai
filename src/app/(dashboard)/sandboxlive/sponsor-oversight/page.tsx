@@ -63,9 +63,9 @@ export default async function SandboxLiveSponsorOversightPage({
         </h1>
         <p className="max-w-[680px] text-[15px] leading-relaxed text-muted-foreground">
           For sponsoring denominations and networks: a summary view of how the cohort
-          is moving through the eight-phase arc. When cohort grouping lands, this
-          aggregates across every member organization. Right now it reflects only
-          the active organization.
+          is moving through the eight-phase arc. When the full cohort roster is
+          available, this view will aggregate across every member organization. Today
+          it reflects the organization you have open in the workspace header.
         </p>
       </header>
 
@@ -142,17 +142,16 @@ export default async function SandboxLiveSponsorOversightPage({
         </p>
       </section>
 
-      {/* Framing — schema gap */}
+      {/* Framing — single-org preview until sponsor aggregation ships */}
       <aside className="border border-border-soft bg-section p-6">
         <p className="text-[11px] font-medium uppercase tracking-[0.1em] text-muted-foreground">
           About this view
         </p>
         <p className="mt-2 max-w-[680px] text-[14px] leading-relaxed text-muted-foreground">
-          Sponsor oversight currently shows the active organization only. When
-          cohort grouping and the &ldquo;sponsor&rdquo; membership role are wired up,
-          this page will aggregate across every cohort member and gate access to
-          users granted sponsor permissions by the network or denomination
-          underwriting the engagement.
+          Sponsor oversight currently shows the active organization only. When cohort
+          rostering and sponsor permissions are available for your network or
+          denomination, this page will summarize every member organization and limit
+          visibility to sponsors Movemental has explicitly granted.
         </p>
       </aside>
     </div>

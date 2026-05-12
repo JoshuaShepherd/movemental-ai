@@ -1,3 +1,4 @@
+import { EditorialEmptyState } from "@/components/authenticated/editorial-empty-state";
 import { redirect } from "next/navigation";
 
 import { db } from "@/lib/db";
@@ -53,10 +54,7 @@ export default async function SandboxLiveCohortPage({
     ? SANDBOXLIVE_PHASES.find((p) => p.slug === state.currentPhaseSlug)
     : null;
 
-  // The full cohort_members + organizations.cohort_id infrastructure isn't
-  // wired up yet (Phase 02 carries the schema additions; the migration has
-  // not been applied). For now this page renders just the active org as a
-  // single-member preview of the eventual cohort view.
+  // Single-organization preview until multi-organization cohort rostering ships.
   const cohortMembers = [
     {
       organizationId: org?.id ?? resolved.data.organizationId,
@@ -158,12 +156,21 @@ export default async function SandboxLiveCohortPage({
 
         {/* Editorial framing for the not-yet-wired cohort grouping. */}
         <aside className="border border-border-soft bg-section p-6">
-          <p className="text-[11px] font-medium uppercase tracking-[0.1em] text-muted-foreground">
-            About this view
-          </p>
-          <p className="mt-2 max-w-[680px] text-[14px] leading-relaxed text-muted-foreground">
-            Cohort grouping is still being wired in. Once <code className="rounded bg-card px-1">organizations.cohort_id</code> and the cohort_members table are populated, this page will list every organization that shares your cohort_id, along with the leader representing each. For now you see your own organization{currentPhase ? ` and the phase you're working through (${currentPhase.name})` : ""}.
-          </p>
+          <EditorialEmptyState eyebrow="About this view" title="The full cohort list is still arriving." tone="default">
+            <p>
+              Movemental is finishing the roster that ties every organization in your SandboxLive cohort together with
+              the leaders who represent them. When that work is complete, this page will show each member, their
+              contact, and the phase they are in. For now you see your own organization
+              {currentPhase ? (
+                <>
+                  {" "}
+                  and the phase you are working through ({currentPhase.name}).
+                </>
+              ) : (
+                "."
+              )}
+            </p>
+          </EditorialEmptyState>
         </aside>
       </section>
     </div>

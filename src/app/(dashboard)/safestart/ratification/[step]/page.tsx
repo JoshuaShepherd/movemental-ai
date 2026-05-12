@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
+import { ProgramEditorialFallbackBody } from "@/components/program/program-editorial-fallback-body";
 import { StitchDocumentView } from "@/components/stitch/stitch-document-view";
 import { loadProgramTemplateData } from "@/lib/program/load-program-template-data.server";
 import type { ProgramFixtureBase } from "@/lib/program/types/stitch-screen-family";
@@ -125,21 +126,12 @@ export default async function SafeStartRatificationStepPage({
       {fixture ? (
         <StitchDocumentView fixture={fixture} sourceBadge={sourceBadge} embedded />
       ) : (
-        <section className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-6 py-16 md:px-12">
-          <p className="text-[11px] font-medium uppercase tracking-[0.1em] text-safestart-muted">
-            Step coming soon
-          </p>
-          <h2 className="font-serif text-[28px] italic leading-tight text-safestart-ink">
-            This step doesn&rsquo;t have a Stitch fixture yet.
-          </h2>
-          <p className="text-[15px] leading-relaxed text-safestart-muted">
-            The route is reachable so the flow reads correctly. Until the fixture
-            lands, this is what the step will produce:
-          </p>
-          <p className="border-l-2 border-pathway-accent pl-4 font-serif text-[18px] italic leading-relaxed text-safestart-ink">
-            {entry.produces}
-          </p>
-        </section>
+        <ProgramEditorialFallbackBody
+          variant="safestart_ratification"
+          title={entry.name}
+          description={entry.description}
+          produces={entry.produces}
+        />
       )}
 
       {/* Prev / Next */}

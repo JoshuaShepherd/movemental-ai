@@ -31,7 +31,8 @@ export default async function LeaderPublicPagePreview() {
     return null;
   }
 
-  const published = Boolean(leader.public_page_published_at);
+  const publishedAt = leader.public_page_published_at;
+  const published = Boolean(publishedAt);
   const publicUrl = `/movement-leaders/${leader.slug}`;
 
   return (
@@ -42,19 +43,19 @@ export default async function LeaderPublicPagePreview() {
           Public leader page
         </Display>
         <p className="max-w-(--prose-max) text-muted-foreground">
-          Preview and approval gates for your public profile. Publishing sets{" "}
-          <code className="text-foreground">public_page_published_at</code> and exposes{" "}
-          <span className="text-foreground">{publicUrl}</span> to visitors.
+          Preview the information we hold for your public profile, track endorsement and approval, and see when your
+          page becomes visible. When Movemental publishes your profile,{" "}
+          <span className="text-foreground">{publicUrl}</span> opens to visitors.
         </p>
       </header>
       <Section variant="section" spacing="sm" className="rounded-xl">
         <dl className="grid gap-4 text-sm sm:grid-cols-2">
           <div>
-            <dt className="text-muted-foreground">Slug</dt>
+            <dt className="text-muted-foreground">Public path</dt>
             <dd className="font-medium text-foreground">{leader.slug}</dd>
           </div>
           <div>
-            <dt className="text-muted-foreground">Status</dt>
+            <dt className="text-muted-foreground">Workspace status</dt>
             <dd className="font-medium text-foreground">{leader.status}</dd>
           </div>
           <div>
@@ -66,8 +67,8 @@ export default async function LeaderPublicPagePreview() {
             <dd className="font-medium text-foreground">{fmt(leader.public_page_approved_at)}</dd>
           </div>
           <div>
-            <dt className="text-muted-foreground">Public page published</dt>
-            <dd className="font-medium text-foreground">{fmt(leader.public_page_published_at)}</dd>
+            <dt className="text-muted-foreground">First published</dt>
+            <dd className="font-medium text-foreground">{fmt(publishedAt)}</dd>
           </div>
         </dl>
         <div className="mt-8 border-t border-border-soft pt-8">
@@ -83,9 +84,9 @@ export default async function LeaderPublicPagePreview() {
           ) : (
             <Prose>
               <p>
-                The public route returns 404 until <code className="text-foreground">public_page_published_at</code>{" "}
-                is set (staff tooling or a future publish step). Stitch layouts will replace this
-                preview when templates land.
+                Your public profile is not yet visible on the site. The Movemental team completes review, sets the
+                publish moment when everything reads true to you, and only then opens the page to visitors. Until that
+                happens, the address above stays private to this workspace.
               </p>
             </Prose>
           )}

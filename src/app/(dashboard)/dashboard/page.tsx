@@ -21,7 +21,7 @@ function destinationsForPersona(persona: DashboardPersona): Destination[] {
     description:
       persona === "implementation_org"
         ? "Safety and Sandbox screens aligned to governance, inventory, and board-ready sequences—preview each template with your active organization context."
-        : "Authenticated Safety and Sandbox screens from the Stitch migration manifest—per-template previews with your active organization context when available.",
+        : "Safety and Sandbox working surfaces from Movemental’s curated template library—open any card for a signed-in preview with your active organization when one is selected.",
     icon: LayoutGrid,
   };
 

@@ -36,7 +36,7 @@ export default async function SafeStartRatificationOverviewPage({
         </h1>
         <p className="max-w-[680px] text-[15px] leading-relaxed text-muted-foreground">
           Ratification is a six-step flow — preparation through to confirmation.
-          Each step has its own Stitch-authored surface. Work through them in
+          Each step has its own designed working surface. Work through them in
           order; the cohort can pause and resume between steps.
         </p>
       </header>

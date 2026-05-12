@@ -99,16 +99,16 @@ export function ProgramTemplateHub({
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               {persona === "implementation_org" ? (
                 <>
-                  Authenticated Safety and Sandbox hub for organizational governance. Start with operations-ready
-                  Safety templates (policy, inventory, ratification), then explore Sandbox when your facilitated
-                  sequence calls for it. Manifest source:{" "}
-                  <code className="rounded bg-muted px-1 text-xs">movemental-stitch-dashboard</code>.
+                  Your signed-in library of Safety and Sandbox working surfaces for governance. Begin with the
+                  operations-ready Safety sequence—policy, inventory, and board ratification—then open Sandbox when
+                  your facilitated program calls for experimentation. Each card opens the live preview for that
+                  template.
                 </>
               ) : (
                 <>
-                  Authenticated-only Stitch migration hub. Routes mirror the consolidated manifest from{" "}
-                  <code className="rounded bg-muted px-1 text-xs">movemental-stitch-dashboard</code>. Marketing pathway
-                  pages on the public site are unrelated.
+                  Your private library of Safety and Sandbox templates—the same curated set that Movemental uses to
+                  rehearse governance and learning flows before they ship. This hub is only visible after sign-in;
+                  marketing pages on the public site cover the story at a glance, not these working files.
                 </>
               )}
             </p>
