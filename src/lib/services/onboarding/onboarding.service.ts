@@ -185,6 +185,7 @@ export async function listMembershipOrganizations(userId: string) {
       orgSlug: organizations.slug,
       onboardingCompletedAt: organizations.onboarding_completed_at,
       cohortStartDate: organizations.cohort_start_date,
+      accountOwnerId: organizations.account_owner_id,
       membershipRole: organizationMemberships.role,
       membershipStatus: organizationMemberships.status,
     })

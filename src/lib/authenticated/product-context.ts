@@ -2,8 +2,7 @@ import type {
   AuthenticatedSidebarSection,
   ProductContext,
 } from "@/components/authenticated/authenticated-shell";
-import { SAFESTART_WORKSPACES } from "@/lib/safestart/workspace-manifest";
-import { SANDBOXLIVE_PHASES } from "@/lib/sandboxlive/phase-manifest";
+import { buildSafeStartSidebarSections, buildSandboxLiveSidebarSections } from "@/lib/sandboxlive/sandboxlive-sidebar";
 
 /**
  * Decides what product context + sidebar the AuthenticatedShell should render
@@ -20,25 +19,6 @@ export interface AuthenticatedShellContext {
   productContext: ProductContext;
   sidebar?: AuthenticatedSidebarSection[];
 }
-
-const SANDBOXLIVE_SIDEBAR: AuthenticatedSidebarSection[] = [
-  {
-    label: "Phases",
-    items: SANDBOXLIVE_PHASES.map((p) => ({
-      label: p.name,
-      href: `/sandboxlive/phase/${p.slug}`,
-      number: p.number,
-    })),
-  },
-  {
-    label: "Cohort",
-    items: [
-      { label: "Recipe Library", href: "/sandboxlive/recipes" },
-      { label: "Cohort view", href: "/sandboxlive/cohort" },
-      { label: "Sponsor oversight", href: "/sandboxlive/sponsor-oversight" },
-    ],
-  },
-];
 
 const LEADER_SIDEBAR: AuthenticatedSidebarSection[] = [
   {
@@ -62,35 +42,20 @@ const LEADER_SIDEBAR: AuthenticatedSidebarSection[] = [
   },
 ];
 
-const SAFESTART_SIDEBAR: AuthenticatedSidebarSection[] = [
-  {
-    label: "Engagement",
-    items: SAFESTART_WORKSPACES.map((w) => ({
-      label: w.name,
-      href: `/safestart/${w.slug}`,
-      number: String(w.order).padStart(2, "0"),
-    })),
-  },
-  {
-    label: "Artifact",
-    items: [{ label: "AI Organizational Guidebook", href: "/safestart/guidebook" }],
-  },
-];
-
 export function resolveAuthenticatedShellContext(
   pathname: string,
 ): AuthenticatedShellContext {
   if (pathname === "/sandboxlive" || pathname.startsWith("/sandboxlive/")) {
     return {
       productContext: "sandbox",
-      sidebar: SANDBOXLIVE_SIDEBAR,
+      sidebar: buildSandboxLiveSidebarSections({ includeOrganizationAdmin: false }),
     };
   }
 
   if (pathname === "/safestart" || pathname.startsWith("/safestart/")) {
     return {
       productContext: "safe",
-      sidebar: SAFESTART_SIDEBAR,
+      sidebar: buildSafeStartSidebarSections(),
     };
   }
 

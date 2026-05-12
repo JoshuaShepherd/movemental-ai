@@ -10,10 +10,12 @@ import {
   computeLeaderOnboardingProgressPercentSync,
   computeOrgCustomerOnboardingProgressPercent,
 } from "@/lib/onboarding/shell-progress-core";
+import { isSandboxLiveOrgAdminRole } from "@/lib/organizations/org-membership-role";
 import {
   getMovementLeaderByEmail,
   hasSignedVoiceCommitments,
 } from "@/lib/movement-leaders/movement-leaders.server";
+import { buildSandboxLiveSidebarSections } from "@/lib/sandboxlive/sandboxlive-sidebar";
 import {
   buildOnboardingStatePayload,
   initializeOnboardingTasksForOrganization,
@@ -69,6 +71,24 @@ export default async function DashboardLayout({
 
   const { productContext, sidebar } = resolveAuthenticatedShellContext(pathname);
 
+  let resolvedSidebar = sidebar;
+  if (pathname === "/sandboxlive" || pathname.startsWith("/sandboxlive/")) {
+    const orgSlugFromHeader = h.get("x-dashboard-org-slug")?.trim() || null;
+    let showOrgAdmin = false;
+    if (membershipsRaw.length > 0) {
+      const r = await resolveActiveOrganizationId(user.id, orgSlugFromHeader);
+      if (r.success) {
+        const row = membershipsRaw.find((m) => m.orgSlug === r.data.slug);
+        if (row) {
+          showOrgAdmin = isSandboxLiveOrgAdminRole(row.membershipRole, {
+            isAccountOwner: row.accountOwnerId != null && row.accountOwnerId === user.id,
+          });
+        }
+      }
+    }
+    resolvedSidebar = buildSandboxLiveSidebarSections({ includeOrganizationAdmin: showOrgAdmin });
+  }
+
   const showOnboardingPanel = !pathname.startsWith("/leader");
 
   const leaderProductPath = isLeaderWorkspacePath(pathname);
@@ -110,7 +130,7 @@ export default async function DashboardLayout({
         personaByOrgSlug={personaByOrgSlug}
         showAdminLink={staff}
         productContext={productContext}
-        sidebar={sidebar}
+        sidebar={resolvedSidebar}
         onboardingProgress={onboardingProgress}
         onboardingShellKind={onboardingShellKind}
         hasLeaderWorkspace={Boolean(leaderRow)}
