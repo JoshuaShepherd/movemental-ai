@@ -1,10 +1,11 @@
 import "server-only";
 
-import { and, desc, eq, isNotNull } from "drizzle-orm";
+import { and, desc, eq, isNotNull, isNull, or } from "drizzle-orm";
 
 import { db } from "@/lib/db";
 import {
   movementLeaderApplications,
+  movementLeaderPublicPages,
   movementLeaderSignings,
   movementLeaders,
 } from "@/lib/db/schema";
@@ -96,11 +97,17 @@ export async function getMovementLeaderBySlug(
 export async function listPublishedMovementLeaders(): Promise<MovementLeaderRow[]> {
   try {
     const rows = await db
-      .select()
+      .select({ leader: movementLeaders })
       .from(movementLeaders)
-      .where(isNotNull(movementLeaders.public_page_published_at))
+      .leftJoin(movementLeaderPublicPages, eq(movementLeaders.id, movementLeaderPublicPages.leader_id))
+      .where(
+        and(
+          isNotNull(movementLeaders.public_page_published_at),
+          or(isNull(movementLeaderPublicPages.unpublished_at), isNull(movementLeaderPublicPages.leader_id)),
+        ),
+      )
       .orderBy(desc(movementLeaders.public_page_published_at));
-    return rows.map(mapLeaderRow);
+    return rows.map((r) => mapLeaderRow(r.leader));
   } catch {
     return [];
   }

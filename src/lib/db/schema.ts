@@ -3458,9 +3458,27 @@ export const futurePlanRatifications = pgTable(
     ratified_by_user_id: uuid("ratified_by_user_id").references(() => userProfiles.id, {
       onDelete: "set null",
     }),
+    /**
+     * When the cohort facilitator submitted the Plan to the board. The row is
+     * created at submission with `submitted_at` set; `signed_at` and the
+     * signature fields populate when the chair returns the signed copy.
+     */
+    submitted_at: timestamp("submitted_at", { withTimezone: true, mode: "string" })
+      .notNull()
+      .defaultNow(),
     ratified_at: timestamp("ratified_at", { withTimezone: true, mode: "string" })
       .notNull()
       .defaultNow(),
+    /** Name of the board chair as recorded on the Plan. */
+    board_chair_name: text("board_chair_name"),
+    /**
+     * Typed signature line. The Plan is treated as ratified once this is
+     * non-null and `signed_at` is populated.
+     */
+    board_chair_signature: text("board_chair_signature"),
+    signed_at: timestamp("signed_at", { withTimezone: true, mode: "string" }),
+    /** Cohort facilitator captured when submission was created. */
+    facilitator_name: text("facilitator_name"),
     /** Free-form notes from the board meeting (motion text, abstentions, etc.). */
     notes: text("notes"),
   },
@@ -3639,3 +3657,36 @@ export const movementLeaderApplications = pgTable("movement_leader_applications"
   reviewed_at: timestamp("reviewed_at", { withTimezone: true, mode: "string" }),
   created_at: createdAt("created_at"),
 });
+
+/** Ratification / publication gate for public movement-leader profile (one row per leader). */
+export const movementLeaderPublicPages = pgTable("movement_leader_public_pages", {
+  leader_id: uuid("leader_id")
+    .primaryKey()
+    .references(() => movementLeaders.id, { onDelete: "cascade" }),
+  approved_at: timestamp("approved_at", { withTimezone: true, mode: "string" }),
+  published_at: timestamp("published_at", { withTimezone: true, mode: "string" }),
+  unpublished_at: timestamp("unpublished_at", { withTimezone: true, mode: "string" }),
+  approved_by_movement_leader_email: text("approved_by_movement_leader_email"),
+  updated_at: updatedAt("updated_at"),
+});
+
+/** Version history for editable public-page snapshots (draft / published / superseded). */
+export const movementLeaderPublicPageVersions = pgTable(
+  "movement_leader_public_page_versions",
+  {
+    id: id("id"),
+    leader_id: uuid("leader_id")
+      .notNull()
+      .references(() => movementLeaders.id, { onDelete: "cascade" }),
+    version_number: integer("version_number").notNull(),
+    status: text("status").notNull(),
+    snapshot: jsonb("snapshot").notNull(),
+    created_at: createdAt("created_at"),
+  },
+  (t) => [
+    unique("movement_leader_public_page_versions_leader_version_unique").on(
+      t.leader_id,
+      t.version_number,
+    ),
+  ],
+);
