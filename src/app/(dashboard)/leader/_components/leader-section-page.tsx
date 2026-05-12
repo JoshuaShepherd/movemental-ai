@@ -6,9 +6,15 @@ import { Display } from "@/components/primitives/display";
 import { Eyebrow } from "@/components/primitives/eyebrow";
 import { Prose } from "@/components/primitives/prose";
 import { Section } from "@/components/primitives/section";
+import {
+  editorialHome,
+  editorialPreviewFromMarkdown,
+  firstParagraphFromMarkdown,
+} from "@/lib/authenticated/editorial-home";
 import { getMovementLeaderByEmail } from "@/lib/movement-leaders/movement-leaders.server";
 import type { MovementLeaderDataJson } from "@/lib/movement-leaders/types";
 import { createClient } from "@/lib/supabase/server";
+import { cn } from "@/lib/utils";
 
 export type LeaderReflectionSectionId =
   | "overview"
@@ -173,21 +179,79 @@ export async function LeaderSectionPage({ section }: { section: LeaderReflection
   const md = sectionMarkdown(leaderData, section);
 
   if (section === "overview") {
+    const heroLede =
+      firstParagraphFromMarkdown(md) ??
+      "Movemental has not yet written the one-paragraph opening from your reflected understanding. When the generation pipeline fills reflected_understanding, it will appear here beneath your name.";
+
     return (
-      <div className="space-y-10">
-        <header className="space-y-3">
-          <Eyebrow>Author reflection</Eyebrow>
-          <Display as="h1" size="md" className="text-balance">
-            Reflected understanding
-          </Display>
-          <p className="max-w-(--prose-max) text-muted-foreground">
-            A seven-part mirror of how Movemental reads your public work back to you. Each section is drafted from
-            research and careful review; when a part is ready, it appears here—no files to manage on your side.
-          </p>
-        </header>
-        <Section variant="section" spacing="sm" className="rounded-xl">
-          <h2 className="font-serif text-2xl font-medium tracking-tight text-foreground">Full essay</h2>
-          <div className="mt-6">
+      <div className="flex flex-col">
+        <section className={editorialHome.heroBand}>
+          <p className={editorialHome.eyebrow}>Movement leader · Author reflection</p>
+          <h1 className={cn(editorialHome.display, "mt-4 max-w-[min(100%,52rem)]")}>{leader.full_name}</h1>
+          <p className={cn(editorialHome.lede, "mt-6")}>{heroLede}</p>
+        </section>
+
+        <div className={editorialHome.hairline} aria-hidden />
+
+        <section className={editorialHome.bandGap}>
+          <header className="flex flex-col gap-2">
+            <p className={editorialHome.eyebrow}>Your reflection in seven parts</p>
+            <h2 className={editorialHome.bandSubhead}>What the research surfaced</h2>
+          </header>
+          <ul className="list-none p-0">
+            {LEADER_OVERVIEW_ROWS.map((row) => (
+              <li key={row.href} className={editorialHome.rowWrap}>
+                <Link href={row.href} className={cn(editorialHome.rowLink, editorialHome.rowInactive)}>
+                  <span className={editorialHome.rowNum24}>{row.num}</span>
+                  <span className="flex min-w-0 flex-1 flex-col gap-1.5">
+                    <span className={editorialHome.rowTitle22}>{row.title}</span>
+                    <span className={editorialHome.rowDesc14}>{row.previewFrom(leaderData)}</span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <div className={cn(editorialHome.hairline, "mt-[clamp(2.5rem,6vw,4rem)]")} aria-hidden />
+
+        <section className={editorialHome.bandGap}>
+          <header className="flex flex-col gap-2">
+            <p className={editorialHome.eyebrow}>Your public presence</p>
+          </header>
+          <div className="flex max-w-[42rem] flex-col gap-10">
+            <div className="flex flex-col gap-3">
+              <p className="font-serif text-[18px] italic leading-snug text-foreground">
+                <Link href="/leader/sign-commitments" className={editorialHome.libraryLink}>
+                  Sign the commitments
+                </Link>
+              </p>
+              <p className="text-[15px] leading-[1.7] text-muted-foreground">
+                The commitments are the short, explicit statements Movemental asks movement leaders to sign before a
+                public page goes live — a human checkpoint that keeps voice, integrity, and stewardship aligned with what
+                the research surfaced about you.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3">
+              <p className="font-serif text-[18px] italic leading-snug text-foreground">
+                <Link href="/leader/public-page" className={editorialHome.libraryLink}>
+                  Your public page
+                </Link>
+              </p>
+              <p className="text-[15px] leading-[1.7] text-muted-foreground">
+                When you publish, Movemental exposes a single public profile — bio, proof, and the through-line of your
+                work — so trusted voices have a canonical URL to send boards, publishers, and partners, without
+                rebuilding a separate marketing site.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <div className={cn(editorialHome.hairline, "mt-[clamp(2.5rem,6vw,4rem)]")} aria-hidden />
+
+        <section id="reflected-essay" className={cn(editorialHome.bandGap, "pb-[clamp(3rem,8vw,5rem)]")}>
+          <p className={editorialHome.eyebrow}>The full reflected essay</p>
+          <div className="mt-6 max-w-[var(--prose-max)]">
             {md ? (
               <Prose>
                 <FieldGuideMarkdown markdown={md} />
@@ -206,23 +270,7 @@ export async function LeaderSectionPage({ section }: { section: LeaderReflection
               </EditorialEmptyState>
             )}
           </div>
-        </Section>
-        <Section variant="default" spacing="sm">
-          <Eyebrow>Sections</Eyebrow>
-          <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-            {(Object.keys(SECTION_COPY) as Array<keyof typeof SECTION_COPY>).map((key) => (
-              <li key={key}>
-                <Link
-                  href={`/leader/${key.replace(/_/g, "-")}`}
-                  className="block rounded-lg bg-card px-4 py-3 text-foreground transition-colors hover:bg-elevated"
-                >
-                  <span className="font-medium">{SECTION_COPY[key].title}</span>
-                  <span className="mt-1 block text-sm text-muted-foreground">{SECTION_COPY[key].intro}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </Section>
+        </section>
       </div>
     );
   }
