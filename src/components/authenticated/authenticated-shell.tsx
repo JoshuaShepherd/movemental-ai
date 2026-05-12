@@ -14,6 +14,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { createClient } from "@/lib/supabase/client";
+import {
+  onboardingShellEditorialLabel,
+  type OnboardingShellKind,
+} from "@/lib/onboarding/shell-progress-labels";
 import { cn } from "@/lib/utils";
 
 import type { DashboardPersona } from "@/lib/dashboard/dashboard-persona";
@@ -77,6 +81,7 @@ export function AuthenticatedShell({
   productContext = null,
   sidebar,
   onboardingProgress,
+  onboardingShellKind = "org",
   hasLeaderWorkspace = false,
   workspaceFallbackLabel = null,
   children,
@@ -88,8 +93,10 @@ export function AuthenticatedShell({
   showAdminLink: boolean;
   productContext?: ProductContext;
   sidebar?: AuthenticatedSidebarSection[];
-  /** 0..100 onboarding completion. Hidden when undefined, ≤0, or ≥100. */
+  /** 0..99 while onboarding is incomplete. Omitted when finished or not applicable. */
   onboardingProgress?: number;
+  /** Drives editorial line under the progress rail (org vs leader copy). */
+  onboardingShellKind?: OnboardingShellKind;
   /** Signed-in user has a `movement_leaders` row (matched on email). */
   hasLeaderWorkspace?: boolean;
   /** Shown in the header when there are no org memberships (leader-only accounts). */
@@ -127,9 +134,7 @@ export function AuthenticatedShell({
   const productLabel = productContext ? PRODUCT_LABELS[productContext] : null;
   const onLeaderProduct = pathname === "/leader" || pathname.startsWith("/leader/");
   const showProgressRail =
-    typeof onboardingProgress === "number" &&
-    onboardingProgress > 0 &&
-    onboardingProgress < 100;
+    typeof onboardingProgress === "number" && onboardingProgress < 100;
 
   const renderSidebar = sidebar && productContext;
 
@@ -273,11 +278,18 @@ export function AuthenticatedShell({
             </div>
           </div>
           {showProgressRail ? (
-            <div className="h-0.5 w-full bg-white/10" aria-hidden>
-              <div
-                className="h-full bg-pathway-accent transition-[width] duration-300 ease-out"
-                style={{ width: `${onboardingProgress}%` }}
-              />
+            <div className="w-full">
+              <div className="h-0.5 w-full bg-white/10" aria-hidden>
+                <div
+                  className="h-full bg-pathway-accent transition-[width] duration-300 ease-out"
+                  style={{ width: `${onboardingProgress}%` }}
+                />
+              </div>
+              <div className="mx-auto flex max-w-[var(--container-max)] justify-end px-[clamp(1.25rem,4vw,2.5rem)] pb-1.5 pt-1">
+                <p className="text-right font-sans text-[11px] italic leading-snug text-white/65">
+                  {onboardingShellEditorialLabel(onboardingShellKind, onboardingProgress)}
+                </p>
+              </div>
             </div>
           ) : null}
         </header>

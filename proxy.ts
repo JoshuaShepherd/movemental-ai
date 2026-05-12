@@ -59,6 +59,8 @@ export async function proxy(request: NextRequest) {
   const dashboardShell = usesAuthenticatedShell(pathname);
 
   const inject: Record<string, string> = { "x-pathname": pathname };
+  const orgSlug = request.nextUrl.searchParams.get("org");
+  if (orgSlug) inject["x-dashboard-org-slug"] = orgSlug;
   if (dashboardShell) inject["x-movemental-shell"] = "dashboard";
 
   return updateSession(request, inject);

@@ -5,11 +5,22 @@ import { redirect } from "next/navigation";
 import { AuthenticatedShell } from "@/components/authenticated/authenticated-shell";
 import { OnboardingPanel } from "@/components/onboarding/onboarding-panel";
 import { resolveAuthenticatedShellContext } from "@/lib/authenticated/product-context";
-import { getMovementLeaderByEmail } from "@/lib/movement-leaders/movement-leaders.server";
+import type { OnboardingShellKind } from "@/lib/onboarding/shell-progress-labels";
 import {
+  computeLeaderOnboardingProgressPercentSync,
+  computeOrgCustomerOnboardingProgressPercent,
+} from "@/lib/onboarding/shell-progress-core";
+import {
+  getMovementLeaderByEmail,
+  hasSignedVoiceCommitments,
+} from "@/lib/movement-leaders/movement-leaders.server";
+import {
+  buildOnboardingStatePayload,
+  initializeOnboardingTasksForOrganization,
   isUserStaff,
   listMembershipOrganizations,
   loadDashboardPersonaMapForUser,
+  resolveActiveOrganizationId,
 } from "@/lib/services/onboarding/onboarding.service";
 import { createClient } from "@/lib/supabase/server";
 
@@ -60,6 +71,36 @@ export default async function DashboardLayout({
 
   const showOnboardingPanel = !pathname.startsWith("/leader");
 
+  const leaderProductPath = isLeaderWorkspacePath(pathname);
+  let onboardingProgress: number | undefined;
+  let onboardingShellKind: OnboardingShellKind | undefined;
+
+  if (leaderProductPath && leaderRow) {
+    const signed = await hasSignedVoiceCommitments(leaderRow.id);
+    const leaderPct = computeLeaderOnboardingProgressPercentSync(leaderRow, signed);
+    if (leaderPct !== null) {
+      onboardingProgress = leaderPct;
+      onboardingShellKind = "leader";
+    }
+  } else if (membershipsRaw.length > 0) {
+    const orgSlugFromRequest = h.get("x-dashboard-org-slug")?.trim() || null;
+    let resolved = await resolveActiveOrganizationId(user.id, orgSlugFromRequest);
+    if (!resolved.success && orgSlugFromRequest) {
+      resolved = await resolveActiveOrganizationId(user.id, null);
+    }
+    if (resolved.success) {
+      await initializeOnboardingTasksForOrganization(resolved.data.organizationId);
+      const payload = await buildOnboardingStatePayload(resolved.data.organizationId);
+      if (payload) {
+        const orgPct = computeOrgCustomerOnboardingProgressPercent(payload);
+        if (orgPct !== null) {
+          onboardingProgress = orgPct;
+          onboardingShellKind = "org";
+        }
+      }
+    }
+  }
+
   return (
     <Suspense fallback={<div className="min-h-dvh bg-section" aria-hidden />}>
       <AuthenticatedShell
@@ -70,6 +111,8 @@ export default async function DashboardLayout({
         showAdminLink={staff}
         productContext={productContext}
         sidebar={sidebar}
+        onboardingProgress={onboardingProgress}
+        onboardingShellKind={onboardingShellKind}
         hasLeaderWorkspace={Boolean(leaderRow)}
         workspaceFallbackLabel={
           memberships.length === 0 && leaderRow ? leaderRow.full_name : null
