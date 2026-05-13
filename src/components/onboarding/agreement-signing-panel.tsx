@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import { useDashboardOrganizationSlug } from "@/components/dashboard/dashboard-org-context";
+import { DashboardOrgAgreementEsign } from "@/components/onboarding/dashboard-org-agreement-esign";
 import {
   YOUTHFRONT_IMPLEMENTATION_MOU_PDF_HREF,
   YOUTHFRONT_ORG_SLUG,
@@ -25,7 +26,7 @@ export function AgreementSigningPanel() {
     : "/sandboxlive/org/agreements";
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col gap-8">
+    <div className="mx-auto flex max-w-4xl flex-col gap-8">
       <ol className="flex list-none flex-col gap-8 p-0">
         <li className="flex gap-4">
           <StepNumber n={1} />
@@ -72,12 +73,12 @@ export function AgreementSigningPanel() {
               </div>
             ) : (
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Authoritative legal text is the version shown in the in-dashboard signing flow. After execution, the
-                signed file appears in your{" "}
+                Authoritative legal text is the version your Movemental lead provides for this engagement. After
+                execution, the signed file appears in your{" "}
                 <Link href={agreementsHref} className="font-medium text-primary underline underline-offset-4">
                   signed agreements register
-                </Link>
-                .
+                </Link>{" "}
+                once it has been recorded.
               </p>
             )}
           </div>
@@ -85,12 +86,16 @@ export function AgreementSigningPanel() {
 
         <li className="flex gap-4">
           <StepNumber n={3} />
-          <div className="flex min-w-0 flex-col gap-3">
-            <p className="text-sm font-semibold text-foreground">E-sign in this workspace</p>
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              You will review the agreement, consent to sign electronically, then capture your signature here in the
-              dashboard. Your Movemental contact can confirm when your organization is ready to open the signing steps.
-            </p>
+          <div className="flex min-w-0 flex-col gap-4">
+            <div className="flex flex-col gap-2">
+              <p className="text-sm font-semibold text-foreground">Sign the implementation MOU</p>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Review the MOU text, enter your full legal name, confirm the checkboxes, and submit. Your signature is
+                stored with the organization record and listed in the signed agreements register. Engagement (MSA /
+                SOW) may still be executed separately when your Movemental lead sends it.
+              </p>
+            </div>
+            <DashboardOrgAgreementEsign />
           </div>
         </li>
 

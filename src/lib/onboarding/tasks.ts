@@ -21,7 +21,7 @@ export const ONBOARDING_TASKS: readonly OnboardingTaskDefinition[] = [
     phase: "commitment",
     title: "Sign agreements (MOU and engagement)",
     description:
-      "Review and sign your Memorandum of Understanding and engagement documents (MSA / scope). E-sign links appear on the next screen when configured.",
+      "Open the agreement step: review the MOU text (PDF when available for your org), sign the implementation MOU with your typed legal name in the dashboard, then mark this step complete.",
     estimatedMinutes: 15,
     dependsOn: [],
     requiresMovementalPrep: false,

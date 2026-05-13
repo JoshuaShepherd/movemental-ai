@@ -9,7 +9,7 @@ const IMPLEMENTATION_ORG_TASK_COPY: Partial<
 > = {
   sign_agreement: {
     description:
-      "Review and sign the Memorandum of Understanding (relationship, governance, and shared expectations) and the Master Services Agreement / engagement documents for your organization. When e-sign completes, Movemental records them automatically; you can also mark this step complete if counsel had you sign offline.",
+      "Sign the implementation Memorandum of Understanding in the dashboard (typed electronic signature when you reach that step). Your signed agreements register updates automatically. Engagement (MSA / SOW) may still follow separately per your Movemental lead. Mark this step complete once the MOU is signed and any separate engagement steps your lead requires are satisfied.",
   },
   confirm_payment: {
     description:

@@ -57,10 +57,7 @@ export function getWorkspacePrimaryNavItems(opts: {
     core.push({ label: "Solutions", href: "/dashboard/solutions", appendOrg: false });
   }
 
-  core.push(
-    { label: "Onboarding", href: "/welcome", appendOrg: true },
-    { label: "Teaching library", href: "/dashboard/teaching/claude-skills", appendOrg: false },
-  );
+  core.push({ label: "Teaching library", href: "/dashboard/teaching/claude-skills", appendOrg: false });
 
   if (!opts.showStaff) return core;
 

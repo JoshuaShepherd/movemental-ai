@@ -14,6 +14,17 @@ export const YOUTHFRONT_ORG_SLUG = "youthfront" as const;
  */
 export const YOUTHFRONT_IMPLEMENTATION_MOU_PDF_HREF = "/downloads/youthfront-implementation-mou.pdf";
 
+/**
+ * When set, the onboarding agreement step embeds this PDF and records the same href on the
+ * `signed_agreements` row after dashboard e-sign. Add more orgs when counsel drops PDFs into `public/downloads/`.
+ */
+export function implementationMouDashboardDocumentHref(orgSlug: string | null | undefined): string | null {
+  const s = orgSlug?.trim();
+  if (!s) return null;
+  if (s === YOUTHFRONT_ORG_SLUG) return YOUTHFRONT_IMPLEMENTATION_MOU_PDF_HREF;
+  return null;
+}
+
 export const AGREEMENT_VERSION_LIVE = "2026-01-01";
 
 export const AGREEMENT_TYPES = [
