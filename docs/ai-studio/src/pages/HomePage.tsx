@@ -173,9 +173,9 @@ function CredibilityFold() {
   const scrollRef = React.useRef<HTMLDivElement>(null);
   
   const founders = [
-    { name: 'Brad Brisco', title: 'NAMB / Send Network multiplication strategies director; covocational ministry; five books; missional theology ↔ evangelical systems translator.', image: 'https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/movemental/voices/brad-brisco.webp' },
-    { name: 'Alan Hirsch', title: 'Forgotten Ways and APEST architect; twenty books; Forge and 100 Movements; 150k+ assessments; coined movemental.', image: 'https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/movemental/voices/alan-hirsch.webp' },
-    { name: 'Joshua Shepherd', title: 'Movemental founder, CEO, engineer; Mission House Network; QuadW cohort LMS; live Hirsch and Brisco tenants.', image: 'https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/movemental/voices/josh-shepherd.webp' }
+    { name: 'Brad Brisco', title: 'NAMB / Send Network multiplication strategies director; covocational ministry; five books; missional theology ↔ evangelical systems translator.', image: '/images/voices/brad-brisco.webp' },
+    { name: 'Alan Hirsch', title: 'Forgotten Ways and APEST architect; twenty books; Forge and 100 Movements; 150k+ assessments; coined movemental.', image: '/images/voices/alan-hirsch.webp' },
+    { name: 'Joshua Shepherd', title: 'Movemental founder, CEO, engineer; Mission House Network; QuadW cohort LMS; live Hirsch and Brisco tenants.', image: '/images/voices/josh-shepherd.webp' }
   ];
 
   return (

@@ -14,11 +14,8 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 OUT = REPO / "docs/html/scenius-network-v3"
 
-# Public voice headshots (same bucket as `src/data/home-data.ts` VOICES images)
-VOICES_MEDIA_BASE = (
-    "https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/"
-    "media-library/movemental/voices/"
-)
+# Public voice headshots (same paths as `src/data/home-data.ts` — `public/images/voices/`)
+VOICES_MEDIA_BASE = "/images/voices/"
 
 # Maps legend slugs → credential segment keys (aligned with voice-audience-credentials.ts)
 SEG_MAP = {

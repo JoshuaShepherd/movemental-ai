@@ -89,41 +89,41 @@ export const VOICES = [
   {
     name: "Alan Hirsch",
     title: "Forgotten Ways and APEST architect; twenty books; Forge and 100 Movements; 150k+ assessments; coined movemental.",
-    image: "https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/movemental/voices/alan-hirsch.webp"
+    image: "/images/voices/alan-hirsch.webp"
   },
   {
     name: "Dr. Brad Brisco",
     title: "NAMB / Send Network multiplication strategies director; covocational ministry; five books; missional theology ↔ evangelical systems translator.",
-    image: "https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/movemental/voices/brad-brisco.webp"
+    image: "/images/voices/brad-brisco.webp"
   },
   {
     name: "Liz Rios",
     title: "Afro-Boricua theologian; Passion2Plant founder; Lilly-funded Púlpito Fellows; Fuller adjunct; Sojourners board; Need to Know contributor.",
-    image: "https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/movemental/voices/liz-rios.webp"
+    image: "/images/voices/liz-rios.webp"
   },
   {
     name: "Rowland Smith",
     title: "Forge America director; Pando Collective founder; Pulpit Rock mission pastor; Red Skies curator; DMiss scholar.",
-    image: "https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/movemental/voices/rowland-smith.webp"
+    image: "/images/voices/rowland-smith.webp"
   },
   {
     name: "JR Woodward",
     title: "V3 Church Planting national director; Manchester PhD powers scholar; published IVP books; Missio Alliance co-founder.",
-    image: "https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/movemental/voices/jr-woodward.webp"
+    image: "/images/voices/jr-woodward.webp"
   },
   {
     name: "Lucas Pulley",
     title: "Underground Network Movements Director; fourteen-plus years microchurch; Tampa neighborhood practitioner; Fuller MGL; mathematics-trained systems thinking.",
-    image: "https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/movemental/voices/lucas-pulley.webp"
+    image: "/images/voices/lucas-pulley.webp"
   },
   {
     name: "Tim Catchim",
     title: "Permanent Revolution co-author with Hirsch; Trimtab APEST coach; OneLife Nashville team leader; IVP-published movemental practitioner.",
-    image: "https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/movemental/voices/tim-catchim.webp"
+    image: "/images/voices/tim-catchim.webp"
   },
   {
     name: "Rob Wegner",
     title: "Kansas City Underground founder; Microchurch NEXT co-director; Starfish and the Spirit co-author; eight-book multiplication bibliography.",
-    image: "https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/movemental/voices/rob-wegner.webp"
+    image: "/images/voices/rob-wegner.webp"
   }
 ];

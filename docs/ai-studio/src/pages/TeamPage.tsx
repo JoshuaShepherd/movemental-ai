@@ -11,7 +11,7 @@ const FOUNDERS = [
     name: 'Brad Brisco',
     role: 'CEO & Co-founder',
     location: 'United States',
-    image: 'https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/movemental/voices/brad-brisco.webp',
+    image: '/images/voices/brad-brisco.webp',
     bio: 'Brad Brisco occupies a narrow, high-leverage corridor: missional theology spoken fluently inside institutional evangelicalism. He leads multiplication strategy for NAMB / Send Network, transforming how congregations imagine sending, planting, and multiplying at national scale.',
     credentials: [
       'NAMB / Send Network multiplication strategies director',
@@ -29,7 +29,7 @@ const FOUNDERS = [
     name: 'Alan Hirsch',
     role: 'Chief Missiologist & Co-founder',
     location: 'Six continents',
-    image: 'https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/movemental/voices/alan-hirsch.webp',
+    image: '/images/voices/alan-hirsch.webp',
     bio: 'Alan Hirsch is the Australian-born missiologist behind The Forgotten Ways (mDNA) and the APEST / 5Q movement—frameworks adopted across denominations, planting networks, and seminaries. He coined the term movemental.',
     credentials: [
       'Forgotten Ways and APEST architect',
@@ -47,7 +47,7 @@ const FOUNDERS = [
     name: 'Joshua Shepherd',
     role: 'CTO & Founder',
     location: 'United States',
-    image: 'https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/movemental/voices/josh-shepherd.webp',
+    image: '/images/voices/josh-shepherd.webp',
     bio: 'Josh Shepherd leads Movemental as majority builder-owner—architecture, product ethics, and shipped code. His credible trail runs through long-horizon formation, multi-city nonprofit systems, and demonstrated enterprise digital leadership.',
     credentials: [
       'Movemental founder, CEO, engineer',

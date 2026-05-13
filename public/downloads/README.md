@@ -39,3 +39,12 @@ redirect to the canonical PDF.
   (keep in sync with the PDF cover page when the designed file changes).
 
 Legacy filename `movemental-sandbox-field-guide-it-continues-with-exploration.pdf` redirects to the canonical download.
+
+## Youthfront implementation MOU (engagement)
+
+**Canonical file:** `youthfront-implementation-mou.pdf`
+
+- Served at `/downloads/youthfront-implementation-mou.pdf`.
+- Linked from **Documents → MOU** when the active workspace organization slug is `youthfront` (`AgreementSigningPanel` + `YOUTHFRONT_IMPLEMENTATION_MOU_PDF_HREF` in `src/lib/legal/agreement-catalog.ts`).
+- A duplicate for engagement documentation lives at `docs/engagements/youthfront/youthfront-implementation-mou.pdf`.
+- Replace both copies when counsel ships a new MOU; verify with `sha256sum` against the approved source file.

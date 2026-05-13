@@ -100,7 +100,7 @@
   /** When set, hover emphasis is portrait↔portrait only (extras stay atmosphere). */
   var hoveredPortraitId = null;
 
-  var OPACITY_EXTRA_IDLE = 0.42;
+  var OPACITY_EXTRA_IDLE = 0.66;
   var OPACITY_EXTRA_HOVER = 0.1;
   var OPACITY_EXTRA_FILTER = 0.2;
   var OPACITY_PORTRAIT_DIM_FILTER = 0.32;

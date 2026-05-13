@@ -7,9 +7,8 @@
  *
  * Conventions:
  *  - `slug` matches the research-folder name and the URL path segment.
- *  - `portraitSrc` follows `/headshots/<slug>.webp` once licensed assets exist.
- *    Leaving it `undefined` triggers the editorial-portrait-in-production
- *    fallback (initials card) — same pattern as `team-page-content.tsx`.
+ *  - `portraitSrc` follows `/images/voices/<slug>.webp` (canonical export from
+ *    `scripts/process-voices-portraits.ts`). Undefined → initials fallback.
  *  - `credentials` is capped at 4 lines per `docs/build/plans/...` plan §5.1.
  *  - `featuredWorks` lists titles only; no rights-encumbered links.
  *  - `lastReviewed` enables the quarterly review cadence (plan §8 risks).
@@ -52,7 +51,7 @@ export type CommittedVoice = {
   primaryUrl: string;
   /** Optional secondary external links — networks the person leads. */
   secondaryLinks: ReadonlyArray<{ label: string; href: string }>;
-  /** `/headshots/<slug>.webp` once asset is licensed. Undefined → initials fallback. */
+  /** `/images/voices/<slug>.webp` when a portrait is cleared for publication. Undefined → initials fallback. */
   portraitSrc?: string;
   /** Two-letter monogram for portrait fallback. */
   initials: string;
@@ -118,6 +117,7 @@ export const COMMITTED_VOICES: readonly CommittedVoice[] = [
       { label: "Púlpito Fellows", href: "https://www.pulpitofellows.org" },
       { label: "The Passion Center", href: "https://www.thepassioncenter.org" },
     ],
+    portraitSrc: "/images/voices/liz-rios.webp",
     initials: "LR",
     portraitAlt:
       "Portrait of Rev. Dr. Liz Rios, editorial photograph for the Movemental committed voices page.",
@@ -154,6 +154,7 @@ export const COMMITTED_VOICES: readonly CommittedVoice[] = [
       { label: "V3 Church Planting Movement", href: "https://thev3movement.org" },
       { label: "Missio Alliance", href: "https://www.missioalliance.org" },
     ],
+    portraitSrc: "/images/voices/jr-woodward.webp",
     initials: "JW",
     portraitAlt:
       "Portrait of JR Woodward, editorial photograph for the Movemental committed voices page.",
@@ -190,6 +191,7 @@ export const COMMITTED_VOICES: readonly CommittedVoice[] = [
       { label: "Forge America", href: "https://www.forgeamerica.com" },
       { label: "The Pando Collective", href: "https://thepandocollective.com" },
     ],
+    portraitSrc: "/images/voices/rowland-smith.webp",
     initials: "RS",
     portraitAlt:
       "Portrait of L. Rowland Smith, editorial photograph for the Movemental committed voices page.",
