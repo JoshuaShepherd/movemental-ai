@@ -77,7 +77,7 @@ const INSIDE_SECTIONS = [
     eyebrow: "Setting up",
     title: "How to constitute a sandbox without it becoming a sideshow.",
     body:
-      "Sandbox is not a hackathon or a "try it and see" zone. It is a constrained, instrumented environment where AI tools are tested against the real work, with named owners, defined exit criteria, and a regular cadence of "what did we learn — and what should change about how we work."",
+      'Sandbox is not a hackathon or a "try it and see" zone. It is a constrained, instrumented environment where AI tools are tested against the real work, with named owners, defined exit criteria, and a regular cadence of "what did we learn — and what should change about how we work."',
   },
   {
     eyebrow: "Evaluating vendors",
