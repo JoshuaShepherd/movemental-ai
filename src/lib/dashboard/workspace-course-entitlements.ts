@@ -7,7 +7,7 @@
  * Decisions (product):
  * - **`safety`** gates both `/program` and `/safestart` (Program + SafeStart).
  * - **`skills`** / **`solutions`** are optional nav + placeholders until dedicated product routes ship.
- * - **Teaching library** stays globally available in the workspace strip (not gated by `skills`).
+ * - **Resources** (Claude skills hub) stays globally available in the workspace strip (not gated by `skills`).
  * - **Explicit non-empty `workspaceCourses`** wins over `workspaceNavPreset`.
  * - **Missing `workspaceCourses`:** opt-in default — **all courses off**, except legacy
  *   `workspaceNavPreset === "sandbox_live_focus"` → **sandbox on** only (safety off).
@@ -21,7 +21,7 @@ export type WorkspaceCourseId = (typeof WORKSPACE_COURSE_IDS)[number];
 
 export type WorkspaceCourseEntitlements = Record<WorkspaceCourseId, boolean>;
 
-/** No workspace product modules — nav shows only Onboarding + Teaching library (+ staff links). */
+/** No workspace product modules — nav shows only Resources (+ staff links). */
 export const WORKSPACE_COURSES_NONE: WorkspaceCourseEntitlements = {
   safety: false,
   sandbox: false,

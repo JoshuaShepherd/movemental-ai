@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-29T18:43:59.070Z",
+  "generated": "2026-05-13T18:17:10.913Z",
   "version": 1,
   "rootLabel": "Movement leader research",
   "leaders": [
@@ -661,7 +661,7 @@
     {
       "slug": "__root__",
       "name": "Root & misc",
-      "fileCount": 1
+      "fileCount": 2
     },
     {
       "slug": "rory-noland",
@@ -672,6 +672,11 @@
       "slug": "rowland-smith",
       "name": "Rowland Smith",
       "fileCount": 18
+    },
+    {
+      "slug": "roy-moran",
+      "name": "Roy Moran",
+      "fileCount": 8
     },
     {
       "slug": "ruth-haley-barton",
@@ -7044,6 +7049,78 @@
       "title": "Summary"
     },
     {
+      "id": "roy-moran/README",
+      "path": "roy-moran/README.md",
+      "slug": "roy-moran",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "README",
+      "title": "README"
+    },
+    {
+      "id": "roy-moran/ROY_MORAN_AUDIENCE_PROFILE",
+      "path": "roy-moran/ROY_MORAN_AUDIENCE_PROFILE.md",
+      "slug": "roy-moran",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "ROY_MORAN_AUDIENCE_PROFILE",
+      "title": "ROY MORAN AUDIENCE PROFILE"
+    },
+    {
+      "id": "roy-moran/ROY_MORAN_AUTHOR_PROFILE",
+      "path": "roy-moran/ROY_MORAN_AUTHOR_PROFILE.md",
+      "slug": "roy-moran",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "ROY_MORAN_AUTHOR_PROFILE",
+      "title": "ROY MORAN AUTHOR PROFILE"
+    },
+    {
+      "id": "roy-moran/ROY_MORAN_CALLING_PROFILE",
+      "path": "roy-moran/ROY_MORAN_CALLING_PROFILE.md",
+      "slug": "roy-moran",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "ROY_MORAN_CALLING_PROFILE",
+      "title": "ROY MORAN CALLING PROFILE"
+    },
+    {
+      "id": "roy-moran/ROY_MORAN_CONTENT_AUDIT",
+      "path": "roy-moran/ROY_MORAN_CONTENT_AUDIT.md",
+      "slug": "roy-moran",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "ROY_MORAN_CONTENT_AUDIT",
+      "title": "ROY MORAN CONTENT AUDIT"
+    },
+    {
+      "id": "roy-moran/ROY_MORAN_PROFILES_INDEX",
+      "path": "roy-moran/ROY_MORAN_PROFILES_INDEX.md",
+      "slug": "roy-moran",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "ROY_MORAN_PROFILES_INDEX",
+      "title": "ROY MORAN PROFILES INDEX"
+    },
+    {
+      "id": "roy-moran/sources",
+      "path": "roy-moran/sources.md",
+      "slug": "roy-moran",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "sources",
+      "title": "Sources"
+    },
+    {
+      "id": "roy-moran/summary",
+      "path": "roy-moran/summary.md",
+      "slug": "roy-moran",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "summary",
+      "title": "Summary"
+    },
+    {
       "id": "ruth-haley-barton/_tracker",
       "path": "ruth-haley-barton/_tracker.md",
       "slug": "ruth-haley-barton",
@@ -7249,6 +7326,15 @@
       "subLabel": "",
       "fileBase": "summary",
       "title": "Summary"
+    },
+    {
+      "id": "site-voices-eeat-audience-credentials",
+      "path": "site-voices-eeat-audience-credentials.md",
+      "slug": "__root__",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "site-voices-eeat-audience-credentials",
+      "title": "Site Voices Eeat Audience Credentials"
     },
     {
       "id": "skye-jethani/_tracker",

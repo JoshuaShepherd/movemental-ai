@@ -13,15 +13,7 @@ import {
   resolveDashboardContextForSessionUser,
 } from "@/lib/services/onboarding/onboarding.service";
 import { createClient } from "@/lib/supabase/server";
-import {
-  BookOpen,
-  Calendar,
-  ClipboardList,
-  LayoutGrid,
-  ListChecks,
-  Sparkles,
-  Wrench,
-} from "lucide-react";
+import { Calendar, LayoutGrid, ListChecks, Sparkles, Wrench } from "lucide-react";
 
 type Destination = {
   href: string;
@@ -41,14 +33,6 @@ function destinationsForHub(persona: DashboardPersona, courses: WorkspaceCourseE
     icon: LayoutGrid,
   };
 
-  const teaching: Destination = {
-    href: "/dashboard/teaching/claude-skills",
-    title: "Teaching library",
-    description:
-      "Structured guide to Claude Skills for mission-driven leaders—eight chapters from intuition through practice.",
-    icon: BookOpen,
-  };
-
   const scheduleTraining: Destination = {
     href: "/sandboxlive/cohort/schedule",
     title: "Schedule cohort training",
@@ -57,30 +41,12 @@ function destinationsForHub(persona: DashboardPersona, courses: WorkspaceCourseE
     icon: Calendar,
   };
 
-  const onboarding: Destination = {
-    href: "/welcome",
-    title: "Full onboarding checklist",
-    description:
-      persona === "implementation_org"
-        ? "Expanded checklist with cohort date and every phase—use it to align operations, programs, and development before kickoff."
-        : "Open the expanded checklist with cohort date and every phase when you need it.",
-    icon: ClipboardList,
-  };
-
   const assessment: Destination = {
     href: "/assess",
     title: "Organization assessment",
     description:
       "Movemental Path integrity diagnostic for senior leaders—about 10–15 minutes before we meet; opens the public assessment flow.",
     icon: ListChecks,
-  };
-
-  const sandboxHub: Destination = {
-    href: "/sandboxlive",
-    title: "Sandbox",
-    description:
-      "Cohort phases, recipes, and roster — the working engagement surface once scheduling and assessment are underway.",
-    icon: LayoutGrid,
   };
 
   const skills: Destination = {
@@ -101,12 +67,7 @@ function destinationsForHub(persona: DashboardPersona, courses: WorkspaceCourseE
 
   if (isSandboxLiveFirstHub(persona, courses)) {
     const base: Destination[] = [];
-    if (courses.sandbox) base.push(scheduleTraining, assessment, sandboxHub);
-    base.push(teaching, {
-      ...onboarding,
-      description:
-        "Optional: expanded steps, cohort date, and later phases when you need them—the MOU is under Documents in the header.",
-    });
+    if (courses.sandbox) base.push(scheduleTraining, assessment);
     return appendOptionalSkillsSolutions(base, courses, skills, solutions);
   }
 
@@ -114,14 +75,11 @@ function destinationsForHub(persona: DashboardPersona, courses: WorkspaceCourseE
     const base: Destination[] = [];
     if (courses.safety) base.push(program);
     if (courses.sandbox) base.push(scheduleTraining);
-    base.push(onboarding, teaching);
     return appendOptionalSkillsSolutions(base, courses, skills, solutions);
   }
 
   const base: Destination[] = [];
   if (courses.safety) base.push(program);
-  else if (courses.sandbox) base.push(sandboxHub);
-  base.push(teaching, onboarding);
   return appendOptionalSkillsSolutions(base, courses, skills, solutions);
 }
 

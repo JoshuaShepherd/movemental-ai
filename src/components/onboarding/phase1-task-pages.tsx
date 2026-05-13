@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import * as React from "react";
 
 import { Eyebrow } from "@/components/primitives/eyebrow";
-import { AgreementSigningPanel } from "@/components/onboarding/agreement-signing-panel";
+import { AgreementSignPage } from "@/components/onboarding/agreement-sign-page";
 import { OnboardingTaskShell } from "@/components/onboarding/onboarding-task-shell";
 import { useDashboardOrganizationSlug } from "@/components/dashboard/dashboard-org-context";
 import { TrainingSchedulePanel } from "@/components/scheduling/training-schedule-panel";
@@ -13,19 +13,7 @@ import { Button } from "@/components/ui/button";
 import { useOnboardingTaskPresentation } from "@/hooks/onboarding/use-onboarding-task-presentation";
 
 export function AgreementTaskPage() {
-  const { title, description, estimatedMinutes } = useOnboardingTaskPresentation("sign_agreement");
-
-  return (
-    <OnboardingTaskShell
-      taskKey="sign_agreement"
-      title={title}
-      description={description}
-      estimatedMinutes={estimatedMinutes}
-      className="max-w-3xl"
-    >
-      <AgreementSigningPanel />
-    </OnboardingTaskShell>
-  );
+  return <AgreementSignPage />;
 }
 
 export function PaymentTaskPage() {
