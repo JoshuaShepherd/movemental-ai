@@ -39,6 +39,7 @@ const ROUTES: ReadonlyArray<{
   { path: "/about/founders/brad-brisco", changeFrequency: "yearly", priority: 0.45 },
   { path: "/about/founders/alan-hirsch", changeFrequency: "yearly", priority: 0.45 },
   { path: "/about/founders/joshua-shepherd", changeFrequency: "yearly", priority: 0.45 },
+  { path: "/are-we-compatriots", changeFrequency: "monthly", priority: 0.7 },
   { path: "/case-studies", changeFrequency: "monthly", priority: 0.6 },
   { path: "/faq", changeFrequency: "monthly", priority: 0.6 },
   { path: "/contact", changeFrequency: "yearly", priority: 0.7 },
