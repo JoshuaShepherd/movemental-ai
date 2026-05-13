@@ -8,8 +8,8 @@
  *   Credibility (who is behind this — founders + Movement Voices) →
  *   Final CTA (action).
  *
- * Citations: where existing copy makes a statistical claim, an inline
- * `<Cite />` chip is wired through `<CitationsProvider />`. Tooltip copy and
+ * Citations: where existing copy makes a statistical claim, inline
+ * `<Cite />` marks are wired through `<CitationsProvider />`. Tooltip copy and
  * bibliography-style sources live in `src/lib/citations/eeat-site-claims.json`
  * and render on `/footnotes`. See `docs/build/prompts/site-footnotes-eeat-registry.md`.
  *

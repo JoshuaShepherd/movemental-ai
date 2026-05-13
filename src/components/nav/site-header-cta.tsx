@@ -20,21 +20,6 @@ function contactCta(variant: "desktop" | "mobile") {
   );
 }
 
-function dashboardCta(variant: "desktop" | "mobile") {
-  const isDesktop = variant === "desktop";
-  return (
-    <Link
-      href="/dashboard"
-      className={cn(
-        "btn-pill btn-pill--primary",
-        isDesktop ? "py-2.5" : "mt-4 flex w-full justify-center py-3 text-center",
-      )}
-    >
-      Go to your dashboard →
-    </Link>
-  );
-}
-
 function leaderCta(variant: "desktop" | "mobile") {
   const isDesktop = variant === "desktop";
   return (
@@ -58,23 +43,11 @@ function bothCtas(variant: "desktop" | "mobile") {
         <Link href="/leader" className="btn-pill btn-pill--primary flex w-full justify-center py-3 text-center">
           Go to your Leader workspace →
         </Link>
-        <Link
-          href="/dashboard"
-          className="border border-border bg-card px-4 py-3 text-center text-sm font-medium text-foreground transition-colors hover:bg-section"
-        >
-          Organization dashboard →
-        </Link>
       </div>
     );
   }
   return (
     <div className="flex flex-wrap items-center justify-end gap-3">
-      <Link
-        href="/dashboard"
-        className="text-sm font-medium text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
-      >
-        Organization dashboard →
-      </Link>
       <Link href="/leader" className="btn-pill btn-pill--primary py-2.5">
         Go to your Leader workspace →
       </Link>
@@ -110,7 +83,7 @@ export async function SiteHeaderCta({ variant }: { variant: "desktop" | "mobile"
       return bothCtas(variant);
     }
     if (hasOrg) {
-      return dashboardCta(variant);
+      return contactCta(variant);
     }
     return leaderCta(variant);
   } catch {

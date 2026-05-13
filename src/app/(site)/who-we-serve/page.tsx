@@ -1,14 +1,10 @@
-import type { Metadata } from "next";
+import { permanentRedirect } from "next/navigation";
 
-import { WhoWeServePage as StudioWhoWeServePage } from "@/components/studio/pages/WhoWeServePage";
-
-export const metadata: Metadata = {
-  title: "Who we serve",
-  description: "Organizations and leaders Movemental is built for.",
-};
-
-export default function Page() {
-  return (
-    <StudioWhoWeServePage />
-  );
+/**
+ * `/who-we-serve` was a standalone overview; audience entry points now live on
+ * the home page (`/#audiences`) and segment routes. Permanent redirect keeps
+ * bookmarks and external links from 404ing.
+ */
+export default function WhoWeServeArchiveRedirect() {
+  permanentRedirect("/#audiences");
 }

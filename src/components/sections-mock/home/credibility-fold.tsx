@@ -4,39 +4,13 @@ import Link from "next/link";
 
 import { Cite } from "@/components/citations";
 import { SectionHead } from "@/components/sections-mock/primitives";
+import { SITE_FOUNDERS } from "@/lib/site-founders";
 
 import { SceniusNetworkHome } from "./scenius-network-home";
-
-interface Founder {
-  name: string;
-  title: string;
-  initials: string;
-  portrait: string;
-}
 
 // TODO(founders): Brad Brisco and Joshua Shepherd portraits are from one shoot;
 // Alan Hirsch's is from a different source with different lighting and crop
 // conventions. Replace all three with a single unified shoot when scheduled.
-const FOUNDERS: readonly Founder[] = [
-  {
-    name: "Dr. Brad Brisco",
-    title: "CEO & Co-founder",
-    initials: "BB",
-    portrait: "/images/voices/brad-brisco.webp",
-  },
-  {
-    name: "Alan Hirsch",
-    title: "Chief Missiologist & Co-founder",
-    initials: "AH",
-    portrait: "/images/voices/alan-hirsch.webp",
-  },
-  {
-    name: "Joshua Shepherd",
-    title: "CTO & Founder",
-    initials: "JS",
-    portrait: "/images/voices/josh-shepherd.webp",
-  },
-];
 
 export function CredibilityFold() {
   return (
@@ -50,11 +24,11 @@ export function CredibilityFold() {
           eyebrow="Credibility"
           display={
             <>
-              Built with and shaped by <em>movement leaders.</em>
+              Built with and shaped by <em>trusted voices.</em>
             </>
           }
           displayId="credibility-heading"
-          lede="Movemental was built by missional practitioners with decades of work that predates AI. The network around us is the credibility infrastructure for this category — leaders whose names carry weight in the world your organization works in."
+          lede="Movemental was built by missional practitioners with decades of work that predates AI. The network around us is the credibility infrastructure for this category — trusted movement voices whose names carry weight in the world your organization works in."
         />
 
         <p className="mt-6 max-w-(--prose-max) text-sm leading-relaxed text-muted-foreground md:text-base">
@@ -67,42 +41,38 @@ export function CredibilityFold() {
             Founders
           </p>
           <ul className="mt-5 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-            {FOUNDERS.map((founder) => (
-              <li
-                key={founder.name}
-                className="flex items-start gap-4"
-              >
-                <div className="relative aspect-4/5 w-24 shrink-0 overflow-hidden rounded-lg bg-muted ring-1 ring-border/60 sm:w-28">
-                  <Image
-                    src={founder.portrait}
-                    alt={`Portrait of ${founder.name}`}
-                    width={960}
-                    height={1200}
-                    className="h-full w-full object-cover"
-                    sizes="112px"
-                  />
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute left-2 top-2 inline-flex h-7 w-7 items-center justify-center rounded-full bg-background/90 text-[10px] font-semibold tracking-tight text-foreground backdrop-blur-sm"
-                  >
-                    {founder.initials}
-                  </span>
-                </div>
-                <div className="flex min-w-0 flex-col gap-1 pt-1">
-                  <h3 className="text-base font-semibold tracking-tight text-foreground">
-                    {founder.name}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {founder.title}
-                  </p>
-                </div>
+            {SITE_FOUNDERS.map((founder) => (
+              <li key={founder.slug}>
+                <Link
+                  href={`/about/founders/${founder.slug}`}
+                  className="group flex items-start gap-4 rounded-md p-2 -m-2 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                >
+                  <div className="relative aspect-4/5 w-24 shrink-0 overflow-hidden rounded-lg bg-muted ring-1 ring-border/60 transition-shadow group-hover:shadow-ambient sm:w-28">
+                    <Image
+                      src={founder.portrait}
+                      alt={`Portrait of ${founder.name}`}
+                      width={960}
+                      height={1200}
+                      className="h-full w-full object-cover"
+                      sizes="112px"
+                    />
+                  </div>
+                  <div className="flex min-w-0 flex-col gap-1 pt-1">
+                    <h3 className="text-base font-semibold tracking-tight text-foreground underline decoration-transparent decoration-2 underline-offset-4 transition-colors group-hover:decoration-primary/40">
+                      {founder.name}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      {founder.shortTitle}
+                    </p>
+                  </div>
+                </Link>
               </li>
             ))}
           </ul>
         </div>
 
         <div className="mt-16 pt-4 md:mt-20 md:pt-6">
-          <SceniusNetworkHome ariaLabel="Movement Voices — trusted leaders in a full mesh; hover or tap a portrait to see their audience credentials" />
+          <SceniusNetworkHome ariaLabel="Trusted voices — relationship graph of movement leaders Movemental is built with; hover or tap a portrait to see audience credentials" />
         </div>
 
         <Link

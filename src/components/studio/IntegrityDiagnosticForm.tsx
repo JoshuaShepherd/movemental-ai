@@ -1,7 +1,12 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
-import { DIMENSIONS, QUESTIONS_BY_DIMENSION, TOTAL_QUESTIONS } from '@/lib/integrity-diagnostic/studio-questions';
+import {
+  DIMENSIONS,
+  QUESTIONS,
+  QUESTIONS_BY_DIMENSION,
+  TOTAL_QUESTIONS,
+} from "@/lib/integrity-diagnostic/questions";
 import { cn } from '@/lib/utils';
 import { Check } from 'lucide-react';
 
@@ -50,11 +55,49 @@ export function IntegrityDiagnosticForm() {
     setIsSubmitting(true);
     setError(null);
     try {
-      // Simulate API call — wire to `/api/...` when backend is ready.
-      await new Promise((resolve) => setTimeout(resolve, 800));
+      const orderedAnswers = QUESTIONS.map((q) => answers[q.id]);
+      if (orderedAnswers.some((a) => a === undefined)) {
+        setError("Every question must have an answer before you submit.");
+        return;
+      }
+
+      const followUpsPayload = DIMENSIONS.reduce<Record<string, string>>((acc, d) => {
+        const v = followUps[d.id]?.trim();
+        if (v) acc[d.id] = v;
+        return acc;
+      }, {});
+      const hasFollowUps = Object.keys(followUpsPayload).length > 0;
+
+      const res = await fetch("/api/assess", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: identity.name.trim(),
+          email: identity.email.trim(),
+          organizationName: identity.organizationName.trim() || undefined,
+          role: identity.role.trim() || undefined,
+          answers: orderedAnswers,
+          followUps: hasFollowUps ? followUpsPayload : undefined,
+          closingNote: closingNote.trim() || undefined,
+        }),
+      });
+
+      const data = (await res.json().catch(() => ({}))) as {
+        error?: { code?: string; message?: string };
+      };
+
+      if (!res.ok) {
+        const msg =
+          data.error?.code === "TENANT_NOT_CONFIGURED"
+            ? "This environment is not configured to store submissions yet. Please contact Movemental."
+            : data.error?.message ?? "An error occurred while submitting. Please try again.";
+        setError(msg);
+        return;
+      }
+
       setStep(8);
-    } catch (e) {
-      setError('An error occurred while submitting. Please try again.');
+    } catch {
+      setError("An error occurred while submitting. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -160,15 +203,13 @@ export function IntegrityDiagnosticForm() {
                   <div className="mb-12">
                     <span className="text-xs font-semibold uppercase tracking-eyebrow text-ink-soft mb-4 block">Section {dimension.num}</span>
                     <h3 className="text-3xl font-serif-display italic mb-4 text-foreground">{dimension.title}.</h3>
-                    <p className="text-muted-foreground text-[1.0625rem] leading-[1.75] max-w-2xl">{dimension.body}</p>
+                    <p className="text-muted-foreground text-[1.0625rem] leading-[1.75] max-w-2xl">
+                      {dimension.description}
+                    </p>
                   </div>
 
                   <div className="space-y-16">
                     {questions.map((q, i) => {
-                      const qNum = Object.keys(answers).indexOf(q.id) >= 0 
-                        ? Object.keys(answers).indexOf(q.id) + 1 
-                        : Object.keys(answers).length + i + 1; // rough estimation for display
-
                       return (
                         <fieldset key={q.id} className="diag-preview__question border-0 p-0 m-0">
                           <legend className="text-lg font-medium text-foreground mb-6 float-left w-full">Q{dimIndex + 1}.{i + 1}. {q.prompt}</legend>

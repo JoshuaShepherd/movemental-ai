@@ -4,6 +4,8 @@
  * product context hides the horizontal links).
  */
 
+import type { WorkspaceNavPreset } from "@/lib/dashboard/workspace-nav-preset";
+
 export type WorkspaceNavItem = {
   label: string;
   /** Path only; shell appends `?org=` when `appendOrg` is true and slug is set. */
@@ -30,14 +32,25 @@ export function withOrgIfNeeded(
 export function getWorkspacePrimaryNavItems(opts: {
   programNavLabel: string;
   showStaff: boolean;
+  /** When `sandbox_live_focus`, Program + SafeStart are hidden; SandboxLive label becomes "Sandbox". */
+  preset?: WorkspaceNavPreset;
 }): WorkspaceNavItem[] {
-  const core: WorkspaceNavItem[] = [
-    { label: opts.programNavLabel, href: "/program", appendOrg: true },
-    { label: "SandboxLive", href: "/sandboxlive", appendOrg: true },
-    { label: "SafeStart", href: "/safestart", appendOrg: true },
-    { label: "Onboarding", href: "/welcome", appendOrg: true },
-    { label: "Teaching library", href: "/dashboard/teaching/claude-skills", appendOrg: false },
-  ];
+  const preset = opts.preset ?? "default";
+
+  const core: WorkspaceNavItem[] =
+    preset === "sandbox_live_focus"
+      ? [
+          { label: "Sandbox", href: "/sandboxlive", appendOrg: true },
+          { label: "Onboarding", href: "/welcome", appendOrg: true },
+          { label: "Teaching library", href: "/dashboard/teaching/claude-skills", appendOrg: false },
+        ]
+      : [
+          { label: opts.programNavLabel, href: "/program", appendOrg: true },
+          { label: "SandboxLive", href: "/sandboxlive", appendOrg: true },
+          { label: "SafeStart", href: "/safestart", appendOrg: true },
+          { label: "Onboarding", href: "/welcome", appendOrg: true },
+          { label: "Teaching library", href: "/dashboard/teaching/claude-skills", appendOrg: false },
+        ];
 
   if (!opts.showStaff) return core;
 

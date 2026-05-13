@@ -288,10 +288,10 @@ function EditorialBoundary() {
             </Link>
             ; the implementation audiences are at{" "}
             <Link
-              href="/who-we-serve"
+              href="/#audiences"
               style={{ color: "var(--primary)", fontStyle: "normal" }}
             >
-              Who we serve
+              Who Movemental serves
             </Link>
             .
           </p>

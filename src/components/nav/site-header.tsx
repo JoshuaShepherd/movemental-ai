@@ -170,13 +170,6 @@ export function SiteHeader({
                   Custom agentic CMS/LMS builds
                 </div>
               </Link>
-              <Link
-                href="/pricing"
-                className="block rounded-lg border-t border-border px-4 py-3 transition-colors hover:bg-section"
-              >
-                <div className="text-sm font-semibold text-foreground">Published pricing</div>
-                <div className="mt-1 text-xs text-muted-foreground">Fees for each stage and the Path Bundle</div>
-              </Link>
             </div>
           </div>
 
@@ -202,13 +195,6 @@ export function SiteHeader({
               </svg>
             </button>
             <div className="invisible absolute top-full left-0 z-50 w-56 translate-y-2 rounded-xl border border-border bg-card p-2 opacity-0 shadow-ambient transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-              <Link
-                href="/who-we-serve"
-                className="block rounded-lg border-b border-border px-4 py-3 transition-colors hover:bg-section"
-              >
-                <div className="text-sm font-semibold text-foreground">Who we serve</div>
-                <div className="mt-1 text-xs text-muted-foreground">Overview of audiences</div>
-              </Link>
               <Link
                 href="/churches"
                 className="block rounded-lg px-4 py-2.5 text-sm font-medium transition-colors hover:bg-section"
@@ -287,13 +273,6 @@ export function SiteHeader({
           >
             Movemental Path
           </Link>
-          <Link
-            href="/pricing"
-            onClick={() => setIsMenuOpen(false)}
-            className="rounded-md p-2 text-base font-medium text-muted-foreground transition-colors hover:bg-section hover:text-foreground"
-          >
-            Published pricing
-          </Link>
           <div className="border-border ml-2 flex flex-col gap-2 border-l-2 py-1 pl-4">
             <span className="px-2 text-sm font-semibold tracking-widest text-muted-foreground uppercase">
               Path stages
@@ -340,13 +319,6 @@ export function SiteHeader({
             <span className="px-2 text-sm font-semibold tracking-widest text-muted-foreground uppercase">
               Audiences
             </span>
-            <Link
-              href="/who-we-serve"
-              onClick={() => setIsMenuOpen(false)}
-              className="rounded-md p-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
-            >
-              Who we serve
-            </Link>
             <Link
               href="/churches"
               onClick={() => setIsMenuOpen(false)}

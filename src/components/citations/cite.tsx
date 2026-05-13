@@ -11,13 +11,11 @@ import {
 import { useCitationNumber } from "./citations-provider";
 
 /**
- * Inline citation chip — the Ledger edition.
+ * Inline citation control — highlighter-style mark with bracketed index.
  *
- * Renders a small amber-pill button inline with the surrounding prose. Click
- * (or Enter / Space when focused) opens a popover anchored beneath the chip
- * with reader-facing note text only (no confidence tags or sample metadata).
- * A link opens the matching row on `/footnotes` for the full bibliography-style
- * source block.
+ * Renders a small tilted highlight mark inline with prose. Click opens a
+ * popover with reader-facing note text; a link opens the matching row on
+ * `/footnotes` for the full source block.
  *
  * Single-instance behavior: opening one chip's popover closes any other one.
  * Esc closes. Click outside closes. Matches the JS in the original mockup
@@ -122,7 +120,7 @@ export function Cite({ claimId, ariaLabel, className }: CiteProps) {
           aria-label={labelText}
           onClick={toggle}
         >
-          {number || "?"}
+          [{number}]
         </button>
       </span>
       <span

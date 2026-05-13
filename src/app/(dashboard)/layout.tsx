@@ -3,13 +3,9 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { AuthenticatedShell } from "@/components/authenticated/authenticated-shell";
-import { OnboardingPanel } from "@/components/onboarding/onboarding-panel";
 import { resolveAuthenticatedShellContext } from "@/lib/authenticated/product-context";
 import type { OnboardingShellKind } from "@/lib/onboarding/shell-progress-labels";
-import {
-  computeLeaderOnboardingProgressPercentSync,
-  computeOrgCustomerOnboardingProgressPercent,
-} from "@/lib/onboarding/shell-progress-core";
+import { computeLeaderOnboardingProgressPercentSync } from "@/lib/onboarding/shell-progress-core";
 import { isSandboxLiveOrgAdminRole } from "@/lib/organizations/org-membership-role";
 import {
   getMovementLeaderByEmail,
@@ -17,11 +13,9 @@ import {
 } from "@/lib/movement-leaders/movement-leaders.server";
 import { buildSandboxLiveSidebarSections } from "@/lib/sandboxlive/sandboxlive-sidebar";
 import {
-  buildOnboardingStatePayload,
-  initializeOnboardingTasksForOrganization,
   isUserStaff,
   listMembershipOrganizations,
-  loadDashboardPersonaMapForUser,
+  loadDashboardShellMapsForUser,
   resolveActiveOrganizationId,
 } from "@/lib/services/onboarding/onboarding.service";
 import { createClient } from "@/lib/supabase/server";
@@ -67,7 +61,7 @@ export default async function DashboardLayout({
 
   const staff = await isUserStaff(user.id);
   const initialSlug = memberships[0]?.orgSlug ?? "";
-  const personaByOrgSlug = await loadDashboardPersonaMapForUser(user.id);
+  const { personaByOrgSlug, workspaceNavPresetByOrgSlug } = await loadDashboardShellMapsForUser(user.id);
 
   const { productContext, sidebar } = resolveAuthenticatedShellContext(pathname);
 
@@ -89,8 +83,6 @@ export default async function DashboardLayout({
     resolvedSidebar = buildSandboxLiveSidebarSections({ includeOrganizationAdmin: showOrgAdmin });
   }
 
-  const showOnboardingPanel = !pathname.startsWith("/leader");
-
   const leaderProductPath = isLeaderWorkspacePath(pathname);
   let onboardingProgress: number | undefined;
   let onboardingShellKind: OnboardingShellKind | undefined;
@@ -102,23 +94,6 @@ export default async function DashboardLayout({
       onboardingProgress = leaderPct;
       onboardingShellKind = "leader";
     }
-  } else if (membershipsRaw.length > 0) {
-    const orgSlugFromRequest = h.get("x-dashboard-org-slug")?.trim() || null;
-    let resolved = await resolveActiveOrganizationId(user.id, orgSlugFromRequest);
-    if (!resolved.success && orgSlugFromRequest) {
-      resolved = await resolveActiveOrganizationId(user.id, null);
-    }
-    if (resolved.success) {
-      await initializeOnboardingTasksForOrganization(resolved.data.organizationId);
-      const payload = await buildOnboardingStatePayload(resolved.data.organizationId);
-      if (payload) {
-        const orgPct = computeOrgCustomerOnboardingProgressPercent(payload);
-        if (orgPct !== null) {
-          onboardingProgress = orgPct;
-          onboardingShellKind = "org";
-        }
-      }
-    }
   }
 
   return (
@@ -128,6 +103,7 @@ export default async function DashboardLayout({
         userEmail={user.email ?? ""}
         memberships={memberships}
         personaByOrgSlug={personaByOrgSlug}
+        workspaceNavPresetByOrgSlug={workspaceNavPresetByOrgSlug}
         showAdminLink={staff}
         productContext={productContext}
         sidebar={resolvedSidebar}
@@ -138,7 +114,6 @@ export default async function DashboardLayout({
           memberships.length === 0 && leaderRow ? leaderRow.full_name : null
         }
       >
-        {showOnboardingPanel ? <OnboardingPanel /> : null}
         {children}
       </AuthenticatedShell>
     </Suspense>

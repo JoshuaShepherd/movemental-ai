@@ -456,7 +456,7 @@
   {
     "id": "who-we-serve-consumer-llms-barna",
     "rank": 17,
-    "page": "/who-we-serve",
+    "page": "/",
     "claimType": "Purported fact",
     "claim": "Staff already use consumer LLMs when leadership has not set boundaries.",
     "cite": {
@@ -472,7 +472,7 @@
   {
     "id": "who-we-serve-trust-afp",
     "rank": 17,
-    "page": "/who-we-serve",
+    "page": "/",
     "claimType": "Opinion",
     "claim": "Mission organizations trade in trust; automation choices affect relationships.",
     "cite": {

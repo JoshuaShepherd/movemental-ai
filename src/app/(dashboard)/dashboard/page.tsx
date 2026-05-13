@@ -4,12 +4,13 @@ import { redirect } from "next/navigation";
 import { Eyebrow } from "@/components/primitives/eyebrow";
 import { appendOrgQuery } from "@/lib/authenticated/workspace-primary-nav";
 import type { DashboardPersona } from "@/lib/dashboard/dashboard-persona";
+import type { WorkspaceNavPreset } from "@/lib/dashboard/workspace-nav-preset";
 import {
   buildOnboardingStatePayload,
   resolveDashboardContextForSessionUser,
 } from "@/lib/services/onboarding/onboarding.service";
 import { createClient } from "@/lib/supabase/server";
-import { BookOpen, Calendar, ClipboardList, LayoutGrid, Shield } from "lucide-react";
+import { BookOpen, Calendar, ClipboardList, LayoutGrid, ListChecks, Shield } from "lucide-react";
 
 type Destination = {
   href: string;
@@ -18,7 +19,7 @@ type Destination = {
   icon: typeof LayoutGrid;
 };
 
-function destinationsForPersona(persona: DashboardPersona): Destination[] {
+function destinationsForHub(persona: DashboardPersona, workspaceNavPreset: WorkspaceNavPreset): Destination[] {
   const program: Destination = {
     href: "/program",
     title: "Program templates",
@@ -51,9 +52,39 @@ function destinationsForPersona(persona: DashboardPersona): Destination[] {
     description:
       persona === "implementation_org"
         ? "Expanded checklist with cohort date and every phase—use it to align operations, programs, and development before kickoff."
-        : "Open the expanded checklist with cohort date and every phase. The compact checklist stays pinned above on this overview.",
+        : "Open the expanded checklist with cohort date and every phase when you need it.",
     icon: ClipboardList,
   };
+
+  const assessment: Destination = {
+    href: "/assess",
+    title: "Organization assessment",
+    description:
+      "Movemental Path integrity diagnostic for senior leaders—about 10–15 minutes before we meet; opens the public assessment flow.",
+    icon: ListChecks,
+  };
+
+  const sandboxHub: Destination = {
+    href: "/sandboxlive",
+    title: "Sandbox",
+    description:
+      "Cohort phases, recipes, and roster — the working engagement surface once scheduling and assessment are underway.",
+    icon: LayoutGrid,
+  };
+
+  if (persona === "implementation_org" && workspaceNavPreset === "sandbox_live_focus") {
+    return [
+      scheduleTraining,
+      assessment,
+      sandboxHub,
+      teaching,
+      {
+        ...onboarding,
+        description:
+          "Optional: expanded steps, cohort date, and later phases when you need them—the MOU is under Documents in the header.",
+      },
+    ];
+  }
 
   if (persona === "implementation_org") {
     return [program, scheduleTraining, onboarding, teaching];
@@ -95,10 +126,16 @@ export default async function DashboardHomePage({
   const sp = await searchParams;
   const ctx = await resolveDashboardContextForSessionUser(user.id, sp.org);
   const persona = ctx?.persona ?? "movement_leader";
+  const workspaceNavPreset: WorkspaceNavPreset = ctx?.workspaceNavPreset ?? "default";
 
-  const destinations = destinationsForPersona(persona).map((d) => ({
+  const destinations = destinationsForHub(persona, workspaceNavPreset).map((d) => ({
     ...d,
-    href: ctx ? appendOrgQuery(d.href, ctx.slug) : d.href,
+    href:
+      d.href === "/assess"
+        ? "/assess"
+        : ctx
+          ? appendOrgQuery(d.href, ctx.slug)
+          : d.href,
   }));
 
   const onboardingPayload =
@@ -123,17 +160,27 @@ export default async function DashboardHomePage({
           Overview
         </h1>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-          {persona === "implementation_org" ? (
+          {persona === "implementation_org" && workspaceNavPreset === "sandbox_live_focus" ? (
+            <>
+              Your Sandbox workspace. Start with <span className="font-medium text-foreground">schedule</span> and
+              the short <span className="font-medium text-foreground">assessment</span>; sign the MOU from{" "}
+              <span className="font-medium text-foreground">Documents</span> in the header when counsel is ready. Use{" "}
+              <span className="font-medium text-foreground">Onboarding</span> only when you need the full checklist.
+            </>
+          ) : persona === "implementation_org" ? (
             <>
               Your signed-in hub for organizational governance work. Use Program templates for Safety and
-              Sandbox sequences, keep onboarding moving so inventory and policy stay aligned with your board
-              stance, and switch organizations in the header when you belong to more than one.
+              Sandbox sequences, use <span className="font-medium text-foreground">Documents</span> in the header
+              for the MOU, keep deeper onboarding steps in <span className="font-medium text-foreground">Onboarding</span>{" "}
+              when you need the full checklist, and switch organizations in the header when you belong to more
+              than one.
             </>
           ) : (
             <>
               Your signed-in hub after login. Use the header to switch organizations when you belong to more
-              than one. The onboarding panel above tracks commitments and later phases until your organization
-              is fully onboarded.
+              than one. Open <span className="font-medium text-foreground">Documents</span> in the header to
+              review and sign the MOU, or use <span className="font-medium text-foreground">Onboarding</span> in
+              the workspace links for the full checklist when you need it.
             </>
           )}
         </p>
@@ -182,7 +229,10 @@ export default async function DashboardHomePage({
         </section>
       ) : null}
 
-      {ctx && onboardingPayload && !onboardingComplete ? (
+      {ctx &&
+      onboardingPayload &&
+      !onboardingComplete &&
+      !(persona === "implementation_org" && workspaceNavPreset === "sandbox_live_focus") ? (
         <section aria-labelledby="dashboard-next-tasks-heading" className="flex flex-col gap-4">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <h2 id="dashboard-next-tasks-heading" className="text-[0.95rem] font-medium text-foreground">

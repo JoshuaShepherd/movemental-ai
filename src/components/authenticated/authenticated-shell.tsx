@@ -6,6 +6,7 @@ import { ChevronDown, LogOut } from "lucide-react";
 
 import { DashboardOrgProvider } from "@/components/dashboard/dashboard-org-context";
 import {
+  appendOrgQuery,
   getWorkspacePrimaryNavItems,
   withOrgIfNeeded,
 } from "@/lib/authenticated/workspace-primary-nav";
@@ -25,6 +26,7 @@ import {
 import { cn } from "@/lib/utils";
 
 import type { DashboardPersona } from "@/lib/dashboard/dashboard-persona";
+import type { WorkspaceNavPreset } from "@/lib/dashboard/workspace-nav-preset";
 
 /**
  * AuthenticatedShell — the single chrome for every signed-in surface.
@@ -40,9 +42,10 @@ import type { DashboardPersona } from "@/lib/dashboard/dashboard-persona";
  * separate top-level product contexts.
  *
  * The general workspace passes `productContext: null` and shows Tier A links
- * from `getWorkspacePrimaryNavItems`. When a product sidebar is active, the
- * same links are available from the **Workspace** dropdown (one click to open,
- * second click to navigate).
+ * from `getWorkspacePrimaryNavItems`, with optional `preset` from
+ * `organizations.settings.workspaceNavPreset` per active org slug. When a
+ * product sidebar is active, the same links are available from the **Workspace**
+ * dropdown (one click to open, second click to navigate).
  */
 
 export type ProductContext = "sandbox" | "safe" | "leader" | null;
@@ -77,6 +80,7 @@ export function AuthenticatedShell({
   userEmail,
   memberships,
   personaByOrgSlug,
+  workspaceNavPresetByOrgSlug = {},
   showAdminLink,
   productContext = null,
   sidebar,
@@ -90,6 +94,7 @@ export function AuthenticatedShell({
   userEmail: string;
   memberships: Membership[];
   personaByOrgSlug: Record<string, DashboardPersona>;
+  workspaceNavPresetByOrgSlug?: Record<string, WorkspaceNavPreset>;
   showAdminLink: boolean;
   productContext?: ProductContext;
   sidebar?: AuthenticatedSidebarSection[];
@@ -131,6 +136,11 @@ export function AuthenticatedShell({
     "movement_leader";
   const programNavLabel = persona === "implementation_org" ? "Safety & Sandbox" : "Program";
 
+  const workspaceNavPreset: WorkspaceNavPreset =
+    (currentSlug && workspaceNavPresetByOrgSlug[currentSlug]) ||
+    workspaceNavPresetByOrgSlug[initialOrgSlug] ||
+    "default";
+
   const productLabel = productContext ? PRODUCT_LABELS[productContext] : null;
   const onLeaderProduct = pathname === "/leader" || pathname.startsWith("/leader/");
   const showProgressRail =
@@ -141,6 +151,7 @@ export function AuthenticatedShell({
   const workspaceNavItems = getWorkspacePrimaryNavItems({
     programNavLabel,
     showStaff: showAdminLink,
+    preset: workspaceNavPreset,
   });
 
   const workspaceMenuDropdown = (
@@ -209,6 +220,32 @@ export function AuthenticatedShell({
               )}
             </div>
             <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+              {memberships.length >= 1 && currentSlug ? (
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      className="gap-1 rounded-none text-white/80 hover:bg-white/10 hover:text-white"
+                      aria-label="Documents and agreements"
+                    >
+                      Documents
+                      <ChevronDown className="size-4 shrink-0 opacity-70" aria-hidden />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="min-w-[14rem]">
+                    <DropdownMenuItem asChild>
+                      <Link
+                        href={appendOrgQuery("/onboarding/agreement", currentSlug)}
+                        className="cursor-pointer"
+                      >
+                        Memorandum of Understanding (MOU)
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : null}
               {memberships.length >= 1 ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>

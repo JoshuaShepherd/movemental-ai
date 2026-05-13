@@ -31,61 +31,74 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /* Absolute sizing — the chip is always the same physical pill regardless of
-     the surrounding text size. (Earlier `em`-based sizing made the chip scale
-     with hero numbers, producing a 3.5rem chip next to a 3.6rem number.) */
-  min-width: 1.35rem;
-  height: 1.35rem;
-  padding: 0 0.4rem;
-  margin: 0 0.15em;
+  min-width: 1.65rem;
+  height: auto;
+  min-height: 1.2em;
+  padding: 0.08em 0.28em 0.12em;
+  margin: 0 0.12em;
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
   color: var(--cite-hl-ink);
-  background: var(--cite-hl);
-  border: 1px solid color-mix(in srgb, var(--cite-hl-strong) 30%, transparent);
-  border-radius: 9999px;
+  /* Highlighter stroke: soft edge, slight tilt, not a pill counter */
+  background: linear-gradient(
+    104deg,
+    color-mix(in srgb, var(--cite-hl) 82%, transparent) 0%,
+    var(--cite-hl) 42%,
+    color-mix(in srgb, var(--cite-hl-strong) 55%, var(--cite-hl)) 100%
+  );
+  border: 0;
+  border-radius: 2px 5px 4px 3px;
+  transform: rotate(-1.25deg) translateY(-0.08em);
   cursor: pointer;
-  /* Lift stays in `em` so the chip rides correctly above its baseline whether
-     it sits in body prose or a 3.6rem hero number. */
-  translate: 0 -0.35em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
   vertical-align: baseline;
   transition:
     background 150ms ease,
     color 150ms ease,
     transform 150ms ease,
-    box-shadow 150ms ease;
-  box-shadow: 0 1px 0 color-mix(in srgb, var(--cite-hl-strong) 30%, transparent);
+    filter 150ms ease;
+  box-shadow: none;
 }
 
 .cite__btn::before {
   content: "";
   position: absolute;
-  inset: -2px -3px;
-  border-radius: 9999px;
-  background: var(--cite-hl);
+  inset: -1px -2px;
+  border-radius: 3px 6px 5px 4px;
+  background: color-mix(in srgb, var(--cite-hl-strong) 35%, transparent);
   opacity: 0;
   transition: opacity 200ms ease;
   z-index: -1;
-  filter: blur(6px);
+  filter: blur(5px);
+  transform: rotate(0.5deg);
 }
 
 .cite__btn:hover,
 .cite__btn:focus-visible {
-  background: var(--cite-hl-strong);
-  color: #fff;
+  background: linear-gradient(
+    104deg,
+    var(--cite-hl) 0%,
+    color-mix(in srgb, var(--cite-hl-strong) 70%, var(--cite-hl)) 100%
+  );
+  color: var(--cite-hl-ink);
   outline: none;
+  transform: rotate(-0.5deg) translateY(-0.1em) scale(1.02);
 }
 
 .cite__btn:hover::before,
 .cite__btn:focus-visible::before {
-  opacity: 0.45;
+  opacity: 0.35;
 }
 
 .cite__btn[aria-expanded="true"] {
-  background: var(--cite-hl-ink);
-  color: var(--cite-hl);
+  background: color-mix(in srgb, var(--cite-hl-ink) 88%, var(--cite-hl));
+  color: var(--cite-hl-soft);
+  transform: rotate(0deg) translateY(-0.06em);
 }
 
 .cite__btn:focus-visible {
@@ -249,22 +262,28 @@
 }
 
 .refs-list li::before {
-  content: counter(ref);
+  content: "[" counter(ref) "]";
   position: absolute;
   left: 0;
-  top: 1.45rem;
+  top: 1.35rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 1.7em;
-  height: 1.7em;
-  font-size: 0.78rem;
+  min-width: 2.1em;
+  padding: 0.15em 0.35em 0.2em;
+  font-size: 0.72rem;
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.03em;
   color: var(--cite-hl-ink);
-  background: var(--cite-hl);
-  border-radius: 9999px;
-  border: 1px solid color-mix(in srgb, var(--cite-hl-strong) 30%, transparent);
-  padding: 0 0.45em;
+  background: linear-gradient(
+    100deg,
+    color-mix(in srgb, var(--cite-hl) 85%, transparent),
+    var(--cite-hl)
+  );
+  border-radius: 2px 5px 4px 3px;
+  transform: rotate(-1deg);
+  border: 0;
 }
 
 .refs-list li strong {

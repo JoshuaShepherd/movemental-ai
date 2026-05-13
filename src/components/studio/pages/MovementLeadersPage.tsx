@@ -165,7 +165,7 @@ export function MovementLeadersPage() {
                   
                   <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-border-soft">
                      <Link href="/voices" className="text-primary font-medium hover:underline inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span> Movement Voices page</Link>
-                     <Link href="/who-we-serve" className="text-primary font-medium hover:underline inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span> Who we serve</Link>
+                     <Link href="/#audiences" className="text-primary font-medium hover:underline inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span> Who Movemental serves</Link>
                   </div>
                </div>
             </aside>

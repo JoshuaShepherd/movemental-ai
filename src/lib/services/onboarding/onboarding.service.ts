@@ -28,6 +28,10 @@ import {
   type TaskRowStatus,
 } from "@/lib/onboarding/state";
 import { resolveDashboardPersona, type DashboardPersona } from "@/lib/dashboard/dashboard-persona";
+import {
+  resolveWorkspaceNavPreset,
+  type WorkspaceNavPreset,
+} from "@/lib/dashboard/workspace-nav-preset";
 import { presentOnboardingTaskForPersona } from "@/lib/onboarding/onboarding-persona-present";
 import { ONBOARDING_PHASES, ONBOARDING_TASKS, taskDefinitionByKey } from "@/lib/onboarding/tasks";
 import type { Result } from "@/lib/services/simplified/base.service";
@@ -223,7 +227,12 @@ export async function resolveActiveOrganizationId(
 export async function resolveDashboardContextForSessionUser(
   userId: string,
   orgSlugParam?: string | null,
-): Promise<{ slug: string; organizationId: string; persona: DashboardPersona } | null> {
+): Promise<{
+  slug: string;
+  organizationId: string;
+  persona: DashboardPersona;
+  workspaceNavPreset: WorkspaceNavPreset;
+} | null> {
   const resolved = await resolveActiveOrganizationId(userId, orgSlugParam ?? undefined);
   if (!resolved.success) return null;
 
@@ -243,13 +252,19 @@ export async function resolveDashboardContextForSessionUser(
     slug: resolved.data.slug,
     organizationId: resolved.data.organizationId,
     persona: resolveDashboardPersona(row),
+    workspaceNavPreset: resolveWorkspaceNavPreset(row.settings),
   };
 }
 
-/** Persona per org slug for the signed-in user's memberships (dashboard chrome). */
-export async function loadDashboardPersonaMapForUser(userId: string): Promise<Record<string, DashboardPersona>> {
+/** Workspace nav preset per org slug (same query as persona — use with `loadDashboardShellMapsForUser`). */
+export async function loadDashboardShellMapsForUser(userId: string): Promise<{
+  personaByOrgSlug: Record<string, DashboardPersona>;
+  workspaceNavPresetByOrgSlug: Record<string, WorkspaceNavPreset>;
+}> {
   const memberships = await listMembershipOrganizations(userId);
-  if (memberships.length === 0) return {};
+  if (memberships.length === 0) {
+    return { personaByOrgSlug: {}, workspaceNavPresetByOrgSlug: {} };
+  }
 
   const ids = memberships.map((m) => m.organizationId);
   const rows = await db
@@ -261,11 +276,36 @@ export async function loadDashboardPersonaMapForUser(userId: string): Promise<Re
     .from(organizations)
     .where(inArray(organizations.id, ids));
 
-  const map: Record<string, DashboardPersona> = {};
+  const personaByOrgSlug: Record<string, DashboardPersona> = {};
+  const workspaceNavPresetByOrgSlug: Record<string, WorkspaceNavPreset> = {};
   for (const r of rows) {
-    map[r.slug] = resolveDashboardPersona(r);
+    personaByOrgSlug[r.slug] = resolveDashboardPersona(r);
+    workspaceNavPresetByOrgSlug[r.slug] = resolveWorkspaceNavPreset(r.settings);
   }
-  return map;
+  return { personaByOrgSlug, workspaceNavPresetByOrgSlug };
+}
+
+/** Persona per org slug for the signed-in user's memberships (dashboard chrome). */
+export async function loadDashboardPersonaMapForUser(userId: string): Promise<Record<string, DashboardPersona>> {
+  const { personaByOrgSlug } = await loadDashboardShellMapsForUser(userId);
+  return personaByOrgSlug;
+}
+
+/** Active org's workspace nav preset (defaults when no org resolved). */
+export async function resolveWorkspaceNavPresetForSessionUser(
+  userId: string,
+  orgSlugParam?: string | null,
+): Promise<WorkspaceNavPreset> {
+  const resolved = await resolveActiveOrganizationId(userId, orgSlugParam ?? undefined);
+  if (!resolved.success) return "default";
+
+  const [row] = await db
+    .select({ settings: organizations.settings })
+    .from(organizations)
+    .where(eq(organizations.id, resolved.data.organizationId))
+    .limit(1);
+
+  return resolveWorkspaceNavPreset(row?.settings);
 }
 
 export async function isUserStaff(userId: string): Promise<boolean> {

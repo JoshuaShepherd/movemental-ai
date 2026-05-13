@@ -4,7 +4,11 @@
 
 **Chrome:** One `AuthenticatedShell` (`src/components/authenticated/authenticated-shell.tsx`) for every path that sets `x-movemental-shell: dashboard` in `proxy.ts`. Marketing `SiteHeader` / `SiteFooter` are suppressed on those routes. Root fonts: **Inter** (body/UI) and **Newsreader** via `--font-serif-display` (display headings and `<em>` emphasis in the serif register). **Instrument Serif is not loaded.** Product chrome uses **warm midnight** (`movemental-midnight` → `#141110`), **burnished amber** (`pathway-accent` → `#b8893a`) for primary actions and active chrome, **hairline rules** (`border-[0.5px]` + `border-rule` / semantic borders), **no marketing pill radius** on shell-primary buttons (`Button` variant `pathway`, `rounded-none`). No drop shadows on shell surfaces; tonal stacking and hairlines carry structure.
 
-**Progress rail:** When onboarding is incomplete (`onboardingProgress` below 100), the amber rail and editorial caption render under the header for org customers and leader workspace users (hidden on `/leader/*` where `OnboardingPanel` is also omitted). Leader progress respects voice-commitment signing state.
+**Progress rail:** When leader onboarding is incomplete (`onboardingProgress` below 100), the amber rail and editorial caption render under the header for **leader workspace** users on `/leader/*`. Organization customers no longer see this rail (2026-05); use `/welcome` for the full checklist and **Documents → MOU** in the header for signing.
+
+**Documents menu:** Signed-in users with an active organization see **Documents** in the header (midnight bar); **Memorandum of Understanding (MOU)** opens `/onboarding/agreement` (rewritten to `dashboard/onboarding/agreement`) with DocuSign links from `AgreementSigningPanel` when `NEXT_PUBLIC_DOCUSIGN_MOU_URL` is set.
+
+**Workspace nav preset:** `organizations.settings.workspaceNavPreset` (`"default"` \| `"sandbox_live_focus"`) is loaded per org slug via `loadDashboardShellMapsForUser` in `src/lib/services/onboarding/onboarding.service.ts` and passed into `AuthenticatedShell`. When `sandbox_live_focus`, the workspace strip omits Program and SafeStart (nav label **Sandbox** → `/sandboxlive`). `(dashboard)/program/layout.tsx` and `(dashboard)/safestart/layout.tsx` redirect those route trees to `/sandboxlive?org=…` for that preset.
 
 ---
 
@@ -16,10 +20,10 @@
 | `/welcome` | Yes | Full onboarding checklist |
 | `/onboarding` → rewrites | Yes | Friendly URLs to `/dashboard/onboarding/*` |
 | `/admin/*` | Yes | Staff: onboarding console, leaders index, design tokens |
-| `/program`, `/program/*` | Yes | Safety / Sandbox template previews |
+| `/program`, `/program/*` | Yes | Safety / Sandbox template previews; `program/layout` redirects to `/sandboxlive` when org `workspaceNavPreset` is `sandbox_live_focus` |
 | `/agent-runtime` | Yes | Staff agent runtime (`(studio)` segment may add its own layout; marketing chrome still suppressed when flagged) |
 | `/sandboxlive`, `/sandboxlive/*` | Yes | SandboxLive product: phases 01–08, cohort, recipes, sponsor oversight, org admin |
-| `/safestart`, `/safestart/*` | Yes | SafeStart product: numbered workspaces, guidebook |
+| `/safestart`, `/safestart/*` | Yes | SafeStart product: numbered workspaces, guidebook; `safestart/layout` redirects to `/sandboxlive` when org preset is `sandbox_live_focus` |
 | `/leader`, `/leader/*` | Yes except `/leader/apply` | Leader workspace; apply route uses marketing chrome |
 | `/future-plan` | Yes | Prefix reserved in proxy (alias routing if present) |
 

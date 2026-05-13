@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * @see ./README.md — archived 2026-05; not mounted from layout.
+ */
+
 import * as React from "react";
 
 import { OnboardingChecklist } from "@/components/onboarding/onboarding-checklist";
@@ -34,9 +38,7 @@ export function OnboardingPanel() {
     if (dismissed) return null;
     return (
       <div className="mb-8 flex flex-col gap-3 rounded-xl bg-card px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-muted-foreground">
-          You are fully onboarded — your dashboard is ready.
-        </p>
+        <p className="text-sm text-muted-foreground">You are fully onboarded — your dashboard is ready.</p>
         <Button
           type="button"
           variant="ghost"
@@ -56,9 +58,7 @@ export function OnboardingPanel() {
   return (
     <section className="mb-10 rounded-xl bg-card px-4 py-5 md:px-6 md:py-6">
       <div className="flex items-start justify-between gap-3 lg:hidden">
-        <p className="text-[0.78rem] font-medium uppercase tracking-eyebrow text-muted-foreground">
-          Checklist
-        </p>
+        <p className="text-[0.78rem] font-medium uppercase tracking-eyebrow text-muted-foreground">Checklist</p>
         <button
           type="button"
           className="inline-flex items-center gap-1 text-sm text-muted-foreground"
@@ -66,10 +66,7 @@ export function OnboardingPanel() {
           onClick={() => setMobileOpen((o) => !o)}
         >
           {mobileOpen ? "Hide" : "Show"}
-          <ChevronDown
-            className={cn("size-4 transition-transform", mobileOpen && "rotate-180")}
-            aria-hidden
-          />
+          <ChevronDown className={cn("size-4 transition-transform", mobileOpen && "rotate-180")} aria-hidden />
         </button>
       </div>
 
