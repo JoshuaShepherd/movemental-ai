@@ -28,6 +28,7 @@ const ROUTES: ReadonlyArray<{
   { path: "/evidence", changeFrequency: "monthly", priority: 0.75 },
   { path: "/field-guides", changeFrequency: "monthly", priority: 0.85 },
   { path: "/field-guides/safety", changeFrequency: "monthly", priority: 0.85 },
+  { path: "/field-guides/sandbox", changeFrequency: "monthly", priority: 0.85 },
   { path: "/library", changeFrequency: "monthly", priority: 0.55 },
   { path: "/technology", changeFrequency: "monthly", priority: 0.55 },
   { path: "/how-we-use-ai", changeFrequency: "monthly", priority: 0.5 },

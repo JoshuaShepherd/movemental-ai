@@ -3,10 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { SAFETY_FIELD_GUIDE_COVER_IMAGE } from "@/lib/safety-field-guide";
-import {
-  SANDBOX_FIELD_GUIDE_COVER_IMAGE,
-  SANDBOX_FIELD_GUIDE_PDF_PATH,
-} from "@/lib/sandbox-field-guide";
+import { SANDBOX_FIELD_GUIDE_COVER_IMAGE } from "@/lib/sandbox-field-guide";
 import { canonicalPageUrl } from "@/lib/site-url";
 
 export const metadata: Metadata = {
@@ -51,8 +48,8 @@ const VOLUMES: readonly Volume[] = [
       "What disciplined experimentation actually looks like once Safety is in place. How to set up a sandbox, how to evaluate vendor claims aggressively, and how to build the portfolio of proof that earns the right to train your team.",
     cover: SANDBOX_FIELD_GUIDE_COVER_IMAGE,
     coverAlt: "Cover of It Continues With Exploration field guide, Volume Two",
-    cta: { label: "Download Volume Two", href: SANDBOX_FIELD_GUIDE_PDF_PATH },
-    status: "Available as PDF",
+    cta: { label: "Read Volume Two", href: "/field-guides/sandbox" },
+    status: "Available now",
   },
 ];
 
