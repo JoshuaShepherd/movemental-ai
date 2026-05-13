@@ -333,7 +333,7 @@ export function ThePathPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/contact" className="btn-pill btn-pill--primary">Start a conversation</Link>
-              <Link href="/voices" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">See trusted voices</Link>
+              <Link href="/voices" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">See Movement Leaders</Link>
             </div>
           </Reveal>
         </Container>

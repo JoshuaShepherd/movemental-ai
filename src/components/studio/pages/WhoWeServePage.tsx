@@ -163,7 +163,7 @@ export function WhoWeServePage() {
             
             <div className="flex flex-wrap gap-4 pt-4 border-t border-border max-w-[640px]">
                <Link href="/movement-leaders" className="btn-pill btn-pill--ghost">Read the definition</Link>
-               <Link href="/voices" className="btn-pill btn-pill--ghost">See the trusted voices</Link>
+               <Link href="/voices" className="btn-pill btn-pill--ghost">See the Movement Leaders directory</Link>
             </div>
           </Reveal>
         </Container>

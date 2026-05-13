@@ -10,7 +10,7 @@ import { listMovementVoiceCommitmentSigners } from "@/lib/movement-leaders/movem
 export const metadata: Metadata = {
   title: "Movemental Voice Commitments",
   description:
-    "Shared commitments for trusted voices working with Movemental — plus leaders who have signed.",
+    "Shared commitments for Movement Leaders working with Movemental — plus leaders who have signed.",
 };
 
 export default async function MovementVoiceCommitmentsPage() {

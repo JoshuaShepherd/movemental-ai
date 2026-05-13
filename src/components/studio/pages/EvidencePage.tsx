@@ -159,7 +159,7 @@ export function EvidencePage() {
                   </div>
                   <div>
                      <h3 className="font-serif-display text-2xl italic mb-3 text-foreground">Ecosystem validation</h3>
-                     <p className="text-[0.98rem] leading-relaxed text-muted-foreground">Pressure-tested continuously by our network of Trusted Voices—practitioners actively executing on the ground.</p>
+                     <p className="text-[0.98rem] leading-relaxed text-muted-foreground">Pressure-tested continuously by our network of Movement Leaders—practitioners actively executing on the ground.</p>
                   </div>
                </div>
                <Link href="/about" className="btn-pill btn-pill--ghost">Meet the founders</Link>

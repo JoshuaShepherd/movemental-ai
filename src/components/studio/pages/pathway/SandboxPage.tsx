@@ -578,7 +578,7 @@ export function SandboxPage() {
                 href="/voices"
                 className="self-start border-b border-foreground pb-1 text-[0.7rem] font-semibold uppercase tracking-eyebrow text-foreground transition-colors hover:border-pathway-accent hover:text-pathway-accent md:self-end"
               >
-                See all trusted voices →
+                See all Movement Leaders →
               </Link>
             </div>
             <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-12">

@@ -142,7 +142,7 @@ export function MovementLeadersPage() {
               There is no open roster and no form to nominate someone. The list is curated slowly and deliberately by the Movemental founders. It is an editable list—voices are added as the conversation expands and changes shape.
             </p>
             
-            <Link href="/voices" className="btn-pill btn-pill--ghost">See the trusted voices</Link>
+            <Link href="/voices" className="btn-pill btn-pill--ghost">See the Movement Leaders directory</Link>
           </Reveal>
         </Container>
       </section>

@@ -9,7 +9,7 @@ import { LeaderApplyForm } from "./leader-apply-form";
 
 export const metadata: Metadata = {
   title: "Apply — movement leader",
-  description: "Application to join Movemental trusted voices as a movement leader.",
+  description: "Application to join Movemental as a Movement Leader.",
 };
 
 export default function LeaderApplyPage() {

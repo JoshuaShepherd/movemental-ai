@@ -60,7 +60,7 @@ function VoicePortrait({ image, name }: { image: string | null; name: string }) 
 
 export function VoicesPage() {
   useEffect(() => {
-    document.title = "Trusted Voices | Movemental";
+    document.title = "Movement Leaders | Movemental";
   }, []);
 
   return (
