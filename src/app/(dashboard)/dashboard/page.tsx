@@ -4,13 +4,26 @@ import { redirect } from "next/navigation";
 import { Eyebrow } from "@/components/primitives/eyebrow";
 import { appendOrgQuery } from "@/lib/authenticated/workspace-primary-nav";
 import type { DashboardPersona } from "@/lib/dashboard/dashboard-persona";
-import type { WorkspaceNavPreset } from "@/lib/dashboard/workspace-nav-preset";
+import {
+  isSandboxLiveFirstHub,
+  WORKSPACE_COURSES_NONE,
+  type WorkspaceCourseEntitlements,
+} from "@/lib/dashboard/workspace-course-entitlements";
 import {
   buildOnboardingStatePayload,
   resolveDashboardContextForSessionUser,
 } from "@/lib/services/onboarding/onboarding.service";
 import { createClient } from "@/lib/supabase/server";
-import { BookOpen, Calendar, ClipboardList, LayoutGrid, ListChecks, Shield } from "lucide-react";
+import {
+  BookOpen,
+  Calendar,
+  ClipboardList,
+  LayoutGrid,
+  ListChecks,
+  Shield,
+  Sparkles,
+  Wrench,
+} from "lucide-react";
 
 type Destination = {
   href: string;
@@ -19,7 +32,7 @@ type Destination = {
   icon: typeof LayoutGrid;
 };
 
-function destinationsForHub(persona: DashboardPersona, workspaceNavPreset: WorkspaceNavPreset): Destination[] {
+function destinationsForHub(persona: DashboardPersona, courses: WorkspaceCourseEntitlements): Destination[] {
   const program: Destination = {
     href: "/program",
     title: "Program templates",
@@ -72,24 +85,67 @@ function destinationsForHub(persona: DashboardPersona, workspaceNavPreset: Works
     icon: LayoutGrid,
   };
 
-  if (persona === "implementation_org" && workspaceNavPreset === "sandbox_live_focus") {
-    return [
-      scheduleTraining,
-      assessment,
-      sandboxHub,
-      teaching,
-      {
-        ...onboarding,
-        description:
-          "Optional: expanded steps, cohort date, and later phases when you need them—the MOU is under Documents in the header.",
-      },
-    ];
+  const skills: Destination = {
+    href: "/dashboard/skills",
+    title: "Skills",
+    description:
+      "Organization-scoped skills workspace — starter surface while the full experience is built out.",
+    icon: Sparkles,
+  };
+
+  const solutions: Destination = {
+    href: "/dashboard/solutions",
+    title: "Solutions",
+    description:
+      "Curated solutions lane for your workspace — placeholder hub until the full module ships.",
+    icon: Wrench,
+  };
+
+  if (isSandboxLiveFirstHub(persona, courses)) {
+    const base: Destination[] = [];
+    if (courses.sandbox) base.push(scheduleTraining, assessment, sandboxHub);
+    base.push(teaching, {
+      ...onboarding,
+      description:
+        "Optional: expanded steps, cohort date, and later phases when you need them—the MOU is under Documents in the header.",
+    });
+    return appendOptionalSkillsSolutions(base, courses, skills, solutions);
   }
 
   if (persona === "implementation_org") {
-    return [program, scheduleTraining, onboarding, teaching];
+    const base: Destination[] = [];
+    if (courses.safety) base.push(program);
+    if (courses.sandbox) base.push(scheduleTraining);
+    base.push(onboarding, teaching);
+    return appendOptionalSkillsSolutions(base, courses, skills, solutions);
   }
-  return [program, teaching, onboarding];
+
+  const base: Destination[] = [];
+  if (courses.safety) base.push(program);
+  else if (courses.sandbox) base.push(sandboxHub);
+  base.push(teaching, onboarding);
+  return appendOptionalSkillsSolutions(base, courses, skills, solutions);
+}
+
+function appendOptionalSkillsSolutions(
+  base: Destination[],
+  courses: WorkspaceCourseEntitlements,
+  skills: Destination,
+  solutions: Destination,
+): Destination[] {
+  const out = [...base];
+  if (courses.skills) out.push(skills);
+  if (courses.solutions) out.push(solutions);
+  return dedupeDestinationsByHref(out);
+}
+
+function dedupeDestinationsByHref(items: Destination[]): Destination[] {
+  const seen = new Set<string>();
+  return items.filter((d) => {
+    if (seen.has(d.href)) return false;
+    seen.add(d.href);
+    return true;
+  });
 }
 
 type OnboardingTaskRow = NonNullable<
@@ -126,9 +182,10 @@ export default async function DashboardHomePage({
   const sp = await searchParams;
   const ctx = await resolveDashboardContextForSessionUser(user.id, sp.org);
   const persona = ctx?.persona ?? "movement_leader";
-  const workspaceNavPreset: WorkspaceNavPreset = ctx?.workspaceNavPreset ?? "default";
+  const courses: WorkspaceCourseEntitlements = ctx?.workspaceCourses ?? WORKSPACE_COURSES_NONE;
+  const sandboxLiveFirst = isSandboxLiveFirstHub(persona, courses);
 
-  const destinations = destinationsForHub(persona, workspaceNavPreset).map((d) => ({
+  const destinations = destinationsForHub(persona, courses).map((d) => ({
     ...d,
     href:
       d.href === "/assess"
@@ -160,7 +217,7 @@ export default async function DashboardHomePage({
           Overview
         </h1>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-          {persona === "implementation_org" && workspaceNavPreset === "sandbox_live_focus" ? (
+          {sandboxLiveFirst ? (
             <>
               Your Sandbox workspace. Start with <span className="font-medium text-foreground">schedule</span> and
               the short <span className="font-medium text-foreground">assessment</span>; sign the MOU from{" "}
@@ -232,7 +289,7 @@ export default async function DashboardHomePage({
       {ctx &&
       onboardingPayload &&
       !onboardingComplete &&
-      !(persona === "implementation_org" && workspaceNavPreset === "sandbox_live_focus") ? (
+      !sandboxLiveFirst ? (
         <section aria-labelledby="dashboard-next-tasks-heading" className="flex flex-col gap-4">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <h2 id="dashboard-next-tasks-heading" className="text-[0.95rem] font-medium text-foreground">

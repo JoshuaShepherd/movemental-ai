@@ -26,7 +26,8 @@ import {
 import { cn } from "@/lib/utils";
 
 import type { DashboardPersona } from "@/lib/dashboard/dashboard-persona";
-import type { WorkspaceNavPreset } from "@/lib/dashboard/workspace-nav-preset";
+import { WORKSPACE_COURSES_NONE } from "@/lib/dashboard/workspace-course-entitlements";
+import type { WorkspaceCourseEntitlements } from "@/lib/dashboard/workspace-course-entitlements";
 
 /**
  * AuthenticatedShell — the single chrome for every signed-in surface.
@@ -42,10 +43,10 @@ import type { WorkspaceNavPreset } from "@/lib/dashboard/workspace-nav-preset";
  * separate top-level product contexts.
  *
  * The general workspace passes `productContext: null` and shows Tier A links
- * from `getWorkspacePrimaryNavItems`, with optional `preset` from
- * `organizations.settings.workspaceNavPreset` per active org slug. When a
- * product sidebar is active, the same links are available from the **Workspace**
- * dropdown (one click to open, second click to navigate).
+ * from `getWorkspacePrimaryNavItems`, with `workspaceCoursesByOrgSlug` from
+ * `organizations.settings.workspaceCourses` (and legacy `workspaceNavPreset`
+ * folded into entitlements on the server). When a product sidebar is active,
+ * the same links are available from the **Workspace** dropdown.
  */
 
 export type ProductContext = "sandbox" | "safe" | "leader" | null;
@@ -80,7 +81,7 @@ export function AuthenticatedShell({
   userEmail,
   memberships,
   personaByOrgSlug,
-  workspaceNavPresetByOrgSlug = {},
+  workspaceCoursesByOrgSlug = {},
   showAdminLink,
   productContext = null,
   sidebar,
@@ -94,7 +95,7 @@ export function AuthenticatedShell({
   userEmail: string;
   memberships: Membership[];
   personaByOrgSlug: Record<string, DashboardPersona>;
-  workspaceNavPresetByOrgSlug?: Record<string, WorkspaceNavPreset>;
+  workspaceCoursesByOrgSlug?: Record<string, WorkspaceCourseEntitlements>;
   showAdminLink: boolean;
   productContext?: ProductContext;
   sidebar?: AuthenticatedSidebarSection[];
@@ -136,10 +137,10 @@ export function AuthenticatedShell({
     "movement_leader";
   const programNavLabel = persona === "implementation_org" ? "Safety & Sandbox" : "Program";
 
-  const workspaceNavPreset: WorkspaceNavPreset =
-    (currentSlug && workspaceNavPresetByOrgSlug[currentSlug]) ||
-    workspaceNavPresetByOrgSlug[initialOrgSlug] ||
-    "default";
+  const workspaceCourses: WorkspaceCourseEntitlements =
+    (currentSlug && workspaceCoursesByOrgSlug[currentSlug]) ||
+    workspaceCoursesByOrgSlug[initialOrgSlug] ||
+    WORKSPACE_COURSES_NONE;
 
   const productLabel = productContext ? PRODUCT_LABELS[productContext] : null;
   const onLeaderProduct = pathname === "/leader" || pathname.startsWith("/leader/");
@@ -151,7 +152,7 @@ export function AuthenticatedShell({
   const workspaceNavItems = getWorkspacePrimaryNavItems({
     programNavLabel,
     showStaff: showAdminLink,
-    preset: workspaceNavPreset,
+    courses: workspaceCourses,
   });
 
   const workspaceMenuDropdown = (

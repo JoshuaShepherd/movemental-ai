@@ -29,6 +29,10 @@ import {
 } from "@/lib/onboarding/state";
 import { resolveDashboardPersona, type DashboardPersona } from "@/lib/dashboard/dashboard-persona";
 import {
+  resolveWorkspaceCourseEntitlements,
+  type WorkspaceCourseEntitlements,
+} from "@/lib/dashboard/workspace-course-entitlements";
+import {
   resolveWorkspaceNavPreset,
   type WorkspaceNavPreset,
 } from "@/lib/dashboard/workspace-nav-preset";
@@ -37,6 +41,7 @@ import { ONBOARDING_PHASES, ONBOARDING_TASKS, taskDefinitionByKey } from "@/lib/
 import type { Result } from "@/lib/services/simplified/base.service";
 
 export type { DashboardPersona } from "@/lib/dashboard/dashboard-persona";
+export type { WorkspaceCourseEntitlements } from "@/lib/dashboard/workspace-course-entitlements";
 
 function ok<T>(data: T): Result<T> {
   return { success: true, data };
@@ -232,6 +237,7 @@ export async function resolveDashboardContextForSessionUser(
   organizationId: string;
   persona: DashboardPersona;
   workspaceNavPreset: WorkspaceNavPreset;
+  workspaceCourses: WorkspaceCourseEntitlements;
 } | null> {
   const resolved = await resolveActiveOrganizationId(userId, orgSlugParam ?? undefined);
   if (!resolved.success) return null;
@@ -253,6 +259,7 @@ export async function resolveDashboardContextForSessionUser(
     organizationId: resolved.data.organizationId,
     persona: resolveDashboardPersona(row),
     workspaceNavPreset: resolveWorkspaceNavPreset(row.settings),
+    workspaceCourses: resolveWorkspaceCourseEntitlements(row.settings),
   };
 }
 
@@ -260,10 +267,11 @@ export async function resolveDashboardContextForSessionUser(
 export async function loadDashboardShellMapsForUser(userId: string): Promise<{
   personaByOrgSlug: Record<string, DashboardPersona>;
   workspaceNavPresetByOrgSlug: Record<string, WorkspaceNavPreset>;
+  workspaceCoursesByOrgSlug: Record<string, WorkspaceCourseEntitlements>;
 }> {
   const memberships = await listMembershipOrganizations(userId);
   if (memberships.length === 0) {
-    return { personaByOrgSlug: {}, workspaceNavPresetByOrgSlug: {} };
+    return { personaByOrgSlug: {}, workspaceNavPresetByOrgSlug: {}, workspaceCoursesByOrgSlug: {} };
   }
 
   const ids = memberships.map((m) => m.organizationId);
@@ -278,11 +286,13 @@ export async function loadDashboardShellMapsForUser(userId: string): Promise<{
 
   const personaByOrgSlug: Record<string, DashboardPersona> = {};
   const workspaceNavPresetByOrgSlug: Record<string, WorkspaceNavPreset> = {};
+  const workspaceCoursesByOrgSlug: Record<string, WorkspaceCourseEntitlements> = {};
   for (const r of rows) {
     personaByOrgSlug[r.slug] = resolveDashboardPersona(r);
     workspaceNavPresetByOrgSlug[r.slug] = resolveWorkspaceNavPreset(r.settings);
+    workspaceCoursesByOrgSlug[r.slug] = resolveWorkspaceCourseEntitlements(r.settings);
   }
-  return { personaByOrgSlug, workspaceNavPresetByOrgSlug };
+  return { personaByOrgSlug, workspaceNavPresetByOrgSlug, workspaceCoursesByOrgSlug };
 }
 
 /** Persona per org slug for the signed-in user's memberships (dashboard chrome). */
@@ -306,6 +316,23 @@ export async function resolveWorkspaceNavPresetForSessionUser(
     .limit(1);
 
   return resolveWorkspaceNavPreset(row?.settings);
+}
+
+/** Course entitlements for the active org, or `null` when org cannot be resolved. */
+export async function resolveWorkspaceCourseEntitlementsForSessionUser(
+  userId: string,
+  orgSlugParam?: string | null,
+): Promise<WorkspaceCourseEntitlements | null> {
+  const resolved = await resolveActiveOrganizationId(userId, orgSlugParam ?? undefined);
+  if (!resolved.success) return null;
+
+  const [row] = await db
+    .select({ settings: organizations.settings })
+    .from(organizations)
+    .where(eq(organizations.id, resolved.data.organizationId))
+    .limit(1);
+
+  return resolveWorkspaceCourseEntitlements(row?.settings);
 }
 
 export async function isUserStaff(userId: string): Promise<boolean> {
@@ -668,10 +695,17 @@ export async function buildOnboardingStatePayload(organizationId: string) {
       ? (org.settings as Record<string, unknown>)
       : {};
   const engagementType = settingsObj.engagement_type;
+  const courseEntitlements = resolveWorkspaceCourseEntitlements(org.settings);
   const postOnboardingHref =
     engagementType === "safestart" || engagementType === "safe_start"
-      ? "/safestart"
-      : "/sandboxlive";
+      ? courseEntitlements.safety
+        ? "/safestart"
+        : courseEntitlements.sandbox
+          ? "/sandboxlive"
+          : "/dashboard"
+      : courseEntitlements.sandbox
+        ? "/sandboxlive"
+        : "/dashboard";
   const aiReadinessRaw = settingsObj.ai_readiness;
   const aiReadiness =
     typeof aiReadinessRaw === "number" && aiReadinessRaw >= 1 && aiReadinessRaw <= 5

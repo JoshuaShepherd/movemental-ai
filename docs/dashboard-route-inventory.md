@@ -6,9 +6,13 @@
 
 **Progress rail:** When leader onboarding is incomplete (`onboardingProgress` below 100), the amber rail and editorial caption render under the header for **leader workspace** users on `/leader/*`. Organization customers no longer see this rail (2026-05); use `/welcome` for the full checklist and **Documents → MOU** in the header for signing.
 
-**Documents menu:** Signed-in users with an active organization see **Documents** in the header (midnight bar); **Memorandum of Understanding (MOU)** opens `/onboarding/agreement` (rewritten to `dashboard/onboarding/agreement`) with DocuSign links from `AgreementSigningPanel` when `NEXT_PUBLIC_DOCUSIGN_MOU_URL` is set.
+**Documents menu:** Signed-in users with an active organization see **Documents** in the header (midnight bar); **Memorandum of Understanding (MOU)** opens `/onboarding/agreement` (rewritten to `dashboard/onboarding/agreement`) with `AgreementSigningPanel` (org context, register link; native signing flow in product).
 
-**Workspace nav preset:** `organizations.settings.workspaceNavPreset` (`"default"` \| `"sandbox_live_focus"`) is loaded per org slug via `loadDashboardShellMapsForUser` in `src/lib/services/onboarding/onboarding.service.ts` and passed into `AuthenticatedShell`. When `sandbox_live_focus`, the workspace strip omits Program and SafeStart (nav label **Sandbox** → `/sandboxlive`). `(dashboard)/program/layout.tsx` and `(dashboard)/safestart/layout.tsx` redirect those route trees to `/sandboxlive?org=…` for that preset.
+**Workspace courses (opt-in):** `organizations.settings.workspaceCourses` (`"safety"` \| `"sandbox"` \| `"skills"` \| `"solutions"`) is resolved per org via `resolveWorkspaceCourseEntitlements` and passed as `workspaceCoursesByOrgSlug` into `AuthenticatedShell` with `loadDashboardShellMapsForUser`. Missing key ⇒ no Program/SandboxLive/SafeStart unless legacy **`workspaceNavPreset: "sandbox_live_focus"`** (sandbox only). **`workspaceCourses: []`** ⇒ no product modules (preset ignored).
+
+**Legacy preset:** `organizations.settings.workspaceNavPreset` (`"default"` \| `"sandbox_live_focus"`) still applies when **`workspaceCourses` is absent** — `sandbox_live_focus` enables sandbox-only strip (nav label **Sandbox** → `/sandboxlive`). With explicit non-empty `workspaceCourses`, preset is ignored for nav/guards.
+
+**Redirects:** `(dashboard)/program/layout.tsx`, `(dashboard)/safestart/layout.tsx`, and `(dashboard)/sandboxlive/layout.tsx` redirect when the org lacks the corresponding course entitlement.
 
 ---
 

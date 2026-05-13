@@ -2,15 +2,16 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { appendOrgQuery } from "@/lib/authenticated/workspace-primary-nav";
+import { workspaceFallbackHrefAfterBlockedCourse } from "@/lib/dashboard/workspace-course-guard.server";
 import {
   resolveActiveOrganizationId,
-  resolveWorkspaceNavPresetForSessionUser,
+  resolveWorkspaceCourseEntitlementsForSessionUser,
 } from "@/lib/services/onboarding/onboarding.service";
 import { createClient } from "@/lib/supabase/server";
 
 /**
- * SandboxLive-first orgs (`workspaceNavPreset: sandbox_live_focus`) should not
- * use Program templates via bookmarked URLs — send them to SandboxLive.
+ * Block `/program` when the active org does not have the **safety** course
+ * (Program + SafeStart). Deep links match nav visibility.
  */
 export default async function ProgramLayout({ children }: { children: React.ReactNode }) {
   const h = await headers();
@@ -24,14 +25,18 @@ export default async function ProgramLayout({ children }: { children: React.Reac
     return children;
   }
 
-  const preset = await resolveWorkspaceNavPresetForSessionUser(user.id, orgSlug);
-  if (preset !== "sandbox_live_focus") {
+  const courses = await resolveWorkspaceCourseEntitlementsForSessionUser(user.id, orgSlug);
+  if (courses == null) {
     return children;
   }
 
-  const resolved = await resolveActiveOrganizationId(user.id, orgSlug ?? undefined);
-  if (!resolved.success) {
-    redirect("/sandboxlive");
+  if (!courses.safety) {
+    const resolved = await resolveActiveOrganizationId(user.id, orgSlug ?? undefined);
+    if (!resolved.success) {
+      redirect(workspaceFallbackHrefAfterBlockedCourse(courses));
+    }
+    redirect(appendOrgQuery(workspaceFallbackHrefAfterBlockedCourse(courses), resolved.data.slug));
   }
-  redirect(appendOrgQuery("/sandboxlive", resolved.data.slug));
+
+  return children;
 }

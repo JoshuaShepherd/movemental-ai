@@ -4,7 +4,8 @@
  * product context hides the horizontal links).
  */
 
-import type { WorkspaceNavPreset } from "@/lib/dashboard/workspace-nav-preset";
+import type { WorkspaceCourseEntitlements } from "@/lib/dashboard/workspace-course-entitlements";
+import { workspaceSandboxNavLabel } from "@/lib/dashboard/workspace-course-entitlements";
 
 export type WorkspaceNavItem = {
   label: string;
@@ -32,25 +33,34 @@ export function withOrgIfNeeded(
 export function getWorkspacePrimaryNavItems(opts: {
   programNavLabel: string;
   showStaff: boolean;
-  /** When `sandbox_live_focus`, Program + SafeStart are hidden; SandboxLive label becomes "Sandbox". */
-  preset?: WorkspaceNavPreset;
+  /** Per-org course entitlements from `organizations.settings.workspaceCourses` (+ legacy preset). */
+  courses: WorkspaceCourseEntitlements;
 }): WorkspaceNavItem[] {
-  const preset = opts.preset ?? "default";
+  const { courses } = opts;
+  const sandboxLabel = workspaceSandboxNavLabel(courses);
 
-  const core: WorkspaceNavItem[] =
-    preset === "sandbox_live_focus"
-      ? [
-          { label: "Sandbox", href: "/sandboxlive", appendOrg: true },
-          { label: "Onboarding", href: "/welcome", appendOrg: true },
-          { label: "Teaching library", href: "/dashboard/teaching/claude-skills", appendOrg: false },
-        ]
-      : [
-          { label: opts.programNavLabel, href: "/program", appendOrg: true },
-          { label: "SandboxLive", href: "/sandboxlive", appendOrg: true },
-          { label: "SafeStart", href: "/safestart", appendOrg: true },
-          { label: "Onboarding", href: "/welcome", appendOrg: true },
-          { label: "Teaching library", href: "/dashboard/teaching/claude-skills", appendOrg: false },
-        ];
+  const core: WorkspaceNavItem[] = [];
+
+  if (courses.safety) {
+    core.push({ label: opts.programNavLabel, href: "/program", appendOrg: true });
+  }
+  if (courses.sandbox) {
+    core.push({ label: sandboxLabel, href: "/sandboxlive", appendOrg: true });
+  }
+  if (courses.safety) {
+    core.push({ label: "SafeStart", href: "/safestart", appendOrg: true });
+  }
+  if (courses.skills) {
+    core.push({ label: "Skills", href: "/dashboard/skills", appendOrg: false });
+  }
+  if (courses.solutions) {
+    core.push({ label: "Solutions", href: "/dashboard/solutions", appendOrg: false });
+  }
+
+  core.push(
+    { label: "Onboarding", href: "/welcome", appendOrg: true },
+    { label: "Teaching library", href: "/dashboard/teaching/claude-skills", appendOrg: false },
+  );
 
   if (!opts.showStaff) return core;
 

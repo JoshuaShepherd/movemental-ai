@@ -61,7 +61,7 @@ export default async function DashboardLayout({
 
   const staff = await isUserStaff(user.id);
   const initialSlug = memberships[0]?.orgSlug ?? "";
-  const { personaByOrgSlug, workspaceNavPresetByOrgSlug } = await loadDashboardShellMapsForUser(user.id);
+  const { personaByOrgSlug, workspaceCoursesByOrgSlug } = await loadDashboardShellMapsForUser(user.id);
 
   const { productContext, sidebar } = resolveAuthenticatedShellContext(pathname);
 
@@ -103,7 +103,7 @@ export default async function DashboardLayout({
         userEmail={user.email ?? ""}
         memberships={memberships}
         personaByOrgSlug={personaByOrgSlug}
-        workspaceNavPresetByOrgSlug={workspaceNavPresetByOrgSlug}
+        workspaceCoursesByOrgSlug={workspaceCoursesByOrgSlug}
         showAdminLink={staff}
         productContext={productContext}
         sidebar={resolvedSidebar}

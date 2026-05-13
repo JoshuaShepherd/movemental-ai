@@ -10,9 +10,9 @@ import {
 import { createClient } from "@/lib/supabase/server";
 
 /**
- * Block `/safestart` when the active org does not have **safety** (same entitlement as Program).
+ * Block `/sandboxlive` when the active org does not have the **sandbox** course.
  */
-export default async function SafeStartLayout({ children }: { children: React.ReactNode }) {
+export default async function SandboxLiveLayout({ children }: { children: React.ReactNode }) {
   const h = await headers();
   const orgSlug = h.get("x-dashboard-org-slug")?.trim() || null;
 
@@ -29,7 +29,7 @@ export default async function SafeStartLayout({ children }: { children: React.Re
     return children;
   }
 
-  if (!courses.safety) {
+  if (!courses.sandbox) {
     const resolved = await resolveActiveOrganizationId(user.id, orgSlug ?? undefined);
     if (!resolved.success) {
       redirect(workspaceFallbackHrefAfterBlockedCourse(courses));
