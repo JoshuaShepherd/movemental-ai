@@ -77,6 +77,14 @@ export async function SiteFooter() {
             </li>
             <li>
               <Link
+                href="/movement-leaders"
+                className="decoration-primary/30 underline-offset-4 transition-colors hover:text-primary hover:underline hover:decoration-primary"
+              >
+                Movement Leaders
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/voices"
                 className="decoration-primary/30 underline-offset-4 transition-colors hover:text-primary hover:underline hover:decoration-primary"
               >
@@ -167,14 +175,6 @@ export async function SiteFooter() {
                 className="decoration-primary/30 underline-offset-4 transition-colors hover:text-primary hover:underline hover:decoration-primary"
               >
                 Institutions
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/movement-leaders"
-                className="decoration-primary/30 underline-offset-4 transition-colors hover:text-primary hover:underline hover:decoration-primary"
-              >
-                Movement leaders
               </Link>
             </li>
           </ul>
