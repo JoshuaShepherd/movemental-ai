@@ -46,8 +46,6 @@ const serverSchema = z.object({
   ONBOARDING_PAYMENT_AMOUNT_CENTS: z.coerce.number().int().positive().optional(),
   /** Shared secret for /book/moderate tooling (set in production) */
   BOOK_MODERATION_TOKEN: z.string().min(8).optional(),
-  /** DocuSign Connect HMAC key — validates `X-DocuSign-Signature-1` on POST /api/webhooks/docusign */
-  DOCUSIGN_CONNECT_HMAC_KEY: z.string().min(1).optional(),
   /** Calendly webhook signing key — validates `Calendly-Webhook-Signature` on POST /api/webhooks/calendly */
   CALENDLY_WEBHOOK_SIGNING_KEY: z.string().min(1).optional(),
   // Sentry (optional — monitoring is disabled when DSN is unset)
@@ -68,10 +66,6 @@ const clientSchema = z.object({
   NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string().min(1).optional(),
   // Sentry DSN (optional — monitoring is disabled when unset)
   NEXT_PUBLIC_SENTRY_DSN: optionalEnvUrl(),
-  /** DocuSign: engagement / MSA envelope (browser redirect) */
-  NEXT_PUBLIC_DOCUSIGN_ENGAGEMENT_URL: optionalEnvUrl(),
-  /** DocuSign: optional separate MOU envelope URL */
-  NEXT_PUBLIC_DOCUSIGN_MOU_URL: optionalEnvUrl(),
   /** Calendly: default training / cohort kickoff scheduling page (embed) */
   NEXT_PUBLIC_CALENDLY_TRAINING_URL: optionalEnvUrl(),
 });
@@ -91,7 +85,6 @@ const processEnv = {
   CRON_SECRET: process.env.CRON_SECRET,
   ONBOARDING_PAYMENT_AMOUNT_CENTS: process.env.ONBOARDING_PAYMENT_AMOUNT_CENTS,
   BOOK_MODERATION_TOKEN: process.env.BOOK_MODERATION_TOKEN,
-  DOCUSIGN_CONNECT_HMAC_KEY: process.env.DOCUSIGN_CONNECT_HMAC_KEY,
   CALENDLY_WEBHOOK_SIGNING_KEY: process.env.CALENDLY_WEBHOOK_SIGNING_KEY,
   SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN,
   SENTRY_ORG: process.env.SENTRY_ORG,
@@ -104,8 +97,6 @@ const processEnv = {
   NEXT_PUBLIC_SOCIAL_BLUESKY_URL: process.env.NEXT_PUBLIC_SOCIAL_BLUESKY_URL,
   NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
   NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN,
-  NEXT_PUBLIC_DOCUSIGN_ENGAGEMENT_URL: process.env.NEXT_PUBLIC_DOCUSIGN_ENGAGEMENT_URL,
-  NEXT_PUBLIC_DOCUSIGN_MOU_URL: process.env.NEXT_PUBLIC_DOCUSIGN_MOU_URL,
   NEXT_PUBLIC_CALENDLY_TRAINING_URL: process.env.NEXT_PUBLIC_CALENDLY_TRAINING_URL,
 } as const;
 

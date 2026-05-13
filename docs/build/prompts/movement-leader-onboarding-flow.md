@@ -66,7 +66,7 @@ Phase 1 is hard-gated. Phase 2 unlocks once Phase 1's gate task (`sign_agreement
 | 2 | `confirm_payment` | Confirm your payment | 5m | `sign_agreement` | yes | no |
 | 3 | `choose_cohort` | Choose your cohort start date | 5m | `sign_agreement` | yes | no |
 
-The agreement is the combined Master Services Agreement + this engagement's Statement of Work — payment terms, scope, AI plus authorship commitments, IP and content rights (who owns the corpus, who owns the agent, what happens if the relationship ends), data processing and privacy disclosures (GDPR / CCPA where applicable), credibility and usage principles. The leader signs once via embedded e-sign (DocuSign or HelloSign). Subsequent engagements get an SOW-only signing flow later — not in this build.
+The agreement is the combined Master Services Agreement + this engagement's Statement of Work — payment terms, scope, AI plus authorship commitments, IP and content rights (who owns the corpus, who owns the agent, what happens if the relationship ends), data processing and privacy disclosures (GDPR / CCPA where applicable), credibility and usage principles. The leader signs once using the in-dashboard electronic signing flow. Subsequent engagements get an SOW-only signing flow later — not in this build.
 
 ### Phase 2 — Identity (parallel; available after `sign_agreement`)
 
@@ -550,7 +550,7 @@ The temptation is to build the full 16-task system in one go because the archite
 
 - `(dashboard)` route group, layout, and minimal `DashboardShell`.
 - `<OnboardingPanel />` rendering the four phases — Phases 2–4 show as `Coming soon` placeholders.
-- Three Phase-1 task pages: `/onboarding/agreement` (placeholder embed link to DocuSign URL pasted in `signed_agreements.document_url`), `/onboarding/payment` (Stripe checkout — wire to existing infra if present, otherwise placeholder confirmation page), `/onboarding/cohort` (date picker writing `cohort_start_date`).
+- Three Phase-1 task pages: `/onboarding/agreement` (native signing flow; agreement row in `signed_agreements` or successor table), `/onboarding/payment` (Stripe checkout — wire to existing infra if present, otherwise placeholder confirmation page), `/onboarding/cohort` (date picker writing `cohort_start_date`).
 - `welcome` email wired through Resend.
 - `phase1_complete` email wired.
 - Smoke-test in dev with one of Alan's leaders (use the `lucas-pulley` slug to avoid touching real flows).

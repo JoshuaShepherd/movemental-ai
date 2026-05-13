@@ -170,7 +170,7 @@ Mirror this route tree under the authenticated shell:
 
 ### 4.4 Phase 1 task pages
 
-- **Agreement:** External signing link from **`NEXT_PUBLIC_DOCUSIGN_ENGAGEMENT_URL`** when set; otherwise explanatory copy. **`POST /complete`** with `taskKey: "sign_agreement"`.
+- **Agreement:** Native in-dashboard signing (review → consent → signature); **`POST /complete`** with `taskKey: "sign_agreement"` when the signing pipeline marks the task done.
 - **Payment:** Copy + **`confirm_payment`** complete.
 - **Cohort:** Native date input → **`POST /api/onboarding/cohort`** then **`choose_cohort`** complete (server validates date present).
 
@@ -202,7 +202,6 @@ Document in `.env.example`:
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Browser client |
 | `NEXT_PUBLIC_MOVEMENTAL_API_ORIGIN` | **If** API is cross-origin (e.g. `https://movemental.com`) |
 | `NEXT_PUBLIC_SITE_URL` | Canonical site origin for links in emails is server-side; dashboard may use for absolute links |
-| `NEXT_PUBLIC_DOCUSIGN_ENGAGEMENT_URL` | Optional signing deep link |
 
 ---
 

@@ -4,9 +4,6 @@ import Link from "next/link";
 
 import { useDashboardOrganizationSlug } from "@/components/dashboard/dashboard-org-context";
 
-const DOCUSIGN_ENGAGEMENT = process.env.NEXT_PUBLIC_DOCUSIGN_ENGAGEMENT_URL;
-const DOCUSIGN_MOU = process.env.NEXT_PUBLIC_DOCUSIGN_MOU_URL;
-
 function StepNumber({ n }: { n: number }) {
   return (
     <span className="flex size-8 shrink-0 items-center justify-center bg-section text-sm font-semibold text-primary">
@@ -50,8 +47,8 @@ export function AgreementSigningPanel() {
               </li>
             </ul>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              Authoritative legal text lives in the envelopes your counsel configures. After execution, completed files
-              appear in your{" "}
+              Authoritative legal text is the version shown in the in-dashboard signing flow. After execution, the
+              signed file appears in your{" "}
               <Link href={agreementsHref} className="font-medium text-primary underline underline-offset-4">
                 signed agreements register
               </Link>
@@ -63,39 +60,11 @@ export function AgreementSigningPanel() {
         <li className="flex gap-4">
           <StepNumber n={3} />
           <div className="flex min-w-0 flex-col gap-3">
-            <p className="text-sm font-semibold text-foreground">E-sign</p>
+            <p className="text-sm font-semibold text-foreground">E-sign in this workspace</p>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              Open each envelope when your Movemental contact confirms they are ready. DocuSign Connect can record
-              completion automatically when webhooks are configured.
+              You will review the agreement, consent to sign electronically, then capture your signature here in the
+              dashboard. Your Movemental contact can confirm when your organization is ready to open the signing steps.
             </p>
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              {DOCUSIGN_MOU ? (
-                <Link
-                  href={DOCUSIGN_MOU}
-                  className="inline-flex items-center justify-center bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-                >
-                  Open MOU envelope
-                </Link>
-              ) : null}
-              {DOCUSIGN_ENGAGEMENT ? (
-                <Link
-                  href={DOCUSIGN_ENGAGEMENT}
-                  className={`inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium transition-colors ${
-                    DOCUSIGN_MOU
-                      ? "bg-card text-foreground ring-1 ring-border hover:bg-elevated"
-                      : "bg-primary text-primary-foreground hover:opacity-90"
-                  }`}
-                >
-                  {DOCUSIGN_MOU ? "Open engagement envelope" : "Open signing envelope"}
-                </Link>
-              ) : null}
-            </div>
-            {!DOCUSIGN_ENGAGEMENT && !DOCUSIGN_MOU ? (
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                Your Movemental contact will send signing links. Until then, you can mark this step complete after you
-                have signed offline.
-              </p>
-            ) : null}
           </div>
         </li>
 
@@ -104,8 +73,8 @@ export function AgreementSigningPanel() {
           <div className="flex min-w-0 flex-col gap-2">
             <p className="text-sm font-semibold text-foreground">Already signed offline?</p>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              If counsel executed paper or a separate e-sign tool, keep copies with your records and mark this step
-              complete here once Movemental has mirrored the row in your agreements register.
+              If counsel executed paper or a separate tool, keep copies with your records and coordinate with
+              Movemental so your agreements register reflects what is on file.
             </p>
           </div>
         </li>

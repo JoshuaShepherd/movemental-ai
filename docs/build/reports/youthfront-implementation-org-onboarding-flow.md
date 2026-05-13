@@ -2,7 +2,7 @@
 
 **Context:** For sandbox-first engagements (e.g. Youth Front), operational reality is closer to **two group-level commitments** than a long pinned checklist: get people onto the calendar for in-person work, and run the short diagnostic assessment. Legal closure is often a **single MOU** executed by a COO or counsel, not sixteen surfaced tasks.
 
-**What shipped in code (2026-05):** The persistent white **OnboardingPanel** (collapsible checklist above every dashboard route) is **archived** (`src/components/onboarding/archive/`). Signing is surfaced from the midnight header via **Documents → Memorandum of Understanding (MOU)**, linking to `/onboarding/agreement` (existing `AgreementSigningPanel` with DocuSign when `NEXT_PUBLIC_DOCUSIGN_MOU_URL` is configured). The full checklist remains on **`/welcome`** and linked from the workspace nav as **Onboarding** for teams that still need it.
+**What shipped in code (2026-05):** The persistent white **OnboardingPanel** (collapsible checklist above every dashboard route) is **archived** (`src/components/onboarding/archive/`). Signing is surfaced from the midnight header via **Documents → Memorandum of Understanding (MOU)**, linking to `/onboarding/agreement` (`AgreementSigningPanel`). The full checklist remains on **`/welcome`** and linked from the workspace nav as **Onboarding** for teams that still need it.
 
 ---
 
@@ -23,7 +23,7 @@
 ### 3. MOU / legal (parallel or after schedule, never hidden)
 
 - **Why:** Counsel often runs on a different calendar than operations. It should not block scheduling UI, but it **must** stay obvious until signed. Header **Documents → MOU** keeps it one click away without implying fifteen other tasks.
-- **Success signal:** DocuSign Connect (already supported) writes `signed_agreements`; optional staff nudge if session is booked but MOU is open.
+- **Success signal:** A `signed_agreements` row (or successor native-signature record) reflects execution; optional staff nudge if session is booked but MOU is open.
 
 ### 4. What to de-emphasize for this persona
 

@@ -103,7 +103,7 @@ This operational playbook provides the complete framework for delivering Movemen
 
 #### Contract & Onboarding Process
 **Agreement Execution**
-- Contract review and digital signing (DocuSign)
+- Contract review and digital signing in the Movemental dashboard
 - Initial payment processing ($1,000 implementation fee)
 - Project initiation and team assignment
 - Client onboarding and expectation alignment

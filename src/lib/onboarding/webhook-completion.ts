@@ -42,23 +42,6 @@ export async function loadAccountOwnerProfileForOrganization(
   };
 }
 
-/** After engagement MSA is recorded, advance onboarding when the task is still completable. */
-export async function tryCompleteSignAgreementFromWebhook(organizationId: string): Promise<void> {
-  const owner = await loadAccountOwnerProfileForOrganization(organizationId);
-  if (!owner) return;
-  const result = await completeOnboardingTask({
-    organizationId,
-    userId: owner.userId,
-    userEmail: owner.email,
-    firstName: owner.firstName,
-    taskKey: "sign_agreement",
-    metadata: { source: "docusign_connect_webhook" },
-  });
-  if (!result.success) {
-    console.warn("[webhook] sign_agreement completion skipped:", result.error);
-  }
-}
-
 /** After cohort date is set from Calendly, complete choose_cohort when still available. */
 export async function tryCompleteChooseCohortFromWebhook(organizationId: string): Promise<void> {
   const owner = await loadAccountOwnerProfileForOrganization(organizationId);
