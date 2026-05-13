@@ -42,10 +42,10 @@ function destinationsForHub(persona: DashboardPersona, courses: WorkspaceCourseE
   };
 
   const assessment: Destination = {
-    href: "/assess",
+    href: "/sandboxlive/phase/02-assessment",
     title: "Organization assessment",
     description:
-      "Movemental Path integrity diagnostic for senior leaders—about 10–15 minutes before we meet; opens the public assessment flow.",
+      "SandboxLive Phase 02 — the cohort Current Reality Map workspace (large structured interview), not the public marketing-site Integrity Diagnostic.",
     icon: ListChecks,
   };
 
@@ -124,12 +124,7 @@ export default async function DashboardHomePage({
 
   const destinations = destinationsForHub(persona, courses).map((d) => ({
     ...d,
-    href:
-      d.href === "/assess"
-        ? "/assess"
-        : ctx
-          ? appendOrgQuery(d.href, ctx.slug)
-          : d.href,
+    href: ctx ? appendOrgQuery(d.href, ctx.slug) : d.href,
   }));
 
   const onboardingPayload =
