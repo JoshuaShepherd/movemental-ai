@@ -1,3 +1,5 @@
+import "server-only";
+
 import { eq } from "drizzle-orm";
 
 import { db } from "@/lib/db";
@@ -33,19 +35,4 @@ export async function getCalendlyTrainingUrlForOrganization(
   if (fromSettings) return fromSettings;
 
   return env.NEXT_PUBLIC_CALENDLY_TRAINING_URL ?? null;
-}
-
-/**
- * Append UTM so Calendly webhooks can map bookings back to an org slug (`utm_content`).
- */
-export function withCalendlyOrgTracking(calendlyUrl: string, organizationSlug: string): string {
-  try {
-    const u = new URL(calendlyUrl);
-    u.searchParams.set("utm_content", organizationSlug);
-    u.searchParams.set("utm_source", "movemental");
-    u.searchParams.set("utm_medium", "sandboxlive");
-    return u.toString();
-  } catch {
-    return calendlyUrl;
-  }
 }

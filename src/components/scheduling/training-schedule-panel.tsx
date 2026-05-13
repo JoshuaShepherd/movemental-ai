@@ -5,7 +5,7 @@ import * as React from "react";
 
 import { CalendlyEmbed } from "@/components/scheduling/calendly-embed";
 import { Button } from "@/components/ui/button";
-import { withCalendlyOrgTracking } from "@/lib/scheduling/calendly-training-url";
+import { withCalendlyOrgTracking } from "@/lib/scheduling/calendly-url";
 
 type TrainingSchedulePanelProps = {
   organizationSlug: string | null;
