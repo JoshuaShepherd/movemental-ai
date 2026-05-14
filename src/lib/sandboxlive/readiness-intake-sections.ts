@@ -7,7 +7,18 @@
  * deleting one is a breaking change for any prior export.
  */
 
-export const READINESS_INTAKE_VERSION = "2026-05-14" as const;
+export const READINESS_INTAKE_VERSION = "2026-05-15" as const;
+
+/** Single-select value for `mental_model` that triggers the free-text follow-up. */
+export const MENTAL_MODEL_OTHER_OPTION = "Other" as const;
+
+/** Sliders that form the “% of week” split — used for live total UI. */
+export const WEEK_TIME_SPLIT_SLIDER_IDS = [
+  "time_meetings",
+  "time_focused",
+  "time_admin_comms",
+  "time_relational",
+] as const;
 
 export type ReadinessQuestionType =
   | "text"
@@ -391,7 +402,15 @@ export const READINESS_SECTIONS: readonly ReadinessSection[] = [
           "Fancy autocomplete that predicts text",
           "A computer program that genuinely thinks",
           "Honestly, I don't know what it is",
+          "Other",
         ],
+      },
+      {
+        id: "mental_model_other",
+        type: "textarea",
+        label: "If you picked Other, how do you picture AI? (A sentence or two is enough.)",
+        required: false,
+        placeholder: "Describe your own mental model…",
       },
       {
         id: "ai_tools",
@@ -687,6 +706,19 @@ export const READINESS_SECTIONS: readonly ReadinessSection[] = [
 /** Default slider value — used for unanswered sliders so the thumb sits sensibly. */
 export function defaultSliderValue(q: SliderQuestion): number {
   return Math.round((q.min + q.max) / 2);
+}
+
+/** Sum of the four “% of week” sliders — uses default thumb value when unset. */
+export function weekTimeSplitPercentTotal(answers: Record<string, unknown>): number {
+  let sum = 0;
+  for (const id of WEEK_TIME_SPLIT_SLIDER_IDS) {
+    const q = findReadinessQuestion(id);
+    if (!q || q.type !== "slider") continue;
+    const raw = answers[id];
+    const v = typeof raw === "number" && Number.isFinite(raw) ? raw : defaultSliderValue(q);
+    sum += v;
+  }
+  return sum;
 }
 
 /** Flatten all question ids in declaration order. */

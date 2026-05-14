@@ -28,7 +28,7 @@ export default async function ReadinessInvitePage({ params }: PageProps) {
 
   return (
     <ReadinessIntakeWizard
-      orgSlug=""
+      orgSlug={resolved.organizationSlug}
       orgQuery=""
       organizationName={resolved.organizationName}
       existingSubmission={null}

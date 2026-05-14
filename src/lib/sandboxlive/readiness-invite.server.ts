@@ -47,7 +47,13 @@ export async function createReadinessInvite(params: {
 }
 
 export type ResolvedReadinessInvite =
-  | { ok: true; inviteId: string; organizationId: string; organizationName: string }
+  | {
+      ok: true;
+      inviteId: string;
+      organizationId: string;
+      organizationName: string;
+      organizationSlug: string;
+    }
   | { ok: false; reason: "not_found" | "expired" | "revoked" };
 
 export async function resolveReadinessInviteBySecretToken(
@@ -64,6 +70,7 @@ export async function resolveReadinessInviteBySecretToken(
       revoked_at: sandboxStaffReadinessInvites.revoked_at,
       expires_at: sandboxStaffReadinessInvites.expires_at,
       org_name: organizations.name,
+      org_slug: organizations.slug,
     })
     .from(sandboxStaffReadinessInvites)
     .innerJoin(organizations, eq(sandboxStaffReadinessInvites.organization_id, organizations.id))
@@ -84,6 +91,7 @@ export async function resolveReadinessInviteBySecretToken(
     inviteId: row.id,
     organizationId: row.organization_id,
     organizationName: row.org_name,
+    organizationSlug: row.org_slug,
   };
 }
 

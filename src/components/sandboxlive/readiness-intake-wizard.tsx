@@ -2,7 +2,7 @@
 
 import { ArrowLeft, ArrowRight, Check, Sparkles } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useId, useMemo, useState } from "react";
+import { Fragment, useEffect, useId, useMemo, useState } from "react";
 
 import { submitReadinessIntakeAction } from "@/app/(dashboard)/sandboxlive/readiness/actions";
 import { submitReadinessInviteIntakeAction } from "@/app/readiness-invite/actions";
@@ -10,10 +10,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
+  MENTAL_MODEL_OTHER_OPTION,
   READINESS_INTAKE_VERSION,
   READINESS_SECTIONS,
   defaultSliderValue,
   isAnswered,
+  weekTimeSplitPercentTotal,
   type LikertQuestion,
   type MultiQuestion,
   type ReadinessQuestion,
@@ -22,6 +24,7 @@ import {
   type TextAreaQuestion,
   type TextQuestion,
 } from "@/lib/sandboxlive/readiness-intake-sections";
+import { visibleReadinessQuestions, YOUTHFRONT_ORG_SLUG } from "@/lib/sandboxlive/readiness-org-overrides";
 import { cn } from "@/lib/utils";
 
 type WizardPhase = "welcome" | "section" | "submitting" | "done";
@@ -144,7 +147,13 @@ export function ReadinessIntakeWizard({
         : 0;
 
   function setAnswer(qid: string, val: unknown) {
-    setAnswers((prev) => ({ ...prev, [qid]: val }));
+    setAnswers((prev) => {
+      const next: AnswersBag = { ...prev, [qid]: val };
+      if (qid === "mental_model" && val !== MENTAL_MODEL_OTHER_OPTION) {
+        delete next.mental_model_other;
+      }
+      return next;
+    });
     setMissingIds((prev) => {
       if (!prev.has(qid)) return prev;
       const next = new Set(prev);
@@ -155,7 +164,15 @@ export function ReadinessIntakeWizard({
 
   function validateCurrentSection(): { ok: true } | { ok: false; missing: string[] } {
     const missing: string[] = [];
-    for (const q of currentSection.questions) {
+    const org = orgSlug.trim() || undefined;
+    const visible = visibleReadinessQuestions(currentSection, answers, org);
+    for (const q of visible) {
+      if (q.id === "mental_model_other" && answers.mental_model === MENTAL_MODEL_OTHER_OPTION) {
+        if (!isAnswered(q, answers[q.id])) {
+          missing.push(q.id);
+        }
+        continue;
+      }
       if (q.required && !isAnswered(q, answers[q.id])) {
         missing.push(q.id);
       }
@@ -346,6 +363,7 @@ export function ReadinessIntakeWizard({
           <SectionView
             stepNumber={sectionIdx + 1}
             section={currentSection}
+            organizationSlug={orgSlug.trim() || undefined}
             answers={answers}
             missingIds={missingIds}
             submitError={submitError}
@@ -563,9 +581,40 @@ function WelcomeView({
   );
 }
 
+function WeekTimeSplitTotal({ answers }: { answers: AnswersBag }) {
+  const total = weekTimeSplitPercentTotal(answers);
+  const over = total - 100;
+  const under = 100 - total;
+  return (
+    <div
+      className={cn(
+        "rounded-lg border border-border bg-card/60 px-4 py-3 text-sm",
+        total === 100 ? "text-muted-foreground" : "text-pathway-accent",
+      )}
+      aria-live="polite"
+    >
+      <p className="font-medium text-foreground">Your four sliders add up to {total}%.</p>
+      {total === 100 ? (
+        <p className="mt-1 text-muted-foreground">
+          That lines up to 100% together — no mental math required.
+        </p>
+      ) : total < 100 ? (
+        <p className="mt-1">
+          {under}% remaining if you want the split to land at 100%. Rough estimates are fine.
+        </p>
+      ) : (
+        <p className="mt-1">
+          That is {over}% over 100% — adjust a slider or two if you want the pieces to add up.
+        </p>
+      )}
+    </div>
+  );
+}
+
 function SectionView({
   stepNumber,
   section,
+  organizationSlug,
   answers,
   missingIds,
   submitError,
@@ -576,6 +625,7 @@ function SectionView({
 }: {
   stepNumber: number;
   section: (typeof READINESS_SECTIONS)[number];
+  organizationSlug: string | undefined;
   answers: AnswersBag;
   missingIds: Set<string>;
   submitError: string | null;
@@ -584,6 +634,12 @@ function SectionView({
   onBack: () => void;
   onNext: () => void;
 }) {
+  const questions = visibleReadinessQuestions(section, answers, organizationSlug);
+  const sectionLede =
+    section.id === "capacity" && organizationSlug?.toLowerCase() === YOUTHFRONT_ORG_SLUG
+      ? "So we can design training that fits how you learn best — formats, pacing, and support."
+      : section.lede;
+
   return (
     <div className="flex flex-col gap-12">
       <div className="flex flex-col gap-4">
@@ -591,22 +647,24 @@ function SectionView({
           Section {stepNumber} · {section.title}
         </Eyebrow>
         <DisplayHeading size="lg">{section.title}</DisplayHeading>
-        <p className="max-w-xl text-lg leading-relaxed text-safestart-muted">
-          {section.lede}
-        </p>
+        <p className="max-w-xl text-lg leading-relaxed text-safestart-muted">{sectionLede}</p>
       </div>
 
       <HairlineDivider />
 
       <div className="flex flex-col gap-10">
-        {section.questions.map((q) => (
-          <QuestionField
-            key={q.id}
-            question={q}
-            value={answers[q.id]}
-            missing={missingIds.has(q.id)}
-            onChange={(v) => onAnswer(q.id, v)}
-          />
+        {questions.map((q) => (
+          <Fragment key={q.id}>
+            <QuestionField
+              question={q}
+              value={answers[q.id]}
+              missing={missingIds.has(q.id)}
+              onChange={(v) => onAnswer(q.id, v)}
+            />
+            {section.id === "week" && q.id === "time_relational" ? (
+              <WeekTimeSplitTotal answers={answers} />
+            ) : null}
+          </Fragment>
         ))}
       </div>
 
