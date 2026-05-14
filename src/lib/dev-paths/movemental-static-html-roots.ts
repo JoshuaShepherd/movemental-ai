@@ -19,7 +19,7 @@ function firstExistingDir(candidates: string[]): string | null {
 }
 
 /** Root of the former `docs/html/**` tree (contains `site-templates/`, prototypes, etc.). */
-export function resolveMovementalDocsHtmlRoot(repoRoot: string): string {
+export function tryResolveMovementalDocsHtmlRoot(repoRoot: string): string | null {
   const fromEnv = process.env.MOVEMENTAL_STATIC_HTML_ROOT?.trim();
   if (fromEnv && existsSync(fromEnv)) return fromEnv;
 
@@ -32,6 +32,13 @@ export function resolveMovementalDocsHtmlRoot(repoRoot: string): string {
   const legacy = join(repoRoot, "docs", "html");
   if (existsSync(join(legacy, "site-templates", "site-theme.css"))) return legacy;
 
+  return null;
+}
+
+/** @throws when no Core checkout, submodule, legacy tree, or MOVEMENTAL_STATIC_HTML_ROOT is present. */
+export function resolveMovementalDocsHtmlRoot(repoRoot: string): string {
+  const hit = tryResolveMovementalDocsHtmlRoot(repoRoot);
+  if (hit) return hit;
   throw new Error(
     [
       "Movemental static HTML lab not found.",
@@ -44,7 +51,7 @@ export function resolveMovementalDocsHtmlRoot(repoRoot: string): string {
 }
 
 /** Root of the former `docs/templates/**` tree (Alan Hirsch exemplars, audience previews). */
-export function resolveMovementalDocsTemplatesRoot(repoRoot: string): string {
+export function tryResolveMovementalDocsTemplatesRoot(repoRoot: string): string | null {
   const fromEnv = process.env.MOVEMENTAL_DOCS_TEMPLATES_ROOT?.trim();
   if (fromEnv && existsSync(fromEnv)) return fromEnv;
 
@@ -57,6 +64,13 @@ export function resolveMovementalDocsTemplatesRoot(repoRoot: string): string {
   const legacy = join(repoRoot, "docs", "templates");
   if (existsSync(join(legacy, "alan-hirsch", "exemplars"))) return legacy;
 
+  return null;
+}
+
+/** @throws when no Core checkout, submodule, legacy tree, or MOVEMENTAL_DOCS_TEMPLATES_ROOT is present. */
+export function resolveMovementalDocsTemplatesRoot(repoRoot: string): string {
+  const hit = tryResolveMovementalDocsTemplatesRoot(repoRoot);
+  if (hit) return hit;
   throw new Error(
     [
       "Movemental docs templates tree not found.",
