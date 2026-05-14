@@ -1,5 +1,8 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import type { User } from "@supabase/supabase-js";
+
+import { isStaleRefreshAuthError } from "@/lib/supabase/stale-session";
 
 /**
  * Supabase client for use in Server Components, Server Actions,
@@ -31,4 +34,37 @@ export async function createClient() {
       },
     },
   );
+}
+
+export type SupabaseServerClient = Awaited<ReturnType<typeof createClient>>;
+
+/**
+ * {@link createClient} plus {@link User} read with stale refresh handling. When the
+ * refresh token is unusable, attempts `signOut` so cookies can be cleared (may no-op
+ * from Server Components; middleware still runs).
+ */
+export async function getOptionalAuthUser(): Promise<{
+  supabase: SupabaseServerClient;
+  user: User | null;
+}> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+
+  if (!error) {
+    return { supabase, user: user ?? null };
+  }
+
+  const code = "code" in error ? String((error as { code?: string }).code) : "";
+  if (isStaleRefreshAuthError(code, error.message)) {
+    try {
+      await supabase.auth.signOut();
+    } catch {
+      /* cookie writes may be unavailable in this context */
+    }
+  }
+
+  return { supabase, user: null };
 }

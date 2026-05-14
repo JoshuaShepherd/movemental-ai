@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/studio/Container";
 import { env } from "@/lib/env";
 import { listMembershipOrganizations } from "@/lib/services/onboarding/onboarding.service";
-import { createClient } from "@/lib/supabase/server";
+import { getOptionalAuthUser } from "@/lib/supabase/server";
 
 /**
  * Footer — IA columns + legal strip + organization entry points (sign-in /
@@ -12,10 +12,7 @@ import { createClient } from "@/lib/supabase/server";
 export async function SiteFooter() {
   let showOrgDashboard = false;
   try {
-    const supabase = await createClient();
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+    const { user } = await getOptionalAuthUser();
     if (user?.id) {
       const memberships = await listMembershipOrganizations(user.id);
       showOrgDashboard = memberships.length > 0;

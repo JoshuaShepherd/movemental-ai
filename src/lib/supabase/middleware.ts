@@ -1,6 +1,8 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
+import { isStaleRefreshAuthError } from "@/lib/supabase/stale-session";
+
 /**
  * Refreshes the Supabase session cookie on every request.
  * Called from proxy.ts (Next 16's renamed middleware file).
@@ -50,7 +52,19 @@ export async function updateSession(
   // Do not run any code between createServerClient and supabase.auth.getUser().
   // A simple mistake could make it very hard to debug issues with users being
   // randomly logged out.
-  await supabase.auth.getUser();
+  const {
+    error: authError,
+  } = await supabase.auth.getUser();
+
+  if (
+    authError &&
+    isStaleRefreshAuthError(
+      "code" in authError ? String((authError as { code?: string }).code) : "",
+      authError.message,
+    )
+  ) {
+    await supabase.auth.signOut();
+  }
 
   return supabaseResponse;
 }

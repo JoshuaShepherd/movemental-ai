@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { RecipeLibrary } from "@/components/sandboxlive/recipe-library";
 import { RECIPE_CATALOG } from "@/lib/sandboxlive/recipe-catalog";
 import { canonicalPageUrl } from "@/lib/site-url";
-import { createClient } from "@/lib/supabase/server";
+import { getOptionalAuthUser } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Recipe Library",
@@ -21,10 +21,7 @@ export const metadata: Metadata = {
 };
 
 export default async function RecipesPublicPreviewPage() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const { user } = await getOptionalAuthUser();
 
   // The catalog is in-memory until the `recipes` DB table is migrated. The
   // public preview shows recipes where `cohort_specific_for IS NULL`. With no

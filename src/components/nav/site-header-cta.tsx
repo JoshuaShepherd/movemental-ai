@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { getMovementLeaderByEmail } from "@/lib/movement-leaders/movement-leaders.server";
 import { listMembershipOrganizations } from "@/lib/services/onboarding/onboarding.service";
-import { createClient } from "@/lib/supabase/server";
+import { getOptionalAuthUser } from "@/lib/supabase/server";
 import { cn } from "@/lib/utils";
 
 function contactCta(variant: "desktop" | "mobile") {
@@ -61,10 +61,7 @@ function bothCtas(variant: "desktop" | "mobile") {
  */
 export async function SiteHeaderCta({ variant }: { variant: "desktop" | "mobile" }) {
   try {
-    const supabase = await createClient();
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+    const { user } = await getOptionalAuthUser();
     if (!user?.id) {
       return contactCta(variant);
     }
