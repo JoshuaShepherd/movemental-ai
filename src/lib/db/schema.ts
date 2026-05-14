@@ -3722,3 +3722,51 @@ export const sandboxStaffReadinessSubmissions = pgTable(
     ),
   ],
 );
+
+// ---------------------------------------------------------------------------
+// SandboxLive — token-gated anonymous staff readiness (no dashboard login).
+// Invite rows store only a SHA-256 hash of the secret token.
+// Migration / RLS: scripts/sql/20260514_sandbox_staff_readiness_invites_anon.sql
+// ---------------------------------------------------------------------------
+
+export const sandboxStaffReadinessInvites = pgTable(
+  "sandbox_staff_readiness_invites",
+  {
+    id: id("id"),
+    organization_id: uuid("organization_id")
+      .notNull()
+      .references(() => organizations.id, { onDelete: "cascade" }),
+    token_hash: text("token_hash").notNull().unique(),
+    label: text("label"),
+    expires_at: timestamp("expires_at", { withTimezone: true, mode: "string" }),
+    revoked_at: timestamp("revoked_at", { withTimezone: true, mode: "string" }),
+    created_by: uuid("created_by").references(() => userProfiles.id, {
+      onDelete: "set null",
+    }),
+    created_at: createdAt("created_at"),
+    updated_at: updatedAt("updated_at"),
+  },
+);
+
+export const sandboxStaffReadinessAnonymousSubmissions = pgTable(
+  "sandbox_staff_readiness_anonymous_submissions",
+  {
+    id: id("id"),
+    invite_id: uuid("invite_id")
+      .notNull()
+      .references(() => sandboxStaffReadinessInvites.id, { onDelete: "cascade" }),
+    organization_id: uuid("organization_id")
+      .notNull()
+      .references(() => organizations.id, { onDelete: "cascade" }),
+    display_name: text("display_name").notNull(),
+    email: text("email"),
+    role_or_team: text("role_or_team"),
+    answers: jsonb("answers").notNull().default({}),
+    intake_version: text("intake_version"),
+    submitted_at: timestamp("submitted_at", { withTimezone: true, mode: "string" })
+      .notNull()
+      .defaultNow(),
+    created_at: createdAt("created_at"),
+    updated_at: updatedAt("updated_at"),
+  },
+);

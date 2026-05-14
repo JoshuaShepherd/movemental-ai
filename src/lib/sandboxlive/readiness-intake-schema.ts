@@ -63,3 +63,32 @@ export const ReadinessSubmitInputSchema = z.object({
 });
 
 export type ReadinessSubmitInput = z.infer<typeof ReadinessSubmitInputSchema>;
+
+const optionalEmail = z.preprocess(
+  (val) => {
+    if (val === "" || val === null || val === undefined) return undefined;
+    if (typeof val !== "string") return val;
+    const t = val.trim();
+    return t === "" ? undefined : t;
+  },
+  z.string().email().max(320).optional(),
+);
+
+/** Token-gated anonymous intake — name + optional contact fields + answers. */
+export const ReadinessAnonymousSubmitSchema = z.object({
+  displayName: z.string().trim().min(1).max(200),
+  email: optionalEmail,
+  roleOrTeam: z.preprocess(
+    (val) => {
+      if (val === "" || val === null || val === undefined) return undefined;
+      if (typeof val !== "string") return val;
+      const t = val.trim();
+      return t === "" ? undefined : t;
+    },
+    z.string().max(500).optional(),
+  ),
+  answers: ReadinessAnswersSchema,
+  intakeVersion: z.literal(READINESS_INTAKE_VERSION).optional(),
+});
+
+export type ReadinessAnonymousSubmitInput = z.infer<typeof ReadinessAnonymousSubmitSchema>;

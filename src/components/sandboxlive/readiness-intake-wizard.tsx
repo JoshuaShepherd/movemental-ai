@@ -5,7 +5,10 @@ import Link from "next/link";
 import { useEffect, useId, useMemo, useState } from "react";
 
 import { submitReadinessIntakeAction } from "@/app/(dashboard)/sandboxlive/readiness/actions";
+import { submitReadinessInviteIntakeAction } from "@/app/readiness-invite/actions";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   READINESS_INTAKE_VERSION,
   READINESS_SECTIONS,
@@ -32,11 +35,20 @@ export interface ReadinessIntakeWizardProps {
     submittedAt: string;
     updatedAt: string;
   } | null;
+  /** Anonymous token-gated intake — no dashboard session. */
+  inviteMode?: {
+    token: string;
+    /** Stable key for local draft storage (never the raw token). */
+    draftKey: string;
+  };
 }
 
 type AnswersBag = Record<string, unknown>;
 
-function draftStorageKey(orgSlug: string): string {
+function draftStorageKey(orgSlug: string, inviteDraftKey?: string): string {
+  if (inviteDraftKey) {
+    return `sandboxlive.readiness.invite.draft.v${READINESS_INTAKE_VERSION}.${inviteDraftKey}`;
+  }
   return `sandboxlive.readiness.draft.v${READINESS_INTAKE_VERSION}.${orgSlug}`;
 }
 
@@ -45,6 +57,7 @@ export function ReadinessIntakeWizard({
   orgQuery,
   organizationName,
   existingSubmission,
+  inviteMode,
 }: ReadinessIntakeWizardProps) {
   const totalSteps = READINESS_SECTIONS.length;
 
@@ -58,6 +71,10 @@ export function ReadinessIntakeWizard({
   );
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [missingIds, setMissingIds] = useState<Set<string>>(new Set());
+  const [displayName, setDisplayName] = useState("");
+  const [emailOpt, setEmailOpt] = useState("");
+  const [roleOrTeam, setRoleOrTeam] = useState("");
+  const [identityError, setIdentityError] = useState<string | null>(null);
   // Once the server already has a submission, no draft load is needed — start
   // loaded. Otherwise the effect below flips this true after reading localStorage.
   const [draftLoaded, setDraftLoaded] = useState<boolean>(existingSubmission != null);
@@ -66,21 +83,33 @@ export function ReadinessIntakeWizard({
   // props are stable for the component's lifetime (the wizard is fully
   // remounted on org / submission changes via the parent page) so a one-shot
   // mount-time read with empty deps is safe.
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (existingSubmission) return;
     try {
-      const raw = window.localStorage.getItem(draftStorageKey(orgSlug));
+      const raw = window.localStorage.getItem(
+        draftStorageKey(orgSlug, inviteMode?.draftKey),
+      );
       if (raw) {
-        const parsed = JSON.parse(raw) as { answers?: AnswersBag };
+        const parsed = JSON.parse(raw) as {
+          answers?: AnswersBag;
+          displayName?: string;
+          emailOpt?: string;
+          roleOrTeam?: string;
+        };
         if (parsed?.answers && typeof parsed.answers === "object") {
           setAnswers(parsed.answers);
+        }
+        if (inviteMode) {
+          if (typeof parsed.displayName === "string") setDisplayName(parsed.displayName);
+          if (typeof parsed.emailOpt === "string") setEmailOpt(parsed.emailOpt);
+          if (typeof parsed.roleOrTeam === "string") setRoleOrTeam(parsed.roleOrTeam);
         }
       }
     } catch {
       // ignore malformed draft
     }
     setDraftLoaded(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- intentional one-shot; parent remounts on org / invite change
   }, []);
 
   // Persist draft locally on every change once initial load is complete.
@@ -90,15 +119,21 @@ export function ReadinessIntakeWizard({
     const handle = window.setTimeout(() => {
       try {
         window.localStorage.setItem(
-          draftStorageKey(orgSlug),
-          JSON.stringify({ answers, savedAt: new Date().toISOString() }),
+          draftStorageKey(orgSlug, inviteMode?.draftKey),
+          JSON.stringify({
+            answers,
+            displayName: inviteMode ? displayName : undefined,
+            emailOpt: inviteMode ? emailOpt : undefined,
+            roleOrTeam: inviteMode ? roleOrTeam : undefined,
+            savedAt: new Date().toISOString(),
+          }),
         );
       } catch {
         // storage quota / private mode — ignore
       }
     }, 400);
     return () => window.clearTimeout(handle);
-  }, [answers, draftLoaded, existingSubmission, orgSlug]);
+  }, [answers, displayName, draftLoaded, emailOpt, existingSubmission, inviteMode, orgSlug, roleOrTeam]);
 
   const currentSection = READINESS_SECTIONS[sectionIdx];
   const progressPct =
@@ -164,25 +199,56 @@ export function ReadinessIntakeWizard({
   async function handleSubmit() {
     setPhase("submitting");
     setSubmitError(null);
-    const result = await submitReadinessIntakeAction({
-      orgSlug,
-      payload: { answers, intakeVersion: READINESS_INTAKE_VERSION },
-    });
-    if (!result.ok) {
-      setSubmitError(result.reason);
-      setPhase("section");
-      return;
-    }
-    try {
-      window.localStorage.removeItem(draftStorageKey(orgSlug));
-    } catch {
-      // ignore
+    if (inviteMode) {
+      const result = await submitReadinessInviteIntakeAction({
+        rawToken: inviteMode.token,
+        payload: {
+          displayName: displayName.trim(),
+          email: emailOpt.trim() || undefined,
+          roleOrTeam: roleOrTeam.trim() || undefined,
+          answers,
+          intakeVersion: READINESS_INTAKE_VERSION,
+        },
+      });
+      if (!result.ok) {
+        setSubmitError(result.reason);
+        setPhase("section");
+        return;
+      }
+      try {
+        window.localStorage.removeItem(draftStorageKey(orgSlug, inviteMode.draftKey));
+      } catch {
+        // ignore
+      }
+    } else {
+      const result = await submitReadinessIntakeAction({
+        orgSlug,
+        payload: { answers, intakeVersion: READINESS_INTAKE_VERSION },
+      });
+      if (!result.ok) {
+        setSubmitError(result.reason);
+        setPhase("section");
+        return;
+      }
+      try {
+        window.localStorage.removeItem(draftStorageKey(orgSlug));
+      } catch {
+        // ignore
+      }
     }
     setPhase("done");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function handleStart() {
+    if (inviteMode) {
+      setIdentityError(null);
+      const n = displayName.trim();
+      if (n.length < 2) {
+        setIdentityError("Please add your name so the training team knows who this is from.");
+        return;
+      }
+    }
     setPhase("section");
     setSectionIdx(0);
     setSubmitError(null);
@@ -204,22 +270,38 @@ export function ReadinessIntakeWizard({
     <div className="-mx-[clamp(1.25rem,4vw,2.5rem)] -my-8 flex min-h-[calc(100dvh-4rem)] flex-col bg-safestart-bg text-safestart-ink">
       <header className="sticky top-0 z-10 border-b border-safestart-hairline bg-safestart-bg/85 backdrop-blur-md">
         <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-6 py-4 md:px-12">
-          <Link
-            href={`/sandboxlive${orgQuery}`}
-            className="flex items-center gap-3 text-safestart-ink"
-          >
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-foreground text-background">
-              <Sparkles size={14} strokeWidth={2} />
-            </span>
-            <span>
-              <span className="block text-sm font-medium tracking-tight">
-                {organizationName}
+          {inviteMode ? (
+            <div className="flex items-center gap-3 text-safestart-ink">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-foreground text-background">
+                <Sparkles size={14} strokeWidth={2} />
               </span>
-              <span className="block text-[10px] font-medium uppercase tracking-[0.18em] text-safestart-muted">
-                AI Readiness Check-In
+              <span>
+                <span className="block text-sm font-medium tracking-tight">
+                  {organizationName}
+                </span>
+                <span className="block text-[10px] font-medium uppercase tracking-[0.18em] text-safestart-muted">
+                  AI Readiness Check-In
+                </span>
               </span>
-            </span>
-          </Link>
+            </div>
+          ) : (
+            <Link
+              href={`/sandboxlive${orgQuery}`}
+              className="flex items-center gap-3 text-safestart-ink"
+            >
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-foreground text-background">
+                <Sparkles size={14} strokeWidth={2} />
+              </span>
+              <span>
+                <span className="block text-sm font-medium tracking-tight">
+                  {organizationName}
+                </span>
+                <span className="block text-[10px] font-medium uppercase tracking-[0.18em] text-safestart-muted">
+                  AI Readiness Check-In
+                </span>
+              </span>
+            </Link>
+          )}
           {phase === "section" ? (
             <span className="text-xs tabular-nums text-safestart-muted">
               {sectionIdx + 1}{" "}
@@ -249,6 +331,14 @@ export function ReadinessIntakeWizard({
             hasDraft={hasDraft}
             onStart={handleStart}
             orgQuery={orgQuery}
+            inviteMode={inviteMode != null}
+            displayName={displayName}
+            emailOpt={emailOpt}
+            roleOrTeam={roleOrTeam}
+            identityError={identityError}
+            onDisplayNameChange={setDisplayName}
+            onEmailChange={setEmailOpt}
+            onRoleChange={setRoleOrTeam}
           />
         ) : null}
 
@@ -274,6 +364,7 @@ export function ReadinessIntakeWizard({
             existingSubmission={existingSubmission}
             onEdit={handleEditExisting}
             orgQuery={orgQuery}
+            inviteMode={inviteMode != null}
           />
         ) : null}
       </main>
@@ -333,10 +424,26 @@ function WelcomeView({
   hasDraft,
   onStart,
   orgQuery,
+  inviteMode,
+  displayName,
+  emailOpt,
+  roleOrTeam,
+  identityError,
+  onDisplayNameChange,
+  onEmailChange,
+  onRoleChange,
 }: {
   hasDraft: boolean;
   onStart: () => void;
   orgQuery: string;
+  inviteMode: boolean;
+  displayName: string;
+  emailOpt: string;
+  roleOrTeam: string;
+  identityError: string | null;
+  onDisplayNameChange: (v: string) => void;
+  onEmailChange: (v: string) => void;
+  onRoleChange: (v: string) => void;
 }) {
   return (
     <div className="flex flex-col gap-10">
@@ -349,6 +456,62 @@ function WelcomeView({
           you do, what you use, and how you feel about all this.
         </p>
       </div>
+
+      {inviteMode ? (
+        <>
+          <HairlineDivider />
+          <div className="flex max-w-xl flex-col gap-4">
+            <Eyebrow>Your details</Eyebrow>
+            <p className="text-sm leading-relaxed text-safestart-muted">
+              No account needed. Your facilitator shared this link only with your team.
+            </p>
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="readiness-invite-name" className="text-safestart-ink">
+                Name <span className="text-pathway-accent">*</span>
+              </Label>
+              <Input
+                id="readiness-invite-name"
+                autoComplete="name"
+                value={displayName}
+                onChange={(e) => onDisplayNameChange(e.target.value)}
+                placeholder="First and last"
+                className="border-border bg-background text-foreground"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="readiness-invite-email" className="text-safestart-ink">
+                Work email <span className="text-safestart-muted">(optional)</span>
+              </Label>
+              <Input
+                id="readiness-invite-email"
+                type="email"
+                autoComplete="email"
+                value={emailOpt}
+                onChange={(e) => onEmailChange(e.target.value)}
+                placeholder="you@organization.org"
+                className="border-border bg-background text-foreground"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="readiness-invite-role" className="text-safestart-ink">
+                Role or team <span className="text-safestart-muted">(optional)</span>
+              </Label>
+              <Input
+                id="readiness-invite-role"
+                value={roleOrTeam}
+                onChange={(e) => onRoleChange(e.target.value)}
+                placeholder="e.g. Communications, Lead pastor"
+                className="border-border bg-background text-foreground"
+              />
+            </div>
+            {identityError ? (
+              <p className="text-sm text-destructive" role="alert">
+                {identityError}
+              </p>
+            ) : null}
+          </div>
+        </>
+      ) : null}
 
       <HairlineDivider />
 
@@ -387,7 +550,7 @@ function WelcomeView({
           <span className="text-sm text-safestart-muted">
             We saved your draft — you can pick up where you left off.
           </span>
-        ) : (
+        ) : inviteMode ? null : (
           <Link
             href={`/sandboxlive${orgQuery}`}
             className="text-sm text-safestart-muted underline decoration-safestart-hairline underline-offset-[0.22em] hover:text-pathway-accent"
@@ -488,11 +651,13 @@ function DoneView({
   existingSubmission,
   onEdit,
   orgQuery,
+  inviteMode,
 }: {
   organizationName: string;
   existingSubmission: ReadinessIntakeWizardProps["existingSubmission"];
   onEdit: () => void;
   orgQuery: string;
+  inviteMode: boolean;
 }) {
   const submittedAt = existingSubmission?.submittedAt
     ? new Date(existingSubmission.submittedAt)
@@ -508,22 +673,31 @@ function DoneView({
         use them to shape sessions that meet the {organizationName} staff where
         you actually are — not at some imaginary baseline.
       </p>
-      {submittedAt ? (
+      {submittedAt && !inviteMode ? (
         <p className="text-sm text-safestart-muted">
           Last submitted {submittedAt.toLocaleString()}.
         </p>
       ) : null}
       <HairlineDivider />
       <div className="flex flex-wrap items-center gap-4">
-        <Button variant="ghost" onClick={onEdit}>
-          Review or update my answers <ArrowRight size={16} className="ml-1.5" />
-        </Button>
-        <Link
-          href={`/sandboxlive${orgQuery}`}
-          className="text-sm text-safestart-muted underline decoration-safestart-hairline underline-offset-[0.22em] hover:text-pathway-accent"
-        >
-          Back to SandboxLive
-        </Link>
+        {inviteMode ? (
+          <p className="max-w-xl text-sm text-safestart-muted">
+            You can close this page. If you need to submit again, ask your facilitator for a
+            fresh link.
+          </p>
+        ) : (
+          <>
+            <Button variant="ghost" onClick={onEdit}>
+              Review or update my answers <ArrowRight size={16} className="ml-1.5" />
+            </Button>
+            <Link
+              href={`/sandboxlive${orgQuery}`}
+              className="text-sm text-safestart-muted underline decoration-safestart-hairline underline-offset-[0.22em] hover:text-pathway-accent"
+            >
+              Back to SandboxLive
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

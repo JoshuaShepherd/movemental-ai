@@ -64,7 +64,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const h = await headers();
-  const dashboardShell = h.get("x-movemental-shell") === "dashboard";
+  const shell = h.get("x-movemental-shell");
+  const hideMarketingChrome = shell === "dashboard" || shell === "invite";
 
   return (
     <html
@@ -77,7 +78,7 @@ export default async function RootLayout({
           <a href="#main" className="skip-link">
             Skip to content
           </a>
-          {!dashboardShell ? (
+          {!hideMarketingChrome ? (
             <SiteHeader
               authDesktopCta={<SiteHeaderCta variant="desktop" />}
               authMobileCta={<SiteHeaderCta variant="mobile" />}
@@ -86,7 +87,7 @@ export default async function RootLayout({
           <main id="main" className="flex flex-1 flex-col">
             {children}
           </main>
-          {!dashboardShell ? <SiteFooter /> : null}
+          {!hideMarketingChrome ? <SiteFooter /> : null}
         </Providers>
       </body>
     </html>

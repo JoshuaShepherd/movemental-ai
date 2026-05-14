@@ -47,6 +47,8 @@ const AUTHENTICATED_PATH_PREFIXES = [
   "/leader",
 ];
 
+const READINESS_INVITE_PREFIX = "/readiness-invite/";
+
 /** Public marketing chrome — not AuthenticatedShell (Phase 06). */
 const PUBLIC_LEADER_PATHS = new Set(["/leader/apply"]);
 
@@ -66,6 +68,12 @@ export async function proxy(request: NextRequest) {
   const inject: Record<string, string> = { "x-pathname": pathname };
   const orgSlug = request.nextUrl.searchParams.get("org");
   if (orgSlug) inject["x-dashboard-org-slug"] = orgSlug;
+
+  if (pathname.startsWith(READINESS_INVITE_PREFIX)) {
+    inject["x-movemental-shell"] = "invite";
+    return updateSession(request, inject);
+  }
+
   if (dashboardShell) inject["x-movemental-shell"] = "dashboard";
 
   return updateSession(request, inject);

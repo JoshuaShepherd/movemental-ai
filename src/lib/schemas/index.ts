@@ -1,5 +1,5 @@
 // Auto-generated Zod schemas from Drizzle schema
-// Generated at: 2026-05-11T08:54:49.885Z
+// Generated at: 2026-05-14T20:09:05.073Z
 // Do not edit manually - regenerate with: pnpm generate:schemas
 
 import { z } from "zod";
@@ -196,10 +196,25 @@ import {
   staffUsers,
   bookPdfEditions,
   programEngagements,
+  recipes,
+  cohortMembers,
+  futurePlans,
+  futurePlanVersions,
+  futurePlanRatifications,
   safetyArtifacts,
   safetyArtifactVersions,
   safetyArtifactPublications,
   stageTransitions,
+  movementLeaders,
+  movementLeaderGenerated,
+  leaderRevisionRequests,
+  movementLeaderSignings,
+  movementLeaderApplications,
+  movementLeaderPublicPages,
+  movementLeaderPublicPageVersions,
+  sandboxStaffReadinessSubmissions,
+  sandboxStaffReadinessInvites,
+  sandboxStaffReadinessAnonymousSubmissions,
 } from "@/lib/db/schema";
 
 // ---- Base Filters ----
@@ -2829,6 +2844,72 @@ export type ProgramEngagementsCreate = z.infer<typeof ProgramEngagementsInsertSc
 export type ProgramEngagementsUpdate = z.infer<typeof ProgramEngagementsUpdateSchema>;
 export type ProgramEngagementsFilters = z.infer<typeof ProgramEngagementsFiltersSchema>;
 
+// Recipes
+export const RecipesSelectSchema = createSelectSchema(recipes);
+export const RecipesInsertSchema = createInsertSchema(recipes);
+export const RecipesUpdateSchema = createUpdateSchema(recipes);
+export const RecipesFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type Recipes = z.infer<typeof RecipesSelectSchema>;
+export type RecipesCreate = z.infer<typeof RecipesInsertSchema>;
+export type RecipesUpdate = z.infer<typeof RecipesUpdateSchema>;
+export type RecipesFilters = z.infer<typeof RecipesFiltersSchema>;
+
+// CohortMembers
+export const CohortMembersSelectSchema = createSelectSchema(cohortMembers);
+export const CohortMembersInsertSchema = createInsertSchema(cohortMembers);
+export const CohortMembersUpdateSchema = createUpdateSchema(cohortMembers);
+export const CohortMembersFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type CohortMembers = z.infer<typeof CohortMembersSelectSchema>;
+export type CohortMembersCreate = z.infer<typeof CohortMembersInsertSchema>;
+export type CohortMembersUpdate = z.infer<typeof CohortMembersUpdateSchema>;
+export type CohortMembersFilters = z.infer<typeof CohortMembersFiltersSchema>;
+
+// FuturePlans
+export const FuturePlansSelectSchema = createSelectSchema(futurePlans);
+export const FuturePlansInsertSchema = createInsertSchema(futurePlans);
+export const FuturePlansUpdateSchema = createUpdateSchema(futurePlans);
+export const FuturePlansFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  status: z.string().optional(),
+});
+
+export type FuturePlans = z.infer<typeof FuturePlansSelectSchema>;
+export type FuturePlansCreate = z.infer<typeof FuturePlansInsertSchema>;
+export type FuturePlansUpdate = z.infer<typeof FuturePlansUpdateSchema>;
+export type FuturePlansFilters = z.infer<typeof FuturePlansFiltersSchema>;
+
+// FuturePlanVersions
+export const FuturePlanVersionsSelectSchema = createSelectSchema(futurePlanVersions);
+export const FuturePlanVersionsInsertSchema = createInsertSchema(futurePlanVersions);
+export const FuturePlanVersionsUpdateSchema = createUpdateSchema(futurePlanVersions);
+export const FuturePlanVersionsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type FuturePlanVersions = z.infer<typeof FuturePlanVersionsSelectSchema>;
+export type FuturePlanVersionsCreate = z.infer<typeof FuturePlanVersionsInsertSchema>;
+export type FuturePlanVersionsUpdate = z.infer<typeof FuturePlanVersionsUpdateSchema>;
+export type FuturePlanVersionsFilters = z.infer<typeof FuturePlanVersionsFiltersSchema>;
+
+// FuturePlanRatifications
+export const FuturePlanRatificationsSelectSchema = createSelectSchema(futurePlanRatifications);
+export const FuturePlanRatificationsInsertSchema = createInsertSchema(futurePlanRatifications);
+export const FuturePlanRatificationsUpdateSchema = createUpdateSchema(futurePlanRatifications);
+export const FuturePlanRatificationsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type FuturePlanRatifications = z.infer<typeof FuturePlanRatificationsSelectSchema>;
+export type FuturePlanRatificationsCreate = z.infer<typeof FuturePlanRatificationsInsertSchema>;
+export type FuturePlanRatificationsUpdate = z.infer<typeof FuturePlanRatificationsUpdateSchema>;
+export type FuturePlanRatificationsFilters = z.infer<typeof FuturePlanRatificationsFiltersSchema>;
+
 // SafetyArtifacts
 export const SafetyArtifactsSelectSchema = createSelectSchema(safetyArtifacts);
 export const SafetyArtifactsInsertSchema = createInsertSchema(safetyArtifacts);
@@ -2881,3 +2962,136 @@ export type StageTransitions = z.infer<typeof StageTransitionsSelectSchema>;
 export type StageTransitionsCreate = z.infer<typeof StageTransitionsInsertSchema>;
 export type StageTransitionsUpdate = z.infer<typeof StageTransitionsUpdateSchema>;
 export type StageTransitionsFilters = z.infer<typeof StageTransitionsFiltersSchema>;
+
+// MovementLeaders
+export const MovementLeadersSelectSchema = createSelectSchema(movementLeaders);
+export const MovementLeadersInsertSchema = createInsertSchema(movementLeaders);
+export const MovementLeadersUpdateSchema = createUpdateSchema(movementLeaders);
+export const MovementLeadersFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  status: z.string().optional(),
+});
+
+export type MovementLeaders = z.infer<typeof MovementLeadersSelectSchema>;
+export type MovementLeadersCreate = z.infer<typeof MovementLeadersInsertSchema>;
+export type MovementLeadersUpdate = z.infer<typeof MovementLeadersUpdateSchema>;
+export type MovementLeadersFilters = z.infer<typeof MovementLeadersFiltersSchema>;
+
+// MovementLeaderGenerated
+export const MovementLeaderGeneratedSelectSchema = createSelectSchema(movementLeaderGenerated);
+export const MovementLeaderGeneratedInsertSchema = createInsertSchema(movementLeaderGenerated);
+export const MovementLeaderGeneratedUpdateSchema = createUpdateSchema(movementLeaderGenerated);
+export const MovementLeaderGeneratedFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type MovementLeaderGenerated = z.infer<typeof MovementLeaderGeneratedSelectSchema>;
+export type MovementLeaderGeneratedCreate = z.infer<typeof MovementLeaderGeneratedInsertSchema>;
+export type MovementLeaderGeneratedUpdate = z.infer<typeof MovementLeaderGeneratedUpdateSchema>;
+export type MovementLeaderGeneratedFilters = z.infer<typeof MovementLeaderGeneratedFiltersSchema>;
+
+// LeaderRevisionRequests
+export const LeaderRevisionRequestsSelectSchema = createSelectSchema(leaderRevisionRequests);
+export const LeaderRevisionRequestsInsertSchema = createInsertSchema(leaderRevisionRequests);
+export const LeaderRevisionRequestsUpdateSchema = createUpdateSchema(leaderRevisionRequests);
+export const LeaderRevisionRequestsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  status: z.string().optional(),
+});
+
+export type LeaderRevisionRequests = z.infer<typeof LeaderRevisionRequestsSelectSchema>;
+export type LeaderRevisionRequestsCreate = z.infer<typeof LeaderRevisionRequestsInsertSchema>;
+export type LeaderRevisionRequestsUpdate = z.infer<typeof LeaderRevisionRequestsUpdateSchema>;
+export type LeaderRevisionRequestsFilters = z.infer<typeof LeaderRevisionRequestsFiltersSchema>;
+
+// MovementLeaderSignings
+export const MovementLeaderSigningsSelectSchema = createSelectSchema(movementLeaderSignings);
+export const MovementLeaderSigningsInsertSchema = createInsertSchema(movementLeaderSignings);
+export const MovementLeaderSigningsUpdateSchema = createUpdateSchema(movementLeaderSignings);
+export const MovementLeaderSigningsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type MovementLeaderSignings = z.infer<typeof MovementLeaderSigningsSelectSchema>;
+export type MovementLeaderSigningsCreate = z.infer<typeof MovementLeaderSigningsInsertSchema>;
+export type MovementLeaderSigningsUpdate = z.infer<typeof MovementLeaderSigningsUpdateSchema>;
+export type MovementLeaderSigningsFilters = z.infer<typeof MovementLeaderSigningsFiltersSchema>;
+
+// MovementLeaderApplications
+export const MovementLeaderApplicationsSelectSchema = createSelectSchema(movementLeaderApplications);
+export const MovementLeaderApplicationsInsertSchema = createInsertSchema(movementLeaderApplications);
+export const MovementLeaderApplicationsUpdateSchema = createUpdateSchema(movementLeaderApplications);
+export const MovementLeaderApplicationsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  status: z.string().optional(),
+});
+
+export type MovementLeaderApplications = z.infer<typeof MovementLeaderApplicationsSelectSchema>;
+export type MovementLeaderApplicationsCreate = z.infer<typeof MovementLeaderApplicationsInsertSchema>;
+export type MovementLeaderApplicationsUpdate = z.infer<typeof MovementLeaderApplicationsUpdateSchema>;
+export type MovementLeaderApplicationsFilters = z.infer<typeof MovementLeaderApplicationsFiltersSchema>;
+
+// MovementLeaderPublicPages
+export const MovementLeaderPublicPagesSelectSchema = createSelectSchema(movementLeaderPublicPages);
+export const MovementLeaderPublicPagesInsertSchema = createInsertSchema(movementLeaderPublicPages);
+export const MovementLeaderPublicPagesUpdateSchema = createUpdateSchema(movementLeaderPublicPages);
+export const MovementLeaderPublicPagesFiltersSchema = BaseFiltersSchema;
+
+export type MovementLeaderPublicPages = z.infer<typeof MovementLeaderPublicPagesSelectSchema>;
+export type MovementLeaderPublicPagesCreate = z.infer<typeof MovementLeaderPublicPagesInsertSchema>;
+export type MovementLeaderPublicPagesUpdate = z.infer<typeof MovementLeaderPublicPagesUpdateSchema>;
+export type MovementLeaderPublicPagesFilters = z.infer<typeof MovementLeaderPublicPagesFiltersSchema>;
+
+// MovementLeaderPublicPageVersions
+export const MovementLeaderPublicPageVersionsSelectSchema = createSelectSchema(movementLeaderPublicPageVersions);
+export const MovementLeaderPublicPageVersionsInsertSchema = createInsertSchema(movementLeaderPublicPageVersions);
+export const MovementLeaderPublicPageVersionsUpdateSchema = createUpdateSchema(movementLeaderPublicPageVersions);
+export const MovementLeaderPublicPageVersionsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  status: z.string().optional(),
+});
+
+export type MovementLeaderPublicPageVersions = z.infer<typeof MovementLeaderPublicPageVersionsSelectSchema>;
+export type MovementLeaderPublicPageVersionsCreate = z.infer<typeof MovementLeaderPublicPageVersionsInsertSchema>;
+export type MovementLeaderPublicPageVersionsUpdate = z.infer<typeof MovementLeaderPublicPageVersionsUpdateSchema>;
+export type MovementLeaderPublicPageVersionsFilters = z.infer<typeof MovementLeaderPublicPageVersionsFiltersSchema>;
+
+// SandboxStaffReadinessSubmissions
+export const SandboxStaffReadinessSubmissionsSelectSchema = createSelectSchema(sandboxStaffReadinessSubmissions);
+export const SandboxStaffReadinessSubmissionsInsertSchema = createInsertSchema(sandboxStaffReadinessSubmissions);
+export const SandboxStaffReadinessSubmissionsUpdateSchema = createUpdateSchema(sandboxStaffReadinessSubmissions);
+export const SandboxStaffReadinessSubmissionsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  userId: z.string().uuid().optional(),
+});
+
+export type SandboxStaffReadinessSubmissions = z.infer<typeof SandboxStaffReadinessSubmissionsSelectSchema>;
+export type SandboxStaffReadinessSubmissionsCreate = z.infer<typeof SandboxStaffReadinessSubmissionsInsertSchema>;
+export type SandboxStaffReadinessSubmissionsUpdate = z.infer<typeof SandboxStaffReadinessSubmissionsUpdateSchema>;
+export type SandboxStaffReadinessSubmissionsFilters = z.infer<typeof SandboxStaffReadinessSubmissionsFiltersSchema>;
+
+// SandboxStaffReadinessInvites
+export const SandboxStaffReadinessInvitesSelectSchema = createSelectSchema(sandboxStaffReadinessInvites);
+export const SandboxStaffReadinessInvitesInsertSchema = createInsertSchema(sandboxStaffReadinessInvites);
+export const SandboxStaffReadinessInvitesUpdateSchema = createUpdateSchema(sandboxStaffReadinessInvites);
+export const SandboxStaffReadinessInvitesFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type SandboxStaffReadinessInvites = z.infer<typeof SandboxStaffReadinessInvitesSelectSchema>;
+export type SandboxStaffReadinessInvitesCreate = z.infer<typeof SandboxStaffReadinessInvitesInsertSchema>;
+export type SandboxStaffReadinessInvitesUpdate = z.infer<typeof SandboxStaffReadinessInvitesUpdateSchema>;
+export type SandboxStaffReadinessInvitesFilters = z.infer<typeof SandboxStaffReadinessInvitesFiltersSchema>;
+
+// SandboxStaffReadinessAnonymousSubmissions
+export const SandboxStaffReadinessAnonymousSubmissionsSelectSchema = createSelectSchema(sandboxStaffReadinessAnonymousSubmissions);
+export const SandboxStaffReadinessAnonymousSubmissionsInsertSchema = createInsertSchema(sandboxStaffReadinessAnonymousSubmissions);
+export const SandboxStaffReadinessAnonymousSubmissionsUpdateSchema = createUpdateSchema(sandboxStaffReadinessAnonymousSubmissions);
+export const SandboxStaffReadinessAnonymousSubmissionsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type SandboxStaffReadinessAnonymousSubmissions = z.infer<typeof SandboxStaffReadinessAnonymousSubmissionsSelectSchema>;
+export type SandboxStaffReadinessAnonymousSubmissionsCreate = z.infer<typeof SandboxStaffReadinessAnonymousSubmissionsInsertSchema>;
+export type SandboxStaffReadinessAnonymousSubmissionsUpdate = z.infer<typeof SandboxStaffReadinessAnonymousSubmissionsUpdateSchema>;
+export type SandboxStaffReadinessAnonymousSubmissionsFilters = z.infer<typeof SandboxStaffReadinessAnonymousSubmissionsFiltersSchema>;

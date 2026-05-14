@@ -1,5 +1,5 @@
 // Auto-generated service index
-// Generated at: 2026-05-11T08:54:54.197Z
+// Generated at: 2026-05-14T20:09:05.520Z
 // Do not edit manually - regenerate with: pnpm generate:services
 
 export { SimplifiedService } from "./base.service";
@@ -196,7 +196,22 @@ export * from "./consent-records.service";
 export * from "./staff-users.service";
 export * from "./book-pdf-editions.service";
 export * from "./program-engagements.service";
+export * from "./recipes.service";
+export * from "./cohort-members.service";
+export * from "./future-plans.service";
+export * from "./future-plan-versions.service";
+export * from "./future-plan-ratifications.service";
 export * from "./safety-artifacts.service";
 export * from "./safety-artifact-versions.service";
 export * from "./safety-artifact-publications.service";
 export * from "./stage-transitions.service";
+export * from "./movement-leaders.service";
+export * from "./movement-leader-generated.service";
+export * from "./leader-revision-requests.service";
+export * from "./movement-leader-signings.service";
+export * from "./movement-leader-applications.service";
+export * from "./movement-leader-public-pages.service";
+export * from "./movement-leader-public-page-versions.service";
+export * from "./sandbox-staff-readiness-submissions.service";
+export * from "./sandbox-staff-readiness-invites.service";
+export * from "./sandbox-staff-readiness-anonymous-submissions.service";
