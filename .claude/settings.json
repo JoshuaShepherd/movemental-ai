@@ -44,7 +44,8 @@
       "Bash(python3 -c \"import json; d = json.load\\(open\\('/home/josh/dev/01-Movemental-Core/movemental-ai/src/lib/program/fixtures/sandbox/recipe_library_movemental_sandbox_dashboard.content.json'\\)\\); print\\('keys:', list\\(d.keys\\(\\)\\)\\); print\\('sections kinds:', [s.get\\('kind'\\) for s in d.get\\('sections', []\\)]\\)\")",
       "Bash(mkdir -p /home/josh/dev/01-Movemental-Core/movemental-ai/src/app/\\\\\\(dashboard\\\\\\)/safestart/\\\\[workspace\\\\] /home/josh/dev/01-Movemental-Core/movemental-ai/src/app/\\\\\\(dashboard\\\\\\)/safestart/guidebook && ls /home/josh/dev/01-Movemental-Core/movemental-ai/src/app/\\\\\\(dashboard\\\\\\)/safestart/)",
       "Bash(python3 -c ' *)",
-      "Bash(mkdir -p /home/josh/dev/01-Movemental-Core/movemental-ai/src/app/\\\\\\(dashboard\\\\\\)/safestart/ratification/\\\\[step\\\\])"
+      "Bash(mkdir -p /home/josh/dev/01-Movemental-Core/movemental-ai/src/app/\\\\\\(dashboard\\\\\\)/safestart/ratification/\\\\[step\\\\])",
+      "Bash(xargs -n1 basename)"
     ],
     "additionalDirectories": [
       "/Users/joshuashepherd/Desktop/dev/repos/movemental-sites/alan-hirsch/.claude/skills",
