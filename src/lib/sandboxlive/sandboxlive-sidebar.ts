@@ -3,6 +3,7 @@ import { SAFESTART_WORKSPACES } from "@/lib/safestart/workspace-manifest";
 import { SANDBOXLIVE_PHASES } from "@/lib/sandboxlive/phase-manifest";
 
 const SANDBOXLIVE_COHORT_ITEMS: AuthenticatedSidebarSection["items"] = [
+  { label: "Use case portfolio", href: "/sandboxlive/portfolio" },
   { label: "Recipe Library", href: "/sandboxlive/recipes" },
   { label: "Cohort view", href: "/sandboxlive/cohort" },
   { label: "Schedule training", href: "/sandboxlive/cohort/schedule" },

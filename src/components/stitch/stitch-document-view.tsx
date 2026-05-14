@@ -25,17 +25,17 @@ function RichPageIntro({ fixture }: { fixture: ProgramFixtureBase }) {
   return (
     <div className="flex flex-col gap-4">
       {breadcrumb?.length ? (
-        <p className="font-body text-xs text-safestart-muted">
-          {breadcrumb.join(" · ")}
-        </p>
+        <p className="font-body text-xs text-muted-foreground">{breadcrumb.join(" · ")}</p>
       ) : null}
       {subtitle ? <h2 className="font-headline text-2xl italic text-pathway-accent">{subtitle}</h2> : null}
       {metadataStrip ? (
-        <p className="rounded border border-safestart-hairline bg-safestart-surface-container px-3 py-2 font-body text-xs text-safestart-muted">
+        <p className="border-[0.5px] border-solid border-border-soft bg-muted/40 px-3 py-2 font-body text-xs text-muted-foreground">
           {metadataStrip}
         </p>
       ) : null}
-      {intro ? <p className="max-w-3xl font-body text-sm leading-relaxed text-safestart-ink">{intro}</p> : null}
+      {intro ? (
+        <p className="max-w-3xl font-body text-sm leading-relaxed text-muted-foreground">{intro}</p>
+      ) : null}
     </div>
   );
 }
@@ -65,11 +65,17 @@ export function StitchDocumentView({
 
   const body = (
     <>
-      <div className="flex min-h-0 flex-1">
+      <div className={embedded ? "flex min-h-0 flex-1 bg-section" : "flex min-h-0 flex-1"}>
         <ProgramSidebarRouter fixture={fixture} />
-        <main className="mx-auto flex w-full max-w-5xl flex-grow flex-col gap-10 px-6 py-12 md:px-12">
+        <main
+          className={
+            embedded
+              ? "mx-auto flex w-full max-w-5xl grow flex-col gap-10 bg-card px-6 py-12 md:px-12"
+              : "mx-auto flex w-full max-w-5xl grow flex-col gap-10 px-6 py-12 md:px-12"
+          }
+        >
           {sourceBadge ? (
-            <p className="self-start border border-safestart-hairline bg-safestart-surface-container px-2 py-1 font-body text-[10px] uppercase tracking-widest text-safestart-muted">
+            <p className="self-start border-[0.5px] border-solid border-border-soft bg-muted/45 px-2 py-1 font-body text-[10px] uppercase tracking-widest text-muted-foreground">
               {sourceBadge}
             </p>
           ) : null}

@@ -20,7 +20,7 @@
   },
   "sidebar": {
     "engagementTitle": "Strategic Engagement",
-    "phaseCaption": "Phase II: Assessment",
+    "phaseCaption": "Phase 02 · Current Reality Map",
     "groups": [
       {
         "label": "GUIDEBOOK",
@@ -41,7 +41,7 @@
             "icon": "security"
           },
           {
-            "label": "02 Assessment",
+            "label": "02 Current Reality Map",
             "icon": "analytics"
           },
           {

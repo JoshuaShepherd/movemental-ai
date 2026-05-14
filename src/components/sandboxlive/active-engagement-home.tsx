@@ -112,6 +112,27 @@ export function ActiveEngagementHome({
 
   return (
     <div className="flex flex-col">
+      <section className="border-b border-[0.5px] border-rule bg-card px-4 py-6 sm:px-6">
+        <Link
+          href={`/sandboxlive/portfolio${orgQuery}`}
+          className="group flex flex-col gap-3 rounded-card border border-border bg-section/50 p-5 transition-colors hover:border-border hover:bg-section sm:flex-row sm:items-center sm:justify-between sm:gap-6"
+        >
+          <div className="min-w-0">
+            <p className={editorialHome.eyebrow}>Companion prototype</p>
+            <h2 className="mt-2 font-serif text-[1.35rem] italic leading-snug text-foreground sm:text-[1.5rem]">
+              Sandbox use case portfolio
+            </h2>
+            <p className="mt-2 max-w-[42rem] text-[14px] leading-relaxed text-muted-foreground">
+              Organizational skills library, experiment logging wizard, and discernment dashboard — the same
+              companion flow as the HTML mock, now running inside SandboxLive.
+            </p>
+          </div>
+          <span className="shrink-0 text-[14px] font-medium text-pathway-accent underline decoration-pathway-accent/40 decoration-[0.5px] underline-offset-[0.2em] transition-colors group-hover:decoration-pathway-accent">
+            Open portfolio →
+          </span>
+        </Link>
+      </section>
+
       <section className={editorialHome.heroBand}>
         <p className={editorialHome.eyebrow}>
           SandboxLive · {organizationName}
@@ -185,7 +206,9 @@ export function ActiveEngagementHome({
             <Link href={`/sandboxlive/readiness${orgQuery}`} className={editorialHome.libraryLink}>
               Staff readiness check-in
             </Link>{" "}
-            is a 10-minute individual intake every staff member completes before training — what you do, what you use, and how you feel about AI. It feeds session design, not the Phase 02 workspace doc.
+            is an individual intake (about ten minutes) for each staff member before training—what you do, what you
+            already use, and how you feel about AI. It informs session design; it is not the same artifact as the
+            Phase 02 cohort map.
           </p>
         </div>
       </section>

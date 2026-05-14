@@ -15,11 +15,31 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
+
+function resolveDocsHtmlRoot(root) {
+  const env = process.env.MOVEMENTAL_STATIC_HTML_ROOT?.trim();
+  if (env && fs.existsSync(path.join(env, "site-templates", "site-theme.css"))) {
+    return env;
+  }
+  const candidates = [
+    path.join(root, "external", "1-html", "labs", "movemental-ai", "docs-html"),
+    path.join(root, "..", "1-html", "labs", "movemental-ai", "docs-html"),
+    path.join(root, "docs", "html"),
+  ];
+  for (const c of candidates) {
+    if (fs.existsSync(path.join(c, "site-templates", "site-theme.css"))) return c;
+  }
+  throw new Error(
+    "Static HTML lab not found. Set MOVEMENTAL_STATIC_HTML_ROOT or clone 01-Movemental-Core/1-html next to this repo.",
+  );
+}
+
+const docsHtmlRoot = resolveDocsHtmlRoot(repoRoot);
 const tsxPath = path.join(
   repoRoot,
   "src/components/sections-mock/toolkit-read/toolkit-read-content.tsx",
 );
-const outPath = path.join(repoRoot, "docs/html/toolkit-text-review.html");
+const outPath = path.join(docsHtmlRoot, "toolkit-text-review.html");
 
 const tsx = fs.readFileSync(tsxPath, "utf8");
 

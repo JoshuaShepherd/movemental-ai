@@ -11,11 +11,17 @@ from __future__ import annotations
 import html
 import json
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+_scripts_dir = Path(__file__).resolve().parent
+sys.path.insert(0, str(_scripts_dir))
+
+from movemental_docs_html_path import movemental_docs_html_root
+
 MS_DIR = ROOT / "docs" / "book-development" / "manuscript-ordered"
-OUT_READER = ROOT / "docs" / "html" / "books-concept-modern" / "book-reader-from-manuscript.html"
+OUT_READER = movemental_docs_html_root(ROOT) / "books-concept-modern" / "book-reader-from-manuscript.html"
 
 BOOK_TITLE = "Content That Moves"
 BOOK_SUBTITLE = "Credibility, voice, and AI — a manuscript for movement leaders"

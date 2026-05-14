@@ -13,10 +13,16 @@ Run from repo root:
 from __future__ import annotations
 
 import re
+import sys
 from pathlib import Path
 
+_scripts_dir = Path(__file__).resolve().parent
+sys.path.insert(0, str(_scripts_dir))
+
+from movemental_docs_html_path import movemental_docs_html_root
+
 ROOT = Path(__file__).resolve().parents[1]
-HTML_DIR = ROOT / "docs" / "html"
+HTML_DIR = movemental_docs_html_root(ROOT)
 
 MAIN_BLOCK = re.compile(
     r"      main \{\n        padding-top: (?:var\(--site-header-height\)|4rem);\n      \}\n",

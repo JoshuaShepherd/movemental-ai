@@ -10,6 +10,32 @@ import {
   type ReadinessAnswers,
 } from "./readiness-intake-schema";
 
+/** Postgres undefined_table — table not migrated yet. */
+function isUndefinedTableError(error: unknown): boolean {
+  let current: unknown = error;
+  for (let depth = 0; depth < 6 && current; depth += 1) {
+    if (
+      typeof current === "object" &&
+      current !== null &&
+      "code" in current &&
+      (current as { code: string }).code === "42P01"
+    ) {
+      return true;
+    }
+    if (
+      typeof current === "object" &&
+      current !== null &&
+      "cause" in current &&
+      (current as { cause: unknown }).cause !== undefined
+    ) {
+      current = (current as { cause: unknown }).cause;
+    } else {
+      break;
+    }
+  }
+  return false;
+}
+
 export interface ReadinessSubmissionRow {
   id: string;
   organizationId: string;
@@ -25,24 +51,43 @@ export async function loadReadinessSubmission(
   organizationId: string,
   userId: string,
 ): Promise<ReadinessSubmissionRow | null> {
-  const [row] = await db
-    .select({
-      id: sandboxStaffReadinessSubmissions.id,
-      organization_id: sandboxStaffReadinessSubmissions.organization_id,
-      user_id: sandboxStaffReadinessSubmissions.user_id,
-      answers: sandboxStaffReadinessSubmissions.answers,
-      submitted_at: sandboxStaffReadinessSubmissions.submitted_at,
-      created_at: sandboxStaffReadinessSubmissions.created_at,
-      updated_at: sandboxStaffReadinessSubmissions.updated_at,
-    })
-    .from(sandboxStaffReadinessSubmissions)
-    .where(
-      and(
-        eq(sandboxStaffReadinessSubmissions.organization_id, organizationId),
-        eq(sandboxStaffReadinessSubmissions.user_id, userId),
-      ),
-    )
-    .limit(1);
+  let row:
+    | {
+        id: string;
+        organization_id: string;
+        user_id: string;
+        answers: unknown;
+        submitted_at: string;
+        created_at: string;
+        updated_at: string;
+      }
+    | undefined;
+
+  try {
+    [row] = await db
+      .select({
+        id: sandboxStaffReadinessSubmissions.id,
+        organization_id: sandboxStaffReadinessSubmissions.organization_id,
+        user_id: sandboxStaffReadinessSubmissions.user_id,
+        answers: sandboxStaffReadinessSubmissions.answers,
+        submitted_at: sandboxStaffReadinessSubmissions.submitted_at,
+        created_at: sandboxStaffReadinessSubmissions.created_at,
+        updated_at: sandboxStaffReadinessSubmissions.updated_at,
+      })
+      .from(sandboxStaffReadinessSubmissions)
+      .where(
+        and(
+          eq(sandboxStaffReadinessSubmissions.organization_id, organizationId),
+          eq(sandboxStaffReadinessSubmissions.user_id, userId),
+        ),
+      )
+      .limit(1);
+  } catch (e) {
+    if (isUndefinedTableError(e)) {
+      return null;
+    }
+    throw e;
+  }
 
   if (!row) return null;
 
@@ -82,34 +127,57 @@ export async function upsertReadinessSubmission(params: {
 
   const now = new Date().toISOString();
 
-  const [row] = await db
-    .insert(sandboxStaffReadinessSubmissions)
-    .values({
-      organization_id: params.organizationId,
-      user_id: params.userId,
-      answers: validated.data,
-      submitted_at: now,
-    })
-    .onConflictDoUpdate({
-      target: [
-        sandboxStaffReadinessSubmissions.organization_id,
-        sandboxStaffReadinessSubmissions.user_id,
-      ],
-      set: {
+  let row:
+    | {
+        id: string;
+        organization_id: string;
+        user_id: string;
+        answers: unknown;
+        submitted_at: string;
+        created_at: string;
+        updated_at: string;
+      }
+    | undefined;
+
+  try {
+    [row] = await db
+      .insert(sandboxStaffReadinessSubmissions)
+      .values({
+        organization_id: params.organizationId,
+        user_id: params.userId,
         answers: validated.data,
         submitted_at: now,
-        updated_at: sql`now()`,
-      },
-    })
-    .returning({
-      id: sandboxStaffReadinessSubmissions.id,
-      organization_id: sandboxStaffReadinessSubmissions.organization_id,
-      user_id: sandboxStaffReadinessSubmissions.user_id,
-      answers: sandboxStaffReadinessSubmissions.answers,
-      submitted_at: sandboxStaffReadinessSubmissions.submitted_at,
-      created_at: sandboxStaffReadinessSubmissions.created_at,
-      updated_at: sandboxStaffReadinessSubmissions.updated_at,
-    });
+      })
+      .onConflictDoUpdate({
+        target: [
+          sandboxStaffReadinessSubmissions.organization_id,
+          sandboxStaffReadinessSubmissions.user_id,
+        ],
+        set: {
+          answers: validated.data,
+          submitted_at: now,
+          updated_at: sql`now()`,
+        },
+      })
+      .returning({
+        id: sandboxStaffReadinessSubmissions.id,
+        organization_id: sandboxStaffReadinessSubmissions.organization_id,
+        user_id: sandboxStaffReadinessSubmissions.user_id,
+        answers: sandboxStaffReadinessSubmissions.answers,
+        submitted_at: sandboxStaffReadinessSubmissions.submitted_at,
+        created_at: sandboxStaffReadinessSubmissions.created_at,
+        updated_at: sandboxStaffReadinessSubmissions.updated_at,
+      });
+  } catch (e) {
+    if (isUndefinedTableError(e)) {
+      return {
+        ok: false,
+        reason:
+          "Readiness responses could not be saved because the database table is not set up yet. Run the migration in scripts/sql/20260514_sandbox_staff_readiness_submissions.sql.",
+      };
+    }
+    throw e;
+  }
 
   if (!row) return { ok: false, reason: "Database did not return the saved row." };
 

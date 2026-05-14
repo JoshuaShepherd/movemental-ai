@@ -9,10 +9,16 @@ Run: python3 scripts/generate-scenius-network-v3-html.py
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-OUT = REPO / "docs/html/scenius-network-v3"
+_scripts_dir = Path(__file__).resolve().parent
+sys.path.insert(0, str(_scripts_dir))
+
+from movemental_docs_html_path import movemental_docs_html_root
+
+OUT = movemental_docs_html_root(REPO) / "scenius-network-v3"
 
 # Public voice headshots (same paths as `src/data/home-data.ts` — `public/images/voices/`)
 VOICES_MEDIA_BASE = "/images/voices/"

@@ -2,7 +2,7 @@
   "fixtureVersion": 1,
   "templateId": "phase_02_assessment_sandboxlive_workspace",
   "screenFamily": "phase-workspace",
-  "documentTitle": "SandboxLive Phase 02 Assessment - Movemental",
+  "documentTitle": "SandboxLive Phase 02 — Current Reality Map · Movemental",
   "draftApiMapping": {
     "note": "Auto-generated skeleton from templates/*. Review and replace with entity-backed keys.",
     "shell_brand": "brand.assets.wordmark_text",
@@ -17,9 +17,8 @@
     "modeBadge": "SANDBOX"
   },
   "page": {
-    "headline": "Your Current Reality Map",
-    "supportingCopy": "Worked through with an AI assistant. Editable by you. Visible to your cohort.",
-    "eyebrow": "JUST ADDED"
+    "headline": "Build the map together",
+    "supportingCopy": "Move section by section with the assistant. You can edit answers anytime; everyone in this SandboxLive cohort sees this workspace."
   },
   "sections": [
     {
@@ -28,27 +27,27 @@
       "headings": [
         {
           "level": 1,
-          "text": "Your Current Reality Map"
+          "text": "How this workspace is structured"
         },
         {
           "level": 2,
-          "text": "forum INTERVIEW IN PROGRESS"
+          "text": "Interview — capture what is true today"
         },
         {
           "level": 2,
-          "text": "map YOUR MAP — UPDATING LIVE"
+          "text": "Living map — themes update as you go"
         },
         {
           "level": 3,
-          "text": "I. What You Do"
+          "text": "I. What you do"
         },
         {
           "level": 3,
-          "text": "II. Friction Points"
+          "text": "II. Friction points"
         },
         {
           "level": 3,
-          "text": "III. What You'd Want Better"
+          "text": "III. What you want to work better"
         }
       ]
     }

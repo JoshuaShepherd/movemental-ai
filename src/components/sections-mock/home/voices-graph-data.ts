@@ -1,7 +1,7 @@
 /**
  * Movement Voices graph — single source for the credibility-band network.
  *
- * Static HTML preview: `docs/html/scenius-network-v2/` — run
+ * Static HTML preview: `1-html/labs/movemental-ai/docs-html/scenius-network-v2/` — run
  * `pnpm docs:sync-movement-voices-html` after changing voices or IDs.
  * IDs are stable slugs for layout and React Flow keys.
  *

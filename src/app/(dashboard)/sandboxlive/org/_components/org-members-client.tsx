@@ -98,7 +98,7 @@ export function SandboxLiveOrgMembersClient({
                       href={`/sandboxlive/phase/02-assessment${q}`}
                       className={cn(editorialHome.textLink, "text-[14px]")}
                     >
-                      Open your Current Reality Map workspace (Phase 02)
+                      Open Phase 02 — Current Reality Map
                     </Link>
                     <span className="mx-2 text-muted-foreground">·</span>
                     <Link href={`/welcome${q}`} className={cn(editorialHome.textLink, "text-[14px]")}>

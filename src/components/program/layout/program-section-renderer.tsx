@@ -13,15 +13,15 @@ type OutlineSection = {
 
 function OutlineBlock({ section }: { section: OutlineSection }) {
   return (
-    <section className="rounded border border-safestart-hairline bg-white/60 p-6">
-      <div className="flex flex-col gap-2 font-body text-sm text-safestart-ink">
+    <section className="border-[0.5px] border-solid border-border-soft bg-card p-6">
+      <div className="flex flex-col gap-2 font-body text-sm text-foreground">
         {section.headings.map((h, i) => {
           const cls =
             h.level <= 1
-              ? "text-lg font-semibold"
+              ? "font-serif text-lg font-medium leading-snug text-foreground"
               : h.level === 2
-                ? "ml-2 text-base font-medium"
-                : "ml-4 text-sm text-safestart-muted";
+                ? "ml-0 border-l-2 border-pathway-accent pl-3 text-[15px] font-medium leading-snug text-foreground md:ml-1"
+                : "ml-0 pl-3 text-sm leading-relaxed text-muted-foreground md:ml-4 md:pl-0";
           return (
             <div key={`${h.text}-${i}`} className={cls}>
               {h.text}

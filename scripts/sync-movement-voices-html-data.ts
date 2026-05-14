@@ -14,10 +14,11 @@ import {
   MOVEMENT_VOICES,
   MOVEMENTAL_CENTER,
 } from "../src/components/sections-mock/home/voices-graph-data";
+import { resolveMovementalDocsHtmlRoot } from "../src/lib/dev-paths/movemental-static-html-roots";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = join(__dirname, "..");
-const outDir = join(repoRoot, "docs/html/scenius-network-v2");
+const outDir = join(resolveMovementalDocsHtmlRoot(repoRoot), "scenius-network-v2");
 
 mkdirSync(outDir, { recursive: true });
 

@@ -4,11 +4,31 @@
  * then emit flat `docs/arguments/custom-gpt/messaging-01..08.md` bundles
  * (no long-lived subfolders — intermediate category dirs are removed after concat).
  */
-import { readFileSync, writeFileSync, mkdirSync, readdirSync, rmSync } from "fs";
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, rmSync, existsSync } from "fs";
 import { join } from "path";
 
 const ROOT = join(import.meta.dirname, "..");
-const HTML_PATH = join(ROOT, "docs/html/deduped-megapage.html");
+
+function resolveDocsHtmlRoot(root) {
+  const env = process.env.MOVEMENTAL_STATIC_HTML_ROOT?.trim();
+  if (env && existsSync(join(env, "site-templates", "site-theme.css"))) {
+    return env;
+  }
+  const candidates = [
+    join(root, "external", "1-html", "labs", "movemental-ai", "docs-html"),
+    join(root, "..", "1-html", "labs", "movemental-ai", "docs-html"),
+    join(root, "docs", "html"),
+  ];
+  for (const c of candidates) {
+    if (existsSync(join(c, "site-templates", "site-theme.css"))) return c;
+  }
+  throw new Error(
+    "Static HTML lab not found. Set MOVEMENTAL_STATIC_HTML_ROOT or clone 01-Movemental-Core/1-html next to this repo.",
+  );
+}
+
+const DOCS_HTML = resolveDocsHtmlRoot(ROOT);
+const HTML_PATH = join(DOCS_HTML, "deduped-megapage.html");
 const OUT_DIR = join(ROOT, "docs/arguments/custom-gpt");
 /** Repo-relative path for SOURCE markers in flat bundles */
 const REL_BASE = "docs/arguments/custom-gpt";
@@ -75,7 +95,7 @@ while ((match = cardRegex.exec(html)) !== null) {
 console.log(`Parsed ${cards.length} arguments from HTML`);
 
 // ── Also parse the tabbed page for routing info ──────────────────────
-const TABBED_PATH = join(ROOT, "docs/html/tabbed-argument-page.html");
+const TABBED_PATH = join(DOCS_HTML, "tabbed-argument-page.html");
 const tabbedHtml = readFileSync(TABBED_PATH, "utf-8");
 
 // Build a map: id → { tabs: [{tab, rank}] }

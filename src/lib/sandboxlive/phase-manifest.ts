@@ -58,11 +58,11 @@ export const SANDBOXLIVE_PHASES: readonly SandboxLivePhaseEntry[] = [
   {
     slug: "02-assessment",
     number: "02",
-    name: "Assessment",
+    name: "Current Reality Map",
     description:
-      "Map current reality across the cohort: where AI already lives, what's missing.",
+      "Document where AI is in use today, where it is absent, and what that implies for the rest of the arc.",
     produces:
-      "A Current Reality Map of every place AI is already in your organizations and every place it isn't.",
+      "One cohort-visible map of where AI already shapes your work and where it does not—so later phases start from shared facts, not guesswork.",
     templateId: "phase_02_assessment_sandboxlive_workspace",
   },
   {

@@ -4,6 +4,7 @@ import { notFound, redirect } from "next/navigation";
 import { ProgramEditorialFallbackBody } from "@/components/program/program-editorial-fallback-body";
 import { SandboxLivePhase03ExperimentingView } from "@/components/sandboxlive/phase-03-experimenting-view";
 import { StitchDocumentView } from "@/components/stitch/stitch-document-view";
+import { editorialHome } from "@/lib/authenticated/editorial-home";
 import { loadProgramTemplateData } from "@/lib/program/load-program-template-data.server";
 import type { ProgramFixtureBase } from "@/lib/program/types/stitch-screen-family";
 import {
@@ -11,6 +12,7 @@ import {
   getSandboxLivePhase,
 } from "@/lib/sandboxlive/phase-manifest";
 import { createClient } from "@/lib/supabase/server";
+import { cn } from "@/lib/utils";
 
 export async function generateMetadata({
   params,
@@ -65,36 +67,50 @@ export default async function SandboxLivePhasePage({
   const nextPhase = getNextSandboxLivePhase(phase.slug);
   const orgQuery = sp.org ? `?org=${sp.org}` : "";
 
+  const phaseEyebrow =
+    phase.slug === "03-experimenting"
+      ? `Phase ${phase.number} · Experimenting`
+      : `Phase ${phase.number} · ${phase.name}`;
+  const phaseTitle = phase.slug === "03-experimenting" ? "Experimenting" : phase.name;
+
   return (
-    <div className="-mx-[clamp(1.25rem,4vw,2.5rem)] -my-8 flex min-h-[calc(100dvh-4rem)] flex-col bg-safestart-bg text-safestart-ink selection:bg-pathway-accent/20">
-      {/* Phase header */}
-      <header className="border-b border-safestart-hairline bg-safestart-bg">
-        <div className="mx-auto flex w-full max-w-5xl flex-col gap-4 px-6 py-10 md:px-12 md:py-14">
-          <Link
-            href={`/sandboxlive${orgQuery}`}
-            className="self-start text-[11px] font-medium uppercase tracking-[0.1em] text-safestart-muted transition-colors hover:text-pathway-accent"
+    <div
+      className="-mx-[clamp(1.25rem,4vw,2.5rem)] -my-8 flex min-h-[calc(100dvh-4rem)] flex-col bg-background text-foreground selection:bg-primary/10"
+    >
+      <header className="border-b border-[0.5px] border-solid border-border-soft bg-section">
+        <div className="mx-auto w-full max-w-5xl px-6 md:px-12">
+          <div
+            className={cn(
+              "pb-[clamp(2.5rem,5vw,3.5rem)] pt-[clamp(3.25rem,6vw,4.75rem)]",
+              "flex flex-col gap-4",
+            )}
           >
-            ← SandboxLive
-          </Link>
-          <p className="text-[11px] font-medium uppercase tracking-[0.1em] text-pathway-accent">
-            {phase.slug === "03-experimenting"
-              ? `PHASE ${phase.number} — EXPERIMENTING`
-              : `Phase ${phase.number} — ${phase.name}`}
-          </p>
-          <h1 className="font-serif text-[clamp(2.25rem,4.5vw,2.75rem)] italic leading-[1.05] tracking-tight text-safestart-ink">
-            {phase.slug === "03-experimenting" ? "Experimenting" : phase.name}
-          </h1>
-          <p className="max-w-[680px] text-[15px] leading-relaxed text-safestart-muted">
-            {phase.produces}
-          </p>
-          {phase.slug === "02-assessment" ? (
             <Link
-              href={`/sandboxlive/readiness${orgQuery}`}
-              className="self-start text-[13px] text-safestart-muted underline decoration-safestart-hairline underline-offset-[0.22em] transition-colors hover:text-pathway-accent"
+              href={`/sandboxlive${orgQuery}`}
+              className={cn(editorialHome.textLink, "self-start text-[14px]")}
             >
-              Individual readiness check-in (10–12 minutes) →
+              ← SandboxLive
             </Link>
-          ) : null}
+            <p className={cn(editorialHome.eyebrow, "mt-2")}>{phaseEyebrow}</p>
+            <h1 className={cn(editorialHome.display, "max-w-[min(100%,48rem)]")}>{phaseTitle}</h1>
+            <p className={cn(editorialHome.lede, "max-w-2xl text-[15px]")}>{phase.produces}</p>
+            {phase.slug === "02-assessment" ? (
+              <p className="max-w-2xl text-[14px] leading-relaxed text-muted-foreground">
+                <span className="text-foreground">Before group sessions: </span>
+                each staff member can complete the{" "}
+                <Link
+                  href={`/sandboxlive/readiness${orgQuery}`}
+                  className={cn(
+                    editorialHome.libraryLink,
+                    "font-medium text-[14px] text-foreground underline-offset-[0.2em]",
+                  )}
+                >
+                  staff readiness check-in
+                </Link>{" "}
+                (about ten minutes). That intake shapes training design; it is separate from this shared map.
+              </p>
+            ) : null}
+          </div>
         </div>
       </header>
 
@@ -116,27 +132,23 @@ export default async function SandboxLivePhasePage({
         />
       )}
 
-      {/* What's next */}
-      <footer className="mt-auto border-t border-safestart-hairline bg-safestart-bg">
-        <div className="mx-auto flex w-full max-w-5xl items-baseline justify-between gap-4 px-6 py-8 md:px-12">
-          <p className="text-[11px] font-medium uppercase tracking-[0.1em] text-safestart-muted">
-            What&rsquo;s next
-          </p>
+      <footer className="mt-auto border-t border-[0.5px] border-solid border-border-soft bg-section">
+        <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 px-6 py-8 sm:flex-row sm:items-baseline sm:justify-between md:px-12">
+          <p className={editorialHome.eyebrow}>What&apos;s next</p>
           {nextPhase ? (
             <Link
               href={`/sandboxlive/phase/${nextPhase.slug}${orgQuery}`}
-              className="flex items-baseline gap-3 text-[14px] text-safestart-ink transition-colors hover:text-pathway-accent"
+              className="group flex flex-wrap items-baseline gap-x-3 gap-y-1 text-[15px] text-foreground transition-colors hover:text-pathway-accent"
             >
-              <span className="font-serif text-[18px] italic text-pathway-accent">
+              <span className="font-serif text-[22px] italic tabular-nums text-pathway-accent group-hover:text-pathway-accent">
                 {nextPhase.number}
               </span>
-              <span>{nextPhase.name} →</span>
+              <span className="font-medium underline decoration-border decoration-[0.5px] underline-offset-[0.22em] group-hover:decoration-pathway-accent/50">
+                {nextPhase.name} →
+              </span>
             </Link>
           ) : (
-            <Link
-              href={`/sandboxlive${orgQuery}`}
-              className="text-[14px] text-safestart-ink transition-colors hover:text-pathway-accent"
-            >
+            <Link href={`/sandboxlive${orgQuery}`} className={editorialHome.textLink}>
               Back to SandboxLive →
             </Link>
           )}

@@ -1,9 +1,15 @@
 #!/usr/bin/env python3
-"""Writes docs/html/scenius-network-v2/app.js (cursorignore-safe generator)."""
+"""Writes scenius-network-v2/app.js under the Core static HTML library (see docs/html/README.md)."""
+import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-OUT = REPO / "docs/html/scenius-network-v2/app.js"
+_scripts_dir = Path(__file__).resolve().parent
+sys.path.insert(0, str(_scripts_dir))
+
+from movemental_docs_html_path import movemental_docs_html_root
+
+OUT = movemental_docs_html_root(REPO) / "scenius-network-v2" / "app.js"
 
 JS = r'''/**
  * Movement Voices — static D3/SVG twin of movement-voices-network + settle-movement-voices

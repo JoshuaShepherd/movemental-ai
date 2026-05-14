@@ -1,11 +1,8 @@
 /**
  * Copies optional audience homepage HTML into `public/hero-previews/` for home hero iframe previews.
  *
- * When source HTML under `docs/templates/` is missing, writes a minimal stub so `prebuild` still passes.
- *
- * If `docs/templates/alan-hirsch/pages/` is missing or has no `.html` files (e.g. after
- * removing the sibling template tree), `leaders/index.html` is generated from
- * `docs/templates/alan-hirsch/exemplars/exemplar-landing-general.html` so Vercel `prebuild` still passes.
+ * Source HTML lives under the Core `1-html` library (`labs/movemental-ai/docs-templates/`) or legacy
+ * `docs/templates/`. When sources are missing, writes a minimal stub so `prebuild` still passes.
  *
  * Run via `pnpm sync:hero-previews` or automatically before `pnpm dev` / `pnpm prebuild`.
  */
@@ -13,15 +10,22 @@ import { copyFile, mkdir, readdir, readFile, writeFile } from "node:fs/promises"
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import {
+  resolveMovementalDocsHtmlRoot,
+  resolveMovementalDocsTemplatesRoot,
+} from "../src/lib/dev-paths/movemental-static-html-roots";
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
+const templatesRoot = resolveMovementalDocsTemplatesRoot(root);
+const docsHtmlRoot = resolveMovementalDocsHtmlRoot(root);
 const out = join(root, "public", "hero-previews");
 
 /** Optional static HTML for audience iframe previews; absent files produce a stub. */
 const AUDIENCE_PREVIEW_HTML = {
-  nonprofits: join(root, "docs/templates/audience-previews/nonprofits.html"),
-  churches: join(root, "docs/templates/audience-previews/churches.html"),
-  institutions: join(root, "docs/templates/audience-previews/institutions.html"),
+  nonprofits: join(templatesRoot, "audience-previews/nonprofits.html"),
+  churches: join(templatesRoot, "audience-previews/churches.html"),
+  institutions: join(templatesRoot, "audience-previews/institutions.html"),
 } as const;
 
 const AUDIENCE_PREVIEW_STUB = `<!DOCTYPE html>
@@ -35,7 +39,7 @@ const AUDIENCE_PREVIEW_STUB = `<!DOCTYPE html>
   </style>
 </head>
 <body>
-  <p>No static preview HTML found. Add <code>docs/templates/audience-previews/&lt;audience&gt;.html</code> or adjust <code>scripts/sync-hero-previews.ts</code>.</p>
+  <p>No static preview HTML found. Add audience preview HTML under the Core <code>1-html/labs/movemental-ai/docs-templates/audience-previews/</code> tree (or set <code>MOVEMENTAL_DOCS_TEMPLATES_ROOT</code>).</p>
 </body>
 </html>
 `;
@@ -50,14 +54,14 @@ async function copyAudiencePreviewOrStub(srcPath: string, destPath: string) {
 }
 
 /** Static shell pages (optional). When empty/removed, leaders preview uses `FALLBACK_LEADERS_HTML`. */
-const ALAN_HIRSCH_PAGES = join(root, "docs/templates/alan-hirsch/pages");
+const ALAN_HIRSCH_PAGES = join(templatesRoot, "alan-hirsch/pages");
 /** Exemplar HTML copied to `public/hero-previews/leaders/index.html` when `pages/` has no `.html` files. */
 const FALLBACK_LEADERS_HTML = join(
-  root,
-  "docs/templates/alan-hirsch/exemplars/exemplar-landing-general.html"
+  templatesRoot,
+  "alan-hirsch/exemplars/exemplar-landing-general.html"
 );
-const SITE_THEME = join(root, "docs/html/site-templates/site-theme.css");
-const SITE_SHELL = join(root, "docs/html/site-templates/site-shell.js");
+const SITE_THEME = join(docsHtmlRoot, "site-templates/site-theme.css");
+const SITE_SHELL = join(docsHtmlRoot, "site-templates/site-shell.js");
 
 function rewriteVendoredAssets(html: string): string {
   return html

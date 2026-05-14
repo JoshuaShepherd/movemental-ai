@@ -14,7 +14,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { createClient } from "@/lib/supabase/client";
+import { getBrowserUserEmail } from "@/lib/supabase/client";
 
 type Props = {
   chapterSlug: string;
@@ -41,11 +41,9 @@ export function MarginNoteSubmission({ chapterSlug, defaultAnchorId }: Props) {
   useEffect(() => {
     if (!open) return;
     let cancelled = false;
-    void createClient()
-      .auth.getUser()
-      .then(({ data }) => {
-        if (!cancelled) setUserEmail(data.user?.email ?? null);
-      });
+    void getBrowserUserEmail().then((email) => {
+      if (!cancelled) setUserEmail(email);
+    });
     return () => {
       cancelled = true;
     };

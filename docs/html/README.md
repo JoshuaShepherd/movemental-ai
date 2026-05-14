@@ -1,11 +1,11 @@
-# HTML prototypes (`docs/html/`)
+# Static HTML lab (relocated)
 
-This folder is a **prototype lab** for mockups and experiments. It is **not** the source of truth for production UI.
+All former `docs/html/**` files now live in the monorepo-wide HTML library:
 
-**Production SSOT for movemental.ai**
+`01-Movemental-Core/1-html/labs/movemental-ai/docs-html/`
 
-- [`docs/design/DESIGN.md`](../design/DESIGN.md)
-- [`docs/arguments/SITE-SSOT.md`](../arguments/SITE-SSOT.md)
-- [`src/`](../../src/) — Next.js `(site)` implementation
+When this repo sits next to `1-html` in a Core checkout, scripts resolve that path automatically. For CI or machines with a different layout, set:
 
-Cursor indexes this directory **out** of the default context via [`.cursorignore`](../../.cursorignore). When a prototype ships as React, archive superseded HTML under `~/Desktop/Archive/2026-05-cleanup/movemental-html-drafts/` (see [`docs/build/notes/curated-cleanup-plan-2026-05.md`](../build/notes/curated-cleanup-plan-2026-05.md)).
+`MOVEMENTAL_STATIC_HTML_ROOT` → absolute path to the `docs-html` directory above.
+
+This folder intentionally contains **no** `.html` files so the Next.js repo stays free of hand-authored static pages.

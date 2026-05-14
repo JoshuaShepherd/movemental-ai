@@ -28,8 +28,8 @@ function destinationsForHub(persona: DashboardPersona, courses: WorkspaceCourseE
     title: "Program templates",
     description:
       persona === "implementation_org"
-        ? "Safety and Sandbox screens aligned to governance, inventory, and board-ready sequences—preview each template with your active organization context."
-        : "Safety and Sandbox working surfaces from Movemental’s curated template library—open any card for a signed-in preview with your active organization when one is selected.",
+        ? "Preview Safety and Sandbox program screens with your active organization—governance, inventory, and board-ready sequences in one library."
+        : "Browse Safety and Sandbox templates from Movemental’s library. Open any template signed in; your active organization applies when you have one selected.",
     icon: LayoutGrid,
   };
 
@@ -37,15 +37,15 @@ function destinationsForHub(persona: DashboardPersona, courses: WorkspaceCourseE
     href: "/sandboxlive/cohort/schedule",
     title: "Schedule cohort training",
     description:
-      "Book your Sandbox kickoff in Calendly with your organization context, or set the cohort date manually from onboarding.",
+      "Book SandboxLive kickoff in Calendly or set the cohort date so your team shares one timeline.",
     icon: Calendar,
   };
 
   const assessment: Destination = {
     href: "/sandboxlive/phase/02-assessment",
-    title: "Organization assessment",
+    title: "Current Reality Map",
     description:
-      "SandboxLive Phase 02 — the cohort Current Reality Map workspace (large structured interview), not the public marketing-site Integrity Diagnostic.",
+      "Phase 02: map where AI already shows up in your organization, where it does not, and what comes next—with assistant help. Your cohort sees the same workspace.",
     icon: ListChecks,
   };
 
@@ -53,7 +53,7 @@ function destinationsForHub(persona: DashboardPersona, courses: WorkspaceCourseE
     href: "/dashboard/skills",
     title: "Skills",
     description:
-      "Organization-scoped skills workspace — starter surface while the full experience is built out.",
+      "Organization-scoped skills practice area. More lessons and workflows will land here over time.",
     icon: Sparkles,
   };
 
@@ -61,7 +61,7 @@ function destinationsForHub(persona: DashboardPersona, courses: WorkspaceCourseE
     href: "/dashboard/solutions",
     title: "Solutions",
     description:
-      "Curated solutions lane for your workspace — placeholder hub until the full module ships.",
+      "Curated solutions your workspace can adopt next. This hub will grow as modules ship.",
     icon: Wrench,
   };
 
@@ -74,7 +74,7 @@ function destinationsForHub(persona: DashboardPersona, courses: WorkspaceCourseE
   if (persona === "implementation_org") {
     const base: Destination[] = [];
     if (courses.safety) base.push(program);
-    if (courses.sandbox) base.push(scheduleTraining);
+    if (courses.sandbox) base.push(scheduleTraining, assessment);
     return appendOptionalSkillsSolutions(base, courses, skills, solutions);
   }
 

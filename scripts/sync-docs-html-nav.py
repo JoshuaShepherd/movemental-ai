@@ -1,13 +1,8 @@
 #!/usr/bin/env python3
 """
-Rewrite docs/html/* prototype headers to use a consistent two-tier nav.
+Rewrite prototype HTML headers under the Core static HTML library to use a consistent two-tier nav.
 
-Shared CSS for these pages lives in docs/html/site-templates/site-theme.css and
-prototype-pages.css; see docs/design/DESIGN.md §14.
-
-This script rewrites headers to use a consistent two-tier nav:
-  - Site: cross-links across core HTML prototypes
-  - On this page: existing in-document anchors + CTA in the mobile drawer
+Shared CSS lives in `site-templates/site-theme.css` and `prototype-pages.css`; see docs/design/DESIGN.md §14.
 
 Run from repo root:
   python3 scripts/sync-docs-html-nav.py
@@ -16,10 +11,16 @@ Run from repo root:
 from __future__ import annotations
 
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-HTML_DIR = ROOT / "docs" / "html"
+_scripts_dir = Path(__file__).resolve().parent
+sys.path.insert(0, str(_scripts_dir))
+
+from movemental_docs_html_path import movemental_docs_html_root
+
+HTML_DIR = movemental_docs_html_root(ROOT)
 
 # (filename, label) — order is intentional: story → mechanism → proof → commerce
 GLOBAL_PAGES: list[tuple[str, str]] = [
@@ -313,18 +314,18 @@ def patch_file(path: Path) -> bool:
         return False
     text = path.read_text(encoding="utf-8")
     if OLD_NAV_DISPLAY not in text:
-        print(f"skip (no nav display block): {path.relative_to(ROOT)}")
+        print(f"skip (no nav display block): {path}")
         return False
     text = text.replace(OLD_NAV_DISPLAY, NEW_NAV_DISPLAY, 1)
     m = HEADER_DRAWER_RE.search(text)
     if not m:
-        print(f"skip (no header match): {path.relative_to(ROOT)}")
+        print(f"skip (no header match): {path}")
         return False
     inpage, cta = PAGE_CONFIG[name]
     block = build_header_block(name, inpage, cta)
     text = text[: m.start()] + block + text[m.end() :]
     path.write_text(text, encoding="utf-8")
-    print(f"patched {path.relative_to(ROOT)}")
+    print(f"patched {path}")
     return True
 
 
