@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Movemental — How We Approach AI · Bento Box</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper: '#faf6ee',
+          alt: '#f2ece0',
+          ink: '#19150f',
+          muted: '#6b6660',
+          rule: '#e6ddcb',
+          midnight: '#141110',
+          'on-midnight': '#f4efe5',
+          destructive: '#9c2d20',
+          caution: '#a07a25',
+          go: '#6b7e3f',
+        },
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          serif: ['Newsreader', 'ui-serif', 'Georgia', 'serif'],
+        },
+        borderRadius: { card: '14px' },
+        letterSpacing: { display: '-0.022em', eyebrow: '0.09em' },
+      },
+    },
+  }
+</script>
+<style>
+  .stress { font-family: 'Newsreader', ui-serif, Georgia, serif; font-style: italic; font-weight: 500; }
+  .bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1rem; grid-auto-flow: dense; }
+  @media (min-width: 768px) { .bento { gap: 1.25rem; } }
+  .card-base { border-radius: 14px; }
+</style>
+</head>
+<body class="bg-alt text-ink font-sans antialiased">
+
+  <!-- Header -->
+  <header class="bg-alt border-b border-rule">
+    <div class="max-w-[1320px] mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+      <a href="#" class="text-[15px] font-semibold tracking-display">Movemental</a>
+      <nav class="hidden md:flex items-center gap-7 text-[12px] uppercase tracking-eyebrow text-muted">
+        <a href="#" class="hover:text-ink">Field Guide</a>
+        <a href="#" class="hover:text-ink">Methodology</a>
+        <a href="#" class="hover:text-ink">Voices</a>
+        <a href="#" class="hover:text-ink">Contact</a>
+      </nav>
+      <a href="#" class="inline-flex items-center gap-2 rounded-full bg-ink text-paper text-[12.5px] font-semibold px-4 py-2">Begin a conversation</a>
+    </div>
+  </header>
+
+  <main class="max-w-[1320px] mx-auto px-6 lg:px-10 py-12 md:py-16">
+
+    <!-- Top meta strip -->
+    <div class="flex items-center justify-between mb-8 text-[11px] uppercase tracking-eyebrow text-muted">
+      <span>The Editorial Covenant — How We Approach AI</span>
+      <span>Updated 2026-05-14 · 14 min read</span>
+    </div>
+
+    <!-- Bento grid -->
+    <div class="bento">
+
+      <!-- HERO: span-6 / span-4 on md+ -->
+      <section class="card-base bg-white p-8 md:p-12 col-span-6 md:col-span-4 md:row-span-2 flex flex-col justify-between">
+        <div>
+          <p class="text-[11px] uppercase tracking-eyebrow text-muted mb-6">The Editorial Covenant</p>
+          <h1 class="text-[clamp(2rem,4vw,3.5rem)] leading-[1.05] tracking-display font-semibold mb-7">
+            How <span class="stress">Movemental</span> approaches AI.
+          </h1>
+          <p class="text-[1.0625rem] leading-[1.65] text-muted max-w-[520px]">
+            Most public discourse splits into &ldquo;AI is a savior&rdquo; or &ldquo;AI is a threat.&rdquo; We reject both. AI is infrastructure. The leaders are the work.
+          </p>
+        </div>
+        <div class="mt-10 pt-6 border-t border-rule flex flex-wrap gap-x-8 gap-y-3 text-[11px] uppercase tracking-eyebrow text-muted">
+          <span><span class="text-ink">§01</span> Mirror</span>
+          <span><span class="text-ink">§02</span> Acid Test</span>
+          <span><span class="text-ink">§03</span> Framework</span>
+          <span><span class="text-ink">§04</span> Conclusion</span>
+        </div>
+      </section>
+
+      <!-- AI is infrastructure quote -->
+      <aside class="card-base bg-white p-7 col-span-6 md:col-span-2 flex flex-col justify-between">
+        <p class="text-[11px] uppercase tracking-eyebrow text-muted mb-3">Operating principle</p>
+        <p class="text-[1.5rem] leading-[1.2] tracking-display font-semibold">
+          AI is the infrastructure. <span class="stress">The leaders are the work.</span>
+        </p>
+        <div class="mt-6 flex items-center gap-3 text-[11px] uppercase tracking-eyebrow text-muted">
+          <span class="w-6 h-px bg-rule"></span>Editorial Council
+        </div>
+      </aside>
+
+      <!-- Mini-stat: gathering -->
+      <aside class="card-base bg-paper border border-rule p-7 col-span-6 md:col-span-2">
+        <p class="text-[11px] uppercase tracking-eyebrow text-muted mb-4">What people say yes to</p>
+        <p class="text-[3.25rem] leading-none tracking-display font-semibold mb-3">Each<br/><span class="stress">other.</span></p>
+        <p class="text-[13px] text-muted leading-[1.6]">Not the technology. The platform exists to make that possible at scale.</p>
+      </aside>
+
+      <!-- Section 1: Mirror & Amplifier — wide -->
+      <section class="card-base bg-white p-8 md:p-10 col-span-6 md:col-span-4">
+        <div class="flex items-baseline justify-between mb-5">
+          <p class="text-[11px] uppercase tracking-eyebrow text-muted">§ 01 — Premise</p>
+          <span class="text-[11px] uppercase tracking-eyebrow text-muted">02 of 09</span>
+        </div>
+        <h2 class="text-[1.625rem] md:text-[2rem] leading-[1.15] tracking-display font-semibold mb-6">The <span class="stress">mirror</span> and the amplifier</h2>
+        <div class="grid md:grid-cols-2 gap-7 text-[14.5px] leading-[1.7] text-ink/85">
+          <p>AI is trained on the broad output of human writing, speech, and behavior. When you interact with it, it mirrors and amplifies what it has been trained on, and it mirrors and amplifies you specifically.</p>
+          <p>People worried about AI are often worried about humanity itself. People hopeful about AI are often hopeful about humanity. The most important thing an organization can do is <span class="stress">deliberately gather the right humans</span>.</p>
+        </div>
+      </section>
+
+      <!-- Pull quote tile -->
+      <aside class="card-base bg-paper border border-rule p-7 col-span-6 md:col-span-2 flex flex-col justify-center">
+        <p class="text-[11px] uppercase tracking-eyebrow text-muted mb-4">Reframe</p>
+        <p class="text-[1.25rem] leading-[1.3] font-medium">
+          AI surfaces and amplifies what humans <span class="stress">have already produced</span>.
+        </p>
+      </aside>
+
+      <!-- ACID TEST — span-2 midnight card (wide) -->
+      <section class="card-base bg-midnight text-on-midnight p-10 md:p-12 col-span-6 md:col-span-4 md:row-span-2">
+        <div class="flex items-baseline justify-between mb-7">
+          <p class="text-[11px] uppercase tracking-eyebrow text-on-midnight/60">§ 02 — The Acid Test</p>
+          <p class="text-[11px] uppercase tracking-eyebrow text-on-midnight/60">Portable · Falsifiable</p>
+        </div>
+        <p class="text-[12.5px] uppercase tracking-eyebrow text-on-midnight/70 mb-6">The &ldquo;take AI out of the story&rdquo; test</p>
+        <blockquote class="text-[clamp(1.75rem,3.4vw,3rem)] leading-[1.1] tracking-display font-semibold mb-10">
+          Take the AI out of the story. <span class="stress">Look at what remains.</span>
+        </blockquote>
+        <div class="grid md:grid-cols-2 gap-7 text-[14.5px] leading-[1.7] text-on-midnight/85">
+          <div>
+            <p class="text-[11px] uppercase tracking-eyebrow text-go mb-2">When the answer is yes</p>
+            <p>If what remains is people doing valuable human work that AI helped them do faster, larger, or more accessibly &mdash; the use is humanly valuable.</p>
+          </div>
+          <div>
+            <p class="text-[11px] uppercase tracking-eyebrow text-destructive/90 mb-2">When the answer is no</p>
+            <p>If what remains is just AI output dressed up to look like human work &mdash; the use is suspect, regardless of how impressive the output is.</p>
+          </div>
+        </div>
+        <p class="text-[13.5px] leading-[1.7] text-on-midnight/65 mt-8 pt-6 border-t border-on-midnight/15">
+          Applied to ourselves: what remains is a group of practitioners who had been circling each other&rsquo;s work for years. The technology made it possible to gather. The technology did not make the gathering valuable.
+        </p>
+      </section>
+
+      <!-- TRAFFIC LIGHT header -->
+      <section class="card-base bg-white p-8 col-span-6 md:col-span-2">
+        <p class="text-[11px] uppercase tracking-eyebrow text-muted mb-4">§ 03 — Decision framework</p>
+        <h2 class="text-[1.5rem] leading-[1.2] tracking-display font-semibold mb-4">Green, yellow, and <span class="stress">red lights.</span></h2>
+        <p class="text-[13.5px] text-muted leading-[1.6]">A three-tier deployment framework. Coarse-grained on purpose.</p>
+      </section>
+
+      <!-- Yellow tile (placed above three squares to fill grid) -->
+      <aside class="card-base bg-white p-7 col-span-6 md:col-span-2">
+        <p class="text-[11px] uppercase tracking-eyebrow text-muted mb-4">The shape of every guardrail</p>
+        <p class="text-[1.0625rem] leading-[1.55] font-medium">
+          A <span class="stress">human with judgment</span> is the last hand on the work before it leaves the building.
+        </p>
+      </aside>
+
+      <!-- THREE COMPACT SQUARES side by side -->
+      <article class="card-base bg-white p-7 col-span-6 md:col-span-2 aspect-square md:aspect-square flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-5">
+            <span class="w-2.5 h-2.5 rounded-full bg-go"></span>
+            <span class="text-[11px] uppercase tracking-eyebrow text-go font-medium">Green</span>
+          </div>
+          <p class="text-[1.125rem] leading-[1.3] font-semibold mb-3">Clear human benefit, no meaningful negative consequence.</p>
+        </div>
+        <ul class="text-[12.5px] text-muted space-y-1.5 mt-6">
+          <li>— Make content searchable</li>
+          <li>— Translate languages</li>
+          <li>— Surface data patterns</li>
+        </ul>
+      </article>
+
+      <article class="card-base bg-white p-7 col-span-6 md:col-span-2 aspect-square md:aspect-square flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-5">
+            <span class="w-2.5 h-2.5 rounded-full bg-caution"></span>
+            <span class="text-[11px] uppercase tracking-eyebrow text-caution font-medium">Yellow</span>
+          </div>
+          <p class="text-[1.125rem] leading-[1.3] font-semibold mb-3">Real benefit, but only with sufficient guardrails.</p>
+        </div>
+        <ul class="text-[12.5px] text-muted space-y-1.5 mt-6">
+          <li>— Reviewed drafts</li>
+          <li>— Cited research</li>
+          <li>— Facilitation, not substitution</li>
+        </ul>
+      </article>
+
+      <article class="card-base bg-white p-7 col-span-6 md:col-span-2 aspect-square md:aspect-square flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-5">
+            <span class="w-2.5 h-2.5 rounded-full bg-destructive"></span>
+            <span class="text-[11px] uppercase tracking-eyebrow text-destructive font-medium">Red</span>
+          </div>
+          <p class="text-[1.125rem] leading-[1.3] font-semibold mb-3">Harm, regardless of how carefully it is deployed.</p>
+        </div>
+        <ul class="text-[12.5px] text-muted space-y-1.5 mt-6">
+          <li>— Authoring under a name</li>
+          <li>— Eligibility decisions</li>
+          <li>— Pastoral impersonation</li>
+          <li>— Surveillance</li>
+        </ul>
+      </article>
+
+      <!-- SECTION 4 — Conclusion (wide) -->
+      <section class="card-base bg-white p-8 md:p-10 col-span-6 md:col-span-4">
+        <p class="text-[11px] uppercase tracking-eyebrow text-muted mb-4">§ 04 — Conclusion</p>
+        <h2 class="text-[1.625rem] md:text-[2rem] leading-[1.15] tracking-display font-semibold mb-6">We are not an <span class="stress">AI company.</span></h2>
+        <div class="grid md:grid-cols-2 gap-7 text-[14.5px] leading-[1.7] text-ink/85">
+          <p>We are a company of humans who use AI as carefully as we can, in service of a network of movement leaders whose work matters.</p>
+          <p>The vendors who will help them are mostly not the people who understand the substance of what they do. <span class="stress">That head start is what we offer.</span></p>
+        </div>
+      </section>
+
+      <!-- CTA tile -->
+      <aside class="card-base bg-midnight text-on-midnight p-7 col-span-6 md:col-span-2 flex flex-col justify-between">
+        <div>
+          <p class="text-[11px] uppercase tracking-eyebrow text-on-midnight/60 mb-4">Next</p>
+          <p class="text-[1.5rem] leading-[1.15] tracking-display font-semibold">Begin a <span class="stress">conversation.</span></p>
+        </div>
+        <a href="#" class="mt-6 inline-flex items-center justify-between rounded-full bg-on-midnight text-midnight text-[13px] font-semibold px-4 py-2.5">Get in touch
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </aside>
+
+    </div>
+  </main>
+
+  <footer class="border-t border-rule py-10 mt-12 bg-alt">
+    <div class="max-w-[1320px] mx-auto px-6 lg:px-10 flex justify-between text-[12px] uppercase tracking-eyebrow text-muted">
+      <span>Movemental © 2026</span>
+      <span>The Editorial Covenant</span>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>How Movemental Approaches AI — Traffic Light Console (Direction B)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #faf6ee;
+    --alt-band: #f2ece0;
+    --ink: #19150f;
+    --ink-soft: #6b6660;
+    --midnight: #141110;
+    --on-midnight: #f4efe5;
+    --hairline: #e6ddcb;
+    --card: #ffffff;
+    --destructive: #9c2d20;
+    --status-caution: #a07a25;
+    --status-go: #6b7e3f;
+
+    --container: 1200px;
+    --measure: 720px;
+    --tracking-display: -0.022em;
+    --tracking-eyebrow: 0.12em;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-serif: "Newsreader", ui-serif, Georgia, serif;
+    --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-sans); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  em { font-family: var(--font-serif); font-style: italic; font-weight: 500; }
+  a { color: inherit; }
+  button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+  :focus-visible { outline: 2px solid color-mix(in oklab, var(--ink) 50%, transparent); outline-offset: 3px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+  .wrap { max-width: var(--container); margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2rem); }
+  .measure { max-width: var(--measure); margin-inline: auto; }
+  .eyebrow { font-size: 0.6875rem; font-weight: 500; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--ink-soft); }
+  .hr-rule { height: 1px; background: var(--hairline); border: 0; margin: 0; }
+  .mono { font-family: var(--font-mono); }
+
+  /* Top bar — console style */
+  .topbar { border-bottom: 1px solid var(--hairline); background: var(--paper); position: sticky; top: 0; z-index: 30; }
+  .topbar-row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 3.25rem; font-size: 0.75rem; letter-spacing: 0.02em; color: var(--ink-soft); }
+  .topbar-row > :nth-child(2) { text-align: center; font-weight: 500; color: var(--ink); }
+  .topbar-row > :nth-child(3) { text-align: right; }
+  .topbar .pill { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0.625rem; border: 1px solid var(--hairline); border-radius: 9999px; }
+  .topbar .pill::before { content: ""; width: 6px; height: 6px; border-radius: 9999px; background: var(--status-go); }
+
+  /* Hero */
+  .hero { padding: clamp(4.5rem, 10vw, 7rem) 0 clamp(3rem, 6vw, 4.5rem); border-bottom: 1px solid var(--hairline); }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+  @media (max-width: 920px) { .hero-grid { grid-template-columns: 1fr; } }
+  .hero h1 {
+    font-size: clamp(2.5rem, 5.6vw, 4.25rem);
+    line-height: 1.04; letter-spacing: var(--tracking-display); font-weight: 500;
+    margin: 1.25rem 0 1.5rem;
+  }
+  .hero h1 em { color: var(--ink); }
+  .hero p { font-size: 1.05rem; line-height: 1.7; color: color-mix(in oklab, var(--ink) 85%, transparent); margin: 0; max-width: 50ch; }
+  .hero p em { color: var(--ink); }
+
+  /* Mini console panel in hero */
+  .console-card {
+    background: var(--card); border: 1px solid var(--hairline); border-radius: 14px;
+    padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;
+  }
+  .console-head { display: flex; align-items: center; justify-content: space-between; }
+  .console-head .eyebrow { color: var(--ink-soft); }
+  .console-lamps { display: flex; gap: 0.625rem; }
+  .lamp { width: 0.875rem; height: 0.875rem; border-radius: 9999px; opacity: 0.35; transition: opacity 220ms var(--ease), transform 220ms var(--ease); }
+  .lamp.live { opacity: 1; transform: scale(1.05); }
+  .lamp.go { background: var(--status-go); }
+  .lamp.caution { background: var(--status-caution); }
+  .lamp.stop { background: var(--destructive); }
+  .console-line { display: grid; grid-template-columns: 1.25rem 1fr auto; align-items: baseline; gap: 0.75rem; padding: 0.625rem 0; border-bottom: 1px dashed var(--hairline); font-size: 0.8125rem; }
+  .console-line:last-child { border-bottom: 0; }
+  .console-line .idx { font-family: var(--font-serif); font-style: italic; color: var(--ink-soft); }
+  .console-line .status { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); font-weight: 500; }
+  .console-line.go .status { color: var(--status-go); }
+  .console-line.caution .status { color: var(--status-caution); }
+  .console-line.stop .status { color: var(--destructive); }
+
+  /* Sections */
+  section { padding: clamp(4.5rem, 9vw, 7rem) 0; }
+  .band-alt { background: var(--alt-band); }
+  .band-midnight { background: var(--midnight); color: var(--on-midnight); }
+  .band-midnight .eyebrow { color: color-mix(in oklab, var(--on-midnight) 60%, transparent); }
+  .section-head { text-align: left; margin-bottom: clamp(2rem, 5vw, 3rem); }
+  .section-head h2 { font-size: clamp(2rem, 4.4vw, 2.875rem); letter-spacing: var(--tracking-display); font-weight: 500; line-height: 1.1; margin: 0.75rem 0 0; }
+  .section-head h2 em { color: inherit; }
+
+  /* Mirror toggle */
+  .mirror {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; align-items: stretch;
+    max-width: 980px; margin: 0 auto;
+  }
+  @media (max-width: 820px) { .mirror { grid-template-columns: 1fr; } }
+  .mirror-card { background: var(--card); border: 1px solid var(--hairline); border-radius: 14px; padding: 1.75rem; display: flex; flex-direction: column; gap: 0.875rem; min-height: 200px; }
+  .mirror-card .tag { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--ink-soft); }
+  .mirror-card h3 { font-size: 1.25rem; letter-spacing: -0.01em; font-weight: 500; margin: 0; }
+  .mirror-card p { font-size: 0.95rem; line-height: 1.65; color: color-mix(in oklab, var(--ink) 86%, transparent); margin: 0; }
+  .mirror-controls { display: flex; justify-content: center; gap: 0.5rem; margin: 1.75rem auto 0; max-width: 980px; }
+  .mirror-toggle {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.625rem 1rem; border-radius: 9999px;
+    border: 1px solid var(--hairline); background: var(--paper);
+    font-size: 0.8125rem; font-weight: 500;
+    transition: background 180ms var(--ease), border-color 180ms var(--ease);
+  }
+  .mirror-toggle[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .mirror-toggle:hover { border-color: var(--ink); }
+  .mirror-prose { max-width: var(--measure); margin: 2.5rem auto 0; font-size: 1rem; line-height: 1.75; color: color-mix(in oklab, var(--ink) 88%, transparent); }
+  .mirror-prose em { color: var(--ink); }
+
+  /* Acid test toggle */
+  .acid-stage {
+    max-width: 880px; margin: 0 auto;
+    background: color-mix(in oklab, var(--on-midnight) 5%, transparent);
+    border: 1px solid color-mix(in oklab, var(--on-midnight) 18%, transparent);
+    border-radius: 16px;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+  }
+  .acid-tabs { display: inline-flex; padding: 0.25rem; border: 1px solid color-mix(in oklab, var(--on-midnight) 18%, transparent); border-radius: 9999px; margin-bottom: 1.75rem; gap: 0.25rem; }
+  .acid-tab { padding: 0.5rem 1rem; border-radius: 9999px; font-size: 0.8125rem; font-weight: 500; color: color-mix(in oklab, var(--on-midnight) 70%, transparent); transition: background 200ms var(--ease), color 200ms var(--ease); }
+  .acid-tab[aria-pressed="true"] { background: var(--on-midnight); color: var(--midnight); }
+  .acid-line {
+    font-size: clamp(1.5rem, 3.2vw, 2.15rem);
+    line-height: 1.2; letter-spacing: -0.01em; font-weight: 500;
+    border-left: 2px solid color-mix(in oklab, var(--on-midnight) 25%, transparent);
+    padding-left: 1.25rem;
+    margin: 0 0 1.5rem;
+  }
+  .acid-line em { color: var(--on-midnight); }
+  .acid-body { font-size: 1rem; line-height: 1.7; color: color-mix(in oklab, var(--on-midnight) 80%, transparent); }
+  .acid-body p { margin: 0 0 1rem; }
+  .acid-body p:last-child { margin-bottom: 0; }
+  .acid-body em { color: var(--on-midnight); }
+  .acid-pane[hidden] { display: none; }
+
+  /* Traffic light: expandable */
+  .lights-stack { max-width: var(--container); margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+  .light {
+    background: var(--card); border: 1px solid var(--hairline); border-radius: 14px;
+    overflow: hidden;
+  }
+  .light-summary {
+    display: grid; grid-template-columns: 4.5rem 1fr auto; align-items: center; gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    width: 100%; text-align: left;
+    transition: background 180ms var(--ease);
+  }
+  .light-summary:hover { background: var(--alt-band); }
+  .light .light-bulb {
+    width: 3rem; height: 3rem; border-radius: 9999px; display: grid; place-items: center;
+    border: 2px solid currentColor;
+  }
+  .light .light-bulb::after { content: ""; width: 1.25rem; height: 1.25rem; border-radius: 9999px; background: currentColor; }
+  .light.go .light-bulb { color: var(--status-go); }
+  .light.caution .light-bulb { color: var(--status-caution); }
+  .light.stop .light-bulb { color: var(--destructive); }
+  .light-name { display: flex; flex-direction: column; gap: 0.25rem; }
+  .light-name .label { font-size: 1.25rem; letter-spacing: -0.01em; font-weight: 600; }
+  .light-name .verdict { font-size: 0.8125rem; color: var(--ink-soft); }
+  .light.stop .light-name .label { color: var(--destructive); }
+  .light-chev { width: 1.25rem; height: 1.25rem; transition: transform 220ms var(--ease); }
+  .light[open] .light-chev { transform: rotate(180deg); }
+  .light-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 2rem; padding: 0 1.5rem 1.5rem 5.75rem; max-height: 0; opacity: 0; transition: max-height 260ms var(--ease), opacity 200ms var(--ease), padding 260ms var(--ease); overflow: hidden; }
+  .light[open] .light-detail { max-height: 600px; opacity: 1; padding-top: 0.5rem; }
+  @media (max-width: 720px) { .light-detail { grid-template-columns: 1fr; padding-left: 1.5rem; } }
+  .light-detail p { margin: 0; font-size: 0.95rem; line-height: 1.65; color: color-mix(in oklab, var(--ink) 85%, transparent); }
+  .light-detail ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .light-detail li { font-size: 0.875rem; line-height: 1.55; padding-left: 1rem; position: relative; }
+  .light-detail li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 0.5rem; height: 1px; background: currentColor; opacity: 0.35; }
+
+  /* Conclusion */
+  .closing { padding-top: clamp(4.5rem, 8vw, 6rem); padding-bottom: clamp(5rem, 10vw, 8rem); border-top: 1px solid var(--hairline); }
+  .closing-grid { display: grid; grid-template-columns: 1fr 2fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: start; }
+  @media (max-width: 820px) { .closing-grid { grid-template-columns: 1fr; } }
+  .closing-grid h2 { font-size: clamp(2rem, 4.4vw, 2.875rem); letter-spacing: var(--tracking-display); font-weight: 500; line-height: 1.1; margin: 0.5rem 0 0; }
+  .closing-grid p { font-size: 1.0625rem; line-height: 1.75; margin: 0 0 1.25rem; color: color-mix(in oklab, var(--ink) 88%, transparent); }
+  .closing-grid p:last-child { margin-bottom: 0; }
+
+  footer { padding: 2.25rem 0; border-top: 1px solid var(--hairline); font-size: 0.75rem; color: var(--ink-soft); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-row">
+    <div><span class="pill">All policies normal</span></div>
+    <div>Movemental · AI use policy · console</div>
+    <div class="mono">rev 2026.05</div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">The editorial covenant</span>
+      <h1>How Movemental approaches <em>AI</em></h1>
+      <p>Most public discourse splits into <em>"AI is a savior"</em> or <em>"AI is a threat."</em> We reject both. AI is infrastructure. The leaders are the work. This page outlines the framing, the tests, and the boundaries that govern how we use AI at Movemental.</p>
+    </div>
+    <aside class="console-card" aria-label="AI use policy console">
+      <div class="console-head">
+        <span class="eyebrow">Live policy state</span>
+        <div class="console-lamps" aria-hidden="true">
+          <span class="lamp go live"></span>
+          <span class="lamp caution live"></span>
+          <span class="lamp stop live"></span>
+        </div>
+      </div>
+      <div>
+        <div class="console-line go">
+          <span class="idx">01</span>
+          <span>Searchable institutional memory</span>
+          <span class="status">Go</span>
+        </div>
+        <div class="console-line go">
+          <span class="idx">02</span>
+          <span>Cross-language translation</span>
+          <span class="status">Go</span>
+        </div>
+        <div class="console-line caution">
+          <span class="idx">03</span>
+          <span>Drafting human-reviewed communication</span>
+          <span class="status">Caution</span>
+        </div>
+        <div class="console-line caution">
+          <span class="idx">04</span>
+          <span>Research with citation required</span>
+          <span class="status">Caution</span>
+        </div>
+        <div class="console-line stop">
+          <span class="idx">05</span>
+          <span>Authoring under a human's name</span>
+          <span class="status">Refused</span>
+        </div>
+        <div class="console-line stop">
+          <span class="idx">06</span>
+          <span>Eligibility decisions about people</span>
+          <span class="status">Refused</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- Section 1: Mirror & amplifier -->
+<section class="band-alt" id="mirror">
+  <div class="wrap">
+    <div class="measure">
+      <header class="section-head">
+        <span class="eyebrow">§ 01 · Framing</span>
+        <h2>The mirror and <em>amplifier</em></h2>
+      </header>
+    </div>
+
+    <div class="mirror" role="group" aria-label="Mirror and amplifier demonstration">
+      <article class="mirror-card" id="mirror-in">
+        <span class="tag">Input · what AI was given</span>
+        <h3>The humans in the room</h3>
+        <p>Broad human writing, speech, and behavior — plus you, specifically, in this conversation.</p>
+      </article>
+      <article class="mirror-card" id="mirror-out">
+        <span class="tag">Output · what comes back</span>
+        <h3 id="mirror-out-title">Reflection</h3>
+        <p id="mirror-out-body">A mirror of the training data and the human in the room — same scale.</p>
+      </article>
+    </div>
+
+    <div class="mirror-controls" role="tablist" aria-label="Effect mode">
+      <button class="mirror-toggle" data-mode="mirror" aria-pressed="true">Mirror</button>
+      <button class="mirror-toggle" data-mode="amplify" aria-pressed="false">Amplify</button>
+    </div>
+
+    <div class="mirror-prose measure">
+      <p>AI is trained on the broad output of human writing, speech, and behavior. When you interact with it, it mirrors and amplifies what it has been trained on, and it mirrors and amplifies <em>you</em> specifically. The outputs you get back reflect both the training data and the human in the room.</p>
+      <p>People who are worried about AI are often worried about humanity itself — because AI surfaces and amplifies what humans have already produced. People who are hopeful about AI are often hopeful about humanity for the same reason.</p>
+      <p>If AI mirrors and amplifies the humans it is around, the most important thing an organization can do is deliberately gather the <em>right humans</em>. The thing people are saying yes to when they join Movemental is not the technology. It is each other.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2: The acid test -->
+<section class="band-midnight" id="acid">
+  <div class="wrap">
+    <div class="measure">
+      <header class="section-head">
+        <span class="eyebrow">§ 02 · The single test</span>
+        <h2>The "take AI out of the story" <em>test</em></h2>
+      </header>
+    </div>
+
+    <div class="acid-stage">
+      <div class="acid-tabs" role="tablist" aria-label="Acid test view">
+        <button class="acid-tab" data-tab="with" aria-pressed="true">With AI in the story</button>
+        <button class="acid-tab" data-tab="without" aria-pressed="false">AI removed</button>
+      </div>
+
+      <p class="acid-line">Take the AI out of the story. <em>Look at what remains.</em></p>
+
+      <div class="acid-pane" data-pane="with" aria-live="polite">
+        <div class="acid-body">
+          <p>The single most useful test for whether an AI use case is valid is portable and falsifiable. Apply it to the situation in front of you and see what's left.</p>
+          <p>What you should see: people doing work, a tool that helped, an outcome the people could have justified without the tool.</p>
+        </div>
+      </div>
+
+      <div class="acid-pane" data-pane="without" hidden aria-live="polite">
+        <div class="acid-body">
+          <p>If what remains is <em>people doing valuable human work that AI helped them do faster, larger, or more accessibly</em> — the use is humanly valuable.</p>
+          <p>If what remains is just AI output dressed up to look like human work — the use is suspect, regardless of how impressive the output is.</p>
+          <p>Applied to our own work: what remains is a group of practitioners who had been circling each other's work for years and who wanted to do something together. The technology made it possible to <em>gather</em>. The technology did not make the gathering valuable.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: Traffic light framework -->
+<section id="lights-section">
+  <div class="wrap">
+    <div class="measure">
+      <header class="section-head">
+        <span class="eyebrow">§ 03 · The framework</span>
+        <h2>Green, yellow, and <em>red</em> lights</h2>
+      </header>
+      <p style="font-size: 1rem; line-height: 1.7; color: var(--ink-soft); max-width: 56ch; margin: 0 0 2.5rem;">We sort AI use cases into three distinct categories to govern our development and deployment. Tap any row to read the rationale.</p>
+    </div>
+
+    <div class="lights-stack">
+      <article class="light go" data-light>
+        <button class="light-summary" aria-expanded="false">
+          <span class="light-bulb" aria-hidden="true"></span>
+          <span class="light-name">
+            <span class="label">Green light · deploy readily</span>
+            <span class="verdict">Clear human benefit, no meaningful negative consequence</span>
+          </span>
+          <svg class="light-chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <div class="light-detail">
+          <p>The <em>washing machine</em> of AI applications. The easiest part of our work. Deployed readily, with normal engineering quality checks.</p>
+          <ul>
+            <li>AI used to make existing content searchable.</li>
+            <li>AI used to translate between languages a person does not speak.</li>
+            <li>AI used to surface patterns in data that would otherwise take weeks to find.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="light caution" data-light>
+        <button class="light-summary" aria-expanded="false">
+          <span class="light-bulb" aria-hidden="true"></span>
+          <span class="light-name">
+            <span class="label">Yellow light · deploy with guardrails</span>
+            <span class="verdict">Real benefit only with sufficient guardrails — the majority of cases</span>
+          </span>
+          <svg class="light-chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <div class="light-detail">
+          <p>Most of our applied work is here. The guardrail is non-negotiable — without it the use case <em>graduates</em> to red.</p>
+          <ul>
+            <li>AI used to draft communications that humans review before sending.</li>
+            <li>AI used in research where citation and verification are required.</li>
+            <li>AI used to facilitate group conversations — never substituting for participants' contributions.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="light stop" data-light>
+        <button class="light-summary" aria-expanded="false">
+          <span class="light-bulb" aria-hidden="true"></span>
+          <span class="light-name">
+            <span class="label">Red light · do not deploy</span>
+            <span class="verdict">Harm, regardless of how carefully the use is deployed — our Named Refusals</span>
+          </span>
+          <svg class="light-chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <div class="light-detail">
+          <p>These form our <em>Named Refusals</em>. We do not deploy these. New refusals are added when we encounter them — the list is intended to grow.</p>
+          <ul>
+            <li>AI used to author content under a human's name without disclosure.</li>
+            <li>AI used to make eligibility decisions that affect access to services.</li>
+            <li>AI used to impersonate humans in pastoral or counseling contexts.</li>
+            <li>AI used to surveil people in ways that change how they are served.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Closing -->
+<section class="band-alt closing" id="close">
+  <div class="wrap closing-grid">
+    <div>
+      <span class="eyebrow">§ 04 · Position</span>
+      <h2>We are <em>not</em> an AI company</h2>
+    </div>
+    <div>
+      <p>We are a company of humans who use AI as carefully as we can, in service of a network of movement leaders whose work matters. <em>AI is the infrastructure. The leaders are the work.</em></p>
+      <p>The reason we are doing this now is that AI cannot be put back. Every organization our network serves is going to face the same questions about AI, whether they want to or not. The vendors who will help them are mostly not the people who understand the substance of what they do.</p>
+      <p>We are a few years into wrestling with these questions in a field where the most experienced person could only have three years of experience. <em>That head start is what we offer.</em></p>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>Movemental · AI use policy · rev 2026.05</span>
+  <span class="mono">policy.movemental.com/approach-to-ai</span>
+</footer>
+
+<script>
+  // Mirror toggle
+  const mirrorOutTitle = document.getElementById('mirror-out-title');
+  const mirrorOutBody = document.getElementById('mirror-out-body');
+  document.querySelectorAll('.mirror-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const mode = btn.dataset.mode;
+      document.querySelectorAll('.mirror-toggle').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+      if (mode === 'mirror') {
+        mirrorOutTitle.textContent = 'Reflection';
+        mirrorOutBody.innerHTML = 'A mirror of the training data and the human in the room — same scale.';
+      } else {
+        mirrorOutTitle.innerHTML = 'Amplification';
+        mirrorOutBody.innerHTML = 'The mirror, <em>louder</em>. Whatever the humans bring is now bigger — the good and the bad alike.';
+      }
+    });
+  });
+
+  // Acid test tabs
+  document.querySelectorAll('.acid-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+      document.querySelectorAll('.acid-tab').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+      document.querySelectorAll('.acid-pane').forEach(p => p.hidden = p.dataset.pane !== tab);
+    });
+  });
+
+  // Traffic light expand
+  document.querySelectorAll('[data-light]').forEach(light => {
+    const summary = light.querySelector('.light-summary');
+    summary.addEventListener('click', () => {
+      const open = light.hasAttribute('open');
+      if (open) {
+        light.removeAttribute('open');
+        summary.setAttribute('aria-expanded', 'false');
+      } else {
+        light.setAttribute('open', '');
+        summary.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Open the red light by default — these are the rules people most want to see
+  document.querySelector('.light.stop').setAttribute('open', '');
+  document.querySelector('.light.stop .light-summary').setAttribute('aria-expanded', 'true');
+</script>
+
+</body>
+</html>

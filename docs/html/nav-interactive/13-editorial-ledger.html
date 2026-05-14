@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Movemental — Editorial Ledger (Direction M)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --background: #faf6ee;
+    --foreground: #19150f;
+    --section: #f2ece0;
+    --card: #ffffff;
+    --surface-highest: #efe7d6;
+    --muted-foreground: #6b6660;
+    --ink-soft: #7e786f;
+    --primary: #19150f;
+    --primary-dim: #000;
+    --primary-foreground: #faf6ee;
+    --border: #e6ddcb;
+    --rule: rgba(25, 21, 15, 0.14);
+    --inverse-surface: #141110;
+    --inverse-foreground: #f4efe5;
+    --pathway-accent: #b8893a;
+    --audience-churches: #0053db;
+    --audience-nonprofits: #b8893a;
+    --audience-institutions: #6b7e3f;
+    --status-stop: #9c2d20;
+    --shadow-ambient: 0 24px 80px rgba(25, 21, 15, 0.12);
+    --container-max: 1200px;
+    --site-header-height: 4.25rem;
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-serif: "Newsreader", ui-serif, Georgia, serif;
+    --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+    --tracking-display: -0.022em;
+    --tracking-eyebrow: 0.09em;
+    --tracking-eyebrow-wide: 0.18em;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; line-height: 1.5; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+  em { font-family: var(--font-serif); font-style: italic; font-weight: 500; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; } }
+  :focus-visible { outline: 2px solid color-mix(in oklab, var(--foreground) 50%, transparent); outline-offset: 2px; border-radius: 6px; }
+  .container { max-width: var(--container-max); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem); }
+
+  .num-tabular { font-variant-numeric: tabular-nums; }
+
+  /* Header */
+  .site-header { position: sticky; top: 0; z-index: 50; background: var(--background); border-bottom: 1px solid transparent; transition: background 240ms var(--ease), border-color 240ms var(--ease); }
+  .site-header.is-scrolled { background: color-mix(in oklab, var(--card) 92%, transparent); backdrop-filter: blur(10px); border-bottom-color: var(--border); }
+  .header-row { height: var(--site-header-height); display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+  .brand img { height: 2.5rem; width: auto; display: block; }
+  .nav-primary { display: flex; align-items: center; gap: 0.25rem; }
+  .nav-primary > * { position: relative; }
+  .nav-trigger { display: inline-flex; align-items: center; gap: 0.375rem; padding: 0.875rem; font-size: 0.875rem; font-weight: 500; transition: color 200ms var(--ease); }
+  .nav-trigger:hover, .nav-trigger[aria-expanded="true"] { color: var(--primary); }
+  .nav-trigger svg { opacity: 0.6; transition: transform 200ms var(--ease); }
+  .nav-trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+  .nav-link { position: relative; padding: 0.875rem 0.75rem; font-size: 0.875rem; font-weight: 500; }
+  .nav-link::after { content: ""; position: absolute; left: 0.75rem; right: 0.75rem; bottom: 0.625rem; height: 1px; background: var(--primary); transform: scaleX(0); transform-origin: left; transition: transform 240ms var(--ease); }
+  .nav-link:hover::after { transform: scaleX(1); }
+  .header-cta { display: flex; align-items: center; gap: 1rem; }
+  .field-guide { display: inline-flex; align-items: center; gap: 0.375rem; font-size: 0.6875rem; font-weight: 500; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--muted-foreground); transition: color 200ms var(--ease); }
+  .field-guide:hover { color: var(--foreground); }
+  .theme-toggle { width: 2.25rem; height: 2.25rem; display: grid; place-items: center; border-radius: 9999px; transition: background 200ms var(--ease); }
+  .theme-toggle:hover { background: var(--section); }
+  .btn-pill { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6875rem 1.25rem; border-radius: 9999px; background: var(--primary); color: var(--primary-foreground); font-size: 0.875rem; font-weight: 600; letter-spacing: -0.01em; transition: background 200ms var(--ease), transform 200ms var(--ease); }
+  .btn-pill:hover { background: var(--primary-dim); transform: translateY(-1px); }
+
+  /* Mega — ledger */
+  .megamenu { position: absolute; left: 50%; top: calc(100% + 0.25rem); transform: translateX(-50%) translateY(-0.5rem); width: min(960px, calc(100vw - 2rem)); background: var(--card); border-radius: 1rem; box-shadow: var(--shadow-ambient); border: 1px solid var(--border); padding: 1.5rem 1.75rem 1.75rem; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 220ms var(--ease), transform 220ms var(--ease), visibility 0s linear 220ms; z-index: 50; }
+  .has-mega:hover .megamenu, .has-mega:focus-within .megamenu, .megamenu.is-open { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); transition: opacity 220ms var(--ease), transform 220ms var(--ease), visibility 0s linear 0s; }
+
+  .ledger-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-bottom: 0.875rem; border-bottom: 1px solid var(--rule); margin-bottom: 0.25rem;
+  }
+  .ledger-head .left { display: flex; flex-direction: column; gap: 0.125rem; }
+  .ledger-head .kicker { font-family: var(--font-mono); font-size: 0.6875rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow-wide); color: var(--ink-soft); }
+  .ledger-head .title { font-family: var(--font-serif); font-style: italic; font-size: 1.625rem; line-height: 1.1; letter-spacing: -0.01em; }
+  .ledger-head .title em { color: var(--pathway-accent); }
+  .ledger-head .right { font-family: var(--font-mono); font-size: 0.6875rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow-wide); color: var(--ink-soft); text-align: right; }
+
+  .ledger-colhead {
+    display: grid; grid-template-columns: 3rem 2.4fr 1fr 1.6fr 7rem; gap: 1rem;
+    padding: 0.625rem 0;
+    font-family: var(--font-mono); font-size: 0.625rem; text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow-wide); color: var(--ink-soft);
+    border-bottom: 1px solid var(--rule);
+  }
+  .ledger-row {
+    display: grid; grid-template-columns: 3rem 2.4fr 1fr 1.6fr 7rem; gap: 1rem;
+    padding: 0.875rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+    transition: background 200ms var(--ease), padding 200ms var(--ease);
+    margin: 0 -0.75rem; padding-left: 0.75rem; padding-right: 0.75rem;
+  }
+  .ledger-row:last-child { border-bottom: 0; }
+  .ledger-row:hover { background: var(--background); }
+  .ledger-row.is-active { background: color-mix(in oklab, var(--status-stop) 5%, var(--card)); }
+  .ledger-row .num {
+    font-family: var(--font-serif); font-style: italic; font-size: 1.375rem; color: var(--muted-foreground);
+    text-align: right;
+  }
+  .ledger-row.is-active .num { color: var(--status-stop); }
+  .ledger-row .stage {
+    display: flex; flex-direction: column; gap: 0.1875rem;
+  }
+  .ledger-row .stage .name { font-size: 1rem; font-weight: 600; letter-spacing: -0.01em; }
+  .ledger-row .stage .one { font-size: 0.8125rem; font-family: var(--font-serif); font-style: italic; color: var(--muted-foreground); }
+  .ledger-row .kind {
+    font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow); color: var(--foreground); font-weight: 600;
+  }
+  .ledger-row .outcome {
+    font-size: 0.8125rem; color: var(--muted-foreground); line-height: 1.5;
+  }
+  .ledger-row .outcome strong { color: var(--foreground); font-weight: 600; }
+  .ledger-row .ref {
+    font-family: var(--font-mono); font-size: 0.75rem;
+    color: var(--ink-soft); text-align: right;
+    text-transform: uppercase; letter-spacing: var(--tracking-eyebrow);
+  }
+  .ledger-row.is-active .ref { color: var(--status-stop); font-weight: 700; }
+
+  .ledger-foot {
+    margin-top: 1rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-top: 0.875rem; border-top: 2px solid var(--rule);
+    font-family: var(--font-mono); font-size: 0.6875rem; text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow-wide); color: var(--ink-soft);
+  }
+  .ledger-foot .total { color: var(--foreground); font-weight: 700; }
+
+  /* Audience mega — ledger micro */
+  .audience-mega { width: min(820px, calc(100vw - 2rem)); }
+  .ledger-rows-3 {
+    display: grid; gap: 0.5rem;
+  }
+  .ledger-row-3 {
+    display: grid; grid-template-columns: 2rem 1.4fr 1fr 1.6fr 1fr; gap: 1rem;
+    padding: 0.875rem 0.75rem;
+    border-radius: 0.5rem;
+    background: var(--background);
+    transition: background 200ms var(--ease), transform 200ms var(--ease);
+    align-items: baseline;
+    border-left: 3px solid var(--tint);
+  }
+  .ledger-row-3:hover { background: var(--section); transform: translateX(2px); }
+  .ledger-row-3 .ab {
+    font-family: var(--font-serif); font-style: italic; font-size: 1rem; font-weight: 600; color: var(--tint);
+  }
+  .ledger-row-3 .name { font-size: 0.9375rem; font-weight: 600; letter-spacing: -0.005em; }
+  .ledger-row-3 .focus { font-size: 0.75rem; color: var(--muted-foreground); font-family: var(--font-serif); font-style: italic; }
+  .ledger-row-3 .outcome { font-size: 0.8125rem; color: var(--muted-foreground); line-height: 1.5; }
+  .ledger-row-3 .open {
+    font-family: var(--font-mono); font-size: 0.6875rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--tint); text-align: right;
+  }
+
+  /* Hero — balance-sheet pull-out + tabular */
+  .hero { padding: clamp(4rem, 9vw, 7rem) 0 clamp(4rem, 9vw, 6.5rem); position: relative; }
+  .hero-folio {
+    display: flex; gap: 1rem; align-items: center;
+    font-family: var(--font-mono); font-size: 0.625rem; text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow-wide); color: var(--ink-soft);
+    margin-bottom: 2.5rem;
+  }
+  .hero-folio .rule { flex: 1; height: 1px; background: var(--rule); }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: clamp(2rem, 5vw, 3.5rem); align-items: center; }
+  @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } }
+  .display { font-size: clamp(2.5rem, 5.5vw, 4rem); line-height: 1.04; letter-spacing: var(--tracking-display); font-weight: 600; max-width: 18ch; }
+  .hero-prose { margin-top: 1.75rem; font-size: 1.0625rem; line-height: 1.65; color: color-mix(in oklab, var(--foreground) 86%, transparent); max-width: 36rem; }
+  .hero-ctas { margin-top: 2.25rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .btn-primary { display: inline-flex; padding: 1rem 1.75rem; border-radius: 0.625rem; background: var(--primary); color: var(--primary-foreground); font-weight: 600; transition: background 200ms var(--ease), transform 200ms var(--ease); }
+  .btn-primary:hover { background: var(--primary-dim); transform: translateY(-1px); }
+  .btn-outline { display: inline-flex; padding: 1rem 1.75rem; border-radius: 0.625rem; background: var(--card); border: 1px solid var(--border); font-weight: 600; transition: background 200ms var(--ease), transform 200ms var(--ease); }
+  .btn-outline:hover { background: var(--section); transform: translateY(-1px); }
+
+  .balance-card {
+    background: var(--card); border-radius: 1.25rem;
+    padding: 1.75rem; position: relative;
+  }
+  .balance-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-bottom: 0.875rem; border-bottom: 1px solid var(--rule); margin-bottom: 0.625rem;
+  }
+  .balance-head .l { font-family: var(--font-mono); font-size: 0.625rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow-wide); color: var(--ink-soft); }
+  .balance-head .t { font-family: var(--font-serif); font-style: italic; font-size: 1.0625rem; }
+  .balance-head .t em { color: var(--pathway-accent); }
+  .balance-line {
+    display: grid; grid-template-columns: 1fr auto auto; gap: 0.75rem;
+    padding: 0.625rem 0;
+    border-bottom: 1px dashed var(--rule);
+    font-family: var(--font-mono); font-size: 0.8125rem;
+  }
+  .balance-line .l { color: var(--foreground); }
+  .balance-line .mid { color: var(--ink-soft); text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); font-size: 0.625rem; }
+  .balance-line .r { color: var(--foreground); font-weight: 600; }
+  .balance-line.is-bal { border-bottom: 0; border-top: 2px solid var(--rule); margin-top: 0.5rem; padding-top: 0.875rem; }
+  .balance-line.is-bal .r {
+    font-family: var(--font-serif); font-style: italic; font-weight: 500; font-size: 1.0625rem; color: var(--pathway-accent);
+  }
+
+  /* ─── Refresh: production hero copy + audiences ─────────────────── */
+  .hero-inner { position: relative; z-index: 1; }
+  .eyebrow-stack { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 1.75rem; font-size: 0.6875rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); }
+  .eyebrow-stack .leaders { color: var(--foreground); font-weight: 700; }
+  .eyebrow-stack .targets { color: var(--ink-soft); font-weight: 500; }
+  .display { font-family: var(--font-serif); font-style: italic; font-weight: 500; font-size: clamp(2.5rem, 6.4vw, 4.75rem); line-height: 1.02; letter-spacing: -0.018em; margin: 0 0 1.75rem; max-width: 22ch; }
+  .cite { display: inline-block; font-size: 0.42em; background: #fde68a; color: #78350f; padding: 0.3em 0.55em; border-radius: 0.25em; vertical-align: 0.6em; line-height: 1; font-weight: 700; margin-left: 0.06em; text-decoration: none; font-style: normal; font-family: var(--font-sans); letter-spacing: 0.04em; }
+  .hero-prose { margin: 0 0 2.5rem; font-size: 1.0625rem; line-height: 1.65; max-width: 40rem; color: color-mix(in oklab, var(--foreground) 86%, transparent); font-style: normal; font-family: var(--font-sans); }
+  /* Audiences section (shared) */
+  .audiences { padding: clamp(4rem, 8vw, 6rem) 0; }
+  .audiences-head { margin-bottom: 3rem; max-width: 36rem; }
+  .audiences-eyebrow { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--ink-soft); margin-bottom: 1rem; font-weight: 700; }
+  .audiences-title { font-size: clamp(2rem, 4vw, 2.75rem); letter-spacing: var(--tracking-display); font-weight: 600; line-height: 1.1; margin: 0 0 1.5rem; font-family: var(--font-sans); font-style: normal; }
+  .audiences-lede { font-size: 1.0625rem; line-height: 1.65; color: color-mix(in oklab, var(--foreground) 86%, transparent); margin: 0; }
+  .audiences-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+  @media (max-width: 960px) { .audiences-grid { grid-template-columns: 1fr; } }
+  .audience-col { display: flex; flex-direction: column; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); transition: transform 200ms var(--ease); text-decoration: none; color: inherit; }
+  .audience-col:hover { transform: translateY(-2px); }
+  .audience-name { font-family: var(--font-serif); font-style: italic; font-weight: 500; font-size: 2rem; line-height: 1.1; letter-spacing: -0.015em; margin: 0; color: var(--foreground); }
+  .audience-body { font-size: 0.9375rem; line-height: 1.6; color: var(--muted-foreground); margin: 0; flex: 1; }
+  .find-out-more { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.6875rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--foreground); font-weight: 600; margin-top: 0.5rem; }
+  .find-out-more::after { content: "↗"; font-size: 0.875rem; font-weight: 400; }
+
+  /* Editorial Ledger hero: 4 ledger rows */
+  .hs-ledger { margin: 0 0 2.5rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+  .hs-ledger-head { display: grid; grid-template-columns: 3rem 2fr 1fr 1.6fr 4rem; gap: 1rem; padding: 0.5rem 0.5rem; font-family: var(--font-mono); font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-soft); border-bottom: 1px solid var(--rule); }
+  .hs-ledger-row { display: grid; grid-template-columns: 3rem 2fr 1fr 1.6fr 4rem; gap: 1rem; padding: 1rem 0.5rem; border-bottom: 1px solid var(--rule); align-items: baseline; text-decoration: none; color: inherit; transition: background 200ms var(--ease); font-variant-numeric: tabular-nums; }
+  .hs-ledger-row:last-child { border-bottom: 0; }
+  .hs-ledger-row:hover { background: var(--background); }
+  .hs-ledger-row.is-active { background: color-mix(in oklab, var(--status-stop) 5%, var(--card)); }
+  .hs-num { font-family: var(--font-serif); font-style: italic; font-size: 1.375rem; line-height: 1; color: var(--muted-foreground); text-align: right; }
+  .hs-ledger-row.is-active .hs-num { color: var(--status-stop); }
+  .hs-stage-cell { display: flex; flex-direction: column; gap: 0.1875rem; }
+  .hs-eyebrow { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--ink-soft); font-weight: 700; }
+  .hs-name { font-family: var(--font-serif); font-style: italic; font-weight: 500; font-size: 1.25rem; line-height: 1.15; letter-spacing: -0.01em; color: var(--foreground); margin: 0; }
+  .hs-kind { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--foreground); }
+  .hs-sub { font-size: 0.875rem; line-height: 1.5; color: var(--muted-foreground); margin: 0; }
+  .hs-ref { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--ink-soft); text-align: right; }
+  .hs-ledger-row.is-active .hs-ref { color: var(--status-stop); font-weight: 700; }
+  @media (max-width: 720px) { .hs-ledger-head { display: none; } .hs-ledger-row { grid-template-columns: 2.5rem 1fr; gap: 0.5rem; } .hs-ledger-row > :nth-child(n+3) { grid-column: 2; } }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="header">
+  <div class="container header-row">
+    <a href="/" class="brand"><img src="https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/movemental/logos/movemental-logo-transparent.png" alt="Movemental" /></a>
+
+    <nav class="nav-primary" aria-label="Primary">
+      <div class="has-mega" data-mega="path">
+        <button class="nav-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="mega-path">
+          Movemental Path
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="mega-path" class="megamenu" role="menu" aria-label="Movemental Path">
+          <div class="ledger-head">
+            <div class="left">
+              <span class="kicker">Ledger · The Movemental Path</span>
+              <span class="title">Four entries, <em>in order.</em></span>
+            </div>
+            <div class="right">
+              <div>Recorded · 2026</div>
+              <div>Items I — IV</div>
+            </div>
+          </div>
+
+          <div class="ledger-colhead">
+            <span style="text-align: right;">№</span>
+            <span>Stage</span>
+            <span>Kind</span>
+            <span>Outcome</span>
+            <span style="text-align: right;">Ref</span>
+          </div>
+
+          <a class="ledger-row is-active num-tabular" href="/pathway/safety" role="menuitem">
+            <span class="num">I.</span>
+            <span class="stage"><span class="name">Safety</span><span class="one">AI use &amp; trust charters</span></span>
+            <span class="kind">Policy</span>
+            <span class="outcome">A <strong>signed charter</strong> &mdash; permitted use, disclosure, boundaries.</span>
+            <span class="ref">§ 01 · live</span>
+          </a>
+          <a class="ledger-row num-tabular" href="/pathway/sandbox" role="menuitem">
+            <span class="num">II.</span>
+            <span class="stage"><span class="name">Sandbox</span><span class="one">Safe exploration · Tested use cases · Real work</span></span>
+            <span class="kind">Session</span>
+            <span class="outcome">A <strong>tested use case</strong> &mdash; practice with guardrails intact.</span>
+            <span class="ref">§ 02</span>
+          </a>
+          <a class="ledger-row num-tabular" href="/pathway/skills" role="menuitem">
+            <span class="num">III.</span>
+            <span class="stage"><span class="name">Skills</span><span class="one">Cohorts &amp; self-paced training</span></span>
+            <span class="kind">Cohort</span>
+            <span class="outcome">An <strong>eight-week formation</strong> &mdash; depth, not familiarity.</span>
+            <span class="ref">§ 03</span>
+          </a>
+          <a class="ledger-row num-tabular" href="/pathway/solutions" role="menuitem">
+            <span class="num">IV.</span>
+            <span class="stage"><span class="name">Solutions</span><span class="one">Custom agentic CMS/LMS builds</span></span>
+            <span class="kind">Build</span>
+            <span class="outcome">A <strong>built system</strong> &mdash; agentic, on your cleaned corpus.</span>
+            <span class="ref">§ 04</span>
+          </a>
+
+          <div class="ledger-foot">
+            <span>Bound &amp; numbered · in order</span>
+            <span class="total num-tabular">Four entries · one path</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="has-mega" data-mega="audience">
+        <button class="nav-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="mega-audience">
+          Audiences
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="mega-audience" class="megamenu audience-mega" role="menu" aria-label="Audiences">
+          <div class="ledger-head">
+            <div class="left">
+              <span class="kicker">Ledger · Engagement contexts</span>
+              <span class="title">Same system, <em>three entries.</em></span>
+            </div>
+            <div class="right"><div>Applications</div><div>A — C</div></div>
+          </div>
+          <div class="ledger-rows-3">
+            <a class="ledger-row-3" href="/churches" role="menuitem" style="--tint: var(--audience-churches);">
+              <span class="ab">A.</span>
+              <span><span class="name">For Churches</span><br/><span class="focus">Formation · Care · Memory</span></span>
+              <span class="kind" style="font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); font-weight: 600;">Context</span>
+              <span class="outcome">Formation pathways, pastoral care, and institutional memory as one intelligence.</span>
+              <span class="open">Open →</span>
+            </a>
+            <a class="ledger-row-3" href="/nonprofits" role="menuitem" style="--tint: var(--audience-nonprofits);">
+              <span class="ab">B.</span>
+              <span><span class="name">For Nonprofits</span><br/><span class="focus">Mission · Money · Memory</span></span>
+              <span class="kind" style="font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); font-weight: 600;">Context</span>
+              <span class="outcome">Donors, library, and programs on the same intelligence.</span>
+              <span class="open">Open →</span>
+            </a>
+            <a class="ledger-row-3" href="/institutions" role="menuitem" style="--tint: var(--audience-institutions);">
+              <span class="ab">C.</span>
+              <span><span class="name">For Institutions</span><br/><span class="focus">Entities · Generations · Accreditors</span></span>
+              <span class="kind" style="font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); font-weight: 600;">Context</span>
+              <span class="outcome">Research, curriculum, and collaboration that survives turnover.</span>
+              <span class="open">Open →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a class="nav-link" href="/about">About</a>
+      <a class="nav-link" href="/contact">Contact</a>
+    </nav>
+
+    <div class="header-cta">
+      <a class="field-guide" href="/field-guides/safety"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" stroke-linecap="round" stroke-linejoin="round"/></svg>FIELD GUIDE</a>
+      <button class="theme-toggle" aria-label="Toggle theme"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <a class="btn-pill" href="/contact">Start a Conversation</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="container hero-inner">
+      <div class="eyebrow-stack">
+        <div class="leaders">FOR ORGANIZATIONAL LEADERS</div>
+        <div class="targets">NONPROFITS &middot; CHURCHES &middot; INSTITUTIONS</div>
+      </div>
+      <h1 class="display">AI is already inside your organization<span class="cite">[1]</span>.</h1>
+      <p class="hero-prose">AI is being used by people inside your organization right now<span class="cite">[2]</span>. Most leaders have not yet decided what is safe, valuable, or ethical for their work. The four-stage path below is how you decide, in writing, before you build anything else.</p>
+
+      <div class="hs-ledger">
+        <div class="hs-ledger-head"><span style="text-align: right;">№</span><span>Stage</span><span>Kind</span><span>Outcome</span><span style="text-align: right;">Ref</span></div>
+        <a class="hs-ledger-row is-active" href="/pathway/safety">
+          <span class="hs-num">I.</span>
+          <div class="hs-stage-cell"><span class="hs-eyebrow">STAGE 1</span><h3 class="hs-name">Safety</h3></div>
+          <span class="hs-kind">Policy</span>
+          <p class="hs-sub">Decide in writing what AI may and may not do in your organization, before anyone else decides for you.</p>
+          <span class="hs-ref">§ 01 · live</span>
+        </a>
+        <a class="hs-ledger-row" href="/pathway/sandbox">
+          <span class="hs-num">II.</span>
+          <div class="hs-stage-cell"><span class="hs-eyebrow">STAGE 2</span><h3 class="hs-name">Sandbox</h3></div>
+          <span class="hs-kind">Session</span>
+          <p class="hs-sub">Disciplined exploration of valuable AI use cases and ethical concerns, without the risks of publication and privacy issues.</p>
+          <span class="hs-ref">§ 02</span>
+        </a>
+        <a class="hs-ledger-row" href="/pathway/skills">
+          <span class="hs-num">III.</span>
+          <div class="hs-stage-cell"><span class="hs-eyebrow">STAGE 3</span><h3 class="hs-name">Skills</h3></div>
+          <span class="hs-kind">Cohort</span>
+          <p class="hs-sub">Formation that produces leaders, not just users.</p>
+          <span class="hs-ref">§ 03</span>
+        </a>
+        <a class="hs-ledger-row" href="/pathway/solutions">
+          <span class="hs-num">IV.</span>
+          <div class="hs-stage-cell"><span class="hs-eyebrow">STAGE 4</span><h3 class="hs-name">Solutions</h3></div>
+          <span class="hs-kind">Build</span>
+          <p class="hs-sub">AI integrated into how the organization actually runs, owned by formed people, governed by working policy.</p>
+          <span class="hs-ref">§ 04</span>
+        </a>
+      </div>
+
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#audiences">See the Movemental Path</a>
+        <a class="btn-outline" href="/contact">Start a Conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="audiences" id="audiences">
+    <div class="container">
+      <div class="audiences-head">
+        <div class="audiences-eyebrow">WHO MOVEMENTAL SERVES</div>
+        <h2 class="audiences-title">Three audiences, one path.</h2>
+        <p class="audiences-lede">Churches, nonprofits, and theological institutions face different stakes &mdash; pastoral, fiduciary, accreditational &mdash; but the underlying decisions are the same. The path adapts to your situation.</p>
+      </div>
+      <div class="audiences-grid">
+        <a class="audience-col" href="/churches">
+          <h3 class="audience-name">Churches</h3>
+          <p class="audience-body">For executive pastors and elder teams navigating AI in pastoral work, communications, and ministry without losing what makes the church a church.</p>
+          <span class="find-out-more">FIND OUT MORE</span>
+        </a>
+        <a class="audience-col" href="/nonprofits">
+          <h3 class="audience-name">Nonprofits</h3>
+          <p class="audience-body">For executive directors and boards facing AI as a fiduciary responsibility &mdash; donor trust, beneficiary protection, regulatory exposure &mdash; not just an operational question.</p>
+          <span class="find-out-more">FIND OUT MORE</span>
+        </a>
+        <a class="audience-col" href="/institutions">
+          <h3 class="audience-name">Institutions</h3>
+          <p class="audience-body">For seminary presidents, denominational executives, and training networks managing AI across faculty, students, and accreditation simultaneously.</p>
+          <span class="find-out-more">FIND OUT MORE</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => header.classList.toggle('is-scrolled', window.scrollY > 20), { passive: true });
+  document.querySelectorAll('.has-mega').forEach(group => {
+    const trigger = group.querySelector('.nav-trigger');
+    const menu = group.querySelector('.megamenu');
+    let timeout;
+    const open = () => { menu.classList.add('is-open'); trigger.setAttribute('aria-expanded', 'true'); };
+    const close = () => { menu.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false'); };
+    trigger.addEventListener('click', e => { e.preventDefault(); const isOpen = trigger.getAttribute('aria-expanded') === 'true'; document.querySelectorAll('.has-mega .nav-trigger').forEach(t => t.setAttribute('aria-expanded', 'false')); document.querySelectorAll('.megamenu').forEach(m => m.classList.remove('is-open')); if (!isOpen) open(); });
+    group.addEventListener('focusin', open);
+    group.addEventListener('mouseenter', () => { clearTimeout(timeout); open(); });
+    group.addEventListener('mouseleave', () => { timeout = setTimeout(close, 160); });
+    group.addEventListener('focusout', e => { if (!group.contains(e.relatedTarget)) close(); });
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { document.querySelectorAll('.has-mega .nav-trigger').forEach(t => t.setAttribute('aria-expanded', 'false')); document.querySelectorAll('.megamenu').forEach(m => m.classList.remove('is-open')); } });
+  document.addEventListener('click', e => { if (!e.target.closest('.has-mega')) { document.querySelectorAll('.has-mega .nav-trigger').forEach(t => t.setAttribute('aria-expanded', 'false')); document.querySelectorAll('.megamenu').forEach(m => m.classList.remove('is-open')); } });
+</script>
+</body>
+</html>

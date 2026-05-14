@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>How Movemental Approaches AI — Diagrammatic (Direction C)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #faf6ee;
+    --alt-band: #f2ece0;
+    --ink: #19150f;
+    --ink-soft: #6b6660;
+    --midnight: #141110;
+    --on-midnight: #f4efe5;
+    --hairline: #e6ddcb;
+    --hairline-strong: #d8cdb4;
+    --card: #ffffff;
+    --destructive: #9c2d20;
+    --status-caution: #a07a25;
+    --status-go: #6b7e3f;
+
+    --container: 1200px;
+    --measure: 700px;
+    --tracking-display: -0.022em;
+    --tracking-eyebrow: 0.12em;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-serif: "Newsreader", ui-serif, Georgia, serif;
+    --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-sans); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  em { font-family: var(--font-serif); font-style: italic; font-weight: 500; }
+  a { color: inherit; }
+  button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+  :focus-visible { outline: 2px solid color-mix(in oklab, var(--ink) 50%, transparent); outline-offset: 3px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+  .wrap { max-width: var(--container); margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2rem); }
+  .measure { max-width: var(--measure); margin-inline: auto; }
+  .eyebrow { font-size: 0.6875rem; font-weight: 500; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--ink-soft); }
+  .mono { font-family: var(--font-mono); }
+
+  /* Header */
+  .topbar { border-bottom: 1px solid var(--hairline); background: var(--paper); }
+  .topbar-row { display: flex; align-items: center; justify-content: space-between; height: 3.5rem; font-size: 0.75rem; color: var(--ink-soft); }
+  .brand { font-weight: 600; letter-spacing: -0.015em; color: var(--ink); }
+
+  /* Hero */
+  .hero { padding: clamp(4.5rem, 10vw, 7rem) 0 clamp(3rem, 6vw, 4.5rem); }
+  .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.04; letter-spacing: var(--tracking-display); font-weight: 500; margin: 1.5rem 0 1.5rem; max-width: 18ch; text-wrap: balance; }
+  .hero h1 em { color: var(--ink); }
+  .hero p { font-size: 1.0625rem; line-height: 1.75; max-width: 58ch; color: color-mix(in oklab, var(--ink) 86%, transparent); margin: 0 0 2.5rem; }
+  .hero p em { color: var(--ink); }
+
+  /* Infrastructure stack diagram (hero) */
+  .stack-diagram { width: 100%; height: auto; max-width: 980px; display: block; margin: 0 auto; }
+  .stack-diagram .layer-fill { transition: fill 200ms var(--ease), opacity 200ms var(--ease); }
+  .stack-diagram .layer-label { font-family: var(--font-sans); font-size: 14px; font-weight: 500; fill: var(--ink); }
+  .stack-diagram .layer-sub { font-family: var(--font-sans); font-size: 11px; fill: var(--ink-soft); letter-spacing: 0.06em; text-transform: uppercase; }
+  .stack-diagram .infra-tag { font-family: var(--font-serif); font-style: italic; font-size: 14px; fill: var(--ink-soft); }
+  .stack-diagram .leader-dot { fill: var(--status-go); }
+  .stack-caption { text-align: center; font-size: 0.8125rem; color: var(--ink-soft); margin-top: 1rem; font-style: italic; font-family: var(--font-serif); }
+
+  /* Sections */
+  section { padding: clamp(4.5rem, 9vw, 7.5rem) 0; }
+  .band-alt { background: var(--alt-band); }
+  .band-midnight { background: var(--midnight); color: var(--on-midnight); }
+  .band-midnight .eyebrow { color: color-mix(in oklab, var(--on-midnight) 60%, transparent); }
+  .section-head { margin-bottom: clamp(2rem, 5vw, 3rem); }
+  .section-head h2 { font-size: clamp(2rem, 4.4vw, 2.875rem); letter-spacing: var(--tracking-display); font-weight: 500; line-height: 1.1; margin: 0.75rem 0 0; max-width: 18ch; text-wrap: balance; }
+  .section-head h2 em { color: inherit; }
+
+  /* Mirror diagram */
+  .mirror-stage { display: grid; grid-template-columns: 1fr 0.9fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: center; }
+  @media (max-width: 920px) { .mirror-stage { grid-template-columns: 1fr; } }
+  .mirror-prose p { font-size: 1.0625rem; line-height: 1.75; margin: 0 0 1.25rem; color: color-mix(in oklab, var(--ink) 88%, transparent); }
+  .mirror-prose p:last-child { margin-bottom: 0; }
+  .mirror-prose em { color: var(--ink); }
+
+  .mirror-svg { width: 100%; height: auto; max-width: 460px; margin: 0 auto; display: block; }
+  .mirror-svg .face { fill: var(--card); stroke: var(--hairline-strong); stroke-width: 1; }
+  .mirror-svg .arrow { stroke: var(--ink); stroke-width: 1.2; fill: none; }
+  .mirror-svg .arrow-amp { stroke: var(--destructive); stroke-width: 1.4; fill: none; opacity: 0; transition: opacity 240ms var(--ease); }
+  .mirror-svg.is-amplifying .arrow-amp { opacity: 1; }
+  .mirror-svg .label { font-family: var(--font-serif); font-style: italic; font-size: 13px; fill: var(--ink-soft); }
+  .mirror-svg .label-strong { font-family: var(--font-sans); font-size: 12px; fill: var(--ink); font-weight: 500; letter-spacing: 0.02em; text-transform: uppercase; }
+
+  .mirror-controls { margin-top: 1.5rem; display: flex; gap: 0.5rem; justify-content: center; }
+  .mirror-controls button {
+    padding: 0.5rem 0.875rem; border-radius: 9999px; border: 1px solid var(--hairline); background: var(--paper);
+    font-size: 0.8125rem; font-weight: 500;
+    transition: background 180ms var(--ease), border-color 180ms var(--ease);
+  }
+  .mirror-controls button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  /* Acid test — slider */
+  .acid-stage { max-width: 920px; margin: 0 auto; }
+  .acid-svg { width: 100%; height: auto; display: block; }
+  .acid-svg .block-rect { fill: var(--card); stroke: color-mix(in oklab, var(--on-midnight) 25%, transparent); stroke-width: 1; transition: opacity 260ms var(--ease), transform 260ms var(--ease); transform-origin: center; transform-box: fill-box; }
+  .acid-svg .block-rect.ai { fill: color-mix(in oklab, var(--destructive) 30%, var(--midnight)); stroke: color-mix(in oklab, var(--destructive) 55%, transparent); }
+  .acid-svg .block-text { font-size: 14px; font-weight: 500; fill: var(--midnight); font-family: var(--font-sans); }
+  .acid-svg .block-text.ai { fill: var(--on-midnight); }
+  .acid-svg .axis { stroke: color-mix(in oklab, var(--on-midnight) 25%, transparent); stroke-width: 1; }
+  .acid-svg.is-removed .block-rect.ai { opacity: 0; transform: translateY(-20px) scale(0.92); }
+
+  .acid-slider-wrap { max-width: 480px; margin: 1.75rem auto 0; display: flex; flex-direction: column; gap: 0.625rem; }
+  .acid-slider-wrap label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: color-mix(in oklab, var(--on-midnight) 70%, transparent); display: flex; justify-content: space-between; }
+  .acid-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; background: color-mix(in oklab, var(--on-midnight) 20%, transparent); border-radius: 9999px; outline: none; }
+  .acid-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 9999px; background: var(--on-midnight); cursor: ew-resize; border: 0; }
+  .acid-slider::-moz-range-thumb { width: 22px; height: 22px; border-radius: 9999px; background: var(--on-midnight); cursor: ew-resize; border: 0; }
+
+  .acid-result { max-width: 620px; margin: 2.5rem auto 0; padding: 1.5rem 1.75rem; border-left: 2px solid color-mix(in oklab, var(--on-midnight) 30%, transparent); font-size: 1rem; line-height: 1.7; color: color-mix(in oklab, var(--on-midnight) 88%, transparent); transition: opacity 240ms var(--ease); }
+  .acid-result em { color: var(--on-midnight); }
+  .acid-result h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: color-mix(in oklab, var(--on-midnight) 65%, transparent); font-weight: 500; margin: 0 0 0.75rem; }
+
+  /* Traffic light: vertical timeline */
+  .timeline { max-width: 880px; margin: 0 auto; position: relative; padding-left: 3rem; }
+  .timeline::before { content: ""; position: absolute; left: 0.6875rem; top: 0.75rem; bottom: 0.75rem; width: 1px; background: var(--hairline); }
+  .timeline-row { padding: 1.5rem 0; border-bottom: 1px solid var(--hairline); display: grid; grid-template-columns: 1fr; gap: 0.875rem; position: relative; }
+  .timeline-row:last-child { border-bottom: 0; }
+  .timeline-row .pin {
+    position: absolute; left: -3rem; top: 1.75rem;
+    width: 1.5rem; height: 1.5rem; border-radius: 9999px; border: 2px solid currentColor; display: grid; place-items: center; background: var(--paper);
+  }
+  .timeline-row .pin::after { content: ""; width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: currentColor; }
+  .timeline-row.go { color: var(--status-go); }
+  .timeline-row.caution { color: var(--status-caution); }
+  .timeline-row.stop { color: var(--destructive); }
+  .timeline-row .heading { display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; }
+  .timeline-row .name { font-size: 1.25rem; letter-spacing: -0.01em; font-weight: 500; color: var(--ink); }
+  .timeline-row.stop .name { color: var(--destructive); }
+  .timeline-row .verdict { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: currentColor; padding: 0.125rem 0.5rem; border: 1px solid currentColor; border-radius: 9999px; }
+  .timeline-row p { font-size: 0.95rem; line-height: 1.65; margin: 0; color: color-mix(in oklab, var(--ink) 85%, transparent); }
+  .timeline-row .examples { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem 1.5rem; margin: 0.25rem 0 0; padding: 0; list-style: none; }
+  @media (max-width: 720px) { .timeline-row .examples { grid-template-columns: 1fr; } }
+  .timeline-row .examples li { font-size: 0.875rem; line-height: 1.55; padding-left: 1rem; position: relative; color: color-mix(in oklab, var(--ink) 88%, transparent); }
+  .timeline-row .examples li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 0.5rem; height: 1px; background: var(--ink-soft); opacity: 0.6; }
+
+  /* Closing — returns to infrastructure stack mini */
+  .closing-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+  @media (max-width: 920px) { .closing-grid { grid-template-columns: 1fr; } }
+  .closing-grid h2 { font-size: clamp(2rem, 4.4vw, 2.875rem); letter-spacing: var(--tracking-display); font-weight: 500; line-height: 1.1; margin: 0.75rem 0 1.5rem; }
+  .closing-grid p { font-size: 1.0625rem; line-height: 1.75; margin: 0 0 1.25rem; color: color-mix(in oklab, var(--ink) 88%, transparent); }
+  .closing-grid p:last-child { margin-bottom: 0; }
+  .closing-grid p em { color: var(--ink); }
+  .closing-stack { background: var(--card); border: 1px solid var(--hairline); border-radius: 16px; padding: 1.5rem; }
+
+  footer { padding: 2.25rem 0; border-top: 1px solid var(--hairline); font-size: 0.75rem; color: var(--ink-soft); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-row">
+    <span class="brand">Movemental</span>
+    <span>Editorial covenant · diagrammatic ed.</span>
+    <span class="mono">2026.05</span>
+  </div>
+</header>
+
+<!-- Hero with infrastructure diagram -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">The editorial covenant</span>
+    <h1>How Movemental <em>approaches</em> AI</h1>
+    <p>Most public discourse splits into <em>"AI is a savior"</em> or <em>"AI is a threat."</em> We reject both. <em>AI is infrastructure. The leaders are the work.</em> This page outlines the framing, the tests, and the boundaries that govern how we use AI at Movemental.</p>
+
+    <svg class="stack-diagram" viewBox="0 0 920 320" role="img" aria-labelledby="stack-title stack-desc">
+      <title id="stack-title">Infrastructure stack — leaders on top of AI</title>
+      <desc id="stack-desc">Two horizontal layers. The leader layer sits on top; AI infrastructure sits beneath it.</desc>
+
+      <!-- AI Infrastructure layer (bottom) -->
+      <rect class="layer-fill" x="60" y="200" width="800" height="80" rx="4" fill="#f2ece0" stroke="#d8cdb4" stroke-width="1"/>
+      <text class="layer-sub" x="80" y="225">Layer 02 · Infrastructure</text>
+      <text class="layer-label" x="80" y="252" font-size="22" font-weight="500" letter-spacing="-0.02em">AI</text>
+      <text class="infra-tag" x="80" y="270">tools that mirror and amplify whatever they're around</text>
+
+      <!-- Connecting hairlines -->
+      <line x1="180" y1="200" x2="180" y2="140" stroke="#d8cdb4" stroke-width="1"/>
+      <line x1="360" y1="200" x2="360" y2="140" stroke="#d8cdb4" stroke-width="1"/>
+      <line x1="560" y1="200" x2="560" y2="140" stroke="#d8cdb4" stroke-width="1"/>
+      <line x1="740" y1="200" x2="740" y2="140" stroke="#d8cdb4" stroke-width="1"/>
+
+      <!-- Leaders layer (top) -->
+      <rect class="layer-fill" x="60" y="60" width="800" height="80" rx="4" fill="#ffffff" stroke="#d8cdb4" stroke-width="1"/>
+      <text class="layer-sub" x="80" y="85">Layer 01 · The work</text>
+      <text class="layer-label" x="80" y="112" font-size="22" font-weight="500" letter-spacing="-0.02em">Movement leaders</text>
+      <text class="infra-tag" x="80" y="130">practitioners doing work that matters</text>
+
+      <!-- Leader dots -->
+      <circle class="leader-dot" cx="700" cy="100" r="5"/>
+      <circle class="leader-dot" cx="740" cy="100" r="5"/>
+      <circle class="leader-dot" cx="780" cy="100" r="5"/>
+      <circle class="leader-dot" cx="820" cy="100" r="5"/>
+      <circle class="leader-dot" cx="700" cy="115" r="5"/>
+      <circle class="leader-dot" cx="740" cy="115" r="5"/>
+      <circle class="leader-dot" cx="780" cy="115" r="5"/>
+      <circle class="leader-dot" cx="820" cy="115" r="5"/>
+
+      <!-- Annotation -->
+      <text class="infra-tag" x="460" y="30" text-anchor="middle">The leaders are the work. AI is the infrastructure.</text>
+      <line x1="380" y1="40" x2="540" y2="40" stroke="#d8cdb4" stroke-width="1"/>
+    </svg>
+    <p class="stack-caption">Figure 01 · The architectural relationship.</p>
+  </div>
+</section>
+
+<!-- Section 1: Mirror diagram -->
+<section class="band-alt" id="mirror">
+  <div class="wrap">
+    <header class="section-head">
+      <span class="eyebrow">§ 01 · Framing</span>
+      <h2>The mirror and <em>amplifier</em></h2>
+    </header>
+
+    <div class="mirror-stage">
+      <div>
+        <svg class="mirror-svg" viewBox="0 0 380 260" role="img" id="mirror-svg" aria-label="Mirror and amplifier diagram">
+          <!-- Human (left) -->
+          <circle class="face" cx="60" cy="130" r="28"/>
+          <text class="label-strong" x="60" y="180" text-anchor="middle">HUMAN</text>
+          <text class="label" x="60" y="200" text-anchor="middle">the one in the room</text>
+
+          <!-- Arrow to mirror -->
+          <path class="arrow" d="M 92 130 H 168" marker-end="url(#arrow-head)"/>
+          <text class="label" x="130" y="118" text-anchor="middle">input</text>
+
+          <!-- Mirror -->
+          <rect class="face" x="172" y="80" width="40" height="100" rx="4"/>
+          <text class="label-strong" x="192" y="195" text-anchor="middle">AI</text>
+
+          <!-- Arrow out -->
+          <path class="arrow" d="M 216 130 H 292" marker-end="url(#arrow-head)"/>
+          <text class="label" x="254" y="118" text-anchor="middle">mirror</text>
+
+          <!-- Amplified arrow (visible only in amplify mode) -->
+          <path class="arrow-amp" d="M 216 110 Q 250 70 300 80" marker-end="url(#arrow-amp-head)"/>
+          <path class="arrow-amp" d="M 216 150 Q 250 190 300 180" marker-end="url(#arrow-amp-head)"/>
+
+          <!-- Output -->
+          <circle class="face" cx="320" cy="130" r="22"/>
+          <text class="label-strong" x="320" y="172" text-anchor="middle">OUTPUT</text>
+
+          <defs>
+            <marker id="arrow-head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#19150f"/>
+            </marker>
+            <marker id="arrow-amp-head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#9c2d20"/>
+            </marker>
+          </defs>
+        </svg>
+
+        <div class="mirror-controls" role="group" aria-label="Effect mode">
+          <button data-mode="mirror" aria-pressed="true">Mirror only</button>
+          <button data-mode="amplify" aria-pressed="false">Mirror + amplify</button>
+        </div>
+      </div>
+
+      <div class="mirror-prose">
+        <p>AI is trained on the broad output of human writing, speech, and behavior. When you interact with it, it mirrors and amplifies what it has been trained on, and it mirrors and amplifies <em>you</em> specifically. The outputs reflect both the training data and the human in the room.</p>
+        <p>People who are worried about AI are often worried about humanity itself, because AI surfaces and amplifies what humans have already produced. People who are hopeful about AI are often hopeful about humanity for the same reason.</p>
+        <p>If AI mirrors and amplifies the humans it is around, the most important thing an organization can do is deliberately gather the <em>right humans</em>. The thing people are saying yes to when they join Movemental is not the technology. It is each other.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2: Acid test slider -->
+<section class="band-midnight" id="acid">
+  <div class="wrap">
+    <header class="section-head measure">
+      <span class="eyebrow">§ 02 · The single test</span>
+      <h2>Take AI out of the <em>story</em></h2>
+    </header>
+
+    <div class="acid-stage">
+      <svg class="acid-svg" id="acid-svg" viewBox="0 0 800 280" role="img" aria-label="What remains after AI is removed">
+        <line class="axis" x1="40" y1="240" x2="760" y2="240"/>
+
+        <!-- Block: practitioners -->
+        <rect class="block-rect" x="80" y="160" width="140" height="80" rx="4"/>
+        <text class="block-text" x="150" y="195" text-anchor="middle">Practitioners</text>
+        <text class="block-text" x="150" y="215" text-anchor="middle" font-size="11" opacity="0.7">already doing the work</text>
+
+        <!-- Block: AI -->
+        <rect class="block-rect ai" x="240" y="100" width="140" height="140" rx="4"/>
+        <text class="block-text ai" x="310" y="165" text-anchor="middle">AI</text>
+        <text class="block-text ai" x="310" y="185" text-anchor="middle" font-size="11" opacity="0.8">infrastructure that gathers</text>
+
+        <!-- Block: outcome -->
+        <rect class="block-rect" x="400" y="120" width="160" height="120" rx="4"/>
+        <text class="block-text" x="480" y="175" text-anchor="middle">Network</text>
+        <text class="block-text" x="480" y="195" text-anchor="middle" font-size="11" opacity="0.7">that wanted to gather</text>
+
+        <!-- Block: scale -->
+        <rect class="block-rect" x="580" y="180" width="140" height="60" rx="4"/>
+        <text class="block-text" x="650" y="210" text-anchor="middle">At scale</text>
+        <text class="block-text" x="650" y="226" text-anchor="middle" font-size="11" opacity="0.7">not possible before</text>
+      </svg>
+
+      <div class="acid-slider-wrap">
+        <label for="acid-slider"><span>AI in the story</span><span id="acid-pct">100%</span></label>
+        <input id="acid-slider" class="acid-slider" type="range" min="0" max="100" value="100" />
+      </div>
+
+      <div class="acid-result" id="acid-result" aria-live="polite">
+        <h3 id="acid-result-tag">With AI in the story</h3>
+        <p id="acid-result-body"><em>"Take the AI out of the story. Look at what remains."</em> Drag the slider to remove AI and see what's left.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: Traffic light timeline -->
+<section id="lights-section">
+  <div class="wrap">
+    <header class="section-head measure">
+      <span class="eyebrow">§ 03 · The framework</span>
+      <h2>Green, yellow, and <em>red</em> lights</h2>
+    </header>
+    <p class="measure" style="font-size: 1rem; line-height: 1.7; color: var(--ink-soft); margin: 0 auto 2.75rem;">We sort AI use cases into three distinct categories to govern our development and deployment.</p>
+
+    <ol class="timeline">
+      <li class="timeline-row go">
+        <span class="pin" aria-hidden="true"></span>
+        <div class="heading">
+          <span class="name">Green light</span>
+          <span class="verdict">Deploy readily</span>
+        </div>
+        <p>Clear human benefit, no meaningful negative consequence. The <em>washing machine</em> of AI applications.</p>
+        <ul class="examples">
+          <li>AI to make existing content searchable.</li>
+          <li>AI to translate between unknown languages.</li>
+          <li>AI to surface patterns in data quickly.</li>
+        </ul>
+      </li>
+      <li class="timeline-row caution">
+        <span class="pin" aria-hidden="true"></span>
+        <div class="heading">
+          <span class="name">Yellow light</span>
+          <span class="verdict">Deploy with guardrails</span>
+        </div>
+        <p>Real benefit, but only with sufficient guardrails. The <em>majority</em> of AI applications fall here.</p>
+        <ul class="examples">
+          <li>Drafting communications that humans review.</li>
+          <li>Research where citation and verification are required.</li>
+          <li>Facilitating group conversations — never substituting for participants.</li>
+        </ul>
+      </li>
+      <li class="timeline-row stop">
+        <span class="pin" aria-hidden="true"></span>
+        <div class="heading">
+          <span class="name">Red light</span>
+          <span class="verdict">Do not deploy</span>
+        </div>
+        <p>Harm, regardless of how carefully the use is deployed. These form our <em>Named Refusals</em> — and the list is intended to grow.</p>
+        <ul class="examples">
+          <li>Authoring content under a human's name without disclosure.</li>
+          <li>Eligibility decisions affecting access to services.</li>
+          <li>Impersonating humans in pastoral or counseling contexts.</li>
+          <li>Surveilling people in ways that change how they are served.</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- Closing -->
+<section class="band-alt">
+  <div class="wrap closing-grid">
+    <div class="closing-stack">
+      <svg viewBox="0 0 360 220" width="100%" height="auto" role="img" aria-label="Infrastructure stack mini">
+        <rect x="20" y="40" width="320" height="60" rx="4" fill="#ffffff" stroke="#d8cdb4"/>
+        <text x="36" y="62" font-family="Inter" font-size="10" letter-spacing="0.06em" fill="#6b6660">LAYER 01 · THE WORK</text>
+        <text x="36" y="84" font-family="Inter" font-size="18" font-weight="500" letter-spacing="-0.02em" fill="#19150f">Movement leaders</text>
+
+        <rect x="20" y="120" width="320" height="60" rx="4" fill="#f2ece0" stroke="#d8cdb4"/>
+        <text x="36" y="142" font-family="Inter" font-size="10" letter-spacing="0.06em" fill="#6b6660">LAYER 02 · INFRASTRUCTURE</text>
+        <text x="36" y="164" font-family="Inter" font-size="18" font-weight="500" letter-spacing="-0.02em" fill="#19150f">AI</text>
+
+        <line x1="20" y1="200" x2="340" y2="200" stroke="#d8cdb4"/>
+        <text x="180" y="216" text-anchor="middle" font-family="Newsreader" font-style="italic" font-size="13" fill="#6b6660">The leaders are the work.</text>
+      </svg>
+    </div>
+    <div>
+      <span class="eyebrow">§ 04 · Position</span>
+      <h2>We are <em>not</em> an AI company</h2>
+      <p>We are a company of humans who use AI as carefully as we can, in service of a network of movement leaders whose work matters. <em>AI is the infrastructure. The leaders are the work.</em></p>
+      <p>The reason we are doing this now is that AI cannot be put back. Every organization our network serves is going to face the same questions about AI, whether they want to or not. The vendors who will help them are mostly not the people who understand the substance of what they do.</p>
+      <p>We are a few years into wrestling with these questions in a field where the most experienced person could only have three years of experience. <em>That head start is what we offer.</em></p>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>Movemental · The editorial covenant · diagrammatic edition</span>
+  <span class="mono">figures 01–04</span>
+</footer>
+
+<script>
+  // Mirror diagram toggle
+  const mirrorSvg = document.getElementById('mirror-svg');
+  document.querySelectorAll('.mirror-controls button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const mode = btn.dataset.mode;
+      document.querySelectorAll('.mirror-controls button').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+      mirrorSvg.classList.toggle('is-amplifying', mode === 'amplify');
+    });
+  });
+
+  // Acid test slider
+  const slider = document.getElementById('acid-slider');
+  const acidSvg = document.getElementById('acid-svg');
+  const acidPct = document.getElementById('acid-pct');
+  const tag = document.getElementById('acid-result-tag');
+  const body = document.getElementById('acid-result-body');
+
+  const states = [
+    {
+      max: 25,
+      tag: 'AI removed',
+      body: 'What remains is <em>a group of practitioners who had been circling each other\'s work for years and who wanted to do something together.</em> The technology made it possible to gather. The technology did not make the gathering valuable.'
+    },
+    {
+      max: 75,
+      tag: 'AI partly in the story',
+      body: 'If what remains is <em>people doing valuable human work that AI helped them do faster, larger, or more accessibly</em> — the use is humanly valuable.'
+    },
+    {
+      max: 101,
+      tag: 'With AI in the story',
+      body: '<em>"Take the AI out of the story. Look at what remains."</em> Drag the slider to remove AI and see what\'s left.'
+    }
+  ];
+
+  function update() {
+    const v = parseInt(slider.value, 10);
+    acidPct.textContent = v + '%';
+    acidSvg.classList.toggle('is-removed', v < 50);
+    const state = states.find(s => v < s.max) || states[states.length - 1];
+    tag.textContent = state.tag;
+    body.innerHTML = state.body;
+  }
+  slider.addEventListener('input', update);
+  update();
+</script>
+
+</body>
+</html>

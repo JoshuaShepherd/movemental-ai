@@ -3690,3 +3690,35 @@ export const movementLeaderPublicPageVersions = pgTable(
     ),
   ],
 );
+
+// ---------------------------------------------------------------------------
+// SandboxLive — staff AI readiness intake.
+// Per-user pre-training questionnaire scoped to the active organization.
+// One submission per (organization_id, user_id) — latest write wins via upsert.
+// Migration: scripts/sql/20260514_sandbox_staff_readiness_submissions.sql
+// ---------------------------------------------------------------------------
+
+export const sandboxStaffReadinessSubmissions = pgTable(
+  "sandbox_staff_readiness_submissions",
+  {
+    id: id("id"),
+    organization_id: uuid("organization_id")
+      .notNull()
+      .references(() => organizations.id, { onDelete: "cascade" }),
+    user_id: uuid("user_id")
+      .notNull()
+      .references(() => userProfiles.id, { onDelete: "cascade" }),
+    answers: jsonb("answers").notNull().default({}),
+    submitted_at: timestamp("submitted_at", { withTimezone: true, mode: "string" })
+      .notNull()
+      .defaultNow(),
+    created_at: createdAt("created_at"),
+    updated_at: updatedAt("updated_at"),
+  },
+  (t) => [
+    unique("sandbox_staff_readiness_submissions_org_user_key").on(
+      t.organization_id,
+      t.user_id,
+    ),
+  ],
+);

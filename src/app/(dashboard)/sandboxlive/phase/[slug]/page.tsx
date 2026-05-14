@@ -87,6 +87,14 @@ export default async function SandboxLivePhasePage({
           <p className="max-w-[680px] text-[15px] leading-relaxed text-safestart-muted">
             {phase.produces}
           </p>
+          {phase.slug === "02-assessment" ? (
+            <Link
+              href={`/sandboxlive/readiness${orgQuery}`}
+              className="self-start text-[13px] text-safestart-muted underline decoration-safestart-hairline underline-offset-[0.22em] transition-colors hover:text-pathway-accent"
+            >
+              Individual readiness check-in (10–12 minutes) →
+            </Link>
+          ) : null}
         </div>
       </header>
 

@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Movemental — How We Approach AI · Longform Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper: '#faf6ee',
+          alt: '#f2ece0',
+          ink: '#19150f',
+          muted: '#6b6660',
+          rule: '#e6ddcb',
+          midnight: '#141110',
+          'on-midnight': '#f4efe5',
+          destructive: '#9c2d20',
+          caution: '#a07a25',
+          go: '#6b7e3f',
+        },
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          serif: ['Newsreader', 'ui-serif', 'Georgia', 'serif'],
+        },
+        borderRadius: { card: '14px' },
+        letterSpacing: { display: '-0.022em', eyebrow: '0.09em' },
+        maxWidth: { reading: '740px' },
+      },
+    },
+  }
+</script>
+<style>
+  body { font-feature-settings: "ss01","cv11"; }
+  .stress { font-family: 'Newsreader', ui-serif, Georgia, serif; font-style: italic; font-weight: 500; }
+</style>
+</head>
+<body class="bg-paper text-ink font-sans antialiased leading-relaxed">
+
+  <!-- Editorial header -->
+  <header class="border-b border-rule">
+    <div class="max-w-reading mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="text-sm font-semibold tracking-display">Movemental</a>
+      <nav class="hidden md:flex items-center gap-7 text-[12px] uppercase tracking-eyebrow text-muted">
+        <a href="#" class="hover:text-ink">Field Guide</a>
+        <a href="#" class="hover:text-ink">Methodology</a>
+        <a href="#" class="hover:text-ink">Voices</a>
+        <a href="#" class="hover:text-ink">Contact</a>
+      </nav>
+      <a href="#" class="hidden md:inline-flex items-center gap-2 rounded-full bg-ink text-paper text-[13px] font-semibold px-4 py-2">Begin a conversation</a>
+    </div>
+  </header>
+
+  <!-- Article: hero -->
+  <article class="pt-24 pb-32">
+    <div class="max-w-reading mx-auto px-6">
+      <p class="text-[11px] uppercase tracking-eyebrow text-muted mb-8">The Editorial Covenant</p>
+      <h1 class="text-[clamp(2.4rem,5vw,4.25rem)] leading-[1.04] tracking-display font-semibold mb-10">
+        How <span class="stress">Movemental</span> approaches AI
+      </h1>
+      <p class="text-xl text-muted leading-[1.55] max-w-[640px]">
+        Most public discourse splits into &ldquo;AI is a savior&rdquo; or &ldquo;AI is a threat.&rdquo; We reject both. AI is infrastructure. The leaders are the work. This page outlines the framing, the tests, and the boundaries that govern how we use AI at Movemental.
+      </p>
+      <div class="mt-12 flex items-center gap-6 text-[12px] uppercase tracking-eyebrow text-muted">
+        <span>Editorial</span>
+        <span class="w-6 h-px bg-rule"></span>
+        <span>Updated May 2026</span>
+        <span class="w-6 h-px bg-rule"></span>
+        <span>14 min read</span>
+      </div>
+    </div>
+
+    <!-- Section 1 -->
+    <section class="mt-28">
+      <div class="max-w-reading mx-auto px-6">
+        <p class="text-[11px] uppercase tracking-eyebrow text-muted mb-6">§ 01 &nbsp;·&nbsp; Premise</p>
+        <h2 class="text-[2rem] md:text-[2.5rem] leading-[1.1] tracking-display font-semibold mb-10">
+          The <span class="stress">mirror</span> and the amplifier
+        </h2>
+        <div class="space-y-7 text-[1.0625rem] leading-[1.75] text-ink/90">
+          <p>AI is trained on the broad output of human writing, speech, and behavior. When you interact with it, it mirrors and amplifies what it has been trained on, and it mirrors and amplifies you specifically. The outputs you get back reflect both the training data and the human in the room.</p>
+          <p>People who are worried about AI are often worried about humanity itself, because AI surfaces and amplifies what humans have already produced. People who are hopeful about AI are often hopeful about humanity for the same reason.</p>
+          <p>If AI mirrors and amplifies the humans it is around, the most important thing an organization can do is deliberately gather the right humans. The thing people are saying yes to when they join Movemental is not the technology. It is each other. The platform exists to make that possible at a scale that was not possible before.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Massive edge-to-edge midnight blockquote -->
+    <section class="mt-28 bg-midnight text-on-midnight py-28 md:py-36">
+      <div class="max-w-[1100px] mx-auto px-6">
+        <p class="text-[11px] uppercase tracking-eyebrow text-on-midnight/60 mb-10">§ 02 &nbsp;·&nbsp; The Acid Test</p>
+        <p class="text-[11px] uppercase tracking-eyebrow text-on-midnight/60 mb-4">The &ldquo;take AI out of the story&rdquo; test</p>
+        <blockquote class="text-[clamp(2rem,5.2vw,4.25rem)] leading-[1.08] tracking-display font-semibold">
+          <span class="text-on-midnight/40">&ldquo;</span>Take the AI out of the story. <span class="stress text-on-midnight">Look at what remains.</span><span class="text-on-midnight/40">&rdquo;</span>
+        </blockquote>
+        <div class="grid md:grid-cols-2 gap-10 mt-16 max-w-[860px]">
+          <p class="text-[1.0625rem] leading-[1.75] text-on-midnight/80">
+            The single most useful test for whether an AI use case is valid is portable and falsifiable. If what remains is people doing valuable human work that AI helped them do faster, larger, or more accessibly &mdash; the use is humanly valuable.
+          </p>
+          <p class="text-[1.0625rem] leading-[1.75] text-on-midnight/80">
+            If what remains is just AI output dressed up to look like human work &mdash; the use is suspect, regardless of how impressive the output is. Applied to our own work: what remains, when you take the AI out, is a group of practitioners who had been circling each other&rsquo;s work for years and who wanted to do something together. The technology made it possible to gather. The technology did not make the gathering valuable.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Traffic Light as vertical narrative with wide side margins -->
+    <section class="mt-28">
+      <div class="max-w-reading mx-auto px-6">
+        <p class="text-[11px] uppercase tracking-eyebrow text-muted mb-6">§ 03 &nbsp;·&nbsp; The framework</p>
+        <h2 class="text-[2rem] md:text-[2.5rem] leading-[1.1] tracking-display font-semibold mb-10">
+          Green, yellow, and <span class="stress">red lights</span>
+        </h2>
+        <p class="text-[1.0625rem] leading-[1.75] text-ink/90 mb-16">We make AI deployment decisions through a three-tier framework. It is deliberately coarse-grained because the goal is fast judgment in service of careful work, not bureaucratic adjudication.</p>
+      </div>
+
+      <!-- Green -->
+      <div class="max-w-reading mx-auto px-6 mb-20">
+        <div class="flex items-baseline gap-4 mb-6">
+          <span class="w-2 h-2 rounded-full bg-go translate-y-[-2px]"></span>
+          <p class="text-[11px] uppercase tracking-eyebrow text-muted">Green Light</p>
+          <span class="text-[12px] text-muted">— Deploy readily</span>
+        </div>
+        <h3 class="text-[1.625rem] md:text-[2rem] leading-[1.15] tracking-display font-semibold mb-6">Clear human benefit, no meaningful negative consequence.</h3>
+        <p class="text-[1.0625rem] leading-[1.75] text-ink/90 mb-5">
+          The washing machine of AI applications. AI used to make existing content searchable. AI used to translate between languages a person does not speak. AI used to surface patterns in data that would otherwise take weeks to find.
+        </p>
+        <p class="text-[1.0625rem] leading-[1.75] text-ink/80">
+          When the question is &ldquo;does this expand human capacity without trading anything important away?&rdquo; the answer is yes. We use it. We do not write a memo about it.
+        </p>
+      </div>
+
+      <!-- Yellow -->
+      <div class="max-w-reading mx-auto px-6 mb-20">
+        <div class="flex items-baseline gap-4 mb-6">
+          <span class="w-2 h-2 rounded-full bg-caution translate-y-[-2px]"></span>
+          <p class="text-[11px] uppercase tracking-eyebrow text-muted">Yellow Light</p>
+          <span class="text-[12px] text-muted">— Deploy with guardrails</span>
+        </div>
+        <h3 class="text-[1.625rem] md:text-[2rem] leading-[1.15] tracking-display font-semibold mb-6">Real benefit, but only with sufficient guardrails.</h3>
+        <p class="text-[1.0625rem] leading-[1.75] text-ink/90 mb-5">
+          AI used to draft communications that humans review before sending. AI used to help with research where citation and verification are required. AI used to facilitate group conversations where the AI never substitutes for the participants&rsquo; actual contributions.
+        </p>
+        <p class="text-[1.0625rem] leading-[1.75] text-ink/80">
+          The shape of the guardrail is always the same: a human with judgment is the last hand on the work before it leaves the building.
+        </p>
+      </div>
+
+      <!-- Red -->
+      <div class="max-w-reading mx-auto px-6 mb-12">
+        <div class="flex items-baseline gap-4 mb-6">
+          <span class="w-2 h-2 rounded-full bg-destructive translate-y-[-2px]"></span>
+          <p class="text-[11px] uppercase tracking-eyebrow text-destructive">Red Light</p>
+          <span class="text-[12px] text-muted">— Do not deploy</span>
+        </div>
+        <h3 class="text-[1.625rem] md:text-[2rem] leading-[1.15] tracking-display font-semibold mb-6">Harm, regardless of how carefully the use is deployed.</h3>
+        <p class="text-[1.0625rem] leading-[1.75] text-ink/90 mb-5">
+          AI used to author content under a human&rsquo;s name without disclosure. AI used to make eligibility decisions that affect people&rsquo;s access to services. AI used to impersonate humans in pastoral or counseling contexts. AI used to surveil people.
+        </p>
+        <p class="text-[1.0625rem] leading-[1.75] text-ink/80">
+          These are not edge cases we will figure out later. They are stop-work conditions.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="mt-28">
+      <div class="max-w-reading mx-auto px-6">
+        <p class="text-[11px] uppercase tracking-eyebrow text-muted mb-6">§ 04 &nbsp;·&nbsp; Conclusion</p>
+        <h2 class="text-[2rem] md:text-[2.5rem] leading-[1.1] tracking-display font-semibold mb-10">
+          We are not an <span class="stress">AI company</span>
+        </h2>
+        <div class="space-y-7 text-[1.0625rem] leading-[1.75] text-ink/90">
+          <p>We are a company of humans who use AI as carefully as we can, in service of a network of movement leaders whose work matters. AI is the infrastructure. The leaders are the work.</p>
+          <p>The reason we are doing this now is that AI cannot be put back. Every organization our network serves is going to face the same questions about AI, whether they want to or not. The vendors who will help them are mostly not the people who understand the substance of what they do.</p>
+          <p>We are a few years into wrestling with these questions in a field where the most experienced person could only have three years of experience. That head start is what we offer.</p>
+        </div>
+
+        <div class="mt-16 pt-10 border-t border-rule flex flex-wrap items-center justify-between gap-6">
+          <p class="text-[12px] uppercase tracking-eyebrow text-muted">Next chapter — The Methodology</p>
+          <a href="#" class="inline-flex items-center gap-2 rounded-full bg-ink text-paper text-[13px] font-semibold px-5 py-2.5">Continue reading
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <footer class="border-t border-rule py-12">
+    <div class="max-w-reading mx-auto px-6 text-[12px] uppercase tracking-eyebrow text-muted flex justify-between">
+      <span>Movemental © 2026</span>
+      <span>The Editorial Covenant</span>
+    </div>
+  </footer>
+
+</body>
+</html>

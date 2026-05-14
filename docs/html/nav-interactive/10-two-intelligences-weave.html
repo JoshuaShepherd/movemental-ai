@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Movemental — Two Intelligences Weave (Direction J)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --background: #faf6ee;
+    --foreground: #19150f;
+    --section: #f2ece0;
+    --card: #ffffff;
+    --surface-highest: #efe7d6;
+    --muted-foreground: #6b6660;
+    --ink-soft: #7e786f;
+    --primary: #19150f;
+    --primary-dim: #000;
+    --primary-foreground: #faf6ee;
+    --border: #e6ddcb;
+    --rule: rgba(25, 21, 15, 0.14);
+    --inverse-surface: #141110;
+    --inverse-foreground: #f4efe5;
+    --pathway-accent: #b8893a;
+    --audience-churches: #0053db;
+    --audience-nonprofits: #b8893a;
+    --audience-institutions: #6b7e3f;
+    --status-stop: #9c2d20;
+    --info: var(--inverse-surface);   /* informational strand color */
+    --rel: var(--pathway-accent);     /* relational strand color */
+    --shadow-ambient: 0 24px 80px rgba(25, 21, 15, 0.12);
+    --container-max: 1200px;
+    --site-header-height: 4.25rem;
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-serif: "Newsreader", ui-serif, Georgia, serif;
+    --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+    --tracking-display: -0.022em;
+    --tracking-eyebrow: 0.09em;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; line-height: 1.5; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+  em { font-family: var(--font-serif); font-style: italic; font-weight: 500; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; } }
+  :focus-visible { outline: 2px solid color-mix(in oklab, var(--foreground) 50%, transparent); outline-offset: 2px; border-radius: 6px; }
+  .container { max-width: var(--container-max); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem); }
+
+  /* Header */
+  .site-header { position: sticky; top: 0; z-index: 50; background: transparent; border-bottom: 1px solid transparent; transition: background 240ms var(--ease), border-color 240ms var(--ease); }
+  .site-header.is-scrolled { background: color-mix(in oklab, var(--card) 92%, transparent); backdrop-filter: blur(10px); border-bottom-color: var(--border); }
+  .header-row { height: var(--site-header-height); display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+  .brand img { height: 2.5rem; width: auto; display: block; }
+  .nav-primary { display: flex; align-items: center; gap: 0.25rem; }
+  .nav-primary > * { position: relative; }
+  .nav-trigger { display: inline-flex; align-items: center; gap: 0.375rem; padding: 0.875rem; font-size: 0.875rem; font-weight: 500; transition: color 200ms var(--ease); }
+  .nav-trigger:hover, .nav-trigger[aria-expanded="true"] { color: var(--primary); }
+  .nav-trigger svg { opacity: 0.6; transition: transform 200ms var(--ease); }
+  .nav-trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+  .nav-link { position: relative; padding: 0.875rem 0.75rem; font-size: 0.875rem; font-weight: 500; }
+  .nav-link::after { content: ""; position: absolute; left: 0.75rem; right: 0.75rem; bottom: 0.625rem; height: 1px; background: var(--primary); transform: scaleX(0); transform-origin: left; transition: transform 240ms var(--ease); }
+  .nav-link:hover::after { transform: scaleX(1); }
+  .header-cta { display: flex; align-items: center; gap: 1rem; }
+  .field-guide { display: inline-flex; align-items: center; gap: 0.375rem; font-size: 0.6875rem; font-weight: 500; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--muted-foreground); transition: color 200ms var(--ease); }
+  .field-guide:hover { color: var(--foreground); }
+  .theme-toggle { width: 2.25rem; height: 2.25rem; display: grid; place-items: center; border-radius: 9999px; transition: background 200ms var(--ease); }
+  .theme-toggle:hover { background: var(--section); }
+  .btn-pill { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6875rem 1.25rem; border-radius: 9999px; background: var(--primary); color: var(--primary-foreground); font-size: 0.875rem; font-weight: 600; letter-spacing: -0.01em; transition: background 200ms var(--ease), transform 200ms var(--ease); }
+  .btn-pill:hover { background: var(--primary-dim); transform: translateY(-1px); }
+
+  /* Mega menu — weave cards */
+  .megamenu { position: absolute; left: 50%; top: calc(100% + 0.25rem); transform: translateX(-50%) translateY(-0.5rem); width: min(var(--container-max), calc(100vw - 2rem)); background: var(--card); border-radius: 1rem; box-shadow: var(--shadow-ambient); border: 1px solid var(--border); padding: 1.75rem; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 220ms var(--ease), transform 220ms var(--ease), visibility 0s linear 220ms; z-index: 50; }
+  .has-mega:hover .megamenu, .has-mega:focus-within .megamenu, .megamenu.is-open { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); transition: opacity 220ms var(--ease), transform 220ms var(--ease), visibility 0s linear 0s; }
+
+  .mega-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 1rem;
+  }
+  .mega-eyebrow { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--ink-soft); }
+  .mega-title { font-size: 1.125rem; font-weight: 600; letter-spacing: -0.01em; }
+  .mega-title em { color: var(--pathway-accent); }
+  .legend-row { display: flex; gap: 1rem; font-family: var(--font-mono); font-size: 0.625rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--muted-foreground); }
+  .legend-row .info { color: var(--info); font-weight: 600; }
+  .legend-row .rel { color: var(--rel); font-weight: 600; }
+
+  .weave-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.875rem;
+  }
+  .weave-card {
+    position: relative; padding: 1rem 1rem 1.125rem;
+    border-radius: 0.875rem; background: var(--background); overflow: hidden;
+    display: flex; flex-direction: column; gap: 0.75rem;
+    transition: background 200ms var(--ease), transform 200ms var(--ease);
+  }
+  .weave-card:hover { background: var(--section); transform: translateY(-2px); }
+  .weave-meta {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 0.625rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow);
+    color: var(--ink-soft);
+  }
+  .weave-meta .tag {
+    padding: 0.125rem 0.5rem; border-radius: 9999px;
+    background: var(--card); border: 1px solid var(--rule);
+    color: var(--ink-soft); font-weight: 600;
+  }
+  .weave-card.is-active .weave-meta .tag {
+    background: var(--inverse-surface); color: var(--inverse-foreground); border-color: var(--inverse-surface);
+  }
+  .weave-visual {
+    height: 120px; background: var(--card); border-radius: 0.5rem;
+    overflow: hidden; padding: 0.5rem;
+  }
+  .weave-visual svg { width: 100%; height: 100%; display: block; }
+  .weave-foot { display: flex; align-items: baseline; gap: 0.625rem; }
+  .weave-num { font-family: var(--font-serif); font-style: italic; font-size: 1.5rem; color: var(--muted-foreground); }
+  .weave-card.is-active .weave-num { color: var(--pathway-accent); }
+  .weave-name { font-size: 1rem; font-weight: 600; letter-spacing: -0.01em; }
+  .weave-sub { font-size: 0.75rem; color: var(--muted-foreground); line-height: 1.4; }
+
+  /* Audience mega — weave-in-tint */
+  .audience-mega { width: min(880px, calc(100vw - 2rem)); }
+  .aud-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+  .aud-card {
+    position: relative; padding: 1.25rem 1.25rem 1.125rem;
+    border-radius: 0.875rem; background: var(--background); overflow: hidden;
+    transition: background 200ms var(--ease), transform 200ms var(--ease);
+  }
+  .aud-card:hover { background: var(--section); transform: translateY(-2px); }
+  .aud-card::before { content: ""; position: absolute; left: 0; top: 1rem; bottom: 1rem; width: 3px; border-radius: 2px; background: var(--tint); }
+  .aud-weave {
+    height: 64px; margin-bottom: 0.75rem;
+  }
+  .aud-weave svg { width: 100%; height: 100%; display: block; }
+  .aud-card .eyebrow {
+    font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow);
+    color: var(--tint); margin-bottom: 0.375rem;
+  }
+  .aud-card .name { font-size: 1rem; font-weight: 600; letter-spacing: -0.01em; }
+  .aud-card .focus {
+    margin-top: 0.5rem; font-size: 0.8125rem; line-height: 1.55; color: var(--muted-foreground); max-width: 28ch;
+  }
+
+  /* Hero — full-bleed background weave */
+  .hero {
+    position: relative;
+    padding: clamp(4rem, 9vw, 7rem) 0 clamp(4rem, 9vw, 6.5rem);
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0; opacity: 0.55;
+    pointer-events: none;
+    -webkit-mask-image: radial-gradient(120% 90% at 80% 50%, black 0%, transparent 75%);
+    mask-image: radial-gradient(120% 90% at 80% 50%, black 0%, transparent 75%);
+  }
+  .hero-bg svg { width: 100%; height: 100%; display: block; }
+  .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: clamp(2rem, 5vw, 3.5rem); align-items: center; }
+  @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } }
+  .display { font-size: clamp(2.5rem, 5.5vw, 4rem); line-height: 1.04; letter-spacing: var(--tracking-display); font-weight: 600; max-width: 18ch; }
+  .hero-prose { margin-top: 1.75rem; font-size: 1.0625rem; line-height: 1.65; color: color-mix(in oklab, var(--foreground) 86%, transparent); max-width: 36rem; }
+  .hero-ctas { margin-top: 2.25rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .btn-primary { display: inline-flex; padding: 1rem 1.75rem; border-radius: 0.625rem; background: var(--primary); color: var(--primary-foreground); font-weight: 600; transition: background 200ms var(--ease), transform 200ms var(--ease); }
+  .btn-primary:hover { background: var(--primary-dim); transform: translateY(-1px); }
+  .btn-outline { display: inline-flex; padding: 1rem 1.75rem; border-radius: 0.625rem; background: var(--card); border: 1px solid var(--border); font-weight: 600; transition: background 200ms var(--ease), transform 200ms var(--ease); }
+  .btn-outline:hover { background: var(--section); transform: translateY(-1px); }
+
+  /* Hero callout: the two intelligences card sits over the woven background */
+  .hero-callout {
+    background: color-mix(in oklab, var(--card) 92%, transparent);
+    border-radius: 1.25rem;
+    padding: 1.75rem 1.5rem;
+    border: 1px solid var(--rule);
+    backdrop-filter: blur(6px);
+  }
+  .hero-callout .eyebrow { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--ink-soft); }
+  .hero-callout .title { margin-top: 0.375rem; font-size: 1.0625rem; font-weight: 600; letter-spacing: -0.01em; }
+  .hero-callout .title em { color: var(--pathway-accent); }
+  .intel-pair {
+    margin-top: 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.625rem;
+  }
+  .intel {
+    padding: 0.875rem; border-radius: 0.625rem; background: var(--background);
+    position: relative;
+  }
+  .intel::before {
+    content: ""; position: absolute; left: 0; top: 0.75rem; bottom: 0.75rem; width: 3px; border-radius: 2px;
+  }
+  .intel.info::before { background: var(--info); }
+  .intel.rel::before { background: var(--rel); }
+  .intel .lab {
+    font-size: 0.625rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow);
+    color: var(--ink-soft); margin-bottom: 0.375rem;
+  }
+  .intel.info .lab { color: var(--info); }
+  .intel.rel .lab { color: var(--rel); }
+  .intel .h { font-family: var(--font-serif); font-style: italic; font-size: 1.125rem; line-height: 1.2; }
+  .intel .s { margin-top: 0.5rem; font-size: 0.8125rem; color: var(--muted-foreground); line-height: 1.5; }
+  .compose-line {
+    margin-top: 1rem; padding-top: 0.875rem; border-top: 1px solid var(--rule);
+    display: flex; align-items: center; gap: 0.625rem;
+    font-family: var(--font-serif); font-style: italic; color: var(--muted-foreground); font-size: 0.9375rem;
+  }
+  .compose-line .arrow { color: var(--pathway-accent); }
+
+  /* ─── Refresh: production hero copy + audiences ─────────────────── */
+  .hero-inner { position: relative; z-index: 1; }
+  .eyebrow-stack { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 1.75rem; font-size: 0.6875rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); }
+  .eyebrow-stack .leaders { color: var(--foreground); font-weight: 700; }
+  .eyebrow-stack .targets { color: var(--ink-soft); font-weight: 500; }
+  .display { font-family: var(--font-serif); font-style: italic; font-weight: 500; font-size: clamp(2.5rem, 6.4vw, 4.75rem); line-height: 1.02; letter-spacing: -0.018em; margin: 0 0 1.75rem; max-width: 22ch; }
+  .cite { display: inline-block; font-size: 0.42em; background: #fde68a; color: #78350f; padding: 0.3em 0.55em; border-radius: 0.25em; vertical-align: 0.6em; line-height: 1; font-weight: 700; margin-left: 0.06em; text-decoration: none; font-style: normal; font-family: var(--font-sans); letter-spacing: 0.04em; }
+  .hero-prose { margin: 0 0 2.5rem; font-size: 1.0625rem; line-height: 1.65; max-width: 40rem; color: color-mix(in oklab, var(--foreground) 86%, transparent); font-style: normal; font-family: var(--font-sans); }
+  /* Audiences section (shared) */
+  .audiences { padding: clamp(4rem, 8vw, 6rem) 0; }
+  .audiences-head { margin-bottom: 3rem; max-width: 36rem; }
+  .audiences-eyebrow { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--ink-soft); margin-bottom: 1rem; font-weight: 700; }
+  .audiences-title { font-size: clamp(2rem, 4vw, 2.75rem); letter-spacing: var(--tracking-display); font-weight: 600; line-height: 1.1; margin: 0 0 1.5rem; font-family: var(--font-sans); font-style: normal; }
+  .audiences-lede { font-size: 1.0625rem; line-height: 1.65; color: color-mix(in oklab, var(--foreground) 86%, transparent); margin: 0; }
+  .audiences-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+  @media (max-width: 960px) { .audiences-grid { grid-template-columns: 1fr; } }
+  .audience-col { display: flex; flex-direction: column; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); transition: transform 200ms var(--ease); text-decoration: none; color: inherit; }
+  .audience-col:hover { transform: translateY(-2px); }
+  .audience-name { font-family: var(--font-serif); font-style: italic; font-weight: 500; font-size: 2rem; line-height: 1.1; letter-spacing: -0.015em; margin: 0; color: var(--foreground); }
+  .audience-body { font-size: 0.9375rem; line-height: 1.6; color: var(--muted-foreground); margin: 0; flex: 1; }
+  .find-out-more { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.6875rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--foreground); font-weight: 600; margin-top: 0.5rem; }
+  .find-out-more::after { content: "↗"; font-size: 0.875rem; font-weight: 400; }
+
+  /* Weave hero: 4 woven cards */
+  .hs-grid { margin: 0 0 2.5rem; padding-top: 2rem; border-top: 1px solid var(--rule); display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .hs-weave { padding: 1rem; border-radius: 0.875rem; background: var(--background); text-decoration: none; color: inherit; transition: background 200ms var(--ease), transform 200ms var(--ease); display: flex; flex-direction: column; gap: 0.625rem; }
+  .hs-weave:hover { background: var(--section); transform: translateY(-2px); }
+  .hs-weave-art { height: 64px; background: var(--card); border-radius: 0.5rem; padding: 0.5rem; }
+  .hs-weave-art svg { width: 100%; height: 100%; display: block; }
+  .hs-icon-row { display: flex; align-items: center; justify-content: space-between; }
+  .hs-icon { width: 1.5rem; height: 1.5rem; color: var(--muted-foreground); }
+  .hs-weave.is-active .hs-icon { color: var(--foreground); }
+  .hs-num { font-family: var(--font-serif); font-style: italic; font-size: 1.125rem; color: var(--ink-soft); }
+  .hs-weave.is-active .hs-num { color: var(--pathway-accent); }
+  .hs-eyebrow { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--ink-soft); font-weight: 700; }
+  .hs-weave.is-active .hs-eyebrow { color: var(--pathway-accent); }
+  .hs-name { font-family: var(--font-serif); font-style: italic; font-weight: 500; font-size: 1.375rem; line-height: 1.1; letter-spacing: -0.015em; color: var(--foreground); margin: 0; }
+  .hs-sub { font-size: 0.8125rem; line-height: 1.45; color: var(--muted-foreground); margin: 0; }
+  @media (max-width: 960px) { .hs-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .hs-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="header">
+  <div class="container header-row">
+    <a href="/" class="brand"><img src="https://vhaiiiykcukrlyvwlgip.supabase.co/storage/v1/object/public/media-library/movemental/logos/movemental-logo-transparent.png" alt="Movemental" /></a>
+
+    <nav class="nav-primary" aria-label="Primary">
+      <div class="has-mega" data-mega="path">
+        <button class="nav-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="mega-path">
+          Movemental Path
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="mega-path" class="megamenu" role="menu" aria-label="Movemental Path">
+          <div class="mega-head">
+            <div>
+              <div class="mega-eyebrow">The two intelligences, woven differently per stage</div>
+              <div class="mega-title">Each product binds <em>corpus</em> and <em>relationships</em> a different way.</div>
+            </div>
+            <div class="legend-row">
+              <span class="info">— Informational</span>
+              <span class="rel">— Relational</span>
+            </div>
+          </div>
+
+          <div class="weave-grid">
+            <!-- Safety: tight knot — charter holds both -->
+            <a class="weave-card is-active" href="/pathway/safety" role="menuitem">
+              <div class="weave-meta"><span>Policy · v1.0</span><span class="tag">Active</span></div>
+              <div class="weave-visual">
+                <svg viewBox="0 0 240 100" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                  <!-- Two strands enter, knot at the middle, sealed by a hairline ring -->
+                  <path d="M 10 30 C 70 30, 80 50, 120 50 S 170 70, 230 70" stroke="var(--info)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <path d="M 10 70 C 70 70, 80 50, 120 50 S 170 30, 230 30" stroke="var(--rel)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <circle cx="120" cy="50" r="16" fill="none" stroke="var(--foreground)" stroke-width="1.25"/>
+                  <text x="120" y="54" text-anchor="middle" font-family="var(--font-serif)" font-style="italic" font-size="14" fill="var(--foreground)">§</text>
+                </svg>
+              </div>
+              <div class="weave-foot">
+                <span class="weave-num">I</span>
+                <div>
+                  <div class="weave-name">Safety</div>
+                  <div class="weave-sub">AI use &amp; trust charters</div>
+                </div>
+              </div>
+            </a>
+
+            <!-- Sandbox: arena — strands enter a contained area to be tested -->
+            <a class="weave-card" href="/pathway/sandbox" role="menuitem">
+              <div class="weave-meta"><span>Session</span><span class="tag">Practice</span></div>
+              <div class="weave-visual">
+                <svg viewBox="0 0 240 100" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                  <!-- Rounded arena -->
+                  <rect x="70" y="20" width="100" height="60" rx="14" fill="var(--background)" stroke="var(--border)"/>
+                  <text x="120" y="46" text-anchor="middle" font-family="var(--font-mono)" font-size="9" fill="var(--ink-soft)" letter-spacing="0.1em">SANDBOX</text>
+                  <text x="120" y="62" text-anchor="middle" font-family="var(--font-mono)" font-size="9" fill="var(--foreground)">✓ tested</text>
+                  <!-- Strands enter/exit -->
+                  <path d="M 10 30 Q 50 30, 75 40" stroke="var(--info)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <path d="M 165 40 Q 195 30, 230 30" stroke="var(--info)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <path d="M 10 70 Q 50 70, 75 60" stroke="var(--rel)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <path d="M 165 60 Q 195 70, 230 70" stroke="var(--rel)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="weave-foot">
+                <span class="weave-num">II</span>
+                <div>
+                  <div class="weave-name">Sandbox</div>
+                  <div class="weave-sub">Safe exploration · Tested use cases · Real work</div>
+                </div>
+              </div>
+            </a>
+
+            <!-- Skills: braid — strands woven over weeks -->
+            <a class="weave-card" href="/pathway/skills" role="menuitem">
+              <div class="weave-meta"><span>Cohort · 8 wks</span><span class="tag">Formation</span></div>
+              <div class="weave-visual">
+                <svg viewBox="0 0 240 100" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                  <!-- Braid pattern -->
+                  <path d="M 10 30 C 40 30, 50 70, 80 70 S 120 30, 150 30 S 190 70, 220 70 S 230 30, 240 30" stroke="var(--info)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <path d="M 10 70 C 40 70, 50 30, 80 30 S 120 70, 150 70 S 190 30, 220 30 S 230 70, 240 70" stroke="var(--rel)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <!-- Week ticks -->
+                  <g fill="var(--ink-soft)" font-family="var(--font-mono)" font-size="7" text-anchor="middle">
+                    <text x="40" y="96">W1</text><text x="90" y="96">W3</text><text x="140" y="96">W5</text><text x="190" y="96">W7</text>
+                  </g>
+                </svg>
+              </div>
+              <div class="weave-foot">
+                <span class="weave-num">III</span>
+                <div>
+                  <div class="weave-name">Skills</div>
+                  <div class="weave-sub">Cohorts &amp; self-paced training</div>
+                </div>
+              </div>
+            </a>
+
+            <!-- Solutions: merged — strands fully integrated into one platform -->
+            <a class="weave-card" href="/pathway/solutions" role="menuitem">
+              <div class="weave-meta"><span>Architecture</span><span class="tag">Build</span></div>
+              <div class="weave-visual">
+                <svg viewBox="0 0 240 100" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                  <!-- Strands converge into a single rounded block -->
+                  <path d="M 10 30 Q 80 30, 110 50" stroke="var(--info)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <path d="M 10 70 Q 80 70, 110 50" stroke="var(--rel)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <rect x="110" y="34" width="80" height="32" rx="8" fill="var(--inverse-surface)"/>
+                  <text x="150" y="55" text-anchor="middle" fill="var(--inverse-foreground)" font-family="var(--font-serif)" font-style="italic" font-size="12">Agentic platform</text>
+                  <!-- One output -->
+                  <path d="M 190 50 Q 215 50, 232 50" stroke="var(--pathway-accent)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                  <circle cx="232" cy="50" r="3.5" fill="var(--pathway-accent)"/>
+                </svg>
+              </div>
+              <div class="weave-foot">
+                <span class="weave-num">IV</span>
+                <div>
+                  <div class="weave-name">Solutions</div>
+                  <div class="weave-sub">Custom agentic CMS/LMS builds</div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="has-mega" data-mega="audience">
+        <button class="nav-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="mega-audience">
+          Audiences
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="mega-audience" class="megamenu audience-mega" role="menu" aria-label="Audiences">
+          <div class="mega-head">
+            <div>
+              <div class="mega-eyebrow">Three contexts, same two intelligences</div>
+              <div class="mega-title">The weave shifts emphasis &mdash; the system <em>doesn't</em>.</div>
+            </div>
+          </div>
+          <div class="aud-grid">
+            <a class="aud-card" href="/churches" role="menuitem" style="--tint: var(--audience-churches);">
+              <div class="aud-weave">
+                <svg viewBox="0 0 200 60" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                  <path d="M 5 20 C 60 20, 80 40, 195 40" stroke="var(--info)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <path d="M 5 40 C 60 40, 80 20, 195 20" stroke="var(--tint)" stroke-width="2.25" fill="none" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="eyebrow">Formation · Care · Memory</div>
+              <div class="name">For Churches</div>
+              <div class="focus">Relational emphasis &mdash; pastoral care woven through corpus and memory.</div>
+            </a>
+            <a class="aud-card" href="/nonprofits" role="menuitem" style="--tint: var(--audience-nonprofits);">
+              <div class="aud-weave">
+                <svg viewBox="0 0 200 60" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                  <path d="M 5 20 C 80 30, 120 30, 195 20" stroke="var(--info)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <path d="M 5 40 C 80 30, 120 30, 195 40" stroke="var(--tint)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <circle cx="100" cy="30" r="4" fill="var(--tint)"/>
+                </svg>
+              </div>
+              <div class="eyebrow">Mission · Money · Memory</div>
+              <div class="name">For Nonprofits</div>
+              <div class="focus">Balanced weave &mdash; donors, library, and program data on the same axis.</div>
+            </a>
+            <a class="aud-card" href="/institutions" role="menuitem" style="--tint: var(--audience-institutions);">
+              <div class="aud-weave">
+                <svg viewBox="0 0 200 60" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                  <path d="M 5 25 C 60 25, 80 25, 195 25" stroke="var(--info)" stroke-width="2.25" fill="none" stroke-linecap="round"/>
+                  <path d="M 5 38 C 60 42, 80 36, 195 40" stroke="var(--tint)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="eyebrow">Entities · Generations · Accreditors</div>
+              <div class="name">For Institutions</div>
+              <div class="focus">Informational emphasis &mdash; corpus carries across generations.</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a class="nav-link" href="/about">About</a>
+      <a class="nav-link" href="/contact">Contact</a>
+    </nav>
+
+    <div class="header-cta">
+      <a class="field-guide" href="/field-guides/safety"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" stroke-linecap="round" stroke-linejoin="round"/></svg>FIELD GUIDE</a>
+      <button class="theme-toggle" aria-label="Toggle theme"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <a class="btn-pill" href="/contact">Start a Conversation</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="container hero-inner">
+      <div class="eyebrow-stack">
+        <div class="leaders">FOR ORGANIZATIONAL LEADERS</div>
+        <div class="targets">NONPROFITS &middot; CHURCHES &middot; INSTITUTIONS</div>
+      </div>
+      <h1 class="display">AI is already inside your organization<span class="cite">[1]</span>.</h1>
+      <p class="hero-prose">AI is being used by people inside your organization right now<span class="cite">[2]</span>. Most leaders have not yet decided what is safe, valuable, or ethical for their work. The four-stage path below is how you decide, in writing, before you build anything else.</p>
+
+      <div class="hs-grid">
+        <a class="hs-weave is-active" href="/pathway/safety">
+          <div class="hs-weave-art"><svg viewBox="0 0 200 48" preserveAspectRatio="xMidYMid meet"><path d="M 5 14 C 60 14, 80 24, 100 24 S 160 34, 195 34" stroke="var(--info)" stroke-width="1.75" fill="none" stroke-linecap="round"/><path d="M 5 34 C 60 34, 80 24, 100 24 S 160 14, 195 14" stroke="var(--rel)" stroke-width="1.75" fill="none" stroke-linecap="round"/><circle cx="100" cy="24" r="8" fill="none" stroke="var(--foreground)" stroke-width="1.25"/><text x="100" y="28" text-anchor="middle" font-family="var(--font-serif)" font-style="italic" font-size="10" fill="var(--foreground)">§</text></svg></div>
+          <div class="hs-icon-row"><span class="hs-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></span><span class="hs-num">I</span></div>
+          <span class="hs-eyebrow">STAGE 1</span>
+          <h3 class="hs-name">Safety</h3>
+          <p class="hs-sub">Decide in writing what AI may and may not do in your organization, before anyone else decides for you.</p>
+        </a>
+        <a class="hs-weave" href="/pathway/sandbox">
+          <div class="hs-weave-art"><svg viewBox="0 0 200 48" preserveAspectRatio="xMidYMid meet"><rect x="58" y="10" width="84" height="28" rx="7" fill="var(--background)" stroke="var(--border)"/><text x="100" y="22" text-anchor="middle" font-family="var(--font-mono)" font-size="7" fill="var(--ink-soft)" letter-spacing="0.1em">SANDBOX</text><text x="100" y="32" text-anchor="middle" font-family="var(--font-mono)" font-size="7" fill="var(--foreground)">✓ tested</text><path d="M 5 14 Q 40 14, 60 20" stroke="var(--info)" stroke-width="1.75" fill="none" stroke-linecap="round"/><path d="M 140 20 Q 160 14, 195 14" stroke="var(--info)" stroke-width="1.75" fill="none" stroke-linecap="round"/><path d="M 5 34 Q 40 34, 60 28" stroke="var(--rel)" stroke-width="1.75" fill="none" stroke-linecap="round"/><path d="M 140 28 Q 160 34, 195 34" stroke="var(--rel)" stroke-width="1.75" fill="none" stroke-linecap="round"/></svg></div>
+          <div class="hs-icon-row"><span class="hs-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></span><span class="hs-num">II</span></div>
+          <span class="hs-eyebrow">STAGE 2</span>
+          <h3 class="hs-name">Sandbox</h3>
+          <p class="hs-sub">Disciplined exploration of valuable AI use cases and ethical concerns, without the risks of publication and privacy issues.</p>
+        </a>
+        <a class="hs-weave" href="/pathway/skills">
+          <div class="hs-weave-art"><svg viewBox="0 0 200 48" preserveAspectRatio="xMidYMid meet"><path d="M 5 14 C 30 14, 40 34, 65 34 S 100 14, 125 14 S 160 34, 195 34" stroke="var(--info)" stroke-width="1.75" fill="none" stroke-linecap="round"/><path d="M 5 34 C 30 34, 40 14, 65 14 S 100 34, 125 34 S 160 14, 195 14" stroke="var(--rel)" stroke-width="1.75" fill="none" stroke-linecap="round"/></svg></div>
+          <div class="hs-icon-row"><span class="hs-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span><span class="hs-num">III</span></div>
+          <span class="hs-eyebrow">STAGE 3</span>
+          <h3 class="hs-name">Skills</h3>
+          <p class="hs-sub">Formation that produces leaders, not just users.</p>
+        </a>
+        <a class="hs-weave" href="/pathway/solutions">
+          <div class="hs-weave-art"><svg viewBox="0 0 200 48" preserveAspectRatio="xMidYMid meet"><path d="M 5 14 Q 60 14, 90 24" stroke="var(--info)" stroke-width="1.75" fill="none" stroke-linecap="round"/><path d="M 5 34 Q 60 34, 90 24" stroke="var(--rel)" stroke-width="1.75" fill="none" stroke-linecap="round"/><rect x="90" y="14" width="72" height="20" rx="5" fill="var(--inverse-surface)"/><text x="126" y="28" text-anchor="middle" fill="var(--inverse-foreground)" font-family="var(--font-serif)" font-style="italic" font-size="11">Agentic</text><path d="M 162 24 Q 180 24, 195 24" stroke="var(--pathway-accent)" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="195" cy="24" r="3" fill="var(--pathway-accent)"/></svg></div>
+          <div class="hs-icon-row"><span class="hs-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span><span class="hs-num">IV</span></div>
+          <span class="hs-eyebrow">STAGE 4</span>
+          <h3 class="hs-name">Solutions</h3>
+          <p class="hs-sub">AI integrated into how the organization actually runs, owned by formed people, governed by working policy.</p>
+        </a>
+      </div>
+
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#audiences">See the Movemental Path</a>
+        <a class="btn-outline" href="/contact">Start a Conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="audiences" id="audiences">
+    <div class="container">
+      <div class="audiences-head">
+        <div class="audiences-eyebrow">WHO MOVEMENTAL SERVES</div>
+        <h2 class="audiences-title">Three audiences, one path.</h2>
+        <p class="audiences-lede">Churches, nonprofits, and theological institutions face different stakes &mdash; pastoral, fiduciary, accreditational &mdash; but the underlying decisions are the same. The path adapts to your situation.</p>
+      </div>
+      <div class="audiences-grid">
+        <a class="audience-col" href="/churches">
+          <h3 class="audience-name">Churches</h3>
+          <p class="audience-body">For executive pastors and elder teams navigating AI in pastoral work, communications, and ministry without losing what makes the church a church.</p>
+          <span class="find-out-more">FIND OUT MORE</span>
+        </a>
+        <a class="audience-col" href="/nonprofits">
+          <h3 class="audience-name">Nonprofits</h3>
+          <p class="audience-body">For executive directors and boards facing AI as a fiduciary responsibility &mdash; donor trust, beneficiary protection, regulatory exposure &mdash; not just an operational question.</p>
+          <span class="find-out-more">FIND OUT MORE</span>
+        </a>
+        <a class="audience-col" href="/institutions">
+          <h3 class="audience-name">Institutions</h3>
+          <p class="audience-body">For seminary presidents, denominational executives, and training networks managing AI across faculty, students, and accreditation simultaneously.</p>
+          <span class="find-out-more">FIND OUT MORE</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => header.classList.toggle('is-scrolled', window.scrollY > 20), { passive: true });
+  document.querySelectorAll('.has-mega').forEach(group => {
+    const trigger = group.querySelector('.nav-trigger');
+    const menu = group.querySelector('.megamenu');
+    let timeout;
+    const open = () => { menu.classList.add('is-open'); trigger.setAttribute('aria-expanded', 'true'); };
+    const close = () => { menu.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false'); };
+    trigger.addEventListener('click', e => { e.preventDefault(); const isOpen = trigger.getAttribute('aria-expanded') === 'true'; document.querySelectorAll('.has-mega .nav-trigger').forEach(t => t.setAttribute('aria-expanded', 'false')); document.querySelectorAll('.megamenu').forEach(m => m.classList.remove('is-open')); if (!isOpen) open(); });
+    group.addEventListener('focusin', open);
+    group.addEventListener('mouseenter', () => { clearTimeout(timeout); open(); });
+    group.addEventListener('mouseleave', () => { timeout = setTimeout(close, 160); });
+    group.addEventListener('focusout', e => { if (!group.contains(e.relatedTarget)) close(); });
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { document.querySelectorAll('.has-mega .nav-trigger').forEach(t => t.setAttribute('aria-expanded', 'false')); document.querySelectorAll('.megamenu').forEach(m => m.classList.remove('is-open')); } });
+  document.addEventListener('click', e => { if (!e.target.closest('.has-mega')) { document.querySelectorAll('.has-mega .nav-trigger').forEach(t => t.setAttribute('aria-expanded', 'false')); document.querySelectorAll('.megamenu').forEach(m => m.classList.remove('is-open')); } });
+</script>
+</body>
+</html>

@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>How Movemental Approaches AI — Stepped Walkthrough (Direction E)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #faf6ee;
+    --alt-band: #f2ece0;
+    --ink: #19150f;
+    --ink-soft: #6b6660;
+    --midnight: #141110;
+    --on-midnight: #f4efe5;
+    --hairline: #e6ddcb;
+    --hairline-strong: #d8cdb4;
+    --card: #ffffff;
+    --destructive: #9c2d20;
+    --status-caution: #a07a25;
+    --status-go: #6b7e3f;
+
+    --container: 1200px;
+    --measure: 720px;
+    --tracking-display: -0.022em;
+    --tracking-eyebrow: 0.12em;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-serif: "Newsreader", ui-serif, Georgia, serif;
+    --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-sans); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  em { font-family: var(--font-serif); font-style: italic; font-weight: 500; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid color-mix(in oklab, var(--ink) 50%, transparent); outline-offset: 3px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+  .wrap { max-width: var(--container); margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2rem); }
+  .measure { max-width: var(--measure); margin-inline: auto; }
+  .eyebrow { font-size: 0.6875rem; font-weight: 500; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); color: var(--ink-soft); }
+  .mono { font-family: var(--font-mono); }
+
+  /* Sticky progress bar */
+  .progress {
+    position: sticky; top: 0; z-index: 30;
+    background: color-mix(in oklab, var(--paper) 94%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .progress-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.5rem;
+    height: 3.5rem;
+  }
+  .progress-brand { font-weight: 600; letter-spacing: -0.015em; }
+  .progress-steps {
+    display: flex; align-items: center; justify-content: center; gap: 1rem;
+    font-size: 0.75rem; color: var(--ink-soft); letter-spacing: 0.02em;
+  }
+  .progress-steps a {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    text-decoration: none;
+    padding: 0.25rem 0; color: var(--ink-soft);
+    transition: color 200ms var(--ease);
+  }
+  .progress-steps a .step-num {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 0.875rem; min-width: 1.25rem; text-align: right;
+  }
+  .progress-steps a:hover, .progress-steps a.is-active { color: var(--ink); }
+  .progress-steps a .step-bar {
+    width: 1.5rem; height: 2px; background: var(--hairline); transition: background 200ms var(--ease), width 200ms var(--ease);
+  }
+  .progress-steps a.is-active .step-bar { background: var(--ink); width: 2.5rem; }
+  .progress-meter { font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-soft); white-space: nowrap; }
+  .progress-meter em { color: var(--ink); font-family: var(--font-serif); }
+
+  /* Hero — single column step 0 */
+  .hero { padding: clamp(5rem, 12vw, 9rem) 0 clamp(3.5rem, 7vw, 5.5rem); text-align: center; }
+  .hero-step { font-size: 0.75rem; letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--ink-soft); margin-bottom: 1.5rem; }
+  .hero h1 {
+    font-size: clamp(2.75rem, 6.4vw, 5rem);
+    line-height: 1.02; letter-spacing: var(--tracking-display); font-weight: 500;
+    max-width: 16ch; margin: 0 auto 2rem; text-wrap: balance;
+  }
+  .hero h1 em { color: var(--ink); }
+  .hero p { font-size: 1.0625rem; line-height: 1.75; max-width: 60ch; color: color-mix(in oklab, var(--ink) 86%, transparent); margin: 0 auto 2.75rem; }
+  .hero p em { color: var(--ink); }
+  .hero-jump {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid var(--ink); color: var(--ink); border-radius: 9999px;
+    font-size: 0.875rem; font-weight: 500;
+    transition: background 180ms var(--ease), color 180ms var(--ease);
+  }
+  .hero-jump:hover { background: var(--ink); color: var(--paper); }
+  .hero-jump .arrow { transition: transform 220ms var(--ease); }
+  .hero-jump:hover .arrow { transform: translateY(2px); }
+
+  /* Step blocks */
+  .step { padding: clamp(5rem, 9vw, 8rem) 0; position: relative; }
+  .step.band-alt { background: var(--alt-band); }
+  .step.band-midnight { background: var(--midnight); color: var(--on-midnight); }
+  .step.band-midnight .eyebrow { color: color-mix(in oklab, var(--on-midnight) 60%, transparent); }
+
+  .step-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    max-width: 980px; margin: 0 auto;
+  }
+  @media (max-width: 720px) { .step-grid { grid-template-columns: 1fr; gap: 1rem; } }
+
+  .step-marker {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: clamp(3.5rem, 7vw, 5rem); line-height: 0.9;
+    color: var(--ink-soft); font-weight: 500;
+  }
+  .step.band-midnight .step-marker { color: color-mix(in oklab, var(--on-midnight) 60%, transparent); }
+  .step-eyebrow { display: block; font-size: 0.6875rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); margin-top: 0.5rem; font-style: normal; font-family: var(--font-sans); font-weight: 500; color: var(--ink-soft); }
+  .step.band-midnight .step-eyebrow { color: color-mix(in oklab, var(--on-midnight) 60%, transparent); }
+
+  .step-body h2 {
+    font-size: clamp(2rem, 4.6vw, 3rem);
+    letter-spacing: var(--tracking-display); font-weight: 500; line-height: 1.1;
+    margin: 0 0 1.75rem; max-width: 20ch; text-wrap: balance;
+  }
+  .step-body h2 em { color: inherit; }
+  .step-body p {
+    font-size: 1.0625rem; line-height: 1.78;
+    margin: 0 0 1.25rem;
+    color: color-mix(in oklab, currentColor 92%, transparent);
+    max-width: 56ch;
+  }
+  .step-body p:last-child { margin-bottom: 0; }
+  .step-body em { color: currentColor; }
+  .step-body .lead {
+    font-family: var(--font-serif); font-style: italic; font-size: 1.5rem;
+    line-height: 1.35; color: currentColor;
+    max-width: 30ch;
+    margin: 0 0 2rem;
+  }
+
+  /* Acid-test pull quote in step 2 */
+  .acid-pull {
+    margin: 2rem 0;
+    padding: 1.25rem 0 1.25rem 1.75rem;
+    border-left: 3px solid var(--on-midnight);
+    font-family: var(--font-serif); font-style: italic;
+    font-size: clamp(1.5rem, 3vw, 2.125rem); line-height: 1.25;
+    max-width: 22ch;
+    color: var(--on-midnight);
+  }
+
+  /* Step 3 — traffic light cards */
+  .lights {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    margin-top: 2.25rem;
+  }
+  @media (max-width: 920px) { .lights { grid-template-columns: 1fr; } }
+  .light-card {
+    background: var(--card);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex; flex-direction: column; gap: 0.875rem;
+  }
+  .light-card .head { display: flex; align-items: center; justify-content: space-between; }
+  .light-card .pill {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.25rem 0.625rem; border-radius: 9999px;
+    font-size: 0.6875rem; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); font-weight: 500;
+    border: 1px solid currentColor;
+  }
+  .light-card.go { color: var(--status-go); }
+  .light-card.caution { color: var(--status-caution); }
+  .light-card.stop { color: var(--destructive); }
+  .light-card .pill .dot { width: 6px; height: 6px; border-radius: 9999px; background: currentColor; }
+  .light-card .num { font-family: var(--font-serif); font-style: italic; font-size: 1.5rem; color: var(--ink-soft); }
+  .light-card h3 { font-size: 1.25rem; letter-spacing: -0.01em; font-weight: 600; color: var(--ink); margin: 0; }
+  .light-card.stop h3 { color: var(--destructive); }
+  .light-card p { font-size: 0.9375rem; line-height: 1.6; color: color-mix(in oklab, var(--ink) 86%, transparent); margin: 0; }
+  .light-card p em { color: var(--ink); }
+  .light-card ul { list-style: none; padding: 0; margin: 0.25rem 0 0; display: flex; flex-direction: column; gap: 0.5rem; border-top: 1px solid var(--hairline); padding-top: 0.875rem; }
+  .light-card li { font-size: 0.8125rem; line-height: 1.5; color: color-mix(in oklab, var(--ink) 85%, transparent); padding-left: 0.875rem; position: relative; }
+  .light-card li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 0.4rem; height: 1px; background: currentColor; opacity: 0.5; }
+
+  /* Step 4 closing — single column */
+  .close-cta {
+    margin-top: 2.5rem;
+    padding: 1.5rem 1.75rem;
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    background: var(--paper);
+    font-size: 0.9375rem; line-height: 1.65;
+    color: var(--ink);
+    display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center;
+    max-width: 56ch;
+  }
+  @media (max-width: 540px) { .close-cta { grid-template-columns: 1fr; } }
+  .close-cta em { color: var(--ink); }
+  .close-cta a {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.5rem 0.875rem; border-radius: 9999px;
+    background: var(--ink); color: var(--paper);
+    text-decoration: none; font-size: 0.8125rem; font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* Step separator */
+  .step + .step::before {
+    content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 1px; height: 3rem; background: var(--hairline);
+  }
+  .step.band-midnight + .step::before { background: var(--hairline); }
+  .step + .step.band-midnight::before { background: color-mix(in oklab, var(--on-midnight) 25%, transparent); }
+
+  footer { padding: 2rem 0; border-top: 1px solid var(--hairline); font-size: 0.75rem; color: var(--ink-soft); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<header class="progress" id="progress">
+  <div class="wrap progress-row">
+    <span class="progress-brand">Movemental</span>
+    <nav class="progress-steps" aria-label="Argument steps">
+      <a href="#step-1" data-step="step-1"><span class="step-num">i.</span><span class="step-bar"></span>Framing</a>
+      <a href="#step-2" data-step="step-2"><span class="step-num">ii.</span><span class="step-bar"></span>Test</a>
+      <a href="#step-3" data-step="step-3"><span class="step-num">iii.</span><span class="step-bar"></span>Framework</a>
+      <a href="#step-4" data-step="step-4"><span class="step-num">iv.</span><span class="step-bar"></span>Position</span></a>
+    </nav>
+    <span class="progress-meter"><em id="meter-num">0</em> / 4 · the editorial covenant</span>
+  </div>
+</header>
+
+<!-- Hero / step 0 -->
+<section class="hero" id="hero">
+  <div class="wrap">
+    <p class="hero-step">The editorial covenant · in four steps</p>
+    <h1>How Movemental <em>approaches</em> AI</h1>
+    <p>Most public discourse splits into <em>"AI is a savior"</em> or <em>"AI is a threat."</em> We reject both. AI is infrastructure. The leaders are the work. The next four steps lay out the framing, the test, the framework, and the position that govern how we use AI at Movemental.</p>
+    <a class="hero-jump" href="#step-1">
+      Start with the framing
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" class="arrow" aria-hidden="true"><path d="M8 3v10m-4-4l4 4 4-4" stroke="currentColor" stroke-width="1.5"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- Step 1 -->
+<section class="step band-alt" id="step-1">
+  <div class="wrap">
+    <div class="step-grid">
+      <div>
+        <span class="step-marker">i.<span class="step-eyebrow">Framing</span></span>
+      </div>
+      <div class="step-body">
+        <h2>The mirror and <em>amplifier</em></h2>
+        <p class="lead">AI is trained on the broad output of human writing, speech, and behavior.</p>
+        <p>When you interact with it, it mirrors and amplifies what it has been trained on, and it mirrors and amplifies <em>you</em> specifically. The outputs you get back reflect both the training data and the human in the room.</p>
+        <p>People who are worried about AI are often worried about humanity itself, because AI surfaces and amplifies what humans have already produced. People who are hopeful about AI are often hopeful about humanity for the same reason.</p>
+        <p>If AI mirrors and amplifies the humans it is around, the most important thing an organization can do is deliberately gather the <em>right humans</em>. The thing people are saying yes to when they join Movemental is not the technology. It is each other. The platform exists to make that possible at a scale that was not possible before.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Step 2 -->
+<section class="step band-midnight" id="step-2">
+  <div class="wrap">
+    <div class="step-grid">
+      <div>
+        <span class="step-marker">ii.<span class="step-eyebrow">The single test</span></span>
+      </div>
+      <div class="step-body">
+        <h2>The "take AI out of the story" <em>test</em></h2>
+        <p>The single most useful test for whether an AI use case is valid is portable and falsifiable.</p>
+        <p class="acid-pull">"Take the AI out of the story. Look at what remains."</p>
+        <p>If what remains is people doing valuable human work that AI helped them do <em>faster, larger, or more accessibly</em> — the use is humanly valuable.</p>
+        <p>If what remains is just AI output dressed up to look like human work — the use is suspect, regardless of how impressive the output is.</p>
+        <p>Applied to our own work: what remains, when you take the AI out, is a group of practitioners who had been circling each other's work for years and who wanted to do something together. The technology made it possible to <em>gather</em>. The technology did not make the gathering valuable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Step 3 -->
+<section class="step" id="step-3">
+  <div class="wrap">
+    <div class="step-grid">
+      <div>
+        <span class="step-marker">iii.<span class="step-eyebrow">The framework</span></span>
+      </div>
+      <div class="step-body" style="max-width: none;">
+        <h2>Green, yellow, and <em>red</em> lights</h2>
+        <p>We sort AI use cases into three distinct categories to govern our development and deployment. Specific examples are illustrative — the framework is the operative thing, applied to every new case we encounter.</p>
+
+        <div class="lights">
+          <article class="light-card go">
+            <div class="head">
+              <span class="num">01</span>
+              <span class="pill"><span class="dot"></span>Deploy readily</span>
+            </div>
+            <h3>Green light</h3>
+            <p>Clear human benefit, no meaningful negative consequence. The <em>washing machine</em> of AI applications.</p>
+            <ul>
+              <li>Making existing content searchable.</li>
+              <li>Translating between unknown languages.</li>
+              <li>Surfacing patterns in data.</li>
+            </ul>
+          </article>
+          <article class="light-card caution">
+            <div class="head">
+              <span class="num">02</span>
+              <span class="pill"><span class="dot"></span>With guardrails</span>
+            </div>
+            <h3>Yellow light</h3>
+            <p>Real benefit, but only with sufficient guardrails. The <em>majority</em> of AI applications fall here.</p>
+            <ul>
+              <li>Drafts humans review before sending.</li>
+              <li>Research with citation and verification.</li>
+              <li>Facilitation that never substitutes for participants.</li>
+            </ul>
+          </article>
+          <article class="light-card stop">
+            <div class="head">
+              <span class="num">03</span>
+              <span class="pill"><span class="dot"></span>Do not deploy</span>
+            </div>
+            <h3>Red light</h3>
+            <p>Harm, regardless of how carefully deployed. These form our <em>Named Refusals</em>.</p>
+            <ul>
+              <li>Authoring under a human's name without disclosure.</li>
+              <li>Eligibility decisions affecting service access.</li>
+              <li>Impersonating humans in pastoral or counseling contexts.</li>
+              <li>Surveillance that changes how people are served.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Step 4 -->
+<section class="step band-alt" id="step-4">
+  <div class="wrap">
+    <div class="step-grid">
+      <div>
+        <span class="step-marker">iv.<span class="step-eyebrow">Position</span></span>
+      </div>
+      <div class="step-body">
+        <h2>We are <em>not</em> an AI company</h2>
+        <p>We are a company of humans who use AI as carefully as we can, in service of a network of movement leaders whose work matters. <em>AI is the infrastructure. The leaders are the work.</em></p>
+        <p>The reason we are doing this now is that AI cannot be put back. Every organization our network serves is going to face the same questions about AI, whether they want to or not. The vendors who will help them are mostly not the people who understand the substance of what they do.</p>
+        <p>We are a few years into wrestling with these questions in a field where the most experienced person could only have three years of experience. <em>That head start is what we offer.</em></p>
+
+        <div class="close-cta">
+          <span>If you've read this far, you've read the covenant. <em>Welcome.</em></span>
+          <a href="#hero">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>Movemental · The editorial covenant · stepped edition</span>
+  <span class="mono">i · ii · iii · iv</span>
+</footer>
+
+<script>
+  // Scroll spy + step counter
+  const steps = ['step-1', 'step-2', 'step-3', 'step-4'];
+  const links = Array.from(document.querySelectorAll('.progress-steps a'));
+  const meter = document.getElementById('meter-num');
+  const labels = ['0', 'i', 'ii', 'iii', 'iv'];
+
+  const setActive = (id) => {
+    links.forEach(a => a.classList.toggle('is-active', a.dataset.step === id));
+    const idx = steps.indexOf(id);
+    meter.textContent = idx >= 0 ? labels[idx + 1] : '0';
+  };
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+  steps.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+</script>
+
+</body>
+</html>

@@ -181,6 +181,12 @@ export function ActiveEngagementHome({
             </Link>{" "}
             gives executives and board sponsors a read-only window into progress without stepping into the working rooms — enough signal to support, not enough surface to steer day-to-day craft.
           </p>
+          <p className="text-[15px] leading-[1.7] text-foreground">
+            <Link href={`/sandboxlive/readiness${orgQuery}`} className={editorialHome.libraryLink}>
+              Staff readiness check-in
+            </Link>{" "}
+            is a 10-minute individual intake every staff member completes before training — what you do, what you use, and how you feel about AI. It feeds session design, not the Phase 02 workspace doc.
+          </p>
         </div>
       </section>
 
