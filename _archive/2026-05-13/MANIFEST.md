@@ -31,3 +31,24 @@ Scope tightened from 9 → 4 during Phase 4 pre-flight when `grep` surfaced that
 ## How to revert
 
 Single commit; `git revert <sha>` restores everything.
+
+---
+
+## Update — third pass (same commit / branch)
+
+Followed up the initial 4-file repo-cleanup with a focused **docs/html cleanup pass**. Source report: [`../../_docs/_build/docs-html-cleanup-2026-05-13.md`](../../_docs/_build/docs-html-cleanup-2026-05-13.md).
+
+**Archived in this pass:** 119 files (Stitch HTML prototype mockups whose React equivalents have shipped, and small one-off mockup folders).
+
+**Kept in `docs/html/` (164 files):**
+- Generator outputs: `scenius-network-v2/`, `scenius-network-v3/`, `toolkit-text-review.html`, `books-concept-modern/`, `site-templates/`
+- Read by build scripts: `deduped-megapage.{html,css,js}`, `tabbed-argument-page.html`, `argument-ids.json`
+- Cited as canonical SSOT by build prompts: `home-citations-ledger.html` (design SSOT for the citations system), `site-claims-eeat-research-map.html`
+- Self-contained subdirs left intact for separate review: `alan-hirsch-course-migration/` (72 files), `master-components/` (29), `course-previews/` (20), `assets/` (10), `scripts/` (2)
+- `README.md` (the directory's policy doc)
+
+**Known minor side-effect:** `scripts/build-book-reader-html.py` generates an HTML page that includes prototype-nav hyperlinks (e.g., `../homepage-concept-modern/index.html`). Those links will 404 after this archive on next regeneration. The book-reader's primary purpose (rendering the manuscript) is unaffected; only the courtesy cross-prototype nav at the top of the generated page is broken. The generator can be patched to point at archive paths if/when desired.
+
+**Live-reference audit:** 3 `src/` JSDoc comments still mention archived paths (`home-page-content.tsx:3`, `reveal-on-scroll.tsx:15`, `movement-leaders-page-content.tsx:26`). All are documentary comments only — not load-bearing — so they remain in place.
+
+**Verification:** `pnpm typecheck` ✓.
