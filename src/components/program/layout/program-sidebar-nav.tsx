@@ -44,7 +44,7 @@ export function ProgramNavSidebar({ sidebar }: { sidebar: NavSidebar }) {
                 className={`w-full rounded-md px-2 py-2 text-left ${
                   item.state === "active"
                     ? "bg-pathway-accent/15 font-semibold text-pathway-accent"
-                    : "hover:bg-white/5"
+                    : "hover:bg-sandbox-sidebar-ink/5"
                 }`}
               >
                 {item.label}
@@ -81,7 +81,7 @@ export function ProgramSandboxSidebar({ sidebar }: { sidebar: SandboxSidebar }) 
                   <li key={l.label}>
                     <button
                       type="button"
-                      className="flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-sandbox-sidebar-ink hover:bg-white/5"
+                      className="flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-sandbox-sidebar-ink hover:bg-sandbox-sidebar-ink/5"
                     >
                       <span>{l.label}</span>
                       {l.badge ? (
@@ -121,7 +121,7 @@ export function ProgramPhaseSidebar({ sidebar }: { sidebar: PhaseSidebar }) {
                 className={`w-full rounded-md px-2 py-2 text-left ${
                   p.state === "active"
                     ? "bg-pathway-accent/15 font-semibold text-pathway-accent"
-                    : "text-sandbox-sidebar-ink hover:bg-white/5"
+                    : "text-sandbox-sidebar-ink hover:bg-sandbox-sidebar-ink/5"
                 }`}
               >
                 {p.label}

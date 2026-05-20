@@ -187,7 +187,7 @@ function Cohort() {
             <Reveal key={role.role}>
               <SurfaceCard tone="on-background" className="h-full gap-3">
                 <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="text-[1.05rem] font-semibold tracking-tight text-foreground">
+                  <h3 className="text-[1.05rem] font-medium tracking-tight text-foreground">
                     {role.role}
                   </h3>
                   <span className="shrink-0 text-[0.72rem] font-medium uppercase tracking-eyebrow text-ink-soft">

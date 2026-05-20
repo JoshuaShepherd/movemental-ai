@@ -103,7 +103,7 @@ export function FragmentationStoryWayfinding({ activeChapter }: Props) {
               type="button"
               className={cn(
                 "rounded-full px-3 py-1.5 text-xs font-medium transition-colors",
-                "focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none",
+                "focus-visible:ring-2 focus-visible:ring-inverse-foreground focus-visible:outline-none",
                 inPartOne
                   ? "bg-inverse-foreground/12 text-inverse-foreground"
                   : "text-inverse-foreground/65 hover:text-inverse-foreground"
@@ -116,7 +116,7 @@ export function FragmentationStoryWayfinding({ activeChapter }: Props) {
               type="button"
               className={cn(
                 "rounded-full px-3 py-1.5 text-xs font-medium transition-colors",
-                "focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none",
+                "focus-visible:ring-2 focus-visible:ring-inverse-foreground focus-visible:outline-none",
                 !inPartOne
                   ? "bg-inverse-foreground/12 text-inverse-foreground"
                   : "text-inverse-foreground/65 hover:text-inverse-foreground"
@@ -138,8 +138,8 @@ export function FragmentationStoryWayfinding({ activeChapter }: Props) {
                   type="button"
                   className={cn(
                     "size-2 shrink-0 rounded-full transition-colors",
-                    "focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-inverse-surface focus-visible:outline-none",
-                    on ? "bg-primary" : "bg-inverse-foreground/25 hover:bg-inverse-foreground/45"
+                    "focus-visible:ring-2 focus-visible:ring-inverse-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-inverse-surface focus-visible:outline-none",
+                    on ? "bg-inverse-foreground" : "bg-inverse-foreground/25 hover:bg-inverse-foreground/45"
                   )}
                   aria-label={`Go to chapter ${id.replace(/-/g, " ")}`}
                   aria-current={on ? "step" : undefined}
@@ -158,9 +158,9 @@ export function FragmentationStoryWayfinding({ activeChapter }: Props) {
                   type="button"
                   className={cn(
                     "shrink-0 rounded-full px-2.5 py-1 text-[0.65rem] font-medium uppercase tracking-eyebrow transition-colors",
-                    "focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none",
+                    "focus-visible:ring-2 focus-visible:ring-inverse-foreground focus-visible:outline-none",
                     on
-                      ? "bg-inverse-foreground/12 text-inverse-foreground ring-1 ring-primary/40"
+                      ? "bg-inverse-foreground/12 text-inverse-foreground ring-1 ring-inverse-foreground/40"
                       : "text-inverse-foreground/55 hover:text-inverse-foreground"
                   )}
                   aria-current={on ? "page" : undefined}

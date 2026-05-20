@@ -37,7 +37,7 @@ export function BookReference({
     >
       {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
       <div className="space-y-2">
-        <h3 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">
+        <h3 className="text-lg font-medium tracking-tight text-foreground md:text-xl">
           {title}
         </h3>
         <p className="max-w-prose text-sm leading-relaxed text-muted-foreground md:text-base">

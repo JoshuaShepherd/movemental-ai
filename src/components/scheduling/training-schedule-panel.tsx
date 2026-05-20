@@ -89,7 +89,7 @@ export function TrainingSchedulePanel({
   return (
     <div className="flex flex-col gap-10">
       <section className="flex flex-col gap-4">
-        <h2 className="text-lg font-semibold tracking-tight text-foreground">Schedule with Calendly</h2>
+        <h2 className="text-lg font-medium tracking-tight text-foreground">Schedule with Calendly</h2>
         {loadError ? (
           <p className="text-sm text-muted-foreground">{loadError}</p>
         ) : embedUrl ? (
@@ -110,7 +110,7 @@ export function TrainingSchedulePanel({
 
       {showManualDateAndComplete ? (
         <section className="flex flex-col gap-4 border-t border-border pt-8">
-          <h2 className="text-lg font-semibold tracking-tight text-foreground">Or set start date manually</h2>
+          <h2 className="text-lg font-medium tracking-tight text-foreground">Or set start date manually</h2>
           <p className="text-sm text-muted-foreground">
             If you already agreed on a kickoff date outside Calendly, enter it here and save.
           </p>

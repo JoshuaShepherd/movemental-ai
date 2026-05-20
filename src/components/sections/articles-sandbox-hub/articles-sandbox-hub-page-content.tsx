@@ -99,7 +99,7 @@ export function ArticlesSandboxHubPageContent() {
                           <span className="text-[0.72rem] font-medium uppercase tracking-eyebrow text-ink-soft">
                             Order {item.order}
                           </span>
-                          <h3 className="text-[1.05rem] font-semibold leading-snug text-foreground">{item.title}</h3>
+                          <h3 className="text-[1.05rem] font-medium leading-snug text-foreground">{item.title}</h3>
                           <div className="mt-auto pt-2">
                             <ArrowLink href={item.href}>Read</ArrowLink>
                           </div>

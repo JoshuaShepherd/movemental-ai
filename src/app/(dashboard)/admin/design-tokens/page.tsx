@@ -30,10 +30,10 @@ const TOKEN_GROUPS: Array<{
     description: "Warm surfaces and hairlines for lifted Stitch screens under /sandboxlive and /safestart.",
     tokens: [
       { label: "safestart-bg", swatchClass: "bg-safestart-bg", textClass: "text-safestart-ink", hex: "#faf8f4" },
-      { label: "safestart-ink", swatchClass: "bg-safestart-ink", textClass: "text-white", hex: "#1a1a1a" },
-      { label: "safestart-muted", swatchClass: "bg-safestart-muted", textClass: "text-white", hex: "#666557" },
+      { label: "safestart-ink", swatchClass: "bg-safestart-ink", textClass: "text-inverse-foreground", hex: "#1a1a1a" },
+      { label: "safestart-muted", swatchClass: "bg-safestart-muted", textClass: "text-inverse-foreground", hex: "#666557" },
       { label: "safestart-hairline", swatchClass: "bg-safestart-hairline", hex: "#ece8d7", notes: "Use as border/hairline on safestart-bg." },
-      { label: "safestart-completed", swatchClass: "bg-safestart-completed", textClass: "text-white", hex: "#4a6b47" },
+      { label: "safestart-completed", swatchClass: "bg-safestart-completed", textClass: "text-inverse-foreground", hex: "#4a6b47" },
       {
         label: "safestart-surface-container",
         swatchClass: "bg-safestart-surface-container",
@@ -45,7 +45,7 @@ const TOKEN_GROUPS: Array<{
   {
     title: "Midnight chrome",
     description: "Authenticated header/sidebar and Stitch midnight bands.",
-    tokens: [{ label: "movemental-midnight", swatchClass: "bg-movemental-midnight", textClass: "text-white", hex: "#141110" }],
+    tokens: [{ label: "movemental-midnight", swatchClass: "bg-movemental-midnight", textClass: "text-inverse-foreground", hex: "#141110" }],
   },
   {
     title: "SandboxLive sidebar rail",
@@ -84,9 +84,9 @@ const TOKEN_GROUPS: Array<{
     title: "Program status signals",
     description: "Sandbox-style go / caution / stop lights on cream paper.",
     tokens: [
-      { label: "status-go", swatchClass: "bg-status-go", textClass: "text-white", hex: "#6b7e3f" },
-      { label: "status-caution", swatchClass: "bg-status-caution", textClass: "text-white", hex: "#a07a25" },
-      { label: "status-stop", swatchClass: "bg-status-stop", textClass: "text-white", hex: "#9c2d20" },
+      { label: "status-go", swatchClass: "bg-status-go", textClass: "text-inverse-foreground", hex: "#6b7e3f" },
+      { label: "status-caution", swatchClass: "bg-status-caution", textClass: "text-inverse-foreground", hex: "#a07a25" },
+      { label: "status-stop", swatchClass: "bg-status-stop", textClass: "text-inverse-foreground", hex: "#9c2d20" },
     ],
   },
 ];

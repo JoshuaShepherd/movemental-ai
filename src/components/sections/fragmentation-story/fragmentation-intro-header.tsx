@@ -31,7 +31,7 @@ export function FragmentationIntroHeader({ eyebrow, secondary }: Props) {
             >
               The informational and relational intelligence supporting your organizational or
               movement leadership work is{" "}
-              <em className="not-italic text-primary">fragmented</em>.
+              <em className="not-italic text-pathway-accent">fragmented</em>.
             </Display>
           </div>
           <div className="min-w-0 max-w-prose space-y-5 text-inverse-foreground/80">

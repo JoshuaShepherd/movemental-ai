@@ -137,7 +137,7 @@ export function AgreementSignPage() {
     return (
       <div className="mx-auto flex max-w-2xl flex-col items-center gap-6 py-24 text-center">
         <Eyebrow>Implementation MOU</Eyebrow>
-        <h1 className="text-3xl font-semibold tracking-[-0.02em] text-foreground sm:text-4xl">
+        <h1 className="text-3xl tracking-[-0.02em] text-foreground sm:text-4xl">
           Signed and on file
         </h1>
         <p className="text-muted-foreground">
@@ -168,7 +168,7 @@ export function AgreementSignPage() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <Eyebrow>Onboarding</Eyebrow>
-          <h1 className="mt-2 text-3xl font-semibold tracking-[-0.02em] text-foreground sm:text-4xl">
+          <h1 className="mt-2 text-3xl tracking-[-0.02em] text-foreground sm:text-4xl">
             Implementation MOU
           </h1>
           <p className="mt-2 text-sm text-muted-foreground">

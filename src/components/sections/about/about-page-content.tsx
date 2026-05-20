@@ -220,7 +220,7 @@ function FounderTile({ letter, name }: { letter: string; name: string }) {
         // utilities aren't first-class in Tailwind v4, so we use an inline
         // CSS variable wrapper.
         "bg-[radial-gradient(120%_120%_at_30%_25%,var(--background)_0%,var(--section)_60%,var(--surface-highest)_100%)]",
-        "after:pointer-events-none after:absolute after:inset-0 after:bg-[linear-gradient(180deg,transparent_60%,rgba(25,21,15,0.04)_100%)]",
+        "after:pointer-events-none after:absolute after:inset-0 after:bg-[linear-gradient(180deg,transparent_60%,color-mix(in_srgb,var(--foreground)_4%,transparent)_100%)]",
       )}
     >
       <span

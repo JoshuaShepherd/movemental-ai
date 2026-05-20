@@ -108,7 +108,7 @@ export async function BookLandingPageContent({ searchParams }: BookLandingPagePr
                 <span className="text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-primary">
                   {item.num}
                 </span>
-                <h3 className="mt-2 text-lg font-semibold text-foreground">{item.title}</h3>
+                <h3 className="mt-2 text-lg font-medium text-foreground">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
               </SurfaceCard>
             ))}

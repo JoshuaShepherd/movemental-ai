@@ -192,7 +192,7 @@ function InfrastructureOverlay() {
           <p className="text-xs font-medium uppercase tracking-eyebrow text-muted-foreground">
             How it spreads
           </p>
-          <h3 className="mt-1 text-xl font-semibold tracking-tight text-foreground">
+          <h3 className="mt-1 text-xl tracking-tight text-foreground">
             Infrastructure across the field
           </h3>
         </div>
@@ -314,7 +314,7 @@ export function FragmentationStoryStageMultiplication({
           <p className="mb-4 text-xs font-medium uppercase tracking-eyebrow text-muted-foreground">
             {MULTIPLICATION_COPY.eyebrow}
           </p>
-          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h2 className="text-balance text-3xl tracking-tight sm:text-4xl">
             {MULTIPLICATION_COPY.title}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">

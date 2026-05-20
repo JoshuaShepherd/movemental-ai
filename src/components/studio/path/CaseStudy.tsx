@@ -24,13 +24,13 @@ export function CaseStudy({ audience }: { audience: 'churches' | 'nonprofits' | 
                     &quot;{data.PullQuote}&quot;
                  </p>
                  
-                 <h3 className="text-2xl font-semibold mb-6">Why this worked</h3>
+                 <h3 className="text-2xl mb-6">Why this worked</h3>
                  <div className="space-y-8">
                    {data.WhyThisWorked.map((item, i) => (
                       <div key={i}>
                         <div className="flex items-baseline gap-3 mb-2">
                            <span className="font-serif-display text-xl text-border/80">0{i+1}</span>
-                           <h4 className="font-bold text-lg m-0">{item.title}</h4>
+                           <h4 className="font-medium text-lg m-0">{item.title}</h4>
                         </div>
                         <p className="text-foreground/80 pl-8 m-0">{item.description}</p>
                       </div>

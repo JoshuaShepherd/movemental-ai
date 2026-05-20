@@ -127,7 +127,7 @@ export function OnboardingChecklist({
       <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <Eyebrow className="mb-2">Your onboarding</Eyebrow>
-          <h3 className="text-xl font-semibold tracking-[-0.02em] text-foreground">Welcome, {greet}</h3>
+          <h3 className="text-xl tracking-[-0.02em] text-foreground">Welcome, {greet}</h3>
         </div>
         <p className="text-sm text-muted-foreground sm:text-right">
           Your cohort starts: <span className="text-foreground">{cohort}</span>

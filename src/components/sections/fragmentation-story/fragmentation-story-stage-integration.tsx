@@ -50,7 +50,7 @@ function IntegrationSpokeSvg() {
     >
       <defs>
         <linearGradient id="int-spoke" x1="50" y1="50" x2="100" y2="50" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="currentColor" stopOpacity="0.65" className="text-primary" />
+          <stop offset="0%" stopColor="currentColor" stopOpacity="0.65" className="text-pathway-accent" />
           <stop offset="100%" stopColor="currentColor" stopOpacity="0.15" />
         </linearGradient>
       </defs>
@@ -116,7 +116,7 @@ function Node({
         "absolute isolate overflow-hidden rounded-[var(--radius-md)] bg-card shadow-ambient will-change-transform motion-reduce:opacity-100",
         /* Baseline legibility before/during scrub — GSAP animates to full opacity */
         "opacity-[0.4] motion-reduce:opacity-100",
-        highlight && "ring-2 ring-primary ring-offset-2 ring-offset-inverse-surface"
+        highlight && "ring-2 ring-inverse-foreground ring-offset-2 ring-offset-inverse-surface"
       )}
       style={style}
     >
@@ -165,7 +165,7 @@ function IdeThumb({
 function IdeTreeGroup({ folder, children }: { folder: string; children: ReactNode }) {
   return (
     <div className="mb-4">
-      <p className="mb-1.5 font-mono text-xs text-primary">{folder}</p>
+      <p className="mb-1.5 font-mono text-xs text-pathway-accent">{folder}</p>
       <ul className="space-y-1">{children}</ul>
     </div>
   );
@@ -291,30 +291,30 @@ function IntegrationIdePanel({
         </aside>
         <div className="min-h-0 overflow-x-auto bg-inverse-surface/40 p-3">
           <pre className="font-mono text-xs leading-relaxed text-inverse-foreground/85">
-            <span className="text-primary">---</span>
+            <span className="text-pathway-accent">---</span>
             {"\n"}
-            <span className="text-primary">title</span>: &quot;Fragments of Form&quot;
+            <span className="text-pathway-accent">title</span>: &quot;Fragments of Form&quot;
             {"\n"}
-            <span className="text-primary">type</span>: book
+            <span className="text-pathway-accent">type</span>: book
             {"\n"}
-            <span className="text-primary">slug</span>: &quot;fragments-of-form&quot;
+            <span className="text-pathway-accent">slug</span>: &quot;fragments-of-form&quot;
             {"\n"}
-            <span className="text-primary">author</span>: &quot;Alan Hirsch&quot;
+            <span className="text-pathway-accent">author</span>: &quot;Alan Hirsch&quot;
             {"\n"}
-            <span className="text-primary">published</span>: 2024-09-12
+            <span className="text-pathway-accent">published</span>: 2024-09-12
             {"\n"}
-            <span className="text-primary">tags</span>: [formation, architecture, movement]
+            <span className="text-pathway-accent">tags</span>: [formation, architecture, movement]
             {"\n"}
-            <span className="text-primary">audiences</span>: [movement-leader, church]
+            <span className="text-pathway-accent">audiences</span>: [movement-leader, church]
             {"\n"}
-            <span className="text-primary">connections</span>:{"\n"}
+            <span className="text-pathway-accent">connections</span>:{"\n"}
             {"  "}- module: &quot;formal-systems&quot;
             {"\n"}
             {"  "}- podcast: &quot;ep-12-rhythms&quot;
             {"\n"}
             {"  "}- thread: &quot;bi-vocational-07mar&quot;
             {"\n"}
-            <span className="text-primary">---</span>
+            <span className="text-pathway-accent">---</span>
             {"\n\n"}
             <span className="text-base font-medium text-inverse-foreground">
               Fragments of Form
@@ -491,7 +491,7 @@ export function FragmentationStoryStageIntegration({ audience, field }: Props) {
           <p className="mb-4 text-xs font-medium uppercase tracking-eyebrow text-inverse-foreground/60">
             {INTEGRATION_COPY.eyebrow}
           </p>
-          <h2 className="text-balance text-3xl font-semibold tracking-tight text-inverse-foreground sm:text-4xl">
+          <h2 className="text-balance text-3xl tracking-tight text-inverse-foreground sm:text-4xl">
             {INTEGRATION_COPY.title}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-inverse-foreground/75">
@@ -636,7 +636,7 @@ export function FragmentationStoryStageIntegration({ audience, field }: Props) {
           <p className="text-xs font-medium uppercase tracking-eyebrow text-inverse-foreground/55">
             What it looks like underneath
           </p>
-          <h3 className="mt-3 text-xl font-semibold tracking-tight text-inverse-foreground sm:text-2xl">
+          <h3 className="mt-3 text-xl tracking-tight text-inverse-foreground sm:text-2xl">
             Every artifact becomes typed content.
           </h3>
           <p className="mt-3 text-sm leading-relaxed text-inverse-foreground/70">

@@ -162,7 +162,7 @@ export function AuthenticatedShell({
           type="button"
           variant="ghost"
           size="sm"
-          className="gap-1 rounded-none text-[13px] text-white/80 hover:bg-white/10 hover:text-white"
+          className="gap-1 rounded-none text-[13px] text-inverse-foreground/80 hover:bg-inverse-foreground/10 hover:text-inverse-foreground"
         >
           Workspace
           <ChevronDown className="size-4 shrink-0 opacity-70" aria-hidden />
@@ -189,18 +189,18 @@ export function AuthenticatedShell({
   return (
     <DashboardOrgProvider initialSlug={currentSlug}>
       <div className="flex min-h-dvh flex-col bg-background text-foreground">
-        <header className="bg-movemental-midnight text-white print:hidden">
+        <header className="bg-movemental-midnight text-inverse-foreground print:hidden">
           <div className="mx-auto flex h-16 w-full max-w-[var(--container-max)] items-center justify-between gap-3 px-[clamp(1.25rem,4vw,2.5rem)]">
             <div className="flex min-w-0 items-center gap-4">
               <Link
                 href="/dashboard"
-                className="font-serif text-[18px] italic leading-none text-white"
+                className="font-serif text-[18px] italic leading-none text-inverse-foreground"
               >
                 Movemental
               </Link>
               {productLabel ? (
                 <>
-                  <span aria-hidden className="hidden h-4 w-[0.5px] shrink-0 bg-white/25 sm:block" />
+                  <span aria-hidden className="hidden h-4 w-[0.5px] shrink-0 bg-inverse-foreground/25 sm:block" />
                   <span className="rounded-none border border-[0.5px] border-pathway-accent/55 bg-pathway-accent/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-pathway-accent">
                     {productLabel}
                   </span>
@@ -211,11 +211,11 @@ export function AuthenticatedShell({
                 <div className="hidden lg:block">{workspaceMenuDropdown}</div>
               ) : (
                 <nav
-                  className="hidden max-w-[min(52rem,calc(100vw-14rem))] flex-wrap items-center gap-x-4 gap-y-1 text-[13px] text-white/70 lg:flex"
+                  className="hidden max-w-[min(52rem,calc(100vw-14rem))] flex-wrap items-center gap-x-4 gap-y-1 text-[13px] text-inverse-foreground/70 lg:flex"
                   aria-label="Workspace"
                 >
                   {workspaceNavItems.map((item) =>
-                    renderWorkspaceNavLink(item, "shrink-0 hover:text-white"),
+                    renderWorkspaceNavLink(item, "shrink-0 hover:text-inverse-foreground"),
                   )}
                 </nav>
               )}
@@ -228,7 +228,7 @@ export function AuthenticatedShell({
                       type="button"
                       variant="ghost"
                       size="sm"
-                      className="gap-1 rounded-none text-white/80 hover:bg-white/10 hover:text-white"
+                      className="gap-1 rounded-none text-inverse-foreground/80 hover:bg-inverse-foreground/10 hover:text-inverse-foreground"
                       aria-label="Documents and agreements"
                     >
                       Documents
@@ -254,7 +254,7 @@ export function AuthenticatedShell({
                       type="button"
                       variant="ghost"
                       size="sm"
-                      className="max-w-[14rem] gap-1 rounded-none text-white/80 hover:bg-white/10 hover:text-white"
+                      className="max-w-[14rem] gap-1 rounded-none text-inverse-foreground/80 hover:bg-inverse-foreground/10 hover:text-inverse-foreground"
                     >
                       <span className="truncate">{active?.orgName ?? "Organization"}</span>
                       <ChevronDown className="size-4 shrink-0 opacity-70" aria-hidden />
@@ -281,7 +281,7 @@ export function AuthenticatedShell({
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : workspaceFallbackLabel ? (
-                <span className="max-w-[14rem] truncate text-[13px] text-white/70">{workspaceFallbackLabel}</span>
+                <span className="max-w-[14rem] truncate text-[13px] text-inverse-foreground/70">{workspaceFallbackLabel}</span>
               ) : null}
               {hasLeaderWorkspace && !onLeaderProduct && memberships.length === 0 ? (
                 <Button
@@ -289,7 +289,7 @@ export function AuthenticatedShell({
                   variant="ghost"
                   size="sm"
                   asChild
-                  className="rounded-none text-white/80 hover:bg-white/10 hover:text-white"
+                  className="rounded-none text-inverse-foreground/80 hover:bg-inverse-foreground/10 hover:text-inverse-foreground"
                 >
                   <Link href="/leader">Leader workspace</Link>
                 </Button>
@@ -300,12 +300,12 @@ export function AuthenticatedShell({
                   variant="ghost"
                   size="sm"
                   asChild
-                  className="rounded-none text-white/80 hover:bg-white/10 hover:text-white"
+                  className="rounded-none text-inverse-foreground/80 hover:bg-inverse-foreground/10 hover:text-inverse-foreground"
                 >
                   <Link href="/dashboard">Dashboard</Link>
                 </Button>
               ) : null}
-              <span className="hidden text-[12px] text-white/60 md:inline">
+              <span className="hidden text-[12px] text-inverse-foreground/60 md:inline">
                 {userEmail}
               </span>
               <Button
@@ -313,7 +313,7 @@ export function AuthenticatedShell({
                 variant="ghost"
                 size="sm"
                 onClick={handleSignOut}
-                className="rounded-none text-white/70 hover:bg-white/10 hover:text-white"
+                className="rounded-none text-inverse-foreground/70 hover:bg-inverse-foreground/10 hover:text-inverse-foreground"
                 aria-label="Sign out"
               >
                 <LogOut className="size-4" aria-hidden />
@@ -322,14 +322,14 @@ export function AuthenticatedShell({
           </div>
           {showProgressRail ? (
             <div className="w-full">
-              <div className="h-0.5 w-full bg-white/10" aria-hidden>
+              <div className="h-0.5 w-full bg-inverse-foreground/10" aria-hidden>
                 <div
                   className="h-full bg-pathway-accent transition-[width] duration-300 ease-out"
                   style={{ width: `${onboardingProgress}%` }}
                 />
               </div>
               <div className="mx-auto flex max-w-[var(--container-max)] justify-end px-[clamp(1.25rem,4vw,2.5rem)] pb-1.5 pt-1">
-                <p className="text-right font-sans text-[11px] italic leading-snug text-white/65">
+                <p className="text-right font-sans text-[11px] italic leading-snug text-inverse-foreground/65">
                   {onboardingShellEditorialLabel(onboardingShellKind, onboardingProgress)}
                 </p>
               </div>
@@ -339,18 +339,18 @@ export function AuthenticatedShell({
 
         {renderSidebar ? (
           <div className="flex flex-1">
-            <aside className="hidden w-60 shrink-0 bg-movemental-midnight text-white md:block print:hidden">
+            <aside className="hidden w-60 shrink-0 bg-movemental-midnight text-inverse-foreground md:block print:hidden">
               <nav className="flex flex-col py-2" aria-label="Product sections">
                 {sidebar.map((section, sectionIdx) => (
                   <div
                     key={sectionIdx}
                     className={cn(
                       "flex flex-col",
-                      sectionIdx > 0 && "border-t border-[0.5px] border-white/12",
+                      sectionIdx > 0 && "border-t border-[0.5px] border-inverse-foreground/12",
                     )}
                   >
                     {section.label ? (
-                      <div className="px-5 py-3 text-[10px] font-medium uppercase tracking-[0.1em] text-white/40">
+                      <div className="px-5 py-3 text-[10px] font-medium uppercase tracking-[0.1em] text-inverse-foreground/40">
                         {section.label}
                       </div>
                     ) : null}
@@ -363,10 +363,10 @@ export function AuthenticatedShell({
                           key={item.href}
                           href={item.href}
                           className={cn(
-                            "flex items-baseline gap-3 border-b border-[0.5px] border-white/[0.08] border-l-[3px] px-5 py-[12px] font-sans text-[13px] leading-snug transition-colors last:border-b-0",
+                            "flex items-baseline gap-3 border-b border-[0.5px] border-inverse-foreground/8 border-l-[3px] px-5 py-[12px] font-sans text-[13px] leading-snug transition-colors last:border-b-0",
                             isActive
-                              ? "border-l-pathway-accent bg-white/[0.03] text-pathway-accent"
-                              : "border-l-transparent text-white/70 hover:bg-white/[0.03] hover:text-white",
+                              ? "border-l-pathway-accent bg-inverse-foreground/3 text-pathway-accent"
+                              : "border-l-transparent text-inverse-foreground/70 hover:bg-inverse-foreground/3 hover:text-inverse-foreground",
                           )}
                           aria-current={isActive ? "page" : undefined}
                         >

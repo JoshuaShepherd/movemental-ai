@@ -294,7 +294,7 @@ export function SsssIntegrityDiagnostic() {
       {/* ------------------------------- INTRO ------------------------------- */}
       {isIntro && (
         <SurfaceCard className="p-6 sm:p-8">
-          <h2 className="text-xl font-semibold tracking-tight text-foreground md:text-2xl">
+          <h2 className="text-xl tracking-tight text-foreground md:text-2xl">
             Movemental Path — integrity diagnostic
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
@@ -342,7 +342,7 @@ export function SsssIntegrityDiagnostic() {
           <p className="text-[0.78rem] font-semibold uppercase tracking-eyebrow text-ink-soft">
             Setup · 1 of 1
           </p>
-          <h3 className="mt-2 text-lg font-semibold tracking-tight text-foreground md:text-xl">
+          <h3 className="mt-2 text-lg font-medium tracking-tight text-foreground md:text-xl">
             Which of these best describes the entity you&apos;re answering for?
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -487,7 +487,7 @@ export function SsssIntegrityDiagnostic() {
                 <span className="ml-2 text-muted-foreground">· for {audienceLabel}</span>
               ) : null}
             </p>
-            <h2 className="mt-2 text-xl font-semibold tracking-tight text-foreground md:text-2xl">
+            <h2 className="mt-2 text-xl tracking-tight text-foreground md:text-2xl">
               Your Movemental Path integrity
             </h2>
             <p className="mt-3 text-sm text-muted-foreground">

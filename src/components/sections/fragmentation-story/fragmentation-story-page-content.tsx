@@ -50,14 +50,14 @@ export async function FragmentationStoryPageContent({
             emphasis. Example permalinks:{" "}
             <Link
               href="/fragmentation?audience=nonprofit&field=relational&nodes=40"
-              className="font-medium text-primary underline-offset-4 hover:underline"
+              className="font-medium text-pathway-accent underline-offset-4 hover:underline"
             >
               nonprofit · relational · density 40
             </Link>
             {" · "}
             <Link
               href="/fragmentation?audience=church&field=informational"
-              className="font-medium text-primary underline-offset-4 hover:underline"
+              className="font-medium text-pathway-accent underline-offset-4 hover:underline"
             >
               church · informational
             </Link>
@@ -92,7 +92,7 @@ export async function FragmentationIntelStoryPageContent({
             audience and field aware). No raster story art. For a flat QA grid of every slug, see{" "}
             <Link
               href="/system/intel-artifacts"
-              className="font-medium text-primary underline-offset-4 hover:underline"
+              className="font-medium text-pathway-accent underline-offset-4 hover:underline"
             >
               Intel artifacts (system)
             </Link>

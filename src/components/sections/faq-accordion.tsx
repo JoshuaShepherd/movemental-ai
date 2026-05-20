@@ -37,7 +37,7 @@ export function FaqAccordion({ sections }: { sections: readonly FaqSectionData[]
         <div key={section.num} id={`faq-${section.num}`} className="scroll-mt-28">
           <div className="mb-4 flex items-baseline gap-3">
             <span className="text-sm font-semibold text-muted-foreground">{section.num}</span>
-            <h2 className="text-xl font-semibold text-foreground">{section.title}</h2>
+            <h2 className="text-xl font-medium text-foreground">{section.title}</h2>
           </div>
           <Accordion type="single" collapsible className="w-full">
             {section.items.map((item: FaqItem) => (

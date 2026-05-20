@@ -15,7 +15,7 @@ export function ContinueReading({
     <Section variant="section" spacing="sm">
       <Container>
         <Eyebrow className="mb-2">Continue reading</Eyebrow>
-        <h2 className="mb-9 max-w-[28ch] text-[clamp(1.5rem,2.6vw,2rem)] leading-tight font-semibold tracking-[-0.02em] text-balance text-foreground">
+        <h2 className="mb-9 max-w-[28ch] text-[clamp(1.5rem,2.6vw,2rem)] leading-tight tracking-[-0.02em] text-balance text-foreground">
           {heading}
         </h2>
         <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -26,7 +26,7 @@ export function ContinueReading({
                   <span className="text-[0.68rem] font-semibold tracking-[0.14em] text-primary uppercase">
                     {article.eyebrow}
                   </span>
-                  <h3 className="text-base leading-snug font-semibold tracking-[-0.01em]">
+                  <h3 className="text-base leading-snug tracking-[-0.01em]">
                     <Link
                       href={`/articles/${article.slug}`}
                       className="text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"

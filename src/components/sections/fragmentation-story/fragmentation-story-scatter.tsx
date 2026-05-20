@@ -300,7 +300,7 @@ export function FragmentationStoryScatter({ audience, field }: Props) {
           <span className="mb-3 inline-block text-xs font-medium uppercase tracking-eyebrow text-inverse-foreground/60">
             {ledger.eyebrow}
           </span>
-          <h2 className="mb-6 whitespace-pre-line text-balance text-2xl font-semibold tracking-tight text-inverse-foreground">
+          <h2 className="mb-6 whitespace-pre-line text-balance text-2xl tracking-tight text-inverse-foreground">
             {ledger.title}
           </h2>
           <ul className="space-y-3 text-left text-sm leading-relaxed text-inverse-foreground/85">
@@ -310,13 +310,13 @@ export function FragmentationStoryScatter({ audience, field }: Props) {
           </ul>
         </div>
         <div className="mx-auto max-w-md text-center">
-          <span className="mb-3 inline-block text-xs font-medium uppercase tracking-eyebrow text-primary">
+          <span className="mb-3 inline-block text-xs font-medium uppercase tracking-eyebrow text-pathway-accent">
             {climax.eyebrow}
           </span>
-          <h2 className="mb-4 text-2xl font-semibold tracking-tight text-inverse-foreground sm:text-3xl">
+          <h2 className="mb-4 text-2xl tracking-tight text-inverse-foreground sm:text-3xl">
             {climax.titleBefore}
             <br />
-            <em className="font-semibold not-italic text-primary">
+            <em className="font-semibold not-italic text-pathway-accent">
               {climax.titleEmphasis}
             </em>
           </h2>
@@ -417,13 +417,13 @@ export function FragmentationStoryScatter({ audience, field }: Props) {
             ref={climaxRef}
             className="absolute inset-0 z-[4] flex flex-col items-center justify-center px-6 text-center opacity-0 motion-reduce:opacity-100"
           >
-            <span className="mb-3 text-xs font-medium uppercase tracking-eyebrow text-primary">
+            <span className="mb-3 text-xs font-medium uppercase tracking-eyebrow text-pathway-accent">
               {climax.eyebrow}
             </span>
-            <h2 className="mb-4 max-w-xl text-balance text-4xl font-semibold tracking-tight text-inverse-foreground">
+            <h2 className="mb-4 max-w-xl text-balance text-4xl tracking-tight text-inverse-foreground">
               {climax.titleBefore}
               <br />
-              <em className="font-semibold not-italic text-primary">
+              <em className="font-semibold not-italic text-pathway-accent">
                 {climax.titleEmphasis}
               </em>
             </h2>

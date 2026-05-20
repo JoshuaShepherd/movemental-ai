@@ -9,10 +9,10 @@ export function FragmentationStoryOutroCta() {
   return (
     <Section id="outro-cta" variant="midnight" spacing="lg">
       <Container className="text-center">
-        <h2 className="mx-auto max-w-2xl text-balance text-3xl font-semibold tracking-tight text-inverse-foreground sm:text-4xl">
+        <h2 className="mx-auto max-w-2xl text-balance text-3xl tracking-tight text-inverse-foreground sm:text-4xl">
           You built the intelligence.
           <br />
-          <em className="not-italic text-primary">Now give it a system — and a field.</em>
+          <em className="not-italic text-pathway-accent">Now give it a system — and a field.</em>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-base text-inverse-foreground/75">
           Six stages. One library of artifacts. From fragmentation to movement — the platform, the

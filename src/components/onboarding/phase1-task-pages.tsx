@@ -47,7 +47,7 @@ export function CohortTaskPage() {
   return (
     <div className="mx-auto max-w-3xl">
       <Eyebrow>Onboarding</Eyebrow>
-      <h1 className="mt-2 text-2xl font-semibold tracking-[-0.02em] text-foreground">
+      <h1 className="mt-2 text-2xl tracking-[-0.02em] text-foreground">
         Choose your cohort start date
       </h1>
       <p className="mt-3 text-muted-foreground">{cohortDescription}</p>

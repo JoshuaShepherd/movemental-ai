@@ -95,7 +95,7 @@ export function ProgramTemplateHub({
         <Container>
           <header className="max-w-prose">
             <Eyebrow className="mb-2">Program</Eyebrow>
-            <h1 className="text-2xl font-semibold tracking-[-0.02em] text-foreground">Program templates</h1>
+            <h1 className="text-2xl tracking-[-0.02em] text-foreground">Program templates</h1>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               {persona === "implementation_org" ? (
                 <>

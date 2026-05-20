@@ -131,7 +131,7 @@ export function FragmentationStoryStageFormation({
           <p className="mb-4 text-xs font-medium uppercase tracking-eyebrow text-inverse-foreground/60">
             {FORMATION_COPY.eyebrow}
           </p>
-          <h2 className="text-balance text-3xl font-semibold tracking-tight text-inverse-foreground sm:text-4xl">
+          <h2 className="text-balance text-3xl tracking-tight text-inverse-foreground sm:text-4xl">
             {FORMATION_COPY.title}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-inverse-foreground/75">
@@ -155,13 +155,13 @@ export function FragmentationStoryStageFormation({
                 </feMerge>
               </filter>
               <linearGradient id="formation-info-grad" x1="0%" x2="100%" y1="0%" y2="0%">
-                <stop offset="0%" stopColor="currentColor" stopOpacity="0.4" className="text-primary" />
-                <stop offset="40%" stopColor="currentColor" stopOpacity="1" className="text-primary" />
-                <stop offset="100%" stopColor="currentColor" stopOpacity="0.75" className="text-primary" />
+                <stop offset="0%" stopColor="currentColor" stopOpacity="0.4" className="text-pathway-accent" />
+                <stop offset="40%" stopColor="currentColor" stopOpacity="1" className="text-pathway-accent" />
+                <stop offset="100%" stopColor="currentColor" stopOpacity="0.75" className="text-pathway-accent" />
               </linearGradient>
               <linearGradient id="formation-rel-grad" x1="0%" x2="100%" y1="0%" y2="0%">
-                <stop offset="0%" stopColor="currentColor" stopOpacity="0.3" className="text-primary" />
-                <stop offset="100%" stopColor="currentColor" stopOpacity="0.85" className="text-primary" />
+                <stop offset="0%" stopColor="currentColor" stopOpacity="0.3" className="text-pathway-accent" />
+                <stop offset="100%" stopColor="currentColor" stopOpacity="0.85" className="text-pathway-accent" />
               </linearGradient>
             </defs>
 

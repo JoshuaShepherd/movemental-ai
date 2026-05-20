@@ -30,7 +30,7 @@ const surfaceClass: Record<Surface, { eyebrow: string; heading: string; body: st
     eyebrow: "text-inverse-foreground/60",
     heading: "text-inverse-foreground",
     body: "text-inverse-foreground/80",
-    accent: "text-primary",
+    accent: "text-pathway-accent",
     rule: "border-inverse-foreground/20",
   },
   section: {

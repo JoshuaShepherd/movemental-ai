@@ -53,7 +53,7 @@ export function TimelineItem({
             {meta}
           </p>
         ) : null}
-        <h3 className="text-lg font-semibold tracking-tight text-foreground">
+        <h3 className="text-lg font-medium tracking-tight text-foreground">
           {title}
         </h3>
         {children ? (

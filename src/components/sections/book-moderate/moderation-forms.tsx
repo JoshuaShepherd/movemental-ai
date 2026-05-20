@@ -22,7 +22,7 @@ export function ModerationForms({ token, pendingNotes, pendingEndorsements }: Pr
     <>
       <Section variant="section">
         <Container>
-          <h2 className="text-lg font-semibold text-foreground">Margin notes ({pendingNotes.length})</h2>
+          <h2 className="text-lg font-medium text-foreground">Margin notes ({pendingNotes.length})</h2>
           <ul className="mt-4 space-y-4">
             {pendingNotes.map((n) => (
               <li key={n.id} className="rounded-xl bg-card p-4 text-sm shadow-ambient">
@@ -73,7 +73,7 @@ export function ModerationForms({ token, pendingNotes, pendingEndorsements }: Pr
 
       <Section>
         <Container>
-          <h2 className="text-lg font-semibold text-foreground">
+          <h2 className="text-lg font-medium text-foreground">
             Endorsements ({pendingEndorsements.length})
           </h2>
           <ul className="mt-4 space-y-4">

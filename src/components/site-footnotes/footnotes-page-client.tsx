@@ -60,7 +60,7 @@ export function FootnotesPageClient({ entries }: { entries: EeatRegistryEntry[] 
           <p className="text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground">
             Evidence & editorial notes
           </p>
-          <h1 className="mt-2 font-serif-display text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+          <h1 className="mt-2 font-serif-display text-3xl tracking-tight text-foreground md:text-4xl">
             Claims, sources, and notes
           </h1>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">

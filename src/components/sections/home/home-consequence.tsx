@@ -55,7 +55,7 @@ export function HomeConsequence() {
           <p className="mt-8">
             <Link
               href={BOOK_READ_INSPECTABLE_DIAGNOSIS}
-              className="text-sm font-semibold uppercase tracking-eyebrow text-primary underline-offset-4 hover:underline"
+              className="text-sm font-semibold uppercase tracking-eyebrow text-pathway-accent underline-offset-4 hover:underline"
             >
               Read the inspectable diagnosis
             </Link>
@@ -77,7 +77,7 @@ function StakesTriad() {
           key={item.title}
           className="rounded-(--radius-md) bg-inverse-foreground/5 px-4 py-5 text-left shadow-ambient"
         >
-          <p className="text-[0.65rem] font-semibold uppercase tracking-eyebrow text-primary">
+          <p className="text-[0.65rem] font-semibold uppercase tracking-eyebrow text-pathway-accent">
             {item.title}
           </p>
           <p className="mt-3 text-sm leading-relaxed text-inverse-foreground/85">{item.body}</p>

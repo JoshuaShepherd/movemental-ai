@@ -846,7 +846,7 @@ export function StagePresentationThreeShapesIntel({
     >
       <div className="absolute inset-x-[8%] top-[6%] bottom-[36%] rounded-md bg-inverse-surface/90 p-[6%]">
         <IvRow className="h-full items-center justify-center gap-[6%]">
-          <span className="aspect-square w-[18%] rounded bg-primary/80" />
+          <span className="aspect-square w-[18%] rounded bg-pathway-accent/80" />
           <span className="aspect-square w-[16%] rounded-full bg-muted-foreground/30" />
           <span
             className="w-0 border-x-[9%] border-b-[16%] border-x-transparent border-b-muted-foreground/35"
@@ -958,11 +958,11 @@ export function VideoFrameTimestampedIntel({
           <IvPlayGlyph size={variant === "thumb" ? "sm" : "md"} />
         </span>
         <div className="absolute inset-x-3 bottom-2 flex items-center gap-2">
-          <span className="rounded bg-primary/90 px-1.5 py-0.5 text-[0.55rem] font-semibold text-primary-foreground">
+          <span className="rounded bg-pathway-accent/90 px-1.5 py-0.5 text-[0.55rem] font-semibold text-primary-foreground">
             04:12
           </span>
           <span className="relative h-1 flex-1 overflow-hidden rounded-full bg-inverse-foreground/20">
-            <span className="absolute inset-y-0 left-0 w-[38%] rounded-full bg-primary" />
+            <span className="absolute inset-y-0 left-0 w-[38%] rounded-full bg-pathway-accent" />
           </span>
         </div>
       </div>

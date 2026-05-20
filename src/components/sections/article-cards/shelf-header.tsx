@@ -33,7 +33,7 @@ export function ShelfHeader({
       )}
     >
       <div className="min-w-0 max-w-[60ch]">
-        <h2 className="text-balance text-[clamp(1.4rem,2.4vw,1.75rem)] leading-snug font-semibold tracking-tight text-foreground">
+        <h2 className="text-balance text-[clamp(1.4rem,2.4vw,1.75rem)] leading-snug tracking-tight text-foreground">
           {title}
         </h2>
         {deck ? (

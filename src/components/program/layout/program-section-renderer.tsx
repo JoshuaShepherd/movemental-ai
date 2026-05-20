@@ -78,7 +78,7 @@ function TableSectionBlock({
   };
 }) {
   return (
-    <section className="overflow-x-auto rounded border border-safestart-hairline bg-white p-4">
+    <section className="overflow-x-auto rounded border border-safestart-hairline bg-card p-4">
       {section.eyebrow ? (
         <p className="font-body text-[10px] font-bold uppercase tracking-widest text-pathway-accent">
           {section.eyebrow}
@@ -131,7 +131,7 @@ function CardLedgerBlock({
       {section.title ? <h2 className="font-headline text-xl italic">{section.title}</h2> : null}
       <div className="grid gap-4 md:grid-cols-2">
         {(section.cards ?? []).map((c, i) => (
-          <div key={i} className="rounded border border-safestart-hairline bg-white p-4">
+          <div key={i} className="rounded border border-safestart-hairline bg-card p-4">
             {c.category ? (
               <p className="font-body text-[10px] font-bold uppercase tracking-widest text-safestart-muted">
                 {c.category}
@@ -165,7 +165,7 @@ function SplitListSectionBlock({
   };
 }) {
   return (
-    <section className="rounded border border-safestart-hairline bg-white p-6">
+    <section className="rounded border border-safestart-hairline bg-card p-6">
       {section.eyebrow ? (
         <p className="font-body text-[10px] font-bold uppercase tracking-widest text-pathway-accent">
           {section.eyebrow}
@@ -242,7 +242,7 @@ function RosterColumnsSectionBlock({
 
 function GenericSection({ section }: { section: Record<string, unknown> }) {
   return (
-    <section className="rounded border border-dashed border-safestart-hairline bg-white/40 p-4">
+    <section className="rounded border border-dashed border-safestart-hairline bg-card/40 p-4">
       <p className="font-mono text-xs text-safestart-muted">Section kind: {String(section.kind)}</p>
     </section>
   );

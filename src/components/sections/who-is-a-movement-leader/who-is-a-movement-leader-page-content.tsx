@@ -228,7 +228,7 @@ export function WhoIsAMovementLeaderPageContent() {
             <div className="mt-8 grid gap-8 sm:grid-cols-2">
               {commonThreads.map((c) => (
                 <div key={c.title}>
-                  <h3 className="font-semibold text-foreground">{c.title}</h3>
+                  <h3 className="font-medium text-foreground">{c.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.text}</p>
                 </div>
               ))}
@@ -253,7 +253,7 @@ export function WhoIsAMovementLeaderPageContent() {
               {marks.map((m) => (
                 <div key={m.num}>
                   <span className="text-sm font-semibold text-muted-foreground">{m.num}</span>
-                  <h3 className="mt-1 text-lg font-semibold text-foreground">{m.title}</h3>
+                  <h3 className="mt-1 text-lg font-medium text-foreground">{m.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.text}</p>
                 </div>
               ))}

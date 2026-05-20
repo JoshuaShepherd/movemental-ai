@@ -376,7 +376,7 @@ export function FragmentationStoryStageActivation({
           <p className="mb-4 text-xs font-medium uppercase tracking-eyebrow text-muted-foreground">
             {ACTIVATION_COPY.eyebrow}
           </p>
-          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h2 className="text-balance text-3xl tracking-tight sm:text-4xl">
             {ACTIVATION_COPY.title}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">

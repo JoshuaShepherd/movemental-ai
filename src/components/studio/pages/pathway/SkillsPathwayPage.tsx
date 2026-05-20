@@ -284,7 +284,7 @@ export function SkillsPathwayPage() {
                   <span className="text-[0.62rem] font-semibold uppercase tracking-eyebrow text-pathway-accent">
                     {c.num}
                   </span>
-                  <h3 className="text-lg font-semibold text-foreground">{c.title}</h3>
+                  <h3 className="text-lg font-medium text-foreground">{c.title}</h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">{c.body}</p>
                 </div>
               ))}

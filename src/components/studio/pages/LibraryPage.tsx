@@ -247,7 +247,7 @@ export function LibraryPage() {
                       </div>
                       <div className="p-6 flex flex-col flex-grow">
                         <div className="text-xs text-muted-foreground mb-3">{item.date}</div>
-                        <h3 className="font-semibold text-lg text-foreground mb-4 leading-snug group-hover:text-primary transition-colors">{item.title}</h3>
+                        <h3 className="font-medium text-lg text-foreground mb-4 leading-snug group-hover:text-primary transition-colors">{item.title}</h3>
                         <div className="mt-auto flex items-center justify-between">
                           <div className="flex items-center gap-2 text-xs font-medium text-foreground/70 uppercase tracking-wider">
                             {item.type === 'Article' && <FileText className="w-3.5 h-3.5" />}
@@ -296,12 +296,12 @@ export function LibraryPage() {
       <section className="mt-24 pt-24 border-t border-border">
         <Container>
           <Reveal>
-            <div className="bg-band-midnight text-inverse-foreground rounded-2xl p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 max-w-5xl mx-auto overflow-hidden relative">
+            <div className="bg-inverse-surface text-inverse-foreground rounded-2xl p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 max-w-5xl mx-auto overflow-hidden relative">
                <div className="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4 opacity-10">
                  <BookOpen className="w-96 h-96" />
                </div>
                <div className="flex-1 relative z-10">
-                  <div className="flex items-center gap-2 text-primary font-semibold uppercase tracking-eyebrow text-xs mb-4">
+                  <div className="flex items-center gap-2 text-pathway-accent font-semibold uppercase tracking-eyebrow text-xs mb-4">
                     <BookOpen className="w-4 h-4" /> Comprehensive Guide
                   </div>
                   <h2 className="font-serif-display italic text-3xl md:text-5xl mb-6">Building trusted AI in mission-driven organizations</h2>
@@ -311,7 +311,7 @@ export function LibraryPage() {
                   <button className="btn-pill btn-pill--primary">Download the Guide</button>
                </div>
                <div className="w-full md:w-1/3 aspect-[3/4] bg-inverse-surface/50 border border-inverse-border/30 rounded-lg flex items-center justify-center p-8 relative z-10 backdrop-blur-sm">
-                 <Shield className="w-32 h-32 text-primary opacity-80" strokeWidth={1} />
+                 <Shield className="w-32 h-32 text-pathway-accent opacity-80" strokeWidth={1} />
                </div>
             </div>
           </Reveal>

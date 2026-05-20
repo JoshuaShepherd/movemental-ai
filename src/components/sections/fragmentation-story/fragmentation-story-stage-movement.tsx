@@ -176,8 +176,8 @@ function Legend({ nodes }: { nodes: NodeView[] }) {
             className={cn(
               "inline-block size-2.5 rounded-full",
               n.kind === "primary"
-                ? "bg-primary"
-                : "border-2 border-primary bg-inverse-foreground/10"
+                ? "bg-inverse-foreground"
+                : "border-2 border-inverse-foreground bg-inverse-foreground/10"
             )}
             aria-hidden
           />
@@ -278,7 +278,7 @@ export function FragmentationStoryStageMovement({
           <p className="mb-4 text-xs font-medium uppercase tracking-eyebrow text-inverse-foreground/60">
             {copy.eyebrow}
           </p>
-          <h2 className="text-balance text-3xl font-semibold tracking-tight text-inverse-foreground sm:text-4xl">
+          <h2 className="text-balance text-3xl tracking-tight text-inverse-foreground sm:text-4xl">
             {copy.title}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-inverse-foreground/75">

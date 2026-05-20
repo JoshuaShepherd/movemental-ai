@@ -154,27 +154,27 @@ export function StartWithSafetyPage() {
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                <div className="bg-card p-6 border-t-[3px] border-primary rounded-b-lg">
-                  <h4 className="font-semibold text-foreground mb-2">Contextualized Acceptable Use Policy</h4>
+                  <h4 className="font-medium text-foreground mb-2">Contextualized Acceptable Use Policy</h4>
                   <p className="text-sm text-muted-foreground">Not a generic template, but a policy mapped to your specific organizational friction points.</p>
                </div>
                <div className="bg-card p-6 border-t-[3px] border-primary rounded-b-lg">
-                  <h4 className="font-semibold text-foreground mb-2">Executive Alignment</h4>
+                  <h4 className="font-medium text-foreground mb-2">Executive Alignment</h4>
                   <p className="text-sm text-muted-foreground">The senior team leaves with a shared vocabulary and a unified, defensible posture.</p>
                </div>
                <div className="bg-card p-6 border-t-[3px] border-primary rounded-b-lg">
-                  <h4 className="font-semibold text-foreground mb-2">Data Classification Matrix</h4>
+                  <h4 className="font-medium text-foreground mb-2">Data Classification Matrix</h4>
                   <p className="text-sm text-muted-foreground">A clear mapping of what data requires complete isolation and what is safe for general tools.</p>
                </div>
                <div className="bg-card p-6 border-t-[3px] border-primary rounded-b-lg">
-                  <h4 className="font-semibold text-foreground mb-2">Theological/Missional Rubric</h4>
+                  <h4 className="font-medium text-foreground mb-2">Theological/Missional Rubric</h4>
                   <p className="text-sm text-muted-foreground">A framework for evaluating future tools against your core beliefs.</p>
                </div>
                <div className="bg-card p-6 border-t-[3px] border-primary rounded-b-lg">
-                  <h4 className="font-semibold text-foreground mb-2">Approved Vendor List</h4>
+                  <h4 className="font-medium text-foreground mb-2">Approved Vendor List</h4>
                   <p className="text-sm text-muted-foreground">Initial clearance of tools that meet enterprise data privacy standards.</p>
                </div>
                <div className="bg-card p-6 border-t-[3px] border-primary rounded-b-lg">
-                  <h4 className="font-semibold text-foreground mb-2">Communication Brief</h4>
+                  <h4 className="font-medium text-foreground mb-2">Communication Brief</h4>
                   <p className="text-sm text-muted-foreground">Language to communicate your AI posture clearly to your board, staff, and community.</p>
                </div>
             </div>

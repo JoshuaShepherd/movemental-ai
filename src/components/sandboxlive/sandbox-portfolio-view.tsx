@@ -52,7 +52,7 @@ function formatFlagLogText(
 
 function SkillTitle({ parts }: { parts: SandboxPortfolioTitlePart[] }) {
   return (
-    <h3 className="m-0 text-[1.1rem] font-semibold leading-snug tracking-tight text-foreground">
+    <h3 className="m-0 text-[1.1rem] font-medium leading-snug tracking-tight text-foreground">
       {parts.map((p, i) =>
         typeof p === "string" ? (
           <Fragment key={i}>{p}</Fragment>
@@ -132,7 +132,7 @@ function DiscernmentColumn({
     >
       <header className={cn("border-b px-4 py-3", meta.headerBorder)}>
         <p className={cn("text-[11px] font-medium uppercase tracking-[0.09em]", meta.eyebrowClass)}>{meta.eyebrow}</p>
-        <h3 className="mt-1 text-base font-semibold text-foreground">{title}</h3>
+        <h3 className="mt-1 text-base font-medium text-foreground">{title}</h3>
         <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
           {column === "deploy" && "Clear human benefit; data posture approved."}
           {column === "modify" && "Real benefit; needs guardrails or narrower scope."}
@@ -411,7 +411,7 @@ export function SandboxPortfolioView() {
           <div className="flex items-start justify-between gap-3 lg:block">
             <div className="mb-8">
               <p className="text-[10.5px] font-medium uppercase tracking-[0.09em] text-muted-foreground">Companion app</p>
-              <h1 className="mt-2 text-[15px] font-semibold leading-snug tracking-tight text-foreground">
+              <h1 className="mt-2 text-[15px] font-medium leading-snug tracking-tight text-foreground">
                 Sandbox <span className="font-serif text-[1.05em] font-medium italic">Portfolio</span>
               </h1>
             </div>
@@ -494,7 +494,7 @@ export function SandboxPortfolioView() {
                 <p className="text-[11px] font-medium uppercase tracking-[0.09em] text-muted-foreground">
                   Discovery · Sourced from Movemental
                 </p>
-                <h2 className="mt-3 text-[clamp(1.65rem,3.5vw,2.5rem)] font-semibold leading-[1.1] tracking-tight text-foreground">
+                <h2 className="mt-3 text-[clamp(1.65rem,3.5vw,2.5rem)] leading-[1.1] tracking-tight text-foreground">
                   Organizational <span className="font-serif font-medium italic">Skills</span> Library
                 </h2>
               </header>
@@ -590,7 +590,7 @@ export function SandboxPortfolioView() {
                 <p className="text-[11px] font-medium uppercase tracking-[0.09em] text-muted-foreground">
                   The lab & logging
                 </p>
-                <h2 className="mt-3 text-[clamp(1.65rem,3.5vw,2.5rem)] font-semibold leading-[1.1] tracking-tight text-foreground">
+                <h2 className="mt-3 text-[clamp(1.65rem,3.5vw,2.5rem)] leading-[1.1] tracking-tight text-foreground">
                   Log a Sandbox Experiment
                 </h2>
                 <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
@@ -726,7 +726,7 @@ export function SandboxPortfolioView() {
             <header className="border-b border-border bg-inverse-surface px-4 py-10 text-inverse-foreground sm:px-8 lg:px-10">
               <div className="mx-auto max-w-[1100px]">
                 <p className="text-[11px] font-medium uppercase tracking-[0.09em] text-inverse-muted">Governance</p>
-                <h2 className="mt-3 text-[clamp(1.65rem,3.5vw,2.5rem)] font-semibold leading-[1.1] tracking-tight text-inverse-foreground">
+                <h2 className="mt-3 text-[clamp(1.65rem,3.5vw,2.5rem)] leading-[1.1] tracking-tight text-inverse-foreground">
                   Discernment{" "}
                   <span className="font-serif text-[1.05em] font-medium italic text-inverse-foreground">Dashboard</span>
                 </h2>
@@ -816,7 +816,7 @@ export function SandboxPortfolioView() {
         }}
       >
         <div className="w-full max-w-md rounded-card border border-border bg-card p-6 shadow-ambient">
-          <h2 id="sandbox-portfolio-modal-title" className="text-lg font-semibold text-foreground">
+          <h2 id="sandbox-portfolio-modal-title" className="text-lg font-medium text-foreground">
             Skill package ready
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{downloadModal.body}</p>

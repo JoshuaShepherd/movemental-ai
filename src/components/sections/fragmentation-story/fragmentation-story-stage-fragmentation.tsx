@@ -254,7 +254,7 @@ function PhaseDots({ current }: { current: ArtifactPhase | 0 }) {
           key={p}
           className={cn(
             "block size-1.5 rounded-full transition-colors duration-300",
-            current >= p ? "bg-primary" : "bg-inverse-foreground/20"
+            current >= p ? "bg-inverse-foreground" : "bg-inverse-foreground/20"
           )}
         />
       ))}

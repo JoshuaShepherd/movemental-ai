@@ -42,7 +42,7 @@ export function HomeCta() {
             </Button>
             <Link
               href="/contact"
-              className="text-sm font-semibold uppercase tracking-eyebrow text-inverse-foreground/70 underline-offset-4 hover:text-inverse-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="text-sm font-semibold uppercase tracking-eyebrow text-inverse-foreground/70 underline-offset-4 hover:text-inverse-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inverse-foreground"
             >
               Talk to us
             </Link>

@@ -58,7 +58,7 @@ export function CredibilityFold() {
                     />
                   </div>
                   <div className="flex min-w-0 flex-col gap-1 pt-1">
-                    <h3 className="text-base font-semibold tracking-tight text-foreground underline decoration-transparent decoration-2 underline-offset-4 transition-colors group-hover:decoration-primary/40">
+                    <h3 className="text-base font-medium tracking-tight text-foreground underline decoration-transparent decoration-2 underline-offset-4 transition-colors group-hover:decoration-primary/40">
                       {founder.name}
                     </h3>
                     <p className="text-sm leading-relaxed text-muted-foreground">

@@ -202,7 +202,7 @@ export function PathwayOverviewPage() {
                   <div className="absolute top-0 right-0 p-4">
                     <span className="bg-primary text-primary-foreground text-xs font-bold uppercase tracking-eyebrow py-1 px-3 rounded-full">The Bundle</span>
                   </div>
-                  <h3 className="font-semibold text-xl text-foreground mb-4">Bundled Commitment Offer</h3>
+                  <h3 className="font-medium text-xl text-foreground mb-4">Bundled Commitment Offer</h3>
                   <p className="text-muted-foreground leading-relaxed text-[1.0625rem] mb-6">
                     Commit to the full Movemental Path upfront and engage all four stages under a single agreement.
                   </p>

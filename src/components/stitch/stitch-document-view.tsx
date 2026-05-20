@@ -93,9 +93,9 @@ export function StitchDocumentView({
             >
               <p className="font-medium text-safestart-ink">No sections in this template fixture yet.</p>
               <p className="mt-2 leading-relaxed">
-                The route is valid, but <code className="rounded bg-white/80 px-1 text-xs">{fixture.templateId}</code>{" "}
-                has no <code className="rounded bg-white/80 px-1 text-xs">sections</code> array. Add fixture content
-                under <code className="rounded bg-white/80 px-1 text-xs">src/lib/program/fixtures/</code> or report a
+                The route is valid, but <code className="rounded bg-card/80 px-1 text-xs">{fixture.templateId}</code>{" "}
+                has no <code className="rounded bg-card/80 px-1 text-xs">sections</code> array. Add fixture content
+                under <code className="rounded bg-card/80 px-1 text-xs">src/lib/program/fixtures/</code> or report a
                 migration gap to Movemental.
               </p>
             </section>

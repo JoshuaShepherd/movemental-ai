@@ -119,9 +119,9 @@ export function FragmentationStoryDock({
                 aria-selected={active}
                 className={cn(
                   "inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium transition-colors",
-                  "focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-inverse-surface focus-visible:outline-none",
+                  "focus-visible:ring-2 focus-visible:ring-inverse-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-inverse-surface focus-visible:outline-none",
                   active
-                    ? "bg-inverse-foreground/10 text-inverse-foreground ring-1 ring-primary/45"
+                    ? "bg-inverse-foreground/10 text-inverse-foreground ring-1 ring-inverse-foreground/45"
                     : "text-inverse-foreground/80 hover:bg-inverse-foreground/10"
                 )}
                 onClick={() => onAudienceChange(id)}
@@ -159,7 +159,7 @@ export function FragmentationStoryDock({
                   aria-pressed={active}
                   className={cn(
                     "inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 py-2.5 text-xs font-medium uppercase tracking-eyebrow transition-colors",
-                    "focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none",
+                    "focus-visible:ring-2 focus-visible:ring-inverse-foreground focus-visible:outline-none",
                     active
                       ? "bg-inverse-foreground/12 text-inverse-foreground"
                       : "text-inverse-foreground/60 hover:text-inverse-foreground"

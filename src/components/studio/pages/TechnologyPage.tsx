@@ -199,7 +199,7 @@ export function TechnologyPage() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-semibold mb-3">{cap.title}</h3>
+                    <h3 className="text-2xl mb-3">{cap.title}</h3>
                     <p className="text-[1.0625rem] leading-relaxed text-muted-foreground mb-4">{cap.desc}</p>
                     <button className="text-sm font-semibold uppercase tracking-eyebrow text-primary hover:text-primary/80 transition-colors inline-flex items-center">Watch the walkthrough <Play className="w-3 h-3 ml-1 fill-current" /></button>
                   </div>
@@ -228,7 +228,7 @@ export function TechnologyPage() {
                     screenshot_alanhirsch.webp
                   </div>
                 </div>
-                <h3 className="font-semibold text-xl mb-2 text-foreground group-hover:text-primary transition-colors">alanhirsch.com</h3>
+                <h3 className="font-medium text-xl mb-2 text-foreground group-hover:text-primary transition-colors">alanhirsch.com</h3>
                 <p className="text-muted-foreground mb-3">The flagship build. Custom dashboard, full Content Library, AI Lab, integrated Pathways, course delivery, and CMS. Active and in daily use.</p>
                 <span className="text-sm font-medium text-primary flex items-center">Visit live <ArrowUpRight className="w-3 h-3 ml-1" /></span>
                 <p className="text-xs text-muted-foreground italic mt-2">This is a live, active platform — not a sandbox demo.</p>

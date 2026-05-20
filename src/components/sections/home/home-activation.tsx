@@ -77,7 +77,7 @@ function WorkspaceMock() {
           </div>
         </div>
         <div className="rounded-(--radius-md) bg-inverse-foreground/5 p-4">
-          <p className="text-[0.65rem] font-semibold uppercase tracking-eyebrow text-primary">
+          <p className="text-[0.65rem] font-semibold uppercase tracking-eyebrow text-pathway-accent">
             Answer &middot; grounded
           </p>
           <p className="mt-3 text-sm leading-relaxed text-inverse-foreground/90">
@@ -107,7 +107,7 @@ function ResultRow({
     <div
       className={
         highlight
-          ? "rounded-(--radius-sm) bg-primary/15 px-3 py-2 ring-1 ring-primary"
+          ? "rounded-(--radius-sm) bg-inverse-foreground/15 px-3 py-2 ring-1 ring-inverse-foreground"
           : "rounded-(--radius-sm) bg-inverse-foreground/5 px-3 py-2"
       }
     >

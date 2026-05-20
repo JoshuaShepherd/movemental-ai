@@ -404,7 +404,7 @@ export function SegmentPathway({ audience }: SegmentPathwayProps) {
                   key={i}
                   className="bg-card border-border hover:border-primary/40 flex flex-col rounded-card border p-8 transition-colors"
                 >
-                  <h2 className="mb-4 text-lg font-semibold leading-snug text-foreground md:text-xl">
+                  <h2 className="mb-4 text-lg font-medium leading-snug text-foreground md:text-xl">
                     {card.heading}
                   </h2>
                   <p className="text-muted-foreground mb-6 grow text-[1.0625rem] leading-relaxed">{card.body}</p>
@@ -586,7 +586,7 @@ export function SegmentPathway({ audience }: SegmentPathwayProps) {
 
             {audience === "institutions" ? (
               <div className="border-primary/20 bg-primary/5 mt-12 max-w-4xl rounded-card border p-8">
-                <h3 className="mb-3 text-xl font-semibold text-foreground">Network Engagements</h3>
+                <h3 className="mb-3 text-xl font-medium text-foreground">Network Engagements</h3>
                 <p className="text-primary/90 mb-6 text-[1.0625rem] leading-relaxed">
                   For denominations, training networks, and multi-site organizations, Solutions extends across entities —
                   shared governance, linked platforms, federated intelligence. These engagements are quoted per

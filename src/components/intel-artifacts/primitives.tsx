@@ -374,7 +374,7 @@ export function IvPlayGlyph({
         className,
       )}
     >
-      <svg viewBox="0 0 12 12" className="size-1/2 fill-primary" aria-hidden>
+      <svg viewBox="0 0 12 12" className="size-1/2 fill-inverse-foreground" aria-hidden>
         <path d="M3 2l7 4-7 4z" />
       </svg>
     </span>

@@ -53,7 +53,7 @@ export function LeaderOnboardingShell({
   return (
     <div className="mx-auto max-w-prose">
       <Eyebrow>Leader onboarding</Eyebrow>
-      <h1 className="mt-2 text-2xl font-semibold tracking-[-0.02em] text-foreground">{title}</h1>
+      <h1 className="mt-2 text-2xl tracking-[-0.02em] text-foreground">{title}</h1>
       <p className="mt-3 text-muted-foreground">{description}</p>
       <p className="mt-2 text-sm text-muted-foreground">Estimated time: {estimatedMinutes} minutes</p>
       {children ? <div className="mt-8">{children}</div> : null}

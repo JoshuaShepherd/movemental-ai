@@ -108,7 +108,7 @@ export async function ChapterReaderPageContent({ params, searchParams }: Chapter
             <p className="mb-2 text-sm font-medium text-muted-foreground">
               {chapterLabel(chapter)} &middot; {readMeta}
             </p>
-            <h1 className="text-3xl font-semibold leading-tight tracking-[-0.02em] text-foreground sm:text-4xl lg:text-5xl">
+            <h1 className="text-3xl leading-tight tracking-[-0.02em] text-foreground sm:text-4xl lg:text-5xl">
               {chapter.title}
             </h1>
 

@@ -96,14 +96,14 @@ export function HighlightShare() {
       <button
         type="button"
         onClick={copyQuote}
-        className="rounded-md px-3 py-1.5 text-xs font-medium text-inverse-foreground hover:bg-inverse-foreground/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        className="rounded-md px-3 py-1.5 text-xs font-medium text-inverse-foreground hover:bg-inverse-foreground/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inverse-foreground"
       >
         Copy quote
       </button>
       <button
         type="button"
         onClick={sharePassage}
-        className="flex items-center gap-1 rounded-md px-3 py-1.5 text-xs font-medium text-inverse-foreground hover:bg-inverse-foreground/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        className="flex items-center gap-1 rounded-md px-3 py-1.5 text-xs font-medium text-inverse-foreground hover:bg-inverse-foreground/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inverse-foreground"
       >
         <Link2 className="h-3 w-3" aria-hidden />
         Share
