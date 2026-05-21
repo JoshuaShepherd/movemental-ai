@@ -134,7 +134,7 @@ export function SafetyNewPage() {
             </p>
             <div className="flex flex-wrap items-center gap-5">
               <Link
-                href="/field-guides/safety-new"
+                href="/field-guides/safety"
                 className="btn-pill btn-pill--primary"
               >
                 Get the Field Guide
@@ -462,7 +462,7 @@ export function SafetyNewPage() {
             </h2>
             <div className="flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:gap-5">
               <Link
-                href="/field-guides/safety-new"
+                href="/field-guides/safety"
                 className="btn-pill btn-pill--primary"
               >
                 Get the Field Guide

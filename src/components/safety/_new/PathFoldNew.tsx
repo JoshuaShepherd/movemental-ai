@@ -7,7 +7,7 @@ import { Cite } from "@/components/citations";
  *
  * Sibling of `src/components/sections-mock/home/path-fold.tsx`. Identical to
  * the original in every respect EXCEPT the Stage 01 (Safety) CTA hrefs, which
- * point at `/pathway/safety-new` instead of `/pathway/safety` so the new
+ * point at `/pathway/safety` instead of `/pathway/safety` so the new
  * canonical Safety stage page receives traffic from the new home page. All
  * other stages (Sandbox / Skills / Solutions), all copy, all layout, and all
  * subcomponents stay verbatim — this file exists purely to honour the
@@ -69,13 +69,13 @@ export function PathFoldNew() {
             </p>
             <div className="mt-auto">
               <Link
-                href="/pathway/safety-new"
+                href="/pathway/safety"
                 className="mb-6 inline-block w-full bg-foreground px-8 py-4 text-center text-sm font-medium uppercase tracking-eyebrow text-background transition-colors duration-200 hover:bg-primary-dim"
               >
                 Begin with Safety
               </Link>
               <Link
-                href="/pathway/safety-new"
+                href="/pathway/safety"
                 className="text-sm text-foreground hover:underline"
               >
                 Read more &rarr;

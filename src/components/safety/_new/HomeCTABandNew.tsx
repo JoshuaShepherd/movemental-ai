@@ -40,7 +40,7 @@ export function HomeCTABandNew() {
           before you build anything else.
         </p>
         <div className="hero-actions final-cta__actions mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
-          <BtnPill href="/field-guides/safety-new" variant="primary">
+          <BtnPill href="/field-guides/safety" variant="primary">
             Get the Field Guide
           </BtnPill>
           <BtnPill href="/contact?interest=safestart" variant="ghost">

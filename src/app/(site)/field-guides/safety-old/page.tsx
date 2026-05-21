@@ -1,47 +1,43 @@
 import type { Metadata } from "next";
 
-import { FieldGuideSafetyNewLanding } from "@/components/safety/_new/FieldGuideSafetyNewLanding";
+import { FieldGuideSafetyLanding } from "@/components/field-guide/field-guide-safety-landing";
 import { getFieldGuide } from "@/lib/field-guide";
 import { SAFETY_FIELD_GUIDE_COVER_IMAGE } from "@/lib/safety-field-guide";
 import { canonicalPageUrl } from "@/lib/site-url";
 
 const SLUG = "it-starts-with-safety";
-const PATH = "/field-guides/safety-new";
 
 const guide = getFieldGuide(SLUG);
 
-const TITLE = "Field Guide: It Starts With Safety — Movemental";
-const DESCRIPTION =
-  "Free 33-page field guide for senior leaders. Five layers, ratifiable by your board, walkable in one to two months.";
-
-const ogTitle = TITLE;
+const ogTitle = `${guide.title} — Movemental Field Guide`;
 
 export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
-  alternates: { canonical: canonicalPageUrl(PATH) },
+  title: `${guide.title} (archived)`,
+  description: guide.description,
+  alternates: { canonical: canonicalPageUrl("/field-guides/safety") },
+  robots: { index: false, follow: false },
   openGraph: {
     type: "article",
-    url: canonicalPageUrl(PATH),
+    url: canonicalPageUrl("/field-guides/safety"),
     title: ogTitle,
-    description: DESCRIPTION,
+    description: guide.description,
     authors: guide.authors,
     images: [{ url: SAFETY_FIELD_GUIDE_COVER_IMAGE, width: 1600, height: 873, alt: ogTitle }],
   },
   twitter: {
     card: "summary_large_image",
     title: ogTitle,
-    description: DESCRIPTION,
+    description: guide.description,
     images: [SAFETY_FIELD_GUIDE_COVER_IMAGE],
   },
 };
 
-export default function FieldGuideSafetyNewPage() {
+export default function FieldGuideSafetyPage() {
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: `${guide.title}: ${guide.subtitle}`,
-    description: DESCRIPTION,
+    description: guide.description,
     author: guide.authors.map((name) => ({ "@type": "Person", name })),
     publisher: {
       "@type": "Organization",
@@ -52,16 +48,13 @@ export default function FieldGuideSafetyNewPage() {
     dateModified: guide.date,
     inLanguage: "en-US",
     image: canonicalPageUrl(SAFETY_FIELD_GUIDE_COVER_IMAGE),
-    mainEntityOfPage: { "@type": "WebPage", "@id": canonicalPageUrl(PATH) },
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonicalPageUrl("/field-guides/safety") },
   };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
-      <FieldGuideSafetyNewLanding />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <FieldGuideSafetyLanding />
     </>
   );
 }

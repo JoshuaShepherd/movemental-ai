@@ -151,7 +151,7 @@ export function TwoPathsTable() {
 
       {/* CTAs below */}
       <div className="mt-10 flex flex-col flex-wrap items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
-        <Link href="/field-guides/safety-new" className="btn-pill btn-pill--primary">
+        <Link href="/field-guides/safety" className="btn-pill btn-pill--primary">
           Get the Field Guide (SafeGuide)
         </Link>
         <Link

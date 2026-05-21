@@ -230,3 +230,83 @@ Applied the seven fixes listed in `docs/_new/qa-report.md` (verdict: Ready with 
 - Nav "Field Guide" CTA in `site-header.tsx` (global chrome).
 - "Seven deliverables" / count framing in the rest of the live site (`/pathway/safety`, `/field-guides/safety`, `/start-with-safety`).
 - "SafeGuide" public-facing naming question (current `-new` set uses the asymmetric convention: "the Field Guide" for the self-directed path, "SafeStart" for facilitated).
+
+---
+
+## 2026-05-21 — Migration: `-new` promoted to canonical, existing pages archived to `-old`
+
+**Type:** chore (migration)
+**Scope:** marketing, Safety stage routes
+**Status:** complete, typecheck clean
+
+### Summary
+
+Promoted the three `-new` pages to their canonical URLs. The three previously-live pages are archived (not deleted) at `-old` routes and marked `noindex`. The empty `-new/` directories were removed. All internal `-new` suffix links inside the now-canonical content were stripped so the promoted pages have clean cross-links.
+
+### Route changes
+
+| Was | Now (canonical, live) | Archived at |
+| --- | --- | --- |
+| `/` (old home) → moved to `/home-old` | `/` ← promoted from `/home-new` | `/home-old` (noindex) |
+| `/pathway/safety` (old) → moved to `/pathway/safety-old` | `/pathway/safety` ← promoted from `/pathway/safety-new` | `/pathway/safety-old` (noindex) |
+| `/field-guides/safety` (old) → moved to `/field-guides/safety-old` | `/field-guides/safety` ← promoted from `/field-guides/safety-new` | `/field-guides/safety-old` (noindex) |
+
+The `-new` route segments (`/home-new`, `/pathway/safety-new`, `/field-guides/safety-new`) no longer exist — their `page.tsx` files were moved to the canonical paths and the empty directories were removed.
+
+### File moves
+
+Tracked → archived (via `git mv`, so rename history is preserved):
+
+- `src/app/(site)/page.tsx` → `src/app/(site)/home-old/page.tsx`
+- `src/app/(site)/pathway/safety/page.tsx` → `src/app/(site)/pathway/safety-old/page.tsx`
+- `src/app/(site)/field-guides/safety/page.tsx` → `src/app/(site)/field-guides/safety-old/page.tsx`
+
+Untracked (new) → promoted to canonical:
+
+- `src/app/(site)/home-new/page.tsx` → `src/app/(site)/page.tsx`
+- `src/app/(site)/pathway/safety-new/page.tsx` → `src/app/(site)/pathway/safety/page.tsx`
+- `src/app/(site)/field-guides/safety-new/page.tsx` → `src/app/(site)/field-guides/safety/page.tsx`
+
+Components remain at `src/components/safety/_new/`. The directory name is now historical-only; the user can rename it as a follow-up cleanup if desired.
+
+### Link & metadata updates
+
+- Canonical / Open Graph URLs in the promoted pages dropped their `-new` suffixes.
+- `FieldGuideSafetyPage` default-export name reverted from `FieldGuideSafetyNewPage`.
+- All `href="/field-guides/safety-new"` and `href="/pathway/safety-new#safestart"` references inside `_new/` components were stripped to `/field-guides/safety` and `/pathway/safety#safestart`. Affected: `HomeCTABandNew`, `TwoPathsTable`, `SafetyNewPage`, `FieldGuideSafetyNewLanding`, `FiveLayerRead`, `PathFoldNew`.
+- Analytics `source` strings on the field-guide lead-capture form were merged into the existing convention: `field-guide-safety-new-hero` → `field-guide-safety-hero`, `field-guide-safety-new-footer` → `field-guide-safety-footer`. Safe to merge because the archived `-old` field-guide page is `noindex` and won't generate competing leads.
+
+### Archive page hardening
+
+Each `-old/page.tsx` had its metadata updated:
+
+- `title` suffixed with `(archived)` so it's obvious if the page is ever opened directly.
+- `robots: { index: false, follow: false }` added so search engines won't index the archives or follow their links.
+- Canonical URL on `-old` pages still points at the canonical (non-`-old`) URL so any inbound traffic gets the canonical signal.
+
+### Carry-overs from the rebuild (still pending, deliberately not touched in this migration)
+
+- **Global nav** (`src/components/nav/site-header.tsx`) — the "Field Guide" CTA href is hardcoded to `/field-guides/safety`. Since the canonical content there is now the new lean landing, this link is already pointing at the right destination. No change needed.
+- **Global footer** (`src/components/nav/site-footer.tsx`) — the "Read the field guide" link is similarly hardcoded to a canonical URL. Auto-resolved by the migration.
+- **`/start-with-safety`** — still live with the non-canonical taxonomy. Brief's migration plan recommended a 301 redirect from `/start-with-safety` → `/pathway/safety`. **Not done in this migration** — flagged for separate decision.
+- **Component directory naming** — `src/components/safety/_new/` is still named `_new/`. Working as-is; rename is a follow-up cleanup if desired.
+- **JSDoc comments** inside the `_new/` components still describe the components as belonging to `/home-new` / `/field-guides/safety-new` etc. Historical context only — not user-facing, not active links. Left as-is.
+
+### Verification
+
+- `pnpm typecheck`: clean.
+- `grep -rn "safety-new\|home-new" src/` shows only JSDoc comment residue (no live URL refs).
+- Sitemap (`src/app/sitemap.ts`) lists `/pathway/safety`, `/field-guides/safety`, `/start-with-safety` — these URLs all resolve correctly; no sitemap change needed.
+- Robots: `-old` routes are not in the sitemap and carry `noindex`, so they're effectively private archives.
+
+### Rollback
+
+If something is wrong with the promoted content, the migration is reversible:
+
+```sh
+git mv src/app/\(site\)/home-old/page.tsx src/app/\(site\)/page.tsx
+git mv src/app/\(site\)/pathway/safety-old/page.tsx src/app/\(site\)/pathway/safety/page.tsx
+git mv src/app/\(site\)/field-guides/safety-old/page.tsx src/app/\(site\)/field-guides/safety/page.tsx
+```
+
+…then move the new content back to `-new/` paths and revert link-stripping edits. Git history makes this clean.

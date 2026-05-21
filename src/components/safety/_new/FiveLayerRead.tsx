@@ -817,13 +817,13 @@ function ResultsView({ answers, onReset }: ResultsViewProps) {
       {/* CTAs */}
       <div className="mt-10 flex flex-col flex-wrap items-start gap-3 sm:flex-row sm:items-center sm:gap-4">
         <Link
-          href="/field-guides/safety-new"
+          href="/field-guides/safety"
           className="btn-pill btn-pill--primary"
         >
           Read the Field Guide
         </Link>
         <Link
-          href="/pathway/safety-new#safestart"
+          href="/pathway/safety#safestart"
           className="btn-pill btn-pill--ghost"
         >
           Talk about SafeStart

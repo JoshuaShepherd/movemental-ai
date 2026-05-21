@@ -66,7 +66,7 @@ export function FieldGuideSafetyNewLanding() {
             <MetaPills />
             {/* fieldGuide defaults to "safety" on the API; the form doesn't accept it as a prop. */}
             <ToolkitDownloadForm
-              source="field-guide-safety-new-hero"
+              source="field-guide-safety-hero"
               variant="page"
               layout="stacked"
               emailLabel="Email Address"
@@ -106,7 +106,7 @@ export function FieldGuideSafetyNewLanding() {
               facilitation, that&rsquo;s SafeStart&nbsp;&mdash; $1,000, two weeks, drafted with you inside a
               dashboard. The page about that is{" "}
               <Link
-                href="/pathway/safety-new#safestart"
+                href="/pathway/safety#safestart"
                 className="text-foreground underline-offset-4 hover:underline"
               >
                 here
@@ -161,7 +161,7 @@ export function FieldGuideSafetyNewLanding() {
             {/* Cream tile wraps the form so it retains native styling on the midnight band. */}
             <div className="w-full max-w-xl bg-card p-8 text-left shadow-ambient">
               <ToolkitDownloadForm
-                source="field-guide-safety-new-footer"
+                source="field-guide-safety-footer"
                 variant="page"
                 layout="stacked"
                 emailLabel="Email Address"
