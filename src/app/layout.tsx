@@ -84,7 +84,7 @@ export default async function RootLayout({
               authMobileCta={<SiteHeaderCta variant="mobile" />}
             />
           ) : null}
-          <main id="main" className="flex flex-1 flex-col">
+          <main id="main" className="flex min-w-0 flex-1 flex-col">
             {children}
           </main>
           {!hideMarketingChrome ? <SiteFooter /> : null}

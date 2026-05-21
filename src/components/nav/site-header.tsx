@@ -248,7 +248,7 @@ export function SiteHeader({
 
         <button
           type="button"
-          className="rounded-md p-2 transition-colors hover:bg-section focus:outline-none focus-visible:ring-2 focus-visible:ring-primary lg:hidden"
+          className="inline-flex size-11 min-h-11 min-w-11 shrink-0 items-center justify-center rounded-md transition-colors hover:bg-section focus:outline-none focus-visible:ring-2 focus-visible:ring-primary lg:hidden"
           aria-expanded={isMenuOpen}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -269,7 +269,7 @@ export function SiteHeader({
           <Link
             href="/pathway"
             onClick={() => setIsMenuOpen(false)}
-            className="rounded-md p-2 text-lg font-medium transition-colors hover:bg-section"
+            className="flex min-h-11 items-center rounded-md px-2 text-lg font-medium transition-colors hover:bg-section"
           >
             Movemental Path
           </Link>
@@ -281,7 +281,7 @@ export function SiteHeader({
               href="/pathway/safety"
               onClick={() => setIsMenuOpen(false)}
               className={cn(
-                "rounded-md p-2 text-[1.0625rem] font-medium transition-colors hover:bg-section",
+                "flex min-h-11 items-center rounded-md px-2 text-[1.0625rem] font-medium transition-colors hover:bg-section",
                 pathname.startsWith("/pathway/safety") && "bg-section",
               )}
             >
@@ -291,7 +291,7 @@ export function SiteHeader({
               href="/pathway/sandbox"
               onClick={() => setIsMenuOpen(false)}
               className={cn(
-                "rounded-md p-2 text-[1.0625rem] font-medium transition-colors hover:bg-section",
+                "flex min-h-11 items-center rounded-md px-2 text-[1.0625rem] font-medium transition-colors hover:bg-section",
                 pathname.startsWith("/pathway/sandbox") && "bg-section",
               )}
             >
@@ -303,14 +303,14 @@ export function SiteHeader({
             <Link
               href="/pathway/skills"
               onClick={() => setIsMenuOpen(false)}
-              className="rounded-md p-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
+              className="flex min-h-11 items-center rounded-md px-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
             >
               Skills
             </Link>
             <Link
               href="/pathway/solutions"
               onClick={() => setIsMenuOpen(false)}
-              className="rounded-md p-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
+              className="flex min-h-11 items-center rounded-md px-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
             >
               Solutions
             </Link>
@@ -322,21 +322,21 @@ export function SiteHeader({
             <Link
               href="/churches"
               onClick={() => setIsMenuOpen(false)}
-              className="rounded-md p-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
+              className="flex min-h-11 items-center rounded-md px-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
             >
               For Churches
             </Link>
             <Link
               href="/nonprofits"
               onClick={() => setIsMenuOpen(false)}
-              className="rounded-md p-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
+              className="flex min-h-11 items-center rounded-md px-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
             >
               For Nonprofits
             </Link>
             <Link
               href="/institutions"
               onClick={() => setIsMenuOpen(false)}
-              className="rounded-md p-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
+              className="flex min-h-11 items-center rounded-md px-2 text-[1.0625rem] font-medium transition-colors hover:bg-section"
             >
               For Institutions
             </Link>
@@ -344,14 +344,14 @@ export function SiteHeader({
           <Link
             href="/about"
             onClick={() => setIsMenuOpen(false)}
-            className="rounded-md p-2 text-lg font-medium transition-colors hover:bg-section"
+            className="flex min-h-11 items-center rounded-md px-2 text-lg font-medium transition-colors hover:bg-section"
           >
             About
           </Link>
           <Link
             href="/contact"
             onClick={() => setIsMenuOpen(false)}
-            className="rounded-md p-2 text-lg font-medium transition-colors hover:bg-section"
+            className="flex min-h-11 items-center rounded-md px-2 text-lg font-medium transition-colors hover:bg-section"
           >
             Contact
           </Link>

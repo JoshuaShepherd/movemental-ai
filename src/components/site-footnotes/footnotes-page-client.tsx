@@ -90,7 +90,7 @@ export function FootnotesPageClient({ entries }: { entries: EeatRegistryEntry[] 
         </div>
 
         <div className="mb-6 flex flex-wrap items-end gap-4">
-          <label className="flex min-w-[240px] flex-1 flex-col gap-2 text-sm text-muted-foreground">
+          <label className="flex w-full min-w-0 flex-1 flex-col gap-2 text-sm text-muted-foreground sm:min-w-[240px]">
             Search
             <input
               type="search"

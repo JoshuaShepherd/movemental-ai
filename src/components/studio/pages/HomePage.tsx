@@ -176,7 +176,7 @@ function CredibilityFold() {
         <Reveal delay={100}>
           <div className="mb-20">
             <span className="text-sm uppercase tracking-eyebrow font-semibold mb-6 block border-b border-border pb-4">Founders</span>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 md:gap-10">
               {founders.map((f, i) => (
                 <div key={i} className="group">
                   <div className="aspect-[4/5] bg-section rounded-2xl mb-6 overflow-hidden ring-1 ring-border">
@@ -195,10 +195,10 @@ function CredibilityFold() {
             <div className="flex justify-between items-end mb-8 border-b border-border pb-4">
               <span className="text-sm uppercase tracking-eyebrow font-semibold">Voices</span>
               <div className="flex gap-2">
-                <button onClick={() => scrollRef.current?.scrollBy({ left: -300, behavior: 'smooth' })} className="p-2 border border-border rounded-full hover:bg-section transition-colors" aria-label="Previous">
+                <button onClick={() => scrollRef.current?.scrollBy({ left: -300, behavior: 'smooth' })} className="inline-flex size-11 min-h-11 min-w-11 items-center justify-center rounded-full border border-border transition-colors hover:bg-section" aria-label="Previous">
                   <ChevronLeft className="w-5 h-5"/>
                 </button>
-                <button onClick={() => scrollRef.current?.scrollBy({ left: 300, behavior: 'smooth' })} className="p-2 border border-border rounded-full hover:bg-section transition-colors" aria-label="Next">
+                <button onClick={() => scrollRef.current?.scrollBy({ left: 300, behavior: 'smooth' })} className="inline-flex size-11 min-h-11 min-w-11 items-center justify-center rounded-full border border-border transition-colors hover:bg-section" aria-label="Next">
                   <ChevronRight className="w-5 h-5"/>
                 </button>
               </div>

@@ -274,7 +274,7 @@ function SystemsRow() {
     { label: "Directory", kind: "rel", sub: "People · roles" },
   ];
   return (
-    <div className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+    <div className="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-3 min-[400px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
       {systems.map((s) => (
         <div
           key={s.label}

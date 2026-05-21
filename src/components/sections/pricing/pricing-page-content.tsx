@@ -121,7 +121,7 @@ function StageOfferingCard({
     <div
       className={cn(
         "flex flex-col space-y-8",
-        columnIndex > 0 && "lg:border-l lg:border-border/50 lg:pl-8",
+        columnIndex > 0 && "xl:border-l xl:border-border/50 xl:pl-8",
       )}
     >
       <div>
@@ -159,7 +159,7 @@ function StageOfferingCard({
 
 function BundleOfferingCard() {
   return (
-    <div className="flex flex-col space-y-8 bg-section p-6 lg:border-l-2 lg:border-primary lg:bg-transparent lg:px-0 lg:pl-8">
+    <div className="flex flex-col space-y-8 bg-section p-6 xl:border-l-2 xl:border-primary xl:bg-transparent xl:px-0 xl:pl-8">
       <div>
         <p className="mb-2 text-[0.65rem] font-semibold uppercase tracking-eyebrow text-primary">{BUNDLE.eyebrow}</p>
         <h3 className="font-serif text-2xl font-medium text-foreground">{BUNDLE.title}</h3>
@@ -232,7 +232,7 @@ export function PricingPageContent() {
           </Reveal>
 
           <Reveal delay={80}>
-            <div className="grid grid-cols-1 gap-8 border-t border-border pt-12 md:grid-cols-3 lg:grid-cols-5">
+            <div className="grid grid-cols-1 gap-8 border-t border-border pt-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
               {STAGES.map((offering, i) => (
                 <StageOfferingCard key={offering.title} offering={offering} columnIndex={i} />
               ))}

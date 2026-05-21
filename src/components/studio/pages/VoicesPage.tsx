@@ -97,18 +97,18 @@ export function VoicesPage() {
               Their presence matters because navigating AI is fundamentally a leadership and formation challenge, not just a technical one. We shape our frameworks by listening to them.
             </p>
             
-            <div className="grid md:grid-cols-3 gap-8 md:gap-12 pl-6 md:pl-0">
-               <div className="relative group">
+            <div className="grid gap-8 md:grid-cols-3 md:gap-12">
+               <div className="relative group md:pl-6">
                   <div className="hidden md:block absolute top-[11px] -left-6 w-3 h-px bg-border group-hover:w-4 group-hover:bg-primary transition-all"></div>
                   <h3 className="font-serif-display text-3xl italic mb-3 text-foreground group-hover:text-primary transition-colors">Conversation over promotion</h3>
                   <p className="text-[1.0625rem] leading-relaxed text-muted-foreground">They lend their names not to endorse a consulting product, but to signify that this conversation is worth having.</p>
                </div>
-               <div className="relative border-t border-border pt-6 md:border-t-0 md:pt-0 group">
+               <div className="relative border-t border-border pt-6 group md:border-t-0 md:pt-0 md:pl-6">
                   <div className="hidden md:block absolute top-[11px] -left-6 w-3 h-px bg-border group-hover:w-4 group-hover:bg-primary transition-all"></div>
                   <h3 className="font-serif-display text-3xl italic mb-3 text-foreground group-hover:text-primary transition-colors">Formation over hype</h3>
                   <p className="text-[1.0625rem] leading-relaxed text-muted-foreground">These are leaders who consistently prioritize human formation and missional integrity over rapid efficiency.</p>
                </div>
-               <div className="relative border-t border-border pt-6 md:border-t-0 md:pt-0 group">
+               <div className="relative border-t border-border pt-6 group md:border-t-0 md:pt-0 md:pl-6">
                   <div className="hidden md:block absolute top-[11px] -left-6 w-3 h-px bg-border group-hover:w-4 group-hover:bg-primary transition-all"></div>
                   <h3 className="font-serif-display text-3xl italic mb-3 text-foreground group-hover:text-primary transition-colors">Shared discernment</h3>
                   <p className="text-[1.0625rem] leading-relaxed text-muted-foreground">We actively bring our architectural models to them to make sure they hold up in reality.</p>

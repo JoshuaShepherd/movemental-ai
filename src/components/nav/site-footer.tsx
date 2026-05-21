@@ -45,7 +45,7 @@ export async function SiteFooter() {
                 href={linkedInUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-section text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+                className="flex size-11 min-h-11 min-w-11 items-center justify-center rounded-full bg-section text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
                 aria-label="Movemental on LinkedIn"
               >
                 <svg

@@ -70,7 +70,7 @@ export function HomeHeroTabbedAudiences() {
           <TabsTrigger
             value="leaders"
             className={cn(
-              "shrink-0 rounded-none border-0 border-b-2 border-transparent bg-transparent px-4 py-2.5 text-xs font-medium text-muted-foreground shadow-none",
+              "min-h-11 shrink-0 rounded-none border-0 border-b-2 border-transparent bg-transparent px-4 py-3 text-xs font-medium text-muted-foreground shadow-none",
               "hover:text-foreground data-active:border-primary data-active:bg-transparent data-active:font-semibold data-active:text-foreground data-active:shadow-none",
               "after:hidden focus-visible:rounded-t-sm focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-0"
             )}
@@ -80,7 +80,7 @@ export function HomeHeroTabbedAudiences() {
           <TabsTrigger
             value="nonprofits"
             className={cn(
-              "shrink-0 rounded-none border-0 border-b-2 border-transparent bg-transparent px-4 py-2.5 text-xs font-medium text-muted-foreground shadow-none",
+              "min-h-11 shrink-0 rounded-none border-0 border-b-2 border-transparent bg-transparent px-4 py-3 text-xs font-medium text-muted-foreground shadow-none",
               "hover:text-foreground data-active:border-primary data-active:bg-transparent data-active:font-semibold data-active:text-foreground data-active:shadow-none",
               "after:hidden focus-visible:rounded-t-sm focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-0"
             )}
@@ -90,7 +90,7 @@ export function HomeHeroTabbedAudiences() {
           <TabsTrigger
             value="churches"
             className={cn(
-              "shrink-0 rounded-none border-0 border-b-2 border-transparent bg-transparent px-4 py-2.5 text-xs font-medium text-muted-foreground shadow-none",
+              "min-h-11 shrink-0 rounded-none border-0 border-b-2 border-transparent bg-transparent px-4 py-3 text-xs font-medium text-muted-foreground shadow-none",
               "hover:text-foreground data-active:border-primary data-active:bg-transparent data-active:font-semibold data-active:text-foreground data-active:shadow-none",
               "after:hidden focus-visible:rounded-t-sm focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-0"
             )}
@@ -100,7 +100,7 @@ export function HomeHeroTabbedAudiences() {
           <TabsTrigger
             value="institutions"
             className={cn(
-              "shrink-0 rounded-none border-0 border-b-2 border-transparent bg-transparent px-4 py-2.5 text-xs font-medium text-muted-foreground shadow-none",
+              "min-h-11 shrink-0 rounded-none border-0 border-b-2 border-transparent bg-transparent px-4 py-3 text-xs font-medium text-muted-foreground shadow-none",
               "hover:text-foreground data-active:border-primary data-active:bg-transparent data-active:font-semibold data-active:text-foreground data-active:shadow-none",
               "after:hidden focus-visible:rounded-t-sm focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-0"
             )}

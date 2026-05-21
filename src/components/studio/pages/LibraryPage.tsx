@@ -140,7 +140,7 @@ export function LibraryPage() {
               </p>
             </div>
             
-            <div className="flex flex-col gap-4 min-w-[280px]">
+            <div className="flex w-full min-w-0 flex-col gap-4 md:max-w-sm md:shrink-0">
                <div className="bg-card border border-border p-6 rounded-xl flex flex-col gap-3 group hover:border-primary/50 transition-all duration-300 cursor-pointer relative overflow-hidden">
                  <div className="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary transition-colors"></div>
                  <div className="text-xs font-semibold uppercase tracking-eyebrow text-primary/80">Featured</div>

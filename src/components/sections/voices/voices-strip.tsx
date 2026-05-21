@@ -85,7 +85,7 @@ export function VoicesStrip({
             </RevealOnScroll>
           </div>
 
-          <ul className="grid grid-cols-3 gap-4 sm:gap-6">
+          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
             {COMMITTED_VOICES.map((voice, i) => (
               <RevealOnScroll key={voice.slug} delaySec={0.08 * i}>
                 <li>
