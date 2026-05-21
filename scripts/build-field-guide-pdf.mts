@@ -18,7 +18,7 @@ import process from "node:process";
 
 import { chromium } from "@playwright/test";
 
-const URL = process.env.FIELD_GUIDE_URL ?? "http://localhost:3000/field-guide/safety";
+const URL = process.env.FIELD_GUIDE_URL ?? "http://localhost:3000/field-guides/safety";
 const OUT_DIR = path.join(process.cwd(), "public/downloads");
 const OUT_FILE = path.join(OUT_DIR, "movemental-it-starts-with-safety-field-guide-web-export.pdf");
 

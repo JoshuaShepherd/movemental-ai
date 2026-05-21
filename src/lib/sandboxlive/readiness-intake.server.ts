@@ -13,14 +13,30 @@ import {
 /** Postgres undefined_table — table not migrated yet. */
 function isUndefinedTableError(error: unknown): boolean {
   let current: unknown = error;
-  for (let depth = 0; depth < 6 && current; depth += 1) {
-    if (
-      typeof current === "object" &&
-      current !== null &&
-      "code" in current &&
-      (current as { code: string }).code === "42P01"
-    ) {
-      return true;
+  for (let depth = 0; depth < 8 && current; depth += 1) {
+    if (typeof current === "object" && current !== null) {
+      const code =
+        "code" in current ? String((current as { code: unknown }).code) : "";
+      if (code === "42P01") {
+        return true;
+      }
+      const message =
+        "message" in current ? String((current as { message: unknown }).message) : "";
+      if (
+        message.includes("does not exist") &&
+        message.includes("sandbox_staff_readiness")
+      ) {
+        return true;
+      }
+    }
+    if (typeof current === "string") {
+      if (
+        current.includes("does not exist") &&
+        current.includes("sandbox_staff_readiness")
+      ) {
+        return true;
+      }
+      break;
     }
     if (
       typeof current === "object" &&

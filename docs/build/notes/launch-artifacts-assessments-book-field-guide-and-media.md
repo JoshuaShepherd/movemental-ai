@@ -64,6 +64,18 @@ This split is **intentional**; agents and editors must not use “field guide”
 
 **Strategy role:** Owns **operating discipline** for adopting AI under constraint; does **not** replace the book’s fragmentation→movement arc.
 
+### Movemental Field Guide PDFs (Volumes One & Two) — what exists
+
+Designed printable lead magnets — **separate artifact** from the SSSS article above. Reference copies and edition SHA-256 live in **`docs/build/artifacts/field-guides/`**; production downloads are byte-identical under **`public/downloads/`**.
+
+| Volume | Title | Docs reference | Public URL | Landing |
+| ------ | ----- | -------------- | ---------- | ------- |
+| 1 | *It Starts With Safety* | `docs/build/artifacts/field-guides/movemental-it-starts-with-safety-field-guide.pdf` | `/downloads/movemental-it-starts-with-safety-field-guide.pdf` | `/field-guides/safety` |
+| 2 | *It Continues With Exploration* | `docs/build/artifacts/field-guides/movemental-it-continues-with-exploration-field-guide.pdf` | `/downloads/movemental-it-continues-with-exploration-field-guide.pdf` | `/field-guides/sandbox` |
+
+- **Lead capture:** `src/app/api/toolkit-download/route.ts` → `sendToolkitLeadEmail` (Resend) with PDF links from `src/lib/safety-field-guide.ts` / `src/lib/sandbox-field-guide.ts`.
+- **Do not commit** `movemental-it-starts-with-safety-field-guide-web-export.pdf` (Playwright export from markdown; gitignored). Legacy download paths redirect in `next.config.ts` only — no duplicate PDF binaries.
+
 ### Assessments — what exists
 
 | Route | Instrument | Implementation notes |

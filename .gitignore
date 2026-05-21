@@ -65,4 +65,7 @@ next-env.d.ts
 # Large local PDF text extracts (regenerate with pypdf if needed)
 /docs/movement_leader_research/jr-woodward/_extracted/
 
+# Playwright web-export of field guide markdown — not the designed lead magnet
+/public/downloads/movemental-it-starts-with-safety-field-guide-web-export.pdf
+
 .env*.local

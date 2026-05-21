@@ -1,0 +1,468 @@
+{
+  "version": 1,
+  "collatedAt": "2026-05-21T04:41:00.852Z",
+  "collatedPath": "docs/movement_leader_research/alan-hirsch/ALAN_HIRSCH_RESEARCH_COLLATED.md",
+  "sourceCount": 51,
+  "collatedWordCount": 100080,
+  "sourceWordsInBody": 88632,
+  "deduplicatedFilesLedgerOnly": [
+    "biography.md",
+    "content-analysis.md",
+    "movemental-analysis.md",
+    "gap-analysis.md",
+    "summary.md",
+    "ALAN_HIRSCH_COMPLETE_PROFILE.md"
+  ],
+  "sources": [
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/profile/identity.md",
+      "wordCount": 930,
+      "sha256": "4e0ca2ba3862d6b481bca71a75f9cb6906632cb76a9add27e8a929c8ff131c14",
+      "sectionsUsed": [
+        "Part I — Identity, biography, timeline"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/identity-verification.md",
+      "wordCount": 759,
+      "sha256": "b69089feed5d4378746d0d9ddb38a07b52d5ed0a4905460d95f816c0387b8116",
+      "sectionsUsed": [
+        "Part I — Identity, biography, timeline"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/profile/biography.md",
+      "wordCount": 1172,
+      "sha256": "a69d83009c15522dc3e9c2b4975ab781064b80e20b53d6a906072f81b658ab17",
+      "sectionsUsed": [
+        "Part I — Identity, biography, timeline"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/ALAN_HIRSCH_TIMELINE.md",
+      "wordCount": 7060,
+      "sha256": "3d58c4e068922882d6b5cc6278cf65356a355902f0ffd9634b42f0583b9474a4",
+      "sectionsUsed": [
+        "Part I — Identity, biography, timeline"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/ALAN_HIRSCH_AUTHOR_PROFILE.md",
+      "wordCount": 2160,
+      "sha256": "cd0da0bb9a1284c7ca0c157c048e2d5de684001195ec74253dc8c8701952d60c",
+      "sectionsUsed": [
+        "Part I — Identity, biography, timeline"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/biography.md",
+      "wordCount": 936,
+      "sha256": "4efec6888ffe8c8ae79ecaf40b24d6790815455e9002702bfd21e25e42a7775c",
+      "sectionsUsed": [
+        "Appendix A — ledger only"
+      ],
+      "inBody": false
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/profile/voice-analysis.md",
+      "wordCount": 1055,
+      "sha256": "adf9ff5ecb5c893e18495298af47196c2a72efe3e5176bdfe47b3f287056d985",
+      "sectionsUsed": [
+        "Part II — Voice, theology, frameworks"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/profile/theology.md",
+      "wordCount": 1212,
+      "sha256": "61c032b7d3da5fca39aaea04e3e24a278cd89858844105d26185560691d64189",
+      "sectionsUsed": [
+        "Part II — Voice, theology, frameworks"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/hirsch-affinity-rubric.md",
+      "wordCount": 1617,
+      "sha256": "b5e0226e0e7d49ba5a2a80db09fc116e8bd5d9b962a5d0e97e6557da94fecae3",
+      "sectionsUsed": [
+        "Part II — Voice, theology, frameworks"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/hirsch-affinity-ranked-list.md",
+      "wordCount": 7393,
+      "sha256": "fcb6971fbe97c67b81cd5654911d8d711c54f15c4eeed80c46b2effa64bcaf44",
+      "sectionsUsed": [
+        "Part II — Voice, theology, frameworks"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/content/books.md",
+      "wordCount": 2723,
+      "sha256": "1f709e75d9d57ca0192d1119a875426f7089831838f4663d5763586de7042d32",
+      "sectionsUsed": [
+        "Part III — Content corpus"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/content/articles.md",
+      "wordCount": 768,
+      "sha256": "fff845021a58f1e0112baa8b899db891ff709579e5a6298e9abc502db8814201",
+      "sectionsUsed": [
+        "Part III — Content corpus"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/content/academic.md",
+      "wordCount": 592,
+      "sha256": "d5ada25fff84c6fda811e0cafd975dcc730c19cb9510f8905dd71159c2faf4d6",
+      "sectionsUsed": [
+        "Part III — Content corpus"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/content/audio.md",
+      "wordCount": 1684,
+      "sha256": "f31c38f0294169a0c33aa0d85455e61d37fd6c1e5ac80559332604eb2a39f33b",
+      "sectionsUsed": [
+        "Part III — Content corpus"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/content/videos.md",
+      "wordCount": 1940,
+      "sha256": "aea49046a45fd202d07388e100e7791d9bdfb6bb0af6f5b85e16f1c231ebe390",
+      "sectionsUsed": [
+        "Part III — Content corpus"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/content/courses.md",
+      "wordCount": 806,
+      "sha256": "46adffa1641ae5280f1354afab296e3823e27af84939ef3881bfd06e36160718",
+      "sectionsUsed": [
+        "Part III — Content corpus"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/ALAN_HIRSCH_CONTENT_AUDIT.md",
+      "wordCount": 2403,
+      "sha256": "3c5230f002e3071fd80e1e53dadb7df5f090ad02af53122bfdb783ecc43a9921",
+      "sectionsUsed": [
+        "Part III — Content corpus"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/digital-presence/websites.md",
+      "wordCount": 972,
+      "sha256": "56b593147ced0ed58c1dd1c3261f004ec2c89e1ccbcf4f52c86acc9c19ba7ad8",
+      "sectionsUsed": [
+        "Part IV — Digital presence and fragmentation"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/digital-presence/social-media.md",
+      "wordCount": 620,
+      "sha256": "765b728ad6ba7e5234816cff37f011527aa136f45a5a9e8b74a8d387db75e461",
+      "sectionsUsed": [
+        "Part IV — Digital presence and fragmentation"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/digital-presence/newsletters.md",
+      "wordCount": 415,
+      "sha256": "36dd1e9fde5fa123dcf6b6ddf3b1a5edf146631779bfb35d7c52656139c2b835",
+      "sectionsUsed": [
+        "Part IV — Digital presence and fragmentation"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/digital-presence/platforms.md",
+      "wordCount": 1045,
+      "sha256": "be9b3502c743a1e6a8f91a8d66866652dc3ca16d8dd176dcf5dd8f2e69da6f91",
+      "sectionsUsed": [
+        "Part IV — Digital presence and fragmentation"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/digital-presence-discovery.md",
+      "wordCount": 974,
+      "sha256": "e24c0aed49ac487d3f129cbe6a3aa98d54b193a46a3a10e014b9ecf8cc4b82a2",
+      "sectionsUsed": [
+        "Part IV — Digital presence and fragmentation"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/fragmentation-story.md",
+      "wordCount": 4214,
+      "sha256": "dbe9f5e206155c8dc0864ab4783652a5b8c1168d0ee1c1ced14ce78a53ef0b54",
+      "sectionsUsed": [
+        "Part IV — Digital presence and fragmentation"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/network/organizations.md",
+      "wordCount": 2034,
+      "sha256": "fcfeda468cec8b12a98448700d9f815896fa46de8a683dfd84c3bc84d0c44d7d",
+      "sectionsUsed": [
+        "Part V — Network, organizations, affinity"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/network/collaborators.md",
+      "wordCount": 2557,
+      "sha256": "7c240a7e5a21c4b98ac7b84e37366e011694d8edf04cdad375edabb81cafe177",
+      "sectionsUsed": [
+        "Part V — Network, organizations, affinity"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/network/endorsements.md",
+      "wordCount": 1007,
+      "sha256": "576d7636a70b4a5b2f0fabae5fc99c43bb74cba1cb0dcebea7b0e856ba9b99de",
+      "sectionsUsed": [
+        "Part V — Network, organizations, affinity"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/network/events.md",
+      "wordCount": 1948,
+      "sha256": "87b8263af318cb8acf48df47bb25d5851e5b1e5c95241e3d1e12dfa464455ab4",
+      "sectionsUsed": [
+        "Part V — Network, organizations, affinity"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/ALAN_HIRSCH_ORGS.md",
+      "wordCount": 2331,
+      "sha256": "773600ad46e969b5cd7555503dc97c54be5cba49572af4e2926b0a11b30a8b77",
+      "sectionsUsed": [
+        "Part V — Network, organizations, affinity"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/media/press-coverage.md",
+      "wordCount": 714,
+      "sha256": "62f381fe20d64ba0491b672aaf93540242af49c815d9e1f9d01106459cff7fab",
+      "sectionsUsed": [
+        "Part VI — Media, citations, reviews"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/media/citations.md",
+      "wordCount": 1034,
+      "sha256": "3b08ebc1d963965522aeba342f50b473f452e11c5de958559257f652d5d6448e",
+      "sectionsUsed": [
+        "Part VI — Media, citations, reviews"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/media/reviews.md",
+      "wordCount": 1434,
+      "sha256": "3c2396dfadffd0faa6da508f4a4bda85de698ae2fe9ac288184c6a049e7410c7",
+      "sectionsUsed": [
+        "Part VI — Media, citations, reviews"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/ALAN_HIRSCH_AUDIENCE_PROFILE.md",
+      "wordCount": 2480,
+      "sha256": "d0bc1d0e71d8ffe1f6b4f5725ad7c0d259fa778458fda0f9897b464f9dc4076e",
+      "sectionsUsed": [
+        "Part VII — Audience and market"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/analysis/audience-analysis.md",
+      "wordCount": 3023,
+      "sha256": "2ab708f5ad9adec67465833e6bc0e2242ce67d4d69d5c489e71b702c07475c30",
+      "sectionsUsed": [
+        "Part VII — Audience and market"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/analysis/content-analysis.md",
+      "wordCount": 4865,
+      "sha256": "9f68d859a053a2db11097e55ab9f82ed734c5e2819491fab84012fd843ffbdbd",
+      "sectionsUsed": [
+        "Part VIII — Strategic analysis and Movemental fit"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/analysis/movemental-fit.md",
+      "wordCount": 1602,
+      "sha256": "ab8b10c00e9496fbccdd8a4570333931e80af305ed41f5a74ab4b2e3207afc42",
+      "sectionsUsed": [
+        "Part VIII — Strategic analysis and Movemental fit"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/analysis/competitive-landscape.md",
+      "wordCount": 15,
+      "sha256": "8dbd29cdb2b29693a44e6648befd8beeca7ed10f94ea2a96240f5601d5d7d8ea",
+      "sectionsUsed": [
+        "Part VIII — Strategic analysis and Movemental fit"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/committed-voice.md",
+      "wordCount": 647,
+      "sha256": "6a7174582cd38e73dca97f98a5b131c5687a3580dbf9e0a1f5d8cbf116f12344",
+      "sectionsUsed": [
+        "Part VIII — Strategic analysis and Movemental fit"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/ALAN_HIRSCH_CALLING_PROFILE.md",
+      "wordCount": 2038,
+      "sha256": "8bc2a921d9da0b20b16074539ee2616471183990dee20402960be9193ded7747",
+      "sectionsUsed": [
+        "Part VIII — Strategic analysis and Movemental fit"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/content-analysis.md",
+      "wordCount": 1692,
+      "sha256": "b7bccfe7fe94aa6d70164325e47eb15b4bd1798b79c10b45d196353aa8a5f1dd",
+      "sectionsUsed": [
+        "Appendix A — ledger only"
+      ],
+      "inBody": false
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/movemental-analysis.md",
+      "wordCount": 1509,
+      "sha256": "b2536cad6fd675843be01c0a1964ec3c3c72484eeb8bd94c7c704e2d1bc51cce",
+      "sectionsUsed": [
+        "Appendix A — ledger only"
+      ],
+      "inBody": false
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/analysis/gap-analysis.md",
+      "wordCount": 2728,
+      "sha256": "3cd16fe8f1456332ad735207b3e490ad5a17fb3a19e37d99e88d48ce7062f95c",
+      "sectionsUsed": [
+        "Part IX — Gaps, opportunities, playbook"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/content-marketing-playbook.md",
+      "wordCount": 1605,
+      "sha256": "fd7e78d2bba7e443fbaac46aac2f0f60a75556ab137e38f2a466df3fc48939a0",
+      "sectionsUsed": [
+        "Part IX — Gaps, opportunities, playbook"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/README.md",
+      "wordCount": 1792,
+      "sha256": "34adb3ce9134d6db25f0333293d1e83a37c43a71e568d8aad1c756a3a7efdcc0",
+      "sectionsUsed": [
+        "Part IX — Gaps, opportunities, playbook"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/gap-analysis.md",
+      "wordCount": 1267,
+      "sha256": "08d2b623c827873dccba863c0be005245175bdbc14548aa37d3f2e87acf4d2e6",
+      "sectionsUsed": [
+        "Appendix A — ledger only"
+      ],
+      "inBody": false
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/summary.md",
+      "wordCount": 1381,
+      "sha256": "baa4c27d88c618fe51438251310f83974d8bc385a776622515905e247fe13863",
+      "sectionsUsed": [
+        "Appendix A — ledger only"
+      ],
+      "inBody": false
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/sources.md",
+      "wordCount": 2930,
+      "sha256": "a03cceb0ac52922b919d77b405831656ce603823cef5f6632bababfb99d53a2c",
+      "sectionsUsed": [
+        "Part X — Sources and research operations"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/_tracker.md",
+      "wordCount": 360,
+      "sha256": "b1b47f897475bc78bb34716f31fa261e61cd4dea2535f8b9b31483a5d585f829",
+      "sectionsUsed": [
+        "Part X — Sources and research operations"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/AUTHOR_PROFILE_PRESENTATION_STANDARDS.md",
+      "wordCount": 3942,
+      "sha256": "f92be137f8f2e95c78bb7411c8ba4af3ed8cd1b089d0c91588688e1c74907c77",
+      "sectionsUsed": [
+        "Part X — Sources and research operations"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch/ALAN_HIRSCH_PROFILES_INDEX.md",
+      "wordCount": 1093,
+      "sha256": "62a707aa096b40ddaa3d311a0011d76bf421a1b8e9ba3184543626f9a67caaf9",
+      "sectionsUsed": [
+        "Part X — Sources and research operations"
+      ],
+      "inBody": true
+    },
+    {
+      "path": "docs/movement_leader_research/alan-hirsch-baseline-report.md",
+      "wordCount": 3939,
+      "sha256": "e7697c69091f6f76f73770c75b1f412887e896c42d0fbb8458d5f2d34d73f090",
+      "sectionsUsed": [
+        "Part VIII — Baseline system analysis"
+      ],
+      "inBody": true
+    }
+  ]
+}

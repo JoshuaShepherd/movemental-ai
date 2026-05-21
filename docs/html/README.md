@@ -1,11 +1,19 @@
-# Static HTML lab (relocated)
+# Static HTML templates (`docs/html`)
 
-All former `docs/html/**` files now live in the monorepo-wide HTML library:
+## Alan Hirsch — Research Collated viewer
 
-`01-Movemental-Core/1-html/labs/movemental-ai/docs-html/`
+**Canonical URL (after `pnpm reader:serve`):**
 
-When this repo sits next to `1-html` in a Core checkout, scripts resolve that path automatically. For CI or machines with a different layout, set:
+http://127.0.0.1:8765/movement_leader_research/alan-hirsch/collated/
 
-`MOVEMENTAL_STATIC_HTML_ROOT` → absolute path to the `docs-html` directory above.
+Mirrored build output also lives under [`alan-hirsch-research-collated/`](./alan-hirsch-research-collated/).
 
-This folder intentionally contains **no** `.html` files so the Next.js repo stays free of hand-authored static pages.
+### Commands
+
+```bash
+pnpm docs:alan-hirsch-research-html   # rebuild bundle.json + assets
+pnpm reader:serve                     # docs static server (redirects .md → viewer)
+pnpm reader:alan-hirsch-collated      # serve + open viewer in browser
+```
+
+Clicking `ALAN_HIRSCH_RESEARCH_COLLATED.md` in the file browser now **redirects** to the styled viewer when using `reader:serve` (not plain `python3 -m http.server`).

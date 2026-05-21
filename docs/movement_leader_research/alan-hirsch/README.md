@@ -27,6 +27,12 @@
 
 ---
 
+## Collated substrate
+
+**Machine-readable corpus:** **Interactive viewer:** [collated/](./collated/) · **Markdown source:** [ALAN_HIRSCH_RESEARCH_COLLATED.md](./ALAN_HIRSCH_RESEARCH_COLLATED.md) (v2.0.0 substrate — identity, network, frameworks, affinity rubric/ranked list, distribution inventory; no personas or platform-fit narrative). Regenerate with `python3 scripts/build-alan-hirsch-substrate.py` from the per-topic source files in this folder.
+
+---
+
 ## Executive Summary
 
 Alan Hirsch is the foremost theorist of apostolic movement in the contemporary Western church -- an Australian missiologist, serial organizational founder, and movement catalyst whose frameworks have reshaped how Protestant churches understand mission, leadership, and ecclesiology. Born into a Jewish family in apartheid-era Johannesburg in 1959, Hirsch emigrated to Australia at 24, led a pioneering inner-city church among the marginalized for fifteen years, and co-founded the Forge Mission Training Network in 1996. That grassroots laboratory became the crucible for his theoretical work. His magnum opus, *The Forgotten Ways* (2006), introduced the concept of "Apostolic Genius" and the mDNA (missional DNA) framework -- six interdependent elements that characterize every significant Jesus movement in history. Across 20 books published between 2003 and 2024 with seven different publishers, Hirsch has built an integrated intellectual architecture that moves from Christology through missiology to ecclesiology, arguing that the Western church must recover its identity as a dynamic movement rather than a static institution.
@@ -144,3 +150,12 @@ Alan Hirsch is the definitive anchor author for the Movemental platform. His fra
 *Research compiled: 2026-03-18*
 *Confidence Level: HIGH*
 *Sources: See [sources.md](sources.md)*
+
+---
+
+## Collated research edition
+
+- **Full collation (markdown):** **Interactive viewer:** [collated/](./collated/) · **Markdown source:** [ALAN_HIRSCH_RESEARCH_COLLATED.md](./ALAN_HIRSCH_RESEARCH_COLLATED.md) (2026-05-21) — all sources merged, deduplicated in body; ledger-only files in Appendix D.
+- **Manifest:** [ALAN_HIRSCH_COLLATION_MANIFEST.json](./ALAN_HIRSCH_COLLATION_MANIFEST.json)
+- **Desktop copies:** `Alan-Hirsch-Movement-Leader-Research.md` and `.html` on Desktop (open HTML in a browser → Print → Save as PDF if PDF export is not run locally).
+- **Regenerate:** `node scripts/collate-alan-hirsch-research.mjs` then pandoc → HTML → PDF per [docs/build/prompts/alan-hirsch-research-collation-and-pdf.md](../../build/prompts/alan-hirsch-research-collation-and-pdf.md).

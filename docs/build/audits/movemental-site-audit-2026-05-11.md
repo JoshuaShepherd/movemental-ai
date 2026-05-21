@@ -114,7 +114,7 @@ Read-only reconnaissance of repository routes, navigation, components, forms, an
 ### PDF hosting
 
 - **Safety field guide**: `public/downloads/movemental-it-starts-with-safety-field-guide.pdf` **present**. Canonical path `src/lib/safety-field-guide.ts` → `/downloads/movemental-it-starts-with-safety-field-guide.pdf`. Redirects from legacy URLs in `next.config.ts`.
-- **Sandbox field guide**: Code expects `/downloads/movemental-it-continues-with-exploration-field-guide.pdf` — **file not present in repo `public/`** (only Safety PDF + `public/downloads/README.md`). **High risk of 404** for direct links or future sends.
+- **Sandbox field guide**: `/downloads/movemental-it-continues-with-exploration-field-guide.pdf` present in `public/downloads/`; reference copy in `docs/build/artifacts/field-guides/` (see that folder’s README for edition SHA-256).
 - **Cover images**: Referenced paths under `/images/books/*.webp` — **`public/images` effectively empty** except `brand/brand-mark.svg`; covers likely rely on **deployment assets not committed** or remote URLs — **ambiguous / environment-dependent**.
 
 ### Gating logic
