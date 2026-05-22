@@ -54,13 +54,13 @@ export function AudienceFold() {
       <div className="container audience-section__inner">
         <SectionHead
           eyebrow="Who Movemental serves"
-          display={<>Three audiences, one path.</>}
+          display={<>Is this for you?</>}
           displayId="audience-heading"
           lede={
             <>
               Churches, nonprofits, and theological institutions face different
-              stakes — pastoral, fiduciary, accreditational — but the underlying
-              decisions are the same. The path adapts to your situation.
+              stakes — pastoral, fiduciary, accreditational. The underlying
+              decisions are the same. Find your starting point.
             </>
           }
         />
@@ -95,6 +95,20 @@ export function AudienceFold() {
             </Link>
           ))}
         </div>
+
+        <p className="mt-12 text-sm leading-relaxed text-muted-foreground md:mt-14 md:text-[15px]">
+          Not sure which fits?{" "}
+          <Link
+            href="/field-guides/safety"
+            className="group inline-flex items-center gap-1.5 border-b border-foreground/30 pb-0.5 text-foreground transition-colors hover:border-foreground"
+          >
+            Start with the Field Guide.
+            <ArrowUpRight
+              className="size-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              aria-hidden
+            />
+          </Link>
+        </p>
       </div>
     </section>
   );

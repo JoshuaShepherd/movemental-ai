@@ -1,0 +1,103 @@
+{
+  "slug": "monica-chambers",
+  "version": "2.0.0",
+  "generated_at": "2026-05-22",
+  "generated_by": "movement-leader-substrate skill (cold-start, web research only)",
+  "sources": [
+    {
+      "path": "https://www.jemochambers.com/",
+      "type": "primary-site",
+      "sectionsUsed": ["Identity", "Editorial bio", "Distribution inventory"]
+    },
+    {
+      "path": "https://www.100movements.org/books/art-of-missional-spirituality-jeremy-chambers-monica-pardes-chambers",
+      "type": "publisher-page",
+      "sectionsUsed": ["Bibliography", "Frameworks", "Network graph (endorsements)"]
+    },
+    {
+      "path": "https://www.100movements.org/books/kingdom-contours-jeremy-chambers-monica-paredes-chambers",
+      "type": "publisher-page",
+      "sectionsUsed": ["Bibliography", "Frameworks", "Identity (full byline)", "Network graph (endorsements)"]
+    },
+    {
+      "path": "https://us.amazon.com/Art-Missional-Spirituality-Practices-Jesus-Followers/dp/1955142440",
+      "type": "retail-page",
+      "sectionsUsed": ["Bibliography (ISBN-13)"]
+    },
+    {
+      "path": "https://www.amazon.com/Art-Missional-Spirituality-Practices-Jesus-Followers-ebook/dp/B0CKGC6364",
+      "type": "retail-page",
+      "sectionsUsed": ["Bibliography (Kindle / foreword author)"]
+    },
+    {
+      "path": "https://www.goodreads.com/book/show/199523617-the-art-of-missional-spirituality",
+      "type": "review-aggregator",
+      "sectionsUsed": ["Reach metrics", "Bibliography (page count, pub date)"]
+    },
+    {
+      "path": "https://renovare.org/people/monica-chambers",
+      "type": "contributor-profile",
+      "sectionsUsed": ["Identity", "Distribution inventory (articles)", "Network graph"]
+    },
+    {
+      "path": "https://renovare.org/articles/praying-the-hours",
+      "type": "article",
+      "sectionsUsed": ["Voice fingerprint", "Frameworks (Praying the Hours)", "Intellectual genealogy"]
+    },
+    {
+      "path": "https://renovare.org/articles/finishing-well",
+      "type": "article",
+      "sectionsUsed": ["Voice fingerprint", "Theological positioning (being/knowing/doing)", "Intellectual genealogy (Ken Boa)"]
+    },
+    {
+      "path": "https://renovare.org/podcasts/lifewithgod/monica-and-jeremy-chambers-getting-personal-with-the-lords-prayer",
+      "type": "podcast-episode",
+      "sectionsUsed": ["Distribution inventory", "Timeline"]
+    },
+    {
+      "path": "https://everydaydisciple.com/episodes/spirituality-that-fuels-gods-mission/",
+      "type": "podcast-episode",
+      "sectionsUsed": ["Identity (Costa Rica origin, Lancaster PA family church)", "Frameworks (Breathing In / Breathing Out)", "Voice fingerprint"]
+    },
+    {
+      "path": "https://pivotalpeople.buzzsprout.com/1909281/14107088-unraveling-the-art-of-missionary-spirituality-from-micro-churches-to-acts-of-kindness-with-jeremy-and-monica-chambers",
+      "type": "podcast-episode",
+      "sectionsUsed": ["Identity (Littleton CO)", "Frameworks (Secret Acts of Kindness)", "Voice fingerprint (quotes)", "Distribution inventory"]
+    },
+    {
+      "path": "https://www.shiftingculturepodcast.com/episodes/episode-197-jeremyandmonicachambers",
+      "type": "podcast-episode",
+      "sectionsUsed": ["Distribution inventory", "Timeline"]
+    },
+    {
+      "path": "https://pulpitrock.com/partner-spotlight-jeremy-monica-chambers-2/",
+      "type": "partner-spotlight",
+      "sectionsUsed": ["Reach metrics", "Network graph (Pulpit Rock)", "Identity (sponsor)"]
+    },
+    {
+      "path": "https://missionalchallenge.com/kingdom-contours/",
+      "type": "third-party-review",
+      "sectionsUsed": ["Frameworks (Kingdom Contours six elements)", "Network graph (endorsements)", "Intellectual genealogy (Hirsch lineage)"]
+    },
+    {
+      "path": "https://www.instagram.com/mograpalocha/",
+      "type": "social-profile",
+      "sectionsUsed": ["Identity (handle)", "Distribution inventory"]
+    },
+    {
+      "path": "https://www.facebook.com/jeremy.monica.chambers/",
+      "type": "social-profile",
+      "sectionsUsed": ["Distribution inventory"]
+    }
+  ],
+  "notes": {
+    "cold_start": true,
+    "per_topic_source_files_present": false,
+    "namesake_disambiguation_required": true,
+    "namesakes_documented": 4,
+    "primary_corpus_size": "2 books, 2 articles, 5+ podcast appearances",
+    "languages_documented": ["English"],
+    "translations_documented": [],
+    "marriage_co_authorship": "Every published artifact is co-authored with spouse Jeremy Chambers; substrate captures Monica's voice within that joint authorship rather than as solo bylines."
+  }
+}

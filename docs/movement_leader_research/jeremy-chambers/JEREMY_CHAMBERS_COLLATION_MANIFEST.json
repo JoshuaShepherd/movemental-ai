@@ -1,0 +1,190 @@
+{
+  "slug": "jeremy-chambers",
+  "version": "2.0.0",
+  "generated_at": "2026-05-22",
+  "mode": "cold-start",
+  "subject": {
+    "fullName": "Jeremy Chambers",
+    "knownAs": "Jemo",
+    "primaryOrgs": ["Forge America", "The Pando Collective", "The Arise Network / Arise RVA Church Network"],
+    "magnumOpus": {
+      "title": "The Art of Missional Spirituality: 31 Sacred Practices for Jesus-Followers",
+      "year": 2023,
+      "isbn13": "978-1-955142-44-1",
+      "publisher": "100 Movements Publishing",
+      "coAuthor": "Monica Paredes Chambers",
+      "foreword": ["Alan Hirsch", "Debra Hirsch"]
+    }
+  },
+  "authorshipModel": "co-authored-with-spouse",
+  "coAuthor": "Monica Paredes Chambers",
+  "sections": [
+    "Identity",
+    "Disambiguation",
+    "Editorial bio",
+    "Timeline",
+    "Frameworks",
+    "Bibliography",
+    "Theme map",
+    "Content analysis",
+    "Recommended reading order",
+    "Voice fingerprint",
+    "Theological positioning",
+    "Intellectual genealogy",
+    "Network graph",
+    "Reach metrics",
+    "Distribution inventory",
+    "Sources",
+    "Open questions"
+  ],
+  "sources": [
+    {
+      "path": "Primary website",
+      "url": "https://www.jemochambers.com/",
+      "sectionsUsed": ["Identity", "Editorial bio", "Distribution inventory"]
+    },
+    {
+      "path": "Forge America Our People",
+      "url": "https://www.forgeamerica.com/our-people",
+      "sectionsUsed": ["Identity", "Network graph", "Reach metrics"]
+    },
+    {
+      "path": "100 Movements Publishing — TAoMS",
+      "url": "https://www.100movements.org/books/art-of-missional-spirituality-jeremy-chambers-monica-pardes-chambers",
+      "sectionsUsed": ["Bibliography", "Network graph"]
+    },
+    {
+      "path": "100 Movements Publishing — Kingdom Contours",
+      "url": "https://www.100movements.org/books/kingdom-contours-jeremy-chambers-monica-paredes-chambers",
+      "sectionsUsed": ["Bibliography", "Frameworks"]
+    },
+    {
+      "path": "Amazon — TAoMS (print)",
+      "url": "https://www.amazon.com/Art-Missional-Spirituality-Practices-Jesus-Followers/dp/1955142440",
+      "sectionsUsed": ["Bibliography", "Distribution inventory"]
+    },
+    {
+      "path": "Amazon — TAoMS (Kindle, foreword byline)",
+      "url": "https://www.amazon.com/Art-Missional-Spirituality-Practices-Jesus-Followers-ebook/dp/B0CKGC6364",
+      "sectionsUsed": ["Bibliography", "Intellectual genealogy"]
+    },
+    {
+      "path": "Amazon — Kingdom Contours revised",
+      "url": "https://www.amazon.com/Kingdom-Contours-Foundations-Paradigms-Equipping/dp/195514270X",
+      "sectionsUsed": ["Bibliography", "Frameworks", "Intellectual genealogy"]
+    },
+    {
+      "path": "Everand — Kingdom Contours 1st ed.",
+      "url": "https://www.everand.com/book/472991684/Kingdom-Contours-Empowering-Everyday-People-With-the-Tools-to-Shape-Kingdom-Movements",
+      "sectionsUsed": ["Bibliography", "Network graph"]
+    },
+    {
+      "path": "Goodreads — TAoMS",
+      "url": "https://www.goodreads.com/book/show/199523617-the-art-of-missional-spirituality",
+      "sectionsUsed": ["Reach metrics"]
+    },
+    {
+      "path": "Renovaré — Monica's profile",
+      "url": "https://renovare.org/people/monica-chambers",
+      "sectionsUsed": ["Identity", "Network graph"]
+    },
+    {
+      "path": "Renovaré — Life With God podcast",
+      "url": "https://renovare.org/podcasts/lifewithgod/monica-and-jeremy-chambers-getting-personal-with-the-lords-prayer",
+      "sectionsUsed": ["Distribution inventory", "Network graph"]
+    },
+    {
+      "path": "Renovaré — Praying the Hours",
+      "url": "https://renovare.org/articles/praying-the-hours",
+      "sectionsUsed": ["Frameworks", "Distribution inventory", "Voice fingerprint"]
+    },
+    {
+      "path": "Renovaré — Finishing Well",
+      "url": "https://renovare.org/articles/finishing-well",
+      "sectionsUsed": ["Frameworks", "Intellectual genealogy", "Distribution inventory"]
+    },
+    {
+      "path": "Missio Alliance — Compassion Fatigue",
+      "url": "https://missioalliance.org/a-few-solutions-for-compassion-fatigue/",
+      "sectionsUsed": ["Frameworks", "Voice fingerprint", "Distribution inventory"]
+    },
+    {
+      "path": "Pivotal People Podcast",
+      "url": "https://pivotalpeople.buzzsprout.com/1909281/episodes/14107088-unraveling-the-art-of-missionary-spirituality-from-micro-churches-to-acts-of-kindness-with-jeremy-and-monica-chambers",
+      "sectionsUsed": ["Voice fingerprint", "Distribution inventory"]
+    },
+    {
+      "path": "Shifting Culture Podcast Ep. 197",
+      "url": "https://www.shiftingculturepodcast.com/episodes/episode-197-jeremyandmonicachambers",
+      "sectionsUsed": ["Voice fingerprint", "Distribution inventory"]
+    },
+    {
+      "path": "Pulpit Rock partner spotlight",
+      "url": "https://pulpitrock.com/partner-spotlight-jeremy-monica-chambers/",
+      "sectionsUsed": ["Identity", "Timeline", "Editorial bio"]
+    },
+    {
+      "path": "BGAV church directory — Arise RVA",
+      "url": "https://www.bgav.org/church-directory/arise-rva-church",
+      "sectionsUsed": ["Timeline", "Network graph"]
+    },
+    {
+      "path": "V3 Movement — author archive",
+      "url": "https://thev3movement.org/",
+      "sectionsUsed": ["Distribution inventory", "Theme map"]
+    },
+    {
+      "path": "Pando Collective",
+      "url": "https://thepandocollective.com/",
+      "sectionsUsed": ["Identity", "Network graph"]
+    },
+    {
+      "path": "Rowland Smith bio",
+      "url": "https://www.rowlandsmith.net/bio",
+      "sectionsUsed": ["Network graph", "Intellectual genealogy"]
+    },
+    {
+      "path": "Koine Sune — Pando interview",
+      "url": "https://koinesune.com/stories/identifying-and-developing-missional-leaders-the-pando-collective-interview-with-rowland-smith",
+      "sectionsUsed": ["Intellectual genealogy"]
+    },
+    {
+      "path": "Wikipedia — Jeremy Chambers (disambiguation)",
+      "url": "https://en.wikipedia.org/wiki/Jeremy_Chambers",
+      "sectionsUsed": ["Disambiguation"]
+    },
+    {
+      "path": "19fortyfive — military namesake",
+      "url": "https://www.19fortyfive.com/2026/01/jeremy-chambers-becomes-the-first-army-nco-to-commission-as-fao-captain/",
+      "sectionsUsed": ["Disambiguation"]
+    },
+    {
+      "path": "Tampa Underground — Brian Sanders",
+      "url": "https://www.undergroundnetwork.org/undergroundchurchbook",
+      "sectionsUsed": ["Network graph", "Intellectual genealogy"]
+    },
+    {
+      "path": "Alma Hunt — Microchurches",
+      "url": "https://www.almahunt.org/alma-hunt-offering-stories/micro-churches",
+      "sectionsUsed": ["Reach metrics", "Timeline"]
+    },
+    {
+      "path": "Forge Teachable curriculum",
+      "url": "https://forge.teachable.com/",
+      "sectionsUsed": ["Distribution inventory", "Intellectual genealogy"]
+    }
+  ],
+  "voiceFingerprint": {
+    "weightedMarkers": [
+      {"marker": "Contemplative-Missional Integration", "target": ">= 0.75", "weight": 30},
+      {"marker": "Inductive Practitioner Cadence", "target": "0.6-0.85", "weight": 25},
+      {"marker": "Botanical / Ecological Metaphor Density", "target": ">= 0.5", "weight": 15},
+      {"marker": "Co-Authorial 'We' Voice", "target": ">= 0.6", "weight": 15},
+      {"marker": "Mentor Citation Density", "target": ">= 0.5", "weight": 15}
+    ],
+    "weightSum": 100,
+    "coherenceTarget": 0.75,
+    "antithesisProhibition": "Do not separate intimacy from mission, or contemplation from sentness. Avoid method absolutism (microchurch-only framing). Avoid credit-seeking framing of service."
+  },
+  "openQuestions": 14
+}

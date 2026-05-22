@@ -1,22 +1,27 @@
 /**
- * Home (`/home-new`) — page composition.
+ * Home (`/`) — page composition.
  *
- * Sibling of `src/components/sections-mock/home/home-content.tsx`. Mirrors
- * `HomeContent` section-for-section EXCEPT:
+ * Three jobs in proportion: argument (hero), offer (SafeStart block),
+ * credibility (founders + named voices + Scenius graph). The full
+ * four-stage methodology exposition — Stage 1 boxed feature, satellites,
+ * governance deliverables grid, sequence doctrine — lives on `/pathway`,
+ * not here. The homepage's path-fold collapses to a compressed
+ * `SafeStartBlock` that names the engagement a visitor would actually
+ * buy and links onward to the full path.
  *
- *   – `PathFold` → `PathFoldNew` (Safety CTA href changed to
- *     `/pathway/safety-new`; all other copy/layout/stages identical).
- *   – `FinalCta` → `HomeCTABandNew` (three CTAs collapsed to two — Get the
- *     Field Guide → `/field-guides/safety-new`; Talk about SafeStart →
- *     `/contact?interest=safestart`).
+ * Sections, in order:
+ *   1. `TopographicHero` — argument + two CTAs + scarcity anchor.
+ *   2. `AudienceFold` — "is this for you" with differentiated playbook
+ *      links and a Field Guide fallback for the unsure visitor.
+ *   3. `SafeStartBlock` — compressed Stage-1 offer; links to `/pathway`
+ *      for the full methodology.
+ *   4. `CredibilityFold` — founders, named voices, Scenius dot portrait.
+ *   5. `HomeCTABandNew` — bottom band mirroring the hero's two CTAs
+ *      and scarcity line for the visitor who scrolled the whole page.
  *
- * Hero, audience trio, credibility fold (and its embedded Scenius network),
- * and the citations provider are reused as-is. The chip order SSOT
- * (`HOME_PAGE_CLAIM_ORDER`) is shared with the existing home — both pages
- * surface the same statistical claims via inline `<Cite />` chips.
- *
- * Non-destructive: do not edit the original `HomeContent`. See
- * `docs/_new/safety-new-changelog.md` for the rebuild log.
+ * `PathFoldNew` is no longer imported — its content moved to `/pathway`
+ * (see `PathwayOverviewTemplate`). The file stays in place under
+ * `_new/` as a reference for any later regression check.
  */
 
 import { CitationsProvider } from "@/components/citations";
@@ -26,14 +31,14 @@ import { CredibilityFold } from "@/components/sections-mock/home/credibility-fol
 import { TopographicHero } from "@/components/studio/hero/TopographicHero";
 
 import { HomeCTABandNew } from "./HomeCTABandNew";
-import { PathFoldNew } from "./PathFoldNew";
+import { SafeStartBlock } from "./SafeStartBlock";
 
 export function HomeContentNew() {
   return (
     <CitationsProvider claims={HOME_PAGE_CLAIM_ORDER}>
       <TopographicHero />
       <AudienceFold />
-      <PathFoldNew />
+      <SafeStartBlock />
       <CredibilityFold />
       <HomeCTABandNew />
     </CitationsProvider>

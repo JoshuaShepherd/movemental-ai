@@ -65,7 +65,8 @@ export default async function RootLayout({
 }) {
   const h = await headers();
   const shell = h.get("x-movemental-shell");
-  const hideMarketingChrome = shell === "dashboard" || shell === "invite";
+  const hideMarketingChrome =
+    shell === "dashboard" || shell === "invite" || shell === "paper";
 
   return (
     <html

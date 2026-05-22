@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import Link from "next/link";
 
 /**
@@ -14,6 +14,7 @@ export function PathwayOverviewTemplate() {
         <TwoTrapsSection />
         <WhyOrderMattersSection />
         <FourStagesSection />
+        <Stage1GovernanceSection />
         <EngagementOptionsSection />
         <ScenariosSection />
         <InstitutionalSection />
@@ -312,6 +313,102 @@ function FourStagesSection() {
 }
 
 /* -------------------------------------------------------------------------- */
+/*  Stage 1 governance — migrated from the home-page PathFoldNew              */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The Stage-1 "WHAT THIS STAGE PRODUCES / HOW YOU KNOW IT'S IN PLACE / IF THIS
+ * STAGE IS SKIPPED" detail used to live on the homepage. Moved here so the
+ * homepage can compress, while the canonical four-stage page carries the
+ * governance depth that ratifies why Safety must come first.
+ *
+ * The "Two weeks of facilitated work..." lead sentence is repeated verbatim
+ * on the homepage's SafeStartBlock. The duplication is intentional — this is
+ * the load-bearing sentence and it belongs on both surfaces.
+ */
+function Stage1GovernanceSection() {
+  return (
+    <section className="bg-section py-24 md:py-32" aria-labelledby="stage-1-governance-heading">
+      <div className="mx-auto max-w-[1200px] px-8">
+        <div className="mx-auto mb-12 max-w-[760px] text-center">
+          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-primary">
+            Stage 1 — Safety
+          </p>
+          <h2
+            id="stage-1-governance-heading"
+            className="font-serif-display text-4xl italic text-foreground md:text-5xl"
+          >
+            What SafeStart produces, and how you know it&rsquo;s in place.
+          </h2>
+        </div>
+
+        <div className="border border-border bg-background p-8 md:p-12">
+          <p className="max-w-3xl font-serif text-lg italic leading-relaxed text-foreground md:text-xl">
+            Two weeks of facilitated work that produces a board-ratifiable AI
+            Organizational Guidebook in five layers your leadership can sign
+            and your team can follow.
+          </p>
+          <div className="mt-10 grid gap-10 md:grid-cols-3 md:gap-8">
+            <div>
+              <p className="mb-4 text-[11px] font-medium uppercase tracking-eyebrow text-muted-foreground">
+                What this stage produces
+              </p>
+              <ul className="m-0 space-y-3 p-0 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                <li className="pl-0">
+                  Acceptable Use Policy and Named Refusals
+                </li>
+                <li className="pl-0">
+                  Vendor &amp; Tool Inventory and Data Classification
+                </li>
+                <li className="pl-0">
+                  Data Handling, Disclosure, and Care Boundaries
+                </li>
+                <li className="pl-0">Incident Response Plan</li>
+              </ul>
+            </div>
+            <div>
+              <p className="mb-4 text-[11px] font-medium uppercase tracking-eyebrow text-muted-foreground">
+                How you know it&rsquo;s in place
+              </p>
+              <ul className="m-0 space-y-3 p-0 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                <li className="pl-0">Board has ratified your AI position</li>
+                <li className="pl-0">
+                  Staff know what is permitted and what is not
+                </li>
+                <li className="pl-0">No unmanaged AI use</li>
+                <li className="pl-0">
+                  You can answer the question &ldquo;what is our AI
+                  policy?&rdquo; in one paragraph
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="mb-4 text-[11px] font-medium uppercase tracking-eyebrow text-muted-foreground">
+                If this stage is skipped
+              </p>
+              <ul className="m-0 space-y-3 p-0 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                <li className="pl-0">
+                  Staff create habits before standards exist
+                </li>
+                <li className="pl-0">Risk surfaces after damage is done</li>
+                <li className="pl-0">
+                  Leadership becomes reactive instead of proactive
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <p className="mx-auto mt-12 max-w-2xl text-center font-serif text-xl italic leading-snug text-foreground md:text-[1.375rem]">
+          Most organizations begin with Safety. The path is sequential because
+          the work is sequential.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
 /*  Engagement Options — migrated from /work-with-us                           */
 /* -------------------------------------------------------------------------- */
 
@@ -545,27 +642,40 @@ function BoundariesSection() {
 
 function ClosingCtaSection() {
   return (
-    <section className="bg-inverse-surface py-24 text-center text-inverse-foreground md:py-32">
+    <section className="band-midnight text-center !py-24 md:!py-32">
       <div className="mx-auto max-w-[720px] px-8">
         <div className="mb-6 font-sans text-xs font-semibold uppercase tracking-widest text-inverse-muted">
           BEGIN THE PATH
         </div>
-        <h2 className="mb-12 font-serif-display text-5xl italic">
-          The path is sequential because the work is sequential.
+        <h2 className="mb-12 font-serif-display text-5xl italic text-inverse-foreground">
+          Start with Safety. The path takes care of the order.
         </h2>
-        <div className="flex flex-col justify-center gap-6 sm:flex-row">
-          <Link
-            href="/field-guides/safety"
-            className="bg-inverse-foreground px-10 py-4 font-sans text-xs font-semibold uppercase tracking-wider text-inverse-surface transition-colors hover:bg-card"
-          >
-            Read the Field Guide
-          </Link>
-          <Link
-            href="/contact?interest=safestart"
-            className="border border-inverse-border px-10 py-4 font-sans text-xs font-semibold uppercase tracking-wider text-inverse-foreground transition-colors hover:border-inverse-muted"
-          >
-            Start SafeStart
-          </Link>
+        <div className="flex flex-col items-center justify-center gap-6 sm:flex-row sm:items-end sm:gap-10">
+          <div className="flex flex-col items-center gap-1.5">
+            <Link
+              href="/contact?interest=safestart"
+              className="btn-pill btn-pill--primary px-8 py-3.5"
+              aria-label="Start SafeStart — the $1,000 facilitated engagement"
+            >
+              Start SafeStart
+              <ArrowRight className="size-4" aria-hidden />
+            </Link>
+            <span className="font-sans text-[12px] font-medium uppercase tracking-eyebrow text-inverse-muted">
+              $1,000 · two weeks · ratifiable Guidebook
+            </span>
+          </div>
+          <div className="flex flex-col items-center gap-1.5">
+            <Link
+              href="/field-guides/safety"
+              className="btn-pill btn-pill--ghost px-8 py-3.5"
+            >
+              <Download className="size-4" aria-hidden />
+              Download the Field Guide
+            </Link>
+            <span className="font-sans text-[12px] font-medium uppercase tracking-eyebrow text-inverse-muted">
+              Free · 40 pages · the full method
+            </span>
+          </div>
         </div>
       </div>
     </section>

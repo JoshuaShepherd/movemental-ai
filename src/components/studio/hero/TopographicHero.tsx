@@ -7,6 +7,10 @@ import { ArrowRight, Download } from "lucide-react";
 import { Cite } from "@/components/citations";
 import { Container } from "@/components/studio/Container";
 import { Reveal } from "@/components/studio/Reveal";
+import {
+  SAFESTART_SEAT_CAP,
+  SAFESTART_SEAT_COUNT,
+} from "@/lib/safestart-seats";
 
 type Stage = { num: string; title: string; active?: boolean };
 
@@ -61,11 +65,11 @@ export function TopographicHero() {
             </h1>
 
             <p className="mt-5 max-w-2xl text-[18px] leading-[1.55] text-foreground md:mt-6 md:text-[20px] md:leading-[1.5]">
-              AI is being used by people inside your organization right now
-              <Cite claimId="nonprofit-81-adhoc" />. Most leaders have not yet
-              decided what is safe, valuable, or
-              ethical for their work. The four-stage path below is how you
-              decide, in writing, before you build anything else.
+              It&rsquo;s being used by people inside your organization right
+              now — in drafts, in correspondence, in counsel given. Most
+              leaders have not yet decided what is safe, valuable, or ethical
+              for their work. The four-stage path below is how you decide, in
+              writing, before you build anything else.
             </p>
           </div>
 
@@ -156,6 +160,11 @@ export function TopographicHero() {
               </span>
             </div>
           </div>
+
+          <p className="mt-8 text-[12px] font-medium uppercase tracking-eyebrow text-muted-foreground md:mt-10">
+            {SAFESTART_SEAT_COUNT} of {SAFESTART_SEAT_CAP} leader seats
+            committed. Network capped at {SAFESTART_SEAT_CAP}.
+          </p>
         </Reveal>
       </Container>
     </section>

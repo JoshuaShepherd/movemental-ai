@@ -1,6 +1,10 @@
 import { ArrowRight, Download } from "lucide-react";
 
 import { BtnPill } from "@/components/sections-mock/primitives";
+import {
+  SAFESTART_SEAT_CAP,
+  SAFESTART_SEAT_COUNT,
+} from "@/lib/safestart-seats";
 
 /**
  * Home (`/home-new`) — bottom midnight CTA band.
@@ -65,6 +69,11 @@ export function HomeCTABandNew() {
             </span>
           </div>
         </div>
+
+        <p className="mt-10 text-[12px] font-medium uppercase tracking-eyebrow text-inverse-muted md:mt-12">
+          {SAFESTART_SEAT_COUNT} of {SAFESTART_SEAT_CAP} leader seats
+          committed. Network capped at {SAFESTART_SEAT_CAP}.
+        </p>
       </div>
     </section>
   );

@@ -49,6 +49,13 @@ const AUTHENTICATED_PATH_PREFIXES = [
 
 const READINESS_INVITE_PREFIX = "/readiness-invite/";
 
+/**
+ * Standalone marketing surfaces that render their own self-contained chrome
+ * and must not inherit the SiteHeader/SiteFooter. Each entry is matched on
+ * exact path equality.
+ */
+const STANDALONE_PAPER_PATHS = new Set(["/home-paper"]);
+
 /** Public marketing chrome — not AuthenticatedShell (Phase 06). */
 const PUBLIC_LEADER_PATHS = new Set(["/leader/apply"]);
 
@@ -71,6 +78,11 @@ export async function proxy(request: NextRequest) {
 
   if (pathname.startsWith(READINESS_INVITE_PREFIX)) {
     inject["x-movemental-shell"] = "invite";
+    return updateSession(request, inject);
+  }
+
+  if (STANDALONE_PAPER_PATHS.has(pathname)) {
+    inject["x-movemental-shell"] = "paper";
     return updateSession(request, inject);
   }
 
