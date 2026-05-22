@@ -127,8 +127,8 @@ export function SystemPageContent() {
                 <ArrowLink href="/pricing" tone="foreground">
                   Pricing
                 </ArrowLink>
-                <ArrowLink href="/contact" tone="foreground">
-                  Start a conversation
+                <ArrowLink href="/contact?interest=safestart" tone="foreground">
+                  Start SafeStart
                 </ArrowLink>
               </div>
             </div>

@@ -632,11 +632,11 @@ export function AboutPageContent() {
               </p>
 
               <div className="mt-12 flex flex-col gap-4 sm:flex-row">
-                <Link href="/contact" className="btn-pill btn-pill--primary">
-                  Start a conversation
+                <Link href="/contact?interest=safestart" className="btn-pill btn-pill--primary">
+                  Start SafeStart
                 </Link>
-                <Link href="/field-guides" className="btn-pill btn-pill--ghost">
-                  Read the field guide
+                <Link href="/field-guides/safety" className="btn-pill btn-pill--ghost">
+                  Download the Field Guide
                 </Link>
               </div>
 

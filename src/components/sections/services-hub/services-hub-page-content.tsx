@@ -217,8 +217,8 @@ export function ServicesHubPageContent() {
                 </p>
               </Prose>
               <div className="mt-8">
-                <ArrowLink href="/contact" size="lg">
-                  Start a conversation
+                <ArrowLink href="/contact?interest=safestart" size="lg">
+                  Start SafeStart
                 </ArrowLink>
               </div>
             </div>

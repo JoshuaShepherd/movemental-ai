@@ -7,6 +7,19 @@ import { SectionHead } from "@/components/sections-mock/primitives";
 import { SITE_FOUNDERS } from "@/lib/site-founders";
 
 import { SceniusNetworkHome } from "./scenius-network-home";
+import { MOVEMENT_VOICES } from "./voices-graph-data";
+
+const FOUNDER_VOICE_IDS = new Set(["alan-hirsch", "brad-brisco", "josh-shepherd"]);
+
+/**
+ * Named voices surfaced above the dot-portrait visualization so the visualization
+ * reinforces specifics already established by name, rather than gesturing at an
+ * unnamed mass. Pulled from the same roster that powers the viz so the two blocks
+ * stay in sync.
+ */
+const NAMED_VOICES = MOVEMENT_VOICES.filter(
+  (v) => !FOUNDER_VOICE_IDS.has(v.id),
+);
 
 // TODO(founders): Brad Brisco and Joshua Shepherd portraits are from one shoot;
 // Alan Hirsch's is from a different source with different lighting and crop
@@ -63,6 +76,41 @@ export function CredibilityFold() {
                     </h3>
                     <p className="text-sm leading-relaxed text-muted-foreground">
                       {founder.shortTitle}
+                    </p>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-14 md:mt-16">
+          <p className="text-xs font-medium uppercase tracking-eyebrow text-muted-foreground">
+            Named voices
+          </p>
+          <ul className="mt-5 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+            {NAMED_VOICES.map((voice) => (
+              <li key={voice.id}>
+                <Link
+                  href="/voices"
+                  className="group flex items-center gap-4 rounded-md p-2 -m-2 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                >
+                  <div className="relative aspect-4/5 w-16 shrink-0 overflow-hidden rounded-lg bg-muted ring-1 ring-border/60 transition-shadow group-hover:shadow-ambient">
+                    <Image
+                      src={voice.imageSrc}
+                      alt={`Portrait of ${voice.name}`}
+                      width={640}
+                      height={800}
+                      className="h-full w-full object-cover"
+                      sizes="64px"
+                    />
+                  </div>
+                  <div className="flex min-w-0 flex-col gap-0.5 pt-0.5">
+                    <h4 className="text-[0.95rem] font-medium tracking-tight text-foreground underline decoration-transparent decoration-2 underline-offset-4 transition-colors group-hover:decoration-primary/40">
+                      {voice.name}
+                    </h4>
+                    <p className="text-[13px] leading-snug text-muted-foreground">
+                      {voice.title}
                     </p>
                   </div>
                 </Link>

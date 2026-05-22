@@ -529,8 +529,8 @@ export function HowWeUseAiPageContent() {
 
               <div className="mt-12 flex flex-col gap-4 sm:flex-row">
                 <HowWeUseAiToolkitTrigger source="how-we-use-ai-closing" />
-                <Link href="/contact" className="btn-pill btn-pill--ghost">
-                  Start a conversation
+                <Link href="/contact?interest=safestart" className="btn-pill btn-pill--ghost">
+                  Start SafeStart
                 </Link>
               </div>
 

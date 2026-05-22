@@ -348,8 +348,8 @@ function FinalCta() {
           <BtnPill href="#begin" variant="primary">
             Take the diagnostic
           </BtnPill>
-          <BtnPill href="/contact" variant="ghost">
-            Start a conversation first
+          <BtnPill href="/contact?interest=safestart" variant="ghost">
+            Start SafeStart first
           </BtnPill>
         </div>
       </div>

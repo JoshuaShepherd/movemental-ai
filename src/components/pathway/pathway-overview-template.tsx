@@ -561,10 +561,10 @@ function ClosingCtaSection() {
             Read the Field Guide
           </Link>
           <Link
-            href="/contact"
+            href="/contact?interest=safestart"
             className="border border-inverse-border px-10 py-4 font-sans text-xs font-semibold uppercase tracking-wider text-inverse-foreground transition-colors hover:border-inverse-muted"
           >
-            Start a conversation
+            Start SafeStart
           </Link>
         </div>
       </div>

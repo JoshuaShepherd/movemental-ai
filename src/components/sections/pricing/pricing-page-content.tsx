@@ -325,12 +325,12 @@ export function PricingPageContent() {
                 </span>
               </Link>
               <Link
-                href="/contact"
+                href="/contact?interest=safestart"
                 className="group flex flex-col items-center gap-4 border border-border bg-section p-8 transition-colors hover:bg-elevated"
               >
                 <MessageSquare className="size-10 text-muted-foreground transition-colors group-hover:text-primary" aria-hidden strokeWidth={1.25} />
                 <span className="text-xs font-semibold uppercase tracking-eyebrow text-foreground">
-                  Start a conversation
+                  Start SafeStart
                 </span>
               </Link>
             </div>

@@ -562,8 +562,8 @@ function FinalCta() {
           time whether the Sequence is a fit, and whether the timing is.
         </p>
         <div className="hero-actions">
-          <BtnPill href="/contact" variant="primary">
-            Start a conversation
+          <BtnPill href="/contact?interest=safestart" variant="primary">
+            Start SafeStart
           </BtnPill>
           <BtnPill href="/voices" variant="ghost">
             See trusted voices

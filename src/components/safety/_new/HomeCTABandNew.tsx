@@ -1,3 +1,5 @@
+import { ArrowRight, Download } from "lucide-react";
+
 import { BtnPill } from "@/components/sections-mock/primitives";
 
 /**
@@ -39,13 +41,29 @@ export function HomeCTABandNew() {
           for their work. The four-stage path is how you decide, in writing,
           before you build anything else.
         </p>
-        <div className="hero-actions final-cta__actions mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
-          <BtnPill href="/field-guides/safety" variant="primary">
-            Get the Field Guide
-          </BtnPill>
-          <BtnPill href="/contact?interest=safestart" variant="ghost">
-            Talk about SafeStart
-          </BtnPill>
+        <div className="hero-actions final-cta__actions mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-10">
+          <div className="flex flex-col items-center gap-1.5">
+            <BtnPill
+              href="/contact?interest=safestart"
+              variant="primary"
+              aria-label="Start SafeStart — the $1,000 facilitated engagement"
+            >
+              Start SafeStart
+              <ArrowRight className="size-4" aria-hidden />
+            </BtnPill>
+            <span className="text-[12px] font-medium uppercase tracking-eyebrow text-inverse-muted">
+              $1,000 · two weeks · ratifiable Guidebook
+            </span>
+          </div>
+          <div className="flex flex-col items-center gap-1.5">
+            <BtnPill href="/field-guides/safety" variant="ghost">
+              <Download className="size-4" aria-hidden />
+              Download the Field Guide
+            </BtnPill>
+            <span className="text-[12px] font-medium uppercase tracking-eyebrow text-inverse-muted">
+              Free · 40 pages · the full method
+            </span>
+          </div>
         </div>
       </div>
     </section>

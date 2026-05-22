@@ -89,7 +89,7 @@ export function PathFoldNew() {
               number="02"
               title="Sandbox"
               meta="$15,000 · four weeks · disciplined exploration"
-              body="Disciplined exploration of valuable AI use cases without the risks of publication."
+              body="Disciplined exploration of valuable AI use cases and ethical concerns, without the risks of publication or privacy exposure."
               href="/pathway/sandbox"
               borderRight
             />

@@ -94,8 +94,8 @@ export function FaqPageContent() {
             </Prose>
             <div className="mt-8 flex flex-col items-center gap-8">
               <Button asChild size="lg">
-                <Link href="/contact">
-                  Start a conversation
+                <Link href="/contact?interest=safestart">
+                  Start SafeStart
                   <ArrowRight className="ml-1 size-4" aria-hidden />
                 </Link>
               </Button>

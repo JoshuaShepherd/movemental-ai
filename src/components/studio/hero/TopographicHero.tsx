@@ -2,38 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FlaskConical, GraduationCap, Rocket, ShieldCheck } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 
 import { Cite } from "@/components/citations";
 import { Container } from "@/components/studio/Container";
 import { Reveal } from "@/components/studio/Reveal";
 
-const STAGES = [
-  {
-    icon: ShieldCheck,
-    label: "Stage 1",
-    title: "Safety",
-    body: "Decide in writing what AI may and may not do in your organization, before anyone else decides for you.",
-  },
-  {
-    icon: FlaskConical,
-    label: "Stage 2",
-    title: "Sandbox",
-    body: "Disciplined exploration of valuable AI use cases and ethical concerns, without the risks of publication and privacy issues.",
-  },
-  {
-    icon: GraduationCap,
-    label: "Stage 3",
-    title: "Skills",
-    body: "Formation that produces leaders, not just users.",
-  },
-  {
-    icon: Rocket,
-    label: "Stage 4",
-    title: "Solutions",
-    body: "AI integrated into how the organization actually runs, owned by formed people, governed by working policy.",
-  },
-] as const;
+type Stage = { num: string; title: string; active?: boolean };
+
+const STAGES: readonly Stage[] = [
+  { num: "01", title: "Safety", active: true },
+  { num: "02", title: "Sandbox" },
+  { num: "03", title: "Skills" },
+  { num: "04", title: "Solutions" },
+];
 
 export function TopographicHero() {
   return (
@@ -41,14 +23,6 @@ export function TopographicHero() {
       className="relative overflow-hidden bg-background pt-6 pb-12 sm:pt-8 sm:pb-14 md:pt-10 md:pb-16 lg:pt-12 lg:pb-20"
       aria-labelledby="hero-h1"
     >
-      {/*
-        Desktop terrain — absolute-positioned to the right edge, very low
-        opacity, washed back into paper with a left-to-right gradient so the
-        headline + stage row stay the focal point.
-
-        Light: multiply gently keys linework into `--background`.
-        Dark: invert + screen so light topo art reads instead of vanishing under multiply.
-      */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-y-0 right-0 hidden w-[58vw] max-w-[960px] lg:block xl:w-[52vw]"
@@ -95,40 +69,92 @@ export function TopographicHero() {
             </p>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-6 border-t border-border pt-8 md:mt-12 md:grid-cols-2 md:gap-x-8 md:gap-y-8 md:pt-10 lg:grid-cols-4 lg:gap-x-10 lg:gap-y-8">
-            {STAGES.map(({ icon: Icon, label, title, body }) => (
-              <div key={label} className="flex flex-col">
-                <Icon
-                  aria-hidden="true"
-                  strokeWidth={1.25}
-                  className="mb-4 h-7 w-7 text-muted-foreground"
+          {/* Compressed stage indicator — single row, Safety emphasised */}
+          <div className="mt-10 border-t border-border pt-6 md:mt-12 md:pt-8">
+            <ol
+              aria-label="The Movemental Path — four stages, in order"
+              className="grid grid-cols-2 gap-x-6 gap-y-4 md:grid-cols-4 md:gap-x-8"
+            >
+              {STAGES.map((stage, idx) => (
+                <li
+                  key={stage.num}
+                  className="flex items-baseline gap-3 md:block"
+                >
+                  <div
+                    className={[
+                      "font-serif italic leading-none text-[1.5rem] md:text-[1.75rem] md:mb-2",
+                      stage.active
+                        ? "text-pathway-accent"
+                        : "text-foreground/35",
+                    ].join(" ")}
+                  >
+                    {stage.num}
+                    <span aria-hidden>.</span>
+                  </div>
+                  <div className="flex flex-col gap-0.5">
+                    <span
+                      className={[
+                        "text-[15px] md:text-base font-medium tracking-tight",
+                        stage.active ? "text-foreground" : "text-muted-foreground",
+                      ].join(" ")}
+                    >
+                      {stage.title}
+                    </span>
+                    {stage.active ? (
+                      <span className="text-[10.5px] font-medium uppercase tracking-eyebrow text-pathway-accent">
+                        Start here
+                      </span>
+                    ) : (
+                      <span className="text-[10.5px] font-medium uppercase tracking-eyebrow text-muted-foreground/70">
+                        Stage {idx + 1}
+                      </span>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            <p className="mt-6 text-[14px] text-muted-foreground">
+              <Link
+                href="/pathway"
+                className="group inline-flex items-center gap-1.5 border-b border-foreground/30 pb-0.5 text-foreground transition-colors hover:border-foreground"
+              >
+                Start with Safety. The path is sequential.
+                <ArrowRight
+                  className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+                  aria-hidden
                 />
-                <div className="mb-2 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
-                  {label}
-                </div>
-                <h3 className="mb-2 font-serif italic font-normal text-foreground text-[1.375rem] leading-[1.15] tracking-[-0.01em] md:text-[1.5rem]">
-                  {title}
-                </h3>
-                <p className="text-[14px] leading-[1.55] text-muted-foreground md:text-[14.5px]">
-                  {body}
-                </p>
-              </div>
-            ))}
+              </Link>
+            </p>
           </div>
 
-          <div className="mt-8 flex flex-col gap-3 md:mt-10 md:flex-row md:gap-4">
-            <Link
-              href="/pathway"
-              className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3.5 text-base font-medium text-primary-foreground transition-transform duration-200 ease-out motion-safe:hover:-translate-y-0.5"
-            >
-              See the Movemental Path
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-full border border-border px-8 py-3.5 text-base font-medium text-foreground transition-colors duration-200 ease-out hover:bg-section"
-            >
-              Start a Conversation
-            </Link>
+          {/* Differentiated CTAs — paid commitment vs free download */}
+          <div className="mt-10 flex flex-col gap-4 md:mt-12 md:flex-row md:items-end md:gap-6">
+            <div className="flex flex-col items-start gap-1.5">
+              <Link
+                href="/contact?interest=safestart"
+                className="btn-pill btn-pill--primary px-7 py-3.5"
+                aria-label="Start SafeStart — the $1,000 facilitated engagement"
+              >
+                Start SafeStart
+                <ArrowRight className="size-4" aria-hidden />
+              </Link>
+              <span className="text-[12px] font-medium uppercase tracking-eyebrow text-muted-foreground">
+                $1,000 · two weeks · ratifiable Guidebook
+              </span>
+            </div>
+            <div className="flex flex-col items-start gap-1.5">
+              <Link
+                href="/field-guides/safety"
+                className="btn-pill btn-pill--ghost px-7 py-3.5"
+              >
+                <Download className="size-4" aria-hidden />
+                Download the Field Guide
+              </Link>
+              <span className="text-[12px] font-medium uppercase tracking-eyebrow text-muted-foreground">
+                Free · 40 pages · the full method
+              </span>
+            </div>
           </div>
         </Reveal>
       </Container>

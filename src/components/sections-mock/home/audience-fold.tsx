@@ -8,6 +8,7 @@ interface SegmentCard {
   title: string;
   body: string;
   ctaLabel: string;
+  preview: string;
 }
 
 const SEGMENT_CARDS: readonly SegmentCard[] = [
@@ -16,21 +17,27 @@ const SEGMENT_CARDS: readonly SegmentCard[] = [
     title: "Churches",
     body:
       "For executive pastors and elder teams navigating AI in pastoral work, communications, and ministry without losing what makes the church a church.",
-    ctaLabel: "Find out more",
+    ctaLabel: "Read the church playbook",
+    preview:
+      "For executive pastors and elder teams — Sundays, staff, and pastoral correspondence.",
   },
   {
     href: "/nonprofits",
     title: "Nonprofits",
     body:
       "For executive directors and boards facing AI as a fiduciary responsibility — donor trust, beneficiary protection, regulatory exposure — not just an operational question.",
-    ctaLabel: "Find out more",
+    ctaLabel: "Read the nonprofit playbook",
+    preview:
+      "For executive directors and boards — donor trust, beneficiary protection, regulatory exposure.",
   },
   {
     href: "/institutions",
     title: "Institutions",
     body:
       "For seminary presidents, denominational executives, and training networks managing AI across faculty, students, and accreditation simultaneously.",
-    ctaLabel: "Find out more",
+    ctaLabel: "Read the institution playbook",
+    preview:
+      "For seminary presidents and training networks — faculty, students, and accreditation.",
   },
 ];
 
@@ -71,15 +78,20 @@ export function AudienceFold() {
               <p className="text-[1.0625rem] leading-relaxed text-muted-foreground">
                 {card.body}
               </p>
-              <span className="mt-auto flex items-center justify-between gap-4 pt-4">
-                <span className="text-xs font-medium uppercase tracking-eyebrow text-foreground">
-                  {card.ctaLabel}
+              <div className="mt-auto flex flex-col gap-2 border-t border-rule pt-4">
+                <span className="flex items-center justify-between gap-4">
+                  <span className="text-xs font-medium uppercase tracking-eyebrow text-foreground">
+                    {card.ctaLabel}
+                  </span>
+                  <ArrowUpRight
+                    className="size-4 shrink-0 text-foreground transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    aria-hidden
+                  />
                 </span>
-                <ArrowUpRight
-                  className="size-4 shrink-0 text-foreground transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  aria-hidden
-                />
-              </span>
+                <p className="font-serif text-[14px] italic leading-snug text-muted-foreground">
+                  {card.preview}
+                </p>
+              </div>
             </Link>
           ))}
         </div>

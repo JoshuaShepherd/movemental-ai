@@ -182,10 +182,18 @@ export async function SiteFooter() {
             </li>
             <li>
               <Link
-                href="/contact"
+                href="/about-safestart"
                 className="decoration-primary/30 underline-offset-4 transition-colors hover:text-primary hover:underline hover:decoration-primary"
               >
-                Start a conversation
+                Learn about SafeStart
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/contact?interest=safestart"
+                className="decoration-primary/30 underline-offset-4 transition-colors hover:text-primary hover:underline hover:decoration-primary"
+              >
+                Start SafeStart
               </Link>
             </li>
             <li>

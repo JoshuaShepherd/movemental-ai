@@ -32,11 +32,11 @@ function Hero() {
           by the organization.
         </p>
         <div className="hero-actions">
-          <BtnPill href="/field-guides" variant="primary">
-            Read the field guide
+          <BtnPill href="/contact?interest=safestart" variant="primary">
+            Start SafeStart
           </BtnPill>
-          <BtnPill href="/contact" variant="ghost">
-            Start a conversation
+          <BtnPill href="/field-guides/safety" variant="ghost">
+            Download the Field Guide
           </BtnPill>
         </div>
         <div className="hero-proof">
@@ -343,8 +343,8 @@ function FinalCta() {
           move.
         </p>
         <div className="hero-actions">
-          <BtnPill href="/contact" variant="primary">
-            Start a conversation
+          <BtnPill href="/contact?interest=safestart" variant="primary">
+            Start SafeStart
           </BtnPill>
           <BtnPill href="/assess" variant="ghost">
             Take the diagnostic

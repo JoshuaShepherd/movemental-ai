@@ -40,10 +40,10 @@ export function PathClosingCta() {
           
           <div className="flex flex-wrap justify-center gap-6">
             <Link
-              href="/contact"
+              href="/contact?interest=safestart"
               className="btn-pill bg-inverse-foreground text-inverse-surface hover:bg-inverse-muted font-semibold transition-colors"
             >
-              Start a Conversation
+              Start SafeStart
             </Link>
             <Link href="/pathway" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Explore the Full Path</Link>
           </div>

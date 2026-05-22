@@ -292,7 +292,7 @@ export function SafetyNewPage() {
                     href="/contact?interest=safestart"
                     className="btn-pill btn-pill--primary"
                   >
-                    Start a conversation
+                    Start SafeStart
                   </Link>
                 </div>
               </div>

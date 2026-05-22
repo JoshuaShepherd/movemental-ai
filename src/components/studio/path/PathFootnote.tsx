@@ -104,8 +104,8 @@ export function PathFootnote({
               ) : (
                 <ul className="space-y-3 text-sm">
                   <li>
-                    <Link href="/contact" className="transition-colors hover:text-inverse-foreground">
-                      Start a conversation
+                    <Link href="/contact?interest=safestart" className="transition-colors hover:text-inverse-foreground">
+                      Start SafeStart
                     </Link>
                   </li>
                   <li>

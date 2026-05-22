@@ -208,7 +208,7 @@ export function AssessPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a href="#begin" className="btn-pill btn-pill--primary">Take the diagnostic</a>
-              <Link href="/contact" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Start a conversation first</Link>
+              <Link href="/contact?interest=safestart" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Start SafeStart first</Link>
             </div>
           </Reveal>
         </Container>

@@ -472,6 +472,12 @@ export function SiteHeader({
           />
 
           <Link
+            href="/about-safestart"
+            className="relative px-3 py-3.5 text-sm font-medium transition-colors duration-200 after:absolute after:right-3 after:bottom-2.5 after:left-3 after:h-px after:origin-left after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 hover:text-primary hover:after:scale-x-100"
+          >
+            SafeStart
+          </Link>
+          <Link
             href="/about"
             className="relative px-3 py-3.5 text-sm font-medium transition-colors duration-200 after:absolute after:right-3 after:bottom-2.5 after:left-3 after:h-px after:origin-left after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 hover:text-primary hover:after:scale-x-100"
           >
@@ -485,18 +491,22 @@ export function SiteHeader({
           </Link>
         </nav>
 
-        <div className="hidden items-center gap-4 lg:flex">
+        <div className="hidden items-center gap-3 lg:flex">
           <Link
             href="/field-guides/safety"
-            className="inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-eyebrow text-muted-foreground transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="btn-pill btn-pill--ghost py-2.5 text-sm"
           >
-            <Download className="size-3.5" aria-hidden />
-            FIELD GUIDE
+            <Download className="size-4" aria-hidden />
+            Field Guide
           </Link>
           <ThemeToggle size="comfortable" />
           {authDesktopCta ?? (
-            <Link href="/contact" className="btn-pill btn-pill--primary py-2.5">
-              Start a Conversation
+            <Link
+              href="/contact?interest=safestart"
+              className="btn-pill btn-pill--primary py-2.5"
+              aria-label="Start SafeStart — the $1,000 facilitated engagement"
+            >
+              Start SafeStart
             </Link>
           )}
         </div>
@@ -568,6 +578,16 @@ export function SiteHeader({
             ))}
           </div>
           <Link
+            href="/about-safestart"
+            onClick={() => setIsMenuOpen(false)}
+            className={cn(
+              "flex min-h-11 items-center rounded-md px-2 text-lg font-medium transition-colors hover:bg-section",
+              pathname.startsWith("/about-safestart") && "bg-section",
+            )}
+          >
+            SafeStart
+          </Link>
+          <Link
             href="/about"
             onClick={() => setIsMenuOpen(false)}
             className="flex min-h-11 items-center rounded-md px-2 text-lg font-medium transition-colors hover:bg-section"
@@ -581,23 +601,25 @@ export function SiteHeader({
           >
             Contact
           </Link>
-          <Link
-            href="/field-guides/safety"
-            onClick={() => setIsMenuOpen(false)}
-            className="mt-2 inline-flex items-center justify-center gap-2 rounded-md bg-section p-3 text-sm font-medium text-foreground transition-colors hover:bg-border"
-          >
-            <Download className="size-4" aria-hidden />
-            FIELD GUIDE
-          </Link>
-          {authMobileCta ?? (
+          <div className="mt-3 flex flex-col gap-2">
             <Link
-              href="/contact"
+              href="/field-guides/safety"
               onClick={() => setIsMenuOpen(false)}
-              className="btn-pill btn-pill--primary mt-4 flex w-full justify-center py-3 text-center"
+              className="btn-pill btn-pill--ghost flex w-full justify-center gap-2 py-3 text-center"
             >
-              Start a Conversation
+              <Download className="size-4" aria-hidden />
+              Download the Field Guide
             </Link>
-          )}
+            {authMobileCta ?? (
+              <Link
+                href="/contact?interest=safestart"
+                onClick={() => setIsMenuOpen(false)}
+                className="btn-pill btn-pill--primary flex w-full justify-center py-3 text-center"
+              >
+                Start SafeStart
+              </Link>
+            )}
+          </div>
           <button
             type="button"
             onClick={toggleTheme}

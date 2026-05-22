@@ -97,10 +97,10 @@ export default async function RecipesPublicPreviewPage() {
             <ArrowRight className="size-4" aria-hidden />
           </Link>
           <Link
-            href="/contact"
+            href="/contact?interest=safestart"
             className="inline-flex items-center gap-2 border border-border-soft bg-card px-5 py-2.5 text-[13px] font-medium text-foreground transition-colors hover:bg-section"
           >
-            Start a conversation
+            Start SafeStart
           </Link>
         </div>
       </section>

@@ -377,11 +377,11 @@ function ClosingCta() {
               path is the right mechanism for their mission.
             </p>
             <div className="mb-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-              <Link href="/contact" className="btn-pill btn-pill--primary">
-                Start a conversation
+              <Link href="/contact?interest=safestart" className="btn-pill btn-pill--primary">
+                Start SafeStart
               </Link>
-              <Link href="/field-guides" className="btn-pill btn-pill--ghost">
-                Read the field guide first
+              <Link href="/field-guides/safety" className="btn-pill btn-pill--ghost">
+                Download the Field Guide first
               </Link>
             </div>
             <p className="font-serif-display italic text-muted-foreground">

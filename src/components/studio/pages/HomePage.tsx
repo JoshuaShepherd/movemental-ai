@@ -236,7 +236,7 @@ function FinalCta() {
             You need a clear path for leading through it.
           </h2>
           <div className="flex flex-wrap justify-center gap-4 mt-12">
-            <Link href="/contact" className="btn-pill bg-inverse-foreground text-inverse-surface hover:bg-inverse-muted font-semibold px-8 py-4 text-lg transition-colors">Start a Conversation</Link>
+            <Link href="/contact?interest=safestart" className="btn-pill bg-inverse-foreground text-inverse-surface hover:bg-inverse-muted font-semibold px-8 py-4 text-lg transition-colors">Start SafeStart</Link>
           </div>
         </Reveal>
       </Container>

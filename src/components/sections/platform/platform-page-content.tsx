@@ -122,8 +122,8 @@ export function PlatformPageContent() {
                 <ArrowLink href="/services/sandbox-season" tone="foreground">
                   Sandbox Season
                 </ArrowLink>
-                <ArrowLink href="/contact" tone="foreground">
-                  Start a conversation
+                <ArrowLink href="/contact?interest=safestart" tone="foreground">
+                  Start SafeStart
                 </ArrowLink>
               </div>
             </div>

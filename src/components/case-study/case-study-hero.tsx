@@ -27,10 +27,10 @@ export function CaseStudyHeroBand({ hero }: { hero: CaseStudyHero }) {
           {hero.lede}
         </p>
         <Link
-          href="/contact"
+          href="/contact?interest=safestart"
           className="inline-flex items-center justify-center px-6 py-3 rounded-pill bg-primary text-primary-foreground font-medium text-[0.95rem] hover:bg-primary-dim transition-colors"
         >
-          Start a conversation
+          Start SafeStart
         </Link>
       </Container>
     </Section>

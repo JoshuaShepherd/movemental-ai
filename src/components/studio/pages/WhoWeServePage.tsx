@@ -24,8 +24,8 @@ export function WhoWeServePage() {
               We guide churches, nonprofits, and institutions through the identical Movemental Path, mapping it directly to their distinct operational realities.
             </p>
             <div className="hero-actions flex flex-wrap gap-4">
-              <Link href="/field-guides" className="btn-pill btn-pill--primary">Read the field guide</Link>
-              <Link href="/contact" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Start a conversation</Link>
+              <Link href="/contact?interest=safestart" className="btn-pill btn-pill--primary">Start SafeStart</Link>
+              <Link href="/field-guides/safety" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Download the Field Guide</Link>
             </div>
             <div className="mt-12 flex items-center gap-3 border-t border-inverse-border/30 pt-6 max-w-2xl">
                <span className="text-inverse-foreground/60 text-sm font-medium uppercase tracking-eyebrow">A note on language:</span>
@@ -179,7 +179,7 @@ export function WhoWeServePage() {
               The Sequence is the same. <em dangerouslySetInnerHTML={{__html: 'The work is yours.'}} />
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="btn-pill btn-pill--primary">Start a conversation</Link>
+              <Link href="/contact?interest=safestart" className="btn-pill btn-pill--primary">Start SafeStart</Link>
               <Link href="/assess" className="btn-pill border border-inverse-border text-inverse-foreground hover:bg-inverse-foreground/10">Take the diagnostic</Link>
             </div>
           </Reveal>

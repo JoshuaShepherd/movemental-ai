@@ -9,13 +9,14 @@ function contactCta(variant: "desktop" | "mobile") {
   const isDesktop = variant === "desktop";
   return (
     <Link
-      href="/contact"
+      href="/contact?interest=safestart"
+      aria-label="Start SafeStart — the $1,000 facilitated engagement"
       className={cn(
         "btn-pill btn-pill--primary",
         isDesktop ? "py-2.5" : "mt-4 flex w-full justify-center py-3 text-center",
       )}
     >
-      Start a Conversation
+      Start SafeStart
     </Link>
   );
 }
