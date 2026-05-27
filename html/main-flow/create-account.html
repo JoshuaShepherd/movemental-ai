@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account — Movemental</title>
+  <link rel="stylesheet" href="auth-modals.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <main class="auth-modal" role="dialog" aria-labelledby="create-account-title" aria-modal="true">
+    <div class="auth-modal__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 2L11 13" />
+        <path d="M22 2L15 22L11 13L2 9L22 2Z" />
+      </svg>
+    </div>
+    <h1 id="create-account-title" class="auth-modal__title">Create Account</h1>
+
+    <form class="auth-modal__form" action="#" method="post">
+      <div class="auth-modal__row">
+        <input type="text" name="firstName" id="firstName" placeholder="First name" autocomplete="given-name" />
+        <input type="text" name="lastName" id="lastName" placeholder="Last name" autocomplete="family-name" />
+      </div>
+      <input type="email" name="email" id="email" placeholder="you@example.com" value="jdoe.mobbin2@gmail.com" autocomplete="email" />
+      <button type="submit" class="auth-modal__btn auth-modal__btn--primary">Continue</button>
+
+      <div class="auth-modal__checkboxes">
+        <label class="auth-modal__checkbox">
+          <input type="checkbox" name="terms" />
+          <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Statement</a></span>
+        </label>
+        <label class="auth-modal__checkbox">
+          <input type="checkbox" name="updates" />
+          <span>Send me updates via email. Unsubscribe any time</span>
+        </label>
+      </div>
+    </form>
+  </main>
+
+  <footer class="auth-modal-footer">
+    <a href="/" class="auth-modal-footer__logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 2L11 13" />
+        <path d="M22 2L15 22L11 13L2 9L22 2Z" />
+      </svg>
+      Movemental
+    </a>
+    <span class="auth-modal-footer__curated">curated by <strong>Movemental</strong></span>
+  </footer>
+</body>
+</html>

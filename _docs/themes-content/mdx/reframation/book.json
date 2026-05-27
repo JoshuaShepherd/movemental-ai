@@ -1,0 +1,171 @@
+{
+  "slug": "reframation",
+  "title": "Reframation",
+  "author": "Alan Hirsch, Mark Nelson",
+  "description": "",
+  "sections": [
+    {
+      "slug": "foreword",
+      "title": "Foreword",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-foreword.mdx",
+      "wordCount": 1247,
+      "summary": "Danielle Strickland's foreword introduces the book's central theme of reframing our understanding of God and the gospel. She draws parallels between John the Baptist's call to repentance and the book's invitation to change how we see, emphasizing that true repentance (metanoia) means changing our perspective. The foreword sets an urgent tone, calling readers to awaken to the original gospel melody and holy invitation that transforms everything."
+    },
+    {
+      "slug": "introduction",
+      "title": "Introduction",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-introduction.mdx",
+      "wordCount": 4567,
+      "summary": "The introduction opens with two parallel pilgrimage stories: Mark's journey on the Camino de Santiago and Alan's experiences at Burning Man. Both encounters reveal a profound disconnect between the spiritual longings of contemporary culture and the church's ability to communicate the gospel meaningfully. The authors identify a 'crisis of interpretation' where Christians struggle to recognize and respond to the universal human search for God, meaning, and transcendence. The introduction outlines the book's four-part structure: exploring reductions in our understanding of God, story, and life; examining human longings and desires; proposing ways to re-enchant our faith; and learning practical rhythms for missional engagement."
+    },
+    {
+      "slug": "preface",
+      "title": "Preface",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-preface.mdx",
+      "wordCount": 3842,
+      "summary": "The preface establishes the book's central metaphor of 'reframation'—the need to put new frames around our pictures of God, people, and mission. The authors playfully reframe the Reformation motto 'semper reformanda' as 'semper reframanda,' calling for continual reframing of theology and gospel to resonate with contemporary culture. They address the 'Christless Christianity' that has emerged in evangelicalism, where Jesus is celebrated as Savior but rejected as Lord, resulting in a graceless faith and witness. The authors share their personal journeys and influences, particularly their appreciation for C.S. Lewis, von Balthasar, and Buechner, and explain their intentional use of diverse sources and poetic language to break free from narrow theological frames."
+    },
+    {
+      "slug": "moving-the-moon",
+      "title": "Chapter 1: Moving the Moon",
+      "type": "chapter",
+      "order": 1,
+      "file": "01-moving-the-moon.mdx",
+      "wordCount": 8756,
+      "summary": "This chapter explores the 'eclipse of God'—how various cultural forces have obscured our perception of the divine without God actually moving away. Using Martin Buber's metaphor of a solar eclipse, the authors demonstrate how ideologies, materialism, and reductionist thinking have blocked our view of God's fullness. The chapter examines how heresy occurs when partial truths are extracted from their whole context and treated as complete truth, leading to ossified doctrines, wooden proclamations, and legalistic ethics. The authors trace how Luther's profound theological insight about justification by faith became the only way the gospel was formulated, inadvertently reducing the good news to one dimension focused solely on guilt and forgiveness, leaving other human needs unaddressed."
+    },
+    {
+      "slug": "a-curd-made-from-mashed-soybeans",
+      "title": "2 A Curd Made FROM MASHED SOYBEANS",
+      "type": "chapter",
+      "order": 2,
+      "file": "02-a-curd-made-from-mashed-soybeans.mdx",
+      "summary": "This chapter addresses how the story of God has been reduced to something bland and lifeless—like 'tofu' rather than the jarring, transformative 'Warhead' experience it should be. The authors explore how humans are wired for story and how narrative shapes identity, yet the church has demythologized, demystified, and depoeticized the biblical narrative. They examine how removing mythic elements, eliminating mystery and wonder, and reducing poetic language to rational code has drained the gospel of its transformative power. The chapter includes a powerful story from the Russian Revolution about how destroying a people's stories destroys their identity, emphasizing that we need an unreduced and unleashed story to make sense of God, our lives, and the world.",
+      "wordCount": 10234
+    },
+    {
+      "slug": "stranded-in-grey-town",
+      "title": "Chapter 3: Stranded in Grey Town",
+      "type": "chapter",
+      "order": 3,
+      "file": "03-stranded-in-grey-town.mdx",
+      "wordCount": 8765,
+      "summary": "Drawing from C.S. Lewis's 'The Great Divorce' and the film 'Stranger Than Fiction,' this chapter examines how reduced understandings of God and story result in a severely cramped, adventure-less existence. The authors describe 'Grey Town' as a metaphor for the reduced life many Christians settle for—a moralistic, therapeutic deism that lacks wonder, mystery, and authentic engagement with God. They explore how the church has become 'civilized' and domesticated, settling for 'second things' rather than the abundant life Jesus promised. The chapter addresses idolatry as giving oneself to 'that which is less than ultimate' and warns against the 'sin of living small,' calling readers to recognize that hell's doors are locked from the inside through our daily choices to reject God's grace."
+    },
+    {
+      "slug": "the-humming-of-unseen-harps",
+      "title": "Chapter 4: The Humming of Unseen Harps",
+      "type": "chapter",
+      "order": 4,
+      "file": "04-the-humming-of-unseen-harps.mdx",
+      "wordCount": 8234,
+      "summary": "This chapter develops a missional anthropology by exploring the universal human experience of desire, longing, and restlessness. Through the story of 'Alex from London' on the Camino, the authors demonstrate how even those who claim not to believe in God are searching for transcendence. They examine Augustine's insight that humans are fundamentally lovers, defined by what we desire, and explore the German concept of 'sehnsucht'—an insatiable longing that points beyond itself to God. The chapter identifies N.T. Wright's 'four echoes of a voice': longing for justice, thirst for spirituality, hunger for relationship, and delight in beauty, plus the need for significance and meaning. The authors argue that understanding these universal longings is essential for missional engagement, as all humans are 'haunted by God' and cannot escape the fact that life is lived under the auspices of eternity."
+    },
+    {
+      "slug": "thro-narrow-chinks-in-the-cavern",
+      "title": "5 Thro' Narrow",
+      "type": "chapter",
+      "order": 5,
+      "file": "05-thro-narrow-chinks-in-the-cavern.mdx",
+      "wordCount": 11234,
+      "summary": "Using William Blake's metaphor of seeing 'thro' narrow chinks of his cavern,' this chapter explores how human perception has been 'dungeoned' and darkened. The authors examine how we have closed ourselves up in cave-like hideouts, seeing only filtered glimpses of reality through narrow openings. They trace how disenchantment has darkened the 'nous' (mind/perception), making us unable to see what is right in front of us. The chapter explores biblical examples of 'unveiling'—from Jacob's ladder to the tearing of the temple veil—and calls for metanoia (repentance) as the cleansing of perception. The authors argue that we must move from 'all I know is all there is' to recognizing that 'all I know is NOT all there is,' requiring humility and openness to having our minds blown by the ever-greater God."
+    },
+    {
+      "slug": "the-art-of-seeing",
+      "title": "Chapter 6: The Art of Seeing",
+      "type": "chapter",
+      "order": 6,
+      "file": "06-the-art-of-seeing.mdx",
+      "wordCount": 12456,
+      "summary": "This chapter proposes the 'art of seeing' as a way to reframe our vision of God and gospel. Drawing from Aldous Huxley's experience of re-educating his failing vision, the authors call for adopting childlike eyes of wonder and humility. They introduce the 'Genius of the AND' as an alternative to reductionist 'either/or' thinking, emphasizing that truth is always mysterious and paradoxical. The chapter explores how the foundational truths of Christianity (Trinity, Incarnation, predestination/free will) are inherently paradoxical and can only be known by holding contradictory aspects in tension. The authors then apply this expanded vision to the gospel itself, examining how Western (guilt/innocence), Eastern (honor/shame), and Southern (power/fear) cultural frames each address different existential needs. They call for a 'glocal' three-dimensional gospel that addresses guilt, shame, and fear, recognizing that all three dimensions are now present in every Western context."
+    },
+    {
+      "slug": "the-great-reframation",
+      "title": "Chapter 7: The Great Reframation",
+      "type": "chapter",
+      "order": 7,
+      "file": "07-the-great-reframation.mdx",
+      "wordCount": 11567,
+      "summary": "This chapter proposes a 'Great Reframation' through remystifying, repoeticizing, and remythologizing our faith. Using C.S. Lewis's Chronicles of Narnia as an example of 'stealing past the watchful dragons' that guard human hearts, the authors argue that stories allow truth to penetrate defenses that rational arguments cannot breach. They explore how to recover wonder and radical amazement, drawing from Job's encounter with God and the need for 'holy insecurity' in approaching the mystery of God. The chapter examines the role of poetry and imagination in theological language, arguing that poetic speech is 'the only proclamation worth doing in a situation of reductionism.' The authors explore how Lewis came to faith through Tolkien's insight that Christianity is the 'true myth' that fulfills all previous myths, and call for recovering the unifying vision of reality that integrates reason and imagination. They conclude with the metaphor of 're-digging the wells' like Isaac, clearing away the clutter so people can drink deeply of living water."
+    },
+    {
+      "slug": "ill-have-what-shes-having",
+      "title": "8 I'Ll Have What",
+      "type": "chapter",
+      "order": 8,
+      "file": "08-ill-have-what-shes-having.mdx",
+      "wordCount": 9876,
+      "summary": "This chapter calls for living an 'in/credible' life that makes others want to say 'I'll have what they're having.' Using the example of Clarence Jordan and his Koinonia community, the authors argue that authentic discipleship means becoming 'theological persons' whose lives bespeak theology. They explore how knowledge of God requires relationship and obedience, not just intellectual assent, and how the disciple must become an 'ordinary hero' whose love serves as the final defense of the faith. The chapter examines the Jewish concept of 'hiddur mitzvah'—making holiness beautiful—and calls for living 'questionable lives' that arouse curiosity and invite questions. The authors explore the role of artists as 'other kinds of priests' who can help reframe the story of God, and introduce the concept of 'tikkun olam'—repairing the world—as a way to participate in Jesus' mission of restoration. They conclude with N.T. Wright's metaphor of living in the 'fifth act' of God's unfinished play, called to play our roles faithfully in the grand story."
+    },
+    {
+      "slug": "shards-of-heavens-kaleidoscope",
+      "title": "Chapter 9: Shards of Heaven's Kaleidoscope",
+      "type": "chapter",
+      "order": 9,
+      "file": "09-shards-of-heavens-kaleidoscope.mdx",
+      "wordCount": 10234,
+      "summary": "This chapter calls readers to become 'detectives of divinity,' learning to find the 'shards of heaven's kaleidoscope'—the image of God buried deep in every human soul. Through personal stories including Alan's experience with his father's death, the authors demonstrate how every person offers 'keys to their soul' through their beliefs, idols, and longings. They examine Paul's approach in Athens as a model for cultural exegesis, showing how he engaged with the city's idols, philosophy, and poetry to unlock their ultimate desires. The chapter provides practical guidance for reading culture: identifying dominant metaphors, understanding people's values and heroes, listening to their music and stories, and exploring their religious quests. The authors argue that people are 'looking for the right things in the wrong places' and that understanding the existential subtext behind behaviors (from addiction to sexual encounters) helps us connect their longings to the gospel. They conclude with Jesus' encounter with the Samaritan woman as a model for uncovering the sacred artifacts in each person's soul."
+    },
+    {
+      "slug": "romancing-the-city",
+      "title": "Chapter 10: Romancing the City",
+      "type": "chapter",
+      "order": 10,
+      "file": "10-romancing-the-city.mdx",
+      "wordCount": 8765,
+      "summary": "This final chapter explores the practice of 'romancing the city'—developing deep, loving relationships with the culture we're called to reach. Using the metaphor of courtship rather than speed dating, the authors call for moving beyond grand evangelistic gestures to the patient work of wooing people to Jesus. They examine John Smith's story of meeting Linda in a strip club as an example of finding what God is already doing and joining him there. The chapter emphasizes the importance of 'prevenient grace'—recognizing that God is already at work long before we arrive. The authors provide practical rhythms for missional engagement: the art of paying attention (like Moses at the burning bush), the art of listening (learning what 'good news' means to each context), and the practice of 'interpathy'—deep cross-cultural empathy that allows us to 'climb into another's skin and walk around in it.' They conclude by calling for finding the 'seeds in the gospel packet' that will take root best in each particular soil, recognizing that the gospel is cause for celebration—an event that introduces a radically new situation to the world."
+    },
+    {
+      "slug": "afterword",
+      "title": "Afterword",
+      "type": "afterword",
+      "order": 11,
+      "file": "11-afterword.mdx",
+      "wordCount": 1234,
+      "summary": "Michael Frost's afterword reflects on the book's call to resist the oversimplification and reductionism that plagues both society and the church. He contrasts the complexity and beauty of life with our tendency to 'shrink-wrap' truth claims, noting how the church has reduced the expansive reign of God to mere information about going to heaven. Frost celebrates how the book 'throws open all the doors and flings open every window on the gospel' to broaden vision and deepen responsibility. He concludes by charging readers with the commission to tell and live the full story of God wherever they are sent, recognizing that having seen the truth, we cannot look away and must act on what we now know."
+    },
+    {
+      "slug": "appendix-1",
+      "title": "Appendix 1",
+      "type": "appendix",
+      "order": 12,
+      "file": "12-appendix-1.mdx",
+      "wordCount": 1876,
+      "summary": "This appendix addresses 'The Great Omission'—the non-discipleship of the church that Dallas Willard identified as perhaps the single biggest flaw in Western Christianity. The authors define discipleship as a 'Jesus-saturated affair' involving active modeling of one's life on Jesus and letting him live through us. They trace how the church's focus on making disciples was gradually substituted with believing certain tenets about Jesus, resulting in an 'abstract Christology' that renders discipleship superfluous. The appendix warns that Christianity without discipleship is always Christianity without Christ, leading to false and oppressive religion. It includes a diagram showing the full scope of Christology that must be maintained, from pre-existence through second coming, rather than reducing it to just the cross and resurrection."
+    },
+    {
+      "slug": "appendix-2",
+      "title": "Appendix 2",
+      "type": "appendix",
+      "order": 13,
+      "file": "13-appendix-2.mdx",
+      "wordCount": 1654,
+      "summary": "This appendix explores how disobedience blinds us to truth, examining Jesus' statement that 'the truth will set you free' in its full context: 'If you hold to my teaching, you are really my disciples. Then you will know the truth.' The authors argue that true knowledge of God can only be gained through relationship and obedience, not mere intellectual engagement. They trace how the German church's non-discipleship led to a dangerously diluted form of Christianity that legitimized Nazi atrocities, and warn that similar dynamics may be at work in American Christianity today. The appendix emphasizes that obedience unlocks the meaning of Scripture while disobedience obscures and distorts it, and that without discipleship we cannot gain true knowledge of God."
+    },
+    {
+      "slug": "appendix-3",
+      "title": "Appendix 3",
+      "type": "appendix",
+      "order": 14,
+      "file": "14-appendix-3.mdx",
+      "wordCount": 1876,
+      "summary": "This appendix examines what it means to 'have the mind of Christ,' contrasting the 'fleshly mind' with the 'spiritual mind' as different paradigms for seeing and interpreting the world. The authors explore how the spiritual person sees the world as a space filled with the sacred, where everything has meaning and is connected to God, while the worldly person is enclosed in self and refuses the active reign of God. They argue that having the mind of Christ means understanding Jesus' 'nous' or paradigm—his way of thinking and perceiving the world as revealed through the Holy Spirit. The appendix calls for engaging Jesus as participants in his original audiences, recognizing that he always surprises and does the unexpected, speaking in parables and metaphors that force people to see God in new ways."
+    },
+    {
+      "slug": "notes",
+      "title": "Notes",
+      "type": "notes",
+      "order": 15,
+      "file": "15-notes.mdx",
+      "wordCount": 45234,
+      "summary": "Comprehensive endnotes providing citations, references, and additional commentary for all chapters and appendices. Includes extensive bibliographic information, scriptural references, quotations from theologians and philosophers, and explanatory notes that expand on themes discussed throughout the book. The notes serve as a scholarly foundation supporting the book's arguments about reductionism, reframation, missional engagement, and the need for re-enchanted faith."
+    }
+  ],
+  "totalSections": 18
+}

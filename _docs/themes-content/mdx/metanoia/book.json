@@ -1,0 +1,108 @@
+{
+  "slug": "metanoia",
+  "title": "Metanoia",
+  "author": "Alan Hirsch, Rob Kelly",
+  "description": "",
+  "sections": [
+    {
+      "slug": "a-briefing-for-the-metanoic-journey",
+      "title": "Metanoia",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-a-briefing-for-the-metanoic-journey.mdx",
+      "wordCount": 12450,
+      "summary": "This introduction sets the stage for the book's exploration of metanoia (biblical repentance) as a paradigm shift essential for personal and collective transformation. It includes extensive endorsements from Christian leaders, establishes the book's theological and practical approach, and outlines how metanoia addresses both individual discipleship and organizational change in the context of a VUCA (volatile, uncertain, complex, ambiguous) world."
+    },
+    {
+      "slug": "the-apocalypse-of-the-ecclesial-soul",
+      "title": "Chapter 1: The Apocalypse of the (Ecclesial) Soul: Glimpses into the Problems and Potentials of the Church",
+      "type": "chapter",
+      "order": 1,
+      "file": "01-the-apocalypse-of-the-ecclesial-soul.mdx",
+      "wordCount": 4850,
+      "summary": "This chapter frames the current cultural moment as an apocalyptic (revealing) time that exposes hidden problems in the Western church. It argues that crises like the COVID-19 pandemic, political polarization, and social unrest are kairos moments calling for metanoia. The chapter explores how these revelatory events expose spiritual, missiological, theological, and ecclesiological crises, while also presenting opportunities for transformation and renewal."
+    },
+    {
+      "slug": "metanoi-eh",
+      "title": "Chapter 2: Metanoi-eh?",
+      "type": "chapter",
+      "order": 2,
+      "file": "02-metanoi-eh.mdx",
+      "wordCount": 10200,
+      "summary": "This chapter provides a comprehensive biblical and theological exploration of metanoia, contrasting the reduced English translation of 'repentance' with the rich meaning of the Greek term. It examines Old Testament concepts of re/turning (teshuva) and New Testament understandings of paradigm shift, arguing that metanoia involves a radical change of mind, expanded reframing of reality, and breakthrough moments that transform perception. The chapter positions metanoia as essential for seeing the world through fresh eyes and experiencing ongoing conversion."
+    },
+    {
+      "slug": "why-we-need-to-repent",
+      "title": "Chapter 3: Why We Need to Repent: A Compelling Rationale for Metanoia",
+      "type": "chapter",
+      "order": 3,
+      "file": "03-why-we-need-to-repent.mdx",
+      "wordCount": 11200,
+      "summary": "This chapter presents a comprehensive rationale for why metanoia is critical, arguing that the church generally fails at repentance, that any advance in knowledge of God requires it, and that falling in love with systems prevents change. It explores how unlearning is necessary for learning, how mental maps must be redrawn for new territories, how systems need recalibration, and how collective repentance is essential for addressing systemic sins and organizational transformation."
+    },
+    {
+      "slug": "christo-logic",
+      "title": "Chapter 4: Christo-Logic: Seeing the World from Inside the Mind That Created It",
+      "type": "chapter",
+      "order": 4,
+      "file": "04-christo-logic.mdx",
+      "wordCount": 10800,
+      "summary": "This chapter explores how metanoia provides access to the mind of Christ, enabling believers to see the world from God's perspective. It examines Christo-logic as thinking formatted according to the pattern of Christ, seeing everything from God's perspective, thinking that transcends itself, holistic thinking that avoids reductionism, spiritual instinct, and discerning what God is doing to join with him. The chapter argues that this Christ-shaped logic is essential for faithful mission and authentic discipleship."
+    },
+    {
+      "slug": "wholehearted-metanoia",
+      "title": "Chapter Five: Wholehearted Metanoia Activating Mind, Soul, and Will",
+      "type": "chapter",
+      "order": 5,
+      "file": "05-wholehearted-metanoia.mdx",
+      "wordCount": 9800,
+      "summary": "This chapter develops an anthropology of the heart, arguing that authentic metanoia requires the integration of mind, soul, and will. It explores how the biblical understanding of heart encompasses all three dimensions, examines the brokenness that results from fragmented hearts, and presents a model for wholehearted change that activates mind-power (paradigm shift), soul-power (culture and values), and will-power (strategic action). The chapter emphasizes that lasting transformation requires engaging the whole person, both individually and collectively."
+    },
+    {
+      "slug": "the-metanoia-journey",
+      "title": "How Metanoia",
+      "type": "chapter",
+      "order": 6,
+      "file": "06-the-metanoia-journey.mdx",
+      "wordCount": 11200,
+      "summary": "This chapter introduces the practical Metanoia Journey process, a U-shaped curve that involves unlearning (downcurve) and relearning (upcurve). It details the four stages of the downcurve: Unravel (facing wicked problems), Uncover (sensing system flaws with soft eyes), Unlock (exploring new frontiers), and Understand (gaining clarity on alternatives). The chapter emphasizes that lasting change requires descending into the valley before ascending to new peaks, following the pattern of the hero's journey and Jesus' own transformative path."
+    },
+    {
+      "slug": "paradigm",
+      "title": "Chapter 7: Paradigm: Blowing the Collective Mind",
+      "type": "chapter",
+      "order": 7,
+      "file": "07-paradigm.mdx",
+      "wordCount": 10200,
+      "summary": "This chapter focuses on the first stage of the upcurve: articulating a new organizational paradigm. It explores paradigm as organizational mind (identity, story, defining ideas), mental maps (meta-ideas, beliefs, competencies), and organizational DNA (genetics that replicate throughout the system). The chapter explains how to identify meta-ideas with high leverage, name organizational DNA, and fractalize it throughout the organization. It emphasizes that paradigm shift requires leadership unity, apostolic imagination, perseverance, telling alternate stories, letting things die, and seeing reality clearly."
+    },
+    {
+      "slug": "platformed",
+      "title": "Chapter 8: Platformed: Shaping the Collective Soul",
+      "type": "chapter",
+      "order": 8,
+      "file": "08-platformed.mdx",
+      "wordCount": 11200,
+      "summary": "This chapter addresses the second stage of the upcurve: building the organizational platform (culture + structures) that shapes the collective soul. It explores culture components (theological distinctives, core values, shared vocabulary, heroes, celebration of behavior, branding) and movemental structures (relational, resource, and measurement structures). The chapter explains how platform principles from network science align with Jesus' design for the church, emphasizing that culture and structures must be aligned for effective mission and that platforms architect organizational behavior through the path of least resistance."
+    },
+    {
+      "slug": "practices",
+      "title": "Chapter Nine: Practice/s Engaging the Collective Will",
+      "type": "chapter",
+      "order": 9,
+      "file": "09-practices.mdx",
+      "wordCount": 9800,
+      "summary": "This chapter focuses on the third stage of the upcurve: developing practices that engage the collective will. It explores how to move from core values to core practices, develop movemental rhythms and algorithms, and create tools (physical, training, communication) that fractalize DNA throughout the organization. The chapter emphasizes that practices make metanoia tangible and embodied, that habits and muscle memory are essential for transformation, and that algorithms enable ongoing learning and refinement. It argues that tools shape people and must be carefully designed to support the mission."
+    },
+    {
+      "slug": "conclusion",
+      "title": "CONCLUSION",
+      "type": "conclusion",
+      "order": 10,
+      "file": "10-conclusion.mdx",
+      "wordCount": 2850,
+      "summary": "The conclusion emphasizes that metanoia is an ongoing journey, not a one-time event, and that the process must be repeated as new challenges arise. It champions childlikeness as essential for metanoic thinking, drawing connections between Einstein's curiosity, Polanyi's insights on metanoia, and Jesus' call to become like children. The chapter encourages readers to embrace metanoia as God's gift that enables transformation, opens new possibilities, and aligns individuals and organizations with God's purposes. It includes notes, acknowledgments, and references to appendices available online."
+    }
+  ],
+  "totalSections": 11
+}

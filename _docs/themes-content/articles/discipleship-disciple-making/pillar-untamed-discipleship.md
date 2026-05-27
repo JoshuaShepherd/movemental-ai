@@ -1,0 +1,123 @@
+# Untamed Discipleship: Reactivating a Missional Form of Discipleship
+
+> The disciple must face the world fully aware of the desire of the Darkness to pervert and destroy the witness of the Light.
+>
+> —Gene Davenport
+
+> To believe means to be so rooted in Christ that he becomes the foundation of one's existence, the beginning and end of the movement known as life, its measure and source and strength.
+>
+> —Romano Guardini
+
+> For the disciple of Jesus the stage of discipleship is not the first step towards a promising career. It is in itself the fulfillment of his destiny.
+>
+> —David Bosch
+
+> One day long ago, over the hot sands of a Middle Eastern country, a white skylark flew in joyous loops about the sky. As she swooped near the earth, she heard a merchant calling, "Come here, my little friend. Come! See the lovely worms I have!" Day after day the skylark returned, trading feathers for worms. But one day, after eating her fill, the skylark leapt again into the air—and to her horror, she fell to the ground with a thud. She was unable to fly! All at once with a shock she realized what had happened. From eating the delicious worms she had grown fatter and fatter; and she had plucked her feathers one by one, first her body, then her tail, and finally her very wings had grown balder and balder. Now suddenly here she was, trapped on the ground. The merchant grabbed the now helpless bird, put her in a cage, and walked away laughing.
+
+What if discipleship has been tamed—domesticated into programs instead of movements? What if we, like the skylark, have slowly traded away our capacity for flight, our wildness, our untamed nature, for the comfort of predictable programs and safe religious routines? The parable of the skylark mirrors so many processes that make up human life and, for the purposes of this exploration, the nature of the Christian walk gone wrong. Tragically, like the formerly wild skylark, little by little we give up our freedoms in Christ, only to end up in a cage made of a thousand little compromises.
+
+**Untamed discipleship** represents the reactivation of a missional form of discipleship—a wild, risky, adventure-filled journey of following Jesus that refuses to be domesticated by institutional safety or programmatic predictability. It is the recovery of discipleship as movement rather than maintenance, as multiplication rather than mere formation, as mission rather than mere morality.
+
+When we try to take shortcuts to costly discipleship, we end up with a domesticated existence that is far from the liberated, untamed life Jesus calls us to. Much of what we need to address is about exposing some of the personal and cultural issues, and the idolatry so often associated with them, that in the end undermine our capacity to experience full, Christlike lives. If some of what is set forth here seems strange to us, then it might well be because we have become too domesticated, accustomed to being featherless, and have now lost the art of flight. Perhaps it is because we have forgotten what it really means to follow the untamed, revolutionary Jesus. We must now remember in order to reactivate the journey.
+
+This exploration of untamed discipleship connects directly to the core of movement discipleship. It is the foundation upon which missional movements are built—disciples who refuse to be tamed, who embrace the wildness of following Jesus into the world, who multiply rather than merely maintain. Untamed discipleship is the DNA of movement multiplication, the seed from which transformative movements grow.
+
+## The Framework Foundation of Untamed Discipleship
+
+Untamed discipleship begins with a fundamental reorientation around the person of Jesus. It seems obvious to say it, but the first thing we can say about missional discipleship is that it must take Jesus with utmost seriousness. Whatever place "Yahweh is Lord" had for Israel, "Jesus is Lord" has for us as disciples. Every single aspect of the way we live out our lives needs to be re-aligned around the person of Jesus and his lordship. A dynamic, vital, living reality and response to Jesus in every moment of our lives is our most fundamental truth, and we have forgotten it to our great peril.
+
+N. T. Wright notably states that the longer you look at Jesus, the more you will want to serve him—that is, of course, if it is the real Jesus you are looking at. Because Jesus defines our concepts of God, getting it wrong here means getting it wrong everywhere. And because Jesus defines and models for us a perfected humanity, he shows us the way of true holiness.
+
+This Jesus-shaped discipleship forms the core of untamed formation. When we look at Jesus, we see someone who was anything but tame. He challenged religious authorities, broke social conventions, touched the untouchable, ate with sinners, and called people to radical obedience. His disciples were not enrolled in a program—they were caught up in a movement. They left their nets, their tax booths, their religious duties, and followed him into the wild adventure of the kingdom.
+
+The wild formation framework emerges from this Jesus-shaped foundation. It recognizes that discipleship is not a curriculum to complete but a way of life to embody. It is not about accumulating knowledge but about becoming like Jesus. It is not about safety but about sentness. It is not about comfort but about mission.
+
+Consider the Shema spirituality that undergirds untamed discipleship. The Shema (Deut. 6:4–9) is considered the most important confession in the Old Testament and in Judaism, and is confessed three times a day by every orthodox Jew. The word shema itself stems from the first word of this text and simply means "listen!" or "take heed." "Hear, O Israel: The Lord our God, the Lord is one. Love the Lord your God with all your heart and with all your soul and with all your strength."
+
+Jesus explicitly places the Shema at the epicenter of what it means to be a true disciple—to love God, to love others, and to live this out authentically in God's world. We believe that we must simply take Jesus at face value here; he is saying that "Shema spirituality" is core to the outworking of our discipleship—our life under God. Shema spirituality helps us rediscover the true nature of worship, learn what it means to love God in and through the whole of life, understand our relationship to the world and our obligation to "the other," and recover an authentically monotheistic worldview, out of which we can rightly interpret our world.
+
+The missional focus of untamed discipleship cannot be overstated. We take the missional agenda of the church with utmost seriousness. You simply cannot be a disciple without being a missionary—a sent one. For way too long discipleship has been limited to issues relating to our own personal morality and worked out in the context of the four walls of the church with its privatized religion. In doing this, we have severely neglected our biblical mandate to go and "make disciples." We have narrowed the gospel message to just being about us. To strive for holiness and maturity in our own personal lives is extremely important, but it is only half the picture; the other half is our God-given responsibility to the world around us. The fact is that you can't be a disciple without being a missionary: no mission, no discipleship. It's as simple as that.
+
+This inseparability of mission and discipleship creates the wildness, the untamed nature, of authentic following. When discipleship is separated from mission, it becomes tame, predictable, safe. When mission is separated from discipleship, it becomes activism without transformation. Together, they create the untamed dynamic that multiplies movements.
+
+Risk and adventure are inherent to untamed discipleship. The way of Jesus is not the way of safety. It is the way of the cross, which means it is the way of risk, sacrifice, and adventure. When Jesus called his first disciples, he didn't promise them security—he promised them a journey. He didn't offer them a program—he invited them into a movement. He didn't guarantee comfort—he guaranteed transformation.
+
+The early church understood this. They were willing to risk everything for the sake of following Jesus. They faced persecution, rejection, and even death. They were untamed in their commitment, wild in their devotion, radical in their obedience. This is the DNA of untamed discipleship—a willingness to risk, to adventure, to step into the unknown for the sake of the kingdom.
+
+## Practical Application: Living Untamed Discipleship
+
+How do we practice untamed formation in our everyday lives? The practices of untamed discipleship are not complicated, but they are costly. They require us to step out of our comfort zones, to embrace risk, to live missionally in our contexts.
+
+The first practice is presence—being fully present in the world as Jesus was. This missional stance draws inspiration from the fact that God was fully present in the incarnation of Jesus. Jesus was not merely some representative of God, a prophet, or an angel. He was God, 100 percent, fully present, in human flesh. If God is one of us, he knows our situation, our struggles, our yearnings, our temptations, our bodily functions and limitations, and so on from direct experience. We believe that an incarnational stance is an extremely important aspect of missional lifestyle. As God identified with us, so ought we identify with others. This will mean taking a given culture or people group seriously and deeply investing in them. We will need to take significant time to understand their history, their stories, their heroes, their books, and so on, in order to get their take on things. It is about immersing ourselves into their lives.
+
+The second practice is proximity—getting close to people as Jesus did. God became a man not only in order to identify with us, but also to live with and among us! He was no recluse, keeping a safe distance; he literally immersed himself in people. Much of his time was spent just hanging out and getting to know the people around him. Jesus didn't expect people to come to where he was, as we so often do, but rather went to them. He hung out in their social spaces, markets, and synagogues, and visited their homes. In other words, he came into direct proximity; he was near to them. Likewise, we need to reflect this in our own lives. Too many Christians "hang out" only with other Christians and in environments frequented by other Christians. If we are to follow Jesus, we need to make intentional choices to move out of our religious zones and be where the people are.
+
+The third practice is powerlessness—embracing weakness as Jesus did. While we can probably find many images in our culture of powerlessness, perhaps none is more obvious than that of a baby whose survival is totally dependent on others. Therefore, to think of Jesus as a dependent, vulnerable, and even needy baby is perhaps one of the most difficult things to grasp in God becoming man. The great challenge for us is to recognize that to be weak, needy, and even powerless is part of the human condition, not something to be abhorred. When we give up our sense of power and control, we can truly become human in a way that conforms to the image of Christ. One of the most amazing things we can say about Jesus is that he is actually humble! The creator of all things is humble! When one applies this to our missionary calling in the world, it means that we come very humbly among a group of people. Like Jesus, we don't come into town wielding a sword or riding in like the cavalry. Rather, we come to subvert evil and brokenness through Christlike service.
+
+The fourth practice is prevenience—recognizing that God is already at work. The truth is that God doesn't limit his presence to baptized Christians—he is an unrelenting evangelist. He is always at work in his world—right in the thick of things—in sinful people's lives, including our own. We don't "bring God" with us into any situation—he's there long before you or I arrive on the scene. We simply need to discern God's prevenient work in people's lives and join with him. All of us are living testaments to this truth.
+
+The fifth practice is passion—embracing the suffering of the cross. The fact is that humans suffer, and Christians who take seriously the lost and broken in our world will also suffer. This is the cost of discipleship; we are called to pick up our cross and follow Jesus. Implicit in the cross is suffering. In fact, Jesus clearly states that anyone who fails to pick up and carry the cross cannot be his disciple. This has significant implications for discipleship and mission. As disciples we need to ensure we have incorporated a theology of redemptive suffering into our understanding of God, for this helps make sense of what we ourselves, or others, may experience.
+
+The sixth practice is proclamation—sharing the good news as Jesus did. Jesus came to proclaim the good news of the kingdom of God, and there is no question that we are called to the same task. Following the logic of the incarnation itself, our message is heard properly only when we have gone through the process of identifying with people, hearing them, understanding the issues they face, humbly living with them, and knowing how they experience and express their search for meaning. If we do this, we will have earned the right to address the hearts of the people and bring salvation to them.
+
+These six practices—presence, proximity, powerlessness, prevenience, passion, and proclamation—form the practical framework for untamed discipleship. They are not steps to complete but postures to embody. They are not programs to follow but patterns to live. They create the wild, missional, untamed dynamic that multiplies disciples and movements.
+
+## Case Studies: Untamed Discipleship in Action
+
+When we look at history, we see untamed discipleship in action. Jesus's own disciples exemplify this wild, risky following. They left everything to follow him. They risked their reputations, their livelihoods, their very lives. They were untamed in their commitment, wild in their devotion.
+
+Consider Peter, who stepped out of the boat to walk on water. That's untamed discipleship—risking everything to follow Jesus, even when it seems impossible. Consider the early church in Acts, who sold their possessions, shared everything in common, and faced persecution with joy. That's untamed discipleship—living as if the kingdom is real, even when the world says it's not.
+
+The Chinese underground church provides a powerful contemporary example. When persecution forced them underground, when all external structures were removed, they discovered the essence of untamed discipleship. They grew from around 2 million to 120 million in seventy years, not through programs or institutions, but through untamed, wild, missional discipleship. Every believer was expected to plant churches. Every church was expected to multiply. Discipleship was not optional—it was the core practice that multiplied the movement.
+
+The Methodist movement under John Wesley demonstrates untamed discipleship at scale. Wesley didn't create a program—he started a movement. He didn't build an institution—he multiplied disciples. By the end of Wesley's lifetime, one in thirty people in Britain had become Methodist, and the movement had spread to America. What was the key? According to missiologist Steve Addison, it was the high level of commitment to the Methodist cause that was expected of participants. This cause declined when the movement lost its ethos of evangelism and disciple-making and degenerated into mere religious institutionalism. Methodism had lost its movemental power.
+
+Contemporary examples abound. We know of missional communities that have relocated to red-light districts, inner-city neighborhoods, and marginalized communities. They practice untamed discipleship by being present, getting close, embracing powerlessness, recognizing God's prevenient work, sharing in suffering, and proclaiming the good news. They are untamed because they refuse to be domesticated by safety, comfort, or predictability.
+
+One community we know relocated to the local red-light and gay area of their city. On one side of their house is a heroin rehab facility, and on the other the "working stroll" of some of the local street prostitutes. Across the road are boarding houses for semi-homeless people, many struggling with mental health issues, and a famous "drag queen" bar on the corner. Being located in this environment meant that they could not but see the world differently. Every time they went out their front door, they were reminded of a broken and lost humanity and the issues that confront the mission of the church. This is untamed discipleship—choosing proximity to the broken, the marginalized, the lost, because that's where Jesus would be.
+
+## Common Challenges to Untamed Discipleship
+
+The path of untamed discipleship is not without obstacles. Institutional domestication represents perhaps the greatest challenge. The church, far from being immune to cultural forces, has drunk deeply from the wells of consumerism and institutionalism. We have pretty much designed contemporary expressions of church around consumer values. The implicit message church members get from a church that adopts a consumer-driven model is that they are essentially discerning consumers and that the local church is a vendor of religious goods and services. No longer is the church a disciple-making medium operating under the Great Commission; rather, the church is viewed as existing to serve my spiritual needs, and if it doesn't fulfill them according to my particular tastes, then I simply find one that does.
+
+This consumer approach to church creates dependency rather than discipleship. We remember many years ago hearing prominent discipleship-proponent Bill Hull compare the process of discipleship with that of being a child and growing up. When we are babies, it is appropriate to get fed, as one clearly cannot feed oneself. But as we mature, we learn to feed ourselves, and eventually we learn to cook and feed others. But this is not what we find happening in many churches. In fact, if we had to be honest with ourselves, the systems we have developed actually create dependencies. We are not helping people grow up into the type of disciples that will change the world in which they live.
+
+Risk-aversion represents another significant challenge. The way of Jesus is not the way of safety, but we have created systems that prioritize safety over sentness, comfort over mission, predictability over adventure. We have tamed discipleship by removing the risk, eliminating the adventure, domesticating the wildness. But untamed discipleship requires risk. It demands that we step out of our comfort zones, embrace uncertainty, and trust God in the unknown.
+
+Wild resistance comes from within ourselves. We are naturally drawn to safety, comfort, and predictability. The call to untamed discipleship challenges these instincts. It requires us to die to ourselves, to pick up our cross, to follow Jesus into the wild. This resistance is not just external—it's internal. We resist the untamed because it costs us something. It requires sacrifice, risk, and adventure.
+
+Untamed transformation challenges our assumptions about what discipleship looks like. We have domesticated discipleship into programs, classes, and curricula. But untamed discipleship is not a program—it's a way of life. It's not something we complete—it's something we embody. It's not about accumulating knowledge—it's about becoming like Jesus. This transformation requires us to rethink everything we thought we knew about discipleship.
+
+## Integration: Untamed Discipleship and the Movement Ecosystem
+
+Untamed discipleship does not exist in isolation. It connects to the broader ecosystem of missional movement. It is the foundation upon which movements are built, the DNA that multiplies communities, the seed from which transformation grows.
+
+The connection to missional discipleship is direct and essential. Untamed discipleship is missional discipleship in its wildest, most authentic form. It refuses to be separated from mission, to be domesticated into programs, to be tamed by institutional safety. Missional discipleship that is not untamed is not truly missional—it's just another form of religious activity.
+
+The Faith of Leap portal reveals the adventure dimension of untamed discipleship. Following Jesus is inherently risky, adventurous, and courageous. It requires us to take leaps of faith, to step into the unknown, to trust God in uncertainty. Untamed discipleship embraces this adventure, this risk, this courage. It refuses to be tamed by fear, domesticated by safety, or controlled by predictability.
+
+The Liminality & Communitas portal shows us the transformative power of threshold experiences. Untamed discipleship often happens in liminal spaces—those in-between places where transformation occurs. It is in these liminal spaces that we discover communitas—that deep sense of community that forms when people share a mission beyond themselves. Untamed discipleship creates these liminal spaces, these threshold experiences, these communitas moments.
+
+The connection to the broader mDNA framework is crucial. Untamed discipleship is not just one element among many—it is the wild, missional, multiplying dynamic that activates all the other elements. When discipleship is untamed, it multiplies. When it multiplies, it creates movement. When it creates movement, it transforms the world.
+
+The APEST framework reveals how untamed discipleship activates all five forms of intelligence. Apostolic intelligence extends the movement into new contexts. Prophetic intelligence challenges the status quo. Evangelistic intelligence gathers people to the cause. Shepherding intelligence cares for the community. Teaching intelligence equips people for mission. Untamed discipleship requires all five, working together, to create the wild, missional, multiplying dynamic that transforms the world.
+
+## Conclusion: Reactivating the Untamed Journey
+
+Untamed discipleship is not a program to complete but a journey to embrace. It is the reactivation of wild, missional formation that multiplies disciples and movements. It refuses to be domesticated by institutional safety, tamed by programmatic predictability, or controlled by consumer comfort.
+
+The skylark reminds us of the danger of trading our wildness for comfort. Little by little, we can give up our freedoms in Christ, only to end up in a cage made of a thousand little compromises. But it doesn't have to be this way. We can reactivate the untamed journey. We can recover our capacity for flight. We can embrace the wildness of following Jesus.
+
+The practices of untamed discipleship—presence, proximity, powerlessness, prevenience, passion, and proclamation—provide the framework for this reactivation. They are not steps to complete but postures to embody. They create the wild, missional, multiplying dynamic that transforms individuals, communities, and movements.
+
+The challenge before us is clear: will we embrace untamed discipleship, or will we continue to trade our feathers for worms? Will we recover our capacity for flight, or will we remain trapped in cages of our own making? Will we follow the untamed, revolutionary Jesus, or will we settle for a domesticated, predictable religion?
+
+The question is whether we'll have the courage to step into the untamed future that is coming. The question is whether we'll reactivate the wild, missional form of discipleship that multiplies movements and transforms the world. The question is whether we'll remember what it really means to follow the untamed, revolutionary Jesus.
+
+Together, we can reactivate this journey. Together, we can recover our wildness. Together, we can multiply disciples and movements. The untamed way of Jesus awaits us. Will we have the courage to follow?
+
+---
+
+**Next Steps**: Take the APEST assessment to discover your fivefold intelligence. Explore the Untamed book for deeper insights into untamed discipleship. Join a missional community that practices the six incarnational practices. Begin discipling someone in your context, following the untamed way of Jesus.
+
+**Related Content**: [Missional Discipleship](/discipleship-disciple-making/pillar-missional-discipleship), [The Faith of Leap](/faith-of-leap), [Liminality & Communitas](/liminality-communitas), [APEST Framework](/apest-fivefold-ministry/pillar-apest-framework)

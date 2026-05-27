@@ -1,0 +1,76 @@
+{
+  "page_type": "reader",
+  "archived_date": "2026-01-30",
+  "images": [
+    {
+      "original": "reader-ebook-dark-01.png",
+      "archived_as": "reader-ebook-dark-01.png",
+      "template_path": "components/layouts/movement-leader/reader-ebook-dark.tsx",
+      "variant_id": "reader-ebook-dark",
+      "reference": "Amazon Kindle — dark background e-book reader with two-column page layout"
+    },
+    {
+      "original": "reader-article-clean-02.png",
+      "archived_as": "reader-article-clean-02.png",
+      "template_path": "components/layouts/movement-leader/reader-article-clean.tsx",
+      "variant_id": "reader-article-clean",
+      "reference": "Medium — minimal clean article reader with serif body and progress indicator"
+    },
+    {
+      "original": "reader-article-tools-03.png",
+      "archived_as": "reader-article-tools-03.png",
+      "template_path": "components/layouts/movement-leader/reader-highlight-tools.tsx",
+      "variant_id": "reader-highlight-tools",
+      "reference": "Pocket — article reader with highlight/share toolbar and View Original link"
+    },
+    {
+      "original": "reader-docs-sidebar-04.png",
+      "archived_as": "reader-docs-sidebar-04.png",
+      "template_path": "components/layouts/movement-leader/reader-docs-sidebar.tsx",
+      "variant_id": "reader-docs-sidebar",
+      "reference": "Pitch — docs-style reader with left TOC sidebar and reading progress"
+    },
+    {
+      "original": null,
+      "archived_as": null,
+      "template_path": "components/layouts/movement-leader/reader-minimal-scroll.tsx",
+      "variant_id": "reader-minimal-scroll",
+      "reference": "iA Writer / reading mode — distraction-free scrolling reader"
+    },
+    {
+      "original": null,
+      "archived_as": null,
+      "template_path": "components/layouts/movement-leader/reader-paginated-book.tsx",
+      "variant_id": "reader-paginated-book",
+      "reference": "Apple Books — paginated e-book with page-turn navigation"
+    },
+    {
+      "original": null,
+      "archived_as": null,
+      "template_path": "components/layouts/movement-leader/reader-chapter-nav.tsx",
+      "variant_id": "reader-chapter-nav",
+      "reference": "GitBook — chapter-based navigation with per-chapter progress"
+    },
+    {
+      "original": null,
+      "archived_as": null,
+      "template_path": "components/layouts/movement-leader/reader-split-reference.tsx",
+      "variant_id": "reader-split-reference",
+      "reference": "Notion/Academic — side-by-side text and footnotes/references"
+    },
+    {
+      "original": null,
+      "archived_as": null,
+      "template_path": "components/layouts/movement-leader/reader-immersive-dark.tsx",
+      "variant_id": "reader-immersive-dark",
+      "reference": "Kindle dark mode — full-screen dark reading with font/theme controls"
+    },
+    {
+      "original": null,
+      "archived_as": null,
+      "template_path": "components/layouts/movement-leader/reader-newsletter-digest.tsx",
+      "variant_id": "reader-newsletter-digest",
+      "reference": "Substack — newsletter/digest reader with author bio and social actions"
+    }
+  ]
+}

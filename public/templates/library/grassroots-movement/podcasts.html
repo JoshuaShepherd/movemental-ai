@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Podcasts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body data-leader-title="pageTitles.podcasts">
+  <header class="public-header" role="banner">
+    <div class="public-header__inner">
+      <a href="index.html" class="public-header__logo" data-leader="name">Leader</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav class="public-header__nav" id="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="content-hub.html">Content</a>
+        <a href="index.html#themes">Themes</a>
+        <a href="index.html#assessments">Assessments</a>
+        <a href="chat.html">AI Lab</a>
+      </nav>
+      <div class="public-header__actions">
+        <a href="#search" aria-label="Search" class="public-header__search">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </a>
+        <a href="signin.html" class="btn-signin">Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="page-section" aria-labelledby="podcasts-title">
+      <h1 id="podcasts-title" class="page-section__title" data-leader="pageCopy.podcasts.title">Podcasts</h1>
+      <p class="page-section__subtitle" data-leader="pageCopy.podcasts.subtitle">Conversations and interviews on mission, formation, and church. Browse by theme.</p>
+
+      <div class="content-tabs" role="tablist">
+        <button class="content-tabs__tab is-active" role="tab" data-filter="all">All</button>
+        <button class="content-tabs__tab" role="tab" data-filter="formation">Formation</button>
+        <button class="content-tabs__tab" role="tab" data-filter="kingdom-mission">Kingdom Mission</button>
+      </div>
+
+      <div class="content-hub__grid" id="podcasts-grid" data-filterable>
+        <a href="podcast-detail.html" class="content-card" data-category="formation">
+          <div class="content-card__image" style="display:flex;align-items:center;justify-content:center;position:relative;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="var(--accent)" stroke-width="1.5"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            <span class="content-card__runtime" data-leader="contentLibrary.podcasts.0.runtime">38:20</span>
+          </div>
+          <div class="content-card__body">
+            <div class="content-card__badges">
+              <span class="badge badge--type">Podcast</span>
+              <span class="badge" data-leader="contentLibrary.podcasts.0.themeLabel">Formation</span>
+            </div>
+            <h3 class="content-card__title" data-leader="contentLibrary.podcasts.0.title">Formation Conversations: Reframing Identity</h3>
+            <p class="content-card__description" data-leader="contentLibrary.podcasts.0.description">A conversation on identity, formation, and missional calling in everyday life.</p>
+            <span class="content-card__link" data-leader="contentLibrary.podcasts.0.linkLabel">Listen now</span>
+          </div>
+        </a>
+        <a href="podcast-detail.html" class="content-card" data-category="kingdom-mission">
+          <div class="content-card__image" style="display:flex;align-items:center;justify-content:center;position:relative;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="var(--accent)" stroke-width="1.5"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            <span class="content-card__runtime" data-leader="contentLibrary.podcasts.1.runtime">45:10</span>
+          </div>
+          <div class="content-card__body">
+            <div class="content-card__badges">
+              <span class="badge badge--type">Podcast</span>
+              <span class="badge" data-leader="contentLibrary.podcasts.1.themeLabel">Kingdom Mission</span>
+            </div>
+            <h3 class="content-card__title" data-leader="contentLibrary.podcasts.1.title">Recovering Kingdom Imagination</h3>
+            <p class="content-card__description" data-leader="contentLibrary.podcasts.1.description">Exploring how kingdom theology reshapes mission, vocation, and the church.</p>
+            <span class="content-card__link" data-leader="contentLibrary.podcasts.1.linkLabel">Listen now</span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="public-footer" role="contentinfo">
+    <div class="public-footer__inner">
+      <nav class="public-footer__links" aria-label="Footer links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#formation">Formation</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="#accessibility">Accessibility</a>
+      </nav>
+      <p class="public-footer__copy" data-leader="pageCopy.footer.copy">&copy; Leader. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button type="button" class="floating-chat-button" id="chat-open" aria-label="Open AI Lab chat">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+  </button>
+  <div class="chat-backdrop" id="chat-backdrop" aria-hidden="true"></div>
+  <aside class="floating-chat-panel" id="chat-panel" aria-label="AI Lab chat panel" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="floating-chat-panel__header">
+      <h2 class="floating-chat-panel__title">AI Lab</h2>
+      <button type="button" class="floating-chat-panel__close" id="chat-close" aria-label="Close chat">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="floating-chat-panel__body"><p class="floating-chat-panel__placeholder">Ask a question about formation, mission, or discipleship.</p></div>
+    <div class="floating-chat-panel__input-area">
+      <input type="text" class="floating-chat-panel__input" placeholder="Type your message..." aria-label="Chat message" />
+      <button type="button" class="floating-chat-panel__send">Send</button>
+    </div>
+  </aside>
+
+  <script src="js/main.js"></script>
+  <script src="../js/leader-content.js" data-json="../data/alan-hirsch.json"></script>
+</body>
+</html>

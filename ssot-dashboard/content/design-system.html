@@ -1,0 +1,17 @@
+<section class="ssot-section" data-section="design-system" id="content-design-system">
+  <p class="ssot-meta">Version 1.0.0 · Last updated January 2026</p>
+  <h1 class="ssot-page-title">Design System & Tokens</h1>
+  <p class="ssot-page-lead">Typography, color tokens, and component patterns for the dashboard and platform.</p>
+
+  <div class="ssot-card">
+    <h2 class="ssot-card__title">Dashboard Tokens (this SSOT)</h2>
+    <p>Defined in <code>css/tokens.css</code>: semantic colors (--ssot-bg, --ssot-fg, --ssot-accent, --ssot-sidebar-*), type scale (--ssot-text-xs through --ssot-text-3xl), spacing (--ssot-space-1 through --ssot-space-12), sidebar width. Use tokens only—no hardcoded colors or sizes in components.</p>
+  </div>
+
+  <div class="ssot-section__content">
+    <h2 class="ssot-section__title">Platform Design (React app)</h2>
+    <p><strong>Tailwind + shadcn:</strong> Design tokens in <code>app/globals.css</code> and <code>tailwind.config.ts</code>. Components in <code>components/ui/</code> are shadcn-managed—do not modify directly. Use semantic color names (accent, primary, secondary, muted). Typography: see <code>_docs/_guides/typography-2026.md</code> for font pairings (Inter, Playfair Display, etc.) and variant assignments.</p>
+    <h3>UI Principles (from UI/UX proposal)</h3>
+    <p>Progressive disclosure, visual hierarchy, reading-optimized layout, card-based patterns, step indicators, clean typography. Mobile-first; trust through transparency.</p>
+  </div>
+</section>

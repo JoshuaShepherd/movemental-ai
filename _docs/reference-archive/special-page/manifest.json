@@ -1,0 +1,12 @@
+{
+  "templateCategory": "special-page",
+  "variants": [
+    { "id": "special-network-map", "file": "special-network-map.tsx", "reference": "special-page-network-01.png", "source": "Framer" },
+    { "id": "special-timeline", "file": "special-timeline.tsx", "reference": "special-page-timeline-02.png", "source": "Framer" },
+    { "id": "special-check-inbox", "file": "special-check-inbox.tsx", "reference": "special-page-check-inbox-03.png", "source": "Framer" },
+    { "id": "special-editor", "file": "special-editor.tsx", "reference": "special-page-editor-04.png", "source": "Substack" },
+    { "id": "special-founder-story", "file": "special-founder-story.tsx", "reference": "special-page-founder-story-05.png", "source": "Kickstarter" },
+    { "id": "special-course-transcript", "file": "special-course-transcript.tsx", "reference": "special-page-course-transcript-06.png", "source": "SuperHi" },
+    { "id": "special-youre-in", "file": "special-youre-in.tsx", "reference": "special-page-youre-in-07.png", "source": "MasterClass" }
+  ]
+}

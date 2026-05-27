@@ -4,11 +4,13 @@
 /node_modules
 /.pnp
 .pnp.*
+.pnp.js
 .yarn/*
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+.yarn/install-state.gz
 
 # testing
 /coverage
@@ -60,7 +62,6 @@ next-env.d.ts
 
 # pre-build-check.ts output
 /reports/
-.env*.local
 
 # Large local PDF text extracts (regenerate with pypdf if needed)
 /docs/movement_leader_research/jr-woodward/_extracted/
@@ -68,4 +69,6 @@ next-env.d.ts
 # Playwright web-export of field guide markdown — not the designed lead magnet
 /public/downloads/movemental-it-starts-with-safety-field-guide-web-export.pdf
 
-.env*.local
+# Windows reserved device names (Git cannot index these)
+/nul
+nul

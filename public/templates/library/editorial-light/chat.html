@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Lab — Leader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Karla:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body data-leader-title="pageTitles.chat">
+  <header class="public-header" role="banner">
+    <div class="public-header__inner">
+      <div class="public-header__top">
+        <button type="button" class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+        <a href="index.html" class="public-header__logo" data-leader="name">Leader</a>
+        <div class="public-header__actions">
+          <a href="#search" aria-label="Search" class="public-header__search">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+          </a>
+          <a href="signin.html" class="btn-signin">Sign In</a>
+        </div>
+      </div>
+      <div class="public-header__bottom">
+        <nav class="public-header__nav" id="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="content-hub.html">Content</a>
+        <a href="index.html#themes">Themes</a>
+        <a href="index.html#assessments">Assessments</a>
+        <a href="chat.html" class="active">AI Lab</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="chat-page-wrap">
+    <div class="chat-page">
+      <div class="chat-page__frame">
+        <h1 class="chat-page__title" data-leader="pageCopy.chat.title">AI Lab</h1>
+        <p class="chat-page__user-in-charge">You ask; you judge. This assistant is grounded in the thought leader's work.</p>
+      </div>
+      <div class="chat-page__messages" id="chat-messages" role="log" aria-live="polite">
+        <div class="chat-page__empty" id="chat-empty">
+          <p class="chat-page__welcome" data-leader="pageCopy.chat.placeholder">Ask a question about formation, mission, or discipleship. This is a standalone demo; chat is not connected to a backend.</p>
+          <div class="chat-page__suggestions" aria-label="Suggested prompts">
+            <button type="button" class="chat-page__suggestion">What is mDNA?</button>
+            <button type="button" class="chat-page__suggestion">Explain APEST</button>
+            <button type="button" class="chat-page__suggestion">Suggest a next step</button>
+          </div>
+        </div>
+        <div class="chat-page__list" id="chat-list" hidden></div>
+      </div>
+      <div class="chat-page__input">
+        <input type="text" id="chat-input" placeholder="Type your message…" aria-label="Chat message" data-leader-placeholder="pageCopy.chat.inputPlaceholder" />
+        <button type="button" class="chat-page__send" id="chat-send" aria-label="Send" data-leader="pageCopy.chat.sendLabel">Send</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="public-footer" role="contentinfo">
+    <div class="public-footer__inner">
+      <nav class="public-footer__links" aria-label="Footer links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#formation">Formation</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="#accessibility">Accessibility</a>
+      </nav>
+      <p class="public-footer__copy" data-leader="pageCopy.footer.copy">© Leader. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button type="button" class="floating-chat-button" id="chat-open" aria-label="Open AI Lab chat">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+  </button>
+  <div class="chat-backdrop" id="chat-backdrop" aria-hidden="true"></div>
+  <aside class="floating-chat-panel" id="chat-panel" aria-label="AI Lab chat panel" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="floating-chat-panel__header">
+      <h2 class="floating-chat-panel__title" data-leader="pageCopy.chat.title">AI Lab</h2>
+      <button type="button" class="floating-chat-panel__close" id="chat-close" aria-label="Close chat">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+    <div class="floating-chat-panel__body">
+      <p class="floating-chat-panel__placeholder" data-leader="pageCopy.chat.placeholder">Ask a question about formation, mission, or discipleship. This is a standalone demo; chat is not connected to a backend.</p>
+      <div class="floating-chat-panel__suggestions">
+        <button type="button" class="floating-chat-panel__suggestion">What is mDNA?</button>
+        <button type="button" class="floating-chat-panel__suggestion">Explain APEST</button>
+        <button type="button" class="floating-chat-panel__suggestion">Suggest a next step</button>
+      </div>
+    </div>
+    <div class="floating-chat-panel__input-area">
+      <input type="text" class="floating-chat-panel__input" data-leader-placeholder="pageCopy.chat.inputPlaceholder" placeholder="Type your message..." aria-label="Chat message" />
+      <button type="button" class="floating-chat-panel__send" data-leader="pageCopy.chat.sendLabel">Send</button>
+    </div>
+  </aside>
+
+  <script src="js/main.js"></script>
+  <script src="../js/leader-content.js" data-json="../data/alan-hirsch.json"></script>
+</body>
+</html>

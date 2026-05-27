@@ -1,0 +1,15 @@
+{
+  "page": "books",
+  "totalVariants": 9,
+  "variants": [
+    { "id": "books-product-showcase", "name": "Product Showcase", "style": "Light", "ref": "books-product-showcase-01.png" },
+    { "id": "books-spec-cards", "name": "Spec Cards", "style": "Light", "ref": "books-spec-cards-02.png" },
+    { "id": "books-filtered-grid", "name": "Filtered Grid", "style": "Light", "ref": "books-filtered-grid-03.png" },
+    { "id": "books-detail-cart", "name": "Detail + Cart", "style": "Dark", "ref": "books-detail-cart-06.png" },
+    { "id": "books-minimal-grid", "name": "Minimal Grid", "style": "Light", "ref": "books-minimal-grid-05.png" },
+    { "id": "books-related-products", "name": "Related Products", "style": "Light", "ref": "books-related-products-07.png" },
+    { "id": "books-detail-clean", "name": "Detail Clean", "style": "Light", "ref": "books-detail-clean-08.png" },
+    { "id": "books-detail-split", "name": "Detail Split", "style": "Light", "ref": "books-detail-split-09.png" },
+    { "id": "books-detail-modal", "name": "Detail Modal", "style": "Light", "ref": "books-detail-modal-10.png" }
+  ]
+}

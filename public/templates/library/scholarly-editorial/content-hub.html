@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body data-leader-title="pageTitles.contentHub">
+  <header class="public-header" role="banner">
+    <div class="public-header__inner">
+      <a href="index.html" class="public-header__logo" data-leader="name">Leader</a>
+      <nav class="public-header__nav" id="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="content-hub.html" class="active">Content</a>
+        <a href="index.html#themes">Themes</a>
+        <a href="index.html#assessments">Assessments</a>
+        <a href="chat.html">AI Lab</a>
+      </nav>
+      <div class="public-header__actions">
+        <a href="#search" aria-label="Search" class="public-header__search">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+        </a>
+        <a href="signin.html" class="btn-signin">Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="page-header">
+      <h1 class="page-header__title" data-leader="pageCopy.contentHub.title">Content Library</h1>
+      <p class="page-header__subtitle" data-leader="pageCopy.contentHub.subtitle">Explore articles, books, courses, podcasts, and videos on formation, mission, and discipleship.</p>
+    </div>
+
+    <div class="content-tabs">
+      <div class="content-tabs__list" role="tablist" aria-label="Content types" data-target="content-grid">
+        <button class="content-tabs__tab is-active" role="tab" data-filter="all">All</button>
+        <a href="articles.html" class="content-tabs__tab" role="tab">Articles</a>
+        <button class="content-tabs__tab" role="tab" data-filter="book">Books</button>
+        <a href="courses.html" class="content-tabs__tab" role="tab">Courses</a>
+        <a href="podcasts.html" class="content-tabs__tab" role="tab">Podcasts</a>
+        <button class="content-tabs__tab" role="tab" data-filter="video">Videos</button>
+      </div>
+    </div>
+
+    <section class="content-hub" aria-label="Content items">
+      <div class="content-hub__grid" id="content-grid" data-filterable>
+
+        <a href="book-detail.html" class="content-card" data-type="book">
+          <div class="content-card__image">
+            <img src="" alt="" width="400" height="600" loading="lazy" data-leader="books.0.cover" data-leader-alt="books.0.coverAlt" />
+          </div>
+          <div class="content-card__body">
+            <div class="content-card__badges">
+              <span class="badge badge--type">Book</span>
+              <span class="badge badge--theme">Formation</span>
+            </div>
+            <h3 class="content-card__title" data-leader="books.0.title">Book</h3>
+            <p class="content-card__description" data-leader="books.5.shortDescription">A provocative call to reframe the way we understand and practice the Christian faith in the Western world.</p>
+            <span class="content-card__link">Read more &rarr;</span>
+          </div>
+        </a>
+
+        <div class="content-card" data-type="article">
+          <div class="content-card__body">
+            <div class="content-card__badges">
+              <span class="badge badge--type">Article</span>
+              <span class="badge badge--theme">Missional Church</span>
+            </div>
+            <h3 class="content-card__title" data-leader="contentLibrary.articles.0.title">The Missional Impulse</h3>
+            <p class="content-card__description" data-leader="contentLibrary.articles.0.description">Why the church must recover its sent-ness in order to participate authentically in the mission of God.</p>
+            <div class="content-card__meta" data-leader="contentLibrary.articles.0.meta">8 min read</div>
+            <span class="content-card__link" data-leader="contentLibrary.articles.0.linkLabel">Read article &rarr;</span>
+          </div>
+        </div>
+
+        <a href="books.html" class="content-card" data-type="book">
+          <div class="content-card__image">
+            <img src="../images/books/book-5q.webp" alt="5Q book cover" width="400" height="600" loading="lazy" data-leader="books.0.cover" data-leader-alt="books.0.coverAlt" />
+          </div>
+          <div class="content-card__body">
+            <div class="content-card__badges">
+              <span class="badge badge--type">Book</span>
+              <span class="badge badge--theme">APEST</span>
+            </div>
+            <h3 class="content-card__title" data-leader="books.0.title">5Q</h3>
+            <p class="content-card__description" data-leader="books.0.shortDescription">Reactivating the original intelligence and capacity of the body of Christ through fivefold ministry.</p>
+            <span class="content-card__link">Read more &rarr;</span>
+          </div>
+        </a>
+
+        <div class="content-card" data-type="video">
+          <div class="content-card__image content-card__image--landscape" style="background: #1c1917;">
+            <span class="content-card__runtime" data-leader="contentLibrary.videos.0.runtime">42:15</span>
+          </div>
+          <div class="content-card__body">
+            <div class="content-card__badges">
+              <span class="badge badge--type">Video</span>
+              <span class="badge badge--theme">Missional Church</span>
+            </div>
+            <h3 class="content-card__title" data-leader="contentLibrary.videos.0.title">Apostolic Genius: The DNA of Movement</h3>
+            <p class="content-card__description" data-leader="contentLibrary.videos.0.description">A keynote lecture exploring the six elements of apostolic genius that fuel every significant Jesus movement in history.</p>
+            <span class="content-card__link" data-leader="contentLibrary.videos.0.linkLabel">Watch &rarr;</span>
+          </div>
+        </div>
+
+        <a href="course-detail.html" class="content-card" data-type="course">
+          <div class="content-card__body">
+            <div class="content-card__badges">
+              <span class="badge badge--type">Course</span>
+              <span class="badge badge--theme">Missional Church</span>
+            </div>
+            <h3 class="content-card__title" data-leader="contentLibrary.courses.0.title">Foundations of Missional Church</h3>
+            <p class="content-card__description" data-leader="contentLibrary.courses.0.description">A structured six-week course covering the theological, practical, and organizational foundations of the missional church movement.</p>
+            <div class="content-card__meta" data-leader="contentLibrary.courses.0.meta">6 modules &middot; 12 hours</div>
+            <span class="content-card__link" data-leader="contentLibrary.courses.0.linkLabel">Enroll &rarr;</span>
+          </div>
+        </a>
+
+        <div class="content-card" data-type="podcast">
+          <div class="content-card__image content-card__image--landscape" style="background: #e7e5e4;">
+            <span class="content-card__runtime" data-leader="contentLibrary.podcasts.0.runtime">38:20</span>
+          </div>
+          <div class="content-card__body">
+            <div class="content-card__badges">
+              <span class="badge badge--type">Podcast</span>
+              <span class="badge badge--theme">Formation</span>
+            </div>
+            <h3 class="content-card__title" data-leader="contentLibrary.podcasts.0.title">Formation Conversations: Reframing Identity</h3>
+            <p class="content-card__description" data-leader="contentLibrary.podcasts.0.description">Podcast description.</p>
+            <span class="content-card__link" data-leader="contentLibrary.podcasts.0.linkLabel">Listen &rarr;</span>
+          </div>
+        </div>
+
+        <a href="article-detail.html" class="content-card" data-type="article">
+          <div class="content-card__body">
+            <div class="content-card__badges">
+              <span class="badge badge--type">Article</span>
+              <span class="badge badge--theme">Formation</span>
+            </div>
+            <h3 class="content-card__title" data-leader="contentLibrary.articles.1.title">Communitas vs. Community</h3>
+            <p class="content-card__description" data-leader="contentLibrary.articles.1.description">Understanding the difference between comfortable community and the transformative experience of communitas forged through shared mission.</p>
+            <div class="content-card__meta" data-leader="contentLibrary.articles.1.meta">12 min read</div>
+            <span class="content-card__link" data-leader="contentLibrary.articles.1.linkLabel">Read article &rarr;</span>
+          </div>
+        </a>
+
+        <a href="books.html" class="content-card" data-type="book">
+          <div class="content-card__image">
+            <img src="../images/books/book-disciplism.webp" alt="Disciplism book cover" width="400" height="600" loading="lazy" data-leader="books.1.cover" data-leader-alt="books.1.coverAlt" />
+          </div>
+          <div class="content-card__body">
+            <div class="content-card__badges">
+              <span class="badge badge--type">Book</span>
+              <span class="badge badge--theme">Disciple Making</span>
+            </div>
+            <h3 class="content-card__title" data-leader="books.1.title">Disciplism</h3>
+            <p class="content-card__description" data-leader="books.1.shortDescription">Reimagining discipleship as an all-of-life calling rather than a programmatic add-on to church participation.</p>
+            <span class="content-card__link">Read more &rarr;</span>
+          </div>
+        </a>
+
+        <a href="video-detail.html" class="content-card" data-type="video">
+          <div class="content-card__image content-card__image--landscape" style="background: #1c1917;">
+            <span class="content-card__runtime" data-leader="contentLibrary.videos.1.runtime">28:45</span>
+          </div>
+          <div class="content-card__body">
+            <div class="content-card__badges">
+              <span class="badge badge--type">Video</span>
+              <span class="badge badge--theme">APEST</span>
+            </div>
+            <h3 class="content-card__title" data-leader="contentLibrary.videos.1.title">Understanding Your APEST Profile</h3>
+            <p class="content-card__description" data-leader="contentLibrary.videos.1.description">A teaching session on how to interpret and apply your fivefold ministry profile for personal growth and team effectiveness.</p>
+            <span class="content-card__link" data-leader="contentLibrary.videos.1.linkLabel">Watch &rarr;</span>
+          </div>
+        </a>
+
+        <a href="podcast-detail.html" class="content-card" data-type="podcast">
+          <div class="content-card__image content-card__image--landscape" style="background: #e7e5e4;">
+            <span class="content-card__runtime" data-leader="contentLibrary.podcasts.1.runtime">45:10</span>
+          </div>
+          <div class="content-card__body">
+            <div class="content-card__badges">
+              <span class="badge badge--type">Podcast</span>
+              <span class="badge badge--theme">Kingdom Mission</span>
+            </div>
+            <h3 class="content-card__title" data-leader="contentLibrary.podcasts.1.title">Recovering Kingdom Imagination</h3>
+            <p class="content-card__description" data-leader="contentLibrary.podcasts.1.description">Podcast description.</p>
+            <span class="content-card__link" data-leader="contentLibrary.podcasts.1.linkLabel">Listen &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="public-footer" role="contentinfo">
+    <div class="public-footer__inner">
+      <nav class="public-footer__links" aria-label="Footer links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#formation">Formation</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="#accessibility">Accessibility</a>
+      </nav>
+      <p class="public-footer__copy" data-leader="pageCopy.footer.copy">© Leader. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button type="button" class="floating-chat-button" id="chat-open" aria-label="Open AI Lab chat">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+  </button>
+  <div class="chat-backdrop" id="chat-backdrop" aria-hidden="true"></div>
+  <aside class="floating-chat-panel" id="chat-panel" aria-label="AI Lab chat panel" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="floating-chat-panel__header">
+      <h2 class="floating-chat-panel__title" data-leader="pageCopy.chat.title">AI Lab</h2>
+      <button type="button" class="floating-chat-panel__close" id="chat-close" aria-label="Close chat">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+    <div class="floating-chat-panel__body">
+      <p class="floating-chat-panel__placeholder" data-leader="pageCopy.chat.placeholder">Ask a question about formation, mission, or discipleship. This is a standalone demo; chat is not connected to a backend.</p>
+    </div>
+    <div class="floating-chat-panel__input-area">
+      <input type="text" class="floating-chat-panel__input" placeholder="Type your message..." aria-label="Chat message" data-leader-placeholder="pageCopy.chat.inputPlaceholder" />
+      <button type="button" class="floating-chat-panel__send" data-leader="pageCopy.chat.sendLabel">Send</button>
+    </div>
+  </aside>
+
+  <script src="js/main.js"></script>
+  <script src="../js/leader-content.js" data-json="../data/alan-hirsch.json"></script>
+</body>
+</html>

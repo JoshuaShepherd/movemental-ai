@@ -1,0 +1,117 @@
+{
+  "slug": "rejesus",
+  "title": "ReJesus",
+  "author": "Alan Hirsch, Michael Frost",
+  "description": "",
+  "sections": [
+    {
+      "slug": "introduction",
+      "title": "This Bit First",
+      "type": "introduction",
+      "order": 0,
+      "file": "00-introduction.mdx",
+      "wordCount": 5420,
+      "summary": "The introduction opens with disturbing examples of how Jesus has been co-opted for purposes contrary to his teachings—from the Ku Klux Klan's use of Christian language to justify racial hatred, to the opulent cathedrals of Rome and Moscow where the revolutionary carpenter seems absent. The authors argue that Christianity must return to Jesus as its foundation, proposing a 'reJesus' project that recalibrates the church around the person, teachings, and example of Jesus. They introduce the concept of becoming 'little Jesuses' who emulate Christ's values and lifestyle, and establish that Christology must determine missiology, which in turn determines ecclesiology."
+    },
+    {
+      "slug": "how-jesus-changes-everything",
+      "title": "How Jesus Changes Everything",
+      "type": "chapter",
+      "order": 1,
+      "file": "01-how-jesus-changes-everything.mdx",
+      "wordCount": 8920,
+      "summary": "This chapter argues that Christians must rediscover the fierce and radical life of Jesus rather than the domesticated, porcelain-skinned version often presented. Through stories from M. Scott Peck, Nick Cave, and Dorothy Sayers, the authors demonstrate how the church has made Jesus seem otherworldly and unattainable. They explore how being taken captive by Jesus reshapes our view of God (through missio Dei), the church (as participatio Christi), and the world (through imago Dei). The chapter emphasizes that Jesus was wild, revolutionary, and dangerous—not safe, but good—and calls readers to identify with and emulate this untamed Messiah."
+    },
+    {
+      "slug": "rejesus-and-personal-renewal",
+      "title": "ReJesus and Personal Renewal",
+      "type": "chapter",
+      "order": 2,
+      "file": "02-rejesus-and-personal-renewal.mdx",
+      "wordCount": 10150,
+      "summary": "This chapter focuses on personal discipleship and renewal, arguing that Christology is the key to church renewal in every age. The authors explore how our imaginations become captive to cultural forces (consumerism, materialism) rather than to Jesus, and introduce the concept of 'the conspiracy of little Jesuses'—followers who replicate Christ's life and mission. They examine the need for 'contemporaneousness' with Jesus, the role of conformation to Christ's image, and provide practical examples of how Jesus' life and teachings should be lived out. The chapter emphasizes that discipleship requires a direct, unmediated relationship with Jesus and that knowledge of God comes through orthodoxy, orthopraxy, and orthopathy working together."
+    },
+    {
+      "slug": "rejesus-for-the-church-and-organization",
+      "title": "ReJesus for the Church and Organization",
+      "type": "chapter",
+      "order": 3,
+      "file": "03-rejesus-for-the-church-and-organization.mdx",
+      "wordCount": 9850,
+      "summary": "This chapter addresses organizational renewal, arguing that Christianity minus Christ equals religion—a formulaic system that loses the life-transforming encounter with Jesus. The authors explore the 'routinization of charisma' where movements lose their founding impulse over time, and argue for a return to the 'founder' (Jesus) rather than denominational founders. They examine how Christianity functions as 'antireligion' that subverts religious systems, and discuss the role of the founder in maintaining organizational health. The chapter calls for 'radical traditionalism'—a return to roots while innovating for new contexts—and emphasizes that the church must constantly recalibrate to Jesus to avoid becoming mere religion."
+    },
+    {
+      "slug": "ive-got-a-picture-of-jesus",
+      "title": "I've Got a Picture of Jesus",
+      "type": "chapter",
+      "order": 4,
+      "file": "04-ive-got-a-picture-of-jesus.mdx",
+      "wordCount": 10280,
+      "summary": "This chapter examines how people create distorted images of Jesus to fit their own needs and agendas. The authors critique various false portraits: the 'bearded-lady Jesus' (feminized, serene, unattainable), 'spooky Jesus' (otherworldly, distant), 'ordinary Galilean Jesus' (secularized, just a teacher), and others. They argue that we must let go of inaccurate assumptions and return to the Gospels to encounter the radical, unsettling, revolutionary Jesus. The chapter explores how different ages have created different images of Jesus, and emphasizes that the real Jesus was wild, dangerous, and transformative—someone who would be killed by religious and political authorities, not a harmless moral teacher."
+    },
+    {
+      "slug": "the-shema-schema",
+      "title": "The Shema Schema (One God, One Love)",
+      "type": "chapter",
+      "order": 5,
+      "file": "05-the-shema-schema.mdx",
+      "wordCount": 11250,
+      "summary": "This chapter explores biblical monotheism through the lens of the Shema ('Hear, O Israel: The Lord our God, the Lord is one'). The authors distinguish between philosophical monotheism and existential monotheism, arguing that biblical faith is a response to an encounter with the living God that demands total allegiance. They examine how the kingdom of God expresses God's sovereignty, how Jesus redefines monotheism christocentrically, and how this eliminates false sacred-secular divides. The chapter explores various ways people try to escape God's all-encompassing claim (idolatry, religiosity, compartmentalization) and emphasizes that true spirituality involves offering all of life to the One God through Jesus."
+    },
+    {
+      "slug": "three-two-one-engage",
+      "title": "Encountering Jesus Afresh",
+      "type": "chapter",
+      "order": 6,
+      "file": "06-three-two-one-engage.mdx",
+      "wordCount": 9850,
+      "summary": "This chapter addresses how to engage Jesus directly, arguing that worldview matters critically. The authors contrast Hellenistic (step logic, philosophical) approaches with Hebraic (block logic, historical) ways of knowing, and critique how the Western church has been influenced by Greek thinking rather than the Jewish worldview of the Scriptures. They explore Hebraic ways of knowing God through orthopathy (the way of the heart), orthopraxy (the way of action), and orthodoxy (right belief), arguing that all three are necessary. The chapter examines practices like lectio divina, emphasizes that the Bible should read us rather than us reading it, and calls for a recovery of biblical epistemology to truly encounter Jesus afresh."
+    },
+    {
+      "slug": "the-church-that-jesus-built",
+      "title": "The Church That Jesus Built",
+      "type": "chapter",
+      "order": 7,
+      "file": "07-the-church-that-jesus-built.mdx",
+      "wordCount": 10850,
+      "summary": "This chapter explores what the church should look like when recalibrated around Jesus. Drawing from Paul's letter to the Ephesians, the authors identify eight characteristics of a Jesus-built church: a Christlike community, holistic community, peace-loving community, worshipping community, devoted community, graced community, holy community, and healthy community. They examine how Jesus' own community functioned—as an itinerant, missional band that moved outward to serve, practiced the presence of Jesus, understood worship as whole-of-life, and lived kingdom values. The chapter critiques how modern churches have become spectator sports and consumerist institutions, and calls for a return to the organic, relational, countercultural community that Jesus modeled and Paul developed."
+    },
+    {
+      "slug": "conclusion",
+      "title": "Conclusion",
+      "type": "conclusion",
+      "order": 8,
+      "file": "08-conclusion.mdx",
+      "wordCount": 2850,
+      "summary": "The conclusion presents an imaginative scene of Paul and Peter meeting in an inn, sharing stories about Jesus to rekindle their mission. The authors emphasize that Paul's gospel was not primarily doctrinal propositions but the story of Jesus—his life, death, resurrection, and appearances. They argue that the epistles are applications of the gospel story rather than expositions of it, and that the church must return to telling and retelling the story of Jesus. The conclusion reinforces the book's central theme: that renewal comes through rediscovering and being shaped by the person of Jesus rather than through programs, strategies, or institutional reforms."
+    },
+    {
+      "slug": "selected-resources",
+      "title": "Selected Resources",
+      "type": "resources",
+      "order": 9,
+      "file": "09-selected-resources.mdx",
+      "wordCount": 850,
+      "summary": "This section provides a comprehensive bibliography of resources related to rediscovering Jesus, including works on Christology, missional theology, church renewal, and biblical studies. The list includes books by authors such as N. T. Wright, Dietrich Bonhoeffer, David Bosch, Jacques Ellul, and many others who have contributed to understanding Jesus and his mission."
+    },
+    {
+      "slug": "illustration-credits",
+      "title": "Illustration Credits",
+      "type": "credits",
+      "order": 10,
+      "file": "10-illustration-credits.mdx",
+      "wordCount": 320,
+      "summary": "This section provides credits and permissions for the various illustrations, images, and artwork used throughout the book, including drawings, photographs, and film stills that depict Jesus and historical figures mentioned in the text."
+    },
+    {
+      "slug": "index",
+      "title": "Index",
+      "type": "index",
+      "order": 11,
+      "file": "11-index.mdx",
+      "wordCount": 280,
+      "summary": "This section contains additional illustration credits and image permissions for artwork featured in the book, including depictions of historical figures like William Wilberforce, Mother Teresa, and others who exemplify the 'little Jesus' concept explored throughout the text."
+    }
+  ],
+  "totalSections": 12
+}

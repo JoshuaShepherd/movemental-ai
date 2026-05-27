@@ -1,0 +1,32 @@
+{
+  "comment": "Maps template filenames to Open Library: isbn (preferred) or title+author for search. Output base name only; script adds .jpg.",
+  "books": [
+    { "out": "book-hero-maker", "isbn": "0310536936" },
+    { "out": "book-exponential", "isbn": "0310326788" },
+    { "out": "book-on-the-verge-dave", "title": "On the Verge", "author": "Dave Ferguson" },
+    { "out": "book-on-the-verge", "title": "On the Verge", "author": "Alan Hirsch" },
+    { "out": "book-the-big-idea", "title": "The Big Idea", "author": "Dave Ferguson" },
+    { "out": "book-bless", "isbn": "1684510887" },
+    { "out": "book-multiplier", "isbn": "0310176700" },
+    { "out": "book-boss-or-leader", "title": "Boss or Leader", "author": "Dave Ferguson" },
+    { "out": "book-finding-your-way-back-to-god", "title": "Finding Your Way Back to God", "author": "Dave Ferguson" },
+    { "out": "book-legacy-hero-maker", "title": "The Legacy of a Hero Maker", "author": "Dave Ferguson" },
+    { "out": "book-one-eighty", "title": "One Eighty", "author": "Dave Ferguson" },
+    { "out": "book-keeping-score", "title": "Keeping Score", "author": "Dave Ferguson" },
+    { "out": "book-discover-your-mission-now", "title": "Discover Your Mission Now", "author": "Dave Ferguson" },
+    { "out": "book-starting-over", "isbn": "1601426119" },
+    { "out": "book-5q", "title": "5Q", "author": "Alan Hirsch" },
+    { "out": "book-disciplism", "title": "Disciplism", "author": "Alan Hirsch" },
+    { "out": "book-fast-forward-to-mission", "title": "Fast Forward to Mission", "author": "Alan Hirsch" },
+    { "out": "book-metanoia", "title": "Metanoia", "author": "Alan Hirsch" },
+    { "out": "book-reframation", "title": "Reframation", "author": "Alan Hirsch" },
+    { "out": "book-rejesus", "title": "ReJesus", "author": "Alan Hirsch" },
+    { "out": "book-the-missional-quest", "title": "The Missional Quest", "author": "Lance Ford" },
+    { "out": "book-missional-essentials", "title": "Missional Essentials", "author": "Brad Brisco" },
+    { "out": "book-rethink", "title": "ReThink", "author": "Brad Brisco" }
+  ],
+  "aliases": [
+    { "from": "book-on-the-verge-dave", "to": "book-on-the-verge" },
+    { "from": "book-missional-essentials", "to": "book-missional-essentials-cover" }
+  ]
+}

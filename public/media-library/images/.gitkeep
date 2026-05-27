@@ -1,0 +1,2 @@
+# This file ensures the images directory structure is tracked in git
+# Actual image files may be large and should be added individually or through the download script

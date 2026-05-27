@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alan Hirsch — Formation, Mission, Discipleship</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ----- Scholarly / Editorial design tokens -----
+     * Journal, seminary, serious reading.
+     * Serif or restrained sans; muted palette; generous space; sharp/subtle radius.
+     */
+    :root {
+      --font-heading: 'Source Serif 4', Georgia, serif;
+      --font-body: 'Source Sans 3', system-ui, sans-serif;
+      --measure: min(65ch, 50rem);
+      --measure-wide: min(90rem, 95vw);
+      --space-xs: 0.25rem;
+      --space-s: 0.5rem;
+      --space-m: 1rem;
+      --space-l: 1.5rem;
+      --space-xl: 2rem;
+      --space-2xl: 3rem;
+      --space-3xl: 4rem;
+      --radius: 2px;
+      --bg: #fafaf9;
+      --bg-elevated: #ffffff;
+      --border: #e7e5e4;
+      --text: #1c1917;
+      --text-muted: #57534e;
+      --accent: #5b6b7a;
+      --accent-hover: #4b5563;
+      --line-height-body: 1.65;
+      --line-height-heading: 1.25;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: var(--line-height-body);
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ----- PublicHeader ----- */
+    .public-header {
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-elevated);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .public-header__inner {
+      max-width: var(--measure-wide);
+      margin: 0 auto;
+      padding: var(--space-m) var(--space-l);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-xl);
+    }
+    .public-header__logo {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .public-header__logo:hover { color: var(--accent); }
+    .public-header__nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-s);
+    }
+    .public-header__nav a {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: var(--space-xs) var(--space-s);
+      border-radius: var(--radius);
+    }
+    .public-header__nav a:hover { color: var(--text); background: var(--border); }
+    .public-header__nav .active { color: var(--text); font-weight: 600; }
+    .public-header__actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-m);
+    }
+    .public-header__actions .btn-signin {
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      padding: var(--space-s) var(--space-m);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .public-header__actions .btn-signin:hover {
+      background: var(--border);
+      color: var(--accent-hover);
+    }
+    .public-header__search {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    /* ----- Main content wrapper ----- */
+    .main-content { padding-bottom: var(--space-3xl); }
+
+    /* ----- HomeHero (Portrait + copy per HERO_AND_MEDIA_SPEC: text beside image, scholarly) ----- */
+    .home-hero {
+      max-width: var(--measure-wide);
+      margin: 0 auto;
+      padding: var(--space-3xl) var(--space-l) var(--space-2xl);
+    }
+    .home-hero__inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+      align-items: center;
+    }
+    @media (min-width: 56rem) {
+      .home-hero__inner {
+        grid-template-columns: 1fr minmax(18rem, 42%);
+        gap: var(--space-3xl);
+      }
+      .home-hero__inner--portrait-right { grid-template-columns: 1fr minmax(18rem, 42%); }
+      .home-hero__inner--portrait-right .home-hero__media { order: 2; }
+    }
+    .home-hero__content {
+      text-align: left;
+    }
+    .home-hero__title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 600;
+      line-height: var(--line-height-heading);
+      margin: 0 0 var(--space-m);
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .home-hero__subtitle {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: var(--measure);
+      margin: 0 0 var(--space-xl);
+      line-height: var(--line-height-body);
+    }
+    .home-hero__ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-m);
+    }
+    .home-hero__ctas .btn {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      padding: var(--space-m) var(--space-xl);
+      border-radius: var(--radius);
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .home-hero__ctas .btn--primary {
+      background: var(--text);
+      color: var(--bg-elevated);
+      border: 1px solid var(--text);
+    }
+    .home-hero__ctas .btn--primary:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+      color: var(--bg-elevated);
+    }
+    .home-hero__ctas .btn--secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .home-hero__ctas .btn--secondary:hover {
+      background: var(--border);
+      color: var(--accent-hover);
+    }
+    .home-hero__media {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--border);
+      aspect-ratio: 3 / 4;
+    }
+    .home-hero__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      vertical-align: middle;
+    }
+
+    /* ----- ExplorationLane (themes preview grid) ----- */
+    .exploration-lane {
+      max-width: var(--measure-wide);
+      margin: 0 auto;
+      padding: var(--space-2xl) var(--space-l);
+    }
+    .exploration-lane__title {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0 0 var(--space-l);
+      color: var(--text);
+    }
+    .exploration-lane__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+      gap: var(--space-l);
+    }
+    .theme-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--space-xl);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .theme-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .theme-card__title {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin: 0 0 var(--space-s);
+      color: var(--text);
+    }
+    .theme-card__description {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* ----- LibraryLane (content-type cards) ----- */
+    .library-lane {
+      max-width: var(--measure-wide);
+      margin: 0 auto;
+      padding: var(--space-2xl) var(--space-l);
+    }
+    .library-lane__title {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0 0 var(--space-l);
+      color: var(--text);
+    }
+    .library-lane__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+      gap: var(--space-l);
+    }
+    .library-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--space-xl);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .library-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .library-card__title {
+      font-family: var(--font-heading);
+      font-size: 1.0625rem;
+      font-weight: 600;
+      margin: 0 0 var(--space-s);
+      color: var(--text);
+    }
+    .library-card__description {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* ----- PublicFooter ----- */
+    .public-footer {
+      border-top: 1px solid var(--border);
+      background: var(--bg-elevated);
+      margin-top: auto;
+    }
+    .public-footer__inner {
+      max-width: var(--measure-wide);
+      margin: 0 auto;
+      padding: var(--space-xl) var(--space-l);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-m);
+    }
+    .public-footer__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-m);
+    }
+    .public-footer__links a {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .public-footer__links a:hover { color: var(--text); }
+    .public-footer__copy {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ----- FloatingChatButton ----- */
+    .floating-chat-button {
+      position: fixed;
+      bottom: var(--space-xl);
+      right: var(--space-xl);
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background: var(--text);
+      color: var(--bg-elevated);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 200;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .floating-chat-button:hover {
+      background: var(--accent-hover);
+      transform: scale(1.05);
+    }
+    .floating-chat-button svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    /* ----- FloatingChatPanel (sheet) ----- */
+    .floating-chat-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 24rem;
+      height: 100%;
+      background: var(--bg-elevated);
+      border-left: 1px solid var(--border);
+      box-shadow: -4px 0 24px rgba(0,0,0,0.08);
+      z-index: 201;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.25s ease;
+    }
+    .floating-chat-panel.is-open { transform: translateX(0); }
+    .floating-chat-panel__header {
+      padding: var(--space-m) var(--space-l);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .floating-chat-panel__title {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin: 0;
+      color: var(--text);
+    }
+    .floating-chat-panel__close {
+      width: 2rem;
+      height: 2rem;
+      padding: 0;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .floating-chat-panel__close:hover { background: var(--border); color: var(--text); }
+    .floating-chat-panel__body {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--space-l);
+    }
+    .floating-chat-panel__placeholder {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .floating-chat-panel__input-area {
+      padding: var(--space-m) var(--space-l);
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: var(--space-s);
+    }
+    .floating-chat-panel__input {
+      flex: 1;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      padding: var(--space-s) var(--space-m);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--text);
+    }
+    .floating-chat-panel__input::placeholder { color: var(--text-muted); }
+    .floating-chat-panel__send {
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      padding: var(--space-s) var(--space-m);
+      border: none;
+      border-radius: var(--radius);
+      background: var(--text);
+      color: var(--bg-elevated);
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .floating-chat-panel__send:hover { background: var(--accent-hover); }
+    .chat-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.2);
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+    .chat-backdrop.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Layout: push footer to bottom when content is short ----- */
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .main-content { flex: 1; }
+  </style>
+</head>
+<body>
+  <!-- PublicHeader -->
+  <header class="public-header" role="banner">
+    <div class="public-header__inner">
+      <a href="#welcome" class="public-header__logo">Alan Hirsch</a>
+      <nav class="public-header__nav" aria-label="Main navigation">
+        <a href="#welcome" class="active">Home</a>
+        <a href="#content">Content</a>
+        <a href="#themes">Themes</a>
+        <a href="#assessments">Assessments</a>
+        <a href="#formation">Formation</a>
+        <a href="#chat">AI Lab</a>
+        <a href="#about">About</a>
+      </nav>
+      <div class="public-header__actions">
+        <a href="#search" aria-label="Search" class="public-header__search">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+        </a>
+        <a href="signin.html" class="btn-signin">Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content" id="welcome">
+    <!-- HomeHero: Portrait + copy (scholarly-editorial; thought leader as guide, text beside image) -->
+    <section class="home-hero" aria-labelledby="hero-title">
+      <div class="home-hero__inner home-hero__inner--portrait-right">
+        <div class="home-hero__content">
+          <h1 id="hero-title" class="home-hero__title">Formation, mission, and discipleship</h1>
+          <p class="home-hero__subtitle">
+            Explore resources and themes for missional church, disciple making, and leadership formation. No sign-up required to browse.
+          </p>
+          <div class="home-hero__ctas">
+            <a href="#content" class="btn btn--primary">Explore Content</a>
+            <a href="#themes" class="btn btn--secondary">Browse Themes</a>
+          </div>
+        </div>
+        <div class="home-hero__media">
+          <img src="images/alan/professional_portrait_photography_of_man_standing_i.webp" alt="Alan Hirsch" width="600" height="800" loading="eager" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ExplorationLane: themes preview grid -->
+    <section class="exploration-lane" id="themes" aria-labelledby="themes-title">
+      <h2 id="themes-title" class="exploration-lane__title">Browse by theme</h2>
+      <div class="exploration-lane__grid">
+        <a href="#themes" class="theme-card">
+          <h3 class="theme-card__title">Missional Church</h3>
+          <p class="theme-card__description">Foundations and practices for missional ecclesiology and apostolic movement.</p>
+        </a>
+        <a href="#themes" class="theme-card">
+          <h3 class="theme-card__title">Formation</h3>
+          <p class="theme-card__description">Spiritual and leadership formation for disciples and leaders.</p>
+        </a>
+        <a href="#themes" class="theme-card">
+          <h3 class="theme-card__title">Disciple Making</h3>
+          <p class="theme-card__description">Making disciples who make disciples: frameworks and practices.</p>
+        </a>
+        <a href="#themes" class="theme-card">
+          <h3 class="theme-card__title">APEST</h3>
+          <p class="theme-card__description">Apostolic, prophetic, evangelistic, shepherd, teacher—fivefold ministry.</p>
+        </a>
+        <a href="#themes" class="theme-card">
+          <h3 class="theme-card__title">Kingdom Mission</h3>
+          <p class="theme-card__description">Kingdom-centered mission and church planting.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- LibraryLane: content-type cards -->
+    <section class="library-lane" id="content" aria-labelledby="library-title">
+      <h2 id="library-title" class="library-lane__title">Content library</h2>
+      <div class="library-lane__grid">
+        <a href="#content" class="library-card">
+          <h3 class="library-card__title">Articles</h3>
+          <p class="library-card__description">Essays, reflections, and deep dives on mission and formation.</p>
+        </a>
+        <a href="#content" class="library-card">
+          <h3 class="library-card__title">Books</h3>
+          <p class="library-card__description">Books and excerpts for study and reference.</p>
+        </a>
+        <a href="#content" class="library-card">
+          <h3 class="library-card__title">Courses</h3>
+          <p class="library-card__description">Structured learning paths by theme.</p>
+        </a>
+        <a href="#content" class="library-card">
+          <h3 class="library-card__title">Podcasts</h3>
+          <p class="library-card__description">Conversations and interviews on mission and church.</p>
+        </a>
+        <a href="#content" class="library-card">
+          <h3 class="library-card__title">Videos</h3>
+          <p class="library-card__description">Talks, teaching, and video series.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- PublicFooter -->
+  <footer class="public-footer" role="contentinfo">
+    <div class="public-footer__inner">
+      <nav class="public-footer__links" aria-label="Footer links">
+        <a href="#welcome">Home</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="#accessibility">Accessibility</a>
+      </nav>
+      <p class="public-footer__copy">© Alan Hirsch. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- FloatingChatButton -->
+  <button type="button" class="floating-chat-button" id="chat-open" aria-label="Open AI Lab chat">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+  </button>
+
+  <!-- FloatingChatPanel -->
+  <div class="chat-backdrop" id="chat-backdrop" aria-hidden="true"></div>
+  <aside class="floating-chat-panel" id="chat-panel" aria-label="AI Lab chat panel" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="floating-chat-panel__header">
+      <h2 class="floating-chat-panel__title">AI Lab</h2>
+      <button type="button" class="floating-chat-panel__close" id="chat-close" aria-label="Close chat">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+    <div class="floating-chat-panel__body">
+      <p class="floating-chat-panel__placeholder">
+        Ask a question about formation, mission, or discipleship. This is a standalone demo; chat is not connected to a backend.
+      </p>
+    </div>
+    <div class="floating-chat-panel__input-area">
+      <input type="text" class="floating-chat-panel__input" placeholder="Type your message…" aria-label="Chat message" />
+      <button type="button" class="floating-chat-panel__send">Send</button>
+    </div>
+  </aside>
+
+  <script>
+    (function () {
+      var panel = document.getElementById('chat-panel');
+      var openBtn = document.getElementById('chat-open');
+      var closeBtn = document.getElementById('chat-close');
+      var backdrop = document.getElementById('chat-backdrop');
+
+      function openPanel() {
+        panel.classList.add('is-open');
+        panel.setAttribute('aria-hidden', 'false');
+        backdrop.classList.add('is-visible');
+        backdrop.setAttribute('aria-hidden', 'false');
+        closeBtn.focus();
+      }
+
+      function closePanel() {
+        panel.classList.remove('is-open');
+        panel.setAttribute('aria-hidden', 'true');
+        backdrop.classList.remove('is-visible');
+        backdrop.setAttribute('aria-hidden', 'true');
+        openBtn.focus();
+      }
+
+      openBtn.addEventListener('click', openPanel);
+      closeBtn.addEventListener('click', closePanel);
+      backdrop.addEventListener('click', closePanel);
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && panel.classList.contains('is-open')) closePanel();
+      });
+    })();
+  </script>
+</body>
+</html>

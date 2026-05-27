@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="hero-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#161d16;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1e2a1e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f140f;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6e916e;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#8c50af;stop-opacity:0.08" />
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#hero-grad)"/>
+  <rect width="1920" height="1080" fill="url(#accent-grad)"/>
+  <circle cx="1600" cy="200" r="320" fill="#6e916e" fill-opacity="0.06"/>
+  <circle cx="300" cy="880" r="240" fill="#8c50af" fill-opacity="0.06"/>
+</svg>

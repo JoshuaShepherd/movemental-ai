@@ -1,0 +1,881 @@
+# Movemental AI Platform - Cursor Rules
+
+## Project Overview
+Modern Next.js 15 application using TypeScript, shadcn/ui, Tailwind CSS, and npm/pnpm. Architecture follows a structured six-layer type safety approach with contracts (Zod schemas), services, API routes, hooks, and UI components.
+
+**🚨 CRITICAL: Project Identity**
+- **Repository**: `movemental-ai` (multi-tenant content and learning management system)
+- **Package Name**: `movemental-ai`
+- **Purpose**: Multi-tenant platform for movemental leaders - content management, publishing, courses, and network collaboration
+- **NEVER** confuse with other projects or repositories
+
+## Developer Context & Working Style
+
+### AI Agent Communication Guidelines
+
+**When working with this user, ALWAYS:**
+
+1. **Explain the "Why"**: Provide reasoning, trade-offs, and implications alongside code changes
+   - ✅ "This approach prevents X issue because..."
+   - ✅ "We're doing Y instead of Z because of these trade-offs..."
+   - ❌ Just showing code without context
+
+2. **Provide Technical Context**: Explain concepts when relevant, but assume capability to understand complexity
+   - ✅ "This is a type guard that ensures..." (brief explanation)
+   - ✅ "The Result<T> pattern means..." (contextual explanation)
+   - ✅ Use technical terms - they're understood or can be looked up
+   - ❌ Over-explaining basic concepts unnecessarily
+
+3. **Highlight Edge Cases & Gotchas**: Proactively point out potential issues and production concerns
+   - ✅ "This works, but watch out for X edge case..."
+   - ✅ "In production, you might encounter Y..."
+   - ✅ "This could fail if Z happens..."
+   - ❌ Only fixing the immediate problem
+
+4. **Suggest Best Practices**: Offer guidance on patterns, performance, and maintainability
+   - ✅ "This follows the established pattern, but consider..."
+   - ✅ "For maintainability at scale, you might want to..."
+   - ✅ "This is fine now, but will need optimization when..."
+   - ❌ Just implementing without discussion
+
+5. **Respect the Architecture**: Acknowledge and build on the solid foundation
+   - ✅ "Following your established six-layer pattern..."
+   - ✅ "This aligns with your type safety chain..."
+   - ✅ "Maintaining consistency with your existing patterns..."
+   - ❌ Suggesting major architectural changes without strong justification
+
+**When proposing changes:**
+
+- **Always explain the reasoning** behind technical decisions
+- **Point out potential gotchas** or edge cases proactively
+- **Suggest alternatives** when there are meaningful trade-offs
+- **Respect existing patterns** unless there's a clear reason to change
+- **Think production-ready** - consider scale, performance, maintainability
+- **Be rigorous** - don't simplify solutions unnecessarily
+
+**Communication Style:**
+
+- Use clear, precise language (technical terms are fine)
+- Provide context for decisions, not just implementations
+- Explain trade-offs and implications
+- Break complex concepts into logical pieces when helpful
+- Acknowledge the impressive work that's been done
+- Push for best practices - don't assume simplicity is preferred
+
+## Key Technologies & Stack
+- **Next.js 15** with App Router
+- **npm/pnpm** for package management (prefer pnpm when available)
+- **shadcn/ui** with Radix UI primitives and Lucide icons
+- **Drizzle ORM** with PostgreSQL for database operations
+- **Supabase** for auth and database hosting (RLS patterns expected)
+- **Zod** for schema validation and type inference
+- **React Hook Form** with Zod resolvers for form handling
+- **TypeScript** with strict mode
+- **Tailwind CSS** for styling
+- **MCP Servers**: **Supabase MCP** (database access) and **Chrome DevTools MCP** (browser debugging) - See MCP Integration section below
+
+## Development Rules & Boundaries
+
+### Database Migrations (Drizzle Only)
+- ALL database changes go through Drizzle migrations
+- Never modify database directly - always use `npm run db:generate` and `npm run db:push` (or `pnpm` equivalents)
+- Schema changes must be reflected in documentation
+- Test migrations before pushing to production
+
+### 🔒 Type Safety Chain: The Golden Rule
+
+**UNIDIRECTIONAL FLOW**: Types flow downstream, NEVER upstream
+
+```
+Drizzle Schema → Zod Schemas → Services → Routes → Hooks → UI
+```
+
+#### Core Principles
+- ✅ **Lock before proceed**: Never move to next layer until current validates as `LOCKED`
+- ✅ **Bottom-up fixes**: Always fix errors starting from lowest layer
+- ✅ **Auto-generation mandatory**: ALL Zod schemas MUST use `drizzle-zod` (createSelectSchema, createInsertSchema, createUpdateSchema)
+- ✅ **Type exports mandatory**: ALL Zod schemas MUST export corresponding TypeScript types using `z.infer<typeof Schema>`
+- ✅ **Four types required**: Each entity should export four types: `Entity`, `EntityCreate`, `EntityUpdate`, `EntityFilters`
+- ✅ **Six layers only**: No mapper layer in our simplified architecture
+- ❌ **NEVER** modify a lower layer based on higher layer requirements
+- ❌ **NEVER** proceed if validation fails
+- ❌ **NEVER** manually define types that duplicate auto-generated types
+- ❌ **NEVER** skip type exports - they are mandatory for type safety chain
+
+**Documentation**: 
+- **Master Guide**: `_docs/type/01_OVERVIEW.md` - Complete type safety architecture guide
+- **Platform Architecture**: `_docs/type/11_PLATFORM_ARCHITECTURE_AT_A_GLANCE.md` - Architecture overview
+- **Workflow Checklist**: `_docs/type/08_CHAIN_WORKFLOW_CHECKLIST.md` - Step-by-step workflow
+- Layer-specific guides: `_docs/type/{layer}.md` (e.g., `02_LAYER_1_DATABASE.md`, `03_LAYER_2_ZOD.md`)
+
+### Multi-Tenant Architecture
+
+**CRITICAL**: This is a multi-tenant platform. All tenant-scoped data must include `organizationId`:
+
+- **Layer 1 (Database)**: Tables include `organizationId` field
+- **Layer 2 (Zod)**: Filters schemas include `organizationId` validation
+- **Layer 3 (Services)**: All queries automatically filter by tenant context
+- **Layer 4 (Routes)**: Tenant context extracted from request
+- **Layer 5 (Hooks)**: Tenant context passed through API calls
+- **Layer 6 (UI)**: UI never directly accesses tenant—it's handled automatically
+
+**See**: `_docs/type/09_MULTI_TENANT_NOTES.md` for detailed tenant scoping information.
+
+### Security Guardrails
+- NEVER expose `SUPABASE_SERVICE_ROLE_KEY` or other service keys client-side
+- Use `NEXT_PUBLIC_*` prefix only for truly public environment variables
+- All server actions must validate input with Zod schemas
+- Implement Row Level Security (RLS) for all user data
+- Always validate user permissions before database operations
+- Enforce tenant boundaries at the service layer
+
+### File Modification Boundaries
+- Do NOT modify files in `src/components/ui/` (shadcn/ui managed)
+- Do NOT edit `node_modules/`, `package-lock.json` directly
+- ALWAYS propose a plan before making changes to multiple files
+- Ask before modifying existing database schemas or API contracts
+
+## Project Structure & Patterns
+
+### Directory Architecture
+```
+app/                    # Next.js App Router pages and API routes
+├── (public)/          # Public pages
+├── api/               # API routes (Layer 4)
+└── dashboard/         # Dashboard pages (excluded from public site)
+components/            # Custom reusable components
+├── ui/               # shadcn/ui components (auto-generated, don't modify)
+lib/
+├── schemas/          # Single source of truth for all Zod schemas (Layer 2)
+├── services/         # Business logic services (Layer 3)
+│   └── simplified/   # Entity-specific services
+├── database/         # Database configuration and schema (Layer 1)
+│   └── schema.ts     # Drizzle schema definitions
+└── utils/            # Utility functions
+hooks/                 # React hooks (Layer 5)
+└── simplified/       # Entity-specific hooks
+contexts/              # React contexts
+_docs/                 # Comprehensive documentation
+├── type/             # Type safety architecture documentation
+├── business-docs/    # Business and product documentation
+└── ...
+```
+
+### Path Aliases (configured in tsconfig.json)
+- `@/` → `./`
+- Use absolute imports: `import { UserProfiles } from "@/lib/schemas"`
+
+### The Six-Layer Type Safety Architecture
+
+Our simplified architecture (NO mapper layer):
+
+```
+Layer 1: Drizzle Schema    → db/schema.ts (or src/lib/database/schema.ts)
+Layer 2: Zod Schemas       → src/lib/schemas/index.ts
+Layer 3: Services          → src/lib/services/simplified/
+Layer 4: API Routes        → src/app/api/simplified/ (or app/api/)
+Layer 5: React Hooks        → src/hooks/simplified/
+Layer 6: UI Components     → src/components/ (or components/)
+```
+
+### 🚨 CRITICAL: Lock-Before-Proceed Protocol
+
+**Each layer must achieve `"status": "LOCKED"` before proceeding to the next.**
+
+#### Validation Commands (run in order):
+```bash
+npm run db:check         # Layer 1: Must return "status": "LOCKED" (if script exists)
+npm run contracts:check  # Layer 2: Must return "status": "LOCKED" (if script exists)
+npm run services:check  # Layer 3: Validate services (if script exists)
+npm run routes:check    # Layer 4: Validate API routes (if script exists)
+npm run hooks:check     # Layer 5: Validate React hooks (if script exists)
+npm run ui:check        # Layer 6: Validate UI components (if script exists)
+npm run validate:all    # Run all validations in sequence (if script exists)
+```
+
+**Note**: Validation scripts may not all be implemented yet. Check `package.json` for available scripts. When scripts don't exist, manually validate TypeScript compilation and layer alignment.
+
+**STOP at any layer that fails validation. Fix that layer first.**
+
+### 🔧 Error Fixing Protocol: Bottom-Up Only with MCP Integration
+
+**MANDATORY**: For ALL debugging and error fixing, start with Chrome DevTools MCP to see the actual runtime behavior.
+
+When encountering ANY error (type, runtime, or visual):
+
+1. **START WITH CHROME DEVTOOLS MCP** (if browser/runtime related)
+   - Navigate to the problematic page/endpoint
+   - Take a snapshot (DOM structure)
+   - Check console messages: `list_console_messages`
+   - List network requests: `list_network_requests`
+   - Take screenshot if visual issue
+   - Identify the actual error from browser context
+
+2. **USE SUPABASE MCP** (if database/data related)
+   - Query the relevant table to see actual data structure
+   - Verify schema matches Drizzle definition
+   - Check if data exists and relationships are correct
+   - Validate RLS policies if permission-related
+
+3. **STOP** - Do not immediately fix the error you see
+4. **ANALYZE** - Run validation commands starting from Layer 1
+5. **IDENTIFY** - Find the lowest layer with errors
+6. **FIX BOTTOM-UP** - Fix layers in sequence: 1 → 2 → 3 → 4 → 5 → 6
+7. **VALIDATE** - After fixing each layer, validate it before moving up
+8. **VERIFY IN BROWSER** - Use Chrome DevTools MCP to test fixes
+9. **FINAL VERIFY** - Run validation commands to ensure complete alignment
+
+#### Example Error Fixing Workflow with MCP:
+```bash
+# Scenario: UI shows: "Property 'email' does not exist" in browser
+
+# ❌ WRONG: Add 'email' to UI component interface
+# ✅ CORRECT: Use MCP tools + trace to source
+
+# STEP 1: Chrome DevTools MCP Investigation
+1. Navigate to the page: "Navigate to http://localhost:3000/dashboard/user-profile"
+2. Take snapshot: "Take a snapshot of the page"
+3. Check console: "List all console messages"
+4. Check network: "List all network requests"
+5. Identify: Console shows "Property 'email' does not exist on type UserProfile"
+
+# STEP 2: Supabase MCP Verification (if data-related)
+1. Query database: "Query the user_profiles table structure via Supabase MCP"
+2. Verify: Check if 'email' column exists in actual database
+3. Compare: Compare with Drizzle schema definition
+
+# STEP 3: Type Safety Chain Validation
+1. Run validation commands (or check TypeScript compilation):
+   - Check Layer 1 (Drizzle schema): Does it have 'email'?
+   - Check Layer 2 (Zod schema): Does it have 'email'?
+   - Check Layer 3 (Service): Does it use 'email'?
+   - Trace error to source
+
+# STEP 4: Fix at Source (Layer 1)
+1. Add 'email' to Drizzle schema: db/schema.ts
+2. Generate migration: npm run db:generate
+3. Push migration: npm run db:push
+4. Validate Layer 1: Check TypeScript compilation
+
+# STEP 5: Layer 2 Auto-Updates
+1. Layer 2 auto-updates (drizzle-zod)
+2. Validate: Check TypeScript compilation
+
+# STEP 6: Fix Remaining Layers
+1. Layer 3 (Services): Update service to use 'email' field
+2. Layer 4 (Routes): Types flow automatically
+3. Layer 5 (Hooks): Types flow automatically
+4. Layer 6 (UI): Types flow automatically
+
+# STEP 7: Browser Verification via Chrome DevTools MCP
+1. Navigate: "Navigate to http://localhost:3000/dashboard/user-profile"
+2. Check console: "List console messages" (should be clean)
+3. Test functionality: "Fill the email field and submit"
+4. Verify: "Take a snapshot to verify the page works"
+
+# STEP 8: Final Validation
+1. Run: npm run typecheck (or equivalent)
+2. Confirm: All layers aligned, browser shows no errors
+```
+
+### 🎯 AI Agent Mandatory Instructions
+
+When encountering type errors, follow this protocol:
+
+1. **Acknowledge**: "I see a type error. Let me trace its source."
+2. **Validate**: Run validation commands starting from Layer 1 (or check TypeScript compilation)
+3. **Report**: "Errors detected starting at Layer [X]"
+4. **Plan**: "I'll fix layers in order: [X] → [Y] → [Z]"
+5. **Execute**: Fix each layer, validating after each
+6. **Verify**: Run type checking and browser verification
+7. **Confirm**: "All layers validated and aligned."
+
+### 🔧 MCP Integration: Supabase & Chrome DevTools
+
+**CRITICAL**: The project has Supabase MCP and Chrome DevTools MCP configured. Always use these tools when appropriate.
+
+#### Supabase MCP Usage
+
+**When to use Supabase MCP:**
+- ✅ **Database queries** - Any task requiring database data access
+- ✅ **Schema validation** - Verifying database structure matches Drizzle schema
+- ✅ **Data inspection** - Checking actual data in tables
+- ✅ **Content queries** - Accessing books, articles, courses, user profiles
+- ✅ **User context** - Getting user-specific data for personalized responses
+- ✅ **Analytics queries** - Checking assessment results, user activity
+- ✅ **Migration validation** - Verifying migrations applied correctly
+- ✅ **RLS policy testing** - Testing Row Level Security policies
+- ✅ **Data integrity checks** - Verifying relationships and constraints
+- ✅ **Tenant data verification** - Checking multi-tenant data isolation
+
+**Mandatory Supabase MCP workflow:**
+1. **Before making database changes**: Query Supabase MCP to see current state
+2. **After schema changes**: Query Supabase MCP to verify changes applied
+3. **When debugging data issues**: Query Supabase MCP to inspect actual data
+4. **When validating types**: Compare Drizzle schema with actual Supabase structure via MCP
+
+**Example prompts to use:**
+```
+"Query the Supabase database to see the current structure of the books table"
+"Check if the user_profiles table has the expected columns via Supabase MCP"
+"Verify that the migration was applied by querying the database structure"
+"Get the first 5 books from the database to see the actual data structure"
+"Check if there are any users who completed the assessment"
+"Verify tenant isolation by querying data for a specific organizationId"
+```
+
+**Supabase MCP best practices:**
+- ✅ Always query before assuming database state
+- ✅ Use Supabase MCP to validate schema alignment with Drizzle
+- ✅ Check actual data when debugging type mismatches
+- ✅ Verify RLS policies work correctly via MCP queries
+- ✅ Use read-only queries when possible for safety
+- ✅ Verify tenant boundaries when working with multi-tenant data
+- ❌ Never skip database verification when making schema changes
+
+#### Chrome DevTools MCP Usage
+
+**When to use Chrome DevTools MCP (MANDATORY for debugging):**
+- ✅ **ALL debugging tasks** - Start with Chrome DevTools MCP
+- ✅ **Error investigation** - Check console errors first
+- ✅ **Performance issues** - Analyze performance traces
+- ✅ **Visual bugs** - Take screenshots/snapshots
+- ✅ **Network issues** - Inspect network requests
+- ✅ **Form validation** - Test form submissions
+- ✅ **API testing** - Test API endpoints in browser
+- ✅ **E2E test debugging** - Debug failing tests
+- ✅ **Production issues** - Debug live site problems
+- ✅ **Type error debugging** - See runtime errors that TypeScript might miss
+- ✅ **Multi-tenant UI testing** - Verify tenant switching works correctly
+
+**MANDATORY Debugging Workflow with Chrome DevTools MCP:**
+
+**Step 1: Initial Investigation (ALWAYS START HERE)**
+```
+1. Navigate to the problematic page/endpoint
+2. Take a snapshot (better than screenshot - shows DOM structure)
+3. Check console for errors: list_console_messages
+4. Check network requests: list_network_requests
+5. Identify the root cause
+```
+
+**Step 2: Type Safety Chain Validation**
+```
+1. If type error detected, follow bottom-up protocol:
+   - Check Layer 1 (Drizzle schema)
+   - Check Layer 2 (Zod schemas)
+   - Check Layer 3 (Services)
+   - Check Layer 4 (Routes)
+   - Check Layer 5 (Hooks)
+   - Check Layer 6 (UI)
+2. Identify lowest layer with errors
+3. Fix from bottom up
+```
+
+**Step 3: Browser Verification**
+```
+1. After fixes, test in browser via Chrome DevTools MCP:
+   - Navigate to the page
+   - Take snapshot
+   - Check console (should be clean)
+   - Test the functionality
+   - Verify network requests succeed
+2. Take performance trace if performance-related
+```
+
+**Step 4: Final Validation**
+```
+1. Run: npm run typecheck (or equivalent)
+2. Verify all layers aligned
+3. Confirm browser shows no errors
+```
+
+**Chrome DevTools MCP debugging checklist:**
+- [ ] Navigate to the page/endpoint
+- [ ] Take snapshot (DOM structure)
+- [ ] Check console messages (errors, warnings)
+- [ ] List network requests (failed requests?)
+- [ ] Take screenshot if visual issue
+- [ ] Test user interactions (click, fill, submit)
+- [ ] Analyze performance if slow
+- [ ] Verify fixes work in browser
+- [ ] Test tenant switching if multi-tenant feature
+
+**Example debugging prompts:**
+```
+"Navigate to http://localhost:3000/dashboard, take a snapshot, check the console for errors, and list all network requests"
+"Debug the login form: navigate to the login page, fill it out, submit it, then check console and network for errors"
+"Analyze the performance of the dashboard page and identify bottlenecks"
+"Check if the API endpoint /api/books is working by testing it in the browser"
+"Verify tenant switching works by navigating between different organization contexts"
+```
+
+**Chrome DevTools MCP + Type Safety Chain Integration:**
+
+When debugging errors, ALWAYS combine:
+1. **Chrome DevTools MCP** - See runtime behavior
+2. **Type Safety Chain Validation** - Fix type errors properly
+3. **Supabase MCP** - Verify database state if data-related
+
+**Example combined workflow:**
+```
+1. Browser shows error → Use Chrome DevTools MCP to investigate
+2. Console shows type error → Use type safety chain validation
+3. Error relates to data → Use Supabase MCP to check database
+4. Fix following bottom-up protocol
+5. Verify in browser via Chrome DevTools MCP
+6. Validate all layers via type checking
+```
+
+#### MCP Documentation References
+
+**Single Source of Truth:**
+- `_docs/type/01_OVERVIEW.md` - Complete type safety architecture guide
+- `_docs/type/11_PLATFORM_ARCHITECTURE_AT_A_GLANCE.md` - Architecture overview
+- `_docs/type/08_CHAIN_WORKFLOW_CHECKLIST.md` - Step-by-step workflow
+- `_docs/type/02_LAYER_1_DATABASE.md` - Layer 1 requirements
+- `_docs/type/03_LAYER_2_ZOD.md` - Layer 2 requirements
+- `_docs/type/04_LAYER_3_SERVICES.md` - Layer 3 requirements (if exists)
+- `_docs/type/05_LAYER_4_ROUTES.md` - Layer 4 requirements (if exists)
+- `_docs/type/06_LAYER_5_HOOKS.md` - Layer 5 requirements (if exists)
+- `_docs/type/07_LAYER_6_UI.md` - Layer 6 requirements (if exists)
+- `_docs/type/09_MULTI_TENANT_NOTES.md` - Multi-tenant architecture details
+
+**When to reference type safety docs:**
+- ✅ Before making any schema changes
+- ✅ When fixing type errors
+- ✅ When adding new entities
+- ✅ When debugging layer misalignments
+- ✅ When validating changes
+- ✅ When working with multi-tenant features
+
+#### MCP Error Fixing Protocol
+
+**CRITICAL WORKFLOW for ALL errors:**
+
+1. **START WITH CHROME DEVTOOLS MCP** (if browser/runtime error)
+   - Navigate to the page
+   - Take snapshot
+   - Check console messages
+   - List network requests
+   - Identify the error
+
+2. **USE SUPABASE MCP** (if database/data error)
+   - Query the relevant table
+   - Check schema structure
+   - Verify data exists
+   - Check relationships
+   - Verify tenant boundaries
+
+3. **FOLLOW TYPE SAFETY CHAIN** (for type errors)
+   - Read `_docs/type/01_OVERVIEW.md`
+   - Run validation commands bottom-up (or check TypeScript compilation)
+   - Fix from Layer 1 → Layer 6
+   - Validate each layer before proceeding
+
+4. **VERIFY IN BROWSER** (after fixes)
+   - Use Chrome DevTools MCP to test
+   - Verify console is clean
+   - Test functionality
+   - Take performance trace if needed
+   - Verify tenant isolation if multi-tenant
+
+5. **FINAL VALIDATION**
+   - Run: `npm run typecheck` (or equivalent)
+   - Ensure all layers aligned
+   - Confirm browser shows no errors
+
+**NEVER skip MCP tools when they're relevant. They provide critical context that code inspection alone cannot.**
+
+### 📋 Layer-Specific Requirements
+
+#### Layer 1: Database Schema (`db/schema.ts` or `src/lib/database/schema.ts`)
+- ✅ All tables must have: `id`, `createdAt`, `updatedAt`
+- ✅ Multi-tenant tables must have: `organizationId`
+- ✅ Use proper Drizzle types: `text`, `integer`, `boolean`, `jsonb`, `timestamp`, etc.
+- ✅ Define foreign keys with `.references()`
+- ✅ All changes go through migrations: `npm run db:generate` + `npm run db:push`
+- ❌ NEVER modify database directly without migrations
+- **Validation**: Check TypeScript compilation and schema alignment
+
+#### Layer 2: Zod Schemas (`src/lib/schemas/index.ts`)
+- ✅ Auto-generate with `createSelectSchema`, `createInsertSchema`, `createUpdateSchema`
+- ✅ Every entity should have 4 schemas: Select, Insert, Update, Filters
+- ✅ Export both schema AND inferred type: `export type Books = z.infer<typeof BooksSelectSchema>` - **MANDATORY**
+- ✅ Export all four types for each entity: `Entity`, `EntityCreate`, `EntityUpdate`, `EntityFilters` - **all required**
+- ✅ Use `z.infer<typeof Schema>` pattern for all type exports (never manual types)
+- ✅ Use base schemas: `IdSchema`, `IsoDate`, `BaseFiltersSchema` (if available)
+- ✅ Multi-tenant filters must include `organizationId` validation
+- ❌ NEVER manually define schemas that duplicate Drizzle types
+- ❌ NEVER skip type exports - types are mandatory
+- **Validation**: Check TypeScript compilation and type exports
+
+#### Layer 3: Services (`src/lib/services/simplified/`)
+- ✅ Extend base service class with type-safe generics (if base service exists)
+- ✅ Implement CRUD: `create`, `findById`, `findMany`, `update`, `delete`
+- ✅ Use Zod validation for all inputs/outputs
+- ✅ Return `Result<T>` types (never throw errors) - if Result pattern is used
+- ✅ Export singleton instances: `export const booksService = new BooksService()`
+- ✅ **Multi-tenant**: All queries must filter by `organizationId` from tenant context
+- ✅ **Multi-tenant**: Never expose data across tenant boundaries
+- **Validation**: Check TypeScript compilation and service patterns
+
+#### Layer 4: API Routes (`src/app/api/` or `app/api/`)
+- ✅ Validate inputs with Zod `.safeParse()`
+- ✅ Use services for all business logic
+- ✅ Handle `Result<T>` types properly (if Result pattern is used)
+- ✅ Return consistent format: `{ success: true, data }` or `{ error: { code, message } }`
+- ✅ Proper HTTP status codes: 200, 201, 400, 404, 500
+- ✅ **Multi-tenant**: Extract tenant context from request (middleware or headers)
+- ✅ **Multi-tenant**: Pass tenant context to services
+- **Validation**: Check TypeScript compilation and route patterns
+
+#### Layer 5: React Hooks (`src/hooks/simplified/`)
+- ✅ Use React Query (`@tanstack/react-query`) if available
+- ✅ Define structured query keys for cache management
+- ✅ Call services directly (server-side) or API routes (client-side)
+- ✅ Handle `Result<T>` and throw errors for React Query (if Result pattern is used)
+- ✅ Implement proper cache invalidation in mutations
+- ✅ **Multi-tenant**: Pass tenant context through API calls
+- **Validation**: Check TypeScript compilation and hook patterns
+
+#### Layer 6: UI Components (`src/components/` or `components/`)
+- ✅ Use hooks for all data fetching (never fetch directly)
+- ✅ Properly type all component props
+- ✅ Handle loading and error states
+- ✅ Use React Hook Form with Zod for forms
+- ✅ **Multi-tenant**: UI never directly accesses tenant—it's handled automatically
+- ❌ NEVER define types that contradict schemas
+- **Validation**: Check TypeScript compilation and component patterns
+
+## Development Workflow Commands
+
+### Core Commands
+```bash
+npm run dev          # Start dev server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run typecheck    # Type checking (if script exists)
+npm run lint         # Lint code
+```
+
+### Database Commands (Drizzle)
+```bash
+npm run db:generate  # Generate migrations
+npm run db:push      # Push schema changes
+npm run db:migrate   # Run migrations (if script exists)
+npm run db:studio    # Open Drizzle Studio
+```
+
+### Testing Commands (if available)
+```bash
+npm test             # Run tests (if configured)
+npm run test:watch   # Watch mode (if configured)
+npm run test:e2e     # E2E tests (if configured)
+```
+
+### Validation Commands (if scripts exist)
+```bash
+# Individual layer validation (if scripts exist)
+npm run db:check         # Layer 1: Drizzle schema validation
+npm run contracts:check  # Layer 2: Zod schemas validation
+npm run services:check   # Layer 3: Services validation
+npm run routes:check     # Layer 4: API routes validation
+npm run hooks:check      # Layer 5: React hooks validation
+npm run ui:check         # Layer 6: UI components validation
+
+# All layers at once (if script exists)
+npm run validate:all     # Run all validations in sequence
+
+# Type checking
+npm run typecheck        # Full project type checking (if script exists)
+```
+
+**Note**: Many validation scripts may not be implemented yet. When scripts don't exist, use TypeScript compilation (`tsc --noEmit` or equivalent) to validate layers.
+
+### shadcn/ui Management
+```bash
+npx shadcn@latest add [component]  # Add new UI components
+```
+
+## Testing Strategy
+
+### Unit Tests (if configured)
+- Schema validation tests
+- Service layer tests
+- API route tests
+- Component tests
+
+### E2E Tests (if configured)
+- Full user flows
+- Test against `http://localhost:3000`
+- Include auth flows and user interactions
+- Test both dashboard and public pages
+- Test multi-tenant scenarios
+
+### RLS Testing Pattern
+- Test Row Level Security policies
+- Verify user can only access their own data
+- Test organization-scoped data access
+- Validate permission-based operations
+- Test tenant isolation boundaries
+
+## Code Quality Standards
+
+### TypeScript
+- Use strict mode (enabled in tsconfig.json)
+- Prefer type inference over explicit types
+- Use proper generic constraints
+- Avoid `any` type - use `unknown` or proper types
+- Use discriminated unions for complex state
+
+### React Patterns
+- Use functional components with hooks
+- Prefer composition over inheritance
+- Use proper dependency arrays in useEffect
+- Implement proper error boundaries
+- Use React.memo for performance optimization
+
+### Form Handling
+- Use React Hook Form with Zod resolvers
+- Implement proper validation and error handling
+- Use controlled components for complex forms
+- Implement proper accessibility attributes
+
+### API Design
+- Use RESTful patterns
+- Implement proper HTTP status codes
+- Use consistent error response format
+- Implement rate limiting (if needed)
+- Use proper authentication headers
+- Enforce tenant boundaries
+
+## Performance Guidelines
+
+### Code Splitting
+- Use dynamic imports for heavy components
+- Implement route-based code splitting
+- Use React.lazy for component-level splitting
+- Preload critical components
+
+### Image Optimization
+- Use Next.js Image component
+- Implement proper alt text
+- Use WebP/AVIF formats
+- Implement responsive images
+
+### Database Optimization
+- Use proper indexing
+- Implement query optimization
+- Use connection pooling
+- Implement proper caching strategies
+- Optimize multi-tenant queries
+
+### Bundle Optimization
+- Use tree shaking
+- Implement proper imports
+- Use dynamic imports for large libraries
+- Monitor bundle size with analyzer
+
+## Security Best Practices
+
+### Authentication
+- Use Supabase Auth for user management
+- Implement proper session handling
+- Use secure cookie settings
+- Implement proper logout functionality
+
+### Authorization
+- Use Row Level Security (RLS) policies
+- Implement role-based access control
+- Validate permissions on both client and server
+- Use proper middleware for route protection
+- **Multi-tenant**: Enforce tenant boundaries at service layer
+
+### Data Validation
+- Validate all inputs with Zod schemas
+- Sanitize user inputs
+- Use parameterized queries (Drizzle handles this)
+- Implement proper error handling
+
+### Environment Variables
+- Never expose secrets client-side
+- Use proper environment variable naming
+- Implement proper validation for env vars
+- Use different configs for different environments
+
+## Multi-Tenant Considerations
+
+### Tenant Isolation
+- **Database**: Each tenant-scoped table includes `organizationId` field
+- **Services**: All queries filter by tenant automatically
+- **Routes**: Tenant context passed from middleware to services
+- **UI**: Tenant-agnostic—tenant scoping is transparent
+- **RLS**: Row Level Security policies enforce tenant boundaries
+
+### Tenant Context
+- Extract tenant from domain, subdomain, or signed token
+- Pass tenant context through middleware
+- Store tenant context in request/response cycle
+- Never expose tenant switching in UI (unless admin feature)
+
+**See**: `_docs/type/09_MULTI_TENANT_NOTES.md` for detailed tenant scoping information.
+
+## Collaboration Guidelines
+
+### Git Workflow
+- Use feature branches
+- Write descriptive commit messages
+- Use conventional commits format (if preferred)
+- Implement proper PR reviews
+
+### Code Review
+- Review for security vulnerabilities
+- Check for performance issues
+- Verify proper error handling
+- Ensure proper testing coverage
+- Verify tenant isolation for multi-tenant features
+
+### Documentation
+- Update documentation with code changes
+- Use JSDoc for complex functions
+- Maintain up-to-date README files
+- Document API endpoints
+- Document multi-tenant features
+
+## Error Handling
+
+### Client-Side Errors
+- Use error boundaries for React components
+- Implement proper error states
+- Use toast notifications for user feedback
+- Log errors to monitoring service (if configured)
+
+### Server-Side Errors
+- Use proper HTTP status codes
+- Implement consistent error response format
+- Log errors with proper context
+- Use proper error monitoring
+
+### Database Errors
+- Handle connection errors gracefully
+- Implement proper transaction handling
+- Use proper error logging
+- Implement retry mechanisms
+
+## Troubleshooting
+
+### Common Issues
+
+**MANDATORY**: Always start troubleshooting with Chrome DevTools MCP to see actual runtime behavior.
+
+#### Database Issues
+1. **Start with Supabase MCP**: Query the database to see actual state
+2. **Check schema alignment**: Compare Drizzle schema with Supabase via MCP
+3. **Verify data**: Use Supabase MCP to check if data exists
+4. **Test RLS policies**: Query via Supabase MCP to verify permissions
+5. **Verify tenant isolation**: Check multi-tenant data boundaries
+
+#### Runtime/Browser Issues
+1. **Start with Chrome DevTools MCP**:
+   - Navigate to the page
+   - Take snapshot
+   - Check console messages
+   - List network requests
+   - Identify the error
+2. **Follow type safety chain**: Fix type errors bottom-up
+3. **Verify in browser**: Test fixes via Chrome DevTools MCP
+
+#### TypeScript Compilation Errors
+1. **Use Chrome DevTools MCP**: Check if error appears in browser
+2. **Follow type safety chain**: Validate all layers bottom-up
+3. **Fix bottom-up**: Start from Layer 1 (Drizzle schema)
+4. **Verify**: Test in browser via Chrome DevTools MCP
+
+#### Multi-Tenant Issues
+1. **Verify tenant context**: Check if tenant is properly extracted
+2. **Check service layer**: Verify tenant filtering in queries
+3. **Test RLS policies**: Use Supabase MCP to verify tenant isolation
+4. **Check UI**: Verify tenant switching works (if applicable)
+
+### Debug Tools
+
+**Primary Tools (MCP-enabled):**
+- ✅ **Chrome DevTools MCP** - Browser debugging, console, network, performance
+- ✅ **Supabase MCP** - Database queries, schema validation, data inspection
+- ✅ **Type Safety Chain Validation** - Type checking for type errors
+- ✅ **Logging** - Use proper logging in code
+- ✅ **Error tracking** - Implement proper error monitoring
+
+### Performance Issues
+
+1. **Start with Chrome DevTools MCP**:
+   - Navigate to slow page
+   - Start performance trace: `performance_start_trace`
+   - Interact with page
+   - Stop trace: `performance_stop_trace`
+   - Analyze: `performance_analyze_insight`
+2. **Check database performance**: Use Supabase MCP to query slow tables
+3. **Monitor bundle size**: Use bundle analyzer
+4. **Check API response times**: Use Chrome DevTools MCP network inspection
+5. **Check multi-tenant queries**: Verify queries are properly scoped
+
+## Documentation References
+
+### Type Safety Architecture
+- `_docs/type/01_OVERVIEW.md` - Complete type safety architecture guide
+- `_docs/type/11_PLATFORM_ARCHITECTURE_AT_A_GLANCE.md` - Architecture overview
+- `_docs/type/08_CHAIN_WORKFLOW_CHECKLIST.md` - Step-by-step workflow
+- `_docs/type/09_MULTI_TENANT_NOTES.md` - Multi-tenant architecture details
+
+### Business Documentation
+- `_docs/business-docs/` - Comprehensive business and product documentation
+- `_docs/business-docs/00_foundation/README.md` - Documentation structure
+- `_docs/business-docs/02_product_platform/` - Product architecture and deployment
+
+### Platform Documentation
+- `_docs/business-docs/10_tools_utilities/knowledge_ops/` - Platform audits and tools
+
+## Quick Reference
+
+### Essential Commands
+```bash
+# Development
+npm run dev                    # Start development server
+npm run build                  # Build for production
+npm run typecheck             # Type checking (if script exists)
+
+# Database
+npm run db:generate           # Generate migrations
+npm run db:push               # Push schema changes
+npm run db:studio             # Open Drizzle Studio
+
+# Validation (if scripts exist)
+npm run validate:all          # Validate all layer alignments
+npm run db:check              # Layer 1: Database validation
+npm run contracts:check       # Layer 2: Zod schemas validation
+npm run services:check        # Layer 3: Services validation
+npm run routes:check          # Layer 4: API routes validation
+npm run hooks:check           # Layer 5: React hooks validation
+npm run ui:check              # Layer 6: UI components validation
+```
+
+### Key Files (Type Safety Chain)
+- `db/schema.ts` or `src/lib/database/schema.ts` - Layer 1: Drizzle schema (SSOT)
+- `src/lib/schemas/index.ts` - Layer 2: Zod schemas (auto-generated)
+- `src/lib/services/simplified/` - Layer 3: Business logic services
+- `src/app/api/` or `app/api/` - Layer 4: API routes
+- `src/hooks/simplified/` - Layer 5: React hooks
+- `src/components/` or `components/` - Layer 6: UI components
+- `_docs/type/01_OVERVIEW.md` - Complete master guide (Single Source of Truth)
+- `_docs/type/11_PLATFORM_ARCHITECTURE_AT_A_GLANCE.md` - Architecture overview
+
+### Important URLs
+- Development: http://localhost:3000
+- Dashboard: http://localhost:3000/dashboard (if exists)
+
+---
+
+**Last Updated**: January 2026  
+**Version**: 1.0.0 - Multi-Tenant Content & Learning Management System  
+**Project**: Movemental AI Platform

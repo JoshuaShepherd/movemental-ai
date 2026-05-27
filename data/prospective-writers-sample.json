@@ -1,0 +1,31 @@
+{
+  "writers": [
+    {
+      "full_name": "Test Link User",
+      "email": "test@example.com",
+      "slug": "test-link-user",
+      "bio": "A test prospective writer for verifying the signup linking flow.",
+      "role": "Author",
+      "organization": null,
+      "tags": ["test"],
+      "content": [
+        {
+          "title": "Sample Article for Testing",
+          "content_type": "article",
+          "body_excerpt": "This is a short excerpt for the test article.",
+          "body_full": null,
+          "url": null,
+          "metadata": {}
+        },
+        {
+          "title": "Another Test Piece",
+          "content_type": "quote",
+          "body_excerpt": "Movement is the language the soul speaks when words fail.",
+          "body_full": null,
+          "url": null,
+          "metadata": {}
+        }
+      ]
+    }
+  ]
+}

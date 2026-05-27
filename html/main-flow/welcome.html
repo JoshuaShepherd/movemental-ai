@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Movemental</title>
+  <link rel="stylesheet" href="auth-modals.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <main class="auth-modal" role="dialog" aria-labelledby="welcome-title" aria-modal="true">
+    <div class="auth-modal__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 2L11 13" />
+        <path d="M22 2L15 22L11 13L2 9L22 2Z" />
+      </svg>
+    </div>
+    <h1 id="welcome-title" class="auth-modal__title">Welcome to Movemental</h1>
+
+    <form class="auth-modal__form" action="#" method="post">
+      <button type="button" class="auth-modal__btn auth-modal__btn--primary">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#fff"/>
+          <path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.909-2.26c-.806.54-1.836.86-3.047.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z" fill="#fff"/>
+          <path d="M3.964 10.71c-.18-.54-.282-1.117-.282-1.71 0-.593.102-1.17.282-1.71V4.658H.957C.347 5.89 0 7.22 0 8.5c0 1.28.348 2.61.957 3.842l3.007-2.332z" fill="#fff"/>
+          <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.658L3.964 6.99C4.672 4.864 6.656 3.28 9 3.28V3.58z" fill="#fff"/>
+        </svg>
+        Continue with Google
+      </button>
+      <input type="email" name="email" id="email" placeholder="jdoe.mobbin2@gmail.com" value="jdoe.mobbin2@gmail.com" autocomplete="email" />
+      <button type="submit" class="auth-modal__btn auth-modal__btn--secondary">Continue</button>
+    </form>
+  </main>
+
+  <footer class="auth-modal-footer">
+    <a href="/" class="auth-modal-footer__logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 2L11 13" />
+        <path d="M22 2L15 22L11 13L2 9L22 2Z" />
+      </svg>
+      Movemental
+    </a>
+    <span class="auth-modal-footer__curated">curated by <strong>Movemental</strong></span>
+  </footer>
+</body>
+</html>
