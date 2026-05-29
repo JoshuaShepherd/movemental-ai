@@ -1,6 +1,7 @@
 "use server";
 
 import { ReadinessAnonymousSubmitSchema } from "@/lib/sandboxlive/readiness-intake-schema";
+import { SANDBOX_READINESS_MIGRATION_HINT } from "@/lib/sandboxlive/readiness-db-errors";
 import {
   insertReadinessAnonymousSubmission,
   resolveReadinessInviteBySecretToken,
@@ -47,6 +48,12 @@ export async function submitReadinessInviteIntakeAction(input: {
       return {
         ok: false,
         reason: "Some answers were missing or invalid. Please review the form.",
+      };
+    }
+    if (ins.reason === "table_not_ready") {
+      return {
+        ok: false,
+        reason: `Responses could not be saved because the database is not set up yet. ${SANDBOX_READINESS_MIGRATION_HINT}`,
       };
     }
     return { ok: false, reason: "Could not save your responses. Please try again." };

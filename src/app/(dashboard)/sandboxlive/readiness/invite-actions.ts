@@ -31,12 +31,19 @@ export async function createReadinessInviteLinkAction(input: {
     return { ok: false, reason: "No active organization." };
   }
 
-  const { rawToken, inviteId } = await createReadinessInvite({
-    organizationId: resolved.data.organizationId,
-    createdBy: user.id,
-    label: input.label ?? null,
-    expiresAt: null,
-  });
+  let rawToken: string;
+  let inviteId: string;
+  try {
+    ({ rawToken, inviteId } = await createReadinessInvite({
+      organizationId: resolved.data.organizationId,
+      createdBy: user.id,
+      label: input.label ?? null,
+      expiresAt: null,
+    }));
+  } catch (e) {
+    const message = e instanceof Error ? e.message : "Could not create invite link.";
+    return { ok: false, reason: message };
+  }
 
   const path = `/readiness-invite/${encodeURIComponent(rawToken)}`;
   revalidatePath("/sandboxlive/readiness");

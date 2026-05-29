@@ -1,0 +1,2262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JEREMY_CHAMBERS_RESEARCH_COLLATED.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="jeremy-chambers--movement-leader-research-substrate">Jeremy Chambers — Movement Leader Research (Substrate)</h1>
+<p><strong>Slug:</strong> <code>jeremy-chambers</code>
+<strong>Version:</strong> 2.0.0 (substrate)
+<strong>Last updated:</strong> 2026-05-22
+<strong>Purpose:</strong> Machine-readable corpus for identity resolution, relational traversal, conceptual indexing, and voice fidelity. Not a consulting report.</p>
+<blockquote>
+<p><strong>Authorship note:</strong> Both of Chambers' books and the majority of his articles and podcast appearances are co-produced with his wife <strong>Monica Paredes Chambers</strong>. This substrate documents Jeremy as primary subject but treats the writing/teaching dyad as the operative unit. Where co-authorship matters (network edges, voice fingerprint), this is encoded explicitly.</p>
+</blockquote>
+<hr>
+<h2 id="identity">Identity</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full legal name</td>
+<td>Jeremy Chambers</td>
+<td><a href="https://www.jemochambers.com/">jemochambers.com</a>, <a href="https://www.forgeamerica.com/our-people">Forge America &quot;Our People&quot;</a></td>
+</tr>
+<tr>
+<td>Known as</td>
+<td>&quot;Jemo&quot; (personal domain <code>jemochambers.com</code>; informal nickname)</td>
+<td><a href="https://www.jemochambers.com/">jemochambers.com</a></td>
+</tr>
+<tr>
+<td>Born</td>
+<td>~1986 (year inferred — &quot;praying about Denver since 1999, when he was 13&quot;)</td>
+<td><a href="https://pulpitrock.com/partner-spotlight-jeremy-monica-chambers/">Pulpit Rock partner spotlight</a></td>
+</tr>
+<tr>
+<td>Birthplace</td>
+<td>unknown</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Childhood</td>
+<td>unknown</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Current location</td>
+<td>Denver, Colorado (relocated from Richmond, VA in late 2019 / early 2020)</td>
+<td><a href="https://pulpitrock.com/partner-spotlight-jeremy-monica-chambers/">Pulpit Rock</a>, <a href="https://www.jemochambers.com/">jemochambers.com</a></td>
+</tr>
+<tr>
+<td>Nationality</td>
+<td>American</td>
+<td><a href="https://www.jemochambers.com/">jemochambers.com</a></td>
+</tr>
+<tr>
+<td>Heritage</td>
+<td>unknown (no public record)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Primary roles</td>
+<td>Church planter, urban missionary, spiritual director, author, trainer/coach</td>
+<td><a href="https://www.jemochambers.com/">jemochambers.com</a>, <a href="https://www.100movements.org/books/art-of-missional-spirituality-jeremy-chambers-monica-pardes-chambers">100 Movements</a></td>
+</tr>
+<tr>
+<td>Primary organizations</td>
+<td>Forge America (Training Director); The Pando Collective (Denver leader); The Arise Network / Arise RVA Church (founder, 2013)</td>
+<td><a href="https://www.forgeamerica.com/our-people">Forge America</a>, <a href="https://thepandocollective.com/">Pando Collective</a>, <a href="https://pulpitrock.com/partner-spotlight-jeremy-monica-chambers/">Pulpit Rock</a></td>
+</tr>
+<tr>
+<td>US sponsor</td>
+<td>Not applicable — US-native</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Spouse / partner</td>
+<td><strong>Monica Paredes Chambers</strong> — born in Costa Rica; studied Graphic Design; co-author, co-planter, spiritual director</td>
+<td><a href="https://www.jemochambers.com/">jemochambers.com</a>, <a href="https://renovare.org/people/monica-chambers">Renovaré</a>, <a href="https://pulpitrock.com/partner-spotlight-jeremy-monica-chambers/">Pulpit Rock</a></td>
+</tr>
+<tr>
+<td>Children</td>
+<td>unknown (not publicly documented)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Education — undergrad</td>
+<td>B.A. Ministry Leadership, Johnson University</td>
+<td><a href="https://www.forgeamerica.com/our-people">Forge America</a></td>
+</tr>
+<tr>
+<td>Education — graduate (1)</td>
+<td>M.A. Intercultural Studies, Trinity Evangelical Divinity School</td>
+<td><a href="https://www.jemochambers.com/">jemochambers.com</a>, <a href="https://www.100movements.org/books/art-of-missional-spirituality-jeremy-chambers-monica-pardes-chambers">100 Movements</a></td>
+</tr>
+<tr>
+<td>Education — graduate (2)</td>
+<td>M.A. Christian Studies, Trinity Evangelical Divinity School (Renovaré profile lists this as &quot;Church History&quot; — discrepancy unresolved)</td>
+<td><a href="https://www.jemochambers.com/">jemochambers.com</a>, <a href="https://renovare.org/people/monica-chambers">Renovaré</a></td>
+</tr>
+<tr>
+<td>Cross-cultural footprint</td>
+<td>&quot;Participated in launching movements that make disciples and networks of microchurches in over thirty-five countries&quot;</td>
+<td><a href="https://www.jemochambers.com/">jemochambers.com</a></td>
+</tr>
+<tr>
+<td>Coined term</td>
+<td>&quot;Grativangelism&quot; (gratitude + evangelism)</td>
+<td><a href="https://thev3movement.org/2018/07/27/grativangelism/">V3 Movement, 2018-07-27</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="disambiguation">Disambiguation</h2>
+<p>Multiple public figures named Jeremy Chambers — <strong>subject is #1 only</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Identity</th>
+<th>Disambiguate with</th>
+<th>Exclude</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Jeremy &quot;Jemo&quot; Chambers</strong> — American missional practitioner; Forge America Training Director; Arise / Pando microchurch networks; author of <em>The Art of Missional Spirituality</em></td>
+<td>&quot;Jemo Chambers&quot;, &quot;Forge America&quot;, &quot;Pando Collective&quot;, &quot;Arise RVA&quot;, &quot;missional spirituality&quot;, &quot;microchurch&quot;</td>
+<td>military / NCO / FAO, Bandcamp musician, jockey, doctorate-education Japan</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Capt. Jeremy Chambers, U.S. Army — first NCO to commission as FAO Captain (2026)</td>
+<td>&quot;USARPAC&quot;, &quot;NCO FAO Captain&quot;, &quot;Army Pacific&quot;</td>
+<td>Forge, missional, microchurch</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Jeremy Chambers — indie musician (Bandcamp release <em>Round of Applause</em>)</td>
+<td>bandcamp.com, &quot;Round of Applause&quot;</td>
+<td>Forge, missional, Hirsch</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Jeremy Chambers, EdD — educator with Univ. of Liverpool M.S.; teaches in Japan</td>
+<td>&quot;Chartered Manager&quot;, &quot;doctorate education Japan&quot;</td>
+<td>missional, Hirsch, Pando</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Jeremy Chambers — Australian jockey (Wikipedia article subject)</td>
+<td>&quot;jockey&quot;, horse racing</td>
+<td>Forge, microchurch</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reliable modifiers:</strong> <code>&quot;Jemo Chambers&quot;</code>, <code>&quot;Jeremy Chambers&quot; + &quot;Forge America&quot;</code>, <code>&quot;Jeremy Chambers&quot; + &quot;Pando Collective&quot;</code>, <code>&quot;Jeremy Chambers&quot; + &quot;Arise RVA&quot;</code>, <code>&quot;Jeremy Chambers&quot; + &quot;missional spirituality&quot;</code> — combined with exclusion of military / Bandcamp / jockey / Japan-education terms.</p>
+<hr>
+<h2 id="editorial-bio">Editorial bio</h2>
+<p>Jeremy &quot;Jemo&quot; Chambers is an American church planter, spiritual director, and missional practitioner who occupies a distinctive intersection in the contemporary missional church — the seam between <strong>Renovaré-style contemplative formation</strong> (the Foster / Willard / Hudson lineage) and the <strong>Hirsch-Frost / Forge / 100 Movements missional-movement stream</strong>. Born around 1986, he reports praying about a future move to Denver since age thirteen — a vocational specificity that anticipated nearly two decades of geographic and ministerial trajectory.</p>
+<p>After a B.A. in Ministry Leadership at Johnson University and two master's degrees from Trinity Evangelical Divinity School (Intercultural Studies; Christian Studies / Church History), Chambers and his Costa-Rican-born wife <strong>Monica Paredes Chambers</strong> founded <strong>Arise RVA Church Network</strong> in Richmond, Virginia in 2013 — a network of microchurches that grew to roughly seven communities and affiliated with the <strong>V3 Movement</strong> under the <strong>Baptist General Association of Virginia</strong>. In late 2019 the family relocated to Denver to help <strong>Rowland Smith</strong> launch the Denver expression of <strong>The Pando Collective</strong>, a Front Range network seeking to network, resource, and launch missional micro-expressions of the church. He has since become <strong>Training Director of Forge America</strong> — the U.S. arm of Alan Hirsch's globally-networked missional training movement — making him a curricular gatekeeper for the next generation of Forge-formed practitioners.</p>
+<p>His two books — <em>Kingdom Contours</em> (2020; revised 2025) and <strong>The Art of Missional Spirituality</strong> (2023) — are both co-authored with Monica and both published in the <strong>100 Movements Publishing</strong> orbit, with forewords from Alan Hirsch, Debra Hirsch, and Michael Frost. <em>The Art of Missional Spirituality</em> (31 sacred practices, foreword by Alan &amp; Debra Hirsch) is his magnum opus to date: a calendar-structured fusion of contemplative discipline and neighborhood mission designed to refuse the modern dichotomy between &quot;intimacy with God&quot; and &quot;engagement with neighbors.&quot; Across Renovaré articles, the V3 blog archive, Missio Alliance, and a 2024 podcast circuit (Renovaré, Everyday Disciple, Pivotal People, Dandelion Resourcing, Shifting Culture), his work consistently presents missional life as a <em>rhythm</em>, not a strategy — formation and sentness folded into a single way.</p>
+<hr>
+<h2 id="timeline">Timeline</h2>
+<table>
+<thead>
+<tr>
+<th>Year(s)</th>
+<th>Milestone</th>
+<th>Organization / work</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~1986</td>
+<td>Born (year inferred)</td>
+<td>—</td>
+<td><a href="https://pulpitrock.com/partner-spotlight-jeremy-monica-chambers/">Pulpit Rock</a></td>
+</tr>
+<tr>
+<td>1999</td>
+<td>Began praying about a future move to Denver (age 13)</td>
+<td>—</td>
+<td><a href="https://pulpitrock.com/partner-spotlight-jeremy-monica-chambers/">Pulpit Rock</a></td>
+</tr>
+<tr>
+<td>unknown</td>
+<td>B.A. Ministry Leadership</td>
+<td>Johnson University</td>
+<td><a href="https://www.forgeamerica.com/our-people">Forge America</a></td>
+</tr>
+<tr>
+<td>unknown</td>
+<td>M.A. Intercultural Studies</td>
+<td>Trinity Evangelical Divinity School</td>
+<td><a href="https://www.jemochambers.com/">jemochambers.com</a></td>
+</tr>
+<tr>
+<td>unknown</td>
+<td>M.A. Christian Studies / Church History</td>
+<td>Trinity Evangelical Divinity School</td>
+<td><a href="https://renovare.org/people/monica-chambers">Renovaré</a></td>
+</tr>
+<tr>
+<td>2012</td>
+<td>Completed a church planting residency in preparation for Richmond plant</td>
+<td>unspecified planting network</td>
+<td><a href="https://pulpitrock.com/partner-spotlight-jeremy-monica-chambers/">Pulpit Rock</a></td>
+</tr>
+<tr>
+<td>2013</td>
+<td>Founded Arise RVA Church Network in Richmond, VA</td>
+<td>Arise RVA / V3 Movement / BGAV</td>
+<td><a href="https://pulpitrock.com/partner-spotlight-jeremy-monica-chambers/">Pulpit Rock</a>, <a href="https://www.bgav.org/church-directory/arise-rva-church">BGAV directory</a></td>
+</tr>
+<tr>
+<td>2013–2019</td>
+<td>Grew Arise RVA to a network of ~7 microchurches; transitioned BGAV / V3 affiliation</td>
+<td>Arise RVA / V3 / BGAV</td>
+<td><a href="https://pulpitrock.com/partner-spotlight-jeremy-monica-chambers/">Pulpit Rock</a>, <a href="https://www.almahunt.org/alma-hunt-offering-stories/micro-churches">Alma Hunt</a></td>
+</tr>
+<tr>
+<td>2018–2021</td>
+<td>Sustained article cadence at V3 Movement blog (≥7 essays)</td>
+<td>V3 Movement</td>
+<td><a href="https://thev3movement.org/">thev3movement.org</a></td>
+</tr>
+<tr>
+<td>2019 (late) / 2020</td>
+<td>Relocated Richmond → Denver, CO</td>
+<td>—</td>
+<td><a href="https://pulpitrock.com/partner-spotlight-jeremy-monica-chambers/">Pulpit Rock</a></td>
+</tr>
+<tr>
+<td>2020</td>
+<td>Published <em>Kingdom Contours</em> (1st ed.) — foreword Alan Hirsch</td>
+<td>Missional Challenge Publishing</td>
+<td><a href="https://www.everand.com/book/472991684/Kingdom-Contours-Empowering-Everyday-People-With-the-Tools-to-Shape-Kingdom-Movements">Everand</a></td>
+</tr>
+<tr>
+<td>2020+</td>
+<td>Helped launch Pando Denver in partnership with Rowland Smith</td>
+<td>The Pando Collective</td>
+<td><a href="https://pulpitrock.com/partner-spotlight-jeremy-monica-chambers/">Pulpit Rock</a>, <a href="https://thepandocollective.com/">Pando Collective</a></td>
+</tr>
+<tr>
+<td>2022–present</td>
+<td>Renovaré contributor cadence begins (<em>Finishing Well</em>, <em>Praying the Hours</em>)</td>
+<td>Renovaré</td>
+<td><a href="https://renovare.org/people/monica-chambers">Renovaré</a></td>
+</tr>
+<tr>
+<td>2023-11-09</td>
+<td>Published <em>The Art of Missional Spirituality</em> (NavPress-area imprint 100 Movements Publishing)</td>
+<td>100 Movements Publishing</td>
+<td><a href="https://www.amazon.com/Art-Missional-Spirituality-Practices-Jesus-Followers/dp/1955142440">Amazon</a></td>
+</tr>
+<tr>
+<td>2024 (Jan–Apr)</td>
+<td>Book launch podcast circuit (Pivotal People, Dandelion, Renovaré <em>Life With God</em>, Everyday Disciple, Shifting Culture #197)</td>
+<td>various</td>
+<td><a href="https://www.jemochambers.com/">jemochambers.com</a>, <a href="https://renovare.org/podcasts/lifewithgod/monica-and-jeremy-chambers-getting-personal-with-the-lords-prayer">Renovaré podcast</a></td>
+</tr>
+<tr>
+<td>2024–26 (current)</td>
+<td>Training Director, Forge America; co-leader Pando Denver</td>
+<td>Forge America / Pando</td>
+<td><a href="https://www.forgeamerica.com/our-people">Forge America</a></td>
+</tr>
+<tr>
+<td>2024–25</td>
+<td><em>Kingdom Contours</em> — Revised Edition (foreword by Alan Hirsch and Michael Frost)</td>
+<td>100 Movements Publishing</td>
+<td><a href="https://www.amazon.com/Kingdom-Contours-Foundations-Paradigms-Equipping/dp/195514270X">Amazon revised</a></td>
+</tr>
+<tr>
+<td>2025-10-30</td>
+<td>Published &quot;A Few Solutions for Compassion Fatigue&quot;</td>
+<td>Missio Alliance</td>
+<td><a href="https://missioalliance.org/a-few-solutions-for-compassion-fatigue/">missioalliance.org</a></td>
+</tr>
+<tr>
+<td>2026</td>
+<td>Indexed as speaker, Exponential 2026 (bio not fetched)</td>
+<td>Exponential</td>
+<td><a href="https://exponential.org/global-2026/">exponential.org/global-2026</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="frameworks">Frameworks</h2>
+<h3 id="six-foundational-paradigms-kingdom-contours">Six Foundational Paradigms (Kingdom Contours)</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Introduced</td>
+<td>2020 (<em>Kingdom Contours</em>, 1st ed.); refined 2024–25 (revised ed.)</td>
+</tr>
+<tr>
+<td>Components</td>
+<td>(1) Christocentric and Trinitarian; (2) Discipleship — being and making Jesus followers; (3) Incarnational Living — adopting a missional strategic mindset; (4) Movement Wisdom — being movemental; (5) Organic Systems — structuring for multiplication; (6) Deep Community — taking on risks by faith</td>
+</tr>
+<tr>
+<td>Visual / model</td>
+<td>Six-paradigm enumeration; no diagram surfaced — book chapters function as the model</td>
+</tr>
+<tr>
+<td>Adoption evidence</td>
+<td>Curricular spine of Arise RVA, Arise Church Denver, and Pando Collective microchurch coaching; co-published by 100 Movements Publishing (Hirsch's imprint) with Hirsch + Frost as named contributors on revised edition</td>
+</tr>
+<tr>
+<td>Source</td>
+<td><a href="https://www.100movements.org/books/kingdom-contours-jeremy-chambers-monica-paredes-chambers">100 Movements — Kingdom Contours</a></td>
+</tr>
+</tbody>
+</table>
+<p>Chambers' six paradigms extend and reframe Alan Hirsch's mDNA from <em>The Forgotten Ways</em> into a planter-facing toolkit, paired with an appendix titled &quot;Baby Steps: How to Start a Micro-Church.&quot; The framework's distinctive contribution is foregrounding <strong>Deep Community</strong> as a discrete paradigm — the relational substrate that the other five depend on.</p>
+<h3 id="31-sacred-practices-the-art-of-missional-spirituality">31 Sacred Practices (The Art of Missional Spirituality)</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Introduced</td>
+<td>2023 (<em>The Art of Missional Spirituality: 31 Sacred Practices for Jesus-Followers</em>)</td>
+</tr>
+<tr>
+<td>Components</td>
+<td>Thirty-one daily practices — one per day for a month — fusing classical disciplines (Praying the Hours, silence, solitude, immersion in Ecclesiastes) with missional-contemplative hybrids (&quot;Secret Acts of Kindness,&quot; neighborhood blessing, hospitality, walking prayer)</td>
+</tr>
+<tr>
+<td>Visual / model</td>
+<td>Calendar-month progression; no single diagram. Recurring image is &quot;rhythm&quot; holding the contemplative and missional poles together</td>
+</tr>
+<tr>
+<td>Adoption evidence</td>
+<td>Goodreads 4.47★ (17 ratings); endorsed by Forge America (Rowland Smith, Terry Ishee), Renovaré (Carolyn Arends, Miriam Dixon), V3 (JR Woodward), Frost, Tampa Underground (Brian Sanders), Denver Seminary (Angie Ward), Exponential (Bill Couchenour)</td>
+</tr>
+<tr>
+<td>Source</td>
+<td><a href="https://www.amazon.com/Art-Missional-Spirituality-Practices-Jesus-Followers/dp/1955142440">Amazon</a>, <a href="https://www.jemochambers.com/the-art-of-missional-spirituality">jemochambers.com</a></td>
+</tr>
+</tbody>
+</table>
+<p>The framework's core thesis is the <strong>integration</strong> of mission and contemplation: &quot;spirituality that doesn't draw you away from your neighbors but propels you into the lives of others and the needs of your city.&quot;</p>
+<h3 id="calling-vs-assignment">Calling vs. Assignment</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Introduced</td>
+<td>2025 (&quot;A Few Solutions for Compassion Fatigue,&quot; Missio Alliance)</td>
+</tr>
+<tr>
+<td>Components</td>
+<td>(1) <strong>Calling</strong> — &quot;overall trajectory oriented by God&quot;; (2) <strong>Assignment</strong> — &quot;temporary action highlighted by the Holy Spirit&quot;; companion tool is Alan Hirsch's APEST assessment for discerning calling</td>
+</tr>
+<tr>
+<td>Visual / model</td>
+<td>Two-term distinction; no diagram</td>
+</tr>
+<tr>
+<td>Adoption evidence</td>
+<td>Public article only — no curriculum adoption documented</td>
+</tr>
+<tr>
+<td>Source</td>
+<td><a href="https://missioalliance.org/a-few-solutions-for-compassion-fatigue/">Missio Alliance — Compassion Fatigue</a></td>
+</tr>
+</tbody>
+</table>
+<p>A diagnostic tool for missional practitioners experiencing burnout from over-attachment to specific assignments at the expense of their broader calling.</p>
+<h3 id="cycle-of-grace-trevor-hudson--jerry-haas--adopted">Cycle of Grace (Trevor Hudson / Jerry Haas — adopted)</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Introduced</td>
+<td>Not original to Chambers; he uses it as his core compassion-fatigue diagnostic</td>
+</tr>
+<tr>
+<td>Components</td>
+<td>Acceptance → Sustenance → Significance → Fruitfulness; the <strong>reversed cycle</strong> (Fruitfulness → Significance → Acceptance) is the anti-pattern that leads to ministry depletion</td>
+</tr>
+<tr>
+<td>Visual / model</td>
+<td>Four-stage linear cycle</td>
+</tr>
+<tr>
+<td>Adoption evidence</td>
+<td>Taught in Chambers' Missio Alliance article (2025); referenced in <em>Finishing Well</em> (Renovaré 2022)</td>
+</tr>
+<tr>
+<td>Source</td>
+<td><a href="https://missioalliance.org/a-few-solutions-for-compassion-fatigue/">Missio Alliance</a></td>
+</tr>
+</tbody>
+</table>
+<p>Treated as borrowed framework — listed for completeness because it appears repeatedly in his teaching. Not original to him.</p>
+<h3 id="grativangelism-coinage">Grativangelism (coinage)</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Introduced</td>
+<td>2018 (V3 Movement blog post &quot;Grativangelism: Gratitude Evangelism&quot;)</td>
+</tr>
+<tr>
+<td>Components</td>
+<td>A practice-frame: gratitude expressed publicly toward neighbors and strangers as an evangelistic posture</td>
+</tr>
+<tr>
+<td>Visual / model</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Adoption evidence</td>
+<td>Single article; no curriculum or chapter expansion documented</td>
+</tr>
+<tr>
+<td>Source</td>
+<td><a href="https://thev3movement.org/2018/07/27/grativangelism/">V3 Movement 2018-07-27</a></td>
+</tr>
+</tbody>
+</table>
+<p>Minor coinage — included because it is the one term he has documentably invented.</p>
+<hr>
+<h2 id="bibliography">Bibliography</h2>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Author(s)</th>
+<th>Publisher</th>
+<th>Year</th>
+<th>ISBN-13</th>
+<th>Key themes</th>
+<th>One sentence</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kingdom Contours: Foundations, Paradigms, and Tools for Equipping Jesus Movements (Revised Edition)</td>
+<td>Jeremy Chambers &amp; Monica Paredes Chambers (foreword: Alan Hirsch + Michael Frost)</td>
+<td>100 Movements Publishing</td>
+<td>2024–25</td>
+<td>978-1-955142-70-0</td>
+<td>Microchurch paradigms, movemental DNA, planting toolkit</td>
+<td>Restates and extends Hirsch's mDNA into six paradigms (Christocentric/Trinitarian, Discipleship, Incarnational Living, Movement Wisdom, Organic Systems, Deep Community) with a &quot;Baby Steps&quot; appendix for starting a microchurch.</td>
+<td><a href="https://www.amazon.com/Kingdom-Contours-Foundations-Paradigms-Equipping/dp/195514270X">Amazon</a></td>
+</tr>
+<tr>
+<td>The Art of Missional Spirituality: 31 Sacred Practices for Jesus-Followers</td>
+<td>Jeremy Chambers &amp; Monica Paredes Chambers (foreword: Alan &amp; Debra Hirsch)</td>
+<td>100 Movements Publishing</td>
+<td>2023 (Nov 9)</td>
+<td>978-1-955142-44-1</td>
+<td>Missional spirituality, sacred practices, contemplative-missional integration, rhythms</td>
+<td>Thirty-one daily practices fusing contemplative disciplines with neighborhood mission so intimacy with God and engagement with neighbors stop being separate items and become one integrated way of life.</td>
+<td><a href="https://www.amazon.com/Art-Missional-Spirituality-Practices-Jesus-Followers/dp/1955142440">Amazon</a></td>
+</tr>
+<tr>
+<td>Kingdom Contours: Empowering Everyday People With the Tools to Shape Kingdom Movements (1st ed.)</td>
+<td>Jeremy Chambers &amp; Monica Paredes Chambers (foreword: Alan Hirsch)</td>
+<td>Missional Challenge Publishing</td>
+<td>2020 (Aug 18)</td>
+<td>978-1-952721-00-7 (pb); 978-1-952721-02-1 (epub)</td>
+<td>Microchurch, movement, mDNA toolkit</td>
+<td>Original edition of the six-paradigm planter toolkit before the 100 Movements Publishing reissue.</td>
+<td><a href="https://www.everand.com/book/472991684/Kingdom-Contours-Empowering-Everyday-People-With-the-Tools-to-Shape-Kingdom-Movements">Everand</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Summary:</strong> 3 entries (2 unique titles — Kingdom Contours has a 2020 original + 2024–25 revised edition); 0 solo, 3 co-authored (all with Monica Paredes Chambers); publishers 2020–2025 across 2 imprints (Missional Challenge Publishing → 100 Movements Publishing); ~17 Goodreads ratings on <em>The Art of Missional Spirituality</em> (single edition tracked). Sources: <a href="https://www.amazon.com/Art-Missional-Spirituality-Practices-Jesus-Followers/dp/1955142440">Amazon</a>, <a href="https://www.100movements.org/">100 Movements</a>, <a href="https://www.everand.com/book/472991684/">Everand</a>.</p>
+<h3 id="theme-map">Theme map</h3>
+<table>
+<thead>
+<tr>
+<th>Theme</th>
+<th>Primary works</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Missional spirituality (contemplative + missional integration)</td>
+<td><em>The Art of Missional Spirituality</em> (2023)</td>
+</tr>
+<tr>
+<td>Microchurch planting and multiplication</td>
+<td><em>Kingdom Contours</em> (2020, 2024–25)</td>
+</tr>
+<tr>
+<td>Movement DNA / mDNA</td>
+<td><em>Kingdom Contours</em> (2020, 2024–25)</td>
+</tr>
+<tr>
+<td>Sacred practices / spiritual disciplines</td>
+<td><em>The Art of Missional Spirituality</em> (2023); &quot;Praying the Hours&quot; (Renovaré 2023); &quot;Finishing Well&quot; (Renovaré 2022)</td>
+</tr>
+<tr>
+<td>Sustainable mission / compassion fatigue</td>
+<td>&quot;A Few Solutions for Compassion Fatigue&quot; (Missio Alliance 2025); &quot;Finishing Well&quot; (Renovaré 2022)</td>
+</tr>
+<tr>
+<td>Lord's Prayer as discipleship</td>
+<td>Renovaré podcast 2024; teaching theme across appearances</td>
+</tr>
+<tr>
+<td>Listening, trust, attentiveness as missional virtues</td>
+<td>&quot;An Ethic of Listening&quot; (V3 2021); &quot;The Mechanics and Spirituality of Trust&quot; (V3 2019)</td>
+</tr>
+<tr>
+<td>Coined / minor frameworks</td>
+<td>&quot;Grativangelism&quot; (V3 2018); &quot;Cyber Missional Pioneering&quot; (V3 2020)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="content-analysis-structured">Content analysis (structured)</h3>
+<p><strong>Primary themes (centrality 9–10)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Theme</th>
+<th>Description</th>
+<th>Key works</th>
+<th>Centrality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contemplative-missional integration</td>
+<td>The refusal of the dichotomy between interior formation and external mission; &quot;spirituality that doesn't draw you away from your neighbors but propels you into the lives of others.&quot; Operationalized as 31 daily practices in a calendar rhythm.</td>
+<td><em>Art of Missional Spirituality</em>; &quot;Praying the Hours&quot;; Renovaré <em>Life With God</em> podcast</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Microchurch as form</td>
+<td>Treats microchurch / network-of-microchurches as the most adaptive ecclesial form for movement, while explicitly resisting absolutism (&quot;it's not the only way&quot;).</td>
+<td><em>Kingdom Contours</em>; Arise RVA; Pando Collective work</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Mission as movement (not program)</td>
+<td>Mission as DNA that multiplies organically rather than a programmatic strategy executed institutionally. Extends Hirsch's mDNA into six paradigms.</td>
+<td><em>Kingdom Contours</em>; V3 articles</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Secondary themes (centrality 6–8)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Theme</th>
+<th>Description</th>
+<th>Key works</th>
+<th>Centrality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sustainable mission / anti-burnout</td>
+<td>Compassion fatigue, longevity in missionary work, the Cycle of Grace as diagnostic, calling vs. assignment as guard against over-attachment.</td>
+<td>Missio Alliance 2025; Renovaré <em>Finishing Well</em></td>
+<td>8</td>
+</tr>
+<tr>
+<td>Discipleship over decisionism</td>
+<td>Discipleship as way of life formed by practices rather than discrete conversion-then-program logic.</td>
+<td>Pivotal People 2024 interview; <em>Art of Missional Spirituality</em></td>
+<td>7</td>
+</tr>
+<tr>
+<td>Listening and trust as missional ethics</td>
+<td>The relational substrate of incarnational mission.</td>
+<td>V3 essays <em>Ethic of Listening</em>, <em>Mechanics and Spirituality of Trust</em></td>
+<td>7</td>
+</tr>
+<tr>
+<td>Lord's Prayer as transforming prayer</td>
+<td>The Lord's Prayer plus Psalm 23 as &quot;transforming prayers&quot; for daily formation.</td>
+<td>Renovaré podcast 2024</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Emerging themes (centrality 3–5)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Theme</th>
+<th>Description</th>
+<th>Key works</th>
+<th>Centrality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Distraction as the dominant spiritual threat</td>
+<td>Distraction (not opposition, not heresy) as &quot;the single most damaging danger to the inner life with Jesus.&quot;</td>
+<td>Missio Alliance 2025</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Cyber / digital pioneering</td>
+<td>Adaptive missional posture in digital space.</td>
+<td>V3 <em>Cyber Missional Pioneering</em> 2020</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Gratitude evangelism (&quot;grativangelism&quot;)</td>
+<td>Gratitude as evangelistic posture toward strangers.</td>
+<td>V3 <em>Grativangelism</em> 2018</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Theological positioning</strong> — Evangelical (TEDS formation) with a strongly ecumenical contemplative bend; sits at the seam of Renovaré (Foster/Willard/Hudson) and Hirsch-Frost / 100 Movements / Forge. Trinitarian, kingdom-oriented, microchurch-ecclesial. Detailed in §Theological positioning.</p>
+<h3 id="recommended-reading-order">Recommended reading order</h3>
+<table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Work</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><em>The Art of Missional Spirituality</em> (2023)</td>
+<td>His magnum opus and most accessible entry — 31 daily practices reveal both his integrative thesis (mission + contemplation) and his voice (practitioner-pastoral).</td>
+</tr>
+<tr>
+<td>2</td>
+<td><em>Kingdom Contours</em> — Revised Edition (2024–25)</td>
+<td>The framework spine: six paradigms for kingdom movements, anchored in Hirsch's mDNA tradition. Best read after experiencing his rhythms.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>&quot;Praying the Hours&quot; (Renovaré 2023)</td>
+<td>A short article showing how the rhythm machinery from <em>Art of Missional Spirituality</em> operates in his own pandemic-era practice.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>&quot;A Few Solutions for Compassion Fatigue&quot; (Missio Alliance 2025)</td>
+<td>Most recent essay; introduces Calling vs. Assignment and the Cycle of Grace as practical guards for sustainable mission.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>&quot;Finishing Well&quot; (Renovaré 2022)</td>
+<td>Ken-Boa-derived seven-characteristics frame; useful for understanding how he thinks about longevity.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>&quot;An Ethic of Listening&quot; (V3 2021)</td>
+<td>Practitioner essay illustrating his incarnational ethics in microchurch settings.</td>
+</tr>
+<tr>
+<td>7</td>
+<td><em>Kingdom Contours</em> (2020 original)</td>
+<td>For comparison with revised edition only; later edition supersedes.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="voice-fingerprint">Voice fingerprint</h2>
+<h3 id="weighted-markers-sum-to-100">Weighted markers (sum to 100%)</h3>
+<table>
+<thead>
+<tr>
+<th>Marker</th>
+<th>Target</th>
+<th>Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Contemplative-Missional Integration</strong> — every substantive piece holds intimacy with God and engagement with neighbors in a single frame; refuses the formation-then-mission sequence</td>
+<td>≥ 0.75</td>
+<td>30%</td>
+</tr>
+<tr>
+<td><strong>Inductive Practitioner Cadence</strong> — opens with a concrete scene (Dead Sea, peace lily, pandemic walk, Costa Rican village), moves to Scripture, then to a numbered framework or rhythm, then closes with a &quot;try this&quot; practice</td>
+<td>0.6–0.85</td>
+<td>25%</td>
+</tr>
+<tr>
+<td><strong>Botanical / Ecological Metaphor Density</strong> — Pando (aspen colony), peace lily, harvest, cross-pollinate, flourish, multiply; this is his single most distinctive metaphor field</td>
+<td>≥ 0.5</td>
+<td>15%</td>
+</tr>
+<tr>
+<td><strong>Co-Authorial &quot;We&quot; Voice</strong> — most published work is written and signed with Monica; first-person plural (&quot;we,&quot; &quot;us,&quot; &quot;our&quot;) dominates over first-person singular</td>
+<td>≥ 0.6</td>
+<td>15%</td>
+</tr>
+<tr>
+<td><strong>Mentor Citation Density</strong> — drops Foster, Hudson, Boa, Hirsch, Frost, Woodward, Sanders, Renovaré without over-quoting; theologically literate but not academic in feel</td>
+<td>≥ 0.5</td>
+<td>15%</td>
+</tr>
+<tr>
+<td><strong>Coherence target</strong></td>
+<td>≥ 0.75</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hallmark-lexicon-17-terms">Hallmark lexicon (17 terms)</h3>
+<p>missional spirituality, sacred practices, microchurch / micro-church / micro-expressions of the church, kingdom movements, Jesus movements, movemental, incarnational living, missional-incarnational, disciple makers, Kingdom of Heaven (preferred over &quot;Kingdom of God&quot;), rhythm / rhythms, kingdom rhythms, Cycle of Grace, calling vs. assignment, Praying the Hours, cross-pollinate, sustainable mission, naturally supernatural, grativangelism.</p>
+<h3 id="antithesis-prohibition-non-negotiable">Antithesis prohibition (non-negotiable)</h3>
+<p><strong>Do not separate intimacy from mission, or contemplation from sentness.</strong> Chambers' load-bearing rhetorical move is to refuse the dichotomy — &quot;spirituality that doesn't draw you away from your neighbors but propels you into the lives of others and the needs of your city&quot; (<a href="https://www.jemochambers.com/the-art-of-missional-spirituality">Art of Missional Spirituality back cover, jemochambers.com</a>). Avoid writing as if formation and mission are sequential (first one, then the other), compartmentalized (mission for God <em>and</em> time with God as separate items on a to-do list), or hierarchical (the contemplative life as more &quot;advanced&quot; than the missional life). In the same posture, <strong>avoid method absolutism</strong> — Chambers explicitly distances himself from voices who treat microchurch as the only valid ecclesial form: &quot;Sometimes you'll find in one segment...people who are like all about micro church and they're like it's the only way&quot; (<a href="https://pivotalpeople.buzzsprout.com/1909281/episodes/14107088">Pivotal People 2024</a>). And <strong>avoid credit-seeking framing</strong> of service — &quot;Goodness can be beautiful in its own right. I can serve someone and never have to receive credit&quot; (<a href="https://pivotalpeople.buzzsprout.com/1909281/episodes/14107088">Pivotal People 2024</a>).</p>
+<h3 id="representative-quotes">Representative quotes</h3>
+<blockquote>
+<p>&quot;Spirituality that doesn't draw you away from your neighbors but propels you into the lives of others and the needs of your city.&quot; — <em>The Art of Missional Spirituality</em>, back cover (<a href="https://www.jemochambers.com/the-art-of-missional-spirituality">jemochambers.com</a>)</p>
+</blockquote>
+<blockquote>
+<p>&quot;We often rely on ourselves, our own strengths and abilities to work for God. We have to figure out a way to work with God, be connected with Him, and follow His lead.&quot; — <em>Shifting Culture Podcast</em> Ep. 197 (<a href="https://www.shiftingculturepodcast.com/episodes/episode-197-jeremyandmonicachambers">shiftingculturepodcast.com</a>)</p>
+</blockquote>
+<blockquote>
+<p>&quot;Compassion fatigue can often be self inflicted when someone overexposes themself to the deluge of crisis and catastrophe.&quot; — &quot;A Few Solutions for Compassion Fatigue,&quot; <em>Missio Alliance</em>, Oct 2025 (<a href="https://missioalliance.org/a-few-solutions-for-compassion-fatigue/">missioalliance.org</a>)</p>
+</blockquote>
+<blockquote>
+<p>&quot;Distraction may be the single most damaging danger to the inner life with Jesus.&quot; — &quot;A Few Solutions for Compassion Fatigue,&quot; <em>Missio Alliance</em>, Oct 2025 (<a href="https://missioalliance.org/a-few-solutions-for-compassion-fatigue/">missioalliance.org</a>)</p>
+</blockquote>
+<blockquote>
+<p>&quot;Put on your oxygen mask before helping someone else.&quot; — &quot;A Few Solutions for Compassion Fatigue,&quot; <em>Missio Alliance</em>, Oct 2025 (<a href="https://missioalliance.org/a-few-solutions-for-compassion-fatigue/">missioalliance.org</a>)</p>
+</blockquote>
+<blockquote>
+<p>&quot;Do something special for someone that you don't need to take credit for. Goodness can be beautiful in its own right. I can serve someone and never have to receive credit.&quot; — <em>Pivotal People Podcast</em>, Jan 2024 (<a href="https://pivotalpeople.buzzsprout.com/1909281/episodes/14107088">pivotalpeople.buzzsprout.com</a>)</p>
+</blockquote>
+<blockquote>
+<p>&quot;They're very nimble, very adaptable, and we watched these flourished and multiplied.&quot; — <em>Pivotal People Podcast</em>, on microchurches, Jan 2024 (<a href="https://pivotalpeople.buzzsprout.com/1909281/episodes/14107088">pivotalpeople.buzzsprout.com</a>)</p>
+</blockquote>
+<blockquote>
+<p>&quot;Bring Jesus to people who would never walk into a church building.&quot; — Pulpit Rock partner spotlight, on Arise RVA's founding vision (<a href="https://pulpitrock.com/partner-spotlight-jeremy-monica-chambers/">pulpitrock.com</a>)</p>
+</blockquote>
+<blockquote>
+<p>&quot;The Lord of the Harvest has already sent forth many laborers.&quot; — Pulpit Rock partner spotlight, on the Denver context (<a href="https://pulpitrock.com/partner-spotlight-jeremy-monica-chambers/">pulpitrock.com</a>)</p>
+</blockquote>
+<hr>
+<h2 id="theological-positioning">Theological positioning</h2>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Position</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tradition</td>
+<td>Evangelical (Trinity Evangelical Divinity School formation); strongly ecumenical with contemplative-Quaker bend via Renovaré orbit. Practicing affiliation: BGAV (Baptist General Association of Virginia) via Arise RVA / V3.</td>
+</tr>
+<tr>
+<td>Ecclesiology</td>
+<td>Microchurch / network-of-microchurches; non-denominational network style; explicitly anti-absolutist about microchurch (&quot;not the only way&quot;)</td>
+</tr>
+<tr>
+<td>Missiology</td>
+<td>Incarnational (&quot;missional-incarnational&quot;); rejects attractional church-building as primary mission frame; frontier / global posture (35+ countries)</td>
+</tr>
+<tr>
+<td>Leadership</td>
+<td>Distributed / coaching-based; APEST-aligned (recommends Hirsch's assessment); Forge Training Director role embodies trainer-of-trainers posture</td>
+</tr>
+<tr>
+<td>Christology</td>
+<td>Christocentric — named as the first of his six paradigms in <em>Kingdom Contours</em> (&quot;Christocentric and Trinitarian — Centering on Jesus as Lord&quot;)</td>
+</tr>
+<tr>
+<td>Anthropology / formation</td>
+<td>Spiritual-disciplines tradition (Foster/Willard/Renovaré register); humans formed by rhythmic practices over time, not by discrete decisions; calling-not-assignment as identity frame</td>
+</tr>
+<tr>
+<td>Culture</td>
+<td>Pro-engagement, anti-extractive; views distraction (not heresy, not opposition) as the dominant spiritual threat; comfortable with cross-cultural and urban contexts</td>
+</tr>
+</tbody>
+</table>
+<h3 id="distinctive-claims">Distinctive claims</h3>
+<ul>
+<li><strong>Mission and contemplation are one rhythm, not two stages.</strong> This is the load-bearing claim that distinguishes him from purely missional voices (Hirsch, Frost, Brisco — for whom contemplative formation is supportive but not constitutive) and from purely contemplative voices (Foster, Willard, Hudson — for whom mission is implication but not structure).</li>
+<li><strong>Microchurch is <em>a</em> form, not <em>the</em> form.</strong> He distances himself from movement absolutists in his own ecosystem. This is unusual within microchurch advocacy literature.</li>
+<li><strong>Distraction, not opposition, is the dominant spiritual threat.</strong> Sets him apart from cultural-warrior framings of the missional church.</li>
+<li><strong>Calling vs. assignment as a distinct pastoral diagnostic.</strong> A practical contribution to compassion-fatigue / sustainable-mission discourse not present in upstream Renovaré or Forge teaching at this level of specificity.</li>
+<li><strong>Co-authorship with spouse as norm.</strong> Almost all published work signed and written with Monica Paredes Chambers — a marriage-as-writing-dyad model rare in the missional church publishing space (Alan and Debra Hirsch are the closest parallel).</li>
+</ul>
+<hr>
+<h2 id="intellectual-genealogy">Intellectual genealogy</h2>
+<h3 id="upstream-influences">Upstream influences</h3>
+<table>
+<thead>
+<tr>
+<th>Person</th>
+<th>Ideas adopted</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alan Hirsch</td>
+<td><em>The Forgotten Ways</em> / mDNA / APEST / &quot;movemental&quot; — explicit blueprint for <em>Kingdom Contours</em></td>
+<td><a href="https://missionalchallenge.com/kingdom-contours/">missionalchallenge.com</a>, <a href="https://thepandocollective.com/what-we-do">Pando Collective</a></td>
+</tr>
+<tr>
+<td>Michael Frost</td>
+<td>Incarnational / missional framework; &quot;sentness&quot; register</td>
+<td><a href="https://www.amazon.com/Kingdom-Contours-Foundations-Paradigms-Equipping/dp/195514270X">Amazon Kingdom Contours</a></td>
+</tr>
+<tr>
+<td>Debra Hirsch</td>
+<td>Co-foreword author of <em>Art of Missional Spirituality</em>; embodied missional spirituality</td>
+<td><a href="https://www.amazon.com/Art-Missional-Spirituality-Practices-Jesus-Followers-ebook/dp/B0CKGC6364">Amazon TAoMS</a></td>
+</tr>
+<tr>
+<td>Richard Foster (Renovaré)</td>
+<td>Spiritual disciplines tradition underpinning the &quot;31 sacred practices&quot; architecture; endorser of <em>Kingdom Contours</em></td>
+<td><a href="https://renovare.org/people/monica-chambers">Renovaré</a>, <a href="https://www.everand.com/book/472991684/">Everand</a></td>
+</tr>
+<tr>
+<td>Trevor Hudson &amp; Jerry Haas</td>
+<td>Cycle of Grace (Acceptance → Sustenance → Significance → Fruitfulness)</td>
+<td><a href="https://missioalliance.org/a-few-solutions-for-compassion-fatigue/">Missio Alliance</a></td>
+</tr>
+<tr>
+<td>Ken Boa</td>
+<td>Seven Characteristics of Finishing Well (Being/Knowing/Doing)</td>
+<td><a href="https://renovare.org/articles/finishing-well">Renovaré &quot;Finishing Well&quot;</a></td>
+</tr>
+<tr>
+<td>Brian Sanders (Tampa Underground)</td>
+<td>Microchurch incubator model; transmitted via Rowland Smith / Pando Collective</td>
+<td><a href="https://koinesune.com/stories/identifying-and-developing-missional-leaders-the-pando-collective-interview-with-rowland-smith">Koine Sune interview</a></td>
+</tr>
+<tr>
+<td>Rowland Smith</td>
+<td>Pando Collective model; Forge America national framing</td>
+<td><a href="https://pulpitrock.com/partner-spotlight-jeremy-monica-chambers/">Pulpit Rock</a>, <a href="https://www.rowlandsmith.net/bio">Rowland Smith bio</a></td>
+</tr>
+<tr>
+<td>JR Woodward</td>
+<td>V3 polycentric leadership; church-planting framework</td>
+<td><a href="https://www.100movements.org/books/art-of-missional-spirituality-jeremy-chambers-monica-pardes-chambers">100 Movements</a></td>
+</tr>
+</tbody>
+</table>
+<p>Not confirmed as direct influences despite tradition-level proximity: Dallas Willard, Eugene Peterson, Henri Nouwen, Lesslie Newbigin, NT Wright, James KA Smith (Renovaré tradition implies Willard/Foster/Nouwen lineage, but no direct citation surfaced).</p>
+<h3 id="downstream-impact-documented">Downstream impact (documented)</h3>
+<table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Forge America national curriculum</td>
+<td>Training Director role gives him curricular authority over Forge's national training pipeline (Teachable platform); no solo-byline course documented</td>
+</tr>
+<tr>
+<td>Pando Denver launch</td>
+<td>Co-launched the Denver expression of the Pando Collective with Rowland Smith</td>
+</tr>
+<tr>
+<td>Arise RVA microchurch reproduction</td>
+<td>Network described as having reproduced into &quot;30+ locations since 2013&quot; per partner framing</td>
+</tr>
+<tr>
+<td>Schools / denominations adopting books in curriculum</td>
+<td>None documented</td>
+</tr>
+<tr>
+<td>Mentees who have published</td>
+<td>None documented</td>
+</tr>
+</tbody>
+</table>
+<h3 id="peer-dialogue">Peer dialogue</h3>
+<table>
+<thead>
+<tr>
+<th>Person</th>
+<th>Relationship</th>
+<th>Shared themes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rowland Smith</td>
+<td>Direct collaborator (Pando founder; Forge America National Director); brought Chambers into Pando Denver; TAoMS endorser</td>
+<td>Pando / microchurch network model; Forge formula</td>
+</tr>
+<tr>
+<td>Terry Ishee</td>
+<td>Forge America Executive Director; TAoMS endorser; podcast roundtable participant</td>
+<td>Forge curriculum, missional ecclesiology</td>
+</tr>
+<tr>
+<td>Alan Hirsch</td>
+<td>Mentor and foreword author of both books; publisher (100M); endorser of <em>Kingdom Contours</em></td>
+<td>Apostolic Genius, mDNA, APEST, &quot;movemental&quot;</td>
+</tr>
+<tr>
+<td>Debra Hirsch</td>
+<td>Co-foreword of TAoMS</td>
+<td>Embodied missional spirituality</td>
+</tr>
+<tr>
+<td>Michael Frost</td>
+<td>Co-foreword of Kingdom Contours revised; TAoMS endorser</td>
+<td>Incarnational mission, sentness</td>
+</tr>
+<tr>
+<td>JR Woodward</td>
+<td>V3 National Director; TAoMS endorser; primary V3 article venue for Chambers</td>
+<td>Polycentric leadership, microchurch planting</td>
+</tr>
+<tr>
+<td>Brian Sanders</td>
+<td>Tampa Underground founder; TAoMS endorser</td>
+<td>Microchurch ecosystems, &quot;three minimum ecclesial standards&quot;</td>
+</tr>
+<tr>
+<td>Caesar Kalinowski</td>
+<td>Host, <em>Everyday Disciple Podcast</em>; interviewed Chambers Apr 2024</td>
+<td>Everyday mission, gospel fluency, oikos</td>
+</tr>
+<tr>
+<td>Alex Absalom</td>
+<td>Host, <em>Dandelion Resourcing</em>; interviewed Chambers Mar 2024</td>
+<td>Discipleship-to-mission pipeline</td>
+</tr>
+<tr>
+<td>Nathan Foster</td>
+<td>Renovaré host, <em>Life With God</em> podcast (son of Richard Foster); interviewed Chambers Apr 2024</td>
+<td>Spiritual formation, Lord's Prayer</td>
+</tr>
+<tr>
+<td>Carolyn Arends</td>
+<td>Renovaré Director of Education; TAoMS endorser</td>
+<td>Contemplative formation</td>
+</tr>
+<tr>
+<td>Jessie Cruickshank</td>
+<td>Author <em>Ordinary Discipleship</em>; TAoMS endorser</td>
+<td>Discipleship neuroscience</td>
+</tr>
+<tr>
+<td>Angie Ward</td>
+<td>Denver Seminary faculty; TAoMS endorser</td>
+<td>Missional leadership, spirituality</td>
+</tr>
+<tr>
+<td>Bill Couchenour</td>
+<td>Exponential, Director of Deployment; TAoMS endorser</td>
+<td>Church planting</td>
+</tr>
+<tr>
+<td>Russ Johnson</td>
+<td>Table Network founder; <em>Kingdom Contours</em> endorser</td>
+<td>Networked discipleship</td>
+</tr>
+<tr>
+<td>Joshua Johnson</td>
+<td>Host, <em>Shifting Culture Podcast</em> (Ep. 197)</td>
+<td>Missional culture</td>
+</tr>
+<tr>
+<td>Afrika Afeni Mills</td>
+<td>Continental Drift founder; TAoMS endorser</td>
+<td>Justice-oriented formation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Not documented as peers</strong> despite ecosystem overlap: Hugh Halter, Lance Ford, Brad Brisco, Dan White Jr., AJ Swoboda, Tara Beth Leach, Dave Ferguson.</p>
+<h3 id="constructive-tensions">Constructive tensions</h3>
+<table>
+<thead>
+<tr>
+<th>Counterparty</th>
+<th>Topic</th>
+<th>Chambers' position</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Attractional / event-based church models</td>
+<td>Mission strategy</td>
+<td>&quot;Coaches churches to shift from attractional, event-based models toward dispersed, community-focused approaches&quot; — Pando Collective programmatic stance Chambers co-leads</td>
+<td><a href="https://thepandocollective.com/what-we-do">Pando Collective</a></td>
+</tr>
+<tr>
+<td>Microchurch absolutism</td>
+<td>Ecclesial method</td>
+<td>Explicitly distances himself: &quot;people who are like all about micro church and they're like it's the only way&quot; — names this as a posture to avoid</td>
+<td><a href="https://pivotalpeople.buzzsprout.com/1909281/episodes/14107088">Pivotal People 2024</a></td>
+</tr>
+</tbody>
+</table>
+<p>No documented polemic articles, open letters, or rebuttals targeting named individuals.</p>
+<h3 id="comparable-authors-reach--genre">Comparable authors (reach / genre)</h3>
+<table>
+<thead>
+<tr>
+<th>Author</th>
+<th>Overlap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alan Hirsch</td>
+<td>Missional movement DNA; mentor and publisher; Chambers is downstream within the 100M imprint</td>
+</tr>
+<tr>
+<td>Michael Frost</td>
+<td>Incarnational mission; foreword contributor</td>
+</tr>
+<tr>
+<td>Brad Brisco</td>
+<td>Bivocational / missional ecology adjacent; same ecosystem (Forge, Send Institute)</td>
+</tr>
+<tr>
+<td>Brian Sanders</td>
+<td>Microchurch incubator model</td>
+</tr>
+<tr>
+<td>JR Woodward</td>
+<td>V3 / polycentric church planting</td>
+</tr>
+<tr>
+<td>Caesar Kalinowski</td>
+<td>Everyday mission / oikos discipleship</td>
+</tr>
+<tr>
+<td>Lance Ford</td>
+<td>Forge formation / coaching tradition</td>
+</tr>
+<tr>
+<td>Richard Foster (Renovaré)</td>
+<td>Sacred practices / spiritual disciplines</td>
+</tr>
+<tr>
+<td>Jessie Cruickshank</td>
+<td>Discipleship-as-formation register</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="network-graph">Network graph</h2>
+<h3 id="co-authors">Co-authors</h3>
+<table>
+<thead>
+<tr>
+<th>Person</th>
+<th>Joint works</th>
+<th>Edge weight</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Monica Paredes Chambers</td>
+<td><em>The Art of Missional Spirituality</em> (2023); <em>Kingdom Contours</em> (2020); <em>Kingdom Contours</em> — Revised Edition (2024–25); Renovaré articles &quot;Praying the Hours,&quot; &quot;Finishing Well&quot;</td>
+<td>9 (3 + 2×3, capped before 10)</td>
+<td>Wife and primary writing partner; co-leader of Arise RVA Church Network and Pando Denver work; from Costa Rica; degree in Graphic Design</td>
+</tr>
+</tbody>
+</table>
+<p>No other co-authors documented.</p>
+<h3 id="endorsements-received-sample">Endorsements received (sample)</h3>
+<table>
+<thead>
+<tr>
+<th>From</th>
+<th>For</th>
+<th>Year</th>
+<th>URL / note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alan &amp; Debra Hirsch</td>
+<td><em>The Art of Missional Spirituality</em> (foreword)</td>
+<td>2023</td>
+<td><a href="https://www.amazon.com/Art-Missional-Spirituality-Practices-Jesus-Followers-ebook/dp/B0CKGC6364">Amazon Kindle</a></td>
+</tr>
+<tr>
+<td>Rowland Smith</td>
+<td><em>The Art of Missional Spirituality</em></td>
+<td>2023</td>
+<td>National Director, Forge America; Founder, Pando Collective — <a href="https://www.jemochambers.com/the-art-of-missional-spirituality">jemochambers.com</a></td>
+</tr>
+<tr>
+<td>Terry Ishee</td>
+<td><em>The Art of Missional Spirituality</em></td>
+<td>2023</td>
+<td>Executive Director, Forge America — <a href="https://www.jemochambers.com/the-art-of-missional-spirituality">jemochambers.com</a></td>
+</tr>
+<tr>
+<td>Angie Ward</td>
+<td><em>The Art of Missional Spirituality</em></td>
+<td>2023</td>
+<td>Denver Seminary — <a href="https://www.jemochambers.com/the-art-of-missional-spirituality">jemochambers.com</a></td>
+</tr>
+<tr>
+<td>Bill Couchenour</td>
+<td><em>The Art of Missional Spirituality</em></td>
+<td>2023</td>
+<td>Director of Deployment, Exponential — <a href="https://www.jemochambers.com/the-art-of-missional-spirituality">jemochambers.com</a></td>
+</tr>
+<tr>
+<td>Miriam Dixon</td>
+<td><em>The Art of Missional Spirituality</em></td>
+<td>2023</td>
+<td>Former Senior Pastor, First Presbyterian Church, Golden CO; Renovaré — <a href="https://www.jemochambers.com/the-art-of-missional-spirituality">jemochambers.com</a></td>
+</tr>
+<tr>
+<td>Michael Frost</td>
+<td><em>The Art of Missional Spirituality</em></td>
+<td>2023</td>
+<td>Morling College, Sydney — <a href="https://www.jemochambers.com/the-art-of-missional-spirituality">jemochambers.com</a></td>
+</tr>
+<tr>
+<td>Jessie Cruickshank</td>
+<td><em>The Art of Missional Spirituality</em></td>
+<td>2023</td>
+<td>Author, <em>Ordinary Discipleship</em> — <a href="https://www.jemochambers.com/the-art-of-missional-spirituality">jemochambers.com</a></td>
+</tr>
+<tr>
+<td>Afrika Afeni Mills</td>
+<td><em>The Art of Missional Spirituality</em></td>
+<td>2023</td>
+<td>Founder/CEO, Continental Drift — <a href="https://www.jemochambers.com/the-art-of-missional-spirituality">jemochambers.com</a></td>
+</tr>
+<tr>
+<td>JR Woodward</td>
+<td><em>The Art of Missional Spirituality</em></td>
+<td>2023</td>
+<td>National Director, V3 Church Planting Movement — <a href="https://www.100movements.org/books/art-of-missional-spirituality-jeremy-chambers-monica-pardes-chambers">100 Movements</a></td>
+</tr>
+<tr>
+<td>Carolyn Arends</td>
+<td><em>The Art of Missional Spirituality</em></td>
+<td>2023</td>
+<td>Renovaré Director of Education — <a href="https://www.100movements.org/books/art-of-missional-spirituality-jeremy-chambers-monica-pardes-chambers">100 Movements</a></td>
+</tr>
+<tr>
+<td>Brian Sanders</td>
+<td><em>The Art of Missional Spirituality</em></td>
+<td>2023</td>
+<td>Founder, Tampa Underground — <a href="https://www.undergroundnetwork.org/undergroundchurchbook">Underground Network</a></td>
+</tr>
+<tr>
+<td>Alan Hirsch</td>
+<td><em>Kingdom Contours</em> (foreword 1st ed.; co-foreword revised)</td>
+<td>2020, 2024–25</td>
+<td><a href="https://www.everand.com/book/472991684/">Everand</a>, <a href="https://www.amazon.com/Kingdom-Contours-Foundations-Paradigms-Equipping/dp/195514270X">Amazon revised</a></td>
+</tr>
+<tr>
+<td>Michael Frost</td>
+<td><em>Kingdom Contours</em> — Revised Edition (co-foreword)</td>
+<td>2024–25</td>
+<td><a href="https://www.amazon.com/Kingdom-Contours-Foundations-Paradigms-Equipping/dp/195514270X">Amazon revised</a></td>
+</tr>
+<tr>
+<td>Richard J. Foster</td>
+<td><em>Kingdom Contours</em></td>
+<td>2020</td>
+<td>Renovaré founder, <em>Celebration of Discipline</em> — <a href="https://www.everand.com/book/472991684/">Everand</a></td>
+</tr>
+<tr>
+<td>Russ Johnson</td>
+<td><em>Kingdom Contours</em></td>
+<td>2020</td>
+<td>Founder, The Table Network — <a href="https://www.everand.com/book/472991684/">Everand</a></td>
+</tr>
+<tr>
+<td>Michael Pumphrey</td>
+<td><em>Kingdom Contours</em></td>
+<td>2020</td>
+<td>Church Planting Strategist, Reliant / V3 — <a href="https://www.everand.com/book/472991684/">Everand</a></td>
+</tr>
+<tr>
+<td>James Ayers</td>
+<td><em>Kingdom Contours</em></td>
+<td>2020</td>
+<td>Lancaster Bible College — <a href="https://www.everand.com/book/472991684/">Everand</a></td>
+</tr>
+<tr>
+<td>Siang-Yang Tan</td>
+<td><em>Kingdom Contours</em></td>
+<td>2020</td>
+<td>Fuller Theological Seminary — <a href="https://www.everand.com/book/472991684/">Everand</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="organizational-affiliations">Organizational affiliations</h3>
+<ul>
+<li><strong>Forge America</strong> — Training Director (national role; current as of 2024–26). URL: <a href="https://www.forgeamerica.com/">forgeamerica.com</a>. Equips Forge leaders nationally; partners with denominational and church leaders as coach/consultant. (<a href="https://www.forgeamerica.com/our-people">Forge America &quot;Our People&quot;</a>)</li>
+<li><strong>The Pando Collective</strong> — Network leader, Pando Denver (2020+). HQ Colorado Springs, CO. URL: <a href="https://thepandocollective.com/">thepandocollective.com</a>. Mission: &quot;network, resource, and launch missional micro expressions of the Kingdom of God&quot; across the Front Range. (<a href="https://thepandocollective.com/">Pando Collective</a>, <a href="https://pulpitrock.com/partner-spotlight-jeremy-monica-chambers/">Pulpit Rock</a>)</li>
+<li><strong>The Arise Network / Arise RVA Church Network</strong> — Founder (2013–present). URL: <a href="http://www.ariserva.com/">ariserva.com</a>. Network of gospel-centered microchurch communities in Richmond, VA and abroad. BGAV-affiliated via V3. EIN 46-5706094. (<a href="https://www.bgav.org/church-directory/arise-rva-church">BGAV directory</a>, <a href="https://www.taxexemptworld.com/organization.asp?tn=2631058">TaxExemptWorld</a>)</li>
+<li><strong>V3 Church Planting Movement</strong> — Affiliated planter and contributing author (2013–present). URL: <a href="https://thev3movement.org/author/jeremy-chambers/">thev3movement.org/author/jeremy-chambers/</a>. BGAV's church-planting ministry under JR Woodward.</li>
+<li><strong>Renovaré</strong> — Contributor (articles + podcast guest), 2022–present. URL: <a href="https://renovare.org/">renovare.org</a>. Spiritual-formation network in the Foster / Willard tradition.</li>
+<li><strong>100 Movements Publishing</strong> — Author of two titles (Kingdom Contours revised; The Art of Missional Spirituality). URL: <a href="https://100mpublishing.com/our-authors/">100mpublishing.com</a>. Hirsch-founded publishing arm of the Movement Leaders Collective.</li>
+<li><strong>Baptist General Association of Virginia (BGAV)</strong> — Denominational affiliation via Arise RVA / V3.</li>
+<li><strong>Certifications:</strong> Five Capitals coach; Forge coach; Coach Approach Ministries; Auxano-certified Vision Strategist + Process Consultant; International Conference of Police Chaplains registered chaplain. (<a href="https://www.forgeamerica.com/our-people">Forge America &quot;Our People&quot;</a>)</li>
+</ul>
+<p>No documented board memberships at Missio Alliance, Verge, Praxis, or other governance bodies. No educational appointments (Denver Seminary, Northern, Wheaton, TEDS) beyond alumnus status at TEDS.</p>
+<h3 id="json-graph--nodes">JSON graph — nodes</h3>
+<pre class="hljs"><code><div>[
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Jeremy Chambers"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"monica-paredes-chambers"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Monica Paredes Chambers"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"alan-hirsch"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Alan Hirsch"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"debra-hirsch"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Debra Hirsch"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"michael-frost"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Michael Frost"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"richard-foster"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Richard Foster"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"rowland-smith"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Rowland Smith"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"terry-ishee"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Terry Ishee"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"jr-woodward"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"JR Woodward"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"brian-sanders"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Brian Sanders"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"carolyn-arends"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Carolyn Arends"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"nathan-foster"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Nathan Foster"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"miriam-dixon"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Miriam Dixon"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"angie-ward"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Angie Ward"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"bill-couchenour"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Bill Couchenour"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"jessie-cruickshank"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Jessie Cruickshank"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"afrika-afeni-mills"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Afrika Afeni Mills"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"caesar-kalinowski"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Caesar Kalinowski"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"alex-absalom"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Alex Absalom"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"joshua-johnson"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Joshua Johnson"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"russ-johnson"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Russ Johnson"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"trevor-hudson"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Trevor Hudson"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"ken-boa"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Ken Boa"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"person"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"forge-america"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Forge America"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"org"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"pando-collective"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"The Pando Collective"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"org"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"arise-rva"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Arise RVA / Arise Network"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"org"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"v3-movement"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"V3 Church Planting Movement"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"org"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"renovare"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Renovaré"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"org"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"100-movements-publishing"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"100 Movements Publishing"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"org"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"bgav"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Baptist General Association of Virginia"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"org"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"teds"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Trinity Evangelical Divinity School"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"org"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"johnson-university"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Johnson University"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"org"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"tampa-underground"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Tampa Underground / Underground Network"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"org"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"missio-alliance"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Missio Alliance"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"org"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"exponential"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Exponential"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"org"</span>},
+  {<span class="hljs-attr">"id"</span>: <span class="hljs-string">"denver-seminary"</span>, <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Denver Seminary"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"org"</span>}
+]
+</div></code></pre>
+<h3 id="json-graph--edges">JSON graph — edges</h3>
+<pre class="hljs"><code><div>[
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"monica-paredes-chambers"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"co-author"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">9</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"monica-paredes-chambers"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"spouse"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">10</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"alan-hirsch"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"foreword-author"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">8</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"debra-hirsch"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"foreword-author"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">6</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"michael-frost"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"foreword-author"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">7</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"richard-foster"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"endorser"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">6</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"rowland-smith"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"endorser"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">8</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"rowland-smith"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"peer-collaborator"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">9</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"terry-ishee"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"endorser"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">7</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"jr-woodward"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"endorser"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">7</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"brian-sanders"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"endorser"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">6</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"carolyn-arends"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"endorser"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">5</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"miriam-dixon"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"endorser"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">5</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"angie-ward"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"endorser"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">5</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"bill-couchenour"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"endorser"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">5</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"jessie-cruickshank"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"endorser"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">5</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"afrika-afeni-mills"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"endorser"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">5</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"russ-johnson"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"endorser"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">4</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"caesar-kalinowski"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"podcast-host"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">4</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"alex-absalom"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"podcast-host"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">4</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"nathan-foster"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"podcast-host"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">4</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"joshua-johnson"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"podcast-host"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">3</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"alan-hirsch"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"intellectual-upstream"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">10</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"michael-frost"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"intellectual-upstream"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">7</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"richard-foster"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"intellectual-upstream"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">7</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"trevor-hudson"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"intellectual-upstream"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">5</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"ken-boa"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"intellectual-upstream"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">4</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"brian-sanders"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"intellectual-upstream"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">5</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"rowland-smith"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"intellectual-upstream"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">6</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"jr-woodward"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"intellectual-upstream"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">5</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"forge-america"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"training-director"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">10</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"pando-collective"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"network-leader"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">9</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"arise-rva"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"founder"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">10</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"v3-movement"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"contributor-affiliate"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">7</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"renovare"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"contributor"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">6</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"100-movements-publishing"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"published-author"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">9</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"missio-alliance"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"contributor"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">4</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"teds"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"alumnus"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">6</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jeremy-chambers"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"johnson-university"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"alumnus"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">4</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"arise-rva"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"v3-movement"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"affiliated-plant"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">8</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"arise-rva"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"bgav"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"denominational-affiliation"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">7</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"pando-collective"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"forge-america"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"ecosystem-partner"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">7</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"rowland-smith"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"pando-collective"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"founder"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">10</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"rowland-smith"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"forge-america"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"national-director"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">10</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"terry-ishee"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"forge-america"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"executive-director"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">10</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"alan-hirsch"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"100-movements-publishing"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"founder"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">10</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"jr-woodward"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"v3-movement"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"national-director"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">10</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"richard-foster"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"renovare"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"founder"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">10</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"nathan-foster"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"renovare"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"podcast-host"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">8</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"carolyn-arends"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"renovare"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"director-of-education"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">9</span>},
+  {<span class="hljs-attr">"source"</span>: <span class="hljs-string">"brian-sanders"</span>, <span class="hljs-attr">"target"</span>: <span class="hljs-string">"tampa-underground"</span>, <span class="hljs-attr">"type"</span>: <span class="hljs-string">"founder"</span>, <span class="hljs-attr">"weight"</span>: <span class="hljs-number">10</span>}
+]
+</div></code></pre>
+<hr>
+<h2 id="reach-metrics">Reach metrics</h2>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Value</th>
+<th>Date</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Goodreads ratings — <em>The Art of Missional Spirituality</em></td>
+<td>4.47 ★ / 17 ratings / 4 reviews</td>
+<td>2026-05</td>
+<td><a href="https://www.goodreads.com/book/show/199523617-the-art-of-missional-spirituality">Goodreads</a></td>
+</tr>
+<tr>
+<td>Amazon listing — <em>The Art of Missional Spirituality</em></td>
+<td>live since 2023-11-09; print + Kindle + Audible (AI-narrated)</td>
+<td>2026-05</td>
+<td><a href="https://www.amazon.com/Art-Missional-Spirituality-Practices-Jesus-Followers/dp/1955142440">Amazon</a></td>
+</tr>
+<tr>
+<td>Amazon star rating / review count</td>
+<td>unknown (not extractable)</td>
+<td>2026-05</td>
+<td><a href="https://www.amazon.com/Art-Missional-Spirituality-Practices-Jesus-Followers/dp/1955142440">Amazon</a></td>
+</tr>
+<tr>
+<td>Podcast guest appearances (2024 launch window)</td>
+<td>5 documented (Pivotal People, Dandelion, Renovaré <em>Life With God</em>, Everyday Disciple, Shifting Culture #197)</td>
+<td>2024-01 → 2024-07</td>
+<td><a href="https://www.jemochambers.com/">jemochambers.com</a></td>
+</tr>
+<tr>
+<td>Personal podcast hosted</td>
+<td>none</td>
+<td>2026-05</td>
+<td><a href="https://www.jemochambers.com/">jemochambers.com</a></td>
+</tr>
+<tr>
+<td>Instagram handle</td>
+<td>@jemochambers (follower count not extractable via WebFetch)</td>
+<td>2026-05</td>
+<td><a href="https://www.jemochambers.com/">jemochambers.com</a></td>
+</tr>
+<tr>
+<td>Facebook page</td>
+<td>linked from personal site; handle unconfirmed</td>
+<td>2026-05</td>
+<td><a href="https://www.jemochambers.com/">jemochambers.com</a></td>
+</tr>
+<tr>
+<td>Twitter / X</td>
+<td>none documented</td>
+<td>2026-05</td>
+<td>—</td>
+</tr>
+<tr>
+<td>LinkedIn profile</td>
+<td>none disambiguated (multiple namesakes)</td>
+<td>2026-05</td>
+<td><a href="https://linkedin.com/pub/dir/Jeremy/Chambers">LinkedIn directory</a></td>
+</tr>
+<tr>
+<td>YouTube channel (personal)</td>
+<td>none documented</td>
+<td>2026-05</td>
+<td>—</td>
+</tr>
+<tr>
+<td>YouTube guest videos</td>
+<td>Shifting Culture Ep. 197 video; TAoMS promo</td>
+<td>2024</td>
+<td><a href="https://www.youtube.com/watch?v=AHIZFsBo1kc">YouTube AHIZFsBo1kc</a></td>
+</tr>
+<tr>
+<td>Substack / Medium</td>
+<td>none documented</td>
+<td>2026-05</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Speaking circuit footprint</td>
+<td>Indexed as Exponential 2026 speaker (bio not fetched); no Verge / Sentralized / Praxis / Catalyst billings surfaced</td>
+<td>2026</td>
+<td><a href="https://exponential.org/global-2026/">Exponential 2026</a></td>
+</tr>
+<tr>
+<td>Wikipedia presence</td>
+<td>none (the <em>Jeremy Chambers</em> Wikipedia page is the Australian jockey, not this person)</td>
+<td>2026-05</td>
+<td><a href="https://en.wikipedia.org/wiki/Jeremy_Chambers">Wikipedia</a></td>
+</tr>
+<tr>
+<td>Google Scholar presence</td>
+<td>none documented</td>
+<td>2026-05</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Arise RVA microchurch reproduction</td>
+<td>&quot;30+ locations since 2013&quot; per partner framing</td>
+<td>2024</td>
+<td><a href="https://www.almahunt.org/alma-hunt-offering-stories/micro-churches">Alma Hunt</a></td>
+</tr>
+<tr>
+<td>Cross-cultural footprint</td>
+<td>&quot;movements that make disciples and networks of microchurches in over thirty-five countries&quot;</td>
+<td>2024</td>
+<td><a href="https://www.jemochambers.com/">jemochambers.com</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="distribution-inventory">Distribution inventory</h2>
+<h3 id="books">Books</h3>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Year</th>
+<th>Publisher</th>
+<th>Print</th>
+<th>eBook</th>
+<th>Audiobook</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>The Art of Missional Spirituality</em></td>
+<td>2023</td>
+<td>100 Movements Publishing</td>
+<td>✅ (ISBN 978-1-955142-44-1)</td>
+<td>✅ (ISBN 978-1-955142-45-8)</td>
+<td>✅ Audible 2025 — <strong>AI-narrated</strong> (&quot;Virtual Voice&quot;)</td>
+<td><a href="https://www.amazon.com/Art-Missional-Spirituality-Practices-Jesus-Followers/dp/1955142440">Amazon</a>, <a href="https://us.amazon.com/Art-Missional-Spirituality-Practices-Jesus-Followers/dp/B0F3PJ9RNP">Audible</a></td>
+</tr>
+<tr>
+<td><em>Kingdom Contours</em> — Revised Edition</td>
+<td>2024–25</td>
+<td>100 Movements Publishing</td>
+<td>✅ (ISBN 978-1-955142-70-0)</td>
+<td>✅ Kindle</td>
+<td>❌</td>
+<td><a href="https://www.amazon.com/Kingdom-Contours-Foundations-Paradigms-Equipping/dp/195514270X">Amazon</a></td>
+</tr>
+<tr>
+<td><em>Kingdom Contours</em> — 1st ed.</td>
+<td>2020</td>
+<td>Missional Challenge Publishing</td>
+<td>✅ (ISBN 978-1-952721-00-7)</td>
+<td>✅ (ISBN 978-1-952721-02-1)</td>
+<td>❌</td>
+<td><a href="https://www.everand.com/book/472991684/">Everand</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="articles--blogs">Articles &amp; blogs</h3>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Publication</th>
+<th>Date</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A Few Solutions For Compassion Fatigue</td>
+<td>Missio Alliance</td>
+<td>2025-10-30</td>
+<td><a href="https://missioalliance.org/a-few-solutions-for-compassion-fatigue/">missioalliance.org</a></td>
+</tr>
+<tr>
+<td>Praying the Hours</td>
+<td>Renovaré</td>
+<td>2023-11-01</td>
+<td><a href="https://renovare.org/articles/praying-the-hours">renovare.org</a></td>
+</tr>
+<tr>
+<td>Finishing Well</td>
+<td>Renovaré</td>
+<td>2022-04-01</td>
+<td><a href="https://renovare.org/articles/finishing-well">renovare.org</a></td>
+</tr>
+<tr>
+<td>An Ethic of Listening</td>
+<td>V3 Movement</td>
+<td>2021-11-04</td>
+<td><a href="https://thev3movement.org/2021/11/04/an-ethic-of-listening/">thev3movement.org</a></td>
+</tr>
+<tr>
+<td>Thirty One Days of Delight</td>
+<td>V3 Movement</td>
+<td>2020-12-24</td>
+<td><a href="https://thev3movement.org/2020/12/24/31-days-of-delight/">thev3movement.org</a></td>
+</tr>
+<tr>
+<td>Cyber Missional Pioneering</td>
+<td>V3 Movement</td>
+<td>2020-09-03</td>
+<td><a href="https://thev3movement.org/2020/09/03/cyber-missional-pioneering/">thev3movement.org</a></td>
+</tr>
+<tr>
+<td>Essential Elements of Kingdom Movements</td>
+<td>V3 Movement</td>
+<td>2019-10-16</td>
+<td><a href="https://thev3movement.org/2019/10/16/essential-elements-of-kingdom-movements/">thev3movement.org</a></td>
+</tr>
+<tr>
+<td>The Mechanics and Spirituality of Trust</td>
+<td>V3 Movement</td>
+<td>2019-04-16</td>
+<td><a href="https://thev3movement.org/2019/04/16/the-mechanics-and-spirituality-of-trust/">thev3movement.org</a></td>
+</tr>
+<tr>
+<td>The Wisdom of the Peace Lily</td>
+<td>V3 Movement</td>
+<td>2018-12-07</td>
+<td><a href="https://thev3movement.org/2018/12/07/the-wisdom-of-the-peace-lily/">thev3movement.org</a></td>
+</tr>
+<tr>
+<td>The True Foundation for Our Rejoicing</td>
+<td>V3 Movement</td>
+<td>2018-10-23</td>
+<td><a href="https://thev3movement.org/2018/10/23/the-true-foundation-for-our-rejoicing/">thev3movement.org</a></td>
+</tr>
+<tr>
+<td>Grativangelism: Gratitude Evangelism</td>
+<td>V3 Movement</td>
+<td>2018-07-27</td>
+<td><a href="https://thev3movement.org/2018/07/27/grativangelism/">thev3movement.org</a></td>
+</tr>
+<tr>
+<td>24 Hour Prayer: Fuel the Movement</td>
+<td>V3 Movement</td>
+<td>2018-06-11</td>
+<td><a href="https://thev3movement.org/2018/06/11/24-hour-prayer-fuel-movement/">thev3movement.org</a></td>
+</tr>
+</tbody>
+</table>
+<p>Primary article venues: V3 Movement (2018–2021), Renovaré (2022–2023), Missio Alliance (2025). No Substack, no Medium, no Christianity Today / Outreach / Mockingbird / Mere Orthodoxy bylines documented.</p>
+<h3 id="audio">Audio</h3>
+<table>
+<thead>
+<tr>
+<th>Podcast</th>
+<th>Episode</th>
+<th>Date</th>
+<th>Host</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Everyday Disciple</td>
+<td>Spirituality That Fuels God's Mission</td>
+<td>2024-04-15</td>
+<td>Caesar Kalinowski</td>
+<td><a href="https://everydaydisciple.com/podcast/">everydaydisciple.com</a></td>
+</tr>
+<tr>
+<td>Life With God: A Renovaré Podcast</td>
+<td>Getting Personal with the Lord's Prayer</td>
+<td>2024-04-14</td>
+<td>Nathan Foster</td>
+<td><a href="https://renovare.org/podcasts/lifewithgod/monica-and-jeremy-chambers-getting-personal-with-the-lords-prayer">renovare.org</a></td>
+</tr>
+<tr>
+<td>Dandelion Resourcing</td>
+<td>The Art of Missional Spirituality</td>
+<td>2024-03-19</td>
+<td>Alex Absalom</td>
+<td>(index URL no longer resolves; discoverable via jemochambers.com/podcasts)</td>
+</tr>
+<tr>
+<td>Pivotal People</td>
+<td>Unraveling the Art of Missionary Spirituality</td>
+<td>2024-01-22</td>
+<td>Stephanie Nelson</td>
+<td><a href="https://pivotalpeople.buzzsprout.com/1909281/episodes/14107088-unraveling-the-art-of-missionary-spirituality-from-micro-churches-to-acts-of-kindness-with-jeremy-and-monica-chambers">pivotalpeople.buzzsprout.com</a></td>
+</tr>
+<tr>
+<td>Shifting Culture</td>
+<td>The Art of Missional Spirituality (Ep. 197)</td>
+<td>2024</td>
+<td>Joshua Johnson</td>
+<td><a href="https://www.shiftingculturepodcast.com/episodes/episode-197-jeremyandmonicachambers">shiftingculturepodcast.com</a></td>
+</tr>
+<tr>
+<td>Forge America Missional Podcast</td>
+<td>recurring guest/roundtable</td>
+<td>various</td>
+<td>Forge America team</td>
+<td><a href="https://www.forgeamerica.com/podcast">forgeamerica.com/podcast</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="video">Video</h3>
+<ul>
+<li>YouTube — <em>Shifting Culture</em> Ep. 197 video version (<a href="https://www.youtube.com/watch?v=AHIZFsBo1kc">youtube.com/watch?v=AHIZFsBo1kc</a>)</li>
+<li>YouTube — <em>The Art of Missional Spirituality</em> promo / long-form</li>
+<li>No personal YouTube channel.</li>
+</ul>
+<h3 id="courses--assessments">Courses &amp; assessments</h3>
+<ul>
+<li><strong>Forge Mission Training Network (Teachable)</strong> — <em>Who is Forge America?</em>, <em>Introduction to Mission</em>, <em>Introduction to Mobilizing Everyday Disciples</em> — credited to &quot;The Forge Team&quot;; Chambers is Training Director (<a href="https://forge.teachable.com/">forge.teachable.com</a>)</li>
+<li>No solo-branded online course documented</li>
+<li>No published assessment instrument</li>
+</ul>
+<h3 id="websites--orgs">Websites &amp; orgs</h3>
+<ul>
+<li><a href="https://www.jemochambers.com/">jemochambers.com</a> — personal site (Jeremy + Monica)</li>
+<li><a href="https://www.forgeamerica.com/">forgeamerica.com</a> — Forge America</li>
+<li><a href="https://thepandocollective.com/">thepandocollective.com</a> — Pando Collective</li>
+<li><a href="http://www.ariserva.com/">ariserva.com</a> — Arise RVA Church Network (offline at time of research)</li>
+</ul>
+<h3 id="social">Social</h3>
+<ul>
+<li>Instagram: @jemochambers (linked from jemochambers.com; metrics unobtainable via WebFetch)</li>
+<li>Facebook: linked from personal site; handle unconfirmed</li>
+<li>Twitter/X: none documented</li>
+<li>LinkedIn: none disambiguated</li>
+<li>TikTok / YouTube channel / Substack: none</li>
+</ul>
+<h3 id="academic--papers">Academic / papers</h3>
+<p>None documented (no Google Scholar profile; no peer-reviewed publication record).</p>
+<h3 id="translations">Translations</h3>
+<ul>
+<li>No Spanish-language edition of either book documented despite Monica's Costa Rica heritage and the couple's Latin America work. (Distribution gap, recorded factually.)</li>
+</ul>
+<h3 id="content-gap-table-factual-state-only">Content gap table (factual state only)</h3>
+<table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Gap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TAoMS audiobook</td>
+<td>Human-narrated edition</td>
+</tr>
+<tr>
+<td><em>Kingdom Contours</em> (any edition)</td>
+<td>Audiobook of any kind</td>
+</tr>
+<tr>
+<td>Translations</td>
+<td>No Spanish edition of either book</td>
+</tr>
+<tr>
+<td>Personal podcast</td>
+<td>None hosted</td>
+</tr>
+<tr>
+<td>Solo-branded course</td>
+<td>None — Forge curriculum is team-credited</td>
+</tr>
+<tr>
+<td>Twitter/X handle</td>
+<td>Not present on his personal site or in any third-party bio</td>
+</tr>
+<tr>
+<td>Substack / Medium</td>
+<td>No long-form blog presence outside V3 + Renovaré + Missio Alliance</td>
+</tr>
+<tr>
+<td>Wikipedia article</td>
+<td>No subject-specific entry (the <em>Jeremy Chambers</em> Wikipedia page is the Australian jockey)</td>
+</tr>
+<tr>
+<td>Google Scholar</td>
+<td>No academic publication record</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="sources-provenance">Sources (provenance)</h2>
+<table>
+<thead>
+<tr>
+<th>URL</th>
+<th>Verifies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>https://www.jemochambers.com/</td>
+<td>Identity, roles, education, cross-cultural footprint, social links</td>
+</tr>
+<tr>
+<td>https://www.jemochambers.com/the-art-of-missional-spirituality</td>
+<td>Book endorsers, back-cover thesis, integration claim</td>
+</tr>
+<tr>
+<td>https://www.forgeamerica.com/our-people</td>
+<td>Forge America Training Director title, undergraduate (Johnson U), certifications</td>
+</tr>
+<tr>
+<td>https://www.forgeamerica.com/podcast</td>
+<td>Forge podcast participation</td>
+</tr>
+<tr>
+<td>https://thepandocollective.com/</td>
+<td>Pando Collective overview</td>
+</tr>
+<tr>
+<td>https://thepandocollective.com/what-we-do</td>
+<td>Attractional-church critique stance</td>
+</tr>
+<tr>
+<td>https://www.amazon.com/Art-Missional-Spirituality-Practices-Jesus-Followers/dp/1955142440</td>
+<td>TAoMS ISBN-13, year, page count</td>
+</tr>
+<tr>
+<td>https://www.amazon.com/Art-Missional-Spirituality-Practices-Jesus-Followers-ebook/dp/B0CKGC6364</td>
+<td>Foreword by Alan &amp; Debra Hirsch (Kindle byline)</td>
+</tr>
+<tr>
+<td>https://us.amazon.com/Art-Missional-Spirituality-Practices-Jesus-Followers/dp/B0F3PJ9RNP</td>
+<td>Audible AI-narrated audiobook edition 2025</td>
+</tr>
+<tr>
+<td>https://www.amazon.com/Kingdom-Contours-Foundations-Paradigms-Equipping/dp/195514270X</td>
+<td>Kingdom Contours revised ISBN, Hirsch + Frost foreword</td>
+</tr>
+<tr>
+<td>https://www.everand.com/book/472991684/Kingdom-Contours-Empowering-Everyday-People-With-the-Tools-to-Shape-Kingdom-Movements</td>
+<td>Kingdom Contours 1st ed. publisher, endorsers (Foster, Johnson, Pumphrey, Ayers, Tan)</td>
+</tr>
+<tr>
+<td>https://missionalchallenge.com/kingdom-contours/</td>
+<td>Kingdom Contours 1st ed. context; Hirsch blueprint claim</td>
+</tr>
+<tr>
+<td>https://www.100movements.org/books/art-of-missional-spirituality-jeremy-chambers-monica-pardes-chambers</td>
+<td>Publisher page; Monica's nationality + degree</td>
+</tr>
+<tr>
+<td>https://www.100movements.org/books/kingdom-contours-jeremy-chambers-monica-paredes-chambers</td>
+<td>Six-paradigms framework</td>
+</tr>
+<tr>
+<td>https://100mpublishing.com/our-authors/</td>
+<td>100M imprint affiliation</td>
+</tr>
+<tr>
+<td>https://www.goodreads.com/book/show/199523617-the-art-of-missional-spirituality</td>
+<td>Goodreads ratings</td>
+</tr>
+<tr>
+<td>https://renovare.org/people/monica-chambers</td>
+<td>Monica's Renovaré profile, TEDS &quot;Church History&quot; framing</td>
+</tr>
+<tr>
+<td>https://renovare.org/podcasts/lifewithgod/monica-and-jeremy-chambers-getting-personal-with-the-lords-prayer</td>
+<td>Renovaré podcast appearance</td>
+</tr>
+<tr>
+<td>https://renovare.org/articles/praying-the-hours</td>
+<td>Praying the Hours framework</td>
+</tr>
+<tr>
+<td>https://renovare.org/articles/finishing-well</td>
+<td>Seven Characteristics of Finishing Well</td>
+</tr>
+<tr>
+<td>https://missioalliance.org/a-few-solutions-for-compassion-fatigue/</td>
+<td>Calling vs. assignment; Cycle of Grace; distraction quote</td>
+</tr>
+<tr>
+<td>https://pivotalpeople.buzzsprout.com/1909281/episodes/14107088-unraveling-the-art-of-missionary-spirituality-from-micro-churches-to-acts-of-kindness-with-jeremy-and-monica-chambers</td>
+<td>Microchurch-absolutism disavowal; &quot;secret acts of kindness&quot; quote</td>
+</tr>
+<tr>
+<td>https://www.shiftingculturepodcast.com/episodes/episode-197-jeremyandmonicachambers</td>
+<td>Self-reliance quote</td>
+</tr>
+<tr>
+<td>https://pulpitrock.com/partner-spotlight-jeremy-monica-chambers/</td>
+<td>Birth-year inference; Richmond → Denver timeline; Arise RVA founding</td>
+</tr>
+<tr>
+<td>https://www.rowlandsmith.net/bio</td>
+<td>Rowland Smith's roles in Pando and Forge</td>
+</tr>
+<tr>
+<td>https://koinesune.com/stories/identifying-and-developing-missional-leaders-the-pando-collective-interview-with-rowland-smith</td>
+<td>Pando model lineage</td>
+</tr>
+<tr>
+<td>https://www.bgav.org/church-directory/arise-rva-church</td>
+<td>Arise RVA / BGAV affiliation</td>
+</tr>
+<tr>
+<td>https://www.taxexemptworld.com/organization.asp?tn=2631058</td>
+<td>Arise RVA EIN</td>
+</tr>
+<tr>
+<td>https://thev3movement.org/2018/07/27/grativangelism/</td>
+<td>&quot;Grativangelism&quot; coinage</td>
+</tr>
+<tr>
+<td>https://thev3movement.org/2019/10/16/essential-elements-of-kingdom-movements/</td>
+<td>Movement DNA essay</td>
+</tr>
+<tr>
+<td>https://thev3movement.org/2021/11/04/an-ethic-of-listening/</td>
+<td>Listening ethics</td>
+</tr>
+<tr>
+<td>https://www.almahunt.org/alma-hunt-offering-stories/micro-churches</td>
+<td>Arise RVA microchurch reproduction figure</td>
+</tr>
+<tr>
+<td>https://forge.teachable.com/</td>
+<td>Forge curriculum platform</td>
+</tr>
+<tr>
+<td>https://en.wikipedia.org/wiki/Jeremy_Chambers</td>
+<td>Wikipedia disambiguation (Australian jockey)</td>
+</tr>
+<tr>
+<td>https://www.19fortyfive.com/2026/01/jeremy-chambers-becomes-the-first-army-nco-to-commission-as-fao-captain/</td>
+<td>Disambiguation — military namesake</td>
+</tr>
+<tr>
+<td>https://www.undergroundnetwork.org/undergroundchurchbook</td>
+<td>Brian Sanders endorsement cross-reference</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Exact date of birth, birthplace, and where he grew up (year ~1986 inferred; nothing else documented publicly)</li>
+<li>Children — public record silent (treat as <code>unknown</code>, not &quot;none&quot;)</li>
+<li>Years attended Johnson University and Trinity Evangelical Divinity School</li>
+<li>Second TEDS degree discrepancy: <strong>Christian Studies</strong> (per jemochambers.com and 100 Movements) vs. <strong>Church History</strong> (per Renovaré profile of Monica) — confirm with leader directly</li>
+<li>Exact founding year of The Pando Collective (only Jeremy's join-date ~2020 is documented)</li>
+<li>Whether &quot;Arise Network&quot; and &quot;Arise RVA Church Network&quot; are formally separate entities or a single network with regional expressions</li>
+<li>Amazon star rating and review count for <em>The Art of Missional Spirituality</em> (extraction blocked)</li>
+<li>Instagram / Facebook follower counts (extraction blocked)</li>
+<li>Whether a verified Twitter/X handle exists</li>
+<li>Speaking history pre-2026 — no Exponential, Verge, Sentralized, Catalyst, or Praxis billings documented in public search</li>
+<li>Foreword author of <em>Kingdom Contours</em> 1st edition (2020) — Alan Hirsch confirmed; whether additional foreword authors existed is unverified</li>
+<li>Mentees who have published — none surfaced</li>
+<li>School / denominational adoption of his books in curriculum — none surfaced</li>
+<li>Arise RVA EIN appears on CauseIQ with conflicting classification (Evangelical Free Church of America group exemption, NTEE B00) vs. BGAV directory listing — IRS data may be misclassified</li>
+<li>TAoMS audiobook is AI-narrated (&quot;Virtual Voice&quot;) rather than human-read — quality/distribution flag for publisher</li>
+</ul>
+
+</body>
+</html>

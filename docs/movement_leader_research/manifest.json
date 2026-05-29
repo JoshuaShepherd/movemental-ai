@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-13T18:17:10.913Z",
+  "generated": "2026-05-29T19:35:39.326Z",
   "version": 1,
   "rootLabel": "Movement leader research",
   "leaders": [
@@ -21,7 +21,7 @@
     {
       "slug": "alan-hirsch",
       "name": "Alan Hirsch",
-      "fileCount": 49
+      "fileCount": 52
     },
     {
       "slug": "alan-mcwilliam",
@@ -91,7 +91,7 @@
     {
       "slug": "brad-brisco",
       "name": "Brad Brisco",
-      "fileCount": 45
+      "fileCount": 47
     },
     {
       "slug": "bree-mills",
@@ -211,7 +211,7 @@
     {
       "slug": "dave-ferguson",
       "name": "Dave Ferguson",
-      "fileCount": 8
+      "fileCount": 39
     },
     {
       "slug": "david-fitch",
@@ -306,7 +306,7 @@
     {
       "slug": "hugh-halter",
       "name": "Hugh Halter",
-      "fileCount": 7
+      "fileCount": 10
     },
     {
       "slug": "jacob-hoyer",
@@ -337,6 +337,16 @@
       "slug": "jeff-vanderstelt",
       "name": "Jeff Vanderstelt",
       "fileCount": 7
+    },
+    {
+      "slug": "jeremy-chambers",
+      "name": "Jeremy Chambers",
+      "fileCount": 1
+    },
+    {
+      "slug": "jeremy-monica-chambers",
+      "name": "Jeremy Monica Chambers",
+      "fileCount": 1
     },
     {
       "slug": "jim-wilder",
@@ -406,7 +416,7 @@
     {
       "slug": "jr-woodward",
       "name": "JR. Woodward",
-      "fileCount": 38
+      "fileCount": 40
     },
     {
       "slug": "justin-whitmel-earley",
@@ -466,7 +476,7 @@
     {
       "slug": "liz-rios",
       "name": "Liz Rios",
-      "fileCount": 13
+      "fileCount": 16
     },
     {
       "slug": "lori-anne-thompson",
@@ -476,7 +486,7 @@
     {
       "slug": "lucas-pulley",
       "name": "Lucas Pulley",
-      "fileCount": 37
+      "fileCount": 40
     },
     {
       "slug": "mandy-smith",
@@ -516,7 +526,12 @@
     {
       "slug": "meghan-good",
       "name": "Meghan Good",
-      "fileCount": 7
+      "fileCount": 38
+    },
+    {
+      "slug": "michael-cooper",
+      "name": "Michael Cooper",
+      "fileCount": 1
     },
     {
       "slug": "michael-frost",
@@ -549,9 +564,14 @@
       "fileCount": 7
     },
     {
+      "slug": "monica-chambers",
+      "name": "Monica Chambers",
+      "fileCount": 1
+    },
+    {
       "slug": "neil-cole",
       "name": "Neil Cole",
-      "fileCount": 30
+      "fileCount": 32
     },
     {
       "slug": "neil-mosely",
@@ -671,12 +691,12 @@
     {
       "slug": "rowland-smith",
       "name": "Rowland Smith",
-      "fileCount": 18
+      "fileCount": 21
     },
     {
       "slug": "roy-moran",
       "name": "Roy Moran",
-      "fileCount": 8
+      "fileCount": 11
     },
     {
       "slug": "ruth-haley-barton",
@@ -766,7 +786,7 @@
     {
       "slug": "tim-catchim",
       "name": "Tim Catchim",
-      "fileCount": 7
+      "fileCount": 10
     },
     {
       "slug": "tim-keel",
@@ -956,6 +976,15 @@
       "title": "ALAN HIRSCH PROFILES INDEX"
     },
     {
+      "id": "alan-hirsch/ALAN_HIRSCH_RESEARCH_COLLATED",
+      "path": "alan-hirsch/ALAN_HIRSCH_RESEARCH_COLLATED.md",
+      "slug": "alan-hirsch",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "ALAN_HIRSCH_RESEARCH_COLLATED",
+      "title": "ALAN HIRSCH RESEARCH COLLATED"
+    },
+    {
       "id": "alan-hirsch/ALAN_HIRSCH_TIMELINE",
       "path": "alan-hirsch/ALAN_HIRSCH_TIMELINE.md",
       "slug": "alan-hirsch",
@@ -1026,6 +1055,15 @@
       "subLabel": "",
       "fileBase": "biography",
       "title": "Biography"
+    },
+    {
+      "id": "alan-hirsch/committed-voice",
+      "path": "alan-hirsch/committed-voice.md",
+      "slug": "alan-hirsch",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
     },
     {
       "id": "alan-hirsch/content-analysis",
@@ -1323,6 +1361,15 @@
       "subLabel": "",
       "fileBase": "summary",
       "title": "Summary"
+    },
+    {
+      "id": "alan-hirsch/welcome-letter",
+      "path": "alan-hirsch/welcome-letter.md",
+      "slug": "alan-hirsch",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "welcome-letter",
+      "title": "Welcome Letter"
     },
     {
       "id": "alan-mcwilliam/content-analysis",
@@ -1766,6 +1813,15 @@
       "title": "BRAD BRISCO VOICE IDENTITY"
     },
     {
+      "id": "brad-brisco/committed-voice",
+      "path": "brad-brisco/committed-voice.md",
+      "slug": "brad-brisco",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
+    },
+    {
       "id": "brad-brisco/content-analysis",
       "path": "brad-brisco/content-analysis.md",
       "slug": "brad-brisco",
@@ -2043,6 +2099,15 @@
       "subLabel": "",
       "fileBase": "summary",
       "title": "Summary"
+    },
+    {
+      "id": "brad-brisco/welcome-letter",
+      "path": "brad-brisco/welcome-letter.md",
+      "slug": "brad-brisco",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "welcome-letter",
+      "title": "Welcome Letter"
     },
     {
       "id": "bree-mills/content-analysis",
@@ -2630,6 +2695,69 @@
       "title": "Summary"
     },
     {
+      "id": "dave-ferguson/_tracker",
+      "path": "dave-ferguson/_tracker.md",
+      "slug": "dave-ferguson",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "_tracker",
+      "title": " Tracker"
+    },
+    {
+      "id": "dave-ferguson/analysis/audience-analysis",
+      "path": "dave-ferguson/analysis/audience-analysis.md",
+      "slug": "dave-ferguson",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "audience-analysis",
+      "title": "Audience Analysis"
+    },
+    {
+      "id": "dave-ferguson/analysis/competitive-landscape",
+      "path": "dave-ferguson/analysis/competitive-landscape.md",
+      "slug": "dave-ferguson",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "competitive-landscape",
+      "title": "Competitive Landscape"
+    },
+    {
+      "id": "dave-ferguson/analysis/content-analysis",
+      "path": "dave-ferguson/analysis/content-analysis.md",
+      "slug": "dave-ferguson",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "content-analysis",
+      "title": "Content Analysis"
+    },
+    {
+      "id": "dave-ferguson/analysis/gap-analysis",
+      "path": "dave-ferguson/analysis/gap-analysis.md",
+      "slug": "dave-ferguson",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "gap-analysis",
+      "title": "Gap Analysis"
+    },
+    {
+      "id": "dave-ferguson/analysis/movemental-fit",
+      "path": "dave-ferguson/analysis/movemental-fit.md",
+      "slug": "dave-ferguson",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "movemental-fit",
+      "title": "Movemental Fit"
+    },
+    {
+      "id": "dave-ferguson/committed-voice",
+      "path": "dave-ferguson/committed-voice.md",
+      "slug": "dave-ferguson",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
+    },
+    {
       "id": "dave-ferguson/content-analysis",
       "path": "dave-ferguson/content-analysis.md",
       "slug": "dave-ferguson",
@@ -2648,6 +2776,60 @@
       "title": "Content Marketing Playbook"
     },
     {
+      "id": "dave-ferguson/content/academic",
+      "path": "dave-ferguson/content/academic.md",
+      "slug": "dave-ferguson",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "academic",
+      "title": "Academic"
+    },
+    {
+      "id": "dave-ferguson/content/articles",
+      "path": "dave-ferguson/content/articles.md",
+      "slug": "dave-ferguson",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "articles",
+      "title": "Articles"
+    },
+    {
+      "id": "dave-ferguson/content/audio",
+      "path": "dave-ferguson/content/audio.md",
+      "slug": "dave-ferguson",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "audio",
+      "title": "Audio"
+    },
+    {
+      "id": "dave-ferguson/content/books",
+      "path": "dave-ferguson/content/books.md",
+      "slug": "dave-ferguson",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "books",
+      "title": "Books"
+    },
+    {
+      "id": "dave-ferguson/content/courses",
+      "path": "dave-ferguson/content/courses.md",
+      "slug": "dave-ferguson",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "courses",
+      "title": "Courses"
+    },
+    {
+      "id": "dave-ferguson/content/videos",
+      "path": "dave-ferguson/content/videos.md",
+      "slug": "dave-ferguson",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "videos",
+      "title": "Videos"
+    },
+    {
       "id": "dave-ferguson/digital-presence-discovery",
       "path": "dave-ferguson/digital-presence-discovery.md",
       "slug": "dave-ferguson",
@@ -2655,6 +2837,51 @@
       "subLabel": "",
       "fileBase": "digital-presence-discovery",
       "title": "Digital Presence Discovery"
+    },
+    {
+      "id": "dave-ferguson/digital-presence/newsletters",
+      "path": "dave-ferguson/digital-presence/newsletters.md",
+      "slug": "dave-ferguson",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "newsletters",
+      "title": "Newsletters"
+    },
+    {
+      "id": "dave-ferguson/digital-presence/platforms",
+      "path": "dave-ferguson/digital-presence/platforms.md",
+      "slug": "dave-ferguson",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "platforms",
+      "title": "Platforms"
+    },
+    {
+      "id": "dave-ferguson/digital-presence/social-media",
+      "path": "dave-ferguson/digital-presence/social-media.md",
+      "slug": "dave-ferguson",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "social-media",
+      "title": "Social Media"
+    },
+    {
+      "id": "dave-ferguson/digital-presence/websites",
+      "path": "dave-ferguson/digital-presence/websites.md",
+      "slug": "dave-ferguson",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "websites",
+      "title": "Websites"
+    },
+    {
+      "id": "dave-ferguson/fragmentation-story",
+      "path": "dave-ferguson/fragmentation-story.md",
+      "slug": "dave-ferguson",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "fragmentation-story",
+      "title": "Fragmentation Story"
     },
     {
       "id": "dave-ferguson/gap-analysis",
@@ -2675,6 +2902,33 @@
       "title": "Identity Verification"
     },
     {
+      "id": "dave-ferguson/media/citations",
+      "path": "dave-ferguson/media/citations.md",
+      "slug": "dave-ferguson",
+      "group": "Media",
+      "subLabel": "",
+      "fileBase": "citations",
+      "title": "Citations"
+    },
+    {
+      "id": "dave-ferguson/media/press-coverage",
+      "path": "dave-ferguson/media/press-coverage.md",
+      "slug": "dave-ferguson",
+      "group": "Media",
+      "subLabel": "",
+      "fileBase": "press-coverage",
+      "title": "Press Coverage"
+    },
+    {
+      "id": "dave-ferguson/media/reviews",
+      "path": "dave-ferguson/media/reviews.md",
+      "slug": "dave-ferguson",
+      "group": "Media",
+      "subLabel": "",
+      "fileBase": "reviews",
+      "title": "Reviews"
+    },
+    {
       "id": "dave-ferguson/movemental-analysis",
       "path": "dave-ferguson/movemental-analysis.md",
       "slug": "dave-ferguson",
@@ -2682,6 +2936,87 @@
       "subLabel": "",
       "fileBase": "movemental-analysis",
       "title": "Movemental Analysis"
+    },
+    {
+      "id": "dave-ferguson/network/collaborators",
+      "path": "dave-ferguson/network/collaborators.md",
+      "slug": "dave-ferguson",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "collaborators",
+      "title": "Collaborators"
+    },
+    {
+      "id": "dave-ferguson/network/endorsements",
+      "path": "dave-ferguson/network/endorsements.md",
+      "slug": "dave-ferguson",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "endorsements",
+      "title": "Endorsements"
+    },
+    {
+      "id": "dave-ferguson/network/events",
+      "path": "dave-ferguson/network/events.md",
+      "slug": "dave-ferguson",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "events",
+      "title": "Events"
+    },
+    {
+      "id": "dave-ferguson/network/organizations",
+      "path": "dave-ferguson/network/organizations.md",
+      "slug": "dave-ferguson",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "organizations",
+      "title": "Organizations"
+    },
+    {
+      "id": "dave-ferguson/profile/biography",
+      "path": "dave-ferguson/profile/biography.md",
+      "slug": "dave-ferguson",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "biography",
+      "title": "Biography"
+    },
+    {
+      "id": "dave-ferguson/profile/identity",
+      "path": "dave-ferguson/profile/identity.md",
+      "slug": "dave-ferguson",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "identity",
+      "title": "Identity"
+    },
+    {
+      "id": "dave-ferguson/profile/theology",
+      "path": "dave-ferguson/profile/theology.md",
+      "slug": "dave-ferguson",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "theology",
+      "title": "Theology"
+    },
+    {
+      "id": "dave-ferguson/profile/voice-analysis",
+      "path": "dave-ferguson/profile/voice-analysis.md",
+      "slug": "dave-ferguson",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "voice-analysis",
+      "title": "Voice Analysis"
+    },
+    {
+      "id": "dave-ferguson/README",
+      "path": "dave-ferguson/README.md",
+      "slug": "dave-ferguson",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "README",
+      "title": "README"
     },
     {
       "id": "dave-ferguson/sources",
@@ -2700,6 +3035,15 @@
       "subLabel": "",
       "fileBase": "summary",
       "title": "Summary"
+    },
+    {
+      "id": "dave-ferguson/welcome-letter",
+      "path": "dave-ferguson/welcome-letter.md",
+      "slug": "dave-ferguson",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "welcome-letter",
+      "title": "Welcome Letter"
     },
     {
       "id": "david-fitch/_tracker",
@@ -3206,6 +3550,15 @@
       "title": "README"
     },
     {
+      "id": "hugh-halter/committed-voice",
+      "path": "hugh-halter/committed-voice.md",
+      "slug": "hugh-halter",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
+    },
+    {
       "id": "hugh-halter/content-analysis",
       "path": "hugh-halter/content-analysis.md",
       "slug": "hugh-halter",
@@ -3222,6 +3575,15 @@
       "subLabel": "",
       "fileBase": "digital-presence-discovery",
       "title": "Digital Presence Discovery"
+    },
+    {
+      "id": "hugh-halter/fragmentation-story",
+      "path": "hugh-halter/fragmentation-story.md",
+      "slug": "hugh-halter",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "fragmentation-story",
+      "title": "Fragmentation Story"
     },
     {
       "id": "hugh-halter/gap-analysis",
@@ -3267,6 +3629,15 @@
       "subLabel": "",
       "fileBase": "summary",
       "title": "Summary"
+    },
+    {
+      "id": "hugh-halter/welcome-letter",
+      "path": "hugh-halter/welcome-letter.md",
+      "slug": "hugh-halter",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "welcome-letter",
+      "title": "Welcome Letter"
     },
     {
       "id": "jacob-hoyer/_tracker",
@@ -3420,6 +3791,24 @@
       "subLabel": "",
       "fileBase": "summary",
       "title": "Summary"
+    },
+    {
+      "id": "jeremy-chambers/JEREMY_CHAMBERS_RESEARCH_COLLATED",
+      "path": "jeremy-chambers/JEREMY_CHAMBERS_RESEARCH_COLLATED.md",
+      "slug": "jeremy-chambers",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "JEREMY_CHAMBERS_RESEARCH_COLLATED",
+      "title": "JEREMY CHAMBERS RESEARCH COLLATED"
+    },
+    {
+      "id": "jeremy-monica-chambers/CHAMBERS_DYAD_RESEARCH_COLLATED",
+      "path": "jeremy-monica-chambers/CHAMBERS_DYAD_RESEARCH_COLLATED.md",
+      "slug": "jeremy-monica-chambers",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "CHAMBERS_DYAD_RESEARCH_COLLATED",
+      "title": "CHAMBERS DYAD RESEARCH COLLATED"
     },
     {
       "id": "jim-wilder/_tracker",
@@ -4079,6 +4468,15 @@
       "title": "Movemental Fit"
     },
     {
+      "id": "jr-woodward/committed-voice",
+      "path": "jr-woodward/committed-voice.md",
+      "slug": "jr-woodward",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
+    },
+    {
       "id": "jr-woodward/content-analysis",
       "path": "jr-woodward/content-analysis.md",
       "slug": "jr-woodward",
@@ -4367,6 +4765,15 @@
       "title": "Summary"
     },
     {
+      "id": "jr-woodward/welcome-letter",
+      "path": "jr-woodward/welcome-letter.md",
+      "slug": "jr-woodward",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "welcome-letter",
+      "title": "Welcome Letter"
+    },
+    {
       "id": "justin-whitmel-earley/_tracker",
       "path": "justin-whitmel-earley/_tracker.md",
       "slug": "justin-whitmel-earley",
@@ -4628,6 +5035,15 @@
       "title": " Tracker"
     },
     {
+      "id": "liz-rios/committed-voice",
+      "path": "liz-rios/committed-voice.md",
+      "slug": "liz-rios",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
+    },
+    {
       "id": "liz-rios/content/content-audit",
       "path": "liz-rios/content/content-audit.md",
       "slug": "liz-rios",
@@ -4644,6 +5060,15 @@
       "subLabel": "",
       "fileBase": "digital-presence",
       "title": "Digital Presence"
+    },
+    {
+      "id": "liz-rios/fragmentation-story",
+      "path": "liz-rios/fragmentation-story.md",
+      "slug": "liz-rios",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "fragmentation-story",
+      "title": "Fragmentation Story"
     },
     {
       "id": "liz-rios/movemental-analysis",
@@ -4736,6 +5161,15 @@
       "title": "Summary"
     },
     {
+      "id": "liz-rios/welcome-letter",
+      "path": "liz-rios/welcome-letter.md",
+      "slug": "liz-rios",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "welcome-letter",
+      "title": "Welcome Letter"
+    },
+    {
       "id": "lori-anne-thompson/_tracker",
       "path": "lori-anne-thompson/_tracker.md",
       "slug": "lori-anne-thompson",
@@ -4806,6 +5240,24 @@
       "subLabel": "",
       "fileBase": "movemental-fit",
       "title": "Movemental Fit"
+    },
+    {
+      "id": "lucas-pulley/committed-voice-2026-05-20",
+      "path": "lucas-pulley/committed-voice-2026-05-20.md",
+      "slug": "lucas-pulley",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "committed-voice-2026-05-20",
+      "title": "Committed Voice 2026 05 20"
+    },
+    {
+      "id": "lucas-pulley/committed-voice",
+      "path": "lucas-pulley/committed-voice.md",
+      "slug": "lucas-pulley",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
     },
     {
       "id": "lucas-pulley/content-analysis",
@@ -5087,6 +5539,15 @@
       "title": "Summary"
     },
     {
+      "id": "lucas-pulley/welcome-letter",
+      "path": "lucas-pulley/welcome-letter.md",
+      "slug": "lucas-pulley",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "welcome-letter",
+      "title": "Welcome Letter"
+    },
+    {
       "id": "mandy-smith/content-analysis",
       "path": "mandy-smith/content-analysis.md",
       "slug": "mandy-smith",
@@ -5357,6 +5818,69 @@
       "title": "README"
     },
     {
+      "id": "meghan-good/_tracker",
+      "path": "meghan-good/_tracker.md",
+      "slug": "meghan-good",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "_tracker",
+      "title": " Tracker"
+    },
+    {
+      "id": "meghan-good/analysis/audience-analysis",
+      "path": "meghan-good/analysis/audience-analysis.md",
+      "slug": "meghan-good",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "audience-analysis",
+      "title": "Audience Analysis"
+    },
+    {
+      "id": "meghan-good/analysis/competitive-landscape",
+      "path": "meghan-good/analysis/competitive-landscape.md",
+      "slug": "meghan-good",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "competitive-landscape",
+      "title": "Competitive Landscape"
+    },
+    {
+      "id": "meghan-good/analysis/content-analysis",
+      "path": "meghan-good/analysis/content-analysis.md",
+      "slug": "meghan-good",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "content-analysis",
+      "title": "Content Analysis"
+    },
+    {
+      "id": "meghan-good/analysis/gap-analysis",
+      "path": "meghan-good/analysis/gap-analysis.md",
+      "slug": "meghan-good",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "gap-analysis",
+      "title": "Gap Analysis"
+    },
+    {
+      "id": "meghan-good/analysis/movemental-fit",
+      "path": "meghan-good/analysis/movemental-fit.md",
+      "slug": "meghan-good",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "movemental-fit",
+      "title": "Movemental Fit"
+    },
+    {
+      "id": "meghan-good/committed-voice",
+      "path": "meghan-good/committed-voice.md",
+      "slug": "meghan-good",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
+    },
+    {
       "id": "meghan-good/content-analysis",
       "path": "meghan-good/content-analysis.md",
       "slug": "meghan-good",
@@ -5366,6 +5890,60 @@
       "title": "Content Analysis"
     },
     {
+      "id": "meghan-good/content/academic",
+      "path": "meghan-good/content/academic.md",
+      "slug": "meghan-good",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "academic",
+      "title": "Academic"
+    },
+    {
+      "id": "meghan-good/content/articles",
+      "path": "meghan-good/content/articles.md",
+      "slug": "meghan-good",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "articles",
+      "title": "Articles"
+    },
+    {
+      "id": "meghan-good/content/audio",
+      "path": "meghan-good/content/audio.md",
+      "slug": "meghan-good",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "audio",
+      "title": "Audio"
+    },
+    {
+      "id": "meghan-good/content/books",
+      "path": "meghan-good/content/books.md",
+      "slug": "meghan-good",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "books",
+      "title": "Books"
+    },
+    {
+      "id": "meghan-good/content/courses",
+      "path": "meghan-good/content/courses.md",
+      "slug": "meghan-good",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "courses",
+      "title": "Courses"
+    },
+    {
+      "id": "meghan-good/content/videos",
+      "path": "meghan-good/content/videos.md",
+      "slug": "meghan-good",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "videos",
+      "title": "Videos"
+    },
+    {
       "id": "meghan-good/digital-presence-discovery",
       "path": "meghan-good/digital-presence-discovery.md",
       "slug": "meghan-good",
@@ -5373,6 +5951,51 @@
       "subLabel": "",
       "fileBase": "digital-presence-discovery",
       "title": "Digital Presence Discovery"
+    },
+    {
+      "id": "meghan-good/digital-presence/newsletters",
+      "path": "meghan-good/digital-presence/newsletters.md",
+      "slug": "meghan-good",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "newsletters",
+      "title": "Newsletters"
+    },
+    {
+      "id": "meghan-good/digital-presence/platforms",
+      "path": "meghan-good/digital-presence/platforms.md",
+      "slug": "meghan-good",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "platforms",
+      "title": "Platforms"
+    },
+    {
+      "id": "meghan-good/digital-presence/social-media",
+      "path": "meghan-good/digital-presence/social-media.md",
+      "slug": "meghan-good",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "social-media",
+      "title": "Social Media"
+    },
+    {
+      "id": "meghan-good/digital-presence/websites",
+      "path": "meghan-good/digital-presence/websites.md",
+      "slug": "meghan-good",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "websites",
+      "title": "Websites"
+    },
+    {
+      "id": "meghan-good/fragmentation-story",
+      "path": "meghan-good/fragmentation-story.md",
+      "slug": "meghan-good",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "fragmentation-story",
+      "title": "Fragmentation Story"
     },
     {
       "id": "meghan-good/gap-analysis",
@@ -5393,6 +6016,33 @@
       "title": "Identity Verification"
     },
     {
+      "id": "meghan-good/media/citations",
+      "path": "meghan-good/media/citations.md",
+      "slug": "meghan-good",
+      "group": "Media",
+      "subLabel": "",
+      "fileBase": "citations",
+      "title": "Citations"
+    },
+    {
+      "id": "meghan-good/media/press-coverage",
+      "path": "meghan-good/media/press-coverage.md",
+      "slug": "meghan-good",
+      "group": "Media",
+      "subLabel": "",
+      "fileBase": "press-coverage",
+      "title": "Press Coverage"
+    },
+    {
+      "id": "meghan-good/media/reviews",
+      "path": "meghan-good/media/reviews.md",
+      "slug": "meghan-good",
+      "group": "Media",
+      "subLabel": "",
+      "fileBase": "reviews",
+      "title": "Reviews"
+    },
+    {
       "id": "meghan-good/movemental-analysis",
       "path": "meghan-good/movemental-analysis.md",
       "slug": "meghan-good",
@@ -5400,6 +6050,87 @@
       "subLabel": "",
       "fileBase": "movemental-analysis",
       "title": "Movemental Analysis"
+    },
+    {
+      "id": "meghan-good/network/collaborators",
+      "path": "meghan-good/network/collaborators.md",
+      "slug": "meghan-good",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "collaborators",
+      "title": "Collaborators"
+    },
+    {
+      "id": "meghan-good/network/endorsements",
+      "path": "meghan-good/network/endorsements.md",
+      "slug": "meghan-good",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "endorsements",
+      "title": "Endorsements"
+    },
+    {
+      "id": "meghan-good/network/events",
+      "path": "meghan-good/network/events.md",
+      "slug": "meghan-good",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "events",
+      "title": "Events"
+    },
+    {
+      "id": "meghan-good/network/organizations",
+      "path": "meghan-good/network/organizations.md",
+      "slug": "meghan-good",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "organizations",
+      "title": "Organizations"
+    },
+    {
+      "id": "meghan-good/profile/biography",
+      "path": "meghan-good/profile/biography.md",
+      "slug": "meghan-good",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "biography",
+      "title": "Biography"
+    },
+    {
+      "id": "meghan-good/profile/identity",
+      "path": "meghan-good/profile/identity.md",
+      "slug": "meghan-good",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "identity",
+      "title": "Identity"
+    },
+    {
+      "id": "meghan-good/profile/theology",
+      "path": "meghan-good/profile/theology.md",
+      "slug": "meghan-good",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "theology",
+      "title": "Theology"
+    },
+    {
+      "id": "meghan-good/profile/voice-analysis",
+      "path": "meghan-good/profile/voice-analysis.md",
+      "slug": "meghan-good",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "voice-analysis",
+      "title": "Voice Analysis"
+    },
+    {
+      "id": "meghan-good/README",
+      "path": "meghan-good/README.md",
+      "slug": "meghan-good",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "README",
+      "title": "README"
     },
     {
       "id": "meghan-good/sources",
@@ -5418,6 +6149,24 @@
       "subLabel": "",
       "fileBase": "summary",
       "title": "Summary"
+    },
+    {
+      "id": "meghan-good/welcome-letter",
+      "path": "meghan-good/welcome-letter.md",
+      "slug": "meghan-good",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "welcome-letter",
+      "title": "Welcome Letter"
+    },
+    {
+      "id": "michael-cooper/MICHAEL_COOPER_RESEARCH_COLLATED",
+      "path": "michael-cooper/MICHAEL_COOPER_RESEARCH_COLLATED.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "MICHAEL_COOPER_RESEARCH_COLLATED",
+      "title": "MICHAEL COOPER RESEARCH COLLATED"
     },
     {
       "id": "michael-frost/content-analysis",
@@ -5663,6 +6412,15 @@
       "title": "Summary"
     },
     {
+      "id": "monica-chambers/MONICA_CHAMBERS_RESEARCH_COLLATED",
+      "path": "monica-chambers/MONICA_CHAMBERS_RESEARCH_COLLATED.md",
+      "slug": "monica-chambers",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "MONICA_CHAMBERS_RESEARCH_COLLATED",
+      "title": "MONICA CHAMBERS RESEARCH COLLATED"
+    },
+    {
       "id": "neil-cole/_tracker",
       "path": "neil-cole/_tracker.md",
       "slug": "neil-cole",
@@ -5715,6 +6473,15 @@
       "subLabel": "",
       "fileBase": "movemental-fit",
       "title": "Movemental Fit"
+    },
+    {
+      "id": "neil-cole/committed-voice",
+      "path": "neil-cole/committed-voice.md",
+      "slug": "neil-cole",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
     },
     {
       "id": "neil-cole/content/academic",
@@ -5931,6 +6698,15 @@
       "subLabel": "",
       "fileBase": "README",
       "title": "README"
+    },
+    {
+      "id": "neil-cole/welcome-letter",
+      "path": "neil-cole/welcome-letter.md",
+      "slug": "neil-cole",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "welcome-letter",
+      "title": "Welcome Letter"
     },
     {
       "id": "neil-mosely/content-analysis",
@@ -6914,6 +7690,24 @@
       "title": "Movemental Fit"
     },
     {
+      "id": "rowland-smith/committed-voice-2026-05-20",
+      "path": "rowland-smith/committed-voice-2026-05-20.md",
+      "slug": "rowland-smith",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "committed-voice-2026-05-20",
+      "title": "Committed Voice 2026 05 20"
+    },
+    {
+      "id": "rowland-smith/committed-voice",
+      "path": "rowland-smith/committed-voice.md",
+      "slug": "rowland-smith",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
+    },
+    {
       "id": "rowland-smith/content-analysis",
       "path": "rowland-smith/content-analysis.md",
       "slug": "rowland-smith",
@@ -7049,6 +7843,33 @@
       "title": "Summary"
     },
     {
+      "id": "rowland-smith/welcome-letter",
+      "path": "rowland-smith/welcome-letter.md",
+      "slug": "rowland-smith",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "welcome-letter",
+      "title": "Welcome Letter"
+    },
+    {
+      "id": "roy-moran/committed-voice",
+      "path": "roy-moran/committed-voice.md",
+      "slug": "roy-moran",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
+    },
+    {
+      "id": "roy-moran/fragmentation-story",
+      "path": "roy-moran/fragmentation-story.md",
+      "slug": "roy-moran",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "fragmentation-story",
+      "title": "Fragmentation Story"
+    },
+    {
       "id": "roy-moran/README",
       "path": "roy-moran/README.md",
       "slug": "roy-moran",
@@ -7119,6 +7940,15 @@
       "subLabel": "",
       "fileBase": "summary",
       "title": "Summary"
+    },
+    {
+      "id": "roy-moran/welcome-letter",
+      "path": "roy-moran/welcome-letter.md",
+      "slug": "roy-moran",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "welcome-letter",
+      "title": "Welcome Letter"
     },
     {
       "id": "ruth-haley-barton/_tracker",
@@ -7760,6 +8590,15 @@
       "title": "Summary"
     },
     {
+      "id": "tim-catchim/committed-voice",
+      "path": "tim-catchim/committed-voice.md",
+      "slug": "tim-catchim",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
+    },
+    {
       "id": "tim-catchim/content-analysis",
       "path": "tim-catchim/content-analysis.md",
       "slug": "tim-catchim",
@@ -7776,6 +8615,15 @@
       "subLabel": "",
       "fileBase": "digital-presence-discovery",
       "title": "Digital Presence Discovery"
+    },
+    {
+      "id": "tim-catchim/fragmentation-story",
+      "path": "tim-catchim/fragmentation-story.md",
+      "slug": "tim-catchim",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "fragmentation-story",
+      "title": "Fragmentation Story"
     },
     {
       "id": "tim-catchim/gap-analysis",
@@ -7821,6 +8669,15 @@
       "subLabel": "",
       "fileBase": "summary",
       "title": "Summary"
+    },
+    {
+      "id": "tim-catchim/welcome-letter",
+      "path": "tim-catchim/welcome-letter.md",
+      "slug": "tim-catchim",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "welcome-letter",
+      "title": "Welcome Letter"
     },
     {
       "id": "tim-keel/content-analysis",

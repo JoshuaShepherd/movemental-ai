@@ -422,7 +422,7 @@ export const agents = pgTable("agents", {
   description: text("description"),
   agent_type: text("agent_type"),
   system_prompt: text("system_prompt").notNull(),
-  model: text("model").default("gpt-4o"),
+  model: text("model").default("gpt-5.4"),
   temperature: numeric("temperature").default("0.7"),
   max_tokens: integer("max_tokens").default(2000),
   status: text("status").default("active"),

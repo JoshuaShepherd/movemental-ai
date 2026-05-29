@@ -1,0 +1,18 @@
+{
+  "slug": "michael-cooper",
+  "version": "2.0.0",
+  "generated_at": "2026-05-29",
+  "mode": "cold-start (web research; no per-topic source files on disk)",
+  "sources": [
+    { "path": "web:kairos.edu/faculty/michael-t-cooper", "sectionsUsed": ["Identity", "Editorial bio", "Timeline", "Intellectual genealogy", "Reach metrics"] },
+    { "path": "web:ephesiology.com", "sectionsUsed": ["Identity", "Frameworks", "Network graph", "Distribution inventory"] },
+    { "path": "web:missionbooks.org/products/ephesiology", "sectionsUsed": ["Frameworks", "Bibliography"] },
+    { "path": "web:everand.com/book/547780170", "sectionsUsed": ["Frameworks", "Voice fingerprint", "Theological positioning"] },
+    { "path": "web:goodreads.com/author/show/4041664", "sectionsUsed": ["Bibliography", "Reach metrics"] },
+    { "path": "web:podcasts.apple.com/.../id1457124552", "sectionsUsed": ["Reach metrics", "Distribution inventory"] },
+    { "path": "web:patheos.com/blogs/jacksonwu/2020/10/28", "sectionsUsed": ["Voice fingerprint", "Theological positioning"] },
+    { "path": "web:masterclasses.ephesiology.com/pages/seminary-yourchurch", "sectionsUsed": ["Frameworks", "Distribution inventory"] },
+    { "path": "web:journals.sagepub.com/doi/10.1177/009182960803600202", "sectionsUsed": ["Timeline", "Intellectual genealogy"] },
+    { "path": "web:ephesiology.com/endorsements", "sectionsUsed": ["Network graph"] }
+  ]
+}
