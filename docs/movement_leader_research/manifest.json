@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-29T19:35:39.326Z",
+  "generated": "2026-05-29T20:23:37.559Z",
   "version": 1,
   "rootLabel": "Movement leader research",
   "leaders": [
@@ -531,7 +531,7 @@
     {
       "slug": "michael-cooper",
       "name": "Michael Cooper",
-      "fileCount": 1
+      "fileCount": 48
     },
     {
       "slug": "michael-frost",
@@ -6160,6 +6160,294 @@
       "title": "Welcome Letter"
     },
     {
+      "id": "michael-cooper/_tracker",
+      "path": "michael-cooper/_tracker.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "_tracker",
+      "title": " Tracker"
+    },
+    {
+      "id": "michael-cooper/analysis/audience-analysis",
+      "path": "michael-cooper/analysis/audience-analysis.md",
+      "slug": "michael-cooper",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "audience-analysis",
+      "title": "Audience Analysis"
+    },
+    {
+      "id": "michael-cooper/analysis/competitive-landscape",
+      "path": "michael-cooper/analysis/competitive-landscape.md",
+      "slug": "michael-cooper",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "competitive-landscape",
+      "title": "Competitive Landscape"
+    },
+    {
+      "id": "michael-cooper/analysis/content-analysis",
+      "path": "michael-cooper/analysis/content-analysis.md",
+      "slug": "michael-cooper",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "content-analysis",
+      "title": "Content Analysis"
+    },
+    {
+      "id": "michael-cooper/analysis/gap-analysis",
+      "path": "michael-cooper/analysis/gap-analysis.md",
+      "slug": "michael-cooper",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "gap-analysis",
+      "title": "Gap Analysis"
+    },
+    {
+      "id": "michael-cooper/analysis/movemental-fit",
+      "path": "michael-cooper/analysis/movemental-fit.md",
+      "slug": "michael-cooper",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "movemental-fit",
+      "title": "Movemental Fit"
+    },
+    {
+      "id": "michael-cooper/committed-voice",
+      "path": "michael-cooper/committed-voice.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
+    },
+    {
+      "id": "michael-cooper/content-analysis",
+      "path": "michael-cooper/content-analysis.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "content-analysis",
+      "title": "Content Analysis"
+    },
+    {
+      "id": "michael-cooper/content-marketing-playbook",
+      "path": "michael-cooper/content-marketing-playbook.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "content-marketing-playbook",
+      "title": "Content Marketing Playbook"
+    },
+    {
+      "id": "michael-cooper/content/academic",
+      "path": "michael-cooper/content/academic.md",
+      "slug": "michael-cooper",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "academic",
+      "title": "Academic"
+    },
+    {
+      "id": "michael-cooper/content/articles",
+      "path": "michael-cooper/content/articles.md",
+      "slug": "michael-cooper",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "articles",
+      "title": "Articles"
+    },
+    {
+      "id": "michael-cooper/content/audio",
+      "path": "michael-cooper/content/audio.md",
+      "slug": "michael-cooper",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "audio",
+      "title": "Audio"
+    },
+    {
+      "id": "michael-cooper/content/books",
+      "path": "michael-cooper/content/books.md",
+      "slug": "michael-cooper",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "books",
+      "title": "Books"
+    },
+    {
+      "id": "michael-cooper/content/courses",
+      "path": "michael-cooper/content/courses.md",
+      "slug": "michael-cooper",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "courses",
+      "title": "Courses"
+    },
+    {
+      "id": "michael-cooper/content/videos",
+      "path": "michael-cooper/content/videos.md",
+      "slug": "michael-cooper",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "videos",
+      "title": "Videos"
+    },
+    {
+      "id": "michael-cooper/digital-presence-discovery",
+      "path": "michael-cooper/digital-presence-discovery.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "digital-presence-discovery",
+      "title": "Digital Presence Discovery"
+    },
+    {
+      "id": "michael-cooper/digital-presence/newsletters",
+      "path": "michael-cooper/digital-presence/newsletters.md",
+      "slug": "michael-cooper",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "newsletters",
+      "title": "Newsletters"
+    },
+    {
+      "id": "michael-cooper/digital-presence/platforms",
+      "path": "michael-cooper/digital-presence/platforms.md",
+      "slug": "michael-cooper",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "platforms",
+      "title": "Platforms"
+    },
+    {
+      "id": "michael-cooper/digital-presence/social-media",
+      "path": "michael-cooper/digital-presence/social-media.md",
+      "slug": "michael-cooper",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "social-media",
+      "title": "Social Media"
+    },
+    {
+      "id": "michael-cooper/digital-presence/websites",
+      "path": "michael-cooper/digital-presence/websites.md",
+      "slug": "michael-cooper",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "websites",
+      "title": "Websites"
+    },
+    {
+      "id": "michael-cooper/fragmentation-story",
+      "path": "michael-cooper/fragmentation-story.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "fragmentation-story",
+      "title": "Fragmentation Story"
+    },
+    {
+      "id": "michael-cooper/gap-analysis",
+      "path": "michael-cooper/gap-analysis.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "gap-analysis",
+      "title": "Gap Analysis"
+    },
+    {
+      "id": "michael-cooper/identity-verification",
+      "path": "michael-cooper/identity-verification.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "identity-verification",
+      "title": "Identity Verification"
+    },
+    {
+      "id": "michael-cooper/media/citations",
+      "path": "michael-cooper/media/citations.md",
+      "slug": "michael-cooper",
+      "group": "Media",
+      "subLabel": "",
+      "fileBase": "citations",
+      "title": "Citations"
+    },
+    {
+      "id": "michael-cooper/media/press-coverage",
+      "path": "michael-cooper/media/press-coverage.md",
+      "slug": "michael-cooper",
+      "group": "Media",
+      "subLabel": "",
+      "fileBase": "press-coverage",
+      "title": "Press Coverage"
+    },
+    {
+      "id": "michael-cooper/media/reviews",
+      "path": "michael-cooper/media/reviews.md",
+      "slug": "michael-cooper",
+      "group": "Media",
+      "subLabel": "",
+      "fileBase": "reviews",
+      "title": "Reviews"
+    },
+    {
+      "id": "michael-cooper/MICHAEL_COOPER_AUDIENCE_PROFILE",
+      "path": "michael-cooper/MICHAEL_COOPER_AUDIENCE_PROFILE.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "MICHAEL_COOPER_AUDIENCE_PROFILE",
+      "title": "MICHAEL COOPER AUDIENCE PROFILE"
+    },
+    {
+      "id": "michael-cooper/MICHAEL_COOPER_AUTHOR_PROFILE",
+      "path": "michael-cooper/MICHAEL_COOPER_AUTHOR_PROFILE.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "MICHAEL_COOPER_AUTHOR_PROFILE",
+      "title": "MICHAEL COOPER AUTHOR PROFILE"
+    },
+    {
+      "id": "michael-cooper/MICHAEL_COOPER_CALLING_PROFILE",
+      "path": "michael-cooper/MICHAEL_COOPER_CALLING_PROFILE.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "MICHAEL_COOPER_CALLING_PROFILE",
+      "title": "MICHAEL COOPER CALLING PROFILE"
+    },
+    {
+      "id": "michael-cooper/MICHAEL_COOPER_CONTENT_AUDIT",
+      "path": "michael-cooper/MICHAEL_COOPER_CONTENT_AUDIT.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "MICHAEL_COOPER_CONTENT_AUDIT",
+      "title": "MICHAEL COOPER CONTENT AUDIT"
+    },
+    {
+      "id": "michael-cooper/MICHAEL_COOPER_MASTER_WRITING_PROMPT",
+      "path": "michael-cooper/MICHAEL_COOPER_MASTER_WRITING_PROMPT.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "MICHAEL_COOPER_MASTER_WRITING_PROMPT",
+      "title": "MICHAEL COOPER MASTER WRITING PROMPT"
+    },
+    {
+      "id": "michael-cooper/MICHAEL_COOPER_PROFILES_INDEX",
+      "path": "michael-cooper/MICHAEL_COOPER_PROFILES_INDEX.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "MICHAEL_COOPER_PROFILES_INDEX",
+      "title": "MICHAEL COOPER PROFILES INDEX"
+    },
+    {
       "id": "michael-cooper/MICHAEL_COOPER_RESEARCH_COLLATED",
       "path": "michael-cooper/MICHAEL_COOPER_RESEARCH_COLLATED.md",
       "slug": "michael-cooper",
@@ -6167,6 +6455,141 @@
       "subLabel": "",
       "fileBase": "MICHAEL_COOPER_RESEARCH_COLLATED",
       "title": "MICHAEL COOPER RESEARCH COLLATED"
+    },
+    {
+      "id": "michael-cooper/MICHAEL_COOPER_RESEARCH_SUMMARY",
+      "path": "michael-cooper/MICHAEL_COOPER_RESEARCH_SUMMARY.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "MICHAEL_COOPER_RESEARCH_SUMMARY",
+      "title": "MICHAEL COOPER RESEARCH SUMMARY"
+    },
+    {
+      "id": "michael-cooper/MICHAEL_COOPER_VOICE_IDENTITY",
+      "path": "michael-cooper/MICHAEL_COOPER_VOICE_IDENTITY.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "MICHAEL_COOPER_VOICE_IDENTITY",
+      "title": "MICHAEL COOPER VOICE IDENTITY"
+    },
+    {
+      "id": "michael-cooper/movemental-analysis",
+      "path": "michael-cooper/movemental-analysis.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "movemental-analysis",
+      "title": "Movemental Analysis"
+    },
+    {
+      "id": "michael-cooper/network/collaborators",
+      "path": "michael-cooper/network/collaborators.md",
+      "slug": "michael-cooper",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "collaborators",
+      "title": "Collaborators"
+    },
+    {
+      "id": "michael-cooper/network/endorsements",
+      "path": "michael-cooper/network/endorsements.md",
+      "slug": "michael-cooper",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "endorsements",
+      "title": "Endorsements"
+    },
+    {
+      "id": "michael-cooper/network/events",
+      "path": "michael-cooper/network/events.md",
+      "slug": "michael-cooper",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "events",
+      "title": "Events"
+    },
+    {
+      "id": "michael-cooper/network/organizations",
+      "path": "michael-cooper/network/organizations.md",
+      "slug": "michael-cooper",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "organizations",
+      "title": "Organizations"
+    },
+    {
+      "id": "michael-cooper/profile/biography",
+      "path": "michael-cooper/profile/biography.md",
+      "slug": "michael-cooper",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "biography",
+      "title": "Biography"
+    },
+    {
+      "id": "michael-cooper/profile/identity",
+      "path": "michael-cooper/profile/identity.md",
+      "slug": "michael-cooper",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "identity",
+      "title": "Identity"
+    },
+    {
+      "id": "michael-cooper/profile/theology",
+      "path": "michael-cooper/profile/theology.md",
+      "slug": "michael-cooper",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "theology",
+      "title": "Theology"
+    },
+    {
+      "id": "michael-cooper/profile/voice-analysis",
+      "path": "michael-cooper/profile/voice-analysis.md",
+      "slug": "michael-cooper",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "voice-analysis",
+      "title": "Voice Analysis"
+    },
+    {
+      "id": "michael-cooper/README",
+      "path": "michael-cooper/README.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "README",
+      "title": "README"
+    },
+    {
+      "id": "michael-cooper/sources",
+      "path": "michael-cooper/sources.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "sources",
+      "title": "Sources"
+    },
+    {
+      "id": "michael-cooper/summary",
+      "path": "michael-cooper/summary.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "summary",
+      "title": "Summary"
+    },
+    {
+      "id": "michael-cooper/welcome-letter",
+      "path": "michael-cooper/welcome-letter.md",
+      "slug": "michael-cooper",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "welcome-letter",
+      "title": "Welcome Letter"
     },
     {
       "id": "michael-frost/content-analysis",
