@@ -58,7 +58,8 @@
     "docs:youthfront-2026-guide:pdf": "tsx scripts/generate-youthfront-2026-guide-pdf.ts",
     "docs:pre-sandbox-ai-assessment-catalog-pdf": "tsx scripts/generate-pre-sandbox-ai-assessment-catalog-pdf.mts",
     "leader:sync-corpus": "tsx scripts/sync-leader-corpus.ts",
-    "leader:sync-corpus-dashboard": "tsx scripts/sync-leader-corpus-dashboard.ts"
+    "leader:sync-corpus-dashboard": "tsx scripts/sync-leader-corpus-dashboard.ts",
+    "leader:upload-substrate": "tsx scripts/upload-leader-substrate.ts"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

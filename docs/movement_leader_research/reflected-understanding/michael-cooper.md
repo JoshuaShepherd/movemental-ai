@@ -1,0 +1,35 @@
+# Michael T. Cooper: Reflected Understanding
+
+A concise reflection spoken back so the language could be endorsed — familiar, but with edges that deepen. (Leader-safe: audience-sizing and commerce analysis are kept in staff notes, not here.)
+
+---
+
+## Calling
+
+You're called to **theologize movement itself** — to put mission back at the center of theology rather than off to the side as one applied chapter. Where most of the movement field works in the register of method and metrics, you work in the register of theology and text: you read the Bible as "a missiological theology," you treat the first-century Ephesian church-planting movement as a discrete and weighty object of study, and you coined a name for that study — **Ephesiology** — and then fenced it as a discipline. That is a scholar's instinct and a planter's stake at once. You didn't arrive at the theory from a desk; you pioneered church planting for roughly a decade in post-communist Romania and then went and got the doctorate to explain what you had lived. The questions a new-religious-movements ethnographer asks of a living movement — how did it start, what did its people believe, who led it, how did it multiply, why did some fracture — are exactly the questions you turn on the Ephesian movement, and now on the excavated record of Asia Minor beneath it.
+
+Your most-repeated correction carries the whole calling: **"making disciples is the mandate while church planting is a result."** Church planting is nowhere commanded; disciple-multiplication is. "Disciples multiply while volunteers keep busy." That is not an attack on church planters — it's a recentering, a constructive correction offered from inside the conversation rather than against it. You coin categories (Ephesiology, missiological theology, Christoform leadership), you invert received assumptions to recenter rather than to demolish, and you ground every framework in a theocentric frame — "a missiologically theocentric passion to declare the glory of God to the nations." You stay tethered to the New Testament text, to the Apostolic Fathers, and increasingly to the material culture of the Roman East, refusing to let missiology become technique divorced from theology.
+
+---
+
+## Existing Content (before the platform we're building)
+
+**Where it lives.** Your content lives in **books** — roughly seventeen catalogued works, with *Ephesiology* (William Carey, 2020) as the award-winning flagship and a long tail running through *Make Disciples*, *Letters to Churches*, *First Christian Voices*, *Lead Like Paul*, and the 2026 Asia Minor archaeology volume and its visual companion. It lives in the **227-episode Ephesiology Podcast** (since 2019, weekly, co-hosted with Andrew Johnson, distributed across Apple, Spotify, and YouTube). It lives in an **accredited educational pipeline** — the TELOS. / Ephesiology Master Classes and Seminary@YourChurch, the MA in Missiology of Movements at Mission India Theological Seminary, and your affiliate teaching at Kairos University. And it lives across **institutional roles** — missiologist-in-residence at East-West Ministries, EMS and Missio Nexus contributions, and guest lectures at LSE, Bordeaux, Loyola, and Baylor.
+
+**Credibility.** It's high and academically earned. *Ephesiology* won the 2020 Catalyst Services Reader's Choice Award for best book in Missiology and carries a serious endorser slate — including Alan Hirsch — situating your work beside *The Forgotten Ways* in the broader movement conversation. You write as a scholar-practitioner: from the biblical text, from first-century history and the archaeological record, *and* from contemporary field data. The issue isn't authority. It's **dispersion and discovery**.
+
+**How it lives online now.** As a **scattered body of work**. The seventeen books are split across at least six imprints — William Carey, Wipf & Stock, Sacred Roots, Sacred Tribes Press, and your own Ephesiology house lines — with no single discoverable hub. A reader who finds *Ephesiology* on Amazon has no easy path to *Make Disciples* or the archaeology volume. The podcast is mature and owned, but there's no canonical episode index on your own domain that a new listener can navigate. So a serious, vertically integrated, award-winning corpus doesn't **circulate** the way it should — it stays where each piece was first put.
+
+**The NOTs Movemental addresses directly.** Your corpus is largely **not** consolidated into one canonical home where the whole body of work is structured, linked, and findable; **not** re-indexed so the 227 episodes are searchable by theme; **not** connected to an AI that reflects your voice and reads your corpus; **not** optimized for discovery so searchers for "Ephesiology," "missiological theology," or "disciple-making movement" land on your material first; **not** interconnected so books, episodes, lectures, and frameworks visibly reference each other; and **not** captured into an owned relationship — the institutional reach you carry is largely lent, not owned. Movemental is built to speak to each of these — consolidation, re-indexing, an AI that serves your voice, discoverability, interconnection, and an owned layer — so your work can move.
+
+---
+
+## Constraints
+
+The defining constraint here is **not production** — you are among the most prolific voices in this conversation. The constraint is **time, attention, and dispersion**. You're carrying three simultaneous institutional roles, running an accredited cohort program, hosting a weekly podcast, and continuing to write and excavate, all at once. The hours to consolidate a six-imprint catalogue, recover metadata on the self-published tier, build a canonical episode index, stand up a real owned-audience layer, or repurpose the back catalogue into short-form simply aren't there when the work itself is in the classroom, the field, and the manuscript. That's emblematic of a scholar-practitioner calling, not a personal failure.
+
+Two more constraints shape every content decision. First, **register**: your voice is scholarly and theologically precise, and it should stay that way — the work loses its substance if it's flattened into trade-devotional content, and you've deliberately refused CPM/DMM operational jargon as a theological position, not an oversight. Second, **complement, never compete**: your accredited LMS and your institutional homes at East-West, Kairos, and Mission India are yours to keep; what's missing is the public-facing front door and the owned relationship layer above them, not a replacement for them. A platform that reduces the lift — that consolidates, surfaces, interconnects, and captures what you already do, while preserving your register and respecting your institutions — addresses these constraints without asking you to become a different kind of leader.
+
+---
+
+*This document is a reflected understanding for Michael T. Cooper, intended to be right to the point, true, and valuable. It is preliminary until reviewed and endorsed.*

@@ -1,8 +1,13 @@
 {
-  "generated": "2026-05-29T20:23:37.559Z",
+  "generated": "2026-06-02T21:14:05.312Z",
   "version": 1,
   "rootLabel": "Movement leader research",
   "leaders": [
+    {
+      "slug": "_collated",
+      "name": "_collated",
+      "fileCount": 14
+    },
     {
       "slug": "aj-swoboda",
       "name": "A. J. Swoboda",
@@ -46,7 +51,7 @@
     {
       "slug": "andrew-jones",
       "name": "Andrew Jones",
-      "fileCount": 7
+      "fileCount": 17
     },
     {
       "slug": "andy-crouch",
@@ -111,7 +116,7 @@
     {
       "slug": "brian-sanders",
       "name": "Brian Sanders",
-      "fileCount": 2
+      "fileCount": 19
     },
     {
       "slug": "brian-swanson",
@@ -211,7 +216,7 @@
     {
       "slug": "dave-ferguson",
       "name": "Dave Ferguson",
-      "fileCount": 39
+      "fileCount": 40
     },
     {
       "slug": "david-fitch",
@@ -306,7 +311,7 @@
     {
       "slug": "hugh-halter",
       "name": "Hugh Halter",
-      "fileCount": 10
+      "fileCount": 17
     },
     {
       "slug": "jacob-hoyer",
@@ -341,7 +346,7 @@
     {
       "slug": "jeremy-chambers",
       "name": "Jeremy Chambers",
-      "fileCount": 1
+      "fileCount": 13
     },
     {
       "slug": "jeremy-monica-chambers",
@@ -531,7 +536,7 @@
     {
       "slug": "michael-cooper",
       "name": "Michael Cooper",
-      "fileCount": 48
+      "fileCount": 49
     },
     {
       "slug": "michael-frost",
@@ -571,7 +576,7 @@
     {
       "slug": "neil-cole",
       "name": "Neil Cole",
-      "fileCount": 32
+      "fileCount": 34
     },
     {
       "slug": "neil-mosely",
@@ -611,7 +616,7 @@
     {
       "slug": "peyton-jones",
       "name": "Peyton Jones",
-      "fileCount": 7
+      "fileCount": 20
     },
     {
       "slug": "preston-sprinkle",
@@ -636,7 +641,7 @@
     {
       "slug": "reflected-understanding",
       "name": "Reflected Understanding",
-      "fileCount": 3
+      "fileCount": 15
     },
     {
       "slug": "reggie-mcneal",
@@ -671,7 +676,7 @@
     {
       "slug": "rob-wegner",
       "name": "Rob Wegner",
-      "fileCount": 38
+      "fileCount": 40
     },
     {
       "slug": "robert-chao-romero",
@@ -696,7 +701,7 @@
     {
       "slug": "roy-moran",
       "name": "Roy Moran",
-      "fileCount": 11
+      "fileCount": 20
     },
     {
       "slug": "ruth-haley-barton",
@@ -762,6 +767,11 @@
       "slug": "tam-search",
       "name": "TAM / field map",
       "fileCount": 7
+    },
+    {
+      "slug": "tania-harris",
+      "name": "Tania Harris",
+      "fileCount": 44
     },
     {
       "slug": "tara-beth-leach",
@@ -840,6 +850,132 @@
     }
   ],
   "docs": [
+    {
+      "id": "_collated/ALAN_HIRSCH_RESEARCH_COLLATED",
+      "path": "_collated/ALAN_HIRSCH_RESEARCH_COLLATED.md",
+      "slug": "_collated",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "ALAN_HIRSCH_RESEARCH_COLLATED",
+      "title": "ALAN HIRSCH RESEARCH COLLATED"
+    },
+    {
+      "id": "_collated/BRAD_BRISCO_RESEARCH_COLLATED",
+      "path": "_collated/BRAD_BRISCO_RESEARCH_COLLATED.md",
+      "slug": "_collated",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "BRAD_BRISCO_RESEARCH_COLLATED",
+      "title": "BRAD BRISCO RESEARCH COLLATED"
+    },
+    {
+      "id": "_collated/BRIAN_SANDERS_RESEARCH_COLLATED",
+      "path": "_collated/BRIAN_SANDERS_RESEARCH_COLLATED.md",
+      "slug": "_collated",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "BRIAN_SANDERS_RESEARCH_COLLATED",
+      "title": "BRIAN SANDERS RESEARCH COLLATED"
+    },
+    {
+      "id": "_collated/DAVE_FERGUSON_RESEARCH_COLLATED",
+      "path": "_collated/DAVE_FERGUSON_RESEARCH_COLLATED.md",
+      "slug": "_collated",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "DAVE_FERGUSON_RESEARCH_COLLATED",
+      "title": "DAVE FERGUSON RESEARCH COLLATED"
+    },
+    {
+      "id": "_collated/HUGH_HALTER_RESEARCH_COLLATED",
+      "path": "_collated/HUGH_HALTER_RESEARCH_COLLATED.md",
+      "slug": "_collated",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "HUGH_HALTER_RESEARCH_COLLATED",
+      "title": "HUGH HALTER RESEARCH COLLATED"
+    },
+    {
+      "id": "_collated/JR_WOODWARD_RESEARCH_COLLATED",
+      "path": "_collated/JR_WOODWARD_RESEARCH_COLLATED.md",
+      "slug": "_collated",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "JR_WOODWARD_RESEARCH_COLLATED",
+      "title": "JR WOODWARD RESEARCH COLLATED"
+    },
+    {
+      "id": "_collated/LIZ_RIOS_RESEARCH_COLLATED",
+      "path": "_collated/LIZ_RIOS_RESEARCH_COLLATED.md",
+      "slug": "_collated",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "LIZ_RIOS_RESEARCH_COLLATED",
+      "title": "LIZ RIOS RESEARCH COLLATED"
+    },
+    {
+      "id": "_collated/LUCAS_PULLEY_RESEARCH_COLLATED",
+      "path": "_collated/LUCAS_PULLEY_RESEARCH_COLLATED.md",
+      "slug": "_collated",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "LUCAS_PULLEY_RESEARCH_COLLATED",
+      "title": "LUCAS PULLEY RESEARCH COLLATED"
+    },
+    {
+      "id": "_collated/MEGHAN_GOOD_RESEARCH_COLLATED",
+      "path": "_collated/MEGHAN_GOOD_RESEARCH_COLLATED.md",
+      "slug": "_collated",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "MEGHAN_GOOD_RESEARCH_COLLATED",
+      "title": "MEGHAN GOOD RESEARCH COLLATED"
+    },
+    {
+      "id": "_collated/NEIL_COLE_RESEARCH_COLLATED",
+      "path": "_collated/NEIL_COLE_RESEARCH_COLLATED.md",
+      "slug": "_collated",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "NEIL_COLE_RESEARCH_COLLATED",
+      "title": "NEIL COLE RESEARCH COLLATED"
+    },
+    {
+      "id": "_collated/PEYTON_JONES_RESEARCH_COLLATED",
+      "path": "_collated/PEYTON_JONES_RESEARCH_COLLATED.md",
+      "slug": "_collated",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "PEYTON_JONES_RESEARCH_COLLATED",
+      "title": "PEYTON JONES RESEARCH COLLATED"
+    },
+    {
+      "id": "_collated/ROB_WEGNER_RESEARCH_COLLATED",
+      "path": "_collated/ROB_WEGNER_RESEARCH_COLLATED.md",
+      "slug": "_collated",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "ROB_WEGNER_RESEARCH_COLLATED",
+      "title": "ROB WEGNER RESEARCH COLLATED"
+    },
+    {
+      "id": "_collated/ROWLAND_SMITH_RESEARCH_COLLATED",
+      "path": "_collated/ROWLAND_SMITH_RESEARCH_COLLATED.md",
+      "slug": "_collated",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "ROWLAND_SMITH_RESEARCH_COLLATED",
+      "title": "ROWLAND SMITH RESEARCH COLLATED"
+    },
+    {
+      "id": "_collated/ROY_MORAN_RESEARCH_COLLATED",
+      "path": "_collated/ROY_MORAN_RESEARCH_COLLATED.md",
+      "slug": "_collated",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "ROY_MORAN_RESEARCH_COLLATED",
+      "title": "ROY MORAN RESEARCH COLLATED"
+    },
     {
       "id": "adam-griffin/_tracker",
       "path": "adam-griffin/_tracker.md",
@@ -1498,6 +1634,51 @@
       "title": "Content Analysis"
     },
     {
+      "id": "andrew-jones/content/articles",
+      "path": "andrew-jones/content/articles.md",
+      "slug": "andrew-jones",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "articles",
+      "title": "Articles"
+    },
+    {
+      "id": "andrew-jones/content/audio",
+      "path": "andrew-jones/content/audio.md",
+      "slug": "andrew-jones",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "audio",
+      "title": "Audio"
+    },
+    {
+      "id": "andrew-jones/content/books",
+      "path": "andrew-jones/content/books.md",
+      "slug": "andrew-jones",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "books",
+      "title": "Books"
+    },
+    {
+      "id": "andrew-jones/content/frameworks",
+      "path": "andrew-jones/content/frameworks.md",
+      "slug": "andrew-jones",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "frameworks",
+      "title": "Frameworks"
+    },
+    {
+      "id": "andrew-jones/content/videos",
+      "path": "andrew-jones/content/videos.md",
+      "slug": "andrew-jones",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "videos",
+      "title": "Videos"
+    },
+    {
       "id": "andrew-jones/digital-presence-discovery",
       "path": "andrew-jones/digital-presence-discovery.md",
       "slug": "andrew-jones",
@@ -1534,6 +1715,42 @@
       "title": "Movemental Analysis"
     },
     {
+      "id": "andrew-jones/network/organizations",
+      "path": "andrew-jones/network/organizations.md",
+      "slug": "andrew-jones",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "organizations",
+      "title": "Organizations"
+    },
+    {
+      "id": "andrew-jones/profile/biography",
+      "path": "andrew-jones/profile/biography.md",
+      "slug": "andrew-jones",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "biography",
+      "title": "Biography"
+    },
+    {
+      "id": "andrew-jones/profile/identity",
+      "path": "andrew-jones/profile/identity.md",
+      "slug": "andrew-jones",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "identity",
+      "title": "Identity"
+    },
+    {
+      "id": "andrew-jones/profile/voice-analysis",
+      "path": "andrew-jones/profile/voice-analysis.md",
+      "slug": "andrew-jones",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "voice-analysis",
+      "title": "Voice Analysis"
+    },
+    {
       "id": "andrew-jones/sources",
       "path": "andrew-jones/sources.md",
       "slug": "andrew-jones",
@@ -1550,6 +1767,15 @@
       "subLabel": "",
       "fileBase": "summary",
       "title": "Summary"
+    },
+    {
+      "id": "andrew-jones/welcome-letter",
+      "path": "andrew-jones/welcome-letter.md",
+      "slug": "andrew-jones",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "welcome-letter",
+      "title": "Welcome Letter"
     },
     {
       "id": "andy-crouch/_tracker",
@@ -2263,6 +2489,132 @@
       "title": " Tracker"
     },
     {
+      "id": "brian-sanders/BRIAN_SANDERS_RESEARCH_COLLATED",
+      "path": "brian-sanders/BRIAN_SANDERS_RESEARCH_COLLATED.md",
+      "slug": "brian-sanders",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "BRIAN_SANDERS_RESEARCH_COLLATED",
+      "title": "BRIAN SANDERS RESEARCH COLLATED"
+    },
+    {
+      "id": "brian-sanders/content/articles",
+      "path": "brian-sanders/content/articles.md",
+      "slug": "brian-sanders",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "articles",
+      "title": "Articles"
+    },
+    {
+      "id": "brian-sanders/content/audio",
+      "path": "brian-sanders/content/audio.md",
+      "slug": "brian-sanders",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "audio",
+      "title": "Audio"
+    },
+    {
+      "id": "brian-sanders/content/books",
+      "path": "brian-sanders/content/books.md",
+      "slug": "brian-sanders",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "books",
+      "title": "Books"
+    },
+    {
+      "id": "brian-sanders/content/frameworks",
+      "path": "brian-sanders/content/frameworks.md",
+      "slug": "brian-sanders",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "frameworks",
+      "title": "Frameworks"
+    },
+    {
+      "id": "brian-sanders/content/videos",
+      "path": "brian-sanders/content/videos.md",
+      "slug": "brian-sanders",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "videos",
+      "title": "Videos"
+    },
+    {
+      "id": "brian-sanders/digital-presence/social-media",
+      "path": "brian-sanders/digital-presence/social-media.md",
+      "slug": "brian-sanders",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "social-media",
+      "title": "Social Media"
+    },
+    {
+      "id": "brian-sanders/digital-presence/websites",
+      "path": "brian-sanders/digital-presence/websites.md",
+      "slug": "brian-sanders",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "websites",
+      "title": "Websites"
+    },
+    {
+      "id": "brian-sanders/network/collaborators",
+      "path": "brian-sanders/network/collaborators.md",
+      "slug": "brian-sanders",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "collaborators",
+      "title": "Collaborators"
+    },
+    {
+      "id": "brian-sanders/network/endorsements",
+      "path": "brian-sanders/network/endorsements.md",
+      "slug": "brian-sanders",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "endorsements",
+      "title": "Endorsements"
+    },
+    {
+      "id": "brian-sanders/network/organizations",
+      "path": "brian-sanders/network/organizations.md",
+      "slug": "brian-sanders",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "organizations",
+      "title": "Organizations"
+    },
+    {
+      "id": "brian-sanders/profile/biography",
+      "path": "brian-sanders/profile/biography.md",
+      "slug": "brian-sanders",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "biography",
+      "title": "Biography"
+    },
+    {
+      "id": "brian-sanders/profile/identity",
+      "path": "brian-sanders/profile/identity.md",
+      "slug": "brian-sanders",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "identity",
+      "title": "Identity"
+    },
+    {
+      "id": "brian-sanders/profile/voice-analysis",
+      "path": "brian-sanders/profile/voice-analysis.md",
+      "slug": "brian-sanders",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "voice-analysis",
+      "title": "Voice Analysis"
+    },
+    {
       "id": "brian-sanders/README",
       "path": "brian-sanders/README.md",
       "slug": "brian-sanders",
@@ -2270,6 +2622,33 @@
       "subLabel": "",
       "fileBase": "README",
       "title": "README"
+    },
+    {
+      "id": "brian-sanders/sources",
+      "path": "brian-sanders/sources.md",
+      "slug": "brian-sanders",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "sources",
+      "title": "Sources"
+    },
+    {
+      "id": "brian-sanders/summary",
+      "path": "brian-sanders/summary.md",
+      "slug": "brian-sanders",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "summary",
+      "title": "Summary"
+    },
+    {
+      "id": "brian-sanders/welcome-letter",
+      "path": "brian-sanders/welcome-letter.md",
+      "slug": "brian-sanders",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "welcome-letter",
+      "title": "Welcome Letter"
     },
     {
       "id": "brian-swanson/content-marketing-playbook",
@@ -2819,6 +3198,15 @@
       "subLabel": "",
       "fileBase": "courses",
       "title": "Courses"
+    },
+    {
+      "id": "dave-ferguson/content/frameworks",
+      "path": "dave-ferguson/content/frameworks.md",
+      "slug": "dave-ferguson",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "frameworks",
+      "title": "Frameworks"
     },
     {
       "id": "dave-ferguson/content/videos",
@@ -3568,6 +3956,15 @@
       "title": "Content Analysis"
     },
     {
+      "id": "hugh-halter/content/books",
+      "path": "hugh-halter/content/books.md",
+      "slug": "hugh-halter",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "books",
+      "title": "Books"
+    },
+    {
       "id": "hugh-halter/digital-presence-discovery",
       "path": "hugh-halter/digital-presence-discovery.md",
       "slug": "hugh-halter",
@@ -3595,6 +3992,15 @@
       "title": "Gap Analysis"
     },
     {
+      "id": "hugh-halter/HUGH_HALTER_RESEARCH_COLLATED",
+      "path": "hugh-halter/HUGH_HALTER_RESEARCH_COLLATED.md",
+      "slug": "hugh-halter",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "HUGH_HALTER_RESEARCH_COLLATED",
+      "title": "HUGH HALTER RESEARCH COLLATED"
+    },
+    {
       "id": "hugh-halter/identity-verification",
       "path": "hugh-halter/identity-verification.md",
       "slug": "hugh-halter",
@@ -3611,6 +4017,51 @@
       "subLabel": "",
       "fileBase": "movemental-analysis",
       "title": "Movemental Analysis"
+    },
+    {
+      "id": "hugh-halter/network/collaborators",
+      "path": "hugh-halter/network/collaborators.md",
+      "slug": "hugh-halter",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "collaborators",
+      "title": "Collaborators"
+    },
+    {
+      "id": "hugh-halter/network/endorsements",
+      "path": "hugh-halter/network/endorsements.md",
+      "slug": "hugh-halter",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "endorsements",
+      "title": "Endorsements"
+    },
+    {
+      "id": "hugh-halter/network/organizations",
+      "path": "hugh-halter/network/organizations.md",
+      "slug": "hugh-halter",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "organizations",
+      "title": "Organizations"
+    },
+    {
+      "id": "hugh-halter/profile/identity",
+      "path": "hugh-halter/profile/identity.md",
+      "slug": "hugh-halter",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "identity",
+      "title": "Identity"
+    },
+    {
+      "id": "hugh-halter/profile/voice-analysis",
+      "path": "hugh-halter/profile/voice-analysis.md",
+      "slug": "hugh-halter",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "voice-analysis",
+      "title": "Voice Analysis"
     },
     {
       "id": "hugh-halter/sources",
@@ -3793,6 +4244,51 @@
       "title": "Summary"
     },
     {
+      "id": "jeremy-chambers/content/articles",
+      "path": "jeremy-chambers/content/articles.md",
+      "slug": "jeremy-chambers",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "articles",
+      "title": "Articles"
+    },
+    {
+      "id": "jeremy-chambers/content/audio",
+      "path": "jeremy-chambers/content/audio.md",
+      "slug": "jeremy-chambers",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "audio",
+      "title": "Audio"
+    },
+    {
+      "id": "jeremy-chambers/content/books",
+      "path": "jeremy-chambers/content/books.md",
+      "slug": "jeremy-chambers",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "books",
+      "title": "Books"
+    },
+    {
+      "id": "jeremy-chambers/content/frameworks",
+      "path": "jeremy-chambers/content/frameworks.md",
+      "slug": "jeremy-chambers",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "frameworks",
+      "title": "Frameworks"
+    },
+    {
+      "id": "jeremy-chambers/content/videos",
+      "path": "jeremy-chambers/content/videos.md",
+      "slug": "jeremy-chambers",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "videos",
+      "title": "Videos"
+    },
+    {
       "id": "jeremy-chambers/JEREMY_CHAMBERS_RESEARCH_COLLATED",
       "path": "jeremy-chambers/JEREMY_CHAMBERS_RESEARCH_COLLATED.md",
       "slug": "jeremy-chambers",
@@ -3800,6 +4296,69 @@
       "subLabel": "",
       "fileBase": "JEREMY_CHAMBERS_RESEARCH_COLLATED",
       "title": "JEREMY CHAMBERS RESEARCH COLLATED"
+    },
+    {
+      "id": "jeremy-chambers/network/organizations",
+      "path": "jeremy-chambers/network/organizations.md",
+      "slug": "jeremy-chambers",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "organizations",
+      "title": "Organizations"
+    },
+    {
+      "id": "jeremy-chambers/profile/biography",
+      "path": "jeremy-chambers/profile/biography.md",
+      "slug": "jeremy-chambers",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "biography",
+      "title": "Biography"
+    },
+    {
+      "id": "jeremy-chambers/profile/identity",
+      "path": "jeremy-chambers/profile/identity.md",
+      "slug": "jeremy-chambers",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "identity",
+      "title": "Identity"
+    },
+    {
+      "id": "jeremy-chambers/profile/theology",
+      "path": "jeremy-chambers/profile/theology.md",
+      "slug": "jeremy-chambers",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "theology",
+      "title": "Theology"
+    },
+    {
+      "id": "jeremy-chambers/profile/voice-analysis",
+      "path": "jeremy-chambers/profile/voice-analysis.md",
+      "slug": "jeremy-chambers",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "voice-analysis",
+      "title": "Voice Analysis"
+    },
+    {
+      "id": "jeremy-chambers/summary",
+      "path": "jeremy-chambers/summary.md",
+      "slug": "jeremy-chambers",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "summary",
+      "title": "Summary"
+    },
+    {
+      "id": "jeremy-chambers/welcome-letter",
+      "path": "jeremy-chambers/welcome-letter.md",
+      "slug": "jeremy-chambers",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "welcome-letter",
+      "title": "Welcome Letter"
     },
     {
       "id": "jeremy-monica-chambers/CHAMBERS_DYAD_RESEARCH_COLLATED",
@@ -6286,6 +6845,15 @@
       "title": "Courses"
     },
     {
+      "id": "michael-cooper/content/frameworks",
+      "path": "michael-cooper/content/frameworks.md",
+      "slug": "michael-cooper",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "frameworks",
+      "title": "Frameworks"
+    },
+    {
       "id": "michael-cooper/content/videos",
       "path": "michael-cooper/content/videos.md",
       "slug": "michael-cooper",
@@ -6952,6 +7520,15 @@
       "title": "Courses"
     },
     {
+      "id": "neil-cole/content/frameworks",
+      "path": "neil-cole/content/frameworks.md",
+      "slug": "neil-cole",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "frameworks",
+      "title": "Frameworks"
+    },
+    {
       "id": "neil-cole/content/videos",
       "path": "neil-cole/content/videos.md",
       "slug": "neil-cole",
@@ -7121,6 +7698,15 @@
       "subLabel": "",
       "fileBase": "README",
       "title": "README"
+    },
+    {
+      "id": "neil-cole/summary",
+      "path": "neil-cole/summary.md",
+      "slug": "neil-cole",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "summary",
+      "title": "Summary"
     },
     {
       "id": "neil-cole/welcome-letter",
@@ -7312,6 +7898,51 @@
       "title": "Content Analysis"
     },
     {
+      "id": "peyton-jones/content/articles",
+      "path": "peyton-jones/content/articles.md",
+      "slug": "peyton-jones",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "articles",
+      "title": "Articles"
+    },
+    {
+      "id": "peyton-jones/content/audio",
+      "path": "peyton-jones/content/audio.md",
+      "slug": "peyton-jones",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "audio",
+      "title": "Audio"
+    },
+    {
+      "id": "peyton-jones/content/books",
+      "path": "peyton-jones/content/books.md",
+      "slug": "peyton-jones",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "books",
+      "title": "Books"
+    },
+    {
+      "id": "peyton-jones/content/frameworks",
+      "path": "peyton-jones/content/frameworks.md",
+      "slug": "peyton-jones",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "frameworks",
+      "title": "Frameworks"
+    },
+    {
+      "id": "peyton-jones/content/videos",
+      "path": "peyton-jones/content/videos.md",
+      "slug": "peyton-jones",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "videos",
+      "title": "Videos"
+    },
+    {
       "id": "peyton-jones/digital-presence-discovery",
       "path": "peyton-jones/digital-presence-discovery.md",
       "slug": "peyton-jones",
@@ -7348,6 +7979,69 @@
       "title": "Movemental Analysis"
     },
     {
+      "id": "peyton-jones/network/collaborators",
+      "path": "peyton-jones/network/collaborators.md",
+      "slug": "peyton-jones",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "collaborators",
+      "title": "Collaborators"
+    },
+    {
+      "id": "peyton-jones/network/endorsements",
+      "path": "peyton-jones/network/endorsements.md",
+      "slug": "peyton-jones",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "endorsements",
+      "title": "Endorsements"
+    },
+    {
+      "id": "peyton-jones/network/organizations",
+      "path": "peyton-jones/network/organizations.md",
+      "slug": "peyton-jones",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "organizations",
+      "title": "Organizations"
+    },
+    {
+      "id": "peyton-jones/PEYTON_JONES_RESEARCH_COLLATED",
+      "path": "peyton-jones/PEYTON_JONES_RESEARCH_COLLATED.md",
+      "slug": "peyton-jones",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "PEYTON_JONES_RESEARCH_COLLATED",
+      "title": "PEYTON JONES RESEARCH COLLATED"
+    },
+    {
+      "id": "peyton-jones/profile/biography",
+      "path": "peyton-jones/profile/biography.md",
+      "slug": "peyton-jones",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "biography",
+      "title": "Biography"
+    },
+    {
+      "id": "peyton-jones/profile/identity",
+      "path": "peyton-jones/profile/identity.md",
+      "slug": "peyton-jones",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "identity",
+      "title": "Identity"
+    },
+    {
+      "id": "peyton-jones/profile/voice-analysis",
+      "path": "peyton-jones/profile/voice-analysis.md",
+      "slug": "peyton-jones",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "voice-analysis",
+      "title": "Voice Analysis"
+    },
+    {
       "id": "peyton-jones/sources",
       "path": "peyton-jones/sources.md",
       "slug": "peyton-jones",
@@ -7364,6 +8058,15 @@
       "subLabel": "",
       "fileBase": "summary",
       "title": "Summary"
+    },
+    {
+      "id": "peyton-jones/welcome-letter",
+      "path": "peyton-jones/welcome-letter.md",
+      "slug": "peyton-jones",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "welcome-letter",
+      "title": "Welcome Letter"
     },
     {
       "id": "preston-sprinkle/_tracker",
@@ -7438,6 +8141,15 @@
       "title": "Alan Hirsch"
     },
     {
+      "id": "reflected-understanding/andrew-jones",
+      "path": "reflected-understanding/andrew-jones.md",
+      "slug": "reflected-understanding",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "andrew-jones",
+      "title": "Andrew Jones"
+    },
+    {
       "id": "reflected-understanding/brad-brisco",
       "path": "reflected-understanding/brad-brisco.md",
       "slug": "reflected-understanding",
@@ -7447,6 +8159,87 @@
       "title": "Brad Brisco"
     },
     {
+      "id": "reflected-understanding/brian-sanders",
+      "path": "reflected-understanding/brian-sanders.md",
+      "slug": "reflected-understanding",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "brian-sanders",
+      "title": "Brian Sanders"
+    },
+    {
+      "id": "reflected-understanding/dave-ferguson",
+      "path": "reflected-understanding/dave-ferguson.md",
+      "slug": "reflected-understanding",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "dave-ferguson",
+      "title": "Dave Ferguson"
+    },
+    {
+      "id": "reflected-understanding/jeremy-chambers",
+      "path": "reflected-understanding/jeremy-chambers.md",
+      "slug": "reflected-understanding",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "jeremy-chambers",
+      "title": "Jeremy Chambers"
+    },
+    {
+      "id": "reflected-understanding/jr-woodward",
+      "path": "reflected-understanding/jr-woodward.md",
+      "slug": "reflected-understanding",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "jr-woodward",
+      "title": "Jr Woodward"
+    },
+    {
+      "id": "reflected-understanding/liz-rios",
+      "path": "reflected-understanding/liz-rios.md",
+      "slug": "reflected-understanding",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "liz-rios",
+      "title": "Liz Rios"
+    },
+    {
+      "id": "reflected-understanding/lucas-pulley",
+      "path": "reflected-understanding/lucas-pulley.md",
+      "slug": "reflected-understanding",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "lucas-pulley",
+      "title": "Lucas Pulley"
+    },
+    {
+      "id": "reflected-understanding/michael-cooper",
+      "path": "reflected-understanding/michael-cooper.md",
+      "slug": "reflected-understanding",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "michael-cooper",
+      "title": "Michael Cooper"
+    },
+    {
+      "id": "reflected-understanding/neil-cole",
+      "path": "reflected-understanding/neil-cole.md",
+      "slug": "reflected-understanding",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "neil-cole",
+      "title": "Neil Cole"
+    },
+    {
+      "id": "reflected-understanding/peyton-jones",
+      "path": "reflected-understanding/peyton-jones.md",
+      "slug": "reflected-understanding",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "peyton-jones",
+      "title": "Peyton Jones"
+    },
+    {
       "id": "reflected-understanding/README",
       "path": "reflected-understanding/README.md",
       "slug": "reflected-understanding",
@@ -7454,6 +8247,24 @@
       "subLabel": "",
       "fileBase": "README",
       "title": "README"
+    },
+    {
+      "id": "reflected-understanding/rob-wegner",
+      "path": "reflected-understanding/rob-wegner.md",
+      "slug": "reflected-understanding",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "rob-wegner",
+      "title": "Rob Wegner"
+    },
+    {
+      "id": "reflected-understanding/roy-moran",
+      "path": "reflected-understanding/roy-moran.md",
+      "slug": "reflected-understanding",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "roy-moran",
+      "title": "Roy Moran"
     },
     {
       "id": "reggie-mcneal/_tracker",
@@ -7825,6 +8636,15 @@
       "title": "Courses"
     },
     {
+      "id": "rob-wegner/content/frameworks",
+      "path": "rob-wegner/content/frameworks.md",
+      "slug": "rob-wegner",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "frameworks",
+      "title": "Frameworks"
+    },
+    {
       "id": "rob-wegner/content/videos",
       "path": "rob-wegner/content/videos.md",
       "slug": "rob-wegner",
@@ -8048,6 +8868,15 @@
       "subLabel": "",
       "fileBase": "summary",
       "title": "Summary"
+    },
+    {
+      "id": "rob-wegner/welcome-letter",
+      "path": "rob-wegner/welcome-letter.md",
+      "slug": "rob-wegner",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "welcome-letter",
+      "title": "Welcome Letter"
     },
     {
       "id": "robert-chao-romero/_tracker",
@@ -8284,6 +9113,51 @@
       "title": "Committed Voice"
     },
     {
+      "id": "roy-moran/content/articles",
+      "path": "roy-moran/content/articles.md",
+      "slug": "roy-moran",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "articles",
+      "title": "Articles"
+    },
+    {
+      "id": "roy-moran/content/audio",
+      "path": "roy-moran/content/audio.md",
+      "slug": "roy-moran",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "audio",
+      "title": "Audio"
+    },
+    {
+      "id": "roy-moran/content/books",
+      "path": "roy-moran/content/books.md",
+      "slug": "roy-moran",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "books",
+      "title": "Books"
+    },
+    {
+      "id": "roy-moran/content/frameworks",
+      "path": "roy-moran/content/frameworks.md",
+      "slug": "roy-moran",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "frameworks",
+      "title": "Frameworks"
+    },
+    {
+      "id": "roy-moran/content/videos",
+      "path": "roy-moran/content/videos.md",
+      "slug": "roy-moran",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "videos",
+      "title": "Videos"
+    },
+    {
       "id": "roy-moran/fragmentation-story",
       "path": "roy-moran/fragmentation-story.md",
       "slug": "roy-moran",
@@ -8291,6 +9165,42 @@
       "subLabel": "",
       "fileBase": "fragmentation-story",
       "title": "Fragmentation Story"
+    },
+    {
+      "id": "roy-moran/network/organizations",
+      "path": "roy-moran/network/organizations.md",
+      "slug": "roy-moran",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "organizations",
+      "title": "Organizations"
+    },
+    {
+      "id": "roy-moran/profile/biography",
+      "path": "roy-moran/profile/biography.md",
+      "slug": "roy-moran",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "biography",
+      "title": "Biography"
+    },
+    {
+      "id": "roy-moran/profile/identity",
+      "path": "roy-moran/profile/identity.md",
+      "slug": "roy-moran",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "identity",
+      "title": "Identity"
+    },
+    {
+      "id": "roy-moran/profile/voice-analysis",
+      "path": "roy-moran/profile/voice-analysis.md",
+      "slug": "roy-moran",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "voice-analysis",
+      "title": "Voice Analysis"
     },
     {
       "id": "roy-moran/README",
@@ -8894,6 +9804,402 @@
       "subLabel": "",
       "fileBase": "09-PLAUSIBLE-TAM-ALPHABETIZED",
       "title": "09 PLAUSIBLE TAM ALPHABETIZED"
+    },
+    {
+      "id": "tania-harris/_research-notes",
+      "path": "tania-harris/_research-notes.md",
+      "slug": "tania-harris",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "_research-notes",
+      "title": " Research Notes"
+    },
+    {
+      "id": "tania-harris/analysis/audience-analysis",
+      "path": "tania-harris/analysis/audience-analysis.md",
+      "slug": "tania-harris",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "audience-analysis",
+      "title": "Audience Analysis"
+    },
+    {
+      "id": "tania-harris/analysis/competitive-landscape",
+      "path": "tania-harris/analysis/competitive-landscape.md",
+      "slug": "tania-harris",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "competitive-landscape",
+      "title": "Competitive Landscape"
+    },
+    {
+      "id": "tania-harris/analysis/content-analysis",
+      "path": "tania-harris/analysis/content-analysis.md",
+      "slug": "tania-harris",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "content-analysis",
+      "title": "Content Analysis"
+    },
+    {
+      "id": "tania-harris/analysis/gap-analysis",
+      "path": "tania-harris/analysis/gap-analysis.md",
+      "slug": "tania-harris",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "gap-analysis",
+      "title": "Gap Analysis"
+    },
+    {
+      "id": "tania-harris/analysis/movemental-fit",
+      "path": "tania-harris/analysis/movemental-fit.md",
+      "slug": "tania-harris",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "movemental-fit",
+      "title": "Movemental Fit"
+    },
+    {
+      "id": "tania-harris/committed-voice",
+      "path": "tania-harris/committed-voice.md",
+      "slug": "tania-harris",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
+    },
+    {
+      "id": "tania-harris/content-analysis",
+      "path": "tania-harris/content-analysis.md",
+      "slug": "tania-harris",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "content-analysis",
+      "title": "Content Analysis"
+    },
+    {
+      "id": "tania-harris/content-marketing-playbook",
+      "path": "tania-harris/content-marketing-playbook.md",
+      "slug": "tania-harris",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "content-marketing-playbook",
+      "title": "Content Marketing Playbook"
+    },
+    {
+      "id": "tania-harris/content/academic",
+      "path": "tania-harris/content/academic.md",
+      "slug": "tania-harris",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "academic",
+      "title": "Academic"
+    },
+    {
+      "id": "tania-harris/content/articles",
+      "path": "tania-harris/content/articles.md",
+      "slug": "tania-harris",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "articles",
+      "title": "Articles"
+    },
+    {
+      "id": "tania-harris/content/audio",
+      "path": "tania-harris/content/audio.md",
+      "slug": "tania-harris",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "audio",
+      "title": "Audio"
+    },
+    {
+      "id": "tania-harris/content/books",
+      "path": "tania-harris/content/books.md",
+      "slug": "tania-harris",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "books",
+      "title": "Books"
+    },
+    {
+      "id": "tania-harris/content/courses",
+      "path": "tania-harris/content/courses.md",
+      "slug": "tania-harris",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "courses",
+      "title": "Courses"
+    },
+    {
+      "id": "tania-harris/content/videos",
+      "path": "tania-harris/content/videos.md",
+      "slug": "tania-harris",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "videos",
+      "title": "Videos"
+    },
+    {
+      "id": "tania-harris/digital-presence-discovery",
+      "path": "tania-harris/digital-presence-discovery.md",
+      "slug": "tania-harris",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "digital-presence-discovery",
+      "title": "Digital Presence Discovery"
+    },
+    {
+      "id": "tania-harris/digital-presence/newsletters",
+      "path": "tania-harris/digital-presence/newsletters.md",
+      "slug": "tania-harris",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "newsletters",
+      "title": "Newsletters"
+    },
+    {
+      "id": "tania-harris/digital-presence/platforms",
+      "path": "tania-harris/digital-presence/platforms.md",
+      "slug": "tania-harris",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "platforms",
+      "title": "Platforms"
+    },
+    {
+      "id": "tania-harris/digital-presence/social-media",
+      "path": "tania-harris/digital-presence/social-media.md",
+      "slug": "tania-harris",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "social-media",
+      "title": "Social Media"
+    },
+    {
+      "id": "tania-harris/digital-presence/websites",
+      "path": "tania-harris/digital-presence/websites.md",
+      "slug": "tania-harris",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "websites",
+      "title": "Websites"
+    },
+    {
+      "id": "tania-harris/fragmentation-story",
+      "path": "tania-harris/fragmentation-story.md",
+      "slug": "tania-harris",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "fragmentation-story",
+      "title": "Fragmentation Story"
+    },
+    {
+      "id": "tania-harris/identity-verification",
+      "path": "tania-harris/identity-verification.md",
+      "slug": "tania-harris",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "identity-verification",
+      "title": "Identity Verification"
+    },
+    {
+      "id": "tania-harris/media/citations",
+      "path": "tania-harris/media/citations.md",
+      "slug": "tania-harris",
+      "group": "Media",
+      "subLabel": "",
+      "fileBase": "citations",
+      "title": "Citations"
+    },
+    {
+      "id": "tania-harris/media/press-coverage",
+      "path": "tania-harris/media/press-coverage.md",
+      "slug": "tania-harris",
+      "group": "Media",
+      "subLabel": "",
+      "fileBase": "press-coverage",
+      "title": "Press Coverage"
+    },
+    {
+      "id": "tania-harris/media/reviews",
+      "path": "tania-harris/media/reviews.md",
+      "slug": "tania-harris",
+      "group": "Media",
+      "subLabel": "",
+      "fileBase": "reviews",
+      "title": "Reviews"
+    },
+    {
+      "id": "tania-harris/network/collaborators",
+      "path": "tania-harris/network/collaborators.md",
+      "slug": "tania-harris",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "collaborators",
+      "title": "Collaborators"
+    },
+    {
+      "id": "tania-harris/network/endorsements",
+      "path": "tania-harris/network/endorsements.md",
+      "slug": "tania-harris",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "endorsements",
+      "title": "Endorsements"
+    },
+    {
+      "id": "tania-harris/network/events",
+      "path": "tania-harris/network/events.md",
+      "slug": "tania-harris",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "events",
+      "title": "Events"
+    },
+    {
+      "id": "tania-harris/network/organizations",
+      "path": "tania-harris/network/organizations.md",
+      "slug": "tania-harris",
+      "group": "Network",
+      "subLabel": "",
+      "fileBase": "organizations",
+      "title": "Organizations"
+    },
+    {
+      "id": "tania-harris/profile/biography",
+      "path": "tania-harris/profile/biography.md",
+      "slug": "tania-harris",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "biography",
+      "title": "Biography"
+    },
+    {
+      "id": "tania-harris/profile/identity",
+      "path": "tania-harris/profile/identity.md",
+      "slug": "tania-harris",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "identity",
+      "title": "Identity"
+    },
+    {
+      "id": "tania-harris/profile/theology",
+      "path": "tania-harris/profile/theology.md",
+      "slug": "tania-harris",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "theology",
+      "title": "Theology"
+    },
+    {
+      "id": "tania-harris/profile/voice-analysis",
+      "path": "tania-harris/profile/voice-analysis.md",
+      "slug": "tania-harris",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "voice-analysis",
+      "title": "Voice Analysis"
+    },
+    {
+      "id": "tania-harris/summary",
+      "path": "tania-harris/summary.md",
+      "slug": "tania-harris",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "summary",
+      "title": "Summary"
+    },
+    {
+      "id": "tania-harris/TANIA_HARRIS_AUDIENCE_PROFILE",
+      "path": "tania-harris/TANIA_HARRIS_AUDIENCE_PROFILE.md",
+      "slug": "tania-harris",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "TANIA_HARRIS_AUDIENCE_PROFILE",
+      "title": "TANIA HARRIS AUDIENCE PROFILE"
+    },
+    {
+      "id": "tania-harris/TANIA_HARRIS_AUTHOR_PROFILE",
+      "path": "tania-harris/TANIA_HARRIS_AUTHOR_PROFILE.md",
+      "slug": "tania-harris",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "TANIA_HARRIS_AUTHOR_PROFILE",
+      "title": "TANIA HARRIS AUTHOR PROFILE"
+    },
+    {
+      "id": "tania-harris/TANIA_HARRIS_CALLING_PROFILE",
+      "path": "tania-harris/TANIA_HARRIS_CALLING_PROFILE.md",
+      "slug": "tania-harris",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "TANIA_HARRIS_CALLING_PROFILE",
+      "title": "TANIA HARRIS CALLING PROFILE"
+    },
+    {
+      "id": "tania-harris/TANIA_HARRIS_CONTENT_AUDIT",
+      "path": "tania-harris/TANIA_HARRIS_CONTENT_AUDIT.md",
+      "slug": "tania-harris",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "TANIA_HARRIS_CONTENT_AUDIT",
+      "title": "TANIA HARRIS CONTENT AUDIT"
+    },
+    {
+      "id": "tania-harris/TANIA_HARRIS_MASTER_WRITING_PROMPT",
+      "path": "tania-harris/TANIA_HARRIS_MASTER_WRITING_PROMPT.md",
+      "slug": "tania-harris",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "TANIA_HARRIS_MASTER_WRITING_PROMPT",
+      "title": "TANIA HARRIS MASTER WRITING PROMPT"
+    },
+    {
+      "id": "tania-harris/TANIA_HARRIS_PROFILES_INDEX",
+      "path": "tania-harris/TANIA_HARRIS_PROFILES_INDEX.md",
+      "slug": "tania-harris",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "TANIA_HARRIS_PROFILES_INDEX",
+      "title": "TANIA HARRIS PROFILES INDEX"
+    },
+    {
+      "id": "tania-harris/TANIA_HARRIS_RESEARCH_COLLATED",
+      "path": "tania-harris/TANIA_HARRIS_RESEARCH_COLLATED.md",
+      "slug": "tania-harris",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "TANIA_HARRIS_RESEARCH_COLLATED",
+      "title": "TANIA HARRIS RESEARCH COLLATED"
+    },
+    {
+      "id": "tania-harris/TANIA_HARRIS_RESEARCH_SUMMARY",
+      "path": "tania-harris/TANIA_HARRIS_RESEARCH_SUMMARY.md",
+      "slug": "tania-harris",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "TANIA_HARRIS_RESEARCH_SUMMARY",
+      "title": "TANIA HARRIS RESEARCH SUMMARY"
+    },
+    {
+      "id": "tania-harris/TANIA_HARRIS_VOICE_IDENTITY",
+      "path": "tania-harris/TANIA_HARRIS_VOICE_IDENTITY.md",
+      "slug": "tania-harris",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "TANIA_HARRIS_VOICE_IDENTITY",
+      "title": "TANIA HARRIS VOICE IDENTITY"
+    },
+    {
+      "id": "tania-harris/welcome-letter",
+      "path": "tania-harris/welcome-letter.md",
+      "slug": "tania-harris",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "welcome-letter",
+      "title": "Welcome Letter"
     },
     {
       "id": "tara-beth-leach/_tracker",

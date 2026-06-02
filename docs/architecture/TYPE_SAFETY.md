@@ -1,5 +1,10 @@
 # Type Safety Chain Architecture
 
+> **Status (2026-06-02):** This reference is structurally accurate. For current per-layer counts,
+> the live-DB drift status, and the three-repo shared-database topology, see the authoritative doc:
+> [`TYPE_SAFETY_CHAIN.md`](./TYPE_SAFETY_CHAIN.md). Summary: Layer 1 is **UNLOCKED** — 210 schema
+> tables vs 223 in the live `movemental` DB (`vhaiiiykcukrlyvwlgip`); Layers 2–5 are consistent at 210.
+
 ## Overview
 
 The application uses a six-layer type safety architecture where types flow unidirectionally from the database schema through to the UI. Each layer derives its types from the layer below, ensuring consistency and preventing type drift.

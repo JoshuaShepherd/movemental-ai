@@ -1,0 +1,95 @@
+{
+  "slug": "brian-sanders",
+  "version": "2.0.0",
+  "generated_at": "2026-05-30",
+  "mode": "cold-start (targeted web research; per-topic files generated)",
+  "sources": [
+    {
+      "path": "content/books.md",
+      "sha256": "1579ec80ba6b36cd15d559bb86d019247d2aa4689078af79556e6034864fcc39",
+      "wordCount": 434,
+      "sectionsUsed": [
+        "Bibliography",
+        "Theme map",
+        "Content analysis"
+      ]
+    },
+    {
+      "path": "digital-presence/social-media.md",
+      "sha256": "9a1bc0faebc6c9952d5e546bb18b0925b6b55e3a86629fb76a0fa43f1234e6e8",
+      "wordCount": 158,
+      "sectionsUsed": [
+        "Reach metrics"
+      ]
+    },
+    {
+      "path": "digital-presence/websites.md",
+      "sha256": "66fe581606ce0cf737da97f04af3cab6537f7257e09ef811a870773003b8bf44",
+      "wordCount": 108,
+      "sectionsUsed": [
+        "Distribution inventory",
+        "Reach metrics"
+      ]
+    },
+    {
+      "path": "network/collaborators.md",
+      "sha256": "c190d520189c02e83e35b517ba07b68939f3ef7f75a1cac46b566750c7b8d1c9",
+      "wordCount": 217,
+      "sectionsUsed": [
+        "Network graph",
+        "Intellectual genealogy"
+      ]
+    },
+    {
+      "path": "network/endorsements.md",
+      "sha256": "8511c73bbde826d5a0ea7f17b3f0c9b30314acd5c69d87c6ac552b335870cd18",
+      "wordCount": 142,
+      "sectionsUsed": [
+        "Network graph"
+      ]
+    },
+    {
+      "path": "network/organizations.md",
+      "sha256": "dad9d7d22857f15d862e28ba402ed69c6cf04c44dfae764e45ce2633b0142763",
+      "wordCount": 341,
+      "sectionsUsed": [
+        "Network graph",
+        "Organizational affiliations"
+      ]
+    },
+    {
+      "path": "profile/biography.md",
+      "sha256": "699f4f94f8a2bb1fefa507d4d6090c90a4ab3d214709179ed7a9186a603bb3a0",
+      "wordCount": 371,
+      "sectionsUsed": [
+        "Timeline",
+        "Editorial bio"
+      ]
+    },
+    {
+      "path": "profile/identity.md",
+      "sha256": "0102bcd3bbcfb119e62904a136102a0b1ddb8e99ce40a7ae9627b62c8c55767d",
+      "wordCount": 490,
+      "sectionsUsed": [
+        "Identity",
+        "Disambiguation"
+      ]
+    },
+    {
+      "path": "profile/voice-analysis.md",
+      "sha256": "984660ba597af748d2177a5919ea88babe8db1c53e811436a0f768acf8241c8f",
+      "wordCount": 459,
+      "sectionsUsed": [
+        "Voice fingerprint"
+      ]
+    },
+    {
+      "path": "sources.md",
+      "sha256": "6f1bba43c32dbf3e82b2692bbf5b49db1f568fbdbe749deb10cc87819a21e50a",
+      "wordCount": 334,
+      "sectionsUsed": [
+        "Sources"
+      ]
+    }
+  ]
+}

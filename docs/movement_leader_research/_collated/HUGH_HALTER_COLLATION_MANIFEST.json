@@ -1,0 +1,113 @@
+{
+  "slug": "hugh-halter",
+  "version": "2.0.0",
+  "generated_at": "2026-05-30",
+  "mode": "refresh + targeted web research (gap-fill); per-topic files on disk",
+  "sources": [
+    {
+      "path": "committed-voice.md",
+      "sha256": "86a60b93932da0f2062e6d7d991b8ae3b9352d7c4753ff745538813b39e6672d",
+      "wordCount": 520,
+      "sectionsUsed": [
+        "Editorial bio",
+        "Voice fingerprint"
+      ]
+    },
+    {
+      "path": "content-analysis.md",
+      "sha256": "e47b25913f68dcc5563724ed8243931a338a4de988e3a2a14b8b74b255c38ce9",
+      "wordCount": 1695,
+      "sectionsUsed": [
+        "Theme map",
+        "Content analysis"
+      ]
+    },
+    {
+      "path": "content/books.md",
+      "sha256": "f0b0b38aa0bed9088907dec2a61dbe3dc93948686bc73447a7577fdcf969f312",
+      "wordCount": 518,
+      "sectionsUsed": [
+        "Bibliography",
+        "Theme map",
+        "Content analysis"
+      ]
+    },
+    {
+      "path": "digital-presence-discovery.md",
+      "sha256": "f9c2141b17f546a284f9a1686dac6043a66a3b08eb2b303ad5819772b770cbfb",
+      "wordCount": 1074,
+      "sectionsUsed": [
+        "Distribution inventory",
+        "Reach metrics"
+      ]
+    },
+    {
+      "path": "identity-verification.md",
+      "sha256": "dbff068b525b41e23996c896f140464092597daa45d39b9fc84f7a1827fe1be6",
+      "wordCount": 998,
+      "sectionsUsed": [
+        "Identity",
+        "Disambiguation"
+      ]
+    },
+    {
+      "path": "network/collaborators.md",
+      "sha256": "d889706ececff0be02539550c6d0e82cfcca10bdda2c0f8e517ac275a629d78d",
+      "wordCount": 248,
+      "sectionsUsed": [
+        "Network graph",
+        "Intellectual genealogy"
+      ]
+    },
+    {
+      "path": "network/endorsements.md",
+      "sha256": "df0bc9574b625691d8deac1641d363dd7066c4aa75a904574efc13785ac00661",
+      "wordCount": 189,
+      "sectionsUsed": [
+        "Network graph"
+      ]
+    },
+    {
+      "path": "network/organizations.md",
+      "sha256": "437fa08315c4980df674e2c9ec171d5a3e6a61cec8a41d4fef7196ca14901272",
+      "wordCount": 282,
+      "sectionsUsed": [
+        "Network graph",
+        "Organizational affiliations"
+      ]
+    },
+    {
+      "path": "profile/identity.md",
+      "sha256": "e9b8eaeacb15784db7f969a391c2d52c42a7bfee88e84c02bf67da2873347f4c",
+      "wordCount": 284,
+      "sectionsUsed": [
+        "Identity",
+        "Disambiguation"
+      ]
+    },
+    {
+      "path": "profile/voice-analysis.md",
+      "sha256": "672daf5d814d0d967b441448420cb8890cff57d01b60d12e2d47f952a3f06caf",
+      "wordCount": 398,
+      "sectionsUsed": [
+        "Voice fingerprint"
+      ]
+    },
+    {
+      "path": "sources.md",
+      "sha256": "032edbff8a0de3c136236a63b1e3a0e71b71b7055f490365437f86c669c21f5f",
+      "wordCount": 870,
+      "sectionsUsed": [
+        "Sources"
+      ]
+    },
+    {
+      "path": "summary.md",
+      "sha256": "825ffea5a3c32f91b0268db780d63c640d225593957376e997e91a39587ca487",
+      "wordCount": 1846,
+      "sectionsUsed": [
+        "Editorial bio"
+      ]
+    }
+  ]
+}

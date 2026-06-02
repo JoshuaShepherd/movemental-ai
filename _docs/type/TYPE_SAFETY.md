@@ -1,8 +1,13 @@
 # Type Safety Chain
 
+> ⚠ **STALE (as of 2026-06-02).** The counts and "all pass" status below describe the original
+> 4-table prototype. The current chain has **210 tables** under `src/` and Layer 1 is **UNLOCKED**
+> (210 schema vs 223 live DB). See the authoritative doc:
+> [`../../docs/architecture/TYPE_SAFETY_CHAIN.md`](../../docs/architecture/TYPE_SAFETY_CHAIN.md).
+
 **Version**: 2.0.0  
-**Last Updated**: 2026-02-15  
-**Status**: ✅ All Layers LOCKED/VALIDATED (No TypeScript errors)
+**Last Updated**: 2026-02-15 (superseded — see banner)  
+**Status**: Layer 1 UNLOCKED — 210 schema tables vs 223 live DB tables (drift)
 
 ---
 
@@ -11,12 +16,12 @@
 The six-layer type safety architecture ensures complete type safety from the database schema to the UI. Types flow **downstream only**; fix errors **bottom-up**.
 
 ```
-Layer 1: DATABASE (Drizzle)  → db/schema.ts
-Layer 2: ZOD SCHEMAS         → lib/schemas/
-Layer 3: SERVICES            → lib/services/simplified/
-Layer 4: API ROUTES          → app/api/simplified/
-Layer 5: HOOKS               → hooks/simplified/
-Layer 6: UI                  → components/
+Layer 1: DATABASE (Drizzle)  → src/lib/db/schema.ts
+Layer 2: ZOD SCHEMAS         → src/lib/schemas/
+Layer 3: SERVICES            → src/lib/services/simplified/
+Layer 4: API ROUTES          → src/app/api/simplified/
+Layer 5: HOOKS               → src/hooks/simplified/
+Layer 6: UI                  → src/components/
 ```
 
 ---
@@ -38,9 +43,10 @@ Layer 6: UI                  → components/
 
 ## Table and Entity Counts
 
-**Layer 1 (Database)**: 4 tables — organizations, onboarding_responses, write, write_content  
-**Layer 2 (Zod)**: 4 entities with four-schema pattern (Select, Insert, Update, Filters)  
-**Layer 3–6**: Aligned to Layer 1–2
+**Layer 1 (Database)**: 210 tables in `src/lib/db/schema.ts` (UNLOCKED — 7 phantom tables not in live DB, ~20 live tables not yet mirrored; see canonical doc §5)  
+**Layer 2 (Zod)**: 210 entities with four-schema pattern (Select, Insert, Update, Filters)  
+**Layer 3–5**: 210 each, aligned to Layer 1–2  
+**Layer 6 (UI)**: hand-built from Stitch designs, consumes Layer 5 hooks directly
 
 ---
 

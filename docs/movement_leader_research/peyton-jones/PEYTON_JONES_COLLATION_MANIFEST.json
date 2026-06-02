@@ -1,0 +1,104 @@
+{
+  "slug": "peyton-jones",
+  "version": "2.0.0",
+  "generated_at": "2026-05-30",
+  "mode": "refresh + targeted web research (gap-fill); per-topic files on disk",
+  "sources": [
+    {
+      "path": "content-analysis.md",
+      "sha256": "62425f990e38839437b42f2d55e9a170ce8a36c3910ea56e5870c0e5b976a39e",
+      "wordCount": 1196,
+      "sectionsUsed": [
+        "Theme map",
+        "Content analysis"
+      ]
+    },
+    {
+      "path": "content/books.md",
+      "sha256": "622a4cd98715e175324988a3f0d75f6ac82c115ca5dd890c8394c3f199cbe989",
+      "wordCount": 503,
+      "sectionsUsed": [
+        "Bibliography",
+        "Theme map",
+        "Content analysis"
+      ]
+    },
+    {
+      "path": "digital-presence-discovery.md",
+      "sha256": "dfec87874b94d97de94b57d573ed521edb8f47af79f4ca8edf9979e61c6577ee",
+      "wordCount": 763,
+      "sectionsUsed": [
+        "Distribution inventory",
+        "Reach metrics"
+      ]
+    },
+    {
+      "path": "identity-verification.md",
+      "sha256": "232ce6475320f53ee23fa5cdbbbc69fc346d92bca4d63a767b5687d8ddfed183",
+      "wordCount": 603,
+      "sectionsUsed": [
+        "Identity",
+        "Disambiguation"
+      ]
+    },
+    {
+      "path": "network/collaborators.md",
+      "sha256": "3d57f8d870599d9e2ccd685843eb8e77844e81eefcd743f12df32b92881d57f5",
+      "wordCount": 206,
+      "sectionsUsed": [
+        "Network graph",
+        "Intellectual genealogy"
+      ]
+    },
+    {
+      "path": "network/endorsements.md",
+      "sha256": "8580e02b4c358e7e555b8f4454d4cb2cad458c980a8e6cf541fe64146c10b1b0",
+      "wordCount": 214,
+      "sectionsUsed": [
+        "Network graph"
+      ]
+    },
+    {
+      "path": "network/organizations.md",
+      "sha256": "6c0a83d3a8f25fe12ca310af6a247f50665148004ede8ae8112e63eaa0c2d657",
+      "wordCount": 275,
+      "sectionsUsed": [
+        "Network graph",
+        "Organizational affiliations"
+      ]
+    },
+    {
+      "path": "profile/identity.md",
+      "sha256": "6c03c1681332dd04b45e8472f3b7dddbc7a67533e87bed3202694206fda2e44b",
+      "wordCount": 423,
+      "sectionsUsed": [
+        "Identity",
+        "Disambiguation"
+      ]
+    },
+    {
+      "path": "profile/voice-analysis.md",
+      "sha256": "030e74a9fd2a4a297833f87aca6f817e2a1bb55596c3a0f3aa1ef50710e6550c",
+      "wordCount": 475,
+      "sectionsUsed": [
+        "Voice fingerprint"
+      ]
+    },
+    {
+      "path": "sources.md",
+      "sha256": "d5358556235ad4d6fcd33e82d12a2e4b24250082b0243768bf5117d91bddf836",
+      "wordCount": 845,
+      "sectionsUsed": [
+        "Sources"
+      ]
+    },
+    {
+      "path": "summary.md",
+      "sha256": "04c983a06b589c15d337cc8bc6cb516f38f0ff39f53303ef91f1ecd5d9e86e2c",
+      "wordCount": 1304,
+      "sectionsUsed": [
+        "Editorial bio"
+      ]
+    }
+  ]
+}

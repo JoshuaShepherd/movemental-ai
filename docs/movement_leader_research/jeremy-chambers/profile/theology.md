@@ -1,0 +1,23 @@
+# Theology
+
+Jeremy Chambers' theological center is **missional spirituality** — the conviction that intimacy with God and engagement with neighbors are not two stages but a single rhythm. His load-bearing claim, repeated across his books, essays, and interviews, is that spirituality "doesn't draw you away from your neighbors but propels you into the lives of others and the needs of your city." Formed evangelically at Trinity Evangelical Divinity School and shaped contemplatively in the Renovaré orbit (the Foster–Willard–Hudson lineage), he writes almost always as a dyad with his wife Monica Paredes Chambers, holding together two streams the wider missional church has often kept apart: classical spiritual formation and the Hirsch–Frost movemental tradition. His theology is Christocentric and Trinitarian at its root, kingdom-oriented in its horizon, incarnational in its missiology, and microchurch-ecclesial in its form — but its distinctive signature is the refusal of any dichotomy that would make contemplation preliminary to mission or mission a distraction from contemplation. Formation, for Chambers, is what makes mission sustainable; mission is where formation becomes real.
+
+## Christology and Trinity
+
+Chambers names "Christocentric and Trinitarian — centering on Jesus as Lord" as the first of his six foundational paradigms in *Kingdom Contours*. Jesus is both the content of the gospel ("bring Jesus to people who would never walk into a church building") and the pattern of mission — the incarnation as the template for how disciples enter neighborhoods and cultures. Working with God rather than for God is a recurring Trinitarian theme: "We have to figure out a way to work with God, be connected with Him, and follow His lead," rather than relying on "our own strengths and abilities to work for God."
+
+## Missional Spirituality and Formation
+
+The integration of mission and contemplation is the heart of his contribution. In *The Art of Missional Spirituality* he operationalizes it as thirty-one daily practices — Praying the Hours, silence, solitude, hospitality, walking prayer, "Secret Acts of Kindness" — arranged as a calendar-month rhythm. Humans, on this view, are formed by rhythmic practices over time rather than by discrete decisions or programs. He draws openly on the spiritual-disciplines tradition (Foster, Willard, Hudson, Renovaré) and treats the Lord's Prayer and Psalm 23 as "transforming prayers" for ordinary discipleship. His diagnosis of the contemporary spiritual threat is unusual: not heresy and not cultural opposition, but **distraction** — "the single most damaging danger to the inner life with Jesus."
+
+## Missiology and Kingdom
+
+Chambers is incarnational and anti-attractional in his missiology, coaching churches to shift "from attractional, event-based models toward dispersed, community-focused approaches." He frames mission as movement rather than program — DNA that multiplies organically — extending Hirsch's mDNA into the six paradigms of *Kingdom Contours*. He tends to speak of the "Kingdom of Heaven" and "kingdom movements," and his horizon is frontier and global (participation in disciple-making and microchurch networks across thirty-five-plus countries). Evangelism is reframed warmly: his coinage "grativangelism" casts public gratitude toward neighbors and strangers as an evangelistic posture, and service is to be offered without needing credit — "Goodness can be beautiful in its own right."
+
+## Ecclesiology
+
+His ecclesiology is microchurch and network-of-microchurches — the form he judges most adaptive for movement ("nimble, very adaptable... we watched these flourish and multiply"). Yet he is notably **anti-absolutist**: microchurch is *a* form, not *the* form, and he explicitly distances himself from those who treat it as "the only way." Practicing affiliation runs through the Baptist General Association of Virginia via Arise RVA and the V3 Movement, within a broadly non-denominational, networked style.
+
+## Leadership and Sustainable Mission
+
+Leadership for Chambers is distributed, coaching-based, and APEST-aligned, embodied in his trainer-of-trainers role as Forge America's Training Director. A maturing emphasis is **sustainable mission**: he distinguishes durable *calling* from temporary *assignment*, adopts the Cycle of Grace (Hudson/Haas) as a compassion-fatigue diagnostic, and counsels practitioners to "put on your oxygen mask before helping someone else." This pastoral attention to longevity — guarding against self-inflicted compassion fatigue and over-attachment to assignments — distinguishes him within both the missional and contemplative streams he bridges.

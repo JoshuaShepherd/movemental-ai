@@ -1,0 +1,215 @@
+{
+  "slug": "neil-cole",
+  "version": "2.0.0",
+  "generated_at": "2026-05-30",
+  "mode": "refresh (per-topic source files on disk; no new web research)",
+  "sources": [
+    {
+      "path": "analysis/content-analysis.md",
+      "sha256": "d6b028e1d9897605552fd972dcf6473becfaf971e37b3565915e23687af5ce1f",
+      "wordCount": 1418,
+      "sectionsUsed": [
+        "Theme map",
+        "Content analysis"
+      ]
+    },
+    {
+      "path": "committed-voice.md",
+      "sha256": "ab73c5e37243a3725ddfbf1d8b6b1c92dcf8fe8a3f91abc28ba595f4c3256e21",
+      "wordCount": 607,
+      "sectionsUsed": [
+        "Editorial bio",
+        "Voice fingerprint"
+      ]
+    },
+    {
+      "path": "content/academic.md",
+      "sha256": "d0f8fa54f30a6251823700f06cf718fa3663e74f7a70a825989941da0dc21c00",
+      "wordCount": 745,
+      "sectionsUsed": [
+        "Distribution inventory",
+        "Reach metrics"
+      ]
+    },
+    {
+      "path": "content/articles.md",
+      "sha256": "39f60b74fecf6b76860289467e4df966e28fecb03ea018f39258eec8b32d28ab",
+      "wordCount": 1075,
+      "sectionsUsed": [
+        "Distribution inventory"
+      ]
+    },
+    {
+      "path": "content/audio.md",
+      "sha256": "023fe661259cab9e971cb11b6086e1add01ba1109a889459ae8e163caf56b818",
+      "wordCount": 1019,
+      "sectionsUsed": [
+        "Distribution inventory",
+        "Reach metrics"
+      ]
+    },
+    {
+      "path": "content/books.md",
+      "sha256": "755f4010a1b4132e0fdce97a6b95b578f6594753768a7f101c5ffd1ea6906602",
+      "wordCount": 1623,
+      "sectionsUsed": [
+        "Bibliography",
+        "Theme map",
+        "Content analysis"
+      ]
+    },
+    {
+      "path": "content/courses.md",
+      "sha256": "5b7c3a0bac8de7a97bc30f2a77c59ab39af4d4e1ae551e5b2550e26bd3f2fe64",
+      "wordCount": 910,
+      "sectionsUsed": [
+        "Distribution inventory"
+      ]
+    },
+    {
+      "path": "content/videos.md",
+      "sha256": "07d9f001e471482289b56964a1adacf8909e87336b252581af612a02c0650b0c",
+      "wordCount": 806,
+      "sectionsUsed": [
+        "Distribution inventory"
+      ]
+    },
+    {
+      "path": "digital-presence/newsletters.md",
+      "sha256": "39bae64402f0c9d53d6632c95d05aec26e5a5201841ef86e1a59a8422742d3fc",
+      "wordCount": 654,
+      "sectionsUsed": [
+        "Distribution inventory",
+        "Reach metrics"
+      ]
+    },
+    {
+      "path": "digital-presence/platforms.md",
+      "sha256": "4f178c64371b285c43526fd7aabc149c9003222127fdccaf96040eea2032833a",
+      "wordCount": 1109,
+      "sectionsUsed": [
+        "Distribution inventory"
+      ]
+    },
+    {
+      "path": "digital-presence/social-media.md",
+      "sha256": "18058472a5f20bd1ce71b9d1c06a3924bb91b323b6c482d3f9ccdb0aaecababd",
+      "wordCount": 880,
+      "sectionsUsed": [
+        "Reach metrics"
+      ]
+    },
+    {
+      "path": "digital-presence/websites.md",
+      "sha256": "4e0517695413687bac4998fe9358cae275c2ecf21188a9871842281f8394e27e",
+      "wordCount": 970,
+      "sectionsUsed": [
+        "Distribution inventory",
+        "Reach metrics"
+      ]
+    },
+    {
+      "path": "media/citations.md",
+      "sha256": "30ecc5dbd8bd6d36e435b31d0cbc804e501469c894bfd2992a2d195d263eb604",
+      "wordCount": 744,
+      "sectionsUsed": [
+        "Reach metrics",
+        "Intellectual genealogy"
+      ]
+    },
+    {
+      "path": "media/press-coverage.md",
+      "sha256": "64e860441854968820470b468732751485dfe5d3f2db22dca5a82ce7f02063ba",
+      "wordCount": 716,
+      "sectionsUsed": [
+        "Reach metrics"
+      ]
+    },
+    {
+      "path": "media/reviews.md",
+      "sha256": "6c551e34d81d2524557be93439588a952abc6eb6c7aa25d837f8871eca1dafa6",
+      "wordCount": 1056,
+      "sectionsUsed": [
+        "Reach metrics"
+      ]
+    },
+    {
+      "path": "network/collaborators.md",
+      "sha256": "c2be6268eabd780d97b2d2c11dafcdf66056c4b2e5f33138b2fef61edf9a3236",
+      "wordCount": 1588,
+      "sectionsUsed": [
+        "Network graph",
+        "Intellectual genealogy"
+      ]
+    },
+    {
+      "path": "network/endorsements.md",
+      "sha256": "696da090ae196023374909410bd5eaead337294a0f90dad5b7a7375f8e9ebb95",
+      "wordCount": 982,
+      "sectionsUsed": [
+        "Network graph"
+      ]
+    },
+    {
+      "path": "network/events.md",
+      "sha256": "4b37d80a415296b49b89708a89a78fc28aed0eb79f0e286a694d54af4bdadb2d",
+      "wordCount": 879,
+      "sectionsUsed": [
+        "Timeline",
+        "Distribution inventory"
+      ]
+    },
+    {
+      "path": "network/network-summary.md",
+      "sha256": "3c69b8356c2372b1440959a0d8b7b4f334882ac940ebb9dbf4a11a3b2525fb82",
+      "wordCount": 1783,
+      "sectionsUsed": [
+        "Network graph"
+      ]
+    },
+    {
+      "path": "network/organizations.md",
+      "sha256": "da13da77f626b7602e3e553310ad74ecd63f34371bea420510150099550950cb",
+      "wordCount": 1371,
+      "sectionsUsed": [
+        "Network graph",
+        "Organizational affiliations"
+      ]
+    },
+    {
+      "path": "profile/biography.md",
+      "sha256": "a998a2b57bacda3ed7f45972a5c3acd69eb5e3bfd37a12cdc73b9f7eb217ca45",
+      "wordCount": 1669,
+      "sectionsUsed": [
+        "Timeline",
+        "Editorial bio"
+      ]
+    },
+    {
+      "path": "profile/identity.md",
+      "sha256": "16a0dbd190c8cc747f6518b8d78c7ccdc0e2ed790f29d913e21312d9b586d747",
+      "wordCount": 1829,
+      "sectionsUsed": [
+        "Identity",
+        "Disambiguation"
+      ]
+    },
+    {
+      "path": "profile/theology.md",
+      "sha256": "b88600ee01448d28dfd9e931862c2ce6d82cc1ea305138c0bae4f82b62a4c141",
+      "wordCount": 1905,
+      "sectionsUsed": [
+        "Theological positioning",
+        "Frameworks"
+      ]
+    },
+    {
+      "path": "profile/voice-analysis.md",
+      "sha256": "1784c43129d4f0bf4fdf36c8fe458ce00b578dc8a326faf360ced196c5f0a579",
+      "wordCount": 1274,
+      "sectionsUsed": [
+        "Voice fingerprint"
+      ]
+    }
+  ]
+}

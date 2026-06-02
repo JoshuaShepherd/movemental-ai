@@ -1,10 +1,18 @@
 # Type Safety Chain Overview
 
+> ⚠ **PARTLY STALE (as of 2026-06-02).** This document describes the original **2-table prototype**
+> (`organizations`, `onboarding_responses`) under repo-root paths (`db/schema.ts`, `lib/`, `app/`,
+> `hooks/`). The **current** chain has **210 tables** and lives under **`src/`**
+> (`src/lib/db/schema.ts`). The repo-root dirs are now legacy stubs.
+> **For current status, paths, and the shared-database topology, see the authoritative doc:**
+> [`../../docs/architecture/TYPE_SAFETY_CHAIN.md`](../../docs/architecture/TYPE_SAFETY_CHAIN.md).
+> The conceptual sections below (golden rule, fix-bottom-up, multi-tenant flow) remain valid.
+
 > **The Six-Layer Chain: How Types Flow from Database to UI**
 
 **Version**: 2.0.0  
-**Last Updated**: February 15, 2026  
-**Status**: ✅ All Layers LOCKED/VALIDATED (No TypeScript errors - verified)
+**Last Updated**: February 15, 2026 (status corrected 2026-06-02 — see banner above)  
+**Status**: Layer 1 currently UNLOCKED — 210 schema tables vs 223 live DB tables (drift; see canonical doc §5)
 
 ---
 
