@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-02T21:14:05.312Z",
+  "generated": "2026-06-04T07:25:21.611Z",
   "version": 1,
   "rootLabel": "Movement leader research",
   "leaders": [
@@ -26,7 +26,7 @@
     {
       "slug": "alan-hirsch",
       "name": "Alan Hirsch",
-      "fileCount": 52
+      "fileCount": 55
     },
     {
       "slug": "alan-mcwilliam",
@@ -51,7 +51,7 @@
     {
       "slug": "andrew-jones",
       "name": "Andrew Jones",
-      "fileCount": 17
+      "fileCount": 29
     },
     {
       "slug": "andy-crouch",
@@ -96,7 +96,7 @@
     {
       "slug": "brad-brisco",
       "name": "Brad Brisco",
-      "fileCount": 47
+      "fileCount": 50
     },
     {
       "slug": "bree-mills",
@@ -116,7 +116,7 @@
     {
       "slug": "brian-sanders",
       "name": "Brian Sanders",
-      "fileCount": 19
+      "fileCount": 28
     },
     {
       "slug": "brian-swanson",
@@ -216,7 +216,7 @@
     {
       "slug": "dave-ferguson",
       "name": "Dave Ferguson",
-      "fileCount": 40
+      "fileCount": 42
     },
     {
       "slug": "david-fitch",
@@ -346,7 +346,7 @@
     {
       "slug": "jeremy-chambers",
       "name": "Jeremy Chambers",
-      "fileCount": 13
+      "fileCount": 24
     },
     {
       "slug": "jeremy-monica-chambers",
@@ -421,7 +421,7 @@
     {
       "slug": "jr-woodward",
       "name": "JR. Woodward",
-      "fileCount": 40
+      "fileCount": 43
     },
     {
       "slug": "justin-whitmel-earley",
@@ -481,7 +481,7 @@
     {
       "slug": "liz-rios",
       "name": "Liz Rios",
-      "fileCount": 16
+      "fileCount": 31
     },
     {
       "slug": "lori-anne-thompson",
@@ -491,7 +491,7 @@
     {
       "slug": "lucas-pulley",
       "name": "Lucas Pulley",
-      "fileCount": 40
+      "fileCount": 43
     },
     {
       "slug": "mandy-smith",
@@ -536,7 +536,7 @@
     {
       "slug": "michael-cooper",
       "name": "Michael Cooper",
-      "fileCount": 49
+      "fileCount": 51
     },
     {
       "slug": "michael-frost",
@@ -576,17 +576,12 @@
     {
       "slug": "neil-cole",
       "name": "Neil Cole",
-      "fileCount": 34
+      "fileCount": 36
     },
     {
       "slug": "neil-mosely",
       "name": "Neil Mosely",
       "fileCount": 8
-    },
-    {
-      "slug": "network",
-      "name": "Network",
-      "fileCount": 1
     },
     {
       "slug": "nijay-gupta",
@@ -616,17 +611,12 @@
     {
       "slug": "peyton-jones",
       "name": "Peyton Jones",
-      "fileCount": 20
+      "fileCount": 32
     },
     {
       "slug": "preston-sprinkle",
       "name": "Preston Sprinkle",
       "fileCount": 2
-    },
-    {
-      "slug": "quadw-foundation",
-      "name": "Quadw Foundation",
-      "fileCount": 1
     },
     {
       "slug": "r-paul-stevens",
@@ -641,7 +631,7 @@
     {
       "slug": "reflected-understanding",
       "name": "Reflected Understanding",
-      "fileCount": 15
+      "fileCount": 16
     },
     {
       "slug": "reggie-mcneal",
@@ -676,7 +666,7 @@
     {
       "slug": "rob-wegner",
       "name": "Rob Wegner",
-      "fileCount": 40
+      "fileCount": 42
     },
     {
       "slug": "robert-chao-romero",
@@ -696,12 +686,12 @@
     {
       "slug": "rowland-smith",
       "name": "Rowland Smith",
-      "fileCount": 21
+      "fileCount": 37
     },
     {
       "slug": "roy-moran",
       "name": "Roy Moran",
-      "fileCount": 20
+      "fileCount": 30
     },
     {
       "slug": "ruth-haley-barton",
@@ -1040,6 +1030,276 @@
       "title": "Alan Hirsch Baseline Report"
     },
     {
+      "id": "alan-hirsch/_misc/analysis-content-analysis",
+      "path": "alan-hirsch/_misc/analysis-content-analysis.md",
+      "slug": "alan-hirsch",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "analysis-content-analysis",
+      "title": "Analysis Content Analysis"
+    },
+    {
+      "id": "alan-hirsch/_misc/committed-voice",
+      "path": "alan-hirsch/_misc/committed-voice.md",
+      "slug": "alan-hirsch",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
+    },
+    {
+      "id": "alan-hirsch/_misc/content-analysis-root",
+      "path": "alan-hirsch/_misc/content-analysis-root.md",
+      "slug": "alan-hirsch",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "content-analysis-root",
+      "title": "Content Analysis Root"
+    },
+    {
+      "id": "alan-hirsch/_misc/digital-presence-discovery",
+      "path": "alan-hirsch/_misc/digital-presence-discovery.md",
+      "slug": "alan-hirsch",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "digital-presence-discovery",
+      "title": "Digital Presence Discovery"
+    },
+    {
+      "id": "alan-hirsch/_misc/media/citations",
+      "path": "alan-hirsch/_misc/media/citations.md",
+      "slug": "alan-hirsch",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "citations",
+      "title": "Citations (Media)"
+    },
+    {
+      "id": "alan-hirsch/_misc/media/press-coverage",
+      "path": "alan-hirsch/_misc/media/press-coverage.md",
+      "slug": "alan-hirsch",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "press-coverage",
+      "title": "Press Coverage (Media)"
+    },
+    {
+      "id": "alan-hirsch/_misc/media/reviews",
+      "path": "alan-hirsch/_misc/media/reviews.md",
+      "slug": "alan-hirsch",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "reviews",
+      "title": "Reviews (Media)"
+    },
+    {
+      "id": "alan-hirsch/_misc/network/collaborators",
+      "path": "alan-hirsch/_misc/network/collaborators.md",
+      "slug": "alan-hirsch",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "collaborators",
+      "title": "Collaborators (Network)"
+    },
+    {
+      "id": "alan-hirsch/_misc/network/endorsements",
+      "path": "alan-hirsch/_misc/network/endorsements.md",
+      "slug": "alan-hirsch",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "endorsements",
+      "title": "Endorsements (Network)"
+    },
+    {
+      "id": "alan-hirsch/_misc/network/events",
+      "path": "alan-hirsch/_misc/network/events.md",
+      "slug": "alan-hirsch",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "events",
+      "title": "Events (Network)"
+    },
+    {
+      "id": "alan-hirsch/_staff/competitive-landscape",
+      "path": "alan-hirsch/_staff/competitive-landscape.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "competitive-landscape",
+      "title": "Competitive Landscape"
+    },
+    {
+      "id": "alan-hirsch/_staff/content-marketing-playbook",
+      "path": "alan-hirsch/_staff/content-marketing-playbook.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "content-marketing-playbook",
+      "title": "Content Marketing Playbook"
+    },
+    {
+      "id": "alan-hirsch/_staff/gap-analysis-root",
+      "path": "alan-hirsch/_staff/gap-analysis-root.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "gap-analysis-root",
+      "title": "Gap Analysis Root"
+    },
+    {
+      "id": "alan-hirsch/_staff/gap-analysis",
+      "path": "alan-hirsch/_staff/gap-analysis.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "gap-analysis",
+      "title": "Gap Analysis"
+    },
+    {
+      "id": "alan-hirsch/_staff/hirsch-affinity-ranked-list",
+      "path": "alan-hirsch/_staff/hirsch-affinity-ranked-list.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "hirsch-affinity-ranked-list",
+      "title": "Hirsch Affinity Ranked List"
+    },
+    {
+      "id": "alan-hirsch/_staff/hirsch-affinity-rubric",
+      "path": "alan-hirsch/_staff/hirsch-affinity-rubric.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "hirsch-affinity-rubric",
+      "title": "Hirsch Affinity Rubric"
+    },
+    {
+      "id": "alan-hirsch/_staff/identity-verification",
+      "path": "alan-hirsch/_staff/identity-verification.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "identity-verification",
+      "title": "Identity Verification"
+    },
+    {
+      "id": "alan-hirsch/_staff/legacy/ALAN_HIRSCH_AUDIENCE_PROFILE",
+      "path": "alan-hirsch/_staff/legacy/ALAN_HIRSCH_AUDIENCE_PROFILE.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "ALAN_HIRSCH_AUDIENCE_PROFILE",
+      "title": "ALAN HIRSCH AUDIENCE PROFILE (Legacy)"
+    },
+    {
+      "id": "alan-hirsch/_staff/legacy/ALAN_HIRSCH_AUTHOR_PROFILE",
+      "path": "alan-hirsch/_staff/legacy/ALAN_HIRSCH_AUTHOR_PROFILE.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "ALAN_HIRSCH_AUTHOR_PROFILE",
+      "title": "ALAN HIRSCH AUTHOR PROFILE (Legacy)"
+    },
+    {
+      "id": "alan-hirsch/_staff/legacy/ALAN_HIRSCH_CALLING_PROFILE",
+      "path": "alan-hirsch/_staff/legacy/ALAN_HIRSCH_CALLING_PROFILE.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "ALAN_HIRSCH_CALLING_PROFILE",
+      "title": "ALAN HIRSCH CALLING PROFILE (Legacy)"
+    },
+    {
+      "id": "alan-hirsch/_staff/legacy/ALAN_HIRSCH_COMPLETE_PROFILE",
+      "path": "alan-hirsch/_staff/legacy/ALAN_HIRSCH_COMPLETE_PROFILE.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "ALAN_HIRSCH_COMPLETE_PROFILE",
+      "title": "ALAN HIRSCH COMPLETE PROFILE (Legacy)"
+    },
+    {
+      "id": "alan-hirsch/_staff/legacy/ALAN_HIRSCH_CONTENT_AUDIT",
+      "path": "alan-hirsch/_staff/legacy/ALAN_HIRSCH_CONTENT_AUDIT.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "ALAN_HIRSCH_CONTENT_AUDIT",
+      "title": "ALAN HIRSCH CONTENT AUDIT (Legacy)"
+    },
+    {
+      "id": "alan-hirsch/_staff/legacy/ALAN_HIRSCH_ORGS",
+      "path": "alan-hirsch/_staff/legacy/ALAN_HIRSCH_ORGS.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "ALAN_HIRSCH_ORGS",
+      "title": "ALAN HIRSCH ORGS (Legacy)"
+    },
+    {
+      "id": "alan-hirsch/_staff/legacy/ALAN_HIRSCH_PROFILES_INDEX",
+      "path": "alan-hirsch/_staff/legacy/ALAN_HIRSCH_PROFILES_INDEX.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "ALAN_HIRSCH_PROFILES_INDEX",
+      "title": "ALAN HIRSCH PROFILES INDEX (Legacy)"
+    },
+    {
+      "id": "alan-hirsch/_staff/legacy/ALAN_HIRSCH_RESEARCH_COLLATED",
+      "path": "alan-hirsch/_staff/legacy/ALAN_HIRSCH_RESEARCH_COLLATED.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "ALAN_HIRSCH_RESEARCH_COLLATED",
+      "title": "ALAN HIRSCH RESEARCH COLLATED (Legacy)"
+    },
+    {
+      "id": "alan-hirsch/_staff/legacy/ALAN_HIRSCH_TIMELINE",
+      "path": "alan-hirsch/_staff/legacy/ALAN_HIRSCH_TIMELINE.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "ALAN_HIRSCH_TIMELINE",
+      "title": "ALAN HIRSCH TIMELINE (Legacy)"
+    },
+    {
+      "id": "alan-hirsch/_staff/legacy/AUTHOR_PROFILE_PRESENTATION_STANDARDS",
+      "path": "alan-hirsch/_staff/legacy/AUTHOR_PROFILE_PRESENTATION_STANDARDS.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "AUTHOR_PROFILE_PRESENTATION_STANDARDS",
+      "title": "AUTHOR PROFILE PRESENTATION STANDARDS (Legacy)"
+    },
+    {
+      "id": "alan-hirsch/_staff/legacy/biography",
+      "path": "alan-hirsch/_staff/legacy/biography.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "biography",
+      "title": "Biography (Legacy)"
+    },
+    {
+      "id": "alan-hirsch/_staff/movemental-analysis",
+      "path": "alan-hirsch/_staff/movemental-analysis.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-analysis",
+      "title": "Movemental Analysis"
+    },
+    {
+      "id": "alan-hirsch/_staff/movemental-fit",
+      "path": "alan-hirsch/_staff/movemental-fit.md",
+      "slug": "alan-hirsch",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-fit",
+      "title": "Movemental Fit"
+    },
+    {
       "id": "alan-hirsch/_tracker",
       "path": "alan-hirsch/_tracker.md",
       "slug": "alan-hirsch",
@@ -1049,87 +1309,6 @@
       "title": " Tracker"
     },
     {
-      "id": "alan-hirsch/ALAN_HIRSCH_AUDIENCE_PROFILE",
-      "path": "alan-hirsch/ALAN_HIRSCH_AUDIENCE_PROFILE.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "ALAN_HIRSCH_AUDIENCE_PROFILE",
-      "title": "ALAN HIRSCH AUDIENCE PROFILE"
-    },
-    {
-      "id": "alan-hirsch/ALAN_HIRSCH_AUTHOR_PROFILE",
-      "path": "alan-hirsch/ALAN_HIRSCH_AUTHOR_PROFILE.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "ALAN_HIRSCH_AUTHOR_PROFILE",
-      "title": "ALAN HIRSCH AUTHOR PROFILE"
-    },
-    {
-      "id": "alan-hirsch/ALAN_HIRSCH_CALLING_PROFILE",
-      "path": "alan-hirsch/ALAN_HIRSCH_CALLING_PROFILE.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "ALAN_HIRSCH_CALLING_PROFILE",
-      "title": "ALAN HIRSCH CALLING PROFILE"
-    },
-    {
-      "id": "alan-hirsch/ALAN_HIRSCH_COMPLETE_PROFILE",
-      "path": "alan-hirsch/ALAN_HIRSCH_COMPLETE_PROFILE.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "ALAN_HIRSCH_COMPLETE_PROFILE",
-      "title": "ALAN HIRSCH COMPLETE PROFILE"
-    },
-    {
-      "id": "alan-hirsch/ALAN_HIRSCH_CONTENT_AUDIT",
-      "path": "alan-hirsch/ALAN_HIRSCH_CONTENT_AUDIT.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "ALAN_HIRSCH_CONTENT_AUDIT",
-      "title": "ALAN HIRSCH CONTENT AUDIT"
-    },
-    {
-      "id": "alan-hirsch/ALAN_HIRSCH_ORGS",
-      "path": "alan-hirsch/ALAN_HIRSCH_ORGS.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "ALAN_HIRSCH_ORGS",
-      "title": "ALAN HIRSCH ORGS"
-    },
-    {
-      "id": "alan-hirsch/ALAN_HIRSCH_PROFILES_INDEX",
-      "path": "alan-hirsch/ALAN_HIRSCH_PROFILES_INDEX.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "ALAN_HIRSCH_PROFILES_INDEX",
-      "title": "ALAN HIRSCH PROFILES INDEX"
-    },
-    {
-      "id": "alan-hirsch/ALAN_HIRSCH_RESEARCH_COLLATED",
-      "path": "alan-hirsch/ALAN_HIRSCH_RESEARCH_COLLATED.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "ALAN_HIRSCH_RESEARCH_COLLATED",
-      "title": "ALAN HIRSCH RESEARCH COLLATED"
-    },
-    {
-      "id": "alan-hirsch/ALAN_HIRSCH_TIMELINE",
-      "path": "alan-hirsch/ALAN_HIRSCH_TIMELINE.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "ALAN_HIRSCH_TIMELINE",
-      "title": "ALAN HIRSCH TIMELINE"
-    },
-    {
       "id": "alan-hirsch/analysis/audience-analysis",
       "path": "alan-hirsch/analysis/audience-analysis.md",
       "slug": "alan-hirsch",
@@ -1137,87 +1316,6 @@
       "subLabel": "",
       "fileBase": "audience-analysis",
       "title": "Audience Analysis"
-    },
-    {
-      "id": "alan-hirsch/analysis/competitive-landscape",
-      "path": "alan-hirsch/analysis/competitive-landscape.md",
-      "slug": "alan-hirsch",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "competitive-landscape",
-      "title": "Competitive Landscape"
-    },
-    {
-      "id": "alan-hirsch/analysis/content-analysis",
-      "path": "alan-hirsch/analysis/content-analysis.md",
-      "slug": "alan-hirsch",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "content-analysis",
-      "title": "Content Analysis"
-    },
-    {
-      "id": "alan-hirsch/analysis/gap-analysis",
-      "path": "alan-hirsch/analysis/gap-analysis.md",
-      "slug": "alan-hirsch",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "gap-analysis",
-      "title": "Gap Analysis"
-    },
-    {
-      "id": "alan-hirsch/analysis/movemental-fit",
-      "path": "alan-hirsch/analysis/movemental-fit.md",
-      "slug": "alan-hirsch",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "movemental-fit",
-      "title": "Movemental Fit"
-    },
-    {
-      "id": "alan-hirsch/AUTHOR_PROFILE_PRESENTATION_STANDARDS",
-      "path": "alan-hirsch/AUTHOR_PROFILE_PRESENTATION_STANDARDS.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "AUTHOR_PROFILE_PRESENTATION_STANDARDS",
-      "title": "AUTHOR PROFILE PRESENTATION STANDARDS"
-    },
-    {
-      "id": "alan-hirsch/biography",
-      "path": "alan-hirsch/biography.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "biography",
-      "title": "Biography"
-    },
-    {
-      "id": "alan-hirsch/committed-voice",
-      "path": "alan-hirsch/committed-voice.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "committed-voice",
-      "title": "Committed Voice"
-    },
-    {
-      "id": "alan-hirsch/content-analysis",
-      "path": "alan-hirsch/content-analysis.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "content-analysis",
-      "title": "Content Analysis"
-    },
-    {
-      "id": "alan-hirsch/content-marketing-playbook",
-      "path": "alan-hirsch/content-marketing-playbook.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "content-marketing-playbook",
-      "title": "Content Marketing Playbook"
     },
     {
       "id": "alan-hirsch/content/academic",
@@ -1256,6 +1354,15 @@
       "title": "Books"
     },
     {
+      "id": "alan-hirsch/content/content-audit",
+      "path": "alan-hirsch/content/content-audit.md",
+      "slug": "alan-hirsch",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "content-audit",
+      "title": "Content Audit"
+    },
+    {
       "id": "alan-hirsch/content/courses",
       "path": "alan-hirsch/content/courses.md",
       "slug": "alan-hirsch",
@@ -1265,6 +1372,15 @@
       "title": "Courses"
     },
     {
+      "id": "alan-hirsch/content/frameworks",
+      "path": "alan-hirsch/content/frameworks.md",
+      "slug": "alan-hirsch",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "frameworks",
+      "title": "Frameworks"
+    },
+    {
       "id": "alan-hirsch/content/videos",
       "path": "alan-hirsch/content/videos.md",
       "slug": "alan-hirsch",
@@ -1272,15 +1388,6 @@
       "subLabel": "",
       "fileBase": "videos",
       "title": "Videos"
-    },
-    {
-      "id": "alan-hirsch/digital-presence-discovery",
-      "path": "alan-hirsch/digital-presence-discovery.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "digital-presence-discovery",
-      "title": "Digital Presence Discovery"
     },
     {
       "id": "alan-hirsch/digital-presence/newsletters",
@@ -1328,105 +1435,6 @@
       "title": "Fragmentation Story"
     },
     {
-      "id": "alan-hirsch/gap-analysis",
-      "path": "alan-hirsch/gap-analysis.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "gap-analysis",
-      "title": "Gap Analysis"
-    },
-    {
-      "id": "alan-hirsch/hirsch-affinity-ranked-list",
-      "path": "alan-hirsch/hirsch-affinity-ranked-list.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "hirsch-affinity-ranked-list",
-      "title": "Hirsch Affinity Ranked List"
-    },
-    {
-      "id": "alan-hirsch/hirsch-affinity-rubric",
-      "path": "alan-hirsch/hirsch-affinity-rubric.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "hirsch-affinity-rubric",
-      "title": "Hirsch Affinity Rubric"
-    },
-    {
-      "id": "alan-hirsch/identity-verification",
-      "path": "alan-hirsch/identity-verification.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "identity-verification",
-      "title": "Identity Verification"
-    },
-    {
-      "id": "alan-hirsch/media/citations",
-      "path": "alan-hirsch/media/citations.md",
-      "slug": "alan-hirsch",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "citations",
-      "title": "Citations"
-    },
-    {
-      "id": "alan-hirsch/media/press-coverage",
-      "path": "alan-hirsch/media/press-coverage.md",
-      "slug": "alan-hirsch",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "press-coverage",
-      "title": "Press Coverage"
-    },
-    {
-      "id": "alan-hirsch/media/reviews",
-      "path": "alan-hirsch/media/reviews.md",
-      "slug": "alan-hirsch",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "reviews",
-      "title": "Reviews"
-    },
-    {
-      "id": "alan-hirsch/movemental-analysis",
-      "path": "alan-hirsch/movemental-analysis.md",
-      "slug": "alan-hirsch",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "movemental-analysis",
-      "title": "Movemental Analysis"
-    },
-    {
-      "id": "alan-hirsch/network/collaborators",
-      "path": "alan-hirsch/network/collaborators.md",
-      "slug": "alan-hirsch",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "collaborators",
-      "title": "Collaborators"
-    },
-    {
-      "id": "alan-hirsch/network/endorsements",
-      "path": "alan-hirsch/network/endorsements.md",
-      "slug": "alan-hirsch",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "endorsements",
-      "title": "Endorsements"
-    },
-    {
-      "id": "alan-hirsch/network/events",
-      "path": "alan-hirsch/network/events.md",
-      "slug": "alan-hirsch",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "events",
-      "title": "Events"
-    },
-    {
       "id": "alan-hirsch/network/organizations",
       "path": "alan-hirsch/network/organizations.md",
       "slug": "alan-hirsch",
@@ -1443,6 +1451,15 @@
       "subLabel": "",
       "fileBase": "biography",
       "title": "Biography"
+    },
+    {
+      "id": "alan-hirsch/profile/calling-profile",
+      "path": "alan-hirsch/profile/calling-profile.md",
+      "slug": "alan-hirsch",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "calling-profile",
+      "title": "Calling Profile"
     },
     {
       "id": "alan-hirsch/profile/identity",
@@ -1625,13 +1642,67 @@
       "title": "README"
     },
     {
-      "id": "andrew-jones/content-analysis",
-      "path": "andrew-jones/content-analysis.md",
+      "id": "andrew-jones/_misc/content-analysis-root",
+      "path": "andrew-jones/_misc/content-analysis-root.md",
       "slug": "andrew-jones",
-      "group": "Overview & index",
+      "group": "_misc",
       "subLabel": "",
-      "fileBase": "content-analysis",
-      "title": "Content Analysis"
+      "fileBase": "content-analysis-root",
+      "title": "Content Analysis Root"
+    },
+    {
+      "id": "andrew-jones/_misc/digital-presence-discovery",
+      "path": "andrew-jones/_misc/digital-presence-discovery.md",
+      "slug": "andrew-jones",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "digital-presence-discovery",
+      "title": "Digital Presence Discovery"
+    },
+    {
+      "id": "andrew-jones/_staff/gap-analysis-root",
+      "path": "andrew-jones/_staff/gap-analysis-root.md",
+      "slug": "andrew-jones",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "gap-analysis-root",
+      "title": "Gap Analysis Root"
+    },
+    {
+      "id": "andrew-jones/_staff/identity-verification",
+      "path": "andrew-jones/_staff/identity-verification.md",
+      "slug": "andrew-jones",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "identity-verification",
+      "title": "Identity Verification"
+    },
+    {
+      "id": "andrew-jones/_staff/movemental-analysis",
+      "path": "andrew-jones/_staff/movemental-analysis.md",
+      "slug": "andrew-jones",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-analysis",
+      "title": "Movemental Analysis"
+    },
+    {
+      "id": "andrew-jones/analysis/audience-analysis",
+      "path": "andrew-jones/analysis/audience-analysis.md",
+      "slug": "andrew-jones",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "audience-analysis",
+      "title": "Audience Analysis"
+    },
+    {
+      "id": "andrew-jones/content/academic",
+      "path": "andrew-jones/content/academic.md",
+      "slug": "andrew-jones",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "academic",
+      "title": "Academic"
     },
     {
       "id": "andrew-jones/content/articles",
@@ -1661,6 +1732,24 @@
       "title": "Books"
     },
     {
+      "id": "andrew-jones/content/content-audit",
+      "path": "andrew-jones/content/content-audit.md",
+      "slug": "andrew-jones",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "content-audit",
+      "title": "Content Audit"
+    },
+    {
+      "id": "andrew-jones/content/courses",
+      "path": "andrew-jones/content/courses.md",
+      "slug": "andrew-jones",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "courses",
+      "title": "Courses"
+    },
+    {
       "id": "andrew-jones/content/frameworks",
       "path": "andrew-jones/content/frameworks.md",
       "slug": "andrew-jones",
@@ -1679,40 +1768,49 @@
       "title": "Videos"
     },
     {
-      "id": "andrew-jones/digital-presence-discovery",
-      "path": "andrew-jones/digital-presence-discovery.md",
+      "id": "andrew-jones/digital-presence/newsletters",
+      "path": "andrew-jones/digital-presence/newsletters.md",
       "slug": "andrew-jones",
-      "group": "Overview & index",
+      "group": "Digital presence",
       "subLabel": "",
-      "fileBase": "digital-presence-discovery",
-      "title": "Digital Presence Discovery"
+      "fileBase": "newsletters",
+      "title": "Newsletters"
     },
     {
-      "id": "andrew-jones/gap-analysis",
-      "path": "andrew-jones/gap-analysis.md",
+      "id": "andrew-jones/digital-presence/platforms",
+      "path": "andrew-jones/digital-presence/platforms.md",
       "slug": "andrew-jones",
-      "group": "Overview & index",
+      "group": "Digital presence",
       "subLabel": "",
-      "fileBase": "gap-analysis",
-      "title": "Gap Analysis"
+      "fileBase": "platforms",
+      "title": "Platforms"
     },
     {
-      "id": "andrew-jones/identity-verification",
-      "path": "andrew-jones/identity-verification.md",
+      "id": "andrew-jones/digital-presence/social-media",
+      "path": "andrew-jones/digital-presence/social-media.md",
       "slug": "andrew-jones",
-      "group": "Overview & index",
+      "group": "Digital presence",
       "subLabel": "",
-      "fileBase": "identity-verification",
-      "title": "Identity Verification"
+      "fileBase": "social-media",
+      "title": "Social Media"
     },
     {
-      "id": "andrew-jones/movemental-analysis",
-      "path": "andrew-jones/movemental-analysis.md",
+      "id": "andrew-jones/digital-presence/websites",
+      "path": "andrew-jones/digital-presence/websites.md",
+      "slug": "andrew-jones",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "websites",
+      "title": "Websites"
+    },
+    {
+      "id": "andrew-jones/fragmentation-story",
+      "path": "andrew-jones/fragmentation-story.md",
       "slug": "andrew-jones",
       "group": "Overview & index",
       "subLabel": "",
-      "fileBase": "movemental-analysis",
-      "title": "Movemental Analysis"
+      "fileBase": "fragmentation-story",
+      "title": "Fragmentation Story"
     },
     {
       "id": "andrew-jones/network/organizations",
@@ -1733,6 +1831,15 @@
       "title": "Biography"
     },
     {
+      "id": "andrew-jones/profile/calling-profile",
+      "path": "andrew-jones/profile/calling-profile.md",
+      "slug": "andrew-jones",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "calling-profile",
+      "title": "Calling Profile"
+    },
+    {
       "id": "andrew-jones/profile/identity",
       "path": "andrew-jones/profile/identity.md",
       "slug": "andrew-jones",
@@ -1742,6 +1849,15 @@
       "title": "Identity"
     },
     {
+      "id": "andrew-jones/profile/theology",
+      "path": "andrew-jones/profile/theology.md",
+      "slug": "andrew-jones",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "theology",
+      "title": "Theology"
+    },
+    {
       "id": "andrew-jones/profile/voice-analysis",
       "path": "andrew-jones/profile/voice-analysis.md",
       "slug": "andrew-jones",
@@ -1749,6 +1865,15 @@
       "subLabel": "",
       "fileBase": "voice-analysis",
       "title": "Voice Analysis"
+    },
+    {
+      "id": "andrew-jones/README",
+      "path": "andrew-jones/README.md",
+      "slug": "andrew-jones",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "README",
+      "title": "README"
     },
     {
       "id": "andrew-jones/sources",
@@ -1913,6 +2038,231 @@
       "title": "README"
     },
     {
+      "id": "brad-brisco/_misc/analysis-content-analysis",
+      "path": "brad-brisco/_misc/analysis-content-analysis.md",
+      "slug": "brad-brisco",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "analysis-content-analysis",
+      "title": "Analysis Content Analysis"
+    },
+    {
+      "id": "brad-brisco/_misc/committed-voice",
+      "path": "brad-brisco/_misc/committed-voice.md",
+      "slug": "brad-brisco",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
+    },
+    {
+      "id": "brad-brisco/_misc/content-analysis-root",
+      "path": "brad-brisco/_misc/content-analysis-root.md",
+      "slug": "brad-brisco",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "content-analysis-root",
+      "title": "Content Analysis Root"
+    },
+    {
+      "id": "brad-brisco/_misc/digital-presence-discovery",
+      "path": "brad-brisco/_misc/digital-presence-discovery.md",
+      "slug": "brad-brisco",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "digital-presence-discovery",
+      "title": "Digital Presence Discovery"
+    },
+    {
+      "id": "brad-brisco/_misc/media/citations",
+      "path": "brad-brisco/_misc/media/citations.md",
+      "slug": "brad-brisco",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "citations",
+      "title": "Citations (Media)"
+    },
+    {
+      "id": "brad-brisco/_misc/media/press-coverage",
+      "path": "brad-brisco/_misc/media/press-coverage.md",
+      "slug": "brad-brisco",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "press-coverage",
+      "title": "Press Coverage (Media)"
+    },
+    {
+      "id": "brad-brisco/_misc/media/reviews",
+      "path": "brad-brisco/_misc/media/reviews.md",
+      "slug": "brad-brisco",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "reviews",
+      "title": "Reviews (Media)"
+    },
+    {
+      "id": "brad-brisco/_misc/network/collaborators",
+      "path": "brad-brisco/_misc/network/collaborators.md",
+      "slug": "brad-brisco",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "collaborators",
+      "title": "Collaborators (Network)"
+    },
+    {
+      "id": "brad-brisco/_misc/network/endorsements",
+      "path": "brad-brisco/_misc/network/endorsements.md",
+      "slug": "brad-brisco",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "endorsements",
+      "title": "Endorsements (Network)"
+    },
+    {
+      "id": "brad-brisco/_misc/network/events",
+      "path": "brad-brisco/_misc/network/events.md",
+      "slug": "brad-brisco",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "events",
+      "title": "Events (Network)"
+    },
+    {
+      "id": "brad-brisco/_staff/competitive-landscape",
+      "path": "brad-brisco/_staff/competitive-landscape.md",
+      "slug": "brad-brisco",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "competitive-landscape",
+      "title": "Competitive Landscape"
+    },
+    {
+      "id": "brad-brisco/_staff/content-marketing-playbook",
+      "path": "brad-brisco/_staff/content-marketing-playbook.md",
+      "slug": "brad-brisco",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "content-marketing-playbook",
+      "title": "Content Marketing Playbook"
+    },
+    {
+      "id": "brad-brisco/_staff/gap-analysis-root",
+      "path": "brad-brisco/_staff/gap-analysis-root.md",
+      "slug": "brad-brisco",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "gap-analysis-root",
+      "title": "Gap Analysis Root"
+    },
+    {
+      "id": "brad-brisco/_staff/gap-analysis",
+      "path": "brad-brisco/_staff/gap-analysis.md",
+      "slug": "brad-brisco",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "gap-analysis",
+      "title": "Gap Analysis"
+    },
+    {
+      "id": "brad-brisco/_staff/identity-verification",
+      "path": "brad-brisco/_staff/identity-verification.md",
+      "slug": "brad-brisco",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "identity-verification",
+      "title": "Identity Verification"
+    },
+    {
+      "id": "brad-brisco/_staff/legacy/BRAD_BRISCO_AUDIENCE_PROFILE",
+      "path": "brad-brisco/_staff/legacy/BRAD_BRISCO_AUDIENCE_PROFILE.md",
+      "slug": "brad-brisco",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "BRAD_BRISCO_AUDIENCE_PROFILE",
+      "title": "BRAD BRISCO AUDIENCE PROFILE (Legacy)"
+    },
+    {
+      "id": "brad-brisco/_staff/legacy/BRAD_BRISCO_AUTHOR_PROFILE",
+      "path": "brad-brisco/_staff/legacy/BRAD_BRISCO_AUTHOR_PROFILE.md",
+      "slug": "brad-brisco",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "BRAD_BRISCO_AUTHOR_PROFILE",
+      "title": "BRAD BRISCO AUTHOR PROFILE (Legacy)"
+    },
+    {
+      "id": "brad-brisco/_staff/legacy/BRAD_BRISCO_CALLING_PROFILE",
+      "path": "brad-brisco/_staff/legacy/BRAD_BRISCO_CALLING_PROFILE.md",
+      "slug": "brad-brisco",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "BRAD_BRISCO_CALLING_PROFILE",
+      "title": "BRAD BRISCO CALLING PROFILE (Legacy)"
+    },
+    {
+      "id": "brad-brisco/_staff/legacy/BRAD_BRISCO_CONTENT_AUDIT",
+      "path": "brad-brisco/_staff/legacy/BRAD_BRISCO_CONTENT_AUDIT.md",
+      "slug": "brad-brisco",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "BRAD_BRISCO_CONTENT_AUDIT",
+      "title": "BRAD BRISCO CONTENT AUDIT (Legacy)"
+    },
+    {
+      "id": "brad-brisco/_staff/legacy/BRAD_BRISCO_MASTER_WRITING_PROMPT",
+      "path": "brad-brisco/_staff/legacy/BRAD_BRISCO_MASTER_WRITING_PROMPT.md",
+      "slug": "brad-brisco",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "BRAD_BRISCO_MASTER_WRITING_PROMPT",
+      "title": "BRAD BRISCO MASTER WRITING PROMPT (Legacy)"
+    },
+    {
+      "id": "brad-brisco/_staff/legacy/BRAD_BRISCO_PROFILES_INDEX",
+      "path": "brad-brisco/_staff/legacy/BRAD_BRISCO_PROFILES_INDEX.md",
+      "slug": "brad-brisco",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "BRAD_BRISCO_PROFILES_INDEX",
+      "title": "BRAD BRISCO PROFILES INDEX (Legacy)"
+    },
+    {
+      "id": "brad-brisco/_staff/legacy/BRAD_BRISCO_RESEARCH_SUMMARY",
+      "path": "brad-brisco/_staff/legacy/BRAD_BRISCO_RESEARCH_SUMMARY.md",
+      "slug": "brad-brisco",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "BRAD_BRISCO_RESEARCH_SUMMARY",
+      "title": "BRAD BRISCO RESEARCH SUMMARY (Legacy)"
+    },
+    {
+      "id": "brad-brisco/_staff/legacy/BRAD_BRISCO_VOICE_IDENTITY",
+      "path": "brad-brisco/_staff/legacy/BRAD_BRISCO_VOICE_IDENTITY.md",
+      "slug": "brad-brisco",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "BRAD_BRISCO_VOICE_IDENTITY",
+      "title": "BRAD BRISCO VOICE IDENTITY (Legacy)"
+    },
+    {
+      "id": "brad-brisco/_staff/movemental-analysis",
+      "path": "brad-brisco/_staff/movemental-analysis.md",
+      "slug": "brad-brisco",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-analysis",
+      "title": "Movemental Analysis"
+    },
+    {
+      "id": "brad-brisco/_staff/movemental-fit",
+      "path": "brad-brisco/_staff/movemental-fit.md",
+      "slug": "brad-brisco",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-fit",
+      "title": "Movemental Fit"
+    },
+    {
       "id": "brad-brisco/_tracker",
       "path": "brad-brisco/_tracker.md",
       "slug": "brad-brisco",
@@ -1929,141 +2279,6 @@
       "subLabel": "",
       "fileBase": "audience-analysis",
       "title": "Audience Analysis"
-    },
-    {
-      "id": "brad-brisco/analysis/competitive-landscape",
-      "path": "brad-brisco/analysis/competitive-landscape.md",
-      "slug": "brad-brisco",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "competitive-landscape",
-      "title": "Competitive Landscape"
-    },
-    {
-      "id": "brad-brisco/analysis/content-analysis",
-      "path": "brad-brisco/analysis/content-analysis.md",
-      "slug": "brad-brisco",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "content-analysis",
-      "title": "Content Analysis"
-    },
-    {
-      "id": "brad-brisco/analysis/gap-analysis",
-      "path": "brad-brisco/analysis/gap-analysis.md",
-      "slug": "brad-brisco",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "gap-analysis",
-      "title": "Gap Analysis"
-    },
-    {
-      "id": "brad-brisco/analysis/movemental-fit",
-      "path": "brad-brisco/analysis/movemental-fit.md",
-      "slug": "brad-brisco",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "movemental-fit",
-      "title": "Movemental Fit"
-    },
-    {
-      "id": "brad-brisco/BRAD_BRISCO_AUDIENCE_PROFILE",
-      "path": "brad-brisco/BRAD_BRISCO_AUDIENCE_PROFILE.md",
-      "slug": "brad-brisco",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "BRAD_BRISCO_AUDIENCE_PROFILE",
-      "title": "BRAD BRISCO AUDIENCE PROFILE"
-    },
-    {
-      "id": "brad-brisco/BRAD_BRISCO_AUTHOR_PROFILE",
-      "path": "brad-brisco/BRAD_BRISCO_AUTHOR_PROFILE.md",
-      "slug": "brad-brisco",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "BRAD_BRISCO_AUTHOR_PROFILE",
-      "title": "BRAD BRISCO AUTHOR PROFILE"
-    },
-    {
-      "id": "brad-brisco/BRAD_BRISCO_CALLING_PROFILE",
-      "path": "brad-brisco/BRAD_BRISCO_CALLING_PROFILE.md",
-      "slug": "brad-brisco",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "BRAD_BRISCO_CALLING_PROFILE",
-      "title": "BRAD BRISCO CALLING PROFILE"
-    },
-    {
-      "id": "brad-brisco/BRAD_BRISCO_CONTENT_AUDIT",
-      "path": "brad-brisco/BRAD_BRISCO_CONTENT_AUDIT.md",
-      "slug": "brad-brisco",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "BRAD_BRISCO_CONTENT_AUDIT",
-      "title": "BRAD BRISCO CONTENT AUDIT"
-    },
-    {
-      "id": "brad-brisco/BRAD_BRISCO_MASTER_WRITING_PROMPT",
-      "path": "brad-brisco/BRAD_BRISCO_MASTER_WRITING_PROMPT.md",
-      "slug": "brad-brisco",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "BRAD_BRISCO_MASTER_WRITING_PROMPT",
-      "title": "BRAD BRISCO MASTER WRITING PROMPT"
-    },
-    {
-      "id": "brad-brisco/BRAD_BRISCO_PROFILES_INDEX",
-      "path": "brad-brisco/BRAD_BRISCO_PROFILES_INDEX.md",
-      "slug": "brad-brisco",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "BRAD_BRISCO_PROFILES_INDEX",
-      "title": "BRAD BRISCO PROFILES INDEX"
-    },
-    {
-      "id": "brad-brisco/BRAD_BRISCO_RESEARCH_SUMMARY",
-      "path": "brad-brisco/BRAD_BRISCO_RESEARCH_SUMMARY.md",
-      "slug": "brad-brisco",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "BRAD_BRISCO_RESEARCH_SUMMARY",
-      "title": "BRAD BRISCO RESEARCH SUMMARY"
-    },
-    {
-      "id": "brad-brisco/BRAD_BRISCO_VOICE_IDENTITY",
-      "path": "brad-brisco/BRAD_BRISCO_VOICE_IDENTITY.md",
-      "slug": "brad-brisco",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "BRAD_BRISCO_VOICE_IDENTITY",
-      "title": "BRAD BRISCO VOICE IDENTITY"
-    },
-    {
-      "id": "brad-brisco/committed-voice",
-      "path": "brad-brisco/committed-voice.md",
-      "slug": "brad-brisco",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "committed-voice",
-      "title": "Committed Voice"
-    },
-    {
-      "id": "brad-brisco/content-analysis",
-      "path": "brad-brisco/content-analysis.md",
-      "slug": "brad-brisco",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "content-analysis",
-      "title": "Content Analysis"
-    },
-    {
-      "id": "brad-brisco/content-marketing-playbook",
-      "path": "brad-brisco/content-marketing-playbook.md",
-      "slug": "brad-brisco",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "content-marketing-playbook",
-      "title": "Content Marketing Playbook"
     },
     {
       "id": "brad-brisco/content/academic",
@@ -2102,6 +2317,15 @@
       "title": "Books"
     },
     {
+      "id": "brad-brisco/content/content-audit",
+      "path": "brad-brisco/content/content-audit.md",
+      "slug": "brad-brisco",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "content-audit",
+      "title": "Content Audit"
+    },
+    {
       "id": "brad-brisco/content/courses",
       "path": "brad-brisco/content/courses.md",
       "slug": "brad-brisco",
@@ -2111,6 +2335,15 @@
       "title": "Courses"
     },
     {
+      "id": "brad-brisco/content/frameworks",
+      "path": "brad-brisco/content/frameworks.md",
+      "slug": "brad-brisco",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "frameworks",
+      "title": "Frameworks"
+    },
+    {
       "id": "brad-brisco/content/videos",
       "path": "brad-brisco/content/videos.md",
       "slug": "brad-brisco",
@@ -2118,15 +2351,6 @@
       "subLabel": "",
       "fileBase": "videos",
       "title": "Videos"
-    },
-    {
-      "id": "brad-brisco/digital-presence-discovery",
-      "path": "brad-brisco/digital-presence-discovery.md",
-      "slug": "brad-brisco",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "digital-presence-discovery",
-      "title": "Digital Presence Discovery"
     },
     {
       "id": "brad-brisco/digital-presence/newsletters",
@@ -2174,87 +2398,6 @@
       "title": "Fragmentation Story"
     },
     {
-      "id": "brad-brisco/gap-analysis",
-      "path": "brad-brisco/gap-analysis.md",
-      "slug": "brad-brisco",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "gap-analysis",
-      "title": "Gap Analysis"
-    },
-    {
-      "id": "brad-brisco/identity-verification",
-      "path": "brad-brisco/identity-verification.md",
-      "slug": "brad-brisco",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "identity-verification",
-      "title": "Identity Verification"
-    },
-    {
-      "id": "brad-brisco/media/citations",
-      "path": "brad-brisco/media/citations.md",
-      "slug": "brad-brisco",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "citations",
-      "title": "Citations"
-    },
-    {
-      "id": "brad-brisco/media/press-coverage",
-      "path": "brad-brisco/media/press-coverage.md",
-      "slug": "brad-brisco",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "press-coverage",
-      "title": "Press Coverage"
-    },
-    {
-      "id": "brad-brisco/media/reviews",
-      "path": "brad-brisco/media/reviews.md",
-      "slug": "brad-brisco",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "reviews",
-      "title": "Reviews"
-    },
-    {
-      "id": "brad-brisco/movemental-analysis",
-      "path": "brad-brisco/movemental-analysis.md",
-      "slug": "brad-brisco",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "movemental-analysis",
-      "title": "Movemental Analysis"
-    },
-    {
-      "id": "brad-brisco/network/collaborators",
-      "path": "brad-brisco/network/collaborators.md",
-      "slug": "brad-brisco",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "collaborators",
-      "title": "Collaborators"
-    },
-    {
-      "id": "brad-brisco/network/endorsements",
-      "path": "brad-brisco/network/endorsements.md",
-      "slug": "brad-brisco",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "endorsements",
-      "title": "Endorsements"
-    },
-    {
-      "id": "brad-brisco/network/events",
-      "path": "brad-brisco/network/events.md",
-      "slug": "brad-brisco",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "events",
-      "title": "Events"
-    },
-    {
       "id": "brad-brisco/network/organizations",
       "path": "brad-brisco/network/organizations.md",
       "slug": "brad-brisco",
@@ -2271,6 +2414,15 @@
       "subLabel": "",
       "fileBase": "biography",
       "title": "Biography"
+    },
+    {
+      "id": "brad-brisco/profile/calling-profile",
+      "path": "brad-brisco/profile/calling-profile.md",
+      "slug": "brad-brisco",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "calling-profile",
+      "title": "Calling Profile"
     },
     {
       "id": "brad-brisco/profile/identity",
@@ -2480,6 +2632,33 @@
       "title": "Summary"
     },
     {
+      "id": "brian-sanders/_misc/network/collaborators",
+      "path": "brian-sanders/_misc/network/collaborators.md",
+      "slug": "brian-sanders",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "collaborators",
+      "title": "Collaborators (Network)"
+    },
+    {
+      "id": "brian-sanders/_misc/network/endorsements",
+      "path": "brian-sanders/_misc/network/endorsements.md",
+      "slug": "brian-sanders",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "endorsements",
+      "title": "Endorsements (Network)"
+    },
+    {
+      "id": "brian-sanders/_staff/legacy/BRIAN_SANDERS_RESEARCH_COLLATED",
+      "path": "brian-sanders/_staff/legacy/BRIAN_SANDERS_RESEARCH_COLLATED.md",
+      "slug": "brian-sanders",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "BRIAN_SANDERS_RESEARCH_COLLATED",
+      "title": "BRIAN SANDERS RESEARCH COLLATED (Legacy)"
+    },
+    {
       "id": "brian-sanders/_tracker",
       "path": "brian-sanders/_tracker.md",
       "slug": "brian-sanders",
@@ -2489,13 +2668,22 @@
       "title": " Tracker"
     },
     {
-      "id": "brian-sanders/BRIAN_SANDERS_RESEARCH_COLLATED",
-      "path": "brian-sanders/BRIAN_SANDERS_RESEARCH_COLLATED.md",
+      "id": "brian-sanders/analysis/audience-analysis",
+      "path": "brian-sanders/analysis/audience-analysis.md",
       "slug": "brian-sanders",
-      "group": "Overview & index",
+      "group": "Analysis",
       "subLabel": "",
-      "fileBase": "BRIAN_SANDERS_RESEARCH_COLLATED",
-      "title": "BRIAN SANDERS RESEARCH COLLATED"
+      "fileBase": "audience-analysis",
+      "title": "Audience Analysis"
+    },
+    {
+      "id": "brian-sanders/content/academic",
+      "path": "brian-sanders/content/academic.md",
+      "slug": "brian-sanders",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "academic",
+      "title": "Academic"
     },
     {
       "id": "brian-sanders/content/articles",
@@ -2525,6 +2713,24 @@
       "title": "Books"
     },
     {
+      "id": "brian-sanders/content/content-audit",
+      "path": "brian-sanders/content/content-audit.md",
+      "slug": "brian-sanders",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "content-audit",
+      "title": "Content Audit"
+    },
+    {
+      "id": "brian-sanders/content/courses",
+      "path": "brian-sanders/content/courses.md",
+      "slug": "brian-sanders",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "courses",
+      "title": "Courses"
+    },
+    {
       "id": "brian-sanders/content/frameworks",
       "path": "brian-sanders/content/frameworks.md",
       "slug": "brian-sanders",
@@ -2541,6 +2747,24 @@
       "subLabel": "",
       "fileBase": "videos",
       "title": "Videos"
+    },
+    {
+      "id": "brian-sanders/digital-presence/newsletters",
+      "path": "brian-sanders/digital-presence/newsletters.md",
+      "slug": "brian-sanders",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "newsletters",
+      "title": "Newsletters"
+    },
+    {
+      "id": "brian-sanders/digital-presence/platforms",
+      "path": "brian-sanders/digital-presence/platforms.md",
+      "slug": "brian-sanders",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "platforms",
+      "title": "Platforms"
     },
     {
       "id": "brian-sanders/digital-presence/social-media",
@@ -2561,22 +2785,13 @@
       "title": "Websites"
     },
     {
-      "id": "brian-sanders/network/collaborators",
-      "path": "brian-sanders/network/collaborators.md",
+      "id": "brian-sanders/fragmentation-story",
+      "path": "brian-sanders/fragmentation-story.md",
       "slug": "brian-sanders",
-      "group": "Network",
+      "group": "Overview & index",
       "subLabel": "",
-      "fileBase": "collaborators",
-      "title": "Collaborators"
-    },
-    {
-      "id": "brian-sanders/network/endorsements",
-      "path": "brian-sanders/network/endorsements.md",
-      "slug": "brian-sanders",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "endorsements",
-      "title": "Endorsements"
+      "fileBase": "fragmentation-story",
+      "title": "Fragmentation Story"
     },
     {
       "id": "brian-sanders/network/organizations",
@@ -2597,6 +2812,15 @@
       "title": "Biography"
     },
     {
+      "id": "brian-sanders/profile/calling-profile",
+      "path": "brian-sanders/profile/calling-profile.md",
+      "slug": "brian-sanders",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "calling-profile",
+      "title": "Calling Profile"
+    },
+    {
       "id": "brian-sanders/profile/identity",
       "path": "brian-sanders/profile/identity.md",
       "slug": "brian-sanders",
@@ -2604,6 +2828,15 @@
       "subLabel": "",
       "fileBase": "identity",
       "title": "Identity"
+    },
+    {
+      "id": "brian-sanders/profile/theology",
+      "path": "brian-sanders/profile/theology.md",
+      "slug": "brian-sanders",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "theology",
+      "title": "Theology"
     },
     {
       "id": "brian-sanders/profile/voice-analysis",
@@ -3074,6 +3307,159 @@
       "title": "Summary"
     },
     {
+      "id": "dave-ferguson/_misc/analysis-content-analysis",
+      "path": "dave-ferguson/_misc/analysis-content-analysis.md",
+      "slug": "dave-ferguson",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "analysis-content-analysis",
+      "title": "Analysis Content Analysis"
+    },
+    {
+      "id": "dave-ferguson/_misc/committed-voice",
+      "path": "dave-ferguson/_misc/committed-voice.md",
+      "slug": "dave-ferguson",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
+    },
+    {
+      "id": "dave-ferguson/_misc/content-analysis-root",
+      "path": "dave-ferguson/_misc/content-analysis-root.md",
+      "slug": "dave-ferguson",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "content-analysis-root",
+      "title": "Content Analysis Root"
+    },
+    {
+      "id": "dave-ferguson/_misc/digital-presence-discovery",
+      "path": "dave-ferguson/_misc/digital-presence-discovery.md",
+      "slug": "dave-ferguson",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "digital-presence-discovery",
+      "title": "Digital Presence Discovery"
+    },
+    {
+      "id": "dave-ferguson/_misc/media/citations",
+      "path": "dave-ferguson/_misc/media/citations.md",
+      "slug": "dave-ferguson",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "citations",
+      "title": "Citations (Media)"
+    },
+    {
+      "id": "dave-ferguson/_misc/media/press-coverage",
+      "path": "dave-ferguson/_misc/media/press-coverage.md",
+      "slug": "dave-ferguson",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "press-coverage",
+      "title": "Press Coverage (Media)"
+    },
+    {
+      "id": "dave-ferguson/_misc/media/reviews",
+      "path": "dave-ferguson/_misc/media/reviews.md",
+      "slug": "dave-ferguson",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "reviews",
+      "title": "Reviews (Media)"
+    },
+    {
+      "id": "dave-ferguson/_misc/network/collaborators",
+      "path": "dave-ferguson/_misc/network/collaborators.md",
+      "slug": "dave-ferguson",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "collaborators",
+      "title": "Collaborators (Network)"
+    },
+    {
+      "id": "dave-ferguson/_misc/network/endorsements",
+      "path": "dave-ferguson/_misc/network/endorsements.md",
+      "slug": "dave-ferguson",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "endorsements",
+      "title": "Endorsements (Network)"
+    },
+    {
+      "id": "dave-ferguson/_misc/network/events",
+      "path": "dave-ferguson/_misc/network/events.md",
+      "slug": "dave-ferguson",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "events",
+      "title": "Events (Network)"
+    },
+    {
+      "id": "dave-ferguson/_staff/competitive-landscape",
+      "path": "dave-ferguson/_staff/competitive-landscape.md",
+      "slug": "dave-ferguson",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "competitive-landscape",
+      "title": "Competitive Landscape"
+    },
+    {
+      "id": "dave-ferguson/_staff/content-marketing-playbook",
+      "path": "dave-ferguson/_staff/content-marketing-playbook.md",
+      "slug": "dave-ferguson",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "content-marketing-playbook",
+      "title": "Content Marketing Playbook"
+    },
+    {
+      "id": "dave-ferguson/_staff/gap-analysis-root",
+      "path": "dave-ferguson/_staff/gap-analysis-root.md",
+      "slug": "dave-ferguson",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "gap-analysis-root",
+      "title": "Gap Analysis Root"
+    },
+    {
+      "id": "dave-ferguson/_staff/gap-analysis",
+      "path": "dave-ferguson/_staff/gap-analysis.md",
+      "slug": "dave-ferguson",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "gap-analysis",
+      "title": "Gap Analysis"
+    },
+    {
+      "id": "dave-ferguson/_staff/identity-verification",
+      "path": "dave-ferguson/_staff/identity-verification.md",
+      "slug": "dave-ferguson",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "identity-verification",
+      "title": "Identity Verification"
+    },
+    {
+      "id": "dave-ferguson/_staff/movemental-analysis",
+      "path": "dave-ferguson/_staff/movemental-analysis.md",
+      "slug": "dave-ferguson",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-analysis",
+      "title": "Movemental Analysis"
+    },
+    {
+      "id": "dave-ferguson/_staff/movemental-fit",
+      "path": "dave-ferguson/_staff/movemental-fit.md",
+      "slug": "dave-ferguson",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-fit",
+      "title": "Movemental Fit"
+    },
+    {
       "id": "dave-ferguson/_tracker",
       "path": "dave-ferguson/_tracker.md",
       "slug": "dave-ferguson",
@@ -3090,69 +3476,6 @@
       "subLabel": "",
       "fileBase": "audience-analysis",
       "title": "Audience Analysis"
-    },
-    {
-      "id": "dave-ferguson/analysis/competitive-landscape",
-      "path": "dave-ferguson/analysis/competitive-landscape.md",
-      "slug": "dave-ferguson",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "competitive-landscape",
-      "title": "Competitive Landscape"
-    },
-    {
-      "id": "dave-ferguson/analysis/content-analysis",
-      "path": "dave-ferguson/analysis/content-analysis.md",
-      "slug": "dave-ferguson",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "content-analysis",
-      "title": "Content Analysis"
-    },
-    {
-      "id": "dave-ferguson/analysis/gap-analysis",
-      "path": "dave-ferguson/analysis/gap-analysis.md",
-      "slug": "dave-ferguson",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "gap-analysis",
-      "title": "Gap Analysis"
-    },
-    {
-      "id": "dave-ferguson/analysis/movemental-fit",
-      "path": "dave-ferguson/analysis/movemental-fit.md",
-      "slug": "dave-ferguson",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "movemental-fit",
-      "title": "Movemental Fit"
-    },
-    {
-      "id": "dave-ferguson/committed-voice",
-      "path": "dave-ferguson/committed-voice.md",
-      "slug": "dave-ferguson",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "committed-voice",
-      "title": "Committed Voice"
-    },
-    {
-      "id": "dave-ferguson/content-analysis",
-      "path": "dave-ferguson/content-analysis.md",
-      "slug": "dave-ferguson",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "content-analysis",
-      "title": "Content Analysis"
-    },
-    {
-      "id": "dave-ferguson/content-marketing-playbook",
-      "path": "dave-ferguson/content-marketing-playbook.md",
-      "slug": "dave-ferguson",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "content-marketing-playbook",
-      "title": "Content Marketing Playbook"
     },
     {
       "id": "dave-ferguson/content/academic",
@@ -3191,6 +3514,15 @@
       "title": "Books"
     },
     {
+      "id": "dave-ferguson/content/content-audit",
+      "path": "dave-ferguson/content/content-audit.md",
+      "slug": "dave-ferguson",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "content-audit",
+      "title": "Content Audit"
+    },
+    {
       "id": "dave-ferguson/content/courses",
       "path": "dave-ferguson/content/courses.md",
       "slug": "dave-ferguson",
@@ -3216,15 +3548,6 @@
       "subLabel": "",
       "fileBase": "videos",
       "title": "Videos"
-    },
-    {
-      "id": "dave-ferguson/digital-presence-discovery",
-      "path": "dave-ferguson/digital-presence-discovery.md",
-      "slug": "dave-ferguson",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "digital-presence-discovery",
-      "title": "Digital Presence Discovery"
     },
     {
       "id": "dave-ferguson/digital-presence/newsletters",
@@ -3272,87 +3595,6 @@
       "title": "Fragmentation Story"
     },
     {
-      "id": "dave-ferguson/gap-analysis",
-      "path": "dave-ferguson/gap-analysis.md",
-      "slug": "dave-ferguson",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "gap-analysis",
-      "title": "Gap Analysis"
-    },
-    {
-      "id": "dave-ferguson/identity-verification",
-      "path": "dave-ferguson/identity-verification.md",
-      "slug": "dave-ferguson",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "identity-verification",
-      "title": "Identity Verification"
-    },
-    {
-      "id": "dave-ferguson/media/citations",
-      "path": "dave-ferguson/media/citations.md",
-      "slug": "dave-ferguson",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "citations",
-      "title": "Citations"
-    },
-    {
-      "id": "dave-ferguson/media/press-coverage",
-      "path": "dave-ferguson/media/press-coverage.md",
-      "slug": "dave-ferguson",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "press-coverage",
-      "title": "Press Coverage"
-    },
-    {
-      "id": "dave-ferguson/media/reviews",
-      "path": "dave-ferguson/media/reviews.md",
-      "slug": "dave-ferguson",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "reviews",
-      "title": "Reviews"
-    },
-    {
-      "id": "dave-ferguson/movemental-analysis",
-      "path": "dave-ferguson/movemental-analysis.md",
-      "slug": "dave-ferguson",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "movemental-analysis",
-      "title": "Movemental Analysis"
-    },
-    {
-      "id": "dave-ferguson/network/collaborators",
-      "path": "dave-ferguson/network/collaborators.md",
-      "slug": "dave-ferguson",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "collaborators",
-      "title": "Collaborators"
-    },
-    {
-      "id": "dave-ferguson/network/endorsements",
-      "path": "dave-ferguson/network/endorsements.md",
-      "slug": "dave-ferguson",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "endorsements",
-      "title": "Endorsements"
-    },
-    {
-      "id": "dave-ferguson/network/events",
-      "path": "dave-ferguson/network/events.md",
-      "slug": "dave-ferguson",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "events",
-      "title": "Events"
-    },
-    {
       "id": "dave-ferguson/network/organizations",
       "path": "dave-ferguson/network/organizations.md",
       "slug": "dave-ferguson",
@@ -3369,6 +3611,15 @@
       "subLabel": "",
       "fileBase": "biography",
       "title": "Biography"
+    },
+    {
+      "id": "dave-ferguson/profile/calling-profile",
+      "path": "dave-ferguson/profile/calling-profile.md",
+      "slug": "dave-ferguson",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "calling-profile",
+      "title": "Calling Profile"
     },
     {
       "id": "dave-ferguson/profile/identity",
@@ -4244,6 +4495,33 @@
       "title": "Summary"
     },
     {
+      "id": "jeremy-chambers/_staff/legacy/JEREMY_CHAMBERS_RESEARCH_COLLATED",
+      "path": "jeremy-chambers/_staff/legacy/JEREMY_CHAMBERS_RESEARCH_COLLATED.md",
+      "slug": "jeremy-chambers",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "JEREMY_CHAMBERS_RESEARCH_COLLATED",
+      "title": "JEREMY CHAMBERS RESEARCH COLLATED (Legacy)"
+    },
+    {
+      "id": "jeremy-chambers/analysis/audience-analysis",
+      "path": "jeremy-chambers/analysis/audience-analysis.md",
+      "slug": "jeremy-chambers",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "audience-analysis",
+      "title": "Audience Analysis"
+    },
+    {
+      "id": "jeremy-chambers/content/academic",
+      "path": "jeremy-chambers/content/academic.md",
+      "slug": "jeremy-chambers",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "academic",
+      "title": "Academic"
+    },
+    {
       "id": "jeremy-chambers/content/articles",
       "path": "jeremy-chambers/content/articles.md",
       "slug": "jeremy-chambers",
@@ -4271,6 +4549,24 @@
       "title": "Books"
     },
     {
+      "id": "jeremy-chambers/content/content-audit",
+      "path": "jeremy-chambers/content/content-audit.md",
+      "slug": "jeremy-chambers",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "content-audit",
+      "title": "Content Audit"
+    },
+    {
+      "id": "jeremy-chambers/content/courses",
+      "path": "jeremy-chambers/content/courses.md",
+      "slug": "jeremy-chambers",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "courses",
+      "title": "Courses"
+    },
+    {
       "id": "jeremy-chambers/content/frameworks",
       "path": "jeremy-chambers/content/frameworks.md",
       "slug": "jeremy-chambers",
@@ -4289,13 +4585,49 @@
       "title": "Videos"
     },
     {
-      "id": "jeremy-chambers/JEREMY_CHAMBERS_RESEARCH_COLLATED",
-      "path": "jeremy-chambers/JEREMY_CHAMBERS_RESEARCH_COLLATED.md",
+      "id": "jeremy-chambers/digital-presence/newsletters",
+      "path": "jeremy-chambers/digital-presence/newsletters.md",
+      "slug": "jeremy-chambers",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "newsletters",
+      "title": "Newsletters"
+    },
+    {
+      "id": "jeremy-chambers/digital-presence/platforms",
+      "path": "jeremy-chambers/digital-presence/platforms.md",
+      "slug": "jeremy-chambers",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "platforms",
+      "title": "Platforms"
+    },
+    {
+      "id": "jeremy-chambers/digital-presence/social-media",
+      "path": "jeremy-chambers/digital-presence/social-media.md",
+      "slug": "jeremy-chambers",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "social-media",
+      "title": "Social Media"
+    },
+    {
+      "id": "jeremy-chambers/digital-presence/websites",
+      "path": "jeremy-chambers/digital-presence/websites.md",
+      "slug": "jeremy-chambers",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "websites",
+      "title": "Websites"
+    },
+    {
+      "id": "jeremy-chambers/fragmentation-story",
+      "path": "jeremy-chambers/fragmentation-story.md",
       "slug": "jeremy-chambers",
       "group": "Overview & index",
       "subLabel": "",
-      "fileBase": "JEREMY_CHAMBERS_RESEARCH_COLLATED",
-      "title": "JEREMY CHAMBERS RESEARCH COLLATED"
+      "fileBase": "fragmentation-story",
+      "title": "Fragmentation Story"
     },
     {
       "id": "jeremy-chambers/network/organizations",
@@ -4314,6 +4646,15 @@
       "subLabel": "",
       "fileBase": "biography",
       "title": "Biography"
+    },
+    {
+      "id": "jeremy-chambers/profile/calling-profile",
+      "path": "jeremy-chambers/profile/calling-profile.md",
+      "slug": "jeremy-chambers",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "calling-profile",
+      "title": "Calling Profile"
     },
     {
       "id": "jeremy-chambers/profile/identity",
@@ -4341,6 +4682,15 @@
       "subLabel": "",
       "fileBase": "voice-analysis",
       "title": "Voice Analysis"
+    },
+    {
+      "id": "jeremy-chambers/README",
+      "path": "jeremy-chambers/README.md",
+      "slug": "jeremy-chambers",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "README",
+      "title": "README"
     },
     {
       "id": "jeremy-chambers/summary",
@@ -4973,6 +5323,159 @@
       "title": "README"
     },
     {
+      "id": "jr-woodward/_misc/analysis-content-analysis",
+      "path": "jr-woodward/_misc/analysis-content-analysis.md",
+      "slug": "jr-woodward",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "analysis-content-analysis",
+      "title": "Analysis Content Analysis"
+    },
+    {
+      "id": "jr-woodward/_misc/committed-voice",
+      "path": "jr-woodward/_misc/committed-voice.md",
+      "slug": "jr-woodward",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
+    },
+    {
+      "id": "jr-woodward/_misc/content-analysis-root",
+      "path": "jr-woodward/_misc/content-analysis-root.md",
+      "slug": "jr-woodward",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "content-analysis-root",
+      "title": "Content Analysis Root"
+    },
+    {
+      "id": "jr-woodward/_misc/digital-presence-discovery",
+      "path": "jr-woodward/_misc/digital-presence-discovery.md",
+      "slug": "jr-woodward",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "digital-presence-discovery",
+      "title": "Digital Presence Discovery"
+    },
+    {
+      "id": "jr-woodward/_misc/media/citations",
+      "path": "jr-woodward/_misc/media/citations.md",
+      "slug": "jr-woodward",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "citations",
+      "title": "Citations (Media)"
+    },
+    {
+      "id": "jr-woodward/_misc/media/press-coverage",
+      "path": "jr-woodward/_misc/media/press-coverage.md",
+      "slug": "jr-woodward",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "press-coverage",
+      "title": "Press Coverage (Media)"
+    },
+    {
+      "id": "jr-woodward/_misc/media/reviews",
+      "path": "jr-woodward/_misc/media/reviews.md",
+      "slug": "jr-woodward",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "reviews",
+      "title": "Reviews (Media)"
+    },
+    {
+      "id": "jr-woodward/_misc/network/collaborators",
+      "path": "jr-woodward/_misc/network/collaborators.md",
+      "slug": "jr-woodward",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "collaborators",
+      "title": "Collaborators (Network)"
+    },
+    {
+      "id": "jr-woodward/_misc/network/endorsements",
+      "path": "jr-woodward/_misc/network/endorsements.md",
+      "slug": "jr-woodward",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "endorsements",
+      "title": "Endorsements (Network)"
+    },
+    {
+      "id": "jr-woodward/_misc/network/events",
+      "path": "jr-woodward/_misc/network/events.md",
+      "slug": "jr-woodward",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "events",
+      "title": "Events (Network)"
+    },
+    {
+      "id": "jr-woodward/_misc/pdf/README",
+      "path": "jr-woodward/_misc/pdf/README.md",
+      "slug": "jr-woodward",
+      "group": "_misc",
+      "subLabel": "Pdf",
+      "fileBase": "README",
+      "title": "README (Pdf)"
+    },
+    {
+      "id": "jr-woodward/_staff/competitive-landscape",
+      "path": "jr-woodward/_staff/competitive-landscape.md",
+      "slug": "jr-woodward",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "competitive-landscape",
+      "title": "Competitive Landscape"
+    },
+    {
+      "id": "jr-woodward/_staff/gap-analysis-root",
+      "path": "jr-woodward/_staff/gap-analysis-root.md",
+      "slug": "jr-woodward",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "gap-analysis-root",
+      "title": "Gap Analysis Root"
+    },
+    {
+      "id": "jr-woodward/_staff/gap-analysis",
+      "path": "jr-woodward/_staff/gap-analysis.md",
+      "slug": "jr-woodward",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "gap-analysis",
+      "title": "Gap Analysis"
+    },
+    {
+      "id": "jr-woodward/_staff/identity-verification",
+      "path": "jr-woodward/_staff/identity-verification.md",
+      "slug": "jr-woodward",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "identity-verification",
+      "title": "Identity Verification"
+    },
+    {
+      "id": "jr-woodward/_staff/movemental-analysis",
+      "path": "jr-woodward/_staff/movemental-analysis.md",
+      "slug": "jr-woodward",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-analysis",
+      "title": "Movemental Analysis"
+    },
+    {
+      "id": "jr-woodward/_staff/movemental-fit",
+      "path": "jr-woodward/_staff/movemental-fit.md",
+      "slug": "jr-woodward",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-fit",
+      "title": "Movemental Fit"
+    },
+    {
       "id": "jr-woodward/_tracker",
       "path": "jr-woodward/_tracker.md",
       "slug": "jr-woodward",
@@ -4989,60 +5492,6 @@
       "subLabel": "",
       "fileBase": "audience-analysis",
       "title": "Audience Analysis"
-    },
-    {
-      "id": "jr-woodward/analysis/competitive-landscape",
-      "path": "jr-woodward/analysis/competitive-landscape.md",
-      "slug": "jr-woodward",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "competitive-landscape",
-      "title": "Competitive Landscape"
-    },
-    {
-      "id": "jr-woodward/analysis/content-analysis",
-      "path": "jr-woodward/analysis/content-analysis.md",
-      "slug": "jr-woodward",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "content-analysis",
-      "title": "Content Analysis"
-    },
-    {
-      "id": "jr-woodward/analysis/gap-analysis",
-      "path": "jr-woodward/analysis/gap-analysis.md",
-      "slug": "jr-woodward",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "gap-analysis",
-      "title": "Gap Analysis"
-    },
-    {
-      "id": "jr-woodward/analysis/movemental-fit",
-      "path": "jr-woodward/analysis/movemental-fit.md",
-      "slug": "jr-woodward",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "movemental-fit",
-      "title": "Movemental Fit"
-    },
-    {
-      "id": "jr-woodward/committed-voice",
-      "path": "jr-woodward/committed-voice.md",
-      "slug": "jr-woodward",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "committed-voice",
-      "title": "Committed Voice"
-    },
-    {
-      "id": "jr-woodward/content-analysis",
-      "path": "jr-woodward/content-analysis.md",
-      "slug": "jr-woodward",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "content-analysis",
-      "title": "Content Analysis"
     },
     {
       "id": "jr-woodward/content/academic",
@@ -5081,6 +5530,15 @@
       "title": "Books"
     },
     {
+      "id": "jr-woodward/content/content-audit",
+      "path": "jr-woodward/content/content-audit.md",
+      "slug": "jr-woodward",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "content-audit",
+      "title": "Content Audit"
+    },
+    {
       "id": "jr-woodward/content/courses",
       "path": "jr-woodward/content/courses.md",
       "slug": "jr-woodward",
@@ -5090,6 +5548,15 @@
       "title": "Courses"
     },
     {
+      "id": "jr-woodward/content/frameworks",
+      "path": "jr-woodward/content/frameworks.md",
+      "slug": "jr-woodward",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "frameworks",
+      "title": "Frameworks"
+    },
+    {
       "id": "jr-woodward/content/videos",
       "path": "jr-woodward/content/videos.md",
       "slug": "jr-woodward",
@@ -5097,15 +5564,6 @@
       "subLabel": "",
       "fileBase": "videos",
       "title": "Videos"
-    },
-    {
-      "id": "jr-woodward/digital-presence-discovery",
-      "path": "jr-woodward/digital-presence-discovery.md",
-      "slug": "jr-woodward",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "digital-presence-discovery",
-      "title": "Digital Presence Discovery"
     },
     {
       "id": "jr-woodward/digital-presence/newsletters",
@@ -5153,87 +5611,6 @@
       "title": "Fragmentation Story"
     },
     {
-      "id": "jr-woodward/gap-analysis",
-      "path": "jr-woodward/gap-analysis.md",
-      "slug": "jr-woodward",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "gap-analysis",
-      "title": "Gap Analysis"
-    },
-    {
-      "id": "jr-woodward/identity-verification",
-      "path": "jr-woodward/identity-verification.md",
-      "slug": "jr-woodward",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "identity-verification",
-      "title": "Identity Verification"
-    },
-    {
-      "id": "jr-woodward/media/citations",
-      "path": "jr-woodward/media/citations.md",
-      "slug": "jr-woodward",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "citations",
-      "title": "Citations"
-    },
-    {
-      "id": "jr-woodward/media/press-coverage",
-      "path": "jr-woodward/media/press-coverage.md",
-      "slug": "jr-woodward",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "press-coverage",
-      "title": "Press Coverage"
-    },
-    {
-      "id": "jr-woodward/media/reviews",
-      "path": "jr-woodward/media/reviews.md",
-      "slug": "jr-woodward",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "reviews",
-      "title": "Reviews"
-    },
-    {
-      "id": "jr-woodward/movemental-analysis",
-      "path": "jr-woodward/movemental-analysis.md",
-      "slug": "jr-woodward",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "movemental-analysis",
-      "title": "Movemental Analysis"
-    },
-    {
-      "id": "jr-woodward/network/collaborators",
-      "path": "jr-woodward/network/collaborators.md",
-      "slug": "jr-woodward",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "collaborators",
-      "title": "Collaborators"
-    },
-    {
-      "id": "jr-woodward/network/endorsements",
-      "path": "jr-woodward/network/endorsements.md",
-      "slug": "jr-woodward",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "endorsements",
-      "title": "Endorsements"
-    },
-    {
-      "id": "jr-woodward/network/events",
-      "path": "jr-woodward/network/events.md",
-      "slug": "jr-woodward",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "events",
-      "title": "Events"
-    },
-    {
       "id": "jr-woodward/network/organizations",
       "path": "jr-woodward/network/organizations.md",
       "slug": "jr-woodward",
@@ -5241,15 +5618,6 @@
       "subLabel": "",
       "fileBase": "organizations",
       "title": "Organizations"
-    },
-    {
-      "id": "jr-woodward/pdf/README",
-      "path": "jr-woodward/pdf/README.md",
-      "slug": "jr-woodward",
-      "group": "Pdf",
-      "subLabel": "",
-      "fileBase": "README",
-      "title": "README"
     },
     {
       "id": "jr-woodward/primary-documents",
@@ -5268,6 +5636,15 @@
       "subLabel": "",
       "fileBase": "biography",
       "title": "Biography"
+    },
+    {
+      "id": "jr-woodward/profile/calling-profile",
+      "path": "jr-woodward/profile/calling-profile.md",
+      "slug": "jr-woodward",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "calling-profile",
+      "title": "Calling Profile"
     },
     {
       "id": "jr-woodward/profile/identity",
@@ -5585,6 +5962,60 @@
       "title": "README"
     },
     {
+      "id": "liz-rios/_misc/committed-voice",
+      "path": "liz-rios/_misc/committed-voice.md",
+      "slug": "liz-rios",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
+    },
+    {
+      "id": "liz-rios/_misc/digital-presence-source",
+      "path": "liz-rios/_misc/digital-presence-source.md",
+      "slug": "liz-rios",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "digital-presence-source",
+      "title": "Digital Presence Source"
+    },
+    {
+      "id": "liz-rios/_misc/network/affiliations",
+      "path": "liz-rios/_misc/network/affiliations.md",
+      "slug": "liz-rios",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "affiliations",
+      "title": "Affiliations (Network)"
+    },
+    {
+      "id": "liz-rios/_misc/network/endorsers",
+      "path": "liz-rios/_misc/network/endorsers.md",
+      "slug": "liz-rios",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "endorsers",
+      "title": "Endorsers (Network)"
+    },
+    {
+      "id": "liz-rios/_misc/network/movemental-overlap",
+      "path": "liz-rios/_misc/network/movemental-overlap.md",
+      "slug": "liz-rios",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "movemental-overlap",
+      "title": "Movemental Overlap (Network)"
+    },
+    {
+      "id": "liz-rios/_staff/movemental-analysis",
+      "path": "liz-rios/_staff/movemental-analysis.md",
+      "slug": "liz-rios",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-analysis",
+      "title": "Movemental Analysis"
+    },
+    {
       "id": "liz-rios/_tracker",
       "path": "liz-rios/_tracker.md",
       "slug": "liz-rios",
@@ -5594,13 +6025,49 @@
       "title": " Tracker"
     },
     {
-      "id": "liz-rios/committed-voice",
-      "path": "liz-rios/committed-voice.md",
+      "id": "liz-rios/analysis/audience-analysis",
+      "path": "liz-rios/analysis/audience-analysis.md",
       "slug": "liz-rios",
-      "group": "Overview & index",
+      "group": "Analysis",
       "subLabel": "",
-      "fileBase": "committed-voice",
-      "title": "Committed Voice"
+      "fileBase": "audience-analysis",
+      "title": "Audience Analysis"
+    },
+    {
+      "id": "liz-rios/content/academic",
+      "path": "liz-rios/content/academic.md",
+      "slug": "liz-rios",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "academic",
+      "title": "Academic"
+    },
+    {
+      "id": "liz-rios/content/articles",
+      "path": "liz-rios/content/articles.md",
+      "slug": "liz-rios",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "articles",
+      "title": "Articles"
+    },
+    {
+      "id": "liz-rios/content/audio",
+      "path": "liz-rios/content/audio.md",
+      "slug": "liz-rios",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "audio",
+      "title": "Audio"
+    },
+    {
+      "id": "liz-rios/content/books",
+      "path": "liz-rios/content/books.md",
+      "slug": "liz-rios",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "books",
+      "title": "Books"
     },
     {
       "id": "liz-rios/content/content-audit",
@@ -5612,13 +6079,67 @@
       "title": "Content Audit"
     },
     {
-      "id": "liz-rios/digital-presence",
-      "path": "liz-rios/digital-presence.md",
+      "id": "liz-rios/content/courses",
+      "path": "liz-rios/content/courses.md",
       "slug": "liz-rios",
-      "group": "Overview & index",
+      "group": "Content",
       "subLabel": "",
-      "fileBase": "digital-presence",
-      "title": "Digital Presence"
+      "fileBase": "courses",
+      "title": "Courses"
+    },
+    {
+      "id": "liz-rios/content/frameworks",
+      "path": "liz-rios/content/frameworks.md",
+      "slug": "liz-rios",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "frameworks",
+      "title": "Frameworks"
+    },
+    {
+      "id": "liz-rios/content/videos",
+      "path": "liz-rios/content/videos.md",
+      "slug": "liz-rios",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "videos",
+      "title": "Videos"
+    },
+    {
+      "id": "liz-rios/digital-presence/newsletters",
+      "path": "liz-rios/digital-presence/newsletters.md",
+      "slug": "liz-rios",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "newsletters",
+      "title": "Newsletters"
+    },
+    {
+      "id": "liz-rios/digital-presence/platforms",
+      "path": "liz-rios/digital-presence/platforms.md",
+      "slug": "liz-rios",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "platforms",
+      "title": "Platforms"
+    },
+    {
+      "id": "liz-rios/digital-presence/social-media",
+      "path": "liz-rios/digital-presence/social-media.md",
+      "slug": "liz-rios",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "social-media",
+      "title": "Social Media"
+    },
+    {
+      "id": "liz-rios/digital-presence/websites",
+      "path": "liz-rios/digital-presence/websites.md",
+      "slug": "liz-rios",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "websites",
+      "title": "Websites"
     },
     {
       "id": "liz-rios/fragmentation-story",
@@ -5630,40 +6151,13 @@
       "title": "Fragmentation Story"
     },
     {
-      "id": "liz-rios/movemental-analysis",
-      "path": "liz-rios/movemental-analysis.md",
-      "slug": "liz-rios",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "movemental-analysis",
-      "title": "Movemental Analysis"
-    },
-    {
-      "id": "liz-rios/network/affiliations",
-      "path": "liz-rios/network/affiliations.md",
+      "id": "liz-rios/network/organizations",
+      "path": "liz-rios/network/organizations.md",
       "slug": "liz-rios",
       "group": "Network",
       "subLabel": "",
-      "fileBase": "affiliations",
-      "title": "Affiliations"
-    },
-    {
-      "id": "liz-rios/network/endorsers",
-      "path": "liz-rios/network/endorsers.md",
-      "slug": "liz-rios",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "endorsers",
-      "title": "Endorsers"
-    },
-    {
-      "id": "liz-rios/network/movemental-overlap",
-      "path": "liz-rios/network/movemental-overlap.md",
-      "slug": "liz-rios",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "movemental-overlap",
-      "title": "Movemental Overlap"
+      "fileBase": "organizations",
+      "title": "Organizations"
     },
     {
       "id": "liz-rios/profile/biography",
@@ -5675,6 +6169,15 @@
       "title": "Biography"
     },
     {
+      "id": "liz-rios/profile/calling-profile",
+      "path": "liz-rios/profile/calling-profile.md",
+      "slug": "liz-rios",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "calling-profile",
+      "title": "Calling Profile"
+    },
+    {
       "id": "liz-rios/profile/identity",
       "path": "liz-rios/profile/identity.md",
       "slug": "liz-rios",
@@ -5682,6 +6185,15 @@
       "subLabel": "",
       "fileBase": "identity",
       "title": "Identity"
+    },
+    {
+      "id": "liz-rios/profile/theology",
+      "path": "liz-rios/profile/theology.md",
+      "slug": "liz-rios",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "theology",
+      "title": "Theology"
     },
     {
       "id": "liz-rios/profile/voice-analysis",
@@ -5747,6 +6259,168 @@
       "title": "README"
     },
     {
+      "id": "lucas-pulley/_misc/analysis-content-analysis",
+      "path": "lucas-pulley/_misc/analysis-content-analysis.md",
+      "slug": "lucas-pulley",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "analysis-content-analysis",
+      "title": "Analysis Content Analysis"
+    },
+    {
+      "id": "lucas-pulley/_misc/committed-voice-2026-05-20",
+      "path": "lucas-pulley/_misc/committed-voice-2026-05-20.md",
+      "slug": "lucas-pulley",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "committed-voice-2026-05-20",
+      "title": "Committed Voice 2026 05 20"
+    },
+    {
+      "id": "lucas-pulley/_misc/committed-voice",
+      "path": "lucas-pulley/_misc/committed-voice.md",
+      "slug": "lucas-pulley",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
+    },
+    {
+      "id": "lucas-pulley/_misc/content-analysis-root",
+      "path": "lucas-pulley/_misc/content-analysis-root.md",
+      "slug": "lucas-pulley",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "content-analysis-root",
+      "title": "Content Analysis Root"
+    },
+    {
+      "id": "lucas-pulley/_misc/digital-presence-discovery",
+      "path": "lucas-pulley/_misc/digital-presence-discovery.md",
+      "slug": "lucas-pulley",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "digital-presence-discovery",
+      "title": "Digital Presence Discovery"
+    },
+    {
+      "id": "lucas-pulley/_misc/media/citations",
+      "path": "lucas-pulley/_misc/media/citations.md",
+      "slug": "lucas-pulley",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "citations",
+      "title": "Citations (Media)"
+    },
+    {
+      "id": "lucas-pulley/_misc/media/press-coverage",
+      "path": "lucas-pulley/_misc/media/press-coverage.md",
+      "slug": "lucas-pulley",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "press-coverage",
+      "title": "Press Coverage (Media)"
+    },
+    {
+      "id": "lucas-pulley/_misc/media/reviews",
+      "path": "lucas-pulley/_misc/media/reviews.md",
+      "slug": "lucas-pulley",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "reviews",
+      "title": "Reviews (Media)"
+    },
+    {
+      "id": "lucas-pulley/_misc/network/collaborators",
+      "path": "lucas-pulley/_misc/network/collaborators.md",
+      "slug": "lucas-pulley",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "collaborators",
+      "title": "Collaborators (Network)"
+    },
+    {
+      "id": "lucas-pulley/_misc/network/endorsements",
+      "path": "lucas-pulley/_misc/network/endorsements.md",
+      "slug": "lucas-pulley",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "endorsements",
+      "title": "Endorsements (Network)"
+    },
+    {
+      "id": "lucas-pulley/_misc/network/events",
+      "path": "lucas-pulley/_misc/network/events.md",
+      "slug": "lucas-pulley",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "events",
+      "title": "Events (Network)"
+    },
+    {
+      "id": "lucas-pulley/_staff/competitive-landscape",
+      "path": "lucas-pulley/_staff/competitive-landscape.md",
+      "slug": "lucas-pulley",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "competitive-landscape",
+      "title": "Competitive Landscape"
+    },
+    {
+      "id": "lucas-pulley/_staff/content-marketing-playbook",
+      "path": "lucas-pulley/_staff/content-marketing-playbook.md",
+      "slug": "lucas-pulley",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "content-marketing-playbook",
+      "title": "Content Marketing Playbook"
+    },
+    {
+      "id": "lucas-pulley/_staff/gap-analysis-root",
+      "path": "lucas-pulley/_staff/gap-analysis-root.md",
+      "slug": "lucas-pulley",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "gap-analysis-root",
+      "title": "Gap Analysis Root"
+    },
+    {
+      "id": "lucas-pulley/_staff/gap-analysis",
+      "path": "lucas-pulley/_staff/gap-analysis.md",
+      "slug": "lucas-pulley",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "gap-analysis",
+      "title": "Gap Analysis"
+    },
+    {
+      "id": "lucas-pulley/_staff/identity-verification",
+      "path": "lucas-pulley/_staff/identity-verification.md",
+      "slug": "lucas-pulley",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "identity-verification",
+      "title": "Identity Verification"
+    },
+    {
+      "id": "lucas-pulley/_staff/movemental-analysis",
+      "path": "lucas-pulley/_staff/movemental-analysis.md",
+      "slug": "lucas-pulley",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-analysis",
+      "title": "Movemental Analysis"
+    },
+    {
+      "id": "lucas-pulley/_staff/movemental-fit",
+      "path": "lucas-pulley/_staff/movemental-fit.md",
+      "slug": "lucas-pulley",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-fit",
+      "title": "Movemental Fit"
+    },
+    {
       "id": "lucas-pulley/_tracker",
       "path": "lucas-pulley/_tracker.md",
       "slug": "lucas-pulley",
@@ -5763,78 +6437,6 @@
       "subLabel": "",
       "fileBase": "audience-analysis",
       "title": "Audience Analysis"
-    },
-    {
-      "id": "lucas-pulley/analysis/competitive-landscape",
-      "path": "lucas-pulley/analysis/competitive-landscape.md",
-      "slug": "lucas-pulley",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "competitive-landscape",
-      "title": "Competitive Landscape"
-    },
-    {
-      "id": "lucas-pulley/analysis/content-analysis",
-      "path": "lucas-pulley/analysis/content-analysis.md",
-      "slug": "lucas-pulley",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "content-analysis",
-      "title": "Content Analysis"
-    },
-    {
-      "id": "lucas-pulley/analysis/gap-analysis",
-      "path": "lucas-pulley/analysis/gap-analysis.md",
-      "slug": "lucas-pulley",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "gap-analysis",
-      "title": "Gap Analysis"
-    },
-    {
-      "id": "lucas-pulley/analysis/movemental-fit",
-      "path": "lucas-pulley/analysis/movemental-fit.md",
-      "slug": "lucas-pulley",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "movemental-fit",
-      "title": "Movemental Fit"
-    },
-    {
-      "id": "lucas-pulley/committed-voice-2026-05-20",
-      "path": "lucas-pulley/committed-voice-2026-05-20.md",
-      "slug": "lucas-pulley",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "committed-voice-2026-05-20",
-      "title": "Committed Voice 2026 05 20"
-    },
-    {
-      "id": "lucas-pulley/committed-voice",
-      "path": "lucas-pulley/committed-voice.md",
-      "slug": "lucas-pulley",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "committed-voice",
-      "title": "Committed Voice"
-    },
-    {
-      "id": "lucas-pulley/content-analysis",
-      "path": "lucas-pulley/content-analysis.md",
-      "slug": "lucas-pulley",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "content-analysis",
-      "title": "Content Analysis"
-    },
-    {
-      "id": "lucas-pulley/content-marketing-playbook",
-      "path": "lucas-pulley/content-marketing-playbook.md",
-      "slug": "lucas-pulley",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "content-marketing-playbook",
-      "title": "Content Marketing Playbook"
     },
     {
       "id": "lucas-pulley/content/academic",
@@ -5873,6 +6475,15 @@
       "title": "Books"
     },
     {
+      "id": "lucas-pulley/content/content-audit",
+      "path": "lucas-pulley/content/content-audit.md",
+      "slug": "lucas-pulley",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "content-audit",
+      "title": "Content Audit"
+    },
+    {
       "id": "lucas-pulley/content/courses",
       "path": "lucas-pulley/content/courses.md",
       "slug": "lucas-pulley",
@@ -5882,6 +6493,15 @@
       "title": "Courses"
     },
     {
+      "id": "lucas-pulley/content/frameworks",
+      "path": "lucas-pulley/content/frameworks.md",
+      "slug": "lucas-pulley",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "frameworks",
+      "title": "Frameworks"
+    },
+    {
       "id": "lucas-pulley/content/videos",
       "path": "lucas-pulley/content/videos.md",
       "slug": "lucas-pulley",
@@ -5889,15 +6509,6 @@
       "subLabel": "",
       "fileBase": "videos",
       "title": "Videos"
-    },
-    {
-      "id": "lucas-pulley/digital-presence-discovery",
-      "path": "lucas-pulley/digital-presence-discovery.md",
-      "slug": "lucas-pulley",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "digital-presence-discovery",
-      "title": "Digital Presence Discovery"
     },
     {
       "id": "lucas-pulley/digital-presence/newsletters",
@@ -5945,87 +6556,6 @@
       "title": "Fragmentation Story"
     },
     {
-      "id": "lucas-pulley/gap-analysis",
-      "path": "lucas-pulley/gap-analysis.md",
-      "slug": "lucas-pulley",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "gap-analysis",
-      "title": "Gap Analysis"
-    },
-    {
-      "id": "lucas-pulley/identity-verification",
-      "path": "lucas-pulley/identity-verification.md",
-      "slug": "lucas-pulley",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "identity-verification",
-      "title": "Identity Verification"
-    },
-    {
-      "id": "lucas-pulley/media/citations",
-      "path": "lucas-pulley/media/citations.md",
-      "slug": "lucas-pulley",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "citations",
-      "title": "Citations"
-    },
-    {
-      "id": "lucas-pulley/media/press-coverage",
-      "path": "lucas-pulley/media/press-coverage.md",
-      "slug": "lucas-pulley",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "press-coverage",
-      "title": "Press Coverage"
-    },
-    {
-      "id": "lucas-pulley/media/reviews",
-      "path": "lucas-pulley/media/reviews.md",
-      "slug": "lucas-pulley",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "reviews",
-      "title": "Reviews"
-    },
-    {
-      "id": "lucas-pulley/movemental-analysis",
-      "path": "lucas-pulley/movemental-analysis.md",
-      "slug": "lucas-pulley",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "movemental-analysis",
-      "title": "Movemental Analysis"
-    },
-    {
-      "id": "lucas-pulley/network/collaborators",
-      "path": "lucas-pulley/network/collaborators.md",
-      "slug": "lucas-pulley",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "collaborators",
-      "title": "Collaborators"
-    },
-    {
-      "id": "lucas-pulley/network/endorsements",
-      "path": "lucas-pulley/network/endorsements.md",
-      "slug": "lucas-pulley",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "endorsements",
-      "title": "Endorsements"
-    },
-    {
-      "id": "lucas-pulley/network/events",
-      "path": "lucas-pulley/network/events.md",
-      "slug": "lucas-pulley",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "events",
-      "title": "Events"
-    },
-    {
       "id": "lucas-pulley/network/organizations",
       "path": "lucas-pulley/network/organizations.md",
       "slug": "lucas-pulley",
@@ -6042,6 +6572,15 @@
       "subLabel": "",
       "fileBase": "biography",
       "title": "Biography"
+    },
+    {
+      "id": "lucas-pulley/profile/calling-profile",
+      "path": "lucas-pulley/profile/calling-profile.md",
+      "slug": "lucas-pulley",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "calling-profile",
+      "title": "Calling Profile"
     },
     {
       "id": "lucas-pulley/profile/identity",
@@ -6719,6 +7258,240 @@
       "title": "Welcome Letter"
     },
     {
+      "id": "michael-cooper/_misc/analysis-content-analysis",
+      "path": "michael-cooper/_misc/analysis-content-analysis.md",
+      "slug": "michael-cooper",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "analysis-content-analysis",
+      "title": "Analysis Content Analysis"
+    },
+    {
+      "id": "michael-cooper/_misc/committed-voice",
+      "path": "michael-cooper/_misc/committed-voice.md",
+      "slug": "michael-cooper",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
+    },
+    {
+      "id": "michael-cooper/_misc/content-analysis-root",
+      "path": "michael-cooper/_misc/content-analysis-root.md",
+      "slug": "michael-cooper",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "content-analysis-root",
+      "title": "Content Analysis Root"
+    },
+    {
+      "id": "michael-cooper/_misc/digital-presence-discovery",
+      "path": "michael-cooper/_misc/digital-presence-discovery.md",
+      "slug": "michael-cooper",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "digital-presence-discovery",
+      "title": "Digital Presence Discovery"
+    },
+    {
+      "id": "michael-cooper/_misc/media/citations",
+      "path": "michael-cooper/_misc/media/citations.md",
+      "slug": "michael-cooper",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "citations",
+      "title": "Citations (Media)"
+    },
+    {
+      "id": "michael-cooper/_misc/media/press-coverage",
+      "path": "michael-cooper/_misc/media/press-coverage.md",
+      "slug": "michael-cooper",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "press-coverage",
+      "title": "Press Coverage (Media)"
+    },
+    {
+      "id": "michael-cooper/_misc/media/reviews",
+      "path": "michael-cooper/_misc/media/reviews.md",
+      "slug": "michael-cooper",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "reviews",
+      "title": "Reviews (Media)"
+    },
+    {
+      "id": "michael-cooper/_misc/network/collaborators",
+      "path": "michael-cooper/_misc/network/collaborators.md",
+      "slug": "michael-cooper",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "collaborators",
+      "title": "Collaborators (Network)"
+    },
+    {
+      "id": "michael-cooper/_misc/network/endorsements",
+      "path": "michael-cooper/_misc/network/endorsements.md",
+      "slug": "michael-cooper",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "endorsements",
+      "title": "Endorsements (Network)"
+    },
+    {
+      "id": "michael-cooper/_misc/network/events",
+      "path": "michael-cooper/_misc/network/events.md",
+      "slug": "michael-cooper",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "events",
+      "title": "Events (Network)"
+    },
+    {
+      "id": "michael-cooper/_staff/competitive-landscape",
+      "path": "michael-cooper/_staff/competitive-landscape.md",
+      "slug": "michael-cooper",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "competitive-landscape",
+      "title": "Competitive Landscape"
+    },
+    {
+      "id": "michael-cooper/_staff/content-marketing-playbook",
+      "path": "michael-cooper/_staff/content-marketing-playbook.md",
+      "slug": "michael-cooper",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "content-marketing-playbook",
+      "title": "Content Marketing Playbook"
+    },
+    {
+      "id": "michael-cooper/_staff/gap-analysis-root",
+      "path": "michael-cooper/_staff/gap-analysis-root.md",
+      "slug": "michael-cooper",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "gap-analysis-root",
+      "title": "Gap Analysis Root"
+    },
+    {
+      "id": "michael-cooper/_staff/gap-analysis",
+      "path": "michael-cooper/_staff/gap-analysis.md",
+      "slug": "michael-cooper",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "gap-analysis",
+      "title": "Gap Analysis"
+    },
+    {
+      "id": "michael-cooper/_staff/identity-verification",
+      "path": "michael-cooper/_staff/identity-verification.md",
+      "slug": "michael-cooper",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "identity-verification",
+      "title": "Identity Verification"
+    },
+    {
+      "id": "michael-cooper/_staff/legacy/MICHAEL_COOPER_AUDIENCE_PROFILE",
+      "path": "michael-cooper/_staff/legacy/MICHAEL_COOPER_AUDIENCE_PROFILE.md",
+      "slug": "michael-cooper",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "MICHAEL_COOPER_AUDIENCE_PROFILE",
+      "title": "MICHAEL COOPER AUDIENCE PROFILE (Legacy)"
+    },
+    {
+      "id": "michael-cooper/_staff/legacy/MICHAEL_COOPER_AUTHOR_PROFILE",
+      "path": "michael-cooper/_staff/legacy/MICHAEL_COOPER_AUTHOR_PROFILE.md",
+      "slug": "michael-cooper",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "MICHAEL_COOPER_AUTHOR_PROFILE",
+      "title": "MICHAEL COOPER AUTHOR PROFILE (Legacy)"
+    },
+    {
+      "id": "michael-cooper/_staff/legacy/MICHAEL_COOPER_CALLING_PROFILE",
+      "path": "michael-cooper/_staff/legacy/MICHAEL_COOPER_CALLING_PROFILE.md",
+      "slug": "michael-cooper",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "MICHAEL_COOPER_CALLING_PROFILE",
+      "title": "MICHAEL COOPER CALLING PROFILE (Legacy)"
+    },
+    {
+      "id": "michael-cooper/_staff/legacy/MICHAEL_COOPER_CONTENT_AUDIT",
+      "path": "michael-cooper/_staff/legacy/MICHAEL_COOPER_CONTENT_AUDIT.md",
+      "slug": "michael-cooper",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "MICHAEL_COOPER_CONTENT_AUDIT",
+      "title": "MICHAEL COOPER CONTENT AUDIT (Legacy)"
+    },
+    {
+      "id": "michael-cooper/_staff/legacy/MICHAEL_COOPER_MASTER_WRITING_PROMPT",
+      "path": "michael-cooper/_staff/legacy/MICHAEL_COOPER_MASTER_WRITING_PROMPT.md",
+      "slug": "michael-cooper",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "MICHAEL_COOPER_MASTER_WRITING_PROMPT",
+      "title": "MICHAEL COOPER MASTER WRITING PROMPT (Legacy)"
+    },
+    {
+      "id": "michael-cooper/_staff/legacy/MICHAEL_COOPER_PROFILES_INDEX",
+      "path": "michael-cooper/_staff/legacy/MICHAEL_COOPER_PROFILES_INDEX.md",
+      "slug": "michael-cooper",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "MICHAEL_COOPER_PROFILES_INDEX",
+      "title": "MICHAEL COOPER PROFILES INDEX (Legacy)"
+    },
+    {
+      "id": "michael-cooper/_staff/legacy/MICHAEL_COOPER_RESEARCH_COLLATED",
+      "path": "michael-cooper/_staff/legacy/MICHAEL_COOPER_RESEARCH_COLLATED.md",
+      "slug": "michael-cooper",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "MICHAEL_COOPER_RESEARCH_COLLATED",
+      "title": "MICHAEL COOPER RESEARCH COLLATED (Legacy)"
+    },
+    {
+      "id": "michael-cooper/_staff/legacy/MICHAEL_COOPER_RESEARCH_SUMMARY",
+      "path": "michael-cooper/_staff/legacy/MICHAEL_COOPER_RESEARCH_SUMMARY.md",
+      "slug": "michael-cooper",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "MICHAEL_COOPER_RESEARCH_SUMMARY",
+      "title": "MICHAEL COOPER RESEARCH SUMMARY (Legacy)"
+    },
+    {
+      "id": "michael-cooper/_staff/legacy/MICHAEL_COOPER_VOICE_IDENTITY",
+      "path": "michael-cooper/_staff/legacy/MICHAEL_COOPER_VOICE_IDENTITY.md",
+      "slug": "michael-cooper",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "MICHAEL_COOPER_VOICE_IDENTITY",
+      "title": "MICHAEL COOPER VOICE IDENTITY (Legacy)"
+    },
+    {
+      "id": "michael-cooper/_staff/movemental-analysis",
+      "path": "michael-cooper/_staff/movemental-analysis.md",
+      "slug": "michael-cooper",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-analysis",
+      "title": "Movemental Analysis"
+    },
+    {
+      "id": "michael-cooper/_staff/movemental-fit",
+      "path": "michael-cooper/_staff/movemental-fit.md",
+      "slug": "michael-cooper",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-fit",
+      "title": "Movemental Fit"
+    },
+    {
       "id": "michael-cooper/_tracker",
       "path": "michael-cooper/_tracker.md",
       "slug": "michael-cooper",
@@ -6735,69 +7508,6 @@
       "subLabel": "",
       "fileBase": "audience-analysis",
       "title": "Audience Analysis"
-    },
-    {
-      "id": "michael-cooper/analysis/competitive-landscape",
-      "path": "michael-cooper/analysis/competitive-landscape.md",
-      "slug": "michael-cooper",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "competitive-landscape",
-      "title": "Competitive Landscape"
-    },
-    {
-      "id": "michael-cooper/analysis/content-analysis",
-      "path": "michael-cooper/analysis/content-analysis.md",
-      "slug": "michael-cooper",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "content-analysis",
-      "title": "Content Analysis"
-    },
-    {
-      "id": "michael-cooper/analysis/gap-analysis",
-      "path": "michael-cooper/analysis/gap-analysis.md",
-      "slug": "michael-cooper",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "gap-analysis",
-      "title": "Gap Analysis"
-    },
-    {
-      "id": "michael-cooper/analysis/movemental-fit",
-      "path": "michael-cooper/analysis/movemental-fit.md",
-      "slug": "michael-cooper",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "movemental-fit",
-      "title": "Movemental Fit"
-    },
-    {
-      "id": "michael-cooper/committed-voice",
-      "path": "michael-cooper/committed-voice.md",
-      "slug": "michael-cooper",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "committed-voice",
-      "title": "Committed Voice"
-    },
-    {
-      "id": "michael-cooper/content-analysis",
-      "path": "michael-cooper/content-analysis.md",
-      "slug": "michael-cooper",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "content-analysis",
-      "title": "Content Analysis"
-    },
-    {
-      "id": "michael-cooper/content-marketing-playbook",
-      "path": "michael-cooper/content-marketing-playbook.md",
-      "slug": "michael-cooper",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "content-marketing-playbook",
-      "title": "Content Marketing Playbook"
     },
     {
       "id": "michael-cooper/content/academic",
@@ -6836,6 +7546,15 @@
       "title": "Books"
     },
     {
+      "id": "michael-cooper/content/content-audit",
+      "path": "michael-cooper/content/content-audit.md",
+      "slug": "michael-cooper",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "content-audit",
+      "title": "Content Audit"
+    },
+    {
       "id": "michael-cooper/content/courses",
       "path": "michael-cooper/content/courses.md",
       "slug": "michael-cooper",
@@ -6861,15 +7580,6 @@
       "subLabel": "",
       "fileBase": "videos",
       "title": "Videos"
-    },
-    {
-      "id": "michael-cooper/digital-presence-discovery",
-      "path": "michael-cooper/digital-presence-discovery.md",
-      "slug": "michael-cooper",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "digital-presence-discovery",
-      "title": "Digital Presence Discovery"
     },
     {
       "id": "michael-cooper/digital-presence/newsletters",
@@ -6917,168 +7627,6 @@
       "title": "Fragmentation Story"
     },
     {
-      "id": "michael-cooper/gap-analysis",
-      "path": "michael-cooper/gap-analysis.md",
-      "slug": "michael-cooper",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "gap-analysis",
-      "title": "Gap Analysis"
-    },
-    {
-      "id": "michael-cooper/identity-verification",
-      "path": "michael-cooper/identity-verification.md",
-      "slug": "michael-cooper",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "identity-verification",
-      "title": "Identity Verification"
-    },
-    {
-      "id": "michael-cooper/media/citations",
-      "path": "michael-cooper/media/citations.md",
-      "slug": "michael-cooper",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "citations",
-      "title": "Citations"
-    },
-    {
-      "id": "michael-cooper/media/press-coverage",
-      "path": "michael-cooper/media/press-coverage.md",
-      "slug": "michael-cooper",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "press-coverage",
-      "title": "Press Coverage"
-    },
-    {
-      "id": "michael-cooper/media/reviews",
-      "path": "michael-cooper/media/reviews.md",
-      "slug": "michael-cooper",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "reviews",
-      "title": "Reviews"
-    },
-    {
-      "id": "michael-cooper/MICHAEL_COOPER_AUDIENCE_PROFILE",
-      "path": "michael-cooper/MICHAEL_COOPER_AUDIENCE_PROFILE.md",
-      "slug": "michael-cooper",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "MICHAEL_COOPER_AUDIENCE_PROFILE",
-      "title": "MICHAEL COOPER AUDIENCE PROFILE"
-    },
-    {
-      "id": "michael-cooper/MICHAEL_COOPER_AUTHOR_PROFILE",
-      "path": "michael-cooper/MICHAEL_COOPER_AUTHOR_PROFILE.md",
-      "slug": "michael-cooper",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "MICHAEL_COOPER_AUTHOR_PROFILE",
-      "title": "MICHAEL COOPER AUTHOR PROFILE"
-    },
-    {
-      "id": "michael-cooper/MICHAEL_COOPER_CALLING_PROFILE",
-      "path": "michael-cooper/MICHAEL_COOPER_CALLING_PROFILE.md",
-      "slug": "michael-cooper",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "MICHAEL_COOPER_CALLING_PROFILE",
-      "title": "MICHAEL COOPER CALLING PROFILE"
-    },
-    {
-      "id": "michael-cooper/MICHAEL_COOPER_CONTENT_AUDIT",
-      "path": "michael-cooper/MICHAEL_COOPER_CONTENT_AUDIT.md",
-      "slug": "michael-cooper",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "MICHAEL_COOPER_CONTENT_AUDIT",
-      "title": "MICHAEL COOPER CONTENT AUDIT"
-    },
-    {
-      "id": "michael-cooper/MICHAEL_COOPER_MASTER_WRITING_PROMPT",
-      "path": "michael-cooper/MICHAEL_COOPER_MASTER_WRITING_PROMPT.md",
-      "slug": "michael-cooper",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "MICHAEL_COOPER_MASTER_WRITING_PROMPT",
-      "title": "MICHAEL COOPER MASTER WRITING PROMPT"
-    },
-    {
-      "id": "michael-cooper/MICHAEL_COOPER_PROFILES_INDEX",
-      "path": "michael-cooper/MICHAEL_COOPER_PROFILES_INDEX.md",
-      "slug": "michael-cooper",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "MICHAEL_COOPER_PROFILES_INDEX",
-      "title": "MICHAEL COOPER PROFILES INDEX"
-    },
-    {
-      "id": "michael-cooper/MICHAEL_COOPER_RESEARCH_COLLATED",
-      "path": "michael-cooper/MICHAEL_COOPER_RESEARCH_COLLATED.md",
-      "slug": "michael-cooper",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "MICHAEL_COOPER_RESEARCH_COLLATED",
-      "title": "MICHAEL COOPER RESEARCH COLLATED"
-    },
-    {
-      "id": "michael-cooper/MICHAEL_COOPER_RESEARCH_SUMMARY",
-      "path": "michael-cooper/MICHAEL_COOPER_RESEARCH_SUMMARY.md",
-      "slug": "michael-cooper",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "MICHAEL_COOPER_RESEARCH_SUMMARY",
-      "title": "MICHAEL COOPER RESEARCH SUMMARY"
-    },
-    {
-      "id": "michael-cooper/MICHAEL_COOPER_VOICE_IDENTITY",
-      "path": "michael-cooper/MICHAEL_COOPER_VOICE_IDENTITY.md",
-      "slug": "michael-cooper",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "MICHAEL_COOPER_VOICE_IDENTITY",
-      "title": "MICHAEL COOPER VOICE IDENTITY"
-    },
-    {
-      "id": "michael-cooper/movemental-analysis",
-      "path": "michael-cooper/movemental-analysis.md",
-      "slug": "michael-cooper",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "movemental-analysis",
-      "title": "Movemental Analysis"
-    },
-    {
-      "id": "michael-cooper/network/collaborators",
-      "path": "michael-cooper/network/collaborators.md",
-      "slug": "michael-cooper",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "collaborators",
-      "title": "Collaborators"
-    },
-    {
-      "id": "michael-cooper/network/endorsements",
-      "path": "michael-cooper/network/endorsements.md",
-      "slug": "michael-cooper",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "endorsements",
-      "title": "Endorsements"
-    },
-    {
-      "id": "michael-cooper/network/events",
-      "path": "michael-cooper/network/events.md",
-      "slug": "michael-cooper",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "events",
-      "title": "Events"
-    },
-    {
       "id": "michael-cooper/network/organizations",
       "path": "michael-cooper/network/organizations.md",
       "slug": "michael-cooper",
@@ -7095,6 +7643,15 @@
       "subLabel": "",
       "fileBase": "biography",
       "title": "Biography"
+    },
+    {
+      "id": "michael-cooper/profile/calling-profile",
+      "path": "michael-cooper/profile/calling-profile.md",
+      "slug": "michael-cooper",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "calling-profile",
+      "title": "Calling Profile"
     },
     {
       "id": "michael-cooper/profile/identity",
@@ -7412,6 +7969,114 @@
       "title": "MONICA CHAMBERS RESEARCH COLLATED"
     },
     {
+      "id": "neil-cole/_misc/analysis-content-analysis",
+      "path": "neil-cole/_misc/analysis-content-analysis.md",
+      "slug": "neil-cole",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "analysis-content-analysis",
+      "title": "Analysis Content Analysis"
+    },
+    {
+      "id": "neil-cole/_misc/committed-voice",
+      "path": "neil-cole/_misc/committed-voice.md",
+      "slug": "neil-cole",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "committed-voice",
+      "title": "Committed Voice"
+    },
+    {
+      "id": "neil-cole/_misc/media/citations",
+      "path": "neil-cole/_misc/media/citations.md",
+      "slug": "neil-cole",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "citations",
+      "title": "Citations (Media)"
+    },
+    {
+      "id": "neil-cole/_misc/media/press-coverage",
+      "path": "neil-cole/_misc/media/press-coverage.md",
+      "slug": "neil-cole",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "press-coverage",
+      "title": "Press Coverage (Media)"
+    },
+    {
+      "id": "neil-cole/_misc/media/reviews",
+      "path": "neil-cole/_misc/media/reviews.md",
+      "slug": "neil-cole",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "reviews",
+      "title": "Reviews (Media)"
+    },
+    {
+      "id": "neil-cole/_misc/network/collaborators",
+      "path": "neil-cole/_misc/network/collaborators.md",
+      "slug": "neil-cole",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "collaborators",
+      "title": "Collaborators (Network)"
+    },
+    {
+      "id": "neil-cole/_misc/network/endorsements",
+      "path": "neil-cole/_misc/network/endorsements.md",
+      "slug": "neil-cole",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "endorsements",
+      "title": "Endorsements (Network)"
+    },
+    {
+      "id": "neil-cole/_misc/network/events",
+      "path": "neil-cole/_misc/network/events.md",
+      "slug": "neil-cole",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "events",
+      "title": "Events (Network)"
+    },
+    {
+      "id": "neil-cole/_misc/network/network-summary",
+      "path": "neil-cole/_misc/network/network-summary.md",
+      "slug": "neil-cole",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "network-summary",
+      "title": "Network Summary (Network)"
+    },
+    {
+      "id": "neil-cole/_staff/competitive-landscape",
+      "path": "neil-cole/_staff/competitive-landscape.md",
+      "slug": "neil-cole",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "competitive-landscape",
+      "title": "Competitive Landscape"
+    },
+    {
+      "id": "neil-cole/_staff/gap-analysis",
+      "path": "neil-cole/_staff/gap-analysis.md",
+      "slug": "neil-cole",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "gap-analysis",
+      "title": "Gap Analysis"
+    },
+    {
+      "id": "neil-cole/_staff/movemental-fit",
+      "path": "neil-cole/_staff/movemental-fit.md",
+      "slug": "neil-cole",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-fit",
+      "title": "Movemental Fit"
+    },
+    {
       "id": "neil-cole/_tracker",
       "path": "neil-cole/_tracker.md",
       "slug": "neil-cole",
@@ -7428,51 +8093,6 @@
       "subLabel": "",
       "fileBase": "audience-analysis",
       "title": "Audience Analysis"
-    },
-    {
-      "id": "neil-cole/analysis/competitive-landscape",
-      "path": "neil-cole/analysis/competitive-landscape.md",
-      "slug": "neil-cole",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "competitive-landscape",
-      "title": "Competitive Landscape"
-    },
-    {
-      "id": "neil-cole/analysis/content-analysis",
-      "path": "neil-cole/analysis/content-analysis.md",
-      "slug": "neil-cole",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "content-analysis",
-      "title": "Content Analysis"
-    },
-    {
-      "id": "neil-cole/analysis/gap-analysis",
-      "path": "neil-cole/analysis/gap-analysis.md",
-      "slug": "neil-cole",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "gap-analysis",
-      "title": "Gap Analysis"
-    },
-    {
-      "id": "neil-cole/analysis/movemental-fit",
-      "path": "neil-cole/analysis/movemental-fit.md",
-      "slug": "neil-cole",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "movemental-fit",
-      "title": "Movemental Fit"
-    },
-    {
-      "id": "neil-cole/committed-voice",
-      "path": "neil-cole/committed-voice.md",
-      "slug": "neil-cole",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "committed-voice",
-      "title": "Committed Voice"
     },
     {
       "id": "neil-cole/content/academic",
@@ -7509,6 +8129,15 @@
       "subLabel": "",
       "fileBase": "books",
       "title": "Books"
+    },
+    {
+      "id": "neil-cole/content/content-audit",
+      "path": "neil-cole/content/content-audit.md",
+      "slug": "neil-cole",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "content-audit",
+      "title": "Content Audit"
     },
     {
       "id": "neil-cole/content/courses",
@@ -7583,69 +8212,6 @@
       "title": "Fragmentation Story"
     },
     {
-      "id": "neil-cole/media/citations",
-      "path": "neil-cole/media/citations.md",
-      "slug": "neil-cole",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "citations",
-      "title": "Citations"
-    },
-    {
-      "id": "neil-cole/media/press-coverage",
-      "path": "neil-cole/media/press-coverage.md",
-      "slug": "neil-cole",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "press-coverage",
-      "title": "Press Coverage"
-    },
-    {
-      "id": "neil-cole/media/reviews",
-      "path": "neil-cole/media/reviews.md",
-      "slug": "neil-cole",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "reviews",
-      "title": "Reviews"
-    },
-    {
-      "id": "neil-cole/network/collaborators",
-      "path": "neil-cole/network/collaborators.md",
-      "slug": "neil-cole",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "collaborators",
-      "title": "Collaborators"
-    },
-    {
-      "id": "neil-cole/network/endorsements",
-      "path": "neil-cole/network/endorsements.md",
-      "slug": "neil-cole",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "endorsements",
-      "title": "Endorsements"
-    },
-    {
-      "id": "neil-cole/network/events",
-      "path": "neil-cole/network/events.md",
-      "slug": "neil-cole",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "events",
-      "title": "Events"
-    },
-    {
-      "id": "neil-cole/network/network-summary",
-      "path": "neil-cole/network/network-summary.md",
-      "slug": "neil-cole",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "network-summary",
-      "title": "Network Summary"
-    },
-    {
       "id": "neil-cole/network/organizations",
       "path": "neil-cole/network/organizations.md",
       "slug": "neil-cole",
@@ -7662,6 +8228,15 @@
       "subLabel": "",
       "fileBase": "biography",
       "title": "Biography"
+    },
+    {
+      "id": "neil-cole/profile/calling-profile",
+      "path": "neil-cole/profile/calling-profile.md",
+      "slug": "neil-cole",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "calling-profile",
+      "title": "Calling Profile"
     },
     {
       "id": "neil-cole/profile/identity",
@@ -7790,15 +8365,6 @@
       "title": "Summary"
     },
     {
-      "id": "network/network-map",
-      "path": "network/network-map.md",
-      "slug": "network",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "network-map",
-      "title": "Network Map"
-    },
-    {
       "id": "nijay-gupta/_tracker",
       "path": "nijay-gupta/_tracker.md",
       "slug": "nijay-gupta",
@@ -7889,13 +8455,94 @@
       "title": "README"
     },
     {
-      "id": "peyton-jones/content-analysis",
-      "path": "peyton-jones/content-analysis.md",
+      "id": "peyton-jones/_misc/content-analysis-root",
+      "path": "peyton-jones/_misc/content-analysis-root.md",
       "slug": "peyton-jones",
-      "group": "Overview & index",
+      "group": "_misc",
       "subLabel": "",
-      "fileBase": "content-analysis",
-      "title": "Content Analysis"
+      "fileBase": "content-analysis-root",
+      "title": "Content Analysis Root"
+    },
+    {
+      "id": "peyton-jones/_misc/digital-presence-discovery",
+      "path": "peyton-jones/_misc/digital-presence-discovery.md",
+      "slug": "peyton-jones",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "digital-presence-discovery",
+      "title": "Digital Presence Discovery"
+    },
+    {
+      "id": "peyton-jones/_misc/network/collaborators",
+      "path": "peyton-jones/_misc/network/collaborators.md",
+      "slug": "peyton-jones",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "collaborators",
+      "title": "Collaborators (Network)"
+    },
+    {
+      "id": "peyton-jones/_misc/network/endorsements",
+      "path": "peyton-jones/_misc/network/endorsements.md",
+      "slug": "peyton-jones",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "endorsements",
+      "title": "Endorsements (Network)"
+    },
+    {
+      "id": "peyton-jones/_staff/gap-analysis-root",
+      "path": "peyton-jones/_staff/gap-analysis-root.md",
+      "slug": "peyton-jones",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "gap-analysis-root",
+      "title": "Gap Analysis Root"
+    },
+    {
+      "id": "peyton-jones/_staff/identity-verification",
+      "path": "peyton-jones/_staff/identity-verification.md",
+      "slug": "peyton-jones",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "identity-verification",
+      "title": "Identity Verification"
+    },
+    {
+      "id": "peyton-jones/_staff/legacy/PEYTON_JONES_RESEARCH_COLLATED",
+      "path": "peyton-jones/_staff/legacy/PEYTON_JONES_RESEARCH_COLLATED.md",
+      "slug": "peyton-jones",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "PEYTON_JONES_RESEARCH_COLLATED",
+      "title": "PEYTON JONES RESEARCH COLLATED (Legacy)"
+    },
+    {
+      "id": "peyton-jones/_staff/movemental-analysis",
+      "path": "peyton-jones/_staff/movemental-analysis.md",
+      "slug": "peyton-jones",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-analysis",
+      "title": "Movemental Analysis"
+    },
+    {
+      "id": "peyton-jones/analysis/audience-analysis",
+      "path": "peyton-jones/analysis/audience-analysis.md",
+      "slug": "peyton-jones",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "audience-analysis",
+      "title": "Audience Analysis"
+    },
+    {
+      "id": "peyton-jones/content/academic",
+      "path": "peyton-jones/content/academic.md",
+      "slug": "peyton-jones",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "academic",
+      "title": "Academic"
     },
     {
       "id": "peyton-jones/content/articles",
@@ -7925,6 +8572,24 @@
       "title": "Books"
     },
     {
+      "id": "peyton-jones/content/content-audit",
+      "path": "peyton-jones/content/content-audit.md",
+      "slug": "peyton-jones",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "content-audit",
+      "title": "Content Audit"
+    },
+    {
+      "id": "peyton-jones/content/courses",
+      "path": "peyton-jones/content/courses.md",
+      "slug": "peyton-jones",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "courses",
+      "title": "Courses"
+    },
+    {
       "id": "peyton-jones/content/frameworks",
       "path": "peyton-jones/content/frameworks.md",
       "slug": "peyton-jones",
@@ -7943,58 +8608,49 @@
       "title": "Videos"
     },
     {
-      "id": "peyton-jones/digital-presence-discovery",
-      "path": "peyton-jones/digital-presence-discovery.md",
+      "id": "peyton-jones/digital-presence/newsletters",
+      "path": "peyton-jones/digital-presence/newsletters.md",
+      "slug": "peyton-jones",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "newsletters",
+      "title": "Newsletters"
+    },
+    {
+      "id": "peyton-jones/digital-presence/platforms",
+      "path": "peyton-jones/digital-presence/platforms.md",
+      "slug": "peyton-jones",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "platforms",
+      "title": "Platforms"
+    },
+    {
+      "id": "peyton-jones/digital-presence/social-media",
+      "path": "peyton-jones/digital-presence/social-media.md",
+      "slug": "peyton-jones",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "social-media",
+      "title": "Social Media"
+    },
+    {
+      "id": "peyton-jones/digital-presence/websites",
+      "path": "peyton-jones/digital-presence/websites.md",
+      "slug": "peyton-jones",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "websites",
+      "title": "Websites"
+    },
+    {
+      "id": "peyton-jones/fragmentation-story",
+      "path": "peyton-jones/fragmentation-story.md",
       "slug": "peyton-jones",
       "group": "Overview & index",
       "subLabel": "",
-      "fileBase": "digital-presence-discovery",
-      "title": "Digital Presence Discovery"
-    },
-    {
-      "id": "peyton-jones/gap-analysis",
-      "path": "peyton-jones/gap-analysis.md",
-      "slug": "peyton-jones",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "gap-analysis",
-      "title": "Gap Analysis"
-    },
-    {
-      "id": "peyton-jones/identity-verification",
-      "path": "peyton-jones/identity-verification.md",
-      "slug": "peyton-jones",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "identity-verification",
-      "title": "Identity Verification"
-    },
-    {
-      "id": "peyton-jones/movemental-analysis",
-      "path": "peyton-jones/movemental-analysis.md",
-      "slug": "peyton-jones",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "movemental-analysis",
-      "title": "Movemental Analysis"
-    },
-    {
-      "id": "peyton-jones/network/collaborators",
-      "path": "peyton-jones/network/collaborators.md",
-      "slug": "peyton-jones",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "collaborators",
-      "title": "Collaborators"
-    },
-    {
-      "id": "peyton-jones/network/endorsements",
-      "path": "peyton-jones/network/endorsements.md",
-      "slug": "peyton-jones",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "endorsements",
-      "title": "Endorsements"
+      "fileBase": "fragmentation-story",
+      "title": "Fragmentation Story"
     },
     {
       "id": "peyton-jones/network/organizations",
@@ -8006,15 +8662,6 @@
       "title": "Organizations"
     },
     {
-      "id": "peyton-jones/PEYTON_JONES_RESEARCH_COLLATED",
-      "path": "peyton-jones/PEYTON_JONES_RESEARCH_COLLATED.md",
-      "slug": "peyton-jones",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "PEYTON_JONES_RESEARCH_COLLATED",
-      "title": "PEYTON JONES RESEARCH COLLATED"
-    },
-    {
       "id": "peyton-jones/profile/biography",
       "path": "peyton-jones/profile/biography.md",
       "slug": "peyton-jones",
@@ -8022,6 +8669,15 @@
       "subLabel": "",
       "fileBase": "biography",
       "title": "Biography"
+    },
+    {
+      "id": "peyton-jones/profile/calling-profile",
+      "path": "peyton-jones/profile/calling-profile.md",
+      "slug": "peyton-jones",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "calling-profile",
+      "title": "Calling Profile"
     },
     {
       "id": "peyton-jones/profile/identity",
@@ -8033,6 +8689,15 @@
       "title": "Identity"
     },
     {
+      "id": "peyton-jones/profile/theology",
+      "path": "peyton-jones/profile/theology.md",
+      "slug": "peyton-jones",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "theology",
+      "title": "Theology"
+    },
+    {
       "id": "peyton-jones/profile/voice-analysis",
       "path": "peyton-jones/profile/voice-analysis.md",
       "slug": "peyton-jones",
@@ -8040,6 +8705,15 @@
       "subLabel": "",
       "fileBase": "voice-analysis",
       "title": "Voice Analysis"
+    },
+    {
+      "id": "peyton-jones/README",
+      "path": "peyton-jones/README.md",
+      "slug": "peyton-jones",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "README",
+      "title": "README"
     },
     {
       "id": "peyton-jones/sources",
@@ -8085,15 +8759,6 @@
       "subLabel": "",
       "fileBase": "README",
       "title": "README"
-    },
-    {
-      "id": "quadw-foundation/content-marketing-playbook",
-      "path": "quadw-foundation/content-marketing-playbook.md",
-      "slug": "quadw-foundation",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "content-marketing-playbook",
-      "title": "Content Marketing Playbook"
     },
     {
       "id": "r-paul-stevens/_tracker",
@@ -8256,6 +8921,15 @@
       "subLabel": "",
       "fileBase": "rob-wegner",
       "title": "Rob Wegner"
+    },
+    {
+      "id": "reflected-understanding/rowland-smith",
+      "path": "reflected-understanding/rowland-smith.md",
+      "slug": "reflected-understanding",
+      "group": "Overview & index",
+      "subLabel": "",
+      "fileBase": "rowland-smith",
+      "title": "Rowland Smith"
     },
     {
       "id": "reflected-understanding/roy-moran",
@@ -8519,6 +9193,159 @@
       "title": "README"
     },
     {
+      "id": "rob-wegner/_misc/analysis-content-analysis",
+      "path": "rob-wegner/_misc/analysis-content-analysis.md",
+      "slug": "rob-wegner",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "analysis-content-analysis",
+      "title": "Analysis Content Analysis"
+    },
+    {
+      "id": "rob-wegner/_misc/content-analysis-root",
+      "path": "rob-wegner/_misc/content-analysis-root.md",
+      "slug": "rob-wegner",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "content-analysis-root",
+      "title": "Content Analysis Root"
+    },
+    {
+      "id": "rob-wegner/_misc/digital-presence-discovery",
+      "path": "rob-wegner/_misc/digital-presence-discovery.md",
+      "slug": "rob-wegner",
+      "group": "_misc",
+      "subLabel": "",
+      "fileBase": "digital-presence-discovery",
+      "title": "Digital Presence Discovery"
+    },
+    {
+      "id": "rob-wegner/_misc/media/citations",
+      "path": "rob-wegner/_misc/media/citations.md",
+      "slug": "rob-wegner",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "citations",
+      "title": "Citations (Media)"
+    },
+    {
+      "id": "rob-wegner/_misc/media/press-coverage",
+      "path": "rob-wegner/_misc/media/press-coverage.md",
+      "slug": "rob-wegner",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "press-coverage",
+      "title": "Press Coverage (Media)"
+    },
+    {
+      "id": "rob-wegner/_misc/media/reviews",
+      "path": "rob-wegner/_misc/media/reviews.md",
+      "slug": "rob-wegner",
+      "group": "_misc",
+      "subLabel": "Media",
+      "fileBase": "reviews",
+      "title": "Reviews (Media)"
+    },
+    {
+      "id": "rob-wegner/_misc/network/collaborators",
+      "path": "rob-wegner/_misc/network/collaborators.md",
+      "slug": "rob-wegner",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "collaborators",
+      "title": "Collaborators (Network)"
+    },
+    {
+      "id": "rob-wegner/_misc/network/endorsements",
+      "path": "rob-wegner/_misc/network/endorsements.md",
+      "slug": "rob-wegner",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "endorsements",
+      "title": "Endorsements (Network)"
+    },
+    {
+      "id": "rob-wegner/_misc/network/events",
+      "path": "rob-wegner/_misc/network/events.md",
+      "slug": "rob-wegner",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "events",
+      "title": "Events (Network)"
+    },
+    {
+      "id": "rob-wegner/_misc/network/network-summary",
+      "path": "rob-wegner/_misc/network/network-summary.md",
+      "slug": "rob-wegner",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "network-summary",
+      "title": "Network Summary (Network)"
+    },
+    {
+      "id": "rob-wegner/_staff/competitive-landscape",
+      "path": "rob-wegner/_staff/competitive-landscape.md",
+      "slug": "rob-wegner",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "competitive-landscape",
+      "title": "Competitive Landscape"
+    },
+    {
+      "id": "rob-wegner/_staff/content-marketing-playbook",
+      "path": "rob-wegner/_staff/content-marketing-playbook.md",
+      "slug": "rob-wegner",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "content-marketing-playbook",
+      "title": "Content Marketing Playbook"
+    },
+    {
+      "id": "rob-wegner/_staff/gap-analysis-root",
+      "path": "rob-wegner/_staff/gap-analysis-root.md",
+      "slug": "rob-wegner",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "gap-analysis-root",
+      "title": "Gap Analysis Root"
+    },
+    {
+      "id": "rob-wegner/_staff/gap-analysis",
+      "path": "rob-wegner/_staff/gap-analysis.md",
+      "slug": "rob-wegner",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "gap-analysis",
+      "title": "Gap Analysis"
+    },
+    {
+      "id": "rob-wegner/_staff/identity-verification",
+      "path": "rob-wegner/_staff/identity-verification.md",
+      "slug": "rob-wegner",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "identity-verification",
+      "title": "Identity Verification"
+    },
+    {
+      "id": "rob-wegner/_staff/movemental-analysis",
+      "path": "rob-wegner/_staff/movemental-analysis.md",
+      "slug": "rob-wegner",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-analysis",
+      "title": "Movemental Analysis"
+    },
+    {
+      "id": "rob-wegner/_staff/movemental-fit",
+      "path": "rob-wegner/_staff/movemental-fit.md",
+      "slug": "rob-wegner",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-fit",
+      "title": "Movemental Fit"
+    },
+    {
       "id": "rob-wegner/_tracker",
       "path": "rob-wegner/_tracker.md",
       "slug": "rob-wegner",
@@ -8535,60 +9362,6 @@
       "subLabel": "",
       "fileBase": "audience-analysis",
       "title": "Audience Analysis"
-    },
-    {
-      "id": "rob-wegner/analysis/competitive-landscape",
-      "path": "rob-wegner/analysis/competitive-landscape.md",
-      "slug": "rob-wegner",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "competitive-landscape",
-      "title": "Competitive Landscape"
-    },
-    {
-      "id": "rob-wegner/analysis/content-analysis",
-      "path": "rob-wegner/analysis/content-analysis.md",
-      "slug": "rob-wegner",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "content-analysis",
-      "title": "Content Analysis"
-    },
-    {
-      "id": "rob-wegner/analysis/gap-analysis",
-      "path": "rob-wegner/analysis/gap-analysis.md",
-      "slug": "rob-wegner",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "gap-analysis",
-      "title": "Gap Analysis"
-    },
-    {
-      "id": "rob-wegner/analysis/movemental-fit",
-      "path": "rob-wegner/analysis/movemental-fit.md",
-      "slug": "rob-wegner",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "movemental-fit",
-      "title": "Movemental Fit"
-    },
-    {
-      "id": "rob-wegner/content-analysis",
-      "path": "rob-wegner/content-analysis.md",
-      "slug": "rob-wegner",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "content-analysis",
-      "title": "Content Analysis"
-    },
-    {
-      "id": "rob-wegner/content-marketing-playbook",
-      "path": "rob-wegner/content-marketing-playbook.md",
-      "slug": "rob-wegner",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "content-marketing-playbook",
-      "title": "Content Marketing Playbook"
     },
     {
       "id": "rob-wegner/content/academic",
@@ -8627,6 +9400,15 @@
       "title": "Books"
     },
     {
+      "id": "rob-wegner/content/content-audit",
+      "path": "rob-wegner/content/content-audit.md",
+      "slug": "rob-wegner",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "content-audit",
+      "title": "Content Audit"
+    },
+    {
       "id": "rob-wegner/content/courses",
       "path": "rob-wegner/content/courses.md",
       "slug": "rob-wegner",
@@ -8652,15 +9434,6 @@
       "subLabel": "",
       "fileBase": "videos",
       "title": "Videos"
-    },
-    {
-      "id": "rob-wegner/digital-presence-discovery",
-      "path": "rob-wegner/digital-presence-discovery.md",
-      "slug": "rob-wegner",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "digital-presence-discovery",
-      "title": "Digital Presence Discovery"
     },
     {
       "id": "rob-wegner/digital-presence/newsletters",
@@ -8708,96 +9481,6 @@
       "title": "Fragmentation Story"
     },
     {
-      "id": "rob-wegner/gap-analysis",
-      "path": "rob-wegner/gap-analysis.md",
-      "slug": "rob-wegner",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "gap-analysis",
-      "title": "Gap Analysis"
-    },
-    {
-      "id": "rob-wegner/identity-verification",
-      "path": "rob-wegner/identity-verification.md",
-      "slug": "rob-wegner",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "identity-verification",
-      "title": "Identity Verification"
-    },
-    {
-      "id": "rob-wegner/media/citations",
-      "path": "rob-wegner/media/citations.md",
-      "slug": "rob-wegner",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "citations",
-      "title": "Citations"
-    },
-    {
-      "id": "rob-wegner/media/press-coverage",
-      "path": "rob-wegner/media/press-coverage.md",
-      "slug": "rob-wegner",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "press-coverage",
-      "title": "Press Coverage"
-    },
-    {
-      "id": "rob-wegner/media/reviews",
-      "path": "rob-wegner/media/reviews.md",
-      "slug": "rob-wegner",
-      "group": "Media",
-      "subLabel": "",
-      "fileBase": "reviews",
-      "title": "Reviews"
-    },
-    {
-      "id": "rob-wegner/movemental-analysis",
-      "path": "rob-wegner/movemental-analysis.md",
-      "slug": "rob-wegner",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "movemental-analysis",
-      "title": "Movemental Analysis"
-    },
-    {
-      "id": "rob-wegner/network/collaborators",
-      "path": "rob-wegner/network/collaborators.md",
-      "slug": "rob-wegner",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "collaborators",
-      "title": "Collaborators"
-    },
-    {
-      "id": "rob-wegner/network/endorsements",
-      "path": "rob-wegner/network/endorsements.md",
-      "slug": "rob-wegner",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "endorsements",
-      "title": "Endorsements"
-    },
-    {
-      "id": "rob-wegner/network/events",
-      "path": "rob-wegner/network/events.md",
-      "slug": "rob-wegner",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "events",
-      "title": "Events"
-    },
-    {
-      "id": "rob-wegner/network/network-summary",
-      "path": "rob-wegner/network/network-summary.md",
-      "slug": "rob-wegner",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "network-summary",
-      "title": "Network Summary"
-    },
-    {
       "id": "rob-wegner/network/organizations",
       "path": "rob-wegner/network/organizations.md",
       "slug": "rob-wegner",
@@ -8814,6 +9497,15 @@
       "subLabel": "",
       "fileBase": "biography",
       "title": "Biography"
+    },
+    {
+      "id": "rob-wegner/profile/calling-profile",
+      "path": "rob-wegner/profile/calling-profile.md",
+      "slug": "rob-wegner",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "calling-profile",
+      "title": "Calling Profile"
     },
     {
       "id": "rob-wegner/profile/identity",
@@ -8915,67 +9607,238 @@
       "title": "README"
     },
     {
-      "id": "rowland-smith/analysis/content-analysis",
-      "path": "rowland-smith/analysis/content-analysis.md",
+      "id": "rowland-smith/_misc/analysis-content-analysis",
+      "path": "rowland-smith/_misc/analysis-content-analysis.md",
       "slug": "rowland-smith",
-      "group": "Analysis",
+      "group": "_misc",
       "subLabel": "",
-      "fileBase": "content-analysis",
-      "title": "Content Analysis"
+      "fileBase": "analysis-content-analysis",
+      "title": "Analysis Content Analysis"
     },
     {
-      "id": "rowland-smith/analysis/gap-analysis",
-      "path": "rowland-smith/analysis/gap-analysis.md",
+      "id": "rowland-smith/_misc/committed-voice-2026-05-20",
+      "path": "rowland-smith/_misc/committed-voice-2026-05-20.md",
       "slug": "rowland-smith",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "gap-analysis",
-      "title": "Gap Analysis"
-    },
-    {
-      "id": "rowland-smith/analysis/movemental-fit",
-      "path": "rowland-smith/analysis/movemental-fit.md",
-      "slug": "rowland-smith",
-      "group": "Analysis",
-      "subLabel": "",
-      "fileBase": "movemental-fit",
-      "title": "Movemental Fit"
-    },
-    {
-      "id": "rowland-smith/committed-voice-2026-05-20",
-      "path": "rowland-smith/committed-voice-2026-05-20.md",
-      "slug": "rowland-smith",
-      "group": "Overview & index",
+      "group": "_misc",
       "subLabel": "",
       "fileBase": "committed-voice-2026-05-20",
       "title": "Committed Voice 2026 05 20"
     },
     {
-      "id": "rowland-smith/committed-voice",
-      "path": "rowland-smith/committed-voice.md",
+      "id": "rowland-smith/_misc/committed-voice",
+      "path": "rowland-smith/_misc/committed-voice.md",
       "slug": "rowland-smith",
-      "group": "Overview & index",
+      "group": "_misc",
       "subLabel": "",
       "fileBase": "committed-voice",
       "title": "Committed Voice"
     },
     {
-      "id": "rowland-smith/content-analysis",
-      "path": "rowland-smith/content-analysis.md",
+      "id": "rowland-smith/_misc/content-analysis-root",
+      "path": "rowland-smith/_misc/content-analysis-root.md",
       "slug": "rowland-smith",
-      "group": "Overview & index",
+      "group": "_misc",
       "subLabel": "",
-      "fileBase": "content-analysis",
-      "title": "Content Analysis"
+      "fileBase": "content-analysis-root",
+      "title": "Content Analysis Root"
     },
     {
-      "id": "rowland-smith/digital-presence-discovery",
-      "path": "rowland-smith/digital-presence-discovery.md",
+      "id": "rowland-smith/_misc/digital-presence-discovery",
+      "path": "rowland-smith/_misc/digital-presence-discovery.md",
       "slug": "rowland-smith",
-      "group": "Overview & index",
+      "group": "_misc",
       "subLabel": "",
       "fileBase": "digital-presence-discovery",
       "title": "Digital Presence Discovery"
+    },
+    {
+      "id": "rowland-smith/_misc/network/collaborators",
+      "path": "rowland-smith/_misc/network/collaborators.md",
+      "slug": "rowland-smith",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "collaborators",
+      "title": "Collaborators (Network)"
+    },
+    {
+      "id": "rowland-smith/_misc/network/endorsements",
+      "path": "rowland-smith/_misc/network/endorsements.md",
+      "slug": "rowland-smith",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "endorsements",
+      "title": "Endorsements (Network)"
+    },
+    {
+      "id": "rowland-smith/_misc/network/events",
+      "path": "rowland-smith/_misc/network/events.md",
+      "slug": "rowland-smith",
+      "group": "_misc",
+      "subLabel": "Network",
+      "fileBase": "events",
+      "title": "Events (Network)"
+    },
+    {
+      "id": "rowland-smith/_staff/gap-analysis-root",
+      "path": "rowland-smith/_staff/gap-analysis-root.md",
+      "slug": "rowland-smith",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "gap-analysis-root",
+      "title": "Gap Analysis Root"
+    },
+    {
+      "id": "rowland-smith/_staff/gap-analysis",
+      "path": "rowland-smith/_staff/gap-analysis.md",
+      "slug": "rowland-smith",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "gap-analysis",
+      "title": "Gap Analysis"
+    },
+    {
+      "id": "rowland-smith/_staff/identity-verification",
+      "path": "rowland-smith/_staff/identity-verification.md",
+      "slug": "rowland-smith",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "identity-verification",
+      "title": "Identity Verification"
+    },
+    {
+      "id": "rowland-smith/_staff/movemental-analysis",
+      "path": "rowland-smith/_staff/movemental-analysis.md",
+      "slug": "rowland-smith",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-analysis",
+      "title": "Movemental Analysis"
+    },
+    {
+      "id": "rowland-smith/_staff/movemental-fit",
+      "path": "rowland-smith/_staff/movemental-fit.md",
+      "slug": "rowland-smith",
+      "group": "_staff",
+      "subLabel": "",
+      "fileBase": "movemental-fit",
+      "title": "Movemental Fit"
+    },
+    {
+      "id": "rowland-smith/analysis/audience-analysis",
+      "path": "rowland-smith/analysis/audience-analysis.md",
+      "slug": "rowland-smith",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "audience-analysis",
+      "title": "Audience Analysis"
+    },
+    {
+      "id": "rowland-smith/content/academic",
+      "path": "rowland-smith/content/academic.md",
+      "slug": "rowland-smith",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "academic",
+      "title": "Academic"
+    },
+    {
+      "id": "rowland-smith/content/articles",
+      "path": "rowland-smith/content/articles.md",
+      "slug": "rowland-smith",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "articles",
+      "title": "Articles"
+    },
+    {
+      "id": "rowland-smith/content/audio",
+      "path": "rowland-smith/content/audio.md",
+      "slug": "rowland-smith",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "audio",
+      "title": "Audio"
+    },
+    {
+      "id": "rowland-smith/content/books",
+      "path": "rowland-smith/content/books.md",
+      "slug": "rowland-smith",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "books",
+      "title": "Books"
+    },
+    {
+      "id": "rowland-smith/content/content-audit",
+      "path": "rowland-smith/content/content-audit.md",
+      "slug": "rowland-smith",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "content-audit",
+      "title": "Content Audit"
+    },
+    {
+      "id": "rowland-smith/content/courses",
+      "path": "rowland-smith/content/courses.md",
+      "slug": "rowland-smith",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "courses",
+      "title": "Courses"
+    },
+    {
+      "id": "rowland-smith/content/frameworks",
+      "path": "rowland-smith/content/frameworks.md",
+      "slug": "rowland-smith",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "frameworks",
+      "title": "Frameworks"
+    },
+    {
+      "id": "rowland-smith/content/videos",
+      "path": "rowland-smith/content/videos.md",
+      "slug": "rowland-smith",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "videos",
+      "title": "Videos"
+    },
+    {
+      "id": "rowland-smith/digital-presence/newsletters",
+      "path": "rowland-smith/digital-presence/newsletters.md",
+      "slug": "rowland-smith",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "newsletters",
+      "title": "Newsletters"
+    },
+    {
+      "id": "rowland-smith/digital-presence/platforms",
+      "path": "rowland-smith/digital-presence/platforms.md",
+      "slug": "rowland-smith",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "platforms",
+      "title": "Platforms"
+    },
+    {
+      "id": "rowland-smith/digital-presence/social-media",
+      "path": "rowland-smith/digital-presence/social-media.md",
+      "slug": "rowland-smith",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "social-media",
+      "title": "Social Media"
+    },
+    {
+      "id": "rowland-smith/digital-presence/websites",
+      "path": "rowland-smith/digital-presence/websites.md",
+      "slug": "rowland-smith",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "websites",
+      "title": "Websites"
     },
     {
       "id": "rowland-smith/fragmentation-story",
@@ -8985,60 +9848,6 @@
       "subLabel": "",
       "fileBase": "fragmentation-story",
       "title": "Fragmentation Story"
-    },
-    {
-      "id": "rowland-smith/gap-analysis",
-      "path": "rowland-smith/gap-analysis.md",
-      "slug": "rowland-smith",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "gap-analysis",
-      "title": "Gap Analysis"
-    },
-    {
-      "id": "rowland-smith/identity-verification",
-      "path": "rowland-smith/identity-verification.md",
-      "slug": "rowland-smith",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "identity-verification",
-      "title": "Identity Verification"
-    },
-    {
-      "id": "rowland-smith/movemental-analysis",
-      "path": "rowland-smith/movemental-analysis.md",
-      "slug": "rowland-smith",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "movemental-analysis",
-      "title": "Movemental Analysis"
-    },
-    {
-      "id": "rowland-smith/network/collaborators",
-      "path": "rowland-smith/network/collaborators.md",
-      "slug": "rowland-smith",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "collaborators",
-      "title": "Collaborators"
-    },
-    {
-      "id": "rowland-smith/network/endorsements",
-      "path": "rowland-smith/network/endorsements.md",
-      "slug": "rowland-smith",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "endorsements",
-      "title": "Endorsements"
-    },
-    {
-      "id": "rowland-smith/network/events",
-      "path": "rowland-smith/network/events.md",
-      "slug": "rowland-smith",
-      "group": "Network",
-      "subLabel": "",
-      "fileBase": "events",
-      "title": "Events"
     },
     {
       "id": "rowland-smith/network/organizations",
@@ -9059,6 +9868,15 @@
       "title": "Biography"
     },
     {
+      "id": "rowland-smith/profile/calling-profile",
+      "path": "rowland-smith/profile/calling-profile.md",
+      "slug": "rowland-smith",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "calling-profile",
+      "title": "Calling Profile"
+    },
+    {
       "id": "rowland-smith/profile/identity",
       "path": "rowland-smith/profile/identity.md",
       "slug": "rowland-smith",
@@ -9066,6 +9884,24 @@
       "subLabel": "",
       "fileBase": "identity",
       "title": "Identity"
+    },
+    {
+      "id": "rowland-smith/profile/theology",
+      "path": "rowland-smith/profile/theology.md",
+      "slug": "rowland-smith",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "theology",
+      "title": "Theology"
+    },
+    {
+      "id": "rowland-smith/profile/voice-analysis",
+      "path": "rowland-smith/profile/voice-analysis.md",
+      "slug": "rowland-smith",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "voice-analysis",
+      "title": "Voice Analysis"
     },
     {
       "id": "rowland-smith/README",
@@ -9104,13 +9940,76 @@
       "title": "Welcome Letter"
     },
     {
-      "id": "roy-moran/committed-voice",
-      "path": "roy-moran/committed-voice.md",
+      "id": "roy-moran/_misc/committed-voice",
+      "path": "roy-moran/_misc/committed-voice.md",
       "slug": "roy-moran",
-      "group": "Overview & index",
+      "group": "_misc",
       "subLabel": "",
       "fileBase": "committed-voice",
       "title": "Committed Voice"
+    },
+    {
+      "id": "roy-moran/_staff/legacy/ROY_MORAN_AUDIENCE_PROFILE",
+      "path": "roy-moran/_staff/legacy/ROY_MORAN_AUDIENCE_PROFILE.md",
+      "slug": "roy-moran",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "ROY_MORAN_AUDIENCE_PROFILE",
+      "title": "ROY MORAN AUDIENCE PROFILE (Legacy)"
+    },
+    {
+      "id": "roy-moran/_staff/legacy/ROY_MORAN_AUTHOR_PROFILE",
+      "path": "roy-moran/_staff/legacy/ROY_MORAN_AUTHOR_PROFILE.md",
+      "slug": "roy-moran",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "ROY_MORAN_AUTHOR_PROFILE",
+      "title": "ROY MORAN AUTHOR PROFILE (Legacy)"
+    },
+    {
+      "id": "roy-moran/_staff/legacy/ROY_MORAN_CALLING_PROFILE",
+      "path": "roy-moran/_staff/legacy/ROY_MORAN_CALLING_PROFILE.md",
+      "slug": "roy-moran",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "ROY_MORAN_CALLING_PROFILE",
+      "title": "ROY MORAN CALLING PROFILE (Legacy)"
+    },
+    {
+      "id": "roy-moran/_staff/legacy/ROY_MORAN_CONTENT_AUDIT",
+      "path": "roy-moran/_staff/legacy/ROY_MORAN_CONTENT_AUDIT.md",
+      "slug": "roy-moran",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "ROY_MORAN_CONTENT_AUDIT",
+      "title": "ROY MORAN CONTENT AUDIT (Legacy)"
+    },
+    {
+      "id": "roy-moran/_staff/legacy/ROY_MORAN_PROFILES_INDEX",
+      "path": "roy-moran/_staff/legacy/ROY_MORAN_PROFILES_INDEX.md",
+      "slug": "roy-moran",
+      "group": "_staff",
+      "subLabel": "Legacy",
+      "fileBase": "ROY_MORAN_PROFILES_INDEX",
+      "title": "ROY MORAN PROFILES INDEX (Legacy)"
+    },
+    {
+      "id": "roy-moran/analysis/audience-analysis",
+      "path": "roy-moran/analysis/audience-analysis.md",
+      "slug": "roy-moran",
+      "group": "Analysis",
+      "subLabel": "",
+      "fileBase": "audience-analysis",
+      "title": "Audience Analysis"
+    },
+    {
+      "id": "roy-moran/content/academic",
+      "path": "roy-moran/content/academic.md",
+      "slug": "roy-moran",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "academic",
+      "title": "Academic"
     },
     {
       "id": "roy-moran/content/articles",
@@ -9140,6 +10039,24 @@
       "title": "Books"
     },
     {
+      "id": "roy-moran/content/content-audit",
+      "path": "roy-moran/content/content-audit.md",
+      "slug": "roy-moran",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "content-audit",
+      "title": "Content Audit"
+    },
+    {
+      "id": "roy-moran/content/courses",
+      "path": "roy-moran/content/courses.md",
+      "slug": "roy-moran",
+      "group": "Content",
+      "subLabel": "",
+      "fileBase": "courses",
+      "title": "Courses"
+    },
+    {
       "id": "roy-moran/content/frameworks",
       "path": "roy-moran/content/frameworks.md",
       "slug": "roy-moran",
@@ -9156,6 +10073,42 @@
       "subLabel": "",
       "fileBase": "videos",
       "title": "Videos"
+    },
+    {
+      "id": "roy-moran/digital-presence/newsletters",
+      "path": "roy-moran/digital-presence/newsletters.md",
+      "slug": "roy-moran",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "newsletters",
+      "title": "Newsletters"
+    },
+    {
+      "id": "roy-moran/digital-presence/platforms",
+      "path": "roy-moran/digital-presence/platforms.md",
+      "slug": "roy-moran",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "platforms",
+      "title": "Platforms"
+    },
+    {
+      "id": "roy-moran/digital-presence/social-media",
+      "path": "roy-moran/digital-presence/social-media.md",
+      "slug": "roy-moran",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "social-media",
+      "title": "Social Media"
+    },
+    {
+      "id": "roy-moran/digital-presence/websites",
+      "path": "roy-moran/digital-presence/websites.md",
+      "slug": "roy-moran",
+      "group": "Digital presence",
+      "subLabel": "",
+      "fileBase": "websites",
+      "title": "Websites"
     },
     {
       "id": "roy-moran/fragmentation-story",
@@ -9185,6 +10138,15 @@
       "title": "Biography"
     },
     {
+      "id": "roy-moran/profile/calling-profile",
+      "path": "roy-moran/profile/calling-profile.md",
+      "slug": "roy-moran",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "calling-profile",
+      "title": "Calling Profile"
+    },
+    {
       "id": "roy-moran/profile/identity",
       "path": "roy-moran/profile/identity.md",
       "slug": "roy-moran",
@@ -9192,6 +10154,15 @@
       "subLabel": "",
       "fileBase": "identity",
       "title": "Identity"
+    },
+    {
+      "id": "roy-moran/profile/theology",
+      "path": "roy-moran/profile/theology.md",
+      "slug": "roy-moran",
+      "group": "Profile",
+      "subLabel": "",
+      "fileBase": "theology",
+      "title": "Theology"
     },
     {
       "id": "roy-moran/profile/voice-analysis",
@@ -9210,51 +10181,6 @@
       "subLabel": "",
       "fileBase": "README",
       "title": "README"
-    },
-    {
-      "id": "roy-moran/ROY_MORAN_AUDIENCE_PROFILE",
-      "path": "roy-moran/ROY_MORAN_AUDIENCE_PROFILE.md",
-      "slug": "roy-moran",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "ROY_MORAN_AUDIENCE_PROFILE",
-      "title": "ROY MORAN AUDIENCE PROFILE"
-    },
-    {
-      "id": "roy-moran/ROY_MORAN_AUTHOR_PROFILE",
-      "path": "roy-moran/ROY_MORAN_AUTHOR_PROFILE.md",
-      "slug": "roy-moran",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "ROY_MORAN_AUTHOR_PROFILE",
-      "title": "ROY MORAN AUTHOR PROFILE"
-    },
-    {
-      "id": "roy-moran/ROY_MORAN_CALLING_PROFILE",
-      "path": "roy-moran/ROY_MORAN_CALLING_PROFILE.md",
-      "slug": "roy-moran",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "ROY_MORAN_CALLING_PROFILE",
-      "title": "ROY MORAN CALLING PROFILE"
-    },
-    {
-      "id": "roy-moran/ROY_MORAN_CONTENT_AUDIT",
-      "path": "roy-moran/ROY_MORAN_CONTENT_AUDIT.md",
-      "slug": "roy-moran",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "ROY_MORAN_CONTENT_AUDIT",
-      "title": "ROY MORAN CONTENT AUDIT"
-    },
-    {
-      "id": "roy-moran/ROY_MORAN_PROFILES_INDEX",
-      "path": "roy-moran/ROY_MORAN_PROFILES_INDEX.md",
-      "slug": "roy-moran",
-      "group": "Overview & index",
-      "subLabel": "",
-      "fileBase": "ROY_MORAN_PROFILES_INDEX",
-      "title": "ROY MORAN PROFILES INDEX"
     },
     {
       "id": "roy-moran/sources",

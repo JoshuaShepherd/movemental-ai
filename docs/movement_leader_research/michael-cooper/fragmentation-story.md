@@ -68,15 +68,8 @@ Cooper's **institutional reach is large and his owned relational layer is thin**
 
 Even his most valuable credential — being positioned by Alan Hirsch, Marvin Newell, and James Stamoolis as a contemporary heir to **Roland Allen** — is an endorsement-jacket fact, not an owned-audience asset.
 
-## Why This Matters for Movemental
+## Why consolidation matters
 
-Per `docs/build/strategy/movement-leaders-as-ecosystem-layer.md`, movement leaders are a **trusted-voice and ecosystem layer**, not an implementation audience. Cooper fits that framing precisely — and his fragmentation is a distinctive variant of the problem Movemental exists to solve:
+Cooper is not content-poor — he is a content-rich scholar-practitioner whose work needs **consolidating, interconnecting, and converting**. The corpus is dispersed across six imprints, three brand identities, two blogs, an LMS, a podcast, and a seminary partnership. He owns a category of one ("Ephesiology"), but the evidence for that category is scattered enough that the word often out-travels the person.
 
-1. He is not a content-poor practitioner who needs help producing; he is a content-rich scholar-practitioner who needs help **consolidating, interconnecting, and converting**. The work is aggregation and discoverability, not authorship.
-2. His corpus is dispersed across six imprints, three brand identities, two blogs, an LMS, a podcast, and a seminary partnership — exactly the kind of fragmentation a unified, AI-legible ecosystem layer is built to resolve.
-3. He **owns a category of one** ("Ephesiology"). With proper SEO/GEO and a unified hub, that category ownership becomes durable and defensible; right now the category's evidence is scattered enough that the word out-travels the man.
-4. His onboarding compounds: single-hop ties to Alan Hirsch (endorser), the Evangelical Missiological Society, East West, Kairos, and a roster of co-authors (John W. Morehead, Gailyn Van Rheenen, Gary Fujino, Matt Till, Andrew Johnson).
-
-**The fragmentation story is not a deficiency report. It is a precise inventory of a large, coherent corpus that has never been consolidated — and that is exactly the platform-layer work Movemental is positioned to do.**
-
-See [analysis/movemental-fit.md](analysis/movemental-fit.md) for the onboarding plan and [content-marketing-playbook.md](content-marketing-playbook.md) for the content strategy.
+**This is an inventory of a large, coherent corpus that has never been fully unified in one discoverable hub.**

@@ -31,8 +31,6 @@ His digital presence is **distributed across many domains he influences but does
 - Establish an owned subscription/membership channel (newsletter, paid community) — currently absent
 - Centralize discoverability so the surname collision problem stops fragmenting his SEO
 
-**Movemental Fit**: **High.** Rowland is a textbook Movemental candidate — significant embodied work (national network leadership + regional network founding + local pastoring + multi-seminary teaching + book publishing) running far ahead of his digital expression, with content fragmented across at least seven domains and no central hub or owned subscription channel.
-
 ## Current Digital Presence
 
 ### Website Presence
@@ -148,48 +146,6 @@ Content is split across personal (rowlandsmith.net + X), networks he leads (forg
 - Mid via forgeamerica.com, thepandocollective.com, redskiesfuture.com, pulpitrock.com
 - Low via personal rowlandsmith.net (likely Squarespace; thin)
 
-## Gap Analysis (high-level — see [analysis/gap-analysis.md](analysis/gap-analysis.md) for detail)
-
-### Embodied Work vs. Digital Expression
-
-**Embodied (high volume)**: national network leadership (Forge America) + regional network founding/leading (Pando) + local pastoring (Pulpit Rock) + adjunct teaching at three seminaries + DMin cohort weeks + national conference speaking (Exponential, Mosaix, Awakenings) + business-as-mission entrepreneurship (Third Space Coffee) + two books + dissertation
-
-**Digital (uneven)**: Books indexed everywhere; conference speaker pages exist; faculty pages exist; X account active. *But*: personal site is thin, no personal podcast, no newsletter, no YouTube channel, sporadic editorial cadence, no central library connecting books + articles + talks + cohort content.
-
-### Primary Gaps
-
-1. **Personal hub** — rowlandsmith.net could be the canonical home but currently isn't
-2. **Content interconnection** — books, articles, podcast appearances, sermons, and cohort material are not cross-linked
-3. **Cadence** — no regular newsletter, blog, or personal podcast cadence to retain audience between book releases
-4. **Repurposing** — Forge cohort and seminary teaching content not converted into public articles/courses/short-form video
-5. **Owned audience / subscription** — no newsletter, paid community, or course store
-6. **Discoverability** — surname collisions hurt; personal hub does not rank as canonical
-
-## Movemental Opportunities
-
-1. **Unified content platform** — collapse the personal-site / book-site / org-site / faculty-page sprawl into one Movemental-powered hub keyed off rowlandsmith.net
-2. **Content interconnection** — link books → essays → podcast appearances → cohort content → sermons; build a real bibliography and reading-order
-3. **Content repurposing** — convert *Red Skies* 10 conversations into an evergreen essay/podcast/video series; release Forge cohort modules as public mini-courses
-4. **Cadence** — start a newsletter and (optionally) a personal podcast to capture demand between book cycles
-5. **Discoverability** — establish rowlandsmith.net as the canonical author entity (schema.org + interlinking + reciprocal links from Forge / Pando / Pulpit Rock)
-6. **Revenue** — direct sales (signed copies, bulk *Red Skies* facilitator kits), course store, paid community for Forge alumni / Pando network leaders
-7. **Analytics** — unified picture of which channels drive book sales, cohort applications, and Pando engagement
-
-### What Would Remain the Same
-
-1. **Voice & content** — Rowland's voice, theological positions, training methodology unchanged
-2. **Existing platforms** — Forge America, Pando Collective, Pulpit Rock, the seminaries continue operating their own channels; Movemental complements rather than replaces
-3. **Roles** — National Director, Founder/Director, Pastor of Missional Culture, Adjunct Faculty all continue
-4. **Control & ownership** — Rowland owns the Movemental presence
-
-## What We Will NOT Do
-
-- **Replace existing work**: Forge America, Pando, Pulpit Rock, the seminaries, and 100M Publishing all continue exactly as-is
-- **Change voice or content**: Movemental is a re-presentation layer, not a re-authoring layer
-- **Disrupt relationships**: Existing publisher, network, and institutional relationships remain intact
-- **Prescribe actions**: This profile supports discernment, not a directive
-- **Judge content**: The research describes what exists; it does not evaluate quality
-
 ---
 
 *Research conducted: January 2025*
@@ -197,4 +153,3 @@ Content is split across personal (rowlandsmith.net + X), networks he leads (forg
 *Confidence Level: High*
 *Research dashboard: See [README.md](README.md)*
 *Sources: See `sources.md`*
-*Note: Per scope, sermon audio, podcast episode files, and video assets were not downloaded; canonical links are noted in `digital-presence-discovery.md` and `sources.md` for future capture.*

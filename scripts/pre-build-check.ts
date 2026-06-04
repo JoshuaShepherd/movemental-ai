@@ -206,6 +206,12 @@ class PreBuildValidator {
         critical: true,
         description: "Layer Validation (All 6 Layers)",
       });
+      validationSteps.push({
+        name: "research-tree-check",
+        command: "pnpm research:tree-check",
+        critical: false,
+        description: "Tenant research tree canonical paths (15 slugs)",
+      });
     } else if (!shouldRunComprehensive) {
       console.log("⏭️  Skipping layer validation (use RUN_LAYER_VALIDATION=true to enable)\n");
       console.log("💡 Run `pnpm build:check` manually for full validation when needed\n");

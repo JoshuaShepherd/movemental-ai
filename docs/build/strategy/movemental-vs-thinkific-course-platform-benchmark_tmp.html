@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>movemental-vs-thinkific-course-platform-benchmark.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="movementals-course-platform-vs-thinkific--an-honest-benchmark">Movemental's Course Platform vs. Thinkific — An Honest Benchmark</h1>
+<p><em>Written for a movement leader (the kind of practitioner Michael Cooper of Ephesiology is) who is already moving books, articles, site, and AI onto Movemental's stack — and who has to decide what to do with an <strong>existing</strong> course setup (Thinkific, or any mature hosted LMS).</em></p>
+<p><em>Prepared May 2026. Grounded in the actual code and source material across three repositories (<code>movemental-ai</code>, <code>movemental-visual-editor</code>, <code>alan-hirsch</code>), Movemental's published pricing model, and a direct reading of Thinkific's current pricing, features, help docs, and reviews.</em></p>
+<blockquote>
+<p><strong>Note on Cooper specifically:</strong> Cooper runs an <strong>accredited</strong> Master Classes / Seminary@YourChurch LMS (Kairos degree ladder), not Thinkific. The Thinkific comparison below is the right frame for <em>hosted LMS vs. Movemental courses</em>; for Cooper, the accredited pipeline is a <strong>do-not-migrate</strong> boundary — see §7.</p>
+</blockquote>
+<hr>
+<h2 id="0-the-one-paragraph-version-if-you-read-nothing-else">0. The one-paragraph version (if you read nothing else)</h2>
+<p>Movemental's <strong>full custom platform</strong> — site, books, articles, AI companions, checkout, and course <em>capability</em> — costs <strong>$1,000 upfront + 10% of platform revenue</strong>, with Movemental's team deploying and operating it. <strong>Course migration is optional.</strong> You can move everything else onto Movemental and keep Thinkific (or another LMS) for course delivery indefinitely.</p>
+<p>The real question is not &quot;Thinkific vs. Movemental as standalone products.&quot; It is: <strong>given that you're already on the Movemental stack, should your courses live there too?</strong></p>
+<p><strong>Migrate courses to Movemental when</strong> formation-shaped pedagogy (cohort loop, in-lesson AI, enforced 8-week design) is load-bearing for what you sell, and you want one owned domain, one login, and one revenue/analytics story.</p>
+<p><strong>Keep Thinkific (or your existing LMS) when</strong> your courses are working as information delivery, accredited credentials, or institutional cohorts that must not be disturbed — especially while Movemental's community board, certificates, and instructor analytics are still unfinished.</p>
+<p>Thinkific remains the rational choice for <strong>course-only, rent-a-platform, ship-this-week</strong> economics (~<strong>$50–100/mo</strong> nonprofit). Movemental wins on <strong>owned, formation-shaped course design</strong> bundled into a platform you're already buying — not on replicating Thinkific's LMS furniture on day one.</p>
+<hr>
+<h2 id="05-the-decision-youre-actually-making">0.5. The decision you're actually making</h2>
+<table>
+<thead>
+<tr>
+<th>What you're doing</th>
+<th>Required?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Move site, books, articles, podcast surface, AI agents to Movemental ($1,000 + 10%)</td>
+<td><strong>Yes</strong> — that's the deal</td>
+</tr>
+<tr>
+<td>Migrate existing Thinkific (or other LMS) courses into Movemental</td>
+<td><strong>No</strong> — explicitly optional</td>
+</tr>
+</tbody>
+</table>
+<p>So this document is <strong>not</strong> &quot;should Michael buy Movemental?&quot; (that's a separate question; the course module is <strong>included</strong> in the $1,000 build). It is: <strong>once he's on Movemental for everything else, what do we do about courses?</strong></p>
+<p>Three live architectures:</p>
+<ol>
+<li><strong>Split stack (valid default)</strong> — Movemental for public hub + owned audience + books/articles/AI; Thinkific (or existing LMS) for course delivery. Link out; accept two logins until/unless migration pays off.</li>
+<li><strong>Unified stack</strong> — Rebuild or port courses into Movemental's learn experience. One brand, one checkout, formation AI in the loop.</li>
+<li><strong>Hybrid</strong> — Keep legacy/accredited courses on the old LMS; launch <strong>new</strong> formation courses on Movemental only.</li>
+</ol>
+<p>The rest of this doc gives you an honest comparison to choose among those three.</p>
+<hr>
+<h2 id="1-what-movemental-has-actually-built-in-plain-terms">1. What Movemental has actually built (in plain terms)</h2>
+<p>Think of it as <strong>three connected pieces</strong>, not one product. This matters, because most LMS platforms (Thinkific included) are a single thing you log into. Movemental is a <strong>multi-app system</strong> (delivery app + authoring dashboard + shared database) that Movemental deploys for you — included in the $1,000 build, not a separate LMS subscription.</p>
+<h3 id="piece-1--a-pedagogy-baked-into-the-software-the-real-differentiator">Piece 1 — A pedagogy, baked into the software (the real differentiator)</h3>
+<p>Most course tools are <em>neutral</em> about what a course is. You can put a video and a quiz in any order; the tool doesn't care whether anyone is actually changed. Movemental took the opposite stance and wrote its teaching philosophy <em>into the structure of the software</em>.</p>
+<p>Every course is built on <strong>four non-negotiables</strong> — what the docs call the <strong>Four Necessities</strong>:</p>
+<ol>
+<li><strong>Dissonance</strong> — a productive tension that unsettles an assumption (&quot;You say X — but what about Y?&quot;).</li>
+<li><strong>Action</strong> — one concrete, time-boxed step the learner takes <em>in real life</em>, named to a real person.</li>
+<li><strong>Reflection</strong> — looking back at what happened when they acted, turning experience into insight.</li>
+<li><strong>Community</strong> — a cohort that provides mirror, witness, and accountability.</li>
+</ol>
+<p>Courses are a <strong>fixed 8-week shape</strong>: Week 1 orients, Weeks 2–7 each run the full loop on one idea, Week 8 sends. Each core week follows the same rhythm — <em>opening video → dissonance → main teaching → a real story → action step → reflection → cohort meeting → exit ticket.</em> This is enforced: there are tools (<code>course-validate</code>) that will flag a week that's missing dissonance or action or community.</p>
+<p><strong>Why a teacher should care:</strong> This is the difference between &quot;I posted my lectures online&quot; and &quot;I designed an experience that changes how people live.&quot; For someone whose whole concern is disciple-making and movements — not information transfer — this is not a feature. It's the thesis. Thinkific has no opinion about any of this and never will.</p>
+<h3 id="piece-2--the-learners-experience-the-%22delivery-app%22-alan-hirsch">Piece 2 — The learner's experience (the &quot;delivery app,&quot; <code>alan-hirsch</code>)</h3>
+<p>This is what a student actually sees. It is <strong>genuinely built and working</strong> in its core:</p>
+<ul>
+<li>A real course player: chapter/week sidebar, progress tracking per section and per lesson, mark-complete, previous/next navigation, mobile-responsive layout.</li>
+<li><strong>24 distinct kinds of lesson section</strong> already coded as real components — not just video and text, but scripture, case study, field experiment, guided practice, covenant/commitment, exit ticket, and more.</li>
+<li><strong>The AI companion is real and wired in.</strong> Three conversations sit <em>inside</em> the weekly loop — one to provoke (dissonance), one to land a concrete next step (action), one to integrate after the learner acts (reflection). In Week 1 the learner fills in their context (their role, city, ministry setting, gifting), and that context personalizes every later AI conversation. This is the standout. I want to be precise: it is <em>built and functioning</em>, not a mockup.</li>
+<li>Sign-in, access-gating (you can't reach <code>/learn</code> without enrolling), and <strong>Stripe checkout for paid courses</strong> all work.</li>
+</ul>
+<h3 id="piece-3--the-authoring-tool-the-%22dashboard%22-movemental-visual-editor">Piece 3 — The authoring tool (the &quot;dashboard,&quot; <code>movemental-visual-editor</code>)</h3>
+<p>This is where a creator builds the course. It's a real, production-deployed dashboard with:</p>
+<ul>
+<li>A <strong>drag-to-format rich text editor</strong> (Tiptap — the same engine behind many modern editors) with a visual mode and an HTML mode.</li>
+<li>A <strong>media library</strong> that uploads images/video to cloud storage and gives you a URL to embed.</li>
+<li>Course/week/lesson creation, draft→published status, learner preview, and an <strong>AI sidebar</strong> that can help draft content <em>in the author's voice</em>.</li>
+<li>Custom content blocks (callouts, embedded quizzes, video-with-annotations, assignments, resource cards, data visualizations).</li>
+</ul>
+<blockquote>
+<p><strong>Important honesty note:</strong> An earlier read of only the <em>delivery</em> app concluded &quot;there's no course editor — you have to edit the database directly.&quot; That's wrong once you include the dashboard repo. The editor exists. The platform is <strong>split across separate apps that share one database</strong> — invisible to learners, operated by Movemental, not a single SaaS seat you rent.</p>
+</blockquote>
+<hr>
+<h2 id="2-where-movemental-is-honestly-not-yet-finished">2. Where Movemental is honestly <em>not yet</em> finished</h2>
+<p>I am deliberately listing these plainly, because a benchmark that hides them is useless to you.</p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Honest status today</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Live cohort discussion board</td>
+<td><strong>Schema exists; UI shows placeholder/sample threads.</strong> Real-time threaded discussion is not wired. This is significant because <em>Community</em> is one of the Four Necessities — the design depends on it, and it's the least finished part.</td>
+</tr>
+<tr>
+<td>Certificates</td>
+<td><strong>Templates can be stored; automatic issuance on completion is not wired.</strong></td>
+</tr>
+<tr>
+<td>Quizzes / graded assessments</td>
+<td><strong>Tables and a section component exist; scoring, feedback, and gating-on-score are not connected in the UI.</strong></td>
+</tr>
+<tr>
+<td>Drip scheduling &amp; prerequisites</td>
+<td><strong>Schema is ready; the rules aren't enforced in code yet.</strong></td>
+</tr>
+<tr>
+<td>Instructor/cohort analytics dashboard</td>
+<td><strong>Stubbed.</strong> A learner sees their own progress; an instructor can't yet see cohort-wide analytics in a finished screen.</td>
+</tr>
+<tr>
+<td>Enrollment management screen</td>
+<td><strong>Stubbed</strong> (code literally notes &quot;will be wired when the endpoint is available&quot;).</td>
+</tr>
+<tr>
+<td>Drag-and-drop reordering of weeks/lessons</td>
+<td><strong>Not built</strong> — you edit in place.</td>
+</tr>
+<tr>
+<td>Native video hosting/streaming</td>
+<td><strong>Not built</strong> — you bring video URLs (YouTube/Vimeo/etc.). No built-in CDN, no upload-and-stream.</td>
+</tr>
+<tr>
+<td>Learner mobile app</td>
+<td><strong>None.</strong> (It's mobile-<em>responsive web</em>, which is good, but not an app store app.)</td>
+</tr>
+<tr>
+<td>SCORM, advanced exam engine</td>
+<td><strong>None.</strong></td>
+</tr>
+</tbody>
+</table>
+<p>So: the <strong>core learn loop + AI conversations + checkout</strong> are real and working. A lot of the <em>surrounding</em> LMS furniture (community board, certificates, grading, drip enforcement, admin analytics) is <strong>designed and schema-ready but not finished</strong>. &quot;What you'd ship today&quot; is narrower than &quot;what's designed.&quot;</p>
+<hr>
+<h2 id="3-what-thinkific-gives-you-honest-profile-nonprofit-lens">3. What Thinkific gives you (honest profile, nonprofit lens)</h2>
+<p>Thinkific is a mature, hosted SaaS. For a nonprofit it offers a <strong>50% discount on the Start or Grow plans</strong> (registered nonprofits only; educational institutions excluded; applies to the monthly price). Realistically:</p>
+<ul>
+<li><strong>Start</strong> ≈ <strong>$50/mo</strong> after nonprofit discount: unlimited courses, custom domain, 1 community, 10,000-student cap. <em>No branding removal on Start.</em></li>
+<li><strong>Grow</strong> ≈ <strong>$100/mo</strong> after discount: adds branding removal, 3 communities, better analytics, priority support.</li>
+<li><strong>No free-forever plan</strong> anymore (30-day trial). <strong>No dedicated nonprofit tier</strong> — just the discount on standard plans.</li>
+</ul>
+<p>What you get for that, immediately and supported:</p>
+<ul>
+<li><strong>A finished course builder</strong>: drag-and-drop, Courses→Chapters→Lessons, lesson types for video, audio, text, PDF/downloads, multimedia/embeds (H5P, Storyline, Google Docs), quizzes, surveys, assignments, and live lessons.</li>
+<li><strong>Native video hosting</strong> with bandwidth included per tier.</li>
+<li><strong>Certificates</strong> generated automatically on completion.</li>
+<li><strong>Drip scheduling and prerequisites</strong>, working out of the box.</li>
+<li><strong>A free learner mobile app</strong> (iOS + Android).</li>
+<li><strong>Real commerce</strong>: one-time, subscriptions, payment plans, memberships, bundles, coupons, order bumps — and crucially, <strong>built-in sales tax / VAT calculation and remittance</strong> in the US and Canada. Thinkific handles the payment-compliance headache.</li>
+<li><strong>AI helpers</strong>: course-outline generator, multiple-choice quiz generator, landing-page/email copy, auto-captions, and (top tier) a &quot;Thinker&quot; support assistant.</li>
+<li><strong>A company behind it</strong>: support staff, uptime, PCI compliance, backups, a published API.</li>
+</ul>
+<p>Thinkific's honest weaknesses (from reviews): <strong>design customization is rigid</strong> (the #1 complaint), <strong>native quizzes are multiple-choice only</strong> (real exams need a paid third-party add-on, Brillium), <strong>communities are newer/less mature</strong>, slow video uploads, and <strong>pricing creep</strong> plus a <strong>10,000-student cap</strong> until the enterprise tier. Its AI is <em>assistive</em> (helps you build), not <em>pedagogical</em> (it doesn't run formation conversations inside the lesson).</p>
+<hr>
+<h2 id="4-head-to-head-no-thumb-on-the-scale">4. Head to head (no thumb on the scale)</h2>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Thinkific (nonprofit)</th>
+<th>Movemental (bundled in $1,000 platform)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Time to launch</strong></td>
+<td>Days. Sign up, build, publish.</td>
+<td>Platform: 2–4 weeks. <strong>Course migration:</strong> additional content work — porting, re-shaping to 8-week loop, or net-new authoring.</td>
+</tr>
+<tr>
+<td><strong>Cost — cash (courses only)</strong></td>
+<td>~$50–100/mo ongoing (~$600–1,200/yr), <em>on top of</em> Movemental if you split-stack.</td>
+<td><strong>$0 incremental license</strong> for course capability — included in the $1,000 build. Ongoing: 10% of course revenue through the platform + infra (hosting, AI usage per conversation).</td>
+</tr>
+<tr>
+<td><strong>Cost — labor</strong></td>
+<td>Near zero ops.</td>
+<td><strong>Movemental team</strong> finishes gaps and runs ops — not &quot;hire your own engineer.&quot; Leader labor = authoring + facilitation, not DevOps.</td>
+</tr>
+<tr>
+<td><strong>Cost — total stack</strong></td>
+<td>Two bills, two brands, two support channels if split.</td>
+<td>One platform fee structure; optional Thinkific bill if you keep it.</td>
+</tr>
+<tr>
+<td><strong>Course builder</strong></td>
+<td>Finished, drag-and-drop, polished.</td>
+<td>Real editor (Tiptap), but no drag-reorder; some blocks half-built.</td>
+</tr>
+<tr>
+<td><strong>Video</strong></td>
+<td>Native hosting + CDN included.</td>
+<td>Bring-your-own URL. No native streaming.</td>
+</tr>
+<tr>
+<td><strong>Quizzes/exams</strong></td>
+<td>Working (MC only natively; exams via paid add-on).</td>
+<td>Designed, not wired for scoring/gating.</td>
+</tr>
+<tr>
+<td><strong>Certificates</strong></td>
+<td>Automatic.</td>
+<td>Schema-ready, issuance not wired.</td>
+</tr>
+<tr>
+<td><strong>Cohorts</strong></td>
+<td>Communities exist (tiered add-on; newer).</td>
+<td><strong>Cohort is the default design</strong> — but the live discussion board is the least-finished piece.</td>
+</tr>
+<tr>
+<td><strong>AI in the learning experience</strong></td>
+<td>Assistive (outline/quiz/copy/support bot).</td>
+<td><strong>Formation conversations inside every week, personalized to the learner, in the author's voice.</strong> Genuinely differentiated and actually working.</td>
+</tr>
+<tr>
+<td><strong>Pedagogy</strong></td>
+<td>Neutral. You can build anything, good or bad.</td>
+<td><strong>Opinionated and enforced</strong> — Four Necessities, fixed 8-week loop, voice fidelity.</td>
+</tr>
+<tr>
+<td><strong>Design control / branding</strong></td>
+<td>Limited (top complaint). Branding removal from Grow up.</td>
+<td>Total — it's your codebase.</td>
+</tr>
+<tr>
+<td><strong>Data &amp; platform ownership</strong></td>
+<td>Hosted SaaS; export + API, but it lives on Thinkific.</td>
+<td>You own everything — data, design, the model.</td>
+</tr>
+<tr>
+<td><strong>Per-student economics</strong></td>
+<td>10,000-student cap until enterprise.</td>
+<td>No per-seat cap; your infrastructure cost scales, not a license.</td>
+</tr>
+<tr>
+<td><strong>Payments &amp; tax</strong></td>
+<td>Built-in, compliant, tax remitted (US/CA).</td>
+<td>Stripe is wired; <strong>tax/refund/dunning/compliance is on you.</strong></td>
+</tr>
+<tr>
+<td><strong>Support / reliability</strong></td>
+<td>A company with SLAs and a mobile app.</td>
+<td>Movemental as ongoing partner (10% rev share); not Thinkific-grade LMS SLAs, but not DIY either.</td>
+</tr>
+<tr>
+<td><strong>Mobile</strong></td>
+<td>Native apps.</td>
+<td>Responsive web only.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="5-the-honest-verdict-for-someone-already-buying-movemental">5. The honest verdict (for someone already buying Movemental)</h2>
+<h3 id="if-you-were-choosing-only-an-lms-from-scratch">If you were choosing <em>only</em> an LMS from scratch</h3>
+<p><strong>Thinkific wins.</strong> Cheaper to start, complete, supported, compliant, teaching-this-week. Paying Movemental engineering time to replicate Thinkific's LMS furniture would be a bad trade versus $50/month rental.</p>
+<p><strong>That is not Cooper's question.</strong> He's already paying <strong>$1,000 + 10%</strong> for the full platform. Course capability comes with the build. The marginal question is <strong>migration labor and operational risk</strong>, not &quot;should we build an LMS from scratch.&quot;</p>
+<h3 id="reframed-migrate-courses-or-keep-thinkific">Reframed: migrate courses or keep Thinkific?</h3>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Lean <strong>keep Thinkific / existing LMS</strong></th>
+<th>Lean <strong>migrate (or hybrid: new courses only)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Course shape</td>
+<td>Video + PDF + quiz; self-paced info transfer</td>
+<td>Cohort formation: dissonance → action → reflection → community</td>
+</tr>
+<tr>
+<td>Credentials</td>
+<td>Certificates, drip, grades, mobile app are load-bearing today</td>
+<td>Formation outcome matters more than LMS table-stakes</td>
+</tr>
+<tr>
+<td>Existing enrollments</td>
+<td>Active students mid-course; accredited paths; institutional partners</td>
+<td>Greenfield courses or willing to run a transition cohort</td>
+</tr>
+<tr>
+<td>Integration pain</td>
+<td>Two logins acceptable; Thinkific checkout is fine</td>
+<td>One domain, one Stripe, one analytics story is worth the port</td>
+</tr>
+<tr>
+<td>Movemental gaps</td>
+<td>Need discussion board, auto-certificates, instructor dashboard <em>now</em></td>
+<td>Can ship without those for v1, or Movemental finishes them on your timeline</td>
+</tr>
+<tr>
+<td>Revenue</td>
+<td>Course revenue already flowing; 10% on <em>all</em> platform revenue is the shared model either way</td>
+<td>New formation product where AI-in-the-loop is the differentiator</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Default recommendation for a leader like Cooper moving the rest of the stack:</strong> <strong>Split stack first, hybrid second, full migration last.</strong></p>
+<ul>
+<li><strong>Split stack:</strong> Movemental = canonical public hub, books, articles, podcast surface, owned audience, AI agents. Existing LMS = accredited Master Classes, Seminary@YourChurch, Kairos ladder, anything with live enrollments. <em>Do not compete with or cannibalize the accredited pipeline.</em></li>
+<li><strong>Hybrid:</strong> Keep degree/certificate tracks on the LMS; pilot <strong>one</strong> new 8-week formation course on Movemental when community + certificates are wired — prove the differentiated loop before porting legacy catalog.</li>
+<li><strong>Full migration:</strong> Only when (a) formation pedagogy is the product, (b) Movemental's community/cert/analytics gaps are closed, and (c) the cost of two systems (leader confusion, split data, double monthly bill) exceeds the one-time porting cost.</li>
+</ul>
+<h3 id="when-movemental-courses-are-clearly-worth-it-even-with-thinkific-available">When Movemental courses are clearly worth it (even with Thinkific available)</h3>
+<ol>
+<li><strong>The pedagogy is the product.</strong> Formation — not &quot;here are my lectures.&quot; The in-lesson AI companion (dissonance / action / reflection) is built and working; Thinkific cannot replicate it at any price. For Ephesiology-shaped teaching, the fit is unusually strong — <em>for net-new formation products</em>, not necessarily for re-platforming every existing certificate module.</li>
+<li><strong>Unified ownership.</strong> One codebase, one domain, no 10,000-student cap, no Thinkific branding constraints — already paid for in the $1,000 build.</li>
+<li><strong>Engineering is already covered.</strong> Movemental deploys and maintains the stack. The old verdict's &quot;if #3 is shaky, stay on Thinkific&quot; assumed DIY ops; that condition is largely met for Movemental clients.</li>
+</ol>
+<p>If <strong>pedagogy isn't load-bearing</strong> for a given course, keeping it on Thinkific (or the existing LMS) is honest and cheap — <strong>even after</strong> the Movemental platform is live.</p>
+<hr>
+<h2 id="6-migration-economics-rough">6. Migration economics (rough)</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Keep Thinkific</th>
+<th>Migrate courses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Extra cash (year 1)</td>
+<td>~$600–1,200 Thinkific + $0 incremental Movemental course fee</td>
+<td>Drop Thinkific when fully migrated; AI usage scales with conversation volume</td>
+</tr>
+<tr>
+<td>Leader labor</td>
+<td>Low — keep editing where you edit today</td>
+<td><strong>High one-time:</strong> re-author or port into 8-week section types; re-test checkout/enrollment</td>
+</tr>
+<tr>
+<td>Learner disruption</td>
+<td>None</td>
+<td>Re-enrollment, new URLs, email comms, possible dual-login during transition</td>
+</tr>
+<tr>
+<td>Strategic upside</td>
+<td>Status quo</td>
+<td>Formation AI, tonal unity with site/books, single analytics, no per-seat cap</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Break-even intuition:</strong> Migration pays off when you're launching <strong>new</strong> formation products or when split-stack friction (two brands, no cross-linking in the learn loop, can't embed AI in legacy courses) costs more than a focused porting sprint — not when you're merely avoiding $50/month.</p>
+<hr>
+<h2 id="7-decision-tree-copy-paste-for-the-buying-conversation">7. Decision tree (copy-paste for the buying conversation)</h2>
+<pre class="hljs"><code><div>Already committing to Movemental platform ($1,000 + 10%)?
+├─ NO  → Thinkific (or any mature LMS) for courses; this doc is premature.
+└─ YES → Course migration required?
+         ├─ NO (default OK) → Split stack. Link LMS from Movemental site.
+         │                    Revisit when launching formation-native courses.
+         └─ YES → Which courses?
+                  ├─ Accredited / institutional / mid-enrollment → KEEP on existing LMS
+                  ├─ Legacy info courses, working fine → KEEP unless unified brand is urgent
+                  └─ New formation / cohort / AI-in-the-loop → BUILD on Movemental
+                       └─ Wait for community board + certs if facilitators need them day one
+</div></code></pre>
+<p><strong>For Michael Cooper specifically:</strong> Movemental consolidates dispersion and builds the owned-audience layer; the Master Classes / Kairos accredited LMS <strong>stays</strong>. Movemental should gate <em>into</em> those cohorts, not replace them. Migrate only net-new formation experiences — or nothing at all in year one — if the split stack is operationally tolerable.</p>
+<hr>
+<h2 id="8-what-would-change-this-verdict">8. What would change this verdict</h2>
+<p>Movemental's case gets decisively stronger the moment these three are <em>finished and running</em>, because they're the parts that are both differentiating and currently incomplete:</p>
+<ol>
+<li><strong>The live cohort discussion board</strong> — because Community is load-bearing in the pedagogy and is the least-finished piece.</li>
+<li><strong>Certificate issuance + completion tracking</strong> — table-stakes a teacher will expect on day one.</li>
+<li><strong>An instructor/cohort analytics view</strong> — so a facilitator can actually run a cohort, not just observe one learner.</li>
+</ol>
+<p>Finish those, keep the AI formation loop (already the crown jewel), and the recommendation shifts from <strong>&quot;split stack by default&quot;</strong> toward <strong>&quot;migrate formation courses; keep accredited/legacy on old LMS&quot;</strong> for leaders already on the Movemental platform.</p>
+<hr>
+<p><em>Sources: direct code review of <code>movemental-ai</code>, <code>movemental-visual-editor</code>, and <code>alan-hirsch</code> (schema, section components, learn experience, editor, Stripe, AI chat); Movemental's own <code>COURSE_STRATEGY.md</code>, the Four Necessities doc, course skills, and pricing docs (<code>$1,000 + 10%</code> model in <code>docs/business-docs/</code>). Thinkific facts from thinkific.com pricing/features/nonprofit pages, support docs, and G2/Capterra reviews (May 2026). Cooper context from <code>docs/movement_leader_research/michael-cooper/</code> (accredited Master Classes LMS, complement-not-cannibalize playbook).</em></p>
+
+</body>
+</html>

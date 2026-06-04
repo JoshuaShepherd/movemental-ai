@@ -45,7 +45,7 @@
     "articles:check:warn": "tsx scripts/validate-article-frontmatter.ts --warn",
     "course:scaffold:sandbox": "tsx scripts/scaffold-sandbox-ai-nonprofits-course.ts",
     "course:validate:sandbox": "tsx scripts/validate-sandbox-course-structure.ts",
-    "validate:all": "tsx scripts/validate-semantic-alignment.ts && tsx scripts/validate-services-alignment.ts && tsx scripts/validate-routes-alignment.ts && tsx scripts/validate-hooks-alignment.ts && tsx scripts/validate-article-frontmatter.ts --warn",
+    "validate:all": "tsx scripts/validate-semantic-alignment.ts && tsx scripts/validate-services-alignment.ts && tsx scripts/validate-routes-alignment.ts && tsx scripts/validate-hooks-alignment.ts && tsx scripts/validate-article-frontmatter.ts --warn && tsx scripts/validate-research-tree.ts",
     "generate:schemas": "tsx scripts/generate-zod-schemas.ts",
     "generate:services": "tsx scripts/generate-services.ts",
     "generate:routes": "tsx scripts/generate-routes.ts",
@@ -59,7 +59,10 @@
     "docs:pre-sandbox-ai-assessment-catalog-pdf": "tsx scripts/generate-pre-sandbox-ai-assessment-catalog-pdf.mts",
     "leader:sync-corpus": "tsx scripts/sync-leader-corpus.ts",
     "leader:sync-corpus-dashboard": "tsx scripts/sync-leader-corpus-dashboard.ts",
-    "leader:upload-substrate": "tsx scripts/upload-leader-substrate.ts"
+    "leader:upload-substrate": "tsx scripts/upload-leader-substrate.ts",
+    "research:tree-check": "tsx scripts/validate-research-tree.ts",
+    "research:tree-normalize": "tsx scripts/normalize-research-tree.ts",
+    "research:export-frameworks": "tsx scripts/export-substrate-frameworks.ts"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

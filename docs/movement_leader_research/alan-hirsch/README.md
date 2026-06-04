@@ -1,161 +1,31 @@
-# Alan Hirsch — Research Dashboard
+# Alan Hirsch — research sidebar manifest
 
-**Slug**: `alan-hirsch`
-**Research initiated**: 2026-03-18
-**Last updated**: 2026-03-18
-**Overall status**: Complete
-**Research completeness**: 13/13 phases complete
+Canonical paths aligned with Author Profile `/profile` navigation.
 
----
+| Sidebar slug | File | Status |
+| --- | --- | --- |
+| author-profile | profile/identity.md | populated |
+| author-profile | network/organizations.md | populated |
+| biography | profile/biography.md | populated |
+| theological-profile | profile/theology.md | populated |
+| vocational-profile | summary.md | populated |
+| vocational-profile | profile/calling-profile.md | populated |
+| voice-editorial-identity | profile/voice-analysis.md | populated |
+| bibliography | content/books.md | populated |
+| frameworks | content/frameworks.md | populated |
+| articles-blog-posts | content/articles.md | populated |
+| audio-podcast | content/audio.md | populated |
+| video-content | content/videos.md | populated |
+| content-audit | content/content-audit.md | populated |
+| academic-work | content/academic.md | populated |
+| courses-training | content/courses.md | populated |
+| audience-profile | analysis/audience-analysis.md | populated |
+| where-you-publish | digital-presence/websites.md | populated |
+| where-you-publish | digital-presence/platforms.md | populated |
+| where-you-publish | digital-presence/newsletters.md | populated |
+| social-media | digital-presence/social-media.md | populated |
+| the-fragmentation-story | fragmentation-story.md | populated |
+| a-letter | reflected-understanding/alan-hirsch.md | populated |
+| (onboarding) | welcome-letter.md | populated |
 
-## Quick Facts
-
-| Field | Value |
-|-------|-------|
-| Full Name | Alan Hirsch |
-| Known As | Alan Hirsch; "Al" (informal) |
-| Born | October 24, 1959, Johannesburg, South Africa |
-| Location | Los Angeles area (Thousand Oaks, CA), USA |
-| Primary Website | alanhirsch.org |
-| Primary Organization | 100Movements / 5Q Collective |
-| Books Published | 20 (16 unique titles; 5 solo, 15 co-authored) |
-| Total YouTube Views | N/A (no personal channel; 38+ videos across 20+ third-party channels) |
-| Podcast Appearances | 28+ guest episodes across 22+ podcasts; 1 hosted (5QCast, ~30 episodes) |
-| Social Followers (combined) | ~58,700 (Twitter ~37.9K, Facebook ~20.8K combined, LinkedIn active) |
-| Organizations Affiliated | 27 |
-| Movemental Fit Score | 8.6/10 |
-
----
-
-## Collated substrate
-
-**Machine-readable corpus:** **Interactive viewer:** [collated/](./collated/) · **Markdown source:** [ALAN_HIRSCH_RESEARCH_COLLATED.md](./ALAN_HIRSCH_RESEARCH_COLLATED.md) (v2.0.0 substrate — identity, network, frameworks, affinity rubric/ranked list, distribution inventory; no personas or platform-fit narrative). Regenerate with `python3 scripts/build-alan-hirsch-substrate.py` from the per-topic source files in this folder.
-
----
-
-## Executive Summary
-
-Alan Hirsch is the foremost theorist of apostolic movement in the contemporary Western church -- an Australian missiologist, serial organizational founder, and movement catalyst whose frameworks have reshaped how Protestant churches understand mission, leadership, and ecclesiology. Born into a Jewish family in apartheid-era Johannesburg in 1959, Hirsch emigrated to Australia at 24, led a pioneering inner-city church among the marginalized for fifteen years, and co-founded the Forge Mission Training Network in 1996. That grassroots laboratory became the crucible for his theoretical work. His magnum opus, *The Forgotten Ways* (2006), introduced the concept of "Apostolic Genius" and the mDNA (missional DNA) framework -- six interdependent elements that characterize every significant Jesus movement in history. Across 20 books published between 2003 and 2024 with seven different publishers, Hirsch has built an integrated intellectual architecture that moves from Christology through missiology to ecclesiology, arguing that the Western church must recover its identity as a dynamic movement rather than a static institution.
-
-His second major contribution -- the APEST/5Q framework, developed most fully in *5Q* (2017) and *The Permanent Revolution* (2012) -- has become one of the most widely adopted models for understanding Ephesians 4:11 fivefold ministry. Over 150,000 APEST assessments have been taken through his platforms, making it a significant diagnostic and development tool used by denominations (LMC Anabaptist Churches, Churches of Christ, Foursquare), church planting networks (Exponential, NewThing, Redeemer City to City), and seminaries (Wheaton, Fuller, Asbury, George Fox). Hirsch's 10 co-authors -- led by Michael Frost, his closest intellectual partner across 3 co-authored books -- form a broad network that bridges the organic church movement, the megachurch multiplication world, academic missiology, and practical church planting.
-
-Despite his outsized influence, Hirsch's personal digital presence is notably underdeveloped, scoring only 3.2/5. He has no personal YouTube channel (despite 38+ videos scattered across third-party platforms), no hosted personal podcast (despite being a sought-after guest on 22+ shows), a Substack newsletter with only 1,500 subscribers against 37.9K Twitter followers, and a personal website that lacks modern engagement features. His influence is disproportionately embodied -- conferences (50,000+ cumulative attendees at events like Exponential, Verge, and Missio Alliance Awakenings), seminary teaching, organizational leadership, and consulting (embedded consultant for Redeemer City to City, movement mentor for NewThing International) -- rather than digitally captured and centralized. His seven founded organizations (100Movements, Forge, 5Q Collective, Movement Leaders Collective, Future Travelers, Shapevine, and the former South Melbourne Restoration Community) form a coherent ecosystem but operate across six different domains with minimal cross-linking.
-
-The monetization opportunity is substantial, estimated at $140K-$380K/year through scaled online courses, missing audiobooks for flagship titles, a paid newsletter tier, YouTube centralization, premium APEST assessment products, and digital workbooks. His audience -- primarily church leaders (35-55), church planters, denominational strategists, and seminary students -- already pays for content through books, conference registrations, masterclasses, and Forge residencies. The 150,000+ APEST assessment completers represent a warm, unconverted audience that could be routed into structured content journeys. Hirsch's audience is not numerically massive but is disproportionately influential: the pastors, planters, and seminary professors who shape how thousands of congregations think about mission.
-
-The core opportunity for Movemental is not to create something from nothing but to surface, connect, and amplify a massive body of existing work that is currently fragmented and under-leveraged. Hirsch's frameworks (mDNA, APEST, Christology > Missiology > Ecclesiology, Metanoia, Reframation, Movemental thinking) are the intellectual foundation of the missional movement, and his network of co-authors and collaborators (Frost, Ferguson, Stetzer, Cole, Strickland, Brisco) represents a pipeline of additional high-value authors for the platform. The term "movemental" itself -- coined by Hirsch -- is the namesake of this platform.
-
----
-
-## Research Progress
-
-| Phase | Skill | Status | File |
-|-------|-------|--------|------|
-| 1. Identity | `/author-profile-discovery` | Done | [profile/identity.md](profile/identity.md) |
-| 2. Web Presence | `/author-web-presence` | Done | [digital-presence/](digital-presence/) |
-| 3. Content Catalog | `/author-content-catalog` | Done | [content/](content/) |
-| 4. YouTube | `/author-youtube-scrape` | Done | [content/videos.md](content/videos.md) |
-| 5. Audio | `/author-audio-scrape` | Done | [content/audio.md](content/audio.md) |
-| 6. Organizations | `/author-org-network` | Done | [network/organizations.md](network/organizations.md) |
-| 7. Collaborators | `/author-collaboration-map` | Done | [network/collaborators.md](network/collaborators.md) |
-| 8. Events | `/author-event-history` | Done | [network/events.md](network/events.md) |
-| 9. Media Mentions | `/author-media-mentions` | Done | [media/](media/) |
-| 10. Audience | `/author-audience-analysis` | Done | [analysis/audience-analysis.md](analysis/audience-analysis.md) |
-| 11. Content Analysis | `/author-content-analysis` | Done | [analysis/content-analysis.md](analysis/content-analysis.md) |
-| 12. Gap Analysis | `/author-gap-analysis` | Done | [analysis/gap-analysis.md](analysis/gap-analysis.md) |
-| 13. Summary | `/author-research-summary` | Done | [README.md](README.md) |
-
----
-
-## Key Metrics at a Glance
-
-| Metric | Value | Source |
-|--------|-------|--------|
-| Books | 20 (16 unique titles) | books.md |
-| Articles/Posts | 30+ | articles.md |
-| YouTube Videos | 38+ (across 20+ third-party channels) | videos.md |
-| Total YouTube Views | N/A (no personal channel) | videos.md |
-| Podcast Episodes | 28+ guest + ~30 hosted (5QCast) | audio.md |
-| Organizations | 27 | organizations.md |
-| Collaborators | 10 co-authors, 12+ frequent collaborators | collaborators.md |
-| Events Documented | 24 | events.md |
-| Press Mentions | 24 | press-coverage.md |
-| Social Followers | ~58,700 combined | social-media.md |
-| Goodreads Ratings | ~16,762 across all works | books.md |
-| Google Scholar Citations | Est. 2,000+ (profile exists but metrics not public) | citations.md |
-| APEST Assessments Taken | 150,000+ | courses.md, 5qcentral.com |
-| Training Programs | 7 (Ephesiology x3, 5Q Central, Forge, Future Travelers, academic x4) | courses.md |
-| Digital Presence Score | 3.2/5 | platforms.md |
-| Estimated Total Reach | 150,000-200,000 unique individuals | audience-analysis.md |
-
----
-
-## Top 5 Opportunities
-
-1. **Centralize video content**: Aggregate 38+ existing videos from 20+ third-party channels onto a single branded YouTube channel; extract short-form clips for Reels/Shorts. Immediate audience building with zero new content creation. (HIGH priority, LOW effort)
-
-2. **Convert social followers to email subscribers**: 37.9K Twitter followers with only 1.5K email subscribers = 4% conversion (industry standard 15-25%). Add prominent email capture to alanhirsch.org, create lead magnet funnels from existing free eBooks, and build email nurture sequences. (HIGH priority, LOW effort)
-
-3. **Build assessment-to-content pipeline**: 150,000+ APEST assessment takers currently leave after seeing results. Route completers into personalized content journeys: "You scored as a Prophet -- here is your learning path" with curated articles, videos, book recommendations, and courses. (HIGH priority, MEDIUM effort)
-
-4. **Produce missing audiobooks**: Flagship titles (*The Forgotten Ways*, *5Q*, *The Shaping of Things to Come*, *ReJesus*, *The Permanent Revolution*) are not on Audible. Only 3 of 20 books have audiobook versions. (HIGH priority, MEDIUM effort)
-
-5. **Launch structured online courses on discoverable platforms**: Convert *The Forgotten Ways* (mDNA framework) and *5Q* (APEST framework) into 8-12 module self-paced courses. Existing Ephesiology courses prove the concept but are on proprietary platforms with limited discoverability. (HIGH priority, MEDIUM effort)
-
----
-
-## Movemental Recommendation
-
-**Fit Score**: 8.6/10
-**Recommendation**: Onboard immediately
-
-Alan Hirsch is the definitive anchor author for the Movemental platform. His frameworks (mDNA, APEST) are the intellectual foundation of the missional movement, his coined term "movemental" is the platform's namesake, and his network of 10 co-authors and 27 organizational affiliations represents a direct pipeline to additional high-value authors and content. His audience aligns perfectly with Movemental's target market, and his massive body of existing work is fragmented and under-leveraged digitally -- precisely the problem Movemental solves.
-
----
-
-## Research Gaps & Open Questions
-
-1. **Competitive landscape stub**: `analysis/competitive-landscape.md` remains unpopulated. Comparative data with peers (Frost, Ferguson, Cole, Breen, Stetzer) exists in audience-analysis.md and gap-analysis.md but is not consolidated into a dedicated competitive landscape document.
-
-2. **Exact YouTube view counts**: No aggregate view data available since content is spread across 20+ third-party channels. Would require manual inspection or API access to each channel.
-
-3. **Google Scholar exact metrics**: Profile exists (ZqjYwf8AAAAJ) but h-index and total citations were not publicly accessible during research. Estimated 2,000+ based on influence scope.
-
-4. **Audiobook completeness**: Only 3 of 20 books confirmed on Audible. Additional titles may be available through Everand/OverDrive but were not verified.
-
-5. **Instagram account verification**: @alandhirsch (with "d") may or may not belong to our subject. Not verified.
-
-6. **Current local church affiliation**: No specific local church membership documented after departure from South Melbourne Restoration Community. Participates in The Tribe of LA (Jesus community among artists/creatives).
-
-7. **Speaking fees**: Not publicly documented. Revenue model appears to be support-raising through CRM rather than direct speaking fees.
-
-8. **5QCast current status**: Last episode date unclear. Podcast may be dormant or seasonal.
-
-9. **Library holdings data**: WorldCat/OCLC holdings not measured. Likely significant given major publishers and seminary adoptions.
-
-10. **Award specifics**: Website and publishers describe books as "award-winning" but no specific award names were documented in available sources.
-
----
-
-## Notes
-
-- **Inconsistencies resolved during compilation**: (1) README listed "15+ books" while books.md documented 20 -- resolved to 20. (2) README showed phases 3-12 as "not started" while tracker and source files show completion -- resolved to complete. (3) Gap analysis cited audience-analysis as a "stub" but the file is fully populated -- resolved. (4) Location listed as "Thousand Oaks, CA" in README notes vs. "Los Angeles area" in identity.md -- both accurate (Thousand Oaks is in the greater LA area); standardized to "Los Angeles area (Thousand Oaks, CA)."
-
-- **Disambiguation**: There are at least four public figures named "Alan Hirsch." This research concerns the Australian missiologist (b. 1959), not the South African economist, Alan T. Hirsch MD (d. 2017), or Alan R. Hirsch MD (smell/taste researcher). See identity.md for disambiguation details.
-
-- **Research depth**: All 13 phases are complete. The research represents the most comprehensive publicly-sourced profile of Alan Hirsch's work, digital presence, network, and platform fit assembled to date. The analysis files (content-analysis.md, audience-analysis.md, gap-analysis.md, movemental-fit.md) contain actionable strategy recommendations.
-
----
-
-*Research compiled: 2026-03-18*
-*Confidence Level: HIGH*
-*Sources: See [sources.md](sources.md)*
-
----
-
-## Collated research edition
-
-- **Full collation (markdown):** **Interactive viewer:** [collated/](./collated/) · **Markdown source:** [ALAN_HIRSCH_RESEARCH_COLLATED.md](./ALAN_HIRSCH_RESEARCH_COLLATED.md) (2026-05-21) — all sources merged, deduplicated in body; ledger-only files in Appendix D.
-- **Manifest:** [ALAN_HIRSCH_COLLATION_MANIFEST.json](./ALAN_HIRSCH_COLLATION_MANIFEST.json)
-- **Desktop copies:** `Alan-Hirsch-Movement-Leader-Research.md` and `.html` on Desktop (open HTML in a browser → Print → Save as PDF if PDF export is not run locally).
-- **Regenerate:** `node scripts/collate-alan-hirsch-research.mjs` then pandoc → HTML → PDF per [docs/build/prompts/alan-hirsch-research-collation-and-pdf.md](../../build/prompts/alan-hirsch-research-collation-and-pdf.md).
+_Staff-only research lives in `_staff/`; collateral in `_misc/`._

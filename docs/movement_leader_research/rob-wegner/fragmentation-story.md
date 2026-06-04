@@ -343,8 +343,7 @@ than under his name.
   - `identity-verification.md`
   - `digital-presence-discovery.md`
   - `content-analysis.md`
-  - `gap-analysis.md`
-  - `movemental-analysis.md`
+  - (staff-only strategy files excluded from leader-facing dossier)
   - `content-marketing-playbook.md`
 - **Confidence**: **High** on identity, organizational roles, the one
   co-authored book, the existence of the KC Underground Podcast, and the

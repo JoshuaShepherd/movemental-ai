@@ -337,9 +337,8 @@ The tertiary trapped pool is **the Greenhouse / LTG alumni network** — practit
   - `media/reviews.md`
   - `analysis/audience-analysis.md`
   - `analysis/content-analysis.md`
-  - `analysis/gap-analysis.md`
   - `analysis/competitive-landscape.md`
-  - `analysis/movemental-fit.md`
+  - (staff-only analysis files excluded from leader-facing dossier)
   - `network/network-summary.md`
 - **Confidence**: **High** on bibliography, organizational arc, doctrinal frameworks, and the silence narrative. **Medium** on social-media activity status (login-gated) and on operational details inside Starling Initiatives. **Low** on volumetrics (subscriber counts, view counts, total Greenhouse alumni) and on the legacy CMA Resources article archive (Wayback-only and not exhaustively traversed in this audit).
 - **Gaps requiring further research**:

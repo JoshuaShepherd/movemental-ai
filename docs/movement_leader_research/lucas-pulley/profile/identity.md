@@ -113,4 +113,4 @@ What he does have instead (see [content/articles.md](../content/articles.md), [c
 - 8+ podcast guest appearances; recurring presence on the in-house Microchurches Podcast.
 - Public teaching at Exponential (2023 Orlando, Global 2025) and Tampa Underground's Microchurch Conference.
 
-The absence of books is a strategic opportunity, not a deficit (see [analysis/movemental-fit.md](../analysis/movemental-fit.md)).
+The absence of books is a strategic opportunity, not a deficit — his essay and teaching corpus carry the weight a monograph would elsewhere.
