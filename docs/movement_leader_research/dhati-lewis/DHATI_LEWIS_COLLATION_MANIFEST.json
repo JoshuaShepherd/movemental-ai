@@ -1,0 +1,22 @@
+{
+  "slug": "dhati-lewis",
+  "version": "2.0.0",
+  "generated_at": "2026-06-04",
+  "mode": "cold-start-web-research",
+  "note": "No on-disk per-topic source files existed at generation time; substrate assembled from cited web research. 'sources' lists primary URLs rather than file SHAs.",
+  "sources": [
+    { "url": "https://www.dhatilewis.com/about", "verifies": ["Identity", "Distribution inventory"], "sectionsUsed": ["Identity", "Editorial bio", "Distribution inventory"] },
+    { "url": "https://www.blueprintchurch.org/dhati-lewis", "verifies": ["Identity", "Timeline"], "sectionsUsed": ["Identity", "Timeline", "Editorial bio"] },
+    { "url": "https://www.baptistpress.com/resource-library/news/trustees-record-aaeo-new-vps-top-namb-agenda/", "verifies": ["Send Network VP appointment 2018-10-02"], "sectionsUsed": ["Timeline", "Intellectual genealogy", "Network graph"] },
+    { "url": "https://www.namb.net/news/send-networks-dhati-lewis-leaving-namb-for-new-project/", "verifies": ["President title", "NAAF partnership", "departure 2021"], "sectionsUsed": ["Timeline", "Intellectual genealogy"] },
+    { "url": "https://www.namb.net/news/vance-pitman-to-lead-nambs-send-network/", "verifies": ["succession", "tenure length"], "sectionsUsed": ["Timeline", "Network graph"] },
+    { "url": "https://www.bhpublishinggroup.com/product/among-wolves-2/", "verifies": ["Among Wolves", "education"], "sectionsUsed": ["Bibliography", "Frameworks", "Identity"] },
+    { "url": "https://www.amazon.com/Advocates-Narrow-Path-Racial-Reconciliation/dp/1535934670", "verifies": ["Advocates bibliographic detail"], "sectionsUsed": ["Bibliography"] },
+    { "url": "https://www.bhpublishinggroup.com/product/advocates-2/advocates-2/", "verifies": ["Advocates endorsers"], "sectionsUsed": ["Network graph"] },
+    { "url": "https://www.baptistpress.com/resource-library/news/path-to-reconciliation-focus-of-advocates/", "verifies": ["Advocate/aggravator framework"], "sectionsUsed": ["Frameworks", "Theological positioning", "Voice fingerprint"] },
+    { "url": "https://saturatetheworld.com/2017/07/20/dont-just-start-church-establish-family/", "verifies": ["church-as-family ecclesiology"], "sectionsUsed": ["Frameworks", "Theological positioning"] },
+    { "url": "https://www.goodreads.com/author/show/7211235.Dhati_Lewis", "verifies": ["bibliography", "ratings", "reach"], "sectionsUsed": ["Bibliography", "Reach metrics"] },
+    { "url": "https://whereyafrom.org/episode/episode-56-a-blueprint-for-discipleship-in-an-urban-context-with-dhati-lewis/", "verifies": ["verbatim quotes", "voice"], "sectionsUsed": ["Voice fingerprint"] },
+    { "url": "https://www.baptistpress.com/resource-library/news/urban-engagement-sparks-namb-rebuild-partnership/", "verifies": ["Rebuild Network 2011", "Larry Grays", "Kevin Ezell"], "sectionsUsed": ["Timeline", "Intellectual genealogy", "Network graph"] }
+  ]
+}
