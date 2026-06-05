@@ -27,6 +27,7 @@
     "reader:mlr": "node scripts/mlr-reader.mjs",
     "docs:alan-hirsch-research-html": "tsx scripts/build-alan-hirsch-research-collated-html.ts",
     "research:chambers-dyad:pdf": "tsx scripts/export-chambers-dyad-pdf.mts",
+    "research:scenius-narrative:pdf": "tsx scripts/export-scenius-narrative-pdf.mts",
     "reader:roy-moran": "node docs/movement_leader_research/generate-manifest.mjs && node scripts/mlr-reader.mjs roy-moran README.md",
     "docs:sync-movement-voices-html": "tsx scripts/sync-movement-voices-html-data.ts && python3 scripts/generate-movement-voices-html-app-js.py",
     "docs:generate-scenius-network-v3": "python3 scripts/generate-scenius-network-v3-html.py",

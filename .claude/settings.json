@@ -45,7 +45,10 @@
       "Bash(mkdir -p /home/josh/dev/01-Movemental-Core/movemental-ai/src/app/\\\\\\(dashboard\\\\\\)/safestart/\\\\[workspace\\\\] /home/josh/dev/01-Movemental-Core/movemental-ai/src/app/\\\\\\(dashboard\\\\\\)/safestart/guidebook && ls /home/josh/dev/01-Movemental-Core/movemental-ai/src/app/\\\\\\(dashboard\\\\\\)/safestart/)",
       "Bash(python3 -c ' *)",
       "Bash(mkdir -p /home/josh/dev/01-Movemental-Core/movemental-ai/src/app/\\\\\\(dashboard\\\\\\)/safestart/ratification/\\\\[step\\\\])",
-      "Bash(xargs -n1 basename)"
+      "Bash(xargs -n1 basename)",
+      "Read(//mnt/c/Users/Josh/Desktop/**)",
+      "Bash(xxd)",
+      "Bash(awk '/^## 2\\\\./{f=1} /^## 3\\\\./{f=0} f && /^\\\\| \\\\[/{c++} END{print c\" leader rows\"}' docs/build/notes/onboarded-trusted-voices-scenius-narrative.md)"
     ],
     "additionalDirectories": [
       "/Users/joshuashepherd/Desktop/dev/repos/movemental-sites/alan-hirsch/.claude/skills",
