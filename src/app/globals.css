@@ -163,6 +163,136 @@
   letter-spacing: var(--tracking-eyebrow);
 }
 
+/* ===========================================================================
+ * Oatmeal / Paper Edition — imported design system (L1 tokens, scoped).
+ * Ported verbatim from movemental-html-template/css/tokens.css. A SEPARATE
+ * design language from "The Digital Curator" (above): warm oatmeal +
+ * Playfair/Plex/Homemade-Apple + navy hero + blue ballpoint. Every token is
+ * namespaced `oat-` so it coexists with Digital Curator and never overrides it.
+ *
+ * SCOPE: utilities (bg-oat-bg, text-oat-ink, font-oat-display, rounded-oat-pill,
+ * …) are global but used ONLY inside an `.oat-surface` subtree (the /agent room).
+ * FONTS: family tokens reference next/font faces loaded in layout.tsx
+ * (`--font-oat-*-face`). See docs/build/notes/oatmeal-paper-design-chain-reference.md.
+ * ------------------------------------------------------------------------- */
+@theme {
+  /* — Color: core (warm paper sheet, manuscript ink, navy hero) — */
+  --color-oat-bg: #fbfaf6;
+  --color-oat-surface: #f8f6f1;
+  --color-oat-surface-elevated: #ffffff;
+  --color-oat-paper-edge: #ece8de;
+  --color-oat-ink: #1a1a1a;
+  --color-oat-ink-muted: #5c5651;
+  --color-oat-accent: #1a1a1a;
+  --color-oat-accent-hover: #12356e;
+  --color-oat-accent-on-dark: #e8ecf5;
+  --color-oat-hero-dark: #0a0e1a;
+  --color-oat-hero-dark-soft: #141a2e;
+  --color-oat-border: #e5dfd2;
+  --color-oat-border-strong: #d6cfbd;
+
+  /* Ink alphas (rules / overlays) */
+  --color-oat-ink-faint: rgba(26, 26, 26, 0.3);
+  --color-oat-ink-overlay-18: rgba(26, 26, 26, 0.18);
+  --color-oat-ink-overlay-25: rgba(26, 26, 26, 0.25);
+  --color-oat-ink-muted-50: rgba(92, 86, 81, 0.5);
+  --color-oat-ink-muted-60: rgba(92, 86, 81, 0.6);
+  --color-oat-ink-muted-70: rgba(92, 86, 81, 0.7);
+
+  /* On-hero alpha ramp (cream #E8ECF5 over navy) */
+  --color-oat-on-hero: rgba(232, 236, 245, 0.78);
+  --color-oat-on-hero-bright: rgba(232, 236, 245, 0.82);
+  --color-oat-on-hero-strong: rgba(232, 236, 245, 0.8);
+  --color-oat-on-hero-dim: rgba(232, 236, 245, 0.6);
+  --color-oat-on-hero-muted: rgba(232, 236, 245, 0.7);
+  --color-oat-on-hero-mid: rgba(232, 236, 245, 0.5);
+  --color-oat-on-hero-subtle: rgba(232, 236, 245, 0.45);
+  --color-oat-on-hero-chip: rgba(232, 236, 245, 0.4);
+  --color-oat-on-hero-ghost: rgba(232, 236, 245, 0.35);
+  --color-oat-on-hero-border: rgba(232, 236, 245, 0.3);
+  --color-oat-on-hero-rule: rgba(232, 236, 245, 0.2);
+  --color-oat-on-hero-rule-soft: rgba(232, 236, 245, 0.18);
+  --color-oat-on-hero-faint: rgba(232, 236, 245, 0.08);
+
+  /* — Color: Paper Edition only (marginalia, highlighter, AI citation dock) — */
+  --color-oat-blue: #1b4b9b;
+  --color-oat-blue-deep: #12356e;
+  --color-oat-blue-soft: #3d6bb5;
+  --color-oat-blue-bleed: rgba(27, 75, 155, 0.12);
+  --color-oat-highlight: #ffeb3b;
+  --color-oat-ai-bg: #0a0e1a;
+  --color-oat-ai-bg-2: #141a2e;
+  --color-oat-ai-text: #e8ecf5;
+  --color-oat-ai-text-soft: rgba(232, 236, 245, 0.55);
+  --color-oat-ai-text-muted: rgba(232, 236, 245, 0.4);
+  --color-oat-ai-accent: #6fa3ff;
+  --color-oat-ai-divider: rgba(255, 255, 255, 0.08);
+
+  /* — Color: audience accents + diagnostic status — */
+  --color-oat-audience-churches: #1b4b9b;
+  --color-oat-audience-nonprofits: #9c4a2d;
+  --color-oat-audience-institutions: #3f4a55;
+  --color-oat-rating-yes: #5a8f3a;
+  --color-oat-rating-partial: #bc8c2f;
+  --color-oat-rating-no: #9c4a2d;
+  --color-oat-danger: #9c4a2d;
+
+  /* — Typography families — next/font faces (loaded in layout.tsx) first, then
+       string fallbacks degrade gracefully. `*-face` vars are set by next/font. — */
+  --font-oat-display: var(--font-oat-display-face), "Playfair Display",
+    "Source Serif Pro", Georgia, serif;
+  --font-oat-body: var(--font-sans), "Inter", system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-oat-hand: var(--font-oat-hand-face), "Homemade Apple", "Segoe Script",
+    cursive;
+  --font-oat-mono: var(--font-oat-mono-face), "IBM Plex Mono", ui-monospace,
+    "SFMono-Regular", monospace;
+
+  /* — Radius — */
+  --radius-oat-chip: 8px;
+  --radius-oat-input: 12px;
+  --radius-oat-card: 20px;
+  --radius-oat-image: 20px;
+  --radius-oat-pill: 999px;
+}
+
+/* Non-utility tokens (consumed via var()): tracking + transitions/ease. */
+:root {
+  --oat-tr-tight: -0.025em;
+  --oat-tr-eyebrow: 0.18em;
+  --oat-t-fast: 150ms;
+  --oat-t-med: 250ms;
+  --oat-t-slow: 400ms;
+  --oat-ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+/* Scope wrapper — apply to the room subtree for the paper base (bg + ink +
+ * Inter body), with Playfair display headings + the terminal-period rhythm.
+ * Add `data-paper="true"` for the manuscript white sheet (Paper Edition). */
+@layer base {
+  .oat-surface {
+    background-color: var(--color-oat-bg);
+    color: var(--color-oat-ink);
+    font-family: var(--font-oat-body);
+  }
+  .oat-surface :is(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--font-oat-display);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: var(--oat-tr-tight);
+  }
+  .oat-surface[data-paper="true"] {
+    background-color: var(--color-oat-surface-elevated);
+  }
+  .oat-surface .oat-eyebrow {
+    font-family: var(--font-oat-body);
+    text-transform: uppercase;
+    letter-spacing: var(--oat-tr-eyebrow);
+    color: var(--color-oat-ink-muted);
+    font-size: 0.75rem;
+  }
+}
+
 /* ---------------------------------------------------------------------------
  * :root — light default (warm cream paper, ink typography).
  * See docs/design/DESIGN.md §3 for the full palette rationale.
@@ -378,7 +508,7 @@
     letter-spacing: var(--tracking-display);
   }
 
-  /* Serif italic emphasis — Instrument Serif carries <em> inside display
+  /* Serif italic emphasis — Newsreader carries <em> inside display
      headings at ~1.03em optical compensation. Long body stays Inter. */
   h1 em,
   h2 em,
@@ -401,7 +531,7 @@
 
   /* Serif <em> in headings uses --foreground above; midnight bands (either
      data-attribute or recipes `.band-midnight`) must pin headings + emphasis to
-     cream-on-ink so Instrument Serif isn't ink-colored on inverse surfaces. */
+     cream-on-ink so Newsreader isn't ink-colored on inverse surfaces. */
   [data-variant="midnight"] h1,
   [data-variant="midnight"] h2,
   [data-variant="midnight"] h3,

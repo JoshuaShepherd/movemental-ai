@@ -7,9 +7,9 @@
  * not share a package. Per-chunk Zod validation drops malformed chunks rather
  * than throwing, so a single bad frame never breaks the stream.
  *
- * This is protocol only (no React, no visual styling). The room shell, paper
+ * This is protocol only (no React, no visual styling). The room shell, render
  * components, stream hook, and proxy route are built separately once the
- * prototype design is in place.
+ * prototype design is in place (Concept Modern tokens).
  */
 import { z } from "zod";
 

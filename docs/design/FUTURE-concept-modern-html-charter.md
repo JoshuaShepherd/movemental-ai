@@ -25,7 +25,7 @@ The charter unifies these prototypes (same palette, type stack, and most primiti
 ## 2. Design intent (what this system is for)
 
 - **Register:** Warm editorial product UI in the neighborhood of Notion, Anthropic marketing, and Medium—**cream surfaces**, **ink typography**, **flat hierarchy**, **hairline structure** instead of heavy cards.
-- **Voice:** Inter carries structure and UI; **Instrument Serif italic** carries emphasis, stage names, and “human” pull quotes—never for long body copy.
+- **Voice:** Inter carries structure and UI; **Newsreader italic** carries emphasis, stage names, and “human” pull quotes—never for long body copy.
 - **Restraint:** Color is essentially **duotone** (warm paper + near-black ink) with a **midnight footer/hero band**. Accents are rare; motion is subtle and scroll-linked where possible.
 - **Differentiation from production DESIGN.md:** These prototypes use **ink-filled pills** as the primary CTA, not brand blue. If you port to React, **either** remap CTAs to `bg-primary` / semantic tokens **or** keep this as an alternate “warm editorial” theme with its own token namespace (recommended below).
 
@@ -65,7 +65,7 @@ The charter unifies these prototypes (same palette, type stack, and most primiti
 ### 4.2 Typography
 
 - **Sans:** Inter — weights **400 / 500 / 600 / 700** in prototypes (Google Fonts URL below).
-- **Serif accent:** Instrument Serif — **italic** for emphasis; regular upright available for rare display.
+- **Serif accent:** Newsreader — **italic** for emphasis; regular upright available for rare display. (Production swapped from Instrument Serif in Phase 01 — trust `src/app/layout.tsx`.)
 - **Mono:** `ui-monospace`, SF Mono, Menlo, etc. — code, tree rows, file names in viz.
 
 **Google Fonts link (as in HTML heads):**
@@ -75,7 +75,7 @@ The charter unifies these prototypes (same palette, type stack, and most primiti
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,12..72,400;0,12..72,500;1,12..72,400&display=swap"
 />
 ```
 
@@ -271,7 +271,7 @@ Add to `src/app/globals.css` (or a dedicated `concept-modern.css`) **only if** y
 
   /* Fonts */
   --font-cm-sans: var(--font-inter, ui-sans-serif, system-ui, sans-serif);
-  --font-cm-serif: "Instrument Serif", "Iowan Old Style", ui-serif, Georgia, serif;
+  --font-cm-serif: var(--font-serif-display), "Newsreader", "Iowan Old Style", ui-serif, Georgia, serif;
   --font-cm-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* Tracking */
@@ -419,7 +419,7 @@ concept_modern:
     dark_border: "rgba(244, 239, 229, 0.14)"
   fonts:
     sans: Inter
-    serif_accent: Instrument Serif
+    serif_accent: Newsreader
     mono: ui-monospace stack
   layout_px:
     container_default: 1200
@@ -441,7 +441,7 @@ concept_modern:
 This charter is intentionally **prescriptive on tokens and primitives** and **non-prescriptive on narrative, exact copy, section count, and motion choreography**. Safe directions to explore:
 
 - Introduce a **single** saturated accent (for example a link underline or progress bar) if accessibility contrast requires it.
-- Swap Instrument Serif for another **high-contrast** editorial serif—keep the “italic for emphasis only” rule.
+- Swap Newsreader for another **high-contrast** editorial serif—keep the “italic for emphasis only” rule.
 - Replace ink CTAs with **production `primary`** when merging into the Stitch-aligned site.
 - For React, prefer **composable sections** (`<Section>`, `<Eyebrow>`, `<Prose>`) matching existing movemental primitives while mapping colors to `cm-*` or to merged semantic tokens.
 

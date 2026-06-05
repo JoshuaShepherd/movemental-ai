@@ -40,10 +40,10 @@ There are **decoy duplicate trees**. Only `src/` is live (confirmed by
 3. `tailwind.config.ts` — fonts, fluid type scale, radii, motion, shadows.
    Header note: *"DESIGN.md is canonical — when this file and DESIGN.md disagree, DESIGN.md wins."*
 4. Golden: `src/components/primitives/*`, `src/components/ui/button.tsx`, `src/app/(dashboard)/admin/design-tokens/page.tsx` (live token swatches).
+5. Sibling static mirror: [docs/design/MOVEMENTAL_HTML_TEMPLATE.md](docs/design/MOVEMENTAL_HTML_TEMPLATE.md) — html-template page manifest + Oatmeal→Concept Modern map (**reference only**; do not import oatmeal tokens).
 
 > ⚠️ `CLAUDE.md`'s design section is **stale** (describes "Digital Curator",
-> `#0053db` blue primary). Defer to `DESIGN.md`. Also: DESIGN.md says "Instrument
-> Serif" but the **code loads Newsreader** — trust the code.
+> `#0053db` blue primary). Defer to `DESIGN.md`. Production serif is **Newsreader**, not Instrument Serif.
 
 ## Stack
 

@@ -185,3 +185,45 @@ New motion effects require:
 5. Testing on a real mobile device or throttled DevTools.
 
 Do not add one-off `transition-all duration-[437ms]` in page files. If the existing token scale doesn't fit, propose a new token here first.
+
+---
+
+## 8. Sibling static reference (`movemental-html-template`)
+
+The html-template repo implements Layer 6 in `js/main.js` (Oatmeal aesthetic). Use this section when auditing static ↔ React parity — **remap motion behavior**, not Oatmeal easing values, into Concept Modern tokens.
+
+Source: `~/dev/01-Movemental-Core/movemental-html-template/js/main.js`, `_reference/style-spec.md` § Motion. Bridge doc: [MOVEMENTAL_HTML_TEMPLATE.md](./MOVEMENTAL_HTML_TEMPLATE.md) §6.
+
+### 8.1 Reveal-on-scroll
+
+| | html-template | movemental-ai |
+| --- | ------------- | ------------- |
+| Class / API | `.reveal` → `.is-revealed` | `<Reveal>` |
+| Observer | `threshold: 0.1`, `rootMargin: 0px 0px -8% 0px` | `threshold: 0.15`, `rootMargin: 0px 0px -60px 0px` |
+| Transform | CSS transition on `.reveal` (pages.css) | `translateY(20px)` → `0` over `--duration-reveal` (600ms) |
+| Easing | `--ease` in tokens.css | `--ease-out` |
+| Reduced motion | Skip IO; add `.is-revealed` immediately | Skip transform; instant opacity |
+| Stagger | Hero `.reveal:nth-child(n)` delays 0–320ms | `--duration-stagger` (80ms) via `<Reveal stagger>` |
+
+When porting a static band, prefer **one `<Reveal>` per section**, not per paragraph.
+
+### 8.2 Nav & chrome
+
+| Behavior | html-template | movemental-ai |
+| -------- | ------------- | ------------- |
+| Scroll shadow | `.ml-nav.is-scrolled` after `scrollY > 8` | `SiteNav` shadow after ~20px |
+| Mobile drawer | `.ml-nav-toggle` + `#ml-nav-drawer` | `Sheet` / mobile nav |
+| Mega-menu | `.mh-mega-group` hover-intent (861px breakpoint) | Path/audience nav — desktop hover + mobile accordion |
+
+### 8.3 Interactive widgets (product-specific)
+
+| Widget | html-template | React target |
+| ------ | ------------- | -------------- |
+| Five-Layer Read | `initFiveLayerRead(.flr-root)` on `pathway-safety.html` | `/pathway/safety` product wizard |
+| Field guide form | `.fg-form` preventDefault + `.is-submitted` | API + React Hook Form |
+| Filter chips | `.ml-filter-chips` (Tier D leader pages) | N/A on Movemental marketing |
+| Scarcity line | `[data-committed-seats]` text injection | `committed-seats.ts` + home CTA |
+
+### 8.4 Card hover (Oatmeal style spec)
+
+Oatmeal reference allows `translateY(-2px)` on card hover with border tone shift. Concept Modern matches this amplitude in [PATTERNS.md](./PATTERNS.md) §1 (`hover:-translate-y-0.5` ≈ 2px) — do not exceed **2px** lift on marketing cards.

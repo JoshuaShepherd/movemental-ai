@@ -8,11 +8,11 @@
 
 ## Video Catalog
 
-| Title / series | Platform | URL | Notes |
-|----------------|----------|-----|-------|
-| Where Life Exists (video podcast) | YouTube / dhatilewis.com | https://www.dhatilewis.com/wherelifeexists | Video-based podcast episodes |
-| MyBLVD Podcast episodes | YouTube | https://www.youtube.com/watch?v=iv0Of94BSRk | Example episode (2025) |
-| Conference talks | T4G / Mosaix / Verge / Exponential | see [../digital-presence/platforms.md](../digital-presence/platforms.md) | Recorded conference sessions |
+| Title | Platform | Date | URL |
+|-------|----------|------|-----|
+| Where Life Exists (video podcast) | YouTube / dhatilewis.com | — | https://www.dhatilewis.com/wherelifeexists |
+| MyBLVD Podcast episodes | YouTube | 2025 | https://www.youtube.com/watch?v=iv0Of94BSRk |
+| Conference talks (T4G / Mosaix / Verge / Exponential) | Third-party platforms | — | https://t4g.org/speakers/dhati-lewis/ |
 
 ## Notes
 

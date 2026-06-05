@@ -313,7 +313,7 @@ Outer grid has `bg-border` as its background color; cells have `bg-card`; 1px gr
 
 **If we change later:** Two options —
 
-- **Option A (conservative):** wrap heading contents in `<em>` and delete the inline `font-serif italic tracking-[-0.005em]` classes. Base layer applies Instrument Serif at 1.04em / -0.01em. Net result: ~4% size bump; canonical markup.
+- **Option A (conservative):** wrap heading contents in `<em>` and delete the inline `font-serif italic tracking-[-0.005em]` classes. Base layer applies Newsreader at 1.04em / -0.01em. Net result: ~4% size bump; canonical markup.
 - **Option B (radical):** switch card H3s to plain Inter 500 `tracking-display` (foundation-layer default). Card labels become Inter, serif italic reserved strictly for emphasis inside Inter headings. Visual register shifts.
 
 **Until decided:** the canonical class string `"font-serif text-[clamp(...)] font-normal italic leading-tight tracking-[-0.005em] text-foreground"` IS the card H3 pattern. Reuse it.

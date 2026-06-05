@@ -83,6 +83,24 @@ Wegner's external podcast guesting is **concentrated in the church-multiplicatio
 - **The Starfish and the Spirit** (audiobook): narrators Thom Bromhead, **Lance Ford**, **Rob Wegner**. 10 hr 28 min. Audible avg 4.7 / 49 ratings. Wegner's voice is on the recording.
 - **Find Your Place** (audiobook): narrators Dave Hoffman, Stu Gray. 4 hr 32 min. Audible avg 4.8 / 28 ratings. Wegner does not narrate; the audiobook is read by others.
 
+## Dossier catalog (author profile ETL)
+
+Parseable inventory for `movement_leader_corpus_data.audio`. Hosted shows plus confirmed guest appearances — not a full episode crawl.
+
+| Episode Title | Show | Date | URL |
+|---------------|------|------|-----|
+| The Starfish and the Church (host, 43 episodes) | The Starfish and the Church | 2021 | https://podcasts.apple.com/us/podcast/the-starfish-and-the-church/id1554285565 |
+| The KC Underground Podcast (316 episodes; frequent co-host) | The KC Underground Podcast | 2020 | https://podcasts.apple.com/ni/podcast/the-kc-underground-podcast/id1512948040 |
+| Microchurch NEXT Podcast (host with Brian Johnson) | Exponential NEXT Podcast | — | https://podcasts.apple.com/au/podcast/the-next-chapter-for-leading-microchurch-networks/id1728344483 |
+| Going From Megachurch To Microchurch | The Roys Report | — | https://julieroys.com/podcast/going-from-megachurch-to-microchurch/ |
+| Rob Wegner and Lance Ford: Starfish and the Spirit | Stetzer Leadership Podcast | 2021-05-18 | https://pod.co/stetzer-leadership-podcast/rob-wegner-and-lance-ford-starfish-and-the-spirit |
+| Episode 07: Rob Wegner | Shifting Culture Podcast | 2021 | https://www.shiftingculturepodcast.com/episodes/episode-07-robwegner |
+| Rob Wegner & the Mission of Microchurch | The Church Digital Podcast | 2019-11-04 | https://be.thechurch.digital/blog/podcast-033-rob-wegner-the-mission-of-microchurch |
+| Rob Wegner & Helping People Find Their Personal Mission | The Church Digital Podcast | 2022 | https://be.thechurch.digital/blog/podcast-134-rob-wegner-helping-people-find-their-personal-mission |
+| Emerging Trends For The Future Church | Everyday Disciple Podcast | — | https://everydaydisciple.com/episodes/emerging-trends-for-future-church/ |
+| FCP 15 — Rob Wegner, KC Underground | Leadership Network / Exponential | — | https://exponential.org/fcp-15-rob-wegner-kc-underground/ |
+| LF007: Rob Wegner & Lance Ford On Unleashing The Leadership Power Of Our Churches | Lance Ford Podcast | 2021 | https://podcasts.apple.com/us/podcast/lf007-rob-wegner-lance-ford-on-unleashing-the/id1569213660 |
+
 ## Total verified counts
 
 - **3 podcast venues hosted/co-hosted** (Starfish and the Church, KC Underground, Microchurch NEXT) — combined episode count well above 400

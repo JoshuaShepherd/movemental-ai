@@ -42,6 +42,16 @@ The podcast is the **primary video asset** — video episodes mirror the hosted 
 
 ---
 
+## Dossier catalog (author profile ETL)
+
+Parseable inventory for `movement_leader_corpus_data.videos`. Representative rows — channel scrape incomplete.
+
+| Title | Show | Date | URL |
+|-------|------|------|-----|
+| The Ephesiology Podcast — Episode 205 (video edition) | The Ephesiology Podcast | — | — |
+
+---
+
 ## Assessment
 
 Cooper's video footprint is **anchored to one strong owned asset — the video edition of his podcast — but is otherwise un-catalogued and partly gated.**

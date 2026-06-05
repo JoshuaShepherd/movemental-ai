@@ -34,7 +34,17 @@
       "Bash(npx tsc:*)",
       "Bash(npx next build --no-lint)",
       "Bash(npx next build:*)",
-      "Bash(git diff:*)"
+      "Bash(git diff:*)",
+      "Bash(npx tsx *)",
+      "Bash(npx next *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/agent)",
+      "Bash(curl -s http://localhost:3000/agent)"
+    ],
+    "additionalDirectories": [
+      "/home/josh/dev/01-Movemental-Core/movemental-ai-agents/scripts/seed-data/prompts",
+      "/home/josh/dev/01-Movemental-Core/movemental-ai-agents/scripts",
+      "/home/josh/dev/01-Movemental-Core/movemental-ai-agents"
     ]
   }
 }

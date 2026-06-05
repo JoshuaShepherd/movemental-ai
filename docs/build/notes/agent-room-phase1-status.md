@@ -2,7 +2,7 @@
 
 **Created:** 2026-06-05
 **Brief:** "Build Brief — The Movemental Agent Room (Phase 1)"
-**Build split (your call):** engine → `movemental-ai-agents`; room → `movemental-ai`; room UI paused until the 3 paper prototypes are provided.
+**Build split (your call):** engine → `movemental-ai-agents`; room → `movemental-ai`; room UI paused until prototypes are provided.
 
 ---
 
@@ -42,14 +42,14 @@ Recommended fix (mirrors the `ui_render` pattern, contained): add a **handoff to
 
 Until then, an interim option is to let the **host** call `show_readback` directly (single-agent), losing the Opus-composed quality the brief wants — not recommended as the final state.
 
-## 4. HELD — room UI (`movemental-ai`), pending your 3 prototypes
+## 4. HELD — room UI (`movemental-ai`), pending prototypes
 
-Not built, by your choice ("I'll provide the prototypes"). When `movemental-agentic-surface.html`, `movemental-reality-check.html`, `movemental-home-paper-v2.html` land:
+Not built, by your choice ("I'll provide the prototypes"). When Agent Room UI prototypes land:
 - `/agent` three-zone room shell (screen / voice / input, `100dvh`, no page scroll, corner hamburger, static crawlable fallback).
 - Four live React components (`reality_check_beat`, `readback`, `path`, `handoff_human`) consuming the Zod-typed props; placeholders for the rest.
 - Stream hook (`use-agent-chat-stream` analog) with the `ui_render` case, built on `src/lib/agent-room/stream-chunk.ts`.
 - Proxy route to the engine stream (model on the existing `/api/onboarding/agent-chat`).
-- Paper aesthetic note: this conflicts with `movemental-ai`'s "Digital Curator" CLAUDE.md law (Inter only, semantic tokens, no raw hex). The room will need either a scoped exception or a reconciliation — decide when prototypes arrive.
+- Style with **Concept Modern** (`concept-modern-ui` skill, `src/app/globals.css`, `docs/design/DESIGN.md`) — same tokens as the marketing site.
 
 ## 5. How to run what exists
 

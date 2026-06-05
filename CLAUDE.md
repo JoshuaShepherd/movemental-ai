@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with th
 
 ## What this repo is
 
-Movemental is the organizational site for Movemental — a fresh build from scratch. The canonical design spec lives at [docs/design/DESIGN.md](docs/design/DESIGN.md) ("The Digital Curator" — high-end editorial, light-primary with midnight hero sections, MD3-style surface tokens, Inter, `#0053db` primary).
+Movemental is the organizational site for Movemental — a fresh build from scratch. The canonical design spec lives at [docs/design/DESIGN.md](docs/design/DESIGN.md) (**Concept Modern** — warm cream paper, near-black ink, Inter + Newsreader italic emphasis, ink pill CTAs, Midnight bands). Sibling static HTML reference: [docs/design/MOVEMENTAL_HTML_TEMPLATE.md](docs/design/MOVEMENTAL_HTML_TEMPLATE.md) (Oatmeal html-template — **content/IA only**, do not import its tokens).
 
 ### Current state: Stitch migration well underway
 
@@ -88,7 +88,8 @@ scripts/
   generate-*.ts                # Regenerate a layer from the Drizzle schema
 tests/                         # Vitest specs (vitest.config.mts) + Playwright e2e (playwright.config.ts)
 docs/
-  design/DESIGN.md             # The Digital Curator — canonical design spec
+  design/DESIGN.md             # Concept Modern — canonical design spec
+  design/MOVEMENTAL_HTML_TEMPLATE.md  # Sibling Oatmeal html-template (reference only)
   build/
     stitch-project.md          # Pins Stitch project 2208910962065880866
     prompts/
@@ -138,15 +139,15 @@ Fix errors bottom-up: trace to the source layer and fix there first. Never modif
 
 ## Design system rules (from docs/design/DESIGN.md)
 
-DESIGN.md is "The Digital Curator" — charter (pillars + quality bar), semantic color (light default, optional **global dark** via `html.dark` + `next-themes`, Midnight regional bands), typography and motion tokens, spacing, accessibility, primitives/UI/section chain, Stitch rules, and change control. Full spec: [docs/design/DESIGN.md](docs/design/DESIGN.md). Quick rules:
+DESIGN.md is **Concept Modern** — charter (pillars + quality bar), semantic color (light default, optional **global dark** via `html.dark` + `next-themes`, Midnight regional bands), typography and motion tokens, spacing, accessibility, primitives/UI/section chain, Stitch rules, and change control. Full spec: [docs/design/DESIGN.md](docs/design/DESIGN.md). Agent UI skill: `.claude/skills/concept-modern-ui/SKILL.md`. Quick rules:
 
 - **Light default; global dark optional.** Users can switch light/dark (nav sun/moon); do not hand-edit `html` theme class in pages. Dark **hero bands** still use `variant="midnight"` (`--inverse-surface`) for regional contrast.
 - **Semantic tokens only.** Use `bg-background`, `bg-section`, `bg-card`, `bg-elevated`, `bg-inverse-surface`, `text-foreground`, `text-muted-foreground`, `text-inverse-foreground`, `bg-primary` — **never** raw hex, `bg-white`, `bg-black`, `bg-blue-600`, `text-gray-500`. DESIGN.md section 11 summarizes Stitch remaps; the migration prompt [section 7](docs/build/prompts/stitch-to-react-migration.md) has the full mechanical table for agents.
 - **No 1px solid borders for sectioning.** Depth comes from tonal stacking — a `bg-card` block sitting on a `bg-section` background is the "Gold Standard." Borders are allowed only for form-field accessibility (use `border-border`, which resolves to `outline_variant` at 15% opacity).
 - **No pasted-on drop shadows.** If elevation is truly needed, use `shadow-ambient` (`0 12px 40px rgba(42, 52, 57, 0.06)`). Otherwise, rely on Ghost Lift (tonal stacking).
-- **Primary is a light-switch.** `#0053db` is for actions and high-priority focus only. Subtle `primary → primary_dim` 135° gradient is allowed for CTAs; no other gradients.
-- **Never pure black.** Use `text-foreground` (which resolves to an ink-like `#2a3439`) or `bg-inverse-surface` for dark elements.
-- **Inter only.** Loaded via `next/font/google` in `layout.tsx`. Display headings get `letter-spacing: -0.02em`; labels get uppercase + `letter-spacing: 0.05em`.
+- **Primary is ink, not blue.** `bg-primary` is the near-black **ink pill** CTA on light surfaces (cream on dark). Do not use legacy `#0053db` Digital Curator blue on marketing pages.
+- **Never pure black.** Use `text-foreground` (which resolves to ink `#19150f`) or `bg-inverse-surface` for dark elements.
+- **Inter + Newsreader.** Inter via `next/font` for body/UI; Newsreader italic via `<em>` inside display lines only — never for multi-paragraph body copy.
 - **Breathing layout.** If a component feels crowded, increase padding — never shrink type to fit. Layout tokens: `--container-max: 1200px`, `--prose-max: 680px`, `--section-y-sm: 80px`, `--section-y-lg: 120px`.
 
 ## React / Next.js rules

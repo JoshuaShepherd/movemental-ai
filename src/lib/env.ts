@@ -27,6 +27,13 @@ const serverSchema = z.object({
   SUPABASE_SERVICE_ROLE_KEY: z.string().min(1).optional(),
   /** Multi-tenant org scoping — required for data isolation */
   TENANT_ORG_ID: z.string().uuid().optional(),
+  // Agent Room engine (movemental-ai-agents) — the /agent room proxies SSE to it.
+  /** Engine base URL, e.g. http://localhost:3001 or the deployed engine. */
+  AI_AGENTS_BASE_URL: optionalEnvUrl(),
+  /** Shared service secret; must equal the engine's SERVICE_API_SECRET. */
+  AI_AGENTS_SERVICE_SECRET: z.string().min(1).optional(),
+  /** Org the engine is pinned to (the seeded Agent Room tenant). */
+  AI_AGENTS_TENANT_ORG_ID: z.string().uuid().optional(),
   // Stripe
   STRIPE_SECRET_KEY: z.string().min(1).optional(),
   STRIPE_WEBHOOK_SECRET: z.string().min(1).optional(),
@@ -75,6 +82,9 @@ const processEnv = {
   DATABASE_URL: process.env.DATABASE_URL,
   SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
   TENANT_ORG_ID: process.env.TENANT_ORG_ID,
+  AI_AGENTS_BASE_URL: process.env.AI_AGENTS_BASE_URL,
+  AI_AGENTS_SERVICE_SECRET: process.env.AI_AGENTS_SERVICE_SECRET,
+  AI_AGENTS_TENANT_ORG_ID: process.env.AI_AGENTS_TENANT_ORG_ID,
   STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
   STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET,
   RESEND_API_KEY: process.env.RESEND_API_KEY,

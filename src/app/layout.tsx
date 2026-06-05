@@ -1,5 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Newsreader } from "next/font/google";
+import {
+  Inter,
+  Newsreader,
+  Playfair_Display,
+  IBM_Plex_Mono,
+  Homemade_Apple,
+} from "next/font/google";
 import { headers } from "next/headers";
 
 import { SiteFooter } from "@/components/nav/site-footer";
@@ -20,7 +26,7 @@ const inter = Inter({
 /**
  * Newsreader — italic-forward editorial serif used for display headings and
  * emphasized text across the public site and authenticated shells. Replaces
- * Instrument Serif as the primary serif (Phase 01 chrome rationalization).
+ * Replaces Instrument Serif as the primary serif (Phase 01 chrome rationalization).
  * The CSS variable name `--font-serif-display` is preserved so Tailwind
  * aliases (`font-serif`, `font-headline`, `font-serif-display`) continue to
  * resolve without changes elsewhere in the codebase.
@@ -30,6 +36,33 @@ const newsreader = Newsreader({
   subsets: ["latin"],
   weight: ["400", "500"],
   style: ["normal", "italic"],
+  display: "swap",
+});
+/**
+ * Oatmeal / Paper Edition faces — display (Playfair Display), machinery
+ * (IBM Plex Mono), and hand marginalia (Homemade Apple) for the imported
+ * Oatmeal/Paper design system (the `.oat-surface` scope, e.g. the /agent room).
+ * Loaded as CSS variables only — next/font fetches each face on demand when an
+ * `.oat-surface` subtree actually paints it, so the Inter-first main site is
+ * unaffected. Wired into `--font-oat-*` tokens in globals.css.
+ */
+const playfairDisplay = Playfair_Display({
+  variable: "--font-oat-display-face",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-oat-mono-face",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+});
+const homemadeApple = Homemade_Apple({
+  variable: "--font-oat-hand-face",
+  subsets: ["latin"],
+  weight: "400",
   display: "swap",
 });
 
@@ -66,12 +99,12 @@ export default async function RootLayout({
   const h = await headers();
   const shell = h.get("x-movemental-shell");
   const hideMarketingChrome =
-    shell === "dashboard" || shell === "invite" || shell === "paper";
+    shell === "dashboard" || shell === "invite" || shell === "room";
 
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${newsreader.variable} h-full min-h-dvh antialiased`}
+      className={`${inter.variable} ${newsreader.variable} ${playfairDisplay.variable} ${ibmPlexMono.variable} ${homemadeApple.variable} h-full min-h-dvh antialiased`}
       suppressHydrationWarning
     >
       <body className="flex min-h-dvh flex-col bg-background text-foreground">

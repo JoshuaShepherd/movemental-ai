@@ -1,6 +1,6 @@
 # Movemental design system — Concept Modern (warm editorial)
 
-> **Charter shift — 2026-04-17.** The Movemental design system is now **Concept Modern**: warm cream paper (`#faf6ee`), near-black ink (`#19150f`), hairline sectioning, Inter body with **Instrument Serif italic** for emphasis, and ink-filled **999px pill** CTAs. The previous "Digital Curator" cool ramp (`#f7f9fb` / `#2a3439` / blue `#0053db`) has been replaced at the token level. Semantic tokens (`bg-background`, `text-foreground`, `bg-primary`, `border-border`) keep their names — only the **values** moved — so most existing components continue to work without edit. Midnight (`--inverse-surface` = `#141110` / `--inverse-foreground` = `#f4efe5`) remains the regional dark band for authority moments, and the user-facing light/dark toggle now switches between the cream-paper day theme and a deep-ink night theme.
+> **Charter shift — 2026-04-17.** The Movemental design system is now **Concept Modern**: warm cream paper (`#faf6ee`), near-black ink (`#19150f`), hairline sectioning, Inter body with **Newsreader italic** for emphasis, and ink-filled **999px pill** CTAs. The previous "Digital Curator" cool ramp (`#f7f9fb` / `#2a3439` / blue `#0053db`) has been replaced at the token level. Semantic tokens (`bg-background`, `text-foreground`, `bg-primary`, `border-border`) keep their names — only the **values** moved — so most existing components continue to work without edit. Midnight (`--inverse-surface` = `#141110` / `--inverse-foreground` = `#f4efe5`) remains the regional dark band for authority moments, and the user-facing light/dark toggle now switches between the cream-paper day theme and a deep-ink night theme.
 
 ## How to use this document
 
@@ -8,7 +8,7 @@ This file is the **canonical design charter** for the Movemental organizational 
 
 **Implementation lives in code.** Literal color values, Tailwind v4 `@theme inline` wiring, base-layer typography, and motion safeguards are defined in `src/app/globals.css`. Primitives, navigation, sections, and pages live under `src/components/` and `src/app/`. When this document and the codebase disagree, treat that as a bug: fix both in one change so they stay aligned.
 
-**Static HTML (Core `1-html` library).** Operational SSOT for templates, `<head>` contracts, token parity with `globals.css`, primitive mapping, forbidden patterns, and **copy-paste agent prompts** is [STATIC_HTML_AND_TEMPLATES.md](./STATIC_HTML_AND_TEMPLATES.md). The relocated tree index stub is [README.md](../html/README.md).
+**Static HTML (Core `1-html` library).** Operational SSOT for templates, `<head>` contracts, token parity with `globals.css`, primitive mapping, forbidden patterns, and **copy-paste agent prompts** is [STATIC_HTML_AND_TEMPLATES.md](./STATIC_HTML_AND_TEMPLATES.md). The relocated tree index stub is [README.md](../html/README.md). **Sibling static mirror (Oatmeal HTML):** [MOVEMENTAL_HTML_TEMPLATE.md](./MOVEMENTAL_HTML_TEMPLATE.md) — full page manifest (54 HTML files), CSS namespaces (`mh-*`, `sf-*`, …), `js/main.js` interaction map, token translation, sync decisions, and what **not** to port into this repo. Per-page agent prompts: [html-template-exemplars-index.md](../build/prompts/html-template-exemplars-index.md).
 
 **Process vs. product.** Step-by-step Stitch migration, CLI commands, and validation checklists are in [docs/build/prompts/stitch-to-react-migration.md](../build/prompts/stitch-to-react-migration.md). That prompt **imports** the rules here; it does not replace them.
 
@@ -21,7 +21,7 @@ This file is the **canonical design charter** for the Movemental organizational 
 | Color, surfaces, elevation, radius | §3 (incl. Midnight + light/dark policy §3.6–3.9) |
 | Layout, spacing, grid, breakpoints | §4 |
 | Typography & reading experience | §5 |
-| Motion, interaction, accessibility | §6 |
+| Motion, interaction, accessibility | §6 · html-template parity [MOTION.md](./MOTION.md) §8 |
 | Primitives & UI shell | §7–§8 |
 | Stitch translation & patterns | §11–§12 |
 | Static HTML parity | §14 |
@@ -41,7 +41,7 @@ The interface is a **warm editorial product UI** — Notion, Anthropic marketing
 
 - **Typography is the interface.** Prefer type scale, measure (`ch`), and whitespace over boxes and shadows.
 - **Sectioning via lines and bands.** `border-top` / full-bleed grid borders on `--border`; alternate sections use `--section` (the alt paper tone). Avoid decorative box-shadow except dialogs.
-- **Italic serif = emphasis layer only.** Wrap stressed words in `<em>` inside display headings or short lines — the base layer swaps them to **Instrument Serif italic** at ~1.04em optical compensation. Never use serif for multi-paragraph body copy.
+- **Italic serif = emphasis layer only.** Wrap stressed words in `<em>` inside display headings or short lines — the base layer swaps them to **Newsreader italic** at ~1.04em optical compensation. Never use serif for multi-paragraph body copy.
 - **Restraint.** Color is essentially **duotone** — warm paper + near-black ink — with a **Midnight** regional band for authority moments. Motion is subtle and scroll-linked (700ms reveal at `cubic-bezier(0.22, 1, 0.36, 1)`).
 - **Breathing layout.** If something feels crowded, **add padding**. Do not shrink type to fit a container. Layout tokens (`--container-max`, `--section-y-*`) exist so pages share one outer rail and vertical cadence.
 
@@ -78,7 +78,7 @@ Work **bottom-up**: settle tokens and primitives before composing pages. This mi
 
 | Layer | Role | Location in repo | Static HTML parity (Core `1-html/labs/movemental-ai/docs-html`) |
 | ----- | ---- | ----------------- | -------------------------------- |
-| **L0 — Design tokens** | Colors, radii, shadows, layout metrics, font stack | `:root` and `@theme inline` in `src/app/globals.css` | `:root` in [docs/html/site-templates/site-theme.css](../../../1-html/labs/movemental-ai/docs-html/site-templates/site-theme.css) — **numeric parity** with `globals.css` (see [STATIC_HTML_AND_TEMPLATES.md §4](./STATIC_HTML_AND_TEMPLATES.md)); static HTML may load Inter + Instrument via `<link>` for preview—production uses **`next/font`** for both (see §17.3) |
+| **L0 — Design tokens** | Colors, radii, shadows, layout metrics, font stack | `:root` and `@theme inline` in `src/app/globals.css` | `:root` in [docs/html/site-templates/site-theme.css](../../../1-html/labs/movemental-ai/docs-html/site-templates/site-theme.css) — **numeric parity** with `globals.css` (see [STATIC_HTML_AND_TEMPLATES.md §4](./STATIC_HTML_AND_TEMPLATES.md)); static HTML may load Inter + Newsreader via `<link>` for preview—production uses **`next/font`** for both (see §17.3) |
 | **L1 — Global base** | `html`/`body`, heading defaults, Midnight scoping, selection, reduced motion | `@layer base` in `src/app/globals.css` | Base reset + `html`/`body` + link defaults + `prefers-reduced-motion` guard in `site-theme.css` |
 | **L2 — Primitives** | Section bands, max-width container, display type, eyebrow, prose column, editorial arrow link | `src/components/primitives/*` | `site-theme.css`: `.band-midnight`, `.band-section`, `.band-default`, `.container`, `.prose`, `.eyebrow`, `.display`, `.lede`, `.card`, `.grid-3`, `.btn-row`, `.btn` / `.btn-primary` / `.btn-ghost`. **Canonical midnight band:** `.band-midnight` (templates). **Legacy (root prototypes):** `.section--surface-midnight` — same token intent; migrate markup to `.band-midnight` when convenient. |
 | **L2b — Trust / evidence** | Grounded citations, inspectability, relationship to sources | (compose with `Prose`, `Card`, `Section` in TSX) | `site-theme.css`: `.evidence-note`, `.evidence-note--inverse`, `.pull-quote`, `.pull-question`, `.relationship-row`, `.references`, `.figure-doc` — see §14 |
@@ -277,7 +277,7 @@ Midnight sections set `data-variant="midnight"` for base-layer heading color ove
 **Fonts:**
 
 - **Inter** is the sole UI and long-form sans, loaded via `next/font/google` in `src/app/layout.tsx` with CSS variable `--font-sans`. Weights **400 / 500**.
-- **Instrument Serif** (400, normal + italic) is loaded the same way as `--font-serif-display` for the **italic emphasis layer** — `<em>` inside display headings, stage names, pull quotes, and short labels. **Never** set it as the body font; never use it for multi-paragraph reading columns.
+- **Newsreader** (400/500, normal + italic) is loaded via `next/font` as `--font-serif-display` for the **italic emphasis layer** — `<em>` inside display headings, stage names, pull quotes, and short labels. **Never** set it as the body font; never use it for multi-paragraph reading columns.
 
 **Body defaults:** `font-size: 17px; line-height: 1.55; font-feature-settings: "kern", "liga", "cv11"` (single-story `g`). Antialiased rendering is set at `html` level — do not override.
 
@@ -444,7 +444,7 @@ Extract any block that appears on more than one route into `sections/` (or a fut
 
 | File | Responsibility |
 | ---- | -------------- |
-| `src/app/layout.tsx` | Root `<html>` / `<body>`, **Inter + Instrument Serif** via `next/font`, `Providers`, skip link, **`SiteNav`**, **`SiteFooter`**, and `<main id="main">` for all routes |
+| `src/app/layout.tsx` | Root `<html>` / `<body>`, **Inter + Newsreader** via `next/font`, `Providers`, skip link, **`SiteNav`**, **`SiteFooter`**, and `<main id="main">` for all routes |
 | `src/app/(site)/layout.tsx` | Pass-through — global chrome lives in the root layout |
 | `src/app/(site)/**/page.tsx` | Page composition only—sections and primitives, minimal logic |
 
@@ -527,7 +527,7 @@ Prefer **`ArrowLink`** for “start here” row links with arrow iconography—i
 - Reach for **semantic tokens** (`bg-section`, `text-muted-foreground`) before inventing new utilities.
 - Use **Midnight** (`variant="midnight"`) sparingly for narrative impact; on those bands, step secondary ink with **`text-inverse-foreground/{opacity}`** per §3.6.
 - Use **motion tokens** (`duration-*`, `ease-*` from `tailwind.config.ts` / CSS vars) for transitions instead of arbitrary milliseconds.
-- Keep **Inter** as the primary brand typeface; use **Instrument Serif** only as the scoped emphasis layer (§5 / §17).
+- Keep **Inter** as the primary brand typeface; use **Newsreader** only as the scoped emphasis layer (§5 / §17).
 
 ### Don’t
 
@@ -680,7 +680,7 @@ These live in `:root` / `@theme inline` as Tailwind colors—**never** paste pro
 - **SiteNav** follows the **nav-01** structure from [`docs/html/master-components/nav-01.html`](../../../1-html/labs/movemental-ai/docs-html/master-components/nav-01.html): fixed glass bar, **brand → centered primary row → actions** (ghost secondary + ink pill primary + mobile toggle), plus **reading progress** hairline under the bar (`NavReadingProgress`, `--site-nav-progress-height`, `--site-chrome-total`). Main content padding-top must clear **`--site-chrome-total`**, not `4rem` alone.
 - **Breakpoint:** Desktop nav and inline CTAs use the Tailwind **`nav`** screen (**`min-width: 901px`**) so behavior matches [`nav-demos.css`](../../../1-html/labs/movemental-ai/docs-html/master-components/css/nav-demos.css) (`max-width: 900px` drawer threshold). Use `nav:*` utilities in `src/components/nav/*`; do not use `lg:` (1024px) for this chrome split.
 - **IA source of truth:** hrefs and labels for header, footer, and mobile drawer come only from [`src/components/nav/nav-links.ts`](../../src/components/nav/nav-links.ts). `nav-01.html` still shows placeholder anchors (Services, Methodology, …); production IA intentionally differs.
-- **Instrument Serif:** Loaded in `src/app/layout.tsx` via `next/font/google` as `--font-serif-display`. `@theme` / `:root` **`--font-serif`** stacks that variable first so `@layer base` heading `<em>` and `font-serif` utilities resolve to the self-hosted font, with string fallbacks matching Concept Modern HTML.
+- **Newsreader:** Loaded in `src/app/layout.tsx` via `next/font/google` as `--font-serif-display`. `@theme` / `:root` **`--font-serif`** stacks that variable first so `@layer base` heading `<em>` and `font-serif` utilities resolve to the self-hosted font, with string fallbacks matching Concept Modern HTML.
 - **Skip link** is required in `src/app/layout.tsx` (first focusable, targets `#main`).
 
 ### 17.4 Motion (static `script.js` → React)

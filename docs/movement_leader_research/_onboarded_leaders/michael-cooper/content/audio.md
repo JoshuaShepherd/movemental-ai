@@ -69,6 +69,16 @@ Patterns that show up across the Ephesiology Podcast:
 
 ---
 
+## Dossier catalog (author profile ETL)
+
+Parseable inventory for `movement_leader_corpus_data.audio`. Representative rows — not a full 227-episode crawl.
+
+| Episode Title | Show | Date | URL |
+|---------------|------|------|-----|
+| The Ephesiology Podcast (host, 227 episodes) | The Ephesiology Podcast | 2019 | https://podcasts.apple.com/us/podcast/the-ephesiology-podcast/id1457124552 |
+
+---
+
 ## Assessment
 
 Cooper's audio profile is the **strongest and most consolidated dimension of his digital presence** — and it is the exact opposite of a guest-only profile.

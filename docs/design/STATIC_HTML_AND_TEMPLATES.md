@@ -2,6 +2,8 @@
 
 > **2026-05-14 — Relocation.** Hand-authored static HTML and `site-templates/` now live in the Core library at `../1-html/labs/movemental-ai/docs-html/` (sibling of this repo). Alan Hirsch exemplars live at `../1-html/labs/movemental-ai/docs-templates/`. See [`docs/html/README.md`](../html/README.md). In the tables below, paths that used to read `docs/html/…` refer to that relocated tree.
 
+> **Sibling repo:** Full-fidelity Oatmeal marketing HTML lives in **`movemental-html-template`** (`~/dev/01-Movemental-Core/movemental-html-template`). It is **not** the token source for this repo — see [MOVEMENTAL_HTML_TEMPLATE.md](./MOVEMENTAL_HTML_TEMPLATE.md) for the full page manifest, CSS namespaces, motion map, Oatmeal→Concept Modern translation, and agent workflow. Per-page prompts: [html-template-exemplars-index.md](../build/prompts/html-template-exemplars-index.md).
+
 This document is the **single accountable spec** for bringing static HTML pages, `site-templates/*`, and Alan Hirsch exemplars into alignment with Movemental’s design vision. The creative charter lives in [DESIGN.md](./DESIGN.md); **token values and parity with production** live in `src/app/globals.css` (`:root`) and **static parity** in [site-theme.css](../../../1-html/labs/movemental-ai/docs-html/site-templates/site-theme.css) (`:root`).
 
 When `globals.css`, `site-theme.css`, or static markup disagree, treat that as a bug and fix **globals + DESIGN.md + site-theme** in one accountable change (per DESIGN.md §16).

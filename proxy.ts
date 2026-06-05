@@ -49,13 +49,6 @@ const AUTHENTICATED_PATH_PREFIXES = [
 
 const READINESS_INVITE_PREFIX = "/readiness-invite/";
 
-/**
- * Standalone marketing surfaces that render their own self-contained chrome
- * and must not inherit the SiteHeader/SiteFooter. Each entry is matched on
- * exact path equality.
- */
-const STANDALONE_PAPER_PATHS = new Set(["/home-paper"]);
-
 /** Public marketing chrome — not AuthenticatedShell (Phase 06). */
 const PUBLIC_LEADER_PATHS = new Set(["/leader/apply"]);
 
@@ -81,12 +74,13 @@ export async function proxy(request: NextRequest) {
     return updateSession(request, inject);
   }
 
-  if (STANDALONE_PAPER_PATHS.has(pathname)) {
-    inject["x-movemental-shell"] = "paper";
-    return updateSession(request, inject);
-  }
-
   if (dashboardShell) inject["x-movemental-shell"] = "dashboard";
+
+  // The Agent Room is a full-screen, single-surface room (no marketing
+  // SiteHeader/SiteFooter). Public — not an AuthenticatedShell route.
+  if (pathname === "/agent" || pathname.startsWith("/agent/")) {
+    inject["x-movemental-shell"] = "room";
+  }
 
   return updateSession(request, inject);
 }

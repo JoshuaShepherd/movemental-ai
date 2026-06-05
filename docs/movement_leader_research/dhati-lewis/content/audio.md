@@ -10,10 +10,10 @@
 
 ## Guest Appearances
 
-| Show | Episode | URL | Date |
-|------|---------|-----|------|
-| Where Ya From? (Christianity Today) | Ep. 56 — "A Blueprint for Discipleship in an Urban Context" | https://whereyafrom.org/episode/episode-56-a-blueprint-for-discipleship-in-an-urban-context-with-dhati-lewis/ | 2023-10-17 |
-| The Gospel, Culture & Me | Ep. 16 — "Dhati Lewis on: Advocacy" | https://podtail.com/podcast/the-gospel-culture-me/ep-16-dhati-lewis-on-advocacy/ | — |
+| Episode Title | Show | Date | URL |
+|---------------|------|------|-----|
+| A Blueprint for Discipleship in an Urban Context | Where Ya From? (Christianity Today) | 2023-10-17 | https://whereyafrom.org/episode/episode-56-a-blueprint-for-discipleship-in-an-urban-context-with-dhati-lewis/ |
+| Dhati Lewis on: Advocacy | The Gospel, Culture & Me | — | https://podtail.com/podcast/the-gospel-culture-me/ep-16-dhati-lewis-on-advocacy/ |
 
 ## Recorded Teaching
 

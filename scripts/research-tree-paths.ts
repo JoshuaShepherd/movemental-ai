@@ -18,6 +18,7 @@ export const TENANT_RESEARCH_SLUGS = [
   "rob-wegner",
   "michael-cooper",
   "rowland-smith",
+  "meghan-good",
 ] as const;
 
 export type TenantResearchSlug = (typeof TENANT_RESEARCH_SLUGS)[number];
