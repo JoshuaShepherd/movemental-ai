@@ -1,0 +1,26 @@
+# Fragmentation Story: Tiffany Smith ("Missional Mayhem")
+
+## The Story
+
+Tiffany Smith built her vocation in the field before she built it on a page. Two years as an International Mission Board missionary in Japan turned into more than two decades mobilizing leaders, first across Texas and then nationally. She trained as a missiologist - a Doctorate in Missional Leadership from New Orleans Baptist Theological Seminary, a Master of Divinity in Theology from Southwestern Baptist Theological Seminary, a Bachelor of Science in Psychology from Texas A&M University - and she has spent that training inside institutions: the Southern Baptists of Texas Convention, the Send Institute, and now the North American Mission Board, where she has served as Send Network Strategies Coordinator since August 2021. Late in this arc she opened a personal surface, "Missional Mayhem," to put her own voice into public. The work is real and the voice is forming. What does not yet exist is a single place that holds it, connects it, and lets a stranger find their way from any one piece to all the rest.
+
+## Informational Fragmentation
+
+- **Personal hub / blog** - [missionalmayhem.com](https://missionalmayhem.com/), "Perspectives on a Missional Life," carrying essays like "Resolve to know nothing..." and her "1, 3, 12, & 72" community material, plus a "Coaching & Cohorts" offer.
+- **Podcast (*Missional Mayhem*), hosted** - distributed across three platforms that do not point at each other: Podbean ([missionalmayhem.podbean.com](https://missionalmayhem.podbean.com/)), [Apple Podcasts](https://podcasts.apple.com/us/podcast/missional-mayhem/id1840316635), and [iHeart](https://www.iheart.com/podcast/1323-missional-mayhem-294851536/). Episodes with Dr. Sam Perli (AI & the Church), Somer Phoebus, Landon Reesor, Dr. Michelle Dickens, Kim Hardy, Will Plitt, and others.
+- **Podcast guesting** - on *At The Table*, the podcast of the SBC Women's Leadership Network ([Apple Podcasts](https://podcasts.apple.com/us/podcast/at-the-table-the-podcast-of-the/id1457206241)), where her NAMB Regional Equipper bio and her church-planting-and-women material live under someone else's show, not hers.
+- **Institutional teaching** - the NAMB Pipeline training and Send Network strategy curricula she authored or coordinates, held inside NAMB and Send Institute systems, not on her own name.
+- **Social fragments** - Instagram [@missional_mayhem](https://www.instagram.com/), Facebook, Twitter/X, and LinkedIn ([tiffanydsmith](https://www.linkedin.com/in/tiffanydsmith/)), each carrying pieces of the same message in incompatible formats.
+- **Gaps** - no published book; no personal YouTube; no newsletter of any scale (a ~49-person on-site list); no topic hub stitching blog, podcast, and coaching together.
+
+## Relational Fragmentation
+
+Her relationships are stored in institutions, not in anything she controls. The largest rosters live inside NAMB - the Send Network church-planter pipeline, Send Institute mobilizer lists - and inside the Southern Baptists of Texas Convention and the SBC Women's Leadership Network. Her podcast guest list (Sam Perli, Somer Phoebus, Landon Reesor, Michelle Dickens, Rich Robinson, Marie Burrus, Eddie Hancock, Will Plitt, Kim Hardy) is a relational asset that currently exists only as episode metadata. Adjacent networks brush against her work - Christ Together, Union Baptist Association in Houston, Exponential, She Works His Way, Hue Church in Santa Clara - but those connections sit in conference programs and other people's CRMs. The connective tissue between all of these people lives in her phone and her memory. When a planter she equipped leaves the Send Network, the relationship has no home to fall back to.
+
+## Embodied / In-Their-Head layer
+
+The deepest pool of value is the unwritten judgment of a practitioner. Two decades of mobilizing leaders means thousands of coaching conversations, cohort calls, and equipping sessions whose actual content - what she said when a planter was about to quit, how she sequences a leadership pipeline, why she frames community as the 1, 3, 12, & 72 - lives in notebooks, in the cadence of the Coaching & Cohorts she runs, and in the same conversation having happened a thousand times in airports and church offices. Her instinct for the ethics of AI in ministry, the line between using powerful tools and keeping the ministry of presence, is mostly spoken, not written. The missiology she learned by living it in Japan is carried in her, not catalogued.
+
+## Synthesis
+
+Tiffany's fragmentation pattern is the **institutionally-housed practitioner with a late-blooming personal voice**. Her durable assets and her relationships are real but largely owned by the organizations she serves - NAMB, the Send Institute, the SBTC, the SBC Women's Leadership Network - while her own surface ("Missional Mayhem") is new, multi-platform, and unconnected: a blog here, a podcast split across three apps, guest spots on other people's shows, no book, no newsletter, no hub. The risk is not that she has built nothing; it is that what she has built sits in containers she does not control and a personal presence that has no spine. The first job is a single home that gathers the scattered surfaces and surfaces the embodied two decades that have never been written down.

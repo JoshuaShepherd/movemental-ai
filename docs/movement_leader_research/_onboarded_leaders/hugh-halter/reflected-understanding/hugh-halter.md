@@ -1,0 +1,27 @@
+# A Letter to Hugh Halter
+
+## Calling
+
+You have spent more than thirty years doing the same thing in three different cities. In Portland, in Denver, and now in Alton, you and Cheryl have planted yourselves among people and let the church grow up out of that presence rather than the other way around. The vocabulary changed as you went — incarnational community, the gathered-and-scattered church, bi-vocational saints, holy nonjudgment, family as mission, kingdom ecosystems — but underneath the words the calling held steady: to make the kingdom of God tangible in an actual place, with actual people, around actual tables.
+
+What is striking, reading across the whole arc, is how consistently you embodied the thing before you named it. You planted Adullam as a network of incarnational communities, not a single service, and only afterward wrote *The Tangible Kingdom* and the *Primer* to explain what you had been doing. You lived bi-vocationally before *BiVo* made the case for it. You practiced holy nonjudgment among people the religious world had written off, and then *Brimstone* tried to hand that posture to others. You took a derelict federal post office and turned it into Post Commons — the living room of Alton — and that act of regenerating a place became the seedbed for *Brave Cities* and the idea of kingdom ecosystems. The calling has always run from practice toward articulation. The doing comes first; the book is the residue.
+
+That order matters for what comes next, because the richest part of your work is the part that has not yet been written down.
+
+## Existing Content (before the platform we're building)
+
+You have built a substantial body of work. Ten books across two decades: *The Tangible Kingdom* and the *Tangible Kingdom Primer* with Matt Smay, *AND: The Gathered and Scattered Church*, *Sacrilege*, *BiVo*, *Flesh*, *Brimstone*, *Happy Hour*, *Righteous Brood* with Dave and Sue Ferguson, and *Brave Cities* with Taylor McCall. Articles and columns at Outreach Magazine — including the "Exponential Church" column — at ChurchLeaders, at New Churches, and on the Missio Publishing blog. A decade of podcast conversations: *Theology in the Raw* with Preston Sprinkle, *Shifting Culture*, *Park Street Dialogues*, *Everyday Disciple*, Exponential's *Future Church* podcast on *Brave Cities*, the Verge Network, the Missio Alliance webinars. The organizations themselves are a kind of content: Adullam and Missio in Denver, Forge America where you served as U.S. director, and now Lantern Network and Post Commons in Alton, with Brave Cities reaching outward to leaders building whole cities.
+
+But all of it is somewhere, and none of it is in one place. The books are split across five-plus publishers — Wiley's Jossey-Bass imprint, Zondervan, Baker, David C. Cook, Missio Publishing, 100 Movements — and sold on every retailer but consolidated by none. The frameworks you are known for each live buried inside whichever book happens to carry them, with no canonical home a reader can point to. The articles sit on borrowed platforms. The podcast appearances are guest spots on other people's feeds, with no single place that gathers them into one listenable catalogue. The relationships are held in the cohort rosters of organizations you have led across three cities, several of them now on a dated SnapPages site, and in the rolodex that lives in your phone and memory.
+
+And the largest pool of value is the one most at risk of never being captured at all: the thirty years of judgment that came before each book. Why Adullam was a network rather than a service. How a post office actually becomes the living room of a city. The real economics of bi-vocational ministry that *BiVo* only summarizes. The pastoral discipline of holy nonjudgment that *Brimstone* names but cannot fully transmit. The day-to-day of Rí Beag Refuge. That material lives in coaching calls, in Brave Cities consulting sessions, in coffee at Post Commons, and in stories told a thousand times but written down nowhere public.
+
+## Constraints
+
+A few things are true about your situation that shape what is realistic. You are not short on content; you are short on a center. The problem is not output but consolidation — there is no owned place that points from any one piece of your work to all the others.
+
+Your attention is genuinely committed elsewhere. You are running Lantern Network and Post Commons and coaching leaders through Brave Cities, and those are not side projects to be paused while you tend an archive. Whatever gets built has to fit around a working pastor and city-builder, not the other way around — it should surface the embodied layer at your pace, not a publisher's.
+
+Your voice is not negotiable. The work is earthy, provocative, and pastoral, and it reads like someone who has done the thing. Anything that flattens that into generic content-marketing language would betray the work itself. The drafts have to stay yours — yours to edit, refuse, or rewrite — with the connective tissue and the inventorying done around you rather than in place of you.
+
+Finally, the co-authoring and the organizations are real relationships, not assets to be strip-mined. Matt Smay, the Fergusons, Taylor McCall, the Adullam and Missio cohorts, the Forge rosters, the Post Commons partners — these are people you are accountable to. Anything built on top of your work should honor those relationships rather than flatten them into a list.

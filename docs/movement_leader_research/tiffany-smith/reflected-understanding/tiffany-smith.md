@@ -1,0 +1,27 @@
+# A Letter to Tiffany Smith
+
+## Calling
+
+You have spent more than two decades doing one thing under many titles: finding leaders, developing them, and sending them. It started overseas. Two years as an International Mission Board missionary in Japan gave you a missionary's instinct that never left — that the work of God moves by multiplying disciples and churches, not by holding ground. From there your calling matured inside the mission infrastructure of the Southern Baptist world rather than outside it. You mobilized missionaries with the Southern Baptists of Texas Convention. You served as a National Mobilizer with the Send Institute. You built leadership-pipeline training as a NAMB Pipeline Consultant. Since August 2021 you have coordinated church-planting strategy for an entire continent as Send Network Strategies Coordinator at the North American Mission Board.
+
+You frame your own work as catalytic and movement-focused, and that word — catalytic — says how you see your calling. You are not trying to run a ministry that depends on you. You are trying to set things in motion that outlast your involvement. The academic formation matches it: a Doctorate in Missional Leadership from New Orleans Baptist Theological Seminary, a Master of Divinity from Southwestern, a psychology degree from Texas A&M. But your deepest expertise is not on a diploma. It is the judgment you have accumulated across thousands of coaching conversations and cohort calls — how you sequence a leader's development, what you say to a planter the week before they quit, why you teach community as the 3, the 12, and the 72 rather than as a program.
+
+What is newer, and what matters most for the season ahead, is that you have begun to put your own voice into public under your own name. For most of your career your best thinking has lived inside institutions and on other people's platforms. With *Missional Mayhem* you opened a surface of your own — a blog called "Perspectives on a Missional Life" and, beginning in 2025, a podcast — to say in your own words what you have spent two decades practicing.
+
+## Existing Content (before the platform we're building)
+
+You have built a real and growing body of public work, and it is scattered across surfaces that do not point at each other.
+
+Your own voice lives at missionalmayhem.com, where your essays run back to 2021 — *Cultivating Synergy*, *Leading Begins by Following*, *An Abrahamic Coddiwomple*, *Living the Reality of Abiding*, *Women Missional Leaders*, *Chasing after glory…*, *Our Kingdom Assignment*, *Do Not Grow Weary*, *A Prayer for Movement Renewal*, *When Church Community Disappoints*, *Anchoring Rhythms for New Seasons*, *A Prayer for the Weary Sojourner*. That last cluster is where your clearest framework lives: in *When Church Community Disappoints* you teach Jesus' relational circles — the 3, the 12, and the 72 — as intentional, limited, and scalable relationships, and you write that pursuing deep friendship in a distracted, exhausted, isolated culture is "an act of rebellion."
+
+Your podcast, *Missional Mayhem*, is real but split across three storefronts that do not link to one another — Podbean, Apple Podcasts, and iHeart. Across its first ten episodes you sat with Rich Robinson on unlocking kingdom potential, with Dr. Michelle Dickens on rest in the chaos, with Landon Reesor across two episodes on grace and truth in a post-Christian world, with Somer Phoebus on sacred work, with Dr. Sam Perli on AI and the church from disruption to missional opportunity, with Eddie Hancock on legacy, with Marie Burrus on loving diaspora neighbors, with Will Plitt on loving the city, and with Kim Hardy on living your "activated yes."
+
+Some of your strongest public material is not even on your own show. Your conversation on women in church planting, singleness, and leadership sits inside *At The Table*, the podcast of the SBC Women's Leadership Network, under someone else's banner.
+
+And the largest layer is the one not yet written at all. Two decades of mobilizing leaders means thousands of conversations whose actual content — your read on the ethics of AI and the ministry of presence, how you sequence a pipeline, why the 3-12-72 is a model and not a program — lives in your notebooks, in your Coaching & Cohorts, and in the same conversation you have had a thousand times in church offices and airport gates.
+
+## Constraints
+
+A few honest realities shape the work. You have no published book; your durable assets are the blog and the podcast, not a spine on a shelf. There is no personal YouTube channel — your podcast is audio-first. Your email list is small, around forty-nine people, with no newsletter product built around it. And there is no single hub that stitches your blog, your podcast, your guest appearances, and your coaching together so a stranger can move from any one piece to all the rest.
+
+There is also a real tension to hold: much of your relational and teaching capital is owned by the institutions you serve. The largest rosters — the Send Network church-planter pipeline, Send Institute mobilizer lists, SBTC and SBC Women's Leadership Network connections — are not yours to carry off, and your role at NAMB rightly comes first. The aim is never to compete with that work. It is to give your own voice a spine, so that the embodied practice of your two decades becomes reachable by the planters it was always for — including the ones who will never sit in a cohort with you.

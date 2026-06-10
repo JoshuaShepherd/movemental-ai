@@ -1,0 +1,34 @@
+# Kate Coleman — Fragmentation Story
+
+## The Story
+
+Rev Dr Kate Coleman has spent more than 35 years building a body of work on Christian leadership — two books, two signature programs, decades of coaching and mentoring, a string of historic "firsts," and a steady presence on other people's stages and microphones. Yet there is no single place a practitioner can go to find Kate Coleman's work. Her name resolves to Next Leadership, the organization she founded and directs, not to a hub of her own. The books sit on retail platforms. The programs sit on company landing pages. The talks sit inside conferences. The interviews sit on partner publications and guest podcast feeds. The largest body of material — the judgment she has accumulated coaching leaders across church, charity, business, and government — sits in the room and in her head. All of it exists; none of it is gathered.
+
+## Informational Fragmentation
+
+- ***7 Deadly Sins of Women in Leadership*** — self-published first (2010, Next Leadership Publishing) and later revised under Zondervan (2020), with a foreword by Elaine Storkey. Sold on Amazon UK (https://www.amazon.co.uk/dp/0956557201) and Amazon US (https://www.amazon.com/dp/0310119979), Barnes & Noble (https://www.barnesandnoble.com/w/7-deadly-sins-of-women-in-leadership-kate-coleman/1137257277), Christianbook (https://www.christianbook.com/leadership-overcome-defeating-behavior-ministry-revised/kate-coleman/9780310119982/pd/107089EB), Church House Bookshop (https://chbookshop.hymnsam.co.uk/books/9780310119975/7-deadly-sins-of-women-in-leadership), Waterstones, and as audiobook on Audible/Everand (https://www.everand.com/audiobook/631956070/).
+- ***Metamorph: Transforming Your Life and Leadership*** — Next Leadership Publishing, November 2024 (https://www.amazon.co.uk/dp/1955142602). Spread across Amazon UK/US, Apple, Google Play, Spotify, Chirp, Barnes & Noble, and Waterstones in print, ebook, and audiobook.
+- **7DS program** — book + video study (co-created with Cham Kaur-Mann), "Breakthrough" one-day events, book clubs, and a "My Deadly Sins" self-assessment, all living on one company landing page: https://www.nextleadership.co.uk/7ds
+- **Metamorph / Ellevation program** — the immersive women's learning experience built around the book: https://www.nextleadership.co.uk/metamorph
+- **Podcast appearances (guest only):** *The Profile* on Premier Plus — "Leadership Special Kate Coleman: 'Transforming into leaders for tomorrow'" (https://www.premier.plus/the-profile/podcasts/episodes/leadership-special-kate-coleman-transforming-into-leaders-for-tomorrow ; YouTube https://www.youtube.com/watch?v=iBkcEzvdNFU); *TheoDisc Podcast* — "Kate Coleman – Transform your Leadership" (https://theodisc.podbean.com/e/kate-coleman-transform-your-leadership/); *The Women Scholars and Professionals Podcast* / InterVarsity (https://podcasts.apple.com/us/podcast/kate-coleman-7-deadly-sins-of-women-in-leadership/id1355442756); *Recovering God Podcast* — "Women in Leadership with Kate Coleman."
+- **Articles / profiles:** CBE International resource entry (https://www.cbeinternational.org/person/kate-coleman/); Premier Christianity interview (https://www.premierchristianity.com/interviews/kate-coleman-when-the-spirit-is-left-to-move-women-rise-up-to-lead/16536.article); Church Times interview (https://www.churchtimes.co.uk/articles/2013/28-march/features/interviews/interview-kate-coleman-founder-and-co-director-next-leadership); Woman Alive Book Club feature (https://www.womanalive.co.uk/february-book-club-metamorph-transforming-your-life-and-leadership-by-kate-coleman/18862.article); Evangelical Alliance *idea* (https://www.eauk.org/idea/60-seconds-with-kate-coleman.cfm); Baptist Union profile (https://www.baptist.org.uk/Articles/547636/Kate_Coleman.aspx).
+- **Social / link surfaces:** Linktree (linktr.ee/katecoleman), LinkedIn (linkedin.com/in/kate-coleman-38294414/), Facebook (facebook.com/KateColemanOfficial).
+- **Primary site:** https://www.nextleadership.co.uk (organizational, not personal).
+
+## Relational Fragmentation
+
+- Her relationships are held inside the institutions that introduced them, not in any structure of her own: the Baptist Union of Great Britain (where she was the first Black woman President, 2006–2007); the Evangelical Alliance Council (first Black woman Chair, 2012–2014); the United Nations leadership-curriculum work; Churches Together in Britain & Ireland; and the congregations she pastored — Chalk Farm Baptist Church and The Regeneration Centre, Birmingham.
+- Program rosters and cohort lists for 7DS Breakthrough events, the book clubs, and the Ellevation cohort sit in Next Leadership's own systems and registration tools, separate from any contact she controls personally.
+- Her coaching and mentoring relationships — the leaders across public, private, voluntary, and church sectors she has advised for decades — live in her own files, calendar, and memory.
+- The missional-network adjacency is already visible in her *Metamorph* endorsers: Alan Hirsch (Movement Leaders Collective) and Christine Caine (A21 / Propel Women), with Danielle Strickland and Ben Lindsay (Power the Fight). That is one endorsement degree connecting her into the wider missional network — a connection currently recorded only on a book's back cover.
+
+## Embodied / In-Their-Head layer
+
+- The judgment calls behind the 7DS program — why these seven behaviours, how the Breakthrough day is sequenced, what makes the book-club guides land — exist as curation decisions she made, not as written rationale.
+- The case studies behind 35 years of coaching leaders across sectors, and the pastoral wisdom of planting and leading The Regeneration Centre, were lived before they were ever written about.
+- The "Why me? Why here? Why this? Why now?" diagnostic she uses to reorient leaders exists mostly as a conversation she has had a thousand times.
+- The connective relational tissue — who in her network should meet whom, which leader is ready for which room — lives only in her head, her phone, and her notebooks.
+
+## Synthesis
+
+Kate Coleman's fragmentation pattern is **organization-masking-the-person**. Almost everything she has made is real, public, and high quality — but it is filed under Next Leadership, scattered across retail platforms, or buried inside other people's podcasts and conferences. There is no Kate Coleman hub; there is no newsletter, no hosted podcast, no personal YouTube, no archive linking book to program to interview to talk. A reader who hears her on *The Profile* cannot easily get from that episode to *Metamorph*, to the 7DS self-assessment, to the Ellevation cohort. And the deepest layer — decades of coaching judgment and the curation behind her programs — has barely been captured at all. The work exists; the layer that lets people find their way from any one piece to every other piece does not.
