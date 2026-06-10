@@ -47,6 +47,37 @@ test.describe("Agent Room", () => {
     });
   });
 
+  // ── Stream mode: local opening choreography (no engine) ───────────────────
+  test.describe("stream local opening", () => {
+    test.skip(MODE !== "stream", "Server must be in stream mode (AGENT_ROOM_TEST_MODE=stream)");
+
+    test("load plays opening voice with zero stream calls", async ({ page }) => {
+      const streamCalls: string[] = [];
+      page.on("request", (r) => {
+        if (r.url().includes("/api/agent-room/stream")) streamCalls.push(r.url());
+      });
+      await page.goto("/agent");
+      await expect(page.locator(".ink-band-surface").first()).toBeVisible();
+      await expect(
+        page.getByText("Movemental meets leaders and organizations where they are"),
+      ).toBeVisible({ timeout: 3500 });
+      expect(streamCalls, "opening choreography must not call stream").toEqual([]);
+    });
+
+    test("lead chip runs beatIntro locally before any stream call", async ({ page }) => {
+      const streamCalls: string[] = [];
+      page.on("request", (r) => {
+        if (r.url().includes("/api/agent-room/stream")) streamCalls.push(r.url());
+      });
+      await page.goto("/agent");
+      await page.waitForTimeout(2000);
+      await page.getByRole("button", { name: "Get a clear next AI step" }).click();
+      await expect(page.getByText("I’m not going to grade you")).toBeVisible({ timeout: 3500 });
+      expect(streamCalls, "beatIntro is local — no stream yet").toEqual([]);
+      await expect(page.getByRole("button", { name: "Okay, map it" })).toBeVisible();
+    });
+  });
+
   // ── Stream mode: graceful fallback (route-mocked, no real engine needed) ──
   test.describe("stream fallback", () => {
     test.skip(MODE !== "stream", "Server must be in stream mode (AGENT_ROOM_TEST_MODE=stream)");

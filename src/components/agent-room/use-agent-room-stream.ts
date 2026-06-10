@@ -3,9 +3,14 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import {
+  BEAT_INTRO_AGENT_CHIPS,
+  resolveStreamChipRoute,
+} from "@/lib/agent-room/composer-routing";
+import {
+  playBeatIntroChoreography,
   playOpeningChoreography,
-  scheduleOpeningChoreography,
-} from "@/lib/agent-room/opening-choreography";
+  scheduleLocalChoreography,
+} from "@/lib/agent-room/local-choreography";
 import { parseSSEBuffer, type ComponentId } from "@/lib/agent-room/stream-chunk";
 import { validateComponentProps } from "@/lib/agent-room/component-props";
 import type { Generation } from "@/lib/agent-room/scene-runner";
@@ -74,9 +79,11 @@ export function useAgentRoomStream() {
   const [screen, setScreen] = useState<ScreenState>({ kind: "opening" });
   const [voice, setVoice] = useState<VoiceState>({ thinking: false, text: "" });
   const [isStreaming, setIsStreaming] = useState(false);
-  /** Local opening choreography (scripted say + gesture) — not the live agent. */
-  const [openingBusy, setOpeningBusy] = useState(false);
-  const openingGenRef = useRef<Generation>({ value: 0 });
+  /** Local choreography (opening / beatIntro) — not the live agent. */
+  const [localBusy, setLocalBusy] = useState(false);
+  /** Chips offered after a local scene (e.g. beatIntro → "Okay, map it"). */
+  const [localChips, setLocalChips] = useState<ComposerChip[] | null>(null);
+  const localGenRef = useRef<Generation>({ value: 0 });
   const [error, setError] = useState<string | null>(null);
   /** True while the diagnostician composes the read-back (after agent_handoff). */
   const [composing, setComposing] = useState(false);
@@ -100,19 +107,50 @@ export function useAgentRoomStream() {
     sessionRef.current = readOrCreate(ss, SESSION_KEY, "sess");
   }, []);
 
-  const playOpening = useCallback(() => {
-    void playOpeningChoreography(
-      { clearInk, say: inkLine, gesture: drawGesture, setBusy: setOpeningBusy },
-      openingGenRef.current,
-    );
-  }, [clearInk, inkLine, drawGesture]);
+  const localCtx = useCallback(
+    () => ({
+      clearInk,
+      say: inkLine,
+      gesture: drawGesture,
+      setBusy: setLocalBusy,
+    }),
+    [clearInk, inkLine, drawGesture],
+  );
 
-  useEffect(() => scheduleOpeningChoreography(playOpening), [playOpening]);
+  const playOpening = useCallback(() => {
+    setLocalChips(null);
+    void playOpeningChoreography(localCtx(), localGenRef.current);
+  }, [localCtx]);
+
+  const playBeatIntro = useCallback(() => {
+    localGenRef.current.value += 1; // cut opening or any in-flight local scene
+    setLocalChips(null);
+    const scene = playBeatIntroChoreography(localCtx(), localGenRef.current);
+    // `playScene` bumps `gen.value` synchronously before its first await, so this
+    // captures *this* run's generation. If the visitor sends / replays mid-scene,
+    // `playScene` bails early but still resolves — without this guard the stale
+    // "Okay, map it" chip would re-appear over the live turn the visitor moved to.
+    const myGen = localGenRef.current.value;
+    void scene.then(() => {
+      if (localGenRef.current.value !== myGen) return; // superseded by send/reset
+      setLocalChips(
+        BEAT_INTRO_AGENT_CHIPS.map((c) => ({
+          label: c.label,
+          lead: c.lead,
+          onSelect: () => void sendMessageRef.current(c.utterance),
+        })),
+      );
+    });
+  }, [localCtx]);
+
+  const sendMessageRef = useRef<(raw: string) => void>(() => {});
+
+  useEffect(() => scheduleLocalChoreography(playOpening), [playOpening]);
 
   const reset = useCallback(() => {
     abortRef.current?.abort();
     abortRef.current = null;
-    openingGenRef.current.value += 1; // cut any in-flight opening scene
+    localGenRef.current.value += 1; // cut any in-flight local scene
     historyRef.current = [];
     sessionRef.current = makeId("sess");
     if (typeof window !== "undefined") {
@@ -125,7 +163,8 @@ export function useAgentRoomStream() {
     setError(null);
     setComposing(false);
     setIsStreaming(false);
-    setOpeningBusy(false);
+    setLocalBusy(false);
+    setLocalChips(null);
     setAgentChips(null); // back to the static on-ramp
     resetDiscuss(); // back to Guide; drop any Discuss transcript
     playOpening();
@@ -134,10 +173,11 @@ export function useAgentRoomStream() {
   const sendMessage = useCallback(
     async (raw: string) => {
       const text = raw.trim();
-      if (!text || isStreaming || openingBusy) return;
+      if (!text || isStreaming || localBusy) return;
 
-      openingGenRef.current.value += 1; // visitor acted — cut the opening scene
-      setOpeningBusy(false);
+      localGenRef.current.value += 1; // visitor acted — cut local choreography
+      setLocalBusy(false);
+      setLocalChips(null);
 
       const inDiscuss = phaseRef.current === "discuss";
 
@@ -317,7 +357,7 @@ export function useAgentRoomStream() {
     },
     [
       isStreaming,
-      openingBusy,
+      localBusy,
       drawGesture,
       clearVoice,
       beginStream,
@@ -328,25 +368,36 @@ export function useAgentRoomStream() {
     ],
   );
 
-  // Composer chips. They step aside inside a reality-check beat (the beat
-  // carries its own answer chips). Otherwise the agent's `suggest` chips
-  // (`agentChips`) win when offered; the static on-ramp is the fallback. Each
-  // sends its utterance through the agent.
+  // Composer chips. Beat screen carries its own answer chips. Local choreography
+  // may offer follow-up chips (beatIntro). Agent `suggest` chips win next; then
+  // the static on-ramp with PAR-02 routing (LOCAL beatIntro vs AGENT utterance).
   const suggestions: ComposerChip[] =
     screen.kind === "component" && screen.component === "beat"
       ? []
-      : (agentChips ??
-        DEFAULT_SUGGESTIONS.map((s) => ({
-          label: s.label,
-          lead: s.lead,
-          onSelect: () => sendMessage(s.say),
-        })));
+      : (localChips ??
+        agentChips ??
+        DEFAULT_SUGGESTIONS.map((s) => {
+          const route = resolveStreamChipRoute(s);
+          return {
+            label: s.label,
+            lead: s.lead,
+            onSelect: () => {
+              if (route.kind === "local" && route.scene === "beatIntro") {
+                playBeatIntro();
+              } else {
+                void sendMessage(route.kind === "agent" ? route.utterance : s.say);
+              }
+            },
+          };
+        }));
+
+  sendMessageRef.current = (raw) => void sendMessage(raw);
 
   return {
     screen,
     voice,
     suggestions,
-    isStreaming: isStreaming || openingBusy,
+    isStreaming: isStreaming || localBusy,
     composing,
     error,
     sendMessage,

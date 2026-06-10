@@ -99,7 +99,7 @@ function AgentRoomView({
 }
 
 /**
- * Stub container — local scene runner, no network (default, this pack). Renders
+ * Stub container — local scene runner, no network (offline fallback). Renders
  * the Ink Band screen registry; everything scrolls except the reality-check beat,
  * and only `home` is the centered, margin-rule-free sheet.
  */
@@ -174,8 +174,8 @@ function StreamRoom() {
  * so the stub hook can drive the ink layer. Dispatches on the build-time
  * `AGENT_ROOM_MODE` flag (constant per render → each branch's hook is called
  * unconditionally within its own component, no rules-of-hooks violation, and
- * stub mode never mounts the stream hook). Defaults to `"stub"`; set
- * `NEXT_PUBLIC_AGENT_ROOM_MODE=stream` for live.
+ * stub mode never mounts the stream hook). Defaults to `"stream"`; set
+ * `NEXT_PUBLIC_AGENT_ROOM_MODE=stub` for offline.
  */
 export function AgentRoom() {
   return (

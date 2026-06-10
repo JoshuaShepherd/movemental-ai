@@ -18,6 +18,13 @@ blank). `stub` remains the permanent **offline fallback** — set
 records the original AF-01 default (`stub`) and is kept as history. See
 [INT-07](../../../docs/build/prompts/integration-agent-backend/07-e2e-live-and-fallback.md) §10.
 
+**Amended 2026-06-10 (PAR-01): Local Choreography Layer in stream mode.**
+Deterministic beats (`OPENING`, `BEAT_INTRO`) run client-side without SSE on
+load and REPLAY. Handoff to the LLM on the first AGENT-classified composer
+action. Policy: [`docs/build/agent-room-handoff.md`](../../../docs/build/agent-room-handoff.md);
+matrix: [`docs/build/agent-room-stub-stream-parity-matrix.md`](../../../docs/build/agent-room-stub-stream-parity-matrix.md).
+Fallback on engine error: **Option A** (env-only stub; no runtime degrade).
+
 ## Context
 
 Two designs currently collide in `src/components/agent-room/`:

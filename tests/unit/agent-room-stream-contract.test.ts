@@ -105,3 +105,26 @@ describe("validateComponentProps (invalid props → null → screen unchanged)",
     expect(validateComponentProps("path", {})).toEqual({});
   });
 });
+
+describe("beat → readback SSE fixture (PAR-03 contract)", () => {
+  it("parses a minimal beat-answer → next-beat sequence", () => {
+    const events = [
+      '{"type":"ink_gesture","kind":"circle","target":"[data-oi=\\"1\\"]"}',
+      '{"type":"text_delta","delta":"So the picture is partial."}',
+      '{"type":"ui_render","surface":"screen","component":"beat","props":{"beatId":"reality","question":"Is AI already being used?","options":["Yes","Some","No"],"progress":{"step":2,"total":6}}}',
+      '{"type":"ink_gesture","kind":"arrow","target":"#opts"}',
+    ];
+    const chunks = events.map((e) => parseStreamChunk(e)).filter(Boolean);
+    expect(chunks).toHaveLength(4);
+    expect(chunks[0]).toMatchObject({ type: "ink_gesture", kind: "circle" });
+    expect(chunks[2]).toMatchObject({ type: "ui_render", component: "beat" });
+  });
+
+  it("parses agent_handoff after final beat (readback path)", () => {
+    expect(
+      parseStreamChunk(
+        '{"type":"agent_handoff","from":"room-host","to":"room-diagnostician","reason":"reality_check_complete"}',
+      ),
+    ).toMatchObject({ type: "agent_handoff", to: "room-diagnostician" });
+  });
+});

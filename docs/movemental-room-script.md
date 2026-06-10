@@ -10,10 +10,10 @@ The suggested copy under each line is what's **in the repo today**. Change any o
 
 | Mode | Default? | What runs |
 | --- | --- | --- |
-| **`stub`** | Yes | Local scene runner over `SCENES` data. **No network.** No LLM. |
-| **`stream`** | Opt-in (`NEXT_PUBLIC_AGENT_ROOM_MODE=stream`) | Live SSE agent via `/api/agent-room/stream`. Deferred integration (AF-90). |
+| **`stream`** | **Yes** (since INT-07) | Live SSE agent via `/api/agent-room/stream` + **local choreography** on load (opening ink; lead chip → `beatIntro`). |
+| **`stub`** | Opt-in (`NEXT_PUBLIC_AGENT_ROOM_MODE=stub`) | Full local scene runner over `SCENES` data. **No network.** No LLM. Permanent offline fallback. |
 
-This script describes **`stub` mode** — what ships on `/agent` today. Stream mode uses a different screen set and live model turns; do not assume this doc applies there until AF-90 lands.
+This script is the **stub performance SSOT** — every scene, line, and gesture the local runner plays. Stream mode runs the **LOCAL** subset client-side (see [`docs/build/agent-room-handoff.md`](build/agent-room-handoff.md) and the parity matrix) and delegates **AGENT**-classified moves to the live engine. Reconcile engine behavior separately via `movemental-ai-agents` `room-host.md`.
 
 ---
 
@@ -458,9 +458,9 @@ These appear in older script drafts or stream-mode plans but **do not exist** in
 
 ---
 
-## Stream mode (future — AF-90)
+## Stream mode (live — INT-07 + PAR pack)
 
-When `NEXT_PUBLIC_AGENT_ROOM_MODE=stream`, `/agent` uses `useAgentRoomStream` and the live engine in `movemental-ai-agents`. That path has additional screens (`network`, `audience`, `handoff_human`) and model-authored turns. Reconcile component IDs and copy there separately; this doc stays the **stub SSOT** until integration prompts say otherwise.
+When `NEXT_PUBLIC_AGENT_ROOM_MODE=stream` (default), `/agent` uses `useAgentRoomStream` and the live engine in `movemental-ai-agents`. Local choreography (`src/lib/agent-room/local-choreography.ts`) plays opening ink and the `beatIntro` bridge without network. All other visitor moves are **AGENT**-driven unless classified **STUB-ONLY** in [`docs/build/agent-room-stub-stream-parity-matrix.md`](build/agent-room-stub-stream-parity-matrix.md). Engine-only screens: `network`, `audience`, `handoff_human`.
 
 ---
 
