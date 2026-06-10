@@ -34,21 +34,27 @@
   border-bottom: 1px solid var(--color-ink-band-border);
 }
 .logo {
-  display: inline-flex;
-  align-items: center;
+  font-family: var(--font-ink-display);
+  font-size: clamp(1.15rem, 2.8vw, 1.32rem);
+  letter-spacing: -0.02em;
+  color: var(--color-ink-band-ink);
   background: none;
   border: 0;
   padding: 0;
   cursor: pointer;
-  transition: opacity 0.15s;
+  transition: color 0.15s;
 }
 .logo:hover {
-  opacity: 0.72;
+  color: var(--color-ink-band-blue);
 }
-.logoImg {
-  display: block;
-  height: clamp(1.35rem, 3.2vw, 1.75rem);
-  width: auto;
+.logoDot {
+  display: inline-block;
+  width: 0.32em;
+  height: 0.32em;
+  border-radius: 50%;
+  background: var(--color-ink-band-border);
+  margin: 0 0.02em 0.05em;
+  vertical-align: middle;
 }
 
 /* ===== screen (the stage) ===== */
@@ -1389,6 +1395,17 @@
 .vspan {
   display: inline-block;
   clip-path: inset(0 100% 0 0);
+}
+/* Discuss + streamed agent lines wrap instead of the single-line nib sweep, so
+   long replies stay on the page rather than clipping off the right edge. */
+.vlineWrap {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.vspanWrap {
+  display: block;
+  clip-path: none;
+  white-space: normal;
 }
 .nib {
   position: absolute;

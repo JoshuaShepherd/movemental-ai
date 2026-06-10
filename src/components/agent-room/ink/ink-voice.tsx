@@ -53,12 +53,15 @@ function VoiceLine({
   text,
   old,
   settled = false,
+  multiline = false,
   onDone,
 }: {
   id: number;
   text: string;
   old: boolean;
   settled?: boolean;
+  /** Discuss phase: let the line wrap (skip the single-line nib write-on). */
+  multiline?: boolean;
   /** Stable resolver — called with this line's id when the write-on finishes. */
   onDone: (id: number) => void;
 }) {
@@ -70,7 +73,9 @@ function VoiceLine({
     const nib = nibRef.current;
     if (!span) return;
 
-    if (settled || !canWriteOn()) {
+    // A wrapping line can't carry the horizontal clip sweep (the nib rides a
+    // single line) — show it fully and skip the animation.
+    if (settled || multiline || !canWriteOn()) {
       span.style.clipPath = "none";
       if (nib) nib.style.opacity = "0";
       onDone(id);
@@ -106,16 +111,18 @@ function VoiceLine({
     frameId = requestAnimationFrame(frame);
     return () => cancelAnimationFrame(frameId);
     // Animate once per line; id/text/onDone/settled are stable for a given line.
-  }, [id, text, settled, onDone]);
+  }, [id, text, settled, multiline, onDone]);
 
   return (
-    <div className={`${styles.vline} ${old ? styles.old : ""}`}>
-      <span ref={spanRef} className={styles.vspan}>
+    <div className={`${styles.vline} ${multiline ? styles.vlineWrap : ""} ${old ? styles.old : ""}`}>
+      <span ref={spanRef} className={`${styles.vspan} ${multiline ? styles.vspanWrap : ""}`}>
         {text}
       </span>
-      <svg ref={nibRef} className={styles.nib} viewBox="0 0 26 26" aria-hidden="true">
-        <g transform="rotate(-26 8 20)">{NIB}</g>
-      </svg>
+      {!multiline && (
+        <svg ref={nibRef} className={styles.nib} viewBox="0 0 26 26" aria-hidden="true">
+          <g transform="rotate(-26 8 20)">{NIB}</g>
+        </svg>
+      )}
     </div>
   );
 }
@@ -129,7 +136,7 @@ function VoiceLine({
  * it tracks growth without restarting; on commit the parent unmounts it and a
  * settled `VoiceLine` shows the final text. Reduced motion → full text, no nib.
  */
-function StreamVoiceLine({ text }: { text: string }) {
+function StreamVoiceLine({ text, multiline = false }: { text: string; multiline?: boolean }) {
   const spanRef = useRef<HTMLSpanElement>(null);
   const nibRef = useRef<SVGSVGElement>(null);
   const revealedRef = useRef(0);
@@ -139,7 +146,10 @@ function StreamVoiceLine({ text }: { text: string }) {
     const nib = nibRef.current;
     if (!span) return;
 
-    if (!canWriteOn()) {
+    // Wrapping line: the growing `text` itself is the live "typing" — no single-
+    // line clip sweep, no nib. Keeps long agent answers on the page instead of
+    // running off the right edge.
+    if (multiline || !canWriteOn()) {
       span.style.clipPath = "none";
       if (nib) nib.style.opacity = "0";
       return;
@@ -171,16 +181,18 @@ function StreamVoiceLine({ text }: { text: string }) {
     frameId = requestAnimationFrame(frame);
     return () => cancelAnimationFrame(frameId);
     // Mount once; the loop reads the live `text` width from the DOM each frame.
-  }, []);
+  }, [multiline]);
 
   return (
-    <div className={styles.vline}>
-      <span ref={spanRef} className={styles.vspan}>
+    <div className={`${styles.vline} ${multiline ? styles.vlineWrap : ""}`}>
+      <span ref={spanRef} className={`${styles.vspan} ${multiline ? styles.vspanWrap : ""}`}>
         {text}
       </span>
-      <svg ref={nibRef} className={styles.nib} viewBox="0 0 26 26" aria-hidden="true">
-        <g transform="rotate(-26 8 20)">{NIB}</g>
-      </svg>
+      {!multiline && (
+        <svg ref={nibRef} className={styles.nib} viewBox="0 0 26 26" aria-hidden="true">
+          <g transform="rotate(-26 8 20)">{NIB}</g>
+        </svg>
+      )}
     </div>
   );
 }
@@ -195,10 +207,13 @@ export function InkVoice({
   lines,
   onLineDone,
   forceOld = false,
+  multiline = false,
 }: {
   lines: VoiceLineItem[];
   onLineDone: (id: number) => void;
   forceOld?: boolean;
+  /** Discuss phase: let each line wrap instead of nowrap-clipping off the edge. */
+  multiline?: boolean;
 }) {
   return (
     <>
@@ -209,6 +224,7 @@ export function InkVoice({
           text={line.text}
           old={forceOld || i < lines.length - 1}
           settled={line.settled}
+          multiline={multiline}
           onDone={onLineDone}
         />
       ))}
@@ -217,6 +233,6 @@ export function InkVoice({
 }
 
 /** The live streaming voice line — keyed by the parent on the stream id. */
-export function StreamVoice({ text }: { text: string }) {
-  return <StreamVoiceLine text={text} />;
+export function StreamVoice({ text, multiline = false }: { text: string; multiline?: boolean }) {
+  return <StreamVoiceLine text={text} multiline={multiline} />;
 }

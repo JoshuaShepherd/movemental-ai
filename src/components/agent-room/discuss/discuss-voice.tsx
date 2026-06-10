@@ -20,7 +20,13 @@ import type { VoiceLineItem } from "../ink/use-ink-voice";
  * scrollback dump). It is not a transcript log; the *record* lives on the sheet
  * as marginalia (`DiscussMarginalia`), this band is the *live presence*.
  */
-export function DiscussVoice({ transcript }: { transcript: TranscriptTurn[] }) {
+export function DiscussVoice({
+  transcript,
+  multiline = false,
+}: {
+  transcript: TranscriptTurn[];
+  multiline?: boolean;
+}) {
   const [open, setOpen] = useState(false);
 
   const agent = transcript.filter((t) => t.role === "assistant");
@@ -56,7 +62,7 @@ export function DiscussVoice({ transcript }: { transcript: TranscriptTurn[] }) {
           ))}
         </div>
       )}
-      <InkVoice lines={lines} onLineDone={() => {}} />
+      <InkVoice lines={lines} onLineDone={() => {}} multiline={multiline} />
     </>
   );
 }

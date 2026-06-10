@@ -1,9 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
-import { MOVEMENTAL_LOGO_MAST } from "@/lib/brand/assets";
-
 import styles from "../ink-band.module.css";
 
 /**
@@ -20,14 +16,8 @@ export function Mast({ onHome }: { onHome: () => void }) {
         onClick={onHome}
         aria-label="Movemental — back to the start"
       >
-        <Image
-          src={MOVEMENTAL_LOGO_MAST.src}
-          alt={MOVEMENTAL_LOGO_MAST.alt}
-          width={MOVEMENTAL_LOGO_MAST.width}
-          height={MOVEMENTAL_LOGO_MAST.height}
-          className={styles.logoImg}
-          priority
-        />
+        m<span className={styles.logoDot} aria-hidden="true" />
+        vemental
       </button>
     </header>
   );

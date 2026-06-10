@@ -45,8 +45,8 @@ export function VoiceZone({
           <span className={styles.errorLine}>{error}</span>
         ) : (
           <>
-            <DiscussVoice transcript={transcript} />
-            {voiceStream && <StreamVoice key={voiceStream.id} text={voiceStream.text} />}
+            <DiscussVoice transcript={transcript} multiline />
+            {voiceStream && <StreamVoice key={voiceStream.id} text={voiceStream.text} multiline />}
             {voice.thinking && !voiceStream && (
               <div className={styles.thinking}>
                 <span className={styles.pulse} aria-hidden="true" />
@@ -76,7 +76,9 @@ export function VoiceZone({
               forceOld={Boolean(voiceStream) || showPulse}
             />
           )}
-          {voiceStream && <StreamVoice key={voiceStream.id} text={voiceStream.text} />}
+          {/* Streamed agent replies can be long — wrap them so they stay on the
+              page (the nib write-on is reserved for the short scripted lines). */}
+          {voiceStream && <StreamVoice key={voiceStream.id} text={voiceStream.text} multiline />}
           {showPulse && (
             <div className={styles.thinking}>
               <span className={styles.pulse} aria-hidden="true" />
@@ -84,7 +86,7 @@ export function VoiceZone({
           )}
           {/* Last-resort fallback if a turn produced text outside the ink layer. */}
           {!hasInk && !showPulse && voice.text && (
-            <div className={styles.vline}>{voice.text}</div>
+            <div className={`${styles.vline} ${styles.vlineWrap}`}>{voice.text}</div>
           )}
         </>
       )}
