@@ -884,11 +884,13 @@
   text-transform: uppercase;
   color: var(--color-ink-band-ink-muted);
   cursor: pointer;
+  /* Negative offset + padding expands the tap target toward 44px without
+     shifting where the crumb reads in the corner. */
   margin: 0;
-  padding: 0;
+  padding: 0.55rem 0.4rem;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -0.45rem;
+  right: -0.3rem;
   z-index: 1;
 }
 .crumb:hover {
@@ -1361,11 +1363,16 @@
   padding: 0.55rem clamp(1.25rem, 4vw, 2.5rem) 0.3rem;
   background: var(--color-ink-band-surface);
   border-top: 1px solid var(--color-ink-band-border);
+  /* The "say" line is nowrap (the nib rides a single-line clip reveal); keep a
+     too-long hand line from bleeding past the band on narrow phones. */
+  overflow: hidden;
 }
 .vline {
   font-family: var(--font-ink-hand);
   color: var(--color-ink-band-blue);
-  font-size: 1.74rem;
+  /* Fluid: the handwriting must stay on one line for the nib, so it scales down
+     on small screens instead of overflowing / clipping. */
+  font-size: clamp(1.3rem, 5.4vw, 1.74rem);
   line-height: 1.12;
   position: relative;
   white-space: nowrap;
@@ -1374,7 +1381,7 @@
 }
 .vline.old {
   opacity: 0.34;
-  font-size: 1.4rem;
+  font-size: clamp(1.05rem, 4.3vw, 1.4rem);
   transition:
     opacity 0.4s,
     font-size 0.4s;
@@ -1495,8 +1502,8 @@
 }
 .send {
   flex: 0 0 auto;
-  width: 2.45rem;
-  height: 2.45rem;
+  width: 2.75rem;
+  height: 2.75rem;
   border-radius: 50%;
   border: 0;
   background: var(--color-ink-band-ink);
@@ -2109,8 +2116,8 @@
 }
 .send {
   flex: 0 0 auto;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
   border-radius: 50%;
   border: 0;
   background: var(--color-ink-band-ink);
@@ -2345,5 +2352,72 @@
   }
   .composerDiscuss {
     animation: none;
+  }
+}
+
+/* ===== mobile / touch (≤640px) =====
+   The room is a fixed 100dvh shell (mast / screen / voice / composer). On phones
+   two things bite: (1) the only non-scroll screen — `beat` — can clip its stacked
+   options when the on-screen keyboard shrinks the viewport, and (2) the editorial
+   chips/arrows sit below the 44px touch minimum. Both are handled here only at the
+   mobile width so the desktop manuscript density is untouched. */
+@media (max-width: 640px) {
+  /* Every screen (incl. the centered `beat`) may scroll if its sheet is taller
+     than the squeezed stage — nothing gets cut off behind the keyboard. */
+  .screen {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* The agent's hand (voice) wraps on phones — a full sentence can't fit one
+     legible line, and the pen write-on (single-line clip sweep) is swapped for a
+     soft fade in ink-voice.tsx. Read top-down and grow/scroll instead of clipping. */
+  .voice {
+    justify-content: flex-start;
+    max-height: 32vh;
+    overflow-y: auto;
+  }
+  .vline {
+    white-space: normal;
+  }
+  .vspan {
+    /* No JS clip sweep on phones — make sure the line is visible before the
+       effect runs (avoids a first-paint flash of the hidden span). */
+    clip-path: none;
+  }
+  .vline:not(.old) .vspan {
+    animation: fadein 0.45s ease both;
+  }
+  .nib {
+    display: none;
+  }
+
+  /* Tap targets → 44px. Chips wrap text, so grow via min-height + centering. */
+  .chip,
+  .sug,
+  .cchip,
+  .opt {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .opt {
+    /* `.opt` is a full-width column item — keep its left-aligned label. */
+    display: flex;
+    justify-content: flex-start;
+  }
+  .faqJumpLink {
+    padding: 0.6rem 0.9rem;
+  }
+  .carouselBtn {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  /* The Discuss voice band grows to 3–5 lines on desktop; cap it tighter on
+     phones so the screen above keeps usable height. */
+  .voiceDiscuss {
+    min-height: 5.5rem;
+    max-height: 8rem;
   }
 }

@@ -98,12 +98,54 @@ export const LEADS: Record<CaptureKind, LeadPayload | null> = {
 };
 
 /* ===========================================================================
- * THE ONLY INTEGRATION SEAM — wire the real POST to the capture endpoint here.
+ * THE ONLY INTEGRATION SEAM — the real POST to the capture endpoint.
  * Everything above is presentation + in-memory state; this is the one network
- * boundary, deliberately a console stub for now.
+ * boundary. Maps the form payload (field keys from `CAPTURE_VARIANTS`) onto the
+ * `/api/agent-room/capture` shape and fails soft — never throws past the runner.
  * ======================================================================== */
-export function submitLead(kind: string, payload: LeadPayload): Promise<void> {
-  console.log("[lead]", kind, payload);
-  // TODO: POST to capture endpoint
-  return Promise.resolve();
+const CAPTURE_ENDPOINT = "/api/agent-room/capture";
+
+function asString(v: unknown): string | undefined {
+  return typeof v === "string" && v.trim() ? v.trim() : undefined;
+}
+
+export async function submitLead(kind: string, payload: LeadPayload): Promise<void> {
+  if (!isCaptureKind(kind)) {
+    console.warn("[lead] unknown capture kind; skipping", kind);
+    return;
+  }
+  const p = payload as Record<string, unknown>;
+  const email = asString(p.email);
+  if (!email) {
+    // Free/map variants require email; nothing to persist without it.
+    console.warn("[lead] capture missing email; skipping POST", kind);
+    return;
+  }
+
+  const body = {
+    kind,
+    email,
+    first: asString(p.first),
+    name: asString(p.name),
+    org: asString(p.org),
+    role: asString(p.role),
+    source: asString(p.source) ?? "agent-room",
+    sessionId: asString(p.sessionId),
+    anonId: asString(p.anonId),
+    mapAnswers: p.mapAnswers ?? undefined,
+    metadata: p.mapRead !== undefined ? { mapRead: p.mapRead } : undefined,
+  };
+
+  try {
+    const res = await fetch(CAPTURE_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    if (!res.ok) {
+      console.error("[lead] capture POST failed", kind, res.status);
+    }
+  } catch (err) {
+    console.error("[lead] capture POST error", kind, err);
+  }
 }

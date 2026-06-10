@@ -3110,6 +3110,34 @@ export const contactSubmissions = pgTable("contact_submissions", {
   created_at: createdAt("created_at"),
 });
 
+/**
+ * Agent-room capture log — one durable, tenant-scoped row for every capture the
+ * room produces (`map` / `paid` / `free` / `discuss`). The `submitLead` seam in
+ * `src/lib/agent-room/capture.ts` writes here via `/api/agent-room/capture`,
+ * which then fans out to the specialized tables (newsletter / inquiries / contact).
+ */
+export const agentRoomLeads = pgTable("agent_room_leads", {
+  id: id("id"),
+  organization_id: uuid("organization_id")
+    .notNull()
+    .references(() => organizations.id),
+  /** One of: map | paid | free | discuss. */
+  kind: text("kind").notNull(),
+  email: text("email").notNull(),
+  first_name: text("first_name"),
+  name: text("name"),
+  organization: text("organization"),
+  role: text("role"),
+  source: text("source"),
+  session_id: text("session_id"),
+  anon_id: text("anon_id"),
+  /** Assessment/readback answers carried in on the `map` capture. */
+  map_answers: jsonb("map_answers"),
+  metadata: jsonb("metadata"),
+  status: text("status").default("new"),
+  created_at: createdAt("created_at"),
+});
+
 export const leaderApplications = pgTable("leader_applications", {
   id: id("id"),
   name: text("name").notNull(),

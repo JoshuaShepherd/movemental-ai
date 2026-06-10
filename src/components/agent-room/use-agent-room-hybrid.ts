@@ -466,8 +466,11 @@ export function useAgentRoomHybrid(): AgentRoomController & {
 
   const onCaptureSubmit = useCallback(
     (kind: string, values: Record<string, string>) => {
+      const session = { sessionId: sessionRef.current, anonId: anonRef.current };
       const payload =
-        kind === "map" ? { ...values, mapAnswers: [...mapAnswersRef.current], mapRead } : values;
+        kind === "map"
+          ? { ...values, ...session, mapAnswers: [...mapAnswersRef.current], mapRead }
+          : { ...values, ...session };
       if (kind in LEADS) LEADS[kind as keyof typeof LEADS] = payload;
       void submitLead(kind, payload);
       const r = captureResolveRef.current;

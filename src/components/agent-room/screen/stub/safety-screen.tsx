@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import styles from "../../ink-band.module.css";
 import type { ScreenProps } from "./stub-screen";
 import { Crumb, LayerRow, Way } from "./chrome";
@@ -46,6 +48,14 @@ export function SafetyScreen({ onHome }: ScreenProps) {
           We’re not trying to talk you out of the free route. Both produce the same
           ratified Guidebook.
         </p>
+        <div className={styles.ways} style={{ marginTop: "0.75rem" }}>
+          <Link href="/field-guide" className={styles.chip}>
+            Get the free field guide →
+          </Link>
+          <Link href="/enroll" className={styles.chip}>
+            Set up my dashboard →
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -25,6 +25,19 @@ function prefersReducedMotion(): boolean {
 }
 
 /**
+ * The pen-nib write-on needs a single non-wrapping line (it measures the line's
+ * full width and sweeps a clip reveal across it). On phones the voice line wraps
+ * to stay legible (see the ≤640px block in ink-band.module.css), which is
+ * incompatible with that horizontal sweep — so there we skip the write-on and let
+ * the line show with the CSS fade instead. Matches the 640px CSS breakpoint.
+ */
+function canWriteOn(): boolean {
+  if (typeof window === "undefined") return false;
+  if (prefersReducedMotion()) return false;
+  return window.innerWidth > 640;
+}
+
+/**
  * One voice line — Caveat, ink-blue — that writes itself on. Ported from the
  * prototype `inkLine` rAF loop: a cosine-eased clip-path reveal of the text with
  * the pen nib riding the write head. Each line animates once on mount and calls
@@ -57,7 +70,7 @@ function VoiceLine({
     const nib = nibRef.current;
     if (!span) return;
 
-    if (settled || prefersReducedMotion()) {
+    if (settled || !canWriteOn()) {
       span.style.clipPath = "none";
       if (nib) nib.style.opacity = "0";
       onDone(id);
@@ -126,7 +139,7 @@ function StreamVoiceLine({ text }: { text: string }) {
     const nib = nibRef.current;
     if (!span) return;
 
-    if (prefersReducedMotion()) {
+    if (!canWriteOn()) {
       span.style.clipPath = "none";
       if (nib) nib.style.opacity = "0";
       return;

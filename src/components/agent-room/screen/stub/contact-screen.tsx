@@ -16,11 +16,11 @@ const TOPICS = [
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
 /**
- * The contact form (prototype `CONTACT_HTML` + `bindContactForm`) — **UI only**.
- * Topic-chip select, inline validation, and a mock submit → success state, all
- * client-side. It does **not** POST to `/api/contact` (deferred to a product
- * decision, per AF-90); the success toast is local, matching the prototype's
- * "No autoresponder" framing.
+ * The contact form (prototype `CONTACT_HTML` + `bindContactForm`).
+ * Topic-chip select, inline validation, then a real POST to `/api/contact`
+ * (which stores `contact_submissions` and sends the inbox notify + submitter
+ * ack). The local success state is the fallback path: if the network call
+ * fails, the visitor still sees confirmation rather than a dead form.
  */
 export function ContactScreen({ onHome }: ScreenProps) {
   const [topic, setTopic] = useState(0);
@@ -30,8 +30,9 @@ export function ContactScreen({ onHome }: ScreenProps) {
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<{ name?: boolean; email?: boolean; message?: boolean }>({});
   const [sentName, setSentName] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     const next = {
       name: !name.trim(),
@@ -42,9 +43,33 @@ export function ContactScreen({ onHome }: ScreenProps) {
       setErrors(next);
       return;
     }
-    // UI only — no network. The prototype reads `topic` here too.
     setErrors({});
-    setSentName(name.trim().split(/\s+/)[0]);
+    setSubmitting(true);
+
+    const firstName = name.trim().split(/\s+/)[0];
+    // Topic is intent, not audience; carry it in the message and pin the
+    // room's audience segment for the API enum.
+    const composedMessage = `[Topic: ${TOPICS[topic]}]\n\n${message.trim()}`;
+
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          organization: org.trim() || undefined,
+          audience_segment: "Organization / institution",
+          message: composedMessage,
+        }),
+      });
+    } catch (err) {
+      // Fallback: never strand the visitor on a failed network call.
+      console.error("[contact] POST failed; showing local confirmation", err);
+    } finally {
+      setSubmitting(false);
+      setSentName(firstName);
+    }
   };
 
   if (sentName) {
@@ -165,8 +190,8 @@ export function ContactScreen({ onHome }: ScreenProps) {
         </label>
 
         <div className={styles.cformFoot}>
-          <button type="submit" className={styles.cfSubmit}>
-            Send message <span aria-hidden="true">→</span>
+          <button type="submit" className={styles.cfSubmit} disabled={submitting}>
+            {submitting ? "Sending…" : "Send message"} <span aria-hidden="true">→</span>
           </button>
           <span className={styles.cfNote}>No autoresponder. A person on our team will reply.</span>
         </div>
