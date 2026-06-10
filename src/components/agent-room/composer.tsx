@@ -19,11 +19,14 @@ export type ComposerChip = { label: string; lead?: boolean; onSelect: () => void
 export const DEFAULT_PLACEHOLDER = "Type to the agent, or tap a suggestion…";
 export const BEAT_PLACEHOLDER = "Tap an answer above, or type your own…";
 
+/** Matches `SCENES.opening` suggest chips (prototype `scenes.js`). */
 export const DEFAULT_SUGGESTIONS: Suggestion[] = [
-  { label: "Show me where we stand", say: "Show me where we stand", lead: true },
-  { label: "What’s the path?", say: "What's the path?" },
+  { label: "Get a clear next AI step", say: "Get a clear next AI step", lead: true },
+  { label: "About Movemental", say: "About Movemental" },
   { label: "Who’s behind this?", say: "Who's behind this?" },
   { label: "What does it cost?", say: "What does it cost?" },
+  { label: "Read the FAQ", say: "Read the FAQ" },
+  { label: "Get in touch", say: "Get in touch" },
 ];
 
 /**

@@ -10,7 +10,10 @@ import { LeaderBand } from "./leader-band";
  * the leader portrait band. Shown centered with no margin rule (the `home` sheet
  * class). Text is byte-identical to `pages/home.html`.
  */
-export function HomeScreen({ onLeaderSelect, disabled }: ScreenProps) {
+export function HomeScreen({
+  onLeaderSelect,
+  disabled,
+}: Pick<ScreenProps, "onLeaderSelect" | "disabled">) {
   return (
     <div>
       <p className={styles.eyebrow}>Non-profit · Church · Institution · Leader</p>

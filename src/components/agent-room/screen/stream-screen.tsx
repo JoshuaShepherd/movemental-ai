@@ -3,8 +3,9 @@ import { submitLead } from "@/lib/agent-room/capture";
 import { toScreenId } from "@/lib/agent-room/screen-map";
 import type { ScreenState } from "../use-agent-room-stream";
 
-import { OpeningHero } from "./opening-hero";
+import { LEADERS } from "@/lib/agent-room/data/leaders";
 import { NetworkScreen } from "./network";
+import { HomeScreen } from "./stub/home-screen";
 import { AudienceScreen } from "./audience";
 import { HandoffHuman } from "./handoff-human";
 import { SCREEN_COMPONENTS } from "./stub/stub-screen";
@@ -33,7 +34,17 @@ export function StreamScreen({
   onReset: () => void;
   disabled?: boolean;
 }) {
-  if (state.kind === "opening") return <OpeningHero />;
+  if (state.kind === "opening") {
+    return (
+      <HomeScreen
+        onLeaderSelect={(i) => {
+          const leader = LEADERS[i];
+          if (leader) onSay(`Tell me about ${leader.name}`);
+        }}
+        disabled={disabled ?? false}
+      />
+    );
+  }
 
   const { component, props } = state;
 
