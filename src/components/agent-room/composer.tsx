@@ -24,9 +24,7 @@ export const BEAT_PLACEHOLDER = "Tap an answer above, or type your own…";
 export const DEFAULT_SUGGESTIONS: Suggestion[] = [
   { label: "Get a clear next AI step", say: "Get a clear next AI step", lead: true },
   { label: "About Movemental", say: "About Movemental" },
-  { label: "Who’s behind this?", say: "Who's behind this?" },
   { label: "What does it cost?", say: "What does it cost?" },
-  { label: "Read the FAQ", say: "Read the FAQ" },
   { label: "Get in touch", say: "Get in touch" },
 ];
 

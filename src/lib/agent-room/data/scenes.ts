@@ -11,6 +11,7 @@
  * (chips may target a not-yet-wired scene — a harmless no-op).
  */
 import type { Scene, SceneFactory } from "../acts";
+import { DISCUSS_ENABLED } from "../discuss";
 
 export const SCENES = {
   opening: [
@@ -23,9 +24,7 @@ export const SCENES = {
       suggest: [
         { label: "Get a clear next AI step", lead: true, to: "beatIntro" },
         { label: "About Movemental", to: "whatIs" },
-        { label: "Who’s behind this?", to: "whoBehind" },
         { label: "What does it cost?", to: "cost" },
-        { label: "Read the FAQ", to: "toFaq" },
         { label: "Get in touch", to: "talkToUs" },
       ],
     },
@@ -40,7 +39,7 @@ export const SCENES = {
       suggest: [
         { label: "Map where we actually stand", lead: true, to: "toBeat" },
         { label: "See the whole path", to: "toPath" },
-        { label: "Who’s behind this?", to: "whoBehind" },
+        { label: "What does it cost?", to: "cost" },
         { label: "Get in touch", to: "talkToUs" },
       ],
     },
@@ -55,9 +54,8 @@ export const SCENES = {
       suggest: [
         { label: "Map where we actually stand", lead: true, to: "toBeat" },
         { label: "See the whole path", to: "toPath" },
-        { label: "Read the FAQ", to: "toFaq" },
-        { label: "We can’t do either option yet — discuss?", to: "toDiscuss" },
         { label: "Get in touch", to: "talkToUs" },
+        { label: "Start with Safety (free)", to: "toSafety" },
       ],
     },
   ],
@@ -84,7 +82,7 @@ export const SCENES = {
     { say: "Connected to the leaders on the home page." },
     {
       suggest: [
-        { label: "I want simple next steps", lead: true, to: "toBeat" },
+        { label: "Map where we actually stand", lead: true, to: "toBeat" },
         { label: "About Movemental", to: "whatIs" },
         { label: "Talk to us", to: "talkToUs" },
       ],
@@ -99,7 +97,6 @@ export const SCENES = {
     {
       suggest: [
         { label: "Map where we actually stand", lead: true, to: "toBeat" },
-        { label: "About Movemental", to: "whatIs" },
         { label: "↺ Start over", to: "opening" },
       ],
     },
@@ -111,7 +108,7 @@ export const SCENES = {
     { say: "That network is the point." },
     {
       suggest: [
-        { label: "I want simple next steps", lead: true, to: "toBeat" },
+        { label: "Map where we actually stand", lead: true, to: "toBeat" },
         { label: "Back to the leaders", to: "opening" },
       ],
     },
@@ -120,8 +117,8 @@ export const SCENES = {
   // the diagnostic's audit register. Deliberately renders NO `beat` screen — just
   // two spoken lines (reframe + permission) on the existing calm sheet, then a
   // single lead chip into `toBeat`. ONLY `SCENES.opening`'s diagnostic chip routes
-  // here; visitors already oriented (whatIs/cost/leader/readback chips, "I want
-  // simple next steps") still go straight to `toBeat` with no intro.
+  // here; visitors already oriented (whatIs/cost/leader/readback chips, “Map
+  // where we actually stand”) still go straight to `toBeat` with no intro.
   beatIntro: [
     { clear: true },
     { say: "I’m not going to grade you. These six questions just show you where you already stand, so the next step is obvious instead of guessed." },
@@ -148,8 +145,10 @@ export const SCENES = {
     { say: "Almost everyone starts at the first step." },
     {
       suggest: [
-        { label: "I want simple next steps", lead: true, to: "toBeat" },
-        { label: "Our situation is more complicated than this", to: "toDiscuss" },
+        { label: "Map where we actually stand", lead: true, to: "toBeat" },
+        ...(DISCUSS_ENABLED
+          ? [{ label: "Our situation is more complicated than this", to: "toDiscuss" as const }]
+          : [{ label: "Show me Safety", to: "toSafety" as const }]),
         { label: "What does it cost?", to: "cost" },
       ],
     },
@@ -164,9 +163,10 @@ export const SCENES = {
       suggest: [
         { label: "Have us do it · $1,000", lead: true, to: "withUs" },
         { label: "Walk it free", to: "onOwn" },
-        { label: "What’s an AI charter?", to: "charter" },
         { label: "What’s involved?", to: "involved" },
-        { label: "I have a specific policy question", to: "toDiscuss" },
+        ...(DISCUSS_ENABLED
+          ? [{ label: "I have a policy question", to: "toDiscuss" as const }]
+          : [{ label: "I have a policy question", to: "talkToUs" as const }]),
       ],
     },
   ],
@@ -182,6 +182,10 @@ export const SCENES = {
     },
   ],
   involved: [
+    { say: "A short, agreed document. What you will and won’t do with AI." },
+    { wait: 200 },
+    { say: "Five plain parts your board can ratify." },
+    { wait: 200 },
     { say: "Two weeks. We start by reading your whole team." },
     { wait: 200 },
     { say: "Then we draft it with you. You ratify." },

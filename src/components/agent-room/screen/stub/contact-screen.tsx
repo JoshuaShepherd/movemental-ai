@@ -7,8 +7,8 @@ import type { ScreenProps } from "./stub-screen";
 import { Crumb } from "./chrome";
 
 const TOPICS = [
-  "Exploring whether this fits",
   "Starting with Safety",
+  "Exploring whether this fits",
   "Pricing or an engagement",
   "Something else",
 ];

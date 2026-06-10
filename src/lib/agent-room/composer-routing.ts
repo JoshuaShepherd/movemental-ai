@@ -29,9 +29,7 @@ export const BEAT_INTRO_AGENT_CHIPS: ReadonlyArray<{ label: string; utterance: s
 const STREAM_CHIP_ROUTES: Record<string, StreamChipRoute> = {
   "Get a clear next AI step": { kind: "local", scene: "beatIntro" },
   "About Movemental": { kind: "agent", utterance: "About Movemental" },
-  "Who’s behind this?": { kind: "agent", utterance: "Who's behind this?" },
   "What does it cost?": { kind: "agent", utterance: "What does it cost?" },
-  "Read the FAQ": { kind: "agent", utterance: "Read the FAQ" },
   "Get in touch": { kind: "agent", utterance: "Get in touch" },
 };
 

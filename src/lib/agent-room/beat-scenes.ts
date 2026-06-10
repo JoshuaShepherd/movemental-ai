@@ -10,6 +10,7 @@
  * `#rbphrase`).
  */
 import type { Scene } from "./acts";
+import { DISCUSS_ENABLED } from "./discuss";
 import { MAP_Q, cap, type MapRead } from "./data/map-q";
 
 export function beatScene(qi: number, oi: number, read: MapRead): Scene {
@@ -59,9 +60,9 @@ export function beatScene(qi: number, oi: number, read: MapRead): Scene {
       suggest: [
         { label: "Show me Safety", lead: true, to: "toSafety" },
         { label: "What comes after Safety?", to: "toPath" },
-        // INT-09 — post-readback Discuss on-ramp (design note §8). Highest-intent
-        // moment: the verdict just landed; some visitors want to talk it through.
-        { label: "Talk through what this means for us", to: "toDiscuss" },
+        ...(DISCUSS_ENABLED
+          ? [{ label: "Talk through what this means for us", to: "toDiscuss" as const }]
+          : [{ label: "Get in touch", to: "talkToUs" as const }]),
         { label: "↺ Start over", to: "opening" },
       ],
     },
