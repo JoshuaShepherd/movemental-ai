@@ -2,8 +2,13 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import {
+  playOpeningChoreography,
+  scheduleOpeningChoreography,
+} from "@/lib/agent-room/opening-choreography";
 import { parseSSEBuffer, type ComponentId } from "@/lib/agent-room/stream-chunk";
 import { validateComponentProps } from "@/lib/agent-room/component-props";
+import type { Generation } from "@/lib/agent-room/scene-runner";
 import { useInk } from "./agent-room-context";
 import { DEFAULT_SUGGESTIONS, type ComposerChip } from "./composer";
 import { useDiscussPhase } from "./use-discuss-phase";
@@ -56,7 +61,8 @@ export function useAgentRoomStream() {
   // INT-03 routes `text_delta` through the same Caveat ink voice the stub's `say`
   // uses (`beginStream`/`appendStream`/`commitStream`), so live and stub share one
   // visual voice instead of plain `voice.text`.
-  const { drawGesture, clearVoice, beginStream, appendStream, commitStream } = useInk();
+  const { inkLine, drawGesture, clearInk, clearVoice, beginStream, appendStream, commitStream } =
+    useInk();
   const discuss = useDiscussPhase();
   // Stable callbacks (so memoized handlers don't depend on the whole `discuss`
   // object, whose identity changes every render).
@@ -68,6 +74,9 @@ export function useAgentRoomStream() {
   const [screen, setScreen] = useState<ScreenState>({ kind: "opening" });
   const [voice, setVoice] = useState<VoiceState>({ thinking: false, text: "" });
   const [isStreaming, setIsStreaming] = useState(false);
+  /** Local opening choreography (scripted say + gesture) — not the live agent. */
+  const [openingBusy, setOpeningBusy] = useState(false);
+  const openingGenRef = useRef<Generation>({ value: 0 });
   const [error, setError] = useState<string | null>(null);
   /** True while the diagnostician composes the read-back (after agent_handoff). */
   const [composing, setComposing] = useState(false);
@@ -91,28 +100,44 @@ export function useAgentRoomStream() {
     sessionRef.current = readOrCreate(ss, SESSION_KEY, "sess");
   }, []);
 
+  const playOpening = useCallback(() => {
+    void playOpeningChoreography(
+      { clearInk, say: inkLine, gesture: drawGesture, setBusy: setOpeningBusy },
+      openingGenRef.current,
+    );
+  }, [clearInk, inkLine, drawGesture]);
+
+  useEffect(() => scheduleOpeningChoreography(playOpening), [playOpening]);
+
   const reset = useCallback(() => {
     abortRef.current?.abort();
     abortRef.current = null;
+    openingGenRef.current.value += 1; // cut any in-flight opening scene
     historyRef.current = [];
     sessionRef.current = makeId("sess");
     if (typeof window !== "undefined") {
       window.sessionStorage.setItem(SESSION_KEY, sessionRef.current);
     }
     setScreen({ kind: "opening" });
+    clearInk();
     clearVoice();
     setVoice({ thinking: false, text: "" });
     setError(null);
     setComposing(false);
     setIsStreaming(false);
+    setOpeningBusy(false);
     setAgentChips(null); // back to the static on-ramp
     resetDiscuss(); // back to Guide; drop any Discuss transcript
-  }, [clearVoice, resetDiscuss]);
+    playOpening();
+  }, [clearInk, clearVoice, playOpening, resetDiscuss]);
 
   const sendMessage = useCallback(
     async (raw: string) => {
       const text = raw.trim();
-      if (!text || isStreaming) return;
+      if (!text || isStreaming || openingBusy) return;
+
+      openingGenRef.current.value += 1; // visitor acted — cut the opening scene
+      setOpeningBusy(false);
 
       const inDiscuss = phaseRef.current === "discuss";
 
@@ -292,6 +317,7 @@ export function useAgentRoomStream() {
     },
     [
       isStreaming,
+      openingBusy,
       drawGesture,
       clearVoice,
       beginStream,
@@ -320,7 +346,7 @@ export function useAgentRoomStream() {
     screen,
     voice,
     suggestions,
-    isStreaming,
+    isStreaming: isStreaming || openingBusy,
     composing,
     error,
     sendMessage,
