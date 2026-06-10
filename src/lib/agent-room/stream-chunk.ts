@@ -9,19 +9,37 @@
  *
  * This is protocol only (no React, no visual styling). The room shell, render
  * components, stream hook, and proxy route are built separately once the
- * prototype design is in place (Concept Modern tokens).
+ * prototype design is in place (Ink Band tokens).
  */
 import { z } from "zod";
 
-/** Closed set of components the agent may render to the screen — the honesty rail. */
+/**
+ * Closed set of components the agent may render to the screen — the honesty rail.
+ *
+ * INT-01 (Decision A): mirrors the engine `ComponentId` (`ai/types.ts`) exactly.
+ * The first 13 are the Ink Band `ScreenId` set (`acts.ts`); the last 3 are
+ * engine-extra (no Ink Band screen). `screen-map.ts` is the ComponentId ↔
+ * ScreenId SSOT — keep all three (this list, the engine enum, `screen-map`) in
+ * lockstep; a mismatch fails compile in `screen-map.ts`.
+ */
 export const COMPONENT_IDS = [
-  "reality_check_beat",
+  // Ink Band screen set (1:1 with `ScreenId`)
+  "home",
+  "beat",
   "readback",
+  "safety",
+  "confirm",
   "path",
+  "founders",
+  "leader",
+  "about",
+  "contact",
   "pricing",
+  "faq",
+  "capture",
+  // Engine-extra (no Ink Band screen; rendered directly by the client)
   "network",
   "audience",
-  "founders",
   "handoff_human",
 ] as const;
 
@@ -60,6 +78,30 @@ export const streamChunkSchema = z.discriminatedUnion("type", [
     // Validated against the per-component prop schema by the renderer, not here.
     props: z.unknown(),
     replace: z.boolean().optional(),
+  }),
+  // INT-04: a hand-ink gesture over a target selector on the active screen.
+  // Mirrors the engine `ink_gesture` chunk; the client draws via `drawGesture`,
+  // a missing/stale `target` is a safe no-op.
+  z.object({
+    type: z.literal("ink_gesture"),
+    kind: z.enum(["underline", "circle", "arrow"]),
+    target: z.string(),
+  }),
+  // INT-05: tappable suggestion chips — the agent's `suggest` act. Each chip's
+  // `value` is sent back as the next user turn when tapped (chips route to the
+  // agent, never a local scene). Mirrors the engine `suggest` chunk; the engine
+  // `suggest_chips` tool caps the count — the client just validates shape.
+  z.object({
+    type: z.literal("suggest"),
+    chips: z
+      .array(
+        z.object({
+          label: z.string(),
+          lead: z.boolean().optional(),
+          value: z.string(),
+        }),
+      )
+      .min(1),
   }),
   z.object({
     type: z.literal("done"),

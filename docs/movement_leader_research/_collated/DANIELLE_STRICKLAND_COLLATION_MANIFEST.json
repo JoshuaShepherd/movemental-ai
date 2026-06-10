@@ -1,0 +1,34 @@
+{
+  "slug": "danielle-strickland",
+  "version": "2.0.0",
+  "generated_at": "2026-06-09",
+  "mode": "cold-start research (prior on-disk folder held only stub README + _tracker.md)",
+  "subject_confirmation": "Danielle Jayne Strickland (b. 1972) — Canadian author/speaker/justice advocate, former Salvation Army Major; founder of Boundless Communications Inc. (danielle@boundlesscom.ca), Infinitum, Amplify Peace, Brave Global. NOT UFC fighter Sean Strickland or other Strickland namesakes.",
+  "sources": [
+    { "url": "https://www.daniellestrickland.com/about", "verifies": ["Identity", "Distribution inventory"] },
+    { "url": "https://www.daniellestrickland.com/initiatives", "verifies": ["Frameworks", "Organizational affiliations"] },
+    { "url": "https://en-academic.com/dic.nsf/enwiki/11611820", "verifies": ["Identity", "Timeline", "Bibliography"] },
+    { "url": "https://caringmagazine.org/daniellestricklandprofile/", "verifies": ["Identity", "Voice fingerprint", "Theological positioning"] },
+    { "url": "https://www.premierchristianity.com/home/profile-danielle-strickland/2250.article", "verifies": ["Identity", "Editorial bio"] },
+    { "url": "https://salvationist.ca/articles/2017/03/freedom-fighter-danielle-strickland/", "verifies": ["Timeline", "Voice fingerprint"] },
+    { "url": "https://outreachmagazine.com/interviews/41083-danielle-strickland-discomfort-is-a-tool-of-awakening-part-1.html", "verifies": ["Frameworks", "Voice fingerprint"] },
+    { "url": "https://chvnradio.com/articles/danielle-strickland-resigns-from-the-meeting-house", "verifies": ["Timeline", "Constructive tensions"] },
+    { "url": "https://infinitumlife.com/", "verifies": ["Frameworks"] },
+    { "url": "https://amplifypeace.com/", "verifies": ["Frameworks", "Organizational affiliations"] },
+    { "url": "https://braveglobal.org/about", "verifies": ["Organizational affiliations"] },
+    { "url": "https://www.amazon.com/Need-Know-Empowering-Leadership-Essential/dp/1955142572", "verifies": ["Bibliography", "Network graph"] },
+    { "url": "https://www.amazon.com/Reframation-Seeing-Mission-Through-Reenchanted/dp/0998639338", "verifies": ["Bibliography", "Network graph"] },
+    { "url": "https://www.amazon.com/Better-Together-Divide-Transform-Future/dp/0785230157", "verifies": ["Bibliography", "Endorsements"] },
+    { "url": "https://www.amazon.com/Ultimate-Exodus-Finding-Freedom-Enslaves/dp/163146647X", "verifies": ["Bibliography", "Identity"] },
+    { "url": "https://www.goodreads.com/author/show/4315388.Danielle_Strickland", "verifies": ["Bibliography", "Reach metrics"] },
+    { "url": "https://podcasts.apple.com/us/podcast/right-side-up-podcast-with-danielle-strickland/id1166362366", "verifies": ["Reach metrics", "Network graph"] },
+    { "url": "https://www.instagram.com/daniellejstrickland/", "verifies": ["Reach metrics"] },
+    { "url": "https://x.com/djstrickland", "verifies": ["Reach metrics"] },
+    { "url": "https://www.nextleadership.co.uk/metamorph", "verifies": ["Network graph (endorsement given)"] },
+    { "url": "https://globalleadership.org/author/danielle-strickland/", "verifies": ["Reach metrics"] }
+  ],
+  "superseded_files": [
+    "docs/movement_leader_research/danielle-strickland/README.md",
+    "docs/movement_leader_research/danielle-strickland/_tracker.md"
+  ]
+}

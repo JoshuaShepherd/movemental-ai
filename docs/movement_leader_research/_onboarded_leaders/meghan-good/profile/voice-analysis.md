@@ -59,7 +59,7 @@ Where JR Woodward is a diagnostic framework-builder and Alan Hirsch is a prophet
 
 - **Literary allusions and cultural references**: The Buechner award is diagnostic — she reads widely. Recommends Nathan Hatch on religious democratization; interviews Barbara Brown Taylor on embodied faith; engages Marva Dawn on divine weakness. She brings cultural, historical, and literary references into theological essays without footnoting them into academic stiffness.
 
-## Sample Passages
+## Representative quotes
 
 **On the Jesus-centered hermeneutic:**
 > "Jesus is not the softer side of God that gets averaged [with divine judgment]. Instead, Jesus represents the fullness of God and functions as Scripture's authoritative interpreter." — via [Anabaptist World, planning-an-anabaptist-bible](https://anabaptistworld.org/planning-an-anabaptist-bible/)

@@ -1,4 +1,4 @@
-import styles from "../agent-room.module.css";
+import styles from "../ink-band.module.css";
 
 /** Churches / nonprofits / seminaries (static Phase-1 copy). */
 export function AudienceScreen() {

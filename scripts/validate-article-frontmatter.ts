@@ -49,6 +49,7 @@ const EXCLUDED_SLUGS = new Set([
 
 function listSlugFiles(): Array<{ slug: string; file: string }> {
   const rows: Array<{ slug: string; file: string }> = [];
+  if (!fs.existsSync(ARTICLES_DIR)) return rows; // no articles dir yet — nothing to validate
   for (const name of fs.readdirSync(ARTICLES_DIR)) {
     if (name.endsWith(".md") && !EXCLUDED_SLUGS.has(name.replace(/\.md$/, ""))) {
       if (name.startsWith("_")) continue; // skip inventory / internal markdown

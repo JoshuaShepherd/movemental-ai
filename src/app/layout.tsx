@@ -1,16 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import {
-  Inter,
-  Newsreader,
-  Playfair_Display,
-  IBM_Plex_Mono,
-  Homemade_Apple,
-} from "next/font/google";
-import { headers } from "next/headers";
-
-import { SiteFooter } from "@/components/nav/site-footer";
-import { SiteHeader } from "@/components/nav/site-header";
-import { SiteHeaderCta } from "@/components/nav/site-header-cta";
+import { Inter, Playfair_Display, IBM_Plex_Mono } from "next/font/google";
 import { canonicalSiteOrigin } from "@/lib/site-url";
 
 import { Providers } from "./providers";
@@ -23,46 +12,20 @@ const inter = Inter({
   display: "swap",
 });
 
-/**
- * Newsreader — italic-forward editorial serif used for display headings and
- * emphasized text across the public site and authenticated shells. Replaces
- * Replaces Instrument Serif as the primary serif (Phase 01 chrome rationalization).
- * The CSS variable name `--font-serif-display` is preserved so Tailwind
- * aliases (`font-serif`, `font-headline`, `font-serif-display`) continue to
- * resolve without changes elsewhere in the codebase.
- */
-const newsreader = Newsreader({
-  variable: "--font-serif-display",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-/**
- * Oatmeal / Paper Edition faces — display (Playfair Display), machinery
- * (IBM Plex Mono), and hand marginalia (Homemade Apple) for the imported
- * Oatmeal/Paper design system (the `.oat-surface` scope, e.g. the /agent room).
- * Loaded as CSS variables only — next/font fetches each face on demand when an
- * `.oat-surface` subtree actually paints it, so the Inter-first main site is
- * unaffected. Wired into `--font-oat-*` tokens in globals.css.
- */
+/** Ink Band display face — Playfair Display for headings in the agent room. */
 const playfairDisplay = Playfair_Display({
-  variable: "--font-oat-display-face",
+  variable: "--font-ink-display-face",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
   display: "swap",
 });
+
+/** Ink Band machinery face — IBM Plex Mono for labels and metadata. */
 const ibmPlexMono = IBM_Plex_Mono({
-  variable: "--font-oat-mono-face",
+  variable: "--font-ink-mono-face",
   subsets: ["latin"],
   weight: ["400", "500"],
-  display: "swap",
-});
-const homemadeApple = Homemade_Apple({
-  variable: "--font-oat-hand-face",
-  subsets: ["latin"],
-  weight: "400",
   display: "swap",
 });
 
@@ -87,8 +50,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  /** Light paper (`--background`); `ThemeColorSync` in `providers.tsx` updates for dark / saved theme. */
-  themeColor: "#faf6ee",
+  themeColor: "#fbfaf6",
 };
 
 export default async function RootLayout({
@@ -96,15 +58,10 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const h = await headers();
-  const shell = h.get("x-movemental-shell");
-  const hideMarketingChrome =
-    shell === "dashboard" || shell === "invite" || shell === "room";
-
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${newsreader.variable} ${playfairDisplay.variable} ${ibmPlexMono.variable} ${homemadeApple.variable} h-full min-h-dvh antialiased`}
+      className={`${inter.variable} ${playfairDisplay.variable} ${ibmPlexMono.variable} h-full min-h-dvh antialiased`}
       suppressHydrationWarning
     >
       <body className="flex min-h-dvh flex-col bg-background text-foreground">
@@ -112,16 +69,9 @@ export default async function RootLayout({
           <a href="#main" className="skip-link">
             Skip to content
           </a>
-          {!hideMarketingChrome ? (
-            <SiteHeader
-              authDesktopCta={<SiteHeaderCta variant="desktop" />}
-              authMobileCta={<SiteHeaderCta variant="mobile" />}
-            />
-          ) : null}
           <main id="main" className="flex min-w-0 flex-1 flex-col">
             {children}
           </main>
-          {!hideMarketingChrome ? <SiteFooter /> : null}
         </Providers>
       </body>
     </html>

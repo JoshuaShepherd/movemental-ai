@@ -1,5 +1,5 @@
 import type { HandoffHumanProps } from "@/lib/agent-room/component-props";
-import styles from "../agent-room.module.css";
+import styles from "../ink-band.module.css";
 
 /**
  * The honesty rail's landing place: when a request is outside the domain, the

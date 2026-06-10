@@ -34,3 +34,15 @@ Preliminary voice markers extracted from corpus surface (essays, interviews, key
 | Language | English, dense with neologism | English, hortatory | Bilingual, named |
 
 She does **not** overlap with Hirsch's voice — she complements it. That is the point.
+
+## Representative quotes
+
+> "Afro-Boricua theologian, educator, and activist" — self-description (profile/identity.md)
+
+> Passion2Plant exists to "disrupt oppressive systems and cultivate faith spaces of transformation." — Passion2Plant mission (profile/identity.md)
+
+> She founded Passion2Plant in response to church planting networks that "did not prepare me for the real challenges I faced as a BIPOC woman planting a church in a community marked by poverty, systemic neglect, and food insecurity." — narrated founding account (profile/identity.md)
+
+> "Prophetic Legacy: Latina Voices Shaping Church and Society" — Mama Leo Lecture keynote title, Union Theological Seminary, 2024
+
+> "The Women are Warriors" — chapter title, *Latino Religions and Civic Activism in the United States* (Oxford UP)

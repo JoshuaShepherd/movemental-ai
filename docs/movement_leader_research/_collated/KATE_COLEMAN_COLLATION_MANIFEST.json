@@ -1,0 +1,32 @@
+{
+  "slug": "kate-coleman",
+  "version": "2.0.0",
+  "generated_at": "2026-06-09",
+  "mode": "cold-start (web research; no on-disk per-topic source files)",
+  "subject_confirmation": "Rev. Dr. Kate (Owusua) Coleman — UK Baptist minister, womanist theologian, founder/director of Next Leadership (nextleadership.co.uk); author of 7 Deadly Sins of Women in Leadership and Metamorph. NOT the Bay Area investigative journalist Kate Coleman (1942-2024), nor Kate Markin Coleman (US nonprofit / nextleadership.org).",
+  "sources": [
+    { "url": "https://www.nextleadership.co.uk/about-us", "verifies": ["Identity", "Roles", "Reach metrics"] },
+    { "url": "https://www.nextleadership.co.uk/metamorph", "verifies": ["Bibliography", "Endorsements", "Frameworks"] },
+    { "url": "https://www.nextleadership.co.uk/7ds", "verifies": ["Frameworks", "Distribution inventory"] },
+    { "url": "https://www.nextleadership.co.uk/insights/go-where-youre-really-needed", "verifies": ["Voice fingerprint", "Theological positioning"] },
+    { "url": "https://www.baptist.org.uk/Articles/547636/Kate_Coleman.aspx", "verifies": ["Identity", "Timeline", "Organizational affiliations"] },
+    { "url": "https://www.baptist.org.uk/Articles/631196/Seven_Deadly_Sins.aspx", "verifies": ["Bibliography"] },
+    { "url": "https://www.baptist.org.uk/Articles/703338/Metamorph_Transforming_Your.aspx", "verifies": ["Voice fingerprint", "Frameworks"] },
+    { "url": "https://www.premierchristianity.com/interviews/kate-coleman-when-the-spirit-is-left-to-move-women-rise-up-to-lead/16536.article", "verifies": ["Identity", "Voice fingerprint", "Timeline"] },
+    { "url": "https://www.eauk.org/idea/60-seconds-with-kate-coleman.cfm", "verifies": ["Editorial bio", "Voice fingerprint"] },
+    { "url": "https://www.eauk.org/author/kate-coleman", "verifies": ["Organizational affiliations", "Distribution inventory"] },
+    { "url": "https://wtctheology.org.uk/theomisc/female-principal-pastor-theologian/", "verifies": ["Identity", "Bibliography"] },
+    { "url": "https://israelolofinjana.wordpress.com/2015/01/08/emerging-african-theologians-in-britain/", "verifies": ["Identity", "Heritage", "Distribution inventory"] },
+    { "url": "https://www.taylorfrancis.com/chapters/edit/10.4324/9781315710945-21/another-kind-black-kate-coleman", "verifies": ["Bibliography"] },
+    { "url": "https://find-and-update.company-information.service.gov.uk/company/07504862/officers", "verifies": ["Identity", "Timeline", "Organizational affiliations"] },
+    { "url": "https://www.cbeinternational.org/resource/7-deadly-sins-women-leadership-2/", "verifies": ["Frameworks"] },
+    { "url": "https://www.ministrymagazine.org/archive/2012/01/7-deadly-sins-of-women-in-leadership", "verifies": ["Frameworks"] },
+    { "url": "https://www.modemuk.org/2025/04/08/book-review-kate-colemans-new-book-metamorph/", "verifies": ["Frameworks"] },
+    { "url": "https://www.christianbook.com/leadership-overcome-defeating-behavior-ministry-revised/kate-coleman/9780310119982/pd/107089EB", "verifies": ["Bibliography"] },
+    { "url": "https://www.goodreads.com/book/show/11505423-7-deadly-sins-of-women-in-leadership", "verifies": ["Reach metrics"] },
+    { "url": "https://www.globalleadership.uk/speaker/kate-coleman", "verifies": ["Reach metrics"] },
+    { "url": "https://exponential.org/person/rev-dr-kate-coleman/", "verifies": ["Organizational affiliations", "Reach metrics"] },
+    { "url": "https://www.berkeleyside.org/2024/04/08/kate-coleman-berkeley-journalist-swimmer-hostess-chez-panisse", "verifies": ["Disambiguation"] },
+    { "url": "https://www.advancedleadership.harvard.edu/2017-fellows-and-partners/kate-coleman", "verifies": ["Disambiguation"] }
+  ]
+}

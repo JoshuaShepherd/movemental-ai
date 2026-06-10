@@ -1,0 +1,33 @@
+{
+  "slug": "ralph-moore",
+  "version": "2.0.0",
+  "generated_at": "2026-06-09",
+  "mode": "cold-start research (prior on-disk folder held only stub README + _tracker.md)",
+  "subject_confirmation": "Ralph Moore — founder of the Hope Chapel church-multiplication movement (Foursquare roots; Hermosa Beach 1971 -> Kaneohe Bay -> Honolulu); Exponential 'church multiplication catalyzer'; wife Ruby, son Carl (successor). NOT any athlete, academic, animator, or businessman named Ralph Moore.",
+  "sources": [
+    { "url": "https://exponential.org/person/ralph-moore-2/", "verifies": ["Identity", "Roles", "Reach metrics", "Distribution inventory"] },
+    { "url": "https://exponential.org/7lessons/", "verifies": ["Frameworks", "Voice fingerprint", "Theological positioning"] },
+    { "url": "https://effectivechurch.com/seven-lessons-from-an-interview-with-ralph-moore-by-bill-easum-december-2016/", "verifies": ["Identity", "Timeline", "Frameworks"] },
+    { "url": "https://hopechapel.org/our-story/", "verifies": ["Timeline", "Editorial bio"] },
+    { "url": "https://www.hopechapel.org/about", "verifies": ["Timeline"] },
+    { "url": "https://patch.com/california/hermosabeach/landmark-hermosa-hope-chapel", "verifies": ["Identity", "Timeline"] },
+    { "url": "https://thegoodlifehawaii.com/ralph-ruby-moore/", "verifies": ["Identity", "Timeline", "Reach metrics"] },
+    { "url": "https://hopehonolulu.com/leadership/", "verifies": ["Timeline"] },
+    { "url": "https://renew.org/contributor/ralph-moore/", "verifies": ["Roles", "Voice fingerprint", "Reach metrics"] },
+    { "url": "https://newbreedtraining.com/ralphmoore/", "verifies": ["Distribution inventory", "Organizational affiliations"] },
+    { "url": "https://newbreedtraining.com/about/newbreed-trainers/", "verifies": ["Network graph"] },
+    { "url": "https://discipleship.org/blog/announcing-robby-gallaty-and-ralph-moores-addition-to-the-national-disciple-making-forum/", "verifies": ["Network graph"] },
+    { "url": "https://www.goodreads.com/author/show/428681.Ralph_Moore", "verifies": ["Bibliography", "Reach metrics"] },
+    { "url": "https://www.amazon.com/Making-Disciples-Developing-Lifelong-Followers/dp/1959467530", "verifies": ["Bibliography", "Network graph"] },
+    { "url": "https://exponential.org/resource-ebooks/new-to-five/", "verifies": ["Bibliography", "Frameworks"] },
+    { "url": "https://exponential.org/product/mega-multi-micro/", "verifies": ["Bibliography", "Frameworks"] },
+    { "url": "https://www.amazon.com/How-Nearly-Anyone-Start-Microchurch/dp/1624240755", "verifies": ["Bibliography"] },
+    { "url": "https://www.movements.net/blog/tag/Ralph+Moore", "verifies": ["Network graph", "Distribution inventory"] },
+    { "url": "https://www.movements.net/riseandfall", "verifies": ["Voice fingerprint", "Network graph"] },
+    { "url": "https://www.youtube.com/@RalphMooreHopeChapel", "verifies": ["Distribution inventory", "Reach metrics"] }
+  ],
+  "superseded_files": [
+    "docs/movement_leader_research/ralph-moore/README.md",
+    "docs/movement_leader_research/ralph-moore/_tracker.md"
+  ]
+}

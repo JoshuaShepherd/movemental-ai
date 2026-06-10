@@ -1,0 +1,28 @@
+{
+  "slug": "tiffany-smith",
+  "version": "2.0.0",
+  "generated_at": "2026-06-09",
+  "mode": "identity re-resolution + cold-start research (prior on-disk pass failed; superseded)",
+  "subject_confirmation": "Tiffany D. Smith ('TD Smith') — SBC missiologist / missional strategist; founder/host of Missional Mayhem (missionalmayhem.com, missionalmayhem@gmail.com); NAMB Send Network Strategies Coordinator; Doctorate in Missional Leadership (NOBTS). NOT the LPC counselor (TX), the AISES research director (OK), or the LCSW (GA).",
+  "sources": [
+    { "url": "https://missionalmayhem.com/", "verifies": ["Identity", "Roles", "Distribution inventory"] },
+    { "url": "https://missionalmayhem.com/perspectives/", "verifies": ["Voice fingerprint", "Distribution inventory"] },
+    { "url": "https://missionalmayhem.com/2024/01/22/women-missional-leaders/", "verifies": ["Voice fingerprint", "Theological positioning"] },
+    { "url": "https://missionalmayhem.com/coaching-cohorts/", "verifies": ["Frameworks", "Distribution inventory"] },
+    { "url": "https://missionalmayhem.com/houston/", "verifies": ["Frameworks", "Distribution inventory"] },
+    { "url": "https://missionalmayhem.podbean.com/", "verifies": ["Voice fingerprint", "Network graph", "Reach metrics"] },
+    { "url": "https://podcasts.apple.com/us/podcast/missional-mayhem/id1840316635", "verifies": ["Reach metrics"] },
+    { "url": "https://theorg.com/org/north-american-mission-board/org-chart/tiffany-smith", "verifies": ["Identity", "Timeline", "Organizational affiliations"] },
+    { "url": "https://www.sendinstitute.org/author/tsmith/", "verifies": ["Bibliography", "Distribution inventory"] },
+    { "url": "https://www.sendinstitute.org/global-planting-reach-nations/", "verifies": ["Bibliography"] },
+    { "url": "https://wheatonbillygraham.com/we-need-more-lydias-in-church-planting/", "verifies": ["Frameworks", "Voice fingerprint", "Endorsements"] },
+    { "url": "https://www.sendnetwork.com/events/missio-dei-soul/", "verifies": ["Frameworks", "Bibliography"] },
+    { "url": "https://podcasts.apple.com/us/podcast/at-the-table-with-tiffany-smith/id1457206241?i=1000497981516", "verifies": ["Network graph", "Distribution inventory"] }
+  ],
+  "superseded_files": [
+    "docs/movement_leader_research/tiffany-smith/identity-verification.md",
+    "docs/movement_leader_research/tiffany-smith/summary.md",
+    "docs/movement_leader_research/tiffany-smith/gap-analysis.md",
+    "docs/movement_leader_research/tiffany-smith/movemental-analysis.md"
+  ]
+}

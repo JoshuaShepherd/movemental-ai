@@ -1,0 +1,41 @@
+# Component tree counts — pre-teardown baseline
+# Generated: 2026-06-09T23:51:32Z
+
+## Top-level src/components/
+  101  _archive
+   16  agent-room
+    4  assessment
+    3  audience
+    3  authenticated
+   22  book
+   10  case-study
+    3  citations
+    4  dashboard
+    4  field-guide
+    2  forms
+    7  intel-artifacts
+    1  motion
+    1  movement-leaders
+    4  nav
+   20  onboarding
+    6  pathway
+   19  primitives
+   10  program
+    1  providers
+    1  safestart
+    9  safety
+    8  sandboxlive
+    2  scheduling
+  127  sections
+   25  sections-mock
+    1  site-footnotes
+    1  stitch
+   44  studio
+    2  toolkit
+   14  ui
+
+## Totals
+components_total_ts_tsx: 374
+components_archived_ts_tsx: 101
+app_page_tsx: 92
+app_total_ts_tsx: 373

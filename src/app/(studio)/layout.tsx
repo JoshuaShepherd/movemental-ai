@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
+import { InkBandUtilityShell } from "@/components/ink-band/utility-shell";
 import { isUserStaff } from "@/lib/services/onboarding/onboarding.service";
 import { createClient } from "@/lib/supabase/server";
 
@@ -25,12 +26,14 @@ export default async function StudioLayout({ children }: { children: ReactNode }
 
   const staff = await isUserStaff(user.id);
   if (!staff) {
-    redirect("/dashboard");
+    redirect("/agent");
   }
 
   return (
-    <div className="mx-auto w-full max-w-[var(--container-max)] px-4 py-10 md:px-6">
-      {children}
-    </div>
+    <InkBandUtilityShell>
+      <div className="mx-auto w-full max-w-[var(--container-max)] px-4 py-10 md:px-6">
+        {children}
+      </div>
+    </InkBandUtilityShell>
   );
 }

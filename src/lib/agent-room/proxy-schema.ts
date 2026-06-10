@@ -27,6 +27,9 @@ export const agentRoomClientBodySchema = z.object({
     )
     .max(60)
     .optional(),
+  /** Room phase (INT-10). `"discuss"` activates the engine's phase-aware prompt
+   *  block. Defaults to `"guide"` on the engine when omitted. */
+  phase: z.enum(["guide", "discuss"]).optional(),
 });
 
 export type AgentRoomClientBody = z.infer<typeof agentRoomClientBodySchema>;

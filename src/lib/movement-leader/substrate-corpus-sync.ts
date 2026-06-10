@@ -87,7 +87,7 @@ export function splitSubstrateSections(md: string): {
 } {
   const lines = md.split("\n");
   const sections: Record<string, string> = {};
-  let preambleLines: string[] = [];
+  const preambleLines: string[] = [];
   let current: { name: string; lines: string[] } | null = null;
   let inFence = false;
 

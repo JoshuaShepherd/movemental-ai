@@ -1,4 +1,4 @@
-import styles from "../agent-room.module.css";
+import styles from "../ink-band.module.css";
 
 const FACES: [string, string][] = [
   ["AH", "Alan Hirsch"],
@@ -26,7 +26,9 @@ export function OpeningHero() {
         Your people are already using it — on emails, donor letters, sermons —
         usually with no policy and no one deciding what&rsquo;s wise. The thing
         most at risk isn&rsquo;t the technology. It&rsquo;s the{" "}
-        <span className={styles.hl}>trust your work depends on.</span>
+        <span id="phrase" className={styles.hl}>
+          trust your work depends on.
+        </span>
       </p>
       <div className={`${styles.faces} ${styles.opLine}`} style={{ animationDelay: "240ms" }}>
         <div className={styles.facesLabel}>Built with — and vouched for by</div>

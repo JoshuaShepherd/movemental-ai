@@ -4,11 +4,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with th
 
 ## What this repo is
 
-Movemental is the organizational site for Movemental — a fresh build from scratch. The canonical design spec lives at [docs/design/DESIGN.md](docs/design/DESIGN.md) (**Concept Modern** — warm cream paper, near-black ink, Inter + Newsreader italic emphasis, ink pill CTAs, Midnight bands). Sibling static HTML reference: [docs/design/MOVEMENTAL_HTML_TEMPLATE.md](docs/design/MOVEMENTAL_HTML_TEMPLATE.md) (Oatmeal html-template — **content/IA only**, do not import its tokens).
+Movemental is the organizational site for Movemental — a fresh build from scratch. It runs **two design systems, by surface**, both documented as a charter + layer-by-layer chain (tokens → primitives → components → built layers → pages):
 
-### Current state: Stitch migration well underway
+- **Concept Modern** — [docs/design/DESIGN.md](docs/design/DESIGN.md) — the **marketing site** (warm cream paper, near-black ink, Inter + Newsreader italic emphasis, ink-pill CTAs, Midnight bands).
+- **Ink Band** — [docs/design/INK_BAND_DESIGN_CHAIN.md](docs/design/INK_BAND_DESIGN_CHAIN.md) — the **agent room** (`/agent`, `.oat-surface`): warm paper sheet, Playfair + Caveat + IBM Plex Mono, ink-blue pen accent. Transcribed from the `movemental-agentic-front-end` prototype.
 
-The core shell (`globals.css`, `layout.tsx`) and home page are built. A `(site)` route group provides shared nav/footer chrome, with pages for about, case-studies, contact, cookies, evidence, faq, methodology, pricing, privacy, services, system, terms, walkthrough, and who-we-serve. Components live in `primitives/`, `sections/`, and `nav/`.
+Index: [docs/design/README.md](docs/design/README.md). Keep the two separated — Ink Band tokens must not leak onto marketing pages. The data-side companion is [docs/architecture/TYPE_SAFETY_CHAIN.md](docs/architecture/TYPE_SAFETY_CHAIN.md).
+
+### Current state: marketing migration in flight
+
+The core shell (`globals.css`, `layout.tsx`) is built and the design tokens are canonical. The repo is mid-pivot toward the **paper / agentic** surfaces: live route groups are `(paper)`, `(studio)`, and `agent`. The earlier `(site)` marketing route group and its `nav/` + `sections/` components are archived under `_archive/pre-marketing-migration-2026-06/`. The editorial **primitives** (`src/components/primitives/`) remain live and are the basis for new pages.
 
 New pages and components should still follow [docs/build/prompts/stitch-to-react-migration.md](docs/build/prompts/stitch-to-react-migration.md) — it is the authoritative way to translate Stitch screens into React. Do not improvise layouts, paste marketing templates, or substitute stock imagery.
 
@@ -20,10 +25,12 @@ The **only** Stitch project that informs this repo is `2208910962065880866`. See
 
 Available via `.claude/settings.json` → `additionalDirectories`:
 
-- `/Users/joshuashepherd/Desktop/dev/repos/movemental-sites/alan-hirsch` — Alan Hirsch **tenant app** (primary reference for patterns, six-layer type chain, and symlinked skills)
-- `/Users/joshuashepherd/Desktop/dev/repos/movemental-ai` — secondary reference, sibling project
+- `/home/josh/dev/01-Movemental-Core/alan-hirsch` — Alan Hirsch **tenant app** (primary reference for patterns, the six-layer type chain, and symlinked skills)
+- `/home/josh/dev/01-Movemental-Core/movemental-visual-editor-main` — Studio / authoring app on the same shared DB (the other canonical type-chain reference)
+- `/home/josh/dev/01-Movemental-Core/movemental-agentic-front-end` — the **Ink Band** agent-room design prototype (HTML/CSS/JS); design canon for `/agent` (see [docs/design/INK_BAND_DESIGN_CHAIN.md](docs/design/INK_BAND_DESIGN_CHAIN.md))
+- `/home/josh/dev/01-Movemental-Core/movemental-ai-agents` — the agent **engine** (`ai-agents` package) the agent room is wired to
 
-Use them for *how* to structure things (conventions, patterns). Do **not** copy visual components or page content from them — movemental's design is the Stitch project, not these siblings.
+Use them for *how* to structure things (conventions, patterns). Do **not** copy visual components or page content from them — movemental's design is the Stitch project + the two design-chain docs, not these siblings.
 
 ## Commands
 
@@ -88,30 +95,33 @@ scripts/
   generate-*.ts                # Regenerate a layer from the Drizzle schema
 tests/                         # Vitest specs (vitest.config.mts) + Playwright e2e (playwright.config.ts)
 docs/
-  design/DESIGN.md             # Concept Modern — canonical design spec
-  design/MOVEMENTAL_HTML_TEMPLATE.md  # Sibling Oatmeal html-template (reference only)
+  architecture/
+    TYPE_SAFETY_CHAIN.md       # Six-layer data chain (Drizzle→Zod→services→routes→hooks→UI)
+  design/
+    DESIGN.md                  # Concept Modern — marketing design charter + chain
+    INK_BAND_DESIGN_CHAIN.md   # Ink Band — agent-room design charter + chain
+    README.md                  # Index of the two design systems
   build/
     stitch-project.md          # Pins Stitch project 2208910962065880866
     prompts/
       stitch-to-react-migration.md   # The authoritative build prompt
 src/
   app/
-    globals.css                # Tailwind v4 @theme inline + MD3 :root tokens
-    layout.tsx                 # Root layout — Inter font, Providers wrapper
-    providers.tsx              # React Query provider (client component)
+    globals.css                # Tailwind v4 @theme inline + :root/.dark token SSOT (Concept Modern + scoped oat-*)
+    layout.tsx                 # Root layout — Inter + Newsreader + oat faces, Providers wrapper
+    providers.tsx              # React Query + Theme providers (client component)
     favicon.ico
-    (site)/                    # Route group — marketing pages with shared nav/footer
-      layout.tsx               # SiteNav + SiteFooter chrome, pt-16 for fixed nav
-      page.tsx                 # Home page (composes section components)
-      about/ case-studies/ contact/ evidence/ faq/ methodology/
-      pricing/ services/ walkthrough/ who-we-serve/
-      cookies/ privacy/ terms/ # Legal pages
-      system/                  # Design system preview (if present)
+    (paper)/                   # Paper/editorial route group (e.g. home-paper)
+    (studio)/                  # Studio / agent-runtime route group
+    agent/                     # The agent room (.oat-surface → Ink Band design)
+    # NOTE: the prior (site) marketing group + nav/sections are archived under
+    #       src/components/_archive/ + _archive/pre-marketing-migration-2026-06/
   components/
-    nav/                       # SiteNav (glass bar), SiteFooter, mobile nav, link config
-    primitives/                # Section, Container, Display, Eyebrow, Prose, ArrowLink
-    sections/                  # Home page sections (hero, philosophy, mechanism, etc.)
+    primitives/                # Editorial primitives — Section, Container, Display, Eyebrow, Prose, SurfaceCard, Reveal, …
+    agent-room/                # Agent-room UI (Ink Band surface)
+    providers/                 # Theme provider, etc.
     ui/                        # shadcn components (added on-demand; do not hand-edit)
+    _archive/                  # Archived pre-migration marketing components (nav/, sections/)
   lib/
     env.ts                     # Zod-validated environment variables
     utils.ts                   # `cn` helper
@@ -124,31 +134,36 @@ src/
       schema.ts                # Drizzle schema — single source of truth
 ```
 
-### Six-layer type safety chain (aspirational, mirrors tenant app — `movemental-sites/alan-hirsch`)
+### Six-layer type safety chain — mirrors the tenant apps (`alan-hirsch`, `movemental-visual-editor`)
+
+**Full reference: [docs/architecture/TYPE_SAFETY_CHAIN.md](docs/architecture/TYPE_SAFETY_CHAIN.md)** — topology, per-layer detail, generate/validate commands, lock status, and the schema-change waterfall. This repo shares the live `movemental` Supabase DB (`vhaiiiykcukrlyvwlgip`) with both sibling repos.
 
 Types flow **downstream only** — never import from higher layers into lower:
 
-1. **Drizzle schema** (`src/lib/db/schema.ts`) — single source of truth
-2. **Zod schemas** — runtime validation (generated from Drizzle via `drizzle-zod`)
-3. **Services** — business logic returning `Result<T>`, never throw
-4. **API routes** — HTTP endpoints with Zod validation
-5. **React hooks** — TanStack Query wrappers; never raw `fetch`
-6. **UI components** — consume hooks, never call APIs directly
+1. **Drizzle schema** (`src/lib/db/schema.ts`) — structure SSOT. Hand-maintained here (no `generate-schema` script); add the `pgTable` *and* a matching live-DB migration together.
+2. **Zod schemas** (`src/lib/schemas/index.ts`) — types SSOT; generated from Drizzle via `drizzle-zod` (`pnpm generate:schemas`)
+3. **Services** (`src/lib/services/simplified/`) — `Result<T>`, never throw; `base.service.ts` adds CRUD + `TENANT_ORG_ID` scoping. Domain logic goes in sibling folders (e.g. `services/onboarding/`), never in generated files.
+4. **API routes** (`src/app/api/simplified/`) — generated CRUD backbone; hand-written product endpoints live in `api/{admin,leader,book,program,…}`
+5. **React hooks** (`src/hooks/simplified/`) — TanStack Query wrappers; never raw `fetch`. Requires `QueryClientProvider` (`src/app/providers.tsx`).
+6. **UI components** (`src/components/`) — consume hooks, never call APIs directly (not generated/validated in this repo)
 
-Fix errors bottom-up: trace to the source layer and fix there first. Never modify a lower layer to satisfy an upper layer's needs.
+Fix errors bottom-up: trace to the source layer and fix there first. Never modify a lower layer to satisfy an upper layer's needs. Validate with `pnpm validate:all` (per-layer locks) and `pnpm typecheck` (the real proof).
 
-## Design system rules (from docs/design/DESIGN.md)
+## Design system rules (Ink Band only)
 
-DESIGN.md is **Concept Modern** — charter (pillars + quality bar), semantic color (light default, optional **global dark** via `html.dark` + `next-themes`, Midnight regional bands), typography and motion tokens, spacing, accessibility, primitives/UI/section chain, Stitch rules, and change control. Full spec: [docs/design/DESIGN.md](docs/design/DESIGN.md). Agent UI skill: `.claude/skills/concept-modern-ui/SKILL.md`. Quick rules:
+This repo is **agent-only** — one design system: **Ink Band**. Canon:
+[docs/design/INK_BAND_DESIGN_CHAIN.md](docs/design/INK_BAND_DESIGN_CHAIN.md). Index:
+[docs/design/README.md](docs/design/README.md). Concept Modern ([DESIGN.md](docs/design/DESIGN.md)) is
+archived reference for a future marketing merge; do not implement it in `src/`.
 
-- **Light default; global dark optional.** Users can switch light/dark (nav sun/moon); do not hand-edit `html` theme class in pages. Dark **hero bands** still use `variant="midnight"` (`--inverse-surface`) for regional contrast.
-- **Semantic tokens only.** Use `bg-background`, `bg-section`, `bg-card`, `bg-elevated`, `bg-inverse-surface`, `text-foreground`, `text-muted-foreground`, `text-inverse-foreground`, `bg-primary` — **never** raw hex, `bg-white`, `bg-black`, `bg-blue-600`, `text-gray-500`. DESIGN.md section 11 summarizes Stitch remaps; the migration prompt [section 7](docs/build/prompts/stitch-to-react-migration.md) has the full mechanical table for agents.
-- **No 1px solid borders for sectioning.** Depth comes from tonal stacking — a `bg-card` block sitting on a `bg-section` background is the "Gold Standard." Borders are allowed only for form-field accessibility (use `border-border`, which resolves to `outline_variant` at 15% opacity).
-- **No pasted-on drop shadows.** If elevation is truly needed, use `shadow-ambient` (`0 12px 40px rgba(42, 52, 57, 0.06)`). Otherwise, rely on Ghost Lift (tonal stacking).
-- **Primary is ink, not blue.** `bg-primary` is the near-black **ink pill** CTA on light surfaces (cream on dark). Do not use legacy `#0053db` Digital Curator blue on marketing pages.
-- **Never pure black.** Use `text-foreground` (which resolves to ink `#19150f`) or `bg-inverse-surface` for dark elements.
-- **Inter + Newsreader.** Inter via `next/font` for body/UI; Newsreader italic via `<em>` inside display lines only — never for multi-paragraph body copy.
-- **Breathing layout.** If a component feels crowded, increase padding — never shrink type to fit. Layout tokens: `--container-max: 1200px`, `--prose-max: 680px`, `--section-y-sm: 80px`, `--section-y-lg: 120px`.
+Quick rules:
+
+- **Scoped surface.** Agent room and utility pages wrap in `.ink-band-surface` (see `agent/layout.tsx`, `components/ink-band/utility-shell.tsx`). Tokens: `--color-ink-band-*`, `--font-ink-*`.
+- **Typography.** Inter body; Playfair display headings; IBM Plex Mono labels; Caveat hand line (agent room only).
+- **Accent.** Ink-blue `#22409b` for pen gestures, links, and focus — not legacy Digital Curator blue.
+- **Paper depth.** Tonal stacking (`bg` → `surface` → `paper`) plus hairline borders where the prototype uses them.
+- **CSS modules.** Agent UI lives in `src/components/agent-room/ink-band.module.css` — do not add Concept Modern or `oat-*` tokens.
+- **Shadcn utility pages** (login, agent-runtime) use Tailwind semantic tokens mapped to the Ink Band ramp in `globals.css` `:root`.
 
 ## React / Next.js rules
 

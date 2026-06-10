@@ -1,14 +1,16 @@
-# Design documentation (single source of truth)
+# Design docs
 
-This directory holds the **product design charter** for the Movemental organizational site and the **operational contracts** for static HTML work that mirrors production.
+**movemental-ai** uses a single design system: **Ink Band**.
 
-| Document | Purpose |
-| -------- | ------- |
-| [DESIGN.md](./DESIGN.md) | **Canonical charter** — creative direction, pillars, MD3-style semantic ramp (light + Midnight + global dark policy), typography scale, motion and accessibility, spacing and layout, primitives catalog (React), Stitch translation rules, checklist, static HTML notes (§14), extended craft (imagery, performance, §15), and change control (§16). |
-| [MOVEMENTAL_HTML_TEMPLATE.md](./MOVEMENTAL_HTML_TEMPLATE.md) | **Sibling static repo** — full page manifest (R0–R3), CSS namespaces, `js/main.js` motion map, Oatmeal→Concept Modern token translation, sync decisions |
-| [MOTION.md](./MOTION.md) §8 | **Static ↔ React motion parity** — `js/main.js` vs `<Reveal>` / nav chrome |
-| [STATIC_HTML_AND_TEMPLATES.md](./STATIC_HTML_AND_TEMPLATES.md) | **Core `1-html` static SSOT** — mandatory `<head>` / stylesheet order, token parity with `src/app/globals.css`, primitive class ↔ React mapping, shell choice (`site-top` vs `site-header`), forbidden patterns, validation checklist, and **copy-paste agent prompts** to align a page or template. |
+- **Ink Band** — [INK_BAND_DESIGN_CHAIN.md](./INK_BAND_DESIGN_CHAIN.md) — the agent room (`/agent`),
+  staff admin (`/agent-runtime`), and auth surfaces (`/login`, etc.). Warm paper sheet with a red
+  margin rule, Playfair display, Caveat handwritten agent voice, IBM Plex Mono labels, ink-blue pen
+  accent, hairline borders. Transcribed from the `movemental-agentic-front-end` prototype.
 
-**Rule of thumb:** product and Stitch → React work starts in **DESIGN.md**. Core `1-html` static work starts in **STATIC_HTML_AND_TEMPLATES.md**. Parity checks against the sibling **movemental-html-template** repo start in **MOVEMENTAL_HTML_TEMPLATE.md**; motion specifics in **MOTION.md** §8.
+**Implementation:** `src/app/globals.css` (`.ink-band-surface` tokens), `src/components/agent-room/ink-band.module.css`, `src/components/ink-band/utility-shell.tsx`.
 
-Step-by-step Stitch migration remains in [docs/build/prompts/stitch-to-react-migration.md](../build/prompts/stitch-to-react-migration.md). HTML exemplar prompts are indexed in [docs/build/prompts/html-template-exemplars-index.md](../build/prompts/html-template-exemplars-index.md). To extend the design charter with additional **component families** (tables, timelines, logo strips, in-page nav, etc.), use [docs/build/prompts/design-component-exemplars-expansion.md](../build/prompts/design-component-exemplars-expansion.md).
+**Archived reference (not live in this repo):** [DESIGN.md](./DESIGN.md) documents the former
+Concept Modern marketing system, preserved for when marketing routes return from a separate merge.
+The `concept-modern-ui` skill symlink remains but is inactive for agent-only work here.
+
+Related: [type-safety chain](../architecture/TYPE_SAFETY_CHAIN.md).

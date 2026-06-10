@@ -61,6 +61,7 @@
     "leader:sync-corpus": "tsx scripts/sync-leader-corpus.ts",
     "leader:sync-corpus-dashboard": "tsx scripts/sync-leader-corpus-dashboard.ts",
     "leader:upload-substrate": "tsx scripts/upload-leader-substrate.ts",
+    "auth:sync-tenant-readiness": "tsx scripts/sync-auth-tenant-readiness.ts",
     "research:tree-check": "tsx scripts/validate-research-tree.ts",
     "research:tree-normalize": "tsx scripts/normalize-research-tree.ts",
     "research:export-frameworks": "tsx scripts/export-substrate-frameworks.ts"

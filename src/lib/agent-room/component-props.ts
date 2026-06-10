@@ -47,6 +47,15 @@ export const handoffHumanProps = z.object({
 });
 export type HandoffHumanProps = z.infer<typeof handoffHumanProps>;
 
+/**
+ * Lead-capture form-cell (INT-01 / Discuss). Mirrors the engine `CaptureProps`.
+ * `discuss` is the long-form Discuss variant (form wired in INT-09).
+ */
+export const captureProps = z.object({
+  kind: z.enum(["map", "paid", "free", "discuss"]),
+});
+export type CaptureProps = z.infer<typeof captureProps>;
+
 /** Static-repertoire components carry no props in Phase 1. */
 export const emptyProps = z.object({}).passthrough();
 
@@ -56,13 +65,15 @@ export function validateComponentProps(
   props: unknown,
 ): Record<string, unknown> | null {
   const schema =
-    component === "reality_check_beat"
+    component === "beat"
       ? realityCheckBeatProps
       : component === "readback"
         ? readbackProps
         : component === "handoff_human"
           ? handoffHumanProps
-          : emptyProps;
+          : component === "capture"
+            ? captureProps
+            : emptyProps;
   const parsed = schema.safeParse(props ?? {});
   return parsed.success ? (parsed.data as Record<string, unknown>) : null;
 }

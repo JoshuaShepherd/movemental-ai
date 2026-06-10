@@ -91,12 +91,30 @@ export function researchRoot(): string {
   return join(process.cwd(), "docs/movement_leader_research");
 }
 
+/**
+ * Containers a leader's research tree may live in, in priority order. Leaders
+ * whose corpus has been loaded are archived under `_onboarded_leaders/` to keep
+ * the top level focused on in-flight work; both locations are canonical.
+ */
+export function researchContainers(): string[] {
+  return [researchRoot(), join(researchRoot(), "_onboarded_leaders")];
+}
+
+/** The container that actually holds this slug's tree (falls back to top level). */
+function resolveContainer(slug: string): string {
+  const containers = researchContainers();
+  for (const container of containers) {
+    if (existsSync(join(container, slug))) return container;
+  }
+  return containers[0];
+}
+
 export function slugDir(slug: string): string {
-  return join(researchRoot(), slug);
+  return join(resolveContainer(slug), slug);
 }
 
 export function reflectedUnderstandingPath(slug: string): string {
-  return join(researchRoot(), "reflected-understanding", `${slug}.md`);
+  return join(resolveContainer(slug), "reflected-understanding", `${slug}.md`);
 }
 
 export function slugToEnvPrefix(slug: string): string {

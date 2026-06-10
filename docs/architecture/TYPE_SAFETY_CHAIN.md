@@ -1,13 +1,12 @@
-# Type Safety Chain — Movemental AI (Marketing + AI Content)
+# Type Safety Chain — Movemental AI (Marketing + AI Content + Research)
 
 > **The six-layer chain: how types flow from the live Postgres database to the UI.**
-> This is the current, authoritative status doc. The older per-layer set under
-> [`_docs/type/`](../../_docs/type/) describes an early 2-table prototype and is **partly stale** —
-> trust the numbers here.
+> Sibling reference implementations: `alan-hirsch/docs/architecture/TYPE_SAFETY_CHAIN.md`
+> (canonical) and `movemental-visual-editor-main/docs/architecture/TYPE_SAFETY_CHAIN.md`.
 
 **Repo:** `movemental-ai`
 **Supabase project:** `movemental` — `vhaiiiykcukrlyvwlgip` (region `us-west-2`, Postgres 17)
-**Last verified:** 2026-06-02 — L1 **UNLOCKED** (schema drift vs live DB); L2–L5 internally consistent at 210
+**Last verified:** 2026-06-10 — **all layers LOCKED/VALIDATED**, `pnpm validate:all` green, `tsc --noEmit` clean (0 errors).
 
 ---
 
@@ -17,126 +16,172 @@ Three repositories point at the **same** Supabase project (`vhaiiiykcukrlyvwlgip
 
 | Repo | Role | Chain root | DB-aligned tables |
 |------|------|-----------|-------------------|
-| **movemental-ai** (this repo) | Marketing / AI content + research surfaces | `src/` | **210 / 223** ⚠ drift |
-| **movemental-visual-editor-main** | Studio / authoring + LMS editor | `src/` | 223 / 223 ✅ |
 | **alan-hirsch** | Public LMS + author site (canonical chain reference) | `src/` | 223 / 223 ✅ |
+| **movemental-visual-editor-main** | Studio / authoring + LMS editor | `src/` | 223 / 223 ✅ |
+| **movemental-ai** (this repo) | Marketing / AI content + research + agent surfaces | `src/` | **210 / 210** ✅ — tracks a subset of the DB |
 
 **Implications**
-- This repo deliberately tracks a **subset** of the platform and has drifted from the live DB (see §5). That is acceptable for its scope, but `pnpm db:check` reports **UNLOCKED** by design and `validate:all` here intentionally **omits** `db:check`.
+
+- A schema change in the live DB must be re-pulled into **each** repo that uses the affected table, then the upper layers regenerated.
+- This repo deliberately tracks a **subset** of the live DB — it does not mirror every table. Its Drizzle schema declares **210** tables and **all 210 now exist** in the live DB (see §5 for the 2026-06-10 reconciliation). The ~22 DB tables it does not declare are out of its subset. The other repos should not assume `movemental-ai`'s schema matches theirs.
+- The live DB has **232** `public` base tables as of 2026-06-10 (223 at the sibling docs' last verification on 2026-06-02; +2 since, +7 from this repo's reconciliation migration).
 - The standalone `alan-hirsch` Supabase project (`nepvfebkqvuqbxthttao`) is **legacy** — none of these repos connect to it.
 
 ---
 
-## 2. Canonical layout — `src/`, not the repo root
+## 2. The chain
 
-> ⚠ **Important:** this repo contains **two** copies of the early chain dirs. The canonical, active chain lives under **`src/`**. The root-level `db/`, `lib/`, `app/`, `hooks/` directories are **legacy 2-table stubs** (`db/schema.ts` = 4 tables: organizations, onboarding_responses, write, write_content) left from the original prototype. The validators and the running app use the `src/` tree.
+Types flow in **one direction only — downstream**. Never import a higher layer into a lower one.
 
 ```
 Ground:  Live Postgres (Supabase movemental)   ← single source of truth
-   │  scripts/generate-schema.ts  (introspect live DB)
+   │  manual introspection → src/lib/db/schema.ts   (no generate-schema script — see §3 L1)
    ▼
-Layer 1: Drizzle Schema     src/lib/db/schema.ts            210 pgTables   ← validators read THIS path
-   │  drizzle-zod
+Layer 1: Drizzle Schema     src/lib/db/schema.ts          210 pgTables
+   │  drizzle-zod  (pnpm generate:schemas)
    ▼
-Layer 2: Zod Schemas        src/lib/schemas/index.ts        Select/Insert/Update/Filters + z.infer types
-   │  z.infer<>
+Layer 2: Zod Schemas        src/lib/schemas/index.ts      Select/Insert/Update + z.infer types
+   │  z.infer<>  (pnpm generate:services)
    ▼
-Layer 3: Services           src/lib/services/simplified/    210 *.service.ts (+ base.service.ts)
+Layer 3: Services           src/lib/services/simplified/  210 *.service.ts (+ base.service.ts)
+   │  (pnpm generate:routes)
+   ▼
+Layer 4: API Routes         src/app/api/simplified/<kebab>/   210 route.ts (GET/POST/PATCH/DELETE)
+   │  (pnpm generate:hooks)
+   ▼
+Layer 5: React Hooks        src/hooks/simplified/         210 *.hooks.ts (TanStack Query)
    │
    ▼
-Layer 4: API Routes         src/app/api/simplified/<kebab>/ 210 route.ts (GET/POST/PATCH/DELETE)
-   │
-   ▼
-Layer 5: React Hooks        src/hooks/simplified/           210 *.hooks.ts (React Query)
-   │
-   ▼
-Layer 6: UI Components      src/components/                 consumed directly via Layer 5 hooks
+Layer 6: UI Components      src/components/                consume hooks; not generated/validated here
 ```
 
 ### The golden rule
 
-**Types flow downstream, never upstream.** Add a field to the database first, re-pull Layer 1, and let it cascade. Never hand-author a type in a higher layer.
+**Types flow downstream, never upstream.** Need a new field in the UI? Add it to the database first, re-pull Layer 1, and let it cascade. Never hand-author a type in a higher layer to paper over a missing column. When a type error surfaces in the UI, trace it to the **lowest** broken layer and fix it there — never patch upward.
 
 ---
 
 ## 3. Layer-by-layer reference
 
-| Layer | Path (canonical) | Generator | Notes |
-|-------|------------------|-----------|-------|
-| 1 Drizzle schema | `src/lib/db/schema.ts` | `scripts/generate-schema.ts` | Structure SSOT; 210 `pgTable` exports |
-| 2 Zod schemas | `src/lib/schemas/index.ts` | `scripts/generate-zod-schemas.ts` | Types SSOT (`z.infer<>`) |
-| 3 Services | `src/lib/services/simplified/` | `scripts/generate-services.ts` | `EntityService extends SimplifiedService`; `base.service.ts` hand-written |
-| 4 Routes | `src/app/api/simplified/` | `scripts/generate-routes.ts` | GET/POST/PATCH/DELETE per entity |
-| 5 Hooks | `src/hooks/simplified/` | `scripts/generate-hooks.ts` | React Query; needs `QueryClientProvider` (`src/app/providers.tsx`) |
-| 6 UI | `src/components/` | — | Consumes Layer 5 hooks directly (no generated `simplified/` UI) |
+### Layer 1 — Drizzle Schema (`src/lib/db/schema.ts`)
 
-Tenant scoping (`organization_id` filtered by `TENANT_ORG_ID`) lives in `base.service.ts`, same as the other repos. This repo currently has **no** `custom/` service, hook, or API directories — all data access goes through the generated simplified chain.
+- **The structure SSOT.** ~210 `pgTable(...)` exports defining every table this repo touches.
+- **How it is produced.** Unlike the sibling repos, this repo has **no `scripts/generate-schema.ts`**. Layer 1 was introspected from the live DB by hand (file header records `2026-04-13`) and is maintained by hand thereafter. To add a table, write the `pgTable` here, apply matching DDL to the live DB, then regenerate Layers 2–5.
+- **Conventions.** Column helpers `id()`, `createdAt()`, `updatedAt()` (defined at the top of the file). FK references via `.references(() => parent.id, { onDelete: ... })`. Enum-typed DB columns map to `text()` with a comment noting the Postgres enum name.
+- **DB client.** `src/lib/db/index.ts` (postgres-js + drizzle), connection from `DATABASE_URL`.
+- **Do not** add a table here for UI convenience without a corresponding live-DB migration — that produces the exact Layer-1 drift described in §5.
+
+### Layer 2 — Zod Schemas (`src/lib/schemas/index.ts`)
+
+- **The types SSOT.** Generated by `pnpm generate:schemas` (`scripts/generate-zod-schemas.ts`) from Layer 1 via `drizzle-zod`. **Do not hand-edit** — the header warns and a regenerate overwrites.
+- Per table: `EntitySelectSchema`, `EntityInsertSchema`, `EntityUpdateSchema` (and `EntityFiltersSchema` where applicable) plus the inferred types (`Entity`, `EntityCreate`, `EntityUpdate`, …).
+- Every TypeScript type downstream derives from `z.infer<>` here. Validator: `pnpm contracts:check` (`scripts/validate-semantic-alignment.ts`) confirms every Layer-1 table has its four schemas + types.
+
+### Layer 3 — Services (`src/lib/services/simplified/`)
+
+- Generated by `pnpm generate:services` (`scripts/generate-services.ts`). One `EntityService extends SimplifiedService` per table; a singleton is exported (`entityVarService`); `index.ts` is the barrel.
+- **`base.service.ts` is hand-written and never regenerated.** It provides:
+  - the **`Result<T>`** pattern (`Ok<T> | Err`) — services **never throw**; callers branch on `result.ok`.
+  - CRUD + `getById`, `getBySlug`, `listByColumn`.
+  - **Tenant scoping.** Any table with an `organization_id` column is auto-filtered by the `TENANT_ORG_ID` env var; calls fail closed with an explicit error if it is unset. See `base.service.ts` around the `cols.organization_id` checks.
+- **Domain / non-CRUD logic** lives outside the generated tree — e.g. `src/lib/services/onboarding/` (onboarding HTTP, reminder cron, e-sign). Never edit a generated `simplified/*.service.ts` to add domain behaviour; add a sibling service instead.
+- Validator: `pnpm services:check` (`scripts/validate-services-alignment.ts`).
+
+### Layer 4 — API Routes (`src/app/api/simplified/<kebab>/route.ts`)
+
+- Generated by `pnpm generate:routes` (`scripts/generate-routes.ts`). Each exports `GET`, `POST`, `PATCH`, `DELETE`, validating input with the Layer-2 schemas and delegating to the Layer-3 service.
+- **Hand-written domain endpoints** live under their own folders: `admin`, `agent-room`, `assess`, `book`, `contact`, `cron`, `internal`, `leader`, `newsletter`, `onboarding`, `program`, `toolkit-download`, `webhooks`. These are the real product surface; the generated `simplified/` routes are the uniform CRUD backbone.
+- Validator: `pnpm routes:check` (`scripts/validate-routes-alignment.ts`) confirms one route per entity with all four handlers.
+
+### Layer 5 — React Hooks (`src/hooks/simplified/`)
+
+- Generated by `pnpm generate:hooks` (`scripts/generate-hooks.ts`). Per table: a `entityVarKeys` query-key factory + `useEntityList`, `useEntity`, `useEntityCreate`, `useEntityUpdate`, `useEntityDelete`; `index.ts` barrel; shared `query-utils.ts`.
+- **Never call `fetch` directly in components** — go through these hooks (or a hand-written hook in a feature folder). Requires `QueryClientProvider`, mounted in `src/app/providers.tsx`.
+- Validator: `pnpm hooks:check` (`scripts/validate-hooks-alignment.ts`) — also asserts the provider is present.
+
+### Layer 6 — UI Components (`src/components/`)
+
+- This repo does **not** generate or strictly validate Layer 6 (no `src/components/simplified/`, no `ui:check`). UI components consume the chain through the Layer-5 hooks (or feature-local hooks) and never reach past them to a service or `fetch`.
+- The design-system rules for components live in `docs/design/DESIGN.md` and the `concept-modern-ui` skill — orthogonal to the type chain but part of "how a component is allowed to be built."
 
 ---
 
 ## 4. Commands
 
 ```bash
-# Regenerate
-npx tsx scripts/generate-schema.ts   # Layer 1 — re-pull from live DB (needs DATABASE_URL in .env.local)
-pnpm generate:schemas                # Layer 2
-pnpm generate:services               # Layer 3
-pnpm generate:routes                 # Layer 4
-pnpm generate:hooks                  # Layer 5
+# Regenerate a layer from the one below it
+#   (Layer 1 is hand-maintained — there is no generate-schema script in this repo)
+pnpm generate:schemas                # Layer 2  (scripts/generate-zod-schemas.ts)
+pnpm generate:services               # Layer 3  (scripts/generate-services.ts)
+pnpm generate:routes                 # Layer 4  (scripts/generate-routes.ts)
+pnpm generate:hooks                  # Layer 5  (scripts/generate-hooks.ts)
 
-# Validate
-pnpm db:check          # Layer 1 → currently UNLOCKED (see §5)
-pnpm contracts:check   # Layer 2
-pnpm services:check    # Layer 3
-pnpm routes:check      # Layer 4
-pnpm hooks:check       # Layer 5
-pnpm validate:all      # contracts + services + routes + hooks + article-frontmatter (NB: does NOT run db:check)
+# Validate each layer (lock-before-proceed)
+pnpm db:check          # Layer 1 → LOCKED when schema table set ⊆ live DB table set
+pnpm contracts:check   # Layer 2 → LOCKED
+pnpm services:check    # Layer 3 → LOCKED
+pnpm routes:check      # Layer 4 → VALIDATED
+pnpm hooks:check       # Layer 5 → LOCKED
+pnpm validate:all      # the above + article-frontmatter (warn) + research-tree
+
+# The real proof: full type-check
+pnpm typecheck         # tsc --noEmit
 ```
+
+`pnpm db:check` reads the live DB through `DATABASE_URL` and compares its `public` table set to the `pgTable("…")` names parsed out of `schema.ts`. It is **LOCKED** only when every schema table also exists in the DB (subset is allowed; extra schema tables are not).
 
 ---
 
-## 5. Current status (verified 2026-06-02)
+## 5. Current status (verified 2026-06-10)
 
 | Layer | Name | Path | Count | Status |
 |-------|------|------|-------|--------|
-| — | Live DB | Supabase `vhaiiiykcukrlyvwlgip` | 223 tables | source of truth |
-| 1 | Drizzle Schema | `src/lib/db/schema.ts` | 210 | **UNLOCKED** ⚠ |
-| 2 | Zod Schemas | `src/lib/schemas/index.ts` | 210 | aligned to schema |
-| 3 | Services | `src/lib/services/simplified/` | 210 (+ base) | aligned to schema |
-| 4 | API Routes | `src/app/api/simplified/` | 210 | aligned to schema |
-| 5 | React Hooks | `src/hooks/simplified/` | 210 | aligned to schema |
+| — | Live DB | Supabase `vhaiiiykcukrlyvwlgip` | 232 tables | source of truth |
+| 1 | Drizzle Schema | `src/lib/db/schema.ts` | 210 (all in DB) | **LOCKED** ✅ |
+| 2 | Zod Schemas | `src/lib/schemas/index.ts` | 210 entities | **LOCKED** ✅ |
+| 3 | Services | `src/lib/services/simplified/` | 210 (+ base) | **LOCKED** ✅ |
+| 4 | API Routes | `src/app/api/simplified/` | 210 | **VALIDATED** ✅ |
+| 5 | React Hooks | `src/hooks/simplified/` | 210 | **LOCKED** ✅ |
+| 6 | UI Components | `src/components/` | not validated | n/a |
 
-**Layer 1 drift (`pnpm db:check` → UNLOCKED):**
-- **7 phantom tables** — present in `src/lib/db/schema.ts` but **not** in the live DB:
-  `cohort_members`, `future_plans`, `future_plan_versions`, `future_plan_ratifications`,
-  `leader_revision_requests`, `movement_leader_generated`, `recipes`.
-  → Either apply the matching migration to the live DB, or drop these from the schema and regenerate.
-- **~20 live tables not yet mirrored** here, including the scripture set (`scripture_books`,
-  `scripture_chapters`, `scripture_verses`), `movement_leader_corpus_data`, the `reference_*`
-  tables, `onboarding_cohorts`/`onboarding_global_content`, `guided_*`, etc.
-  → Run `npx tsx scripts/generate-schema.ts` to re-pull if this repo needs them.
+**`pnpm validate:all` green; `pnpm typecheck` (`tsc --noEmit`): 0 errors.** The chain is consistent end-to-end and compiles. All 210 schema tables exist in the live DB; the ~22 extra DB tables not declared here (e.g. `movement_leader_corpus_data`, `scripture_*`, `onboarding_videos`) are this repo's out-of-subset tables and are ignored by `db:check`.
 
-Layers 2–5 are internally consistent with the 210-table schema (the L2–L5 validators pass against `schema.ts`). The drift is purely between Layer 1 and the **live DB**.
+### History — the Layer-1 reconciliation (2026-06-10)
+
+`db:check` was previously **UNLOCKED** because `schema.ts` declared **7 tables the live DB did not have**:
+
+```text
+cohort_members            future_plans              future_plan_versions
+future_plan_ratifications leader_revision_requests  movement_leader_generated
+recipes
+```
+
+These were not stray definitions — each had a full Drizzle table, Zod schema, service, route, and hook (part of the 210). They back the SandboxLive / movement-leader feature set (the `slice/S02-leader-corpus-onboarding` work) and were authored ahead of being migrated into the shared DB. Their parents (`organizations`, `user_profiles`, `movement_leaders`) already existed, so creation was **purely additive**.
+
+**Resolved forward** (the recommended, feature-preserving path): the additive `CREATE TABLE` DDL was applied to the live DB as the tracked Supabase migration `add_sandboxlive_leader_chain_tables` (FK order: `recipes`, `cohort_members`, `future_plans` → `future_plan_versions` → `future_plan_ratifications`, then `movement_leader_generated`, `leader_revision_requests`). No regeneration of Layers 2–5 was needed — they already had the entities. `db:check` now reports LOCKED.
+
+**Fix bottom-up, never upward.** Layer 1 is the source; reconcile it against the DB rather than trimming an upper layer.
 
 ---
 
 ## 6. Making a schema change (the waterfall)
 
-1. Apply the DDL to the live DB.
-2. `npx tsx scripts/generate-schema.ts` → `pnpm db:check` (target: LOCKED once drift is resolved).
-3. `pnpm generate:schemas && pnpm contracts:check`.
-4. `pnpm generate:services && pnpm services:check`.
-5. `pnpm generate:routes && pnpm routes:check`.
-6. `pnpm generate:hooks && pnpm hooks:check`.
-7. Repeat in `movemental-visual-editor-main` and `alan-hirsch` if the table is shared.
-
-**Fix bottom-up.** A type error upstream means a missing field at the source — fix Layer 1 and cascade.
+1. Apply the DDL to the live DB (Supabase migration). Confirm with the team first — it is the **shared production** database for three repos.
+2. Add / update the `pgTable` in `src/lib/db/schema.ts` (hand-maintained here). `pnpm db:check` must report **LOCKED**.
+3. `pnpm generate:schemas && pnpm contracts:check` (Layer 2).
+4. `pnpm generate:services && pnpm services:check` (Layer 3).
+5. `pnpm generate:routes && pnpm routes:check` (Layer 4).
+6. `pnpm generate:hooks && pnpm hooks:check` (Layer 5).
+7. `pnpm typecheck` — must be clean before merging.
+8. Repeat in `alan-hirsch` and `movemental-visual-editor-main` if the table is in their set.
 
 ---
 
 ## 7. Related skills & docs
 
-- `type-safety-chain` skill — bootstrap/verify/repair the chain.
-- `migrations-workflow` skill — Drizzle migration lifecycle (use to close the §5 drift).
-- Older per-layer reference set: [`_docs/type/`](../../_docs/type/) (conceptually useful; numbers predate the 210-table chain).
-- Cross-repo: `movemental-visual-editor-main/docs/architecture/TYPE_SAFETY_CHAIN.md`, `alan-hirsch/docs/architecture/TYPE_SAFETY_CHAIN.md`.
+- `type-safety-chain` skill — bootstrap / verify / repair the chain.
+- `docs-type-safety` skill — keeping this documentation in sync.
+- `supabase-security-audit` skill — RLS / auth posture on the shared DB.
+- Cross-repo canon: `alan-hirsch/docs/architecture/TYPE_SAFETY_CHAIN.md`,
+  `movemental-visual-editor-main/docs/architecture/TYPE_SAFETY_CHAIN.md`.
+- This repo's design-system rules (orthogonal to the type chain): `docs/design/DESIGN.md`.

@@ -126,38 +126,49 @@ async function promoteAndSkipTax(
 }
 
 export async function organizationHasInitializedTasks(organizationId: string): Promise<boolean> {
-  const row = await db
-    .select({ n: sql<number>`count(*)::int` })
+  const rows = await db
+    .select({ task_key: onboardingTasks.task_key })
     .from(onboardingTasks)
     .where(eq(onboardingTasks.organization_id, organizationId));
-  return (row[0]?.n ?? 0) > 0;
+  const existing = new Set(rows.map((r) => r.task_key));
+  return ONBOARDING_TASKS.every((t) => existing.has(t.key));
 }
 
-/** Inserts task rows for an org when missing. Safe to call multiple times. */
+function buildOnboardingTaskInsert(
+  organizationId: string,
+  def: (typeof ONBOARDING_TASKS)[number],
+) {
+  let status: TaskRowStatus = "locked";
+  let movemental_unlocked = true;
+  if (def.requiresMovementalPrep) {
+    movemental_unlocked = false;
+  }
+  if (def.dependsOn.length === 0) {
+    status = "available";
+  }
+  return {
+    organization_id: organizationId,
+    task_key: def.key,
+    status,
+    movemental_unlocked,
+    metadata: {},
+  };
+}
+
+/** Inserts task rows for an org when any canonical keys are missing. Safe to call multiple times. */
 export async function initializeOnboardingTasksForOrganization(
   organizationId: string,
 ): Promise<Result<{ inserted: boolean }>> {
   try {
-    const exists = await organizationHasInitializedTasks(organizationId);
-    if (exists) return ok({ inserted: false });
+    const rows = await db
+      .select({ task_key: onboardingTasks.task_key })
+      .from(onboardingTasks)
+      .where(eq(onboardingTasks.organization_id, organizationId));
+    const existing = new Set(rows.map((r) => r.task_key));
+    const missing = ONBOARDING_TASKS.filter((def) => !existing.has(def.key));
+    if (missing.length === 0) return ok({ inserted: false });
 
-    const inserts = ONBOARDING_TASKS.map((def) => {
-      let status: TaskRowStatus = "locked";
-      let movemental_unlocked = true;
-      if (def.requiresMovementalPrep) {
-        movemental_unlocked = false;
-      }
-      if (def.dependsOn.length === 0) {
-        status = "available";
-      }
-      return {
-        organization_id: organizationId,
-        task_key: def.key,
-        status,
-        movemental_unlocked,
-        metadata: {},
-      };
-    });
+    const inserts = missing.map((def) => buildOnboardingTaskInsert(organizationId, def));
 
     let insertedNewRows = true;
     try {

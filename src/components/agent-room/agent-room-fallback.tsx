@@ -1,4 +1,4 @@
-import styles from "./agent-room.module.css";
+import styles from "./ink-band.module.css";
 
 /**
  * The crawlable, no-JS spine. Server-rendered into the initial HTML; the live
@@ -36,8 +36,8 @@ export function AgentRoomFallback() {
         </p>
         <p>
           <b>02 · Sandbox</b> — a bounded place to test AI against real work,
-          without risk. <b>03 · Skills</b> — we form the people who&rsquo;ll
-          steward it well. <b>04 · Solutions</b> — we build the tools your work
+          without risk. <b>03 · Training</b> — we form the people who&rsquo;ll
+          steward it well. <b>04 · Tech</b> — we build the tools your work
           needs, connected to everything you have. Each earns the next; skip a
           step and the rest have nothing to stand on.
         </p>
@@ -70,7 +70,7 @@ export function AgentRoomFallback() {
         <p>
           <b>SafeStart — $1,000.</b> Two weeks, fixed. We draft your five-layer
           Charter, customized to your organization; your team revises and ratifies
-          it in a private dashboard. Sandbox, Skills, and Solutions come later,
+          it in a private dashboard. Sandbox, Training, and Tech come later,
           each in its turn.
         </p>
       </section>

@@ -39,12 +39,48 @@
       "Bash(npx next *)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/agent)",
-      "Bash(curl -s http://localhost:3000/agent)"
+      "Bash(curl -s http://localhost:3000/agent)",
+      "WebFetch(domain:exponential.org)",
+      "WebFetch(domain:find-and-update.company-information.service.gov.uk)",
+      "WebFetch(domain:www.goodreads.com)",
+      "WebFetch(domain:www.amazon.com)",
+      "WebFetch(domain:www.christianbook.com)",
+      "WebFetch(domain:israelolofinjana.wordpress.com)",
+      "WebFetch(domain:www.facebook.com)",
+      "WebFetch(domain:twitter.com)",
+      "WebFetch(domain:justiceunbound.org)",
+      "WebFetch(domain:books.google.com)",
+      "WebFetch(domain:x.com)",
+      "WebFetch(domain:chbookshop.hymnsam.co.uk)",
+      "WebFetch(domain:wtctheology.org.uk)",
+      "WebFetch(domain:www.beheadstrong.uk)",
+      "WebFetch(domain:www.womanalive.co.uk)",
+      "WebFetch(domain:outreachmagazine.com)",
+      "WebFetch(domain:hopechapel.org)",
+      "WebFetch(domain:patch.com)",
+      "Bash([ -f \"$f\" ])",
+      "Bash(tee /tmp/mine.txt)",
+      "Bash(kill 92819)",
+      "Bash(NEXT_PUBLIC_AGENT_ROOM_MODE=stream pnpm dev)",
+      "Bash(NEXT_PUBLIC_AGENT_ROOM_MODE=stream nohup pnpm dev)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/agent)",
+      "Bash(NODE_PATH=__TRACKED_VAR__/node_modules node /tmp/af10-verify.mjs)",
+      "Bash(npx playwright *)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(rm -f /tmp/af10-verify*.mjs /tmp/af10-all17.mjs)",
+      "Bash(curl -s -o /dev/null -w \"agent route: %{http_code}\\\\n\" http://localhost:3000/agent)",
+      "Bash(curl -s -I http://localhost:3000/)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(k,'=',v\\) for k,v in d['scripts'].items\\(\\)]\")",
+      "Bash(curl -s -o /dev/null -w \"agent: %{http_code}\\\\n\" http://localhost:3000/agent)"
     ],
     "additionalDirectories": [
       "/home/josh/dev/01-Movemental-Core/movemental-ai-agents/scripts/seed-data/prompts",
       "/home/josh/dev/01-Movemental-Core/movemental-ai-agents/scripts",
       "/home/josh/dev/01-Movemental-Core/movemental-ai-agents"
     ]
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "supabase"
+  ]
 }

@@ -1,5 +1,5 @@
 import type { RealityCheckBeatProps } from "@/lib/agent-room/component-props";
-import styles from "../agent-room.module.css";
+import styles from "../ink-band.module.css";
 import { Emphasis } from "./emphasis";
 
 /**
@@ -31,11 +31,15 @@ export function RealityCheckBeat({
       <p className={styles.beatQ}>
         <Emphasis text={question} />
       </p>
-      <div className={styles.chips}>
-        {options.map((opt) => (
+      {/* `id="opts"` + `data-oi` mirror the stub beat so INT-04 gesture targets
+          (the gesture allow-list points `arrow`→`#opts`, `circle`→`[data-oi="N"]`)
+          resolve on the live beat too, not just in stub mode. */}
+      <div className={styles.chips} id="opts">
+        {options.map((opt, oi) => (
           <button
             key={opt}
             type="button"
+            data-oi={oi}
             className={styles.sug}
             disabled={disabled}
             onClick={() => onSay(opt)}

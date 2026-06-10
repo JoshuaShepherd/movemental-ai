@@ -1,0 +1,37 @@
+# Phase 0 baseline — 2026-06-09
+
+Plan: docs/build/plans/frontend-teardown-agent-only-plan-2026-06-05.md
+
+## Build gates
+
+| Check | Result | Notes |
+| ----- | ------ | ----- |
+| pnpm typecheck | PASS | 0 errors |
+| pnpm validate:all | PARTIAL | Layers 2–5 LOCKED/VALIDATED; research:tree-check failed (14 missing leader dirs — pre-existing) |
+| pnpm build | PASS | Production build succeeded |
+
+## Env
+
+- check:env: PASS
+- AI_AGENTS_BASE_URL, AI_AGENTS_SERVICE_SECRET, AI_AGENTS_TENANT_ORG_ID: set
+
+## Snapshots (pre-teardown)
+
+- routes: docs/build/plans/_snapshots/routes-pre-teardown.txt (92 page.tsx files)
+- components: docs/build/plans/_snapshots/component-counts-pre-teardown.txt (374 live ts/tsx under src/components excl. _archive)
+
+## Agent surfaces (dev on :3001)
+
+| Surface | Result | Notes |
+| ------- | ------ | ----- |
+| GET /agent | PARTIAL | 200 when x-movemental-shell: room; 500 without (SiteHeader next/image in dev) — proxy should inject room shell |
+| POST /api/agent-room/stream | FAIL | HTTP 500 — upstream engine path returned error HTML |
+| GET /agent-runtime | NOT VERIFIED | Requires staff login; same layout chrome issue in dev without dashboard shell |
+
+Port 3000 serves movemental-agentic-front-end static prototype (not movemental-ai).
+
+## Phase 1 executed 2026-06-09
+
+- Archived src/app/(site)/ → _archive/pre-marketing-migration-2026-06/app/(site)/
+- Preserved src/app/login/, src/app/forgot-password/
+- Added src/app/page.tsx → redirect /agent

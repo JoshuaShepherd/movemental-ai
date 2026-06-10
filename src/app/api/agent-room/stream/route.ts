@@ -47,6 +47,7 @@ export async function POST(request: NextRequest) {
     message: parsed.data.message,
     sessionId: parsed.data.sessionId,
     history: parsed.data.history,
+    phase: parsed.data.phase, // INT-10 — forwarded to the engine's phase-aware prompt
   };
 
   let upstream: Response;

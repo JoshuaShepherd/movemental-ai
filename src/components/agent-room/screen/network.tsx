@@ -1,4 +1,4 @@
-import styles from "../agent-room.module.css";
+import styles from "../ink-band.module.css";
 
 type Node = { init: string; name: string; inner: boolean };
 
@@ -41,7 +41,7 @@ export function NetworkScreen() {
   const pts = layout();
   const inner = pts.filter((p) => p.inner);
   const outer = pts.filter((p) => !p.inner);
-  const ink = "var(--color-oat-ink)";
+  const ink = "var(--color-ink-band-ink)";
 
   return (
     <div className={styles.stageIn}>
@@ -97,12 +97,12 @@ export function NetworkScreen() {
             })}
           </g>
           <g>
-            <circle cx={CX} cy={CY} r={24} fill="var(--color-oat-hero-dark)" />
+            <circle cx={CX} cy={CY} r={24} fill="var(--color-ink-band-hero-dark)" />
             <text
               x={CX}
               y={CY + 3}
               textAnchor="middle"
-              style={{ fontFamily: "var(--font-oat-display)", fontSize: 12, fill: "var(--color-oat-ai-text)" }}
+              style={{ fontFamily: "var(--font-ink-display)", fontSize: 12, fill: "#e8ecf5" }}
             >
               movemental
             </text>
@@ -112,13 +112,13 @@ export function NetworkScreen() {
               const rr = p.inner ? 8.5 : 6.5;
               return (
                 <g key={`n${i}`}>
-                  <circle cx={p.x} cy={p.y} r={rr} fill="var(--color-oat-bg)" stroke={ink} strokeWidth={1.2} />
+                  <circle cx={p.x} cy={p.y} r={rr} fill="var(--color-ink-band-bg)" stroke={ink} strokeWidth={1.2} />
                   <text
                     x={p.x}
                     y={p.y + 0.4}
                     textAnchor="middle"
                     dominantBaseline="middle"
-                    style={{ fontFamily: "var(--font-oat-mono)", fontSize: 7.5, fill: ink, fontWeight: 500 }}
+                    style={{ fontFamily: "var(--font-ink-mono)", fontSize: 7.5, fill: ink, fontWeight: 500 }}
                   >
                     {p.init}
                   </text>
@@ -126,7 +126,7 @@ export function NetworkScreen() {
                     x={p.x}
                     y={p.y + rr + 9}
                     textAnchor="middle"
-                    style={{ fontFamily: "var(--font-oat-mono)", fontSize: 7.5, fill: "var(--color-oat-ink-muted)" }}
+                    style={{ fontFamily: "var(--font-ink-mono)", fontSize: 7.5, fill: "var(--color-ink-band-ink-muted)" }}
                   >
                     {p.name}
                   </text>

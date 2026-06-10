@@ -1,0 +1,141 @@
+# Agent backend integration (INT) — master runner
+
+**Canonical location:** `movemental-ai/docs/build/prompts/integration-agent-backend/`
+**Target agent:** Cursor / Claude Code executing one prompt at a time
+**Primary repos:** `movemental-ai` (UI) **+** `movemental-ai-agents` (engine) — this pack is **cross-repo**
+**Predecessor:** the [Ink Band migration pack](../migration-agentic-front-end/master_runner.md) (AF-00–AF-12, **signed off 2026-06-10**)
+**Authoritative deferral note:** [AF-90](../migration-agentic-front-end/90-deferred-agent-backend-integration.md)
+**Discuss design spec:** [agent-room-long-form-discussion-ui.md](../../notes/agent-room-long-form-discussion-ui.md) (Model B layout, capture seam, Option A agent policy)
+**Last updated:** 2026-06-10
+
+---
+
+## Why this pack exists
+
+AF-90 deferred all live-agent wiring out of the migration and named seven integration phases (INT-01…INT-07). The stub migration is complete: `/agent` runs the Ink Band prototype as a local `play()` runner with **no network**, behind `AGENT_ROOM_MODE` (default `"stub"`). This pack turns the **`"stream"`** branch — which was kept intact but untouched — into a working live surface, adds **Discuss** (Guide → Discuss phases, Model B UI, capture funnel), and flips the default when it's proven.
+
+A read-only preflight (**INT-00**) is prepended to AF-90's list, mirroring AF-00: establish a reachability + contract-drift baseline before any wiring.
+
+---
+
+## Mandatory agent protocol (every session)
+
+You are the **Agent Integration runner**. Before ending any session:
+
+1. **Read this file first** when picking up work in a new context window.
+2. Execute prompts in **Recommended order** unless the status table shows a blocker resolved elsewhere.
+3. After each prompt, **update this file**: set **Status / Last touched / Branch / Blockers** in the master table, append a **Session changelog** row, and append to the child prompt's **§10 Attempt log**.
+4. Run the **Verification checklist** for every touched area, in **both repos** when a change is cross-repo.
+5. **Keep the contract mirrors in sync.** `stream-chunk.ts` / `component-props.ts` mirror the engine's `src/lib/ai/types.ts` / `src/lib/tools/render-tools.tool.ts` **by contract** (no shared package). Any change to one side must land on the other in the same prompt, or the prompt is **Blocked**.
+6. **Do not regress stub mode.** `AGENT_ROOM_MODE=stub` must keep working with **zero network** at every step. The stub runner is the permanent offline fallback, not throwaway scaffolding.
+7. **Discuss = Model B.** Screen stays dominant; voice band grows; marginalia on sheet — never shrink-to-pin transcript layout (see design spec).
+
+**Never** mark a row **Done** without the child prompt's Definition of Done checked **and** a green verification checklist in both affected repos.
+
+---
+
+## Pre-requisites (one-time, before INT-01)
+
+- AF-12 sign-off complete (✅ 2026-06-10).
+- Engine running locally or reachable: `movemental-ai-agents` serving `/api/agents/stream`.
+- Env present in `movemental-ai/.env.local` (the proxy 503s without all three): `AI_AGENTS_BASE_URL`, `AI_AGENTS_SERVICE_SECRET`, `AI_AGENTS_TENANT_ORG_ID`. Toggle the surface with `NEXT_PUBLIC_AGENT_ROOM_MODE=stream`.
+
+---
+
+## Master status table
+
+| Order | ID | Prompt | Status | Last touched | Branch | Blockers / notes |
+| ---: | --- | --- | --- | --- | --- | --- |
+| 0 | INT-00 | [00-preflight-engine-and-contract-baseline.md](./00-preflight-engine-and-contract-baseline.md) | **Done** 🟡 | 2026-06-10 | slice/S02-leader-corpus-onboarding | Baseline AMBER. Chunk union + ComponentId set **already in sync**; live trace deferred (engine/dev both down → INT-07 blocker). See §10. |
+| 1 | INT-01 | [01-harmonize-component-ids.md](./01-harmonize-component-ids.md) | **Done** ✅ | 2026-06-10 | slice/S02-leader-corpus-onboarding | Decision A. 16-id namespace; `screen-map.ts` SSOT (engine-extra→null). `beat` rename + `capture {kind}` both repos. typecheck ✅✅, tests ✅. INT-02 open-item: `.strict()`↔`.passthrough()` empty props. |
+| 2 | INT-02 | [02-ui-render-to-screen-registry.md](./02-ui-render-to-screen-registry.md) | **Done** ✅ | 2026-06-10 | slice/S02-leader-corpus-onboarding | Shared registry; `stream-screen.tsx` adapter; `screen.tsx`+static dups retired. readback **dual-mode**, capture **minimal** (sheet-append → INT-08). Stub+stream `/agent` HTTP 200 verified. |
+| 3 | INT-03 | [03-text-delta-to-ink-voice.md](./03-text-delta-to-ink-voice.md) | **Done** ✅ | 2026-06-10 | slice/S02-leader-corpus-onboarding | Guide-phase: `text_delta` routes through the shared Caveat ink voice (`beginStream`/`appendStream`/`commitStream`); growing-tail `StreamVoiceLine`; stream-only thinking pulse; reduced-motion instant. One-growing-line-per-turn, commit on `ui_render`/handoff/done. Stub byte-identical. **Discuss band/passage deferred to INT-08/INT-10** (no `phase` on client). Live turn unverified (engine down → INT-07). |
+| 4 | INT-04 | [04-ink-gesture-engine-and-client.md](./04-ink-gesture-engine-and-client.md) | **Done** ✅ | 2026-06-10 | slice/S02-leader-corpus-onboarding | Cross-repo. New `ink_gesture` chunk both repos; engine `defineInkGestureTool`/`gesture_at` w/ per-screen allow-list; client `drawGesture` bounded rAF poll (safe no-op, fires post-mount). typecheck ✅✅, engine tests 151/151 (ui-render 8/8). Live turn deferred → INT-07. |
+| 5 | INT-05 | [05-scenes-to-agent-tool-surface.md](./05-scenes-to-agent-tool-surface.md) | **Done** ✅ | 2026-06-10 | slice/S02-leader-corpus-onboarding | Cross-repo. 4th act carrier: `suggest` chunk both repos (mirror); engine `defineSuggestTool`/`suggest_chips` (max 4, blocking) + `ToolOutcome`+runner yield; client `agentChips` + `case "suggest"`→`sendMessage(value)`. Beat-tap-in-stream already done (INT-02). Seed (minimal): +`gesture_at`+`suggest_chips`, fixed `render_reality_check_beat`→`render_beat`; room-host.md +suggest tool +Discuss chip sets. typecheck ✅✅, ui-render 11/11 (+3), agent-runner 23/23. **⚠️ broad seed/prompt OLD-vocab drift → dedicated reconciliation slice (§10).** Live turn → INT-07. |
+| 6 | INT-06 | [06-getprofile-to-corpus-rag.md](./06-getprofile-to-corpus-rag.md) | **Done** ✅ | 2026-06-10 | slice/S02-leader-corpus-onboarding | **"Enrich, curated wins"** (operator). `LEADER_CORPUS_SLUGS` index→slug (8 Josh→null); `getCorpusProfile` **server action** (server-only `db`, no client creds) maps `biography`→`bio` (prose-only, skips `**Status**` preamble) + `books`/`frameworks`→`work[]`; `getProfileAsync` merges over local (curated `lede`/`connection`/`workSay`/`connectSay` kept, never synthesized) + per-session cache. `leader-screen` prefers async **in stream only** (stub zero-network); scenes untouched. Validated **live**: 10/16 corpus bios, 6 empty→local, no-row→local. typecheck ✅ lint ✅. Live full turn → INT-07. |
+| — | INT-08 | [08-discuss-phase-and-model-b-layout.md](./08-discuss-phase-and-model-b-layout.md) | **Done** ✅ | 2026-06-10 | slice/S02-leader-corpus-onboarding | **UI-only, flag-gated.** Model B foundation: shared `useDiscussPhase` (`phase`/`transcript`/`discussTurnCount`/`enter`/`exitDiscuss`) on both hooks; `discuss/` components (voice grow + tap-expand, marginalia, "What we discussed" fold, textarea composer); `AgentRoomView` Model B (dominant screen, `.discuss`, VoiceZone branch). Flag `NEXT_PUBLIC_AGENT_ROOM_DISCUSS=1`. typecheck ✅ lint ✅; **headless 9/9** (screen dominant, voice 75→128px, textarea, marginalia, fold, 0 net). Triggers→INT-09, live stream→INT-10. |
+| — | INT-09 | [09-discuss-transition-and-capture-seam.md](./09-discuss-transition-and-capture-seam.md) | **Done** ✅ | 2026-06-10 | slice/S02-leader-corpus-onboarding | **UI-only, flag-gated.** `capture` gains `kind:'discuss'` (variant + `LEADS.discuss` + discuss `confirm`); `submitLead` seam unchanged. Stub **capture gate**: `toDiscuss` scene (honest line → capture → confirm) + `discussOffer` consent scene. Entry chips → `toDiscuss` on readback/path/safety/pricing. **Implicit offer** (`isMetaOrObjection` + free-text/fallback streaks → consent chips, never auto-morph). `DISCUSS_TURN_CAP=7` (env-tunable). sessionStorage phase+transcript (lazy-init restore, replay clears). All gated by `DISCUSS_ENABLED`. typecheck ✅ lint ✅; headless: capture-gate 6/6, flag-off 5/5, sessionStorage 5/5. Stream live discuss → INT-10. |
+| — | INT-10 | [10-phase-aware-agent-discuss-stream.md](./10-phase-aware-agent-discuss-stream.md) | **Done** ✅ | 2026-06-10 | slice/S02-leader-corpus-onboarding | **Cross-repo, Option A.** `phase` flows client `proxy-schema`→proxy route→engine `agentsInvokeBodySchema`→`RunParams.phase`. Engine `withPhaseBlock` runtime-injects `DISCUSS_PROMPT_BLOCK` when discuss (Guide prefix-cache untouched, no re-seed needed); `show_capture` seeded to room-host; `room-host.md` `enter-discuss` sentinel. Client: stream hook sends `phase`, Discuss transcript routing (user→margin, assistant short→band / long→passage @180ch), `ENTER_DISCUSS_VALUE` chip → local `enterDiscuss`; VoiceZone discuss live `StreamVoice`; `DiscussMarginalia` filters short voice turns. **Option B NOT built** (documented). typecheck ✅✅, engine 34/34; headless: marginalia filter + 0 stub net. Live stream → INT-07. |
+| 7 | INT-07 | [07-e2e-live-and-fallback.md](./07-e2e-live-and-fallback.md) | **Done** ✅ | 2026-06-10 | slice/S02-leader-corpus-onboarding | **Default flipped → `stream`** (operator go). Engine brought up live on :3001; full chain proven (text/beat/capture render live). Fixed 2 seed/prompt drifts (`render_beat`, `show_capture`) + INT-04 `#opts` on stream beat. Tests: unit 13/13, e2e 5/5 (stub/fallback/live). typecheck ✅✅. **Known deltas in §10** (gesture not yet prompted; Discuss/leader not re-run live; room-host.md prompt fix uncommitted + DB re-seeded). |
+
+**Status values:** `Not started` · `In progress` · `Blocked` · `PR open` · `Done` · `Deferred`
+
+---
+
+## Recommended execution order
+
+```text
+INT-00  Preflight: engine reachable + contract-drift baseline (read-only)
+  ↓
+INT-01  Harmonize ComponentId ↔ Ink Band ScreenId + capture (one mapping SSOT)
+  ↓
+INT-02  ui_render → the SAME Ink Band screen registry (+ capture on sheet)
+INT-03  text_delta → streaming inkLine voice (+ Discuss passage routing)   ← parallel after INT-00
+INT-04  ink_gesture: new chunk + render-tool (engine + client)             ← parallel, cross-repo
+INT-08  Discuss phase + Model B UI (RoomPhase, marginalia, voice expand)   ← parallel UI-only track
+  ↓
+INT-09  Discuss transition + capture seam (kind:'discuss', stub gate, sessionStorage)
+  ↓
+INT-05  Agent-driven acts (say/show/gesture/suggest) + Discuss transition chips
+INT-06  Wire getProfile() → corpus/RAG (Supabase movement_leader_corpus_data)
+  ↓
+INT-10  phase in POST + Option A Discuss prompt + live Discuss stream behavior
+  ↓
+INT-07  E2E: Guide + Discuss + capture + fallback; flip default to "stream"
+```
+
+**Parallel tracks:** INT-02/03/04/08 can start after INT-00 (INT-08 needs no engine). INT-09 needs INT-08. INT-05 needs INT-02+03+04. INT-10 needs INT-05+08+09. **One prompt per PR** when possible; cross-repo prompts ship as paired PRs.
+
+**LF ↔ INT mapping** (design note §10): LF-01/02 → INT-08 · LF-03/LF-06 → INT-09 · LF-04/LF-05 → INT-10 (+ INT-03/05) · LF-07 → INT-07.
+
+---
+
+## Verification checklist (run after each prompt)
+
+| Check | Command / action | Pass criterion |
+| --- | --- | --- |
+| UI typecheck | `pnpm typecheck` (movemental-ai) | Zero errors |
+| Engine typecheck | `pnpm typecheck` (movemental-ai-agents) | Zero errors (if engine touched) |
+| Lint | `pnpm lint` | No new errors in touched files |
+| Stub still offline | `/agent` with `AGENT_ROOM_MODE=stub` | Page loads; **no** `/api/agent-room/stream` calls; scenes play |
+| Stream renders | `AGENT_ROOM_MODE=stream`, engine up | Voice streams; `ui_render` swaps screen; no console errors |
+| Discuss Model B | Discuss phase enabled | Screen dominant; voice band expanded; no pin+chat layout |
+| Stub Discuss gate | stub + Discuss transition | capture cell, not dead-end notice |
+| Contract mirror | diff `stream-chunk.ts`/`component-props.ts` vs engine | In sync (or documented intentional superset) |
+| Fallback | engine down / 503 | Room shows the error voice, never a blank/crash |
+
+Use Chrome DevTools MCP (or headless Playwright with the cached chromium, as in the AF pack) for browser verification.
+
+---
+
+## Global Definition of Done (runner level)
+
+A prompt is **Done** only when:
+
+- [ ] Child prompt **Definition of Done** boxes checked.
+- [ ] Verification checklist green in **every** affected repo.
+- [ ] Stub mode still loads with **zero network**.
+- [ ] Contract mirrors in sync (cross-repo prompts).
+- [ ] Discuss prompts preserve Model B (if touched).
+- [ ] `master_runner.md` status row updated + session changelog appended.
+- [ ] Child prompt **§10 Attempt log** appended.
+
+---
+
+## Session changelog (append-only)
+
+| Date | Agent / human | Prompt ID | Summary | typecheck | Outcome |
+| --- | --- | --- | --- | --- | --- |
+| 2026-06-10 | Claude Code | — | Authored the INT prompt pack (master runner + INT-00…INT-07) per AF-90 §4, grounded in the live seams (`stream-chunk.ts`, `component-props.ts`, `use-agent-room-stream.ts`, `screen/screen.tsx`, the proxy route, and the engine's `render-tools.tool.ts` / `ai/types.ts`). No code changes. | — | Ready for execution (operator-gated) |
+| 2026-06-10 | Claude Code | — | Integrated [Discuss design spec](../../notes/agent-room-long-form-discussion-ui.md): added INT-08…INT-10; updated INT-00…INT-07 for Model B, `capture`/`kind:'discuss'`, phase POST, Option A agent policy. No code changes. | — | Ready for execution |
+| 2026-06-10 | Claude Code | INT-00 | Ran read-only preflight. Found chunk union + ComponentId set **already in sync** across repos (no client/engine drift on the chunk layer). Real gap = 8 ComponentIds vs **13** ScreenIds (`capture` already in `SCREEN_IDS`); all Ink-Band-only screens have stub components built → INT-02 is wiring, not building. Engine+dev both down → live trace deferred (INT-07 blocker only). Noted `.strict()`↔`.passthrough()` empty-props drift for INT-01. §10 appended with full drift/id-gap/missing-act/Discuss tables + per-phase risk. | UI ✅ · engine ✅ · `ui-render.test.ts` ✅ 4/4 | 🟡 AMBER baseline; INT-01…06, 08…10 unblocked |
+| 2026-06-10 | Claude Code | INT-01 | **Decision A** — unified to a 16-id namespace (13 Ink Band `ScreenId`s + 3 engine-extra). Engine: `ComponentId` enum + render tools (`render_beat`, `show_capture` w/ `{kind}`, +7 Ink Band tools) + `ui-render.test.ts`. Client: `COMPONENT_IDS` mirror, `component-props.ts` (`beat` dispatch + `captureProps`), **new** `screen-map.ts` SSOT (`Record<ComponentId, ScreenId\|null>`, engine-extra→null) + **new** `screen-map.test.ts`, `beat` literals in `screen.tsx`/`agent-room.tsx`/`use-agent-room-stream.ts`. `reality_check_beat`→`beat` everywhere. Stub path untouched. | engine ✅ · `ui-render.test.ts` ✅ 4/4 · client ✅ · `screen-map.test.ts` ✅ 6/6 · client lint ✅ | ✅ Done (no commit — operator-gated). INT-02 unblocked. |
+| 2026-06-10 | Claude Code | INT-02 | Promoted the stub registry to the **single shared** Ink Band registry; new `screen/stream-screen.tsx` adapter routes `ui_render` through it via `screen-map.ts` (engine-extra rendered directly). `ScreenProps` gained optional `stream` (stub untouched). `beat` unified (hook-free wrapper), `readback` **dual-mode** (stub gap-spine ↔ engine prose/fork — incompatible shapes, operator-chosen), `capture` **minimal cell** + `#capture` (Model-B sheet-append deferred to INT-08, operator-chosen). Retired `screen.tsx` + static dups `path/pricing/founders.tsx`. | typecheck ✅ · lint ✅ (0 err) · `screen-map.test.ts` ✅ 6/6 · stub `/agent` 200 ✅ · stream `/agent` 200, 0 net-on-load ✅ | ✅ Done (no commit). Live agent turn unverified (engine down → INT-07). INT-03/04/06 unblocked. |
+| 2026-06-10 | Claude Code | INT-04 | **Cross-repo.** New `ink_gesture` chunk `{kind,target}` in **both** `ai/types.ts` + `stream-chunk.ts` (mirror in sync). Engine: `defineInkGestureTool` + `__inkGesture` envelope + `gesture` `ToolOutcome` branch in `ui-render.ts`; one `gesture_at` tool in `render-tools.tool.ts` w/ **per-screen** `GESTURE_TARGETS` allow-list (`home#phrase`, `beat#opts`+`[data-oi="N"]` regex, `readback#hereStage`/`#rbphrase`, `capture#capture`); disallowed/unknown → blocked `error` chunk; `uiRenderChunksFor` yields gesture. Client: `streamChunkSchema` variant; `use-ink-gestures` `drawGesture`→`resolveTarget` bounded 20-rAF poll (fires post-mount, safe no-op, no throw); stream `drain()` `case "ink_gesture"` → `void drawGesture` (fire-and-forget, via shared `useInk()`). Integrated cleanly with INT-03's concurrent `drain()` edit. Stub path: no fetch added. | UI ✅ · engine ✅ · engine `test:run` 151/151 (ui-render 8/8, +4 gesture-gate) ✅ · client lint ✅ · stub `/agent` 200 ✅ | ✅ Done (no commit — operator-gated). Live gesture turn deferred → INT-07. INT-05 needs INT-02+03+04. |
+| 2026-06-10 | Claude Code | INT-03 | **UI-only.** Routed live `text_delta` through the **same** Caveat ink voice the stub's `say` uses. `use-ink-voice.ts`: `stream` line + `beginStream`/`appendStream`/`commitStream`; `VoiceLineItem.settled` (finished stream line shows full, no re-animation). New `StreamVoiceLine` (`ink-voice.tsx`) eases revealed-width toward the **live** `scrollWidth` each frame (grows the tail without restarting per delta), nib trailing; reuses `.vline/.vspan/.nib` so the reduced-motion media query + `prefersReducedMotion()` short-circuit apply. `agent-room-context` `InkApi` gains `voiceStream`+3 methods. `voice-zone.tsx`: renders committed queue + `StreamVoice` + **stream-only** thinking pulse (`voice.thinking && !voiceStream`), `InkVoice forceOld` fades queue under the active line. `use-agent-room-stream.ts`: `text_delta`→one growing line per turn; **commit** on `ui_render`/`agent_handoff`/turn-end; `clearVoice` at send-start/`reset`/error. **Decision:** one-growing-line-per-turn (see §10). Stub byte-identical (`voiceStream` null, `thinking` false). **Discuss 3–5 line band + passage append deferred to INT-08/INT-10** (no `phase` plumbed to client). | UI typecheck ✅ 0 err · lint ✅ 0 problems in touched files · `screen-map.test.ts` ✅ 6/6 · stub `/agent` 200, `ink-band-surface` rendered, **0** stream-endpoint refs ✅ | ✅ Done (no commit — operator-gated). Live streamed turn unverified (engine down → INT-07). INT-10 will branch Guide/Discuss on `phase`. |
+| 2026-06-10 | Claude Code | INT-05 | **Cross-repo.** 4th act carrier — `suggest`. New `suggest` chunk `{ chips: {label,lead?,value}[] }` in **both** `ai/types.ts` + `stream-chunk.ts` (mirror; `value`=next user turn, routes to agent not a local scene). Engine: `ui-render.ts` `SUGGEST_KEY` envelope + `SuggestEnvelope` + `suggest` `ToolOutcome` + `interpretToolOutput` branch + **`defineSuggestTool({name,max})`** (chips `min(1).max(4)`, blocking → `error` chunk); `render-tools.tool.ts` `suggest_chips`; `agent-runner` `uiRenderChunksFor` yields suggest; +3 `ui-render.test.ts` cases. Client: `use-agent-room-stream` `agentChips` state + `case "suggest"`→chips w/ `onSelect: sendMessage(value)`; `suggestions` = beat→[] else `agentChips ?? DEFAULT`. **Beat-tap-in-stream already done (INT-02).** Seed (**minimal**, operator-chosen): +`gesture_at`+`suggest_chips` TOOL_SEEDS+assignments, **fixed `render_reality_check_beat`→`render_beat`** (seed name must match registered handler); `room-host.md` +Suggestion-tool subsection +Guide/Discuss chip sets. Stub `SCENES` untouched, mode flag intact. **⚠️ broad pre-existing seed/prompt OLD-vocab drift (`show_field_guide_signup`/`show_enrollment` vs `show_capture`, unseeded INT-01 screens, `HOST_SCENES`) → dedicated reconciliation slice (§10).** | engine typecheck ✅ (incl. seed) · UI typecheck ✅ · `ui-render.test.ts` ✅ 11/11 (+3 suggest) · `agent-runner.test.ts` ✅ 23/23 · UI lint ✅ 0 in touched · stub `/agent` 200, 0 stream refs ✅ | ✅ Done (no commit — operator-gated). Live full turn unverified (engine down → INT-07). INT-06 (INT-02) + INT-10 (needs INT-05) unblocked. |
+| 2026-06-10 | Claude Code | INT-06 | **UI + Supabase.** Wired the `getProfile` seam to the corpus under operator-chosen **"enrich, curated wins"**. `LEADER_CORPUS_SLUGS` (band index→`corpus_slug`, explicit map; index 8 Josh→`null`). New `data/get-corpus-profile.ts` **`"use server"`** action: reads `movement_leader_corpus_data` via server-only Drizzle `db` (`db.execute(sql)`, raw — table not in `schema.ts`); maps `biography`/`identity` `{markdown}`→`bio` (first **prose** para, skips `**Status**`/heading/table/list preamble — caught + fixed live on alan-hirsch) and `books`/`frameworks` lists→`work[]`; `organizations` omitted (blob, would be synthesis). New `getProfileAsync(i)` merges corpus `bio`+`work` over local; **curated `lede`/`connection`/`workSay`/`connectSay` kept, never synthesized**; per-session `corpusCache`; slug-null/no-row/DB-error → local `getProfile` (honest stub). `leader-screen.tsx`: `useState(local)` initial (FLIP-safe) + `useEffect` upgrade **stream-only** (`isStream`) → stub stays **zero-network**; sync `getProfile` + leader **scenes** untouched. No DB creds/service key in client bundle (RPC stub). | UI typecheck ✅ · lint ✅ 0 in touched · stub `/agent` 200, no compile errors · **live corpus read**: 10/16 prose bios, 6 empty→local-kept, `work[]` grounded, josh no-row→local ✅ | ✅ Done (no commit — operator-gated). Live stream full turn unverified (engine down → INT-07). |
+| 2026-06-10 | Claude Code | INT-08 | **UI-only, flag-gated** (`NEXT_PUBLIC_AGENT_ROOM_DISCUSS=1` → `DISCUSS_ENABLED`). Model B Discuss foundation. New `lib/agent-room/discuss.ts` (`RoomPhase`/`TranscriptTurn`/flag) + shared `use-discuss-phase.ts` (`phase`/`transcript`/`discussTurnCount`/`enterDiscuss`/`exitDiscuss` + `appendTranscript`/`resetDiscuss` + dev seam `window.__agentRoomDiscuss`). Both controllers spread the 5 fields + `resetDiscuss()` in reset; `AgentRoomController` identical across modes; `AgentRoomView` gained optional `phase`/`transcript`/`onExitDiscuss` (Guide defaults). `discuss/` components: `DiscussVoice` (band grows to 3–5 assistant lines via `InkVoice`, tap-to-expand drawer), `DiscussMarginalia`+`DiscussFold` (visitor margin rule + agent passages on the sheet; "What we discussed" fold in Guide), `DiscussComposer` (auto-grow textarea, Enter/⌘Enter send, Shift+Enter newline, replay confirm, back-to-guided). VoiceZone branches to `DiscussVoice` in discuss. CSS appended (voice grow+transition, marginalia, textarea, fold; reduced-motion disables motion). Screen stays dominant — no shrink-to-pin. Stub zero-network preserved. | UI typecheck ✅ · lint ✅ 0 in touched · **flag off**: stub `/agent` 200, 0 stream refs, no discuss markup, no `undefined` class leak · **flag on (headless @playwright/test, dev seam)**: 9/9 — `.discuss`, voiceDiscuss 75→128px, screen dominant (397≫128), 1 textarea (0 in guide), 1 margin + 2 passages, tap-expand, **0 net**, exit→fold + textarea gone | ✅ Done (no commit — operator-gated). Triggers + stub capture gate → INT-09; live `text_delta`→passage + `phase` in POST → INT-10. |
+| 2026-06-10 | Claude Code | INT-09 | **UI-only, flag-gated** (`DISCUSS_ENABLED`). Discuss transition + capture seam. `capture.ts`: `CaptureKind += "discuss"` + `CAPTURE_VARIANTS.discuss` (email req, org/role opt) + `LEADS.discuss` + `isCaptureKind`; `confirm-screen.tsx` `mode:"discuss"` branch (honest follow-up, no dead-end). `submitLead` seam unchanged (console stub → `[lead] discuss {…}`). `scenes.ts`: `toDiscuss` capture-gate scene (line → `capture{kind:'discuss'}` → `await` → `confirm{mode:'discuss'}`) + `discussOffer` consent scene; entry chips `to:"toDiscuss"` on `beat-scenes` post-readback, `toPath`, `toSafety`, `cost` (originals preserved). `route-input.ts` `isMetaOrObjection()`; stub `sendMessage` tracks free-text/fallback streaks → primary signal (meta/objection · 3rd free-text · ≥2 fallbacks) plays `discussOffer` (offer, never auto-morph); stub `suggest` filters `toDiscuss`/`discussOffer` chips when flag off. `discuss.ts` `DISCUSS_TURN_CAP=7` (env `NEXT_PUBLIC_AGENT_ROOM_DISCUSS_TURN_CAP`); `discussTurnCount` bumps on assistant turns. `use-discuss-phase.ts` sessionStorage (`movemental-room-discuss-phase`/`-transcript`) via **lazy `useState` initializers** (no setState-in-effect; safe — room mounts post-hydration) + persist effect; `resetDiscuss` clears. Stub zero-network. | UI typecheck ✅ · lint ✅ (only a pre-existing unused-eslint-disable warning, not from this prompt) · headless `@playwright/test`: **flag-on capture-gate 6/6** (implicit offer→consent→`#capture` discuss→`submitLead` log→confirm, 0 stream net), **flag-off 5/5** (no discuss chips/consent/markup, originals intact), **sessionStorage 5/5** (persist→reload restores Model B + marginalia→replay clears) | ✅ Done (no commit — operator-gated). Stream live Discuss (agent capture at turn-cap, `enterDiscuss` on agent offer) → INT-10. Composer-legend toggle deferred. |
+| 2026-06-10 | Claude Code | INT-07 | **Final gate — default flipped → `stream` (operator go).** Brought the engine up live on `:3001` (evicted a stray UI instance squatting the port; restarted the wedged `:3000` UI). **Proved the live chain end-to-end** (proxy→engine→Anthropic→SSE): `text_delta` voice, reality-check→`render_beat`→`ui_render(beat)`→`#opts`, "free guide"→`show_capture`→`ui_render(capture{kind:free})`. **Fixed 2 INT-05-flagged drifts:** stale DB seed (`render_reality_check_beat`→`render_beat`, re-seeded) that dead-ended the core flow, and prompt drift (`show_field_guide_signup`/`show_enrollment`→`show_capture{kind}` in `room-host.md`, re-seeded). **Fixed INT-04 gap:** stream beat now exposes `#opts`/`data-oi` (gestures resolve live, not just stub). Tests: new `agent-room-stream-contract.test.ts` **13/13** (malformed/invalid dropped), `agent-room.spec.ts` **5/5** (stub 0-net · fallback 503/502/malformed · live beat, no console errors); `playwright.config.ts` opt-in `PW_CHROMIUM_PATH`. `mode.ts`→`?? "stream"`; ADR amended (`stub`=offline fallback). | UI typecheck ✅ · engine typecheck ✅ · UI lint (touched) ✅ · unit 13/13 ✅ · e2e 5/5 ✅ | ✅ Done. **Deltas (§10):** gesture not yet *prompted*; suggest/leader/Discuss not re-run live; `room-host.md` fix **uncommitted** + DB re-seeded (commit to pin). Engine pinned `0fe98af` + uncommitted prompt. |
+| 2026-06-10 | Claude Code | INT-10 | **Cross-repo, Option A.** Phase-aware agent + Discuss stream. **Engine:** `phase` in `agentsInvokeBodySchema` → `stream/route` → `RunParams.phase` (new `RoomPhase`); `DISCUSS_PROMPT_BLOCK` + `withPhaseBlock()` runtime-append at both system-prompt build sites (only when `phase==='discuss'`, last block → static Guide prefix-cache intact, no re-seed required); `seed-agent-room.ts` +`show_capture` tool + room-host assignment (order 10); `room-host.md` Discuss "Yes" chip → `value:"enter-discuss"` sentinel + phase-block note. **Client:** `proxy-schema` + proxy route forward `phase`; stream hook sends `phaseRef` on every POST, Discuss transcript routing (user→`margin` at send; assistant turn-end→`passage` if >`DISCUSS_PASSAGE_THRESHOLD`(180) else `voice`, then `clearVoice`), `ENTER_DISCUSS_VALUE` suggest chip → local `enterDiscuss` (no round-trip); `VoiceZone` discuss branch renders live `StreamVoice` + pulse; `DiscussMarginalia` filters out short `voice` turns (band-only); `discuss.ts` +`ENTER_DISCUSS_VALUE`/`DISCUSS_PASSAGE_THRESHOLD`. **Option B (`room-discuss` handoff) NOT implemented** — documented as later refactor. Stub paths untouched. | engine typecheck ✅ · UI typecheck ✅ · engine `agent-runner`+`ui-render` 34/34 ✅ · UI lint ✅ 0 in touched · headless (flag-on, dev seam): marginalia shows visitor+long-passage / excludes short voice turn, short reply in band, textarea present, **0** stub stream-net | ✅ Done (no commit — operator-gated; `pnpm seed:agent-room` is an operator step). Live stream turn (phase POST→prompt block→agent capture/suggest, multi-turn) unverified — engine down → INT-07. |

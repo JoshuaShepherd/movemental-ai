@@ -1,0 +1,118 @@
+# Agent Room — architecture (ADR)
+
+Migration target for the **Ink Band** prototype (`movemental-agentic-front-end`).
+Authoritative prompt pack: [`docs/build/prompts/migration-agentic-front-end/`](../../../docs/build/prompts/migration-agentic-front-end/).
+This ADR is set by **AF-01** and is binding for every later prompt.
+
+## Status
+
+Accepted — 2026-06-09 (AF-01). Supersedes ad-hoc decisions in the earlier
+stream-mode build.
+
+**Amended 2026-06-10 (INT-07): default is now `"stream"`.** The live agent
+surface was proven end-to-end (proxy → `movemental-ai-agents` engine → SSE):
+voice streams, the reality-check renders the beat, and conversion renders
+`show_capture`; engine-down/misconfig degrades to an honest error voice (never
+blank). `stub` remains the permanent **offline fallback** — set
+`NEXT_PUBLIC_AGENT_ROOM_MODE=stub` for demos / engine-down. The §1 decision below
+records the original AF-01 default (`stub`) and is kept as history. See
+[INT-07](../../../docs/build/prompts/integration-agent-backend/07-e2e-live-and-fallback.md) §10.
+
+## Context
+
+Two designs currently collide in `src/components/agent-room/`:
+
+- the legacy stream build wired for a **live SSE agent**
+  (`use-agent-room-stream.ts` → `/api/agent-room/stream` → `movemental-ai-agents`);
+- the **Ink Band** prototype we are porting — a front-end-only, scripted
+  experience (Playfair/Caveat/IBM Plex Mono tokens, ink voice + SVG gestures, a
+  closed 12-screen set, choreography as data).
+
+The AF-00 baseline (see `00-preflight-audit-and-baseline.md` §10) found they
+differ in tokens, fonts, screen set, and copy — this is a fresh scoped surface,
+not a restyle.
+
+## Decision
+
+### 1. Runtime mode switch — `stub` (default) vs `stream`
+
+> **Superseded by the INT-07 amendment above:** the default is now `"stream"`;
+> `stub` is the opt-in offline fallback. The original AF-01 text is kept below.
+
+`src/lib/agent-room/mode.ts` exports `AGENT_ROOM_MODE: "stub" | "stream"`,
+defaulting to **`"stub"`** (`NEXT_PUBLIC_AGENT_ROOM_MODE` overrides).
+
+- **`stub`** — `useAgentRoomStub` + a local `play()` runner over ported `SCENES`.
+  **No network.** This is what AF-02–AF-12 build.
+- **`stream`** — `useAgentRoomStream` + `/api/agent-room/stream`. Untouched by
+  this pack; flipped on in **AF-90**.
+
+`AgentRoom` dispatches on the flag by rendering one of two thin container
+components (`StubRoom` / `StreamRoom`), each calling its own hook
+unconditionally. This keeps the rules of hooks intact and guarantees stub mode
+**never mounts the stream hook** — `/agent` does not fetch on load.
+
+Both hooks return the same `AgentRoomController` shape, so `AgentRoomView` (the
+three-zone shell) is mode-agnostic.
+
+### 2. Scoped design surface
+
+The room gets its **own** Ink Band token ramp, applied via a scoped wrapper
+class (`.ink-band-surface`, introduced in AF-02). Marketing nav/footer are
+already suppressed on `/agent` via `proxy.ts` (`x-movemental-shell: room`,
+verified AF-01).
+
+### 3. Component boundaries (full client island, no Server Components)
+
+```
+AgentRoomShell (client, hydration guard) ── AgentRoomFallback (SSR, no-JS)
+  └─ AgentRoom (mode dispatcher)
+       └─ StubRoom | StreamRoom  ── calls useAgentRoomStub | useAgentRoomStream
+            └─ AgentRoomView
+                 ├─ Mast (logo = goHome, corner menu)
+                 ├─ Stage  (scroll container + ink SVG overlay)  ← AF-03/04
+                 │    └─ Screen  (registry switch on screen id)  ← AF-07
+                 ├─ Voice line
+                 └─ Composer (suggest chips + input)             ← AF-11
+```
+
+Data lives in plain TS modules under `src/lib/agent-room/data/` — **no fetch**.
+
+### 4. Preserve prototype contracts verbatim
+
+The closed screen set + act vocabulary + one-runner rule are ported verbatim
+into `src/lib/agent-room/acts.ts`. A scene is an ordered `Act[]`; the single
+runner (`play`, AF-05) performs any scene; choreography is **data**, not code.
+`getProfile()` stays the single per-leader content seam (RAG swap-point, AF-90).
+
+### 5. HTML → React mapping rules
+
+| Prototype pattern | React target |
+| --- | --- |
+| `innerHTML` builders (`profiles.js`) | JSX components + typed props |
+| Global DOM refs (`sheet`/`voice`/`ink`) | `useRef` + `AgentRoomContext` (AF-03) |
+| `renderScreen(id, opts)` switch | `<Screen screen={id} opts={opts} />` (AF-07) |
+| Script load order | ES module imports |
+| CSS class strings | CSS-module classes |
+| Listeners on dynamic HTML | React event props |
+
+### 6. Disposition of existing `agent-room` code
+
+| Asset | Action |
+| --- | --- |
+| `stream-chunk.ts`, `component-props.ts`, `proxy-schema.ts` | **Keep** — unused in stub mode (AF-90) |
+| `use-agent-room-stream.ts`, `api/agent-room/stream/route.ts` | **Keep** — opt-in via mode flag; wire in AF-90 |
+| `screen/network.tsx`, `audience.tsx`, `handoff-human.tsx`, `emphasis.tsx` | **Keep** — engine-only screens, not in the Ink Band set |
+| `agent-room.module.css` | **Removed** — all styles in `ink-band.module.css` |
+| `screen/*` (opening-hero, beat, readback, path, pricing, founders) | **Rewrite** against prototype HTML, not oat copy (AF-08–AF-10) |
+
+## Consequences
+
+- Default `/agent` now renders the **stub** room. Until AF-05 ports the runner,
+  the stub is a placeholder (opening hero, no-op composer) — an intentional,
+  documented regression for the migration window. Set
+  `NEXT_PUBLIC_AGENT_ROOM_MODE=stream` to use the live agent meanwhile.
+- `ScreenState`/`VoiceState` are shared from `use-agent-room-stream.ts` for now;
+  they get reconciled to the wider Ink Band screen IDs when the registry lands
+  (AF-07).
+- No SSE, agents package, DB, auth, or tenant context is in scope for AF-02–AF-12.
