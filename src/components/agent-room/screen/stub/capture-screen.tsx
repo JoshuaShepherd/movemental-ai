@@ -74,7 +74,6 @@ export function CaptureScreen({ opts, onCaptureSubmit, onCaptureSkip, stream }: 
                 value={values[f.key] ?? ""}
                 onChange={(e) => setField(f.key, e.target.value)}
                 onKeyDown={onKey}
-                // eslint-disable-next-line jsx-a11y/no-autofocus -- focuses the first cell when the agent puts the form up
                 autoFocus={i === 0}
               />
             </div>

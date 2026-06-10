@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "tsx scripts/sync-hero-previews.ts && next dev",
     "sync:hero-previews": "tsx scripts/sync-hero-previews.ts",
+    "brand:logo": "tsx scripts/generate-brand-logo.ts",
     "prebuild": "tsx scripts/sync-hero-previews.ts && tsx scripts/pre-build-check.ts",
     "build:check": "tsx scripts/pre-build-check.ts",
     "build": "NODE_OPTIONS=\"--max-old-space-size=8192\" next build",

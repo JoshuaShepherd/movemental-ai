@@ -9,6 +9,14 @@
  */
 import { z } from "zod";
 
+const roomContextSchema = z.object({
+  screenId: z.string().max(64).optional(),
+  lastScene: z.string().max(120).optional(),
+  phase: z.enum(["guide", "discuss"]).optional(),
+  mapAnswersCount: z.number().int().min(0).optional(),
+  inLocalScene: z.boolean().optional(),
+});
+
 export const agentRoomClientBodySchema = z.object({
   message: z.string().min(1).max(8_000),
   /** Stable per-conversation id (client-persisted) so the engine threads the turn. */
@@ -30,6 +38,9 @@ export const agentRoomClientBodySchema = z.object({
   /** Room phase (INT-10). `"discuss"` activates the engine's phase-aware prompt
    *  block. Defaults to `"guide"` on the engine when omitted. */
   phase: z.enum(["guide", "discuss"]).optional(),
+  /** Hybrid handoff — script position so the agent does not override local choreography. */
+  roomContext: roomContextSchema.optional(),
 });
 
 export type AgentRoomClientBody = z.infer<typeof agentRoomClientBodySchema>;
+export type RoomContextBody = z.infer<typeof roomContextSchema>;

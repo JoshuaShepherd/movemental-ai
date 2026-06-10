@@ -34,27 +34,21 @@
   border-bottom: 1px solid var(--color-ink-band-border);
 }
 .logo {
-  font-family: var(--font-ink-display);
-  font-size: 1.32rem;
-  letter-spacing: -0.02em;
-  color: var(--color-ink-band-ink);
+  display: inline-flex;
+  align-items: center;
   background: none;
   border: 0;
   padding: 0;
   cursor: pointer;
-  transition: color 0.15s;
+  transition: opacity 0.15s;
 }
 .logo:hover {
-  color: var(--color-ink-band-blue);
+  opacity: 0.72;
 }
-.logo .d {
-  display: inline-block;
-  width: 0.32em;
-  height: 0.32em;
-  border-radius: 50%;
-  background: var(--color-ink-band-border);
-  margin: 0 0.02em 0.05em;
-  vertical-align: middle;
+.logoImg {
+  display: block;
+  height: clamp(1.35rem, 3.2vw, 1.75rem);
+  width: auto;
 }
 
 /* ===== screen (the stage) ===== */

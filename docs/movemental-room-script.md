@@ -10,10 +10,11 @@ The suggested copy under each line is what's **in the repo today**. Change any o
 
 | Mode | Default? | What runs |
 | --- | --- | --- |
-| **`stream`** | **Yes** (since INT-07) | Live SSE agent via `/api/agent-room/stream` + **local choreography** on load (opening ink; lead chip → `beatIntro`). |
-| **`stub`** | Opt-in (`NEXT_PUBLIC_AGENT_ROOM_MODE=stub`) | Full local scene runner over `SCENES` data. **No network.** No LLM. Permanent offline fallback. |
+| **`hybrid`** | **Yes** (HYB) | Full local `SCENES` runner; SSE only on AGENT-classified moves (`move-classifier.ts`). |
+| **`stub`** | Opt-in (`NEXT_PUBLIC_AGENT_ROOM_MODE=stub`) | Full local scene runner. **No network.** Offline fallback. |
+| **`stream`** | Opt-in (`NEXT_PUBLIC_AGENT_ROOM_MODE=stream`) | Legacy full-AI path (`useAgentRoomStream`). Dev/regression only. |
 
-This script is the **stub performance SSOT** — every scene, line, and gesture the local runner plays. Stream mode runs the **LOCAL** subset client-side (see [`docs/build/agent-room-handoff.md`](build/agent-room-handoff.md) and the parity matrix) and delegates **AGENT**-classified moves to the live engine. Reconcile engine behavior separately via `movemental-ai-agents` `room-host.md`.
+This script is the **performance SSOT** for local choreography. Hybrid mode runs it verbatim for LOCAL moves and delegates open-ended turns to the live engine (see [`docs/build/agent-room-handoff.md`](build/agent-room-handoff.md)).
 
 ---
 
@@ -458,9 +459,13 @@ These appear in older script drafts or stream-mode plans but **do not exist** in
 
 ---
 
-## Stream mode (live — INT-07 + PAR pack)
+## Hybrid mode (default — HYB)
 
-When `NEXT_PUBLIC_AGENT_ROOM_MODE=stream` (default), `/agent` uses `useAgentRoomStream` and the live engine in `movemental-ai-agents`. Local choreography (`src/lib/agent-room/local-choreography.ts`) plays opening ink and the `beatIntro` bridge without network. All other visitor moves are **AGENT**-driven unless classified **STUB-ONLY** in [`docs/build/agent-room-stub-stream-parity-matrix.md`](build/agent-room-stub-stream-parity-matrix.md). Engine-only screens: `network`, `audience`, `handoff_human`.
+When `NEXT_PUBLIC_AGENT_ROOM_MODE` is unset, `/agent` uses `useAgentRoomHybrid`: the full `SCENES` graph for chips, leaders, beats, and regex-routed text; SSE for unmatched typed input and Discuss-phase turns. Classifier: `src/lib/agent-room/move-classifier.ts`. Engine context: optional `roomContext` on POST (see `room-host.md` §12).
+
+## Stream mode (legacy — opt-in)
+
+When `NEXT_PUBLIC_AGENT_ROOM_MODE=stream`, `/agent` uses `useAgentRoomStream` and the live engine. Local choreography (`local-choreography.ts`) plays opening ink on load only.
 
 ---
 

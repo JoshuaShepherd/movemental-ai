@@ -6,13 +6,14 @@ import {
   BEAT_INTRO_AGENT_CHIPS,
   resolveStreamChipRoute,
 } from "@/lib/agent-room/composer-routing";
+import { runAgentStreamTurn } from "@/lib/agent-room/agent-stream-turn";
 import {
   playBeatIntroChoreography,
   playOpeningChoreography,
   scheduleLocalChoreography,
 } from "@/lib/agent-room/local-choreography";
-import { parseSSEBuffer, type ComponentId } from "@/lib/agent-room/stream-chunk";
 import { validateComponentProps } from "@/lib/agent-room/component-props";
+import type { ComponentId } from "@/lib/agent-room/stream-chunk";
 import type { Generation } from "@/lib/agent-room/scene-runner";
 import { useInk } from "./agent-room-context";
 import { DEFAULT_SUGGESTIONS, type ComposerChip } from "./composer";
@@ -23,7 +24,6 @@ import {
   type RoomPhase,
 } from "@/lib/agent-room/discuss";
 
-const STREAM_PATH = "/api/agent-room/stream";
 const ANON_KEY = "movemental-room-anon";
 const SESSION_KEY = "movemental-room-session";
 
@@ -200,135 +200,84 @@ export function useAgentRoomStream() {
       abortRef.current = controller;
 
       let assistant = "";
-      // Whether a streaming ink line is currently open (the drain loop runs
-      // synchronously, so we can't read the async `stream` state here).
       let streamOpen = false;
 
       try {
-        const res = await fetch(STREAM_PATH, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
+        const result = await runAgentStreamTurn({
+          message: text,
+          sessionId: sessionRef.current,
+          anonId: anonRef.current,
+          history: priorHistory,
+          phase: phaseRef.current,
           signal: controller.signal,
-          body: JSON.stringify({
-            message: text,
-            sessionId: sessionRef.current,
-            anonId: anonRef.current,
-            history: priorHistory.length ? priorHistory : undefined,
-            phase: phaseRef.current, // INT-10 — engine selects the phase-aware prompt
-          }),
+          callbacks: {
+            onTextDelta: (acc) => {
+              assistant = acc;
+              if (!streamOpen) {
+                beginStream();
+                streamOpen = true;
+              }
+              appendStream(assistant);
+              setVoice({ thinking: false, text: assistant });
+            },
+            onProgressThinking: () => {
+              setVoice((v) => ({ ...v, thinking: true }));
+            },
+            onAgentHandoff: () => {
+              commitStream();
+              streamOpen = false;
+              setComposing(true);
+              setVoice({ thinking: true, text: "" });
+              assistant = "";
+            },
+            onUiRender: (component, rawProps) => {
+              const props = validateComponentProps(component, rawProps);
+              if (props) {
+                commitStream();
+                streamOpen = false;
+                nonceRef.current += 1;
+                setScreen({
+                  kind: "component",
+                  component,
+                  props,
+                  nonce: nonceRef.current,
+                });
+                setComposing(false);
+              }
+            },
+            onInkGesture: (kind, target) => {
+              void drawGesture(kind, target);
+            },
+            onSuggest: (chips) => {
+              setAgentChips(
+                chips.map((c) => ({
+                  label: c.label,
+                  lead: c.lead,
+                  onSelect:
+                    c.value === ENTER_DISCUSS_VALUE
+                      ? () => enterDiscuss("agent")
+                      : () => void sendMessage(c.value),
+                })),
+              );
+            },
+            onError: (message) => {
+              setError(message);
+            },
+          },
         });
 
-        if (!res.ok || !res.body) {
-          const body = (await res.json().catch(() => ({}))) as { error?: unknown };
-          const msg =
-            typeof body.error === "string" ? body.error : `Request failed (${res.status})`;
-          setError(msg);
+        if (result.ok === false) {
+          if (result.error === "aborted") return;
+          setError(result.error);
           setVoice({ thinking: false, text: "" });
           historyRef.current = priorHistory;
           return;
         }
 
-        const reader = res.body.getReader();
-        const decoder = new TextDecoder();
-        let buffer = "";
-
-        const drain = (chunkText: string) => {
-          buffer += chunkText;
-          const { chunks, remaining } = parseSSEBuffer(buffer);
-          buffer = remaining;
-          for (const ch of chunks) {
-            switch (ch.type) {
-              case "text_delta":
-                assistant += ch.delta;
-                // One growing ink line per assistant turn: open it on the first
-                // delta, then grow the tail as more arrive (see §10 line-commit
-                // policy). `voice.text` is kept only as a non-ink fallback.
-                if (!streamOpen) {
-                  beginStream();
-                  streamOpen = true;
-                }
-                appendStream(assistant);
-                setVoice({ thinking: false, text: assistant });
-                break;
-              case "progress":
-                if (ch.phase === "thinking" && !assistant) {
-                  setVoice((v) => ({ ...v, thinking: true }));
-                }
-                break;
-              case "agent_handoff":
-                // Host → diagnostician: settle the host's line, then pulse while
-                // the read-back is composed.
-                commitStream();
-                streamOpen = false;
-                setComposing(true);
-                setVoice({ thinking: true, text: "" });
-                assistant = "";
-                break;
-              case "ui_render": {
-                const props = validateComponentProps(ch.component, ch.props);
-                if (props) {
-                  // A new screen settles the voice (prototype parity): commit the
-                  // narration line so any later deltas open a fresh one.
-                  commitStream();
-                  streamOpen = false;
-                  nonceRef.current += 1;
-                  setScreen({
-                    kind: "component",
-                    component: ch.component,
-                    props,
-                    nonce: nonceRef.current,
-                  });
-                  setComposing(false);
-                }
-                // Invalid props → drop the render (the voice still carries the turn).
-                break;
-              }
-              case "ink_gesture":
-                // Fire-and-forget: `drawGesture` waits a bounded number of frames
-                // for the target to mount (the gesture may arrive in the same
-                // batch as its `ui_render`), then draws — or no-ops if it never
-                // appears. Never blocks the drain loop or throws.
-                void drawGesture(ch.kind, ch.target);
-                break;
-              case "suggest":
-                // The agent's `suggest` act: replace the composer chips. A tap
-                // sends the chip's `value` back as the next user turn — except the
-                // Discuss-transition sentinel (INT-10), which switches phase
-                // **locally** (`enterDiscuss`) with no network round-trip (§2.4).
-                setAgentChips(
-                  ch.chips.map((c) => ({
-                    label: c.label,
-                    lead: c.lead,
-                    onSelect:
-                      c.value === ENTER_DISCUSS_VALUE
-                        ? () => enterDiscuss("agent")
-                        : () => void sendMessage(c.value),
-                  })),
-                );
-                break;
-              case "error":
-                setError(ch.message);
-                break;
-              default:
-                break;
-            }
-          }
-        };
-
-        for (;;) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          drain(decoder.decode(value, { stream: true }));
-        }
-        if (buffer.trim()) drain("\n\n");
-
+        assistant = result.assistant;
         if (assistant) {
           historyRef.current = [...historyRef.current, { role: "assistant", content: assistant }];
         }
-        // Turn end. Guide (INT-03): settle the ephemeral ink line into the queue.
-        // Discuss (INT-10): commit the turn to the transcript — a short reply stays
-        // in the voice band, a long one (over the threshold) also lands as a sheet
-        // passage (Model B §2.3) — then drop the ephemeral ink stream.
         if (phaseRef.current === "discuss") {
           if (assistant) {
             appendTranscript({
@@ -343,12 +292,6 @@ export function useAgentRoomStream() {
         }
         streamOpen = false;
         setVoice({ thinking: false, text: assistant });
-      } catch (e) {
-        if (e instanceof DOMException && e.name === "AbortError") return;
-        setError(e instanceof Error ? e.message : "Stream failed");
-        clearVoice();
-        setVoice({ thinking: false, text: "" });
-        historyRef.current = priorHistory;
       } finally {
         setComposing(false);
         setIsStreaming(false);

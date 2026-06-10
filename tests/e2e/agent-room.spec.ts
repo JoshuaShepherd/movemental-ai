@@ -9,15 +9,21 @@ import { expect, test, type Page } from "@playwright/test";
  * Mode-aware. The room's mode is build-inlined (`NEXT_PUBLIC_AGENT_ROOM_MODE`),
  * so each block runs only against a server in the matching mode. Tell the spec
  * which mode the (reused) dev server is in via AGENT_ROOM_TEST_MODE (default
- * "stub"):
- *   - stub  : AGENT_ROOM_TEST_MODE=stub   (server started without the flag)
- *   - stream: AGENT_ROOM_TEST_MODE=stream NEXT_PUBLIC_AGENT_ROOM_MODE=stream pnpm dev
+ * "hybrid"):
+ *   - hybrid: AGENT_ROOM_TEST_MODE=hybrid or unset (server default)
+ *   - stub  : AGENT_ROOM_TEST_MODE=stub NEXT_PUBLIC_AGENT_ROOM_MODE=stub
+ *   - stream: AGENT_ROOM_TEST_MODE=stream NEXT_PUBLIC_AGENT_ROOM_MODE=stream
  *
  * The live block additionally probes the engine and skips if unreachable, so CI
  * without the engine still runs the stub + fallback blocks.
  */
 const RUN = process.env.RUN_AGENT_ROOM_E2E === "1";
-const MODE = process.env.AGENT_ROOM_TEST_MODE === "stream" ? "stream" : "stub";
+const MODE =
+  process.env.AGENT_ROOM_TEST_MODE === "stream"
+    ? "stream"
+    : process.env.AGENT_ROOM_TEST_MODE === "stub"
+      ? "stub"
+      : "hybrid";
 const STREAM_PATH = "**/api/agent-room/stream";
 const ENGINE_PROBE = (process.env.AI_AGENTS_BASE_URL ?? "http://localhost:3001") + "/api/agents/models";
 
@@ -29,6 +35,52 @@ async function send(page: Page, text: string) {
 
 test.describe("Agent Room", () => {
   test.skip(!RUN, "Set RUN_AGENT_ROOM_E2E=1 to enable");
+
+  // ── Hybrid mode (default): local script + agent on open text ─────────────
+  test.describe("hybrid (default)", () => {
+    test.skip(MODE !== "hybrid", "Server must be in hybrid mode (default dev server)");
+
+    test("loads with opening voice and zero stream calls", async ({ page }) => {
+      const streamCalls: string[] = [];
+      page.on("request", (r) => {
+        if (r.url().includes("/api/agent-room/stream")) streamCalls.push(r.url());
+      });
+      await page.goto("/agent");
+      await expect(page.locator(".ink-band-surface").first()).toBeVisible();
+      await expect(
+        page.getByText("Movemental meets leaders and organizations where they are"),
+      ).toBeVisible({ timeout: 3500 });
+      expect(streamCalls, "hybrid load must not call stream").toEqual([]);
+    });
+
+    test("lead chip runs beatIntro locally", async ({ page }) => {
+      const streamCalls: string[] = [];
+      page.on("request", (r) => {
+        if (r.url().includes("/api/agent-room/stream")) streamCalls.push(r.url());
+      });
+      await page.goto("/agent");
+      await page.waitForTimeout(2000);
+      await page.getByRole("button", { name: "Get a clear next AI step" }).click();
+      await expect(page.getByText("I’m not going to grade you")).toBeVisible({ timeout: 3500 });
+      expect(streamCalls, "beatIntro is local in hybrid").toEqual([]);
+    });
+
+    test("unmatched typed input POSTs to stream (mocked)", async ({ page }) => {
+      let posted = false;
+      await page.route(STREAM_PATH, (route) => {
+        posted = true;
+        route.fulfill({
+          status: 200,
+          contentType: "text/event-stream",
+          body: 'data: {"type":"text_delta","delta":"Thanks for asking."}\n\ndata: [DONE]\n\n',
+        });
+      });
+      await page.goto("/agent");
+      await page.waitForTimeout(2000);
+      await send(page, "our board uses ChatGPT for donor letters");
+      await expect.poll(() => posted).toBe(true);
+    });
+  });
 
   // ── Stub mode: the permanent offline fallback — zero network on load ──────
   test.describe("stub (offline)", () => {

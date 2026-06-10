@@ -34,10 +34,10 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold text-foreground mb-6">What We Do</h2>
           <div className="space-y-4 text-muted-foreground">
             <p>
-              We help movement leaders take content they've already created—books, talks, articles, courses—and make it discoverable, connected, and enduring.
+              We help movement leaders take content they&apos;ve already created—books, talks, articles, courses—and make it discoverable, connected, and enduring.
             </p>
             <p>
-              This isn't about chasing algorithms or manufacturing virality. It's about building the infrastructure for credibility to compound over time, through real relationships with trusted peers.
+              This isn&apos;t about chasing algorithms or manufacturing virality. It&apos;s about building the infrastructure for credibility to compound over time, through real relationships with trusted peers.
             </p>
           </div>
         </div>
@@ -65,10 +65,10 @@ export default function AboutPage() {
                 This is not for you if…
               </h3>
               <ul className="space-y-2 text-muted-foreground text-sm">
-                <li>• You're just starting to create content</li>
+                <li>• You&apos;re just starting to create content</li>
                 <li>• You want maximum reach with minimum depth</li>
                 <li>• You prefer to operate independently of peers</li>
-                <li>• You're looking for a quick growth hack</li>
+                <li>• You&apos;re looking for a quick growth hack</li>
               </ul>
             </div>
           </div>
@@ -95,7 +95,7 @@ export default function AboutPage() {
               </div>
               <h3 className="font-semibold mb-2">Content Stewardship</h3>
               <p className="text-sm text-muted-foreground">
-                Your work, your platform, your audience—we're here to serve, not extract.
+                Your work, your platform, your audience—we&apos;re here to serve, not extract.
               </p>
             </div>
             <div className="text-center">
@@ -124,7 +124,7 @@ export default function AboutPage() {
                 Why Movemental
               </h3>
               <p className="text-sm text-muted-foreground">
-                The deeper story behind what we're building and why.
+                The deeper story behind what we&apos;re building and why.
               </p>
             </Link>
             <Link

@@ -101,6 +101,7 @@ export function StubScreen({
   onCaptureSubmit,
   onCaptureSkip,
   disabled,
+  stream,
 }: {
   screen: StubScreenState;
   mapRead: MapRead | null;
@@ -110,6 +111,8 @@ export function StubScreen({
   onCaptureSubmit: (kind: string, values: Record<string, string>) => void;
   onCaptureSkip: () => void;
   disabled: boolean;
+  /** Hybrid/stream agent props for prop-driven screens (beat, readback, capture). */
+  stream?: StreamScreenInput;
 }) {
   const Component = SCREEN_COMPONENTS[screen.id];
   return (
@@ -122,6 +125,7 @@ export function StubScreen({
       onCaptureSubmit={onCaptureSubmit}
       onCaptureSkip={onCaptureSkip}
       disabled={disabled}
+      stream={stream}
     />
   );
 }

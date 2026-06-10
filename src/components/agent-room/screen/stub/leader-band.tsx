@@ -3,7 +3,14 @@
    complicates the FLIP-to-hero animation planned for AF-10. */
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type CSSProperties,
+} from "react";
 
 import { LEADERS } from "@/lib/agent-room/data/leaders";
 import styles from "../../ink-band.module.css";
@@ -26,6 +33,23 @@ function shuffledIndices(n: number): number[] {
   return a;
 }
 
+let clientShuffledOrder: number[] | null = null;
+
+function getClientOrder(): number[] {
+  if (!clientShuffledOrder) {
+    clientShuffledOrder = shuffledIndices(LEADERS.length);
+  }
+  return clientShuffledOrder;
+}
+
+function getServerOrder(): number[] {
+  return LEADERS.map((_, i) => i);
+}
+
+function subscribeToOrder(): () => void {
+  return () => {};
+}
+
 /**
  * The "Built with & backed by" portrait band (prototype `bandHTML()`). 17
  * leaders shown as a responsive **carousel** of round portraits that advances
@@ -43,16 +67,10 @@ export function LeaderBand({
 }) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  // SSR renders the natural order; the client reshuffles on mount (no hydration
-  // mismatch because the shuffle only runs in an effect).
-  const [order, setOrder] = useState<number[]>(() => LEADERS.map((_, i) => i));
+  // SSR uses natural order; the client snapshot shuffles once without setState in an effect.
+  const order = useSyncExternalStore(subscribeToOrder, getClientOrder, getServerOrder);
   const [index, setIndex] = useState(0);
   const [m, setM] = useState({ step: 0, maxOffset: 0, maxIndex: 0 });
-
-  useEffect(() => {
-    setOrder(shuffledIndices(LEADERS.length));
-    setIndex(0);
-  }, []);
 
   const measure = useCallback(() => {
     const vp = viewportRef.current;

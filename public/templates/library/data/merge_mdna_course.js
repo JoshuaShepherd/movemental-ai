@@ -2,6 +2,7 @@
  * One-off: Merge mDNA course (with weeks) into alan-hirsch.json contentLibrary.courses.
  * Run from directories/data: node merge_mdna_course.js
  */
+/* eslint-disable @typescript-eslint/no-require-imports -- legacy Node one-off script */
 const fs = require("fs");
 const path = require("path");
 

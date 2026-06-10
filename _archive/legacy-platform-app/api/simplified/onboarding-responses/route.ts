@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
 
     // CRITICAL: organizationId comes from tenant context, not client input
     // Remove organizationId from validated data if present (security)
-    const { organizationId: _, ...dataWithoutOrgId } = validated as any;
+    const { organizationId: _organizationId, ...dataWithoutOrgId } = validated;
 
     const result = await onboardingResponsesService.createOnboardingResponse(
       request,
@@ -67,7 +67,7 @@ export async function PATCH(request: NextRequest) {
 
     // CRITICAL: organizationId comes from tenant context, not client input
     // Remove organizationId from validated data if present (security)
-    const { organizationId: _, ...dataWithoutOrgId } = validated as any;
+    const { organizationId: _organizationId, ...dataWithoutOrgId } = validated;
 
     const result = await onboardingResponsesService.updateOnboardingResponse(
       request,

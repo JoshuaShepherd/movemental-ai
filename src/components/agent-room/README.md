@@ -25,6 +25,14 @@ action. Policy: [`docs/build/agent-room-handoff.md`](../../../docs/build/agent-r
 matrix: [`docs/build/agent-room-stub-stream-parity-matrix.md`](../../../docs/build/agent-room-stub-stream-parity-matrix.md).
 Fallback on engine error: **Option A** (env-only stub; no runtime degrade).
 
+**Amended 2026-06-10 (HYB): Hybrid default — script first, agent on demand.**
+Default mode is now **`"hybrid"`** (`useAgentRoomHybrid`): full local `SCENES`
+runner for chips, leaders, beats, and regex-routed text; SSE only when
+`move-classifier.ts` routes AGENT (unmatched typed input, Discuss phase, agent
+chips). Shared SSE module: `agent-stream-turn.ts`. `stub` = zero-network;
+`stream` = legacy full-AI regression. See
+[`docs/build/agent-room-handoff.md`](../../../docs/build/agent-room-handoff.md).
+
 ## Context
 
 Two designs currently collide in `src/components/agent-room/`:
@@ -41,23 +49,19 @@ not a restyle.
 
 ## Decision
 
-### 1. Runtime mode switch — `stub` (default) vs `stream`
+### 1. Runtime mode switch — `hybrid` (default) · `stub` · `stream`
 
-> **Superseded by the INT-07 amendment above:** the default is now `"stream"`;
-> `stub` is the opt-in offline fallback. The original AF-01 text is kept below.
+> **Current default (HYB amendment):** `"hybrid"`. INT-07/PAR history preserved above.
 
-`src/lib/agent-room/mode.ts` exports `AGENT_ROOM_MODE: "stub" | "stream"`,
-defaulting to **`"stub"`** (`NEXT_PUBLIC_AGENT_ROOM_MODE` overrides).
+`src/lib/agent-room/mode.ts` exports `AGENT_ROOM_MODE: "stub" | "hybrid" | "stream"`,
+defaulting to **`"hybrid"`** (`NEXT_PUBLIC_AGENT_ROOM_MODE` overrides).
 
-- **`stub`** — `useAgentRoomStub` + a local `play()` runner over ported `SCENES`.
-  **No network.** This is what AF-02–AF-12 build.
-- **`stream`** — `useAgentRoomStream` + `/api/agent-room/stream`. Untouched by
-  this pack; flipped on in **AF-90**.
+- **`hybrid`** — `useAgentRoomHybrid`: local `play()` runner + SSE on classified
+  unscripted moves (`move-classifier.ts`, `agent-stream-turn.ts`).
+- **`stub`** — `useAgentRoomStub` + local `play()` runner. **No network.**
+- **`stream`** — `useAgentRoomStream` + `/api/agent-room/stream` (legacy dev path).
 
-`AgentRoom` dispatches on the flag by rendering one of two thin container
-components (`StubRoom` / `StreamRoom`), each calling its own hook
-unconditionally. This keeps the rules of hooks intact and guarantees stub mode
-**never mounts the stream hook** — `/agent` does not fetch on load.
+`AgentRoom` dispatches `HybridRoom` | `StubRoom` | `StreamRoom`.
 
 Both hooks return the same `AgentRoomController` shape, so `AgentRoomView` (the
 three-zone shell) is mode-agnostic.
@@ -74,7 +78,7 @@ verified AF-01).
 ```
 AgentRoomShell (client, hydration guard) ── AgentRoomFallback (SSR, no-JS)
   └─ AgentRoom (mode dispatcher)
-       └─ StubRoom | StreamRoom  ── calls useAgentRoomStub | useAgentRoomStream
+       └─ StubRoom | HybridRoom | StreamRoom
             └─ AgentRoomView
                  ├─ Mast (logo = goHome, corner menu)
                  ├─ Stage  (scroll container + ink SVG overlay)  ← AF-03/04

@@ -1,13 +1,15 @@
 "use client";
 
+import Image from "next/image";
+
+import { MOVEMENTAL_LOGO_MAST } from "@/lib/brand/assets";
+
 import styles from "../ink-band.module.css";
 
 /**
- * The mast — the only chrome above the stage. Just the wordmark, per the
- * prototype (`<header class="mast"><span class="logo">m·vemental</span>`). The
- * dot is a small circle in `--border`. Clicking the logo is the always-available
- * "home": it returns to the opening scene (`goHome`, wired in AF-05; `reset`
- * for now).
+ * The mast — the only chrome above the stage. The Movemental wordmark is the
+ * always-available home control: clicking it returns to the opening scene
+ * (`goHome` / `reset`).
  */
 export function Mast({ onHome }: { onHome: () => void }) {
   return (
@@ -18,7 +20,14 @@ export function Mast({ onHome }: { onHome: () => void }) {
         onClick={onHome}
         aria-label="Movemental — back to the start"
       >
-        m<span className={styles.d} />vemental
+        <Image
+          src={MOVEMENTAL_LOGO_MAST.src}
+          alt={MOVEMENTAL_LOGO_MAST.alt}
+          width={MOVEMENTAL_LOGO_MAST.width}
+          height={MOVEMENTAL_LOGO_MAST.height}
+          className={styles.logoImg}
+          priority
+        />
       </button>
     </header>
   );

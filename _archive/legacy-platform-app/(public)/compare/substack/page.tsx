@@ -35,7 +35,7 @@ export default function CompareSubstackPage() {
             Substack vs Movemental: an honest guide
           </h1>
           <p className="compare-substack-hero-subtitle text-sage-200/95 max-w-2xl">
-            If you're deciding between Substack and Movemental, here's how we'd frame it—when each
+            If you&apos;re deciding between Substack and Movemental, here&apos;s how we&apos;d frame it—when each
             makes sense, and what you get for your 10%.
           </p>
         </div>
@@ -48,8 +48,8 @@ export default function CompareSubstackPage() {
             Same revenue share, different value
           </h2>
           <p className="compare-substack-body text-muted-foreground mb-8">
-            Both Substack and Movemental take 10% of your content revenue. The difference isn't
-            cost—it's what you get for that 10%. Substack gives you a newsletter platform:
+            Both Substack and Movemental take 10% of your content revenue. The difference isn&apos;t
+            cost—it&apos;s what you get for that 10%. Substack gives you a newsletter platform:
             publish articles, build an email list, optionally charge for subscriptions. Movemental
             gives you a full platform (books, articles, courses), voice-preserving AI, and a
             credibility network—the scenius of movement leaders who vouch for each other.
@@ -60,10 +60,10 @@ export default function CompareSubstackPage() {
           </h2>
           <ul className="compare-substack-body text-muted-foreground list-disc pl-5 space-y-2 mb-10">
             <li>You mainly want to write and send a newsletter.</li>
-            <li>You're okay with newsletter-only—no courses, no books as structured products.</li>
+            <li>You&apos;re okay with newsletter-only—no courses, no books as structured products.</li>
             <li>You want to launch in minutes with zero upfront cost.</li>
-            <li>You're fine with discovery via Substack's algorithm (Recommendations, discovery tab).</li>
-            <li>You don't need a movement-specific network or credibility graph.</li>
+            <li>You&apos;re fine with discovery via Substack&apos;s algorithm (Recommendations, discovery tab).</li>
+            <li>You don&apos;t need a movement-specific network or credibility graph.</li>
           </ul>
 
           <h2 className="compare-substack-section-heading text-foreground mt-12 mb-4">
@@ -107,7 +107,7 @@ export default function CompareSubstackPage() {
                 </tr>
                 <tr>
                   <td className="py-4 px-5 font-medium text-foreground">Platform ownership</td>
-                  <td className="py-4 px-5 text-muted-foreground">Rent (Substack's platform)</td>
+                  <td className="py-4 px-5 text-muted-foreground">Rent (Substack&apos;s platform)</td>
                   <td className="py-4 px-5 text-muted-foreground">Own</td>
                 </tr>
                 <tr>
@@ -133,12 +133,12 @@ export default function CompareSubstackPage() {
             The short version: Substack is excellent for newsletter-first writers who want to
             publish quickly and cheaply. Movemental is for movement leaders who want one owned
             platform—books, articles, courses—and a credibility network. Neither is wrong. Choose
-            based on what you're building.
+            based on what you&apos;re building.
           </p>
 
           <div className="rounded-lg border border-border bg-muted/30 py-4 px-5 mb-12">
             <p className="compare-substack-body text-muted-foreground mb-2">
-              <strong className="text-foreground">It's not either/or.</strong> If you're on
+              <strong className="text-foreground">It&apos;s not either/or.</strong> If you&apos;re on
               Movemental (or going there), you can integrate your Substack into your platform—one
               home, your newsletter included.
             </p>

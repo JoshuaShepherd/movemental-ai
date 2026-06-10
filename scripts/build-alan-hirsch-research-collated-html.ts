@@ -52,7 +52,7 @@ function extractHeadings(md: string): { level: number; text: string; id: string 
       .trim();
     if (!text) continue;
 
-    let base = slugify(text);
+    const base = slugify(text);
     const count = used.get(base) ?? 0;
     used.set(base, count + 1);
     const id = count === 0 ? base : `${base}-${count + 1}`;

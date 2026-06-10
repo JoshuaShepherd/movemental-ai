@@ -1,6 +1,6 @@
 # Agent Room — mode, local layer, and handoff
 
-**Last updated:** 2026-06-10 (PAR-05)
+**Last updated:** 2026-06-10 (HYB hybrid handoff)
 
 ---
 
@@ -8,14 +8,15 @@
 
 | Env | Mode | Behavior |
 | --- | --- | --- |
-| *(unset)* | `stream` | Live SSE + local choreography on load |
-| `NEXT_PUBLIC_AGENT_ROOM_MODE=stub` | `stub` | Full `SCENES` graph, zero network |
+| *(unset)* | **`hybrid`** | Full local `SCENES` runner; SSE only on classified unscripted moves |
+| `NEXT_PUBLIC_AGENT_ROOM_MODE=stub` | `stub` | Full `SCENES` graph, **zero network** |
+| `NEXT_PUBLIC_AGENT_ROOM_MODE=stream` | `stream` | Legacy full-AI path (`useAgentRoomStream`) for dev/regression |
 
-Mode is build-inlined via `src/lib/agent-room/mode.ts`.
+Mode is build-inlined via [`src/lib/agent-room/mode.ts`](../src/lib/agent-room/mode.ts).
 
 ---
 
-## Three layers (target architecture)
+## Three layers
 
 ```text
 LOCAL CHOREOGRAPHY  →  LIVE AGENT (SSE)  →  OFFLINE FALLBACK (stub env)
@@ -23,26 +24,39 @@ LOCAL CHOREOGRAPHY  →  LIVE AGENT (SSE)  →  OFFLINE FALLBACK (stub env)
 
 ### 1. Local choreography (no LLM)
 
-**Module:** `src/lib/agent-room/local-choreography.ts`
+**Modules:** `src/lib/agent-room/data/scenes.ts`, `scene-runner.ts`, `use-agent-room-hybrid.ts` (or `use-agent-room-stub.ts` in stub mode)
 
-| Beat | When |
+| Move | Hybrid / stub |
 | --- | --- |
-| `OPENING` | `/agent` load, REPLAY (`reset`) |
-| `BEAT_INTRO` | Stream lead chip "Get a clear next AI step" only |
+| Load + REPLAY | `run("opening")` — say, gesture, chips |
+| Suggestion chips | `run(to)` from `SCENES` |
+| Leader portrait | `leaderScene(i)` + FLIP |
+| Beat answers | `beatScene()` |
+| Typed regex match | `routeInput()` → `run(target)` |
 
-Opening plays: wait → say → underline `#phrase`. No `/api/agent-room/stream` on load.
+No `/api/agent-room/stream` on load.
 
 ### 2. Live agent (SSE)
 
-**Handoff:** First composer action classified **AGENT** (typed text, non-local chips, "Okay, map it" after beatIntro) bumps the local generation token, cancels local scenes, and POSTs to `/api/agent-room/stream`.
+**Module:** `src/lib/agent-room/agent-stream-turn.ts`  
+**Classifier:** `src/lib/agent-room/move-classifier.ts`
 
-Subsequent turns: engine tools (`render_beat`, `gesture_at`, `show_*`, `request_diagnosis`, `suggest_chips`).
+**Handoff triggers (hybrid):**
+
+| Trigger | Route |
+| --- | --- |
+| Typed text, no regex match | AGENT (`open_text`) |
+| Discuss phase typed input | AGENT (`discuss`) |
+| Agent `suggest` chip tap | AGENT (`agent_chip`) |
+
+Each AGENT turn POSTs to `/api/agent-room/stream` with optional `roomContext` (screen, last scene, phase, map progress).
 
 ### 3. Offline fallback
 
-**Option A (current):** Stream errors show an honest error voice. Operator sets `NEXT_PUBLIC_AGENT_ROOM_MODE=stub` for demos.
-
-**Option B (not implemented):** Runtime degrade to stub controller on 502/503 — rejected PAR-05 2026-06-10.
+| Mode | Behavior |
+| --- | --- |
+| `stub` env | Zero network; full graph |
+| `hybrid` engine 502/503 | Error voice + local `FALLBACK_SAY` line; room stays on current screen |
 
 ---
 
@@ -50,20 +64,28 @@ Subsequent turns: engine tools (`render_beat`, `gesture_at`, `show_*`, `request_
 
 `↺ replay` / logo home:
 
-- **Stream:** Clears session history, returns to opening hero, replays **LOCAL opening only** (not a blank agent session).
-- **Stub:** `goHome()` → full `opening` scene including chips.
+- **Hybrid:** `goHome()` → full `run("opening")`; clears agent history/session
+- **Stub:** same
+- **Stream:** local opening choreography only + agent session reset
 
 ---
 
-## Composer chips (stream)
+## Key files
 
-See `src/lib/agent-room/composer-routing.ts` and the parity matrix. Lead chip → local `beatIntro`; other defaults → agent utterance.
+| File | Role |
+| --- | --- |
+| `move-classifier.ts` | LOCAL vs AGENT routing SSOT |
+| `use-agent-room-hybrid.ts` | Default controller |
+| `agent-stream-turn.ts` | Shared SSE drain |
+| `proxy-schema.ts` | `roomContext` on POST body |
 
 ---
 
 ## References
 
 - Parity matrix: [`agent-room-stub-stream-parity-matrix.md`](./agent-room-stub-stream-parity-matrix.md)
+- Hybrid sign-off: [`agent-room-hybrid-signoff.md`](./agent-room-hybrid-signoff.md)
 - Stub script: [`movemental-room-script.md`](../movemental-room-script.md)
-- Engine prompt: `movemental-ai-agents/scripts/seed-data/prompts/room-host.md`
+- Engine prompt §12: `movemental-ai-agents/scripts/seed-data/prompts/room-host.md`
 - ADR: `src/components/agent-room/README.md`
+- Reviewer: [`docs/build/prompts/checkers/agent-room-hybrid-handoff-review.md`](./prompts/checkers/agent-room-hybrid-handoff-review.md)

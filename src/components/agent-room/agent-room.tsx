@@ -5,14 +5,16 @@ import type { ReactNode } from "react";
 import { AGENT_ROOM_MODE } from "@/lib/agent-room/mode";
 import styles from "./ink-band.module.css";
 import { AgentRoomProvider } from "./agent-room-context";
+import { useAgentRoomHybrid } from "./use-agent-room-hybrid";
 import { useAgentRoomStream } from "./use-agent-room-stream";
 import { useAgentRoomStub } from "./use-agent-room-stub";
 import { Mast } from "./shell/mast";
 import { ScreenZone } from "./shell/screen-zone";
 import { VoiceZone } from "./shell/voice-zone";
 import { StreamScreen } from "./screen/stream-screen";
+import { HybridScreen } from "./screen/hybrid-screen";
 import { StubScreen } from "./screen/stub/stub-screen";
-import { Composer, BEAT_PLACEHOLDER, type ComposerChip } from "./composer";
+import { Composer, BEAT_PLACEHOLDER, STREAM_PLACEHOLDER, type ComposerChip } from "./composer";
 import { DiscussComposer } from "./discuss/discuss-composer";
 import { DiscussMarginalia, DiscussFold } from "./discuss/discuss-sheet";
 import type { VoiceState } from "./use-agent-room-stream";
@@ -99,6 +101,49 @@ function AgentRoomView({
 }
 
 /**
+ * Hybrid container — local SCENES runner + SSE on unscripted moves (default mode).
+ */
+function HybridRoom() {
+  const room = useAgentRoomHybrid();
+  const { screen } = room;
+  return (
+    <AgentRoomView
+      screenNode={
+        <HybridScreen
+          screen={screen}
+          engineExtra={room.engineExtra}
+          stream={room.streamInput}
+          mapRead={room.mapRead}
+          onHome={room.reset}
+          onBeatAnswer={room.onBeatAnswer}
+          onLeaderSelect={room.onLeaderSelect}
+          onCaptureSubmit={room.onCaptureSubmit}
+          onCaptureSkip={room.onCaptureSkip}
+          disabled={room.isStreaming}
+        />
+      }
+      screenKey={
+        room.engineExtra
+          ? `extra-${room.engineExtra.component}`
+          : `${screen.id}-${screen.nonce}`
+      }
+      home={screen.id === "home" && !room.engineExtra}
+      scroll={screen.id !== "beat"}
+      voice={room.voice}
+      error={room.error}
+      suggestions={room.suggestions}
+      isStreaming={room.isStreaming}
+      onSay={room.sendMessage}
+      onReplay={room.reset}
+      placeholder={screen.id === "beat" ? BEAT_PLACEHOLDER : undefined}
+      phase={room.phase}
+      transcript={room.transcript}
+      onExitDiscuss={room.exitDiscuss}
+    />
+  );
+}
+
+/**
  * Stub container — local scene runner, no network (offline fallback). Renders
  * the Ink Band screen registry; everything scrolls except the reality-check beat,
  * and only `home` is the centered, margin-rule-free sheet.
@@ -162,6 +207,7 @@ function StreamRoom() {
       isStreaming={room.isStreaming}
       onSay={room.sendMessage}
       onReplay={room.reset}
+      placeholder={inBeat ? BEAT_PLACEHOLDER : STREAM_PLACEHOLDER}
       phase={room.phase}
       transcript={room.transcript}
       onExitDiscuss={room.exitDiscuss}
@@ -174,13 +220,19 @@ function StreamRoom() {
  * so the stub hook can drive the ink layer. Dispatches on the build-time
  * `AGENT_ROOM_MODE` flag (constant per render → each branch's hook is called
  * unconditionally within its own component, no rules-of-hooks violation, and
- * stub mode never mounts the stream hook). Defaults to `"stub"` (full local
- * choreography); set `NEXT_PUBLIC_AGENT_ROOM_MODE=stream` for the live agent.
+ * stub/stream hooks). Defaults to `"hybrid"`; set `NEXT_PUBLIC_AGENT_ROOM_MODE=stub`
+ * for zero-network or `stream` for legacy full-AI regression.
  */
 export function AgentRoom() {
   return (
     <AgentRoomProvider>
-      {AGENT_ROOM_MODE === "stream" ? <StreamRoom /> : <StubRoom />}
+      {AGENT_ROOM_MODE === "stream" ? (
+        <StreamRoom />
+      ) : AGENT_ROOM_MODE === "hybrid" ? (
+        <HybridRoom />
+      ) : (
+        <StubRoom />
+      )}
     </AgentRoomProvider>
   );
 }
