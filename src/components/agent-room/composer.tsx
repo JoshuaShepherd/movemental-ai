@@ -15,8 +15,8 @@ export type Suggestion = { label: string; say: string; lead?: boolean };
 export type ComposerChip = { label: string; lead?: boolean; onSelect: () => void };
 
 /** Input placeholder copy (prototype). Rotates by screen — beat invites a typed
- *  answer; everywhere else invites talking to the agent. */
-export const DEFAULT_PLACEHOLDER = "Type to the agent, or tap a suggestion…";
+ *  answer; everywhere else invites a suggestion or free-text turn. */
+export const DEFAULT_PLACEHOLDER = "Type here, or tap a suggestion…";
 export const BEAT_PLACEHOLDER = "Tap an answer above, or type your own…";
 
 /** Matches `SCENES.opening` suggest chips (prototype `scenes.js`). */

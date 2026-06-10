@@ -174,8 +174,8 @@ function StreamRoom() {
  * so the stub hook can drive the ink layer. Dispatches on the build-time
  * `AGENT_ROOM_MODE` flag (constant per render → each branch's hook is called
  * unconditionally within its own component, no rules-of-hooks violation, and
- * stub mode never mounts the stream hook). Defaults to `"stream"`; set
- * `NEXT_PUBLIC_AGENT_ROOM_MODE=stub` for offline.
+ * stub mode never mounts the stream hook). Defaults to `"stub"` (full local
+ * choreography); set `NEXT_PUBLIC_AGENT_ROOM_MODE=stream` for the live agent.
  */
 export function AgentRoom() {
   return (
