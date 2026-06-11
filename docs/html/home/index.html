@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Movemental — home (design mock-up)</title>
+  <meta name="description" content="Static Ink Band home screen mock-up for design — mirrors www.movemental.ai /agent opening state." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="ink-band-surface">
+    <!--
+      Design mock-up: Agent Room home screen (Ink Band).
+      Source: src/components/agent-room/* + ink-band.module.css
+      Open: file:// or serve from repo root — assets use ../../../public/
+    -->
+    <div class="room" id="room">
+      <header class="mast">
+        <button type="button" class="logo" aria-label="Movemental — back to the start">
+          <img
+            class="logoMark"
+            src="../../../public/images/brand/movemental-logo-transparent.h224.webp"
+            alt="Movemental"
+            width="411"
+            height="224"
+          />
+        </button>
+      </header>
+
+      <section class="screen" id="screen" aria-label="Agent stage">
+        <div class="sheet home settle">
+          <p class="eyebrow">Non-profit · Church · Institution · Leader</p>
+          <h1 id="hero-h1">Navigate AI without eroding the trust you spent decades earning.</h1>
+          <p class="body">
+            We help mission-driven organizations respond to AI without losing
+            <span id="phrase" class="phrase"><b>the trust their work depends on</b></span>,
+            by walking with them through one ordered path: get safe, experiment, form your people, then build.
+          </p>
+
+          <div class="band">
+            <div class="bandHead">
+              <p class="bandLabel">Built with &amp; backed by</p>
+              <div class="carouselNav">
+                <button type="button" class="carouselBtn" id="carousel-prev" aria-label="Previous leader" disabled>‹</button>
+                <button type="button" class="carouselBtn" id="carousel-next" aria-label="Next leader">›</button>
+              </div>
+            </div>
+            <div class="carouselShell" id="carousel-shell">
+              <div class="carouselViewport" id="carousel-viewport">
+                <div class="carouselTrack" id="carousel-track">
+          <button type="button" class="carItem" style="--i: 0" data-i="0">
+            <span class="carPortrait" id="ph-0">
+              <img src="../../../public/agent-room/leaders/0.jpg" alt="Alan Hirsch" width="64" height="64" />
+            </span>
+            <span>
+              <span class="faceName">Alan Hirsch</span>
+              <span class="faceCred">Missional theologian</span>
+            </span>
+          </button>
+          <button type="button" class="carItem" style="--i: 1" data-i="1">
+            <span class="carPortrait" id="ph-1">
+              <img src="../../../public/agent-room/leaders/1.jpg" alt="Brad Brisco" width="64" height="64" />
+            </span>
+            <span>
+              <span class="faceName">Brad Brisco</span>
+              <span class="faceCred">Missional strategist</span>
+            </span>
+          </button>
+          <button type="button" class="carItem" style="--i: 2" data-i="2">
+            <span class="carPortrait" id="ph-2">
+              <img src="../../../public/agent-room/leaders/2.jpg" alt="JR Woodward" width="64" height="64" />
+            </span>
+            <span>
+              <span class="faceName">JR Woodward</span>
+              <span class="faceCred">Author, movement leader</span>
+            </span>
+          </button>
+          <button type="button" class="carItem" style="--i: 3" data-i="3">
+            <span class="carPortrait" id="ph-3">
+              <img src="../../../public/agent-room/leaders/3.jpg" alt="Neil Cole" width="64" height="64" />
+            </span>
+            <span>
+              <span class="faceName">Neil Cole</span>
+              <span class="faceCred">Church-multiplication author</span>
+            </span>
+          </button>
+          <button type="button" class="carItem" style="--i: 4" data-i="4">
+            <span class="carPortrait" id="ph-4">
+              <img src="../../../public/agent-room/leaders/4.jpg" alt="Rowland Smith" width="64" height="64" />
+            </span>
+            <span>
+              <span class="faceName">Rowland Smith</span>
+              <span class="faceCred">Forge America, author</span>
+            </span>
+          </button>
+          <button type="button" class="carItem" style="--i: 5" data-i="5">
+            <span class="carPortrait" id="ph-5">
+              <img src="../../../public/agent-room/leaders/5.jpg" alt="Rob Wegner" width="64" height="64" />
+            </span>
+            <span>
+              <span class="faceName">Rob Wegner</span>
+              <span class="faceCred">Network co-founder</span>
+            </span>
+          </button>
+          <button type="button" class="carItem" style="--i: 6" data-i="6">
+            <span class="carPortrait" id="ph-6">
+              <img src="../../../public/agent-room/leaders/6.jpg" alt="Liz Rios" width="64" height="64" />
+            </span>
+            <span>
+              <span class="faceName">Liz Rios</span>
+              <span class="faceCred">Leader, author</span>
+            </span>
+          </button>
+          <button type="button" class="carItem" style="--i: 7" data-i="7">
+            <span class="carPortrait" id="ph-7">
+              <img src="../../../public/agent-room/leaders/7.jpg" alt="Lucas Pulley" width="64" height="64" />
+            </span>
+            <span>
+              <span class="faceName">Lucas Pulley</span>
+              <span class="faceCred">Network leader</span>
+            </span>
+          </button>
+          <button type="button" class="carItem" style="--i: 8" data-i="8">
+            <span class="carPortrait" id="ph-8">
+              <img src="../../../public/agent-room/leaders/8.jpg" alt="Josh Shepherd" width="64" height="64" />
+            </span>
+            <span>
+              <span class="faceName">Josh Shepherd</span>
+              <span class="faceCred">Movemental, founder</span>
+            </span>
+          </button>
+          <button type="button" class="carItem" style="--i: 9" data-i="9">
+            <span class="carPortrait" id="ph-9">
+              <img src="../../../public/agent-room/leaders/9.jpg" alt="Jeremy & Monica Chambers" width="64" height="64" />
+            </span>
+            <span>
+              <span class="faceName">Jeremy & Monica Chambers</span>
+              <span class="faceCred">Movement leaders</span>
+            </span>
+          </button>
+          <button type="button" class="carItem" style="--i: 10" data-i="10">
+            <span class="carPortrait" id="ph-10">
+              <img src="../../../public/agent-room/leaders/10.jpg" alt="Dave Ferguson" width="64" height="64" />
+            </span>
+            <span>
+              <span class="faceName">Dave Ferguson</span>
+              <span class="faceCred">Movement leader</span>
+            </span>
+          </button>
+          <button type="button" class="carItem" style="--i: 11" data-i="11">
+            <span class="carPortrait" id="ph-11">
+              <img src="../../../public/agent-room/leaders/11.jpg" alt="Dhati Lewis" width="64" height="64" />
+            </span>
+            <span>
+              <span class="faceName">Dhati Lewis</span>
+              <span class="faceCred">Movement leader</span>
+            </span>
+          </button>
+          <button type="button" class="carItem" style="--i: 12" data-i="12">
+            <span class="carPortrait" id="ph-12">
+              <img src="../../../public/agent-room/leaders/12.jpg" alt="Hugh Halter" width="64" height="64" />
+            </span>
+            <span>
+              <span class="faceName">Hugh Halter</span>
+              <span class="faceCred">Movement leader</span>
+            </span>
+          </button>
+          <button type="button" class="carItem" style="--i: 13" data-i="13">
+            <span class="carPortrait" id="ph-13">
+              <img src="../../../public/agent-room/leaders/13.jpg" alt="Michael Cooper" width="64" height="64" />
+            </span>
+            <span>
+              <span class="faceName">Michael Cooper</span>
+              <span class="faceCred">Movement leader</span>
+            </span>
+          </button>
+          <button type="button" class="carItem" style="--i: 14" data-i="14">
+            <span class="carPortrait" id="ph-14">
+              <img src="../../../public/agent-room/leaders/14.jpg" alt="Roy Moran" width="64" height="64" />
+            </span>
+            <span>
+              <span class="faceName">Roy Moran</span>
+              <span class="faceCred">Movement leader</span>
+            </span>
+          </button>
+          <button type="button" class="carItem" style="--i: 15" data-i="15">
+            <span class="carPortrait" id="ph-15">
+              <img src="../../../public/agent-room/leaders/15.jpg" alt="Peyton Jones" width="64" height="64" />
+            </span>
+            <span>
+              <span class="faceName">Peyton Jones</span>
+              <span class="faceCred">Movement leader</span>
+            </span>
+          </button>
+          <button type="button" class="carItem" style="--i: 16" data-i="16">
+            <span class="carPortrait" id="ph-16">
+              <img src="../../../public/agent-room/leaders/16.jpg" alt="Meghan Good" width="64" height="64" />
+            </span>
+            <span>
+              <span class="faceName">Meghan Good</span>
+              <span class="faceCred">Movement leader</span>
+            </span>
+          </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <svg class="ink" id="ink" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <filter id="rough" x="-20%" y="-20%" width="140%" height="140%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.016" numOctaves="2" seed="6" result="n" />
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="1.7" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+            <filter id="marker" x="-15%" y="-70%" width="130%" height="240%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.018 0.11" numOctaves="2" seed="9" result="n" />
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="3.4" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+          </defs>
+          <path id="phrase-underline" class="stroke" pathLength="1" stroke-dasharray="1" stroke-dashoffset="0" />
+        </svg>
+      </section>
+
+      <div class="voice" aria-live="polite">
+        <div class="vline" id="voice-line">
+          Movemental meets leaders and organizations where they are. Let me show you how we can help.
+        </div>
+      </div>
+
+      <div class="composer">
+        <div class="sugg">
+          <button type="button" class="chip lead">Get a clear next AI step</button>
+          <button type="button" class="chip">About Movemental</button>
+          <button type="button" class="chip">What does it cost?</button>
+          <button type="button" class="chip">Get in touch</button>
+        </div>
+        <form class="line" id="composer-form">
+          <label class="field">
+            <input
+              type="text"
+              name="message"
+              autocomplete="off"
+              aria-label="Talk to Movemental"
+              placeholder="Type here, or tap a suggestion…"
+            />
+          </label>
+          <button type="submit" class="send" aria-label="Send">→</button>
+        </form>
+        <p class="legend">
+          <button type="button" class="replay" id="replay">↻ replay</button>
+        </p>
+      </div>
+    </div>
+    <script src="home.js"></script>
+  </body>
+</html>

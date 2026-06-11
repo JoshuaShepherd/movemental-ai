@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent room corpus manifest",
+  "type": "object",
+  "required": ["corpus_id", "version", "documents"],
+  "properties": {
+    "corpus_id": { "type": "string" },
+    "binding_slug": { "type": "string" },
+    "version": { "type": "string" },
+    "description": { "type": "string" },
+    "providers": { "type": "object" },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "document_id", "upload"],
+        "properties": {
+          "path": { "type": "string" },
+          "document_id": { "type": "string" },
+          "upload": { "type": "boolean" },
+          "reason": { "type": "string" },
+          "openai_attributes": {
+            "type": "object",
+            "additionalProperties": { "type": ["string", "number", "boolean"] }
+          },
+          "chunking_override": { "type": "object" }
+        }
+      }
+    },
+    "excluded_patterns": { "type": "array", "items": { "type": "string" } },
+    "retrieval_policy": { "type": "object" },
+    "maintenance": { "type": "object" }
+  }
+}

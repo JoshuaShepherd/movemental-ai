@@ -1,0 +1,148 @@
+{
+  "$schema": "./manifest.schema.json",
+  "corpus_id": "movemental-room-public",
+  "binding_slug": "movemental-room-canon",
+  "version": "2026-05",
+  "description": "Curated public corpus for the /agent room host file_search tool. Excludes operator-only onboarding and unreleased internal material.",
+  "providers": {
+    "openai_vector_store": {
+      "enabled": true,
+      "default_filter_defaults": {
+        "max_num_results": 6
+      },
+      "default_chunking": {
+        "type": "static",
+        "static": {
+          "max_chunk_size_tokens": 500,
+          "chunk_overlap_tokens": 75
+        }
+      }
+    },
+    "claude_files_api": {
+      "enabled": false,
+      "note": "Room chat uses Claude; retrieval is OpenAI file_search today. These files are Claude-upload-ready if a native Claude retrieval path is added later.",
+      "beta_header": "anthropic-beta: files-api-2025-04-14"
+    }
+  },
+  "documents": [
+    {
+      "path": "public/movemental-kb-phase-1.md",
+      "document_id": "kb-phase-1",
+      "upload": true,
+      "openai_attributes": {
+        "category": "knowledge-base",
+        "phase": "1",
+        "domain": "path-pricing"
+      },
+      "chunking_override": {
+        "type": "static",
+        "static": {
+          "max_chunk_size_tokens": 500,
+          "chunk_overlap_tokens": 75
+        }
+      }
+    },
+    {
+      "path": "public/movemental-kb-phase-2.md",
+      "document_id": "kb-phase-2",
+      "upload": true,
+      "openai_attributes": {
+        "category": "knowledge-base",
+        "phase": "2",
+        "domain": "identity-thesis"
+      },
+      "chunking_override": {
+        "type": "static",
+        "static": {
+          "max_chunk_size_tokens": 500,
+          "chunk_overlap_tokens": 75
+        }
+      }
+    },
+    {
+      "path": "public/movemental-kb-phase-3.md",
+      "document_id": "kb-phase-3",
+      "upload": true,
+      "openai_attributes": {
+        "category": "knowledge-base",
+        "phase": "3",
+        "domain": "scenii-proof"
+      },
+      "chunking_override": {
+        "type": "static",
+        "static": {
+          "max_chunk_size_tokens": 500,
+          "chunk_overlap_tokens": 75
+        }
+      }
+    },
+    {
+      "path": "public/movemental-kb-phase-4.md",
+      "document_id": "kb-phase-4",
+      "upload": true,
+      "openai_attributes": {
+        "category": "knowledge-base",
+        "phase": "4",
+        "domain": "ai-reality-product"
+      },
+      "chunking_override": {
+        "type": "static",
+        "static": {
+          "max_chunk_size_tokens": 500,
+          "chunk_overlap_tokens": 75
+        }
+      }
+    },
+    {
+      "path": "public/movemental-the-talk.md",
+      "document_id": "narrative-the-talk",
+      "upload": true,
+      "openai_attributes": {
+        "category": "narrative",
+        "phase": "0",
+        "domain": "spoken-narrative"
+      },
+      "chunking_override": {
+        "type": "static",
+        "static": {
+          "max_chunk_size_tokens": 600,
+          "chunk_overlap_tokens": 100
+        }
+      }
+    },
+    {
+      "path": "internal/movement-voices-onboarding-walkthrough.md",
+      "document_id": "voices-onboarding-walkthrough",
+      "upload": false,
+      "reason": "Operator placeholders and credential conventions — internal only."
+    }
+  ],
+  "excluded_patterns": [
+    "internal/**",
+    "**/seed/**",
+    "**/.env*",
+    "**/*-draft.md"
+  ],
+  "retrieval_policy": {
+    "canon_wins": true,
+    "use_when": "Visitor asks for detail not in room-host prompt §5 Knowledge Canon, or Discuss-phase open questions beyond canon.",
+    "do_not_use_for": [
+      "Pricing/path/founders when prompt canon is sufficient",
+      "Inventing facts to fill gaps",
+      "Resolving [CONFLICT] markers without live source check"
+    ],
+    "mark_live_before_quote": [
+      "pricing",
+      "movement_voice_count",
+      "field_guide_availability",
+      "assessment_specs",
+      "ai_sector_statistics"
+    ]
+  },
+  "maintenance": {
+    "corpus_date": "2026-05",
+    "revalidate_ai_stats": "annually",
+    "revalidate_pricing": "on_change",
+    "blocked_phase_5": "Audiences/playbooks, governance/legal, FAQ verbatim — waiting on Playbooks OCR and live /faq scrape."
+  }
+}

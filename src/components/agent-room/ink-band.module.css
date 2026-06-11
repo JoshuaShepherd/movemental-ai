@@ -30,8 +30,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.9rem clamp(1rem, 4vw, 2.5rem);
+  /* Thin chrome strip — the wordmark bleeds below into the stage. */
+  padding: 0.15rem clamp(1rem, 4vw, 2.5rem) 0.25rem;
   border-bottom: 1px solid var(--color-ink-band-border);
+  overflow: visible;
+  position: relative;
+  z-index: 2;
 }
 .logo {
   display: flex;
@@ -41,9 +45,16 @@
   padding: 0;
   cursor: pointer;
   line-height: 0;
+  overflow: visible;
 }
 .logoMark {
   display: block;
+  width: auto !important;
+  height: clamp(3.5rem, 9.5vw, 4.85rem) !important;
+  margin-top: -0.2rem;
+  margin-bottom: -0.9rem;
+  position: relative;
+  z-index: 1;
   transition: opacity 0.15s;
 }
 .logo:hover .logoMark {
