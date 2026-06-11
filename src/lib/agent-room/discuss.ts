@@ -64,6 +64,9 @@ export const DISCUSS_TURN_CAP: number = (() => {
  */
 export const ENTER_DISCUSS_VALUE = "enter-discuss";
 
+/** Chip / scene sentinel for explicit Discuss entry (INT-09 entry points). */
+export const DISCUSS_CHIP_TARGET = "toDiscuss";
+
 /**
  * Length (chars) above which a streamed assistant Discuss turn is committed as a
  * **sheet passage** (marginalia) rather than living only in the voice band

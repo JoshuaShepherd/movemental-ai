@@ -8,8 +8,16 @@ import { submitLead, LEADS } from "@/lib/agent-room/capture";
 import { MAP_Q, computeMapRead, type MapOption, type MapRead } from "@/lib/agent-room/data/map-q";
 import { beatScene } from "@/lib/agent-room/beat-scenes";
 import { leaderScene, leaderWorkScene, leaderConnectScene } from "@/lib/agent-room/leader-scenes";
-import { routeInput, FALLBACK_SAY, isMetaOrObjection } from "@/lib/agent-room/route-input";
-import { DISCUSS_ENABLED } from "@/lib/agent-room/discuss";
+import { routeInput, FALLBACK_SAY } from "@/lib/agent-room/route-input";
+import {
+  DISCUSS_ENABLED,
+  type DiscussReason,
+} from "@/lib/agent-room/discuss";
+import {
+  handleDiscussChipTarget,
+  resolveTypedDiscussSignal,
+  STUB_DISCUSS_OPENER,
+} from "@/lib/agent-room/discuss-entry";
 import { playScene, type Generation } from "@/lib/agent-room/scene-runner";
 import { useInk } from "./agent-room-context";
 import type { ComposerChip } from "./composer";
@@ -35,6 +43,8 @@ export interface AgentRoomController
   error: string | null;
   /** The computed read-back (set when the reality-check finishes). */
   mapRead: MapRead | null;
+  /** Stub Discuss overlay shows capture form instead of live LLM chat. */
+  stubDiscussCapture: boolean;
   sendMessage: (raw: string) => void;
   reset: () => void;
   /** A reality-check answer was tapped → `answerMap` choreography. */
@@ -61,17 +71,22 @@ const INITIAL_SCREEN: StubScreenState = { id: "home", opts: {}, nonce: 0 };
 export function useAgentRoomStub(): AgentRoomController {
   const { inkLine, drawGesture, clearInk, clearVoice } = useInk();
   const discuss = useDiscussPhase();
+  const { appendTranscript, enterDiscuss: baseEnterDiscuss, resetDiscuss } = discuss;
+  const phaseRef = useRef(discuss.phase);
+  phaseRef.current = discuss.phase;
 
   const [screen, setScreen] = useState<StubScreenState>(INITIAL_SCREEN);
   const [suggestions, setSuggestions] = useState<ComposerChip[]>([]);
   const [busy, setBusy] = useState(false);
   const [mapRead, setMapRead] = useState<MapRead | null>(null);
+  const [stubDiscussCapture, setStubDiscussCapture] = useState(false);
 
   // Mutable generation token (shared with playScene) + latest `run` for chips +
   // the reality-check answers (read by `answerMap`, not displayed → a ref).
   const genRef = useRef<Generation>({ value: 0 });
   const runRef = useRef<(name: string) => void>(() => {});
   const mapAnswersRef = useRef<(MapOption | null)[]>([]);
+  const lastSceneRef = useRef<string>("opening");
   // The leader the agent is currently on (prototype `currentLeader`), read by the
   // leader-aware `leaderWork` / `leaderConnect` chip targets.
   const currentLeaderRef = useRef<number>(0);
@@ -83,6 +98,27 @@ export function useAgentRoomStub(): AgentRoomController {
   // the free-text streak (the visitor took the on-ramp).
   const freeTextStreakRef = useRef(0);
   const fallbackStreakRef = useRef(0);
+  const screenRef = useRef(screen);
+  screenRef.current = screen;
+
+  const enterDiscuss = useCallback(
+    (reason?: DiscussReason) => {
+      if (!DISCUSS_ENABLED) return;
+      baseEnterDiscuss(reason);
+      appendTranscript({
+        role: "assistant",
+        content: STUB_DISCUSS_OPENER,
+        surface: "passage",
+      });
+      setStubDiscussCapture(true);
+    },
+    [appendTranscript, baseEnterDiscuss],
+  );
+
+  const exitDiscuss = useCallback(() => {
+    discuss.exitDiscuss();
+    setStubDiscussCapture(false);
+  }, [discuss]);
 
   // `show` — swap the screen (prototype `renderScreen`). The registry maps the
   // id → component; `home` clears the voice; starting the beat (`qi === 0`)
@@ -114,11 +150,16 @@ export function useAgentRoomStub(): AgentRoomController {
         lead: c.lead,
         onSelect: () => {
           freeTextStreakRef.current = 0;
-          runRef.current(c.to);
+          handleDiscussChipTarget(
+            c.to,
+            enterDiscuss,
+            runRef.current,
+            { lastScene: lastSceneRef.current },
+          );
         },
       })),
     );
-  }, []);
+  }, [enterDiscuss]);
 
   // `await:'capture'` → resolve when the rendered form submits; latch a submit
   // that beats the await (pre-await gesture) so it still completes.
@@ -153,6 +194,7 @@ export function useAgentRoomStub(): AgentRoomController {
 
   const run = useCallback(
     (name: string) => {
+      lastSceneRef.current = name;
       // Leader-aware names are built from the current leader (prototype overrode
       // `SCENES.leaderWork` / `SCENES.leaderConnect` with `currentLeader`-closing
       // functions); intercept them before the static SCENES lookup.
@@ -183,31 +225,36 @@ export function useAgentRoomStub(): AgentRoomController {
     clearInk();
     freeTextStreakRef.current = 0;
     fallbackStreakRef.current = 0;
+    setStubDiscussCapture(false);
     discuss.resetDiscuss(); // back to Guide; drop any Discuss transcript
     run("opening");
   }, [abandonCapture, clearInk, discuss, run]);
 
-  // Typed input → local regex router (prototype `handleInput`). A match runs the
-  // scene; anything unmatched plays the spoken fallback. Never fetches.
-  //
-  // INT-09: before routing, check the implicit Discuss signals (design §4.2) —
-  // a meta/objection question, a third consecutive free-text turn, or repeated
-  // fallbacks. Any of those (flag on) → *offer* the switch via `discussOffer`'s
-  // consent chips; the room never auto-morphs. Otherwise route as before.
   const sendMessage = useCallback(
     (raw: string) => {
       const text = raw.trim();
       if (!text) return;
+
+      if (phaseRef.current === "discuss") {
+        // Stub never fakes LLM chat — capture is in the overlay.
+        return;
+      }
+
       const target = routeInput(text);
       freeTextStreakRef.current += 1;
       fallbackStreakRef.current = target === "fallback" ? fallbackStreakRef.current + 1 : 0;
 
-      const implicit =
-        isMetaOrObjection(text) || freeTextStreakRef.current >= 3 || fallbackStreakRef.current >= 2;
-      if (DISCUSS_ENABLED && implicit) {
+      const signal = resolveTypedDiscussSignal({
+        text,
+        phase: phaseRef.current,
+        screenId: screenRef.current.id,
+        freeTextStreak: freeTextStreakRef.current,
+        fallbackStreak: fallbackStreakRef.current,
+      });
+      if (signal.kind === "offer") {
         freeTextStreakRef.current = 0;
         fallbackStreakRef.current = 0;
-        run("discussOffer"); // offer, never auto-transition
+        run("discussOffer");
         return;
       }
 
@@ -299,11 +346,12 @@ export function useAgentRoomStub(): AgentRoomController {
     onLeaderSelect,
     onCaptureSubmit,
     onCaptureSkip,
+    stubDiscussCapture,
     // Discuss phase (INT-08) — shared with the stream controller.
     phase: discuss.phase,
     transcript: discuss.transcript,
     discussTurnCount: discuss.discussTurnCount,
-    enterDiscuss: discuss.enterDiscuss,
-    exitDiscuss: discuss.exitDiscuss,
+    enterDiscuss,
+    exitDiscuss,
   };
 }

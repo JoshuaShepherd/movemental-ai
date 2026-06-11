@@ -2445,3 +2445,139 @@
     max-height: 8rem;
   }
 }
+
+/* ===== Discuss overlay — Model C (Layer 3) ===== */
+.discussOverlayBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: color-mix(in srgb, var(--color-ink-band-ink) 18%, transparent);
+  padding: 0.5rem;
+  animation: discussOverlayIn 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.discussOverlay {
+  width: min(100%, 52rem);
+  max-height: 92dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-ink-band-paper);
+  border: 1px solid var(--color-ink-band-border);
+  border-radius: 0.35rem 0.35rem 0 0;
+  box-shadow: 0 -8px 32px color-mix(in srgb, var(--color-ink-band-ink) 12%, transparent);
+  overflow: hidden;
+}
+
+.discussOverlayHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--color-ink-band-border);
+  flex-shrink: 0;
+}
+
+.discussOverlayTitle {
+  font-family: var(--font-ink-display);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 0;
+  color: var(--color-ink-band-ink);
+}
+
+.discussOverlayClose {
+  background: none;
+  border: 0;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--color-ink-band-ink-muted);
+  padding: 0.25rem 0.45rem;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.discussOverlayClose:hover {
+  color: var(--color-ink-band-blue);
+}
+
+.discussOverlayBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.15rem 0.75rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.discussThread {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.discussThreadCompact {
+  gap: 0.7rem;
+}
+
+.marginUserCompact,
+.passageCompact,
+.liveInkCompact {
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.liveInkCompact {
+  font-family: var(--font-ink-hand);
+  color: var(--color-ink-band-ink);
+  font-size: 1rem;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.discussOverlayStubCapture {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--color-ink-band-border);
+}
+
+.roomDiscussOverlay .voice,
+.roomDiscussOverlay .composer {
+  visibility: hidden;
+  pointer-events: none;
+  min-height: 0;
+  max-height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes discussOverlayIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .discussOverlayBackdrop {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .discussOverlayBackdrop {
+    padding: 0;
+    align-items: stretch;
+  }
+  .discussOverlay {
+    width: 100%;
+    max-height: 95dvh;
+    border-radius: 0.35rem 0.35rem 0 0;
+  }
+}

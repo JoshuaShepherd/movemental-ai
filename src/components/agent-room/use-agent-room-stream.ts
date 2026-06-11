@@ -352,5 +352,6 @@ export function useAgentRoomStream() {
     discussTurnCount: discuss.discussTurnCount,
     enterDiscuss: discuss.enterDiscuss,
     exitDiscuss: discuss.exitDiscuss,
+    stubDiscussCapture: false,
   };
 }

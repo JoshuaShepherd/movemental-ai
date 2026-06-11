@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import type { TranscriptTurn } from "@/lib/agent-room/discuss";
 import styles from "../ink-band.module.css";
+import { DiscussThread } from "./discuss-thread";
 
 /**
  * Sheet marginalia for Discuss (INT-08, Model B §5.1). The longer written
@@ -66,17 +67,7 @@ export function DiscussFold({ transcript }: { transcript: TranscriptTurn[] }) {
       </button>
       {open && (
         <div className={styles.foldBody}>
-          {transcript.map((t, i) =>
-            t.role === "user" ? (
-              <div key={i} className={styles.marginUser}>
-                {t.content}
-              </div>
-            ) : (
-              <p key={i} className={styles.passage}>
-                {t.content}
-              </p>
-            ),
-          )}
+          <DiscussThread transcript={transcript} showAllAssistant />
         </div>
       )}
     </div>

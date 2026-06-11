@@ -8,6 +8,7 @@
 
 ## What changed in this revision
 
+- **§5.1 — Model C overlay (2026-06-10):** Discuss phase now uses a near full-screen **DiscussOverlay** (conversation owns the viewport; X to close; transcript preserved in `DiscussFold`). Model B in-sheet marginalia during active Discuss is superseded; Model B remains documented as the prior layout.
 - **§5.1 — Layout model committed:** Model B (“mark up one document”) replaces the shrink-the-screen draft as the recommendation; Model A is documented as the rejected alternative. §§5.3, 6.2, 12, and the proportion diagram now agree with Model B.
 - **Discuss capture decided:** Reuses the existing on-brand `capture` form-cell (`kind:'discuss'`) + `submitLead(kind, payload)` stub; turn-cap (~6–8 agent turns) triggers capture, not a redirect to `/contact`. Wired into §5.4, §8, §10 (LF-03).
 - **Stub gate → capture, not dead-end:** Stub does not pretend to be live LLM chat; it acknowledges depth and renders `capture` (`kind:'discuss'`) instead of an infrastructure notice.

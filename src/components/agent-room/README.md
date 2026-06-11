@@ -33,6 +33,12 @@ chips). Shared SSE module: `agent-stream-turn.ts`. `stub` = zero-network;
 `stream` = legacy full-AI regression. See
 [`docs/build/agent-room-handoff.md`](../../../docs/build/agent-room-handoff.md).
 
+**Amended 2026-06-10 (Discuss overlay / Model C):** When
+`NEXT_PUBLIC_AGENT_ROOM_DISCUSS=1`, Layer 3 opens a full-screen `DiscussOverlay`
+(via `discuss-entry.ts` triggers → `enterDiscuss()`). Guide stays unchanged when
+the flag is off. See
+[`docs/build/notes/agent-room-long-form-discussion-ui.md`](../../../docs/build/notes/agent-room-long-form-discussion-ui.md).
+
 ## Context
 
 Two designs currently collide in `src/components/agent-room/`:

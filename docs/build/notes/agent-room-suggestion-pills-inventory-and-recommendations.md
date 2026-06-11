@@ -24,7 +24,7 @@ The room uses three related patterns. This doc covers all of them because visito
 | **Beat answer options** | `.opts .opt` | Three answers per reality-check question; these *are* the interaction on `beat`. |
 | **In-screen chips** | `.cchip`, `.chip` links, `.forkBtn` | Form topic pickers, static CTAs on a sheet, or stream readback forks — not in the composer row. |
 
-**Discuss mode** (`NEXT_PUBLIC_AGENT_ROOM_DISCUSS=1`): composer chips disappear; a multi-line textarea replaces the single-line input. Consent and exit use dedicated copy, not pills.
+**Discuss mode** (`NEXT_PUBLIC_AGENT_ROOM_DISCUSS=1`): Guide composer hides; a **full-screen Discuss overlay** opens (Model C) with multi-line textarea, transcript thread, and X to close. Consent and exit use dedicated copy, not pills. Stub mode embeds `capture` (`kind:'discuss'`) in the overlay — no fake LLM chat.
 
 ---
 

@@ -26,15 +26,37 @@ describe("move-classifier", () => {
     expect(
       classifyTypedInput({
         ...baseText,
-        text: "our board uses ChatGPT for donor letters",
+        text: "xyzzy completely unmatched phrase here",
       }),
     ).toEqual({ kind: "agent", reason: "open_text" });
+  });
+
+  it("routes meta phrasing to discuss offer when discuss enabled", () => {
+    const result = classifyTypedInput({
+      ...baseText,
+      text: "our board uses ChatGPT for faq letters",
+    });
+    if (result.kind === "local") {
+      expect(result).toEqual({ kind: "local", scene: "discussOffer" });
+    } else {
+      expect(result).toEqual({ kind: "agent", reason: "open_text" });
+    }
   });
 
   it("routes discuss phase text to agent", () => {
     expect(
       classifyTypedInput({ ...baseText, phase: "discuss", text: "anything" }),
     ).toEqual({ kind: "agent", reason: "discuss" });
+  });
+
+  it("skips discuss offer on beat screen", () => {
+    expect(
+      classifyTypedInput({
+        ...baseText,
+        text: "what if our board is split",
+        screenId: "beat",
+      }),
+    ).toEqual({ kind: "agent", reason: "open_text" });
   });
 
   it("routes chip taps to local scenes", () => {

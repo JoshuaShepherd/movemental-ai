@@ -14,9 +14,10 @@ import { VoiceZone } from "./shell/voice-zone";
 import { StreamScreen } from "./screen/stream-screen";
 import { HybridScreen } from "./screen/hybrid-screen";
 import { StubScreen } from "./screen/stub/stub-screen";
+import { CaptureScreen } from "./screen/stub/capture-screen";
 import { Composer, BEAT_PLACEHOLDER, STREAM_PLACEHOLDER, type ComposerChip } from "./composer";
-import { DiscussComposer } from "./discuss/discuss-composer";
-import { DiscussMarginalia, DiscussFold } from "./discuss/discuss-sheet";
+import { DiscussOverlay } from "./discuss/discuss-overlay";
+import { DiscussFold } from "./discuss/discuss-sheet";
 import type { VoiceState } from "./use-agent-room-stream";
 import type { RoomPhase, TranscriptTurn } from "@/lib/agent-room/discuss";
 
@@ -42,6 +43,9 @@ function AgentRoomView({
   phase = "guide",
   transcript = [],
   onExitDiscuss,
+  stubDiscussCapture = false,
+  onCaptureSubmit,
+  onCaptureSkip,
 }: {
   screenNode: ReactNode;
   screenKey: string;
@@ -54,46 +58,75 @@ function AgentRoomView({
   onSay: (text: string) => void;
   onReplay: () => void;
   placeholder?: string;
-  /** Discuss phase (INT-08, Model B). Defaults keep Guide identical to AF-12. */
   phase?: RoomPhase;
   transcript?: TranscriptTurn[];
   onExitDiscuss?: () => void;
+  stubDiscussCapture?: boolean;
+  onCaptureSubmit?: (kind: string, values: Record<string, string>) => void;
+  onCaptureSkip?: () => void;
 }) {
   const discuss = phase === "discuss";
+  const liveText =
+    discuss && !voice.thinking && voice.text ? voice.text : undefined;
+
+  const stubCaptureNode =
+    stubDiscussCapture && onCaptureSubmit ? (
+      <div className={styles.discussOverlayStubCapture}>
+        <CaptureScreen
+          opts={{ kind: "discuss" }}
+          mapRead={null}
+          onHome={() => {}}
+          onBeatAnswer={() => {}}
+          onLeaderSelect={() => {}}
+          onCaptureSubmit={onCaptureSubmit}
+          onCaptureSkip={onCaptureSkip ?? (() => {})}
+          disabled={false}
+        />
+      </div>
+    ) : undefined;
+
   return (
-    <div className={`ink-band-surface ${styles.room} ${discuss ? styles.discuss : ""}`}>
+    <div
+      className={`ink-band-surface ${styles.room} ${discuss ? styles.discuss : ""} ${
+        discuss ? styles.roomDiscussOverlay : ""
+      }`}
+    >
       <Mast onHome={onReplay} />
 
-      {/* Model B: screen stays dominant; in Discuss it always scrolls and the
-          transcript appends as marginalia on the same sheet. The "What we
-          discussed" fold shows in Guide only after a Discuss session. */}
       <ScreenZone scroll={scroll || discuss} home={home && !discuss}>
         <div key={screenKey} className={styles.settle}>
           {screenNode}
         </div>
-        {discuss ? (
-          <DiscussMarginalia transcript={transcript} />
-        ) : (
-          <DiscussFold transcript={transcript} />
-        )}
+        {!discuss && <DiscussFold transcript={transcript} />}
       </ScreenZone>
 
-      <VoiceZone voice={voice} error={error} phase={phase} transcript={transcript} />
+      <VoiceZone
+        voice={voice}
+        error={error}
+        phase={discuss ? "guide" : phase}
+        transcript={transcript}
+      />
 
-      {discuss ? (
-        <DiscussComposer
-          disabled={isStreaming}
-          onSay={onSay}
-          onReplay={onReplay}
-          onExit={onExitDiscuss}
-        />
-      ) : (
+      {!discuss ? (
         <Composer
           suggestions={suggestions}
           disabled={isStreaming}
           onSay={onSay}
           onReplay={onReplay}
           placeholder={placeholder}
+        />
+      ) : null}
+
+      {discuss && (
+        <DiscussOverlay
+          transcript={transcript}
+          liveText={liveText}
+          liveThinking={voice.thinking}
+          disabled={isStreaming}
+          onSay={onSay}
+          onReplay={onReplay}
+          onExit={onExitDiscuss}
+          stubCapture={stubCaptureNode}
         />
       )}
     </div>
@@ -139,14 +172,15 @@ function HybridRoom() {
       phase={room.phase}
       transcript={room.transcript}
       onExitDiscuss={room.exitDiscuss}
+      stubDiscussCapture={room.stubDiscussCapture}
+      onCaptureSubmit={room.onCaptureSubmit}
+      onCaptureSkip={room.onCaptureSkip}
     />
   );
 }
 
 /**
- * Stub container — local scene runner, no network (offline fallback). Renders
- * the Ink Band screen registry; everything scrolls except the reality-check beat,
- * and only `home` is the centered, margin-rule-free sheet.
+ * Stub container — local scene runner, no network (offline fallback).
  */
 function StubRoom() {
   const room = useAgentRoomStub();
@@ -178,6 +212,9 @@ function StubRoom() {
       phase={room.phase}
       transcript={room.transcript}
       onExitDiscuss={room.exitDiscuss}
+      stubDiscussCapture={room.stubDiscussCapture}
+      onCaptureSubmit={room.onCaptureSubmit}
+      onCaptureSkip={room.onCaptureSkip}
     />
   );
 }
@@ -198,7 +235,7 @@ function StreamRoom() {
           disabled={room.isStreaming}
         />
       }
-      screenKey={screen.kind === "component" ? `c-${screen.nonce}` : "opening"}
+      screenKey={screen.kind === "component" ? `c-$screen.nonce}` : "opening"}
       home={atOpening}
       scroll={!inBeat}
       voice={room.voice}
@@ -211,6 +248,7 @@ function StreamRoom() {
       phase={room.phase}
       transcript={room.transcript}
       onExitDiscuss={room.exitDiscuss}
+      stubDiscussCapture={room.stubDiscussCapture}
     />
   );
 }

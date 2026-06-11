@@ -5,8 +5,8 @@
  * AGENT (SSE turn) before the hybrid controller acts. Pure functions only.
  */
 import { SCENES } from "./data/scenes";
-import { DISCUSS_ENABLED } from "./discuss";
-import { isMetaOrObjection, routeInput } from "./route-input";
+import { resolveTypedDiscussSignal } from "./discuss-entry";
+import { routeInput } from "./route-input";
 
 /** Why a move routes to the live agent. */
 export type AgentMoveReason = "open_text" | "discuss" | "agent_chip";
@@ -22,6 +22,8 @@ export type ClassifyTextInput = {
   text: string;
   /** Room phase — Discuss typed turns always go to the agent. */
   phase: "guide" | "discuss";
+  /** Active screen id — beat blocks implicit Discuss offer. */
+  screenId?: string;
   freeTextStreak: number;
   fallbackStreak: number;
 };
@@ -58,15 +60,18 @@ export function classifyTypedInput(input: ClassifyTextInput): MoveRoute {
     return { kind: "agent", reason: "discuss" };
   }
 
-  const target = routeInput(text);
-  const nextFreeText = input.freeTextStreak + 1;
-  const nextFallback = target === "fallback" ? input.fallbackStreak + 1 : 0;
-
-  const implicit =
-    isMetaOrObjection(text) || nextFreeText >= 3 || nextFallback >= 2;
-  if (DISCUSS_ENABLED && implicit) {
+  const signal = resolveTypedDiscussSignal({
+    text,
+    phase: input.phase,
+    screenId: input.screenId,
+    freeTextStreak: input.freeTextStreak,
+    fallbackStreak: input.fallbackStreak,
+  });
+  if (signal.kind === "offer") {
     return { kind: "local", scene: "discussOffer" };
   }
+
+  const target = routeInput(text);
 
   if (target !== "fallback") {
     return { kind: "local", scene: target };

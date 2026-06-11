@@ -25,6 +25,7 @@ import {
   ENTER_DISCUSS_VALUE,
   type RoomPhase,
 } from "@/lib/agent-room/discuss";
+import { handleDiscussChipTarget } from "@/lib/agent-room/discuss-entry";
 import { isEngineExtra, toScreenId } from "@/lib/agent-room/screen-map";
 import type { ComponentId } from "@/lib/agent-room/stream-chunk";
 import { playScene, type Generation } from "@/lib/agent-room/scene-runner";
@@ -170,11 +171,16 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         lead: c.lead,
         onSelect: () => {
           freeTextStreakRef.current = 0;
-          runRef.current(c.to);
+          handleDiscussChipTarget(
+            c.to,
+            discuss.enterDiscuss,
+            runRef.current,
+            { lastScene: lastSceneRef.current },
+          );
         },
       })),
     );
-  }, []);
+  }, [discuss.enterDiscuss]);
 
   const awaitCapture = useCallback(
     () =>
@@ -390,6 +396,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         type: "text",
         text,
         phase: phaseRef.current,
+        screenId: screenRef.current.id,
         freeTextStreak: freeTextStreakRef.current,
         fallbackStreak: fallbackStreakRef.current,
       });
@@ -519,6 +526,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     onLeaderSelect,
     onCaptureSubmit,
     onCaptureSkip,
+    stubDiscussCapture: false,
     phase: discuss.phase,
     transcript: discuss.transcript,
     discussTurnCount: discuss.discussTurnCount,
