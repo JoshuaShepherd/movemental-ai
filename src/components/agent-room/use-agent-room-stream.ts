@@ -9,6 +9,7 @@ import type { Scene, SceneFactory, ScreenId, ShowOpts, SuggestChip } from "@/lib
 import { submitLead, LEADS } from "@/lib/agent-room/capture";
 import { MAP_Q, computeMapRead, type MapOption, type MapRead } from "@/lib/agent-room/data/map-q";
 import { SCENES } from "@/lib/agent-room/data/scenes";
+import { CONCIERGE_VOICE } from "@/lib/agent-room/data/concierge-voice-lines";
 import { handleSuggestChipTarget } from "@/lib/agent-room/suggest-chip-targets";
 import {
   playOpeningChoreography,
@@ -415,11 +416,16 @@ export function useAgentRoomStream() {
 
         if (result.ok === false) {
           if (result.error === "aborted") return;
-          setError(
-            result.error === "stalled"
-              ? "The room went quiet — the connection stalled."
-              : result.error,
-          );
+          if (result.retryable) {
+            void inkLine(
+              result.error === "stalled"
+                ? CONCIERGE_VOICE.stallRecovery
+                : CONCIERGE_VOICE.terminalError,
+            );
+            setError(null);
+          } else {
+            setError(result.error);
+          }
           setErrorRetryable(Boolean(result.retryable));
           setVoice({ thinking: false, text: "" });
           historyRef.current = priorHistory;
@@ -459,6 +465,7 @@ export function useAgentRoomStream() {
       isStreaming,
       localBusy,
       drawGesture,
+      inkLine,
       clearVoice,
       beginStream,
       appendStream,
@@ -498,7 +505,7 @@ export function useAgentRoomStream() {
           };
         }));
   const suggestions: ComposerChip[] =
-    error && errorRetryable && !inLocalBeat
+    errorRetryable && !inLocalBeat
       ? [{ label: "Try again", lead: true, onSelect: retry }, ...baseSuggestions]
       : baseSuggestions;
 

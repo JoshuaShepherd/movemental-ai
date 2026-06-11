@@ -11,13 +11,14 @@
  * (chips may target a not-yet-wired scene — a harmless no-op).
  */
 import type { Scene, SceneFactory } from "../acts";
+import { CONCIERGE_VOICE } from "./concierge-voice-lines";
 import { DISCUSS_ENABLED } from "../discuss";
 
 export const SCENES = {
   opening: [
     { show: "home" },
     { wait: 560 },
-    { say: "Movemental meets leaders and organizations where they are. Let me show you how we can help." },
+    { say: CONCIERGE_VOICE.openingGreeting },
     { wait: 150 },
     { gesture: "underline", target: "#phrase" },
     {

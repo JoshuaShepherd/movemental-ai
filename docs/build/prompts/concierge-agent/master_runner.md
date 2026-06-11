@@ -112,12 +112,12 @@ You are the **Concierge program runner**. Before ending any session:
 | Order | ID | Phase | Repos | Status | Last touched | Branch | Blockers / notes |
 | ---: | --- | --- | --- | --- | --- | --- | --- |
 | 0 | CON-00 | Concierge charter + contract & capability baseline | both (read) | **Done** ✅ | 2026-06-11 | slice/S-agent-streaming-polish | [concierge-charter.md](../../agents/agent-room/concierge-charter.md) authored. Persona **authored** (v3.0 docs) but **live agent is v2.0 "Host"** (D-6) → CON-01 propagates. Contract in sync (10 chunks / 16 ids ✅). **D-1 hotfixed** (Retrieval Guard) — `search_knowledge` was latent (un-propagated draft), not live. Stage scheme ratified = Training/Tech. See §Attempt log. |
-| 1 | CON-01 | Persona & identity system (the named hand) | both | Not started | — | — | Needs CON-00 decisions. Unique-design core. |
-| 2 | CON-02 | Streaming & voice polish (first-token, recovery, a11y) | both | Not started | — | — | Parallel after CON-00. |
+| 1 | CON-01 | Persona & identity system (the named hand) | both | **Done** ✅ | 2026-06-11 | slice/S-agent-streaming-polish | v3.0 Concierge prompt seeded; `concierge-persona` prompt_pack linked to host + diagnostician; room `CONCIERGE_VOICE` SSOT + mast wordmark + signature opening. **Operator: `pnpm seed:agent-room`** to activate pack + prompt. Resolves D-4/D-6. |
+| 2 | CON-02 | Streaming & voice polish (first-token, recovery, a11y) | both | **In progress** 🟡 | 2026-06-11 | slice/S-agent-streaming-polish | In-persona stall/terminal recovery + retry chip (stream/hybrid) ✅. Remaining: engine `progress` front-load, tool-activity narration polish, reduced-motion audit, first-token metrics. |
 | 3 | CON-03 | Intent router & capability map (honesty rail) | both | Not started | — | — | Needs CON-00. Cross-repo. Preserves reality-check. |
 | 4 | CON-04 | Escort & page relationship (site-wide presence) | `movemental-ai` | Not started | — | — | Needs CON-03. Summon dock + escort tool. |
 | 5 | CON-05 | Memory & continuity (resume, welcome-back, identity) | both | Not started | — | — | Needs CON-03. DB-touching. |
-| 6 | CON-06 | Corpus voice-awareness (attributed RAG, doctrine-safe) | both | **In progress** 🟡 | 2026-06-11 | slice/S-agent-streaming-polish | **Pulled forward (operator).** `file_search` seeded + assigned to room-host (live v2.0 prompt + seed; gated on `OPENAI_VECTOR_STORE_ID`); engine typecheck ✅. Resolves D-1/D-5. **Awaiting operator re-seed** to activate. Remaining: attribution/voice-fidelity + doctrine guardrail probes. |
+| 6 | CON-06 | Corpus voice-awareness (attributed RAG, doctrine-safe) | both | **In progress** 🟡 | 2026-06-11 | slice/S-agent-streaming-polish | `file_search` seeded + assigned; v3.0 host prompt now in engine seed (CON-01). **Awaiting operator `pnpm seed:agent-room`**. Remaining: attribution/voice-fidelity + doctrine guardrail probes. |
 | 7 | CON-07 | Action tools (capture · enroll · schedule · human handoff) | both | Not started | — | — | Needs CON-03; folds in `wire-capture-and-enrollment-to-backend.md`. |
 | 8 | CON-08 | Observability, evals & guardrails | both | Not started | — | — | Needs CON-03..07 surfaces to test. |
 | 9 | CON-09 | Visual parity & concierge QA (a11y · mobile · perf) | both | Not started | — | — | Final gate. Needs all prior. |
@@ -249,11 +249,15 @@ Each phase below is a self-contained prompt: **Role & stance · Goal · Problem 
 
 **§Attempt log.**
 
+#### 2026-06-11 — Auto — ✅
+
+Persona pack + v3.0 prompt propagation + room visual identity (see Part VII changelog). Engine `build:check` ✅; room unit tests ✅. Pending operator `pnpm seed:agent-room`.
+
 ---
 
 ### CON-02 — Streaming & voice polish (first-token, recovery, a11y)
 
-**Repos:** both · **Blocks:** none · **Status:** Not started
+**Repos:** both · **Blocks:** none · **Status:** In progress
 
 **1. Role & stance.** You are making the *moment-to-moment* feel of the concierge excellent — the difference between "an AI is typing" and "a host is writing to me." Read `agent-stream-turn.ts`, `ink-voice.tsx`, the engine `streamAgent` loop, and INT-03.
 
@@ -283,6 +287,10 @@ Each phase below is a self-contained prompt: **Role & stance · Goal · Problem 
 **7. Verification.** Forced stall (kill engine mid-turn) → persona recovery line + retry, no raw error; cold start → pulse within ~1s, greeting fast; screen-reader reads committed lines once (no double-announce from nib); reduced-motion: no clip reveal, no nib, lines instant. typecheck ✅ both.
 
 **§Attempt log.**
+
+#### 2026-06-11 — Auto — 🟡 (partial)
+
+Stream + hybrid: retryable failures speak `CONCIERGE_VOICE.stallRecovery` / `terminalError` via ink (no raw error toast); "Try again" chip decoupled from `error` state. Remaining: engine progress front-load, a11y nib `aria-hidden` audit, first-token measurement.
 
 ---
 
@@ -565,3 +573,5 @@ Each phase below is a self-contained prompt: **Role & stance · Goal · Problem 
 | 2026-06-11 | CON-00 | Claude (Opus 4.8) | ✅ | slice/S-agent-streaming-polish | Charter authored. Found live agent = v2.0 "Host" (persona v3.0 authored but unseeded, D-6); contract in sync; stage scheme ratified Training/Tech. Read-only; no `src/` changes. |
 | 2026-06-11 | CON-00 hotfix | Claude (Opus 4.8) | ✅ | slice/S-agent-streaming-polish | Defused D-1 (latent, not live): added Retrieval Guard banner + honest §4 contract to the v3.0 draft so it's safe to seed in CON-01. Docs-only; engine untouched. |
 | 2026-06-11 | CON-06 (pulled fwd) | Claude (Opus 4.8) | 🟡 | slice/S-agent-streaming-polish | Wired `file_search` to live room-host (seed + v2.0 prompt, env-gated); engine typecheck ✅. Resolves D-1/D-5. Awaiting operator re-seed. Git check: room slice 4 ahead of main; engine on main w/ uncommitted v2.0 seed — gaps are propagation, not branch. |
+| 2026-06-11 | CON-01 | Auto | ✅ | slice/S-agent-streaming-polish | Persona prompt_pack + v3.0 host prompt in engine seed; room CONCIERGE_VOICE SSOT, mast wordmark, signature opening. Awaiting `pnpm seed:agent-room`. |
+| 2026-06-11 | CON-02 | Auto | 🟡 | slice/S-agent-streaming-polish | In-persona stall recovery + retry chip in stream/hybrid. Engine progress + full a11y pass remaining. |

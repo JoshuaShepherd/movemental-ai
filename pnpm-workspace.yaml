@@ -1,5 +1,8 @@
-ignoredBuiltDependencies:
-  - sharp
-  - unrs-resolver
-onlyBuiltDependencies:
-  - canvas
+# pnpm 11: explicit allowlist for packages that need install/build lifecycle scripts.
+allowBuilds:
+  "@sentry/cli": true
+  canvas: true
+  esbuild: true
+  msw: true
+  sharp: true
+  unrs-resolver: true

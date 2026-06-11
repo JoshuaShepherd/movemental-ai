@@ -7,6 +7,7 @@ import { MovementalLogo } from "@/components/brand/movemental-logo";
 import styles from "../ink-band.module.css";
 import { MastAudienceNav } from "./mast-audience-nav";
 import { MastAuth } from "./mast-auth";
+import { MastConciergeMark } from "./mast-concierge-mark";
 
 type MastProps =
   | { onHome: () => void; homeHref?: never }
@@ -39,6 +40,7 @@ export function Mast(props: MastProps) {
             <MovementalLogo priority className={styles.logoMark} />
           </button>
         )}
+        <MastConciergeMark />
       </div>
 
       <MastAudienceNav />

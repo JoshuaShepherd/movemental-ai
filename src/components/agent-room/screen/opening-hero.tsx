@@ -45,9 +45,9 @@ export function OpeningHero() {
         </p>
       </div>
       <p className={`${styles.opInvite} ${styles.opLine}`} style={{ animationDelay: "360ms" }}>
-        I&rsquo;m here for one thing: helping you see where your organization
-        actually stands with AI — and what to do next. Want to find out? Tell me
-        about your organization, or ask me anything.
+        I&rsquo;m the Movemental Concierge — here for one thing: helping you see where
+        your organization actually stands with AI, and what to do next. Tell me about
+        your organization, or ask me anything.
       </p>
     </div>
   );

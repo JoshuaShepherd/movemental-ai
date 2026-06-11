@@ -19,7 +19,8 @@ import {
   isTypedFallback,
   shouldResetTextStreak,
 } from "@/lib/agent-room/move-classifier";
-import { routeInput, FALLBACK_SAY } from "@/lib/agent-room/route-input";
+import { routeInput } from "@/lib/agent-room/route-input";
+import { CONCIERGE_VOICE } from "@/lib/agent-room/data/concierge-voice-lines";
 import {
   DISCUSS_PASSAGE_THRESHOLD,
   ENTER_DISCUSS_VALUE,
@@ -373,17 +374,19 @@ export function useAgentRoomHybrid(): AgentRoomController & {
             historyRef.current = priorHistory;
             return;
           }
-          setError(
-            result.error === "stalled"
-              ? "The room went quiet — the connection stalled."
-              : result.error,
-          );
+          if (result.retryable) {
+            void inkLine(
+              result.error === "stalled"
+                ? CONCIERGE_VOICE.stallRecovery
+                : CONCIERGE_VOICE.terminalError,
+            );
+            setError(null);
+          } else {
+            setError(result.error);
+          }
           setErrorRetryable(Boolean(result.retryable));
           setVoice({ thinking: false, text: "" });
           historyRef.current = priorHistory;
-          if (result.status === 502 || result.status === 503) {
-            void play([{ say: FALLBACK_SAY }]);
-          }
           return;
         }
 
@@ -597,7 +600,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   const hybridSuggestions: ComposerChip[] =
     screen.id === "beat"
       ? []
-      : error && errorRetryable
+      : errorRetryable
         ? [retryChip, ...(agentChips ?? suggestions)]
         : (agentChips ?? suggestions);
 

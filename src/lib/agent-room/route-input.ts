@@ -12,6 +12,7 @@
  * (`run(scene)` or play the `FALLBACK_SAY` line).
  */
 import type { SceneName } from "./data/scenes";
+import { CONCIERGE_VOICE } from "./data/concierge-voice-lines";
 
 /** Scenes the router can target (a subset of `SceneName`). */
 type RouteTarget = Extract<
@@ -41,7 +42,7 @@ const ROUTES: ReadonlyArray<{ re: RegExp; to: RouteTarget }> = [
 ];
 
 /** The line spoken when nothing matches (prototype fallback `say`). */
-export const FALLBACK_SAY = "That’s outside what I can help with.";
+export const FALLBACK_SAY = CONCIERGE_VOICE.refusal;
 
 /**
  * Meta / objection / hypothetical phrasing — the **primary** implicit signal
