@@ -64,6 +64,55 @@
   user-select: none;
 }
 
+/* Mast audience nav — clickable segments; Institutions gets highlighter on its page */
+.mastAudienceNav {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.35rem;
+  margin: 0;
+  font-family: var(--font-ink-mono);
+  font-size: clamp(0.58rem, 1.8vw, 0.68rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+  white-space: nowrap;
+}
+.mastAudienceSegment {
+  color: inherit;
+}
+.mastAudienceSep {
+  opacity: 0.55;
+  user-select: none;
+}
+.mastAudienceLink {
+  position: relative;
+  isolation: isolate;
+  color: var(--color-ink-band-ink-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.mastAudienceLink:hover,
+.mastAudienceLink:focus-visible {
+  color: var(--color-ink-band-ink);
+  outline: none;
+}
+.mastAudienceLinkActive {
+  color: var(--color-ink-band-ink);
+  font-weight: 500;
+}
+.mastAudienceLinkActive::before {
+  content: "";
+  position: absolute;
+  inset: -3px -8px;
+  z-index: -1;
+  background: var(--color-ink-band-highlight);
+  mix-blend-mode: multiply;
+  border-radius: 5px 8px 6px 7px / 7px 5px 8px 6px;
+  transform: rotate(-0.8deg);
+}
+
 /* ===== mast auth (sign in / account menu) ===== */
 .authCluster {
   position: relative;
@@ -4045,6 +4094,17 @@ button.wayCtaPaid {
   background: var(--color-ink-band-blue);
   animation: pulse 1.1s ease-in-out infinite;
 }
+/* Quiet tool status beside the pulse ("consulting the field guide…") — a
+   marginal aside, not chatbot tool chrome. Lowercase, the room's own voice. */
+.thinkingNote {
+  font-family: var(--font-ink-body);
+  font-size: 0.82rem;
+  letter-spacing: 0;
+  text-transform: none;
+  font-style: italic;
+  color: var(--color-ink-band-ink-muted);
+  animation: discussComposerIn 0.3s ease;
+}
 @keyframes pulse {
   0%,
   100% {
@@ -4352,6 +4412,59 @@ button.wayCtaPaid {
   line-height: 1.62;
   color: var(--color-ink-band-ink);
   max-width: 60ch;
+}
+
+/* Markdown inside a Discuss passage — read-back prose set as ink on paper.
+   Block spacing is collapsed at the edges so a passage sits flush like a single
+   paragraph; lists, emphasis, and links inherit the Ink Band ramp. */
+.passageMarkdown > :first-child {
+  margin-top: 0;
+}
+.passageMarkdown > :last-child {
+  margin-bottom: 0;
+}
+.passageMarkdown p {
+  margin: 0 0 0.7em;
+}
+.passageMarkdown ul,
+.passageMarkdown ol {
+  margin: 0.5em 0;
+  padding-left: 1.3em;
+}
+.passageMarkdown li {
+  margin: 0.2em 0;
+}
+.passageMarkdown li::marker {
+  color: var(--color-ink-band-ink-muted);
+}
+.passageMarkdown strong {
+  font-weight: 600;
+  color: var(--color-ink-band-ink);
+}
+.passageMarkdown em {
+  font-style: italic;
+}
+.passageMarkdown code {
+  font-family: var(--font-ink-mono);
+  font-size: 0.88em;
+  padding: 0.05em 0.32em;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--color-ink-band-ink) 7%, transparent);
+}
+.passageMarkdown blockquote {
+  margin: 0.6em 0;
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--color-ink-band-border);
+  color: var(--color-ink-band-ink-muted);
+}
+.passageLink {
+  color: var(--color-ink-band-blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+.passageLink:hover {
+  text-decoration-thickness: 2px;
 }
 
 /* "What we discussed" fold — Guide, sheet bottom, after a Discuss session. */

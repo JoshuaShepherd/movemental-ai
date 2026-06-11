@@ -110,6 +110,8 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   const [isStreaming, setIsStreaming] = useState(false);
   const [voice, setVoice] = useState<VoiceState>(INITIAL_VOICE);
   const [error, setError] = useState<string | null>(null);
+  /** True when `error` came from a transient failure (stall / 5xx / network). */
+  const [errorRetryable, setErrorRetryable] = useState(false);
   const [mapRead, setMapRead] = useState<MapRead | null>(null);
   const [engineExtra, setEngineExtra] = useState<EngineExtraState | null>(null);
   const [streamInput, setStreamInput] = useState<StreamScreenInput | null>(null);
@@ -128,6 +130,8 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   const sessionRef = useRef<string>("");
   const historyRef = useRef<StreamTurn[]>([]);
   const abortRef = useRef<AbortController | null>(null);
+  /** Last text sent to the agent — replayed by `retry()` after a transient fail. */
+  const lastTurnRef = useRef<string | null>(null);
   const screenRef = useRef(screen);
   screenRef.current = screen;
 
@@ -272,13 +276,18 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   );
 
   const runAgentTurn = useCallback(
-    async (text: string) => {
+    async (text: string, opts?: { isRetry?: boolean }) => {
       const inDiscuss = phaseRef.current === "discuss";
+      lastTurnRef.current = text;
       const priorHistory = [...historyRef.current];
       historyRef.current = [...historyRef.current, { role: "user", content: text }];
-      if (inDiscuss) appendTranscript({ role: "user", content: text, surface: "margin" });
+      // On a retry the visitor's turn is already on the sheet — don't re-annotate.
+      if (inDiscuss && !opts?.isRetry) {
+        appendTranscript({ role: "user", content: text, surface: "margin" });
+      }
 
       setError(null);
+      setErrorRetryable(false);
       setIsStreaming(true);
       setAgentChips([]);
       clearVoice();
@@ -309,6 +318,9 @@ export function useAgentRoomHybrid(): AgentRoomController & {
           },
           onProgressThinking: () => {
             setVoice((v) => ({ ...v, thinking: true }));
+          },
+          onToolActivity: (label) => {
+            setVoice((v) => ({ ...v, note: label ?? undefined }));
           },
           onAgentHandoff: () => {
             commitStream();
@@ -345,7 +357,12 @@ export function useAgentRoomHybrid(): AgentRoomController & {
             historyRef.current = priorHistory;
             return;
           }
-          setError(result.error);
+          setError(
+            result.error === "stalled"
+              ? "The room went quiet — the connection stalled."
+              : result.error,
+          );
+          setErrorRetryable(Boolean(result.retryable));
           setVoice({ thinking: false, text: "" });
           historyRef.current = priorHistory;
           if (result.status === 502 || result.status === 503) {
@@ -436,6 +453,14 @@ export function useAgentRoomHybrid(): AgentRoomController & {
 
   sendMessageRef.current = (raw) => sendMessage(raw);
 
+  const retry = useCallback(() => {
+    const text = lastTurnRef.current;
+    if (!text || busy || isStreaming) return;
+    genRef.current.value += 1;
+    setAgentChips(null);
+    void runAgentTurn(text, { isRetry: true });
+  }, [busy, isStreaming, runAgentTurn]);
+
   const goHome = useCallback(() => {
     abortRef.current?.abort();
     abortRef.current = null;
@@ -447,6 +472,8 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     clearVoice();
     setVoice(INITIAL_VOICE);
     setError(null);
+    setErrorRetryable(false);
+    lastTurnRef.current = null;
     setAgentChips(null);
     setEngineExtra(null);
     setStreamInput(null);
@@ -520,10 +547,33 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     };
   }, [run]);
 
+  // Seed hand-off: a reader on `/agent/institutions` (or any surface) can stash a
+  // question under `movemental:agent-seed` and route here. Once the opening scene
+  // has settled (idle, on home), deliver it once as the first turn so the guide
+  // opens where the reading left off — instead of dropping the visitor on home.
+  const seedSentRef = useRef(false);
+  useEffect(() => {
+    if (seedSentRef.current || typeof window === "undefined") return;
+    const seed = window.sessionStorage.getItem("movemental:agent-seed");
+    if (!seed) {
+      seedSentRef.current = true;
+      return;
+    }
+    // Wait for the opening to finish (the local scene lands on `home` and clears
+    // busy) so the send isn't swallowed by the busy/streaming gate.
+    if (busy || isStreaming || screen.id !== "home") return;
+    seedSentRef.current = true;
+    window.sessionStorage.removeItem("movemental:agent-seed");
+    sendMessageRef.current(seed);
+  }, [busy, isStreaming, screen.id]);
+
+  const retryChip: ComposerChip = { label: "Try again", lead: true, onSelect: retry };
   const hybridSuggestions: ComposerChip[] =
     screen.id === "beat"
       ? []
-      : (agentChips ?? suggestions);
+      : error && errorRetryable
+        ? [retryChip, ...(agentChips ?? suggestions)]
+        : (agentChips ?? suggestions);
 
   return {
     screen,

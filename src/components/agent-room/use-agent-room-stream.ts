@@ -48,8 +48,12 @@ export type ScreenState =
       nonce: number;
     };
 
-/** The voice zone: a calm pulse while thinking, then the host's streaming words. */
-export type VoiceState = { thinking: boolean; text: string };
+/**
+ * The voice zone: a calm pulse while thinking, then the host's streaming words.
+ * `note` is an optional quiet status ("consulting the field guide") shown beside
+ * the pulse while the host runs a tool — cleared the moment prose begins.
+ */
+export type VoiceState = { thinking: boolean; text: string; note?: string };
 
 type Turn = { role: "user" | "assistant"; content: string };
 
@@ -101,6 +105,8 @@ export function useAgentRoomStream() {
   const captureResolveRef = useRef<((r: { cancelled?: boolean }) => void) | null>(null);
   const capturePendingRef = useRef(false);
   const [error, setError] = useState<string | null>(null);
+  /** True when `error` came from a transient failure (stall / 5xx / network). */
+  const [errorRetryable, setErrorRetryable] = useState(false);
   /** True while the diagnostician composes the read-back (after agent_handoff). */
   const [composing, setComposing] = useState(false);
   /**
@@ -115,6 +121,8 @@ export function useAgentRoomStream() {
   const historyRef = useRef<Turn[]>([]);
   const nonceRef = useRef(0);
   const abortRef = useRef<AbortController | null>(null);
+  /** Last text sent to the agent — replayed by `retry()` after a transient fail. */
+  const lastTurnRef = useRef<string | null>(null);
 
   useEffect(() => {
     const ls = typeof window !== "undefined" ? window.localStorage : null;
@@ -283,6 +291,8 @@ export function useAgentRoomStream() {
     clearVoice();
     setVoice({ thinking: false, text: "" });
     setError(null);
+    setErrorRetryable(false);
+    lastTurnRef.current = null;
     setComposing(false);
     setIsStreaming(false);
     setLocalBusy(false);
@@ -295,7 +305,7 @@ export function useAgentRoomStream() {
   }, [clearInk, clearVoice, playOpening, resetDiscuss]);
 
   const sendMessage = useCallback(
-    async (raw: string) => {
+    async (raw: string, opts?: { isRetry?: boolean }) => {
       const text = raw.trim();
       if (!text || isStreaming || localBusy) return;
 
@@ -304,13 +314,18 @@ export function useAgentRoomStream() {
       setLocalChips(null);
 
       const inDiscuss = phaseRef.current === "discuss";
+      lastTurnRef.current = text;
 
       const priorHistory = [...historyRef.current];
       historyRef.current = [...historyRef.current, { role: "user", content: text }];
       // Discuss (INT-10): the visitor's turn lands on the sheet as a margin note.
-      if (inDiscuss) appendTranscript({ role: "user", content: text, surface: "margin" });
+      // On a retry it is already on the sheet — don't re-annotate.
+      if (inDiscuss && !opts?.isRetry) {
+        appendTranscript({ role: "user", content: text, surface: "margin" });
+      }
 
       setError(null);
+      setErrorRetryable(false);
       setComposing(false);
       setIsStreaming(true);
       // The prior turn's chips no longer apply; a new `suggest` chunk repopulates.
@@ -346,6 +361,9 @@ export function useAgentRoomStream() {
             },
             onProgressThinking: () => {
               setVoice((v) => ({ ...v, thinking: true }));
+            },
+            onToolActivity: (label) => {
+              setVoice((v) => ({ ...v, note: label ?? undefined }));
             },
             onAgentHandoff: () => {
               commitStream();
@@ -397,7 +415,12 @@ export function useAgentRoomStream() {
 
         if (result.ok === false) {
           if (result.error === "aborted") return;
-          setError(result.error);
+          setError(
+            result.error === "stalled"
+              ? "The room went quiet — the connection stalled."
+              : result.error,
+          );
+          setErrorRetryable(Boolean(result.retryable));
           setVoice({ thinking: false, text: "" });
           historyRef.current = priorHistory;
           return;
@@ -445,11 +468,17 @@ export function useAgentRoomStream() {
     ],
   );
 
+  const retry = useCallback(() => {
+    const text = lastTurnRef.current;
+    if (!text || isStreaming || localBusy) return;
+    void sendMessage(text, { isRetry: true });
+  }, [isStreaming, localBusy, sendMessage]);
+
   // Composer chips. Beat screen carries its own answer chips. Local choreography
   // may offer follow-up chips (beatIntro). Agent `suggest` chips win next; then
   // the static on-ramp with PAR-02 routing (LOCAL beatIntro vs AGENT utterance).
   const inLocalBeat = screen.kind === "local" && screen.id === "beat";
-  const suggestions: ComposerChip[] =
+  const baseSuggestions: ComposerChip[] =
     inLocalBeat || (screen.kind === "component" && screen.component === "beat")
       ? []
       : (localChips ??
@@ -468,6 +497,10 @@ export function useAgentRoomStream() {
             },
           };
         }));
+  const suggestions: ComposerChip[] =
+    error && errorRetryable && !inLocalBeat
+      ? [{ label: "Try again", lead: true, onSelect: retry }, ...baseSuggestions]
+      : baseSuggestions;
 
   sendMessageRef.current = (raw) => void sendMessage(raw);
 

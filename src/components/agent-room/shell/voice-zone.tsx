@@ -62,6 +62,7 @@ export function VoiceZone({
             {voice.thinking && !voiceStream && (
               <div className={styles.thinking}>
                 <span className={styles.pulse} aria-hidden="true" />
+                {voice.note && <span className={styles.thinkingNote}>{voice.note}…</span>}
               </div>
             )}
           </>
@@ -94,6 +95,7 @@ export function VoiceZone({
           {showPulse && (
             <div className={styles.thinking}>
               <span className={styles.pulse} aria-hidden="true" />
+              {voice.note && <span className={styles.thinkingNote}>{voice.note}…</span>}
             </div>
           )}
           {/* Last-resort fallback if a turn produced text outside the ink layer. */}

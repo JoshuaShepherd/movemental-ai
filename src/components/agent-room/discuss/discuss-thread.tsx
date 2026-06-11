@@ -2,6 +2,7 @@
 
 import type { TranscriptTurn } from "@/lib/agent-room/discuss";
 import styles from "../ink-band.module.css";
+import { PassageMarkdown } from "./passage-markdown";
 
 export type DiscussThreadProps = {
   transcript: TranscriptTurn[];
@@ -47,14 +48,14 @@ export function DiscussThread({
             {t.content}
           </div>
         ) : (
-          <p
+          <div
             key={i}
-            className={`${compact ? styles.passageCompact : styles.passage} ${
+            className={`${compact ? styles.passageCompact : styles.passage} ${styles.passageMarkdown} ${
               i === lastIdx && !liveText ? styles.settle : ""
             }`}
           >
-            {t.content}
-          </p>
+            <PassageMarkdown text={t.content} />
+          </div>
         ),
       )}
       {liveThinking && !liveText && (
