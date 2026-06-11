@@ -292,8 +292,9 @@
   .sheet {
     max-width: 68rem;
   }
+  /* Home leader band: ~10 carousel portraits at 100px + gap (was 54rem ≈ 7). */
   .sheet.home {
-    max-width: 54rem;
+    max-width: 71rem;
   }
 }
 @media (min-width: 90rem) {
@@ -770,6 +771,27 @@
   text-transform: uppercase;
   color: var(--color-ink-band-ink-muted);
 }
+.beatCriteriaLead {
+  margin-top: 0.65rem;
+  margin-bottom: 0.35rem;
+}
+.beatCriteria {
+  margin: 0 0 0.9rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+  list-style-position: outside;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--color-ink-band-ink-muted);
+  max-width: 68ch;
+}
+.beatCriteria li {
+  margin-bottom: 0.3rem;
+  padding-left: 0.15rem;
+}
+.beatCriteria li:last-child {
+  margin-bottom: 0;
+}
 /* Ghost question index (proposal §3.6) — large faint mono index above the q. */
 .beatGhost {
   display: block;
@@ -877,11 +899,19 @@
   line-height: 1.42;
   margin-top: 0;
 }
-.roomBeat .beatContent ul.body {
-  margin-bottom: 0.55rem !important;
+.roomBeat .beatCriteriaLead {
+  font-size: 0.9rem;
+  line-height: 1.42;
+  margin-top: 0.35rem;
+  margin-bottom: 0.3rem;
 }
-.roomBeat .beatContent ul.body li {
-  margin-bottom: 0.12rem !important;
+.roomBeat .beatCriteria {
+  font-size: 0.9rem;
+  line-height: 1.42;
+  margin-bottom: 0.55rem;
+}
+.roomBeat .beatCriteria li {
+  margin-bottom: 0.12rem;
 }
 .roomBeat .opts,
 .roomBeat .chips {

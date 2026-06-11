@@ -2,8 +2,9 @@
 
 import * as React from "react";
 
-import { Button } from "@/components/ui/button";
+import { UtilityPageCrumb, UtilityPageFooter } from "@/components/ink-band/utility-page-nav";
 import { StepSpine } from "@/components/ink-band/step-spine";
+import { Button } from "@/components/ui/button";
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
@@ -79,6 +80,7 @@ export default function EnrollPage() {
   if (status === "done") {
     return (
       <div className="mx-auto w-full max-w-xl px-4 py-20 md:py-28">
+        <UtilityPageCrumb currentLabel="Enroll" />
         <StepSpine
           step="01"
           label="Safety · With us"
@@ -88,12 +90,14 @@ export default function EnrollPage() {
           Your enrollment is in. We provision within 24 hours and a real person will be in touch to set up
           your dashboard and complete payment if needed.
         </p>
+        <UtilityPageFooter />
       </div>
     );
   }
 
   return (
     <div className="mx-auto w-full max-w-xl px-4 py-20 md:py-28">
+      <UtilityPageCrumb currentLabel="Enroll" />
       <StepSpine step="01" label="Safety · With us" title="Get started with the dashboard." />
 
       <p className="mt-8 text-lg leading-relaxed text-foreground">
@@ -220,6 +224,8 @@ export default function EnrollPage() {
           No autoresponder runaround — a person on our team picks this up.
         </p>
       </form>
+
+      <UtilityPageFooter />
     </div>
   );
 }

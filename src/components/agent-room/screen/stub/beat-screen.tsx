@@ -42,26 +42,12 @@ export function BeatScreen(props: ScreenProps) {
 function StubBeat({ opts, onBeatAnswer, disabled }: ScreenProps) {
   const qi = opts.qi ?? 0;
   const question = MAP_Q[qi];
-  const total = opts.singleQuestionHint && qi === 0 ? 1 : MAP_Q.length;
-  const pct = total > 1 ? Math.round((qi / (total - 1)) * 100) : 0;
 
   const [chosen, setChosen] = useState<number | null>(null);
   const locked = disabled || chosen !== null;
 
   return (
     <div className={styles.beatContent}>
-      <div className={styles.dots}>
-        <span className={styles.beatCount}>
-          {pad2(qi + 1)} <span className={styles.beatOf}>/ {pad2(total)}</span>
-        </span>
-        <span className={styles.beatRail}>
-          <span className={styles.beatFill} style={{ width: `${pct}%` }} />
-        </span>
-        <span className={styles.beatWord}>where you stand</span>
-      </div>
-
-      {question.tag ? <p className={styles.eyebrow}>{question.tag}</p> : null}
-
       {/* Ghost question index (proposal §3.6) — scan aid during the six-beat flow. */}
       <span className={styles.beatGhost} aria-hidden="true">
         {pad2(qi + 1)}
@@ -69,16 +55,12 @@ function StubBeat({ opts, onBeatAnswer, disabled }: ScreenProps) {
       <p className={styles.q}>{question.q}</p>
 
       {question.criteriaLead ? (
-        <p className={styles.body} style={{ marginBottom: "0.35rem" }}>
-          {question.criteriaLead}
-        </p>
+        <p className={`${styles.body} ${styles.beatCriteriaLead}`}>{question.criteriaLead}</p>
       ) : null}
       {question.criteria?.length ? (
-        <ul className={styles.body} style={{ margin: "0 0 0.9rem 1.1rem", padding: 0 }}>
+        <ul className={styles.beatCriteria}>
           {question.criteria.map((item) => (
-            <li key={item} style={{ marginBottom: "0.25rem" }}>
-              {item}
-            </li>
+            <li key={item}>{item}</li>
           ))}
         </ul>
       ) : null}

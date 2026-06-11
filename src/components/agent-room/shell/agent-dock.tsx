@@ -22,7 +22,12 @@ import {
 import type { VoiceState } from "../use-agent-room-stream";
 import { HandbookDockEmail } from "./handbook-dock-email";
 
-type GuideMessage = { role: "agent" | "user"; content: string };
+type GuideMessage = {
+  role: "agent" | "user";
+  content: string;
+  /** True while the agent turn is still streaming into this bubble. */
+  streaming?: boolean;
+};
 
 function ExpandIcon() {
   return (
@@ -117,6 +122,8 @@ export function AgentDock({
   onHandbookCaptureSubmit,
   liveText,
   liveThinking,
+  liveThinkingNote,
+  onConversationActive,
 }: {
   voice: VoiceState;
   error: string | null;
@@ -133,6 +140,8 @@ export function AgentDock({
   onHandbookCaptureSubmit?: (kind: string, values: Record<string, string>) => void;
   liveText?: string;
   liveThinking?: boolean;
+  liveThinkingNote?: string;
+  onConversationActive?: () => void;
 }) {
   const discuss = phase === "discuss";
   const [expanded, setExpanded] = useState(false);
@@ -147,6 +156,7 @@ export function AgentDock({
 
   const setExpandedState = useCallback(
     (next: boolean) => {
+      if (next) onConversationActive?.();
       if (next && !discuss) {
         setGuideMessages((prev) => {
           const known = new Set(
@@ -164,14 +174,39 @@ export function AgentDock({
         requestAnimationFrame(() => inputRef.current?.focus());
       }
     },
-    [discuss, voiceLines],
+    [discuss, onConversationActive, voiceLines],
   );
 
   useEffect(() => {
     if (discuss) setExpandedState(true);
   }, [discuss, setExpandedState]);
 
-  // Append resolved agent voice lines to the guide thread when expanded.
+  // Agent replies should stream inside the conversation drawer — not only in the
+  // handwriting strip above it (which is hidden once the drawer opens).
+  useEffect(() => {
+    if (!liveText && !liveThinking) return;
+    setExpanded((open) => {
+      if (open) return open;
+      onConversationActive?.();
+      return true;
+    });
+  }, [liveText, liveThinking, onConversationActive]);
+
+  // Mirror live stream ink into the guide thread so the drawer grows incrementally.
+  useEffect(() => {
+    if (discuss || !liveText) return;
+    setGuideMessages((prev) => {
+      const last = prev[prev.length - 1];
+      if (last?.role === "agent" && last.streaming) {
+        if (last.content === liveText) return prev;
+        return [...prev.slice(0, -1), { role: "agent", content: liveText, streaming: true }];
+      }
+      return [...prev, { role: "agent", content: liveText, streaming: true }];
+    });
+  }, [discuss, liveText]);
+
+  // Finalize committed voice lines — extend an in-flight streaming bubble instead
+  // of appending the same turn again when the stream settles.
   useEffect(() => {
     if (discuss || voiceLines.length <= prevVoiceCount.current) {
       prevVoiceCount.current = voiceLines.length;
@@ -179,10 +214,18 @@ export function AgentDock({
     }
     const fresh = voiceLines.slice(prevVoiceCount.current);
     prevVoiceCount.current = voiceLines.length;
-    setGuideMessages((prev) => [
-      ...prev,
-      ...fresh.map((line) => ({ role: "agent" as const, content: line.text })),
-    ]);
+    setGuideMessages((prev) => {
+      const last = prev[prev.length - 1];
+      const committed = fresh[fresh.length - 1];
+      if (!committed) return prev;
+      if (last?.role === "agent" && last.streaming) {
+        return [...prev.slice(0, -1), { role: "agent", content: committed.text }];
+      }
+      const known = new Set(prev.filter((m) => m.role === "agent").map((m) => m.content));
+      const toAdd = fresh.filter((line) => !known.has(line.text));
+      if (!toAdd.length) return prev;
+      return [...prev, ...toAdd.map((line) => ({ role: "agent" as const, content: line.text }))];
+    });
   }, [discuss, voiceLines]);
 
   useEffect(() => {
@@ -226,9 +269,11 @@ export function AgentDock({
     const v = value.trim();
     if (!v || disabled) return;
     setValue("");
+    const wasExpanded = expanded;
     if (!discuss) {
       setGuideMessages((prev) => [...prev, { role: "user", content: v }]);
     }
+    if (wasExpanded || discuss) onConversationActive?.();
     onSay(v);
     if (!expanded) setExpandedState(true);
   };
@@ -241,7 +286,8 @@ export function AgentDock({
     onReplay();
   };
 
-  const showGuideThread = !discuss && guideMessages.length > 0;
+  const showGuideThread =
+    !discuss && (guideMessages.length > 0 || liveText || liveThinking);
   const showDiscussThread = discuss && (transcript.length > 0 || liveText || liveThinking);
   const showThreadBody =
     showGuideThread || showDiscussThread || stubCapture || showHandbookCapture;
@@ -270,6 +316,7 @@ export function AgentDock({
                 phase={discuss ? "discuss" : phase}
                 transcript={transcript}
                 strip
+                hideLiveStream={expanded}
               />
             </div>
           </div>
@@ -319,6 +366,7 @@ export function AgentDock({
                       transcript={transcript}
                       liveText={liveText}
                       liveThinking={liveThinking}
+                      liveThinkingNote={liveThinkingNote}
                       compact
                     />
                   )}
@@ -333,9 +381,26 @@ export function AgentDock({
                         msg.role === "agent" ? styles.threadMsgAgent : styles.threadMsgUser
                       }
                     >
-                      <p>{msg.content}</p>
+                      <p
+                        className={
+                          msg.role === "agent" && msg.streaming
+                            ? `${styles.liveInk} ${styles.settle}`
+                            : undefined
+                        }
+                        aria-live={msg.streaming ? "polite" : undefined}
+                      >
+                        {msg.content}
+                      </p>
                     </div>
                   ))}
+                  {liveThinking && !liveText && (
+                    <div className={styles.thinking}>
+                      <span className={styles.pulse} aria-hidden="true" />
+                      {liveThinkingNote && (
+                        <span className={styles.thinkingNote}>{liveThinkingNote}…</span>
+                      )}
+                    </div>
+                  )}
                   {showHandbookCapture && onHandbookCaptureSubmit ? (
                     <HandbookDockEmail
                       onCaptureSubmit={onHandbookCaptureSubmit}

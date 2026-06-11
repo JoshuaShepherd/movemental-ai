@@ -26,6 +26,11 @@ export type ClassifyTextInput = {
   screenId?: string;
   freeTextStreak: number;
   fallbackStreak: number;
+  /**
+   * Expanded conversation / prior agent turns — bypass scripted regex routing so
+   * human messages in the chat dock always reach the live host.
+   */
+  chatActive?: boolean;
 };
 
 export type ClassifyChipInput = {
@@ -58,6 +63,10 @@ export function classifyTypedInput(input: ClassifyTextInput): MoveRoute {
 
   if (input.phase === "discuss") {
     return { kind: "agent", reason: "discuss" };
+  }
+
+  if (input.chatActive) {
+    return { kind: "agent", reason: "open_text" };
   }
 
   const signal = resolveTypedDiscussSignal({

@@ -17,6 +17,9 @@ import { LEADERS } from "@/lib/agent-room/data/leaders";
 import styles from "../../ink-band.module.css";
 import { setPendingFlip } from "./leader-flip";
 
+/** Desktop carousel viewport — paired with `.sheet.home` max-width in ink-band.module.css. */
+const BAND_VISIBLE_TARGET = 10;
+
 /** Capture the tapped portrait's rect, then open the leader (prototype). */
 function selectLeader(i: number, onSelect: (i: number) => void) {
   const ph = document.getElementById(`ph-${i}`);
@@ -85,12 +88,16 @@ export function LeaderBand({
       second && first ? second.offsetLeft - first.offsetLeft : itemWidth;
     const gap = Math.max(0, step - itemWidth);
     const available = shell.clientWidth;
-    const visibleCount =
+    const fitted =
       step > 0 ? Math.max(1, Math.floor((available + gap) / step)) : 1;
-    const fullClipWidth = visibleCount * step - gap;
+    const targetCount = Math.min(order.length, BAND_VISIBLE_TARGET);
+    const targetClip = targetCount * step - gap;
+    const resolvedVisible =
+      available >= targetClip ? targetCount : fitted;
+    const fullClipWidth = resolvedVisible * step - gap;
     const trackWidth = order.length > 0 ? order.length * step - gap : 0;
     const clipWidth = Math.min(fullClipWidth, trackWidth);
-    const maxIndex = Math.max(0, order.length - visibleCount);
+    const maxIndex = Math.max(0, order.length - resolvedVisible);
     setM({ step, maxIndex, clipWidth });
     setIndex((i) => Math.min(i, maxIndex));
   }, [order.length]);

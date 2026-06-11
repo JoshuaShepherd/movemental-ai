@@ -65,6 +65,16 @@ describe("agent-stream-turn", () => {
     expect(onToolActivity).toHaveBeenLastCalledWith(null);
   });
 
+  it("labels file_search tool activity for the thinking pulse", () => {
+    const onToolActivity = vi.fn();
+    dispatchStreamChunk(
+      { type: "tool_call", id: "fs1", name: "file_search", input: { query: "safety" } },
+      "",
+      callbacks({ onToolActivity }),
+    );
+    expect(onToolActivity).toHaveBeenCalledWith("searching the archive");
+  });
+
   it("falls back to a generic label for unknown tools", () => {
     const onToolActivity = vi.fn();
     dispatchStreamChunk(

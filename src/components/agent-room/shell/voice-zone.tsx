@@ -24,6 +24,7 @@ export function VoiceZone({
   phase = "guide",
   transcript = [],
   strip = false,
+  hideLiveStream = false,
 }: {
   voice: VoiceState;
   error: string | null;
@@ -32,6 +33,8 @@ export function VoiceZone({
   transcript?: TranscriptTurn[];
   /** Render inside the floating dock handwriting strip (docs/html/home). */
   strip?: boolean;
+  /** Drawer is open — live stream ink belongs in the thread, not the strip. */
+  hideLiveStream?: boolean;
 }) {
   const { voiceEl } = useAgentRoomRefs();
   const { voiceLines, resolveLine, voiceStream } = useInk();
@@ -58,7 +61,9 @@ export function VoiceZone({
         ) : (
           <>
             <DiscussVoice transcript={transcript} multiline />
-            {voiceStream && <StreamVoice key={voiceStream.id} text={voiceStream.text} multiline />}
+            {voiceStream && !hideLiveStream && (
+              <StreamVoice key={voiceStream.id} text={voiceStream.text} multiline />
+            )}
             {voice.thinking && !voiceStream && (
               <div className={styles.thinking}>
                 <span className={styles.pulse} aria-hidden="true" />
@@ -91,7 +96,9 @@ export function VoiceZone({
           )}
           {/* Streamed agent replies can be long — wrap them so they stay on the
               page (the nib write-on is reserved for the short scripted lines). */}
-          {voiceStream && <StreamVoice key={voiceStream.id} text={voiceStream.text} multiline />}
+          {voiceStream && !hideLiveStream && (
+            <StreamVoice key={voiceStream.id} text={voiceStream.text} multiline />
+          )}
           {showPulse && (
             <div className={styles.thinking}>
               <span className={styles.pulse} aria-hidden="true" />

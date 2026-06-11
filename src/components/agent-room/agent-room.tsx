@@ -47,6 +47,7 @@ function AgentRoomView({
   onCaptureSubmit,
   onCaptureSkip,
   showHandbookCapture,
+  onConversationActive,
 }: {
   screenNode: ReactNode;
   screenKey: string;
@@ -68,18 +69,19 @@ function AgentRoomView({
   onCaptureSubmit?: (kind: string, values: Record<string, string>) => void;
   onCaptureSkip?: () => void;
   showHandbookCapture?: boolean;
+  onConversationActive?: () => void;
 }) {
   const { gestureRootEl } = useAgentRoomRefs();
   const discuss = phase === "discuss";
   // Passage turns already render in the thread as body prose; keep live ink only
   // while streaming or for short voice-surface replies (filtered from the thread).
   const lastAssistant = transcript.filter((t) => t.role === "assistant").at(-1);
+  const hideLiveDuplicate =
+    discuss &&
+    lastAssistant?.surface === "passage" &&
+    lastAssistant.content === voice.text;
   const liveText =
-    discuss && !voice.thinking && voice.text
-      ? lastAssistant?.surface === "passage" && lastAssistant.content === voice.text
-        ? undefined
-        : voice.text
-      : undefined;
+    isStreaming && voice.text && !hideLiveDuplicate ? voice.text : undefined;
 
   const stubCaptureNode =
     stubDiscussCapture && onCaptureSubmit ? (
@@ -129,7 +131,9 @@ function AgentRoomView({
         showHandbookCapture={showHandbookCapture}
         onHandbookCaptureSubmit={onCaptureSubmit}
         liveText={liveText}
-        liveThinking={voice.thinking}
+        liveThinking={isStreaming && voice.thinking}
+        liveThinkingNote={voice.note}
+        onConversationActive={onConversationActive}
       />
     </div>
   );
@@ -180,6 +184,7 @@ function HybridRoom() {
       onCaptureSubmit={room.onCaptureSubmit}
       onCaptureSkip={room.onCaptureSkip}
       showHandbookCapture={room.showHandbookCapture}
+      onConversationActive={room.markConversationActive}
     />
   );
 }

@@ -9,6 +9,8 @@ export type DiscussThreadProps = {
   /** Live streaming ink line (hybrid/stream). */
   liveText?: string;
   liveThinking?: boolean;
+  /** Quiet tool/status line beside the thinking pulse (e.g. file_search). */
+  liveThinkingNote?: string;
   /** Smaller type scale for overlay (Model C). */
   compact?: boolean;
   /** Include all assistant turns (fold) vs filter short voice turns (overlay). */
@@ -23,6 +25,7 @@ export function DiscussThread({
   transcript,
   liveText,
   liveThinking,
+  liveThinkingNote,
   compact = false,
   showAllAssistant = false,
 }: DiscussThreadProps) {
@@ -61,6 +64,9 @@ export function DiscussThread({
       {liveThinking && !liveText && (
         <div className={styles.thinking}>
           <span className={styles.pulse} aria-hidden="true" />
+          {liveThinkingNote && (
+            <span className={styles.thinkingNote}>{liveThinkingNote}…</span>
+          )}
         </div>
       )}
       {liveText && (

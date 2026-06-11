@@ -88,6 +88,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   voice: VoiceState;
   engineExtra: EngineExtraState | null;
   streamInput: StreamScreenInput | null;
+  markConversationActive: () => void;
 } {
   const {
     inkLine,
@@ -133,6 +134,8 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   const abortRef = useRef<AbortController | null>(null);
   /** Last text sent to the agent — replayed by `retry()` after a transient fail. */
   const lastTurnRef = useRef<string | null>(null);
+  /** Expanded chat or prior agent turns — typed input skips scripted scenes. */
+  const conversationActiveRef = useRef(false);
   const screenRef = useRef(screen);
   screenRef.current = screen;
 
@@ -242,6 +245,14 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   useEffect(() => {
     runRef.current = run;
   }, [run]);
+
+  useEffect(() => {
+    if (discuss.phase === "discuss") conversationActiveRef.current = true;
+  }, [discuss.phase]);
+
+  const markConversationActive = useCallback(() => {
+    conversationActiveRef.current = true;
+  }, []);
 
   const applyAgentUiRender = useCallback(
     (component: ComponentId, rawProps: Record<string, unknown>) => {
@@ -433,6 +444,8 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         screenId: screenRef.current.id,
         freeTextStreak: freeTextStreakRef.current,
         fallbackStreak: fallbackStreakRef.current,
+        chatActive:
+          conversationActiveRef.current || historyRef.current.length > 0,
       });
 
       freeTextStreakRef.current += 1;
@@ -489,6 +502,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     }
     freeTextStreakRef.current = 0;
     fallbackStreakRef.current = 0;
+    conversationActiveRef.current = false;
     setHandbookCaptureActive(false);
     resetDiscuss();
     run("opening");
@@ -599,6 +613,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     error,
     mapRead,
     sendMessage,
+    markConversationActive,
     reset: goHome,
     onBeatAnswer,
     onLeaderSelect,

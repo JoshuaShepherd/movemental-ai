@@ -53,6 +53,16 @@ describe("move-classifier", () => {
     ).toEqual({ kind: "agent", reason: "discuss" });
   });
 
+  it("routes active chat text to agent even when regex would match", () => {
+    expect(
+      classifyTypedInput({
+        ...baseText,
+        text: "what does it cost",
+        chatActive: true,
+      }),
+    ).toEqual({ kind: "agent", reason: "open_text" });
+  });
+
   it("skips discuss offer on beat screen", () => {
     expect(
       classifyTypedInput({

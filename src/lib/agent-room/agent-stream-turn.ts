@@ -56,6 +56,8 @@ export type AgentStreamCallbacks = {
 
 /** Map an engine tool name to a calm, Ink-Band-voiced status line. */
 const TOOL_LABELS: Record<string, string> = {
+  file_search: "searching the archive",
+  search_corpus: "searching the archive",
   request_diagnosis: "composing the read-back",
   render_beat: "laying out the reality check",
   render_readback: "writing the read-back",
