@@ -498,6 +498,8 @@ export function useAgentRoomStream() {
             onSelect: () => {
               if (route.kind === "local" && route.scene === "toBeatCold") {
                 startToBeatCold();
+              } else if (route.kind === "navigate") {
+                window.location.assign(route.href);
               } else {
                 void sendMessage(route.kind === "agent" ? route.utterance : s.say);
               }

@@ -11,13 +11,15 @@ export type StreamSuggestion = { label: string; say: string; lead?: boolean };
 /** How a default suggestion is handled in stream mode. */
 export type StreamChipRoute =
   | { kind: "local"; scene: "toBeatCold" }
-  | { kind: "agent"; utterance: string };
+  | { kind: "agent"; utterance: string }
+  | { kind: "navigate"; href: string };
 
 /** Labels from `DEFAULT_SUGGESTIONS` → stream routing. */
 const STREAM_CHIP_ROUTES: Record<string, StreamChipRoute> = {
   "Get a clear next AI step": { kind: "local", scene: "toBeatCold" },
   "About Movemental": { kind: "agent", utterance: "About Movemental" },
   "What does it cost?": { kind: "agent", utterance: "What does it cost?" },
+  "See our research": { kind: "navigate", href: "/research" },
   "Get in touch": { kind: "agent", utterance: "Get in touch" },
 };
 

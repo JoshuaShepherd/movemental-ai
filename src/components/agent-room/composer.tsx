@@ -25,6 +25,7 @@ export const DEFAULT_SUGGESTIONS: Suggestion[] = [
   { label: "Get a clear next AI step", say: "Get a clear next AI step", lead: true },
   { label: "About Movemental", say: "About Movemental" },
   { label: "What does it cost?", say: "What does it cost?" },
+  { label: "See our research", say: "See our research" },
   { label: "Get in touch", say: "Get in touch" },
 ];
 

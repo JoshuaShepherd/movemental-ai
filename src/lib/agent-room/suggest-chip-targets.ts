@@ -20,6 +20,9 @@ export const ENROLL_CHIP_TARGET = "toEnroll";
 /** Chip `to` value — deep organizational AI reality assessment (~40 questions). */
 export const ORG_ASSESSMENT_CHIP_TARGET = "toOrgAssessment";
 
+/** Chip `to` value — public research library (EEAT corpus). */
+export const RESEARCH_CHIP_TARGET = "toResearch";
+
 export const READBACK_EMAIL_INPUT_ID = "readbackEmail";
 
 export const HANDBOOK_EMAIL_INPUT_ID = "handbookEmail";
@@ -68,6 +71,12 @@ export function handleSuggestChipTarget(
   if (to === ORG_ASSESSMENT_CHIP_TARGET) {
     if (typeof window !== "undefined") {
       window.location.assign("/assess");
+    }
+    return true;
+  }
+  if (to === RESEARCH_CHIP_TARGET) {
+    if (typeof window !== "undefined") {
+      window.location.assign("/research");
     }
     return true;
   }
