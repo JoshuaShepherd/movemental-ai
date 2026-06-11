@@ -61,7 +61,7 @@ Record answers here when resolved.
 
 | # | Question | Options | Decision |
 |---|----------|---------|----------|
-| 1 | **What corpus should `file_search` index for the public room?** | Movemental canon docs only / full `docs/` / field guides + pricing / custom subset | **Resolved:** `files/public/` KB phases 1–4 + The Talk — see [`files/MANIFEST.json`](./files/MANIFEST.json) |
+| 1 | **What corpus should `file_search` index for the public room?** | Movemental canon docs only / full `docs/` / field guides + pricing / custom subset | **Resolved:** `files/public/` KB 1–4 + The Talk + 3 PDFs (Safety/Sandbox Field Guides, Evergreen Engine) — [`files/MANIFEST.json`](./files/MANIFEST.json) |
 | 2 | **When should the host call `file_search`?** | Discuss phase only / any open question / never (canon-only) | _TBD_ |
 | 3 | **Fallback if vector store empty?** | `search_corpus` (Postgres pgvector) / handoff / silent canon-only | _TBD_ |
 | 4 | ~~Switch host model for quality?~~ | — | **Resolved:** both agents use `claude-opus-4-6` (2026-06-10) |
@@ -74,3 +74,4 @@ Record answers here when resolved.
 |------|--------|--------|
 | 2026-06-10 | docs pack | Initial SSOT directory created from live seed + prompts |
 | 2026-06-10 | docs pack | Corpus files organized: public/internal split, MANIFEST.json, sync script |
+| 2026-06-11 | docs pack | Added Field Guide + Evergreen Engine PDFs; removed root duplicates; 8-doc manifest |

@@ -23,12 +23,15 @@ export function VoiceZone({
   error,
   phase = "guide",
   transcript = [],
+  strip = false,
 }: {
   voice: VoiceState;
   error: string | null;
   /** Discuss phase (INT-08): grows the band to 3–5 lines + tap-to-expand. */
   phase?: RoomPhase;
   transcript?: TranscriptTurn[];
+  /** Render inside the floating dock handwriting strip (docs/html/home). */
+  strip?: boolean;
 }) {
   const { voiceEl } = useAgentRoomRefs();
   const { voiceLines, resolveLine, voiceStream } = useInk();
@@ -38,9 +41,18 @@ export function VoiceZone({
   // growing ink shows below the committed lines; on turn end it commits to the
   // transcript and clears. The thinking pulse covers the gap before the first
   // delta. Error still wins.
+  const discuss = phase === "discuss";
+  const voiceClass = strip
+    ? `${styles.handwritingVline} ${discuss ? styles.voiceDiscuss : ""}`
+    : `${styles.voice} ${discuss ? styles.voiceDiscuss : ""}`;
+
   if (phase === "discuss") {
     return (
-      <div ref={voiceEl} className={`${styles.voice} ${styles.voiceDiscuss}`} aria-live="polite">
+      <div
+        ref={strip ? undefined : voiceEl}
+        className={voiceClass}
+        aria-live="polite"
+      >
         {error ? (
           <span className={styles.errorLine}>{error}</span>
         ) : (
@@ -64,7 +76,7 @@ export function VoiceZone({
   const hasInk = voiceLines.length > 0 || Boolean(voiceStream);
 
   return (
-    <div ref={voiceEl} className={styles.voice} aria-live="polite">
+    <div ref={strip ? undefined : voiceEl} className={voiceClass} aria-live="polite">
       {error ? (
         <span className={styles.errorLine}>{error}</span>
       ) : (

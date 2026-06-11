@@ -103,10 +103,77 @@
       index = 0;
       measure();
       drawPhraseUnderline();
+      if (agentDock?.classList.contains("is-expanded")) setExpanded(false);
     });
   }
 
   if (form) {
     form.addEventListener("submit", (e) => e.preventDefault());
+  }
+
+  const agentDock = document.getElementById("agent-dock");
+  const agentCard = document.getElementById("agent-card");
+  const dockBackdrop = document.getElementById("dock-backdrop");
+  const expandToggle = document.getElementById("expand-toggle");
+  const cardHandle = document.getElementById("card-handle");
+  const cardCollapse = document.getElementById("card-collapse");
+  const composerInput = document.getElementById("composer-input");
+  const floatChips = document.getElementById("float-chips");
+
+  function setExpanded(expanded) {
+    if (!agentDock || !agentCard) return;
+    agentDock.classList.toggle("is-expanded", expanded);
+    agentCard.classList.toggle("is-expanded", expanded);
+    if (dockBackdrop) dockBackdrop.hidden = !expanded;
+    if (expandToggle) {
+      expandToggle.setAttribute("aria-expanded", String(expanded));
+      expandToggle.classList.toggle("is-active", expanded);
+      expandToggle.setAttribute(
+        "aria-label",
+        expanded ? "Collapse chat" : "Expand chat"
+      );
+      expandToggle.setAttribute(
+        "title",
+        expanded ? "Collapse chat" : "Expand chat"
+      );
+    }
+    if (cardHandle) cardHandle.setAttribute("aria-expanded", String(expanded));
+    if (expanded && composerInput) {
+      requestAnimationFrame(() => composerInput.focus());
+    }
+  }
+
+  function expandDrawer() { setExpanded(true); }
+  function collapseDrawer() { setExpanded(false); }
+
+  if (expandToggle) {
+    expandToggle.addEventListener("click", () => {
+      setExpanded(!agentDock?.classList.contains("is-expanded"));
+    });
+  }
+  if (cardHandle) {
+    cardHandle.addEventListener("click", expandDrawer);
+  }
+  if (cardCollapse) {
+    cardCollapse.addEventListener("click", collapseDrawer);
+  }
+  if (dockBackdrop) {
+    dockBackdrop.addEventListener("click", collapseDrawer);
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && agentDock?.classList.contains("is-expanded")) {
+      collapseDrawer();
+    }
+  });
+
+  if (floatChips) {
+    floatChips.addEventListener("click", (e) => {
+      const chip = e.target.closest(".floatChip");
+      if (!chip || !composerInput) return;
+      const say = chip.getAttribute("data-say") || chip.textContent.trim();
+      composerInput.value = say;
+      composerInput.focus();
+    });
   }
 })();

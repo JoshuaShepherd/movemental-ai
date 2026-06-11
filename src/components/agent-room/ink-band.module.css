@@ -7,8 +7,8 @@
  *     .screen  ── #screen: radial-gradient stage, holds .sheet + the #ink SVG
  *       .sheet ── manuscript sheet with the red margin rule (.home drops it)
  *       .ink   ── absolute SVG overlay (gestures drawn in AF-04)
- *     .voice   ── the agent's ink voice lines (separate zone; AF-04 animates)
- *     .composer ── suggestion chips + input + replay legend (full AF-11)
+ *     .agentDock ── fixed floating dock: handwriting strip + expandable card
+ *       (docs/html/home; replaces inline .voice + .composer when `.roomDock`)
  *
  * Colors/fonts are the scoped Ink Band tokens from globals.css
  * (`--color-ink-band-*` / `--font-ink-*`); the base reset (paper bg, ink, Inter,
@@ -1921,6 +1921,458 @@
 }
 .replay:hover {
   color: var(--color-ink-band-blue);
+}
+
+/* ===== agent dock (floating composer + handwriting strip) =====
+   Ported from docs/html/home/styles.css — fixed bottom dock replaces inline
+   .voice + .composer flex zones when `.roomDock` is on `.room`. */
+.roomDock .screen {
+  padding-bottom: clamp(10rem, 22vh, 13rem);
+}
+
+.agentDock {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  pointer-events: none;
+}
+.agentDock > * {
+  pointer-events: auto;
+}
+
+.dockBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: color-mix(in srgb, var(--color-ink-band-ink) 18%, transparent);
+  opacity: 0;
+  transition: opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  cursor: default;
+}
+.agentDockExpanded .dockBackdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.handwritingStrip {
+  width: 100%;
+  flex: 0 0 auto;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    color-mix(in srgb, var(--color-ink-band-surface) 88%, transparent) 35%,
+    var(--color-ink-band-surface) 100%
+  );
+  border-top: 1px solid var(--color-ink-band-border);
+  padding: 0.55rem clamp(1.25rem, 4vw, 2.5rem) 0.35rem;
+  min-height: 3.2rem;
+  max-height: min(28vh, 9rem);
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition:
+    max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.agentDockExpanded .handwritingStrip {
+  max-height: 0;
+  min-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-top-color: transparent;
+  overflow: hidden;
+}
+.handwritingInner {
+  max-width: 56rem;
+  margin: 0 auto;
+}
+.handwritingVoice {
+  min-height: 0;
+}
+.handwritingVline {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.05rem;
+}
+.handwritingVline .vline {
+  font-size: clamp(1.25rem, 4.8vw, 1.65rem);
+  line-height: 1.15;
+}
+
+.agentFloat {
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 0 clamp(0.75rem, 3vw, 1.25rem) 0.85rem;
+  transition:
+    max-width 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.agentDockExpanded .agentFloat {
+  max-width: none;
+  width: 100%;
+  padding: 0 clamp(0.35rem, 1.5vw, 0.65rem) 0.45rem;
+}
+
+.floatChips {
+  display: flex;
+  gap: 0.45rem;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin-bottom: 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.floatChips::-webkit-scrollbar {
+  display: none;
+}
+
+.floatChip {
+  flex: 0 1 auto;
+  max-width: calc(50% - 0.25rem);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font: inherit;
+  font-size: 0.78rem;
+  line-height: 1.2;
+  padding: 0.42rem 0.75rem;
+  border: 1px solid var(--color-ink-band-border);
+  border-radius: 999px;
+  background: var(--color-ink-band-paper);
+  color: var(--color-ink-band-ink-muted);
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    transform 0.15s,
+    box-shadow 0.15s;
+  white-space: nowrap;
+}
+.floatChip:hover:not(:disabled) {
+  border-color: var(--color-ink-band-ink);
+  color: var(--color-ink-band-ink);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px -10px rgba(26, 26, 26, 0.35);
+}
+.floatChip:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.floatChipLead {
+  color: var(--color-ink-band-ink);
+  font-weight: 600;
+  border-color: color-mix(in srgb, var(--color-ink-band-blue) 35%, var(--color-ink-band-border));
+}
+.floatChipText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.floatChipNum {
+  flex: 0 0 auto;
+  font-family: var(--font-ink-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-band-ink-muted);
+  opacity: 0.7;
+}
+
+.agentCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-ink-band-border);
+  border-radius: 1.35rem;
+  background: var(--color-ink-band-paper);
+  box-shadow:
+    0 1px 2px rgba(26, 26, 26, 0.04),
+    0 12px 40px -16px rgba(26, 26, 26, 0.22);
+  overflow: hidden;
+  max-height: 9.5rem;
+  transition:
+    max-height 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    border-radius 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(0);
+  will-change: max-height, transform;
+}
+.agentCardExpanded {
+  height: 90dvh;
+  max-height: 90dvh;
+  border-radius: 1.1rem 1.1rem 0.65rem 0.65rem;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-ink-band-border) 80%, transparent),
+    0 -12px 56px -14px rgba(26, 26, 26, 0.32);
+}
+.agentDockExpanded .floatChips {
+  opacity: 0;
+  pointer-events: none;
+  margin-bottom: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.cardHeader {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem 0.45rem;
+  border-bottom: 1px solid var(--color-ink-band-border);
+  flex: 0 0 auto;
+}
+.agentCardExpanded .cardHeader {
+  display: flex;
+}
+.cardTitle {
+  font-family: var(--font-ink-display);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--color-ink-band-ink);
+}
+.cardCollapse {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-ink-band-surface);
+  color: var(--color-ink-band-ink-muted);
+  cursor: pointer;
+  transition:
+    color 0.15s,
+    background 0.15s;
+}
+.cardCollapse:hover {
+  color: var(--color-ink-band-blue);
+  background: color-mix(in srgb, var(--color-ink-band-blue) 8%, var(--color-ink-band-surface));
+}
+
+.cardThread {
+  display: none;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0.85rem 1rem 0.5rem;
+  gap: 0.65rem;
+  -webkit-overflow-scrolling: touch;
+}
+.agentCardExpanded .cardThread {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.threadMsgAgent,
+.threadMsgUser {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  max-width: 92%;
+}
+.threadMsgAgent p,
+.threadMsgUser p {
+  margin: 0;
+}
+.threadMsgAgent {
+  align-self: flex-start;
+  font-family: var(--font-ink-hand);
+  color: var(--color-ink-band-blue);
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+.threadMsgUser {
+  align-self: flex-end;
+  padding: 0.5rem 0.85rem;
+  border-radius: 1rem 1rem 0.25rem 1rem;
+  background: var(--color-ink-band-surface);
+  color: var(--color-ink-band-ink);
+  border: 1px solid var(--color-ink-band-border);
+}
+
+.cardBody {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.cardInput {
+  display: block;
+  padding: 0.85rem 1rem 0.35rem;
+}
+.cardInput input {
+  width: 100%;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 0.98rem;
+  color: var(--color-ink-band-ink);
+  padding: 0;
+}
+.cardInput input:focus {
+  outline: none;
+}
+.cardInput input::placeholder {
+  color: var(--color-ink-band-ink-muted);
+}
+
+.cardToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.35rem 0.65rem 0.55rem;
+}
+.toolbarGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.toolBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-ink-band-ink-muted);
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    color 0.15s,
+    background 0.15s;
+}
+.toolBtn:hover {
+  color: var(--color-ink-band-ink);
+  background: var(--color-ink-band-surface);
+}
+.agentDockExpanded .expandToggle {
+  display: none;
+}
+.expandToggleActive {
+  color: var(--color-ink-band-blue);
+  background: color-mix(in srgb, var(--color-ink-band-blue) 10%, var(--color-ink-band-surface));
+}
+.sendRound {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.15rem;
+  height: 2.15rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-ink-band-ink);
+  color: var(--color-ink-band-bg);
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    transform 0.15s;
+}
+.sendRound:hover:not(:disabled) {
+  background: var(--color-ink-band-blue);
+  transform: translateY(-1px);
+}
+.sendRound:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.cardHandle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.2rem 0 0.35rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.agentCardExpanded .cardHandle {
+  opacity: 0;
+  pointer-events: none;
+}
+.handleBar {
+  display: block;
+  width: 2.5rem;
+  height: 0.28rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-ink-band-ink-muted) 45%, transparent);
+  transition:
+    background 0.15s,
+    width 0.15s;
+}
+.cardHandle:hover .handleBar {
+  background: var(--color-ink-band-ink-muted);
+  width: 2.85rem;
+}
+
+.dockLegend {
+  text-align: center;
+  margin: 0.55rem 0 0;
+}
+.agentDockExpanded .dockLegend {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.roomBeat.roomDock .handwritingStrip {
+  min-height: 2.4rem;
+  max-height: 3.75rem;
+  padding-block: 0.3rem 0.15rem;
+}
+.roomBeat.roomDock .handwritingVline .vline.old {
+  display: none;
+}
+.roomBeat.roomDock .floatChips {
+  margin-bottom: 0.3rem;
+}
+.roomBeat.roomDock .agentFloat {
+  padding-bottom: 0.65rem;
+}
+
+@media (max-width: 640px) {
+  .roomDock .screen {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .handwritingVline .vline {
+    white-space: normal;
+  }
+  .floatChip {
+    min-height: 44px;
+  }
+  .agentCard {
+    max-height: 10.5rem;
+  }
+  .agentCardExpanded {
+    height: 92dvh;
+    max-height: 92dvh;
+  }
+  .agentDockExpanded .agentFloat {
+    padding: 0 0.25rem 0.35rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agentCard,
+  .handwritingStrip,
+  .dockBackdrop {
+    transition: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

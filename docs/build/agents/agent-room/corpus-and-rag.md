@@ -51,8 +51,13 @@ Public scope (resolved 2026-06-10):
 | KB Phase 3 — Scenii, proof, honest status | `files/public/movemental-kb-phase-3.md` |
 | KB Phase 4 — AI reality, Movemental AI use, product surface | `files/public/movemental-kb-phase-4.md` |
 | The Talk — 15-minute narrative | `files/public/movemental-the-talk.md` |
+| Safety Field Guide (Vol 1) | `files/public/pdf/safety-field-guide.pdf` |
+| Sandbox Field Guide (Vol 2) | `files/public/pdf/sandbox-field-guide.pdf` |
+| Evergreen Engine (Edition One) | `files/public/pdf/evergreen-engine.pdf` |
 
-**Exclude from vector store:** `files/internal/` (operator onboarding), seeds, secrets, unreleased product, Phase 5 backlog (playbooks, FAQ verbatim).
+**8 documents total.** Field Guide PDFs are **canonical** for Safety/Sandbox methodology detail (override KB summaries).
+
+**Exclude from vector store:** `files/internal/` (operator onboarding), files at `files/` root (use `public/` only), seeds, secrets, unreleased product. Phase 5 backlog: playbooks, FAQ verbatim, Skills/Solutions guides.
 
 Sync:
 

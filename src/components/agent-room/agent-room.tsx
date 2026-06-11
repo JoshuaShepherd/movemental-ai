@@ -10,23 +10,20 @@ import { useAgentRoomStream } from "./use-agent-room-stream";
 import { useAgentRoomStub } from "./use-agent-room-stub";
 import { Mast } from "./shell/mast";
 import { ScreenZone } from "./shell/screen-zone";
-import { VoiceZone } from "./shell/voice-zone";
+import { AgentDock } from "./shell/agent-dock";
 import { StreamScreen } from "./screen/stream-screen";
 import { HybridScreen } from "./screen/hybrid-screen";
 import { StubScreen } from "./screen/stub/stub-screen";
 import { CaptureScreen } from "./screen/stub/capture-screen";
-import { Composer, BEAT_PLACEHOLDER, STREAM_PLACEHOLDER, type ComposerChip } from "./composer";
-import { DiscussOverlay } from "./discuss/discuss-overlay";
+import { BEAT_PLACEHOLDER, STREAM_PLACEHOLDER, type ComposerChip } from "./composer";
 import { DiscussFold } from "./discuss/discuss-sheet";
 import type { VoiceState } from "./use-agent-room-stream";
 import type { RoomPhase, TranscriptTurn } from "@/lib/agent-room/discuss";
 
 /**
- * The Agent Room shell — the prototype's four fixed zones (mast / screen / voice
- * / composer) in a 100dvh column with no page scroll. Presentational and
- * mode-agnostic: each mode container builds the screen node + its chrome
- * (`home`/`scroll`) and feeds them here. `screenKey` re-fires the `settle`
- * animation on every screen change.
+ * The Agent Room shell — mast + stage + floating agent dock (docs/html/home).
+ * Presentational and mode-agnostic: each mode container builds the screen node
+ * and feeds it here. `screenKey` re-fires the `settle` animation on every screen change.
  */
 function AgentRoomView({
   screenNode,
@@ -97,9 +94,9 @@ function AgentRoomView({
 
   return (
     <div
-      className={`ink-band-surface ${styles.room} ${beat ? styles.roomBeat : ""} ${
-        discuss ? styles.discuss : ""
-      } ${discuss ? styles.roomDiscussOverlay : ""}`}
+      className={`ink-band-surface ${styles.room} ${styles.roomDock} ${
+        beat ? styles.roomBeat : ""
+      } ${discuss ? styles.discuss : ""}`}
     >
       <Mast onHome={onReplay} />
 
@@ -110,35 +107,21 @@ function AgentRoomView({
         {!discuss && <DiscussFold transcript={transcript} />}
       </ScreenZone>
 
-      <VoiceZone
+      <AgentDock
         voice={voice}
         error={error}
-        phase={discuss ? "guide" : phase}
+        suggestions={suggestions}
+        disabled={isStreaming}
+        onSay={onSay}
+        onReplay={onReplay}
+        placeholder={placeholder}
+        phase={phase}
         transcript={transcript}
+        onExitDiscuss={onExitDiscuss}
+        stubCapture={stubCaptureNode}
+        liveText={liveText}
+        liveThinking={voice.thinking}
       />
-
-      {!discuss ? (
-        <Composer
-          suggestions={suggestions}
-          disabled={isStreaming}
-          onSay={onSay}
-          onReplay={onReplay}
-          placeholder={placeholder}
-        />
-      ) : null}
-
-      {discuss && (
-        <DiscussOverlay
-          transcript={transcript}
-          liveText={liveText}
-          liveThinking={voice.thinking}
-          disabled={isStreaming}
-          onSay={onSay}
-          onReplay={onReplay}
-          onExit={onExitDiscuss}
-          stubCapture={stubCaptureNode}
-        />
-      )}
     </div>
   );
 }

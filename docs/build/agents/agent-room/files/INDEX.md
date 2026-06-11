@@ -2,114 +2,102 @@
 
 Human-readable map of what each file contains and when retrieval should surface it. For machine sync, see [`MANIFEST.json`](./MANIFEST.json).
 
-**Corpus date:** May 2026  
-**Total public documents:** 5 (~128 KB)
+**Corpus version:** 2026-06  
+**Total public documents:** 9 (6 markdown + 3 PDF)
 
 ---
 
-## Quick routing (for prompt authors)
+## Quick routing
 
-| Visitor asks about… | Primary document | KB part |
-|---------------------|------------------|---------|
-| Path stages, SafeStart, Sandbox, Skills, Solutions | `public/movemental-kb-phase-1.md` | Part IV |
-| Pricing, engagement terms, Voice compensation | `public/movemental-kb-phase-1.md` | Part V |
-| Operating rules, conflicts, source authority | `public/movemental-kb-phase-1.md` | Parts 0, XIII |
-| What Movemental is, founders, origin story | `public/movemental-kb-phase-2.md` | Part I |
-| Fragmentation, authorship, Babel/Pentecost thesis | `public/movemental-kb-phase-2.md` | Part II |
-| Scenii, scenius, five-node anatomy, GEO | `public/movemental-kb-phase-3.md` | Part III |
-| What's proven vs forthcoming, Voice roster care | `public/movemental-kb-phase-3.md` | Part XI |
-| Church/nonprofit AI adoption stats | `public/movemental-kb-phase-4.md` | Part VI |
-| How Movemental uses AI, voice fidelity, agents | `public/movemental-kb-phase-4.md` | Part VII |
-| Site pages, dashboards, contact, assessments | `public/movemental-kb-phase-4.md` | Part IX |
-| Whole-story narrative (spoken arc) | `public/movemental-the-talk.md` | — |
+| Visitor asks about… | Primary document | Notes |
+|---------------------|------------------|-------|
+| Path stages, pricing quick ref | `public/movemental-kb-phase-1.md` | **[LIVE]** pricing |
+| Safety Guidebook layers, SafeStart steps | `public/pdf/safety-field-guide.pdf` | **Canonical** for methodology |
+| Sandbox phases, green/yellow/red | `public/pdf/sandbox-field-guide.pdf` | **Canonical** for methodology |
+| Company identity, fragmentation thesis | `public/movemental-kb-phase-2.md` | Relay as Movemental framing |
+| Scenii, Movement Voices, proof status | `public/movemental-kb-phase-3.md` | Voice count **[LIVE]** |
+| Evergreen Engine, article archetypes | `public/pdf/evergreen-engine.pdf` | **Canonical** for Voice content system |
+| AI adoption stats (churches, nonprofits) | `public/movemental-kb-phase-4.md` | **[RE-VALIDATE ANNUALLY]** |
+| AI research studies, MIT 95%, jagged frontier, Pew | `public/ai-research-archive.md` | Full bibliography + conflation guardrails |
+| How Movemental uses AI, site map | `public/movemental-kb-phase-4.md` | Technical detail dated May 2026 |
+| Whole-story narrative | `public/movemental-the-talk.md` | Spoken arc, not fact lookup |
 
-**Do not retrieve for:** operator onboarding steps → `internal/` only.
+**Do not retrieve:** operator onboarding → `internal/` only.
 
 ---
 
-## Document catalog
+## Markdown knowledge base
 
 ### `kb-phase-1` — Operating rules, Path, pricing, sources
 
-| Section | Topics | Retrieval notes |
-|---------|--------|-----------------|
-| Part 0 | Agent operating rules (7 rules) | Use when agent behavior questions arise |
-| Part IV | Four-stage Path, Field Guides, traps | Canon-aligned; prefer prompt §5 for tier prices |
-| Part V | Engagement + end-user pricing | **[LIVE]** — verify `/pricing` before quoting |
-| Part XIII | Source register, conflicts, authority hierarchy | Use for `[CONFLICT]` resolution guidance |
-
-**OpenAI attributes:** `category=knowledge-base`, `phase=1`, `domain=path-pricing`
-
----
+Parts 0, IV, V, XIII. Summarizes Path and pricing; **defer to Field Guide PDFs** for step-by-step Safety/Sandbox methodology.
 
 ### `kb-phase-2` — Identity and thesis
 
-| Section | Topics | Retrieval notes |
-|---------|--------|-----------------|
-| Part I | Company identity, founders, posture, cap-100 | Voice count is **[LIVE]** |
-| Part II | Fragmentation, slop, authorship, Ferguson memo | Relay as Movemental framing, not independent fact |
-
-**OpenAI attributes:** `category=knowledge-base`, `phase=2`, `domain=identity-thesis`
-
----
+Parts I, II. Fragmentation, authorship, Babel/Pentecost, Ferguson memo framing.
 
 ### `kb-phase-3` — Scenii and proof
 
-| Section | Topics | Retrieval notes |
-|---------|--------|-----------------|
-| Part III | Scenii model, four moves, Evergreen Engine, moat | Strategic framing |
-| Part XI | Honest current state, confirmed vs named Voices | Never quote placeholders as facts |
-
-**OpenAI attributes:** `category=knowledge-base`, `phase=3`, `domain=scenii-proof`
-
----
+Parts III, XI. Network model, honest current state, confirmed vs illustrative Voices.
 
 ### `kb-phase-4` — AI reality and product surface
 
-| Section | Topics | Retrieval notes |
-|---------|--------|-----------------|
-| Part VI | AI Reality Paper stats (churches, nonprofits, institutions) | **[RE-VALIDATE ANNUALLY]** |
-| Part VII | Movemental's own AI use, inventory summary | Technical detail; cite inventory date |
-| Part IX | Site map, dashboards, FAQ surface (not verbatim) | **[LIVE]** nav and URLs |
+Parts VI, VII, IX. AI Reality Paper stats, Movemental AI inventory, site/dashboard surfaces.
 
-**OpenAI attributes:** `category=knowledge-base`, `phase=4`, `domain=ai-reality-product`
+### `ai-research-archive` — Verified AI research bibliography
 
----
+Curated archive of enterprise, academic, and mission-sector AI studies: GenAI Divide (95%), BCG/McKinsey value gaps, jagged frontier experiment, Stanford AI Index, Pew/Ahrefs credibility research, church/nonprofit surveys, FBI IC3 fraud data, Fernandes metacognition study. Includes **conflation guardrails** (MIT 95% ≠ BCG productivity study). **[RE-VALIDATE ANNUALLY]** for sector statistics.
 
 ### `narrative-the-talk` — The Talk
 
-Spoken 15-minute arc: reader trust → fragmentation → Scenii → Path → refusals. Use when visitor wants the **story** rather than a fact lookup. Lower precision chunking (600 tokens) preserves narrative flow.
-
-**OpenAI attributes:** `category=narrative`, `phase=0`, `domain=spoken-narrative`
+15-minute spoken narrative. Use for story requests, not precise facts.
 
 ---
 
-## Internal (excluded from upload)
+## PDF sources (canonical for methodology)
 
-| Document | Why excluded |
-|----------|--------------|
-| `voices-onboarding-walkthrough` | Operator placeholders, sign-in password convention, per-recipient credential slots |
+### `field-guide-safety` — It Starts With Safety (Vol 1)
+
+33-page Field Guide. Canonical for Safety stage: five layers, seven artifacts, self-directed walkthrough. Overrides KB summaries when they differ.
+
+**Attributes:** `category=field-guide`, `volume=1`, `path_stage=safety`
+
+### `field-guide-sandbox` — It Continues With Exploration (Vol 2)
+
+48-page Field Guide. Canonical for Sandbox: eight phases, Future Plan, discernment workflow.
+
+**Attributes:** `category=field-guide`, `volume=2`, `path_stage=sandbox`
+
+### `evergreen-engine` — Edition One
+
+Movement Voice content system: article archetypes, pathway components, EEAT gate. Canonical over `kb-phase-3` Evergreen summary.
+
+**Attributes:** `category=methodology`, `domain=movement-voices`
 
 ---
 
-## Known conflicts (do not merge in retrieval)
+## Internal (excluded)
 
-Documented in `kb-phase-1` Part XIII:
-
-1. **Assessment specs** — question count, time, dimensions differ across sources → verify `/assess`
-2. **Safety Guidebook framing** — five layers vs seven artifacts mapping incomplete
-3. **Movement Voice count** — twenty-five vs "the hundred" across docs → check live source
-4. **Tagline** — two variants in corpus → confirm live site
+| Document | Why |
+|----------|-----|
+| `voices-onboarding-walkthrough` | Operator placeholders, sign-in conventions |
 
 ---
 
-## Phase 5 backlog (not yet in corpus)
+## Authority hierarchy (retrieval)
 
-| Planned content | Blocker |
-|-----------------|---------|
-| Audience playbooks (church, nonprofit, institution, leader) | OCR image-only playbooks |
-| Participation Agreement verbatim | OCR |
-| FAQ verbatim (~59 questions) | Live `/faq` scrape |
-| Field Guide full text | PDF export + upload as separate docs |
+1. Live website (`/pricing`, `/assess`, `/field-guides`) for **[LIVE]** facts
+2. **Field Guide PDFs** for Safety/Sandbox methodology detail
+3. **KB phases** for synthesized answers and cross-topic routing
+4. **The Talk** for narrative only — not pricing or stats
 
-When added, create new `public/` files with frontmatter and manifest entries — do not append to phase files (keeps chunk boundaries stable).
+---
+
+## Phase 5 backlog
+
+| Content | Blocker |
+|---------|---------|
+| Skills / Solutions Field Guides | PDFs not yet added |
+| Audience playbooks | OCR |
+| Participation Agreement | OCR |
+| FAQ verbatim | `/faq` scrape |

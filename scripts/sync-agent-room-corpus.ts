@@ -2,7 +2,7 @@
  * Sync agent-room public corpus files to an OpenAI vector store.
  *
  * Reads docs/build/agents/agent-room/files/MANIFEST.json, uploads changed
- * public/*.md files, attaches them with per-file attributes + chunking.
+ * public markdown + PDF files, attaches them with per-file attributes + chunking.
  *
  *   pnpm agent-room:corpus:sync -- --dry-run
  *   OPENAI_VECTOR_STORE_ID=vs_xxx pnpm agent-room:corpus:sync
@@ -33,6 +33,7 @@ const OPENAI_API = "https://api.openai.com/v1";
 type ManifestDoc = {
   path: string;
   document_id: string;
+  format?: "markdown" | "pdf";
   upload: boolean;
   reason?: string;
   openai_attributes?: Record<string, string | number | boolean>;
@@ -41,6 +42,19 @@ type ManifestDoc = {
     static?: { max_chunk_size_tokens: number; chunk_overlap_tokens: number };
   };
 };
+
+function fileFormat(doc: ManifestDoc, absPath: string): "markdown" | "pdf" {
+  if (doc.format) return doc.format;
+  return absPath.toLowerCase().endsWith(".pdf") ? "pdf" : "markdown";
+}
+
+function uploadFilename(documentId: string, format: "markdown" | "pdf"): string {
+  return format === "pdf" ? `${documentId}.pdf` : `${documentId}.md`;
+}
+
+function uploadMimeType(format: "markdown" | "pdf"): string {
+  return format === "pdf" ? "application/pdf" : "text/markdown";
+}
 
 type Manifest = {
   corpus_id: string;
@@ -104,10 +118,11 @@ async function uploadFile(
   apiKey: string,
   absPath: string,
   documentId: string,
+  format: "markdown" | "pdf",
 ): Promise<string> {
   const form = new FormData();
-  const blob = new Blob([readFileSync(absPath)], { type: "text/markdown" });
-  form.append("file", blob, `${documentId}.md`);
+  const blob = new Blob([readFileSync(absPath)], { type: uploadMimeType(format) });
+  form.append("file", blob, uploadFilename(documentId, format));
   form.append("purpose", "assistants");
 
   const res = await openaiFetch(apiKey, "/files", { method: "POST", body: form });
@@ -189,7 +204,8 @@ async function main() {
       continue;
     }
 
-    const fileId = await uploadFile(apiKey!, absPath, doc.document_id);
+    const format = fileFormat(doc, absPath);
+    const fileId = await uploadFile(apiKey!, absPath, doc.document_id, format);
     const vsFileId = await attachToVectorStore(apiKey!, vectorStoreId!, fileId, doc);
 
     state.files[doc.document_id] = {

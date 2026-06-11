@@ -2,8 +2,8 @@
   "$schema": "./manifest.schema.json",
   "corpus_id": "movemental-room-public",
   "binding_slug": "movemental-room-canon",
-  "version": "2026-05",
-  "description": "Curated public corpus for the /agent room host file_search tool. Excludes operator-only onboarding and unreleased internal material.",
+  "version": "2026-06",
+  "description": "Curated public corpus for the /agent room host file_search tool. KB phases 1–4, narrative, Field Guide PDFs, Evergreen Engine. Excludes operator-only onboarding and unreleased internal material.",
   "providers": {
     "openai_vector_store": {
       "enabled": true,
@@ -28,6 +28,7 @@
     {
       "path": "public/movemental-kb-phase-1.md",
       "document_id": "kb-phase-1",
+      "format": "markdown",
       "upload": true,
       "openai_attributes": {
         "category": "knowledge-base",
@@ -45,6 +46,7 @@
     {
       "path": "public/movemental-kb-phase-2.md",
       "document_id": "kb-phase-2",
+      "format": "markdown",
       "upload": true,
       "openai_attributes": {
         "category": "knowledge-base",
@@ -62,6 +64,7 @@
     {
       "path": "public/movemental-kb-phase-3.md",
       "document_id": "kb-phase-3",
+      "format": "markdown",
       "upload": true,
       "openai_attributes": {
         "category": "knowledge-base",
@@ -79,6 +82,7 @@
     {
       "path": "public/movemental-kb-phase-4.md",
       "document_id": "kb-phase-4",
+      "format": "markdown",
       "upload": true,
       "openai_attributes": {
         "category": "knowledge-base",
@@ -94,8 +98,26 @@
       }
     },
     {
+      "path": "public/ai-research-archive.md",
+      "document_id": "ai-research-archive",
+      "format": "markdown",
+      "upload": true,
+      "openai_attributes": {
+        "category": "research-archive",
+        "domain": "ai-evidence"
+      },
+      "chunking_override": {
+        "type": "static",
+        "static": {
+          "max_chunk_size_tokens": 500,
+          "chunk_overlap_tokens": 75
+        }
+      }
+    },
+    {
       "path": "public/movemental-the-talk.md",
       "document_id": "narrative-the-talk",
+      "format": "markdown",
       "upload": true,
       "openai_attributes": {
         "category": "narrative",
@@ -111,8 +133,53 @@
       }
     },
     {
+      "path": "public/pdf/safety-field-guide.pdf",
+      "document_id": "field-guide-safety",
+      "format": "pdf",
+      "title": "It Starts With Safety — Field Guide Volume One",
+      "upload": true,
+      "openai_attributes": {
+        "category": "field-guide",
+        "volume": "1",
+        "path_stage": "safety"
+      },
+      "chunking_override": {
+        "type": "auto"
+      }
+    },
+    {
+      "path": "public/pdf/sandbox-field-guide.pdf",
+      "document_id": "field-guide-sandbox",
+      "format": "pdf",
+      "title": "It Continues With Exploration — Field Guide Volume Two",
+      "upload": true,
+      "openai_attributes": {
+        "category": "field-guide",
+        "volume": "2",
+        "path_stage": "sandbox"
+      },
+      "chunking_override": {
+        "type": "auto"
+      }
+    },
+    {
+      "path": "public/pdf/evergreen-engine.pdf",
+      "document_id": "evergreen-engine",
+      "format": "pdf",
+      "title": "The Evergreen Engine — Edition One",
+      "upload": true,
+      "openai_attributes": {
+        "category": "methodology",
+        "domain": "movement-voices"
+      },
+      "chunking_override": {
+        "type": "auto"
+      }
+    },
+    {
       "path": "internal/movement-voices-onboarding-walkthrough.md",
       "document_id": "voices-onboarding-walkthrough",
+      "format": "markdown",
       "upload": false,
       "reason": "Operator placeholders and credential conventions — internal only."
     }
@@ -123,6 +190,7 @@
     "**/.env*",
     "**/*-draft.md"
   ],
+  "staging_rule": "Drop new files into public/ (markdown) or public/pdf/ (PDF). Never leave upload candidates at files/ root — add MANIFEST.json entry, then sync.",
   "retrieval_policy": {
     "canon_wins": true,
     "use_when": "Visitor asks for detail not in room-host prompt §5 Knowledge Canon, or Discuss-phase open questions beyond canon.",
@@ -137,12 +205,13 @@
       "field_guide_availability",
       "assessment_specs",
       "ai_sector_statistics"
-    ]
+    ],
+    "field_guide_authority": "For Safety/Sandbox methodology detail, Field Guide PDFs are canonical over KB summaries."
   },
   "maintenance": {
     "corpus_date": "2026-05",
     "revalidate_ai_stats": "annually",
     "revalidate_pricing": "on_change",
-    "blocked_phase_5": "Audiences/playbooks, governance/legal, FAQ verbatim — waiting on Playbooks OCR and live /faq scrape."
+    "blocked_phase_5": "Audience playbooks, Participation Agreement, FAQ verbatim — waiting on OCR/scrape. Skills/Solutions Field Guide PDFs not yet in corpus."
   }
 }

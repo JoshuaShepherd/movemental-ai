@@ -17,6 +17,8 @@
         "properties": {
           "path": { "type": "string" },
           "document_id": { "type": "string" },
+          "format": { "type": "string", "enum": ["markdown", "pdf"] },
+          "title": { "type": "string" },
           "upload": { "type": "boolean" },
           "reason": { "type": "string" },
           "openai_attributes": {
