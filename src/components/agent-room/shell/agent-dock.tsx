@@ -10,7 +10,7 @@ import {
 } from "react";
 
 import type { RoomPhase, TranscriptTurn } from "@/lib/agent-room/discuss";
-import { useAgentRoomRefs, useInk } from "../agent-room-context";
+import { useAgentRoomRefs } from "../agent-room-context";
 import type { ComposerChip } from "../composer";
 import { DiscussThread } from "../discuss/discuss-thread";
 import { VoiceZone } from "./voice-zone";
@@ -112,11 +112,9 @@ export function AgentDock({
   suggestions,
   disabled,
   onSay,
-  onReplay,
   placeholder,
   phase = "guide",
   transcript = [],
-  onExitDiscuss,
   stubCapture,
   showHandbookCapture,
   onHandbookCaptureSubmit,
@@ -124,17 +122,16 @@ export function AgentDock({
   liveThinking,
   liveThinkingNote,
   onConversationActive,
+  screenKey,
 }: {
   voice: VoiceState;
   error: string | null;
   suggestions: ComposerChip[];
   disabled?: boolean;
   onSay: (text: string) => void;
-  onReplay: () => void;
   placeholder?: string;
   phase?: RoomPhase;
   transcript?: TranscriptTurn[];
-  onExitDiscuss?: () => void;
   stubCapture?: ReactNode;
   showHandbookCapture?: boolean;
   onHandbookCaptureSubmit?: (kind: string, values: Record<string, string>) => void;
@@ -142,59 +139,59 @@ export function AgentDock({
   liveThinking?: boolean;
   liveThinkingNote?: string;
   onConversationActive?: () => void;
+  /** When the stage screen changes, the dock thread resets (no cross-screen bleed). */
+  screenKey?: string;
 }) {
   const discuss = phase === "discuss";
   const [expanded, setExpanded] = useState(false);
   const [value, setValue] = useState("");
   const [guideMessages, setGuideMessages] = useState<GuideMessage[]>([]);
+  const [chatEngaged, setChatEngaged] = useState(false);
   const [handbookHighlight, setHandbookHighlight] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const threadRef = useRef<HTMLDivElement>(null);
   const { voiceEl } = useAgentRoomRefs();
-  const { voiceLines } = useInk();
-  const prevVoiceCount = useRef(0);
+  const prevScreenKey = useRef(screenKey);
 
   const setExpandedState = useCallback(
     (next: boolean) => {
       if (next) onConversationActive?.();
-      if (next && !discuss) {
-        setGuideMessages((prev) => {
-          const known = new Set(
-            prev.filter((m) => m.role === "agent").map((m) => m.content),
-          );
-          const backfill = voiceLines
-            .filter((line) => !known.has(line.text))
-            .map((line) => ({ role: "agent" as const, content: line.text }));
-          return backfill.length ? [...prev, ...backfill] : prev;
-        });
-        prevVoiceCount.current = voiceLines.length;
-      }
       setExpanded(next);
       if (next) {
         requestAnimationFrame(() => inputRef.current?.focus());
       }
     },
-    [discuss, onConversationActive, voiceLines],
+    [onConversationActive],
   );
+
+  // New screen → fresh conversation drawer (scripted voice stays in the strip only).
+  useEffect(() => {
+    if (screenKey === undefined || screenKey === prevScreenKey.current) return;
+    prevScreenKey.current = screenKey;
+    setGuideMessages([]);
+    setChatEngaged(false);
+    setExpanded(false);
+    setValue("");
+  }, [screenKey]);
 
   useEffect(() => {
     if (discuss) setExpandedState(true);
   }, [discuss, setExpandedState]);
 
-  // Agent replies should stream inside the conversation drawer — not only in the
-  // handwriting strip above it (which is hidden once the drawer opens).
+  // Auto-open the drawer when the agent is replying to an engaged chat turn.
   useEffect(() => {
     if (!liveText && !liveThinking) return;
+    if (!discuss && !chatEngaged) return;
     setExpanded((open) => {
       if (open) return open;
       onConversationActive?.();
       return true;
     });
-  }, [liveText, liveThinking, onConversationActive]);
+  }, [liveText, liveThinking, onConversationActive, chatEngaged, discuss]);
 
   // Mirror live stream ink into the guide thread so the drawer grows incrementally.
   useEffect(() => {
-    if (discuss || !liveText) return;
+    if (discuss || !liveText || !chatEngaged) return;
     setGuideMessages((prev) => {
       const last = prev[prev.length - 1];
       if (last?.role === "agent" && last.streaming) {
@@ -203,30 +200,19 @@ export function AgentDock({
       }
       return [...prev, { role: "agent", content: liveText, streaming: true }];
     });
-  }, [discuss, liveText]);
+  }, [discuss, liveText, chatEngaged]);
 
-  // Finalize committed voice lines — extend an in-flight streaming bubble instead
-  // of appending the same turn again when the stream settles.
+  // Turn ended — drop the streaming flag on the in-flight agent bubble.
   useEffect(() => {
-    if (discuss || voiceLines.length <= prevVoiceCount.current) {
-      prevVoiceCount.current = voiceLines.length;
-      return;
-    }
-    const fresh = voiceLines.slice(prevVoiceCount.current);
-    prevVoiceCount.current = voiceLines.length;
+    if (discuss || !chatEngaged || liveText) return;
     setGuideMessages((prev) => {
       const last = prev[prev.length - 1];
-      const committed = fresh[fresh.length - 1];
-      if (!committed) return prev;
       if (last?.role === "agent" && last.streaming) {
-        return [...prev.slice(0, -1), { role: "agent", content: committed.text }];
+        return [...prev.slice(0, -1), { role: "agent", content: last.content }];
       }
-      const known = new Set(prev.filter((m) => m.role === "agent").map((m) => m.content));
-      const toAdd = fresh.filter((line) => !known.has(line.text));
-      if (!toAdd.length) return prev;
-      return [...prev, ...toAdd.map((line) => ({ role: "agent" as const, content: line.text }))];
+      return prev;
     });
-  }, [discuss, voiceLines]);
+  }, [discuss, chatEngaged, liveText]);
 
   useEffect(() => {
     if (!expanded || !threadRef.current) return;
@@ -269,6 +255,7 @@ export function AgentDock({
     const v = value.trim();
     if (!v || disabled) return;
     setValue("");
+    setChatEngaged(true);
     const wasExpanded = expanded;
     if (!discuss) {
       setGuideMessages((prev) => [...prev, { role: "user", content: v }]);
@@ -278,16 +265,10 @@ export function AgentDock({
     if (!expanded) setExpandedState(true);
   };
 
-  const handleReplay = () => {
-    setGuideMessages([]);
-    prevVoiceCount.current = 0;
-    setExpandedState(false);
-    setValue("");
-    onReplay();
-  };
-
   const showGuideThread =
-    !discuss && (guideMessages.length > 0 || liveText || liveThinking);
+    !discuss &&
+    chatEngaged &&
+    (guideMessages.length > 0 || liveText || liveThinking);
   const showDiscussThread = discuss && (transcript.length > 0 || liveText || liveThinking);
   const showThreadBody =
     showGuideThread || showDiscussThread || stubCapture || showHandbookCapture;
@@ -477,17 +458,6 @@ export function AgentDock({
             <span className={styles.handleBar} />
           </button>
         </div>
-
-        <p className={styles.dockLegend}>
-          {discuss && onExitDiscuss ? (
-            <button type="button" className={styles.replay} onClick={onExitDiscuss}>
-              ↑ back to the guided path
-            </button>
-          ) : null}
-          <button type="button" className={styles.replay} id="replay" onClick={handleReplay}>
-            ↻ replay
-          </button>
-        </p>
         </div>
       </div>
     </div>

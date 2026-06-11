@@ -42,7 +42,6 @@ function AgentRoomView({
   placeholder,
   phase = "guide",
   transcript = [],
-  onExitDiscuss,
   stubDiscussCapture = false,
   onCaptureSubmit,
   onCaptureSkip,
@@ -64,7 +63,6 @@ function AgentRoomView({
   placeholder?: string;
   phase?: RoomPhase;
   transcript?: TranscriptTurn[];
-  onExitDiscuss?: () => void;
   stubDiscussCapture?: boolean;
   onCaptureSubmit?: (kind: string, values: Record<string, string>) => void;
   onCaptureSkip?: () => void;
@@ -122,11 +120,9 @@ function AgentRoomView({
         suggestions={suggestions}
         disabled={isStreaming}
         onSay={onSay}
-        onReplay={onReplay}
         placeholder={placeholder}
         phase={phase}
         transcript={transcript}
-        onExitDiscuss={onExitDiscuss}
         stubCapture={stubCaptureNode}
         showHandbookCapture={showHandbookCapture}
         onHandbookCaptureSubmit={onCaptureSubmit}
@@ -134,6 +130,7 @@ function AgentRoomView({
         liveThinking={isStreaming && voice.thinking}
         liveThinkingNote={voice.note}
         onConversationActive={onConversationActive}
+        screenKey={screenKey}
       />
     </div>
   );
@@ -179,7 +176,6 @@ function HybridRoom() {
       placeholder={screen.id === "beat" ? BEAT_PLACEHOLDER : undefined}
       phase={room.phase}
       transcript={room.transcript}
-      onExitDiscuss={room.exitDiscuss}
       stubDiscussCapture={room.stubDiscussCapture}
       onCaptureSubmit={room.onCaptureSubmit}
       onCaptureSkip={room.onCaptureSkip}
@@ -223,7 +219,6 @@ function StubRoom() {
       placeholder={screen.id === "beat" ? BEAT_PLACEHOLDER : undefined}
       phase={room.phase}
       transcript={room.transcript}
-      onExitDiscuss={room.exitDiscuss}
       stubDiscussCapture={room.stubDiscussCapture}
       onCaptureSubmit={room.onCaptureSubmit}
       onCaptureSkip={room.onCaptureSkip}
@@ -272,7 +267,6 @@ function StreamRoom() {
       placeholder={inBeat ? BEAT_PLACEHOLDER : STREAM_PLACEHOLDER}
       phase={room.phase}
       transcript={room.transcript}
-      onExitDiscuss={room.exitDiscuss}
       stubDiscussCapture={room.stubDiscussCapture}
     />
   );

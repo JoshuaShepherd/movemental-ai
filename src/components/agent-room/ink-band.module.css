@@ -46,16 +46,6 @@
   align-items: center;
   gap: 0.65rem;
 }
-.mastConcierge {
-  font-family: var(--font-ink-hand);
-  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
-  font-weight: 400;
-  line-height: 1;
-  color: var(--color-ink-band-blue);
-  letter-spacing: 0.01em;
-  white-space: nowrap;
-  user-select: none;
-}
 .mastEnd {
   justify-self: end;
   display: flex;
@@ -290,10 +280,16 @@
 .sheet.home {
   max-width: 52rem;
   padding-left: 0;
+  padding-inline: clamp(0.5rem, 2vw, 1.25rem);
   text-align: center;
 }
 .sheet.home h1 {
   margin-top: 0;
+  max-width: 22em;
+  margin-inline: auto;
+}
+.sheet.home .body {
+  margin-inline: auto;
 }
 .sheet.home::before {
   display: none;
@@ -1703,7 +1699,7 @@ button.wayCtaPaid {
 .paColumnActive {
   flex-grow: 2.6;
   background: var(--color-ink-band-surface);
-  box-shadow: inset 2px 0 0 var(--color-ink-band-blue);
+  box-shadow: inset 3px 0 0 var(--color-ink-band-blue);
 }
 .paTrigger {
   display: flex;
@@ -1711,13 +1707,16 @@ button.wayCtaPaid {
   align-items: flex-start;
   gap: 0.2rem;
   width: 100%;
-  padding: 1.15rem 1.2rem 0.9rem;
+  padding: 1.25rem 1.35rem 1rem;
   background: none;
   border: 0;
   font: inherit;
   text-align: left;
   cursor: pointer;
   color: var(--color-ink-band-ink);
+}
+.paColumnActive .paTrigger {
+  padding-inline: 1.45rem 1.35rem;
 }
 .paNum {
   font-family: var(--font-ink-mono);
@@ -1756,10 +1755,10 @@ button.wayCtaPaid {
   min-height: 0;
 }
 .paPanelInner > * {
-  margin-inline: 1.2rem;
+  margin-inline: 1.35rem;
 }
 .paPanelInner > *:last-child {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.35rem;
 }
 .paSummary {
   font-size: 0.92rem;
@@ -3098,8 +3097,8 @@ button.wayCtaPaid {
    Ported from docs/html/home/styles.css — fixed bottom dock replaces inline
    .voice + .composer flex zones when `.roomDock` is on `.room`. */
 .roomDock .screen {
-  /* Clear the fixed dock: handwriting strip (up to 28vh) + chips + collapsed card. */
-  padding-bottom: clamp(14rem, calc(28vh + 11rem), 26rem);
+  /* Clear the fixed dock: handwriting strip + chips + collapsed card (no replay legend). */
+  padding-bottom: clamp(9.5rem, calc(14vh + 7.5rem), 13.5rem);
 }
 
 .agentDock {
@@ -3131,7 +3130,7 @@ button.wayCtaPaid {
   left: 0;
   right: 0;
   bottom: 100%;
-  height: 1.35rem;
+  height: 0.65rem;
   background: linear-gradient(
     to bottom,
     transparent,
@@ -3162,9 +3161,9 @@ button.wayCtaPaid {
   width: 100%;
   flex: 0 0 auto;
   background: transparent;
-  padding: 0.55rem clamp(1.25rem, 4vw, 2.5rem) 0.35rem;
-  min-height: 3.2rem;
-  max-height: min(28vh, 9rem);
+  padding: 0.35rem clamp(1.25rem, 4vw, 2.5rem) 0.2rem;
+  min-height: 2.4rem;
+  max-height: min(22vh, 7rem);
   overflow-x: hidden;
   overflow-y: auto;
   transition:
@@ -3200,7 +3199,7 @@ button.wayCtaPaid {
   width: 100%;
   max-width: 42rem;
   margin: 0 auto;
-  padding: 0 clamp(0.75rem, 3vw, 1.25rem) 0.85rem;
+  padding: 0 clamp(0.75rem, 3vw, 1.25rem) 0.3rem;
   transition:
     max-width 0.38s cubic-bezier(0.22, 1, 0.36, 1),
     padding 0.38s cubic-bezier(0.22, 1, 0.36, 1);
@@ -3213,11 +3212,11 @@ button.wayCtaPaid {
 
 .floatChips {
   display: flex;
-  gap: 0.45rem;
+  gap: 0.35rem;
   justify-content: center;
   flex-wrap: nowrap;
-  margin-bottom: 0.5rem;
-  padding: 0.35rem 0.65rem 0.25rem;
+  margin-bottom: 0.3rem;
+  padding: 0.15rem 0.65rem 0.1rem;
   overflow-x: auto;
   overflow-y: visible;
   scrollbar-width: none;
@@ -3234,9 +3233,9 @@ button.wayCtaPaid {
   align-items: center;
   gap: 0.35rem;
   font: inherit;
-  font-size: 0.78rem;
-  line-height: 1.2;
-  padding: 0.42rem 0.75rem;
+  font-size: 0.76rem;
+  line-height: 1.15;
+  padding: 0.32rem 0.65rem;
   border: 1px solid var(--color-ink-band-border);
   border-radius: 999px;
   background: var(--color-ink-band-paper);
@@ -3304,7 +3303,7 @@ button.wayCtaPaid {
     0 1px 2px rgba(26, 26, 26, 0.04),
     0 12px 40px -16px rgba(26, 26, 26, 0.22);
   overflow: hidden;
-  max-height: 9.5rem;
+  max-height: 6.75rem;
   transition:
     max-height 0.38s cubic-bezier(0.22, 1, 0.36, 1),
     height 0.38s cubic-bezier(0.22, 1, 0.36, 1),
@@ -3417,14 +3416,14 @@ button.wayCtaPaid {
 }
 .cardInput {
   display: block;
-  padding: 0.85rem 1rem 0.35rem;
+  padding: 0.5rem 0.85rem 0.15rem;
 }
 .cardInput input {
   width: 100%;
   border: 0;
   background: none;
   font: inherit;
-  font-size: 0.98rem;
+  font-size: 0.92rem;
   color: var(--color-ink-band-ink);
   padding: 0;
 }
@@ -3439,8 +3438,8 @@ button.wayCtaPaid {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
-  padding: 0.35rem 0.65rem 0.55rem;
+  gap: 0.35rem;
+  padding: 0.15rem 0.55rem 0.3rem;
 }
 .toolbarGroup {
   display: flex;
@@ -3451,8 +3450,8 @@ button.wayCtaPaid {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 1.75rem;
+  height: 1.75rem;
   border: 0;
   border-radius: 999px;
   background: transparent;
@@ -3479,8 +3478,8 @@ button.wayCtaPaid {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.15rem;
-  height: 2.15rem;
+  width: 1.9rem;
+  height: 1.9rem;
   border: 0;
   border-radius: 999px;
   background: var(--color-ink-band-ink);
@@ -3504,7 +3503,7 @@ button.wayCtaPaid {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 0.2rem 0 0.35rem;
+  padding: 0.1rem 0 0.2rem;
   border: 0;
   background: transparent;
   cursor: pointer;
@@ -3539,18 +3538,18 @@ button.wayCtaPaid {
 }
 
 .roomBeat.roomDock .handwritingStrip {
-  min-height: 2.4rem;
-  max-height: 3.75rem;
-  padding-block: 0.3rem 0.15rem;
+  min-height: 2rem;
+  max-height: 3.1rem;
+  padding-block: 0.2rem 0.1rem;
 }
 .roomBeat.roomDock .handwritingVline .vline.old {
   display: none;
 }
 .roomBeat.roomDock .floatChips {
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.2rem;
 }
 .roomBeat.roomDock .agentFloat {
-  padding-bottom: 0.65rem;
+  padding-bottom: 0.25rem;
 }
 
 @media (max-width: 640px) {
@@ -3578,7 +3577,7 @@ button.wayCtaPaid {
     min-height: 44px;
   }
   .agentCard {
-    max-height: 10.5rem;
+    max-height: 7.25rem;
   }
   .agentCardExpanded {
     height: 92dvh;
