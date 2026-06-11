@@ -452,7 +452,7 @@ This is your **awareness layer**, not a fourth knowledge store. It exists so tha
 
 **`safety`** — rendered by scene `toSafety` (with several spoken-only deep-dive scenes that pair with it: `whySafetyFirst`, `safetyWithoutIt`, `charter`, `involved`).
 
-- *Scripted line(s) — `toSafety`:* "AI is already inside your organization, and nobody has ratified the rules yet. That's what Safety fixes first." / "Safety is your step. Here's what it means." / "Walk it free with our help, or have us do it with you."
+- *Scripted line(s) — `toSafety`:* "AI is already inside your organization, and nobody has ratified the rules yet. That's what Safety fixes first." / "Safety is your step. Here's what it means." / "Complete it free with our help, or have us do it with you."
 - *Scripted line(s) — `whySafetyFirst`:* "For a church, nonprofit, or seminary, an AI mistake costs trust, not just efficiency. Credibility is your product." / "Safety gives you one shared frame, a defensible posture for donors and boards, and a clear answer when something goes wrong. That trust dividend arrives the day you ratify."
 - *Scripted line(s) — `safetyWithoutIt`:* "Without a ratified AI Charter, every staff member decides alone under time pressure. Donor data ends up in consumer tools. Pastoral notes get pasted into chatbots. A cloned voice can reach your people before you have a response plan." / "None of that is hypothetical. Safety closes the gap before credibility becomes the crisis."
 - *Scripted line(s) — `charter`/`involved`:* "A short, agreed document. What you will and won't do with AI." / "Five plain parts your board can ratify." (`involved` adds: "Two weeks. We start by reading your whole team." / "Then we draft it with you. You ratify.")

@@ -2568,8 +2568,8 @@ button.wayCtaPaid {
   font-size: 0.82rem;
   font-weight: 500;
   line-height: 1;
-  text-decoration: none;
   color: var(--color-ink-band-ink);
+  cursor: pointer;
   transition:
     border-color 0.15s ease,
     color 0.15s ease,
@@ -2584,38 +2584,6 @@ button.wayCtaPaid {
   width: 1.05rem;
   height: 1.05rem;
   flex-shrink: 0;
-}
-.askAiCopyRow {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.35rem;
-  margin: 0.85rem 0 0;
-  text-align: center;
-}
-.askAiCopyBtn {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  font-family: var(--font-ink-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-decoration: underline;
-  text-underline-offset: 0.15em;
-  color: var(--color-ink-band-ink-muted);
-  cursor: pointer;
-}
-.askAiCopyBtn:hover {
-  color: var(--color-ink-band-blue);
-}
-.askAiCopyHint {
-  max-width: 28rem;
-  font-family: var(--font-ink-body);
-  font-size: 0.72rem;
-  line-height: 1.45;
-  color: var(--color-ink-band-ink-muted);
 }
 
 .notableWorks {
@@ -3290,7 +3258,7 @@ button.wayCtaPaid {
 .dockBackdrop {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   border: 0;
   padding: 0;
   margin: 0;
@@ -3303,6 +3271,11 @@ button.wayCtaPaid {
 .agentDockExpanded .dockBackdrop {
   opacity: 1;
   pointer-events: auto;
+}
+.agentDockExpanded .agentDockPanel {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
 }
 
 .handwritingStrip {

@@ -49,7 +49,7 @@ describe("ask-ai providers", () => {
     const urls = buildAskAiProviderUrls("hello world");
     expect(urls.chatgpt).toBe("https://chatgpt.com/?q=hello%20world");
     expect(urls.claude).toBe("https://claude.ai/new?q=hello%20world");
-    expect(urls.gemini).toBe("https://gemini.google.com/app?q=hello%20world");
+    expect(urls.gemini).toBe("https://gemini.google.com/app?prompt=hello%20world");
   });
 
   it("exports chatgpt, claude, gemini in order", () => {
@@ -58,18 +58,28 @@ describe("ask-ai providers", () => {
 });
 
 describe("buildAskAiMarkdown", () => {
-  it("renders heading, links, and prompt block", () => {
+  it("renders heading and three provider links by default", () => {
     const md = buildAskAiMarkdown({ promptKey: "aboutStub", heading: "Ask your AI about this" });
     expect(md).toContain("## Ask your AI about this");
     expect(md).toContain("[ChatGPT](");
     expect(md).toContain("[Claude](");
     expect(md).toContain("[Gemini](");
+    expect(md).not.toContain("<details>");
+    expect(md).toContain(encodeURIComponent(ASK_AI_PROMPTS.aboutStub.slice(0, 40)));
+  });
+
+  it("can include an optional collapsible prompt block", () => {
+    const md = buildAskAiMarkdown({
+      promptKey: "aboutStub",
+      includePromptBlock: true,
+    });
     expect(md).toContain("<details>");
+    expect(md).toContain("<summary>Full prompt</summary>");
     expect(md).toContain(ASK_AI_PROMPTS.aboutStub.slice(0, 40));
   });
 
-  it("can omit the prompt block", () => {
-    const md = buildAskAiMarkdown({ prompt: "short", includePromptBlock: false });
+  it("embeds custom prompt text in provider URLs", () => {
+    const md = buildAskAiMarkdown({ prompt: "short" });
     expect(md).not.toContain("<details>");
     expect(md).toContain("short");
   });

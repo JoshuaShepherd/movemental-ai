@@ -6,18 +6,18 @@ export type BuildAskAiMarkdownOptions = {
   promptKey?: AskAiPromptKey;
   /** Heading above the provider row. Default: "Ask your AI about this" */
   heading?: string;
-  /** Include a collapsible full-prompt block (HTML details). Default: true */
+  /** Include a collapsible full-prompt block (HTML details). Default: false — links embed the prompt. */
   includePromptBlock?: boolean;
 };
 
 /**
- * Markdown block for docs/articles — three provider links + optional full prompt.
+ * Markdown block for docs/articles — three provider links with the prompt in each URL.
  * Use in movement leader research, board letters, or any exported markdown.
  */
 export function buildAskAiMarkdown(options: BuildAskAiMarkdownOptions = {}): string {
   const {
     heading = "Ask your AI about this",
-    includePromptBlock = true,
+    includePromptBlock = false,
     prompt,
     promptKey,
   } = options;
@@ -30,7 +30,7 @@ export function buildAskAiMarkdown(options: BuildAskAiMarkdownOptions = {}): str
   const lines = [`## ${heading}`, "", links, ""];
 
   if (includePromptBlock) {
-    lines.push("<details>", "<summary>Full prompt (copy if a link does not pre-fill)</summary>", "", "```", resolved, "```", "", "</details>", "");
+    lines.push("<details>", "<summary>Full prompt</summary>", "", "```", resolved, "```", "", "</details>", "");
   }
 
   return lines.join("\n");

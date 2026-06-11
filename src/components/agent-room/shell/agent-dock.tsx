@@ -3,6 +3,7 @@
 import {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
   type FormEvent,
@@ -132,6 +133,7 @@ function ComposerForm({
             value={value}
             onChange={(e) => onChange(e.target.value)}
             autoComplete="off"
+            autoFocus={expanded}
             aria-label="Talk to Movemental"
             placeholder={placeholder ?? "Type here, or tap a suggestion…"}
             disabled={disabled}
@@ -260,18 +262,8 @@ export function AgentDock({
       if (next) onConversationActive?.();
       setExpanded(next);
       onExpandedChange?.(next);
-      if (next) {
-        requestAnimationFrame(() => {
-          if (captureMode) {
-            const el = document.getElementById(HANDBOOK_EMAIL_INPUT_ID);
-            if (el instanceof HTMLInputElement) el.focus();
-          } else {
-            inputRef.current?.focus();
-          }
-        });
-      }
     },
-    [captureMode, onConversationActive, onExpandedChange],
+    [onConversationActive, onExpandedChange],
   );
 
   useEffect(() => {
@@ -341,6 +333,16 @@ export function AgentDock({
     return () => document.removeEventListener(FOCUS_HANDBOOK_EMAIL_EVENT, onFocusHandbook);
   }, [setExpandedState]);
 
+  useLayoutEffect(() => {
+    if (!expanded) return;
+    if (captureMode) {
+      const el = document.getElementById(HANDBOOK_EMAIL_INPUT_ID);
+      if (el instanceof HTMLInputElement) el.focus();
+      return;
+    }
+    inputRef.current?.focus();
+  }, [captureMode, expanded]);
+
   const submit = (e: FormEvent) => {
     e.preventDefault();
     const v = value.trim();
@@ -385,12 +387,10 @@ export function AgentDock({
         className={`${styles.agentDock} ${styles.agentDockExpanded}`}
         id="agent-dock"
       >
-        <button
-          type="button"
+        <div
           className={styles.dockBackdrop}
           id="dock-backdrop"
-          aria-hidden={false}
-          tabIndex={0}
+          aria-hidden="true"
           onClick={() => setExpandedState(false)}
         />
 

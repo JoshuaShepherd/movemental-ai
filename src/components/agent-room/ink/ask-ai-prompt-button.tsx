@@ -1,9 +1,10 @@
 "use client";
 
-import { useCallback, useId, useState } from "react";
+import { useCallback, useId, type MouseEvent } from "react";
 
 import {
   ASK_AI_PROVIDERS,
+  launchAskAiProvider,
   resolveAskAiPrompt,
   type AskAiPromptKey,
 } from "@/lib/agent-room/ask-ai";
@@ -21,8 +22,9 @@ type AskAiPromptButtonProps = {
 };
 
 /**
- * Secondary end-of-content control — three provider links with a robust
- * pre-filled prompt. Never a primary CTA; never competes with the agent dock.
+ * Secondary end-of-content control — three provider buttons that copy the
+ * prompt and open the chosen AI chat. Never a primary CTA; never competes
+ * with the agent dock.
  */
 export function AskAiPromptButton({
   prompt,
@@ -31,58 +33,39 @@ export function AskAiPromptButton({
   className,
 }: AskAiPromptButtonProps) {
   const resolvedPrompt = resolveAskAiPrompt(prompt, promptKey);
-  const copyHintId = useId();
-  const [copyState, setCopyState] = useState<"idle" | "copied" | "failed">("idle");
+  const headingId = useId();
 
-  const onCopy = useCallback(async () => {
-    try {
-      await navigator.clipboard.writeText(resolvedPrompt);
-      setCopyState("copied");
-      window.setTimeout(() => setCopyState("idle"), 2000);
-    } catch {
-      setCopyState("failed");
-      window.setTimeout(() => setCopyState("idle"), 2500);
-    }
-  }, [resolvedPrompt]);
-
-  const copyLabel =
-    copyState === "copied"
-      ? "Prompt copied"
-      : copyState === "failed"
-        ? "Copy failed — select manually"
-        : "Copy full prompt";
+  const onProviderClick = useCallback(
+    (provider: (typeof ASK_AI_PROVIDERS)[number]) =>
+      (event: MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+        launchAskAiProvider(provider, resolvedPrompt);
+      },
+    [resolvedPrompt],
+  );
 
   return (
     <section
       className={className ? `${styles.askAiWrap} ${className}` : styles.askAiWrap}
-      aria-labelledby={copyHintId}
+      aria-labelledby={headingId}
     >
-      <h2 className={styles.askAiHeading} id={copyHintId}>
+      <h2 className={styles.askAiHeading} id={headingId}>
         {heading}
       </h2>
       <ul className={styles.askAiProviders} role="list">
         {ASK_AI_PROVIDERS.map((provider) => (
           <li key={provider.id}>
-            <a
-              href={provider.buildUrl(resolvedPrompt)}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
               className={styles.askAiProviderBtn}
+              onClick={onProviderClick(provider)}
             >
               <AskAiProviderIcon provider={provider.id} className={styles.askAiProviderIcon} />
               <span>{provider.label}</span>
-            </a>
+            </button>
           </li>
         ))}
       </ul>
-      <p className={styles.askAiCopyRow}>
-        <button type="button" className={styles.askAiCopyBtn} onClick={onCopy}>
-          {copyLabel}
-        </button>
-        <span className={styles.askAiCopyHint}>
-          Gemini may need paste — use copy if the link does not pre-fill.
-        </span>
-      </p>
     </section>
   );
 }

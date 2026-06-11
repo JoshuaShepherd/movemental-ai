@@ -10,3 +10,4 @@ export {
   type AskAiProviderId,
 } from "./providers";
 export { buildAskAiMarkdown, type BuildAskAiMarkdownOptions } from "./markdown";
+export { launchAskAiProvider } from "./launch";

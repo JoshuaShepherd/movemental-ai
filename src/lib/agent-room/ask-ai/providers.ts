@@ -23,8 +23,7 @@ export const ASK_AI_PROVIDERS: readonly AskAiProvider[] = [
   {
     id: "gemini",
     label: "Gemini",
-    // Native prefill requires a browser extension; ?q= is the de-facto convention.
-    buildUrl: (prompt) => `https://gemini.google.com/app?q=${encode(prompt)}`,
+    buildUrl: (prompt) => `https://gemini.google.com/app?prompt=${encode(prompt)}`,
   },
 ] as const;
 
