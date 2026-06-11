@@ -12,23 +12,65 @@
       Design mock-up: Agent Room home screen (Ink Band).
       Source: src/components/agent-room/* + ink-band.module.css
       Open: file:// or serve from repo root — assets use ../../../public/
+      Demo auth: ?auth=signed-out | ?auth=org | ?auth=leader | ?auth=assess
     -->
     <div class="room" id="room">
       <header class="mast">
-        <button type="button" class="logo" aria-label="Movemental — back to the start">
-          <img
-            class="logoMark"
-            src="../../../public/images/brand/movemental-logo-transparent.h224.webp"
-            alt="Movemental"
-            width="411"
-            height="224"
-          />
-        </button>
+        <div class="mastStart">
+          <button type="button" class="logo" aria-label="Movemental — back to the start">
+            <img
+              class="logoMark"
+              src="../../../public/images/brand/movemental-logo-transparent.h224.webp"
+              alt="Movemental"
+              width="411"
+              height="224"
+            />
+          </button>
+        </div>
+
+        <p class="mastAudience" aria-label="Who we serve">
+          Non-profits · Churches · Institutions
+        </p>
+
+        <div class="mastEnd" id="mast-auth">
+          <div class="authCluster authCluster--out" id="auth-out">
+            <a class="authIconBtn" href="/login" aria-label="Sign in" title="Sign in">
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                <polyline points="10 17 15 12 10 7"/>
+                <line x1="15" y1="12" x2="3" y2="12"/>
+              </svg>
+            </a>
+          </div>
+
+          <div class="authCluster authCluster--in" id="auth-in" hidden>
+            <button
+              type="button"
+              class="authIconBtn authMenuTrigger"
+              id="auth-menu-trigger"
+              aria-label="Account menu"
+              aria-haspopup="true"
+              aria-expanded="false"
+              title="Account"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21a8 8 0 0 0-16 0"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </button>
+            <div class="authMenu" id="auth-menu" role="menu" hidden>
+              <p class="authMenuLabel" id="auth-menu-label">Workspace</p>
+              <ul class="authMenuList" id="auth-menu-list"></ul>
+              <button type="button" class="authMenuSignOut" id="auth-sign-out" role="menuitem">
+                Sign out
+              </button>
+            </div>
+          </div>
+        </div>
       </header>
 
       <section class="screen" id="screen" aria-label="Agent stage">
         <div class="sheet home settle">
-          <p class="eyebrow">Non-profit · Church · Institution · Leader</p>
           <h1 id="hero-h1">Navigate AI without eroding the trust you spent decades earning.</h1>
           <p class="body">
             We help mission-driven organizations respond to AI without losing

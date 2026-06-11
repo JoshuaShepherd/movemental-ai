@@ -176,4 +176,109 @@
       composerInput.focus();
     });
   }
+  /* ===== mast auth (design mock — ?auth=org|leader|assess|signed-out) ===== */
+  const AUTH_MENUS = {
+    org: {
+      label: "Organization workspace",
+      links: [
+        { href: "/dashboard/onboarding", text: "Onboarding" },
+        { href: "/dashboard/ai-reality", text: "AI Reality dashboard" },
+        { href: "/assess", text: "Integrity diagnostic" },
+      ],
+    },
+    leader: {
+      label: "Leader workspace",
+      links: [
+        { href: "/dashboard/onboarding/leader", text: "Leader onboarding" },
+        { href: "/dashboard/ai-reality", text: "AI Reality dashboard" },
+        { href: "/welcome", text: "Welcome letter" },
+      ],
+    },
+    assess: {
+      label: "Assessment workspace",
+      links: [
+        { href: "/dashboard/ai-reality", text: "Your AI Reality map" },
+        { href: "/share/ai-reality", text: "Shared results" },
+      ],
+    },
+  };
+
+  const authOut = document.getElementById("auth-out");
+  const authIn = document.getElementById("auth-in");
+  const authMenuTrigger = document.getElementById("auth-menu-trigger");
+  const authMenu = document.getElementById("auth-menu");
+  const authMenuLabel = document.getElementById("auth-menu-label");
+  const authMenuList = document.getElementById("auth-menu-list");
+  const authSignOut = document.getElementById("auth-sign-out");
+
+  function readAuthRole() {
+    const p = new URLSearchParams(window.location.search).get("auth");
+    if (p === "org" || p === "leader" || p === "assess") return p;
+    return "signed-out";
+  }
+
+  function renderAuthMenu(role) {
+    if (!authMenuList || !authMenuLabel) return;
+    const cfg = AUTH_MENUS[role];
+    authMenuLabel.textContent = cfg ? cfg.label : "Workspace";
+    authMenuList.innerHTML = "";
+    (cfg?.links || []).forEach((item) => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = item.href;
+      a.textContent = item.text;
+      a.setAttribute("role", "menuitem");
+      li.appendChild(a);
+      authMenuList.appendChild(li);
+    });
+  }
+
+  function setAuthMenuOpen(open) {
+    if (!authMenu || !authMenuTrigger) return;
+    authMenu.hidden = !open;
+    authMenuTrigger.setAttribute("aria-expanded", String(open));
+  }
+
+  function applyAuthState() {
+    const role = readAuthRole();
+    const signedIn = role !== "signed-out";
+    if (authOut) authOut.hidden = signedIn;
+    if (authIn) authIn.hidden = !signedIn;
+    if (signedIn) {
+      renderAuthMenu(role);
+      setAuthMenuOpen(false);
+    }
+  }
+
+  applyAuthState();
+
+  if (authMenuTrigger && authMenu) {
+    authMenuTrigger.addEventListener("click", () => {
+      setAuthMenuOpen(authMenu.hidden);
+    });
+  }
+
+  if (authSignOut) {
+    authSignOut.addEventListener("click", () => {
+      const url = new URL(window.location.href);
+      url.searchParams.delete("auth");
+      window.location.href = url.toString();
+    });
+  }
+
+  document.addEventListener("click", (e) => {
+    if (!authMenu || authMenu.hidden) return;
+    const t = e.target;
+    if (authMenu.contains(t) || authMenuTrigger?.contains(t)) return;
+    setAuthMenuOpen(false);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && authMenu && !authMenu.hidden) {
+      setAuthMenuOpen(false);
+      authMenuTrigger?.focus();
+    }
+  });
+
+
 })();

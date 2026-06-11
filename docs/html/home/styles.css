@@ -43,14 +43,134 @@ body { margin: 0; min-height: 100%; height: 100dvh; }
 .room { display: flex; flex-direction: column; height: 100dvh; overflow: hidden; }
 .mast {
   flex: 0 0 auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  justify-content: space-between;
+  column-gap: 0.75rem;
   padding: 0.15rem clamp(1rem, 4vw, 2.5rem) 0.25rem;
   border-bottom: 1px solid var(--color-ink-band-border);
   overflow: visible;
   position: relative;
-  z-index: 2;
+  z-index: 30;
+  min-height: 3.25rem;
+}
+.mastStart {
+  justify-self: start;
+  min-width: max-content;
+}
+.mastEnd {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: max-content;
+}
+.mastAudience {
+  justify-self: center;
+  margin: 0;
+  font-family: var(--font-ink-mono);
+  font-size: clamp(0.58rem, 1.8vw, 0.68rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ===== mast auth (sign in / account menu) ===== */
+.authCluster {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.authIconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-ink-band-ink-muted);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.authIconBtn:hover,
+.authIconBtn:focus-visible {
+  color: var(--color-ink-band-ink);
+  border-color: var(--color-ink-band-border);
+  background: var(--color-ink-band-paper);
+  outline: none;
+}
+.authMenuTrigger[aria-expanded="true"] {
+  color: var(--color-ink-band-blue);
+  border-color: color-mix(in srgb, var(--color-ink-band-blue) 35%, var(--color-ink-band-border));
+  background: color-mix(in srgb, var(--color-ink-band-blue) 6%, var(--color-ink-band-paper));
+}
+.authMenu {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  min-width: 11.5rem;
+  padding: 0.45rem 0;
+  border: 1px solid var(--color-ink-band-border);
+  border-radius: 0.65rem;
+  background: var(--color-ink-band-paper);
+  box-shadow: 0 10px 32px -14px rgba(26, 26, 26, 0.28);
+}
+.authMenuLabel {
+  margin: 0;
+  padding: 0.35rem 0.85rem 0.5rem;
+  font-family: var(--font-ink-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+}
+.authMenuList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.authMenuList a {
+  display: block;
+  padding: 0.48rem 0.85rem;
+  font-size: 0.84rem;
+  line-height: 1.35;
+  color: var(--color-ink-band-ink);
+  text-decoration: none;
+  transition: background 0.12s, color 0.12s;
+}
+.authMenuList a:hover,
+.authMenuList a:focus-visible {
+  background: var(--color-ink-band-surface);
+  color: var(--color-ink-band-blue);
+  outline: none;
+}
+.authMenuSignOut {
+  display: block;
+  width: calc(100% - 1rem);
+  margin: 0.35rem 0.5rem 0.15rem;
+  padding: 0.42rem 0.55rem;
+  border: 0;
+  border-top: 1px solid var(--color-ink-band-border);
+  border-radius: 0;
+  background: none;
+  font: inherit;
+  font-family: var(--font-ink-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--color-ink-band-ink-muted);
+  cursor: pointer;
+}
+.authMenuSignOut:hover {
+  color: var(--color-ink-band-blue);
 }
 .logo {
   display: flex;
@@ -81,7 +201,7 @@ body { margin: 0; min-height: 100%; height: 100dvh; }
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: clamp(1.1rem, 3vh, 2.25rem) clamp(1.5rem, 6vw, 5rem);
+  padding: clamp(0.55rem, 1.6vh, 1.35rem) clamp(1.5rem, 6vw, 5rem);
   background: radial-gradient(120% 80% at 50% 0%, #fffefa 0%, var(--color-ink-band-bg) 70%);
 }
 .sheet {
@@ -96,6 +216,9 @@ body { margin: 0; min-height: 100%; height: 100dvh; }
   padding-left: 0;
   text-align: center;
   align-self: center;
+}
+.sheet.home h1 {
+  margin-top: 0;
 }
 @media (min-width: 62rem) {
   .sheet { max-width: 68rem; }
@@ -650,6 +773,23 @@ body { margin: 0; min-height: 100%; height: 100dvh; }
 /* Reserve space so stage content isn't hidden under the dock */
 .screen {
   padding-bottom: clamp(10rem, 22vh, 13rem);
+}
+
+
+@media (max-width: 640px) {
+  .mast {
+    column-gap: 0.35rem;
+    padding-inline: 0.65rem;
+  }
+  .mastAudience {
+    font-size: clamp(0.48rem, 2.6vw, 0.58rem);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+  .authIconBtn {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
 }
 
 @media (max-width: 640px) {
