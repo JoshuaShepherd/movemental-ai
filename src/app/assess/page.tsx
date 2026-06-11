@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
+import { StepSpine } from "@/components/ink-band/step-spine";
 import { createClient } from "@/lib/supabase/client";
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
@@ -50,12 +51,10 @@ export default function AssessPage() {
 
   return (
     <div className="mx-auto w-full max-w-xl px-4 py-20 md:py-28">
-      <p className="mb-6 font-mono text-[0.75rem] uppercase tracking-[0.14em] text-muted-foreground">
-        Free · Map your AI reality
-      </p>
-      <h1 className="text-4xl leading-tight md:text-5xl">
-        Find out the truth about AI in your organization.
-      </h1>
+      <StepSpine
+        label="Free · Map your AI reality"
+        title="Find out the truth about AI in your organization."
+      />
       <p className="mt-8 text-lg leading-relaxed text-foreground">
         A short, honest reality check — no sales pitch. Enter your email and we’ll send a one-tap link
         into the room where you’ll map where your organization actually stands.

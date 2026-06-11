@@ -3,6 +3,7 @@ import "server-only";
 import { resendFromHeader } from "@/lib/email/from";
 import { getResend } from "@/lib/email/resend";
 import { env } from "@/lib/env";
+import { SSSS_FIELD_GUIDE_PATH } from "@/lib/canon-routes";
 import { SAFETY_FIELD_GUIDE_PDF_PATH } from "@/lib/safety-field-guide";
 import { SANDBOX_FIELD_GUIDE_PDF_PATH } from "@/lib/sandbox-field-guide";
 
@@ -57,7 +58,7 @@ export async function sendToolkitLeadEmail(
 
   if (kind === "sandbox") {
     const downloadUrl = `${siteUrl()}${SANDBOX_FIELD_GUIDE_PDF_PATH}`;
-    const sandboxPageUrl = `${siteUrl()}/pathway/sandbox`;
+    const sandboxPageUrl = `${siteUrl()}/field-guide?guide=sandbox`;
     const { error } = await resend.emails.send({
       from: resendFromHeader(),
       to: [email],
@@ -97,7 +98,7 @@ export async function sendToolkitLeadEmail(
   }
 
   const downloadUrl = `${siteUrl()}${SAFETY_FIELD_GUIDE_PDF_PATH}`;
-  const safetyPageUrl = `${siteUrl()}/pathway/safety`;
+  const safetyPageUrl = `${siteUrl()}${SSSS_FIELD_GUIDE_PATH}`;
 
   const { error } = await resend.emails.send({
     from: resendFromHeader(),

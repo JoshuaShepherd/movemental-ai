@@ -242,6 +242,13 @@ class PreBuildValidator {
     });
 
     validationSteps.push({
+      name: "redirects-check",
+      command: "pnpm redirects:check",
+      critical: true,
+      description: "Next.js redirect destinations resolve to live routes",
+    });
+
+    validationSteps.push({
       name: "program-stitch-fixtures",
       command: "pnpm program:fixtures:check",
       critical: true,

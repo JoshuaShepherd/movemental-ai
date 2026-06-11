@@ -1,11 +1,11 @@
 /**
  * Agent Room — the Organizational Reality Map (ported from `js/data/map-q.js`).
  *
- * The six reality-check questions. Each answer carries an optional gap signal
- * toward a stage; the readback mirrors the org back to itself across the ordered
- * path, sharpest gaps first. Data + the pure `computeMapRead` derivation only —
- * the beat/readback *markup* (`beatDots`, `mapStageRow`) and the answer
- * choreography (`beatStep`) become React in AF-08.
+ * Four reality-check questions with a Safety gate on Q1. Orgs that fail the gate
+ * hear the threat and stop; orgs that pass answer Q2–Q4 and get a readback that
+ * mirrors Sandbox/Training/Tech gaps, sharpest first. Data + pure
+ * `computeMapRead` only — beat/readback markup and answer choreography live in
+ * `beat-scenes.ts` and the beat screen.
  */
 export type Stage = "safety" | "sandbox" | "training" | "tech";
 
@@ -24,71 +24,103 @@ export interface MapOption {
   say: string;
   /** Optional gap this answer surfaces (absent = a "clear" answer). */
   read?: ReadSignal;
+  /** Q1 only — all four Safety artifacts exist in writing; proceed to Q2. */
+  gatePass?: true;
+  /** Q1 only — stop the assessment and fire the threat. */
+  gateFail?: true;
 }
 
 export interface MapQuestion {
+  /** Stage label shown above the question (e.g. "Safety"). */
+  tag?: string;
   q: string;
+  /** Optional lead-in before criteria bullets (Q1 gate). */
+  criteriaLead?: string;
+  /** Optional checklist bullets (Q1 gate). */
+  criteria?: readonly string[];
   opts: MapOption[];
 }
 
+/** Spoken when Q1 is anything but a full yes — assessment stops here. */
+export const SAFETY_GATE_THREAT: readonly string[] = [
+  "Then here's what's true right now, whether or not anyone's named it:",
+  "AI is already in use across your staff — on donor records, member information, the pastoral and personal things people trusted you with — and no one has decided, on paper, what's allowed. The day that surfaces — in a board meeting, a news story, or a quiet complaint — the trust you spent decades earning is what pays for it.",
+  "That's not a tooling problem, and it's not solved by being careful. It's one decision your leadership hasn't made yet. It's the first move, and everything else — experimenting, training your people, building anything — waits on it.",
+  "You can do this yourself — the free Field Guide walks your leadership through all of it — or we can draft it with you in two weeks. Either way, this is where you start.",
+];
+
 export const MAP_Q: readonly MapQuestion[] = [
-  // Ordered gentlest-first: the invitational "tried real work" question leads so a
-  // first-time visitor isn't audited at question one; the sharpest inventory
-  // question ("name every AI tool") now sits at index 2. Order is safe to change —
-  // `computeMapRead` aggregates by `read.stage`, NOT by question index, and the
-  // beat progression reads `MAP_Q[qi]`, so the dots and advance track this order.
   {
-    q: "Has your team tried AI against real work, in a way you could point to?",
+    tag: "Safety",
+    q: "Has your leadership actually decided — in writing, and signed off — what your organization will and won't do with AI?",
+    criteriaLead: "A real yes means all four of these exist on paper:",
+    criteria: [
+      "a position your board has put its name to",
+      "the AI uses you refuse on principle, named",
+      "a list of every AI tool your staff already use, and the data each one touches",
+      "rules that tell a staff member what's allowed before they have to guess",
+    ],
     opts: [
-      { t: "Yes — with results we recorded", say: "Then there’s something to build on." },
-      { t: "A little, here and there", say: "Ad hoc rarely tells you what’s worth keeping.", read: { stage: "sandbox", line: "experiments are ad hoc, with nothing recorded", sev: 2 } },
-      { t: "Not really", say: "So you can’t yet sort what helps from what doesn’t.", read: { stage: "sandbox", line: "no bounded place to try AI against real work", sev: 2 } },
+      { t: "Yes — all four, in writing", say: "That's rare. Most organizations can't say that.", gatePass: true },
+      { t: "Some, but not all four", say: "", gateFail: true },
+      { t: "No — none of this yet", say: "", gateFail: true },
     ],
   },
   {
-    q: "Has your board or leadership put anything in writing — what you will, and won’t, do with AI?",
+    tag: "Sandbox",
+    q: "Has your team actually tried AI against real work — in a way you could point to, with results you kept?",
     opts: [
-      { t: "Yes, ratified", say: "Then you’re ahead of almost everyone." },
-      { t: "We’ve talked about it", say: "Talk isn’t a document you can stand on.", read: { stage: "safety", line: "no ratified position — convictions aren’t on paper", sev: 2 } },
-      { t: "Nothing yet", say: "That’s the gap Safety closes first.", read: { stage: "safety", line: "no written position to defend under pressure", sev: 3 } },
+      { t: "Yes — we tested it and recorded what worked", say: "Then there's something real to build on." },
+      {
+        t: "A little, here and there",
+        say: "Ad hoc rarely tells you what's worth keeping.",
+        read: { stage: "sandbox", line: "experiments are ad hoc, nothing recorded", sev: 2 },
+      },
+      {
+        t: "Not really",
+        say: "Then you can't yet sort what helps from what doesn't — which is the whole point of a Sandbox.",
+        read: { stage: "sandbox", line: "no bounded place to try AI against real work", sev: 2 },
+      },
     ],
   },
   {
-    q: "Could your leadership name every AI tool your staff already use — and what data each touches?",
+    tag: "Training",
+    q: "Picture your staff. Are they formed to use AI with judgment — not just given access to it?",
     opts: [
-      { t: "Yes — we keep an inventory", say: "Rare. That’s a real head start." },
-      { t: "Some of it", say: "So the picture is partial.", read: { stage: "safety", line: "some AI use is unnamed and ungoverned", sev: 1 } },
-      { t: "Honestly, no", say: "That’s the honest answer most give.", read: { stage: "safety", line: "AI is already in use, unnamed and ungoverned", sev: 3 } },
+      { t: "Yes — they exercise real judgment", say: "That's the hard part, and you've done it." },
+      {
+        t: "A real mix",
+        say: "A mix usually means the quiet ones are quietly stuck.",
+        read: { stage: "training", line: "readiness is uneven across the team", sev: 1 },
+      },
+      {
+        t: "Anxious or untrained",
+        say: "Then forming your people matters more than any tool you could buy.",
+        read: { stage: "training", line: "the team is unformed for AI", sev: 2 },
+      },
     ],
   },
   {
-    q: "Picture your staff. How ready do they feel to use AI well?",
+    tag: "Tech",
+    q: "Where does your work actually live — could AI plug into it, or is it scattered?",
     opts: [
-      { t: "Mostly confident", say: "Good — that’s hard to build." },
-      { t: "A real mix", say: "A mix usually means the quiet ones are stuck.", read: { stage: "training", line: "readiness is uneven across the team", sev: 1 } },
-      { t: "Anxious or untrained", say: "Then formation matters more than tools.", read: { stage: "training", line: "the team is anxious and unformed for AI", sev: 2 } },
-    ],
-  },
-  {
-    q: "Would it bother your team if a colleague used AI on shared work and didn’t say so?",
-    opts: [
-      { t: "We have norms for that", say: "That means trust is already named." },
-      { t: "It’s unspoken", say: "Unspoken norms break under pressure.", read: { stage: "safety", line: "no shared rules for disclosure and attribution", sev: 1 } },
-      { t: "We’ve never discussed it", say: "That’s where trust quietly erodes.", read: { stage: "safety", line: "disclosure is undiscussed — a trust risk", sev: 2 } },
-    ],
-  },
-  {
-    q: "Where does your team’s work live — could AI actually plug into it?",
-    opts: [
-      { t: "Unified systems, ready", say: "Then the foundation for building is there." },
-      { t: "Scattered but workable", say: "Scattered work makes good tools hard to build.", read: { stage: "tech", line: "work is scattered across disconnected tools", sev: 1 } },
-      { t: "Fragmented — nothing connects", say: "Fragmentation is the thing that produces slop.", read: { stage: "tech", line: "fragmented systems — no foundation to build on yet", sev: 2 } },
+      { t: "Unified — ready to build on", say: "Then the foundation for building is there." },
+      {
+        t: "Scattered but workable",
+        say: "Scattered work makes good tools hard to build.",
+        read: { stage: "tech", line: "work is spread across disconnected tools", sev: 1 },
+      },
+      {
+        t: "Fragmented — nothing connects",
+        say: "Fragmentation is the thing that produces slop — which is why it's the last thing you fix, not the first.",
+        read: { stage: "tech", line: "no foundation to build on yet", sev: 2 },
+      },
     ],
   },
 ];
 
 export const STAGE_CLEAR: Record<Stage, string> = {
-  safety: "governance footing looks solid",
+  safety: "your Safety footing is real",
   sandbox: "you have room to experiment",
   training: "your people are ready",
   tech: "your systems can carry tools",
@@ -115,12 +147,15 @@ export interface MapRead {
   stages: Record<Stage, StageRead>;
   /** Gaps that surfaced, sharpest (highest severity) first. */
   gaps: { stage: Stage; line: string; sev: number }[];
+  /** True when Q1 was a full yes — org cleared the Safety gate. */
+  clearedSafety: boolean;
 }
 
 /**
  * Mirror the org back across the ordered path from its chosen answers (pure
  * version of the prototype `computeMapRead`, which read a `mapAnswers` global).
- * Keeps each stage's *worst* gap; lists gaps sharpest-first.
+ * Keeps each stage's *worst* gap; lists gaps sharpest-first. Q1 gate answers
+ * do not carry gap signals — only `gatePass` / `gateFail`.
  */
 export function computeMapRead(answers: (MapOption | null | undefined)[]): MapRead {
   const stages: Record<Stage, StageRead> = {
@@ -129,6 +164,10 @@ export function computeMapRead(answers: (MapOption | null | undefined)[]): MapRe
     training: null,
     tech: null,
   };
+  const clearedSafety = answers[0]?.gatePass === true;
+  if (clearedSafety) {
+    stages.safety = null;
+  }
   answers.forEach((opt) => {
     const r = opt?.read;
     if (r) {
@@ -141,5 +180,5 @@ export function computeMapRead(answers: (MapOption | null | undefined)[]): MapRe
     return { stage: k, line: s.line, sev: s.sev };
   });
   gaps.sort((a, b) => b.sev - a.sev);
-  return { stages, gaps };
+  return { stages, gaps, clearedSafety };
 }

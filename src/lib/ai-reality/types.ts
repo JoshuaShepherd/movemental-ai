@@ -1,7 +1,7 @@
 import type { SsssIllusionId } from "@/lib/ssss-integrity-assessment";
 
 /** The four stages of the AI Reality path, in their fixed public order. */
-export const AI_REALITY_STAGES = ["Safety", "Sandbox", "Skills", "Solutions"] as const;
+export const AI_REALITY_STAGES = ["Safety", "Sandbox", "Training", "Tech"] as const;
 export type AiRealityStage = (typeof AI_REALITY_STAGES)[number];
 
 export const AI_REALITY_ORG_VERSION = "ai-reality-org-v1" as const;
@@ -51,7 +51,7 @@ export interface AiRealityOrgPayload {
   invitedCount: number;
   /** Normalized mean of participant overall percents. */
   overallPercent: number;
-  /** Ordered path — ALWAYS Safety → Sandbox → Skills → Solutions. */
+  /** Ordered path — ALWAYS Safety → Sandbox → Training → Tech. */
   orderedPath: AiRealityStage[];
   stages: Record<AiRealityStage, StageAggregate>;
   /** Lowest mean stage (illusion-flag weighted tie-break). */

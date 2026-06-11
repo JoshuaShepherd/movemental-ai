@@ -28,14 +28,17 @@ describe("agent-room data layer (AF-06)", () => {
     expect(getProfile(999)).toBeNull();
   });
 
-  it("MAP_Q has six questions; computeMapRead orders gaps sharpest-first", () => {
-    expect(MAP_Q).toHaveLength(6);
-    // Pick the sharpest safety gap (sev 3) + a tech gap (sev 2). After the
-    // gentlest-first reorder the inventory question (safety sev 3) is at index 2;
-    // the tech question stays last. computeMapRead aggregates by stage, so the
-    // sev-3 safety gap must still sort ahead of the sev-2 tech gap.
-    const read = computeMapRead([MAP_Q[2].opts[2], MAP_Q[5].opts[2]]);
-    expect(read.gaps[0]).toMatchObject({ stage: "safety", sev: 3 });
+  it("MAP_Q has four questions with a Safety gate; computeMapRead orders gaps sharpest-first", () => {
+    expect(MAP_Q).toHaveLength(4);
+    expect(MAP_Q[0].opts[0]).toMatchObject({ gatePass: true });
+    expect(MAP_Q[0].opts[1]).toMatchObject({ gateFail: true });
+    const read = computeMapRead([
+      MAP_Q[0].opts[0],
+      MAP_Q[1].opts[2],
+      MAP_Q[3].opts[2],
+    ]);
+    expect(read.clearedSafety).toBe(true);
+    expect(read.gaps[0]).toMatchObject({ stage: "sandbox", sev: 2 });
     expect(read.gaps[1]).toMatchObject({ stage: "tech", sev: 2 });
   });
 

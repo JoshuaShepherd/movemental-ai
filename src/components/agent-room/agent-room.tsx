@@ -235,7 +235,7 @@ function StreamRoom() {
           disabled={room.isStreaming}
         />
       }
-      screenKey={screen.kind === "component" ? `c-$screen.nonce}` : "opening"}
+      screenKey={screen.kind === "component" ? `c-${screen.nonce}` : "opening"}
       home={atOpening}
       scroll={!inBeat}
       voice={room.voice}

@@ -55,15 +55,38 @@ export function AiRealityDashboard({
           The path
         </h2>
         <p className="mt-2 text-base leading-relaxed text-foreground">{payload.placementLine}</p>
+        {/* Ghost-number path spine (proposal §3.7, pattern A) — adopts the agent
+            room's numbered path vocabulary while staying a print-friendly server
+            component (all scores visible; no client boundary). The full
+            four-column accordion is deferred to preserve the share/print read. */}
         <ol className="mt-6 space-y-4">
           {payload.orderedPath.map((stage, i) => {
             const s = payload.stages[stage];
             const isHere = i === 0; // the first move is always Safety
             return (
-              <li key={stage}>
+              <li key={stage} className="relative pl-12">
+                <span
+                  aria-hidden
+                  className="absolute left-0 top-0.5 bottom-0.5 w-[2px] rounded-full"
+                  style={{
+                    background: isHere
+                      ? "var(--color-ink-band-blue)"
+                      : "var(--color-ink-band-border)",
+                  }}
+                />
+                <span
+                  aria-hidden
+                  className="absolute left-2.5 top-0 select-none font-mono font-semibold leading-none text-[1.75rem] tracking-[-0.03em]"
+                  style={{
+                    color: "var(--color-ink-band-blue)",
+                    opacity: isHere ? 0.22 : 0.1,
+                  }}
+                >
+                  {i + 1}
+                </span>
                 <div className="flex items-baseline justify-between gap-3 text-sm">
                   <span className="font-medium text-foreground">
-                    {i + 1}. {stage}
+                    {stage}
                     {isHere && (
                       <span className="ml-2 font-[var(--font-ink-hand)] text-(--color-ink-band-blue)">
                         you are here

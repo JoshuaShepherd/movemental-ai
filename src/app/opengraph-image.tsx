@@ -57,7 +57,7 @@ export default function OpengraphImage() {
               fontSize: 22,
             }}
           >
-            Safety, Sandbox, Skills, Solutions
+            Safety, Sandbox, Training, Tech
           </span>
         </div>
       </div>

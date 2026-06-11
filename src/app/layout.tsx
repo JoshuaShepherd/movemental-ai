@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: "%s — Movemental",
   },
   description:
-    "Movemental walks church and nonprofit leaders through the Movemental Path: Safety, Sandbox, Skills, Solutions, in order — so the mission stays recognizable on the other side.",
+    "Movemental walks church and nonprofit leaders through the Movemental Path: Safety, Sandbox, Training, Tech, in order, so the mission stays recognizable on the other side.",
   metadataBase: new URL(canonicalSiteOrigin()),
   openGraph: {
     type: "website",

@@ -10,7 +10,7 @@
  * | `BEAT_INTRO`    | LOCAL  | Lead chip "Get a clear next AI step" (stream only handoff) |
  *
  * Handoff rule: local choreography **ends** when the visitor sends a composer
- * action classified AGENT (or taps a post-local chip like "Okay, map it").
+ * action classified AGENT (or taps a post-local chip like "Start with Safety").
  * `use-agent-room-stream` bumps `localGen` to cancel in-flight local scenes.
  *
  * Stub mode may call the same helpers for parity; it still uses `run("opening")`
@@ -33,7 +33,7 @@ export const BEAT_INTRO_CHOREOGRAPHY: Scene = inkActsOnly(SCENES.beatIntro);
 
 /** Chips emitted after a local scene completes (stream binds actions upstream). */
 export const BEAT_INTRO_SUGGEST_CHIPS: readonly SuggestChip[] = [
-  { label: "Okay, map it", lead: true, to: "toBeat" },
+  { label: "Start with Safety", lead: true, to: "toBeat" },
 ];
 
 /** Named map for auditors / tests. */

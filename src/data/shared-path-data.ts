@@ -33,7 +33,7 @@ export const stageMeta = [
   },
   {
     num: "03",
-    name: "Skills",
+    name: "Training",
     protect: "Protects #4",
     mapDesc: "Judgment, review, shared language.",
     tagline: "Train staff to use AI responsibly across roles.",
@@ -44,11 +44,11 @@ export const stageMeta = [
       "Teams know when human judgment has to lead",
       "Leaders model responsible uncertainty"
     ],
-    watchFor: "If Skills is skipped, <em>AI becomes a habit before it becomes a discipline</em>."
+    watchFor: "If Training is skipped, <em>AI becomes a habit before it becomes a discipline</em>."
   },
   {
     num: "04",
-    name: "Solutions",
+    name: "Tech",
     protect: "The build",
     mapDesc: "Tools shaped around the work.",
     tagline: "Build tools that fit your workflows, voice, and mission.",
@@ -59,7 +59,7 @@ export const stageMeta = [
       "Workflow ownership is clear",
       "The system reduces fragmentation instead of adding another tool"
     ],
-    watchFor: "If Solutions are rushed, the organization gets <em>tools that look useful but don’t fit</em> the people, the data, or the mission."
+    watchFor: "If Tech is rushed, the organization gets <em>tools that look useful but don't fit</em> the people, the data, or the mission."
   }
 ];
 

@@ -27,10 +27,19 @@ const MODE =
 const STREAM_PATH = "**/api/agent-room/stream";
 const ENGINE_PROBE = (process.env.AI_AGENTS_BASE_URL ?? "http://localhost:3001") + "/api/agents/models";
 
+async function waitForOpeningReady(page: Page) {
+  await expect(
+    page.getByText("Movemental meets leaders and organizations where they are"),
+  ).toBeVisible({ timeout: 5000 });
+  await expect(page.getByRole("button", { name: "Get a clear next AI step" })).toBeVisible({
+    timeout: 5000,
+  });
+}
+
 async function send(page: Page, text: string) {
   const input = page.getByRole("textbox", { name: "Talk to Movemental" });
   await input.fill(text);
-  await input.press("Enter");
+  await page.getByRole("button", { name: "Send" }).click();
 }
 
 test.describe("Agent Room", () => {
@@ -61,7 +70,9 @@ test.describe("Agent Room", () => {
       await page.goto("/agent");
       await page.waitForTimeout(2000);
       await page.getByRole("button", { name: "Get a clear next AI step" }).click();
-      await expect(page.getByText("I’m not going to grade you")).toBeVisible({ timeout: 3500 });
+      await expect(page.getByText("This is probably a one-question assessment")).toBeVisible({
+        timeout: 3500,
+      });
       expect(streamCalls, "beatIntro is local in hybrid").toEqual([]);
     });
 
@@ -76,9 +87,39 @@ test.describe("Agent Room", () => {
         });
       });
       await page.goto("/agent");
-      await page.waitForTimeout(2000);
-      await send(page, "our board uses ChatGPT for donor letters");
+      await waitForOpeningReady(page);
+      // Avoid meta/objection phrasing ("our board…") which routes to discussOffer locally.
+      await send(page, "xyzzy plugh unexpected donor workflow question");
       await expect.poll(() => posted).toBe(true);
+    });
+
+    test("long streamed reply wraps inside the voice band after commit", async ({ page }) => {
+      const long =
+        "Movemental helps leaders steward AI with clarity, safety, and formation — not as a shortcut past discernment but as infrastructure that keeps your voice, your corpus, and your community aligned over time.";
+      await page.route(STREAM_PATH, (route) => {
+        route.fulfill({
+          status: 200,
+          contentType: "text/event-stream",
+          body: `data: {"type":"text_delta","delta":${JSON.stringify(long)}}\n\ndata: [DONE]\n\n`,
+        });
+      });
+      await page.goto("/agent");
+      await waitForOpeningReady(page);
+      await send(page, "xyzzy plugh unexpected donor workflow question");
+      await expect(page.getByText(long.slice(0, 40))).toBeVisible({ timeout: 8000 });
+
+      const fits = await page.evaluate(() => {
+        const voice = document.querySelector(".ink-band-surface [aria-live='polite']");
+        if (!voice) return false;
+        const line = voice.querySelector("[class*='vline']");
+        if (!line) return false;
+        const style = window.getComputedStyle(line);
+        if (style.whiteSpace !== "normal") return false;
+        const voiceRect = voice.getBoundingClientRect();
+        const lineRect = line.getBoundingClientRect();
+        return lineRect.right <= voiceRect.right + 2 && lineRect.left >= voiceRect.left - 2;
+      });
+      expect(fits, "committed voice line should stay inside the voice band").toBe(true);
     });
   });
 
@@ -124,9 +165,11 @@ test.describe("Agent Room", () => {
       await page.goto("/agent");
       await page.waitForTimeout(2000);
       await page.getByRole("button", { name: "Get a clear next AI step" }).click();
-      await expect(page.getByText("I’m not going to grade you")).toBeVisible({ timeout: 3500 });
+      await expect(page.getByText("This is probably a one-question assessment")).toBeVisible({
+        timeout: 3500,
+      });
       expect(streamCalls, "beatIntro is local — no stream yet").toEqual([]);
-      await expect(page.getByRole("button", { name: "Okay, map it" })).toBeVisible();
+      await expect(page.getByRole("button", { name: "Start with Safety" })).toBeVisible();
     });
   });
 

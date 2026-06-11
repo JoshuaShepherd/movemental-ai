@@ -73,10 +73,17 @@ export function TeamAssessment({ token, organizationName }: { token: string; org
           Your answers are now part of {organizationName}&apos;s picture. Your own quick read:
         </p>
         <ul className="mt-6 space-y-2 text-sm">
-          {(["Safety", "Sandbox", "Skills", "Solutions"] as const).map((s) => (
-            <li key={s} className="flex justify-between border-b border-border py-2">
-              <span className="font-medium text-foreground">{s}</span>
-              <span className="tabular-nums text-muted-foreground">{result.stagePercents[s]}%</span>
+          {(
+            [
+              ["Safety", result.stagePercents.Safety],
+              ["Sandbox", result.stagePercents.Sandbox],
+              ["Training", result.stagePercents.Skills],
+              ["Tech", result.stagePercents.Solutions],
+            ] as const
+          ).map(([label, pct]) => (
+            <li key={label} className="flex justify-between border-b border-border py-2">
+              <span className="font-medium text-foreground">{label}</span>
+              <span className="tabular-nums text-muted-foreground">{pct}%</span>
             </li>
           ))}
         </ul>

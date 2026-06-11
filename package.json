@@ -21,6 +21,7 @@
     "reader:sync": "node docs/reader/sync-manifest.mjs",
     "sync:stitch-spec": "tsx scripts/sync-stitch-spec.ts",
     "program:fixtures:check": "tsx scripts/validate-stitch-fixtures.ts",
+    "redirects:check": "tsx scripts/validate-redirects.ts",
     "reader:check": "node docs/reader/sync-manifest.mjs --check",
     "reader:serve": "node scripts/docs-static-server.mjs",
     "reader:alan-hirsch-collated": "node scripts/open-alan-hirsch-collated.mjs",

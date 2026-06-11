@@ -9,6 +9,7 @@ import type { MapRead } from "@/lib/agent-room/data/map-q";
 
 import { aggregateOrg } from "./aggregate";
 import { countActiveInvites } from "./invite.server";
+import { ssssStageToPublic } from "./stage-mapper";
 import type { AiRealityOrgPayload, ParticipantScore } from "./types";
 
 /**
@@ -59,7 +60,7 @@ export async function persistSsssResult(input: {
       stage_sandbox: r.stagePercents.Sandbox,
       stage_skills: r.stagePercents.Skills,
       stage_solutions: r.stagePercents.Solutions,
-      dominant_gap: r.dominantGapStage,
+      dominant_gap: ssssStageToPublic(r.dominantGapStage),
       illusion_flags: r.illusionFlags,
       result_payload: r,
     })
@@ -128,11 +129,11 @@ function toParticipant(row: {
     stagePercents: {
       Safety: row.stage_safety ?? 0,
       Sandbox: row.stage_sandbox ?? 0,
-      Skills: row.stage_skills ?? 0,
-      Solutions: row.stage_solutions ?? 0,
+      Training: row.stage_skills ?? 0,
+      Tech: row.stage_solutions ?? 0,
     },
     overallPercent: row.overall_percent ?? 0,
-    dominantGapStage: (row.dominant_gap as ParticipantScore["dominantGapStage"]) ?? "Safety",
+    dominantGapStage: ssssStageToPublic(row.dominant_gap ?? "Safety"),
     illusionFlags: Array.isArray(row.illusion_flags)
       ? (row.illusion_flags as SsssIllusionId[])
       : [],

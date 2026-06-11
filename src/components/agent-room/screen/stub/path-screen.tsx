@@ -5,6 +5,7 @@ import { useState } from "react";
 import styles from "../../ink-band.module.css";
 import type { ScreenProps } from "./stub-screen";
 import { Crumb } from "./chrome";
+import { ProcessAccordion } from "../process-accordion";
 
 interface PathStage {
   num: 1 | 2 | 3 | 4;
@@ -18,9 +19,9 @@ const STAGES: readonly PathStage[] = [
   {
     num: 1,
     title: "Safety",
-    lead: "Get your arms around AI responsibly: your AI Guidebook, ratified by your board, before anything else.",
+    lead: "Get your arms around AI responsibly: your AI Handbook, ratified by your board, before anything else.",
     detail:
-      "Acceptable use, data boundaries, theological red lines — written down and adopted before anyone builds on sand.",
+      "Acceptable use, data boundaries, theological red lines, written down and adopted before anyone builds on sand.",
   },
   {
     num: 2,
@@ -62,9 +63,28 @@ export function PathScreen({ onHome }: ScreenProps) {
         One ordered path. It starts with Safety.
       </p>
 
-      <div className={styles.pathStackCard}>
+      {/* Horizontal process accordion (md+) — see proposal §3.1. Inactive
+          columns show ghost number + title; the active column expands with an
+          ink-blue rail and full copy. Mobile keeps the vertical drawer below. */}
+      <ProcessAccordion
+        ariaLabel="The path — four stages"
+        activeId={active ? `stage-${active}` : ""}
+        onActiveChange={(id) => {
+          const n = Number(id.replace("stage-", ""));
+          setActive((cur) => (cur === n ? 0 : n));
+        }}
+        items={STAGES.map((stage) => ({
+          id: `stage-${stage.num}`,
+          step: `0${stage.num}`,
+          title: stage.title,
+          summary: stage.lead,
+          children: <p className={styles.paDetail}>{stage.detail}</p>,
+        }))}
+      />
+
+      <div className={`${styles.pathStackCard} ${styles.paOnlyNarrow}`}>
         <p className={styles.pathStackIntro}>
-          Four stages, in order — from governance to tools. Open any step to see what
+          Four stages, in order, from governance to tools. Open any step to see what
           it means, and why the next one waits.
         </p>
         <div className={styles.pathStack} role="presentation">

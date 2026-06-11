@@ -25,7 +25,7 @@ import {
   ENTER_DISCUSS_VALUE,
   type RoomPhase,
 } from "@/lib/agent-room/discuss";
-import { handleDiscussChipTarget } from "@/lib/agent-room/discuss-entry";
+import { handleSuggestChipTarget, focusReadbackMapEmail } from "@/lib/agent-room/suggest-chip-targets";
 import { isEngineExtra, toScreenId } from "@/lib/agent-room/screen-map";
 import type { ComponentId } from "@/lib/agent-room/stream-chunk";
 import { playScene, type Generation } from "@/lib/agent-room/scene-runner";
@@ -171,7 +171,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         lead: c.lead,
         onSelect: () => {
           freeTextStreakRef.current = 0;
-          handleDiscussChipTarget(
+          handleSuggestChipTarget(
             c.to,
             discuss.enterDiscuss,
             runRef.current,
@@ -241,6 +241,12 @@ export function useAgentRoomHybrid(): AgentRoomController & {
 
       commitStream();
       setAgentChips(null);
+
+      // Map capture is inline under readback — never swap to the full capture screen.
+      if (component === "capture" && (props as { kind?: string }).kind === "map") {
+        focusReadbackMapEmail();
+        return;
+      }
 
       if (isEngineExtra(component)) {
         setEngineExtra({ component, props });

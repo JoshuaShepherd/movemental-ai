@@ -32,11 +32,10 @@ export interface CaptureVariant {
 /** The three capture surfaces, in the agent's own voice. */
 export const CAPTURE_VARIANTS: Record<CaptureKind, CaptureVariant> = {
   map: {
-    eyebrow: "Your reality, mapped",
-    heading: "Want this as something you can keep?",
-    sub: "I’ll send your map and the one next step it points to.",
-    submit: "Send me my map",
-    skip: "No thanks, just show me Safety",
+    eyebrow: "Keep a copy",
+    heading: "Email this to yourself",
+    sub: "We’ll send your map and the one next step it points to.",
+    submit: "Send",
     fields: [
       { key: "email", label: "Email", type: "email", required: true, autoComplete: "email", placeholder: "you@org.org" },
       { key: "first", label: "First name", type: "text", required: false, autoComplete: "given-name", placeholder: "Optional" },

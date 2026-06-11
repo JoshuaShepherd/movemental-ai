@@ -5,10 +5,10 @@
  * progress strip, and per-workspace header.
  *
  * SafeStart is the two-week engagement that ends with a ratified AI
- * Organizational Guidebook. The five workspaces below are the sequence the
- * engagement moves through. The Guidebook itself is a separate artifact
+ * Organizational Handbook. The five workspaces below are the sequence the
+ * engagement moves through. The Handbook itself is a separate artifact
  * surface at `/safestart/guidebook` — it is not in this manifest because it
- * is not backed by a single Stitch fixture; it composes the five Guidebook
+ * is not backed by a single Stitch fixture; it composes the five Handbook
  * sections (Statement, Policy, Context, Rules, Response Plans) into one
  * editorial document.
  */
@@ -40,9 +40,9 @@ export const SAFESTART_WORKSPACES: readonly SafeStartWorkspaceEntry[] = [
     order: 1,
     name: "Drafting",
     description:
-      "Draft the AI Organizational Guidebook across all five sections.",
+      "Draft the AI Organizational Handbook across all five sections.",
     produces:
-      "A first-draft Guidebook covering Statement, Policy, Context, Rules, and Response Plans — written before async review opens.",
+      "A first-draft Handbook covering Statement, Policy, Context, Rules, and Response Plans — written before async review opens.",
     templateId: "safestart_dashboard_drafting_async_review",
   },
   {
@@ -50,9 +50,9 @@ export const SAFESTART_WORKSPACES: readonly SafeStartWorkspaceEntry[] = [
     order: 2,
     name: "Async review",
     description:
-      "Open the Guidebook draft for asynchronous review by the whole team.",
+      "Open the Handbook draft for asynchronous review by the whole team.",
     produces:
-      "Every section of the Guidebook open for asynchronous review — comments collected before editorial reconciliation.",
+      "Every section of the Handbook open for asynchronous review: comments collected before editorial reconciliation.",
     templateId: "safestart_dashboard_drafting_async_review",
   },
   {
@@ -60,7 +60,7 @@ export const SAFESTART_WORKSPACES: readonly SafeStartWorkspaceEntry[] = [
     order: 3,
     name: "Editorial comments",
     description:
-      "Reconcile reviewer comments. Decide what changes the Guidebook adopts.",
+      "Reconcile reviewer comments. Decide what changes the Handbook adopts.",
     produces:
       "Comment reconciliation — every reviewer note marked as adopted, modified, or rejected, with rationale.",
     templateId: "safestart_dashboard_editorial_comment_view_1",
@@ -70,9 +70,9 @@ export const SAFESTART_WORKSPACES: readonly SafeStartWorkspaceEntry[] = [
     order: 4,
     name: "Board ratification",
     description:
-      "Present the reconciled Guidebook to the board. Record the ratification vote.",
+      "Present the reconciled Handbook to the board. Record the ratification vote.",
     produces:
-      "A ratified Guidebook — board vote recorded, version pinned, publication block populated.",
+      "A ratified Handbook: board vote recorded, version pinned, publication block populated.",
     templateId: "safestart_dashboard_ratification_phase",
   },
   {
@@ -80,9 +80,9 @@ export const SAFESTART_WORKSPACES: readonly SafeStartWorkspaceEntry[] = [
     order: 5,
     name: "Steady state",
     description:
-      "After ratification: how the Guidebook lives in the organization.",
+      "After ratification: how the Handbook lives in the organization.",
     produces:
-      "Ongoing operations — review cadence, change-management process, and the Guidebook in steady-state organizational use.",
+      "Ongoing operations: review cadence, change-management process, and the Handbook in steady-state organizational use.",
     templateId: "safestart_dashboard_editorial_steady_state",
   },
 ] as const;

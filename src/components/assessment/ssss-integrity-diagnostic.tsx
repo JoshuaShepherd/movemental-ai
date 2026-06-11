@@ -23,6 +23,7 @@ import {
   SSSS_INTEGRITY_ITEMS,
   type AudienceContextId,
   type SsssIllusionId,
+  type SsssStageId,
 } from "@/lib/ssss-integrity-assessment";
 
 const STORAGE_KEY = "movemental:ai-reality-assessment:v2" as const;
@@ -31,17 +32,24 @@ const LEGACY_STORAGE_KEY = "movemental:ssss-integrity-diagnostic:v1" as const;
 // Public instrument + output names. Internal labels never reach the screen.
 const INSTRUMENT_NAME = "Organizational AI Reality Assessment";
 
+const PUBLIC_STAGE_LABEL: Record<Exclude<SsssStageId, "Cross">, string> = {
+  Safety: "Safety",
+  Sandbox: "Sandbox",
+  Skills: "Training",
+  Solutions: "Tech",
+};
+
 const STAGE_DESCRIPTIONS: Record<string, string> = {
   Safety:
-    "Governance, conviction lines, and boundaries — what yes and no mean before pressure arrives.",
+    "Governance, conviction lines, and boundaries: what yes and no mean before pressure arrives.",
   Sandbox:
-    "Evidence under Safety — a shared record of what's been tried, in compliant places, with proof.",
-  Skills:
-    "Formation as judgment — distributed taste, correction, and verification, not button-pushing.",
-  Solutions:
-    "Workflows with AI inside them — owners, gates, outcomes, and independence from any one tool.",
+    "Evidence under Safety: a shared record of what's been tried, in compliant places, with proof.",
+  Training:
+    "Formation as judgment: distributed taste, correction, and verification, not button-pushing.",
+  Tech:
+    "Workflows with AI inside them: owners, gates, outcomes, and independence from any one tool.",
   Cross:
-    "Honest location — where you actually are on the path, and how you respond when things break.",
+    "Honest location: where you actually are on the path, and how you respond when things break.",
 };
 
 const ILLUSION_COPY: Record<Exclude<SsssIllusionId, "none">, string> = {
@@ -311,9 +319,9 @@ export function SsssIntegrityDiagnostic() {
             Eighteen statements about how your organization actually operates across the four stages of
             the path:{" "}
             <strong className="font-medium text-foreground">
-              Safety, Sandbox, Skills, Solutions
+              Safety, Sandbox, Training, Tech
             </strong>
-            . Honest answers give you a clear mirror — and one place to start. Suitable for a leadership
+            . Honest answers give you a clear mirror, and one place to start. Suitable for a leadership
             team answering together.
           </p>
           <p className="mt-3 text-sm text-muted-foreground">
@@ -430,13 +438,24 @@ export function SsssIntegrityDiagnostic() {
       {isQuestion && (
         <Card>
           <p className="text-[0.78rem] font-semibold uppercase tracking-eyebrow text-ink-soft">
-            {stageOfCurrent === "Cross" ? "Honest location" : stageOfCurrent} ·{" "}
+            {stageOfCurrent === "Cross"
+              ? "Honest location"
+              : stageOfCurrent
+                ? PUBLIC_STAGE_LABEL[stageOfCurrent]
+                : null}{" "}
+            ·{" "}
             <span className="text-muted-foreground">
               Question {questionIndex + 1} of {TOTAL_ITEMS}
             </span>
           </p>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            {STAGE_DESCRIPTIONS[stageOfCurrent ?? ""] ?? null}
+            {STAGE_DESCRIPTIONS[
+              stageOfCurrent === "Cross"
+                ? "Cross"
+                : stageOfCurrent
+                  ? PUBLIC_STAGE_LABEL[stageOfCurrent]
+                  : ""
+            ] ?? null}
           </p>
 
           {(() => {
@@ -509,8 +528,8 @@ export function SsssIntegrityDiagnostic() {
                 [
                   ["Safety", result.stagePercents.Safety],
                   ["Sandbox", result.stagePercents.Sandbox],
-                  ["Skills", result.stagePercents.Skills],
-                  ["Solutions", result.stagePercents.Solutions],
+                  ["Training", result.stagePercents.Skills],
+                  ["Tech", result.stagePercents.Solutions],
                   ["Honest location & incidents", result.stagePercents.Cross],
                 ] as const
               ).map(([label, pct]) => (

@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
+import { StepSpine } from "@/components/ink-band/step-spine";
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
@@ -76,10 +77,11 @@ export default function EnrollPage() {
   if (status === "done") {
     return (
       <div className="mx-auto w-full max-w-xl px-4 py-20 md:py-28">
-        <p className="mb-6 font-mono text-[0.75rem] uppercase tracking-[0.14em] text-muted-foreground">
-          Stage 01 · Safety · With us
-        </p>
-        <h1 className="text-4xl leading-tight md:text-5xl">Got it, {form.contact_name.split(/\s+/)[0]}.</h1>
+        <StepSpine
+          step="01"
+          label="Safety · With us"
+          title={`Got it, ${form.contact_name.split(/\s+/)[0]}.`}
+        />
         <p className="mt-8 text-lg leading-relaxed text-foreground">
           Your enrollment is in. We provision within 24 hours and a real person will be in touch to set up
           your dashboard.
@@ -90,10 +92,8 @@ export default function EnrollPage() {
 
   return (
     <div className="mx-auto w-full max-w-xl px-4 py-20 md:py-28">
-      <p className="mb-6 font-mono text-[0.75rem] uppercase tracking-[0.14em] text-muted-foreground">
-        Stage 01 · Safety · With us
-      </p>
-      <h1 className="text-4xl leading-tight md:text-5xl">Set up your dashboard.</h1>
+      <StepSpine step="01" label="Safety · With us" title="Set up your dashboard." />
+
       <p className="mt-8 text-lg leading-relaxed text-foreground">
         Tell us about your organization and who we’ll be working with. We provision within 24 hours.
       </p>

@@ -60,7 +60,28 @@ function StubBeat({ opts, onBeatAnswer, disabled }: ScreenProps) {
         <span className={styles.beatWord}>where you stand</span>
       </div>
 
+      {question.tag ? <p className={styles.eyebrow}>{question.tag}</p> : null}
+
+      {/* Ghost question index (proposal §3.6) — scan aid during the six-beat flow. */}
+      <span className={styles.beatGhost} aria-hidden="true">
+        {pad2(qi + 1)}
+      </span>
       <p className={styles.q}>{question.q}</p>
+
+      {question.criteriaLead ? (
+        <p className={styles.body} style={{ marginBottom: "0.35rem" }}>
+          {question.criteriaLead}
+        </p>
+      ) : null}
+      {question.criteria?.length ? (
+        <ul className={styles.body} style={{ margin: "0 0 0.9rem 1.1rem", padding: 0 }}>
+          {question.criteria.map((item) => (
+            <li key={item} style={{ marginBottom: "0.25rem" }}>
+              {item}
+            </li>
+          ))}
+        </ul>
+      ) : null}
 
       <div className={styles.opts} id="opts">
         {question.opts.map((o, oi) => {

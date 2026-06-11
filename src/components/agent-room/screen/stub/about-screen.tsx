@@ -27,7 +27,7 @@ export function AboutScreen({ onHome }: ScreenProps) {
           <LayerRow
             n="01"
             title="Safety"
-            g="decide what’s wise before the tools — your AI Guidebook, ratified by your board."
+            g="decide what's wise before the tools: your AI Handbook, ratified by your board."
           />
           <LayerRow
             n="02"

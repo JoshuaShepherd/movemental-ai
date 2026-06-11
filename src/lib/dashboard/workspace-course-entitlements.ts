@@ -64,9 +64,9 @@ export function resolveWorkspaceCourseEntitlements(settings: unknown): Workspace
   return { ...WORKSPACE_COURSES_NONE };
 }
 
-/** Nav label for SandboxLive when the strip is “sandbox-only” (no Safety). */
-export function workspaceSandboxNavLabel(courses: WorkspaceCourseEntitlements): "Sandbox" | "SandboxLive" {
-  return !courses.safety && courses.sandbox ? "Sandbox" : "SandboxLive";
+export function workspaceSandboxNavLabel(courses: WorkspaceCourseEntitlements): "Sandbox" {
+  void courses;
+  return "Sandbox";
 }
 
 /** Dashboard hub + copy: SandboxLive-first layout (implementation org, no Safety lane). */

@@ -18,6 +18,7 @@ import {
   resolveTypedDiscussSignal,
   STUB_DISCUSS_OPENER,
 } from "@/lib/agent-room/discuss-entry";
+import { handleSuggestChipTarget } from "@/lib/agent-room/suggest-chip-targets";
 import { playScene, type Generation } from "@/lib/agent-room/scene-runner";
 import { useInk } from "./agent-room-context";
 import type { ComposerChip } from "./composer";
@@ -150,7 +151,7 @@ export function useAgentRoomStub(): AgentRoomController {
         lead: c.lead,
         onSelect: () => {
           freeTextStreakRef.current = 0;
-          handleDiscussChipTarget(
+          handleSuggestChipTarget(
             c.to,
             enterDiscuss,
             runRef.current,

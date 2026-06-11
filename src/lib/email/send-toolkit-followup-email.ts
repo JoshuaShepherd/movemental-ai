@@ -3,6 +3,7 @@ import "server-only";
 import { resendFromHeader } from "@/lib/email/from";
 import { getResend } from "@/lib/email/resend";
 import { env } from "@/lib/env";
+import { SSSS_FIELD_GUIDE_PATH } from "@/lib/canon-routes";
 
 const SITE_NAME = "Movemental";
 
@@ -31,7 +32,7 @@ function unsubBlock(unsubscribeUrl?: string | null): string {
 
 const COPY: Record<ToolkitFollowupDay, { subject: string; heading: string; body: string; flow: string }> = {
   3: {
-    subject: `A 30-minute conversation about your AI Guidebook — ${SITE_NAME}`,
+    subject: `A 30-minute conversation about your AI Handbook — ${SITE_NAME}`,
     heading: "How's the field guide landing?",
     body: `If you and your leadership have started the self-assessment, a short call can save you a lot of false starts.
       I'll spend 30 minutes with you, no pitch — just helping you find the one next decision that matters most.
@@ -42,7 +43,7 @@ const COPY: Record<ToolkitFollowupDay, { subject: string; heading: string; body:
     subject: `The $1,000 facilitated path — ${SITE_NAME}`,
     heading: "When you'd rather not draft it alone.",
     body: `Some teams have the time and discipline to draft all five Safety layers themselves; the field guide is built for that.
-      Others would rather we draft it with them. The facilitated MVP is $1,000 and takes about two weeks: we draft your Guidebook
+      Others would rather we draft it with them. The facilitated MVP is $1,000 and takes about two weeks: we draft your Handbook
       customized to your context, your team reviews and ratifies it inside a private dashboard, and you leave with a print-quality PDF.
       This is the last automated note — reply any time if it'd help to talk.`,
     flow: "toolkit_day_7",
@@ -69,7 +70,7 @@ export async function sendToolkitFollowupEmail(
   }
 
   const copy = COPY[day];
-  const safetyPageUrl = `${siteUrl()}/pathway/safety`;
+  const safetyPageUrl = `${siteUrl()}${SSSS_FIELD_GUIDE_PATH}`;
 
   const { error } = await resend.emails.send({
     from: resendFromHeader(),

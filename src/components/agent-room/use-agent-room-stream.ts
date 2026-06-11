@@ -13,6 +13,7 @@ import {
   scheduleLocalChoreography,
 } from "@/lib/agent-room/local-choreography";
 import { validateComponentProps } from "@/lib/agent-room/component-props";
+import { focusReadbackMapEmail } from "@/lib/agent-room/suggest-chip-targets";
 import type { ComponentId } from "@/lib/agent-room/stream-chunk";
 import type { Generation } from "@/lib/agent-room/scene-runner";
 import { useInk } from "./agent-room-context";
@@ -232,18 +233,23 @@ export function useAgentRoomStream() {
             },
             onUiRender: (component, rawProps) => {
               const props = validateComponentProps(component, rawProps);
-              if (props) {
+              if (!props) return;
+              if (component === "capture" && (props as { kind?: string }).kind === "map") {
                 commitStream();
                 streamOpen = false;
-                nonceRef.current += 1;
-                setScreen({
-                  kind: "component",
-                  component,
-                  props,
-                  nonce: nonceRef.current,
-                });
-                setComposing(false);
+                focusReadbackMapEmail();
+                return;
               }
+              commitStream();
+              streamOpen = false;
+              nonceRef.current += 1;
+              setScreen({
+                kind: "component",
+                component,
+                props,
+                nonce: nonceRef.current,
+              });
+              setComposing(false);
             },
             onInkGesture: (kind, target) => {
               void drawGesture(kind, target);

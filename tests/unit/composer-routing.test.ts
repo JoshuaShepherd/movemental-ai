@@ -26,7 +26,7 @@ describe("composer routing (PAR-02)", () => {
 
   it("exposes beatIntro follow-up chip for agent handoff", () => {
     expect(BEAT_INTRO_AGENT_CHIPS).toEqual([
-      { label: "Okay, map it", utterance: "Okay, map it", lead: true },
+      { label: "Start with Safety", utterance: "Start with Safety", lead: true },
     ]);
   });
 });

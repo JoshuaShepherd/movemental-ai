@@ -61,7 +61,7 @@ export function ConfirmScreen({ opts, onHome }: ScreenProps) {
         </div>
         <p className={styles.honest}>
           Your first move is the org-wide read: we send the reality check to your whole
-          team, so the Guidebook is built on what’s actually true.
+          team, so the Handbook is built on what's actually true.
         </p>
       </div>
     );
@@ -70,11 +70,11 @@ export function ConfirmScreen({ opts, onHome }: ScreenProps) {
   return (
     <div>
       <Crumb onHome={onHome} />
-      <p className={styles.eyebrow}>Stage 01 · Safety · On your own</p>
+      <p className={styles.eyebrow}>Stage 01 · Safety · Free, and we guide you</p>
       <h1>Your field guide is on its way.</h1>
       <p className={styles.body}>
         Check your inbox for <em>It Starts With Safety</em>. It walks your team through
-        all five layers of your AI Guidebook, with a checklist for each.
+        all five layers of your AI Handbook, with a checklist for each.
       </p>
       <div className={styles.sec}>
         <p className={styles.secLabel}>How to use it</p>

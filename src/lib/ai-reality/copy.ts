@@ -9,7 +9,7 @@ import type { AiRealityStage } from "./types";
  */
 export const ILLUSION_PLAIN_ENGLISH: Record<Exclude<SsssIllusionId, "none">, string> = {
   safety_paper: "A policy on paper that nobody trains against.",
-  shadow_sandbox: "People are experimenting, but off to the side — no shared record of what's been tried.",
+  shadow_sandbox: "People are experimenting, but off to the side: no shared record of what's been tried.",
   skills_theater: "Training has happened, but there's no shared log proving people actually got better.",
   solutions_without_evidence: "Tools are rolling out faster than the evidence that they work.",
   honesty_gap: "The scores look healthy, but the team can't yet say out loud where it's skipping steps.",
@@ -20,11 +20,7 @@ export function illusionPlainEnglish(id: SsssIllusionId): string {
   return id === "none" ? "" : ILLUSION_PLAIN_ENGLISH[id];
 }
 
-/**
- * Public label for a 6-question map stage. The map's internal vocabulary
- * ("training", "tech") is renamed to the public path ("Skills", "Solutions")
- * so the front door and the dashboard speak one language.
- */
+/** Public label for a 6-question map stage (internal slugs → public path names). */
 export function mapStagePublicLabel(stage: string): string {
   switch (stage) {
     case "safety":
@@ -32,9 +28,9 @@ export function mapStagePublicLabel(stage: string): string {
     case "sandbox":
       return "Sandbox";
     case "training":
-      return "Skills";
+      return "Training";
     case "tech":
-      return "Solutions";
+      return "Tech";
     default:
       return stage.charAt(0).toUpperCase() + stage.slice(1);
   }
@@ -49,25 +45,25 @@ export function dominantGapLine(stage: AiRealityStage, respondedCount: number): 
   const team = respondedCount > 1 ? "your team's" : "your";
   switch (stage) {
     case "Safety":
-      return `The sharpest gap is Safety. ${cap(team)} weakest answers are about boundaries — what you will and won't do with AI, in writing, that people actually train against.`;
+      return `The sharpest gap is Safety. ${cap(team)} weakest answers are about boundaries: what you will and won't do with AI, in writing, that people actually train against.`;
     case "Sandbox":
-      return `The sharpest gap is Sandbox. Safety is holding, but there's no shared record of what AI has actually been tried against real work — experiments aren't leaving a trail anyone can point to.`;
-    case "Skills":
-      return `The sharpest gap is Skills. The scaffolding exists, but judgment isn't yet distributed — people can press the buttons faster than they can tell good output from bad.`;
-    case "Solutions":
-      return `The sharpest gap is Solutions. The groundwork is real; the missing piece is AI living inside actual workflows, with owners and gates, rather than as one-off tools.`;
+      return `The sharpest gap is Sandbox. Safety is holding, but there's no shared record of what AI has actually been tried against real work. Experiments aren't leaving a trail anyone can point to.`;
+    case "Training":
+      return `The sharpest gap is Training. The scaffolding exists, but judgment isn't yet distributed. People can press the buttons faster than they can tell good output from bad.`;
+    case "Tech":
+      return `The sharpest gap is Tech. The groundwork is real; the missing piece is AI living inside actual workflows, with owners and gates, rather than as one-off tools.`;
   }
 }
 
 export function divergenceLine(stages: AiRealityStage[], respondedCount: number): string {
   if (respondedCount <= 1) {
-    return "Only one person has answered so far, so there's no team agreement to read yet — invite the rest of your leadership to see where you align and where you split.";
+    return "Only one person has answered so far, so there's no team agreement to read yet. Invite the rest of your leadership to see where you align and where you split.";
   }
   if (stages.length === 0) {
-    return "Your leadership team answered close together across every stage — there's broad agreement on where you stand.";
+    return "Your leadership team answered close together across every stage. There's broad agreement on where you stand.";
   }
   const list = stages.join(" and ");
-  return `Your leadership disagrees most on ${list}. That split is worth a conversation before anything else — when leaders read the same stage differently, the gap is usually real on one side.`;
+  return `Your leadership disagrees most on ${list}. That split is worth a conversation before anything else. When leaders read the same stage differently, the gap is usually real on one side.`;
 }
 
 function cap(s: string): string {

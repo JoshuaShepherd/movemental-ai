@@ -15,4 +15,4 @@ export const BOOK_HUB_PATH = "/book" as const;
  *
  * Constant name retains historical `SSSS_` prefix for import stability.
  */
-export const SSSS_FIELD_GUIDE_PATH = "/field-guides/safety" as const;
+export const SSSS_FIELD_GUIDE_PATH = "/field-guide" as const;

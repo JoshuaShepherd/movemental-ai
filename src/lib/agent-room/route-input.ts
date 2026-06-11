@@ -22,7 +22,7 @@ type RouteTarget = Extract<
 /** Ordered match table — first hit wins (prototype `handleInput` order). */
 const ROUTES: ReadonlyArray<{ re: RegExp; to: RouteTarget }> = [
   { re: /after|sandbox|training|tech|whole path|how.*work|the path/, to: "toPath" },
-  { re: /safety|charter|guidebook|ratif/, to: "toSafety" },
+  { re: /safety|charter|handbook|ratif/, to: "toSafety" },
   { re: /cost|price|much|free|pay|afford/, to: "cost" },
   { re: /faq|frequently asked|common question|questions we hear/, to: "toFaq" },
   { re: /talk to|contact|human|email|reach|speak/, to: "talkToUs" },

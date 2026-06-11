@@ -121,20 +121,20 @@ export const SCENES = {
   // where we actually stand”) still go straight to `toBeat` with no intro.
   beatIntro: [
     { clear: true },
-    { say: "I’m not going to grade you. These six questions just show you where you already stand, so the next step is obvious instead of guessed." },
-    { wait: 220 },
-    { say: "For most of these, the honest answer is ‘no.’ That’s the point." },
+    { say: "This is probably a one-question assessment." },
+    { wait: 200 },
     {
-      suggest: [{ label: "Okay, map it", lead: true, to: "toBeat" }],
+      say: "Most organizations answer the first question, hear the one thing they most need to hear, and stop there. So let's start with it — and answer honestly, because the honest answer is the useful one.",
+    },
+    {
+      suggest: [{ label: "Start with Safety", lead: true, to: "toBeat" }],
     },
   ],
   toBeat: [
     { show: "beat", qi: 0 },
     { wait: 460 },
-    { say: "Let’s map where your organization actually stands." },
-    { wait: 160 },
-    { say: "Six honest questions. No wrong answers." },
-    { wait: 140 },
+    { say: "Safety first. This is the gate nobody gets past without having done the work." },
+    { wait: 180 },
     { gesture: "arrow", target: "#opts" },
   ],
   toPath: [
@@ -156,17 +156,54 @@ export const SCENES = {
   toSafety: [
     { show: "safety" },
     { wait: 520 },
-    { say: "Safety is your step. Here’s what it means." },
+    {
+      say: "AI is already inside your organization, and nobody has ratified the rules yet. That's what Safety fixes first.",
+    },
     { wait: 240 },
-    { say: "You can walk it on your own, free. Or we do it with you." },
+    { say: "Safety is your step. Here's what it means." },
+    { wait: 200 },
+    { say: "Walk it free with our help, or have us do it with you." },
     {
       suggest: [
         { label: "Have us do it · $1,000", lead: true, to: "withUs" },
-        { label: "Walk it free", to: "onOwn" },
-        { label: "What’s involved?", to: "involved" },
+        { label: "Start free, guided", to: "onOwn" },
+        { label: "Why does this come first?", to: "whySafetyFirst" },
+        { label: "What could go wrong without it?", to: "safetyWithoutIt" },
         ...(DISCUSS_ENABLED
           ? [{ label: "I have a policy question", to: "toDiscuss" as const }]
           : [{ label: "I have a policy question", to: "talkToUs" as const }]),
+      ],
+    },
+  ],
+  whySafetyFirst: [
+    {
+      say: "For a church, nonprofit, or seminary, an AI mistake costs trust, not just efficiency. Credibility is your product.",
+    },
+    { wait: 200 },
+    {
+      say: "Safety gives you one shared frame, a defensible posture for donors and boards, and a clear answer when something goes wrong. That trust dividend arrives the day you ratify.",
+    },
+    {
+      suggest: [
+        { label: "Have us do it · $1,000", lead: true, to: "withUs" },
+        { label: "Start free, guided", to: "onOwn" },
+        { label: "What could go wrong without it?", to: "safetyWithoutIt" },
+      ],
+    },
+  ],
+  safetyWithoutIt: [
+    {
+      say: "Without a ratified Handbook, every staff member decides alone under time pressure. Donor data ends up in consumer tools. Pastoral notes get pasted into chatbots. A cloned voice can reach your people before you have a response plan.",
+    },
+    { wait: 200 },
+    {
+      say: "None of that is hypothetical. Safety closes the gap before credibility becomes the crisis.",
+    },
+    {
+      suggest: [
+        { label: "Have us do it · $1,000", lead: true, to: "withUs" },
+        { label: "Start free, guided", to: "onOwn" },
+        { label: "Why does this come first?", to: "whySafetyFirst" },
       ],
     },
   ],
@@ -222,9 +259,9 @@ export const SCENES = {
     { await: "capture" },
     { show: "confirm", mode: "free" },
     { wait: 480 },
-    { say: "The guide is on its way. Free." },
+    { say: "The guide is on its way. Free, and we will guide you through it." },
     { wait: 200 },
-    { say: "Your first move is your team’s honest read." },
+    { say: "Your first move is your team's honest read." },
     {
       suggest: [
         { label: "Have us do it instead · $1,000", to: "withUs" },

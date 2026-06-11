@@ -74,7 +74,7 @@
     "rank": 1,
     "page": "/",
     "claimType": "Opinion",
-    "claim": "Sandbox, Skills, Solutions — staged maturity.",
+    "claim": "Sandbox, Training, Tech: staged maturity.",
     "cite": {
       "author": "Vatican (Dicastery for the Doctrine of the Faith and Dicastery for Culture and Education)",
       "title": "Antiqua et Nova: Note on the Relationship Between AI and Human Intelligence",
@@ -246,7 +246,7 @@
     "rank": 3,
     "page": "/evidence",
     "claimType": "Opinion",
-    "claim": "Skipping Safety before Solutions invites breach and broken trust.",
+    "claim": "Skipping Safety before Tech invites breach and broken trust.",
     "cite": {
       "author": "National Institute of Standards and Technology (NIST)",
       "title": "AI Risk Management Framework",
@@ -276,7 +276,7 @@
   {
     "id": "start-with-safety-already-inside-techsoup",
     "rank": 5,
-    "page": "/pathway/safety",
+    "page": "/field-guide",
     "claimType": "Purported fact",
     "claim": "AI is already being used inside your organization.",
     "cite": {
@@ -292,7 +292,7 @@
   {
     "id": "start-with-safety-shared-boundaries-playbook",
     "rank": 5,
-    "page": "/pathway/safety",
+    "page": "/field-guide",
     "claimType": "Opinion",
     "claim": "Safety gives leaders shared boundaries without panic.",
     "cite": {
@@ -438,7 +438,7 @@
   {
     "id": "pathway-skills-kolb-formation",
     "rank": 7,
-    "page": "/pathway/skills",
+    "page": "/field-guide",
     "claimType": "Opinion",
     "claim": "Formation-led skills building (cohort learning).",
     "cite": {
@@ -448,7 +448,7 @@
       "detail": "",
       "url": "https://www.pearson.com/en-us/subject-catalog/p/experiential-learning-experience-as-the-source-of-learning-and-development/P200000005942"
     },
-    "footnote": "Kolb’s cycle—concrete experience, reflective observation, abstract conceptualization, active experimentation—is the standard academic basis for cohort-based adult learning. It explains to readers why “Skills” is framed as formation, not a one-hour webinar.",
+    "footnote": "Kolb's cycle (concrete experience, reflective observation, abstract conceptualization, active experimentation) is the standard academic basis for cohort-based adult learning. It explains to readers why Training is framed as formation, not a one-hour webinar.",
     "citationIds": [
       "kolb-experiential"
     ]
@@ -516,7 +516,7 @@
     "rank": 12,
     "page": "/pricing",
     "claimType": "Offer",
-    "claim": "Published prices for Safety, Sandbox, Skills, Solutions, Bundle.",
+    "claim": "Published prices for Safety, Sandbox, Training, Tech, Bundle.",
     "cite": null,
     "footnote": "Pricing is contractual fact: the authoritative “source” is the quote or order form the customer signs. On the site, match every dollar figure across pages so readers never see conflicting menus.",
     "citationIds": []
@@ -551,6 +551,54 @@
       "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report"
     },
     "footnote": "The AI Index compiles annual indicators on models, investment, and usage—useful backstop when you want readers to feel the sheer pace of change without leaning on any one vendor infographic.",
+    "citationIds": []
+  },
+  {
+    "id": "safety-church-ai-support-91",
+    "rank": 9,
+    "page": "/agent (Safety)",
+    "claimType": "Purported fact",
+    "claim": "91% of church leaders support using AI in ministry. Most use it weekly.",
+    "cite": {
+      "author": "Barna Group & Gloo",
+      "title": "State of the Church 2026 — AI research series",
+      "date": "2025–2026",
+      "detail": "AI Reality research synthesis · church leader adoption",
+      "url": "https://www.barna.com/research/state-of-the-church-2026-trends/"
+    },
+    "footnote": "Movemental's AI Reality research synthesis reports broad pastoral support for AI in ministry alongside high weekly use. The Safety page cites this figure to show adoption has outpaced governance.",
+    "citationIds": []
+  },
+  {
+    "id": "safety-church-policy-9",
+    "rank": 9,
+    "page": "/agent (Safety)",
+    "claimType": "Purported fact",
+    "claim": "About 9% have written any policy for it.",
+    "cite": {
+      "author": "Barna Group & Pushpay",
+      "title": "Technology for Missional Impact: State of Church Tech 2026",
+      "date": "March 2026",
+      "detail": "n = 1,306 U.S. church leaders · AI Reality research synthesis",
+      "url": "https://www.barna.com/research/church-leaders-ai-usage-concerns/"
+    },
+    "footnote": "The same research stream finds formal AI policies remain rare while personal use is common. The Safety page uses the nine percent figure as the governance gap, not as a substitute for your own board's audit.",
+    "citationIds": []
+  },
+  {
+    "id": "safety-cloned-voice-concern-60",
+    "rank": 9,
+    "page": "/agent (Safety)",
+    "claimType": "Purported fact",
+    "claim": "60% are concerned about cloned-voice fraud, and 1 in 4 say AI scams have already reached their community.",
+    "cite": {
+      "author": "Barna Group & Gloo",
+      "title": "State of the Church 2026 — AI research series",
+      "date": "2025–2026",
+      "detail": "Voice-cloning concern and community scam exposure · AI Reality research",
+      "url": "https://www.barna.com/research/state-of-the-church-2026-trends/"
+    },
+    "footnote": "These figures ground the impersonation response plan inside the Safety Handbook. They are cited on the Safety page because cloned-voice fraud is an active credibility threat, not a hypothetical efficiency problem.",
     "citationIds": []
   }
 ]

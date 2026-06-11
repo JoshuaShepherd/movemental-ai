@@ -110,6 +110,9 @@ export function LeaderBand({
   const atStart = index <= 0;
   const atEnd = index >= m.maxIndex;
   const offset = index * m.step;
+  const slide = index + 1;
+  const slideCount = m.maxIndex + 1;
+  const progressPct = m.maxIndex > 0 ? (index / m.maxIndex) * 100 : 100;
 
   return (
     <div className={styles.band}>
@@ -171,6 +174,15 @@ export function LeaderBand({
           </div>
         </div>
       </div>
+      <div className={styles.carProgress} aria-hidden="true">
+        <span
+          className={styles.carProgressFill}
+          style={{ width: `${progressPct}%` }}
+        />
+      </div>
+      <span className={styles.srOnly} role="status" aria-live="polite">
+        Position {slide} of {slideCount}
+      </span>
     </div>
   );
 }

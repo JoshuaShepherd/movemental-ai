@@ -78,7 +78,7 @@ const SANDBOX_INSIDE: FieldGuideInsideItem[] = [
   {
     label: "Portfolio",
     title: "Assemble proof a board will accept",
-    body: "Document what worked, what failed, and what Skills will need — the artifact that earns Stage Three.",
+    body: "Document what worked, what failed, and what Training will need: the artifact that earns Stage Three.",
   },
 ];
 

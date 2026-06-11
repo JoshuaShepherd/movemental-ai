@@ -37,7 +37,7 @@ export const FAQ_SECTIONS: readonly FaqSection[] = [
       { q: "Why this order? Why not all four in parallel?", a: "Attempting tech before safety opens you to data breaches. Changing the order collapses the required human formation." },
       { q: "Can we skip stages if we have already done some of this?", a: "We will audit any work you’ve done. If it holds up, we move forward. Most organizations discover gaps in their safety foundation." },
       { q: "Do the stages overlap?", a: "Chronologically, yes. But you cannot start a subsequent stage until the prerequisite is locked." },
-      { q: "What does Safety actually cover?", a: "Acceptable use policies, data boundary definitions, and theological red lines — your AI Guidebook, ratified before anything else." },
+      { q: "What does Safety actually cover?", a: "Acceptable use policies, data boundary definitions, and theological red lines: your AI Handbook, ratified before anything else." },
       { q: "What does Sandbox mean in practice?", a: "Isolated environments where staff can securely learn prompts and limits without risking public trust or constituent data." },
       { q: "What do Training and Tech include?", a: "Training focuses on forming human judgment; Tech means organization-wide architectural implementations, deployed safely." },
     ],
@@ -130,7 +130,7 @@ export const FAQ_SECTIONS: readonly FaqSection[] = [
     title: "What happens after the engagement",
     items: [
       { q: "What do we walk away with?", a: "Written policies, trained staff, safe sandboxes, and architectural alignment. You walk away with capacity." },
-      { q: "What happens after Safety?", a: "You are free to safely experiment inside structured Sandboxes — once your AI Guidebook is ratified." },
+      { q: "What happens after Safety?", a: "You are free to safely experiment inside structured Sandboxes, once your AI Handbook is ratified." },
       { q: "Do we have an ongoing relationship with Movemental after the engagement?", a: "We offer retention and advisory availability for previous pathway clients to assist with subsequent vendor evaluations." },
       { q: "What if our team changes mid-engagement or after?", a: "Because we have written the policies down, new team members can be onboarded to the system seamlessly." },
       { q: "Where do we go if we still have questions?", a: "Use the contact form on our Contact page. We answer every message personally." },

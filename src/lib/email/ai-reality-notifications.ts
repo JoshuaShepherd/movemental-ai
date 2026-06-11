@@ -46,7 +46,7 @@ export async function sendMapResultEmail(input: {
   }
 
   const hello = input.firstName?.trim() ? `Hi ${esc(input.firstName.trim())},` : "Hi,";
-  const gaps = input.mapRead.gaps ?? [];
+  const gaps = (input.mapRead.gaps ?? []).filter((g) => g.stage !== "safety");
   const gapList =
     gaps.length > 0
       ? `<ul style="font-size: 15px; line-height: 1.6; padding-left: 20px;">${gaps
@@ -55,7 +55,7 @@ export async function sendMapResultEmail(input: {
               `<li style="margin-bottom: 8px;"><strong>${esc(mapStagePublicLabel(g.stage))}:</strong> ${esc(g.line)}</li>`,
           )
           .join("")}</ul>`
-      : `<p style="font-size: 15px; line-height: 1.6;">Nothing sharp surfaced — your footing looks solid across the board.</p>`;
+      : `<p style="font-size: 15px; line-height: 1.6;">Nothing sharp surfaced across Sandbox, Training, or Tech.</p>`;
 
   const firstMoveUrl = `${siteUrl()}/agent`;
   const { error } = await resend.emails.send({
@@ -65,9 +65,9 @@ export async function sendMapResultEmail(input: {
     html: `${SHELL_OPEN}
       <h1 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; letter-spacing: -0.02em;">Here's your map.</h1>
       <p style="font-size: 16px; line-height: 1.6;">${hello}</p>
-      <p style="font-size: 16px; line-height: 1.6;">You answered six honest questions about where AI actually stands in your organization. Here's what surfaced, sharpest first:</p>
+      <p style="font-size: 16px; line-height: 1.6;">You cleared the Safety gate, the part almost no one does. Here's what surfaced across Sandbox, Training, and Tech, sharpest first:</p>
       ${gapList}
-      <p style="font-size: 16px; line-height: 1.6;">Wherever you landed, the first move is the same one: <strong>Safety</strong>. Not a policy nobody reads — boundaries your people can actually train against.</p>
+      <p style="font-size: 16px; line-height: 1.6;">Your next move is <strong>Sandbox</strong>: a bounded place to try AI against your real work and find what's worth keeping.</p>
       <a href="${esc(firstMoveUrl)}" style="display: inline-block; margin: 24px 0; padding: 12px 24px; background-color: #19150f; color: #faf6ee; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: 600;">Take the next step</a>
       ${SHELL_CLOSE}`,
     tags: [{ name: "flow", value: "ai_reality_map" }],

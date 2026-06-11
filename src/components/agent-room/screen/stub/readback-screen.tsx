@@ -6,6 +6,7 @@ import { STAGE_CLEAR, STAGE_NAME, type Stage } from "@/lib/agent-room/data/map-q
 import type { ReadbackProps } from "@/lib/agent-room/component-props";
 import styles from "../../ink-band.module.css";
 import { Readback } from "../readback";
+import { ReadbackMapEmail } from "../readback-map-email";
 import type { ScreenProps } from "./stub-screen";
 
 const ROWS: ReadonlyArray<[string, Stage]> = [
@@ -14,6 +15,9 @@ const ROWS: ReadonlyArray<[string, Stage]> = [
   ["03", "training"],
   ["04", "tech"],
 ];
+
+/** Orgs that cleared the Safety gate are placed at Sandbox for readback. */
+const HERE_STAGE: Stage = "sandbox";
 
 /**
  * The `readback` registry entry (INT-02) — **dual-mode**, because the two
@@ -26,14 +30,22 @@ const ROWS: ReadonlyArray<[string, Stage]> = [
  * into one is a product/design call, deferred — see INT-02 §10.) No hooks here,
  * so the top-level branch is rules-of-hooks-safe.
  */
-export function ReadbackScreen({ mapRead, stream, disabled }: ScreenProps) {
+export function ReadbackScreen({ mapRead, stream, disabled, onCaptureSubmit }: ScreenProps) {
+  const emailCapture =
+    onCaptureSubmit != null ? (
+      <ReadbackMapEmail onCaptureSubmit={onCaptureSubmit} disabled={disabled} />
+    ) : null;
+
   if (stream) {
     return (
-      <Readback
-        props={stream.props as ReadbackProps}
-        onSay={stream.onSay}
-        disabled={disabled}
-      />
+      <>
+        <Readback
+          props={stream.props as ReadbackProps}
+          onSay={stream.onSay}
+          disabled={disabled}
+        />
+        {emailCapture}
+      </>
     );
   }
   return (
@@ -45,7 +57,7 @@ export function ReadbackScreen({ mapRead, stream, disabled }: ScreenProps) {
 
       <div className={styles.readback}>
         {ROWS.map(([num, key], idx) => {
-          const here = key === "safety";
+          const here = key === HERE_STAGE;
           const gap = mapRead?.stages[key] ?? null;
           const line = gap ? gap.line : STAGE_CLEAR[key];
           const sev = gap ? gap.sev : 0;
@@ -55,6 +67,12 @@ export function ReadbackScreen({ mapRead, stream, disabled }: ScreenProps) {
               className={`${styles.rbStage} ${here ? styles.rbHere : ""} ${gap ? "" : styles.rbClear}`}
               style={{ "--i": idx } as CSSProperties}
             >
+              {/* Ghost step index on the focused stage (proposal §3.3). */}
+              {here ? (
+                <span className={styles.rbGhostNum} aria-hidden="true">
+                  {num}
+                </span>
+              ) : null}
               <span className={styles.rbNode} aria-hidden="true" />
               <div className={styles.rbHead}>
                 <span className={styles.rbNum}>{num}</span>
@@ -78,9 +96,10 @@ export function ReadbackScreen({ mapRead, stream, disabled }: ScreenProps) {
 
       <p className={styles.body} style={{ marginTop: "1rem" }}>
         <span id="rbphrase">
-          <b>It starts with Safety — and so does almost everyone.</b>
+          <b>Your next move is Sandbox — a bounded place to try AI against your real work.</b>
         </span>
       </p>
+      {emailCapture}
     </div>
   );
 }

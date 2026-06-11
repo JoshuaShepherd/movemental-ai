@@ -18,8 +18,8 @@ import {
 const ILLUSION_STAGE_WEIGHT: Partial<Record<SsssIllusionId, AiRealityStage>> = {
   safety_paper: "Safety",
   shadow_sandbox: "Sandbox",
-  skills_theater: "Skills",
-  solutions_without_evidence: "Solutions",
+  skills_theater: "Training",
+  solutions_without_evidence: "Tech",
 };
 
 function mean(xs: number[]): number {

@@ -67,6 +67,9 @@ function VoiceLine({
 }) {
   const spanRef = useRef<HTMLSpanElement>(null);
   const nibRef = useRef<SVGSVGElement>(null);
+  // Stream commits mark lines `settled` — they must wrap like live StreamVoice,
+  // not collapse back to nowrap and run off the page.
+  const wrap = multiline || settled;
 
   useEffect(() => {
     const span = spanRef.current;
@@ -75,7 +78,7 @@ function VoiceLine({
 
     // A wrapping line can't carry the horizontal clip sweep (the nib rides a
     // single line) — show it fully and skip the animation.
-    if (settled || multiline || !canWriteOn()) {
+    if (wrap || !canWriteOn()) {
       span.style.clipPath = "none";
       if (nib) nib.style.opacity = "0";
       onDone(id);
@@ -111,14 +114,14 @@ function VoiceLine({
     frameId = requestAnimationFrame(frame);
     return () => cancelAnimationFrame(frameId);
     // Animate once per line; id/text/onDone/settled are stable for a given line.
-  }, [id, text, settled, multiline, onDone]);
+  }, [id, text, wrap, onDone]);
 
   return (
-    <div className={`${styles.vline} ${multiline ? styles.vlineWrap : ""} ${old ? styles.old : ""}`}>
-      <span ref={spanRef} className={`${styles.vspan} ${multiline ? styles.vspanWrap : ""}`}>
+    <div className={`${styles.vline} ${wrap ? styles.vlineWrap : ""} ${old ? styles.old : ""}`}>
+      <span ref={spanRef} className={`${styles.vspan} ${wrap ? styles.vspanWrap : ""}`}>
         {text}
       </span>
-      {!multiline && (
+      {!wrap && (
         <svg ref={nibRef} className={styles.nib} viewBox="0 0 26 26" aria-hidden="true">
           <g transform="rotate(-26 8 20)">{NIB}</g>
         </svg>

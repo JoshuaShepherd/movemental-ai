@@ -29,6 +29,14 @@ const nextConfig: NextConfig = {
     ];
   },
   async redirects() {
+    /**
+     * Legacy redirect destinations (agent-first surface, 2026-06 route repair):
+     *   /agent        — narrative, contact, audience landings, team
+     *   /field-guide  — content, book, blog, pathway/safety, toolkit
+     *   /field-guide?guide=sandbox — pathway sandbox/lab
+     *   /assess       — assessment aliases
+     *   /enroll       — commercial / org-fit intent
+     */
     return [
       {
         source: "/downloads/it-starts-with-safety-v1.pdf",
@@ -45,71 +53,75 @@ const nextConfig: NextConfig = {
         destination: "/downloads/movemental-it-continues-with-exploration-field-guide.pdf",
         permanent: true,
       },
+      // Backward-compatible aliases for old /field-guides URLs (live page is /field-guide).
+      {
+        source: "/field-guides/sandbox",
+        destination: "/field-guide?guide=sandbox",
+        permanent: true,
+      },
+      {
+        source: "/field-guides/safety",
+        destination: "/field-guide",
+        permanent: true,
+      },
+      {
+        source: "/field-guides",
+        destination: "/field-guide",
+        permanent: true,
+      },
+      {
+        source: "/field-guides/:path*",
+        destination: "/field-guide",
+        permanent: true,
+      },
       {
         source: "/blog",
-        destination: "/field-guides",
+        destination: "/field-guide",
         permanent: true,
       },
       {
         source: "/book",
-        destination: "/field-guides",
+        destination: "/field-guide",
         permanent: true,
       },
       {
         source: "/book/:path*",
-        destination: "/field-guides",
+        destination: "/field-guide",
         permanent: true,
       },
-      // Path-surface consolidation (2026-05): /path, /work-with-us, and /field-guide
-      // were four overlapping surfaces describing the same territory. They are
-      // now consolidated into /pathway (structured overview), /the-path
-      // (long-form essay), and /field-guides (series catalog).
       {
         source: "/path",
-        destination: "/pathway",
+        destination: "/field-guide",
         permanent: true,
       },
       {
         source: "/path/:slug*",
-        destination: "/pathway/:slug*",
+        destination: "/field-guide",
         permanent: true,
       },
       {
         source: "/work-with-us",
-        destination: "/pathway",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/work-with-us/:slug*",
-        destination: "/pathway",
+        destination: "/agent",
         permanent: true,
       },
-      {
-        source: "/field-guide",
-        destination: "/field-guides",
-        permanent: true,
-      },
-      {
-        source: "/field-guide/:slug*",
-        destination: "/field-guides/:slug*",
-        permanent: true,
-      },
-      // /team has been folded into /about — the rebuilt About page now carries
-      // founder bios, the origin story, and the five commitments. Defensive
-      // 301 catches any external links or bookmarks that still point at /team.
       {
         source: "/skills",
-        destination: "/pathway/skills",
+        destination: "/field-guide",
         permanent: true,
       },
       {
         source: "/team",
-        destination: "/about",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/team/:path*",
-        destination: "/about",
+        destination: "/agent",
         permanent: true,
       },
       {
@@ -119,217 +131,332 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/fragmentation-old",
-        destination: "/about",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/nonprofits-new",
-        destination: "/nonprofits",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/nonprofits-new/next",
-        destination: "/nonprofits",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/churches-new",
-        destination: "/churches",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/movement-leaders-new",
-        destination: "/movement-leaders",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/institutions-new",
-        destination: "/institutions",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/nonprofits-system-example-new",
-        destination: "/nonprofits",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/fragmentation-intel",
-        destination: "/about",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/movemental-at-100",
-        destination: "/about",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/knowledge-ecosystem",
-        destination: "/about",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/content/articles/sandbox",
-        destination: "/field-guides",
+        destination: "/field-guide",
         permanent: true,
       },
       {
         source: "/content/articles/sandbox/:path*",
-        destination: "/field-guides",
+        destination: "/field-guide",
         permanent: true,
       },
       {
         source: "/vision",
-        destination: "/about",
+        destination: "/agent",
         permanent: true,
       },
-      // Archived legacy services sub-routes (replaced by /services/sandbox-season as of 2026-04).
-      // Listed explicitly rather than via catch-all so new routes under /services are not captured.
       {
         source: "/services/discovery-lab",
-        destination: "/contact",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/services/organizational-systems",
-        destination: "/contact",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/services/system-builds",
-        destination: "/contact",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/who-its-for",
-        destination: "/pricing",
+        destination: "/enroll",
         permanent: true,
       },
       {
         source: "/organizations",
-        destination: "/pricing",
+        destination: "/enroll",
         permanent: true,
       },
       {
         source: "/organizations/:path*",
-        destination: "/pricing",
+        destination: "/enroll",
         permanent: true,
       },
       {
         source: "/fragmentation",
-        destination: "/about",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/fragmentation/:path*",
-        destination: "/about",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/how-it-works",
-        destination: "/about",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/how-it-works/:path*",
-        destination: "/about",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/system-builds",
-        destination: "/contact",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/system-builds/:path*",
-        destination: "/contact",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/case-studies",
-        destination: "/faq",
+        destination: "/agent",
+        permanent: true,
+      },
+      {
+        source: "/evidence",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/manifesto",
-        destination: "/contact",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/apply",
-        destination: "/contact",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/inquiry",
-        destination: "/contact",
+        destination: "/agent",
         permanent: true,
       },
-      // Pathway stage rename: Foundations/Lab → Safety/Sandbox.
-      // Skills/Solutions did not previously live under /pathway; canonical
-      // detail pages are now /pathway/skills and /pathway/solutions.
+      {
+        source: "/about",
+        destination: "/agent",
+        permanent: true,
+      },
+      {
+        source: "/about/:path*",
+        destination: "/agent",
+        permanent: true,
+      },
+      {
+        source: "/contact",
+        destination: "/agent",
+        permanent: true,
+      },
+      {
+        source: "/pricing",
+        destination: "/enroll",
+        permanent: true,
+      },
+      {
+        source: "/faq",
+        destination: "/agent",
+        permanent: true,
+      },
+      {
+        source: "/churches",
+        destination: "/agent",
+        permanent: true,
+      },
+      {
+        source: "/nonprofits",
+        destination: "/agent",
+        permanent: true,
+      },
+      {
+        source: "/institutions",
+        destination: "/agent",
+        permanent: true,
+      },
+      {
+        source: "/movement-leaders",
+        destination: "/agent",
+        permanent: true,
+      },
+      {
+        source: "/movement-leaders/:path*",
+        destination: "/agent",
+        permanent: true,
+      },
+      {
+        source: "/pathway",
+        destination: "/field-guide",
+        permanent: true,
+      },
+      {
+        source: "/pathway/safety",
+        destination: "/field-guide",
+        permanent: true,
+      },
+      {
+        source: "/pathway/safety/:path*",
+        destination: "/field-guide",
+        permanent: true,
+      },
+      {
+        source: "/pathway/sandbox",
+        destination: "/field-guide?guide=sandbox",
+        permanent: true,
+      },
+      {
+        source: "/pathway/sandbox/:path*",
+        destination: "/field-guide?guide=sandbox",
+        permanent: true,
+      },
+      {
+        source: "/pathway/skills",
+        destination: "/pathway/training",
+        permanent: true,
+      },
+      {
+        source: "/pathway/skills/:path*",
+        destination: "/pathway/training",
+        permanent: true,
+      },
+      {
+        source: "/pathway/solutions",
+        destination: "/pathway/tech",
+        permanent: true,
+      },
+      {
+        source: "/pathway/solutions/:path*",
+        destination: "/pathway/tech",
+        permanent: true,
+      },
+      {
+        source: "/pathway/training",
+        destination: "/field-guide",
+        permanent: true,
+      },
+      {
+        source: "/pathway/training/:path*",
+        destination: "/field-guide",
+        permanent: true,
+      },
+      {
+        source: "/pathway/tech",
+        destination: "/agent",
+        permanent: true,
+      },
+      {
+        source: "/pathway/tech/:path*",
+        destination: "/agent",
+        permanent: true,
+      },
       {
         source: "/pathway/foundations",
-        destination: "/pathway/safety",
+        destination: "/field-guide",
         permanent: true,
       },
       {
         source: "/pathway/foundations/:path*",
-        destination: "/pathway/safety/:path*",
+        destination: "/field-guide",
         permanent: true,
       },
       {
         source: "/pathway/lab",
-        destination: "/pathway/sandbox",
+        destination: "/field-guide?guide=sandbox",
         permanent: true,
       },
       {
         source: "/pathway/lab/:path*",
-        destination: "/pathway/sandbox/:path*",
+        destination: "/field-guide?guide=sandbox",
         permanent: true,
       },
       {
         source: "/pathway/fluency",
-        destination: "/pathway/skills",
+        destination: "/field-guide",
         permanent: true,
       },
       {
         source: "/pathway/fluency/:path*",
-        destination: "/pathway/skills/:path*",
+        destination: "/field-guide",
         permanent: true,
       },
       {
         source: "/pathway/build",
-        destination: "/pathway/solutions",
+        destination: "/agent",
         permanent: true,
       },
       {
         source: "/pathway/build/:path*",
-        destination: "/pathway/solutions/:path*",
+        destination: "/agent",
+        permanent: true,
+      },
+      {
+        source: "/pathway/:path*",
+        destination: "/field-guide",
         permanent: true,
       },
       {
         source: "/toolkit",
-        destination: "/field-guides/safety",
+        destination: "/field-guide",
         permanent: true,
       },
       {
         source: "/toolkit/:path*",
-        destination: "/field-guides/safety",
+        destination: "/field-guide",
         permanent: true,
       },
-      // /training was a standalone positioning page (AI training for mission-
-      // driven organizations) that duplicated /pathway/skills's framing. Its
-      // three useful blocks — "what buyers mean by training," "where standard
-      // training works/falls short," and the readiness-routing matrix — were
-      // folded into /pathway/skills directly. Route retired 2026-05.
       {
         source: "/training",
-        destination: "/pathway/skills",
+        destination: "/field-guide",
         permanent: true,
       },
       {
         source: "/training/:path*",
-        destination: "/pathway/skills",
+        destination: "/field-guide",
         permanent: true,
       },
     ];
