@@ -224,18 +224,29 @@ function StreamRoom() {
   const room = useAgentRoomStream();
   const { screen } = room;
   const atOpening = screen.kind === "opening";
-  const inBeat = screen.kind === "component" && screen.component === "beat";
+  const inBeat =
+    (screen.kind === "local" && screen.id === "beat") ||
+    (screen.kind === "component" && screen.component === "beat");
   return (
     <AgentRoomView
       screenNode={
         <StreamScreen
           state={screen}
+          mapRead={room.mapRead}
+          onBeatAnswer={room.onBeatAnswer}
+          onCaptureSubmit={room.onCaptureSubmit}
           onSay={room.sendMessage}
           onReset={room.reset}
           disabled={room.isStreaming}
         />
       }
-      screenKey={screen.kind === "component" ? `c-${screen.nonce}` : "opening"}
+      screenKey={
+        screen.kind === "local"
+          ? `local-${screen.id}-${screen.nonce}`
+          : screen.kind === "component"
+            ? `c-${screen.nonce}`
+            : "opening"
+      }
       home={atOpening}
       scroll={!inBeat}
       voice={room.voice}

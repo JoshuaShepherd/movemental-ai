@@ -17,7 +17,9 @@ const ROWS: ReadonlyArray<[string, Stage]> = [
 ];
 
 /** Orgs that cleared the Safety gate are placed at Sandbox for readback. */
-const HERE_STAGE: Stage = "sandbox";
+function hereStageForRead(mapRead: ScreenProps["mapRead"]): Stage {
+  return mapRead?.clearedSafety ? "sandbox" : "safety";
+}
 
 /**
  * The `readback` registry entry (INT-02) — **dual-mode**, because the two
@@ -57,7 +59,8 @@ export function ReadbackScreen({ mapRead, stream, disabled, onCaptureSubmit }: S
 
       <div className={styles.readback}>
         {ROWS.map(([num, key], idx) => {
-          const here = key === HERE_STAGE;
+          const hereStage = hereStageForRead(mapRead);
+          const here = key === hereStage;
           const gap = mapRead?.stages[key] ?? null;
           const line = gap ? gap.line : STAGE_CLEAR[key];
           const sev = gap ? gap.sev : 0;
@@ -96,7 +99,16 @@ export function ReadbackScreen({ mapRead, stream, disabled, onCaptureSubmit }: S
 
       <p className={styles.body} style={{ marginTop: "1rem" }}>
         <span id="rbphrase">
-          <b>Your next move is Sandbox — a bounded place to try AI against your real work.</b>
+          {mapRead?.clearedSafety ? (
+            <b>
+              Your next move is Sandbox — a bounded place to try AI against your real work.
+            </b>
+          ) : (
+            <b>
+              Your next move is Safety — ratify what your organization will and won&apos;t do with
+              AI.
+            </b>
+          )}
         </span>
       </p>
       {emailCapture}

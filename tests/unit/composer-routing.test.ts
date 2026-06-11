@@ -1,18 +1,15 @@
 import { describe, expect, it } from "vitest";
 
-import {
-  BEAT_INTRO_AGENT_CHIPS,
-  resolveStreamChipRoute,
-} from "../../src/lib/agent-room/composer-routing";
+import { resolveStreamChipRoute } from "../../src/lib/agent-room/composer-routing";
 
 describe("composer routing (PAR-02)", () => {
-  it("routes lead chip to local beatIntro", () => {
+  it("routes lead chip to local toBeatCold (screen first, voice after)", () => {
     const route = resolveStreamChipRoute({
       label: "Get a clear next AI step",
       say: "Get a clear next AI step",
       lead: true,
     });
-    expect(route).toEqual({ kind: "local", scene: "beatIntro" });
+    expect(route).toEqual({ kind: "local", scene: "toBeatCold" });
   });
 
   it("routes info chips to agent utterances", () => {
@@ -22,11 +19,5 @@ describe("composer routing (PAR-02)", () => {
     expect(
       resolveStreamChipRoute({ label: "What does it cost?", say: "What does it cost?" }),
     ).toEqual({ kind: "agent", utterance: "What does it cost?" });
-  });
-
-  it("exposes beatIntro follow-up chip for agent handoff", () => {
-    expect(BEAT_INTRO_AGENT_CHIPS).toEqual([
-      { label: "Start with Safety", utterance: "Start with Safety", lead: true },
-    ]);
   });
 });

@@ -49,7 +49,14 @@ export async function playScene(scene: Scene, ctx: RunnerContext, gen: Generatio
     if ("wait" in act) await sleep(act.wait);
     else if ("clear" in act) ctx.clearInk();
     else if ("say" in act) await ctx.say(act.say);
-    else if ("show" in act) ctx.show(act.show, { qi: act.qi, mode: act.mode, id: act.id, kind: act.kind });
+    else if ("show" in act)
+      ctx.show(act.show, {
+        qi: act.qi,
+        mode: act.mode,
+        id: act.id,
+        kind: act.kind,
+        singleQuestionHint: act.singleQuestionHint,
+      });
     else if ("gesture" in act) await ctx.gesture(act.gesture, act.target ?? "");
     else if ("suggest" in act) ctx.suggest(act.suggest);
     else if ("await" in act) {

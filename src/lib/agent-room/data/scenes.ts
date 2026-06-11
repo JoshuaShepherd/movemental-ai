@@ -22,7 +22,7 @@ export const SCENES = {
     { gesture: "underline", target: "#phrase" },
     {
       suggest: [
-        { label: "Get a clear next AI step", lead: true, to: "beatIntro" },
+        { label: "Get a clear next AI step", lead: true, to: "toBeatCold" },
         { label: "About Movemental", to: "whatIs" },
         { label: "What does it cost?", to: "cost" },
         { label: "Get in touch", to: "talkToUs" },
@@ -130,12 +130,13 @@ export const SCENES = {
       suggest: [{ label: "Start with Safety", lead: true, to: "toBeat" }],
     },
   ],
-  toBeat: [
-    { show: "beat", qi: 0 },
-    { wait: 460 },
-    { say: "Safety first. This is the gate nobody gets past without having done the work." },
-    { wait: 180 },
-    { gesture: "arrow", target: "#opts" },
+  toBeat: [{ show: "beat", qi: 0 }],
+  // Cold home on-ramp only — screen first, then one voice line that sets expectation.
+  toBeatCold: [
+    { show: "beat", qi: 0, singleQuestionHint: true },
+    {
+      say: "This is usually just one question — answer honestly, because the honest answer is the useful one.",
+    },
   ],
   toPath: [
     { show: "path" },

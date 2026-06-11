@@ -1,15 +1,15 @@
 import { describe, expect, it } from "vitest";
 
 import {
-  BEAT_INTRO_CHOREOGRAPHY,
   LOCAL_CHOREOGRAPHY,
   OPENING_CHOREOGRAPHY,
+  TO_BEAT_COLD_VOICE_CHOREOGRAPHY,
 } from "../../src/lib/agent-room/local-choreography";
 import { SCENES } from "../../src/lib/agent-room/data/scenes";
 
 describe("LOCAL_CHOREOGRAPHY (PAR-01)", () => {
-  it("documents opening + beatIntro as LOCAL beats", () => {
-    expect(Object.keys(LOCAL_CHOREOGRAPHY).sort()).toEqual(["beatIntro", "opening"]);
+  it("documents opening + toBeatCold voice as LOCAL beats", () => {
+    expect(Object.keys(LOCAL_CHOREOGRAPHY).sort()).toEqual(["opening", "toBeatCold"]);
   });
 
   it("OPENING_CHOREOGRAPHY has say + gesture, no show/suggest", () => {
@@ -24,9 +24,10 @@ describe("LOCAL_CHOREOGRAPHY (PAR-01)", () => {
     expect(OPENING_CHOREOGRAPHY).toEqual(expected);
   });
 
-  it("BEAT_INTRO_CHOREOGRAPHY has two say lines, no suggest", () => {
-    const says = BEAT_INTRO_CHOREOGRAPHY.filter((a) => "say" in a);
-    expect(says).toHaveLength(2);
-    expect(BEAT_INTRO_CHOREOGRAPHY.some((a) => "suggest" in a)).toBe(false);
+  it("TO_BEAT_COLD_VOICE_CHOREOGRAPHY has one say line, no suggest", () => {
+    const says = TO_BEAT_COLD_VOICE_CHOREOGRAPHY.filter((a) => "say" in a);
+    expect(says).toHaveLength(1);
+    expect(TO_BEAT_COLD_VOICE_CHOREOGRAPHY.some((a) => "show" in a)).toBe(false);
+    expect(TO_BEAT_COLD_VOICE_CHOREOGRAPHY.some((a) => "suggest" in a)).toBe(false);
   });
 });

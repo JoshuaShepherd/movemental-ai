@@ -34,27 +34,20 @@
   border-bottom: 1px solid var(--color-ink-band-border);
 }
 .logo {
-  font-family: var(--font-ink-display);
-  font-size: clamp(1.15rem, 2.8vw, 1.32rem);
-  letter-spacing: -0.02em;
-  color: var(--color-ink-band-ink);
+  display: flex;
+  align-items: center;
   background: none;
   border: 0;
   padding: 0;
   cursor: pointer;
-  transition: color 0.15s;
+  line-height: 0;
 }
-.logo:hover {
-  color: var(--color-ink-band-blue);
+.logoMark {
+  display: block;
+  transition: opacity 0.15s;
 }
-.logoDot {
-  display: inline-block;
-  width: 0.32em;
-  height: 0.32em;
-  border-radius: 50%;
-  background: var(--color-ink-band-border);
-  margin: 0 0.02em 0.05em;
-  vertical-align: middle;
+.logo:hover .logoMark {
+  opacity: 0.72;
 }
 
 /* ===== screen (the stage) ===== */
@@ -429,40 +422,40 @@
   transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
   will-change: transform;
 }
-/* Rounded proof cards (proposal §3.2) — portrait well + name/cred on paper. */
 .carItem {
   flex: 0 0 auto;
-  width: 168px;
+  width: 88px;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  gap: 0;
-  text-align: left;
+  align-items: center;
+  gap: 0.45rem;
+  text-align: center;
   cursor: pointer;
-  background: var(--color-ink-band-paper);
-  border: 1px solid var(--color-ink-band-border);
-  border-radius: 16px;
-  overflow: hidden;
+  background: none;
+  border: 0;
   padding: 0;
   font: inherit;
-  transition:
-    border-color 0.22s,
-    transform 0.22s cubic-bezier(0.2, 0.7, 0.2, 1),
-    box-shadow 0.22s;
   animation: faceIn 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   animation-delay: calc(var(--i, 0) * 32ms + 0.15s);
 }
 .carItem:disabled {
   cursor: default;
 }
+/* Round portraits — object-fit:cover fills the circle. */
 .carPortrait {
-  width: 100%;
-  aspect-ratio: 5 / 4;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
   overflow: hidden;
-  border: 0;
-  border-bottom: 1px solid var(--color-ink-band-border);
+  border: 1px solid var(--color-ink-band-border);
   background: var(--color-ink-band-surface);
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s,
+    transform 0.25s;
 }
 .carPortrait img {
   width: 100%;
@@ -472,80 +465,41 @@
   filter: grayscale(1) sepia(0.32) brightness(1.03) contrast(1.04);
   transition: filter 0.35s;
 }
-.carItem > span:last-child {
-  display: block;
-  padding: 0.6rem 0.7rem 0.72rem;
-}
-.carItem .faceName {
-  font-size: 0.82rem;
-  line-height: 1.2;
-}
-.carItem .faceCred {
-  font-size: 0.66rem;
-  line-height: 1.25;
-  margin-top: 2px;
-}
-.carItem:hover,
-.carItem:focus-visible {
+.carItem:hover .carPortrait,
+.carItem:focus-visible .carPortrait {
   border-color: var(--color-ink-band-ink);
-  transform: translateY(-3px);
-  box-shadow: 0 16px 30px -20px rgba(26, 26, 26, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px -14px rgba(26, 26, 26, 0.45);
 }
 .carItem:hover .carPortrait img,
 .carItem:focus-visible .carPortrait img {
   filter: none;
 }
-/* scroll progress pill (decorative; position announced via .srOnly live region) */
-.carProgress {
-  position: relative;
-  height: 4px;
-  margin: 0.9rem auto 0;
-  max-width: 9rem;
-  border-radius: 999px;
-  background: var(--color-ink-band-border);
-  overflow: hidden;
-}
-.carProgressFill {
-  position: absolute;
-  inset: 0 auto 0 0;
-  height: 100%;
-  border-radius: 999px;
-  background: var(--color-ink-band-blue);
-  transition: width 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.srOnly {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
 @media (min-width: 1200px) {
   .carItem {
-    width: 182px;
+    width: 100px;
+  }
+  .carPortrait {
+    width: 76px;
+    height: 76px;
   }
 }
 @media (max-width: 560px) {
   .carItem {
-    width: 152px;
-    border-radius: 14px;
+    width: 78px;
+  }
+  .carPortrait {
+    width: 56px;
+    height: 56px;
   }
 }
 @media (max-width: 380px) {
   .carItem {
-    width: 138px;
+    width: 68px;
   }
-}
-@media (prefers-reduced-motion: reduce) {
-  .carItem {
-    animation: none !important;
-  }
-  .carProgressFill {
-    transition: none;
+  .carPortrait {
+    width: 48px;
+    height: 48px;
   }
 }
 

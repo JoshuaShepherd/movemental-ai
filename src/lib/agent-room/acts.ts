@@ -79,6 +79,8 @@ export interface ShowOpts {
   id?: number;
   /** Capture variant for the `capture` screen (map | paid | free). */
   kind?: string;
+  /** Cold on-ramp: show 01/01 on Q1 (most orgs stop after one question). */
+  singleQuestionHint?: boolean;
 }
 
 export type Act =

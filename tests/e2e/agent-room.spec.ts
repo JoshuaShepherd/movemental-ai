@@ -62,7 +62,7 @@ test.describe("Agent Room", () => {
       expect(streamCalls, "hybrid load must not call stream").toEqual([]);
     });
 
-    test("lead chip runs beatIntro locally", async ({ page }) => {
+    test("lead chip opens beat screen immediately with one-question voice", async ({ page }) => {
       const streamCalls: string[] = [];
       page.on("request", (r) => {
         if (r.url().includes("/api/agent-room/stream")) streamCalls.push(r.url());
@@ -70,10 +70,11 @@ test.describe("Agent Room", () => {
       await page.goto("/agent");
       await page.waitForTimeout(2000);
       await page.getByRole("button", { name: "Get a clear next AI step" }).click();
-      await expect(page.getByText("This is probably a one-question assessment")).toBeVisible({
+      await expect(page.locator("#opts")).toBeVisible({ timeout: 3500 });
+      await expect(page.getByText("This is usually just one question")).toBeVisible({
         timeout: 3500,
       });
-      expect(streamCalls, "beatIntro is local in hybrid").toEqual([]);
+      expect(streamCalls, "cold on-ramp is local in hybrid").toEqual([]);
     });
 
     test("unmatched typed input POSTs to stream (mocked)", async ({ page }) => {
@@ -157,7 +158,7 @@ test.describe("Agent Room", () => {
       expect(streamCalls, "opening choreography must not call stream").toEqual([]);
     });
 
-    test("lead chip runs beatIntro locally before any stream call", async ({ page }) => {
+    test("lead chip opens beat screen immediately with one-question voice", async ({ page }) => {
       const streamCalls: string[] = [];
       page.on("request", (r) => {
         if (r.url().includes("/api/agent-room/stream")) streamCalls.push(r.url());
@@ -165,11 +166,11 @@ test.describe("Agent Room", () => {
       await page.goto("/agent");
       await page.waitForTimeout(2000);
       await page.getByRole("button", { name: "Get a clear next AI step" }).click();
-      await expect(page.getByText("This is probably a one-question assessment")).toBeVisible({
+      await expect(page.locator("#opts")).toBeVisible({ timeout: 3500 });
+      await expect(page.getByText("This is usually just one question")).toBeVisible({
         timeout: 3500,
       });
-      expect(streamCalls, "beatIntro is local — no stream yet").toEqual([]);
-      await expect(page.getByRole("button", { name: "Start with Safety" })).toBeVisible();
+      expect(streamCalls, "cold on-ramp is local — no stream yet").toEqual([]);
     });
   });
 

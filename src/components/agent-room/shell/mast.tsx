@@ -1,5 +1,7 @@
 "use client";
 
+import { MovementalLogo } from "@/components/brand/movemental-logo";
+
 import styles from "../ink-band.module.css";
 
 /**
@@ -16,8 +18,7 @@ export function Mast({ onHome }: { onHome: () => void }) {
         onClick={onHome}
         aria-label="Movemental — back to the start"
       >
-        m<span className={styles.logoDot} aria-hidden="true" />
-        vemental
+        <MovementalLogo priority className={styles.logoMark} />
       </button>
     </header>
   );

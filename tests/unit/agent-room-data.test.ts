@@ -40,6 +40,9 @@ describe("agent-room data layer (AF-06)", () => {
     expect(read.clearedSafety).toBe(true);
     expect(read.gaps[0]).toMatchObject({ stage: "sandbox", sev: 2 });
     expect(read.gaps[1]).toMatchObject({ stage: "tech", sev: 2 });
+    const readFail = computeMapRead([MAP_Q[0].opts[2]]);
+    expect(readFail.clearedSafety).toBe(false);
+    expect(readFail.stages.safety).toMatchObject({ sev: 3 });
   });
 
   it("FAQ_SECTIONS has ten groups with q/a items", () => {

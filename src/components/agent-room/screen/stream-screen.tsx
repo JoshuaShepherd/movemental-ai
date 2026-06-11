@@ -1,14 +1,15 @@
 import type { HandoffHumanProps } from "@/lib/agent-room/component-props";
 import { submitLead } from "@/lib/agent-room/capture";
 import { toScreenId } from "@/lib/agent-room/screen-map";
+import type { MapRead } from "@/lib/agent-room/data/map-q";
 import type { ScreenState } from "../use-agent-room-stream";
-
 import { LEADERS } from "@/lib/agent-room/data/leaders";
 import { NetworkScreen } from "./network";
 import { HomeScreen } from "./stub/home-screen";
 import { AudienceScreen } from "./audience";
 import { HandoffHuman } from "./handoff-human";
 import { SCREEN_COMPONENTS } from "./stub/stub-screen";
+import { StubScreen } from "./stub/stub-screen";
 
 /**
  * The live-stream screen adapter (INT-02). Replaces the old per-ComponentId
@@ -25,11 +26,17 @@ import { SCREEN_COMPONENTS } from "./stub/stub-screen";
  */
 export function StreamScreen({
   state,
+  mapRead,
+  onBeatAnswer,
+  onCaptureSubmit,
   onSay,
   onReset,
   disabled,
 }: {
   state: ScreenState;
+  mapRead: MapRead | null;
+  onBeatAnswer: (qi: number, oi: number) => void;
+  onCaptureSubmit: (kind: string, values: Record<string, string>) => void;
   onSay: (text: string) => void;
   onReset: () => void;
   disabled?: boolean;
@@ -42,6 +49,24 @@ export function StreamScreen({
           if (leader) onSay(`Tell me about ${leader.name}`);
         }}
         disabled={disabled ?? false}
+      />
+    );
+  }
+
+  if (state.kind === "local") {
+    return (
+      <StubScreen
+        screen={{ id: state.id, opts: state.opts, nonce: state.nonce }}
+        mapRead={mapRead}
+        onHome={onReset}
+        onBeatAnswer={onBeatAnswer}
+        onLeaderSelect={(i) => {
+          const leader = LEADERS[i];
+          if (leader) onSay(`Tell me about ${leader.name}`);
+        }}
+        onCaptureSubmit={onCaptureSubmit}
+        onCaptureSkip={onReset}
+        disabled={!!disabled}
       />
     );
   }

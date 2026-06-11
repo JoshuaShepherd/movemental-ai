@@ -41,7 +41,11 @@ export interface MapQuestion {
   opts: MapOption[];
 }
 
-/** Spoken when Q1 is anything but a full yes — assessment stops here. */
+/** Readback gap line when Q1 fails the Safety gate (most organizations). */
+export const SAFETY_GATE_GAP_LINE =
+  "leadership hasn't ratified Safety in writing yet";
+
+/** Spoken when Q1 is anything but a full yes — legacy voice path; readback is primary. */
 export const SAFETY_GATE_THREAT: readonly string[] = [
   "Then here's what's true right now, whether or not anyone's named it:",
   "AI is already in use across your staff — on donor records, member information, the pastoral and personal things people trusted you with — and no one has decided, on paper, what's allowed. The day that surfaces — in a board meeting, a news story, or a quiet complaint — the trust you spent decades earning is what pays for it.",
@@ -167,6 +171,8 @@ export function computeMapRead(answers: (MapOption | null | undefined)[]): MapRe
   const clearedSafety = answers[0]?.gatePass === true;
   if (clearedSafety) {
     stages.safety = null;
+  } else if (answers[0]?.gateFail) {
+    stages.safety = { line: SAFETY_GATE_GAP_LINE, sev: 3 };
   }
   answers.forEach((opt) => {
     const r = opt?.read;

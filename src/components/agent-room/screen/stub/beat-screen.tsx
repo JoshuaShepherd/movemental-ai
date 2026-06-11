@@ -42,7 +42,7 @@ export function BeatScreen(props: ScreenProps) {
 function StubBeat({ opts, onBeatAnswer, disabled }: ScreenProps) {
   const qi = opts.qi ?? 0;
   const question = MAP_Q[qi];
-  const total = MAP_Q.length;
+  const total = opts.singleQuestionHint && qi === 0 ? 1 : MAP_Q.length;
   const pct = total > 1 ? Math.round((qi / (total - 1)) * 100) : 0;
 
   const [chosen, setChosen] = useState<number | null>(null);

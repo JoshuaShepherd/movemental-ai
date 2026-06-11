@@ -461,7 +461,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
       answers[qi] = MAP_Q[qi].opts[oi];
       mapAnswersRef.current = answers;
       const read = computeMapRead(answers);
-      if (qi >= MAP_Q.length - 1) setMapRead(read);
+      if (qi >= MAP_Q.length - 1 || MAP_Q[qi].opts[oi].gateFail) setMapRead(read);
       lastSceneRef.current = "beatScene";
       void play(beatScene(qi, oi, read));
     },
