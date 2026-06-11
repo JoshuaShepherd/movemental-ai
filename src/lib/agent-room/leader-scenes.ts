@@ -32,9 +32,9 @@ export function leaderScene(i: number): Scene {
       { say: p.lede },
       {
         suggest: [
+          { label: "Map where we actually stand", to: "toBeat" },
           { label: `What does ${first} work on?`, to: "leaderWork" },
           { label: `How is ${first} connected?`, to: "leaderConnect" },
-          { label: "Map where we actually stand", to: "toBeat" },
           { label: "Back to the leaders", to: "opening" },
         ],
       },
@@ -48,8 +48,8 @@ export function leaderScene(i: number): Scene {
     { say: "One of the leaders behind the path. A fuller profile is coming." },
     {
       suggest: [
-        { label: `How is ${first} connected?`, to: "leaderConnect" },
         { label: "Map where we actually stand", to: "toBeat" },
+        { label: `How is ${first} connected?`, to: "leaderConnect" },
         { label: "Back to the leaders", to: "opening" },
       ],
     },
@@ -77,8 +77,8 @@ export function leaderWorkScene(i: number): Scene {
     ...sayScene(p.workSay),
     {
       suggest: [
-        { label: `How is ${first} connected?`, to: "leaderConnect" },
         { label: "Map where we actually stand", to: "toBeat" },
+        { label: `How is ${first} connected?`, to: "leaderConnect" },
         { label: "Back to the leaders", to: "opening" },
       ],
     },
@@ -107,8 +107,8 @@ export function leaderConnectScene(i: number): Scene {
     ...sayScene(p.connectSay),
     {
       suggest: [
-        { label: `What does ${first} work on?`, to: "leaderWork" },
         { label: "Map where we actually stand", to: "toBeat" },
+        { label: `What does ${first} work on?`, to: "leaderWork" },
         { label: "Back to the leaders", to: "opening" },
       ],
     },

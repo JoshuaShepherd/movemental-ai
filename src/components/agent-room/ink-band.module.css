@@ -439,12 +439,46 @@
   color: var(--color-ink-band-ink-muted);
   margin-top: 0.4rem;
 }
+.leadLede {
+  font-family: var(--font-ink-display);
+  font-size: 1.08rem;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--color-ink-band-ink);
+  max-width: 52ch;
+  margin: 0 0 0.85rem;
+}
 .leadBio {
   font-size: 1.02rem;
   line-height: 1.6;
   color: var(--color-ink-band-ink-muted);
   max-width: 68ch;
   margin-bottom: 0.7rem;
+}
+.authorshipNote {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--color-ink-band-ink-muted);
+  max-width: 58ch;
+  margin: 0 0 1.25rem;
+  padding-left: 0.85rem;
+  border-left: 2px solid var(--color-ink-band-highlight);
+}
+.movementVoicesLinkWrap {
+  margin: 0.85rem 0 0;
+}
+.movementVoicesLink {
+  font-family: var(--font-ink-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-ink-band-blue);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+.movementVoicesLink:hover {
+  border-bottom-color: var(--color-ink-band-blue);
 }
 .fade {
   animation: fadein 0.5s 0.1s both;

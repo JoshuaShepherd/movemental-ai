@@ -23,11 +23,15 @@ export interface TwoWaysForwardProps {
   reassurance: string;
   freeWay: WayForwardOption;
   paidWay: WayForwardOption;
+  /** When true, the free card CTA gets the scene's single highlighter swipe. */
+  freeLead?: boolean;
 }
 
-function WayCard({ option }: { option: WayForwardOption }) {
+function WayCard({ option, lead }: { option: WayForwardOption; lead?: boolean }) {
   return (
-    <div className={`${styles.way} ${option.paid ? styles.paid : ""}`}>
+    <div
+      className={`${styles.way} ${lead ? styles.wayLead : ""} ${option.paid ? styles.paid : ""}`}
+    >
       <h4>{option.title}</h4>
       <p className={styles.price}>{option.price}</p>
       <p>{option.description}</p>
@@ -48,12 +52,13 @@ export function TwoWaysForward({
   reassurance,
   freeWay,
   paidWay,
+  freeLead = false,
 }: TwoWaysForwardProps) {
   return (
     <div className={styles.sec}>
       <p className={styles.secLabel}>{sectionLabel}</p>
       <div className={styles.ways}>
-        <WayCard option={freeWay} />
+        <WayCard option={freeWay} lead={freeLead} />
         <WayCard option={paidWay} />
       </div>
       <p className={styles.honest}>{reassurance}</p>

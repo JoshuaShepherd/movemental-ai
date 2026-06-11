@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 import styles from "../../ink-band.module.css";
@@ -105,10 +106,12 @@ function StageWays({
   reassurance,
   freeWay,
   paidWay,
+  freeLead = false,
 }: {
   reassurance: string;
   freeWay: WayForwardOption;
   paidWay: WayForwardOption;
+  freeLead?: boolean;
 }) {
   return (
     <TwoWaysForward
@@ -116,6 +119,7 @@ function StageWays({
       reassurance={reassurance}
       freeWay={freeWay}
       paidWay={paidWay}
+      freeLead={freeLead}
     />
   );
 }
@@ -143,6 +147,7 @@ export function PricingScreen({ onHome }: ScreenProps) {
                 reassurance="Both routes produce the same ratified Handbook."
                 freeWay={SAFETY_FREE}
                 paidWay={SAFETY_PAID}
+                freeLead
               />
             ),
           },
@@ -190,6 +195,7 @@ export function PricingScreen({ onHome }: ScreenProps) {
           reassurance="Both routes produce the same ratified Handbook."
           freeWay={SAFETY_FREE}
           paidWay={SAFETY_PAID}
+          freeLead
         />
         <StageWays
           reassurance="Both routes produce the same Future Plan and shared record of what you tried."
@@ -215,6 +221,14 @@ export function PricingScreen({ onHome }: ScreenProps) {
             {line}
           </p>
         ))}
+        <p className={styles.body} style={{ marginTop: "0.85rem" }}>
+          The full account of what we refuse in our own AI use — and the green, yellow, and red
+          lights we apply — is on{" "}
+          <Link className={styles.inlineLink} href="/agent/how-we-use-ai">
+            How We Use AI
+          </Link>
+          .
+        </p>
       </div>
 
       <div className={styles.sec}>

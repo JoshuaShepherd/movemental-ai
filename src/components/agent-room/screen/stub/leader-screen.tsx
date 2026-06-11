@@ -9,37 +9,21 @@ import { LEADERS } from "@/lib/agent-room/data/leaders";
 import {
   getProfile,
   getProfileAsync,
-  type Profile,
-  type ProfileNotableWork,
 } from "@/lib/agent-room/data/profiles";
+
 import styles from "../../ink-band.module.css";
-import { Crumb, LayerRow } from "./chrome";
+import { Crumb } from "./chrome";
 import { takePendingFlip } from "./leader-flip";
+import { LeaderProfileContent } from "./leader-profile-content";
 import type { ScreenProps } from "./stub-screen";
 
-function NotableWorksSection({ works }: { works: ProfileNotableWork[] | undefined }) {
-  if (works?.length) {
-    return (
-      <ul className={styles.notableWorks}>
-        {works.map((item) => (
-          <li key={item.title} className={styles.notableWorkItem}>
-            <strong>{item.title}</strong>
-            <span>{item.line}</span>
-          </li>
-        ))}
-      </ul>
-    );
-  }
-  return <p className={styles.needsResearch}>Notable works — needs research.</p>;
-}
-
 /**
- * Per-leader profile — one consistent scope for every leader in the network.
+ * Per-leader profile — Phase 5 template with scenius framing and consistent depth.
  */
 export function LeaderScreen({ opts, onHome, stream }: ScreenProps) {
   const i = opts.id ?? 0;
   const leader = LEADERS[i] ?? { name: "", cred: "", img: "" };
-  const [profile, setProfile] = useState<Profile | null>(() => getProfile(i));
+  const [profile, setProfile] = useState(() => getProfile(i));
 
   const isStream = !!stream;
   useEffect(() => {
@@ -91,39 +75,7 @@ export function LeaderScreen({ opts, onHome, stream }: ScreenProps) {
       </div>
 
       {profile ? (
-        <>
-          <p className={`${styles.leadBio} ${styles.fade}`}>{profile.bio}</p>
-
-          <div className={`${styles.sec} ${styles.fade}`}>
-            <p className={styles.secLabel}>Their work</p>
-            <div className={styles.layers}>
-              {profile.work.map((w) => (
-                <LayerRow key={w.t} n="—" title={w.t} g={w.g} />
-              ))}
-            </div>
-          </div>
-
-          <div className={`${styles.sec} ${styles.fade}`}>
-            <p className={styles.secLabel}>How they connect</p>
-            <p className={styles.body} style={{ marginTop: "0.2rem" }}>
-              {profile.connection}
-            </p>
-          </div>
-
-          <div className={`${styles.sec} ${styles.fade}`}>
-            <p className={styles.secLabel}>In their words / notable work</p>
-            <NotableWorksSection works={profile.notableWorks} />
-          </div>
-
-          <div className={`${styles.sec} ${styles.fade}`}>
-            <p className={styles.secLabel}>Signature idea</p>
-            {profile.pullQuote ? (
-              <blockquote className={styles.leaderPullQuote}>{profile.pullQuote}</blockquote>
-            ) : (
-              <p className={styles.needsResearch}>Pull quote — needs research.</p>
-            )}
-          </div>
-        </>
+        <LeaderProfileContent leaderName={leader.name} profile={profile} />
       ) : (
         <>
           <p className={`${styles.leadBio} ${styles.fade}`}>

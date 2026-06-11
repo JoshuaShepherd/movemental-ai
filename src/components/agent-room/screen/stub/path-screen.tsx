@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { PATH_STAGE_LABELS } from "@/lib/agent-room/naming";
+
 import styles from "../../ink-band.module.css";
 import type { ScreenProps } from "./stub-screen";
 import { Crumb } from "./chrome";
@@ -14,32 +16,32 @@ interface PathStage {
   detail: string;
 }
 
-/** The four ordered stages (prototype `PATH_HTML` / `pathDrawer`), byte-identical. */
+/** The four ordered stages — titles from {@link PATH_STAGE_LABELS}. */
 const STAGES: readonly PathStage[] = [
   {
     num: 1,
-    title: "Safety",
+    title: PATH_STAGE_LABELS.safety,
     lead: "Get your arms around AI responsibly: your AI Handbook, ratified by your board, before anything else.",
     detail:
       "Acceptable use, data boundaries, theological red lines, written down and adopted before anyone builds on sand.",
   },
   {
     num: 2,
-    title: "Sandbox",
-    lead: "Try AI against real work, in a bounded place. Sort what helps from what doesn’t.",
+    title: PATH_STAGE_LABELS.sandbox,
+    lead: "Try AI against real work, in a bounded place. Sort what helps from what doesn't.",
     detail:
       "Isolated environments where staff learn prompts and limits without risking public trust or constituent data — with results you can point to.",
   },
   {
     num: 3,
-    title: "Training",
+    title: PATH_STAGE_LABELS.training,
     lead: "Form your people to steward it. Judgment, not a one-off workshop.",
     detail:
       "Discernment, authorship, stewardship — built in the people who will carry AI inside your organization, not bolted on after the tools arrive.",
   },
   {
     num: 4,
-    title: "Tech",
+    title: PATH_STAGE_LABELS.tech,
     lead: "Build the tools your work actually needs, on what you already have.",
     detail:
       "Scoped deployment — from optimizing what you use today to network-scale work — only after human oversight protocols are defined and tested.",
@@ -47,10 +49,8 @@ const STAGES: readonly PathStage[] = [
 ];
 
 /**
- * The path screen (prototype `PATH_HTML` + `bindPathDrawers`): one ordered path
- * as a stack of expandable drawers, each with its stage color ramp. Safety
- * starts open; opening a drawer closes the others (the prototype accordion), and
- * clicking the open one collapses it.
+ * The path screen: four ordered stages with the talk's rationale for why the
+ * sequence is fixed — Safety first, then Sandbox, Training, Tech.
  */
 export function PathScreen({ onHome }: ScreenProps) {
   const [active, setActive] = useState<number>(1);
@@ -60,12 +60,15 @@ export function PathScreen({ onHome }: ScreenProps) {
       <Crumb onHome={onHome} />
       <p className={styles.eyebrow}>The path</p>
       <p className={styles.q} style={{ marginBottom: "0.65rem" }}>
-        One ordered path. It starts with Safety.
+        One ordered path. It starts with {PATH_STAGE_LABELS.safety}.
+      </p>
+      <p className={styles.body}>
+        The order is not arbitrary. {PATH_STAGE_LABELS.safety} first — because AI is already
+        in the room. {PATH_STAGE_LABELS.sandbox} before {PATH_STAGE_LABELS.training} before{" "}
+        {PATH_STAGE_LABELS.tech} — because handing powerful tools to people who can&apos;t yet
+        steward them is replacement, not progress.
       </p>
 
-      {/* Horizontal process accordion (md+) — see proposal §3.1. Inactive
-          columns show ghost number + title; the active column expands with an
-          ink-blue rail and full copy. Mobile keeps the vertical drawer below. */}
       <ProcessAccordion
         ariaLabel="The path — four stages"
         activeId={active ? `stage-${active}` : ""}
@@ -84,8 +87,9 @@ export function PathScreen({ onHome }: ScreenProps) {
 
       <div className={`${styles.pathStackCard} ${styles.paOnlyNarrow}`}>
         <p className={styles.pathStackIntro}>
-          Four stages, in order, from governance to tools. Open any step to see what
-          it means, and why the next one waits.
+          Four stages, in order — {PATH_STAGE_LABELS.safety} · {PATH_STAGE_LABELS.sandbox} ·{" "}
+          {PATH_STAGE_LABELS.training} · {PATH_STAGE_LABELS.tech}. Open any step to see what it
+          means, and why the next one waits.
         </p>
         <div className={styles.pathStack} role="presentation">
           {STAGES.map((stage) => {
@@ -120,8 +124,7 @@ export function PathScreen({ onHome }: ScreenProps) {
       </div>
 
       <p className={styles.honest}>
-        Each step earns the next. Skip one and the ones after it have nothing to stand
-        on.
+        Each step earns the next. Skip one and the ones after it have nothing to stand on.
       </p>
     </div>
   );

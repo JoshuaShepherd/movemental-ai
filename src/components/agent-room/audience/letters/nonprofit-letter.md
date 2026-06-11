@@ -1,0 +1,21 @@
+# To an Executive Director
+
+I want to begin with something already happening inside your organization, whether or not anyone decided it should.
+
+Right now someone on your staff is using AI. They are drafting a donor email, summarizing a program evaluation, or writing the first version of a grant narrative that will go out under your organization's name. A few are pasting beneficiary records, donor lists, or internal strategy notes into consumer tools with no contract and no retention policy. Almost none are checking the result against a policy, because — as research consistently finds — nearly half of nonprofits have no AI governance policy at all, and a large majority lack a formal strategy. Nobody invited any of this. It simply arrived, and it is here now.
+
+The adoption numbers are settled: the question is no longer whether your organization will use AI, but whether anyone is governing it. Staff report efficiency gains — faster drafts, quicker research — even as deeper capability gains remain rare when use stays individual rather than shared. Eighty-one percent of nonprofits use AI individually, not through workflows the board can see or measure.
+
+Underneath the governance gap sits a deeper problem: fragmentation. Your program knowledge lives in scattered documents. Donor relationships sit in silos. Your mission voice gets rewritten a dozen different ways by a dozen different staff — none of it connected, none of it owned as one record. AI built on that foundation does not fix the scatter. It amplifies it — faster drafts of the wrong story, quicker research with no shared standard, individual shortcuts that never become organizational capability.
+
+The quieter harm is not always a headline breach. It is the slow erosion of mission integrity. AI-drafted donor appeals that subtly mischaracterize the program. Impact reports that round inconvenient details into a tidier narrative. Outreach lists that systematically deprioritize the beneficiaries the algorithm finds harder to engage. Each is an erosion of mission, often invisible to the staff producing it — which is what makes it dangerous. Boards that ignore AI governance may now be failing fiduciary duties of care and oversight regardless of whether harm has yet occurred.
+
+So let me tell you what we do, and why the order of it matters.
+
+The work has a sequence, and Safety comes first, because AI is already in the room. Before anything else, an organization needs a short, ratified handbook — acceptable use, data handling standards, disclosure and attribution, and incident response your board can actually sign. This is not consulting overhead. It is a small, urgent intervention against costs you are already paying without naming. After Safety comes Sandbox, where a team tests AI against real program work and decides honestly what helps, what is risky, and what is off limits. Then Training, where a group inside the organization forms the capacities this demands: discernment, authorship, stewardship. Then Tech, where AI is integrated into how the organization runs — last, because handing powerful tools to people who cannot yet steward them is not progress but replacement. We sequence the rebuild so it does not destroy the thing it was meant to serve.
+
+Here is the gift hidden in your particular weight. Do this work, and you do not only protect donor and beneficiary trust. You turn individual AI use into shared organizational capability — the thing most nonprofits have not yet achieved despite near-universal adoption.
+
+I will be plain about why this is possible now. We use the tools we sell on ourselves, first. We do not use AI to author anything under a human's name. We are not the platform; the people and their work are the platform, and they own it. Start with Safety. We will walk it with you, or you can walk it free — the field guide is yours either way.
+
+I will end where this really comes from. Your constituents are watching whether you lead through this moment with care — or whether AI becomes one more invisible shortcut that slowly misrepresents the work you have been entrusted to do. Begin where it begins. Decide, in writing, what you will and will not do — before the moment decides it for you.

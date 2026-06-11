@@ -192,41 +192,49 @@ export const PROFILES: Record<number, Profile> = {
   7: {
     approved: true,
     lede: "Network leader — the ecclesial minimum and priesthood activated.",
-    bio: "Lucas Pulley activates the priesthood of all believers through the smallest durable form of the church. Fifteen years planting in Tampa’s subsidized housing projects and serving as Movements Director on the Underground Network executive team, he cultivates extended spiritual families committed to Jesus’ leadership and a piece of God’s mission.",
+    bio: "Lucas Pulley activates the priesthood of all believers through the smallest durable form of the church. Fifteen years planting in Tampa's subsidized housing projects — beginning at the margins as strategy, not sentiment — and serving as Movements Director on the Underground Network executive team, he cultivates extended spiritual families committed to Jesus' leadership and a piece of God's mission. His conviction is starfish, not spider: decentralization as a more faithful reading of how Jesus's movement actually moves.",
     work: [
-      { t: "Teaching", g: "The ecclesial minimum, starfish-not-spider decentralization, and covocational microchurch networks." },
-      { t: "Organizations", g: "Tampa Underground (Movements Director), Microchurch Conference faculty, and the Calling Lab." },
+      {
+        t: "Teaching",
+        g: "The ecclesial minimum (worship, community, mission), Hubology / servant-equipper hubs, starfish-not-spider decentralization, and covocational microchurch networks.",
+      },
+      {
+        t: "Organizations",
+        g: "Tampa Underground (Movements Director), Underground Network executive team, Microchurch Conference faculty, and the Calling Lab.",
+      },
     ],
     connection:
-      "Movements Director on the Tampa Underground executive team — fifteen years in the decentralized microchurch stream Movemental was built with.",
+      "Movements Director for Tampa Underground's hundred-plus microchurches — in the same decentralized stream as Brian Sanders, Rob Wegner, and Lance Ford. When those voices cite each other, trust transfers the way it always has offline; Movemental makes that vouching visible.",
     workSay: [
-      "Lucas directs movement for Tampa Underground’s hundred-plus microchurches.",
-      "He coined the ecclesial minimum as the irreducible unit of church.",
+      "Lucas directs movement for Tampa Underground's hundred-plus microchurches.",
+      "He coined the ecclesial minimum — worship, community, mission as the irreducible church.",
+      "Hubology names the servant-equipper hub that equips networks without consolidating power.",
     ],
     connectSay: [
       "Tampa Underground connects to Brian Sanders and the Forge microchurch stream.",
-      "Decentralized planting is core to the network behind this path.",
+      "He's part of the Movement Voices network — linked to Rob Wegner, Lance Ford, and the starfish decentralization conversation.",
+      "Decentralized planting is core to the scenius this path was built to host.",
     ],
     notableWorks: [
       {
         title: "The Parable of the White Pastor",
-        line: "Missio Alliance — pastoral identity, race, and privilege from inside subsidized housing.",
+        line: "Missio Alliance — pastoral identity, race, and second-order power from inside subsidized housing.",
       },
       {
         title: "10 Thoughts After 10 Years of Planting & Directing Microchurch Networks",
         line: "Medium manifesto on starfish networks, the ecclesial minimum, and reproducible church forms.",
       },
       {
-        title: "The Ecclesial Minimum",
-        line: "Teaching frame — worship, community, and mission as the irreducible definition of church.",
+        title: "Hubology: Rise of the Servant Equippers",
+        line: "The Starfish and the Church — with Rob Wegner and Lance Ford on hubs that equip rather than consolidate.",
       },
       {
-        title: "Shifting Culture Ep. 175",
-        line: "Podcast — cities transformed when the priesthood of all believers is activated.",
+        title: "Theology in the Raw #1022",
+        line: "Preston Sprinkle — rethinking church through micro-churches as missional communities.",
       },
     ],
     pullQuote:
-      "Cities transformed by the priesthood of all believers activated in the mission of God.",
+      "Your conversion is your commission — and the church is an extended spiritual family, not a service to attend.",
     links: [],
   },
   8: {

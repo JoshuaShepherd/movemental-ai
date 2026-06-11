@@ -17,7 +17,8 @@ export function highlightChipForScene(
     case "home":
       return pick("Get a clear next AI step");
     case "pricing":
-      return pick("Start with Safety (free)");
+      // Highlighter lives on the Safety free card CTA (wayLead), not a float chip.
+      return null;
     case "readback":
       return (
         pick("Want this for your actual organization?") ??

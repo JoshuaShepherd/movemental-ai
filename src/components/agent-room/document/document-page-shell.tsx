@@ -17,6 +17,8 @@ type DocumentChip = {
   /** Scroll to a section id on this page, or hand off to `/agent`. */
   action: "scroll" | "agent";
   target?: string;
+  /** When set, hand off to `/agent?ask=…` instead of plain `/agent`. */
+  agentAsk?: string;
 };
 
 type DocumentPageShellProps = {
@@ -63,6 +65,10 @@ function DocumentDock({
         onSelect: () => {
           if (chip.action === "scroll" && chip.target) {
             scrollTo(chip.target);
+            return;
+          }
+          if (chip.agentAsk) {
+            router.push(`/agent?ask=${encodeURIComponent(chip.agentAsk)}`);
             return;
           }
           router.push("/agent");

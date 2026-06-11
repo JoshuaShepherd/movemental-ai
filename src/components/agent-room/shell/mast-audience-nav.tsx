@@ -5,24 +5,43 @@ import { usePathname } from "next/navigation";
 
 import styles from "../ink-band.module.css";
 
+const CHURCHES_HREF = "/agent/churches";
+const NONPROFITS_HREF = "/agent/nonprofits";
 const INSTITUTIONS_HREF = "/agent/institutions";
 
 /**
- * Clickable audience segments in the mast center. Only Institutions is wired
- * today; Non-profits and Churches stay plain labels until their pages exist.
- * On `/agent/institutions`, Institutions gets the ink-band highlighter bleed.
+ * Clickable audience segments in the mast center. Each segment links to its
+ * audience document; the active route gets the ink-band highlighter bleed.
  */
 export function MastAudienceNav() {
   const pathname = usePathname();
+  const nonprofitsActive = pathname?.startsWith(NONPROFITS_HREF) ?? false;
+  const churchesActive = pathname?.startsWith(CHURCHES_HREF) ?? false;
   const institutionsActive = pathname?.startsWith(INSTITUTIONS_HREF) ?? false;
 
   return (
     <nav className={styles.mastAudienceNav} aria-label="Who we serve">
-      <span className={styles.mastAudienceSegment}>Non-profits</span>
+      <Link
+        href={NONPROFITS_HREF}
+        className={`${styles.mastAudienceSegment} ${styles.mastAudienceLink} ${
+          nonprofitsActive ? styles.mastAudienceLinkActive : ""
+        }`}
+        aria-current={nonprofitsActive ? "page" : undefined}
+      >
+        Non-profits
+      </Link>
       <span className={styles.mastAudienceSep} aria-hidden="true">
         ·
       </span>
-      <span className={styles.mastAudienceSegment}>Churches</span>
+      <Link
+        href={CHURCHES_HREF}
+        className={`${styles.mastAudienceSegment} ${styles.mastAudienceLink} ${
+          churchesActive ? styles.mastAudienceLinkActive : ""
+        }`}
+        aria-current={churchesActive ? "page" : undefined}
+      >
+        Churches
+      </Link>
       <span className={styles.mastAudienceSep} aria-hidden="true">
         ·
       </span>
