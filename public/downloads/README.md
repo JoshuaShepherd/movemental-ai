@@ -7,6 +7,8 @@ Static download targets for the marketing site. Files here are served at
 [`docs/build/artifacts/field-guides/README.md`](../../docs/build/artifacts/field-guides/README.md).
 Files in `public/downloads/` must stay **byte-identical** to that folder after every edition swap.
 
+**Lead-magnet cover art:** `public/images/ai-safety-handbook-cover.webp` — canonical raster for the AI Safety Handbook (`SAFETY_HANDBOOK_COVER_IMAGE` in `src/lib/safety-field-guide.ts`). Used on `/field-guide`, the agent-room handbook dock, and OG/Twitter metadata.
+
 ## Safety Field Guide PDF (*It Starts With Safety*)
 
 **Canonical lead-magnet file:** `movemental-it-starts-with-safety-field-guide.pdf`

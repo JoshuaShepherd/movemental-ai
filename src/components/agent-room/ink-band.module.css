@@ -2024,9 +2024,7 @@ button.wayCtaPaid {
   position: relative;
   isolation: isolate;
   border-color: var(--color-ink-band-blue);
-  box-shadow:
-    0 0 0 3px color-mix(in srgb, var(--color-ink-band-highlight) 55%, transparent),
-    0 -8px 24px -12px rgba(26, 26, 26, 0.22);
+  box-shadow: 0 -8px 24px -12px rgba(26, 26, 26, 0.22);
 }
 .handbookEmailHighlight::before {
   content: "";
@@ -2310,6 +2308,111 @@ button.wayCtaPaid {
   .statBand {
     grid-template-columns: 1fr;
   }
+}
+
+/* ===== safety dashboard narrative (screen 3) ===== */
+.dashboardProse {
+  max-width: 54ch;
+}
+.dashboardProseP {
+  font-size: 1rem;
+  line-height: 1.62;
+  color: var(--color-ink-band-ink-muted);
+  margin: 0 0 1rem;
+}
+.handNote {
+  font-family: var(--font-ink-hand);
+  font-size: 1.15rem;
+  color: var(--color-ink-band-blue);
+  margin: 1.25rem 0 1.5rem;
+  max-width: 28ch;
+  line-height: 1.25;
+}
+.qSm {
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.dashboardOutcome {
+  margin-top: 2rem;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--color-ink-band-ink);
+  border-radius: 10px;
+  background: var(--color-ink-band-paper);
+  box-shadow: 0 14px 36px -22px rgba(26, 26, 26, 0.28);
+  max-width: 54ch;
+}
+.dashboardOutcome p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.58;
+  color: var(--color-ink-band-ink);
+}
+.dashboardSteps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 54ch;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  counter-reset: dashboardStep;
+}
+.dashboardSteps li {
+  position: relative;
+  padding-left: 2.4rem;
+  font-size: 0.96rem;
+  line-height: 1.58;
+  color: var(--color-ink-band-ink-muted);
+  counter-increment: dashboardStep;
+}
+.dashboardSteps li::before {
+  content: counter(dashboardStep, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.05rem;
+  font-family: var(--font-ink-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-band-blue);
+  width: 1.75rem;
+  text-align: right;
+}
+.dashboardBridge {
+  margin-top: 2.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-ink-band-border);
+  max-width: 54ch;
+}
+.ctaLead {
+  display: inline-block;
+  font-family: var(--font-ink-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-ink-band-ink);
+  font-weight: 600;
+  margin-top: 0.25rem;
+  position: relative;
+  isolation: isolate;
+  border-bottom: 2px solid var(--color-ink-band-border);
+  padding-bottom: 0.12rem;
+}
+.ctaLead::before {
+  content: "";
+  position: absolute;
+  inset: -2px -8px;
+  z-index: -1;
+  background: var(--color-ink-band-highlight);
+  mix-blend-mode: multiply;
+  border-radius: 6px 9px 7px 8px / 9px 6px 8px 7px;
+  filter: url(#marker);
+  transform: rotate(-1.2deg);
+}
+.ctaLead:hover {
+  color: var(--color-ink-band-blue);
+  border-bottom-color: var(--color-ink-band-blue);
 }
 
 /* ===== pricing refusals ===== */
@@ -2914,6 +3017,31 @@ button.wayCtaPaid {
   pointer-events: auto;
 }
 
+/* Full-width AI surface from the handwriting band down — no see-through gutters. */
+.agentDockPanel {
+  position: relative;
+  width: 100%;
+  background: var(--color-ink-band-ai-surface);
+  border-top: 1px solid color-mix(in srgb, var(--color-ink-band-border) 88%, var(--color-ink-band-blue) 12%);
+  box-shadow:
+    0 -1px 0 color-mix(in srgb, var(--color-ink-band-paper) 55%, transparent),
+    0 -10px 36px -14px color-mix(in srgb, var(--color-ink-band-ink) 10%, transparent);
+}
+.agentDockPanel::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 1.35rem;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-ink-band-ai-surface)
+  );
+  pointer-events: none;
+}
+
 .dockBackdrop {
   position: fixed;
   inset: 0;
@@ -2935,13 +3063,7 @@ button.wayCtaPaid {
 .handwritingStrip {
   width: 100%;
   flex: 0 0 auto;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    color-mix(in srgb, var(--color-ink-band-surface) 88%, transparent) 35%,
-    var(--color-ink-band-surface) 100%
-  );
-  border-top: 1px solid var(--color-ink-band-border);
+  background: transparent;
   padding: 0.55rem clamp(1.25rem, 4vw, 2.5rem) 0.35rem;
   min-height: 3.2rem;
   max-height: min(28vh, 9rem);
@@ -2956,7 +3078,6 @@ button.wayCtaPaid {
   min-height: 0;
   padding-top: 0;
   padding-bottom: 0;
-  border-top-color: transparent;
   overflow: hidden;
 }
 .handwritingInner {
@@ -2998,7 +3119,9 @@ button.wayCtaPaid {
   justify-content: center;
   flex-wrap: nowrap;
   margin-bottom: 0.5rem;
+  padding: 0.35rem 0.65rem 0.25rem;
   overflow-x: auto;
+  overflow-y: visible;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 }
@@ -3042,10 +3165,12 @@ button.wayCtaPaid {
 .floatChipLead {
   position: relative;
   isolation: isolate;
+  overflow: visible;
   background: transparent;
   border-color: transparent;
   color: var(--color-ink-band-ink);
   font-weight: 600;
+  text-overflow: clip;
 }
 .floatChipLead::before {
   content: "";
@@ -3439,14 +3564,20 @@ button.wayCtaPaid {
   color: var(--color-ink-band-blue);
 }
 .hl {
-  background: linear-gradient(
-    101deg,
-    transparent 0.4%,
-    color-mix(in srgb, var(--color-ink-band-highlight) 42%, transparent) 1.6%,
-    color-mix(in srgb, var(--color-ink-band-highlight) 42%, transparent) 97.5%,
-    transparent 99.6%
-  );
-  padding: 0 0.04em;
+  position: relative;
+  isolation: isolate;
+  white-space: nowrap;
+}
+.hl::before {
+  content: "";
+  position: absolute;
+  inset: -2px -8px;
+  z-index: -1;
+  background: var(--color-ink-band-highlight);
+  mix-blend-mode: multiply;
+  border-radius: 6px 9px 7px 8px / 9px 6px 8px 7px;
+  filter: url(#marker);
+  transform: rotate(-1.2deg);
 }
 .eyebrow {
   font-family: var(--font-ink-mono);

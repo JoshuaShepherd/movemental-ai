@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import { SafetyHandbookCover } from "@/components/field-guide/safety-handbook-cover";
 import { EMAIL_RE } from "@/lib/agent-room/capture";
 import { HANDBOOK_EMAIL_INPUT_ID } from "@/lib/agent-room/suggest-chip-targets";
 import styles from "../ink-band.module.css";
@@ -53,6 +54,7 @@ export function HandbookDockEmail({
       className={`${styles.threadStickyHandbook} ${highlighted ? styles.handbookEmailHighlight : ""}`}
       id="handbook-email-block"
     >
+      <SafetyHandbookCover className="mb-3 max-w-[140px]" sizes="140px" />
       <p className={styles.handbookEmailLead}>Get your free AI Safety Handbook</p>
       <label className={styles.handbookEmailLabel} htmlFor={HANDBOOK_EMAIL_INPUT_ID}>
         Email it to me

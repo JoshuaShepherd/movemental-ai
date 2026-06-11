@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class="ink-band-page cd-page" data-theme="ink-band">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charter Dashboard — Grace Community Church — Movemental</title>
+  <meta name="description" content="Private workspace for your AI Charter, Assessment, search, and rollout supports — Safety stage, Charter Dashboard." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/ink-band-tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="js/charter-dashboard-mock.js" defer></script>
+  <script src="js/charter-dashboard.js" defer></script>
+</head>
+<body class="cd-app">
+
+  <aside class="cd-sidebar" aria-label="Charter Dashboard">
+    <div class="cd-org">
+      <div class="cd-org-mark" id="cd-org-mark" aria-hidden="true">GCC</div>
+      <p class="cd-org-name" id="cd-org-name">Grace Community Church</p>
+      <p class="cd-org-meta" id="cd-org-meta">Spring 2026 · Cohort 04</p>
+    </div>
+
+    <nav class="cd-nav" aria-label="Dashboard sections">
+      <ul class="cd-nav-list" id="cd-nav-list"></ul>
+
+      <div class="cd-teaser" id="cd-teaser">
+        <p class="cd-teaser-eyebrow">
+          <i data-lucide="lock" width="12" height="12" aria-hidden="true"></i>
+          Stage 02
+        </p>
+        <p class="cd-teaser-title">Sandbox</p>
+        <p class="cd-teaser-body">Unlocked after Safety is ratified. Experiment log, use-case library, and Future Plan.</p>
+      </div>
+    </nav>
+
+    <div class="cd-account">
+      <div class="cd-account-row">
+        <div class="cd-avatar" aria-hidden="true">JC</div>
+        <div>
+          <p class="cd-account-name">Jordan Cole</p>
+          <p class="cd-account-role">Executive Pastor · Admin</p>
+        </div>
+      </div>
+      <button type="button" class="cd-sign-out" data-sign-out>
+        <i data-lucide="log-out" width="14" height="14" aria-hidden="true"></i>
+        Sign out
+      </button>
+    </div>
+  </aside>
+
+  <div class="cd-main">
+    <header class="cd-topbar">
+      <h1 class="cd-topbar-title" id="cd-topbar-title">Charter Dashboard</h1>
+      <span class="cd-topbar-meta" id="cd-topbar-meta">Overview</span>
+    </header>
+    <main class="cd-content" id="cd-view-mount" aria-live="polite"></main>
+  </div>
+
+  <script>
+    (function hydrateOrg() {
+      var m = window.CharterDashboardMock;
+      if (!m) return;
+      var mark = document.getElementById('cd-org-mark');
+      var name = document.getElementById('cd-org-name');
+      var meta = document.getElementById('cd-org-meta');
+      if (mark) mark.textContent = m.org.shortName;
+      if (name) name.textContent = m.org.name;
+      if (meta) meta.textContent = m.org.cohort;
+    })();
+  </script>
+</body>
+</html>

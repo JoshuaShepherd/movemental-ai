@@ -4,6 +4,7 @@ import Link from "next/link";
 import * as React from "react";
 import { useSearchParams } from "next/navigation";
 
+import { SafetyHandbookCover } from "@/components/field-guide/safety-handbook-cover";
 import { Button } from "@/components/ui/button";
 import {
   FIELD_GUIDE_PAGE_COPY,
@@ -128,7 +129,11 @@ function FieldGuideForm({ guide }: { guide: FieldGuideKind }) {
       ) : null}
 
       <Button type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "Sending…" : "Send me the field guide"}
+        {status === "loading"
+          ? "Sending…"
+          : guide === "safety"
+            ? "Send me the Handbook"
+            : "Send me the field guide"}
       </Button>
       <p className="text-sm leading-relaxed text-muted-foreground">
         We send the PDF immediately and one follow-up email a week later. Unsubscribe anytime.
@@ -182,6 +187,9 @@ export function FieldGuidePageContent() {
       <p className="mb-6 font-mono text-[0.75rem] uppercase tracking-[0.14em] text-muted-foreground">
         {copy.eyebrow}
       </p>
+      {guide === "safety" ? (
+        <SafetyHandbookCover className="mb-8" priority sizes="(max-width: 640px) 72vw, 280px" />
+      ) : null}
       <h1 className="text-4xl leading-tight md:text-5xl">{copy.title}</h1>
       <p className="mt-8 text-lg leading-relaxed text-foreground">{copy.lede}</p>
 

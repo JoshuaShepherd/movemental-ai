@@ -10,7 +10,7 @@ export const BOOK_TITLE = "From Fragmentation to Movement";
 /** Raster cover art (WebP) — full book jacket. */
 export const BOOK_COVER_IMAGE = "/images/books/organizational-intelligence-book.webp";
 
-/** Safety Field Guide (*It Starts With Safety*) cover — lead magnet + `/book` field-guide variant. */
+/** Safety lead magnet (*AI Safety Handbook*) cover — shared across capture surfaces. */
 export const FIELD_GUIDE_COVER_IMAGE = SAFETY_FIELD_GUIDE_COVER_IMAGE;
 
 export const BOOK_SUBTITLE =

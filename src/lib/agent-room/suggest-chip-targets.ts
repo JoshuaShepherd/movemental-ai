@@ -14,6 +14,9 @@ export const MAP_EMAIL_CHIP_TARGET = "focusMapEmail";
 /** Chip `to` value — expands the dock and focuses the handbook email capture. */
 export const HANDBOOK_EMAIL_CHIP_TARGET = "focusHandbook";
 
+/** Chip `to` value — full Safety dashboard enrollment (name, org, Stripe payment). */
+export const ENROLL_CHIP_TARGET = "toEnroll";
+
 export const READBACK_EMAIL_INPUT_ID = "readbackEmail";
 
 export const HANDBOOK_EMAIL_INPUT_ID = "handbookEmail";
@@ -57,6 +60,12 @@ export function handleSuggestChipTarget(
   }
   if (to === HANDBOOK_EMAIL_CHIP_TARGET) {
     focusHandbookEmail();
+    return true;
+  }
+  if (to === ENROLL_CHIP_TARGET) {
+    if (typeof window !== "undefined") {
+      window.location.assign("/enroll");
+    }
     return true;
   }
   return handleDiscussChipTarget(to, enterDiscuss, run, context);

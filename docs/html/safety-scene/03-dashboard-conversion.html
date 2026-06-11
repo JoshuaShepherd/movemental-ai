@@ -1,176 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Movemental — Safety dashboard (design mock-up)</title>
-    <meta name="description" content="Funnel screen 3 — sell the vehicle: finish your Safety charter in the dashboard." />
-    <link rel="stylesheet" href="../home/styles.css" />
-    <link rel="stylesheet" href="ink-band-content.css" />
-  </head>
-  <body class="ink-band-surface">
-    <div class="room" id="room">
-      <header class="mast">
-        <div class="mastStart">
-          <button type="button" class="logo" aria-label="Movemental — back to the start">
-            <img class="logoMark" src="../../../public/images/brand/movemental-logo-transparent.h224.webp" alt="Movemental" width="411" height="224" />
-          </button>
-        </div>
-        <p class="mastAudience" aria-label="Who we serve">Non-profits · Churches · Institutions</p>
-        <div class="mastEnd" id="mast-auth">
-          <div class="authCluster authCluster--out" id="auth-out">
-            <a class="authIconBtn" href="/login" aria-label="Sign in" title="Sign in">
-              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
-            </a>
-          </div>
-          <div class="authCluster authCluster--in" id="auth-in" hidden>
-            <button type="button" class="authIconBtn authMenuTrigger" id="auth-menu-trigger" aria-label="Account menu" aria-haspopup="true" aria-expanded="false" title="Account">
-              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
-            </button>
-            <div class="authMenu" id="auth-menu" role="menu" hidden>
-              <p class="authMenuLabel" id="auth-menu-label">Workspace</p>
-              <ul class="authMenuList" id="auth-menu-list"></ul>
-              <button type="button" class="authMenuSignOut" id="auth-sign-out" role="menuitem">Sign out</button>
-            </div>
-          </div>
-        </div>
-      </header>
-      <section class="screen scroll" id="screen" aria-label="Safety dashboard conversion">
-        <div class="sheet settle" id="sheet">
-          <p class="eyebrow" id="eyebrow"></p>
-          <p class="q" id="headline"></p>
-          <p class="sub" id="lede"></p>
-          <div class="compare" id="compare"></div>
-          <div class="sceneGrid">
-            <div class="mainCol">
-              <div class="sec">
-                <p class="secLabel" id="doors-label"></p>
-                <div class="ways ways--three" id="door-grid"></div>
-              </div>
-            </div>
-            <aside class="charterPanel" aria-label="Guidebook assembly preview">
-              <p class="assembleLabel" id="assemble-label"></p>
-              <div class="docSpread" id="doc-spread"></div>
-              <div class="proofBlock"><div class="proofSheet" id="proof-sheet"></div></div>
-            </aside>
-          </div>
-        </div>
-      </section>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Movemental — Safety dashboard (design mock-up)</title>
+<meta name="description" content="Funnel screen 3 — the dashboard for leaders who read the handbook and still need help getting it done."/>
+<style>
+:root {
+  --color-ink-band-bg: #fbfaf6;
+  --color-ink-band-surface: #f6f3ec;
+  --color-ink-band-paper: #fffdf7;
+  --color-ink-band-ink: #1a1a1a;
+  --color-ink-band-ink-muted: #5c5651;
+  --color-ink-band-border: #e5dfd2;
+  --color-ink-band-margin-red: #c08a7e;
+  --color-ink-band-blue: #22409b;
+  --color-ink-band-highlight: #eaff3a;
+  --font-ink-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-ink-body: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-ink-hand: Caveat, "Segoe Script", "Bradley Hand", cursive;
+  --font-ink-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%;color-scheme:light;-webkit-font-smoothing:antialiased}
+body{margin:0;min-height:100%;height:100dvh}
+.ink-band-surface{background:var(--color-ink-band-bg);color:var(--color-ink-band-ink);font-family:var(--font-ink-body);height:100dvh;overflow:hidden}
+.ink-band-surface :is(h1,h2,h3,h4){font-family:var(--font-ink-display);font-weight:600;line-height:1.07;letter-spacing:-.025em}
+.room{display:flex;flex-direction:column;height:100dvh;overflow:hidden}
+.mast{flex:0 0 auto;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;column-gap:.75rem;padding:.15rem clamp(1rem,4vw,2.5rem) .25rem;border-bottom:1px solid var(--color-ink-band-border);z-index:30;min-height:3.25rem}
+.mastStart{justify-self:start}.mastEnd{justify-self:end;display:flex;align-items:center}
+.mastAudience{justify-self:center;margin:0;font-family:var(--font-ink-mono);font-size:clamp(.58rem,1.8vw,.68rem);letter-spacing:.16em;text-transform:uppercase;color:var(--color-ink-band-ink-muted);text-align:center;white-space:nowrap;pointer-events:none}
+.authIconBtn{display:inline-flex;align-items:center;justify-content:center;width:2.25rem;height:2.25rem;border:1px solid transparent;border-radius:999px;background:transparent;color:var(--color-ink-band-ink-muted);cursor:pointer;text-decoration:none;transition:color .15s,border-color .15s,background .15s}
+.authIconBtn:hover,.authIconBtn:focus-visible{color:var(--color-ink-band-ink);border-color:var(--color-ink-band-border);background:var(--color-ink-band-paper);outline:none}
+.logo{display:flex;align-items:center;background:none;border:0;padding:0;cursor:pointer;line-height:0}
+.logoMark{display:block;width:auto;height:clamp(3.5rem,9.5vw,4.85rem);margin-top:-.2rem;margin-bottom:-.9rem;transition:opacity .15s}
+.logo:hover .logoMark{opacity:.72}
+.screen{flex:1 1 auto;position:relative;overflow:hidden;display:flex;align-items:flex-start;justify-content:center;padding:clamp(.55rem,1.6vh,1.35rem) clamp(1.5rem,6vw,5rem);padding-bottom:clamp(10rem,22vh,13rem);background:radial-gradient(120% 80% at 50% 0%,#fffefa 0%,var(--color-ink-band-bg) 70%)}
+.screen.scroll{overflow-y:auto;overscroll-behavior:contain}
+.sheet{width:100%;max-width:46rem;margin:0 auto;position:relative;padding-left:1.6rem}
+.sheet::before{content:"";position:absolute;left:.2rem;top:-.2rem;bottom:-.2rem;width:1.5px;background:var(--color-ink-band-margin-red);opacity:.32}
+.settle{animation:settle .42s cubic-bezier(.2,.7,.2,1) both}
+@keyframes settle{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--font-ink-mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--color-ink-band-ink-muted);margin-bottom:1rem}
+.q{font-family:var(--font-ink-display);font-weight:400;font-size:clamp(1.5rem,3.6vw,2.05rem);line-height:1.2;letter-spacing:-.01em;margin-bottom:1.4rem;max-width:36ch}
+.q--sm{font-size:clamp(1.25rem,3vw,1.65rem);margin-top:2rem;margin-bottom:1rem}
+.prose{max-width:54ch}
+.prose p{font-size:1rem;line-height:1.62;color:var(--color-ink-band-ink-muted);margin:0 0 1rem}
+.prose p:last-child{margin-bottom:0}
+.prose b,.prose strong{color:var(--color-ink-band-ink);font-weight:500}
+.handNote{font-family:var(--font-ink-hand);font-size:1.15rem;color:var(--color-ink-band-blue);margin:1.25rem 0 1.5rem;max-width:28ch;line-height:1.25}
+.sec{margin-top:2rem}
+.secLabel{font-family:var(--font-ink-mono);font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--color-ink-band-ink-muted);margin-bottom:.85rem}
+.outcome{margin-top:2rem;padding:1.15rem 1.25rem;border:1px solid var(--color-ink-band-ink);border-radius:10px;background:var(--color-ink-band-paper);box-shadow:0 14px 36px -22px rgba(26,26,26,.28);max-width:54ch}
+.outcome p{margin:0;font-size:1rem;line-height:1.58;color:var(--color-ink-band-ink)}
+.steps{list-style:none;margin:0;padding:0;max-width:54ch;display:flex;flex-direction:column;gap:1.1rem;counter-reset:step}
+.steps li{position:relative;padding-left:2.4rem;font-size:.96rem;line-height:1.58;color:var(--color-ink-band-ink-muted);counter-increment:step}
+.steps li::before{content:counter(step,decimal-leading-zero);position:absolute;left:0;top:.05rem;font-family:var(--font-ink-mono);font-size:.62rem;letter-spacing:.06em;color:var(--color-ink-band-blue);width:1.75rem;text-align:right}
+.steps li strong{color:var(--color-ink-band-ink);font-weight:500}
+.bridge{margin-top:2.25rem;padding-top:1.5rem;border-top:1px solid var(--color-ink-band-border);max-width:54ch}
+.ctaLead{display:inline-block;font-family:var(--font-ink-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--color-ink-band-ink);font-weight:600;margin-top:.25rem;position:relative;isolation:isolate;border-bottom:2px solid var(--color-ink-band-border);padding-bottom:.12rem}
+.ctaLead::before{content:"";position:absolute;inset:-2px -8px;z-index:-1;background:var(--color-ink-band-highlight);mix-blend-mode:multiply;border-radius:6px 9px 7px 8px/9px 6px 8px 7px;filter:url(#marker);transform:rotate(-1.2deg)}
+.ctaLead:hover{color:var(--color-ink-band-blue);border-bottom-color:var(--color-ink-band-blue)}
+.agentDock{position:fixed;inset:auto 0 0 0;z-index:20;display:flex;flex-direction:column;pointer-events:none}
+.agentDock>*{pointer-events:auto}
+.dockBackdrop{position:fixed;inset:0;z-index:-1;background:color-mix(in srgb,var(--color-ink-band-ink) 18%,transparent);opacity:0;transition:opacity .32s;pointer-events:none}
+.agentDock.is-expanded .dockBackdrop{opacity:1;pointer-events:auto}
+.dockBackdrop[hidden]{display:block;opacity:0;pointer-events:none}
+.handwritingStrip{width:100%;background:linear-gradient(to bottom,transparent 0%,color-mix(in srgb,var(--color-ink-band-surface) 88%,transparent) 35%,var(--color-ink-band-surface) 100%);border-top:1px solid var(--color-ink-band-border);padding:.55rem clamp(1.25rem,4vw,2.5rem) .35rem;min-height:3.2rem;max-height:min(28vh,9rem);overflow:auto;transition:max-height .35s,padding .35s}
+.agentDock.is-expanded .handwritingStrip{max-height:0;min-height:0;padding-top:0;padding-bottom:0;border-top-color:transparent;overflow:hidden}
+.handwritingInner{max-width:56rem;margin:0 auto}
+.handwritingStrip .vline{font-family:var(--font-ink-hand);color:var(--color-ink-band-blue);font-size:clamp(1.25rem,4.8vw,1.65rem);line-height:1.15;white-space:nowrap;max-width:100%}
+.agentFloat{width:100%;max-width:42rem;margin:0 auto;padding:0 clamp(.75rem,3vw,1.25rem) .85rem;transition:max-width .38s,padding .38s}
+.agentDock.is-expanded .agentFloat{max-width:none;padding:0 clamp(.35rem,1.5vw,.65rem) .45rem}
+.agentCard{position:relative;display:flex;flex-direction:column;border:1px solid var(--color-ink-band-border);border-radius:1.35rem;background:var(--color-ink-band-paper);box-shadow:0 1px 2px rgba(26,26,26,.04),0 12px 40px -16px rgba(26,26,26,.22);overflow:hidden;max-height:9.5rem;transition:max-height .38s,border-radius .38s,box-shadow .38s}
+.agentCard.is-expanded{height:90dvh;max-height:90dvh;border-radius:1.1rem 1.1rem .65rem .65rem;box-shadow:0 -12px 56px -14px rgba(26,26,26,.32)}
+.cardHeader{display:none;align-items:center;justify-content:space-between;padding:.65rem 1rem .45rem;border-bottom:1px solid var(--color-ink-band-border)}
+.agentCard.is-expanded .cardHeader{display:flex}
+.cardTitle{font-family:var(--font-ink-display);font-size:.92rem;font-weight:500}
+.cardCollapse{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border:0;border-radius:999px;background:var(--color-ink-band-surface);color:var(--color-ink-band-ink-muted);cursor:pointer}
+.cardThread{display:none;flex:1;min-height:0;overflow-y:auto;padding:.85rem 1rem .5rem}
+.agentCard.is-expanded .cardThread{display:flex;flex-direction:column}
+.threadMsg{font-size:.92rem;line-height:1.5}.threadMsg p{margin:0}
+.threadMsg--agent{align-self:flex-start;font-family:var(--font-ink-hand);color:var(--color-ink-band-blue);font-size:1.05rem}
+.cardBody{flex:0 0 auto;display:flex;flex-direction:column}
+.cardInput{display:block;padding:.85rem 1rem .35rem}
+.cardInput input{width:100%;border:0;background:none;font:inherit;font-size:.98rem;color:var(--color-ink-band-ink)}
+.cardInput input:focus{outline:none}
+.cardInput input::placeholder{color:var(--color-ink-band-ink-muted)}
+.cardToolbar{display:flex;align-items:center;justify-content:space-between;padding:.35rem .65rem .55rem}
+.toolbarGroup{display:flex;gap:.2rem}
+.toolBtn{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border:0;border-radius:999px;background:transparent;color:var(--color-ink-band-ink-muted);cursor:pointer}
+.toolBtn:hover{color:var(--color-ink-band-ink);background:var(--color-ink-band-surface)}
+.agentDock.is-expanded .expandToggle{display:none}
+.sendRound{display:inline-flex;align-items:center;justify-content:center;width:2.15rem;height:2.15rem;border:0;border-radius:999px;background:var(--color-ink-band-ink);color:var(--color-ink-band-bg);cursor:pointer}
+.sendRound:hover{background:var(--color-ink-band-blue)}
+.cardHandle{display:flex;align-items:center;justify-content:center;width:100%;padding:.2rem 0 .35rem;border:0;background:transparent;cursor:pointer}
+.agentCard.is-expanded .cardHandle{opacity:0;pointer-events:none}
+.handleBar{display:block;width:2.5rem;height:.28rem;border-radius:999px;background:color-mix(in srgb,var(--color-ink-band-ink-muted) 45%,transparent)}
+.dockLegend{text-align:center;margin:.55rem 0 0}
+.agentDock.is-expanded .dockLegend{opacity:0;pointer-events:none}
+.replay{background:none;border:0;font-family:var(--font-ink-mono);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;color:var(--color-ink-band-ink-muted);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.replay:hover{color:var(--color-ink-band-blue)}
+@media(max-width:640px){.mast{column-gap:.35rem;padding-inline:.65rem}.mastAudience{font-size:clamp(.48rem,2.6vw,.58rem);letter-spacing:.1em}.handwritingStrip .vline{white-space:normal}.agentCard{max-height:10.5rem}.agentCard.is-expanded{height:92dvh;max-height:92dvh}}
+@media(prefers-reduced-motion:reduce){.settle{animation:none!important}.agentCard,.handwritingStrip,.dockBackdrop{transition:none!important}}
+</style>
+</head>
+<body class="ink-band-surface">
+<div class="room" id="room">
+<header class="mast">
+<div class="mastStart"><button type="button" class="logo" aria-label="Movemental — back to the start"><img class="logoMark" src="../../../public/images/brand/movemental-logo-transparent.h224.webp" alt="Movemental" width="411" height="224"/></button></div>
+<p class="mastAudience" aria-label="Who we serve">Non-profits · Churches · Institutions</p>
+<div class="mastEnd"><a class="authIconBtn" href="/login" aria-label="Sign in" title="Sign in"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg></a></div>
+</header>
+<section class="screen scroll" id="screen" aria-label="Safety dashboard conversion">
+<div class="sheet settle" id="sheet">
 
-      <div class="agentDock" id="agent-dock">
-        <div class="dockBackdrop" id="dock-backdrop" hidden></div>
-        <div class="handwritingStrip" aria-live="polite">
-          <div class="handwritingInner"><div class="vline" id="voice-line">This is the only screen with a price — three doors, same dignity. Start free if you want to see the artifact form.</div></div>
-        </div>
-        <div class="agentFloat" id="agent-float">
-          <form class="agentCard" id="agent-card" role="region" aria-label="Agent conversation">
-            <div class="cardHeader" id="card-header">
-              <span class="cardTitle">Conversation</span>
-              <button type="button" class="cardCollapse" id="card-collapse" aria-label="Collapse chat" title="Collapse chat">
-                <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 11.25L9 6.75l4.5 4.5"/></svg>
-              </button>
-            </div>
-            <div class="cardThread" id="card-thread"><div class="threadMsg threadMsg--agent"><p>This is the only screen with a price — three doors, same dignity. Start free if you want to see the artifact form.</p></div></div>
-            <form class="cardBody" id="composer-form">
-              <label class="cardInput"><input type="text" name="message" id="composer-input" autocomplete="off" aria-label="Talk to Movemental" placeholder="Ask about the dashboard or pricing…" /></label>
-              <div class="cardToolbar">
-                <div class="toolbarGroup">
-                  <button type="button" class="toolBtn" aria-label="Add attachment">+</button>
-                  <button type="button" class="toolBtn" aria-label="Slash commands">/</button>
-                </div>
-                <div class="toolbarGroup">
-                  <button type="button" class="toolBtn expandToggle" id="expand-toggle" aria-label="Expand chat" aria-expanded="false" title="Expand chat">
-                    <svg class="iconExpand" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
-                  </button>
-                  <button type="submit" class="sendRound" aria-label="Send">
-                    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 12V4M8 4l-3.5 3.5M8 4l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </button>
-                </div>
-              </div>
-            </form>
-            <button type="button" class="cardHandle" id="card-handle" aria-label="Expand drawer" aria-expanded="false"><span class="handleBar"></span></button>
-          </form>
-          <p class="dockLegend"><button type="button" class="replay" id="replay">↻ replay</button></p>
-        </div>
-      </div>
-    </div>
-    <svg class="ink" aria-hidden="true" width="0" height="0" style="position:absolute"><defs><filter id="marker" x="-15%" y="-70%" width="130%" height="240%"><feTurbulence type="fractalNoise" baseFrequency="0.018 0.11" numOctaves="2" seed="9" result="n" /><feDisplacementMap in="SourceGraphic" in2="n" scale="3.4" xChannelSelector="R" yChannelSelector="G" /></filter></defs></svg>
-    <script src="shell.js"></script>
-    <script>
+<p class="eyebrow" id="eyebrow"></p>
+<p class="q" id="headline"></p>
+
+<div class="prose" id="prose-open"></div>
+
+<div class="sec">
+<p class="secLabel" id="question-label"></p>
+<p class="q q--sm" id="solution-headline"></p>
+<div class="prose" id="prose-solution"></div>
+</div>
+
+<div class="outcome" id="outcome"></div>
+
+<div class="sec">
+<p class="secLabel" id="steps-label"></p>
+<ol class="steps" id="steps"></ol>
+</div>
+
+<div class="bridge">
+<a class="ctaLead" id="signup-cta" href="04-signup-capture.html"></a>
+</div>
+
+</div>
+</section>
+<div class="agentDock" id="agent-dock">
+<div class="dockBackdrop" id="dock-backdrop" hidden></div>
+<div class="handwritingStrip" aria-live="polite"><div class="handwritingInner"><div class="vline" id="voice-line"></div></div></div>
+<div class="agentFloat" id="agent-float">
+<form class="agentCard" id="agent-card" role="region" aria-label="Agent conversation">
+<div class="cardHeader" id="card-header"><span class="cardTitle">Conversation</span><button type="button" class="cardCollapse" id="card-collapse" aria-label="Collapse chat"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 11.25L9 6.75l4.5 4.5"/></svg></button></div>
+<div class="cardThread" id="card-thread"><div class="threadMsg threadMsg--agent"><p id="thread-voice"></p></div></div>
+<form class="cardBody" id="composer-form">
+<label class="cardInput"><input type="text" name="message" id="composer-input" autocomplete="off" aria-label="Talk to Movemental" placeholder="Ask about the dashboard…"/></label>
+<div class="cardToolbar">
+<div class="toolbarGroup"><button type="button" class="toolBtn" aria-label="Add attachment">+</button><button type="button" class="toolBtn" aria-label="Slash commands">/</button></div>
+<div class="toolbarGroup">
+<button type="button" class="toolBtn expandToggle" id="expand-toggle" aria-label="Expand chat" aria-expanded="false"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+<button type="submit" class="sendRound" aria-label="Send"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 12V4M8 4l-3.5 3.5M8 4l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+</div>
+</form>
+<button type="button" class="cardHandle" id="card-handle" aria-label="Expand drawer" aria-expanded="false"><span class="handleBar"></span></button>
+</form>
+<p class="dockLegend"><button type="button" class="replay" id="replay">↻ replay</button></p>
+</div>
+</div>
+</div>
+<svg aria-hidden="true" width="0" height="0" style="position:absolute"><defs><filter id="marker" x="-15%" y="-70%" width="130%" height="240%"><feTurbulence type="fractalNoise" baseFrequency="0.018 0.11" numOctaves="2" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.4" xChannelSelector="R" yChannelSelector="G"/></filter></defs></svg>
+<script>
+
+(function(){
+  const agentDock=document.getElementById("agent-dock");
+  const agentCard=document.getElementById("agent-card");
+  const dockBackdrop=document.getElementById("dock-backdrop");
+  const expandToggle=document.getElementById("expand-toggle");
+  const cardHandle=document.getElementById("card-handle");
+  const cardCollapse=document.getElementById("card-collapse");
+  const composerInput=document.getElementById("composer-input");
+  const composerForm=document.getElementById("composer-form");
+  const replay=document.getElementById("replay");
+  function setExpanded(expanded){
+    if(!agentDock||!agentCard)return;
+    agentDock.classList.toggle("is-expanded",expanded);
+    agentCard.classList.toggle("is-expanded",expanded);
+    if(dockBackdrop)dockBackdrop.hidden=!expanded;
+    if(expandToggle){expandToggle.setAttribute("aria-expanded",String(expanded));expandToggle.classList.toggle("is-active",expanded);}
+    if(cardHandle)cardHandle.setAttribute("aria-expanded",String(expanded));
+    if(expanded&&composerInput)requestAnimationFrame(()=>composerInput.focus());
+  }
+  if(expandToggle)expandToggle.addEventListener("click",()=>setExpanded(!agentDock.classList.contains("is-expanded")));
+  if(cardHandle)cardHandle.addEventListener("click",()=>setExpanded(true));
+  if(cardCollapse)cardCollapse.addEventListener("click",()=>setExpanded(false));
+  if(dockBackdrop)dockBackdrop.addEventListener("click",()=>setExpanded(false));
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&agentDock?.classList.contains("is-expanded"))setExpanded(false);});
+  if(composerForm){composerForm.addEventListener("submit",e=>{e.preventDefault();const v=document.getElementById("voice-line");if(composerInput?.value.trim()&&v){v.textContent='Not wired in this mock-up — you\'d send: "'+composerInput.value.trim()+'"';composerInput.value="";}});}
+  if(replay){replay.addEventListener("click",()=>{const sheet=document.getElementById("sheet");if(sheet){sheet.style.animation="none";void sheet.offsetWidth;sheet.style.animation="";}if(agentDock?.classList.contains("is-expanded"))setExpanded(false);if(typeof window.__safetySceneReplay==="function")window.__safetySceneReplay();});}
+})();
+
 const DASHBOARD_STATE = {
-  eyebrow: "Safety · step 01",
-  headline: "Finish a board-ratified Safety charter — in the dashboard.",
-  lede: "The dashboard drafts all five Guidebook documents with you, in your organization's context, to a state your board can actually ratify. Not a template dump — an artifact taking shape.",
-  compare: {
-    before: { tag: "Alone with the PDF", text: "Blank page. You read the Guidebook, mean to start, and stall before anything is signable." },
-    after: { tag: "In the dashboard", text: "Guided straight to five drafted layers — Statement through Response Plans — ready for board review." },
+  eyebrow: "Safety · the vehicle",
+  headline: "Even with a map, it's hard to move sometimes.",
+  open: [
+    "The AI Safety Handbook doesn't hold back. What a Safety charter is, why each of the five documents matters, how to build them — exact templates. Read it and you'll know exactly what your organization needs to decide.",
+    { hand: "But it's still… a lot." },
+    "The next step is clear, but it's still hard to stare at a blank page, to decide who decides, to communicate with stakeholders, to assess the actual reality within your organization in a way that doesn't become your new, permanent full-time position.",
+  ],
+  questionLabel: "The question we asked",
+  solutionHeadline: "We built a dashboard that does everything but the discernment for you.",
+  solution: [
+    "So we asked a simple question: what would we build for the person who read the whole guide and still couldn't get it done?",
+    "What your organization will and won't do with AI is a decision only your leadership can make. Everything around that decision — the research, the drafting, the structure, the organizational assessment, and more — we do for you. Presented in your private organizational dashboard to which you have permanent access.",
+  ],
+  outcome: "The outcome: in two weeks, a complete, board-ready Safety charter — your five documents, drafted in your organization's own context, ready to ratify.",
+  stepsLabel: "Here's what that takes, and what we do",
+  steps: [
+    "We do <strong>deep research on your organization</strong> — who you are, who you serve, the data you hold, the trust you've built — so the charter fits you, not a template.",
+    "We combine that with <strong>our own AI Charter guidelines</strong> — the same framework behind the Field Guide — to generate a full first draft of all five documents.",
+    "We present it in a <strong>dashboard built for the work</strong>: each document laid out, in plain language, ready to read and react to.",
+    "You move through it in order — <strong>you discern, you edit</strong>, and in a single meeting with the right folks at the table you decide.",
+    "You end with a <strong>ratified charter</strong> your board can sign, share, publish, and your people can organize around safely.",
+  ],
+  cta: "Open your dashboard →",
+  dock: {
+    voiceLine: "The handbook is the map. The dashboard is how you actually move.",
+    composerPlaceholder: "Ask about the dashboard or what happens next…",
   },
-  assemble: {
-    label: "Five documents · assembling now",
-    documents: [
-      { layer: "01", title: "Statement", draft: false, layout: { left: "2%", top: "6%", rot: "-6deg", z: 1 } },
-      { layer: "02", title: "Policy", draft: false, layout: { left: "16%", top: "2%", rot: "-2deg", z: 2 } },
-      { layer: "03", title: "Context", draft: true, layout: { left: "32%", top: "8%", rot: "2deg", z: 3 } },
-      { layer: "04", title: "Rules", draft: true, layout: { left: "48%", top: "0%", rot: "5deg", z: 4 } },
-      { layer: "05", title: "Response Plans", draft: true, layout: { left: "60%", top: "10%", rot: "7deg", z: 5 } },
-    ],
-  },
-  proof: {
-    eyebrow: "Board-ready output · excerpt",
-    title: "AI Organizational Statement",
-    excerpt: "Our organization will use AI to extend formation and care — never to impersonate pastoral voice, fabricate testimony, or place donor or member data in unvetted consumer tools. <em>Human authorship and disclosure are non-negotiable</em> in anything that carries our name publicly.",
-    signature: "Draft v3 · ready for executive review",
-  },
-  doors: {
-    label: "Three honest doors — pick once",
-    options: [
-      { id: "free", lead: true, title: "Start free in the dashboard", price: "Free to begin", body: "Open your workspace and draft the five Guidebook layers with guided prompts. Upgrade only if you want us in the room.", cta: "Start your charter", href: "04-signup-capture.html" },
-      { id: "paid", paid: true, title: "Have us draft it with you", price: "$1,000 · two weeks", body: "We draft all five layers customized to your organization. Your team reviews and ratifies in a private dashboard.", cta: "Have us draft it · $1,000", href: "04-signup-capture.html?plan=paid" },
-      { id: "train", title: "Learn to build it yourselves", price: "Training · scoped", body: "We train your people to build and maintain the charter — facilitation, templates, and board-ready rollout. Later stages: Skills and Solutions.", cta: "Train your team", href: "/contact" },
-    ],
-  },
-  dock: { voiceLine: "This is the only screen with a price — three doors, same dignity. Start free if you want to see the artifact form.", composerPlaceholder: "Ask about the dashboard or pricing…" },
 };
+
 const $ = (s) => document.querySelector(s);
-function renderCompare() {
-  const c = DASHBOARD_STATE.compare;
-  $("#compare").innerHTML = '<div class="compareCol"><p class="compareTag">' + c.before.tag + '</p><p>' + c.before.text + '</p><div class="blankPage" aria-hidden="true"></div></div><div class="compareMid" aria-hidden="true">→</div><div class="compareCol compareCol--after"><p class="compareTag">' + c.after.tag + '</p><p>' + c.after.text + '</p><div class="miniStack" aria-hidden="true">' + [1,2,3,4,5].map((i) => '<div class="miniDoc' + (i <= 2 ? ' filled' : '') + '"></div>').join('') + '</div></div>';
-}
-function renderDocuments() {
-  const spread = $("#doc-spread"); spread.innerHTML = "";
-  DASHBOARD_STATE.assemble.documents.forEach((doc) => {
-    const el = document.createElement("div"); el.className = "docCard";
-    el.style.left = doc.layout.left; el.style.top = doc.layout.top; el.style.transform = "rotate(" + doc.layout.rot + ")"; el.style.zIndex = doc.layout.z;
-    const filled = doc.draft ? "" : " filled";
-    el.innerHTML = '<div class="docInner"><span class="docLayer">Layer ' + doc.layer + '</span><h3 class="docTitle">' + doc.title + '</h3><div class="docLines"><span class="docLine' + filled + '"></span><span class="docLine short' + filled + '"></span><span class="docLine' + filled + '"></span><span class="docLine shorter"></span></div><span class="docStatus">' + (doc.draft ? "Drafting…" : "Draft ready") + '</span></div>';
-    spread.appendChild(el);
+
+function renderParagraphs(container, items) {
+  container.innerHTML = "";
+  items.forEach((item) => {
+    if (typeof item === "string") {
+      const p = document.createElement("p");
+      p.textContent = item;
+      container.appendChild(p);
+      return;
+    }
+    if (item.hand) {
+      const note = document.createElement("p");
+      note.className = "handNote";
+      note.textContent = item.hand;
+      container.appendChild(note);
+    }
   });
 }
-function renderProof() {
-  const p = DASHBOARD_STATE.proof;
-  $("#proof-sheet").innerHTML = '<p class="proofEyebrow">' + p.eyebrow + '</p><h3 class="proofTitle">' + p.title + '</h3><p class="proofExcerpt">' + p.excerpt + '</p><p class="proofSig">' + p.signature + '</p>';
-}
-function renderDoors() {
-  const grid = $("#door-grid"); grid.innerHTML = "";
-  DASHBOARD_STATE.doors.options.forEach((door) => {
-    const card = document.createElement("article");
-    card.className = "way" + (door.lead ? " wayLead" : "") + (door.paid ? " paid" : "");
-    card.innerHTML = "<h4>" + door.title + "</h4><p class=\"price\">" + door.price + "</p><p>" + door.body + "</p><a class=\"" + (door.paid ? "wayCtaPaid" : "wayCta") + "\" href=\"" + door.href + "\">" + door.cta + "</a>";
-    grid.appendChild(card);
-  });
-}
+
 function render() {
   $("#eyebrow").textContent = DASHBOARD_STATE.eyebrow;
   $("#headline").textContent = DASHBOARD_STATE.headline;
-  $("#lede").textContent = DASHBOARD_STATE.lede;
-  $("#assemble-label").textContent = DASHBOARD_STATE.assemble.label;
-  $("#doors-label").textContent = DASHBOARD_STATE.doors.label;
+  renderParagraphs($("#prose-open"), DASHBOARD_STATE.open);
+  $("#question-label").textContent = DASHBOARD_STATE.questionLabel;
+  $("#solution-headline").textContent = DASHBOARD_STATE.solutionHeadline;
+  renderParagraphs($("#prose-solution"), DASHBOARD_STATE.solution);
+  $("#outcome").innerHTML = "<p>" + DASHBOARD_STATE.outcome + "</p>";
+  $("#steps-label").textContent = DASHBOARD_STATE.stepsLabel;
+  const steps = $("#steps");
+  steps.innerHTML = "";
+  DASHBOARD_STATE.steps.forEach((html) => {
+    const li = document.createElement("li");
+    li.innerHTML = html;
+    steps.appendChild(li);
+  });
+  $("#signup-cta").textContent = DASHBOARD_STATE.cta;
   $("#voice-line").textContent = DASHBOARD_STATE.dock.voiceLine;
+  $("#thread-voice").textContent = DASHBOARD_STATE.dock.voiceLine;
   $("#composer-input").placeholder = DASHBOARD_STATE.dock.composerPlaceholder;
-  renderCompare(); renderDocuments(); renderProof(); renderDoors();
 }
-window.__safetySceneReplay = () => { $("#voice-line").textContent = DASHBOARD_STATE.dock.voiceLine; };
+
+window.__safetySceneReplay = () => {
+  $("#voice-line").textContent = DASHBOARD_STATE.dock.voiceLine;
+};
+
 render();
+
 </script>
-  </body>
+</body>
 </html>

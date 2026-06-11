@@ -2,6 +2,7 @@ import {
   SAFETY_FIELD_GUIDE_DISPLAY_TITLE,
   SAFETY_FIELD_GUIDE_DOWNLOAD_FILENAME,
   SAFETY_FIELD_GUIDE_PDF_PATH,
+  SAFETY_HANDBOOK_DISPLAY_TITLE,
 } from "@/lib/safety-field-guide";
 import {
   SANDBOX_FIELD_GUIDE_DISPLAY_TITLE,
@@ -86,12 +87,12 @@ export const FIELD_GUIDE_PAGE_COPY: Record<FieldGuideKind, FieldGuidePageCopy> =
   safety: {
     kind: "safety",
     eyebrow: "Field guide · Volume One",
-    title: SAFETY_FIELD_GUIDE_DISPLAY_TITLE,
+    title: SAFETY_HANDBOOK_DISPLAY_TITLE,
     lede: "The practical first-stage field guide for leaders who need to move on AI without eroding the trust they spent decades earning.",
     meta: ["33 pages", "Free", "Self-assessment included", "No drip campaign"],
     insideHeading: "Five layers. Seven deliverables. One ratifiable framework.",
     inside: SAFETY_INSIDE,
-    success: "Check your inbox — It Starts With Safety is on its way.",
+    success: "Check your inbox — your AI Safety Handbook is on its way.",
     pdfPath: SAFETY_FIELD_GUIDE_PDF_PATH,
     pdfFilename: SAFETY_FIELD_GUIDE_DOWNLOAD_FILENAME,
     otherGuide: {

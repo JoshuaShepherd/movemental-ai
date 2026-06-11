@@ -37,7 +37,7 @@ function readbackVoiceActs(read: MapRead): Scene {
 /** Post-readback chips after Q1 gate fail (most organizations). */
 const GATE_FAIL_SUGGEST: Scene[number] = {
   suggest: [
-    { label: "Get the free Field Guide", lead: true, to: "focusHandbook" },
+    { label: "Get the free Handbook", lead: true, to: "focusHandbook" },
     { label: "Have us do it · $1,000", to: "toSafetyDashboard" },
     { label: "↺ Start over", to: "opening" },
   ],

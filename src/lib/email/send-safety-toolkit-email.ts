@@ -4,7 +4,10 @@ import { resendFromHeader } from "@/lib/email/from";
 import { getResend } from "@/lib/email/resend";
 import { env } from "@/lib/env";
 import { SSSS_FIELD_GUIDE_PATH } from "@/lib/canon-routes";
-import { SAFETY_FIELD_GUIDE_PDF_PATH } from "@/lib/safety-field-guide";
+import {
+  SAFETY_FIELD_GUIDE_PDF_PATH,
+  SAFETY_HANDBOOK_DISPLAY_TITLE,
+} from "@/lib/safety-field-guide";
 import { SANDBOX_FIELD_GUIDE_PDF_PATH } from "@/lib/sandbox-field-guide";
 
 const SITE_NAME = "Movemental";
@@ -103,18 +106,18 @@ export async function sendToolkitLeadEmail(
   const { error } = await resend.emails.send({
     from: resendFromHeader(),
     to: [email],
-    subject: `Your Safety Field Guide (PDF) — ${SITE_NAME}`,
+    subject: `Your ${SAFETY_HANDBOOK_DISPLAY_TITLE} (PDF) — ${SITE_NAME}`,
     html: `
       <!DOCTYPE html>
       <html>
         <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 560px; margin: 0 auto; padding: 40px 20px; color: #19150f;">
           <h1 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; letter-spacing: -0.02em;">It starts with Safety.</h1>
           <p style="font-size: 16px; line-height: 1.6;">
-            Here is your download link for <strong>It Starts With Safety</strong> — the Safety Field Guide. Sixteen pages: read it in an evening, run the self-assessment with your leadership team in about 30 minutes.
+            Here is your download link for <strong>${SAFETY_HANDBOOK_DISPLAY_TITLE}</strong> — first response documentation for nonprofits, churches, and institutions. Sixteen pages: read it in an evening, run the self-assessment with your leadership team in about 30 minutes.
           </p>
           <a href="${escapeHtmlAttr(downloadUrl)}"
              style="display: inline-block; margin: 24px 0; padding: 12px 24px; background-color: #19150f; color: #faf6ee; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: 600;">
-            Download the Field Guide (PDF)
+            Download the Handbook (PDF)
           </a>
           <p style="font-size: 14px; line-height: 1.6; color: #4a443a;">
             We&rsquo;ll follow up once over the next week with two short notes: one offering a 30-minute conversation, and one with context on the $1,000 facilitated MVP that takes the toolkit to seven ratifiable decisions. After that, no further automated emails.

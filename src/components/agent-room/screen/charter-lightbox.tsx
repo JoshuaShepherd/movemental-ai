@@ -52,7 +52,7 @@ export function CharterLightbox({
         >
           ×
         </button>
-        <p className={styles.lbEyebrow}>AI Guidebook · Layer {doc.layer}</p>
+        <p className={styles.lbEyebrow}>AI Safety Handbook · Layer {doc.layer}</p>
         <h2 className={styles.lbTitle} id="charter-lb-title">
           {doc.title}
         </h2>

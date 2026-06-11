@@ -194,7 +194,7 @@
       cta.className = "wayCtaBtn" + (door.paid ? " wayCtaBtn--paid" : "");
       cta.textContent = door.cta;
       cta.addEventListener("click", () => {
-        if (door.action === "handbook") focusHandbookEmail();
+        if (door.action === "handbook") window.location.href = "02-field-guide.html";
         else if (door.action === "dashboard") window.location.href = "03-dashboard-conversion.html";
       });
       card.innerHTML =

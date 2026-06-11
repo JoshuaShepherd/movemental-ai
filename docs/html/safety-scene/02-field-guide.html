@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Movemental — Start your charter (design mock-up)</title>
-<meta name="description" content="Funnel screen 4 — frictionless capture: email + magic link only."/>
+<title>Movemental — Free field guide (design mock-up)</title>
+<meta name="description" content="Funnel screen 2 — deliver the free Guidebook and bridge to the dashboard."/>
 <style>
 :root {
   --color-ink-band-bg: #fbfaf6;
@@ -183,36 +183,42 @@ body{margin:0;min-height:100%;height:100dvh}
 <p class="mastAudience" aria-label="Who we serve">Non-profits · Churches · Institutions</p>
 <div class="mastEnd"><a class="authIconBtn" href="/login" aria-label="Sign in" title="Sign in"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg></a></div>
 </header>
-<section class="screen scroll screen--centered" id="screen" aria-label="Sign up">
-<div class="sheet settle sheet--capture" id="sheet">
+<section class="screen scroll" id="screen" aria-label="Free field guide">
+<div class="sheet settle sheet--narrow" id="sheet">
 
-<div class="captureState" id="capture-state">
 <p class="eyebrow" id="eyebrow"></p>
 <p class="q" id="headline"></p>
-<p class="sub" id="reminder"></p>
-<form class="cap" id="capture-form">
-<div class="capField"><input type="email" name="email" id="email-input" autocomplete="email" required aria-label="Email address"/></div>
-<button type="submit" class="capSubmit" id="submit-btn"></button>
-</form>
-<div class="trustNote" id="trust"></div>
+<p class="sub" id="lede"></p>
+<div class="bookVisual" aria-hidden="true">
+<div class="bookCover"><p class="bookCoverEyebrow">Field Guide</p><p class="bookCoverTitle">It Starts With Safety</p><p class="bookCoverSub">Five Guidebook layers · churches, nonprofits, institutions</p></div>
 </div>
-<div class="confirmState" id="confirm-state" aria-live="polite">
-<p class="eyebrow" id="confirm-eyebrow"></p>
-<h2 class="confirmHeadline" id="confirm-headline"></h2>
-<p class="confirmBody" id="confirm-body"></p>
+<form class="cap" id="email-form">
+<div class="capField"><input type="email" name="email" id="email-input" autocomplete="email" required aria-label="Email for the field guide"/></div>
+<button type="submit" class="capSubmit" id="email-submit"></button>
+</form>
+<p class="emailDone" id="email-done" hidden></p>
+<div class="credBlock">
+<p id="cred-lede"></p>
+<div class="credFaces" id="cred-faces"></div>
+</div>
+<div class="bridge">
+<p id="bridge-1"></p>
+<p id="bridge-2"></p>
+<p class="handNote" id="bridge-note"></p>
+<a class="ctaLead" id="dashboard-cta" href="03-dashboard-conversion.html"></a>
 </div>
 
 </div>
 </section>
 <div class="agentDock" id="agent-dock">
 <div class="dockBackdrop" id="dock-backdrop" hidden></div>
-<div class="handwritingStrip" aria-live="polite"><div class="handwritingInner"><div class="vline" id="voice-line">No more decisions here — just your email and a link.</div></div></div>
+<div class="handwritingStrip" aria-live="polite"><div class="handwritingInner"><div class="vline" id="voice-line">The guide is the trust-give. Take it free — then decide if you want the vehicle.</div></div></div>
 <div class="agentFloat" id="agent-float">
 <form class="agentCard" id="agent-card" role="region" aria-label="Agent conversation">
 <div class="cardHeader" id="card-header"><span class="cardTitle">Conversation</span><button type="button" class="cardCollapse" id="card-collapse" aria-label="Collapse chat"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 11.25L9 6.75l4.5 4.5"/></svg></button></div>
-<div class="cardThread" id="card-thread"><div class="threadMsg threadMsg--agent"><p>No more decisions here — just your email and a link.</p></div></div>
+<div class="cardThread" id="card-thread"><div class="threadMsg threadMsg--agent"><p>The guide is the trust-give. Take it free — then decide if you want the vehicle.</p></div></div>
 <form class="cardBody" id="composer-form">
-<label class="cardInput"><input type="text" name="message" id="composer-input" autocomplete="off" aria-label="Talk to Movemental" placeholder="Questions about access or your link…"/></label>
+<label class="cardInput"><input type="text" name="message" id="composer-input" autocomplete="off" aria-label="Talk to Movemental" placeholder="Ask about the field guide or what happens next…"/></label>
 <div class="cardToolbar">
 <div class="toolbarGroup"><button type="button" class="toolBtn" aria-label="Add attachment">+</button><button type="button" class="toolBtn" aria-label="Slash commands">/</button></div>
 <div class="toolbarGroup">
@@ -258,43 +264,72 @@ body{margin:0;min-height:100%;height:100dvh}
   if(replay){replay.addEventListener("click",()=>{const sheet=document.getElementById("sheet");if(sheet){sheet.style.animation="none";void sheet.offsetWidth;sheet.style.animation="";}if(agentDock?.classList.contains("is-expanded"))setExpanded(false);if(typeof window.__safetySceneReplay==="function")window.__safetySceneReplay();});}
 })();
 
-const SIGNUP_STATE = {
-  eyebrow: "One step",
-  headline: "Start your Safety charter.",
-  reminder: "We'll email you a magic link to pick up where you are — no password, no account setup.",
-  email: { placeholder: "you@yourorganization.org", submitLabel: "Email me a link" },
-  trust: { next: "Check your inbox. The link opens your dashboard draft — same five Guidebook layers, saved to your organization.", data: "Your data is yours. We don't train on your charter text." },
-  confirm: { eyebrow: "Link sent", headline: "Check your inbox.", body: "We sent a sign-in link. It expires in one hour. If it doesn't arrive, check spam or request another from this page." },
-  dock: { voiceLine: "No more decisions here — just your email and a link.", voiceLineConfirm: "You're in — open the link when it lands.", composerPlaceholder: "Questions about access or your link…" },
+const FIELD_GUIDE_STATE = {
+  eyebrow: "Free · no wall",
+  headline: "Your Safety field guide is here.",
+  lede: "It Starts With Safety is a rigorous field guide — free, full, and yours to keep. One email and we send the PDF. No dashboard required to receive it.",
+  email: { placeholder: "you@yourorganization.org", submitLabel: "Send me the guide", doneMessage: "It's in your inbox." },
+  credibility: {
+    lede: "This is not a lead-magnet shell. Alan Hirsch, Brad Brisco, Josh Shepherd, and the Movemental network wrote it for leaders who need a board-ratifiable Safety charter — not another AI checklist.",
+    faces: [
+      { initials: "AH", name: "Alan Hirsch", role: "Movement theology" },
+      { initials: "BB", name: "Brad Brisco", role: "Missional practice" },
+      { initials: "JS", name: "Josh Shepherd", role: "Platform & governance" },
+    ],
+  },
+  bridge: {
+    p1: "The Guidebook tells you what a Safety charter is and how to build one — Statement through Response Plans — in language your board can actually ratify.",
+    p2: "But a PDF on your desk is not a ratified charter. Most teams read it, mean to start, and stall. The easier road is to draft the five layers in the dashboard, in your organization's context, until something is signable.",
+    note: "the map, not the vehicle —",
+    cta: "Open the dashboard →",
+  },
+  dock: {
+    voiceLine: "The guide is the trust-give. Take it free — then decide if you want the vehicle.",
+    composerPlaceholder: "Ask about the field guide or what happens next…",
+  },
 };
 const $ = (s) => document.querySelector(s);
 function render() {
-  $("#eyebrow").textContent = SIGNUP_STATE.eyebrow;
-  $("#headline").textContent = SIGNUP_STATE.headline;
-  $("#reminder").textContent = SIGNUP_STATE.reminder;
-  $("#email-input").placeholder = SIGNUP_STATE.email.placeholder;
-  $("#submit-btn").textContent = SIGNUP_STATE.email.submitLabel;
-  $("#trust").innerHTML = "<p>" + SIGNUP_STATE.trust.next + "</p><p>" + SIGNUP_STATE.trust.data + "</p>";
-  $("#confirm-eyebrow").textContent = SIGNUP_STATE.confirm.eyebrow;
-  $("#confirm-headline").textContent = SIGNUP_STATE.confirm.headline;
-  $("#confirm-body").textContent = SIGNUP_STATE.confirm.body;
-  $("#voice-line").textContent = SIGNUP_STATE.dock.voiceLine;
-  $("#composer-input").placeholder = SIGNUP_STATE.dock.composerPlaceholder;
+  $("#eyebrow").textContent = FIELD_GUIDE_STATE.eyebrow;
+  $("#headline").textContent = FIELD_GUIDE_STATE.headline;
+  $("#lede").textContent = FIELD_GUIDE_STATE.lede;
+  $("#email-input").placeholder = FIELD_GUIDE_STATE.email.placeholder;
+  $("#email-submit").textContent = FIELD_GUIDE_STATE.email.submitLabel;
+  $("#cred-lede").textContent = FIELD_GUIDE_STATE.credibility.lede;
+  const faces = $("#cred-faces");
+  faces.innerHTML = "";
+  FIELD_GUIDE_STATE.credibility.faces.forEach((f) => {
+    const el = document.createElement("div");
+    el.className = "credFace";
+    el.innerHTML = '<span class="credInitial">' + f.initials + '</span><span><strong>' + f.name + '</strong> · ' + f.role + '</span>';
+    faces.appendChild(el);
+  });
+  $("#bridge-1").textContent = FIELD_GUIDE_STATE.bridge.p1;
+  $("#bridge-2").textContent = FIELD_GUIDE_STATE.bridge.p2;
+  $("#bridge-note").textContent = FIELD_GUIDE_STATE.bridge.note;
+  $("#dashboard-cta").textContent = FIELD_GUIDE_STATE.bridge.cta;
+  $("#voice-line").textContent = FIELD_GUIDE_STATE.dock.voiceLine;
+  $("#composer-input").placeholder = FIELD_GUIDE_STATE.dock.composerPlaceholder;
 }
-function resetCapture() {
-  $("#capture-state").classList.remove("is-hidden");
-  $("#confirm-state").classList.remove("is-visible");
+function resetScene() {
+  $("#email-form").style.display = "";
+  const done = $("#email-done");
+  done.hidden = true;
+  done.classList.remove("is-visible");
+  done.textContent = "";
   $("#email-input").value = "";
-  $("#voice-line").textContent = SIGNUP_STATE.dock.voiceLine;
+  $("#voice-line").textContent = FIELD_GUIDE_STATE.dock.voiceLine;
 }
-window.__safetySceneReplay = resetCapture;
-$("#capture-form").addEventListener("submit", (e) => {
+window.__safetySceneReplay = resetScene;
+$("#email-form").addEventListener("submit", (e) => {
   e.preventDefault();
   const input = $("#email-input");
   if (!input.value.trim() || !input.validity.valid) { input.focus(); return; }
-  $("#capture-state").classList.add("is-hidden");
-  $("#confirm-state").classList.add("is-visible");
-  $("#voice-line").textContent = SIGNUP_STATE.dock.voiceLineConfirm;
+  $("#email-form").style.display = "none";
+  const done = $("#email-done");
+  done.hidden = false;
+  done.classList.add("is-visible");
+  done.textContent = FIELD_GUIDE_STATE.email.doneMessage;
 });
 render();
 

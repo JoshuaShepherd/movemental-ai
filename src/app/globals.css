@@ -79,6 +79,12 @@
   .ink-band-surface {
     --color-ink-band-bg: #fbfaf6;
     --color-ink-band-surface: #f6f3ec;
+    /* AI dock band — slightly cooler than the stage so the agent surface reads as its own layer */
+    --color-ink-band-ai-surface: color-mix(
+      in srgb,
+      var(--color-ink-band-surface) 90%,
+      var(--color-ink-band-blue) 10%
+    );
     --color-ink-band-paper: #fffdf7;
     --color-ink-band-ink: #1a1a1a;
     --color-ink-band-ink-muted: #5c5651;

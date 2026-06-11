@@ -267,11 +267,15 @@ export const SCENES = {
     { show: "safetyDashboard" },
     { wait: 200 },
     {
-      say: "This is the dashboard — five layers drafting together, board-ready at the end.",
+      say: "The handbook is the map. The dashboard is how you actually move.",
+    },
+    { wait: 180 },
+    {
+      say: "We do everything but the discernment — research, drafting, structure, assessment. You decide.",
     },
     {
       suggest: [
-        { label: "Have us draft it · $1,000", lead: true, to: "withUs" },
+        { label: "Get started with the dashboard", lead: true, to: "toEnroll" },
         { label: "Get the free Handbook", to: "focusHandbook" },
         { label: "↺ Start over", to: "opening" },
       ],

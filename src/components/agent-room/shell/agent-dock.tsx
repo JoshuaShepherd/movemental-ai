@@ -245,21 +245,22 @@ export function AgentDock({
         onClick={() => setExpandedState(false)}
       />
 
-      <div className={styles.handwritingStrip} aria-live="polite">
-        <div className={styles.handwritingInner}>
-          <div ref={voiceEl} className={styles.handwritingVoice}>
-            <VoiceZone
-              voice={voice}
-              error={error}
-              phase={discuss ? "discuss" : phase}
-              transcript={transcript}
-              strip
-            />
+      <div className={styles.agentDockPanel}>
+        <div className={styles.handwritingStrip} aria-live="polite">
+          <div className={styles.handwritingInner}>
+            <div ref={voiceEl} className={styles.handwritingVoice}>
+              <VoiceZone
+                voice={voice}
+                error={error}
+                phase={discuss ? "discuss" : phase}
+                transcript={transcript}
+                strip
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className={styles.agentFloat} id="agent-float">
+        <div className={styles.agentFloat} id="agent-float">
         <div className={styles.floatChips} id="float-chips">
           {suggestions.map((s) => (
             <button
@@ -407,6 +408,7 @@ export function AgentDock({
             ↻ replay
           </button>
         </p>
+        </div>
       </div>
     </div>
   );

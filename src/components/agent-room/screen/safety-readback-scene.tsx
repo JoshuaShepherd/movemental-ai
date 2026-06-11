@@ -44,7 +44,7 @@ export function SafetyReadbackScene({ mapRead, onRunScene, disabled }: SafetyRea
         </aside>
       </div>
 
-      <section className={styles.charterFold} aria-label="AI Guidebook charter">
+      <section className={styles.charterFold} aria-label="AI Safety Handbook charter">
         <p className={styles.secLabel}>{SAFETY_READBACK_COPY.charterLabel}</p>
         <div className={`${styles.docSpread} ${styles.docSpreadFold}`}>
           {SAFETY_CHARTER_DOCUMENTS.map((doc, idx) => (
