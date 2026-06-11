@@ -413,8 +413,15 @@
   opacity: 0.32;
   cursor: default;
 }
+.carouselShell {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 .carouselViewport {
   overflow: hidden;
+  flex: 0 0 auto;
+  max-width: 100%;
 }
 .carouselTrack {
   display: flex;

@@ -1,5 +1,5 @@
 // Auto-generated Zod schemas from Drizzle schema
-// Generated at: 2026-06-10T18:01:48.534Z
+// Generated at: 2026-06-10T23:33:47.001Z
 // Do not edit manually - regenerate with: pnpm generate:schemas
 
 import { z } from "zod";
@@ -216,6 +216,10 @@ import {
   sandboxStaffReadinessSubmissions,
   sandboxStaffReadinessInvites,
   sandboxStaffReadinessAnonymousSubmissions,
+  aiRealityInvites,
+  aiRealityResults,
+  aiRealityOrgResults,
+  aiRealityShareTokens,
 } from "@/lib/db/schema";
 
 // ---- Base Filters ----
@@ -3110,3 +3114,56 @@ export type SandboxStaffReadinessAnonymousSubmissions = z.infer<typeof SandboxSt
 export type SandboxStaffReadinessAnonymousSubmissionsCreate = z.infer<typeof SandboxStaffReadinessAnonymousSubmissionsInsertSchema>;
 export type SandboxStaffReadinessAnonymousSubmissionsUpdate = z.infer<typeof SandboxStaffReadinessAnonymousSubmissionsUpdateSchema>;
 export type SandboxStaffReadinessAnonymousSubmissionsFilters = z.infer<typeof SandboxStaffReadinessAnonymousSubmissionsFiltersSchema>;
+
+// AiRealityInvites
+export const AiRealityInvitesSelectSchema = createSelectSchema(aiRealityInvites);
+export const AiRealityInvitesInsertSchema = createInsertSchema(aiRealityInvites);
+export const AiRealityInvitesUpdateSchema = createUpdateSchema(aiRealityInvites);
+export const AiRealityInvitesFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type AiRealityInvites = z.infer<typeof AiRealityInvitesSelectSchema>;
+export type AiRealityInvitesCreate = z.infer<typeof AiRealityInvitesInsertSchema>;
+export type AiRealityInvitesUpdate = z.infer<typeof AiRealityInvitesUpdateSchema>;
+export type AiRealityInvitesFilters = z.infer<typeof AiRealityInvitesFiltersSchema>;
+
+// AiRealityResults
+export const AiRealityResultsSelectSchema = createSelectSchema(aiRealityResults);
+export const AiRealityResultsInsertSchema = createInsertSchema(aiRealityResults);
+export const AiRealityResultsUpdateSchema = createUpdateSchema(aiRealityResults);
+export const AiRealityResultsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  userId: z.string().uuid().optional(),
+});
+
+export type AiRealityResults = z.infer<typeof AiRealityResultsSelectSchema>;
+export type AiRealityResultsCreate = z.infer<typeof AiRealityResultsInsertSchema>;
+export type AiRealityResultsUpdate = z.infer<typeof AiRealityResultsUpdateSchema>;
+export type AiRealityResultsFilters = z.infer<typeof AiRealityResultsFiltersSchema>;
+
+// AiRealityOrgResults
+export const AiRealityOrgResultsSelectSchema = createSelectSchema(aiRealityOrgResults);
+export const AiRealityOrgResultsInsertSchema = createInsertSchema(aiRealityOrgResults);
+export const AiRealityOrgResultsUpdateSchema = createUpdateSchema(aiRealityOrgResults);
+export const AiRealityOrgResultsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type AiRealityOrgResults = z.infer<typeof AiRealityOrgResultsSelectSchema>;
+export type AiRealityOrgResultsCreate = z.infer<typeof AiRealityOrgResultsInsertSchema>;
+export type AiRealityOrgResultsUpdate = z.infer<typeof AiRealityOrgResultsUpdateSchema>;
+export type AiRealityOrgResultsFilters = z.infer<typeof AiRealityOrgResultsFiltersSchema>;
+
+// AiRealityShareTokens
+export const AiRealityShareTokensSelectSchema = createSelectSchema(aiRealityShareTokens);
+export const AiRealityShareTokensInsertSchema = createInsertSchema(aiRealityShareTokens);
+export const AiRealityShareTokensUpdateSchema = createUpdateSchema(aiRealityShareTokens);
+export const AiRealityShareTokensFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type AiRealityShareTokens = z.infer<typeof AiRealityShareTokensSelectSchema>;
+export type AiRealityShareTokensCreate = z.infer<typeof AiRealityShareTokensInsertSchema>;
+export type AiRealityShareTokensUpdate = z.infer<typeof AiRealityShareTokensUpdateSchema>;
+export type AiRealityShareTokensFilters = z.infer<typeof AiRealityShareTokensFiltersSchema>;

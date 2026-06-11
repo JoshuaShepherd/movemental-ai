@@ -2,8 +2,11 @@ import { and, eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
+import { persistMapResult } from "@/lib/ai-reality/persist";
 import { db } from "@/lib/db";
 import { contactSubmissions, newsletterSubscribers } from "@/lib/db/schema";
+import type { MapRead } from "@/lib/agent-room/data/map-q";
+import { sendMapResultEmail } from "@/lib/email/ai-reality-notifications";
 import { notifyAgentRoomLead } from "@/lib/email/agent-room-lead-notifications";
 import {
   notifyContactInbox,
@@ -89,10 +92,30 @@ async function fanOut(input: CaptureInput, orgId: string, leadId: string): Promi
       });
       return;
 
-    case "map":
+    case "map": {
       await upsertNewsletterLead(orgId, email, "assessment-map", org);
       await notifyAgentRoomLead({ leadId, kind: "map", email, name, organization: org, source: input.source });
+
+      // Unify the map readback into the AI Reality record (keyed to identity
+      // later, on OTP callback) and send the leader their map — closing the
+      // Phase 7 "map email" stub.
+      const mapRead = (input.metadata as { mapRead?: MapRead } | null)?.mapRead;
+      if (mapRead && typeof mapRead === "object") {
+        try {
+          await persistMapResult({
+            organizationId: orgId,
+            email,
+            sessionId: input.sessionId ?? null,
+            anonId: input.anonId ?? null,
+            mapRead,
+          });
+        } catch (err) {
+          console.error("[capture] ai-reality map persist failed (lead saved):", err);
+        }
+        await sendMapResultEmail({ email, firstName: input.first ?? null, mapRead });
+      }
       return;
+    }
 
     case "paid":
       await notifyAgentRoomLead({

@@ -6,6 +6,7 @@
 import {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
   useSyncExternalStore,
@@ -65,39 +66,50 @@ export function LeaderBand({
   onSelect: (i: number) => void;
   disabled?: boolean;
 }) {
-  const viewportRef = useRef<HTMLDivElement>(null);
+  const shellRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   // SSR uses natural order; the client snapshot shuffles once without setState in an effect.
   const order = useSyncExternalStore(subscribeToOrder, getClientOrder, getServerOrder);
   const [index, setIndex] = useState(0);
-  const [m, setM] = useState({ step: 0, maxOffset: 0, maxIndex: 0 });
+  const [m, setM] = useState({ step: 0, maxIndex: 0, clipWidth: 0 });
 
   const measure = useCallback(() => {
-    const vp = viewportRef.current;
+    const shell = shellRef.current;
     const track = trackRef.current;
-    if (!vp || !track) return;
+    if (!shell || !track) return;
     const items = track.children;
     const first = items[0] as HTMLElement | undefined;
     const second = items[1] as HTMLElement | undefined;
-    const step = second && first ? second.offsetLeft - first.offsetLeft : (first?.offsetWidth ?? 0);
-    const maxOffset = Math.max(0, track.scrollWidth - vp.clientWidth);
-    const maxIndex = step > 0 ? Math.ceil(maxOffset / step) : 0;
-    setM({ step, maxOffset, maxIndex });
+    const itemWidth = first?.offsetWidth ?? 0;
+    const step =
+      second && first ? second.offsetLeft - first.offsetLeft : itemWidth;
+    const gap = Math.max(0, step - itemWidth);
+    const available = shell.clientWidth;
+    const visibleCount =
+      step > 0 ? Math.max(1, Math.floor((available + gap) / step)) : 1;
+    const fullClipWidth = visibleCount * step - gap;
+    const trackWidth = order.length > 0 ? order.length * step - gap : 0;
+    const clipWidth = Math.min(fullClipWidth, trackWidth);
+    const maxIndex = Math.max(0, order.length - visibleCount);
+    setM({ step, maxIndex, clipWidth });
     setIndex((i) => Math.min(i, maxIndex));
-  }, []);
+  }, [order.length]);
+
+  useLayoutEffect(() => {
+    measure();
+  }, [measure, order]);
 
   useEffect(() => {
-    measure();
-    const vp = viewportRef.current;
-    if (!vp || typeof ResizeObserver === "undefined") return;
+    const shell = shellRef.current;
+    if (!shell || typeof ResizeObserver === "undefined") return;
     const ro = new ResizeObserver(measure);
-    ro.observe(vp);
+    ro.observe(shell);
     return () => ro.disconnect();
-  }, [measure, order]);
+  }, [measure]);
 
   const atStart = index <= 0;
   const atEnd = index >= m.maxIndex;
-  const offset = Math.min(index * m.step, m.maxOffset);
+  const offset = index * m.step;
 
   return (
     <div className={styles.band}>
@@ -124,12 +136,16 @@ export function LeaderBand({
           </button>
         </div>
       </div>
-      <div className={styles.carouselViewport} ref={viewportRef}>
+      <div className={styles.carouselShell} ref={shellRef}>
         <div
-          className={styles.carouselTrack}
-          ref={trackRef}
-          style={{ transform: `translateX(${-offset}px)` }}
+          className={styles.carouselViewport}
+          style={m.clipWidth > 0 ? { width: m.clipWidth } : undefined}
         >
+          <div
+            className={styles.carouselTrack}
+            ref={trackRef}
+            style={{ transform: `translateX(${-offset}px)` }}
+          >
           {order.map((leaderIndex, pos) => {
             const leader = LEADERS[leaderIndex]!;
             return (
@@ -152,6 +168,7 @@ export function LeaderBand({
               </button>
             );
           })}
+          </div>
         </div>
       </div>
     </div>

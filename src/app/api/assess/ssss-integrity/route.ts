@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { persistSsssResult, recomputeOrgSynthesis, resolveProfileIdByEmail } from "@/lib/ai-reality/persist";
 import { analyticsEvents } from "@/lib/db/schema";
 import { db } from "@/lib/db";
 import {
@@ -10,6 +11,7 @@ import {
   SSSS_INTEGRITY_VERSION,
   SsssIntegritySubmitSchema,
 } from "@/lib/ssss-integrity-assessment";
+import { getOptionalAuthUser } from "@/lib/supabase/server";
 import { getTenantOrgId } from "@/lib/tenant";
 
 const EVENT_TYPE = "ssss_integrity_assessment" as const;
@@ -66,6 +68,7 @@ export async function POST(request: NextRequest) {
 
   const orgId = getTenantOrgId();
   if (orgId) {
+    // Analytics event — unchanged, preserved for existing dashboards.
     try {
       await db.insert(analyticsEvents).values({
         event_type: EVENT_TYPE,
@@ -86,6 +89,26 @@ export async function POST(request: NextRequest) {
       });
     } catch (analyticsErr) {
       console.error("ssss_integrity analytics insert skipped:", analyticsErr);
+    }
+
+    // Unified AI Reality record — the authenticated leader's submission. Binds
+    // to identity (when a profile exists) and triggers the org synthesis so a
+    // provisional single-leader dashboard is available immediately.
+    try {
+      const { user } = await getOptionalAuthUser();
+      const email = parsed.data.email?.trim() || user?.email || null;
+      const userId = user?.email ? await resolveProfileIdByEmail(user.email) : null;
+      await persistSsssResult({
+        organizationId: orgId,
+        userId,
+        email,
+        audience: parsed.data.audience ?? null,
+        sessionId: parsed.data.clientSessionId ?? null,
+        result,
+      });
+      await recomputeOrgSynthesis(orgId);
+    } catch (persistErr) {
+      console.error("ssss_integrity unified persist skipped:", persistErr);
     }
   }
 

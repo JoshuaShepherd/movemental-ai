@@ -3798,3 +3798,101 @@ export const sandboxStaffReadinessAnonymousSubmissions = pgTable(
     updated_at: updatedAt("updated_at"),
   },
 );
+
+// ---------------------------------------------------------------------------
+// AI Reality Assessment — the public "Organizational AI Reality Assessment"
+// front door and the org "AI Reality Dashboard" it produces.
+//
+// Unifies the two real instruments under one identity-/org-keyed record:
+//   - the agent-room 6-question reality map (instrument = "map")
+//   - the 18-item SSSS integrity diagnostic    (instrument = "ssss")
+// Typed columns hold the fields the dashboard filters/sorts on; the full
+// compute output lives in result_payload. ADDITIVE ONLY — nothing here
+// touches agent_room_leads, analytics_events, or the dead diagnostics.
+// Migration: scripts/sql/20260610_ai_reality_results.sql
+//            scripts/sql/20260610_ai_reality_invites.sql
+// ---------------------------------------------------------------------------
+
+/** Token-gated team invites for the org AI Reality Assessment.
+ *  Mirrors sandbox_staff_readiness_invites — SHA-256 token_hash only. */
+export const aiRealityInvites = pgTable("ai_reality_invites", {
+  id: id("id"),
+  organization_id: uuid("organization_id")
+    .notNull()
+    .references(() => organizations.id, { onDelete: "cascade" }),
+  token_hash: text("token_hash").notNull().unique(),
+  label: text("label"),
+  expires_at: timestamp("expires_at", { withTimezone: true, mode: "string" }),
+  revoked_at: timestamp("revoked_at", { withTimezone: true, mode: "string" }),
+  created_by: uuid("created_by").references(() => userProfiles.id, {
+    onDelete: "set null",
+  }),
+  created_at: createdAt("created_at"),
+  updated_at: updatedAt("updated_at"),
+});
+
+/** One row per instrument submission (map or ssss), org- and identity-scoped.
+ *  Anonymous teammate SSSS rows carry invite_id + anon_submission = true. */
+export const aiRealityResults = pgTable("ai_reality_results", {
+  id: id("id"),
+  organization_id: uuid("organization_id")
+    .notNull()
+    .references(() => organizations.id, { onDelete: "cascade" }),
+  /** OTP-authenticated identity when present; null for anonymous submissions. */
+  user_id: uuid("user_id").references(() => userProfiles.id, { onDelete: "set null" }),
+  /** Set for anonymous teammate submissions linked to a team invite. */
+  invite_id: uuid("invite_id").references(() => aiRealityInvites.id, { onDelete: "set null" }),
+  /** "map" | "ssss". */
+  instrument: text("instrument").notNull(),
+  email: text("email"),
+  display_name: text("display_name"),
+  anon_submission: boolean("anon_submission").notNull().default(false),
+  session_id: text("session_id"),
+  anon_id: text("anon_id"),
+  audience: text("audience"),
+  // --- Typed dashboard filter/sort columns (SSSS; null for map rows) ---
+  overall_percent: integer("overall_percent"),
+  stage_safety: integer("stage_safety"),
+  stage_sandbox: integer("stage_sandbox"),
+  stage_skills: integer("stage_skills"),
+  stage_solutions: integer("stage_solutions"),
+  dominant_gap: text("dominant_gap"),
+  illusion_flags: jsonb("illusion_flags").notNull().default([]),
+  /** Full compute output: SsssIntegrityResult or MapRead. */
+  result_payload: jsonb("result_payload").notNull(),
+  created_at: createdAt("created_at"),
+  updated_at: updatedAt("updated_at"),
+});
+
+/** Multi-participant org synthesis — the dashboard reads ONLY this payload.
+ *  One row per organization; recomputed on each new submission. */
+export const aiRealityOrgResults = pgTable("ai_reality_org_results", {
+  id: id("id"),
+  organization_id: uuid("organization_id")
+    .notNull()
+    .unique()
+    .references(() => organizations.id, { onDelete: "cascade" }),
+  /** Aggregated org payload (per-stage mean/median, divergence, flags, …). */
+  result_payload: jsonb("result_payload").notNull(),
+  invited_count: integer("invited_count").notNull().default(0),
+  responded_count: integer("responded_count").notNull().default(0),
+  created_at: createdAt("created_at"),
+  updated_at: updatedAt("updated_at"),
+});
+
+/** Share tokens for the AI Reality Dashboard — fresh scheme, NOT the legacy
+ *  mDNA assessment_share_tokens route. Hashed token → one organization. */
+export const aiRealityShareTokens = pgTable("ai_reality_share_tokens", {
+  id: id("id"),
+  organization_id: uuid("organization_id")
+    .notNull()
+    .references(() => organizations.id, { onDelete: "cascade" }),
+  token_hash: text("token_hash").notNull().unique(),
+  expires_at: timestamp("expires_at", { withTimezone: true, mode: "string" }),
+  revoked_at: timestamp("revoked_at", { withTimezone: true, mode: "string" }),
+  created_by: uuid("created_by").references(() => userProfiles.id, {
+    onDelete: "set null",
+  }),
+  created_at: createdAt("created_at"),
+  updated_at: updatedAt("updated_at"),
+});
