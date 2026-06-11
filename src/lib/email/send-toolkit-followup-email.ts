@@ -32,20 +32,20 @@ function unsubBlock(unsubscribeUrl?: string | null): string {
 
 const COPY: Record<ToolkitFollowupDay, { subject: string; heading: string; body: string; flow: string }> = {
   3: {
-    subject: `A 30-minute conversation about your AI Handbook — ${SITE_NAME}`,
+    subject: `A 30-minute conversation about your AI Charter, ${SITE_NAME}`,
     heading: "How's the field guide landing?",
     body: `If you and your leadership have started the self-assessment, a short call can save you a lot of false starts.
-      I'll spend 30 minutes with you, no pitch — just helping you find the one next decision that matters most.
+      I'll spend 30 minutes with you, no pitch, just helping you find the one next decision that matters most.
       Reply to this email and we'll find a time.`,
     flow: "toolkit_day_3",
   },
   7: {
-    subject: `The $1,000 facilitated path — ${SITE_NAME}`,
+    subject: `The $1,000 facilitated path, ${SITE_NAME}`,
     heading: "When you'd rather not draft it alone.",
     body: `Some teams have the time and discipline to draft all five Safety layers themselves; the field guide is built for that.
       Others would rather we draft it with them. The facilitated MVP is $1,000 and takes about two weeks: we draft your Handbook
       customized to your context, your team reviews and ratifies it inside a private dashboard, and you leave with a print-quality PDF.
-      This is the last automated note — reply any time if it'd help to talk.`,
+      This is the last automated note, reply any time if it'd help to talk.`,
     flow: "toolkit_day_7",
   },
 };
@@ -65,7 +65,7 @@ export async function sendToolkitFollowupEmail(
 ): Promise<boolean> {
   const resend = getResend();
   if (!resend) {
-    console.warn("[toolkit-followup] RESEND_API_KEY not set — skipping follow-up email.");
+    console.warn("[toolkit-followup] RESEND_API_KEY not set, skipping follow-up email.");
     return false;
   }
 
@@ -85,7 +85,7 @@ export async function sendToolkitFollowupEmail(
           <p style="font-size: 14px; line-height: 1.6; color: #4a443a;">
             The Safety stage overview: <a href="${escapeHtmlAttr(safetyPageUrl)}" style="color: #19150f;">${escapeHtmlAttr(safetyPageUrl)}</a>
           </p>
-          <p style="font-size: 14px; line-height: 1.6; color: #4a443a;">— Josh<br />josh@movemental.ai</p>
+          <p style="font-size: 14px; line-height: 1.6; color: #4a443a;">Josh<br />josh@movemental.ai</p>
           ${unsubBlock(options.unsubscribeUrl)}
         </body>
       </html>

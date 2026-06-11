@@ -298,7 +298,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
       lastTurnRef.current = text;
       const priorHistory = [...historyRef.current];
       historyRef.current = [...historyRef.current, { role: "user", content: text }];
-      // On a retry the visitor's turn is already on the sheet — don't re-annotate.
+      // On a retry the visitor's turn is already on the sheet, don't re-annotate.
       if (inDiscuss && !opts?.isRetry) {
         appendTranscript({ role: "user", content: text, surface: "margin" });
       }

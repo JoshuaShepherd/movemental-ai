@@ -51,7 +51,7 @@ export function FoundersScreen({ onHome }: ScreenProps) {
 
       <FoundersTeam />
 
-      <p className={styles.honest}>Get in touch — we answer every message personally.</p>
+      <p className={styles.honest}>Get in touch, we answer every message personally.</p>
     </div>
   );
 }

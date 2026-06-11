@@ -6,7 +6,7 @@ import type {
 } from "./types";
 import { SSSS_INTEGRITY_VERSION } from "./types";
 
-const MAIN_STAGES = ["Safety", "Sandbox", "Skills", "Solutions"] as const satisfies readonly Exclude<
+const MAIN_STAGES = ["Safety", "Sandbox", "Training", "Technology"] as const satisfies readonly Exclude<
   SsssStageId,
   "Cross"
 >[];
@@ -37,7 +37,7 @@ function bandForNorm(n: number): { label: string; primaryRisk: string } {
   if (n <= 0.42) {
     return {
       label: "Early or Safety collapsed",
-      primaryRisk: "Solutions-first drift, shadow adoption, reputational and moral hazard.",
+      primaryRisk: "Technology-first drift, shadow adoption, reputational and moral hazard.",
     };
   }
   if (n <= 0.55) {
@@ -54,18 +54,18 @@ function bandForNorm(n: number): { label: string; primaryRisk: string } {
   }
   if (n <= 0.78) {
     return {
-      label: "Sandbox producing evidence; Skills uneven",
+      label: "Sandbox producing evidence; Training uneven",
       primaryRisk: "Voice drifts toward genre-default prose; measurement gaps; tool shopping.",
     };
   }
   if (n <= 0.87) {
     return {
-      label: "Skills strong; Solutions selective",
+      label: "Training strong; Technology selective",
       primaryRisk: "Automation or composition overshoot under vendor pressure.",
     };
   }
   return {
-    label: "Solutions as infrastructure",
+    label: "Technology as infrastructure",
     primaryRisk: "Complacency as models and vendors shift; revisit cadence slips.",
   };
 }
@@ -93,13 +93,13 @@ function collectIllusionFlags(scores: readonly number[]): SsssIllusionId[] {
 
   if (sNorm >= 0.72 && q("Q17") <= 2) flags.push("honesty_gap");
 
-  const subSol = subscoreForStage("Solutions", scores);
+  const subTech = subscoreForStage("Technology", scores);
   const subSbx = subscoreForStage("Sandbox", scores);
-  const subSkl = subscoreForStage("Skills", scores);
-  if (subSol - subSbx >= 0.15 && (q("Q07") < 4 || q("Q08") < 4)) {
+  const subTrn = subscoreForStage("Training", scores);
+  if (subTech - subSbx >= 0.15 && (q("Q07") < 4 || q("Q08") < 4)) {
     flags.push("solutions_without_evidence");
   }
-  if (subSkl >= 0.75 && q("Q05") < 3) flags.push("skills_theater");
+  if (subTrn >= 0.75 && q("Q05") < 3) flags.push("skills_theater");
   if (q("Q05") < 3 && q("Q06") < 3) flags.push("shadow_sandbox");
   if (q("Q02") >= 4 && q("Q01") < 3) flags.push("safety_paper");
 
@@ -170,9 +170,9 @@ function remediateDominant(stage: MainStage): string {
       return "Publish one-page governance + boundaries; tie procurement to data tiers; calendarize review.";
     case "Sandbox":
       return "Run the eight-pattern use-case mapping exercise; open a dated log; screen candidates through Safety.";
-    case "Skills":
+    case "Training":
       return "Institute peer review on real artifacts; build rubrics from sandbox evidence, not templates.";
-    case "Solutions":
+    case "Technology":
       return "Map one workflow end-to-end with owners, gates, and outcome metrics; defer composition until governance holds.";
     default:
       return "Re-read the weakest three items as a leadership team and assign one owner each.";
@@ -202,8 +202,8 @@ export function computeSsssIntegrityResult(scores: readonly number[]): SsssInteg
   const stagePercents = {
     Safety: Math.round(subscoreForStage("Safety", scores) * 100),
     Sandbox: Math.round(subscoreForStage("Sandbox", scores) * 100),
-    Skills: Math.round(subscoreForStage("Skills", scores) * 100),
-    Solutions: Math.round(subscoreForStage("Solutions", scores) * 100),
+    Training: Math.round(subscoreForStage("Training", scores) * 100),
+    Technology: Math.round(subscoreForStage("Technology", scores) * 100),
     Cross: Math.round(subscoreForStage("Cross", scores) * 100),
   } as const;
 
@@ -246,7 +246,7 @@ export function computeSsssIntegrityResult(scores: readonly number[]): SsssInteg
     likelyIllusion === "none"
       ? {
           focus: remediateDominant(gap),
-          stop: "Stop ignoring the three lowest-scored items—averages hide the inversion tax.",
+          stop: "Stop ignoring the three lowest-scored items, averages hide the inversion tax.",
         }
       : ill;
 

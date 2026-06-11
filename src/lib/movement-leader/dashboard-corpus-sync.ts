@@ -137,7 +137,7 @@ async function anthropicOnce(params: { system: string; user: string }): Promise<
 }
 
 const SYSTEM_VOICE =
-  "You write for Movemental — warm, precise, editorial, never hype. Short answer: one paragraph or one sentence only, no bullet lists, no markdown fences.";
+  "You write for Movemental, warm, precise, editorial, never hype. Short answer: one paragraph or one sentence only, no bullet lists, no markdown fences.";
 
 async function generateFramings(corpusSummary: string): Promise<Record<string, string>> {
   const base = corpusSummary.slice(0, 24_000);
@@ -145,17 +145,17 @@ async function generateFramings(corpusSummary: string): Promise<Record<string, s
     identity:
       "Write ONE substantial paragraph (4–7 sentences) synthesizing who this leader is, their calling, and their current focus, grounded ONLY in the research excerpt below. Newsreader-style dignity; no clichés.",
     calling:
-      'Write ONE opening sentence that begins exactly: "This is the calling the research surfaced — " then finish the sentence in their voice (max 35 additional words).',
+      'Write ONE opening sentence that begins exactly: "This is the calling the research surfaced, " then finish the sentence in their voice (max 35 additional words).',
     work:
-      'Write ONE sentence beginning: "This is a body of work that should have a network — " then complete (max 40 additional words).',
+      'Write ONE sentence beginning: "This is a body of work that should have a network, " then complete (max 40 additional words).',
     voice:
-      'Write ONE sentence beginning: "This is the sound of your work — " then complete (max 40 additional words).',
+      'Write ONE sentence beginning: "This is the sound of your work, " then complete (max 40 additional words).',
     where_it_lives:
       'Write ONE sentence beginning: "This is where your work lives. " then add a second short sentence: "The platform is built to change this." (You may lightly edit the second sentence for grammar only.)',
     network:
       "Write ONE sentence (max 45 words) about the strength and shape of their collaborative network as shown in the excerpt.",
     gaps:
-      'Write TWO sentences. First begins: "None of this is criticism — " and names gaps constructively. Second invites partnership.',
+      'Write TWO sentences. First begins: "None of this is criticism, " and names gaps constructively. Second invites partnership.',
   };
   const out: Record<string, string> = {};
   for (const [section, instruction] of Object.entries(prompts)) {

@@ -28,7 +28,7 @@ export function RealityCheckBeat({
           return <span key={i} className={`${styles.d} ${cls}`} />;
         })}
       </div>
-      {/* Ghost question index (proposal §3.6) — parity with the stub beat. */}
+      {/* Ghost question index (proposal §3.6), parity with the stub beat. */}
       <span className={styles.beatGhost} aria-hidden="true">
         {String(progress.step).padStart(2, "0")}
       </span>

@@ -20,7 +20,7 @@ export type DiscussEntryAction =
 
 /** Honest opener when stub enters Discuss (no fake LLM). */
 export const STUB_DISCUSS_OPENER =
-  "That deserve**s** a real conversation — more than I can script here. Leave your email and the team will pick it up with you.";
+  "That deserve**s** a real conversation, more than I can script here. Leave your email and the team will pick it up with you.";
 
 export type DiscussChipContext = {
   /** Last scene the runner played — used to infer post-readback entry. */

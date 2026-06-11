@@ -39,7 +39,7 @@ export function ReadbackMapEmail({
   if (sent) {
     return (
       <p className={styles.rbEmailDone} id="readbackEmail">
-        Sent — check your inbox.
+        Sent, check your inbox.
       </p>
     );
   }

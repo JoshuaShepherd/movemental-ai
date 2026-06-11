@@ -42,7 +42,7 @@ export const SAFESTART_WORKSPACES: readonly SafeStartWorkspaceEntry[] = [
     description:
       "Draft the AI Organizational Handbook across all five sections.",
     produces:
-      "A first-draft Handbook covering Statement, Policy, Context, Rules, and Response Plans — written before async review opens.",
+      "A first-draft Handbook covering Statement, Policy, Context, Rules, and Response Plans, written before async review opens.",
     templateId: "safestart_dashboard_drafting_async_review",
   },
   {
@@ -62,7 +62,7 @@ export const SAFESTART_WORKSPACES: readonly SafeStartWorkspaceEntry[] = [
     description:
       "Reconcile reviewer comments. Decide what changes the Handbook adopts.",
     produces:
-      "Comment reconciliation — every reviewer note marked as adopted, modified, or rejected, with rationale.",
+      "Comment reconciliation, every reviewer note marked as adopted, modified, or rejected, with rationale.",
     templateId: "safestart_dashboard_editorial_comment_view_1",
   },
   {
@@ -141,7 +141,7 @@ export const GUIDEBOOK_SECTIONS: readonly GuidebookSectionEntry[] = [
     number: "01",
     name: "Statement",
     description:
-      "The plain-language commitment your organization is making about AI — what AI is for, what it is not, and to whom you are accountable.",
+      "The plain-language commitment your organization is making about AI, what AI is for, what it is not, and to whom you are accountable.",
   },
   {
     slug: "policy",
@@ -149,7 +149,7 @@ export const GUIDEBOOK_SECTIONS: readonly GuidebookSectionEntry[] = [
     number: "02",
     name: "Policy",
     description:
-      "The operational rules the Statement implies — what staff may do, what requires review, and what is refused outright.",
+      "The operational rules the Statement implies, what staff may do, what requires review, and what is refused outright.",
   },
   {
     slug: "context",
@@ -157,7 +157,7 @@ export const GUIDEBOOK_SECTIONS: readonly GuidebookSectionEntry[] = [
     number: "03",
     name: "Context",
     description:
-      "The factual picture your AI assistants need to act inside your organization — mission, audiences, partners, constraints, sensitivities.",
+      "The factual picture your AI assistants need to act inside your organization, mission, audiences, partners, constraints, sensitivities.",
   },
   {
     slug: "rules",
@@ -165,7 +165,7 @@ export const GUIDEBOOK_SECTIONS: readonly GuidebookSectionEntry[] = [
     number: "04",
     name: "Rules",
     description:
-      "The concrete, enforceable instructions — named refusals, escalation paths, data-handling boundaries. The Policy made literal.",
+      "The concrete, enforceable instructions, named refusals, escalation paths, data-handling boundaries. The Policy made literal.",
   },
   {
     slug: "response-plans",
@@ -173,7 +173,7 @@ export const GUIDEBOOK_SECTIONS: readonly GuidebookSectionEntry[] = [
     number: "05",
     name: "Response plans",
     description:
-      "What you do when something goes wrong — incident response, drift detection, periodic review, and end-of-life handling.",
+      "What you do when something goes wrong, incident response, drift detection, periodic review, and end-of-life handling.",
   },
 ] as const;
 
@@ -233,7 +233,7 @@ export const RATIFICATION_STEPS: readonly RatificationStepEntry[] = [
   {
     slug: "recording-1",
     order: 2,
-    name: "Recording — Part 1",
+    name: "Recording: Part 1",
     description: "Open the ratification session. Record the opening reading and discussion.",
     produces:
       "A recorded record of the opening reading, framing, and initial board discussion of the Guidebook.",
@@ -242,7 +242,7 @@ export const RATIFICATION_STEPS: readonly RatificationStepEntry[] = [
   {
     slug: "recording-2",
     order: 3,
-    name: "Recording — Part 2",
+    name: "Recording: Part 2",
     description: "Continue the session. Record the section-by-section walkthrough and proposed revisions.",
     produces:
       "A continued record of the board working through the Guidebook section by section, with proposed revisions captured.",
@@ -263,7 +263,7 @@ export const RATIFICATION_STEPS: readonly RatificationStepEntry[] = [
     name: "Executive signing",
     description: "The executive signs the ratified Guidebook on behalf of the organization.",
     produces:
-      "An executive signature on the ratified Guidebook — the formal organizational commitment.",
+      "An executive signature on the ratified Guidebook, the formal organizational commitment.",
     templateId: "executive_signing_movemental_editorial",
   },
   {

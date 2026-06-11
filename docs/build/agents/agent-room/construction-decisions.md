@@ -32,7 +32,7 @@ Human decisions that shape agent behavior. Update this file when product intent 
 |----------|--------|
 | Identity capture | Form screens only (`show_capture`), never in voice |
 | Free path | `show_capture({ kind: "free" })` → field guide |
-| Paid path | `show_capture({ kind: "paid" })` → SafeStart enrollment |
+| Paid path | `show_capture({ kind: "paid" })` → Safety (facilitated) enrollment |
 | Human escalation | `offer_human_handoff` → `josh@movemental.ai` |
 
 ### Honesty rails

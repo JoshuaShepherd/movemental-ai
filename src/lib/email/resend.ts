@@ -20,7 +20,7 @@ export function getResend(): Resend | null {
     if (!_missingKeyReported) {
       _missingKeyReported = true;
       Sentry.captureMessage(
-        "RESEND_API_KEY is not configured — transactional emails are being silently skipped.",
+        "RESEND_API_KEY is not configured, transactional emails are being silently skipped.",
         "warning",
       );
     }

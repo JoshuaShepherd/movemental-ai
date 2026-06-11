@@ -19,12 +19,12 @@ export function getAiRealityCtaConfig(): AiRealityCtaConfig {
   return {
     free: {
       label: "Read the Field Guide",
-      description: "It Starts With Safety — the free guide to the first move. No cost, no gate.",
+      description: "It Starts With Safety, the free guide to the first move. No cost, no gate.",
       href: process.env.NEXT_PUBLIC_AI_REALITY_FREE_CTA_HREF || "/field-guide",
     },
     paid: {
       label: "Start the Safety engagement",
-      description: "Work the first stage with us — $1,000, and your dashboard is set up within 24 hours.",
+      description: "Work the first stage with us, $1,000, and your dashboard is set up within 24 hours.",
       href: process.env.NEXT_PUBLIC_AI_REALITY_PAID_CTA_HREF || "/agent",
     },
   };

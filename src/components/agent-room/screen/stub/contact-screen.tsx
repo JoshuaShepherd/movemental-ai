@@ -84,7 +84,7 @@ export function ContactScreen({ onHome }: ScreenProps) {
           </svg>
           <h3 className={styles.cfSuccessH}>Got it, {sentName}.</h3>
           <p className={styles.cfSuccessP}>
-            We got your message and will be in touch — usually within a business day.
+            We got your message and will be in touch, usually within a business day.
           </p>
           <button
             type="button"
@@ -113,7 +113,7 @@ export function ContactScreen({ onHome }: ScreenProps) {
       </p>
       <p className={styles.body} style={{ marginTop: "0.4rem", marginBottom: "1.15rem" }}>
         Tell us a bit about your organization and what you’re wondering about. We read
-        every message and reply personally — usually within a business day.
+        every message and reply personally, usually within a business day.
       </p>
 
       <form className={styles.cform} onSubmit={submit} noValidate>
@@ -180,7 +180,7 @@ export function ContactScreen({ onHome }: ScreenProps) {
           <textarea
             rows={4}
             className={errors.message ? styles.cfInvalid : undefined}
-            placeholder="A sentence or two is enough — where your organization stands, and what would be helpful to talk through."
+            placeholder="A sentence or two is enough, where your organization stands, and what would be helpful to talk through."
             value={message}
             onChange={(e) => {
               setMessage(e.target.value);

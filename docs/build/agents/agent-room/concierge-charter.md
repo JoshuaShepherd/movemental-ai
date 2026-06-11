@@ -5,7 +5,7 @@
 **Last updated:** 2026-06-11
 **Read alongside:** [room-host.md](./prompts/room-host.md) (v3.0, live) · [construction-decisions.md](./construction-decisions.md) · [INK_BAND_DESIGN_CHAIN.md](../../design/INK_BAND_DESIGN_CHAIN.md) · [movement-leaders-as-ecosystem-layer.md](../../strategy/movement-leaders-as-ecosystem-layer.md)
 
-> **Key findings of this phase.** (1) The Concierge persona is **already authored** — the host prompt in the `movemental-ai` docs tree is **v3.0, named "the Movemental Concierge"** — but it is **not yet seeded**: the engine actually seeds an older **v2.0 "Host"** prompt. So the live agent is still the v2.0 Host; CON-01 *propagates + consolidates* the authored v3.0 persona rather than inventing one. (2) The v3.0 draft carries a **latent landmine** — it instructs a `search_knowledge` tool that is registered nowhere in the engine — which would fire only if seeded as-is. **CON-00 hotfix (2026-06-11) defused it** in the draft (Retrieval Guard banner + honest §4 contract). (3) Stage-name divergence (v2.0/seed says Skills/Solutions, "Guidebook"; v3.0 says Training/Tech, "AI Handbook") — operator ratified **Training/Tech** (D0.5).
+> **Key findings of this phase.** (1) The Concierge persona is **already authored** — the host prompt in the `movemental-ai` docs tree is **v3.0, named "the Movemental Concierge"** — but it is **not yet seeded**: the engine actually seeds an older **v2.0 "Host"** prompt. So the live agent is still the v2.0 Host; CON-01 *propagates + consolidates* the authored v3.0 persona rather than inventing one. (2) The v3.0 draft carries a **latent landmine** — it instructs a `search_knowledge` tool that is registered nowhere in the engine — which would fire only if seeded as-is. **CON-00 hotfix (2026-06-11) defused it** in the draft (Retrieval Guard banner + honest §4 contract). (3) Stage-name divergence (v2.0/seed says Skills/Solutions, "AI Charter"; v3.0 says Training/Technology, "AI Charter") — operator ratified **Training/Technology** (D0.5).
 
 ---
 
@@ -83,7 +83,7 @@ Verified against both repos. **The wire contract is in sync** (the INT-01 mirror
 
 **Models:** `room-host` and `room-diagnostician` both `claude-opus-4-6` (seed-agent-room.ts; construction-decisions resolved 2026-06-10).
 
-**Live prompt version:** the engine seeds **v2.0 "Host"** (`movemental-ai-agents/scripts/seed-data/prompts/room-host.md`) — canon-bounded, **no retrieval tool**, stages Skills/Solutions, deliverable "Guidebook," branded tiers (SafeGuide/SafeStart/…). The **v3.0 "Concierge"** prompt (Training/Tech, retired tiers, retrieval) lives only in `movemental-ai/docs/.../room-host.md` and is **not seeded**. CON-01 closes this gap.
+**Live prompt version:** the engine seeds **v2.0 "Host"** (`movemental-ai-agents/scripts/seed-data/prompts/room-host.md`) — canon-bounded, **no retrieval tool**, stages Skills/Solutions, deliverable "AI Charter," branded tiers (Safety (free, self-directed)/Safety (facilitated)/…). The **v3.0 "Concierge"** prompt (Training/Technology, retired tiers, retrieval) lives only in `movemental-ai/docs/.../room-host.md` and is **not seeded**. CON-01 closes this gap.
 
 **Seeded tool roster:**
 
@@ -103,11 +103,11 @@ What the prompt claims vs. what is wired. These are the must-fixes the downstrea
 | # | Drift | Detail | Severity | Owner |
 | --- | --- | --- | --- | --- |
 | **D-1** | ~~`search_knowledge` specified but not wired~~ → **RESOLVED (CON-06)** | The real tool is **`file_search`** (OpenAI vector store; `src/lib/tools/file-search.tool.ts`), which already existed for the writing assistant. It was never assigned to room-host, and the v3.0 draft called a phantom `search_knowledge`. **Fixed 2026-06-11:** `file_search` seeded + assigned to room-host (`seed-agent-room.ts`, gated on `OPENAI_VECTOR_STORE_ID`); live v2.0 engine prompt §3/§4 updated to call it; v3.0 draft guard now redirects `search_knowledge`→`file_search`. Re-seed to activate. | **Resolved** (pending operator re-seed) | Done — engine typecheck ✅. |
-| **D-2** | **Stage nomenclature divergence** | v3.0 prompt: four stages = **Safety · Sandbox · Training · Tech**, Safety deliverable = **"AI Handbook."** v2.0 seed / `seed-agent-room` description / other docs say **Safety → Sandbox → Skills → Solutions** and "Guidebook." | **P1** | **CON-03** re-seed reconciles to one scheme. **Ratified current scheme = Training/Tech / AI Handbook** (operator, 2026-06-11). Master runner Part I updated to match. |
-| **D-3** | **Branded tier names retired but referenced** | v3.0 retires branded tier names ("SafeStart," "SafeGuide"); `tools.md` capture table still says "SafeGuide / SafeStart $1,000." | **P2** | CON-03/CON-07 (capture copy). |
+| **D-2** | **Stage nomenclature divergence** | v3.0 prompt: four stages = **Safety · Sandbox · Training · Technology**, Safety deliverable = **"AI Charter."** v2.0 seed / `seed-agent-room` description / other docs say **Safety → Sandbox → Skills → Solutions** and "AI Charter." | **P1** | **CON-03** re-seed reconciles to one scheme. **Ratified current scheme = Training/Technology / AI Charter** (operator, 2026-06-11). Master runner Part I updated to match. |
+| **D-3** | **Branded tier names retired but referenced** | v3.0 retires branded tier names ("Safety (facilitated)," "Safety (free, self-directed)"); `tools.md` capture table still says "Safety (free, self-directed) / Safety (facilitated) $1,000." | **P2** | CON-03/CON-07 (capture copy). |
 | **D-4** | **Seed agent description stale** | `seed-agent-room.ts` describes room-host as a generic "host… renders the closed component repertoire"; persona is now "Concierge." Slug stays `room-host` (compat). | **P2** | CON-01 (re-seed description; keep slug). |
 | **D-5** | ~~Open corpus decisions unresolved~~ → **RESOLVED (CON-06)** | #2 when-to-call = in-domain depth beyond core canon, never volatile facts/off-domain, both phases. #3 empty-store fallback = core canon → else say so + human handoff, never fabricate. Recorded in construction-decisions Open table. | **Resolved** | Done. |
-| **D-6** | **Engine/docs prompt-version gap** | Engine seeds **v2.0 "Host"**; docs carry **v3.0 "Concierge."** The live agent is the older persona with old nomenclature/tiers. Not a bug — but the Concierge program's whole premise (named persona, Training/Tech) is unshipped until propagated. | **P1** | **CON-01** propagates v3.0 (post-hotfix) to the engine seed + re-seeds; CON-03 reconciles nomenclature/tiers. |
+| **D-6** | **Engine/docs prompt-version gap** | Engine seeds **v2.0 "Host"**; docs carry **v3.0 "Concierge."** The live agent is the older persona with old nomenclature/tiers. Not a bug — but the Concierge program's whole premise (named persona, Training/Technology) is unshipped until propagated. | **P1** | **CON-01** propagates v3.0 (post-hotfix) to the engine seed + re-seeds; CON-03 reconciles nomenclature/tiers. |
 
 ---
 
@@ -135,7 +135,7 @@ Baselines to be measured; thresholds filled by CON-08's harness.
 | **D0.2** | v1 capability scope | **Resolved.** Ship `orient · diagnose · answer_from_corpus · escort · capture · human_handoff · meta · remember`. Defer `schedule` to CON-07 pending a booking backend. |
 | **D0.3** | One agent or keep host + diagnostician | **Resolved — keep the two-agent split.** Both on `claude-opus-4-6`. Concierge breadth lands on the host (now Concierge) prompt, not a third agent, unless CON-08 eval shows misroutes warranting a dedicated classifier. |
 | **D0.4** | Persona on stub mode | **Resolved.** Stub greeting/farewell/refusal must be Concierge-consistent and zero-network. |
-| **D0.5** | Stage nomenclature *(new, from drift D-2)* | **Resolved — current scheme is Safety · Sandbox · Training · Tech, deliverable "AI Handbook."** All docs/seed reconcile to this in CON-03. |
+| **D0.5** | Stage nomenclature *(new, from drift D-2)* | **Resolved — current scheme is Safety · Sandbox · Training · Technology, deliverable "AI Charter."** All docs/seed reconcile to this in CON-03. |
 
 ---
 
@@ -145,9 +145,9 @@ Baselines to be measured; thresholds filled by CON-08's harness.
 
 **Outcome.** CON-00 complete. Read the design canon, doctrine, construction-decisions, host/diagnostician prompts, and verified the live contract in both repos. Authored this charter. **Headline:** the persona already exists (v3.0 "Movemental Concierge"), so the program ratifies rather than invents; and CON-00 surfaced a **P0 drift** (`search_knowledge` prompted but unwired) plus stage-name divergence.
 
-**Decisions taken.** D0.1–D0.5 resolved (see §7). Ratified current stage scheme = Training/Tech / AI Handbook.
+**Decisions taken.** D0.1–D0.5 resolved (see §7). Ratified current stage scheme = Training/Technology / AI Charter.
 
-**Files touched.** `docs/build/agents/agent-room/concierge-charter.md` (new). No `src/` changes. Master runner Part I nomenclature aligned to Training/Tech (CON-00 row → Done; changelog + this log referenced there).
+**Files touched.** `docs/build/agents/agent-room/concierge-charter.md` (new). No `src/` changes. Master runner Part I nomenclature aligned to Training/Technology (CON-00 row → Done; changelog + this log referenced there).
 
 **Verification.** Contract snapshot spot-checked against engine `types.ts` (10 chunk types, 16 ComponentIds) and room `stream-chunk.ts`/`screen-map.ts` — in sync ✅. `search_knowledge` grep over `movemental-ai-agents/src` + `scripts` → **0 hits** (confirms D-1). Models confirmed `claude-opus-4-6` ×2 in `seed-agent-room.ts`. Every capability-map row has an honest failure path. No `src/` writes (read-only phase honored).
 
@@ -155,9 +155,9 @@ Baselines to be measured; thresholds filled by CON-08's harness.
 
 ### 2026-06-11 — Claude (Opus 4.8) — ✅ (CON-00 hotfix, per operator)
 
-**Outcome.** Reframed and defused drift **D-1**. Discovered the engine seeds **v2.0 "Host"** (no `search_knowledge`) — so the P0 was **latent**, not live: the bug would only fire if the un-propagated **v3.0 "Concierge"** docs draft were seeded as-is. Hotfixed the draft so it is safe to propagate in CON-01: (1) corrected the version-changelog claim; (2) added a top-level **Retrieval Guard** banner that authoritatively supersedes every `search_knowledge` / "file base" call-site below it (answer from core canon only; offer human handoff for depth; never imply a search or fabricate); (3) rewrote the §4 "Knowledge tool" contract to state the tool is deferred and must not be called. Persona + Training/Tech nomenclature preserved.
+**Outcome.** Reframed and defused drift **D-1**. Discovered the engine seeds **v2.0 "Host"** (no `search_knowledge`) — so the P0 was **latent**, not live: the bug would only fire if the un-propagated **v3.0 "Concierge"** docs draft were seeded as-is. Hotfixed the draft so it is safe to propagate in CON-01: (1) corrected the version-changelog claim; (2) added a top-level **Retrieval Guard** banner that authoritatively supersedes every `search_knowledge` / "file base" call-site below it (answer from core canon only; offer human handoff for depth; never imply a search or fabricate); (3) rewrote the §4 "Knowledge tool" contract to state the tool is deferred and must not be called. Persona + Training/Technology nomenclature preserved.
 
-**Operator decisions applied.** "Hotfix P0, then CON-01." Training/Tech ratified canonical (D-2/D0.5).
+**Operator decisions applied.** "Hotfix P0, then CON-01." Training/Technology ratified canonical (D-2/D0.5).
 
 **Files touched.** `movemental-ai/docs/build/agents/agent-room/prompts/room-host.md` (v3.0 draft — 3 edits: changelog line, Retrieval Guard banner, §4 contract). Charter updated (this file): §1 caveat, §4 live-version note, D-1 reframed + D-6 added, D0.1 nuance. **No engine `src/` or seed changes; no re-seed** (live v2.0 agent untouched and already honest).
 

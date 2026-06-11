@@ -9,13 +9,13 @@ import {
 } from "@/lib/safety-field-guide";
 
 export const metadata: Metadata = {
-  title: `${SAFETY_HANDBOOK_DISPLAY_TITLE} — ${SAFETY_FIELD_GUIDE_DISPLAY_TITLE}`,
+  title: `${SAFETY_HANDBOOK_DISPLAY_TITLE}, ${SAFETY_FIELD_GUIDE_DISPLAY_TITLE}`,
   description:
     "Free AI Safety Handbook for mission-driven leaders: first response documentation for nonprofits, churches, and institutions. PDF delivered by email.",
   openGraph: {
     title: SAFETY_HANDBOOK_DISPLAY_TITLE,
     description:
-      "First response documentation for nonprofits, churches, and institutions — five layers your board can ratify.",
+      "First response documentation for nonprofits, churches, and institutions, five layers your board can ratify.",
     images: [{ url: SAFETY_HANDBOOK_COVER_IMAGE, width: 765, height: 1024, alt: SAFETY_HANDBOOK_DISPLAY_TITLE }],
   },
   twitter: {

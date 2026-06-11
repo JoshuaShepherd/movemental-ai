@@ -56,13 +56,13 @@ export default function AssessPage() {
         title="Find out the truth about AI in your organization."
       />
       <p className="mt-8 text-lg leading-relaxed text-foreground">
-        A short, honest reality check — no sales pitch. Enter your email and we’ll send a one-tap link
+        A short, honest reality check, no sales pitch. Enter your email and we’ll send a one-tap link
         into the room where you’ll map where your organization actually stands.
       </p>
 
       {status === "sent" ? (
         <p className="mt-10 border-l-2 border-[var(--color-ink-band-blue)] bg-card px-5 py-4 text-base leading-relaxed">
-          Check your inbox — tap the link we just sent to {email.trim()} to begin.
+          Check your inbox, tap the link we just sent to {email.trim()} to begin.
         </p>
       ) : (
         <form className="mt-10 space-y-5" onSubmit={submit} noValidate>

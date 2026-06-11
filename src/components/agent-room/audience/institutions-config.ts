@@ -25,7 +25,7 @@ export const INSTITUTIONS_PAGE_CONFIG: AudiencePageConfig = {
   hero: {
     eyebrow: "For seminaries & institutions",
     title: "AI is already inside your seminary.",
-    sub: "No one decided that. It just arrived. Here's what it means — and what to do first.",
+    sub: "No one decided that. It just arrived. Here's what it means, and what to do first.",
   },
   painSection: {
     title: "Here's what's already happening.",
@@ -60,22 +60,23 @@ export const INSTITUTIONS_PAGE_CONFIG: AudiencePageConfig = {
   deeperProblem: {
     title: "These aren't six problems. They're one.",
     paragraphs: [
-      "Underneath all of it is one thing: your seminary is scattered. Your people, your work, and your record sit in pieces that don't connect. AI built on top of that doesn't fix the mess — it makes more of it, faster.",
-      "And for a seminary, the thing most at risk is the thing you can't replace. A business that makes an AI mistake loses a client. You'd lose trust in the degree itself — and that trust is the whole product.",
+      "Underneath all of it is one thing: your seminary is scattered. Your people, your work, and your record sit in pieces that don't connect. What is true of one faculty member's archive is true of the institution's body of work: syllabi in one place, scholarship in another, formation pathways nowhere visible as a whole.",
+      "AI built on top of that doesn't fix the mess, it makes more of it, faster.",
+      "And for a seminary, the thing most at risk is the thing you can't replace. A business that makes an AI mistake loses a client. You'd lose trust in the degree itself, and that trust is the whole product.",
       "You also carry a weight other places don't. Whatever you decide about AI becomes the example every church your graduates lead will follow. Doing nothing is still a choice. It teaches them that no one needs to think about this carefully.",
     ],
   },
   theCase: {
     title: "The full case, in one letter.",
     intro:
-      "Here's the whole argument in plain words — written to share with your board. Read it here, or download it to send.",
+      "Here's the whole argument in plain words, written to share with your board. Read it here, or download it to send.",
     letterAriaLabel: "Letter to a seminary president",
-    askAiPrompt: `I'm reading Movemental's letter to a seminary president (movemental.ai/agent/institutions). Summarize the core argument, the four-stage path (Safety, Sandbox, Training, Tech), and what a board-ready first step would look like. Note anything that needs verification.`,
+    askAiPrompt: `I'm reading Movemental's letter to a seminary president (movemental.ai/agent/institutions). Summarize the core argument, the four-stage path (Safety, Sandbox, Training, Technology), and what a board-ready first step would look like. Note anything that needs verification.`,
   },
   foundation: {
     title: "We gather what's scattered into one place.",
     paragraphs: [
-      "This is where Movemental comes in. We take your people, your work, and your record and gather them into one connected foundation — a single source of truth your seminary owns. It's visible. It's verifiable. And it's built from what's actually yours.",
+      "This is where Movemental comes in. We take your people, your work, and your record and gather them into one connected foundation, a single source of truth your seminary owns. It's visible. It's verifiable. And it's built from what's actually yours.",
     ],
     fixRows: [
       {
@@ -100,12 +101,12 @@ export const INSTITUTIONS_PAGE_CONFIG: AudiencePageConfig = {
   theBuild: {
     title: "Then we build the tools on top of it.",
     paragraphs: [
-      "Once the foundation is real, we build the things your seminary actually needs on top of it — search that knows your work, an assistant that can speak for you accurately, and ways to make your scholarship findable for the next generation who are asking the machine instead of the library. Built on what you already have. Owned by you.",
+      "Once the foundation is real, we build the things your seminary actually needs on top of it, search that knows your work, an assistant that can speak for you accurately, and ways to make your scholarship findable for the next generation who are asking the machine instead of the library. Built on what you already have. Owned by you.",
     ],
     toolExamples: [
       {
         label: "Search",
-        text: "that knows your syllabi, archives, and faculty work — not the open web.",
+        text: "that knows your syllabi, archives, and faculty work, not the open web.",
       },
       {
         label: "Assistant",
@@ -120,22 +121,22 @@ export const INSTITUTIONS_PAGE_CONFIG: AudiencePageConfig = {
   formation: {
     title: "But tools alone aren't the answer.",
     paragraphs: [
-      "Here's the part most people skip. Technology without formed people isn't progress — it's replacement. It's also how most AI projects fail.",
-      "A foundation only holds if your people can steward it. So the tools come with formation. We form a group inside your seminary in the three things AI demands: discernment — knowing what's wise; authorship — keeping a real human behind the words; and stewardship — caring for what's been entrusted to you.",
+      "Here's the part most people skip. Technology without formed people isn't progress, it's replacement. It's also how most AI projects fail.",
+      "A foundation only holds if your people can steward it. So the tools come with formation. We form a group inside your seminary in the three things AI demands: discernment, knowing what's wise; authorship, keeping a real human behind the words; and stewardship, caring for what's been entrusted to you.",
       "For a seminary, this isn't an add-on. Forming people is what you already do. It's the part you, of all places, should lead with. The technology and the training are linked on purpose. One without the other doesn't work.",
     ],
     handLine: "Formation isn't extra. It's the point.",
   },
   thePath: {
-    intro: `We don't do this all at once, and we don't start with the tech. There's an order. Safety first — decide, in writing, what you will and won't do with AI. Then Sandbox — test it against real work. Then ${PATH_STAGE_LABELS.training} — form your people. Then ${PATH_STAGE_LABELS.tech} — build the tools. Each step earns the next. Your first move is Safety.`,
+    intro: `We don't do this all at once, and we don't start with the tech. There's an order. Safety first, decide, in writing, what you will and won't do with AI. Then Sandbox, test it against real work. Then ${PATH_STAGE_LABELS.training}, form your people. Then ${PATH_STAGE_LABELS.tech}, build the tools. Each step earns the next. Your first move is Safety.`,
   },
   start: {
     title: "Start with a conversation.",
     body: "Institutions don't start this with a checkout button. They start with a talk. Tell us where your seminary is, and we'll show you the first step. The letter above is yours to share with your board while you decide.",
     mailtoHref: "mailto:hello@movemental.ai?subject=Our%20seminary%20%E2%80%94%20first%20conversation",
     downloadFilename: "letter-to-a-seminary-president.txt",
-    sendToBoardSubject: "AI and our seminary — a letter for the board",
-    askAiPrompt: `I'm reading Movemental's case for seminaries and institutions (movemental.ai/agent/institutions). They argue AI is already inside seminary life, fragmentation is the deeper problem, and the path is Safety → Sandbox → Training → Tech — with a ratified AI Safety Handbook first.
+    sendToBoardSubject: "AI and our seminary, a letter for the board",
+    askAiPrompt: `I'm reading Movemental's case for seminaries and institutions (movemental.ai/agent/institutions). They argue AI is already inside seminary life, fragmentation is the deeper problem, and the path is Safety → Sandbox → Training → Technology, with a ratified AI Charter first.
 
 Summarize the argument in plain language for a seminary president. What would a credible first step look like? What should I push back on?`,
   },

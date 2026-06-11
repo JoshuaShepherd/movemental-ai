@@ -15,7 +15,7 @@ export function emergenceScenes(): EmergenceScene[] {
           phase,
           title,
           lede:
-            "Teaching lives in many formats — talks, drafts, PDFs, recordings — without a single spine that holds them together.",
+            "Teaching lives in many formats, talks, drafts, PDFs, recordings, without a single spine that holds them together.",
           callout:
             "What is missing is not volume, but structure: a way for humans and systems to recognize what belongs to what.",
         };
@@ -35,7 +35,7 @@ export function emergenceScenes(): EmergenceScene[] {
           lede:
             "Transcripts make spoken teaching legible to search, study, and responsible machine reasoning.",
           callout:
-            "Accessibility and machine legibility move together — the same text serves readers and models.",
+            "Accessibility and machine legibility move together, the same text serves readers and models.",
         };
       case 3:
         return {
@@ -51,7 +51,7 @@ export function emergenceScenes(): EmergenceScene[] {
           phase,
           title,
           lede:
-            "Pathways arrange ideas into journeys — thematic synthesis for people who need formation, not only information.",
+            "Pathways arrange ideas into journeys, thematic synthesis for people who need formation, not only information.",
           callout:
             "This is where content becomes curriculum-shaped without pretending to be shallow growth hacks.",
         };
@@ -69,7 +69,7 @@ export function emergenceScenes(): EmergenceScene[] {
           phase,
           title,
           lede:
-            "An AI layer sits above the corpus as an interaction surface — grounded, bounded, and inspectable.",
+            "An AI layer sits above the corpus as an interaction surface, grounded, bounded, and inspectable.",
           callout:
             "The model is not the product; disciplined access to what you already wrote is.",
         };
@@ -78,7 +78,7 @@ export function emergenceScenes(): EmergenceScene[] {
           phase,
           title,
           lede:
-            "Translations multiply reach while reusing the same canonical spine — languages become parallel entry ramps.",
+            "Translations multiply reach while reusing the same canonical spine, languages become parallel entry ramps.",
           callout:
             "Shared infrastructure lowers the marginal cost of faithful expansion.",
         };

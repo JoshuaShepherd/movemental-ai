@@ -3,8 +3,9 @@
  * Ported from `docs/html/safety-scene/safety-scene.js`.
  */
 import {
-  FREE_GUIDEBOOK_CTA,
-  SAFETY_GUIDEBOOK,
+  FREE_HANDBOOK_CTA,
+  SAFETY_CHARTER,
+  SAFETY_HANDBOOK,
 } from "@/lib/agent-room/naming";
 import { SAFETY_CHARTER_DRAFTS } from "./safety-charter-drafts";
 
@@ -38,12 +39,12 @@ export const SAFETY_READBACK_COPY = {
   reframe:
     "The threats of AI to organizational credibility exist whether you adopt AI or not, and are guaranteed if we do nothing. The first move is to name reality and a grounded, written response.",
   nextMove:
-    "Now that AI is already within our organizations, the only choice is to respond wisely and clearly. Our free guide will walk you through it, or we can sprint together. Because this step is actually urgent.",
-  plansPreview: `Two viable paths to the same ratified ${SAFETY_GUIDEBOOK.shortLabel}.`,
+    "Now that AI is already within our organizations, the only choice is to respond wisely and clearly. The free handbook covers every layer, or we can sprint together. Because this step is actually urgent.",
+  plansPreview: `Two viable paths to the same ratified ${SAFETY_CHARTER.shortLabel}.`,
   doorsHonest:
-    "Same outcome either way. Free means you hold the pen with a thorough guide; paid means we run the full process with you in the dashboard.",
+    "Same outcome either way. Free means you hold the pen with the handbook; paid means we run the full process with you in the dashboard.",
   spreadHint: "Tap a document to read the full draft · sticky notes name what's missing",
-  charterLabel: `Your AI ${SAFETY_GUIDEBOOK.shortLabel} — five layers`,
+  charterLabel: `Your ${SAFETY_CHARTER.fullTitle}, five layers`,
   pathLabel: "The path",
 } as const;
 
@@ -63,7 +64,7 @@ export const SAFETY_CHARTER_DOCUMENTS: SafetyCharterDocument[] = [
     title: "Policy",
     ratified: false,
     threat:
-      "No policy — chaos where people improvise, paralysis where teams won't move. Nobody knows what's in bounds.",
+      "No policy, chaos where people improvise, paralysis where teams won't move. Nobody knows what's in bounds.",
     rot: "-2deg",
     draft: SAFETY_CHARTER_DRAFTS.policy,
   },
@@ -104,15 +105,15 @@ export const SAFETY_DOORS: SafetyDoor[] = [
     badge: "Free",
     priceAmount: "$0",
     pricePeriod: "self-paced · 1–2 months",
-    tagline: "A thorough, in-depth handbook — your team walks every layer.",
-    body: `The ${SAFETY_GUIDEBOOK.fullTitle} is not a checklist. It is a full methodology: how to draft, stress-test, and ratify all five ${SAFETY_GUIDEBOOK.shortLabel} layers with your board and staff.`,
+    tagline: "The handbook — your team works every layer.",
+    body: `The ${SAFETY_HANDBOOK.fullTitle} is not a checklist. It is a full methodology: how to draft, stress-test, and ratify all five ${SAFETY_CHARTER.shortLabel} layers with your board and staff.`,
     features: [
-      "Complete handbook — step-by-step through Statement, Policy, Context, Rules, and Response Plans",
+      "Complete handbook, step-by-step through Statement, Policy, Context, Rules, and Response Plans",
       "Draft templates, ratification checklists, and escalation scripts you can hand to leadership",
-      "Worked examples for churches, nonprofits, and institutions — not generic AI policy boilerplate",
+      "Worked examples for churches, nonprofits, and institutions, not generic AI policy boilerplate",
       "Guidance when you are stuck; you hold the pen and set the pace",
     ],
-    cta: FREE_GUIDEBOOK_CTA,
+    cta: FREE_HANDBOOK_CTA,
     scene: "focusHandbook",
   },
   {
@@ -121,11 +122,11 @@ export const SAFETY_DOORS: SafetyDoor[] = [
     badge: "Managed",
     priceAmount: "$1,000",
     pricePeriod: "two weeks",
-    tagline: "The full managed process — in a dashboard, with every resource beside you.",
-    body: "We draft all five layers customized to your organization, run working sessions with your team, and deliver a board-ready ratification package — not async email ping-pong.",
+    tagline: "The full managed process, in a dashboard, with every resource beside you.",
+    body: "We draft all five layers customized to your organization, run working sessions with your team, and deliver a board-ready ratification package, not async email ping-pong.",
     features: [
-      `Private dashboard to review, comment on, and ratify each ${SAFETY_GUIDEBOOK.shortLabel} document`,
-      "Custom drafts across all five layers, fitted to your theology, governance, and data posture",
+      `Private dashboard to review, comment on, and ratify each ${SAFETY_CHARTER.shortLabel} document`,
+      "Custom drafts across all five layers, fitted to your theology, governance, and data practices",
       "Live working sessions with Movemental through the sprint",
       "Full resource library: exemplars, incident templates, vendor registers, and staff briefings",
       "Board ratification package delivered at the end of two weeks",

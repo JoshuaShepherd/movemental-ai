@@ -15,7 +15,7 @@ export const SSSS_INTEGRITY_ITEMS: readonly SsssIntegrityItem[] = [
     stage: "Safety",
     category: "governance_artifact",
     weight: 1,
-    prompt: "We have a **published** map of decision rights—not only informal habit.",
+    prompt: "We have a **published** map of decision rights, not only informal habit.",
   },
   {
     id: "Q03",
@@ -39,7 +39,7 @@ export const SSSS_INTEGRITY_ITEMS: readonly SsssIntegrityItem[] = [
     category: "learning_artifact",
     weight: 1,
     prompt:
-      "We keep a **shared dated log** of experiments, surprises, and failures—not only success stories.",
+      "We keep a **shared dated log** of experiments, surprises, and failures, not only success stories.",
   },
   {
     id: "Q06",
@@ -62,47 +62,47 @@ export const SSSS_INTEGRITY_ITEMS: readonly SsssIntegrityItem[] = [
     category: "evidence_quality",
     weight: 1,
     prompt:
-      "We can point to **evidence** of what “good” and “not us” look like for our voice—not only opinions.",
+      "We can point to **evidence** of what “good” and “not us” look like for our voice, not only opinions.",
   },
   {
     id: "Q09",
-    stage: "Skills",
+    stage: "Training",
     category: "distributed_judgment",
     weight: 1,
     prompt: "Mid-level staff can describe **good** AI-assisted work without reading policy verbatim.",
   },
   {
     id: "Q10",
-    stage: "Skills",
+    stage: "Training",
     category: "culture_of_correction",
     weight: 1,
     prompt: "We see **public self-correction** when outputs drift (voice, facts, ethics).",
   },
   {
     id: "Q11",
-    stage: "Skills",
+    stage: "Training",
     category: "verification_norms",
     weight: 1,
     prompt: "Verification habits are **social norm**, not heroics by one reviewer.",
   },
   {
     id: "Q12",
-    stage: "Skills",
+    stage: "Training",
     category: "formation_vs_training",
     weight: 1,
     prompt: "Training time is spent on **judgment**, not only buttonology.",
   },
   {
     id: "Q13",
-    stage: "Solutions",
+    stage: "Technology",
     category: "workflow_infrastructure",
     weight: 1,
     prompt:
-      "We deploy **workflows** with clear owners, gates, and failure modes—not tool brands as substitutes for design.",
+      "We deploy **workflows** with clear owners, gates, and failure modes, not tool brands as substitutes for design.",
   },
   {
     id: "Q14",
-    stage: "Solutions",
+    stage: "Technology",
     category: "procurement_gates",
     weight: 1,
     prompt:
@@ -110,14 +110,14 @@ export const SSSS_INTEGRITY_ITEMS: readonly SsssIntegrityItem[] = [
   },
   {
     id: "Q15",
-    stage: "Solutions",
+    stage: "Technology",
     category: "measurement_legibility",
     weight: 1,
     prompt: "We measure **workflow outcomes**, not only licenses activated.",
   },
   {
     id: "Q16",
-    stage: "Solutions",
+    stage: "Technology",
     category: "tool_independence",
     weight: 1,
     prompt: "We could **swap tools** without losing the practice (documentation + skill).",
@@ -128,7 +128,7 @@ export const SSSS_INTEGRITY_ITEMS: readonly SsssIntegrityItem[] = [
     category: "honest_location",
     weight: 2,
     prompt:
-      "We know **where we are** on the Movemental Path—and where we **skipped**—without self-deception.",
+      "We know **where we are** on the Movemental Path, and where we **skipped**, without self-deception.",
   },
   {
     id: "Q18",

@@ -4,7 +4,7 @@ import { aggregateOrg } from "./aggregate";
 import type { ParticipantScore } from "./types";
 
 const leader: ParticipantScore = {
-  stagePercents: { Safety: 40, Sandbox: 70, Training: 80, Tech: 75 },
+  stagePercents: { Safety: 40, Sandbox: 70, Training: 80, Technology: 75 },
   overallPercent: 66,
   dominantGapStage: "Safety",
   illusionFlags: ["safety_paper"],
@@ -16,20 +16,20 @@ describe("aggregateOrg", () => {
     expect(out.provisional).toBe(true);
     expect(out.respondedCount).toBe(1);
     expect(out.dominantGap).toBe("Safety");
-    expect(out.orderedPath).toEqual(["Safety", "Sandbox", "Training", "Tech"]);
+    expect(out.orderedPath).toEqual(["Safety", "Sandbox", "Training", "Technology"]);
     expect(out.placementLine).toMatch(/Safety/);
     expect(out.mostDivergentStages).toEqual([]); // no team to disagree yet
   });
 
   it("surfaces the stage the team disagrees most on", () => {
     const optimist: ParticipantScore = {
-      stagePercents: { Safety: 90, Sandbox: 60, Training: 60, Tech: 60 },
+      stagePercents: { Safety: 90, Sandbox: 60, Training: 60, Technology: 60 },
       overallPercent: 70,
       dominantGapStage: "Sandbox",
       illusionFlags: [],
     };
     const pessimist: ParticipantScore = {
-      stagePercents: { Safety: 20, Sandbox: 58, Training: 62, Tech: 60 },
+      stagePercents: { Safety: 20, Sandbox: 58, Training: 62, Technology: 60 },
       overallPercent: 50,
       dominantGapStage: "Safety",
       illusionFlags: ["safety_paper"],

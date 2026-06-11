@@ -2,7 +2,7 @@
 
 import styles from "../ink-band.module.css";
 
-const DEFAULT_PROMPT = `I'm reading about Movemental (movemental.ai) — a path for mission-driven organizations to adopt AI without eroding trust. The four stages are Safety, Sandbox, Training, and Tech; the Safety deliverable is an AI Safety Handbook ratified by leadership.
+const DEFAULT_PROMPT = `I'm reading about Movemental (movemental.ai), a path for mission-driven organizations to adopt AI without eroding trust. The four stages are Safety, Sandbox, Training, and Technology; Safety produces a ratified AI Charter.
 
 Summarize what Movemental is offering, who it's for, and what would be a sensible first step for a church, nonprofit, or seminary. Flag anything that sounds like marketing hype versus a concrete practice.`;
 

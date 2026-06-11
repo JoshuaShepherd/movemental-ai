@@ -7,6 +7,7 @@ import styles from "../../ink-band.module.css";
 import type { ScreenProps } from "./stub-screen";
 import { Crumb } from "./chrome";
 import { ProcessAccordion } from "../process-accordion";
+import { PATH_STAGE_LABELS } from "@/lib/agent-room/naming";
 import { TwoWaysForward, type WayForwardOption } from "./two-ways-forward";
 
 const REFUSALS = [
@@ -23,7 +24,7 @@ const SAFETY_FREE: WayForwardOption = {
   price: "Free · about 1 to 2 months",
   description: (
     <>
-      The field guide, <em>It Starts With Safety</em>. Your team drafts all five
+      The handbook, <em>It Starts With Safety</em>. Your team drafts all five
       layers, and we guide you when you need it.
     </>
   ),
@@ -86,7 +87,7 @@ const TRAINING_PAID: WayForwardOption = {
 const TECH_FREE: WayForwardOption = {
   title: "Free, and we guide you.",
   price: "[Free entry point to confirm]",
-  description: "Tech is scoped per engagement. We will confirm the free entry point before publishing a claim here.",
+  description: "Technology is scoped per engagement. We will confirm the free entry point before publishing a claim here.",
   ctaLabel: "",
   ctaHref: "",
   placeholder: true,
@@ -97,7 +98,7 @@ const TECH_PAID: WayForwardOption = {
   price: "From $30,000 · scoped",
   description:
     "Scoped AI deployment across six configurations, from tool optimization to network-scale work for institutions and denominations.",
-  ctaLabel: "Talk to us about Tech",
+  ctaLabel: "Talk to us about Technology",
   ctaHref: "/enroll",
   paid: true,
 };
@@ -144,7 +145,7 @@ export function PricingScreen({ onHome }: ScreenProps) {
             title: "Safety",
             children: (
               <StageWays
-                reassurance="Both routes produce the same ratified Handbook."
+                reassurance="Both routes produce the same ratified AI Charter."
                 freeWay={SAFETY_FREE}
                 paidWay={SAFETY_PAID}
                 freeLead
@@ -178,10 +179,10 @@ export function PricingScreen({ onHome }: ScreenProps) {
           {
             id: "tech",
             step: "04",
-            title: "Tech",
+            title: PATH_STAGE_LABELS.tech,
             children: (
               <StageWays
-                reassurance="Every Tech engagement is scoped. We will confirm the free entry point before publishing a claim here."
+                reassurance={`Every ${PATH_STAGE_LABELS.tech} engagement is scoped. We will confirm the free entry point before publishing a claim here.`}
                 freeWay={TECH_FREE}
                 paidWay={TECH_PAID}
               />
@@ -192,7 +193,7 @@ export function PricingScreen({ onHome }: ScreenProps) {
 
       <div className={styles.paOnlyNarrow}>
         <StageWays
-          reassurance="Both routes produce the same ratified Handbook."
+          reassurance="Both routes produce the same ratified AI Charter."
           freeWay={SAFETY_FREE}
           paidWay={SAFETY_PAID}
           freeLead
@@ -208,7 +209,7 @@ export function PricingScreen({ onHome }: ScreenProps) {
           paidWay={TRAINING_PAID}
         />
         <StageWays
-          reassurance="Every Tech engagement is scoped. We will confirm the free entry point before publishing a claim here."
+          reassurance={`Every ${PATH_STAGE_LABELS.tech} engagement is scoped. We will confirm the free entry point before publishing a claim here.`}
           freeWay={TECH_FREE}
           paidWay={TECH_PAID}
         />
@@ -222,8 +223,8 @@ export function PricingScreen({ onHome }: ScreenProps) {
           </p>
         ))}
         <p className={styles.body} style={{ marginTop: "0.85rem" }}>
-          The full account of what we refuse in our own AI use — and the green, yellow, and red
-          lights we apply — is on{" "}
+          The full account of what we refuse in our own AI use, and the green, yellow, and red
+          lights we apply, is on{" "}
           <Link className={styles.inlineLink} href="/agent/how-we-use-ai">
             How We Use AI
           </Link>

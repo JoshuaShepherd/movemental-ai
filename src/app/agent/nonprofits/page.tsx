@@ -7,9 +7,9 @@ import { AudiencePageExperience } from "@/components/agent-room/audience/audienc
 import { NONPROFITS_PAGE_CONFIG } from "@/components/agent-room/audience/nonprofits-config";
 
 export const metadata: Metadata = {
-  title: "Nonprofits — Movemental",
+  title: "Nonprofits | Movemental",
   description:
-    "AI is already inside your nonprofit. A you-first case for executive directors and boards: governance gaps, mission integrity, a letter for your board, and the ordered path — Safety, Sandbox, Training, Tech.",
+    "AI is already inside your nonprofit. A you-first case for executive directors and boards: governance gaps, mission integrity, a letter for your board, and the ordered path: Safety, Sandbox, Training, Technology.",
   alternates: {
     canonical: "/agent/nonprofits",
   },

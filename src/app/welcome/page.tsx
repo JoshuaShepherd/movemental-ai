@@ -37,12 +37,12 @@ export default async function WelcomePage({ searchParams }: WelcomePageProps) {
       <h1 className="mt-3 text-3xl leading-tight">Welcome to Movemental</h1>
       <p className="mt-4 text-base text-muted-foreground">
         Your workspace is ready. We&apos;ll walk you through agreement, cohort selection, and
-        deeper setup steps — for now, start where you need momentum most.
+        deeper setup steps, for now, start where you need momentum most.
       </p>
       {params.reason === "no_safety_entitlement" ? (
         <p className="mt-6 border-l-2 border-[var(--color-ink-band-blue)] bg-card px-5 py-4 text-sm leading-relaxed">
           The Safety charter dashboard is not provisioned for your organization yet. If you enrolled
-          recently, wait for the provisioning email — or{" "}
+          recently, wait for the provisioning email, or{" "}
           <a href="mailto:josh@movemental.ai" className="text-[var(--color-ink-band-blue)] underline">
             reach out to us
           </a>

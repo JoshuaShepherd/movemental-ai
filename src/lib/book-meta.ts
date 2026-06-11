@@ -14,13 +14,13 @@ export const BOOK_COVER_IMAGE = "/images/books/organizational-intelligence-book.
 export const FIELD_GUIDE_COVER_IMAGE = SAFETY_FIELD_GUIDE_COVER_IMAGE;
 
 export const BOOK_SUBTITLE =
-  "A structural path from scatter field to field — for movement leaders, nonprofits, churches, and institutions.";
+  "A structural path from scatter field to field, for movement leaders, nonprofits, churches, and institutions.";
 
 /** Short label for compact UI (toolbar, share dialogs). */
 export const BOOK_SHORT_NAME = "Fragmentation to Movement";
 
 export const BOOK_DESCRIPTION =
-  "Every organization carrying meaning through time pays a fragmentation tax. This free book names the structural problem, maps the six-stage path from fragmentation to movement, and shows why integration is the load-bearing stage — for movement leaders, nonprofits, churches, and institutions.";
+  "Every organization carrying meaning through time pays a price for fragmentation. This free book names the problem, maps the six-stage path from fragmentation to movement, and shows why integration is the stage everything else depends on, for movement leaders, nonprofits, churches, and institutions.";
 
 /** Prior book title (redirects / internal references only). */
 export const ARCHIVED_BOOK_SHORT_TITLE = "Content That Moves";

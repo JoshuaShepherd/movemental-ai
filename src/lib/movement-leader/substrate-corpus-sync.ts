@@ -211,7 +211,7 @@ export async function runSubstrateCorpusSync(
   }
   const corpusSlug = (leader.research_corpus_slug?.trim() || leader.slug).trim();
 
-  // 2. Read the FULL substrate — no truncation.
+  // 2. Read the FULL substrate, no truncation.
   const { mdPath, manifestPath } = resolveSubstratePaths(researchRoot, corpusSlug);
   if (!mdPath) {
     throw new Error(
@@ -281,7 +281,7 @@ export async function runSubstrateCorpusSync(
   const source_version = `substrate:${manifestHash}`;
   const now = new Date().toISOString();
 
-  // 6. Idempotent upsert — full markdown, no truncation.
+  // 6. Idempotent upsert, full markdown, no truncation.
   await sql`
     insert into movement_leader_corpus_data (
       id, movement_leader_id, corpus_slug,

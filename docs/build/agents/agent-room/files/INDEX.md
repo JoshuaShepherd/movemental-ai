@@ -12,7 +12,7 @@ Human-readable map of what each file contains and when retrieval should surface 
 | Visitor asks about… | Primary document | Notes |
 |---------------------|------------------|-------|
 | Path stages, pricing quick ref | `public/movemental-kb-phase-1.md` | **[LIVE]** pricing |
-| Safety Guidebook layers, SafeStart steps | `public/pdf/safety-field-guide.pdf` | **Canonical** for methodology |
+| Safety stage handbook layers, Safety (facilitated) steps | `public/pdf/safety-field-guide.pdf` | **Canonical** for methodology |
 | Sandbox phases, green/yellow/red | `public/pdf/sandbox-field-guide.pdf` | **Canonical** for methodology |
 | Company identity, fragmentation thesis | `public/movemental-kb-phase-2.md` | Relay as Movemental framing |
 | Scenii, Movement Voices, proof status | `public/movemental-kb-phase-3.md` | Voice count **[LIVE]** |
@@ -97,7 +97,7 @@ Movement Voice content system: article archetypes, pathway components, EEAT gate
 
 | Content | Blocker |
 |---------|---------|
-| Skills / Solutions Field Guides | PDFs not yet added |
+| Training / Technology Field Guides | PDFs not yet added |
 | Audience playbooks | OCR |
 | Participation Agreement | OCR |
 | FAQ verbatim | `/faq` scrape |

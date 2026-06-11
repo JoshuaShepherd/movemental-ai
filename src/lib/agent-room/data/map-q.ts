@@ -5,7 +5,7 @@ import { PATH_STAGE_DISPLAY } from "../naming";
  *
  * Four reality-check questions with a Safety gate on Q1. Orgs that fail the gate
  * hear the threat and stop; orgs that pass answer Q2–Q4 and get a readback that
- * mirrors Sandbox/Training/Tech gaps, sharpest first. Data + pure
+ * mirrors Sandbox/Training/Technology gaps, sharpest first. Data + pure
  * `computeMapRead` only — beat/readback markup and answer choreography live in
  * `beat-scenes.ts` and the beat screen.
  */
@@ -50,15 +50,15 @@ export const SAFETY_GATE_GAP_LINE =
 /** Spoken when Q1 is anything but a full yes — legacy voice path; readback is primary. */
 export const SAFETY_GATE_THREAT: readonly string[] = [
   "Then here's what's true right now, whether or not anyone's named it:",
-  "AI is already in use across your staff — on donor records, member information, the pastoral and personal things people trusted you with — and no one has decided, on paper, what's allowed. The day that surfaces — in a board meeting, a news story, or a quiet complaint — the trust you spent decades earning is what pays for it.",
-  "That's not a tooling problem, and it's not solved by being careful. It's one decision your leadership hasn't made yet. It's the first move, and everything else — experimenting, training your people, building anything — waits on it.",
-  "You can do this yourself — the free Field Guide walks your leadership through all of it — or we can draft it with you in two weeks. Either way, this is where you start.",
+  "AI is already in use across your staff, on donor records, member information, the pastoral and personal things people trusted you with, and no one has decided, on paper, what's allowed. The day that surfaces, in a board meeting, a news story, or a quiet complaint, the trust you spent decades earning is what pays for it.",
+  "That's not a tooling problem, and it's not solved by being careful. It's one decision your leadership hasn't made yet. It's the first move, and everything else, experimenting, training your people, building anything, waits on it.",
+  "You can do this yourself — the free handbook guides your leadership through all of it — or we can draft it with you in two weeks. Either way, this is where you start.",
 ];
 
 export const MAP_Q: readonly MapQuestion[] = [
   {
     tag: "Safety",
-    q: "Has your leadership actually decided — in writing, and signed off — what your organization will and won't do with AI?",
+    q: "Has your leadership actually decided, in writing, and signed off, what your organization will and won't do with AI?",
     criteriaLead: "A real yes means all four of these exist on paper:",
     criteria: [
       "a position your board has put its name to",
@@ -67,16 +67,16 @@ export const MAP_Q: readonly MapQuestion[] = [
       "rules that tell a staff member what's allowed before they have to guess",
     ],
     opts: [
-      { t: "Yes — all four, in writing", say: "That's rare. Most organizations can't say that.", gatePass: true },
+      { t: "Yes, all four, in writing", say: "That's rare. Most organizations can't say that.", gatePass: true },
       { t: "Some, but not all four", say: "", gateFail: true },
-      { t: "No — none of this yet", say: "", gateFail: true },
+      { t: "No, none of this yet", say: "", gateFail: true },
     ],
   },
   {
     tag: "Sandbox",
-    q: "Has your team actually tried AI against real work — in a way you could point to, with results you kept?",
+    q: "Has your team actually tried AI against real work, in a way you could point to, with results you kept?",
     opts: [
-      { t: "Yes — we tested it and recorded what worked", say: "Then there's something real to build on." },
+      { t: "Yes, we tested it and recorded what worked", say: "Then there's something real to build on." },
       {
         t: "A little, here and there",
         say: "Ad hoc rarely tells you what's worth keeping.",
@@ -84,16 +84,16 @@ export const MAP_Q: readonly MapQuestion[] = [
       },
       {
         t: "Not really",
-        say: "Then you can't yet sort what helps from what doesn't — which is the whole point of a Sandbox.",
+        say: "Then you can't yet sort what helps from what doesn't, which is the whole point of a Sandbox.",
         read: { stage: "sandbox", line: "no bounded place to try AI against real work", sev: 2 },
       },
     ],
   },
   {
     tag: PATH_STAGE_DISPLAY.training,
-    q: "Picture your staff. Are they formed to use AI with judgment — not just given access to it?",
+    q: "Picture your staff. Are they formed to use AI with judgment, not just given access to it?",
     opts: [
-      { t: "Yes — they exercise real judgment", say: "That's the hard part, and you've done it." },
+      { t: "Yes, they exercise real judgment", say: "That's the hard part, and you've done it." },
       {
         t: "A real mix",
         say: "A mix usually means the quiet ones are quietly stuck.",
@@ -108,17 +108,17 @@ export const MAP_Q: readonly MapQuestion[] = [
   },
   {
     tag: PATH_STAGE_DISPLAY.tech,
-    q: "Where does your work actually live — could AI plug into it, or is it scattered?",
+    q: "Where does your work actually live, could AI plug into it, or is it scattered?",
     opts: [
-      { t: "Unified — ready to build on", say: "Then the foundation for building is there." },
+      { t: "Unified, ready to build on", say: "Then the foundation for building is there." },
       {
         t: "Scattered but workable",
         say: "Scattered work makes good tools hard to build.",
         read: { stage: "tech", line: "work is spread across disconnected tools", sev: 1 },
       },
       {
-        t: "Fragmented — nothing connects",
-        say: "Fragmentation is the thing that produces slop — which is why it's the last thing you fix, not the first.",
+        t: "Fragmented, nothing connects",
+        say: "Fragmentation is the thing that produces slop, which is why it's the last thing you fix, not the first.",
         read: { stage: "tech", line: "no foundation to build on yet", sev: 2 },
       },
     ],

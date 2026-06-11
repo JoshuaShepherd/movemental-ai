@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { PATH_STAGE_LABELS } from "@/lib/agent-room/naming";
+import { PATH_STAGE_LABELS, SAFETY_CHARTER } from "@/lib/agent-room/naming";
 
 import styles from "../../ink-band.module.css";
 import type { ScreenProps } from "./stub-screen";
@@ -21,7 +21,7 @@ const STAGES: readonly PathStage[] = [
   {
     num: 1,
     title: PATH_STAGE_LABELS.safety,
-    lead: "Get your arms around AI responsibly: your AI Handbook, ratified by your board, before anything else.",
+    lead: `Get your arms around AI responsibly: your ${SAFETY_CHARTER.fullTitle}, ratified by your board, before anything else.`,
     detail:
       "Acceptable use, data boundaries, theological red lines, written down and adopted before anyone builds on sand.",
   },
@@ -30,27 +30,27 @@ const STAGES: readonly PathStage[] = [
     title: PATH_STAGE_LABELS.sandbox,
     lead: "Try AI against real work, in a bounded place. Sort what helps from what doesn't.",
     detail:
-      "Isolated environments where staff learn prompts and limits without risking public trust or constituent data — with results you can point to.",
+      "Isolated environments where staff learn prompts and limits without risking public trust or constituent data, with results you can point to.",
   },
   {
     num: 3,
     title: PATH_STAGE_LABELS.training,
     lead: "Form your people to steward it. Judgment, not a one-off workshop.",
     detail:
-      "Discernment, authorship, stewardship — built in the people who will carry AI inside your organization, not bolted on after the tools arrive.",
+      "Discernment, authorship, stewardship, built in the people who will carry AI inside your organization, not bolted on after the tools arrive.",
   },
   {
     num: 4,
     title: PATH_STAGE_LABELS.tech,
     lead: "Build the tools your work actually needs, on what you already have.",
     detail:
-      "Scoped deployment — from optimizing what you use today to network-scale work — only after human oversight protocols are defined and tested.",
+      "Scoped deployment, from improving what you use today to network-scale work, only after clear review rules are defined and tested.",
   },
 ];
 
 /**
  * The path screen: four ordered stages with the talk's rationale for why the
- * sequence is fixed — Safety first, then Sandbox, Training, Tech.
+ * sequence is fixed — Safety first, then Sandbox, Training, Technology.
  */
 export function PathScreen({ onHome }: ScreenProps) {
   const [active, setActive] = useState<number>(1);
@@ -63,14 +63,14 @@ export function PathScreen({ onHome }: ScreenProps) {
         One ordered path. It starts with {PATH_STAGE_LABELS.safety}.
       </p>
       <p className={styles.body}>
-        The order is not arbitrary. {PATH_STAGE_LABELS.safety} first — because AI is already
+        The order is not arbitrary. {PATH_STAGE_LABELS.safety} first, because AI is already
         in the room. {PATH_STAGE_LABELS.sandbox} before {PATH_STAGE_LABELS.training} before{" "}
-        {PATH_STAGE_LABELS.tech} — because handing powerful tools to people who can&apos;t yet
+        {PATH_STAGE_LABELS.tech}, because handing powerful tools to people who can&apos;t yet
         steward them is replacement, not progress.
       </p>
 
       <ProcessAccordion
-        ariaLabel="The path — four stages"
+        ariaLabel="The path, four stages"
         activeId={active ? `stage-${active}` : ""}
         onActiveChange={(id) => {
           const n = Number(id.replace("stage-", ""));
@@ -87,7 +87,7 @@ export function PathScreen({ onHome }: ScreenProps) {
 
       <div className={`${styles.pathStackCard} ${styles.paOnlyNarrow}`}>
         <p className={styles.pathStackIntro}>
-          Four stages, in order — {PATH_STAGE_LABELS.safety} · {PATH_STAGE_LABELS.sandbox} ·{" "}
+          Four stages, in order, {PATH_STAGE_LABELS.safety} · {PATH_STAGE_LABELS.sandbox} ·{" "}
           {PATH_STAGE_LABELS.training} · {PATH_STAGE_LABELS.tech}. Open any step to see what it
           means, and why the next one waits.
         </p>

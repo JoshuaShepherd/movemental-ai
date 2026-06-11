@@ -21,5 +21,5 @@ export function describeLegibility(profile: LegibilityProfile): string {
   if (highs >= 3) {
     return "Structure is emerging: some anchors exist, but pathways, translations, or transcripts may still be uneven.";
   }
-  return "The work is present, but the system is still fragmented — high-value ideas may remain under-linked and under-transcribed.";
+  return "The work is present, but the system is still fragmented, high-value ideas may remain under-linked and under-transcribed.";
 }

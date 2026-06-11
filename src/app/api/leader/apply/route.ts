@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
         error: {
           code: "SERVER_ERROR",
           message:
-            "We could not save your application yet. The database may still be migrating — try again soon.",
+            "We could not save your application yet. The database may still be migrating, try again soon.",
         },
       },
       { status: 500 },

@@ -19,7 +19,7 @@ const ILLUSION_STAGE_WEIGHT: Partial<Record<SsssIllusionId, AiRealityStage>> = {
   safety_paper: "Safety",
   shadow_sandbox: "Sandbox",
   skills_theater: "Training",
-  solutions_without_evidence: "Tech",
+  solutions_without_evidence: "Technology",
 };
 
 function mean(xs: number[]): number {

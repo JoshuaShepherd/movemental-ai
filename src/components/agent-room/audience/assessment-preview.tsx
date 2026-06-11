@@ -19,7 +19,7 @@ export function AudienceAssessmentPreview() {
       <figcaption className={styles.assessmentPreviewCaption}>
         <span className={styles.assessmentPreviewEyebrow}>In context</span>
         <span className={styles.assessmentPreviewTitle}>
-          Your private {SAFETY_HANDBOOK.shortLabel} dashboard — draft, review, ratify
+          Your private {SAFETY_HANDBOOK.shortLabel} dashboard, draft, review, ratify
         </span>
         <span className={styles.assessmentPreviewSub}>{SAFETY_READBACK_COPY.spreadHint}</span>
       </figcaption>
@@ -53,7 +53,7 @@ export function AudienceAssessmentPreview() {
         ))}
       </div>
       <p className={styles.assessmentPreviewNote}>
-        The full organizational AI reality assessment maps your team across all four stages — then
+        The full organizational AI reality assessment maps your team across all four stages, then
         lands here, with documents your board can actually sign.
       </p>
     </figure>

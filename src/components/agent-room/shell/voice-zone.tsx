@@ -94,7 +94,7 @@ export function VoiceZone({
               forceOld={Boolean(voiceStream) || showPulse}
             />
           )}
-          {/* Streamed agent replies can be long — wrap them so they stay on the
+          {/* Streamed agent replies can be long, wrap them so they stay on the
               page (the nib write-on is reserved for the short scripted lines). */}
           {voiceStream && !hideLiveStream && (
             <StreamVoice key={voiceStream.id} text={voiceStream.text} multiline />

@@ -32,7 +32,7 @@ export type Citation = {
   source: SourceId;
   /**
    * Popover body HTML. Authored content — numbers wrapped in <strong>, em-dashes
-   * as "—", proper curly quotes via &ldquo;/&rdquo;. Rendered with
+   * as ", ", proper curly quotes via &ldquo;/&rdquo;. Rendered with
    * dangerouslySetInnerHTML inside the popover.
    */
   claim: string;
@@ -142,7 +142,7 @@ export const citations = {
     meta: ["117-paragraph note", "Approved Jan 14, 2025"],
   },
 
-  // -- Formation (Kolb / Pink) — used on Skills section -------------------
+  // -- Formation (Kolb / Pink) — used on Training section -------------------
   "kolb-experiential": {
     id: "kolb-experiential",
     source: "kolb-1984",

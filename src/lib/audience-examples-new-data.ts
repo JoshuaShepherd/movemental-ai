@@ -18,7 +18,7 @@ export const audienceExamplesNew: readonly AudienceExampleNewPublic[] = [
     canonicalPath: "/organizations",
     label: "Organizations",
     oneLiner:
-      "One path for churches, nonprofits, and institutions — choose your context; the arc stays the same.",
+      "One path for churches, nonprofits, and institutions, choose your context; the arc stays the same.",
   },
   {
     id: "churches",

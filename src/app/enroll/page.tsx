@@ -87,12 +87,12 @@ export default function EnrollPage() {
           title={`Got it, ${form.contact_name.split(/\s+/)[0]}.`}
         />
         <p className="mt-8 text-lg leading-relaxed text-foreground">
-          Your enrollment is in. We provision within 24 hours — when the email arrives, use the link to{" "}
+          Your enrollment is in. We provision within 24 hours, when the email arrives, use the link to{" "}
           <strong>create your account</strong> and open your private Safety dashboard. A real person will
           also be in touch to complete payment if needed.
         </p>
         <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-          Dashboard access is not immediate on submit — you&apos;ll get a magic-link signup after
+          Dashboard access is not immediate on submit, you&apos;ll get a magic-link signup after
           provisioning.
         </p>
         <UtilityPageFooter />
@@ -215,7 +215,7 @@ export default function EnrollPage() {
             <span className="text-muted-foreground"> · two weeks · managed Safety sprint</span>
           </p>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            Secure payment is collected via Stripe. Submit your details below — our team confirms enrollment
+            Secure payment is collected via Stripe. Submit your details below, our team confirms enrollment
             and sends a Stripe payment link to complete checkout.
           </p>
         </section>
@@ -226,7 +226,7 @@ export default function EnrollPage() {
           {status === "loading" ? "Submitting…" : "Get started with the dashboard · $1,000"}
         </Button>
         <p className="text-sm leading-relaxed text-muted-foreground">
-          No autoresponder runaround — a person on our team picks this up.
+          No autoresponder runaround, a person on our team picks this up.
         </p>
       </form>
 

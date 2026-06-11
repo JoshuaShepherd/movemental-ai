@@ -4,7 +4,7 @@ type SearchParams = Promise<{ state?: string; error?: string }>;
 
 function resolve(state?: string, error?: string): { title: string; body: string } {
   if (error === "rate_limited") {
-    return { title: "One moment.", body: "Too many attempts just now — wait a minute and try the link again." };
+    return { title: "One moment.", body: "Too many attempts just now, wait a minute and try the link again." };
   }
   if (error === "missing_token" || error === "invalid_token" || error === "not_configured") {
     return {
@@ -21,7 +21,7 @@ function resolve(state?: string, error?: string): { title: string; body: string 
   if (state === "already") {
     return { title: "You’re already unsubscribed.", body: "You won’t receive further emails from us." };
   }
-  return { title: "You’re unsubscribed.", body: "Done — you won’t hear from us again. No hard feelings." };
+  return { title: "You’re unsubscribed.", body: "Done, you won’t hear from us again. No hard feelings." };
 }
 
 export default async function NewsletterUnsubscribedPage({ searchParams }: { searchParams: SearchParams }) {

@@ -69,7 +69,7 @@ export const CAPTURE_VARIANTS: Record<CaptureKind, CaptureVariant> = {
   discuss: {
     eyebrow: "Pick this up properly",
     heading: "Want me to have the team pick this up with you?",
-    sub: "Leave your email and we’ll follow up — a real person, not a form.",
+    sub: "Leave your email and we’ll follow up, a real person, not a form.",
     submit: "Send this to the team",
     fields: [
       { key: "email", label: "Email", type: "email", required: true, autoComplete: "email", placeholder: "you@org.org" },

@@ -1,11 +1,14 @@
 import type { AiRealityStage } from "./types";
 
-/** Internal SSSS stage ids (stable in assessment code) → public path names. */
+/** Internal / legacy stage ids → public path names. */
 const SSSS_TO_PUBLIC: Record<string, AiRealityStage> = {
   Safety: "Safety",
   Sandbox: "Sandbox",
   Skills: "Training",
-  Solutions: "Tech",
+  Training: "Training",
+  Solutions: "Technology",
+  Technology: "Technology",
+  Tech: "Technology",
 };
 
 /** Map an internal assessment stage label to the public path name. */
@@ -22,7 +25,7 @@ export function publicStageToDbColumn(stage: AiRealityStage): "safety" | "sandbo
       return "sandbox";
     case "Training":
       return "skills";
-    case "Tech":
+    case "Technology":
       return "solutions";
   }
 }

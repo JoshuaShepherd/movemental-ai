@@ -6,7 +6,7 @@ import { Crumb, LayerRow } from "./chrome";
 
 /**
  * The Safety confirmation (prototype `confirmHTML(mode)`), branching on the
- * `show` act's `mode` opt: `"paid"` (we draft it with you) vs `"free"` (the field
+ * `show` act's `mode` opt: `"paid"` (we draft it with you) vs `"free"` (the handbook
  * guide is on its way). Defaults to free, matching the prototype.
  */
 export function ConfirmScreen({ opts, onHome }: ScreenProps) {
@@ -19,7 +19,7 @@ export function ConfirmScreen({ opts, onHome }: ScreenProps) {
       <div>
         <Crumb onHome={onHome} />
         <p className={styles.eyebrow}>Pick this up properly</p>
-        <h1>Got it — the team will be in touch.</h1>
+        <h1>Got it, the team will be in touch.</h1>
         <p className={styles.body}>
           A real person will follow up about what you’re working through. Not a sequence,
           not a bot.
@@ -61,7 +61,7 @@ export function ConfirmScreen({ opts, onHome }: ScreenProps) {
         </div>
         <p className={styles.honest}>
           Your first move is the org-wide read: we send the reality check to your whole
-          team, so the Handbook is built on what's actually true.
+          team, so the Charter is built on what's actually true.
         </p>
       </div>
     );
@@ -71,17 +71,17 @@ export function ConfirmScreen({ opts, onHome }: ScreenProps) {
     <div>
       <Crumb onHome={onHome} />
       <p className={styles.eyebrow}>Stage 01 · Safety · Free, and we guide you</p>
-      <h1>Your field guide is on its way.</h1>
+      <h1>Your handbook is on its way.</h1>
       <p className={styles.body}>
-        Check your inbox for <em>It Starts With Safety</em>. It walks your team through
-        all five layers of your AI Handbook, with a checklist for each.
+        Check your inbox for <em>It Starts With Safety</em>. It guides your team through
+        all five layers of your AI Charter, with a checklist for each.
       </p>
       <div className={styles.sec}>
         <p className={styles.secLabel}>How to use it</p>
         <div className={styles.layers}>
           <LayerRow n="1" title="Gather your leadership" g="the people who can actually decide." />
           <LayerRow n="2" title="Work the five layers" g="in order, over a few weeks. Each builds on the one before." />
-          <LayerRow n="3" title="Ratify it" g="your board adopts it. That is when the trust dividend arrives." />
+          <LayerRow n="3" title="Ratify it" g="your board adopts it. That is when the trust pays off." />
         </div>
       </div>
       <div className={styles.sec}>

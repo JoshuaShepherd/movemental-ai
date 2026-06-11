@@ -33,7 +33,7 @@ export default async function OnboardingStepPage({ params }: Props) {
       <h1 className="mt-3 text-3xl leading-tight">This step is coming soon</h1>
       <p className="mt-4 text-base text-muted-foreground">
         The full onboarding checklist for <strong>{step}</strong> is not on this surface yet.
-        Your account is active — use the links below to keep moving.
+        Your account is active, use the links below to keep moving.
       </p>
       <div className="mt-10 flex flex-wrap gap-3">
         <Button asChild>

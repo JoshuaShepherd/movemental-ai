@@ -8,7 +8,7 @@ export const PATH_STAGE_LABELS = {
   safety: "Safety",
   sandbox: "Sandbox",
   training: "Training",
-  tech: "Tech",
+  tech: "Technology",
 } as const;
 
 /** Internal map-q stage keys → public path labels. */
@@ -30,7 +30,13 @@ export const PATH_STAGE_RAIL = [
   { n: "04", title: PATH_STAGE_LABELS.tech },
 ] as const;
 
-/** Safety stage lead magnet — public product name. */
+/** Safety stage deliverable — board-ratified organizational artifact. */
+export const SAFETY_CHARTER = {
+  fullTitle: "AI Charter",
+  shortLabel: "Charter",
+} as const;
+
+/** Safety stage lead magnet — free field guide / download. */
 export const SAFETY_HANDBOOK = {
   fullTitle: "AI Safety Handbook",
   shortLabel: "Handbook",

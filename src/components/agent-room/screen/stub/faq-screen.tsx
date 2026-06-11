@@ -53,7 +53,7 @@ export function FaqScreen({ onHome }: ScreenProps) {
       ))}
 
       <p className={styles.honest} style={{ marginTop: "1.4rem" }}>
-        Still have questions? Get in touch — or map where you stand, and we’ll know
+        Still have questions? Get in touch, or map where you stand, and we’ll know
         exactly what to talk about.
       </p>
     </div>

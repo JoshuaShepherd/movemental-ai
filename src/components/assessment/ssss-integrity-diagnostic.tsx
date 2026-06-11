@@ -29,15 +29,8 @@ import {
 const STORAGE_KEY = "movemental:ai-reality-assessment:v2" as const;
 const LEGACY_STORAGE_KEY = "movemental:ssss-integrity-diagnostic:v1" as const;
 
-// Public instrument + output names. Internal labels never reach the screen.
+// Public instrument + output names. Internal labels match the path stages.
 const INSTRUMENT_NAME = "Organizational AI Reality Assessment";
-
-const PUBLIC_STAGE_LABEL: Record<Exclude<SsssStageId, "Cross">, string> = {
-  Safety: "Safety",
-  Sandbox: "Sandbox",
-  Skills: "Training",
-  Solutions: "Tech",
-};
 
 const STAGE_DESCRIPTIONS: Record<string, string> = {
   Safety:
@@ -46,7 +39,7 @@ const STAGE_DESCRIPTIONS: Record<string, string> = {
     "Evidence under Safety: a shared record of what's been tried, in compliant places, with proof.",
   Training:
     "Formation as judgment: distributed taste, correction, and verification, not button-pushing.",
-  Tech:
+  Technology:
     "Workflows with AI inside them: owners, gates, outcomes, and independence from any one tool.",
   Cross:
     "Honest location: where you actually are on the path, and how you respond when things break.",
@@ -62,7 +55,7 @@ const ILLUSION_COPY: Record<Exclude<SsssIllusionId, "none">, string> = {
   skills_theater:
     "Training has happened, but there's no shared log proving people actually got better.",
   shadow_sandbox:
-    "People are experimenting, but off to the side — no shared record of what's been tried.",
+    "People are experimenting, but off to the side, no shared record of what's been tried.",
   safety_paper:
     "A policy on paper that nobody trains against.",
 };
@@ -231,7 +224,7 @@ export function SsssIntegrityDiagnostic() {
         setSaved(true);
       }
     } catch {
-      setSubmitError("Network error — your summary is still visible below.");
+      setSubmitError("Network error, your summary is still visible below.");
     } finally {
       setSubmitting(false);
     }
@@ -319,7 +312,7 @@ export function SsssIntegrityDiagnostic() {
             Eighteen statements about how your organization actually operates across the four stages of
             the path:{" "}
             <strong className="font-medium text-foreground">
-              Safety, Sandbox, Training, Tech
+              Safety, Sandbox, Training, Technology
             </strong>
             . Honest answers give you a clear mirror, and one place to start. Suitable for a leadership
             team answering together.
@@ -359,7 +352,7 @@ export function SsssIntegrityDiagnostic() {
             Which of these best describes the entity you&apos;re answering for?
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            One choice. Used only to frame your summary at the end —
+            One choice. Used only to frame your summary at the end , 
             scoring is identical across audiences.
           </p>
 
@@ -440,9 +433,7 @@ export function SsssIntegrityDiagnostic() {
           <p className="text-[0.78rem] font-semibold uppercase tracking-eyebrow text-ink-soft">
             {stageOfCurrent === "Cross"
               ? "Honest location"
-              : stageOfCurrent
-                ? PUBLIC_STAGE_LABEL[stageOfCurrent]
-                : null}{" "}
+              : stageOfCurrent}{" "}
             ·{" "}
             <span className="text-muted-foreground">
               Question {questionIndex + 1} of {TOTAL_ITEMS}
@@ -452,9 +443,7 @@ export function SsssIntegrityDiagnostic() {
             {STAGE_DESCRIPTIONS[
               stageOfCurrent === "Cross"
                 ? "Cross"
-                : stageOfCurrent
-                  ? PUBLIC_STAGE_LABEL[stageOfCurrent]
-                  : ""
+                : stageOfCurrent ?? ""
             ] ?? null}
           </p>
 
@@ -516,7 +505,7 @@ export function SsssIntegrityDiagnostic() {
             </h2>
             <p className="mt-3 text-sm text-muted-foreground">
               Overall signal:{" "}
-              <strong className="text-foreground">{result.normalizedOverallPercent}%</strong> —{" "}
+              <strong className="text-foreground">{result.normalizedOverallPercent}%</strong> , {" "}
               {result.band.label}. {result.band.primaryRisk}
             </p>
 
@@ -528,8 +517,8 @@ export function SsssIntegrityDiagnostic() {
                 [
                   ["Safety", result.stagePercents.Safety],
                   ["Sandbox", result.stagePercents.Sandbox],
-                  ["Training", result.stagePercents.Skills],
-                  ["Tech", result.stagePercents.Solutions],
+                  ["Training", result.stagePercents.Training],
+                  ["Technology", result.stagePercents.Technology],
                   ["Honest location & incidents", result.stagePercents.Cross],
                 ] as const
               ).map(([label, pct]) => (
@@ -558,7 +547,7 @@ export function SsssIntegrityDiagnostic() {
               {result.topWeaknesses.map((w) => (
                 <li key={w.id}>
                   <span className="text-muted-foreground">({w.stage})</span> {stripBold(w.prompt)}{" "}
-                  <span className="tabular-nums text-muted-foreground">— score {w.score}/5</span>
+                  <span className="tabular-nums text-muted-foreground">score {w.score}/5</span>
                 </li>
               ))}
             </ol>
@@ -568,7 +557,7 @@ export function SsssIntegrityDiagnostic() {
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-foreground">
               {result.likelyIllusion === "none"
-                ? "No single pattern dominated — still use the lowest three answers above for your next ninety days."
+                ? "No single pattern dominated, still use the lowest three answers above for your next ninety days."
                 : ILLUSION_COPY[result.likelyIllusion]}
             </p>
 

@@ -11,9 +11,9 @@ export const SANDBOX_AI_NONPROFITS_COHORT = {
   joinCtaLabel: "Join live session",
   joinCtaHref: undefined as string | undefined,
   scheduleIntro:
-    "Default cadence follows the Sandbox Season Playbook: twelve operational weeks. This LMS track compresses that arc into eight weeks—use this grid for live sessions or mirror the LMS prompts async.",
+    "Default cadence follows the Sandbox Season Playbook: twelve operational weeks. This LMS track compresses that arc into eight weeks, use this grid for live sessions or mirror the LMS prompts async.",
   weeks: [
-    { week: 1, focus: "Kickoff — charter, roles, Safety Owner", artifact: "Season charter" },
+    { week: 1, focus: "Kickoff, charter, roles, Safety Owner", artifact: "Season charter" },
     { week: 2, focus: "Eight-pattern scan", artifact: "Candidate list (12–30)" },
     { week: 3, focus: "Filter + experiment briefs", artifact: "3–5 briefs" },
     { week: 4, focus: "Run 1", artifact: "Run 1 results" },
@@ -49,7 +49,7 @@ export const SANDBOX_AI_NONPROFITS_RESOURCES = {
     {
       term: "Sandbox",
       definition:
-        "A bounded place to generate disconfirmable evidence about AI value—legitimate and constrained—without shipping to vulnerable surfaces by default.",
+        "A bounded place to generate disconfirmable evidence about AI value, legitimate and constrained, without shipping to vulnerable surfaces by default.",
     },
     {
       term: "Safety Owner",
@@ -64,7 +64,7 @@ export const SANDBOX_AI_NONPROFITS_RESOURCES = {
     {
       term: "Discovery engine",
       definition:
-        "Posture: models as probes inside method—not oracles that replace judgment (see Discovery Engine article).",
+        "Posture: models as probes inside method, not oracles that replace judgment (see Discovery Engine article).",
     },
   ],
   bibliography: [

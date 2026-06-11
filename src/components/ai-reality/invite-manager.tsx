@@ -56,8 +56,8 @@ export function InviteManager() {
       </p>
       <h1 className="mt-3 text-3xl leading-tight md:text-4xl">Invite your leadership team.</h1>
       <p className="mt-4 text-base leading-relaxed text-foreground">
-        Create a link for each person you want to weigh in. They answer the same eighteen questions —
-        anonymously, no account needed — and your dashboard updates as responses arrive. The disagreement
+        Create a link for each person you want to weigh in. They answer the same eighteen questions , 
+        anonymously, no account needed, and your dashboard updates as responses arrive. The disagreement
         between you is the most useful part.
       </p>
 

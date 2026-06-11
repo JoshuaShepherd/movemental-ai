@@ -48,7 +48,7 @@ function StubBeat({ opts, onBeatAnswer, disabled }: ScreenProps) {
 
   return (
     <div className={styles.beatContent}>
-      {/* Ghost question index (proposal §3.6) — scan aid during the six-beat flow. */}
+      {/* Ghost question index (proposal §3.6), scan aid during the six-beat flow. */}
       <span className={styles.beatGhost} aria-hidden="true">
         {pad2(qi + 1)}
       </span>

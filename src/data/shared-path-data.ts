@@ -37,7 +37,7 @@ export const stageMeta = [
     protect: "Protects #4",
     mapDesc: "Judgment, review, shared language.",
     tagline: "Train staff to use AI responsibly across roles.",
-    sentence: "Form your people — not just train them — so their <em>judgment holds up</em> when AI is in the room.",
+    sentence: "Form your people, not just train them, so their <em>judgment holds up</em> when AI is in the room.",
     doneWhen: [
       "Staff can explain what AI is appropriate for",
       "AI-assisted work is reviewed before public or sensitive use",
@@ -48,24 +48,24 @@ export const stageMeta = [
   },
   {
     num: "04",
-    name: "Tech",
+    name: "Technology",
     protect: "The build",
     mapDesc: "Tools shaped around the work.",
     tagline: "Build tools that fit your workflows, voice, and mission.",
-    sentence: "Build only after <em>safety, experimentation, and staff capability</em> are in place.",
+    sentence: "Build only after <em>safety, experimentation, and staff skill</em> are in place.",
     doneWhen: [
       "Tools follow the safety rules already established",
       "Staff know how to use and review outputs",
       "Workflow ownership is clear",
       "The system reduces fragmentation instead of adding another tool"
     ],
-    watchFor: "If Tech is rushed, the organization gets <em>tools that look useful but don't fit</em> the people, the data, or the mission."
+    watchFor: "If Technology is rushed, the organization gets <em>tools that look useful but don't fit</em> the people, the data, or the mission."
   }
 ];
 
 export const safetyQuickItems = [
   "Ownership is assigned",
-  "AI posture is agreed",
+  "Your AI stance is agreed",
   "Allowed and prohibited uses are written",
   "Sensitive data is classified",
   "Staff policy is published",
@@ -76,12 +76,12 @@ export const safetyChecklistRows = [
   {
     index: "i",
     name: "One leader and one decision group own this",
-    example: "One senior leader — your executive director, chief of staff, or COO — is officially the person responsible for AI at the organization. A small group (your senior team plus one or two board members) meets on a recurring schedule to make AI decisions together. <strong>Both are written down, both are on the calendar, and every staff member knows who they are.</strong>"
+    example: "One senior leader, your executive director, chief of staff, or COO, is officially the person responsible for AI at the organization. A small group (your senior team plus one or two board members) meets on a recurring schedule to make AI decisions together. <strong>Both are written down, both are on the calendar, and every staff member knows who they are.</strong>"
   },
   {
     index: "ii",
     name: "Leaders agree on what your organization believes about AI",
-    example: "Your senior leaders have spent real time talking through what your organization believes about people, truth, privacy, and what should never be handed off to a machine — and they have written it down on one page in plain English. Faith-based organizations name where their faith draws the line. Other organizations name the values that draw it. <strong>Either way, the page is in your own words, not a template.</strong>"
+    example: "Your senior leaders have spent real time talking through what your organization believes about people, truth, privacy, and what should never be handed off to a machine, and they have written it down on one page in plain English. Faith-based organizations name where their faith draws the line. Other organizations name the values that draw it. <strong>Either way, the page is in your own words, not a template.</strong>"
   },
   {
     index: "iii",
@@ -96,12 +96,12 @@ export const safetyChecklistRows = [
   {
     index: "v",
     name: "Information sorted into “safe to use” and “never use” groups",
-    example: "Every type of information from your inventory is sorted into clear groups — <strong>fine to use with AI, okay with care, restricted, or never enters AI tools.</strong> The “never” list is short, specific, and written down. Any staff member can look at a document or a piece of information and know which group it falls into."
+    example: "Every type of information from your inventory is sorted into clear groups, <strong>fine to use with AI, okay with care, restricted, or never enters AI tools.</strong> The “never” list is short, specific, and written down. Any staff member can look at a document or a piece of information and know which group it falls into."
   },
   {
     index: "vi",
     name: "A short policy that tells staff what they can and can’t do with AI",
-    example: "One short document — readable in under ten minutes by a brand-new hire — that says clearly what staff are allowed to do with AI, what they are not allowed to do, and why. Plain English, not legal language. Where it borrows rules from your AI tool’s own policy (ChatGPT, Claude, Microsoft Copilot, etc.), it quotes them directly so <strong>staff have one trusted source to point to when a donor, parent, or partner asks.</strong>"
+    example: "One short document, readable in under ten minutes by a brand-new hire, that says clearly what staff are allowed to do with AI, what they are not allowed to do, and why. Plain English, not legal language. Where it borrows rules from your AI tool’s own policy (ChatGPT, Claude, Microsoft Copilot, etc.), it quotes them directly so <strong>staff have one trusted source to point to when a donor, parent, or partner asks.</strong>"
   },
   {
     index: "vii",
@@ -111,7 +111,7 @@ export const safetyChecklistRows = [
   {
     index: "viii",
     name: "A clear plan for what to do when something goes wrong",
-    example: "A short, written plan that says exactly what to do at each level of problem — from a near-miss (“I almost pasted donor info into ChatGPT”) to a real exposure (“a draft with a beneficiary’s name was sent to a vendor”). The plan names <strong>who to tell, how fast, and what happens next.</strong> Staff who report a near-miss are not punished, and near-misses are tracked in a simple log so you can see patterns before they become incidents."
+    example: "A short, written plan that says exactly what to do at each level of problem, from a near-miss (“I almost pasted donor info into ChatGPT”) to a real exposure (“a draft with a beneficiary’s name was sent to a vendor”). The plan names <strong>who to tell, how fast, and what happens next.</strong> Staff who report a near-miss are not punished, and near-misses are tracked in a simple log so you can see patterns before they become incidents."
   },
   {
     index: "ix",
@@ -121,12 +121,12 @@ export const safetyChecklistRows = [
   {
     index: "x",
     name: "A practice run of “what if something goes wrong”",
-    example: "Before any real incident happens, your senior team sits down together and walks through a realistic scenario — for example, <em>“a staff member uploaded a donor list to an unapproved AI tool”</em> — step by step, with the actual people who would handle it. The exercise exposes gaps you didn’t see on paper, and <strong>the plan gets fixed afterward, before a real incident teaches the same lessons more expensively.</strong>"
+    example: "Before any real incident happens, your senior team sits down together and walks through a realistic scenario, for example, <em>“a staff member uploaded a donor list to an unapproved AI tool”</em>, step by step, with the actual people who would handle it. The exercise exposes gaps you didn’t see on paper, and <strong>the plan gets fixed afterward, before a real incident teaches the same lessons more expensively.</strong>"
   },
   {
     index: "xi",
     name: "Every staff member has read and signed the AI policy",
-    example: "Every single staff member who has access to AI tools has signed your AI policy. The list of who signed is checked against your HR roster — not against memory, not “most people.” <strong>This is the clear gate: nobody starts using AI on real work until everyone has signed.</strong>"
+    example: "Every single staff member who has access to AI tools has signed your AI policy. The list of who signed is checked against your HR roster, not against memory, not “most people.” <strong>This is the clear gate: nobody starts using AI on real work until everyone has signed.</strong>"
   },
   {
     index: "xii",
@@ -150,7 +150,7 @@ export const formationWeeks = [
   { week: "Week 02", name: "Discernment", description: "How to tell plausible from good. The first thing staff need is the ability to see drift before it becomes a habit." },
   { week: "Week 03", name: "Authorship", description: "Staying in control of the work. Using AI without letting it become the senior author in the room." },
   { week: "Week 04", name: "Verification", description: "Checking facts, tone, and integrity. Treating every assisted output as unverified until it’s verified." },
-  { week: "Week 05", name: "Stewardship", description: "What AI doesn’t touch. Knowing where the lines are — and why some lines aren’t efficiency questions." },
+  { week: "Week 05", name: "Stewardship", description: "What AI doesn’t touch. Knowing where the lines are, and why some lines aren’t efficiency questions." },
   { week: "Week 06", name: "Prompting as thinking", description: "Writing prompts that read like a well-written internal brief. (That’s the actual skill.)" },
   { week: "Week 07", name: "Workflow thinking", description: "Putting AI inside the actual shape of real work, so what one person learns is something the whole team can run." },
   { week: "Week 08", name: "Synthesis & sending", description: "Pulling the whole arc together. A 30/60/90 day plan. A real sending into the work, not a graduation." },
@@ -192,7 +192,7 @@ export const solutionsProduces = [
 
 export const solutionsWhyMatters = [
   "Tools built too early amplify confusion. Tools built after the first three stages <strong>amplify clarity.</strong>",
-  "By this point, AI is no longer a tool floating above the organization. It becomes <em>infrastructure shaped around the people, mission, data, and decisions</em> that already define the work."
+  "By this point, AI is no longer a tool floating above the organization. It becomes <em>part of how the work runs, shaped around the people, mission, data, and decisions</em> that already define the work."
 ];
 
 export const solutionsArc = [

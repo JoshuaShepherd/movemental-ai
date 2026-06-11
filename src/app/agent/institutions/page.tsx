@@ -6,9 +6,9 @@ import type { Metadata } from "next";
 import { InstitutionsExperience } from "@/components/agent-room/institutions/institutions-experience";
 
 export const metadata: Metadata = {
-  title: "Institutions — Seminaries & Schools — Movemental",
+  title: "Institutions: Seminaries & Schools | Movemental",
   description:
-    "AI is already inside your seminary. A you-first case for institutions: what's happening, the deeper problem, a letter for your board, and the ordered path — Safety, Sandbox, Training, Tech.",
+    "AI is already inside your seminary. A you-first case for institutions: what's happening, the deeper problem, a letter for your board, and the ordered path: Safety, Sandbox, Training, Technology.",
   alternates: {
     canonical: "/agent/institutions",
   },

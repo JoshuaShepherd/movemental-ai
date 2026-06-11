@@ -118,12 +118,19 @@ export function HowWeUseAiExperience() {
             <section className={`${styles.section} ${styles.hero}`} id="hero">
               <div className={styles.sectionInner}>
                 <p className={styles.eyebrow}>How we use AI</p>
-                <h1 className={styles.title}>We use the tools we sell — on ourselves, first.</h1>
+                <h1 className={styles.title}>We use the tools we sell. On ourselves, first.</h1>
                 <p className={styles.body}>
                   We do not ask organizations to do anything we have not done. Every guardrail we
                   ask a leader or a board to ratify, we have built into our own work first. This
                   page is where we name what we refuse, how we sort use cases, and what we will not
-                  build — so anyone reading the site knows where we stand.
+                  build, so anyone reading the site knows where we stand.
+                </p>
+                <p className={styles.body}>
+                  Most public AI discourse splits into &ldquo;AI is a savior&rdquo; or &ldquo;AI is a
+                  threat.&rdquo; We reject both. AI surfaces and amplifies what humans have already
+                  produced, and how a person reacts to it often reveals their underlying view of human
+                  nature. Our work starts from a simpler operational rule: if AI mirrors the humans
+                  it is around, govern the humans, the corpus, and the relationships first.
                 </p>
               </div>
             </section>
@@ -133,8 +140,8 @@ export function HowWeUseAiExperience() {
                 <p className={styles.eyebrow}>What we refuse</p>
                 <h2 className={`${styles.title} ${styles.titleSm}`}>Three lines we do not cross.</h2>
                 <p className={styles.body}>
-                  These refusals are load-bearing — not ethics bolted onto a product after the fact.
-                  They shape every line of code we ship and every artifact we facilitate.
+                  These refusals are essential, not ethics bolted onto a product after the fact.
+                  They shape every line of code we ship and every document we help produce.
                 </p>
                 <div className={styles.refusalList}>
                   {NAMED_REFUSALS.map((refusal) => (
@@ -153,7 +160,7 @@ export function HowWeUseAiExperience() {
                 <h2 className={`${styles.title} ${styles.titleSm}`}>How we sort use cases.</h2>
                 <p className={styles.body}>
                   Not all AI use is equivalent. This is the same framework we use in Safety and
-                  Sandbox engagements — and how we evaluate our own use internally.
+                  Sandbox engagements, and how we evaluate our own use internally.
                 </p>
                 <div className={styles.signalList}>
                   {TRAFFIC_LIGHTS.map((light) => (
@@ -182,20 +189,27 @@ export function HowWeUseAiExperience() {
 
             <section className={styles.section} id="you-are-the-node">
               <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>You are the node</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>AI is infrastructure for your credibility — not your substitute.</h2>
+                <p className={styles.eyebrow}>You stay in charge</p>
+                <h2 className={`${styles.title} ${styles.titleSm}`}>AI supports your credibility, it does not replace you.</h2>
                 <p className={styles.body}>
-                  The sustainable pattern: you handle creation and authority — what you teach, what
+                  The sustainable pattern: you handle creation and authority, what you teach, what
                   you write, what you put your name on. AI handles discoverability and circulation:
-                  structure, metadata, translation, formatting, linking. Your work becomes legible
-                  and connected without the machine becoming you.
+                  structure, metadata, translation, formatting, linking. Your work becomes easier
+                  to find and connect without the machine becoming you.
                 </p>
                 <p className={styles.body}>
-                  AI can help the node be legible and connected. It never becomes the node. Only
+                  AI is trained on the broad output of human writing, speech, and behavior. When you
+                  interact with it, it mirrors and amplifies what it has been trained on, and it
+                  mirrors and amplifies you specifically. That is why the most important operational
+                  decision is not which model you pick. It is who you deliberately gather around the
+                  work: the humans whose corpus, judgment, and vouching the system will reflect back.
+                </p>
+                <p className={styles.body}>
+                  AI can help your work be legible and connected. It never becomes you. Only
                   people can vouch for you. Only you can mean what you say before God and stand
                   answerable for it as true.
                 </p>
-                <p className={styles.hand}>You in the foreground. AI in the background.</p>
+                <p className={styles.hand}>You out front. AI in the background.</p>
               </div>
             </section>
 
@@ -204,7 +218,7 @@ export function HowWeUseAiExperience() {
                 <p className={styles.eyebrow}>The scenius refusals</p>
                 <h2 className={`${styles.title} ${styles.titleSm}`}>What we will not build into the network.</h2>
                 <p className={styles.body}>
-                  The extractive version of this business is obvious — and we are building against
+                  The extractive version of this business is obvious, and we are building against
                   it. That includes product choices, not only policy statements.
                 </p>
                 <ul className={styles.sceniusList}>
@@ -216,7 +230,7 @@ export function HowWeUseAiExperience() {
                   If a feature would feel extractive to us as members, we don&apos;t ship it.
                 </p>
                 <AskAiPromptButton
-                  prompt={`I'm reading Movemental's "How We Use AI" page (movemental.ai/agent/how-we-use-ai) — their named refusals, green/yellow/red framework, and scenius product refusals. Summarize what Movemental commits to refuse, how they sort AI use cases, and what questions I should ask before trusting an AI vendor in the church/nonprofit space.`}
+                  prompt={`I'm reading Movemental's "How We Use AI" page (movemental.ai/agent/how-we-use-ai), their named refusals, green/yellow/red framework, and scenius product refusals. Summarize what Movemental commits to refuse, how they sort AI use cases, and what questions I should ask before trusting an AI vendor in the church/nonprofit space.`}
                 />
               </div>
             </section>

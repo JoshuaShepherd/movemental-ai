@@ -38,7 +38,7 @@ export function CharterDashboardShell({ payload, userEmail }: Props) {
   const statusLabel =
     charter.overallStatus === "published"
       ? "Published"
-      : `Draft — ${charter.layersComplete} of ${charter.layerCount} layers complete`;
+      : `Draft, ${charter.layersComplete} of ${charter.layerCount} layers complete`;
 
   const active = charter.layers.find((l) => l.artifact.slug === activeLayer);
 
@@ -124,7 +124,7 @@ export function CharterDashboardShell({ payload, userEmail }: Props) {
           {activeLayer === "overview" ? (
             <div className="mx-auto max-w-3xl space-y-8">
               <p className="text-lg leading-relaxed text-foreground">
-                Operational status for your AI Charter — searchable, ratifiable, and ready to roll out
+                Operational status for your AI Charter, searchable, ratifiable, and ready to roll out
                 to staff.
               </p>
               <div className="grid gap-4 sm:grid-cols-2">

@@ -20,7 +20,7 @@ export function InstitutionsAssessmentPreview() {
       <figcaption className={styles.assessmentPreviewCaption}>
         <span className={styles.assessmentPreviewEyebrow}>What we build</span>
         <span className={styles.assessmentPreviewTitle}>
-          Your private {SAFETY_HANDBOOK.shortLabel} dashboard — draft, review, ratify
+          Your private {SAFETY_HANDBOOK.shortLabel} dashboard, draft, review, ratify
         </span>
         <span className={styles.assessmentPreviewSub}>
           {SAFETY_READBACK_COPY.spreadHint}
@@ -55,7 +55,7 @@ export function InstitutionsAssessmentPreview() {
       </div>
       <p className={styles.assessmentPreviewNote}>
         The full organizational AI reality assessment maps your team across all four
-        stages — then lands here, with documents your board can actually sign.
+        stages, then lands here, with documents your board can actually sign.
       </p>
     </figure>
   );

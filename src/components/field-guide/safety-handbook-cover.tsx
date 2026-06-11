@@ -14,7 +14,7 @@ export type SafetyHandbookCoverProps = {
   sizes?: string;
 };
 
-/** Canonical raster cover for the Safety stage lead magnet (AI Safety Guidebook). */
+/** Canonical raster cover for the Safety stage lead magnet (AI Safety Handbook). */
 export function SafetyHandbookCover({
   className,
   priority = false,

@@ -45,7 +45,7 @@ export default async function AiRealityDashboardPage() {
       <main className="mx-auto w-full max-w-2xl px-4 py-20">
         <h1 className="text-3xl leading-tight">No results yet.</h1>
         <p className="mt-4 text-base text-muted-foreground">
-          Take the assessment, then invite your team — your dashboard builds itself as responses arrive.
+          Take the assessment, then invite your team, your dashboard builds itself as responses arrive.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link

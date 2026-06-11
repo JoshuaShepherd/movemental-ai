@@ -60,7 +60,7 @@ export const CANON_SECTIONS_ORDER: readonly CanonSection[] = [
 export const CANON_SECTION_META: Record<CanonSection, { title: string; deck: string }> = {
   moment: {
     title: "The moment",
-    deck: "Disorientation is not a personal failure — it is the correct response to a generational rupture.",
+    deck: "Disorientation is not a personal failure, it is the correct response to a generational rupture.",
   },
   problem: {
     title: "The problem",
@@ -68,11 +68,11 @@ export const CANON_SECTION_META: Record<CanonSection, { title: string; deck: str
   },
   path: {
     title: "The path",
-    deck: "Safety → Sandbox → Training → Tech. The sequence is the framework.",
+    deck: "Safety → Sandbox → Training → Technology. The sequence is the framework.",
   },
   future: {
     title: "The future",
-    deck: "What it feels like on the other side — coherent leadership, compounding work, movement.",
+    deck: "What it feels like on the other side, coherent leadership, compounding work, movement.",
   },
   synthesis: {
     title: "Synthesis",
@@ -251,7 +251,7 @@ export const SERIES_META: Record<SeriesKey, { title: string; deck: string }> = {
   },
   "content-strategy": {
     title: "Content strategy",
-    deck: "A six-piece sequence for movement leaders — from strategy to evergreen architecture to the Christocentric spine.",
+    deck: "A six-piece sequence for movement leaders, from strategy to evergreen architecture to the Christocentric spine.",
   },
   sandbox: {
     title: "Sandbox curriculum",
@@ -259,11 +259,11 @@ export const SERIES_META: Record<SeriesKey, { title: string; deck: string }> = {
   },
   ssss: {
     title: "The Movemental Path",
-    deck: "Safety, Sandbox, Training, Tech: the core public methodology.",
+    deck: "Safety, Sandbox, Training, Technology: the core public methodology.",
   },
   "two-intelligences": {
     title: "Two intelligences",
-    deck: "Relational and artificial — how they integrate inside a mission-driven organization.",
+    deck: "Relational and artificial, how they integrate inside a mission-driven organization.",
   },
   "ai-governance": {
     title: "AI governance",
@@ -273,14 +273,14 @@ export const SERIES_META: Record<SeriesKey, { title: string; deck: string }> = {
 
 export const TOPIC_META: Record<Topic, { title: string; deck: string }> = {
   fragmentation: { title: "Fragmentation", deck: "Work exists but does not connect." },
-  ssss: { title: "Movemental Path", deck: "Safety, Sandbox, Training, Tech." },
+  ssss: { title: "Movemental Path", deck: "Safety, Sandbox, Training, Technology." },
   integrity: { title: "Integrity", deck: "Structural coherence between what you say, what you ship, and who you are." },
   signal: { title: "Signal", deck: "Why real expertise is becoming invisible, and what still reads as credible." },
   formation: { title: "Formation", deck: "What skill becomes once it's judgment." },
   sandbox: { title: "Sandbox", deck: "Structured exploration as the input to real learning." },
   multiplication: { title: "Multiplication", deck: "When work begins to move." },
   "dual-intelligence": { title: "Dual intelligence", deck: "Relational + artificial, integrated honestly." },
-  "ai-posture": { title: "AI posture", deck: "How serious leaders hold themselves inside an AI-saturated decade." },
+  "ai-posture": { title: "AI stance", deck: "How serious leaders hold themselves inside an AI-saturated decade." },
   "ai-credibility": { title: "AI & credibility", deck: "Trust in an age where surface can be generated." },
   "ai-governance": { title: "AI governance", deck: "Explicit boundaries, review loops, and leadership ownership." },
   "content-strategy": { title: "Content strategy", deck: "A body of work that compounds, not scattered output." },

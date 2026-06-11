@@ -68,7 +68,7 @@ export function TeamAssessment({ token, organizationName }: { token: string; org
     const result = computeSsssIntegrityResult(scores as number[]);
     return (
       <div className="mx-auto w-full max-w-2xl px-4 py-20">
-        <h1 className="text-3xl leading-tight">Thank you — your response is in.</h1>
+        <h1 className="text-3xl leading-tight">Thank you, your response is in.</h1>
         <p className="mt-4 text-base text-muted-foreground">
           Your answers are now part of {organizationName}&apos;s picture. Your own quick read:
         </p>
@@ -77,8 +77,8 @@ export function TeamAssessment({ token, organizationName }: { token: string; org
             [
               ["Safety", result.stagePercents.Safety],
               ["Sandbox", result.stagePercents.Sandbox],
-              ["Training", result.stagePercents.Skills],
-              ["Tech", result.stagePercents.Solutions],
+              ["Training", result.stagePercents.Training],
+              ["Technology", result.stagePercents.Technology],
             ] as const
           ).map(([label, pct]) => (
             <li key={label} className="flex justify-between border-b border-border py-2">
@@ -104,7 +104,7 @@ export function TeamAssessment({ token, organizationName }: { token: string; org
       </h1>
       <p className="mt-4 text-base leading-relaxed text-foreground">
         Eighteen honest statements about how your organization actually works with AI. Answer how true
-        each feels — there are no right answers. About 8–12 minutes. Your individual answers stay private;
+        each feels, there are no right answers. About 8–12 minutes. Your individual answers stay private;
         only the combined picture is shared with your leadership.
       </p>
 

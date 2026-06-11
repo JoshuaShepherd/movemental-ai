@@ -21,7 +21,7 @@ export async function sendOnboardingWelcomeEmail(toEmail: string, firstName: str
     from: movementalFrom(),
     replyTo: "hello@movemental.com",
     to: toEmail,
-    subject: "Welcome to Movemental — let's get started",
+    subject: "Welcome to Movemental, let's get started",
     text: [
       `${name},`,
       "",
@@ -48,7 +48,7 @@ export async function sendOnboardingPhase1CompleteEmail(
     from: movementalFrom(),
     replyTo: "hello@movemental.com",
     to: toEmail,
-    subject: "Thanks — your engagement is confirmed",
+    subject: "Thanks, your engagement is confirmed",
     text: [
       `${name},`,
       "",
@@ -117,7 +117,7 @@ export async function sendOnboardingPhase2ReminderEmail(
     from: movementalFrom(),
     replyTo: "hello@movemental.com",
     to: toEmail,
-    subject: "Reminder — continue your Movemental onboarding",
+    subject: "Reminder, continue your Movemental onboarding",
     text: [
       `${name},`,
       "",
@@ -143,11 +143,11 @@ export async function sendPreCohortOnboardingReminderEmail(
     from: movementalFrom(),
     replyTo: "hello@movemental.com",
     to: toEmail,
-    subject: `Reminder — cohort starts ${cohortStartLabel}`,
+    subject: `Reminder, cohort starts ${cohortStartLabel}`,
     text: [
       `${name},`,
       "",
-      `Your cohort start is ${cohortStartLabel}. Your onboarding checklist is still open — finishing before cohort helps us prepare.`,
+      `Your cohort start is ${cohortStartLabel}. Your onboarding checklist is still open, finishing before cohort helps us prepare.`,
       "",
       welcomeUrl,
       "",
@@ -168,7 +168,7 @@ export async function sendOnboardingCompletedEmail(
     from: movementalFrom(),
     replyTo: "hello@movemental.com",
     to: toEmail,
-    subject: `You are fully onboarded — see you ${cohortDateLabel}`,
+    subject: `You are fully onboarded, see you ${cohortDateLabel}`,
     text: [
       `${name},`,
       "",

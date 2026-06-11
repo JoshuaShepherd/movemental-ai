@@ -85,7 +85,7 @@ export const sources = {
   "barna-gloo-sotc-2026": {
     id: "barna-gloo-sotc-2026",
     author: "Barna Group & Gloo",
-    title: "State of the Church 2026 — AI Series",
+    title: "State of the Church 2026: AI Series",
     date: "November 2025 onward",
     sample: "n = 1,514 U.S. adults · online",
     tag: "VERIFIED",
@@ -115,7 +115,7 @@ export const sources = {
   "bcg-value-gap-2025": {
     id: "bcg-value-gap-2025",
     author: "Boston Consulting Group",
-    title: "The Widening AI Value Gap — Build for the Future 2025",
+    title: "The Widening AI Value Gap: Build for the Future 2025",
     date: "September 2025",
     sample: "n = 1,250 firms",
     tag: "VERIFIED",

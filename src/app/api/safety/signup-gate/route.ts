@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
       {
         error: {
           code: "not_eligible",
-          message: "Check your enrollment email — signup opens after your dashboard is provisioned.",
+          message: "Check your enrollment email, signup opens after your dashboard is provisioned.",
         },
       },
       { status: 403 },

@@ -34,13 +34,13 @@ export async function sendBookSubscriberWelcome(params: {
     <p>Thanks for choosing to stay close to <strong>${BOOK_TITLE}</strong>.</p>
     <p>Your edition: <a href="${readUrl}">${readUrl}</a></p>
     <p>We'll email you when your lens gets new margin notes, revisions, or export builds.</p>
-    <p style="color:#6b6660;font-size:14px;margin-top:24px">— Movemental</p>
+    <p style="color:#6b6660;font-size:14px;margin-top:24px">Movemental</p>
   `;
 
   const { error } = await resend.emails.send({
     from: resendFromHeader(),
     to: [params.email],
-    subject: `You're subscribed — ${BOOK_TITLE}`,
+    subject: `You're subscribed, ${BOOK_TITLE}`,
     html,
     tags: [
       { name: "flow", value: "book_welcome" },
@@ -78,7 +78,7 @@ export async function sendBookExportConfirmation(params: {
   const { error } = await resend.emails.send({
     from: resendFromHeader(),
     to: [params.email],
-    subject: `Your ${params.format.toUpperCase()} request — ${BOOK_TITLE}`,
+    subject: `Your ${params.format.toUpperCase()} request, ${BOOK_TITLE}`,
     html,
     tags: [
       { name: "flow", value: "book_export" },

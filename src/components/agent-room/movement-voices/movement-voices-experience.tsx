@@ -114,7 +114,7 @@ export function MovementVoicesExperience() {
                 <p className={styles.eyebrow}>Movement Voices</p>
                 <h1 className={styles.title}>The reader who can no longer tell.</h1>
                 <p className={styles.sub}>
-                  Begin with a faithful reader. Someone who has followed a writer for years — read
+                  Begin with a faithful reader. Someone who has followed a writer for years, read
                   every book, taught the frameworks, been changed by the work. That reader opens the
                   newest piece and, for the first time in the history of reading, has to ask a
                   question that never had to be asked before. Is this still them? Or is it a model,
@@ -123,7 +123,7 @@ export function MovementVoicesExperience() {
                 <p className={`${styles.body} ${styles.sub}`} style={{ marginTop: "1rem" }}>
                   The reader cannot tell. And it does not help if the prose happens to be good. A
                   person can admire the sentences and still be wounded by not knowing whether anyone
-                  stands behind them. For five hundred years a pen, a press, a typewriter — none of
+                  stands behind them. For five hundred years a pen, a press, a typewriter, none of
                   them could think the thought for you. This tool can. That is what is new.
                 </p>
               </div>
@@ -143,13 +143,20 @@ export function MovementVoicesExperience() {
                 </p>
                 <p className={styles.body}>
                   There is a second face to that scattering. Because his work is in pieces, he cannot
-                  see the people moving through it — the reader who found one idea in a blog post,
+                  see the people moving through it, the reader who found one idea in a blog post,
                   then bought a book, then took a course, then started teaching it in her own church.
                   That journey, which is the entire point, is invisible to him, because the work the
                   journey runs through is itself shattered.
                 </p>
                 <p className={styles.body}>
-                  What is known, and who it is for — both broken, in the same event.
+                  What is known, and who it is for, both broken, in the same event.
+                </p>
+                <p className={styles.body}>
+                  This is not only an individual problem. A church has the same wound, in a body rather
+                  than a person. Its teaching lives in sermons no one can search. Its hard-won wisdom
+                  lives in founders&apos; heads, one bus accident away from being lost. It knows its
+                  people in fragments and cannot see its own body whole. What is true of one writer is
+                  true of one church, one nonprofit, one seminary.
                 </p>
               </div>
             </section>
@@ -159,16 +166,30 @@ export function MovementVoicesExperience() {
                 <p className={styles.eyebrow}>What we&apos;re building</p>
                 <h2 className={`${styles.title} ${styles.titleSm}`}>The scenius.</h2>
                 <p className={styles.body}>
-                  The word comes from Brian Eno. Not genius — the lone brilliant individual — but{" "}
+                  The word comes from Brian Eno. Not genius, the lone brilliant individual, but{" "}
                   <em>scenius</em>, the shared intelligence of a whole scene, the thing a community
-                  knows together that no single member could produce alone. You cannot manufacture a
-                  scenius. You can only host one.
+                  knows together that no single member could produce alone. The geniuses we remember
+                  almost always emerged from scenes: Florence in the fifteenth century, the Inklings at
+                  the Eagle and Child, Stax Records, the Homebrew Computer Club. Small enough that
+                  everyone knew everyone, dense enough that attention and criticism cycled fast. You
+                  cannot manufacture a scenius. You can only host one.
                 </p>
                 <p className={styles.body}>
-                  So we start with one leader — Alan — and build the full apparatus his public work
-                  actually requires. Not a website. His whole body of work made navigable. Then we build
-                  a second, for Brad Brisco, and we do the thing that was impossible with only one: we
-                  link them.
+                  Network theory calls this an all-channel structure: every node connects directly to
+                  every other, not hub-and-spoke with one celebrity at the center. All-channel networks
+                  have the highest information velocity and the highest cost to maintain, the number of
+                  edges scales as n². That is why historical sceniuses were small, geographically dense,
+                  and time-bounded. Movemental&apos;s hypothesis is that digital infrastructure can lower
+                  that cost enough for scenius to scale beyond geography and survive across years, not
+                  as a substitute for the local scene, but as a layer above it.
+                </p>
+                <p className={styles.body}>
+                  So we start with one leader, Alan, and build everything his public work actually
+                  requires. Not a website. His whole body of work made navigable. Then we build a second,
+                  for Brad Brisco, and we do the thing that was impossible with only one: we link them.
+                  The first hero in this story lives in Melbourne; the second lives in Tampa. They
+                  cannot easily gather in person. The platform exists so they can be present to each
+                  other&apos;s work with something closer to the bandwidth of a hallway than a conference.
                 </p>
                 <p className={styles.body}>
                   When Alan&apos;s work cites Brad&apos;s, and Brad&apos;s cites Alan&apos;s, and they
@@ -176,9 +197,9 @@ export function MovementVoicesExperience() {
                   platforms are not two websites. They are two voices that publicly back each other up.
                 </p>
                 <p className={styles.body}>
-                  Then toward a hundred — senior voices on shared infrastructure, speaking one
+                  Then toward a hundred, senior voices on shared tools, speaking one
                   vocabulary, citing each other honestly, linked as a network the systems mediating the
-                  internet can finally recognize as one coherent field with a hundred named contributors.
+                  internet can finally recognize as one connected scene with a hundred named contributors.
                 </p>
                 <div className={styles.langList} aria-label="Translation languages">
                   {TRANSLATION_LANGUAGES.map((lang) => (
@@ -187,8 +208,14 @@ export function MovementVoicesExperience() {
                     </span>
                   ))}
                 </div>
+                <p className={styles.body}>
+                  The infrastructure that used to cost a leader hundreds of thousands of dollars, and
+                  millions more to link together, can now be built for a fraction of that. We are not
+                  pretending it is free. We are saying the floor dropped, in the exact window we are
+                  building inside.
+                </p>
                 <p className={styles.hand}>
-                  So a pastor in Bogotá finds the deepest thinking — in her own language — not the
+                  So a pastor in Bogotá finds the deepest thinking, in her own language, not the
                   loudest voice.
                 </p>
               </div>
@@ -197,7 +224,7 @@ export function MovementVoicesExperience() {
             <section className={styles.section} id="four-layers">
               <div className={`${styles.sectionInner} ${styles.sectionWide}`}>
                 <p className={styles.eyebrow}>What Movemental actually is</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>Four layers — kept distinct.</h2>
+                <h2 className={`${styles.title} ${styles.titleSm}`}>Four layers, kept distinct.</h2>
                 <p className={styles.body}>
                   Movemental keeps four things separate so none of them collapses into the others.
                 </p>
@@ -217,21 +244,25 @@ export function MovementVoicesExperience() {
                 <p className={styles.eyebrow}>The hundred</p>
                 <h2 className={`${styles.title} ${styles.titleSm}`}>The seed.</h2>
                 <p className={styles.body}>
-                  Movemental gathers roughly one hundred senior movement leaders — not a directory or
-                  a conference, but the seed of a working ecosystem in which a leader&apos;s work and
+                  Movemental gathers roughly one hundred senior movement leaders, not a directory or
+                  a conference, but the seed of a working network in which a leader&apos;s work and
                   the work of ninety-nine peers can find each other, link, deepen each other, and
-                  present coherently to the world and to the AI systems the world increasingly asks.
+                  read clearly to the world and to the AI systems the world increasingly asks.
                 </p>
                 <p className={styles.body}>
-                  Four-week onboarding remediates each leader&apos;s life-work — the books, articles,
-                  sermons, talks, and scattered fragments — into a coherent home. For most leaders that
+                  Four-week onboarding gathers each leader&apos;s life-work, the books, articles,
+                  sermons, talks, and scattered fragments, into one coherent home. For most leaders that
                   looks like roughly fifty evergreen articles and five thematic pathway courses, one
                   for each major stream of their work, plus guided pathways through their core thinking.
                 </p>
                 <p className={styles.body}>
-                  Courses run in cohort, not self-served — because formation needs community, not just
+                  Courses run in cohort, not self-served, because formation needs community, not just
                   content. The network is capped at one hundred by design: past a certain size you
-                  cannot actually care for people, and the care is the point.
+                  cannot actually care for people, and the care is the point. We would rather build the
+                  kingdom slowly and stay whole than scale fast and lose it.
+                </p>
+                <p className={styles.body}>
+                  The first leaders have already said yes.
                 </p>
               </div>
             </section>
@@ -239,9 +270,9 @@ export function MovementVoicesExperience() {
             <section className={styles.section} id="voices">
               <div className={`${styles.sectionInner} ${styles.sectionWide}`}>
                 <p className={styles.eyebrow}>The Voices</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>The credibility substrate, made visible.</h2>
+                <h2 className={`${styles.title} ${styles.titleSm}`}>Credibility, made visible.</h2>
                 <p className={styles.body}>
-                  Each Voice is a node in the network — not a testimonial, not an advisor badge, but a
+                  Each Voice is a person in the network, not a testimonial, not an advisor badge, but a
                   leader whose real work stands gathered and verifiable. Tap a portrait to open their
                   profile.
                 </p>
@@ -255,28 +286,28 @@ export function MovementVoicesExperience() {
                 <h2 className={`${styles.title} ${styles.titleSm}`}>What a Movement Voice says yes to.</h2>
                 <article className={styles.invitationPanel}>
                   <p className={styles.body}>
-                    If you are reading this, you have probably spent decades doing work that matters —
+                    If you are reading this, you have probably spent decades doing work that matters,
                     and watching it scatter. A Movement Voice says yes to a four-week onboarding in
-                    which that life-work is remediated into a coherent home you own.
+                    which that life-work is gathered into one coherent home you own.
                   </p>
                   <ul className={styles.invitationList}>
                     <li>
-                      Roughly fifty evergreen articles and five thematic pathway courses — anchored in
+                      Roughly fifty evergreen articles and five thematic pathway courses, anchored in
                       your actual corpus, at the depth you would have written yourself.
                     </li>
                     <li>
-                      About three to four hours per week, including one session with us — we carry the
+                      About three to four hours per week, including one session with us, we carry the
                       heavy lifting; you carry the judgment.
                     </li>
                     <li>
-                      A place among roughly one hundred peers who cite each other honestly — every
+                      A place among roughly one hundred peers who cite each other honestly, every
                       tribe and tongue, so the scene actually looks like the Kingdom.
                     </li>
                   </ul>
                   <p className={styles.body} style={{ marginTop: "1.15rem" }}>
                     A Voice does <strong>not</strong> say yes to becoming a content creator, or to
                     outsourcing their voice. We do not use AI to author anything under a human&apos;s
-                    name. The AI handles the work around the writing — never the writing itself.
+                    name. The AI handles the work around the writing, never the writing itself.
                   </p>
                   <p className={styles.hand}>
                     We will use AI to do this. We will not use AI to author it.
@@ -294,7 +325,7 @@ export function MovementVoicesExperience() {
                   </a>
                 </div>
                 <AskAiPromptButton
-                  prompt={`I'm reading Movemental's Movement Voices page (movemental.ai/agent/movement-voices) — the scenius thesis, the authorship break, and the invitation to become a Voice. Summarize what a Movement Voice is agreeing to, what they are not agreeing to, and how this differs from a typical "creator platform."`}
+                  prompt={`I'm reading Movemental's Movement Voices page (movemental.ai/agent/movement-voices), the scenius thesis, the authorship break, and the invitation to become a Voice. Summarize what a Movement Voice is agreeing to, what they are not agreeing to, and how this differs from a typical "creator platform."`}
                 />
               </div>
             </section>

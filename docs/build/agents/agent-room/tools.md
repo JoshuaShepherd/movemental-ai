@@ -13,7 +13,7 @@ Tools are registered in the engine (`registerTool` / `executeTool`), described i
 | Order | Tool | Type | Purpose |
 |------:|------|------|---------|
 | 0 | `render_beat` | render | Reality-check question + option chips |
-| 1 | `show_path` | render | Four-stage path (Safety → Solutions) |
+| 1 | `show_path` | render | Four-stage path (Safety → Technology) |
 | 2 | `show_pricing` | render | Full pricing screen |
 | 3 | `show_network` | render | Leader constellation _(deferred in prompt)_ |
 | 4 | `show_audience` | render | Audience picker _(deferred in prompt)_ |
@@ -71,8 +71,8 @@ Beat copy is normally **`[const]` from `HOST_SCENES`** in the UI repo; the model
 
 | kind | Use |
 |------|-----|
-| `free` | SafeGuide / field guide email capture |
-| `paid` | SafeStart $1,000 enrollment |
+| `free` | Safety (free, self-directed) / field guide email capture |
+| `paid` | Safety (facilitated) $1,000 enrollment |
 | `map` | Soft gate after reality map |
 | `discuss` | Long-form follow-up capture (~6–8 turns) |
 

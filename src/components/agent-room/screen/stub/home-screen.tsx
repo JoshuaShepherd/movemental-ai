@@ -22,7 +22,7 @@ export function HomeScreen({
         <span id="phrase" className={styles.phrase}>
           <b>the trust their work depends on</b>
         </span>
-        , by walking with them through one ordered path: get safe, experiment, form
+        , through one ordered path: get safe, experiment, form
         your people, then build.
       </p>
       <LeaderBand onSelect={onLeaderSelect} disabled={disabled} />

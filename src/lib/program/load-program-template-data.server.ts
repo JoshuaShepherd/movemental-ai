@@ -51,7 +51,7 @@ export async function loadProgramTemplateData(
   if (!resolved.success) {
     return {
       fixture,
-      sourceBadge: "fixture only — organization context unavailable",
+      sourceBadge: "fixture only, organization context unavailable",
     };
   }
 

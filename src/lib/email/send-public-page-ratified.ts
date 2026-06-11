@@ -23,7 +23,7 @@ export async function sendPublicPageRatifiedEmail(input: {
       "",
       "You can update or unpublish it any time from your Movemental workspace under Public page.",
       "",
-      "— Movemental",
+      ",  Movemental",
     ].join("\n"),
   });
 }

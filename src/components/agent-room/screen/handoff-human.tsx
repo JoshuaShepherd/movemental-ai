@@ -12,7 +12,7 @@ export function HandoffHuman({ props }: { props: HandoffHumanProps }) {
       <div className={styles.handoff}>
         <p className={styles.sub} style={{ marginBottom: 0 }}>
           {props.reason ??
-            "That’s outside what this room can speak to honestly. I won’t bluff at the edges — that would undercut the whole point. For anything beyond where your organization stands with AI, a real person will help."}
+            "That’s outside what this room can speak to honestly. I won’t bluff at the edges, that would undercut the whole point. For anything beyond where your organization stands with AI, a real person will help."}
         </p>
         <a className={styles.email} href={`mailto:${props.email}`}>
           {props.email}

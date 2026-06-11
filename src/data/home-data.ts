@@ -44,7 +44,7 @@ export const INTERACTIVE_PATH_STAGES = [
   {
     num: "03",
     name: "Training",
-    body: "The findings from the sandbox are translated into formal training for the broader team. This stage shifts the focus from individual exploration to organizational capability, ensuring everyone shares a common language and baseline skill.",
+    body: "The findings from the sandbox are translated into formal training for the broader team. This stage shifts the focus from individual exploration to shared skill across the organization, ensuring everyone shares a common language and baseline judgment.",
     workProducts: [
       "Organization-wide AI literacy training.",
       "Role-specific guides and prompt libraries.",
@@ -64,7 +64,7 @@ export const INTERACTIVE_PATH_STAGES = [
   },
   {
     num: "04",
-    name: "Tech",
+    name: "Technology",
     body: "Only after safety, experimentation, and skills are established does the organization move to building integrated solutions. At this stage, AI is thoughtfully woven into operations, workflows, and perhaps even products or ministry delivery.",
     workProducts: [
       "Custom GPTs or internal agents for specific workflows.",
@@ -74,12 +74,12 @@ export const INTERACTIVE_PATH_STAGES = [
     ],
     definitionOfDone: [
       "AI is invisible; it is simply how the work is done.",
-      "Tech deployments are actively maintained and governed.",
+      "Technology deployments are actively maintained and governed.",
       "The mission is demonstrably accelerated or expanded."
     ],
     ifSkipped: [
       "The organization builds costly solutions that staff do not understand or use.",
-      "Tech breaks because the foundational training to maintain it does not exist.",
+      "Technology breaks because the foundational training to maintain it does not exist.",
       "The tool replaces human connection where human connection was the actual point."
     ]
   }

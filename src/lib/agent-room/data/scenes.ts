@@ -11,7 +11,7 @@
  * (chips may target a not-yet-wired scene — a harmless no-op).
  */
 import type { Scene, SceneFactory } from "../acts";
-import { FREE_HANDBOOK_CTA, SAFETY_HANDBOOK } from "../naming";
+import { FREE_HANDBOOK_CTA, SAFETY_CHARTER, SAFETY_HANDBOOK } from "../naming";
 import { CONCIERGE_VOICE } from "./concierge-voice-lines";
 import { DISCUSS_ENABLED } from "../discuss";
 
@@ -34,7 +34,7 @@ export const SCENES = {
   whatIs: [
     { show: "about" },
     { wait: 480 },
-    { say: "Here’s the short version — the rest is on the page." },
+    { say: "Here’s the short version, the rest is on the page." },
     { wait: 160 },
     { say: "We help you meet AI without losing trust." },
     {
@@ -49,7 +49,7 @@ export const SCENES = {
   cost: [
     { show: "pricing" },
     { wait: 480 },
-    { say: "Every price is on the page — and what we refuse to do." },
+    { say: "Every price is on the page, and what we refuse to do." },
     { wait: 160 },
     { say: "The guides are free. Facilitation is fixed-price." },
     {
@@ -63,7 +63,7 @@ export const SCENES = {
   toFaq: [
     { show: "faq" },
     { wait: 480 },
-    { say: "Honest answers — including when we’re not the right fit." },
+    { say: "Honest answers, including when we’re not the right fit." },
     { wait: 160 },
     { say: "Ten groups. Jump to what you need on the page." },
     {
@@ -93,7 +93,7 @@ export const SCENES = {
     { wait: 460 },
     { say: "Tell us a little about where you stand." },
     { wait: 160 },
-    { say: "We read every message — and reply personally." },
+    { say: "We read every message, and reply personally." },
     {
       suggest: [
         { label: "↺ Start over", lead: true, to: "opening" },
@@ -124,7 +124,7 @@ export const SCENES = {
     { say: "This is probably a one-question assessment." },
     { wait: 200 },
     {
-      say: "Most organizations answer the first question, hear the one thing they most need to hear, and stop there. So let's start with it — and answer honestly, because the honest answer is the useful one.",
+      say: "Most organizations answer the first question, hear the one thing they most need to hear, and stop there. So let's start with it, and answer honestly, because the honest answer is the useful one.",
     },
     {
       suggest: [{ label: "Start with Safety", lead: true, to: "toBeat" }],
@@ -135,7 +135,7 @@ export const SCENES = {
   toBeatCold: [
     { show: "beat", qi: 0, singleQuestionHint: true },
     {
-      say: "This is usually just one question — answer honestly, because the honest answer is the useful one.",
+      say: "This is usually just one question, answer honestly, because the honest answer is the useful one.",
     },
   ],
   toPath: [
@@ -164,7 +164,7 @@ export const SCENES = {
     { wait: 240 },
     { say: "Safety is your step. Here's what it means." },
     { wait: 200 },
-    { say: "Walk it free with our help, or have us do it with you." },
+    { say: "Complete it free with our help, or have us do it with you." },
     {
       suggest: [
         { label: "Have us do it · $1,000", lead: true, to: "toSafetyDashboard" },
@@ -183,7 +183,7 @@ export const SCENES = {
     },
     { wait: 200 },
     {
-      say: "Safety gives you one shared frame, a defensible posture for donors and boards, and a clear answer when something goes wrong. That trust dividend arrives the day you ratify.",
+      say: "Safety gives you one shared frame, answers donors and boards can trust, and a clear plan when something goes wrong. That trust pays off the day you ratify.",
     },
     {
       suggest: [
@@ -195,7 +195,7 @@ export const SCENES = {
   ],
   safetyWithoutIt: [
     {
-      say: `Without a ratified ${SAFETY_HANDBOOK.shortLabel}, every staff member decides alone under time pressure. Donor data ends up in consumer tools. Pastoral notes get pasted into chatbots. A cloned voice can reach your people before you have a response plan.`,
+      say: `Without a ratified ${SAFETY_CHARTER.shortLabel}, every staff member decides alone under time pressure. Donor data ends up in consumer tools. Pastoral notes get pasted into chatbots. A cloned voice can reach your people before you have a response plan.`,
     },
     { wait: 200 },
     {
@@ -216,7 +216,7 @@ export const SCENES = {
     {
       suggest: [
         { label: "Have us do it · $1,000", lead: true, to: "withUs" },
-        { label: "Walk it free", to: "focusHandbook" },
+        { label: "Start free, guided", to: "focusHandbook" },
       ],
     },
   ],
@@ -231,7 +231,7 @@ export const SCENES = {
     {
       suggest: [
         { label: "Have us do it · $1,000", lead: true, to: "withUs" },
-        { label: "Walk it free", to: "focusHandbook" },
+        { label: "Start free, guided", to: "focusHandbook" },
       ],
     },
   ],
@@ -254,13 +254,13 @@ export const SCENES = {
     },
   ],
   focusHandbook: [
-    { say: `Get your free ${SAFETY_HANDBOOK.fullTitle} — leave your email right here.` },
+    { say: `Get your free ${SAFETY_HANDBOOK.fullTitle}, leave your email right here.` },
     { wait: 160 },
     { gesture: "circle", target: "#handbookEmail" },
   ],
   /** @deprecated alias — guidebook capture lives in the agent dock now. */
   onOwn: [
-    { say: `Get your free ${SAFETY_HANDBOOK.fullTitle} — leave your email right here.` },
+    { say: `Get your free ${SAFETY_HANDBOOK.fullTitle}, leave your email right here.` },
     { wait: 160 },
     { gesture: "circle", target: "#handbookEmail" },
   ],
@@ -272,7 +272,7 @@ export const SCENES = {
     },
     { wait: 180 },
     {
-      say: "We do everything but the discernment — research, drafting, structure, assessment. You decide.",
+      say: "We do everything but the discernment, research, drafting, structure, assessment. You decide.",
     },
     {
       suggest: [
@@ -289,7 +289,7 @@ export const SCENES = {
   // never a dead-end notice. Same await/confirm pattern as `withUs`/`onOwn`.
   toDiscuss: [
     { clear: true },
-    { say: "That deserves a real conversation — more than I can script here." },
+    { say: "That deserves a real conversation, more than I can script here." },
     { wait: 180 },
     { say: "Leave your email and the team will pick it up with you." },
     { wait: 140 },
@@ -298,7 +298,7 @@ export const SCENES = {
     { await: "capture" },
     { show: "confirm", mode: "discuss" },
     { wait: 460 },
-    { say: "Got it. A real person will follow up — and the path stays right here." },
+    { say: "Got it. A real person will follow up, and the path stays right here." },
     { wait: 160 },
     {
       suggest: [

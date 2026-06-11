@@ -233,7 +233,7 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
               <div className={styles.toolList}>
                 {config.theBuild.toolExamples.map((tool) => (
                   <p key={tool.label} className={styles.toolItem}>
-                    <strong>{tool.label}</strong> — {tool.text}
+                    <strong>{tool.label}</strong> {tool.text}
                   </p>
                 ))}
               </div>

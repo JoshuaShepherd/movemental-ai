@@ -26,7 +26,7 @@ export function Mast(props: MastProps) {
     <header className={styles.mast}>
       <div className={styles.mastStart}>
         {homeHref ? (
-          <Link className={styles.logo} href={homeHref} aria-label="Movemental — home">
+          <Link className={styles.logo} href={homeHref} aria-label="Movemental, home">
             <MovementalLogo priority className={styles.logoMark} />
           </Link>
         ) : (
@@ -34,7 +34,7 @@ export function Mast(props: MastProps) {
             type="button"
             className={styles.logo}
             onClick={onHome}
-            aria-label="Movemental — back to the start"
+            aria-label="Movemental, back to the start"
           >
             <MovementalLogo priority className={styles.logoMark} />
           </button>

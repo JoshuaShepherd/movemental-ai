@@ -10,7 +10,7 @@ const FACES: [string, string][] = [
 ];
 
 /**
- * The room's initial screen state — the host's opening. Not a `ComponentId`
+ * The room's initial screen state, the host's opening. Not a `ComponentId`
  * (the agent cannot render it); it is the home state the surface boots into and
  * returns to on "start over". A `ui_render` replaces it.
  */
@@ -23,7 +23,7 @@ export function OpeningHero() {
         <em>The work now is to get it right.</em>
       </h1>
       <p className={`${styles.opSay} ${styles.opLine}`} style={{ animationDelay: "120ms" }}>
-        Your people are already using it — on emails, donor letters, sermons —
+        Your people are already using it, on emails, donor letters, sermons , 
         usually with no policy and no one deciding what&rsquo;s wise. The thing
         most at risk isn&rsquo;t the technology. It&rsquo;s the{" "}
         <span id="phrase" className={styles.hl}>
@@ -31,7 +31,7 @@ export function OpeningHero() {
         </span>
       </p>
       <div className={`${styles.faces} ${styles.opLine}`} style={{ animationDelay: "240ms" }}>
-        <div className={styles.facesLabel}>Built with — and vouched for by</div>
+        <div className={styles.facesLabel}>Built with, and vouched for by</div>
         <div className={styles.facesRow}>
           {FACES.map(([init, name]) => (
             <div key={init} className={styles.face}>
@@ -45,7 +45,7 @@ export function OpeningHero() {
         </p>
       </div>
       <p className={`${styles.opInvite} ${styles.opLine}`} style={{ animationDelay: "360ms" }}>
-        I&rsquo;m the Movemental Concierge — here for one thing: helping you see where
+        I&rsquo;m the Movemental Concierge, here for one thing: helping you see where
         your organization actually stands with AI, and what to do next. Tell me about
         your organization, or ask me anything.
       </p>

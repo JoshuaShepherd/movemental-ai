@@ -29,7 +29,7 @@ export async function sendSafetyDashboardReadyEmail(params: {
 }): Promise<boolean> {
   const resend = getResend();
   if (!resend) {
-    console.warn("[safety-dashboard-email] RESEND_API_KEY not set — skipping send.");
+    console.warn("[safety-dashboard-email] RESEND_API_KEY not set, skipping send.");
     return false;
   }
 
@@ -39,7 +39,7 @@ export async function sendSafetyDashboardReadyEmail(params: {
   const { error } = await resend.emails.send({
     from: resendFromHeader(),
     to: [params.email],
-    subject: `Your Safety dashboard is ready — ${SITE_NAME}`,
+    subject: `Your Safety dashboard is ready, ${SITE_NAME}`,
     html: `
       <!DOCTYPE html>
       <html>
@@ -47,7 +47,7 @@ export async function sendSafetyDashboardReadyEmail(params: {
           <h1 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; letter-spacing: -0.02em;">Hi ${escapeHtmlAttr(firstName)}, your dashboard is ready.</h1>
           <p style="font-size: 16px; line-height: 1.6;">
             We provisioned the private Safety workspace for <strong>${escapeHtmlAttr(params.orgName)}</strong>.
-            Create your account with the same email you used to enroll — then you&rsquo;ll land in your AI Charter dashboard.
+            Create your account with the same email you used to enroll, then you&rsquo;ll land in your AI Charter dashboard.
           </p>
           <a href="${escapeHtmlAttr(signupUrl)}"
              style="display: inline-block; margin: 24px 0; padding: 12px 24px; background-color: #19150f; color: #faf6ee; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: 600;">
@@ -57,7 +57,7 @@ export async function sendSafetyDashboardReadyEmail(params: {
             Already have an account? <a href="${escapeHtmlAttr(`${siteUrl()}/login?next=/dashboard/safety`)}" style="color: #19150f;">Sign in here</a>.
           </p>
           <p style="font-size: 14px; line-height: 1.6; color: #4a443a;">
-            — Josh<br />josh@movemental.ai
+            Josh<br />josh@movemental.ai
           </p>
         </body>
       </html>

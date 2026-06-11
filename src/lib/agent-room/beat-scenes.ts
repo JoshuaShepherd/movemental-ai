@@ -23,7 +23,7 @@ import {
 function readbackVoiceActs(read: MapRead): Scene {
   if (!read.clearedSafety) {
     return [
-      { say: "You're at Safety — leadership hasn't ratified it in writing yet." },
+      { say: "You're at Safety, leadership hasn't ratified it in writing yet." },
       { wait: 200 },
       {
         say: "Your next move is to ratify what your organization will and won't do with AI.",
@@ -31,10 +31,10 @@ function readbackVoiceActs(read: MapRead): Scene {
     ];
   }
   return [
-    { say: "You cleared the Safety gate — that's rare." },
+    { say: "You cleared the Safety gate, that's rare." },
     { wait: 200 },
     {
-      say: "Your next move is Sandbox — a bounded place to try AI against your real work.",
+      say: "Your next move is Sandbox, a bounded place to try AI against your real work.",
     },
   ];
 }

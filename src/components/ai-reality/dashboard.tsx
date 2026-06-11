@@ -31,7 +31,7 @@ export function AiRealityDashboard({
           {AI_REALITY_INSTRUMENT_NAME}
         </p>
         <h1 className="mt-3 text-3xl leading-tight md:text-4xl">
-          {organizationName} — {AI_REALITY_DASHBOARD_NAME}
+          {organizationName}, {AI_REALITY_DASHBOARD_NAME}
         </h1>
         <p className="mt-3 text-base text-muted-foreground">
           {payload.respondedCount} of {payload.invitedCount} responded
@@ -43,7 +43,7 @@ export function AiRealityDashboard({
         </p>
         {payload.provisional && (
           <p className="mt-2 text-sm text-muted-foreground">
-            This is your own read so far. Invite your leadership team to see where you agree — and where
+            This is your own read so far. Invite your leadership team to see where you agree, and where
             you split.
           </p>
         )}
@@ -55,7 +55,7 @@ export function AiRealityDashboard({
           The path
         </h2>
         <p className="mt-2 text-base leading-relaxed text-foreground">{payload.placementLine}</p>
-        {/* Ghost-number path spine (proposal §3.7, pattern A) — adopts the agent
+        {/* Ghost-number path spine (proposal §3.7, pattern A), adopts the agent
             room's numbered path vocabulary while staying a print-friendly server
             component (all scores visible; no client boundary). The full
             four-column accordion is deferred to preserve the share/print read. */}
@@ -123,7 +123,7 @@ export function AiRealityDashboard({
       {/* -------------------------- Team divergence ----------------------- */}
       <section className="mt-12">
         <h2 className="text-sm font-semibold uppercase tracking-eyebrow text-muted-foreground">
-          Where your team agrees — and splits
+          Where your team agrees, and splits
         </h2>
         <p className="mt-3 text-base leading-relaxed text-foreground">{payload.divergenceLine}</p>
         {payload.respondedCount > 1 && (
@@ -167,7 +167,7 @@ export function AiRealityDashboard({
                   {ill.unanimous
                     ? "Everyone who answered flagged this"
                     : ill.contested
-                      ? `${ill.count} of ${payload.respondedCount} flagged this — not unanimous`
+                      ? `${ill.count} of ${payload.respondedCount} flagged this, not unanimous`
                       : "Flagged"}
                 </p>
               </li>

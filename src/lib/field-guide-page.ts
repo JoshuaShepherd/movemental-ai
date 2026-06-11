@@ -36,7 +36,7 @@ const SAFETY_INSIDE: FieldGuideInsideItem[] = [
   {
     label: "Layer 01",
     title: "Statement",
-    body: "The values and posture your board can ratify in public — what you believe about AI in your mission.",
+    body: "The values and stance your board can ratify in public, what you believe about AI in your mission.",
   },
   {
     label: "Layer 02",
@@ -46,7 +46,7 @@ const SAFETY_INSIDE: FieldGuideInsideItem[] = [
   {
     label: "Layer 03",
     title: "Context",
-    body: "Where you name the relational and pastoral situations AI cannot enter — specific to your ministry.",
+    body: "Where you name the relational and pastoral situations AI cannot enter, specific to your ministry.",
   },
   {
     label: "Layer 04",
@@ -56,7 +56,7 @@ const SAFETY_INSIDE: FieldGuideInsideItem[] = [
   {
     label: "Layer 05",
     title: "Response Plans",
-    body: "Pre-written playbooks for when something goes wrong — calm, fast, and consistent, not improvised.",
+    body: "Pre-written playbooks for when something goes wrong, calm, fast, and consistent, not improvised.",
   },
   {
     label: "Plus",
@@ -69,7 +69,7 @@ const SANDBOX_INSIDE: FieldGuideInsideItem[] = [
   {
     label: "Setting up",
     title: "Constitute a sandbox",
-    body: "A constrained, instrumented environment — named owners, exit criteria, and a cadence of what you learned.",
+    body: "A bounded test space with named owners, clear exit criteria, and a regular record of what you learned.",
   },
   {
     label: "Evaluating",
@@ -79,7 +79,7 @@ const SANDBOX_INSIDE: FieldGuideInsideItem[] = [
   {
     label: "Portfolio",
     title: "Assemble proof a board will accept",
-    body: "Document what worked, what failed, and what Training will need: the artifact that earns Stage Three.",
+    body: "Document what worked, what failed, and what Training will need: the proof that earns Stage Three.",
   },
 ];
 
@@ -92,13 +92,13 @@ export const FIELD_GUIDE_PAGE_COPY: Record<FieldGuideKind, FieldGuidePageCopy> =
     meta: ["33 pages", "Free", "Self-assessment included", "No drip campaign"],
     insideHeading: "Five layers. Seven deliverables. One ratifiable framework.",
     inside: SAFETY_INSIDE,
-    success: `Check your inbox — your ${SAFETY_HANDBOOK_DISPLAY_TITLE} is on its way.`,
+    success: `Check your inbox, your ${SAFETY_HANDBOOK_DISPLAY_TITLE} is on its way.`,
     pdfPath: SAFETY_FIELD_GUIDE_PDF_PATH,
     pdfFilename: SAFETY_FIELD_GUIDE_DOWNLOAD_FILENAME,
     otherGuide: {
       kind: "sandbox",
       href: "/field-guide?guide=sandbox",
-      label: "Volume Two — It Continues With Exploration",
+      label: "Volume Two: It Continues With Exploration",
     },
   },
   sandbox: {
@@ -109,13 +109,13 @@ export const FIELD_GUIDE_PAGE_COPY: Record<FieldGuideKind, FieldGuidePageCopy> =
     meta: ["Volume Two", "Free", "Sandbox stage", "No drip campaign"],
     insideHeading: "What disciplined experimentation looks like after Safety.",
     inside: SANDBOX_INSIDE,
-    success: "Check your inbox — It Continues With Exploration is on its way.",
+    success: "Check your inbox: It Continues With Exploration is on its way.",
     pdfPath: SANDBOX_FIELD_GUIDE_PDF_PATH,
     pdfFilename: SANDBOX_FIELD_GUIDE_DOWNLOAD_FILENAME,
     otherGuide: {
       kind: "safety",
       href: "/field-guide",
-      label: "Volume One — It Starts With Safety",
+      label: "Volume One: It Starts With Safety",
     },
   },
 };

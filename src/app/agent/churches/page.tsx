@@ -7,9 +7,9 @@ import { AudiencePageExperience } from "@/components/agent-room/audience/audienc
 import { CHURCHES_PAGE_CONFIG } from "@/components/agent-room/audience/churches-config";
 
 export const metadata: Metadata = {
-  title: "Churches — Movemental",
+  title: "Churches | Movemental",
   description:
-    "AI is already inside your church. A you-first case for pastors and elders: what's happening, the deeper problem, a letter for your leadership team, and the ordered path — Safety, Sandbox, Training, Tech.",
+    "AI is already inside your church. A you-first case for pastors and elders: what's happening, the deeper problem, a letter for your leadership team, and the ordered path: Safety, Sandbox, Training, Technology.",
   alternates: {
     canonical: "/agent/churches",
   },

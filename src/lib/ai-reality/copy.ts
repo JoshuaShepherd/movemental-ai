@@ -30,7 +30,7 @@ export function mapStagePublicLabel(stage: string): string {
     case "training":
       return "Training";
     case "tech":
-      return "Tech";
+      return "Technology";
     default:
       return stage.charAt(0).toUpperCase() + stage.slice(1);
   }
@@ -49,9 +49,9 @@ export function dominantGapLine(stage: AiRealityStage, respondedCount: number): 
     case "Sandbox":
       return `The sharpest gap is Sandbox. Safety is holding, but there's no shared record of what AI has actually been tried against real work. Experiments aren't leaving a trail anyone can point to.`;
     case "Training":
-      return `The sharpest gap is Training. The scaffolding exists, but judgment isn't yet distributed. People can press the buttons faster than they can tell good output from bad.`;
-    case "Tech":
-      return `The sharpest gap is Tech. The groundwork is real; the missing piece is AI living inside actual workflows, with owners and gates, rather than as one-off tools.`;
+      return `The sharpest gap is Training. The basics are in place, but judgment isn't yet shared across the team. People can press the buttons faster than they can tell good output from bad.`;
+    case "Technology":
+      return `The sharpest gap is Technology. The groundwork is real; the missing piece is AI living inside actual workflows, with owners and gates, rather than as one-off tools.`;
   }
 }
 

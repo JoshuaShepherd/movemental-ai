@@ -61,7 +61,7 @@ function SignupForm() {
       if (!gateRes.ok) {
         setStatus("error");
         setErrorMsg(
-          "Check your enrollment email — signup opens after your dashboard is provisioned.",
+          "Check your enrollment email, signup opens after your dashboard is provisioned.",
         );
         return;
       }
@@ -90,12 +90,12 @@ function SignupForm() {
       <StepSpine label="Safety · Charter dashboard" title="Create your account." />
       <p className="mt-8 text-lg leading-relaxed text-foreground">
         After enrollment, we provision your private workspace and send this link. Enter your enrolled
-        email — we&apos;ll send a one-tap magic link to open your Safety dashboard.
+        email, we&apos;ll send a one-tap magic link to open your Safety dashboard.
       </p>
 
       {status === "sent" ? (
         <p className="mt-10 border-l-2 border-[var(--color-ink-band-blue)] bg-card px-5 py-4 text-base leading-relaxed">
-          Check your inbox — tap the link we just sent to {email.trim()} to open your Safety
+          Check your inbox, tap the link we just sent to {email.trim()} to open your Safety
           dashboard.
         </p>
       ) : (

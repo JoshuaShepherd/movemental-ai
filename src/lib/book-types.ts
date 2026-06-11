@@ -234,7 +234,7 @@ export const bookParts: BookPart[] = [
   { number: 2, title: "The map", chapters: [5] },
   {
     number: 3,
-    title: "Integration (the load-bearing stage)",
+    title: "Integration (the stage everything depends on)",
     chapters: [6, 7, 8, 9],
   },
   {

@@ -154,13 +154,13 @@ export const QUESTIONS_BY_DIMENSION: Record<
     {
       id: "q7",
       prompt:
-        "Is there a single narrative leaders use when explaining AI posture to boards, donors, or members?",
+        "Is there a single narrative leaders use when explaining your AI stance to boards, donors, or members?",
       options: [...O.scale],
     },
     {
       id: "q8",
       prompt:
-        "Do volunteers and contractors receive practical guidance aligned with staff AI posture?",
+        "Do volunteers and contractors receive practical guidance aligned with staff AI rules?",
       options: [...O.scale],
     },
   ],
@@ -220,7 +220,7 @@ export const QUESTIONS_BY_DIMENSION: Record<
     {
       id: "q17",
       prompt:
-        "Does AI-related learning emphasize formation, discernment, and critical thinking—not only prompts?",
+        "Does AI-related learning emphasize formation, discernment, and critical thinking, not only prompts?",
       options: [...O.formationDepth],
     },
     {
@@ -232,7 +232,7 @@ export const QUESTIONS_BY_DIMENSION: Record<
     {
       id: "q19",
       prompt:
-        "When misuse occurs, do you treat it as a formation conversation—not only a policy strike?",
+        "When misuse occurs, do you treat it as a formation conversation, not only a policy strike?",
       options: [...O.scale],
     },
   ],
@@ -240,7 +240,7 @@ export const QUESTIONS_BY_DIMENSION: Record<
     {
       id: "q20",
       prompt:
-        "Are AI initiatives mapped to documented organizational bottlenecks—not tool catalogs alone?",
+        "Are AI initiatives mapped to documented organizational bottlenecks, not tool catalogs alone?",
       options: [...O.mappingRigor],
     },
     {

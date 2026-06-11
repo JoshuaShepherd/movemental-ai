@@ -88,9 +88,9 @@ Safety comes first, because AI is already in the room. The first thing any organ
 
 Sandbox comes next, because a guidebook with nothing to test against is theater. You have built fences without finding out whether the thing had any value in the first place. Sandbox is where a team tries AI against their real work and decides, honestly, what is useful, what is risky, and what is off limits.
 
-Skills comes next, because findings need people who can carry them. Skills is where a group inside the organization forms the actual capacities AI demands: discernment, authorship, stewardship.
+Training comes next, because findings need people who can carry them. Training is where a group inside the organization forms the actual capacities AI demands: discernment, authorship, stewardship.
 
-Solutions comes last, because putting powerful tools into the hands of people who cannot yet steward them is not progress. It is replacement. Most AI efforts fail, and they fail in roughly that way. We sequence the work so the rebuild does not destroy the thing it was meant to serve.
+Technology comes last, because putting powerful tools into the hands of people who cannot yet steward them is not progress. It is replacement. Most AI efforts fail, and they fail in roughly that way. We sequence the work so the rebuild does not destroy the thing it was meant to serve.
 
 Here is why the order matters so much for these organizations in particular. For a marketing agency, an AI mistake loses a client. For a church, a nonprofit, a seminary, credibility is not an advantage. It is the product. A church found quietly running an AI-written memorial homily does not lose efficiency. It loses the authority of its pulpit. There is no second product to fall back on. For these organizations, the cost of skipping a stage is paid in the one currency they cannot afford to lose.
 

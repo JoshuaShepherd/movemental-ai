@@ -53,7 +53,7 @@ export async function sendToolkitLeadEmail(
 ): Promise<boolean> {
   const resend = getResend();
   if (!resend) {
-    console.warn("[toolkit-email] RESEND_API_KEY not set — skipping toolkit email.");
+    console.warn("[toolkit-email] RESEND_API_KEY not set, skipping toolkit email.");
     return false;
   }
 
@@ -65,14 +65,14 @@ export async function sendToolkitLeadEmail(
     const { error } = await resend.emails.send({
       from: resendFromHeader(),
       to: [email],
-      subject: `Your Sandbox Field Guide (PDF) — ${SITE_NAME}`,
+      subject: `Your Sandbox Field Guide (PDF), ${SITE_NAME}`,
       html: `
       <!DOCTYPE html>
       <html>
         <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 560px; margin: 0 auto; padding: 40px 20px; color: #19150f;">
           <h1 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; letter-spacing: -0.02em;">It continues with Exploration.</h1>
           <p style="font-size: 16px; line-height: 1.6;">
-            Here is your download link for <strong>It Continues With Exploration</strong> — the Sandbox Field Guide.
+            Here is your download link for <strong>It Continues With Exploration</strong> the Sandbox Field Guide.
             Forty-eight pages in eight phases, toward a board-ready Future Plan.
           </p>
           <a href="${escapeHtmlAttr(downloadUrl)}"
@@ -84,7 +84,7 @@ export async function sendToolkitLeadEmail(
             <a href="${escapeHtmlAttr(sandboxPageUrl)}" style="color: #19150f;">${escapeHtmlAttr(sandboxPageUrl)}</a>
           </p>
           <p style="font-size: 14px; line-height: 1.6; color: #4a443a;">
-            — Josh<br />josh@movemental.ai
+            Josh<br />josh@movemental.ai
           </p>
           ${unsub}
         </body>
@@ -106,14 +106,14 @@ export async function sendToolkitLeadEmail(
   const { error } = await resend.emails.send({
     from: resendFromHeader(),
     to: [email],
-    subject: `Your ${SAFETY_HANDBOOK_DISPLAY_TITLE} (PDF) — ${SITE_NAME}`,
+    subject: `Your ${SAFETY_HANDBOOK_DISPLAY_TITLE} (PDF), ${SITE_NAME}`,
     html: `
       <!DOCTYPE html>
       <html>
         <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 560px; margin: 0 auto; padding: 40px 20px; color: #19150f;">
           <h1 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; letter-spacing: -0.02em;">It starts with Safety.</h1>
           <p style="font-size: 16px; line-height: 1.6;">
-            Here is your download link for <strong>${SAFETY_HANDBOOK_DISPLAY_TITLE}</strong> — first response documentation for nonprofits, churches, and institutions. Sixteen pages: read it in an evening, run the self-assessment with your leadership team in about 30 minutes.
+            Here is your download link for <strong>${SAFETY_HANDBOOK_DISPLAY_TITLE}</strong> first response documentation for nonprofits, churches, and institutions. Sixteen pages: read it in an evening, run the self-assessment with your leadership team in about 30 minutes.
           </p>
           <a href="${escapeHtmlAttr(downloadUrl)}"
              style="display: inline-block; margin: 24px 0; padding: 12px 24px; background-color: #19150f; color: #faf6ee; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: 600;">
@@ -126,7 +126,7 @@ export async function sendToolkitLeadEmail(
             If you want to skip ahead, the Safety stage is here: <a href="${escapeHtmlAttr(safetyPageUrl)}" style="color: #19150f;">${escapeHtmlAttr(safetyPageUrl)}</a>
           </p>
           <p style="font-size: 14px; line-height: 1.6; color: #4a443a;">
-            — Josh<br />josh@movemental.ai
+            Josh<br />josh@movemental.ai
           </p>
           ${unsub}
         </body>

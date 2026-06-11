@@ -8,22 +8,6 @@ import {
 
 import styles from "../../ink-band.module.css";
 
-function NotableWorksSection({ works }: { works: Profile["notableWorks"] }) {
-  if (works?.length) {
-    return (
-      <ul className={styles.notableWorks}>
-        {works.map((item) => (
-          <li key={item.title} className={styles.notableWorkItem}>
-            <strong>{item.title}</strong>
-            <span>{item.line}</span>
-          </li>
-        ))}
-      </ul>
-    );
-  }
-  return <p className={styles.needsResearch}>Notable works — needs research.</p>;
-}
-
 type LeaderProfileContentProps = {
   leaderName: string;
   profile: Profile;
@@ -31,7 +15,7 @@ type LeaderProfileContentProps = {
 
 /**
  * Phase 5 leader profile template — consistent depth for every Movement Voice.
- * Missing research surfaces as visible placeholders, never collapsed sections.
+ * Optional sections render only when profile data exists.
  */
 export function LeaderProfileContent({ leaderName, profile }: LeaderProfileContentProps) {
   return (
@@ -53,7 +37,7 @@ export function LeaderProfileContent({ leaderName, profile }: LeaderProfileConte
         <div className={styles.layers}>
           {profile.work.map((w) => (
             <div key={w.t} className={styles.layer}>
-              <span className={styles.ln}>—</span>
+              <span className={styles.ln}>·</span>
               <span>
                 <b>{w.t}</b> <span className={styles.g}>{w.g}</span>
               </span>
@@ -77,19 +61,26 @@ export function LeaderProfileContent({ leaderName, profile }: LeaderProfileConte
         </p>
       </div>
 
-      <div className={`${styles.sec} ${styles.fade}`}>
-        <p className={styles.secLabel}>In their words / notable work</p>
-        <NotableWorksSection works={profile.notableWorks} />
-      </div>
+      {profile.notableWorks?.length ? (
+        <div className={`${styles.sec} ${styles.fade}`}>
+          <p className={styles.secLabel}>In their words / notable work</p>
+          <ul className={styles.notableWorks}>
+            {profile.notableWorks.map((item) => (
+              <li key={item.title} className={styles.notableWorkItem}>
+                <strong>{item.title}</strong>
+                <span>{item.line}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
 
-      <div className={`${styles.sec} ${styles.fade}`}>
-        <p className={styles.secLabel}>Signature idea</p>
-        {profile.pullQuote ? (
+      {profile.pullQuote ? (
+        <div className={`${styles.sec} ${styles.fade}`}>
+          <p className={styles.secLabel}>Signature idea</p>
           <blockquote className={styles.leaderPullQuote}>{profile.pullQuote}</blockquote>
-        ) : (
-          <p className={styles.needsResearch}>Pull quote — needs research.</p>
-        )}
-      </div>
+        </div>
+      ) : null}
     </>
   );
 }

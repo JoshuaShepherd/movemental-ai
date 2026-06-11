@@ -21,11 +21,11 @@ const IMPLEMENTATION_ORG_TASK_COPY: Partial<
   },
   organization_profile: {
     description:
-      "Legal name, domains, primary and escalation contacts, and time zone across your operating sites. This anchors inventory, policy scope, and handoffs between operations, programs, and development—keep it aligned with how your board expects accountability.",
+      "Legal name, domains, primary and escalation contacts, and time zone across your operating sites. This anchors inventory, policy scope, and handoffs between operations, programs, and development, keep it aligned with how your board expects accountability.",
   },
   orientation: {
     description:
-      "Short orientation on what Movemental delivers for organizations: governance-ready artifacts, facilitated sequences, and inspectable AI use—without replacing formation leadership or donor relationships.",
+      "Short orientation on what Movemental delivers for organizations: governance-ready artifacts, facilitated sequences, and inspectable AI use, without replacing formation leadership or donor relationships.",
   },
   corpus_review: {
     title: "Review your source & policy materials",
@@ -42,7 +42,7 @@ const IMPLEMENTATION_ORG_TASK_COPY: Partial<
   },
   agent_test: {
     description:
-      "Exercise your AI workspace with realistic governance and operations prompts—then note gaps before approval. Keep donor lists and youth-identifiable data out of unmanaged tools.",
+      "Exercise your AI workspace with realistic governance and operations prompts, then note gaps before approval. Keep donor lists and youth-identifiable data out of unmanaged tools.",
   },
   platform_tour: {
     description:
@@ -50,7 +50,7 @@ const IMPLEMENTATION_ORG_TASK_COPY: Partial<
   },
   cohort_prep: {
     description:
-      "Light prep before your facilitated sequence—who joins from programs, development, and operations, and what board-ready outputs you want by the end.",
+      "Light prep before your facilitated sequence, who joins from programs, development, and operations, and what board-ready outputs you want by the end.",
   },
   final_confirmation: {
     description:
@@ -62,7 +62,7 @@ const IMPLEMENTATION_ORG_TASK_COPY: Partial<
   },
   brand_guidelines: {
     description:
-      "Voice, terminology, and visual notes so assisted drafting matches how you speak to donors, families, and partners—without bypassing program approval for formation content.",
+      "Voice, terminology, and visual notes so assisted drafting matches how you speak to donors, families, and partners, without bypassing program approval for formation content.",
   },
 };
 
@@ -86,7 +86,7 @@ export function presentOnboardingTaskForPersona(
 export function implementationOrgPlaceholderBody(): { primary: string; secondary: string } {
   return {
     primary:
-      "Complete this step with your Movemental contact—especially where it touches operational inventory, vendor records, or cross-team approvals.",
+      "Complete this step with your Movemental contact, especially where it touches operational inventory, vendor records, or cross-team approvals.",
     secondary:
       "When the underlying work is finished, mark complete here so your executive team keeps one audit trail.",
   };

@@ -31,7 +31,7 @@ function buildSampleLeaderKnowledgeGraph(): KnowledgeGraph {
       description:
         "A leader whose public work spans books, teaching media, articles, and formation products.",
       narrativeRole:
-        "The gravitational center — not because algorithms say so, but because authorship and responsibility live here.",
+        "The gravitational center, not because algorithms say so, but because authorship and responsibility live here.",
       emergencePhase: 0,
     }),
     node({
@@ -41,7 +41,7 @@ function buildSampleLeaderKnowledgeGraph(): KnowledgeGraph {
       description: "Canonical long-form argument that other surfaces can cite.",
       topics: ["movement", "ecclesiology"],
       languages: ["en"],
-      narrativeRole: "Anchor object — stable spine for the ecosystem.",
+      narrativeRole: "Anchor object, stable spine for the ecosystem.",
       emergencePhase: 1,
     }),
     node({
@@ -121,7 +121,7 @@ function buildSampleLeaderKnowledgeGraph(): KnowledgeGraph {
       description: "Curated journey across articles, media, and practices.",
       topics: ["formation", "discipleship"],
       languages: ["en"],
-      narrativeRole: "Synthesis layer — ideas arranged for human progression.",
+      narrativeRole: "Synthesis layer, ideas arranged for human progression.",
       emergencePhase: 4,
     }),
     node({
@@ -130,14 +130,14 @@ function buildSampleLeaderKnowledgeGraph(): KnowledgeGraph {
       title: "Eight-week intensive",
       topics: ["formation"],
       languages: ["en"],
-      narrativeRole: "Rhythm, practice, and cohort — formation with scaffolding.",
+      narrativeRole: "Rhythm, practice, and cohort, formation with scaffolding.",
       emergencePhase: 5,
     }),
     node({
       id: "ai-1",
       type: "ai_layer",
       title: "Grounded assistant",
-      description: "Answers from the corpus with citations — not generic chat.",
+      description: "Answers from the corpus with citations, not generic chat.",
       narrativeRole: "Interaction layer: access, not replacement.",
       emergencePhase: 6,
     }),
@@ -151,10 +151,10 @@ function buildSampleLeaderKnowledgeGraph(): KnowledgeGraph {
     node({
       id: "trn-es-1",
       type: "translation",
-      title: "Spanish edition — The Forgotten Ways",
+      title: "Spanish edition: The Forgotten Ways",
       languages: ["es"],
       topics: ["movement"],
-      narrativeRole: "Multiplier — same argument, new readers.",
+      narrativeRole: "Multiplier, same argument, new readers.",
       emergencePhase: 7,
     }),
     node({
@@ -174,7 +174,7 @@ function buildSampleLeaderKnowledgeGraph(): KnowledgeGraph {
     node({
       id: "series-1",
       type: "series",
-      title: "Teaching series — APEST",
+      title: "Teaching series: APEST",
       narrativeRole: "Bundles media into a recognizable arc.",
       emergencePhase: 0,
     }),

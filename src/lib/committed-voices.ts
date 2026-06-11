@@ -83,7 +83,7 @@ const STANDARD_COMING_WORK: readonly ComingWorkSlot[] = [
     id: "agents",
     heading: "Conversation agents",
     status: { kind: "exploring", label: "Exploring" },
-    preview: "Voice-faithful access to frameworks — only when consent and corpus are ready.",
+    preview: "Voice-faithful access to frameworks, only when consent and corpus are ready.",
   },
 ] as const;
 
@@ -97,20 +97,20 @@ export const COMMITTED_VOICES: readonly CommittedVoice[] = [
       "Afro-Boricua theologian and church-planter building the only national BIPOC-woman-led planting network in the U.S.",
     themes: ["Church planting", "Bilingual formation", "Mujerista theology"],
     credentials: [
-      "Founder, Passion2Plant — national BIPOC-woman-led church planting network",
-      "Director, Púlpito Fellows — Lilly Endowment-funded preaching fellowship",
+      "Founder, Passion2Plant, national BIPOC-woman-led church planting network",
+      "Director, Púlpito Fellows: Lilly Endowment-funded preaching fellowship",
       "Adjunct, Fuller Theological Seminary",
       "Board, Sojourners · Senior Consultant, Freedom Road",
     ],
     editorialBio: [
-      "Liz Rios has carried thirty-five years of ministry across pastoring, planting, teaching, and consulting — and into infrastructure. She founded Passion2Plant, the only national BIPOC-woman-led church planting network in the United States, and directs Púlpito Fellows, a three-year, bilingual preaching fellowship funded by the Lilly Endowment.",
+      "Liz Rios has carried thirty-five years of ministry across pastoring, planting, teaching, and consulting, and into infrastructure. She founded Passion2Plant, the only national BIPOC-woman-led church planting network in the United States, and directs Púlpito Fellows, a three-year, bilingual preaching fellowship funded by the Lilly Endowment.",
       "Her work runs simultaneously across denominational, academic, and movement spaces: ordained Disciples of Christ; adjunct faculty at Fuller; board member at Sojourners; senior consultant with Freedom Road; consulting editor at Outreach Magazine. She holds a BA, MA, EdD, DMin, and a 2025 MA in Social Justice from Union.",
-      "She writes from a mujerista frame — distinct in tone and theological surface area from anyone else inside Movemental's circle — and brings a live cohort operator's discipline to what a leader-platform actually has to carry.",
+      "She writes from a mujerista frame, distinct in tone and theological voice from anyone else inside Movemental's circle, and brings a live cohort operator's discipline to what a leader's platform actually has to carry.",
     ],
     featuredWorks: [
       "Don't Buy The Lie (sole author, 2012)",
-      "Need to Know — contributor (100 Movements Publishing)",
-      "Mujerista in Motion — Substack",
+      "Need to Know, contributor (100 Movements Publishing)",
+      "Mujerista in Motion: Substack",
     ],
     primaryUrl: "https://www.passion2plant.org",
     secondaryLinks: [
@@ -141,7 +141,7 @@ export const COMMITTED_VOICES: readonly CommittedVoice[] = [
     ],
     editorialBio: [
       "JR Woodward has spent three decades planting churches that hold tight community, life-forming discipleship, locally rooted presence, and boundary-crossing mission together. He leads the V3 Church Planting Movement nationally and trains church planters across North America.",
-      "His written corpus runs from Creating a Missional Culture (IVP, 2012) through The Church as Movement (IVP, 2016, with Dan White Jr.) to The Scandal of Leadership (100 Movements Publishing, 2023) — the trade book based on his Manchester Ph.D. on the powers of domination in the church.",
+      "His written corpus runs from Creating a Missional Culture (IVP, 2012) through The Church as Movement (IVP, 2016, with Dan White Jr.) to The Scandal of Leadership (100 Movements Publishing, 2023), the trade book based on his Manchester Ph.D. on the powers of domination in the church.",
       "He co-founded Missio Alliance and the Praxis Gathering, teaches as adjunct faculty at Fuller, Central, and Missio Seminary, and serves on the boards of Reliant Mission, Movement Leaders Collective, and the Fuller Global Mission Advisory Council.",
     ],
     featuredWorks: [
@@ -172,19 +172,19 @@ export const COMMITTED_VOICES: readonly CommittedVoice[] = [
     themes: ["Mission training", "Micro-church networks", "Editorial curation"],
     credentials: [
       "National Director, Forge America Mission Training Network",
-      "Founder/Director, The Pando Collective — Front-Range micro-church network",
+      "Founder/Director, The Pando Collective: Front-Range micro-church network",
       "Pastor of Missional Culture, The Church at Pulpit Rock",
       "Adjunct, Fuller · Denver Seminary · Grand Canyon University",
     ],
     editorialBio: [
       "Rowland Smith carries the National Director role at Forge America while founding and directing The Pando Collective, a Front-Range micro-church network, and pastoring missional culture at The Church at Pulpit Rock in Colorado Springs.",
-      "He has authored Life Out Loud: Joining Jesus Outside the Walls of the Church (100 Movements Publishing, 2019) and curated and edited Red Skies: 10 Essential Conversations Exploring Our Future as the Church (100 Movements Publishing, 2022) — a multi-author conversation with Alan Hirsch, Michael Frost, Debra Hirsch, Brian Sanders, Mark DeYmaz, Rich Robinson, and others.",
+      "He has authored Life Out Loud: Joining Jesus Outside the Walls of the Church (100 Movements Publishing, 2019) and curated and edited Red Skies: 10 Essential Conversations Exploring Our Future as the Church (100 Movements Publishing, 2022), a multi-author conversation with Alan Hirsch, Michael Frost, Debra Hirsch, Brian Sanders, Mark DeYmaz, Rich Robinson, and others.",
       "He teaches as adjunct faculty at Fuller, Denver Seminary, and Grand Canyon University, holding an MA in Global Leadership and a DMiss from Fuller. His doctoral dissertation, Missional Emergence, has its own published authority record.",
     ],
     featuredWorks: [
       "Life Out Loud (100 Movements Publishing, 2019)",
-      "Red Skies — curator and editor (100 Movements Publishing, 2022)",
-      "Missional Emergence — doctoral dissertation (Fuller)",
+      "Red Skies, curator and editor (100 Movements Publishing, 2022)",
+      "Missional Emergence, doctoral dissertation (Fuller)",
     ],
     primaryUrl: "https://www.rowlandsmith.net",
     secondaryLinks: [

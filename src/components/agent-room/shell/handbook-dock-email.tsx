@@ -44,7 +44,7 @@ export function HandbookDockEmail({
     return (
       <div className={styles.threadStickyHandbook} id="handbook-email-block">
         <p className={styles.handbookEmailDone}>
-          Sent — check your inbox for the {SAFETY_HANDBOOK.shortLabel}.
+          Sent, check your inbox for the {SAFETY_HANDBOOK.shortLabel}.
         </p>
       </div>
     );

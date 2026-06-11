@@ -50,7 +50,7 @@ export function NetworkScreen() {
         <svg
           viewBox="0 0 600 360"
           role="img"
-          aria-label="Movemental network — connected movement leaders linked to one another and to movemental.ai"
+          aria-label="Movemental network, connected movement leaders linked to one another and to movemental.ai"
         >
           <g>
             {pts.map((p, i) => (
@@ -137,7 +137,7 @@ export function NetworkScreen() {
         </svg>
       </div>
       <p className={styles.sub}>
-        These aren&rsquo;t bought endorsements — they&rsquo;re leaders who&rsquo;ve
+        These aren&rsquo;t bought endorsements, they&rsquo;re leaders who&rsquo;ve
         done the work for decades, now connected to one another and to Movemental.
         They&rsquo;re also the first node of something larger: we build connected
         networks, not lone websites, because in an AI-shaped internet the isolated

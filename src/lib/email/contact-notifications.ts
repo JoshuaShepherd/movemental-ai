@@ -57,7 +57,7 @@ export async function notifyContactInbox(params: {
     from: resendFromHeader(),
     to: [to],
     replyTo: params.email,
-    subject: `[movemental.com] Contact — ${params.audience_segment}`,
+    subject: `[movemental.com] Contact, ${params.audience_segment}`,
     text,
     html: `<pre style="font-family:system-ui,sans-serif;white-space:pre-wrap">${escapeHtml(text)}</pre>`,
     tags: [{ name: "source", value: "contact_form" }],
@@ -84,15 +84,15 @@ export async function sendContactSubmitterAck(params: {
   const { error } = await resend.emails.send({
     from: resendFromHeader(),
     to: [params.email],
-    subject: "We received your message — Movemental",
+    subject: "We received your message | Movemental",
     text: `Hi ${first},
 
 Thanks for reaching out through movemental.com. We read what you send and will follow up when a human with the right context can respond with care.
 
-— Movemental`,
+Movemental`,
     html: `<p>Hi ${safeFirst},</p>
 <p>Thanks for reaching out through movemental.com. We read what you send and will follow up when a human with the right context can respond with care.</p>
-<p style="margin-top:24px;color:#6b6660;font-size:14px">— Movemental</p>`,
+<p style="margin-top:24px;color:#6b6660;font-size:14px">Movemental</p>`,
     tags: [{ name: "source", value: "contact_ack" }],
   });
 

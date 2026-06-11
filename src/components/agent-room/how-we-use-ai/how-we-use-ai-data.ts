@@ -1,14 +1,14 @@
 /**
  * Copy for `/agent/how-we-use-ai` — adapted from guide-ai-credibility-2026.md
  * (AI Credibility guide) and movemental-the-talk.md refusals. No internal
- * strategy framing; naming canon: Safety · Sandbox · Training · Tech.
+ * strategy framing; naming canon: Safety · Sandbox · Training · Technology.
  */
 
 export const HOW_WE_USE_AI_NAV = [
   { id: "hero", label: "How we use AI" },
   { id: "what-we-refuse", label: "What we refuse" },
   { id: "traffic-lights", label: "Green / yellow / red" },
-  { id: "you-are-the-node", label: "You are the node" },
+  { id: "you-are-the-node", label: "You stay in charge" },
   { id: "scenius-refusals", label: "Scenius refusals" },
 ] as const;
 
@@ -21,7 +21,7 @@ export const HOW_WE_USE_AI_SPY_SECTIONS = [
 ] as const;
 
 export const HOW_WE_USE_AI_DOCK = {
-  voiceLine: "We use the tools we sell — on ourselves, first.",
+  voiceLine: "We use the tools we sell. On ourselves, first.",
   highlightChipLabel: "Map where we actually stand",
   chips: [
     {
@@ -34,7 +34,7 @@ export const HOW_WE_USE_AI_DOCK = {
   ],
 };
 
-/** Three refusals from the AI Credibility guide — load-bearing, not decorative. */
+/** Three refusals from the AI Credibility guide — essential, not decorative. */
 export const NAMED_REFUSALS = [
   {
     term: "Replacement of relationship",
@@ -42,11 +42,11 @@ export const NAMED_REFUSALS = [
   },
   {
     term: "Formation without presence",
-    body: "We do not hand over the work that forms us — preaching, teaching, writing that carries our convictions — to the machine without our full engagement. If it goes out under our name and is meant to form people, we have read it, weighed it, and owned it.",
+    body: "We do not hand over the work that forms us. Preaching, teaching, and writing that carries our convictions go to the machine only with our full engagement. If it goes out under our name and is meant to form people, we have read it, weighed it, and owned it.",
   },
   {
     term: "Amplification without credibility",
-    body: "We do not use AI to look bigger than the work and network actually warrant — more output, more polish, more reach when we have not done the work or do not have the people to back it up. Credibility amplification fails when it outruns the credibility we actually have.",
+    body: "We do not use AI to look bigger than the work and network actually warrant. Not more output, more polish, or more reach when we have not done the work or do not have the people to back it up. Looking more credible than you are fails when it outruns the credibility you actually have.",
   },
 ] as const;
 
@@ -55,7 +55,7 @@ export const TRAFFIC_LIGHTS = [
     signal: "green" as const,
     label: "Green light",
     heading: "Clear human benefit, no meaningful negative consequence.",
-    body: "Structure, findability, admin, translation — tasks that do not require your voice or your judgment. First drafts you will edit and own before anything goes out under your name. AI handles the scaffolding; you stay in the loop where the output represents you.",
+    body: "Structure, findability, admin, and translation. These are tasks that do not require your voice or your judgment. First drafts you will edit and own before anything goes out under your name. AI handles the supporting work; you stay in the loop where the output represents you.",
     examples: [
       "Making existing work searchable",
       "Metadata, headings, internal linking",
@@ -66,8 +66,8 @@ export const TRAFFIC_LIGHTS = [
   {
     signal: "yellow" as const,
     label: "Yellow light",
-    heading: "Real benefit — but only with guardrails.",
-    body: "Context-dependent. A quick internal summary is not the same as a public-facing piece. A first draft you will heavily edit is not the same as a post you publish with light changes. When in doubt, slow down. When the output will form people or represent you publicly, the human in the loop is you — reading, weighing, owning.",
+    heading: "Real benefit, but only with guardrails.",
+    body: "Context-dependent. A quick internal summary is not the same as a public-facing piece. A first draft you will heavily edit is not the same as a post you publish with light changes. When in doubt, slow down. When the output will form people or represent you publicly, the human in the loop is you, reading, weighing, owning.",
     examples: [
       "Drafts you review before sending",
       "Research where citation and verification are required",
@@ -78,7 +78,7 @@ export const TRAFFIC_LIGHTS = [
     signal: "red" as const,
     label: "Red light",
     heading: "Harm, regardless of how carefully it is deployed.",
-    body: "The lines we do not cross — and the lines we help organizations name in Safety. AI used to author content under a human's name without disclosure. AI impersonating humans in pastoral or counseling contexts. AI making eligibility decisions that affect people's access to services. We do not deploy these. We help the organizations we work with publicly commit to refusing them as well.",
+    body: "The lines we do not cross, and the lines we help organizations name in Safety. AI used to author content under a human's name without disclosure. AI impersonating humans in pastoral or counseling contexts. AI making eligibility decisions that affect people's access to services. We do not deploy these. We help the organizations we work with publicly commit to refusing them as well.",
     examples: [
       "Undisclosed authorship under a human name",
       "Pastoral or counseling impersonation",

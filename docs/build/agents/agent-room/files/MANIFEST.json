@@ -212,6 +212,6 @@
     "corpus_date": "2026-05",
     "revalidate_ai_stats": "annually",
     "revalidate_pricing": "on_change",
-    "blocked_phase_5": "Audience playbooks, Participation Agreement, FAQ verbatim — waiting on OCR/scrape. Skills/Solutions Field Guide PDFs not yet in corpus."
+    "blocked_phase_5": "Audience playbooks, Participation Agreement, FAQ verbatim — waiting on OCR/scrape. Training/Technology Field Guide PDFs not yet in corpus."
   }
 }

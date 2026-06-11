@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
   const payload = await getOrgDashboardPayload(orgId);
   if (!payload) {
     return NextResponse.json(
-      { error: { code: "NO_DASHBOARD", message: "No dashboard yet — take the assessment first." } },
+      { error: { code: "NO_DASHBOARD", message: "No dashboard yet, take the assessment first." } },
       { status: 404 },
     );
   }

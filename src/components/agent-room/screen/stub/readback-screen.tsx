@@ -69,7 +69,7 @@ export function ReadbackScreen({
       <p className={styles.body} style={{ marginTop: "1rem" }}>
         <span id="rbphrase">
           <b>
-            Your next move is Sandbox — a bounded place to try AI against your real work.
+            Your next move is Sandbox, a bounded place to try AI against your real work.
           </b>
         </span>
       </p>

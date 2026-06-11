@@ -35,13 +35,13 @@ const TOOLKIT_BARN_GLOO_SPIRITUAL_TRUST: EeatRegistryEntry = {
     "Public openness to AI-shaped spiritual guidance runs ahead of pastoral comfort; large majorities of pastors treat AI as a concerning tool, not a substitute for human ministry.",
   cite: {
     author: "Barna Group & Gloo",
-    title: "State of the Church 2026 — AI Series",
+    title: "State of the Church 2026: AI Series",
     date: "November 2025 onward",
     detail: "n = 1,514 U.S. adults · online",
     url: "https://www.barna.com/research/state-of-the-church-2026-trends/",
   },
   footnote:
-    "The AI-focused waves find a sharp split between general-public openness to AI-influenced spiritual guidance and pastoral caution—useful context when arguing that churches cannot treat AI-shaped communication as morally neutral infrastructure.",
+    "The AI-focused waves find a sharp split between general-public openness to AI-influenced spiritual guidance and pastoral caution, useful context when arguing that churches cannot treat AI-shaped communication as morally neutral infrastructure.",
   citationIds: ["barna-gloo-spiritual-trust-1-in-3"],
 };
 
@@ -52,7 +52,7 @@ const TOOLKIT_ANTQUA_ET_NOVA: EeatRegistryEntry = {
   page: "/field-guide",
   claimType: "Opinion",
   claim:
-    "Sandbox, Training, Tech: staged maturity; magisterial frame for complementing rather than replacing human judgment.",
+    "Sandbox, Training, Technology: staged maturity; magisterial frame for complementing rather than replacing human judgment.",
   cite: {
     author:
       "Vatican (Dicastery for the Doctrine of the Faith and Dicastery for Culture and Education)",
@@ -63,7 +63,7 @@ const TOOLKIT_ANTQUA_ET_NOVA: EeatRegistryEntry = {
     url: "https://www.vatican.va/roman_curia/congregations/cfaith/documents/rc_ddf_doc_20250128_antiqua-et-nova_en.html",
   },
   footnote:
-    "The note insists that artificial intelligence should complement human intelligence rather than replace its moral and relational depth, and warns against deskilling and surrendering judgment to machines. That ethical stance aligns with treating experimentation and formation as stages before wholesale automation—without claiming any one vendor methodology.",
+    "The note insists that artificial intelligence should complement human intelligence rather than replace its moral and relational depth, and warns against deskilling and surrendering judgment to machines. That ethical stance aligns with treating experimentation and formation as stages before wholesale automation, without claiming any one vendor methodology.",
   citationIds: ["antiqua-et-nova-complement"],
 };
 

@@ -21,9 +21,8 @@ export function AgentRoomFallback() {
         <h1>Navigate AI without eroding the trust you spent decades earning.</h1>
         <p>
           We help mission-driven organizations respond to AI without losing{" "}
-          <strong>the trust their work depends on</strong>, by walking with them
-          through one ordered path: get safe, experiment, form your people, then
-          build.
+          <strong>the trust their work depends on</strong>, through one ordered path:
+          get safe, experiment, form your people, then build.
         </p>
         <p>
           Built with and backed by movement leaders including Alan Hirsch, Brad
@@ -34,12 +33,12 @@ export function AgentRoomFallback() {
 
       <section>
         <div className={styles.nb}>The path · four steps, in order</div>
-        <h2>Safety, then Sandbox, then Training, then Tech.</h2>
+        <h2>Safety, then Sandbox, then Training, then Technology.</h2>
         <p>
-          <b>01 · Safety</b> — decide what&rsquo;s wise before the tools.{" "}
-          <b>02 · Sandbox</b> — try AI against real work in a bounded place.{" "}
-          <b>03 · Training</b> — form the people who&rsquo;ll steward it well.{" "}
-          <b>04 · Tech</b> — build what your work needs, governed by policy
+          <b>01 · Safety</b> decide what&rsquo;s wise before the tools.{" "}
+          <b>02 · Sandbox</b> try AI against real work in a bounded place.{" "}
+          <b>03 · Training</b> form the people who&rsquo;ll steward it well.{" "}
+          <b>04 · Technology</b> build what your work needs, governed by policy
           your board can stand behind.
         </p>
       </section>

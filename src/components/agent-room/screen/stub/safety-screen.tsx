@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 
+import { SAFETY_CHARTER, SAFETY_HANDBOOK } from "@/lib/agent-room/naming";
+
 import styles from "../../ink-band.module.css";
 import type { ScreenProps } from "./stub-screen";
 import { Crumb, LayerRow } from "./chrome";
@@ -75,7 +77,7 @@ export function SafetyScreen({ onHome }: ScreenProps) {
         <p className={styles.secLabel}>What changes the day you ratify</p>
         <p className={styles.body} style={{ marginTop: "0.2rem" }}>
           The value arrives the moment your board says yes. From that point you have
-          a clear answer for a journalist, a defensible posture for a major donor,
+          a clear answer for a journalist, an answer a major donor can trust,
           one shared frame for your whole staff, and a document you can point to when
           a vendor pitches something you have already decided against. You stop
           reacting to AI and start leading through it.
@@ -85,7 +87,7 @@ export function SafetyScreen({ onHome }: ScreenProps) {
       <div className={styles.sec}>
         <p className={styles.secLabel}>What it produces</p>
         <p className={styles.body} style={{ marginTop: "0.2rem" }}>
-          One thing: your AI Handbook. Five plain layers your board can ratify.
+          One thing: your {SAFETY_CHARTER.fullTitle}. Five plain layers your board can ratify.
         </p>
         <div className={styles.layers}>
           <LayerRow n="01" title="Statement" g="what we believe about AI in our mission." />
@@ -103,13 +105,13 @@ export function SafetyScreen({ onHome }: ScreenProps) {
       </div>
 
       <TwoWaysForward
-        reassurance="We are not trying to talk you out of the free route. Both produce the same ratified Handbook. The only difference is who holds the pen, and how fast you get there."
+        reassurance={`We are not trying to talk you out of the free route. Both produce the same ratified ${SAFETY_CHARTER.shortLabel}. The only difference is who holds the pen, and how fast you get there.`}
         freeWay={{
           title: "Free, and we guide you.",
           price: "Free · about 1 to 2 months",
           description: (
             <>
-              Walk it yourself with the field guide, <em>It Starts With Safety</em>.
+              Complete Safety yourself with the handbook, <em>It Starts With Safety</em>.
               Your team drafts all five layers, and we point the way when you need
               it. Best if you have the time, the alignment, and the discipline to
               finish.
@@ -122,7 +124,7 @@ export function SafetyScreen({ onHome }: ScreenProps) {
           title: "We do it with you.",
           price: "$1,000 · two weeks",
           description:
-            "We draft all five layers customized to your organization. Your team reviews and ratifies inside a private dashboard. You get the print-quality Handbook, the board packet, and the rollout materials, done.",
+            "We draft all five layers customized to your organization. Your team reviews and ratifies inside a private dashboard. You get the print-quality Charter, the board packet, and the rollout materials, done.",
           ctaLabel: "Have us do it · $1,000",
           ctaHref: "/enroll",
           paid: true,

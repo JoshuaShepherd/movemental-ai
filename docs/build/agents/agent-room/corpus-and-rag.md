@@ -57,7 +57,7 @@ Public scope (resolved 2026-06-10):
 
 **8 documents total.** Field Guide PDFs are **canonical** for Safety/Sandbox methodology detail (override KB summaries).
 
-**Exclude from vector store:** `files/internal/` (operator onboarding), files at `files/` root (use `public/` only), seeds, secrets, unreleased product. Phase 5 backlog: playbooks, FAQ verbatim, Skills/Solutions guides.
+**Exclude from vector store:** `files/internal/` (operator onboarding), files at `files/` root (use `public/` only), seeds, secrets, unreleased product. Phase 5 backlog: playbooks, FAQ verbatim, Training/Technology guides.
 
 Sync:
 

@@ -28,7 +28,7 @@ export const SITE_FOUNDERS: readonly SiteFounder[] = [
     portrait: "/images/voices/brad-brisco.webp",
     aboutAnchorId: "founder-b",
     bioSummary:
-      "Brad has led church planting strategy at the North American Mission Board for over a decade and is one of the most-respected voices in the missional church movement in North America — including multiple books on missional ecclesiology.",
+      "Brad has led church planting strategy at the North American Mission Board for over a decade and is one of the most-respected voices in the missional church movement in North America, including multiple books on missional ecclesiology.",
   },
   {
     slug: "alan-hirsch",
@@ -46,7 +46,7 @@ export const SITE_FOUNDERS: readonly SiteFounder[] = [
     portrait: "/images/voices/josh-shepherd.webp",
     aboutAnchorId: "founder-j",
     bioSummary:
-      "Josh is the technical founder behind Movemental’s platform — bringing years as a Methodist pastor and as a founder to how the product serves organizations and leaders.",
+      "Josh is the technical founder behind Movemental’s platform, bringing years as a Methodist pastor and as a founder to how the product serves organizations and leaders.",
   },
 ];
 

@@ -92,8 +92,8 @@ export async function notifyIntegrityDiagnosticInbox(
 
   const text = renderTextSummary(p);
   const subject = p.organizationName
-    ? `[movemental.com] Integrity Diagnostic — ${p.organizationName}`
-    : `[movemental.com] Integrity Diagnostic — ${p.name}`;
+    ? `[movemental.com] Integrity Diagnostic, ${p.organizationName}`
+    : `[movemental.com] Integrity Diagnostic, ${p.name}`;
 
   const { error } = await resend.emails.send({
     from: resendFromHeader(),
@@ -129,22 +129,22 @@ export async function sendIntegrityDiagnosticAck(
 
 Thanks for completing the Movemental Integrity Diagnostic. We have your responses.
 
-Within five business days, one of the Movemental founders will read your diagnostic, write a six-page narrative read-back, and send you a calendar invite for a thirty-minute call to walk it together.
+Within five business days, one of the Movemental founders will read your diagnostic, write a six-page narrative read-back, and send you a calendar invite for a thirty-minute call to review it together.
 
-There is no score. There is no benchmark. The point is honesty inside the room — and a clearer next step on the other side.
+There is no score. There is no benchmark. The point is honesty inside the room, and a clearer next step on the other side.
 
-— Movemental`;
+Movemental`;
 
   const html = `<p>Hi ${safeFirst},</p>
 <p>Thanks for completing the Movemental Integrity Diagnostic. We have your responses.</p>
-<p>Within five business days, one of the Movemental founders will read your diagnostic, write a six-page narrative read-back, and send you a calendar invite for a thirty-minute call to walk it together.</p>
-<p>There is no score. There is no benchmark. The point is honesty inside the room — and a clearer next step on the other side.</p>
-<p style="margin-top:24px;color:#6b6660;font-size:14px">— Movemental</p>`;
+<p>Within five business days, one of the Movemental founders will read your diagnostic, write a six-page narrative read-back, and send you a calendar invite for a thirty-minute call to review it together.</p>
+<p>There is no score. There is no benchmark. The point is honesty inside the room, and a clearer next step on the other side.</p>
+<p style="margin-top:24px;color:#6b6660;font-size:14px">Movemental</p>`;
 
   const { error } = await resend.emails.send({
     from: resendFromHeader(),
     to: [p.email],
-    subject: "We received your Integrity Diagnostic — Movemental",
+    subject: "We received your Integrity Diagnostic | Movemental",
     text,
     html,
     tags: [{ name: "source", value: "integrity_diagnostic_ack" }],

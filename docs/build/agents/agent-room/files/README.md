@@ -93,7 +93,7 @@ CORPUS_BINDING_SLUG=movemental-room-canon OPENAI_VECTOR_STORE_ID=vs_xxx pnpm see
 
 ## Still not in corpus
 
-- Skills / Solutions Field Guide PDFs (forthcoming)
+- Training / Technology Field Guide PDFs (forthcoming)
 - Audience playbooks (OCR pending)
 - Participation Agreement (OCR pending)
 - FAQ verbatim (`/faq` scrape)

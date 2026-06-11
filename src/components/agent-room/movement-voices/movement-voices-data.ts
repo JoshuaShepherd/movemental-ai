@@ -1,7 +1,7 @@
 /**
  * Copy for `/agent/movement-voices` — adapted from movemental-the-talk.md and
  * movemental-kb-phase-3.md (origin / scenius / invitation). No internal strategy
- * framing; naming canon: Safety · Sandbox · Training · Tech; founding year 2026.
+ * framing; naming canon: Safety · Sandbox · Training · Technology; founding year 2026.
  */
 
 export const MOVEMENT_VOICES_NAV = [
@@ -25,7 +25,7 @@ export const MOVEMENT_VOICES_SPY_SECTIONS = [
 ] as const;
 
 export const MOVEMENT_VOICES_DOCK = {
-  voiceLine: "A reader who cannot tell whether anyone stands behind the words — that is where we begin.",
+  voiceLine: "A reader who cannot tell whether anyone stands behind the words, that is where we begin.",
   highlightChipLabel: "Become a Movement Voice",
   chips: [
     { label: "Map where we actually stand", action: "agent" as const },
@@ -38,19 +38,19 @@ export const MOVEMENT_VOICES_DOCK = {
 export const FOUR_LAYERS = [
   {
     term: "The scenius",
-    body: "The shared intelligence of the scene — the thing being served, not owned. You cannot manufacture it; you can only host it.",
+    body: "The shared intelligence of the scene, the thing being served, not owned. You cannot manufacture it; you can only host it.",
   },
   {
     term: "The corpus",
-    body: "The authors' own work — books, articles, sermons, talks — owned by them, gathered only with their consent.",
+    body: "The authors' own work, books, articles, sermons, talks, owned by them, gathered only with their consent.",
   },
   {
     term: "The platform",
-    body: "The infrastructure that lets a distributed scene act like a scene: content, learning, cohorts, linking, translation.",
+    body: "The tools that let a distributed scene act like a scene: content, learning, cohorts, linking, translation.",
   },
   {
     term: "AI",
-    body: "The interpretive mirror — the layer that can read scattered work alongside the corpus and reflect the network back to itself coherently, without inventing what was never said.",
+    body: "A reader for the network, it can take scattered work alongside each author's corpus and reflect the scene back clearly, without inventing what was never said.",
   },
 ] as const;
 

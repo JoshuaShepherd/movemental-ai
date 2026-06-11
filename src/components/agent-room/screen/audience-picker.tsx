@@ -25,7 +25,7 @@ const AUDIENCES: ReadonlyArray<{
     id: "church",
     label: "Churches",
     title: "For churches",
-    body: "The pastoral and disclosure questions — sermons, member data, and what belongs in the pulpit.",
+    body: "The pastoral and disclosure questions, sermons, member data, and what belongs in the pulpit.",
   },
   {
     id: "nonprofit",
@@ -56,7 +56,7 @@ export function AudiencePicker({
 
   return (
     <div className={styles.audPicker}>
-      {/* Chip rail — shown above the body on narrow viewports */}
+      {/* Chip rail, shown above the body on narrow viewports */}
       <div className={styles.audChips} aria-label="Who this is for">
         {AUDIENCES.map((a) => (
           <button
@@ -76,7 +76,7 @@ export function AudiencePicker({
         <p className={styles.audLead}>{current.body}</p>
       </div>
 
-      {/* Vertical option rail — shown on md+ */}
+      {/* Vertical option rail, shown on md+ */}
       <div className={styles.audList} aria-label="Who this is for">
         {AUDIENCES.map((a) => (
           <button

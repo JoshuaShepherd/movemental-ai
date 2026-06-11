@@ -13,8 +13,8 @@ import {
 /** The 3 engine-extra ids that have no Ink Band screen. */
 const ENGINE_EXTRA: ComponentId[] = ["network", "audience", "handoff_human"];
 
-describe("screen-map — ComponentId ↔ ScreenId SSOT (INT-01)", () => {
-  it("maps every ComponentId — Ink Band ids 1:1, engine-extra to null", () => {
+describe("screen-map: ComponentId ↔ ScreenId SSOT (INT-01)", () => {
+  it("maps every ComponentId: Ink Band ids 1:1, engine-extra to null", () => {
     for (const id of COMPONENT_IDS) {
       const screen = toScreenId(id);
       if (ENGINE_EXTRA.includes(id)) {

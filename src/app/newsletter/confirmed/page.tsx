@@ -16,9 +16,9 @@ function resolve(state?: string, error?: string): { title: string; body: string 
     };
   }
   if (state === "already") {
-    return { title: "You’re already confirmed.", body: "Your subscription is active — nothing more to do." };
+    return { title: "You’re already confirmed.", body: "Your subscription is active, nothing more to do." };
   }
-  return { title: "You’re confirmed.", body: "Thanks for confirming — you’ll hear from us occasionally, never noisily." };
+  return { title: "You’re confirmed.", body: "Thanks for confirming, you’ll hear from us occasionally, never noisily." };
 }
 
 export default async function NewsletterConfirmedPage({ searchParams }: { searchParams: SearchParams }) {

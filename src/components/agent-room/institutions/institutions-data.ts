@@ -72,7 +72,7 @@ export const FIX_ROWS = [
 export const TOOL_EXAMPLES = [
   {
     label: "Search",
-    text: "that knows your syllabi, archives, and faculty work — not the open web.",
+    text: "that knows your syllabi, archives, and faculty work, not the open web.",
   },
   {
     label: "Assistant",

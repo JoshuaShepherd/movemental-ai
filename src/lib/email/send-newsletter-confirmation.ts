@@ -30,7 +30,7 @@ export async function sendNewsletterConfirmationEmail(
 ): Promise<boolean> {
   const resend = getResend();
   if (!resend) {
-    console.warn("[newsletter-email] RESEND_API_KEY not set — skipping confirmation email.");
+    console.warn("[newsletter-email] RESEND_API_KEY not set, skipping confirmation email.");
     return false;
   }
 
@@ -47,7 +47,7 @@ export async function sendNewsletterConfirmationEmail(
   const { error } = await resend.emails.send({
     from: resendFromHeader(),
     to: [email],
-    subject: `Confirm your subscription — ${SITE_NAME}`,
+    subject: `Confirm your subscription, ${SITE_NAME}`,
     html: `
       <!DOCTYPE html>
       <html>

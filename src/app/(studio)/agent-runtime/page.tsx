@@ -32,7 +32,7 @@ export default function AgentRuntimeStudioPage() {
   const packLabel = useMemo(() => {
     const m = new Map<string, string>();
     for (const p of packs) {
-      m.set(p.id, `${p.slug} v${p.version}${p.label ? ` — ${p.label}` : ""}`);
+      m.set(p.id, `${p.slug} v${p.version}${p.label ? `, ${p.label}` : ""}`);
     }
     return m;
   }, [packs]);
@@ -117,7 +117,7 @@ export default function AgentRuntimeStudioPage() {
                           }))
                         }
                       >
-                        <option value="">— None —</option>
+                        <option value="">None , </option>
                         {bindings.map((b) => (
                           <option key={b.id} value={b.id}>
                             {bindingLabel.get(b.id) ?? b.id}
@@ -137,7 +137,7 @@ export default function AgentRuntimeStudioPage() {
                           }))
                         }
                       >
-                        <option value="">— None —</option>
+                        <option value="">None , </option>
                         {packs.map((p) => (
                           <option key={p.id} value={p.id}>
                             {packLabel.get(p.id) ?? p.id}
