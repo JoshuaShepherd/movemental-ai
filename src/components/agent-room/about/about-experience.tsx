@@ -275,9 +275,7 @@ export function AboutExperience() {
                   before it is a question about technology, and they will decide from what they watch us
                   do whether the kingdom is real and the church is real.
                 </p>
-                <AskAiPromptButton
-                  prompt={`I'm reading Movemental's About page (movemental.ai/agent/about), the authorship break, the fragmentation thesis, the Babel vs. Pentecost ethic, and the formation stakes for young adults. Summarize what Movemental believes, what makes it different from a typical "AI for churches" vendor, and what questions I should ask them.`}
-                />
+                <AskAiPromptButton promptKey="aboutFull" />
               </div>
             </section>
           </main>

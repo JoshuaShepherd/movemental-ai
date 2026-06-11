@@ -54,7 +54,7 @@ export const CHURCHES_PAGE_CONFIG: AudiencePageConfig = {
     intro:
       "Here's the whole argument in plain words, written for your elders or leadership team. Read it here, or download it to share.",
     letterAriaLabel: "Letter to a lead pastor",
-    askAiPrompt: `I'm reading Movemental's letter for churches (movemental.ai/agent/churches). Summarize the core argument, the four-stage path (Safety, Sandbox, Training, Technology), and what a credible first step would look like for a lead pastor. Note anything that needs verification.`,
+    askAiPromptKey: "churchesTheCase",
   },
   foundation: {
     title: "We gather what's scattered into one place.",
@@ -119,9 +119,7 @@ export const CHURCHES_PAGE_CONFIG: AudiencePageConfig = {
     mailtoHref: "mailto:hello@movemental.ai?subject=Our%20church%20%E2%80%94%20first%20conversation",
     downloadFilename: "letter-to-a-lead-pastor.txt",
     sendToBoardSubject: "AI and our church, a letter for our elders",
-    askAiPrompt: `I'm reading Movemental's case for churches (movemental.ai/agent/churches). They argue AI is already inside church life, fragmentation is the deeper problem, and the path is Safety → Sandbox → Training → Technology, with a ratified AI Charter first.
-
-Summarize the argument in plain language for a lead pastor. What would a credible first step look like? What should I push back on?`,
+    askAiPromptKey: "churchesStart",
   },
   nav: AUDIENCE_NAV,
   letterEmbedStart: "And the thing most at risk",

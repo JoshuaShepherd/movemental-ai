@@ -2536,19 +2536,86 @@ button.wayCtaPaid {
   padding-top: 1.25rem;
   border-top: 1px solid var(--color-ink-band-border);
 }
-.askAiBtn {
+.askAiHeading {
+  margin: 0 0 1rem;
+  font-family: var(--font-ink-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--color-ink-band-ink);
+}
+.askAiProviders {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.askAiProviderBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.5rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--color-ink-band-border);
+  border-radius: 999px;
+  background: var(--color-ink-band-paper);
+  box-shadow: 0 1px 0 rgba(26, 22, 18, 0.04);
+  font-family: var(--font-ink-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  color: var(--color-ink-band-ink);
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.askAiProviderBtn:hover {
+  border-color: var(--color-ink-band-blue);
+  color: var(--color-ink-band-blue);
+  box-shadow: 0 2px 8px rgba(34, 64, 155, 0.08);
+}
+.askAiProviderIcon {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+}
+.askAiCopyRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.85rem 0 0;
+  text-align: center;
+}
+.askAiCopyBtn {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
   font-family: var(--font-ink-mono);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
   color: var(--color-ink-band-ink-muted);
-  border-bottom: 1px solid var(--color-ink-band-border);
-  padding-bottom: 0.1rem;
+  cursor: pointer;
 }
-.askAiBtn:hover {
+.askAiCopyBtn:hover {
   color: var(--color-ink-band-blue);
-  border-bottom-color: var(--color-ink-band-blue);
+}
+.askAiCopyHint {
+  max-width: 28rem;
+  font-family: var(--font-ink-body);
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: var(--color-ink-band-ink-muted);
 }
 
 .notableWorks {
@@ -3397,7 +3464,8 @@ button.wayCtaPaid {
 .agentCardExpanded {
   height: 90dvh;
   max-height: 90dvh;
-  border-radius: 1.1rem 1.1rem 0.65rem 0.65rem;
+  border-radius: 1.25rem 1.25rem 0.75rem 0.75rem;
+  background: var(--color-ink-band-bg);
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--color-ink-band-border) 80%, transparent),
     0 -12px 56px -14px rgba(26, 26, 26, 0.32);
@@ -3412,40 +3480,50 @@ button.wayCtaPaid {
 
 .cardHeader {
   display: none;
+  position: relative;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 0.75rem;
-  padding: 0.65rem 1rem 0.45rem;
-  border-bottom: 1px solid var(--color-ink-band-border);
+  padding: 0.85rem 3rem 0.65rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-ink-band-border) 65%, transparent);
   flex: 0 0 auto;
+  background: var(--color-ink-band-bg);
 }
 .agentCardExpanded .cardHeader {
   display: flex;
 }
 .cardTitle {
-  font-family: var(--font-ink-display);
-  font-size: 0.92rem;
-  font-weight: 500;
+  font-family: var(--font-ink-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   color: var(--color-ink-band-ink);
+  text-align: center;
 }
 .cardCollapse {
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border: 0;
-  border-radius: 999px;
-  background: var(--color-ink-band-surface);
+  width: 2.15rem;
+  height: 2.15rem;
+  border: 1px solid var(--color-ink-band-border);
+  border-radius: 0.65rem;
+  background: var(--color-ink-band-paper);
   color: var(--color-ink-band-ink-muted);
   cursor: pointer;
   transition:
     color 0.15s,
-    background 0.15s;
+    background 0.15s,
+    border-color 0.15s;
 }
 .cardCollapse:hover {
   color: var(--color-ink-band-blue);
-  background: color-mix(in srgb, var(--color-ink-band-blue) 8%, var(--color-ink-band-surface));
+  border-color: color-mix(in srgb, var(--color-ink-band-blue) 35%, var(--color-ink-band-border));
+  background: color-mix(in srgb, var(--color-ink-band-blue) 6%, var(--color-ink-band-paper));
 }
 
 .cardThread {
@@ -3453,9 +3531,9 @@ button.wayCtaPaid {
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
-  padding: 0.85rem 1rem 0.5rem;
-  gap: 0.65rem;
+  padding: 1.25rem clamp(1rem, 4vw, 1.5rem) 0.75rem;
   -webkit-overflow-scrolling: touch;
+  background: var(--color-ink-band-bg);
 }
 .agentCardExpanded .cardThread {
   display: flex;
@@ -3463,15 +3541,41 @@ button.wayCtaPaid {
   flex: 1 1 auto;
   min-height: 0;
 }
+.cardThreadInner {
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.agentCardExpanded .threadEmptyHint {
+  text-align: center;
+  padding: 2rem 0.5rem;
+}
+
+/* Guide-mode chat bubbles (expanded drawer only) */
 .threadMsgAgent,
 .threadMsgUser {
   font-size: 0.92rem;
   line-height: 1.5;
-  max-width: 92%;
+  max-width: 88%;
 }
 .threadMsgAgent p,
 .threadMsgUser p {
   margin: 0;
+}
+.agentCardExpanded .threadMsgAgent,
+.agentCardExpanded .threadMsgUser {
+  max-width: min(88%, 34rem);
+  padding: 1rem 1.15rem;
+  border-radius: 1.15rem;
+  background: var(--color-ink-band-surface);
+  border: 1px solid color-mix(in srgb, var(--color-ink-band-border) 75%, transparent);
+  font-family: var(--font-ink-body);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--color-ink-band-ink);
 }
 .threadMsgAgent {
   align-self: flex-start;
@@ -3479,6 +3583,14 @@ button.wayCtaPaid {
   color: var(--color-ink-band-blue);
   font-size: 1.05rem;
   line-height: 1.35;
+}
+.agentCardExpanded .threadMsgAgent {
+  align-self: flex-start;
+  border-bottom-left-radius: 0.35rem;
+}
+.agentCardExpanded .threadMsgAgent .liveInk {
+  font-family: inherit;
+  color: inherit;
 }
 .threadMsgUser {
   align-self: flex-end;
@@ -3488,18 +3600,94 @@ button.wayCtaPaid {
   color: var(--color-ink-band-ink);
   border: 1px solid var(--color-ink-band-border);
 }
+.agentCardExpanded .threadMsgUser {
+  align-self: flex-end;
+  border-bottom-right-radius: 0.35rem;
+  background: var(--color-ink-band-paper);
+}
+.agentCardExpanded .thinking {
+  align-self: flex-start;
+  margin-left: 0.15rem;
+}
+
+/* Discuss thread bubbles inside expanded drawer */
+.agentCardExpanded .discussThread {
+  gap: 1rem;
+  width: 100%;
+}
+.agentCardExpanded .marginUserCompact {
+  align-self: flex-end;
+  max-width: min(88%, 34rem);
+  margin-left: 0;
+  padding: 1rem 1.15rem;
+  border-left: 0;
+  border-radius: 1.15rem;
+  border-bottom-right-radius: 0.35rem;
+  background: var(--color-ink-band-paper);
+  border: 1px solid color-mix(in srgb, var(--color-ink-band-border) 75%, transparent);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.agentCardExpanded .passageCompact,
+.agentCardExpanded .liveInkCompact {
+  align-self: flex-start;
+  max-width: min(88%, 34rem);
+  margin: 0;
+  padding: 1rem 1.15rem;
+  border-radius: 1.15rem;
+  border-bottom-left-radius: 0.35rem;
+  background: var(--color-ink-band-surface);
+  border: 1px solid color-mix(in srgb, var(--color-ink-band-border) 75%, transparent);
+  font-family: var(--font-ink-body);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--color-ink-band-ink);
+}
+.agentCardExpanded .liveInkCompact {
+  font-family: var(--font-ink-body);
+  color: var(--color-ink-band-ink);
+}
 
 .cardBody {
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   gap: 0;
+  background: var(--color-ink-band-bg);
 }
-.cardInput {
-  display: block;
-  padding: 0.5rem 0.85rem 0.15rem;
+.agentCardExpanded .cardBody {
+  padding: 0.65rem clamp(1rem, 4vw, 1.5rem) 0.85rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-ink-band-border) 65%, transparent);
 }
-.cardInput input {
+.composerRow {
+  display: flex;
+  align-items: stretch;
+  gap: 0.55rem;
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+.agentCard:not(.agentCardExpanded) .composerRow {
+  padding: 0.45rem 0.65rem 0.15rem;
+}
+.composerField {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--color-ink-band-border);
+  border-radius: 0.75rem;
+  background: var(--color-ink-band-paper);
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+.composerField:focus-within {
+  border-color: color-mix(in srgb, var(--color-ink-band-blue) 45%, var(--color-ink-band-border));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-ink-band-blue) 12%, transparent);
+}
+.composerField input {
   width: 100%;
   border: 0;
   background: none;
@@ -3508,19 +3696,17 @@ button.wayCtaPaid {
   color: var(--color-ink-band-ink);
   padding: 0;
 }
-.cardInput input:focus {
+.composerField input:focus {
   outline: none;
 }
-.cardInput input::placeholder {
+.composerField input::placeholder {
   color: var(--color-ink-band-ink-muted);
 }
-
-.cardToolbar {
+.composerActions {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.35rem;
-  padding: 0.15rem 0.55rem 0.3rem;
+  gap: 0.25rem;
+  flex: 0 0 auto;
 }
 .toolbarGroup {
   display: flex;
@@ -3555,28 +3741,43 @@ button.wayCtaPaid {
   color: var(--color-ink-band-blue);
   background: color-mix(in srgb, var(--color-ink-band-blue) 10%, var(--color-ink-band-surface));
 }
-.sendRound {
+.sendSquare {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.9rem;
-  height: 1.9rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: 0 0 2.5rem;
   border: 0;
-  border-radius: 999px;
-  background: var(--color-ink-band-ink);
-  color: var(--color-ink-band-bg);
+  border-radius: 0.75rem;
+  background: var(--color-ink-band-blue);
+  color: var(--color-ink-band-paper);
   cursor: pointer;
   transition:
     background 0.15s,
-    transform 0.15s;
+    transform 0.15s,
+    box-shadow 0.15s;
 }
-.sendRound:hover:not(:disabled) {
-  background: var(--color-ink-band-blue);
+.sendSquare:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-ink-band-blue) 88%, var(--color-ink-band-ink));
   transform: translateY(-1px);
+  box-shadow: 0 6px 18px -8px color-mix(in srgb, var(--color-ink-band-blue) 55%, transparent);
 }
-.sendRound:disabled {
+.sendSquare:disabled {
   opacity: 0.5;
   cursor: default;
+}
+.chatDisclaimer {
+  display: none;
+  margin: 0.55rem auto 0;
+  max-width: 40rem;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  text-align: center;
+  color: var(--color-ink-band-ink-muted);
+}
+.agentCardExpanded .chatDisclaimer {
+  display: block;
 }
 
 .cardHandle {
@@ -3662,6 +3863,11 @@ button.wayCtaPaid {
   .toolBtn {
     width: 2.75rem;
     height: 2.75rem;
+  }
+  .sendSquare {
+    width: 2.75rem;
+    height: 2.75rem;
+    flex: 0 0 2.75rem;
   }
   .crumb {
     min-width: 44px;

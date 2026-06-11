@@ -122,51 +122,51 @@ function ComposerForm({
 }) {
   return (
     <form className={styles.cardBody} id="composer-form" onSubmit={onSubmit}>
-      <label className={styles.cardInput}>
-        <input
-          ref={inputRef}
-          type="text"
-          name="message"
-          id="composer-input"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          autoComplete="off"
-          aria-label="Talk to Movemental"
-          placeholder={placeholder ?? "Type here, or tap a suggestion…"}
-          disabled={disabled}
-        />
-      </label>
-      <div className={styles.cardToolbar}>
-        <div className={styles.toolbarGroup}>
-          <button type="button" className={styles.toolBtn} aria-label="Add attachment">
-            +
-          </button>
-          <button type="button" className={styles.toolBtn} aria-label="Slash commands">
-            /
-          </button>
-        </div>
-        <div className={styles.toolbarGroup}>
-          <button type="button" className={styles.toolBtn} aria-label="Context" title="Context">
-            <ContextIcon />
-          </button>
+      <div className={styles.composerRow}>
+        <label className={styles.composerField}>
+          <input
+            ref={inputRef}
+            type="text"
+            name="message"
+            id="composer-input"
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            autoComplete="off"
+            aria-label="Talk to Movemental"
+            placeholder={placeholder ?? "Type here, or tap a suggestion…"}
+            disabled={disabled}
+          />
+        </label>
+        <div className={styles.composerActions}>
           {!expanded ? (
-            <button
-              type="button"
-              className={styles.toolBtn}
-              id="expand-toggle"
-              aria-label="Expand chat"
-              aria-expanded={false}
-              title="Expand chat"
-              onClick={onToggleExpand}
-            >
-              <ExpandIcon />
-            </button>
+            <div className={styles.toolbarGroup}>
+              <button type="button" className={styles.toolBtn} aria-label="Context" title="Context">
+                <ContextIcon />
+              </button>
+              <button
+                type="button"
+                className={styles.toolBtn}
+                id="expand-toggle"
+                aria-label="Expand chat"
+                aria-expanded={false}
+                title="Expand chat"
+                onClick={onToggleExpand}
+              >
+                <ExpandIcon />
+              </button>
+            </div>
           ) : null}
-          <button type="submit" className={styles.sendRound} aria-label="Send" disabled={disabled}>
+          <button type="submit" className={styles.sendSquare} aria-label="Send" disabled={disabled}>
             <SendIcon />
           </button>
         </div>
       </div>
+      {expanded ? (
+        <p className={styles.chatDisclaimer}>
+          Responses may be imperfect. This is a guided conversation, not a substitute for
+          professional advice.
+        </p>
+      ) : null}
     </form>
   );
 }
@@ -418,55 +418,57 @@ export function AgentDock({
               </div>
 
               <div className={styles.cardThread} id="card-thread" ref={threadRef}>
-                {discuss ? (
-                  <>
-                    {showDiscussThread ? (
-                      <DiscussThread
-                        transcript={transcript}
-                        liveText={liveText}
-                        liveThinking={liveThinking}
-                        liveThinkingNote={liveThinkingNote}
-                        compact
-                      />
-                    ) : null}
-                    {stubCapture}
-                  </>
-                ) : showThreadBody ? (
-                  <>
-                    {guideMessages.map((msg, i) => (
-                      <div
-                        key={`${msg.role}-${i}-${msg.content.slice(0, 24)}`}
-                        className={
-                          msg.role === "agent" ? styles.threadMsgAgent : styles.threadMsgUser
-                        }
-                      >
-                        <p
+                <div className={styles.cardThreadInner}>
+                  {discuss ? (
+                    <>
+                      {showDiscussThread ? (
+                        <DiscussThread
+                          transcript={transcript}
+                          liveText={liveText}
+                          liveThinking={liveThinking}
+                          liveThinkingNote={liveThinkingNote}
+                          compact
+                        />
+                      ) : null}
+                      {stubCapture}
+                    </>
+                  ) : showThreadBody ? (
+                    <>
+                      {guideMessages.map((msg, i) => (
+                        <div
+                          key={`${msg.role}-${i}-${msg.content.slice(0, 24)}`}
                           className={
-                            msg.role === "agent" && msg.streaming
-                              ? `${styles.liveInk} ${styles.settle}`
-                              : undefined
+                            msg.role === "agent" ? styles.threadMsgAgent : styles.threadMsgUser
                           }
-                          aria-live={msg.streaming ? "polite" : undefined}
                         >
-                          {msg.content}
-                        </p>
-                      </div>
-                    ))}
-                    {liveThinking && !liveText ? (
-                      <div className={styles.thinking}>
-                        <span className={styles.pulse} aria-hidden="true" />
-                        {liveThinkingNote ? (
-                          <span className={styles.thinkingNote}>{liveThinkingNote}…</span>
-                        ) : null}
-                      </div>
-                    ) : null}
-                    {stubCapture}
-                  </>
-                ) : (
-                  <p className={styles.threadEmptyHint}>
-                    Tap a suggestion below the sheet, or type to continue.
-                  </p>
-                )}
+                          <p
+                            className={
+                              msg.role === "agent" && msg.streaming
+                                ? `${styles.liveInk} ${styles.settle}`
+                                : undefined
+                            }
+                            aria-live={msg.streaming ? "polite" : undefined}
+                          >
+                            {msg.content}
+                          </p>
+                        </div>
+                      ))}
+                      {liveThinking && !liveText ? (
+                        <div className={styles.thinking}>
+                          <span className={styles.pulse} aria-hidden="true" />
+                          {liveThinkingNote ? (
+                            <span className={styles.thinkingNote}>{liveThinkingNote}…</span>
+                          ) : null}
+                        </div>
+                      ) : null}
+                      {stubCapture}
+                    </>
+                  ) : (
+                    <p className={styles.threadEmptyHint}>
+                      Tap a suggestion below the sheet, or type to continue.
+                    </p>
+                  )}
+                </div>
               </div>
 
               {captureFooter ?? composerFooter}

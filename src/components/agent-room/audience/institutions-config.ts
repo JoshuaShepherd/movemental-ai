@@ -71,7 +71,7 @@ export const INSTITUTIONS_PAGE_CONFIG: AudiencePageConfig = {
     intro:
       "Here's the whole argument in plain words, written to share with your board. Read it here, or download it to send.",
     letterAriaLabel: "Letter to a seminary president",
-    askAiPrompt: `I'm reading Movemental's letter to a seminary president (movemental.ai/agent/institutions). Summarize the core argument, the four-stage path (Safety, Sandbox, Training, Technology), and what a board-ready first step would look like. Note anything that needs verification.`,
+    askAiPromptKey: "institutionsTheCase",
   },
   foundation: {
     title: "We gather what's scattered into one place.",
@@ -136,9 +136,7 @@ export const INSTITUTIONS_PAGE_CONFIG: AudiencePageConfig = {
     mailtoHref: "mailto:hello@movemental.ai?subject=Our%20seminary%20%E2%80%94%20first%20conversation",
     downloadFilename: "letter-to-a-seminary-president.txt",
     sendToBoardSubject: "AI and our seminary, a letter for the board",
-    askAiPrompt: `I'm reading Movemental's case for seminaries and institutions (movemental.ai/agent/institutions). They argue AI is already inside seminary life, fragmentation is the deeper problem, and the path is Safety → Sandbox → Training → Technology, with a ratified AI Charter first.
-
-Summarize the argument in plain language for a seminary president. What would a credible first step look like? What should I push back on?`,
+    askAiPromptKey: "institutionsStart",
   },
   nav: AUDIENCE_NAV,
   letterEmbedStart: "You carry a weight in this moment",

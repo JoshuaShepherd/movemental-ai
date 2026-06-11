@@ -1,3 +1,5 @@
+import type { AskAiPromptKey } from "@/lib/agent-room/ask-ai";
+
 export type AudienceNavEntry = { id: string; label: string };
 
 export type AudiencePainCard = { title: string; body: string };
@@ -32,7 +34,7 @@ export type AudiencePageConfig = {
     title: string;
     intro: string;
     letterAriaLabel: string;
-    askAiPrompt: string;
+    askAiPromptKey: AskAiPromptKey;
   };
   foundation: {
     title: string;
@@ -59,7 +61,7 @@ export type AudiencePageConfig = {
     mailtoHref: string;
     downloadFilename: string;
     sendToBoardSubject: string;
-    askAiPrompt: string;
+    askAiPromptKey: AskAiPromptKey;
   };
   nav: readonly AudienceNavEntry[];
   letterEmbedStart: string;

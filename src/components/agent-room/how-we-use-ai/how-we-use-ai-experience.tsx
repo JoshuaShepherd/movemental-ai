@@ -229,9 +229,7 @@ export function HowWeUseAiExperience() {
                 <p className={styles.body} style={{ marginTop: "1.15rem" }}>
                   If a feature would feel extractive to us as members, we don&apos;t ship it.
                 </p>
-                <AskAiPromptButton
-                  prompt={`I'm reading Movemental's "How We Use AI" page (movemental.ai/agent/how-we-use-ai), their named refusals, green/yellow/red framework, and scenius product refusals. Summarize what Movemental commits to refuse, how they sort AI use cases, and what questions I should ask before trusting an AI vendor in the church/nonprofit space.`}
-                />
+                <AskAiPromptButton promptKey="howWeUseAi" />
               </div>
             </section>
           </main>

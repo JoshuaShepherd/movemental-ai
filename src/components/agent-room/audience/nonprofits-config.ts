@@ -54,7 +54,7 @@ export const NONPROFITS_PAGE_CONFIG: AudiencePageConfig = {
     intro:
       "Here's the whole argument in plain words, written for your board. Read it here, or download it to send.",
     letterAriaLabel: "Letter to an executive director",
-    askAiPrompt: `I'm reading Movemental's letter for nonprofits (movemental.ai/agent/nonprofits). Summarize the core argument, the four-stage path (Safety, Sandbox, Training, Technology), and what a board-ready first step would look like. Note anything that needs verification.`,
+    askAiPromptKey: "nonprofitsTheCase",
   },
   foundation: {
     title: "We gather what's scattered into one place.",
@@ -119,9 +119,7 @@ export const NONPROFITS_PAGE_CONFIG: AudiencePageConfig = {
     mailtoHref: "mailto:hello@movemental.ai?subject=Our%20nonprofit%20%E2%80%94%20first%20conversation",
     downloadFilename: "letter-to-an-executive-director.txt",
     sendToBoardSubject: "AI and our nonprofit, a letter for the board",
-    askAiPrompt: `I'm reading Movemental's case for nonprofits (movemental.ai/agent/nonprofits). They argue AI is already inside nonprofit operations, the governance gap is the deeper problem, and the path is Safety → Sandbox → Training → Technology, with a ratified AI Charter first.
-
-Summarize the argument in plain language for an executive director. What would a board-ready first step look like? What should I push back on?`,
+    askAiPromptKey: "nonprofitsStart",
   },
   nav: AUDIENCE_NAV,
   letterEmbedStart: "Underneath the governance gap",

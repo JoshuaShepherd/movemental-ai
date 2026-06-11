@@ -324,9 +324,7 @@ export function MovementVoicesExperience() {
                     Back to the agent room
                   </a>
                 </div>
-                <AskAiPromptButton
-                  prompt={`I'm reading Movemental's Movement Voices page (movemental.ai/agent/movement-voices), the scenius thesis, the authorship break, and the invitation to become a Voice. Summarize what a Movement Voice is agreeing to, what they are not agreeing to, and how this differs from a typical "creator platform."`}
-                />
+                <AskAiPromptButton promptKey="movementVoices" />
               </div>
             </section>
           </main>

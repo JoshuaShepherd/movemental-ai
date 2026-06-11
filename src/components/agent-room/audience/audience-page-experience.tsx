@@ -193,7 +193,7 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
                   Send to your board
                 </button>
               </div>
-              <AskAiPromptButton prompt={config.theCase.askAiPrompt} />
+              <AskAiPromptButton promptKey={config.theCase.askAiPromptKey} />
             </div>
           </section>
 
@@ -299,7 +299,7 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
                   Download the letter
                 </button>
               </div>
-              <AskAiPromptButton prompt={config.start.askAiPrompt} />
+              <AskAiPromptButton promptKey={config.start.askAiPromptKey} />
             </div>
           </section>
         </main>

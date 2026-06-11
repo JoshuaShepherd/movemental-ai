@@ -40,9 +40,7 @@ export function AboutScreen({ onHome }: ScreenProps) {
         </Link>
       </p>
 
-      <AskAiPromptButton
-        prompt={`I'm on Movemental's About page (movemental.ai/agent/about). Summarize who founded it, why it exists, and what makes its approach to AI different from typical church-tech vendors.`}
-      />
+      <AskAiPromptButton promptKey="aboutStub" />
     </div>
   );
 }
