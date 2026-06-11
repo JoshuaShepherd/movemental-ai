@@ -16,14 +16,14 @@ export interface Leader {
 }
 
 export const LEADERS: readonly Leader[] = [
-  { name: "Alan Hirsch", cred: "Missional theologian", img: "/agent-room/leaders/0.jpg" },
-  { name: "Brad Brisco", cred: "Missional strategist", img: "/agent-room/leaders/1.jpg" },
-  { name: "JR Woodward", cred: "Author, movement leader", img: "/agent-room/leaders/2.jpg" },
+  { name: "Alan Hirsch", cred: "Missiologist · Forgotten Ways & APEST", img: "/agent-room/leaders/0.jpg" },
+  { name: "Brad Brisco", cred: "Send Network strategist · Covocational planting", img: "/agent-room/leaders/1.jpg" },
+  { name: "JR Woodward", cred: "National Director, V3 · The Scandal of Leadership", img: "/agent-room/leaders/2.jpg" },
   { name: "Neil Cole", cred: "Church-multiplication author", img: "/agent-room/leaders/3.jpg" },
-  { name: "Rowland Smith", cred: "Forge America, author", img: "/agent-room/leaders/4.jpg" },
-  { name: "Rob Wegner", cred: "Network co-founder", img: "/agent-room/leaders/5.jpg" },
-  { name: "Liz Rios", cred: "Leader, author", img: "/agent-room/leaders/6.jpg" },
-  { name: "Lucas Pulley", cred: "Network leader", img: "/agent-room/leaders/7.jpg" },
+  { name: "Rowland Smith", cred: "Forge America director · Red Skies curator", img: "/agent-room/leaders/4.jpg" },
+  { name: "Rob Wegner", cred: "KC Underground founder · Starfish and the Spirit", img: "/agent-room/leaders/5.jpg" },
+  { name: "Liz Rios", cred: "Passion2Plant founder · Púlpito Fellows director", img: "/agent-room/leaders/6.jpg" },
+  { name: "Lucas Pulley", cred: "Movements Director, Underground Network", img: "/agent-room/leaders/7.jpg" },
   { name: "Josh Shepherd", cred: "Movemental, founder", img: "/agent-room/leaders/8.jpg" },
   { name: "Jeremy & Monica Chambers", cred: "Movement leaders", img: "/agent-room/leaders/9.jpg" },
   { name: "Dave Ferguson", cred: "Movement leader", img: "/agent-room/leaders/10.jpg" },

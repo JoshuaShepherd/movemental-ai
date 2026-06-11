@@ -40,7 +40,11 @@ export function LeaderProfileContent({ leaderName, profile }: LeaderProfileConte
         <p className={`${styles.leadLede} ${styles.fade}`}>{profile.lede}</p>
       ) : null}
 
-      <p className={`${styles.leadBio} ${styles.fade}`}>{profile.bio}</p>
+      {profile.bio.split(/\n\n+/).map((paragraph) => (
+        <p key={paragraph.slice(0, 48)} className={`${styles.leadBio} ${styles.fade}`}>
+          {paragraph}
+        </p>
+      ))}
 
       <p className={`${styles.authorshipNote} ${styles.fade}`}>{authorshipReason(leaderName)}</p>
 

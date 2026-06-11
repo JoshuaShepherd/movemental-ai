@@ -71,11 +71,11 @@ export const PROFILES: Record<number, Profile> = {
   },
   1: {
     approved: true,
-    lede: "Missional strategist — sentness, multiplication, and co-vocational ministry.",
-    bio: "Brad Brisco helps the church function as sent missionary people and equips leaders for church planting and co-vocational ministry. As Director of Multiplication Strategies at Send Network, co-founder of Forge Kansas City and Sentralized, and an eighteen-year college instructor, he forms practitioners whose work outlasts any single congregation.",
+    lede: "Send Network strategist · Covocational planting",
+    bio: "Brad Brisco works the seam most missional writers avoid: the seam between post-Christendom theology and a Southern Baptist denominational system. As Director of Multiplication Strategies for Send Network at the North American Mission Board, he translates Newbigin, Bosch, Frost, and Hirsch into the planting language of a tradition that has not always reached for them. He earned a D.Min. in Missional Ecclesiology with a dissertation on helping existing congregations transition toward mission, and he has carried that question into eighteen-plus years of college teaching across History of Christianity, Theology of Place, and Launching Apostolic Movements.\n\nHis written corpus moves in stages alongside Lance Ford — from the small-group curriculum Missional Essentials, through The Missional Quest (InterVarsity Press) and Next Door As It Is In Heaven (NavPress, 2016), to ReThink and his solo synthesis Covocational Church Planting (Missional Press, 2021), released as a free bilingual ebook in English and Spanish. He co-founded Forge Kansas City and the Sentralized Conference, sits on the Forge America national leadership team, and writes regularly across New Churches, ChurchLeaders.com, and his own missionalchurchnetwork.com — a deliberately distributed footprint that mirrors the institutional and grassroots circles he has always tried to hold together.",
     work: [
-      { t: "Books", g: "Missional Essentials, The Missional Quest, Next Door As It Is In Heaven, ReThink, and Covocational Church Planting." },
-      { t: "In the field", g: "Send Network, Forge Kansas City, Sentralized Conference, and missionalchurchnetwork.com." },
+      { t: "Books", g: "Covocational Church Planting (Missional Press, 2021), Next Door As It Is In Heaven (with Lance Ford, NavPress, 2016), The Missional Quest, Missional Essentials." },
+      { t: "In the field", g: "Send Network (NAMB), Forge Kansas City, Sentralized Conference, Forge America national leadership — missionalchurchnetwork.com." },
     ],
     connection:
       "Co-founder of Movemental. Brad and Alan have written and trained alongside each other for decades; that shared body of work is one of the credibility nodes the network makes visible.",
@@ -91,11 +91,11 @@ export const PROFILES: Record<number, Profile> = {
   },
   2: {
     approved: true,
-    lede: "Practitioner-scholar — frameworks that let movement reproduce faithfully.",
-    bio: "JR Woodward forms practitioners and names the architecture that lets the church move. Three decades of planting — from Virginia Tech to East Hollywood to the V3 Church Planting Movement nationally — and a Manchester Ph.D. are one vocation: working things out in the room, then writing them down so others can use them.",
+    lede: "National Director, V3 · The Scandal of Leadership",
+    bio: "JR Woodward has spent more than three decades planting churches that try to hold tight-knit community, life-forming discipleship, locally rooted presence, and boundary-crossing mission together rather than choosing among them. He founded New Life Christian Fellowship at Virginia Tech in 1989, co-planted Kairos Los Angeles out of East Hollywood, and now leads the V3 Church Planting Movement nationally from the Washington, DC area, training planters across North America alongside Dan White Jr. and Jesse Eubanks.\n\nHis written corpus is unusually integrated for a working practitioner. Creating a Missional Culture (IVP, 2012) introduced the Five Culture Creators reframing of Ephesians 4; The Church as Movement (IVP, 2016, with Dan White Jr., foreword by Alan Hirsch) named the eight competencies V3 still trains around; and The Scandal of Leadership (100 Movements Publishing, 2023) translated his Manchester Ph.D. on mimetic desire and the powers of domination into a trade book for pastors.\n\nHe co-founded Missio Alliance and the Praxis Gathering, teaches as adjunct faculty at Fuller, Central, and Missio Seminary, and serves on the boards of Reliant Mission, the Movement Leaders Collective, and Fuller's Global Mission Advisory Council. Colleagues describe him as the architect to Alan Hirsch's prophet — a builder of careful, named frameworks who has stayed inside the neighborhood the whole time.",
     work: [
-      { t: "Books", g: "Creating a Missional Culture, The Church as Movement (with Dan White Jr.), and The Scandal of Leadership." },
-      { t: "Organizations", g: "V3 Church Planting Movement, Missio Alliance, Praxis Gathering, and the Solis Foundation." },
+      { t: "Books", g: "Creating a Missional Culture (IVP, 2012), The Church as Movement (with Dan White Jr., IVP, 2016), The Scandal of Leadership (100 Movements, 2023)." },
+      { t: "Organizations", g: "V3 Church Planting Movement, Missio Alliance, Praxis Gathering — adjunct at Fuller, Central, and Missio Seminary." },
     ],
     connection:
       "National director of V3 and co-founder of Missio Alliance and the Praxis Gathering — connected to Alan Hirsch, Michael Frost, and the Forge stream Movemental sits inside.",
@@ -151,11 +151,11 @@ export const PROFILES: Record<number, Profile> = {
   },
   5: {
     approved: true,
-    lede: "Network co-founder — a missionary on every street, a microchurch in every network.",
-    bio: "Rob Wegner mobilizes ordinary people into mission. After two decades at Granger Community Church he founded Kansas City Underground from eighty disciples — betting on 21,000 microchurches from 42,000 missionaries because the horizon is real, not a slogan.",
+    lede: "KC Underground founder · Starfish and the Spirit",
+    bio: "Rob Wegner spent roughly a quarter-century at Granger Community Church in northern Indiana as Teaching Pastor under Mark Beeson, where he co-led EnterMission, co-founded Future Travelers with Alan Hirsch, and co-authored Missional Moves (Zondervan, 2012) with Jack Magruder. Repeated trips to document a Granger-seeded movement in southern India — 120,000 disciples across 950 churches — became the hinge that turned a megachurch insider into a microchurch evangelist.\n\nIn 2019, with about eighty disciples and partners Brian Johnson and Michelle Wegner, he founded Kansas City Underground: a mission agency and decentralized network of microchurches committed to filling Kansas City with the beauty, justice, and Good News of Jesus. The organization's forty-year horizon names 21,000 microchurches arising from 42,000 missionaries. He co-authored The Starfish and the Spirit (Zondervan, 2021) with Lance Ford and Alan Hirsch, with a foreword by Ori Brafman, and co-directs Microchurch NEXT at Exponential alongside Brian Johnson from Shawnee, Kansas.\n\nEight books span his bibliography — from Find Your Place (Exponential, 2018) through Extraordinary Prayer and Deeply Rooted (2024–25) — while The Starfish and the Church podcast with Lance Ford and his Starfish Initiatives work with Alan Hirsch and Rich Robinson keep the decentralization conversation in the Exponential, NewThing, and Underground network orbit.",
     work: [
-      { t: "Books", g: "The Starfish and the Spirit (with Lance Ford and Alan Hirsch), Find Your Place, Missional Moves, Share the Well, and more." },
-      { t: "Organizations", g: "KC Underground, Microchurch NEXT at Exponential, and the NewThing global leadership team." },
+      { t: "Books", g: "The Starfish and the Spirit (with Lance Ford and Alan Hirsch, Zondervan, 2021), Missional Moves, Find Your Place, Extraordinary Prayer, Deeply Rooted." },
+      { t: "Organizations", g: "Kansas City Underground, Microchurch NEXT (Exponential), NewThing Global Leadership Team, Starfish Initiatives." },
     ],
     connection:
       "Co-authored The Starfish and the Spirit with Alan Hirsch and Lance Ford, and bridges the Forge missional stream with Exponential and NewThing.",
@@ -191,8 +191,8 @@ export const PROFILES: Record<number, Profile> = {
   },
   7: {
     approved: true,
-    lede: "Network leader — the ecclesial minimum and priesthood activated.",
-    bio: "Lucas Pulley activates the priesthood of all believers through the smallest durable form of the church. Fifteen years planting in Tampa's subsidized housing projects — beginning at the margins as strategy, not sentiment — and serving as Movements Director on the Underground Network executive team, he cultivates extended spiritual families committed to Jesus' leadership and a piece of God's mission. His conviction is starfish, not spider: decentralization as a more faithful reading of how Jesus's movement actually moves.",
+    lede: "Movements Director, Underground Network",
+    bio: "Lucas Pulley has spent fourteen-plus years planting and multiplying decentralized church across two cities — first founding the Carbondale Movement while on InterVarsity staff at Southern Illinois University, then moving to Tampa to inherit Brian Sanders' seat at the Underground Network. Inside the 2024–25 restructuring he now carries the Movements Director lane on Underground's Executive Team alongside Joel Repic, supporting the 100+ Tampa microchurches and dozens of sister movements worldwide while still pastoring a neighborhood house church inside Tampa's subsidized housing projects with his wife Jami and their three kids.\n\nHis path runs unusually. A BA in Pure Mathematics from SIU Carbondale, a research stint at TU Braunschweig in Germany, then a Master of Global Leadership in Missions and Missiology from Fuller Theological Seminary — the mathematician is still visible in the pastor. His written corpus is lean and deliberately so: ten Medium essays, the prescient The Parable of the White Pastor on Missio Alliance, and a fifty-three-minute Underground Essentials session on Creedal Community. Across the Theology in the Raw, Shifting Culture, and Starfish and the Church podcasts he keeps returning to one line: cities transformed by the priesthood of all believers activated in the mission of God. The Hubology vocabulary he is building with Rob Wegner and Lance Ford runs through everything he teaches.",
     work: [
       {
         t: "Teaching",
