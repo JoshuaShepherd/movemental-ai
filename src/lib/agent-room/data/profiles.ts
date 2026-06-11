@@ -26,6 +26,11 @@ export interface ProfileLink {
   href: string;
 }
 
+export interface ProfileNotableWork {
+  title: string;
+  line: string;
+}
+
 export interface Profile {
   approved: boolean;
   lede: string;
@@ -36,6 +41,10 @@ export interface Profile {
   workSay: string[];
   /** Grounded lines about how the leader connects to the network. */
   connectSay: string[];
+  /** Representative works, talks, or ideas — credibility substance. */
+  notableWorks?: ProfileNotableWork[];
+  /** Signature idea or pull quote in ink style. */
+  pullQuote?: string;
   links: ProfileLink[];
 }
 
@@ -198,6 +207,26 @@ export const PROFILES: Record<number, Profile> = {
       "Tampa Underground connects to Brian Sanders and the Forge microchurch stream.",
       "Decentralized planting is core to the network behind this path.",
     ],
+    notableWorks: [
+      {
+        title: "The Parable of the White Pastor",
+        line: "Missio Alliance — pastoral identity, race, and privilege from inside subsidized housing.",
+      },
+      {
+        title: "10 Thoughts After 10 Years of Planting & Directing Microchurch Networks",
+        line: "Medium manifesto on starfish networks, the ecclesial minimum, and reproducible church forms.",
+      },
+      {
+        title: "The Ecclesial Minimum",
+        line: "Teaching frame — worship, community, and mission as the irreducible definition of church.",
+      },
+      {
+        title: "Shifting Culture Ep. 175",
+        line: "Podcast — cities transformed when the priesthood of all believers is activated.",
+      },
+    ],
+    pullQuote:
+      "Cities transformed by the priesthood of all believers activated in the mission of God.",
     links: [],
   },
   8: {
@@ -209,14 +238,14 @@ export const PROFILES: Record<number, Profile> = {
       { t: "Builds", g: "The four-stage path — Safety, Sandbox, Training, Tech — and the technology behind it." },
     ],
     connection:
-      "Founder of Movemental. Josh began collaborating with Brad and Alan in 2024, around a shared concern: that the AI moment would happen to mission-driven organizations rather than be navigated by them.",
+      "Founder of Movemental. Josh began collaborating with Brad and Alan around a shared concern: that the AI moment would happen to mission-driven organizations rather than be navigated by them. Movemental took shape in 2026.",
     workSay: [
       "Josh founded Movemental and builds the path — Safety, Sandbox, Training, Tech.",
       "He came to it as a pastor first, building the infrastructure from inside the practice.",
     ],
     connectSay: [
       "Founder of Movemental.",
-      "He began building this with Brad and Alan in 2024.",
+      "He built this with Brad and Alan as Movemental took shape in 2026.",
     ],
     links: [],
   },

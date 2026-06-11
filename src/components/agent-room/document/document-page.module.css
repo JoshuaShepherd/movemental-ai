@@ -1,0 +1,9 @@
+.page {
+  min-height: 100dvh;
+  background: var(--color-ink-band-bg);
+  color: var(--color-ink-band-ink);
+}
+
+.main {
+  min-width: 0;
+}

@@ -73,10 +73,10 @@ export function InviteManager() {
           {links.map((url) => (
             <li
               key={url}
-              className="flex items-center justify-between gap-3 rounded-xl border border-border bg-card p-4"
+              className="flex flex-col gap-2 rounded-xl border border-border bg-card p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-3"
             >
-              <code className="truncate text-sm text-foreground">{url}</code>
-              <Button type="button" variant="outline" onClick={() => copy(url)}>
+              <code className="min-w-0 truncate text-sm text-foreground">{url}</code>
+              <Button type="button" variant="outline" className="shrink-0" onClick={() => copy(url)}>
                 {copied === url ? "Copied" : "Copy"}
               </Button>
             </li>

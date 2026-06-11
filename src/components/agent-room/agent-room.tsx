@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 
 import { AGENT_ROOM_MODE } from "@/lib/agent-room/mode";
 import styles from "./ink-band.module.css";
@@ -17,6 +17,7 @@ import { StreamScreen } from "./screen/stream-screen";
 import { HybridScreen } from "./screen/hybrid-screen";
 import { StubScreen } from "./screen/stub/stub-screen";
 import { CaptureScreen } from "./screen/stub/capture-screen";
+import { highlightChipForScene } from "@/lib/agent-room/scene-highlight";
 import { BEAT_PLACEHOLDER, STREAM_PLACEHOLDER, type ComposerChip } from "./composer";
 import { DiscussFold } from "./discuss/discuss-sheet";
 import type { VoiceState } from "./use-agent-room-stream";
@@ -47,6 +48,7 @@ function AgentRoomView({
   onCaptureSkip,
   showHandbookCapture,
   onConversationActive,
+  highlightChipLabel,
 }: {
   screenNode: ReactNode;
   screenKey: string;
@@ -68,9 +70,12 @@ function AgentRoomView({
   onCaptureSkip?: () => void;
   showHandbookCapture?: boolean;
   onConversationActive?: () => void;
+  /** Label of the ONE float chip that earns the highlighter swipe (null = none). */
+  highlightChipLabel?: string | null;
 }) {
   const { gestureRootEl } = useAgentRoomRefs();
   const discuss = phase === "discuss";
+  const [dockExpanded, setDockExpanded] = useState(false);
   // Passage turns already render in the thread as body prose; keep live ink only
   // while streaming or for short voice-surface replies (filtered from the thread).
   const lastAssistant = transcript.filter((t) => t.role === "assistant").at(-1);
@@ -101,17 +106,21 @@ function AgentRoomView({
     <div
       ref={gestureRootEl}
       className={`ink-band-surface ${styles.room} ${styles.roomDock} ${
-        beat ? styles.roomBeat : ""
-      } ${discuss ? styles.discuss : ""}`}
+        dockExpanded ? styles.roomDockConversation : ""
+      } ${beat ? styles.roomBeat : ""} ${discuss ? styles.discuss : ""}`}
     >
       <InkOverlay />
       <Mast onHome={onReplay} />
 
-      <ScreenZone scroll={scroll || discuss} home={home && !discuss}>
-        <div key={screenKey} className={styles.settle}>
-          {screenNode}
-        </div>
-        {!discuss && <DiscussFold transcript={transcript} />}
+      <ScreenZone scroll={(scroll || discuss) && !dockExpanded} home={home && !discuss && !dockExpanded}>
+        {!dockExpanded ? (
+          <>
+            <div key={screenKey} className={styles.settle}>
+              {screenNode}
+            </div>
+            {!discuss && <DiscussFold transcript={transcript} />}
+          </>
+        ) : null}
       </ScreenZone>
 
       <AgentDock
@@ -130,7 +139,9 @@ function AgentRoomView({
         liveThinking={isStreaming && voice.thinking}
         liveThinkingNote={voice.note}
         onConversationActive={onConversationActive}
+        onExpandedChange={setDockExpanded}
         screenKey={screenKey}
+        highlightChipLabel={highlightChipLabel}
       />
     </div>
   );
@@ -142,6 +153,7 @@ function AgentRoomView({
 function HybridRoom() {
   const room = useAgentRoomHybrid();
   const { screen } = room;
+  const highlightChipLabel = highlightChipForScene(screen.id, room.suggestions);
   return (
     <AgentRoomView
       screenNode={
@@ -181,6 +193,7 @@ function HybridRoom() {
       onCaptureSkip={room.onCaptureSkip}
       showHandbookCapture={room.showHandbookCapture}
       onConversationActive={room.markConversationActive}
+      highlightChipLabel={highlightChipLabel}
     />
   );
 }
@@ -191,6 +204,7 @@ function HybridRoom() {
 function StubRoom() {
   const room = useAgentRoomStub();
   const { screen } = room;
+  const highlightChipLabel = highlightChipForScene(screen.id, room.suggestions);
   return (
     <AgentRoomView
       screenNode={
@@ -223,6 +237,7 @@ function StubRoom() {
       onCaptureSubmit={room.onCaptureSubmit}
       onCaptureSkip={room.onCaptureSkip}
       showHandbookCapture={room.showHandbookCapture}
+      highlightChipLabel={highlightChipLabel}
     />
   );
 }
@@ -235,6 +250,8 @@ function StreamRoom() {
   const inBeat =
     (screen.kind === "local" && screen.id === "beat") ||
     (screen.kind === "component" && screen.component === "beat");
+  const screenId = screen.kind === "local" ? screen.id : atOpening ? "home" : "stream";
+  const highlightChipLabel = highlightChipForScene(screenId, room.suggestions);
   return (
     <AgentRoomView
       screenNode={
@@ -268,6 +285,7 @@ function StreamRoom() {
       phase={room.phase}
       transcript={room.transcript}
       stubDiscussCapture={room.stubDiscussCapture}
+      highlightChipLabel={highlightChipLabel}
     />
   );
 }

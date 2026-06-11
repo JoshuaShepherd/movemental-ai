@@ -6,28 +6,35 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 
 import { LEADERS } from "@/lib/agent-room/data/leaders";
-import { getProfile, getProfileAsync, type Profile } from "@/lib/agent-room/data/profiles";
+import {
+  getProfile,
+  getProfileAsync,
+  type Profile,
+  type ProfileNotableWork,
+} from "@/lib/agent-room/data/profiles";
 import styles from "../../ink-band.module.css";
 import { Crumb, LayerRow } from "./chrome";
 import { takePendingFlip } from "./leader-flip";
 import type { ScreenProps } from "./stub-screen";
 
+function NotableWorksSection({ works }: { works: ProfileNotableWork[] | undefined }) {
+  if (works?.length) {
+    return (
+      <ul className={styles.notableWorks}>
+        {works.map((item) => (
+          <li key={item.title} className={styles.notableWorkItem}>
+            <strong>{item.title}</strong>
+            <span>{item.line}</span>
+          </li>
+        ))}
+      </ul>
+    );
+  }
+  return <p className={styles.needsResearch}>Notable works — needs research.</p>;
+}
+
 /**
- * Per-leader profile (prototype `leaderHTML(i)`). The leader index arrives on the
- * `show` act as `opts.id`; `getProfile()` is the single content seam — an
- * approved record renders the full bio / work / connection blocks, otherwise an
- * honest stub. All 17 founders ship approved (see `profiles.ts`), but the stub
- * branch is kept so a future un-approved record degrades honestly.
- *
- * On mount the hero photo runs the band→hero FLIP from the tapped portrait's
- * captured rect (skipped under reduced motion). The wrapping screen node remounts
- * on every `show` (keyed by nonce in the view), so this layout effect fires fresh
- * each time a leader opens.
- *
- * INT-06: the profile starts at the local curated record (instant, FLIP-safe),
- * and in **stream mode only** (`stream` present) upgrades to the corpus-enriched
- * record via `getProfileAsync` (bio + work from Supabase; curated voice lines
- * kept). Stub mode never fetches, so it stays zero-network.
+ * Per-leader profile — one consistent scope for every leader in the network.
  */
 export function LeaderScreen({ opts, onHome, stream }: ScreenProps) {
   const i = opts.id ?? 0;
@@ -36,7 +43,7 @@ export function LeaderScreen({ opts, onHome, stream }: ScreenProps) {
 
   const isStream = !!stream;
   useEffect(() => {
-    if (!isStream) return; // stub stays local + zero-network
+    if (!isStream) return;
     let alive = true;
     void getProfileAsync(i).then((p) => {
       if (alive) setProfile(p);
@@ -62,7 +69,7 @@ export function LeaderScreen({ opts, onHome, stream }: ScreenProps) {
     hero.style.transformOrigin = "top left";
     hero.style.transition = "none";
     hero.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
-    void hero.getBoundingClientRect(); // force reflow before the transition
+    void hero.getBoundingClientRect();
     requestAnimationFrame(() => {
       hero.style.transition = "transform 0.52s cubic-bezier(0.2, 0.7, 0.2, 1)";
       hero.style.transform = "none";
@@ -86,6 +93,7 @@ export function LeaderScreen({ opts, onHome, stream }: ScreenProps) {
       {profile ? (
         <>
           <p className={`${styles.leadBio} ${styles.fade}`}>{profile.bio}</p>
+
           <div className={`${styles.sec} ${styles.fade}`}>
             <p className={styles.secLabel}>Their work</p>
             <div className={styles.layers}>
@@ -94,11 +102,26 @@ export function LeaderScreen({ opts, onHome, stream }: ScreenProps) {
               ))}
             </div>
           </div>
+
           <div className={`${styles.sec} ${styles.fade}`}>
             <p className={styles.secLabel}>How they connect</p>
             <p className={styles.body} style={{ marginTop: "0.2rem" }}>
               {profile.connection}
             </p>
+          </div>
+
+          <div className={`${styles.sec} ${styles.fade}`}>
+            <p className={styles.secLabel}>In their words / notable work</p>
+            <NotableWorksSection works={profile.notableWorks} />
+          </div>
+
+          <div className={`${styles.sec} ${styles.fade}`}>
+            <p className={styles.secLabel}>Signature idea</p>
+            {profile.pullQuote ? (
+              <blockquote className={styles.leaderPullQuote}>{profile.pullQuote}</blockquote>
+            ) : (
+              <p className={styles.needsResearch}>Pull quote — needs research.</p>
+            )}
           </div>
         </>
       ) : (

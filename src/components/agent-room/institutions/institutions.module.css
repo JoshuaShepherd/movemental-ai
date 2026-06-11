@@ -108,12 +108,15 @@
 }
 
 .mobileMenuBtn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-family: var(--font-ink-mono);
   font-size: 0.62rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-ink-band-blue);
-  padding: 0.25rem 0.5rem;
+  padding: 0 1rem;
   border: 1px solid var(--color-ink-band-border);
   border-radius: 999px;
   background: var(--color-ink-band-paper);
@@ -473,6 +476,45 @@
   flex-wrap: wrap;
   gap: 0.65rem;
   margin-top: 1.5rem;
+}
+
+.assessmentPreview {
+  margin-top: 2.25rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--color-ink-band-border);
+}
+.assessmentPreviewCaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+.assessmentPreviewEyebrow {
+  font-family: var(--font-ink-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+}
+.assessmentPreviewTitle {
+  font-family: var(--font-ink-display);
+  font-size: 1.25rem;
+  color: var(--color-ink-band-ink);
+}
+.assessmentPreviewSub {
+  font-size: 0.88rem;
+  color: var(--color-ink-band-ink-muted);
+  max-width: 52ch;
+}
+.assessmentPreviewSpread {
+  margin-top: 0.5rem;
+}
+.assessmentPreviewNote {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--color-ink-band-ink-muted);
+  max-width: 58ch;
 }
 
 /* ---- Responsive ---- */

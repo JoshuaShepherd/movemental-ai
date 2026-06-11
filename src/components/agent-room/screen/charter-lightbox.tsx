@@ -3,6 +3,7 @@
 import { useCallback, useEffect } from "react";
 
 import type { SafetyCharterDocument } from "@/lib/agent-room/data/safety-charter";
+import { SAFETY_GUIDEBOOK } from "@/lib/agent-room/naming";
 import styles from "../ink-band.module.css";
 
 export function CharterLightbox({
@@ -52,7 +53,7 @@ export function CharterLightbox({
         >
           ×
         </button>
-        <p className={styles.lbEyebrow}>AI Safety Handbook · Layer {doc.layer}</p>
+        <p className={styles.lbEyebrow}>{SAFETY_GUIDEBOOK.fullTitle} · Layer {doc.layer}</p>
         <h2 className={styles.lbTitle} id="charter-lb-title">
           {doc.title}
         </h2>

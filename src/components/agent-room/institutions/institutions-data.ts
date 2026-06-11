@@ -84,12 +84,14 @@ export const TOOL_EXAMPLES = [
   },
 ] as const;
 
-/** Section 8 — four stages (Guidebook canon) */
+import { PATH_STAGE_RAIL } from "@/lib/agent-room/naming";
+
+/** Section 8 — four stages (Handbook canon) */
 export const PATH_STAGES = [
-  { n: "01", title: "Safety", here: true },
-  { n: "02", title: "Sandbox", here: false },
-  { n: "03", title: "Skills", here: false },
-  { n: "04", title: "Solutions", here: false },
+  { ...PATH_STAGE_RAIL[0], here: true },
+  { ...PATH_STAGE_RAIL[1], here: false },
+  { ...PATH_STAGE_RAIL[2], here: false },
+  { ...PATH_STAGE_RAIL[3], here: false },
 ] as const;
 
 /** On-page letter embed omits opening + student-drafting paragraph (Section 2 covers that). */

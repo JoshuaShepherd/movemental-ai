@@ -11,7 +11,7 @@
 **Token SSOT:** [src/app/globals.css](../../src/app/globals.css) (`@theme inline` + `:root`/`.dark` hex)
 and [tailwind.config.ts](../../tailwind.config.ts) (fonts, fluid type scale, radii, motion).
 *When `tailwind.config.ts` and this doc disagree, **this doc wins**.*
-**Primitives:** [src/components/primitives/](../../src/components/primitives/) · **Agent UI skill:** `concept-modern-ui`.
+**Primitives:** [src/components/primitives/](../../src/components/primitives/) · **Agent UI skill:** `movemental-ink`.
 **Scope:** marketing surfaces only. Authenticated product shells (`/safestart`, `/sandboxlive`,
 `/program`) and the agent room (`/agent`, `.oat-surface`) use **scoped** token sets — never put those
 on a marketing page.

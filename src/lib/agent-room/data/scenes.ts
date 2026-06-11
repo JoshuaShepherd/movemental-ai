@@ -11,6 +11,7 @@
  * (chips may target a not-yet-wired scene — a harmless no-op).
  */
 import type { Scene, SceneFactory } from "../acts";
+import { FREE_HANDBOOK_CTA, SAFETY_HANDBOOK } from "../naming";
 import { CONCIERGE_VOICE } from "./concierge-voice-lines";
 import { DISCUSS_ENABLED } from "../discuss";
 
@@ -38,8 +39,8 @@ export const SCENES = {
     { say: "We help you meet AI without losing trust." },
     {
       suggest: [
-        { label: "Map where we actually stand", lead: true, to: "toBeat" },
-        { label: "See the whole path", to: "toPath" },
+        { label: "See the whole path", lead: true, to: "toPath" },
+        { label: "Map where we actually stand", to: "toBeat" },
         { label: "What does it cost?", to: "cost" },
         { label: "Get in touch", to: "talkToUs" },
       ],
@@ -53,10 +54,9 @@ export const SCENES = {
     { say: "The guides are free. Facilitation is fixed-price." },
     {
       suggest: [
-        { label: "Map where we actually stand", lead: true, to: "toBeat" },
+        { label: "Start with Safety (free)", lead: true, to: "toSafety" },
+        { label: "Map where we actually stand", to: "toBeat" },
         { label: "See the whole path", to: "toPath" },
-        { label: "Get in touch", to: "talkToUs" },
-        { label: "Start with Safety (free)", to: "toSafety" },
       ],
     },
   ],
@@ -68,9 +68,8 @@ export const SCENES = {
     { say: "Ten groups. Jump to what you need on the page." },
     {
       suggest: [
-        { label: "Map where we actually stand", lead: true, to: "toBeat" },
-        { label: "What does it cost?", to: "cost" },
-        { label: "Get in touch", to: "talkToUs" },
+        { label: "Get in touch", lead: true, to: "talkToUs" },
+        { label: "Map where we actually stand", to: "toBeat" },
         { label: "↺ Start over", to: "opening" },
       ],
     },
@@ -83,9 +82,9 @@ export const SCENES = {
     { say: "Connected to the leaders on the home page." },
     {
       suggest: [
-        { label: "Map where we actually stand", lead: true, to: "toBeat" },
+        { label: "Talk to us", lead: true, to: "talkToUs" },
+        { label: "Map where we actually stand", to: "toBeat" },
         { label: "About Movemental", to: "whatIs" },
-        { label: "Talk to us", to: "talkToUs" },
       ],
     },
   ],
@@ -97,8 +96,8 @@ export const SCENES = {
     { say: "We read every message — and reply personally." },
     {
       suggest: [
-        { label: "Map where we actually stand", lead: true, to: "toBeat" },
-        { label: "↺ Start over", to: "opening" },
+        { label: "↺ Start over", lead: true, to: "opening" },
+        { label: "Map where we actually stand", to: "toBeat" },
       ],
     },
   ],
@@ -109,8 +108,8 @@ export const SCENES = {
     { say: "That network is the point." },
     {
       suggest: [
-        { label: "Map where we actually stand", lead: true, to: "toBeat" },
-        { label: "Back to the leaders", to: "opening" },
+        { label: "Back to the leaders", lead: true, to: "opening" },
+        { label: "Map where we actually stand", to: "toBeat" },
       ],
     },
   ],
@@ -147,10 +146,11 @@ export const SCENES = {
     { say: "Almost everyone starts at the first step." },
     {
       suggest: [
-        { label: "Map where we actually stand", lead: true, to: "toBeat" },
+        { label: "Show me Safety", lead: true, to: "toSafety" },
+        { label: "Map where we actually stand", to: "toBeat" },
         ...(DISCUSS_ENABLED
           ? [{ label: "Our situation is more complicated than this", to: "toDiscuss" as const }]
-          : [{ label: "Show me Safety", to: "toSafety" as const }]),
+          : []),
         { label: "What does it cost?", to: "cost" },
       ],
     },
@@ -195,7 +195,7 @@ export const SCENES = {
   ],
   safetyWithoutIt: [
     {
-      say: "Without a ratified Handbook, every staff member decides alone under time pressure. Donor data ends up in consumer tools. Pastoral notes get pasted into chatbots. A cloned voice can reach your people before you have a response plan.",
+      say: `Without a ratified ${SAFETY_HANDBOOK.shortLabel}, every staff member decides alone under time pressure. Donor data ends up in consumer tools. Pastoral notes get pasted into chatbots. A cloned voice can reach your people before you have a response plan.`,
     },
     { wait: 200 },
     {
@@ -254,13 +254,13 @@ export const SCENES = {
     },
   ],
   focusHandbook: [
-    { say: "Get your free AI Safety Handbook — leave your email right here." },
+    { say: `Get your free ${SAFETY_HANDBOOK.fullTitle} — leave your email right here.` },
     { wait: 160 },
     { gesture: "circle", target: "#handbookEmail" },
   ],
-  /** @deprecated alias — handbook capture lives in the agent dock now. */
+  /** @deprecated alias — guidebook capture lives in the agent dock now. */
   onOwn: [
-    { say: "Get your free AI Safety Handbook — leave your email right here." },
+    { say: `Get your free ${SAFETY_HANDBOOK.fullTitle} — leave your email right here.` },
     { wait: 160 },
     { gesture: "circle", target: "#handbookEmail" },
   ],
@@ -268,7 +268,7 @@ export const SCENES = {
     { show: "safetyDashboard" },
     { wait: 200 },
     {
-      say: "The handbook is the map. The dashboard is how you actually move.",
+      say: `The ${SAFETY_HANDBOOK.shortLabel.toLowerCase()} is the map. The dashboard is how you actually move.`,
     },
     { wait: 180 },
     {
@@ -277,7 +277,7 @@ export const SCENES = {
     {
       suggest: [
         { label: "Get started with the dashboard", lead: true, to: "toEnroll" },
-        { label: "Get the free Handbook", to: "focusHandbook" },
+        { label: FREE_HANDBOOK_CTA, to: "focusHandbook" },
         { label: "↺ Start over", to: "opening" },
       ],
     },
@@ -302,7 +302,8 @@ export const SCENES = {
     { wait: 160 },
     {
       suggest: [
-        { label: "Map where we actually stand", lead: true, to: "toBeat" },
+        { label: "Want this for your actual organization?", lead: true, to: "toOrgAssessment" },
+        { label: "Map where we actually stand", to: "toBeat" },
         { label: "↺ Start over", to: "opening" },
       ],
     },

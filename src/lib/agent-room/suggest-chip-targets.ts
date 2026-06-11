@@ -17,6 +17,9 @@ export const HANDBOOK_EMAIL_CHIP_TARGET = "focusHandbook";
 /** Chip `to` value — full Safety dashboard enrollment (name, org, Stripe payment). */
 export const ENROLL_CHIP_TARGET = "toEnroll";
 
+/** Chip `to` value — deep organizational AI reality assessment (~40 questions). */
+export const ORG_ASSESSMENT_CHIP_TARGET = "toOrgAssessment";
+
 export const READBACK_EMAIL_INPUT_ID = "readbackEmail";
 
 export const HANDBOOK_EMAIL_INPUT_ID = "handbookEmail";
@@ -59,6 +62,12 @@ export function handleSuggestChipTarget(
   if (to === ENROLL_CHIP_TARGET) {
     if (typeof window !== "undefined") {
       window.location.assign("/enroll");
+    }
+    return true;
+  }
+  if (to === ORG_ASSESSMENT_CHIP_TARGET) {
+    if (typeof window !== "undefined") {
+      window.location.assign("/assess");
     }
     return true;
   }

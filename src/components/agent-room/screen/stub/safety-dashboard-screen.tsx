@@ -1,8 +1,9 @@
 "use client";
 
-import Link from "next/link";
-
-import { SAFETY_DASHBOARD_COPY, type DashboardProseBlock } from "@/lib/agent-room/data/safety-dashboard";
+import {
+  SAFETY_DASHBOARD_COPY,
+  type DashboardProseBlock,
+} from "@/lib/agent-room/data/safety-dashboard";
 import styles from "../../ink-band.module.css";
 import type { ScreenProps } from "./stub-screen";
 
@@ -57,12 +58,6 @@ export function SafetyDashboardScreen(_props: ScreenProps) {
             <li key={step}>{step}</li>
           ))}
         </ol>
-      </div>
-
-      <div className={styles.dashboardBridge}>
-        <Link className={styles.ctaLead} href={SAFETY_DASHBOARD_COPY.ctaHref}>
-          {SAFETY_DASHBOARD_COPY.cta}
-        </Link>
       </div>
     </>
   );

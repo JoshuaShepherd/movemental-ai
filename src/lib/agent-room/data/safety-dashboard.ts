@@ -1,13 +1,14 @@
 /**
  * Dashboard conversion screen — ported from `docs/html/safety-scene/03-dashboard-conversion.html`.
  */
+import { SAFETY_GUIDEBOOK } from "@/lib/agent-room/naming";
 export type DashboardProseBlock = string | { hand: string };
 
 export const SAFETY_DASHBOARD_COPY = {
   eyebrow: "Safety · the vehicle",
   headline: "Even with a map, it's hard to move sometimes.",
   open: [
-    "The AI Safety Handbook doesn't hold back. What a Safety charter is, why each of the five documents matters, how to build them — exact templates. Read it and you'll know exactly what your organization needs to decide.",
+    `The ${SAFETY_GUIDEBOOK.fullTitle} doesn't hold back. What a Safety charter is, why each of the five documents matters, how to build them — exact templates. Read it and you'll know exactly what your organization needs to decide.`,
     { hand: "But it's still… a lot." },
     "The next step is clear, but it's still hard to stare at a blank page, to decide who decides, to communicate with stakeholders, to assess the actual reality within your organization in a way that doesn't become your new, permanent full-time position.",
   ] satisfies DashboardProseBlock[],
@@ -30,7 +31,7 @@ export const SAFETY_DASHBOARD_COPY = {
   cta: "Get started with the dashboard →",
   ctaHref: "/enroll",
   dock: {
-    voiceLine: "The handbook is the map. The dashboard is how you actually move.",
+    voiceLine: `The ${SAFETY_GUIDEBOOK.shortLabel.toLowerCase()} is the map. The dashboard is how you actually move.`,
     composerPlaceholder: "Ask about the dashboard or what happens next…",
   },
 } as const;

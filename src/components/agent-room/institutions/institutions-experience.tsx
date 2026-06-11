@@ -14,6 +14,9 @@ import {
   PATH_STAGES,
   TOOL_EXAMPLES,
 } from "./institutions-data";
+import { InstitutionsAssessmentPreview } from "./assessment-preview";
+import { AskAiPromptButton } from "../ink/ask-ai-prompt-button";
+import { PATH_STAGE_LABELS } from "@/lib/agent-room/naming";
 import styles from "./institutions.module.css";
 import { FoundationDiagram } from "./foundation-diagram";
 import { useScrollSpy } from "./use-scroll-spy";
@@ -206,6 +209,9 @@ export function InstitutionsExperience({ letterMarkdown }: { letterMarkdown: str
                   Send to your board
                 </button>
               </div>
+              <AskAiPromptButton
+                prompt={`I'm reading Movemental's letter to a seminary president (movemental.ai/agent/institutions). Summarize the core argument, the four-stage path (Safety, Sandbox, Training, Tech), and what a board-ready first step would look like. Note anything that needs verification.`}
+              />
             </div>
           </section>
 
@@ -231,6 +237,7 @@ export function InstitutionsExperience({ letterMarkdown }: { letterMarkdown: str
                 ))}
               </div>
               <FoundationDiagram />
+              <InstitutionsAssessmentPreview />
             </div>
           </section>
 
@@ -285,10 +292,13 @@ export function InstitutionsExperience({ letterMarkdown }: { letterMarkdown: str
                 We don&apos;t do this all at once, and we don&apos;t start with the tech. There&apos;s
                 an order. <span className={styles.hl}>Safety first</span> — decide, in writing, what
                 you will and won&apos;t do with AI. Then Sandbox — test it against real work. Then
-                Skills — form your people. Then Solutions — build the tools. Each step earns the next.
-                Your first move is Safety.
+                {PATH_STAGE_LABELS.training} — form your people. Then {PATH_STAGE_LABELS.tech} — build
+                the tools. Each step earns the next. Your first move is Safety.
               </p>
-              <div className={styles.stageRail} aria-label="Four stages: Safety, Sandbox, Skills, Solutions">
+              <div
+                className={styles.stageRail}
+                aria-label={`Four stages: ${PATH_STAGE_LABELS.safety}, ${PATH_STAGE_LABELS.sandbox}, ${PATH_STAGE_LABELS.training}, ${PATH_STAGE_LABELS.tech}`}
+              >
                 {PATH_STAGES.map((stage) => (
                   <div
                     key={stage.title}
@@ -319,10 +329,18 @@ export function InstitutionsExperience({ letterMarkdown }: { letterMarkdown: str
                 >
                   Talk to us
                 </a>
+                <a className={styles.btnSecondary} href="/assess">
+                  Map your organization in depth
+                </a>
                 <button type="button" className={styles.btnSecondary} onClick={downloadLetter}>
                   Download the letter
                 </button>
               </div>
+              <AskAiPromptButton
+                prompt={`I'm reading Movemental's case for seminaries and institutions (movemental.ai/agent/institutions). They argue AI is already inside seminary life, fragmentation is the deeper problem, and the path is Safety → Sandbox → Training → Tech — with a ratified AI Safety Handbook first.
+
+Summarize the argument in plain language for a seminary president. What would a credible first step look like? What should I push back on?`}
+              />
             </div>
           </section>
         </main>

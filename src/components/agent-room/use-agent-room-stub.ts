@@ -8,6 +8,7 @@ import { submitLead, LEADS } from "@/lib/agent-room/capture";
 import { MAP_Q, computeMapRead, type MapOption, type MapRead } from "@/lib/agent-room/data/map-q";
 import { beatScene } from "@/lib/agent-room/beat-scenes";
 import { leaderScene, leaderWorkScene, leaderConnectScene } from "@/lib/agent-room/leader-scenes";
+import { clearAgentDeepLinkParams, readAgentDeepLink } from "@/lib/agent-room/deep-link";
 import { routeInput, FALLBACK_SAY } from "@/lib/agent-room/route-input";
 import {
   DISCUSS_ENABLED,
@@ -328,11 +329,25 @@ export function useAgentRoomStub(): AgentRoomController {
   }, [abandonCapture, run]);
 
   // Boot the opening scene once fonts settle (prototype `app.js`). The ink
-  // layer already sizes its overlay on mount + `fonts.ready`.
+  // layer already sizes its overlay on mount + `fonts.ready`. Deep links from
+  // document pages (`?leader=N`, `?ask=…`) override the default opening.
   useEffect(() => {
     let cancelled = false;
     const boot = () => {
-      if (!cancelled) run("opening");
+      if (cancelled) return;
+      const link = readAgentDeepLink();
+      clearAgentDeepLinkParams();
+      if (link?.kind === "leader") {
+        currentLeaderRef.current = link.index;
+        void play(leaderScene(link.index));
+        return;
+      }
+      if (link?.kind === "ask") {
+        show("home", {});
+        sendMessage(link.text);
+        return;
+      }
+      run("opening");
     };
     if (typeof document !== "undefined" && "fonts" in document) {
       document.fonts.ready.then(boot).catch(boot);
@@ -342,7 +357,7 @@ export function useAgentRoomStub(): AgentRoomController {
     return () => {
       cancelled = true;
     };
-  }, [run]);
+  }, [play, run, sendMessage, show]);
 
   useEffect(() => {
     const onOpenHandbook = () => setHandbookCaptureActive(true);

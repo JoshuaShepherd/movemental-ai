@@ -92,7 +92,7 @@ export const FIELD_GUIDE_PAGE_COPY: Record<FieldGuideKind, FieldGuidePageCopy> =
     meta: ["33 pages", "Free", "Self-assessment included", "No drip campaign"],
     insideHeading: "Five layers. Seven deliverables. One ratifiable framework.",
     inside: SAFETY_INSIDE,
-    success: "Check your inbox — your AI Safety Handbook is on its way.",
+    success: `Check your inbox — your ${SAFETY_HANDBOOK_DISPLAY_TITLE} is on its way.`,
     pdfPath: SAFETY_FIELD_GUIDE_PDF_PATH,
     pdfFilename: SAFETY_FIELD_GUIDE_DOWNLOAD_FILENAME,
     otherGuide: {

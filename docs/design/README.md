@@ -11,6 +11,6 @@
 
 **Archived reference (not live in this repo):** [DESIGN.md](./DESIGN.md) documents the former
 Concept Modern marketing system, preserved for when marketing routes return from a separate merge.
-The `concept-modern-ui` skill symlink remains but is inactive for agent-only work here.
+The `movemental-ink` skill is the active front-end design skill for the Ink Band agent room here.
 
 Related: [type-safety chain](../architecture/TYPE_SAFETY_CHAIN.md).

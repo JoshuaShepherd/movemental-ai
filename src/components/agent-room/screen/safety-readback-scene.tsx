@@ -8,6 +8,7 @@ import {
   SAFETY_READBACK_COPY,
   type SafetyCharterDocument,
 } from "@/lib/agent-room/data/safety-charter";
+import { SAFETY_GUIDEBOOK } from "@/lib/agent-room/naming";
 import type { MapRead } from "@/lib/agent-room/data/map-q";
 import styles from "../ink-band.module.css";
 import { CharterLightbox } from "./charter-lightbox";
@@ -44,7 +45,7 @@ export function SafetyReadbackScene({ mapRead, onRunScene, disabled }: SafetyRea
         </aside>
       </div>
 
-      <section className={styles.charterFold} aria-label="AI Safety Handbook charter">
+      <section className={styles.charterFold} aria-label={`${SAFETY_GUIDEBOOK.fullTitle} charter`}>
         <p className={styles.secLabel}>{SAFETY_READBACK_COPY.charterLabel}</p>
         <div className={`${styles.docSpread} ${styles.docSpreadFold}`}>
           {SAFETY_CHARTER_DOCUMENTS.map((doc, idx) => (
@@ -83,6 +84,12 @@ export function SafetyReadbackScene({ mapRead, onRunScene, disabled }: SafetyRea
       </section>
 
       <SafetyPlanCards onRunScene={onRunScene} disabled={disabled} />
+
+      <p className={styles.dashboardBridge}>
+        <a className={styles.ctaLead} href="/assess">
+          Want this for your actual organization? Take the full AI reality assessment →
+        </a>
+      </p>
 
       <CharterLightbox doc={activeDoc} onClose={() => setActiveDoc(null)} />
     </>

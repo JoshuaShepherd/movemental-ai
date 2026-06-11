@@ -2,6 +2,10 @@
  * Safety readback scene — hero copy, charter spread metadata, and door cards.
  * Ported from `docs/html/safety-scene/safety-scene.js`.
  */
+import {
+  FREE_GUIDEBOOK_CTA,
+  SAFETY_GUIDEBOOK,
+} from "@/lib/agent-room/naming";
 import { SAFETY_CHARTER_DRAFTS } from "./safety-charter-drafts";
 
 export interface SafetyCharterDocument {
@@ -35,11 +39,11 @@ export const SAFETY_READBACK_COPY = {
     "The threats of AI to organizational credibility exist whether you adopt AI or not, and are guaranteed if we do nothing. The first move is to name reality and a grounded, written response.",
   nextMove:
     "Now that AI is already within our organizations, the only choice is to respond wisely and clearly. Our free guide will walk you through it, or we can sprint together. Because this step is actually urgent.",
-  plansPreview: "Two viable paths to the same ratified Handbook.",
+  plansPreview: `Two viable paths to the same ratified ${SAFETY_GUIDEBOOK.shortLabel}.`,
   doorsHonest:
     "Same outcome either way. Free means you hold the pen with a thorough guide; paid means we run the full process with you in the dashboard.",
   spreadHint: "Tap a document to read the full draft · sticky notes name what's missing",
-  charterLabel: "Your AI Handbook — five layers",
+  charterLabel: `Your AI ${SAFETY_GUIDEBOOK.shortLabel} — five layers`,
   pathLabel: "The path",
 } as const;
 
@@ -101,14 +105,14 @@ export const SAFETY_DOORS: SafetyDoor[] = [
     priceAmount: "$0",
     pricePeriod: "self-paced · 1–2 months",
     tagline: "A thorough, in-depth handbook — your team walks every layer.",
-    body: "The AI Safety Handbook is not a checklist. It is a full methodology: how to draft, stress-test, and ratify all five Handbook layers with your board and staff.",
+    body: `The ${SAFETY_GUIDEBOOK.fullTitle} is not a checklist. It is a full methodology: how to draft, stress-test, and ratify all five ${SAFETY_GUIDEBOOK.shortLabel} layers with your board and staff.`,
     features: [
       "Complete handbook — step-by-step through Statement, Policy, Context, Rules, and Response Plans",
       "Draft templates, ratification checklists, and escalation scripts you can hand to leadership",
       "Worked examples for churches, nonprofits, and institutions — not generic AI policy boilerplate",
       "Guidance when you are stuck; you hold the pen and set the pace",
     ],
-    cta: "Get the free Handbook",
+    cta: FREE_GUIDEBOOK_CTA,
     scene: "focusHandbook",
   },
   {
@@ -120,7 +124,7 @@ export const SAFETY_DOORS: SafetyDoor[] = [
     tagline: "The full managed process — in a dashboard, with every resource beside you.",
     body: "We draft all five layers customized to your organization, run working sessions with your team, and deliver a board-ready ratification package — not async email ping-pong.",
     features: [
-      "Private dashboard to review, comment on, and ratify each Handbook document",
+      `Private dashboard to review, comment on, and ratify each ${SAFETY_GUIDEBOOK.shortLabel} document`,
       "Custom drafts across all five layers, fitted to your theology, governance, and data posture",
       "Live working sessions with Movemental through the sprint",
       "Full resource library: exemplars, incident templates, vendor registers, and staff briefings",

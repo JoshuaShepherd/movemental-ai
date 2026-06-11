@@ -73,7 +73,18 @@ export function ReadbackScreen({
           </b>
         </span>
       </p>
+      <p className={styles.honest} style={{ marginTop: "0.75rem" }}>
+        Stage placement draws on the four-question reality map.{" "}
+        <a className={styles.inlineLink} href="/footnotes#safety-church-policy-9">
+          Sources
+        </a>
+      </p>
       {emailCapture}
+      <p className={styles.dashboardBridge}>
+        <a className={styles.ctaLead} href="/assess">
+          Want this for your actual organization? Take the full AI reality assessment →
+        </a>
+      </p>
     </div>
   );
 }

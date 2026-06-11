@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 
 import { SafetyHandbookCover } from "@/components/field-guide/safety-handbook-cover";
 import { Button } from "@/components/ui/button";
+import { SAFETY_GUIDEBOOK } from "@/lib/agent-room/naming";
 import {
   FIELD_GUIDE_PAGE_COPY,
   resolveFieldGuideKind,
@@ -132,7 +133,7 @@ function FieldGuideForm({ guide }: { guide: FieldGuideKind }) {
         {status === "loading"
           ? "Sending…"
           : guide === "safety"
-            ? "Send me the Handbook"
+            ? `Send me the ${SAFETY_GUIDEBOOK.shortLabel}`
             : "Send me the field guide"}
       </Button>
       <p className="text-sm leading-relaxed text-muted-foreground">

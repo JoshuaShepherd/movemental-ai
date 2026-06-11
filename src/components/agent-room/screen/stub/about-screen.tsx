@@ -1,5 +1,7 @@
 "use client";
 
+import { MOVEMENTAL_FOUNDING } from "@/lib/agent-room/naming";
+import { AskAiPromptButton } from "../../ink/ask-ai-prompt-button";
 import styles from "../../ink-band.module.css";
 import type { ScreenProps } from "./stub-screen";
 import { Crumb } from "./chrome";
@@ -22,9 +24,9 @@ export function AboutScreen({ onHome }: ScreenProps) {
           Three people started it. Alan Hirsch, a missiologist whose writing shaped
           how a generation understands movements. Brad Brisco, who has spent decades
           building missional infrastructure. And Joshua Shepherd, who builds the
-          technology and carries the founding calling. Movemental took shape in 2025,
-          out of a long conversation among the three about authorship, credibility,
-          and what AI was about to do to both.
+          technology and carries the founding calling. {MOVEMENTAL_FOUNDING.origin}{" "}
+          The conversation was about authorship, credibility, and what AI was about
+          to do to both.
         </p>
         <FoundersTeam />
       </div>
@@ -44,6 +46,8 @@ export function AboutScreen({ onHome }: ScreenProps) {
           whole becomes visible and believable in a way no one of them could be alone.
         </p>
       </div>
+
+      <AskAiPromptButton />
     </div>
   );
 }

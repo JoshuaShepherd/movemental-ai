@@ -711,14 +711,14 @@
 .cap{display:flex;flex-direction:column;gap:.9rem;max-width:34rem;margin-top:1.2rem}
 .capCell{display:flex;flex-direction:column;gap:.32rem}
 .capLabel{font-family:var(--font-ink-mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink-band-ink-muted)}
-.capReq{color:var(--color-ink-band-margin-red);font-weight:600}
+.capReq{color:var(--color-ink-band-margin-red-ink);font-weight:600}
 .capField{display:flex;align-items:center;border:1px solid var(--color-ink-band-border);border-radius:999px;background:var(--color-ink-band-paper);padding:.55rem 1.15rem;transition:border-color .15s,box-shadow .15s}
 .capField:focus-within{border-color:var(--color-ink-band-ink)}
 .capField input{flex:1 1 auto;width:100%;border:0;background:none;font:inherit;font-size:1rem;color:var(--color-ink-band-ink);padding:.32rem 0}
 .capField input:focus{outline:none}
 .capField input::placeholder{color:var(--color-ink-band-ink-muted)}
 .capFieldErr{border-color:var(--color-ink-band-margin-red);box-shadow:0 0 0 3px rgba(192,138,126,.14)}
-.capErr{font-family:var(--font-ink-mono);font-size:.62rem;letter-spacing:.03em;color:var(--color-ink-band-margin-red);margin-top:.05rem}
+.capErr{font-family:var(--font-ink-mono);font-size:.62rem;letter-spacing:.03em;color:var(--color-ink-band-margin-red-ink);margin-top:.05rem}
 .capSubmit{width:100%;margin-top:.4rem;background:var(--color-ink-band-ink);color:var(--color-ink-band-bg);border:0;border-radius:999px;padding:.8rem 1.2rem;font:inherit;font-weight:600;font-size:1rem;cursor:pointer;transition:background .15s,transform .15s}
 .capSubmit:hover{background:var(--color-ink-band-blue);transform:translateY(-1px)}
 .capSubmit:disabled{opacity:.5;cursor:default}
@@ -1301,7 +1301,7 @@
   color: var(--color-ink-band-blue);
 }
 .docStatusOpen {
-  color: var(--color-ink-band-margin-red);
+  color: var(--color-ink-band-margin-red-ink);
 }
 .sticky {
   position: absolute;
@@ -1311,15 +1311,15 @@
   left: auto;
   width: min(136px, 96%);
   padding: 0.5rem 0.55rem 0.58rem;
-  background: #fff9c4;
-  border: 1px solid #e8e0a8;
-  box-shadow: 2px 3px 8px -2px rgba(26, 26, 26, 0.22);
+  background: color-mix(in srgb, var(--color-ink-band-blue) 7%, var(--color-ink-band-paper));
+  border: 1px solid color-mix(in srgb, var(--color-ink-band-blue) 22%, var(--color-ink-band-border));
+  box-shadow: 2px 3px 8px -2px rgba(26, 26, 26, 0.18);
   transform: rotate(2.5deg);
   transform-origin: right bottom;
   font-family: var(--font-ink-hand);
   font-size: 0.82rem;
   line-height: 1.18;
-  color: #3d3a2e;
+  color: var(--color-ink-band-ink);
   pointer-events: none;
   z-index: 2;
 }
@@ -1543,13 +1543,13 @@ button.wayCtaPaid {
 .pathDrawer[data-stage="3"] {
   --path-bar: #b8aa98;
   --path-bar-active: #ae9f8c;
-  --path-label: #fffdf7;
+  --path-label: var(--color-ink-band-paper);
   --path-num: rgba(255, 255, 255, 0.82);
 }
 .pathDrawer[data-stage="4"] {
   --path-bar: var(--color-ink-band-blue);
   --path-bar-active: #1b3478;
-  --path-label: #fffdf7;
+  --path-label: var(--color-ink-band-paper);
   --path-num: rgba(255, 255, 255, 0.88);
 }
 .pathDrawerTrigger {
@@ -1936,7 +1936,7 @@ button.wayCtaPaid {
   font-family: var(--font-ink-mono);
   font-size: 0.68rem;
   letter-spacing: 0.04em;
-  color: var(--color-ink-band-margin-red);
+  color: var(--color-ink-band-margin-red-ink);
 }
 
 /* ===== plan cards (free vs paid preview) ===== */
@@ -2114,24 +2114,7 @@ button.wayCtaPaid {
   border: 1px solid var(--color-ink-band-border);
   border-radius: 12px;
   background: var(--color-ink-band-paper);
-  box-shadow: 0 -8px 24px -12px rgba(26, 26, 26, 0.18);
-}
-.handbookEmailHighlight {
-  position: relative;
-  isolation: isolate;
-  border-color: var(--color-ink-band-blue);
-  box-shadow: 0 -8px 24px -12px rgba(26, 26, 26, 0.22);
-}
-.handbookEmailHighlight::before {
-  content: "";
-  position: absolute;
-  inset: -4px -6px;
-  z-index: -1;
-  background: var(--color-ink-band-highlight);
-  mix-blend-mode: multiply;
-  border-radius: 12px 14px 11px 13px / 13px 11px 14px 12px;
-  filter: url(#marker);
-  transform: rotate(-0.6deg);
+  box-shadow: none;
 }
 .handbookEmailLead {
   font-family: var(--font-ink-display);
@@ -2480,6 +2463,22 @@ button.wayCtaPaid {
   border-top: 1px solid var(--color-ink-band-border);
   max-width: 54ch;
 }
+
+/* Expanded conversation room — hide stage sheet; dock is the only surface. */
+.roomDockConversation .screen {
+  display: none;
+  visibility: hidden;
+  pointer-events: none;
+  padding-bottom: 0;
+}
+
+.threadEmptyHint {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--color-ink-band-ink-muted);
+  margin: 0;
+}
+
 .ctaLead {
   display: inline-block;
   font-family: var(--font-ink-mono);
@@ -2487,28 +2486,76 @@ button.wayCtaPaid {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--color-ink-band-ink);
+  color: var(--color-ink-band-blue);
   font-weight: 600;
   margin-top: 0.25rem;
-  position: relative;
-  isolation: isolate;
-  border-bottom: 2px solid var(--color-ink-band-border);
+  border-bottom: 2px solid var(--color-ink-band-blue);
   padding-bottom: 0.12rem;
 }
-.ctaLead::before {
-  content: "";
-  position: absolute;
-  inset: -2px -8px;
-  z-index: -1;
-  background: var(--color-ink-band-highlight);
-  mix-blend-mode: multiply;
-  border-radius: 6px 9px 7px 8px / 9px 6px 8px 7px;
-  filter: url(#marker);
-  transform: rotate(-1.2deg);
-}
 .ctaLead:hover {
+  color: var(--color-ink-band-ink);
+  border-bottom-color: var(--color-ink-band-ink);
+}
+
+.askAiWrap {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-ink-band-border);
+}
+.askAiBtn {
+  font-family: var(--font-ink-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-ink-band-ink-muted);
+  border-bottom: 1px solid var(--color-ink-band-border);
+  padding-bottom: 0.1rem;
+}
+.askAiBtn:hover {
   color: var(--color-ink-band-blue);
   border-bottom-color: var(--color-ink-band-blue);
+}
+
+.notableWorks {
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.notableWorkItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--color-ink-band-ink-muted);
+}
+.notableWorkItem strong {
+  color: var(--color-ink-band-ink);
+  font-weight: 600;
+}
+.leaderPullQuote {
+  margin: 0.35rem 0 0;
+  padding: 0.85rem 0 0.85rem 1rem;
+  border-left: 2px solid var(--color-ink-band-blue);
+  font-family: var(--font-ink-display);
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--color-ink-band-ink);
+  max-width: 42ch;
+}
+.needsResearch {
+  font-family: var(--font-ink-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+  margin: 0.35rem 0 0;
+  opacity: 0.85;
 }
 
 /* ===== pricing refusals ===== */
@@ -2528,7 +2575,7 @@ button.wayCtaPaid {
   top: 0;
   font-family: var(--font-ink-mono);
   font-weight: 600;
-  color: var(--color-ink-band-margin-red);
+  color: var(--color-ink-band-margin-red-ink);
 }
 
 /* ===== founders team grid ===== */
@@ -2956,7 +3003,7 @@ button.wayCtaPaid {
 .errorLine {
   font-family: var(--font-ink-mono);
   font-size: 0.85rem;
-  color: var(--color-ink-band-margin-red);
+  color: var(--color-ink-band-margin-red-ink);
 }
 
 /* ===== composer ===== */
@@ -3114,11 +3161,11 @@ button.wayCtaPaid {
   pointer-events: auto;
 }
 
-/* Full-width dock from the handwriting band down — matches the stage white. */
+/* Full-width dock from the handwriting band down — raised paper surface. */
 .agentDockPanel {
   position: relative;
   width: 100%;
-  background: #ffffff;
+  background: var(--color-ink-band-paper);
   border-top: 1px solid var(--color-ink-band-border);
   box-shadow:
     0 -1px 0 color-mix(in srgb, var(--color-ink-band-paper) 55%, transparent),
@@ -3134,7 +3181,7 @@ button.wayCtaPaid {
   background: linear-gradient(
     to bottom,
     transparent,
-    #ffffff
+    var(--color-ink-band-paper)
   );
   pointer-events: none;
 }
@@ -3298,7 +3345,7 @@ button.wayCtaPaid {
   flex-direction: column;
   border: 1px solid var(--color-ink-band-border);
   border-radius: 1.35rem;
-  background: #ffffff;
+  background: var(--color-ink-band-paper);
   box-shadow:
     0 1px 2px rgba(26, 26, 26, 0.04),
     0 12px 40px -16px rgba(26, 26, 26, 0.22);
@@ -3575,6 +3622,25 @@ button.wayCtaPaid {
   }
   .floatChip {
     min-height: 44px;
+  }
+  /* Touch targets: lift the small chrome controls to the 44px minimum on
+     phones (the desktop sizes stay tight for the editorial read). */
+  .toolBtn {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+  .crumb {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.7rem 0.55rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .faqQ {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
   }
   .agentCard {
     max-height: 7.25rem;
@@ -4306,7 +4372,7 @@ button.wayCtaPaid {
   margin-top: 0.75rem;
 }
 .errorLine {
-  color: #9c4a2d;
+  color: var(--color-ink-band-margin-red);
 }
 
 /* ===== static fallback (no-JS / crawlers) ===== */
@@ -4678,7 +4744,7 @@ button.wayCtaPaid {
   max-height: 92dvh;
   display: flex;
   flex-direction: column;
-  background: #ffffff;
+  background: var(--color-ink-band-paper);
   border: 1px solid var(--color-ink-band-border);
   border-radius: 0.35rem 0.35rem 0 0;
   box-shadow: 0 -8px 32px color-mix(in srgb, var(--color-ink-band-ink) 12%, transparent);

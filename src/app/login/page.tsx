@@ -135,6 +135,12 @@ function LoginForm() {
         aria-label="Sign-in help"
         className="mt-16 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border pt-8 text-sm text-muted-foreground"
       >
+        <Link href="/signup" className="transition-colors hover:text-foreground">
+          First time? Check your enrollment email
+        </Link>
+        <span aria-hidden className="text-muted-foreground/40">
+          ·
+        </span>
         <Link href="/agent" className="transition-colors hover:text-foreground">
           Back to the agent room
         </Link>

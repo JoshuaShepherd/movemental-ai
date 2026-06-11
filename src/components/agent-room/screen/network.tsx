@@ -102,7 +102,7 @@ export function NetworkScreen() {
               x={CX}
               y={CY + 3}
               textAnchor="middle"
-              style={{ fontFamily: "var(--font-ink-display)", fontSize: 12, fill: "#e8ecf5" }}
+              style={{ fontFamily: "var(--font-ink-display)", fontSize: 12, fill: "var(--color-ink-band-hero-ink)" }}
             >
               movemental
             </text>

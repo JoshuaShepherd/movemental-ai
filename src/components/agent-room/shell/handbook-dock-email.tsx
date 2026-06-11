@@ -4,23 +4,22 @@ import { useState } from "react";
 
 import { SafetyHandbookCover } from "@/components/field-guide/safety-handbook-cover";
 import { EMAIL_RE } from "@/lib/agent-room/capture";
+import { SAFETY_HANDBOOK } from "@/lib/agent-room/naming";
 import { HANDBOOK_EMAIL_INPUT_ID } from "@/lib/agent-room/suggest-chip-targets";
 import styles from "../ink-band.module.css";
 
 export interface HandbookDockEmailProps {
   onCaptureSubmit: (kind: string, values: Record<string, string>) => void;
   disabled?: boolean;
-  highlighted?: boolean;
 }
 
 /**
- * Sticky handbook capture in the agent card thread — replaces the separate
- * field-guide funnel page. Submits through the `free` capture seam.
+ * Handbook capture in the agent dock — plain paper card, one email field.
+ * Submits through the `free` capture seam.
  */
 export function HandbookDockEmail({
   onCaptureSubmit,
   disabled,
-  highlighted,
 }: HandbookDockEmailProps) {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -44,18 +43,19 @@ export function HandbookDockEmail({
   if (sent) {
     return (
       <div className={styles.threadStickyHandbook} id="handbook-email-block">
-        <p className={styles.handbookEmailDone}>Sent — check your inbox for the Handbook.</p>
+        <p className={styles.handbookEmailDone}>
+          Sent — check your inbox for the {SAFETY_HANDBOOK.shortLabel}.
+        </p>
       </div>
     );
   }
 
   return (
-    <div
-      className={`${styles.threadStickyHandbook} ${highlighted ? styles.handbookEmailHighlight : ""}`}
-      id="handbook-email-block"
-    >
+    <div className={styles.threadStickyHandbook} id="handbook-email-block">
       <SafetyHandbookCover className="mb-3 max-w-[140px]" sizes="140px" />
-      <p className={styles.handbookEmailLead}>Get your free AI Safety Handbook</p>
+      <p className={styles.handbookEmailLead}>
+        Get your free {SAFETY_HANDBOOK.fullTitle}
+      </p>
       <label className={styles.handbookEmailLabel} htmlFor={HANDBOOK_EMAIL_INPUT_ID}>
         Email it to me
       </label>

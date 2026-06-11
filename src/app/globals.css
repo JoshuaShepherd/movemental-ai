@@ -32,6 +32,8 @@
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
 
+  --shadow-ambient: 0 10px 30px -16px rgba(26, 26, 26, 0.22);
+
   --radius-xs: calc(var(--radius) * 0.5);
   --radius-sm: calc(var(--radius) * 0.75);
   --radius-md: var(--radius);
@@ -46,6 +48,7 @@
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   --tracking-tight: -0.022em;
+  --tracking-eyebrow: 0.14em;
   --duration-fast: 150ms;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -90,7 +93,10 @@
     --color-ink-band-ink-muted: #5c5651;
     --color-ink-band-border: #e5dfd2;
     --color-ink-band-hero-dark: #0a0e1a;
+    --color-ink-band-hero-ink: #e8ecf5;
     --color-ink-band-margin-red: #c08a7e;
+    /* readable deep variant for error/required/status TEXT (soft margin-red fails AA as text) */
+    --color-ink-band-margin-red-ink: #9c4a2d;
     --color-ink-band-blue: #22409b;
     --color-ink-band-highlight: #eaff3a;
 
@@ -141,7 +147,7 @@
     left: -9999px;
     top: 12px;
     background: var(--color-ink-band-hero-dark);
-    color: #e8ecf5;
+    color: var(--color-ink-band-hero-ink);
     padding: 10px 14px;
     border-radius: var(--radius);
     z-index: 200;

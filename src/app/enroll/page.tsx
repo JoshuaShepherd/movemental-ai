@@ -87,8 +87,13 @@ export default function EnrollPage() {
           title={`Got it, ${form.contact_name.split(/\s+/)[0]}.`}
         />
         <p className="mt-8 text-lg leading-relaxed text-foreground">
-          Your enrollment is in. We provision within 24 hours and a real person will be in touch to set up
-          your dashboard and complete payment if needed.
+          Your enrollment is in. We provision within 24 hours — when the email arrives, use the link to{" "}
+          <strong>create your account</strong> and open your private Safety dashboard. A real person will
+          also be in touch to complete payment if needed.
+        </p>
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+          Dashboard access is not immediate on submit — you&apos;ll get a magic-link signup after
+          provisioning.
         </p>
         <UtilityPageFooter />
       </div>

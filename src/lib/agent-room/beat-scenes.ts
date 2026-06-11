@@ -11,8 +11,13 @@
  */
 import type { Scene } from "./acts";
 import { DISCUSS_ENABLED } from "./discuss";
+import { FREE_HANDBOOK_CTA } from "./naming";
 import { MAP_Q, type MapRead } from "./data/map-q";
-import { HANDBOOK_EMAIL_CHIP_TARGET, MAP_EMAIL_CHIP_TARGET } from "./suggest-chip-targets";
+import {
+  HANDBOOK_EMAIL_CHIP_TARGET,
+  MAP_EMAIL_CHIP_TARGET,
+  ORG_ASSESSMENT_CHIP_TARGET,
+} from "./suggest-chip-targets";
 
 /** Voice lines that mirror the readback screen's "you are here" + next move. */
 function readbackVoiceActs(read: MapRead): Scene {
@@ -37,7 +42,8 @@ function readbackVoiceActs(read: MapRead): Scene {
 /** Post-readback chips after Q1 gate fail (most organizations). */
 const GATE_FAIL_SUGGEST: Scene[number] = {
   suggest: [
-    { label: "Get the free Handbook", lead: true, to: "focusHandbook" },
+    { label: "Want this for your actual organization?", lead: true, to: ORG_ASSESSMENT_CHIP_TARGET },
+    { label: FREE_HANDBOOK_CTA, to: HANDBOOK_EMAIL_CHIP_TARGET },
     { label: "Have us do it · $1,000", to: "toSafetyDashboard" },
     { label: "↺ Start over", to: "opening" },
   ],
@@ -47,7 +53,8 @@ const GATE_FAIL_SUGGEST: Scene[number] = {
 function fullReadbackSuggest(): Scene[number] {
   return {
     suggest: [
-      { label: "See what Sandbox looks like", lead: true, to: "toPath" },
+      { label: "Want this for your actual organization?", lead: true, to: ORG_ASSESSMENT_CHIP_TARGET },
+      { label: "See what Sandbox looks like", to: "toPath" },
       { label: "Email me a copy", to: MAP_EMAIL_CHIP_TARGET },
       ...(DISCUSS_ENABLED
         ? [{ label: "Talk to us", to: "toDiscuss" as const }]

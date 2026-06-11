@@ -1,3 +1,5 @@
+import { PATH_STAGE_DISPLAY } from "../naming";
+
 /**
  * Agent Room — the Organizational Reality Map (ported from `js/data/map-q.js`).
  *
@@ -88,7 +90,7 @@ export const MAP_Q: readonly MapQuestion[] = [
     ],
   },
   {
-    tag: "Training",
+    tag: PATH_STAGE_DISPLAY.training,
     q: "Picture your staff. Are they formed to use AI with judgment — not just given access to it?",
     opts: [
       { t: "Yes — they exercise real judgment", say: "That's the hard part, and you've done it." },
@@ -105,7 +107,7 @@ export const MAP_Q: readonly MapQuestion[] = [
     ],
   },
   {
-    tag: "Tech",
+    tag: PATH_STAGE_DISPLAY.tech,
     q: "Where does your work actually live — could AI plug into it, or is it scattered?",
     opts: [
       { t: "Unified — ready to build on", say: "Then the foundation for building is there." },
@@ -130,12 +132,7 @@ export const STAGE_CLEAR: Record<Stage, string> = {
   tech: "your systems can carry tools",
 };
 
-export const STAGE_NAME: Record<Stage, string> = {
-  safety: "Safety",
-  sandbox: "Sandbox",
-  training: "Training",
-  tech: "Tech",
-};
+export const STAGE_NAME: Record<Stage, string> = PATH_STAGE_DISPLAY;
 
 /** Capitalize the first letter (prototype `cap`). */
 export function cap(s: string): string {

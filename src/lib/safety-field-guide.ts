@@ -1,5 +1,7 @@
+import { SAFETY_GUIDEBOOK } from "@/lib/agent-room/naming";
+
 /**
- * Canonical URLs for the Safety stage lead magnet — the AI Safety Handbook.
+ * Canonical URLs for the Safety stage lead magnet — the AI Safety Guidebook.
  * PDF ships from `public/downloads/`; cover art from `public/images/`.
  */
 
@@ -8,7 +10,7 @@ export const SAFETY_FIELD_GUIDE_PDF_PATH =
   "/downloads/movemental-it-starts-with-safety-field-guide.pdf" as const;
 
 /** Primary product name for the Safety lead magnet. */
-export const SAFETY_HANDBOOK_DISPLAY_TITLE = "AI Safety Handbook" as const;
+export const SAFETY_HANDBOOK_DISPLAY_TITLE = SAFETY_GUIDEBOOK.fullTitle;
 
 /** Volume / series label (field guide edition). */
 export const SAFETY_FIELD_GUIDE_DISPLAY_TITLE = "It Starts With Safety" as const;

@@ -95,6 +95,16 @@ test.describe("Auth surfaces", () => {
     ).toBeVisible({ timeout: 15000 });
   });
 
+  test("signup page loads and blocks unknown email at gate", async ({ page }) => {
+    await page.goto("/signup");
+    await expect(page.getByRole("heading", { name: /create your account/i })).toBeVisible();
+    await page.getByLabel(/^email$/i).fill(`unknown+${TEST_EMAIL}`);
+    await page.getByRole("button", { name: /send magic link/i }).click();
+    await expect(
+      page.getByText(/check your enrollment email|could not send the link/i),
+    ).toBeVisible({ timeout: 15000 });
+  });
+
   test("assess magic-link form accepts email and shows sent state", async ({ page }) => {
     await page.goto("/assess");
     await expect(

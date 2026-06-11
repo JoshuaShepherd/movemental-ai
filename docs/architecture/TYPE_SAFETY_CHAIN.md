@@ -102,7 +102,7 @@ Layer 6: UI Components      src/components/                consume hooks; not ge
 ### Layer 6 — UI Components (`src/components/`)
 
 - This repo does **not** generate or strictly validate Layer 6 (no `src/components/simplified/`, no `ui:check`). UI components consume the chain through the Layer-5 hooks (or feature-local hooks) and never reach past them to a service or `fetch`.
-- The design-system rules for components live in `docs/design/DESIGN.md` and the `concept-modern-ui` skill — orthogonal to the type chain but part of "how a component is allowed to be built."
+- The design-system rules for components live in `docs/design/INK_BAND_DESIGN_CHAIN.md` and the `movemental-ink` skill — orthogonal to the type chain but part of "how a component is allowed to be built."
 
 ---
 
