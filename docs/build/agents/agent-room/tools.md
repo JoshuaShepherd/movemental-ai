@@ -18,7 +18,7 @@ Tools are registered in the engine (`registerTool` / `executeTool`), described i
 | 3 | `show_network` | render | Leader constellation _(deferred in prompt)_ |
 | 4 | `show_audience` | render | Audience picker _(deferred in prompt)_ |
 | 5 | `show_founders` | render | Founders band _(deferred in prompt)_ |
-| 6 | `offer_human_handoff` | action | Contact Josh |
+| 6 | `offer_human_handoff` | action | Contact the team |
 | 7 | `request_diagnosis` | handoff | Pass answers to diagnostician |
 | 8 | `gesture_at` | ink | Underline / circle / arrow on DOM target |
 | 9 | `suggest_chips` | suggest | Up to 4 next-step chips |

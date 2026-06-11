@@ -15,7 +15,10 @@ import type { ComposerChip } from "../composer";
 import { DiscussThread } from "../discuss/discuss-thread";
 import { VoiceZone } from "./voice-zone";
 import styles from "../ink-band.module.css";
-import { FOCUS_HANDBOOK_EMAIL_EVENT } from "@/lib/agent-room/suggest-chip-targets";
+import {
+  FOCUS_HANDBOOK_EMAIL_EVENT,
+  HANDBOOK_EMAIL_INPUT_ID,
+} from "@/lib/agent-room/suggest-chip-targets";
 import type { VoiceState } from "../use-agent-room-stream";
 import { HandbookDockEmail } from "./handbook-dock-email";
 
@@ -205,6 +208,18 @@ export function AgentDock({
     return () =>
       document.removeEventListener(FOCUS_HANDBOOK_EMAIL_EVENT, onFocusHandbook);
   }, [setExpandedState]);
+
+  // Focus after capture mounts — chip/plan CTAs can open the dock before the form exists.
+  useEffect(() => {
+    if (!handbookHighlight || !showHandbookCapture) return;
+    const id = window.requestAnimationFrame(() => {
+      const el = document.getElementById(HANDBOOK_EMAIL_INPUT_ID);
+      if (!(el instanceof HTMLInputElement)) return;
+      el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      el.focus();
+    });
+    return () => window.cancelAnimationFrame(id);
+  }, [handbookHighlight, showHandbookCapture]);
 
   const submit = (e: FormEvent) => {
     e.preventDefault();

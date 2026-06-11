@@ -247,7 +247,7 @@ export const SCENES = {
     { say: "Your first move is your whole team’s read." },
     {
       suggest: [
-        { label: "Talk to Josh", to: "talkToUs" },
+        { label: "Talk to us", to: "talkToUs" },
         { label: "↺ Start over", to: "opening" },
       ],
     },

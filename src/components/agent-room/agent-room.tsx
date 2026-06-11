@@ -179,9 +179,7 @@ function HybridRoom() {
       stubDiscussCapture={room.stubDiscussCapture}
       onCaptureSubmit={room.onCaptureSubmit}
       onCaptureSkip={room.onCaptureSkip}
-      showHandbookCapture={
-        screen.id === "readback" && room.mapRead !== null && !room.mapRead.clearedSafety
-      }
+      showHandbookCapture={room.showHandbookCapture}
     />
   );
 }
@@ -224,9 +222,7 @@ function StubRoom() {
       stubDiscussCapture={room.stubDiscussCapture}
       onCaptureSubmit={room.onCaptureSubmit}
       onCaptureSkip={room.onCaptureSkip}
-      showHandbookCapture={
-        screen.id === "readback" && room.mapRead !== null && !room.mapRead.clearedSafety
-      }
+      showHandbookCapture={room.showHandbookCapture}
     />
   );
 }

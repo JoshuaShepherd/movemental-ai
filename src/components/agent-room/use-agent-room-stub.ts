@@ -18,7 +18,7 @@ import {
   resolveTypedDiscussSignal,
   STUB_DISCUSS_OPENER,
 } from "@/lib/agent-room/discuss-entry";
-import { handleSuggestChipTarget } from "@/lib/agent-room/suggest-chip-targets";
+import { handleSuggestChipTarget, HANDBOOK_EMAIL_CHIP_TARGET, focusHandbookEmail, FOCUS_HANDBOOK_EMAIL_EVENT } from "@/lib/agent-room/suggest-chip-targets";
 import { playScene, type Generation } from "@/lib/agent-room/scene-runner";
 import { useInk } from "./agent-room-context";
 import type { ComposerChip } from "./composer";
@@ -58,6 +58,8 @@ export interface AgentRoomController
   onCaptureSkip: () => void;
   /** Run a named local scene from in-screen CTAs (`onOwn`, `withUs`, …). */
   runScene: (scene: string) => void;
+  /** Show handbook email capture in the agent dock (readback gate-fail or explicit CTA). */
+  showHandbookCapture: boolean;
 }
 
 const IDLE_VOICE: VoiceState = { thinking: false, text: "" };
@@ -83,6 +85,7 @@ export function useAgentRoomStub(): AgentRoomController {
   const [busy, setBusy] = useState(false);
   const [mapRead, setMapRead] = useState<MapRead | null>(null);
   const [stubDiscussCapture, setStubDiscussCapture] = useState(false);
+  const [handbookCaptureActive, setHandbookCaptureActive] = useState(false);
 
   // Mutable generation token (shared with playScene) + latest `run` for chips +
   // the reality-check answers (read by `answerMap`, not displayed → a ref).
@@ -198,6 +201,10 @@ export function useAgentRoomStub(): AgentRoomController {
   const run = useCallback(
     (name: string) => {
       lastSceneRef.current = name;
+      if (name === HANDBOOK_EMAIL_CHIP_TARGET) {
+        setHandbookCaptureActive(true);
+        focusHandbookEmail();
+      }
       // Leader-aware names are built from the current leader (prototype overrode
       // `SCENES.leaderWork` / `SCENES.leaderConnect` with `currentLeader`-closing
       // functions); intercept them before the static SCENES lookup.
@@ -229,6 +236,7 @@ export function useAgentRoomStub(): AgentRoomController {
     freeTextStreakRef.current = 0;
     fallbackStreakRef.current = 0;
     setStubDiscussCapture(false);
+    setHandbookCaptureActive(false);
     discuss.resetDiscuss(); // back to Guide; drop any Discuss transcript
     run("opening");
   }, [abandonCapture, clearInk, discuss, run]);
@@ -336,6 +344,16 @@ export function useAgentRoomStub(): AgentRoomController {
     };
   }, [run]);
 
+  useEffect(() => {
+    const onOpenHandbook = () => setHandbookCaptureActive(true);
+    document.addEventListener(FOCUS_HANDBOOK_EMAIL_EVENT, onOpenHandbook);
+    return () => document.removeEventListener(FOCUS_HANDBOOK_EMAIL_EVENT, onOpenHandbook);
+  }, []);
+
+  const showHandbookCapture =
+    handbookCaptureActive ||
+    (screen.id === "readback" && mapRead !== null && !mapRead.clearedSafety);
+
   return {
     screen,
     voice: IDLE_VOICE,
@@ -357,5 +375,6 @@ export function useAgentRoomStub(): AgentRoomController {
     discussTurnCount: discuss.discussTurnCount,
     enterDiscuss,
     exitDiscuss,
+    showHandbookCapture,
   };
 }

@@ -32,16 +32,10 @@ export function focusReadbackMapEmail(): void {
   el.focus();
 }
 
-/** Expand the agent dock, highlight handbook capture, and focus the email field. */
+/** Expand the agent dock, mount handbook capture, and highlight the email field. */
 export function focusHandbookEmail(): void {
   if (typeof document === "undefined") return;
   document.dispatchEvent(new CustomEvent(FOCUS_HANDBOOK_EMAIL_EVENT));
-  requestAnimationFrame(() => {
-    const el = document.getElementById(HANDBOOK_EMAIL_INPUT_ID);
-    if (!(el instanceof HTMLInputElement)) return;
-    el.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    el.focus();
-  });
 }
 
 /**

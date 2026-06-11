@@ -25,7 +25,7 @@ import {
   ENTER_DISCUSS_VALUE,
   type RoomPhase,
 } from "@/lib/agent-room/discuss";
-import { handleSuggestChipTarget, focusReadbackMapEmail } from "@/lib/agent-room/suggest-chip-targets";
+import { handleSuggestChipTarget, focusReadbackMapEmail, HANDBOOK_EMAIL_CHIP_TARGET, focusHandbookEmail, FOCUS_HANDBOOK_EMAIL_EVENT } from "@/lib/agent-room/suggest-chip-targets";
 import { isEngineExtra, toScreenId } from "@/lib/agent-room/screen-map";
 import type { ComponentId } from "@/lib/agent-room/stream-chunk";
 import { playScene, type Generation } from "@/lib/agent-room/scene-runner";
@@ -113,6 +113,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   /** True when `error` came from a transient failure (stall / 5xx / network). */
   const [errorRetryable, setErrorRetryable] = useState(false);
   const [mapRead, setMapRead] = useState<MapRead | null>(null);
+  const [handbookCaptureActive, setHandbookCaptureActive] = useState(false);
   const [engineExtra, setEngineExtra] = useState<EngineExtraState | null>(null);
   const [streamInput, setStreamInput] = useState<StreamScreenInput | null>(null);
 
@@ -219,6 +220,10 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   const run = useCallback(
     (name: string) => {
       lastSceneRef.current = name;
+      if (name === HANDBOOK_EMAIL_CHIP_TARGET) {
+        setHandbookCaptureActive(true);
+        focusHandbookEmail();
+      }
       if (name === "leaderWork") {
         void play(leaderWorkScene(currentLeaderRef.current));
         return;
@@ -484,6 +489,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     }
     freeTextStreakRef.current = 0;
     fallbackStreakRef.current = 0;
+    setHandbookCaptureActive(false);
     resetDiscuss();
     run("opening");
   }, [abandonCapture, clearInk, clearVoice, resetDiscuss, run]);
@@ -567,6 +573,12 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     sendMessageRef.current(seed);
   }, [busy, isStreaming, screen.id]);
 
+  useEffect(() => {
+    const onOpenHandbook = () => setHandbookCaptureActive(true);
+    document.addEventListener(FOCUS_HANDBOOK_EMAIL_EVENT, onOpenHandbook);
+    return () => document.removeEventListener(FOCUS_HANDBOOK_EMAIL_EVENT, onOpenHandbook);
+  }, []);
+
   const retryChip: ComposerChip = { label: "Try again", lead: true, onSelect: retry };
   const hybridSuggestions: ComposerChip[] =
     screen.id === "beat"
@@ -574,6 +586,10 @@ export function useAgentRoomHybrid(): AgentRoomController & {
       : error && errorRetryable
         ? [retryChip, ...(agentChips ?? suggestions)]
         : (agentChips ?? suggestions);
+
+  const showHandbookCapture =
+    handbookCaptureActive ||
+    (screen.id === "readback" && mapRead !== null && !mapRead.clearedSafety);
 
   return {
     screen,
@@ -597,5 +613,6 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     exitDiscuss: discuss.exitDiscuss,
     engineExtra,
     streamInput,
+    showHandbookCapture,
   };
 }
