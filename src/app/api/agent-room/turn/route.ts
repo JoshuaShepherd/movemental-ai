@@ -5,10 +5,6 @@ import { handleAgentRoomStreamPost } from "@/lib/agent-room/stream-route-handler
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-/**
- * @deprecated Prefer POST `/api/agent-room/turn`. Cloudflare blocks POST to
- * `…/stream` on www.movemental.ai; this route remains for local bookmarks only.
- */
 export async function POST(request: NextRequest) {
   return handleAgentRoomStreamPost(request);
 }

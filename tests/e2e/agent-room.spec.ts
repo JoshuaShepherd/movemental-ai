@@ -24,7 +24,7 @@ const MODE =
     : process.env.AGENT_ROOM_TEST_MODE === "stub"
       ? "stub"
       : "hybrid";
-const STREAM_PATH = "**/api/agent-room/stream";
+const STREAM_PATH = "**/api/agent-room/turn";
 const ENGINE_PROBE = (process.env.AI_AGENTS_BASE_URL ?? "http://localhost:3001") + "/api/agents/models";
 
 async function waitForOpeningReady(page: Page) {
@@ -52,7 +52,7 @@ test.describe("Agent Room", () => {
     test("loads with opening voice and zero stream calls", async ({ page }) => {
       const streamCalls: string[] = [];
       page.on("request", (r) => {
-        if (r.url().includes("/api/agent-room/stream")) streamCalls.push(r.url());
+        if (r.url().includes("/api/agent-room/turn")) streamCalls.push(r.url());
       });
       await page.goto("/agent");
       await expect(page.locator(".ink-band-surface").first()).toBeVisible();
@@ -65,7 +65,7 @@ test.describe("Agent Room", () => {
     test("lead chip opens beat screen immediately with one-question voice", async ({ page }) => {
       const streamCalls: string[] = [];
       page.on("request", (r) => {
-        if (r.url().includes("/api/agent-room/stream")) streamCalls.push(r.url());
+        if (r.url().includes("/api/agent-room/turn")) streamCalls.push(r.url());
       });
       await page.goto("/agent");
       await page.waitForTimeout(2000);
@@ -131,7 +131,7 @@ test.describe("Agent Room", () => {
     test("loads the Ink Band surface and never calls the stream", async ({ page }) => {
       const streamCalls: string[] = [];
       page.on("request", (r) => {
-        if (r.url().includes("/api/agent-room/stream")) streamCalls.push(r.url());
+        if (r.url().includes("/api/agent-room/turn")) streamCalls.push(r.url());
       });
       await page.goto("/agent");
       await expect(page.locator(".ink-band-surface").first()).toBeVisible();
@@ -148,7 +148,7 @@ test.describe("Agent Room", () => {
     test("load plays opening voice with zero stream calls", async ({ page }) => {
       const streamCalls: string[] = [];
       page.on("request", (r) => {
-        if (r.url().includes("/api/agent-room/stream")) streamCalls.push(r.url());
+        if (r.url().includes("/api/agent-room/turn")) streamCalls.push(r.url());
       });
       await page.goto("/agent");
       await expect(page.locator(".ink-band-surface").first()).toBeVisible();
@@ -161,7 +161,7 @@ test.describe("Agent Room", () => {
     test("lead chip opens beat screen immediately with one-question voice", async ({ page }) => {
       const streamCalls: string[] = [];
       page.on("request", (r) => {
-        if (r.url().includes("/api/agent-room/stream")) streamCalls.push(r.url());
+        if (r.url().includes("/api/agent-room/turn")) streamCalls.push(r.url());
       });
       await page.goto("/agent");
       await page.waitForTimeout(2000);

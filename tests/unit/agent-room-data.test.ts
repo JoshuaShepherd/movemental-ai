@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
 
-import { SCENES } from "@/lib/agent-room/data/scenes";
-import { LEADERS } from "@/lib/agent-room/data/leaders";
-import { PROFILES, getProfile } from "@/lib/agent-room/data/profiles";
-import { MAP_Q, computeMapRead } from "@/lib/agent-room/data/map-q";
-import { FAQ_SECTIONS } from "@/lib/agent-room/data/faq";
+import { SCENES } from "../../src/lib/agent-room/data/scenes";
+import { LEADERS } from "../../src/lib/agent-room/data/leaders";
+import { PROFILES, getProfile } from "../../src/lib/agent-room/data/profiles";
+import { MAP_Q, computeMapRead } from "../../src/lib/agent-room/data/map-q";
+import { FAQ_SECTIONS } from "../../src/lib/agent-room/data/faq";
 
 describe("agent-room data layer (AF-06)", () => {
   it("SCENES has the core scene names the runner calls", () => {

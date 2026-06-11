@@ -20,6 +20,10 @@ describe("move-classifier", () => {
       kind: "local",
       scene: "cost",
     });
+    expect(classifyTypedInput({ ...baseText, text: "What's their philosophy" })).toEqual({
+      kind: "local",
+      scene: "toFaq",
+    });
   });
 
   it("routes unmatched text to agent", () => {

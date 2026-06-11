@@ -25,9 +25,13 @@ const ROUTES: ReadonlyArray<{ re: RegExp; to: RouteTarget }> = [
   { re: /safety|charter|handbook|ratif/, to: "toSafety" },
   { re: /cost|price|much|free|pay|afford/, to: "cost" },
   { re: /faq|frequently asked|common question|questions we hear/, to: "toFaq" },
+  {
+    re: /philosoph|approach|theolog|worldview|beliefs?|values|pro-ai|anti-ai|stance on ai/,
+    to: "toFaq",
+  },
   { re: /talk to|contact|human|email|reach|speak/, to: "talkToUs" },
   { re: /who|behind|leader|team|trust|network/, to: "whoBehind" },
-  { re: /what is|what do|movemental|about|do you do/, to: "whatIs" },
+  { re: /what('s| is| do)|movemental|about|do you do/, to: "whatIs" },
   // Diagnostic catch-all. NB: this stays `toBeat`, NOT `beatIntro` — `routeInput`
   // is a pure function with no notion of "first contact from home" vs. later
   // free-text, so it can't gate the bridging intro the way the home chip does.

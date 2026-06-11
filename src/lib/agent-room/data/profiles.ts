@@ -13,7 +13,6 @@
  */
 import type { Scene } from "../acts";
 import { LEADER_CORPUS_SLUGS } from "./leaders";
-import { getCorpusProfile } from "./get-corpus-profile";
 
 export interface ProfileWork {
   /** Section title (e.g. "Books", "Organizations"). */
@@ -423,6 +422,7 @@ export async function getProfileAsync(i: number): Promise<Profile | null> {
 
   let result = local;
   try {
+    const { getCorpusProfile } = await import("./get-corpus-profile");
     const patch = await getCorpusProfile(slug);
     if (patch) {
       result = local

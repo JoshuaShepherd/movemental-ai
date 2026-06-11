@@ -7,7 +7,8 @@
 import type { RoomPhase } from "./discuss";
 import { parseSSEBuffer, type ComponentId, type StreamChunk } from "./stream-chunk";
 
-export const AGENT_ROOM_STREAM_PATH = "/api/agent-room/stream";
+/** Public proxy path — not `…/stream` (Cloudflare WAF blocks POST to that segment). */
+export const AGENT_ROOM_STREAM_PATH = "/api/agent-room/turn";
 
 export type StreamTurn = { role: "user" | "assistant"; content: string };
 

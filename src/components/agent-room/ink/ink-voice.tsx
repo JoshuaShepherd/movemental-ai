@@ -86,7 +86,7 @@ function VoiceLine({
     }
 
     const width = span.getBoundingClientRect().width;
-    const dur = Math.max(620, text.length * 38);
+    const dur = Math.max(320, text.length * 18);
     let start: number | null = null;
     let frameId = 0;
     if (nib) nib.style.opacity = "1";

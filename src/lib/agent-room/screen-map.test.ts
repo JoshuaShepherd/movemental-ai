@@ -34,6 +34,12 @@ describe("screen-map — ComponentId ↔ ScreenId SSOT (INT-01)", () => {
     for (const screen of SCREEN_IDS) {
       const component = toComponentId(screen);
       expect(COMPONENT_IDS).toContain(component);
+      if (screen === "safetyDashboard") {
+        // Funnel-only stub: maps to the shared `safety` component until a dedicated id exists.
+        expect(component).toBe("safety");
+        expect(toScreenId(component)).toBe("safety");
+        continue;
+      }
       // ScreenId → ComponentId → ScreenId is the identity for Ink Band screens.
       expect(toScreenId(component)).toBe(screen);
     }

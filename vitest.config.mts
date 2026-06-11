@@ -1,7 +1,14 @@
 import { defineConfig } from "vitest/config";
-import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const srcRoot = fileURLToPath(new URL("./src", import.meta.url));
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      "@": srcRoot,
+    },
+  },
   test: {
     environment: "node",
     include: [
@@ -9,10 +16,6 @@ export default defineConfig({
       "tests/unit/**/*.{test,spec}.{ts,tsx}",
     ],
     globals: false,
-  },
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
+    setupFiles: ["./vitest.setup.ts"],
   },
 });

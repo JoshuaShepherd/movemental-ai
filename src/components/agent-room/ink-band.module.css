@@ -190,6 +190,9 @@
 /* ===== screen (the stage) ===== */
 .screen {
   flex: 1 1 auto;
+  /* Let the stage shrink inside `.room` (100dvh flex column) so `.scroll` can
+     scroll long sheets (leader profiles, FAQ, …) instead of clipping them. */
+  min-height: 0;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -200,6 +203,8 @@
 }
 .screen.scroll {
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 /* ===== sheet (manuscript page + red margin rule) ===== */
@@ -3001,7 +3006,8 @@ button.wayCtaPaid {
    Ported from docs/html/home/styles.css — fixed bottom dock replaces inline
    .voice + .composer flex zones when `.roomDock` is on `.room`. */
 .roomDock .screen {
-  padding-bottom: clamp(10rem, 22vh, 13rem);
+  /* Clear the fixed dock: handwriting strip (up to 28vh) + chips + collapsed card. */
+  padding-bottom: clamp(14rem, calc(28vh + 11rem), 26rem);
 }
 
 .agentDock {
@@ -3017,12 +3023,12 @@ button.wayCtaPaid {
   pointer-events: auto;
 }
 
-/* Full-width AI surface from the handwriting band down — no see-through gutters. */
+/* Full-width dock from the handwriting band down — matches the stage white. */
 .agentDockPanel {
   position: relative;
   width: 100%;
-  background: var(--color-ink-band-ai-surface);
-  border-top: 1px solid color-mix(in srgb, var(--color-ink-band-border) 88%, var(--color-ink-band-blue) 12%);
+  background: #ffffff;
+  border-top: 1px solid var(--color-ink-band-border);
   box-shadow:
     0 -1px 0 color-mix(in srgb, var(--color-ink-band-paper) 55%, transparent),
     0 -10px 36px -14px color-mix(in srgb, var(--color-ink-band-ink) 10%, transparent);
@@ -3037,7 +3043,7 @@ button.wayCtaPaid {
   background: linear-gradient(
     to bottom,
     transparent,
-    var(--color-ink-band-ai-surface)
+    #ffffff
   );
   pointer-events: none;
 }
@@ -3201,7 +3207,7 @@ button.wayCtaPaid {
   flex-direction: column;
   border: 1px solid var(--color-ink-band-border);
   border-radius: 1.35rem;
-  background: var(--color-ink-band-paper);
+  background: #ffffff;
   box-shadow:
     0 1px 2px rgba(26, 26, 26, 0.04),
     0 12px 40px -16px rgba(26, 26, 26, 0.22);
@@ -4517,7 +4523,7 @@ button.wayCtaPaid {
   max-height: 92dvh;
   display: flex;
   flex-direction: column;
-  background: var(--color-ink-band-paper);
+  background: #ffffff;
   border: 1px solid var(--color-ink-band-border);
   border-radius: 0.35rem 0.35rem 0 0;
   box-shadow: 0 -8px 32px color-mix(in srgb, var(--color-ink-band-ink) 12%, transparent);

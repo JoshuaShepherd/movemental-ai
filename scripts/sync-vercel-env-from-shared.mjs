@@ -83,6 +83,9 @@ const MOVEMENTAL_RESOLVERS = [
     e.DRIZZLE_DATABASE_URL],
   ["SUPABASE_SERVICE_ROLE_KEY", (e) => e.SUPABASE_SERVICE_ROLE_KEY],
   ["TENANT_ORG_ID", (e) => e.TENANT_ORG_ID],
+  ["AI_AGENTS_BASE_URL", (e) => e.AI_AGENTS_BASE_URL],
+  ["AI_AGENTS_SERVICE_SECRET", (e) => e.AI_AGENTS_SERVICE_SECRET],
+  ["AI_AGENTS_TENANT_ORG_ID", (e) => e.AI_AGENTS_TENANT_ORG_ID ?? e.TENANT_ORG_ID],
   ["NEXT_PUBLIC_SITE_URL", (e) => e.NEXT_PUBLIC_SITE_URL || e.NEXT_PUBLIC_APP_URL],
   ["RESEND_API_KEY", (e) => e.RESEND_API_KEY],
   ["RESEND_FROM_EMAIL", (e) => e.RESEND_FROM_EMAIL],
@@ -99,6 +102,19 @@ const MOVEMENTAL_RESOLVERS = [
 const OVERRIDES = {
   SENTRY_PROJECT: "movemental-launch",
 };
+
+/** Production must not call localhost — engine lives on Vercel. */
+const PRODUCTION_OVERRIDES = {
+  AI_AGENTS_BASE_URL: "https://movemental-ai-agents.vercel.app",
+};
+
+function resolveProductionBaseUrl(rawValue) {
+  const v = String(rawValue ?? "").trim();
+  if (!v || /localhost|127\.0\.0\.1/i.test(v)) {
+    return PRODUCTION_OVERRIDES.AI_AGENTS_BASE_URL;
+  }
+  return v;
+}
 
 /**
  * @param {"production" | "preview" | "development"} envName
@@ -196,7 +212,9 @@ function main() {
     if (SKIP.has(name)) continue;
     const v = resolved.get(name);
     process.stdout.write(`Syncing ${name} …\n`);
-    vercelEnvAdd(name, "production", undefined, v, extra);
+    const productionValue =
+      name === "AI_AGENTS_BASE_URL" ? resolveProductionBaseUrl(v) : v;
+    vercelEnvAdd(name, "production", undefined, productionValue, extra);
     vercelEnvAdd(name, "preview", undefined, v, extra);
     if (!SENSITIVE(name)) {
       vercelEnvAdd(name, "development", undefined, v, extra);
