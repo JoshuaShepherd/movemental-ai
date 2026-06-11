@@ -640,6 +640,81 @@
   box-shadow: 0 14px 30px -18px rgba(26, 26, 26, 0.5);
 }
 
+/* ===== beat: compact above-the-fold layout =====
+   The Safety gate question carries criteria bullets — without tightening, the
+   stacked options clip behind the voice/composer band on desktop (beat was the
+   only non-scroll screen). `.roomBeat` compresses editorial rhythm and enables
+   stage scroll as a fallback on short viewports. */
+.beatContent {
+  position: relative;
+}
+.roomBeat .screen {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-block: clamp(0.55rem, 1.4vh, 1.1rem);
+}
+.roomBeat .dots {
+  margin-bottom: 0.6rem;
+}
+.roomBeat .eyebrow {
+  margin-bottom: 0.4rem;
+}
+.roomBeat .beatGhost {
+  position: absolute;
+  top: -0.15rem;
+  right: 0;
+  margin-bottom: 0;
+  font-size: clamp(2.25rem, 7vw, 3.25rem);
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+.roomBeat .q,
+.roomBeat .beatQ {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(1.2rem, 2.6vw, 1.55rem);
+  line-height: 1.18;
+  margin-bottom: 0.55rem;
+  max-width: 44ch;
+}
+.roomBeat .body {
+  font-size: 0.9rem;
+  line-height: 1.42;
+  margin-top: 0;
+}
+.roomBeat .beatContent ul.body {
+  margin-bottom: 0.55rem !important;
+}
+.roomBeat .beatContent ul.body li {
+  margin-bottom: 0.12rem !important;
+}
+.roomBeat .opts,
+.roomBeat .chips {
+  gap: 0.38rem;
+  max-width: 26rem;
+}
+.roomBeat .opt {
+  padding: 0.52rem 0.9rem;
+  font-size: 0.92rem;
+}
+.roomBeat .voice {
+  min-height: 2.6rem;
+  max-height: 4.25rem;
+  padding-block: 0.3rem 0.15rem;
+}
+/* Drop the faded opening line — one live beat prompt is enough vertical budget. */
+.roomBeat .vline.old {
+  display: none;
+}
+.roomBeat .composer .sugg {
+  min-height: 0;
+  margin-bottom: 0.3rem;
+}
+.roomBeat .composer {
+  padding-bottom: 0.65rem;
+}
+
 /* ===== readback: vertical spine + stages ===== */
 .readback {
   position: relative;
@@ -2892,13 +2967,17 @@
   line-height: 1.55;
 }
 
+.liveInk,
 .liveInkCompact {
   font-family: var(--font-ink-hand);
-  color: var(--color-ink-band-ink);
-  font-size: 1rem;
-  line-height: 1.35;
+  color: var(--color-ink-band-blue);
   margin: 0;
   overflow-wrap: anywhere;
+}
+
+.liveInkCompact {
+  font-size: 1rem;
+  line-height: 1.35;
 }
 
 .discussOverlayStubCapture {

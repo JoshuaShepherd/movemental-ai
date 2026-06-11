@@ -415,11 +415,16 @@ export function useAgentRoomStream() {
             });
           }
           clearVoice();
+          setVoice({
+            thinking: false,
+            text:
+              assistant && assistant.length <= DISCUSS_PASSAGE_THRESHOLD ? assistant : "",
+          });
         } else {
           commitStream();
+          setVoice({ thinking: false, text: assistant });
         }
         streamOpen = false;
-        setVoice({ thinking: false, text: assistant });
       } finally {
         setComposing(false);
         setIsStreaming(false);

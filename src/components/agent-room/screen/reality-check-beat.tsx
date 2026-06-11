@@ -20,7 +20,7 @@ export function RealityCheckBeat({
   const { question, options, progress } = props;
   const total = Math.max(progress.total, progress.step);
   return (
-    <div className={styles.stageIn}>
+    <div className={`${styles.stageIn} ${styles.beatContent}`}>
       <div className={styles.beatProg}>
         {Array.from({ length: total }).map((_, i) => {
           const cls =

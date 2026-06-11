@@ -17,8 +17,8 @@ export function MovementalLogo({ className, priority }: MovementalLogoProps) {
       width={MOVEMENTAL_LOGO.width}
       height={MOVEMENTAL_LOGO.height}
       priority={priority}
-      sizes="(max-width: 768px) 140px, 180px"
-      className={cn("h-[clamp(1.5rem,3.4vw,1.75rem)] w-auto", className)}
+      sizes="(max-width: 768px) 560px, 720px"
+      className={cn("h-[clamp(6rem,13.6vw,7rem)] w-auto", className)}
     />
   );
 }

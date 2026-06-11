@@ -49,7 +49,7 @@ function StubBeat({ opts, onBeatAnswer, disabled }: ScreenProps) {
   const locked = disabled || chosen !== null;
 
   return (
-    <div>
+    <div className={styles.beatContent}>
       <div className={styles.dots}>
         <span className={styles.beatCount}>
           {pad2(qi + 1)} <span className={styles.beatOf}>/ {pad2(total)}</span>

@@ -33,6 +33,7 @@ function AgentRoomView({
   screenKey,
   home,
   scroll,
+  beat,
   voice,
   error,
   suggestions,
@@ -51,6 +52,8 @@ function AgentRoomView({
   screenKey: string;
   home: boolean;
   scroll: boolean;
+  /** Reality-check beat — compact sheet + scroll fallback so options aren't clipped. */
+  beat: boolean;
   voice: VoiceState;
   error: string | null;
   suggestions: ComposerChip[];
@@ -66,8 +69,15 @@ function AgentRoomView({
   onCaptureSkip?: () => void;
 }) {
   const discuss = phase === "discuss";
+  // Passage turns already render in the thread as body prose; keep live ink only
+  // while streaming or for short voice-surface replies (filtered from the thread).
+  const lastAssistant = transcript.filter((t) => t.role === "assistant").at(-1);
   const liveText =
-    discuss && !voice.thinking && voice.text ? voice.text : undefined;
+    discuss && !voice.thinking && voice.text
+      ? lastAssistant?.surface === "passage" && lastAssistant.content === voice.text
+        ? undefined
+        : voice.text
+      : undefined;
 
   const stubCaptureNode =
     stubDiscussCapture && onCaptureSubmit ? (
@@ -87,9 +97,9 @@ function AgentRoomView({
 
   return (
     <div
-      className={`ink-band-surface ${styles.room} ${discuss ? styles.discuss : ""} ${
-        discuss ? styles.roomDiscussOverlay : ""
-      }`}
+      className={`ink-band-surface ${styles.room} ${beat ? styles.roomBeat : ""} ${
+        discuss ? styles.discuss : ""
+      } ${discuss ? styles.roomDiscussOverlay : ""}`}
     >
       <Mast onHome={onReplay} />
 
@@ -161,7 +171,8 @@ function HybridRoom() {
           : `${screen.id}-${screen.nonce}`
       }
       home={screen.id === "home" && !room.engineExtra}
-      scroll={screen.id !== "beat"}
+      scroll
+      beat={screen.id === "beat" && !room.engineExtra}
       voice={room.voice}
       error={room.error}
       suggestions={room.suggestions}
@@ -201,7 +212,8 @@ function StubRoom() {
       }
       screenKey={`${screen.id}-${screen.nonce}`}
       home={screen.id === "home"}
-      scroll={screen.id !== "beat"}
+      scroll
+      beat={screen.id === "beat"}
       voice={room.voice}
       error={room.error}
       suggestions={room.suggestions}
@@ -248,7 +260,8 @@ function StreamRoom() {
             : "opening"
       }
       home={atOpening}
-      scroll={!inBeat}
+      scroll
+      beat={inBeat}
       voice={room.voice}
       error={room.error}
       suggestions={room.suggestions}

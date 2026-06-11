@@ -367,10 +367,16 @@ export function useAgentRoomHybrid(): AgentRoomController & {
             });
           }
           clearVoice();
+          // Long passages live on the thread; short voice lines stay in live ink.
+          setVoice({
+            thinking: false,
+            text:
+              assistant && assistant.length <= DISCUSS_PASSAGE_THRESHOLD ? assistant : "",
+          });
         } else {
           commitStream();
+          setVoice({ thinking: false, text: assistant });
         }
-        setVoice({ thinking: false, text: assistant });
       } finally {
         setIsStreaming(false);
         abortRef.current = null;
