@@ -14,6 +14,28 @@ const TEAM = [
   { i: 8, role: "Founder & CTO", line: "Builds the path, and the technology behind it." },
 ] as const;
 
+export function FoundersTeam() {
+  return (
+    <div className={styles.team}>
+      {TEAM.map((member) => {
+        const leader = LEADERS[member.i];
+        return (
+          <div key={member.i} className={styles.tm}>
+            <span className={styles.tph}>
+              <img src={leader.img} alt={leader.name} />
+            </span>
+            <div>
+              <b>{leader.name}</b>
+              <span className={styles.role}>{member.role}</span>
+              <span className={styles.tmLine}>{member.line}</span>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export function FoundersScreen({ onHome }: ScreenProps) {
   return (
     <div>
@@ -27,23 +49,7 @@ export function FoundersScreen({ onHome }: ScreenProps) {
         see on the home page.
       </p>
 
-      <div className={styles.team}>
-        {TEAM.map((member) => {
-          const leader = LEADERS[member.i];
-          return (
-            <div key={member.i} className={styles.tm}>
-              <span className={styles.tph}>
-                <img src={leader.img} alt={leader.name} />
-              </span>
-              <div>
-                <b>{leader.name}</b>
-                <span className={styles.role}>{member.role}</span>
-                <span className={styles.tmLine}>{member.line}</span>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      <FoundersTeam />
 
       <p className={styles.honest}>Get in touch — we answer every message personally.</p>
     </div>
