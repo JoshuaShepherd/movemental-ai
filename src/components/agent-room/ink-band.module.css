@@ -2461,6 +2461,7 @@
 
 .discussOverlay {
   width: min(100%, 52rem);
+  height: min(85dvh, 92dvh);
   max-height: 92dvh;
   display: flex;
   flex-direction: column;
@@ -2542,8 +2543,9 @@
   border-top: 1px dashed var(--color-ink-band-border);
 }
 
-.roomDiscussOverlay .voice,
-.roomDiscussOverlay .composer {
+/* Hide the Guide voice band only — not the overlay's own composer (nested under
+   .discussOverlay). The Guide composer is not mounted in discuss phase. */
+.roomDiscussOverlay > .voice {
   visibility: hidden;
   pointer-events: none;
   min-height: 0;
@@ -2577,6 +2579,7 @@
   }
   .discussOverlay {
     width: 100%;
+    height: min(88dvh, 95dvh);
     max-height: 95dvh;
     border-radius: 0.35rem 0.35rem 0 0;
   }
