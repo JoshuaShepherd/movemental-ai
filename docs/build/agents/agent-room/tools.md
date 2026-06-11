@@ -23,6 +23,7 @@ Tools are registered in the engine (`registerTool` / `executeTool`), described i
 | 8 | `gesture_at` | ink | Underline / circle / arrow on DOM target |
 | 9 | `suggest_chips` | suggest | Up to 4 next-step chips |
 | 10 | `show_capture` | render | Form cell: `free` \| `paid` \| `map` \| `discuss` |
+| 11 | `file_search` | knowledge | Depth retrieval over the Movemental corpus (OpenAI vector store) — **CON-06**. Only seeded when `OPENAI_VECTOR_STORE_ID` is set. |
 
 ### `room-diagnostician`
 
