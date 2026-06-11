@@ -13,6 +13,8 @@ import { useInkVoice, type StreamLine, type VoiceLineItem } from "./ink/use-ink-
  * (AF-03), read by the ink/gesture layer (AF-04) and the scene runner (AF-05).
  */
 export interface AgentRoomRefs {
+  /** `.room` — gesture overlay root (sheet + dock targets). */
+  gestureRootEl: RefObject<HTMLDivElement | null>;
   /** `#screen` — the stage; ink gestures are measured relative to this box. */
   screenEl: RefObject<HTMLElement | null>;
   /** `#sheet` — the manuscript page holding the active screen's content. */
@@ -54,9 +56,10 @@ const AgentRoomContext = createContext<AgentRoomContextValue | null>(null);
 export function AgentRoomProvider({ children }: { children: ReactNode }) {
   // The ink layer owns the three stage refs (so its callbacks see stable refs);
   // the voice band ref is local since no callback closes over it.
-  const { screenEl, sheetEl, inkSvg, drawGesture, clearInk } = useInkGestures();
+  const { gestureRootEl, screenEl, sheetEl, inkSvg, drawGesture, clearInk } =
+    useInkGestures();
   const voiceEl = useRef<HTMLDivElement | null>(null);
-  const refs = { screenEl, sheetEl, inkSvg, voiceEl };
+  const refs = { gestureRootEl, screenEl, sheetEl, inkSvg, voiceEl };
 
   const { lines, stream, inkLine, resolveLine, beginStream, appendStream, commitStream, clearVoice } =
     useInkVoice();
@@ -104,8 +107,8 @@ function useAgentRoom(): AgentRoomContextValue {
 
 /** The four shell refs (set by the zone components). */
 export function useAgentRoomRefs(): AgentRoomRefs {
-  const { screenEl, sheetEl, inkSvg, voiceEl } = useAgentRoom();
-  return { screenEl, sheetEl, inkSvg, voiceEl };
+  const { gestureRootEl, screenEl, sheetEl, inkSvg, voiceEl } = useAgentRoom();
+  return { gestureRootEl, screenEl, sheetEl, inkSvg, voiceEl };
 }
 
 /** The ink layer — voice + gestures (consumed by the runner and voice zone). */

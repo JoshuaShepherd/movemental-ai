@@ -1,20 +1,13 @@
 "use client";
 
-import type { CSSProperties } from "react";
-
-import { STAGE_CLEAR, STAGE_NAME, type Stage } from "@/lib/agent-room/data/map-q";
+import type { Stage } from "@/lib/agent-room/data/map-q";
 import type { ReadbackProps } from "@/lib/agent-room/component-props";
 import styles from "../../ink-band.module.css";
 import { Readback } from "../readback";
 import { ReadbackMapEmail } from "../readback-map-email";
+import { ReadbackRail } from "../readback-rail";
+import { SafetyReadbackScene } from "../safety-readback-scene";
 import type { ScreenProps } from "./stub-screen";
-
-const ROWS: ReadonlyArray<[string, Stage]> = [
-  ["01", "safety"],
-  ["02", "sandbox"],
-  ["03", "training"],
-  ["04", "tech"],
-];
 
 /** Orgs that cleared the Safety gate are placed at Sandbox for readback. */
 function hereStageForRead(mapRead: ScreenProps["mapRead"]): Stage {
@@ -32,7 +25,13 @@ function hereStageForRead(mapRead: ScreenProps["mapRead"]): Stage {
  * into one is a product/design call, deferred — see INT-02 §10.) No hooks here,
  * so the top-level branch is rules-of-hooks-safe.
  */
-export function ReadbackScreen({ mapRead, stream, disabled, onCaptureSubmit }: ScreenProps) {
+export function ReadbackScreen({
+  mapRead,
+  stream,
+  disabled,
+  onCaptureSubmit,
+  onRunScene,
+}: ScreenProps) {
   const emailCapture =
     onCaptureSubmit != null ? (
       <ReadbackMapEmail onCaptureSubmit={onCaptureSubmit} disabled={disabled} />
@@ -50,6 +49,14 @@ export function ReadbackScreen({ mapRead, stream, disabled, onCaptureSubmit }: S
       </>
     );
   }
+
+  if (!mapRead?.clearedSafety) {
+    return (
+      <SafetyReadbackScene mapRead={mapRead} onRunScene={onRunScene} disabled={disabled} />
+    );
+  }
+
+  const hereStage = hereStageForRead(mapRead);
   return (
     <div>
       <p className={styles.eyebrow}>Your reality, mapped</p>
@@ -57,58 +64,13 @@ export function ReadbackScreen({ mapRead, stream, disabled, onCaptureSubmit }: S
         Here’s the shape of where you stand.
       </p>
 
-      <div className={styles.readback}>
-        {ROWS.map(([num, key], idx) => {
-          const hereStage = hereStageForRead(mapRead);
-          const here = key === hereStage;
-          const gap = mapRead?.stages[key] ?? null;
-          const line = gap ? gap.line : STAGE_CLEAR[key];
-          const sev = gap ? gap.sev : 0;
-          return (
-            <div
-              key={key}
-              className={`${styles.rbStage} ${here ? styles.rbHere : ""} ${gap ? "" : styles.rbClear}`}
-              style={{ "--i": idx } as CSSProperties}
-            >
-              {/* Ghost step index on the focused stage (proposal §3.3). */}
-              {here ? (
-                <span className={styles.rbGhostNum} aria-hidden="true">
-                  {num}
-                </span>
-              ) : null}
-              <span className={styles.rbNode} aria-hidden="true" />
-              <div className={styles.rbHead}>
-                <span className={styles.rbNum}>{num}</span>
-                <span className={styles.rbName} id={here ? "hereStage" : undefined}>
-                  {STAGE_NAME[key]}
-                </span>
-                {here ? <span className={styles.rbHereTag}>you are here</span> : null}
-                {sev > 0 ? (
-                  <span className={styles.rbSev} title="gap intensity">
-                    {Array.from({ length: sev }).map((_, k) => (
-                      <i key={k} />
-                    ))}
-                  </span>
-                ) : null}
-              </div>
-              <span className={styles.rbLine}>{line}</span>
-            </div>
-          );
-        })}
-      </div>
+      <ReadbackRail mapRead={mapRead} hereStage={hereStage} />
 
       <p className={styles.body} style={{ marginTop: "1rem" }}>
         <span id="rbphrase">
-          {mapRead?.clearedSafety ? (
-            <b>
-              Your next move is Sandbox — a bounded place to try AI against your real work.
-            </b>
-          ) : (
-            <b>
-              Your next move is Safety — ratify what your organization will and won&apos;t do with
-              AI.
-            </b>
-          )}
+          <b>
+            Your next move is Sandbox — a bounded place to try AI against your real work.
+          </b>
         </span>
       </p>
       {emailCapture}

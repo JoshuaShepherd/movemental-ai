@@ -44,6 +44,7 @@ type LocalCtx = Pick<RunnerContext, "clearInk" | "say" | "gesture" | "setBusy">;
 function noopRunnerCtx(ctx: LocalCtx): RunnerContext {
   return {
     ...ctx,
+    clearVoice: () => {},
     show: () => {},
     suggest: () => {},
     awaitCapture: async () => ({}),

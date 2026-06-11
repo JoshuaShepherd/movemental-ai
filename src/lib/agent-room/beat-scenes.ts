@@ -12,13 +12,33 @@
 import type { Scene } from "./acts";
 import { DISCUSS_ENABLED } from "./discuss";
 import { MAP_Q, type MapRead } from "./data/map-q";
-import { MAP_EMAIL_CHIP_TARGET } from "./suggest-chip-targets";
+import { HANDBOOK_EMAIL_CHIP_TARGET, MAP_EMAIL_CHIP_TARGET } from "./suggest-chip-targets";
+
+/** Voice lines that mirror the readback screen's "you are here" + next move. */
+function readbackVoiceActs(read: MapRead): Scene {
+  if (!read.clearedSafety) {
+    return [
+      { say: "You're at Safety — leadership hasn't ratified it in writing yet." },
+      { wait: 200 },
+      {
+        say: "Your next move is to ratify what your organization will and won't do with AI.",
+      },
+    ];
+  }
+  return [
+    { say: "You cleared the Safety gate — that's rare." },
+    { wait: 200 },
+    {
+      say: "Your next move is Sandbox — a bounded place to try AI against your real work.",
+    },
+  ];
+}
 
 /** Post-readback chips after Q1 gate fail (most organizations). */
 const GATE_FAIL_SUGGEST: Scene[number] = {
   suggest: [
-    { label: "Get the free Field Guide", lead: true, to: "onOwn" },
-    { label: "Have us do it · $1,000", to: "withUs" },
+    { label: "Get the free Field Guide", lead: true, to: "focusHandbook" },
+    { label: "Have us do it · $1,000", to: "toSafetyDashboard" },
     { label: "↺ Start over", to: "opening" },
   ],
 };
@@ -40,9 +60,9 @@ function fullReadbackSuggest(): Scene[number] {
 export function beatScene(qi: number, oi: number, read: MapRead): Scene {
   const opt = MAP_Q[qi].opts[oi];
 
-  // Q1 gate fail — most orgs: straight to readback (no threat monologue).
+  // Q1 gate fail — most orgs: voice the Safety readback, then show the map.
   if (opt.gateFail) {
-    return [{ clear: true }, { show: "readback" }, GATE_FAIL_SUGGEST];
+    return [{ clear: true }, ...readbackVoiceActs(read), { show: "readback" }, GATE_FAIL_SUGGEST];
   }
 
   // Rare org cleared Safety — advance through Q2–Q4 with no interstitial voice.
@@ -50,6 +70,6 @@ export function beatScene(qi: number, oi: number, read: MapRead): Scene {
     return [{ clear: true }, { show: "beat", qi: qi + 1 }];
   }
 
-  // Last answer (full path) — readback immediately, then chips.
-  return [{ clear: true }, { show: "readback" }, fullReadbackSuggest()];
+  // Last answer (full path) — voice the readback, then show the map + chips.
+  return [{ clear: true }, ...readbackVoiceActs(read), { show: "readback" }, fullReadbackSuggest()];
 }

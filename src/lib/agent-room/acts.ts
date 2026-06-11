@@ -40,6 +40,8 @@ export const SCREEN_IDS = [
   "pricing",
   "faq",
   "capture",
+  /** Safety funnel — dashboard conversion (post-readback paid path). */
+  "safetyDashboard",
 ] as const;
 
 export type ScreenId = (typeof SCREEN_IDS)[number];

@@ -8,9 +8,11 @@ import { AgentRoomProvider } from "./agent-room-context";
 import { useAgentRoomHybrid } from "./use-agent-room-hybrid";
 import { useAgentRoomStream } from "./use-agent-room-stream";
 import { useAgentRoomStub } from "./use-agent-room-stub";
+import { useAgentRoomRefs } from "./agent-room-context";
 import { Mast } from "./shell/mast";
 import { ScreenZone } from "./shell/screen-zone";
 import { AgentDock } from "./shell/agent-dock";
+import { InkOverlay } from "./shell/ink-overlay";
 import { StreamScreen } from "./screen/stream-screen";
 import { HybridScreen } from "./screen/hybrid-screen";
 import { StubScreen } from "./screen/stub/stub-screen";
@@ -44,6 +46,7 @@ function AgentRoomView({
   stubDiscussCapture = false,
   onCaptureSubmit,
   onCaptureSkip,
+  showHandbookCapture,
 }: {
   screenNode: ReactNode;
   screenKey: string;
@@ -64,7 +67,9 @@ function AgentRoomView({
   stubDiscussCapture?: boolean;
   onCaptureSubmit?: (kind: string, values: Record<string, string>) => void;
   onCaptureSkip?: () => void;
+  showHandbookCapture?: boolean;
 }) {
+  const { gestureRootEl } = useAgentRoomRefs();
   const discuss = phase === "discuss";
   // Passage turns already render in the thread as body prose; keep live ink only
   // while streaming or for short voice-surface replies (filtered from the thread).
@@ -94,10 +99,12 @@ function AgentRoomView({
 
   return (
     <div
+      ref={gestureRootEl}
       className={`ink-band-surface ${styles.room} ${styles.roomDock} ${
         beat ? styles.roomBeat : ""
       } ${discuss ? styles.discuss : ""}`}
     >
+      <InkOverlay />
       <Mast onHome={onReplay} />
 
       <ScreenZone scroll={scroll || discuss} home={home && !discuss}>
@@ -119,6 +126,8 @@ function AgentRoomView({
         transcript={transcript}
         onExitDiscuss={onExitDiscuss}
         stubCapture={stubCaptureNode}
+        showHandbookCapture={showHandbookCapture}
+        onHandbookCaptureSubmit={onCaptureSubmit}
         liveText={liveText}
         liveThinking={voice.thinking}
       />
@@ -146,6 +155,7 @@ function HybridRoom() {
           onCaptureSubmit={room.onCaptureSubmit}
           onCaptureSkip={room.onCaptureSkip}
           disabled={room.isStreaming}
+          onRunScene={room.runScene}
         />
       }
       screenKey={
@@ -169,6 +179,9 @@ function HybridRoom() {
       stubDiscussCapture={room.stubDiscussCapture}
       onCaptureSubmit={room.onCaptureSubmit}
       onCaptureSkip={room.onCaptureSkip}
+      showHandbookCapture={
+        screen.id === "readback" && room.mapRead !== null && !room.mapRead.clearedSafety
+      }
     />
   );
 }
@@ -191,6 +204,7 @@ function StubRoom() {
           onCaptureSubmit={room.onCaptureSubmit}
           onCaptureSkip={room.onCaptureSkip}
           disabled={room.isStreaming}
+          onRunScene={room.runScene}
         />
       }
       screenKey={`${screen.id}-${screen.nonce}`}
@@ -210,6 +224,9 @@ function StubRoom() {
       stubDiscussCapture={room.stubDiscussCapture}
       onCaptureSubmit={room.onCaptureSubmit}
       onCaptureSkip={room.onCaptureSkip}
+      showHandbookCapture={
+        screen.id === "readback" && room.mapRead !== null && !room.mapRead.clearedSafety
+      }
     />
   );
 }

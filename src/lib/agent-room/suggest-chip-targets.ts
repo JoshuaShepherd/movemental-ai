@@ -11,7 +11,14 @@ import {
 /** Chip `to` value — focuses the inline readback email field (no scene swap). */
 export const MAP_EMAIL_CHIP_TARGET = "focusMapEmail";
 
+/** Chip `to` value — expands the dock and focuses the handbook email capture. */
+export const HANDBOOK_EMAIL_CHIP_TARGET = "focusHandbook";
+
 export const READBACK_EMAIL_INPUT_ID = "readbackEmail";
+
+export const HANDBOOK_EMAIL_INPUT_ID = "handbookEmail";
+
+export const FOCUS_HANDBOOK_EMAIL_EVENT = "agent-room:focus-handbook";
 
 /** Scroll the inline readback email field into view and focus it. */
 export function focusReadbackMapEmail(): void {
@@ -20,6 +27,18 @@ export function focusReadbackMapEmail(): void {
   if (!(el instanceof HTMLInputElement)) return;
   el.scrollIntoView({ behavior: "smooth", block: "nearest" });
   el.focus();
+}
+
+/** Expand the agent dock, highlight handbook capture, and focus the email field. */
+export function focusHandbookEmail(): void {
+  if (typeof document === "undefined") return;
+  document.dispatchEvent(new CustomEvent(FOCUS_HANDBOOK_EMAIL_EVENT));
+  requestAnimationFrame(() => {
+    const el = document.getElementById(HANDBOOK_EMAIL_INPUT_ID);
+    if (!(el instanceof HTMLInputElement)) return;
+    el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    el.focus();
+  });
 }
 
 /**
@@ -34,6 +53,10 @@ export function handleSuggestChipTarget(
 ): boolean {
   if (to === MAP_EMAIL_CHIP_TARGET) {
     focusReadbackMapEmail();
+    return true;
+  }
+  if (to === HANDBOOK_EMAIL_CHIP_TARGET) {
+    focusHandbookEmail();
     return true;
   }
   return handleDiscussChipTarget(to, enterDiscuss, run, context);

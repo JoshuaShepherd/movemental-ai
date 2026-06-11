@@ -15,7 +15,9 @@ import type { ComposerChip } from "../composer";
 import { DiscussThread } from "../discuss/discuss-thread";
 import { VoiceZone } from "./voice-zone";
 import styles from "../ink-band.module.css";
+import { FOCUS_HANDBOOK_EMAIL_EVENT } from "@/lib/agent-room/suggest-chip-targets";
 import type { VoiceState } from "../use-agent-room-stream";
+import { HandbookDockEmail } from "./handbook-dock-email";
 
 type GuideMessage = { role: "agent" | "user"; content: string };
 
@@ -108,6 +110,8 @@ export function AgentDock({
   transcript = [],
   onExitDiscuss,
   stubCapture,
+  showHandbookCapture,
+  onHandbookCaptureSubmit,
   liveText,
   liveThinking,
 }: {
@@ -122,6 +126,8 @@ export function AgentDock({
   transcript?: TranscriptTurn[];
   onExitDiscuss?: () => void;
   stubCapture?: ReactNode;
+  showHandbookCapture?: boolean;
+  onHandbookCaptureSubmit?: (kind: string, values: Record<string, string>) => void;
   liveText?: string;
   liveThinking?: boolean;
 }) {
@@ -129,6 +135,7 @@ export function AgentDock({
   const [expanded, setExpanded] = useState(false);
   const [value, setValue] = useState("");
   const [guideMessages, setGuideMessages] = useState<GuideMessage[]>([]);
+  const [handbookHighlight, setHandbookHighlight] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const threadRef = useRef<HTMLDivElement>(null);
   const { voiceEl } = useAgentRoomRefs();
@@ -188,6 +195,17 @@ export function AgentDock({
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [expanded, setExpandedState]);
 
+  useEffect(() => {
+    const onFocusHandbook = () => {
+      setHandbookHighlight(true);
+      setExpandedState(true);
+      window.setTimeout(() => setHandbookHighlight(false), 4200);
+    };
+    document.addEventListener(FOCUS_HANDBOOK_EMAIL_EVENT, onFocusHandbook);
+    return () =>
+      document.removeEventListener(FOCUS_HANDBOOK_EMAIL_EVENT, onFocusHandbook);
+  }, [setExpandedState]);
+
   const submit = (e: FormEvent) => {
     e.preventDefault();
     const v = value.trim();
@@ -210,7 +228,8 @@ export function AgentDock({
 
   const showGuideThread = !discuss && guideMessages.length > 0;
   const showDiscussThread = discuss && (transcript.length > 0 || liveText || liveThinking);
-  const showThreadBody = showGuideThread || showDiscussThread || stubCapture;
+  const showThreadBody =
+    showGuideThread || showDiscussThread || stubCapture || showHandbookCapture;
 
   return (
     <div
@@ -290,16 +309,25 @@ export function AgentDock({
                   {stubCapture}
                 </>
               ) : showThreadBody ? (
-                guideMessages.map((msg, i) => (
-                  <div
-                    key={`${msg.role}-${i}-${msg.content.slice(0, 24)}`}
-                    className={
-                      msg.role === "agent" ? styles.threadMsgAgent : styles.threadMsgUser
-                    }
-                  >
-                    <p>{msg.content}</p>
-                  </div>
-                ))
+                <>
+                  {guideMessages.map((msg, i) => (
+                    <div
+                      key={`${msg.role}-${i}-${msg.content.slice(0, 24)}`}
+                      className={
+                        msg.role === "agent" ? styles.threadMsgAgent : styles.threadMsgUser
+                      }
+                    >
+                      <p>{msg.content}</p>
+                    </div>
+                  ))}
+                  {showHandbookCapture && onHandbookCaptureSubmit ? (
+                    <HandbookDockEmail
+                      onCaptureSubmit={onHandbookCaptureSubmit}
+                      disabled={disabled}
+                      highlighted={handbookHighlight}
+                    />
+                  ) : null}
+                </>
               ) : null}
             </div>
           )}

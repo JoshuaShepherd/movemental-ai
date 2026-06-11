@@ -206,10 +206,10 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     (scene: Scene) =>
       playScene(
         scene,
-        { clearInk, say: inkLine, show, gesture: drawGesture, suggest, setBusy, awaitCapture },
+        { clearInk, clearVoice, say: inkLine, show, gesture: drawGesture, suggest, setBusy, awaitCapture },
         genRef.current,
       ),
-    [clearInk, inkLine, show, drawGesture, suggest, awaitCapture],
+    [clearInk, clearVoice, inkLine, show, drawGesture, suggest, awaitCapture],
   );
 
   const run = useCallback(
@@ -538,6 +538,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     onLeaderSelect,
     onCaptureSubmit,
     onCaptureSkip,
+    runScene: run,
     stubDiscussCapture: false,
     phase: discuss.phase,
     transcript: discuss.transcript,

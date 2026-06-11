@@ -25,14 +25,19 @@ const raf = () => new Promise<void>((r) => requestAnimationFrame(() => r()));
  */
 const TARGET_WAIT_FRAMES = 20;
 async function resolveTarget(
-  sheet: HTMLElement | null,
+  roots: (HTMLElement | null)[],
   target: string | HTMLElement,
   maxFrames = TARGET_WAIT_FRAMES,
 ): Promise<Element | null> {
   if (typeof target !== "string") return target;
   for (let i = 0; i < maxFrames; i++) {
-    const el = sheet?.querySelector(target) ?? null;
-    if (el) return el;
+    for (const root of roots) {
+      const el = root?.querySelector(target) ?? null;
+      if (el) return el;
+    }
+    const docEl =
+      typeof document !== "undefined" ? document.querySelector(target) : null;
+    if (docEl) return docEl;
     await raf();
   }
   return null;
@@ -97,6 +102,7 @@ function drawPath(svg: SVGSVGElement, d: string, dur: number, delay = 0): Promis
  * and stable for the compiler — which a `refs`-as-param shape would not be.
  */
 export function useInkGestures() {
+  const gestureRootEl = useRef<HTMLDivElement | null>(null);
   const screenEl = useRef<HTMLElement | null>(null);
   const sheetEl = useRef<HTMLDivElement | null>(null);
   const inkSvg = useRef<SVGSVGElement | null>(null);
@@ -104,7 +110,7 @@ export function useInkGestures() {
   // These read only refs, which are stable for the component's lifetime — so
   // (like the stream hook's callbacks) they take no reactive deps.
   const sizeOverlay = useCallback(() => {
-    syncOverlay(screenEl.current, inkSvg.current);
+    syncOverlay(gestureRootEl.current ?? screenEl.current, inkSvg.current);
   }, []);
 
   const clearInk = useCallback(() => {
@@ -114,19 +120,22 @@ export function useInkGestures() {
   const drawGesture = useCallback(
     async (kind: GestureKind, target: string | HTMLElement): Promise<void> => {
       await raf();
-      const screen = screenEl.current;
+      const overlayRoot = gestureRootEl.current ?? screenEl.current;
       const svg = inkSvg.current;
-      if (!screen || !svg) return;
-      const el = await resolveTarget(sheetEl.current, target);
+      if (!overlayRoot || !svg) return;
+      const el = await resolveTarget(
+        [sheetEl.current, gestureRootEl.current, screenEl.current],
+        target,
+      );
       if (!el) return;
-      const rect = localRect(screen, el);
-      syncOverlay(screen, svg);
+      const rect = localRect(overlayRoot, el);
+      syncOverlay(overlayRoot, svg);
       if (kind === "underline") {
         await drawPath(svg, underlinePath(rect), 520);
       } else if (kind === "circle") {
         await drawPath(svg, circlePath(rect), 760);
       } else if (kind === "arrow") {
-        const { shaft, head } = arrowPaths(rect, screen.getBoundingClientRect().height);
+        const { shaft, head } = arrowPaths(rect, overlayRoot.getBoundingClientRect().height);
         await drawPath(svg, shaft, 560);
         await drawPath(svg, head, 200);
       }
@@ -137,16 +146,16 @@ export function useInkGestures() {
   // Keep the overlay matched to the stage on resize and once fonts settle
   // (font swap reflows the sheet, moving gesture targets).
   useEffect(() => {
-    const screen = screenEl.current;
-    if (!screen) return;
+    const observed = gestureRootEl.current ?? screenEl.current;
+    if (!observed) return;
     sizeOverlay();
     const ro = new ResizeObserver(() => sizeOverlay());
-    ro.observe(screen);
+    ro.observe(observed);
     if (typeof document !== "undefined" && "fonts" in document) {
       document.fonts.ready.then(() => sizeOverlay()).catch(() => {});
     }
     return () => ro.disconnect();
   }, [sizeOverlay]);
 
-  return { screenEl, sheetEl, inkSvg, drawGesture, clearInk, sizeOverlay };
+  return { gestureRootEl, screenEl, sheetEl, inkSvg, drawGesture, clearInk, sizeOverlay };
 }

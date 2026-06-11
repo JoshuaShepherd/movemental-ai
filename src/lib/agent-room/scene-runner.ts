@@ -27,6 +27,8 @@ export interface Generation {
 /** The act handlers a host wires to the ink layer + screen/suggestion state. */
 export interface RunnerContext {
   clearInk: () => void;
+  /** Wipe committed voice lines (paired with `clear` acts before a new beat). */
+  clearVoice: () => void;
   say: (text: string) => Promise<void>;
   show: (id: ScreenId, opts: ShowOpts) => void;
   gesture: (kind: GestureKind, target: string) => Promise<void>;
@@ -47,7 +49,10 @@ export async function playScene(scene: Scene, ctx: RunnerContext, gen: Generatio
   for (const act of scene) {
     if (myGen !== gen.value) return; // a newer turn superseded this one
     if ("wait" in act) await sleep(act.wait);
-    else if ("clear" in act) ctx.clearInk();
+    else if ("clear" in act) {
+      ctx.clearInk();
+      ctx.clearVoice();
+    }
     else if ("say" in act) await ctx.say(act.say);
     else if ("show" in act)
       ctx.show(act.show, {

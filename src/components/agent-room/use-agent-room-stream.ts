@@ -189,6 +189,7 @@ export function useAgentRoomStream() {
         scene,
         {
           clearInk,
+          clearVoice,
           say: inkLine,
           show: showLocal,
           gesture: drawGesture,
@@ -198,7 +199,7 @@ export function useAgentRoomStream() {
         },
         localGenRef.current,
       ),
-    [clearInk, inkLine, showLocal, drawGesture, suggestLocal, awaitCapture],
+    [clearInk, clearVoice, inkLine, showLocal, drawGesture, suggestLocal, awaitCapture],
   );
 
   const runLocalScene = useCallback(

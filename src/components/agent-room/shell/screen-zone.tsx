@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 
 import { useAgentRoomRefs } from "../agent-room-context";
 import styles from "../ink-band.module.css";
-import { InkOverlay } from "./ink-overlay";
 
 /**
  * The `#screen` stage: the radial-gradient field that holds the active screen on
@@ -31,7 +30,6 @@ export function ScreenZone({
       <div ref={sheetEl} className={`${styles.sheet} ${home ? styles.home : ""}`}>
         {children}
       </div>
-      <InkOverlay />
     </section>
   );
 }

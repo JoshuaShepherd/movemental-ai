@@ -56,6 +56,8 @@ export interface AgentRoomController
   onCaptureSubmit: (kind: string, values: Record<string, string>) => void;
   /** Capture skipped (map soft-gate) → abandon + show Safety. */
   onCaptureSkip: () => void;
+  /** Run a named local scene from in-screen CTAs (`onOwn`, `withUs`, …). */
+  runScene: (scene: string) => void;
 }
 
 const IDLE_VOICE: VoiceState = { thinking: false, text: "" };
@@ -187,10 +189,10 @@ export function useAgentRoomStub(): AgentRoomController {
     (scene: Scene) =>
       playScene(
         scene,
-        { clearInk, say: inkLine, show, gesture: drawGesture, suggest, setBusy, awaitCapture },
+        { clearInk, clearVoice, say: inkLine, show, gesture: drawGesture, suggest, setBusy, awaitCapture },
         genRef.current,
       ),
-    [clearInk, inkLine, show, drawGesture, suggest, awaitCapture],
+    [clearInk, clearVoice, inkLine, show, drawGesture, suggest, awaitCapture],
   );
 
   const run = useCallback(
@@ -347,6 +349,7 @@ export function useAgentRoomStub(): AgentRoomController {
     onLeaderSelect,
     onCaptureSubmit,
     onCaptureSkip,
+    runScene: run,
     stubDiscussCapture,
     // Discuss phase (INT-08) — shared with the stream controller.
     phase: discuss.phase,

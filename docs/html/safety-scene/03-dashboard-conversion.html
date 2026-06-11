@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Movemental — Safety dashboard (design mock-up)</title>
+    <meta name="description" content="Funnel screen 3 — sell the vehicle: finish your Safety charter in the dashboard." />
+    <link rel="stylesheet" href="../home/styles.css" />
+    <link rel="stylesheet" href="ink-band-content.css" />
+  </head>
+  <body class="ink-band-surface">
+    <div class="room" id="room">
+      <header class="mast">
+        <div class="mastStart">
+          <button type="button" class="logo" aria-label="Movemental — back to the start">
+            <img class="logoMark" src="../../../public/images/brand/movemental-logo-transparent.h224.webp" alt="Movemental" width="411" height="224" />
+          </button>
+        </div>
+        <p class="mastAudience" aria-label="Who we serve">Non-profits · Churches · Institutions</p>
+        <div class="mastEnd" id="mast-auth">
+          <div class="authCluster authCluster--out" id="auth-out">
+            <a class="authIconBtn" href="/login" aria-label="Sign in" title="Sign in">
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            </a>
+          </div>
+          <div class="authCluster authCluster--in" id="auth-in" hidden>
+            <button type="button" class="authIconBtn authMenuTrigger" id="auth-menu-trigger" aria-label="Account menu" aria-haspopup="true" aria-expanded="false" title="Account">
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
+            </button>
+            <div class="authMenu" id="auth-menu" role="menu" hidden>
+              <p class="authMenuLabel" id="auth-menu-label">Workspace</p>
+              <ul class="authMenuList" id="auth-menu-list"></ul>
+              <button type="button" class="authMenuSignOut" id="auth-sign-out" role="menuitem">Sign out</button>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section class="screen scroll" id="screen" aria-label="Safety dashboard conversion">
+        <div class="sheet settle" id="sheet">
+          <p class="eyebrow" id="eyebrow"></p>
+          <p class="q" id="headline"></p>
+          <p class="sub" id="lede"></p>
+          <div class="compare" id="compare"></div>
+          <div class="sceneGrid">
+            <div class="mainCol">
+              <div class="sec">
+                <p class="secLabel" id="doors-label"></p>
+                <div class="ways ways--three" id="door-grid"></div>
+              </div>
+            </div>
+            <aside class="charterPanel" aria-label="Guidebook assembly preview">
+              <p class="assembleLabel" id="assemble-label"></p>
+              <div class="docSpread" id="doc-spread"></div>
+              <div class="proofBlock"><div class="proofSheet" id="proof-sheet"></div></div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <div class="agentDock" id="agent-dock">
+        <div class="dockBackdrop" id="dock-backdrop" hidden></div>
+        <div class="handwritingStrip" aria-live="polite">
+          <div class="handwritingInner"><div class="vline" id="voice-line">This is the only screen with a price — three doors, same dignity. Start free if you want to see the artifact form.</div></div>
+        </div>
+        <div class="agentFloat" id="agent-float">
+          <form class="agentCard" id="agent-card" role="region" aria-label="Agent conversation">
+            <div class="cardHeader" id="card-header">
+              <span class="cardTitle">Conversation</span>
+              <button type="button" class="cardCollapse" id="card-collapse" aria-label="Collapse chat" title="Collapse chat">
+                <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 11.25L9 6.75l4.5 4.5"/></svg>
+              </button>
+            </div>
+            <div class="cardThread" id="card-thread"><div class="threadMsg threadMsg--agent"><p>This is the only screen with a price — three doors, same dignity. Start free if you want to see the artifact form.</p></div></div>
+            <form class="cardBody" id="composer-form">
+              <label class="cardInput"><input type="text" name="message" id="composer-input" autocomplete="off" aria-label="Talk to Movemental" placeholder="Ask about the dashboard or pricing…" /></label>
+              <div class="cardToolbar">
+                <div class="toolbarGroup">
+                  <button type="button" class="toolBtn" aria-label="Add attachment">+</button>
+                  <button type="button" class="toolBtn" aria-label="Slash commands">/</button>
+                </div>
+                <div class="toolbarGroup">
+                  <button type="button" class="toolBtn expandToggle" id="expand-toggle" aria-label="Expand chat" aria-expanded="false" title="Expand chat">
+                    <svg class="iconExpand" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                  </button>
+                  <button type="submit" class="sendRound" aria-label="Send">
+                    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 12V4M8 4l-3.5 3.5M8 4l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </div>
+              </div>
+            </form>
+            <button type="button" class="cardHandle" id="card-handle" aria-label="Expand drawer" aria-expanded="false"><span class="handleBar"></span></button>
+          </form>
+          <p class="dockLegend"><button type="button" class="replay" id="replay">↻ replay</button></p>
+        </div>
+      </div>
+    </div>
+    <svg class="ink" aria-hidden="true" width="0" height="0" style="position:absolute"><defs><filter id="marker" x="-15%" y="-70%" width="130%" height="240%"><feTurbulence type="fractalNoise" baseFrequency="0.018 0.11" numOctaves="2" seed="9" result="n" /><feDisplacementMap in="SourceGraphic" in2="n" scale="3.4" xChannelSelector="R" yChannelSelector="G" /></filter></defs></svg>
+    <script src="shell.js"></script>
+    <script>
+const DASHBOARD_STATE = {
+  eyebrow: "Safety · step 01",
+  headline: "Finish a board-ratified Safety charter — in the dashboard.",
+  lede: "The dashboard drafts all five Guidebook documents with you, in your organization's context, to a state your board can actually ratify. Not a template dump — an artifact taking shape.",
+  compare: {
+    before: { tag: "Alone with the PDF", text: "Blank page. You read the Guidebook, mean to start, and stall before anything is signable." },
+    after: { tag: "In the dashboard", text: "Guided straight to five drafted layers — Statement through Response Plans — ready for board review." },
+  },
+  assemble: {
+    label: "Five documents · assembling now",
+    documents: [
+      { layer: "01", title: "Statement", draft: false, layout: { left: "2%", top: "6%", rot: "-6deg", z: 1 } },
+      { layer: "02", title: "Policy", draft: false, layout: { left: "16%", top: "2%", rot: "-2deg", z: 2 } },
+      { layer: "03", title: "Context", draft: true, layout: { left: "32%", top: "8%", rot: "2deg", z: 3 } },
+      { layer: "04", title: "Rules", draft: true, layout: { left: "48%", top: "0%", rot: "5deg", z: 4 } },
+      { layer: "05", title: "Response Plans", draft: true, layout: { left: "60%", top: "10%", rot: "7deg", z: 5 } },
+    ],
+  },
+  proof: {
+    eyebrow: "Board-ready output · excerpt",
+    title: "AI Organizational Statement",
+    excerpt: "Our organization will use AI to extend formation and care — never to impersonate pastoral voice, fabricate testimony, or place donor or member data in unvetted consumer tools. <em>Human authorship and disclosure are non-negotiable</em> in anything that carries our name publicly.",
+    signature: "Draft v3 · ready for executive review",
+  },
+  doors: {
+    label: "Three honest doors — pick once",
+    options: [
+      { id: "free", lead: true, title: "Start free in the dashboard", price: "Free to begin", body: "Open your workspace and draft the five Guidebook layers with guided prompts. Upgrade only if you want us in the room.", cta: "Start your charter", href: "04-signup-capture.html" },
+      { id: "paid", paid: true, title: "Have us draft it with you", price: "$1,000 · two weeks", body: "We draft all five layers customized to your organization. Your team reviews and ratifies in a private dashboard.", cta: "Have us draft it · $1,000", href: "04-signup-capture.html?plan=paid" },
+      { id: "train", title: "Learn to build it yourselves", price: "Training · scoped", body: "We train your people to build and maintain the charter — facilitation, templates, and board-ready rollout. Later stages: Skills and Solutions.", cta: "Train your team", href: "/contact" },
+    ],
+  },
+  dock: { voiceLine: "This is the only screen with a price — three doors, same dignity. Start free if you want to see the artifact form.", composerPlaceholder: "Ask about the dashboard or pricing…" },
+};
+const $ = (s) => document.querySelector(s);
+function renderCompare() {
+  const c = DASHBOARD_STATE.compare;
+  $("#compare").innerHTML = '<div class="compareCol"><p class="compareTag">' + c.before.tag + '</p><p>' + c.before.text + '</p><div class="blankPage" aria-hidden="true"></div></div><div class="compareMid" aria-hidden="true">→</div><div class="compareCol compareCol--after"><p class="compareTag">' + c.after.tag + '</p><p>' + c.after.text + '</p><div class="miniStack" aria-hidden="true">' + [1,2,3,4,5].map((i) => '<div class="miniDoc' + (i <= 2 ? ' filled' : '') + '"></div>').join('') + '</div></div>';
+}
+function renderDocuments() {
+  const spread = $("#doc-spread"); spread.innerHTML = "";
+  DASHBOARD_STATE.assemble.documents.forEach((doc) => {
+    const el = document.createElement("div"); el.className = "docCard";
+    el.style.left = doc.layout.left; el.style.top = doc.layout.top; el.style.transform = "rotate(" + doc.layout.rot + ")"; el.style.zIndex = doc.layout.z;
+    const filled = doc.draft ? "" : " filled";
+    el.innerHTML = '<div class="docInner"><span class="docLayer">Layer ' + doc.layer + '</span><h3 class="docTitle">' + doc.title + '</h3><div class="docLines"><span class="docLine' + filled + '"></span><span class="docLine short' + filled + '"></span><span class="docLine' + filled + '"></span><span class="docLine shorter"></span></div><span class="docStatus">' + (doc.draft ? "Drafting…" : "Draft ready") + '</span></div>';
+    spread.appendChild(el);
+  });
+}
+function renderProof() {
+  const p = DASHBOARD_STATE.proof;
+  $("#proof-sheet").innerHTML = '<p class="proofEyebrow">' + p.eyebrow + '</p><h3 class="proofTitle">' + p.title + '</h3><p class="proofExcerpt">' + p.excerpt + '</p><p class="proofSig">' + p.signature + '</p>';
+}
+function renderDoors() {
+  const grid = $("#door-grid"); grid.innerHTML = "";
+  DASHBOARD_STATE.doors.options.forEach((door) => {
+    const card = document.createElement("article");
+    card.className = "way" + (door.lead ? " wayLead" : "") + (door.paid ? " paid" : "");
+    card.innerHTML = "<h4>" + door.title + "</h4><p class=\"price\">" + door.price + "</p><p>" + door.body + "</p><a class=\"" + (door.paid ? "wayCtaPaid" : "wayCta") + "\" href=\"" + door.href + "\">" + door.cta + "</a>";
+    grid.appendChild(card);
+  });
+}
+function render() {
+  $("#eyebrow").textContent = DASHBOARD_STATE.eyebrow;
+  $("#headline").textContent = DASHBOARD_STATE.headline;
+  $("#lede").textContent = DASHBOARD_STATE.lede;
+  $("#assemble-label").textContent = DASHBOARD_STATE.assemble.label;
+  $("#doors-label").textContent = DASHBOARD_STATE.doors.label;
+  $("#voice-line").textContent = DASHBOARD_STATE.dock.voiceLine;
+  $("#composer-input").placeholder = DASHBOARD_STATE.dock.composerPlaceholder;
+  renderCompare(); renderDocuments(); renderProof(); renderDoors();
+}
+window.__safetySceneReplay = () => { $("#voice-line").textContent = DASHBOARD_STATE.dock.voiceLine; };
+render();
+</script>
+  </body>
+</html>

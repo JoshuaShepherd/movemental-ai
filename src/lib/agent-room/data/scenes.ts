@@ -166,8 +166,8 @@ export const SCENES = {
     { say: "Walk it free with our help, or have us do it with you." },
     {
       suggest: [
-        { label: "Have us do it · $1,000", lead: true, to: "withUs" },
-        { label: "Start free, guided", to: "onOwn" },
+        { label: "Have us do it · $1,000", lead: true, to: "toSafetyDashboard" },
+        { label: "Start free, guided", to: "focusHandbook" },
         { label: "Why does this come first?", to: "whySafetyFirst" },
         { label: "What could go wrong without it?", to: "safetyWithoutIt" },
         ...(DISCUSS_ENABLED
@@ -186,8 +186,8 @@ export const SCENES = {
     },
     {
       suggest: [
-        { label: "Have us do it · $1,000", lead: true, to: "withUs" },
-        { label: "Start free, guided", to: "onOwn" },
+        { label: "Have us do it · $1,000", lead: true, to: "toSafetyDashboard" },
+        { label: "Start free, guided", to: "focusHandbook" },
         { label: "What could go wrong without it?", to: "safetyWithoutIt" },
       ],
     },
@@ -202,8 +202,8 @@ export const SCENES = {
     },
     {
       suggest: [
-        { label: "Have us do it · $1,000", lead: true, to: "withUs" },
-        { label: "Start free, guided", to: "onOwn" },
+        { label: "Have us do it · $1,000", lead: true, to: "toSafetyDashboard" },
+        { label: "Start free, guided", to: "focusHandbook" },
         { label: "Why does this come first?", to: "whySafetyFirst" },
       ],
     },
@@ -215,7 +215,7 @@ export const SCENES = {
     {
       suggest: [
         { label: "Have us do it · $1,000", lead: true, to: "withUs" },
-        { label: "Walk it free", to: "onOwn" },
+        { label: "Walk it free", to: "focusHandbook" },
       ],
     },
   ],
@@ -230,7 +230,7 @@ export const SCENES = {
     {
       suggest: [
         { label: "Have us do it · $1,000", lead: true, to: "withUs" },
-        { label: "Walk it free", to: "onOwn" },
+        { label: "Walk it free", to: "focusHandbook" },
       ],
     },
   ],
@@ -252,20 +252,27 @@ export const SCENES = {
       ],
     },
   ],
+  focusHandbook: [
+    { say: "Get your free AI Safety Handbook — leave your email right here." },
+    { wait: 160 },
+    { gesture: "circle", target: "#handbookEmail" },
+  ],
+  /** @deprecated alias — handbook capture lives in the agent dock now. */
   onOwn: [
-    { say: "Done. Where should it land?" },
-    { wait: 140 },
-    { show: "capture", kind: "free" },
-    { gesture: "circle", target: "#capSubmit" },
-    { await: "capture" },
-    { show: "confirm", mode: "free" },
-    { wait: 480 },
-    { say: "The guide is on its way. Free, and we will guide you through it." },
+    { say: "Get your free AI Safety Handbook — leave your email right here." },
+    { wait: 160 },
+    { gesture: "circle", target: "#handbookEmail" },
+  ],
+  toSafetyDashboard: [
+    { show: "safetyDashboard" },
     { wait: 200 },
-    { say: "Your first move is your team's honest read." },
+    {
+      say: "This is the dashboard — five layers drafting together, board-ready at the end.",
+    },
     {
       suggest: [
-        { label: "Have us do it instead · $1,000", to: "withUs" },
+        { label: "Have us draft it · $1,000", lead: true, to: "withUs" },
+        { label: "Get the free Handbook", to: "focusHandbook" },
         { label: "↺ Start over", to: "opening" },
       ],
     },

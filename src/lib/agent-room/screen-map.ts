@@ -61,6 +61,8 @@ export const SCREEN_TO_COMPONENT = {
   pricing: "pricing",
   faq: "faq",
   capture: "capture",
+  /** Funnel-only stub screen; engine maps to `safety` until a dedicated component exists. */
+  safetyDashboard: "safety",
 } satisfies Record<ScreenId, ComponentId>;
 
 /** The Ink Band screen a rendered component maps to, or `null` if engine-extra. */

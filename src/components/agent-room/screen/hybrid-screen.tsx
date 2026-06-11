@@ -34,6 +34,7 @@ export function HybridScreen({
   onCaptureSubmit,
   onCaptureSkip,
   disabled,
+  onRunScene,
 }: {
   screen: StubScreenState;
   engineExtra: EngineExtraState | null;
@@ -45,6 +46,7 @@ export function HybridScreen({
   onCaptureSubmit: (kind: string, values: Record<string, string>) => void;
   onCaptureSkip: () => void;
   disabled: boolean;
+  onRunScene?: (scene: string) => void;
 }) {
   if (engineExtra?.component === "network") return <NetworkScreen />;
   if (engineExtra?.component === "audience") return <AudienceScreen />;
@@ -63,6 +65,7 @@ export function HybridScreen({
       onCaptureSkip={onCaptureSkip}
       disabled={disabled}
       stream={stream ?? undefined}
+      onRunScene={onRunScene}
     />
   );
 }

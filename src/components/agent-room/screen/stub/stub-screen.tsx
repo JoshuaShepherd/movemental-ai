@@ -32,6 +32,7 @@ import { ContactScreen } from "./contact-screen";
 import { ConfirmScreen } from "./confirm-screen";
 import { LeaderScreen } from "./leader-screen";
 import { CaptureScreen } from "./capture-screen";
+import { SafetyDashboardScreen } from "./safety-dashboard-screen";
 
 /** The current screen on the wall (prototype `renderScreen` arguments + a
  *  nonce so the `settle` animation re-fires on every `show`). */
@@ -70,6 +71,8 @@ export interface ScreenProps {
   disabled: boolean;
   /** Stream mode only — validated agent props + `say()`. Absent in stub. INT-02. */
   stream?: StreamScreenInput;
+  /** Run a named scene (`onOwn`, `withUs`, …) from in-screen CTAs. */
+  onRunScene?: (scene: string) => void;
 }
 
 /**
@@ -90,6 +93,7 @@ export const SCREEN_COMPONENTS: Record<ScreenId, ComponentType<ScreenProps>> = {
   pricing: PricingScreen,
   faq: FaqScreen,
   capture: CaptureScreen,
+  safetyDashboard: SafetyDashboardScreen,
 };
 
 export function StubScreen({
@@ -102,6 +106,7 @@ export function StubScreen({
   onCaptureSkip,
   disabled,
   stream,
+  onRunScene,
 }: {
   screen: StubScreenState;
   mapRead: MapRead | null;
@@ -113,6 +118,7 @@ export function StubScreen({
   disabled: boolean;
   /** Hybrid/stream agent props for prop-driven screens (beat, readback, capture). */
   stream?: StreamScreenInput;
+  onRunScene?: (scene: string) => void;
 }) {
   const Component = SCREEN_COMPONENTS[screen.id];
   return (
@@ -126,6 +132,7 @@ export function StubScreen({
       onCaptureSkip={onCaptureSkip}
       disabled={disabled}
       stream={stream}
+      onRunScene={onRunScene}
     />
   );
 }
