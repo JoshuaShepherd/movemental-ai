@@ -117,11 +117,6 @@ export const VOICES = [
     image: "/images/voices/lucas-pulley.webp"
   },
   {
-    name: "Tim Catchim",
-    title: "Permanent Revolution co-author with Hirsch; Trimtab APEST coach; OneLife Nashville team leader; IVP-published movemental practitioner.",
-    image: "/images/voices/tim-catchim.webp"
-  },
-  {
     name: "Rob Wegner",
     title: "Kansas City Underground founder; Microchurch NEXT co-director; Starfish and the Spirit co-author; eight-book multiplication bibliography.",
     image: "/images/voices/rob-wegner.webp"

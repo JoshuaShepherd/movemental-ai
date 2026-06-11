@@ -48,8 +48,10 @@ sources:
   - digital-presence-discovery.md
   - sources.md
   - movemental-analysis.md
+home_card_title: Missio national director; Post Commons and Lantern Network founder; Tangible Kingdom co-author; Brave Cities and MCAP co-director; Alton kingdom ventures.
+graph_title: Missio director · Tangible Kingdom
 research_completed_at: 2026-01-04
-generated_at: 2026-05-20
+generated_at: 2026-06-11
 ---
 
 ## Editorial bio
@@ -59,3 +61,11 @@ Hugh Halter has spent more than thirty years as a missionary in North America, a
 His written corpus runs from The Tangible Kingdom (with Matt Smay) and AND: The Gathered and Scattered Church through Sacrilege and Flesh to BIVO: A Modern-Day Guide for Bi-Vocational Saints and Brave Cities — a body of work that argues, plainly, for a church less churchy and more tangible. He has spoken from Exponential to Mosaix to Verge to Praxis, and turns up on podcasts like Theology in the Raw.
 
 Before Alton he co-founded the Adullam house-church network in Denver; alongside his wife Cheryl, he now co-directs Rí Beag Refuge, an eighty-acre equine therapy farm. The thread across all of it is the same: kingdom work that has to take up physical space in a specific city, with a specific door anyone can walk through.
+
+## Home card title
+
+Missio national director; Post Commons and Lantern Network founder; Tangible Kingdom co-author; Brave Cities and MCAP co-director; Alton kingdom ventures.
+
+## Graph title
+
+Missio director · Tangible Kingdom

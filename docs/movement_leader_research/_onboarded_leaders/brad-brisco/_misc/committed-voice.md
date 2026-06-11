@@ -64,8 +64,10 @@ sources:
   - digital-presence-discovery.md
   - fragmentation-story.md
   - sources.md
+home_card_title: NAMB / Send Network multiplication strategies director; covocational ministry; five books; missional theology ↔ evangelical systems translator.
+graph_title: Send Network strategies director · Covocational ministry
 research_completed_at: 2026-04-12
-generated_at: 2026-05-20
+generated_at: 2026-06-11
 ---
 
 ## Editorial bio
@@ -73,3 +75,11 @@ generated_at: 2026-05-20
 Brad Brisco works the seam most missional writers avoid: the seam between post-Christendom theology and a Southern Baptist denominational system. As Director of Multiplication Strategies for Send Network at the North American Mission Board, he translates Newbigin, Bosch, Frost, and Hirsch into the planting language of a tradition that has not always reached for them. He earned a D.Min. in Missional Ecclesiology with a dissertation on helping existing congregations transition toward mission, and he has carried that question into eighteen-plus years of college teaching across History of Christianity, Theology of Place, and Launching Apostolic Movements.
 
 His written corpus moves in stages alongside Lance Ford — from the small-group curriculum Missional Essentials, through The Missional Quest (InterVarsity Press) and Next Door As It Is In Heaven (NavPress, 2016), to ReThink and his solo synthesis Covocational Church Planting (Missional Press, 2021), released as a free bilingual ebook in English and Spanish. He co-founded Forge Kansas City and the Sentralized Conference, sits on the Forge America national leadership team, and writes regularly across New Churches, ChurchLeaders.com, and his own missionalchurchnetwork.com — a deliberately distributed footprint that mirrors the institutional and grassroots circles he has always tried to hold together.
+
+## Home card title
+
+NAMB / Send Network multiplication strategies director; covocational ministry; five books; missional theology ↔ evangelical systems translator.
+
+## Graph title
+
+Send Network strategies director · Covocational ministry

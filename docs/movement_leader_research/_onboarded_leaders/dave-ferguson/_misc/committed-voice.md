@@ -69,14 +69,24 @@ sources:
   - content/books.md
   - network/organizations.md
   - analysis/movemental-fit.md
+home_card_title: Exponential CEO; Community Christian co-founding pastor; NewThing founder; Hero Maker author; 16% Mission architect.
+graph_title: Exponential CEO · Hero Maker author
 research_completed_at: 2026-05-27
-generated_at: 2026-05-27
+generated_at: 2026-06-11
 ---
 
 ## Editorial bio
 
-Dave Ferguson has spent more than three decades proving a single conviction: the church is built to multiply, not merely to add. On March 5, 1989, he and his brother Jon gathered five college friends in the cafeteria of Naperville Central High School and started Community Christian Church; it grew into one of the earliest multi-site churches in America and a Chicago-area community of roughly 5,500. In 2001 he launched NewThing to carry the reproducing-church vision beyond his own campuses, and it grew into a network that planted thousands of churches across some seventy nations. As co-founder and CEO of Exponential, he convenes the largest church-planting gathering in the world.
+Dave Ferguson has spent more than three decades proving a single conviction: the church is built to multiply, not merely to add. On March 5, 1989, he and his brother Jon gathered five college friends in the cafeteria of Naperville Central High School and started Community Christian Church; it grew into one of the earliest multi-site churches in America and a Chicago-area community of roughly 5,500. In 2001 he launched NewThing, which planted thousands of churches across some seventy nations, and as co-founder and CEO of Exponential he convenes the largest church-planting gathering in the world.
 
-His books trace that conviction maturing in public — from church-strategy method (*The Big Idea*, 2007) through movement vision (*Exponential*, 2010; *On the Verge*, 2011, with Alan Hirsch) and redefined metrics (*Keeping Score*, 2014), to the relational evangelism of *Finding Your Way Back to God* (2015) and *B.L.E.S.S.* (2021), to his defining work on leadership, *Hero Maker* (2018, with Warren Bird), and his 2026 turn toward sustainable leader health, *Multiplier*. Along the way he built a toolkit of named, teachable frameworks — the five hero-making practices, the BLESS rhythm, the Five Levels of a multiplying church, ICNU conversations, the apprenticeship ladder, and the "16% Mission" — that thousands of planters now use as common language.
+His books trace that conviction maturing in public — from Exponential (2010) and On the Verge (2011, with Alan Hirsch) through B.L.E.S.S. (2021) to Hero Maker (2018, with Warren Bird) and Multiplier (2026). Along the way he built named frameworks — hero-making practices, the BLESS rhythm, Five Levels, ICNU conversations, and the "16% Mission" — that thousands of planters now use as common language.
 
-In 2025 he did what most leaders only write about. He folded NewThing into Exponential under the banner "Kingdom over Castle," and after an eighteen-month public apprenticeship he handed the Lead Pastor role at Community Christian to Ted Coniaris and stepped back to Co-Founding Pastor — a lived demonstration of the succession theology he had taught for years. Colleagues describe him as the operator to Alan Hirsch's theologian: the practitioner who takes apostolic vision and turns it into a system a church can actually run. "My fruit grows on other people's trees," he likes to say. "I'm the platform; I'm not the show."
+In 2025 he folded NewThing into Exponential under "Kingdom over Castle," and handed the Lead Pastor role at Community Christian to Ted Coniaris — a lived demonstration of the succession theology he had taught for years.
+
+## Home card title
+
+Exponential CEO; Community Christian co-founding pastor; NewThing founder; Hero Maker author; 16% Mission architect.
+
+## Graph title
+
+Exponential CEO · Hero Maker author

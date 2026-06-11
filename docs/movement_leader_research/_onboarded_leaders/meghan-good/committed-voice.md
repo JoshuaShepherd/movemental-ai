@@ -65,14 +65,24 @@ sources:
   - content/books.md
   - network/organizations.md
   - analysis/movemental-fit.md
+home_card_title: Buechner preaching award; Bible Unwrapped and Divine Gravity author; Jesus Collective theology chair; AMBS DMin faculty; Mennonite movement voice.
+graph_title: Preacher-theologian · Divine Gravity author
 research_completed_at: 2026-05-27
-generated_at: 2026-05-27
+generated_at: 2026-06-11
 ---
 
 ## Editorial bio
 
-Meghan Larissa Good is a Mennonite pastor, theologian, and award-winning preacher whose entire body of work turns on one question: what happens when you read the Bible — and rebuild your faith — through the lens of Jesus? Trained at Gordon College, Duke Divinity School, and Portland Seminary, she became in 2018 the first-ever recipient of the Frederick Buechner Award for Excellence in Preaching, and her voice carries that lineage: literary, narrative-driven, honest about doubt, and quietly funny.
+Meghan Larissa Good is a Mennonite pastor, theologian, and award-winning preacher whose entire body of work turns on one question: what happens when you read the Bible — and rebuild your faith — through the lens of Jesus? Trained at Gordon College, Duke Divinity School, and Portland Seminary, she became in 2018 the first-ever recipient of the Frederick Buechner Award for Excellence in Preaching.
 
-Her first book, *The Bible Unwrapped: Making Sense of Scripture Today* (Herald Press, 2018, foreword by Gregory Boyd), translated her doctoral work on the dialogic shape of Christian authority into an accessible guide for ordinary readers and won Outreach Magazine's 2019 Resource of the Year in Theology and Biblical Studies. Her second, *Divine Gravity: Sparking a Movement to Recover a Better Christian Story* (Herald Press, 2023, foreword by Dennis R. Edwards, endorsed by Richard Mouw, Brian McLaren, Greg Boyd, and David Gushee), moved from how to read Scripture to what kind of church to become — a call for a Spirit-led, grassroots new reformation grounded in cross-shaped power and centered-set belonging.
+Her first book, The Bible Unwrapped: Making Sense of Scripture Today (Herald Press, 2018, foreword by Gregory Boyd), won Outreach Magazine's 2019 Resource of the Year in Theology and Biblical Studies. Her second, Divine Gravity: Sparking a Movement to Recover a Better Christian Story (Herald Press, 2023, foreword by Dennis R. Edwards), moved from how to read Scripture to what kind of church to become — a call for a Spirit-led new reformation grounded in cross-shaped power and centered-set belonging.
 
-After more than sixteen years in pastoral ministry — at Albany Mennonite Church in Oregon and then over a decade as Lead Pastor of Trinity Mennonite Church in Arizona — she resigned her pastorate in May 2025 to take a movement-level role as Resource Development Manager at Jesus Collective, where she also chairs the international Theology Circle, and she continues to teach in AMBS's Doctor of Ministry program. She has begun producing daily Jesus-centered devotionals on her "Reading Jesus" YouTube channel. She is, by her own design, no longer a single-congregation pastor but a movement builder — which is exactly what *Divine Gravity* set out to be.
+After more than sixteen years in pastoral ministry — at Albany Mennonite Church in Oregon and as Lead Pastor of Trinity Mennonite Church in Arizona — she resigned her pastorate in May 2025 to serve as Resource Development Manager at Jesus Collective, where she chairs the international Theology Circle, and she continues to teach in AMBS's Doctor of Ministry program from Dayton, Ohio.
+
+## Home card title
+
+Buechner preaching award; Bible Unwrapped and Divine Gravity author; Jesus Collective theology chair; AMBS DMin faculty; Mennonite movement voice.
+
+## Graph title
+
+Preacher-theologian · Divine Gravity author

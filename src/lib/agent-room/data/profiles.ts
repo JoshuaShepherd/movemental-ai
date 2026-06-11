@@ -51,11 +51,11 @@ export interface Profile {
 export const PROFILES: Record<number, Profile> = {
   0: {
     approved: true,
-    lede: "Missional theologian — thirty years reactivating what’s latent in the Body.",
-    bio: "Alan Hirsch is called to reactivate what’s already in the church — the apostolic, prophetic, evangelistic, shepherd, and teacher capacities buried under institution. For more than thirty years he has planted churches, trained leaders, and written the frameworks a generation now uses to think about movement, formation, and the recovery of mission.",
+    lede: "Missiologist · Forgotten Ways & APEST",
+    bio: "Alan Hirsch is the missiologist who coined the term \"movemental\" — the namesake of this platform — and built the intellectual architecture much of the contemporary missional church now runs on. Born in Johannesburg in 1959, raised in apartheid-era South Africa, he emigrated to Australia in 1983 and pastored the South Melbourne Restoration Community for fifteen years among addicts, sex workers, and the chronically housed before turning that ministry's lessons into theory.\n\nHis magnum opus, The Forgotten Ways (Brazos, 2006), introduced the mDNA framework and the concept of Apostolic Genius; 5Q (2017) and The Permanent Revolution (Jossey-Bass, 2012, with Tim Catchim) have made APEST one of the most widely adopted readings of Ephesians 4 in the Western church, with more than 150,000 assessments taken through his platforms. Across twenty books published with seven publishers — including The Shaping of Things to Come with Michael Frost, ReJesus, Untamed with Debra Hirsch, and Metanoia with Rob Kelly — he has built a coherent line from Christology through missiology to ecclesiology.\n\nHe founded 100Movements, co-founded the Forge Mission Training Network and 5Q Collective, and co-founded the M.A. in Missional Church Movements at Wheaton College. He teaches as adjunct faculty at Fuller, George Fox, and Asbury, and works as embedded consultant for Redeemer City to City and movement mentor for NewThing International.",
     work: [
-      { t: "Books", g: "The Forgotten Ways, 5Q, The Permanent Revolution, ReJesus, On the Verge, and nine-plus titles with IVP and co-authors." },
-      { t: "Organizations", g: "100Movements, Forge, Future Travelers, and the 5Q Collective — plus academic work at Fuller, Wheaton, George Fox, and Asbury." },
+      { t: "Books", g: "The Forgotten Ways (Brazos, 2006), 5Q (100 Movements, 2017), The Permanent Revolution (with Tim Catchim), The Shaping of Things to Come (with Michael Frost), Metanoia (with Rob Kelly)." },
+      { t: "Organizations", g: "100Movements, Forge Mission Training Network, 5Q Collective, Wheaton M.A. in Missional Church Movements — adjunct at Fuller, George Fox, and Asbury." },
     ],
     connection:
       "Co-founder of Movemental. The decades of missional work he and Brad built — Forge, 100Movements, the Movement Leaders Collective — are exactly the credibility this path is made to keep legible.",
@@ -131,11 +131,11 @@ export const PROFILES: Record<number, Profile> = {
   },
   4: {
     approved: true,
-    lede: "Forge America director — action-reflection discipleship in everyday mission.",
-    bio: "Rowland Smith forms everyday missionaries by sending them out and reflecting with them. Action-reflection discipleship runs from his Fuller dissertation Missional Emergence through the Forge America cohort, Denver Seminary teaching, and Life Out Loud — practice first, then codify what you’ve lived.",
+    lede: "Forge America director · Red Skies curator",
+    bio: "Rowland Smith carries the National Director role at Forge America Mission Training Network while founding and directing The Pando Collective, a Front-Range micro-church network seeded inside Pulpit Rock Church in Colorado Springs, where he also serves as Pastor of Missional Culture.\n\nHe authored Life Out Loud: Joining Jesus Outside the Walls of the Church (100 Movements Publishing, 2019) with a foreword contribution from Michael Frost, then curated and edited Red Skies: 10 Essential Conversations Exploring Our Future as the Church (100 Movements Publishing, 2022) — a multi-author chorus including Alan Hirsch, Debra Hirsch, Brian Sanders, Leonard Sweet, Mark DeYmaz, Oneya Okuwobi, Lisa Rodriguez-Watson, and Anna Robinson writing across leadership, race, sexuality, contextual intelligence, and church economics.\n\nHe teaches as adjunct faculty at Fuller Theological Seminary's DGL program, Denver Seminary's Doctor of Ministry in New Missional Movements, and Grand Canyon University, holding an MA in Global Leadership and a Fuller DMiss whose dissertation, Missional Emergence, codifies the action-reflection pedagogy now powering his Forge cohort design. He also co-founded Third Space Coffee with his wife — business-as-mission lived in the same neighborhood as the rest of his work.",
     work: [
-      { t: "Books", g: "Life Out Loud (with Michael Frost) and Red Skies — fourteen voices on the church’s future." },
-      { t: "Organizations", g: "Forge America (National Director), the Pando Collective, and Pulpit Rock Church." },
+      { t: "Books", g: "Life Out Loud (100 Movements, 2019), Red Skies — curator and editor (100 Movements, 2022), Missional Emergence (Fuller DMiss)." },
+      { t: "Organizations", g: "Forge America (National Director), The Pando Collective, The Church at Pulpit Rock — adjunct at Fuller, Denver Seminary, Grand Canyon." },
     ],
     connection:
       "National Director of Forge America and a 100 Movements author — in the same training pipeline as Alan Hirsch, Brian Sanders, and the practitioners Movemental connects.",
@@ -171,11 +171,11 @@ export const PROFILES: Record<number, Profile> = {
   },
   6: {
     approved: true,
-    lede: "Leader and author — preparing a pulpit the field was not built for.",
-    bio: "Liz Rios retrains church planting from the margins so Latina, Black, and bivocational women of color don’t plant inside curricula written around assumptions that were never theirs. Passion2Plant and Púlpito Fellows carry thirty-five years of mujerista and barrio theology into the only national BIPOC-woman-led planting network.",
+    lede: "Passion2Plant founder · Púlpito Fellows director",
+    bio: "Liz Rios has carried thirty-five years of ministry across pastoring, planting, teaching, and consulting — and into infrastructure. She founded Passion2Plant in 2020, the only national BIPOC-woman-led church planting network in the United States, and directs Púlpito Fellows, a three-year bilingual preaching fellowship funded by the Lilly Endowment and run in partnership with Urban Strategies.\n\nHer work runs simultaneously across denominational, academic, and movement spaces: ordained in the Christian Church (Disciples of Christ); adjunct faculty at Fuller Theological Seminary; board member at Sojourners; senior consultant with Lisa Sharon Harper's Freedom Road; consulting editor at Outreach Magazine since 2008; executive team member of the Latino Leadership Circle. She holds a BA, MA, EdD from Nova Southeastern, DMin from Southeastern, and a 2025 MA in Social Justice from Union Theological Seminary.\n\nShe writes from a mujerista frame — distinct in tone and theological surface area from anyone else inside Movemental's circle — and contributes to 100 Movements Publishing's Need to Know alongside Alan Hirsch, Scot McKnight, and Jo Saxton. In October 2025 she became the only woman inducted into Palm Beach Atlantic University's inaugural Florida College of Preachers, and brings a live cohort operator's discipline to what a leader-platform actually has to carry.",
     work: [
-      { t: "Books & writing", g: "Don’t Buy The Lie, Need to Know (100 Movements), Rhythms of Rest, and columns across Sojourners and Christianity Today." },
-      { t: "Organizations", g: "Passion2Plant, Púlpito Fellows, The Passion Center, and adjunct faculty at Fuller." },
+      { t: "Books & writing", g: "Don't Buy The Lie (2012), Need to Know — contributor (100 Movements), Mujerista in Motion — Substack." },
+      { t: "Organizations", g: "Passion2Plant, Púlpito Fellows, The Passion Center — adjunct at Fuller; board at Sojourners." },
     ],
     connection:
       "Contributed to 100 Movements’ Need to Know alongside Alan Hirsch and leads Passion2Plant — connected to the movement leaders and publishing orbit Movemental serves.",

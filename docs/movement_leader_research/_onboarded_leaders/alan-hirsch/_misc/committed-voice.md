@@ -54,8 +54,10 @@ sources:
   - content-analysis.md
   - content/books.md
   - ALAN_HIRSCH_AUTHOR_PROFILE.md
+home_card_title: Forgotten Ways and APEST architect; twenty books; Forge and 100 Movements; 150k+ assessments; coined movemental.
+graph_title: Missiologist · The Forgotten Ways
 research_completed_at: 2026-03-18
-generated_at: 2026-05-20
+generated_at: 2026-06-11
 ---
 
 ## Editorial bio
@@ -65,3 +67,11 @@ Alan Hirsch is the missiologist who coined the term "movemental" — the namesak
 His magnum opus, The Forgotten Ways (Brazos, 2006), introduced the mDNA framework and the concept of Apostolic Genius; 5Q (2017) and The Permanent Revolution (Jossey-Bass, 2012, with Tim Catchim) have made APEST one of the most widely adopted readings of Ephesians 4 in the Western church, with more than 150,000 assessments taken through his platforms. Across twenty books published with seven publishers — including The Shaping of Things to Come with Michael Frost, ReJesus, Untamed with Debra Hirsch, and Metanoia with Rob Kelly — he has built a coherent line from Christology through missiology to ecclesiology.
 
 He founded 100Movements, co-founded the Forge Mission Training Network and 5Q Collective, and co-founded the M.A. in Missional Church Movements at Wheaton College. He teaches as adjunct faculty at Fuller, George Fox, and Asbury, and works as embedded consultant for Redeemer City to City and movement mentor for NewThing International.
+
+## Home card title
+
+Forgotten Ways and APEST architect; twenty books; Forge and 100 Movements; 150k+ assessments; coined movemental.
+
+## Graph title
+
+Missiologist · The Forgotten Ways

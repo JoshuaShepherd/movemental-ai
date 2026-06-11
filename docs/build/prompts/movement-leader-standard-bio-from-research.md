@@ -1,30 +1,41 @@
 # Build prompt — standard trusted-voice bio from movement leader research
 
-**Goal.** For each movement leader named on the home page **Voices** carousel (`src/data/home-data.ts` → `VOICES`), read their on-disk research dossier and produce the **full standard bio package**: structured metadata + editorial prose + home-card copy. This is a **translation** task, not a research task — every fact must come from the dossier.
+**Goal.** For each movement leader in the Agent Room home portrait band (`src/lib/agent-room/data/leaders.ts` → `LEADERS`, rendered by `LeaderBand` on `/agent`), read their on-disk research dossier and produce the **full standard bio package**: structured metadata + editorial prose + home-card copy + graph subtitle. This is a **translation** task, not a research task — every fact must come from the dossier.
 
 **Read first:**
 
 - [movement-leaders-as-ecosystem-layer.md](../strategy/movement-leaders-as-ecosystem-layer.md) — public label is **"trusted voices"** (section eyebrow); these bios name practitioners in the scenius layer, not a recruiting roster.
 - [site-voices-eeat-audience-credentials.md](../../movement_leader_research/site-voices-eeat-audience-credentials.md) — audience-intersection context (churches · nonprofits · institutions).
 - `.claude/skills/movemental-committed-voice-bio/SKILL.md` — canonical field definitions and voice exemplars (Liz Rios, JR Woodward, Rowland Smith).
-- `src/lib/committed-voices.ts` — publication-layer shape for `/voices/[slug]` (only three leaders are wired today; the other home voices need the same artifact on disk first).
+- `src/lib/committed-voices.ts` — publication-layer shape for `/voices/[slug]` (separate wiring step after rights review).
+
+**Legacy note:** `src/data/home-data.ts` → `VOICES` (7 entries) is archived pre-marketing-migration data. The live home carousel is **`LEADERS` (17 entries)** on `/agent`.
 
 ---
 
-## Scope — home page voices (2026-06)
+## Scope — Agent Room portrait band (2026-06)
 
-These eight leaders appear in `VOICES` today. Run the prompt **once per slug**.
+These **17 leaders** appear in `LEADERS` today. Run the prompt **once per slug** (16 dossier-backed; Josh Shepherd is founder-only — no research dossier).
 
-| Slug | Display name (use dossier spelling) | Research dossier path | `committed-voice.md` status |
-|------|-------------------------------------|------------------------|-----------------------------|
-| `alan-hirsch` | Alan Hirsch | `docs/movement_leader_research/_onboarded_leaders/alan-hirsch/` | ✓ `_misc/committed-voice.md` |
-| `brad-brisco` | Dr. Brad Brisco | `docs/movement_leader_research/_onboarded_leaders/brad-brisco/` | ✓ `_misc/committed-voice.md` |
-| `liz-rios` | Rev. Dr. Liz Rios | `docs/movement_leader_research/_onboarded_leaders/liz-rios/` | ✓ `_misc/committed-voice.md` |
-| `rowland-smith` | Dr. Rowland Smith | `docs/movement_leader_research/_onboarded_leaders/rowland-smith/` | ✓ `_misc/committed-voice-2026-05-20.md` |
-| `jr-woodward` | JR Woodward | `docs/movement_leader_research/_onboarded_leaders/jr-woodward/` | ✓ `_misc/committed-voice.md` |
-| `lucas-pulley` | Lucas Pulley | `docs/movement_leader_research/lucas-pulley/` | ✓ `_misc/committed-voice-2026-05-20.md` |
-| `tim-catchim` | Tim Catchim | `docs/movement_leader_research/tim-catchim/` | ✓ `committed-voice.md` (root) |
-| `rob-wegner` | Rob Wegner | `docs/movement_leader_research/_onboarded_leaders/rob-wegner/` | **Missing — generate first** |
+| # | Slug | Display name | Dossier path | `committed-voice.md` |
+|---|------|--------------|--------------|----------------------|
+| 0 | `alan-hirsch` | Alan Hirsch | `_onboarded_leaders/alan-hirsch/` | ✓ full package |
+| 1 | `brad-brisco` | Brad Brisco | `_onboarded_leaders/brad-brisco/` | ✓ full package |
+| 2 | `jr-woodward` | JR Woodward | `_onboarded_leaders/jr-woodward/` | ✓ full package |
+| 3 | `neil-cole` | Neil Cole | `_onboarded_leaders/neil-cole/` | ✓ full package |
+| 4 | `rowland-smith` | Rowland Smith | `_onboarded_leaders/rowland-smith/` | ✓ full package |
+| 5 | `rob-wegner` | Rob Wegner | `_onboarded_leaders/rob-wegner/` | ✓ full package |
+| 6 | `liz-rios` | Liz Rios | `_onboarded_leaders/liz-rios/` | ✓ full package |
+| 7 | `lucas-pulley` | Lucas Pulley | `lucas-pulley/` | ✓ full package |
+| 8 | — | Josh Shepherd | *(founder; no dossier)* | skip |
+| 9 | `jeremy-chambers` | Jeremy & Monica Chambers | `_onboarded_leaders/jeremy-chambers/` | ✓ full package |
+| 10 | `dave-ferguson` | Dave Ferguson | `_onboarded_leaders/dave-ferguson/` | ✓ full package |
+| 11 | `dhati-lewis` | Dhati Lewis | `_onboarded_leaders/dhati-lewis/` | ✓ full package |
+| 12 | `hugh-halter` | Hugh Halter | `_onboarded_leaders/hugh-halter/` | ✓ full package |
+| 13 | `michael-cooper` | Michael Cooper | `_onboarded_leaders/michael-cooper/` | ✓ full package |
+| 14 | `roy-moran` | Roy Moran | `_onboarded_leaders/roy-moran/` | ✓ full package |
+| 15 | `peyton-jones` | Peyton Jones | `_onboarded_leaders/peyton-jones/` | ✓ full package |
+| 16 | `meghan-good` | Meghan Good | `_onboarded_leaders/meghan-good/` | ✓ full package |
 
 **Dossier resolution rule.** Prefer `docs/movement_leader_research/<slug>/`. If missing, use `docs/movement_leader_research/_onboarded_leaders/<slug>/`. Never invent a third path.
 
@@ -233,10 +244,11 @@ The Markdown file is the **editorial SSOT**. Code publication is a separate step
 
 | Surface | Field | Source |
 |---------|-------|--------|
-| Home carousel | `VOICES[].title` | `home_card_title` in committed-voice frontmatter |
+| Agent Room carousel (`/agent`) | `LEADERS[].cred` | `graph_title` in committed-voice frontmatter |
+| Archived marketing carousel | `VOICES[].title` in `home-data.ts` | `home_card_title` |
 | Credibility graph | `VoiceGraphVoice.title` | `graph_title` |
 | `/voices/[slug]` | `CommittedVoice` in `src/lib/committed-voices.ts` | Map YAML → TS by hand until a loader exists |
-| Portrait | `/images/voices/<slug>.webp` | `scripts/process-voices-portraits.ts` |
+| Portrait | `/agent-room/leaders/{i}.jpg` or `/images/voices/<slug>.webp` | existing assets |
 
 **Publication gate:** Only copy into `src/lib/committed-voices.ts` after rights review (`lastReviewed` date in TS).
 
@@ -244,9 +256,11 @@ The Markdown file is the **editorial SSOT**. Code publication is a separate step
 
 ## Batch run order (recommended)
 
-1. **`rob-wegner`** — no committed-voice artifact yet; dossier is complete (`summary.md`, full `profile/`, `content/books.md`).
-2. **`tim-catchim`** — has committed-voice but no `profile/biography.md`; verify editorial bio against `summary.md` + legacy identity files.
-3. **Refresh pass** — re-run for leaders whose home `title` in `home-data.ts` drifted from research (compare to `home_card_title` in existing committed-voice files).
+All **16 dossier-backed** `LEADERS` entries now have the full standard package (`home_card_title`, `graph_title`, editorial bio). Re-run a slug only when its dossier materially changes or `LEADERS[].cred` drifts from `graph_title`.
+
+1. **Refresh pass** — compare `LEADERS[].cred` in `leaders.ts` to `graph_title` after any dossier update.
+2. **Josh Shepherd** — founder entry; no research dossier or committed-voice artifact (by design).
+3. **`tim-catchim`** — has committed-voice but is not in `LEADERS`.
 
 ---
 

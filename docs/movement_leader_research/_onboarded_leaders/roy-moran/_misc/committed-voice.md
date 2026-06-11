@@ -52,16 +52,18 @@ lineage:
     - brad-brisco
   downstream:
     - Doug Cobb
-    - Stan Parks
-    - Mike Moran
+  - Stan Parks
+  - Mike Moran
 sources:
   - README.md
   - summary.md
   - ROY_MORAN_AUTHOR_PROFILE.md
   - ROY_MORAN_CALLING_PROFILE.md
   - sources.md
+home_card_title: New Generations platform leader; Shoal Creek hybrid pastor; Hybrid Church author; Mercy Alliance founder; Movement Conversations host.
+graph_title: DMM practitioner · Hybrid Church author
 research_completed_at: 2026-05-13
-generated_at: 2026-05-20
+generated_at: 2026-06-11
 ---
 
 ## Editorial bio
@@ -69,3 +71,11 @@ generated_at: 2026-05-20
 Roy Moran pastored Shoal Creek Community Church in Kansas City for twenty-five years before he was willing to admit out loud that the disciples he was making were not making disciples. That recognition — and the long mentorship under David Watson that followed it — turned a Dallas Theological Seminary-trained, Willow Creek-shaped attractional pastor into the rare Western voice trusted equally by senior pastors of established congregations and by global Disciple-Making Movement practitioners. He still leads Shoal Creek as its directional leader and spiritual literacy advocate, alongside his wife Candy, who co-founded the church with him in 1992.
 
 His books carry that double credibility. Spent Matches (Thomas Nelson, 2015) tells the story; Hybrid Church (DMM Press, 2017) systematizes it as a playbook for other senior leaders — the integrated "come and go" model that holds an attractional Sunday gathering and a multiplicative DMM track inside one congregation. He now serves as Global Team Leader, Platform at New Generations, the Jerry Trousdale-led network documenting millions of disciples and hundreds of thousands of churches across Africa, Asia, and Latin America, and as founder and Executive Director of Mercy Alliance International. His weekly Movement Conversations podcast is one of only a handful of sustained DMM media properties in the English-speaking world.
+
+## Home card title
+
+New Generations platform leader; Shoal Creek hybrid pastor; Hybrid Church author; Mercy Alliance founder; Movement Conversations host.
+
+## Graph title
+
+DMM practitioner · Hybrid Church author

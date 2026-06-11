@@ -59,8 +59,10 @@ sources:
   - fragmentation-story.md
   - analysis/content-analysis.md
   - network/collaborators.md
+home_card_title: Forge America director; Pando Collective founder; Pulpit Rock mission pastor; Red Skies curator; DMiss scholar.
+graph_title: Forge America director · Red Skies curator
 research_completed_at: 2026-04-15
-generated_at: 2026-05-20
+generated_at: 2026-06-11
 ---
 
 ## Editorial bio
@@ -70,3 +72,11 @@ Rowland Smith carries the National Director role at Forge America Mission Traini
 He authored Life Out Loud: Joining Jesus Outside the Walls of the Church (100 Movements Publishing, 2019) with a foreword from Michael Frost, then curated and edited Red Skies: 10 Essential Conversations Exploring Our Future as the Church (100 Movements Publishing, 2022) — a multi-author chorus including Alan Hirsch, Debra Hirsch, Brian Sanders, Leonard Sweet, Mark DeYmaz, and eleven other contributors writing across leadership, race, sexuality, contextual intelligence, and church economics.
 
 He teaches as adjunct faculty at Fuller Theological Seminary's DGL program, Denver Seminary's Doctor of Ministry in New Missional Movements, and Grand Canyon University, holding an MA in Global Leadership and a Fuller DMiss whose dissertation, Missional Emergence, codifies the action-reflection pedagogy that powers his Forge cohort design. He also co-founded Third Space Coffee with his wife — business-as-mission lived in the same neighborhood as the rest of his work.
+
+## Home card title
+
+Forge America director; Pando Collective founder; Pulpit Rock mission pastor; Red Skies curator; DMiss scholar.
+
+## Graph title
+
+Forge America director · Red Skies curator

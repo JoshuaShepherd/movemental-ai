@@ -66,8 +66,10 @@ sources:
   - network/affiliations.md
   - network/movemental-overlap.md
   - digital-presence.md
+home_card_title: Afro-Boricua theologian; Passion2Plant founder; Lilly-funded Púlpito Fellows; Fuller adjunct; Sojourners board; Need to Know contributor.
+graph_title: Passion2Plant founder · Púlpito Fellows director
 research_completed_at: 2026-04-20
-generated_at: 2026-05-20
+generated_at: 2026-06-11
 ---
 
 ## Editorial bio
@@ -77,3 +79,11 @@ Liz Rios has carried thirty-five years of ministry across pastoring, planting, t
 Her work runs simultaneously across denominational, academic, and movement spaces: ordained in the Christian Church (Disciples of Christ); adjunct faculty at Fuller Theological Seminary; board member at Sojourners; senior consultant with Lisa Sharon Harper's Freedom Road; consulting editor at Outreach Magazine since 2008; executive team member of the Latino Leadership Circle. She holds a BA, MA, EdD from Nova Southeastern, DMin from Southeastern, and a 2025 MA in Social Justice from Union Theological Seminary.
 
 She writes from a mujerista frame — distinct in tone and theological surface area from anyone else inside Movemental's circle — and contributes to 100 Movements Publishing's Need to Know alongside Alan Hirsch, Scot McKnight, and Jo Saxton. In October 2025 she became the only woman inducted into Palm Beach Atlantic University's inaugural Florida College of Preachers, and brings a live cohort operator's discipline to what a leader-platform actually has to carry.
+
+## Home card title
+
+Afro-Boricua theologian; Passion2Plant founder; Lilly-funded Púlpito Fellows; Fuller adjunct; Sojourners board; Need to Know contributor.
+
+## Graph title
+
+Passion2Plant founder · Púlpito Fellows director

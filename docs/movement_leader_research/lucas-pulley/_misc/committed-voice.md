@@ -71,8 +71,10 @@ sources:
   - profile/voice-analysis.md
   - network/organizations.md
   - digital-presence/websites.md
+home_card_title: Underground Network Movements Director; fourteen-plus years microchurch; Tampa neighborhood practitioner; Fuller MGL; mathematics-trained systems thinking.
+graph_title: Movements Director, Underground Network
 research_completed_at: 2026-04-22
-generated_at: 2026-05-20
+generated_at: 2026-06-11
 ---
 
 ## Editorial bio
@@ -82,3 +84,11 @@ Lucas Pulley has spent fourteen-plus years planting and directing decentralized 
 His path runs unusually — a BA in Pure Mathematics from SIU Carbondale, a research stint at Technische Universität Braunschweig, then a Master of Global Leadership from Fuller Theological Seminary. The mathematician is still visible in the pastor. His written corpus is lean — ten Medium essays, The Parable of the White Pastor on Missio Alliance, an Underground Essentials teaching on Creedal Community — but each piece reaches across disciplines for its scaffolding: Granovetter's threshold model, Brafman's starfish biology, Alan Hirsch's APEST, and the Hubology framework he is building with Rob Wegner and Lance Ford.
 
 What he repeats, verbatim across podcasts from Theology in the Raw to Shifting Culture to The Starfish and the Church, is the line he organizes his life around: cities transformed by the priesthood of all believers activated in the mission of God.
+
+## Home card title
+
+Underground Network Movements Director; fourteen-plus years microchurch; Tampa neighborhood practitioner; Fuller MGL; mathematics-trained systems thinking.
+
+## Graph title
+
+Movements Director, Underground Network

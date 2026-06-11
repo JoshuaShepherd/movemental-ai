@@ -67,14 +67,24 @@ sources:
   - profile/voice-analysis.md
   - network/organizations.md
   - MICHAEL_COOPER_RESEARCH_COLLATED.md
+home_card_title: Ephesiology coiner; William Carey missiology award; 227-episode podcast; East West missiologist-in-residence; Romania pioneer planter.
+graph_title: Ephesiology author · East West missiologist
 research_completed_at: 2026-05-29
-generated_at: 2026-05-29
+generated_at: 2026-06-11
 ---
 
 ## Editorial bio
 
-Michael T. Cooper is the missiologist who coined "Ephesiology" — the study of the first-century Ephesian movement — and turned it into a framework, a podcast, a seminary partnership, and a 17-title body of work. His path into the field was unusual: an undergraduate degree in Environmental Design from Texas A&M, an MA in Missions from Columbia International University, and a PhD in Intercultural Studies from Trinity Evangelical Divinity School, where his early research was an ethnography of contemporary Druidry before his work turned decisively toward the New Testament and the archaeology of Asia Minor. Between the classroom and the page sit roughly ten years as a pioneer church planter in post-communist Romania and three decades equipping planters across Africa, Europe, the Americas, and South and Southeast Asia.
+Michael T. Cooper coined "Ephesiology" — the study of the first-century Ephesian movement — and turned it into a framework, a podcast, a seminary partnership, and a 17-title body of work. His path was unusual: an undergraduate degree in Environmental Design from Texas A&M, an MA in Missions from Columbia International University, and a PhD in Intercultural Studies from Trinity Evangelical Divinity School, where his research turned from contemporary Druidry toward the New Testament and the archaeology of Asia Minor. Between the classroom and the page sit roughly ten years as a pioneer church planter in post-communist Romania and three decades equipping planters across Africa, Europe, the Americas, and South and Southeast Asia.
 
-His 2020 book *Ephesiology: A Study of the Ephesian Movement* (William Carey Publishing) won that year's Catalyst Services Reader's Choice Award for the best book in missiology and gave the field a new word. The argument behind it is a single inversion repeated across his corpus and his 227-episode podcast: mission is not a subset of theology but its center, "church planting" is nowhere commanded in Scripture, and "making disciples is the mandate while church planting is a result." Around that conviction he has built the Ephesiology Master Classes and Seminary@YourChurch (in partnership with the accredited Kairos University), the MA in Missiology of Movements at Mission India Theological Seminary, and the TELOS. ministry.
+His 2020 book Ephesiology (William Carey Publishing) won that year's Catalyst Services Reader's Choice Award for the best book in missiology. The argument behind it is a single inversion repeated across his podcast: mission is not a subset of theology but its center, and making disciples is the mandate while church planting is a result. Around that conviction he built the Ephesiology Master Classes and the MA in Missiology of Movements at Mission India Theological Seminary.
 
-He works today as missiologist-in-residence at East West Ministries, affiliate professor at Kairos, and host of The Ephesiology Podcast with co-host Andrew Johnson. He is positioned by his own endorsers — Alan Hirsch, Marvin Newell, James Stamoolis — as a contemporary heir to Roland Allen, calling the church back to a Pauline, movement-shaped reading of its own foundations.
+He works today as missiologist-in-residence at East West Ministries and affiliate professor at Kairos, with endorsers including Alan Hirsch positioning him as a contemporary heir to Roland Allen.
+
+## Home card title
+
+Ephesiology coiner; William Carey missiology award; 227-episode podcast; East West missiologist-in-residence; Romania pioneer planter.
+
+## Graph title
+
+Ephesiology author · East West missiologist

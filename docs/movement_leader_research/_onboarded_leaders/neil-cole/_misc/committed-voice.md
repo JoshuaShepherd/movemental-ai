@@ -57,8 +57,8 @@ lineage:
     - rob-wegner
     - lucas-pulley
     - Brian Sanders
-    - Steve Addison
-    - Curtis Sergeant
+  - Steve Addison
+  - Curtis Sergeant
 sources:
   - README.md
   - profile/biography.md
@@ -66,8 +66,10 @@ sources:
   - profile/identity.md
   - network/organizations.md
   - digital-presence/websites.md
+home_card_title: Organic Church author; CMA and Life Transformation Groups founder; 100 Movements co-founder; Starling Initiatives; thirteen-year silence and 2024 return.
+graph_title: Organic Church author · CMA founder
 research_completed_at: 2026-04-29
-generated_at: 2026-05-20
+generated_at: 2026-06-11
 ---
 
 ## Editorial bio
@@ -77,3 +79,11 @@ Neil Cole left a Grace Brethren pastorate in Alta Loma, California in 1999, star
 The nine-year publishing run that followed put him at the center of the missional conversation. Organic Church (Jossey-Bass, 2005) named the category; Church 3.0 (Jossey-Bass, 2010), Search & Rescue (Baker, 2008), Church Transfusion (with Phil Helfer, Jossey-Bass, 2012), and Primal Fire (Tyndale Momentum, 2014) followed. In 2015 he co-founded 100 Movements with Alan Hirsch, Dave Rhodes, Will Mancini, and Jessie Cruickshank, the design team behind the six movement competencies.
 
 Then, by his own account, God told him to stop. He kept the silence for thirteen years — no public speaking, no social media, no blogging — and re-emerged tentatively in 2024 on Shifting Culture, the reChurch Podcast, and KC Underground's Upside Down Kingdom. He continues to write quieter, more interior books — Rising Tides, Pray, VIRAL, Journeys — under his own Starling Initiatives imprint, and teaches Church Development at Kairos Pacific University in Long Beach.
+
+## Home card title
+
+Organic Church author; CMA and Life Transformation Groups founder; 100 Movements co-founder; Starling Initiatives; thirteen-year silence and 2024 return.
+
+## Graph title
+
+Organic Church author · CMA founder

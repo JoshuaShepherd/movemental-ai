@@ -62,8 +62,10 @@ sources:
   - profile/identity.md
   - content/books.md
   - network/organizations.md
+home_card_title: V3 Church Planting national director; Manchester PhD powers scholar; published IVP books; Missio Alliance co-founder.
+graph_title: V3 national director · Theology of the Powers
 research_completed_at: 2026-04-13
-generated_at: 2026-05-20
+generated_at: 2026-06-11
 ---
 
 ## Editorial bio
@@ -73,3 +75,11 @@ JR Woodward has spent more than three decades planting churches that try to hold
 His written corpus is unusually integrated for a working practitioner. Creating a Missional Culture (IVP, 2012) introduced the Five Culture Creators reframing of Ephesians 4; The Church as Movement (IVP, 2016, with Dan White Jr., foreword by Alan Hirsch) named the eight competencies V3 still trains around; and The Scandal of Leadership (100 Movements Publishing, 2023) translated his Manchester Ph.D. on mimetic desire and the powers of domination into a trade book for pastors.
 
 He co-founded Missio Alliance and the Praxis Gathering, teaches as adjunct faculty at Fuller, Central, and Missio Seminary, and serves on the boards of Reliant Mission, the Movement Leaders Collective, and Fuller's Global Mission Advisory Council. Colleagues describe him as the architect to Alan Hirsch's prophet — a builder of careful, named frameworks who has stayed inside the neighborhood the whole time.
+
+## Home card title
+
+V3 Church Planting national director; Manchester PhD powers scholar; published IVP books; Missio Alliance co-founder.
+
+## Graph title
+
+V3 national director · Theology of the Powers
