@@ -15,19 +15,6 @@ function Cite({ n, title }: { n: number; title: string }) {
 /** Flagship analysis — ported from `docs/articles/graded-high/85-99/01-ai-credibility-crisis.md`. */
 export const aiCredibilityCrisisBody: ReactNode = (
   <>
-    <p className={styles.dropCap} id="section-summary">
-      The underlying <em>story</em> Movemental wants to tell is directionally plausible:
-      generative AI lowers the cost of fluent, polished, &ldquo;credible-looking&rdquo; text and
-      imagery; platform incentives reward volume; and ordinary users are unsure how to authenticate
-      what they see. But several <strong>specific numbers</strong> in circulation are{" "}
-      <strong>misaligned with their likely sources</strong> or{" "}
-      <strong>overstate what peer-reviewed work proves</strong>.
-    </p>
-
-    <p>
-      If Movemental wants a reputation for intellectual honesty (especially with research-minded
-      movement leaders), the strongest public version of the argument will:
-    </p>
 
     <ol className={styles.articleList}>
       <li>

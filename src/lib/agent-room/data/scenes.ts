@@ -27,7 +27,6 @@ export const SCENES = {
         { label: "Get a clear next AI step", lead: true, to: "toBeatCold" },
         { label: "About Movemental", to: "whatIs" },
         { label: "What does it cost?", to: "cost" },
-        { label: "See our research", to: "toResearch" },
         { label: "Get in touch", to: "talkToUs" },
       ],
     },
