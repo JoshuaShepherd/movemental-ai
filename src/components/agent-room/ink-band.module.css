@@ -3,7 +3,7 @@
  * from movemental-agentic-front-end/index.html + css/ink-band.css:
  *
  *   .room  ── flex column, 100dvh, no page scroll
- *     .mast    ── logo (the only chrome)
+ *     .mast    ── logo, audience eyebrow, sign-in / account menu
  *     .screen  ── #screen: radial-gradient stage, holds .sheet + the #ink SVG
  *       .sheet ── manuscript sheet with the red margin rule (.home drops it)
  *       .ink   ── absolute SVG overlay (gestures drawn in AF-04)
@@ -27,16 +27,141 @@
 /* ===== mast ===== */
 .mast {
   flex: 0 0 auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  justify-content: space-between;
-  /* Thin chrome strip — the wordmark bleeds below into the stage. */
+  column-gap: 0.75rem;
   padding: 0.15rem clamp(1rem, 4vw, 2.5rem) 0.25rem;
   border-bottom: 1px solid var(--color-ink-band-border);
   overflow: visible;
   position: relative;
-  z-index: 2;
+  z-index: 30;
+  min-height: 3.25rem;
 }
+.mastStart {
+  justify-self: start;
+  min-width: max-content;
+}
+.mastEnd {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: max-content;
+}
+.mastAudience {
+  justify-self: center;
+  margin: 0;
+  font-family: var(--font-ink-mono);
+  font-size: clamp(0.58rem, 1.8vw, 0.68rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ===== mast auth (sign in / account menu) ===== */
+.authCluster {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.authIconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-ink-band-ink-muted);
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    color 0.15s,
+    border-color 0.15s,
+    background 0.15s;
+}
+.authIconBtn:hover,
+.authIconBtn:focus-visible {
+  color: var(--color-ink-band-ink);
+  border-color: var(--color-ink-band-border);
+  background: var(--color-ink-band-paper);
+  outline: none;
+}
+.authMenuTrigger[aria-expanded="true"] {
+  color: var(--color-ink-band-blue);
+  border-color: color-mix(in srgb, var(--color-ink-band-blue) 35%, var(--color-ink-band-border));
+  background: color-mix(in srgb, var(--color-ink-band-blue) 6%, var(--color-ink-band-paper));
+}
+.authMenu {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  min-width: 11.5rem;
+  padding: 0.45rem 0;
+  border: 1px solid var(--color-ink-band-border);
+  border-radius: 0.65rem;
+  background: var(--color-ink-band-paper);
+  box-shadow: 0 10px 32px -14px rgba(26, 26, 26, 0.28);
+}
+.authMenuLabel {
+  margin: 0;
+  padding: 0.35rem 0.85rem 0.5rem;
+  font-family: var(--font-ink-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+}
+.authMenuList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.authMenuList a {
+  display: block;
+  padding: 0.48rem 0.85rem;
+  font-size: 0.84rem;
+  line-height: 1.35;
+  color: var(--color-ink-band-ink);
+  text-decoration: none;
+  transition:
+    background 0.12s,
+    color 0.12s;
+}
+.authMenuList a:hover,
+.authMenuList a:focus-visible {
+  background: var(--color-ink-band-surface);
+  color: var(--color-ink-band-blue);
+  outline: none;
+}
+.authMenuSignOut {
+  display: block;
+  width: calc(100% - 1rem);
+  margin: 0.35rem 0.5rem 0.15rem;
+  padding: 0.42rem 0.55rem;
+  border: 0;
+  border-top: 1px solid var(--color-ink-band-border);
+  border-radius: 0;
+  background: none;
+  font: inherit;
+  font-family: var(--font-ink-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--color-ink-band-ink-muted);
+  cursor: pointer;
+}
+.authMenuSignOut:hover {
+  color: var(--color-ink-band-blue);
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -69,7 +194,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: clamp(1.1rem, 3vh, 2.25rem) clamp(1.5rem, 6vw, 5rem);
+  padding: clamp(0.55rem, 1.6vh, 1.35rem) clamp(1.5rem, 6vw, 5rem);
   background: radial-gradient(120% 80% at 50% 0%, #fffefa 0%, var(--color-ink-band-bg) 70%);
 }
 .screen.scroll {
@@ -98,6 +223,9 @@
   max-width: 52rem;
   padding-left: 0;
   text-align: center;
+}
+.sheet.home h1 {
+  margin-top: 0;
 }
 .sheet.home::before {
   display: none;
@@ -2055,6 +2183,8 @@
     transform 0.15s,
     box-shadow 0.15s;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .floatChip:hover:not(:disabled) {
   border-color: var(--color-ink-band-ink);
@@ -2067,21 +2197,34 @@
   cursor: default;
 }
 .floatChipLead {
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+  border-color: transparent;
   color: var(--color-ink-band-ink);
   font-weight: 600;
-  border-color: color-mix(in srgb, var(--color-ink-band-blue) 35%, var(--color-ink-band-border));
 }
-.floatChipText {
-  overflow: hidden;
-  text-overflow: ellipsis;
+.floatChipLead::before {
+  content: "";
+  position: absolute;
+  inset: -2px -8px;
+  z-index: -1;
+  background: var(--color-ink-band-highlight);
+  mix-blend-mode: multiply;
+  border-radius: 6px 9px 7px 8px / 9px 6px 8px 7px;
+  filter: url(#marker);
+  transform: rotate(-1.2deg);
+  transition:
+    inset 0.18s ease,
+    transform 0.18s ease;
 }
-.floatChipNum {
-  flex: 0 0 auto;
-  font-family: var(--font-ink-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.06em;
-  color: var(--color-ink-band-ink-muted);
-  opacity: 0.7;
+.floatChipLead:hover:not(:disabled) {
+  border-color: transparent;
+  box-shadow: none;
+}
+.floatChipLead:hover:not(:disabled)::before {
+  inset: -3px -12px;
+  transform: rotate(-0.4deg);
 }
 
 .agentCard {
@@ -2345,6 +2488,19 @@
 }
 
 @media (max-width: 640px) {
+  .mast {
+    column-gap: 0.35rem;
+    padding-inline: 0.65rem;
+  }
+  .mastAudience {
+    font-size: clamp(0.48rem, 2.6vw, 0.58rem);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+  .authIconBtn {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
   .roomDock .screen {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -3075,7 +3231,28 @@
 .fallback {
   max-width: 46rem;
   margin-inline: auto;
-  padding: clamp(1.5rem, 5vw, 3rem) clamp(1rem, 4vw, 2rem) 5rem;
+  padding: 0 clamp(1rem, 4vw, 2rem) 5rem;
+}
+.fallbackMast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.15rem 0 0.25rem;
+  margin-bottom: clamp(0.55rem, 1.6vh, 1.35rem);
+  border-bottom: 1px solid var(--color-ink-band-border);
+  min-height: 3.25rem;
+}
+.fallbackSignIn {
+  font-family: var(--font-ink-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+  text-decoration: none;
+}
+.fallbackSignIn:hover {
+  color: var(--color-ink-band-blue);
 }
 .fallback section {
   padding-block: 2rem;

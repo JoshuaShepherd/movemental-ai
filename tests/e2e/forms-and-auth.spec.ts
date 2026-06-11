@@ -14,19 +14,24 @@ async function openAgentContactForm(page: Page) {
 }
 
 test.describe("Lead magnets & contact forms", () => {
+  test.describe.configure({ mode: "serial" });
   test("field guide (safety) submits and shows success", async ({ page }) => {
     await page.goto("/field-guide");
     await page.getByLabel(/^email$/i).fill(TEST_EMAIL);
     await page.getByLabel(/organization/i).fill("E2E Test Org");
     await page.getByRole("button", { name: /send me the field guide/i }).click();
-    await expect(page.getByText(/check your inbox|sent|pdf/i)).toBeVisible({ timeout: 15000 });
+    await expect(
+      page.getByText("Check your inbox — It Starts With Safety is on its way."),
+    ).toBeVisible({ timeout: 15000 });
   });
 
   test("field guide (sandbox) submits and shows success", async ({ page }) => {
     await page.goto("/field-guide?guide=sandbox");
     await page.getByLabel(/^email$/i).fill(`sandbox+${TEST_EMAIL}`);
     await page.getByRole("button", { name: /send me the field guide/i }).click();
-    await expect(page.getByText(/check your inbox|sent|pdf/i)).toBeVisible({ timeout: 15000 });
+    await expect(
+      page.getByText("Check your inbox — It Continues With Exploration is on its way."),
+    ).toBeVisible({ timeout: 15000 });
   });
 
   test("enroll form submits and shows confirmation", async ({ page }) => {
@@ -84,7 +89,9 @@ test.describe("Auth surfaces", () => {
     await page.getByRole("button", { name: /send reset link/i }).click();
     // Supabase may accept or reject; either sent confirmation or error alert should appear
     await expect(
-      page.getByText(/check your inbox|email sent|could not send reset/i),
+      page.getByRole("button", { name: /^email sent$/i }).or(
+        page.getByText(/check your inbox for a reset link/i),
+      ).or(page.getByRole("alert")),
     ).toBeVisible({ timeout: 15000 });
   });
 

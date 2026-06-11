@@ -5,10 +5,10 @@ import type { ScreenProps } from "./stub-screen";
 import { LeaderBand } from "./leader-band";
 
 /**
- * The opening/home screen (prototype `screens.js` `id==='home'`): the audience
- * eyebrow, the trust headline, the body with the `#phrase` gesture target, and
- * the leader portrait band. Shown centered with no margin rule (the `home` sheet
- * class). Text is byte-identical to `pages/home.html`.
+ * The opening/home screen (prototype `screens.js` `id==='home'`): the trust
+ * headline, the body with the `#phrase` gesture target, and the leader portrait
+ * band. The audience eyebrow lives in the mast (`docs/html/home`). Shown centered
+ * with no margin rule (the `home` sheet class).
  */
 export function HomeScreen({
   onLeaderSelect,
@@ -16,7 +16,6 @@ export function HomeScreen({
 }: Pick<ScreenProps, "onLeaderSelect" | "disabled">) {
   return (
     <div>
-      <p className={styles.eyebrow}>Non-profit · Church · Institution · Leader</p>
       <h1>Navigate AI without eroding the trust you spent decades earning.</h1>
       <p className={styles.body}>
         We help mission-driven organizations respond to AI without losing{" "}

@@ -44,14 +44,17 @@ function FieldGuideForm({ guide }: { guide: FieldGuideKind }) {
   const [email, setEmail] = React.useState("");
   const [org, setOrg] = React.useState("");
   const [status, setStatus] = React.useState<"idle" | "loading" | "done" | "error">("idle");
+  const [errorMsg, setErrorMsg] = React.useState<string | null>(null);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!EMAIL_RE.test(email.trim())) {
       setStatus("error");
+      setErrorMsg("Enter a valid email address.");
       return;
     }
     setStatus("loading");
+    setErrorMsg(null);
     try {
       const res = await fetch("/api/toolkit-download", {
         method: "POST",
@@ -63,13 +66,23 @@ function FieldGuideForm({ guide }: { guide: FieldGuideKind }) {
           source: "field-guide-page",
         }),
       });
+      const data = (await res.json().catch(() => null)) as {
+        error?: { message?: string };
+      } | null;
       if (!res.ok) {
         setStatus("error");
+        setErrorMsg(
+          data?.error?.message ??
+            (res.status === 429
+              ? "Too many attempts. Please wait a bit and try again."
+              : "Something went wrong. Try again, or email josh@movemental.ai."),
+        );
         return;
       }
       setStatus("done");
     } catch {
       setStatus("error");
+      setErrorMsg("Something went wrong. Try again, or email josh@movemental.ai.");
     }
   };
 
@@ -110,10 +123,8 @@ function FieldGuideForm({ guide }: { guide: FieldGuideKind }) {
         />
       </label>
 
-      {status === "error" ? (
-        <p className="text-sm text-destructive">
-          Enter a valid email and try again. If it keeps failing, email josh@movemental.ai.
-        </p>
+      {status === "error" && errorMsg ? (
+        <p className="text-sm text-destructive">{errorMsg}</p>
       ) : null}
 
       <Button type="submit" disabled={status === "loading"}>

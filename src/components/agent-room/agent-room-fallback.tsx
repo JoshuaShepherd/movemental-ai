@@ -9,8 +9,15 @@ import styles from "./ink-band.module.css";
 export function AgentRoomFallback() {
   return (
     <main className={styles.fallback}>
+      <header className={styles.fallbackMast}>
+        <p className={styles.mastAudience} aria-label="Who we serve">
+          Non-profits · Churches · Institutions
+        </p>
+        <a className={styles.fallbackSignIn} href="/login?next=/agent">
+          Sign in
+        </a>
+      </header>
       <section>
-        <p className={styles.eyebrow}>Non-profit · Church · Institution · Leader</p>
         <h1>Navigate AI without eroding the trust you spent decades earning.</h1>
         <p>
           We help mission-driven organizations respond to AI without losing{" "}

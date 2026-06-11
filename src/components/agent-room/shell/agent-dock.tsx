@@ -242,7 +242,7 @@ export function AgentDock({
 
       <div className={styles.agentFloat} id="agent-float">
         <div className={styles.floatChips} id="float-chips">
-          {suggestions.map((s, i) => (
+          {suggestions.map((s) => (
             <button
               key={s.label}
               type="button"
@@ -250,10 +250,7 @@ export function AgentDock({
               disabled={disabled}
               onClick={s.onSelect}
             >
-              <span className={styles.floatChipText}>{s.label}</span>
-              <span className={styles.floatChipNum} aria-hidden="true">
-                {i + 1}
-              </span>
+              {s.label}
             </button>
           ))}
         </div>

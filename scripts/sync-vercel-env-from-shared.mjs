@@ -10,6 +10,7 @@
  * Prereqs: `vercel link` in repo root; `npx vercel` available; logged in.
  *
  * Usage: pnpm vercel:env:sync
+ * Usage: pnpm vercel:env:sync-local   # push from .env.local instead of shared file
  * Optional: DEV_DOTENV_SHARED_PATH=/path/to/.env.shared
  * Optional: VERCEL_TEAM_SCOPE=your-team-slug (only if CLI requires explicit scope)
  */
@@ -42,6 +43,28 @@ const SKIP = new Set([
   "PLAYWRIGHT_TEST_PASSWORD",
   "VERCEL_OIDC_TOKEN",
   "STITCH_ACCESS_TOKEN",
+  // Injected by `vercel env pull` — never push back to the project.
+  "VERCEL",
+  "VERCEL_ENV",
+  "VERCEL_URL",
+  "VERCEL_TARGET_ENV",
+  "VERCEL_GIT_COMMIT_AUTHOR_LOGIN",
+  "VERCEL_GIT_COMMIT_AUTHOR_NAME",
+  "VERCEL_GIT_COMMIT_MESSAGE",
+  "VERCEL_GIT_COMMIT_REF",
+  "VERCEL_GIT_COMMIT_SHA",
+  "VERCEL_GIT_PREVIOUS_SHA",
+  "VERCEL_GIT_PROVIDER",
+  "VERCEL_GIT_PULL_REQUEST_ID",
+  "VERCEL_GIT_REPO_ID",
+  "VERCEL_GIT_REPO_OWNER",
+  "VERCEL_GIT_REPO_SLUG",
+  // Local Turborepo / daemon noise
+  "NX_DAEMON",
+  "TURBO_CACHE",
+  "TURBO_DOWNLOAD_LOCAL_ENABLED",
+  "TURBO_REMOTE_ONLY",
+  "TURBO_RUN_SUMMARY",
 ]);
 
 const SENSITIVE = (name) =>
@@ -112,20 +135,7 @@ function vercelEnvAdd(name, envName, previewBranch, value, extraArgs) {
   }
 }
 
-function main() {
-  if (!fs.existsSync(SHARED_PATH)) {
-    console.error("Missing shared env file:", SHARED_PATH);
-    process.exit(1);
-  }
-  if (!fs.existsSync(path.join(ROOT, ".vercel", "project.json"))) {
-    console.error("Missing .vercel/project.json — run `vercel link` in the repo root first.");
-    process.exit(1);
-  }
-
-  const raw = parse(fs.readFileSync(SHARED_PATH));
-  const scope = process.env.VERCEL_TEAM_SCOPE;
-  const extra = scope ? { scope } : {};
-
+function resolveFromShared(raw) {
   const resolved = new Map();
   for (const [targetName, resolver] of MOVEMENTAL_RESOLVERS) {
     let value = resolver(raw);
@@ -137,6 +147,49 @@ function main() {
     if (!v) continue;
     resolved.set(targetName, v);
   }
+  return resolved;
+}
+
+function resolveFromLocal(raw) {
+  const resolved = new Map();
+  for (const [name, value] of Object.entries(raw)) {
+    if (SKIP.has(name)) continue;
+    if (value === undefined || value === null) continue;
+    const v = String(value).trim();
+    if (!v) continue;
+    resolved.set(name, v);
+  }
+  for (const [targetName, overrideValue] of Object.entries(OVERRIDES)) {
+    resolved.set(targetName, overrideValue);
+  }
+  return resolved;
+}
+
+function main() {
+  const fromLocal =
+    process.argv.includes("--from-local") || process.env.ENV_SYNC_SOURCE === "local";
+  const sourcePath = fromLocal
+    ? path.join(ROOT, ".env.local")
+    : SHARED_PATH;
+
+  if (!fs.existsSync(sourcePath)) {
+    console.error("Missing env file:", sourcePath);
+    process.exit(1);
+  }
+  if (!fs.existsSync(path.join(ROOT, ".vercel", "project.json"))) {
+    console.error("Missing .vercel/project.json — run `vercel link` in the repo root first.");
+    process.exit(1);
+  }
+
+  const raw = parse(fs.readFileSync(sourcePath));
+  const scope = process.env.VERCEL_TEAM_SCOPE;
+  const extra = scope ? { scope } : {};
+
+  const resolved = fromLocal ? resolveFromLocal(raw) : resolveFromShared(raw);
+
+  process.stdout.write(
+    `Syncing ${resolved.size} keys from ${fromLocal ? ".env.local" : path.basename(SHARED_PATH)} …\n`,
+  );
 
   const names = [...resolved.keys()].sort();
   for (const name of names) {
