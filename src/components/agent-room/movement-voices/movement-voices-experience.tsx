@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { DocumentPageShell } from "@/components/agent-room/document/document-page-shell";
-import { AskAiPromptButton } from "@/components/agent-room/ink/ask-ai-prompt-button";
 import { useScrollSpy } from "@/components/agent-room/institutions/use-scroll-spy";
 
 import {
@@ -20,7 +19,7 @@ const SPY_IDS = MOVEMENT_VOICES_SPY_SECTIONS.map((s) => s.id);
 
 /**
  * `/agent/movement-voices` — the leader-facing front door: authorship break,
- * scenius thesis, four layers, the hundred, voice grid, and invitation.
+ * scenius thesis, four layers, the hundred, and voice grid.
  */
 export function MovementVoicesExperience() {
   const spyIndex = useScrollSpy(SPY_IDS);
@@ -277,54 +276,6 @@ export function MovementVoicesExperience() {
                   profile.
                 </p>
                 <VoicesGrid />
-              </div>
-            </section>
-
-            <section className={`${styles.section} ${styles.bandSurface}`} id="invitation">
-              <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>The invitation</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>What a Movement Voice says yes to.</h2>
-                <article className={styles.invitationPanel}>
-                  <p className={styles.body}>
-                    If you are reading this, you have probably spent decades doing work that matters,
-                    and watching it scatter. A Movement Voice says yes to a four-week onboarding in
-                    which that life-work is gathered into one coherent home you own.
-                  </p>
-                  <ul className={styles.invitationList}>
-                    <li>
-                      Roughly fifty evergreen articles and five thematic pathway courses, anchored in
-                      your actual corpus, at the depth you would have written yourself.
-                    </li>
-                    <li>
-                      About three to four hours per week, including one session with us, we carry the
-                      heavy lifting; you carry the judgment.
-                    </li>
-                    <li>
-                      A place among roughly one hundred peers who cite each other honestly, every
-                      tribe and tongue, so the scene actually looks like the Kingdom.
-                    </li>
-                  </ul>
-                  <p className={styles.body} style={{ marginTop: "1.15rem" }}>
-                    A Voice does <strong>not</strong> say yes to becoming a content creator, or to
-                    outsourcing their voice. We do not use AI to author anything under a human&apos;s
-                    name. The AI handles the work around the writing, never the writing itself.
-                  </p>
-                  <p className={styles.hand}>
-                    We will use AI to do this. We will not use AI to author it.
-                  </p>
-                </article>
-                <div className={styles.startCtas}>
-                  <a
-                    className={styles.btnPrimary}
-                    href="mailto:josh@movemental.ai?subject=Movement%20Voice%20%E2%80%94%20first%20conversation"
-                  >
-                    Start a conversation
-                  </a>
-                  <a className={styles.btnSecondary} href="/agent">
-                    Back to the agent room
-                  </a>
-                </div>
-                <AskAiPromptButton promptKey="movementVoices" />
               </div>
             </section>
           </main>

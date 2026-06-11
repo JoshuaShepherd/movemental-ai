@@ -244,6 +244,17 @@
         { "label": "Verify Email", "href": "scholarly-editorial/verify-email.html" },
         { "label": "AI Lab", "href": "scholarly-editorial/chat.html" }
       ]
+    },
+    {
+      "id": "ink-research",
+      "name": "Ink Research Library",
+      "description": "Warm paper editorial research library — papers, findings, sources, and long-form articles in Ink Band typography",
+      "pages": [
+        { "label": "Research Library", "href": "ink-research/" },
+        { "label": "AI Reality Paper", "href": "ink-research/article.html" },
+        { "label": "Key Findings", "href": "ink-research/findings.html" },
+        { "label": "Sources", "href": "ink-research/sources.html" }
+      ]
     }
   ]
 }

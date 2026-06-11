@@ -22,6 +22,7 @@ import {
 } from "@/lib/agent-room/suggest-chip-targets";
 import type { VoiceState } from "../use-agent-room-stream";
 import { HandbookDockEmail } from "./handbook-dock-email";
+import { WaysInPanel } from "./ways-in-panel";
 
 type GuideMessage = {
   role: "agent" | "user";
@@ -111,6 +112,8 @@ function ComposerForm({
   inputRef,
   expanded,
   onToggleExpand,
+  showWaysInButton,
+  onOpenWaysIn,
 }: {
   value: string;
   onChange: (next: string) => void;
@@ -120,9 +123,23 @@ function ComposerForm({
   inputRef: React.RefObject<HTMLInputElement | null>;
   expanded: boolean;
   onToggleExpand: () => void;
+  showWaysInButton?: boolean;
+  onOpenWaysIn?: () => void;
 }) {
   return (
     <form className={styles.cardBody} id="composer-form" onSubmit={onSubmit}>
+      {showWaysInButton && onOpenWaysIn ? (
+        <div className={styles.waysInResummonRow}>
+          <button
+            type="button"
+            className={styles.waysInResummon}
+            onClick={onOpenWaysIn}
+            aria-label="Open ways in"
+          >
+            Ways in
+          </button>
+        </div>
+      ) : null}
       <div className={styles.composerRow}>
         <label className={styles.composerField}>
           <input
@@ -250,6 +267,7 @@ export function AgentDock({
   const [value, setValue] = useState("");
   const [guideMessages, setGuideMessages] = useState<GuideMessage[]>([]);
   const [chatEngaged, setChatEngaged] = useState(false);
+  const [waysInOpen, setWaysInOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const threadRef = useRef<HTMLDivElement>(null);
   const { voiceEl } = useAgentRoomRefs();
@@ -271,6 +289,7 @@ export function AgentDock({
     prevScreenKey.current = screenKey;
     setGuideMessages([]);
     setChatEngaged(false);
+    setWaysInOpen(false);
     setExpanded(false);
     onExpandedChange?.(false);
     setValue("");
@@ -343,25 +362,42 @@ export function AgentDock({
     inputRef.current?.focus();
   }, [captureMode, expanded]);
 
+  const sendText = useCallback(
+    (raw: string) => {
+      const v = raw.trim();
+      if (!v || disabled) return;
+      setValue("");
+      setChatEngaged(true);
+      setWaysInOpen(false);
+      const wasExpanded = expanded;
+      if (!discuss) {
+        setGuideMessages((prev) => [...prev, { role: "user", content: v }]);
+      }
+      if (wasExpanded || discuss) onConversationActive?.();
+      onSay(v);
+      if (!expanded) setExpandedState(true);
+    },
+    [disabled, discuss, expanded, onConversationActive, onSay, setExpandedState],
+  );
+
   const submit = (e: FormEvent) => {
     e.preventDefault();
-    const v = value.trim();
-    if (!v || disabled) return;
-    setValue("");
-    setChatEngaged(true);
-    const wasExpanded = expanded;
-    if (!discuss) {
-      setGuideMessages((prev) => [...prev, { role: "user", content: v }]);
-    }
-    if (wasExpanded || discuss) onConversationActive?.();
-    onSay(v);
-    if (!expanded) setExpandedState(true);
+    sendText(value);
   };
+
+  const handleDoorSelect = useCallback(
+    (text: string) => {
+      setValue(text);
+      sendText(text);
+    },
+    [sendText],
+  );
 
   const showGuideThread =
     !discuss && chatEngaged && (guideMessages.length > 0 || liveText || liveThinking);
   const showDiscussThread = discuss && (transcript.length > 0 || liveText || liveThinking);
-  const showThreadBody = showGuideThread || showDiscussThread || stubCapture;
+  const conversationActive = showGuideThread || showDiscussThread;
+  const showThreadBody = conversationActive || Boolean(stubCapture);
 
   const captureFooter =
     captureMode && expanded && onHandbookCaptureSubmit ? (
@@ -378,6 +414,8 @@ export function AgentDock({
       inputRef={inputRef}
       expanded={expanded}
       onToggleExpand={() => setExpandedState(true)}
+      showWaysInButton={Boolean(expanded && conversationActive)}
+      onOpenWaysIn={() => setWaysInOpen(true)}
     />
   ) : null;
 
@@ -429,7 +467,9 @@ export function AgentDock({
                           liveThinkingNote={liveThinkingNote}
                           compact
                         />
-                      ) : null}
+                      ) : stubCapture ? null : (
+                        <WaysInPanel onSelectDoor={handleDoorSelect} disabled={disabled} />
+                      )}
                       {stubCapture}
                     </>
                   ) : showThreadBody ? (
@@ -464,11 +504,20 @@ export function AgentDock({
                       {stubCapture}
                     </>
                   ) : (
-                    <p className={styles.threadEmptyHint}>
-                      Tap a suggestion below the sheet, or type to continue.
-                    </p>
+                    <WaysInPanel onSelectDoor={handleDoorSelect} disabled={disabled} />
                   )}
                 </div>
+
+                {waysInOpen && conversationActive ? (
+                  <div className={styles.waysInOverlay} role="presentation">
+                    <WaysInPanel
+                      overlay
+                      onSelectDoor={handleDoorSelect}
+                      disabled={disabled}
+                      onDismiss={() => setWaysInOpen(false)}
+                    />
+                  </div>
+                ) : null}
               </div>
 
               {captureFooter ?? composerFooter}

@@ -11,7 +11,6 @@ export const MOVEMENT_VOICES_NAV = [
   { id: "four-layers", label: "Four layers" },
   { id: "the-hundred", label: "The hundred" },
   { id: "voices", label: "The Voices" },
-  { id: "invitation", label: "Invitation" },
 ] as const;
 
 export const MOVEMENT_VOICES_SPY_SECTIONS = [
@@ -21,7 +20,6 @@ export const MOVEMENT_VOICES_SPY_SECTIONS = [
   { id: "four-layers", navIndex: 3 },
   { id: "the-hundred", navIndex: 4 },
   { id: "voices", navIndex: 5 },
-  { id: "invitation", navIndex: 6 },
 ] as const;
 
 export const MOVEMENT_VOICES_DOCK = {
@@ -30,7 +28,7 @@ export const MOVEMENT_VOICES_DOCK = {
   chips: [
     { label: "Map where we actually stand", action: "agent" as const },
     { label: "What is the scenius?", action: "scroll" as const, target: "scenius" },
-    { label: "Become a Movement Voice", action: "scroll" as const, target: "invitation" },
+    { label: "Become a Movement Voice", action: "scroll" as const, target: "the-hundred" },
     { label: "See the leaders", action: "scroll" as const, target: "voices" },
   ],
 };

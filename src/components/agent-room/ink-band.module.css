@@ -3509,6 +3509,7 @@ button.wayCtaPaid {
   background: var(--color-ink-band-bg);
 }
 .agentCardExpanded .cardThread {
+  position: relative;
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
@@ -3525,6 +3526,219 @@ button.wayCtaPaid {
 .agentCardExpanded .threadEmptyHint {
   text-align: center;
   padding: 2rem 0.5rem;
+}
+
+/* ===== ways in (expanded panel doors) ===== */
+.waysInPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.25rem 0 0.5rem;
+}
+.waysInPrompt {
+  margin: 0;
+  font-family: var(--font-ink-body);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--color-ink-band-ink-muted);
+  text-align: left;
+}
+.waysInLeadDoor {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.85rem;
+  background: transparent;
+  font: inherit;
+  font-family: var(--font-ink-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--color-ink-band-ink);
+  text-align: center;
+  cursor: pointer;
+  transition:
+    color 0.15s,
+    transform 0.15s;
+}
+.waysInLeadDoor::before {
+  content: "";
+  position: absolute;
+  inset: 2px 4px;
+  z-index: -1;
+  background: var(--color-ink-band-highlight);
+  mix-blend-mode: multiply;
+  border-radius: 6px 9px 7px 8px / 9px 6px 8px 7px;
+  filter: url(#marker);
+  transform: rotate(-1deg);
+  transition:
+    inset 0.18s ease,
+    transform 0.18s ease;
+}
+.waysInLeadDoor:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+.waysInLeadDoor:hover:not(:disabled)::before {
+  inset: 0 2px;
+  transform: rotate(-0.4deg);
+}
+.waysInLeadDoor:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.waysInSegments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 0.1rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.waysInSegments::-webkit-scrollbar {
+  display: none;
+}
+.waysInSegment {
+  flex: 0 0 auto;
+  font: inherit;
+  font-family: var(--font-ink-mono);
+  font-size: clamp(0.58rem, 1.8vw, 0.68rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.42rem 0.7rem;
+  border: 1px solid var(--color-ink-band-border);
+  border-radius: 999px;
+  background: var(--color-ink-band-paper);
+  color: var(--color-ink-band-ink-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    color 0.15s,
+    border-color 0.15s,
+    background 0.15s;
+}
+.waysInSegment:hover {
+  color: var(--color-ink-band-ink);
+  border-color: color-mix(in srgb, var(--color-ink-band-ink) 25%, var(--color-ink-band-border));
+}
+.waysInSegmentActive {
+  color: var(--color-ink-band-ink);
+  border-color: color-mix(in srgb, var(--color-ink-band-blue) 35%, var(--color-ink-band-border));
+  background: color-mix(in srgb, var(--color-ink-band-blue) 6%, var(--color-ink-band-paper));
+  font-weight: 500;
+}
+.waysInDoors {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.waysInDoor {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--color-ink-band-border);
+  border-radius: 0.75rem;
+  background: var(--color-ink-band-paper);
+  font: inherit;
+  font-family: var(--font-ink-body);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--color-ink-band-ink);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    color 0.15s;
+}
+.waysInDoor:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--color-ink-band-ink) 22%, var(--color-ink-band-border));
+  background: var(--color-ink-band-surface);
+}
+.waysInDoor:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.waysInOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 1rem clamp(1rem, 4vw, 1.5rem) 1.25rem;
+  background: color-mix(in srgb, var(--color-ink-band-bg) 92%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-overflow-scrolling: touch;
+}
+.waysInPanelOverlay {
+  max-width: 40rem;
+  margin: 0 auto;
+  width: 100%;
+}
+.waysInOverlayHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+.waysInOverlayEyebrow {
+  font-family: var(--font-ink-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+}
+.waysInDismiss {
+  font: inherit;
+  font-size: 0.78rem;
+  color: var(--color-ink-band-ink-muted);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  padding: 0.15rem 0;
+  transition: color 0.15s;
+}
+.waysInDismiss:hover {
+  color: var(--color-ink-band-blue);
+}
+.waysInResummonRow {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto 0.35rem;
+}
+.waysInResummon {
+  font: inherit;
+  font-size: 0.76rem;
+  color: var(--color-ink-band-ink-muted);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  padding: 0.1rem 0;
+  transition: color 0.15s;
+}
+.waysInResummon:hover {
+  color: var(--color-ink-band-blue);
 }
 
 /* Guide-mode chat bubbles (expanded drawer only) */
@@ -3864,6 +4078,26 @@ button.wayCtaPaid {
   }
   .agentDockExpanded .agentFloat {
     padding: 0 0.25rem 0.35rem;
+  }
+  .waysInSegments {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  .waysInSegment {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .waysInDoor {
+    min-height: 44px;
+  }
+  .waysInLeadDoor {
+    min-height: 48px;
+  }
+  .waysInResummon {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
   }
 }
 
