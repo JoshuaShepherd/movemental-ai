@@ -123,4 +123,14 @@ export const CHURCHES_PAGE_CONFIG: AudiencePageConfig = {
   },
   nav: AUDIENCE_NAV,
   letterEmbedStart: "And the thing most at risk",
+  dock: {
+    voiceLine: "Curious where your church really stands with AI? I can map it with you.",
+    highlightChipLabel: "Map where we stand",
+    chips: [
+      { label: "Map where we stand", action: "agent", agentAsk: "Map where my church stands with AI" },
+      { label: "Read the board letter", action: "scroll", target: "the-case" },
+      { label: "What's the first step?", action: "agent", agentAsk: "What's the first step for a church?" },
+      { label: "Talk to us", action: "agent", agentAsk: "I'd like to talk to someone at Movemental about our church" },
+    ],
+  },
 };

@@ -1,11 +1,16 @@
 import { LEADERS } from "@/lib/agent-room/data/leaders";
+import { parseWaysInAudience, type WaysInAudience } from "@/lib/agent-room/ways-in-doors";
 
 export type AgentDeepLink =
   | { kind: "leader"; index: number }
-  | { kind: "ask"; text: string }
+  | { kind: "ask"; text: string; audience: WaysInAudience | null }
   | null;
 
-/** Read one-shot deep-link params from `/agent?leader=N` or `/agent?ask=…`. */
+/**
+ * Read one-shot deep-link params from `/agent?leader=N` or
+ * `/agent?ask=…&from=<segment>`. The optional `from` carries the audience segment
+ * a document surface handed off from, so the concierge opens route-aware.
+ */
 export function readAgentDeepLink(): AgentDeepLink {
   if (typeof window === "undefined") return null;
   const params = new URLSearchParams(window.location.search);
@@ -19,7 +24,7 @@ export function readAgentDeepLink(): AgentDeepLink {
   }
 
   const ask = params.get("ask")?.trim();
-  if (ask) return { kind: "ask", text: ask };
+  if (ask) return { kind: "ask", text: ask, audience: parseWaysInAudience(params.get("from")) };
 
   return null;
 }
@@ -30,6 +35,7 @@ export function clearAgentDeepLinkParams(): void {
   const url = new URL(window.location.href);
   url.searchParams.delete("leader");
   url.searchParams.delete("ask");
+  url.searchParams.delete("from");
   const next = `${url.pathname}${url.search}${url.hash}`;
   window.history.replaceState({}, "", next);
 }

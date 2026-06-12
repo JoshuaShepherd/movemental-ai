@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import { Caveat } from "next/font/google";
 
+import { AgentRoomProvider } from "@/components/agent-room/agent-room-context";
+
 /**
  * Caveat — the Ink Band "hand" face (the voice line and the readback "you are
  * here" annotation). The other three Ink Band faces — Playfair Display
@@ -26,5 +28,13 @@ const caveat = Caveat({
  * already suppressed for this route via `proxy.ts` (`x-movemental-shell: room`).
  */
 export default function AgentLayout({ children }: { children: ReactNode }) {
-  return <div className={`${caveat.variable} ink-band-surface`}>{children}</div>;
+  // The ink/voice provider lives here (Phase 3) so a single concierge substrate
+  // spans every `/agent/*` route — the room and the document surfaces alike —
+  // instead of each page wrapping its own. Mast + dock stay per-surface (the
+  // room's are a live runtime; the documents' are a lighter handoff).
+  return (
+    <div className={`${caveat.variable} ink-band-surface`}>
+      <AgentRoomProvider>{children}</AgentRoomProvider>
+    </div>
+  );
 }

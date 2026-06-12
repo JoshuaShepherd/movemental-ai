@@ -123,4 +123,14 @@ export const NONPROFITS_PAGE_CONFIG: AudiencePageConfig = {
   },
   nav: AUDIENCE_NAV,
   letterEmbedStart: "Underneath the governance gap",
+  dock: {
+    voiceLine: "I can already see where your nonprofit stands with AI. Want me to walk you through it?",
+    highlightChipLabel: "Map where we stand",
+    chips: [
+      { label: "Map where we stand", action: "agent", agentAsk: "Map where my nonprofit stands with AI" },
+      { label: "Read the board letter", action: "scroll", target: "the-case" },
+      { label: "What's the first step?", action: "agent", agentAsk: "What's the first step for a nonprofit?" },
+      { label: "Talk to us", action: "agent", agentAsk: "I'd like to talk to someone at Movemental about our nonprofit" },
+    ],
+  },
 };

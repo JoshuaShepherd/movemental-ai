@@ -53,3 +53,33 @@ export function resolveWaysInAudience(pathname: string | null | undefined): Ways
   if (pathname.startsWith(INSTITUTIONS_HREF)) return "institutions";
   return "exploring";
 }
+
+const AUDIENCE_IDS: ReadonlySet<string> = new Set(WAYS_IN_SEGMENTS.map((s) => s.id));
+
+/** Narrow an arbitrary string (e.g. a `?from=` hand-off param) to a known segment. */
+export function parseWaysInAudience(value: string | null | undefined): WaysInAudience | null {
+  return value && AUDIENCE_IDS.has(value) ? (value as WaysInAudience) : null;
+}
+
+/** sessionStorage key carrying the segment a visitor handed off from. */
+const HANDOFF_AUDIENCE_KEY = "movemental:agent-audience";
+
+/** Record the originating segment so the concierge opens route-aware after hand-off. */
+export function stashHandoffAudience(audience: WaysInAudience): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.sessionStorage.setItem(HANDOFF_AUDIENCE_KEY, audience);
+  } catch {
+    /* sessionStorage unavailable (private mode) — the route default still applies */
+  }
+}
+
+/** The segment a visitor handed off from this session, if any. */
+export function readHandoffAudience(): WaysInAudience | null {
+  if (typeof window === "undefined") return null;
+  try {
+    return parseWaysInAudience(window.sessionStorage.getItem(HANDOFF_AUDIENCE_KEY));
+  } catch {
+    return null;
+  }
+}

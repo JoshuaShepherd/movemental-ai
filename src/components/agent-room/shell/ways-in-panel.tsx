@@ -7,6 +7,7 @@ import {
   WAYS_IN_DOORS,
   WAYS_IN_LEAD_DOOR,
   WAYS_IN_SEGMENTS,
+  readHandoffAudience,
   resolveWaysInAudience,
   type WaysInAudience,
 } from "@/lib/agent-room/ways-in-doors";
@@ -29,8 +30,10 @@ export function WaysInPanel({
   const routeAudience = resolveWaysInAudience(pathname);
   const [audience, setAudience] = useState<WaysInAudience>(routeAudience);
 
+  // Prefer the segment a visitor handed off from (e.g. /agent/nonprofits → the
+  // room) over the bare /agent route default, so the doors open where they were.
   useEffect(() => {
-    setAudience(routeAudience);
+    setAudience(readHandoffAudience() ?? routeAudience);
   }, [routeAudience]);
 
   const doors = WAYS_IN_DOORS[audience];

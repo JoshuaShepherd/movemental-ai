@@ -92,16 +92,20 @@
   opacity: 0.55;
   user-select: none;
 }
+/* Links are the pen — ink-blue at rest (Ink Band canon: ink-blue carries links
+   and focus), underline on hover/focus. The active page keeps the highlighter. */
 .mastAudienceLink {
   position: relative;
   isolation: isolate;
-  color: var(--color-ink-band-ink-muted);
+  color: var(--color-ink-band-blue);
   text-decoration: none;
+  text-underline-offset: 3px;
   transition: color 0.15s ease;
 }
 .mastAudienceLink:hover,
 .mastAudienceLink:focus-visible {
-  color: var(--color-ink-band-ink);
+  color: var(--color-ink-band-blue);
+  text-decoration: underline;
   outline: none;
 }
 .mastAudienceLinkActive {

@@ -4,7 +4,6 @@ import { useState, type ReactNode } from "react";
 
 import { AGENT_ROOM_MODE } from "@/lib/agent-room/mode";
 import styles from "./ink-band.module.css";
-import { AgentRoomProvider } from "./agent-room-context";
 import { useAgentRoomHybrid } from "./use-agent-room-hybrid";
 import { useAgentRoomStream } from "./use-agent-room-stream";
 import { useAgentRoomStub } from "./use-agent-room-stub";
@@ -291,23 +290,19 @@ function StreamRoom() {
 }
 
 /**
- * The Agent Room. The provider (ink layer + shell refs) wraps the mode dispatch
- * so the stub hook can drive the ink layer. Dispatches on the build-time
- * `AGENT_ROOM_MODE` flag (constant per render → each branch's hook is called
- * unconditionally within its own component, no rules-of-hooks violation, and
- * stub/stream hooks). Defaults to `"hybrid"`; set `NEXT_PUBLIC_AGENT_ROOM_MODE=stub`
- * for zero-network or `stream` for legacy full-AI regression.
+ * The Agent Room. The ink/voice provider now lives in `agent/layout.tsx`
+ * (Phase 3) so it spans every `/agent/*` route; here we only dispatch on the
+ * build-time `AGENT_ROOM_MODE` flag (constant per render → each branch's hook is
+ * called unconditionally within its own component, no rules-of-hooks violation).
+ * Defaults to `"hybrid"`; set `NEXT_PUBLIC_AGENT_ROOM_MODE=stub` for zero-network
+ * or `stream` for legacy full-AI regression.
  */
 export function AgentRoom() {
-  return (
-    <AgentRoomProvider>
-      {AGENT_ROOM_MODE === "stream" ? (
-        <StreamRoom />
-      ) : AGENT_ROOM_MODE === "hybrid" ? (
-        <HybridRoom />
-      ) : (
-        <StubRoom />
-      )}
-    </AgentRoomProvider>
+  return AGENT_ROOM_MODE === "stream" ? (
+    <StreamRoom />
+  ) : AGENT_ROOM_MODE === "hybrid" ? (
+    <HybridRoom />
+  ) : (
+    <StubRoom />
   );
 }

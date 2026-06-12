@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { Mast } from "@/components/agent-room/shell/mast";
+import { DocumentPageShell } from "@/components/agent-room/document/document-page-shell";
 import { AskAiPromptButton } from "@/components/agent-room/ink/ask-ai-prompt-button";
 import { PATH_STAGE_LABELS } from "@/lib/agent-room/naming";
 
@@ -78,9 +78,13 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
   const mobileMenuId = `${config.slug}-mobile-menu`;
 
   return (
-    <div className={styles.page}>
-      <Mast homeHref="/agent" />
-
+    <DocumentPageShell
+      voiceLine={config.dock.voiceLine}
+      chips={config.dock.chips}
+      highlightChipLabel={config.dock.highlightChipLabel}
+      screenKey={config.slug}
+      audience={config.slug}
+    >
       <div className={styles.mobileNav}>
         <div className={styles.mobileProgress} aria-hidden="true">
           <div className={styles.mobileProgressBar} style={{ width: `${scrollProgress}%` }} />
@@ -304,6 +308,6 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
           </section>
         </main>
       </div>
-    </div>
+    </DocumentPageShell>
   );
 }

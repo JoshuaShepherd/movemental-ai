@@ -3,16 +3,23 @@
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 
-import { AgentRoomProvider, useInk } from "@/components/agent-room/agent-room-context";
+import { useInk } from "@/components/agent-room/agent-room-context";
 import type { ComposerChip } from "@/components/agent-room/composer";
 import { AgentDock } from "@/components/agent-room/shell/agent-dock";
 import { InkOverlay } from "@/components/agent-room/shell/ink-overlay";
 import { Mast } from "@/components/agent-room/shell/mast";
 import inkStyles from "@/components/agent-room/ink-band.module.css";
+import type { WaysInAudience } from "@/lib/agent-room/ways-in-doors";
 
 import styles from "./document-page.module.css";
 
-type DocumentChip = {
+/** Hand-off URL into the room — carries the question and, when known, the segment. */
+function agentHandoffHref(ask: string, audience?: WaysInAudience): string {
+  const from = audience ? `&from=${audience}` : "";
+  return `/agent?ask=${encodeURIComponent(ask)}${from}`;
+}
+
+export type DocumentChip = {
   label: string;
   /** Scroll to a section id on this page, or hand off to `/agent`. */
   action: "scroll" | "agent";
@@ -25,11 +32,13 @@ type DocumentPageShellProps = {
   children: ReactNode;
   /** Caveat voice line above the dock chips. */
   voiceLine: string;
-  chips: DocumentChip[];
+  chips: readonly DocumentChip[];
   /** At most one fluorescent highlighter swipe per scene — on ONE chip label. */
   highlightChipLabel?: string | null;
   /** Stable key for dock reset when navigating between document pages. */
   screenKey: string;
+  /** Segment this surface speaks to — carried into the room so the concierge opens route-aware. */
+  audience?: WaysInAudience;
 };
 
 function DocumentDock({
@@ -37,13 +46,18 @@ function DocumentDock({
   chips,
   highlightChipLabel,
   screenKey,
+  audience,
 }: Omit<DocumentPageShellProps, "children">) {
   const router = useRouter();
-  const { inkLine } = useInk();
+  const { inkLine, clearVoice } = useInk();
   const [voiceReady, setVoiceReady] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
+    // The provider now persists across `/agent` navigation (Phase 3), so wipe any
+    // prior page's voice line and re-arm before writing this page's line.
+    clearVoice();
+    setVoiceReady(false);
     const write = async () => {
       await inkLine(voiceLine);
       if (!cancelled) setVoiceReady(true);
@@ -52,7 +66,7 @@ function DocumentDock({
     return () => {
       cancelled = true;
     };
-  }, [inkLine, voiceLine, screenKey]);
+  }, [inkLine, clearVoice, voiceLine, screenKey]);
 
   const scrollTo = useCallback((id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -68,22 +82,22 @@ function DocumentDock({
             return;
           }
           if (chip.agentAsk) {
-            router.push(`/agent?ask=${encodeURIComponent(chip.agentAsk)}`);
+            router.push(agentHandoffHref(chip.agentAsk, audience));
             return;
           }
           router.push("/agent");
         },
       })),
-    [chips, router, scrollTo],
+    [chips, router, scrollTo, audience],
   );
 
   const onSay = useCallback(
     (text: string) => {
       const trimmed = text.trim();
       if (!trimmed) return;
-      router.push(`/agent?ask=${encodeURIComponent(trimmed)}`);
+      router.push(agentHandoffHref(trimmed, audience));
     },
-    [router],
+    [router, audience],
   );
 
   return (
@@ -109,20 +123,20 @@ export function DocumentPageShell({
   chips,
   highlightChipLabel = null,
   screenKey,
+  audience,
 }: DocumentPageShellProps) {
   return (
-    <AgentRoomProvider>
-      <div className={`${styles.page} ${inkStyles.roomDock}`}>
-        <InkOverlay />
-        <Mast homeHref="/agent" />
-        <div className={styles.main}>{children}</div>
-        <DocumentDock
-          voiceLine={voiceLine}
-          chips={chips}
-          highlightChipLabel={highlightChipLabel}
-          screenKey={screenKey}
-        />
-      </div>
-    </AgentRoomProvider>
+    <div className={`${styles.page} ${inkStyles.roomDock}`}>
+      <InkOverlay />
+      <Mast homeHref="/agent" />
+      <div className={styles.main}>{children}</div>
+      <DocumentDock
+        voiceLine={voiceLine}
+        chips={chips}
+        highlightChipLabel={highlightChipLabel}
+        screenKey={screenKey}
+        audience={audience}
+      />
+    </div>
   );
 }

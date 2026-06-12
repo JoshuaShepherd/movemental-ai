@@ -9,6 +9,7 @@ import { MAP_Q, computeMapRead, type MapOption, type MapRead } from "@/lib/agent
 import { beatScene } from "@/lib/agent-room/beat-scenes";
 import { leaderScene, leaderWorkScene, leaderConnectScene } from "@/lib/agent-room/leader-scenes";
 import { clearAgentDeepLinkParams, readAgentDeepLink } from "@/lib/agent-room/deep-link";
+import { stashHandoffAudience } from "@/lib/agent-room/ways-in-doors";
 import { routeInput, FALLBACK_SAY } from "@/lib/agent-room/route-input";
 import {
   DISCUSS_ENABLED,
@@ -336,6 +337,7 @@ export function useAgentRoomStub(): AgentRoomController {
     const boot = () => {
       if (cancelled) return;
       const link = readAgentDeepLink();
+      if (link?.kind === "ask" && link.audience) stashHandoffAudience(link.audience);
       clearAgentDeepLinkParams();
       if (link?.kind === "leader") {
         currentLeaderRef.current = link.index;

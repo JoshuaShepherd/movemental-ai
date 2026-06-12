@@ -1,6 +1,16 @@
 import type { AskAiPromptKey } from "@/lib/agent-room/ask-ai";
+import type { DocumentChip } from "@/components/agent-room/document/document-page-shell";
 
 export type AudienceNavEntry = { id: string; label: string };
+
+/** The persistent concierge dock at the foot of an audience document. */
+export type AudienceDock = {
+  /** Caveat voice line the concierge writes above the chips. */
+  voiceLine: string;
+  /** The one chip that earns the highlighter swipe (null = none). */
+  highlightChipLabel: string | null;
+  chips: readonly DocumentChip[];
+};
 
 export type AudiencePainCard = { title: string; body: string };
 
@@ -65,4 +75,5 @@ export type AudiencePageConfig = {
   };
   nav: readonly AudienceNavEntry[];
   letterEmbedStart: string;
+  dock: AudienceDock;
 };

@@ -20,6 +20,8 @@ import {
   shouldResetTextStreak,
 } from "@/lib/agent-room/move-classifier";
 import { routeInput } from "@/lib/agent-room/route-input";
+import { readAgentDeepLink, clearAgentDeepLinkParams } from "@/lib/agent-room/deep-link";
+import { stashHandoffAudience } from "@/lib/agent-room/ways-in-doors";
 import { CONCIERGE_VOICE } from "@/lib/agent-room/data/concierge-voice-lines";
 import {
   DISCUSS_PASSAGE_THRESHOLD,
@@ -570,15 +572,28 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     };
   }, [run]);
 
-  // Seed hand-off: a reader on `/agent/institutions` (or any surface) can stash a
-  // question under `movemental:agent-seed` and route here. Once the opening scene
-  // has settled (idle, on home), deliver it once as the first turn so the guide
-  // opens where the reading left off — instead of dropping the visitor on home.
+  // Seed hand-off: a reader on `/agent/nonprofits` (or any document surface) routes
+  // here as `/agent?ask=…&from=<segment>`. Read the URL once on mount — stashing the
+  // segment so the Ways-in panel opens route-aware — then, once the opening scene
+  // has settled (idle, on home), deliver the question as the first turn so the guide
+  // opens where the reading left off instead of dropping the visitor on home.
   const seedSentRef = useRef(false);
+  const seedTextRef = useRef<string | null>(null);
+  const seedReadRef = useRef(false);
   useEffect(() => {
-    if (seedSentRef.current || typeof window === "undefined") return;
-    const seed = window.sessionStorage.getItem("movemental:agent-seed");
-    if (!seed) {
+    if (seedReadRef.current) return;
+    seedReadRef.current = true;
+    const link = readAgentDeepLink();
+    if (link?.kind === "ask") {
+      seedTextRef.current = link.text;
+      if (link.audience) stashHandoffAudience(link.audience);
+    }
+    clearAgentDeepLinkParams();
+  }, []);
+  useEffect(() => {
+    if (seedSentRef.current) return;
+    const text = seedTextRef.current;
+    if (!text) {
       seedSentRef.current = true;
       return;
     }
@@ -586,8 +601,8 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     // busy) so the send isn't swallowed by the busy/streaming gate.
     if (busy || isStreaming || screen.id !== "home") return;
     seedSentRef.current = true;
-    window.sessionStorage.removeItem("movemental:agent-seed");
-    sendMessageRef.current(seed);
+    seedTextRef.current = null;
+    sendMessageRef.current(text);
   }, [busy, isStreaming, screen.id]);
 
   useEffect(() => {
