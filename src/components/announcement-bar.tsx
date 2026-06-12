@@ -47,34 +47,41 @@ export function AnnouncementBar() {
   if (dismissed) return null;
 
   return (
-    <div className={styles.bar} role="region" aria-label="Site notice">
-      <span className={styles.label}>
-        <span className={styles.tick} aria-hidden />
-        Experimental preview
-      </span>
+    <div className={styles.root} role="region" aria-label="Site notice">
+      <div className={styles.bar}>
+        <span className={styles.label}>
+          <span className={styles.tick} aria-hidden />
+          Experimental preview
+        </span>
 
-      <p className={styles.short}>
-        <span className={styles.shortStrong}>
-          This is an early-stage, experimental mock-up of movemental.ai&rsquo;s new agentic approach
-          to websites.
-        </span>{" "}
-        Movement-leader content is under revision, is not final, and movemental.ai is not yet being
-        distributed or shared publicly.
-      </p>
+        <p className={styles.short}>
+          <span className={styles.shortStrong}>
+            This is an early-stage, experimental mock-up of movemental.ai&rsquo;s new agentic
+            approach to websites.
+          </span>{" "}
+          Movement-leader content is under revision, is not final, and movemental.ai is not yet
+          being distributed or shared publicly.
+        </p>
 
-      <button
-        type="button"
-        className={styles.toggle}
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        aria-controls={panelId}
-      >
-        {open ? "Read less" : "Read more"}
-      </button>
+        <button
+          type="button"
+          className={styles.toggle}
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls={panelId}
+        >
+          {open ? "Read less" : "Read more"}
+        </button>
 
-      <button type="button" className={styles.dismiss} onClick={dismiss} aria-label="Dismiss notice">
-        <X className={styles.dismissIcon} aria-hidden />
-      </button>
+        <button
+          type="button"
+          className={styles.dismiss}
+          onClick={dismiss}
+          aria-label="Dismiss notice"
+        >
+          <X className={styles.dismissIcon} aria-hidden />
+        </button>
+      </div>
 
       {open ? (
         <div className={styles.panel} id={panelId} role="region" aria-label="About this preview">

@@ -10,9 +10,15 @@
  * absolutely-positioned overlay, so opening it never changes the bar's height.
  */
 
-.bar {
+/* Non-clipping wrapper: the in-flow height equals `.bar` (the panel is absolute),
+   so the agent room's `--announce-h` subtraction stays exact, while the expanded
+   panel can overflow below without being cut off by the bar's own clip. */
+.root {
   position: relative;
   z-index: 60;
+}
+
+.bar {
   display: flex;
   align-items: center;
   gap: clamp(0.75rem, 2vw, 1.5rem);
