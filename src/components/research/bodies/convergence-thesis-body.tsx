@@ -14,28 +14,6 @@ function Cite({ n, title }: { n: number; title: string }) {
 /** Thesis — ported from `docs/articles/graded-high/85-99/16-convergence-thesis.md`. */
 export const convergenceThesisBody: ReactNode = (
   <>
-    <p className={styles.dropCap} id="section-upstream">
-      Most of Movemental&rsquo;s public arguments could survive a loose fact-check here and there.
-      The convergence chapter is different. It is not a footnote about royalty tables or a detector
-      study&rsquo;s sample frame. It is the <strong>philosophical spine</strong> — the claim that{" "}
-      <strong>credibility, publication, scenius, and movement</strong> are not four independent product
-      pillars you happened to place side by side, but <strong>one historical knot</strong> tightening at
-      once, such that <strong>something like Movemental becomes reasonable</strong>.
-    </p>
-
-    <p>
-      If that spine is overstated as social science, the whole index inherits the exaggeration. If it
-      is understated as mere poetry, you leave money, talent, and trust on the table. The honest task
-      is to name <strong>what kind of claim convergence is</strong> — empirical, strategic, prophetic
-      — and then <strong>match language to evidence</strong> across site, book, and fundraising.
-    </p>
-
-    <p>
-      This article evaluates the thesis on its merits, imports the findings of the credibility,
-      scenius, economics, and movement research threads without relitigating every statistic, and ends
-      with <strong>practical messaging rules</strong>: say what you can defend, fix what is wrong, and
-      separate <strong>vision</strong> from <strong>verification</strong>.
-    </p>
 
     <h3 id="section-clarify">Clarify the word: Jenkins, Castells, and Movemental</h3>
 

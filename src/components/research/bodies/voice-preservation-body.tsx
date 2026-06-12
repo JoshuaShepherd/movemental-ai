@@ -22,24 +22,6 @@ function Ext({ href, children }: { href: string; children: ReactNode }) {
 /** Paper — ported from `docs/articles/graded-high/85-99/11-voice-preservation.md`. */
 export const voicePreservationBody: ReactNode = (
   <>
-    <p className={styles.dropCap} id="section-summary">
-      Modern language models can <strong>mimic surface stylistic cues</strong> of an author—lexical
-      habits, sentence length, rhetorical moves—especially when <strong>retrieval</strong> surfaces
-      real passages and <strong>parameter-efficient adaptation</strong> nudges the model toward a
-      tenant-specific distribution{" "}
-      <Cite n={27} title="Hu et al. · Nature MI · 2023" />. That is <strong>not</strong> the same as
-      preserving <strong>theological judgment</strong>: what the author would affirm, qualify, or{" "}
-      <strong>refuse</strong> to say under pressure.
-    </p>
-
-    <p>
-      Movemental should therefore market <strong>voice-aligned assistance</strong> and{" "}
-      <strong>corpus-grounded generation</strong>, not <strong>identity substitution</strong>.
-      Fingerprinting and fidelity scores are legitimate <strong>internal quality tools</strong> if
-      they combine <strong>human rubrics</strong>, <strong>retrieval coverage metrics</strong>, and{" "}
-      <strong>drift checks</strong>—not a single validated diagnostic marketed like a clinical test.
-    </p>
-
     <h3 id="section-nlp">What the NLP field actually says</h3>
 
     <p>

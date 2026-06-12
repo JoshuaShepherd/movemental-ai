@@ -20,6 +20,7 @@
   --ink-faint: var(--color-ink-band-ink-muted);
   --ink-blue: var(--color-ink-band-blue);
   --highlighter: var(--color-ink-band-highlight);
+  --margin-red: var(--color-ink-band-margin-red);
 
   --hairline: var(--color-ink-band-border);
   --hairline-light: color-mix(in srgb, var(--color-ink-band-border) 55%, transparent);
@@ -407,7 +408,7 @@
 
 .btn:hover {
   background: var(--ink);
-  color: #fff;
+  color: var(--paper);
 }
 
 .btnLink {
@@ -596,7 +597,7 @@
 
 .researchItemActionBoxed:hover {
   background: var(--ink);
-  color: #fff;
+  color: var(--paper);
 }
 
 .researchItemRelative {
@@ -692,6 +693,23 @@
   max-width: 48rem;
   width: 100%;
   margin: 0 auto;
+  position: relative;
+}
+
+/* The red margin rule — Ink Band's signature notebook margin in the reserved
+   dusty red. Desktop only; sits in the left gutter beside the manuscript so the
+   reader feels like a sheet the agent wrote on, not a generic article column. */
+@media (min-width: 768px) {
+  .articleMain::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -2rem;
+    width: 1px;
+    background: var(--margin-red);
+    pointer-events: none;
+  }
 }
 
 .articleHeader {
@@ -957,7 +975,7 @@
 }
 
 .sourcesItem:hover { background: var(--surface-container-low); }
-.sourcesItem:hover::before { background: rgba(26, 26, 26, 0.15); }
+.sourcesItem:hover::before { background: color-mix(in srgb, var(--ink) 15%, transparent); }
 
 .sourcesItemActive::before { background: var(--ink-blue); }
 
@@ -1009,7 +1027,6 @@
   padding: 1rem;
   background: var(--surface-container-lowest);
   border: 1px solid var(--hairline);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   pointer-events: none;
   opacity: 0;
   transform: translateY(-0.5rem);
@@ -1044,7 +1061,7 @@
     left: -2rem;
     width: 2rem;
     height: 1px;
-    background: rgba(34, 64, 155, 0.3);
+    background: color-mix(in srgb, var(--ink-blue) 30%, transparent);
   }
 }
 

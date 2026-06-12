@@ -20,7 +20,10 @@
 .room {
   display: flex;
   flex-direction: column;
-  height: 100dvh;
+  /* Subtract the site-wide announcement bar (root layout) so the fixed shell —
+     mast / screen / dock — still fits the viewport and the composer stays pinned
+     to the bottom. `--announce-h` falls back to 0 when the bar is absent. */
+  height: calc(100dvh - var(--announce-h, 0px));
   overflow: hidden;
   position: relative;
 }

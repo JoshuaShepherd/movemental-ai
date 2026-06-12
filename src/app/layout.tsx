@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display, IBM_Plex_Mono } from "next/font/google";
 import { canonicalSiteOrigin } from "@/lib/site-url";
 
+import { AnnouncementBar } from "@/components/announcement-bar";
+
 import { Providers } from "./providers";
 
 import "./globals.css";
@@ -69,6 +71,7 @@ export default async function RootLayout({
           <a href="#main" className="skip-link">
             Skip to content
           </a>
+          <AnnouncementBar />
           <main id="main" className="flex min-w-0 flex-1 flex-col">
             {children}
           </main>

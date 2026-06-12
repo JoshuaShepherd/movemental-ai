@@ -25,7 +25,7 @@ export const LEADERS: readonly Leader[] = [
   { name: "Liz Rios", cred: "Passion2Plant founder · Púlpito Fellows director", img: "/agent-room/leaders/6.jpg" },
   { name: "Lucas Pulley", cred: "Movements Director, Underground Network", img: "/agent-room/leaders/7.jpg" },
   { name: "Josh Shepherd", cred: "Movemental, founder", img: "/agent-room/leaders/8.jpg" },
-  { name: "Jeremy & Monica Chambers", cred: "Forge training director · Missional Spirituality", img: "/agent-room/leaders/9.jpg" },
+  { name: "Jeremy & Monica Chambers", cred: "Movement planters · Missional Spirituality", img: "/agent-room/leaders/9.jpg" },
   { name: "Dave Ferguson", cred: "Exponential CEO · Hero Maker author", img: "/agent-room/leaders/10.jpg" },
   { name: "Dhati Lewis", cred: "Blueprint pastor · Among Wolves author", img: "/agent-room/leaders/11.jpg" },
   { name: "Hugh Halter", cred: "Missio director · Tangible Kingdom", img: "/agent-room/leaders/12.jpg" },

@@ -76,6 +76,17 @@
   --popover: #fffdf7;
   --popover-foreground: #1a1a1a;
   --radius: 0.625rem;
+
+  /* Height of the site-wide experimental-preview announcement bar (root layout).
+     The agent room subtracts this from its 100dvh shell so the composer stays
+     pinned to the viewport bottom. Taller on narrow screens where copy wraps. */
+  --announce-h: 2.75rem;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --announce-h: 3.5rem;
+  }
 }
 
 @layer base {

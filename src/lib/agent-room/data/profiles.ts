@@ -260,19 +260,19 @@ export const PROFILES: Record<number, Profile> = {
   9: {
     approved: true,
     lede: "Movement leaders · missional spirituality as one rhythm.",
-    bio: "Jeremy and Monica Chambers hold intimacy with God and engagement with neighbors as one rhythm, not two stages. Kingdom Contours and The Art of Missional Spirituality bridge the Renovaré contemplative tradition and the Hirsch–Frost Forge stream, a seam most voices stay on one side of.",
+    bio: "Jeremy and Monica Chambers hold intimacy with God and engagement with neighbors as one rhythm, not two stages. Renovaré Ministry Team members and movement planters, they co-authored Kingdom Contours and The Art of Missional Spirituality at the seam between the Renovaré contemplative tradition and the Hirsch–Frost missional stream.",
     work: [
       { t: "Books", g: "Kingdom Contours and The Art of Missional Spirituality (100 Movements), co-authored with forewords from Alan Hirsch and Michael Frost." },
-      { t: "Organizations", g: "Forge America (Training Director), The Pando Collective Denver, and Arise RVA." },
+      { t: "Organizations", g: "Renovaré Ministry Team, The Pando Collective Denver, and Arise RVA." },
     ],
     connection:
-      "Training Director for Forge America and 100 Movements authors, co-writing in the missional-spirituality seam Alan Hirsch, Debra Hirsch, and Michael Frost helped open.",
+      "Movement planters and 100 Movements co-authors, writing in the missional-spirituality seam Alan Hirsch, Debra Hirsch, and Michael Frost helped open.",
     workSay: [
       "Jeremy and Monica wrote Kingdom Contours and The Art of Missional Spirituality together.",
-      "Jeremy directs training for Forge America nationally.",
+      "They serve on the Renovaré Ministry Team and co-lead Pando Denver.",
     ],
     connectSay: [
-      "Forge America connects them to Rowland Smith and the Forge pipeline.",
+      "The Pando Collective connects them to Rowland Smith and the Front Range microchurch network.",
       "100 Movements publishing ties them to Alan Hirsch’s orbit.",
     ],
     links: [],
