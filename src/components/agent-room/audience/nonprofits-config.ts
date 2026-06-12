@@ -1,5 +1,7 @@
 import { PATH_STAGE_LABELS } from "@/lib/agent-room/naming";
 
+import { nonprofitDeck } from "@/components/agent-room/deck/nonprofit-deck";
+
 import { AUDIENCE_NAV } from "./institutions-config";
 import type { AudiencePageConfig } from "./types";
 
@@ -100,6 +102,8 @@ export const NONPROFITS_PAGE_CONFIG: AudiencePageConfig = {
         text: "so efficiency gains compound into shared capability, not scattered shortcuts.",
       },
     ],
+    bridgeQuestion:
+      "Which is where a fair question usually surfaces, the one every director asks when the price comes up: isn't this just an expensive website?",
   },
   formation: {
     title: "But tools alone aren't the answer.",
@@ -122,6 +126,7 @@ export const NONPROFITS_PAGE_CONFIG: AudiencePageConfig = {
     askAiPromptKey: "nonprofitsStart",
   },
   nav: AUDIENCE_NAV,
+  deck: nonprofitDeck,
   letterEmbedStart: "Underneath the governance gap",
   dock: {
     voiceLine: "I can already see where your nonprofit stands with AI. Want me to walk you through it?",

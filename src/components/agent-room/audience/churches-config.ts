@@ -1,5 +1,7 @@
 import { PATH_STAGE_LABELS } from "@/lib/agent-room/naming";
 
+import { churchDeck } from "@/components/agent-room/deck/church-deck";
+
 import { AUDIENCE_NAV } from "./institutions-config";
 import type { AudiencePageConfig } from "./types";
 
@@ -100,6 +102,8 @@ export const CHURCHES_PAGE_CONFIG: AudiencePageConfig = {
         text: "so formation journeys through your teaching are visible, not invisible fragments.",
       },
     ],
+    bridgeQuestion:
+      "Which is usually where a fair question surfaces, the one every pastor asks when the price lands: so isn't this just an expensive church website?",
   },
   formation: {
     title: "But tools alone aren't the answer.",
@@ -122,6 +126,7 @@ export const CHURCHES_PAGE_CONFIG: AudiencePageConfig = {
     askAiPromptKey: "churchesStart",
   },
   nav: AUDIENCE_NAV,
+  deck: churchDeck,
   letterEmbedStart: "And the thing most at risk",
   dock: {
     voiceLine: "Curious where your church really stands with AI? I can map it with you.",

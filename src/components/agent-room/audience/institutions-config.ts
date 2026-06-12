@@ -1,5 +1,7 @@
 import { PATH_STAGE_LABELS, PATH_STAGE_RAIL } from "@/lib/agent-room/naming";
 
+import { institutionDeck } from "@/components/agent-room/deck/institution-deck";
+
 import type { AudiencePageConfig } from "./types";
 
 export const AUDIENCE_NAV = [
@@ -117,6 +119,8 @@ export const INSTITUTIONS_PAGE_CONFIG: AudiencePageConfig = {
         text: "so the next generation finds your scholarship when they ask the machine, not only the library.",
       },
     ],
+    bridgeQuestion:
+      "Which is usually where a board member frames it as a choice — Movemental, or a website builder? For an institution, the obvious way to settle that turns out to be the wrong one.",
   },
   formation: {
     title: "But tools alone aren't the answer.",
@@ -139,6 +143,7 @@ export const INSTITUTIONS_PAGE_CONFIG: AudiencePageConfig = {
     askAiPromptKey: "institutionsStart",
   },
   nav: AUDIENCE_NAV,
+  deck: institutionDeck,
   letterEmbedStart: "You carry a weight in this moment",
   dock: {
     voiceLine: "Want to see where your institution actually stands with AI? Let's map it together.",

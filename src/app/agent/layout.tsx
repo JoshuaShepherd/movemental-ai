@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Caveat } from "next/font/google";
 
 import { AgentRoomProvider } from "@/components/agent-room/agent-room-context";
+import { InkFilters } from "@/components/agent-room/deck/ink-filters";
 
 /**
  * Caveat — the Ink Band "hand" face (the voice line and the readback "you are
@@ -34,6 +35,8 @@ export default function AgentLayout({ children }: { children: ReactNode }) {
   // room's are a live runtime; the documents' are a lighter handoff).
   return (
     <div className={`${caveat.variable} ink-band-surface`}>
+      {/* Hand-drawn gesture filters, referenced by deck gestures via url(#rough|#marker). */}
+      <InkFilters />
       <AgentRoomProvider>{children}</AgentRoomProvider>
     </div>
   );

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { DocumentPageShell } from "@/components/agent-room/document/document-page-shell";
+import { DeckSection } from "@/components/agent-room/deck/deck-section";
 import { AskAiPromptButton } from "@/components/agent-room/ink/ask-ai-prompt-button";
 import { PATH_STAGE_LABELS } from "@/lib/agent-room/naming";
 
@@ -19,13 +20,28 @@ type AudiencePageExperienceProps = {
   letterMarkdown: string;
 };
 
+/** Anchor id + seam-out target for the embedded "Why a platform" deck. */
+const DECK_ANCHOR_ID = "why-a-platform";
+const DECK_SKIP_TO_ID = "formation";
+
 /**
  * Shared long-form audience document — churches, nonprofits, institutions.
  * Left sticky sidebar, you-first narrative arc, embedded letter (trimmed
  * on-page; full text for download). Assessment preview lives in The build.
  */
 export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageExperienceProps) {
-  const spyIds = config.nav.map((entry) => entry.id);
+  // Insert the deck's nav anchor after "The build" when a deck is present, so
+  // churches / institutions (no deck) keep the original eight-item nav.
+  const navEntries = useMemo(() => {
+    if (!config.deck) return config.nav;
+    const entries = [...config.nav];
+    const at = entries.findIndex((entry) => entry.id === "the-build");
+    const insertAt = at === -1 ? entries.length : at + 1;
+    entries.splice(insertAt, 0, { id: DECK_ANCHOR_ID, label: config.deck.navLabel });
+    return entries;
+  }, [config.nav, config.deck]);
+
+  const spyIds = useMemo(() => navEntries.map((entry) => entry.id), [navEntries]);
   const spyIndex = useScrollSpy(spyIds);
   const activeNavIndex = spyIndex;
 
@@ -74,7 +90,7 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const activeLabel = config.nav[activeNavIndex]?.label ?? config.nav[0].label;
+  const activeLabel = navEntries[activeNavIndex]?.label ?? navEntries[0].label;
   const mobileMenuId = `${config.slug}-mobile-menu`;
 
   return (
@@ -106,7 +122,7 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
           className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.mobileMenuOpen : ""}`}
           aria-label="Page sections"
         >
-          {config.nav.map((entry, i) => (
+          {navEntries.map((entry, i) => (
             <button
               key={entry.id}
               type="button"
@@ -126,7 +142,7 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
         <aside className={styles.sidebar} aria-label="Page sections">
           <p className={styles.sidebarLabel}>On this page</p>
           <nav className={styles.sidebarNav}>
-            {config.nav.map((entry, i) => (
+            {navEntries.map((entry, i) => (
               <button
                 key={entry.id}
                 type="button"
@@ -242,8 +258,22 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
                 ))}
               </div>
               <AudienceAssessmentPreview />
+              {config.theBuild.bridgeQuestion ? (
+                <p className={`${styles.body} ${styles.bridgeQuestion}`}>
+                  {config.theBuild.bridgeQuestion}
+                </p>
+              ) : null}
             </div>
           </section>
+
+          {config.deck ? (
+            <DeckSection
+              data={config.deck}
+              foot={`Movemental · For ${config.slug}`}
+              anchorId={DECK_ANCHOR_ID}
+              skipToId={DECK_SKIP_TO_ID}
+            />
+          ) : null}
 
           <section className={`${styles.section} ${styles.bandSurface}`} id="formation">
             <div className={styles.sectionInner}>
