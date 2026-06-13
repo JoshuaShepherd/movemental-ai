@@ -43,7 +43,7 @@ export function AudienceAssessmentPreview() {
         <span className={styles.assessmentPreviewSub}>{SAFETY_READBACK_COPY.spreadHint}</span>
       </figcaption>
       <div
-        className={`${agentStyles.docSpread} ${agentStyles.docSpreadFold} ${styles.assessmentPreviewSpread}`}
+        className={`${agentStyles.docSpread} ${agentStyles.docSpreadFold} ${agentStyles.docSpreadEmbed} ${styles.assessmentPreviewSpread}`}
       >
         {SAFETY_CHARTER_DOCUMENTS.map((doc, idx) => {
           const status = PREVIEW_STATUSES[doc.id] ?? "draft";

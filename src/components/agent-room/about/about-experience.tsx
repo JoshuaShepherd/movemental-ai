@@ -1,27 +1,38 @@
+/* eslint-disable @next/next/no-img-element -- small static founder/voice
+   portraits with the canon grayscale→color hover filter; same rationale as
+   founders-screen / leader-band. */
 "use client";
 
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
 import { DocumentPageShell } from "@/components/agent-room/document/document-page-shell";
-import { AskAiPromptButton } from "@/components/agent-room/ink/ask-ai-prompt-button";
 import { useScrollSpy } from "@/components/agent-room/institutions/use-scroll-spy";
-import { MOVEMENTAL_FOUNDING } from "@/lib/agent-room/naming";
+import { LEADERS } from "@/lib/agent-room/data/leaders";
 
-import { FoundersTeam } from "../screen/stub/founders-screen";
 import {
   ABOUT_DOCK,
+  ABOUT_FOUNDERS,
   ABOUT_NAV,
+  ABOUT_NETWORK_INDICES,
+  ABOUT_NETWORK_LIT_INDEX,
+  ABOUT_PAPERS,
+  ABOUT_REFUSALS,
   ABOUT_SPY_SECTIONS,
-  BABEL_PENTECOST,
 } from "./about-data";
 import styles from "./about.module.css";
 
 const SPY_IDS = ABOUT_SPY_SECTIONS.map((s) => s.id);
 
+/** Hand off into the room carrying a question. */
+function ask(question: string): string {
+  return `/agent?ask=${encodeURIComponent(question)}`;
+}
+
 /**
- * `/agent/about` — the why and the ethic: founders, authorship break,
- * fragmentation thesis, Babel vs. Pentecost, four layers, refusals, formation stakes.
+ * `/agent/about` — the public "About Movemental" document on the Ink Band
+ * surface. Who we are, why we exist, the story, how we use AI, what we refuse,
+ * the founders (real portraits), the network, research, and a way in.
  */
 export function AboutExperience() {
   const spyIndex = useScrollSpy(SPY_IDS);
@@ -103,6 +114,9 @@ export function AboutExperience() {
                   aria-current={i === activeNavIndex ? "true" : undefined}
                   onClick={() => scrollTo(entry.id)}
                 >
+                  <span className={styles.sidebarNum}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   {entry.label}
                 </button>
               ))}
@@ -110,176 +124,281 @@ export function AboutExperience() {
           </aside>
 
           <main className={styles.main}>
+            {/* 01 — WHO WE ARE */}
             <section className={`${styles.section} ${styles.hero}`} id="who-we-are">
               <div className={styles.sectionInner}>
                 <p className={styles.eyebrow}>About Movemental</p>
-                <h1 className={styles.title}>Built by movement leaders, for the work that carries trust.</h1>
+                <h1 className={styles.title}>
+                  We help you meet AI without losing the{" "}
+                  <span className={styles.mark}>trust</span> your work depends on.
+                </h1>
                 <p className={styles.body}>
-                  Three people started it. Not from a pitch deck. From a long argument about
-                  authorship, credibility, and what AI was about to do to both.{" "}
-                  {MOVEMENTAL_FOUNDING.origin}
+                  Movemental builds the platform mission-driven organizations need to meet AI
+                  with their integrity intact. We gather your scattered work into one place,
+                  make it verifiable, build the tools on top of it, and help you govern the
+                  whole thing. We go in order, and the order starts with Safety.
                 </p>
-                <div className={styles.foundersWrap}>
-                  <FoundersTeam />
-                </div>
+                <p className={styles.body}>
+                  We serve churches, nonprofits, seminaries, and the individual leaders whose
+                  body of work is worth protecting.
+                </p>
+                <p className={styles.heroStamp}>
+                  <b>Movemental, founded 2026.</b> Built out of a two-year conversation among
+                  three people who could not stop talking about what AI was doing to the
+                  institutions, and the trust, they love.
+                </p>
               </div>
             </section>
 
-            <section className={styles.section} id="why-we-exist">
+            {/* 02 — WHY WE EXIST */}
+            <section className={`${styles.section} ${styles.bandSurface}`} id="why-we-exist">
               <div className={styles.sectionInner}>
                 <p className={styles.eyebrow}>Why we exist</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>The authorship break.</h2>
+                <h2 className={`${styles.title} ${styles.titleSm}`}>
+                  The problem underneath the problem is fragmentation.
+                </h2>
                 <p className={styles.body}>
-                  A faithful reader opens the newest piece and, for the first time in the history of
-                  reading, has to ask whether anyone still stands behind the words. The reader cannot
-                  tell. It does not help if the prose happens to be good. For five hundred years a
-                  pen, a press, a typewriter. None of them could think the thought for you. This tool
-                  can. That is what is new.
+                  A leader&apos;s life-work, or an institution&apos;s, was whole in the living
+                  of it. Then it scattered. Into books and talks and decks and inboxes and a few
+                  people&apos;s memories. Most of it is real, and almost none of it is gathered.
+                  That is fragmentation, and it was a quiet problem until AI arrived.
                 </p>
                 <p className={styles.body}>
-                  When a reader cannot answer that question, they stop paying the cost of wondering.
-                  They withdraw. Publication matters here. The letter, the book, the words that
-                  outlive the writer. That is one of the main ways the church has thought together
-                  across distance and time. Lose that trust and you lose more than content.
+                  AI did not cause the scatter. It is a mirror. Pointed at fragmented work, it
+                  multiplies the fragments. It fills the gaps with something fluent and wrong,
+                  faster than anyone can correct it. The result is a world where a reader can no
+                  longer tell what is real, who actually said it, or whether it is trustworthy
+                  at all.
                 </p>
                 <p className={styles.body}>
-                  Underneath that break sits a deeper problem. Fragmentation. Work that was whole in a
-                  person has been scattered into formats that do not speak to each other. Books,
-                  talks, articles, frameworks living in other people&apos;s paraphrases. What is known,
-                  and who it is for, both break in the same event.
-                </p>
-                <blockquote className={styles.pullQuote}>
-                  AI is a mirror. Slop is fragmentation, reflected and multiplied.
-                </blockquote>
-                <p className={styles.body}>
-                  People assume AI will pull the pieces together. By default it does the opposite. It
-                  reflects back whatever it is given. What it is given is almost always scattered
-                  pieces. Built on that foundation, AI multiplies the mess instead of cleaning it up.
+                  So the work now is credibility. Not louder marketing. The ability to be
+                  believed, and to be the answer the machine returns when someone asks about
+                  you. That is downstream of one thing: having gathered your real work into
+                  something coherent and verifiable. Coherence is the task, but not all
+                  coherence heals. We build toward the kind that does.
                 </p>
               </div>
             </section>
 
-            <section className={`${styles.section} ${styles.bandSurface}`} id="what-we-believe">
+            {/* 03 — THE STORY */}
+            <section className={styles.section} id="the-story">
               <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>What we believe</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>Not all coherence heals.</h2>
+                <p className={styles.eyebrow}>The story</p>
+                <h2 className={`${styles.title} ${styles.titleSm}`}>
+                  It started as a conversation.
+                </h2>
                 <p className={styles.body}>
-                  Gathering scattered work into one place is not enough by itself. Not all coherence
-                  heals, and integrity means naming the danger inside our own work before anyone else
-                  does.
+                  For two years, Alan, Brad, and Josh kept circling the same worry. AI was
+                  arriving in churches, nonprofits, and seminaries faster than anyone was
+                  deciding how to meet it. The people most exposed were the ones whose entire
+                  work rests on trust, and they had the least time to think it through.
                 </p>
                 <p className={styles.body}>
-                  Most public AI discourse splits into &ldquo;AI is a savior&rdquo; or &ldquo;AI is a
-                  threat.&rdquo; We reject both. AI mirrors what it was trained on. It mirrors you
-                  too. How a person reacts to AI often reveals what they already believe about human
-                  nature.
-                </p>
-                <div className={styles.beliefGrid}>
-                  {BABEL_PENTECOST.map((item) => (
-                    <article key={item.term} className={styles.beliefCard}>
-                      <h3 className={styles.beliefTerm}>{item.term}</h3>
-                      <p className={styles.beliefBody}>{item.body}</p>
-                    </article>
-                  ))}
-                </div>
-                <p className={styles.beliefTest}>
-                  That is the test we apply to our own work, not whether it is coherent, but which
-                  kind of coherence it is. Babel makes a name for itself and points at itself. Pentecost
-                  honors difference and points away from itself.
-                </p>
-                <p className={styles.hand}>Both are coherence. Only one heals.</p>
-              </div>
-            </section>
-
-            <section className={styles.section} id="what-movemental-is">
-              <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>What Movemental actually is</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>Four layers, kept distinct.</h2>
-                <p className={styles.body}>
-                  Movemental keeps four things separate so none collapses into the others. The scenius
-                  is the shared intelligence of the scene, served, not owned. The corpus is the
-                  authors&apos; own work, owned by them. The platform is the tools that let a
-                  scattered network act like a network. AI is a reader for the network. It reflects
-                  work back clearly without inventing what was never said.
-                </p>
-                <p className={styles.body}>
-                  A website builder can give you a beautiful site for less. If that is all you need,
-                  use it. Movemental is for leaders and organizations whose credibility depends on
-                  being found for the right reasons, and on keeping authorship honest.
-                </p>
-                <p className={styles.body}>
-                  Our bet is that shared tools can lower the cost of real peer connection enough that
-                  a scattered network can hold together across geography and years. Not replacing the
-                  local scene. Extending it. What people say yes to when they join is not the
-                  technology. It is each other. The platform exists to make that possible in a way that
-                  was not possible before.
-                </p>
-                <p className={styles.body}>
-                  The full story of the network, the authorship break, the hundred, the invitation, lives
-                  on the{" "}
-                  <Link className={styles.textLink} href="/agent/movement-voices">
-                    Movement Voices
-                  </Link>{" "}
-                  page.
+                  We did not want to add to the noise. We wanted to build the thing we wished
+                  existed: a way for a mission-driven organization to meet this moment in order,
+                  without faking its way through, and without losing the human core of the work.
+                  In 2026, the conversation became Movemental.
                 </p>
               </div>
             </section>
 
-            <section className={`${styles.section} ${styles.bandPaper}`} id="what-we-refuse">
+            {/* 04 — HOW WE USE AI */}
+            <section className={styles.section} id="how-we-use-ai">
               <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>What we refuse</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>The extractive version is obvious. We are building against it.</h2>
+                <p className={styles.eyebrow}>How we use AI</p>
+                <h2 className={`${styles.title} ${styles.titleSm}`}>
+                  We use the tools on ourselves first.
+                </h2>
                 <p className={styles.body}>
-                  We do not use AI to author anything under a human&apos;s name. We do not turn
-                  practitioners into bloggers. The AI handles the work around the writing, never the
-                  writing itself. We are not the platform. The voices are. We use the tools we sell, on
-                  ourselves, first.
+                  We do not sell anything we will not use. This site, our research, and our own
+                  agents are built the way we would build yours. We hold ourselves to the same
+                  Safety standard we ask of you, and we write our own AI Charter before we help
+                  you write yours.
                 </p>
                 <p className={styles.body}>
-                  The leaders we gather earned their credibility by refusing to become influencers.
-                  They stayed local and stayed sent. Online, they are almost invisible. The visibility
-                  game asked them to become content creators, and they had better things to do. AI can
-                  let faithful obscurity become visible without becoming influence. We are not trying
-                  to make these people famous. We are trying to make sure that when the next generation
-                  asks the questions they have spent their lives answering, they find the right answer.
-                </p>
-                <p className={styles.body}>
-                  The full account of what we refuse, and the green, yellow, and red lights we apply,
-                  is on{" "}
+                  When we get it wrong, we say so. When we are early, we say that too. The point
+                  is not to look more finished than we are. It is to be the kind of organization
+                  you can actually trust with this. The full account is on{" "}
                   <Link className={styles.textLink} href="/agent/how-we-use-ai">
                     How We Use AI
                   </Link>
                   .
                 </p>
+                <div className={styles.trust}>
+                  <p className={styles.trustHead}>Your data</p>
+                  <p className={styles.trustBody}>
+                    We treat your work as yours. We do not train models on it, we are clear
+                    about where it lives and who can see it, and the data-handling standards we
+                    help you ratify are the ones we hold ourselves. Trust is the product, so the
+                    way we handle your data is the proof.
+                  </p>
+                </div>
               </div>
             </section>
 
-            <section className={styles.section} id="formation-stakes">
+            {/* 05 — WHAT WE REFUSE */}
+            <section className={`${styles.section} ${styles.bandPaper}`} id="what-we-refuse">
               <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>Formation stakes</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>They are watching what we do.</h2>
-                <p className={styles.body}>
-                  For as long as anyone has studied it, the apostolic movement has organized as
-                  networks. Small groups of churches that share a meal, set goals, hold one another
-                  accountable, and plant the next one together. What that movement has never had is a
-                  way to stay connected online that fits what it actually is. That did not cost much
-                  while the next generation still found mentors through books and conferences and word
-                  of mouth. That is not how they look anymore. They ask the machine. The machine answers
-                  from whatever is visible to it. Too often that is not the people who have actually
-                  done this work for thirty years.
+                <p className={styles.eyebrow}>What we refuse</p>
+                <h2 className={`${styles.title} ${styles.titleSm}`}>
+                  Some things we won&apos;t do, ever.
+                </h2>
+                <p className={`${styles.body} ${styles.bodyMuted}`}>
+                  These are not preferences. They are the line. Breaking one would cost the
+                  exact trust we exist to protect.
                 </p>
+                <ul className={styles.refuse}>
+                  {ABOUT_REFUSALS.map((item) => (
+                    <li key={item.lead} className={styles.refuseItem}>
+                      <span className={styles.refuseMark} aria-hidden="true">
+                        —
+                      </span>
+                      <span className={styles.refuseText}>
+                        {item.lead} <span className={styles.refuseRest}>{item.rest}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+
+            {/* 06 — THE FOUNDERS */}
+            <section className={styles.section} id="the-founders">
+              <div className={styles.sectionInner}>
+                <p className={styles.eyebrow}>The founders</p>
+                <h2 className={`${styles.title} ${styles.titleSm}`}>
+                  Three people who couldn&apos;t stop talking about it.
+                </h2>
+                <div className={styles.founders}>
+                  {ABOUT_FOUNDERS.map((founder) => {
+                    const leader = LEADERS[founder.leaderIndex];
+                    return (
+                      <article key={leader.name} className={styles.fcard}>
+                        <span className={styles.fphoto}>
+                          <img src={leader.img} alt={leader.name} loading="lazy" />
+                        </span>
+                        <h3 className={styles.fname}>{leader.name}</h3>
+                        <p className={styles.frole}>{founder.role}</p>
+                        <p className={styles.fbio}>{founder.bio}</p>
+                        <Link className={styles.fmore} href={ask(founder.profileAsk)}>
+                          Read profile →
+                        </Link>
+                        <p className={styles.fverify}>
+                          <span className={styles.verifyMark} aria-hidden="true">
+                            ✓
+                          </span>
+                          Verified · {founder.verify}
+                        </p>
+                      </article>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
+
+            {/* 07 — THE NETWORK */}
+            <section className={`${styles.section} ${styles.bandSurface}`} id="the-network">
+              <div className={styles.sectionInner}>
+                <p className={styles.eyebrow}>The network</p>
+                <h2 className={`${styles.title} ${styles.titleSm}`}>
+                  We&apos;re holding a network, not a roster.
+                </h2>
                 <p className={styles.body}>
-                  Young adults are asking the machine the questions they used to ask a mentor. How to
-                  make sense of their lives. How to actually disciple people. What the church is even
-                  for. They are waiting to see whether the church has anything true to say in this
-                  moment. Or whether it will answer with fear, or with a shrug.
+                  Movemental is not one company serving customers one at a time. It is a network
+                  of senior movement leaders whose work we gather, make legible, and connect.
+                  When one Voice cites another, both grow more credible. That mutual credibility
+                  is something no website builder can give you, and it is the deepest reason to
+                  be here.
                 </p>
+                <p className={`${styles.body} ${styles.bodyMuted}`}>
+                  It starts with one platform, built well. Then a second. Then a hundred, each a
+                  node that makes the others stronger.
+                </p>
+                <div className={styles.voices}>
+                  {ABOUT_NETWORK_INDICES.map((idx) => {
+                    const leader = LEADERS[idx];
+                    const lit = idx === ABOUT_NETWORK_LIT_INDEX;
+                    return (
+                      <span
+                        key={leader.name}
+                        className={`${styles.voice} ${lit ? styles.voiceLit : ""}`}
+                      >
+                        {leader.name}
+                      </span>
+                    );
+                  })}
+                  <Link href="/agent/movement-voices" className={styles.voiceMore}>
+                    + more
+                  </Link>
+                </div>
+                <p className={styles.hand}>one voice, then a hundred</p>
+              </div>
+            </section>
+
+            {/* 08 — RESEARCH */}
+            <section className={styles.section} id="research">
+              <div className={styles.sectionInner}>
+                <p className={styles.eyebrow}>Research</p>
+                <h2 className={`${styles.title} ${styles.titleSm}`}>
+                  We publish what we&apos;re learning.
+                </h2>
                 <p className={styles.body}>
-                  That is the real question underneath everything else. It is a question about formation
-                  before it is a question about technology. They will decide from what they watch us do
-                  whether the kingdom is real and the church is real.
+                  We do our own thinking in the open, sourced and cited, so you can check it. If
+                  we are going to argue that being verifiable is the work, our own claims have to
+                  be verifiable first.
                 </p>
-                <AskAiPromptButton promptKey="aboutFull" />
+                <div className={styles.papers}>
+                  {ABOUT_PAPERS.map((paper) => (
+                    <Link key={paper.slug} className={styles.paper} href={`/research/${paper.slug}`}>
+                      <span className={styles.paperNum}>{paper.num}</span>
+                      <span className={styles.paperText}>
+                        <b>{paper.title}</b>
+                        <span>{paper.sub}</span>
+                      </span>
+                      <span className={styles.paperTag}>Cited</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* 09 — TALK TO US */}
+            <section className={styles.section} id="talk-to-us">
+              <div className={styles.sectionInner}>
+                <p className={styles.eyebrow}>Talk to us</p>
+                <h2 className={`${styles.title} ${styles.titleSm}`}>
+                  Start with a conversation.
+                </h2>
+                <p className={styles.body}>
+                  No checkout button. No pressure. Tell us where your organization is, and we
+                  will show you the first step, which is almost always Safety, and almost always
+                  free to begin.
+                </p>
+                <div className={styles.doors}>
+                  <Link className={styles.btn} href={ask("I'd like to talk to Movemental.")}>
+                    Talk to us
+                  </Link>
+                  <button
+                    type="button"
+                    className={styles.btnGhost}
+                    onClick={() => scrollTo("why-we-exist")}
+                  >
+                    Read the thesis
+                  </button>
+                  <Link
+                    className={styles.btnGhost}
+                    href={ask("Map where my organization actually stands with AI.")}
+                  >
+                    Map your organization
+                  </Link>
+                </div>
+                <p className={styles.verifyRow}>
+                  <span className={styles.verifyMark} aria-hidden="true">
+                    ✓
+                  </span>
+                  Everything on this page is sourced, attributed, and verifiable. That is the
+                  point.
+                </p>
               </div>
             </section>
           </main>

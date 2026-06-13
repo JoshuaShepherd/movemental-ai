@@ -31,7 +31,7 @@ function ProseBlocks({ blocks }: { blocks: readonly DashboardProseBlock[] }) {
 /** Dashboard conversion — narrative sell for the managed Safety sprint (HTML mock-up screen 3). */
 export function SafetyDashboardScreen(_props: ScreenProps) {
   return (
-    <>
+    <div className={styles.longSheet}>
       <p className={styles.eyebrow}>{SAFETY_DASHBOARD_COPY.eyebrow}</p>
       <p className={styles.q}>{SAFETY_DASHBOARD_COPY.headline}</p>
 
@@ -59,6 +59,6 @@ export function SafetyDashboardScreen(_props: ScreenProps) {
           ))}
         </ol>
       </div>
-    </>
+    </div>
   );
 }

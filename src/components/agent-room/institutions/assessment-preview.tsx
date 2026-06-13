@@ -26,7 +26,9 @@ export function InstitutionsAssessmentPreview() {
           {SAFETY_READBACK_COPY.spreadHint}
         </span>
       </figcaption>
-      <div className={`${agentStyles.docSpread} ${agentStyles.docSpreadFold} ${styles.assessmentPreviewSpread}`}>
+      <div
+        className={`${agentStyles.docSpread} ${agentStyles.docSpreadFold} ${agentStyles.docSpreadEmbed} ${styles.assessmentPreviewSpread}`}
+      >
         {previewDocs.map((doc, idx) => (
           <div
             key={doc.id}

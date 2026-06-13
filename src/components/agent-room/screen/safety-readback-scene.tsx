@@ -26,7 +26,7 @@ export function SafetyReadbackScene({ mapRead, onRunScene, disabled }: SafetyRea
   const [activeDoc, setActiveDoc] = useState<SafetyCharterDocument | null>(null);
 
   return (
-    <>
+    <div className={styles.safetyReadback}>
       <div className={styles.heroRow}>
         <div className={styles.heroCopy}>
           <h1 className={`${styles.q} ${styles.heroTitle}`}>{SAFETY_READBACK_COPY.heroTitle}</h1>
@@ -90,6 +90,6 @@ export function SafetyReadbackScene({ mapRead, onRunScene, disabled }: SafetyRea
       </p>
 
       <CharterLightbox doc={activeDoc} onClose={() => setActiveDoc(null)} />
-    </>
+    </div>
   );
 }

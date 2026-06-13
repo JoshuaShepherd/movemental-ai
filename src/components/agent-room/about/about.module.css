@@ -35,7 +35,9 @@
 }
 
 .sidebarLink {
-  display: block;
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
   padding: 0.35rem 0 0.35rem 0.65rem;
   margin-left: -0.65rem;
   font-family: var(--font-ink-body);
@@ -58,6 +60,16 @@
   color: var(--color-ink-band-ink);
   border-left-color: var(--color-ink-band-blue);
   font-weight: 500;
+}
+
+.sidebarNum {
+  font-family: var(--font-ink-mono);
+  font-size: 0.6rem;
+  color: var(--color-ink-band-border);
+}
+
+.sidebarLinkActive .sidebarNum {
+  color: var(--color-ink-band-blue);
 }
 
 .mobileNav {
@@ -208,23 +220,16 @@
   margin-top: 1rem;
 }
 
+.bodyMuted {
+  color: var(--color-ink-band-ink-muted);
+}
+
 .hand {
   margin-top: 1.25rem;
   font-family: var(--font-ink-hand);
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   color: var(--color-ink-band-blue);
   transform: rotate(-1deg);
-}
-
-.pullQuote {
-  margin: 1.5rem 0 0;
-  padding: 1.25rem 0 0;
-  border-top: 1px solid var(--color-ink-band-border);
-  font-family: var(--font-ink-display);
-  font-size: clamp(1.2rem, 2.8vw, 1.45rem);
-  line-height: 1.35;
-  letter-spacing: -0.015em;
-  color: var(--color-ink-band-ink);
 }
 
 .textLink {
@@ -237,42 +242,346 @@
   text-decoration-thickness: 2px;
 }
 
-.foundersWrap {
-  margin-top: 1.75rem;
+/* Highlighter swipe — the one fluorescent gesture (uses InkFilters #marker). */
+.mark {
+  position: relative;
+  white-space: nowrap;
 }
 
-.beliefGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
+.mark::before {
+  content: "";
+  position: absolute;
+  inset: -2px -8px;
+  z-index: -1;
+  background: var(--color-ink-band-highlight);
+  mix-blend-mode: multiply;
+  border-radius: 7px;
+  filter: url(#marker);
 }
 
-.beliefCard {
-  padding: clamp(1.25rem, 3vw, 1.65rem);
+/* 01 — hero stamp */
+.heroStamp {
+  margin-top: 1.6rem;
+  padding-top: 1.1rem;
+  max-width: 38rem;
+  border-top: 1px solid var(--color-ink-band-border);
+  font-family: var(--font-ink-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+}
+
+.heroStamp b {
+  color: var(--color-ink-band-ink);
+  font-weight: 500;
+}
+
+/* 04 — data trust strip */
+.trust {
+  margin-top: 1.6rem;
+  max-width: 38rem;
+  padding: 1.3rem 1.4rem;
   background: var(--color-ink-band-paper);
   border: 1px solid var(--color-ink-band-border);
   border-radius: 2px;
 }
 
-.beliefTerm {
-  font-family: var(--font-ink-display);
-  font-size: 1.2rem;
-  margin: 0 0 0.5rem;
+.trustHead {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-ink-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
 }
 
-.beliefBody {
+.trustBody {
+  margin: 0;
   font-size: 0.95rem;
   line-height: 1.55;
   color: var(--color-ink-band-ink-muted);
-  margin: 0;
 }
 
-.beliefTest {
-  margin-top: 1.25rem;
-  font-size: 0.98rem;
-  line-height: 1.55;
+/* 05 — refusals */
+.refuse {
+  list-style: none;
+  margin: 1.6rem 0 0;
+  padding: 0;
+  max-width: 40rem;
+}
+
+.refuseItem {
+  display: flex;
+  gap: 0.9rem;
+  align-items: baseline;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--color-ink-band-border);
+}
+
+.refuseMark {
+  flex: 0 0 auto;
+  min-width: 1rem;
+  font-family: var(--font-ink-display);
+  color: var(--color-ink-band-blue);
+  font-size: 1.1rem;
+}
+
+.refuseText {
+  font-size: 1rem;
+  line-height: 1.5;
   color: var(--color-ink-band-ink);
+}
+
+.refuseRest {
+  color: var(--color-ink-band-ink-muted);
+}
+
+/* 06 — founder cards */
+.founders {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.fcard {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.25rem, 3vw, 1.5rem);
+  background: var(--color-ink-band-paper);
+  border: 1px solid var(--color-ink-band-border);
+  border-radius: 2px;
+}
+
+.fphoto {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--color-ink-band-border);
+  background: var(--color-ink-band-surface);
+  flex: 0 0 auto;
+}
+
+.fphoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) sepia(0.32) brightness(1.03) contrast(1.04);
+  transition: filter 0.35s;
+}
+
+.fcard:hover .fphoto img {
+  filter: none;
+}
+
+.fname {
+  margin: 0 0 0.15rem;
+  font-family: var(--font-ink-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.frole {
+  margin: 0 0 0.7rem;
+  font-family: var(--font-ink-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-blue);
+}
+
+.fbio {
+  flex: 1;
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-ink-band-ink-muted);
+}
+
+.fmore {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-ink-band-blue);
+  text-decoration: none;
+}
+
+.fmore:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.fverify,
+.verifyRow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-ink-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-band-ink-muted);
+}
+
+.fverify {
+  margin: 0.8rem 0 0;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--color-ink-band-border);
+}
+
+.verifyRow {
+  margin-top: 2.2rem;
+  font-size: 0.66rem;
+}
+
+.verifyMark {
+  color: var(--color-ink-band-blue);
+  font-weight: 600;
+}
+
+/* 07 — network voices */
+.voices {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+  gap: 0.5rem;
+  margin-top: 1.4rem;
+  max-width: 40rem;
+}
+
+.voice,
+.voiceMore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 4rem;
+  padding: 0.9rem 0.7rem;
+  text-align: center;
+  border: 1px dashed var(--color-ink-band-border);
+  border-radius: 2px;
+  background: var(--color-ink-band-surface);
+  font-family: var(--font-ink-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--color-ink-band-ink-muted);
+}
+
+.voiceLit {
+  border-style: solid;
+  border-color: var(--color-ink-band-blue);
+  background: var(--color-ink-band-paper);
+  color: var(--color-ink-band-ink);
+  font-family: var(--font-ink-display);
+  font-size: 0.95rem;
+}
+
+.voiceMore {
+  text-decoration: none;
+  color: var(--color-ink-band-blue);
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.voiceMore:hover {
+  border-color: var(--color-ink-band-blue);
+  color: var(--color-ink-band-ink);
+}
+
+/* 08 — research papers */
+.papers {
+  margin-top: 1.4rem;
+  max-width: 42rem;
+}
+
+.paper {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-ink-band-border);
+  text-decoration: none;
+}
+
+.paperNum {
+  font-family: var(--font-ink-mono);
+  font-size: 0.72rem;
+  color: var(--color-ink-band-blue);
+}
+
+.paperText b {
+  display: block;
+  margin-bottom: 0.15rem;
+  font-family: var(--font-ink-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-ink-band-ink);
+  transition: color 0.15s;
+}
+
+.paperText span {
+  font-size: 0.9rem;
+  color: var(--color-ink-band-ink-muted);
+}
+
+.paper:hover .paperText b {
+  color: var(--color-ink-band-blue);
+}
+
+.paperTag {
+  align-self: center;
+  white-space: nowrap;
+  padding: 0.18rem 0.5rem;
+  border: 1px solid var(--color-ink-band-blue);
+  border-radius: 9999px;
+  font-family: var(--font-ink-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-blue);
+}
+
+/* 09 — doors */
+.doors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.8rem;
+}
+
+.btn,
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.3rem;
+  border-radius: 9999px;
+  font-family: var(--font-ink-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.btn {
+  border: 1px solid var(--color-ink-band-ink);
+  background: var(--color-ink-band-ink);
+  color: var(--color-ink-band-paper);
+}
+
+.btn:hover {
+  opacity: 0.88;
+}
+
+.btnGhost {
+  border: 1px solid var(--color-ink-band-border);
+  background: transparent;
+  color: var(--color-ink-band-ink);
+}
+
+.btnGhost:hover {
+  border-color: var(--color-ink-band-ink);
 }
 
 @media (max-width: 860px) {
@@ -288,7 +597,7 @@
     display: block;
   }
 
-  .beliefGrid {
+  .founders {
     grid-template-columns: 1fr;
   }
 }

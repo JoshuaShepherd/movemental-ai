@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Movemental</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&family=Caveat:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFAF6; --sheet:#FFFDF7; --surface:#F6F3EC;
+  --ink:#1A1A1A; --muted:#5C5651; --border:#E5DFD2;
+  --blue:#22409B; --hl:#EAFF3A; --dark:#0A0E1A; --green:#3a7a4a;
+  --serif:"Playfair Display",Georgia,serif; --sans:"Inter",system-ui,sans-serif;
+  --hand:"Caveat",cursive; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55;padding-top:84px;padding-bottom:70px}
+.ribbon{position:fixed;top:0;left:0;right:0;height:26px;background:var(--dark);color:#C7CBD9;z-index:60;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.62rem;letter-spacing:.08em}
+.ribbon b{color:#fff;font-weight:500}
+.topbar{position:fixed;top:26px;left:0;right:0;height:58px;background:rgba(251,250,246,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:55;display:flex;align-items:center;justify-content:space-between;padding:0 6vw}
+.brand{font-family:var(--serif);font-weight:700;font-size:1.25rem;letter-spacing:-.01em}
+.brand .dot{color:var(--blue)}
+.topnav{display:flex;gap:1.6rem}
+.topnav a{font-size:.86rem;color:var(--muted);text-decoration:none}
+.topnav a.on{color:var(--ink);font-weight:600}
+.topnav a:hover{color:var(--ink)}
+.topcta{font-size:.85rem;font-weight:600;color:var(--ink);text-decoration:none;border:1px solid var(--border);border-radius:999px;padding:.45rem 1rem}
+.topcta:hover{border-color:var(--ink)}
+
+.shell{display:flex;gap:3rem;max-width:88rem;margin:0 auto;padding:0 4vw}
+.sidebar{width:200px;flex:none;position:sticky;top:108px;align-self:flex-start;padding-top:3.5rem}
+.sb-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.sb-list{list-style:none;display:flex;flex-direction:column;gap:.1rem}
+.sb-link{display:flex;gap:.6rem;align-items:baseline;font-size:.84rem;color:var(--muted);text-decoration:none;padding:.4rem .5rem;border-left:2px solid transparent;border-radius:0 6px 6px 0;transition:.18s;line-height:1.25}
+.sb-link .n{font-family:var(--mono);font-size:.62rem;color:var(--border)}
+.sb-link:hover{color:var(--ink);background:var(--surface)}
+.sb-link.active{color:var(--ink);font-weight:600;border-left-color:var(--blue);background:var(--surface)}
+.sb-link.active .n{color:var(--blue)}
+
+.main{flex:1;min-width:0;max-width:62rem}
+section{scroll-margin-top:108px;padding:4.2rem 0}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.1rem}
+h2.sec{font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,3.6vw,2.5rem);line-height:1.1;letter-spacing:-.015em;margin-bottom:1.2rem}
+p.body{font-size:1.06rem;line-height:1.65;color:#33302c;max-width:56ch;margin-bottom:1rem}
+p.body.muted{color:var(--muted)}
+.ie{color:var(--ink);font-weight:600}
+.hl{position:relative;white-space:nowrap}
+.hl::before{content:"";position:absolute;inset:-2px -8px;z-index:-1;background:var(--hl);mix-blend-mode:multiply;border-radius:7px;filter:url(#marker)}
+
+/* hero */
+.hero{padding-top:4.5rem}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.1rem,4.6vw,3.4rem);line-height:1.06;letter-spacing:-.02em;margin-bottom:1.4rem;max-width:20ch}
+.hero .lead{font-size:1.12rem;color:var(--muted);max-width:52ch;margin-bottom:1.4rem;line-height:1.6}
+.hero .stamp{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--border);padding-top:1.1rem;max-width:46ch;line-height:1.7}
+.hero .stamp b{color:var(--ink);font-weight:500}
+
+/* band */
+.band-surface{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+
+/* refusals */
+.refuse{display:grid;gap:.5rem;margin-top:1.6rem;max-width:50rem}
+.refuse-item{display:flex;gap:.9rem;align-items:baseline;padding:.85rem 0;border-bottom:1px solid var(--border)}
+.refuse-item .x{font-family:var(--serif);color:var(--blue);font-size:1.1rem;min-width:1rem}
+.refuse-item .rt{font-size:1rem;color:var(--ink)}
+.refuse-item .rt span{color:var(--muted)}
+
+/* founders */
+.founders{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+.fcard{background:var(--sheet);border:1px solid var(--border);border-radius:13px;padding:1.4rem 1.3rem}
+.fmono{width:3rem;height:3rem;border-radius:999px;background:var(--surface);border:1px solid var(--blue);color:var(--blue);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:1.2rem;margin-bottom:1rem}
+.fcard h3{font-family:var(--serif);font-weight:600;font-size:1.25rem;margin-bottom:.2rem}
+.fcard .role{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:.8rem}
+.fcard p{font-size:.9rem;color:var(--muted);line-height:1.5;margin-bottom:1rem}
+.fcard .verify{font-family:var(--mono);font-size:.56rem;letter-spacing:.08em;color:var(--muted);display:flex;align-items:center;gap:.4rem;padding-top:.8rem;border-top:1px solid var(--border)}
+.fcard .verify .vf{color:var(--green)}
+.fcard .more{font-size:.82rem;color:var(--blue);text-decoration:none;font-weight:600}
+
+/* network */
+.voices{display:grid;grid-template-columns:repeat(auto-fill,minmax(8rem,1fr));gap:.5rem;margin-top:1.4rem;max-width:46rem}
+.voice{border:1px dashed var(--border);border-radius:9px;background:var(--surface);padding:.9rem .7rem;min-height:4rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:.78rem;color:var(--muted);font-family:var(--mono);letter-spacing:.04em}
+.voice.lit{border-style:solid;border-color:var(--blue);background:#fff;color:var(--ink);font-family:var(--serif);font-size:.95rem}
+.netnote{font-family:var(--hand);color:var(--blue);font-size:1.3rem;margin-top:1.1rem;transform:rotate(-1deg)}
+
+/* research */
+.papers{display:flex;flex-direction:column;gap:.2rem;margin-top:1.4rem;max-width:52rem}
+.paper{display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:baseline;padding:1rem 0;border-bottom:1px solid var(--border);text-decoration:none}
+.paper .pn{font-family:var(--mono);font-size:.72rem;color:var(--blue)}
+.paper .pt{color:var(--ink)}
+.paper .pt b{font-family:var(--serif);font-weight:600;font-size:1.1rem;display:block;margin-bottom:.15rem}
+.paper .pt span{font-size:.9rem;color:var(--muted)}
+.paper .ptag{font-family:var(--mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);border:1px solid var(--green);border-radius:999px;padding:.18rem .5rem;white-space:nowrap}
+.paper:hover .pt b{color:var(--blue)}
+
+/* trust strip */
+.trust{background:var(--sheet);border:1px solid var(--border);border-radius:13px;padding:1.3rem 1.4rem;margin-top:1.6rem;max-width:52rem}
+.trust .th{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.7rem}
+.trust p{font-size:.95rem;color:var(--muted);line-height:1.55;margin:0}
+
+/* doors */
+.row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.8rem}
+.btn{font-size:.9rem;font-weight:600;border:1px solid var(--ink);background:var(--ink);color:#fff;border-radius:999px;padding:.65rem 1.3rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem}
+.btn:hover{opacity:.88}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--border)}
+.btn.ghost:hover{border-color:var(--ink)}
+
+/* verifiable footer note */
+.verifrow{display:flex;align-items:center;gap:.6rem;margin-top:2.4rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;color:var(--muted)}
+.verifrow .vf{color:var(--green)}
+
+/* agent band */
+.agentband{position:fixed;left:0;right:0;bottom:0;z-index:55;background:rgba(251,250,246,.96);backdrop-filter:blur(10px);border-top:1px solid var(--border);padding:.7rem 6vw;display:flex;align-items:center;gap:1rem}
+.agent-line{font-family:var(--hand);font-size:1.25rem;color:var(--blue);white-space:nowrap}
+.agent-chips{display:flex;gap:.5rem;flex:1;overflow:hidden}
+.agent-chip{font-size:.76rem;border:1px solid var(--border);border-radius:999px;padding:.35rem .8rem;color:var(--muted);background:var(--sheet);white-space:nowrap;cursor:pointer}
+.agent-chip:hover{border-color:var(--ink);color:var(--ink)}
+.agent-input{display:flex;align-items:center;gap:.5rem;border:1px solid var(--border);border-radius:999px;background:#fff;padding:.35rem .35rem .35rem 1rem;min-width:13rem}
+.agent-input input{border:0;outline:0;font-family:var(--sans);font-size:.85rem;background:transparent;width:100%}
+.agent-send{width:2rem;height:2rem;border-radius:999px;background:var(--blue);color:#fff;border:0;cursor:pointer;flex:none}
+
+@media (max-width:980px){
+  .sidebar{display:none}
+  .shell{padding:0 6vw}
+  .founders{grid-template-columns:1fr}
+  .topnav{display:none}
+  .agent-chips{display:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="marker" x="-15%" y="-70%" width="130%" height="240%"><feTurbulence type="fractalNoise" baseFrequency="0.018 0.11" numOctaves="2" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+</defs></svg>
+
+<div class="ribbon">Experimental preview &nbsp;·&nbsp; <b>an agent-first approach to websites</b> &nbsp;·&nbsp; not final, not publicly distributed</div>
+
+<header class="topbar">
+  <div class="brand">m<span class="dot">o</span>vemental</div>
+  <nav class="topnav">
+    <a href="#">For organizations</a>
+    <a href="#" class="on">About</a>
+    <a href="#research">Research</a>
+  </nav>
+  <a class="topcta" href="#talk">Talk to us</a>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <div class="sb-label">On this page</div>
+    <ul class="sb-list" id="sbList">
+      <li><a class="sb-link" href="#who"><span class="n">01</span>Who we are</a></li>
+      <li><a class="sb-link" href="#why"><span class="n">02</span>Why we exist</a></li>
+      <li><a class="sb-link" href="#story"><span class="n">03</span>The story</a></li>
+      <li><a class="sb-link" href="#ai"><span class="n">04</span>How we use AI</a></li>
+      <li><a class="sb-link" href="#refuse"><span class="n">05</span>What we refuse</a></li>
+      <li><a class="sb-link" href="#founders"><span class="n">06</span>The founders</a></li>
+      <li><a class="sb-link" href="#network"><span class="n">07</span>The network</a></li>
+      <li><a class="sb-link" href="#research"><span class="n">08</span>Research</a></li>
+      <li><a class="sb-link" href="#talk"><span class="n">09</span>Talk to us</a></li>
+    </ul>
+  </aside>
+
+  <main class="main">
+
+    <!-- 01 WHO WE ARE -->
+    <section id="who" class="hero">
+      <div class="eyebrow">About Movemental</div>
+      <h1>We help you meet AI without losing the <span class="hl">trust</span> your work depends on.</h1>
+      <p class="lead">Movemental builds the platform mission-driven organizations need to meet AI with their integrity intact. We gather your scattered work into one place, make it verifiable, build the tools on top of it, and help you govern the whole thing. We go in order, and the order starts with Safety.</p>
+      <p class="lead">We serve churches, nonprofits, seminaries, and the individual leaders whose body of work is worth protecting.</p>
+      <p class="stamp"><b>Movemental, founded 2026.</b> Built out of a two-year conversation among three people who could not stop talking about what AI was doing to the institutions, and the trust, they love.</p>
+    </section>
+
+  </main>
+</div>
+
+<!-- 02 WHY WE EXIST (full-bleed surface) -->
+<section id="why" class="band-surface">
+  <div class="shell"><div class="sidebar" aria-hidden="true"></div>
+  <div class="main">
+    <div class="eyebrow">Why we exist</div>
+    <h2 class="sec">The problem underneath the problem is fragmentation.</h2>
+    <p class="body">A leader's life-work, or an institution's, was whole in the living of it. Then it scattered. Into books and talks and decks and inboxes and a few people's memories. Most of it is real, and almost none of it is gathered. That is fragmentation, and it was a quiet problem until AI arrived.</p>
+    <p class="body">AI did not cause the scatter. It is a mirror. Pointed at fragmented work, it multiplies the fragments. It fills the gaps with something fluent and wrong, faster than anyone can correct it. The result is a world where a reader can no longer tell what is real, who actually said it, or whether it is trustworthy at all.</p>
+    <p class="body">So the work now is credibility. Not louder marketing. The ability to be believed, and to be the answer the machine returns when someone asks about you. That is downstream of one thing: having gathered your real work into something coherent and verifiable. Coherence is the task, but not all coherence heals. We build toward the kind that does.</p>
+  </div></div>
+</section>
+
+<div class="shell">
+  <aside class="sidebar" aria-hidden="true"></aside>
+  <main class="main">
+
+    <!-- 03 THE STORY -->
+    <section id="story">
+      <div class="eyebrow">The story</div>
+      <h2 class="sec">It started as a conversation.</h2>
+      <p class="body">For two years, Alan, Brad, and Josh kept circling the same worry. AI was arriving in churches, nonprofits, and seminaries faster than anyone was deciding how to meet it. The people most exposed were the ones whose entire work rests on trust, and they had the least time to think it through.</p>
+      <p class="body">We did not want to add to the noise. We wanted to build the thing we wished existed: a way for a mission-driven organization to meet this moment in order, without faking its way through, and without losing the human core of the work. In 2026, the conversation became Movemental.</p>
+    </section>
+
+    <!-- 04 HOW WE USE AI -->
+    <section id="ai">
+      <div class="eyebrow">How we use AI</div>
+      <h2 class="sec">We use the tools on ourselves first.</h2>
+      <p class="body">We do not sell anything we will not use. This site, our research, and our own agents are built the way we would build yours. We hold ourselves to the same Safety standard we ask of you, and we write our own AI Charter before we help you write yours.</p>
+      <p class="body">When we get it wrong, we say so. When we are early, we say that too. The point is not to look more finished than we are. It is to be the kind of organization you can actually trust with this.</p>
+      <div class="trust">
+        <div class="th">Your data</div>
+        <p>We treat your work as yours. We do not train models on it, we are clear about where it lives and who can see it, and the data-handling standards we help you ratify are the ones we hold ourselves. Trust is the product, so the way we handle your data is the proof.</p>
+      </div>
+    </section>
+
+    <!-- 05 WHAT WE REFUSE -->
+    <section id="refuse">
+      <div class="eyebrow">What we refuse</div>
+      <h2 class="sec">Some things we won't do, ever.</h2>
+      <p class="body muted">These are not preferences. They are the line. Breaking one would cost the exact trust we exist to protect.</p>
+      <div class="refuse">
+        <div class="refuse-item"><span class="x">—</span><span class="rt">No urgency, no scarcity, no pressure. <span>We will never manufacture a deadline or a fear of missing out to move you.</span></span></div>
+        <div class="refuse-item"><span class="x">—</span><span class="rt">We never fake authorship. <span>We help your people tell their own story. We never write under a human's name as if it were them.</span></span></div>
+        <div class="refuse-item"><span class="x">—</span><span class="rt">We never replace the sacred. <span>AI does the gathering and the drafting. It never does the discernment, the shepherding, the relationships, or the care.</span></span></div>
+        <div class="refuse-item"><span class="x">—</span><span class="rt">We claim only what is earned. <span>We do not promise outcomes the work has not produced yet.</span></span></div>
+        <div class="refuse-item"><span class="x">—</span><span class="rt">We take extra care with the vulnerable. <span>When you serve minors or families, we are more cautious, not less.</span></span></div>
+      </div>
+    </section>
+
+    <!-- 06 THE FOUNDERS -->
+    <section id="founders">
+      <div class="eyebrow">The founders</div>
+      <h2 class="sec">Three people who couldn't stop talking about it.</h2>
+      <div class="founders">
+        <div class="fcard">
+          <div class="fmono">AH</div>
+          <h3>Alan Hirsch</h3>
+          <div class="role">Movement thinker</div>
+          <p>One of the most influential voices on missional church and movements. His frameworks have shaped a generation of leaders. His own platform is the reference for everything we build for a Voice.</p>
+          <a class="more" href="#">Read profile →</a>
+          <div class="verify"><span class="vf">Verified</span> · author entity, sameAs linked</div>
+        </div>
+        <div class="fcard">
+          <div class="fmono">BB</div>
+          <h3>Brad Brisco</h3>
+          <div class="role">Missional leader</div>
+          <p>A missional church leader and author focused on how ordinary churches and people live sent into their places. He keeps the work tethered to the ground it is meant to serve.</p>
+          <a class="more" href="#">Read profile →</a>
+          <div class="verify"><span class="vf">Verified</span> · author entity, sameAs linked</div>
+        </div>
+        <div class="fcard">
+          <div class="fmono">JS</div>
+          <h3>Josh Shepherd</h3>
+          <div class="role">Technical co-founder</div>
+          <p>The one turning the thesis into software. He builds the platform, the agents, and the system underneath, so the ideas become something an organization can actually use.</p>
+          <a class="more" href="#">Read profile →</a>
+          <div class="verify"><span class="vf">Verified</span> · founder entity, sameAs linked</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 THE NETWORK -->
+    <section id="network">
+      <div class="eyebrow">The network</div>
+      <h2 class="sec">We're holding a network, not a roster.</h2>
+      <p class="body">Movemental is not one company serving customers one at a time. It is a network of senior movement leaders whose work we gather, make legible, and connect. When one Voice cites another, both grow more credible. That mutual credibility is something no website builder can give you, and it is the deepest reason to be here.</p>
+      <p class="body muted">It starts with one platform, built well. Then a second. Then a hundred, each a node that makes the others stronger.</p>
+      <div class="voices">
+        <div class="voice lit">Alan Hirsch</div>
+        <div class="voice">Voice 02</div>
+        <div class="voice">Voice 03</div>
+        <div class="voice">Voice 04</div>
+        <div class="voice">+ more</div>
+      </div>
+      <div class="netnote">one voice, then a hundred</div>
+    </section>
+
+    <!-- 08 RESEARCH -->
+    <section id="research">
+      <div class="eyebrow">Research</div>
+      <h2 class="sec">We publish what we're learning.</h2>
+      <p class="body">We do our own thinking in the open, sourced and cited, so you can check it. If we are going to argue that being verifiable is the work, our own claims have to be verifiable first.</p>
+      <div class="papers">
+        <a class="paper" href="#"><span class="pn">01</span><span class="pt"><b>The Fragmentation Thesis</b><span>Why scattered work is the real problem AI exposes.</span></span><span class="ptag">Cited</span></a>
+        <a class="paper" href="#"><span class="pn">02</span><span class="pt"><b>The AI Reality Paper</b><span>What is actually happening with AI in mission-driven organizations.</span></span><span class="ptag">Cited</span></a>
+        <a class="paper" href="#"><span class="pn">03</span><span class="pt"><b>How Movemental Uses AI</b><span>Our own practice, written down in the open.</span></span><span class="ptag">Cited</span></a>
+        <a class="paper" href="#"><span class="pn">04</span><span class="pt"><b>AI and Credibility</b><span>Why being believed is now the work.</span></span><span class="ptag">Cited</span></a>
+        <a class="paper" href="#"><span class="pn">05</span><span class="pt"><b>The Moment of Authorship</b><span>What AI does to who said what, and why it matters.</span></span><span class="ptag">Cited</span></a>
+      </div>
+    </section>
+
+    <!-- 09 TALK -->
+    <section id="talk">
+      <div class="eyebrow">Talk to us</div>
+      <h2 class="sec">Start with a conversation.</h2>
+      <p class="body">No checkout button. No pressure. Tell us where your organization is, and we will show you the first step, which is almost always Safety, and almost always free to begin.</p>
+      <div class="row">
+        <a class="btn" href="#">Talk to us</a>
+        <a class="btn ghost" href="#why">Read the thesis</a>
+        <a class="btn ghost" href="#">Map your organization</a>
+      </div>
+      <div class="verifrow"><span class="vf">✓</span> Everything on this page is sourced, attributed, and verifiable. That is the point.</div>
+    </section>
+
+  </main>
+</div>
+
+<div class="agentband">
+  <div class="agent-line">Ask me anything about Movemental.</div>
+  <div class="agent-chips">
+    <button class="agent-chip">Why does this exist?</button>
+    <button class="agent-chip">Who are the founders?</button>
+    <button class="agent-chip">What won't you do?</button>
+  </div>
+  <div class="agent-input"><input placeholder="Ask the Movemental agent…" aria-label="Ask the agent"/><button class="agent-send" aria-label="Send">↑</button></div>
+</div>
+
+<script>
+const links=[...document.querySelectorAll('#sbList .sb-link')];
+const secs=links.map(l=>document.getElementById(l.getAttribute('href').slice(1)));
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id;links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));}});
+},{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(s=>s&&io.observe(s));
+</script>
+</body>
+</html>

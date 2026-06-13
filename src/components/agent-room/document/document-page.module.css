@@ -6,4 +6,7 @@
 
 .main {
   min-width: 0;
+  /* Document routes share the fixed AgentDock — keep the last section above it. */
+  padding-bottom: clamp(11.5rem, calc(18vh + 8.5rem), 17rem);
+  scroll-padding-bottom: clamp(11.5rem, calc(18vh + 8.5rem), 17rem);
 }

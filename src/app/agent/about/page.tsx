@@ -5,7 +5,7 @@ import { AboutExperience } from "@/components/agent-room/about/about-experience"
 export const metadata: Metadata = {
   title: "About Movemental",
   description:
-    "Who we are, why we exist, and what we believe. The authorship break, fragmentation, the Babel and Pentecost ethic, and the formation stakes for a generation asking the machine what it used to ask the church.",
+    "Who we are, why we exist, and what we refuse. Fragmentation and credibility, the story behind Movemental, how we use AI on ourselves first, the founders, the network of trusted voices, and our open research.",
   alternates: {
     canonical: "/agent/about",
   },
