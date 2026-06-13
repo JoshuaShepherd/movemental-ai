@@ -291,25 +291,338 @@
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   padding: 1.15rem 1.2rem 1.2rem;
   background: var(--color-ink-band-paper);
   border: 1px solid var(--color-ink-band-border);
-  border-radius: 2px;
+  border-radius: 13px;
+  transition: border-color 0.15s;
+}
+
+.card:hover {
+  border-color: var(--color-ink-band-ink-muted);
+}
+
+/* Structural-pattern card — rests on the surface tone, no source pill. */
+.cardSynth {
+  background: var(--color-ink-band-surface);
 }
 
 .cardTitle {
-  font-family: var(--font-ink-body);
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin: 0 0 0.45rem;
-  line-height: 1.35;
+  font-family: var(--font-ink-display);
+  font-size: 1.08rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.55rem;
+  line-height: 1.2;
 }
 
 .cardBody {
+  flex: 1;
   font-size: 0.92rem;
   color: var(--color-ink-band-ink-muted);
-  line-height: 1.5;
+  line-height: 1.55;
   margin: 0;
+}
+
+/* Measured phrase + its hover-linked citation superscript. */
+.stat {
+  color: var(--color-ink-band-ink);
+  font-weight: 600;
+  border-bottom: 1.5px dashed var(--color-ink-band-blue);
+}
+
+.cite {
+  font-family: var(--font-ink-mono);
+  font-size: 0.62em;
+  font-weight: 600;
+  color: var(--color-ink-band-blue);
+  margin-left: 1px;
+  vertical-align: super;
+  cursor: help;
+}
+
+.citeActive {
+  background: var(--color-ink-band-highlight);
+  border-radius: 3px;
+  padding: 0 2px;
+}
+
+.cardFoot {
+  margin-top: 1rem;
+}
+
+.tagCite {
+  display: inline-block;
+  font-family: var(--font-ink-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-blue);
+  border: 1px solid var(--color-ink-band-blue);
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+}
+
+.tagPat {
+  font-family: var(--font-ink-hand);
+  font-size: 1.1rem;
+  color: var(--color-ink-band-ink-muted);
+}
+
+/* ---- Charter five-row (hero) ---- */
+
+.five {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.3rem 2.2rem;
+  padding: 1.1rem 0 1.5rem;
+  border-top: 1px solid var(--color-ink-band-border);
+  border-bottom: 1px solid var(--color-ink-band-border);
+  margin: 0 0 clamp(1.75rem, 4vw, 2.25rem);
+}
+
+.fiveItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.fiveN {
+  font-family: var(--font-ink-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  color: var(--color-ink-band-blue);
+}
+
+.fiveW {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* ---- Evidence header (mono label + sub, the HTML `.evhead`) ---- */
+
+.evhead {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin: 0 0 1.3rem;
+}
+
+.evlabel {
+  font-family: var(--font-ink-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+}
+
+.evsub {
+  font-size: 0.92rem;
+  color: var(--color-ink-band-ink-muted);
+}
+
+/* ---- Sources dock ---- */
+
+.dock {
+  margin-top: 1.6rem;
+  padding: 1.4rem;
+  background: var(--color-ink-band-paper);
+  border: 1px solid var(--color-ink-band-border);
+  border-radius: 13px;
+}
+
+.dockHead {
+  margin: 0 0 0.9rem;
+  font-family: var(--font-ink-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+}
+
+.srcList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.src {
+  display: flex;
+  gap: 0.8rem;
+  align-items: baseline;
+  padding: 0.6rem 0.5rem;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+
+.srcActive {
+  background: var(--color-ink-band-surface);
+}
+
+.sn {
+  min-width: 1.1rem;
+  font-family: var(--font-ink-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-ink-band-blue);
+}
+
+.st {
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--color-ink-band-ink-muted);
+}
+
+.st b {
+  color: var(--color-ink-band-ink);
+  font-weight: 500;
+}
+
+.vf {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0.1rem 0.4rem;
+  font-family: var(--font-ink-mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-ink-band-ink-muted);
+  border: 1px solid var(--color-ink-band-border);
+  border-radius: 999px;
+}
+
+.dockNote {
+  margin: 1rem 0 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--color-ink-band-border);
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--color-ink-band-ink-muted);
+}
+
+/* ---- Build module list (numbered, the HTML `.modlist`) ---- */
+
+.toolNum {
+  min-width: 1.6rem;
+  font-family: var(--font-ink-mono);
+  font-size: 0.72rem;
+  color: var(--color-ink-band-blue);
+}
+
+/* ---- Handbook dashboard (dark figure, the HTML `.dash`) ---- */
+
+.dash {
+  --dash-card: #10162a;
+  --dash-line: #232b45;
+  --dash-rail: #2a3350;
+  --dash-key: #6b76a0;
+  --dash-meta: #8893b8;
+  --dash-text: #e8eaf2;
+  margin-top: 1.75rem;
+  padding: 1.3rem;
+  background: var(--color-ink-band-hero-dark);
+  border-radius: 14px;
+}
+
+.dashBar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.dashDots {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.dashDots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--dash-rail);
+}
+
+.dashTitle {
+  font-family: var(--font-ink-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: var(--dash-meta);
+}
+
+.dashGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+}
+
+.docard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 6rem;
+  padding: 0.7rem 0.6rem;
+  background: var(--dash-card);
+  border: 1px solid var(--dash-line);
+  border-radius: 9px;
+}
+
+.dk {
+  font-family: var(--font-ink-mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dash-key);
+}
+
+.dt {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--dash-text);
+}
+
+.ds {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  padding: 0.18rem 0.4rem;
+  font-family: var(--font-ink-mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+}
+
+.dsRatified {
+  color: #7fd49a;
+  border: 1px solid #2e6b43;
+}
+
+.dsReview {
+  color: var(--color-ink-band-highlight);
+  border: 1px solid #6b6a23;
+}
+
+.dsDraft {
+  color: var(--dash-meta);
+  border: 1px solid var(--dash-rail);
+}
+
+.dsNone {
+  color: #5a6486;
+  border: 1px solid var(--dash-line);
+}
+
+.dashCap {
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--color-ink-band-ink-muted);
 }
 
 /* ---- Letter inset ---- */
@@ -319,7 +632,7 @@
   padding: clamp(1.5rem, 4vw, 2.25rem) clamp(1.25rem, 4vw, 2rem);
   background: var(--color-ink-band-paper);
   border: 1px solid var(--color-ink-band-border);
-  border-radius: 2px;
+  border-radius: 13px;
   max-width: 36rem;
 }
 
@@ -432,7 +745,7 @@
   padding: 1rem 0.75rem;
   border: 1px solid var(--color-ink-band-border);
   background: var(--color-ink-band-paper);
-  border-radius: 2px;
+  border-radius: 13px;
 }
 
 .foundationPanelLabel {
@@ -474,6 +787,9 @@
 }
 
 .toolItem {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
   padding: 0.75rem 0;
   border-top: 1px solid var(--color-ink-band-border);
   font-size: 0.95rem;
@@ -499,7 +815,7 @@
   padding: 1rem 0.85rem;
   border: 1px solid var(--color-ink-band-border);
   background: var(--color-ink-band-paper);
-  border-radius: 2px;
+  border-radius: 13px;
   opacity: 0.55;
 }
 
@@ -619,6 +935,10 @@
     grid-template-columns: 1fr;
   }
 
+  .dashGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .fixRow {
     grid-template-columns: 1fr;
     gap: 0.25rem;
@@ -641,7 +961,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .mobileProgressBar,
-  .sidebarLink {
+  .sidebarLink,
+  .card,
+  .src {
     transition: none;
   }
 }

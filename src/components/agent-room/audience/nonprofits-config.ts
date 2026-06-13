@@ -19,34 +19,74 @@ export const NONPROFITS_PAGE_CONFIG: AudiencePageConfig = {
       "Before you accept a claim that bold, you should see what it rests on. Here is what is already happening, in organizations like yours, right now.",
   },
   painSection: {
-    title: "Here's what's already happening.",
+    title: "Here's what's already happening",
     intro: "None of this was planned. It's just true right now.",
     cards: [
       {
         title: "AI is already inside your organization.",
         body: "Your staff are not waiting for a policy. Ninety-two percent of nonprofits already use AI in some form, and most of that use is one person, one personal account, one task at a time. The tools arrived before the decision did.",
+        stats: [{ phrase: "Ninety-two percent", cite: 1 }],
+        footer: { kind: "sourced" },
       },
       {
         title: "Donor records are sitting in tools you do not control.",
         body: "Someone on your team pastes donor and beneficiary details into a personal AI account to clean up a list or draft an appeal. There is no contract, no retention rule, and no one ever decided this was allowed. It is not negligence. It is what happens when 81% of the work runs through individual accounts with no shared place to do it safely.",
+        stats: [{ phrase: "81%", cite: 1 }],
+        footer: { kind: "sourced" },
       },
       {
         title: "Your board has not met its duty yet.",
         body: "Nearly half of nonprofits have no AI governance policy at all. The board's job to oversee how the organization handles risk now includes this, whether or not anything has gone wrong so far. The duty applies before the harm, not after it.",
+        stats: [
+          { phrase: "Nearly half", cite: 2 },
+          { phrase: "includes this", cite: 3 },
+        ],
+        footer: { kind: "sourced" },
       },
       {
         title: "The time you are saving is not adding up.",
         body: "Most teams report small gains from AI and little that compounds. Across nonprofit, enterprise, and faith-sector studies, only five to seven percent of organizations see real capability improvement, and almost all of them have one thing in common: they redesigned how the work flows, instead of bolting AI onto the old steps. Individual use never adds up to organizational strength on its own.",
+        stats: [{ phrase: "five to seven percent", cite: 4 }],
+        footer: { kind: "sourced" },
       },
       {
         title: "Your mission voice is drifting, quietly.",
         body: "The loud risk is a data breach. The quiet one is worse, because no one notices it for a year. Appeals start to sound generic. Reports round off the inconvenient detail. The specific, particular voice that made donors trust you gets sanded down a draft at a time, until your organization reads like every other organization.",
+        synth: true,
+        footer: { kind: "pattern", label: "A pattern leaders recognize" },
       },
       {
         title: "Every staff departure takes memory with it.",
         body: "A mid-tier donor who gave steadily for seven years drifts away, because the only person who knew them left, and the relationship lived in that person's head and inbox, not in anything the organization kept. It is one donor, then another. A slow leak no dashboard catches. This is not a generosity problem. It is a memory problem.",
+        synth: true,
+        footer: { kind: "pattern", label: "A pattern leaders recognize" },
       },
     ],
+    sources: [
+      {
+        n: 1,
+        claim: "92% of nonprofits use AI; 81% individually and ad hoc.",
+        sourceIds: ["virtuous-2026"],
+      },
+      {
+        n: 2,
+        claim: "47% of nonprofits have no AI governance policy; 76% no formal strategy.",
+        sourceIds: ["virtuous-2026", "techsoup-2025"],
+      },
+      {
+        n: 3,
+        claim: "AI governance now sits inside the board's fiduciary duties.",
+        sourceIds: ["forvis-mazars-2026"],
+      },
+      {
+        n: 4,
+        claim:
+          "Only ~7% report major capability gains; 55% of high performers redesigned workflows vs ~20% of the field.",
+        sourceIds: ["virtuous-2026", "mckinsey-soa-2025"],
+      },
+    ],
+    sourcesNote:
+      "Two of the six points above are not statistics. They are patterns we see across organizations, written as scenes, never dressed up as survey numbers. Only measured claims carry a source.",
   },
   deeperProblem: {
     title: "These aren't six problems. They're one.",

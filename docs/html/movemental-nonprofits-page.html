@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movemental · For Nonprofits</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&family=Caveat:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFAF6; --sheet:#FFFDF7; --surface:#F6F3EC;
+  --ink:#1A1A1A; --muted:#5C5651; --border:#E5DFD2;
+  --blue:#22409B; --hl:#EAFF3A; --dark:#0A0E1A; --green:#3a7a4a; --warn:#9a5a2a;
+  --serif:"Playfair Display",Georgia,serif; --sans:"Inter",system-ui,sans-serif;
+  --hand:"Caveat",cursive; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;
+  line-height:1.55;padding-top:84px;padding-bottom:70px}
+
+/* ribbon + topbar */
+.ribbon{position:fixed;top:0;left:0;right:0;height:26px;background:var(--dark);color:#C7CBD9;z-index:60;
+  display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.62rem;letter-spacing:.08em}
+.ribbon b{color:#fff;font-weight:500}
+.topbar{position:fixed;top:26px;left:0;right:0;height:58px;background:rgba(251,250,246,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);z-index:55;display:flex;align-items:center;justify-content:space-between;
+  padding:0 6vw}
+.brand{font-family:var(--serif);font-weight:700;font-size:1.25rem;letter-spacing:-.01em}
+.brand .dot{color:var(--blue)}
+.pills{display:flex;gap:4px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:4px}
+.pill{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;border:0;background:transparent;
+  color:var(--muted);padding:.45rem .9rem;border-radius:999px;cursor:pointer;text-decoration:none}
+.pill.on{background:var(--ink);color:#fff}
+.topright{display:flex;align-items:center;gap:1rem}
+.topcta{font-size:.85rem;font-weight:600;color:var(--ink);text-decoration:none;border:1px solid var(--border);
+  border-radius:999px;padding:.45rem 1rem}
+.topcta:hover{border-color:var(--ink)}
+
+/* shell */
+.shell{display:flex;gap:3rem;max-width:88rem;margin:0 auto;padding:0 4vw}
+.sidebar{width:200px;flex:none;position:sticky;top:108px;align-self:flex-start;padding-top:3.5rem}
+.sb-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+  margin-bottom:1rem}
+.sb-list{list-style:none;display:flex;flex-direction:column;gap:.1rem}
+.sb-link{display:flex;gap:.6rem;align-items:baseline;font-size:.84rem;color:var(--muted);text-decoration:none;
+  padding:.4rem .5rem;border-left:2px solid transparent;border-radius:0 6px 6px 0;transition:.18s;line-height:1.25}
+.sb-link .n{font-family:var(--mono);font-size:.62rem;color:var(--border)}
+.sb-link:hover{color:var(--ink);background:var(--surface)}
+.sb-link.active{color:var(--ink);font-weight:600;border-left-color:var(--blue);background:var(--surface)}
+.sb-link.active .n{color:var(--blue)}
+
+.main{flex:1;min-width:0;max-width:62rem}
+section{scroll-margin-top:108px;padding:4.5rem 0;border-bottom:1px solid transparent}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.1rem}
+h2.sec{font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,3.6vw,2.6rem);line-height:1.1;letter-spacing:-.015em;margin-bottom:1.2rem}
+p.body{font-size:1.06rem;line-height:1.65;color:#33302c;max-width:54ch;margin-bottom:1rem}
+p.body.muted{color:var(--muted)}
+.ie{color:var(--ink);font-weight:600}
+.hl{position:relative;white-space:nowrap}
+.hl::before{content:"";position:absolute;inset:-2px -8px;z-index:-1;background:var(--hl);mix-blend-mode:multiply;border-radius:7px;filter:url(#marker)}
+
+/* hero */
+.hero-eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem}
+.hero-q{font-family:var(--serif);font-weight:700;font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:1.4rem}
+.hero-sub{font-size:1.05rem;color:var(--muted);max-width:46ch;margin-bottom:2rem}
+.claim{font-family:var(--serif);font-weight:600;font-size:clamp(1.5rem,3vw,2.3rem);line-height:1.22;letter-spacing:-.015em;max-width:30ch;margin-bottom:1.8rem}
+.five{display:flex;flex-wrap:wrap;gap:1.3rem 2.2rem;padding:1.1rem 0 1.5rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:1.8rem}
+.five-item{display:flex;flex-direction:column;gap:.2rem}
+.five-n{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;color:var(--blue)}
+.five-w{font-size:.95rem;font-weight:600}
+.segue{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--muted);max-width:50ch}
+
+/* evidence cards */
+.evhead{display:flex;flex-direction:column;gap:.25rem;margin:2.8rem 0 1.3rem}
+.evlabel{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.evsub{font-size:.92rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem}
+.card{background:var(--sheet);border:1px solid var(--border);border-radius:13px;padding:1.3rem 1.35rem 1rem;display:flex;flex-direction:column}
+.card:hover{border-color:var(--muted)}
+.card.synth{background:var(--surface)}
+.card h3{font-family:var(--serif);font-weight:600;font-size:1.16rem;line-height:1.2;margin-bottom:.7rem}
+.card p{font-size:.94rem;color:var(--muted);line-height:1.55;flex:1}
+.card .foot{margin-top:1rem}
+.tag-cite{font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);border:1px solid var(--blue);border-radius:999px;padding:.2rem .55rem}
+.tag-pat{font-family:var(--hand);font-size:1.05rem;color:var(--muted)}
+.stat{color:var(--ink);font-weight:600;border-bottom:1.5px dashed var(--blue);padding-bottom:1px}
+.cite{font-family:var(--mono);font-size:.62em;color:var(--blue);font-weight:600;margin-left:1px;cursor:pointer;vertical-align:super}
+.cite.active{background:var(--hl);border-radius:3px;padding:0 2px}
+
+/* sources dock */
+.dock{margin-top:1.6rem;background:var(--sheet);border:1px solid var(--border);border-radius:13px;padding:1.4rem}
+.dock-head{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem}
+.dock ol{list-style:none}
+.src{display:flex;gap:.8rem;padding:.6rem .5rem;border-radius:8px;align-items:baseline}
+.src.active{background:var(--surface)}
+.src .sn{font-family:var(--mono);font-size:.72rem;color:var(--blue);font-weight:600;min-width:1.1rem}
+.src .st{font-size:.84rem;color:var(--muted);line-height:1.5}
+.src .st b{color:var(--ink);font-weight:500}
+.src .vf{font-family:var(--mono);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);border:1px solid var(--green);border-radius:999px;padding:.1rem .4rem;margin-left:.4rem;white-space:nowrap}
+.dock-note{font-size:.8rem;color:var(--muted);font-style:italic;margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--border)}
+
+/* surface section */
+.band-surface{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.band-surface .inner{max-width:62rem}
+
+/* letter */
+.letter{background:var(--sheet);border:1px solid var(--border);border-radius:14px;padding:2rem 2.2rem;max-width:46rem}
+.letter p{font-size:1rem;line-height:1.7;color:#33302c;margin-bottom:1rem}
+.letter p:first-child::first-letter{font-family:var(--serif);font-size:2.6rem;font-weight:700;float:left;line-height:.8;padding:.1rem .5rem .1rem 0;color:var(--ink)}
+.row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.4rem}
+.btn{font-size:.9rem;font-weight:600;border:1px solid var(--ink);background:var(--ink);color:#fff;border-radius:999px;padding:.65rem 1.3rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem}
+.btn:hover{opacity:.88}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--border)}
+.btn.ghost:hover{border-color:var(--ink)}
+.askrow{margin-top:1.6rem;display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
+.askrow .lbl{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.askchip{font-size:.78rem;border:1px solid var(--border);border-radius:999px;padding:.35rem .8rem;color:var(--muted);background:var(--sheet);cursor:pointer}
+.askchip:hover{border-color:var(--ink);color:var(--ink)}
+
+/* before/after */
+.ba{display:grid;gap:.5rem;margin:1.6rem 0 2rem;max-width:50rem}
+.ba-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;padding:.8rem 0;border-bottom:1px solid var(--border)}
+.ba-was{color:var(--muted);font-size:.95rem}
+.ba-arrow{color:var(--blue)}
+.ba-now{color:var(--ink);font-weight:500;font-size:.95rem}
+
+/* gather diagram */
+.diagram{background:var(--sheet);border:1px solid var(--border);border-radius:13px;padding:1.5rem;margin-top:.5rem}
+
+/* build modules + dashboard */
+.modlist{display:flex;flex-direction:column;gap:.2rem;margin:1.4rem 0 2rem;max-width:50rem}
+.mod{display:flex;gap:1rem;align-items:baseline;padding:.8rem 0;border-bottom:1px solid var(--border)}
+.mod .mn{font-family:var(--mono);font-size:.72rem;color:var(--blue);min-width:1.6rem}
+.mod .mt{font-size:1rem}.mod .mt b{color:var(--ink)}
+.dash{background:var(--dark);border-radius:14px;padding:1.3rem;margin-top:.5rem}
+.dash-bar{display:flex;align-items:center;gap:.5rem;margin-bottom:1rem}
+.dash-bar .dotrow{display:flex;gap:.35rem}
+.dash-bar .dotrow span{width:9px;height:9px;border-radius:999px;background:#2a3350}
+.dash-title{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:#8893b8;margin-left:.6rem}
+.dash-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem}
+.docard{background:#10162a;border:1px solid #232b45;border-radius:9px;padding:.7rem .6rem;min-height:6rem;display:flex;flex-direction:column;justify-content:space-between}
+.docard .dk{font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:#6b76a0}
+.docard .dt{font-size:.8rem;font-weight:600;color:#e8eaf2;line-height:1.2;margin-top:.3rem}
+.docard .ds{font-family:var(--mono);font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;padding:.18rem .4rem;border-radius:999px;align-self:flex-start;margin-top:.5rem}
+.ds.ratified{color:#7fd49a;border:1px solid #2e6b43}
+.ds.review{color:#EAFF3A;border:1px solid #6b6a23}
+.ds.draft{color:#8893b8;border:1px solid #2a3350}
+.ds.none{color:#5a6486;border:1px solid #232b45}
+.dash-cap{font-size:.82rem;color:var(--muted);margin-top:1rem;font-style:italic}
+.handoff{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,2.4vw,1.7rem);line-height:1.3;color:var(--ink);max-width:34ch;margin-top:2.2rem}
+
+/* embedded deck (one clean dark stage) */
+.deckwrap{background:var(--dark);color:#F3F1EA;border-radius:0;margin:0 -100vw;padding:0 100vw}
+.deckpad{padding:4.5rem 0}
+.deck-eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#9AA3C4;margin-bottom:1.2rem}
+.stage{position:relative;min-height:24rem}
+.slide{position:absolute;inset:0;opacity:0;visibility:hidden;transform:translateY(10px);transition:.45s}
+.slide.on{opacity:1;visibility:visible;transform:none;position:relative}
+.slide h3{font-family:var(--serif);font-weight:600;font-size:clamp(1.6rem,3.4vw,2.5rem);line-height:1.1;letter-spacing:-.015em;margin-bottom:1rem}
+.slide p{font-size:1.05rem;line-height:1.6;color:#C7CBD9;max-width:46ch;margin-bottom:.8rem}
+.slide .ie{color:#fff}
+.deck-nav{display:flex;align-items:center;gap:1rem;margin-top:2rem}
+.deck-nav button{border:1px solid #2a3350;background:transparent;color:#F3F1EA;width:2.3rem;height:2.3rem;border-radius:999px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.deck-nav button:hover{background:#fff;color:var(--dark)}
+.deck-dots{display:flex;gap:.4rem}
+.deck-dot{width:7px;height:7px;border-radius:999px;background:#2a3350;cursor:pointer}
+.deck-dot.on{background:#fff;transform:scale(1.2)}
+/* deck diagram */
+.dtoggle{display:inline-flex;border:1px solid #2a3350;border-radius:999px;background:#10162a;padding:4px;gap:4px;margin-bottom:1.3rem}
+.dtoggle button{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;border:0;background:transparent;color:#9AA3C4;padding:.5rem 1rem;border-radius:999px;cursor:pointer}
+.dtoggle button.on{background:#fff;color:var(--dark)}
+.dpanel{border:1px solid #232b45;border-radius:12px;background:#10162a;padding:1rem 1.1rem;margin-bottom:.7rem}
+.dpanel .pl{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:#6b76a0;margin-bottom:.7rem;display:flex;justify-content:space-between}
+.dtiles{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+.dtile{border:1px solid #232b45;border-radius:8px;background:#0c1120;padding:.6rem .5rem;font-size:.74rem;color:#9AA3C4;text-align:center}
+.seam{display:flex;align-items:center;gap:.7rem;margin:.5rem 0;font-family:var(--mono);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:#6b76a0}
+.seam::before,.seam::after{content:"";height:1px;background:#232b45;flex:1}
+.dsys{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+.dst{border:1px dashed #2a3350;border-radius:8px;background:#0c1120;padding:.6rem .5rem;min-height:4rem;transition:.35s;opacity:.6;display:flex;flex-direction:column;justify-content:space-between}
+.dst .tt{font-size:.76rem;font-weight:600;color:#e8eaf2}
+.dst .ss{font-size:.62rem;color:#6b76a0;margin-top:.3rem;font-style:italic}
+.mode-home .dst{opacity:1;border-style:solid;border-color:#3b5bd6;background:#0e1530}
+.mode-home .dst .ss{color:#9fb0ff;font-style:normal}
+.dcap{margin-top:1.1rem;max-width:52ch;font-size:.95rem;color:#C7CBD9}
+.dcap .ie{color:#fff;font-weight:600}
+.dcap .home-only{display:none}
+.mode-home .dcap .site-only{display:none}
+.mode-home .dcap .home-only{display:inline}
+
+/* formation */
+.formation-wrap{position:relative}
+.marginnote{font-family:var(--hand);color:var(--blue);font-size:1.4rem;line-height:1.2;margin-top:1.4rem;transform:rotate(-1.5deg)}
+
+/* path rail */
+.rail{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-top:2rem;position:relative}
+.stage-chip{border:1px solid var(--border);border-radius:11px;background:var(--sheet);padding:1rem .9rem;position:relative}
+.stage-chip.here{border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue);background:#fff}
+.stage-chip .sn{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;color:var(--muted)}
+.stage-chip .snm{font-family:var(--serif);font-size:1.25rem;font-weight:600;margin-top:.3rem}
+.stage-chip .here-tag{font-family:var(--mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-top:.5rem;display:block}
+.stage-chip.dim{opacity:.7}
+
+/* start doors */
+.doors{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.8rem}
+
+/* agent band */
+.agentband{position:fixed;left:0;right:0;bottom:0;z-index:55;background:rgba(251,250,246,.96);backdrop-filter:blur(10px);
+  border-top:1px solid var(--border);padding:.7rem 6vw;display:flex;align-items:center;gap:1rem}
+.agent-line{font-family:var(--hand);font-size:1.25rem;color:var(--blue);white-space:nowrap}
+.agent-chips{display:flex;gap:.5rem;flex:1;overflow:hidden}
+.agent-chip{font-size:.76rem;border:1px solid var(--border);border-radius:999px;padding:.35rem .8rem;color:var(--muted);background:var(--sheet);white-space:nowrap;cursor:pointer}
+.agent-chip:hover{border-color:var(--ink);color:var(--ink)}
+.agent-input{display:flex;align-items:center;gap:.5rem;border:1px solid var(--border);border-radius:999px;background:#fff;padding:.35rem .35rem .35rem 1rem;min-width:14rem}
+.agent-input input{border:0;outline:0;font-family:var(--sans);font-size:.85rem;background:transparent;width:100%}
+.agent-send{width:2rem;height:2rem;border-radius:999px;background:var(--blue);color:#fff;border:0;cursor:pointer;flex:none}
+
+@media (max-width:980px){
+  .sidebar{display:none}
+  .shell{padding:0 6vw}
+  .grid{grid-template-columns:1fr}
+  .dash-grid{grid-template-columns:repeat(2,1fr)}
+  .dtiles,.dsys{grid-template-columns:repeat(2,1fr)}
+  .rail{grid-template-columns:repeat(2,1fr)}
+  .agent-chips{display:none}
+  .agent-line{font-size:1rem;white-space:normal}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="rough" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.016" numOctaves="2" seed="6" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/></filter>
+  <filter id="marker" x="-15%" y="-70%" width="130%" height="240%"><feTurbulence type="fractalNoise" baseFrequency="0.018 0.11" numOctaves="2" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+</defs></svg>
+
+<div class="ribbon">Experimental preview &nbsp;·&nbsp; <b>an agent-first approach to websites</b> &nbsp;·&nbsp; not final, not publicly distributed</div>
+
+<header class="topbar">
+  <div class="brand">m<span class="dot">o</span>vemental</div>
+  <nav class="pills">
+    <a class="pill on" href="#">Nonprofits</a>
+    <a class="pill" href="#">Churches</a>
+    <a class="pill" href="#">Institutions</a>
+  </nav>
+  <div class="topright"><a class="topcta" href="#start">Talk to us</a></div>
+</header>
+
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="sb-label">On this page</div>
+    <ul class="sb-list" id="sbList">
+      <li><a class="sb-link" href="#stand"><span class="n">01</span>Where you stand</a></li>
+      <li><a class="sb-link" href="#problem"><span class="n">02</span>The deeper problem</a></li>
+      <li><a class="sb-link" href="#case"><span class="n">03</span>The case</a></li>
+      <li><a class="sb-link" href="#foundation"><span class="n">04</span>The foundation</a></li>
+      <li><a class="sb-link" href="#build"><span class="n">05</span>The build</a></li>
+      <li><a class="sb-link" href="#platform"><span class="n">06</span>Why a platform</a></li>
+      <li><a class="sb-link" href="#formation"><span class="n">07</span>But tools aren't enough</a></li>
+      <li><a class="sb-link" href="#path"><span class="n">08</span>The path</a></li>
+      <li><a class="sb-link" href="#start"><span class="n">09</span>Start</a></li>
+    </ul>
+  </aside>
+
+  <main class="main">
+
+    <!-- 01 WHERE YOU STAND -->
+    <section id="stand">
+      <div class="hero-eyebrow">A note to nonprofit leaders</div>
+      <h1 class="hero-q">Are you called to <span class="hl">lead</span> in response to AI?</h1>
+      <p class="hero-sub">We're about to make a bold claim. It deserves your scrutiny. And if you find that you agree, it asks for urgent action. So we'll be exact about what that action is.</p>
+
+      <p class="claim">AI is already inside your organization. That single reality asks for one immediate move. Write and ratify your AI Safety Charter: five plain documents that set out your vision, your plans, your reality, your rules, and your response to AI. Nothing more complicated than that. Nothing less urgent.</p>
+
+      <div class="five">
+        <div class="five-item"><span class="five-n">01</span><span class="five-w">Vision</span></div>
+        <div class="five-item"><span class="five-n">02</span><span class="five-w">Plans</span></div>
+        <div class="five-item"><span class="five-n">03</span><span class="five-w">Reality</span></div>
+        <div class="five-item"><span class="five-n">04</span><span class="five-w">Rules</span></div>
+        <div class="five-item"><span class="five-n">05</span><span class="five-w">Response</span></div>
+      </div>
+
+      <p class="segue">Before you accept a claim that bold, you should see what it rests on. Here is what is already happening, in organizations like yours, right now.</p>
+
+      <div class="evhead">
+        <span class="evlabel">Here's what's already happening</span>
+        <span class="evsub">None of this was planned. It is just true right now.</span>
+      </div>
+
+      <div class="grid" id="cards">
+        <article class="card"><h3>AI is already inside your organization.</h3>
+          <p>Your staff are not waiting for a policy. <span class="stat">Ninety-two percent<sup class="cite" data-n="1">1</sup></span> of nonprofits already use AI in some form, and most of that use is one person, one personal account, one task at a time. The tools arrived before the decision did.</p>
+          <div class="foot"><span class="tag-cite">Sourced</span></div></article>
+
+        <article class="card"><h3>Donor records sit in tools you do not control.</h3>
+          <p>Someone pastes donor and beneficiary details into a personal AI account to clean a list or draft an appeal. No contract, no retention rule, no one decided this was allowed. It is what happens when <span class="stat">81%<sup class="cite" data-n="1">1</sup></span> of the work runs through individual accounts with no shared place to do it safely.</p>
+          <div class="foot"><span class="tag-cite">Sourced</span></div></article>
+
+        <article class="card"><h3>Your board has not met its duty yet.</h3>
+          <p><span class="stat">Nearly half<sup class="cite" data-n="2">2</sup></span> of nonprofits have no AI governance policy at all. The board's job to oversee how the organization handles risk now <span class="stat">includes this<sup class="cite" data-n="3">3</sup></span>, whether or not anything has gone wrong so far. The duty applies before the harm, not after it.</p>
+          <div class="foot"><span class="tag-cite">Sourced</span></div></article>
+
+        <article class="card"><h3>The time you are saving is not adding up.</h3>
+          <p>Most teams report small gains and little that compounds. Only <span class="stat">five to seven percent<sup class="cite" data-n="4">4</sup></span> of organizations see real capability improvement, and almost all of them redesigned how the work flows instead of bolting AI onto the old steps. Individual use never adds up to organizational strength on its own.</p>
+          <div class="foot"><span class="tag-cite">Sourced</span></div></article>
+
+        <article class="card synth"><h3>Your mission voice is drifting, quietly.</h3>
+          <p>The loud risk is a data breach. The quiet one is worse, because no one notices it for a year. Appeals start to sound generic. Reports round off the inconvenient detail. The particular voice that made donors trust you gets sanded down a draft at a time, until your organization reads like every other organization.</p>
+          <div class="foot"><span class="tag-pat">A pattern leaders recognize</span></div></article>
+
+        <article class="card synth"><h3>Every staff departure takes memory with it.</h3>
+          <p>A mid-tier donor who gave steadily for seven years drifts away, because the only person who knew them left, and the relationship lived in that person's inbox, not in anything the organization kept. One donor, then another. A slow leak no dashboard catches. This is not a generosity problem. It is a memory problem.</p>
+          <div class="foot"><span class="tag-pat">A pattern leaders recognize</span></div></article>
+      </div>
+
+      <div class="dock">
+        <div class="dock-head">Sources</div>
+        <ol id="srcList">
+          <li class="src" data-n="1"><span class="sn">1</span><span class="st">92% of nonprofits use AI; 81% individually and ad hoc. <b>Virtuous &amp; Fundraising.AI, 2026 (n=346).</b><span class="vf">Verified</span></span></li>
+          <li class="src" data-n="2"><span class="sn">2</span><span class="st">47% of nonprofits have no AI governance policy; 76% no formal strategy. <b>Virtuous 2026 / TechSoup 2025.</b><span class="vf">Verified</span></span></li>
+          <li class="src" data-n="3"><span class="sn">3</span><span class="st">AI governance now sits inside the board's fiduciary duties. <b>Forvis Mazars, Feb 2026.</b><span class="vf">Verified</span></span></li>
+          <li class="src" data-n="4"><span class="sn">4</span><span class="st">Only ~7% report major capability gains; 55% of high performers redesigned workflows vs ~20% of the field. <b>Virtuous 2026 / McKinsey 2025.</b><span class="vf">Verified</span></span></li>
+        </ol>
+        <p class="dock-note">Two of the six points above are not statistics. They are patterns we see across organizations, written as scenes, never dressed up as survey numbers. Only measured claims carry a source.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- 02 THE DEEPER PROBLEM (full-bleed surface band) -->
+<section id="problem" class="band-surface">
+  <div class="shell"><div class="sidebar" aria-hidden="true"></div>
+  <div class="main"><div class="inner">
+    <div class="eyebrow">The deeper problem</div>
+    <h2 class="sec">These aren't six problems. They're one.</h2>
+    <p class="body">Underneath the governance gap is fragmentation. Your program knowledge lives in scattered documents. Your donor relationships sit in separate systems. Your mission gets retold a dozen ways by a dozen people. None of it is connected, and none of it is held as one record the organization owns.</p>
+    <p class="body">AI did not cause this. It raised the cost of it. A model asked about your work will fill the gaps with something fluent and wrong, faster than you can correct it. Faster drafts of the wrong story. Quicker research with no shared standard. Individual shortcuts that never become something the whole organization can use.</p>
+    <p class="body">The quieter harm is not a headline breach. It is the slow erosion of mission integrity. Appeals that subtly mischaracterize the program. Reports that round off the inconvenient detail. Outreach lists that deprioritize the very people your mission was designed to serve.</p>
+  </div></div></div>
+</section>
+
+<div class="shell">
+  <aside class="sidebar" aria-hidden="true"></aside>
+  <main class="main">
+
+    <!-- 03 THE CASE -->
+    <section id="case">
+      <div class="eyebrow">The case</div>
+      <h2 class="sec">The full case, in one letter.</h2>
+      <p class="body muted">Here's the whole argument in plain words, written for your board. Read it here, or download it to send.</p>
+      <div class="letter">
+        <p>You carry a weight most organizations do not name out loud. The people you serve trust you. The donors who fund you trust you. And AI is now inside the work, whether or not anyone decided to let it in.</p>
+        <p>This is not a reason to panic, and it is not a reason to rush toward the newest tool. It is a reason to lead, in order. Safety first. Decide what your organization will and will not do with AI, and put your board's name on it. That is the AI Safety Charter, and it is the first move.</p>
+        <p>Then Sandbox, where your team tries AI on real work and learns what it is actually good for. Then Training, where you form your people by role. Then Tech, where we build the platform. Each step earns the next, and skipping one leaves the rest with nothing to stand on.</p>
+        <p>Here is the gift hidden in your situation. Do this work, and you protect more than donor and beneficiary trust. You turn individual AI use into shared strength, the thing most nonprofits never reach despite near-universal adoption.</p>
+        <p>Your constituents are watching whether you lead through this with care, or whether AI becomes one more invisible shortcut that slowly misrepresents the work you have been entrusted to do. Begin where it begins. Decide, in writing, what you will and will not do, before the moment decides it for you.</p>
+      </div>
+      <div class="row">
+        <a class="btn" href="#">Download the letter</a>
+        <a class="btn ghost" href="#">Send to your board</a>
+      </div>
+      <div class="askrow">
+        <span class="lbl">Ask your AI about this</span>
+        <button class="askchip">ChatGPT</button>
+        <button class="askchip">Claude</button>
+        <button class="askchip">Gemini</button>
+      </div>
+    </section>
+
+    <!-- 04 THE FOUNDATION -->
+    <section id="foundation">
+      <div class="eyebrow">The foundation</div>
+      <h2 class="sec">We gather what's scattered into one place.</h2>
+      <p class="body">Movemental takes your people, your program record, and your mission voice and gathers them into one connected foundation. A single source of truth your organization owns. Visible to leadership. Verifiable for donors. Built from what is actually yours.</p>
+
+      <div class="ba">
+        <div class="ba-row"><span class="ba-was">Your donor data was exposed</span><span class="ba-arrow">→</span><span class="ba-now">now data-handling standards are ratified and enforceable</span></div>
+        <div class="ba-row"><span class="ba-was">Your reports drifted from mission</span><span class="ba-arrow">→</span><span class="ba-now">now drafts are grounded in your own verified record</span></div>
+        <div class="ba-row"><span class="ba-was">Staff used AI without approval</span><span class="ba-arrow">→</span><span class="ba-now">now there's an AI Charter your board can sign</span></div>
+        <div class="ba-row"><span class="ba-was">Capability never compounded</span><span class="ba-arrow">→</span><span class="ba-now">now shared workflows turn individual use into organizational strength</span></div>
+      </div>
+
+      <div class="diagram">
+        <svg viewBox="0 0 720 260" width="100%" style="display:block">
+          <text x="20" y="28" font-family="IBM Plex Mono" font-size="11" letter-spacing="2" fill="#5C5651">SCATTERED</text>
+          <text x="540" y="28" font-family="IBM Plex Mono" font-size="11" letter-spacing="2" fill="#22409B">GATHERED</text>
+          <!-- scattered nodes -->
+          <g font-family="Inter" font-size="11" fill="#5C5651" text-anchor="middle">
+            <g><circle cx="70" cy="80" r="30" fill="#FFFDF7" stroke="#E5DFD2"/><text x="70" y="84">Donor data</text></g>
+            <g><circle cx="180" cy="60" r="30" fill="#FFFDF7" stroke="#E5DFD2"/><text x="180" y="64">Reports</text></g>
+            <g><circle cx="130" cy="170" r="30" fill="#FFFDF7" stroke="#E5DFD2"/><text x="130" y="174">Voice</text></g>
+            <g><circle cx="250" cy="150" r="30" fill="#FFFDF7" stroke="#E5DFD2"/><text x="250" y="154">Knowledge</text></g>
+            <g><circle cx="60" cy="200" r="30" fill="#FFFDF7" stroke="#E5DFD2"/><text x="60" y="204">Memory</text></g>
+          </g>
+          <!-- arrow -->
+          <path d="M320 130 L400 130" stroke="#22409B" stroke-width="2" fill="none" filter="url(#rough)"/>
+          <path d="M392 123 L402 130 L392 137" stroke="#22409B" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- gathered -->
+          <g>
+            <line x1="600" y1="130" x2="540" y2="70" stroke="#22409B" stroke-width="1.5" filter="url(#rough)"/>
+            <line x1="600" y1="130" x2="670" y2="70" stroke="#22409B" stroke-width="1.5" filter="url(#rough)"/>
+            <line x1="600" y1="130" x2="540" y2="190" stroke="#22409B" stroke-width="1.5" filter="url(#rough)"/>
+            <line x1="600" y1="130" x2="670" y2="190" stroke="#22409B" stroke-width="1.5" filter="url(#rough)"/>
+            <line x1="600" y1="130" x2="600" y2="60" stroke="#22409B" stroke-width="1.5" filter="url(#rough)"/>
+            <circle cx="540" cy="70" r="13" fill="#FFFDF7" stroke="#22409B"/>
+            <circle cx="670" cy="70" r="13" fill="#FFFDF7" stroke="#22409B"/>
+            <circle cx="540" cy="190" r="13" fill="#FFFDF7" stroke="#22409B"/>
+            <circle cx="670" cy="190" r="13" fill="#FFFDF7" stroke="#22409B"/>
+            <circle cx="600" cy="60" r="13" fill="#FFFDF7" stroke="#22409B"/>
+            <circle cx="600" cy="130" r="40" fill="#22409B"/>
+            <text x="600" y="126" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="#fff">One</text>
+            <text x="600" y="140" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="#fff">source</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 05 THE BUILD -->
+    <section id="build">
+      <div class="eyebrow">The build</div>
+      <h2 class="sec">Then we build the tools on top of it.</h2>
+      <p class="body">Once the foundation is real, we build what your nonprofit actually needs. Search across your program and grant history. An assistant grounded in your mission materials. Reporting that keeps authorship and accuracy visible to leadership.</p>
+
+      <div class="modlist">
+        <div class="mod"><span class="mn">01</span><span class="mt"><b>Program search</b> across grants, evaluations, and field reports. Not generic templates.</span></div>
+        <div class="mod"><span class="mn">02</span><span class="mt"><b>A mission-grounded assistant</b> that drafts from your verified record, with sources your board can audit.</span></div>
+        <div class="mod"><span class="mn">03</span><span class="mt"><b>Donor and impact workflows,</b> so the time you save compounds into shared capability, not scattered shortcuts.</span></div>
+      </div>
+
+      <div class="dash">
+        <div class="dash-bar"><span class="dotrow"><span></span><span></span><span></span></span><span class="dash-title">Your private Handbook dashboard · draft, review, ratify</span></div>
+        <div class="dash-grid">
+          <div class="docard"><div><span class="dk">Layer 01</span><div class="dt">Statement</div></div><span class="ds ratified">Ratified</span></div>
+          <div class="docard"><div><span class="dk">Layer 02</span><div class="dt">Policy</div></div><span class="ds review">In review</span></div>
+          <div class="docard"><div><span class="dk">Layer 03</span><div class="dt">Context</div></div><span class="ds draft">Draft</span></div>
+          <div class="docard"><div><span class="dk">Layer 04</span><div class="dt">Rules</div></div><span class="ds draft">Draft</span></div>
+          <div class="docard"><div><span class="dk">Layer 05</span><div class="dt">Response Plans</div></div><span class="ds none">Not started</span></div>
+        </div>
+        <p class="dash-cap">The five layers of your Charter, in one place your board can actually sign.</p>
+      </div>
+
+      <p class="handoff">Which is a fair question, and probably the one you're actually asking. Isn't this just an expensive website?</p>
+    </section>
+
+  </main>
+</div>
+
+<!-- 06 WHY A PLATFORM — embedded deck, one clean dark stage -->
+<section id="platform" class="deckwrap">
+  <div class="shell"><div class="sidebar" aria-hidden="true"></div>
+  <div class="main"><div class="deckpad">
+    <div class="deck-eyebrow">Why a platform</div>
+    <div class="stage mode-site" id="deckStage">
+      <div class="slide on">
+        <h3>Isn't this just an expensive website?</h3>
+        <p>A real choice. And the real question isn't the one you'd expect. Let's be honest about it.</p>
+      </div>
+      <div class="slide">
+        <h3>You're not paying more for a website.</h3>
+        <p>You're considering something you quietly ruled out years ago. A platform that publishes your work and runs tools built for how you operate used to cost a quarter of a million dollars and a software team. <span class="ie">Building with AI collapsed that cost.</span> The price didn't go up on a website. It came down on something you always needed.</p>
+      </div>
+      <div class="slide">
+        <h3>Website builders are good. And cheaper.</h3>
+        <p>If a simple site is all you need, use one. We mean that. But a tool built to make any website hands you an empty container and leaves the part that matters to you.</p>
+      </div>
+      <div class="slide">
+        <h3>Same website. Different system underneath.</h3>
+        <div class="dtoggle">
+          <button class="on" data-mode="site">Just a site</button>
+          <button data-mode="home">A platform</button>
+        </div>
+        <div class="dpanel">
+          <div class="pl"><span>The surface · your website</span></div>
+          <div class="dtiles"><div class="dtile">Home</div><div class="dtile">About</div><div class="dtile">Programs</div><div class="dtile">Donate</div></div>
+        </div>
+        <div class="seam">the part that actually matters</div>
+        <div class="dpanel">
+          <div class="pl"><span>The system underneath</span></div>
+          <div class="dsys">
+            <div class="dst"><div class="tt">Stories, published</div><div class="ss site">on your own</div></div>
+            <div class="dst"><div class="tt">Tools for staff</div><div class="ss site">not possible</div></div>
+            <div class="dst"><div class="tt">Donors &amp; board get it</div><div class="ss site">scattered</div></div>
+            <div class="dst"><div class="tt">Legible to AI</div><div class="ss site">invisible or made up</div></div>
+          </div>
+        </div>
+        <p class="dcap"><span class="site-only"><span class="ie">Just a site.</span> A website builder gives you the surface and leaves the part that matters to you.</span><span class="home-only"><span class="ie">A platform.</span> Movemental gives you the same site, and the system underneath it.</span></p>
+      </div>
+      <div class="slide">
+        <h3>You're not overpaying for a website.</h3>
+        <p>You're finally able to afford the platform your mission always needed, now that the cost of building it came down. Which is the point. And it leads to the one thing a platform still cannot do for you.</p>
+      </div>
+    </div>
+    <div class="deck-nav">
+      <button id="dPrev" aria-label="Previous">&larr;</button>
+      <div class="deck-dots" id="deckDots"></div>
+      <button id="dNext" aria-label="Next">&rarr;</button>
+    </div>
+  </div></div></div>
+</section>
+
+<div class="shell">
+  <aside class="sidebar" aria-hidden="true"></aside>
+  <main class="main">
+
+    <!-- 07 BUT TOOLS AREN'T ENOUGH -->
+    <section id="formation" class="formation-wrap">
+      <div class="eyebrow">Formation</div>
+      <h2 class="sec">But tools alone aren't the answer.</h2>
+      <p class="body">Technology without formed people isn't progress. It's replacement. Boards that buy tools without forming staff get unapproved AI at scale, faster.</p>
+      <p class="body">So the tools come with formation. Discernment for leadership. Authorship for anything that goes out under your name. Stewardship for donor and beneficiary trust. For a nonprofit, fiduciary duty and mission integrity depend on both.</p>
+      <p class="body">Your constituents are watching whether you lead through this moment with care, or whether AI becomes one more invisible shortcut that slowly misrepresents the work you've been entrusted to do.</p>
+      <div class="marginnote">Formation isn't extra. It's the point.</div>
+    </section>
+
+    <!-- 08 THE PATH -->
+    <section id="path">
+      <div class="eyebrow">The path</div>
+      <h2 class="sec">It all goes in order.</h2>
+      <p class="body">We don't start with the tech. There's an order. <span class="hl">Safety first</span>: a ratified AI Charter your board can sign, covering acceptable use, data handling, disclosure, and incident response. Then Sandbox, where you test AI against real work. Then Training, where you form your team. Then Tech, where you build the tools. Your first move is Safety.</p>
+      <div class="rail">
+        <div class="stage-chip here"><span class="sn">01</span><div class="snm">Safety</div><span class="here-tag">You are here</span></div>
+        <div class="stage-chip dim"><span class="sn">02</span><div class="snm">Sandbox</div></div>
+        <div class="stage-chip dim"><span class="sn">03</span><div class="snm">Training</div></div>
+        <div class="stage-chip dim"><span class="sn">04</span><div class="snm">Tech</div></div>
+      </div>
+      <p class="body muted" style="margin-top:1.4rem">Each step earns the next. Skip one, and the ones after it have nothing to stand on.</p>
+    </section>
+
+    <!-- 09 START -->
+    <section id="start">
+      <div class="eyebrow">Start</div>
+      <h2 class="sec">Start with a conversation.</h2>
+      <p class="body">Nonprofits don't start this with a checkout button. They start with a talk. Tell us where your organization is, and we'll show you the first step. The letter above is yours to share with your board while you decide.</p>
+      <div class="doors">
+        <a class="btn" href="#">Talk to us</a>
+        <a class="btn ghost" href="#">Map your organization in depth</a>
+        <a class="btn ghost" href="#">Download the letter</a>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- persistent agent band -->
+<div class="agentband">
+  <div class="agent-line">I can already see where your nonprofit stands.</div>
+  <div class="agent-chips">
+    <button class="agent-chip">Map where we stand</button>
+    <button class="agent-chip">Read the board letter</button>
+    <button class="agent-chip">What's the first step?</button>
+  </div>
+  <div class="agent-input"><input placeholder="Ask the Movemental agent…" aria-label="Ask the agent"/><button class="agent-send" aria-label="Send">↑</button></div>
+</div>
+
+<script>
+// scroll-spy sidebar
+const links=[...document.querySelectorAll('#sbList .sb-link')];
+const ids=links.map(l=>l.getAttribute('href').slice(1));
+const secs=ids.map(id=>document.getElementById(id));
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id=e.target.id;
+      links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));
+    }
+  });
+},{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(s=>s&&io.observe(s));
+
+// citation hover linking
+const cites=[...document.querySelectorAll('.cite')];
+const srcs=[...document.querySelectorAll('#srcList .src')];
+function setCite(n,on){
+  cites.forEach(c=>{if(c.dataset.n===n)c.classList.toggle('active',on)});
+  srcs.forEach(s=>{if(s.dataset.n===n)s.classList.toggle('active',on)});
+}
+cites.forEach(c=>{c.addEventListener('mouseenter',()=>setCite(c.dataset.n,true));c.addEventListener('mouseleave',()=>setCite(c.dataset.n,false));});
+srcs.forEach(s=>{s.addEventListener('mouseenter',()=>setCite(s.dataset.n,true));s.addEventListener('mouseleave',()=>setCite(s.dataset.n,false));});
+
+// embedded deck
+const stage=document.getElementById('deckStage');
+const slides=[...stage.querySelectorAll('.slide')];
+let di=0;
+const dotsWrap=document.getElementById('deckDots');
+slides.forEach((_,k)=>{const d=document.createElement('div');d.className='deck-dot'+(k===0?' on':'');d.onclick=()=>{di=k;renderDeck();};dotsWrap.appendChild(d);});
+const dots=[...dotsWrap.children];
+function renderDeck(){slides.forEach((s,k)=>s.classList.toggle('on',k===di));dots.forEach((d,k)=>d.classList.toggle('on',k===di));}
+document.getElementById('dNext').onclick=()=>{di=Math.min(slides.length-1,di+1);renderDeck();};
+document.getElementById('dPrev').onclick=()=>{di=Math.max(0,di-1);renderDeck();};
+// deck toggle
+stage.querySelectorAll('.dtoggle button').forEach(b=>{
+  b.onclick=()=>{
+    const mode=b.dataset.mode;
+    stage.classList.toggle('mode-home',mode==='home');
+    stage.classList.toggle('mode-site',mode==='site');
+    stage.querySelectorAll('.dtoggle button').forEach(x=>x.classList.toggle('on',x===b));
+  };
+});
+</script>
+</body>
+</html>

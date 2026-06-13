@@ -25,39 +25,78 @@ export const PATH_STAGES = [
 export const INSTITUTIONS_PAGE_CONFIG: AudiencePageConfig = {
   slug: "institutions",
   hero: {
-    eyebrow: "For seminaries & institutions",
-    title: "AI is already inside your seminary.",
-    sub: "No one decided that. It just arrived. Here's what it means for your credential, your archive, and what your board should do first.",
+    eyebrow: "A note to seminary & institution leaders",
+    rhetoricalTitle: "Are you called to lead in response to AI?",
+    highlightPhrase: "lead",
+    framing:
+      "We're about to make a bold claim. It deserves your scrutiny. And if you find that you agree with it, it asks for urgent action. So we'll be exact about what that action is.",
+    claim:
+      "AI is already inside your seminary. That single reality asks for one immediate move. Write and ratify your AI Safety Charter: five plain documents that set out your vision, your plans, your reality, your rules, and your response to AI. Nothing more complicated than that. Nothing less urgent.",
+    segue:
+      "Before you accept a claim that bold, you should see what it rests on. Here is what is already happening, in institutions like yours, right now.",
   },
   painSection: {
-    title: "Here's what's already happening.",
+    title: "Here's what's already happening",
     intro: "None of this was planned. It's just true right now.",
     cards: [
       {
         title: "Your students are already using it. Almost no one is teaching them how.",
         body: "Around four in five students now use generative AI in their coursework. They draft, they do exegesis, they write with it. Most get no real guidance on how to think about it, and the graduates you send out will lead churches in an AI world they were never taught to navigate.",
+        stats: [{ phrase: "Around four in five students", cite: 1 }],
+        footer: { kind: "sourced" },
       },
       {
         title: "Every professor has a different rule, and the student just guesses.",
         body: "One faculty member welcomes AI. The next calls it cheating. Your institution has no shared account of what AI use means for formation, so the student improvises, and the credential quietly comes to mean different things depending on whose class they took.",
+        synth: true,
+        footer: { kind: "pattern", label: "A pattern leaders recognize" },
       },
       {
         title: "Your degree does not mean one thing anymore.",
         body: "What the degree stood for in 2011, in 2014, and in 2023 drifted, a little at a time, and no faculty body ever reconciled the three. A credential is a promise that the institution behind it is coherent. When formation is scattered, that promise erodes slowly, and then all at once when an accreditor, an employer, or a peer institution notices.",
+        synth: true,
+        footer: { kind: "pattern", label: "A pattern leaders recognize" },
       },
       {
         title: "The duty to govern this now sits with your board.",
         body: "A board's basic duties of care, loyalty, and obedience now include how the institution governs AI. This is not optional and not only a technology matter. It means naming who is accountable, requiring that vendors be accountable too, and folding AI risk into how the institution manages every other risk.",
+        stats: [{ phrase: "care, loyalty, and obedience", cite: 2 }],
+        footer: { kind: "sourced" },
       },
       {
         title: "Your own archive is lost to you.",
         body: "The dissertations, the curricula, the journals, the decades of scholarship are all saved somewhere, and almost none of it is findable. Doctoral students reach conclusions your faculty reached thirty years ago. The institution built to hold knowledge across generations cannot, in practice, learn from itself.",
+        synth: true,
+        footer: { kind: "pattern", label: "A pattern leaders recognize" },
       },
       {
         title: "Your name can be faked, and the model speaks for you by default.",
         body: "A professor's writing or voice can be copied in minutes, and your name no longer proves a thing is really yours. Worse, when someone asks a general model about your institution's position, it answers with confidence, and it is often wrong, because your actual position was never gathered into one place a model could find. You are being represented, at scale, by a tool you never authorized.",
+        stats: [{ phrase: "copied in minutes", cite: 3 }],
+        footer: { kind: "sourced" },
       },
     ],
+    sources: [
+      {
+        n: 1,
+        claim: "~80% of university students use generative AI in their coursework.",
+        sourceIds: ["stanford-hai-2026"],
+      },
+      {
+        n: 2,
+        claim:
+          "AI governance now expands the board's fiduciary duties of care, loyalty, and obedience.",
+        sourceIds: ["forvis-mazars-2026"],
+      },
+      {
+        n: 3,
+        claim:
+          "Voice-cloning fraud rose 400%+ year over year; $893M in AI-related scam losses in 2025.",
+        sourceIds: ["fbi-ic3-2025"],
+      },
+    ],
+    sourcesNote:
+      "Three of the six points above are not statistics. They are structural patterns we see across institutions, written as scenes, never dressed up as survey numbers. Only measured claims carry a source.",
   },
   deeperProblem: {
     title: "These aren't six problems. They're one.",

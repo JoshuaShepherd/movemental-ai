@@ -1,6 +1,7 @@
 import type { AskAiPromptKey } from "@/lib/agent-room/ask-ai";
 import type { DocumentChip } from "@/components/agent-room/document/document-page-shell";
 import type { DeckData } from "@/components/agent-room/deck/deck-types";
+import type { SourceId } from "@/lib/citations/sources";
 
 export type AudienceNavEntry = { id: string; label: string };
 
@@ -13,7 +14,43 @@ export type AudienceDock = {
   chips: readonly DocumentChip[];
 };
 
-export type AudiencePainCard = { title: string; body: string };
+/**
+ * A measured phrase inside a card body. The renderer wraps `phrase` (matched
+ * verbatim in `body`) in a `.stat` underline; when `cite` is set it appends a
+ * superscript that hover-links to the matching numbered entry in the Sources
+ * dock. Only measured claims carry a cite — structural patterns never do.
+ */
+export type AudienceCardStat = { phrase: string; cite?: number };
+
+/**
+ * Card footer treatment. `sourced` → a mono "Sourced" pill (the card rests on a
+ * verified statistic). `pattern` → a handwritten label (a structural pattern,
+ * never dressed up as a survey number).
+ */
+export type AudienceCardFooter = { kind: "sourced" } | { kind: "pattern"; label: string };
+
+export type AudiencePainCard = {
+  title: string;
+  body: string;
+  /** Measured phrases to underline + optionally cite. */
+  stats?: readonly AudienceCardStat[];
+  /** Footer pill / hand label. Defaults to "sourced" when stats carry cites. */
+  footer?: AudienceCardFooter;
+  /** Structural-pattern card — renders on the surface tone (the HTML `.synth`). */
+  synth?: boolean;
+};
+
+/**
+ * One numbered entry in the Sources dock. `claim` is the plain-language summary;
+ * the publisher attribution + "Verified" badge are derived from the canonical
+ * `sources.ts` catalog via `sourceIds`, so the dock can never drift from the
+ * single source of truth.
+ */
+export type AudienceSource = {
+  n: number;
+  claim: string;
+  sourceIds: readonly SourceId[];
+};
 
 export type AudienceFixRow = { pain: string; gain: string };
 
@@ -44,6 +81,10 @@ export type AudiencePageConfig = {
     title: string;
     intro: string;
     cards: readonly AudiencePainCard[];
+    /** Numbered, verified Sources dock under the evidence grid. */
+    sources?: readonly AudienceSource[];
+    /** Honest footnote on how many cards are patterns vs. measured claims. */
+    sourcesNote?: string;
   };
   deeperProblem: {
     title: string;

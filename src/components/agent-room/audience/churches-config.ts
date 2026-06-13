@@ -8,39 +8,95 @@ import type { AudiencePageConfig } from "./types";
 export const CHURCHES_PAGE_CONFIG: AudiencePageConfig = {
   slug: "churches",
   hero: {
-    eyebrow: "For churches",
-    title: "AI is already inside your church.",
-    sub: "Sermon prep, admin drafts, ministry notes. Nobody decided it. It just arrived. Here's what that means for your congregation's trust.",
+    eyebrow: "A note to church leaders",
+    rhetoricalTitle: "Are you called to lead in response to AI?",
+    highlightPhrase: "lead",
+    framing:
+      "We're about to make a bold claim. It deserves your scrutiny. And if you find that you agree with it, it asks for urgent action. So we'll be exact about what that action is.",
+    claim:
+      "AI is already inside your church. That single reality asks for one immediate move. Write and ratify your AI Safety Charter: five plain documents that set out your vision, your plans, your reality, your rules, and your response to AI. Nothing more complicated than that. Nothing less urgent.",
+    segue:
+      "Before you accept a claim that bold, you should see what it rests on. Here is what is already happening, in churches like yours, right now.",
   },
   painSection: {
-    title: "Here's what's already happening.",
+    title: "Here's what's already happening",
     intro: "None of this was planned. It's just true right now.",
     cards: [
       {
         title: "AI is already in the study, with no rule about the pulpit.",
         body: "Many pastors already use AI for research or a first draft. Few have decided, in writing, what that means for teaching from the pulpit. About four in ten Protestant pastors now use AI for ministry, and only one in twenty churches has a formal policy for it. The practice arrived years ahead of the agreement.",
+        stats: [
+          { phrase: "About four in ten Protestant pastors", cite: 1 },
+          { phrase: "only one in twenty churches has a formal policy", cite: 1 },
+        ],
+        footer: { kind: "sourced" },
       },
       {
         title: "Pastoral care notes are in the wrong place.",
         body: "Staff paste counseling and care notes into consumer AI tools with no standard for what is kept or who can see it. AI does not do pastoral care, and these notes should never be in those tools. No one decided this. It is just where the work landed when there was nowhere safer to put it.",
+        synth: true,
+        footer: { kind: "pattern", label: "A pattern leaders recognize" },
       },
       {
         title: "People cannot always tell what is really you.",
         body: "When a member cannot tell whether you wrote it, a volunteer drafted it, or it was generated, trust erodes a little. Most people now say it matters whether something was made by a person or by AI, and most are not confident they can tell the difference. That gap is exactly where a church's credibility leaks.",
+        stats: [{ phrase: "most are not confident they can tell the difference", cite: 2 }],
+        footer: { kind: "sourced" },
       },
       {
         title: "Your people are already asking the machine.",
         body: "Nearly one in three U.S. adults now say spiritual advice from AI is as trustworthy as advice from a pastor, and among Gen Z and Millennials it is two in five. Meanwhile only twelve percent of pastors say they feel ready to teach about AI at all. Your younger members are asking the questions they used to bring to a mentor, and getting answers from a model trained by someone else.",
+        stats: [
+          { phrase: "Nearly one in three U.S. adults", cite: 3 },
+          { phrase: "only twelve percent of pastors", cite: 3 },
+        ],
+        footer: { kind: "sourced" },
       },
       {
         title: "A model does not share your church's convictions.",
         body: "The general-purpose models your members ask are not neutral on faith. Independent testing found they score lowest of all on questions of Christian worldview. When your congregation asks the machine instead of asking you, they are not getting your church's theology back. They are getting an average of the internet's.",
+        stats: [{ phrase: "score lowest of all on questions of Christian worldview", cite: 4 }],
+        footer: { kind: "sourced" },
       },
       {
         title: "Your voice can be cloned, and it is already happening.",
         body: "A few minutes of sermon footage is enough to fake a pastor's voice and use it to solicit emergency gifts from members. This is not hypothetical. Voice-cloning fraud rose more than four hundred percent year over year, and faith leaders are being impersonated specifically because their people trust their voice.",
+        stats: [{ phrase: "rose more than four hundred percent year over year", cite: 5 }],
+        footer: { kind: "sourced" },
       },
     ],
+    sources: [
+      {
+        n: 1,
+        claim:
+          "42% of pastors use AI (10% regular, 32% experimenting); 5% of churches have a formal policy.",
+        sourceIds: ["lifeway-pastors-2026", "barna-pushpay-2026"],
+      },
+      {
+        n: 2,
+        claim: "76% say it matters whether content is AI or human; 53% are not confident they can tell.",
+        sourceIds: ["pew-ai-impact-2025"],
+      },
+      {
+        n: 3,
+        claim:
+          "1 in 3 adults trust AI spiritual advice as much as a pastor; 2 in 5 among Gen Z and Millennials; 12% of pastors feel ready to teach about AI.",
+        sourceIds: ["barna-gloo-sotc-2026"],
+      },
+      {
+        n: 4,
+        claim: "General-purpose models score lowest on questions of Christian worldview.",
+        sourceIds: ["gloo-faic-2025"],
+      },
+      {
+        n: 5,
+        claim:
+          "Voice-cloning fraud rose 400%+ year over year; $893M in AI-related scam losses in 2025.",
+        sourceIds: ["fbi-ic3-2025"],
+      },
+    ],
+    sourcesNote:
+      "One of the six points above is not a statistic. It is a pattern we see across churches, written as a scene, never dressed up as a survey number. Only measured claims carry a source.",
   },
   deeperProblem: {
     title: "These aren't six problems. They're one.",

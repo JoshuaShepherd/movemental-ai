@@ -6,13 +6,14 @@ import { DocumentPageShell } from "@/components/agent-room/document/document-pag
 import { DeckSection } from "@/components/agent-room/deck/deck-section";
 import { AskAiPromptButton } from "@/components/agent-room/ink/ask-ai-prompt-button";
 import { PATH_STAGE_LABELS } from "@/lib/agent-room/naming";
+import { getSource, type SourceId } from "@/lib/citations/sources";
 
-import { AudienceAssessmentPreview } from "./assessment-preview";
 import styles from "./audience-page.module.css";
+import { CHARTER_FIVE, HandbookDashboard } from "./handbook-dashboard";
 import { FoundationDiagram } from "./foundation-diagram";
 import { getLetterEmbedParagraphs, getLetterFullText } from "./letter-utils";
 import { PATH_STAGES } from "./institutions-config";
-import type { AudiencePageConfig } from "./types";
+import type { AudienceCardStat, AudiencePageConfig } from "./types";
 import { useScrollSpy } from "./use-scroll-spy";
 
 type AudiencePageExperienceProps = {
@@ -35,6 +36,70 @@ function renderWithHighlight(text: string, phrase: string | undefined): ReactNod
       {text.slice(idx + phrase.length)}
     </>
   );
+}
+
+/**
+ * Wrap each measured phrase (matched verbatim) in a `.stat` underline, and —
+ * when the phrase carries a `cite` — append a superscript that hover-links to
+ * the matching numbered entry in the Sources dock. Non-measured copy passes
+ * through untouched, so structural-pattern cards never sprout a fake number.
+ */
+function renderCardBody(
+  body: string,
+  stats: readonly AudienceCardStat[] | undefined,
+  activeSource: number | null,
+  setActiveSource: (n: number | null) => void,
+): ReactNode {
+  if (!stats?.length) return body;
+  const ranges = stats
+    .map((stat) => {
+      const start = body.indexOf(stat.phrase);
+      return start === -1 ? null : { start, end: start + stat.phrase.length, stat };
+    })
+    .filter((r): r is { start: number; end: number; stat: AudienceCardStat } => r !== null)
+    .sort((a, b) => a.start - b.start);
+
+  const out: ReactNode[] = [];
+  let cursor = 0;
+  ranges.forEach((r, i) => {
+    if (r.start < cursor) return; // skip overlapping matches
+    if (r.start > cursor) out.push(body.slice(cursor, r.start));
+    const cite = r.stat.cite;
+    out.push(
+      <span key={`stat-${i}`} className={styles.stat}>
+        {r.stat.phrase}
+        {cite != null ? (
+          <sup
+            className={`${styles.cite} ${activeSource === cite ? styles.citeActive : ""}`}
+            onMouseEnter={() => setActiveSource(cite)}
+            onMouseLeave={() => setActiveSource(null)}
+          >
+            {cite}
+          </sup>
+        ) : null}
+      </span>,
+    );
+    cursor = r.end;
+  });
+  if (cursor < body.length) out.push(body.slice(cursor));
+  return out;
+}
+
+/** Publisher attribution for a Sources-dock entry, read from the catalog. */
+function sourceAttribution(ids: readonly SourceId[]): string {
+  const year = (date: string) => date.match(/\d{4}/)?.[0] ?? date;
+  if (ids.length === 1) {
+    const s = getSource(ids[0]);
+    return s.sample
+      ? `${s.author}, ${year(s.date)} (${s.sample}).`
+      : `${s.author}, ${year(s.date)}.`;
+  }
+  return `${ids.map((id) => `${getSource(id).author} ${year(getSource(id).date)}`).join(" / ")}.`;
+}
+
+/** A Sources-dock entry earns the "Verified" badge only when every source is. */
+function allVerified(ids: readonly SourceId[]): boolean {
+  return ids.every((id) => getSource(id).tag === "VERIFIED");
 }
 
 /**
@@ -62,6 +127,8 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  // Hover-link between a card's citation superscript and its Sources-dock row.
+  const [activeSource, setActiveSource] = useState<number | null>(null);
 
   const letterEmbed = useMemo(
     () => getLetterEmbedParagraphs(letterMarkdown, config.letterEmbedStart),
@@ -203,6 +270,19 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
                     <p className={styles.framing}>{config.hero.framing}</p>
                   ) : null}
                   {config.hero.claim ? <p className={styles.claim}>{config.hero.claim}</p> : null}
+                  {config.hero.claim ? (
+                    <div
+                      className={styles.five}
+                      aria-label="The five layers of the AI Safety Charter"
+                    >
+                      {CHARTER_FIVE.map((layer) => (
+                        <div key={layer.word} className={styles.fiveItem}>
+                          <span className={styles.fiveN}>{layer.n}</span>
+                          <span className={styles.fiveW}>{layer.word}</span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
                   {config.hero.segue ? <p className={styles.segue}>{config.hero.segue}</p> : null}
                 </>
               ) : (
@@ -213,16 +293,63 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
                 {!claimFirstHero ? (
                   <p className={styles.eyebrow}>Where you stand</p>
                 ) : null}
-                <h2 className={`${styles.title} ${styles.titleSm}`}>{config.painSection.title}</h2>
-                <p className={styles.intro}>{config.painSection.intro}</p>
-                <div className={styles.cardGrid} role="list">
-                  {config.painSection.cards.map((card) => (
-                    <article key={card.title} className={styles.card} role="listitem">
-                      <h3 className={styles.cardTitle}>{card.title}</h3>
-                      <p className={styles.cardBody}>{card.body}</p>
-                    </article>
-                  ))}
+                <div className={styles.evhead}>
+                  <span className={styles.evlabel}>{config.painSection.title}</span>
+                  <span className={styles.evsub}>{config.painSection.intro}</span>
                 </div>
+                <div className={styles.cardGrid} role="list">
+                  {config.painSection.cards.map((card) => {
+                    const isSourced =
+                      card.footer?.kind === "sourced" ||
+                      (!card.footer && (card.stats?.some((s) => s.cite != null) ?? false));
+                    return (
+                      <article
+                        key={card.title}
+                        className={`${styles.card} ${card.synth ? styles.cardSynth : ""}`}
+                        role="listitem"
+                      >
+                        <h3 className={styles.cardTitle}>{card.title}</h3>
+                        <p className={styles.cardBody}>
+                          {renderCardBody(card.body, card.stats, activeSource, setActiveSource)}
+                        </p>
+                        <div className={styles.cardFoot}>
+                          {card.footer?.kind === "pattern" ? (
+                            <span className={styles.tagPat}>{card.footer.label}</span>
+                          ) : isSourced ? (
+                            <span className={styles.tagCite}>Sourced</span>
+                          ) : null}
+                        </div>
+                      </article>
+                    );
+                  })}
+                </div>
+
+                {config.painSection.sources?.length ? (
+                  <div className={styles.dock}>
+                    <p className={styles.dockHead}>Sources</p>
+                    <ol className={styles.srcList}>
+                      {config.painSection.sources.map((src) => (
+                        <li
+                          key={src.n}
+                          className={`${styles.src} ${activeSource === src.n ? styles.srcActive : ""}`}
+                          onMouseEnter={() => setActiveSource(src.n)}
+                          onMouseLeave={() => setActiveSource(null)}
+                        >
+                          <span className={styles.sn}>{src.n}</span>
+                          <span className={styles.st}>
+                            {src.claim} <b>{sourceAttribution(src.sourceIds)}</b>
+                            {allVerified(src.sourceIds) ? (
+                              <span className={styles.vf}>Verified</span>
+                            ) : null}
+                          </span>
+                        </li>
+                      ))}
+                    </ol>
+                    {config.painSection.sourcesNote ? (
+                      <p className={styles.dockNote}>{config.painSection.sourcesNote}</p>
+                    ) : null}
+                  </div>
+                ) : null}
               </div>
             </div>
           </section>
@@ -297,13 +424,16 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
                 </p>
               ))}
               <div className={styles.toolList}>
-                {config.theBuild.toolExamples.map((tool) => (
+                {config.theBuild.toolExamples.map((tool, i) => (
                   <p key={tool.label} className={styles.toolItem}>
-                    <span className={styles.toolLabel}>{tool.label}</span> {tool.text}
+                    <span className={styles.toolNum}>{String(i + 1).padStart(2, "0")}</span>
+                    <span>
+                      <span className={styles.toolLabel}>{tool.label}</span> {tool.text}
+                    </span>
                   </p>
                 ))}
               </div>
-              <AudienceAssessmentPreview />
+              <HandbookDashboard />
               {config.theBuild.bridgeQuestion ? (
                 <p className={`${styles.body} ${styles.bridgeQuestion}`}>
                   {config.theBuild.bridgeQuestion}
