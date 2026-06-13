@@ -18,6 +18,24 @@ export interface FaqSection {
 
 export const FAQ_SECTIONS: readonly FaqSection[] = [
   {
+    id: "founders-and-leadership",
+    title: "Founders and leadership",
+    items: [
+      {
+        q: "Who are the founders of Movemental?",
+        a: "Alan Hirsch (Co-Founder and Chief Movement Officer), Brad Brisco (Co-Founder and CEO), and Josh Shepherd (Founder and CTO). The full story is on About; full bios live at /about/alan-hirsch, /about/brad-brisco, and /about/josh-shepherd.",
+      },
+      {
+        q: "Who is the CEO, and why Brad?",
+        a: "Brad Brisco is CEO. Trust is the product, and he already carries that trust in the field — decades of denominational and network-level missional work alongside Alan. Josh, who builds the platform, handed the CEO seat to Brad on purpose.",
+      },
+      {
+        q: "Who is Josh Shepherd?",
+        a: "Josh is Founder and CTO. He designs and builds the platform, the agents, and the system underneath. He started the two-year conversation that became Movemental in 2026. His full profile is at /about/josh-shepherd.",
+      },
+    ],
+  },
+  {
     id: "getting-started",
     title: "Getting started",
     items: [

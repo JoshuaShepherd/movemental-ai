@@ -3,16 +3,20 @@
 "use client";
 
 import { LEADERS } from "@/lib/agent-room/data/leaders";
+import { ABOUT_FOUNDER_SLUGS, FOUNDER_PROFILES } from "@/lib/founders/content";
 import styles from "../../ink-band.module.css";
 import type { ScreenProps } from "./stub-screen";
 import { Crumb } from "./chrome";
 
-/** The three founders (prototype `foundersHTML()`): Alan (0), Brad (1), Josh (8). */
-const TEAM = [
-  { i: 0, role: "Co-founder", line: "Missional theologian and author. Decades of work on how movements actually move." },
-  { i: 1, role: "Co-founder", line: "Missional strategist. Helps organizations live their calling to be sent." },
-  { i: 8, role: "Founder & CTO", line: "Builds the path, and the technology behind it." },
-] as const;
+/** The three founders: Alan, Brad, Josh — titles from founders SSOT. */
+const TEAM = ABOUT_FOUNDER_SLUGS.map((slug) => {
+  const profile = FOUNDER_PROFILES[slug];
+  return {
+    i: profile.leaderIndex,
+    role: profile.jobTitle,
+    line: profile.oneLine,
+  };
+});
 
 export function FoundersTeam() {
   return (

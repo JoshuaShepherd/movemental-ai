@@ -1,15 +1,19 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
+import { DocumentPageChrome } from "@/components/agent-room/document/document-page-chrome";
 import { DocumentPageShell } from "@/components/agent-room/document/document-page-shell";
+import shell from "@/components/agent-room/document/document-shell.module.css";
+import { useDocumentScrollProgress } from "@/components/agent-room/document/use-document-scroll-progress";
+import { useScrollSpy } from "@/components/agent-room/document/use-scroll-spy";
 import { AskAiPromptButton } from "@/components/agent-room/ink/ask-ai-prompt-button";
-import { useScrollSpy } from "@/components/agent-room/institutions/use-scroll-spy";
 
 import {
   HOW_WE_USE_AI_DOCK,
   HOW_WE_USE_AI_NAV,
   HOW_WE_USE_AI_SPY_SECTIONS,
+  COMPANY_COMMITMENTS,
   NAMED_REFUSALS,
   SCENIUS_REFUSALS,
   TRAFFIC_LIGHTS,
@@ -33,23 +37,11 @@ export function HowWeUseAiExperience() {
   const activeNavIndex = HOW_WE_USE_AI_SPY_SECTIONS[spyIndex]?.navIndex ?? 0;
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const scrollProgress = useDocumentScrollProgress();
 
   const scrollTo = useCallback((id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const docH = document.documentElement.scrollHeight - window.innerHeight;
-      setScrollProgress(docH > 0 ? Math.min(100, (window.scrollY / docH) * 100) : 0);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const activeLabel = HOW_WE_USE_AI_NAV[activeNavIndex]?.label ?? HOW_WE_USE_AI_NAV[0].label;
 
   return (
     <DocumentPageShell
@@ -58,74 +50,26 @@ export function HowWeUseAiExperience() {
       highlightChipLabel={HOW_WE_USE_AI_DOCK.highlightChipLabel}
       screenKey="how-we-use-ai"
     >
-      <>
-        <div className={styles.mobileNav}>
-          <div className={styles.mobileProgress} aria-hidden="true">
-            <div className={styles.mobileProgressBar} style={{ width: `${scrollProgress}%` }} />
-          </div>
-          <div className={styles.mobileNavRow}>
-            <span className={styles.mobileNavCurrent}>{activeLabel}</span>
-            <button
-              type="button"
-              className={styles.mobileMenuBtn}
-              aria-expanded={mobileMenuOpen}
-              aria-controls="how-we-use-ai-mobile-menu"
-              onClick={() => setMobileMenuOpen((o) => !o)}
-            >
-              Sections
-            </button>
-          </div>
-          <nav
-            id="how-we-use-ai-mobile-menu"
-            className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.mobileMenuOpen : ""}`}
-            aria-label="Page sections"
-          >
-            {HOW_WE_USE_AI_NAV.map((entry, i) => (
-              <button
-                key={entry.id}
-                type="button"
-                className={i === activeNavIndex ? styles.mobileMenuLinkActive : styles.mobileMenuLink}
-                onClick={() => {
-                  scrollTo(entry.id);
-                  setMobileMenuOpen(false);
-                }}
-              >
-                {entry.label}
-              </button>
-            ))}
-          </nav>
-        </div>
-
-        <div className={styles.layout}>
-          <aside className={styles.sidebar} aria-label="Page sections">
-            <p className={styles.sidebarLabel}>On this page</p>
-            <nav className={styles.sidebarNav}>
-              {HOW_WE_USE_AI_NAV.map((entry, i) => (
-                <button
-                  key={entry.id}
-                  type="button"
-                  className={`${styles.sidebarLink} ${i === activeNavIndex ? styles.sidebarLinkActive : ""}`}
-                  aria-current={i === activeNavIndex ? "true" : undefined}
-                  onClick={() => scrollTo(entry.id)}
-                >
-                  {entry.label}
-                </button>
-              ))}
-            </nav>
-          </aside>
-
-          <main className={styles.main}>
-            <section className={`${styles.section} ${styles.hero}`} id="hero">
-              <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>How we use AI</p>
-                <h1 className={styles.title}>We use the tools we sell. On ourselves, first.</h1>
-                <p className={styles.body}>
+      <DocumentPageChrome
+        entries={HOW_WE_USE_AI_NAV}
+        activeNavIndex={activeNavIndex}
+        scrollTo={scrollTo}
+        mobileMenuOpen={mobileMenuOpen}
+        setMobileMenuOpen={setMobileMenuOpen}
+        scrollProgress={scrollProgress}
+        menuId="how-we-use-ai-mobile-menu"
+      >
+            <section className={`${shell.section} ${shell.hero}`} id="hero">
+              <div className={shell.sectionInner}>
+                <p className={shell.eyebrow}>How we use AI</p>
+                <h1 className={shell.title}>We use the tools we sell. On ourselves, first.</h1>
+                <p className={shell.body}>
                   We do not ask organizations to do anything we have not done. Every guardrail we
                   ask a leader or a board to ratify, we have built into our own work first. This
                   page is where we name what we refuse, how we sort use cases, and what we will not
                   build, so anyone reading the site knows where we stand.
                 </p>
-                <p className={styles.body}>
+                <p className={shell.body}>
                   Most public AI discourse splits into &ldquo;AI is a savior&rdquo; or &ldquo;AI is a
                   threat.&rdquo; We reject both. AI surfaces and amplifies what humans have already
                   produced, and how a person reacts to it often reveals their underlying view of human
@@ -135,11 +79,31 @@ export function HowWeUseAiExperience() {
               </div>
             </section>
 
-            <section className={styles.section} id="what-we-refuse">
-              <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>What we refuse</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>Three lines we do not cross.</h2>
-                <p className={styles.body}>
+            <section className={`${shell.section} ${shell.bandPaper}`} id="our-commitments">
+              <div className={shell.sectionInner}>
+                <p className={shell.eyebrow}>Our commitments</p>
+                <h2 className={`${shell.title} ${shell.titleSm}`}>
+                  What we will not do, ever.
+                </h2>
+                <p className={shell.body}>
+                  These are not preferences. They are the line. Breaking one would cost the
+                  exact trust we exist to protect.
+                </p>
+                <ul className={styles.commitmentList}>
+                  {COMPANY_COMMITMENTS.map((item) => (
+                    <li key={item.lead} className={styles.commitmentItem}>
+                      <strong>{item.lead}</strong> {item.rest}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+
+            <section className={shell.section} id="what-we-refuse">
+              <div className={shell.sectionInner}>
+                <p className={shell.eyebrow}>What we refuse</p>
+                <h2 className={`${shell.title} ${shell.titleSm}`}>Three lines we do not cross.</h2>
+                <p className={shell.body}>
                   These refusals are essential, not ethics bolted onto a product after the fact.
                   They shape every line of code we ship and every document we help produce.
                 </p>
@@ -154,11 +118,11 @@ export function HowWeUseAiExperience() {
               </div>
             </section>
 
-            <section className={`${styles.section} ${styles.bandSurface}`} id="traffic-lights">
-              <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>Green / yellow / red</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>How we sort use cases.</h2>
-                <p className={styles.body}>
+            <section className={`${shell.section} ${shell.bandSurface}`} id="traffic-lights">
+              <div className={shell.sectionInner}>
+                <p className={shell.eyebrow}>Green / yellow / red</p>
+                <h2 className={`${shell.title} ${shell.titleSm}`}>How we sort use cases.</h2>
+                <p className={shell.body}>
                   Not all AI use is equivalent. This is the same framework we use in Safety and
                   Sandbox engagements, and how we evaluate our own use internally.
                 </p>
@@ -187,37 +151,37 @@ export function HowWeUseAiExperience() {
               </div>
             </section>
 
-            <section className={styles.section} id="you-are-the-node">
-              <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>You stay in charge</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>AI supports your credibility, it does not replace you.</h2>
-                <p className={styles.body}>
+            <section className={shell.section} id="you-are-the-node">
+              <div className={shell.sectionInner}>
+                <p className={shell.eyebrow}>You stay in charge</p>
+                <h2 className={`${shell.title} ${shell.titleSm}`}>AI supports your credibility, it does not replace you.</h2>
+                <p className={shell.body}>
                   The sustainable pattern: you handle creation and authority, what you teach, what
                   you write, what you put your name on. AI handles discoverability and circulation:
                   structure, metadata, translation, formatting, linking. Your work becomes easier
                   to find and connect without the machine becoming you.
                 </p>
-                <p className={styles.body}>
+                <p className={shell.body}>
                   AI is trained on the broad output of human writing, speech, and behavior. When you
                   interact with it, it mirrors and amplifies what it has been trained on, and it
                   mirrors and amplifies you specifically. That is why the most important operational
                   decision is not which model you pick. It is who you deliberately gather around the
                   work: the humans whose corpus, judgment, and vouching the system will reflect back.
                 </p>
-                <p className={styles.body}>
+                <p className={shell.body}>
                   AI can help your work be legible and connected. It never becomes you. Only
                   people can vouch for you. Only you can mean what you say before God and stand
                   answerable for it as true.
                 </p>
-                <p className={styles.hand}>You out front. AI in the background.</p>
+                <p className={shell.hand}>You out front. AI in the background.</p>
               </div>
             </section>
 
-            <section className={`${styles.section} ${styles.bandPaper}`} id="scenius-refusals">
-              <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>The scenius refusals</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>What we will not build into the network.</h2>
-                <p className={styles.body}>
+            <section className={`${shell.section} ${shell.bandPaper}`} id="scenius-refusals">
+              <div className={shell.sectionInner}>
+                <p className={shell.eyebrow}>The scenius refusals</p>
+                <h2 className={`${shell.title} ${shell.titleSm}`}>What we will not build into the network.</h2>
+                <p className={shell.body}>
                   The extractive version of this business is obvious, and we are building against
                   it. That includes product choices, not only policy statements.
                 </p>
@@ -226,15 +190,13 @@ export function HowWeUseAiExperience() {
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
-                <p className={styles.body} style={{ marginTop: "1.15rem" }}>
+                <p className={shell.body} style={{ marginTop: "1.15rem" }}>
                   If a feature would feel extractive to us as members, we don&apos;t ship it.
                 </p>
                 <AskAiPromptButton promptKey="howWeUseAi" />
               </div>
             </section>
-          </main>
-        </div>
-      </>
+      </DocumentPageChrome>
     </DocumentPageShell>
   );
 }

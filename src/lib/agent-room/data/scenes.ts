@@ -11,6 +11,7 @@
  * (chips may target a not-yet-wired scene — a harmless no-op).
  */
 import type { Scene, SceneFactory } from "../acts";
+import { FOUNDER_AGENT_ANSWERS } from "@/lib/founders/agent-knowledge";
 import { FREE_HANDBOOK_CTA, SAFETY_CHARTER, SAFETY_HANDBOOK } from "../naming";
 import { CONCIERGE_VOICE } from "./concierge-voice-lines";
 import { DISCUSS_ENABLED } from "../discuss";
@@ -77,9 +78,11 @@ export const SCENES = {
   whoBehind: [
     { show: "founders" },
     { wait: 480 },
-    { say: "A small team builds it: Alan, Brad, and Josh." },
+    { say: FOUNDER_AGENT_ANSWERS.whoAreFounders[0] },
     { wait: 200 },
-    { say: "Connected to the leaders on the home page." },
+    { say: FOUNDER_AGENT_ANSWERS.whoAreFounders[1] },
+    { wait: 200 },
+    { say: FOUNDER_AGENT_ANSWERS.whoIsCeo[1] },
     {
       suggest: [
         { label: "Talk to us", lead: true, to: "talkToUs" },

@@ -1,0 +1,382 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "signInPath": "/login",
+  "outputDir": "./docs/captures/output",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "notes": "Static routes from pnpm captures:manifest; dynamic samples and agent sub-views preserved below.",
+  "shots": [
+    {
+      "id": "public-home",
+      "group": "public",
+      "file": "public/00-home.png",
+      "path": "/",
+      "fullPage": true
+    },
+    {
+      "id": "agent-opening",
+      "group": "agent",
+      "file": "agent/01-opening.png",
+      "path": "/agent",
+      "fullPage": false,
+      "waitMs": 2200
+    },
+    {
+      "id": "agent-safety-flow",
+      "group": "agent",
+      "file": "agent/02-safety-flow.png",
+      "path": "/agent",
+      "fullPage": false,
+      "waitMs": 1500,
+      "actions": [
+        { "type": "wait", "ms": 2000 },
+        { "type": "click", "role": "button", "name": "Get a clear next AI step" },
+        { "type": "waitForText", "text": "Let's find your simplest next step" }
+      ]
+    },
+    {
+      "id": "agent-contact-form",
+      "group": "agent",
+      "file": "agent/03-contact-form.png",
+      "path": "/agent",
+      "fullPage": false,
+      "waitMs": 800,
+      "actions": [
+        { "type": "wait", "ms": 2000 },
+        { "type": "click", "role": "button", "name": "Get in touch" },
+        { "type": "waitForText", "text": "Send message" }
+      ]
+    },
+    {
+      "id": "agent-agent",
+      "group": "agent",
+      "file": "agent/04-agent-shell.png",
+      "path": "/agent",
+      "fullPage": true,
+      "waitMs": 2200
+    },
+    {
+      "id": "auth-agent-runtime",
+      "group": "auth",
+      "file": "auth/agent-runtime.png",
+      "path": "/agent-runtime",
+      "fullPage": true,
+      "requiresAuth": true
+    },
+    {
+      "id": "agent-agent-about",
+      "group": "agent",
+      "file": "agent/04-agent-about.png",
+      "path": "/agent/about",
+      "fullPage": true
+    },
+    {
+      "id": "agent-agent-assessment",
+      "group": "agent",
+      "file": "agent/05-agent-assessment.png",
+      "path": "/agent/assessment",
+      "fullPage": true
+    },
+    {
+      "id": "agent-agent-churches",
+      "group": "agent",
+      "file": "agent/06-agent-churches.png",
+      "path": "/agent/churches",
+      "fullPage": true
+    },
+    {
+      "id": "agent-agent-churches-deck",
+      "group": "agent",
+      "file": "agent/07-agent-churches-deck.png",
+      "path": "/agent/churches/deck",
+      "fullPage": true
+    },
+    {
+      "id": "agent-agent-how-we-use-ai",
+      "group": "agent",
+      "file": "agent/08-agent-how-we-use-ai.png",
+      "path": "/agent/how-we-use-ai",
+      "fullPage": true
+    },
+    {
+      "id": "agent-agent-institutions",
+      "group": "agent",
+      "file": "agent/09-agent-institutions.png",
+      "path": "/agent/institutions",
+      "fullPage": true
+    },
+    {
+      "id": "agent-agent-institutions-deck",
+      "group": "agent",
+      "file": "agent/10-agent-institutions-deck.png",
+      "path": "/agent/institutions/deck",
+      "fullPage": true
+    },
+    {
+      "id": "agent-agent-invite",
+      "group": "agent",
+      "file": "agent/11-agent-invite.png",
+      "path": "/agent/invite",
+      "fullPage": true
+    },
+    {
+      "id": "agent-agent-movement-voices",
+      "group": "agent",
+      "file": "agent/12-agent-movement-voices.png",
+      "path": "/agent/movement-voices",
+      "fullPage": true
+    },
+    {
+      "id": "agent-agent-nonprofits",
+      "group": "agent",
+      "file": "agent/13-agent-nonprofits.png",
+      "path": "/agent/nonprofits",
+      "fullPage": true
+    },
+    {
+      "id": "agent-agent-nonprofits-deck",
+      "group": "agent",
+      "file": "agent/14-agent-nonprofits-deck.png",
+      "path": "/agent/nonprofits/deck",
+      "fullPage": true
+    },
+    {
+      "id": "auth-dashboard",
+      "group": "auth",
+      "file": "auth/18-dashboard.png",
+      "path": "/dashboard",
+      "fullPage": true,
+      "requiresAuth": true
+    },
+    {
+      "id": "auth-dashboard-ai-reality",
+      "group": "auth",
+      "file": "auth/19-dashboard-ai-reality.png",
+      "path": "/dashboard/ai-reality",
+      "fullPage": true,
+      "requiresAuth": true
+    },
+    {
+      "id": "auth-dashboard-safety",
+      "group": "auth",
+      "file": "auth/20-dashboard-safety.png",
+      "path": "/dashboard/safety",
+      "fullPage": true,
+      "requiresAuth": true
+    },
+    {
+      "id": "auth-program",
+      "group": "auth",
+      "file": "auth/32-program.png",
+      "path": "/program",
+      "fullPage": true,
+      "requiresAuth": true
+    },
+    {
+      "id": "public-about",
+      "group": "public",
+      "file": "public/01-about.png",
+      "path": "/about",
+      "fullPage": true
+    },
+    {
+      "id": "public-assess",
+      "group": "public",
+      "file": "public/15-assess.png",
+      "path": "/assess",
+      "fullPage": true
+    },
+    {
+      "id": "public-churches",
+      "group": "public",
+      "file": "public/17-churches.png",
+      "path": "/churches",
+      "fullPage": true
+    },
+    {
+      "id": "public-enroll",
+      "group": "public",
+      "file": "public/21-enroll.png",
+      "path": "/enroll",
+      "fullPage": true
+    },
+    {
+      "id": "public-field-guide",
+      "group": "public",
+      "file": "public/22-field-guide.png",
+      "path": "/field-guide",
+      "fullPage": true
+    },
+    {
+      "id": "public-footnotes",
+      "group": "public",
+      "file": "public/23-footnotes.png",
+      "path": "/footnotes",
+      "fullPage": true
+    },
+    {
+      "id": "public-how-we-use-ai",
+      "group": "public",
+      "file": "public/25-how-we-use-ai.png",
+      "path": "/how-we-use-ai",
+      "fullPage": true
+    },
+    {
+      "id": "public-institutions",
+      "group": "public",
+      "file": "public/26-institutions.png",
+      "path": "/institutions",
+      "fullPage": true
+    },
+    {
+      "id": "public-movement-voices",
+      "group": "public",
+      "file": "public/28-movement-voices.png",
+      "path": "/movement-voices",
+      "fullPage": true
+    },
+    {
+      "id": "public-nonprofits",
+      "group": "public",
+      "file": "public/31-nonprofits.png",
+      "path": "/nonprofits",
+      "fullPage": true
+    },
+    {
+      "id": "public-scenius",
+      "group": "public",
+      "file": "public/36-scenius.png",
+      "path": "/scenius",
+      "fullPage": true
+    },
+    {
+      "id": "public-welcome",
+      "group": "public",
+      "file": "public/38-welcome.png",
+      "path": "/welcome",
+      "fullPage": true
+    },
+    {
+      "id": "research-research",
+      "group": "research",
+      "file": "research/33-research.png",
+      "path": "/research",
+      "fullPage": true
+    },
+    {
+      "id": "research-research-findings",
+      "group": "research",
+      "file": "research/34-research-findings.png",
+      "path": "/research/findings",
+      "fullPage": true
+    },
+    {
+      "id": "research-research-sources",
+      "group": "research",
+      "file": "research/35-research-sources.png",
+      "path": "/research/sources",
+      "fullPage": true
+    },
+    {
+      "id": "utility-auth-update-password",
+      "group": "utility",
+      "file": "utility/16-auth-update-password.png",
+      "path": "/auth/update-password",
+      "fullPage": true
+    },
+    {
+      "id": "utility-forgot-password",
+      "group": "utility",
+      "file": "utility/24-forgot-password.png",
+      "path": "/forgot-password",
+      "fullPage": true
+    },
+    {
+      "id": "utility-login",
+      "group": "utility",
+      "file": "utility/27-login.png",
+      "path": "/login",
+      "fullPage": true
+    },
+    {
+      "id": "utility-newsletter-confirmed",
+      "group": "utility",
+      "file": "utility/29-newsletter-confirmed.png",
+      "path": "/newsletter/confirmed",
+      "fullPage": true
+    },
+    {
+      "id": "utility-newsletter-unsubscribed",
+      "group": "utility",
+      "file": "utility/30-newsletter-unsubscribed.png",
+      "path": "/newsletter/unsubscribed",
+      "fullPage": true
+    },
+    {
+      "id": "utility-signup",
+      "group": "utility",
+      "file": "utility/37-signup.png",
+      "path": "/signup",
+      "fullPage": true
+    },
+    {
+      "id": "public-field-guide-sandbox",
+      "group": "public",
+      "file": "public/field-guide-sandbox.png",
+      "path": "/field-guide?guide=sandbox",
+      "fullPage": true
+    },
+    {
+      "id": "research-ai-credibility-crisis",
+      "group": "research",
+      "file": "research/ai-credibility-crisis.png",
+      "path": "/research/ai-credibility-crisis",
+      "fullPage": true
+    },
+    {
+      "id": "research-finding-ai-guidance",
+      "group": "research",
+      "file": "research/finding-ai-guidance-worth-trusting.png",
+      "path": "/research/finding-ai-guidance-worth-trusting",
+      "fullPage": true
+    },
+    {
+      "id": "auth-program-safety-home",
+      "group": "auth",
+      "file": "auth/program-safety-home.png",
+      "path": "/program/safety/safestart_dashboard_home_pre_kickoff",
+      "fullPage": true,
+      "requiresAuth": true,
+      "optional": true
+    },
+    {
+      "id": "auth-program-sandbox-home",
+      "group": "auth",
+      "file": "auth/program-sandbox-home.png",
+      "path": "/program/sandbox/sandboxlive_dashboard_pre_kickoff_state",
+      "fullPage": true,
+      "requiresAuth": true,
+      "optional": true
+    },
+    {
+      "id": "auth-onboarding-agreement",
+      "group": "auth",
+      "file": "auth/onboarding-agreement.png",
+      "path": "/dashboard/onboarding/agreement",
+      "fullPage": true,
+      "requiresAuth": true,
+      "optional": true
+    },
+    {
+      "id": "auth-leader-onboarding-confirm-bio",
+      "group": "auth",
+      "file": "auth/leader-onboarding-confirm-bio.png",
+      "path": "/dashboard/onboarding/leader/confirm-bio",
+      "fullPage": true,
+      "requiresAuth": true,
+      "optional": true
+    }
+  ]
+}

@@ -1,8 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
+import { useCallback, useMemo, useState, type ReactNode } from "react";
 
+import { DocumentPageChrome } from "@/components/agent-room/document/document-page-chrome";
 import { DocumentPageShell } from "@/components/agent-room/document/document-page-shell";
+import shell from "@/components/agent-room/document/document-shell.module.css";
+import { useDocumentScrollProgress } from "@/components/agent-room/document/use-document-scroll-progress";
+import { useScrollSpy } from "@/components/agent-room/document/use-scroll-spy";
 import { DeckSection } from "@/components/agent-room/deck/deck-section";
 import { AskAiPromptButton } from "@/components/agent-room/ink/ask-ai-prompt-button";
 import { PATH_STAGE_LABELS } from "@/lib/agent-room/naming";
@@ -14,7 +18,6 @@ import { FoundationDiagram } from "./foundation-diagram";
 import { getLetterEmbedParagraphs, getLetterFullText } from "./letter-utils";
 import { PATH_STAGES } from "./institutions-config";
 import type { AudienceCardStat, AudiencePageConfig } from "./types";
-import { useScrollSpy } from "./use-scroll-spy";
 
 type AudiencePageExperienceProps = {
   config: AudiencePageConfig;
@@ -126,7 +129,7 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
   const activeNavIndex = spyIndex;
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const scrollProgress = useDocumentScrollProgress();
   // Hover-link between a card's citation superscript and its Sources-dock row.
   const [activeSource, setActiveSource] = useState<number | null>(null);
 
@@ -162,17 +165,6 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
     window.location.href = `mailto:?subject=${subject}&body=${body}`;
   }, [letterFull, config.start.sendToBoardSubject]);
 
-  useEffect(() => {
-    const onScroll = () => {
-      const docH = document.documentElement.scrollHeight - window.innerHeight;
-      setScrollProgress(docH > 0 ? Math.min(100, (window.scrollY / docH) * 100) : 0);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const activeLabel = navEntries[activeNavIndex]?.label ?? navEntries[0].label;
   const mobileMenuId = `${config.slug}-mobile-menu`;
   const pathHeadline = config.thePath.headline ?? "It all goes in one order.";
 
@@ -184,82 +176,35 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
       screenKey={config.slug}
       audience={config.slug}
     >
-      <div className={styles.mobileNav}>
-        <div className={styles.mobileProgress} aria-hidden="true">
-          <div className={styles.mobileProgressBar} style={{ width: `${scrollProgress}%` }} />
-        </div>
-        <div className={styles.mobileNavRow}>
-          <span className={styles.mobileNavCurrent}>{activeLabel}</span>
-          <button
-            type="button"
-            className={styles.mobileMenuBtn}
-            aria-expanded={mobileMenuOpen}
-            aria-controls={mobileMenuId}
-            onClick={() => setMobileMenuOpen((o) => !o)}
-          >
-            Sections
-          </button>
-        </div>
-        <nav
-          id={mobileMenuId}
-          className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.mobileMenuOpen : ""}`}
-          aria-label="Page sections"
-        >
-          {navEntries.map((entry, i) => (
-            <button
-              key={entry.id}
-              type="button"
-              className={i === activeNavIndex ? styles.mobileMenuLinkActive : styles.mobileMenuLink}
-              onClick={() => {
-                scrollTo(entry.id);
-                setMobileMenuOpen(false);
-              }}
-            >
-              {entry.label}
-            </button>
-          ))}
-        </nav>
-      </div>
-
-      <div className={styles.layout}>
-        <aside className={styles.sidebar} aria-label="Page sections">
-          <p className={styles.sidebarLabel}>On this page</p>
-          <nav className={styles.sidebarNav}>
-            {navEntries.map((entry, i) => (
-              <button
-                key={entry.id}
-                type="button"
-                className={`${styles.sidebarLink} ${i === activeNavIndex ? styles.sidebarLinkActive : ""}`}
-                aria-current={i === activeNavIndex ? "true" : undefined}
-                onClick={() => scrollTo(entry.id)}
-              >
-                {entry.label}
-              </button>
-            ))}
-          </nav>
-        </aside>
-
-        <main className={styles.main}>
+      <DocumentPageChrome
+        entries={navEntries}
+        activeNavIndex={activeNavIndex}
+        scrollTo={scrollTo}
+        mobileMenuOpen={mobileMenuOpen}
+        setMobileMenuOpen={setMobileMenuOpen}
+        scrollProgress={scrollProgress}
+        menuId={mobileMenuId}
+      >
           {!claimFirstHero ? (
-            <section className={`${styles.section} ${styles.hero}`} id="hero">
-              <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>{config.hero.eyebrow}</p>
-                <h1 className={styles.title}>{config.hero.title}</h1>
-                <p className={styles.sub}>{config.hero.sub}</p>
+            <section className={`${shell.section} ${shell.hero}`} id="hero">
+              <div className={shell.sectionInner}>
+                <p className={shell.eyebrow}>{config.hero.eyebrow}</p>
+                <h1 className={shell.title}>{config.hero.title}</h1>
+                <p className={shell.sub}>{config.hero.sub}</p>
               </div>
             </section>
           ) : null}
 
           <section
-            className={`${styles.section} ${claimFirstHero ? styles.whereYouStand : ""}`}
+            className={`${shell.section} ${claimFirstHero ? styles.whereYouStand : ""}`}
             id="where-you-stand"
           >
-            <div className={`${styles.sectionInner} ${styles.sectionInnerWide}`}>
+            <div className={`${shell.sectionInner} ${shell.sectionInnerWide}`}>
               {claimFirstHero ? (
                 <>
-                  <p className={styles.eyebrow}>{config.hero.eyebrow}</p>
+                  <p className={shell.eyebrow}>{config.hero.eyebrow}</p>
                   {config.hero.rhetoricalTitle ? (
-                    <h1 className={styles.title}>
+                    <h1 className={shell.title}>
                       {renderWithHighlight(
                         config.hero.rhetoricalTitle,
                         config.hero.highlightPhrase,
@@ -286,12 +231,12 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
                   {config.hero.segue ? <p className={styles.segue}>{config.hero.segue}</p> : null}
                 </>
               ) : (
-                <p className={styles.eyebrow}>Where you stand</p>
+                <p className={shell.eyebrow}>Where you stand</p>
               )}
 
               <div className={claimFirstHero ? styles.evidenceBlock : undefined}>
                 {!claimFirstHero ? (
-                  <p className={styles.eyebrow}>Where you stand</p>
+                  <p className={shell.eyebrow}>Where you stand</p>
                 ) : null}
                 <div className={styles.evhead}>
                   <span className={styles.evlabel}>{config.painSection.title}</span>
@@ -354,35 +299,35 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
             </div>
           </section>
 
-          <section className={`${styles.section} ${styles.bandSurface}`} id="deeper-problem">
-            <div className={styles.sectionInner}>
-              <p className={styles.eyebrow}>The deeper problem</p>
-              <h2 className={`${styles.title} ${styles.titleSm}`}>{config.deeperProblem.title}</h2>
+          <section className={`${shell.section} ${shell.bandSurface}`} id="deeper-problem">
+            <div className={shell.sectionInner}>
+              <p className={shell.eyebrow}>The deeper problem</p>
+              <h2 className={`${shell.title} ${shell.titleSm}`}>{config.deeperProblem.title}</h2>
               {config.deeperProblem.paragraphs.map((para) => (
-                <p key={para.slice(0, 48)} className={styles.body}>
+                <p key={para.slice(0, 48)} className={shell.body}>
                   {para}
                 </p>
               ))}
             </div>
           </section>
 
-          <section className={styles.section} id="the-case">
-            <div className={`${styles.sectionInner} ${styles.sectionInnerWide}`}>
-              <p className={styles.eyebrow}>The case</p>
-              <h2 className={`${styles.title} ${styles.titleSm}`}>{config.theCase.title}</h2>
+          <section className={shell.section} id="the-case">
+            <div className={`${shell.sectionInner} ${shell.sectionInnerWide}`}>
+              <p className={shell.eyebrow}>The case</p>
+              <h2 className={`${shell.title} ${shell.titleSm}`}>{config.theCase.title}</h2>
               <p className={styles.intro}>{config.theCase.intro}</p>
-              <article className={styles.letterPanel} aria-label={config.theCase.letterAriaLabel}>
-                <div className={styles.letterProse}>
+              <article className={shell.letterPanel} aria-label={config.theCase.letterAriaLabel}>
+                <div className={shell.letterProse}>
                   {letterEmbed.map((para) => (
                     <p key={para.slice(0, 48)}>{para}</p>
                   ))}
                 </div>
               </article>
-              <div className={styles.letterActions}>
-                <button type="button" className={styles.btnSecondary} onClick={downloadLetter}>
+              <div className={shell.letterActions}>
+                <button type="button" className={shell.btnSecondary} onClick={downloadLetter}>
                   Download the letter
                 </button>
-                <button type="button" className={styles.btnSecondary} onClick={sendToBoard}>
+                <button type="button" className={shell.btnSecondary} onClick={sendToBoard}>
                   Send to your board
                 </button>
               </div>
@@ -390,12 +335,12 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
             </div>
           </section>
 
-          <section className={styles.section} id="what-we-build">
-            <div className={`${styles.sectionInner} ${styles.sectionInnerWide}`}>
-              <p className={styles.eyebrow}>The foundation</p>
-              <h2 className={`${styles.title} ${styles.titleSm}`}>{config.foundation.title}</h2>
+          <section className={shell.section} id="what-we-build">
+            <div className={`${shell.sectionInner} ${shell.sectionInnerWide}`}>
+              <p className={shell.eyebrow}>The foundation</p>
+              <h2 className={`${shell.title} ${shell.titleSm}`}>{config.foundation.title}</h2>
               {config.foundation.paragraphs.map((para) => (
-                <p key={para.slice(0, 48)} className={styles.body}>
+                <p key={para.slice(0, 48)} className={shell.body}>
                   {para}
                 </p>
               ))}
@@ -414,12 +359,12 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
             </div>
           </section>
 
-          <section className={`${styles.section} ${styles.bandPaper}`} id="the-build">
-            <div className={`${styles.sectionInner} ${styles.sectionInnerWide}`}>
-              <p className={styles.eyebrow}>The build</p>
-              <h2 className={`${styles.title} ${styles.titleSm}`}>{config.theBuild.title}</h2>
+          <section className={`${shell.section} ${shell.bandPaper}`} id="the-build">
+            <div className={`${shell.sectionInner} ${shell.sectionInnerWide}`}>
+              <p className={shell.eyebrow}>The build</p>
+              <h2 className={`${shell.title} ${shell.titleSm}`}>{config.theBuild.title}</h2>
               {config.theBuild.paragraphs.map((para) => (
-                <p key={para.slice(0, 48)} className={styles.body}>
+                <p key={para.slice(0, 48)} className={shell.body}>
                   {para}
                 </p>
               ))}
@@ -435,7 +380,7 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
               </div>
               <HandbookDashboard />
               {config.theBuild.bridgeQuestion ? (
-                <p className={`${styles.body} ${styles.bridgeQuestion}`}>
+                <p className={`${shell.body} ${styles.bridgeQuestion}`}>
                   {config.theBuild.bridgeQuestion}
                 </p>
               ) : null}
@@ -451,28 +396,28 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
             />
           ) : null}
 
-          <section className={`${styles.section} ${styles.bandSurface}`} id="formation">
-            <div className={styles.sectionInner}>
-              <p className={styles.eyebrow}>Formation</p>
-              <h2 className={`${styles.title} ${styles.titleSm}`}>{config.formation.title}</h2>
+          <section className={`${shell.section} ${shell.bandSurface}`} id="formation">
+            <div className={shell.sectionInner}>
+              <p className={shell.eyebrow}>Formation</p>
+              <h2 className={`${shell.title} ${shell.titleSm}`}>{config.formation.title}</h2>
               {config.formation.paragraphs.map((para) => (
-                <p key={para.slice(0, 48)} className={styles.body}>
+                <p key={para.slice(0, 48)} className={shell.body}>
                   {para}
                 </p>
               ))}
               {config.formation.handLine ? (
-                <p className={styles.hand}>{config.formation.handLine}</p>
+                <p className={shell.hand}>{config.formation.handLine}</p>
               ) : null}
             </div>
           </section>
 
-          <section className={styles.section} id="the-path">
-            <div className={`${styles.sectionInner} ${styles.sectionInnerWide}`}>
-              <p className={styles.eyebrow}>The path</p>
-              <h2 className={`${styles.title} ${styles.titleSm}`}>{pathHeadline}</h2>
-              <p className={styles.body}>{config.thePath.intro}</p>
+          <section className={shell.section} id="the-path">
+            <div className={`${shell.sectionInner} ${shell.sectionInnerWide}`}>
+              <p className={shell.eyebrow}>The path</p>
+              <h2 className={`${shell.title} ${shell.titleSm}`}>{pathHeadline}</h2>
+              <p className={shell.body}>{config.thePath.intro}</p>
               {config.thePath.closing ? (
-                <p className={styles.body}>{config.thePath.closing}</p>
+                <p className={shell.body}>{config.thePath.closing}</p>
               ) : null}
               <div
                 className={styles.stageRail}
@@ -492,27 +437,26 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
             </div>
           </section>
 
-          <section className={`${styles.section} ${styles.bandPaper}`} id="start">
-            <div className={styles.sectionInner}>
-              <p className={styles.eyebrow}>Start</p>
-              <h2 className={`${styles.title} ${styles.titleSm}`}>{config.start.title}</h2>
-              <p className={styles.body}>{config.start.body}</p>
+          <section className={`${shell.section} ${shell.bandPaper}`} id="start">
+            <div className={shell.sectionInner}>
+              <p className={shell.eyebrow}>Start</p>
+              <h2 className={`${shell.title} ${shell.titleSm}`}>{config.start.title}</h2>
+              <p className={shell.body}>{config.start.body}</p>
               <div className={styles.startCtas}>
-                <a className={styles.btnPrimary} href={config.start.mailtoHref}>
+                <a className={shell.btnPrimary} href={config.start.mailtoHref}>
                   Talk to us
                 </a>
-                <a className={styles.btnSecondary} href="/assess">
+                <a className={shell.btnSecondary} href="/assess">
                   Map your organization in depth
                 </a>
-                <button type="button" className={styles.btnSecondary} onClick={downloadLetter}>
+                <button type="button" className={shell.btnSecondary} onClick={downloadLetter}>
                   Download the letter
                 </button>
               </div>
               <AskAiPromptButton promptKey={config.start.askAiPromptKey} />
             </div>
           </section>
-        </main>
-      </div>
+      </DocumentPageChrome>
     </DocumentPageShell>
   );
 }

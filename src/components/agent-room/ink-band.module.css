@@ -1883,14 +1883,20 @@ button.wayCtaPaid {
   margin-top: 0.85rem;
 }
 .paTag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  line-height: 1;
+  text-align: center;
   font-family: var(--font-ink-mono);
   font-size: 0.58rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-ink-band-ink-muted);
   border: 1px solid var(--color-ink-band-border);
-  border-radius: 999px;
-  padding: 0.25rem 0.6rem;
+  border-radius: var(--ink-pill-radius, 999px);
+  padding: 0.28rem 0.65rem;
 }
 @media (prefers-reduced-motion: reduce) {
   .paColumn,
@@ -2065,6 +2071,11 @@ button.wayCtaPaid {
 }
 .wayBadge {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  line-height: 1;
+  text-align: center;
   align-self: flex-start;
   font-family: var(--font-ink-mono);
   font-size: 0.62rem;
@@ -2073,8 +2084,8 @@ button.wayCtaPaid {
   color: var(--color-ink-band-ink-muted);
   background: var(--color-ink-band-surface);
   border: 1px solid var(--color-ink-band-border);
-  border-radius: 999px;
-  padding: 0.22rem 0.55rem;
+  border-radius: var(--ink-pill-radius, 999px);
+  padding: 0.28rem 0.6rem;
   margin-bottom: 0.75rem;
 }
 .way.paid .wayBadge {
@@ -2848,14 +2859,22 @@ button.wayCtaPaid {
 .faqJump {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.45rem;
   margin-top: 0.85rem;
 }
 .faqJumpLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  line-height: var(--ink-pill-line-body, 1.25);
+  text-align: center;
+  min-height: var(--ink-pill-min-h, 2rem);
   font-size: 0.78rem;
-  padding: 0.35rem 0.75rem;
+  padding: 0.38rem 0.85rem;
   border: 1px solid var(--color-ink-band-border);
-  border-radius: 999px;
+  border-radius: var(--ink-pill-radius, 999px);
   text-decoration: none;
   color: var(--color-ink-band-ink-muted);
 }
@@ -2950,14 +2969,25 @@ button.wayCtaPaid {
 .cchips {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.45rem;
 }
+
+/* Shared pill chip base — .chip, .floatChip, .sug, .cchip extend this pattern */
+.chip,
+.floatChip,
+.sug,
 .cchip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  line-height: var(--ink-pill-line-body, 1.25);
+  text-align: center;
+  min-height: var(--ink-pill-min-h, 2rem);
   font: inherit;
-  font-size: 0.85rem;
-  padding: 0.42rem 0.92rem;
   border: 1px solid var(--color-ink-band-border);
-  border-radius: 999px;
+  border-radius: var(--ink-pill-radius, 999px);
   background: var(--color-ink-band-paper);
   color: var(--color-ink-band-ink-muted);
   cursor: pointer;
@@ -2965,7 +2995,21 @@ button.wayCtaPaid {
     border-color 0.15s,
     color 0.15s,
     background 0.15s,
-    box-shadow 0.15s;
+    box-shadow 0.15s,
+    transform 0.15s;
+}
+
+.chip:disabled,
+.floatChip:disabled,
+.sug:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.cchip {
+  max-width: 100%;
+  font-size: 0.85rem;
+  padding: 0.42rem 0.92rem;
 }
 .cchip:hover {
   border-color: var(--color-ink-band-ink);
@@ -3163,32 +3207,24 @@ button.wayCtaPaid {
 }
 .sugg {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
   margin-bottom: 0.6rem;
   min-height: 1.95rem;
 }
 .chip {
-  font: inherit;
+  max-width: 100%;
   font-size: 0.875rem;
   padding: 0.46rem 1rem;
-  border: 1px solid var(--color-ink-band-border);
-  border-radius: 999px;
-  background: var(--color-ink-band-paper);
-  color: var(--color-ink-band-ink-muted);
-  cursor: pointer;
-  transition: all 0.15s;
 }
 .chip:hover {
   border-color: var(--color-ink-band-ink);
   color: var(--color-ink-band-ink);
   transform: translateY(-1px);
 }
-.chip:disabled {
-  opacity: 0.5;
-  cursor: default;
-}
-.chip.lead {
+.chip.lead,
+.floatChipLead {
   position: relative;
   isolation: isolate;
   background: transparent;
@@ -3196,7 +3232,8 @@ button.wayCtaPaid {
   color: var(--color-ink-band-ink);
   font-weight: 600;
 }
-.chip.lead::before {
+.chip.lead::before,
+.floatChipLead::before {
   content: "";
   position: absolute;
   inset: -2px -8px;
@@ -3213,9 +3250,24 @@ button.wayCtaPaid {
 .chip.lead:hover {
   transform: translateY(-1px);
 }
-.chip.lead:hover::before {
+.chip.lead:hover::before,
+.floatChipLead:hover:not(:disabled)::before {
   inset: -3px -12px;
   transform: rotate(-0.4deg);
+}
+.sug {
+  max-width: 100%;
+  font-size: 0.875rem;
+  padding: 0.45rem 1rem;
+}
+.sug:hover {
+  border-color: var(--color-ink-band-ink);
+  color: var(--color-ink-band-ink);
+}
+.sug.lead {
+  border-color: var(--color-ink-band-ink);
+  color: var(--color-ink-band-ink);
+  font-weight: 500;
 }
 .line {
   display: flex;
@@ -3227,9 +3279,10 @@ button.wayCtaPaid {
   display: flex;
   align-items: center;
   border: 1px solid var(--color-ink-band-border);
-  border-radius: 999px;
+  border-radius: var(--ink-composer-field-radius-pill, 999px);
   background: var(--color-ink-band-paper);
-  padding: 0.5rem 0.5rem 0.5rem 1.15rem;
+  padding: var(--ink-composer-field-pad-y, 0.5rem) var(--ink-composer-field-pad-x-end, 0.5rem)
+    var(--ink-composer-field-pad-y, 0.5rem) var(--ink-composer-field-pad-x-start, 1.15rem);
 }
 .field:focus-within {
   border-color: var(--color-ink-band-ink);
@@ -3239,7 +3292,7 @@ button.wayCtaPaid {
   border: 0;
   background: none;
   font: inherit;
-  font-size: 1rem;
+  font-size: var(--ink-composer-input-font-size, 1rem);
   color: var(--color-ink-band-ink);
   padding: 0.35rem 0;
 }
@@ -3251,8 +3304,8 @@ button.wayCtaPaid {
 }
 .send {
   flex: 0 0 auto;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: var(--ink-composer-send-size, 2.75rem);
+  height: var(--ink-composer-send-size, 2.75rem);
   border-radius: 50%;
   border: 0;
   background: var(--color-ink-band-ink);
@@ -3418,6 +3471,7 @@ button.wayCtaPaid {
 
 .floatChips {
   display: flex;
+  align-items: center;
   gap: 0.35rem;
   justify-content: center;
   flex-wrap: nowrap;
@@ -3435,22 +3489,9 @@ button.wayCtaPaid {
 .floatChip {
   flex: 0 1 auto;
   max-width: calc(50% - 0.25rem);
-  display: flex;
-  align-items: center;
   gap: 0.35rem;
-  font: inherit;
   font-size: 0.76rem;
-  line-height: 1.15;
-  padding: 0.32rem 0.65rem;
-  border: 1px solid var(--color-ink-band-border);
-  border-radius: 999px;
-  background: var(--color-ink-band-paper);
-  color: var(--color-ink-band-ink-muted);
-  cursor: pointer;
-  transition:
-    border-color 0.15s,
-    transform 0.15s,
-    box-shadow 0.15s;
+  padding: 0.38rem 0.75rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3461,41 +3502,13 @@ button.wayCtaPaid {
   transform: translateY(-1px);
   box-shadow: 0 6px 18px -10px rgba(26, 26, 26, 0.35);
 }
-.floatChip:disabled {
-  opacity: 0.5;
-  cursor: default;
-}
 .floatChipLead {
-  position: relative;
-  isolation: isolate;
   overflow: visible;
-  background: transparent;
-  border-color: transparent;
-  color: var(--color-ink-band-ink);
-  font-weight: 600;
   text-overflow: clip;
-}
-.floatChipLead::before {
-  content: "";
-  position: absolute;
-  inset: -2px -8px;
-  z-index: -1;
-  background: var(--color-ink-band-highlight);
-  mix-blend-mode: multiply;
-  border-radius: 6px 9px 7px 8px / 9px 6px 8px 7px;
-  filter: url(#marker);
-  transform: rotate(-1.2deg);
-  transition:
-    inset 0.18s ease,
-    transform 0.18s ease;
 }
 .floatChipLead:hover:not(:disabled) {
   border-color: transparent;
   box-shadow: none;
-}
-.floatChipLead:hover:not(:disabled)::before {
-  inset: -3px -12px;
-  transform: rotate(-0.4deg);
 }
 
 .agentCard {
@@ -3947,9 +3960,9 @@ button.wayCtaPaid {
   display: flex;
   align-items: center;
   min-width: 0;
-  padding: 0.55rem 0.85rem;
+  padding: var(--ink-composer-field-pad-y, 0.5rem) var(--ink-composer-field-pad-x-start, 1.15rem);
   border: 1px solid var(--color-ink-band-border);
-  border-radius: 0.75rem;
+  border-radius: var(--ink-composer-field-radius-card, 0.75rem);
   background: var(--color-ink-band-paper);
   transition:
     border-color 0.15s,
@@ -3964,7 +3977,7 @@ button.wayCtaPaid {
   border: 0;
   background: none;
   font: inherit;
-  font-size: 0.92rem;
+  font-size: var(--ink-composer-input-font-size, 1rem);
   color: var(--color-ink-band-ink);
   padding: 0;
 }
@@ -4017,11 +4030,11 @@ button.wayCtaPaid {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  flex: 0 0 2.5rem;
+  width: var(--ink-composer-send-size, 2.75rem);
+  height: var(--ink-composer-send-size, 2.75rem);
+  flex: 0 0 var(--ink-composer-send-size, 2.75rem);
   border: 0;
-  border-radius: 0.75rem;
+  border-radius: var(--ink-composer-field-radius-card, 0.75rem);
   background: var(--color-ink-band-blue);
   color: var(--color-ink-band-paper);
   cursor: pointer;
@@ -4126,9 +4139,6 @@ button.wayCtaPaid {
   }
   .handwritingVline .vline {
     white-space: normal;
-  }
-  .floatChip {
-    min-height: 44px;
   }
   /* Touch targets: lift the small chrome controls to the 44px minimum on
      phones (the desktop sizes stay tight for the editorial read). */
@@ -4273,14 +4283,6 @@ button.wayCtaPaid {
   border-radius: 6px 9px 7px 8px / 9px 6px 8px 7px;
   filter: url(#marker);
   transform: rotate(-1.2deg);
-}
-.eyebrow {
-  font-family: var(--font-ink-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-ink-band-ink-muted);
-  margin-bottom: 1.25rem;
 }
 
 /* ===== opening hero ===== */
@@ -4529,6 +4531,7 @@ button.wayCtaPaid {
 .audChips {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.5rem;
 }
 .chipActive {
@@ -4788,113 +4791,11 @@ button.wayCtaPaid {
 }
 .chips {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
 }
 
-/* ===== composer (voice line + suggested utterances + input) ===== */
-.composer {
-  flex: 0 0 auto;
-  border-top: 1px solid var(--color-ink-band-border);
-  background: color-mix(in srgb, var(--color-ink-band-bg) 94%, transparent);
-  backdrop-filter: blur(10px);
-}
-.composerIn {
-  max-width: 46rem;
-  margin-inline: auto;
-  padding: 1rem clamp(1rem, 4vw, 2.5rem) 1.25rem;
-}
-.voiceLine {
-  min-height: 1.5rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: var(--color-ink-band-ink);
-  margin-bottom: 0.75rem;
-}
-.voiceLine .muted {
-  color: var(--color-ink-band-ink-muted);
-}
-.suggest {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 0.75rem;
-}
-.sug {
-  font: inherit;
-  font-size: 0.875rem;
-  padding: 0.45rem 1rem;
-  border: 1px solid var(--color-ink-band-border);
-  border-radius: 999px;
-  background: var(--color-ink-band-paper);
-  color: var(--color-ink-band-ink-muted);
-  cursor: pointer;
-  transition: all 150ms cubic-bezier(0.2, 0.6, 0.2, 1);
-}
-.sug:hover {
-  border-color: var(--color-ink-band-ink);
-  color: var(--color-ink-band-ink);
-}
-.sug.lead {
-  border-color: var(--color-ink-band-ink);
-  color: var(--color-ink-band-ink);
-  font-weight: 500;
-}
-.sug:disabled {
-  opacity: 0.5;
-  cursor: default;
-}
-.composerLine {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-.field {
-  flex: 1 1 auto;
-  display: flex;
-  align-items: center;
-  border: 1px solid var(--color-ink-band-border);
-  border-radius: 999px;
-  background: var(--color-ink-band-paper);
-  padding: 0.5rem 0.5rem 0.5rem 1.2rem;
-}
-.field:focus-within {
-  border-color: var(--color-ink-band-ink);
-}
-.field input {
-  flex: 1 1 auto;
-  border: 0;
-  background: none;
-  font: inherit;
-  font-size: 1rem;
-  color: var(--color-ink-band-ink);
-  padding: 0.45rem 0;
-}
-.field input:focus {
-  outline: none;
-}
-.field input::placeholder {
-  color: var(--color-ink-band-ink-muted);
-}
-.send {
-  flex: 0 0 auto;
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 50%;
-  border: 0;
-  background: var(--color-ink-band-ink);
-  color: var(--color-ink-band-bg);
-  font-size: 1.05rem;
-  cursor: pointer;
-  transition: background 150ms;
-}
-.send:hover {
-  background: var(--color-ink-band-blue);
-}
-.send:disabled {
-  opacity: 0.5;
-  cursor: default;
-}
 .note {
   font-family: var(--font-ink-mono);
   font-size: 0.75rem;
@@ -5227,22 +5128,20 @@ button.wayCtaPaid {
     display: none;
   }
 
-  /* Tap targets → 44px. Chips wrap text, so grow via min-height + centering. */
+  /* Tap targets → 44px on narrow viewports. */
   .chip,
   .sug,
   .cchip,
-  .opt {
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
+  .floatChip,
+  .opt,
+  .faqJumpLink {
+    min-height: var(--ink-pill-min-h-touch, 2.75rem);
   }
   .opt {
     /* `.opt` is a full-width column item — keep its left-aligned label. */
     display: flex;
+    align-items: center;
     justify-content: flex-start;
-  }
-  .faqJumpLink {
-    padding: 0.6rem 0.9rem;
   }
   .carouselBtn {
     width: 2.75rem;

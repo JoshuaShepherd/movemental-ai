@@ -24,8 +24,8 @@ export function AboutScreen({ onHome }: ScreenProps) {
       <div className={styles.sec}>
         <p className={styles.secLabel}>Who we are</p>
         <p className={styles.body}>
-          Alan Hirsch, Brad Brisco, and Joshua Shepherd, a missiologist, a missional strategist,
-          and the builder carrying the founding calling. {MOVEMENTAL_FOUNDING.origin}
+          Alan Hirsch, Brad Brisco, and Josh Shepherd. Alan is Co-Founder and Chief Movement
+          Officer. Brad is Co-Founder and CEO. Josh is Founder and CTO. {MOVEMENTAL_FOUNDING.origin}
         </p>
         <FoundersTeam />
       </div>

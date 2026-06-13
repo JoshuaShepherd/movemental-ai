@@ -1,3 +1,10 @@
+import {
+  ABOUT_FOUNDER_SLUGS,
+  FOUNDER_PROFILES,
+  FOUNDERS_AND_ROLES,
+  founderProfilePath,
+} from "@/lib/founders/content";
+
 /**
  * Copy + structure for `/agent/about` — the public "About Movemental" document.
  * Ink Band surface. Faithful migration of the about-page mockup, adapted to the
@@ -82,34 +89,24 @@ export const ABOUT_REFUSALS = [
   },
 ] as const;
 
+/** Section 03 supplement — authorship and roles (trust logic kept tight). */
+export { FOUNDERS_AND_ROLES };
+
 /**
- * Section 06 — founders, by index into `LEADERS`:
- * Alan Hirsch (0), Brad Brisco (1), Josh Shepherd (8). Portraits are the real
- * `LEADERS[i].img` files. `profileAsk` hands off to the concierge.
+ * Section 06 — founders. Portraits from `LEADERS[i].img`; copy from
+ * `@/lib/founders/content`. `profileHref` is the true home of the full bio.
  */
-export const ABOUT_FOUNDERS = [
-  {
-    leaderIndex: 0,
-    role: "Movement thinker",
-    bio: "One of the most influential voices on missional church and movements. His frameworks have shaped a generation of leaders. His own platform is the reference for everything we build for a Voice.",
-    profileAsk: "Tell me about Alan Hirsch.",
-    verify: "Author entity · sameAs linked",
-  },
-  {
-    leaderIndex: 1,
-    role: "Missional leader",
-    bio: "A missional church leader and author focused on how ordinary churches and people live sent into their places. He keeps the work tethered to the ground it is meant to serve.",
-    profileAsk: "Tell me about Brad Brisco.",
-    verify: "Author entity · sameAs linked",
-  },
-  {
-    leaderIndex: 8,
-    role: "Technical co-founder",
-    bio: "The one turning the thesis into software. He builds the platform, the agents, and the system underneath, so the ideas become something an organization can actually use.",
-    profileAsk: "Tell me about Josh Shepherd.",
-    verify: "Founder entity · sameAs linked",
-  },
-] as const;
+export const ABOUT_FOUNDERS = ABOUT_FOUNDER_SLUGS.map((slug) => {
+  const profile = FOUNDER_PROFILES[slug];
+  return {
+    leaderIndex: profile.leaderIndex,
+    role: profile.jobTitle,
+    bio: profile.shortBio,
+    profileHref: founderProfilePath(slug),
+    profileAsk: `Tell me about ${profile.name}.`,
+    verify: slug === "josh-shepherd" ? "Founder entity · sameAs linked" : "Author entity · sameAs linked",
+  };
+});
 
 /**
  * Section 07 — the network grid. Indices into `LEADERS`; the first is "lit"

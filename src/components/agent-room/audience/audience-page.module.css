@@ -1,194 +1,7 @@
 /*
- * Institutions document — /agent/institutions
- * Ink Band: warm paper, hairline structure, left sticky sidebar, scroll-spy.
+ * Audience document content — churches, nonprofits, institutions.
+ * Shared chrome: document-shell.module.css
  */
-
-.page {
-  min-height: 100dvh;
-  background: var(--color-ink-band-bg);
-  color: var(--color-ink-band-ink);
-}
-
-.layout {
-  display: grid;
-  grid-template-columns: 11.5rem minmax(0, 1fr);
-  min-height: calc(100dvh - 3.25rem);
-}
-
-/* ---- Sidebar (Section 0) ---- */
-
-.sidebar {
-  position: sticky;
-  top: 3.25rem;
-  align-self: start;
-  height: calc(100dvh - 3.25rem);
-  padding: 1.75rem 0 2rem 1.25rem;
-  border-right: 1px solid var(--color-ink-band-border);
-  overflow-y: auto;
-}
-
-.sidebarLabel {
-  margin: 0 0 1rem;
-  font-family: var(--font-ink-mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-ink-band-ink-muted);
-}
-
-.sidebarNav {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.sidebarLink {
-  display: block;
-  padding: 0.35rem 0 0.35rem 0.65rem;
-  margin-left: -0.65rem;
-  font-family: var(--font-ink-body);
-  font-size: 0.82rem;
-  line-height: 1.35;
-  color: var(--color-ink-band-ink-muted);
-  text-align: left;
-  border: none;
-  border-left: 2px solid transparent;
-  background: none;
-  cursor: pointer;
-  transition: color 0.15s, border-color 0.15s;
-}
-
-.sidebarLink:hover {
-  color: var(--color-ink-band-ink);
-}
-
-.sidebarLinkActive {
-  color: var(--color-ink-band-ink);
-  border-left-color: var(--color-ink-band-blue);
-  font-weight: 500;
-}
-
-/* ---- Mobile nav ---- */
-
-.mobileNav {
-  display: none;
-  position: sticky;
-  top: 3.25rem;
-  z-index: 35;
-  background: var(--color-ink-band-bg);
-  border-bottom: 1px solid var(--color-ink-band-border);
-  padding: 0.5rem 1rem 0.65rem;
-}
-
-.mobileProgress {
-  height: 2px;
-  background: var(--color-ink-band-border);
-  border-radius: 999px;
-  overflow: hidden;
-  margin-bottom: 0.5rem;
-}
-
-.mobileProgressBar {
-  height: 100%;
-  background: var(--color-ink-band-blue);
-  transition: width 0.2s ease-out;
-}
-
-.mobileNavRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-}
-
-.mobileNavCurrent {
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--color-ink-band-ink);
-}
-
-.mobileMenuBtn {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  font-family: var(--font-ink-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-ink-band-blue);
-  padding: 0 1rem;
-  border: 1px solid var(--color-ink-band-border);
-  border-radius: 999px;
-  background: var(--color-ink-band-paper);
-}
-
-.mobileMenu {
-  display: none;
-  margin-top: 0.5rem;
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--color-ink-band-border);
-}
-
-.mobileMenuOpen {
-  display: block;
-}
-
-.mobileMenuLink,
-.mobileMenuLinkActive {
-  display: block;
-  width: 100%;
-  padding: 0.45rem 0;
-  font-size: 0.84rem;
-  color: var(--color-ink-band-ink-muted);
-  text-align: left;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.mobileMenuLinkActive {
-  color: var(--color-ink-band-ink);
-  font-weight: 500;
-}
-
-/* ---- Main content ---- */
-
-.main {
-  min-width: 0;
-}
-
-.section {
-  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.25rem, 5vw, 3rem);
-  border-bottom: 1px solid var(--color-ink-band-border);
-  scroll-margin-top: 3.5rem;
-}
-
-.section:last-child {
-  border-bottom: 0;
-}
-
-.sectionInner {
-  max-width: 42rem;
-  margin: 0 auto;
-}
-
-.sectionInnerWide {
-  max-width: 48rem;
-}
-
-.bandPaper {
-  background: var(--color-ink-band-paper);
-}
-
-.bandSurface {
-  background: var(--color-ink-band-surface);
-}
-
-.hero {
-  padding-top: clamp(3rem, 8vw, 5.5rem);
-  padding-bottom: clamp(2.5rem, 6vw, 4rem);
-  background: var(--color-ink-band-paper);
-}
 
 .whereYouStand {
   padding-top: clamp(3rem, 8vw, 5.5rem);
@@ -228,57 +41,11 @@
   border-top: 1px solid var(--color-ink-band-border);
 }
 
-.eyebrow {
-  margin: 0 0 0.85rem;
-  font-family: var(--font-ink-mono);
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: var(--color-ink-band-ink-muted);
-}
-
-.title {
-  font-family: var(--font-ink-display);
-  font-size: clamp(1.85rem, 4.5vw, 2.65rem);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.08;
-  margin: 0 0 1rem;
-}
-
-.titleSm {
-  font-size: clamp(1.45rem, 3.5vw, 2rem);
-  margin-bottom: 0.85rem;
-}
-
-.sub,
-.body {
-  font-family: var(--font-ink-body);
-  font-size: 1.05rem;
-  line-height: 1.55;
-  color: var(--color-ink-band-ink);
-  max-width: 38rem;
-  margin: 0;
-}
-
-.body + .body {
-  margin-top: 1rem;
-}
-
 .intro {
   font-size: 1rem;
   color: var(--color-ink-band-ink-muted);
   margin: 0 0 1.5rem;
   max-width: 36rem;
-}
-
-.hand {
-  margin-top: 1.25rem;
-  font-family: var(--font-ink-hand);
-  font-size: 1.15rem;
-  color: var(--color-ink-band-blue);
-  transform: rotate(-1deg);
 }
 
 /* ---- Pain cards ---- */
@@ -304,7 +71,6 @@
   border-color: var(--color-ink-band-ink-muted);
 }
 
-/* Structural-pattern card — rests on the surface tone, no source pill. */
 .cardSynth {
   background: var(--color-ink-band-surface);
 }
@@ -326,7 +92,6 @@
   margin: 0;
 }
 
-/* Measured phrase + its hover-linked citation superscript. */
 .stat {
   color: var(--color-ink-band-ink);
   font-weight: 600;
@@ -354,15 +119,21 @@
 }
 
 .tagCite {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  line-height: 1;
+  text-align: center;
+  vertical-align: middle;
   font-family: var(--font-ink-mono);
   font-size: 0.55rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-ink-band-blue);
   border: 1px solid var(--color-ink-band-blue);
-  border-radius: 999px;
-  padding: 0.2rem 0.55rem;
+  border-radius: var(--ink-pill-radius, 999px);
+  padding: 0.28rem 0.6rem;
 }
 
 .tagPat {
@@ -370,8 +141,6 @@
   font-size: 1.1rem;
   color: var(--color-ink-band-ink-muted);
 }
-
-/* ---- Charter five-row (hero) ---- */
 
 .five {
   display: flex;
@@ -401,8 +170,6 @@
   font-weight: 600;
 }
 
-/* ---- Evidence header (mono label + sub, the HTML `.evhead`) ---- */
-
 .evhead {
   display: flex;
   flex-direction: column;
@@ -423,8 +190,6 @@
   font-size: 0.92rem;
   color: var(--color-ink-band-ink-muted);
 }
-
-/* ---- Sources dock ---- */
 
 .dock {
   margin-top: 1.6rem;
@@ -482,9 +247,15 @@
 }
 
 .vf {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  line-height: 1;
+  text-align: center;
+  vertical-align: middle;
   margin-left: 0.4rem;
-  padding: 0.1rem 0.4rem;
+  padding: 0.22rem 0.45rem;
   font-family: var(--font-ink-mono);
   font-size: 0.5rem;
   letter-spacing: 0.12em;
@@ -492,7 +263,7 @@
   white-space: nowrap;
   color: var(--color-ink-band-ink-muted);
   border: 1px solid var(--color-ink-band-border);
-  border-radius: 999px;
+  border-radius: var(--ink-pill-radius, 999px);
 }
 
 .dockNote {
@@ -504,16 +275,12 @@
   color: var(--color-ink-band-ink-muted);
 }
 
-/* ---- Build module list (numbered, the HTML `.modlist`) ---- */
-
 .toolNum {
   min-width: 1.6rem;
   font-family: var(--font-ink-mono);
   font-size: 0.72rem;
   color: var(--color-ink-band-blue);
 }
-
-/* ---- Handbook dashboard (dark figure, the HTML `.dash`) ---- */
 
 .dash {
   --dash-card: #10162a;
@@ -589,14 +356,20 @@
 }
 
 .ds {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  line-height: 1;
+  text-align: center;
   align-self: flex-start;
   margin-top: 0.5rem;
-  padding: 0.18rem 0.4rem;
+  padding: 0.22rem 0.45rem;
   font-family: var(--font-ink-mono);
   font-size: 0.52rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  border-radius: 999px;
+  border-radius: var(--ink-pill-radius, 999px);
 }
 
 .dsRatified {
@@ -625,77 +398,6 @@
   font-style: italic;
   color: var(--color-ink-band-ink-muted);
 }
-
-/* ---- Letter inset ---- */
-
-.letterPanel {
-  margin-top: 1.75rem;
-  padding: clamp(1.5rem, 4vw, 2.25rem) clamp(1.25rem, 4vw, 2rem);
-  background: var(--color-ink-band-paper);
-  border: 1px solid var(--color-ink-band-border);
-  border-radius: 13px;
-  max-width: 36rem;
-}
-
-.letterProse {
-  font-size: 1.02rem;
-  line-height: 1.65;
-  color: var(--color-ink-band-ink);
-}
-
-.letterProse p {
-  margin: 0;
-}
-
-.letterProse p + p {
-  margin-top: 1.15rem;
-}
-
-.letterActions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
-  margin-top: 1.5rem;
-}
-
-.btnPrimary,
-.btnSecondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.55rem 1.1rem;
-  font-family: var(--font-ink-body);
-  font-size: 0.88rem;
-  font-weight: 500;
-  border-radius: 999px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
-}
-
-.btnPrimary {
-  background: var(--color-ink-band-ink);
-  color: var(--color-ink-band-paper);
-  border: 1px solid var(--color-ink-band-ink);
-}
-
-.btnPrimary:hover {
-  background: var(--color-ink-band-blue);
-  border-color: var(--color-ink-band-blue);
-}
-
-.btnSecondary {
-  background: transparent;
-  color: var(--color-ink-band-ink);
-  border: 1px solid var(--color-ink-band-border);
-}
-
-.btnSecondary:hover {
-  border-color: var(--color-ink-band-ink);
-  background: var(--color-ink-band-surface);
-}
-
-/* ---- Pain → fix rows ---- */
 
 .fixRows {
   margin-top: 1.75rem;
@@ -781,8 +483,6 @@
   }
 }
 
-/* ---- Tools ---- */
-
 .toolList {
   margin-top: 1.5rem;
 }
@@ -802,8 +502,6 @@
   color: var(--color-ink-band-ink);
   font-weight: 600;
 }
-
-/* ---- Path rail ---- */
 
 .stageRail {
   display: grid;
@@ -867,7 +565,6 @@
   margin-top: 1.5rem;
 }
 
-/* Seam-out line from The build into the deck — the question the deck answers. */
 .bridgeQuestion {
   margin-top: 2rem;
   font-family: var(--font-ink-display);
@@ -883,12 +580,14 @@
   padding-top: 1.75rem;
   border-top: 1px solid var(--color-ink-band-border);
 }
+
 .assessmentPreviewCaption {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
   margin-bottom: 1rem;
 }
+
 .assessmentPreviewEyebrow {
   font-family: var(--font-ink-mono);
   font-size: 0.72rem;
@@ -896,19 +595,23 @@
   text-transform: uppercase;
   color: var(--color-ink-band-ink-muted);
 }
+
 .assessmentPreviewTitle {
   font-family: var(--font-ink-display);
   font-size: 1.25rem;
   color: var(--color-ink-band-ink);
 }
+
 .assessmentPreviewSub {
   font-size: 0.88rem;
   color: var(--color-ink-band-ink-muted);
   max-width: 52ch;
 }
+
 .assessmentPreviewSpread {
   margin-top: 0.5rem;
 }
+
 .assessmentPreviewNote {
   margin-top: 1rem;
   font-size: 0.9rem;
@@ -917,21 +620,7 @@
   max-width: 58ch;
 }
 
-/* ---- Responsive ---- */
-
 @media (max-width: 860px) {
-  .layout {
-    display: block;
-  }
-
-  .sidebar {
-    display: none;
-  }
-
-  .mobileNav {
-    display: block;
-  }
-
   .cardGrid {
     grid-template-columns: 1fr;
   }
@@ -965,8 +654,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mobileProgressBar,
-  .sidebarLink,
   .card,
   .src {
     transition: none;

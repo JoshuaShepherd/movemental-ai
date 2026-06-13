@@ -4,11 +4,15 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
+import { DocumentPageChrome } from "@/components/agent-room/document/document-page-chrome";
 import { DocumentPageShell } from "@/components/agent-room/document/document-page-shell";
-import { useScrollSpy } from "@/components/agent-room/institutions/use-scroll-spy";
+import shell from "@/components/agent-room/document/document-shell.module.css";
+import { useDocumentScrollProgress } from "@/components/agent-room/document/use-document-scroll-progress";
+import { useScrollSpy } from "@/components/agent-room/document/use-scroll-spy";
 import { LEADERS } from "@/lib/agent-room/data/leaders";
+import { FOUNDING_STORY } from "@/lib/founders/content";
 
 import {
   ABOUT_DOCK,
@@ -19,6 +23,7 @@ import {
   ABOUT_PAPERS,
   ABOUT_REFUSALS,
   ABOUT_SPY_SECTIONS,
+  FOUNDERS_AND_ROLES,
 } from "./about-data";
 import styles from "./about.module.css";
 
@@ -39,23 +44,11 @@ export function AboutExperience() {
   const activeNavIndex = ABOUT_SPY_SECTIONS[spyIndex]?.navIndex ?? 0;
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const scrollProgress = useDocumentScrollProgress();
 
   const scrollTo = useCallback((id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const docH = document.documentElement.scrollHeight - window.innerHeight;
-      setScrollProgress(docH > 0 ? Math.min(100, (window.scrollY / docH) * 100) : 0);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const activeLabel = ABOUT_NAV[activeNavIndex]?.label ?? ABOUT_NAV[0].label;
 
   return (
     <DocumentPageShell
@@ -64,81 +57,31 @@ export function AboutExperience() {
       highlightChipLabel={ABOUT_DOCK.highlightChipLabel}
       screenKey="about"
     >
-      <>
-        <div className={styles.mobileNav}>
-          <div className={styles.mobileProgress} aria-hidden="true">
-            <div className={styles.mobileProgressBar} style={{ width: `${scrollProgress}%` }} />
-          </div>
-          <div className={styles.mobileNavRow}>
-            <span className={styles.mobileNavCurrent}>{activeLabel}</span>
-            <button
-              type="button"
-              className={styles.mobileMenuBtn}
-              aria-expanded={mobileMenuOpen}
-              aria-controls="about-mobile-menu"
-              onClick={() => setMobileMenuOpen((o) => !o)}
-            >
-              Sections
-            </button>
-          </div>
-          <nav
-            id="about-mobile-menu"
-            className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.mobileMenuOpen : ""}`}
-            aria-label="Page sections"
-          >
-            {ABOUT_NAV.map((entry, i) => (
-              <button
-                key={entry.id}
-                type="button"
-                className={i === activeNavIndex ? styles.mobileMenuLinkActive : styles.mobileMenuLink}
-                onClick={() => {
-                  scrollTo(entry.id);
-                  setMobileMenuOpen(false);
-                }}
-              >
-                {entry.label}
-              </button>
-            ))}
-          </nav>
-        </div>
-
-        <div className={styles.layout}>
-          <aside className={styles.sidebar} aria-label="Page sections">
-            <p className={styles.sidebarLabel}>On this page</p>
-            <nav className={styles.sidebarNav}>
-              {ABOUT_NAV.map((entry, i) => (
-                <button
-                  key={entry.id}
-                  type="button"
-                  className={`${styles.sidebarLink} ${i === activeNavIndex ? styles.sidebarLinkActive : ""}`}
-                  aria-current={i === activeNavIndex ? "true" : undefined}
-                  onClick={() => scrollTo(entry.id)}
-                >
-                  <span className={styles.sidebarNum}>
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  {entry.label}
-                </button>
-              ))}
-            </nav>
-          </aside>
-
-          <main className={styles.main}>
+      <DocumentPageChrome
+        entries={ABOUT_NAV}
+        activeNavIndex={activeNavIndex}
+        scrollTo={scrollTo}
+        mobileMenuOpen={mobileMenuOpen}
+        setMobileMenuOpen={setMobileMenuOpen}
+        scrollProgress={scrollProgress}
+        menuId="about-mobile-menu"
+        numberedSidebar
+      >
             {/* 01 — WHO WE ARE */}
-            <section className={`${styles.section} ${styles.hero}`} id="who-we-are">
-              <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>About Movemental</p>
-                <h1 className={styles.title}>
+            <section className={`${shell.section} ${shell.hero}`} id="who-we-are">
+              <div className={shell.sectionInner}>
+                <p className={shell.eyebrow}>About Movemental</p>
+                <h1 className={shell.title}>
                   We help you meet AI without losing the{" "}
                   <span className={styles.mark}>trust</span> your work depends on.
                 </h1>
-                <p className={styles.body}>
+                <p className={shell.body}>
                   Movemental builds the platform mission-driven organizations need to meet AI
                   with their integrity intact. We gather your scattered work into one place,
                   make it verifiable, build the tools on top of it, and help you govern the
                   whole thing. We go in order, and the order starts with Safety.
                 </p>
-                <p className={styles.body}>
+                <p className={shell.body}>
                   We serve churches, nonprofits, seminaries, and the individual leaders whose
                   body of work is worth protecting.
                 </p>
@@ -151,26 +94,26 @@ export function AboutExperience() {
             </section>
 
             {/* 02 — WHY WE EXIST */}
-            <section className={`${styles.section} ${styles.bandSurface}`} id="why-we-exist">
-              <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>Why we exist</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>
+            <section className={`${shell.section} ${shell.bandSurface}`} id="why-we-exist">
+              <div className={shell.sectionInner}>
+                <p className={shell.eyebrow}>Why we exist</p>
+                <h2 className={`${shell.title} ${shell.titleSm}`}>
                   The problem underneath the problem is fragmentation.
                 </h2>
-                <p className={styles.body}>
+                <p className={shell.body}>
                   A leader&apos;s life-work, or an institution&apos;s, was whole in the living
                   of it. Then it scattered. Into books and talks and decks and inboxes and a few
                   people&apos;s memories. Most of it is real, and almost none of it is gathered.
                   That is fragmentation, and it was a quiet problem until AI arrived.
                 </p>
-                <p className={styles.body}>
+                <p className={shell.body}>
                   AI did not cause the scatter. It is a mirror. Pointed at fragmented work, it
                   multiplies the fragments. It fills the gaps with something fluent and wrong,
                   faster than anyone can correct it. The result is a world where a reader can no
                   longer tell what is real, who actually said it, or whether it is trustworthy
                   at all.
                 </p>
-                <p className={styles.body}>
+                <p className={shell.body}>
                   So the work now is credibility. Not louder marketing. The ability to be
                   believed, and to be the answer the machine returns when someone asks about
                   you. That is downstream of one thing: having gathered your real work into
@@ -181,41 +124,34 @@ export function AboutExperience() {
             </section>
 
             {/* 03 — THE STORY */}
-            <section className={styles.section} id="the-story">
-              <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>The story</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>
-                  It started as a conversation.
+            <section className={shell.section} id="the-story">
+              <div className={shell.sectionInner}>
+                <p className={shell.eyebrow}>The story</p>
+                <h2 className={`${shell.title} ${shell.titleSm}`}>
+                  {FOUNDING_STORY.lead}
                 </h2>
-                <p className={styles.body}>
-                  For two years, Alan, Brad, and Josh kept circling the same worry. AI was
-                  arriving in churches, nonprofits, and seminaries faster than anyone was
-                  deciding how to meet it. The people most exposed were the ones whose entire
-                  work rests on trust, and they had the least time to think it through.
-                </p>
-                <p className={styles.body}>
-                  We did not want to add to the noise. We wanted to build the thing we wished
-                  existed: a way for a mission-driven organization to meet this moment in order,
-                  without faking its way through, and without losing the human core of the work.
-                  In 2026, the conversation became Movemental.
-                </p>
+                {FOUNDING_STORY.paragraphs.map((paragraph) => (
+                  <p key={paragraph.slice(0, 48)} className={shell.body}>
+                    {paragraph}
+                  </p>
+                ))}
               </div>
             </section>
 
             {/* 04 — HOW WE USE AI */}
-            <section className={styles.section} id="how-we-use-ai">
-              <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>How we use AI</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>
+            <section className={shell.section} id="how-we-use-ai">
+              <div className={shell.sectionInner}>
+                <p className={shell.eyebrow}>How we use AI</p>
+                <h2 className={`${shell.title} ${shell.titleSm}`}>
                   We use the tools on ourselves first.
                 </h2>
-                <p className={styles.body}>
+                <p className={shell.body}>
                   We do not sell anything we will not use. This site, our research, and our own
                   agents are built the way we would build yours. We hold ourselves to the same
                   Safety standard we ask of you, and we write our own AI Charter before we help
                   you write yours.
                 </p>
-                <p className={styles.body}>
+                <p className={shell.body}>
                   When we get it wrong, we say so. When we are early, we say that too. The point
                   is not to look more finished than we are. It is to be the kind of organization
                   you can actually trust with this. The full account is on{" "}
@@ -237,13 +173,13 @@ export function AboutExperience() {
             </section>
 
             {/* 05 — WHAT WE REFUSE */}
-            <section className={`${styles.section} ${styles.bandPaper}`} id="what-we-refuse">
-              <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>What we refuse</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>
+            <section className={`${shell.section} ${shell.bandPaper}`} id="what-we-refuse">
+              <div className={shell.sectionInner}>
+                <p className={shell.eyebrow}>What we refuse</p>
+                <h2 className={`${shell.title} ${shell.titleSm}`}>
                   Some things we won&apos;t do, ever.
                 </h2>
-                <p className={`${styles.body} ${styles.bodyMuted}`}>
+                <p className={`${shell.body} ${shell.bodyMuted}`}>
                   These are not preferences. They are the line. Breaking one would cost the
                   exact trust we exist to protect.
                 </p>
@@ -263,10 +199,10 @@ export function AboutExperience() {
             </section>
 
             {/* 06 — THE FOUNDERS */}
-            <section className={styles.section} id="the-founders">
-              <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>The founders</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>
+            <section className={shell.section} id="the-founders">
+              <div className={shell.sectionInner}>
+                <p className={shell.eyebrow}>The founders</p>
+                <h2 className={`${shell.title} ${shell.titleSm}`}>
                   Three people who couldn&apos;t stop talking about it.
                 </h2>
                 <div className={styles.founders}>
@@ -280,7 +216,7 @@ export function AboutExperience() {
                         <h3 className={styles.fname}>{leader.name}</h3>
                         <p className={styles.frole}>{founder.role}</p>
                         <p className={styles.fbio}>{founder.bio}</p>
-                        <Link className={styles.fmore} href={ask(founder.profileAsk)}>
+                        <Link className={styles.fmore} href={founder.profileHref}>
                           Read profile →
                         </Link>
                         <p className={styles.fverify}>
@@ -293,24 +229,32 @@ export function AboutExperience() {
                     );
                   })}
                 </div>
+                <div className={styles.trust} style={{ marginTop: "2rem" }}>
+                  <p className={styles.trustHead}>{FOUNDERS_AND_ROLES.lead}</p>
+                  {FOUNDERS_AND_ROLES.body.map((paragraph) => (
+                    <p key={paragraph.slice(0, 48)} className={styles.trustBody}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
               </div>
             </section>
 
             {/* 07 — THE NETWORK */}
-            <section className={`${styles.section} ${styles.bandSurface}`} id="the-network">
-              <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>The network</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>
+            <section className={`${shell.section} ${shell.bandSurface}`} id="the-network">
+              <div className={shell.sectionInner}>
+                <p className={shell.eyebrow}>The network</p>
+                <h2 className={`${shell.title} ${shell.titleSm}`}>
                   We&apos;re holding a network, not a roster.
                 </h2>
-                <p className={styles.body}>
+                <p className={shell.body}>
                   Movemental is not one company serving customers one at a time. It is a network
                   of senior movement leaders whose work we gather, make legible, and connect.
                   When one Voice cites another, both grow more credible. That mutual credibility
                   is something no website builder can give you, and it is the deepest reason to
                   be here.
                 </p>
-                <p className={`${styles.body} ${styles.bodyMuted}`}>
+                <p className={`${shell.body} ${shell.bodyMuted}`}>
                   It starts with one platform, built well. Then a second. Then a hundred, each a
                   node that makes the others stronger.
                 </p>
@@ -331,18 +275,18 @@ export function AboutExperience() {
                     + more
                   </Link>
                 </div>
-                <p className={styles.hand}>one voice, then a hundred</p>
+                <p className={shell.hand}>one voice, then a hundred</p>
               </div>
             </section>
 
             {/* 08 — RESEARCH */}
-            <section className={styles.section} id="research">
-              <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>Research</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>
+            <section className={shell.section} id="research">
+              <div className={shell.sectionInner}>
+                <p className={shell.eyebrow}>Research</p>
+                <h2 className={`${shell.title} ${shell.titleSm}`}>
                   We publish what we&apos;re learning.
                 </h2>
-                <p className={styles.body}>
+                <p className={shell.body}>
                   We do our own thinking in the open, sourced and cited, so you can check it. If
                   we are going to argue that being verifiable is the work, our own claims have to
                   be verifiable first.
@@ -363,30 +307,30 @@ export function AboutExperience() {
             </section>
 
             {/* 09 — TALK TO US */}
-            <section className={styles.section} id="talk-to-us">
-              <div className={styles.sectionInner}>
-                <p className={styles.eyebrow}>Talk to us</p>
-                <h2 className={`${styles.title} ${styles.titleSm}`}>
+            <section className={shell.section} id="talk-to-us">
+              <div className={shell.sectionInner}>
+                <p className={shell.eyebrow}>Talk to us</p>
+                <h2 className={`${shell.title} ${shell.titleSm}`}>
                   Start with a conversation.
                 </h2>
-                <p className={styles.body}>
+                <p className={shell.body}>
                   No checkout button. No pressure. Tell us where your organization is, and we
                   will show you the first step, which is almost always Safety, and almost always
                   free to begin.
                 </p>
                 <div className={styles.doors}>
-                  <Link className={styles.btn} href={ask("I'd like to talk to Movemental.")}>
+                  <Link className={shell.btnPrimary} href={ask("I'd like to talk to Movemental.")}>
                     Talk to us
                   </Link>
                   <button
                     type="button"
-                    className={styles.btnGhost}
+                    className={shell.btnSecondary}
                     onClick={() => scrollTo("why-we-exist")}
                   >
                     Read the thesis
                   </button>
                   <Link
-                    className={styles.btnGhost}
+                    className={shell.btnSecondary}
                     href={ask("Map where my organization actually stands with AI.")}
                   >
                     Map your organization
@@ -401,9 +345,7 @@ export function AboutExperience() {
                 </p>
               </div>
             </section>
-          </main>
-        </div>
-      </>
+      </DocumentPageChrome>
     </DocumentPageShell>
   );
 }

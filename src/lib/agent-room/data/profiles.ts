@@ -14,6 +14,8 @@
 import type { Scene } from "../acts";
 import { LEADER_CORPUS_SLUGS } from "./leaders";
 
+import { FOUNDER_PROFILES } from "@/lib/founders/content";
+
 export interface ProfileWork {
   /** Section title (e.g. "Books", "Organizations"). */
   t: string;
@@ -239,23 +241,28 @@ export const PROFILES: Record<number, Profile> = {
   },
   8: {
     approved: true,
-    lede: "He founded Movemental, and builds the path itself.",
-    bio: "Josh Shepherd came to this work from inside it, years as a Methodist pastor, then founding a neomonastic, communal nonprofit where he and his wife lived alongside young adults in extended residency, and from there began building the digital home for what comes next.",
-    work: [
-      { t: "Role", g: "Founder & CTO of Movemental." },
-      { t: "Builds", g: "The four-stage path: Safety, Sandbox, Training, Technology, and the technology behind it." },
-    ],
+    lede: "Founder & CTO · builds the path itself",
+    bio: [
+      FOUNDER_PROFILES["josh-shepherd"].mediumBio,
+      ...FOUNDER_PROFILES["josh-shepherd"].fullBio,
+    ].join("\n\n"),
+    work: FOUNDER_PROFILES["josh-shepherd"].selectedWork.map((item) => ({
+      t: item.title,
+      g: item.detail,
+    })),
     connection:
-      "Founder of Movemental. Josh began collaborating with Brad and Alan around a shared concern: that the AI moment would happen to mission-driven organizations rather than be navigated by them. Movemental took shape in 2026.",
+      "Founder of Movemental. Josh began the two-year conversation with Brad and Alan about what AI was doing to mission-driven organizations. Movemental took shape in 2026. He is Founder and CTO — architect of the platform — and handed the CEO seat to Brad on purpose.",
     workSay: [
       "Josh founded Movemental and builds the path: Safety, Sandbox, Training, Technology.",
-      "He came to it as a pastor first, building the tools from inside the practice.",
+      "He designs the platform, the agents, and the system underneath.",
     ],
     connectSay: [
-      "Founder of Movemental.",
-      "He built this with Brad and Alan as Movemental took shape in 2026.",
+      "Founder and CTO of Movemental.",
+      "Brad is CEO. Alan is Chief Movement Officer. Josh builds what the three of them decided was needed.",
     ],
-    links: [],
+    links: [
+      { label: "Full profile", href: "/about/josh-shepherd" },
+    ],
   },
   9: {
     approved: true,

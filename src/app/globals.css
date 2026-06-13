@@ -2,6 +2,7 @@
 @import "@xyflow/react/dist/style.css";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "../styles/ink-pill-foundation.css";
 @plugin "@tailwindcss/typography";
 @config "../../tailwind.config.ts";
 

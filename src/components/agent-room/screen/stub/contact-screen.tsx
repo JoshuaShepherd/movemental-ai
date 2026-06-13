@@ -112,8 +112,9 @@ export function ContactScreen({ onHome }: ScreenProps) {
         Get in touch
       </p>
       <p className={styles.body} style={{ marginTop: "0.4rem", marginBottom: "1.15rem" }}>
-        Tell us a bit about your organization and what you’re wondering about. We read
-        every message and reply personally, usually within a business day.
+        Tell us a bit about your organization and what you&apos;re wondering about. We read
+        every message and reply personally, usually within a business day. Your first conversation
+        is thirty minutes with Brad (CEO), Alan (Chief Movement Officer), or Josh (Founder &amp; CTO).
       </p>
 
       <form className={styles.cform} onSubmit={submit} noValidate>

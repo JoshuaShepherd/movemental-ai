@@ -1,0 +1,17 @@
+/* Ink Band pill layout tokens — mirrored in CSS module pill classes. */
+@layer components {
+  .ink-band-surface {
+    --ink-pill-radius: var(--radius-pill, 9999px);
+    --ink-pill-line-body: 1.25;
+    --ink-pill-line-mono: 1;
+    --ink-pill-min-h: 2rem;
+    --ink-pill-min-h-touch: 2.75rem;
+    --ink-composer-send-size: 2.75rem;
+    --ink-composer-field-pad-y: 0.5rem;
+    --ink-composer-field-pad-x-start: 1.15rem;
+    --ink-composer-field-pad-x-end: 0.5rem;
+    --ink-composer-input-font-size: 1rem;
+    --ink-composer-field-radius-pill: var(--ink-pill-radius, 999px);
+    --ink-composer-field-radius-card: 0.75rem;
+  }
+}

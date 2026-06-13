@@ -69,6 +69,9 @@ next-env.d.ts
 # Playwright web-export of field guide markdown — not the designed lead magnet
 /public/downloads/movemental-it-starts-with-safety-field-guide-web-export.pdf
 
+# Platform stillshot captures (regenerate with pnpm captures:platform)
+/docs/captures/output/
+
 # Agent room corpus sync state (OpenAI file IDs + hashes)
 /docs/build/agents/agent-room/files/.corpus-sync-state.json
 

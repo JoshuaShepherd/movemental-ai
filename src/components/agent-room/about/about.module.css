@@ -1,235 +1,10 @@
 /*
- * About document — /agent/about
- * Ink Band: warm paper, hairline structure, left sticky sidebar, scroll-spy.
+ * About document content — /agent/about
+ * Shared chrome: document-shell.module.css
  */
-
-.layout {
-  display: grid;
-  grid-template-columns: 11.5rem minmax(0, 1fr);
-  min-height: calc(100dvh - 3.25rem);
-}
-
-.sidebar {
-  position: sticky;
-  top: 3.25rem;
-  align-self: start;
-  height: calc(100dvh - 3.25rem);
-  padding: 1.75rem 0 2rem 1.25rem;
-  border-right: 1px solid var(--color-ink-band-border);
-  overflow-y: auto;
-}
-
-.sidebarLabel {
-  margin: 0 0 1rem;
-  font-family: var(--font-ink-mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-ink-band-ink-muted);
-}
-
-.sidebarNav {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.sidebarLink {
-  display: flex;
-  gap: 0.5rem;
-  align-items: baseline;
-  padding: 0.35rem 0 0.35rem 0.65rem;
-  margin-left: -0.65rem;
-  font-family: var(--font-ink-body);
-  font-size: 0.82rem;
-  line-height: 1.35;
-  color: var(--color-ink-band-ink-muted);
-  text-align: left;
-  border: none;
-  border-left: 2px solid transparent;
-  background: none;
-  cursor: pointer;
-  transition: color 0.15s, border-color 0.15s;
-}
-
-.sidebarLink:hover {
-  color: var(--color-ink-band-ink);
-}
-
-.sidebarLinkActive {
-  color: var(--color-ink-band-ink);
-  border-left-color: var(--color-ink-band-blue);
-  font-weight: 500;
-}
-
-.sidebarNum {
-  font-family: var(--font-ink-mono);
-  font-size: 0.6rem;
-  color: var(--color-ink-band-border);
-}
-
-.sidebarLinkActive .sidebarNum {
-  color: var(--color-ink-band-blue);
-}
-
-.mobileNav {
-  display: none;
-  position: sticky;
-  top: 3.25rem;
-  z-index: 35;
-  background: var(--color-ink-band-bg);
-  border-bottom: 1px solid var(--color-ink-band-border);
-  padding: 0.5rem 1rem 0.65rem;
-}
-
-.mobileProgress {
-  height: 2px;
-  background: var(--color-ink-band-border);
-  margin-bottom: 0.5rem;
-  border-radius: 1px;
-  overflow: hidden;
-}
-
-.mobileProgressBar {
-  height: 100%;
-  background: var(--color-ink-band-blue);
-  transition: width 0.1s linear;
-}
-
-.mobileNavRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-}
-
-.mobileNavCurrent {
-  font-family: var(--font-ink-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-ink-band-ink-muted);
-}
-
-.mobileMenuBtn {
-  font-family: var(--font-ink-body);
-  font-size: 0.82rem;
-  padding: 0.35rem 0.65rem;
-  border: 1px solid var(--color-ink-band-border);
-  background: var(--color-ink-band-paper);
-  cursor: pointer;
-  border-radius: 2px;
-}
-
-.mobileMenu {
-  display: none;
-  flex-direction: column;
-  gap: 0.15rem;
-  padding-top: 0.65rem;
-}
-
-.mobileMenuOpen {
-  display: flex;
-}
-
-.mobileMenuLink,
-.mobileMenuLinkActive {
-  display: block;
-  width: 100%;
-  padding: 0.45rem 0;
-  font-size: 0.84rem;
-  color: var(--color-ink-band-ink-muted);
-  text-align: left;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.mobileMenuLinkActive {
-  color: var(--color-ink-band-ink);
-  font-weight: 500;
-}
-
-.main {
-  min-width: 0;
-}
-
-.section {
-  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.25rem, 5vw, 3rem);
-  border-bottom: 1px solid var(--color-ink-band-border);
-  scroll-margin-top: 3.5rem;
-}
-
-.section:last-child {
-  border-bottom: 0;
-}
-
-.sectionInner {
-  max-width: 42rem;
-  margin: 0 auto;
-}
-
-.bandPaper {
-  background: var(--color-ink-band-paper);
-}
-
-.bandSurface {
-  background: var(--color-ink-band-surface);
-}
-
-.hero {
-  padding-top: clamp(3rem, 8vw, 5.5rem);
-  padding-bottom: clamp(2.5rem, 6vw, 4rem);
-  background: var(--color-ink-band-paper);
-}
-
-.eyebrow {
-  margin: 0 0 0.85rem;
-  font-family: var(--font-ink-mono);
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: var(--color-ink-band-ink-muted);
-}
-
-.title {
-  font-family: var(--font-ink-display);
-  font-size: clamp(1.85rem, 4.5vw, 2.65rem);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.08;
-  margin: 0 0 1rem;
-}
-
-.titleSm {
-  font-size: clamp(1.45rem, 3.5vw, 2rem);
-  margin-bottom: 0.85rem;
-}
-
-.body {
-  font-family: var(--font-ink-body);
-  font-size: 1.05rem;
-  line-height: 1.55;
-  color: var(--color-ink-band-ink);
-  max-width: 38rem;
-  margin: 0;
-}
-
-.body + .body {
-  margin-top: 1rem;
-}
 
 .bodyMuted {
   color: var(--color-ink-band-ink-muted);
-}
-
-.hand {
-  margin-top: 1.25rem;
-  font-family: var(--font-ink-hand);
-  font-size: 1.3rem;
-  color: var(--color-ink-band-blue);
-  transform: rotate(-1deg);
 }
 
 .textLink {
@@ -242,7 +17,6 @@
   text-decoration-thickness: 2px;
 }
 
-/* Highlighter swipe — the one fluorescent gesture (uses InkFilters #marker). */
 .mark {
   position: relative;
   white-space: nowrap;
@@ -259,7 +33,6 @@
   filter: url(#marker);
 }
 
-/* 01 — hero stamp */
 .heroStamp {
   margin-top: 1.6rem;
   padding-top: 1.1rem;
@@ -278,7 +51,6 @@
   font-weight: 500;
 }
 
-/* 04 — data trust strip */
 .trust {
   margin-top: 1.6rem;
   max-width: 38rem;
@@ -304,7 +76,6 @@
   color: var(--color-ink-band-ink-muted);
 }
 
-/* 05 — refusals */
 .refuse {
   list-style: none;
   margin: 1.6rem 0 0;
@@ -338,7 +109,6 @@
   color: var(--color-ink-band-ink-muted);
 }
 
-/* 06 — founder cards */
 .founders {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -441,7 +211,6 @@
   font-weight: 600;
 }
 
-/* 07 — network voices */
 .voices {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
@@ -487,7 +256,6 @@
   color: var(--color-ink-band-ink);
 }
 
-/* 08 — research papers */
 .papers {
   margin-top: 1.4rem;
   max-width: 42rem;
@@ -529,11 +297,17 @@
 }
 
 .paperTag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  line-height: 1;
+  text-align: center;
   align-self: center;
   white-space: nowrap;
-  padding: 0.18rem 0.5rem;
+  padding: 0.22rem 0.55rem;
   border: 1px solid var(--color-ink-band-blue);
-  border-radius: 9999px;
+  border-radius: var(--ink-pill-radius, 999px);
   font-family: var(--font-ink-mono);
   font-size: 0.55rem;
   letter-spacing: 0.12em;
@@ -541,7 +315,6 @@
   color: var(--color-ink-band-blue);
 }
 
-/* 09 — doors */
 .doors {
   display: flex;
   flex-wrap: wrap;
@@ -549,54 +322,7 @@
   margin-top: 1.8rem;
 }
 
-.btn,
-.btnGhost {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.65rem 1.3rem;
-  border-radius: 9999px;
-  font-family: var(--font-ink-body);
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: none;
-  transition: opacity 0.15s, border-color 0.15s, color 0.15s;
-}
-
-.btn {
-  border: 1px solid var(--color-ink-band-ink);
-  background: var(--color-ink-band-ink);
-  color: var(--color-ink-band-paper);
-}
-
-.btn:hover {
-  opacity: 0.88;
-}
-
-.btnGhost {
-  border: 1px solid var(--color-ink-band-border);
-  background: transparent;
-  color: var(--color-ink-band-ink);
-}
-
-.btnGhost:hover {
-  border-color: var(--color-ink-band-ink);
-}
-
 @media (max-width: 860px) {
-  .layout {
-    grid-template-columns: 1fr;
-  }
-
-  .sidebar {
-    display: none;
-  }
-
-  .mobileNav {
-    display: block;
-  }
-
   .founders {
     grid-template-columns: 1fr;
   }

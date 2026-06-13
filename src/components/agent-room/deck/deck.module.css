@@ -308,6 +308,12 @@
   margin-bottom: 1.4rem;
 }
 .toggleBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  line-height: 1;
+  text-align: center;
   font-family: var(--font-ink-mono);
   font-size: 0.7rem;
   letter-spacing: 0.1em;
@@ -316,7 +322,7 @@
   background: transparent;
   color: var(--color-ink-band-ink-muted);
   padding: 0.55rem 1.1rem;
-  border-radius: 999px;
+  border-radius: var(--ink-pill-radius, 999px);
   cursor: pointer;
   transition: background 0.25s, color 0.25s;
 }
@@ -359,6 +365,7 @@
 .chips {
   margin-top: 0.6rem;
   display: flex;
+  align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
   font-family: var(--font-ink-mono);
@@ -368,9 +375,15 @@
   color: var(--color-ink-band-ink-muted);
 }
 .chips span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  line-height: 1;
+  text-align: center;
   border: 1px solid var(--color-ink-band-border);
-  border-radius: 999px;
-  padding: 0.2rem 0.6rem;
+  border-radius: var(--ink-pill-radius, 999px);
+  padding: 0.28rem 0.65rem;
 }
 .seam {
   display: flex;
@@ -392,12 +405,18 @@
   flex: 1;
 }
 .stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  line-height: 1;
+  text-align: center;
   font-family: var(--font-ink-mono);
   font-size: 0.56rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding: 0.18rem 0.55rem;
-  border-radius: 999px;
+  padding: 0.22rem 0.6rem;
+  border-radius: var(--ink-pill-radius, 999px);
   border: 1px solid var(--color-ink-band-border);
   color: var(--color-ink-band-ink-muted);
   transition: color 0.4s, border-color 0.4s;
@@ -567,6 +586,12 @@
 
 /* Skip — always reachable; releases the pin and jumps to the next section. */
 .skip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  line-height: 1;
+  text-align: center;
   position: absolute;
   top: clamp(0.9rem, 2.5vh, 1.5rem);
   left: clamp(1rem, 4vw, 1.8rem);
@@ -577,8 +602,8 @@
   color: var(--color-ink-band-ink-muted);
   background: var(--color-ink-band-paper);
   border: 1px solid var(--color-ink-band-border);
-  border-radius: 999px;
-  padding: 0.4rem 0.85rem;
+  border-radius: var(--ink-pill-radius, 999px);
+  padding: 0.45rem 0.9rem;
   cursor: pointer;
   z-index: 6;
   transition: color 0.2s, border-color 0.2s;

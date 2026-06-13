@@ -1,55 +1,68 @@
 /**
  * Founders surfaced on the public homepage (`CredibilityFold`) and short
  * bio routes under `/about/founders/[slug]`. Full narrative lives on `/about`
- * (`#founder-b`, `#founder-a`, `#founder-j`).
+ * and full bios at `/about/[slug]`.
+ *
+ * @deprecated Prefer `@/lib/founders/content` — this module re-exports for
+ * backward compatibility with archived marketing components.
  */
-export const SITE_FOUNDER_SLUGS = ["brad-brisco", "alan-hirsch", "joshua-shepherd"] as const;
+export {
+  ABOUT_FOUNDER_SLUGS,
+  FOUNDER_PROFILES,
+  FOUNDER_SLUGS,
+  type FounderSlug,
+  getFounderBySlug,
+  founderProfilePath,
+} from "./founders/content";
 
-export type SiteFounderSlug = (typeof SITE_FOUNDER_SLUGS)[number];
+import {
+  FOUNDER_PROFILES,
+  type FounderSlug,
+  getFounderBySlug,
+} from "./founders/content";
+
+export const SITE_FOUNDER_SLUGS = ["brad-brisco", "alan-hirsch", "josh-shepherd"] as const;
+
+export type SiteFounderSlug = (typeof SITE_FOUNDER_SLUGS)[number] | "joshua-shepherd";
 
 export type SiteFounder = {
   slug: SiteFounderSlug;
-  /** Display name (may include honorific). */
   name: string;
-  /** Line under the name on the home credibility strip. */
   shortTitle: string;
   portrait: string;
-  /** In-page anchor on `/about` (see `about-page-content.tsx`). */
   aboutAnchorId: "founder-b" | "founder-a" | "founder-j";
-  /** One paragraph for the lightweight `/about/founders/*` page. */
   bioSummary: string;
 };
 
-export const SITE_FOUNDERS: readonly SiteFounder[] = [
-  {
-    slug: "brad-brisco",
-    name: "Dr. Brad Brisco",
-    shortTitle: "CEO & Co-founder",
-    portrait: "/images/voices/brad-brisco.webp",
-    aboutAnchorId: "founder-b",
-    bioSummary:
-      "Brad has led church planting strategy at the North American Mission Board for over a decade and is one of the most-respected voices in the missional church movement in North America, including multiple books on missional ecclesiology.",
-  },
-  {
-    slug: "alan-hirsch",
-    name: "Alan Hirsch",
-    shortTitle: "Chief Missiologist & Co-founder",
-    portrait: "/images/voices/alan-hirsch.webp",
-    aboutAnchorId: "founder-a",
-    bioSummary:
-      "Alan is the missiologist behind The Forgotten Ways and the APEST and 5Q frameworks, adopted across denominations and seminaries globally. He coined the term Movemental.",
-  },
-  {
-    slug: "joshua-shepherd",
-    name: "Joshua Shepherd",
-    shortTitle: "CTO & Founder",
-    portrait: "/images/voices/josh-shepherd.webp",
-    aboutAnchorId: "founder-j",
-    bioSummary:
-      "Josh is the technical founder behind Movemental’s platform, bringing years as a Methodist pastor and as a founder to how the product serves organizations and leaders.",
-  },
-];
+const ANCHOR_BY_SLUG: Record<FounderSlug, SiteFounder["aboutAnchorId"]> = {
+  "brad-brisco": "founder-b",
+  "alan-hirsch": "founder-a",
+  "josh-shepherd": "founder-j",
+};
+
+export const SITE_FOUNDERS: readonly SiteFounder[] = (
+  ["brad-brisco", "alan-hirsch", "josh-shepherd"] as const
+).map((slug) => {
+  const profile = FOUNDER_PROFILES[slug];
+  return {
+    slug,
+    name: profile.name,
+    shortTitle: profile.jobTitle,
+    portrait: profile.portrait,
+    aboutAnchorId: ANCHOR_BY_SLUG[slug],
+    bioSummary: profile.shortBio,
+  };
+});
 
 export function getSiteFounderBySlug(slug: string): SiteFounder | undefined {
-  return SITE_FOUNDERS.find((f) => f.slug === slug);
+  const profile = getFounderBySlug(slug);
+  if (!profile) return undefined;
+  return {
+    slug: profile.slug,
+    name: profile.name,
+    shortTitle: profile.jobTitle,
+    portrait: profile.portrait,
+    aboutAnchorId: ANCHOR_BY_SLUG[profile.slug],
+    bioSummary: profile.shortBio,
+  };
 }

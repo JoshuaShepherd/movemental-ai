@@ -4,8 +4,33 @@
  * strategy framing; naming canon: Safety · Sandbox · Training · Technology.
  */
 
+/** Company commitments — Josh's refusals reframed as Movemental's promise. */
+export const COMPANY_COMMITMENTS = [
+  {
+    lead: "No manufactured urgency or scarcity.",
+    rest: "We will never manufacture a deadline or a fear of missing out to move you.",
+  },
+  {
+    lead: "No faked authorship.",
+    rest: "We help your people tell their own story. We never write under a human's name as if it were them.",
+  },
+  {
+    lead: "AI gathers and drafts. Humans discern, care, and speak.",
+    rest: "AI does the gathering and the drafting. It never does the discernment, the shepherding, the relationships, or the care.",
+  },
+  {
+    lead: "We claim only what is earned.",
+    rest: "We do not promise outcomes the work has not produced yet. If a number appears on this site, it has a footnote.",
+  },
+  {
+    lead: "Extra care wherever vulnerable people are involved.",
+    rest: "When you serve minors or families, we are more cautious, not less.",
+  },
+] as const;
+
 export const HOW_WE_USE_AI_NAV = [
   { id: "hero", label: "How we use AI" },
+  { id: "our-commitments", label: "Our commitments" },
   { id: "what-we-refuse", label: "What we refuse" },
   { id: "traffic-lights", label: "Green / yellow / red" },
   { id: "you-are-the-node", label: "You stay in charge" },
@@ -14,10 +39,11 @@ export const HOW_WE_USE_AI_NAV = [
 
 export const HOW_WE_USE_AI_SPY_SECTIONS = [
   { id: "hero", navIndex: 0 },
-  { id: "what-we-refuse", navIndex: 1 },
-  { id: "traffic-lights", navIndex: 2 },
-  { id: "you-are-the-node", navIndex: 3 },
-  { id: "scenius-refusals", navIndex: 4 },
+  { id: "our-commitments", navIndex: 1 },
+  { id: "what-we-refuse", navIndex: 2 },
+  { id: "traffic-lights", navIndex: 3 },
+  { id: "you-are-the-node", navIndex: 4 },
+  { id: "scenius-refusals", navIndex: 5 },
 ] as const;
 
 export const HOW_WE_USE_AI_DOCK = {
