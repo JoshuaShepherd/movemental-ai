@@ -46,6 +46,8 @@ export const SCREEN_IDS = [
   "sandbox",
   "training",
   "technology",
+  /** Self-serve Safety flow wizard — primary on-ramp. */
+  "safetyFlow",
 ] as const;
 
 export type ScreenId = (typeof SCREEN_IDS)[number];
@@ -87,6 +89,8 @@ export interface ShowOpts {
   kind?: string;
   /** Cold on-ramp: show 01/01 on Q1 (most orgs stop after one question). */
   singleQuestionHint?: boolean;
+  /** Safety flow wizard step (`safetyFlow` screen). */
+  step?: string;
 }
 
 export type Act =

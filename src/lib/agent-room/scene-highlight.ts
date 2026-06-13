@@ -31,6 +31,8 @@ export function highlightChipForScene(
       return pick("Start free, guided");
     case "path":
       return pick("Show me Safety");
+    case "safetyFlow":
+      return null;
     case "beat":
     case "leader":
     case "about":

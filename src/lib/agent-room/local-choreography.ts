@@ -28,12 +28,16 @@ function inkActsOnly(scene: Scene): Scene {
 /** Opening: waits, spoken line, underline on `#phrase`. */
 export const OPENING_CHOREOGRAPHY: Scene = inkActsOnly(SCENES.opening);
 
-/** Voice line after the beat screen is already on the wall (cold on-ramp). */
+/** Voice line after the safety flow screen is on the wall (cold on-ramp). */
+export const TO_SAFETY_FLOW_VOICE_CHOREOGRAPHY: Scene = inkActsOnly(SCENES.toSafetyFlow);
+
+/** @deprecated Use {@link TO_SAFETY_FLOW_VOICE_CHOREOGRAPHY}. */
 export const TO_BEAT_COLD_VOICE_CHOREOGRAPHY: Scene = inkActsOnly(SCENES.toBeatCold);
 
 /** Named map for auditors / tests. */
 export const LOCAL_CHOREOGRAPHY = {
   opening: OPENING_CHOREOGRAPHY,
+  toSafetyFlow: TO_SAFETY_FLOW_VOICE_CHOREOGRAPHY,
   toBeatCold: TO_BEAT_COLD_VOICE_CHOREOGRAPHY,
 } as const;
 
@@ -63,6 +67,11 @@ export async function playOpeningChoreography(ctx: LocalCtx, gen: Generation): P
   return playLocalChoreography("opening", ctx, gen);
 }
 
+export async function playToSafetyFlowVoiceChoreography(ctx: LocalCtx, gen: Generation): Promise<void> {
+  return playLocalChoreography("toSafetyFlow", ctx, gen);
+}
+
+/** @deprecated Use {@link playToSafetyFlowVoiceChoreography}. */
 export async function playToBeatColdVoiceChoreography(ctx: LocalCtx, gen: Generation): Promise<void> {
   return playLocalChoreography("toBeatCold", ctx, gen);
 }

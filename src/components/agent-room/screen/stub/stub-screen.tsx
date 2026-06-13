@@ -36,6 +36,7 @@ import { SafetyDashboardScreen } from "./safety-dashboard-screen";
 import { SandboxScreen } from "./sandbox-screen";
 import { TrainingScreen } from "./training-screen";
 import { TechnologyScreen } from "./technology-screen";
+import { SafetyFlowScreen } from "../safety-flow/safety-flow-screen";
 
 /** The current screen on the wall (prototype `renderScreen` arguments + a
  *  nonce so the `settle` animation re-fires on every `show`). */
@@ -100,6 +101,7 @@ export const SCREEN_COMPONENTS: Record<ScreenId, ComponentType<ScreenProps>> = {
   sandbox: SandboxScreen,
   training: TrainingScreen,
   technology: TechnologyScreen,
+  safetyFlow: SafetyFlowScreen,
 };
 
 export function StubScreen({

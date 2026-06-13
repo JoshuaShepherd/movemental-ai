@@ -61,6 +61,7 @@ export async function playScene(scene: Scene, ctx: RunnerContext, gen: Generatio
         id: act.id,
         kind: act.kind,
         singleQuestionHint: act.singleQuestionHint,
+        step: act.step,
       });
     else if ("gesture" in act) await ctx.gesture(act.gesture, act.target ?? "");
     else if ("suggest" in act) ctx.suggest(act.suggest);

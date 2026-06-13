@@ -43,8 +43,8 @@ function readbackVoiceActs(read: MapRead): Scene {
 const GATE_FAIL_SUGGEST: Scene[number] = {
   suggest: [
     { label: "Want this for your actual organization?", lead: true, to: ORG_ASSESSMENT_CHIP_TARGET },
-    { label: FREE_HANDBOOK_CTA, to: HANDBOOK_EMAIL_CHIP_TARGET },
-    { label: "Have us do it · $1,000", to: "toSafetyDashboard" },
+    { label: FREE_HANDBOOK_CTA, to: "toSafetyFlowDiy" },
+    { label: "Build your dashboard", to: "toSafetyFlowSignup" },
     { label: "↺ Start over", to: "opening" },
   ],
 };

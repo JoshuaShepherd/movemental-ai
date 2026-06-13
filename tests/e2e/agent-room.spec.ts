@@ -62,7 +62,7 @@ test.describe("Agent Room", () => {
       expect(streamCalls, "hybrid load must not call stream").toEqual([]);
     });
 
-    test("lead chip opens beat screen immediately with one-question voice", async ({ page }) => {
+    test("lead chip opens safety flow with one-question voice", async ({ page }) => {
       const streamCalls: string[] = [];
       page.on("request", (r) => {
         if (r.url().includes("/api/agent-room/turn")) streamCalls.push(r.url());
@@ -70,10 +70,12 @@ test.describe("Agent Room", () => {
       await page.goto("/agent");
       await page.waitForTimeout(2000);
       await page.getByRole("button", { name: "Get a clear next AI step" }).click();
-      await expect(page.locator("#opts")).toBeVisible({ timeout: 3500 });
-      await expect(page.getByText("This is usually just one question")).toBeVisible({
+      await expect(page.getByText("Let's find your simplest next step.")).toBeVisible({
         timeout: 3500,
       });
+      await expect(
+        page.getByText("One question. Then we'll show you exactly where you stand"),
+      ).toBeVisible({ timeout: 3500 });
       expect(streamCalls, "cold on-ramp is local in hybrid").toEqual([]);
     });
 
@@ -158,7 +160,7 @@ test.describe("Agent Room", () => {
       expect(streamCalls, "opening choreography must not call stream").toEqual([]);
     });
 
-    test("lead chip opens beat screen immediately with one-question voice", async ({ page }) => {
+    test("lead chip opens safety flow with one-question voice", async ({ page }) => {
       const streamCalls: string[] = [];
       page.on("request", (r) => {
         if (r.url().includes("/api/agent-room/turn")) streamCalls.push(r.url());
@@ -166,10 +168,12 @@ test.describe("Agent Room", () => {
       await page.goto("/agent");
       await page.waitForTimeout(2000);
       await page.getByRole("button", { name: "Get a clear next AI step" }).click();
-      await expect(page.locator("#opts")).toBeVisible({ timeout: 3500 });
-      await expect(page.getByText("This is usually just one question")).toBeVisible({
+      await expect(page.getByText("Let's find your simplest next step.")).toBeVisible({
         timeout: 3500,
       });
+      await expect(
+        page.getByText("One question. Then we'll show you exactly where you stand"),
+      ).toBeVisible({ timeout: 3500 });
       expect(streamCalls, "cold on-ramp is local — no stream yet").toEqual([]);
     });
   });

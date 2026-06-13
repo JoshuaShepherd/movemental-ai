@@ -8,7 +8,7 @@ import { FAQ_SECTIONS } from "../../src/lib/agent-room/data/faq";
 
 describe("agent-room data layer (AF-06)", () => {
   it("SCENES has the core scene names the runner calls", () => {
-    for (const name of ["opening", "toBeat", "whatIs", "cost", "toSafety", "withUs"]) {
+    for (const name of ["opening", "toBeat", "toSafetyFlow", "whatIs", "cost", "toSafety", "withUs"]) {
       expect(SCENES).toHaveProperty(name);
     }
     expect(SCENES.opening.length).toBeGreaterThan(0);
@@ -24,7 +24,7 @@ describe("agent-room data layer (AF-06)", () => {
 
   it("PROFILES has 17 approved records and getProfile gates on approval", () => {
     expect(Object.keys(PROFILES)).toHaveLength(17);
-    expect(getProfile(0)?.lede).toContain("Missional theologian");
+    expect(getProfile(0)?.lede).toContain("Missiologist");
     expect(getProfile(999)).toBeNull();
   });
 

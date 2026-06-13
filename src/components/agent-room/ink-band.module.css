@@ -258,7 +258,7 @@
   align-items: flex-start;
   justify-content: center;
   padding: clamp(0.55rem, 1.6vh, 1.35rem) clamp(1.5rem, 6vw, 5rem);
-  background: radial-gradient(120% 80% at 50% 0%, #fffefa 0%, var(--color-ink-band-bg) 70%);
+  background: radial-gradient(120% 80% at 50% 0%, var(--color-ink-band-paper)efa 0%, var(--color-ink-band-bg) 70%);
 }
 .screen.scroll {
   overflow-y: auto;
@@ -5398,5 +5398,393 @@ button.wayCtaPaid {
     height: min(88dvh, 95dvh);
     max-height: 95dvh;
     border-radius: 0.35rem 0.35rem 0 0;
+  }
+}
+
+/* ===== safety flow wizard (movemental-safety-flow-full.html) ===== */
+.flowWrap {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2.5vh, 1.75rem);
+  padding-bottom: clamp(1rem, 3vh, 2rem);
+}
+.flowStepper {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+.flowStepDot {
+  flex: 1;
+  max-width: 3.4rem;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--color-ink-band-border);
+  transition: background 0.3s;
+}
+.flowStepDone {
+  background: var(--color-ink-band-blue);
+}
+.flowStepCur {
+  background: var(--color-ink-band-ink);
+}
+.flowEyebrowCenter {
+  text-align: center;
+}
+.flowTitleCenter {
+  text-align: center;
+  max-width: none;
+}
+.flowSubCenter {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 38ch;
+}
+.flowBodyCenter {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 46ch;
+}
+.flowOptsCenter {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 34rem;
+}
+.flowOpt::before {
+  content: "";
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-ink-band-border);
+  margin-right: 0.8rem;
+  flex-shrink: 0;
+}
+.flowOpt {
+  display: flex;
+  align-items: center;
+}
+.flowFootnote {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.flowRail {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  margin: 2rem 0;
+}
+.flowChip {
+  border: 1px solid var(--color-ink-band-border);
+  border-radius: 11px;
+  background: var(--color-ink-band-paper);
+  padding: 1rem 0.8rem;
+  text-align: center;
+}
+.flowChipHere {
+  border-color: var(--color-ink-band-blue);
+  box-shadow: inset 0 0 0 1px var(--color-ink-band-blue);
+  background: var(--color-ink-band-paper);
+}
+.flowChipDone {
+  background: var(--color-ink-band-surface);
+}
+.flowChipNum {
+  font-family: var(--font-ink-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--color-ink-band-ink-muted);
+  display: block;
+}
+.flowChipName {
+  font-family: var(--font-ink-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+  display: block;
+}
+.flowChipTag {
+  font-family: var(--font-ink-mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-blue);
+  margin-top: 0.4rem;
+  display: block;
+}
+.flowChipDoneTag {
+  color: var(--color-ink-band-ink-muted);
+}
+.flowCenter {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-top: 2.2rem;
+}
+.flowBtn {
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid var(--color-ink-band-ink);
+  background: var(--color-ink-band-ink);
+  color: var(--color-ink-band-paper);
+  border-radius: 999px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-family: var(--font-ink-body);
+  transition: opacity 0.15s;
+}
+.flowBtn:hover:not(:disabled) {
+  opacity: 0.88;
+}
+.flowBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.flowBtnBlue {
+  background: var(--color-ink-band-blue);
+  border-color: var(--color-ink-band-blue);
+}
+.flowBtnGhost {
+  background: transparent;
+  color: var(--color-ink-band-ink);
+  border-color: var(--color-ink-band-border);
+}
+.flowBtnGhost:hover:not(:disabled) {
+  border-color: var(--color-ink-band-ink);
+  opacity: 1;
+}
+.flowBack {
+  display: block;
+  margin: 1.6rem auto 0;
+  background: none;
+  border: 0;
+  color: var(--color-ink-band-ink-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: var(--font-ink-body);
+}
+.flowBack:hover {
+  color: var(--color-ink-band-ink);
+}
+.flowCharterLabel {
+  text-align: center;
+  margin: 1.8rem 0 1.4rem;
+}
+.flowCharterRow {
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding-bottom: 3rem;
+}
+.flowSpreadHint {
+  text-align: center;
+  font-style: italic;
+}
+.flowFork {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.8rem 0 1.4rem;
+}
+.flowForkCard {
+  border: 1px solid var(--color-ink-band-border);
+  border-radius: 14px;
+  background: var(--color-ink-band-paper);
+  padding: 1.5rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+}
+.flowForkReco {
+  border-color: var(--color-ink-band-blue);
+  box-shadow: inset 0 0 0 1px var(--color-ink-band-blue);
+  background: var(--color-ink-band-paper);
+}
+.flowForkTag {
+  font-family: var(--font-ink-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+  margin-bottom: 0.7rem;
+}
+.flowForkReco .flowForkTag {
+  color: var(--color-ink-band-blue);
+}
+.flowForkTitle {
+  font-family: var(--font-ink-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
+}
+.flowForkPrice {
+  font-size: 0.85rem;
+  color: var(--color-ink-band-ink-muted);
+  margin-bottom: 1rem;
+}
+.flowForkBody {
+  font-size: 0.92rem;
+  color: var(--color-ink-band-ink-muted);
+  line-height: 1.5;
+  margin-bottom: 0.8rem;
+}
+.flowForkBest {
+  font-size: 0.85rem;
+  color: var(--color-ink-band-ink);
+  background: var(--color-ink-band-surface);
+  border-radius: 8px;
+  padding: 0.6rem 0.7rem;
+  margin-bottom: 1rem;
+}
+.flowForkCard .flowBtn {
+  margin-top: auto;
+  width: 100%;
+  justify-content: center;
+}
+.flowTuesday {
+  font-family: var(--font-ink-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-ink-band-ink-muted);
+  text-align: center;
+  max-width: 48ch;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+.flowFormcard {
+  background: var(--color-ink-band-paper);
+  border: 1px solid var(--color-ink-band-border);
+  border-radius: 14px;
+  padding: 1.8rem;
+  max-width: 30rem;
+  margin: 1.6rem auto 0;
+}
+.flowFormPrompt {
+  font-size: 0.92rem;
+  color: var(--color-ink-band-ink-muted);
+  margin: 0 0 0.8rem;
+}
+.flowFieldRow {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+.flowFieldCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.flowInput {
+  flex: 1;
+  border: 1px solid var(--color-ink-band-border);
+  border-radius: 999px;
+  padding: 0.7rem 1.1rem;
+  font-family: var(--font-ink-body);
+  font-size: 0.95rem;
+  outline: 0;
+  background: var(--color-ink-band-paper);
+}
+.flowFieldCol .flowInput {
+  border-radius: 12px;
+}
+.flowInput:focus {
+  border-color: var(--color-ink-band-blue);
+}
+.flowFineprint {
+  font-size: 0.78rem;
+  color: var(--color-ink-band-ink-muted);
+  text-align: center;
+  margin-top: 1.1rem;
+  line-height: 1.5;
+}
+.flowNoUrgency {
+  max-width: 40rem;
+  margin-top: 1.4rem;
+}
+.flowQuietLink {
+  color: var(--color-ink-band-blue);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.flowDoneState {
+  text-align: center;
+}
+.flowDoneTitle {
+  font-family: var(--font-ink-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+.flowError {
+  font-size: 0.85rem;
+  color: var(--color-ink-band-margin-red-ink);
+  text-align: center;
+  margin-top: 0.75rem;
+}
+.flowModalSub {
+  font-family: var(--font-ink-display);
+  font-size: 1.15rem;
+  margin-bottom: 0.3rem;
+}
+.flowModalStatus {
+  font-family: var(--font-ink-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+  margin-bottom: 1.3rem;
+}
+.flowModalBody p {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--color-ink-band-ink);
+  margin-bottom: 1rem;
+}
+.flowModalAffTitle {
+  font-family: var(--font-ink-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 1.4rem 0 0.7rem;
+}
+.flowModalAffList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0;
+  margin: 0;
+}
+.flowModalAffList li {
+  font-size: 0.95rem;
+  line-height: 1.45;
+  padding-left: 1.1rem;
+  position: relative;
+}
+.flowModalAffList li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--color-ink-band-blue);
+}
+
+@media (max-width: 680px) {
+  .flowFork {
+    grid-template-columns: 1fr;
+  }
+  .flowRail {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .docSpreadFold.flowCharterRow {
+    grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
   }
 }

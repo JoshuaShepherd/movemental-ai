@@ -17,8 +17,8 @@ describe("beatScene post-readback flow", () => {
     expect(suggestAct && "suggest" in suggestAct).toBe(true);
     if (!suggestAct || !("suggest" in suggestAct)) return;
 
-    expect(suggestAct.suggest.some((c) => c.to === "focusHandbook")).toBe(true);
-    expect(suggestAct.suggest.some((c) => c.to === "toSafetyDashboard")).toBe(true);
+    expect(suggestAct.suggest.some((c) => c.to === "toSafetyFlowDiy")).toBe(true);
+    expect(suggestAct.suggest.some((c) => c.to === "toSafetyFlowSignup")).toBe(true);
   });
 
   it("offers inline email copy via chip after full path — no full-screen map capture gate", () => {

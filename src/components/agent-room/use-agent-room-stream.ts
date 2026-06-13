@@ -14,6 +14,7 @@ import { handleSuggestChipTarget } from "@/lib/agent-room/suggest-chip-targets";
 import {
   playOpeningChoreography,
   playToBeatColdVoiceChoreography,
+  playToSafetyFlowVoiceChoreography,
   scheduleLocalChoreography,
 } from "@/lib/agent-room/local-choreography";
 import { validateComponentProps } from "@/lib/agent-room/component-props";
@@ -214,6 +215,15 @@ export function useAgentRoomStream() {
   const runLocalScene = useCallback(
     (name: string) => {
       lastSceneRef.current = name;
+      if (name === "toSafetyFlow" || name === "toSafetyFlowDiy" || name === "toSafetyFlowSignup") {
+        const step =
+          name === "toSafetyFlowDiy" ? "diy" : name === "toSafetyFlowSignup" ? "signup" : "question";
+        showLocal("safetyFlow", { step });
+        if (name === "toSafetyFlow") {
+          void playToSafetyFlowVoiceChoreography(localCtx(), localGenRef.current);
+        }
+        return;
+      }
       if (name === "toBeatCold") {
         showLocal("beat", { qi: 0, singleQuestionHint: true });
         void playToBeatColdVoiceChoreography(localCtx(), localGenRef.current);
@@ -235,11 +245,11 @@ export function useAgentRoomStream() {
     runRef.current = runLocalScene;
   }, [runLocalScene]);
 
-  const startToBeatCold = useCallback(() => {
+  const startToSafetyFlow = useCallback(() => {
     localGenRef.current.value += 1;
     setLocalChips(null);
     setAgentChips(null);
-    runLocalScene("toBeatCold");
+    runLocalScene("toSafetyFlow");
   }, [runLocalScene]);
 
   const onBeatAnswer = useCallback(
@@ -496,8 +506,8 @@ export function useAgentRoomStream() {
             label: s.label,
             lead: s.lead,
             onSelect: () => {
-              if (route.kind === "local" && route.scene === "toBeatCold") {
-                startToBeatCold();
+              if (route.kind === "local" && route.scene === "toSafetyFlow") {
+                startToSafetyFlow();
               } else if (route.kind === "navigate") {
                 window.location.assign(route.href);
               } else {

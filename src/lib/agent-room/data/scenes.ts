@@ -24,7 +24,7 @@ export const SCENES = {
     { gesture: "underline", target: "#phrase" },
     {
       suggest: [
-        { label: "Get a clear next AI step", lead: true, to: "toBeatCold" },
+        { label: "Get a clear next AI step", lead: true, to: "toSafetyFlow" },
         { label: "About Movemental", to: "whatIs" },
         { label: "What does it cost?", to: "cost" },
         { label: "Get in touch", to: "talkToUs" },
@@ -138,6 +138,14 @@ export const SCENES = {
       say: "This is usually just one question, answer honestly, because the honest answer is the useful one.",
     },
   ],
+  toSafetyFlow: [
+    { show: "safetyFlow", step: "question" },
+    {
+      say: "One question. Then we'll show you exactly where you stand, and what to do about it.",
+    },
+  ],
+  toSafetyFlowDiy: [{ show: "safetyFlow", step: "diy" }],
+  toSafetyFlowSignup: [{ show: "safetyFlow", step: "signup" }],
   toPath: [
     { show: "path" },
     { wait: 480 },
@@ -217,8 +225,8 @@ export const SCENES = {
     { say: "Complete it free with our help, or have us do it with you." },
     {
       suggest: [
-        { label: "Have us do it · $1,000", lead: true, to: "toSafetyDashboard" },
-        { label: "Start free, guided", to: "focusHandbook" },
+        { label: "Build your dashboard", lead: true, to: "toSafetyFlowSignup" },
+        { label: "Start free, guided", to: "toSafetyFlowDiy" },
         { label: "Why does this come first?", to: "whySafetyFirst" },
         { label: "What could go wrong without it?", to: "safetyWithoutIt" },
         ...(DISCUSS_ENABLED
@@ -237,8 +245,8 @@ export const SCENES = {
     },
     {
       suggest: [
-        { label: "Have us do it · $1,000", lead: true, to: "toSafetyDashboard" },
-        { label: "Start free, guided", to: "focusHandbook" },
+        { label: "Build your dashboard", lead: true, to: "toSafetyFlowSignup" },
+        { label: "Start free, guided", to: "toSafetyFlowDiy" },
         { label: "What could go wrong without it?", to: "safetyWithoutIt" },
       ],
     },
@@ -253,8 +261,8 @@ export const SCENES = {
     },
     {
       suggest: [
-        { label: "Have us do it · $1,000", lead: true, to: "toSafetyDashboard" },
-        { label: "Start free, guided", to: "focusHandbook" },
+        { label: "Build your dashboard", lead: true, to: "toSafetyFlowSignup" },
+        { label: "Start free, guided", to: "toSafetyFlowDiy" },
         { label: "Why does this come first?", to: "whySafetyFirst" },
       ],
     },
@@ -265,7 +273,7 @@ export const SCENES = {
     { say: "Five plain parts your board can ratify." },
     {
       suggest: [
-        { label: "Have us do it · $1,000", lead: true, to: "withUs" },
+        { label: "Build your dashboard", lead: true, to: "toSafetyFlowSignup" },
         { label: "Start free, guided", to: "focusHandbook" },
       ],
     },
@@ -280,7 +288,7 @@ export const SCENES = {
     { say: "Then we draft it with you. You ratify." },
     {
       suggest: [
-        { label: "Have us do it · $1,000", lead: true, to: "withUs" },
+        { label: "Build your dashboard", lead: true, to: "toSafetyFlowSignup" },
         { label: "Start free, guided", to: "focusHandbook" },
       ],
     },
@@ -315,21 +323,10 @@ export const SCENES = {
     { gesture: "circle", target: "#handbookEmail" },
   ],
   toSafetyDashboard: [
-    { show: "safetyDashboard" },
+    { show: "safetyFlow", step: "signup" },
     { wait: 200 },
     {
-      say: `The ${SAFETY_HANDBOOK.shortLabel.toLowerCase()} is the map. The dashboard is how you actually move.`,
-    },
-    { wait: 180 },
-    {
-      say: "We do everything but the discernment. Research, drafting, structure, assessment. You decide.",
-    },
-    {
-      suggest: [
-        { label: "Get started with the dashboard", lead: true, to: "toEnroll" },
-        { label: FREE_HANDBOOK_CTA, to: "focusHandbook" },
-        { label: "↺ Start over", to: "opening" },
-      ],
+      say: "Tell us who you are. We'll draft all five documents to your organization before you read a word.",
     },
   ],
 

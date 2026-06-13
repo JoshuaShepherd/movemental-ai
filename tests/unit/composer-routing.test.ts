@@ -3,13 +3,13 @@ import { describe, expect, it } from "vitest";
 import { resolveStreamChipRoute } from "../../src/lib/agent-room/composer-routing";
 
 describe("composer routing (PAR-02)", () => {
-  it("routes lead chip to local toBeatCold (screen first, voice after)", () => {
+  it("routes lead chip to local toSafetyFlow (screen first, voice after)", () => {
     const route = resolveStreamChipRoute({
       label: "Get a clear next AI step",
       say: "Get a clear next AI step",
       lead: true,
     });
-    expect(route).toEqual({ kind: "local", scene: "toBeatCold" });
+    expect(route).toEqual({ kind: "local", scene: "toSafetyFlow" });
   });
 
   it("routes info chips to agent utterances", () => {

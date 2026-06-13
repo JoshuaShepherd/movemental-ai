@@ -28,6 +28,7 @@ type RouteTarget = Extract<
   | "whoBehind"
   | "whatIs"
   | "toBeat"
+  | "toSafetyFlow"
 >;
 
 /** Ordered match table — first hit wins (prototype `handleInput` order). */
@@ -51,7 +52,7 @@ const ROUTES: ReadonlyArray<{ re: RegExp; to: RouteTarget }> = [
   // free-text, so it can't gate the bridging intro the way the home chip does.
   // The cold-entry bridge lives on `SCENES.opening`'s lead chip (→ `beatIntro`);
   // the typed path is secondary and goes straight to the diagnostic.
-  { re: /stuck|next|simple|stand|start|begin|assess|where|find|safe|help/, to: "toBeat" },
+  { re: /stuck|next|simple|stand|start|begin|assess|where|find|safe|help/, to: "toSafetyFlow" },
 ];
 
 /** The line spoken when nothing matches (prototype fallback `say`). */

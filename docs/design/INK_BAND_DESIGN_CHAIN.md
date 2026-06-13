@@ -40,7 +40,7 @@ the org is shown back to itself**.
    but unlike Concept Modern this system **does** use hairline `1px` borders and generous radii
    (12–20px) as part of the notebook/card vocabulary.
 5. **A closed screen set.** The agent may only put a fixed set of screens on the wall (home, beat,
-   readback, safety, confirm, path, founders, leader, about, contact, faq, pricing). New surfaces
+   readback, safety, safetyFlow, confirm, path, founders, leader, about, contact, faq, pricing). New surfaces
    are a deliberate vocabulary change, not an ad-hoc page.
 6. **Restraint as honesty.** The voice is plain and direct; pricing names the honest trade-off;
    refusals are shown, not hidden. The aesthetic serves candor.

@@ -25,9 +25,7 @@ function PlanCard({
 }) {
   return (
     <article
-      className={`${styles.way} ${styles.wayPlan} ${door.featured ? styles.wayLead : ""} ${
-        door.paid ? styles.paid : ""
-      }`}
+      className={`${styles.way} ${styles.wayPlan} ${door.featured ? styles.wayLead : ""}`}
     >
       <span className={styles.wayBadge}>{door.badge}</span>
       <p className={styles.wayPriceRow}>
@@ -38,7 +36,7 @@ function PlanCard({
       <p className={styles.wayBody}>{door.body}</p>
       <button
         type="button"
-        className={`${styles.wayCtaBtn} ${door.paid ? styles.wayCtaBtnPaid : ""}`}
+        className={`${styles.wayCtaBtn} ${door.featured ? styles.wayCtaBtnPaid : ""}`}
         disabled={disabled || !onRunScene}
         onClick={() => onRunScene?.(door.scene)}
       >

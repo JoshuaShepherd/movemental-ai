@@ -117,12 +117,12 @@ export function SafetyScreen({ onHome }: ScreenProps) {
           ctaHref: "/field-guide",
         }}
         paidWay={{
-          title: "We do it with you.",
-          price: "$1,000 · two weeks",
+          title: "Build your dashboard.",
+          price: "Free to start · no call, no checkout",
           description:
-            "We draft all five layers customized to your organization. Your team reviews and ratifies inside a private dashboard. You get the print-quality Charter, the board packet, and the rollout materials, done.",
-          ctaLabel: "Have us do it · $1,000",
-          ctaHref: "/enroll",
+            "We draft all five layers to your organization. You review, edit, and ratify inside your dashboard. Help is one click away if you want it.",
+          ctaLabel: "Build your dashboard →",
+          ctaHref: "/agent",
           paid: true,
         }}
       />
