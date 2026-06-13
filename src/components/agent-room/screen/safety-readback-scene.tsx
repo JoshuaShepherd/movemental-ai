@@ -31,9 +31,7 @@ export function SafetyReadbackScene({ mapRead, onRunScene, disabled }: SafetyRea
         <div className={styles.heroCopy}>
           <h1 className={`${styles.q} ${styles.heroTitle}`}>{SAFETY_READBACK_COPY.heroTitle}</h1>
           <p className={styles.sub}>{SAFETY_READBACK_COPY.reframe}</p>
-          <p className={styles.nextMove}>
-            <b>{SAFETY_READBACK_COPY.nextMove}</b>
-          </p>
+          <p className={styles.nextMove}>{SAFETY_READBACK_COPY.nextMove}</p>
         </div>
         <aside className={styles.heroPath} aria-label="Four-stage path">
           <p className={styles.pathLabel}>{SAFETY_READBACK_COPY.pathLabel}</p>

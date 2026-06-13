@@ -29,8 +29,16 @@ export type AudiencePageConfig = {
   slug: "institutions" | "churches" | "nonprofits";
   hero: {
     eyebrow: string;
-    title: string;
-    sub: string;
+    /** Legacy churches/institutions headline */
+    title?: string;
+    sub?: string;
+    /** Claim-first layout (nonprofits) */
+    rhetoricalTitle?: string;
+    framing?: string;
+    claim?: string;
+    /** Phrase inside rhetoricalTitle that earns the page's single highlighter */
+    highlightPhrase?: string;
+    segue?: string;
   };
   painSection: {
     title: string;
@@ -71,7 +79,9 @@ export type AudiencePageConfig = {
     handLine?: string;
   };
   thePath: {
+    headline?: string;
     intro: string;
+    closing?: string;
   };
   start: {
     title: string;

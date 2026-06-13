@@ -10,58 +10,58 @@ export const CHURCHES_PAGE_CONFIG: AudiencePageConfig = {
   hero: {
     eyebrow: "For churches",
     title: "AI is already inside your church.",
-    sub: "Sermon prep, pastoral drafts, admin work, nobody decided it. It just arrived. Here's what that means for trust.",
+    sub: "Sermon prep, admin drafts, ministry notes. Nobody decided it. It just arrived. Here's what that means for your congregation's trust.",
   },
   painSection: {
     title: "Here's what's already happening.",
     intro: "None of this was planned. It's just true right now.",
     cards: [
       {
-        title: "Sermon prep is already AI-assisted.",
-        body: "Most pastors use AI for research or drafting. Few have a policy about what that means for the pulpit.",
+        title: "AI is already in the study, with no rule about the pulpit.",
+        body: "Many pastors already use AI for research or a first draft. Few have decided, in writing, what that means for teaching from the pulpit. About four in ten Protestant pastors now use AI for ministry, and only one in twenty churches has a formal policy for it. The practice arrived years ahead of the agreement.",
       },
       {
-        title: "Counseling notes are in the wrong places.",
-        body: "Staff paste pastoral conversations into consumer tools with no data-handling standard, and no one knows what's retained.",
+        title: "Pastoral care notes are in the wrong place.",
+        body: "Staff paste counseling and care notes into consumer AI tools with no standard for what is kept or who can see it. AI does not do pastoral care, and these notes should never be in those tools. No one decided this. It is just where the work landed when there was nowhere safer to put it.",
       },
       {
-        title: "Congregation trust is the product.",
-        body: "When a member can't tell whether the pastor wrote it, voice-cloned it, or a volunteer drafted it, credibility erodes quietly.",
+        title: "People cannot always tell what is really you.",
+        body: "When a member cannot tell whether you wrote it, a volunteer drafted it, or it was generated, trust erodes a little. Most people now say it matters whether something was made by a person or by AI, and most are not confident they can tell the difference. That gap is exactly where a church's credibility leaks.",
       },
       {
-        title: "There's no disclosure standard.",
-        body: "Only a handful of churches have told their people, in writing, when AI was used and how. Everyone else is guessing.",
+        title: "Your people are already asking the machine.",
+        body: "Nearly one in three U.S. adults now say spiritual advice from AI is as trustworthy as advice from a pastor, and among Gen Z and Millennials it is two in five. Meanwhile only twelve percent of pastors say they feel ready to teach about AI at all. Your younger members are asking the questions they used to bring to a mentor, and getting answers from a model trained by someone else.",
       },
       {
-        title: "Your teaching lives in unsearchable sermons.",
-        body: "Years of faithful preaching sit in video archives no one can query. The church can't learn from its own voice.",
+        title: "A model does not share your church's convictions.",
+        body: "The general-purpose models your members ask are not neutral on faith. Independent testing found they score lowest of all on questions of Christian worldview. When your congregation asks the machine instead of asking you, they are not getting your church's theology back. They are getting an average of the internet's.",
       },
       {
-        title: "Scammers can clone your voice.",
-        body: "Sermon footage and livestreams are enough to fake a pastor's voice and solicit emergency gifts. It's already happening.",
+        title: "Your voice can be cloned, and it is already happening.",
+        body: "A few minutes of sermon footage is enough to fake a pastor's voice and use it to solicit emergency gifts from members. This is not hypothetical. Voice-cloning fraud rose more than four hundred percent year over year, and faith leaders are being impersonated specifically because their people trust their voice.",
       },
     ],
   },
   deeperProblem: {
     title: "These aren't six problems. They're one.",
     paragraphs: [
-      "Underneath all of it is fragmentation. Your teaching lives in sermons no one can search. Your hard-won wisdom lives in founders' heads, one bus accident away from being lost. You know your people in pieces and can't see your own body whole.",
+      "Underneath all of it is fragmentation. Your teaching lives in sermons no one can search. Hard-won wisdom lives in founders' heads, one bus accident away from being lost. You know your people in pieces. You can't see your own congregation whole.",
       "What is true of one writer's scattered work is true of a church's scattered body. The teaching was whole in your people. It lives in video archives, bulletins, and notebooks that do not speak to each other.",
-      "AI built on top of that doesn't pull the pieces together. By default it reflects the scatter back, faster, louder, wearing your name without carrying your person. That's not a tech glitch. It's what happens when the foundation is broken.",
-      "And the people watching most closely are young adults. They're asking the machine the questions they used to ask the church. They're waiting to see whether you have anything true to say in this moment, or whether you'll answer with fear, or a shrug.",
+      "AI built on top of that doesn't pull the pieces together. By default it reflects the scatter back, faster and louder, wearing your name without carrying your person. That's not a tech glitch. It's what happens when the foundation is broken.",
+      "Young adults are watching most closely. They're asking the machine the questions they used to ask the church. They're waiting to see whether you have anything true to say in this moment, or whether you'll answer with fear, or a shrug.",
     ],
   },
   theCase: {
     title: "The full case, in one letter.",
     intro:
-      "Here's the whole argument in plain words, written for your elders or leadership team. Read it here, or download it to share.",
+      "Here's the whole argument in plain words, written for your pastor and elders. Read it here, or download it to share.",
     letterAriaLabel: "Letter to a lead pastor",
     askAiPromptKey: "churchesTheCase",
   },
   foundation: {
     title: "We gather what's scattered into one place.",
     paragraphs: [
-      "Movemental takes your people, your teaching, and your record and gathers them into one connected foundation, a single source of truth your church owns. Visible. Verifiable. Built from what's actually yours, not a generic chatbot trained on the open web.",
+      "Movemental takes your people, your teaching, and your record and gathers them into one connected foundation, one place your church owns. Visible to your elders. Verifiable for your congregation. Built from what's actually yours, not a generic chatbot trained on the open web.",
     ],
     fixRows: [
       {
@@ -86,12 +86,12 @@ export const CHURCHES_PAGE_CONFIG: AudiencePageConfig = {
   theBuild: {
     title: "Then we build the tools on top of it.",
     paragraphs: [
-      "Once the foundation is real, we build what your church actually needs, search across your teaching archive, an assistant that speaks from your material with sources your elders can check, and pathways that help members move through your body of work instead of drifting to generic answers online.",
+      "Once the foundation is real, we build what your church actually needs. Search across your teaching archive. An assistant that speaks from your material with sources your elders can check. Pathways that help members move through your body of work instead of drifting to generic answers online.",
     ],
     toolExamples: [
       {
         label: "Teaching search",
-        text: "across sermons, curricula, and pastoral resources, not the open web.",
+        text: "across sermons, curricula, and ministry resources, not the open web.",
       },
       {
         label: "Grounded assistant",
@@ -99,23 +99,23 @@ export const CHURCHES_PAGE_CONFIG: AudiencePageConfig = {
       },
       {
         label: "Member pathways",
-        text: "so formation journeys through your teaching are visible, not invisible fragments.",
+        text: "so discipleship journeys through your teaching are visible, not invisible fragments.",
       },
     ],
     bridgeQuestion:
-      "Which is usually where a fair question surfaces, the one every pastor asks when the price lands: so isn't this just an expensive church website?",
+      "Which is usually where a fair question comes up, the one every pastor asks when the price lands: so isn't this just an expensive church website?",
   },
   formation: {
     title: "But tools alone aren't the answer.",
     paragraphs: [
-      "Technology without formed people isn't discipleship, it's replacement. Hand powerful tools to a staff that hasn't been formed to steward them, and you get the failure mode everyone is already living through.",
-      "The tools come with formation: discernment, knowing what's wise; authorship, keeping a real human behind the words; stewardship, caring for what's been entrusted to you. For a church, this isn't an add-on. It's the work.",
-      "A generation of young adults is deciding, from what they watch you do, whether the church has anything true to say in this moment. Formation is how you answer them, not with a policy PDF alone, but with people who can lead through this carefully.",
+      "Technology without formed people isn't discipleship. It's replacement. Hand powerful tools to a staff that hasn't been formed to steward them, and you get the failure mode everyone is already living through.",
+      "The tools come with formation. Discernment stays with your leaders. Authorship keeps a real human behind the words. Stewardship cares for what's been entrusted to you. AI does not do pastoral care. For a church, this isn't an add-on. It's the work.",
+      "A generation of young adults is deciding, from what they watch you do, whether the church has anything true to say in this moment. Formation is how you answer them. Not with a policy PDF alone, but with people who can lead through this carefully.",
     ],
     handLine: "Formation isn't extra. It's the point.",
   },
   thePath: {
-    intro: `We don't start with the tech. There's an order. Safety first, decide, in writing, what you will and won't do with AI, including pastoral care boundaries and disclosure. Then Sandbox, test against real ministry work. Then ${PATH_STAGE_LABELS.training}, form your people. Then ${PATH_STAGE_LABELS.tech}, build the tools. Your first move is Safety.`,
+    intro: `We don't start with the tech. There's an order. Safety first, decide in writing what you will and won't do with AI, including pastoral care boundaries and disclosure. Then Sandbox, test against real ministry work. Then ${PATH_STAGE_LABELS.training}, form your people. Then ${PATH_STAGE_LABELS.tech}, build the tools. Your first move is Safety.`,
   },
   start: {
     title: "Start with a conversation.",

@@ -63,6 +63,10 @@ export const SCREEN_TO_COMPONENT = {
   capture: "capture",
   /** Funnel-only stub screen; engine maps to `safety` until a dedicated component exists. */
   safetyDashboard: "safety",
+  /** Stage screens — stub-only until engine ComponentIds exist. */
+  sandbox: "path",
+  training: "path",
+  technology: "path",
 } satisfies Record<ScreenId, ComponentId>;
 
 /** The Ink Band screen a rendered component maps to, or `null` if engine-extra. */

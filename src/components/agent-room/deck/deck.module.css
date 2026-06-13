@@ -16,6 +16,12 @@
   scroll-margin-top: 3.5rem;
 }
 
+/* Pre-mount shell: one viewport, no vertical stack */
+.fallbackShell {
+  height: 100dvh;
+  overflow: hidden;
+}
+
 /* ---------- Stage shell ---------- */
 
 .stage {

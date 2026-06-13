@@ -17,12 +17,25 @@ import { CONCIERGE_VOICE } from "./data/concierge-voice-lines";
 /** Scenes the router can target (a subset of `SceneName`). */
 type RouteTarget = Extract<
   SceneName,
-  "toPath" | "toSafety" | "cost" | "toFaq" | "talkToUs" | "whoBehind" | "whatIs" | "toBeat"
+  | "toPath"
+  | "toSafety"
+  | "toSandbox"
+  | "toTraining"
+  | "toTechnology"
+  | "cost"
+  | "toFaq"
+  | "talkToUs"
+  | "whoBehind"
+  | "whatIs"
+  | "toBeat"
 >;
 
 /** Ordered match table — first hit wins (prototype `handleInput` order). */
 const ROUTES: ReadonlyArray<{ re: RegExp; to: RouteTarget }> = [
-  { re: /after|sandbox|training|tech|whole path|how.*work|the path/, to: "toPath" },
+  { re: /after|whole path|how.*work|the path/, to: "toPath" },
+  { re: /\bsandbox\b|exploration|future plan/, to: "toSandbox" },
+  { re: /\btraining\b|formation cohort|discernment.*authorship/, to: "toTraining" },
+  { re: /\btechnology\b|solutions\b|deployment|build.*ai/, to: "toTechnology" },
   { re: /safety|charter|handbook|ratif/, to: "toSafety" },
   { re: /cost|price|much|free|pay|afford/, to: "cost" },
   { re: /faq|frequently asked|common question|questions we hear/, to: "toFaq" },

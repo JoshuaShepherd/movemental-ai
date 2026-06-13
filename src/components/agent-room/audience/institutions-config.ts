@@ -27,71 +27,71 @@ export const INSTITUTIONS_PAGE_CONFIG: AudiencePageConfig = {
   hero: {
     eyebrow: "For seminaries & institutions",
     title: "AI is already inside your seminary.",
-    sub: "No one decided that. It just arrived. Here's what it means, and what to do first.",
+    sub: "No one decided that. It just arrived. Here's what it means for your credential, your archive, and what your board should do first.",
   },
   painSection: {
     title: "Here's what's already happening.",
     intro: "None of this was planned. It's just true right now.",
     cards: [
       {
-        title: "Students are already using it.",
-        body: "They draft sermons, do exegesis, and write papers with AI. Most get no guidance on how.",
+        title: "Your students are already using it. Almost no one is teaching them how.",
+        body: "Around four in five students now use generative AI in their coursework. They draft, they do exegesis, they write with it. Most get no real guidance on how to think about it, and the graduates you send out will lead churches in an AI world they were never taught to navigate.",
       },
       {
-        title: "Every professor has a different rule.",
-        body: "One welcomes AI. The next calls it cheating. The student just guesses.",
+        title: "Every professor has a different rule, and the student just guesses.",
+        body: "One faculty member welcomes AI. The next calls it cheating. Your institution has no shared account of what AI use means for formation, so the student improvises, and the credential quietly comes to mean different things depending on whose class they took.",
       },
       {
-        title: "It's not in the curriculum.",
-        body: "Your graduates will lead in an AI world. Almost no seminary teaches them how to think about it.",
+        title: "Your degree does not mean one thing anymore.",
+        body: "What the degree stood for in 2011, in 2014, and in 2023 drifted, a little at a time, and no faculty body ever reconciled the three. A credential is a promise that the institution behind it is coherent. When formation is scattered, that promise erodes slowly, and then all at once when an accreditor, an employer, or a peer institution notices.",
       },
       {
-        title: "Your degree means different things.",
-        body: "What it stood for in 2011, 2014, and 2023 quietly drifted. No one ever reconciled it.",
+        title: "The duty to govern this now sits with your board.",
+        body: "A board's basic duties of care, loyalty, and obedience now include how the institution governs AI. This is not optional and not only a technology matter. It means naming who is accountable, requiring that vendors be accountable too, and folding AI risk into how the institution manages every other risk.",
       },
       {
-        title: "Your own records are lost to you.",
-        body: "The files are saved, but no one can find them. The seminary can't even learn from itself.",
+        title: "Your own archive is lost to you.",
+        body: "The dissertations, the curricula, the journals, the decades of scholarship are all saved somewhere, and almost none of it is findable. Doctoral students reach conclusions your faculty reached thirty years ago. The institution built to hold knowledge across generations cannot, in practice, learn from itself.",
       },
       {
-        title: "Your name can be faked.",
-        body: "A professor's writing or voice can be copied in minutes. Your name no longer proves it's really you.",
+        title: "Your name can be faked, and the model speaks for you by default.",
+        body: "A professor's writing or voice can be copied in minutes, and your name no longer proves a thing is really yours. Worse, when someone asks a general model about your institution's position, it answers with confidence, and it is often wrong, because your actual position was never gathered into one place a model could find. You are being represented, at scale, by a tool you never authorized.",
       },
     ],
   },
   deeperProblem: {
     title: "These aren't six problems. They're one.",
     paragraphs: [
-      "Underneath all of it is one thing: your seminary is scattered. Your people, your work, and your record sit in pieces that don't connect. What is true of one faculty member's archive is true of the institution's body of work: syllabi in one place, scholarship in another, formation pathways nowhere visible as a whole.",
-      "AI built on top of that doesn't fix the mess, it makes more of it, faster.",
-      "And for a seminary, the thing most at risk is the thing you can't replace. A business that makes an AI mistake loses a client. You'd lose trust in the degree itself, and that trust is the whole product.",
+      "Underneath all of it is one thing: your seminary is scattered. Your faculty, your scholarship, and your record sit in pieces that don't connect. Syllabi in one place. Scholarship in another. Formation pathways nowhere visible as a whole.",
+      "AI built on top of that doesn't fix the mess. It makes more of it, faster.",
+      "For a seminary, the thing most at risk is the thing you can't replace. A business that makes an AI mistake loses a client. You'd lose trust in the credential itself. That trust is the whole product.",
       "You also carry a weight other places don't. Whatever you decide about AI becomes the example every church your graduates lead will follow. Doing nothing is still a choice. It teaches them that no one needs to think about this carefully.",
     ],
   },
   theCase: {
     title: "The full case, in one letter.",
     intro:
-      "Here's the whole argument in plain words, written to share with your board. Read it here, or download it to send.",
+      "Here's the whole argument in plain words, written for your president and board. Read it here, or download it to send.",
     letterAriaLabel: "Letter to a seminary president",
     askAiPromptKey: "institutionsTheCase",
   },
   foundation: {
     title: "We gather what's scattered into one place.",
     paragraphs: [
-      "This is where Movemental comes in. We take your people, your work, and your record and gather them into one connected foundation, a single source of truth your seminary owns. It's visible. It's verifiable. And it's built from what's actually yours.",
+      "Movemental takes your faculty, your scholarship, and your record and gathers them into one connected foundation, one place your seminary owns. Visible to your board. Verifiable for accreditation and governance. Built from what's actually yours.",
     ],
     fixRows: [
       {
-        pain: "Your records were lost",
-        gain: "now they're in one place you can search and build on.",
+        pain: "Your archive was lost",
+        gain: "now it's in one place you can search and build on.",
       },
       {
         pain: "Your name could be faked",
         gain: "now there's a verified record of what's really yours.",
       },
       {
-        pain: "Your degree drifted",
-        gain: "now there's one clear, canonical account of what it means.",
+        pain: "Your credential drifted",
+        gain: "now there's one clear account of what the degree means.",
       },
       {
         pain: "Your chatbot sounded generic",
@@ -103,7 +103,7 @@ export const INSTITUTIONS_PAGE_CONFIG: AudiencePageConfig = {
   theBuild: {
     title: "Then we build the tools on top of it.",
     paragraphs: [
-      "Once the foundation is real, we build the things your seminary actually needs on top of it, search that knows your work, an assistant that can speak for you accurately, and ways to make your scholarship findable for the next generation who are asking the machine instead of the library. Built on what you already have. Owned by you.",
+      "Once the foundation is real, we build what your seminary actually needs on top of it. Search that knows your archive. An assistant that can speak for you accurately. Ways to make your scholarship findable for the next generation who are asking the machine instead of the library. Built on what you already have. Owned by you.",
     ],
     toolExamples: [
       {
@@ -120,19 +120,19 @@ export const INSTITUTIONS_PAGE_CONFIG: AudiencePageConfig = {
       },
     ],
     bridgeQuestion:
-      "Which is usually where a board member frames it as a choice — Movemental, or a website builder? For an institution, the obvious way to settle that turns out to be the wrong one.",
+      "Which is usually where a board member frames it as a choice: Movemental, or a website builder? For an institution, the obvious way to settle that turns out to be the wrong one.",
   },
   formation: {
     title: "But tools alone aren't the answer.",
     paragraphs: [
-      "Here's the part most people skip. Technology without formed people isn't progress, it's replacement. It's also how most AI projects fail.",
-      "A foundation only holds if your people can steward it. So the tools come with formation. We form a group inside your seminary in the three things AI demands: discernment, knowing what's wise; authorship, keeping a real human behind the words; and stewardship, caring for what's been entrusted to you.",
+      "Here's the part most people skip. Technology without formed people isn't progress. It's replacement. It's also how most AI projects fail.",
+      "A foundation only holds if your faculty can steward it. The tools come with formation. Discernment stays with your leaders. Authorship keeps a real human behind the words. Stewardship cares for what's been entrusted to you.",
       "For a seminary, this isn't an add-on. Forming people is what you already do. It's the part you, of all places, should lead with. The technology and the training are linked on purpose. One without the other doesn't work.",
     ],
     handLine: "Formation isn't extra. It's the point.",
   },
   thePath: {
-    intro: `We don't do this all at once, and we don't start with the tech. There's an order. Safety first, decide, in writing, what you will and won't do with AI. Then Sandbox, test it against real work. Then ${PATH_STAGE_LABELS.training}, form your people. Then ${PATH_STAGE_LABELS.tech}, build the tools. Each step earns the next. Your first move is Safety.`,
+    intro: `We don't do this all at once, and we don't start with the tech. There's an order. Safety first, decide in writing what you will and won't do with AI. Then Sandbox, test it against real work. Then ${PATH_STAGE_LABELS.training}, form your people. Then ${PATH_STAGE_LABELS.tech}, build the tools. Each step earns the next. Your first move is Safety.`,
   },
   start: {
     title: "Start with a conversation.",

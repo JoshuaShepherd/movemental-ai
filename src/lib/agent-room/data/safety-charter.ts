@@ -35,15 +35,15 @@ export interface SafetyDoor {
 }
 
 export const SAFETY_READBACK_COPY = {
-  heroTitle: "AI Safety is About Human Trust.",
+  heroTitle: "AI Safety is about human trust.",
   reframe:
-    "The threats of AI to organizational credibility exist whether you adopt AI or not, and are guaranteed if we do nothing. The first move is to name reality and a grounded, written response.",
+    "The threats to organizational credibility exist whether you adopt AI or not. They grow if you do nothing. The first move is to name reality and write a grounded response.",
   nextMove:
-    "Now that AI is already within our organizations, the only choice is to respond wisely and clearly. The free handbook covers every layer, or we can sprint together. Because this step is actually urgent.",
+    "AI is already inside most organizations. The only choice left is to respond wisely and clearly. The free handbook covers every layer. Or we can sprint together with you.",
   plansPreview: `Two viable paths to the same ratified ${SAFETY_CHARTER.shortLabel}.`,
   doorsHonest:
-    "Same outcome either way. Free means you hold the pen with the handbook; paid means we run the full process with you in the dashboard.",
-  spreadHint: "Tap a document to read the full draft · sticky notes name what's missing",
+    "Same outcome either way. Free means you hold the pen with the handbook. Paid means we run the full process with you in the dashboard.",
+  spreadHint: "Tap a document to read the full draft. Sticky notes name what's missing.",
   charterLabel: `Your ${SAFETY_CHARTER.fullTitle}, five layers`,
   pathLabel: "The path",
 } as const;
@@ -105,7 +105,7 @@ export const SAFETY_DOORS: SafetyDoor[] = [
     badge: "Free",
     priceAmount: "$0",
     pricePeriod: "self-paced · 1–2 months",
-    tagline: "The handbook — your team works every layer.",
+    tagline: "The handbook. Your team works every layer.",
     body: `The ${SAFETY_HANDBOOK.fullTitle} is not a checklist. It is a full methodology: how to draft, stress-test, and ratify all five ${SAFETY_CHARTER.shortLabel} layers with your board and staff.`,
     features: [
       "Complete handbook, step-by-step through Statement, Policy, Context, Rules, and Response Plans",
@@ -123,7 +123,7 @@ export const SAFETY_DOORS: SafetyDoor[] = [
     priceAmount: "$1,000",
     pricePeriod: "two weeks",
     tagline: "The full managed process, in a dashboard, with every resource beside you.",
-    body: "We draft all five layers customized to your organization, run working sessions with your team, and deliver a board-ready ratification package, not async email ping-pong.",
+    body: "We draft all five layers customized to your organization, run working sessions with your team, and deliver a board-ready ratification package. Not async email ping-pong.",
     features: [
       `Private dashboard to review, comment on, and ratify each ${SAFETY_CHARTER.shortLabel} document`,
       "Custom drafts across all five layers, fitted to your theology, governance, and data practices",

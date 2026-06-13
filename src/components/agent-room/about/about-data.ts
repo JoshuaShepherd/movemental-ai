@@ -42,10 +42,10 @@ export const ABOUT_DOCK = {
 export const BABEL_PENTECOST = [
   {
     term: "Babel",
-    body: "A people who said, let us make a name for ourselves, one coherent tower on their own terms. Coherence aimed at replacing God. Noise is not the only danger; coherence pointed the wrong way rebuilds Babel with better materials.",
+    body: "A people who said, let us make a name for ourselves. One coherent tower on their own terms. Coherence aimed at replacing God. Noise is not the only danger. Coherence pointed the wrong way rebuilds Babel with better materials.",
   },
   {
     term: "Pentecost",
-    body: "The scattering reversed, not by making everyone speak one language, but by making everyone understood in their own. Babel flattens difference and points at itself. Pentecost honors difference and points away from itself. Both are forms of coherence. Only one heals.",
+    body: "The scattering reversed. Not by making everyone speak one language, but by making everyone understood in their own. Babel flattens difference and points at itself. Pentecost honors difference and points away from itself. Both are forms of coherence. Only one heals.",
   },
 ] as const;

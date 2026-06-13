@@ -183,7 +183,7 @@ export function DeckStage({ data, foot, variant, skipToId }: DeckStageProps) {
       trigger = ScrollTrigger.create({
         trigger: stageRef.current,
         start: "center center",
-        end: () => "+=" + window.innerHeight,
+        end: () => "+=" + Math.round(window.innerHeight * 0.35),
         pin: true,
         pinSpacing: true,
         anticipatePin: 1,

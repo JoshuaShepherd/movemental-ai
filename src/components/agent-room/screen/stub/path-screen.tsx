@@ -21,30 +21,30 @@ const STAGES: readonly PathStage[] = [
   {
     num: 1,
     title: PATH_STAGE_LABELS.safety,
-    lead: `Get your arms around AI responsibly: your ${SAFETY_CHARTER.fullTitle}, ratified by your board, before anything else.`,
+    lead: `Name what AI may and may not do in your mission. Your ${SAFETY_CHARTER.fullTitle}, ratified by your board, before anything else.`,
     detail:
-      "Acceptable use, data boundaries, theological red lines, written down and adopted before anyone builds on sand.",
+      "Acceptable use, data boundaries, and theological red lines, written down and adopted before anyone builds on sand.",
   },
   {
     num: 2,
     title: PATH_STAGE_LABELS.sandbox,
     lead: "Try AI against real work, in a bounded place. Sort what helps from what doesn't.",
     detail:
-      "Isolated environments where staff learn prompts and limits without risking public trust or constituent data, with results you can point to.",
+      "Your team runs trials inside the charter you ratified. Each use case goes green, yellow, or red. You leave with a Future Plan leadership can sign.",
   },
   {
     num: 3,
     title: PATH_STAGE_LABELS.training,
-    lead: "Form your people to steward it. Judgment, not a one-off workshop.",
+    lead: "Form the people who will carry it. Judgment, not a one-off workshop.",
     detail:
-      "Discernment, authorship, stewardship, built in the people who will carry AI inside your organization, not bolted on after the tools arrive.",
+      "An eight-week cohort building discernment, authorship, and stewardship in the leaders who will steward AI inside your organization.",
   },
   {
     num: 4,
     title: PATH_STAGE_LABELS.tech,
-    lead: "Build the tools your work actually needs, on what you already have.",
+    lead: "Build what your work actually needs, on what you already decided and tested.",
     detail:
-      "Scoped deployment, from improving what you use today to network-scale work, only after clear review rules are defined and tested.",
+      "Scoped deployment, from improving tools you already use to network-scale work. Only after clear rules, real trials, and formed people.",
   },
 ];
 
@@ -63,10 +63,10 @@ export function PathScreen({ onHome }: ScreenProps) {
         One ordered path. It starts with {PATH_STAGE_LABELS.safety}.
       </p>
       <p className={styles.body}>
-        The order is not arbitrary. {PATH_STAGE_LABELS.safety} first, because AI is already
-        in the room. {PATH_STAGE_LABELS.sandbox} before {PATH_STAGE_LABELS.training} before{" "}
-        {PATH_STAGE_LABELS.tech}, because handing powerful tools to people who can&apos;t yet
-        steward them is replacement, not progress.
+        The order is not arbitrary. {PATH_STAGE_LABELS.safety} first, because AI is already in the
+        room. {PATH_STAGE_LABELS.sandbox} before {PATH_STAGE_LABELS.training} before{" "}
+        {PATH_STAGE_LABELS.tech}. Handing powerful tools to people who cannot yet steward them is
+        replacement, not progress.
       </p>
 
       <ProcessAccordion

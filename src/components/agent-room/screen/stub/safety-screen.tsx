@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { SAFETY_CHARTER, SAFETY_HANDBOOK } from "@/lib/agent-room/naming";
+import { PATH_STAGE_LABELS, SAFETY_CHARTER, SAFETY_HANDBOOK } from "@/lib/agent-room/naming";
 
 import styles from "../../ink-band.module.css";
 import type { ScreenProps } from "./stub-screen";
@@ -33,24 +33,21 @@ export function SafetyScreen({ onHome }: ScreenProps) {
   return (
     <div>
       <Crumb onHome={onHome} />
-      <p className={styles.eyebrow}>Stage 01 · Safety</p>
+      <p className={styles.eyebrow}>Stage 01 · {PATH_STAGE_LABELS.safety}</p>
       <h1>Your team is already using AI. No one has said what&apos;s allowed.</h1>
       <p className={styles.body}>
-        Safety is the first step on the Path, and the most urgent. Before you build
-        anything, you decide, out loud and on the record, what AI may and may not do
-        in your mission.
+        {PATH_STAGE_LABELS.safety} is the first step on the path. Before you build anything, you
+        decide out loud and on the record what AI may and may not do in your mission.
       </p>
 
       <div className={styles.sec}>
         <p className={styles.secLabel}>Why this comes first</p>
         <p className={styles.body} style={{ marginTop: "0.2rem" }}>
-          For a business, an AI mistake costs efficiency. For a church, a nonprofit,
-          or a seminary, it costs the one thing the whole work runs on, which is
-          trust. A sermon quietly written by a machine. Donor records pasted into a
-          consumer tool. A cloned voice asking your people for money. None of these
-          are hypothetical, and none of them are efficiency problems. They are
-          credibility problems, and credibility is your product. There is no second
-          product to fall back on.
+          For a business, an AI mistake costs efficiency. For a church, a nonprofit, or a seminary,
+          it costs trust. A sermon quietly written by a machine. Donor records pasted into a
+          consumer tool. A cloned voice asking your people for money. None of these are
+          hypothetical. None are efficiency problems. They are credibility problems. Credibility is
+          your product. There is no second product to fall back on.
         </p>
       </div>
 
@@ -69,18 +66,17 @@ export function SafetyScreen({ onHome }: ScreenProps) {
       </div>
 
       <p className={styles.gapLine}>
-        The tools arrived. The decisions did not. Safety closes that gap before it
-        costs you.
+        The tools arrived. The decisions did not. {PATH_STAGE_LABELS.safety} closes that gap
+        before it costs you.
       </p>
 
       <div className={styles.turnBlock}>
         <p className={styles.secLabel}>What changes the day you ratify</p>
         <p className={styles.body} style={{ marginTop: "0.2rem" }}>
-          The value arrives the moment your board says yes. From that point you have
-          a clear answer for a journalist, an answer a major donor can trust,
-          one shared frame for your whole staff, and a document you can point to when
-          a vendor pitches something you have already decided against. You stop
-          reacting to AI and start leading through it.
+          The value arrives the moment your board says yes. From that point you have a clear answer
+          for a journalist. An answer a major donor can trust. One shared frame for your whole staff.
+          A document you can point to when a vendor pitches something you already decided against.
+          You stop reacting to AI and start leading through it.
         </p>
       </div>
 

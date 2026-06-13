@@ -147,10 +147,60 @@ export const SCENES = {
     {
       suggest: [
         { label: "Show me Safety", lead: true, to: "toSafety" },
+        { label: "Show me Sandbox", to: "toSandbox" },
         { label: "Map where we actually stand", to: "toBeat" },
         ...(DISCUSS_ENABLED
           ? [{ label: "Our situation is more complicated than this", to: "toDiscuss" as const }]
           : []),
+        { label: "What does it cost?", to: "cost" },
+      ],
+    },
+  ],
+  toSandbox: [
+    { show: "sandbox" },
+    { wait: 480 },
+    {
+      say: "Sandbox is where you try AI against real work, inside the rules you already ratified.",
+    },
+    { wait: 200 },
+    { say: "You sort what helps from what doesn't, and leave with a Future Plan." },
+    {
+      suggest: [
+        { label: "Have us do it · $15,000", lead: true, to: "talkToUs" },
+        { label: "Start free, guided", to: "toPath" },
+        { label: "Show me Safety", to: "toSafety" },
+        { label: "What does it cost?", to: "cost" },
+      ],
+    },
+  ],
+  toTraining: [
+    { show: "training" },
+    { wait: 480 },
+    {
+      say: "Training forms the people who will carry AI inside your organization. Not a tool workshop.",
+    },
+    { wait: 200 },
+    { say: "Eight weeks on discernment, authorship, and stewardship." },
+    {
+      suggest: [
+        { label: "Talk to us about Training", lead: true, to: "talkToUs" },
+        { label: "Show me Sandbox", to: "toSandbox" },
+        { label: "What does it cost?", to: "cost" },
+      ],
+    },
+  ],
+  toTechnology: [
+    { show: "technology" },
+    { wait: 480 },
+    {
+      say: "Technology is scoped deployment, only after Safety, Sandbox, and Training.",
+    },
+    { wait: 200 },
+    { say: "We would rather name a smaller first step than sell a build you are not ready to operate." },
+    {
+      suggest: [
+        { label: "Talk to us about Technology", lead: true, to: "talkToUs" },
+        { label: "See the whole path", to: "toPath" },
         { label: "What does it cost?", to: "cost" },
       ],
     },
@@ -272,7 +322,7 @@ export const SCENES = {
     },
     { wait: 180 },
     {
-      say: "We do everything but the discernment, research, drafting, structure, assessment. You decide.",
+      say: "We do everything but the discernment. Research, drafting, structure, assessment. You decide.",
     },
     {
       suggest: [

@@ -115,8 +115,9 @@ export function AboutExperience() {
                 <p className={styles.eyebrow}>About Movemental</p>
                 <h1 className={styles.title}>Built by movement leaders, for the work that carries trust.</h1>
                 <p className={styles.body}>
-                  Three people started it, not a pitch deck, but a long argument about authorship,
-                  credibility, and what AI was about to do to both. {MOVEMENTAL_FOUNDING.origin}
+                  Three people started it. Not from a pitch deck. From a long argument about
+                  authorship, credibility, and what AI was about to do to both.{" "}
+                  {MOVEMENTAL_FOUNDING.origin}
                 </p>
                 <div className={styles.foundersWrap}>
                   <FoundersTeam />
@@ -131,29 +132,29 @@ export function AboutExperience() {
                 <p className={styles.body}>
                   A faithful reader opens the newest piece and, for the first time in the history of
                   reading, has to ask whether anyone still stands behind the words. The reader cannot
-                  tell, and it does not help if the prose happens to be good. For five hundred years a
-                  pen, a press, a typewriter, none of them could think the thought for you. This tool
+                  tell. It does not help if the prose happens to be good. For five hundred years a
+                  pen, a press, a typewriter. None of them could think the thought for you. This tool
                   can. That is what is new.
                 </p>
                 <p className={styles.body}>
-                  When a reader cannot answer that question and cannot keep paying the cost of
-                  wondering, they withdraw. Publication, the letter, the book, the words that outlive
-                  the writer, is one of the main ways the church has thought together across distance
-                  and time. Lose that trust and you lose more than content.
+                  When a reader cannot answer that question, they stop paying the cost of wondering.
+                  They withdraw. Publication matters here. The letter, the book, the words that
+                  outlive the writer. That is one of the main ways the church has thought together
+                  across distance and time. Lose that trust and you lose more than content.
                 </p>
                 <p className={styles.body}>
-                  Underneath that break sits a deeper problem: fragmentation. Work that was whole in a
-                  person has been scattered into formats that do not speak to each other, books, talks,
-                  articles, frameworks living in other people&apos;s paraphrases. What is known, and who
-                  it is for, both broken in the same event.
+                  Underneath that break sits a deeper problem. Fragmentation. Work that was whole in a
+                  person has been scattered into formats that do not speak to each other. Books,
+                  talks, articles, frameworks living in other people&apos;s paraphrases. What is known,
+                  and who it is for, both break in the same event.
                 </p>
                 <blockquote className={styles.pullQuote}>
                   AI is a mirror. Slop is fragmentation, reflected and multiplied.
                 </blockquote>
                 <p className={styles.body}>
-                  People assume AI will pull the pieces together. By default it does the opposite, it
-                  reflects back whatever it is given, and what it is given is almost always fragmentation.
-                  Built on a fragmented foundation, AI amplifies dysfunction rather than reducing it.
+                  People assume AI will pull the pieces together. By default it does the opposite. It
+                  reflects back whatever it is given. What it is given is almost always scattered
+                  pieces. Built on that foundation, AI multiplies the mess instead of cleaning it up.
                 </p>
               </div>
             </section>
@@ -169,9 +170,9 @@ export function AboutExperience() {
                 </p>
                 <p className={styles.body}>
                   Most public AI discourse splits into &ldquo;AI is a savior&rdquo; or &ldquo;AI is a
-                  threat.&rdquo; We reject both. AI mirrors and amplifies what it was trained on, and
-                  it mirrors and amplifies you specifically, which means how a person reacts to AI often
-                  reveals their underlying view of human nature.
+                  threat.&rdquo; We reject both. AI mirrors what it was trained on. It mirrors you
+                  too. How a person reacts to AI often reveals what they already believe about human
+                  nature.
                 </p>
                 <div className={styles.beliefGrid}>
                   {BABEL_PENTECOST.map((item) => (
@@ -195,19 +196,23 @@ export function AboutExperience() {
                 <p className={styles.eyebrow}>What Movemental actually is</p>
                 <h2 className={`${styles.title} ${styles.titleSm}`}>Four layers, kept distinct.</h2>
                 <p className={styles.body}>
-                  Movemental keeps four things separate so none collapses into the others: the{" "}
-                  <strong>scenius</strong> (the shared intelligence of the scene, served, not owned), the{" "}
-                  <strong>corpus</strong> (the authors&apos; own work, owned by them), the{" "}
-                  <strong>platform</strong> (tools that let a distributed scene act like a
-                  scene), and <strong>AI</strong> (a reader for the network, reflecting work back
-                  clearly without inventing what was never said).
+                  Movemental keeps four things separate so none collapses into the others. The scenius
+                  is the shared intelligence of the scene, served, not owned. The corpus is the
+                  authors&apos; own work, owned by them. The platform is the tools that let a
+                  scattered network act like a network. AI is a reader for the network. It reflects
+                  work back clearly without inventing what was never said.
                 </p>
                 <p className={styles.body}>
-                  Movemental&apos;s bet is that shared infrastructure can lower the cost of real peer
-                  connection enough that a distributed scenius can survive across geography and years,
-                  not replacing the local scene, but extending it. What people say yes to when they
-                  join is not the technology. It is each other. The platform exists to make that
-                  possible at a scale that was not possible before.
+                  A website builder can give you a beautiful site for less. If that is all you need,
+                  use it. Movemental is for leaders and organizations whose credibility depends on
+                  being found for the right reasons, and on keeping authorship honest.
+                </p>
+                <p className={styles.body}>
+                  Our bet is that shared tools can lower the cost of real peer connection enough that
+                  a scattered network can hold together across geography and years. Not replacing the
+                  local scene. Extending it. What people say yes to when they join is not the
+                  technology. It is each other. The platform exists to make that possible in a way that
+                  was not possible before.
                 </p>
                 <p className={styles.body}>
                   The full story of the network, the authorship break, the hundred, the invitation, lives
@@ -226,18 +231,17 @@ export function AboutExperience() {
                 <h2 className={`${styles.title} ${styles.titleSm}`}>The extractive version is obvious. We are building against it.</h2>
                 <p className={styles.body}>
                   We do not use AI to author anything under a human&apos;s name. We do not turn
-                  practitioners into bloggers, the AI handles the work around the writing, never the
-                  writing itself. We are not the platform; the voices are. We use the tools we sell, on
+                  practitioners into bloggers. The AI handles the work around the writing, never the
+                  writing itself. We are not the platform. The voices are. We use the tools we sell, on
                   ourselves, first.
                 </p>
                 <p className={styles.body}>
                   The leaders we gather earned their credibility by refusing to become influencers.
-                  They stayed local and stayed sent, and so, online, they are almost invisible,
-                  because the visibility game asked them to become content creators, and they had
-                  better things to do. AI is the thing that finally lets faithful obscurity become
-                  visible without becoming influence. We are not trying to make these people famous.
-                  We are trying to make sure that when the next generation asks the questions they
-                  have spent their lives answering, they find the right answer.
+                  They stayed local and stayed sent. Online, they are almost invisible. The visibility
+                  game asked them to become content creators, and they had better things to do. AI can
+                  let faithful obscurity become visible without becoming influence. We are not trying
+                  to make these people famous. We are trying to make sure that when the next generation
+                  asks the questions they have spent their lives answering, they find the right answer.
                 </p>
                 <p className={styles.body}>
                   The full account of what we refuse, and the green, yellow, and red lights we apply,
@@ -256,24 +260,24 @@ export function AboutExperience() {
                 <h2 className={`${styles.title} ${styles.titleSm}`}>They are watching what we do.</h2>
                 <p className={styles.body}>
                   For as long as anyone has studied it, the apostolic movement has organized as
-                  networks, small groups of churches that share a meal, set goals, hold one another
+                  networks. Small groups of churches that share a meal, set goals, hold one another
                   accountable, and plant the next one together. What that movement has never had is a
-                  digital structure that matches what it actually is. That did not cost much while the
-                  next generation still found mentors through books and conferences and word of mouth.
-                  That is not how they look anymore. They ask the machine, and the machine answers from
-                  whatever is visible to it, which is too often not the people who have actually done
-                  this work for thirty years.
+                  way to stay connected online that fits what it actually is. That did not cost much
+                  while the next generation still found mentors through books and conferences and word
+                  of mouth. That is not how they look anymore. They ask the machine. The machine answers
+                  from whatever is visible to it. Too often that is not the people who have actually
+                  done this work for thirty years.
                 </p>
                 <p className={styles.body}>
-                  Young adults are asking the machine the questions they used to ask a mentor, how to
-                  make sense of their lives, how to actually disciple people, what the church is even for.
-                  They are waiting to see whether the church has anything true to say in this moment, or
-                  whether it will answer with fear, or with a shrug.
+                  Young adults are asking the machine the questions they used to ask a mentor. How to
+                  make sense of their lives. How to actually disciple people. What the church is even
+                  for. They are waiting to see whether the church has anything true to say in this
+                  moment. Or whether it will answer with fear, or with a shrug.
                 </p>
                 <p className={styles.body}>
                   That is the real question underneath everything else. It is a question about formation
-                  before it is a question about technology, and they will decide from what they watch us
-                  do whether the kingdom is real and the church is real.
+                  before it is a question about technology. They will decide from what they watch us do
+                  whether the kingdom is real and the church is real.
                 </p>
                 <AskAiPromptButton promptKey="aboutFull" />
               </div>

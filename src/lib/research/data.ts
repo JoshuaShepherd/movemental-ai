@@ -85,6 +85,8 @@ export const RESEARCH_ITEMS: ResearchItem[] = [
       { id: "section-collapse", label: "Credibility collapse" },
       { id: "section-evidence", label: "What the evidence supports" },
       { id: "section-counter", label: "Counterarguments" },
+      { id: "section-verification", label: "Verification systems" },
+      { id: "section-constructive", label: "Constructive thesis" },
       { id: "section-closing", label: "Closing note" },
     ],
     sources: [
@@ -131,10 +133,10 @@ export const RESEARCH_ITEMS: ResearchItem[] = [
       { id: "section-look-for", label: "What to look for" },
       { id: "section-network", label: "Network test" },
       { id: "section-hard-test", label: "The hard test" },
-      { id: "section-movemental", label: "Where Movemental fits" },
       { id: "section-discernment", label: "Discernment layer" },
       { id: "section-counter", label: "Counterarguments" },
       { id: "section-recommendations", label: "Recommendations" },
+      { id: "section-movemental", label: "Where Movemental fits" },
       { id: "section-closing", label: "Closing" },
       { id: "section-sequence", label: "In this sequence" },
     ],
@@ -532,7 +534,6 @@ export const RESEARCH_ARCHIVE: ResearchItem[] = [
     subtitle:
       "Credibility, publication, scenius, and movement — stress-testing the philosophical spine against Jenkins, Castells, and the research series.",
     sections: [
-      { id: "section-upstream", label: "Why upstream" },
       { id: "section-clarify", label: "Define convergence" },
       { id: "section-four-forces", label: "Four forces" },
       { id: "section-crux", label: "Crux" },
@@ -541,6 +542,7 @@ export const RESEARCH_ARCHIVE: ResearchItem[] = [
       { id: "section-why-now", label: "Why now" },
       { id: "section-recommendations", label: "Recommendations" },
       { id: "section-closing", label: "Verdict" },
+      { id: "section-coupling", label: "How the four forces connect" },
     ],
     sources: [
       {

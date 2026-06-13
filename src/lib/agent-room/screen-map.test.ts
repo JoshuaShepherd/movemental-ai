@@ -40,6 +40,12 @@ describe("screen-map: ComponentId ↔ ScreenId SSOT (INT-01)", () => {
         expect(toScreenId(component)).toBe("safety");
         continue;
       }
+      if (screen === "sandbox" || screen === "training" || screen === "technology") {
+        // Stage detail screens: stub-only until dedicated ComponentIds exist.
+        expect(component).toBe("path");
+        expect(toScreenId(component)).toBe("path");
+        continue;
+      }
       // ScreenId → ComponentId → ScreenId is the identity for Ink Band screens.
       expect(toScreenId(component)).toBe(screen);
     }

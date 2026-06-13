@@ -9,7 +9,7 @@ import { NONPROFITS_PAGE_CONFIG } from "@/components/agent-room/audience/nonprof
 export const metadata: Metadata = {
   title: "Nonprofits | Movemental",
   description:
-    "AI is already inside your nonprofit. A you-first case for executive directors and boards: governance gaps, mission integrity, a letter for your board, and the ordered path: Safety, Sandbox, Training, Technology.",
+    "AI is already inside your nonprofit. A you-first case for executive directors and boards: governance gaps, mission integrity, a letter for your board, and the ordered path: Safety, Sandbox, Training, Tech.",
   alternates: {
     canonical: "/agent/nonprofits",
   },

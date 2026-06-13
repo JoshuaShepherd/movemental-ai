@@ -42,6 +42,10 @@ export const SCREEN_IDS = [
   "capture",
   /** Safety funnel — dashboard conversion (post-readback paid path). */
   "safetyDashboard",
+  /** Path stages 02–04 — stage detail screens (stub runner). */
+  "sandbox",
+  "training",
+  "technology",
 ] as const;
 
 export type ScreenId = (typeof SCREEN_IDS)[number];

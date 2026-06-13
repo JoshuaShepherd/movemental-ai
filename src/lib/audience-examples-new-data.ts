@@ -24,19 +24,19 @@ export const audienceExamplesNew: readonly AudienceExampleNewPublic[] = [
     id: "churches",
     canonicalPath: "/churches",
     label: "Churches",
-    oneLiner: "Teaching, care, and formation intelligence surfaced for leaders and congregations.",
+    oneLiner: "Teaching, discipleship, and ministry record your pastor and elders can trust.",
   },
   {
     id: "nonprofits",
     canonicalPath: "/nonprofits",
     label: "Nonprofits",
-    oneLiner: "Mission operations: donors, programs, and stories threaded into one navigable layer.",
+    oneLiner: "Donors, programs, and impact stories in one place your board can verify.",
   },
   {
     id: "institutions",
     canonicalPath: "/institutions",
     label: "Institutions",
-    oneLiner: "Research, curriculum, and faculty collaboration mapped across the institutional corpus.",
+    oneLiner: "Scholarship, curriculum, and faculty work in one archive your board can govern.",
   },
 ] as const;
 

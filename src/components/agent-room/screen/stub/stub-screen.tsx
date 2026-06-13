@@ -33,6 +33,9 @@ import { ConfirmScreen } from "./confirm-screen";
 import { LeaderScreen } from "./leader-screen";
 import { CaptureScreen } from "./capture-screen";
 import { SafetyDashboardScreen } from "./safety-dashboard-screen";
+import { SandboxScreen } from "./sandbox-screen";
+import { TrainingScreen } from "./training-screen";
+import { TechnologyScreen } from "./technology-screen";
 
 /** The current screen on the wall (prototype `renderScreen` arguments + a
  *  nonce so the `settle` animation re-fires on every `show`). */
@@ -94,6 +97,9 @@ export const SCREEN_COMPONENTS: Record<ScreenId, ComponentType<ScreenProps>> = {
   faq: FaqScreen,
   capture: CaptureScreen,
   safetyDashboard: SafetyDashboardScreen,
+  sandbox: SandboxScreen,
+  training: TrainingScreen,
+  technology: TechnologyScreen,
 };
 
 export function StubScreen({

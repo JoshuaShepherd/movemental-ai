@@ -31,8 +31,8 @@ export function AboutScreen({ onHome }: ScreenProps) {
       </div>
 
       <p className={styles.body} style={{ marginTop: "1.25rem" }}>
-        The full story, why we exist, the Babel vs. Pentecost ethic, what we refuse, and the
-        formation stakes, lives on the About page.
+        The full story lives on the About page. Why we exist, the Babel and Pentecost ethic, what we
+        refuse, and the formation stakes.
       </p>
       <p className={styles.body} style={{ marginTop: "0.85rem" }}>
         <Link className={styles.inlineLink} href="/agent/about">

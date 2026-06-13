@@ -18,18 +18,17 @@ type DeckSectionProps = {
 };
 
 /**
- * Static, no-JS / pre-mount fallback: the slides as a plain vertical stack.
- * This is the SSR content (indexable, accessible) and what renders until the
- * section nears the viewport — so the interactive deck (and GSAP) cost nothing
- * on initial page load.
+ * Single-viewport placeholder until the interactive stage mounts — one slide
+ * height, never the full vertical stack (avoids double-painting the title slide).
  */
-function DeckFallbackStack({ data, foot }: { data: DeckData; foot: string }) {
+function DeckFallbackShell({ data, foot }: { data: DeckData; foot: string }) {
+  const firstSlide = data.slides[0];
+  if (!firstSlide) return null;
+
   return (
-    <div className={`${styles.stage} ${styles.modeStack}`}>
+    <div className={`${styles.stage} ${styles.modeDeck} ${styles.fallbackShell}`}>
       <div className={styles.track}>
-        {data.slides.map((slide) => (
-          <DeckSlideView key={slide.id} slide={slide} diagram={data.diagram} foot={foot} />
-        ))}
+        <DeckSlideView slide={firstSlide} diagram={data.diagram} foot={foot} />
       </div>
     </div>
   );
@@ -39,7 +38,7 @@ function DeckFallbackStack({ data, foot }: { data: DeckData; foot: string }) {
  * Embedded deck — a first-class section of the audience document. No card,
  * border, or shadow: the warm paper runs straight through so it reads as the
  * page continuing, not a widget. Lazy-mounts the interactive stage when it
- * nears the viewport; before that (and with JS off) it shows the slide stack.
+ * nears the viewport; before that (and with JS off) it shows one slide shell.
  */
 export function DeckSection({ data, foot, anchorId, skipToId }: DeckSectionProps) {
   const [near, setNear] = useState(false);
@@ -67,7 +66,7 @@ export function DeckSection({ data, foot, anchorId, skipToId }: DeckSectionProps
       {near ? (
         <DeckStage data={data} foot={foot} variant="embedded" skipToId={skipToId} />
       ) : (
-        <DeckFallbackStack data={data} foot={foot} />
+        <DeckFallbackShell data={data} foot={foot} />
       )}
     </section>
   );

@@ -59,7 +59,7 @@ const SANDBOX_PAID: WayForwardOption = {
   title: "We do it with you.",
   price: "$15,000 · four to six weeks",
   description:
-    "About ten hours of in-person teaching across the eight phases, an LMS, a custom AI recipe library, and dashboard integration. Produces a Future Plan with green, yellow, and red-light use cases.",
+    "About ten hours of in-person teaching across eight phases, learning access, a custom AI recipe library, and dashboard integration. Produces a Future Plan with green, yellow, and red use cases.",
   ctaLabel: "Have us do it · $15,000",
   ctaHref: "/enroll",
   paid: true,

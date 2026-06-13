@@ -1344,6 +1344,9 @@
 .docStatusOpen {
   color: var(--color-ink-band-margin-red-ink);
 }
+.docStatusReview {
+  color: var(--color-ink-band-ink-muted);
+}
 .sticky {
   position: absolute;
   top: auto;

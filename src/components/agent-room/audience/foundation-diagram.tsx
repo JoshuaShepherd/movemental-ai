@@ -4,45 +4,113 @@ type FoundationDiagramProps = {
   centerLabel?: string;
 };
 
-/** Simple connected-map visual for the gathered foundation. */
-export function FoundationDiagram({ centerLabel = "CORE" }: FoundationDiagramProps) {
+const SCATTERED = [
+  { cx: 42, cy: 38, label: "People" },
+  { cx: 118, cy: 52, label: "Record" },
+  { cx: 68, cy: 98, label: "Voice" },
+  { cx: 148, cy: 88, label: "Program" },
+  { cx: 28, cy: 72, label: "Grants" },
+];
+
+const GATHERED = [
+  { cx: 248, cy: 48, label: "People" },
+  { cx: 312, cy: 48, label: "Record" },
+  { cx: 228, cy: 112, label: "Voice" },
+  { cx: 332, cy: 112, label: "Program" },
+  { cx: 280, cy: 148, label: "Grants" },
+];
+
+/** Before/after: scattered pieces resolve into one connected center. */
+export function FoundationDiagram({ centerLabel = "ONE" }: FoundationDiagramProps) {
+  const hubX = 280;
+  const hubY = 88;
+
   return (
-    <div className={styles.foundationVis} aria-hidden="true">
-      <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Connected foundation diagram">
-        <g fill="none" stroke="var(--color-ink-band-border)" strokeWidth="1.25">
-          <line x1="160" y1="100" x2="80" y2="45" />
-          <line x1="160" y1="100" x2="240" y2="45" />
-          <line x1="160" y1="100" x2="55" y2="155" />
-          <line x1="160" y1="100" x2="265" y2="155" />
-          <line x1="160" y1="100" x2="160" y2="175" />
-          <line x1="80" y1="45" x2="240" y2="45" />
-          <line x1="55" y1="155" x2="265" y2="155" />
-        </g>
-        <circle cx="160" cy="100" r="22" fill="var(--color-ink-band-paper)" stroke="var(--color-ink-band-blue)" strokeWidth="2" />
-        <text x="160" y="104" textAnchor="middle" fontFamily="var(--font-ink-mono)" fontSize="9" fill="var(--color-ink-band-blue)">
-          {centerLabel.slice(0, 8).toUpperCase()}
-        </text>
-        <circle cx="80" cy="45" r="14" fill="var(--color-ink-band-paper)" stroke="var(--color-ink-band-ink)" strokeWidth="1" />
-        <circle cx="240" cy="45" r="14" fill="var(--color-ink-band-paper)" stroke="var(--color-ink-band-ink)" strokeWidth="1" />
-        <circle cx="55" cy="155" r="14" fill="var(--color-ink-band-paper)" stroke="var(--color-ink-band-ink)" strokeWidth="1" />
-        <circle cx="265" cy="155" r="14" fill="var(--color-ink-band-paper)" stroke="var(--color-ink-band-ink)" strokeWidth="1" />
-        <circle cx="160" cy="175" r="14" fill="var(--color-ink-band-paper)" stroke="var(--color-ink-band-ink)" strokeWidth="1" />
-        <text x="80" y="48" textAnchor="middle" fontFamily="var(--font-ink-body)" fontSize="7" fill="var(--color-ink-band-ink-muted)">
-          People
-        </text>
-        <text x="240" y="48" textAnchor="middle" fontFamily="var(--font-ink-body)" fontSize="7" fill="var(--color-ink-band-ink-muted)">
-          Work
-        </text>
-        <text x="55" y="158" textAnchor="middle" fontFamily="var(--font-ink-body)" fontSize="7" fill="var(--color-ink-band-ink-muted)">
-          Record
-        </text>
-        <text x="265" y="158" textAnchor="middle" fontFamily="var(--font-ink-body)" fontSize="7" fill="var(--color-ink-band-ink-muted)">
-          Voice
-        </text>
-        <text x="160" y="178" textAnchor="middle" fontFamily="var(--font-ink-body)" fontSize="7" fill="var(--color-ink-band-ink-muted)">
-          Ministry
-        </text>
-      </svg>
-    </div>
+    <figure className={styles.foundationFigure} aria-label="Scattered pieces gathered into one foundation">
+      <div className={styles.foundationPanels}>
+        <div className={styles.foundationPanel}>
+          <p className={styles.foundationPanelLabel}>Scattered</p>
+          <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            {SCATTERED.map((node) => (
+              <g key={node.label}>
+                <circle
+                  cx={node.cx}
+                  cy={node.cy}
+                  r="12"
+                  fill="var(--color-ink-band-paper)"
+                  stroke="var(--color-ink-band-border)"
+                  strokeWidth="1.25"
+                />
+                <text
+                  x={node.cx}
+                  y={node.cy + 24}
+                  textAnchor="middle"
+                  fontFamily="var(--font-ink-mono)"
+                  fontSize="7"
+                  fill="var(--color-ink-band-ink-muted)"
+                >
+                  {node.label}
+                </text>
+              </g>
+            ))}
+          </svg>
+        </div>
+
+        <div className={styles.foundationArrow} aria-hidden="true">
+          →
+        </div>
+
+        <div className={styles.foundationPanel}>
+          <p className={styles.foundationPanelLabel}>Gathered</p>
+          <svg viewBox="0 0 380 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            <g stroke="var(--color-ink-band-border)" strokeWidth="1.25">
+              {GATHERED.map((node) => (
+                <line key={`line-${node.label}`} x1={hubX} y1={hubY} x2={node.cx} y2={node.cy} />
+              ))}
+            </g>
+            <circle
+              cx={hubX}
+              cy={hubY}
+              r="20"
+              fill="var(--color-ink-band-paper)"
+              stroke="var(--color-ink-band-blue)"
+              strokeWidth="2"
+            />
+            <text
+              x={hubX}
+              y={hubY + 4}
+              textAnchor="middle"
+              fontFamily="var(--font-ink-mono)"
+              fontSize="9"
+              fill="var(--color-ink-band-blue)"
+            >
+              {centerLabel.slice(0, 6).toUpperCase()}
+            </text>
+            {GATHERED.map((node) => (
+              <g key={node.label}>
+                <circle
+                  cx={node.cx}
+                  cy={node.cy}
+                  r="12"
+                  fill="var(--color-ink-band-paper)"
+                  stroke="var(--color-ink-band-ink)"
+                  strokeWidth="1"
+                />
+                <text
+                  x={node.cx}
+                  y={node.cy + 24}
+                  textAnchor="middle"
+                  fontFamily="var(--font-ink-mono)"
+                  fontSize="7"
+                  fill="var(--color-ink-band-ink-muted)"
+                >
+                  {node.label}
+                </text>
+              </g>
+            ))}
+          </svg>
+        </div>
+      </div>
+    </figure>
   );
 }

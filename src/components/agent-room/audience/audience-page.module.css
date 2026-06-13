@@ -190,6 +190,44 @@
   background: var(--color-ink-band-paper);
 }
 
+.whereYouStand {
+  padding-top: clamp(3rem, 8vw, 5.5rem);
+  background: var(--color-ink-band-paper);
+}
+
+.framing {
+  font-family: var(--font-ink-body);
+  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+  line-height: 1.65;
+  color: var(--color-ink-band-ink-muted);
+  margin: 0 0 clamp(1.75rem, 4vw, 2.5rem);
+  max-width: 42ch;
+}
+
+.claim {
+  font-family: var(--font-ink-display);
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+  margin: 0 0 clamp(1.5rem, 3.5vw, 2rem);
+  max-width: 38ch;
+}
+
+.segue {
+  font-family: var(--font-ink-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--color-ink-band-ink-muted);
+  margin: 0 0 clamp(2.5rem, 5vw, 3.5rem);
+  max-width: 42ch;
+}
+
+.evidenceBlock {
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+  border-top: 1px solid var(--color-ink-band-border);
+}
+
 .eyebrow {
   margin: 0 0 0.85rem;
   font-family: var(--font-ink-mono);
@@ -379,20 +417,54 @@
   font-weight: 500;
 }
 
-.foundationVis {
+.foundationFigure {
   margin: 2rem 0 0.5rem;
-  padding: 1.5rem;
-  background: var(--color-ink-band-surface);
+}
+
+.foundationPanels {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.4fr);
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  align-items: center;
+}
+
+.foundationPanel {
+  padding: 1rem 0.75rem;
   border: 1px solid var(--color-ink-band-border);
+  background: var(--color-ink-band-paper);
   border-radius: 2px;
 }
 
-.foundationVis svg {
+.foundationPanelLabel {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-ink-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+}
+
+.foundationPanel svg {
   display: block;
   width: 100%;
-  max-width: 22rem;
   height: auto;
-  margin: 0 auto;
+}
+
+.foundationArrow {
+  font-family: var(--font-ink-mono);
+  font-size: 1.25rem;
+  color: var(--color-ink-band-ink-muted);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .foundationPanels {
+    grid-template-columns: 1fr;
+  }
+
+  .foundationArrow {
+    transform: rotate(90deg);
+  }
 }
 
 /* ---- Tools ---- */
@@ -409,7 +481,7 @@
   margin: 0;
 }
 
-.toolItem strong {
+.toolLabel {
   color: var(--color-ink-band-ink);
   font-weight: 600;
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 
 import { DocumentPageShell } from "@/components/agent-room/document/document-page-shell";
 import { DeckSection } from "@/components/agent-room/deck/deck-section";
@@ -24,12 +24,27 @@ type AudiencePageExperienceProps = {
 const DECK_ANCHOR_ID = "why-a-platform";
 const DECK_SKIP_TO_ID = "formation";
 
+function renderWithHighlight(text: string, phrase: string | undefined): ReactNode {
+  if (!phrase) return text;
+  const idx = text.indexOf(phrase);
+  if (idx === -1) return text;
+  return (
+    <>
+      {text.slice(0, idx)}
+      <span className={styles.hl}>{phrase}</span>
+      {text.slice(idx + phrase.length)}
+    </>
+  );
+}
+
 /**
  * Shared long-form audience document — churches, nonprofits, institutions.
  * Left sticky sidebar, you-first narrative arc, embedded letter (trimmed
  * on-page; full text for download). Assessment preview lives in The build.
  */
 export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageExperienceProps) {
+  const claimFirstHero = Boolean(config.hero.claim);
+
   // Insert the deck's nav anchor after "The build" when a deck is present, so
   // churches / institutions (no deck) keep the original eight-item nav.
   const navEntries = useMemo(() => {
@@ -92,6 +107,7 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
 
   const activeLabel = navEntries[activeNavIndex]?.label ?? navEntries[0].label;
   const mobileMenuId = `${config.slug}-mobile-menu`;
+  const pathHeadline = config.thePath.headline ?? "It all goes in one order.";
 
   return (
     <DocumentPageShell
@@ -157,26 +173,56 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
         </aside>
 
         <main className={styles.main}>
-          <section className={`${styles.section} ${styles.hero}`} id="hero">
-            <div className={styles.sectionInner}>
-              <p className={styles.eyebrow}>{config.hero.eyebrow}</p>
-              <h1 className={styles.title}>{config.hero.title}</h1>
-              <p className={styles.sub}>{config.hero.sub}</p>
-            </div>
-          </section>
+          {!claimFirstHero ? (
+            <section className={`${styles.section} ${styles.hero}`} id="hero">
+              <div className={styles.sectionInner}>
+                <p className={styles.eyebrow}>{config.hero.eyebrow}</p>
+                <h1 className={styles.title}>{config.hero.title}</h1>
+                <p className={styles.sub}>{config.hero.sub}</p>
+              </div>
+            </section>
+          ) : null}
 
-          <section className={styles.section} id="where-you-stand">
+          <section
+            className={`${styles.section} ${claimFirstHero ? styles.whereYouStand : ""}`}
+            id="where-you-stand"
+          >
             <div className={`${styles.sectionInner} ${styles.sectionInnerWide}`}>
-              <p className={styles.eyebrow}>Where you stand</p>
-              <h2 className={`${styles.title} ${styles.titleSm}`}>{config.painSection.title}</h2>
-              <p className={styles.intro}>{config.painSection.intro}</p>
-              <div className={styles.cardGrid} role="list">
-                {config.painSection.cards.map((card) => (
-                  <article key={card.title} className={styles.card} role="listitem">
-                    <h3 className={styles.cardTitle}>{card.title}</h3>
-                    <p className={styles.cardBody}>{card.body}</p>
-                  </article>
-                ))}
+              {claimFirstHero ? (
+                <>
+                  <p className={styles.eyebrow}>{config.hero.eyebrow}</p>
+                  {config.hero.rhetoricalTitle ? (
+                    <h1 className={styles.title}>
+                      {renderWithHighlight(
+                        config.hero.rhetoricalTitle,
+                        config.hero.highlightPhrase,
+                      )}
+                    </h1>
+                  ) : null}
+                  {config.hero.framing ? (
+                    <p className={styles.framing}>{config.hero.framing}</p>
+                  ) : null}
+                  {config.hero.claim ? <p className={styles.claim}>{config.hero.claim}</p> : null}
+                  {config.hero.segue ? <p className={styles.segue}>{config.hero.segue}</p> : null}
+                </>
+              ) : (
+                <p className={styles.eyebrow}>Where you stand</p>
+              )}
+
+              <div className={claimFirstHero ? styles.evidenceBlock : undefined}>
+                {!claimFirstHero ? (
+                  <p className={styles.eyebrow}>Where you stand</p>
+                ) : null}
+                <h2 className={`${styles.title} ${styles.titleSm}`}>{config.painSection.title}</h2>
+                <p className={styles.intro}>{config.painSection.intro}</p>
+                <div className={styles.cardGrid} role="list">
+                  {config.painSection.cards.map((card) => (
+                    <article key={card.title} className={styles.card} role="listitem">
+                      <h3 className={styles.cardTitle}>{card.title}</h3>
+                      <p className={styles.cardBody}>{card.body}</p>
+                    </article>
+                  ))}
+                </div>
               </div>
             </div>
           </section>
@@ -253,7 +299,7 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
               <div className={styles.toolList}>
                 {config.theBuild.toolExamples.map((tool) => (
                   <p key={tool.label} className={styles.toolItem}>
-                    <strong>{tool.label}</strong> {tool.text}
+                    <span className={styles.toolLabel}>{tool.label}</span> {tool.text}
                   </p>
                 ))}
               </div>
@@ -293,12 +339,11 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
           <section className={styles.section} id="the-path">
             <div className={`${styles.sectionInner} ${styles.sectionInnerWide}`}>
               <p className={styles.eyebrow}>The path</p>
-              <h2 className={`${styles.title} ${styles.titleSm}`}>It all goes in one order.</h2>
-              <p className={styles.body}>
-                {config.thePath.intro.split("Safety first")[0]}
-                <span className={styles.hl}>Safety first</span>
-                {config.thePath.intro.split("Safety first")[1]}
-              </p>
+              <h2 className={`${styles.title} ${styles.titleSm}`}>{pathHeadline}</h2>
+              <p className={styles.body}>{config.thePath.intro}</p>
+              {config.thePath.closing ? (
+                <p className={styles.body}>{config.thePath.closing}</p>
+              ) : null}
               <div
                 className={styles.stageRail}
                 aria-label={`Four stages: ${PATH_STAGE_LABELS.safety}, ${PATH_STAGE_LABELS.sandbox}, ${PATH_STAGE_LABELS.training}, ${PATH_STAGE_LABELS.tech}`}
