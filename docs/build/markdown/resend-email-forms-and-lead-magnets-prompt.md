@@ -36,7 +36,7 @@ Follow the official flow (do not invent DNS values—copy from the Resend dashbo
 
 1. **API key**: [API keys](https://resend.com/api-keys) → set `RESEND_API_KEY` in Vercel + `.env.local` (never commit secrets).
 2. **Domain**: [Domains](https://resend.com/domains) → add domain → add required **SPF**, **DKIM**, and any **MX** records Resend shows → wait for “Verified”.
-3. **From address**: Set `RESEND_FROM_EMAIL` to an address on the verified domain (e.g. `hello@movemental.com` or `updates@movemental.com`).
+3. **From address**: Set `RESEND_FROM_EMAIL` to an address on the verified domain (e.g. `hello@movemental.ai` or `updates@movemental.ai`).
 4. **Display name**: Set `RESEND_FROM_NAME` (e.g. `Movemental`) so inbox clients show a friendly sender.
 5. **Testing**: Use Resend’s [test addresses](https://resend.com/docs/send-with-nextjs) (`delivered@resend.dev`, etc.) only in non-production; production must use real verified domains per Resend guardrails.
 6. **Docs index**: [resend.com/docs/llms.txt](https://resend.com/docs/llms.txt) for discovering topics (webhooks, scheduling, audiences, inbound).

@@ -32,7 +32,7 @@
 
 ### Problems Movemental Solves
 
-- **Institutional dependency**: Ferguson's most significant reach channels (Exponential conference email list, NEXT Podcast listenership, conference registration database, NewThing network contacts) are institutionally owned. Movemental provides a personally owned hub — daveferguson.movemental.com or equivalent — that is his regardless of institutional circumstances.
+- **Institutional dependency**: Ferguson's most significant reach channels (Exponential conference email list, NEXT Podcast listenership, conference registration database, NewThing network contacts) are institutionally owned. Movemental provides a personally owned hub — daveferguson.movemental.ai or equivalent — that is his regardless of institutional circumstances.
 
 - **The Substack URL problem**: daveferguson3.substack.com is a permanent credibility friction point. A Movemental-hosted newsletter with a clean URL resolves this and creates a foundation for subscriber growth.
 

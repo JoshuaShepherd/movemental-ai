@@ -63,7 +63,7 @@
 3. **Index podcast appearances** -- create searchable catalog of 7+ guest episodes with topic descriptions and timestamps
 4. **Set up book listings** -- all 4 books with covers, descriptions, purchase links, Goodreads ratings, review excerpts, and related content cross-references
 5. **Create framework pages** -- standalone pages for the Five Equippers, Eight Core Competencies, Four Spaces of Belonging, and Theology of the Powers with visual diagrams
-6. **Claim key URLs** -- reserve jrwoodward.movemental.com (or equivalent)
+6. **Claim key URLs** -- reserve jrwoodward.movemental.ai (or equivalent)
 
 ### Phase 2: Content Migration (Month 1)
 

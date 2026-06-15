@@ -58,6 +58,7 @@
     "test:run": "vitest run",
     "captures:platform": "tsx scripts/capture-platform-screenshots.ts",
     "captures:manifest": "tsx scripts/generate-capture-manifest.ts",
+    "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "field-guide:pdf": "tsx scripts/build-field-guide-pdf.mts",
     "docs:youthfront-2026-guide:pdf": "tsx scripts/generate-youthfront-2026-guide-pdf.ts",

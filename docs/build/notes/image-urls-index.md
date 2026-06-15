@@ -31,7 +31,7 @@ Inventory of **image URLs referenced in this repo** (`src/`, `public/`, `docs/ai
 
 ## Site-relative paths (`public/`)
 
-Prefix with the deployment origin (e.g. `https://movemental.com`) or use as-is in Next.js (`/…`).
+Prefix with the deployment origin (e.g. `https://movemental.ai`) or use as-is in Next.js (`/…`).
 
 ### Book covers
 

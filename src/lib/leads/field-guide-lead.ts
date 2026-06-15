@@ -35,7 +35,7 @@ export interface RecordFieldGuideLeadResult {
 }
 
 function siteUrlForUnsub(): string {
-  return env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.com";
+  return env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.ai";
 }
 
 export async function recordFieldGuideLead(

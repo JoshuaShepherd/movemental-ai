@@ -23,7 +23,7 @@ import { createNewsletterUnsubscribeToken } from "@/lib/newsletter-unsubscribe-t
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 function siteUrl(): string {
-  return env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.com";
+  return env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.ai";
 }
 
 function unsubscribeUrlFor(subscriberId: string): string | null {

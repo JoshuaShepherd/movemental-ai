@@ -20,7 +20,7 @@ const NewsletterSchema = z.object({
 const newsletterRateLimitIp = createSlidingWindowRateLimiter(10, 60 * 60 * 1000);
 
 function siteUrlForUnsub(): string {
-  return env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.com";
+  return env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.ai";
 }
 
 /**

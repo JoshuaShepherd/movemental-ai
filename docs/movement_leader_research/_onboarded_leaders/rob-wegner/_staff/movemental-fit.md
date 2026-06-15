@@ -115,7 +115,7 @@ Onboarding Wegner with intentionality opens **at least 8–12 first-degree refer
 5. **Catalog conference talks** (Exponential 2019, 2024, regionals; UB 2025; Microchurch Pre-Conference; KCU Microchurch Conference) with source attribution.
 6. **Aggregate ~20+ bylined articles** under one author archive with cross-links to source platforms.
 7. **Replace `robwegner.org` Tumblr stale state** with a Movemental-native author hub or a redirected refresh.
-8. **Claim `wegner.movemental.com`** (or equivalent) as his Movemental profile URL.
+8. **Claim `wegner.movemental.ai`** (or equivalent) as his Movemental profile URL.
 
 ### Phase 2: Content Migration (Month 1)
 

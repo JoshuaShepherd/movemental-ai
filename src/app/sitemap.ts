@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { canonicalPageUrl } from "@/lib/site-url";
 
-/** Indexable public routes for movemental.com (agent-first surface). */
+/** Indexable public routes for movemental.ai (agent-first surface). */
 const ROUTES: ReadonlyArray<{
   path: string;
   changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];

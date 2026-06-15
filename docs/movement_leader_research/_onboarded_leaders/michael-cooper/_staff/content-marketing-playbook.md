@@ -88,7 +88,7 @@ This is the single highest-leverage work in the engagement. ~17 books and 227 po
 **Weeks 1–2 — Foundation & scope.**
 - Confirm scope boundaries with Cooper directly: Movemental complements TELOS. / Master Classes / Seminary@YourChurch and does not compete.
 - Create the Movemental author profile (canonical bio, headshot, links to all books, podcast, LMS).
-- Claim `michaelcooper.movemental.com` (or equivalent) as his canonical profile URL.
+- Claim `michaelcooper.movemental.ai` (or equivalent) as his canonical profile URL.
 - Write one 50-word, one 150-word, and one 300-word canonical bio; begin propagation.
 - Stand up the ESP to replace the bare signup form.
 

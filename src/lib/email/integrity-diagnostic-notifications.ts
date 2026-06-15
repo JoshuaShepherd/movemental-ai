@@ -39,7 +39,7 @@ export interface IntegrityDiagnosticPayload {
 function renderTextSummary(p: IntegrityDiagnosticPayload): string {
   const lines: string[] = [
     `New Integrity Diagnostic submission (${p.submissionId})`,
-    `Site: ${env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.com"}`,
+    `Site: ${env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.ai"}`,
     `Submitter: ${p.name} <${p.email}>`,
   ];
   if (p.organizationName) lines.push(`Organization: ${p.organizationName}`);
@@ -92,8 +92,8 @@ export async function notifyIntegrityDiagnosticInbox(
 
   const text = renderTextSummary(p);
   const subject = p.organizationName
-    ? `[movemental.com] Integrity Diagnostic, ${p.organizationName}`
-    : `[movemental.com] Integrity Diagnostic, ${p.name}`;
+    ? `[movemental.ai] Integrity Diagnostic, ${p.organizationName}`
+    : `[movemental.ai] Integrity Diagnostic, ${p.name}`;
 
   const { error } = await resend.emails.send({
     from: resendFromHeader(),

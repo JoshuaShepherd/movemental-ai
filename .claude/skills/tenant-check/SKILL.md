@@ -18,7 +18,7 @@ If no target, scan `src/components/` and `src/app/(site)/`.
 Search for strings that should come from a config or CMS, not be hardcoded in components:
 
 - Brand name "Movemental" hardcoded in components (allowed in metadata/SEO, flagged in reusable components)
-- Domain references: `movemental.com` in component code
+- Domain references: `movemental.ai` in component code
 - Specific leader names (e.g., "Alan Hirsch", "Brad Brisco") in reusable components
 - Pricing figures (`$1,000`, `90%`, `10%`) in reusable components vs data arrays
 - Contact info, addresses, phone numbers inline

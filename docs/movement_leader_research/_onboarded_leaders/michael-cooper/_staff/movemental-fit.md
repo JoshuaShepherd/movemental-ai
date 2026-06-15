@@ -63,7 +63,7 @@ Calibrated against the anchor set: Alan Hirsch **8.6**, Brad Brisco **7.9**, Luc
 4. **Index the 227 podcast episodes** by series with topic descriptions and cross-references to the books.
 5. **Stand up a real newsletter ESP** to replace the bare signup form.
 6. **Ship *Ephesiology* as a discoverable pillar page** with the framework explainer and the Hirsch endorsement.
-7. **Claim `michaelcooper.movemental.com`** (or equivalent) as his canonical profile URL.
+7. **Claim `michaelcooper.movemental.ai`** (or equivalent) as his canonical profile URL.
 
 ### Phase 2: Content Migration (Month 1)
 

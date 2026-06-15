@@ -1,5 +1,5 @@
 // Auto-generated service index
-// Generated at: 2026-06-10T18:01:58.044Z
+// Generated at: 2026-06-13T11:00:37.937Z
 // Do not edit manually - regenerate with: pnpm generate:services
 
 export { SimplifiedService } from "./base.service";
@@ -216,3 +216,7 @@ export * from "./movement-leader-public-page-versions.service";
 export * from "./sandbox-staff-readiness-submissions.service";
 export * from "./sandbox-staff-readiness-invites.service";
 export * from "./sandbox-staff-readiness-anonymous-submissions.service";
+export * from "./ai-reality-invites.service";
+export * from "./ai-reality-results.service";
+export * from "./ai-reality-org-results.service";
+export * from "./ai-reality-share-tokens.service";

@@ -14,7 +14,7 @@ import {
 const SITE_NAME = "Movemental";
 
 function siteUrl(): string {
-  return env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.com";
+  return env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.ai";
 }
 
 function esc(value: string): string {

@@ -19,6 +19,7 @@ import styles from "../ink-band.module.css";
 import {
   FOCUS_HANDBOOK_EMAIL_EVENT,
   HANDBOOK_EMAIL_INPUT_ID,
+  EXPAND_CONVERSATION_EVENT,
 } from "@/lib/agent-room/suggest-chip-targets";
 import type { VoiceState } from "../use-agent-room-stream";
 import { HandbookDockEmail } from "./handbook-dock-email";
@@ -153,7 +154,6 @@ function ComposerForm({
             autoFocus={expanded}
             aria-label="Talk to Movemental"
             placeholder={placeholder ?? "Type here, or tap a suggestion…"}
-            disabled={disabled}
           />
         </label>
         <div className={styles.composerActions}>
@@ -347,6 +347,20 @@ export function AgentDock({
   }, [expanded, setExpandedState]);
 
   useEffect(() => {
+    const onExpand = (event: Event) => {
+      const utterance = (event as CustomEvent<{ utterance?: string }>).detail?.utterance;
+      setChatEngaged(true);
+      if (utterance?.trim()) {
+        setGuideMessages((prev) => [...prev, { role: "user", content: utterance.trim() }]);
+      }
+      setExpandedState(true);
+      onConversationActive?.();
+    };
+    document.addEventListener(EXPAND_CONVERSATION_EVENT, onExpand);
+    return () => document.removeEventListener(EXPAND_CONVERSATION_EVENT, onExpand);
+  }, [onConversationActive, setExpandedState]);
+
+  useEffect(() => {
     const onFocusHandbook = () => setExpandedState(true);
     document.addEventListener(FOCUS_HANDBOOK_EMAIL_EVENT, onFocusHandbook);
     return () => document.removeEventListener(FOCUS_HANDBOOK_EMAIL_EVENT, onFocusHandbook);
@@ -369,15 +383,14 @@ export function AgentDock({
       setValue("");
       setChatEngaged(true);
       setWaysInOpen(false);
-      const wasExpanded = expanded;
       if (!discuss) {
         setGuideMessages((prev) => [...prev, { role: "user", content: v }]);
       }
-      if (wasExpanded || discuss) onConversationActive?.();
+      if (expanded || discuss || chatEngaged) onConversationActive?.();
       onSay(v);
       if (!expanded) setExpandedState(true);
     },
-    [disabled, discuss, expanded, onConversationActive, onSay, setExpandedState],
+    [disabled, discuss, expanded, chatEngaged, onConversationActive, onSay, setExpandedState],
   );
 
   const submit = (e: FormEvent) => {
@@ -493,6 +506,26 @@ export function AgentDock({
                           </p>
                         </div>
                       ))}
+                      {liveText ? (
+                        <div className={styles.threadMsgAgent}>
+                          <p
+                            className={`${styles.liveInk} ${styles.settle}`}
+                            aria-live="polite"
+                          >
+                            {liveText}
+                          </p>
+                        </div>
+                      ) : null}
+                      {!liveText &&
+                      !liveThinking &&
+                      voice.text &&
+                      !guideMessages.some(
+                        (m) => m.role === "agent" && m.content === voice.text,
+                      ) ? (
+                        <div className={styles.threadMsgAgent}>
+                          <p>{voice.text}</p>
+                        </div>
+                      ) : null}
                       {liveThinking && !liveText ? (
                         <div className={styles.thinking}>
                           <span className={styles.pulse} aria-hidden="true" />

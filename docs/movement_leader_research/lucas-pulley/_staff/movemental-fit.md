@@ -68,7 +68,7 @@
 5. **Catalog conference talks** with source attribution.
 6. **Replace Airtable newsletter form** with proper ESP signup (Movemental-native).
 7. **Ship "10 Thoughts After 10 Years" as a polished PDF lead magnet.**
-8. **Claim `lucaspulley.movemental.com`** (or equivalent) as his Movemental profile URL.
+8. **Claim `lucaspulley.movemental.ai`** (or equivalent) as his Movemental profile URL.
 
 ### Phase 2: Content Migration (Month 1)
 

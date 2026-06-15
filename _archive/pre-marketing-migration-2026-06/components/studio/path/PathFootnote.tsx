@@ -97,7 +97,7 @@ export function PathFootnote({
                   </li>
                   <li>
                     <Link href="/" className="transition-colors hover:text-inverse-foreground">
-                      Movemental.com
+                      movemental.ai
                     </Link>
                   </li>
                 </ul>
@@ -120,7 +120,7 @@ export function PathFootnote({
                   </li>
                   <li>
                     <Link href="/" className="transition-colors hover:text-inverse-foreground">
-                      Movemental.com
+                      movemental.ai
                     </Link>
                   </li>
                 </ul>

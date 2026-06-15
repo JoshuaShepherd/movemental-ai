@@ -2,7 +2,7 @@
 
 **Purpose.** Catalog every *kind* of information that currently exists about movement leaders in [docs/movement_leader_research/](../../movement_leader_research/), independent of where it should ultimately surface. A separate pass will assign each kind to:
 
-- **Public site / EEAT** — what is shown on movemental.com (`/voices`, leader profile pages, credibility bands, scenius graph) to demonstrate Experience, Expertise, Authoritativeness, and Trust to readers and search engines.
+- **Public site / EEAT** — what is shown on movemental.ai (`/voices`, leader profile pages, credibility bands, scenius graph) to demonstrate Experience, Expertise, Authoritativeness, and Trust to readers and search engines.
 - **Author dashboard** — what is shown back to the leader themselves (inside the platform's authenticated dashboard) for self-awareness, content strategy, gap closure, calling alignment, and onboarding.
 
 No assignments are made here. This is the **what-exists** map.
@@ -355,7 +355,7 @@ Per leader:
 
 [site-voices-eeat-audience-credentials.md](../../movement_leader_research/site-voices-eeat-audience-credentials.md) maps each of the nine site-named voices (alan-hirsch, brad-brisco, josh-shepherd, tim-catchim, jr-woodward, rowland-smith, liz-rios, lucas-pulley, rob-wegner) to a **3 × 4 grid**:
 
-- **Audience columns**: Churches | Nonprofits | Institutions (movemental.com's three home-fold audiences).
+- **Audience columns**: Churches | Nonprofits | Institutions (movemental.ai's three home-fold audiences).
 - **EEAT rows**: Experience | Expertise | Authoritativeness | Trust.
 - Each cell rated **Strong / Moderate→Strong / Moderate / Limited direct / Adjacent**, with sourced bullets (linked back to the leader's own `biography.md`, `identity.md`, `summary.md`, `affiliations.md`).
 - Per-leader **audience intersection summary** ("all three," "Churches + Institutions only," etc.).

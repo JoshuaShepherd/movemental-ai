@@ -116,6 +116,6 @@ Recommended division:
 | Surface | Content type |
 |---|---|
 | Tampa Underground (tampaunderground.com / undergroundnetwork.org) | Institutional teaching / announcements / Microchurches Podcast / network resources |
-| Movemental (joelrepic.movemental.com or via hopeisprotest.com) | Joel's personal / biographical / reflective / ED Letters / frameworks / memoir |
+| Movemental (joelrepic.movemental.ai or via hopeisprotest.com) | Joel's personal / biographical / reflective / ED Letters / frameworks / memoir |
 
 Clear lanes prevent audience confusion and prevent the Underground from treating Movemental as a competing surface.

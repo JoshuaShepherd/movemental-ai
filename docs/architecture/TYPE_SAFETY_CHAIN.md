@@ -6,7 +6,7 @@
 
 **Repo:** `movemental-ai`
 **Supabase project:** `movemental` — `vhaiiiykcukrlyvwlgip` (region `us-west-2`, Postgres 17)
-**Last verified:** 2026-06-10 — **all layers LOCKED/VALIDATED**, `pnpm validate:all` green, `tsc --noEmit` clean (0 errors).
+**Last verified:** 2026-06-13 — **all layers LOCKED/VALIDATED**, `pnpm validate:all` green, `tsc --noEmit` clean (0 errors).
 
 ---
 
@@ -18,13 +18,13 @@ Three repositories point at the **same** Supabase project (`vhaiiiykcukrlyvwlgip
 |------|------|-----------|-------------------|
 | **alan-hirsch** | Public LMS + author site (canonical chain reference) | `src/` | 223 / 223 ✅ |
 | **movemental-visual-editor-main** | Studio / authoring + LMS editor | `src/` | 223 / 223 ✅ |
-| **movemental-ai** (this repo) | Marketing / AI content + research + agent surfaces | `src/` | **210 / 210** ✅ — tracks a subset of the DB |
+| **movemental-ai** (this repo) | Marketing / AI content + research + agent surfaces | `src/` | **215 / 215** ✅ — tracks a subset of the DB |
 
 **Implications**
 
 - A schema change in the live DB must be re-pulled into **each** repo that uses the affected table, then the upper layers regenerated.
-- This repo deliberately tracks a **subset** of the live DB — it does not mirror every table. Its Drizzle schema declares **210** tables and **all 210 now exist** in the live DB (see §5 for the 2026-06-10 reconciliation). The ~22 DB tables it does not declare are out of its subset. The other repos should not assume `movemental-ai`'s schema matches theirs.
-- The live DB has **232** `public` base tables as of 2026-06-10 (223 at the sibling docs' last verification on 2026-06-02; +2 since, +7 from this repo's reconciliation migration).
+- This repo deliberately tracks a **subset** of the live DB — it does not mirror every table. Its Drizzle schema declares **215** tables and **all 215 exist** in the live DB (see §5 for history). The 22 DB tables it does not declare are out of its subset. The other repos should not assume `movemental-ai`'s schema matches theirs.
+- The live DB has **237** `public` base tables as of 2026-06-13 (232 at this repo's prior verification on 2026-06-10).
 - The standalone `alan-hirsch` Supabase project (`nepvfebkqvuqbxthttao`) is **legacy** — none of these repos connect to it.
 
 ---
@@ -37,19 +37,19 @@ Types flow in **one direction only — downstream**. Never import a higher layer
 Ground:  Live Postgres (Supabase movemental)   ← single source of truth
    │  manual introspection → src/lib/db/schema.ts   (no generate-schema script — see §3 L1)
    ▼
-Layer 1: Drizzle Schema     src/lib/db/schema.ts          210 pgTables
+Layer 1: Drizzle Schema     src/lib/db/schema.ts          215 pgTables
    │  drizzle-zod  (pnpm generate:schemas)
    ▼
 Layer 2: Zod Schemas        src/lib/schemas/index.ts      Select/Insert/Update + z.infer types
    │  z.infer<>  (pnpm generate:services)
    ▼
-Layer 3: Services           src/lib/services/simplified/  210 *.service.ts (+ base.service.ts)
+Layer 3: Services           src/lib/services/simplified/  215 *.service.ts (+ base.service.ts)
    │  (pnpm generate:routes)
    ▼
-Layer 4: API Routes         src/app/api/simplified/<kebab>/   210 route.ts (GET/POST/PATCH/DELETE)
+Layer 4: API Routes         src/app/api/simplified/<kebab>/   215 route.ts (GET/POST/PATCH/DELETE)
    │  (pnpm generate:hooks)
    ▼
-Layer 5: React Hooks        src/hooks/simplified/         210 *.hooks.ts (TanStack Query)
+Layer 5: React Hooks        src/hooks/simplified/         215 *.hooks.ts (TanStack Query)
    │
    ▼
 Layer 6: UI Components      src/components/                consume hooks; not generated/validated here
@@ -65,7 +65,7 @@ Layer 6: UI Components      src/components/                consume hooks; not ge
 
 ### Layer 1 — Drizzle Schema (`src/lib/db/schema.ts`)
 
-- **The structure SSOT.** ~210 `pgTable(...)` exports defining every table this repo touches.
+- **The structure SSOT.** ~215 `pgTable(...)` exports defining every table this repo touches.
 - **How it is produced.** Unlike the sibling repos, this repo has **no `scripts/generate-schema.ts`**. Layer 1 was introspected from the live DB by hand (file header records `2026-04-13`) and is maintained by hand thereafter. To add a table, write the `pgTable` here, apply matching DDL to the live DB, then regenerate Layers 2–5.
 - **Conventions.** Column helpers `id()`, `createdAt()`, `updatedAt()` (defined at the top of the file). FK references via `.references(() => parent.id, { onDelete: ... })`. Enum-typed DB columns map to `text()` with a comment noting the Postgres enum name.
 - **DB client.** `src/lib/db/index.ts` (postgres-js + drizzle), connection from `DATABASE_URL`.
@@ -132,19 +132,25 @@ pnpm typecheck         # tsc --noEmit
 
 ---
 
-## 5. Current status (verified 2026-06-10)
+## 5. Current status (verified 2026-06-13)
 
 | Layer | Name | Path | Count | Status |
 |-------|------|------|-------|--------|
-| — | Live DB | Supabase `vhaiiiykcukrlyvwlgip` | 232 tables | source of truth |
-| 1 | Drizzle Schema | `src/lib/db/schema.ts` | 210 (all in DB) | **LOCKED** ✅ |
-| 2 | Zod Schemas | `src/lib/schemas/index.ts` | 210 entities | **LOCKED** ✅ |
-| 3 | Services | `src/lib/services/simplified/` | 210 (+ base) | **LOCKED** ✅ |
-| 4 | API Routes | `src/app/api/simplified/` | 210 | **VALIDATED** ✅ |
-| 5 | React Hooks | `src/hooks/simplified/` | 210 | **LOCKED** ✅ |
+| — | Live DB | Supabase `vhaiiiykcukrlyvwlgip` | 237 tables | source of truth |
+| 1 | Drizzle Schema | `src/lib/db/schema.ts` | 215 (all in DB) | **LOCKED** ✅ |
+| 2 | Zod Schemas | `src/lib/schemas/index.ts` | 215 entities | **LOCKED** ✅ |
+| 3 | Services | `src/lib/services/simplified/` | 215 (+ base) | **LOCKED** ✅ |
+| 4 | API Routes | `src/app/api/simplified/` | 215 | **VALIDATED** ✅ |
+| 5 | React Hooks | `src/hooks/simplified/` | 215 | **LOCKED** ✅ |
 | 6 | UI Components | `src/components/` | not validated | n/a |
 
-**`pnpm validate:all` green; `pnpm typecheck` (`tsc --noEmit`): 0 errors.** The chain is consistent end-to-end and compiles. All 210 schema tables exist in the live DB; the ~22 extra DB tables not declared here (e.g. `movement_leader_corpus_data`, `scripture_*`, `onboarding_videos`) are this repo's out-of-subset tables and are ignored by `db:check`.
+**`pnpm validate:all` green; `pnpm typecheck` (`tsc --noEmit`): 0 errors.** The chain is consistent end-to-end and compiles. All 215 schema tables exist in the live DB; the 22 extra DB tables not declared here (e.g. `movement_leader_corpus_data`, `scripture_*`, `onboarding_videos`) are this repo's out-of-subset tables and are ignored by `db:check`.
+
+### History — the AI Reality chain regeneration (2026-06-13)
+
+Layer 1 had grown from 210 → **215** tables (the `ai_reality_*` set — `ai_reality_invites`, `ai_reality_results`, `ai_reality_org_results`, `ai_reality_share_tokens`, plus the new assessment table backing the AI Reality Assessment front door / org dashboard). Layer 2 had already been regenerated (215 entities, LOCKED), but Layers 3–5 still held **211** generated files, so `services:check` reported **UNLOCKED — 4 missing** (`ai-reality-invites`, `ai-reality-results`, `ai-reality-org-results`, `ai-reality-share-tokens`).
+
+**Resolved by regenerating the lowest broken layer upward** — `pnpm generate:services && generate:routes && generate:hooks` brought Layers 3–5 to 215 each. No hand-patching of upper layers. `pnpm validate:all` green and `pnpm typecheck` clean (0 errors) afterward.
 
 ### History — the Layer-1 reconciliation (2026-06-10)
 

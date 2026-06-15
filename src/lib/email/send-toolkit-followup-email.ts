@@ -10,7 +10,7 @@ const SITE_NAME = "Movemental";
 export type ToolkitFollowupDay = 3 | 7;
 
 function siteUrl(): string {
-  return env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.com";
+  return env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.ai";
 }
 
 function escapeHtmlAttr(value: string): string {

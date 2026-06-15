@@ -50,7 +50,7 @@ This document is an **assembled export** of the Movemental research dossier for 
 **Canonical location of live research**
 
 - \`docs/movement_leader_research/rowland-smith/\` (update there first; run \`node scripts/regenerate-rowland-smith-knowledge-base.mjs\` to refresh this bundle.)
-- Movemental **product narrative**, book/home/fragmentation thesis, publishable article slugs, and **live route** facts: \`docs/arguments/custom-gpt/messaging-00-live-site-and-narrative-ssot.md\`, then \`docs/arguments/SITE-SSOT.md\` — use those for Movemental.com IA, not this dossier.
+- Movemental **product narrative**, book/home/fragmentation thesis, publishable article slugs, and **live route** facts: \`docs/arguments/custom-gpt/messaging-00-live-site-and-narrative-ssot.md\`, then \`docs/arguments/SITE-SSOT.md\` — use those for movemental.ai IA, not this dossier.
 
 **Regenerated**: ${today}
 

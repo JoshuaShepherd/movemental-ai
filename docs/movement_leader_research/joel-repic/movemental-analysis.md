@@ -55,7 +55,7 @@
 
 ### Phase 1: Quick wins (Weeks 1–2)
 
-1. **Create Movemental author profile** at `joelrepic.movemental.com` (or equivalent).
+1. **Create Movemental author profile** at `joelrepic.movemental.ai` (or equivalent).
 2. **Aggregate existing content** — 2 blog posts, 6 sermons, 4 podcast appearances, CMA feature, Leadership Network article.
 3. **Preserve the at-risk archive** — pull whatever is still reachable from legacy.cmalliance.org and download the Gospel Tabernacle sermon feed to safe storage.
 4. **Set up newsletter** under "Hope Is Protest" as the masthead, embedded in the Movemental profile. Email capture on hopeisprotest.com redirects to Movemental signup.

@@ -61,7 +61,7 @@
 3. **Index podcast appearances** -- create searchable catalog of 25+ episodes with topic descriptions
 4. **Index video content** -- catalog 25+ videos by type (keynote, lecture, interview) with links to source platforms
 5. **Set up book listings** -- all 5 books with covers, descriptions, purchase links, and related content cross-references
-6. **Claim key URLs** -- ensure bradbrisco.movemental.com (or equivalent) is reserved
+6. **Claim key URLs** -- ensure bradbrisco.movemental.ai (or equivalent) is reserved
 
 ### Phase 2: Content Migration (Month 1)
 

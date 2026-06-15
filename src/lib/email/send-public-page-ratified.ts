@@ -9,7 +9,7 @@ export async function sendPublicPageRatifiedEmail(input: {
 }): Promise<void> {
   const resend = getResend();
   if (!resend) return;
-  const base = env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://movemental.com";
+  const base = env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://movemental.ai";
   const url = `${base}${input.publicPath}`;
   await resend.emails.send({
     from: resendFromHeader(),

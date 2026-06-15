@@ -2,7 +2,7 @@
 
 **Path:** `docs/build/notes/single-surface-url-architecture-seo-and-analytics.md`  
 **As of:** 2026-06-10  
-**Trigger:** movemental.com now presents, for most visitors, one primary public path — `/agent` — with `/` redirecting there. This note explains whether that is structurally required, and what it means for SEO, web practice, and measurement.
+**Trigger:** movemental.ai now presents, for most visitors, one primary public path — `/agent` — with `/` redirecting there. This note explains whether that is structurally required, and what it means for SEO, web practice, and measurement.
 
 **Related (code):** `src/app/page.tsx`, `src/app/agent/page.tsx`, `src/app/sitemap.ts`, `proxy.ts`, `src/lib/tenant.ts`, `next.config.ts` redirects, `_archive/pre-marketing-migration-2026-06/`.
 
@@ -15,7 +15,7 @@ Two different things get conflated. Both are true today, but only one is an arch
 | Sense | What it is | Required? |
 |-------|------------|-----------|
 | **Public URL surface** | Most traffic lands on `/agent`. Root `/` redirects. Document routes in `src/app/**/page.tsx` number ~16 (agent room, auth, assess, enroll, share tokens, newsletter, field-guide file vs redirect, staff runtime). The former `(site)` marketing tree (~46 routes in older inventories) is archived or gone. | **No** — interim product choice during the agent-first pivot. |
-| **Tenant identity** | One Movemental organization per deployment via `TENANT_ORG_ID` (`src/lib/tenant.ts`). Services scope rows with `organization_id`; there is no `{orgSlug}.movemental.com` routing on this app. | **Yes** for this deployment model — not the same as “one URL.” |
+| **Tenant identity** | One Movemental organization per deployment via `TENANT_ORG_ID` (`src/lib/tenant.ts`). Services scope rows with `organization_id`; there is no `{orgSlug}.movemental.ai` routing on this app. | **Yes** for this deployment model — not the same as “one URL.” |
 
 Inside the agent room, navigation is **in-app state** (scene runner, suggestion pills, capture sheets), not additional path segments. A visitor can traverse pricing → safety → contact without the address bar changing. That feels like “one slug” even when the product exposes many conceptual destinations.
 
@@ -29,7 +29,7 @@ Inside the agent room, navigation is **in-app state** (scene runner, suggestion 
 
 1. **Database:** Tenant-scoped tables carry `organization_id` (or equivalent FK). RLS and services enforce boundaries.
 2. **Deployment:** This repo uses **single-org-per-deployment** — `getTenantOrgId()` reads `TENANT_ORG_ID` from env. That is an **operator configuration**, not a visitor-facing slug.
-3. **Sibling pattern:** Alan Hirsch and other tenant apps are **separate deployments** (subdomain or custom domain). movemental.com is the **organizational** surface, not a path-prefix multi-tenant router like `/orgs/:slug/dashboard`.
+3. **Sibling pattern:** Alan Hirsch and other tenant apps are **separate deployments** (subdomain or custom domain). movemental.ai is the **organizational** surface, not a path-prefix multi-tenant router like `/orgs/:slug/dashboard`.
 
 None of that mandates a single marketing URL. You could serve fifty indexable pages tomorrow; each would still write to the same org if `TENANT_ORG_ID` is set.
 
@@ -180,7 +180,7 @@ Write high-value events to **`analytics_events`** (already in schema + API) and/
 
 Add dedicated routes when **any** of these become true:
 
-1. **SEO:** You need indexable proof (articles, audience pages, methodology) on movemental.com again.
+1. **SEO:** You need indexable proof (articles, audience pages, methodology) on movemental.ai again.
 2. **Measurement:** Stakeholders need path-based reports without custom event work.
 3. **Sharing:** Sales or leaders need stable links (`/assess`, `/pathway/safety`, magic-link assessment) in email and slides.
 4. **Conversion:** Lead magnets and contact must work without entering the full agent scene graph.

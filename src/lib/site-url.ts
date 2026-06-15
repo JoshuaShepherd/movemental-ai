@@ -17,7 +17,7 @@ export function canonicalSiteOrigin(): string {
   if (process.env.NODE_ENV === "development") {
     return "http://localhost:3000";
   }
-  return "https://movemental.com";
+  return "https://movemental.ai";
 }
 
 /** Absolute URL for a path (must start with `/`). */

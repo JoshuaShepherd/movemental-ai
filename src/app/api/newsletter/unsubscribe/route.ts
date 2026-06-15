@@ -10,7 +10,7 @@ import { createSlidingWindowRateLimiter } from "@/lib/rate-limit-in-memory";
 const limitUnsubIp = createSlidingWindowRateLimiter(30, 60 * 60 * 1000);
 
 function siteUrl(): string {
-  return env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.com";
+  return env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.ai";
 }
 
 /**

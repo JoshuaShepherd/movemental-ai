@@ -62,7 +62,7 @@ The 2026 baseline: a reader who finishes *The Starfish and the Spirit* and goes 
 
 ## What Movemental would change
 
-- A genuine personal newsletter under `robwegner.org` (or `wegner.movemental.com`), seeded from Goodreads followers, Instagram (1,867), KCU subscriber list, *Starfish* book buyers, and Substack co-subscribers.
+- A genuine personal newsletter under `robwegner.org` (or `wegner.movemental.ai`), seeded from Goodreads followers, Instagram (1,867), KCU subscriber list, *Starfish* book buyers, and Substack co-subscribers.
 - Standalone lead magnet: *Five Provocative Questions for a Disciple-Making Ecosystem* as a polished PDF, capturing email at every retailer-page click and conference appearance.
 - Cross-link into the joint Substack so the "Starfish ecosystem" carries through both surfaces without flattening into one.
 - Capture every appearance — podcast guest spots, conference sessions, KCU stories — into the newsletter as a "voice across surfaces" digest.

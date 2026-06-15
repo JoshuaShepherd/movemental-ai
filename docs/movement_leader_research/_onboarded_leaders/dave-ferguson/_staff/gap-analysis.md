@@ -104,7 +104,7 @@ If Dave Ferguson were to leave Exponential tomorrow, his personal digital footpr
 | **Why it matters** | For a leader with ~22,700 Twitter followers, a 5,500-member church, and the world's largest church-planting conference behind him, an "also-ran" Substack URL is a trust and professionalism gap. Every link shared, every email preview, every Google search result shows the "3" |
 | **Priority** | Critical (easy fix on a new platform) |
 | **Estimated impact** | Migrating to a clean-URL owned platform would remove a persistent credibility friction point and could contribute to improved subscriber growth |
-| **Action** | Launch daveferguson.movemental.com (or equivalent) as the primary newsletter and content hub; redirect Substack subscribers to the new platform |
+| **Action** | Launch daveferguson.movemental.ai (or equivalent) as the primary newsletter and content hub; redirect Substack subscribers to the new platform |
 
 ---
 

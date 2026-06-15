@@ -192,7 +192,7 @@ If the user’s **“onbuilding”** means **author-side architecture** (map, pa
 | **Book (`fragmentation-manuscript-ordered`)** | **Why 4 weeks**, **60-day** frame, **integration** stage, **Maggie** persona | **Narrative** authority; not an ops checklist |
 | **`12-author-journey` + `27` post-commitment** | **Support cadence**, first articles, 12-week structure | **Different** weekly breakdown than `07` |
 | **`movemental_leader_onboarding_process.md`** | 3–4 week **inquiry to launch** | Conflates **phases** with `07`’s *content* residency if read quickly |
-| **`docs/arguments/SITE-SSOT` + `nav-links`** | **What ships on movemental.com** | **No** “residency” as public route |
+| **`docs/arguments/SITE-SSOT` + `nav-links`** | **What ships on movemental.ai** | **No** “residency” as public route |
 | **`messaging-08` / `messaging-04`** | **Claims** for 12-week onboarding and 2–4 week launch | **Contradict** each other on duration — **intentional** in marketing vs reality not resolved in repo |
 | **Alan Hirsch flagship spec** | **Weeks 1–4 “foundation”** = infra checklist | **Different** meaning than **content** charter weeks |
 

@@ -10,7 +10,7 @@
 
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
-import { chromium, type Page } from "playwright";
+import { chromium, type Page } from "@playwright/test";
 
 type CaptureAction =
   | { type: "click"; role: "button" | "link"; name: string }

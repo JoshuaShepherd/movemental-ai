@@ -7,7 +7,7 @@ import { resendFromHeader } from "@/lib/email/from";
 import { getResend } from "@/lib/email/resend";
 
 function siteUrl(): string {
-  return env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.com";
+  return env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.ai";
 }
 
 function lensReadingPath(lens: AudienceLens): string {

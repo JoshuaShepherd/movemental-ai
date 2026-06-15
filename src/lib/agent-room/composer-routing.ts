@@ -30,3 +30,8 @@ export function resolveStreamChipRoute(suggestion: StreamSuggestion): StreamChip
     }
   );
 }
+
+/** Labels in `DEFAULT_SUGGESTIONS` with explicit stream routing — absent for scene follow-ups. */
+export function getKnownStreamChipRoute(label: string): StreamChipRoute | null {
+  return STREAM_CHIP_ROUTES[label] ?? null;
+}

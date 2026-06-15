@@ -46,7 +46,7 @@ export default function OpengraphImage() {
             color: "rgba(244,239,229,0.65)",
           }}
         >
-          <span>movemental.com</span>
+          <span>movemental.ai</span>
           <span
             style={{
               padding: "12px 28px",

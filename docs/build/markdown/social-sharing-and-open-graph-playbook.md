@@ -14,7 +14,7 @@ Best practice is: **get (1) right first**, then add (2) and (3) where they genui
 
 ## 1. How link previews work (the part that “just works” when you paste a URL)
 
-1. User pastes `https://movemental.com/articles/some-slug` into an app.
+1. User pastes `https://movemental.ai/articles/some-slug` into an app.
 2. That app’s crawler requests the URL and reads **Open Graph** (`og:*`) and/or **Twitter** (`twitter:*`) meta tags from the HTML (or from caches they maintain).
 3. The app renders a **card** using those fields.
 
@@ -38,11 +38,11 @@ export const metadata: Metadata = {
   },
   description:
     "Movemental builds integrated systems from your content, knowledge, and work—combining platforms, AI, training and consulting to provide movement leaders, churches, and organizations with digital systems that actually work.",
-  metadataBase: new URL("https://movemental.com"),
+  metadataBase: new URL("https://movemental.ai"),
 };
 ```
 
-**What this does:** If you set `openGraph.images: ["/og/home.png"]`, Next resolves it to `https://movemental.com/og/home.png`.
+**What this does:** If you set `openGraph.images: ["/og/home.png"]`, Next resolves it to `https://movemental.ai/og/home.png`.
 
 **Operational rule:** `metadataBase` should match **production** canonical origin. Preview deployments often need either absolute URLs built from `VERCEL_URL` or a dedicated `NEXT_PUBLIC_SITE_URL` for previews—see section 7 below.
 
@@ -197,7 +197,7 @@ Typical compose URLs (verify periodically—platforms change):
 
 Link previews and canonical URLs should reflect **where the page actually lives**.
 
-- **Production:** `metadataBase` and `openGraph.url` should use `https://movemental.com` (or your final apex domain).
+- **Production:** `metadataBase` and `openGraph.url` should use `https://movemental.ai` (or your final apex domain).
 - **Preview deployments:** crawlers see the **preview** URL. That is normal. If you need previews to show branded cards, set `NEXT_PUBLIC_SITE_URL` (already optional in `src/lib/env.ts`) to the preview origin in that environment, and derive absolute URLs in `generateMetadata` when appropriate.
 
 Avoid hardcoding preview hosts in committed code; tie them to environment variables.

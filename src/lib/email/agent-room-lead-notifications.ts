@@ -38,7 +38,7 @@ export async function notifyAgentRoomLead(params: {
     return;
   }
 
-  const site = env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.com";
+  const site = env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.ai";
   const text = [
     `New agent-room lead, ${params.kind} (${params.leadId})`,
     `Site: ${site}`,
@@ -55,7 +55,7 @@ export async function notifyAgentRoomLead(params: {
     from: resendFromHeader(),
     to: [to],
     replyTo: params.email,
-    subject: `[movemental.com] Agent room, ${params.kind} lead`,
+    subject: `[movemental.ai] Agent room, ${params.kind} lead`,
     text,
     html: `<pre style="font-family:system-ui,sans-serif;white-space:pre-wrap">${escapeHtml(text)}</pre>`,
     tags: [

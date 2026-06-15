@@ -7,7 +7,7 @@ import { env } from "@/lib/env";
 const SITE_NAME = "Movemental";
 
 function siteUrl(): string {
-  return env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.com";
+  return env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.ai";
 }
 
 function escapeHtmlAttr(value: string): string {

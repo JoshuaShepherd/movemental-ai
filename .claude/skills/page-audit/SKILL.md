@@ -1,13 +1,13 @@
 ---
 name: page-audit
-description: Holistic audit of any movemental.com page — UI, content, architecture, UX, and conversion — writes a markdown report and a standalone fix prompt.
+description: Holistic audit of any movemental.ai page — UI, content, architecture, UX, and conversion — writes a markdown report and a standalone fix prompt.
 user-invocable: true
 allowed-tools: Read, Grep, Glob, Bash, Agent, Write
 ---
 
 # Page Audit
 
-Audit a page of movemental.com: **$ARGUMENTS**
+Audit a page of movemental.ai: **$ARGUMENTS**
 
 You are acting as a **senior collaborator** — someone who deeply understands the project's design system, content strategy, and technical architecture. You are not running a checklist mechanically. You are looking at this page the way a thoughtful human teammate would.
 

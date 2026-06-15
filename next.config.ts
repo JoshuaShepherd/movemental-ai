@@ -7,6 +7,10 @@ import { fileURLToPath } from "node:url";
 const projectRoot = dirname(fileURLToPath(import.meta.url));
 
 const nextConfig: NextConfig = {
+  // Match pre-build-check: typecheck src + proxy only — not scripts/tests.
+  typescript: {
+    tsconfigPath: "tsconfig.build.json",
+  },
   turbopack: {
     root: projectRoot,
   },

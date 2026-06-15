@@ -6,7 +6,7 @@ import { newsletterSubscribers } from "@/lib/db/schema";
 import { env } from "@/lib/env";
 
 function siteUrl(): string {
-  return env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.com";
+  return env.NEXT_PUBLIC_SITE_URL ?? "https://movemental.ai";
 }
 
 /**

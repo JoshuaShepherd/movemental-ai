@@ -19,6 +19,7 @@ import {
   isTypedFallback,
   shouldResetTextStreak,
 } from "@/lib/agent-room/move-classifier";
+import { getKnownStreamChipRoute } from "@/lib/agent-room/composer-routing";
 import { routeInput } from "@/lib/agent-room/route-input";
 import { readAgentDeepLink, clearAgentDeepLinkParams } from "@/lib/agent-room/deep-link";
 import { stashHandoffAudience } from "@/lib/agent-room/ways-in-doors";
@@ -28,7 +29,7 @@ import {
   ENTER_DISCUSS_VALUE,
   type RoomPhase,
 } from "@/lib/agent-room/discuss";
-import { handleSuggestChipTarget, focusReadbackMapEmail, HANDBOOK_EMAIL_CHIP_TARGET, focusHandbookEmail, FOCUS_HANDBOOK_EMAIL_EVENT } from "@/lib/agent-room/suggest-chip-targets";
+import { handleSuggestChipTarget, focusReadbackMapEmail, HANDBOOK_EMAIL_CHIP_TARGET, focusHandbookEmail, FOCUS_HANDBOOK_EMAIL_EVENT, requestExpandConversation } from "@/lib/agent-room/suggest-chip-targets";
 import { isEngineExtra, toScreenId } from "@/lib/agent-room/screen-map";
 import type { ComponentId } from "@/lib/agent-room/stream-chunk";
 import { playScene, type Generation } from "@/lib/agent-room/scene-runner";
@@ -182,6 +183,16 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         lead: c.lead,
         onSelect: () => {
           freeTextStreakRef.current = 0;
+          const streamRoute = getKnownStreamChipRoute(c.label);
+          if (streamRoute?.kind === "local") {
+            runRef.current(streamRoute.scene);
+            return;
+          }
+          if (streamRoute?.kind === "agent") {
+            requestExpandConversation(streamRoute.utterance);
+            void sendMessageRef.current(streamRoute.utterance);
+            return;
+          }
           handleSuggestChipTarget(
             c.to,
             discuss.enterDiscuss,
