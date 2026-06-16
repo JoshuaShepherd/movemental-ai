@@ -1,0 +1,20 @@
+{
+  "slug": "jon-ritner",
+  "version": "2.0.0",
+  "generated_at": "2026-06-16",
+  "mode": "cold-start",
+  "note": "No per-topic source files on disk; substrate assembled from web research delegated to a research subagent. Provenance is the Sources table in the substrate.",
+  "sources": [
+    { "path": "web:gocommunitas.org/people/jon-kristyn-ritner-2", "sectionsUsed": ["Identity", "Editorial bio", "Timeline", "Organizational affiliations"] },
+    { "path": "web:everand.com/book/507033451", "sectionsUsed": ["Bibliography", "Voice fingerprint", "Network graph"] },
+    { "path": "web:amazon.com/dp/1735598801", "sectionsUsed": ["Bibliography"] },
+    { "path": "web:goodreads.com/book/show/55901469", "sectionsUsed": ["Bibliography", "Reach metrics"] },
+    { "path": "web:englewoodreview.org/jon-ritner-positively-irritating-review", "sectionsUsed": ["Frameworks", "Theological positioning"] },
+    { "path": "web:sharedveracity.net/2021/07/02", "sectionsUsed": ["Frameworks", "Voice fingerprint"] },
+    { "path": "web:wordonthestreets.net/Articles/618896", "sectionsUsed": ["Voice fingerprint"] },
+    { "path": "web:unseminary.com/jon-ritner", "sectionsUsed": ["Theological positioning", "Intellectual genealogy"] },
+    { "path": "web:5qcentral.com/author/jonritner", "sectionsUsed": ["Frameworks", "Distribution inventory"] },
+    { "path": "web:listennotes.com/ecclesia-hollywood", "sectionsUsed": ["Reach metrics", "Timeline"] },
+    { "path": "web:podcasts.apple.com/ecclesia-hollywood", "sectionsUsed": ["Reach metrics"] }
+  ]
+}
