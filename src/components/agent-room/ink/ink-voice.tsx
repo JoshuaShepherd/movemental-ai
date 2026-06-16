@@ -76,13 +76,20 @@ function VoiceLine({
     const nib = nibRef.current;
     if (!span) return;
 
+    let finished = false;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      onDone(id);
+    };
+
     // A wrapping line can't carry the horizontal clip sweep (the nib rides a
     // single line) — show it fully and skip the animation.
     if (wrap || !canWriteOn()) {
       span.style.clipPath = "none";
       if (nib) nib.style.opacity = "0";
-      onDone(id);
-      return;
+      finish();
+      return () => finish();
     }
 
     const width = span.getBoundingClientRect().width;
@@ -108,11 +115,17 @@ function VoiceLine({
           nib.style.transition = "opacity .28s";
           nib.style.opacity = "0";
         }
-        onDone(id);
+        finish();
       }
     };
     frameId = requestAnimationFrame(frame);
-    return () => cancelAnimationFrame(frameId);
+    return () => {
+      cancelAnimationFrame(frameId);
+      // Expanding the dock unmounts the handwriting strip mid write-on; resolve
+      // the pending inkLine so opening choreography can finish and the composer
+      // is not stuck disabled forever.
+      finish();
+    };
     // Animate once per line; id/text/onDone/settled are stable for a given line.
   }, [id, text, wrap, onDone]);
 

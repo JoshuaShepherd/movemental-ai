@@ -5,6 +5,13 @@
 
 export type WaysInAudience = "nonprofits" | "churches" | "institutions" | "exploring";
 
+export type AgentSayOptions = {
+  /** Set when the utterance came from the expanded ways-in panel (not float chips). */
+  source?: "ways-in";
+};
+
+export type AgentSayHandler = (text: string, opts?: AgentSayOptions) => void;
+
 export const WAYS_IN_LEAD_DOOR = "Map where we actually stand";
 
 export const WAYS_IN_SEGMENTS: ReadonlyArray<{ id: WaysInAudience; label: string }> = [
@@ -40,6 +47,15 @@ export const WAYS_IN_DOORS: Record<WaysInAudience, readonly string[]> = {
     "What does it cost?",
   ],
 };
+
+const ALL_WAYS_IN_DOORS: ReadonlySet<string> = new Set(
+  Object.values(WAYS_IN_DOORS).flatMap((doors) => [...doors, WAYS_IN_LEAD_DOOR]),
+);
+
+/** Curated ways-in copy — still uses local regex routing when the dock is expanded. */
+export function isWaysInDoor(text: string): boolean {
+  return ALL_WAYS_IN_DOORS.has(text.trim());
+}
 
 const NONPROFITS_HREF = "/agent/nonprofits";
 const CHURCHES_HREF = "/agent/churches";

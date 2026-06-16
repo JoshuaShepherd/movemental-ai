@@ -22,7 +22,7 @@ import {
 import { getKnownStreamChipRoute } from "@/lib/agent-room/composer-routing";
 import { routeInput } from "@/lib/agent-room/route-input";
 import { readAgentDeepLink, clearAgentDeepLinkParams } from "@/lib/agent-room/deep-link";
-import { stashHandoffAudience } from "@/lib/agent-room/ways-in-doors";
+import { stashHandoffAudience, isWaysInDoor, type AgentSayOptions } from "@/lib/agent-room/ways-in-doors";
 import { CONCIERGE_VOICE } from "@/lib/agent-room/data/concierge-voice-lines";
 import {
   DISCUSS_PASSAGE_THRESHOLD,
@@ -446,13 +446,19 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   );
 
   const sendMessage = useCallback(
-    (raw: string) => {
+    (raw: string, opts?: AgentSayOptions) => {
       const text = raw.trim();
-      if (!text || busy || isStreaming) return;
+      if (!text || isStreaming) return;
+      // Opening choreography sets busy while inkLine animates; expanding the dock
+      // hides the handwriting strip but the runner must still finish. Once the
+      // visitor engages the conversation panel, honor their message.
+      if (busy && !conversationActiveRef.current) return;
 
       genRef.current.value += 1;
+      setBusy(false);
       setAgentChips(null);
 
+      const fromWaysInPanel = opts?.source === "ways-in";
       const route = classifyTypedInput({
         type: "text",
         text,
@@ -461,7 +467,8 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         freeTextStreak: freeTextStreakRef.current,
         fallbackStreak: fallbackStreakRef.current,
         chatActive:
-          conversationActiveRef.current || historyRef.current.length > 0,
+          (conversationActiveRef.current || historyRef.current.length > 0) &&
+          !(fromWaysInPanel && isWaysInDoor(text)),
       });
 
       freeTextStreakRef.current += 1;

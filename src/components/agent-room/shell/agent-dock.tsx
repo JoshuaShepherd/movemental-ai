@@ -21,6 +21,7 @@ import {
   HANDBOOK_EMAIL_INPUT_ID,
   EXPAND_CONVERSATION_EVENT,
 } from "@/lib/agent-room/suggest-chip-targets";
+import type { AgentSayHandler, AgentSayOptions } from "@/lib/agent-room/ways-in-doors";
 import type { VoiceState } from "../use-agent-room-stream";
 import { HandbookDockEmail } from "./handbook-dock-email";
 import { WaysInPanel } from "./ways-in-panel";
@@ -246,7 +247,7 @@ export function AgentDock({
   error: string | null;
   suggestions: ComposerChip[];
   disabled?: boolean;
-  onSay: (text: string) => void;
+  onSay: AgentSayHandler;
   placeholder?: string;
   phase?: RoomPhase;
   transcript?: TranscriptTurn[];
@@ -376,10 +377,15 @@ export function AgentDock({
     inputRef.current?.focus();
   }, [captureMode, expanded]);
 
+  /** Opening choreography sets busy; once the drawer is open, allow send. */
+  const composerBusy = Boolean(disabled && !expanded && !chatEngaged);
+
   const sendText = useCallback(
-    (raw: string) => {
+    (raw: string, opts?: { bypassDisabled?: boolean; say?: AgentSayOptions }) => {
       const v = raw.trim();
-      if (!v || disabled) return;
+      if (!v) return;
+      const allowWhileBusy = opts?.bypassDisabled || expanded || chatEngaged;
+      if (composerBusy && !allowWhileBusy) return;
       setValue("");
       setChatEngaged(true);
       setWaysInOpen(false);
@@ -387,10 +393,10 @@ export function AgentDock({
         setGuideMessages((prev) => [...prev, { role: "user", content: v }]);
       }
       if (expanded || discuss || chatEngaged) onConversationActive?.();
-      onSay(v);
+      onSay(v, opts?.say);
       if (!expanded) setExpandedState(true);
     },
-    [disabled, discuss, expanded, chatEngaged, onConversationActive, onSay, setExpandedState],
+    [composerBusy, discuss, expanded, chatEngaged, onConversationActive, onSay, setExpandedState],
   );
 
   const submit = (e: FormEvent) => {
@@ -401,7 +407,7 @@ export function AgentDock({
   const handleDoorSelect = useCallback(
     (text: string) => {
       setValue(text);
-      sendText(text);
+      sendText(text, { bypassDisabled: true, say: { source: "ways-in" } });
     },
     [sendText],
   );
@@ -422,7 +428,7 @@ export function AgentDock({
       value={value}
       onChange={setValue}
       onSubmit={submit}
-      disabled={disabled}
+      disabled={composerBusy}
       placeholder={placeholder}
       inputRef={inputRef}
       expanded={expanded}
@@ -481,7 +487,7 @@ export function AgentDock({
                           compact
                         />
                       ) : stubCapture ? null : (
-                        <WaysInPanel onSelectDoor={handleDoorSelect} disabled={disabled} />
+                        <WaysInPanel onSelectDoor={handleDoorSelect} />
                       )}
                       {stubCapture}
                     </>
@@ -537,7 +543,7 @@ export function AgentDock({
                       {stubCapture}
                     </>
                   ) : (
-                    <WaysInPanel onSelectDoor={handleDoorSelect} disabled={disabled} />
+                    <WaysInPanel onSelectDoor={handleDoorSelect} />
                   )}
                 </div>
 
@@ -546,7 +552,6 @@ export function AgentDock({
                     <WaysInPanel
                       overlay
                       onSelectDoor={handleDoorSelect}
-                      disabled={disabled}
                       onDismiss={() => setWaysInOpen(false)}
                     />
                   </div>
@@ -581,7 +586,7 @@ export function AgentDock({
         <div className={styles.agentFloat} id="agent-float">
           <FloatChips
             suggestions={suggestions}
-            disabled={disabled}
+            disabled={composerBusy}
             highlightChipLabel={highlightChipLabel ?? null}
           />
 
