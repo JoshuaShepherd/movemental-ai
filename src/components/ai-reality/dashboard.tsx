@@ -67,7 +67,7 @@ export function AiRealityDashboard({
               <li key={stage} className="relative pl-12">
                 <span
                   aria-hidden
-                  className="absolute left-0 top-0.5 bottom-0.5 w-[2px] rounded-full"
+                  className="absolute left-0 top-0.5 bottom-0.5 w-0.5 rounded-full"
                   style={{
                     background: isHere
                       ? "var(--color-ink-band-blue)"

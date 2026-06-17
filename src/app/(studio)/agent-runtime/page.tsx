@@ -86,7 +86,7 @@ export default function AgentRuntimeStudioPage() {
       ) : agents.length === 0 ? (
         <p className="text-muted-foreground text-sm">No agents returned for this tenant.</p>
       ) : (
-        <div className="overflow-x-auto rounded-[20px] border border-border bg-card">
+        <div className="overflow-x-auto rounded-xl border border-border bg-card">
           <table className="w-full min-w-[640px] text-left text-sm">
             <thead className="border-b border-border bg-section font-mono text-[0.75rem] uppercase tracking-[0.1em] text-muted-foreground">
               <tr>

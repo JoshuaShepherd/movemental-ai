@@ -47,7 +47,7 @@ export function CharterDashboardShell({ payload, userEmail }: Props) {
       <aside className="flex w-full flex-col border-b border-border bg-card md:w-64 md:border-b-0 md:border-r">
         <div className="border-b border-border px-5 py-6">
           <div
-            className="mb-3 flex h-10 w-10 items-center justify-center rounded-md bg-[var(--color-ink-band-blue)] font-mono text-xs font-medium text-white"
+            className="mb-3 flex h-10 w-10 items-center justify-center rounded-md bg-[var(--color-ink-band-blue)] font-mono text-xs font-medium text-primary-foreground"
             aria-hidden
           >
             {orgShortName(organization.name)}

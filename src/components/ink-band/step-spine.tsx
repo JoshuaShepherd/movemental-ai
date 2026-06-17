@@ -25,7 +25,7 @@ export function StepSpine({
     <div className="relative pl-6">
       <span
         aria-hidden
-        className="absolute left-0 top-1 bottom-1 w-[2px] rounded-full"
+        className="absolute left-0 top-1 bottom-1 w-0.5 rounded-full"
         style={{
           background: active
             ? "var(--color-ink-band-blue)"
