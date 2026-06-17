@@ -6,7 +6,7 @@
  */
 import { SCENES } from "./data/scenes";
 import { resolveTypedDiscussSignal } from "./discuss-entry";
-import { routeInput } from "./route-input";
+import { routeInput, isHighConfidenceLocalRoute } from "./route-input";
 
 /** Why a move routes to the live agent. */
 export type AgentMoveReason = "open_text" | "discuss" | "agent_chip";
@@ -83,7 +83,10 @@ export function classifyTypedInput(input: ClassifyTextInput): MoveRoute {
   const target = routeInput(text);
 
   if (target !== "fallback") {
-    return { kind: "local", scene: target };
+    if (isHighConfidenceLocalRoute(text, target)) {
+      return { kind: "local", scene: target };
+    }
+    return { kind: "agent", reason: "open_text" };
   }
 
   return { kind: "agent", reason: "open_text" };

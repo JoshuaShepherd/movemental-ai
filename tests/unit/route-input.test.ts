@@ -17,4 +17,8 @@ describe("routeInput", () => {
   it("returns fallback for truly off-domain input", () => {
     expect(routeInput("quantum physics")).toBe("fallback");
   });
+
+  it("does not route mid-sentence about to the About screen", () => {
+    expect(routeInput("question about donors")).toBe("fallback");
+  });
 });

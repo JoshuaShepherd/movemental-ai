@@ -3138,6 +3138,27 @@ export const agentRoomLeads = pgTable("agent_room_leads", {
   created_at: createdAt("created_at"),
 });
 
+/**
+ * Agent-room transcript log — one durable, tenant-scoped row per user or assistant
+ * message on AGENT-classified turns. Written by the engine run loop.
+ */
+export const agentRoomTranscripts = pgTable("agent_room_transcripts", {
+  id: id("id"),
+  organization_id: uuid("organization_id")
+    .notNull()
+    .references(() => organizations.id),
+  session_id: text("session_id"),
+  anon_id: text("anon_id"),
+  agent_slug: text("agent_slug").notNull(),
+  role: text("role").notNull(),
+  message_text: text("message_text").notNull(),
+  tool_calls: jsonb("tool_calls"),
+  phase: text("phase"),
+  screen_id: text("screen_id"),
+  metadata: jsonb("metadata").default({}),
+  created_at: createdAt("created_at"),
+});
+
 export const leaderApplications = pgTable("leader_applications", {
   id: id("id"),
   name: text("name").notNull(),

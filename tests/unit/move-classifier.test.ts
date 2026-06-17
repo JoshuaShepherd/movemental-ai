@@ -35,6 +35,27 @@ describe("move-classifier", () => {
     ).toEqual({ kind: "agent", reason: "open_text" });
   });
 
+  it("routes ambiguous first messages to agent even when regex loosely matches", () => {
+    expect(
+      classifyTypedInput({
+        ...baseText,
+        text: "I have a question about donors and AI",
+      }),
+    ).toEqual({ kind: "agent", reason: "open_text" });
+  });
+
+  it("routes the same free-form question to agent on turn 1 and turn 2", () => {
+    const text = "I'm curious how you think about AI in churches";
+    expect(classifyTypedInput({ ...baseText, text })).toEqual({
+      kind: "agent",
+      reason: "open_text",
+    });
+    expect(classifyTypedInput({ ...baseText, text, chatActive: true })).toEqual({
+      kind: "agent",
+      reason: "open_text",
+    });
+  });
+
   it("routes meta phrasing to discuss offer when discuss enabled", () => {
     const result = classifyTypedInput({
       ...baseText,

@@ -1,0 +1,37 @@
+{
+  "verdictCases": [
+    {
+      "label": "past — written and ratified with named refusals",
+      "answers": [
+        { "beatId": "decision", "answer": "Yes — written and ratified" },
+        { "beatId": "refusals", "answer": "Names specific refusals" }
+      ],
+      "expected": { "verdict": "past", "hereStageIndex": 1 }
+    },
+    {
+      "label": "pre — ratified but general refusals",
+      "answers": [
+        { "beatId": "decision", "answer": "Yes — written and ratified" },
+        { "beatId": "refusals", "answer": "It's more general" }
+      ],
+      "expected": { "verdict": "pre", "hereStageIndex": 0 }
+    },
+    {
+      "label": "pre — not ratified",
+      "answers": [
+        { "beatId": "decision", "answer": "We've talked about it" },
+        { "beatId": "worry", "answer": "Trust with the people we serve" }
+      ],
+      "expected": { "verdict": "pre", "hereStageIndex": 0 }
+    }
+  ],
+  "beatIds": [
+    "org_kind",
+    "reality",
+    "visibility",
+    "decision",
+    "trust",
+    "refusals",
+    "worry"
+  ]
+}

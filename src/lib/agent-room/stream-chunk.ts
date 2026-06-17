@@ -37,6 +37,7 @@ export const COMPONENT_IDS = [
   "pricing",
   "faq",
   "capture",
+  "safetyFlow",
   // Engine-extra (no Ink Band screen; rendered directly by the client)
   "network",
   "audience",

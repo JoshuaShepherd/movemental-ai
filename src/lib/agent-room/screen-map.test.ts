@@ -34,10 +34,14 @@ describe("screen-map: ComponentId ↔ ScreenId SSOT (INT-01)", () => {
     for (const screen of SCREEN_IDS) {
       const component = toComponentId(screen);
       expect(COMPONENT_IDS).toContain(component);
-      if (screen === "safetyDashboard" || screen === "safetyFlow") {
-        // Funnel-only stubs: map to the shared `safety` component until dedicated ids exist.
+      if (screen === "safetyDashboard") {
         expect(component).toBe("safety");
         expect(toScreenId(component)).toBe("safety");
+        continue;
+      }
+      if (screen === "safetyFlow") {
+        expect(component).toBe("safetyFlow");
+        expect(toScreenId(component)).toBe("safetyFlow");
         continue;
       }
       if (screen === "sandbox" || screen === "training" || screen === "technology") {

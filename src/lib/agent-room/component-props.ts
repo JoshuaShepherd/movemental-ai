@@ -56,6 +56,11 @@ export const captureProps = z.object({
 });
 export type CaptureProps = z.infer<typeof captureProps>;
 
+export const safetyFlowProps = z.object({
+  step: z.enum(["question", "fork", "charter", "diy", "signup", "ahead", "result"]),
+});
+export type SafetyFlowProps = z.infer<typeof safetyFlowProps>;
+
 /** Static-repertoire components carry no props in Phase 1. */
 export const emptyProps = z.object({}).passthrough();
 
@@ -73,7 +78,9 @@ export function validateComponentProps(
           ? handoffHumanProps
           : component === "capture"
             ? captureProps
-            : emptyProps;
+            : component === "safetyFlow"
+              ? safetyFlowProps
+              : emptyProps;
   const parsed = schema.safeParse(props ?? {});
   return parsed.success ? (parsed.data as Record<string, unknown>) : null;
 }

@@ -10,7 +10,9 @@ const DEFAULT_AGENT_SLUG = "room-host";
  * SSE proxy handler for Agent Room turns.
  *
  * Public path is `/api/agent-room/turn` (not `…/stream`) — Cloudflare in front of
- * www.movemental.ai blocks POST to URL paths containing `stream`.
+ * www.movemental.ai blocks POST to URL paths containing `stream` (WAF rule).
+ * Do not rename this route to `…/stream` without a Cloudflare allow-rule in place.
+ * See `docs/build/notes/agent-room-waf-and-model-hygiene.md` for the proposed fix.
  */
 export async function handleAgentRoomStreamPost(request: NextRequest) {
   const base = env.AI_AGENTS_BASE_URL?.replace(/\/$/, "");

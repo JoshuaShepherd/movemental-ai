@@ -1,107 +1,59 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
 import styles from "../../ink-band.module.css";
 import type { ScreenProps } from "./stub-screen";
 import { Crumb } from "./chrome";
 import { ProcessAccordion } from "../process-accordion";
 import { PATH_STAGE_LABELS } from "@/lib/agent-room/naming";
+import {
+  PRICING_REFUSALS,
+  PRICING_SAFETY_FREE,
+  PRICING_SAFETY_PAID,
+  PRICING_SANDBOX_FREE,
+  PRICING_SANDBOX_PAID,
+  PRICING_TECH_FREE,
+  PRICING_TECH_PAID,
+  PRICING_TRAINING_FREE,
+  PRICING_TRAINING_PAID,
+  type PricingWayData,
+} from "@/lib/agent-room/data/pricing";
 import { TwoWaysForward, type WayForwardOption } from "./two-ways-forward";
 
-const REFUSALS = [
-  "We don't negotiate the price. It's the same for a 500-person church and a 50,000-member denomination.",
-  "We don't gate the methodology. The field guides are free, and any team can run the work itself.",
-  "We don't run hidden enterprise tiers. There is no number above what's listed here.",
-  "We don't charge per seat. Pricing is by engagement, because per-seat rewards lock-in, not belonging.",
-  "We don't use urgency. No limited-time discounts, no \"spots filling fast.\"",
-  "We don't pay our network in logos. The movement leaders behind the path are paid through a real agreement, with royalties, available on request.",
-];
+function toWayOption(data: PricingWayData): WayForwardOption {
+  let description: ReactNode;
+  if (data.descriptionPlain) {
+    description = data.descriptionPlain;
+  } else {
+    description = (
+      <>
+        {data.descriptionBefore}
+        <em>{data.descriptionEmphasis}</em>
+        {data.descriptionAfter}
+      </>
+    );
+  }
+  return {
+    title: data.title,
+    price: data.price,
+    description,
+    ctaLabel: data.ctaLabel,
+    ctaHref: data.ctaHref,
+    paid: data.paid,
+    placeholder: data.placeholder,
+  };
+}
 
-const SAFETY_FREE: WayForwardOption = {
-  title: "Free, and we guide you.",
-  price: "Free · about 1 to 2 months",
-  description: (
-    <>
-      The handbook, <em>It Starts With Safety</em>. Your team drafts all five
-      layers, and we guide you when you need it.
-    </>
-  ),
-  ctaLabel: "Start free, we'll guide you",
-  ctaHref: "/field-guide",
-};
-
-const SAFETY_PAID: WayForwardOption = {
-  title: "We do it with you.",
-  price: "$1,000 · two weeks",
-  description:
-    "We draft all five layers customized to your organization. Your team reviews and ratifies in the dashboard.",
-  ctaLabel: "Have us do it · $1,000",
-  ctaHref: "/enroll",
-  paid: true,
-};
-
-const SANDBOX_FREE: WayForwardOption = {
-  title: "Free, and we guide you.",
-  price: "Free · self-paced",
-  description: (
-    <>
-      The field guide, <em>It Continues With Exploration</em>. Your team runs the
-      eight phases, and we guide you when you need it.
-    </>
-  ),
-  ctaLabel: "Start free, we'll guide you",
-  ctaHref: "/field-guide?guide=sandbox",
-};
-
-const SANDBOX_PAID: WayForwardOption = {
-  title: "We do it with you.",
-  price: "$15,000 · four to six weeks",
-  description:
-    "About ten hours of in-person teaching across eight phases, learning access, a custom AI recipe library, and dashboard integration. Produces a Future Plan with green, yellow, and red use cases.",
-  ctaLabel: "Have us do it · $15,000",
-  ctaHref: "/enroll",
-  paid: true,
-};
-
-const TRAINING_FREE: WayForwardOption = {
-  title: "Free, and we guide you.",
-  price: "[Free entry point to confirm]",
-  description: "Training has run cohort-only to date. We will confirm the free entry point before publishing a claim here.",
-  ctaLabel: "",
-  ctaHref: "",
-  placeholder: true,
-};
-
-const TRAINING_PAID: WayForwardOption = {
-  title: "We do it with you.",
-  price: "$15,000 + $5,000 per year",
-  description:
-    "An eight-week formation cohort building three capacities: discernment, authorship, and stewardship, in the people who will steward AI inside your organization.",
-  ctaLabel: "Talk to us about Training",
-  ctaHref: "/enroll",
-  paid: true,
-};
-
-const TECH_FREE: WayForwardOption = {
-  title: "Free, and we guide you.",
-  price: "[Free entry point to confirm]",
-  description: "Technology is scoped per engagement. We will confirm the free entry point before publishing a claim here.",
-  ctaLabel: "",
-  ctaHref: "",
-  placeholder: true,
-};
-
-const TECH_PAID: WayForwardOption = {
-  title: "We do it with you.",
-  price: "From $30,000 · scoped",
-  description:
-    "Scoped AI deployment across six configurations, from tool optimization to network-scale work for institutions and denominations.",
-  ctaLabel: "Talk to us about Technology",
-  ctaHref: "/enroll",
-  paid: true,
-};
+const SAFETY_FREE = toWayOption(PRICING_SAFETY_FREE);
+const SAFETY_PAID = toWayOption(PRICING_SAFETY_PAID);
+const SANDBOX_FREE = toWayOption(PRICING_SANDBOX_FREE);
+const SANDBOX_PAID = toWayOption(PRICING_SANDBOX_PAID);
+const TRAINING_FREE = toWayOption(PRICING_TRAINING_FREE);
+const TRAINING_PAID = toWayOption(PRICING_TRAINING_PAID);
+const TECH_FREE = toWayOption(PRICING_TECH_FREE);
+const TECH_PAID = toWayOption(PRICING_TECH_PAID);
 
 function StageWays({
   reassurance,
@@ -217,7 +169,7 @@ export function PricingScreen({ onHome }: ScreenProps) {
 
       <div className={styles.sec}>
         <p className={styles.secLabel}>What this pricing refuses</p>
-        {REFUSALS.map((line) => (
+        {PRICING_REFUSALS.map((line) => (
           <p key={line} className={styles.refuse}>
             {line}
           </p>

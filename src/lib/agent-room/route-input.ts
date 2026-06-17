@@ -46,7 +46,10 @@ const ROUTES: ReadonlyArray<{ re: RegExp; to: RouteTarget }> = [
   },
   { re: /talk to|contact|human|email|reach|speak/, to: "talkToUs" },
   { re: /who|behind|leader|team|trust|network/, to: "whoBehind" },
-  { re: /what('s| is| do)|movemental|about|do you do/, to: "whatIs" },
+  {
+    re: /\bwhat(?:'s| is) movemental\b|do you do|tell me about movemental|\babout movemental\b/,
+    to: "whatIs",
+  },
   // Diagnostic catch-all. NB: this stays `toBeat`, NOT `beatIntro` — `routeInput`
   // is a pure function with no notion of "first contact from home" vs. later
   // free-text, so it can't gate the bridging intro the way the home chip does.
@@ -84,4 +87,37 @@ export function routeInput(text: string): RouteTarget | "fallback" {
     if (re.test(t)) return to;
   }
   return "fallback";
+}
+
+/** High-confidence command-like matches safe for first collapsed message (hybrid). */
+export function isHighConfidenceLocalRoute(
+  text: string,
+  target: Exclude<ReturnType<typeof routeInput>, "fallback">,
+): boolean {
+  const t = text.trim().toLowerCase();
+  switch (target) {
+    case "cost":
+      return /\b(cost|price|how much|afford|pricing|what does it cost)\b/.test(t);
+    case "whatIs":
+      return (
+        /\bwhat(?:'s| is) movemental\b/.test(t) ||
+        /\bdo you do\b/.test(t) ||
+        /\btell me about movemental\b/.test(t) ||
+        /\babout movemental\b/.test(t)
+      );
+    case "toFaq":
+      return /\b(faq|frequently asked|philosophy|stance on ai|common question)\b/.test(t);
+    case "toPath":
+      return /\b(the path|whole path|how.*work|after)\b/.test(t);
+    case "toSafety":
+      return /\b(safety|charter|handbook|ratif)\b/.test(t);
+    case "toSafetyFlow":
+      return /\b(get a clear|where (do i|should i) start|map (it|where)|assess)\b/.test(t);
+    case "talkToUs":
+      return /\b(contact|talk to|get in touch|speak to|email you)\b/.test(t);
+    case "whoBehind":
+      return /\b(who (is )?behind|founders?|who runs)\b/.test(t);
+    default:
+      return t.length <= 48 && !/\babout\b/.test(t);
+  }
 }

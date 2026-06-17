@@ -37,6 +37,7 @@ export const COMPONENT_TO_SCREEN = {
   pricing: "pricing",
   faq: "faq",
   capture: "capture",
+  safetyFlow: "safetyFlow",
   // --- Engine-extra: no Ink Band screen; rendered directly ---
   network: null,
   audience: null,
@@ -61,10 +62,9 @@ export const SCREEN_TO_COMPONENT = {
   pricing: "pricing",
   faq: "faq",
   capture: "capture",
+  safetyFlow: "safetyFlow",
   /** Funnel-only stub screen; engine maps to `safety` until a dedicated component exists. */
   safetyDashboard: "safety",
-  /** Self-serve Safety flow wizard; stub-only until engine ComponentId exists. */
-  safetyFlow: "safety",
   /** Stage screens — stub-only until engine ComponentIds exist. */
   sandbox: "path",
   training: "path",

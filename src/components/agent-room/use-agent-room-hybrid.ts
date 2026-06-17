@@ -81,6 +81,10 @@ function optsFromAgentRender(
     const kind = props.kind;
     return typeof kind === "string" ? { kind } : {};
   }
+  if (component === "safetyFlow") {
+    const step = props.step;
+    return typeof step === "string" ? { step } : {};
+  }
   return {};
 }
 
