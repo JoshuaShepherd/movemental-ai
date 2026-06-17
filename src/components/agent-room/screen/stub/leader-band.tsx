@@ -98,7 +98,18 @@ export function LeaderBand({
     const trackWidth = order.length > 0 ? order.length * step - gap : 0;
     const clipWidth = Math.min(fullClipWidth, trackWidth);
     const maxIndex = Math.max(0, order.length - resolvedVisible);
-    setM({ step, maxIndex, clipWidth });
+    // ResizeObserver can fire while portrait images load; skip setState when
+    // geometry is unchanged so we don't thrash the main thread on home load.
+    setM((prev) => {
+      if (
+        prev.step === step &&
+        prev.maxIndex === maxIndex &&
+        prev.clipWidth === clipWidth
+      ) {
+        return prev;
+      }
+      return { step, maxIndex, clipWidth };
+    });
     setIndex((i) => Math.min(i, maxIndex));
   }, [order.length]);
 
