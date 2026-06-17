@@ -1,7 +1,7 @@
 /**
  * Copy for `/agent/how-we-use-ai` — adapted from guide-ai-credibility-2026.md
  * (AI Credibility guide) and movemental-the-talk.md refusals. No internal
- * strategy framing; naming canon: Safety · Sandbox · Training · Technology.
+ * strategy framing; naming canon: Safety · Sandbox · Training · Tech.
  */
 
 /** Company commitments — Josh's refusals reframed as Movemental's promise. */

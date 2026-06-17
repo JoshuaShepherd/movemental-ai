@@ -204,13 +204,13 @@ export const SCENES = {
     { show: "technology" },
     { wait: 480 },
     {
-      say: "Technology is scoped deployment, only after Safety, Sandbox, and Training.",
+      say: "Tech is scoped deployment, only after Safety, Sandbox, and Training.",
     },
     { wait: 200 },
     { say: "We would rather name a smaller first step than sell a build you are not ready to operate." },
     {
       suggest: [
-        { label: "Talk to us about Technology", lead: true, to: "talkToUs" },
+        { label: "Talk to us about Tech", lead: true, to: "talkToUs" },
         { label: "See the whole path", to: "toPath" },
         { label: "What does it cost?", to: "cost" },
       ],

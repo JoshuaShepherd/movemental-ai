@@ -7,7 +7,7 @@ audience: [leader, nonprofit, church, institution]
 status: eeat-candidate
 eeat_score_band: 85-99
 topics: [sandbox, ai-stewardship-sequence, formation]
-purpose: "Define the Sandbox stage of the AI Stewardship Sequence — bounded experimentation, four outputs, graduation gate — after Safety and before Skills."
+purpose: "Define the Sandbox stage of the AI Stewardship Sequence — bounded experimentation, four outputs, graduation gate — after Safety and before Training."
 published_at: "2026-06-11"
 ---
 
@@ -17,11 +17,11 @@ published_at: "2026-06-11"
 
 Most organizations meet AI through **demos, pilots, or scattered personal use**. That learning never compounds because it has no shared memory, no governance baseline, and no exit criteria.
 
-**Sandbox Discovery** is the second stage of **Safety → Sandbox → Skills → Solutions**. It is structured experimentation **after** Safety defines what may and may not be touched, not permissionless play, not shadow IT with better branding.
+**Sandbox Discovery** is the second stage of **Safety → Sandbox → Training → Tech**. It is structured experimentation **after** Safety defines what may and may not be touched, not permissionless play, not shadow IT with better branding.
 
 **What a real sandbox requires:** tooling Safety already configured; synthetic or public inputs (not live restricted data); outputs reviewed before anything external; learning captured in **shared records**, not individual inboxes. Miss any of those four and you have experimentation, not a sandbox.
 
-**What the stage produces:** prioritized use cases, experiment briefs, measurement and risk notes, a **draft playbook**, and a **graduation gate** that decides what may advance to Skills or Solutions.
+**What the stage produces:** prioritized use cases, experiment briefs, measurement and risk notes, a **draft playbook**, and a **graduation gate** that decides what may advance to Training or Tech.
 
 **Sourced anchor:** Randomized consultant experiments show AI can produce **phantom expertise** (confident wrong output) especially when junior staff use tools without senior verification ([BCG 2024](https://www.bcg.com/press/5september2024-generative-ai-knowledge-workers-consultants), [AI research archive](./ai-research-archive.md)). That is why sandbox work must stay bounded and logged before it touches donors, boards, or pastoral edges.
 
@@ -35,7 +35,7 @@ The first version of this stage (the Discovery Lab) framed itself as a nonprofit
 
 What the original framing got wrong is **position in the sequence**. Organizations that begin with experimentation before a governance baseline learn the wrong lessons, or learn the right lessons from **incidents they caused**.
 
-In **Safety → Sandbox → Skills → Solutions**, Sandbox Discovery is **second**, not first. Same discipline. Sharper dependencies. A clearer exit criterion.
+In **Safety → Sandbox → Training → Tech**, Sandbox Discovery is **second**, not first. Same discipline. Sharper dependencies. A clearer exit criterion.
 
 ---
 
@@ -92,7 +92,7 @@ Consolidates what use cases the organization believes are worth doing, what it h
 
 ## The graduation gate
 
-The sharpest addition to the evolved stage: an explicit exit criterion. The stage ends with a playbook **and** a set of use cases that passed graduation into Skills or Solutions.
+The sharpest addition to the evolved stage: an explicit exit criterion. The stage ends with a playbook **and** a set of use cases that passed graduation into Training or Tech.
 
 A use case graduates when it has:
 
@@ -120,7 +120,7 @@ The organization forms the capacity to **evaluate rather than purchase**. When a
 
 Leadership forms a **defensible posture**. The board asks what the organization is doing with AI; leadership points to prioritized use cases, measured experiments, a risk register, a living playbook, and a gate that determines what graduates. The answer is no longer *a few people are trying things*. It is *here is what we learned, what graduated, what we deferred, and how we tell the difference.*
 
-Critically, the stage feeds **Skills and Solutions**. Skills training organizes around workflows that **graduated**, not generic tool fluency ([The Skill of AI](./the-skill-of-ai.md)). Solutions attach to use cases that demonstrated value inside guardrails. The sandbox is where learning gets captured so the rest of the system acts on it without improvising.
+Critically, the stage feeds **Training and Tech**. Training organizes around workflows that **graduated**, not generic tool fluency ([The Skill of AI](./the-skill-of-ai.md)). Tech attaches to use cases that demonstrated value inside guardrails. The sandbox is where learning gets captured so the rest of the system acts on it without improvising.
 
 ---
 
@@ -136,7 +136,7 @@ Two common alternatives fail in predictable ways.
 
 **Learning-first after Safety** produces an evidence base, a practice, and a draft the organization revises as it goes. That is the only placement, in our experience, that produces **capability** rather than **narrative**.
 
-**Attributed:** The field guide names the same inversion (demo → pilot → policy later) and the borrowing chain: Solutions borrows from Skills; Skills from Sandbox; Sandbox from Safety ([AI Stewardship Sequence field guide](../75-79/ai-stewardship-sequence-field-guide-for-organizational-leaders.md)).
+**Attributed:** The field guide names the same inversion (demo → pilot → policy later) and the borrowing chain: Tech borrows from Training; Training from Sandbox; Sandbox from Safety ([AI Stewardship Sequence field guide](../75-79/ai-stewardship-sequence-field-guide-for-organizational-leaders.md)).
 
 ---
 
@@ -156,7 +156,7 @@ Two common alternatives fail in predictable ways.
 2. **Run one four-week cycle** with a single accountable team and a shared log, not enterprise-wide curiosity.
 3. **Require failure modes on every experiment brief** before anyone runs a prompt.
 4. **Hold a graduation review** even for "obvious wins." If everything graduates, tighten the gate.
-5. **Feed graduated use cases directly into Skills design.** Do not schedule generic AI literacy while sandbox evidence sits unused.
+5. **Feed graduated use cases directly into Training design.** Do not schedule generic AI literacy while sandbox evidence sits unused.
 
 ---
 
@@ -175,7 +175,7 @@ AI did not raise the bar on experimentation. It raised the **cost** of experimen
 - **[The AI Stewardship Sequence: Field Guide](../75-79/ai-stewardship-sequence-field-guide-for-organizational-leaders.md)**: Stage 2 (Sandbox) in full: before/after advance, tech vs guide, failure modes.
 - **[Who Says What an Org Needs](./who-says-what-an-org-needs.md)**: Safety documents and askers Sandbox depends on.
 - **[The Skill of AI: Why 'Reskilling' Is the Wrong Frame](./the-skill-of-ai.md)**: Stage 3; inherits graduated use cases from Sandbox.
-- **[Finding AI Guidance Worth Trusting](./finding-ai-guidance-worth-trusting.md)**: External help should respect Sandbox discipline, not skip to Solutions.
+- **[Finding AI Guidance Worth Trusting](./finding-ai-guidance-worth-trusting.md)**: External help should respect Sandbox discipline, not skip to Tech.
 - **[Verified AI Research Archive](./ai-research-archive.md)**: Evidence on phantom expertise and jagged frontiers that justify bounded experimentation.
 
 ---
@@ -186,5 +186,5 @@ AI did not raise the bar on experimentation. It raised the **cost** of experimen
 |-------|------|------------|----------------|
 | Organizational AI learning must follow Safety, not precede it; otherwise learning-first collapses into tool-first | AI Stewardship Sequence field guide | Attributed | Field guide, onboarding |
 | A real sandbox requires configured tooling, safe inputs, reviewed outputs, and shared records; missing any one is not a sandbox | Sandbox Discovery synthesis | Synthesis | Agent KB, nonprofit playbook |
-| Use cases must pass explicit graduation (peer review, sign-off, audit log) before Skills or Solutions | Movemental operational model | Opinion | Dashboard, Safety/Sandbox product |
-| Undisciplined AI experimentation without senior verification can produce phantom expertise; bounded sandbox logs mitigate | BCG 2024 experiments | Sourced | `/footnotes`, Skills/Sandbox training |
+| Use cases must pass explicit graduation (peer review, sign-off, audit log) before Training or Tech | Movemental operational model | Opinion | Dashboard, Safety/Sandbox product |
+| Undisciplined AI experimentation without senior verification can produce phantom expertise; bounded sandbox logs mitigate | BCG 2024 experiments | Sourced | `/footnotes`, Training/Sandbox training |

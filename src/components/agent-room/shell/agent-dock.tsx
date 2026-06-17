@@ -10,7 +10,7 @@ import {
   type ReactNode,
 } from "react";
 
-import type { RoomPhase, TranscriptTurn } from "@/lib/agent-room/discuss";
+import type { RoomPhase } from "@/lib/agent-room/discuss";
 import { useAgentRoomRefs } from "../agent-room-context";
 import type { ComposerChip } from "../composer";
 import { DiscussThread } from "../discuss/discuss-thread";
@@ -23,14 +23,11 @@ import {
 } from "@/lib/agent-room/suggest-chip-targets";
 import type { AgentSayHandler, AgentSayOptions } from "@/lib/agent-room/ways-in-doors";
 import type { VoiceState } from "../use-agent-room-stream";
+import type { ThreadTurn } from "@/lib/agent-room/thread";
 import { HandbookDockEmail } from "./handbook-dock-email";
 import { WaysInPanel } from "./ways-in-panel";
 
-type GuideMessage = {
-  role: "agent" | "user";
-  content: string;
-  streaming?: boolean;
-};
+export type DockState = "collapsed" | "expanded";
 
 function ExpandIcon() {
   return (
@@ -221,7 +218,8 @@ function FloatChips({
 }
 
 /**
- * Floating agent dock — collapsed bar OR expanded conversation room (never both).
+ * Floating agent dock — collapsed orientation OR expanded conversation (SSOT §2).
+ * `dockState` is the only surface switch; thread is the single conversation log.
  */
 export function AgentDock({
   voice,
@@ -230,18 +228,17 @@ export function AgentDock({
   disabled,
   onSay,
   placeholder,
-  phase = "guide",
-  transcript = [],
+  phase: _phase = "guide",
+  thread = [],
   stubCapture,
   showHandbookCapture,
   onHandbookCaptureSubmit,
-  liveText,
   liveThinking,
   liveThinkingNote,
-  onConversationActive,
-  onExpandedChange,
+  onDockStateChange,
   screenKey,
   highlightChipLabel = null,
+  caption,
 }: {
   voice: VoiceState;
   error: string | null;
@@ -250,122 +247,86 @@ export function AgentDock({
   onSay: AgentSayHandler;
   placeholder?: string;
   phase?: RoomPhase;
-  transcript?: TranscriptTurn[];
+  thread?: ThreadTurn[];
   stubCapture?: ReactNode;
   showHandbookCapture?: boolean;
   onHandbookCaptureSubmit?: (kind: string, values: Record<string, string>) => void;
-  liveText?: string;
   liveThinking?: boolean;
   liveThinkingNote?: string;
-  onConversationActive?: () => void;
-  onExpandedChange?: (expanded: boolean) => void;
+  onDockStateChange?: (state: DockState) => void;
   screenKey?: string;
-  /** Label of the ONE float chip that earns the highlighter swipe (null = none). */
   highlightChipLabel?: string | null;
+  caption?: string;
 }) {
-  const discuss = phase === "discuss";
-  const [expanded, setExpanded] = useState(false);
+  const [dockState, setDockState] = useState<DockState>("collapsed");
   const [value, setValue] = useState("");
-  const [guideMessages, setGuideMessages] = useState<GuideMessage[]>([]);
-  const [chatEngaged, setChatEngaged] = useState(false);
   const [waysInOpen, setWaysInOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const threadRef = useRef<HTMLDivElement>(null);
   const { voiceEl } = useAgentRoomRefs();
   const prevScreenKey = useRef(screenKey);
 
+  const expanded = dockState === "expanded";
   const captureMode = Boolean(showHandbookCapture && onHandbookCaptureSubmit);
 
-  const setExpandedState = useCallback(
-    (next: boolean) => {
-      if (next) onConversationActive?.();
-      setExpanded(next);
-      onExpandedChange?.(next);
+  const expand = useCallback(
+    (_reason?: "send" | "chip" | "agent" | "user") => {
+      setDockState("expanded");
+      onDockStateChange?.("expanded");
     },
-    [onConversationActive, onExpandedChange],
+    [onDockStateChange],
   );
+
+  const collapse = useCallback(() => {
+    setDockState("collapsed");
+    onDockStateChange?.("collapsed");
+  }, [onDockStateChange]);
 
   useEffect(() => {
     if (screenKey === undefined || screenKey === prevScreenKey.current) return;
     prevScreenKey.current = screenKey;
-    setGuideMessages([]);
-    setChatEngaged(false);
     setWaysInOpen(false);
-    setExpanded(false);
-    onExpandedChange?.(false);
+    collapse();
     setValue("");
-  }, [onExpandedChange, screenKey]);
+  }, [collapse, screenKey]);
 
+  // Auto-expand when agent streaming begins (I2, I3).
   useEffect(() => {
-    if (discuss) setExpandedState(true);
-  }, [discuss, setExpandedState]);
-
-  useEffect(() => {
-    if (!liveText && !liveThinking) return;
-    if (!discuss && !chatEngaged) return;
-    setExpanded((open) => {
-      if (open) return open;
-      onConversationActive?.();
-      onExpandedChange?.(true);
-      return true;
-    });
-  }, [liveText, liveThinking, onConversationActive, onExpandedChange, chatEngaged, discuss]);
-
-  useEffect(() => {
-    if (discuss || !liveText || !chatEngaged) return;
-    setGuideMessages((prev) => {
-      const last = prev[prev.length - 1];
-      if (last?.role === "agent" && last.streaming) {
-        if (last.content === liveText) return prev;
-        return [...prev.slice(0, -1), { role: "agent", content: liveText, streaming: true }];
-      }
-      return [...prev, { role: "agent", content: liveText, streaming: true }];
-    });
-  }, [discuss, liveText, chatEngaged]);
-
-  useEffect(() => {
-    if (discuss || !chatEngaged || liveText) return;
-    setGuideMessages((prev) => {
-      const last = prev[prev.length - 1];
-      if (last?.role === "agent" && last.streaming) {
-        return [...prev.slice(0, -1), { role: "agent", content: last.content }];
-      }
-      return prev;
-    });
-  }, [discuss, chatEngaged, liveText]);
+    if (thread.some((t) => t.streaming) || (liveThinking && thread.length > 0)) {
+      expand("agent");
+    }
+  }, [thread, liveThinking, expand]);
 
   useEffect(() => {
     if (!expanded || !threadRef.current) return;
     threadRef.current.scrollTop = threadRef.current.scrollHeight;
-  }, [expanded, guideMessages, transcript, liveText, voice.text]);
+  }, [expanded, thread, liveThinking]);
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && expanded) setExpandedState(false);
+      if (e.key === "Escape" && expanded) collapse();
     };
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
-  }, [expanded, setExpandedState]);
+  }, [expanded, collapse]);
 
   useEffect(() => {
     const onExpand = (event: Event) => {
       const utterance = (event as CustomEvent<{ utterance?: string }>).detail?.utterance;
-      setChatEngaged(true);
       if (utterance?.trim()) {
-        setGuideMessages((prev) => [...prev, { role: "user", content: utterance.trim() }]);
+        onSay(utterance.trim());
       }
-      setExpandedState(true);
-      onConversationActive?.();
+      expand("chip");
     };
     document.addEventListener(EXPAND_CONVERSATION_EVENT, onExpand);
     return () => document.removeEventListener(EXPAND_CONVERSATION_EVENT, onExpand);
-  }, [onConversationActive, setExpandedState]);
+  }, [expand, onSay]);
 
   useEffect(() => {
-    const onFocusHandbook = () => setExpandedState(true);
+    const onFocusHandbook = () => expand("user");
     document.addEventListener(FOCUS_HANDBOOK_EMAIL_EVENT, onFocusHandbook);
     return () => document.removeEventListener(FOCUS_HANDBOOK_EMAIL_EVENT, onFocusHandbook);
-  }, [setExpandedState]);
+  }, [expand]);
 
   useLayoutEffect(() => {
     if (!expanded) return;
@@ -377,26 +338,20 @@ export function AgentDock({
     inputRef.current?.focus();
   }, [captureMode, expanded]);
 
-  /** Opening choreography sets busy; once the drawer is open, allow send. */
-  const composerBusy = Boolean(disabled && !expanded && !chatEngaged);
+  const composerBusy = Boolean(disabled && !expanded);
 
   const sendText = useCallback(
     (raw: string, opts?: { bypassDisabled?: boolean; say?: AgentSayOptions }) => {
       const v = raw.trim();
       if (!v) return;
-      const allowWhileBusy = opts?.bypassDisabled || expanded || chatEngaged;
+      const allowWhileBusy = opts?.bypassDisabled || expanded;
       if (composerBusy && !allowWhileBusy) return;
       setValue("");
-      setChatEngaged(true);
       setWaysInOpen(false);
-      if (!discuss) {
-        setGuideMessages((prev) => [...prev, { role: "user", content: v }]);
-      }
-      if (expanded || discuss || chatEngaged) onConversationActive?.();
+      expand("send");
       onSay(v, opts?.say);
-      if (!expanded) setExpandedState(true);
     },
-    [composerBusy, discuss, expanded, chatEngaged, onConversationActive, onSay, setExpandedState],
+    [composerBusy, expanded, expand, onSay],
   );
 
   const submit = (e: FormEvent) => {
@@ -412,11 +367,7 @@ export function AgentDock({
     [sendText],
   );
 
-  const showGuideThread =
-    !discuss && chatEngaged && (guideMessages.length > 0 || liveText || liveThinking);
-  const showDiscussThread = discuss && (transcript.length > 0 || liveText || liveThinking);
-  const conversationActive = showGuideThread || showDiscussThread;
-  const showThreadBody = conversationActive || Boolean(stubCapture);
+  const conversationActive = thread.length > 0 || liveThinking || Boolean(stubCapture);
 
   const captureFooter =
     captureMode && expanded && onHandbookCaptureSubmit ? (
@@ -432,7 +383,7 @@ export function AgentDock({
       placeholder={placeholder}
       inputRef={inputRef}
       expanded={expanded}
-      onToggleExpand={() => setExpandedState(true)}
+      onToggleExpand={() => expand("user")}
       showWaysInButton={Boolean(expanded && conversationActive)}
       onOpenWaysIn={() => setWaysInOpen(true)}
     />
@@ -448,7 +399,7 @@ export function AgentDock({
           className={styles.dockBackdrop}
           id="dock-backdrop"
           aria-hidden="true"
-          onClick={() => setExpandedState(false)}
+          onClick={collapse}
         />
 
         <div className={styles.agentDockPanel}>
@@ -468,7 +419,7 @@ export function AgentDock({
                   id="card-collapse"
                   aria-label="Collapse chat"
                   title="Collapse chat"
-                  onClick={() => setExpandedState(false)}
+                  onClick={collapse}
                 >
                   <CollapseIcon />
                 </button>
@@ -476,12 +427,11 @@ export function AgentDock({
 
               <div className={styles.cardThread} id="card-thread" ref={threadRef}>
                 <div className={styles.cardThreadInner}>
-                  {discuss ? (
+                  {conversationActive ? (
                     <>
-                      {showDiscussThread ? (
+                      {thread.length > 0 || liveThinking ? (
                         <DiscussThread
-                          transcript={transcript}
-                          liveText={liveText}
+                          thread={thread}
                           liveThinking={liveThinking}
                           liveThinkingNote={liveThinkingNote}
                           compact
@@ -489,57 +439,6 @@ export function AgentDock({
                       ) : stubCapture ? null : (
                         <WaysInPanel onSelectDoor={handleDoorSelect} />
                       )}
-                      {stubCapture}
-                    </>
-                  ) : showThreadBody ? (
-                    <>
-                      {guideMessages.map((msg, i) => (
-                        <div
-                          key={`${msg.role}-${i}-${msg.content.slice(0, 24)}`}
-                          className={
-                            msg.role === "agent" ? styles.threadMsgAgent : styles.threadMsgUser
-                          }
-                        >
-                          <p
-                            className={
-                              msg.role === "agent" && msg.streaming
-                                ? `${styles.liveInk} ${styles.settle}`
-                                : undefined
-                            }
-                            aria-live={msg.streaming ? "polite" : undefined}
-                          >
-                            {msg.content}
-                          </p>
-                        </div>
-                      ))}
-                      {liveText ? (
-                        <div className={styles.threadMsgAgent}>
-                          <p
-                            className={`${styles.liveInk} ${styles.settle}`}
-                            aria-live="polite"
-                          >
-                            {liveText}
-                          </p>
-                        </div>
-                      ) : null}
-                      {!liveText &&
-                      !liveThinking &&
-                      voice.text &&
-                      !guideMessages.some(
-                        (m) => m.role === "agent" && m.content === voice.text,
-                      ) ? (
-                        <div className={styles.threadMsgAgent}>
-                          <p>{voice.text}</p>
-                        </div>
-                      ) : null}
-                      {liveThinking && !liveText ? (
-                        <div className={styles.thinking}>
-                          <span className={styles.pulse} aria-hidden="true" />
-                          {liveThinkingNote ? (
-                            <span className={styles.thinkingNote}>{liveThinkingNote}…</span>
-                          ) : null}
-                        </div>
-                      ) : null}
                       {stubCapture}
                     </>
                   ) : (
@@ -572,13 +471,7 @@ export function AgentDock({
         <div className={styles.handwritingStrip} aria-live="polite">
           <div className={styles.handwritingInner}>
             <div ref={voiceEl} className={styles.handwritingVoice}>
-              <VoiceZone
-                voice={voice}
-                error={error}
-                phase={discuss ? "discuss" : phase}
-                transcript={transcript}
-                strip
-              />
+              <VoiceZone voice={voice} error={error} caption={caption} />
             </div>
           </div>
         </div>
@@ -598,7 +491,7 @@ export function AgentDock({
               id="card-handle"
               aria-label="Expand drawer"
               aria-expanded={false}
-              onClick={() => setExpandedState(true)}
+              onClick={() => expand("user")}
             >
               <span className={styles.handleBar} />
             </button>

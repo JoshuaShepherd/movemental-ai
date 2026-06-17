@@ -63,19 +63,19 @@ If you want a single diagnostic question for the problem section, it is this: *I
 
 ## The path
 
-There is a path through. Not a formula. Not a vendor roadmap. A sequence learned in painful public view: organizations that do well tend to obey it. Organizations that fail tend to invert it. The sequence is Safety, Sandbox, Skills, Solutions. The order is not decorative. Skip one and the later steps have nothing solid to stand on.
+There is a path through. Not a formula. Not a vendor roadmap. A sequence learned in painful public view: organizations that do well tend to obey it. Organizations that fail tend to invert it. The sequence is Safety, Sandbox, Training, Tech. The order is not decorative. Skip one and the later steps have nothing solid to stand on.
 
 Safety means governance with real authority, ethical and conviction-level naming of what will be tested when you adopt these tools, and explicit boundaries on where AI does and does not belong in this organization’s work. It is not a ban by default. It is confidence to move without betraying the mission. Safety is what lets an executive director sleep after reading AI-drafted donor language that suddenly sounds like a stranger. Without Safety, speed curdles into self-suspicion.
 
 Sandbox means structured exploration: bounded space, stated hypotheses, defined use cases, a learning loop, shared artifacts. It is not shadow IT scattered across twelve staff members. It is not a pilot that becomes production by accident. It is the protected place where the organization learns what it is becoming before it bets the mission on the answer. Sandbox is where you earn the right to have opinions that are not merely personal preferences. It is also where you discover the trip-wires your policy will later need to protect.
 
-Skills means formation, not training. Training transfers discrete techniques. Formation reshapes judgment. The capacities that matter are discernment, authorship, and stewardship: recognizing drift, holding the pen, knowing what must remain unmediated. Skills are what keep a clever tool from becoming a substitute conscience. Two staff members can use the same system and produce opposite organizational futures, depending on whether their formation made them more careful or more careless with the truth.
+Training means formation, not training. Training transfers discrete techniques. Formation reshapes judgment. The capacities that matter are discernment, authorship, and stewardship: recognizing drift, holding the pen, knowing what must remain unmediated. Training is what keeps a clever tool from becoming a substitute conscience. Two staff members can use the same system and produce opposite organizational futures, depending on whether their formation made them more careful or more careless with the truth.
 
-Solutions means deployment into real workflows, owned by humans who can course-correct, governed by policy that is already real, under leadership that can name the tradeoffs. Solutions matter. They come last because their value is conditional on the previous three being in place. Solutions first is how you get fast outputs and slow trust. Solutions last is how you get outputs that still look like you when the novelty wears off.
+Tech means deployment into real workflows, owned by humans who can course-correct, governed by policy that is already real, under leadership that can name the tradeoffs. Tech matters. They come last because their value is conditional on the previous three being in place. Tech-first is how you get fast outputs and slow trust. Tech last is how you get outputs that still look like you when the novelty wears off.
 
 The framework is introduced as a staircase, not a menu. The invitation to treat it as a threshold rather than a table of contents is deliberate.
 
-The most expensive mistake is inversion: starting at Solutions because that is where ROI slides live, then retrofitting policy, training, and conviction afterward. Retrofitted governance is rarely enforceable. Retrofitted formation produces cargo-cult competence. Retrofitted theology becomes either toothless or cruel. Doing the sequence forward is slower only if you measure speed in press releases. If you measure speed in rework avoided and trust preserved, the forward path is faster.
+The most expensive mistake is inversion: starting at Tech because that is where ROI slides live, then retrofitting policy, training, and conviction afterward. Retrofitted governance is rarely enforceable. Retrofitted formation produces cargo-cult competence. Retrofitted theology becomes either toothless or cruel. Doing the sequence forward is slower only if you measure speed in press releases. If you measure speed in rework avoided and trust preserved, the forward path is faster.
 
 One more word about inversion, because it hides inside virtuous language. “We are being responsive” can mean “we are being led by whatever is loudest.” “We are being careful” can mean “we are refusing to learn in public because learning would admit uncertainty.” The sequence is not a personality type. It is a discipline that keeps responsiveness from becoming drift and carefulness from becoming cowardice.
 
@@ -83,11 +83,11 @@ One more word about inversion, because it hides inside virtuous language. “We 
 
 A thoughtful reader should interrupt here. Organizations in crisis do not have twelve months of patience. Boards want outcomes. Donors want proof. Staff need relief. Sequenced prudence can sound like privilege.
 
-The objection deserves a straight answer. Safety is not months of navel-gazing. It is the minimum clarity without which speed becomes self-harm. Sandbox is not delay. It is how you buy evidence before you buy scale. Skills are not an academic luxury. They are how you keep a tool from becoming an unaccountable coworker. If you truly have an existential emergency, the worst possible move is to deploy a system that generates plausible language faster than your institution can judge truth. That is not rescue. That is acceleration of the break.
+The objection deserves a straight answer. Safety is not months of navel-gazing. It is the minimum clarity without which speed becomes self-harm. Sandbox is not delay. It is how you buy evidence before you buy scale. Training is not an academic luxury. They are how you keep a tool from becoming an unaccountable coworker. If you truly have an existential emergency, the worst possible move is to deploy a system that generates plausible language faster than your institution can judge truth. That is not rescue. That is acceleration of the break.
 
 What the sequence demands is not endless time. It demands honesty about where you actually are. Many organizations believe they are on step three when they are on step one. Correct diagnosis is the first act of leadership. The sequence is also how you protect staff from becoming the human shield between a board’s anxiety and a vendor’s sales cycle.
 
-If you want three quick readiness tests for Solutions, borrowed from the framework’s logic, they are plain language tests. Can you state governance without jargon? Can you summarize what the Sandbox taught, including surprises you did not want? Can a mid-level leader describe “good” for an AI-assisted task in your mission’s terms, including categories where a small mistake becomes a public problem? If any answer is shaky, you are not arguing with the framework. You are arguing with reality.
+If you want three quick readiness tests for Tech, borrowed from the framework’s logic, they are plain language tests. Can you state governance without jargon? Can you summarize what the Sandbox taught, including surprises you did not want? Can a mid-level leader describe “good” for an AI-assisted task in your mission’s terms, including categories where a small mistake becomes a public problem? If any answer is shaky, you are not arguing with the framework. You are arguing with reality.
 
 ## The future
 
@@ -107,7 +107,7 @@ Taken together, the future section is not utopian. It is descriptive of what bec
 
 If one sentence is to survive this many words, let it be this: **the only adoption that endures is adoption your organization can still recognize as itself a year later.**
 
-That sentence is not a claim about models. It is a claim about integrity under pressure. The frontier is real. The shame is understandable and dangerous. The two errors are equal. The structural diagnosis is fragmentation, static output, collapsed signal, buried expertise, and the end of the isolated asset as sufficient unit. The path is Safety, Sandbox, Skills, Solutions, in that order, because each step creates the preconditions for the next. The future is moving work, movement-shaped imagination, coherent leadership, integrity with texture, and advantage measured in years.
+That sentence is not a claim about models. It is a claim about integrity under pressure. The frontier is real. The shame is understandable and dangerous. The two errors are equal. The structural diagnosis is fragmentation, static output, collapsed signal, buried expertise, and the end of the isolated asset as sufficient unit. The path is Safety, Sandbox, Training, Tech, in that order, because each step creates the preconditions for the next. The future is moving work, movement-shaped imagination, coherent leadership, integrity with texture, and advantage measured in years.
 
 The thesis does not belong to a mood. It belongs to a practice.
 
@@ -132,8 +132,8 @@ Each link below is the chapter that carries the claim named in this essay; read 
 - **[Safety Before Speed](./safety-before-speed.md)** — governance, conviction, and boundaries before acceleration.
 - **[The Purpose of Sandbox](./the-purpose-of-sandbox.md)** — bounded exploration as where the organization learns what it is becoming.
 - **[Skills as Formation, Not Training](./skills-as-formation-not-training.md)** — judgment, authorship, and what must stay human.
-- **[Why Solutions Come Last](./why-solutions-come-last.md)** — deployment conditional on Safety, Sandbox, and Skills.
-- **[The AI Stewardship Sequence](./the-ssss-framework.md)** — the ordered-path framing of Safety, Sandbox, Skills, Solutions.
+- **[Why Solutions Come Last](./why-solutions-come-last.md)** — deployment conditional on Safety, Sandbox, and Training.
+- **[The AI Stewardship Sequence](./the-ssss-framework.md)** — the ordered-path framing of Safety, Sandbox, Training, Tech.
 - **[There Is a Way Through This](./there-is-a-way-through-this.md)** — threshold versus table of contents: how to enter the sequence.
 - **[Why Order Matters](./why-order-matters.md)** — inversion, retrofitting, and why the forward path saves rework and trust.
 - **[When Work Begins to Move](./when-work-begins-to-move.md)** — quiet indicators that compounding has started.

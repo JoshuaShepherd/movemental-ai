@@ -70,13 +70,13 @@ Most organizations, when they meet AI as a leadership problem, reach for the pat
 
 AI breaks the pattern, and much of the consulting economy rushing to meet the moment breaks it further.
 
-The part of the economy that sells AI has every incentive to start at **Solutions**: the tool, the pilot, the deployment. Demos are vivid. Pilots fit fiscal years. Screenshots of outputs circulate on boards. The quieter work (governance boundaries that actually bind, structured experiments that produce shared language, **formation** that forms staff judgment rather than staff speed) does not screenshot well. Nobody takes a photo of a disagreement resolved before a donor letter went out.
+The part of the economy that sells AI has every incentive to start at **Tech**: the tool, the pilot, the deployment. Demos are vivid. Pilots fit fiscal years. Screenshots of outputs circulate on boards. The quieter work (governance boundaries that actually bind, structured experiments that produce shared language, **formation** that forms staff judgment rather than staff speed) does not screenshot well. Nobody takes a photo of a disagreement resolved before a donor letter went out.
 
-**Attributed:** Movemental's [AI Stewardship Sequence field guide](../75-79/ai-stewardship-sequence-field-guide-for-organizational-leaders.md) names the forward order **Safety → Sandbox → Skills → Solutions** and the default scramble (demo → pilot → policy later). That inversion feels productive. It produces outputs and the sensation of keeping pace. It almost never survives the first serious review.
+**Attributed:** Movemental's [AI Stewardship Sequence field guide](../75-79/ai-stewardship-sequence-field-guide-for-organizational-leaders.md) names the forward order **Safety → Sandbox → Training → Tech** and the default scramble (demo → pilot → policy later). That inversion feels productive. It produces outputs and the sensation of keeping pace. It almost never survives the first serious review.
 
-**Sourced (adjacent):** BCG's follow-on experiments with hundreds of consultants found that generative AI can help workers stretch into unfamiliar task types, and can produce **failure modes** when the tool misleads on reliability, especially when junior staff use AI without senior oversight ([BCG press release, September 2024](https://www.bcg.com/press/5september2024-generative-ai-knowledge-workers-consultants)). That is not a story about mission-driven orgs alone. It is a warning about **Solutions-first** engagements that skip judgment formation.
+**Sourced (adjacent):** BCG's follow-on experiments with hundreds of consultants found that generative AI can help workers stretch into unfamiliar task types, and can produce **failure modes** when the tool misleads on reliability, especially when junior staff use AI without senior oversight ([BCG press release, September 2024](https://www.bcg.com/press/5september2024-generative-ai-knowledge-workers-consultants)). That is not a story about mission-driven orgs alone. It is a warning about **Tech-first** engagements that skip judgment formation.
 
-The people who can help you will **resist starting at Solutions**. They will ask, early and without embarrassment, what you are trying to protect, what your leadership actually owns, and what your staff are becoming whether you named it or not. If the first two conversations are about tools, the third will also be about tools, and so will the twelfth.
+The people who can help you will **resist starting at Tech**. They will ask, early and without embarrassment, what you are trying to protect, what your leadership actually owns, and what your staff are becoming whether you named it or not. If the first two conversations are about tools, the third will also be about tools, and so will the twelfth.
 
 This is not a tools problem. A consultant who cannot say that sentence and mean it is a consultant whose incentives point elsewhere.
 
@@ -160,7 +160,7 @@ If you cannot identify a moment where they chose your formation over their platf
 
 I run **Movemental**, and I am inside the tension this essay describes. That is disclosure, not a humblebrag.
 
-The frame we work inside is the **AI Stewardship Sequence**: **Safety → Sandbox → Skills → Solutions**. Safety first means leadership knows, in plain language, what is forbidden and allowed before a vendor contract pressures the answer. Sandbox second means the organization accumulates evidence before certainty: bounded experiments with dated notes and observed failure modes. Skills third means staff judgment is formed before scale, not trained after tools are embedded. Solutions last means deployment into an organization that can course-correct because the upstream work is in place.
+The frame we work inside is the **AI Stewardship Sequence**: **Safety → Sandbox → Training → Tech**. Safety first means leadership knows, in plain language, what is forbidden and allowed before a vendor contract pressures the answer. Sandbox second means the organization accumulates evidence before certainty: bounded experiments with dated notes and observed failure modes. Training third means staff judgment is formed before scale, not trained after tools are embedded. Tech last means deployment into an organization that can course-correct because the upstream work is in place.
 
 I offer the sequence as a **case study**, not a sacrament. The principles (amplification over fabrication, voice preservation, paced experimentation, boundaries on what we automate) should be testable outside any one project. If they do not hold up, test them somewhere else rather than on my word.
 
@@ -184,7 +184,7 @@ Use this after you have read the essay, not as a substitute for it.
 
 ### Red flags
 
-- **Solutions-first from the opening conversation:** tools and pilots before governance, staff formation, or mission fit.
+- **Tech-first from the opening conversation:** tools and pilots before governance, staff formation, or mission fit.
 - **A single-author public image:** nobody publicly disagrees with, sharpens, or corrects them.
 - **Every experiment is already content:** learning and publishing not distinguished.
 - **Unmoved opinions:** confidence unchanged since 2023 despite genuinely new evidence.
@@ -215,7 +215,7 @@ Use this after you have read the essay, not as a substitute for it.
 1. **Run three conversations before you sign:** same questions, compare whether answers deepen or repeat.
 2. **Ask for one live reference from an organization like yours:** not a logo slide; a phone call.
 3. **Write your non-negotiables first** (what you will not automate, what voice you will not flatten, what decisions stay human) before you meet vendors.
-4. **Start Safety and Sandbox even if you buy Solutions:** policy and bounded experiments can run parallel to a pilot; they should not be deferred until after deployment.
+4. **Start Safety and Sandbox even if you buy Tech:** policy and bounded experiments can run parallel to a pilot; they should not be deferred until after deployment.
 5. **Document who vouched for whom:** your trust graph is part of your credibility story with donors and boards.
 
 ---
@@ -234,7 +234,7 @@ We are early. Nobody has this figured out. Standing on that honestly is itself a
 
 ## Where this connects
 
-- **[The AI Stewardship Sequence: Field Guide for Organizational Leaders](../75-79/ai-stewardship-sequence-field-guide-for-organizational-leaders.md):** The operating order (Safety → Sandbox → Skills → Solutions) this guide assumes; use it when you need the sequence in a staff meeting or board retreat.
+- **[The AI Stewardship Sequence: Field Guide for Organizational Leaders](../75-79/ai-stewardship-sequence-field-guide-for-organizational-leaders.md):** The operating order (Safety → Sandbox → Training → Tech) this guide assumes; use it when you need the sequence in a staff meeting or board retreat.
 - **[A Guide to AI & Credibility in 2026](../75-79/guide-ai-credibility-2026.md):** How to live with AI without surrendering judgment; pairs with the trust choice framed here.
 - **[Scenius as credibility mechanism](./02-scenius-network-credibility.md):** Research synthesis on networked verification, the theory behind the network test above.
 - **[Trust, verification, and digital identity](./09-trust-verification.md):** What holds up (and what does not) when credibility moves from the room to the algorithm.
@@ -247,6 +247,6 @@ We are early. Nobody has this figured out. Standing on that honestly is itself a
 | Claim | Cite | Confidence | Target surface |
 |-------|------|------------|----------------|
 | Consumer generative AI at today's scale has ~3 years of public lived practice since ChatGPT's Nov 2022 launch | OpenAI announcement | Sourced | Agent KB, footnotes |
-| Solutions-first AI adoption often skips judgment formation; forward order is Safety → Sandbox → Skills → Solutions | AI Stewardship Sequence field guide | Attributed (Movemental canon) | Field guide, home narrative |
+| Tech-first AI adoption often skips judgment formation; forward order is Safety → Sandbox → Training → Tech | AI Stewardship Sequence field guide | Attributed (Movemental canon) | Field guide, home narrative |
 | Isolated AI authority is fragile; relational correction (scenius) is a resilience strategy, not a follower metric | Eno coinage + 02-scenius synthesis | Synthesis | `/footnotes`, linking hub |
 | Consultants using generative AI without senior verification can develop confident-but-wrong output | BCG/Dell'Acqua 2024 experiments | Sourced | Agent KB, credibility articles |

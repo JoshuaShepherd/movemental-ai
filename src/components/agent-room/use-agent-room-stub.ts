@@ -27,6 +27,7 @@ import type { ComposerChip } from "./composer";
 import type { StubScreenState } from "./screen/stub/stub-screen";
 import type { VoiceState } from "./use-agent-room-stream";
 import { useDiscussPhase, type DiscussPhase } from "./use-discuss-phase";
+import { useRoomThread } from "./use-room-thread";
 
 /**
  * The stub room controller. Its `screen` is the Ink Band `{ id, opts, nonce }`
@@ -37,13 +38,15 @@ import { useDiscussPhase, type DiscussPhase } from "./use-discuss-phase";
 export interface AgentRoomController
   extends Pick<
     DiscussPhase,
-    "phase" | "transcript" | "discussTurnCount" | "enterDiscuss" | "exitDiscuss"
+    "phase" | "discussTurnCount" | "enterDiscuss" | "exitDiscuss"
   > {
   screen: StubScreenState;
   voice: VoiceState;
   suggestions: ComposerChip[];
   isStreaming: boolean;
   error: string | null;
+  /** Single conversation log (Guide + Discuss). */
+  thread: import("@/lib/agent-room/thread").ThreadTurn[];
   /** The computed read-back (set when the reality-check finishes). */
   mapRead: MapRead | null;
   /** Stub Discuss overlay shows capture form instead of live LLM chat. */
@@ -78,7 +81,8 @@ const INITIAL_SCREEN: StubScreenState = { id: "home", opts: {}, nonce: 0 };
 export function useAgentRoomStub(): AgentRoomController {
   const { inkLine, drawGesture, clearInk, clearVoice } = useInk();
   const discuss = useDiscussPhase();
-  const { appendTranscript, enterDiscuss: baseEnterDiscuss, resetDiscuss } = discuss;
+  const { enterDiscuss: baseEnterDiscuss, resetDiscuss } = discuss;
+  const { thread, finalizeAssistant, resetThread } = useRoomThread();
   const phaseRef = useRef(discuss.phase);
   phaseRef.current = discuss.phase;
 
@@ -113,14 +117,10 @@ export function useAgentRoomStub(): AgentRoomController {
     (reason?: DiscussReason) => {
       if (!DISCUSS_ENABLED) return;
       baseEnterDiscuss(reason);
-      appendTranscript({
-        role: "assistant",
-        content: STUB_DISCUSS_OPENER,
-        surface: "passage",
-      });
+      finalizeAssistant(STUB_DISCUSS_OPENER);
       setStubDiscussCapture(true);
     },
-    [appendTranscript, baseEnterDiscuss],
+    [baseEnterDiscuss, finalizeAssistant],
   );
 
   const exitDiscuss = useCallback(() => {
@@ -239,9 +239,10 @@ export function useAgentRoomStub(): AgentRoomController {
     fallbackStreakRef.current = 0;
     setStubDiscussCapture(false);
     setHandbookCaptureActive(false);
-    discuss.resetDiscuss(); // back to Guide; drop any Discuss transcript
+    discuss.resetDiscuss();
+    resetThread();
     run("opening");
-  }, [abandonCapture, clearInk, discuss, run]);
+  }, [abandonCapture, clearInk, discuss, resetThread, run]);
 
   const sendMessage = useCallback(
     (raw: string) => {
@@ -388,7 +389,7 @@ export function useAgentRoomStub(): AgentRoomController {
     stubDiscussCapture,
     // Discuss phase (INT-08) — shared with the stream controller.
     phase: discuss.phase,
-    transcript: discuss.transcript,
+    thread,
     discussTurnCount: discuss.discussTurnCount,
     enterDiscuss,
     exitDiscuss,

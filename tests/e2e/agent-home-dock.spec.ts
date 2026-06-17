@@ -68,6 +68,19 @@ test.describe("Agent home dock (hybrid default)", () => {
     expect(streamCalls).toEqual([]);
   });
 
+  test("agent reply renders in thread only, not collapsed voice band", async ({ page }) => {
+    await mockAgentReply(page, "Thanks for reaching out.");
+    await page.goto("/agent");
+    await waitForOpeningReady(page);
+    await page.getByRole("button", { name: "About Movemental" }).click();
+    await expect(page.getByRole("dialog", { name: "Agent conversation" })).toBeVisible({
+      timeout: 8000,
+    });
+    await expect(page.getByText("Thanks for reaching out.")).toBeVisible({ timeout: 8000 });
+    const voiceBand = page.locator(".handwritingStrip");
+    await expect(voiceBand).toHaveCount(0);
+  });
+
   test("cost chip chats instead of swapping to the full pricing screen", async ({ page }) => {
     await mockAgentReply(
       page,

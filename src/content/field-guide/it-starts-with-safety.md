@@ -284,7 +284,7 @@ The act of publicly committing to specific refusals is itself a formative practi
 
 ## 7. About Movemental
 
-Movemental is the company that built the path for mission-driven organizations to complete AI governance, formation, and deployment without compromising the trust their work depends on. We are not an AI consulting firm. We are a small team of practitioners and engineers who put together the framework, the tooling, and the facilitated engagements that make the four-stage path (Safety, Sandbox, Training, Technology) actually runnable inside an organization on a real Tuesday afternoon.
+Movemental is the company that built the path for mission-driven organizations to complete AI governance, formation, and deployment without compromising the trust their work depends on. We are not an AI consulting firm. We are a small team of practitioners and engineers who put together the framework, the tooling, and the facilitated engagements that make the four-stage path (Safety, Sandbox, Training, Tech) actually runnable inside an organization on a real Tuesday afternoon.
 
 Brad Brisco is a missional practitioner whose work threads through Send Network, Forge, and grassroots church planting; he is the author of *Covocational Church Planting* and *Next Door as It Is in Heaven*. Alan Hirsch is the missiologist behind *The Forgotten Ways*, *5Q*, and the recovery of movement DNA in Western ecclesial life; he is the co-founder of Forge and 100Movements and a strategic advisor to Movemental. Joshua Shepherd is the founder and CTO; he is the builder responsible for translating the framework into infrastructure that organizations can actually deploy, and the primary author of the platform from which this Field Guide is published.
 

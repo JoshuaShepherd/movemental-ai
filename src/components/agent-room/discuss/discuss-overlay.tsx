@@ -2,33 +2,20 @@
 
 import type { ReactNode } from "react";
 
-import type { TranscriptTurn } from "@/lib/agent-room/discuss";
+import type { ThreadTurn } from "@/lib/agent-room/thread";
 import styles from "../ink-band.module.css";
-import { DiscussComposer } from "./discuss-composer";
 import { DiscussThread } from "./discuss-thread";
 
-/**
- * Model C — full-screen Discuss overlay. Conversation owns the viewport while
- * Guide content stays on the sheet underneath. X closes back to Guide + fold.
- */
+/** @deprecated Superseded by expanded AgentDock (conversation choreography SSOT). */
 export function DiscussOverlay({
-  transcript,
-  liveText,
+  thread,
   liveThinking,
-  disabled,
-  onSay,
-  onReplay,
   onExit,
   stubCapture,
 }: {
-  transcript: TranscriptTurn[];
-  liveText?: string;
+  thread: ThreadTurn[];
   liveThinking?: boolean;
-  disabled?: boolean;
-  onSay: (text: string) => void;
-  onReplay: () => void;
   onExit?: () => void;
-  /** Stub-only: embed discuss capture form below the thread. */
   stubCapture?: ReactNode;
 }) {
   return (
@@ -61,23 +48,9 @@ export function DiscussOverlay({
         </header>
 
         <div className={styles.discussOverlayBody}>
-          <DiscussThread
-            transcript={transcript}
-            liveText={liveText}
-            liveThinking={liveThinking}
-            compact
-          />
+          <DiscussThread thread={thread} liveThinking={liveThinking} compact />
           {stubCapture}
         </div>
-
-        {!stubCapture && (
-          <DiscussComposer
-            disabled={disabled}
-            onSay={onSay}
-            onReplay={onReplay}
-            onExit={onExit}
-          />
-        )}
       </div>
     </div>
   );

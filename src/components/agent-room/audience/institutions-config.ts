@@ -141,30 +141,18 @@ export const INSTITUTIONS_PAGE_CONFIG: AudiencePageConfig = {
   },
   theBuild: {
     title: "Then we build the tools on top of it.",
-    paragraphs: [
-      "Once the foundation is real, we build what your seminary actually needs on top of it. Search that knows your archive. An assistant that can speak for you accurately. Ways to make your scholarship findable for the next generation who are asking the machine instead of the library. Built on what you already have. Owned by you.",
-    ],
-    toolExamples: [
-      {
-        label: "Search",
-        text: "that knows your syllabi, archives, and faculty work, not the open web.",
-      },
-      {
-        label: "Assistant",
-        text: "that speaks from your material, with sources your board can check.",
-      },
-      {
-        label: "Discovery",
-        text: "so the next generation finds your scholarship when they ask the machine, not only the library.",
-      },
-    ],
+    titleHighlight: "the tools",
+    intro:
+      "The working platform, on the desk and in your pocket. Pick a layer, open any piece.",
+    footnote:
+      "A seeded preview. Explore it live opens the real institution demo so you can click around.",
     bridgeQuestion:
       "Which is usually where a board member frames it as a choice: Movemental, or a website builder? For an institution, the obvious way to settle that turns out to be the wrong one.",
   },
   formation: {
     title: "But tools alone aren't the answer.",
     paragraphs: [
-      "Here's the part most people skip. Technology without formed people isn't progress. It's replacement. It's also how most AI projects fail.",
+      "Here's the part most people skip. Tech without formed people isn't progress. It's replacement. It's also how most AI projects fail.",
       "A foundation only holds if your faculty can steward it. The tools come with formation. Discernment stays with your leaders. Authorship keeps a real human behind the words. Stewardship cares for what's been entrusted to you.",
       "For a seminary, this isn't an add-on. Forming people is what you already do. It's the part you, of all places, should lead with. The technology and the training are linked on purpose. One without the other doesn't work.",
     ],

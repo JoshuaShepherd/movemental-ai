@@ -38,18 +38,18 @@ Cut or rewrite on sight. If any of these appear on a Movemental page, something 
 | **Relational intelligence** | The people side — trust, authority, communication, the relationship graph | Book Ch. 2, same article |
 | **Two intelligences** | The paired frame — informational + relational must integrate | Book Ch. 2 |
 | **Six stages** | Fragmentation → Integration → Activation → Formation → Multiplication → Movement | `/fragmentation`, book Ch. 5 |
-| **AI Stewardship Sequence** | Safety → Sandbox → Skills → Solutions (order is the framework) | `docs/articles/the-ssss-framework.md` |
+| **AI Stewardship Sequence** | Safety → Sandbox → Training → Tech (order is the framework) | `docs/articles/the-ssss-framework.md` |
 | **Safety** | Governance, convictions, boundaries — the explicit yes/no frame | AI Stewardship Sequence article set |
 | **Sandbox** | Bounded space for real experimentation before organization-wide deployment | AI Stewardship Sequence article set |
-| **Skills** | Formation toward judgment (not certification, not prompt libraries) | AI Stewardship Sequence article set |
-| **Solutions** | Deployed workflows/agents — **after** the foundation holds | AI Stewardship Sequence article set |
+| **Training** | Formation toward judgment (not certification, not prompt libraries) | AI Stewardship Sequence article set |
+| **Tech** | Deployed workflows/agents — **after** the foundation holds | AI Stewardship Sequence article set |
 | **Formation** | Development of judgment, voice, discernment — the human-forming work | Book + multiple articles |
 | **Coherence** | The positive state opposed to fragmentation; what integration produces | DESIGN.md, `/fragmentation` |
 | **Integrity** | The condition an organization's mission, voice, and judgment must survive AI contact with | Homepage, about |
 | **Inspectability** | The trust posture — sources are visible, claims are checkable | DESIGN.md L2b |
 | **Trustworthy AI** | AI that can be trusted because it is bounded by corpus, graph, governance | Walkthrough, evidence, FAQ |
 | **Book** | *From Fragmentation to Movement* at `/book` | `docs/build/prompts/strategy-artifacts-placement-and-flow.md` |
-| **AI Stewardship Sequence field guide** | Safety → Sandbox → Skills → Solutions at `/articles/ssss-field-guide-for-organizational-leaders` | same |
+| **AI Stewardship Sequence field guide** | Safety → Sandbox → Training → Tech at `/articles/ssss-field-guide-for-organizational-leaders` | same |
 | **The path** | The AI Stewardship Sequence or the six-stage model, depending on context | Homepage, fragmentation, book |
 | **Infrastructure** | Digital infrastructure — library, graph, voice, pathways | Home, thesis article |
 | **Scenius** | Credibility embedded in networks of verified humans | `docs/articles/the-story-of-movemental.md` |

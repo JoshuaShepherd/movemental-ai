@@ -52,7 +52,7 @@ const TOOLKIT_ANTQUA_ET_NOVA: EeatRegistryEntry = {
   page: "/field-guide",
   claimType: "Opinion",
   claim:
-    "Sandbox, Training, Technology: staged maturity; magisterial frame for complementing rather than replacing human judgment.",
+    "Sandbox, Training, Tech: staged maturity; magisterial frame for complementing rather than replacing human judgment.",
   cite: {
     author:
       "Vatican (Dicastery for the Doctrine of the Faith and Dicastery for Culture and Education)",

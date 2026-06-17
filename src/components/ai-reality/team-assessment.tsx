@@ -78,7 +78,7 @@ export function TeamAssessment({ token, organizationName }: { token: string; org
               ["Safety", result.stagePercents.Safety],
               ["Sandbox", result.stagePercents.Sandbox],
               ["Training", result.stagePercents.Training],
-              ["Technology", result.stagePercents.Technology],
+              ["Tech", result.stagePercents.Tech],
             ] as const
           ).map(([label, pct]) => (
             <li key={label} className="flex justify-between border-b border-border py-2">

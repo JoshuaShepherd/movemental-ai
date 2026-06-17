@@ -74,7 +74,7 @@ describe("move-classifier", () => {
     ).toEqual({ kind: "agent", reason: "discuss" });
   });
 
-  it("routes active chat text to agent even when regex would match", () => {
+  it("routes active chat text to agent when dock is expanded", () => {
     expect(
       classifyTypedInput({
         ...baseText,
@@ -82,6 +82,13 @@ describe("move-classifier", () => {
         chatActive: true,
       }),
     ).toEqual({ kind: "agent", reason: "open_text" });
+  });
+
+  it("chatActive mirrors dockState === expanded", () => {
+    const expanded = classifyTypedInput({ ...baseText, text: "hello", chatActive: true });
+    const collapsed = classifyTypedInput({ ...baseText, text: "hello", chatActive: false });
+    expect(expanded).toEqual({ kind: "agent", reason: "open_text" });
+    expect(collapsed.kind).toBe("local");
   });
 
   it("skips discuss offer on beat screen", () => {

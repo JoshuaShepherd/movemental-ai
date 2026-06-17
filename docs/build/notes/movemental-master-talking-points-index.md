@@ -121,7 +121,7 @@ Movemental teaches two ordered sequences. They do different work. Conflating the
 
 ### 3.1 The AI Stewardship Sequence (the on-ramp)
 
-**Short form:** *Safety → Sandbox → Skills → Solutions. In that order. The order is load-bearing.*
+**Short form:** *Safety → Sandbox → Training → Tech. In that order. The order is load-bearing.*
 
 **Stage-level articulation — use this language:**
 

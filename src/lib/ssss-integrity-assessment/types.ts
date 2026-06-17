@@ -1,6 +1,6 @@
 export const SSSS_INTEGRITY_VERSION = "ssss-i-v1" as const;
 
-export type SsssStageId = "Safety" | "Sandbox" | "Training" | "Technology" | "Cross";
+export type SsssStageId = "Safety" | "Sandbox" | "Training" | "Tech" | "Cross";
 
 export type SsssIllusionId =
   | "none"

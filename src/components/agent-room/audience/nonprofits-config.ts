@@ -131,30 +131,18 @@ export const NONPROFITS_PAGE_CONFIG: AudiencePageConfig = {
   },
   theBuild: {
     title: "Then we build the tools on top of it.",
-    paragraphs: [
-      "Once the foundation is real, we build what your nonprofit actually needs. Search across your program and grant history. An assistant grounded in your mission materials. Reporting that keeps authorship and accuracy visible to leadership.",
-    ],
-    toolExamples: [
-      {
-        label: "Program search",
-        text: "across grants, evaluations, and field reports. Not generic templates.",
-      },
-      {
-        label: "A mission-grounded assistant",
-        text: "that drafts from your verified record, with sources your board can audit.",
-      },
-      {
-        label: "Donor and impact workflows,",
-        text: "so the time you save compounds into shared capability, not scattered shortcuts.",
-      },
-    ],
+    titleHighlight: "the tools",
+    intro:
+      "The working platform, on the desk and in your pocket. Pick a layer, open any piece.",
+    footnote:
+      "A seeded preview. Explore it live opens the real nonprofit demo so you can click around.",
     bridgeQuestion:
       "Which is a fair question, and probably the one you're actually asking. Isn't this just an expensive website?",
   },
   formation: {
     title: "But tools alone aren't the answer.",
     paragraphs: [
-      "Technology without formed people isn't progress. It's replacement. Boards that buy tools without forming staff get unapproved AI at scale, faster.",
+      "Tech without formed people isn't progress. It's replacement. Boards that buy tools without forming staff get unapproved AI at scale, faster.",
       "So the tools come with formation. Discernment for leadership. Authorship for anything that goes out under your name. Stewardship for donor and beneficiary trust. For a nonprofit, fiduciary duty and mission integrity depend on both.",
       "Your constituents are watching whether you lead through this moment with care, or whether AI becomes one more invisible shortcut that slowly misrepresents the work you've been entrusted to do.",
     ],

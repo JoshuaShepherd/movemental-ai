@@ -94,7 +94,7 @@ export const SSSS_INTEGRITY_ITEMS: readonly SsssIntegrityItem[] = [
   },
   {
     id: "Q13",
-    stage: "Technology",
+    stage: "Tech",
     category: "workflow_infrastructure",
     weight: 1,
     prompt:
@@ -102,7 +102,7 @@ export const SSSS_INTEGRITY_ITEMS: readonly SsssIntegrityItem[] = [
   },
   {
     id: "Q14",
-    stage: "Technology",
+    stage: "Tech",
     category: "procurement_gates",
     weight: 1,
     prompt:
@@ -110,14 +110,14 @@ export const SSSS_INTEGRITY_ITEMS: readonly SsssIntegrityItem[] = [
   },
   {
     id: "Q15",
-    stage: "Technology",
+    stage: "Tech",
     category: "measurement_legibility",
     weight: 1,
     prompt: "We measure **workflow outcomes**, not only licenses activated.",
   },
   {
     id: "Q16",
-    stage: "Technology",
+    stage: "Tech",
     category: "tool_independence",
     weight: 1,
     prompt: "We could **swap tools** without losing the practice (documentation + skill).",

@@ -53,11 +53,11 @@
         "icon": "science"
       },
       {
-        "label": "Skills",
+        "label": "Training",
         "icon": "psychology"
       },
       {
-        "label": "Solutions",
+        "label": "Tech",
         "icon": "lightbulb",
         "state": "active"
       },

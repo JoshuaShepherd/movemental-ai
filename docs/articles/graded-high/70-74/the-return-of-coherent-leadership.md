@@ -22,7 +22,7 @@ Then something changed. Not all at once. A post that sounded like a committee. A
 
 That is not always AI. Often it is fatigue, fear, and the ordinary pressure to stay visible. AI simply made the gap between thought and output easier to hide. When production can outrun reflection, incoherence stops being a private struggle and becomes a public texture. Readers notice before leaders do. They stop forwarding. They stop citing. They keep a polite distance.
 
-The point of this piece is not to shame anyone. It is to name a structural fact: artificial intelligence has made incoherent leadership visible in ways it never quite was before. And on the far side of a real path—Safety, Sandbox, Skills, Solutions, in order—something else becomes possible again. Not louder leadership. Leadership that hangs together.
+The point of this piece is not to shame anyone. It is to name a structural fact: artificial intelligence has made incoherent leadership visible in ways it never quite was before. And on the far side of a real path—Safety, Sandbox, Training, Tech, in order—something else becomes possible again. Not louder leadership. Leadership that hangs together.
 
 ## Why incoherence surfaced
 
@@ -62,7 +62,7 @@ Coherence requires three things that cannot be bought as a bundle.
 
 First, **a core library**: not endless content, but a body of thought you are willing to stand on, connect, and correct in public. That library is the antidote to permanent reinvention. It is how you keep from lying by accident, because you can compare new language to old commitments.
 
-Second, **formation**: judgment that is yours, not the model’s. Formation is slower than training. It is also the only thing that lets you use AI without being used by it—because you can tell when the fluent sentence is drifting from the true sentence. The path section of this book treated formation as Skills for a reason.
+Second, **formation**: judgment that is yours, not the model’s. Formation is slower than training. It is also the only thing that lets you use AI without being used by it—because you can tell when the fluent sentence is drifting from the true sentence. The path section of this book treated formation as Training for a reason.
 
 Third, **discipline**: the capacity to say no to a thousand near-misses. No to the take that would earn quick applause. No to the draft that smooths your edges. No to the “opportunity” that would split your attention until your voice fractures. Discipline is not ascetic performance. It is stewardship of attention in a machine age that monetizes distraction.
 
@@ -76,7 +76,7 @@ Staff can help by naming drift early, without heroics. The most valuable interna
 
 If you have walked through the diagnosis earlier in this book—fragmentation, signal collapse, the death of isolated work—you already know the temptation. The temptation is to respond with more presence: more posts, more reassurance, more proof of relevance. Presence without coherence reads as panic, even when it is earnest.
 
-The counter-move is smaller on a dashboard and larger in reality. Build Safety so your yes and no mean something. Build Sandbox so your opinions become evidence. Build Skills so your people can steer. Deploy Solutions only when the house knows its shape. Then invest in the slow work of language that holds: revise, connect, cut, tell the truth about what changed.
+The counter-move is smaller on a dashboard and larger in reality. Build Safety so your yes and no mean something. Build Sandbox so your opinions become evidence. Build Training so your people can steer. Deploy Tech only when the house knows its shape. Then invest in the slow work of language that holds: revise, connect, cut, tell the truth about what changed.
 
 If you are a senior leader, your job is not to model tool fluency. Your job is to model the courage of a single integrated voice: what you sign, what you authorize, what you refuse, what you correct in public when you were wrong. People can smell when the principal’s statements are being assembled around them rather than led from inside a lived center. They lean in when they sense the opposite.
 

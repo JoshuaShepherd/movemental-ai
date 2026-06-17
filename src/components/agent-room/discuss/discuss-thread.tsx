@@ -1,82 +1,100 @@
 "use client";
 
-import type { TranscriptTurn } from "@/lib/agent-room/discuss";
+import type { ThreadTurn } from "@/lib/agent-room/thread";
 import styles from "../ink-band.module.css";
-import { PassageMarkdown } from "./passage-markdown";
+import { AgentThreadProse, PassageMarkdown } from "./passage-markdown";
 
 export type DiscussThreadProps = {
-  transcript: TranscriptTurn[];
-  /** Live streaming ink line (hybrid/stream). */
-  liveText?: string;
+  /** Single conversation log (Guide + Discuss). */
+  thread: ThreadTurn[];
   liveThinking?: boolean;
-  /** Quiet tool/status line beside the thinking pulse (e.g. file_search). */
   liveThinkingNote?: string;
-  /** Smaller type scale for overlay (Model C). */
   compact?: boolean;
-  /** Include all assistant turns (fold) vs filter short voice turns (overlay). */
-  showAllAssistant?: boolean;
 };
 
 /**
- * Shared transcript renderer for Discuss overlay (Model C) and DiscussFold.
- * Visitor turns use margin annotation styling; agent turns use body prose.
+ * The one thread renderer for both Guide and Discuss phases (SSOT §9).
  */
 export function DiscussThread({
-  transcript,
-  liveText,
+  thread,
   liveThinking,
   liveThinkingNote,
   compact = false,
-  showAllAssistant = false,
 }: DiscussThreadProps) {
-  const shown = showAllAssistant
-    ? transcript
-    : transcript.filter((t) => t.role === "user" || t.surface !== "voice");
-
-  const lastIdx = shown.length - 1;
+  const lastIdx = thread.length - 1;
   const threadClass = compact
     ? `${styles.discussThread} ${styles.discussThreadCompact}`
     : styles.discussThread;
 
-  if (shown.length === 0 && !liveText && !liveThinking) return null;
+  const hasStreaming = thread.some((t) => t.streaming);
+  if (thread.length === 0 && !liveThinking) return null;
 
   return (
     <div className={threadClass}>
-      {shown.map((t, i) =>
+      {thread.map((t, i) =>
         t.role === "user" ? (
           <div
-            key={i}
-            className={compact ? styles.marginUserCompact : styles.marginUser}
+            key={`user-${i}-${t.content.slice(0, 16)}`}
+            className={compact ? styles.marginUserCompact : styles.threadMsgUser}
           >
-            {t.content}
+            <p>{t.content}</p>
           </div>
-        ) : (
+        ) : t.passage ? (
           <div
-            key={i}
+            key={`agent-${i}-${t.content.slice(0, 16)}`}
             className={`${compact ? styles.passageCompact : styles.passage} ${styles.passageMarkdown} ${
-              i === lastIdx && !liveText ? styles.settle : ""
+              i === lastIdx && !hasStreaming ? styles.settle : ""
             }`}
           >
             <PassageMarkdown text={t.content} />
           </div>
+        ) : (
+          <div
+            key={`agent-${i}-${t.content.slice(0, 16)}`}
+            className={styles.threadMsgAgent}
+          >
+            <AgentThreadProse
+              text={t.content}
+              className={
+                t.streaming
+                  ? `${compact ? styles.liveInkCompact : styles.liveInk} ${styles.settle}`
+                  : i === lastIdx && !hasStreaming
+                    ? styles.settle
+                    : undefined
+              }
+              ariaLive={t.streaming ? "polite" : undefined}
+            />
+          </div>
         ),
       )}
-      {liveThinking && !liveText && (
+      {liveThinking && !hasStreaming ? (
         <div className={styles.thinking}>
           <span className={styles.pulse} aria-hidden="true" />
-          {liveThinkingNote && (
+          {liveThinkingNote ? (
             <span className={styles.thinkingNote}>{liveThinkingNote}…</span>
-          )}
+          ) : null}
         </div>
-      )}
-      {liveText && (
-        <p
-          className={`${compact ? styles.liveInkCompact : styles.liveInk} ${styles.settle}`}
-          aria-live="polite"
-        >
-          {liveText}
-        </p>
-      )}
+      ) : null}
     </div>
   );
+}
+
+/** @deprecated Use `thread` prop — alias for DiscussFold compatibility. */
+export function DiscussThreadFromTranscript({
+  transcript,
+  ...rest
+}: {
+  transcript: { role: "user" | "assistant"; content: string; surface?: string }[];
+  liveText?: string;
+  liveThinking?: boolean;
+  liveThinkingNote?: string;
+  compact?: boolean;
+  showAllAssistant?: boolean;
+}) {
+  const thread: ThreadTurn[] = transcript.map((t) => ({
+    role: t.role,
+    content: t.content,
+    passage: t.surface === "passage",
+  }));
+  return <DiscussThread thread={thread} {...rest} />;
 }

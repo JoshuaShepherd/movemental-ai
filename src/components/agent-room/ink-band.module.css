@@ -2589,12 +2589,15 @@ button.wayCtaPaid {
   max-width: 54ch;
 }
 
-/* Expanded conversation room — hide stage sheet; dock is the only surface. */
+/* Expanded conversation — screen stays mounted behind scrim (SSOT I6). */
 .roomDockConversation .screen {
-  display: none;
-  visibility: hidden;
   pointer-events: none;
-  padding-bottom: 0;
+}
+
+.screenBehindScrim {
+  opacity: 0.35;
+  filter: saturate(0.92);
+  pointer-events: none;
 }
 
 .threadEmptyHint {
@@ -3422,12 +3425,8 @@ button.wayCtaPaid {
   background: transparent;
   padding: 0.35rem clamp(1.25rem, 4vw, 2.5rem) 0.2rem;
   min-height: 2.4rem;
-  max-height: min(22vh, 7rem);
-  overflow-x: hidden;
-  overflow-y: auto;
-  transition:
-    max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    padding 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  max-height: 2.4rem;
+  overflow: hidden;
 }
 .agentDockExpanded .handwritingStrip {
   max-height: 0;
@@ -3452,6 +3451,21 @@ button.wayCtaPaid {
 .handwritingVline .vline {
   font-size: clamp(1.25rem, 4.8vw, 1.65rem);
   line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+.voiceCaption {
+  max-height: 2.4rem;
+  overflow: hidden;
+}
+
+.voiceCaption .vline,
+.voiceCaption .vspan {
+  white-space: nowrap;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, #000 85%, transparent 100%);
 }
 
 .agentFloat {

@@ -6,6 +6,8 @@
 
 **Supersedes in part:** scattered dock/phase-1 notes. Still see [agent-home-dock-functionality-2026-06-15.md](./agent-home-dock-functionality-2026-06-15.md) for Playwright specifics and [agent-room-prompt-baseline.md](./agent-room-prompt-baseline.md) for prompt editing workflow.
 
+**Chat / conversation UI (expanded dock, handwriting strip, thread, Discuss):** [agent-room-chat-conversation-ui-ssot.md](./agent-room-chat-conversation-ui-ssot.md) — authoritative for dock behavior and where agent text renders.
+
 ---
 
 ## 0. Executive summary

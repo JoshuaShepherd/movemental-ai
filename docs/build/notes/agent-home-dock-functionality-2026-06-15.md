@@ -177,6 +177,7 @@ Related: `tests/e2e/agent-room.spec.ts` (gated `RUN_AGENT_ROOM_EE=1`) for stream
 
 ## Related docs
 
+- **[agent-room-chat-conversation-ui-ssot.md](./agent-room-chat-conversation-ui-ssot.md)** — **SSOT** for collapsed vs expanded dock, handwriting vs thread, Guide vs Discuss, typography, duplicate prevention
 - **[agent-platform-complete-reference.md](./agent-platform-complete-reference.md)** — full platform SSOT (screens, tools, routing, engine, gaps)
 - `docs/build/notes/home-page-ctas-capture-and-ai-engagement.md` — older hybrid/discuss summary (partially superseded by dock UX)
 - `docs/build/notes/agent-room-suggestion-pills-inventory-and-recommendations.md` — chip inventory

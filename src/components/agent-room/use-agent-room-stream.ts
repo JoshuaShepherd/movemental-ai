@@ -24,11 +24,10 @@ import { playScene, type Generation } from "@/lib/agent-room/scene-runner";
 import { useInk } from "./agent-room-context";
 import { DEFAULT_SUGGESTIONS, type ComposerChip } from "./composer";
 import { useDiscussPhase } from "./use-discuss-phase";
-import {
-  DISCUSS_PASSAGE_THRESHOLD,
-  ENTER_DISCUSS_VALUE,
-  type RoomPhase,
-} from "@/lib/agent-room/discuss";
+import { useRoomThread } from "./use-room-thread";
+import { ENTER_DISCUSS_VALUE, type RoomPhase } from "@/lib/agent-room/discuss";
+import { requestExpandConversation } from "@/lib/agent-room/suggest-chip-targets";
+import type { DockState } from "./shell/agent-dock";
 
 const ANON_KEY = "movemental-room-anon";
 const SESSION_KEY = "movemental-room-session";
@@ -82,12 +81,11 @@ export function useAgentRoomStream() {
   // INT-03 routes `text_delta` through the same Caveat ink voice the stub's `say`
   // uses (`beginStream`/`appendStream`/`commitStream`), so live and stub share one
   // visual voice instead of plain `voice.text`.
-  const { inkLine, drawGesture, clearInk, clearVoice, beginStream, appendStream, commitStream } =
-    useInk();
+  const { inkLine, drawGesture, clearInk, clearVoice } = useInk();
   const discuss = useDiscussPhase();
-  // Stable callbacks (so memoized handlers don't depend on the whole `discuss`
-  // object, whose identity changes every render).
-  const { appendTranscript, enterDiscuss, resetDiscuss } = discuss;
+  const { enterDiscuss, resetDiscuss, recordAssistantTurn } = discuss;
+  const { thread, appendUser, updateStreaming, finalizeAssistant, resetThread } = useRoomThread();
+  const dockExpandedRef = useRef(false);
   // Latest phase for the async send loop (avoids a stale closure on `phase`).
   const phaseRef = useRef<RoomPhase>(discuss.phase);
   phaseRef.current = discuss.phase;
@@ -311,46 +309,43 @@ export function useAgentRoomStream() {
     setMapRead(null);
     mapAnswersRef.current = [];
     setAgentChips(null); // back to the static on-ramp
-    resetDiscuss(); // back to Guide; drop any Discuss transcript
+    resetDiscuss();
+    resetThread();
     playOpening();
-  }, [clearInk, clearVoice, playOpening, resetDiscuss]);
+  }, [clearInk, clearVoice, playOpening, resetDiscuss, resetThread]);
+
+  const onDockStateChange = useCallback((state: DockState) => {
+    dockExpandedRef.current = state === "expanded";
+  }, []);
 
   const sendMessage = useCallback(
     async (raw: string, opts?: { isRetry?: boolean }) => {
       const text = raw.trim();
       if (!text || isStreaming || localBusy) return;
 
-      localGenRef.current.value += 1; // visitor acted — cut local choreography
+      localGenRef.current.value += 1;
       setLocalBusy(false);
       setLocalChips(null);
 
-      const inDiscuss = phaseRef.current === "discuss";
       lastTurnRef.current = text;
 
       const priorHistory = [...historyRef.current];
       historyRef.current = [...historyRef.current, { role: "user", content: text }];
-      // Discuss (INT-10): the visitor's turn lands on the sheet as a margin note.
-      // On a retry it is already on the sheet — don't re-annotate.
-      if (inDiscuss && !opts?.isRetry) {
-        appendTranscript({ role: "user", content: text, surface: "margin" });
+      if (!opts?.isRetry) {
+        appendUser(text);
       }
 
       setError(null);
       setErrorRetryable(false);
       setComposing(false);
       setIsStreaming(true);
-      // The prior turn's chips no longer apply; a new `suggest` chunk repopulates.
       setAgentChips([]);
-      // Wipe the prior turn's ink and show the calm thinking pulse until the
-      // first delta (the pulse is stream-only — the stub never sets `thinking`).
       clearVoice();
       setVoice({ thinking: true, text: "" });
+      requestExpandConversation();
 
       const controller = new AbortController();
       abortRef.current = controller;
-
-      let assistant = "";
-      let streamOpen = false;
 
       try {
         const result = await runAgentStreamTurn({
@@ -362,13 +357,9 @@ export function useAgentRoomStream() {
           signal: controller.signal,
           callbacks: {
             onTextDelta: (acc) => {
-              assistant = acc;
-              if (!streamOpen) {
-                beginStream();
-                streamOpen = true;
-              }
-              appendStream(assistant);
-              setVoice({ thinking: false, text: assistant });
+              requestExpandConversation();
+              updateStreaming(acc);
+              setVoice({ thinking: false, text: "" });
             },
             onProgressThinking: () => {
               setVoice((v) => ({ ...v, thinking: true }));
@@ -377,23 +368,16 @@ export function useAgentRoomStream() {
               setVoice((v) => ({ ...v, note: label ?? undefined }));
             },
             onAgentHandoff: () => {
-              commitStream();
-              streamOpen = false;
               setComposing(true);
               setVoice({ thinking: true, text: "" });
-              assistant = "";
             },
             onUiRender: (component, rawProps) => {
               const props = validateComponentProps(component, rawProps);
               if (!props) return;
               if (component === "capture" && (props as { kind?: string }).kind === "map") {
-                commitStream();
-                streamOpen = false;
                 focusReadbackMapEmail();
                 return;
               }
-              commitStream();
-              streamOpen = false;
               nonceRef.current += 1;
               setScreen({
                 kind: "component",
@@ -442,29 +426,14 @@ export function useAgentRoomStream() {
           return;
         }
 
-        assistant = result.assistant;
+        const assistant = result.assistant;
         if (assistant) {
           historyRef.current = [...historyRef.current, { role: "assistant", content: assistant }];
+          finalizeAssistant(assistant);
+          if (phaseRef.current === "discuss") recordAssistantTurn();
         }
-        if (phaseRef.current === "discuss") {
-          if (assistant) {
-            appendTranscript({
-              role: "assistant",
-              content: assistant,
-              surface: assistant.length > DISCUSS_PASSAGE_THRESHOLD ? "passage" : "voice",
-            });
-          }
-          clearVoice();
-          setVoice({
-            thinking: false,
-            text:
-              assistant && assistant.length <= DISCUSS_PASSAGE_THRESHOLD ? assistant : "",
-          });
-        } else {
-          commitStream();
-          setVoice({ thinking: false, text: assistant });
-        }
-        streamOpen = false;
+        clearVoice();
+        setVoice({ thinking: false, text: "" });
       } finally {
         setComposing(false);
         setIsStreaming(false);
@@ -477,10 +446,10 @@ export function useAgentRoomStream() {
       drawGesture,
       inkLine,
       clearVoice,
-      beginStream,
-      appendStream,
-      commitStream,
-      appendTranscript,
+      appendUser,
+      updateStreaming,
+      finalizeAssistant,
+      recordAssistantTurn,
       enterDiscuss,
     ],
   );
@@ -538,10 +507,11 @@ export function useAgentRoomStream() {
     // Discuss phase (INT-08) — shared with the stub controller. Live Discuss
     // stream behavior (phase in POST, passage routing) lands in INT-10.
     phase: discuss.phase,
-    transcript: discuss.transcript,
+    thread,
     discussTurnCount: discuss.discussTurnCount,
     enterDiscuss: discuss.enterDiscuss,
     exitDiscuss: discuss.exitDiscuss,
+    onDockStateChange,
     stubDiscussCapture: false,
   };
 }

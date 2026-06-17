@@ -245,7 +245,7 @@ export const RESEARCH_ITEMS: ResearchItem[] = [
     year: 2026,
     title: "Sandbox Discovery: Where Learning Actually Happens",
     abstract:
-      "Stage 2 of the AI Stewardship Sequence — bounded experimentation after Safety, with four outputs and a {hl}graduation gate{/hl} before Skills or Solutions.",
+      "Stage 2 of the AI Stewardship Sequence — bounded experimentation after Safety, with four outputs and a {hl}graduation gate{/hl} before Training or Tech.",
     readMin: 10,
     sourceCount: 3,
     subtitle:
@@ -295,14 +295,14 @@ export const RESEARCH_ITEMS: ResearchItem[] = [
     sections: [
       { id: "section-summary", label: "Executive summary" },
       { id: "section-problem", label: "The problem with the frame" },
-      { id: "section-not", label: "What Skills is not" },
+      { id: "section-not", label: "What Training is not" },
       { id: "section-skill", label: "What the skill actually is" },
       { id: "section-reskilling", label: "Reskilling, redefined" },
       { id: "section-learned", label: "Can it be learned?" },
       { id: "section-maturity", label: "Maturity model" },
       { id: "section-pedagogy", label: "The pedagogy" },
       { id: "section-nonprofit", label: "Nonprofit employees" },
-      { id: "section-produces", label: "What Skills produces" },
+      { id: "section-produces", label: "What Training produces" },
       { id: "section-counter", label: "Counterarguments" },
       { id: "section-recommendations", label: "Recommendations" },
       { id: "section-threshold", label: "Threshold test" },

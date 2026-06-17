@@ -11,13 +11,13 @@ featured: true
 ---
 
 
-> **How this pairs with the book:** This guide is the **operating sequence** — the AI Stewardship Sequence: Safety, Sandbox, Skills, Solutions — for adopting AI without skipping trust. The book *[From Fragmentation to Movement](/book)* (free, in progress) is the **long thesis**: two intelligences, the fragmentation tax, the **six-stage** map, and why **integration** is the hinge where the arc turns. Read the book for the arc; use this guide when you need the sequence in a room.
+> **How this pairs with the book:** This guide is the **operating sequence** — the AI Stewardship Sequence: Safety, Sandbox, Training, Tech — for adopting AI without skipping trust. The book *[From Fragmentation to Movement](/book)* (free, in progress) is the **long thesis**: two intelligences, the fragmentation tax, the **six-stage** map, and why **integration** is the hinge where the arc turns. Read the book for the arc; use this guide when you need the sequence in a room.
 
 # The AI Stewardship Sequence — Field Guide for Organizational Leaders
 
 If you hold weight when budgets, policy, and vendor timelines collide—executive director, COO, board chair, senior pastor, or institutional lead—this guide is written for your next staff block, board retreat, or quiet hour with one question: *where are we actually standing, and what is the next honest step?*
 
-**Safety → Sandbox → Skills → Solutions.** Four words, one ordered path. This guide compresses Movemental’s approach to AI integration into something you can use in a senior-team meeting, a board retreat, or solo planning time.
+**Safety → Sandbox → Training → Tech.** Four words, one ordered path. This guide compresses Movemental’s approach to AI integration into something you can use in a senior-team meeting, a board retreat, or solo planning time.
 
 It is a **direction finder** and a **readiness test**. Each step creates preconditions for the next—skip one and you hollow what follows. Not surprisingly, that makes skipping risky. Less obviously, stopping early is risky too: policy nobody trains against changes nothing, and Sandbox efficiencies nobody can sustain stay trapped in heroes’ habits.
 
@@ -27,7 +27,7 @@ It is a **direction finder** and a **readiness test**. Each step creates precond
 
 **Ten-minute pass.** Read the **forward sequence vs. scramble** section below, then run the self-diagnostic at the end. Where you land determines which single section to read next.
 
-**Deep pass.** Work through Safety → Sandbox → Skills → Solutions in order. At each stage, use the **Tech vs guide** table to decide what to buy or build versus what must be led in the room. Close each stage with the two non-negotiable questions:
+**Deep pass.** Work through Safety → Sandbox → Training → Tech in order. At each stage, use the **Tech vs guide** table to decide what to buy or build versus what must be led in the room. Close each stage with the two non-negotiable questions:
 
 1. **Before you advance: what must be true?**
 2. **If we stopped here: what breaks next?**
@@ -42,8 +42,8 @@ It is a **direction finder** and a **readiness test**. Each step creates precond
 |------|----------------|
 | **Safety** | Know what yes and no mean *before* tools, vendors, and Tuesday deadlines decide for you. |
 | **Sandbox** | Turn curiosity into **organizational evidence**—bounded tasks, hypotheses, shared logs, named failures. |
-| **Skills** | Form **judgment** (discernment, authorship, stewardship)—not “training theater” on buttons. |
-| **Solutions** | Make learning **durable**: workflows, owners, contracts, audits—deployment the org can run without a hero. |
+| **Training** | Form **judgment** (discernment, authorship, stewardship)—not “training theater” on buttons. |
+| **Tech** | Make learning **durable**: workflows, owners, contracts, audits—deployment the org can run without a hero. |
 
 **The inverted sequence (the scramble—the default in the wild).**
 
@@ -57,7 +57,7 @@ Retrofitted policy rarely enforces—habits and workarounds already exist. Bolte
 
 **The counterintuitive claim:** Running the AI Stewardship Sequence in order is **faster than skipping steps** once you measure **rework avoided and trust preserved**, not press releases per quarter.
 
-**Borrowing chain (memorize this).** Later steps borrow trust from earlier ones. Solutions borrows from Skills; Skills from Sandbox; Sandbox from Safety. When Safety is thin, the chain becomes organizational fraud—polished outside, hollow inside, obvious to everyone who has to live in it.
+**Borrowing chain (memorize this).** Later steps borrow trust from earlier ones. Tech borrows from Training; Training from Sandbox; Sandbox from Safety. When Safety is thin, the chain becomes organizational fraud—polished outside, hollow inside, obvious to everyone who has to live in it.
 
 ### Direction finder — which way is “forward” for us?
 
@@ -71,8 +71,8 @@ If the honest answer is the first, you are on the scramble. The forward move is 
 
 - If **external outputs** are already AI-influenced and you **cannot** point to forbidden categories, decision rights, and consequences → your next move is **Safety**, even if you also need to pause risky channels.
 - If you have **paper Safety** but **no shared experiment log** tied to hypotheses → your next move is **Sandbox** (structure what is already happening, or stop pretending unlogged use is “exploration”).
-- If you have **artifacts** but **median staff** cannot name where a small mistake becomes a public problem—and what “good in the room” means → your next move is **Skills** (formation design, not another webinar).
-- If **heroes** hold everything and procurement happens **without** graduated use cases and data-tier discipline → you are not finished with **Solutions**—you may not have finished **Skills** or **Sandbox** either.
+- If you have **artifacts** but **median staff** cannot name where a small mistake becomes a public problem—and what “good in the room” means → your next move is **Training** (formation design, not another webinar).
+- If **heroes** hold everything and procurement happens **without** graduated use cases and data-tier discipline → you are not finished with **Tech**—you may not have finished **Training** or **Sandbox** either.
 
 **Common bypass phrases (decode them).**
 
@@ -81,7 +81,7 @@ If the honest answer is the first, you are on the scramble. The forward move is 
 | “We’re being responsive.” | Loudness is steering; **sequence** is absent. |
 | “We’re being careful.” | Sometimes **avoidance** of learning in public because uncertainty feels shameful. |
 | “We already piloted.” | A pilot may have been **undeclared production**—no Sandbox memory, no graduation criteria. |
-| “We need training.” | May mean **Skills**—or may mean “give us cover to keep skipping Safety and Sandbox.” |
+| “We need training.” | May mean **Training**—or may mean “give us cover to keep skipping Safety and Sandbox.” |
 
 The forward sequence is not a personality type. It is a discipline: responsiveness that still moves, carefulness that still learns—without drift on one side or cowardice on the other.
 
@@ -125,7 +125,7 @@ If the answer is no, **more model throughput smears the ink**—it does not fix 
 
 ### If we stopped here: what breaks next?
 
-Without real Safety, **Sandbox cannot be moral**. Experiments lack fences; the shared log becomes a blame ledger; people hide use because every try feels like a reputational bet. **Skills without Safety** teaches speed without a north star—drift accelerates. **Solutions without Safety** embeds risk you discover in public: plausible language outruns institutional judgment.
+Without real Safety, **Sandbox cannot be moral**. Experiments lack fences; the shared log becomes a blame ledger; people hide use because every try feels like a reputational bet. **Training without Safety** teaches speed without a north star—drift accelerates. **Tech without Safety** embeds risk you discover in public: plausible language outruns institutional judgment.
 
 **Concrete “stop here” damage (Safety missing):** Thank-you notes and appeals that are “technically fine” but **not quite yours**—smooth gratitude that lost the particular cadence of care your donors recognize. A board packet that **flattens** a delicate personnel truth. A follow-up that shares phrasing with **three other institutions** because nobody had authority to say: *that smoothness is not neutral for us.*
 
@@ -147,7 +147,7 @@ Without real Safety, **Sandbox cannot be moral**. Experiments lack fences; the s
 |-------------------------|------------------------|
 | Shared doc / lab notebook; tagged experiment logs; lightweight dashboards for cycle metrics | Keeping the loop **honest**: same time, same doc, “we did not learn much” is a valid update |
 | Sandboxed accounts, data-tier enforcement, access boundaries in product | **Scoping courage**: refusing to let “trial” become undeclared production |
-| Prompt or workflow snippets *as* instruments inside agreed use cases | Facilitating **named failures** and vocabulary that will feed Skills (“sounds like everyone”) |
+| Prompt or workflow snippets *as* instruments inside agreed use cases | Facilitating **named failures** and vocabulary that will feed Training (“sounds like everyone”) |
 
 **Failure mode:** Calling scattered individual use a sandbox. You get velocity **without memory**—then donor comms that start to sound like everyone else’s, and silence you cannot trace because nobody logged what changed.
 
@@ -165,9 +165,9 @@ Without real Safety, **Sandbox cannot be moral**. Experiments lack fences; the s
 
 ### If we stopped here: what breaks next?
 
-**No Sandbox → no bridge from frame to formation.** Safety becomes a document nobody runs experiments against. **Skills become training detached** from what models actually do to your sentences, arguments, and nerves—people get certificates but not conscience. **Solutions** ships into **opinion politics** (“my workflow vs yours”) instead of shared judgment at the edges.
+**No Sandbox → no bridge from frame to formation.** Safety becomes a document nobody runs experiments against. **Training becomes training detached** from what models actually do to your sentences, arguments, and nerves—people get certificates but not conscience. **Tech** ships into **opinion politics** (“my workflow vs yours”) instead of shared judgment at the edges.
 
-**Canonical line:** Sandbox supplies the **cases**; Skills turns cases into **conscience**. Without cases, “training” is guessing on stage.
+**Canonical line:** Sandbox supplies the **cases**; Training turns cases into **conscience**. Without cases, “training” is guessing on stage.
 
 **Stopping intentionally for 90 days (Safety + Sandbox only):** You accumulate **organizational knowledge**—vocabulary for drift, overconfidence, flattening—without betting public credibility. You are **not** yet ensuring a median performer can steer under Tuesday pressure; you have evidence but not distributed formation.
 
@@ -175,15 +175,15 @@ Without real Safety, **Sandbox cannot be moral**. Experiments lack fences; the s
 
 ---
 
-## Stage 3: Skills
+## Stage 3: Training
 
-**What Skills is.** Formation toward **judgment**—discernment (generic lift, missing proper nouns, “true anywhere” sentences), authorship (holding the pen; no stable category of “mostly ours”), stewardship (what must remain unmediated even when mediation is cheap). **Training transfers technique; formation reshapes who is doing the work.** AI is not only an instrument—it is a conversational partner that will become the “senior author” unless people are formed.
+**What Training is.** Formation toward **judgment**—discernment (generic lift, missing proper nouns, “true anywhere” sentences), authorship (holding the pen; no stable category of “mostly ours”), stewardship (what must remain unmediated even when mediation is cheap). **Training transfers technique; formation reshapes who is doing the work.** AI is not only an instrument—it is a conversational partner that will become the “senior author” unless people are formed.
 
-**What Skills is not.** Vendor certifications as the main event. Prompt libraries divorced from context. Tool training that never rehearses a faithful **no**. Generic “AI literacy” as the ceiling.
+**What Training is not.** Vendor certifications as the main event. Prompt libraries divorced from context. Tool training that never rehearses a faithful **no**. Generic “AI literacy” as the ceiling.
 
 **Where formation happens.** Real work + real reflection + real community + time. Weekly review of sandbox outputs; senior leaders modeling public revision; disagreement settled by **shared commitments**, not taste contests. Bad draft **caught** in review teaches; bad draft **shipped** teaches the wrong lesson.
 
-### Tech vs guide — Skills
+### Tech vs guide — Training
 
 | **Tech can help with** | **A guide must hold** |
 |-------------------------|------------------------|
@@ -193,42 +193,42 @@ Without real Safety, **Sandbox cannot be moral**. Experiments lack fences; the s
 
 **Failure mode:** Upskilling budgets spent on what expires fastest (feature tours) while **taste and judgment**—which need months—are starved. **Training without Sandbox evidence** is theater.
 
-### Misplacement alert — Skills
+### Misplacement alert — Training
 
-- *“We ran a workshop.”* A workshop can **prime**; it cannot substitute for the slow loop. If a mid-level staffer cannot say what **good** looks like for an AI-assisted task in your mission’s terms—including where a small mistake becomes a public problem—you are not past Skills—no matter how many tools are installed.
+- *“We ran a workshop.”* A workshop can **prime**; it cannot substitute for the slow loop. If a mid-level staffer cannot say what **good** looks like for an AI-assisted task in your mission’s terms—including where a small mistake becomes a public problem—you are not past Training—no matter how many tools are installed.
 
 ### Before you advance: what must be true?
 
 - **Distributed judgment (baseline):** Serious staff—not only heroes—can describe good output, bad output, and those same risk edges without slogans.
 - **Observable capacities** growing: discernment, authorship, stewardship in tension—not checklists alone.
 - **Sandbox vocabulary** in daily use (“smooth but not us”)—sentences the room recognizes as skill, not mood.
-- For Solutions-scale automation/composition: enough **Level 4–5** judgment (see the maturity sketch in *The Skill of AI*) to design, supervise, troubleshoot, and retire systems.
+- For Tech-scale automation/composition: enough **Level 4–5** judgment (see the maturity sketch in *The Skill of AI*) to design, supervise, troubleshoot, and retire systems.
 
 ### If we stopped here: what breaks next?
 
-**Skills skipped → Solutions operated by people who cannot tell** when the machine smooths away something your mission cannot afford to flatten. You get **more** output that **sounds** professional and **means** less—interchangeable genre voice, donors who stop replying, long-time supporters who cannot pinpoint what changed because **memory was never built**.
+**Training skipped → Tech operated by people who cannot tell** when the machine smooths away something your mission cannot afford to flatten. You get **more** output that **sounds** professional and **means** less—interchangeable genre voice, donors who stop replying, long-time supporters who cannot pinpoint what changed because **memory was never built**.
 
-**Training without formation →** Solutions deploy into an org that can **run** tools but cannot **steer** them—unformed use often looks like **productivity**.
+**Training without formation →** Tech deploy into an org that can **run** tools but cannot **steer** them—unformed use often looks like **productivity**.
 
-**Two staff, same certificate (Skills skipped or shallow).** Both passed the vendor workshop. One **tightens** machine sentences until they sound like *this* organization again; donors still answer as if a person wrote the note. The other ships **more**, smoother, even—and if you blurred the logo you could swap the newsletter for a dozen peers. Same stack; **opposite futures** because formation—not feature knowledge—was the variable.
+**Two staff, same certificate (Training skipped or shallow).** Both passed the vendor workshop. One **tightens** machine sentences until they sound like *this* organization again; donors still answer as if a person wrote the note. The other ships **more**, smoother, even—and if you blurred the logo you could swap the newsletter for a dozen peers. Same stack; **opposite futures** because formation—not feature knowledge—was the variable.
 
-**Stopping intentionally for 90 days (through Skills):** You have people who self-correct in public and workflows that **preserve voice**. You have **not** yet made that durable across turnover and vendor churn—that is Solutions’ job.
+**Stopping intentionally for 90 days (through Training):** You have people who self-correct in public and workflows that **preserve voice**. You have **not** yet made that durable across turnover and vendor churn—that is Tech's job.
 
 ---
 
-## Stage 4: Solutions
+## Stage 4: Tech
 
-**What Solutions is.** AI in **real workflows**, owned by trained humans, governed by **functioning** policy, under leadership that can say no without improvising governing commitments in the hallway. **Not** “pilot on a slide.” **Not** tool rollout alone. Solutions is where **learning becomes infrastructure**—workflows with instruments inside them, named owners, quality gates, retirement criteria, contracts that encode Safety.
+**What Tech is.** AI in **real workflows**, owned by trained humans, governed by **functioning** policy, under leadership that can say no without improvising governing commitments in the hallway. **Not** “pilot on a slide.” **Not** tool rollout alone. Tech is where **learning becomes infrastructure**—workflows with instruments inside them, named owners, quality gates, retirement criteria, contracts that encode Safety.
 
 **Three deployment modes (do not confuse them).** **Augmentation** (judgment-preserving help) should dominate early. **Automation** only where judgment is explicit and stable—ask *what judgment here can I not articulate?* **Composition** (multi-step agents) is powerful and should stay sparse until governance and formed staff can **hold** it.
 
 **Why workflow language matters.** A tool is an instrument; a **workflow** is inputs, outputs, owners, gates, and failure modes. Tools are interchangeable inside a workflow; **workflows are not interchangeable** with each other. If you measure **logins**, you cannot tell whether fidelity improved; if you measure **workflow outcomes**, you can.
 
-**The facilitator’s job at Solutions:** **Disappear.** If the org cannot add a use case, graduate it, deploy it, audit it, and onboard new staff **without** the original consultant, Solutions was purchased—not built.
+**The facilitator’s job at Tech:** **Disappear.** If the org cannot add a use case, graduate it, deploy it, audit it, and onboard new staff **without** the original consultant, Tech was purchased—not built.
 
-Within **twelve to eighteen months** of a serious sequence, you should be able—**without** external help—to: propose a new use case from scratch; evaluate a new vendor against workflow + governance criteria; run a real incident through the playbook; train a new hire through the full arc. If any answer is still “the consultant,” **Solutions is not yet done**—you have an engagement, not capability.
+Within **twelve to eighteen months** of a serious sequence, you should be able—**without** external help—to: propose a new use case from scratch; evaluate a new vendor against workflow + governance criteria; run a real incident through the playbook; train a new hire through the full arc. If any answer is still “the consultant,” **Tech is not yet done**—you have an engagement, not capability.
 
-### Tech vs guide — Solutions
+### Tech vs guide — deployment
 
 | **Tech can help with** | **A guide must hold** |
 |-------------------------|------------------------|
@@ -238,13 +238,13 @@ Within **twelve to eighteen months** of a serious sequence, you should be able�
 
 **Failure mode:** Measuring **tool usage** instead of **workflow outcomes**—activity that proves nothing about fidelity or mission.
 
-### Misplacement alert — Solutions
+### Misplacement alert — Tech
 
 - *“We integrated three teams; we have ROI slides.”* If governance is culture in the ED’s head, sandbox knowledge lives in heroes, and median staff cannot name those risk edges—you are **still assembling the foundation**, not arguing with the framework.
 
 ### Before you advance: what must be true?
 
-(“Advance” here means **confidently operating** Solutions and **cycling** the forward sequence—not “being done with AI.”)
+(“Advance” here means **confidently operating** Tech and **cycling** the forward sequence—not “being done with AI.”)
 
 - **Governance** is published, product-enforced where needed, and audited on a schedule.
 - **Graduated use-case portfolio** from Sandbox: signed-off, measured, reviewed—not vendor claims.
@@ -253,11 +253,11 @@ Within **twelve to eighteen months** of a serious sequence, you should be able�
 
 ### If we stopped here: what breaks next?
 
-There is no “fifth tread”—but **pretending Solutions is finished** breaks the loop. Without feedback into Safety, Sandbox, and Skills, you slide back into **tool portfolio** managed by enthusiasm and auto-renewal.
+There is no “fifth tread”—but **pretending Tech is finished** breaks the loop. Without feedback into Safety, Sandbox, and Training, you slide back into **tool portfolio** managed by enthusiasm and auto-renewal.
 
-**Solutions done too early** makes every failure look technical when it is almost always a **skipped step** problem: risk surfaces in public; policy written after habits form; surprise dressed as innovation; acceleration without improvement.
+**Tech done too early** makes every failure look technical when it is almost always a **skipped step** problem: risk surfaces in public; policy written after habits form; surprise dressed as innovation; acceleration without improvement.
 
-**Stopping reflection:** Solutions **last** does not mean **never touch a tool**—bounded touch belongs in Sandbox; formation grows alongside it. **Last** means **production posture waits on production prerequisites**.
+**Stopping reflection:** Tech **last** does not mean **never touch a tool**—bounded touch belongs in Sandbox; formation grows alongside it. **Last** means **production posture waits on production prerequisites**.
 
 ---
 
@@ -273,11 +273,11 @@ Use these as a **blunt where-you-stand test** (drawn from *Why Order Matters* an
 |------------------|----------------------------|
 | 1 | **Safety** |
 | 2 | **Sandbox** |
-| 3 | **Skills** |
+| 3 | **Training** |
 
-**Bonus (Solutions readiness, from *Why Solutions Come Last* and the thesis):** Can you summarize what the Sandbox taught—including **surprises you did not want**? Can governance be read **once** by a new hire who then knows what they may do, what needs review, and what is never done in your name?
+**Bonus (Tech readiness, from *Why Solutions Come Last* and the thesis):** Can you summarize what the Sandbox taught—including **surprises you did not want**? Can governance be read **once** by a new hire who then knows what they may do, what needs review, and what is never done in your name?
 
-**Crisis objection (answer you owe the room).** “We do not have twelve months.” Safety is **minimum clarity** without which speed becomes self-harm. Sandbox is **evidence before scale**. Skills keep the tool from becoming an **unaccountable coworker**. If the emergency is existential, the worst move is deploying a system that generates plausible language **faster than the institution can judge truth**—that is not rescue; it is **acceleration of the break**. The sequence demands **honesty about which prerequisites you actually have**, not endless time.
+**Crisis objection (answer you owe the room).** “We do not have twelve months.” Safety is **minimum clarity** without which speed becomes self-harm. Sandbox is **evidence before scale**. Training keeps the tool from becoming an **unaccountable coworker**. If the emergency is existential, the worst move is deploying a system that generates plausible language **faster than the institution can judge truth**—that is not rescue; it is **acceleration of the break**. The sequence demands **honesty about which prerequisites you actually have**, not endless time.
 
 ---
 
@@ -305,10 +305,10 @@ Each plan assumes you are **starting that stage honestly** (not “declaring” 
 |------------|--------|-----------|
 | 1 | Name team, pick 3–5 hypotheses tied to boundaries | Charter |
 | 2–10 | Weekly/biweekly loop; end each cycle with “this week moved our understanding of ___” | Running log, named failures/surprises |
-| 11 | Leadership readout: what we will / won’t graduate | Pre-Skills brief |
+| 11 | Leadership readout: what we will / won’t graduate | Pre-Training brief |
 | 12 | Graduate **at most** a small set of use cases with owners | Graduation record |
 
-### Skills — next 90 days
+### Training — next 90 days
 
 **Objective:** Distributed judgment, not certificates.
 
@@ -318,7 +318,7 @@ Each plan assumes you are **starting that stage honestly** (not “declaring” 
 | 3–10 | Cohorts: supervised practice on real material; public revision by seniors | Before/after library (internal) |
 | 11–12 | “Good in the room” tests; spot audits on live drafts | Named Level 3+ bench depth |
 
-### Solutions — first 90 days (when prerequisites pass)
+### Tech — first 90 days (when prerequisites pass)
 
 **Objective:** Infrastructure the org runs.
 
@@ -331,7 +331,7 @@ Each plan assumes you are **starting that stage honestly** (not “declaring” 
 
 ### After the first full cycle
 
-The AI Stewardship Sequence is not a certificate you frame on the wall. **Solutions is the stage where the sequence feeds itself:** incidents and near-misses **version** Safety; deployed workflows surface **new Sandbox candidates**; failure modes at scale **update** Skills. The first turn is slowest; the second is cheaper because you are **revising**, not inventing from zero.
+The AI Stewardship Sequence is not a certificate you frame on the wall. **Tech is the stage where the sequence feeds itself:** incidents and near-misses **version** Safety; deployed workflows surface **new Sandbox candidates**; failure modes at scale **update** Training. The first turn is slowest; the second is cheaper because you are **revising**, not inventing from zero.
 
 ---
 
@@ -372,7 +372,7 @@ For the wider book arc (two intelligences, fragmentation tax, six-stage map), se
 | Sandbox definition, vs pilot, in/out scope, learning loop | `the-purpose-of-sandbox.md` |
 | Formation vs training, three capacities, where formation happens | `skills-as-formation-not-training.md` |
 | Skill stack, maturity levels, curriculum vs practice balance | `the-skill-of-ai.md` |
-| Solutions definition, three readiness tests, what “last” is not | `why-solutions-come-last.md` |
+| Tech definition, three readiness tests, what “last” is not | `why-solutions-come-last.md` |
 | Workflow thinking, augmentation/automation/composition, facilitator exit test, feedback loop | `solutions-deployment.md` |
 
 *This field guide synthesizes and compresses those pieces; for full argument and texture, follow **Where this connects** above in canon order—especially when the room is arguing about sequence out loud.*

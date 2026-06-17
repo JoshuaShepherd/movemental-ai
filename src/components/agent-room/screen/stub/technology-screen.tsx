@@ -9,7 +9,7 @@ import type { ScreenProps } from "./stub-screen";
 import { Crumb } from "./chrome";
 import { TwoWaysForward } from "./two-ways-forward";
 
-/** Stage 04 · Technology: scoped AI deployment after Safety, Sandbox, and Training. */
+/** Stage 04 · Tech: scoped AI deployment after Safety, Sandbox, and Training. */
 export function TechnologyScreen({ onHome }: ScreenProps) {
   return (
     <div>
@@ -58,7 +58,7 @@ export function TechnologyScreen({ onHome }: ScreenProps) {
           title: "Free, and we guide you.",
           price: "[Free entry point to confirm]",
           description:
-            "Technology is scoped per engagement. We will confirm the free entry point before publishing a claim here.",
+            "Tech is scoped per engagement. We will confirm the free entry point before publishing a claim here.",
           ctaLabel: "",
           ctaHref: "",
           placeholder: true,
@@ -68,7 +68,7 @@ export function TechnologyScreen({ onHome }: ScreenProps) {
           price: "From $30,000 · scoped",
           description:
             "Scoped AI deployment across six configurations, from tool optimization to network-scale work for institutions and denominations.",
-          ctaLabel: "Talk to us about Technology",
+          ctaLabel: "Talk to us about Tech",
           ctaHref: "/enroll",
           paid: true,
         }}

@@ -253,7 +253,7 @@ export const PROFILES: Record<number, Profile> = {
     connection:
       "Founder of Movemental. Josh began the two-year conversation with Brad and Alan about what AI was doing to mission-driven organizations. Movemental took shape in 2026. He is Founder and CTO — architect of the platform — and handed the CEO seat to Brad on purpose.",
     workSay: [
-      "Josh founded Movemental and builds the path: Safety, Sandbox, Training, Technology.",
+      "Josh founded Movemental and builds the path: Safety, Sandbox, Training, Tech.",
       "He designs the platform, the agents, and the system underneath.",
     ],
     connectSay: [

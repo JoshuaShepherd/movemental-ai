@@ -141,30 +141,18 @@ export const CHURCHES_PAGE_CONFIG: AudiencePageConfig = {
   },
   theBuild: {
     title: "Then we build the tools on top of it.",
-    paragraphs: [
-      "Once the foundation is real, we build what your church actually needs. Search across your teaching archive. An assistant that speaks from your material with sources your elders can check. Pathways that help members move through your body of work instead of drifting to generic answers online.",
-    ],
-    toolExamples: [
-      {
-        label: "Teaching search",
-        text: "across sermons, curricula, and ministry resources, not the open web.",
-      },
-      {
-        label: "Grounded assistant",
-        text: "that answers from your church's own material, with citations your team can verify.",
-      },
-      {
-        label: "Member pathways",
-        text: "so discipleship journeys through your teaching are visible, not invisible fragments.",
-      },
-    ],
+    titleHighlight: "the tools",
+    intro:
+      "The working platform, on the desk and in your pocket. Pick a layer, open any piece.",
+    footnote:
+      "A seeded preview. Explore it live opens the real church demo so you can click around.",
     bridgeQuestion:
       "Which is usually where a fair question comes up, the one every pastor asks when the price lands: so isn't this just an expensive church website?",
   },
   formation: {
     title: "But tools alone aren't the answer.",
     paragraphs: [
-      "Technology without formed people isn't discipleship. It's replacement. Hand powerful tools to a staff that hasn't been formed to steward them, and you get the failure mode everyone is already living through.",
+      "Tech without formed people isn't discipleship. It's replacement. Hand powerful tools to a staff that hasn't been formed to steward them, and you get the failure mode everyone is already living through.",
       "The tools come with formation. Discernment stays with your leaders. Authorship keeps a real human behind the words. Stewardship cares for what's been entrusted to you. AI does not do pastoral care. For a church, this isn't an add-on. It's the work.",
       "A generation of young adults is deciding, from what they watch you do, whether the church has anything true to say in this moment. Formation is how you answer them. Not with a policy PDF alone, but with people who can lead through this carefully.",
     ],

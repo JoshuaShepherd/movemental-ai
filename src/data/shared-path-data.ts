@@ -48,7 +48,7 @@ export const stageMeta = [
   },
   {
     num: "04",
-    name: "Technology",
+    name: "Tech",
     protect: "The build",
     mapDesc: "Tools shaped around the work.",
     tagline: "Build tools that fit your workflows, voice, and mission.",
@@ -59,7 +59,7 @@ export const stageMeta = [
       "Workflow ownership is clear",
       "The system reduces fragmentation instead of adding another tool"
     ],
-    watchFor: "If Technology is rushed, the organization gets <em>tools that look useful but don't fit</em> the people, the data, or the mission."
+    watchFor: "If Tech is rushed, the organization gets <em>tools that look useful but don't fit</em> the people, the data, or the mission."
   }
 ];
 

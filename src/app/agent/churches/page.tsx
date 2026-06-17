@@ -9,7 +9,7 @@ import { CHURCHES_PAGE_CONFIG } from "@/components/agent-room/audience/churches-
 export const metadata: Metadata = {
   title: "Churches | Movemental",
   description:
-    "AI is already inside your church. A you-first case for pastors and elders: what's happening, the deeper problem, a letter for your leadership team, and the ordered path: Safety, Sandbox, Training, Technology.",
+    "AI is already inside your church. A you-first case for pastors and elders: what's happening, the deeper problem, a letter for your leadership team, and the ordered path: Safety, Sandbox, Training, Tech.",
   alternates: {
     canonical: "/agent/churches",
   },

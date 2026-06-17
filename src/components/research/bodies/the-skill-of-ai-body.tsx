@@ -34,7 +34,7 @@ export const theSkillOfAiBody: ReactNode = (
     </p>
 
     <p>
-      The Skills stage of Safety → Sandbox → Skills → Solutions is not the certification stage. It is
+      The Training stage of Safety → Sandbox → Training → Tech is not the certification stage. It is
       where the organization develops the human capability to use AI wisely. That is a different
       capability than most training vendors sell.
     </p>
@@ -67,30 +67,30 @@ export const theSkillOfAiBody: ReactNode = (
     </p>
 
     <p>
-      The Skills stage is not the curriculum stage. It is the stage where the organization develops human
+      The Training stage is not the curriculum stage. It is the stage where the organization develops human
       capability to use AI wisely. That is not what most training programs are built to produce.
     </p>
 
-    <h3 id="section-not">What Skills is not</h3>
+    <h3 id="section-not">What Training is not</h3>
 
     <p>
-      Skills is not tool mastery. Interface controls can be learned in thirty minutes and will be obsolete
+      Training is not tool mastery. Interface controls can be learned in thirty minutes and will be obsolete
       within eighteen months. Feature tours are expensive and short-lived.
     </p>
 
     <p>
-      Skills is not a library of prompt templates. Templates without understanding produce dependency. A
+      Training is not a library of prompt templates. Templates without understanding produce dependency. A
       template applied without discernment is worse than no template, because the user stops noticing when
       the output is wrong.
     </p>
 
     <p>
-      Skills is not certification. Certification optimizes for passing a test. The test has almost no
+      Training is not certification. Certification optimizes for passing a test. The test has almost no
       relationship to using AI in real work.
     </p>
 
     <p>
-      Skills is not generic &ldquo;AI literacy.&rdquo; Literacy is the floor. Necessary, quick to
+      Training is not generic &ldquo;AI literacy.&rdquo; Literacy is the floor. Necessary, quick to
       establish, and not the point.
     </p>
 
@@ -177,7 +177,7 @@ export const theSkillOfAiBody: ReactNode = (
     <p>
       Staff need to recover their voice. The default voice of most models is smooth, plausible, and
       generic. Organizations that let that voice leak into communications lose what made them distinct.
-      Skills teaches use without sounding like the model.
+      Training teaches use without sounding like the model.
     </p>
 
     <p>
@@ -188,7 +188,7 @@ export const theSkillOfAiBody: ReactNode = (
     <p>
       Staff need to re-learn what their judgment is for. When a model produces a first draft in thirty
       seconds, human value is no longer in production. It is in shaping, deciding, and discerning. Staff
-      whose identity is tied to first-draft production will feel AI as a threat. Skills helps them
+      whose identity is tied to first-draft production will feel AI as a threat. Training helps them
       relocate value higher in the workflow.
     </p>
 
@@ -218,7 +218,7 @@ export const theSkillOfAiBody: ReactNode = (
 
     <p>
       Most AI training programs are built upside down. Maximum time on what can be taught quickly, minimum
-      time on what takes longest to form. A well-designed Skills stage inverts this. Minimize curriculum.
+      time on what takes longest to form. A well-designed Training stage inverts this. Minimize curriculum.
       Maximize supervised practice. Accept that taste and voice take six to twelve months of real use.
     </p>
 
@@ -239,7 +239,7 @@ export const theSkillOfAiBody: ReactNode = (
     <p>
       Level 3: Task-fluent. Uses AI for recurring tasks with stable quality. Basic verification habits.
       Recognizes wrong output on familiar tasks. Does not generalize well to novel tasks. Target for most
-      staff after a well-run Skills stage.
+      staff after a well-run Training stage.
     </p>
 
     <p>
@@ -261,7 +261,7 @@ export const theSkillOfAiBody: ReactNode = (
 
     <h3 id="section-pedagogy">The pedagogy</h3>
 
-    <p>Five principles underpin every Skills stage that has held up in practice.</p>
+    <p>Five principles underpin every Training stage that has held up in practice.</p>
 
     <p>
       Teach from their work, not from curriculum. Start with a task they already hate doing badly. A donor
@@ -337,7 +337,7 @@ export const theSkillOfAiBody: ReactNode = (
       does not produces Level 2 indefinitely, regardless of hours delivered.
     </p>
 
-    <h3 id="section-produces">What Skills produces</h3>
+    <h3 id="section-produces">What Training produces</h3>
 
     <p>
       Confidence. Consistency. A staff that can defend AI use to a donor, regulator, skeptic, or new hire.
@@ -345,7 +345,7 @@ export const theSkillOfAiBody: ReactNode = (
     </p>
 
     <p>
-      What it does not produce: uniform enthusiasm. Mature Skills produces staff with formed opinions.
+      What it does not produce: uniform enthusiasm. Mature Training produces staff with formed opinions.
       Some extensive users, some sparing, some who decide the tool does not yet justify their specific
       work. All three outcomes signal success. An organization where everyone ends enthusiastic was
       running a marketing program, not formation.
@@ -358,7 +358,7 @@ export const theSkillOfAiBody: ReactNode = (
         <span className={styles.articleListNum}>•</span>
         <span>
           Some roles need deep tool mastery. Data engineers, comms ops, and IT admins may need technical
-          depth beyond this frame. Skills as defined here targets judgment-bearing staff, not every job
+          depth beyond this frame. Training as defined here targets judgment-bearing staff, not every job
           family.
         </span>
       </li>
@@ -373,7 +373,7 @@ export const theSkillOfAiBody: ReactNode = (
         <span className={styles.articleListNum}>•</span>
         <span>
           Level 3 can be enough. Not every staff member needs Level 4 for every task. The failure mode is
-          declaring Skills done because workshops happened.
+          declaring Training done because workshops happened.
         </span>
       </li>
       <li>
@@ -399,7 +399,7 @@ export const theSkillOfAiBody: ReactNode = (
         <span className={styles.articleListNum}>01.</span>
         <span>
           Run the threshold test on three random staff this month (see below). If fewer than two pass,
-          Skills is not done.
+          Training is not done.
         </span>
       </li>
       <li>
@@ -425,7 +425,7 @@ export const theSkillOfAiBody: ReactNode = (
       <li>
         <span className={styles.articleListNum}>05.</span>
         <span>
-          Do not advance to Solutions until Level 3 behavior is visible in the teams that will own
+          Do not advance to Tech until Level 3 behavior is visible in the teams that will own
           deployment.
         </span>
       </li>
@@ -433,7 +433,7 @@ export const theSkillOfAiBody: ReactNode = (
 
     <h3 id="section-threshold">The threshold test</h3>
 
-    <p>A single-line test for whether Skills is done for a person:</p>
+    <p>A single-line test for whether Training is done for a person:</p>
 
     <p className={styles.marginNote}>
       <em>
@@ -444,7 +444,7 @@ export const theSkillOfAiBody: ReactNode = (
     </p>
 
     <p>
-      If they cannot answer all four, Skills is not done for that person. Aggregate answers across staff are
+      If they cannot answer all four, Training is not done for that person. Aggregate answers across staff are
       the real report card.
     </p>
 
@@ -468,7 +468,7 @@ export const theSkillOfAiBody: ReactNode = (
 
     <p className={styles.marginNote}>
       AI Stewardship Sequence: Safety (field guide) →{" "}
-      <ResearchLink slug="sandbox-discovery">Sandbox</ResearchLink> → Skills (this piece) → Solutions.
+      <ResearchLink slug="sandbox-discovery">Sandbox</ResearchLink> → Training (this piece) → Tech.
       Upstream discernment:{" "}
       <ResearchLink slug="finding-ai-guidance-worth-trusting">
         Finding AI guidance worth trusting

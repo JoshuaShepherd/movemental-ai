@@ -2,7 +2,7 @@ import type { ReadbackProps } from "@/lib/agent-room/component-props";
 import styles from "../ink-band.module.css";
 import { Emphasis } from "./emphasis";
 
-const STAGES = ["Safety", "Sandbox", "Training", "Technology"];
+const STAGES = ["Safety", "Sandbox", "Training", "Tech"];
 
 /**
  * The diagnostician's read-back: where the organization stands on the four-stage

@@ -14,10 +14,8 @@
 export type RoomPhase = "guide" | "discuss";
 
 /**
- * One turn in the Discuss transcript — the Discuss-phase SSOT for sheet
- * marginalia and the voice-band expand history. `surface` records where the turn
- * is shown: the live `voice` band, a `margin` annotation (visitor turns), a
- * written `passage` on the sheet (long agent turns), or the `capture` cell.
+ * @deprecated Use `ThreadTurn` from `@/lib/agent-room/thread` — the single
+ * conversation log. Kept for DiscussFold / dev seam compatibility during migration.
  */
 export interface TranscriptTurn {
   role: "user" | "assistant";
@@ -36,11 +34,6 @@ export type DiscussReason = "user" | "agent" | "post-readback";
  */
 export const DISCUSS_ENABLED: boolean =
   process.env.NEXT_PUBLIC_AGENT_ROOM_DISCUSS === "1";
-
-/** Voice band shows the most recent N assistant lines in Discuss (Model B: 3–5). */
-export const DISCUSS_VOICE_LINES = 5;
-/** Tap-to-expand drawer shows the last N agent utterances (not full scrollback). */
-export const DISCUSS_DRAWER_LINES = 3;
 
 /**
  * Turn-cap (INT-09, design note §5.5): after roughly this many **assistant**
@@ -68,8 +61,7 @@ export const ENTER_DISCUSS_VALUE = "enter-discuss";
 export const DISCUSS_CHIP_TARGET = "toDiscuss";
 
 /**
- * Length (chars) above which a streamed assistant Discuss turn is committed as a
- * **sheet passage** (marginalia) rather than living only in the voice band
- * (design §2.3 / §5.1). Shorter turns stay ephemeral in the band.
+ * Length (chars) above which an assistant turn gets in-thread passage styling.
+ * Does **not** route content between caption and thread (SSOT I4).
  */
 export const DISCUSS_PASSAGE_THRESHOLD = 180;

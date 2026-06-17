@@ -54,8 +54,6 @@ export type AudienceSource = {
 
 export type AudienceFixRow = { pain: string; gain: string };
 
-export type AudienceToolExample = { label: string; text: string };
-
 export type AudiencePathStage = {
   n: string;
   title: string;
@@ -103,9 +101,14 @@ export type AudiencePageConfig = {
     diagramCenterLabel?: string;
   };
   theBuild: {
+    /** H2 without the underline target — e.g. "Then we build the tools on top of it." */
     title: string;
-    paragraphs: readonly string[];
-    toolExamples: readonly AudienceToolExample[];
+    /** Phrase inside title that receives the ink underline — e.g. "the tools" */
+    titleHighlight?: string;
+    /** Subhead under the H2 */
+    intro: string;
+    /** Italic foot line under the explorer */
+    footnote: string;
     /**
      * Optional seam-out line that hands the reader into the deck — raises the
      * "isn't this just an expensive website?" question the deck answers. Lets

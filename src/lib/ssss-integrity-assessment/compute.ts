@@ -6,7 +6,7 @@ import type {
 } from "./types";
 import { SSSS_INTEGRITY_VERSION } from "./types";
 
-const MAIN_STAGES = ["Safety", "Sandbox", "Training", "Technology"] as const satisfies readonly Exclude<
+const MAIN_STAGES = ["Safety", "Sandbox", "Training", "Tech"] as const satisfies readonly Exclude<
   SsssStageId,
   "Cross"
 >[];
@@ -37,7 +37,7 @@ function bandForNorm(n: number): { label: string; primaryRisk: string } {
   if (n <= 0.42) {
     return {
       label: "Early or Safety collapsed",
-      primaryRisk: "Technology-first drift, shadow adoption, reputational and moral hazard.",
+      primaryRisk: "Tech-first drift, shadow adoption, reputational and moral hazard.",
     };
   }
   if (n <= 0.55) {
@@ -60,12 +60,12 @@ function bandForNorm(n: number): { label: string; primaryRisk: string } {
   }
   if (n <= 0.87) {
     return {
-      label: "Training strong; Technology selective",
+      label: "Training strong; Tech selective",
       primaryRisk: "Automation or composition overshoot under vendor pressure.",
     };
   }
   return {
-    label: "Technology as infrastructure",
+    label: "Tech as infrastructure",
     primaryRisk: "Complacency as models and vendors shift; revisit cadence slips.",
   };
 }
@@ -93,7 +93,7 @@ function collectIllusionFlags(scores: readonly number[]): SsssIllusionId[] {
 
   if (sNorm >= 0.72 && q("Q17") <= 2) flags.push("honesty_gap");
 
-  const subTech = subscoreForStage("Technology", scores);
+  const subTech = subscoreForStage("Tech", scores);
   const subSbx = subscoreForStage("Sandbox", scores);
   const subTrn = subscoreForStage("Training", scores);
   if (subTech - subSbx >= 0.15 && (q("Q07") < 4 || q("Q08") < 4)) {
@@ -172,7 +172,7 @@ function remediateDominant(stage: MainStage): string {
       return "Run the eight-pattern use-case mapping exercise; open a dated log; screen candidates through Safety.";
     case "Training":
       return "Institute peer review on real artifacts; build rubrics from sandbox evidence, not templates.";
-    case "Technology":
+    case "Tech":
       return "Map one workflow end-to-end with owners, gates, and outcome metrics; defer composition until governance holds.";
     default:
       return "Re-read the weakest three items as a leadership team and assign one owner each.";
@@ -203,7 +203,7 @@ export function computeSsssIntegrityResult(scores: readonly number[]): SsssInteg
     Safety: Math.round(subscoreForStage("Safety", scores) * 100),
     Sandbox: Math.round(subscoreForStage("Sandbox", scores) * 100),
     Training: Math.round(subscoreForStage("Training", scores) * 100),
-    Technology: Math.round(subscoreForStage("Technology", scores) * 100),
+    Tech: Math.round(subscoreForStage("Tech", scores) * 100),
     Cross: Math.round(subscoreForStage("Cross", scores) * 100),
   } as const;
 

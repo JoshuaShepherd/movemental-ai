@@ -68,7 +68,7 @@ export const CANON_SECTION_META: Record<CanonSection, { title: string; deck: str
   },
   path: {
     title: "The path",
-    deck: "Safety → Sandbox → Training → Technology. The sequence is the framework.",
+    deck: "Safety → Sandbox → Training → Tech. The sequence is the framework.",
   },
   future: {
     title: "The future",
@@ -259,7 +259,7 @@ export const SERIES_META: Record<SeriesKey, { title: string; deck: string }> = {
   },
   ssss: {
     title: "The Movemental Path",
-    deck: "Safety, Sandbox, Training, Technology: the core public methodology.",
+    deck: "Safety, Sandbox, Training, Tech: the core public methodology.",
   },
   "two-intelligences": {
     title: "Two intelligences",
@@ -273,7 +273,7 @@ export const SERIES_META: Record<SeriesKey, { title: string; deck: string }> = {
 
 export const TOPIC_META: Record<Topic, { title: string; deck: string }> = {
   fragmentation: { title: "Fragmentation", deck: "Work exists but does not connect." },
-  ssss: { title: "Movemental Path", deck: "Safety, Sandbox, Training, Technology." },
+  ssss: { title: "Movemental Path", deck: "Safety, Sandbox, Training, Tech." },
   integrity: { title: "Integrity", deck: "Structural coherence between what you say, what you ship, and who you are." },
   signal: { title: "Signal", deck: "Why real expertise is becoming invisible, and what still reads as credible." },
   formation: { title: "Formation", deck: "What skill becomes once it's judgment." },

@@ -6,9 +6,9 @@ const SSSS_TO_PUBLIC: Record<string, AiRealityStage> = {
   Sandbox: "Sandbox",
   Skills: "Training",
   Training: "Training",
-  Solutions: "Technology",
-  Technology: "Technology",
-  Tech: "Technology",
+  Solutions: "Tech",
+  Technology: "Tech",
+  Tech: "Tech",
 };
 
 /** Map an internal assessment stage label to the public path name. */
@@ -25,7 +25,7 @@ export function publicStageToDbColumn(stage: AiRealityStage): "safety" | "sandbo
       return "sandbox";
     case "Training":
       return "skills";
-    case "Technology":
+    case "Tech":
       return "solutions";
   }
 }

@@ -35,3 +35,26 @@ export function PassageMarkdown({ text }: { text: string }) {
     </ReactMarkdown>
   );
 }
+
+/**
+ * Agent thread prose — emphasis, lists, and links render as Ink Band typography
+ * instead of raw markdown tokens (`**name**`, etc.).
+ */
+export function AgentThreadProse({
+  text,
+  className,
+  ariaLive,
+}: {
+  text: string;
+  className?: string;
+  ariaLive?: "polite" | "off";
+}) {
+  return (
+    <div
+      className={[styles.passageMarkdown, className].filter(Boolean).join(" ")}
+      aria-live={ariaLive}
+    >
+      <PassageMarkdown text={text} />
+    </div>
+  );
+}

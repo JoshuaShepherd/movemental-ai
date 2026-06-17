@@ -143,7 +143,7 @@ export const findingAiGuidanceWorthTrustingBody: ReactNode = (
     </p>
 
     <p>
-      The part of the economy that sells AI has every incentive to start at Solutions: the tool, the
+      The part of the economy that sells AI has every incentive to start at Tech: the tool, the
       pilot, the deployment. Demos are vivid. Pilots fit fiscal years. Screenshots of outputs circulate
       on boards. The quieter work does not screenshot well. Governance boundaries that actually bind.
       Structured experiments that produce shared language. Training that forms staff judgment rather
@@ -152,7 +152,7 @@ export const findingAiGuidanceWorthTrustingBody: ReactNode = (
 
     <p>
       Movemental&rsquo;s AI Stewardship Sequence field guide names the forward order Safety → Sandbox →
-      Skills → Solutions and the default scramble (demo → pilot → policy later). That inversion feels
+      Training → Tech and the default scramble (demo → pilot → policy later). That inversion feels
       productive. It produces deliverables and the sensation of keeping pace. It almost never survives
       the first serious review.
     </p>
@@ -162,11 +162,11 @@ export const findingAiGuidanceWorthTrustingBody: ReactNode = (
       workers stretch into unfamiliar task types. It can also produce failure modes when the tool
       misleads on reliability, especially when junior staff use AI without senior oversight{" "}
       <Cite n={32} title="BCG · Sept 2024" />. That is not a story about mission-driven orgs alone.
-      It is a warning about Solutions-first engagements that skip judgment formation.
+      It is a warning about Tech-first engagements that skip judgment formation.
     </p>
 
     <p>
-      The people who can help you will resist starting at Solutions. They will ask, early and without
+      The people who can help you will resist starting at Tech. They will ask, early and without
       embarrassment, what you are trying to protect, what your leadership actually owns, and what your
       staff are becoming whether you named it or not. If the first two conversations are about tools,
       the third will also be about tools, and so will the twelfth.
@@ -366,7 +366,7 @@ export const findingAiGuidanceWorthTrustingBody: ReactNode = (
     <ul className={styles.articleList}>
       <li>
         <span className={styles.articleListNum}>•</span>
-        <span>Solutions-first from the opening conversation.</span>
+        <span>Tech-first from the opening conversation.</span>
       </li>
       <li>
         <span className={styles.articleListNum}>•</span>
@@ -472,7 +472,7 @@ export const findingAiGuidanceWorthTrustingBody: ReactNode = (
       <li>
         <span className={styles.articleListNum}>04.</span>
         <span>
-          Start Safety and Sandbox even if you buy Solutions. Policy and bounded experiments should not be
+          Start Safety and Sandbox even if you buy Tech. Policy and bounded experiments should not be
           deferred until after deployment.
         </span>
       </li>
@@ -493,7 +493,7 @@ export const findingAiGuidanceWorthTrustingBody: ReactNode = (
     </p>
 
     <p>
-      The frame we work inside is the AI Stewardship Sequence: Safety → Sandbox → Skills → Solutions. I
+      The frame we work inside is the AI Stewardship Sequence: Safety → Sandbox → Training → Tech. I
       offer the sequence as a case study, not a sacrament. What I am not offering is certainty, a single
       stack that solves your ethics, or immunity from error.
     </p>

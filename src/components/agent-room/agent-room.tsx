@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 
 import { AGENT_ROOM_MODE } from "@/lib/agent-room/mode";
 import styles from "./ink-band.module.css";
@@ -10,7 +10,7 @@ import { useAgentRoomStub } from "./use-agent-room-stub";
 import { useAgentRoomRefs } from "./agent-room-context";
 import { Mast } from "./shell/mast";
 import { ScreenZone } from "./shell/screen-zone";
-import { AgentDock } from "./shell/agent-dock";
+import { AgentDock, type DockState } from "./shell/agent-dock";
 import { InkOverlay } from "./shell/ink-overlay";
 import { StreamScreen } from "./screen/stream-screen";
 import { HybridScreen } from "./screen/hybrid-screen";
@@ -20,12 +20,12 @@ import { highlightChipForScene } from "@/lib/agent-room/scene-highlight";
 import { BEAT_PLACEHOLDER, STREAM_PLACEHOLDER, type ComposerChip } from "./composer";
 import { DiscussFold } from "./discuss/discuss-sheet";
 import type { VoiceState } from "./use-agent-room-stream";
-import type { RoomPhase, TranscriptTurn } from "@/lib/agent-room/discuss";
+import type { RoomPhase } from "@/lib/agent-room/discuss";
+import type { ThreadTurn } from "@/lib/agent-room/thread";
 
 /**
  * The Agent Room shell — mast + stage + floating agent dock (docs/html/home).
- * Presentational and mode-agnostic: each mode container builds the screen node
- * and feeds it here. `screenKey` re-fires the `settle` animation on every screen change.
+ * Screen stays mounted behind scrim when expanded (SSOT I6).
  */
 function AgentRoomView({
   screenNode,
@@ -41,19 +41,18 @@ function AgentRoomView({
   onReplay,
   placeholder,
   phase = "guide",
-  transcript = [],
+  thread = [],
   stubDiscussCapture = false,
   onCaptureSubmit,
   onCaptureSkip,
   showHandbookCapture,
-  onConversationActive,
+  onDockStateChange,
   highlightChipLabel,
 }: {
   screenNode: ReactNode;
   screenKey: string;
   home: boolean;
   scroll: boolean;
-  /** Reality-check beat — compact sheet + scroll fallback so options aren't clipped. */
   beat: boolean;
   voice: VoiceState;
   error: string | null;
@@ -63,27 +62,21 @@ function AgentRoomView({
   onReplay: () => void;
   placeholder?: string;
   phase?: RoomPhase;
-  transcript?: TranscriptTurn[];
+  thread?: ThreadTurn[];
   stubDiscussCapture?: boolean;
   onCaptureSubmit?: (kind: string, values: Record<string, string>) => void;
   onCaptureSkip?: () => void;
   showHandbookCapture?: boolean;
-  onConversationActive?: () => void;
-  /** Label of the ONE float chip that earns the highlighter swipe (null = none). */
+  onDockStateChange?: (state: DockState) => void;
   highlightChipLabel?: string | null;
 }) {
   const { gestureRootEl } = useAgentRoomRefs();
-  const discuss = phase === "discuss";
   const [dockExpanded, setDockExpanded] = useState(false);
-  // Passage turns already render in the thread as body prose; keep live ink only
-  // while streaming or for short voice-surface replies (filtered from the thread).
-  const lastAssistant = transcript.filter((t) => t.role === "assistant").at(-1);
-  const hideLiveDuplicate =
-    discuss &&
-    lastAssistant?.surface === "passage" &&
-    lastAssistant.content === voice.text;
-  const liveText =
-    isStreaming && voice.text && !hideLiveDuplicate ? voice.text : undefined;
+
+  const handleDockStateChange = (state: DockState) => {
+    setDockExpanded(state === "expanded");
+    onDockStateChange?.(state);
+  };
 
   const stubCaptureNode =
     stubDiscussCapture && onCaptureSubmit ? (
@@ -106,20 +99,19 @@ function AgentRoomView({
       ref={gestureRootEl}
       className={`ink-band-surface ${styles.room} ${styles.roomDock} ${
         dockExpanded ? styles.roomDockConversation : ""
-      } ${beat ? styles.roomBeat : ""} ${discuss ? styles.discuss : ""}`}
+      } ${beat ? styles.roomBeat : ""}`}
     >
       <InkOverlay />
       <Mast onHome={onReplay} />
 
-      <ScreenZone scroll={(scroll || discuss) && !dockExpanded} home={home && !discuss && !dockExpanded}>
-        {!dockExpanded ? (
-          <>
-            <div key={screenKey} className={styles.settle}>
-              {screenNode}
-            </div>
-            {!discuss && <DiscussFold transcript={transcript} />}
-          </>
-        ) : null}
+      <ScreenZone scroll={scroll && !dockExpanded} home={home && !dockExpanded}>
+        <div
+          key={screenKey}
+          className={`${styles.settle} ${dockExpanded ? styles.screenBehindScrim : ""}`}
+        >
+          {screenNode}
+        </div>
+        {!dockExpanded && <DiscussFold thread={thread} />}
       </ScreenZone>
 
       <AgentDock
@@ -130,15 +122,13 @@ function AgentRoomView({
         onSay={onSay}
         placeholder={placeholder}
         phase={phase}
-        transcript={transcript}
+        thread={thread}
         stubCapture={stubCaptureNode}
         showHandbookCapture={showHandbookCapture}
         onHandbookCaptureSubmit={onCaptureSubmit}
-        liveText={liveText}
         liveThinking={isStreaming && voice.thinking}
         liveThinkingNote={voice.note}
-        onConversationActive={onConversationActive}
-        onExpandedChange={setDockExpanded}
+        onDockStateChange={handleDockStateChange}
         screenKey={screenKey}
         highlightChipLabel={highlightChipLabel}
       />
@@ -146,9 +136,6 @@ function AgentRoomView({
   );
 }
 
-/**
- * Hybrid container — local SCENES runner + SSE on unscripted moves (default mode).
- */
 function HybridRoom() {
   const room = useAgentRoomHybrid();
   const { screen } = room;
@@ -186,20 +173,17 @@ function HybridRoom() {
       onReplay={room.reset}
       placeholder={screen.id === "beat" ? BEAT_PLACEHOLDER : undefined}
       phase={room.phase}
-      transcript={room.transcript}
+      thread={room.thread}
       stubDiscussCapture={room.stubDiscussCapture}
       onCaptureSubmit={room.onCaptureSubmit}
       onCaptureSkip={room.onCaptureSkip}
       showHandbookCapture={room.showHandbookCapture}
-      onConversationActive={room.markConversationActive}
+      onDockStateChange={room.onDockStateChange}
       highlightChipLabel={highlightChipLabel}
     />
   );
 }
 
-/**
- * Stub container — local scene runner, no network (offline fallback).
- */
 function StubRoom() {
   const room = useAgentRoomStub();
   const { screen } = room;
@@ -231,7 +215,7 @@ function StubRoom() {
       onReplay={room.reset}
       placeholder={screen.id === "beat" ? BEAT_PLACEHOLDER : undefined}
       phase={room.phase}
-      transcript={room.transcript}
+      thread={room.thread}
       stubDiscussCapture={room.stubDiscussCapture}
       onCaptureSubmit={room.onCaptureSubmit}
       onCaptureSkip={room.onCaptureSkip}
@@ -241,7 +225,6 @@ function StubRoom() {
   );
 }
 
-/** Stream container — live SSE agent. Opt-in via env; wired fully in AF-90. */
 function StreamRoom() {
   const room = useAgentRoomStream();
   const { screen } = room;
@@ -282,21 +265,14 @@ function StreamRoom() {
       onReplay={room.reset}
       placeholder={inBeat ? BEAT_PLACEHOLDER : STREAM_PLACEHOLDER}
       phase={room.phase}
-      transcript={room.transcript}
+      thread={room.thread}
       stubDiscussCapture={room.stubDiscussCapture}
+      onDockStateChange={room.onDockStateChange}
       highlightChipLabel={highlightChipLabel}
     />
   );
 }
 
-/**
- * The Agent Room. The ink/voice provider now lives in `agent/layout.tsx`
- * (Phase 3) so it spans every `/agent/*` route; here we only dispatch on the
- * build-time `AGENT_ROOM_MODE` flag (constant per render → each branch's hook is
- * called unconditionally within its own component, no rules-of-hooks violation).
- * Defaults to `"hybrid"`; set `NEXT_PUBLIC_AGENT_ROOM_MODE=stub` for zero-network
- * or `stream` for legacy full-AI regression.
- */
 export function AgentRoom() {
   return AGENT_ROOM_MODE === "stream" ? (
     <StreamRoom />

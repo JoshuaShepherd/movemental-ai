@@ -1,116 +1,49 @@
 "use client";
 
 import { useAgentRoomRefs, useInk } from "../agent-room-context";
-import { InkVoice, StreamVoice } from "../ink/ink-voice";
-import { DiscussVoice } from "../discuss/discuss-voice";
+import { InkVoice } from "../ink/ink-voice";
 import styles from "../ink-band.module.css";
+import { validateCaption } from "@/lib/agent-room/caption-validator";
 import type { VoiceState } from "../use-agent-room-stream";
-import type { RoomPhase, TranscriptTurn } from "@/lib/agent-room/discuss";
 
 /**
- * The voice zone — its own band between the stage and the composer, where the
- * agent's hand writes (Caveat in ink-blue). Both modes share the same ink layer
- * (`useInk`): the stub runner's `inkLine` calls fill the committed queue
- * (`voiceLines`), and live (stream) mode routes `text_delta` through
- * `beginStream`/`appendStream`, surfaced here as `voiceStream` and animated as a
- * growing tail by `StreamVoice`. When a stream line (or the stream-only thinking
- * pulse) is the current focus, the committed queue fades via `forceOld`. `error`
- * takes precedence; the reserved `min-height` keeps the band from jumping when
- * empty.
+ * Collapsed ink caption band (SSOT I1) — one short, non-wrapping Caveat line.
  */
 export function VoiceZone({
-  voice,
   error,
-  phase = "guide",
-  transcript = [],
-  strip = false,
-  hideLiveStream = false,
+  caption,
 }: {
-  voice: VoiceState;
+  voice?: VoiceState;
   error: string | null;
-  /** Discuss phase (INT-08): grows the band to 3–5 lines + tap-to-expand. */
-  phase?: RoomPhase;
-  transcript?: TranscriptTurn[];
-  /** Render inside the floating dock handwriting strip (docs/html/home). */
-  strip?: boolean;
-  /** Drawer is open — live stream ink belongs in the thread, not the strip. */
-  hideLiveStream?: boolean;
+  caption?: string;
 }) {
   const { voiceEl } = useAgentRoomRefs();
-  const { voiceLines, resolveLine, voiceStream } = useInk();
+  const { voiceLines, resolveLine } = useInk();
 
-  // Discuss (Model B): the band grows and is fed by the transcript's recent
-  // assistant lines (DiscussVoice). During a live stream turn (INT-10) the
-  // growing ink shows below the committed lines; on turn end it commits to the
-  // transcript and clears. The thinking pulse covers the gap before the first
-  // delta. Error still wins.
-  const discuss = phase === "discuss";
-  const voiceClass = strip
-    ? `${styles.handwritingVline} ${discuss ? styles.voiceDiscuss : ""}`
-    : `${styles.voice} ${discuss ? styles.voiceDiscuss : ""}`;
-
-  if (phase === "discuss") {
-    return (
-      <div
-        ref={strip ? undefined : voiceEl}
-        className={voiceClass}
-        aria-live="polite"
-      >
-        {error ? (
-          <span className={styles.errorLine}>{error}</span>
-        ) : (
-          <>
-            <DiscussVoice transcript={transcript} multiline />
-            {voiceStream && !hideLiveStream && (
-              <StreamVoice key={voiceStream.id} text={voiceStream.text} multiline />
-            )}
-            {voice.thinking && !voiceStream && (
-              <div className={styles.thinking}>
-                <span className={styles.pulse} aria-hidden="true" />
-                {voice.note && <span className={styles.thinkingNote}>{voice.note}…</span>}
-              </div>
-            )}
-          </>
-        )}
-      </div>
-    );
-  }
-
-  // Thinking pulse is stream-only (the stub never sets `voice.thinking`): the calm
-  // pulse shows before the first delta and again while the read-back composes.
-  const showPulse = voice.thinking && !voiceStream;
-  const hasInk = voiceLines.length > 0 || Boolean(voiceStream);
+  const rawCaption =
+    caption ??
+    (voiceLines.length > 0 ? voiceLines[voiceLines.length - 1]?.text : undefined);
+  const validated = rawCaption ? validateCaption(rawCaption) : { eligible: false as const };
+  const showCaption = validated.eligible ? validated.caption : undefined;
+  const matchingLine = showCaption
+    ? voiceLines.find((l) => l.text === showCaption)
+    : undefined;
 
   return (
-    <div ref={strip ? undefined : voiceEl} className={voiceClass} aria-live="polite">
+    <div
+      ref={voiceEl}
+      className={`${styles.handwritingVline} ${styles.voiceCaption}`}
+      aria-live="polite"
+    >
       {error ? (
         <span className={styles.errorLine}>{error}</span>
-      ) : (
-        <>
-          {voiceLines.length > 0 && (
-            <InkVoice
-              lines={voiceLines}
-              onLineDone={resolveLine}
-              forceOld={Boolean(voiceStream) || showPulse}
-            />
-          )}
-          {/* Streamed agent replies can be long, wrap them so they stay on the
-              page (the nib write-on is reserved for the short scripted lines). */}
-          {voiceStream && !hideLiveStream && (
-            <StreamVoice key={voiceStream.id} text={voiceStream.text} multiline />
-          )}
-          {showPulse && (
-            <div className={styles.thinking}>
-              <span className={styles.pulse} aria-hidden="true" />
-              {voice.note && <span className={styles.thinkingNote}>{voice.note}…</span>}
-            </div>
-          )}
-          {/* Last-resort fallback if a turn produced text outside the ink layer. */}
-          {!hasInk && !showPulse && voice.text && (
-            <div className={`${styles.vline} ${styles.vlineWrap}`}>{voice.text}</div>
-          )}
-        </>
-      )}
+      ) : showCaption && matchingLine ? (
+        <InkVoice lines={[matchingLine]} onLineDone={resolveLine} />
+      ) : showCaption ? (
+        <div className={styles.vline}>
+          <span className={styles.vspan}>{showCaption}</span>
+        </div>
+      ) : null}
     </div>
   );
 }

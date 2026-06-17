@@ -50,7 +50,7 @@ const STAGES: readonly PathStage[] = [
 
 /**
  * The path screen: four ordered stages with the talk's rationale for why the
- * sequence is fixed — Safety first, then Sandbox, Training, Technology.
+ * sequence is fixed — Safety first, then Sandbox, Training, Tech.
  */
 export function PathScreen({ onHome }: ScreenProps) {
   const [active, setActive] = useState<number>(1);

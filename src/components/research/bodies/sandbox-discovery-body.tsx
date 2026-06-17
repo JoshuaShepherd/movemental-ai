@@ -41,7 +41,7 @@ export const sandboxDiscoveryBody: ReactNode = (
 
     <p>
       What the stage produces: prioritized use cases, experiment briefs, measurement and risk notes, and
-      a draft playbook. Plus a graduation gate that decides what may advance to Skills or Solutions.
+      a draft playbook. Plus a graduation gate that decides what may advance to Training or Tech.
     </p>
 
     <p>
@@ -71,7 +71,7 @@ export const sandboxDiscoveryBody: ReactNode = (
     </p>
 
     <p>
-      In Safety → Sandbox → Skills → Solutions, Sandbox Discovery is second, not first. Same discipline.
+      In Safety → Sandbox → Training → Tech, Sandbox Discovery is second, not first. Same discipline.
       Sharper dependencies. A clearer exit criterion.
     </p>
 
@@ -177,7 +177,7 @@ export const sandboxDiscoveryBody: ReactNode = (
 
     <p>
       The sharpest addition to the evolved stage: an explicit exit criterion. The stage ends with a
-      playbook and a set of use cases that passed graduation into Skills or Solutions.
+      playbook and a set of use cases that passed graduation into Training or Tech.
     </p>
 
     <p>A use case graduates when it has:</p>
@@ -251,9 +251,9 @@ export const sandboxDiscoveryBody: ReactNode = (
     </p>
 
     <p>
-      Critically, the stage feeds Skills and Solutions. Skills training organizes around workflows that
+      Critically, the stage feeds Training and Tech. Training organizes around workflows that
       graduated, not generic tool fluency (
-      <ResearchLink slug="the-skill-of-ai">The Skill of AI</ResearchLink>). Solutions attach to use cases
+      <ResearchLink slug="the-skill-of-ai">The Skill of AI</ResearchLink>). Tech attaches to use cases
       that demonstrated value inside guardrails. The sandbox is where learning gets captured so the rest of
       the system acts on it without improvising.
     </p>
@@ -283,7 +283,7 @@ export const sandboxDiscoveryBody: ReactNode = (
 
     <p>
       The AI Stewardship Sequence field guide names the same inversion: demo → pilot → policy later. And
-      the borrowing chain: Solutions borrows from Skills; Skills from Sandbox; Sandbox from Safety.
+      the borrowing chain: Tech borrows from Training; Training from Sandbox; Sandbox from Safety.
     </p>
 
     <h3 id="section-counter">Counterarguments to keep in the margin</h3>
@@ -359,7 +359,7 @@ export const sandboxDiscoveryBody: ReactNode = (
       <li>
         <span className={styles.articleListNum}>05.</span>
         <span>
-          Feed graduated use cases directly into Skills design. Do not schedule generic AI literacy while
+          Feed graduated use cases directly into Training design. Do not schedule generic AI literacy while
           sandbox evidence sits unused.
         </span>
       </li>
@@ -386,7 +386,7 @@ export const sandboxDiscoveryBody: ReactNode = (
 
     <p className={styles.marginNote}>
       AI Stewardship Sequence: Safety (field guide) → Sandbox (this piece) →{" "}
-      <ResearchLink slug="the-skill-of-ai">Skills</ResearchLink> → Solutions. Upstream discernment:{" "}
+      <ResearchLink slug="the-skill-of-ai">Training</ResearchLink> → Tech. Upstream discernment:{" "}
       <ResearchLink slug="finding-ai-guidance-worth-trusting">
         Finding AI guidance worth trusting
       </ResearchLink>

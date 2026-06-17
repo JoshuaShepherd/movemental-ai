@@ -13,10 +13,11 @@ import { PATH_STAGE_LABELS } from "@/lib/agent-room/naming";
 import { getSource, type SourceId } from "@/lib/citations/sources";
 
 import styles from "./audience-page.module.css";
-import { CHARTER_FIVE, HandbookDashboard } from "./handbook-dashboard";
+import { CHARTER_FIVE } from "./handbook-dashboard";
 import { FoundationDiagram } from "./foundation-diagram";
 import { getLetterEmbedParagraphs, getLetterFullText } from "./letter-utils";
 import { PATH_STAGES } from "./institutions-config";
+import { TheBuildExplorer } from "./the-build-explorer";
 import type { AudienceCardStat, AudiencePageConfig } from "./types";
 
 type AudiencePageExperienceProps = {
@@ -362,23 +363,13 @@ export function AudiencePageExperience({ config, letterMarkdown }: AudiencePageE
           <section className={`${shell.section} ${shell.bandPaper}`} id="the-build">
             <div className={`${shell.sectionInner} ${shell.sectionInnerWide}`}>
               <p className={shell.eyebrow}>The build</p>
-              <h2 className={`${shell.title} ${shell.titleSm}`}>{config.theBuild.title}</h2>
-              {config.theBuild.paragraphs.map((para) => (
-                <p key={para.slice(0, 48)} className={shell.body}>
-                  {para}
-                </p>
-              ))}
-              <div className={styles.toolList}>
-                {config.theBuild.toolExamples.map((tool, i) => (
-                  <p key={tool.label} className={styles.toolItem}>
-                    <span className={styles.toolNum}>{String(i + 1).padStart(2, "0")}</span>
-                    <span>
-                      <span className={styles.toolLabel}>{tool.label}</span> {tool.text}
-                    </span>
-                  </p>
-                ))}
-              </div>
-              <HandbookDashboard />
+              <TheBuildExplorer
+                audience={config.slug}
+                title={config.theBuild.title}
+                titleHighlight={config.theBuild.titleHighlight}
+                intro={config.theBuild.intro}
+                footnote={config.theBuild.footnote}
+              />
               {config.theBuild.bridgeQuestion ? (
                 <p className={`${shell.body} ${styles.bridgeQuestion}`}>
                   {config.theBuild.bridgeQuestion}

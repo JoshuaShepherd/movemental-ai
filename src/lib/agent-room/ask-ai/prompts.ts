@@ -6,13 +6,13 @@
 export const ASK_AI_PROMPTS = {
   default: `I'm exploring Movemental (movemental.ai) — a path for mission-driven organizations (churches, nonprofits, seminaries) to adopt AI without eroding trust.
 
-**Context:** Movemental argues AI is already inside most organizations ungoverned; the deeper problem is fragmentation (scattered teaching, records, and voice); and the fix is ordered: Safety → Sandbox → Training → Technology — with a ratified AI Charter first, not a tech purchase.
+**Context:** Movemental argues AI is already inside most organizations ungoverned; the deeper problem is fragmentation (scattered teaching, records, and voice); and the fix is ordered: Safety → Sandbox → Training → Tech — with a ratified AI Charter first, not a tech purchase.
 
 **Your role:** Rigorous advisor, not a sales bot. Help me think clearly about whether this fits my organization.
 
 **Work through:**
 1. **What Movemental is offering** — In plain language, what is the product/service model? Who is it for and who is it NOT for?
-2. **The four-stage path** — What happens at Safety, Sandbox, Training, and Technology? What is an "AI Charter" and what would it contain?
+2. **The four-stage path** — What happens at Safety, Sandbox, Training, and Tech? What is an "AI Charter" and what would it contain?
 3. **How this differs** from generic "AI for churches/nonprofits" vendors, ChatGPT Enterprise rollouts, or consulting firms.
 4. **Concrete vs. marketing** — What claims would I need to verify? What evidence should I ask for?
 5. **Strongest objections** — What would a skeptical board member or CFO push back on?
@@ -120,7 +120,7 @@ export const ASK_AI_PROMPTS = {
 - **Formation audience:** Young adults asking the machine questions they used to ask the church — watching whether you answer with fear, shrug, or formation.
 - **Foundation:** Gather people, teaching, and record into one connected source of truth the church owns — verifiable, not generic web-trained chatbot.
 - **Build (after foundation):** Teaching search, grounded assistant with citations elders can check, member pathways through your body of work.
-- **Path:** Safety (ratified AI Charter, pastoral boundaries, disclosure) → Sandbox → Training → Technology. First move is Safety, not tech.
+- **Path:** Safety (ratified AI Charter, pastoral boundaries, disclosure) → Sandbox → Training → Tech. First move is Safety, not tech.
 - **Start:** Conversation, not checkout. Letter downloadable for elders.
 
 **Your role:** Help me prepare to discuss this with my elders — not to sell Movemental, but to think clearly.
@@ -139,7 +139,7 @@ export const ASK_AI_PROMPTS = {
 
   churchesStart: `I'm at the end of Movemental's churches page (movemental.ai/agent/churches) and deciding whether to start a conversation with them.
 
-**I understand their case:** AI is already inside church life ungoverned; fragmentation is the deeper problem; path is Safety → Sandbox → Training → Technology; first deliverable is a ratified AI Charter; they gather teaching/record into owned foundation before building tools; formation is not optional; young adults are watching.
+**I understand their case:** AI is already inside church life ungoverned; fragmentation is the deeper problem; path is Safety → Sandbox → Training → Tech; first deliverable is a ratified AI Charter; they gather teaching/record into owned foundation before building tools; formation is not optional; young adults are watching.
 
 **Your role:** Decision advisor for a lead pastor — help me think, not hype.
 
@@ -162,7 +162,7 @@ export const ASK_AI_PROMPTS = {
 - **Deeper problem:** Fragmentation — program knowledge scattered, donor relationships in silos, mission voice rewritten a dozen ways. Quiet harm: appeals mischaracterizing programs, reports rounding inconvenient details.
 - **Foundation:** People, program record, mission voice → one connected source of truth, board-visible, donor-verifiable.
 - **Build:** Program search, mission-grounded assistant with auditable sources, donor/impact workflows that compound capability.
-- **Path:** Safety (board-ratifiable AI Charter: acceptable use, data handling, disclosure, incident response) → Sandbox → Training → Technology.
+- **Path:** Safety (board-ratifiable AI Charter: acceptable use, data handling, disclosure, incident response) → Sandbox → Training → Tech.
 - **Formation + fiduciary duty:** Tools without formed people = unapproved AI at scale.
 
 **Your role:** Help me prepare a board-ready briefing — rigorous, not promotional.
@@ -203,7 +203,7 @@ export const ASK_AI_PROMPTS = {
 - **Unique stakes:** Trust in the degree IS the product. Graduates will lead churches — your AI posture becomes their default.
 - **Foundation:** People, work, record → one searchable, verifiable foundation the institution owns.
 - **Build:** Search across syllabi/archives/faculty work; assistant grounded in your material; discovery for students asking the machine not the library.
-- **Path:** Safety → Sandbox → Training → Technology. Formation is what seminaries already do — should lead with it.
+- **Path:** Safety → Sandbox → Training → Tech. Formation is what seminaries already do — should lead with it.
 - **Weight:** Doing nothing is still a choice that teaches graduates not to think carefully.
 
 **Your role:** Help me prepare for academic leadership and board conversation — faculty senate politics included.

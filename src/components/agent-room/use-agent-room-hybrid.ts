@@ -25,7 +25,6 @@ import { readAgentDeepLink, clearAgentDeepLinkParams } from "@/lib/agent-room/de
 import { stashHandoffAudience, isWaysInDoor, type AgentSayOptions } from "@/lib/agent-room/ways-in-doors";
 import { CONCIERGE_VOICE } from "@/lib/agent-room/data/concierge-voice-lines";
 import {
-  DISCUSS_PASSAGE_THRESHOLD,
   ENTER_DISCUSS_VALUE,
   type RoomPhase,
 } from "@/lib/agent-room/discuss";
@@ -39,7 +38,9 @@ import type { EngineExtraState } from "./screen/hybrid-screen";
 import type { StreamScreenInput, StubScreenState } from "./screen/stub/stub-screen";
 import type { VoiceState } from "./use-agent-room-stream";
 import { useDiscussPhase } from "./use-discuss-phase";
+import { useRoomThread } from "./use-room-thread";
 import type { AgentRoomController } from "./use-agent-room-stub";
+import type { DockState } from "./shell/agent-dock";
 
 const ANON_KEY = "movemental-room-anon";
 const SESSION_KEY = "movemental-room-session";
@@ -96,19 +97,19 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   voice: VoiceState;
   engineExtra: EngineExtraState | null;
   streamInput: StreamScreenInput | null;
-  markConversationActive: () => void;
+  onDockStateChange: (state: DockState) => void;
 } {
   const {
     inkLine,
     drawGesture,
     clearInk,
     clearVoice,
-    beginStream,
-    appendStream,
     commitStream,
   } = useInk();
   const discuss = useDiscussPhase();
-  const { appendTranscript, enterDiscuss, resetDiscuss } = discuss;
+  const { enterDiscuss, resetDiscuss, recordAssistantTurn } = discuss;
+  const roomThread = useRoomThread();
+  const { thread, appendUser, updateStreaming, finalizeAssistant, resetThread } = roomThread;
   const phaseRef = useRef<RoomPhase>(discuss.phase);
   phaseRef.current = discuss.phase;
 
@@ -142,8 +143,8 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   const abortRef = useRef<AbortController | null>(null);
   /** Last text sent to the agent — replayed by `retry()` after a transient fail. */
   const lastTurnRef = useRef<string | null>(null);
-  /** Expanded chat or prior agent turns — typed input skips scripted scenes. */
-  const conversationActiveRef = useRef(false);
+  /** Expanded dock — typed input skips scripted scenes (SSOT I4). */
+  const dockExpandedRef = useRef(false);
   const screenRef = useRef(screen);
   screenRef.current = screen;
 
@@ -260,17 +261,13 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     [play],
   );
 
+  const onDockStateChange = useCallback((state: DockState) => {
+    dockExpandedRef.current = state === "expanded";
+  }, []);
+
   useEffect(() => {
     runRef.current = run;
   }, [run]);
-
-  useEffect(() => {
-    if (discuss.phase === "discuss") conversationActiveRef.current = true;
-  }, [discuss.phase]);
-
-  const markConversationActive = useCallback(() => {
-    conversationActiveRef.current = true;
-  }, []);
 
   const applyAgentUiRender = useCallback(
     (component: ComponentId, rawProps: Record<string, unknown>) => {
@@ -311,13 +308,11 @@ export function useAgentRoomHybrid(): AgentRoomController & {
 
   const runAgentTurn = useCallback(
     async (text: string, opts?: { isRetry?: boolean }) => {
-      const inDiscuss = phaseRef.current === "discuss";
       lastTurnRef.current = text;
       const priorHistory = [...historyRef.current];
       historyRef.current = [...historyRef.current, { role: "user", content: text }];
-      // On a retry the visitor's turn is already on the sheet, don't re-annotate.
-      if (inDiscuss && !opts?.isRetry) {
-        appendTranscript({ role: "user", content: text, surface: "margin" });
+      if (!opts?.isRetry) {
+        appendUser(text);
       }
 
       setError(null);
@@ -326,11 +321,10 @@ export function useAgentRoomHybrid(): AgentRoomController & {
       setAgentChips([]);
       clearVoice();
       setVoice({ thinking: true, text: "" });
+      requestExpandConversation();
 
       const controller = new AbortController();
       abortRef.current = controller;
-
-      let streamOpen = false;
 
       try {
         const result = await runAgentStreamTurn({
@@ -343,12 +337,9 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         signal: controller.signal,
         callbacks: {
           onTextDelta: (acc) => {
-            if (!streamOpen) {
-              beginStream();
-              streamOpen = true;
-            }
-            appendStream(acc);
-            setVoice({ thinking: false, text: acc });
+            requestExpandConversation();
+            updateStreaming(acc);
+            setVoice({ thinking: false, text: "" });
           },
           onProgressThinking: () => {
             setVoice((v) => ({ ...v, thinking: true }));
@@ -357,8 +348,6 @@ export function useAgentRoomHybrid(): AgentRoomController & {
             setVoice((v) => ({ ...v, note: label ?? undefined }));
           },
           onAgentHandoff: () => {
-            commitStream();
-            streamOpen = false;
             setVoice({ thinking: true, text: "" });
           },
           onUiRender: (component, props) => {
@@ -410,42 +399,27 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         const assistant = result.assistant;
         if (assistant) {
           historyRef.current = [...historyRef.current, { role: "assistant", content: assistant }];
+          finalizeAssistant(assistant);
+          if (phaseRef.current === "discuss") recordAssistantTurn();
         }
-        if (phaseRef.current === "discuss") {
-          if (assistant) {
-            appendTranscript({
-              role: "assistant",
-              content: assistant,
-              surface: assistant.length > DISCUSS_PASSAGE_THRESHOLD ? "passage" : "voice",
-            });
-          }
-          clearVoice();
-          // Long passages live on the thread; short voice lines stay in live ink.
-          setVoice({
-            thinking: false,
-            text:
-              assistant && assistant.length <= DISCUSS_PASSAGE_THRESHOLD ? assistant : "",
-          });
-        } else {
-          commitStream();
-          setVoice({ thinking: false, text: assistant });
-        }
+        clearVoice();
+        setVoice({ thinking: false, text: "" });
       } finally {
         setIsStreaming(false);
         abortRef.current = null;
       }
     },
     [
-      appendStream,
-      appendTranscript,
+      appendUser,
       applyAgentUiRender,
-      beginStream,
       buildRoomContext,
       clearVoice,
-      commitStream,
       drawGesture,
       enterDiscuss,
-      play,
+      finalizeAssistant,
+      inkLine,
+      recordAssistantTurn,
+      updateStreaming,
     ],
   );
 
@@ -456,7 +430,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
       // Opening choreography sets busy while inkLine animates; expanding the dock
       // hides the handwriting strip but the runner must still finish. Once the
       // visitor engages the conversation panel, honor their message.
-      if (busy && !conversationActiveRef.current) return;
+      if (busy && !dockExpandedRef.current && historyRef.current.length === 0) return;
 
       genRef.current.value += 1;
       setBusy(false);
@@ -471,7 +445,9 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         freeTextStreak: freeTextStreakRef.current,
         fallbackStreak: fallbackStreakRef.current,
         chatActive:
-          (conversationActiveRef.current || historyRef.current.length > 0) &&
+          (dockExpandedRef.current ||
+            historyRef.current.length > 0 ||
+            thread.length > 0) &&
           !(fromWaysInPanel && isWaysInDoor(text)),
       });
 
@@ -529,11 +505,12 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     }
     freeTextStreakRef.current = 0;
     fallbackStreakRef.current = 0;
-    conversationActiveRef.current = false;
+    dockExpandedRef.current = false;
     setHandbookCaptureActive(false);
     resetDiscuss();
+    resetThread();
     run("opening");
-  }, [abandonCapture, clearInk, clearVoice, resetDiscuss, run]);
+  }, [abandonCapture, clearInk, clearVoice, resetDiscuss, resetThread, run]);
 
   const onBeatAnswer = useCallback(
     (qi: number, oi: number) => {
@@ -653,7 +630,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     error,
     mapRead,
     sendMessage,
-    markConversationActive,
+    onDockStateChange,
     reset: goHome,
     onBeatAnswer,
     onLeaderSelect,
@@ -662,7 +639,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     runScene: run,
     stubDiscussCapture: false,
     phase: discuss.phase,
-    transcript: discuss.transcript,
+    thread,
     discussTurnCount: discuss.discussTurnCount,
     enterDiscuss: discuss.enterDiscuss,
     exitDiscuss: discuss.exitDiscuss,

@@ -39,7 +39,7 @@ const STAGE_DESCRIPTIONS: Record<string, string> = {
     "Evidence under Safety: a shared record of what's been tried, in compliant places, with proof.",
   Training:
     "Formation as judgment: distributed taste, correction, and verification, not button-pushing.",
-  Technology:
+  Tech:
     "Workflows with AI inside them: owners, gates, outcomes, and independence from any one tool.",
   Cross:
     "Honest location: where you actually are on the path, and how you respond when things break.",
@@ -312,7 +312,7 @@ export function SsssIntegrityDiagnostic() {
             Eighteen statements about how your organization actually operates across the four stages of
             the path:{" "}
             <strong className="font-medium text-foreground">
-              Safety, Sandbox, Training, Technology
+              Safety, Sandbox, Training, Tech
             </strong>
             . Honest answers give you a clear mirror, and one place to start. Suitable for a leadership
             team answering together.
@@ -518,7 +518,7 @@ export function SsssIntegrityDiagnostic() {
                   ["Safety", result.stagePercents.Safety],
                   ["Sandbox", result.stagePercents.Sandbox],
                   ["Training", result.stagePercents.Training],
-                  ["Technology", result.stagePercents.Technology],
+                  ["Tech", result.stagePercents.Tech],
                   ["Honest location & incidents", result.stagePercents.Cross],
                 ] as const
               ).map(([label, pct]) => (

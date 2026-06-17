@@ -1,7 +1,7 @@
 /**
  * Copy for `/agent/movement-voices` — adapted from movemental-the-talk.md and
  * movemental-kb-phase-3.md (origin / scenius / invitation). No internal strategy
- * framing; naming canon: Safety · Sandbox · Training · Technology; founding year 2026.
+ * framing; naming canon: Safety · Sandbox · Training · Tech; founding year 2026.
  */
 
 export const MOVEMENT_VOICES_NAV = [

@@ -5,7 +5,7 @@ import { PATH_STAGE_DISPLAY } from "../naming";
  *
  * Four reality-check questions with a Safety gate on Q1. Orgs that fail the gate
  * hear the threat and stop; orgs that pass answer Q2–Q4 and get a readback that
- * mirrors Sandbox/Training/Technology gaps, sharpest first. Data + pure
+ * mirrors Sandbox/Training/Tech gaps, sharpest first. Data + pure
  * `computeMapRead` only — beat/readback markup and answer choreography live in
  * `beat-scenes.ts` and the beat screen.
  */

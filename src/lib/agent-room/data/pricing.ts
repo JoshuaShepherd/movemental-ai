@@ -92,7 +92,7 @@ export const PRICING_TECH_FREE: PricingWayData = {
   title: "Free, and we guide you.",
   price: "[Free entry point to confirm]",
   descriptionPlain:
-    "Technology is scoped per engagement. We will confirm the free entry point before publishing a claim here.",
+    "Tech is scoped per engagement. We will confirm the free entry point before publishing a claim here.",
   ctaLabel: "",
   ctaHref: "",
   placeholder: true,
@@ -103,7 +103,7 @@ export const PRICING_TECH_PAID: PricingWayData = {
   price: "From $30,000 · scoped",
   descriptionPlain:
     "Scoped AI deployment across six configurations, from tool optimization to network-scale work for institutions and denominations.",
-  ctaLabel: "Talk to us about Technology",
+  ctaLabel: "Talk to us about Tech",
   ctaHref: "/enroll",
   paid: true,
 };
