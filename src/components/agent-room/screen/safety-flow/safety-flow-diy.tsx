@@ -5,6 +5,7 @@ import * as React from "react";
 import { submitLead } from "@/lib/agent-room/capture";
 import { SAFETY_FLOW_DIY_COPY } from "@/lib/agent-room/data/safety-flow";
 import styles from "../../ink-band.module.css";
+import { SafetyFlowBack } from "./safety-flow-back";
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
@@ -72,9 +73,7 @@ export function SafetyFlowDiy({
         </button>
         .
       </p>
-      <button type="button" className={styles.flowBack} onClick={onBack}>
-        ← back to both options
-      </button>
+      <SafetyFlowBack onClick={onBack}>back to both options</SafetyFlowBack>
     </div>
   );
 }

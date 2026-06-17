@@ -59,8 +59,8 @@ export const ABOUT_DOCK = {
     },
     {
       label: "Get in touch",
-      action: "agent" as const,
-      agentAsk: "I'd like to get in touch with Movemental.",
+      action: "scene" as const,
+      scene: "talkToUs",
     },
   ],
 };

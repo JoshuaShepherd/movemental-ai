@@ -111,6 +111,8 @@
     --color-ink-band-margin-red-ink: #9c4a2d;
     --color-ink-band-blue: #22409b;
     --color-ink-band-highlight: #eaff3a;
+    /* Caveat sticky-note paper — canon hand-annotation voice */
+    --color-ink-band-sticky: #fbf3c4;
 
     --font-ink-display: var(--font-ink-display-face), "Playfair Display", Georgia,
       serif;

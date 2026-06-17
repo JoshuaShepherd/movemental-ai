@@ -6,6 +6,7 @@ import Link from "next/link";
 import { SAFETY_FLOW_SIGNUP_COPY } from "@/lib/agent-room/data/safety-flow";
 import { createClient } from "@/lib/supabase/client";
 import styles from "../../ink-band.module.css";
+import { SafetyFlowBack } from "./safety-flow-back";
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
@@ -116,9 +117,7 @@ export function SafetyFlowSignup({
       </form>
 
       <p className={`${styles.flowFineprint} ${styles.flowNoUrgency}`}>{SAFETY_FLOW_SIGNUP_COPY.noUrgency}</p>
-      <button type="button" className={styles.flowBack} onClick={onBack}>
-        ← back to both options
-      </button>
+      <SafetyFlowBack onClick={onBack}>back to both options</SafetyFlowBack>
     </div>
   );
 }

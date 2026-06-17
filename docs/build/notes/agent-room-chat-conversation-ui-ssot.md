@@ -358,12 +358,14 @@ Path: `sendMessage` → `runAgentStreamTurn` → `POST /api/agent-room/turn` →
 
 Default opening chips (`composer.tsx` `DEFAULT_SUGGESTIONS`):
 
-| Chip | Hybrid routing (`composer-routing.ts`) |
-|------|----------------------------------------|
+| Chip | Hybrid routing (`resolveChipRoute`, collapsed dock) |
+|------|-----------------------------------------------------|
 | Get a clear next AI step | **Local** `toSafetyFlow` |
-| About Movemental | **Agent** + `requestExpandConversation` |
-| What does it cost? | **Agent** + expand |
-| Get in touch | **Agent** + expand |
+| About Movemental | **Local** `whatIs` |
+| What does it cost? | **Local** `cost` |
+| Get in touch | **Local** `talkToUs` |
+
+When the dock is **expanded**, the same opening labels route **agent** utterances (conversational ways-in context). Stream mode (`resolveStreamChipRoute`) keeps info chips on agent utterances.
 
 Scene follow-up chips use `SuggestChip.to` → `run(scene)` when `isKnownScene`.
 
@@ -392,7 +394,7 @@ Styles: `.passageMarkdown` in `ink-band.module.css` (`strong`, `em`, lists, `pas
 Audience/about pages use a **lighter dock**:
 
 - One-shot `inkLine(voiceLine)` on mount (page-specific Caveat line).
-- Chips: scroll to section **or** `router.push('/agent?ask=…&from=segment')`.
+- Chips: scroll to section, `action: "scene"` → `/agent` + sessionStorage scene handoff, or `router.push('/agent?ask=…&from=segment')` for genuine chat.
 - Composer `onSay` → always handoff URL; **no SSE on the document page**.
 - Same `AgentDock` collapsed/expanded UX if user expands before navigating away.
 - No `ScreenZone` / no beat / no Discuss transcript on document pages themselves.
@@ -500,4 +502,5 @@ Manual checks:
 
 | Date | Change |
 |------|--------|
+| 2026-06-17 | **Screen-first pill routing** — collapsed dock opening chips (About / Cost / Contact) → local scenes; expanded drawer keeps agent utterances; document chips gain `action: "scene"` handoff |
 | 2026-06-17 | Initial SSOT — documents expanded/collapsed split, typography (`AgentThreadProse`), duplicate guards, unwired Discuss overlay vs shipped dock behavior |

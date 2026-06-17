@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef } from "react";
+import { X } from "lucide-react";
 
 import type { SafetyCharterDocument } from "@/lib/agent-room/data/safety-charter";
 import { SAFETY_HANDBOOK } from "@/lib/agent-room/naming";
@@ -83,7 +84,7 @@ export function CharterDocModal({
           aria-label="Close"
           onClick={onClose}
         >
-          ×
+          <X className={styles.lightboxCloseIcon} strokeWidth={1.75} aria-hidden />
         </button>
         <p className={styles.lbEyebrow}>
           {SAFETY_HANDBOOK.fullTitle} · Layer {doc.layer}

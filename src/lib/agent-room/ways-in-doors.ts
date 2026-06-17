@@ -80,6 +80,9 @@ export function parseWaysInAudience(value: string | null | undefined): WaysInAud
 /** sessionStorage key carrying the segment a visitor handed off from. */
 const HANDOFF_AUDIENCE_KEY = "movemental:agent-audience";
 
+/** sessionStorage key — document-page chip requests a local scene on `/agent` mount. */
+const HANDOFF_SCENE_KEY = "movemental:agent-scene";
+
 /** Record the originating segment so the concierge opens route-aware after hand-off. */
 export function stashHandoffAudience(audience: WaysInAudience): void {
   if (typeof window === "undefined") return;
@@ -97,5 +100,35 @@ export function readHandoffAudience(): WaysInAudience | null {
     return parseWaysInAudience(window.sessionStorage.getItem(HANDOFF_AUDIENCE_KEY));
   } catch {
     return null;
+  }
+}
+
+/** Record a local scene to run once after `/agent` opening settles (document chips). */
+export function stashHandoffScene(scene: string): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.sessionStorage.setItem(HANDOFF_SCENE_KEY, scene);
+  } catch {
+    /* sessionStorage unavailable */
+  }
+}
+
+/** Scene stashed from a document-page chip handoff, if any. */
+export function readHandoffScene(): string | null {
+  if (typeof window === "undefined") return null;
+  try {
+    return window.sessionStorage.getItem(HANDOFF_SCENE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+/** Clear scene handoff after consumption. */
+export function clearHandoffScene(): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.sessionStorage.removeItem(HANDOFF_SCENE_KEY);
+  } catch {
+    /* sessionStorage unavailable */
   }
 }

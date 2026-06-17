@@ -60,16 +60,16 @@ Agent replies in expanded mode render in the **thread** (live stream + committed
 
 ## 4. Default float chips (opening)
 
-| Chip | Hybrid (default, after 2026-06-15) | Stream mode |
-| ---- | ------------------------------------ | ----------- |
-| **Get a clear next AI step** | Local `toSafetyFlow` → safety diagnostic sheet | Same (local) |
-| **About Movemental** | Agent utterance → expand dock + SSE turn | Agent utterance |
-| **What does it cost?** | Agent utterance → expand dock + SSE turn | Agent utterance |
-| **Get in touch** | Agent utterance → expand dock + SSE turn | Agent utterance |
+| Chip | Hybrid collapsed dock (2026-06-17 screen-first) | Hybrid expanded drawer | Stream mode |
+| ---- | ------------------------------------------------- | ---------------------- | ----------- |
+| **Get a clear next AI step** | Local `toSafetyFlow` → safety diagnostic sheet | Local `toSafetyFlow` | Same (local) |
+| **About Movemental** | Local `whatIs` → about sheet + concierge voice | Agent utterance → SSE turn | Agent utterance |
+| **What does it cost?** | Local `cost` → pricing sheet | Agent utterance → SSE turn | Agent utterance |
+| **Get in touch** | Local `talkToUs` → contact screen | Agent utterance → SSE turn | Agent utterance |
 
-Before this alignment, hybrid routed About / Cost / Contact chips to **full screens** (`whatIs`, `pricing`, `contact`) — the “screen takeover” users reported for pricing.
+**2026-06-15 → 2026-06-17 reversal:** Hybrid collapsed pills briefly matched stream (agent + expand) for About / Cost / Contact. Product intent restored: **sheet is primary navigation; drawer is for dialogue the visitor explicitly opens.**
 
-Scene-specific chips (after navigating a sheet) still use `SuggestChip.to` → local scenes when the label is **not** in `STREAM_CHIP_ROUTES` (`composer-routing.ts`).
+Scene-specific chips (after navigating a sheet) still use `SuggestChip.to` → local scenes when the label is **not** in `OPENING_CHIP_LOCAL_SCENES` (`composer-routing.ts`).
 
 ---
 
@@ -145,7 +145,7 @@ Full-screen sheets scroll behind the dock padding; long content uses `.screen.sc
 | Composer typing after opening | Input enabled and holds text |
 | Typed fallback expands dock | Unmatched text → dialog + mocked agent reply |
 | Lead chip | Local safety flow, zero `/turn` calls |
-| Cost / About chips | Dialog + agent reply; **no** pricing/about sheet |
+| Cost / About / Contact chips | Local screen swap; dock stays collapsed; zero `/turn` |
 | Typed “whole path” | Local path sheet |
 | Path → “Show me Safety” chip | Scene follow-up still local |
 | Expand drawer | Ways in prompt |
@@ -160,11 +160,13 @@ Related: `tests/e2e/agent-room.spec.ts` (gated `RUN_AGENT_ROOM_EE=1`) for stream
 ## 11. Fixes shipped with this audit (2026-06-15)
 
 1. **Typing blocked** — input no longer `disabled` during `busy`/streaming (send/chips still gated).
-2. **Pricing/about chips** — hybrid default chips use `STREAM_CHIP_ROUTES` → agent + expand dock (parity with stream mode).
+2. **Pricing/about chips** — hybrid default chips use `STREAM_CHIP_ROUTES` → agent + expand dock (parity with stream mode). **Superseded 2026-06-17** — see screen-first reversal in §4.
 3. **Expand on agent chip** — `requestExpandConversation(utterance)` adds user line and opens dialog.
 4. **Thread shows agent text** — expanded dock reads `liveText` + `voice.text` when handwriting strip is hidden.
 
----
+## 12. Screen-first reversal (2026-06-17)
+
+Collapsed dock opening pills (About / Cost / Contact) route to local `SCENES` again via `resolveChipRoute(..., "collapsed")`. Expanded drawer keeps agent utterances. Document audience chips use `action: "scene"` sessionStorage handoff instead of `?ask=` where intent is a screen, not chat.
 
 ## 12. Operator checklist
 

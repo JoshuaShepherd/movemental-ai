@@ -19,10 +19,10 @@ import {
   isTypedFallback,
   shouldResetTextStreak,
 } from "@/lib/agent-room/move-classifier";
-import { getKnownStreamChipRoute } from "@/lib/agent-room/composer-routing";
+import { getKnownStreamChipRoute, getOpeningChipLocalScene, resolveChipRoute } from "@/lib/agent-room/composer-routing";
 import { routeInput } from "@/lib/agent-room/route-input";
 import { readAgentDeepLink, clearAgentDeepLinkParams } from "@/lib/agent-room/deep-link";
-import { stashHandoffAudience, isWaysInDoor, type AgentSayOptions } from "@/lib/agent-room/ways-in-doors";
+import { stashHandoffAudience, readHandoffScene, clearHandoffScene, isWaysInDoor, type AgentSayOptions } from "@/lib/agent-room/ways-in-doors";
 import { CONCIERGE_VOICE } from "@/lib/agent-room/data/concierge-voice-lines";
 import {
   ENTER_DISCUSS_VALUE,
@@ -188,14 +188,24 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         lead: c.lead,
         onSelect: () => {
           freeTextStreakRef.current = 0;
-          const streamRoute = getKnownStreamChipRoute(c.label);
-          if (streamRoute?.kind === "local") {
-            runRef.current(streamRoute.scene);
-            return;
-          }
-          if (streamRoute?.kind === "agent") {
+          const surface = dockExpandedRef.current ? "expanded" : "collapsed";
+          const isOpeningChip =
+            getOpeningChipLocalScene(c.label) !== null || getKnownStreamChipRoute(c.label) !== null;
+          if (isOpeningChip) {
+            const route = resolveChipRoute(
+              { label: c.label, say: c.label, lead: c.lead },
+              surface,
+            );
+            if (route.kind === "local") {
+              runRef.current(route.scene);
+              return;
+            }
+            if (route.kind === "navigate") {
+              if (typeof window !== "undefined") window.location.assign(route.href);
+              return;
+            }
             requestExpandConversation();
-            void sendMessageRef.current(streamRoute.utterance);
+            void sendMessageRef.current(route.utterance);
             return;
           }
           handleSuggestChipTarget(
@@ -436,14 +446,19 @@ export function useAgentRoomHybrid(): AgentRoomController & {
       setBusy(false);
       setAgentChips(null);
 
-      const explicitChip = getKnownStreamChipRoute(text);
-      if (explicitChip?.kind === "local") {
-        run(explicitChip.scene);
-        return;
-      }
-      if (explicitChip?.kind === "agent") {
-        void runAgentTurn(text);
-        return;
+      const surface = dockExpandedRef.current ? "expanded" : "collapsed";
+      const isOpeningLabel =
+        getOpeningChipLocalScene(text) !== null || getKnownStreamChipRoute(text) !== null;
+      if (isOpeningLabel) {
+        const route = resolveChipRoute({ label: text, say: text }, surface);
+        if (route.kind === "local") {
+          run(route.scene);
+          return;
+        }
+        if (route.kind === "agent") {
+          void runAgentTurn(route.utterance);
+          return;
+        }
       }
 
       const fromWaysInPanel = opts?.source === "ways-in";
@@ -587,6 +602,8 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   const seedSentRef = useRef(false);
   const seedTextRef = useRef<string | null>(null);
   const seedReadRef = useRef(false);
+  const sceneHandoffSentRef = useRef(false);
+  const sceneHandoffRef = useRef<string | null>(null);
   useEffect(() => {
     if (seedReadRef.current) return;
     seedReadRef.current = true;
@@ -594,6 +611,12 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     if (link?.kind === "ask") {
       seedTextRef.current = link.text;
       if (link.audience) stashHandoffAudience(link.audience);
+    } else {
+      const scene = readHandoffScene();
+      if (scene) {
+        clearHandoffScene();
+        sceneHandoffRef.current = scene;
+      }
     }
     clearAgentDeepLinkParams();
   }, []);
@@ -611,6 +634,19 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     seedTextRef.current = null;
     sendMessageRef.current(text);
   }, [busy, isStreaming, screen.id]);
+
+  useEffect(() => {
+    if (sceneHandoffSentRef.current) return;
+    const scene = sceneHandoffRef.current;
+    if (!scene) {
+      sceneHandoffSentRef.current = true;
+      return;
+    }
+    if (busy || isStreaming || screen.id !== "home") return;
+    sceneHandoffSentRef.current = true;
+    sceneHandoffRef.current = null;
+    run(scene);
+  }, [busy, isStreaming, screen.id, run]);
 
   useEffect(() => {
     const onOpenHandbook = () => setHandbookCaptureActive(true);

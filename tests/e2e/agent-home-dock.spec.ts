@@ -51,55 +51,58 @@ test.describe("Agent home dock (hybrid default)", () => {
     await page.goto("/agent");
     await waitForAgentOpeningReady(page);
     await page.getByRole("button", { name: "Get a clear next AI step" }).click();
-    await expect(page.getByText("Let's find your simplest next step.")).toBeVisible({
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Let's find your simplest next step." }),
+    ).toBeVisible({
       timeout: 8000,
     });
     expect(streamCalls).toEqual([]);
   });
 
-  test("agent reply renders in thread only, not collapsed voice band", async ({ page }) => {
-    await mockAgentReply(page, "Thanks for reaching out.");
-    await page.goto("/agent");
-    await waitForAgentOpeningReady(page);
-    await page.getByRole("button", { name: "About Movemental" }).click();
-    await expect(page.getByRole("dialog", { name: "Agent conversation" })).toBeVisible({
-      timeout: 8000,
+  test("cost chip opens pricing screen without expanding conversation", async ({ page }) => {
+    const streamCalls: string[] = [];
+    page.on("request", (r) => {
+      if (r.url().includes("/api/agent-room/turn")) streamCalls.push(r.url());
     });
-    await expect(page.getByText("Thanks for reaching out.")).toBeVisible({ timeout: 8000 });
-    const voiceBand = page.locator(".handwritingStrip");
-    await expect(voiceBand).toHaveCount(0);
-  });
-
-  test("cost chip chats instead of swapping to the full pricing screen", async ({ page }) => {
-    await mockAgentReply(
-      page,
-      "Pricing scales with organization size and the pathway you choose.",
-    );
     await page.goto("/agent");
     await waitForAgentOpeningReady(page);
     await expect(page.getByRole("heading", { level: 1, name: AGENT_HOME_H1 })).toBeVisible();
     await page.getByRole("button", { name: "What does it cost?" }).click();
-    await expect(page.getByRole("dialog", { name: "Agent conversation" })).toBeVisible({
-      timeout: 8000,
-    });
-    await expect(page.getByText("Pricing scales with organization size")).toBeVisible({
-      timeout: 8000,
-    });
-    await expect(page.getByText(PRICING_REFUSAL_HEADING)).not.toBeVisible();
+    await expect(page.getByText(PRICING_REFUSAL_HEADING)).toBeVisible({ timeout: 8000 });
+    await expect(page.getByRole("dialog", { name: "Agent conversation" })).not.toBeVisible();
+    expect(streamCalls).toEqual([]);
   });
 
-  test("about chip chats instead of swapping to the about screen", async ({ page }) => {
-    await mockAgentReply(page, "Movemental helps mission-driven organizations meet AI safely.");
+  test("about chip opens about screen without expanding conversation", async ({ page }) => {
+    const streamCalls: string[] = [];
+    page.on("request", (r) => {
+      if (r.url().includes("/api/agent-room/turn")) streamCalls.push(r.url());
+    });
     await page.goto("/agent");
     await waitForAgentOpeningReady(page);
     await page.getByRole("button", { name: "About Movemental" }).click();
-    await expect(page.getByRole("dialog", { name: "Agent conversation" })).toBeVisible({
-      timeout: 8000,
+    await expect(
+      page.getByRole("heading", { level: 1, name: "About Movemental" }),
+    ).toBeVisible({ timeout: 8000 });
+    await expect(page.getByRole("dialog", { name: "Agent conversation" })).not.toBeVisible();
+    expect(streamCalls).toEqual([]);
+  });
+
+  test("get in touch chip opens contact screen without expanding conversation", async ({
+    page,
+  }) => {
+    const streamCalls: string[] = [];
+    page.on("request", (r) => {
+      if (r.url().includes("/api/agent-room/turn")) streamCalls.push(r.url());
     });
-    await expect(page.getByText("Movemental helps mission-driven organizations")).toBeVisible({
-      timeout: 8000,
-    });
-    await expect(page.getByText("Here's the short version")).not.toBeVisible();
+    await page.goto("/agent");
+    await waitForAgentOpeningReady(page);
+    await page.getByRole("button", { name: "Get in touch" }).click();
+    await expect(
+      page.getByText("Tell us a bit about your organization"),
+    ).toBeVisible({ timeout: 8000 });
+    await expect(page.getByRole("dialog", { name: "Agent conversation" })).not.toBeVisible();
+    expect(streamCalls).toEqual([]);
   });
 
   test("first typed message can still open a local screen (whole path)", async ({ page }) => {
@@ -141,7 +144,9 @@ test.describe("Agent home dock (hybrid default)", () => {
     await page.goto("/agent");
     await waitForAgentOpeningReady(page);
     await page.getByRole("button", { name: "Get a clear next AI step" }).click();
-    await expect(page.getByText("Let's find your simplest next step.")).toBeVisible({
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Let's find your simplest next step." }),
+    ).toBeVisible({
       timeout: 8000,
     });
     await page.getByRole("button", { name: "Home" }).click();

@@ -1,28 +1,73 @@
 /**
- * Stream-mode composer chip routing (PAR-02).
+ * Composer chip routing — stream mode (PAR-02) + dock-context hybrid routing.
  *
- * Stub binds chips to `run(to)`; stream must not accidentally fork the same
- * label into an unrelated backend. See parity matrix § Default composer chips.
+ * **Stream (Option A):** `resolveStreamChipRoute` keeps default opening chips on
+ * agent utterances — legacy full-AI regression path only.
+ *
+ * **Hybrid:** `resolveChipRoute(..., surface)` — collapsed dock opens local
+ * scenes; expanded drawer keeps informational chips conversational.
  */
 
 /** Mirrors `Suggestion` in `composer.tsx` — kept here to avoid lib→component imports. */
 export type StreamSuggestion = { label: string; say: string; lead?: boolean };
 
-/** How a default suggestion is handled in stream mode. */
-export type StreamChipRoute =
-  | { kind: "local"; scene: "toSafetyFlow" }
+/** Local scenes for default opening chip labels (mirrors `SCENES.opening` suggest targets). */
+export type OpeningChipScene = "toSafetyFlow" | "whatIs" | "cost" | "talkToUs";
+
+/** How a default suggestion is handled. */
+export type ChipRoute =
+  | { kind: "local"; scene: OpeningChipScene }
   | { kind: "agent"; utterance: string }
   | { kind: "navigate"; href: string };
 
-/** Labels from `DEFAULT_SUGGESTIONS` → stream routing. */
-const STREAM_CHIP_ROUTES: Record<string, StreamChipRoute> = {
+/** @deprecated Alias — prefer `ChipRoute`. */
+export type StreamChipRoute = ChipRoute;
+
+/** Collapsed float chips vs expanded drawer / ways-in-adjacent chips. */
+export type ChipSurface = "collapsed" | "expanded";
+
+/** Opening labels → local scene (`run(name)`). */
+const OPENING_CHIP_LOCAL_SCENES: Record<string, OpeningChipScene> = {
+  "Get a clear next AI step": "toSafetyFlow",
+  "About Movemental": "whatIs",
+  "What does it cost?": "cost",
+  "Get in touch": "talkToUs",
+};
+
+/** Labels from `DEFAULT_SUGGESTIONS` → stream / expanded-drawer routing. */
+const STREAM_CHIP_ROUTES: Record<string, ChipRoute> = {
   "Get a clear next AI step": { kind: "local", scene: "toSafetyFlow" },
   "About Movemental": { kind: "agent", utterance: "About Movemental" },
   "What does it cost?": { kind: "agent", utterance: "What does it cost?" },
   "Get in touch": { kind: "agent", utterance: "Get in touch" },
 };
 
-export function resolveStreamChipRoute(suggestion: StreamSuggestion): StreamChipRoute {
+/** Local scene for a known opening chip label, if any. */
+export function getOpeningChipLocalScene(label: string): OpeningChipScene | null {
+  return OPENING_CHIP_LOCAL_SCENES[label] ?? null;
+}
+
+/**
+ * Hybrid + dock-aware chip resolution.
+ * Collapsed → screen-first local scenes; expanded → agent utterances for info chips.
+ */
+export function resolveChipRoute(
+  suggestion: StreamSuggestion,
+  surface: ChipSurface,
+): ChipRoute {
+  const localScene = getOpeningChipLocalScene(suggestion.label);
+  if (surface === "collapsed" && localScene) {
+    return { kind: "local", scene: localScene };
+  }
+
+  const streamRoute = STREAM_CHIP_ROUTES[suggestion.label];
+  if (streamRoute) return streamRoute;
+
+  return { kind: "agent", utterance: suggestion.say };
+}
+
+/** Stream mode — unchanged expanded-drawer / full-AI bias (Option A). */
+export function resolveStreamChipRoute(suggestion: StreamSuggestion): ChipRoute {
   return (
     STREAM_CHIP_ROUTES[suggestion.label] ?? {
       kind: "agent",
@@ -31,7 +76,10 @@ export function resolveStreamChipRoute(suggestion: StreamSuggestion): StreamChip
   );
 }
 
-/** Labels in `DEFAULT_SUGGESTIONS` with explicit stream routing — absent for scene follow-ups. */
-export function getKnownStreamChipRoute(label: string): StreamChipRoute | null {
+/**
+ * Labels in `DEFAULT_SUGGESTIONS` with explicit stream routing — absent for scene follow-ups.
+ * **Expanded-drawer / stream-mode bias** — hybrid collapsed dock uses `resolveChipRoute`.
+ */
+export function getKnownStreamChipRoute(label: string): ChipRoute | null {
   return STREAM_CHIP_ROUTES[label] ?? null;
 }

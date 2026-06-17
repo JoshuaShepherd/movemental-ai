@@ -176,10 +176,10 @@ export const INSTITUTIONS_PAGE_CONFIG: AudiencePageConfig = {
     voiceLine: "Want to see where your institution actually stands with AI? Let's map it together.",
     highlightChipLabel: "Map where we stand",
     chips: [
-      { label: "Map where we stand", action: "agent", agentAsk: "Map where my institution stands with AI" },
+      { label: "Map where we stand", action: "scene", scene: "toBeat" },
       { label: "Read the board letter", action: "scroll", target: "the-case" },
-      { label: "What's the first step?", action: "agent", agentAsk: "What's the first step for an institution?" },
-      { label: "Talk to us", action: "agent", agentAsk: "I'd like to talk to someone at Movemental about our institution" },
+      { label: "What's the first step?", action: "scene", scene: "toSafetyFlow" },
+      { label: "Talk to us", action: "scene", scene: "talkToUs" },
     ],
   },
 };

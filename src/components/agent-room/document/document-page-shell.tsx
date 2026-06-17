@@ -9,7 +9,11 @@ import { AgentDock } from "@/components/agent-room/shell/agent-dock";
 import { InkOverlay } from "@/components/agent-room/shell/ink-overlay";
 import { Mast } from "@/components/agent-room/shell/mast";
 import inkStyles from "@/components/agent-room/ink-band.module.css";
-import type { WaysInAudience } from "@/lib/agent-room/ways-in-doors";
+import {
+  stashHandoffAudience,
+  stashHandoffScene,
+  type WaysInAudience,
+} from "@/lib/agent-room/ways-in-doors";
 
 import styles from "./document-page.module.css";
 
@@ -21,11 +25,13 @@ function agentHandoffHref(ask: string, audience?: WaysInAudience): string {
 
 export type DocumentChip = {
   label: string;
-  /** Scroll to a section id on this page, or hand off to `/agent`. */
-  action: "scroll" | "agent";
+  /** Scroll to a section id, hand off to `/agent` chat, or run a local scene on `/agent`. */
+  action: "scroll" | "agent" | "scene";
   target?: string;
   /** When set, hand off to `/agent?ask=…` instead of plain `/agent`. */
   agentAsk?: string;
+  /** When `action` is `scene`, run this scene once after `/agent` opening settles. */
+  scene?: string;
 };
 
 type DocumentPageShellProps = {
@@ -79,6 +85,12 @@ function DocumentDock({
         onSelect: () => {
           if (chip.action === "scroll" && chip.target) {
             scrollTo(chip.target);
+            return;
+          }
+          if (chip.action === "scene" && chip.scene) {
+            stashHandoffScene(chip.scene);
+            if (audience) stashHandoffAudience(audience);
+            router.push("/agent");
             return;
           }
           if (chip.agentAsk) {

@@ -1387,8 +1387,8 @@
   left: auto;
   width: min(136px, 96%);
   padding: 0.5rem 0.55rem 0.58rem;
-  background: color-mix(in srgb, var(--color-ink-band-blue) 7%, var(--color-ink-band-paper));
-  border: 1px solid color-mix(in srgb, var(--color-ink-band-blue) 22%, var(--color-ink-band-border));
+  background: var(--color-ink-band-sticky);
+  border: 1px solid color-mix(in srgb, var(--color-ink-band-ink) 14%, var(--color-ink-band-sticky));
   box-shadow: 2px 3px 8px -2px rgba(26, 26, 26, 0.18);
   transform: rotate(2.5deg);
   transform-origin: right bottom;
@@ -1465,14 +1465,20 @@ button.wayCtaPaid {
   position: absolute;
   top: 0.65rem;
   right: 0.75rem;
-  width: 2rem;
-  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
   border: 0;
   border-radius: 999px;
   background: var(--color-ink-band-surface);
   color: var(--color-ink-band-ink-muted);
   cursor: pointer;
-  font-size: 1.1rem;
+}
+.lightboxCloseIcon {
+  width: 1.1rem;
+  height: 1.1rem;
 }
 .lbEyebrow {
   font-family: var(--font-ink-mono);
@@ -5360,6 +5366,12 @@ button.wayCtaPaid {
   margin-right: auto;
   max-width: 46ch;
 }
+.flowFieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
 .flowOptsCenter {
   margin-left: auto;
   margin-right: auto;
@@ -5378,6 +5390,12 @@ button.wayCtaPaid {
 .flowOpt {
   display: flex;
   align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+}
+.flowOpt:has(input:focus-visible) {
+  outline: 2px solid var(--color-ink-band-blue);
+  outline-offset: 3px;
 }
 .flowFootnote {
   margin-top: 2rem;
@@ -5439,6 +5457,11 @@ button.wayCtaPaid {
   margin-top: 2.2rem;
 }
 .flowBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 44px;
   font-size: 0.95rem;
   font-weight: 600;
   border: 1px solid var(--color-ink-band-ink);
@@ -5470,8 +5493,19 @@ button.wayCtaPaid {
   border-color: var(--color-ink-band-ink);
   opacity: 1;
 }
+.flowBtnIcon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
 .flowBack {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.5rem 1rem;
   margin: 1.6rem auto 0;
   background: none;
   border: 0;
@@ -5483,6 +5517,11 @@ button.wayCtaPaid {
 .flowBack:hover {
   color: var(--color-ink-band-ink);
 }
+.flowBackIcon {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex-shrink: 0;
+}
 .flowCharterLabel {
   text-align: center;
   margin: 1.8rem 0 1.4rem;
@@ -5490,58 +5529,18 @@ button.wayCtaPaid {
 .flowCharterRow {
   overflow-x: auto;
   scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
   padding-bottom: 3rem;
+}
+.flowCharterRow .docCardFold {
+  scroll-snap-align: center;
 }
 .flowSpreadHint {
   text-align: center;
   font-style: italic;
 }
-.flowFork {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+.flowForkWays {
   margin: 1.8rem 0 1.4rem;
-}
-.flowForkCard {
-  border: 1px solid var(--color-ink-band-border);
-  border-radius: 14px;
-  background: var(--color-ink-band-paper);
-  padding: 1.5rem 1.4rem;
-  display: flex;
-  flex-direction: column;
-}
-.flowForkReco {
-  border-color: var(--color-ink-band-blue);
-  box-shadow: inset 0 0 0 1px var(--color-ink-band-blue);
-  background: var(--color-ink-band-paper);
-}
-.flowForkTag {
-  font-family: var(--font-ink-mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-ink-band-ink-muted);
-  margin-bottom: 0.7rem;
-}
-.flowForkReco .flowForkTag {
-  color: var(--color-ink-band-blue);
-}
-.flowForkTitle {
-  font-family: var(--font-ink-display);
-  font-weight: 600;
-  font-size: 1.4rem;
-  margin-bottom: 0.4rem;
-}
-.flowForkPrice {
-  font-size: 0.85rem;
-  color: var(--color-ink-band-ink-muted);
-  margin-bottom: 1rem;
-}
-.flowForkBody {
-  font-size: 0.92rem;
-  color: var(--color-ink-band-ink-muted);
-  line-height: 1.5;
-  margin-bottom: 0.8rem;
 }
 .flowForkBest {
   font-size: 0.85rem;
@@ -5550,11 +5549,6 @@ button.wayCtaPaid {
   border-radius: 8px;
   padding: 0.6rem 0.7rem;
   margin-bottom: 1rem;
-}
-.flowForkCard .flowBtn {
-  margin-top: auto;
-  width: 100%;
-  justify-content: center;
 }
 .flowTuesday {
   font-family: var(--font-ink-display);
@@ -5691,13 +5685,24 @@ button.wayCtaPaid {
 }
 
 @media (max-width: 680px) {
-  .flowFork {
-    grid-template-columns: 1fr;
-  }
   .flowRail {
     grid-template-columns: repeat(2, 1fr);
   }
   .docSpreadFold.flowCharterRow {
     grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flowStepDot {
+    transition: none;
+  }
+  .docCardFold {
+    animation: none;
+  }
+  .docCardFold:hover,
+  .docCardFold:focus-visible,
+  .docCard:hover {
+    transform: none;
   }
 }

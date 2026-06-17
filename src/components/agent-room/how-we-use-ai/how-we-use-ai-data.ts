@@ -52,11 +52,11 @@ export const HOW_WE_USE_AI_DOCK = {
   chips: [
     {
       label: "Map where we actually stand",
-      action: "agent" as const,
-      agentAsk: "Map where we actually stand",
+      action: "scene" as const,
+      scene: "toBeat",
     },
-    { label: "See the whole path", action: "agent" as const, agentAsk: "See the whole path" },
-    { label: "Get in touch", action: "agent" as const, agentAsk: "Get in touch" },
+    { label: "See the whole path", action: "scene" as const, scene: "toPath" },
+    { label: "Get in touch", action: "scene" as const, scene: "talkToUs" },
   ],
 };
 

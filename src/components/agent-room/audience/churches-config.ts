@@ -176,10 +176,10 @@ export const CHURCHES_PAGE_CONFIG: AudiencePageConfig = {
     voiceLine: "Curious where your church really stands with AI? I can map it with you.",
     highlightChipLabel: "Map where we stand",
     chips: [
-      { label: "Map where we stand", action: "agent", agentAsk: "Map where my church stands with AI" },
+      { label: "Map where we stand", action: "scene", scene: "toBeat" },
       { label: "Read the board letter", action: "scroll", target: "the-case" },
-      { label: "What's the first step?", action: "agent", agentAsk: "What's the first step for a church?" },
-      { label: "Talk to us", action: "agent", agentAsk: "I'd like to talk to someone at Movemental about our church" },
+      { label: "What's the first step?", action: "scene", scene: "toSafetyFlow" },
+      { label: "Talk to us", action: "scene", scene: "talkToUs" },
     ],
   },
 };

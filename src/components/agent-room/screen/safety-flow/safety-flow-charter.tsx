@@ -6,6 +6,7 @@ import { SAFETY_CHARTER_DOCUMENTS, type SafetyCharterDocument } from "@/lib/agen
 import { SAFETY_FLOW_CHARTER_COPY } from "@/lib/agent-room/data/safety-flow";
 import styles from "../../ink-band.module.css";
 import { CharterDocModal } from "./charter-doc-modal";
+import { SafetyFlowBack } from "./safety-flow-back";
 
 export function SafetyFlowCharter({
   onNext,
@@ -56,9 +57,7 @@ export function SafetyFlowCharter({
           {SAFETY_FLOW_CHARTER_COPY.cta}
         </button>
       </div>
-      <button type="button" className={styles.flowBack} onClick={onBack}>
-        ← back
-      </button>
+      <SafetyFlowBack onClick={onBack}>back</SafetyFlowBack>
       <CharterDocModal doc={activeDoc} onClose={() => setActiveDoc(null)} />
     </div>
   );

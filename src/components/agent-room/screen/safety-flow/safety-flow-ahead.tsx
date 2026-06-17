@@ -2,6 +2,7 @@
 
 import { SAFETY_FLOW_AHEAD_COPY } from "@/lib/agent-room/data/safety-flow";
 import styles from "../../ink-band.module.css";
+import { SafetyFlowBack } from "./safety-flow-back";
 import { SafetyFlowPathRail } from "./safety-flow-path-rail";
 
 export function SafetyFlowAhead({
@@ -40,9 +41,7 @@ export function SafetyFlowAhead({
           Revisit the Charter
         </button>
       </div>
-      <button type="button" className={styles.flowBack} onClick={onBack}>
-        ← back
-      </button>
+      <SafetyFlowBack onClick={onBack}>back</SafetyFlowBack>
     </div>
   );
 }
