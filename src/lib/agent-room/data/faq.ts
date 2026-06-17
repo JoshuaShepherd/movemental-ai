@@ -1,7 +1,7 @@
 /**
  * Agent Room — FAQ content (ported from `js/data/faq.js`).
  *
- * Ten groups of question/answer pairs, byte-identical to the prototype. The
+ * Eleven groups of question/answer pairs (includes founders and leadership). The
  * `<details>` markup + jump links become React in AF-09; this is data only.
  */
 export interface FaqItem {

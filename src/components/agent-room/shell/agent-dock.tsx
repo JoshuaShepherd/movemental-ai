@@ -311,16 +311,12 @@ export function AgentDock({
   }, [expanded, collapse]);
 
   useEffect(() => {
-    const onExpand = (event: Event) => {
-      const utterance = (event as CustomEvent<{ utterance?: string }>).detail?.utterance;
-      if (utterance?.trim()) {
-        onSay(utterance.trim());
-      }
+    const onExpand = () => {
       expand("chip");
     };
     document.addEventListener(EXPAND_CONVERSATION_EVENT, onExpand);
     return () => document.removeEventListener(EXPAND_CONVERSATION_EVENT, onExpand);
-  }, [expand, onSay]);
+  }, [expand]);
 
   useEffect(() => {
     const onFocusHandbook = () => expand("user");
@@ -348,10 +344,9 @@ export function AgentDock({
       if (composerBusy && !allowWhileBusy) return;
       setValue("");
       setWaysInOpen(false);
-      expand("send");
       onSay(v, opts?.say);
     },
-    [composerBusy, expanded, expand, onSay],
+    [composerBusy, expanded, onSay],
   );
 
   const submit = (e: FormEvent) => {

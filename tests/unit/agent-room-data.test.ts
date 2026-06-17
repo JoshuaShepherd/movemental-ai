@@ -45,8 +45,8 @@ describe("agent-room data layer (AF-06)", () => {
     expect(readFail.stages.safety).toMatchObject({ sev: 3 });
   });
 
-  it("FAQ_SECTIONS has ten groups with q/a items", () => {
-    expect(FAQ_SECTIONS).toHaveLength(10);
+  it("FAQ_SECTIONS has eleven groups with q/a items", () => {
+    expect(FAQ_SECTIONS).toHaveLength(11);
     expect(FAQ_SECTIONS[0].items.length).toBeGreaterThan(0);
     expect(FAQ_SECTIONS[0].items[0]).toHaveProperty("q");
     expect(FAQ_SECTIONS[0].items[0]).toHaveProperty("a");

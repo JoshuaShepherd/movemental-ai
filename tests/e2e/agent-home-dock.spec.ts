@@ -1,23 +1,12 @@
 import { expect, test, type Page } from "@playwright/test";
 
+import { AGENT_HOME_H1, waitForAgentOpeningReady } from "./agent-room-helpers";
+
 const STREAM_PATH = "**/api/agent-room/turn";
-const HOME_H1 =
-  "Navigate AI without eroding the trust you spent decades earning.";
 const PRICING_REFUSAL_HEADING = "What this pricing refuses";
 
-async function waitForOpeningReady(page: Page) {
-  await expect(
-    page.getByText(
-      "I'm the Movemental Concierge, here to help you see where your organization stands with AI",
-    ),
-  ).toBeVisible({ timeout: 15000 });
-  await expect(page.getByRole("button", { name: "Get a clear next AI step" })).toBeVisible({
-    timeout: 8000,
-  });
-}
-
 async function waitForComposerEnabled(page: Page) {
-  await waitForOpeningReady(page);
+  await waitForAgentOpeningReady(page);
   const input = page.locator("#composer-input");
   await expect(input).toBeEnabled({ timeout: 15000 });
   return input;
@@ -60,7 +49,7 @@ test.describe("Agent home dock (hybrid default)", () => {
       if (r.url().includes("/api/agent-room/turn")) streamCalls.push(r.url());
     });
     await page.goto("/agent");
-    await waitForOpeningReady(page);
+    await waitForAgentOpeningReady(page);
     await page.getByRole("button", { name: "Get a clear next AI step" }).click();
     await expect(page.getByText("Let's find your simplest next step.")).toBeVisible({
       timeout: 8000,
@@ -71,7 +60,7 @@ test.describe("Agent home dock (hybrid default)", () => {
   test("agent reply renders in thread only, not collapsed voice band", async ({ page }) => {
     await mockAgentReply(page, "Thanks for reaching out.");
     await page.goto("/agent");
-    await waitForOpeningReady(page);
+    await waitForAgentOpeningReady(page);
     await page.getByRole("button", { name: "About Movemental" }).click();
     await expect(page.getByRole("dialog", { name: "Agent conversation" })).toBeVisible({
       timeout: 8000,
@@ -87,8 +76,8 @@ test.describe("Agent home dock (hybrid default)", () => {
       "Pricing scales with organization size and the pathway you choose.",
     );
     await page.goto("/agent");
-    await waitForOpeningReady(page);
-    await expect(page.getByRole("heading", { level: 1, name: HOME_H1 })).toBeVisible();
+    await waitForAgentOpeningReady(page);
+    await expect(page.getByRole("heading", { level: 1, name: AGENT_HOME_H1 })).toBeVisible();
     await page.getByRole("button", { name: "What does it cost?" }).click();
     await expect(page.getByRole("dialog", { name: "Agent conversation" })).toBeVisible({
       timeout: 8000,
@@ -102,7 +91,7 @@ test.describe("Agent home dock (hybrid default)", () => {
   test("about chip chats instead of swapping to the about screen", async ({ page }) => {
     await mockAgentReply(page, "Movemental helps mission-driven organizations meet AI safely.");
     await page.goto("/agent");
-    await waitForOpeningReady(page);
+    await waitForAgentOpeningReady(page);
     await page.getByRole("button", { name: "About Movemental" }).click();
     await expect(page.getByRole("dialog", { name: "Agent conversation" })).toBeVisible({
       timeout: 8000,
@@ -133,13 +122,16 @@ test.describe("Agent home dock (hybrid default)", () => {
     });
     await page.getByRole("button", { name: "Show me Safety" }).click();
     await expect(
-      page.getByText("AI is already inside your organization", { exact: false }),
+      page.getByRole("heading", {
+        level: 1,
+        name: /Your team is already using AI/i,
+      }),
     ).toBeVisible({ timeout: 8000 });
   });
 
   test("expand handle opens conversation panel", async ({ page }) => {
     await page.goto("/agent");
-    await waitForOpeningReady(page);
+    await waitForAgentOpeningReady(page);
     await page.getByRole("button", { name: "Expand drawer" }).click();
     await expect(page.getByRole("dialog", { name: "Agent conversation" })).toBeVisible();
     await expect(page.getByText("Where would you like to start?")).toBeVisible();
@@ -147,13 +139,13 @@ test.describe("Agent home dock (hybrid default)", () => {
 
   test("replay resets to home opening", async ({ page }) => {
     await page.goto("/agent");
-    await waitForOpeningReady(page);
+    await waitForAgentOpeningReady(page);
     await page.getByRole("button", { name: "Get a clear next AI step" }).click();
     await expect(page.getByText("Let's find your simplest next step.")).toBeVisible({
       timeout: 8000,
     });
     await page.getByRole("button", { name: "Home" }).click();
-    await waitForOpeningReady(page);
-    await expect(page.getByRole("heading", { level: 1, name: HOME_H1 })).toBeVisible();
+    await waitForAgentOpeningReady(page);
+    await expect(page.getByRole("heading", { level: 1, name: AGENT_HOME_H1 })).toBeVisible();
   });
 });

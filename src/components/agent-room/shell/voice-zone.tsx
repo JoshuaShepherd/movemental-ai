@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+
 import { useAgentRoomRefs, useInk } from "../agent-room-context";
 import { InkVoice } from "../ink/ink-voice";
 import styles from "../ink-band.module.css";
@@ -28,6 +30,14 @@ export function VoiceZone({
   const matchingLine = showCaption
     ? voiceLines.find((l) => l.text === showCaption)
     : undefined;
+  const lastLine = voiceLines.length > 0 ? voiceLines[voiceLines.length - 1] : undefined;
+
+  // SSOT §6.4: lines too long for the caption band must not block scene choreography.
+  useEffect(() => {
+    if (!lastLine?.text.trim()) return;
+    if (validateCaption(lastLine.text).eligible) return;
+    resolveLine(lastLine.id);
+  }, [lastLine?.id, lastLine?.text, resolveLine]);
 
   return (
     <div

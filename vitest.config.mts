@@ -5,6 +5,7 @@ const srcRoot = fileURLToPath(new URL("./src", import.meta.url));
 
 export default defineConfig({
   resolve: {
+    tsconfigPaths: true,
     alias: {
       "@": srcRoot,
     },

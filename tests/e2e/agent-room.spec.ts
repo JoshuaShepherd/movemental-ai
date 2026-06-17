@@ -1,5 +1,7 @@
 import { expect, test, type Page } from "@playwright/test";
 
+import { waitForAgentOpeningReady } from "./agent-room-helpers";
+
 /**
  * INT-07 — Agent Room E2E: live happy-path + graceful fallback + stub offline.
  *
@@ -27,15 +29,6 @@ const MODE =
 const STREAM_PATH = "**/api/agent-room/turn";
 const ENGINE_PROBE = (process.env.AI_AGENTS_BASE_URL ?? "http://localhost:3001") + "/api/agents/models";
 
-async function waitForOpeningReady(page: Page) {
-  await expect(
-    page.getByText("Movemental meets leaders and organizations where they are"),
-  ).toBeVisible({ timeout: 5000 });
-  await expect(page.getByRole("button", { name: "Get a clear next AI step" })).toBeVisible({
-    timeout: 5000,
-  });
-}
-
 async function send(page: Page, text: string) {
   const input = page.getByRole("textbox", { name: "Talk to Movemental" });
   await input.fill(text);
@@ -56,9 +49,7 @@ test.describe("Agent Room", () => {
       });
       await page.goto("/agent");
       await expect(page.locator(".ink-band-surface").first()).toBeVisible();
-      await expect(
-        page.getByText("Movemental meets leaders and organizations where they are"),
-      ).toBeVisible({ timeout: 3500 });
+      await waitForAgentOpeningReady(page, 3500);
       expect(streamCalls, "hybrid load must not call stream").toEqual([]);
     });
 
@@ -90,7 +81,7 @@ test.describe("Agent Room", () => {
         });
       });
       await page.goto("/agent");
-      await waitForOpeningReady(page);
+      await waitForAgentOpeningReady(page);
       // Avoid meta/objection phrasing ("our board…") which routes to discussOffer locally.
       await send(page, "xyzzy plugh unexpected donor workflow question");
       await expect.poll(() => posted).toBe(true);
@@ -107,7 +98,7 @@ test.describe("Agent Room", () => {
         });
       });
       await page.goto("/agent");
-      await waitForOpeningReady(page);
+      await waitForAgentOpeningReady(page);
       await send(page, "xyzzy plugh unexpected donor workflow question");
       await expect(page.getByText(long.slice(0, 40))).toBeVisible({ timeout: 8000 });
 
@@ -154,9 +145,7 @@ test.describe("Agent Room", () => {
       });
       await page.goto("/agent");
       await expect(page.locator(".ink-band-surface").first()).toBeVisible();
-      await expect(
-        page.getByText("Movemental meets leaders and organizations where they are"),
-      ).toBeVisible({ timeout: 3500 });
+      await waitForAgentOpeningReady(page, 3500);
       expect(streamCalls, "opening choreography must not call stream").toEqual([]);
     });
 

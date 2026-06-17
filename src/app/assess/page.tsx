@@ -2,8 +2,9 @@
 
 import * as React from "react";
 
-import { Button } from "@/components/ui/button";
+import { UtilityPageCrumb, UtilityPageFooter } from "@/components/ink-band/utility-page-nav";
 import { StepSpine } from "@/components/ink-band/step-spine";
+import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/client";
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
@@ -51,6 +52,7 @@ export default function AssessPage() {
 
   return (
     <div className="mx-auto w-full max-w-xl px-4 py-20 md:py-28">
+      <UtilityPageCrumb currentLabel="Assess" />
       <StepSpine
         label="Free · Map your AI reality"
         title="Find out the truth about AI in your organization."
@@ -93,6 +95,7 @@ export default function AssessPage() {
           </p>
         </form>
       )}
+      <UtilityPageFooter />
     </div>
   );
 }

@@ -194,7 +194,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
             return;
           }
           if (streamRoute?.kind === "agent") {
-            requestExpandConversation(streamRoute.utterance);
+            requestExpandConversation();
             void sendMessageRef.current(streamRoute.utterance);
             return;
           }
@@ -436,6 +436,16 @@ export function useAgentRoomHybrid(): AgentRoomController & {
       setBusy(false);
       setAgentChips(null);
 
+      const explicitChip = getKnownStreamChipRoute(text);
+      if (explicitChip?.kind === "local") {
+        run(explicitChip.scene);
+        return;
+      }
+      if (explicitChip?.kind === "agent") {
+        void runAgentTurn(text);
+        return;
+      }
+
       const fromWaysInPanel = opts?.source === "ways-in";
       const route = classifyTypedInput({
         type: "text",
@@ -445,9 +455,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         freeTextStreak: freeTextStreakRef.current,
         fallbackStreak: fallbackStreakRef.current,
         chatActive:
-          (dockExpandedRef.current ||
-            historyRef.current.length > 0 ||
-            thread.length > 0) &&
+          (historyRef.current.length > 0 || thread.length > 0) &&
           !(fromWaysInPanel && isWaysInDoor(text)),
       });
 

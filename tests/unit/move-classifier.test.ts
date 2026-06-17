@@ -85,10 +85,18 @@ describe("move-classifier", () => {
   });
 
   it("chatActive mirrors dockState === expanded", () => {
-    const expanded = classifyTypedInput({ ...baseText, text: "hello", chatActive: true });
-    const collapsed = classifyTypedInput({ ...baseText, text: "hello", chatActive: false });
+    const expanded = classifyTypedInput({
+      ...baseText,
+      text: "what does it cost",
+      chatActive: true,
+    });
+    const collapsed = classifyTypedInput({
+      ...baseText,
+      text: "what does it cost",
+      chatActive: false,
+    });
     expect(expanded).toEqual({ kind: "agent", reason: "open_text" });
-    expect(collapsed.kind).toBe("local");
+    expect(collapsed).toEqual({ kind: "local", scene: "cost" });
   });
 
   it("skips discuss offer on beat screen", () => {
