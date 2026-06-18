@@ -1,0 +1,220 @@
+{
+  "projectId": "8694957891602637085",
+  "projectTitle": "Movemental Ink Design System",
+  "stitchUrl": "https://stitch.withgoogle.com/projects/8694957891602637085",
+  "fetchedAt": "2026-06-18T08:50:59.328Z",
+  "screenCount": 21,
+  "screens": [
+    {
+      "screenId": "4564784e78ca40348705531fba0e102a",
+      "title": "Enrollment - Step 2: People & Roles",
+      "slug": "01-enrollment-step-2-people-roles",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "2420",
+      "htmlFile": "screens/01-enrollment-step-2-people-roles.html",
+      "pngFile": "screens/01-enrollment-step-2-people-roles.png"
+    },
+    {
+      "screenId": "efa580f9ffb048b080794af499e4cd6f",
+      "title": "Enrollment - Step 2: People & Roles",
+      "slug": "02-enrollment-step-2-people-roles-efa580f9",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "2374",
+      "htmlFile": "screens/02-enrollment-step-2-people-roles-efa580f9.html",
+      "pngFile": "screens/02-enrollment-step-2-people-roles-efa580f9.png"
+    },
+    {
+      "screenId": "e2a833e7462a4be79aa194088e314802",
+      "title": "Ratification - SafeStart Enrollment Dashboard",
+      "slug": "03-ratification-safestart-enrollment-dashboard",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "2906",
+      "htmlFile": "screens/03-ratification-safestart-enrollment-dashboard.html",
+      "pngFile": "screens/03-ratification-safestart-enrollment-dashboard.png"
+    },
+    {
+      "screenId": "6e939ea5c63c40abbabb5f04e853a23b",
+      "title": "Review & Confirm - SafeStart Enrollment",
+      "slug": "04-review-confirm-safestart-enrollment",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "2434",
+      "htmlFile": "screens/04-review-confirm-safestart-enrollment.html",
+      "pngFile": "screens/04-review-confirm-safestart-enrollment.png"
+    },
+    {
+      "screenId": "c4d546b432f34dd0bd8a013892fc1462",
+      "title": "Review & Comments - Movemental Dashboard",
+      "slug": "05-review-comments-movemental-dashboard",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "2048",
+      "htmlFile": "screens/05-review-comments-movemental-dashboard.html",
+      "pngFile": "screens/05-review-comments-movemental-dashboard.png"
+    },
+    {
+      "screenId": "6f276411619c4a4492d48c44826ce8b4",
+      "title": "Guidebook Reader - AI Organizational Statement",
+      "slug": "06-guidebook-reader-ai-organizational-statement",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "3626",
+      "htmlFile": "screens/06-guidebook-reader-ai-organizational-statement.html",
+      "pngFile": "screens/06-guidebook-reader-ai-organizational-statement.png"
+    },
+    {
+      "screenId": "69c4ee4bc6864490aa28692d798a542c",
+      "title": "Exports - SafeStart Dashboard",
+      "slug": "07-exports-safestart-dashboard",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "2048",
+      "htmlFile": "screens/07-exports-safestart-dashboard.html",
+      "pngFile": "screens/07-exports-safestart-dashboard.png"
+    },
+    {
+      "screenId": "bef36d589a4146f6b9faac9f9374f5b7",
+      "title": "Search by Question - SafeStart Dashboard",
+      "slug": "08-search-by-question-safestart-dashboard",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "2048",
+      "htmlFile": "screens/08-search-by-question-safestart-dashboard.html",
+      "pngFile": "screens/08-search-by-question-safestart-dashboard.png"
+    },
+    {
+      "screenId": "53110ff61e4740a38111c08db66e9a41",
+      "title": "Rollout supports - Deliverables Library",
+      "slug": "09-rollout-supports-deliverables-library",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "2048",
+      "htmlFile": "screens/09-rollout-supports-deliverables-library.html",
+      "pngFile": "screens/09-rollout-supports-deliverables-library.png"
+    },
+    {
+      "screenId": "5b3a9ee6cb4c40ee99d7d484558fde36",
+      "title": "SafeStart - Facilitated Engagement",
+      "slug": "10-safestart-facilitated-engagement",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "5988",
+      "htmlFile": "screens/10-safestart-facilitated-engagement.html",
+      "pngFile": "screens/10-safestart-facilitated-engagement.png"
+    },
+    {
+      "screenId": "b6e4de7badc541b4922bf773c988aac5",
+      "title": "Enrollment - Step 1: Organization",
+      "slug": "11-enrollment-step-1-organization",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "2192",
+      "htmlFile": "screens/11-enrollment-step-1-organization.html",
+      "pngFile": "screens/11-enrollment-step-1-organization.png"
+    },
+    {
+      "screenId": "7877b30556dc4fb68483ae0f38576994",
+      "title": "Enrollment - Step 3: Context",
+      "slug": "12-enrollment-step-3-context",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "2492",
+      "htmlFile": "screens/12-enrollment-step-3-context.html",
+      "pngFile": "screens/12-enrollment-step-3-context.png"
+    },
+    {
+      "screenId": "dbd2443e141a44c3a4999fd06d6ba3bf",
+      "title": "Guidebook - 01 Statement Layer",
+      "slug": "13-guidebook-01-statement-layer",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "2732",
+      "htmlFile": "screens/13-guidebook-01-statement-layer.html",
+      "pngFile": "screens/13-guidebook-01-statement-layer.png"
+    },
+    {
+      "screenId": "1b5a6e1850884dedaf1620f6521c06e5",
+      "title": "SafeStart Dashboard - Engagement Overview",
+      "slug": "14-safestart-dashboard-engagement-overview",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "2048",
+      "htmlFile": "screens/14-safestart-dashboard-engagement-overview.html",
+      "pngFile": "screens/14-safestart-dashboard-engagement-overview.png"
+    },
+    {
+      "screenId": "120bb56240054e02b13370dffedbce13",
+      "title": "Payment - SafeStart Enrollment",
+      "slug": "15-payment-safestart-enrollment",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "2316",
+      "htmlFile": "screens/15-payment-safestart-enrollment.html",
+      "pngFile": "screens/15-payment-safestart-enrollment.png"
+    },
+    {
+      "screenId": "7b128ace415c4aeb95b972269d289318",
+      "title": "Success - SafeStart Enrollment",
+      "slug": "16-success-safestart-enrollment",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "2048",
+      "htmlFile": "screens/16-success-safestart-enrollment.html",
+      "pngFile": "screens/16-success-safestart-enrollment.png"
+    },
+    {
+      "screenId": "e2034cfdf3f84c0fb74da264cedb642f",
+      "title": "Confirmation - Field Guide",
+      "slug": "17-confirmation-field-guide",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "2058",
+      "htmlFile": "screens/17-confirmation-field-guide.html",
+      "pngFile": "screens/17-confirmation-field-guide.png"
+    },
+    {
+      "screenId": "fc8b3593a4044d328046be96a5805527",
+      "title": "SafeStart Dashboard - Engagement Overview",
+      "slug": "18-safestart-dashboard-engagement-overview-fc8b3593",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "2048",
+      "htmlFile": "screens/18-safestart-dashboard-engagement-overview-fc8b3593.html",
+      "pngFile": "screens/18-safestart-dashboard-engagement-overview-fc8b3593.png"
+    },
+    {
+      "screenId": "fca611b8926047a8ba79311cddd56379",
+      "title": "Guidebook - 01 Statement Layer",
+      "slug": "19-guidebook-01-statement-layer-fca611b8",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "2652",
+      "htmlFile": "screens/19-guidebook-01-statement-layer-fca611b8.html",
+      "pngFile": "screens/19-guidebook-01-statement-layer-fca611b8.png"
+    },
+    {
+      "screenId": "66075dfed21545c0a18189f2739f582a",
+      "title": "Roles & Access - SafeStart Dashboard",
+      "slug": "20-roles-access-safestart-dashboard",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "2698",
+      "htmlFile": "screens/20-roles-access-safestart-dashboard.html",
+      "pngFile": "screens/20-roles-access-safestart-dashboard.png"
+    },
+    {
+      "screenId": "940f89deb96b492e82855c28ae1c99f9",
+      "title": "It Starts With Safety - Field Guide Landing Page",
+      "slug": "21-it-starts-with-safety-field-guide-landing-page",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "4692",
+      "htmlFile": "screens/21-it-starts-with-safety-field-guide-landing-page.html",
+      "pngFile": "screens/21-it-starts-with-safety-field-guide-landing-page.png"
+    }
+  ],
+  "failures": []
+}

@@ -1,6 +1,6 @@
 import "server-only";
 
-import { and, eq, inArray } from "drizzle-orm";
+import { and, desc, eq, inArray } from "drizzle-orm";
 
 import { db } from "@/lib/db";
 import {
@@ -8,6 +8,8 @@ import {
   programEngagements,
   safetyArtifacts,
   safetyArtifactVersions,
+  safetyEngagements,
+  safetyGuidebooks,
 } from "@/lib/db/schema";
 import {
   GUIDEBOOK_SECTIONS,
@@ -15,6 +17,7 @@ import {
   type GuidebookSectionSlug,
   type SafeStartWorkspaceSlug,
 } from "@/lib/safestart/workspace-manifest";
+import { GUIDEBOOK_LAYER_TAXONOMY } from "@/lib/safety/layer-taxonomy";
 
 export type WorkspaceStatus = "not_started" | "in_progress" | "complete";
 export type GuidebookSectionStatus = "not_drafted" | "drafted" | "in_review" | "ratified";
@@ -65,6 +68,134 @@ export async function loadSafeStartEngagementState(
     .limit(1);
 
   const organizationName = org?.name ?? "Your organization";
+
+  // Prefer `safety_engagements` + `safety_guidebooks` when provisioned via SafeStart.
+  try {
+    const [engagement] = await db
+      .select()
+      .from(safetyEngagements)
+      .where(eq(safetyEngagements.organization_id, organizationId))
+      .orderBy(desc(safetyEngagements.created_at))
+      .limit(1);
+
+    if (engagement) {
+      const guidebook = engagement.guidebook_id
+        ? await db
+            .select()
+            .from(safetyGuidebooks)
+            .where(eq(safetyGuidebooks.id, engagement.guidebook_id))
+            .limit(1)
+            .then((rows) => rows[0] ?? null)
+        : await db
+            .select()
+            .from(safetyGuidebooks)
+            .where(eq(safetyGuidebooks.organization_id, organizationId))
+            .orderBy(desc(safetyGuidebooks.created_at))
+            .limit(1)
+            .then((rows) => rows[0] ?? null);
+
+      const artifactRows = guidebook
+        ? await db
+            .select({
+              id: safetyArtifacts.id,
+              kind: safetyArtifacts.kind,
+              status: safetyArtifacts.status,
+              review_status: safetyArtifacts.review_status,
+            })
+            .from(safetyArtifacts)
+            .where(eq(safetyArtifacts.guidebook_id, guidebook.id))
+            .orderBy(safetyArtifacts.layer_order)
+        : [];
+
+      const artifactIds = artifactRows.map((r) => r.id);
+      let versionRows: Array<{
+        artifact_id: string;
+        version_number: number;
+        body_md: string;
+      }> = [];
+      if (artifactIds.length) {
+        versionRows = await db
+          .select({
+            artifact_id: safetyArtifactVersions.artifact_id,
+            version_number: safetyArtifactVersions.version_number,
+            body_md: safetyArtifactVersions.body_md,
+          })
+          .from(safetyArtifactVersions)
+          .where(inArray(safetyArtifactVersions.artifact_id, artifactIds));
+      }
+
+      const latestByArtifact = new Map<string, { version_number: number; body_md: string }>();
+      for (const v of versionRows) {
+        const cur = latestByArtifact.get(v.artifact_id);
+        if (!cur || v.version_number > cur.version_number) {
+          latestByArtifact.set(v.artifact_id, {
+            version_number: v.version_number,
+            body_md: v.body_md,
+          });
+        }
+      }
+
+      const stepToWorkspace: Record<number, SafeStartWorkspaceSlug> = {
+        1: "drafting",
+        2: "review",
+        3: "editorial-comments",
+        4: "ratification",
+        5: "steady-state",
+        6: "steady-state",
+      };
+
+      const currentSlug = stepToWorkspace[engagement.current_step] ?? "drafting";
+      const workspaces: SafeStartWorkspaceState[] = SAFESTART_WORKSPACES.map((w) => {
+        if (w.slug === currentSlug) return { slug: w.slug, status: "in_progress" };
+        if (w.order < (SAFESTART_WORKSPACES.find((x) => x.slug === currentSlug)?.order ?? 1)) {
+          return { slug: w.slug, status: "complete" };
+        }
+        return { slug: w.slug, status: "not_started" };
+      });
+
+      const guidebookSections: GuidebookSectionState[] = GUIDEBOOK_LAYER_TAXONOMY.map((layer) => {
+        const sectionMeta = GUIDEBOOK_SECTIONS.find((s) => s.slug === layer.slug.replace("response-plans", "response-plans") || s.number === String(layer.layerOrder).padStart(2, "0"));
+        const slug = (sectionMeta?.slug ?? layer.slug) as GuidebookSectionSlug;
+        const artifact = artifactRows.find(
+          (a) => a.kind === layer.kind || a.kind === sectionMeta?.artifactKind,
+        );
+        if (!artifact) {
+          return {
+            slug,
+            status: "not_drafted" as const,
+            currentVersionNumber: null,
+            latestBodyMarkdown: null,
+            artifactStatus: null,
+          };
+        }
+        const latest = latestByArtifact.get(artifact.id) ?? null;
+        const reviewStatus = artifact.review_status ?? artifact.status;
+        const status: GuidebookSectionStatus =
+          reviewStatus === "ratified" || artifact.status === "published"
+            ? "ratified"
+            : reviewStatus === "in_review" || reviewStatus === "revised"
+              ? "in_review"
+              : "drafted";
+        return {
+          slug,
+          status,
+          currentVersionNumber: latest?.version_number ?? null,
+          latestBodyMarkdown: latest?.body_md ?? null,
+          artifactStatus: artifact.status,
+        };
+      });
+
+      return {
+        organizationId,
+        organizationName,
+        workspaces,
+        currentWorkspaceSlug: currentSlug,
+        guidebook: guidebookSections,
+      };
+    }
+  } catch {
+    /* fall through to legacy program_engagements derivation */
+  }
 
   const templateSlugs = SAFESTART_WORKSPACES.map((w) => w.templateId).filter(
     (id): id is string => Boolean(id),

@@ -159,6 +159,8 @@ export const organizations = pgTable("organizations", {
    * `/sandboxlive/cohort` and `/sandboxlive/sponsor-oversight`.
    */
   cohort_id: uuid("cohort_id"),
+  /** Pilot stage (enum `org_current_stage`: safety|sandbox|skills|solutions). */
+  current_stage: text("current_stage").default("safety"),
 });
 
 export const contentCategories = pgTable("content_categories", {
@@ -3538,6 +3540,44 @@ export const futurePlanRatifications = pgTable(
 // Enum columns map to text(); DB type is `safety_artifact_status` (draft|published|archived).
 // ---------------------------------------------------------------------------
 
+export const safetyGuidebooks = pgTable("safety_guidebooks", {
+  id: id("id"),
+  organization_id: uuid("organization_id")
+    .notNull()
+    .references(() => organizations.id, { onDelete: "cascade" }),
+  engagement_id: uuid("engagement_id"),
+  title: text("title").notNull().default("AI Organizational Guidebook"),
+  status: text("status").notNull().default("drafting"),
+  current_version: integer("current_version").notNull().default(1),
+  ratified_at: timestamp("ratified_at", { withTimezone: true, mode: "string" }),
+  created_at: createdAt("created_at"),
+  updated_at: updatedAt("updated_at"),
+});
+
+export const safetyEngagements = pgTable("safety_engagements", {
+  id: id("id"),
+  organization_id: uuid("organization_id")
+    .notNull()
+    .references(() => organizations.id, { onDelete: "cascade" }),
+  guidebook_id: uuid("guidebook_id").references(() => safetyGuidebooks.id, {
+    onDelete: "set null",
+  }),
+  plan: text("plan").notNull().default("safestart"),
+  status: text("status").notNull().default("provisioning"),
+  current_step: integer("current_step").notNull().default(1),
+  week: integer("week").notNull().default(1),
+  dashboard_provisioned_at: timestamp("dashboard_provisioned_at", {
+    withTimezone: true,
+    mode: "string",
+  }),
+  kickoff_at: timestamp("kickoff_at", { withTimezone: true, mode: "string" }),
+  started_at: timestamp("started_at", { withTimezone: true, mode: "string" }).notNull().defaultNow(),
+  completed_at: timestamp("completed_at", { withTimezone: true, mode: "string" }),
+  milestones: jsonb("milestones").notNull().default([]),
+  created_at: createdAt("created_at"),
+  updated_at: updatedAt("updated_at"),
+});
+
 export const safetyArtifacts = pgTable(
   "safety_artifacts",
   {
@@ -3545,10 +3585,16 @@ export const safetyArtifacts = pgTable(
     organization_id: uuid("organization_id")
       .notNull()
       .references(() => organizations.id, { onDelete: "cascade" }),
+    guidebook_id: uuid("guidebook_id").references(() => safetyGuidebooks.id, {
+      onDelete: "cascade",
+    }),
+    layer_order: integer("layer_order"),
+    deck: text("deck"),
     title: text("title").notNull(),
     slug: text("slug").notNull(),
     kind: text("kind").notNull().default("named_refusals"),
     status: text("status").notNull().default("draft"),
+    review_status: text("review_status").notNull().default("drafting"),
     created_by_user_id: uuid("created_by_user_id").references(() => userProfiles.id, {
       onDelete: "set null",
     }),
@@ -3593,6 +3639,161 @@ export const safetyArtifactPublications = pgTable("safety_artifact_publications"
     onDelete: "set null",
   }),
 });
+
+export const safetyLayerChecklistItems = pgTable("safety_layer_checklist_items", {
+  id: id("id"),
+  artifact_id: uuid("artifact_id")
+    .notNull()
+    .references(() => safetyArtifacts.id, { onDelete: "cascade" }),
+  label: text("label").notNull(),
+  is_complete: boolean("is_complete").notNull().default(false),
+  sort_order: integer("sort_order").notNull().default(0),
+  created_at: createdAt("created_at"),
+});
+
+export const safetyArtifactComments = pgTable("safety_artifact_comments", {
+  id: id("id"),
+  guidebook_id: uuid("guidebook_id")
+    .notNull()
+    .references(() => safetyGuidebooks.id, { onDelete: "cascade" }),
+  artifact_id: uuid("artifact_id")
+    .notNull()
+    .references(() => safetyArtifacts.id, { onDelete: "cascade" }),
+  clause_ref: text("clause_ref"),
+  quoted_snippet: text("quoted_snippet"),
+  author_user_id: uuid("author_user_id").references(() => userProfiles.id, {
+    onDelete: "set null",
+  }),
+  body: text("body").notNull(),
+  status: text("status").notNull().default("open"),
+  parent_id: uuid("parent_id"),
+  resolved_by_user_id: uuid("resolved_by_user_id").references(() => userProfiles.id, {
+    onDelete: "set null",
+  }),
+  resolved_at: timestamp("resolved_at", { withTimezone: true, mode: "string" }),
+  created_at: createdAt("created_at"),
+  updated_at: updatedAt("updated_at"),
+});
+
+export const safetyGuidebookSignatures = pgTable("safety_guidebook_signatures", {
+  id: id("id"),
+  guidebook_id: uuid("guidebook_id")
+    .notNull()
+    .references(() => safetyGuidebooks.id, { onDelete: "cascade" }),
+  version_number: integer("version_number"),
+  signer_user_id: uuid("signer_user_id").references(() => userProfiles.id, {
+    onDelete: "set null",
+  }),
+  signer_name: text("signer_name").notNull(),
+  signer_role: text("signer_role"),
+  status: text("status").notNull().default("awaiting"),
+  signature: text("signature"),
+  signed_at: timestamp("signed_at", { withTimezone: true, mode: "string" }),
+  created_at: createdAt("created_at"),
+});
+
+export const safetyGuidebookRatifications = pgTable("safety_guidebook_ratifications", {
+  id: id("id"),
+  guidebook_id: uuid("guidebook_id")
+    .notNull()
+    .references(() => safetyGuidebooks.id, { onDelete: "cascade" }),
+  version_number: integer("version_number").notNull(),
+  ratified_by_user_id: uuid("ratified_by_user_id").references(() => userProfiles.id, {
+    onDelete: "set null",
+  }),
+  governance_process_note: text("governance_process_note"),
+  board_chair_name: text("board_chair_name"),
+  board_chair_signature: text("board_chair_signature"),
+  facilitator_name: text("facilitator_name"),
+  submitted_at: timestamp("submitted_at", { withTimezone: true, mode: "string" }).notNull().defaultNow(),
+  ratified_at: timestamp("ratified_at", { withTimezone: true, mode: "string" }).notNull().defaultNow(),
+  signed_at: timestamp("signed_at", { withTimezone: true, mode: "string" }),
+  notes: text("notes"),
+});
+
+export const safetyRolloutArtifacts = pgTable(
+  "safety_rollout_artifacts",
+  {
+    id: id("id"),
+    guidebook_id: uuid("guidebook_id")
+      .notNull()
+      .references(() => safetyGuidebooks.id, { onDelete: "cascade" }),
+    kind: text("kind").notNull(),
+    title: text("title").notNull(),
+    status: text("status").notNull().default("locked"),
+    storage_path: text("storage_path"),
+    file_url: text("file_url"),
+    generated_at: timestamp("generated_at", { withTimezone: true, mode: "string" }),
+    created_at: createdAt("created_at"),
+  },
+  (t) => [unique("safety_rollout_artifacts_guidebook_id_kind_key").on(t.guidebook_id, t.kind)],
+);
+
+export const safetyEnrollments = pgTable("safety_enrollments", {
+  id: id("id"),
+  organization_id: uuid("organization_id").references(() => organizations.id, {
+    onDelete: "set null",
+  }),
+  contact_name: text("contact_name").notNull(),
+  contact_role: text("contact_role"),
+  contact_email: text("contact_email").notNull(),
+  contact_phone: text("contact_phone"),
+  decider_name: text("decider_name"),
+  decider_role: text("decider_role"),
+  decider_email: text("decider_email"),
+  org_name: text("org_name").notNull(),
+  org_type: text("org_type"),
+  website: text("website"),
+  denomination: text("denomination"),
+  size_text: text("size_text"),
+  annual_budget: text("annual_budget"),
+  country: text("country"),
+  current_ai_usage: text("current_ai_usage"),
+  leadership_concerns: text("leadership_concerns"),
+  ratification_process: text("ratification_process"),
+  preferred_kickoff_window: text("preferred_kickoff_window"),
+  contributors: jsonb("contributors").notNull().default([]),
+  artifact_uploads: jsonb("artifact_uploads").notNull().default([]),
+  status: text("status").notNull().default("pending_payment"),
+  stripe_checkout_session_id: text("stripe_checkout_session_id"),
+  stripe_payment_intent_id: text("stripe_payment_intent_id"),
+  amount_cents: integer("amount_cents").notNull().default(100_000),
+  currency: text("currency").notNull().default("usd"),
+  paid_at: timestamp("paid_at", { withTimezone: true, mode: "string" }),
+  provisioned_at: timestamp("provisioned_at", { withTimezone: true, mode: "string" }),
+  created_at: createdAt("created_at"),
+  updated_at: updatedAt("updated_at"),
+});
+
+export const safetyQuestions = pgTable("safety_questions", {
+  id: id("id"),
+  organization_id: uuid("organization_id")
+    .notNull()
+    .references(() => organizations.id, { onDelete: "cascade" }),
+  asked_by_user_id: uuid("asked_by_user_id").references(() => userProfiles.id, {
+    onDelete: "set null",
+  }),
+  question: text("question").notNull(),
+  matched_artifact_id: uuid("matched_artifact_id").references(() => safetyArtifacts.id, {
+    onDelete: "set null",
+  }),
+  matched_clause_ref: text("matched_clause_ref"),
+  created_at: createdAt("created_at"),
+});
+
+export const safetyRoleAccess = pgTable(
+  "safety_role_access",
+  {
+    id: id("id"),
+    organization_id: uuid("organization_id").references(() => organizations.id, {
+      onDelete: "cascade",
+    }),
+    role: text("role").notNull(),
+    area: text("area").notNull(),
+    can_view: boolean("can_view").notNull().default(true),
+  },
+  (t) => [unique("safety_role_access_organization_id_role_area_key").on(t.organization_id, t.role, t.area)],
+);
 
 // ---------------------------------------------------------------------------
 // Stage transitions — audit log of org pilot-stage moves
