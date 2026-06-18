@@ -2,8 +2,8 @@
 
 import { useCallback, useState, type KeyboardEvent } from "react";
 
-import type { EditionCharterPart } from "./churches-edition-types";
-import styles from "./churches-edition.module.css";
+import type { EditionCharterPart } from "./audience-edition-types";
+import styles from "./audience-edition.module.css";
 import { RevealOnScroll } from "./reveal-on-scroll";
 
 type CharterTabsProps = {

@@ -1,6 +1,6 @@
 import { PATH_STAGE_LABELS } from "@/lib/agent-room/naming";
 
-import type { ChurchesEditionConfig } from "./churches-edition-types";
+import type { AudienceEditionConfig } from "./audience-edition-types";
 
 export const CHURCHES_EDITION_NAV = [
   { id: "hero", label: "What's already true" },
@@ -40,7 +40,7 @@ const CHARTER_PARTS = [
   },
 ] as const;
 
-export const CHURCHES_EDITION_CONFIG: ChurchesEditionConfig = {
+export const CHURCHES_EDITION_CONFIG: AudienceEditionConfig = {
   slug: "churches",
   mastVolume: "For Churches · Vol. 01",
   nav: CHURCHES_EDITION_NAV,

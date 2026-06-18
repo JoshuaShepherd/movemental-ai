@@ -2,8 +2,8 @@
 
 import { useCallback, useState } from "react";
 
-import type { EditionCarouselSlide } from "./churches-edition-types";
-import styles from "./churches-edition.module.css";
+import type { EditionCarouselSlide } from "./audience-edition-types";
+import styles from "./audience-edition.module.css";
 
 type PlatformCarouselProps = {
   slides: readonly EditionCarouselSlide[];

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 
-import styles from "./churches-edition.module.css";
+import styles from "./audience-edition.module.css";
 
 type RevealOnScrollProps = {
   children: ReactNode;

@@ -52,7 +52,7 @@ export type EditionCta = {
   variant: "solid" | "ghost";
 };
 
-export type ChurchesEditionConfig = {
+export type AudienceEditionConfig = {
   slug: AudienceEditionSlug;
   mastVolume: string;
   nav: readonly EditionNavEntry[];

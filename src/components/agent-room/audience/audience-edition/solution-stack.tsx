@@ -1,5 +1,5 @@
-import type { EditionLayerGroup } from "./churches-edition-types";
-import styles from "./churches-edition.module.css";
+import type { EditionLayerGroup } from "./audience-edition-types";
+import styles from "./audience-edition.module.css";
 import { RevealOnScroll } from "./reveal-on-scroll";
 
 type SolutionStackProps = {

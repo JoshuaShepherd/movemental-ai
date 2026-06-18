@@ -10,20 +10,20 @@ import { useDocumentScrollProgress } from "@/components/agent-room/document/use-
 import { useScrollSpy } from "@/components/agent-room/document/use-scroll-spy";
 import { AskAiPromptButton } from "@/components/agent-room/ink/ask-ai-prompt-button";
 
+import type { AudienceEditionConfig } from "./audience-edition-types";
+import styles from "./audience-edition.module.css";
 import { CharterTabs } from "./charter-tabs";
-import type { ChurchesEditionConfig } from "./churches-edition-types";
-import styles from "./churches-edition.module.css";
 import { EvidenceCardGrid } from "./evidence-card-grid";
 import { PathOrderGrid } from "./path-order-grid";
 import { PlatformCarousel } from "./platform-carousel";
 import { RevealOnScroll } from "./reveal-on-scroll";
 import { SolutionStack } from "./solution-stack";
 
-type ChurchesEditionExperienceProps = {
-  config: ChurchesEditionConfig;
+type AudienceEditionExperienceProps = {
+  config: AudienceEditionConfig;
 };
 
-export function ChurchesEditionExperience({ config }: ChurchesEditionExperienceProps) {
+export function AudienceEditionExperience({ config }: AudienceEditionExperienceProps) {
   const spyIds = useMemo(() => config.nav.map((entry) => entry.id), [config.nav]);
   const spyIndex = useScrollSpy(spyIds);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

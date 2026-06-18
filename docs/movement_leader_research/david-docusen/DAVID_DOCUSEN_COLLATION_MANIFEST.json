@@ -1,0 +1,28 @@
+{
+  "slug": "david-docusen",
+  "version": "2.0.0",
+  "generated_at": "2026-06-18",
+  "mode": "cold-start",
+  "note": "No per-topic source files on disk; substrate assembled from web research delegated to five research subagents (identity/timeline, books/frameworks, voice/theology, network/genealogy, reach/distribution). Provenance is the Sources table in the substrate.",
+  "sources": [
+    { "path": "web:daviddocusen.com/about", "sectionsUsed": ["Identity", "Editorial bio", "Timeline", "Frameworks", "Organizational affiliations"] },
+    { "path": "web:daviddocusen.com/books/neighborliness", "sectionsUsed": ["Frameworks", "Bibliography", "Network graph"] },
+    { "path": "web:firescholars.seu.edu/dmin/5", "sectionsUsed": ["Identity", "Timeline", "Frameworks", "Academic"] },
+    { "path": "web:multiply.church/charlotte/about", "sectionsUsed": ["Timeline", "Editorial bio", "Theological positioning"] },
+    { "path": "web:movement.com/blog/2017/08/crossing-divides", "sectionsUsed": ["Voice fingerprint", "Theological positioning", "Timeline"] },
+    { "path": "web:relevantmagazine.com/justice/christians-need-a-more-nuanced-understanding-of-gentrification", "sectionsUsed": ["Voice fingerprint", "Distinctive claims"] },
+    { "path": "web:goodreads.com/author/show/20440228", "sectionsUsed": ["Bibliography", "Reach metrics"] },
+    { "path": "web:goodreads.com/author/quotes/20440228", "sectionsUsed": ["Voice fingerprint"] },
+    { "path": "web:amazon.com/dp/0785289283", "sectionsUsed": ["Bibliography"] },
+    { "path": "web:audible.com/pd/Neighborliness-Audiobook/0785289348", "sectionsUsed": ["Distribution inventory", "Reach metrics"] },
+    { "path": "web:thebaptistpaper.org/book-review-a-closer-look-at-neighborliness", "sectionsUsed": ["Frameworks", "Voice fingerprint", "Theological positioning"] },
+    { "path": "web:boldjourney.com/meet-david-docusen", "sectionsUsed": ["Editorial bio", "Voice fingerprint", "Theological positioning"] },
+    { "path": "web:neighborliness.com/board-of-directors", "sectionsUsed": ["Network graph", "Intellectual genealogy"] },
+    { "path": "web:neighborliness.com/meet-the-team", "sectionsUsed": ["Network graph"] },
+    { "path": "web:freedomcommunities.com/docusen", "sectionsUsed": ["Identity", "Timeline", "Organizational affiliations"] },
+    { "path": "web:linkedin.com/in/daviddocusen", "sectionsUsed": ["Identity", "Timeline", "Organizational affiliations", "Reach metrics"] },
+    { "path": "web:perlego.com/book/2723936", "sectionsUsed": ["Bibliography", "Intellectual genealogy"] },
+    { "path": "web:news.ag.org/.../lessons-in-neighborliness", "sectionsUsed": ["Frameworks", "Downstream impact"] },
+    { "path": "web:podcasts.apple.com/.../id1617181549", "sectionsUsed": ["Reach metrics", "Distribution inventory"] }
+  ]
+}

@@ -12,5 +12,5 @@ The full HTML prototype (parameterized for churches / organizations / institutio
 6. The limit — formation before deployment
 7. Start + agent dock handoff
 
-**Live React:** `src/components/agent-room/audience/churches-edition/`  
+**Live React:** `src/components/agent-room/audience/audience-edition/`  
 **Archived prior page:** `/agent/churches-old`

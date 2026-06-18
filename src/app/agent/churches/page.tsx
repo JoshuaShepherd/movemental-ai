@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import { ChurchesEditionExperience } from "@/components/agent-room/audience/churches-edition/churches-edition-experience";
-import { CHURCHES_EDITION_CONFIG } from "@/components/agent-room/audience/churches-edition/churches-edition-config";
+import { AudienceEditionExperience } from "@/components/agent-room/audience/audience-edition/audience-edition-experience";
+import { CHURCHES_EDITION_CONFIG } from "@/components/agent-room/audience/audience-edition/churches-edition-config";
 
 export const metadata: Metadata = {
   title: "Churches | Movemental",
@@ -13,5 +13,5 @@ export const metadata: Metadata = {
 };
 
 export default function ChurchesPage() {
-  return <ChurchesEditionExperience config={CHURCHES_EDITION_CONFIG} />;
+  return <AudienceEditionExperience config={CHURCHES_EDITION_CONFIG} />;
 }

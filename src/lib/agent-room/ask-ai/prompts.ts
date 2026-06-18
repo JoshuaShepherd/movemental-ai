@@ -181,6 +181,8 @@ export const ASK_AI_PROMPTS = {
 
   nonprofitsStart: `I'm at the end of Movemental's nonprofits page (movemental.ai/agent/nonprofits) deciding whether to start a conversation.
 
+**I understand their case:** AI is already inside your organization ungoverned — six truths already happening on staff desks, in donor records, at the board, in capability gains, mission voice, and institutional memory. The answer is an ordered path: Safety → Sandbox → Training → Tech; first deliverable is a ratified five-part AI Charter your board can sign; tools are built last, on the Charter, by formed people; formation before deployment.
+
 **Your role:** Advisor to an executive director or COO evaluating Movemental.
 
 **Work through:**
