@@ -304,6 +304,38 @@
 .screen:not(.scroll) .sheet.home {
   align-self: center;
 }
+
+/* Home opening scene — fit the stage; no vertical scroll inside the room shell. */
+.screenHome {
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.roomDock .screenHome {
+  overflow: hidden;
+}
+.screenHome .sheet.home {
+  max-height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+.homeContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+  max-height: 100%;
+}
+.sheet.home .band {
+  flex: 0 1 auto;
+  min-height: 0;
+}
+.sheet.home .leaderCarousel {
+  min-height: 0;
+}
+.sheet.home .leaderCardPortrait {
+  max-height: min(96px, 22vh);
+}
 @media (min-width: 62rem) {
   .sheet {
     max-width: 68rem;
@@ -770,6 +802,36 @@
   border-radius: inherit;
   background: var(--color-ink-band-ink);
   transition: width 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (max-height: 760px) {
+  .sheet.home h1 {
+    font-size: clamp(1.45rem, 3.2vw, 2rem);
+    line-height: 1.1;
+  }
+  .sheet.home .body {
+    font-size: 0.95rem;
+    margin-top: 0.85rem;
+    line-height: 1.5;
+  }
+  .sheet.home .band {
+    margin-top: 1.35rem;
+  }
+  .bandSubline {
+    font-size: 0.76rem;
+  }
+  .leaderCardBtn {
+    padding: 0.5rem;
+    gap: 0.4rem;
+    border-radius: 14px;
+  }
+  .leaderCardPortrait {
+    border-radius: 10px;
+  }
+  .leaderCarouselFoot {
+    margin-top: 0.45rem;
+    gap: 0.35rem;
+  }
 }
 
 /* ===== capture: lead form-cells in the sheet (the agent's own voice) ===== */
@@ -4247,6 +4309,9 @@ button.wayCtaPaid {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
+  .roomDock .screenHome {
+    overflow: hidden;
+  }
   .handwritingVline .vline {
     white-space: normal;
   }
@@ -5275,6 +5340,11 @@ button.wayCtaPaid {
   .carouselBtn {
     width: 2.75rem;
     height: 2.75rem;
+  }
+
+  /* Home stays fold-locked — only inner sheets (leader profile, FAQ, …) scroll. */
+  .screenHome {
+    overflow: hidden;
   }
 
   /* The Discuss voice band grows to 3–5 lines on desktop; cap it tighter on

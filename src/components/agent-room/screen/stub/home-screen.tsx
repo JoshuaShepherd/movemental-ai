@@ -17,7 +17,7 @@ export function HomeScreen({
   disabled,
 }: Pick<ScreenProps, "onLeaderSelect" | "disabled">) {
   return (
-    <div>
+    <div className={styles.homeContent}>
       <h1>{HOME_SCREEN_COPY.headline}</h1>
       <p className={styles.body}>
         {HOME_SCREEN_COPY.bodyBeforePhrase}{" "}

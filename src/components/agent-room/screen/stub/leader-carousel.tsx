@@ -14,9 +14,49 @@ import { LEADERS } from "@/lib/agent-room/data/leaders";
 import styles from "../../ink-band.module.css";
 import { setPendingFlip } from "./leader-flip";
 
-/** Desktop: three card faces visible. Mobile: one full card + peek of the next. */
-const VISIBLE_DESKTOP = 3;
+/** Desktop: more compact faces visible; mobile: one full card + peek of the next. */
+const VISIBLE_DESKTOP = 5;
+const VISIBLE_WIDE = 6;
 const VISIBLE_MOBILE = 1.2;
+
+/** Portrait + card chrome (padding, meta, gaps) below the square image. */
+const CARD_CHROME_PX = 54;
+/** Carousel foot (nav + progress) below the track. */
+const CAROUSEL_FOOT_PX = 62;
+
+const CARD_WIDTH_MAX = {
+  wide: 96,
+  desktop: 92,
+  mobile: 80,
+} as const;
+const CARD_WIDTH_MIN = 56;
+
+function visibleCount(availableWidth: number): number {
+  if (availableWidth >= 1100) return VISIBLE_WIDE;
+  if (availableWidth >= 768) return VISIBLE_DESKTOP;
+  return VISIBLE_MOBILE;
+}
+
+function maxCardWidthForViewport(availableWidth: number): number {
+  if (availableWidth >= 1100) return CARD_WIDTH_MAX.wide;
+  if (availableWidth >= 768) return CARD_WIDTH_MAX.desktop;
+  return CARD_WIDTH_MAX.mobile;
+}
+
+function heightBudgetForShell(shell: HTMLElement): number | null {
+  const stage = shell.closest("[data-agent-screen]") as HTMLElement | null;
+  if (!stage) return null;
+
+  const stageStyle = getComputedStyle(stage);
+  const stageHeight =
+    stage.clientHeight -
+    (parseFloat(stageStyle.paddingTop) || 0) -
+    (parseFloat(stageStyle.paddingBottom) || 0);
+  const shellTop = shell.getBoundingClientRect().top - stage.getBoundingClientRect().top;
+  const belowTrack = CAROUSEL_FOOT_PX + 6;
+
+  return stageHeight - shellTop - belowTrack;
+}
 
 function selectLeader(i: number, onSelect: (i: number) => void) {
   const ph = document.getElementById(`ph-${i}`);
@@ -59,9 +99,20 @@ export function LeaderCarousel({
     if (!shell || !track) return;
 
     const available = shell.clientWidth;
-    const visible = available >= 768 ? VISIBLE_DESKTOP : VISIBLE_MOBILE;
-    const gap = 14;
-    const cardWidth = Math.floor((available - gap * (Math.ceil(visible) - 1)) / visible);
+    const visible = visibleCount(available);
+    const gap = 10;
+    const widthBased = Math.floor((available - gap * (Math.ceil(visible) - 1)) / visible);
+
+    let maxCard = maxCardWidthForViewport(available);
+    const heightBudget = heightBudgetForShell(shell);
+    if (heightBudget != null && heightBudget > 0) {
+      const maxFromHeight = Math.floor(heightBudget - CARD_CHROME_PX);
+      if (maxFromHeight > 0) {
+        maxCard = Math.min(maxCard, maxFromHeight);
+      }
+    }
+
+    const cardWidth = Math.max(CARD_WIDTH_MIN, Math.min(widthBased, maxCard));
     const step = cardWidth + gap;
     const maxIndex = Math.max(0, order.length - Math.floor(visible));
     const resolvedMax = Math.min(maxIndex, order.length - 1);
@@ -88,6 +139,8 @@ export function LeaderCarousel({
     if (!shell || typeof ResizeObserver === "undefined") return;
     const ro = new ResizeObserver(measure);
     ro.observe(shell);
+    const stage = shell.closest("[data-agent-screen]");
+    if (stage) ro.observe(stage);
     return () => ro.disconnect();
   }, [measure]);
 

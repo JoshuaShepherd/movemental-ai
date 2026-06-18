@@ -166,7 +166,7 @@ function HybridRoom() {
           : `${screen.id}-${screen.nonce}`
       }
       home={screen.id === "home" && !room.engineExtra}
-      scroll
+      scroll={screen.id !== "home" && screen.id !== "beat" && !room.engineExtra}
       beat={screen.id === "beat" && !room.engineExtra}
       voice={room.voice}
       error={room.error}
@@ -209,7 +209,7 @@ function StubRoom() {
       }
       screenKey={`${screen.id}-${screen.nonce}`}
       home={screen.id === "home"}
-      scroll
+      scroll={screen.id !== "home" && screen.id !== "beat"}
       beat={screen.id === "beat"}
       voice={room.voice}
       error={room.error}
@@ -259,7 +259,7 @@ function StreamRoom() {
             : "opening"
       }
       home={atOpening}
-      scroll
+      scroll={!atOpening && !inBeat}
       beat={inBeat}
       voice={room.voice}
       error={room.error}

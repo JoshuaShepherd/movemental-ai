@@ -25,7 +25,10 @@ export function ScreenZone({
   return (
     <section
       ref={screenEl}
-      className={`${styles.screen} ${scroll ? styles.scroll : ""}`}
+      data-agent-screen=""
+      className={`${styles.screen} ${scroll ? styles.scroll : ""} ${
+        home ? styles.screenHome : ""
+      }`}
     >
       <div ref={sheetEl} className={`${styles.sheet} ${home ? styles.home : ""}`}>
         {children}
