@@ -34,13 +34,16 @@ const OPENING_CHIP_LOCAL_SCENES: Record<string, OpeningChipScene> = {
   "Get in touch": "talkToUs",
 };
 
-/** Labels from `DEFAULT_SUGGESTIONS` → stream / expanded-drawer routing. */
-const STREAM_CHIP_ROUTES: Record<string, ChipRoute> = {
+/** Labels from `DEFAULT_SUGGESTIONS` → expanded-drawer / legacy stream routing. */
+const EXPANDED_DRAWER_CHIP_ROUTES: Record<string, ChipRoute> = {
   "Get a clear next AI step": { kind: "local", scene: "toSafetyFlow" },
   "About Movemental": { kind: "agent", utterance: "About Movemental" },
   "What does it cost?": { kind: "agent", utterance: "What does it cost?" },
   "Get in touch": { kind: "agent", utterance: "Get in touch" },
 };
+
+/** @deprecated AU-20 — use `EXPANDED_DRAWER_CHIP_ROUTES`. */
+const STREAM_CHIP_ROUTES = EXPANDED_DRAWER_CHIP_ROUTES;
 
 /** Local scene for a known opening chip label, if any. */
 export function getOpeningChipLocalScene(label: string): OpeningChipScene | null {

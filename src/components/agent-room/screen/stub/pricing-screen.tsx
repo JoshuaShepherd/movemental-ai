@@ -6,13 +6,14 @@ import styles from "../../ink-band.module.css";
 import type { ScreenProps } from "./stub-screen";
 import { Crumb } from "./chrome";
 import { ProcessAccordion } from "../process-accordion";
-import { PATH_STAGE_LABELS } from "@/lib/agent-room/naming";
+import type { PricingScreenProps } from "@/lib/agent-room/component-props";
 import {
   PRICING_SAFETY_FREE,
   PRICING_SAFETY_PAID,
   PRICING_SANDBOX_DIGITAL,
   PRICING_SANDBOX_FREE,
   PRICING_SANDBOX_IN_PERSON,
+  PRICING_STAGE_HEADERS,
   PRICING_TECH_FREE,
   PRICING_TECH_MODULES,
   PRICING_TRAINING_FREE,
@@ -115,9 +116,21 @@ function TechBuildPricing({ reassurance }: { reassurance: string }) {
   );
 }
 
+const STAGE_HIGHLIGHT_IDS: Record<1 | 2 | 3 | 4, string> = {
+  1: "safety",
+  2: "sandbox",
+  3: "training",
+  4: "tech",
+};
+
 /** Full pricing schedule with plain stage names and two ways forward per stage. */
-export function PricingScreen({ onHome }: ScreenProps) {
-  const [active, setActive] = useState("safety");
+export function PricingScreen({ onHome, stream }: ScreenProps) {
+  const dynamic = stream?.props as PricingScreenProps | undefined;
+  const initialActive =
+    dynamic?.highlightStage != null
+      ? STAGE_HIGHLIGHT_IDS[dynamic.highlightStage]
+      : "safety";
+  const [active, setActive] = useState(initialActive);
 
   const sandboxWays = (
     <StageWays
@@ -135,6 +148,7 @@ export function PricingScreen({ onHome }: ScreenProps) {
   return (
     <div>
       <Crumb onHome={onHome} />
+      {dynamic?.eyebrow ? <p className={styles.eyebrow}>{dynamic.eyebrow}</p> : null}
       <h1>Pricing.</h1>
 
       <ProcessAccordion
@@ -144,8 +158,10 @@ export function PricingScreen({ onHome }: ScreenProps) {
         items={[
           {
             id: "safety",
-            step: "01",
-            title: "Safety",
+            step: PRICING_STAGE_HEADERS[0]!.step,
+            title: PRICING_STAGE_HEADERS[0]!.title,
+            priceLine: PRICING_STAGE_HEADERS[0]!.priceLine,
+            summary: PRICING_STAGE_HEADERS[0]!.descriptor,
             children: (
               <StageWays
                 reassurance="Both routes produce the same ratified AI Charter."
@@ -157,14 +173,18 @@ export function PricingScreen({ onHome }: ScreenProps) {
           },
           {
             id: "sandbox",
-            step: "02",
-            title: "Sandbox",
+            step: PRICING_STAGE_HEADERS[1]!.step,
+            title: PRICING_STAGE_HEADERS[1]!.title,
+            priceLine: PRICING_STAGE_HEADERS[1]!.priceLine,
+            summary: PRICING_STAGE_HEADERS[1]!.descriptor,
             children: sandboxWays,
           },
           {
             id: "training",
-            step: "03",
-            title: "Training",
+            step: PRICING_STAGE_HEADERS[2]!.step,
+            title: PRICING_STAGE_HEADERS[2]!.title,
+            priceLine: PRICING_STAGE_HEADERS[2]!.priceLine,
+            summary: PRICING_STAGE_HEADERS[2]!.descriptor,
             children: (
               <StageWays
                 reassurance="The paid cohort runs today through Movemental's LMS. The free field guide ships when it's ready."
@@ -175,8 +195,10 @@ export function PricingScreen({ onHome }: ScreenProps) {
           },
           {
             id: "tech",
-            step: "04",
-            title: PATH_STAGE_LABELS.tech,
+            step: PRICING_STAGE_HEADERS[3]!.step,
+            title: PRICING_STAGE_HEADERS[3]!.title,
+            priceLine: PRICING_STAGE_HEADERS[3]!.priceLine,
+            summary: PRICING_STAGE_HEADERS[3]!.descriptor,
             children: <TechBuildPricing reassurance={techReassurance} />,
           },
         ]}

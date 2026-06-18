@@ -2,10 +2,9 @@
  * Agent Room — capture (lead) surfaces. Ports the prototype's three capture
  * variants (map / paid / free) as DATA, plus the single integration seam.
  *
- * There is NO backend here. A valid submit lands in the in-memory `LEADS`
- * object and logs via `submitLead` — the one place a real POST gets wired later.
- * Mirrors the AF-01 "choreography as data" contract: the capture form is part of
- * the agent's screen set, presented and gestured-to by the runner.
+ * `submitLead()` POSTs to `/api/agent-room/capture` — the one network boundary
+ * for all in-room capture forms. In-memory `LEADS` mirrors the last submit for
+ * local runner state; durable rows land in Postgres via the capture route.
  */
 
 export type CaptureKind = "map" | "paid" | "free" | "discuss";

@@ -1,0 +1,12 @@
+{
+  "screenId": "120bb56240054e02b13370dffedbce13",
+  "title": "Payment - SafeStart Enrollment",
+  "slug": "15-payment-safestart-enrollment",
+  "deviceType": "DESKTOP",
+  "width": "2560",
+  "height": "2316",
+  "htmlFile": "screens/15-payment-safestart-enrollment.html",
+  "pngFile": "screens/15-payment-safestart-enrollment.png",
+  "name": "projects/8694957891602637085/screens/120bb56240054e02b13370dffedbce13",
+  "fetchedAt": "2026-06-18T08:50:59.328Z"
+}

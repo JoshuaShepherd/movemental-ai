@@ -131,3 +131,43 @@ export const PRICING_TECH_MODULES: readonly TechModulePricing[] = [
       "People, giving, and operations in one place — donor stewardship, member care, and staff workflows.",
   },
 ] as const;
+
+/** Column header copy for the pricing accordion — derived from tier prices above. */
+export type PricingStageHeader = {
+  id: "safety" | "sandbox" | "training" | "tech";
+  step: string;
+  title: string;
+  priceLine: string;
+  descriptor: string;
+};
+
+export const PRICING_STAGE_HEADERS: readonly PricingStageHeader[] = [
+  {
+    id: "safety",
+    step: "01",
+    title: "Safety",
+    priceLine: `${PRICING_SAFETY_FREE.price.split("·")[0]?.trim()} · ${PRICING_SAFETY_PAID.price.split("·")[0]?.trim()}`,
+    descriptor: "Ratify your AI Charter before anything else.",
+  },
+  {
+    id: "sandbox",
+    step: "02",
+    title: "Sandbox",
+    priceLine: `${PRICING_SANDBOX_FREE.price.split("·")[0]?.trim()} · ${PRICING_SANDBOX_DIGITAL.price.split("·")[0]?.trim()}`,
+    descriptor: "Try AI against real work inside your charter.",
+  },
+  {
+    id: "training",
+    step: "03",
+    title: "Training",
+    priceLine: `${PRICING_TRAINING_FREE.price} · ${PRICING_TRAINING_PAID.price.split("·")[0]?.trim()}`,
+    descriptor: "Form the people who will steward AI inside your org.",
+  },
+  {
+    id: "tech",
+    step: "04",
+    title: "Technology",
+    priceLine: `${PRICING_TECH_MODULES[1]!.price} modules · Foundation built in`,
+    descriptor: "Build only what your ratified foundation supports.",
+  },
+] as const;

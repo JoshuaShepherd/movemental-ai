@@ -1,0 +1,12 @@
+{
+  "screenId": "bef36d589a4146f6b9faac9f9374f5b7",
+  "title": "Search by Question - SafeStart Dashboard",
+  "slug": "08-search-by-question-safestart-dashboard",
+  "deviceType": "DESKTOP",
+  "width": "2560",
+  "height": "2048",
+  "htmlFile": "screens/08-search-by-question-safestart-dashboard.html",
+  "pngFile": "screens/08-search-by-question-safestart-dashboard.png",
+  "name": "projects/8694957891602637085/screens/bef36d589a4146f6b9faac9f9374f5b7",
+  "fetchedAt": "2026-06-18T08:50:59.328Z"
+}

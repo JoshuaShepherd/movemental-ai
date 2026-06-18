@@ -75,6 +75,11 @@ const clientSchema = z.object({
   NEXT_PUBLIC_SENTRY_DSN: optionalEnvUrl(),
   /** Calendly: default training / cohort kickoff scheduling page (embed) */
   NEXT_PUBLIC_CALENDLY_TRAINING_URL: optionalEnvUrl(),
+  /**
+   * `"1"` when the site is launch-ready and agent surfaces may be indexed.
+   * Unset or `"0"` keeps preview `noindex` on `/agent` and filters the sitemap.
+   */
+  NEXT_PUBLIC_SITE_LAUNCH_READY: z.enum(["0", "1"]).optional(),
 });
 
 const processEnv = {
@@ -108,6 +113,7 @@ const processEnv = {
   NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
   NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN,
   NEXT_PUBLIC_CALENDLY_TRAINING_URL: process.env.NEXT_PUBLIC_CALENDLY_TRAINING_URL,
+  NEXT_PUBLIC_SITE_LAUNCH_READY: process.env.NEXT_PUBLIC_SITE_LAUNCH_READY,
 } as const;
 
 const serverParsed = serverSchema.safeParse(processEnv);

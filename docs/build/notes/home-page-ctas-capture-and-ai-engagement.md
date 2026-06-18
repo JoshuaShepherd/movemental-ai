@@ -1,24 +1,39 @@
 # Home page CTAs, capture wiring, and how AI is actually triggered
 
-_Notes for product decisions, 2026-06-10. Findings are from the current `main` tree._
+_Notes for product decisions, 2026-06-10. Updated 2026-06-18 (AU-02 audit). Findings are from the current tree._
 
 ---
 
 ## 1. Should the organizational assessment be a secondary CTA / link on the home page?
 
-**Yes — it's the strongest free, data-rich offer we have, and it's mostly built but not surfaced.** The data layer exists (`assessments`, `userAssessments`, `assessmentResponses`, `systemReadinessAssessments`, `dualIntelligenceAssessments` tables + full CRUD APIs + hooks), and the in-room "beat" UI already renders questions and captures answers. What's missing is the magic-link front door and the persistence seam: `submitLead()` in [capture.ts](../../../src/lib/agent-room/capture.ts) is still `console.log` + `// TODO: POST`. Recommend: ship it as a standalone magic-link mini-app, then add a secondary home CTA. Real, low-friction lead data — worth doing.
+**Yes — still the strongest free, data-rich offer, but not surfaced on a marketing home page.** `/` redirects to `/agent`. The in-room beat UI and `/assess` front door exist; magic-link persistence is partially wired via `/api/agent-room/capture` (`map` kind → `agent_room_leads` + newsletter + map email when `mapRead` is present).
 
 ## 2. Is the lead magnet set up and working?
 
-**Mostly yes.** Email capture + day-0 download both work: [api/toolkit-download/route.ts](../../../src/app/api/toolkit-download/route.ts) validates, rate-limits, writes to `newsletter_subscribers`, and emails the PDF via Resend (Safety + Sandbox guides exist in `public/downloads/`). **Gaps:** (a) the **frontend forms are archived** under `_archive/pre-marketing-migration-2026-06/` — not on the live site; (b) day-3/day-7 follow-ups are stubbed (`// TODO: Vercel Cron`); (c) the sandbox "review" path records a lead but sends nothing and notifies no one. Verdict: backend WORKING, frontend needs re-wiring.
+**Yes for live surfaces.** `/api/toolkit-download` and `/field-guide` form write to `newsletter_subscribers` and email PDFs via Resend. Agent-room `free` capture kind fans out through the same field-guide lead helper. **Gap:** day-3/day-7 follow-ups remain cron stubs.
 
 ## 3. Is the safety dashboard set up for full enrollment?
 
-**No — it's a mockup.** [safety-screen.tsx](../../../src/components/agent-room/screen/stub/safety-screen.tsx) shows the free-vs-$1,000 pricing copy but captures nothing. The right table exists — `organizationInquiries` (org_name, contact_name, email, org_type, team_size, current_tools, timeline, budget_range) with a working CRUD API — but **no form is wired to it**. Enrollment data (org info + contact person) is not collected or stored anywhere today. This is the biggest gap of the four.
+**Partial.** Pricing copy and Safety flow exist in-room. Paid capture (`paid` kind) logs to `agent_room_leads` and notifies the team; full Stripe enroll is `/api/agent-room/enroll` (separate from capture). `organizationInquiries` table exists but is not yet the primary paid path.
 
 ## 4. Is the contact form wired up?
 
-**API yes, frontend no.** [api/contact/route.ts](../../../src/app/api/contact/route.ts) fully works: validates, writes to `contact_submissions`, notifies `CONTACT_NOTIFY_EMAIL`, and sends the submitter an ack (Resend). But [contact-screen.tsx](../../../src/components/agent-room/screen/stub/contact-screen.tsx) is **UI-only by design** (per AF-90) — it mock-succeeds client-side and never POSTs. So no real contact submissions reach the API. One small change (wire the form to the endpoint) closes this.
+**Yes.** [contact-screen.tsx](../../../src/components/agent-room/screen/stub/contact-screen.tsx) POSTs to `/api/contact` (stores `contact_submissions`, inbox notify + submitter ack). Local success fallback remains if the network call fails.
+
+---
+
+## Capture funnel audit matrix (AU-02, 2026-06-18)
+
+| Kind | UI reachable from | POST endpoint | Table(s) | Email | Status |
+| --- | --- | --- | --- | --- | --- |
+| `map` | readback | `/api/agent-room/capture` | `agent_room_leads`, `newsletter_subscribers`, AI reality map | Map result email when `mapRead` present | ✅ Wired |
+| `paid` | capture / safety-flow signup | `/api/agent-room/capture` | `agent_room_leads` | Internal team notify | ✅ Wired (enroll is separate) |
+| `free` | handbook / DIY / capture | `/api/agent-room/capture` | `agent_room_leads`, field-guide lead | Safety PDF via field-guide helper | ✅ Wired |
+| `discuss` | Discuss cap | `/api/agent-room/capture` | `agent_room_leads`, `contact_submissions` | Inbox + ack | ✅ Wired |
+| contact | contact screen | `/api/contact` | `contact_submissions` | Inbox + ack | ✅ Wired |
+| field guide page | `/field-guide` | `/api/toolkit-download` | `newsletter_subscribers` | PDF email | ✅ Wired |
+
+**Blockers / honest gaps:** Resend unset → emails skipped (`console.warn` only). Discuss mode still behind `NEXT_PUBLIC_AGENT_ROOM_DISCUSS=1`. Assessment share tokens have no UI. No enrollment state machine driving `organizations.onboarding_state`.
 
 ---
 

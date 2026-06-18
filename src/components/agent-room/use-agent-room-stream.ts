@@ -1,3 +1,8 @@
+/**
+ * @deprecated AU-20 — legacy full-AI stream controller. Use `useAgentRoomHybrid`
+ * instead. Still available when `NEXT_PUBLIC_AGENT_ROOM_LEGACY_STREAM=1` and
+ * `NEXT_PUBLIC_AGENT_ROOM_MODE=stream`.
+ */
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -7,7 +12,7 @@ import { runAgentStreamTurn } from "@/lib/agent-room/agent-stream-turn";
 import { beatScene } from "@/lib/agent-room/beat-scenes";
 import type { Scene, SceneFactory, ScreenId, ShowOpts, SuggestChip } from "@/lib/agent-room/acts";
 import { submitLead, LEADS } from "@/lib/agent-room/capture";
-import { MAP_Q, computeMapRead, type MapOption, type MapRead } from "@/lib/agent-room/data/map-q";
+import { computeMapRead, getMapQuestionForShow, isTerminalBeatIndex, type MapOption, type MapRead } from "@/lib/agent-room/data/map-q";
 import { SCENES } from "@/lib/agent-room/data/scenes";
 import { CONCIERGE_VOICE } from "@/lib/agent-room/data/concierge-voice-lines";
 import { handleSuggestChipTarget } from "@/lib/agent-room/suggest-chip-targets";
@@ -253,12 +258,15 @@ export function useAgentRoomStream() {
   const onBeatAnswer = useCallback(
     (qi: number, oi: number) => {
       const answers = [...mapAnswersRef.current];
-      answers[qi] = MAP_Q[qi].opts[oi];
+      const question = getMapQuestionForShow(qi, answers);
+      if (!question) return;
+      answers[qi] = question.opts[oi];
       mapAnswersRef.current = answers;
       const read = computeMapRead(answers);
-      if (qi >= MAP_Q.length - 1 || MAP_Q[qi].opts[oi].gateFail) setMapRead(read);
+      const opt = answers[qi]!;
+      if (isTerminalBeatIndex(qi, opt)) setMapRead(read);
       lastSceneRef.current = "beatScene";
-      void playLocalScene(beatScene(qi, oi, read));
+      void playLocalScene(beatScene(qi, oi, read, answers));
     },
     [playLocalScene],
   );

@@ -38,6 +38,7 @@ export function SafetyReadbackScene({ mapRead, onRunScene, disabled }: SafetyRea
           <ReadbackRail
             mapRead={mapRead}
             hereStage="safety"
+            variant="hero"
             className={styles.readbackHero}
           />
         </aside>

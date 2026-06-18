@@ -14,18 +14,13 @@ import { waitForAgentOpeningReady } from "./agent-room-helpers";
  * "hybrid"):
  *   - hybrid: AGENT_ROOM_TEST_MODE=hybrid or unset (server default)
  *   - stub  : AGENT_ROOM_TEST_MODE=stub NEXT_PUBLIC_AGENT_ROOM_MODE=stub
- *   - stream: AGENT_ROOM_TEST_MODE=stream NEXT_PUBLIC_AGENT_ROOM_MODE=stream
  *
- * The live block additionally probes the engine and skips if unreachable, so CI
- * without the engine still runs the stub + fallback blocks.
+ * Stream mode is deprecated (AU-20) — legacy stream blocks removed; hybrid covers
+ * the same graceful-fallback and live-engine probes.
  */
 const RUN = process.env.RUN_AGENT_ROOM_E2E === "1";
 const MODE =
-  process.env.AGENT_ROOM_TEST_MODE === "stream"
-    ? "stream"
-    : process.env.AGENT_ROOM_TEST_MODE === "stub"
-      ? "stub"
-      : "hybrid";
+  process.env.AGENT_ROOM_TEST_MODE === "stub" ? "stub" : "hybrid";
 const STREAM_PATH = "**/api/agent-room/turn";
 const ENGINE_PROBE = (process.env.AI_AGENTS_BASE_URL ?? "http://localhost:3001") + "/api/agents/models";
 
@@ -134,42 +129,9 @@ test.describe("Agent Room", () => {
     });
   });
 
-  // ── Stream mode: local opening choreography (no engine) ───────────────────
-  test.describe("stream local opening", () => {
-    test.skip(MODE !== "stream", "Server must be in stream mode (AGENT_ROOM_TEST_MODE=stream)");
-
-    test("load plays opening voice with zero stream calls", async ({ page }) => {
-      const streamCalls: string[] = [];
-      page.on("request", (r) => {
-        if (r.url().includes("/api/agent-room/turn")) streamCalls.push(r.url());
-      });
-      await page.goto("/agent");
-      await expect(page.locator(".ink-band-surface").first()).toBeVisible();
-      await waitForAgentOpeningReady(page, 3500);
-      expect(streamCalls, "opening choreography must not call stream").toEqual([]);
-    });
-
-    test("lead chip opens safety flow with one-question voice", async ({ page }) => {
-      const streamCalls: string[] = [];
-      page.on("request", (r) => {
-        if (r.url().includes("/api/agent-room/turn")) streamCalls.push(r.url());
-      });
-      await page.goto("/agent");
-      await page.waitForTimeout(2000);
-      await page.getByRole("button", { name: "Get a clear next AI step" }).click();
-      await expect(page.getByText("Let's find your simplest next step.")).toBeVisible({
-        timeout: 3500,
-      });
-      await expect(
-        page.getByText("One question. Then we'll show you exactly where you stand"),
-      ).toBeVisible({ timeout: 3500 });
-      expect(streamCalls, "cold on-ramp is local — no stream yet").toEqual([]);
-    });
-  });
-
-  // ── Stream mode: graceful fallback (route-mocked, no real engine needed) ──
-  test.describe("stream fallback", () => {
-    test.skip(MODE !== "stream", "Server must be in stream mode (AGENT_ROOM_TEST_MODE=stream)");
+  // ── Hybrid graceful fallback (route-mocked, no real engine needed) ──────
+  test.describe("hybrid fallback", () => {
+    test.skip(MODE !== "hybrid", "Server must be in hybrid mode (default dev server)");
 
     test("engine not configured (503) → honest error voice, never blank", async ({ page }) => {
       await page.route(STREAM_PATH, (route) =>
@@ -217,9 +179,9 @@ test.describe("Agent Room", () => {
     });
   });
 
-  // ── Stream mode + live engine: the real happy-path ────────────────────────
+  // ── Hybrid + live engine: the real happy-path ─────────────────────────────
   test.describe("live (engine up)", () => {
-    test.skip(MODE !== "stream", "Server must be in stream mode (AGENT_ROOM_TEST_MODE=stream)");
+    test.skip(MODE !== "hybrid", "Server must be in hybrid mode (default dev server)");
 
     test.beforeAll(async () => {
       let ok = false;

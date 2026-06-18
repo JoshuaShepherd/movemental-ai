@@ -12,7 +12,13 @@
 import type { Scene } from "./acts";
 import { DISCUSS_ENABLED } from "./discuss";
 import { FREE_HANDBOOK_CTA } from "./naming";
-import { MAP_Q, type MapRead } from "./data/map-q";
+import { BEAT_CORE_ORDER } from "./data/beat-catalog";
+import {
+  getMapQuestion,
+  resolveBranchBeatId,
+  type MapOption,
+  type MapRead,
+} from "./data/map-q";
 import {
   HANDBOOK_EMAIL_CHIP_TARGET,
   MAP_EMAIL_CHIP_TARGET,
@@ -64,17 +70,38 @@ function fullReadbackSuggest(): Scene[number] {
   };
 }
 
-export function beatScene(qi: number, oi: number, read: MapRead): Scene {
-  const opt = MAP_Q[qi].opts[oi];
+export function beatScene(
+  qi: number,
+  oi: number,
+  read: MapRead,
+  priorAnswers: readonly (MapOption | null | undefined)[] = [],
+): Scene {
+  const question = getMapQuestion(qi, priorAnswers);
+  if (!question) {
+    return [{ clear: true }, ...readbackVoiceActs(read), { show: "readback" }, fullReadbackSuggest()];
+  }
+  const opt = question.opts[oi];
 
-  // Q1 gate fail — most orgs: voice the Safety readback, then show the map.
+  // Decision gate fail — most orgs: voice the Safety readback, then show the map.
   if (opt.gateFail) {
     return [{ clear: true }, ...readbackVoiceActs(read), { show: "readback" }, GATE_FAIL_SUGGEST];
   }
 
-  // Rare org cleared Safety — advance through Q2–Q4 with no interstitial voice.
-  if (qi < MAP_Q.length - 1) {
+  const decisionIndex = BEAT_CORE_ORDER.indexOf("decision");
+
+  // Advance through core beats before the branch.
+  if (qi < decisionIndex) {
     return [{ clear: true }, { show: "beat", qi: qi + 1 }];
+  }
+
+  if (qi === decisionIndex && read.clearedSafety) {
+    return [{ clear: true }, { show: "beat", qi: qi + 1 }];
+  }
+
+  if (qi === decisionIndex + 1) {
+    const branch = resolveBranchBeatId(priorAnswers);
+    const branchBeat = branch === "refusals" || branch === "worry" ? branch : "worry";
+    return [{ clear: true }, { show: "beat", qi: qi + 1, branchBeat }];
   }
 
   // Last answer (full path) — voice the readback, then show the map + chips.

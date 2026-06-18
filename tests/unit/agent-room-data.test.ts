@@ -28,19 +28,27 @@ describe("agent-room data layer (AF-06)", () => {
     expect(getProfile(999)).toBeNull();
   });
 
-  it("MAP_Q has four questions with a Safety gate; computeMapRead orders gaps sharpest-first", () => {
-    expect(MAP_Q).toHaveLength(4);
-    expect(MAP_Q[0].opts[0]).toMatchObject({ gatePass: true });
-    expect(MAP_Q[0].opts[1]).toMatchObject({ gateFail: true });
+  it("MAP_Q has six engine-aligned beats with a decision Safety gate; computeMapRead orders gaps sharpest-first", () => {
+    expect(MAP_Q).toHaveLength(6);
+    const decisionIndex = 3;
+    expect(MAP_Q[decisionIndex].opts[0]).toMatchObject({ gatePass: true });
+    expect(MAP_Q[decisionIndex].opts[1]).toMatchObject({ gateFail: true });
     const read = computeMapRead([
       MAP_Q[0].opts[0],
       MAP_Q[1].opts[2],
-      MAP_Q[3].opts[2],
+      MAP_Q[2].opts[0],
+      MAP_Q[decisionIndex].opts[0],
+      MAP_Q[4].opts[0],
+      MAP_Q[5].opts[0],
     ]);
     expect(read.clearedSafety).toBe(true);
     expect(read.gaps[0]).toMatchObject({ stage: "sandbox", sev: 2 });
-    expect(read.gaps[1]).toMatchObject({ stage: "tech", sev: 2 });
-    const readFail = computeMapRead([MAP_Q[0].opts[2]]);
+    const readFail = computeMapRead([
+      MAP_Q[0].opts[0],
+      MAP_Q[1].opts[0],
+      MAP_Q[2].opts[0],
+      MAP_Q[decisionIndex].opts[2],
+    ]);
     expect(readFail.clearedSafety).toBe(false);
     expect(readFail.stages.safety).toMatchObject({ sev: 3 });
   });

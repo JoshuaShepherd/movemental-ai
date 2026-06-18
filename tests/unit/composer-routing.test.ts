@@ -55,6 +55,57 @@ describe("composer routing (PAR-02)", () => {
     ).toEqual({ kind: "agent", utterance: "Get in touch" });
   });
 
+  it("resolveChipRoute scene follow-ups fall through to agent utterance (handled by suggest.to)", () => {
+    for (const label of [
+      "See the whole path",
+      "Show me Safety",
+      "Show me Sandbox",
+      "Map where we actually stand",
+    ]) {
+      expect(resolveChipRoute({ label, say: label }, "collapsed")).toEqual({
+        kind: "agent",
+        utterance: label,
+      });
+      expect(resolveChipRoute({ label, say: label }, "expanded")).toEqual({
+        kind: "agent",
+        utterance: label,
+      });
+    }
+  });
+
+  it("resolveChipRoute unknown labels use say text as agent utterance", () => {
+    expect(
+      resolveChipRoute({ label: "Custom chip", say: "Custom utterance" }, "collapsed"),
+    ).toEqual({ kind: "agent", utterance: "Custom utterance" });
+  });
+
+  it("opening labels matrix — collapsed local, expanded agent", () => {
+    const opening = [
+      ["Get a clear next AI step", "toSafetyFlow"],
+      ["About Movemental", "whatIs"],
+      ["What does it cost?", "cost"],
+      ["Get in touch", "talkToUs"],
+    ] as const;
+
+    for (const [label, scene] of opening) {
+      expect(resolveChipRoute({ label, say: label }, "collapsed")).toEqual({
+        kind: "local",
+        scene,
+      });
+      if (label === "Get a clear next AI step") {
+        expect(resolveChipRoute({ label, say: label }, "expanded")).toEqual({
+          kind: "local",
+          scene,
+        });
+      } else {
+        expect(resolveChipRoute({ label, say: label }, "expanded")).toEqual({
+          kind: "agent",
+          utterance: label,
+        });
+      }
+    }
+  });
+
   it("returns null for scene follow-up labels", () => {
     expect(getKnownStreamChipRoute("See the whole path")).toBeNull();
     expect(getKnownStreamChipRoute("Show me Safety")).toBeNull();

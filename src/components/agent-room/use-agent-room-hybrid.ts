@@ -9,15 +9,28 @@ import {
 } from "@/lib/agent-room/agent-stream-turn";
 import type { ScreenId, Scene, SceneFactory, ShowOpts, SuggestChip } from "@/lib/agent-room/acts";
 import { validateComponentProps } from "@/lib/agent-room/component-props";
+import { AGENT_ROOM_MODE } from "@/lib/agent-room/mode";
+import {
+  mapDiscussReason,
+  setAgentRoomAnalyticsIds,
+  trackAgentRoomCaptureSubmit,
+  trackAgentRoomChipTap,
+  trackAgentRoomDiscussEnter,
+  trackAgentRoomDockExpand,
+  trackAgentRoomScreenShow,
+  trackAgentRoomStallRecovery,
+  trackAgentRoomTurn,
+} from "@/lib/analytics/agent-room-events";
 import { SCENES } from "@/lib/agent-room/data/scenes";
 import { submitLead, LEADS } from "@/lib/agent-room/capture";
-import { MAP_Q, computeMapRead, type MapOption, type MapRead } from "@/lib/agent-room/data/map-q";
+import { computeMapRead, getMapQuestionForShow, isTerminalBeatIndex, type MapOption, type MapRead } from "@/lib/agent-room/data/map-q";
 import { beatScene } from "@/lib/agent-room/beat-scenes";
 import { leaderScene, leaderWorkScene, leaderConnectScene } from "@/lib/agent-room/leader-scenes";
 import {
   classifyTypedInput,
   isTypedFallback,
   shouldResetTextStreak,
+  type AgentMoveReason,
 } from "@/lib/agent-room/move-classifier";
 import { getKnownStreamChipRoute, getOpeningChipLocalScene, resolveChipRoute } from "@/lib/agent-room/composer-routing";
 import { routeInput } from "@/lib/agent-room/route-input";
@@ -25,7 +38,9 @@ import { readAgentDeepLink, clearAgentDeepLinkParams } from "@/lib/agent-room/de
 import { stashHandoffAudience, readHandoffScene, clearHandoffScene, isWaysInDoor, type AgentSayOptions } from "@/lib/agent-room/ways-in-doors";
 import { CONCIERGE_VOICE } from "@/lib/agent-room/data/concierge-voice-lines";
 import {
+  DISCUSS_TURN_CAP,
   ENTER_DISCUSS_VALUE,
+  type DiscussReason,
   type RoomPhase,
 } from "@/lib/agent-room/discuss";
 import { handleSuggestChipTarget, focusReadbackMapEmail, HANDBOOK_EMAIL_CHIP_TARGET, focusHandbookEmail, FOCUS_HANDBOOK_EMAIL_EVENT, requestExpandConversation } from "@/lib/agent-room/suggest-chip-targets";
@@ -84,7 +99,11 @@ function optsFromAgentRender(
   }
   if (component === "safetyFlow") {
     const step = props.step;
-    return typeof step === "string" ? { step } : {};
+    const answer = props.answer;
+    return {
+      ...(typeof step === "string" ? { step } : {}),
+      ...(typeof answer === "string" ? { answer } : {}),
+    };
   }
   return {};
 }
@@ -98,6 +117,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   engineExtra: EngineExtraState | null;
   streamInput: StreamScreenInput | null;
   onDockStateChange: (state: DockState) => void;
+  onDockExpand: (reason: "user" | "send" | "chip" | "discuss" | "agent") => void;
 } {
   const {
     inkLine,
@@ -108,8 +128,15 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   } = useInk();
   const discuss = useDiscussPhase();
   const { enterDiscuss, resetDiscuss, recordAssistantTurn } = discuss;
+  const wrappedEnterDiscuss = useCallback(
+    (reason?: DiscussReason) => {
+      trackAgentRoomDiscussEnter(mapDiscussReason(reason));
+      enterDiscuss(reason);
+    },
+    [enterDiscuss],
+  );
   const roomThread = useRoomThread();
-  const { thread, appendUser, updateStreaming, finalizeAssistant, discardStreaming, resetThread } = roomThread;
+  const { thread, setThread, appendUser, updateStreaming, finalizeAssistant, discardStreaming, resetThread } = roomThread;
   const phaseRef = useRef<RoomPhase>(discuss.phase);
   phaseRef.current = discuss.phase;
 
@@ -124,6 +151,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   const [errorRetryable, setErrorRetryable] = useState(false);
   const [mapRead, setMapRead] = useState<MapRead | null>(null);
   const [handbookCaptureActive, setHandbookCaptureActive] = useState(false);
+  const [discussCaptureAtCap, setDiscussCaptureAtCap] = useState(false);
   const [engineExtra, setEngineExtra] = useState<EngineExtraState | null>(null);
   const [streamInput, setStreamInput] = useState<StreamScreenInput | null>(null);
 
@@ -143,6 +171,8 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   const abortRef = useRef<AbortController | null>(null);
   /** Last text sent to the agent — replayed by `retry()` after a transient fail. */
   const lastTurnRef = useRef<string | null>(null);
+  /** Set true when the current SSE turn emits `ui_render`. */
+  const hadUiRenderRef = useRef(false);
   /** Expanded dock — typed input skips scripted scenes (SSOT I4). */
   const dockExpandedRef = useRef(false);
   const screenRef = useRef(screen);
@@ -153,7 +183,37 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     const ss = typeof window !== "undefined" ? window.sessionStorage : null;
     anonRef.current = readOrCreate(ls, ANON_KEY, "anon");
     sessionRef.current = readOrCreate(ss, SESSION_KEY, "sess");
-  }, []);
+    setAgentRoomAnalyticsIds({
+      anonId: anonRef.current,
+      sessionId: sessionRef.current,
+    });
+
+    if (thread.length > 0 || !sessionRef.current) return;
+    let cancelled = false;
+    void fetch(
+      `/api/agent-room/transcript?sessionId=${encodeURIComponent(sessionRef.current)}`,
+    )
+      .then((res) => (res.ok ? res.json() : null))
+      .then((body: { turns?: StreamTurn[] } | null) => {
+        if (cancelled || !body?.turns?.length) return;
+        const turns = body.turns.filter(
+          (t): t is StreamTurn => t.role === "user" || t.role === "assistant",
+        );
+        if (!turns.length) return;
+        setThread(turns);
+        historyRef.current = turns;
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [setThread, thread.length]);
+
+  useEffect(() => {
+    if (discuss.phase === "discuss" && discuss.discussTurnCount >= DISCUSS_TURN_CAP) {
+      setDiscussCaptureAtCap(true);
+    }
+  }, [discuss.phase, discuss.discussTurnCount]);
 
   const buildRoomContext = useCallback((): RoomContext => {
     return {
@@ -176,6 +236,11 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         setMapRead(null);
       }
       setScreen((prev) => ({ id, opts, nonce: prev.nonce + 1 }));
+      trackAgentRoomScreenShow({
+        screenId: id,
+        scene: lastSceneRef.current,
+        source: "local",
+      });
     },
     [clearInk, clearVoice],
   );
@@ -196,6 +261,12 @@ export function useAgentRoomHybrid(): AgentRoomController & {
               { label: c.label, say: c.label, lead: c.lead },
               surface,
             );
+            trackAgentRoomChipTap({
+              label: c.label,
+              routeKind: route.kind,
+              surface,
+              screenId: screenRef.current.id,
+            });
             if (route.kind === "local") {
               runRef.current(route.scene);
               return;
@@ -208,16 +279,22 @@ export function useAgentRoomHybrid(): AgentRoomController & {
             void sendMessageRef.current(route.utterance);
             return;
           }
+          trackAgentRoomChipTap({
+            label: c.label,
+            routeKind: "local",
+            surface,
+            screenId: screenRef.current.id,
+          });
           handleSuggestChipTarget(
             c.to,
-            discuss.enterDiscuss,
+            enterDiscuss,
             runRef.current,
             { lastScene: lastSceneRef.current },
           );
         },
       })),
     );
-  }, [discuss.enterDiscuss]);
+  }, [wrappedEnterDiscuss]);
 
   const awaitCapture = useCallback(
     () =>
@@ -275,6 +352,10 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     dockExpandedRef.current = state === "expanded";
   }, []);
 
+  const onDockExpand = useCallback((reason: "user" | "send" | "chip" | "discuss" | "agent") => {
+    trackAgentRoomDockExpand(reason);
+  }, []);
+
   useEffect(() => {
     runRef.current = run;
   }, [run]);
@@ -312,13 +393,22 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         opts: optsFromAgentRender(component, props),
         nonce: prev.nonce + 1,
       }));
+      trackAgentRoomScreenShow({
+        screenId,
+        scene: lastSceneRef.current,
+        source: "engine",
+      });
     },
     [commitStream],
   );
 
   const runAgentTurn = useCallback(
-    async (text: string, opts?: { isRetry?: boolean }) => {
+    async (
+      text: string,
+      opts?: { isRetry?: boolean; classifier?: AgentMoveReason },
+    ) => {
       lastTurnRef.current = text;
+      hadUiRenderRef.current = false;
       const priorHistory = [...historyRef.current];
       historyRef.current = [...historyRef.current, { role: "user", content: text }];
       if (!opts?.isRetry) {
@@ -364,6 +454,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
             setVoice({ thinking: true, text: "" });
           },
           onUiRender: (component, props) => {
+            hadUiRenderRef.current = true;
             applyAgentUiRender(component, props);
           },
           onInkGesture: (kind, target) => {
@@ -377,7 +468,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
                 lead: c.lead,
                 onSelect:
                   c.value === ENTER_DISCUSS_VALUE
-                    ? () => enterDiscuss("agent")
+                    ? () => wrappedEnterDiscuss("agent")
                     : () => void sendMessageRef.current(c.value),
               })),
             );
@@ -394,6 +485,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
             return;
           }
           if (result.retryable) {
+            trackAgentRoomStallRecovery(true);
             void inkLine(
               result.error === "stalled"
                 ? CONCIERGE_VOICE.stallRecovery
@@ -415,6 +507,14 @@ export function useAgentRoomHybrid(): AgentRoomController & {
           finalizeAssistant(assistant);
           if (phaseRef.current === "discuss") recordAssistantTurn();
         }
+        trackAgentRoomTurn({
+          phase: phaseRef.current,
+          classifier:
+            opts?.classifier ??
+            (phaseRef.current === "discuss" ? "discuss" : "open_text"),
+          hadUiRender: hadUiRenderRef.current,
+          roomContext: { ...buildRoomContext(), mode: AGENT_ROOM_MODE },
+        });
         clearVoice();
         setVoice({ thinking: false, text: "" });
       } finally {
@@ -429,7 +529,6 @@ export function useAgentRoomHybrid(): AgentRoomController & {
       clearVoice,
       drawGesture,
       discardStreaming,
-      enterDiscuss,
       finalizeAssistant,
       inkLine,
       recordAssistantTurn,
@@ -460,7 +559,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
           return;
         }
         if (route.kind === "agent") {
-          void runAgentTurn(route.utterance);
+          void runAgentTurn(route.utterance, { classifier: "open_text" });
           return;
         }
       }
@@ -494,7 +593,10 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         return;
       }
 
-      void runAgentTurn(text);
+      void runAgentTurn(
+        text,
+        route.kind === "agent" ? { classifier: route.reason } : undefined,
+      );
     },
     [busy, isStreaming, run, runAgentTurn],
   );
@@ -534,6 +636,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     fallbackStreakRef.current = 0;
     dockExpandedRef.current = false;
     setHandbookCaptureActive(false);
+    setDiscussCaptureAtCap(false);
     resetDiscuss();
     resetThread();
     run("opening");
@@ -542,12 +645,15 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   const onBeatAnswer = useCallback(
     (qi: number, oi: number) => {
       const answers = [...mapAnswersRef.current];
-      answers[qi] = MAP_Q[qi].opts[oi];
+      const question = getMapQuestionForShow(qi, answers);
+      if (!question) return;
+      answers[qi] = question.opts[oi];
       mapAnswersRef.current = answers;
       const read = computeMapRead(answers);
-      if (qi >= MAP_Q.length - 1 || MAP_Q[qi].opts[oi].gateFail) setMapRead(read);
+      const opt = answers[qi]!;
+      if (isTerminalBeatIndex(qi, opt)) setMapRead(read);
       lastSceneRef.current = "beatScene";
-      void play(beatScene(qi, oi, read));
+      void play(beatScene(qi, oi, read, answers));
     },
     [play],
   );
@@ -570,12 +676,17 @@ export function useAgentRoomHybrid(): AgentRoomController & {
           : { ...values, ...session };
       if (kind in LEADS) LEADS[kind as keyof typeof LEADS] = payload;
       void submitLead(kind, payload);
+      trackAgentRoomCaptureSubmit({
+        kind,
+        source: discussCaptureAtCap ? "overlay" : screenRef.current.id === "capture" ? "scene" : "dock",
+      });
+      if (kind === "discuss") setDiscussCaptureAtCap(false);
       const r = captureResolveRef.current;
       captureResolveRef.current = null;
       if (r) r({});
       else capturePendingRef.current = true;
     },
-    [mapRead],
+    [discussCaptureAtCap, mapRead],
   );
 
   const onCaptureSkip = useCallback(() => {
@@ -679,17 +790,18 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     mapRead,
     sendMessage,
     onDockStateChange,
+    onDockExpand,
     reset: goHome,
     onBeatAnswer,
     onLeaderSelect,
     onCaptureSubmit,
     onCaptureSkip,
     runScene: run,
-    stubDiscussCapture: false,
+    stubDiscussCapture: discussCaptureAtCap,
     phase: discuss.phase,
     thread,
     discussTurnCount: discuss.discussTurnCount,
-    enterDiscuss: discuss.enterDiscuss,
+    enterDiscuss: wrappedEnterDiscuss,
     exitDiscuss: discuss.exitDiscuss,
     engineExtra,
     streamInput,

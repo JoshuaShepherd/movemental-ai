@@ -463,6 +463,16 @@ const nextConfig: NextConfig = {
         destination: "/field-guide",
         permanent: true,
       },
+      {
+        source: "/voices",
+        destination: "/agent/movement-voices",
+        permanent: true,
+      },
+      {
+        source: "/voices/:path*",
+        destination: "/agent/movement-voices",
+        permanent: true,
+      },
     ];
   },
   images: {

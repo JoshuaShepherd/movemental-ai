@@ -24,6 +24,36 @@ describe("move-classifier", () => {
       kind: "local",
       scene: "toFaq",
     });
+    expect(classifyTypedInput({ ...baseText, text: "tell me about movemental" })).toEqual({
+      kind: "local",
+      scene: "whatIs",
+    });
+    expect(classifyTypedInput({ ...baseText, text: "whole path" })).toEqual({
+      kind: "local",
+      scene: "toPath",
+    });
+    expect(classifyTypedInput({ ...baseText, text: "get a clear next step" })).toEqual({
+      kind: "local",
+      scene: "toSafetyFlow",
+    });
+    expect(classifyTypedInput({ ...baseText, text: "map where we stand" })).toEqual({
+      kind: "local",
+      scene: "toSafetyFlow",
+    });
+  });
+
+  it("routes ambiguous about-phrases away from whatIs on first collapsed message", () => {
+    expect(
+      classifyTypedInput({
+        ...baseText,
+        text: "question about donors",
+      }),
+    ).toEqual({ kind: "agent", reason: "open_text" });
+    const boardConcern = classifyTypedInput({
+      ...baseText,
+      text: "concern about our board",
+    });
+    expect(boardConcern).not.toEqual({ kind: "local", scene: "whatIs" });
   });
 
   it("routes unmatched text to agent", () => {

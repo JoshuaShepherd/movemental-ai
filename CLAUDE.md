@@ -156,6 +156,8 @@ This repo is **agent-only** — one design system: **Ink Band**. Canon:
 [docs/design/README.md](docs/design/README.md). Concept Modern ([DESIGN.md](docs/design/DESIGN.md)) is
 archived reference for a future marketing merge; do not implement it in `src/`.
 
+**Agent room docs index:** [docs/build/notes/agent-room-documentation-index.md](docs/build/notes/agent-room-documentation-index.md) — SSOT registry, authority order, and supersession chains before editing dock/voice/thread/Discuss docs or code.
+
 Quick rules:
 
 - **Scoped surface.** Agent room and utility pages wrap in `.ink-band-surface` (see `agent/layout.tsx`, `components/ink-band/utility-shell.tsx`). Tokens: `--color-ink-band-*`, `--font-ink-*`.

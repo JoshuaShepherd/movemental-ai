@@ -38,7 +38,7 @@ function WayCard({ option, lead }: { option: WayForwardOption; lead?: boolean })
       <p className={styles.price}>{option.price}</p>
       <p>{option.description}</p>
       {option.placeholder ? (
-        <p className={styles.wayPlaceholder}>[Free entry point to confirm]</p>
+        <p className={styles.wayPlaceholder}>{option.price}</p>
       ) : (
         <Link href={option.ctaHref} className={option.paid ? styles.wayCtaPaid : styles.wayCta}>
           {option.ctaLabel}

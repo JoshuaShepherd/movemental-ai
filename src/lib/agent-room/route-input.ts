@@ -8,6 +8,11 @@
  * including the deliberately broad final `toBeat` catch-all; only truly
  * unmatched input falls through to the spoken fallback.
  *
+ * Intentional non-matches (hybrid first message → agent, not local sheet):
+ * - "question about donors" — bare `about` is NOT a whatIs route; classifier rejects.
+ * - "concern about our board" — same; use expanded dock for free-form chat.
+ * - Long pastes with no keyword — fallback → agent in hybrid when not high-confidence.
+ *
  * Pure and side-effect free: the hook decides what to do with the result
  * (`run(scene)` or play the `FALLBACK_SAY` line).
  */

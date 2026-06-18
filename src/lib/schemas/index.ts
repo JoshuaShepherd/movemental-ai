@@ -1,5 +1,5 @@
 // Auto-generated Zod schemas from Drizzle schema
-// Generated at: 2026-06-10T23:33:47.001Z
+// Generated at: 2026-06-18T08:19:53.707Z
 // Do not edit manually - regenerate with: pnpm generate:schemas
 
 import { z } from "zod";
@@ -183,6 +183,7 @@ import {
   writingStylePreferences,
   contactSubmissions,
   agentRoomLeads,
+  agentRoomTranscripts,
   leaderApplications,
   organizationInquiries,
   assessmentResults,
@@ -2674,6 +2675,19 @@ export type AgentRoomLeads = z.infer<typeof AgentRoomLeadsSelectSchema>;
 export type AgentRoomLeadsCreate = z.infer<typeof AgentRoomLeadsInsertSchema>;
 export type AgentRoomLeadsUpdate = z.infer<typeof AgentRoomLeadsUpdateSchema>;
 export type AgentRoomLeadsFilters = z.infer<typeof AgentRoomLeadsFiltersSchema>;
+
+// AgentRoomTranscripts
+export const AgentRoomTranscriptsSelectSchema = createSelectSchema(agentRoomTranscripts);
+export const AgentRoomTranscriptsInsertSchema = createInsertSchema(agentRoomTranscripts);
+export const AgentRoomTranscriptsUpdateSchema = createUpdateSchema(agentRoomTranscripts);
+export const AgentRoomTranscriptsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type AgentRoomTranscripts = z.infer<typeof AgentRoomTranscriptsSelectSchema>;
+export type AgentRoomTranscriptsCreate = z.infer<typeof AgentRoomTranscriptsInsertSchema>;
+export type AgentRoomTranscriptsUpdate = z.infer<typeof AgentRoomTranscriptsUpdateSchema>;
+export type AgentRoomTranscriptsFilters = z.infer<typeof AgentRoomTranscriptsFiltersSchema>;
 
 // LeaderApplications
 export const LeaderApplicationsSelectSchema = createSelectSchema(leaderApplications);

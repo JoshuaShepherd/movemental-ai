@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 
+import type { AboutScreenProps } from "@/lib/agent-room/component-props";
 import { MOVEMENTAL_FOUNDING } from "@/lib/agent-room/naming";
 
 import { AskAiPromptButton } from "../../ink/ask-ai-prompt-button";
@@ -11,15 +12,15 @@ import { Crumb } from "./chrome";
 import { FoundersTeam } from "./founders-screen";
 
 /** In-room About entry — points to the full `/agent/about` document. */
-export function AboutScreen({ onHome }: ScreenProps) {
+export function AboutScreen({ onHome, stream }: ScreenProps) {
+  const lede =
+    (stream?.props as AboutScreenProps | undefined)?.lede ??
+    "We help churches, nonprofits, and schools use AI without losing the trust their work depends on.";
   return (
     <div>
       <Crumb onHome={onHome} />
       <h1>About Movemental</h1>
-      <p>
-        We help churches, nonprofits, and schools use AI without losing the trust their work
-        depends on.
-      </p>
+      <p>{lede}</p>
 
       <div className={styles.sec}>
         <p className={styles.secLabel}>Who we are</p>

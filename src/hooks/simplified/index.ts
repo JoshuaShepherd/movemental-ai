@@ -1,5 +1,5 @@
 // Auto-generated hooks index
-// Generated at: 2026-06-13T11:00:43.126Z
+// Generated at: 2026-06-18T08:19:56.947Z
 // Do not edit manually - regenerate with: pnpm generate:hooks
 
 export { buildQueryString } from "./query-utils";
@@ -181,6 +181,7 @@ export * from "./writing-sessions.hooks";
 export * from "./writing-style-preferences.hooks";
 export * from "./contact-submissions.hooks";
 export * from "./agent-room-leads.hooks";
+export * from "./agent-room-transcripts.hooks";
 export * from "./leader-applications.hooks";
 export * from "./organization-inquiries.hooks";
 export * from "./assessment-results.hooks";

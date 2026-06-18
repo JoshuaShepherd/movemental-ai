@@ -1,5 +1,7 @@
--- Proposed migration: agent_room_transcripts (do not apply to production without sign-off)
--- Tenant-scoped durable log of Agent Room concierge turns for audit and debugging.
+-- Applied migration: agent_room_transcripts
+-- Tenant-scoped durable log of Agent Room concierge turns for audit, restore, and debugging.
+-- Engine write path: movemental-ai-agents persistRoomTranscript (row per message).
+-- Client read path: GET /api/agent-room/transcript?sessionId=
 
 CREATE TABLE IF NOT EXISTS agent_room_transcripts (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
@@ -21,3 +23,6 @@ CREATE INDEX IF NOT EXISTS agent_room_transcripts_org_created_idx
 
 CREATE INDEX IF NOT EXISTS agent_room_transcripts_session_idx
   ON agent_room_transcripts (session_id);
+
+CREATE INDEX IF NOT EXISTS agent_room_transcripts_anon_created_idx
+  ON agent_room_transcripts (anon_id, created_at DESC);

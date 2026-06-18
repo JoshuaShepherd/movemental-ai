@@ -1,5 +1,5 @@
 // Auto-generated service index
-// Generated at: 2026-06-13T11:00:37.937Z
+// Generated at: 2026-06-18T08:19:54.906Z
 // Do not edit manually - regenerate with: pnpm generate:services
 
 export { SimplifiedService } from "./base.service";
@@ -183,6 +183,7 @@ export * from "./writing-sessions.service";
 export * from "./writing-style-preferences.service";
 export * from "./contact-submissions.service";
 export * from "./agent-room-leads.service";
+export * from "./agent-room-transcripts.service";
 export * from "./leader-applications.service";
 export * from "./organization-inquiries.service";
 export * from "./assessment-results.service";

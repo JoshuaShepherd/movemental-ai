@@ -21,6 +21,8 @@ export interface ProcessAccordionItem {
   /** Two-digit step index, e.g. "01" … "04". */
   step: string;
   title: string;
+  /** Short price or tier line shown in the column header. */
+  priceLine?: string;
   /** Short line shown under the title in the active column. */
   summary?: string;
   /** Expanded body (active column only). */
@@ -67,6 +69,9 @@ export function ProcessAccordion({
                 {item.step}
               </span>
               <span className={styles.paTitle}>{item.title}</span>
+              {item.priceLine ? (
+                <span className={styles.paPriceLine}>{item.priceLine}</span>
+              ) : null}
             </button>
             <div className={styles.paPanel} aria-hidden={!isActive}>
               <div className={styles.paPanelInner}>

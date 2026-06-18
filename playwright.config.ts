@@ -29,7 +29,15 @@ export default defineConfig({
     : {
         command: "pnpm dev",
         url: "http://localhost:3000",
-        reuseExistingServer: !process.env.CI,
+        reuseExistingServer:
+          !process.env.CI &&
+          !process.env.NEXT_PUBLIC_AGENT_ROOM_DISCUSS &&
+          !process.env.NEXT_PUBLIC_AGENT_ROOM_MODE,
         timeout: 120000,
+        env: Object.fromEntries(
+          Object.entries(process.env).filter(
+            (entry): entry is [string, string] => typeof entry[1] === "string",
+          ),
+        ),
       },
 });

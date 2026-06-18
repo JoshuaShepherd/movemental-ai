@@ -1,0 +1,295 @@
+<!--
+  STITCH SCREEN
+  Title: Review & Comments - Movemental Dashboard
+  Screen ID: c4d546b432f34dd0bd8a013892fc1462
+  Project: 8694957891602637085
+  Downloaded: 2026-06-18T08:50:59.328Z
+-->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Movemental - Review</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Caveat&amp;family=IBM+Plex+Mono:wght@500&amp;family=Inter:wght@400;600&amp;family=Playfair+Display:wght@600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#1f1b17",
+                        "surface-container-low": "#f6f3f2",
+                        "secondary-fixed": "#eae1da",
+                        "secondary": "#635d58",
+                        "on-tertiary-fixed": "#1a1e00",
+                        "secondary-container": "#e7ded7",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#444c00",
+                        "tertiary": "#2f3400",
+                        "inverse-primary": "#b6c4ff",
+                        "tertiary-fixed-dim": "#bed100",
+                        "on-secondary-fixed-variant": "#4b4641",
+                        "error": "#ba1a1a",
+                        "background": "#fcf9f8",
+                        "primary-container": "#22409b",
+                        "outline-variant": "#c5c5d4",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#f0eded",
+                        "surface-dim": "#dcd9d9",
+                        "on-primary-container": "#a0b3ff",
+                        "primary-fixed": "#dce1ff",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#444652",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#3d58b3",
+                        "on-secondary-container": "#68615c",
+                        "on-tertiary-fixed-variant": "#434b00",
+                        "on-background": "#1c1b1b",
+                        "surface-bright": "#fcf9f8",
+                        "primary": "#002881",
+                        "surface-variant": "#e5e2e1",
+                        "inverse-surface": "#313030",
+                        "surface-container-high": "#eae7e7",
+                        "inverse-on-surface": "#f3f0ef",
+                        "surface": "#fcf9f8",
+                        "on-tertiary-container": "#afc000",
+                        "secondary-fixed-dim": "#cec5be",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#213f9a",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-surface": "#1c1b1b",
+                        "outline": "#757683",
+                        "on-primary-fixed": "#001550",
+                        "tertiary-fixed": "#daee26",
+                        "surface-container-highest": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "40px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "container-max": "1200px",
+                        "md": "16px",
+                        "xxl": "64px",
+                        "xs": "4px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "display-md": ["Playfair Display"],
+                        "eyebrow-sm": ["IBM Plex Mono"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "annotation": ["Caveat"]
+                    },
+                    "fontSize": {
+                        "display-md": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "eyebrow-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.18em", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "annotation": ["20px", { "lineHeight": "1.2", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for an editorial feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e5e2e1;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c5c5d4;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased h-screen flex overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-[280px] shrink-0 border-r border-surface-variant flex flex-col pt-xl pb-md px-lg bg-background z-10 hidden md:flex">
+<!-- Brand / Identity -->
+<div class="mb-xxl">
+<h1 class="font-display-md text-headline-lg tracking-tighter text-on-background mb-xs">movemental</h1>
+<p class="font-eyebrow-sm text-eyebrow-sm text-secondary uppercase tracking-widest">GRACE COMMUNITY CHURCH</p>
+</div>
+<!-- Navigation -->
+<nav class="flex flex-col gap-xl flex-1 overflow-y-auto">
+<div class="flex flex-col gap-sm">
+<span class="font-eyebrow-sm text-eyebrow-sm text-surface-dim uppercase tracking-widest px-md mb-xs">Overview</span>
+<a class="font-label-md text-label-md text-secondary hover:text-on-background px-md py-xs transition-colors" href="#">Project Brief</a>
+<a class="font-label-md text-label-md text-secondary hover:text-on-background px-md py-xs transition-colors" href="#">Team</a>
+</div>
+<div class="flex flex-col gap-sm">
+<span class="font-eyebrow-sm text-eyebrow-sm text-surface-dim uppercase tracking-widest px-md mb-xs">The Guidebook</span>
+<a class="font-label-md text-label-md text-secondary hover:text-on-background px-md py-xs transition-colors" href="#">Draft Document</a>
+<a class="font-label-md text-label-md text-secondary hover:text-on-background px-md py-xs transition-colors" href="#">Version History</a>
+</div>
+<div class="flex flex-col gap-sm">
+<span class="font-eyebrow-sm text-eyebrow-sm text-surface-dim uppercase tracking-widest px-md mb-xs">Work</span>
+<!-- Active Item -->
+<a class="font-label-md text-label-md text-primary-container border-l-[3px] border-primary-container pl-[13px] py-xs transition-colors" href="#">Review &amp; comments</a>
+<a class="font-label-md text-label-md text-secondary hover:text-on-background px-md py-xs transition-colors" href="#">Drafting Status</a>
+</div>
+<div class="flex flex-col gap-sm">
+<span class="font-eyebrow-sm text-eyebrow-sm text-surface-dim uppercase tracking-widest px-md mb-xs">Deliverables</span>
+<a class="font-label-md text-label-md text-secondary hover:text-on-background px-md py-xs transition-colors" href="#">Final Assets</a>
+</div>
+</nav>
+</aside>
+<!-- Main Column -->
+<main class="flex-1 flex flex-col relative bg-background h-full w-full">
+<!-- Scrollable Canvas -->
+<div class="flex-1 overflow-y-auto px-lg md:px-xxl pt-xxl pb-[140px]">
+<div class="max-w-[800px] mx-auto">
+<!-- View Head -->
+<header class="mb-xl">
+<p class="font-eyebrow-sm text-eyebrow-sm text-secondary uppercase tracking-widest mb-md">REVIEW · WEEK ONE</p>
+<h2 class="font-display-md text-display-md text-on-background mb-sm">Open comments.</h2>
+<p class="font-body-md text-body-md text-secondary">12 open · 4 resolved · across five layers.</p>
+</header>
+<!-- Filter Row -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-lg border-b border-surface-variant pb-md mb-xl">
+<div class="flex items-center gap-lg overflow-x-auto hide-scrollbar">
+<button class="font-label-md text-label-md text-on-background border-b border-on-background pb-xs whitespace-nowrap">All layers</button>
+<button class="font-label-md text-label-md text-secondary hover:text-on-background pb-xs whitespace-nowrap transition-colors">Statement</button>
+<button class="font-label-md text-label-md text-secondary hover:text-on-background pb-xs whitespace-nowrap transition-colors">Policy</button>
+<button class="font-label-md text-label-md text-secondary hover:text-on-background pb-xs whitespace-nowrap transition-colors">Context</button>
+<button class="font-label-md text-label-md text-secondary hover:text-on-background pb-xs whitespace-nowrap transition-colors">Rules</button>
+<button class="font-label-md text-label-md text-secondary hover:text-on-background pb-xs whitespace-nowrap transition-colors">Response Plans</button>
+</div>
+<div class="flex items-center gap-sm shrink-0">
+<span class="font-label-md text-label-md text-secondary">Open only</span>
+<button class="w-[36px] h-[20px] bg-primary-container rounded-full relative flex items-center px-[2px] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-container">
+<span class="w-[16px] h-[16px] bg-surface-container-lowest rounded-full transform translate-x-[16px] transition-transform"></span>
+</button>
+</div>
+</div>
+<!-- Comment Feed -->
+<div class="flex flex-col gap-lg">
+<!-- Standard Card 1 -->
+<article class="bg-surface-container-lowest border border-surface-variant rounded-DEFAULT p-lg flex flex-col gap-md">
+<header class="flex justify-between items-start">
+<span class="font-eyebrow-sm text-eyebrow-sm text-secondary uppercase tracking-widest">RULES · 4.2</span>
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center font-eyebrow-sm text-eyebrow-sm text-on-background">JD</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-background">Jane Doe</span>
+<span class="font-eyebrow-sm text-eyebrow-sm text-outline">2 HOURS AGO</span>
+</div>
+</div>
+</header>
+<div class="font-body-md text-body-md text-on-background">
+                            I think we need to be slightly more explicit here regarding volunteer background checks. The current phrasing "as required" leaves too much room for interpretation.
+                        </div>
+<blockquote class="border-l-[2px] border-primary-container pl-md py-xs mt-xs text-secondary font-body-md italic bg-surface/50">
+                            "All staff and regular volunteers will undergo necessary screening as required by their department head."
+                        </blockquote>
+<footer class="flex items-center gap-lg pt-sm">
+<button class="font-label-md text-label-md text-primary-container hover:underline transition-all">Reply</button>
+<button class="font-label-md text-label-md text-primary-container hover:underline transition-all">Resolve</button>
+<span class="font-label-md text-label-md text-outline ml-auto flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">chat_bubble</span> 2
+                            </span>
+</footer>
+</article>
+<!-- Standard Card 2 -->
+<article class="bg-surface-container-lowest border border-surface-variant rounded-DEFAULT p-lg flex flex-col gap-md">
+<header class="flex justify-between items-start">
+<span class="font-eyebrow-sm text-eyebrow-sm text-secondary uppercase tracking-widest">POLICY · 1.1</span>
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center font-eyebrow-sm text-eyebrow-sm text-on-background">MR</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-background">Marcus Reed</span>
+<span class="font-eyebrow-sm text-eyebrow-sm text-outline">YESTERDAY</span>
+</div>
+</div>
+</header>
+<div class="font-body-md text-body-md text-on-background">
+                            This foundational statement is excellent. It sets the right tone of care without being overly legalistic right out of the gate.
+                        </div>
+<footer class="flex items-center gap-lg pt-sm">
+<button class="font-label-md text-label-md text-primary-container hover:underline transition-all">Reply</button>
+<button class="font-label-md text-label-md text-primary-container hover:underline transition-all">Resolve</button>
+</footer>
+</article>
+<!-- Resolved Card -->
+<article class="bg-surface-container-lowest border border-surface-variant rounded-DEFAULT p-lg flex flex-col gap-md opacity-50 transition-opacity hover:opacity-100">
+<header class="flex justify-between items-start">
+<div class="flex items-center gap-sm">
+<span class="border border-primary-container text-primary-container px-sm py-[2px] rounded-full font-eyebrow-sm text-eyebrow-sm uppercase">Resolved</span>
+<span class="font-eyebrow-sm text-eyebrow-sm text-secondary uppercase tracking-widest">CONTEXT · 2.3</span>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center font-eyebrow-sm text-eyebrow-sm text-on-background">JD</div>
+</div>
+</header>
+<div class="font-body-md text-body-md text-on-background line-through text-secondary">
+                            Is "mandatory reporting" the right term here for this specific state jurisdiction?
+                        </div>
+<footer class="flex items-center gap-lg pt-sm">
+<button class="font-label-md text-label-md text-primary-container hover:underline transition-all">Re-open</button>
+</footer>
+</article>
+</div>
+</div>
+</div>
+<!-- Persistent Composer Bottom Bar -->
+<div class="absolute bottom-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-t border-surface-variant p-lg md:px-xxl">
+<div class="max-w-[800px] mx-auto flex flex-col md:flex-row items-end md:items-center gap-md">
+<!-- Selector -->
+<div class="relative w-full md:w-auto shrink-0">
+<select class="w-full appearance-none bg-surface-container-lowest border border-surface-variant rounded-DEFAULT py-sm pl-md pr-xl font-label-md text-label-md text-on-background focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container cursor-pointer">
+<option>General Comment</option>
+<option>Statement</option>
+<option>Policy</option>
+<option>Context</option>
+<option>Rules</option>
+<option>Response Plans</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 transform -translate-y-1/2 pointer-events-none text-secondary">expand_more</span>
+</div>
+<!-- Input Field -->
+<div class="flex-1 w-full relative">
+<input class="w-full bg-surface-container-lowest border border-surface-variant rounded-DEFAULT py-sm px-md font-body-md text-body-md text-on-background placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors" placeholder="Add a comment or feedback..." type="text"/>
+</div>
+<!-- Action -->
+<button class="w-full md:w-auto shrink-0 bg-primary-container text-on-primary rounded-full px-xl py-sm font-label-md text-label-md hover:bg-opacity-90 transition-opacity">
+                    Post
+                </button>
+</div>
+</div>
+</main>
+</body></html>

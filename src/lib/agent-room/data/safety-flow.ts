@@ -6,15 +6,21 @@ import { PATH_STAGE_LABELS } from "../naming";
 
 export type SafetyFlowAnswer = "start" | "draft" | "done";
 
-export type SafetyFlowStep =
-  | "question"
-  | "result"
-  | "ahead"
-  | "charter"
-  | "fork"
-  | "diy"
-  | "signup"
-  | "signup_sent";
+/** Engine `show_safety_flow` + client Zod SSOT (AU-21). */
+export const SAFETY_FLOW_ENGINE_STEPS = [
+  "question",
+  "fork",
+  "charter",
+  "diy",
+  "signup",
+  "ahead",
+  "result",
+] as const;
+
+export type SafetyFlowEngineStep = (typeof SAFETY_FLOW_ENGINE_STEPS)[number];
+
+/** Full wizard state — engine steps plus local-only `signup_sent`. */
+export type SafetyFlowStep = SafetyFlowEngineStep | "signup_sent";
 
 export interface SafetyFlowQuestionOption {
   label: string;

@@ -1,0 +1,354 @@
+<!--
+  STITCH SCREEN
+  Title: SafeStart - Facilitated Engagement
+  Screen ID: 5b3a9ee6cb4c40ee99d7d484558fde36
+  Project: 8694957891602637085
+  Downloaded: 2026-06-18T08:50:59.328Z
+-->
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SafeStart - Movemental</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#dcd9d9",
+                    "on-secondary-fixed-variant": "#4b4641",
+                    "on-background": "#1c1b1b",
+                    "surface-variant": "#e5e2e1",
+                    "on-error": "#ffffff",
+                    "on-surface": "#1c1b1b",
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#afc000",
+                    "on-tertiary-fixed-variant": "#434b00",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#dce1ff",
+                    "background": "#fcf9f8",
+                    "tertiary-fixed": "#daee26",
+                    "surface-container": "#f0eded",
+                    "on-primary-fixed": "#001550",
+                    "on-secondary-container": "#68615c",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-tint": "#3d58b3",
+                    "primary-container": "#22409b",
+                    "inverse-surface": "#313030",
+                    "surface-container-high": "#eae7e7",
+                    "secondary-fixed": "#eae1da",
+                    "secondary-container": "#e7ded7",
+                    "inverse-primary": "#b6c4ff",
+                    "surface-bright": "#fcf9f8",
+                    "surface": "#fcf9f8",
+                    "outline": "#757683",
+                    "secondary-fixed-dim": "#cec5be",
+                    "outline-variant": "#c5c5d4",
+                    "on-tertiary-fixed": "#1a1e00",
+                    "on-surface-variant": "#444652",
+                    "inverse-on-surface": "#f3f0ef",
+                    "tertiary-fixed-dim": "#bed100",
+                    "on-primary-fixed-variant": "#213f9a",
+                    "on-error-container": "#93000a",
+                    "tertiary-container": "#444c00",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#a0b3ff",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#2f3400",
+                    "secondary": "#635d58",
+                    "on-secondary-fixed": "#1f1b17",
+                    "surface-container-low": "#f6f3f2",
+                    "primary-fixed-dim": "#b6c4ff",
+                    "primary": "#002881",
+                    
+                    // Specific overrides for the requested style to match the prompt exactly
+                    "bg-paper": "#FBFAF6",
+                    "text-ink": "#1A1A1A",
+                    "ink-blue": "#22409B",
+                    "divider-hairline": "#E5DFD2",
+                    "surface-sheet": "#FFFDF7",
+                    "bg-band": "#F6F3EC"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "gutter": "24px",
+                    "container-max": "1200px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "xxl": "64px",
+                    "xl": "40px",
+                    "margin-mobile": "16px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter", "sans-serif"],
+                    "headline-lg-mobile": ["Playfair Display", "serif"],
+                    "display-md": ["Playfair Display", "serif"],
+                    "annotation": ["Caveat", "cursive"],
+                    "display-lg": ["Playfair Display", "serif"],
+                    "body-lg": ["Inter", "sans-serif"],
+                    "eyebrow-sm": ["IBM Plex Mono", "monospace"],
+                    "label-md": ["Inter", "sans-serif"],
+                    "headline-lg": ["Playfair Display", "serif"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "display-md": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "annotation": ["20px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "eyebrow-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.18em", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.bg-paper');
+            color: theme('colors.text-ink');
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Typography overrides to ensure specific font families */
+        .font-eyebrow-sm { font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; }
+        .font-display-md, .font-display-lg, .font-headline-lg, .font-headline-lg-mobile { font-family: 'Playfair Display', serif; }
+        .font-annotation { font-family: 'Caveat', cursive; color: theme('colors.ink-blue'); }
+        
+        .border-hairline { border-color: theme('colors.divider-hairline'); }
+        
+        /* Editorial text layout */
+        .editorial-text {
+            max-width: 65ch;
+            text-align: left;
+        }
+        
+        /* Hide scrollbar for clean aesthetic */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.divider-hairline');
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-ink-blue selection:text-white">
+<!-- 1. Top Nav -->
+<nav class="w-full top-0 sticky bg-bg-paper z-50 border-b border-hairline transition-all duration-300 ease-in-out">
+<div class="max-w-container-max mx-auto px-lg py-md flex justify-between items-center">
+<a class="font-display-md text-display-md tracking-tighter text-text-ink text-2xl" href="/" style="font-size: 24px; font-weight: 700; text-transform: lowercase;">movemental</a>
+<div class="hidden md:flex space-x-lg font-body-md text-body-md">
+<a class="text-secondary hover:text-ink-blue transition-colors duration-200" href="#">The Path</a>
+<a class="text-secondary hover:text-ink-blue transition-colors duration-200" href="#">Field Guides</a>
+<a class="text-secondary hover:text-ink-blue transition-colors duration-200" href="#">Pricing</a>
+<a class="text-secondary hover:text-ink-blue transition-colors duration-200" href="#">Contact</a>
+</div>
+<a class="bg-ink-blue text-white rounded-full px-6 py-2 font-label-md text-label-md hover:opacity-90 transition-opacity" href="#">
+                Begin SafeStart
+            </a>
+</div>
+</nav>
+<main class="flex-grow">
+<!-- 2. Hero -->
+<section class="max-w-container-max mx-auto px-lg pt-xxl pb-xxl grid grid-cols-12 gap-gutter">
+<div class="col-span-12 md:col-span-8 md:col-start-3">
+<p class="font-eyebrow-sm text-eyebrow-sm text-secondary mb-md">STAGE 01 · SAFETY</p>
+<h1 class="font-display-lg text-display-lg text-text-ink mb-lg">SafeStart.</h1>
+<p class="font-body-lg text-body-lg editorial-text text-secondary mb-xl">
+                    We draft your AI Organizational Guidebook against your specific context, and deliver it inside a private dashboard your board can ratify.
+                </p>
+<div class="flex flex-col sm:flex-row border-y border-hairline py-md mb-xl gap-lg sm:gap-0 justify-between items-start sm:items-center relative">
+<div class="flex items-center gap-sm relative">
+<span class="font-eyebrow-sm text-eyebrow-sm">$1,000 · fixed</span>
+<!-- Hand-drawn circle annotation -->
+<svg class="absolute -inset-2 w-[calc(100%+16px)] h-[calc(100%+16px)] pointer-events-none stroke-ink-blue fill-none stroke-2" preserveAspectRatio="none" style="stroke-dasharray: 200; stroke-dashoffset: 0;" viewBox="0 0 100 40">
+<path d="M5,20 C5,5 95,5 95,20 C95,35 5,35 5,20 Z" vector-effect="non-scaling-stroke"></path>
+</svg>
+</div>
+<div class="hidden sm:block w-px h-6 bg-divider-hairline"></div>
+<div class="font-eyebrow-sm text-eyebrow-sm">Two weeks</div>
+<div class="hidden sm:block w-px h-6 bg-divider-hairline"></div>
+<div class="font-eyebrow-sm text-eyebrow-sm">Five layers, seven artifacts</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-md">
+<a class="bg-ink-blue text-white rounded-full px-8 py-3 text-center font-label-md text-label-md hover:opacity-90 transition-opacity" href="#">
+                        Begin SafeStart
+                    </a>
+<a class="border border-divider-hairline text-ink-blue rounded-full px-8 py-3 text-center font-label-md text-label-md hover:bg-surface-sheet transition-colors" href="#">
+                        Download the free field guide first
+                    </a>
+</div>
+</div>
+</section>
+<!-- 3. How it works -->
+<section class="max-w-container-max mx-auto px-lg py-xxl border-t border-hairline grid grid-cols-12 gap-gutter">
+<div class="col-span-12 md:col-span-4 mb-lg md:mb-0">
+<h2 class="font-headline-lg text-headline-lg text-text-ink">How it works</h2>
+</div>
+<div class="col-span-12 md:col-span-6">
+<div class="relative border-l border-ink-blue pl-lg pb-4 space-y-xxl">
+<div class="relative">
+<div class="absolute -left-[29px] top-1 w-1.5 h-1.5 rounded-full bg-ink-blue ring-4 ring-bg-paper"></div>
+<p class="font-eyebrow-sm text-eyebrow-sm text-secondary mb-xs">01</p>
+<h3 class="font-body-lg text-body-lg text-text-ink">Engagement</h3>
+<p class="font-body-md text-body-md text-secondary">(Day 0)</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[29px] top-1 w-1.5 h-1.5 rounded-full bg-ink-blue ring-4 ring-bg-paper"></div>
+<p class="font-eyebrow-sm text-eyebrow-sm text-secondary mb-xs">02</p>
+<h3 class="font-body-lg text-body-lg text-text-ink">Kickoff Zoom</h3>
+<p class="font-body-md text-body-md text-secondary">(within 3 business days)</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[29px] top-1 w-1.5 h-1.5 rounded-full bg-ink-blue ring-4 ring-bg-paper"></div>
+<p class="font-eyebrow-sm text-eyebrow-sm text-secondary mb-xs">03</p>
+<h3 class="font-body-lg text-body-lg text-text-ink">Drafting &amp; async review</h3>
+<p class="font-body-md text-body-md text-secondary">(Week One)</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[29px] top-1 w-1.5 h-1.5 rounded-full bg-ink-blue ring-4 ring-bg-paper"></div>
+<p class="font-eyebrow-sm text-eyebrow-sm text-secondary mb-xs">04</p>
+<h3 class="font-body-lg text-body-lg text-text-ink">Revision Zoom</h3>
+<p class="font-body-md text-body-md text-secondary">(Week Two)</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[29px] top-1 w-1.5 h-1.5 rounded-full bg-ink-blue ring-4 ring-bg-paper"></div>
+<p class="font-eyebrow-sm text-eyebrow-sm text-secondary mb-xs">05</p>
+<h3 class="font-body-lg text-body-lg text-text-ink">Internal ratification</h3>
+<p class="font-body-md text-body-md text-secondary">(end of Week Two)</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[29px] top-1 w-1.5 h-1.5 rounded-full bg-ink-blue ring-4 ring-bg-paper"></div>
+<p class="font-eyebrow-sm text-eyebrow-sm text-secondary mb-xs">06</p>
+<h3 class="font-body-lg text-body-lg text-text-ink">Publication &amp; rollout</h3>
+<p class="font-body-md text-body-md text-secondary">(Week Three)</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. What you get -->
+<section class="max-w-container-max mx-auto px-lg py-xxl border-t border-hairline">
+<div class="grid grid-cols-12 gap-gutter mb-xl">
+<div class="col-span-12 md:col-span-8">
+<h2 class="font-headline-lg text-headline-lg text-text-ink mb-md">What you get</h2>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="bg-surface-sheet border border-divider-hairline rounded-lg p-xl">
+<h3 class="font-eyebrow-sm text-eyebrow-sm text-text-ink mb-sm">A LIVE DASHBOARD</h3>
+<p class="font-body-md text-body-md text-secondary editorial-text">A secure, central repository for your organizational guidelines, accessible to verified team members.</p>
+</div>
+<div class="bg-surface-sheet border border-divider-hairline rounded-lg p-xl">
+<h3 class="font-eyebrow-sm text-eyebrow-sm text-text-ink mb-sm">A PRINT-QUALITY PDF</h3>
+<p class="font-body-md text-body-md text-secondary editorial-text">A meticulously formatted document suitable for board presentations and formal archiving.</p>
+</div>
+<div class="bg-surface-sheet border border-divider-hairline rounded-lg p-xl">
+<h3 class="font-eyebrow-sm text-eyebrow-sm text-text-ink mb-sm">ROLLOUT SUPPORTS</h3>
+<p class="font-body-md text-body-md text-secondary editorial-text">Templates and communication drafts to ensure smooth adoption across your organization.</p>
+</div>
+<div class="bg-surface-sheet border border-divider-hairline rounded-lg p-xl">
+<h3 class="font-eyebrow-sm text-eyebrow-sm text-text-ink mb-sm">INTEGRATION WITH THE PATH</h3>
+<p class="font-body-md text-body-md text-secondary editorial-text">Seamless connection to our broader ecosystem of tools and strategic frameworks.</p>
+</div>
+</div>
+</section>
+<!-- 5. Table -->
+<section class="max-w-container-max mx-auto px-lg py-xxl border-t border-hairline">
+<h2 class="font-headline-lg text-headline-lg text-text-ink mb-xl">Two paths into Safety</h2>
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[600px]">
+<thead>
+<tr class="border-b border-hairline">
+<th class="py-md pr-md font-eyebrow-sm text-eyebrow-sm text-secondary font-normal w-1/3">Criteria</th>
+<th class="py-md px-md font-eyebrow-sm text-eyebrow-sm text-text-ink font-normal w-1/3 border-l border-hairline">SafeGuide — self-directed</th>
+<th class="py-md pl-md font-eyebrow-sm text-eyebrow-sm text-ink-blue font-normal w-1/3 border-l border-hairline">SafeStart — facilitated by Movemental</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<tr class="border-b border-hairline">
+<td class="py-lg pr-md text-secondary">Price</td>
+<td class="py-lg px-md border-l border-hairline">Free</td>
+<td class="py-lg pl-md border-l border-hairline text-text-ink">$1,000</td>
+</tr>
+<tr class="border-b border-hairline">
+<td class="py-lg pr-md text-secondary">Timing</td>
+<td class="py-lg px-md border-l border-hairline">1-2 months</td>
+<td class="py-lg pl-md border-l border-hairline text-text-ink">2 weeks</td>
+</tr>
+<tr class="border-b border-hairline">
+<td class="py-lg pr-md text-secondary">Drafting</td>
+<td class="py-lg px-md border-l border-hairline">your team</td>
+<td class="py-lg pl-md border-l border-hairline text-text-ink">we draft/you revise</td>
+</tr>
+<tr>
+<td class="py-lg pr-md text-secondary">Format</td>
+<td class="py-lg px-md border-l border-hairline">whatever</td>
+<td class="py-lg pl-md border-l border-hairline text-text-ink">dashboard+PDF+rollout</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- 6. Best fit band -->
+<section class="w-full bg-bg-band border-y border-hairline py-xl">
+<div class="max-w-container-max mx-auto px-lg">
+<p class="font-body-lg text-body-lg text-text-ink max-w-[800px] mx-auto text-center" style="text-align: left;">
+                    Best for leadership teams that would benefit from external pacing, third-party adjudication, and a finished artifact that is alive rather than filed away.
+                </p>
+</div>
+</section>
+<!-- 7. Final CTA -->
+<section class="max-w-container-max mx-auto px-lg py-xxl grid grid-cols-12 gap-gutter">
+<div class="col-span-12 md:col-span-8 md:col-start-3 text-left">
+<h2 class="font-display-md text-display-md text-text-ink mb-lg">Choose now.</h2>
+<div class="flex flex-col sm:flex-row gap-lg items-start sm:items-center">
+<a class="bg-ink-blue text-white rounded-full px-8 py-3 text-center font-label-md text-label-md hover:opacity-90 transition-opacity whitespace-nowrap" href="#">
+                        Begin SafeStart — $1,000
+                    </a>
+<a class="font-body-md text-body-md text-secondary hover:text-ink-blue transition-colors underline decoration-divider-hairline underline-offset-4" href="#">
+                        Or take the free Integrity Diagnostic first
+                    </a>
+</div>
+</div>
+</section>
+</main>
+<!-- 8. Footer -->
+<footer class="w-full mt-xxl border-t border-divider-hairline bg-bg-paper">
+<div class="max-w-container-max mx-auto px-lg py-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
+<a class="font-display-md text-display-md text-text-ink text-2xl" href="/" style="font-size: 20px; font-weight: 700; text-transform: lowercase;">movemental</a>
+<div class="flex flex-wrap gap-lg font-eyebrow-sm text-eyebrow-sm">
+<a class="text-secondary hover:text-ink-blue transition-opacity duration-200" href="#">Privacy</a>
+<a class="text-secondary hover:text-ink-blue transition-opacity duration-200" href="#">Terms</a>
+<a class="text-secondary hover:text-ink-blue transition-opacity duration-200" href="#">Archive</a>
+<a class="text-secondary hover:text-ink-blue transition-opacity duration-200" href="#">Contact</a>
+</div>
+<div class="font-eyebrow-sm text-eyebrow-sm text-secondary">
+                © 2024 Move Mental. All rights reserved.
+            </div>
+</div>
+</footer>
+
+
+</body></html>

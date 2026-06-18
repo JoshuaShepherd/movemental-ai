@@ -1,8 +1,7 @@
 import type { ReadbackProps } from "@/lib/agent-room/component-props";
 import styles from "../ink-band.module.css";
 import { Emphasis } from "./emphasis";
-
-const STAGES = ["Safety", "Sandbox", "Training", "Tech"];
+import { ReadbackPathSpine } from "./readback-path-spine";
 
 /**
  * The diagnostician's read-back: where the organization stands on the four-stage
@@ -19,24 +18,15 @@ export function Readback({
   disabled?: boolean;
 }) {
   const { hereStageIndex, prose, fork, handoffNote } = props;
-  const here = Math.min(Math.max(hereStageIndex, 0), STAGES.length - 1);
+  const here = Math.min(Math.max(hereStageIndex, 0), 3);
+
   return (
     <div className={styles.stageIn}>
       <p className={styles.thinking} style={{ marginBottom: "1.25rem" }}>
         Your read-back
       </p>
-      <div className={styles.rbMap}>
-        {STAGES.map((stage, i) => (
-          <span key={stage} style={{ display: "inline-flex", alignItems: "flex-start" }}>
-            <span className={`${styles.rbStage} ${i === here ? styles.here : ""}`}>
-              <span className={styles.n}>0{i + 1}</span>
-              {stage}
-              {i === here ? <span className={styles.rbHere}>you are here</span> : null}
-            </span>
-            {i < STAGES.length - 1 ? <span className={styles.rbAw}>&rarr;</span> : null}
-          </span>
-        ))}
-      </div>
+
+      <ReadbackPathSpine hereStageIndex={here} />
 
       <p className={styles.say}>
         <Emphasis text={prose.lead} />

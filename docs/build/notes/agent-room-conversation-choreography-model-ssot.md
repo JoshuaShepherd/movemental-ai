@@ -1,5 +1,7 @@
 # Agent Room — conversation & choreography model (SSOT)
 
+**Index:** [agent-room-documentation-index.md](./agent-room-documentation-index.md)
+
 **Status:** Authoritative. Defines where the concierge's text renders, when the dock is open or closed, and what the ink voice may and may not carry.
 
 **Created:** 2026-06-17  

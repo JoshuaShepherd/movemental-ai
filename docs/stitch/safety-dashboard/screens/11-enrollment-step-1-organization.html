@@ -1,0 +1,242 @@
+<!--
+  STITCH SCREEN
+  Title: Enrollment - Step 1: Organization
+  Screen ID: b6e4de7badc541b4922bf773c988aac5
+  Project: 8694957891602637085
+  Downloaded: 2026-06-18T08:50:59.328Z
+-->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SafeStart Onboarding</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&amp;family=IBM+Plex+Mono:ital,wght@0,100..700;1,100..700&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#e5e2e1",
+                      "on-surface": "#1c1b1b",
+                      "primary-fixed-dim": "#b6c4ff",
+                      "tertiary-fixed": "#daee26",
+                      "tertiary": "#2f3400",
+                      "on-tertiary-fixed": "#1a1e00",
+                      "on-secondary-fixed": "#1f1b17",
+                      "inverse-primary": "#b6c4ff",
+                      "inverse-surface": "#313030",
+                      "tertiary-fixed-dim": "#bed100",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-container": "#afc000",
+                      "on-surface-variant": "#444652",
+                      "on-tertiary-fixed-variant": "#434b00",
+                      "surface-container-low": "#f6f3f2",
+                      "primary-fixed": "#dce1ff",
+                      "surface-dim": "#dcd9d9",
+                      "outline": "#757683",
+                      "surface-container-highest": "#e5e2e1",
+                      "on-tertiary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "surface-bright": "#fcf9f8",
+                      "on-primary-container": "#a0b3ff",
+                      "secondary-fixed": "#eae1da",
+                      "on-secondary-fixed-variant": "#4b4641",
+                      "surface-container-high": "#eae7e7",
+                      "error-container": "#ffdad6",
+                      "inverse-on-surface": "#f3f0ef",
+                      "outline-variant": "#c5c5d4",
+                      "on-error": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed-dim": "#cec5be",
+                      "on-primary-fixed-variant": "#213f9a",
+                      "primary-container": "#22409b",
+                      "surface": "#fcf9f8",
+                      "tertiary-container": "#444c00",
+                      "on-background": "#1c1b1b",
+                      "on-primary-fixed": "#001550",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#3d58b3",
+                      "secondary-container": "#e7ded7",
+                      "surface-container": "#f0eded",
+                      "error": "#ba1a1a",
+                      "background": "#fcf9f8",
+                      "primary": "#002881",
+                      "on-secondary-container": "#68615c",
+                      "secondary": "#635d58"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "margin-mobile": "16px",
+                      "xxl": "64px",
+                      "md": "16px",
+                      "xl": "40px",
+                      "xs": "4px",
+                      "unit": "4px",
+                      "lg": "24px",
+                      "gutter": "24px",
+                      "container-max": "1200px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "display-lg": ["Playfair Display"],
+                      "label-md": ["Inter"],
+                      "eyebrow-sm": ["IBM Plex Mono"],
+                      "body-lg": ["Inter"],
+                      "headline-lg-mobile": ["Playfair Display"],
+                      "display-md": ["Playfair Display"],
+                      "headline-lg": ["Playfair Display"],
+                      "annotation": ["Caveat"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "eyebrow-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.18em", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "display-md": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "annotation": ["20px", {"lineHeight": "1.2", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background min-h-screen text-on-surface antialiased selection:bg-primary-container selection:text-white">
+<!-- Suppressed TopNavBar & Footer due to Transactional/Onboarding context -->
+<main class="w-full max-w-[640px] mx-auto px-lg py-xxl flex flex-col min-h-screen">
+<!-- Header Section -->
+<header class="flex flex-col mb-xl">
+<!-- Wordmark -->
+<div class="font-label-md text-label-md tracking-wider text-on-surface-variant mb-xl">
+                movemental
+            </div>
+<!-- Eyebrow -->
+<div class="font-eyebrow-sm text-eyebrow-sm uppercase text-secondary mb-md">
+                BEGIN SAFESTART
+            </div>
+<!-- Headline with Hand-drawn Accent -->
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface max-w-lg mb-xl">
+                Tell us about your 
+                <span class="relative inline-block whitespace-nowrap">
+                    organization.
+                    <!-- Feathered ink-blue underline SVG -->
+<svg aria-hidden="true" class="absolute -bottom-2 left-0 w-full h-3 text-primary-container pointer-events-none" preserveaspectratio="none" viewbox="0 0 100 12">
+<path d="M2,8 C25,3 55,2 98,7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path>
+<path class="opacity-60" d="M10,8 L15,4 M30,7 L35,3 M60,6 L65,2 M85,7 L90,3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="0.75"></path>
+</svg>
+</span>
+</h1>
+<!-- Progress Indicator -->
+<div class="flex items-center w-full mt-lg">
+<div class="flex items-center text-primary-container">
+<span class="font-eyebrow-sm text-eyebrow-sm uppercase font-semibold">1 Organization</span>
+</div>
+<div class="h-[1px] bg-surface-variant flex-grow mx-md"></div>
+<div class="flex items-center text-secondary">
+<span class="font-eyebrow-sm text-eyebrow-sm uppercase">2 People &amp; roles</span>
+</div>
+<div class="h-[1px] bg-surface-variant flex-grow mx-md"></div>
+<div class="flex items-center text-secondary">
+<span class="font-eyebrow-sm text-eyebrow-sm uppercase">3 Context</span>
+</div>
+</div>
+</header>
+<!-- Form Section -->
+<form class="flex-grow flex flex-col gap-lg" onsubmit="event.preventDefault();">
+<!-- 1. Organization Name -->
+<div class="flex flex-col gap-xs">
+<label class="font-eyebrow-sm text-eyebrow-sm uppercase text-secondary" for="org-name">Organization name</label>
+<input class="bg-background border border-surface-variant rounded-lg px-md py-sm font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors w-full" id="org-name" placeholder="e.g. Grace Fellowship" type="text"/>
+</div>
+<!-- 2. Organization Type (Segmented Control) -->
+<div class="flex flex-col gap-xs">
+<label class="font-eyebrow-sm text-eyebrow-sm uppercase text-secondary">Organization type</label>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-sm">
+<label class="cursor-pointer relative">
+<input checked="" class="peer sr-only" name="org-type" type="radio" value="Church"/>
+<div class="border border-surface-variant rounded-lg py-sm px-xs text-center font-body-md text-body-md text-secondary peer-checked:border-primary-container peer-checked:text-primary-container peer-checked:bg-surface-container-low transition-colors duration-200 ease-in-out">
+                            Church
+                        </div>
+</label>
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="org-type" type="radio" value="Nonprofit"/>
+<div class="border border-surface-variant rounded-lg py-sm px-xs text-center font-body-md text-body-md text-secondary peer-checked:border-primary-container peer-checked:text-primary-container peer-checked:bg-surface-container-low transition-colors duration-200 ease-in-out">
+                            Nonprofit
+                        </div>
+</label>
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="org-type" type="radio" value="Institution"/>
+<div class="border border-surface-variant rounded-lg py-sm px-xs text-center font-body-md text-body-md text-secondary peer-checked:border-primary-container peer-checked:text-primary-container peer-checked:bg-surface-container-low transition-colors duration-200 ease-in-out">
+                            Institution
+                        </div>
+</label>
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="org-type" type="radio" value="Other"/>
+<div class="border border-surface-variant rounded-lg py-sm px-xs text-center font-body-md text-body-md text-secondary peer-checked:border-primary-container peer-checked:text-primary-container peer-checked:bg-surface-container-low transition-colors duration-200 ease-in-out">
+                            Other
+                        </div>
+</label>
+</div>
+</div>
+<!-- 3. Website -->
+<div class="flex flex-col gap-xs">
+<label class="font-eyebrow-sm text-eyebrow-sm uppercase text-secondary" for="org-website">Website</label>
+<input class="bg-background border border-surface-variant rounded-lg px-md py-sm font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors w-full" id="org-website" placeholder="https://" type="url"/>
+</div>
+<!-- 4. Denomination or affiliation -->
+<div class="flex flex-col gap-xs">
+<label class="font-eyebrow-sm text-eyebrow-sm uppercase text-secondary flex items-center justify-between" for="org-denomination">
+<span>Denomination or affiliation</span>
+<span class="text-outline lowercase normal-case tracking-normal">Optional</span>
+</label>
+<input class="bg-background border border-surface-variant rounded-lg px-md py-sm font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors w-full" id="org-denomination" type="text"/>
+</div>
+<!-- 5. Approximate size -->
+<div class="flex flex-col gap-xs">
+<label class="font-eyebrow-sm text-eyebrow-sm uppercase text-secondary" for="org-size">Approximate size (people served or staff count)</label>
+<input class="bg-background border border-surface-variant rounded-lg px-md py-sm font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors w-full" id="org-size" placeholder="e.g. 50-200" type="text"/>
+</div>
+<!-- 6. Annual operating budget -->
+<div class="flex flex-col gap-xs">
+<label class="font-eyebrow-sm text-eyebrow-sm uppercase text-secondary flex items-center justify-between" for="org-budget">
+<span>Annual operating budget</span>
+<span class="text-outline lowercase normal-case tracking-normal">Optional</span>
+</label>
+<input class="bg-background border border-surface-variant rounded-lg px-md py-sm font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors w-full" id="org-budget" placeholder="$" type="text"/>
+<span class="font-eyebrow-sm text-eyebrow-sm text-outline mt-1 lowercase normal-case tracking-normal">Used only to assess scholarship eligibility.</span>
+</div>
+<!-- 7. Country / region -->
+<div class="flex flex-col gap-xs">
+<label class="font-eyebrow-sm text-eyebrow-sm uppercase text-secondary" for="org-region">Country / region</label>
+<input class="bg-background border border-surface-variant rounded-lg px-md py-sm font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors w-full" id="org-region" placeholder="e.g. United States" type="text"/>
+</div>
+<!-- Bottom Section Actions -->
+<div class="mt-xl pt-lg border-t border-surface-variant flex items-center justify-between">
+<button class="font-label-md text-label-md text-secondary border border-surface-variant rounded-full px-lg py-sm bg-transparent opacity-50 cursor-not-allowed" disabled="" type="button">
+                    Back
+                </button>
+<button class="font-label-md text-label-md bg-primary-container text-white rounded-full px-lg py-sm hover:bg-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background focus:ring-primary-container" type="button">
+                    Continue
+                </button>
+</div>
+</form>
+</main>
+</body></html>

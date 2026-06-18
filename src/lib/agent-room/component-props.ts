@@ -58,10 +58,31 @@ export type CaptureProps = z.infer<typeof captureProps>;
 
 export const safetyFlowProps = z.object({
   step: z.enum(["question", "fork", "charter", "diy", "signup", "ahead", "result"]),
+  /** When `step` is `result`, selects start vs draft copy (engine-driven branching). */
+  answer: z.enum(["start", "draft", "done"]).optional(),
 });
 export type SafetyFlowProps = z.infer<typeof safetyFlowProps>;
 
-/** Static-repertoire components carry no props in Phase 1. */
+/** Optional host personalization for the pricing screen (amounts stay in `pricing.ts`). */
+export const pricingProps = z.object({
+  highlightStage: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)]).optional(),
+  eyebrow: z.string().max(80).optional(),
+});
+export type PricingScreenProps = z.infer<typeof pricingProps>;
+
+/** Optional intro line above the founders band. */
+export const foundersProps = z.object({
+  introLine: z.string().max(200).optional(),
+});
+export type FoundersScreenProps = z.infer<typeof foundersProps>;
+
+/** Optional lede for the in-room About stub. */
+export const aboutProps = z.object({
+  lede: z.string().max(300).optional(),
+});
+export type AboutScreenProps = z.infer<typeof aboutProps>;
+
+/** Static-repertoire components carry no props unless listed above. */
 export const emptyProps = z.object({}).passthrough();
 
 /** Per-component validator. Returns parsed props or null (→ voice fallback). */
@@ -80,7 +101,13 @@ export function validateComponentProps(
             ? captureProps
             : component === "safetyFlow"
               ? safetyFlowProps
-              : emptyProps;
+              : component === "pricing"
+                ? pricingProps
+                : component === "founders"
+                  ? foundersProps
+                  : component === "about"
+                    ? aboutProps
+                    : emptyProps;
   const parsed = schema.safeParse(props ?? {});
   return parsed.success ? (parsed.data as Record<string, unknown>) : null;
 }

@@ -24,9 +24,10 @@ You do **not** need to switch the chat model to GPT to use RAG.
 |-------|-------|
 | `file_search` tool implementation | ✅ `movemental-ai-agents/src/lib/tools/file-search.tool.ts` |
 | `corpus_bindings` table | ✅ Schema + CRUD + `/agent-runtime` UI |
-| Room host assignment | ❌ Not in `ASSIGNMENTS` |
-| Room host `corpus_binding_id` | ❌ Null |
-| Movemental public corpus in vector store | ❌ Not defined in this pack — **open decision** |
+| Room host assignment | ✅ Gated on `OPENAI_VECTOR_STORE_ID` at seed (`seed-agent-room.ts`) |
+| Room host `corpus_binding_id` | Optional — env fallback via `OPENAI_VECTOR_STORE_ID` |
+| Movemental public corpus pack | ✅ `files/public/*.md` + PDFs — see manifest |
+| Corpus sync script | ✅ `pnpm agent-room:corpus:sync` in `movemental-ai` |
 
 ---
 
@@ -109,10 +110,12 @@ In seed (preferred for reproducibility):
 
 ### 4. Prompt policy (host)
 
-Add a section to [`prompts/room-host.md`](./prompts/room-host.md), e.g.:
+Seeded in `movemental-ai-agents/scripts/seed-data/prompts/room-host.md` (re-seed with `pnpm seed:agent-room`):
 
 - Call `file_search` when the visitor asks for detail **not** in §5 Knowledge Canon
 - Prefer canon for pricing/path/founders; use retrieval for long-form product docs
+- Cite internal doc titles when grounded; never invent statistics
+- Off-corpus → honest uncertainty + `offer_human_handoff`
 - In **Discuss** phase, search before authoring when unsure
 - Never cite retrieval results that contradict canon — canon wins
 

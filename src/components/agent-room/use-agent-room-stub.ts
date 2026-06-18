@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { ScreenId, Scene, SceneFactory, ShowOpts, SuggestChip } from "@/lib/agent-room/acts";
 import { SCENES } from "@/lib/agent-room/data/scenes";
 import { submitLead, LEADS } from "@/lib/agent-room/capture";
-import { MAP_Q, computeMapRead, type MapOption, type MapRead } from "@/lib/agent-room/data/map-q";
+import { MAP_Q, computeMapRead, getMapQuestionForShow, isTerminalBeatIndex, type MapOption, type MapRead } from "@/lib/agent-room/data/map-q";
 import { beatScene } from "@/lib/agent-room/beat-scenes";
 import { leaderScene, leaderWorkScene, leaderConnectScene } from "@/lib/agent-room/leader-scenes";
 import { clearAgentDeepLinkParams, readAgentDeepLink } from "@/lib/agent-room/deep-link";
@@ -288,11 +288,14 @@ export function useAgentRoomStub(): AgentRoomController {
   const onBeatAnswer = useCallback(
     (qi: number, oi: number) => {
       const answers = [...mapAnswersRef.current];
-      answers[qi] = MAP_Q[qi].opts[oi];
+      const question = getMapQuestionForShow(qi, answers);
+      if (!question) return;
+      answers[qi] = question.opts[oi];
       mapAnswersRef.current = answers;
       const read = computeMapRead(answers);
-      if (qi >= MAP_Q.length - 1 || MAP_Q[qi].opts[oi].gateFail) setMapRead(read);
-      void play(beatScene(qi, oi, read));
+      const opt = answers[qi]!;
+      if (isTerminalBeatIndex(qi, opt)) setMapRead(read);
+      void play(beatScene(qi, oi, read, answers));
     },
     [play],
   );

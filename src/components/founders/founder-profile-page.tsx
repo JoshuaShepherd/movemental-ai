@@ -71,11 +71,11 @@ export function FounderProfilePage({ profile }: FounderProfilePageProps) {
           </ul>
         </section>
 
-        <section className={styles.section} aria-labelledby="founder-skills">
-          <p className={styles.sectionLabel} id="founder-skills">
-            Skills & formation
+        <section className={styles.section} aria-labelledby="founder-formation">
+          <p className={styles.sectionLabel} id="founder-formation">
+            Formation & strengths
           </p>
-          <h2 className={styles.sectionTitle}>Skills and formation</h2>
+          <h2 className={styles.sectionTitle}>Formation and strengths</h2>
           <div className={styles.skills}>
             {profile.skills.map((skill) => (
               <span key={skill} className={styles.skill}>

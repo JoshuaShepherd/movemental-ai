@@ -104,6 +104,27 @@ describe("validateComponentProps (invalid props → null → screen unchanged)",
   it("static-repertoire components accept empty props", () => {
     expect(validateComponentProps("path", {})).toEqual({});
   });
+
+  it("accepts valid pricing dynamic props", () => {
+    expect(
+      validateComponentProps("pricing", { highlightStage: 2, eyebrow: "Sandbox options" }),
+    ).toEqual({ highlightStage: 2, eyebrow: "Sandbox options" });
+  });
+
+  it("rejects oversized pricing eyebrow → null", () => {
+    expect(validateComponentProps("pricing", { eyebrow: "x".repeat(81) })).toBeNull();
+  });
+
+  it("rejects invalid highlightStage → null", () => {
+    expect(validateComponentProps("pricing", { highlightStage: 5 })).toBeNull();
+  });
+
+  it("accepts founders introLine and rejects oversized string", () => {
+    expect(validateComponentProps("founders", { introLine: "Short intro." })).toEqual({
+      introLine: "Short intro.",
+    });
+    expect(validateComponentProps("founders", { introLine: "x".repeat(201) })).toBeNull();
+  });
 });
 
 describe("beat → readback SSE fixture (PAR-03 contract)", () => {

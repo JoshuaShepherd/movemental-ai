@@ -140,6 +140,12 @@ test.describe("Agent home dock (hybrid default)", () => {
     await expect(page.getByText("Where would you like to start?")).toBeVisible();
   });
 
+  test("collapsed dock shows visitor affordance legend", async ({ page }) => {
+    await page.goto("/agent");
+    await waitForAgentOpeningReady(page);
+    await expect(page.getByText("Tap a suggestion to open a page.")).toBeVisible();
+  });
+
   test("replay resets to home opening", async ({ page }) => {
     await page.goto("/agent");
     await waitForAgentOpeningReady(page);
@@ -152,5 +158,45 @@ test.describe("Agent home dock (hybrid default)", () => {
     await page.getByRole("button", { name: "Home" }).click();
     await waitForAgentOpeningReady(page);
     await expect(page.getByRole("heading", { level: 1, name: AGENT_HOME_H1 })).toBeVisible();
+  });
+
+  test("trusted voices carousel advances on next", async ({ page }) => {
+    await page.goto("/agent");
+    await waitForAgentOpeningReady(page);
+    await expect(page.getByText("Trusted voices")).toBeVisible();
+    await expect(page.getByText("1 / 17")).toBeVisible();
+    await page.getByRole("button", { name: /Next leader/ }).click();
+    await expect(page.getByText("2 / 17")).toBeVisible();
+  });
+
+  test("cost chip shows Safety tier pricing from SSOT", async ({ page }) => {
+    await page.goto("/agent");
+    await waitForAgentOpeningReady(page);
+    await page.getByRole("button", { name: "What does it cost?" }).click();
+    await expect(page.getByRole("heading", { level: 1, name: PRICING_HEADING })).toBeVisible({
+      timeout: 8000,
+    });
+    await expect(page.getByRole("group", { name: "Pricing by stage" }).getByText("$1,000 · two weeks, start to finish")).toBeVisible();
+    await expect(page.getByRole("group", { name: "Pricing by stage" }).getByText("Ratify your AI Charter before anything else.")).toBeVisible();
+  });
+
+  test("engine ui_render safety flow charter step is visible (AU-21)", async ({ page }) => {
+    await page.route(STREAM_PATH, (route) => {
+      route.fulfill({
+        status: 200,
+        contentType: "text/event-stream",
+        body:
+          'data: {"type":"ui_render","component":"safetyFlow","props":{"step":"charter"}}\n\n' +
+          "data: [DONE]\n\n",
+      });
+    });
+    await page.goto("/agent");
+    await waitForAgentOpeningReady(page);
+    const input = await waitForComposerEnabled(page);
+    await input.fill("xyzzy plugh unexpected donor workflow question");
+    await page.locator("#composer-form").getByRole("button", { name: "Send" }).click();
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Write and ratify your AI Safety Charter." }),
+    ).toBeVisible({ timeout: 8000 });
   });
 });

@@ -1,5 +1,7 @@
 "use client";
 
+import { HOME_SCREEN_COPY } from "@/lib/agent-room/data/home-copy";
+
 import styles from "../../ink-band.module.css";
 import type { ScreenProps } from "./stub-screen";
 import { LeaderBand } from "./leader-band";
@@ -16,14 +18,13 @@ export function HomeScreen({
 }: Pick<ScreenProps, "onLeaderSelect" | "disabled">) {
   return (
     <div>
-      <h1>Navigate AI without eroding the trust you spent decades earning.</h1>
+      <h1>{HOME_SCREEN_COPY.headline}</h1>
       <p className={styles.body}>
-        We help mission-driven organizations respond to AI without losing{" "}
+        {HOME_SCREEN_COPY.bodyBeforePhrase}{" "}
         <span id="phrase" className={styles.phrase}>
-          <b>the trust their work depends on</b>
+          <b>{HOME_SCREEN_COPY.phrase}</b>
         </span>
-        , through one ordered path: get safe, experiment, form
-        your people, then build.
+        {HOME_SCREEN_COPY.bodyAfterPhrase}
       </p>
       <LeaderBand onSelect={onLeaderSelect} disabled={disabled} />
     </div>

@@ -91,6 +91,10 @@ export interface ShowOpts {
   singleQuestionHint?: boolean;
   /** Safety flow wizard step (`safetyFlow` screen). */
   step?: string;
+  /** Engine-driven result step — `start` | `draft` | `done` (maps to result/ahead). */
+  answer?: string;
+  /** Step-6 branch beat (`refusals` | `worry`) when `qi` is 5. */
+  branchBeat?: "refusals" | "worry";
 }
 
 export type Act =

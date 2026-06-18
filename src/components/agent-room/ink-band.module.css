@@ -504,7 +504,13 @@
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--color-ink-band-ink-muted);
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.35rem;
+}
+.bandSubline {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--color-ink-band-ink-muted);
+  max-width: 28rem;
 }
 .faces {
   display: flex;
@@ -610,20 +616,25 @@
   }
 }
 
-/* ===== leader carousel (home "backed by") — paged, uncropped portraits ===== */
+/* ===== leader carousel (home trusted voices) — rounded-card scroll-snap ===== */
 .bandHead {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
   margin-bottom: 0.85rem;
 }
 .bandHead .bandLabel {
-  margin-bottom: 0;
+  margin-bottom: 0.35rem;
+}
+.leaderCarousel {
+  width: 100%;
 }
 .carouselNav {
   display: flex;
-  gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
   flex: 0 0 auto;
 }
 .carouselBtn {
@@ -651,58 +662,77 @@
   opacity: 0.32;
   cursor: default;
 }
+.carouselPill {
+  font-family: var(--font-ink-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+  min-width: 3.5rem;
+  text-align: center;
+}
 .carouselShell {
   width: 100%;
-  display: flex;
-  justify-content: center;
-}
-.carouselViewport {
   overflow: hidden;
-  flex: 0 0 auto;
-  max-width: 100%;
 }
-.carouselTrack {
+.leaderCarouselTrack {
   display: flex;
-  gap: 0.9rem;
-  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
-  will-change: transform;
+  gap: var(--leader-gap, 0.9rem);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  padding: 4px 2px 10px;
+  margin: -4px -2px 0;
 }
-.carItem {
-  flex: 0 0 auto;
-  width: 88px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.45rem;
-  text-align: center;
-  cursor: pointer;
-  background: none;
-  border: 0;
-  padding: 0;
-  font: inherit;
+.leaderCarouselTrack::-webkit-scrollbar {
+  display: none;
+}
+.leaderCard {
+  flex: 0 0 var(--leader-card-w, 140px);
+  width: var(--leader-card-w, 140px);
+  scroll-snap-align: start;
   animation: faceIn 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   animation-delay: calc(var(--i, 0) * 32ms + 0.15s);
 }
-.carItem:disabled {
-  cursor: default;
-}
-/* Round portraits — object-fit:cover fills the circle. */
-.carPortrait {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 1px solid var(--color-ink-band-border);
-  background: var(--color-ink-band-surface);
+.leaderCardBtn {
+  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.55rem;
+  text-align: left;
+  cursor: pointer;
+  background: var(--color-ink-band-paper);
+  border: 1px solid var(--color-ink-band-border);
+  border-radius: 16px;
+  padding: 0.65rem;
+  font: inherit;
   transition:
     border-color 0.25s,
     box-shadow 0.25s,
     transform 0.25s;
 }
-.carPortrait img {
+.leaderCardBtn:disabled {
+  cursor: default;
+}
+.leaderCardBtn:hover:not(:disabled),
+.leaderCardBtn:focus-visible {
+  border-color: var(--color-ink-band-ink);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -16px rgba(26, 26, 26, 0.45);
+}
+.leaderCardPortrait {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--color-ink-band-surface);
+  display: block;
+}
+.leaderCardPortrait img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -710,42 +740,36 @@
   filter: grayscale(1) sepia(0.32) brightness(1.03) contrast(1.04);
   transition: filter 0.35s;
 }
-.carItem:hover .carPortrait,
-.carItem:focus-visible .carPortrait {
-  border-color: var(--color-ink-band-ink);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px -14px rgba(26, 26, 26, 0.45);
-}
-.carItem:hover .carPortrait img,
-.carItem:focus-visible .carPortrait img {
+.leaderCardBtn:hover:not(:disabled) .leaderCardPortrait img,
+.leaderCardBtn:focus-visible .leaderCardPortrait img {
   filter: none;
 }
-@media (min-width: 1200px) {
-  .carItem {
-    width: 100px;
-  }
-  .carPortrait {
-    width: 76px;
-    height: 76px;
-  }
+.leaderCardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
 }
-@media (max-width: 560px) {
-  .carItem {
-    width: 78px;
-  }
-  .carPortrait {
-    width: 56px;
-    height: 56px;
-  }
+.leaderCarouselFoot {
+  margin-top: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
 }
-@media (max-width: 380px) {
-  .carItem {
-    width: 68px;
-  }
-  .carPortrait {
-    width: 48px;
-    height: 48px;
-  }
+.carouselProgress {
+  width: min(8rem, 60%);
+  height: 4px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-ink-band-border) 55%, transparent);
+  overflow: hidden;
+}
+.carouselProgressFill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-ink-band-ink);
+  transition: width 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 /* ===== capture: lead form-cells in the sheet (the agent's own voice) ===== */
@@ -1091,31 +1115,50 @@
   background: var(--color-ink-band-paper);
   border: 1px solid var(--color-ink-band-ink);
   box-shadow: 0 16px 38px -28px rgba(26, 26, 26, 0.55);
+  padding-left: 0.55rem;
 }
 .rbHere .rbNode {
   background: var(--color-ink-band-blue);
   border-color: var(--color-ink-band-blue);
   box-shadow: 0 0 0 5px rgba(34, 64, 155, 0.18);
 }
-/* Ghost step index + soft de-emphasis of unfocused rows (proposal §3.3). */
+/* Ghost step index on every row; active row scales up (proposal §3.3). */
 .rbGhostNum {
   position: absolute;
-  right: 0.7rem;
+  right: 0.55rem;
   top: 50%;
   transform: translateY(-50%);
   font-family: var(--font-ink-mono);
-  font-size: clamp(2.5rem, 8vw, 3.5rem);
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
   font-weight: 600;
   line-height: 1;
   letter-spacing: -0.03em;
-  color: var(--color-ink-band-blue);
-  opacity: 0.12;
+  color: var(--color-ink-band-ink-muted);
+  opacity: 0.35;
   pointer-events: none;
   user-select: none;
   z-index: 0;
 }
+.rbGhostNumActive {
+  font-size: clamp(3rem, 11vw, 5rem);
+  color: var(--color-ink-band-blue);
+  opacity: 0.12;
+}
+.rbGhostNumMuted {
+  opacity: 0.35;
+}
+.rbActiveRail {
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  bottom: 0.35rem;
+  width: 2px;
+  border-radius: 999px;
+  background: var(--color-ink-band-blue);
+  z-index: 1;
+}
 .readback .rbStage:not(.rbHere) {
-  opacity: 0.9;
+  opacity: 0.88;
 }
 
 /* ===== safety readback funnel (docs/html/safety-scene) ===== */
@@ -1187,8 +1230,11 @@
   padding-right: 2.25rem;
 }
 .readbackHero .rbGhostNum {
-  font-size: clamp(1.65rem, 4.5vw, 2.35rem);
+  font-size: clamp(1.25rem, 3.5vw, 1.65rem);
   right: 0.2rem;
+}
+.readbackHero .rbGhostNumActive {
+  font-size: clamp(1.65rem, 4.5vw, 2.35rem);
   opacity: 0.1;
 }
 .readbackHero .rbHere {
@@ -1741,13 +1787,15 @@ button.wayCtaPaid {
 @media (prefers-reduced-motion: reduce) {
   .pathDrawerPanel,
   .pathDrawerTrigger,
-  .carouselTrack {
+  .leaderCarouselTrack,
+  .carouselProgressFill {
     transition: none;
+    scroll-behavior: auto;
   }
   .opt,
   .rbStage,
   .face,
-  .carItem,
+  .leaderCard,
   .beatFill {
     animation: none !important;
   }
@@ -1840,6 +1888,17 @@ button.wayCtaPaid {
 }
 .paColumnActive .paTitle {
   font-weight: 700;
+}
+.paPriceLine {
+  font-family: var(--font-ink-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  color: var(--color-ink-band-ink-muted);
+  max-width: 14rem;
+}
+.paColumnActive .paPriceLine {
+  color: var(--color-ink-band-ink);
 }
 .paPanel {
   display: grid;
@@ -4141,8 +4200,14 @@ button.wayCtaPaid {
 }
 
 .dockLegend {
+  font-family: var(--font-ink-mono);
+  font-size: 0.66rem;
+  line-height: 1.45;
+  color: var(--color-ink-band-ink-muted);
   text-align: center;
-  margin: 0.55rem 0 0;
+  margin: 0.55rem auto 0;
+  max-width: 22rem;
+  padding-inline: 0.5rem;
 }
 .agentDockExpanded .dockLegend {
   opacity: 0;
@@ -4910,6 +4975,25 @@ button.wayCtaPaid {
 }
 .fallback a {
   color: var(--color-ink-band-blue);
+}
+.fallbackNoscript {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--color-ink-band-border);
+  background: var(--color-ink-band-surface);
+  font-size: 0.95rem;
+}
+.fallbackConcierge {
+  font-style: italic;
+  color: var(--color-ink-band-ink-muted);
+}
+.fallbackNav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

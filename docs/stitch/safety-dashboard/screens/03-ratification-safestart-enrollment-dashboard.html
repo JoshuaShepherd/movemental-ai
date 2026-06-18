@@ -1,0 +1,355 @@
+<!--
+  STITCH SCREEN
+  Title: Ratification - SafeStart Enrollment Dashboard
+  Screen ID: e2a833e7462a4be79aa194088e314802
+  Project: 8694957891602637085
+  Downloaded: 2026-06-18T08:50:59.328Z
+-->
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Movemental - Ratification</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&amp;family=IBM+Plex+Mono:ital,wght@0,100..700;1,100..700&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-container": "#a0b3ff",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-tertiary-fixed-variant": "#434b00",
+                        "secondary": "#635d58",
+                        "on-secondary-fixed-variant": "#4b4641",
+                        "on-surface-variant": "#444652",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1A1A1A", /* Adjusted to #1A1A1A as requested */
+                        "on-surface": "#1A1A1A", /* Adjusted to #1A1A1A as requested */
+                        "on-secondary-container": "#68615c",
+                        "secondary-fixed": "#eae1da",
+                        "tertiary-container": "#444c00",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#dcd9d9",
+                        "primary": "#22409B", /* Adjusted to #22409B accent */
+                        "surface-container-highest": "#e5e2e1",
+                        "surface-container": "#f0eded",
+                        "inverse-primary": "#b6c4ff",
+                        "secondary-container": "#e7ded7",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#213f9a",
+                        "surface-tint": "#3d58b3",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#bed100",
+                        "inverse-surface": "#313030",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e5e2e1",
+                        "secondary-fixed-dim": "#cec5be",
+                        "on-error": "#ffffff",
+                        "outline": "#E5DFD2", /* Adjusted to hairline color */
+                        "surface-container-high": "#eae7e7",
+                        "primary-container": "#22409b",
+                        "outline-variant": "#E5DFD2", /* Adjusted to hairline color */
+                        "tertiary-fixed": "#daee26",
+                        "background": "#FBFAF6", /* Adjusted to requested background */
+                        "primary-fixed-dim": "#b6c4ff",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-bright": "#fcf9f8",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#dce1ff",
+                        "on-tertiary-container": "#afc000",
+                        "on-primary-fixed": "#001550",
+                        "tertiary": "#2f3400",
+                        "surface": "#FFFDF7", /* Adjusted to requested surface */
+                        "on-secondary-fixed": "#1f1b17",
+                        "on-tertiary-fixed": "#1a1e00"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px", /* Removing default radius to adhere to paper feel unless explicitly stated */
+                        "lg": "8px", /* Setting lg to 8px for cards as per rules */
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "container-max": "1200px",
+                        "md": "16px",
+                        "xxl": "64px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "xl": "40px",
+                        "lg": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    fontFamily: {
+                        "label-md": ["Inter", "sans-serif"],
+                        "annotation": ["Caveat", "cursive"],
+                        "headline-lg": ["Playfair Display", "serif"],
+                        "eyebrow-sm": ["IBM Plex Mono", "monospace"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "display-md": ["Playfair Display", "serif"],
+                        "display-lg": ["Playfair Display", "serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "headline-lg-mobile": ["Playfair Display", "serif"]
+                    },
+                    fontSize: {
+                        "label-md": ["14px", { lineHeight: "1.2", fontWeight: "600" }],
+                        "annotation": ["20px", { lineHeight: "1.2", fontWeight: "400" }],
+                        "headline-lg": ["32px", { lineHeight: "1.2", fontWeight: "600" }],
+                        "eyebrow-sm": ["12px", { lineHeight: "1.2", letterSpacing: "0.18em", fontWeight: "500" }],
+                        "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "display-md": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" }],
+                        "display-lg": ["64px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "headline-lg-mobile": ["28px", { lineHeight: "1.2", fontWeight: "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex selection:bg-primary-container selection:text-on-primary">
+<!-- Fixed Left Sidebar -->
+<aside class="w-64 fixed inset-y-0 left-0 bg-background border-r border-outline flex flex-col justify-between overflow-y-auto z-10 hidden md:flex">
+<div class="p-lg">
+<!-- Brand -->
+<div class="mb-xl">
+<h1 class="font-display-md text-display-md tracking-tighter text-on-background mb-unit">movemental</h1>
+<p class="font-eyebrow-sm text-eyebrow-sm uppercase text-secondary">GRACE COMMUNITY CHURCH</p>
+</div>
+<!-- Navigation -->
+<nav class="space-y-lg">
+<!-- Group 1 -->
+<div>
+<h2 class="font-eyebrow-sm text-eyebrow-sm uppercase text-secondary mb-sm px-md">OVERVIEW</h2>
+<ul class="space-y-xs">
+<li>
+<a class="block px-md py-sm font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Engagement</a>
+</li>
+</ul>
+</div>
+<!-- Group 2 -->
+<div>
+<h2 class="font-eyebrow-sm text-eyebrow-sm uppercase text-secondary mb-sm px-md">THE GUIDEBOOK</h2>
+<ul class="space-y-xs">
+<li><a class="block px-md py-sm font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">01 Statement</a></li>
+<li><a class="block px-md py-sm font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">02 Policy</a></li>
+<li><a class="block px-md py-sm font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">03 Context</a></li>
+<li><a class="block px-md py-sm font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">04 Rules</a></li>
+<li><a class="block px-md py-sm font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">05 Response Plans</a></li>
+</ul>
+</div>
+<!-- Group 3 -->
+<div>
+<h2 class="font-eyebrow-sm text-eyebrow-sm uppercase text-secondary mb-sm px-md">WORK</h2>
+<ul class="space-y-xs relative">
+<li><a class="block px-md py-sm font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Search by question</a></li>
+<li><a class="block px-md py-sm font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Review &amp; comments</a></li>
+<li class="relative">
+<div class="absolute left-0 top-0 bottom-0 w-[2px] bg-primary"></div>
+<a class="block px-md py-sm font-label-md text-label-md text-primary bg-surface-container-low" href="#">Ratification</a>
+</li>
+</ul>
+</div>
+<!-- Group 4 -->
+<div>
+<h2 class="font-eyebrow-sm text-eyebrow-sm uppercase text-secondary mb-sm px-md">DELIVERABLES</h2>
+<ul class="space-y-xs">
+<li><a class="block px-md py-sm font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Rollout supports</a></li>
+<li><a class="block px-md py-sm font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Exports</a></li>
+<li><a class="block px-md py-sm font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">Roles &amp; access</a></li>
+</ul>
+</div>
+<!-- Group 5 -->
+<div>
+<h2 class="font-eyebrow-sm text-eyebrow-sm uppercase text-secondary mb-sm px-md">WHAT'S NEXT</h2>
+<ul class="space-y-xs">
+<li><a class="block px-md py-sm font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">The Path</a></li>
+</ul>
+</div>
+</nav>
+</div>
+<!-- Bottom User Chip -->
+<div class="p-md border-t border-outline">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline flex items-center justify-center">
+<span class="font-eyebrow-sm text-eyebrow-sm text-on-background">JD</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-background">Jane Doe</span>
+<span class="font-eyebrow-sm text-eyebrow-sm text-secondary">Lead decider</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 ml-0 md:ml-64 p-gutter md:p-xxl flex flex-col items-center">
+<div class="w-full max-w-[800px] flex flex-col gap-xl">
+<!-- View Head -->
+<header class="mb-lg">
+<p class="font-eyebrow-sm text-eyebrow-sm uppercase text-secondary mb-md">RATIFICATION</p>
+<h2 class="font-display-lg text-display-lg text-on-background mb-md">Ratify the Guidebook.</h2>
+<div class="font-headline-lg text-headline-lg text-secondary mb-sm relative inline-block">
+                    When your decision body signs, the Guidebook is <span class="relative inline-block text-on-background">yours
+                        <!-- Hand-drawn annotation circle -->
+<svg class="absolute -inset-2 w-[120%] h-[140%] text-primary opacity-80 pointer-events-none" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M50,5 C80,10 95,40 90,70 C85,100 20,95 10,60 C0,25 30,0 50,5 Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</span>.
+                </div>
+<p class="font-body-md text-body-md text-secondary mt-sm">All five layers locked · revisions complete.</p>
+</header>
+<div class="flex flex-col lg:flex-row gap-xl items-start">
+<!-- Left Column (Main Cards) -->
+<div class="flex-1 w-full flex flex-col gap-lg">
+<!-- Readiness Card -->
+<div class="bg-surface border border-outline rounded-lg p-lg">
+<h3 class="font-eyebrow-sm text-eyebrow-sm uppercase text-secondary mb-md">READINESS</h3>
+<div class="flex flex-col border-t border-outline">
+<!-- Rows -->
+<div class="flex items-center justify-between py-sm border-b border-outline">
+<span class="font-body-md text-body-md text-on-background">01 Statement</span>
+<div class="flex items-center gap-sm">
+<span class="font-eyebrow-sm text-eyebrow-sm text-secondary">Approved</span>
+<span class="font-eyebrow-sm text-eyebrow-sm uppercase px-sm py-xs border border-primary text-primary rounded-full flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">lock</span> Locked</span>
+</div>
+</div>
+<div class="flex items-center justify-between py-sm border-b border-outline">
+<span class="font-body-md text-body-md text-on-background">02 Policy</span>
+<div class="flex items-center gap-sm">
+<span class="font-eyebrow-sm text-eyebrow-sm text-secondary">Approved</span>
+<span class="font-eyebrow-sm text-eyebrow-sm uppercase px-sm py-xs border border-primary text-primary rounded-full flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">lock</span> Locked</span>
+</div>
+</div>
+<div class="flex items-center justify-between py-sm border-b border-outline">
+<span class="font-body-md text-body-md text-on-background">03 Context</span>
+<div class="flex items-center gap-sm">
+<span class="font-eyebrow-sm text-eyebrow-sm text-secondary">Approved</span>
+<span class="font-eyebrow-sm text-eyebrow-sm uppercase px-sm py-xs border border-primary text-primary rounded-full flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">lock</span> Locked</span>
+</div>
+</div>
+<div class="flex items-center justify-between py-sm border-b border-outline">
+<span class="font-body-md text-body-md text-on-background">04 Rules</span>
+<div class="flex items-center gap-sm">
+<span class="font-eyebrow-sm text-eyebrow-sm text-secondary">Approved</span>
+<span class="font-eyebrow-sm text-eyebrow-sm uppercase px-sm py-xs border border-primary text-primary rounded-full flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">lock</span> Locked</span>
+</div>
+</div>
+<div class="flex items-center justify-between py-sm border-b border-outline">
+<span class="font-body-md text-body-md text-on-background">05 Response Plans</span>
+<div class="flex items-center gap-sm">
+<span class="font-eyebrow-sm text-eyebrow-sm text-secondary">Approved</span>
+<span class="font-eyebrow-sm text-eyebrow-sm uppercase px-sm py-xs border border-primary text-primary rounded-full flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">lock</span> Locked</span>
+</div>
+</div>
+</div>
+<div class="mt-md pt-sm text-center">
+<span class="font-body-md text-body-md text-primary">Guidebook ready for ratification.</span>
+</div>
+</div>
+<!-- Signatures Card -->
+<div class="bg-surface border border-outline rounded-lg p-lg">
+<h3 class="font-eyebrow-sm text-eyebrow-sm uppercase text-secondary mb-md">SIGNATURES</h3>
+<div class="flex flex-col gap-md">
+<!-- Row 1 -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-sm p-sm border border-outline rounded-lg bg-background">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest border border-outline flex items-center justify-center">
+<span class="font-eyebrow-sm text-eyebrow-sm text-on-background">JD</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-background">Jane Doe</p>
+<p class="font-eyebrow-sm text-eyebrow-sm text-secondary">Lead decider</p>
+</div>
+</div>
+<div class="flex items-center gap-sm text-primary">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-label-md text-label-md">Signed · Oct 24, 2024</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-sm p-sm border border-outline rounded-lg bg-surface">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-low border border-outline flex items-center justify-center">
+<span class="font-eyebrow-sm text-eyebrow-sm text-secondary">SA</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-background">Senior Leader A</p>
+<p class="font-eyebrow-sm text-eyebrow-sm text-secondary">Awaiting signature</p>
+</div>
+</div>
+<button class="px-md py-sm border border-outline text-primary font-label-md text-label-md rounded-full hover:bg-surface-container-low transition-colors">Request signature</button>
+</div>
+<!-- Row 3 -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-sm p-sm border border-outline rounded-lg bg-surface">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-low border border-outline flex items-center justify-center">
+<span class="font-eyebrow-sm text-eyebrow-sm text-secondary">SB</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-background">Senior Leader B</p>
+<p class="font-eyebrow-sm text-eyebrow-sm text-secondary">Awaiting signature</p>
+</div>
+</div>
+<button class="px-md py-sm border border-outline text-primary font-label-md text-label-md rounded-full hover:bg-surface-container-low transition-colors">Request signature</button>
+</div>
+</div>
+</div>
+<!-- Board Vote Card -->
+<div class="bg-surface border border-outline rounded-lg p-lg">
+<h3 class="font-eyebrow-sm text-eyebrow-sm uppercase text-secondary mb-md">BOARD VOTE</h3>
+<div class="flex flex-col gap-md">
+<div>
+<label class="block font-label-md text-label-md text-on-background mb-sm" for="vote-date">Date of Ratification</label>
+<input class="w-full bg-background border border-outline rounded-none px-md py-sm font-body-md text-body-md text-on-background focus:border-primary focus:ring-0 transition-colors" id="vote-date" type="date"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-background mb-sm" for="vote-note">Governance process note</label>
+<textarea class="w-full bg-background border border-outline rounded-none px-md py-sm font-body-md text-body-md text-on-background focus:border-primary focus:ring-0 transition-colors" id="vote-note" placeholder="Document any relevant context..." rows="3"></textarea>
+</div>
+<div class="flex justify-end mt-sm">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-lg py-sm rounded-full hover:opacity-90 transition-opacity">Record ratification</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (Sidebar/Card) -->
+<aside class="w-full lg:w-64 flex flex-col gap-lg">
+<div class="bg-surface border border-outline rounded-lg p-lg sticky top-lg">
+<h3 class="font-eyebrow-sm text-eyebrow-sm uppercase text-secondary mb-md">ON RATIFICATION</h3>
+<p class="font-body-md text-body-md text-secondary mb-md">The following artifacts will be generated upon full ratification.</p>
+<ul class="space-y-sm mb-lg">
+<li class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span class="font-label-md text-label-md">Final PDF Guidebook</span>
+</li>
+<li class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span class="font-label-md text-label-md">Public Announcement</span>
+</li>
+<li class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span class="font-label-md text-label-md">Constituent Message</span>
+</li>
+<li class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span class="font-label-md text-label-md">Board Briefing Deck</span>
+</li>
+</ul>
+<button class="w-full bg-surface-container-highest text-secondary border border-outline font-label-md text-label-md px-lg py-sm rounded-full cursor-not-allowed opacity-70">Export board packet</button>
+</div>
+</aside>
+</div>
+</div>
+</main>
+</body></html>

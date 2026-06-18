@@ -1,5 +1,7 @@
 # Agent platform — complete reference
 
+**Index:** [agent-room-documentation-index.md](./agent-room-documentation-index.md)
+
 **Status:** Working SSOT for external review and implementation planning  
 **Created:** 2026-06-17  
 **Audience:** Engineers, product, and external agents who need to understand *how the Movemental agent works end-to-end* — surfaces, screens, routing, tools, and what is local vs live LLM.
@@ -115,7 +117,7 @@ Controlled by `NEXT_PUBLIC_AGENT_ROOM_MODE` (build-time, client-inlined). Defaul
 |------|------|---------|-------------|
 | **`hybrid`** | `useAgentRoomHybrid` | SSE only on AGENT-classified moves | **Production default** |
 | **`stub`** | `useAgentRoomStub` | None | Demos, engine-down, offline QA |
-| **`stream`** | `useAgentRoomStream` | Every composer action → SSE | Legacy regression / full-AI dev |
+| **`stream`** | `useAgentRoomStream` | Every composer action → SSE | **Deprecated (AU-20)** — maps to hybrid unless `NEXT_PUBLIC_AGENT_ROOM_LEGACY_STREAM=1` |
 
 Dispatch: `src/components/agent-room/agent-room.tsx`.
 
@@ -217,6 +219,12 @@ Rendered directly by `HybridScreen` when `ui_render` targets ids with no Ink Ban
 
 `src/lib/agent-room/screen-map.ts` — compile-time `satisfies` rail. Ink Band screens map 1:1 by name. Stub-only screens (`safetyFlow`, `sandbox`, …) reverse-map to nearest engine id for documentation purposes.
 
+### 6.4 Canonical public stage labels (AU-01, 2026-06-18)
+
+**Visitor-facing vocabulary:** Safety · Sandbox · Training · Tech (tight UI) / Technology (long form).
+
+**SSOT:** `src/lib/agent-room/naming.ts` (`PATH_STAGE_LABELS`, `PATH_STAGE_RAIL`). Legacy assessment keys (`Skills`, `Solutions`) map at display time via `src/lib/ai-reality/stage-mapper.ts` — never render those legacy names on agent-room, path, pricing, field-guide, or `/research` surfaces. Internal DB columns (`stage_skills`, `stage_solutions`) are unchanged.
+
 ---
 
 ## 7. When screen vs chat — the routing decision tree
@@ -245,14 +253,16 @@ Visitor action
 
 ### 7.2 Default float chips (after opening)
 
-| Chip | Hybrid behavior | Stream behavior |
-|------|-----------------|-----------------|
-| **Get a clear next AI step** | LOCAL `toSafetyFlow` → safety flow sheet | LOCAL `toSafetyFlow` |
-| **About Movemental** | AGENT utterance → expand dock + SSE | AGENT |
-| **What does it cost?** | AGENT → expand + SSE | AGENT |
-| **Get in touch** | AGENT → expand + SSE | AGENT |
+**Screen-first matrix (AU-07):** [agent-room-chip-routing-matrix.md](./agent-room-chip-routing-matrix.md)
 
-Chip routing SSOT: `src/lib/agent-room/composer-routing.ts` (`STREAM_CHIP_ROUTES`).
+| Chip | Hybrid collapsed dock | Hybrid expanded drawer | Stream behavior |
+|------|----------------------|------------------------|-----------------|
+| **Get a clear next AI step** | LOCAL `toSafetyFlow` → safety flow sheet | LOCAL `toSafetyFlow` | LOCAL `toSafetyFlow` |
+| **About Movemental** | LOCAL `whatIs` → about | AGENT utterance → SSE | AGENT |
+| **What does it cost?** | LOCAL `cost` → pricing | AGENT → SSE | AGENT |
+| **Get in touch** | LOCAL `talkToUs` → contact | AGENT → SSE | AGENT |
+
+Chip routing SSOT: `src/lib/agent-room/composer-routing.ts` (`resolveChipRoute` + `OPENING_CHIP_LOCAL_SCENES`).
 
 **Important:** Scene follow-up chips (e.g. on path screen “Show me Safety”) still use `SuggestChip.to` → local `SCENES` when label is **not** in `STREAM_CHIP_ROUTES`.
 
@@ -355,18 +365,18 @@ Registered in `movemental-ai-agents/src/lib/tools/render-tools.tool.ts`:
 | `render_beat` | `beat` | host | **Live** — dynamic Q + options |
 | `show_readback` | `readback` | diagnostician | **Live** — composed judgment |
 | `show_path` | `path` | host | Static copy in component |
-| `show_pricing` | `pricing` | host | Static placeholder |
+| `show_pricing` | `pricing` | host | **Dynamic props** — `highlightStage`, `eyebrow` (amounts stay in component) |
 | `show_safety_flow` | `safetyFlow` | host | **Live** — wizard `step` prop |
 | `show_network` | `network` | host | Engine-extra |
 | `show_audience` | `audience` | host | Engine-extra |
-| `show_founders` | `founders` | host | Static placeholder |
+| `show_founders` | `founders` | host | **Dynamic props** — optional `introLine` |
 | `show_capture` | `capture` | host | Form cell by `kind` |
 | `offer_human_handoff` | `handoff_human` | both | Engine-extra |
 | `show_home` | `home` | (registry) | Static |
 | `show_safety` | `safety` | (registry) | Static |
 | `show_confirm` | `confirm` | (registry) | Static |
 | `show_leader` | `leader` | (registry) | Static |
-| `show_about` | `about` | (registry) | Static |
+| `show_about` | `about` | (registry) | **Dynamic props** — optional `lede` |
 | `show_contact` | `contact` | (registry) | Static |
 | `show_faq` | `faq` | (registry) | Static |
 | `gesture_at` | — | host | Emits `ink_gesture` (allow-list per screen) |
@@ -416,7 +426,7 @@ Computed in code by `computeSafetyVerdict()` in the engine (`movemental-ai-agent
 
 ## 11. Discuss mode (optional)
 
-**Flag:** `NEXT_PUBLIC_AGENT_ROOM_DISCUSS=1` (default **off**).
+**Flag:** `NEXT_PUBLIC_AGENT_ROOM_DISCUSS=1` (default **off**). Staging checklist: [agent-room-discuss-staging-env.md](./agent-room-discuss-staging-env.md). **Validated:** 2026-06-18 (AU-09 — mocked hybrid E2E + turn-cap capture overlay).
 
 | Concept | Behavior |
 |---------|----------|
@@ -534,6 +544,14 @@ Without engine env: POST returns **503**; hybrid shows stall recovery voice line
 | `SERVICE_API_SECRET` | Validates room proxy |
 | `TENANT_ORG_ID` | Seed target |
 | `OPENAI_VECTOR_STORE_ID` | Optional `file_search` for host |
+| `OPENAI_API_KEY` | Required when `file_search` is assigned |
+
+**RAG operator setup (staging/production):**
+
+1. Sync the public corpus pack: `pnpm agent-room:corpus:sync` in `movemental-ai` (see [`corpus-and-rag.md`](../agents/agent-room/corpus-and-rag.md)).
+2. Set `OPENAI_VECTOR_STORE_ID` and `OPENAI_API_KEY` on the engine deployment.
+3. Re-seed room tools: `pnpm seed:agent-room` in `movemental-ai-agents` (assigns `file_search` when the vector store id is present).
+4. Smoke test: ask an in-domain depth question answered only in a KB file (e.g. fragmentation thesis).
 
 **After prompt edits:** `pnpm seed:agent-room` in engine repo (DB is runtime SSOT).
 
@@ -596,16 +614,16 @@ Prioritized for external review — not an committed roadmap.
 
 | Gap | Notes |
 |-----|-------|
-| **Static render tools** | `show_pricing`, `show_founders`, etc. use component fallback copy — agent doesn’t inject props |
-| **`file_search` optional** | Without vector store, host is canon-only |
+| ~~**Static render tools**~~ | **Resolved (AU-16):** `show_pricing`, `show_founders`, `show_about` accept optional validated props |
+| **`file_search` optional** | Without vector store, host is canon-only — wired + documented (AU-17) |
 | **Guardrails** | Host prose screened in `room-output-guardrail.ts`; tool props via Zod honesty rail |
-| **Session persistence** | `agent_room_transcripts` + `persistRoomTranscript` (migration proposed; query via `scripts/query-room-transcripts.ts`) |
+| ~~**Session persistence**~~ | **Resolved (AU-18):** `agent_room_transcripts` live; engine writes on turn completion; client restores via `GET /api/agent-room/transcript`; ops: `scripts/query-room-transcripts.ts` |
 
 ### 18.3 Parity / tech debt
 
 | Gap | Notes |
 |-----|-------|
-| **Local beat vs engine beat** | Local `MAP_Q` (4Q stub) vs engine `HOST_SCENES.beats` (6 beats); verdict contract-tested via `beat-verdict-spec.json` |
+| **Local beat vs engine beat** | **Resolved (AU-04):** `beat-catalog.ts` SSOT; local stub uses six engine-aligned beats; sync test vs `movemental-ai-agents` `HOST_SCENES.beats` |
 | **Stream mode** | Legacy; hybrid is the architectural center |
 | **`safetyDashboard` screen** | Funnel stub; enrollment moving to `safetyFlow` + `/enroll` |
 | **Concept Modern** | Archived for marketing; agent room is Ink Band only |
@@ -613,11 +631,11 @@ Prioritized for external review — not an committed roadmap.
 ### 18.4 Suggested next slices (for planning)
 
 1. **Engine `safety_flow` component** — align wizard with render tool for agent-driven branching  
-2. **Turn on Discuss in staging** — validate turn-cap → `show_capture` discuss path end-to-end  
-3. **Unify beat data** — single SSOT for local MAP_Q and host `render_beat` beats  
+2. ~~**Turn on Discuss in staging**~~ — **Done (AU-09):** mocked E2E + turn-cap → discuss capture overlay; prod default still off  
+3. ~~**Unify beat data**~~ — **Done (AU-04):** `beat-catalog.ts` SSOT  
 4. **Analytics** — wire `roomContext`, `DiscussReason`, chip labels to PostHog events  
-5. **SEO / no-JS** — expand `AgentRoomFallback` to mirror key screen copy  
-6. **Document surfaces** — audit all `DocumentChip` handoffs for `ask` + `from` consistency  
+5. ~~**SEO / no-JS**~~ — **Done (AU-08):** expanded `AgentRoomFallback` with SSOT copy + `<noscript>`  
+6. ~~**Document surfaces chip audit**~~ — **Done (AU-07):** routing matrix + Playwright coverage
 
 ---
 

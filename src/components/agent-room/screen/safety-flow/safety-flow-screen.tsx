@@ -20,6 +20,11 @@ import { SafetyFlowResult } from "./safety-flow-result";
 import { SafetyFlowSignup } from "./safety-flow-signup";
 import { SafetyFlowStepper } from "./safety-flow-stepper";
 
+function parseEngineAnswer(raw: string | undefined): SafetyFlowAnswer | null {
+  if (raw === "start" || raw === "draft" || raw === "done") return raw;
+  return null;
+}
+
 function initialStep(step: string | undefined): SafetyFlowStep {
   if (
     step === "question" ||
@@ -38,19 +43,32 @@ function initialStep(step: string | undefined): SafetyFlowStep {
 
 /** Self-serve Safety flow wizard — primary on-ramp from "Get a clear next AI step". */
 export function SafetyFlowScreen({ opts, onHome, onRunScene, disabled }: ScreenProps) {
+  const engineAnswer = parseEngineAnswer(opts.answer);
+
   const [step, setStep] = React.useState<SafetyFlowStep>(() => initialStep(opts.step));
-  const [answer, setAnswer] = React.useState<SafetyFlowAnswer | null>(null);
+  const [answer, setAnswer] = React.useState<SafetyFlowAnswer | null>(engineAnswer);
 
   React.useEffect(() => {
-    setStep(initialStep(opts.step));
-  }, [opts.step]);
+    const nextStep = initialStep(opts.step);
+    setStep(nextStep);
+    if (engineAnswer) {
+      setAnswer(engineAnswer);
+      return;
+    }
+    if (nextStep === "question") {
+      setAnswer(null);
+    }
+  }, [opts.step, opts.answer, engineAnswer]);
 
   const handleAnswer = (a: SafetyFlowAnswer) => {
     setAnswer(a);
     setStep(safetyFlowStepAfterAnswer(a));
   };
 
-  const resultAnswer: SafetyFlowAnswer = answer === "draft" ? "draft" : "start";
+  const effectiveAnswer: SafetyFlowAnswer | null =
+    answer ?? (step === "result" ? "start" : step === "ahead" ? "done" : null);
+  const resultAnswer: SafetyFlowAnswer =
+    effectiveAnswer === "draft" ? "draft" : "start";
 
   return (
     <div className={styles.flowWrap}>
@@ -59,7 +77,7 @@ export function SafetyFlowScreen({ opts, onHome, onRunScene, disabled }: ScreenP
 
       {step === "question" ? <SafetyFlowQuestion disabled={disabled} onAnswer={handleAnswer} /> : null}
 
-      {step === "result" && answer ? (
+      {step === "result" && effectiveAnswer ? (
         <SafetyFlowResult
           answer={resultAnswer}
           disabled={disabled}
@@ -81,7 +99,7 @@ export function SafetyFlowScreen({ opts, onHome, onRunScene, disabled }: ScreenP
         <SafetyFlowCharter
           disabled={disabled}
           onNext={() => setStep("fork")}
-          onBack={() => setStep(answer === "done" ? "ahead" : "result")}
+          onBack={() => setStep(effectiveAnswer === "done" ? "ahead" : "result")}
         />
       ) : null}
 

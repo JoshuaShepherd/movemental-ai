@@ -36,6 +36,7 @@ While a scene is `busy`, send/chips are disabled but the **input stays focusable
 
 - Single-line `#composer-input`, Send, Expand chat, drawer handle.
 - Placeholder: `Type here, or tap a suggestion…`
+- Legend under float chips: *“Tap a suggestion to open a page. Type here to talk it through.”* (`DOCK_LEGEND_COPY`, associated with the composer via `aria-describedby`).
 - Submitting text expands the dock and adds the user line to the thread.
 
 ### Expanded
@@ -83,7 +84,7 @@ Order (`route-input.ts` + `move-classifier.ts`):
 4. Regex table → local scene (`cost`, `toSafety`, `toPath`, `whatIs`, …).
 5. Unmatched → agent (`open_text`).
 
-**Gotcha:** regex includes `about` — phrases like “question **about** donors” match `whatIs` locally on the **first** collapsed message. Prefer chips or expand the dock first for free-form chat.
+**Gotcha (resolved AU-06):** `whatIs` routing requires multi-word guards (`about movemental`, `what is movemental`). Bare `about` in a longer phrase (e.g. “question **about** donors”) does **not** high-confidence-route locally — first collapsed message goes to the agent. Prefer chips or expand the dock for free-form chat.
 
 ---
 

@@ -1,5 +1,7 @@
 # Agent Room — chat & conversation UI (SSOT)
 
+**Index:** [agent-room-documentation-index.md](./agent-room-documentation-index.md)
+
 **Status:** Authoritative reference for how the Movemental concierge chat works in code — collapsed vs expanded dock, handwriting strip vs screen vs thread, Guide vs Discuss, and where to change behavior.
 
 **Created:** 2026-06-17  
@@ -66,7 +68,7 @@ AgentRoomShell (hydration guard)
 |------|------|---------|---------------|
 | **hybrid** | `useAgentRoomHybrid` | SSE only when input classified **AGENT** | Script first; open conversation after expand / agent chip / unmatched text |
 | **stub** | `useAgentRoomStub` | None | Typed input → regex scenes; Discuss flag on → stub capture, not real LLM |
-| **stream** | `useAgentRoomStream` | Every composer action → SSE | Legacy full-AI regression |
+| **stream** | `useAgentRoomStream` | Every composer action → SSE | **Deprecated (AU-20)** — env maps to hybrid unless `NEXT_PUBLIC_AGENT_ROOM_LEGACY_STREAM=1` |
 
 All three expose the same `AgentRoomView` props shape (`phase`, `transcript`, `voice`, `isStreaming`, `onSay`, …).
 

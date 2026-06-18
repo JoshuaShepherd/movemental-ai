@@ -2,7 +2,7 @@
 
 import { useState, type CSSProperties } from "react";
 
-import { MAP_Q } from "@/lib/agent-room/data/map-q";
+import { getMapQuestionForShow } from "@/lib/agent-room/data/map-q";
 import type { RealityCheckBeatProps } from "@/lib/agent-room/component-props";
 import styles from "../../ink-band.module.css";
 import { RealityCheckBeat } from "../reality-check-beat";
@@ -14,7 +14,7 @@ const pad2 = (x: number) => (x < 10 ? `0${x}` : `${x}`);
  * The `beat` registry entry (INT-02). Dispatches by render path:
  *  - **stream** — the agent sent `{ question, options, progress }`; render the
  *    prop-driven beat and route option taps back through the agent (`say`).
- *  - **stub** — read the local `MAP_Q` and play the local beat choreography.
+ *  - **stub** — read the local beat catalog and play the local beat choreography.
  * The wrapper holds no hooks, so the branch (constant per mount — `stream` is
  * present iff the room is in stream mode) is rules-of-hooks-safe.
  */
@@ -41,7 +41,8 @@ export function BeatScreen(props: ScreenProps) {
  */
 function StubBeat({ opts, onBeatAnswer, disabled }: ScreenProps) {
   const qi = opts.qi ?? 0;
-  const question = MAP_Q[qi];
+  const question = getMapQuestionForShow(qi, [], opts.branchBeat);
+  if (!question) return null;
 
   const [chosen, setChosen] = useState<number | null>(null);
   const locked = disabled || chosen !== null;

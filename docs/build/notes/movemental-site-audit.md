@@ -520,4 +520,16 @@ Pricing screen has inline **Terms** (payment splits), not legal pages.
 
 ---
 
+## Remediated 2026-06-18 (AU-03)
+
+| Finding | Remediation |
+| --- | --- |
+| Preview indexable despite announcement bar | `NEXT_PUBLIC_SITE_LAUNCH_READY` gates `noindex` on `/agent/*` (`src/app/agent/layout.tsx`) and empties sitemap until launch-ready |
+| `/terms`, `/privacy`, `/cookies` 404 | Ink Band utility pages at `/terms`, `/privacy`, `/cookies` (marked `[LEGAL REVIEW REQUIRED]`) |
+| `/voices` 404 | Permanent redirect to `/agent/movement-voices` in `next.config.ts` |
+| Pricing bracket placeholders | Replaced `[Free entry point to confirm]` with honest “Field guide · coming soon” copy in `two-ways-forward.tsx` |
+| Stage naming (AU-01) | Agent room, research bodies, and field guide already use Training/Tech; SSOT documented in `naming.ts` + `stage-mapper.ts` |
+
+---
+
 *End of audit.*

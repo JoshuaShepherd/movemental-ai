@@ -10,6 +10,7 @@ import {
   type ReactNode,
 } from "react";
 
+import { DOCK_LEGEND_COPY } from "@/lib/agent-room/data/dock-affordance";
 import type { RoomPhase } from "@/lib/agent-room/discuss";
 import { useAgentRoomRefs } from "../agent-room-context";
 import type { ComposerChip } from "../composer";
@@ -102,6 +103,8 @@ function SendIcon() {
   );
 }
 
+const DOCK_LEGEND_ID = "dock-legend";
+
 function ComposerForm({
   value,
   onChange,
@@ -151,6 +154,7 @@ function ComposerForm({
             autoComplete="off"
             autoFocus={expanded}
             aria-label="Talk to Movemental"
+            aria-describedby={!expanded ? DOCK_LEGEND_ID : undefined}
             placeholder={placeholder ?? "Type here, or tap a suggestion…"}
           />
         </label>
@@ -236,6 +240,7 @@ export function AgentDock({
   liveThinking,
   liveThinkingNote,
   onDockStateChange,
+  onDockExpand,
   screenKey,
   highlightChipLabel = null,
   caption,
@@ -254,6 +259,7 @@ export function AgentDock({
   liveThinking?: boolean;
   liveThinkingNote?: string;
   onDockStateChange?: (state: DockState) => void;
+  onDockExpand?: (reason: "user" | "send" | "chip" | "discuss" | "agent") => void;
   screenKey?: string;
   highlightChipLabel?: string | null;
   caption?: string;
@@ -270,11 +276,15 @@ export function AgentDock({
   const captureMode = Boolean(showHandbookCapture && onHandbookCaptureSubmit);
 
   const expand = useCallback(
-    (_reason?: "send" | "chip" | "agent" | "user") => {
-      setDockState("expanded");
+    (reason?: "send" | "chip" | "agent" | "user" | "discuss") => {
+      setDockState((prev) => {
+        if (prev === "expanded") return prev;
+        onDockExpand?.(reason ?? "user");
+        return "expanded";
+      });
       onDockStateChange?.("expanded");
     },
-    [onDockStateChange],
+    [onDockExpand, onDockStateChange],
   );
 
   const collapse = useCallback(() => {
@@ -477,6 +487,10 @@ export function AgentDock({
             disabled={composerBusy}
             highlightChipLabel={highlightChipLabel ?? null}
           />
+
+          <p className={styles.dockLegend} id={DOCK_LEGEND_ID}>
+            {DOCK_LEGEND_COPY}
+          </p>
 
           <div className={styles.agentCard} id="agent-card" role="region" aria-label="Agent">
             {captureFooter ?? composerFooter}

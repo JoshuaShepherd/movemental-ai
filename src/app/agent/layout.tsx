@@ -1,8 +1,16 @@
+import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Caveat } from "next/font/google";
 
 import { AgentRoomProvider } from "@/components/agent-room/agent-room-context";
 import { InkFilters } from "@/components/agent-room/deck/ink-filters";
+import { previewRobotsMetadata } from "@/lib/site-launch";
+
+const previewRobots = previewRobotsMetadata();
+
+export const metadata: Metadata = previewRobots
+  ? { robots: previewRobots }
+  : {};
 
 /**
  * Caveat — the Ink Band "hand" face (the voice line and the readback "you are

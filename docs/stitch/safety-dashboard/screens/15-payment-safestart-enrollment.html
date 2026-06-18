@@ -1,0 +1,222 @@
+<!--
+  STITCH SCREEN
+  Title: Payment - SafeStart Enrollment
+  Screen ID: 120bb56240054e02b13370dffedbce13
+  Project: 8694957891602637085
+  Downloaded: 2026-06-18T08:50:59.328Z
+-->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Complete your enrollment - Move Mental</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Caveat&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E2E1; border-radius: 4px; }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#635d58",
+                        "on-secondary-fixed-variant": "#4b4641",
+                        "inverse-on-surface": "#f3f0ef",
+                        "surface-tint": "#3d58b3",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-tertiary-container": "#afc000",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f0eded",
+                        "primary-container": "#22409b",
+                        "primary": "#002881",
+                        "on-primary-container": "#a0b3ff",
+                        "tertiary": "#2f3400",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#313030",
+                        "outline-variant": "#c5c5d4",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#1c1b1b",
+                        "on-tertiary-fixed-variant": "#434b00",
+                        "surface-variant": "#e5e2e1",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "on-surface": "#1c1b1b",
+                        "on-primary-fixed": "#001550",
+                        "surface-container-low": "#f6f3f2",
+                        "secondary-container": "#e7ded7",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#eae7e7",
+                        "surface-dim": "#dcd9d9",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#dce1ff",
+                        "on-secondary-container": "#68615c",
+                        "tertiary-container": "#444c00",
+                        "surface-bright": "#fcf9f8",
+                        "secondary-fixed-dim": "#cec5be",
+                        "on-tertiary-fixed": "#1a1e00",
+                        "tertiary-fixed": "#daee26",
+                        "surface-container-highest": "#e5e2e1",
+                        "background": "#fcf9f8",
+                        "outline": "#757683",
+                        "on-primary-fixed-variant": "#213f9a",
+                        "on-secondary-fixed": "#1f1b17",
+                        "inverse-primary": "#b6c4ff",
+                        "surface": "#fcf9f8",
+                        "secondary-fixed": "#eae1da",
+                        "on-surface-variant": "#444652",
+                        "tertiary-fixed-dim": "#bed100"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "md": "16px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "container-max": "1200px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "xxl": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Playfair Display", "serif"],
+                        "display-md": ["Playfair Display", "serif"],
+                        "headline-lg": ["Playfair Display", "serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "annotation": ["Caveat", "cursive"],
+                        "label-md": ["Inter", "sans-serif"],
+                        "display-lg": ["Playfair Display", "serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "eyebrow-sm": ["IBM Plex Mono", "monospace"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-md": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "annotation": ["20px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "eyebrow-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.18em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md text-body-md antialiased selection:bg-primary-container selection:text-on-primary">
+<main class="flex-grow flex items-center justify-center py-xxl px-margin-mobile md:px-lg">
+<div class="w-full max-w-[560px] mx-auto flex flex-col">
+<!-- Header -->
+<div class="text-center mb-xl">
+<div class="font-headline-lg text-headline-lg tracking-tighter text-on-surface mb-lg">
+                    movemental
+                </div>
+<div class="font-eyebrow-sm text-eyebrow-sm text-secondary uppercase tracking-widest mb-md">
+                    PAYMENT
+                </div>
+<h1 class="font-display-md text-display-md md:text-display-md text-headline-lg-mobile md:font-display-md font-headline-lg-mobile text-on-surface">
+                    Complete your enrollment.
+                </h1>
+</div>
+<!-- Form Card -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-lg p-xl flex flex-col shadow-none">
+<!-- Summary Row -->
+<div class="flex justify-between items-end border-b border-surface-variant pb-md mb-xl">
+<span class="font-body-md text-body-md text-on-surface">SafeStart engagement</span>
+<span class="font-headline-lg text-headline-lg text-on-surface">$1,000</span>
+</div>
+<form class="flex flex-col gap-lg" onsubmit="event.preventDefault();">
+<!-- Email Input -->
+<div>
+<label class="font-eyebrow-sm text-eyebrow-sm text-on-surface uppercase block mb-sm" for="email">Email</label>
+<input class="w-full bg-background border border-surface-variant rounded px-md py-[12px] font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors" id="email" name="email" placeholder="jane@example.com" required="" type="email"/>
+</div>
+<!-- Card Information -->
+<div>
+<label class="font-eyebrow-sm text-eyebrow-sm text-on-surface uppercase block mb-sm">Card information</label>
+<div class="flex flex-col border border-surface-variant rounded overflow-hidden focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container transition-colors bg-background">
+<!-- Card Number Row -->
+<div class="flex items-center border-b border-surface-variant">
+<input class="w-full bg-transparent border-0 focus:ring-0 px-md py-[12px] font-body-md text-body-md text-on-surface placeholder:text-outline" id="card-number" placeholder="0000 0000 0000 0000" required="" type="text"/>
+<div class="flex gap-sm pr-md">
+<!-- Simple SVG stand-ins for card brands to maintain monochrome/ink style -->
+<svg class="h-5 w-auto text-outline" fill="currentColor" viewbox="0 0 32 20">
+<path d="M12.28 4.432H9.066l-1.954 11.137h3.214l1.954-11.137zM20.916 4.673c-1.077-.4-2.812-.813-4.59-.813-5.06 0-8.625 2.62-8.647 6.377-.02 2.763 2.533 4.295 4.453 5.215 1.97 1.01 2.623 1.66 2.623 2.573-.02 1.398-1.722 2.03-3.32 2.03-2.126 0-3.26-.316-5.012-1.09l-.71-3.315c1.196.536 3.42 1.002 5.728 1.025 2.79.023 5.46-1.354 5.46-4.06 0-1.74-1.246-2.935-3.87-4.154-1.892-.916-2.585-1.523-2.585-2.47-.02-1.287 1.454-2.404 3.863-2.404 1.706 0 3.197.35 4.305.825l.89-3.739zM25.795 4.432h-2.483c-1.218 0-1.864.35-2.316 1.637l-4.167 9.5H20.1l.643-1.783h3.935l.374 1.783h2.906l-2.164-11.137zm-2.076 7.375l1.017-4.814h.046l1.205 4.814h-2.268zM5.385 4.432L3.626 12.3c-.158.745-.304 1.027-.88 1.332-1.424.756-3.812 1.467-5.114 1.806l.338 1.557c1.458.339 3.018.665 4.646.665 1.76 0 2.946-.666 3.51-2.472l2.697-10.756H5.385z"></path>
+</svg>
+<svg class="h-5 w-auto text-outline" fill="currentColor" viewbox="0 0 32 20">
+<path d="M19.643 9.998c0 3.003-1.417 5.674-3.64 7.393A9.224 9.224 0 0 1 10.36 10a9.223 9.223 0 0 1 5.644-7.394 9.231 9.231 0 0 1 3.639 7.392zM10.363 2.605a9.208 9.208 0 0 0 0 14.788A9.24 9.24 0 0 0 16.002 20a9.243 9.243 0 0 0 5.642-2.607A9.208 9.208 0 0 0 21.644 2.607 9.243 9.243 0 0 0 16.002 0a9.24 9.24 0 0 0-5.639 2.605z"></path>
+</svg>
+</div>
+</div>
+<!-- Exp & CVC Row -->
+<div class="flex items-center">
+<input class="w-1/2 bg-transparent border-0 border-r border-surface-variant focus:ring-0 px-md py-[12px] font-body-md text-body-md text-on-surface placeholder:text-outline" id="exp" placeholder="MM / YY" required="" type="text"/>
+<input class="w-1/2 bg-transparent border-0 focus:ring-0 px-md py-[12px] font-body-md text-body-md text-on-surface placeholder:text-outline" id="cvc" placeholder="CVC" required="" type="text"/>
+</div>
+</div>
+</div>
+<!-- Name on Card -->
+<div>
+<label class="font-eyebrow-sm text-eyebrow-sm text-on-surface uppercase block mb-sm" for="name">Name on card</label>
+<input class="w-full bg-background border border-surface-variant rounded px-md py-[12px] font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors" id="name" name="name" placeholder="Jane Doe" required="" type="text"/>
+</div>
+<!-- Country Select -->
+<div>
+<label class="font-eyebrow-sm text-eyebrow-sm text-on-surface uppercase block mb-sm" for="country">Billing country / region</label>
+<select class="w-full bg-background border border-surface-variant rounded px-md py-[12px] font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors appearance-none bg-no-repeat bg-[right_16px_center] cursor-pointer" id="country" name="country" required="" style="background-image: url('data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\' width=\'16\' height=\'16\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23757683\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'&gt;&lt;polyline points=\'6 9 12 15 18 9\'&gt;&lt;/polyline&gt;&lt;/svg&gt;');">
+<option value="US">United States</option>
+<option value="CA">Canada</option>
+<option value="GB">United Kingdom</option>
+<option value="AU">Australia</option>
+<!-- More options would go here -->
+</select>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-primary-container text-on-primary rounded-full py-md mt-sm font-label-md text-label-md hover:bg-primary transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-container focus:ring-offset-background" type="submit">
+                        Pay $1,000
+                    </button>
+<!-- Security Info -->
+<div class="flex items-center justify-center gap-xs mt-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary">lock</span>
+<p class="font-eyebrow-sm text-eyebrow-sm text-secondary text-center tracking-normal uppercase">
+                            Payments are processed securely by Stripe. Movemental never sees your card details.
+                        </p>
+</div>
+</form>
+</div>
+<!-- Footer Trust Area -->
+<div class="mt-xl font-eyebrow-sm text-eyebrow-sm text-secondary flex flex-wrap items-center justify-center gap-x-sm gap-y-xs uppercase tracking-widest text-center">
+<span>Two-week engagement</span>
+<span aria-hidden="true">·</span>
+<span>24-hour dashboard setup</span>
+<span aria-hidden="true">·</span>
+<span>Receipt emailed</span>
+</div>
+</div>
+</main>
+</body></html>

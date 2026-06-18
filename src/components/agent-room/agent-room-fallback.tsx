@@ -1,14 +1,30 @@
+import {
+  ABOUT_SCREEN_LEDE,
+  AGENT_ROOM_NOSCRIPT,
+  HOME_LEAD_CHIP_LABEL,
+  HOME_SCREEN_COPY,
+} from "@/lib/agent-room/data/home-copy";
+import { CONCIERGE_VOICE } from "@/lib/agent-room/data/concierge-voice-lines";
+import { PATH_STAGE_LABELS, PATH_STAGE_RAIL } from "@/lib/agent-room/naming";
+
 import styles from "./ink-band.module.css";
 
 /**
  * The crawlable, no-JS spine. Server-rendered into the initial HTML; the live
- * room hides it once it boots. Copy matches the prototype home screen
- * (`movemental-agentic-front-end/pages/home.html`) — the agent re-orchestrates
- * this on the wall, it does not invent it.
+ * room hides it once it boots. Copy imports from shared SSOT modules — the agent
+ * re-orchestrates this on the wall, it does not invent it.
  */
 export function AgentRoomFallback() {
+  const pathSummary = PATH_STAGE_RAIL.map(
+    (stage) => `${stage.n} · ${stage.title}`,
+  ).join(" · ");
+
   return (
     <main className={styles.fallback}>
+      <noscript>
+        <p className={styles.fallbackNoscript}>{AGENT_ROOM_NOSCRIPT}</p>
+      </noscript>
+
       <header className={styles.fallbackMast}>
         <p className={styles.mastAudience} aria-label="Who we serve">
           Non-profits · Churches · Institutions
@@ -17,31 +33,69 @@ export function AgentRoomFallback() {
           Sign in
         </a>
       </header>
+
       <section>
-        <h1>Navigate AI without eroding the trust you spent decades earning.</h1>
+        <h1>{HOME_SCREEN_COPY.headline}</h1>
         <p>
-          We help mission-driven organizations respond to AI without losing{" "}
-          <strong>the trust their work depends on</strong>, through one ordered path:
-          get safe, experiment, form your people, then build.
+          {HOME_SCREEN_COPY.bodyBeforePhrase}{" "}
+          <strong>{HOME_SCREEN_COPY.phrase}</strong>
+          {HOME_SCREEN_COPY.bodyAfterPhrase}
         </p>
+        <p>{HOME_SCREEN_COPY.networkLine}</p>
+        <p className={styles.fallbackConcierge}>{CONCIERGE_VOICE.openingGreeting}</p>
         <p>
-          Built with and backed by movement leaders including Alan Hirsch, Brad
-          Brisco, JR Woodward, Dave Ferguson, Josh Shepherd, and others in the
-          network.
+          <a href="/agent#safety-flow">{HOME_LEAD_CHIP_LABEL}</a>
+          {" — "}
+          interactive safety-flow wizard requires JavaScript.
         </p>
       </section>
 
       <section>
         <div className={styles.nb}>The path · four steps, in order</div>
-        <h2>Safety, then Sandbox, then Training, then Tech.</h2>
+        <h2>
+          {PATH_STAGE_LABELS.safety}, then {PATH_STAGE_LABELS.sandbox}, then{" "}
+          {PATH_STAGE_LABELS.training}, then {PATH_STAGE_LABELS.tech}.
+        </h2>
+        <p>{pathSummary}</p>
         <p>
-          <b>01 · Safety</b> decide what&rsquo;s wise before the tools.{" "}
-          <b>02 · Sandbox</b> try AI against real work in a bounded place.{" "}
-          <b>03 · Training</b> form the people who&rsquo;ll steward it well.{" "}
-          <b>04 · Tech</b> build what your work needs, governed by policy
+          <b>01 · {PATH_STAGE_LABELS.safety}</b> decide what&rsquo;s wise before the tools.{" "}
+          <b>02 · {PATH_STAGE_LABELS.sandbox}</b> try AI against real work in a bounded place.{" "}
+          <b>03 · {PATH_STAGE_LABELS.training}</b> form the people who&rsquo;ll steward it well.{" "}
+          <b>04 · {PATH_STAGE_LABELS.tech}</b> build what your work needs, governed by policy
           your board can stand behind.
         </p>
       </section>
+
+      <section>
+        <div className={styles.nb}>About Movemental</div>
+        <p>{ABOUT_SCREEN_LEDE}</p>
+        <p>
+          <a href="/agent/about">Read the full About page →</a>
+        </p>
+      </section>
+
+      <section>
+        <div className={styles.nb}>Pricing</div>
+        <p>
+          Every price lives in the interactive room — open Pricing after JavaScript loads, or
+          visit <a href="/agent/about">About</a> for context on how we work.
+        </p>
+      </section>
+
+      <nav aria-label="Audience pages">
+        <div className={styles.nb}>Who we serve</div>
+        <ul className={styles.fallbackNav}>
+          <li>
+            <a href="/agent/nonprofits">Non-profits</a>
+          </li>
+          <li>
+            <a href="/agent/churches">Churches</a>
+          </li>
+          <li>
+            <a href="/agent/institutions">Institutions</a>
+          </li>
+        </ul>
+      </nav>
 
       <section>
         <div className={styles.nb}>Contact</div>

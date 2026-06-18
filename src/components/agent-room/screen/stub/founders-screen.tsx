@@ -2,6 +2,7 @@
    custom grayscale→color hover filter; see leader-band for rationale. */
 "use client";
 
+import type { FoundersScreenProps } from "@/lib/agent-room/component-props";
 import { LEADERS } from "@/lib/agent-room/data/leaders";
 import { ABOUT_FOUNDER_SLUGS, FOUNDER_PROFILES } from "@/lib/founders/content";
 import styles from "../../ink-band.module.css";
@@ -40,14 +41,21 @@ export function FoundersTeam() {
   );
 }
 
-export function FoundersScreen({ onHome }: ScreenProps) {
+export function FoundersScreen({ onHome, stream }: ScreenProps) {
+  const introLine = (stream?.props as FoundersScreenProps | undefined)?.introLine;
   return (
     <div>
       <Crumb onHome={onHome} />
       <p className={styles.eyebrow}>Who’s behind Movemental</p>
-      <p className={styles.q} style={{ marginBottom: "0.35rem" }}>
-        A small team, connected to a wider network.
-      </p>
+      {introLine ? (
+        <p className={styles.body} style={{ marginTop: "0.35rem", marginBottom: "0.85rem" }}>
+          {introLine}
+        </p>
+      ) : (
+        <p className={styles.q} style={{ marginBottom: "0.35rem" }}>
+          A small team, connected to a wider network.
+        </p>
+      )}
       <p className={styles.body} style={{ marginTop: "0.35rem", marginBottom: "1.05rem" }}>
         Movemental is built by three founders. The path was built with the leaders you
         see on the home page.

@@ -47,6 +47,7 @@ function AgentRoomView({
   onCaptureSkip,
   showHandbookCapture,
   onDockStateChange,
+  onDockExpand,
   highlightChipLabel,
 }: {
   screenNode: ReactNode;
@@ -68,6 +69,7 @@ function AgentRoomView({
   onCaptureSkip?: () => void;
   showHandbookCapture?: boolean;
   onDockStateChange?: (state: DockState) => void;
+  onDockExpand?: (reason: "user" | "send" | "chip" | "discuss" | "agent") => void;
   highlightChipLabel?: string | null;
 }) {
   const { gestureRootEl } = useAgentRoomRefs();
@@ -129,6 +131,7 @@ function AgentRoomView({
         liveThinking={isStreaming && voice.thinking}
         liveThinkingNote={voice.note}
         onDockStateChange={handleDockStateChange}
+        onDockExpand={onDockExpand}
         screenKey={screenKey}
         highlightChipLabel={highlightChipLabel}
       />
@@ -179,6 +182,7 @@ function HybridRoom() {
       onCaptureSkip={room.onCaptureSkip}
       showHandbookCapture={room.showHandbookCapture}
       onDockStateChange={room.onDockStateChange}
+      onDockExpand={room.onDockExpand}
       highlightChipLabel={highlightChipLabel}
     />
   );

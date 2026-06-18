@@ -1,0 +1,368 @@
+<!--
+  STITCH SCREEN
+  Title: SafeStart Dashboard - Engagement Overview
+  Screen ID: 1b5a6e1850884dedaf1620f6521c06e5
+  Project: 8694957891602637085
+  Downloaded: 2026-06-18T08:50:59.328Z
+-->
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Movemental ink - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&amp;family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;family=Inter:wght@100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#2f3400",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#68615c",
+                        "surface-dim": "#dcd9d9",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#444c00",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#001550",
+                        "surface-bright": "#fcf9f8",
+                        "on-secondary-fixed-variant": "#4b4641",
+                        "inverse-primary": "#b6c4ff",
+                        "on-surface": "#1c1b1b",
+                        "inverse-surface": "#313030",
+                        "tertiary-fixed": "#daee26",
+                        "surface-container-high": "#eae7e7",
+                        "secondary-fixed": "#eae1da",
+                        "on-secondary-fixed": "#1f1b17",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "background": "#fcf9f8",
+                        "tertiary-fixed-dim": "#bed100",
+                        "on-tertiary-fixed-variant": "#434b00",
+                        "surface-variant": "#e5e2e1",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c5c5d4",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "surface-container-highest": "#e5e2e1",
+                        "surface-container": "#f0eded",
+                        "secondary": "#635d58",
+                        "primary-fixed": "#dce1ff",
+                        "primary": "#002881",
+                        "on-tertiary-fixed": "#1a1e00",
+                        "on-background": "#1c1b1b",
+                        "surface-tint": "#3d58b3",
+                        "surface-container-low": "#f6f3f2",
+                        "surface": "#fcf9f8",
+                        "outline": "#757683",
+                        "primary-container": "#22409b",
+                        "secondary-container": "#e7ded7",
+                        "on-surface-variant": "#444652",
+                        "on-primary-container": "#a0b3ff",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#213f9a",
+                        "on-tertiary-container": "#afc000",
+                        "secondary-fixed-dim": "#cec5be",
+                        "paper": "#FBFAF6",
+                        "paper-card": "#FFFDF7",
+                        "ink": "#1A1A1A",
+                        "ink-gray": "#5C5651",
+                        "ink-blue": "#22409b",
+                        "hairline": "#E5DFD2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xxl": "64px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "sm": "8px",
+                        "xl": "40px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Playfair Display"],
+                        "eyebrow-sm": ["IBM Plex Mono"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "display-md": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "annotation": ["Caveat"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "eyebrow-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.18em", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "display-md": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "annotation": ["20px", { "lineHeight": "1.2", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-paper text-ink font-body-md h-screen flex overflow-hidden">
+<!-- Left Sidebar -->
+<aside class="w-72 bg-paper border-r border-hairline flex flex-col h-full flex-shrink-0">
+<div class="p-lg border-b border-hairline">
+<h1 class="font-headline-lg text-ink-blue tracking-tight mb-2">movemental</h1>
+<p class="font-eyebrow-sm text-ink-gray uppercase">Grace Community Church</p>
+</div>
+<nav class="flex-1 overflow-y-auto py-lg px-md space-y-xl">
+<!-- OVERVIEW -->
+<div>
+<h2 class="font-eyebrow-sm text-ink-gray mb-sm px-sm">OVERVIEW</h2>
+<ul class="space-y-1">
+<li>
+<a class="block px-sm py-2 font-label-md text-ink-blue border-l-2 border-ink-blue bg-white/50" href="#">Engagement</a>
+</li>
+</ul>
+</div>
+<!-- THE GUIDEBOOK -->
+<div>
+<h2 class="font-eyebrow-sm text-ink-gray mb-sm px-sm">THE GUIDEBOOK</h2>
+<ul class="space-y-1">
+<li><a class="block px-sm py-2 font-label-md text-ink-gray hover:text-ink hover:bg-black/5 rounded" href="#">01 Statement</a></li>
+<li><a class="block px-sm py-2 font-label-md text-ink-gray hover:text-ink hover:bg-black/5 rounded" href="#">02 Policy</a></li>
+<li><a class="block px-sm py-2 font-label-md text-ink-gray hover:text-ink hover:bg-black/5 rounded" href="#">03 Context</a></li>
+<li><a class="block px-sm py-2 font-label-md text-ink-gray hover:text-ink hover:bg-black/5 rounded" href="#">04 Rules</a></li>
+<li><a class="block px-sm py-2 font-label-md text-ink-gray hover:text-ink hover:bg-black/5 rounded" href="#">05 Response Plans</a></li>
+</ul>
+</div>
+<!-- WORK -->
+<div>
+<h2 class="font-eyebrow-sm text-ink-gray mb-sm px-sm">WORK</h2>
+<ul class="space-y-1">
+<li><a class="block px-sm py-2 font-label-md text-ink-gray hover:text-ink hover:bg-black/5 rounded" href="#">Search by question</a></li>
+<li><a class="block px-sm py-2 font-label-md text-ink-gray hover:text-ink hover:bg-black/5 rounded" href="#">Review &amp; comments</a></li>
+<li><a class="block px-sm py-2 font-label-md text-ink-gray hover:text-ink hover:bg-black/5 rounded" href="#">Ratification</a></li>
+</ul>
+</div>
+<!-- DELIVERABLES -->
+<div>
+<h2 class="font-eyebrow-sm text-ink-gray mb-sm px-sm">DELIVERABLES</h2>
+<ul class="space-y-1">
+<li><a class="block px-sm py-2 font-label-md text-ink-gray hover:text-ink hover:bg-black/5 rounded" href="#">Rollout supports</a></li>
+<li><a class="block px-sm py-2 font-label-md text-ink-gray hover:text-ink hover:bg-black/5 rounded" href="#">Exports</a></li>
+<li><a class="block px-sm py-2 font-label-md text-ink-gray hover:text-ink hover:bg-black/5 rounded" href="#">Roles &amp; access</a></li>
+</ul>
+</div>
+<!-- WHAT'S NEXT -->
+<div>
+<h2 class="font-eyebrow-sm text-ink-gray mb-sm px-sm">WHAT'S NEXT</h2>
+<ul class="space-y-1">
+<li><a class="block px-sm py-2 font-label-md text-ink-gray hover:text-ink hover:bg-black/5 rounded" href="#">The Path</a></li>
+</ul>
+</div>
+</nav>
+<!-- User Chip -->
+<div class="p-lg border-t border-hairline flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-paper-card border border-hairline flex items-center justify-center font-eyebrow-sm text-ink">
+                JD
+            </div>
+<div>
+<p class="font-label-md text-ink">Jane Doe</p>
+<p class="font-eyebrow-sm text-ink-gray lowercase">Lead decider</p>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto bg-paper">
+<div class="max-w-4xl mx-auto px-xxl py-xxl">
+<!-- View Head -->
+<header class="mb-xxl">
+<p class="font-eyebrow-sm text-ink-gray mb-sm">ENGAGEMENT</p>
+<h2 class="font-display-md text-ink mb-2 relative inline-block">
+                    Where you are 
+                    <span class="relative">
+                        this week.
+                        <svg class="absolute -bottom-2 left-0 w-full h-3 text-ink-blue" preserveaspectratio="none" viewbox="0 0 100 12">
+<path d="M0,5 Q50,12 100,5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+</span>
+</h2>
+<p class="font-body-md text-ink-gray mt-md">SafeStart · Week One of three · Drafting</p>
+</header>
+<!-- Progress Strip -->
+<section class="mb-xxl relative">
+<div class="absolute top-3 left-0 w-full h-px bg-hairline"></div>
+<div class="absolute top-3 left-0 w-[40%] h-px bg-ink-blue"></div>
+<div class="flex justify-between relative z-10">
+<div class="flex flex-col items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-ink-blue flex items-center justify-center"><span class="material-symbols-outlined text-white text-[14px]">check</span></div>
+<span class="font-eyebrow-sm text-ink-gray">Engagement</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-ink-blue flex items-center justify-center"><span class="material-symbols-outlined text-white text-[14px]">check</span></div>
+<span class="font-eyebrow-sm text-ink-gray">Kickoff</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-paper-card border-2 border-ink-blue flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-ink-blue"></div>
+</div>
+<span class="font-eyebrow-sm text-ink font-bold">Drafting</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-paper border border-hairline"></div>
+<span class="font-eyebrow-sm text-ink-gray opacity-50">Revision</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-paper border border-hairline"></div>
+<span class="font-eyebrow-sm text-ink-gray opacity-50">Ratification</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-paper border border-hairline"></div>
+<span class="font-eyebrow-sm text-ink-gray opacity-50">Rollout</span>
+</div>
+</div>
+</section>
+<!-- Stat Row -->
+<section class="grid grid-cols-3 gap-lg mb-xxl">
+<div class="bg-paper-card border border-hairline rounded p-lg flex flex-col justify-center">
+<span class="font-display-lg text-ink">5</span>
+<p class="font-eyebrow-sm text-ink-gray lowercase">layers · drafted</p>
+</div>
+<div class="bg-paper-card border border-hairline rounded p-lg flex flex-col justify-center">
+<span class="font-display-lg text-ink">12</span>
+<p class="font-eyebrow-sm text-ink-gray lowercase">reviewer comments · open</p>
+</div>
+<div class="bg-paper-card border border-hairline rounded p-lg flex flex-col justify-center">
+<span class="font-display-lg text-ink opacity-30">--</span>
+<p class="font-eyebrow-sm text-ink-gray lowercase">Ratification · not yet</p>
+</div>
+</section>
+<!-- Main Split -->
+<div class="grid grid-cols-12 gap-xl">
+<!-- The Guidebook Section -->
+<div class="col-span-8">
+<h3 class="font-eyebrow-sm text-ink-gray mb-md uppercase">The Guidebook</h3>
+<div class="space-y-sm">
+<!-- Card 1 -->
+<a class="block bg-paper-card border border-hairline rounded p-md hover:border-ink-blue transition-colors" href="#">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<span class="font-eyebrow-sm text-ink-gray">01</span>
+<h4 class="font-headline-lg text-ink text-xl">Statement</h4>
+</div>
+<span class="font-eyebrow-sm border border-hairline px-2 py-1 rounded-full text-ink-gray">Draft</span>
+</div>
+<p class="font-body-md text-ink-gray mb-4">The core declaration of intent and boundaries.</p>
+<div class="w-full h-1 bg-hairline rounded-full overflow-hidden">
+<div class="w-3/4 h-full bg-ink-blue"></div>
+</div>
+</a>
+<!-- Card 2 -->
+<a class="block bg-paper-card border border-hairline rounded p-md hover:border-ink-blue transition-colors" href="#">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<span class="font-eyebrow-sm text-ink-gray">02</span>
+<h4 class="font-headline-lg text-ink text-xl">Policy</h4>
+</div>
+<span class="font-eyebrow-sm border border-hairline px-2 py-1 rounded-full text-ink-gray">In review</span>
+</div>
+<p class="font-body-md text-ink-gray mb-4">Operational guidelines and standard procedures.</p>
+<div class="w-full h-1 bg-hairline rounded-full overflow-hidden">
+<div class="w-1/2 h-full bg-ink-blue"></div>
+</div>
+</a>
+<!-- Card 3 -->
+<a class="block bg-paper-card border border-hairline rounded p-md hover:border-ink-blue transition-colors" href="#">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<span class="font-eyebrow-sm text-ink-gray">03</span>
+<h4 class="font-headline-lg text-ink text-xl">Context</h4>
+</div>
+<span class="font-eyebrow-sm border border-hairline px-2 py-1 rounded-full text-ink-gray">Draft</span>
+</div>
+<p class="font-body-md text-ink-gray mb-4">Historical rationale and environmental factors.</p>
+<div class="w-full h-1 bg-hairline rounded-full overflow-hidden">
+<div class="w-1/4 h-full bg-ink-blue"></div>
+</div>
+</a>
+<!-- Card 4 -->
+<a class="block bg-paper-card border border-hairline rounded p-md hover:border-ink-blue transition-colors" href="#">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<span class="font-eyebrow-sm text-ink-gray">04</span>
+<h4 class="font-headline-lg text-ink text-xl">Rules</h4>
+</div>
+<span class="font-eyebrow-sm border border-hairline px-2 py-1 rounded-full text-ink-blue bg-ink-blue/5">Revised</span>
+</div>
+<p class="font-body-md text-ink-gray mb-4">Specific mandates and prohibitory clauses.</p>
+<div class="w-full h-1 bg-hairline rounded-full overflow-hidden">
+<div class="w-full h-full bg-ink-blue"></div>
+</div>
+</a>
+<!-- Card 5 -->
+<a class="block bg-paper-card border border-hairline rounded p-md hover:border-ink-blue transition-colors opacity-70" href="#">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<span class="font-eyebrow-sm text-ink-gray">05</span>
+<h4 class="font-headline-lg text-ink text-xl">Response Plans</h4>
+</div>
+<span class="font-eyebrow-sm border border-hairline px-2 py-1 rounded-full text-ink-gray">Pending</span>
+</div>
+<p class="font-body-md text-ink-gray mb-4">Actionable steps for incident management.</p>
+<div class="w-full h-1 bg-hairline rounded-full overflow-hidden">
+<div class="w-0 h-full bg-ink-blue"></div>
+</div>
+</a>
+</div>
+</div>
+<!-- Next Actions Sidebar -->
+<div class="col-span-4">
+<div class="bg-paper-card border border-hairline rounded p-lg sticky top-lg">
+<h3 class="font-eyebrow-sm text-ink-gray mb-lg uppercase">Next Actions</h3>
+<ul class="space-y-md">
+<li>
+<button class="w-full text-left flex items-start gap-3 group">
+<span class="material-symbols-outlined text-ink-blue mt-1">arrow_forward</span>
+<span class="font-body-md text-ink-blue group-hover:underline">Review the Rules layer (4 open comments)</span>
+</button>
+</li>
+<li>
+<button class="w-full text-left flex items-start gap-3 group">
+<span class="material-symbols-outlined text-ink-blue mt-1">arrow_forward</span>
+<span class="font-body-md text-ink-blue group-hover:underline">Confirm your kickoff notes</span>
+</button>
+</li>
+<li>
+<button class="w-full text-left flex items-start gap-3 group">
+<span class="material-symbols-outlined text-ink-blue mt-1">arrow_forward</span>
+<span class="font-body-md text-ink-blue group-hover:underline">Invite a contributor</span>
+</button>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

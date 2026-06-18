@@ -1,0 +1,71 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`beat catalog SSOT (AU-04) > exports stable question text for contract hashing 1`] = `
+[
+  {
+    "beatId": "org_kind",
+    "options": [
+      "Church",
+      "Nonprofit",
+      "Seminary or institution",
+      "Something else",
+    ],
+    "question": "First — what kind of organization are you?",
+  },
+  {
+    "beatId": "reality",
+    "options": [
+      "Yes, definitely",
+      "Probably, but I'm not sure",
+      "No, not yet",
+    ],
+    "question": "Is AI already being used in your actual work — emails, donor letters, lesson plans, sermons, grants?",
+  },
+  {
+    "beatId": "visibility",
+    "options": [
+      "Yes, all of it",
+      "Some of it",
+      "Honestly, no",
+    ],
+    "question": "Could your senior leadership, right now, name every AI tool your staff uses — and what goes into each one?",
+  },
+  {
+    "beatId": "decision",
+    "options": [
+      "Yes — written and ratified",
+      "We've talked about it",
+      "No",
+    ],
+    "question": "Has someone with the authority to decide actually decided what's okay — in writing, where staff can find it before they guess?",
+  },
+  {
+    "beatId": "trust",
+    "options": [
+      "Strengthen it",
+      "Not sure",
+      "Shake it",
+    ],
+    "question": "If a donor, parishioner, or board member learned tomorrow exactly how AI is used in your work — would it strengthen their trust, or shake it?",
+  },
+  {
+    "beatId": "refusals",
+    "options": [
+      "Names specific refusals",
+      "It's more general",
+    ],
+    "question": "Does it name specific things you refuse to do with AI — or is it general guidance?",
+  },
+  {
+    "beatId": "worry",
+    "options": [
+      "Trust with the people we serve",
+      "A data or privacy breach",
+      "Staff using it badly",
+      "Falling behind",
+      "Not sure yet",
+    ],
+    "question": "Last one — what are you most worried about getting wrong?",
+  },
+]
+`;
