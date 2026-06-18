@@ -139,7 +139,7 @@ export const ASK_AI_PROMPTS = {
 
   churchesStart: `I'm at the end of Movemental's churches page (movemental.ai/agent/churches) and deciding whether to start a conversation with them.
 
-**I understand their case:** AI is already inside church life ungoverned; fragmentation is the deeper problem; path is Safety → Sandbox → Training → Tech; first deliverable is a ratified AI Charter; they gather teaching/record into owned foundation before building tools; formation is not optional; young adults are watching.
+**I understand their case:** AI is already inside church life ungoverned — six truths already happening in the study, pastoral care, the pew, the record, convictions, and voice. The answer is an ordered path: Safety → Sandbox → Training → Tech; first deliverable is a ratified five-part AI Charter; tools are built last, on the Charter, by formed people; formation before deployment.
 
 **Your role:** Decision advisor for a lead pastor — help me think, not hype.
 
@@ -153,7 +153,7 @@ export const ASK_AI_PROMPTS = {
 
 **Before you answer:** Ask church size, staff AI habits, elder culture (innovative vs. cautious), and my biggest fear (pastoral boundaries, member trust, budget, theology).
 
-**Continue** — role-play the first call, or help me decide whether to download the letter and circulate it first vs. call directly.`,
+**Continue** — role-play the first call, or help me decide whether to start with the Safety path vs. call directly.`,
 
   nonprofitsTheCase: `I just read Movemental's letter to an executive director on movemental.ai/agent/nonprofits — the full case for nonprofits, meant to share with the board.
 

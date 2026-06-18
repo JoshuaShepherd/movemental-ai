@@ -13,7 +13,7 @@ export function ResearchHeader({ showSearch = false }: { showSearch?: boolean })
         </Link>
         <nav className={styles.nav} aria-label="Audience">
           <Link href="/nonprofits">Non-profits</Link>
-          <Link href="/churches">Churches</Link>
+          <Link href="/agent/churches">Churches</Link>
           <Link href="/institutions">Institutions</Link>
         </nav>
         <div className={styles.actions}>
