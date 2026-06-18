@@ -14,48 +14,15 @@ import { LEADERS } from "@/lib/agent-room/data/leaders";
 import styles from "../../ink-band.module.css";
 import { setPendingFlip } from "./leader-flip";
 
-/** Desktop: more compact faces visible; mobile: one full card + peek of the next. */
+/** Desktop: more compact faces visible; mobile: one full face + peek of the next. */
 const VISIBLE_DESKTOP = 5;
 const VISIBLE_WIDE = 6;
 const VISIBLE_MOBILE = 1.2;
-
-/** Portrait + card chrome (padding, meta, gaps) below the square image. */
-const CARD_CHROME_PX = 54;
-/** Carousel foot (nav + progress) below the track. */
-const CAROUSEL_FOOT_PX = 62;
-
-const CARD_WIDTH_MAX = {
-  wide: 96,
-  desktop: 92,
-  mobile: 80,
-} as const;
-const CARD_WIDTH_MIN = 56;
 
 function visibleCount(availableWidth: number): number {
   if (availableWidth >= 1100) return VISIBLE_WIDE;
   if (availableWidth >= 768) return VISIBLE_DESKTOP;
   return VISIBLE_MOBILE;
-}
-
-function maxCardWidthForViewport(availableWidth: number): number {
-  if (availableWidth >= 1100) return CARD_WIDTH_MAX.wide;
-  if (availableWidth >= 768) return CARD_WIDTH_MAX.desktop;
-  return CARD_WIDTH_MAX.mobile;
-}
-
-function heightBudgetForShell(shell: HTMLElement): number | null {
-  const stage = shell.closest("[data-agent-screen]") as HTMLElement | null;
-  if (!stage) return null;
-
-  const stageStyle = getComputedStyle(stage);
-  const stageHeight =
-    stage.clientHeight -
-    (parseFloat(stageStyle.paddingTop) || 0) -
-    (parseFloat(stageStyle.paddingBottom) || 0);
-  const shellTop = shell.getBoundingClientRect().top - stage.getBoundingClientRect().top;
-  const belowTrack = CAROUSEL_FOOT_PX + 6;
-
-  return stageHeight - shellTop - belowTrack;
 }
 
 function selectLeader(i: number, onSelect: (i: number) => void) {
@@ -79,8 +46,8 @@ export interface LeaderCarouselProps {
 }
 
 /**
- * Rounded-card proof carousel (Ink Band pattern D). Scroll-snap track with
- * prev/next controls and a position pill. Reusable for founders band (P3).
+ * Circle-avatar proof carousel for the home trusted-voices band. Scroll-snap
+ * track with prev/next controls and a position pill.
  */
 export function LeaderCarousel({
   order,
@@ -91,41 +58,31 @@ export function LeaderCarousel({
   const shellRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
-  const [geom, setGeom] = useState({ cardWidth: 0, gap: 14, maxIndex: 0, visible: VISIBLE_DESKTOP });
+  const [geom, setGeom] = useState({ step: 0, maxIndex: 0 });
 
   const measure = useCallback(() => {
     const shell = shellRef.current;
     const track = trackRef.current;
     if (!shell || !track) return;
 
+    const items = track.children;
+    const first = items[0] as HTMLElement | undefined;
+    const second = items[1] as HTMLElement | undefined;
+    const itemWidth = first?.offsetWidth ?? 0;
+    const step =
+      second && first ? second.offsetLeft - first.offsetLeft : itemWidth;
+    if (step <= 0) return;
+
     const available = shell.clientWidth;
     const visible = visibleCount(available);
-    const gap = 10;
-    const widthBased = Math.floor((available - gap * (Math.ceil(visible) - 1)) / visible);
-
-    let maxCard = maxCardWidthForViewport(available);
-    const heightBudget = heightBudgetForShell(shell);
-    if (heightBudget != null && heightBudget > 0) {
-      const maxFromHeight = Math.floor(heightBudget - CARD_CHROME_PX);
-      if (maxFromHeight > 0) {
-        maxCard = Math.min(maxCard, maxFromHeight);
-      }
-    }
-
-    const cardWidth = Math.max(CARD_WIDTH_MIN, Math.min(widthBased, maxCard));
-    const step = cardWidth + gap;
     const maxIndex = Math.max(0, order.length - Math.floor(visible));
     const resolvedMax = Math.min(maxIndex, order.length - 1);
 
     setGeom((prev) => {
-      if (
-        prev.cardWidth === cardWidth &&
-        prev.maxIndex === resolvedMax &&
-        prev.visible === visible
-      ) {
+      if (prev.step === step && prev.maxIndex === resolvedMax) {
         return prev;
       }
-      return { cardWidth, gap, maxIndex: resolvedMax, visible };
+      return { step, maxIndex: resolvedMax };
     });
     setIndex((i) => Math.min(i, resolvedMax));
   }, [order.length]);
@@ -147,16 +104,16 @@ export function LeaderCarousel({
   const scrollToIndex = useCallback(
     (next: number) => {
       const track = trackRef.current;
-      if (!track) return;
+      if (!track || geom.step <= 0) return;
       const clamped = Math.max(0, Math.min(geom.maxIndex, next));
-      const offset = clamped * (geom.cardWidth + geom.gap);
+      const offset = clamped * geom.step;
       track.scrollTo({
         left: offset,
         behavior: prefersReducedMotion() ? "auto" : "smooth",
       });
       setIndex(clamped);
     },
-    [geom.cardWidth, geom.gap, geom.maxIndex],
+    [geom.step, geom.maxIndex],
   );
 
   useEffect(() => {
@@ -164,15 +121,14 @@ export function LeaderCarousel({
     if (!track) return;
 
     const onScroll = () => {
-      const step = geom.cardWidth + geom.gap;
-      if (step <= 0) return;
-      const i = Math.round(track.scrollLeft / step);
+      if (geom.step <= 0) return;
+      const i = Math.round(track.scrollLeft / geom.step);
       setIndex(Math.max(0, Math.min(geom.maxIndex, i)));
     };
 
     track.addEventListener("scroll", onScroll, { passive: true });
     return () => track.removeEventListener("scroll", onScroll);
-  }, [geom.cardWidth, geom.gap, geom.maxIndex]);
+  }, [geom.step, geom.maxIndex]);
 
   const atStart = index <= 0;
   const atEnd = index >= geom.maxIndex;
@@ -187,45 +143,30 @@ export function LeaderCarousel({
       aria-label={ariaLabel}
     >
       <div className={styles.carouselShell} ref={shellRef}>
-        <div
-          className={styles.leaderCarouselTrack}
-          ref={trackRef}
-          style={
-            geom.cardWidth > 0
-              ? ({
-                  "--leader-card-w": `${geom.cardWidth}px`,
-                  "--leader-gap": `${geom.gap}px`,
-                } as CSSProperties)
-              : undefined
-          }
-        >
+        <div className={styles.leaderCarouselTrack} ref={trackRef}>
           {order.map((leaderIndex, pos) => {
             const leader = LEADERS[leaderIndex]!;
             return (
-              <div
+              <button
                 key={leaderIndex}
-                className={styles.leaderCard}
+                type="button"
+                className={styles.carItem}
                 role="group"
                 aria-roledescription="slide"
                 aria-label={`${leader.name}, ${leader.cred}`}
                 style={{ "--i": pos } as CSSProperties}
+                data-i={leaderIndex}
+                onClick={() => selectLeader(leaderIndex, onSelect)}
+                disabled={disabled}
               >
-                <button
-                  type="button"
-                  className={styles.leaderCardBtn}
-                  data-i={leaderIndex}
-                  onClick={() => selectLeader(leaderIndex, onSelect)}
-                  disabled={disabled}
-                >
-                  <span className={styles.leaderCardPortrait} id={`ph-${leaderIndex}`}>
-                    <img src={leader.img} alt="" loading="lazy" decoding="async" />
-                  </span>
-                  <span className={styles.leaderCardMeta}>
-                    <span className={styles.faceName}>{leader.name}</span>
-                    <span className={styles.faceCred}>{leader.cred}</span>
-                  </span>
-                </button>
-              </div>
+                <span className={styles.carPortrait} id={`ph-${leaderIndex}`}>
+                  <img src={leader.img} alt="" loading="lazy" decoding="async" />
+                </span>
+                <span>
+                  <span className={styles.faceName}>{leader.name}</span>
+                  <span className={styles.faceCred}>{leader.cred}</span>
+                </span>
+              </button>
             );
           })}
         </div>

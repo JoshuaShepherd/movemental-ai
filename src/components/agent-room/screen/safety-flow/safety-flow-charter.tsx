@@ -51,7 +51,7 @@ export function SafetyFlowCharter({
           </button>
         ))}
       </div>
-      <p className={`${styles.spreadHint} ${styles.flowSpreadHint}`}>{SAFETY_FLOW_CHARTER_COPY.spreadHint}</p>
+      <p className={styles.spreadHint}>{SAFETY_FLOW_CHARTER_COPY.spreadHint}</p>
       <div className={styles.flowCenter}>
         <button type="button" className={styles.flowBtn} disabled={disabled} onClick={onNext}>
           {SAFETY_FLOW_CHARTER_COPY.cta}

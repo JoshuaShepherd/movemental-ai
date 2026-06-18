@@ -64,9 +64,10 @@ export function resolveWorkspaceCourseEntitlements(settings: unknown): Workspace
   return { ...WORKSPACE_COURSES_NONE };
 }
 
-export function workspaceSandboxNavLabel(courses: WorkspaceCourseEntitlements): "Sandbox" {
-  void courses;
-  return "Sandbox";
+export function workspaceSandboxNavLabel(
+  courses: WorkspaceCourseEntitlements,
+): "Sandbox" | "SandboxLive" {
+  return courses.safety ? "SandboxLive" : "Sandbox";
 }
 
 /** Dashboard hub + copy: SandboxLive-first layout (implementation org, no Safety lane). */

@@ -347,8 +347,12 @@ export async function resolveWorkspaceCourseEntitlementsForSessionUser(
 }
 
 export async function isUserStaff(userId: string): Promise<boolean> {
-  const row = await db.select().from(staffUsers).where(eq(staffUsers.user_id, userId)).limit(1);
-  return row.length > 0;
+  const [row] = await db
+    .select({ is_active: staffUsers.is_active })
+    .from(staffUsers)
+    .where(eq(staffUsers.user_id, userId))
+    .limit(1);
+  return Boolean(row?.is_active);
 }
 
 export async function touchOnboardingStartedAndWelcomeEmail(params: {

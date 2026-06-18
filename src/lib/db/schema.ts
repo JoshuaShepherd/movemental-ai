@@ -3340,6 +3340,8 @@ export const staffUsers = pgTable("staff_users", {
   user_id: uuid("user_id").primaryKey().references(() => userProfiles.id, { onDelete: "cascade" }),
   granted_at: timestamp("granted_at", { withTimezone: true, mode: "string" }).notNull().defaultNow(),
   granted_by: uuid("granted_by").references(() => userProfiles.id),
+  is_active: boolean("is_active").notNull().default(true),
+  staff_role: text("staff_role").notNull().default("staff"),
 });
 
 // ---------------------------------------------------------------------------
@@ -3940,6 +3942,52 @@ export const movementLeaderPublicPageVersions = pgTable(
     ),
   ],
 );
+
+// ---------------------------------------------------------------------------
+// Onbuilding workspace — leader-scoped profile sections (shared with visual-editor)
+// Migration: movemental-visual-editor-main/supabase/migrations/20260617120000_onbuilding_workspace.sql
+// ---------------------------------------------------------------------------
+
+export const onbuildingProfileSections = pgTable(
+  "onbuilding_profile_sections",
+  {
+    id: id("id"),
+    movement_leader_id: uuid("movement_leader_id")
+      .notNull()
+      .references(() => movementLeaders.id, { onDelete: "cascade" }),
+    section_key: text("section_key").notNull(),
+    ordinal: integer("ordinal").notNull().default(0),
+    title: text("title").notNull(),
+    body_md: text("body_md").notNull().default(""),
+    source_section_key: text("source_section_key"),
+    status: text("status").notNull().default("draft"),
+    last_edited_by: uuid("last_edited_by").references(() => userProfiles.id),
+    last_edited_at: timestamp("last_edited_at", { withTimezone: true, mode: "string" }),
+    ratified_by: uuid("ratified_by").references(() => userProfiles.id),
+    ratified_at: timestamp("ratified_at", { withTimezone: true, mode: "string" }),
+    created_at: createdAt("created_at"),
+    updated_at: updatedAt("updated_at"),
+  },
+  (t) => [
+    unique("onbuilding_profile_sections_leader_section_key_unique").on(
+      t.movement_leader_id,
+      t.section_key,
+    ),
+  ],
+);
+
+export const onbuildingRatifications = pgTable("onbuilding_ratifications", {
+  id: id("id"),
+  movement_leader_id: uuid("movement_leader_id")
+    .notNull()
+    .references(() => movementLeaders.id, { onDelete: "cascade" }),
+  scope: text("scope").notNull(),
+  section_key: text("section_key"),
+  snapshot_md: text("snapshot_md"),
+  ratified_by: uuid("ratified_by").references(() => userProfiles.id),
+  ratified_at: timestamp("ratified_at", { withTimezone: true, mode: "string" }).notNull().defaultNow(),
+  note: text("note"),
+});
 
 // ---------------------------------------------------------------------------
 // SandboxLive — staff AI readiness intake.

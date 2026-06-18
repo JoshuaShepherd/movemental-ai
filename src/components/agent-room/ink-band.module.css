@@ -333,9 +333,6 @@
 .sheet.home .leaderCarousel {
   min-height: 0;
 }
-.sheet.home .leaderCardPortrait {
-  max-height: min(96px, 22vh);
-}
 @media (min-width: 62rem) {
   .sheet {
     max-width: 68rem;
@@ -648,7 +645,7 @@
   }
 }
 
-/* ===== leader carousel (home trusted voices) — rounded-card scroll-snap ===== */
+/* ===== leader carousel (home trusted voices) — circle-avatar scroll-snap ===== */
 .bandHead {
   display: flex;
   align-items: flex-start;
@@ -709,7 +706,7 @@
 }
 .leaderCarouselTrack {
   display: flex;
-  gap: var(--leader-gap, 0.9rem);
+  gap: 0.9rem;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
@@ -722,49 +719,42 @@
 .leaderCarouselTrack::-webkit-scrollbar {
   display: none;
 }
-.leaderCard {
-  flex: 0 0 var(--leader-card-w, 140px);
-  width: var(--leader-card-w, 140px);
+.carItem {
+  flex: 0 0 auto;
+  width: 88px;
   scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  text-align: center;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
   animation: faceIn 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   animation-delay: calc(var(--i, 0) * 32ms + 0.15s);
 }
-.leaderCardBtn {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 0.55rem;
-  text-align: left;
-  cursor: pointer;
-  background: var(--color-ink-band-paper);
+.carItem:disabled {
+  cursor: default;
+}
+.carPortrait {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
   border: 1px solid var(--color-ink-band-border);
-  border-radius: 16px;
-  padding: 0.65rem;
-  font: inherit;
+  background: var(--color-ink-band-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition:
     border-color 0.25s,
     box-shadow 0.25s,
     transform 0.25s;
 }
-.leaderCardBtn:disabled {
-  cursor: default;
-}
-.leaderCardBtn:hover:not(:disabled),
-.leaderCardBtn:focus-visible {
-  border-color: var(--color-ink-band-ink);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 24px -16px rgba(26, 26, 26, 0.45);
-}
-.leaderCardPortrait {
-  width: 100%;
-  aspect-ratio: 1;
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--color-ink-band-surface);
-  display: block;
-}
-.leaderCardPortrait img {
+.carPortrait img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -772,15 +762,15 @@
   filter: grayscale(1) sepia(0.32) brightness(1.03) contrast(1.04);
   transition: filter 0.35s;
 }
-.leaderCardBtn:hover:not(:disabled) .leaderCardPortrait img,
-.leaderCardBtn:focus-visible .leaderCardPortrait img {
-  filter: none;
+.carItem:hover:not(:disabled) .carPortrait,
+.carItem:focus-visible .carPortrait {
+  border-color: var(--color-ink-band-ink);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px -14px rgba(26, 26, 26, 0.45);
 }
-.leaderCardMeta {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  min-width: 0;
+.carItem:hover:not(:disabled) .carPortrait img,
+.carItem:focus-visible .carPortrait img {
+  filter: none;
 }
 .leaderCarouselFoot {
   margin-top: 0.65rem;
@@ -803,6 +793,33 @@
   background: var(--color-ink-band-ink);
   transition: width 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
+@media (min-width: 1200px) {
+  .carItem {
+    width: 100px;
+  }
+  .carPortrait {
+    width: 76px;
+    height: 76px;
+  }
+}
+@media (max-width: 560px) {
+  .carItem {
+    width: 78px;
+  }
+  .carPortrait {
+    width: 56px;
+    height: 56px;
+  }
+}
+@media (max-width: 380px) {
+  .carItem {
+    width: 68px;
+  }
+  .carPortrait {
+    width: 48px;
+    height: 48px;
+  }
+}
 
 @media (max-height: 760px) {
   .sheet.home h1 {
@@ -819,14 +836,6 @@
   }
   .bandSubline {
     font-size: 0.76rem;
-  }
-  .leaderCardBtn {
-    padding: 0.5rem;
-    gap: 0.4rem;
-    border-radius: 14px;
-  }
-  .leaderCardPortrait {
-    border-radius: 10px;
   }
   .leaderCarouselFoot {
     margin-top: 0.45rem;
@@ -1513,6 +1522,10 @@
   letter-spacing: 0.08em;
   color: var(--color-ink-band-ink-muted);
   margin: 0.85rem 0 0;
+  max-width: 48ch;
+  margin-inline: auto;
+  text-align: center;
+  font-style: italic;
 }
 .wayLead .wayCta {
   position: relative;
@@ -1857,7 +1870,7 @@ button.wayCtaPaid {
   .opt,
   .rbStage,
   .face,
-  .leaderCard,
+  .carItem,
   .beatFill {
     animation: none !important;
   }
@@ -2169,6 +2182,12 @@ button.wayCtaPaid {
 /* ===== plan cards (free vs paid preview) ===== */
 .secPlans {
   margin-top: 0;
+}
+
+.secPlans .honest {
+  max-width: 54ch;
+  margin-inline: auto;
+  text-align: center;
 }
 .plansPreview {
   font-family: var(--font-ink-display);
@@ -2733,6 +2752,8 @@ button.wayCtaPaid {
   padding-top: 1.5rem;
   border-top: 1px solid var(--color-ink-band-border);
   max-width: 54ch;
+  margin-inline: auto;
+  text-align: center;
 }
 
 /* Expanded conversation — screen stays mounted behind scrim (SSOT I6). */
@@ -5736,10 +5757,6 @@ button.wayCtaPaid {
 .flowCharterRow .docCardFold {
   scroll-snap-align: center;
 }
-.flowSpreadHint {
-  text-align: center;
-  font-style: italic;
-}
 .flowForkWays {
   margin: 1.8rem 0 1.4rem;
 }
@@ -5810,6 +5827,7 @@ button.wayCtaPaid {
 .flowNoUrgency {
   max-width: 40rem;
   margin-top: 1.4rem;
+  margin-inline: auto;
 }
 .flowQuietLink {
   color: var(--color-ink-band-blue);

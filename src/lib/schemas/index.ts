@@ -1,5 +1,5 @@
 // Auto-generated Zod schemas from Drizzle schema
-// Generated at: 2026-06-18T08:19:53.707Z
+// Generated at: 2026-06-18T13:40:10.547Z
 // Do not edit manually - regenerate with: pnpm generate:schemas
 
 import { z } from "zod";
@@ -203,9 +203,19 @@ import {
   futurePlans,
   futurePlanVersions,
   futurePlanRatifications,
+  safetyGuidebooks,
+  safetyEngagements,
   safetyArtifacts,
   safetyArtifactVersions,
   safetyArtifactPublications,
+  safetyLayerChecklistItems,
+  safetyArtifactComments,
+  safetyGuidebookSignatures,
+  safetyGuidebookRatifications,
+  safetyRolloutArtifacts,
+  safetyEnrollments,
+  safetyQuestions,
+  safetyRoleAccess,
   stageTransitions,
   movementLeaders,
   movementLeaderGenerated,
@@ -214,6 +224,8 @@ import {
   movementLeaderApplications,
   movementLeaderPublicPages,
   movementLeaderPublicPageVersions,
+  onbuildingProfileSections,
+  onbuildingRatifications,
   sandboxStaffReadinessSubmissions,
   sandboxStaffReadinessInvites,
   sandboxStaffReadinessAnonymousSubmissions,
@@ -2943,6 +2955,34 @@ export type FuturePlanRatificationsCreate = z.infer<typeof FuturePlanRatificatio
 export type FuturePlanRatificationsUpdate = z.infer<typeof FuturePlanRatificationsUpdateSchema>;
 export type FuturePlanRatificationsFilters = z.infer<typeof FuturePlanRatificationsFiltersSchema>;
 
+// SafetyGuidebooks
+export const SafetyGuidebooksSelectSchema = createSelectSchema(safetyGuidebooks);
+export const SafetyGuidebooksInsertSchema = createInsertSchema(safetyGuidebooks);
+export const SafetyGuidebooksUpdateSchema = createUpdateSchema(safetyGuidebooks);
+export const SafetyGuidebooksFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  status: z.string().optional(),
+});
+
+export type SafetyGuidebooks = z.infer<typeof SafetyGuidebooksSelectSchema>;
+export type SafetyGuidebooksCreate = z.infer<typeof SafetyGuidebooksInsertSchema>;
+export type SafetyGuidebooksUpdate = z.infer<typeof SafetyGuidebooksUpdateSchema>;
+export type SafetyGuidebooksFilters = z.infer<typeof SafetyGuidebooksFiltersSchema>;
+
+// SafetyEngagements
+export const SafetyEngagementsSelectSchema = createSelectSchema(safetyEngagements);
+export const SafetyEngagementsInsertSchema = createInsertSchema(safetyEngagements);
+export const SafetyEngagementsUpdateSchema = createUpdateSchema(safetyEngagements);
+export const SafetyEngagementsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  status: z.string().optional(),
+});
+
+export type SafetyEngagements = z.infer<typeof SafetyEngagementsSelectSchema>;
+export type SafetyEngagementsCreate = z.infer<typeof SafetyEngagementsInsertSchema>;
+export type SafetyEngagementsUpdate = z.infer<typeof SafetyEngagementsUpdateSchema>;
+export type SafetyEngagementsFilters = z.infer<typeof SafetyEngagementsFiltersSchema>;
+
 // SafetyArtifacts
 export const SafetyArtifactsSelectSchema = createSelectSchema(safetyArtifacts);
 export const SafetyArtifactsInsertSchema = createInsertSchema(safetyArtifacts);
@@ -2982,6 +3022,114 @@ export type SafetyArtifactPublications = z.infer<typeof SafetyArtifactPublicatio
 export type SafetyArtifactPublicationsCreate = z.infer<typeof SafetyArtifactPublicationsInsertSchema>;
 export type SafetyArtifactPublicationsUpdate = z.infer<typeof SafetyArtifactPublicationsUpdateSchema>;
 export type SafetyArtifactPublicationsFilters = z.infer<typeof SafetyArtifactPublicationsFiltersSchema>;
+
+// SafetyLayerChecklistItems
+export const SafetyLayerChecklistItemsSelectSchema = createSelectSchema(safetyLayerChecklistItems);
+export const SafetyLayerChecklistItemsInsertSchema = createInsertSchema(safetyLayerChecklistItems);
+export const SafetyLayerChecklistItemsUpdateSchema = createUpdateSchema(safetyLayerChecklistItems);
+export const SafetyLayerChecklistItemsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type SafetyLayerChecklistItems = z.infer<typeof SafetyLayerChecklistItemsSelectSchema>;
+export type SafetyLayerChecklistItemsCreate = z.infer<typeof SafetyLayerChecklistItemsInsertSchema>;
+export type SafetyLayerChecklistItemsUpdate = z.infer<typeof SafetyLayerChecklistItemsUpdateSchema>;
+export type SafetyLayerChecklistItemsFilters = z.infer<typeof SafetyLayerChecklistItemsFiltersSchema>;
+
+// SafetyArtifactComments
+export const SafetyArtifactCommentsSelectSchema = createSelectSchema(safetyArtifactComments);
+export const SafetyArtifactCommentsInsertSchema = createInsertSchema(safetyArtifactComments);
+export const SafetyArtifactCommentsUpdateSchema = createUpdateSchema(safetyArtifactComments);
+export const SafetyArtifactCommentsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  status: z.string().optional(),
+});
+
+export type SafetyArtifactComments = z.infer<typeof SafetyArtifactCommentsSelectSchema>;
+export type SafetyArtifactCommentsCreate = z.infer<typeof SafetyArtifactCommentsInsertSchema>;
+export type SafetyArtifactCommentsUpdate = z.infer<typeof SafetyArtifactCommentsUpdateSchema>;
+export type SafetyArtifactCommentsFilters = z.infer<typeof SafetyArtifactCommentsFiltersSchema>;
+
+// SafetyGuidebookSignatures
+export const SafetyGuidebookSignaturesSelectSchema = createSelectSchema(safetyGuidebookSignatures);
+export const SafetyGuidebookSignaturesInsertSchema = createInsertSchema(safetyGuidebookSignatures);
+export const SafetyGuidebookSignaturesUpdateSchema = createUpdateSchema(safetyGuidebookSignatures);
+export const SafetyGuidebookSignaturesFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  status: z.string().optional(),
+});
+
+export type SafetyGuidebookSignatures = z.infer<typeof SafetyGuidebookSignaturesSelectSchema>;
+export type SafetyGuidebookSignaturesCreate = z.infer<typeof SafetyGuidebookSignaturesInsertSchema>;
+export type SafetyGuidebookSignaturesUpdate = z.infer<typeof SafetyGuidebookSignaturesUpdateSchema>;
+export type SafetyGuidebookSignaturesFilters = z.infer<typeof SafetyGuidebookSignaturesFiltersSchema>;
+
+// SafetyGuidebookRatifications
+export const SafetyGuidebookRatificationsSelectSchema = createSelectSchema(safetyGuidebookRatifications);
+export const SafetyGuidebookRatificationsInsertSchema = createInsertSchema(safetyGuidebookRatifications);
+export const SafetyGuidebookRatificationsUpdateSchema = createUpdateSchema(safetyGuidebookRatifications);
+export const SafetyGuidebookRatificationsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type SafetyGuidebookRatifications = z.infer<typeof SafetyGuidebookRatificationsSelectSchema>;
+export type SafetyGuidebookRatificationsCreate = z.infer<typeof SafetyGuidebookRatificationsInsertSchema>;
+export type SafetyGuidebookRatificationsUpdate = z.infer<typeof SafetyGuidebookRatificationsUpdateSchema>;
+export type SafetyGuidebookRatificationsFilters = z.infer<typeof SafetyGuidebookRatificationsFiltersSchema>;
+
+// SafetyRolloutArtifacts
+export const SafetyRolloutArtifactsSelectSchema = createSelectSchema(safetyRolloutArtifacts);
+export const SafetyRolloutArtifactsInsertSchema = createInsertSchema(safetyRolloutArtifacts);
+export const SafetyRolloutArtifactsUpdateSchema = createUpdateSchema(safetyRolloutArtifacts);
+export const SafetyRolloutArtifactsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  status: z.string().optional(),
+});
+
+export type SafetyRolloutArtifacts = z.infer<typeof SafetyRolloutArtifactsSelectSchema>;
+export type SafetyRolloutArtifactsCreate = z.infer<typeof SafetyRolloutArtifactsInsertSchema>;
+export type SafetyRolloutArtifactsUpdate = z.infer<typeof SafetyRolloutArtifactsUpdateSchema>;
+export type SafetyRolloutArtifactsFilters = z.infer<typeof SafetyRolloutArtifactsFiltersSchema>;
+
+// SafetyEnrollments
+export const SafetyEnrollmentsSelectSchema = createSelectSchema(safetyEnrollments);
+export const SafetyEnrollmentsInsertSchema = createInsertSchema(safetyEnrollments);
+export const SafetyEnrollmentsUpdateSchema = createUpdateSchema(safetyEnrollments);
+export const SafetyEnrollmentsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  status: z.string().optional(),
+});
+
+export type SafetyEnrollments = z.infer<typeof SafetyEnrollmentsSelectSchema>;
+export type SafetyEnrollmentsCreate = z.infer<typeof SafetyEnrollmentsInsertSchema>;
+export type SafetyEnrollmentsUpdate = z.infer<typeof SafetyEnrollmentsUpdateSchema>;
+export type SafetyEnrollmentsFilters = z.infer<typeof SafetyEnrollmentsFiltersSchema>;
+
+// SafetyQuestions
+export const SafetyQuestionsSelectSchema = createSelectSchema(safetyQuestions);
+export const SafetyQuestionsInsertSchema = createInsertSchema(safetyQuestions);
+export const SafetyQuestionsUpdateSchema = createUpdateSchema(safetyQuestions);
+export const SafetyQuestionsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type SafetyQuestions = z.infer<typeof SafetyQuestionsSelectSchema>;
+export type SafetyQuestionsCreate = z.infer<typeof SafetyQuestionsInsertSchema>;
+export type SafetyQuestionsUpdate = z.infer<typeof SafetyQuestionsUpdateSchema>;
+export type SafetyQuestionsFilters = z.infer<typeof SafetyQuestionsFiltersSchema>;
+
+// SafetyRoleAccess
+export const SafetyRoleAccessSelectSchema = createSelectSchema(safetyRoleAccess);
+export const SafetyRoleAccessInsertSchema = createInsertSchema(safetyRoleAccess);
+export const SafetyRoleAccessUpdateSchema = createUpdateSchema(safetyRoleAccess);
+export const SafetyRoleAccessFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type SafetyRoleAccess = z.infer<typeof SafetyRoleAccessSelectSchema>;
+export type SafetyRoleAccessCreate = z.infer<typeof SafetyRoleAccessInsertSchema>;
+export type SafetyRoleAccessUpdate = z.infer<typeof SafetyRoleAccessUpdateSchema>;
+export type SafetyRoleAccessFilters = z.infer<typeof SafetyRoleAccessFiltersSchema>;
 
 // StageTransitions
 export const StageTransitionsSelectSchema = createSelectSchema(stageTransitions);
@@ -3088,6 +3236,33 @@ export type MovementLeaderPublicPageVersions = z.infer<typeof MovementLeaderPubl
 export type MovementLeaderPublicPageVersionsCreate = z.infer<typeof MovementLeaderPublicPageVersionsInsertSchema>;
 export type MovementLeaderPublicPageVersionsUpdate = z.infer<typeof MovementLeaderPublicPageVersionsUpdateSchema>;
 export type MovementLeaderPublicPageVersionsFilters = z.infer<typeof MovementLeaderPublicPageVersionsFiltersSchema>;
+
+// OnbuildingProfileSections
+export const OnbuildingProfileSectionsSelectSchema = createSelectSchema(onbuildingProfileSections);
+export const OnbuildingProfileSectionsInsertSchema = createInsertSchema(onbuildingProfileSections);
+export const OnbuildingProfileSectionsUpdateSchema = createUpdateSchema(onbuildingProfileSections);
+export const OnbuildingProfileSectionsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+  status: z.string().optional(),
+});
+
+export type OnbuildingProfileSections = z.infer<typeof OnbuildingProfileSectionsSelectSchema>;
+export type OnbuildingProfileSectionsCreate = z.infer<typeof OnbuildingProfileSectionsInsertSchema>;
+export type OnbuildingProfileSectionsUpdate = z.infer<typeof OnbuildingProfileSectionsUpdateSchema>;
+export type OnbuildingProfileSectionsFilters = z.infer<typeof OnbuildingProfileSectionsFiltersSchema>;
+
+// OnbuildingRatifications
+export const OnbuildingRatificationsSelectSchema = createSelectSchema(onbuildingRatifications);
+export const OnbuildingRatificationsInsertSchema = createInsertSchema(onbuildingRatifications);
+export const OnbuildingRatificationsUpdateSchema = createUpdateSchema(onbuildingRatifications);
+export const OnbuildingRatificationsFiltersSchema = BaseFiltersSchema.extend({
+  id: z.string().uuid().optional(),
+});
+
+export type OnbuildingRatifications = z.infer<typeof OnbuildingRatificationsSelectSchema>;
+export type OnbuildingRatificationsCreate = z.infer<typeof OnbuildingRatificationsInsertSchema>;
+export type OnbuildingRatificationsUpdate = z.infer<typeof OnbuildingRatificationsUpdateSchema>;
+export type OnbuildingRatificationsFilters = z.infer<typeof OnbuildingRatificationsFiltersSchema>;
 
 // SandboxStaffReadinessSubmissions
 export const SandboxStaffReadinessSubmissionsSelectSchema = createSelectSchema(sandboxStaffReadinessSubmissions);

@@ -65,6 +65,9 @@
   font-size: 0.64rem;
   letter-spacing: 0.06em;
   color: var(--color-ink-band-ink-muted);
+  max-width: 52ch;
+  margin-inline: auto;
+  text-align: center;
 }
 
 /* ---- evidence cards ---- */
@@ -290,6 +293,8 @@
   font-size: 0.95rem;
   color: var(--color-ink-band-ink-muted);
   max-width: 52ch;
+  margin-inline: auto;
+  text-align: center;
 }
 
 .underlineWrap {
@@ -561,6 +566,8 @@
   line-height: 1.2;
   color: var(--color-ink-band-paper);
   max-width: 24ch;
+  margin-inline: auto;
+  text-align: center;
 }
 
 .slideBody {
@@ -569,6 +576,8 @@
   line-height: 1.6;
   color: color-mix(in srgb, var(--color-ink-band-hero-ink) 78%, transparent);
   max-width: 48ch;
+  margin-inline: auto;
+  text-align: center;
 }
 
 .slideBodyBold {

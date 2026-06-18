@@ -479,6 +479,8 @@
 .cap {
   margin-top: 1.3rem;
   max-width: 60ch;
+  margin-inline: auto;
+  text-align: center;
   font-size: 1rem;
   line-height: 1.5;
   color: var(--color-ink-band-ink-muted);

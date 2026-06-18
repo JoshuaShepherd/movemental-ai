@@ -1,5 +1,5 @@
 // Auto-generated service index
-// Generated at: 2026-06-18T08:19:54.906Z
+// Generated at: 2026-06-18T13:40:11.695Z
 // Do not edit manually - regenerate with: pnpm generate:services
 
 export { SimplifiedService } from "./base.service";
@@ -203,9 +203,19 @@ export * from "./cohort-members.service";
 export * from "./future-plans.service";
 export * from "./future-plan-versions.service";
 export * from "./future-plan-ratifications.service";
+export * from "./safety-guidebooks.service";
+export * from "./safety-engagements.service";
 export * from "./safety-artifacts.service";
 export * from "./safety-artifact-versions.service";
 export * from "./safety-artifact-publications.service";
+export * from "./safety-layer-checklist-items.service";
+export * from "./safety-artifact-comments.service";
+export * from "./safety-guidebook-signatures.service";
+export * from "./safety-guidebook-ratifications.service";
+export * from "./safety-rollout-artifacts.service";
+export * from "./safety-enrollments.service";
+export * from "./safety-questions.service";
+export * from "./safety-role-access.service";
 export * from "./stage-transitions.service";
 export * from "./movement-leaders.service";
 export * from "./movement-leader-generated.service";
@@ -214,6 +224,8 @@ export * from "./movement-leader-signings.service";
 export * from "./movement-leader-applications.service";
 export * from "./movement-leader-public-pages.service";
 export * from "./movement-leader-public-page-versions.service";
+export * from "./onbuilding-profile-sections.service";
+export * from "./onbuilding-ratifications.service";
 export * from "./sandbox-staff-readiness-submissions.service";
 export * from "./sandbox-staff-readiness-invites.service";
 export * from "./sandbox-staff-readiness-anonymous-submissions.service";
