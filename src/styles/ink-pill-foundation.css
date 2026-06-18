@@ -6,6 +6,10 @@
     --ink-pill-line-mono: 1;
     --ink-pill-min-h: 2rem;
     --ink-pill-min-h-touch: 2.75rem;
+    --ink-pill-pad-y: 0.42rem;
+    --ink-pill-pad-x: 0.92rem;
+    --ink-pill-font-size: 0.8125rem;
+    --ink-pill-gap: 0.45rem;
     --ink-composer-send-size: 2.75rem;
     --ink-composer-field-pad-y: 0.5rem;
     --ink-composer-field-pad-x-start: 1.15rem;

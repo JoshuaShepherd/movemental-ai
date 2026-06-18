@@ -25,8 +25,9 @@ export const SAFETY_FLOW_QUESTION = {
   eyebrow: "Your next AI step · one question",
   title: "Let's find your simplest next step.",
   sub: "One question. Then we'll show you exactly where you stand, and what to do about it.",
+  footnoteLabel: "The question",
   footnote:
-    "The question: has your team agreed, in writing, on what you will and won't do with AI, and has your board ratified it?",
+    "Has your team agreed, in writing, on what you will and won't do with AI, and has your board ratified it?",
   options: [
     { label: "No, we haven't decided anything yet.", answer: "start" },
     { label: "We've talked about it, but nothing's written down.", answer: "start" },

@@ -39,6 +39,8 @@ export type SuggestChipPayload = {
 
 export type AgentStreamCallbacks = {
   onTextDelta: (assistantSoFar: string) => void;
+  /** Model streamed preamble then invoked tools — discard partial prose before the next round. */
+  onProseDiscard?: () => void;
   onProgressThinking: () => void;
   onAgentHandoff: () => void;
   onUiRender: (component: ComponentId, props: Record<string, unknown>) => void;
@@ -108,6 +110,12 @@ export function dispatchStreamChunk(
       break;
     case "tool_call":
       callbacks.onToolActivity?.(toolLabel(chunk.name));
+      // The adapter may emit a short preamble before tool_use. The next model round
+      // generates a fresh answer — keep client accumulation aligned with that round.
+      if (assistant) {
+        callbacks.onProseDiscard?.();
+        return "";
+      }
       break;
     case "tool_result":
       callbacks.onToolActivity?.(null);

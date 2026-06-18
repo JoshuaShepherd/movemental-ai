@@ -3,6 +3,11 @@
 import Link from "next/link";
 
 import { PATH_STAGE_LABELS, SANDBOX_HANDBOOK } from "@/lib/agent-room/naming";
+import {
+  PRICING_SANDBOX_DIGITAL,
+  PRICING_SANDBOX_FREE,
+  PRICING_SANDBOX_IN_PERSON,
+} from "@/lib/agent-room/data/pricing";
 
 import styles from "../../ink-band.module.css";
 import type { ScreenProps } from "./stub-screen";
@@ -55,28 +60,38 @@ export function SandboxScreen({ onHome }: ScreenProps) {
       </div>
 
       <TwoWaysForward
-        reassurance="Both routes produce the same Future Plan and a shared record of what you tried."
+        sectionLabel="Three ways forward"
+        reassurance="All three routes produce the same Future Plan and a shared record of what you tried."
         freeWay={{
-          title: "Free, and we guide you.",
-          price: "Free · self-paced",
+          title: PRICING_SANDBOX_FREE.title,
+          price: PRICING_SANDBOX_FREE.price,
           description: (
             <>
               The field guide, <em>{SANDBOX_HANDBOOK.fullTitle}</em>. Your team runs the eight
               phases, and we guide you when you need it.
             </>
           ),
-          ctaLabel: "Start free, we'll guide you",
-          ctaHref: "/field-guide?guide=sandbox",
+          ctaLabel: PRICING_SANDBOX_FREE.ctaLabel,
+          ctaHref: PRICING_SANDBOX_FREE.ctaHref,
         }}
         paidWay={{
-          title: "We do it with you.",
-          price: "$15,000 · four to six weeks",
-          description:
-            "About ten hours of in-person teaching across eight phases, learning access, a custom AI recipe library, and dashboard integration. Produces a Future Plan with green, yellow, and red use cases.",
-          ctaLabel: "Have us do it · $15,000",
-          ctaHref: "/enroll",
+          title: PRICING_SANDBOX_DIGITAL.title,
+          price: PRICING_SANDBOX_DIGITAL.price,
+          description: PRICING_SANDBOX_DIGITAL.descriptionPlain ?? "",
+          ctaLabel: PRICING_SANDBOX_DIGITAL.ctaLabel,
+          ctaHref: PRICING_SANDBOX_DIGITAL.ctaHref,
           paid: true,
         }}
+        extraWays={[
+          {
+            title: PRICING_SANDBOX_IN_PERSON.title,
+            price: PRICING_SANDBOX_IN_PERSON.price,
+            description: PRICING_SANDBOX_IN_PERSON.descriptionPlain ?? "",
+            ctaLabel: PRICING_SANDBOX_IN_PERSON.ctaLabel,
+            ctaHref: PRICING_SANDBOX_IN_PERSON.ctaHref,
+            paid: true,
+          },
+        ]}
       />
 
       <p className={styles.body} style={{ marginTop: "1rem" }}>

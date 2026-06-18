@@ -3,11 +3,11 @@
 import Link from "next/link";
 
 import { PATH_STAGE_LABELS } from "@/lib/agent-room/naming";
+import { PRICING_TECH_MODULES } from "@/lib/agent-room/data/pricing";
 
 import styles from "../../ink-band.module.css";
 import type { ScreenProps } from "./stub-screen";
 import { Crumb } from "./chrome";
-import { TwoWaysForward } from "./two-ways-forward";
 
 /** Stage 04 · Tech: scoped AI deployment after Safety, Sandbox, and Training. */
 export function TechnologyScreen({ onHome }: ScreenProps) {
@@ -38,41 +38,27 @@ export function TechnologyScreen({ onHome }: ScreenProps) {
       </div>
 
       <div className={styles.sec}>
-        <p className={styles.secLabel}>What we scope</p>
+        <p className={styles.secLabel}>Modular builds</p>
         <p className={styles.body} style={{ marginTop: "0.2rem" }}>
-          Engagements range from tuning tools you already pay for, to composed workflows for donor
-          communications or curriculum, to full platform tenants and network deployments for
-          institutions. Each engagement gets a signed brief before build begins. Price follows
-          scope, not a menu of hype.
+          Tech is built in layers on top of your ratified foundation. Foundation is included in every
+          platform. Add the modules your organization needs.
         </p>
-        <p className={styles.body}>
-          We do not build for organizations that skipped {PATH_STAGE_LABELS.safety},{" "}
-          {PATH_STAGE_LABELS.sandbox}, or {PATH_STAGE_LABELS.training}. The deployment becomes a
-          liability without that foundation.
+        <div className={styles.techModules}>
+          {PRICING_TECH_MODULES.map((mod) => (
+            <div
+              key={mod.name}
+              className={`${styles.way} ${mod.price !== "Built in" ? styles.paid : ""}`}
+            >
+              <h4>{mod.name}</h4>
+              <p className={styles.price}>{mod.price}</p>
+              <p>{mod.description}</p>
+            </div>
+          ))}
+        </div>
+        <p className={styles.body} style={{ marginTop: "0.85rem" }}>
+          Every stage has a free field guide. Tech&apos;s guide is in progress.
         </p>
       </div>
-
-      <TwoWaysForward
-        reassurance={`Every ${PATH_STAGE_LABELS.tech} engagement is scoped. We will confirm the free entry point before publishing a claim here.`}
-        freeWay={{
-          title: "Free, and we guide you.",
-          price: "[Free entry point to confirm]",
-          description:
-            "Tech is scoped per engagement. We will confirm the free entry point before publishing a claim here.",
-          ctaLabel: "",
-          ctaHref: "",
-          placeholder: true,
-        }}
-        paidWay={{
-          title: "We do it with you.",
-          price: "From $30,000 · scoped",
-          description:
-            "Scoped AI deployment across six configurations, from tool optimization to network-scale work for institutions and denominations.",
-          ctaLabel: "Talk to us about Tech",
-          ctaHref: "/enroll",
-          paid: true,
-        }}
-      />
 
       <p className={styles.body} style={{ marginTop: "1rem" }}>
         Questions about fit or scope?{" "}

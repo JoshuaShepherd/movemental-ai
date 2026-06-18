@@ -84,7 +84,7 @@ export function useAgentRoomStream() {
   const { inkLine, drawGesture, clearInk, clearVoice } = useInk();
   const discuss = useDiscussPhase();
   const { enterDiscuss, resetDiscuss, recordAssistantTurn } = discuss;
-  const { thread, appendUser, updateStreaming, finalizeAssistant, resetThread } = useRoomThread();
+  const { thread, appendUser, updateStreaming, finalizeAssistant, discardStreaming, resetThread } = useRoomThread();
   const dockExpandedRef = useRef(false);
   // Latest phase for the async send loop (avoids a stale closure on `phase`).
   const phaseRef = useRef<RoomPhase>(discuss.phase);
@@ -361,6 +361,9 @@ export function useAgentRoomStream() {
               updateStreaming(acc);
               setVoice({ thinking: false, text: "" });
             },
+            onProseDiscard: () => {
+              discardStreaming();
+            },
             onProgressThinking: () => {
               setVoice((v) => ({ ...v, thinking: true }));
             },
@@ -449,6 +452,7 @@ export function useAgentRoomStream() {
       appendUser,
       updateStreaming,
       finalizeAssistant,
+      discardStreaming,
       recordAssistantTurn,
       enterDiscuss,
     ],

@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { DISCUSS_ENABLED } from "@/lib/agent-room/discuss";
 import {
   appendUserTurn,
+  discardStreamingAssistant,
   finalizeAssistantTurn,
   updateStreamingAssistant,
   type ThreadTurn,
@@ -42,6 +43,10 @@ export function useRoomThread() {
     setThread((prev) => finalizeAssistantTurn(prev, content, DISCUSS_PASSAGE_THRESHOLD));
   }, []);
 
+  const discardStreaming = useCallback(() => {
+    setThread((prev) => discardStreamingAssistant(prev));
+  }, []);
+
   const resetThread = useCallback(() => {
     setThread([]);
     if (typeof window !== "undefined") {
@@ -72,6 +77,7 @@ export function useRoomThread() {
     appendUser,
     updateStreaming,
     finalizeAssistant,
+    discardStreaming,
     resetThread,
   };
 }

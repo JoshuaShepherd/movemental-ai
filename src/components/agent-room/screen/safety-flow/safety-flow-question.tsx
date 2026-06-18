@@ -35,7 +35,10 @@ export function SafetyFlowQuestion({
           ))}
         </div>
       </fieldset>
-      <p className={`${styles.sub} ${styles.flowFootnote}`}>{SAFETY_FLOW_QUESTION.footnote}</p>
+      <div className={styles.flowFootnote}>
+        <p className={styles.flowFootnoteLabel}>{SAFETY_FLOW_QUESTION.footnoteLabel}</p>
+        <p className={styles.flowFootnoteText}>{SAFETY_FLOW_QUESTION.footnote}</p>
+      </div>
     </div>
   );
 }

@@ -51,7 +51,7 @@ export function VoiceZone({
         <InkVoice lines={[matchingLine]} onLineDone={resolveLine} />
       ) : showCaption ? (
         <div className={styles.vline}>
-          <span className={styles.vspan}>{showCaption}</span>
+          <span className={`${styles.vspan} ${styles.vspanStatic}`}>{showCaption}</span>
         </div>
       ) : null}
     </div>

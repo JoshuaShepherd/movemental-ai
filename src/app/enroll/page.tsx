@@ -212,7 +212,7 @@ export default function EnrollPage() {
           </h2>
           <p className="text-base leading-relaxed text-foreground">
             <span className="font-semibold">$1,000</span>
-            <span className="text-muted-foreground"> · two weeks · managed Safety sprint</span>
+            <span className="text-muted-foreground"> · two weeks, start to finish · managed Safety sprint</span>
           </p>
           <p className="text-sm leading-relaxed text-muted-foreground">
             Secure payment is collected via Stripe. Submit your details below, our team confirms enrollment

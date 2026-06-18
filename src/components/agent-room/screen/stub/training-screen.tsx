@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import { PATH_STAGE_LABELS } from "@/lib/agent-room/naming";
+import { PRICING_TRAINING_FREE, PRICING_TRAINING_PAID } from "@/lib/agent-room/data/pricing";
 
 import styles from "../../ink-band.module.css";
 import type { ScreenProps } from "./stub-screen";
@@ -53,23 +54,21 @@ export function TrainingScreen({ onHome }: ScreenProps) {
       </div>
 
       <TwoWaysForward
-        reassurance="The paid cohort is live today. We have not published a free self-paced path for this stage yet."
+        reassurance="The paid cohort runs today through Movemental's LMS. The free field guide ships when it's ready."
         freeWay={{
-          title: "Free, and we guide you.",
-          price: "[Free entry point to confirm]",
-          description:
-            "Training has run cohort-only to date. We will confirm the free entry point before publishing a claim here.",
-          ctaLabel: "",
-          ctaHref: "",
+          title: PRICING_TRAINING_FREE.title,
+          price: PRICING_TRAINING_FREE.price,
+          description: PRICING_TRAINING_FREE.descriptionPlain ?? "",
+          ctaLabel: PRICING_TRAINING_FREE.ctaLabel,
+          ctaHref: PRICING_TRAINING_FREE.ctaHref,
           placeholder: true,
         }}
         paidWay={{
-          title: "We do it with you.",
-          price: "$15,000 + $5,000 per year",
-          description:
-            "An eight-week formation cohort building three capacities: discernment, authorship, and stewardship, in the people who will steward AI inside your organization.",
-          ctaLabel: "Talk to us about Training",
-          ctaHref: "/enroll",
+          title: PRICING_TRAINING_PAID.title,
+          price: PRICING_TRAINING_PAID.price,
+          description: PRICING_TRAINING_PAID.descriptionPlain ?? "",
+          ctaLabel: PRICING_TRAINING_PAID.ctaLabel,
+          ctaHref: PRICING_TRAINING_PAID.ctaHref,
           paid: true,
         }}
       />

@@ -109,7 +109,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   const discuss = useDiscussPhase();
   const { enterDiscuss, resetDiscuss, recordAssistantTurn } = discuss;
   const roomThread = useRoomThread();
-  const { thread, appendUser, updateStreaming, finalizeAssistant, resetThread } = roomThread;
+  const { thread, appendUser, updateStreaming, finalizeAssistant, discardStreaming, resetThread } = roomThread;
   const phaseRef = useRef<RoomPhase>(discuss.phase);
   phaseRef.current = discuss.phase;
 
@@ -351,6 +351,9 @@ export function useAgentRoomHybrid(): AgentRoomController & {
             updateStreaming(acc);
             setVoice({ thinking: false, text: "" });
           },
+          onProseDiscard: () => {
+            discardStreaming();
+          },
           onProgressThinking: () => {
             setVoice((v) => ({ ...v, thinking: true }));
           },
@@ -425,6 +428,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
       buildRoomContext,
       clearVoice,
       drawGesture,
+      discardStreaming,
       enterDiscuss,
       finalizeAssistant,
       inkLine,

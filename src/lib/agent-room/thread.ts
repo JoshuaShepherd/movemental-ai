@@ -24,6 +24,15 @@ export function updateStreamingAssistant(thread: ThreadTurn[], content: string):
   return [...thread, { role: "assistant", content, streaming: true }];
 }
 
+/** Drop in-flight assistant prose when a tool round supersedes streamed preamble. */
+export function discardStreamingAssistant(thread: ThreadTurn[]): ThreadTurn[] {
+  const last = thread[thread.length - 1];
+  if (last?.role === "assistant" && last.streaming) {
+    return thread.slice(0, -1);
+  }
+  return thread;
+}
+
 export function finalizeAssistantTurn(
   thread: ThreadTurn[],
   content: string,

@@ -177,7 +177,8 @@ export const SCENES = {
     { say: "You sort what helps from what doesn't, and leave with a Future Plan." },
     {
       suggest: [
-        { label: "Have us do it · $15,000", lead: true, to: "talkToUs" },
+        { label: "Digital license · $5,000", lead: true, to: "talkToUs" },
+        { label: "Hands-on · ~$15,000", to: "talkToUs" },
         { label: "Start free, guided", to: "toPath" },
         { label: "Show me Safety", to: "toSafety" },
         { label: "What does it cost?", to: "cost" },

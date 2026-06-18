@@ -4,15 +4,6 @@
  * Do not change values here without product sign-off.
  */
 
-export const PRICING_REFUSALS = [
-  "We don't negotiate the price. It's the same for a 500-person church and a 50,000-member denomination.",
-  "We don't gate the methodology. The field guides are free, and any team can run the work itself.",
-  "We don't run hidden enterprise tiers. There is no number above what's listed here.",
-  "We don't charge per seat. Pricing is by engagement, because per-seat rewards lock-in, not belonging.",
-  "We don't use urgency. No limited-time discounts, no \"spots filling fast.\"",
-  "We don't pay our network in logos. The movement leaders behind the path are paid through a real agreement, with royalties, available on request.",
-] as const;
-
 export type PricingWayData = {
   title: string;
   price: string;
@@ -26,9 +17,15 @@ export type PricingWayData = {
   placeholder?: boolean;
 };
 
+export type TechModulePricing = {
+  name: string;
+  price: string;
+  description: string;
+};
+
 export const PRICING_SAFETY_FREE: PricingWayData = {
   title: "Free, and we guide you.",
-  price: "Free · about 1 to 2 months",
+  price: "Free · about 1 to 2 months, self-paced",
   descriptionBefore: "The handbook, ",
   descriptionEmphasis: "It Starts With Safety",
   descriptionAfter:
@@ -39,9 +36,9 @@ export const PRICING_SAFETY_FREE: PricingWayData = {
 
 export const PRICING_SAFETY_PAID: PricingWayData = {
   title: "We do it with you.",
-  price: "$1,000 · two weeks",
+  price: "$1,000 · two weeks, start to finish",
   descriptionPlain:
-    "We draft all five layers customized to your organization. Your team reviews and ratifies in the dashboard.",
+    "We draft all five layers customized to your organization. Your team reviews and ratifies in the dashboard. The full step takes two weeks from kickoff to board-ready charter.",
   ctaLabel: "Have us do it · $1,000",
   ctaHref: "/enroll",
   paid: true,
@@ -58,31 +55,41 @@ export const PRICING_SANDBOX_FREE: PricingWayData = {
   ctaHref: "/field-guide?guide=sandbox",
 };
 
-export const PRICING_SANDBOX_PAID: PricingWayData = {
-  title: "We do it with you.",
-  price: "$15,000 · four to six weeks",
+export const PRICING_SANDBOX_DIGITAL: PricingWayData = {
+  title: "Digital license.",
+  price: "$5,000 · one-time · lifetime access",
+  descriptionPlain:
+    "The full Sandbox toolkit in your dashboard: eight phases, results, and ongoing management. One payment, lifetime access to your organization's record.",
+  ctaLabel: "Get the digital license · $5,000",
+  ctaHref: "/enroll",
+  paid: true,
+};
+
+export const PRICING_SANDBOX_IN_PERSON: PricingWayData = {
+  title: "Hands-on, in person.",
+  price: "~$15,000 · facilitated",
   descriptionPlain:
     "About ten hours of in-person teaching across eight phases, learning access, a custom AI recipe library, and dashboard integration. Produces a Future Plan with green, yellow, and red use cases.",
-  ctaLabel: "Have us do it · $15,000",
+  ctaLabel: "Have us facilitate · ~$15,000",
   ctaHref: "/enroll",
   paid: true,
 };
 
 export const PRICING_TRAINING_FREE: PricingWayData = {
   title: "Free, and we guide you.",
-  price: "[Free entry point to confirm]",
+  price: "Field guide · coming soon",
   descriptionPlain:
-    "Training has run cohort-only to date. We will confirm the free entry point before publishing a claim here.",
+    "Every stage has a free field guide. Training's guide is in progress. Until it ships, the paid cohort runs through Movemental's LMS.",
   ctaLabel: "",
   ctaHref: "",
   placeholder: true,
 };
 
 export const PRICING_TRAINING_PAID: PricingWayData = {
-  title: "We do it with you.",
-  price: "$15,000 + $5,000 per year",
+  title: "Eight-week cohort.",
+  price: "$2,000 per person · 8 weeks · online",
   descriptionPlain:
-    "An eight-week formation cohort building three capacities: discernment, authorship, and stewardship, in the people who will steward AI inside your organization.",
+    "A transformative eight-week course through Movemental's LMS, building discernment, authorship, and stewardship in the people who will steward AI inside your organization.",
   ctaLabel: "Talk to us about Training",
   ctaHref: "/enroll",
   paid: true,
@@ -90,20 +97,37 @@ export const PRICING_TRAINING_PAID: PricingWayData = {
 
 export const PRICING_TECH_FREE: PricingWayData = {
   title: "Free, and we guide you.",
-  price: "[Free entry point to confirm]",
+  price: "Field guide · coming soon",
   descriptionPlain:
-    "Tech is scoped per engagement. We will confirm the free entry point before publishing a claim here.",
+    "Every stage has a free field guide. Tech's guide is in progress. Until it ships, start with the modular builds below.",
   ctaLabel: "",
   ctaHref: "",
   placeholder: true,
 };
 
-export const PRICING_TECH_PAID: PricingWayData = {
-  title: "We do it with you.",
-  price: "From $30,000 · scoped",
-  descriptionPlain:
-    "Scoped AI deployment across six configurations, from tool optimization to network-scale work for institutions and denominations.",
-  ctaLabel: "Talk to us about Tech",
-  ctaHref: "/enroll",
-  paid: true,
-};
+export const PRICING_TECH_MODULES: readonly TechModulePricing[] = [
+  {
+    name: "Foundation",
+    price: "Built in",
+    description:
+      "The spine of every platform: website, accounts, library, governance, and AI assistant. Included in every Tech engagement.",
+  },
+  {
+    name: "Publishing",
+    price: "$30,000",
+    description:
+      "Your public face and the tools to run it, with full agentic implementation custom to your organization.",
+  },
+  {
+    name: "Formation",
+    price: "$30,000",
+    description:
+      "Courses, cohorts, and learning paths — how you form and teach people inside your platform.",
+  },
+  {
+    name: "Relationships",
+    price: "$30,000",
+    description:
+      "People, giving, and operations in one place — donor stewardship, member care, and staff workflows.",
+  },
+] as const;

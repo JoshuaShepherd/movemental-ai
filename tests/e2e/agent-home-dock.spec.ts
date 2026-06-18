@@ -3,7 +3,7 @@ import { expect, test, type Page } from "@playwright/test";
 import { AGENT_HOME_H1, waitForAgentOpeningReady } from "./agent-room-helpers";
 
 const STREAM_PATH = "**/api/agent-room/turn";
-const PRICING_REFUSAL_HEADING = "What this pricing refuses";
+const PRICING_HEADING = "Pricing.";
 
 async function waitForComposerEnabled(page: Page) {
   await waitForAgentOpeningReady(page);
@@ -68,7 +68,7 @@ test.describe("Agent home dock (hybrid default)", () => {
     await waitForAgentOpeningReady(page);
     await expect(page.getByRole("heading", { level: 1, name: AGENT_HOME_H1 })).toBeVisible();
     await page.getByRole("button", { name: "What does it cost?" }).click();
-    await expect(page.getByText(PRICING_REFUSAL_HEADING)).toBeVisible({ timeout: 8000 });
+    await expect(page.getByRole("heading", { level: 1, name: PRICING_HEADING })).toBeVisible({ timeout: 8000 });
     await expect(page.getByRole("dialog", { name: "Agent conversation" })).not.toBeVisible();
     expect(streamCalls).toEqual([]);
   });

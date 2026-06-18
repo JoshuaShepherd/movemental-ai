@@ -103,7 +103,7 @@ export const FAQ_SECTIONS: readonly FaqSection[] = [
       { q: "What does this cost?", a: "It scales to the size of the organization and the depth of the pathway chosen. Safety sessions are priced accessibly so no organization remains exposed." },
       { q: "Can you give a budget range?", a: "We provide specific ranges on our initial diagnostic call based on your organizational complexity. Every price is on the Pricing page." },
       { q: "Do you offer reduced rates for smaller organizations?", a: "Yes. We reserve capacity for sliding-scale interventions for high-impact, low-resource nonprofits." },
-      { q: "How long does an engagement take?", a: "A Safety Session takes two weeks with us, or one to two months on your own. A Guided Pathway can run for three to six months." },
+      { q: "How long does an engagement take?", a: "A paid Safety step takes two weeks start to finish with us, or about one to two months self-paced on your own. Training runs eight weeks online. Sandbox and Tech are scoped to your organization." },
       { q: "Will this slow our team down?", a: "In the short term, yes. Wisdom is slower than recklessness. In the long term, it creates massive acceleration through clarity." },
       { q: "What time commitment do our leaders need?", a: "Four to six hours of focused synchronous time over the first month." },
       { q: "Who pays for tools and vendors?", a: "We do not resell. You pay software vendors directly, guaranteeing we have no perverse incentives." },

@@ -2061,8 +2061,27 @@ button.wayCtaPaid {
 .waysPlans {
   gap: 1rem;
 }
+.waysMulti {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 960px) {
+  .waysMulti {
+    grid-template-columns: 1fr;
+  }
+}
 @media (max-width: 720px) {
   .waysPlans {
+    grid-template-columns: 1fr;
+  }
+}
+.techModules {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 0.65rem;
+}
+@media (max-width: 720px) {
+  .techModules {
     grid-template-columns: 1fr;
   }
 }
@@ -2880,8 +2899,8 @@ button.wayCtaPaid {
   line-height: var(--ink-pill-line-body, 1.25);
   text-align: center;
   min-height: var(--ink-pill-min-h, 2rem);
-  font-size: 0.78rem;
-  padding: 0.38rem 0.85rem;
+  font-size: var(--ink-pill-font-size, 0.8125rem);
+  padding: var(--ink-pill-pad-y, 0.42rem) var(--ink-pill-pad-x, 0.92rem);
   border: 1px solid var(--color-ink-band-border);
   border-radius: var(--ink-pill-radius, 999px);
   text-decoration: none;
@@ -2995,6 +3014,8 @@ button.wayCtaPaid {
   text-align: center;
   min-height: var(--ink-pill-min-h, 2rem);
   font: inherit;
+  font-size: var(--ink-pill-font-size, inherit);
+  padding: var(--ink-pill-pad-y, 0.42rem) var(--ink-pill-pad-x, 0.92rem);
   border: 1px solid var(--color-ink-band-border);
   border-radius: var(--ink-pill-radius, 999px);
   background: var(--color-ink-band-paper);
@@ -3217,7 +3238,7 @@ button.wayCtaPaid {
 .sugg {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--ink-pill-gap, 0.45rem);
   flex-wrap: wrap;
   margin-bottom: 0.6rem;
   min-height: 1.95rem;
@@ -3356,12 +3377,12 @@ button.wayCtaPaid {
    .voice + .composer flex zones when `.roomDock` is on `.room`. */
 .roomDock .screen {
   /* Clear the fixed dock: handwriting strip + chips + collapsed card (no replay legend). */
-  padding-bottom: clamp(9.5rem, calc(14vh + 7.5rem), 13.5rem);
+  padding-bottom: clamp(10rem, calc(14vh + 8rem), 14.5rem);
 }
 .roomDock .screen.scroll {
   /* Long sheets (safety readback, FAQ, …) need room to scroll past the dock. */
-  padding-bottom: clamp(11.5rem, calc(18vh + 8.5rem), 17rem);
-  scroll-padding-bottom: clamp(11.5rem, calc(18vh + 8.5rem), 17rem);
+  padding-bottom: clamp(12rem, calc(18vh + 9rem), 18rem);
+  scroll-padding-bottom: clamp(12rem, calc(18vh + 9rem), 18rem);
 }
 
 .agentDock {
@@ -3400,6 +3421,7 @@ button.wayCtaPaid {
     color-mix(in srgb, var(--color-ink-band-paper) 88%, transparent)
   );
   pointer-events: none;
+  z-index: 0;
 }
 
 .dockBackdrop {
@@ -3426,13 +3448,16 @@ button.wayCtaPaid {
 }
 
 .handwritingStrip {
+  position: relative;
+  z-index: 1;
   width: 100%;
   flex: 0 0 auto;
-  background: transparent;
-  padding: 0.35rem clamp(1.25rem, 4vw, 2.5rem) 0.2rem;
-  min-height: 2.4rem;
-  max-height: 2.4rem;
-  overflow: hidden;
+  background: var(--color-ink-band-paper);
+  padding: 0.55rem clamp(1.25rem, 4vw, 2.5rem) 0.35rem;
+  min-height: 3.2rem;
+  max-height: min(28vh, 9rem);
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 .agentDockExpanded .handwritingStrip {
   max-height: 0;
@@ -3456,25 +3481,30 @@ button.wayCtaPaid {
 }
 .handwritingVline .vline {
   font-size: clamp(1.25rem, 4.8vw, 1.65rem);
-  line-height: 1.15;
+  line-height: 1.2;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: visible;
   text-overflow: clip;
 }
 
 .voiceCaption {
-  max-height: 2.4rem;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .voiceCaption .vline,
 .voiceCaption .vspan {
   white-space: nowrap;
   overflow: hidden;
-  mask-image: linear-gradient(to right, #000 85%, transparent 100%);
+  mask-image: linear-gradient(to right, #000 88%, transparent 100%);
+}
+
+.vspanStatic {
+  clip-path: none;
 }
 
 .agentFloat {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 42rem;
   margin: 0 auto;
@@ -3492,10 +3522,10 @@ button.wayCtaPaid {
 .floatChips {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: var(--ink-pill-gap, 0.45rem);
   justify-content: center;
   flex-wrap: nowrap;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.4rem;
   padding: 0.15rem 0.65rem 0.1rem;
   overflow-x: auto;
   overflow-y: visible;
@@ -3507,14 +3537,9 @@ button.wayCtaPaid {
 }
 
 .floatChip {
-  flex: 0 1 auto;
-  max-width: calc(50% - 0.25rem);
-  gap: 0.35rem;
-  font-size: 0.76rem;
-  padding: 0.38rem 0.75rem;
+  flex: 0 0 auto;
+  max-width: none;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 .floatChip:hover:not(:disabled) {
   border-color: var(--color-ink-band-ink);
@@ -4125,9 +4150,9 @@ button.wayCtaPaid {
 }
 
 .roomBeat.roomDock .handwritingStrip {
-  min-height: 2rem;
-  max-height: 3.1rem;
-  padding-block: 0.2rem 0.1rem;
+  min-height: 3rem;
+  max-height: min(24vh, 8rem);
+  padding-block: 0.45rem 0.3rem;
 }
 .roomBeat.roomDock .handwritingVline .vline.old {
   display: none;
@@ -5347,18 +5372,24 @@ button.wayCtaPaid {
 .flowStepCur {
   background: var(--color-ink-band-ink);
 }
+.flowStep {
+  width: 100%;
+}
 .flowEyebrowCenter {
   text-align: center;
 }
 .flowTitleCenter {
   text-align: center;
   max-width: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 .flowSubCenter {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
   max-width: 38ch;
+  margin-bottom: 2.25rem;
 }
 .flowBodyCenter {
   text-align: center;
@@ -5399,8 +5430,24 @@ button.wayCtaPaid {
 }
 .flowFootnote {
   margin-top: 2rem;
-  font-size: 0.9rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 38ch;
   text-align: center;
+}
+.flowFootnoteLabel {
+  font-family: var(--font-ink-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+  margin: 0 0 0.45rem;
+}
+.flowFootnoteText {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--color-ink-band-ink-muted);
+  margin: 0;
 }
 .flowRail {
   display: grid;

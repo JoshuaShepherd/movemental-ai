@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState, type ReactNode } from "react";
 
 import styles from "../../ink-band.module.css";
@@ -9,13 +8,13 @@ import { Crumb } from "./chrome";
 import { ProcessAccordion } from "../process-accordion";
 import { PATH_STAGE_LABELS } from "@/lib/agent-room/naming";
 import {
-  PRICING_REFUSALS,
   PRICING_SAFETY_FREE,
   PRICING_SAFETY_PAID,
+  PRICING_SANDBOX_DIGITAL,
   PRICING_SANDBOX_FREE,
-  PRICING_SANDBOX_PAID,
+  PRICING_SANDBOX_IN_PERSON,
   PRICING_TECH_FREE,
-  PRICING_TECH_PAID,
+  PRICING_TECH_MODULES,
   PRICING_TRAINING_FREE,
   PRICING_TRAINING_PAID,
   type PricingWayData,
@@ -49,37 +48,89 @@ function toWayOption(data: PricingWayData): WayForwardOption {
 const SAFETY_FREE = toWayOption(PRICING_SAFETY_FREE);
 const SAFETY_PAID = toWayOption(PRICING_SAFETY_PAID);
 const SANDBOX_FREE = toWayOption(PRICING_SANDBOX_FREE);
-const SANDBOX_PAID = toWayOption(PRICING_SANDBOX_PAID);
+const SANDBOX_DIGITAL = toWayOption(PRICING_SANDBOX_DIGITAL);
+const SANDBOX_IN_PERSON = toWayOption(PRICING_SANDBOX_IN_PERSON);
 const TRAINING_FREE = toWayOption(PRICING_TRAINING_FREE);
 const TRAINING_PAID = toWayOption(PRICING_TRAINING_PAID);
 const TECH_FREE = toWayOption(PRICING_TECH_FREE);
-const TECH_PAID = toWayOption(PRICING_TECH_PAID);
 
 function StageWays({
   reassurance,
   freeWay,
   paidWay,
+  extraWays,
   freeLead = false,
+  sectionLabel = "Two ways forward",
 }: {
   reassurance: string;
   freeWay: WayForwardOption;
   paidWay: WayForwardOption;
+  extraWays?: WayForwardOption[];
   freeLead?: boolean;
+  sectionLabel?: string;
 }) {
   return (
     <TwoWaysForward
-      sectionLabel="Two ways forward"
+      sectionLabel={sectionLabel}
       reassurance={reassurance}
       freeWay={freeWay}
       paidWay={paidWay}
+      extraWays={extraWays}
       freeLead={freeLead}
     />
+  );
+}
+
+function TechBuildPricing({ reassurance }: { reassurance: string }) {
+  return (
+    <div className={styles.sec}>
+      <p className={styles.secLabel}>Free field guide</p>
+      <div className={styles.ways}>
+        <div className={styles.way}>
+          <h4>{TECH_FREE.title}</h4>
+          <p className={styles.price}>{TECH_FREE.price}</p>
+          <p>{TECH_FREE.description}</p>
+          <p className={styles.wayPlaceholder}>Field guide · coming soon</p>
+        </div>
+      </div>
+
+      <p className={styles.secLabel} style={{ marginTop: "1.25rem" }}>
+        Modular builds
+      </p>
+      <p className={styles.body} style={{ marginTop: "0.2rem" }}>
+        Tech is built in layers on top of your ratified foundation. Foundation is included in every
+        platform. Add the modules your organization needs.
+      </p>
+      <div className={styles.techModules}>
+        {PRICING_TECH_MODULES.map((mod) => (
+          <div key={mod.name} className={`${styles.way} ${mod.price !== "Built in" ? styles.paid : ""}`}>
+            <h4>{mod.name}</h4>
+            <p className={styles.price}>{mod.price}</p>
+            <p>{mod.description}</p>
+          </div>
+        ))}
+      </div>
+      <p className={styles.honest}>{reassurance}</p>
+    </div>
   );
 }
 
 /** Full pricing schedule with plain stage names and two ways forward per stage. */
 export function PricingScreen({ onHome }: ScreenProps) {
   const [active, setActive] = useState("safety");
+
+  const sandboxWays = (
+    <StageWays
+      sectionLabel="Three ways forward"
+      reassurance="All three routes produce the same Future Plan and shared record of what you tried."
+      freeWay={SANDBOX_FREE}
+      paidWay={SANDBOX_DIGITAL}
+      extraWays={[SANDBOX_IN_PERSON]}
+    />
+  );
+
+  const techReassurance =
+    "Each module is scoped to your organization. Talk to us about which layers you need and in what order.";
 
   return (
     <div>
@@ -108,13 +159,7 @@ export function PricingScreen({ onHome }: ScreenProps) {
             id: "sandbox",
             step: "02",
             title: "Sandbox",
-            children: (
-              <StageWays
-                reassurance="Both routes produce the same Future Plan and shared record of what you tried."
-                freeWay={SANDBOX_FREE}
-                paidWay={SANDBOX_PAID}
-              />
-            ),
+            children: sandboxWays,
           },
           {
             id: "training",
@@ -122,7 +167,7 @@ export function PricingScreen({ onHome }: ScreenProps) {
             title: "Training",
             children: (
               <StageWays
-                reassurance="The paid cohort is live today. The free entry point is still being confirmed."
+                reassurance="The paid cohort runs today through Movemental's LMS. The free field guide ships when it's ready."
                 freeWay={TRAINING_FREE}
                 paidWay={TRAINING_PAID}
               />
@@ -132,13 +177,7 @@ export function PricingScreen({ onHome }: ScreenProps) {
             id: "tech",
             step: "04",
             title: PATH_STAGE_LABELS.tech,
-            children: (
-              <StageWays
-                reassurance={`Every ${PATH_STAGE_LABELS.tech} engagement is scoped. We will confirm the free entry point before publishing a claim here.`}
-                freeWay={TECH_FREE}
-                paidWay={TECH_PAID}
-              />
-            ),
+            children: <TechBuildPricing reassurance={techReassurance} />,
           },
         ]}
       />
@@ -150,62 +189,14 @@ export function PricingScreen({ onHome }: ScreenProps) {
           paidWay={SAFETY_PAID}
           freeLead
         />
+        {sandboxWays}
         <StageWays
-          reassurance="Both routes produce the same Future Plan and shared record of what you tried."
-          freeWay={SANDBOX_FREE}
-          paidWay={SANDBOX_PAID}
-        />
-        <StageWays
-          reassurance="The paid cohort is live today. The free entry point is still being confirmed."
+          reassurance="The paid cohort runs today through Movemental's LMS. The free field guide ships when it's ready."
           freeWay={TRAINING_FREE}
           paidWay={TRAINING_PAID}
         />
-        <StageWays
-          reassurance={`Every ${PATH_STAGE_LABELS.tech} engagement is scoped. We will confirm the free entry point before publishing a claim here.`}
-          freeWay={TECH_FREE}
-          paidWay={TECH_PAID}
-        />
+        <TechBuildPricing reassurance={techReassurance} />
       </div>
-
-      <div className={styles.sec}>
-        <p className={styles.secLabel}>What this pricing refuses</p>
-        {PRICING_REFUSALS.map((line) => (
-          <p key={line} className={styles.refuse}>
-            {line}
-          </p>
-        ))}
-        <p className={styles.body} style={{ marginTop: "0.85rem" }}>
-          The full account of what we refuse in our own AI use, and the green, yellow, and red
-          lights we apply, is on{" "}
-          <Link className={styles.inlineLink} href="/agent/how-we-use-ai">
-            How We Use AI
-          </Link>
-          .
-        </p>
-      </div>
-
-      <div className={styles.sec}>
-        <p className={styles.secLabel}>If the price isn't walkable</p>
-        <p className={styles.body} style={{ marginTop: "0.2rem" }}>
-          The same price for everyone means it isn't walkable for every organization, a
-          90-person church on a $180k budget, a seminary in a non-USD economy. We treat
-          that as a real problem, not a marketing one. If that's you, write to us before
-          you rule anything out; we work access out case by case.
-        </p>
-      </div>
-
-      <div className={styles.sec}>
-        <p className={styles.secLabel}>Terms</p>
-        <p className={styles.body} style={{ marginTop: "0.2rem" }}>
-          Engagements are paid in two halves: 50% to begin, 50% on completion, Net 15
-          each. Check, ACH, or card.
-        </p>
-      </div>
-
-      <p className={styles.honest}>
-        Questions about any of this? Get in touch, or map where you stand, and we'll
-        know exactly what to talk about.
-      </p>
     </div>
   );
 }

@@ -85,6 +85,37 @@ describe("agent-stream-turn", () => {
     expect(onToolActivity).toHaveBeenCalledWith("consulting the field guide");
   });
 
+  it("clears tool-call preamble prose before the next model round streams", () => {
+    const onTextDelta = vi.fn();
+    const onProseDiscard = vi.fn();
+    const cb = callbacks({ onTextDelta, onProseDiscard });
+
+    const afterPreamble = dispatchStreamChunk(
+      { type: "text_delta", delta: "That's a fair question, and worth a straight answer." },
+      "",
+      cb,
+    );
+    expect(afterPreamble).toBe("That's a fair question, and worth a straight answer.");
+
+    const afterTool = dispatchStreamChunk(
+      { type: "tool_call", id: "fs1", name: "file_search", input: { query: "trust" } },
+      afterPreamble,
+      cb,
+    );
+    expect(afterTool).toBe("");
+    expect(onProseDiscard).toHaveBeenCalledOnce();
+
+    const afterAnswer = dispatchStreamChunk(
+      { type: "text_delta", delta: "That's a fair question, and the skepticism is welcome." },
+      afterTool,
+      cb,
+    );
+    expect(afterAnswer).toBe("That's a fair question, and the skepticism is welcome.");
+    expect(onTextDelta).toHaveBeenLastCalledWith(
+      "That's a fair question, and the skepticism is welcome.",
+    );
+  });
+
   it("clears tool activity once the first prose delta arrives", () => {
     const onToolActivity = vi.fn();
     // Mid-stream deltas (assistant already non-empty) do not re-clear.
