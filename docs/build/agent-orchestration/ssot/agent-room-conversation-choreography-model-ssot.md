@@ -1,0 +1,1 @@
+../../notes/agent-room-conversation-choreography-model-ssot.md

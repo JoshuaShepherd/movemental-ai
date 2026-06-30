@@ -180,6 +180,25 @@ test.describe("Agent home dock (hybrid default)", () => {
     await expect(page.getByRole("group", { name: "Pricing by stage" }).getByText("Ratify your AI Charter before anything else.")).toBeVisible();
   });
 
+  test("document ask handoff forces AGENT on first turn", async ({ page }) => {
+    const streamCalls: string[] = [];
+    page.on("request", (r) => {
+      if (r.url().includes("/api/agent-room/turn")) streamCalls.push(r.url());
+    });
+    await page.route(STREAM_PATH, (route) => {
+      route.fulfill({
+        status: 200,
+        contentType: "text/event-stream",
+        body: `data: {"type":"text_delta","delta":"Handoff pricing overview."}\n\ndata: [DONE]\n\n`,
+      });
+    });
+
+    await page.goto("/agent?ask=What%20does%20it%20cost%3F&from=nonprofits");
+    await expect(page.getByText("Handoff pricing overview.")).toBeVisible({ timeout: 15000 });
+    expect(streamCalls.length).toBeGreaterThanOrEqual(1);
+    await expect(page.getByRole("heading", { level: 1, name: "Pricing." })).not.toBeVisible();
+  });
+
   test("engine ui_render safety flow charter step is visible (AU-21)", async ({ page }) => {
     await page.route(STREAM_PATH, (route) => {
       route.fulfill({

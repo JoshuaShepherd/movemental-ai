@@ -5,3 +5,6 @@ docs/movement_leader_research/**/*.pdf
 
 # Book manuscript archives — rarely needed for site code; see docs/build/notes/curated-cleanup-plan-2026-05.md
 docs/book-development/archive/
+
+# Local agent orchestration HTML reader (regenerate: pnpm agent-orchestration:viewer:build)
+docs/build/agent-orchestration/viewer/

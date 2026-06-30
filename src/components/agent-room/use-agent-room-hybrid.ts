@@ -35,7 +35,7 @@ import {
 import { getKnownStreamChipRoute, getOpeningChipLocalScene, resolveChipRoute } from "@/lib/agent-room/composer-routing";
 import { routeInput } from "@/lib/agent-room/route-input";
 import { readAgentDeepLink, clearAgentDeepLinkParams } from "@/lib/agent-room/deep-link";
-import { stashHandoffAudience, readHandoffScene, clearHandoffScene, isWaysInDoor, type AgentSayOptions } from "@/lib/agent-room/ways-in-doors";
+import { stashHandoffAudience, readHandoffScene, clearHandoffScene, WAYS_IN_LEAD_DOOR, type AgentSayOptions } from "@/lib/agent-room/ways-in-doors";
 import { CONCIERGE_VOICE } from "@/lib/agent-room/data/concierge-voice-lines";
 import {
   DISCUSS_TURN_CAP,
@@ -158,6 +158,9 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   const genRef = useRef<Generation>({ value: 0 });
   const runRef = useRef<(name: string) => void>(() => {});
   const sendMessageRef = useRef<(raw: string) => void>(() => {});
+  const runAgentTurnRef = useRef<
+    (text: string, opts?: { classifier?: AgentMoveReason }) => void
+  >(() => {});
   const mapAnswersRef = useRef<(MapOption | null)[]>([]);
   const currentLeaderRef = useRef<number>(0);
   const lastSceneRef = useRef<string>("opening");
@@ -549,6 +552,16 @@ export function useAgentRoomHybrid(): AgentRoomController & {
       setBusy(false);
       setAgentChips(null);
 
+      const fromWaysInPanel = opts?.source === "ways-in";
+      if (fromWaysInPanel) {
+        if (text === WAYS_IN_LEAD_DOOR) {
+          run("toBeat");
+          return;
+        }
+        void runAgentTurn(text, { classifier: "open_text" });
+        return;
+      }
+
       const surface = dockExpandedRef.current ? "expanded" : "collapsed";
       const isOpeningLabel =
         getOpeningChipLocalScene(text) !== null || getKnownStreamChipRoute(text) !== null;
@@ -564,7 +577,6 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         }
       }
 
-      const fromWaysInPanel = opts?.source === "ways-in";
       const route = classifyTypedInput({
         type: "text",
         text,
@@ -572,9 +584,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         screenId: screenRef.current.id,
         freeTextStreak: freeTextStreakRef.current,
         fallbackStreak: fallbackStreakRef.current,
-        chatActive:
-          (historyRef.current.length > 0 || thread.length > 0) &&
-          !(fromWaysInPanel && isWaysInDoor(text)),
+        chatActive: historyRef.current.length > 0 || thread.length > 0,
       });
 
       freeTextStreakRef.current += 1;
@@ -598,10 +608,11 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         route.kind === "agent" ? { classifier: route.reason } : undefined,
       );
     },
-    [busy, isStreaming, run, runAgentTurn],
+    [busy, isStreaming, run, runAgentTurn, thread.length],
   );
 
   sendMessageRef.current = (raw) => sendMessage(raw);
+  runAgentTurnRef.current = (text, opts) => void runAgentTurn(text, opts);
 
   const retry = useCallback(() => {
     const text = lastTurnRef.current;
@@ -747,7 +758,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     if (busy || isStreaming || screen.id !== "home") return;
     seedSentRef.current = true;
     seedTextRef.current = null;
-    sendMessageRef.current(text);
+    runAgentTurnRef.current(text, { classifier: "open_text" });
   }, [busy, isStreaming, screen.id]);
 
   useEffect(() => {

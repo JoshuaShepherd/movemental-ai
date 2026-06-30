@@ -18,10 +18,34 @@ test.describe("Agent ways-in panel interactions", () => {
     await expect(leadDoor).toBeEnabled();
     await leadDoor.click();
     await expect(
-      page.getByRole("heading", { level: 1, name: "Let's find your simplest next step." }),
+      page.getByText("First — what kind of organization are you?"),
     ).toBeVisible({
       timeout: 8000,
     });
+  });
+
+  test("ways-in exploring cost door routes to agent not local pricing", async ({ page }) => {
+    const streamCalls: string[] = [];
+    page.on("request", (r) => {
+      if (r.url().includes("/api/agent-room/turn")) streamCalls.push(r.url());
+    });
+    await page.route("**/api/agent-room/turn", (route) => {
+      route.fulfill({
+        status: 200,
+        contentType: "text/event-stream",
+        body: `data: {"type":"text_delta","delta":"Mock pricing reply."}\n\ndata: [DONE]\n\n`,
+      });
+    });
+
+    await page.goto("/agent");
+    await page.getByRole("button", { name: "Expand drawer" }).click();
+    await expect(page.getByRole("dialog", { name: "Agent conversation" })).toBeVisible();
+
+    await page.getByRole("tab", { name: "Just exploring" }).click();
+    await page.getByRole("button", { name: "What does it cost?" }).click();
+    await expect(page.getByText("Mock pricing reply.")).toBeVisible({ timeout: 8000 });
+    expect(streamCalls.length).toBeGreaterThanOrEqual(1);
+    await expect(page.getByRole("heading", { level: 1, name: "Pricing." })).not.toBeVisible();
   });
 
   test("ways-in conversation door sends message", async ({ page }) => {

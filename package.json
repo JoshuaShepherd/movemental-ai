@@ -70,7 +70,12 @@
     "research:tree-check": "tsx scripts/validate-research-tree.ts",
     "research:tree-normalize": "tsx scripts/normalize-research-tree.ts",
     "research:export-frameworks": "tsx scripts/export-substrate-frameworks.ts",
-    "agent-room:corpus:sync": "tsx scripts/sync-agent-room-corpus.ts"
+    "agent-room:corpus:sync": "tsx scripts/sync-agent-room-corpus.ts",
+    "agent-orchestration:bundle": "bash scripts/bundle-agent-orchestration-docs.sh",
+    "agent-orchestration:sync-screen-copy": "tsx scripts/sync-agent-orchestration-screen-copy.ts",
+    "agent-orchestration:sync-screen-copy:check": "tsx scripts/sync-agent-orchestration-screen-copy.ts --check",
+    "agent-orchestration:viewer:build": "tsx scripts/sync-agent-orchestration-screen-copy.ts && tsx scripts/build-agent-orchestration-viewer.ts",
+    "agent-orchestration:viewer": "tsx scripts/sync-agent-orchestration-screen-copy.ts && tsx scripts/build-agent-orchestration-viewer.ts && node scripts/serve-agent-orchestration-viewer.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

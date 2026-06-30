@@ -1,0 +1,1 @@
+../../notes/movemental-ui-ai-design-consultation-2026-06-18.md

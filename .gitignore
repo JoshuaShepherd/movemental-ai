@@ -75,6 +75,12 @@ next-env.d.ts
 # Agent room corpus sync state (OpenAI file IDs + hashes)
 /docs/build/agents/agent-room/files/.corpus-sync-state.json
 
+# Materialized agent orchestration pack for Claude upload (pnpm agent-orchestration:bundle)
+/docs/build/agent-orchestration-bundle/
+
+# Local HTML reader output (pnpm agent-orchestration:viewer:build) — templates in scripts/agent-orchestration-viewer/
+/docs/build/agent-orchestration/viewer/
+
 # Windows reserved device names (Git cannot index these)
 /nul
 nul

@@ -4,15 +4,18 @@
 **Purpose:** Single entry point for agent-room SSOTs, supersession chains, prompt packs, and known doc/code drift.  
 **Audience:** Engineers, product, and external agents before editing dock, voice, thread, Discuss, or engine wiring.
 
+**Share pack (Claude / external agents):** [`docs/build/agent-orchestration/`](../agent-orchestration/README.md) — one directory with symlinks to all orchestration docs. Run `pnpm agent-orchestration:bundle` for a zip-friendly copy.
+
 ---
 
 ## Authority order (when docs conflict)
 
 1. **Live code + tests** — `src/lib/agent-room/`, `src/components/agent-room/`, `tests/e2e/agent-*.spec.ts`, engine seed in `movemental-ai-agents`
-2. **[Choreography SSOT](./agent-room-conversation-choreography-model-ssot.md)** — caption vs thread invariants (I1–I6), `dockState` as sole surface switch
-3. **[Chat UI SSOT](./agent-room-chat-conversation-ui-ssot.md)** — collapsed vs expanded dock, Guide vs Discuss wiring, typography, duplicate guards (except where choreography supersedes §6 / surface matrix)
-4. **[Platform complete reference](./agent-platform-complete-reference.md)** — topology, screen inventory, classifier, engine tools, capture APIs, gap list
-5. **Historical notes (dated)** — dock note, long-form Discuss spec, phase-1 status, migration ADRs — read for intent and history, not shipped behavior
+2. **[Orchestration status overview](../agent-orchestration/overview.md)** — synthesized map of say/show choreography, prompting layers, and redesign levers (planning doc; defers to SSOTs below for shipped behavior)
+3. **[Choreography SSOT](./agent-room-conversation-choreography-model-ssot.md)** — caption vs thread invariants (I1–I6), `dockState` as sole surface switch
+4. **[Chat UI SSOT](./agent-room-chat-conversation-ui-ssot.md)** — collapsed vs expanded dock, Guide vs Discuss wiring, typography, duplicate guards (except where choreography supersedes §6 / surface matrix)
+5. **[Platform complete reference](./agent-platform-complete-reference.md)** — topology, screen inventory, classifier, engine tools, capture APIs, gap list
+6. **Historical notes (dated)** — dock note, long-form Discuss spec, phase-1 status, migration ADRs — read for intent and history, not shipped behavior
 
 **Design canon (visual, not behavioral):** [INK_BAND_DESIGN_CHAIN.md](../../design/INK_BAND_DESIGN_CHAIN.md) governs typography, tokens, and “manuscript not chat app” charter. It does not override choreography invariants when they conflict with layout sketches in older specs.
 
@@ -46,6 +49,7 @@
 
 | Doc | Scope | Status | Supersedes / superseded by | Last verified |
 | --- | --- | --- | --- | --- |
+| [overview.md](../agent-orchestration/overview.md) | End-to-end orchestration map: routing, prompts, scenes, say/show, redesign levers | **Planning synthesis** | Defers to SSOTs + code; for modular redesign review | 2026-06-29 |
 | [agent-room-conversation-choreography-model-ssot.md](./agent-room-conversation-choreography-model-ssot.md) | Caption vs thread; `dockState`; I1–I6 invariants | **Active SSOT** | Supersedes chat UI surface matrix + length routing | 2026-06-17 |
 | [agent-room-chat-conversation-ui-ssot.md](./agent-room-chat-conversation-ui-ssot.md) | Dock collapsed/expanded, component tree, Guide/Discuss, typography, orphans | **Active SSOT** (partial) | Supersedes dock note + platform §4.3; **partially superseded by** choreography SSOT | 2026-06-17 |
 | [agent-platform-complete-reference.md](./agent-platform-complete-reference.md) | End-to-end topology, screens, routing, engine, capture, gaps | **Working SSOT** | Supersedes scattered phase-1 notes in part | 2026-06-17 |
@@ -133,6 +137,8 @@ Source: [movemental-ui-ai-design-consultation-2026-06-18.md](./movemental-ui-ai-
 
 | I need to… | Start here |
 | --- | --- |
+| Understand full orchestration (say + show + prompts) | [Orchestration pack](../agent-orchestration/README.md) → [overview.md](../agent-orchestration/overview.md) |
+| Plan chat-first vs screen-first redesign | [overview.md §9–10](../agent-orchestration/overview.md) |
 | Change where agent text renders | [Choreography SSOT](./agent-room-conversation-choreography-model-ssot.md) → `agent-dock.tsx`, `caption-validator.ts` |
 | Change expand/collapse or thread UI | [Chat UI SSOT](./agent-room-chat-conversation-ui-ssot.md) → `agent-dock.tsx`, `discuss-thread.tsx` |
 | Change pill routing | [Chip matrix](./agent-room-chip-routing-matrix.md) → `composer-routing.ts` |

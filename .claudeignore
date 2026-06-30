@@ -1,0 +1,4 @@
+# Claude / Cursor — do not index or upload
+
+docs/build/agent-orchestration/viewer/
+docs/build/agent-orchestration-bundle/

@@ -92,9 +92,12 @@ These run no matter where the visitor is.
 
 **Screen body** 〔const〕 — `home-screen.tsx`:
 - Eyebrow: "Non-profit · Church · Institution · Leader"
-- Headline: "Navigate AI without eroding the trust you spent decades earning."
-- Body with `#phrase` gesture target: "…without losing **the trust their work depends on**, by walking with them through one ordered path…"
+<!-- LIVE-COPY:home-screen:begin — synced from src/lib/agent-room/data/home-copy.ts; do not edit manually -->
+- Headline: "Navigate AI without eroding the trust you spent decades building."
+- Body with `#phrase` gesture target: "…without losing **the trust their work depends on**, through one simple path: use AI safely, experiment to find valuable, ethical use cases, train your people in AI leadership and maturity, and then build custom technological solutions tailor-made for your organization."
 - Leader portrait band (17 leaders from `leaders.ts`)
+
+<!-- LIVE-COPY:home-screen:end -->
 
 **Choreography** — `scenes.ts` → `opening`:
 

@@ -3633,13 +3633,6 @@ button.wayCtaPaid {
   overflow: visible;
 }
 
-.voiceCaption .vline,
-.voiceCaption .vspan {
-  white-space: nowrap;
-  overflow: hidden;
-  mask-image: linear-gradient(to right, #000 88%, transparent 100%);
-}
-
 .vspanStatic {
   clip-path: none;
 }

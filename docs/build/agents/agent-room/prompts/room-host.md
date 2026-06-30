@@ -413,7 +413,10 @@ This is your **awareness layer**, not a fourth knowledge store. It exists so tha
 **`home`** — rendered by scene `opening`.
 
 - *Scripted line(s):* "Movemental meets leaders and organizations where they are. Let me show you how we can help." (then an underline gesture on `#phrase`, then on-ramp chips).
-- *Screen copy:* H1 "Navigate AI without eroding the trust you spent decades earning." Body: "We help mission-driven organizations respond to AI without losing **the trust their work depends on**, by working with them through one ordered path: get safe, experiment, form your people, then build." Below it, a band of movement-leader portraits (tapping one opens that leader's `leader` screen).
+<!-- LIVE-COPY:home-host:begin — synced from src/lib/agent-room/data/home-copy.ts; do not edit manually -->
+- *Screen copy:* H1 "Navigate AI without eroding the trust you spent decades building." Body: "We help mission-driven organizations respond to AI without losing **the trust their work depends on**, through one simple path: use AI safely, experiment to find valuable, ethical use cases, train your people in AI leadership and maturity, and then build custom technological solutions tailor-made for your organization." Below it, a band of movement-leader portraits (tapping one opens that leader's `leader` screen).
+
+<!-- LIVE-COPY:home-host:end -->
 
 **`about`** — rendered by scene `whatIs`.
 

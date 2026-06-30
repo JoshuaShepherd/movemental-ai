@@ -1,0 +1,30 @@
+---
+description: Keep agent-room frontend copy and agent-orchestration docs in sync
+globs: src/components/agent-room/**,src/lib/agent-room/**,src/app/agent/**
+alwaysApply: false
+---
+
+# Agent room frontend ↔ orchestration doc sync
+
+When you change **visitor-visible copy**, **screen layout**, **choreography chips**, or **routing behavior** in the agent room:
+
+## Copy SSOT
+
+- Screen copy lives in `src/lib/agent-room/data/*-copy.ts` (e.g. `home-copy.ts`), not inline in components.
+- Components import from those modules (`home-screen.tsx`, `agent-room-fallback.tsx`).
+
+## After frontend copy changes
+
+1. Run `pnpm agent-orchestration:sync-screen-copy` — updates `docs/build/agent-orchestration/page-scripts/`, `movemental-room-script.md`, and `engine/prompts/room-host.md` from the TS SSOT.
+2. Do **not** hand-edit text inside `<!-- LIVE-COPY:*:begin/end -->` blocks in those files.
+3. Rebuild the docs viewer if it is open: `pnpm agent-orchestration:viewer:build` (or restart `pnpm agent-orchestration:viewer`).
+
+## After non-copy screen behavior changes
+
+Update the matching plain-English page script in `docs/build/agent-orchestration/page-scripts/` (outside LIVE-COPY blocks) so the orchestration viewer reflects what visitors actually experience.
+
+## Check before PR
+
+```bash
+pnpm agent-orchestration:sync-screen-copy --check
+```
