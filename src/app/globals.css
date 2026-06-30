@@ -1,4 +1,11 @@
 @import "tailwindcss";
+
+/* Tailwind v4 auto-detects the whole repo; exclude non-app trees (see build failure from
+   `bg-[url(...)]` in docs markdown + template HTML under public/). */
+@source not "../../docs";
+@source not "../../public";
+@source not "../../_archive";
+
 @import "@xyflow/react/dist/style.css";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";

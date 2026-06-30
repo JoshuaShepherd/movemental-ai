@@ -339,6 +339,22 @@ body {
   color: #fff;
 }
 
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn:disabled:hover {
+  border-color: var(--rule);
+  color: var(--ink-muted);
+}
+
+.btn-copied {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
 .content {
   max-width: calc(var(--measure) + 3.5rem);
   padding: 2rem 1.75rem 4rem;

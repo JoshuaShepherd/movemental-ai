@@ -12,6 +12,13 @@ const $ = (sel) => document.querySelector(sel);
 /** @type {import('./manifest-types').Manifest | null} */
 let manifest = null;
 
+/** Raw markdown for the active doc view (null on home / while loading). */
+let currentDocMarkdown = null;
+let currentDocPath = null;
+
+const COPY_MD_RESET_MS = 2000;
+let copyMdResetTimer = null;
+
 function configureMarked() {
   if (!window.marked) return;
   window.marked.setOptions({
@@ -67,6 +74,46 @@ function setRoute(path) {
 
 function findDoc(path) {
   return manifest?.documents.find((d) => d.path === path) ?? null;
+}
+
+function setCopyMarkdownState({ visible, enabled, label = "Copy markdown" }) {
+  const btn = $("#btn-copy-markdown");
+  if (!btn) return;
+  btn.hidden = !visible;
+  btn.disabled = !enabled;
+  btn.textContent = label;
+  btn.classList.toggle("btn-copied", label === "Copied!");
+}
+
+async function copyTextToClipboard(text) {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.setAttribute("readonly", "");
+  ta.style.position = "fixed";
+  ta.style.left = "-9999px";
+  document.body.appendChild(ta);
+  ta.select();
+  document.execCommand("copy");
+  document.body.removeChild(ta);
+}
+
+async function copyCurrentMarkdown() {
+  if (!currentDocMarkdown || !currentDocPath) return;
+  const btn = $("#btn-copy-markdown");
+  try {
+    await copyTextToClipboard(currentDocMarkdown);
+    if (copyMdResetTimer) clearTimeout(copyMdResetTimer);
+    setCopyMarkdownState({ visible: true, enabled: true, label: "Copied!" });
+    copyMdResetTimer = setTimeout(() => {
+      setCopyMarkdownState({ visible: true, enabled: true });
+    }, COPY_MD_RESET_MS);
+  } catch (err) {
+    if (btn) btn.title = `Copy failed: ${err}`;
+  }
 }
 
 function loadNavExpandedState() {
@@ -214,6 +261,9 @@ function renderHome() {
 
   breadcrumb.textContent = "Home — structure & prompt lab";
   highlightNav(null);
+  currentDocMarkdown = null;
+  currentDocPath = null;
+  setCopyMarkdownState({ visible: false, enabled: false });
 
   const layers = manifest.layers
     .map(
@@ -362,17 +412,26 @@ async function renderDoc(path) {
 
   if (!doc) {
     content.innerHTML = `<div class="error-state">Document not in manifest: ${escapeHtml(path)}</div>`;
+    currentDocMarkdown = null;
+    currentDocPath = null;
+    setCopyMarkdownState({ visible: false, enabled: false });
     return;
   }
 
   breadcrumb.textContent = doc.path;
   highlightNav(path);
+  currentDocMarkdown = null;
+  currentDocPath = path;
+  setCopyMarkdownState({ visible: true, enabled: false, label: "Loading…" });
   content.innerHTML = `<div class="loading">Loading ${escapeHtml(doc.title)}…</div>`;
 
   try {
     const res = await fetch(docUrl(path));
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const md = await res.text();
+    currentDocMarkdown = md;
+    currentDocPath = path;
+    setCopyMarkdownState({ visible: true, enabled: true });
     const html = window.marked.parse(md);
     const group = manifest.groups.find((g) => g.documents.some((d) => d.path === path));
 
@@ -403,6 +462,9 @@ async function renderDoc(path) {
       }
     });
   } catch (err) {
+    currentDocMarkdown = null;
+    currentDocPath = path;
+    setCopyMarkdownState({ visible: true, enabled: false });
     content.innerHTML = `<div class="error-state">Failed to load ${escapeHtml(path)}: ${escapeHtml(String(err))}</div>`;
   }
 }
@@ -426,6 +488,9 @@ function wireEvents() {
   $("#btn-refresh")?.addEventListener("click", () => loadManifest().catch(showFatal));
   $("#btn-copy-link")?.addEventListener("click", () => {
     navigator.clipboard?.writeText(location.href);
+  });
+  $("#btn-copy-markdown")?.addEventListener("click", () => {
+    void copyCurrentMarkdown();
   });
   $("#search")?.addEventListener("input", (e) => {
     renderNav(e.target.value);
