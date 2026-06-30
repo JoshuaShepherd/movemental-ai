@@ -111,7 +111,12 @@ On the **expanded** drawer, the same chip labels for About, Cost, and Get in tou
 
 ### Sheet visibility when the drawer is open
 
-The sheet **stays mounted behind the scrim** while the drawer is expanded — the visitor cannot see it. When a LOCAL scene (or an agent `ui_render`) changes the sheet, `screenKey` updates and the dock **auto-collapses**, revealing the new page. AGENT turns that reply in prose only leave the sheet unchanged and hidden until the visitor collapses manually.
+The sheet **stays mounted behind the scrim** while the drawer is expanded (I6). The visitor cannot see sheet swaps until collapse — so the room enforces a **speak-and-show guarantee**:
+
+- **Host rule:** On renderable topics, the live host **must** call the matching `show_*` tool in the same turn as prose.
+- **Client safety net:** The expanded drawer header shows **`behind: {screen name}`** (tap to collapse). If an AGENT turn completes with no `ui_render`, the thread adds **`↩ Back to {screen name}`**.
+
+When a LOCAL scene (or an agent `ui_render`) changes the sheet, `screenKey` updates and the dock **auto-collapses**, revealing the new page. A LOCAL first send from an expanded empty thread shows a brief **`Showing {screen} →`** caption during auto-collapse.
 
 ---
 

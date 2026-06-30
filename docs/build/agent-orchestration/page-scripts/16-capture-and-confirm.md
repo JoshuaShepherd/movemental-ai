@@ -115,7 +115,7 @@ While capture is active, the scene runner **blocks** until submit or skip. The d
 
 ### Sheet vs drawer
 
-Confirm replaces capture on sheet (`screenKey` change) → drawer **auto-collapses**. AGENT during capture leaves capture/confirm hidden behind scrim.
+Confirm replaces capture on sheet (`screenKey` change) → drawer **auto-collapses**. AGENT during capture: **behind: Capture** / **behind: Confirmation** indicator; **↩ Back to** affordance; host should call `show_capture` when steering to a form.
 
 **Never** speak submitted email/name/org in voice channel.
 

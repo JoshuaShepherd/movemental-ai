@@ -113,7 +113,7 @@ All follow-up chips are **scene-bound** → LOCAL regardless of dock state.
 | --- | --- |
 | Tap beat answer | LOCAL choreography — gesture, ink lines, next question or readback; drawer usually collapsed |
 | Gate fail → readback | Sheet swaps to readback; drawer collapses if open |
-| AGENT turn on beat | Drawer expands; beat **hidden behind scrim** |
+| AGENT turn on beat | **behind: Reality check**; host should call `render_beat`; **↩ Back to** if prose-only |
 
 ### Discuss offer (when enabled)
 

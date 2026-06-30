@@ -10,6 +10,7 @@ export type DiscussThreadProps = {
   liveThinking?: boolean;
   liveThinkingNote?: string;
   compact?: boolean;
+  onAffordanceAction?: (kind: "back_to_sheet", screenId: string) => void;
 };
 
 /**
@@ -20,13 +21,14 @@ export function DiscussThread({
   liveThinking,
   liveThinkingNote,
   compact = false,
+  onAffordanceAction,
 }: DiscussThreadProps) {
   const lastIdx = thread.length - 1;
   const threadClass = compact
     ? `${styles.discussThread} ${styles.discussThreadCompact}`
     : styles.discussThread;
 
-  const hasStreaming = thread.some((t) => t.streaming);
+  const hasStreaming = thread.some((t) => t.role === "assistant" && t.streaming);
   if (thread.length === 0 && !liveThinking) return null;
 
   return (
@@ -38,6 +40,16 @@ export function DiscussThread({
             className={compact ? styles.marginUserCompact : styles.threadMsgUser}
           >
             <p>{t.content}</p>
+          </div>
+        ) : t.role === "affordance" ? (
+          <div key={`affordance-${i}-${t.screenId}`} className={styles.threadAffordanceRow}>
+            <button
+              type="button"
+              className={styles.threadAffordance}
+              onClick={() => onAffordanceAction?.(t.affordanceKind, t.screenId)}
+            >
+              {t.content}
+            </button>
           </div>
         ) : t.passage ? (
           <div

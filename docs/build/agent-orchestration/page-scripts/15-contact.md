@@ -72,7 +72,7 @@
 | Message while filling form | Same classifier — may AGENT expand drawer **over** the form |
 | `chatActive` true | AGENT — follow-up in thread; host may re-render contact |
 
-**Gotcha:** AGENT expand hides the contact form behind scrim — visitor may not see form + thread at once. Collapse to return to form.
+**Mitigation:** **behind: Contact** indicator names the form sheet; **↩ Back to Contact** collapses to the form. Host should call `show_contact` on contact topics (speak-and-show).
 
 ### Sheet vs drawer
 

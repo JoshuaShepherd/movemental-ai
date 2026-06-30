@@ -21,6 +21,7 @@ import {
   FOCUS_HANDBOOK_EMAIL_EVENT,
   HANDBOOK_EMAIL_INPUT_ID,
   EXPAND_CONVERSATION_EVENT,
+  COLLAPSE_CONVERSATION_EVENT,
 } from "@/lib/agent-room/suggest-chip-targets";
 import type { AgentSayHandler, AgentSayOptions } from "@/lib/agent-room/ways-in-doors";
 import type { VoiceState } from "../use-agent-room-stream";
@@ -244,6 +245,8 @@ export function AgentDock({
   screenKey,
   highlightChipLabel = null,
   caption,
+  behindScreenName,
+  showBehindIndicator = false,
 }: {
   voice: VoiceState;
   error: string | null;
@@ -263,6 +266,9 @@ export function AgentDock({
   screenKey?: string;
   highlightChipLabel?: string | null;
   caption?: string;
+  /** Visitor label for the sheet mounted behind the scrim (G2). */
+  behindScreenName?: string | null;
+  showBehindIndicator?: boolean;
 }) {
   const [dockState, setDockState] = useState<DockState>("collapsed");
   const [value, setValue] = useState("");
@@ -302,7 +308,7 @@ export function AgentDock({
 
   // Auto-expand when agent streaming begins (I2, I3).
   useEffect(() => {
-    if (thread.some((t) => t.streaming) || (liveThinking && thread.length > 0)) {
+    if (thread.some((t) => t.role === "assistant" && t.streaming) || (liveThinking && thread.length > 0)) {
       expand("agent");
     }
   }, [thread, liveThinking, expand]);
@@ -327,6 +333,12 @@ export function AgentDock({
     document.addEventListener(EXPAND_CONVERSATION_EVENT, onExpand);
     return () => document.removeEventListener(EXPAND_CONVERSATION_EVENT, onExpand);
   }, [expand]);
+
+  useEffect(() => {
+    const onCollapse = () => collapse();
+    document.addEventListener(COLLAPSE_CONVERSATION_EVENT, onCollapse);
+    return () => document.removeEventListener(COLLAPSE_CONVERSATION_EVENT, onCollapse);
+  }, [collapse]);
 
   useEffect(() => {
     const onFocusHandbook = () => expand("user");
@@ -373,6 +385,11 @@ export function AgentDock({
   );
 
   const conversationActive = thread.length > 0 || liveThinking || Boolean(stubCapture);
+  const expandedPlaceholder =
+    placeholder ??
+    (conversationActive ? "Type here, or tap a suggestion…" : "Ask a question — or tap a door");
+  const behindLabel =
+    showBehindIndicator && behindScreenName ? `behind: ${behindScreenName}` : null;
 
   const captureFooter =
     captureMode && expanded && onHandbookCaptureSubmit ? (
@@ -385,7 +402,7 @@ export function AgentDock({
       onChange={setValue}
       onSubmit={submit}
       disabled={composerBusy}
-      placeholder={placeholder}
+      placeholder={expanded ? expandedPlaceholder : placeholder}
       inputRef={inputRef}
       expanded={expanded}
       onToggleExpand={() => expand("user")}
@@ -417,6 +434,19 @@ export function AgentDock({
               aria-label="Agent conversation"
             >
               <div className={styles.cardHeader} id="card-header">
+                {behindLabel ? (
+                  <button
+                    type="button"
+                    className={styles.behindIndicator}
+                    onClick={collapse}
+                    aria-label={`Return to ${behindScreenName} sheet`}
+                    title={`Return to ${behindScreenName}`}
+                  >
+                    {behindLabel}
+                  </button>
+                ) : (
+                  <span className={styles.cardHeaderSpacer} aria-hidden="true" />
+                )}
                 <span className={styles.cardTitle}>Conversation</span>
                 <button
                   type="button"
@@ -431,6 +461,11 @@ export function AgentDock({
               </div>
 
               <div className={styles.cardThread} id="card-thread" ref={threadRef}>
+                {caption ? (
+                  <p className={styles.threadNavCaption} role="status">
+                    {caption}
+                  </p>
+                ) : null}
                 <div className={styles.cardThreadInner}>
                   {conversationActive ? (
                     <>
@@ -440,6 +475,9 @@ export function AgentDock({
                           liveThinking={liveThinking}
                           liveThinkingNote={liveThinkingNote}
                           compact
+                          onAffordanceAction={(kind, _screenId) => {
+                            if (kind === "back_to_sheet") collapse();
+                          }}
                         />
                       ) : stubCapture ? null : (
                         <WaysInPanel onSelectDoor={handleDoorSelect} />

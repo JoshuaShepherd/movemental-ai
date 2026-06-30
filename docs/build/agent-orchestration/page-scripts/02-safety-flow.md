@@ -183,7 +183,7 @@ While on any `safetyFlow` step, typed sends still pass through the **global clas
 | Typical input | Result | Visitor sees |
 | --- | --- | --- |
 | High-confidence navigation (*"pricing"*, *"contact"*, *"the path"*) | LOCAL scene | **Leaves the wizard** — sheet swaps (e.g. pricing); dock collapses if it was open |
-| Conversational / unmatched | AGENT | Drawer expands; wizard **hidden behind scrim** until collapse — thread reply only unless host calls `show_safety_flow` |
+| Conversational / unmatched | AGENT | Drawer expands; **behind: Safety flow** indicator; host **must** call `show_safety_flow` on safety topics (speak-and-show); **↩ Back to** if prose-only |
 | After prior agent exchange | AGENT | Same — regex bypassed |
 
 The wizard’s **answer buttons** are sheet UI — they never go through the composer.

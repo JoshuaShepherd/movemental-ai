@@ -68,7 +68,7 @@ FAQ sheet **scrolls** — unlike beat. Visitor can read on-sheet while dock is c
 
 ### Sheet vs drawer
 
-Expanded AGENT hides scroll position behind scrim — visitor loses FAQ context until collapse. LOCAL chip away collapses drawer and swaps sheet.
+Expanded AGENT: **behind: FAQ** indicator preserves context label; **↩ Back to FAQ** returns to scroll position on collapse. LOCAL chip away collapses drawer and swaps sheet.
 
 ---
 

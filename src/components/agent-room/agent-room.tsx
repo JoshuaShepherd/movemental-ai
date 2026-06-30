@@ -49,6 +49,9 @@ function AgentRoomView({
   onDockStateChange,
   onDockExpand,
   highlightChipLabel,
+  behindScreenName,
+  showBehindIndicator,
+  localNavCaption,
 }: {
   screenNode: ReactNode;
   screenKey: string;
@@ -71,6 +74,9 @@ function AgentRoomView({
   onDockStateChange?: (state: DockState) => void;
   onDockExpand?: (reason: "user" | "send" | "chip" | "discuss" | "agent") => void;
   highlightChipLabel?: string | null;
+  behindScreenName?: string | null;
+  showBehindIndicator?: boolean;
+  localNavCaption?: string | null;
 }) {
   const { gestureRootEl } = useAgentRoomRefs();
   const [dockExpanded, setDockExpanded] = useState(false);
@@ -134,6 +140,9 @@ function AgentRoomView({
         onDockExpand={onDockExpand}
         screenKey={screenKey}
         highlightChipLabel={highlightChipLabel}
+        behindScreenName={behindScreenName}
+        showBehindIndicator={showBehindIndicator}
+        caption={localNavCaption ?? undefined}
       />
     </div>
   );
@@ -184,6 +193,9 @@ function HybridRoom() {
       onDockStateChange={room.onDockStateChange}
       onDockExpand={room.onDockExpand}
       highlightChipLabel={highlightChipLabel}
+      behindScreenName={room.behindScreenName}
+      showBehindIndicator={room.showBehindIndicator}
+      localNavCaption={room.localNavCaption}
     />
   );
 }

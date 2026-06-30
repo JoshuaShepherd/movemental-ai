@@ -28,12 +28,20 @@ export const FOCUS_HANDBOOK_EMAIL_EVENT = "agent-room:focus-handbook";
 
 export const EXPAND_CONVERSATION_EVENT = "agent-room:expand-conversation";
 
+export const COLLAPSE_CONVERSATION_EVENT = "agent-room:collapse-conversation";
+
 /** Expand the dock conversation panel (agent chip / typed agent turn). */
 export function requestExpandConversation(utterance?: string): void {
   if (typeof document === "undefined") return;
   document.dispatchEvent(
     new CustomEvent(EXPAND_CONVERSATION_EVENT, { detail: { utterance } }),
   );
+}
+
+/** Collapse the dock to reveal the sheet behind the scrim. */
+export function requestCollapseConversation(): void {
+  if (typeof document === "undefined") return;
+  document.dispatchEvent(new CustomEvent(COLLAPSE_CONVERSATION_EVENT));
 }
 
 /** Scroll the inline readback email field into view and focus it. */

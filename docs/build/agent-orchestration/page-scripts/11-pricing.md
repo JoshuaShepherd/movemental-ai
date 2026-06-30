@@ -75,6 +75,8 @@ Stage CTAs may link to `/enroll`, contact, or safety flow depending on tier.
 
 ### Sheet vs drawer
 
+AGENT prose-only turns show **behind: {screen}** in the drawer header and **↩ Back to {screen}** in the thread; host must call matching `show_*` on renderable topics.
+
 Visitors often land here via LOCAL routing (instant swap, collapsed dock). AGENT on pricing without `ui_render` = thread-only update, prices **not visible** until collapse.
 
 ---

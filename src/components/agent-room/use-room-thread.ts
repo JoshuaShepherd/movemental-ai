@@ -4,10 +4,12 @@ import { useCallback, useEffect, useState } from "react";
 
 import { DISCUSS_ENABLED } from "@/lib/agent-room/discuss";
 import {
+  appendBackToSheetAffordance,
   appendUserTurn,
   discardStreamingAssistant,
   finalizeAssistantTurn,
   updateStreamingAssistant,
+  threadForPersistence,
   type ThreadTurn,
 } from "@/lib/agent-room/thread";
 import { DISCUSS_PASSAGE_THRESHOLD } from "@/lib/agent-room/discuss";
@@ -19,7 +21,8 @@ function readStoredThread(): ThreadTurn[] {
   try {
     const raw = window.sessionStorage.getItem(THREAD_KEY);
     const parsed = raw ? (JSON.parse(raw) as unknown) : [];
-    return Array.isArray(parsed) ? (parsed as ThreadTurn[]) : [];
+    const rows = Array.isArray(parsed) ? (parsed as ThreadTurn[]) : [];
+    return rows.filter((t) => t.role === "user" || t.role === "assistant");
   } catch {
     return [];
   }
@@ -64,12 +67,19 @@ export function useRoomThread() {
       if (thread.length === 0) {
         window.sessionStorage.removeItem(THREAD_KEY);
       } else {
-        window.sessionStorage.setItem(THREAD_KEY, JSON.stringify(thread));
+        window.sessionStorage.setItem(
+          THREAD_KEY,
+          JSON.stringify(threadForPersistence(thread)),
+        );
       }
     } catch {
       /* non-fatal */
     }
   }, [thread]);
+
+  const appendAffordanceBackToSheet = useCallback((screenId: string, screenName: string) => {
+    setThread((prev) => appendBackToSheetAffordance(prev, screenId, screenName));
+  }, []);
 
   return {
     thread,
@@ -79,5 +89,6 @@ export function useRoomThread() {
     finalizeAssistant,
     discardStreaming,
     resetThread,
+    appendAffordanceBackToSheet,
   };
 }

@@ -97,7 +97,7 @@ Submitting **inline map email** (if shown) uses capture API — not composer.
 | --- | --- |
 | LOCAL chip (most chips) | Sheet swaps or navigates; drawer auto-collapses if open |
 | **Email me a copy** | No swap — email field focused on readback |
-| AGENT, prose only | Readback **hidden behind scrim**; thread updates |
+| AGENT, prose only (mitigated) | **behind: Read-back** shown; **↩ Back to Read-back** in thread; host should call `show_readback` on readback topics |
 | AGENT + `ui_render` readback/map | May focus email or refresh readback; collapse on `screenKey` change |
 
 ### Live model on this screen

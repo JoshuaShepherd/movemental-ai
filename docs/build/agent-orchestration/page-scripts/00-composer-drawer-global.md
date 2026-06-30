@@ -23,12 +23,13 @@ This is why typing *"what does it cost?"* on a cold visit can open the pricing s
 
 ## 2. `chatActive` is not “drawer is open”
 
-| Situation | `chatActive` | Typed send |
-| --- | --- | --- |
-| Collapsed dock, no prior thread | false | Classifier (regex + confidence + Discuss signals) |
-| Expanded drawer, **empty** thread, first send | false | **Same classifier** — expanding alone does not force chat |
-| Thread (or server history) has ≥1 user+assistant exchange | true | **AGENT always** — regex bypassed |
-| Discuss phase active | n/a | **AGENT always** |
+| Situation | `chatActive` | Typed send | Visitor signal |
+| --- | --- | --- | --- |
+| Collapsed dock, no prior thread | false | Classifier (regex + confidence + Discuss signals) | Dock legend |
+| Expanded drawer, **empty** thread, first send | false | **Same classifier** — expanding alone does not force chat | Placeholder: *Ask a question — or tap a door* |
+| LOCAL first send from expanded empty thread | false | LOCAL scene + auto-collapse | Brief `Showing {screen} →` caption |
+| Thread (or server history) has ≥1 user+assistant exchange | true | **AGENT always** — regex bypassed | — |
+| Discuss phase active | n/a | **AGENT always** | — |
 
 After the first AGENT exchange, all further typing is conversational until **replay** (logo / ↺).
 
@@ -84,20 +85,20 @@ Full regex table: [00-room-arrival-and-routing.md](./00-room-arrival-and-routing
 | Classification | Drawer | Sheet | Agent text |
 | --- | --- | --- | --- |
 | **LOCAL** | Stays collapsed, or **auto-collapses** if already open | Swaps/updates when scene includes `show` | Ink caption (`say` acts) — not thread prose |
-| **AGENT** | **Auto-expands** (or stays expanded) | Current sheet **hidden behind scrim** until collapse | Thread streaming; optional `ui_render` |
+| **AGENT** | **Auto-expands** (or stays expanded) | Current sheet **stays mounted behind scrim** (I6); **behind:** indicator always visible; optional `ui_render` | Thread streaming; host **must** call matching show tool on renderable topics |
 
 **Auto-collapse:** When `screenKey` changes (new `show` act or engine render), the dock collapses so the new sheet is visible. Voice-only LOCAL scenes (`whySafetyFirst`, `leaderWork`) do **not** change `screenKey` — drawer state unchanged.
 
-**Invisible page change:** AGENT reply **without** a show tool leaves the sheet as-is behind the scrim — only the thread updates. Collapse manually to see the sheet again.
+**No silent stale sheet:** AGENT reply **without** a show tool on a renderable topic violates host policy (speak-and-show). The client backstop: **`behind: {screen}`** in the drawer header (tap to collapse) and **`↩ Back to {screen}`** in the thread when a turn completes with no `ui_render`. Collapse manually or tap either control to see the sheet again.
 
 ---
 
 ## 6. Expand chat without sending
 
-- Sheet hidden behind scrim (invariant **I6**).
-- Empty thread → **Ways in** door panel (curated utterances; first send still uses classifier unless `chatActive`).
+- Sheet stays mounted behind scrim (invariant **I6**); **`behind: {screen}`** indicator names it while the drawer is open.
+- Empty thread → **Ways in** door panel with placeholder *"Ask a question — or tap a door"*; first send still uses classifier unless `chatActive`.
 - Opening chip labels use expanded routing (§3).
-- Escape, backdrop tap, or collapse control restores the last mounted sheet.
+- Escape, backdrop tap, collapse control, **behind:** tap, or **`↩ Back to`** affordance restores the last mounted sheet.
 
 ---
 

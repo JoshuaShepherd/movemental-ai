@@ -43,7 +43,15 @@ import {
   type DiscussReason,
   type RoomPhase,
 } from "@/lib/agent-room/discuss";
-import { handleSuggestChipTarget, focusReadbackMapEmail, HANDBOOK_EMAIL_CHIP_TARGET, focusHandbookEmail, FOCUS_HANDBOOK_EMAIL_EVENT, requestExpandConversation } from "@/lib/agent-room/suggest-chip-targets";
+import { getScreenDisplayName, shouldShowBehindIndicator } from "@/lib/agent-room/screen-display";
+import {
+  handleSuggestChipTarget,
+  focusReadbackMapEmail,
+  HANDBOOK_EMAIL_CHIP_TARGET,
+  focusHandbookEmail,
+  FOCUS_HANDBOOK_EMAIL_EVENT,
+  requestExpandConversation,
+} from "@/lib/agent-room/suggest-chip-targets";
 import { isEngineExtra, toScreenId } from "@/lib/agent-room/screen-map";
 import type { ComponentId } from "@/lib/agent-room/stream-chunk";
 import { playScene, type Generation } from "@/lib/agent-room/scene-runner";
@@ -118,6 +126,9 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   streamInput: StreamScreenInput | null;
   onDockStateChange: (state: DockState) => void;
   onDockExpand: (reason: "user" | "send" | "chip" | "discuss" | "agent") => void;
+  localNavCaption: string | null;
+  behindScreenName: string | null;
+  showBehindIndicator: boolean;
 } {
   const {
     inkLine,
@@ -136,7 +147,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     [enterDiscuss],
   );
   const roomThread = useRoomThread();
-  const { thread, setThread, appendUser, updateStreaming, finalizeAssistant, discardStreaming, resetThread } = roomThread;
+  const { thread, setThread, appendUser, updateStreaming, finalizeAssistant, discardStreaming, resetThread, appendAffordanceBackToSheet } = roomThread;
   const phaseRef = useRef<RoomPhase>(discuss.phase);
   phaseRef.current = discuss.phase;
 
@@ -154,6 +165,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   const [discussCaptureAtCap, setDiscussCaptureAtCap] = useState(false);
   const [engineExtra, setEngineExtra] = useState<EngineExtraState | null>(null);
   const [streamInput, setStreamInput] = useState<StreamScreenInput | null>(null);
+  const [localNavCaption, setLocalNavCaption] = useState<string | null>(null);
 
   const genRef = useRef<Generation>({ value: 0 });
   const runRef = useRef<(name: string) => void>(() => {});
@@ -180,6 +192,10 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   const dockExpandedRef = useRef(false);
   const screenRef = useRef(screen);
   screenRef.current = screen;
+  const engineExtraRef = useRef(engineExtra);
+  engineExtraRef.current = engineExtra;
+  /** Set before a LOCAL scene run from expanded empty thread — drives G6 nav caption. */
+  const localNavFromExpandedRef = useRef(false);
 
   useEffect(() => {
     const ls = typeof window !== "undefined" ? window.localStorage : null;
@@ -239,6 +255,10 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         setMapRead(null);
       }
       setScreen((prev) => ({ id, opts, nonce: prev.nonce + 1 }));
+      if (localNavFromExpandedRef.current) {
+        localNavFromExpandedRef.current = false;
+        setLocalNavCaption(`Showing ${getScreenDisplayName(id)} →`);
+      }
       trackAgentRoomScreenShow({
         screenId: id,
         scene: lastSceneRef.current,
@@ -518,6 +538,14 @@ export function useAgentRoomHybrid(): AgentRoomController & {
           hadUiRender: hadUiRenderRef.current,
           roomContext: { ...buildRoomContext(), mode: AGENT_ROOM_MODE },
         });
+        if (
+          !hadUiRenderRef.current &&
+          dockExpandedRef.current &&
+          shouldShowBehindIndicator(engineExtraRef.current?.component)
+        ) {
+          const sid = screenRef.current.id;
+          appendAffordanceBackToSheet(sid, getScreenDisplayName(sid));
+        }
         clearVoice();
         setVoice({ thinking: false, text: "" });
       } finally {
@@ -535,6 +563,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
       finalizeAssistant,
       inkLine,
       recordAssistantTurn,
+      appendAffordanceBackToSheet,
       updateStreaming,
     ],
   );
@@ -599,6 +628,9 @@ export function useAgentRoomHybrid(): AgentRoomController & {
       }
 
       if (route.kind === "local" && "scene" in route) {
+        if (dockExpandedRef.current && historyRef.current.length === 0 && thread.length === 0) {
+          localNavFromExpandedRef.current = true;
+        }
         run(route.scene);
         return;
       }
@@ -780,6 +812,12 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     return () => document.removeEventListener(FOCUS_HANDBOOK_EMAIL_EVENT, onOpenHandbook);
   }, []);
 
+  useEffect(() => {
+    if (!localNavCaption) return;
+    const t = window.setTimeout(() => setLocalNavCaption(null), 3500);
+    return () => window.clearTimeout(t);
+  }, [localNavCaption, screen.id, screen.nonce]);
+
   const retryChip: ComposerChip = { label: "Try again", lead: true, onSelect: retry };
   const hybridSuggestions: ComposerChip[] =
     screen.id === "beat"
@@ -816,6 +854,11 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     exitDiscuss: discuss.exitDiscuss,
     engineExtra,
     streamInput,
+    localNavCaption,
+    behindScreenName: engineExtra
+      ? null
+      : getScreenDisplayName(screen.id),
+    showBehindIndicator: shouldShowBehindIndicator(engineExtra?.component),
     showHandbookCapture,
   };
 }

@@ -63,6 +63,8 @@ Pricing tiers pull from pricing data SSOT (Sandbox free, digital license, in-per
 
 ### Sheet vs drawer
 
+AGENT prose-only turns show **behind: {screen}** in the drawer header and **↩ Back to {screen}** in the thread; host must call matching `show_*` on renderable topics.
+
 Standard: LOCAL swaps collapse drawer; AGENT prose-only hides sandbox behind scrim.
 
 ---

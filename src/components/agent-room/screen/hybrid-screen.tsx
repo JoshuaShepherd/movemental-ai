@@ -18,6 +18,8 @@ export type EngineExtraState = {
   props: Record<string, unknown>;
 };
 
+export { getScreenDisplayName, shouldShowBehindIndicator } from "@/lib/agent-room/screen-display";
+
 /**
  * Hybrid mode screen adapter — stub registry for scripted moves; engine-extra
  * components render directly when the agent emits `ui_render` for ids with no

@@ -90,7 +90,7 @@ Overlays are **AGENT-only** — they never appear from LOCAL chip taps or regex 
 | 1 | Visitor send classifies **AGENT** |
 | 2 | Drawer **expands** (or stays expanded) |
 | 3 | Host streams thread prose **and** calls `ui_render` (`network`, `audience`, `handoff_human`) |
-| 4 | Overlay mounts in screen zone; prior stub sheet **hidden behind scrim** |
+| 4 | Overlay mounts full-bleed (no behind-indicator); prior stub sheet stays mounted; speak-and-show mandatory for overlay-eligible topics before overlay |
 | 5 | If render changes overlay `screenKey`, drawer may **auto-collapse** — visitor sees overlay full-bleed |
 
 ### Type in the composer

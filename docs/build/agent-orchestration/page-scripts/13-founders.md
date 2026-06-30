@@ -63,6 +63,8 @@ Entry voice uses **pre-written founder lines** (LOCAL `say`), not model prose.
 
 ### Sheet vs drawer
 
+AGENT prose-only turns show **behind: {screen}** in the drawer header and **↩ Back to {screen}** in the thread; host must call matching `show_*` on renderable topics.
+
 Standard rules. AGENT about founders without `ui_render` hides founders sheet behind scrim.
 
 ---

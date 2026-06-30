@@ -80,7 +80,7 @@ This is the **stub sheet** shown by local choreography, not the long-form docume
 
 ### Sheet vs drawer
 
-LOCAL navigation collapses drawer. AGENT may stream with or without `show_about`; prose-only leaves about sheet hidden behind scrim.
+LOCAL navigation collapses drawer. Host must call `show_about` on about topics (speak-and-show). Prose-only → **behind: About** indicator + **↩ Back to About** affordance.
 
 ---
 

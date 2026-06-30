@@ -102,7 +102,7 @@ Return chips from voice sub-scenes loop back to dashboard/DIY/fork.
 | Fork chips (dashboard/DIY) | Sheet → safetyFlow; drawer collapses if open |
 | Voice sub-chips | Safety sheet **still visible** (collapsed dock typical) |
 | `focusHandbook` | Drawer expands; handbook email in dock — safety sheet behind scrim |
-| AGENT prose-only | Safety sheet hidden; thread only |
+| AGENT prose-only (mitigated) | **behind: Safety** + **↩ Back to Safety**; host must `show_safety_flow` or `show_path` on safety topics |
 
 ---
 

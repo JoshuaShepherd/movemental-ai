@@ -69,7 +69,7 @@ Sheet stage accordions may also call `onRunScene` — LOCAL, same as chips.
 
 ### Sheet vs drawer on this screen
 
-Path is scrollable. LOCAL chip navigation collapses an open drawer so the new sheet is visible. AGENT without `ui_render` leaves path mounted but hidden behind scrim.
+Path is scrollable. LOCAL chip navigation collapses an open drawer so the new sheet is visible. AGENT prose-only on path topics violates speak-and-show; client shows **behind: The path** and **↩ Back to The path** until collapse.
 
 ---
 

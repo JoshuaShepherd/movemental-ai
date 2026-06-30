@@ -3750,6 +3750,70 @@ button.wayCtaPaid {
   letter-spacing: -0.01em;
   color: var(--color-ink-band-ink);
   text-align: center;
+  flex: 1;
+}
+.cardHeaderSpacer {
+  flex: 0 0 5.5rem;
+}
+.behindIndicator {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 42%;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--color-ink-band-accent) 35%, var(--color-ink-band-border));
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--color-ink-band-accent) 8%, var(--color-ink-band-paper));
+  color: var(--color-ink-band-accent);
+  font-family: var(--font-ink-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+.behindIndicator:hover {
+  background: color-mix(in srgb, var(--color-ink-band-accent) 14%, var(--color-ink-band-paper));
+  border-color: color-mix(in srgb, var(--color-ink-band-accent) 55%, var(--color-ink-band-border));
+}
+.threadNavCaption {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0.5rem 1rem 0;
+  font-family: var(--font-ink-mono);
+  font-size: 0.72rem;
+  color: var(--color-ink-band-ink-muted);
+  letter-spacing: 0.02em;
+}
+.threadAffordanceRow {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0.35rem 0 0.15rem;
+}
+.threadAffordance {
+  border: 1px solid var(--color-ink-band-border);
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  background: var(--color-ink-band-paper);
+  color: var(--color-ink-band-accent);
+  font-family: var(--font-ink-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+.threadAffordance:hover {
+  border-color: color-mix(in srgb, var(--color-ink-band-accent) 45%, var(--color-ink-band-border));
+  background: color-mix(in srgb, var(--color-ink-band-accent) 6%, var(--color-ink-band-paper));
 }
 .cardCollapse {
   position: absolute;

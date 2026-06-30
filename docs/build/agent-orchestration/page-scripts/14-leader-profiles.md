@@ -85,7 +85,7 @@ Sub-scene chips (work / connect) are voice-only — **no sheet change**.
 
 ### Sheet vs drawer
 
-Leader profile visible when dock collapsed. AGENT turn expands drawer; profile hidden until collapse. Voice sub-scenes keep leader sheet mounted.
+Leader profile visible when dock collapsed. AGENT turn expands drawer; **behind: Leader profile** indicator + **↩ Back to** affordance; host should call `show_leader` when discussing this leader. Voice sub-scenes keep leader sheet mounted.
 
 ---
 

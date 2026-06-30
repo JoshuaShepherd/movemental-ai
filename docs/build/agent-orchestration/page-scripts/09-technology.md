@@ -58,6 +58,8 @@ Stage 04 Technology — modular deployment posture, free orientation vs paid bui
 
 ### Sheet vs drawer
 
+AGENT prose-only turns show **behind: {screen}** in the drawer header and **↩ Back to {screen}** in the thread; host must call matching `show_*` on renderable topics.
+
 Standard LOCAL/AGENT visibility rules apply.
 
 ---
