@@ -191,7 +191,15 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   const runRef = useRef<(name: string) => void>(() => {});
   const sendMessageRef = useRef<(raw: string, opts?: AgentSayOptions) => void>(() => {});
   const runAgentTurnRef = useRef<
-    (text: string, opts?: { classifier?: AgentMoveReason }) => void
+    (
+      text: string,
+      opts?: {
+        isRetry?: boolean;
+        classifier?: AgentMoveReason;
+        expectedRenderComponent?: ComponentId;
+        suppressSpeakShow?: boolean;
+      },
+    ) => void
   >(() => {});
   const mapAnswersRef = useRef<(MapOption | null)[]>([]);
   const currentLeaderRef = useRef<number>(0);
