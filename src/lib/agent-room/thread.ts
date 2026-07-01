@@ -1,3 +1,5 @@
+import { TOOL_ONLY_ASSISTANT_FALLBACK } from "./thinking-status";
+
 /**
  * Agent Room — single conversation thread (conversation choreography SSOT §8).
  * Replaces the split between Guide `guideMessages` and Discuss `transcript`.
@@ -96,3 +98,36 @@ export function appendBackToSheetAffordance(
 export function threadForPersistence(thread: ThreadTurn[]): ThreadTurn[] {
   return thread.filter(isPersistableTurn);
 }
+
+/** In-flight assistant prose still on the thread (may differ from SSE accumulator). */
+export function getLastStreamingAssistantContent(thread: ThreadTurn[]): string | null {
+  const last = thread[thread.length - 1];
+  if (last?.role === "assistant" && last.streaming) {
+    const trimmed = last.content.trim();
+    return trimmed.length > 0 ? trimmed : null;
+  }
+  return null;
+}
+
+/**
+ * Pick the assistant text to commit at turn end — accumulator first, then any
+ * streaming row, then a tool-only fallback when the sheet moved but prose never arrived.
+ */
+export function resolveAssistantForTurnEnd(
+  accumulator: string,
+  thread: ThreadTurn[],
+  hadUiRender: boolean,
+  /** Synchronous ref fallback when React thread state has not flushed yet. */
+  streamingFallback?: string,
+): string | null {
+  const trimmed = accumulator.trim();
+  if (trimmed) return trimmed;
+  const streaming = getLastStreamingAssistantContent(thread);
+  if (streaming) return streaming;
+  const fallback = streamingFallback?.trim();
+  if (fallback) return fallback;
+  if (hadUiRender) return TOOL_ONLY_ASSISTANT_FALLBACK;
+  return null;
+}
+
+export { TOOL_ONLY_ASSISTANT_FALLBACK };

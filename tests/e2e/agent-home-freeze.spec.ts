@@ -75,7 +75,9 @@ test.describe("Agent home freeze regression", () => {
     await waitForAgentOpeningReady(page, 20_000);
 
     await page.getByRole("button", { name: "Get a clear next AI step" }).click();
-    await expect(page.getByText("Let's find your simplest next step.")).toBeVisible({
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Let's find your simplest next step." }),
+    ).toBeVisible({
       timeout: 8000,
     });
 

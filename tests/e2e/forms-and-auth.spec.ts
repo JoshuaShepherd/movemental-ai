@@ -19,9 +19,9 @@ test.describe("Lead magnets & contact forms", () => {
     await page.goto("/field-guide");
     await page.getByLabel(/^email$/i).fill(TEST_EMAIL);
     await page.getByLabel(/organization/i).fill("E2E Test Org");
-    await page.getByRole("button", { name: /send me the field guide/i }).click();
+    await page.getByRole("button", { name: /send me the handbook/i }).click();
     await expect(
-      page.getByText("Check your inbox — It Starts With Safety is on its way."),
+      page.getByText(/check your inbox.*AI Safety Handbook is on its way/i),
     ).toBeVisible({ timeout: 15000 });
   });
 
@@ -30,19 +30,26 @@ test.describe("Lead magnets & contact forms", () => {
     await page.getByLabel(/^email$/i).fill(`sandbox+${TEST_EMAIL}`);
     await page.getByRole("button", { name: /send me the field guide/i }).click();
     await expect(
-      page.getByText("Check your inbox — It Continues With Exploration is on its way."),
+      page.getByText(/check your inbox.*continues with exploration is on its way/i),
     ).toBeVisible({ timeout: 15000 });
   });
 
   test("enroll form submits and shows confirmation", async ({ page }) => {
+    await page.route("**/api/agent-room/enroll", (route) => {
+      route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({ success: true, inquiryId: "e2e-test-inquiry" }),
+      });
+    });
     await page.goto("/enroll");
     await page.getByLabel(/^organization$/i).fill("E2E Test Church");
-    await page.getByLabel(/your name/i).fill("E2E Tester");
+    await page.getByLabel(/your full name/i).fill("E2E Tester");
     await page.getByLabel(/^email$/i).fill(`enroll+${TEST_EMAIL}`);
-    await page.getByLabel(/where your organization stands/i).fill(
+    await page.getByLabel(/where your organization stands with ai/i).fill(
       "Automated Playwright enrollment test — please ignore.",
     );
-    await page.getByRole("button", { name: /set up my dashboard/i }).click();
+    await page.getByRole("button", { name: /get started with the dashboard/i }).click();
     await expect(page.getByText(/got it/i)).toBeVisible({ timeout: 15000 });
     await expect(page.getByText(/provision within 24 hours/i)).toBeVisible();
   });

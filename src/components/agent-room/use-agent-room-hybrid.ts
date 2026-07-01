@@ -69,6 +69,8 @@ import type { StreamScreenInput, StubScreenState } from "./screen/stub/stub-scre
 import type { VoiceState } from "./use-agent-room-stream";
 import { useDiscussPhase } from "./use-discuss-phase";
 import { useRoomThread } from "./use-room-thread";
+import { resolveAssistantForTurnEnd } from "@/lib/agent-room/thread";
+import { THINKING_STATUS } from "@/lib/agent-room/thinking-status";
 import type { AgentRoomController } from "./use-agent-room-stub";
 import type { DockState } from "./shell/agent-dock";
 
@@ -158,6 +160,10 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   );
   const roomThread = useRoomThread();
   const { thread, setThread, appendUser, updateStreaming, finalizeAssistant, discardStreaming, resetThread, appendAffordanceBackToSheet } = roomThread;
+  const threadRef = useRef(thread);
+  threadRef.current = thread;
+  /** Latest streamed assistant text — updated synchronously (thread state may lag). */
+  const streamingContentRef = useRef("");
   const phaseRef = useRef<RoomPhase>(discuss.phase);
   phaseRef.current = discuss.phase;
 
@@ -449,6 +455,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         isRetry?: boolean;
         classifier?: AgentMoveReason;
         expectedRenderComponent?: ComponentId;
+        suppressSpeakShow?: boolean;
       },
     ) => {
       lastTurnRef.current = text;
@@ -466,8 +473,9 @@ export function useAgentRoomHybrid(): AgentRoomController & {
       setIsStreaming(true);
       setAgentChips([]);
       clearVoice();
-      setVoice({ thinking: true, text: "" });
+      setVoice({ thinking: true, text: "", note: THINKING_STATUS.readingQuestion });
       requestExpandConversation();
+      streamingContentRef.current = "";
 
       const controller = new AbortController();
       abortRef.current = controller;
@@ -484,20 +492,25 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         callbacks: {
           onTextDelta: (acc) => {
             requestExpandConversation();
+            streamingContentRef.current = acc;
             updateStreaming(acc);
-            setVoice({ thinking: false, text: "" });
-          },
-          onProseDiscard: () => {
-            discardStreaming();
+            setVoice({ thinking: false, text: "", note: undefined });
           },
           onProgressThinking: () => {
             setVoice((v) => ({ ...v, thinking: true }));
           },
+          onThinkingStatus: (message) => {
+            if (message) {
+              setVoice((v) => ({ ...v, thinking: true, note: message }));
+            } else {
+              setVoice((v) => ({ ...v, note: undefined }));
+            }
+          },
           onToolActivity: (label) => {
-            setVoice((v) => ({ ...v, note: label ?? undefined }));
+            setVoice((v) => ({ ...v, thinking: true, note: label ?? undefined }));
           },
           onAgentHandoff: () => {
-            setVoice({ thinking: true, text: "" });
+            setVoice({ thinking: true, text: "", note: THINKING_STATUS.handoff });
           },
           onUiRender: (component, props) => {
             hadUiRenderRef.current = true;
@@ -526,31 +539,37 @@ export function useAgentRoomHybrid(): AgentRoomController & {
       });
 
         if (result.ok === false) {
+          discardStreaming();
           if (result.error === "aborted") {
             historyRef.current = priorHistory;
             return;
           }
+          const displayError =
+            result.error === "stalled"
+              ? CONCIERGE_VOICE.stallRecovery
+              : result.error;
           if (result.retryable) {
             trackAgentRoomStallRecovery(true);
-            void inkLine(
-              result.error === "stalled"
-                ? CONCIERGE_VOICE.stallRecovery
-                : CONCIERGE_VOICE.terminalError,
-            );
-            setError(null);
-          } else {
-            setError(result.error);
           }
+          // Expanded dock owns the turn — commit the honest error in-thread and
+          // mirror it on the collapsed strip when the visitor collapses.
+          finalizeAssistant(displayError);
+          setError(displayError);
           setErrorRetryable(Boolean(result.retryable));
-          setVoice({ thinking: false, text: "" });
+          setVoice({ thinking: false, text: "", note: undefined });
           historyRef.current = priorHistory;
           return;
         }
 
-        const assistant = result.assistant;
-        if (assistant) {
-          historyRef.current = [...historyRef.current, { role: "assistant", content: assistant }];
-          finalizeAssistant(assistant);
+        const resolved = resolveAssistantForTurnEnd(
+          result.assistant,
+          threadRef.current,
+          hadUiRenderRef.current,
+          streamingContentRef.current,
+        );
+        if (resolved) {
+          historyRef.current = [...historyRef.current, { role: "assistant", content: resolved }];
+          finalizeAssistant(resolved);
           if (phaseRef.current === "discuss") recordAssistantTurn();
         }
         trackAgentRoomTurn({
@@ -561,7 +580,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
           hadUiRender: hadUiRenderRef.current,
           roomContext: { ...buildRoomContext(), mode: AGENT_ROOM_MODE },
         });
-        if (!hadUiRenderRef.current && dockExpandedRef.current) {
+        if (!hadUiRenderRef.current && dockExpandedRef.current && !opts?.suppressSpeakShow) {
           const inferredTopic = inferRenderableTopic(text);
           const renderComponent =
             opts?.expectedRenderComponent ??
@@ -582,7 +601,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
           }
         }
         clearVoice();
-        setVoice({ thinking: false, text: "" });
+        setVoice({ thinking: false, text: "", note: undefined });
       } finally {
         setIsStreaming(false);
         abortRef.current = null;
@@ -628,7 +647,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
           run("toBeat");
           return;
         }
-        void runAgentTurn(text, { classifier: "open_text" });
+        void runAgentTurn(text, { classifier: "open_text", suppressSpeakShow: true });
         return;
       }
 
@@ -790,10 +809,30 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     run("toSafety");
   }, [abandonCapture, run]);
 
+  /** True once the boot effect has started the opening scene. */
+  const openingBootedRef = useRef(false);
+  const [openingSettled, setOpeningSettled] = useState(false);
+  const prevBusyRef = useRef(busy);
+
+  useEffect(() => {
+    if (
+      openingBootedRef.current &&
+      prevBusyRef.current &&
+      !busy &&
+      screen.id === "home"
+    ) {
+      setOpeningSettled(true);
+    }
+    prevBusyRef.current = busy;
+  }, [busy, screen.id]);
+
   useEffect(() => {
     let cancelled = false;
     const boot = () => {
-      if (!cancelled) run("opening");
+      if (!cancelled) {
+        openingBootedRef.current = true;
+        run("opening");
+      }
     };
     if (typeof document !== "undefined" && "fonts" in document) {
       document.fonts.ready.then(boot).catch(boot);
@@ -843,11 +882,11 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     }
     // Wait for the opening to finish (the local scene lands on `home` and clears
     // busy) so the send isn't swallowed by the busy/streaming gate.
-    if (busy || isStreaming || screen.id !== "home") return;
+    if (!openingSettled || busy || isStreaming || screen.id !== "home") return;
     seedSentRef.current = true;
     seedTextRef.current = null;
-    runAgentTurnRef.current(text, { classifier: "open_text" });
-  }, [busy, isStreaming, screen.id]);
+    runAgentTurnRef.current(text, { classifier: "open_text", suppressSpeakShow: true });
+  }, [openingSettled, busy, isStreaming, screen.id]);
 
   useEffect(() => {
     if (sceneHandoffSentRef.current) return;
@@ -856,11 +895,11 @@ export function useAgentRoomHybrid(): AgentRoomController & {
       sceneHandoffSentRef.current = true;
       return;
     }
-    if (busy || isStreaming || screen.id !== "home") return;
+    if (!openingSettled || busy || isStreaming || screen.id !== "home") return;
     sceneHandoffSentRef.current = true;
     sceneHandoffRef.current = null;
     run(scene);
-  }, [busy, isStreaming, screen.id, run]);
+  }, [openingSettled, busy, isStreaming, screen.id, run]);
 
   useEffect(() => {
     const onOpenHandbook = () => setHandbookCaptureActive(true);

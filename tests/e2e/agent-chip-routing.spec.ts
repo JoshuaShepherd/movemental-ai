@@ -1,6 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 
-import { waitForAgentOpeningReady } from "./agent-room-helpers";
+import { waitForAgentOpeningReady, dismissSiteNotice, clickFloatChip } from "./agent-room-helpers";
 
 const STREAM_PATH = "**/api/agent-room/turn";
 
@@ -16,12 +16,13 @@ async function assertZeroTurnCalls(page: Page, action: () => Promise<void>) {
 test.describe("Agent chip routing matrix (AU-07)", () => {
   test("nonprofits doc chip handoffs to safety flow without /turn", async ({ page }) => {
     await page.goto("/agent/nonprofits");
+    await dismissSiteNotice(page);
     await expect(page.getByRole("button", { name: "What's the first step?" })).toBeVisible({
       timeout: 20000,
     });
     await assertZeroTurnCalls(page, async () => {
       await page.getByRole("button", { name: "What's the first step?" }).click();
-      await expect(page).toHaveURL(/\/agent$/);
+      await page.waitForURL(/\/agent$/, { timeout: 15000 });
       await expect(
         page.getByRole("heading", { level: 1, name: "Let's find your simplest next step." }),
       ).toBeVisible({ timeout: 12000 });
@@ -38,7 +39,7 @@ test.describe("Agent chip routing matrix (AU-07)", () => {
       timeout: 8000,
     });
     await assertZeroTurnCalls(page, async () => {
-      await page.getByRole("button", { name: "Show me Safety" }).click();
+      await clickFloatChip(page, "Show me Safety");
       await expect(
         page.getByRole("heading", { level: 1, name: /Your team is already using AI/i }),
       ).toBeVisible({ timeout: 8000 });

@@ -44,11 +44,26 @@ export function AgentThreadProse({
   text,
   className,
   ariaLive,
+  streaming = false,
 }: {
   text: string;
   className?: string;
   ariaLive?: "polite" | "off";
+  /** Plain text while deltas arrive — markdown renders after finalize. */
+  streaming?: boolean;
 }) {
+  if (streaming) {
+    return (
+      <div
+        className={[styles.passageMarkdown, styles.streamingPlain, className]
+          .filter(Boolean)
+          .join(" ")}
+        aria-live="polite"
+      >
+        <p>{text}</p>
+      </div>
+    );
+  }
   return (
     <div
       className={[styles.passageMarkdown, className].filter(Boolean).join(" ")}

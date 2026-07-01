@@ -56,7 +56,9 @@ test.describe("Agent Room", () => {
       await page.goto("/agent");
       await page.waitForTimeout(2000);
       await page.getByRole("button", { name: "Get a clear next AI step" }).click();
-      await expect(page.getByText("Let's find your simplest next step.")).toBeVisible({
+      await expect(
+        page.getByRole("heading", { level: 1, name: "Let's find your simplest next step." }),
+      ).toBeVisible({
         timeout: 3500,
       });
       await expect(
@@ -82,7 +84,50 @@ test.describe("Agent Room", () => {
       await expect.poll(() => posted).toBe(true);
     });
 
-    test("long streamed reply wraps inside the voice band after commit", async ({ page }) => {
+    test("tool-only turn keeps assistant message in expanded thread", async ({ page }) => {
+      await page.route(STREAM_PATH, (route) => {
+        route.fulfill({
+          status: 200,
+          contentType: "text/event-stream",
+          body: [
+            'data: {"type":"text_delta","delta":"Let me show you that."}\n\n',
+            'data: {"type":"tool_call","id":"t1","name":"render_beat","input":{}}\n\n',
+            'data: {"type":"ui_render","surface":"screen","component":"beat","props":{"org_kind":"church","step":1,"total":6}}\n\n',
+            "data: [DONE]\n\n",
+          ].join(""),
+        });
+      });
+      await page.goto("/agent");
+      await waitForAgentOpeningReady(page);
+      await send(page, "xyzzy plugh unexpected donor workflow question");
+      await expect(page.getByText("Let me show you that.")).toBeVisible({ timeout: 8000 });
+    });
+
+    test("streamed reply shows thinking status before first delta", async ({ page }) => {
+      await page.route(STREAM_PATH, async (route) => {
+        await new Promise((r) => setTimeout(r, 400));
+        route.fulfill({
+          status: 200,
+          contentType: "text/event-stream",
+          body: [
+            'data: {"type":"progress","phase":"thinking"}\n\n',
+            'data: {"type":"text_delta","delta":"Here is the answer."}\n\n',
+            "data: [DONE]\n\n",
+          ].join(""),
+        });
+      });
+      await page.goto("/agent");
+      await waitForAgentOpeningReady(page);
+      await send(page, "xyzzy plugh unexpected donor workflow question");
+      await expect(page.getByRole("status")).toContainText(/Thinking|Reading your question/i, {
+        timeout: 5000,
+      });
+      await expect(page.getByText("Here is the answer.")).toBeVisible({ timeout: 8000 });
+    });
+
+    test("long streamed reply wraps inside the conversation thread after commit", async ({
+      page,
+    }) => {
       const long =
         "Movemental helps leaders steward AI with clarity, safety, and formation — not as a shortcut past discernment but as infrastructure that keeps your voice, your corpus, and your community aligned over time.";
       await page.route(STREAM_PATH, (route) => {
@@ -95,20 +140,30 @@ test.describe("Agent Room", () => {
       await page.goto("/agent");
       await waitForAgentOpeningReady(page);
       await send(page, "xyzzy plugh unexpected donor workflow question");
+      await expect(page.getByRole("dialog", { name: "Agent conversation" })).toBeVisible({
+        timeout: 8000,
+      });
       await expect(page.getByText(long.slice(0, 40))).toBeVisible({ timeout: 8000 });
 
-      const fits = await page.evaluate(() => {
-        const voice = document.querySelector(".ink-band-surface [aria-live='polite']");
-        if (!voice) return false;
-        const line = voice.querySelector("[class*='vline']");
-        if (!line) return false;
-        const style = window.getComputedStyle(line);
-        if (style.whiteSpace !== "normal") return false;
-        const voiceRect = voice.getBoundingClientRect();
-        const lineRect = line.getBoundingClientRect();
-        return lineRect.right <= voiceRect.right + 2 && lineRect.left >= voiceRect.left - 2;
-      });
-      expect(fits, "committed voice line should stay inside the voice band").toBe(true);
+      const fits = await page.evaluate((snippet) => {
+        const thread = document.querySelector("#card-thread");
+        if (!thread) return false;
+        const inner = thread.querySelector("[class*='cardThreadInner']") ?? thread;
+        const prose = Array.from(thread.querySelectorAll("p")).find((p) =>
+          p.textContent?.includes(snippet),
+        );
+        if (!prose) return false;
+        const style = window.getComputedStyle(prose);
+        if (style.whiteSpace === "nowrap") return false;
+        const containerRect = inner.getBoundingClientRect();
+        const proseRect = prose.getBoundingClientRect();
+        return (
+          proseRect.right <= containerRect.right + 2 &&
+          proseRect.left >= containerRect.left - 2 &&
+          prose.scrollHeight > parseFloat(style.lineHeight) * 1.5
+        );
+      }, long.slice(0, 40));
+      expect(fits, "committed reply should wrap inside the conversation thread").toBe(true);
     });
   });
 
@@ -143,8 +198,11 @@ test.describe("Agent Room", () => {
       );
       await page.goto("/agent");
       await expect(page.locator(".ink-band-surface").first()).toBeVisible();
-      await send(page, "What is Movemental?");
-      await expect(page.getByText("Agent Room engine is not configured")).toBeVisible();
+      await waitForAgentOpeningReady(page);
+      await send(page, "xyzzy plugh unexpected donor workflow question");
+      await expect(page.getByText("Agent Room engine is not configured")).toBeVisible({
+        timeout: 8000,
+      });
       // The room is still alive (not a blank crash).
       await expect(page.locator(".ink-band-surface").first()).toBeVisible();
     });
@@ -158,8 +216,11 @@ test.describe("Agent Room", () => {
         }),
       );
       await page.goto("/agent");
-      await send(page, "hello");
-      await expect(page.getByText("Agent Room engine unreachable")).toBeVisible();
+      await waitForAgentOpeningReady(page);
+      await send(page, "xyzzy plugh unexpected donor workflow question");
+      await expect(page.getByText("Agent Room engine unreachable")).toBeVisible({
+        timeout: 8000,
+      });
       await expect(page.locator(".ink-band-surface").first()).toBeVisible();
     });
 

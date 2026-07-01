@@ -6,6 +6,7 @@
  */
 import type { RoomPhase } from "./discuss";
 import { parseSSEBuffer, type ComponentId, type StreamChunk } from "./stream-chunk";
+import { resolveProgressStatus, THINKING_STATUS } from "./thinking-status";
 
 /** Public proxy path — not `…/stream` (Cloudflare WAF blocks POST to that segment). */
 export const AGENT_ROOM_STREAM_PATH = "/api/agent-room/turn";
@@ -39,9 +40,14 @@ export type SuggestChipPayload = {
 
 export type AgentStreamCallbacks = {
   onTextDelta: (assistantSoFar: string) => void;
-  /** Model streamed preamble then invoked tools — discard partial prose before the next round. */
+  /**
+   * @deprecated Prose is no longer discarded on tool_call — the thread keeps
+   * preamble visible until the next delta replaces it or turn-end finalize runs.
+   */
   onProseDiscard?: () => void;
   onProgressThinking: () => void;
+  /** Contextual Caveat-voiced status while waiting for prose (progress phases, handoff). */
+  onThinkingStatus?: (message: string | null) => void;
   onAgentHandoff: () => void;
   onUiRender: (component: ComponentId, props: Record<string, unknown>) => void;
   onInkGesture: (kind: "underline" | "circle" | "arrow", target: string) => void;
@@ -94,12 +100,17 @@ export function dispatchStreamChunk(
   switch (chunk.type) {
     case "text_delta": {
       const next = assistant + chunk.delta;
-      // First real prose ends any "consulting…" status.
-      if (!assistant) callbacks.onToolActivity?.(null);
+      // First real prose ends any status line and tool activity.
+      if (!assistant) {
+        callbacks.onToolActivity?.(null);
+        callbacks.onThinkingStatus?.(null);
+      }
       callbacks.onTextDelta(next);
       return next;
     }
-    case "progress":
+    case "progress": {
+      const status = resolveProgressStatus(chunk, Boolean(assistant));
+      if (status) callbacks.onThinkingStatus?.(status);
       if (chunk.phase === "tool_call" && chunk.toolName) {
         callbacks.onToolActivity?.(
           chunk.status === "completed" ? null : toolLabel(chunk.toolName),
@@ -108,12 +119,12 @@ export function dispatchStreamChunk(
         callbacks.onProgressThinking();
       }
       break;
+    }
     case "tool_call":
       callbacks.onToolActivity?.(toolLabel(chunk.name));
-      // The adapter may emit a short preamble before tool_use. The next model round
-      // generates a fresh answer — keep client accumulation aligned with that round.
+      // Reset accumulator for the next model round; keep thread prose visible
+      // until the next text_delta replaces it or turn-end finalize commits it.
       if (assistant) {
-        callbacks.onProseDiscard?.();
         return "";
       }
       break;
@@ -122,6 +133,7 @@ export function dispatchStreamChunk(
       break;
     case "agent_handoff":
       callbacks.onToolActivity?.(null);
+      callbacks.onThinkingStatus?.(THINKING_STATUS.handoff);
       callbacks.onAgentHandoff();
       return "";
     case "ui_render":

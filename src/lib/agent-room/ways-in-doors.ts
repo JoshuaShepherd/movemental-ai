@@ -12,6 +12,8 @@ export type AgentSayOptions = {
   source?: "ways-in";
   /** Expected `ui_render` target for speak-and-show (G4 expanded info chips). */
   renderComponent?: ComponentId;
+  /** When true, keep the agent reply in the conversation thread — do not auto-render a local screen. */
+  suppressSpeakShow?: boolean;
 };
 
 export type AgentSayHandler = (text: string, opts?: AgentSayOptions) => void;

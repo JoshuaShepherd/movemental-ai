@@ -18,7 +18,7 @@ for (const vp of [
         document.querySelectorAll("img[alt='']"),
       ) as HTMLImageElement[];
       const portraits = imgs.filter((img) =>
-        img.closest("[class*='leaderCardPortrait']"),
+        img.closest("[class*='carPortrait']"),
       );
       const screenRect = screen?.getBoundingClientRect();
       const imgRects = portraits.slice(0, 3).map((img) => img.getBoundingClientRect());

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 
 import { useAgentRoomRefs } from "../agent-room-context";
 import styles from "../ink-band.module.css";
@@ -14,14 +14,20 @@ import styles from "../ink-band.module.css";
 export function ScreenZone({
   scroll,
   home,
+  screenKey,
   children,
 }: {
   scroll: boolean;
   /** The opening/home sheet — centered, no margin rule. */
   home: boolean;
+  /** Bumps when the active stub screen changes — resets scroll position. */
+  screenKey?: string;
   children: ReactNode;
 }) {
   const { screenEl, sheetEl } = useAgentRoomRefs();
+  useEffect(() => {
+    screenEl.current?.scrollTo({ top: 0, behavior: "instant" });
+  }, [screenKey, screenEl]);
   return (
     <section
       ref={screenEl}

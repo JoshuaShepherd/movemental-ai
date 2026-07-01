@@ -85,7 +85,7 @@ describe("agent-stream-turn", () => {
     expect(onToolActivity).toHaveBeenCalledWith("consulting the field guide");
   });
 
-  it("clears tool-call preamble prose before the next model round streams", () => {
+  it("resets accumulator on tool_call without discarding visible prose", () => {
     const onTextDelta = vi.fn();
     const onProseDiscard = vi.fn();
     const cb = callbacks({ onTextDelta, onProseDiscard });
@@ -103,7 +103,7 @@ describe("agent-stream-turn", () => {
       cb,
     );
     expect(afterTool).toBe("");
-    expect(onProseDiscard).toHaveBeenCalledOnce();
+    expect(onProseDiscard).not.toHaveBeenCalled();
 
     const afterAnswer = dispatchStreamChunk(
       { type: "text_delta", delta: "That's a fair question, and the skepticism is welcome." },
@@ -114,6 +114,36 @@ describe("agent-stream-turn", () => {
     expect(onTextDelta).toHaveBeenLastCalledWith(
       "That's a fair question, and the skepticism is welcome.",
     );
+  });
+
+  it("surfaces progress phase status via onThinkingStatus", () => {
+    const onThinkingStatus = vi.fn();
+    dispatchStreamChunk(
+      { type: "progress", phase: "initializing" },
+      "",
+      callbacks({ onThinkingStatus }),
+    );
+    expect(onThinkingStatus).toHaveBeenCalledWith("Getting oriented…");
+  });
+
+  it("prefers engine progress message over phase default", () => {
+    const onThinkingStatus = vi.fn();
+    dispatchStreamChunk(
+      { type: "progress", phase: "thinking", message: "Reviewing your last answer…" },
+      "",
+      callbacks({ onThinkingStatus }),
+    );
+    expect(onThinkingStatus).toHaveBeenCalledWith("Reviewing your last answer…");
+  });
+
+  it("sets handoff status on agent_handoff", () => {
+    const onThinkingStatus = vi.fn();
+    dispatchStreamChunk(
+      { type: "agent_handoff", from: "room-host", to: "room-diagnostician", reason: "test" },
+      "partial",
+      callbacks({ onThinkingStatus }),
+    );
+    expect(onThinkingStatus).toHaveBeenCalledWith("Composing the read-back…");
   });
 
   it("clears tool activity once the first prose delta arrives", () => {

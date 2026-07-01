@@ -9,6 +9,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { resolveStreamChipRoute } from "@/lib/agent-room/composer-routing";
 import { runAgentStreamTurn } from "@/lib/agent-room/agent-stream-turn";
+import { resolveAssistantForTurnEnd } from "@/lib/agent-room/thread";
+import { THINKING_STATUS } from "@/lib/agent-room/thinking-status";
 import { beatScene } from "@/lib/agent-room/beat-scenes";
 import type { Scene, SceneFactory, ScreenId, ShowOpts, SuggestChip } from "@/lib/agent-room/acts";
 import { submitLead, LEADS } from "@/lib/agent-room/capture";
@@ -90,6 +92,9 @@ export function useAgentRoomStream() {
   const discuss = useDiscussPhase();
   const { enterDiscuss, resetDiscuss, recordAssistantTurn } = discuss;
   const { thread, appendUser, updateStreaming, finalizeAssistant, discardStreaming, resetThread } = useRoomThread();
+  const threadRef = useRef(thread);
+  threadRef.current = thread;
+  const streamingContentRef = useRef("");
   const dockExpandedRef = useRef(false);
   // Latest phase for the async send loop (avoids a stale closure on `phase`).
   const phaseRef = useRef<RoomPhase>(discuss.phase);
@@ -128,6 +133,7 @@ export function useAgentRoomStream() {
   const abortRef = useRef<AbortController | null>(null);
   /** Last text sent to the agent — replayed by `retry()` after a transient fail. */
   const lastTurnRef = useRef<string | null>(null);
+  const hadUiRenderRef = useRef(false);
 
   useEffect(() => {
     const ls = typeof window !== "undefined" ? window.localStorage : null;
@@ -336,6 +342,7 @@ export function useAgentRoomStream() {
       setLocalChips(null);
 
       lastTurnRef.current = text;
+      hadUiRenderRef.current = false;
 
       const priorHistory = [...historyRef.current];
       historyRef.current = [...historyRef.current, { role: "user", content: text }];
@@ -349,8 +356,9 @@ export function useAgentRoomStream() {
       setIsStreaming(true);
       setAgentChips([]);
       clearVoice();
-      setVoice({ thinking: true, text: "" });
+      setVoice({ thinking: true, text: "", note: THINKING_STATUS.readingQuestion });
       requestExpandConversation();
+      streamingContentRef.current = "";
 
       const controller = new AbortController();
       abortRef.current = controller;
@@ -366,23 +374,29 @@ export function useAgentRoomStream() {
           callbacks: {
             onTextDelta: (acc) => {
               requestExpandConversation();
+              streamingContentRef.current = acc;
               updateStreaming(acc);
-              setVoice({ thinking: false, text: "" });
-            },
-            onProseDiscard: () => {
-              discardStreaming();
+              setVoice({ thinking: false, text: "", note: undefined });
             },
             onProgressThinking: () => {
               setVoice((v) => ({ ...v, thinking: true }));
             },
+            onThinkingStatus: (message) => {
+              if (message) {
+                setVoice((v) => ({ ...v, thinking: true, note: message }));
+              } else {
+                setVoice((v) => ({ ...v, note: undefined }));
+              }
+            },
             onToolActivity: (label) => {
-              setVoice((v) => ({ ...v, note: label ?? undefined }));
+              setVoice((v) => ({ ...v, thinking: true, note: label ?? undefined }));
             },
             onAgentHandoff: () => {
               setComposing(true);
-              setVoice({ thinking: true, text: "" });
+              setVoice({ thinking: true, text: "", note: THINKING_STATUS.handoff });
             },
             onUiRender: (component, rawProps) => {
+              hadUiRenderRef.current = true;
               const props = validateComponentProps(component, rawProps);
               if (!props) return;
               if (component === "capture" && (props as { kind?: string }).kind === "map") {
@@ -420,31 +434,33 @@ export function useAgentRoomStream() {
         });
 
         if (result.ok === false) {
+          discardStreaming();
           if (result.error === "aborted") return;
-          if (result.retryable) {
-            void inkLine(
-              result.error === "stalled"
-                ? CONCIERGE_VOICE.stallRecovery
-                : CONCIERGE_VOICE.terminalError,
-            );
-            setError(null);
-          } else {
-            setError(result.error);
-          }
+          const displayError =
+            result.error === "stalled"
+              ? CONCIERGE_VOICE.stallRecovery
+              : result.error;
+          finalizeAssistant(displayError);
+          setError(displayError);
           setErrorRetryable(Boolean(result.retryable));
-          setVoice({ thinking: false, text: "" });
+          setVoice({ thinking: false, text: "", note: undefined });
           historyRef.current = priorHistory;
           return;
         }
 
-        const assistant = result.assistant;
-        if (assistant) {
-          historyRef.current = [...historyRef.current, { role: "assistant", content: assistant }];
-          finalizeAssistant(assistant);
+        const resolved = resolveAssistantForTurnEnd(
+          result.assistant,
+          threadRef.current,
+          hadUiRenderRef.current,
+          streamingContentRef.current,
+        );
+        if (resolved) {
+          historyRef.current = [...historyRef.current, { role: "assistant", content: resolved }];
+          finalizeAssistant(resolved);
           if (phaseRef.current === "discuss") recordAssistantTurn();
         }
         clearVoice();
-        setVoice({ thinking: false, text: "" });
+        setVoice({ thinking: false, text: "", note: undefined });
       } finally {
         setComposing(false);
         setIsStreaming(false);

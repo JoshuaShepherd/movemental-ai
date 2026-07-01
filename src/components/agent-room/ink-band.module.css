@@ -3520,6 +3520,7 @@ button.wayCtaPaid {
 .roomDock .screen {
   /* Clear the fixed dock: handwriting strip + chips + collapsed card (no replay legend). */
   padding-bottom: clamp(10rem, calc(14vh + 8rem), 14.5rem);
+  z-index: 1;
 }
 .roomDock .screen.scroll {
   /* Long sheets (safety readback, FAQ, …) need room to scroll past the dock. */
@@ -3530,7 +3531,7 @@ button.wayCtaPaid {
 .agentDock {
   position: fixed;
   inset: auto 0 0 0;
-  z-index: 20;
+  z-index: 35;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -3549,6 +3550,16 @@ button.wayCtaPaid {
   box-shadow:
     0 -1px 0 color-mix(in srgb, var(--color-ink-band-paper) 55%, transparent),
     0 -10px 36px -14px color-mix(in srgb, var(--color-ink-band-ink) 10%, transparent);
+  isolation: isolate;
+  pointer-events: none;
+}
+.agentDockPanel a,
+.agentDockPanel button,
+.agentDockPanel input,
+.agentDockPanel textarea,
+.agentDockPanel select,
+.agentDockPanel [role="dialog"] {
+  pointer-events: auto;
 }
 .agentDockPanel::before {
   content: "";
@@ -3599,7 +3610,12 @@ button.wayCtaPaid {
   min-height: 3.2rem;
   max-height: min(28vh, 9rem);
   overflow-x: hidden;
-  overflow-y: visible;
+  overflow-y: hidden;
+  pointer-events: none;
+}
+.handwritingStrip button,
+.handwritingStrip a {
+  pointer-events: auto;
 }
 .agentDockExpanded .handwritingStrip {
   max-height: 0;
@@ -3639,7 +3655,7 @@ button.wayCtaPaid {
 
 .agentFloat {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   max-width: 42rem;
   margin: 0 auto;
@@ -3655,6 +3671,8 @@ button.wayCtaPaid {
 }
 
 .floatChips {
+  position: relative;
+  z-index: 5;
   display: flex;
   align-items: center;
   gap: var(--ink-pill-gap, 0.45rem);
@@ -3672,6 +3690,8 @@ button.wayCtaPaid {
 }
 
 .floatChip {
+  position: relative;
+  z-index: 1;
   flex: 0 0 auto;
   max-width: none;
   white-space: nowrap;
@@ -5041,6 +5061,29 @@ button.wayCtaPaid {
   font-style: italic;
   color: var(--color-ink-band-ink-muted);
   animation: discussComposerIn 0.3s ease;
+}
+/* Caveat hand line beside the thinking pulse in the expanded drawer. */
+.thinkingHand {
+  font-family: var(--font-ink-hand);
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  font-style: normal;
+  color: var(--color-ink-band-blue);
+  animation: discussComposerIn 0.3s ease;
+}
+.streamingPlain {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.streamingPlain p {
+  margin: 0;
+}
+.agentCardExpanded .streamingPlain {
+  font-family: var(--font-ink-body);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--color-ink-band-ink);
 }
 @keyframes pulse {
   0%,

@@ -1,6 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 
-import { AGENT_HOME_H1, waitForAgentOpeningReady } from "./agent-room-helpers";
+import { AGENT_HOME_H1, waitForAgentOpeningReady, clickFloatChip } from "./agent-room-helpers";
 
 const STREAM_PATH = "**/api/agent-room/turn";
 const PRICING_HEADING = "Pricing.";
@@ -123,7 +123,7 @@ test.describe("Agent home dock (hybrid default)", () => {
     await expect(page.getByText("One ordered path. It starts with Safety.")).toBeVisible({
       timeout: 8000,
     });
-    await page.getByRole("button", { name: "Show me Safety" }).click();
+    await clickFloatChip(page, "Show me Safety");
     await expect(
       page.getByRole("heading", {
         level: 1,
@@ -205,7 +205,7 @@ test.describe("Agent home dock (hybrid default)", () => {
         status: 200,
         contentType: "text/event-stream",
         body:
-          'data: {"type":"ui_render","component":"safetyFlow","props":{"step":"charter"}}\n\n' +
+          'data: {"type":"ui_render","surface":"screen","component":"safetyFlow","props":{"step":"charter"}}\n\n' +
           "data: [DONE]\n\n",
       });
     });

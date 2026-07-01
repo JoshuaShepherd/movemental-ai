@@ -1,5 +1,7 @@
 import { expect, test } from "@playwright/test";
 
+import { waitForAgentOpeningReady } from "./agent-room-helpers";
+
 test.describe("Agent ways-in panel interactions", () => {
   test("expanded ways-in doors and composer work after opening", async ({ page }) => {
     await page.goto("/agent");
@@ -38,6 +40,7 @@ test.describe("Agent ways-in panel interactions", () => {
     });
 
     await page.goto("/agent");
+    await waitForAgentOpeningReady(page);
     await page.getByRole("button", { name: "Expand drawer" }).click();
     await expect(page.getByRole("dialog", { name: "Agent conversation" })).toBeVisible();
 

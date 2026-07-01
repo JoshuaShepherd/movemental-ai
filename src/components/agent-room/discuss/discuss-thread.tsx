@@ -1,6 +1,7 @@
 "use client";
 
 import type { ThreadTurn } from "@/lib/agent-room/thread";
+import { DEFAULT_THINKING_STATUS } from "@/lib/agent-room/thinking-status";
 import styles from "../ink-band.module.css";
 import { AgentThreadProse, PassageMarkdown } from "./passage-markdown";
 
@@ -31,18 +32,20 @@ export function DiscussThread({
   const hasStreaming = thread.some((t) => t.role === "assistant" && t.streaming);
   if (thread.length === 0 && !liveThinking) return null;
 
+  const thinkingLabel = liveThinkingNote?.trim() || DEFAULT_THINKING_STATUS;
+
   return (
     <div className={threadClass}>
       {thread.map((t, i) =>
         t.role === "user" ? (
           <div
-            key={`user-${i}-${t.content.slice(0, 16)}`}
+            key={`turn-${i}`}
             className={compact ? styles.marginUserCompact : styles.threadMsgUser}
           >
             <p>{t.content}</p>
           </div>
         ) : t.role === "affordance" ? (
-          <div key={`affordance-${i}-${t.screenId}`} className={styles.threadAffordanceRow}>
+          <div key={`turn-${i}`} className={styles.threadAffordanceRow}>
             <button
               type="button"
               className={styles.threadAffordance}
@@ -53,7 +56,7 @@ export function DiscussThread({
           </div>
         ) : t.passage ? (
           <div
-            key={`agent-${i}-${t.content.slice(0, 16)}`}
+            key={`turn-${i}`}
             className={`${compact ? styles.passageCompact : styles.passage} ${styles.passageMarkdown} ${
               i === lastIdx && !hasStreaming ? styles.settle : ""
             }`}
@@ -61,12 +64,10 @@ export function DiscussThread({
             <PassageMarkdown text={t.content} />
           </div>
         ) : (
-          <div
-            key={`agent-${i}-${t.content.slice(0, 16)}`}
-            className={styles.threadMsgAgent}
-          >
+          <div key={`turn-${i}`} className={styles.threadMsgAgent}>
             <AgentThreadProse
               text={t.content}
+              streaming={Boolean(t.streaming)}
               className={
                 t.streaming
                   ? `${compact ? styles.liveInkCompact : styles.liveInk} ${styles.settle}`
@@ -80,11 +81,9 @@ export function DiscussThread({
         ),
       )}
       {liveThinking && !hasStreaming ? (
-        <div className={styles.thinking}>
+        <div className={styles.thinking} role="status">
           <span className={styles.pulse} aria-hidden="true" />
-          {liveThinkingNote ? (
-            <span className={styles.thinkingNote}>{liveThinkingNote}…</span>
-          ) : null}
+          <span className={styles.thinkingHand}>{thinkingLabel}</span>
         </div>
       ) : null}
     </div>

@@ -118,7 +118,7 @@ function AgentRoomView({
       <InkOverlay />
       <Mast onHome={onReplay} />
 
-      <ScreenZone scroll={scroll && !dockExpanded} home={home && !dockExpanded}>
+      <ScreenZone scroll={scroll && !dockExpanded} home={home && !dockExpanded} screenKey={screenKey}>
         <div
           key={screenKey}
           className={`${styles.settle} ${dockExpanded ? styles.screenBehindScrim : ""}`}
