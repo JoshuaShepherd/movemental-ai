@@ -2,6 +2,7 @@
 import Link from "next/link";
 
 import { InkBandUtilityShell } from "@/components/ink-band/utility-shell";
+import { DocumentGraphNav } from "@/components/linking/document-graph-nav";
 import type { FounderProfile } from "@/lib/founders/content";
 
 import styles from "./founder-profile.module.css";
@@ -84,6 +85,8 @@ export function FounderProfilePage({ profile }: FounderProfilePageProps) {
             ))}
           </div>
         </section>
+
+        <DocumentGraphNav current="agent" />
       </article>
     </InkBandUtilityShell>
   );

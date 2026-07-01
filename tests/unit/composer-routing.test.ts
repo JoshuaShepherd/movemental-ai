@@ -19,10 +19,14 @@ describe("composer routing (PAR-02)", () => {
   it("routes info chips to agent utterances in stream mode", () => {
     expect(
       resolveStreamChipRoute({ label: "About Movemental", say: "About Movemental" }),
-    ).toEqual({ kind: "agent", utterance: "About Movemental" });
+    ).toEqual({ kind: "agent", utterance: "About Movemental", renderComponent: "about" });
     expect(
       resolveStreamChipRoute({ label: "What does it cost?", say: "What does it cost?" }),
-    ).toEqual({ kind: "agent", utterance: "What does it cost?" });
+    ).toEqual({
+      kind: "agent",
+      utterance: "What does it cost?",
+      renderComponent: "pricing",
+    });
   });
 
   it("resolveChipRoute collapsed → local scenes for opening info chips", () => {
@@ -43,16 +47,28 @@ describe("composer routing (PAR-02)", () => {
     ).toEqual({ kind: "local", scene: "toSafetyFlow" });
   });
 
-  it("resolveChipRoute expanded → agent utterances for opening info chips", () => {
+  it("resolveChipRoute expanded → agent utterances with renderComponent (G4)", () => {
     expect(
       resolveChipRoute({ label: "About Movemental", say: "About Movemental" }, "expanded"),
-    ).toEqual({ kind: "agent", utterance: "About Movemental" });
+    ).toEqual({
+      kind: "agent",
+      utterance: "About Movemental",
+      renderComponent: "about",
+    });
     expect(
       resolveChipRoute({ label: "What does it cost?", say: "What does it cost?" }, "expanded"),
-    ).toEqual({ kind: "agent", utterance: "What does it cost?" });
+    ).toEqual({
+      kind: "agent",
+      utterance: "What does it cost?",
+      renderComponent: "pricing",
+    });
     expect(
       resolveChipRoute({ label: "Get in touch", say: "Get in touch" }, "expanded"),
-    ).toEqual({ kind: "agent", utterance: "Get in touch" });
+    ).toEqual({
+      kind: "agent",
+      utterance: "Get in touch",
+      renderComponent: "contact",
+    });
   });
 
   it("resolveChipRoute scene follow-ups fall through to agent utterance (handled by suggest.to)", () => {
@@ -101,6 +117,12 @@ describe("composer routing (PAR-02)", () => {
         expect(resolveChipRoute({ label, say: label }, "expanded")).toEqual({
           kind: "agent",
           utterance: label,
+          renderComponent:
+            label === "About Movemental"
+              ? "about"
+              : label === "What does it cost?"
+                ? "pricing"
+                : "contact",
         });
       }
     }

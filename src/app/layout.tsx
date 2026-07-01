@@ -3,6 +3,7 @@ import { Inter, Playfair_Display, IBM_Plex_Mono } from "next/font/google";
 import { canonicalSiteOrigin } from "@/lib/site-url";
 
 import { AnnouncementBar } from "@/components/announcement-bar";
+import { isSiteLaunchReady } from "@/lib/site-launch";
 
 import { Providers } from "./providers";
 
@@ -71,7 +72,7 @@ export default async function RootLayout({
           <a href="#main" className="skip-link">
             Skip to content
           </a>
-          <AnnouncementBar />
+          {!isSiteLaunchReady() ? <AnnouncementBar /> : null}
           <main id="main" className="flex min-w-0 flex-1 flex-col">
             {children}
           </main>

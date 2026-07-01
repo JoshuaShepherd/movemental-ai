@@ -2,7 +2,7 @@
 
 **Purpose:** Universal rules for the agent dock on every stub screen in `/agent`. Each page script adds a **Composer & drawer** section with screen-specific chips and quirks; this file is the shared mechanics layer.
 
-**Code SSOT:** `move-classifier.ts`, `route-input.ts`, `composer-routing.ts`, `shell/agent-dock.tsx`, `use-agent-room-hybrid.ts`
+**Code SSOT:** `move-classifier.ts`, `navigation-shape.ts`, `route-input.ts`, `renderable-topics.ts`, `composer-routing.ts`, `shell/agent-dock.tsx`, `use-agent-room-hybrid.ts`
 
 **Related:** [00-room-arrival-and-routing.md](./00-room-arrival-and-routing.md) (shell + classifier tree), [01-home.md](./01-home.md) (worked example)
 
@@ -17,19 +17,20 @@ Every chip tap or composer **Send** is classified **LOCAL** or **AGENT** before 
 | **LOCAL** | None (scripted `SCENES`) | Sheet may swap; short **ink caption** in collapsed handwriting strip |
 | **AGENT** | POST `/api/agent-room/turn` (SSE) | Drawer **expands**; reply streams in **thread**; host may call `ui_render` tools |
 
-This is why typing *"what does it cost?"* on a cold visit can open the pricing sheet instead of feeling like chat — high-confidence regex routing is LOCAL by design.
+First-send routing uses **navigation shape** (`navigationShape()`), not invisible session heuristics — see §4.
 
 ---
 
 ## 2. `chatActive` is not “drawer is open”
 
-| Situation | `chatActive` | Typed send | Visitor signal |
+| Situation | `chatActive` | Typed send | Composer placeholder |
 | --- | --- | --- | --- |
-| Collapsed dock, no prior thread | false | Classifier (regex + confidence + Discuss signals) | Dock legend |
-| Expanded drawer, **empty** thread, first send | false | **Same classifier** — expanding alone does not force chat | Placeholder: *Ask a question — or tap a door* |
-| LOCAL first send from expanded empty thread | false | LOCAL scene + auto-collapse | Brief `Showing {screen} →` caption |
-| Thread (or server history) has ≥1 user+assistant exchange | true | **AGENT always** — regex bypassed | — |
+| Collapsed dock, no prior thread | false | Navigation-shape classifier | `Search or ask…` |
+| Expanded drawer, **empty** thread, first send | false | Same classifier | `Search or ask…` |
+| Thread has ≥1 exchange | true | **AGENT always** | `Ask a follow-up…` |
 | Discuss phase active | n/a | **AGENT always** | — |
+
+While typing (any state): navigation-shaped buffer shows `↵ opens the {screen} page`; otherwise `↵ starts a chat` (advisory only).
 
 After the first AGENT exchange, all further typing is conversational until **replay** (logo / ↺).
 
@@ -39,20 +40,22 @@ After the first AGENT exchange, all further typing is conversational until **rep
 
 ### Opening labels (four only)
 
-These labels appear on the home opening scene and flip behavior by dock state:
-
 | Label | Collapsed dock | Expanded drawer |
 | --- | --- | --- |
 | Get a clear next AI step | LOCAL → safety flow | LOCAL → safety flow |
-| About Movemental | LOCAL → about | AGENT utterance |
-| What does it cost? | LOCAL → pricing | AGENT utterance |
-| Get in touch | LOCAL → contact | AGENT utterance |
+| About Movemental | LOCAL → about | AGENT → speak + `show_about` |
+| What does it cost? | LOCAL → pricing | AGENT → speak + `show_pricing` |
+| Get in touch | LOCAL → contact | AGENT → speak + `show_contact` |
 
-If one of these labels appears as a float chip on **any** inner screen (e.g. **What does it cost?** on path), the same collapsed/expanded rule applies.
+Expanded informational chips **must not** re-author sheet facts in thread prose (see §5 / `renderable-topics.ts`).
+
+If one of these labels appears as a float chip on **any** inner screen, the same collapsed/expanded rule applies.
+
+**G1 reversal** (`Actually, just answer me ↩`) appears only for **typed LOCAL** sends — never chip taps.
 
 ### Scene follow-up chips (everything else)
 
-All chips bound to a scene target (`to: "toPath"`, `to: "toBeat"`, etc.) — including **See the whole path**, **Map where we actually stand**, **Show me Safety**, **↺ Start over** — run **LOCAL scenes regardless of dock state**. Tapping them swaps or updates the sheet; they never become AGENT utterances.
+All chips bound to a scene target — including **See the whole path**, **Map where we actually stand**, **Show me Safety**, **↺ Start over** — run **LOCAL scenes regardless of dock state**.
 
 ### Special chip targets (no scene swap)
 
@@ -70,13 +73,13 @@ All chips bound to a scene target (`to: "toPath"`, `to: "toBeat"`, etc.) — inc
 ## 4. Typed text — classifier order (when `chatActive` is false)
 
 1. **Discuss phase** → AGENT  
-2. **Meta/objection** or streak thresholds → LOCAL `discussOffer` (consent chips) — **blocked on `beat` screen**  
-3. **Regex match** (`route-input.ts`, first match) → LOCAL if **high-confidence**; else AGENT  
-4. **No match** → AGENT (`open_text`)
+2. **Meta/objection** or streak thresholds → LOCAL `discussOffer` — **blocked on `beat` screen**  
+3. **`navigationShape()`** → LOCAL if short + leading/sole keyword + not hedged; else AGENT  
+4. (Legacy regex table in `route-input.ts` is keyword source only — not the routing decision)
 
-High-confidence gating prevents bare keywords inside long sentences from hijacking navigation (e.g. *"a question about donors"* → AGENT, not about screen).
+Examples that must stay **AGENT**: *question about donors*, *i'm worried about what AI will cost us in trust*, *how should we think about AI and our donors?*
 
-Full regex table: [00-room-arrival-and-routing.md](./00-room-arrival-and-routing.md) §5.
+Implementation: `src/lib/agent-room/navigation-shape.ts`.
 
 ---
 
@@ -84,21 +87,22 @@ Full regex table: [00-room-arrival-and-routing.md](./00-room-arrival-and-routing
 
 | Classification | Drawer | Sheet | Agent text |
 | --- | --- | --- | --- |
-| **LOCAL** | Stays collapsed, or **auto-collapses** if already open | Swaps/updates when scene includes `show` | Ink caption (`say` acts) — not thread prose |
-| **AGENT** | **Auto-expands** (or stays expanded) | Current sheet **stays mounted behind scrim** (I6); **behind:** indicator always visible; optional `ui_render` | Thread streaming; host **must** call matching show tool on renderable topics |
+| **LOCAL** (typed) | Collapsed or auto-collapse | Swaps | Ink caption + reversal affordance (~8s) |
+| **LOCAL** (chip) | Same | Swaps | Ink caption only |
+| **AGENT** | Auto-expands | Mounted behind scrim (I6) | Thread; host **must** `ui_render` on renderable topics |
 
-**Auto-collapse:** When `screenKey` changes (new `show` act or engine render), the dock collapses so the new sheet is visible. Voice-only LOCAL scenes (`whySafetyFirst`, `leaderWork`) do **not** change `screenKey` — drawer state unchanged.
+**Reveal over hide (G5):** If an AGENT turn completes on a **renderable topic** with no `ui_render`, the client **auto-issues the inferred render**, **auto-collapses** to reveal the sheet, and logs **`speakshow.violation`**. **`↩ Back to {screen}`** remains for **non-renderable** prose-only turns only.
 
-**No silent stale sheet:** AGENT reply **without** a show tool on a renderable topic violates host policy (speak-and-show). The client backstop: **`behind: {screen}`** in the drawer header (tap to collapse) and **`↩ Back to {screen}`** in the thread when a turn completes with no `ui_render`. Collapse manually or tap either control to see the sheet again.
+**Auto-collapse:** When `screenKey` changes (LOCAL `show` or engine `ui_render`), the dock collapses so the new sheet is visible.
 
 ---
 
 ## 6. Expand chat without sending
 
-- Sheet stays mounted behind scrim (invariant **I6**); **`behind: {screen}`** indicator names it while the drawer is open.
-- Empty thread → **Ways in** door panel with placeholder *"Ask a question — or tap a door"*; first send still uses classifier unless `chatActive`.
+- Sheet stays mounted behind scrim (I6); **`behind: {screen}`** indicator names it.
+- Empty thread → **Ways in** door panel.
 - Opening chip labels use expanded routing (§3).
-- Escape, backdrop tap, collapse control, **behind:** tap, or **`↩ Back to`** affordance restores the last mounted sheet.
+- Escape, backdrop, collapse control, **behind:** tap, or **`↩ Back to`** (non-renderable only) restores the sheet.
 
 ---
 
@@ -118,4 +122,8 @@ Not covered here — composer always **navigates** to `/agent?ask=…` (no local
 
 ---
 
-*When global rules change, update this file first, then each page’s **Composer & drawer** section for deltas only.*
+## 9. Cross-refs
+
+- Navigation-shape SSOT: `navigation-shape.ts`
+- Renderable topics SSOT: `renderable-topics.ts` (`RENDERABLE_TOPIC_IDS`)
+- Speak-and-show host rule: `docs/build/agents/agent-room/prompts/room-host.md`

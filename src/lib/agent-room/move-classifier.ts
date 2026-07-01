@@ -6,7 +6,8 @@
  */
 import { SCENES } from "./data/scenes";
 import { resolveTypedDiscussSignal } from "./discuss-entry";
-import { routeInput, isHighConfidenceLocalRoute } from "./route-input";
+import { navigationShape } from "./navigation-shape";
+import { routeInput } from "./route-input";
 
 /** Why a move routes to the live agent. */
 export type AgentMoveReason = "open_text" | "discuss" | "agent_chip";
@@ -80,14 +81,13 @@ export function classifyTypedInput(input: ClassifyTextInput): MoveRoute {
     return { kind: "local", scene: "discussOffer" };
   }
 
-  const target = routeInput(text);
-
-  if (target !== "fallback") {
-    if (isHighConfidenceLocalRoute(text, target)) {
-      return { kind: "local", scene: target };
-    }
-    return { kind: "agent", reason: "open_text" };
+  const navRoute = navigationShape(text);
+  if (navRoute) {
+    return { kind: "local", scene: navRoute };
   }
+
+  // Legacy regex table — used only for streak counters; no LOCAL routing from regex alone.
+  void routeInput(text);
 
   return { kind: "agent", reason: "open_text" };
 }

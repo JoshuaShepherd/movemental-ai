@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deb Hirsch — Audience & Personas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&family=Caveat:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFAF6; --sheet:#FFFDF7; --surface:#F6F3EC;
+  --ink:#1A1A1A; --muted:#5C5651; --border:#E5DFD2;
+  --blue:#22409B; --hl:#EAFF3A; --dark:#0A0E1A; --green:#3a7a4a;
+  --rose:#8b3a4a; --amber:#9a6b1a;
+  --serif:"Playfair Display",Georgia,serif; --sans:"Inter",system-ui,sans-serif;
+  --hand:"Caveat",cursive; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55;padding-top:84px;padding-bottom:48px}
+.ribbon{position:fixed;top:0;left:0;right:0;height:26px;background:var(--dark);color:#C7CBD9;z-index:60;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.62rem;letter-spacing:.08em}
+.ribbon b{color:#fff;font-weight:500}
+.topbar{position:fixed;top:26px;left:0;right:0;height:58px;background:rgba(251,250,246,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:55;display:flex;align-items:center;justify-content:space-between;padding:0 6vw}
+.brand{font-family:var(--serif);font-weight:700;font-size:1.25rem;letter-spacing:-.01em}
+.brand .dot{color:var(--blue)}
+.meta{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+.shell{display:flex;gap:3rem;max-width:88rem;margin:0 auto;padding:0 4vw}
+.sidebar{width:210px;flex:none;position:sticky;top:108px;align-self:flex-start;padding-top:3.5rem}
+.sb-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.sb-list{list-style:none;display:flex;flex-direction:column;gap:.1rem}
+.sb-link{display:flex;gap:.6rem;align-items:baseline;font-size:.84rem;color:var(--muted);text-decoration:none;padding:.4rem .5rem;border-left:2px solid transparent;border-radius:0 6px 6px 0;transition:.18s;line-height:1.25}
+.sb-link .n{font-family:var(--mono);font-size:.62rem;color:var(--border)}
+.sb-link:hover{color:var(--ink);background:var(--surface)}
+.sb-link.active{color:var(--ink);font-weight:600;border-left-color:var(--blue);background:var(--surface)}
+.sb-link.active .n{color:var(--blue)}
+
+.main{flex:1;min-width:0;max-width:62rem}
+section{scroll-margin-top:108px;padding:4.2rem 0}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.1rem}
+h2.sec{font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,3.6vw,2.5rem);line-height:1.1;letter-spacing:-.015em;margin-bottom:1.2rem}
+h3.sub{font-family:var(--serif);font-weight:600;font-size:1.35rem;margin-bottom:.6rem;line-height:1.2}
+p.body{font-size:1.06rem;line-height:1.65;color:#33302c;max-width:58ch;margin-bottom:1rem}
+p.body.muted{color:var(--muted)}
+.ie{color:var(--ink);font-weight:600}
+.hl{position:relative;white-space:nowrap}
+.hl::before{content:"";position:absolute;inset:-2px -8px;z-index:-1;background:var(--hl);mix-blend-mode:multiply;border-radius:7px;filter:url(#marker)}
+
+.hero{padding-top:4.5rem}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.1rem,4.6vw,3.4rem);line-height:1.06;letter-spacing:-.02em;margin-bottom:1.4rem;max-width:22ch}
+.hero .lead{font-size:1.12rem;color:var(--muted);max-width:54ch;margin-bottom:1.4rem;line-height:1.6}
+.hero .stamp{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--border);padding-top:1.1rem;max-width:50ch;line-height:1.7}
+.hero .stamp b{color:var(--ink);font-weight:500}
+
+.band-surface{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+
+/* summary cards */
+.summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem;max-width:54rem}
+.sum-card{background:var(--sheet);border:1px solid var(--border);border-radius:13px;padding:1.3rem 1.2rem}
+.sum-card .num{font-family:var(--serif);font-weight:700;font-size:2rem;color:var(--blue);line-height:1;margin-bottom:.4rem}
+.sum-card .lbl{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.sum-card p{font-size:.88rem;color:var(--muted);line-height:1.45;margin:0}
+
+/* segments */
+.seg-list{display:flex;flex-direction:column;gap:1.2rem;margin-top:1.6rem;max-width:54rem}
+.seg{background:var(--sheet);border:1px solid var(--border);border-radius:13px;padding:1.5rem 1.4rem}
+.seg-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
+.seg-head h3{margin:0;font-size:1.25rem}
+.seg-tag{font-family:var(--mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;border-radius:999px;padding:.22rem .6rem;white-space:nowrap}
+.seg-tag.core{color:var(--blue);border:1px solid var(--blue);background:rgba(34,64,155,.06)}
+.seg-tag.niche{color:var(--rose);border:1px solid var(--rose);background:rgba(139,58,74,.06)}
+.seg-tag.adj{color:var(--amber);border:1px solid var(--amber);background:rgba(154,107,26,.06)}
+.seg-tag.pro{color:var(--green);border:1px solid var(--green);background:rgba(58,122,74,.06)}
+.seg-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.5rem}
+.seg-field .lbl{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem}
+.seg-field p{font-size:.92rem;color:#33302c;line-height:1.5;margin:0}
+.seg-field.full{grid-column:1/-1}
+
+/* personas */
+.persona-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.6rem;max-width:54rem}
+.persona{background:var(--sheet);border:1px solid var(--border);border-radius:13px;padding:1.4rem 1.3rem;display:flex;flex-direction:column}
+.p-avatar{width:3rem;height:3rem;border-radius:999px;background:var(--surface);border:1px solid var(--blue);color:var(--blue);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:1.1rem;margin-bottom:.9rem}
+.persona .role{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem}
+.persona h3{font-size:1.15rem;margin-bottom:.6rem}
+.persona .bio{font-size:.88rem;color:var(--muted);line-height:1.5;margin-bottom:1rem;flex:1}
+.p-block{margin-bottom:.85rem}
+.p-block .plbl{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem}
+.p-block ul{list-style:none;display:flex;flex-direction:column;gap:.25rem}
+.p-block li{font-size:.84rem;color:#33302c;padding-left:.9rem;position:relative;line-height:1.4}
+.p-block li::before{content:"";position:absolute;left:0;top:.55em;width:4px;height:4px;border-radius:999px;background:var(--blue)}
+
+/* pain / needs matrix */
+.matrix{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.6rem;max-width:54rem}
+.matrix-col{background:var(--sheet);border:1px solid var(--border);border-radius:13px;padding:1.3rem 1.2rem}
+.matrix-col h3{font-size:1.05rem;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem}
+.matrix-col.pain h3{color:var(--rose)}
+.matrix-col.need h3{color:var(--green)}
+.matrix-col ul{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.matrix-col li{font-size:.9rem;color:#33302c;padding-left:1.1rem;position:relative;line-height:1.45}
+.matrix-col.pain li::before{content:"×";position:absolute;left:0;color:var(--rose);font-weight:600}
+.matrix-col.need li::before{content:"→";position:absolute;left:0;color:var(--green);font-weight:600}
+
+/* themes */
+.theme-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem;max-width:54rem}
+.theme-chip{font-size:.82rem;border:1px solid var(--border);border-radius:999px;padding:.4rem .85rem;background:var(--sheet);color:var(--ink)}
+.theme-chip b{font-weight:600;color:var(--blue)}
+
+/* network */
+.net-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(9rem,1fr));gap:.5rem;margin-top:1.4rem;max-width:50rem}
+.net-node{border:1px dashed var(--border);border-radius:9px;background:var(--surface);padding:.85rem .7rem;min-height:3.5rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:.78rem;color:var(--muted);font-family:var(--mono);letter-spacing:.04em;line-height:1.3}
+.net-node.lit{border-style:solid;border-color:var(--blue);background:#fff;color:var(--ink);font-family:var(--serif);font-size:.9rem}
+.netnote{font-family:var(--hand);color:var(--blue);font-size:1.3rem;margin-top:1.1rem;transform:rotate(-1deg)}
+
+/* table */
+.data-table{width:100%;max-width:54rem;margin-top:1.4rem;border-collapse:collapse;font-size:.88rem}
+.data-table th,.data-table td{text-align:left;padding:.7rem .8rem;border-bottom:1px solid var(--border);vertical-align:top}
+.data-table th{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.data-table td{color:#33302c;line-height:1.45}
+.data-table tr:hover td{background:var(--surface)}
+
+/* source */
+.source{background:var(--sheet);border:1px solid var(--border);border-radius:13px;padding:1.3rem 1.4rem;margin-top:1.6rem;max-width:54rem}
+.source .th{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.7rem}
+.source p{font-size:.88rem;color:var(--muted);line-height:1.55;margin:0}
+.source ul{margin-top:.6rem;padding-left:1.2rem;font-size:.84rem;color:var(--muted);line-height:1.6}
+
+@media (max-width:980px){
+  .sidebar{display:none}
+  .shell{padding:0 6vw}
+  .summary-grid,.persona-grid,.matrix,.seg-grid{grid-template-columns:1fr}
+  .seg-field.full{grid-column:auto}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="marker" x="-15%" y="-70%" width="130%" height="240%"><feTurbulence type="fractalNoise" baseFrequency="0.018 0.11" numOctaves="2" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+</defs></svg>
+
+<div class="ribbon">Movement leader research &nbsp;·&nbsp; <b>audience dossier</b> &nbsp;·&nbsp; internal reference</div>
+
+<header class="topbar">
+  <div class="brand">Deb Hirsch <span class="dot">·</span> audience</div>
+  <div class="meta">Research · Jan 2026</div>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <div class="sb-label">On this page</div>
+    <ul class="sb-list" id="sbList">
+      <li><a class="sb-link" href="#overview"><span class="n">01</span>Overview</a></li>
+      <li><a class="sb-link" href="#segments"><span class="n">02</span>Audience segments</a></li>
+      <li><a class="sb-link" href="#personas"><span class="n">03</span>Personas</a></li>
+      <li><a class="sb-link" href="#pain-needs"><span class="n">04</span>Pain & needs</a></li>
+      <li><a class="sb-link" href="#themes"><span class="n">05</span>Content themes</a></li>
+      <li><a class="sb-link" href="#network"><span class="n">06</span>Where they find her</a></li>
+      <li><a class="sb-link" href="#size"><span class="n">07</span>Reach & gaps</a></li>
+      <li><a class="sb-link" href="#implications"><span class="n">08</span>Implications</a></li>
+    </ul>
+  </aside>
+
+  <main class="main">
+
+    <!-- OVERVIEW -->
+    <section id="overview" class="hero">
+      <div class="eyebrow">Audience analysis · Deb Hirsch</div>
+      <h1>Practitioners who need <span class="hl">courage</span> for the conversations the church avoids.</h1>
+      <p class="lead">Deb Hirsch does not address a mass evangelical readership. She serves a high-signal missional ecosystem — Forge, Missio Alliance, Christian Associates, Praxis — with a distinctive combination of professional counseling expertise (25+ years, sexuality specialization), missional church leadership, and a rare willingness to bring difficult topics into church contexts.</p>
+      <p class="lead">Her audience is coherent but fragmented across publisher pages, organizational platforms, and speaking events. They find her through books, networks, and word-of-mouth — not through a centralized owned channel.</p>
+      <p class="stamp"><b>Primary works:</b> <em>Redeeming Sex</em> (solo) · <em>Untamed</em> (with Alan Hirsch) · Praxis topics: "Activating Female Agency," "The Presence of a Leader"</p>
+
+      <div class="summary-grid">
+        <div class="sum-card">
+          <div class="num">6</div>
+          <div class="lbl">Primary segments</div>
+          <p>From missional practitioners to sexuality-aware pastors to women in ministry seeking agency.</p>
+        </div>
+        <div class="sum-card">
+          <div class="num">4</div>
+          <div class="lbl">Core personas</div>
+          <p>Composite profiles drawn from research themes, organizational networks, and published focus areas.</p>
+        </div>
+        <div class="sum-card">
+          <div class="num">7</div>
+          <div class="lbl">Content themes</div>
+          <p>Sexuality & faith, missional discipleship, female agency, authentic leadership, community development.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEGMENTS -->
+    <section id="segments">
+      <div class="eyebrow">Primary audience segments</div>
+      <h2 class="sec">Who gathers around Deb's work</h2>
+      <p class="body muted">Six segments, ordered by strategic centrality. Size estimates are qualitative — derived from network reach (Forge, Missio Alliance, IVP readership) rather than verified analytics.</p>
+
+      <div class="seg-list">
+
+        <article class="seg">
+          <div class="seg-head">
+            <h3>1. Missional church leaders & practitioners</h3>
+            <span class="seg-tag core">Core audience</span>
+          </div>
+          <div class="seg-grid">
+            <div class="seg-field">
+              <div class="lbl">Who</div>
+              <p>Pastors, church planters, and missional practitioners trained through or adjacent to Forge, Missio Alliance, and Christian Associates. Leaders who have read <em>Untamed</em> or encountered Alan Hirsch's ecosystem and want the complementary female practitioner voice.</p>
+            </div>
+            <div class="seg-field">
+              <div class="lbl">Size estimate</div>
+              <p>The Forge / Missio Alliance / Christian Associates cluster reaches <strong>tens of thousands</strong> of practitioners globally; active engaged subset likely in the <strong>low thousands</strong>.</p>
+            </div>
+            <div class="seg-field">
+              <div class="lbl">Where they find her</div>
+              <p>Forge training networks, Missio Alliance (board profile), IVP author page, Praxis Gathering, Twitter @debrahirsch, co-author discovery via Alan Hirsch.</p>
+            </div>
+            <div class="seg-field">
+              <div class="lbl">Why they engage</div>
+              <p>She co-founded Forge and lives the missional movement from the inside — not as theory but as church leadership in Australia and Los Angeles, community living, and 25+ years of embodied practice.</p>
+            </div>
+            <div class="seg-field full">
+              <div class="lbl">What they want more of</div>
+              <p>Practical pathways for "untamed" discipleship; integration of professional social-work wisdom with missional ecclesiology; ongoing formation beyond a single book; female leadership modeling within the movement.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="seg">
+          <div class="seg-head">
+            <h3>2. Church leaders wrestling with sexuality & faith</h3>
+            <span class="seg-tag niche">Differentiating niche</span>
+          </div>
+          <div class="seg-grid">
+            <div class="seg-field">
+              <div class="lbl">Who</div>
+              <p>Pastors, elders, small-group leaders, and ministry staff who know their congregations need honest conversation about sexuality but lack language, frameworks, or pastoral confidence to begin.</p>
+            </div>
+            <div class="seg-field">
+              <div class="lbl">Size estimate</div>
+              <p>Large latent audience — any evangelical leader facing the sexuality silence — but <strong>high-intent subset</strong> is smaller: those who have found or searched for <em>Redeeming Sex</em> and IVP's sexuality-and-faith lane.</p>
+            </div>
+            <div class="seg-field">
+              <div class="lbl">Where they find her</div>
+              <p>IVP author page, book reviews and recommendations, pastoral referral networks, sexuality counseling professional circles, Missio Alliance adjacent readers.</p>
+            </div>
+            <div class="seg-field">
+              <div class="lbl">Why they engage</div>
+              <p>Deb is one of very few missional-movement leaders with <strong>25+ years of professional sexuality counseling</strong> who also publishes in the church context. She offers redemptive reframing, not culture-war positioning.</p>
+            </div>
+            <div class="seg-field full">
+              <div class="lbl">What they want more of</div>
+              <p>Safe vocabulary for church contexts; pastoral conversation guides; redemptive theology of sexuality; help integrating personal journey with professional care; resources beyond a single book.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="seg">
+          <div class="seg-head">
+            <h3>3. Women in ministry seeking agency & presence</h3>
+            <span class="seg-tag core">Core audience</span>
+          </div>
+          <div class="seg-grid">
+            <div class="seg-field">
+              <div class="lbl">Who</div>
+              <p>Female pastors, planters, and ministry leaders in evangelical and missional contexts — especially those navigating institutional constraints, invisibility, or leadership without authentic presence.</p>
+            </div>
+            <div class="seg-field">
+              <div class="lbl">Size estimate</div>
+              <p>Smaller than the general missional audience but <strong>high engagement density</strong>; Praxis / V3 / Missio Alliance female-leadership cohorts.</p>
+            </div>
+            <div class="seg-field">
+              <div class="lbl">Where they find her</div>
+              <p>Praxis Gathering ("Activating Female Agency," "The Presence of a Leader"), Missio Alliance, Forge events, word-of-mouth among female missional leaders.</p>
+            </div>
+            <div class="seg-field">
+              <div class="lbl">Why they engage</div>
+              <p>She speaks directly to equal agency and authentic leadership within the church — topics male-dominated missional discourse often under-addresses. She models practitioner leadership, not platform celebrity.</p>
+            </div>
+            <div class="seg-field full">
+              <div class="lbl">What they want more of</div>
+              <p>Permission and frameworks for female presence in leadership; models of agency in fragmented societies; sustained content series beyond conference talks; peer community with other women leaders.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="seg">
+          <div class="seg-head">
+            <h3>4. Counselors, social workers & pastoral care practitioners</h3>
+            <span class="seg-tag pro">Professional adjacent</span>
+          </div>
+          <div class="seg-grid">
+            <div class="seg-field">
+              <div class="lbl">Who</div>
+              <p>Christian counselors, social workers, and community-development practitioners who serve in or alongside church contexts and need models for integrating clinical expertise with missional ministry.</p>
+            </div>
+            <div class="seg-field">
+              <div class="lbl">Size estimate</div>
+              <p>Professional niche — likely <strong>hundreds to low thousands</strong> of high-intent practitioners who would recognize the counseling + church leadership combination as rare.</p>
+            </div>
+            <div class="seg-field">
+              <div class="lbl">Where they find her</div>
+              <p>Professional referral networks, IVP readership, Forge training contexts, pastoral care conferences, sexuality counseling specialization circles.</p>
+            </div>
+            <div class="seg-field">
+              <div class="lbl">Why they engage</div>
+              <p>Deb bridges two worlds most leaders keep separate: licensed-level counseling practice and missional church leadership. Her voice validates integration rather than compartmentalization.</p>
+            </div>
+            <div class="seg-field full">
+              <div class="lbl">What they want more of</div>
+              <p>Case-informed wisdom translated for church leaders; community-development practices from 25+ years of field work; counseling insights as accessible resources, not clinical manuals.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="seg">
+          <div class="seg-head">
+            <h3>5. Church planters & community-oriented leaders</h3>
+            <span class="seg-tag adj">Adjacent audience</span>
+          </div>
+          <div class="seg-grid">
+            <div class="seg-field">
+              <div class="lbl">Who</div>
+              <p>Leaders in the Christian Associates church-planting movement and others committed to community-based ministry — especially those living in or aspiring to intentional community.</p>
+            </div>
+            <div class="seg-field">
+              <div class="lbl">Size estimate</div>
+              <p>Christian Associates operates across Europe and the Americas; subset engaged with Deb's teaching likely in the <strong>low hundreds to low thousands</strong>.</p>
+            </div>
+            <div class="seg-field">
+              <div class="lbl">Where they find her</div>
+              <p>Christian Associates leadership network, Forge, Praxis, organizational speaking circuits.</p>
+            </div>
+            <div class="seg-field">
+              <div class="lbl">Why they engage</div>
+              <p>She has led churches in Australia and Los Angeles and lives in community with others. Her community-development background gives weight to embodied, relational ministry models.</p>
+            </div>
+            <div class="seg-field full">
+              <div class="lbl">What they want more of</div>
+              <p>Community-development wisdom applied to church planting; honest talk about leadership isolation; models for authentic presence in fragmented urban contexts.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="seg">
+          <div class="seg-head">
+            <h3>6. Alan Hirsch ecosystem readers (pipeline)</h3>
+            <span class="seg-tag adj">Pipeline audience</span>
+          </div>
+          <div class="seg-grid">
+            <div class="seg-field">
+              <div class="lbl">Who</div>
+              <p>Readers of Alan Hirsch's books, APEST assessments, and Forge content who discover Deb through <em>Untamed</em>, co-founder status, or marriage — and want the complementary voice on discipleship, sexuality, and female leadership.</p>
+            </div>
+            <div class="seg-field">
+              <div class="lbl">Size estimate</div>
+              <p>Potentially <strong>large passive pool</strong> (Alan Hirsch's latent TAM is 50K–80K+ engaged readers); conversion to Deb-specific engagement is likely a <strong>small fraction</strong> without intentional cross-discovery.</p>
+            </div>
+            <div class="seg-field">
+              <div class="lbl">Where they find her</div>
+              <p><em>Untamed</em> co-authorship, Forge co-founder biography, IVP cross-listings, Alan Hirsch event mentions.</p>
+            </div>
+            <div class="seg-field">
+              <div class="lbl">Why they engage</div>
+              <p>She extends the Hirsch missional frame with professional counseling depth, sexuality-and-faith courage, and explicit female-agency teaching that Alan's corpus addresses differently.</p>
+            </div>
+            <div class="seg-field full">
+              <div class="lbl">What they want more of</div>
+              <p>Clear entry points from Alan's work to Deb's distinct themes; content that doesn't require reading the full Hirsch corpus first; female practitioner perspective on shared missional themes.</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- PERSONAS (full-bleed) -->
+<section id="personas" class="band-surface">
+  <div class="shell"><div class="sidebar" aria-hidden="true"></div>
+  <div class="main">
+    <div class="eyebrow">Audience personas</div>
+    <h2 class="sec">Four composite profiles</h2>
+    <p class="body muted">Personas synthesized from research themes, organizational networks, and content focus areas. Names are illustrative, not real individuals.</p>
+
+    <div class="persona-grid">
+
+      <article class="persona">
+        <div class="p-avatar">S</div>
+        <div class="role">Persona 01 · Core</div>
+        <h3>Sarah — the missional pastor</h3>
+        <p class="bio">Female pastor, late 30s, leading a small missional community in a mid-size US city. Forge-trained. Has read <em>Untamed</em> and follows Missio Alliance. Feels the tension between institutional expectations and the "untamed" discipleship she believes in.</p>
+        <div class="p-block">
+          <div class="plbl">Pain points</div>
+          <ul>
+            <li>Discipleship feels domesticated — programs replace formation</li>
+            <li>Leadership models don't make room for her voice or agency</li>
+            <li>Hard to find female practitioner mentors in the missional space</li>
+            <li>Scattered resources — no single place to go deeper with Deb's work</li>
+          </ul>
+        </div>
+        <div class="p-block">
+          <div class="plbl">What she needs</div>
+          <ul>
+            <li>Practical untamed-discipleship pathways for her community</li>
+            <li>Female agency frameworks she can teach and embody</li>
+            <li>Ongoing formation content beyond two books</li>
+            <li>Authentic leadership language for fragmented, anxious contexts</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="persona">
+        <div class="p-avatar">M</div>
+        <div class="role">Persona 02 · Niche</div>
+        <h3>Marcus — the pastor avoiding the conversation</h3>
+        <p class="bio">Male lead pastor, mid 40s, evangelical church 200–400 attendance. Knows sexuality is the conversation his elders keep deferring. Read about <em>Redeeming Sex</em> but hasn't bought it — worried about controversy. Wants redemptive framing, not culture-war ammunition.</p>
+        <div class="p-block">
+          <div class="plbl">Pain points</div>
+          <ul>
+            <li>Silence around sexuality creates shame and pastoral crises</li>
+            <li>Fear of saying the wrong thing or splitting the congregation</li>
+            <li>Existing resources feel either too clinical or too polarizing</li>
+            <li>No trusted voice who speaks from both counseling and church leadership</li>
+          </ul>
+        </div>
+        <div class="p-block">
+          <div class="plbl">What he needs</div>
+          <ul>
+            <li>Church-safe language for starting the conversation</li>
+            <li>Pastoral frameworks — not just personal testimony</li>
+            <li>Redemptive theology that reframes sexuality within faith</li>
+            <li>Small-group and elder-ready conversation guides</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="persona">
+        <div class="p-avatar">E</div>
+        <div class="role">Persona 03 · Professional</div>
+        <h3>Elena — the integrator</h3>
+        <p class="bio">Licensed counselor and ministry leader, early 50s, specializing in trauma and sexuality in Christian contexts. 15 years in the field. Frustrated that church leaders refer people to her without changing the systems that produce harm. Knows Deb's professional background is unusual in the missional world.</p>
+        <div class="p-block">
+          <div class="plbl">Pain points</div>
+          <ul>
+            <li>Clinical expertise and church ministry stay in separate silos</li>
+            <li>Church leaders lack basic pastoral care literacy for sexuality</li>
+            <li>Her own thought leadership has no platform beyond referrals</li>
+            <li>Missional networks rarely platform counseling-informed voices</li>
+          </ul>
+        </div>
+        <div class="p-block">
+          <div class="plbl">What she needs</div>
+          <ul>
+            <li>Models for integrating counseling wisdom into church teaching</li>
+            <li>Resources she can recommend to pastors — not just clients</li>
+            <li>Community-development practices from decades of field work</li>
+            <li>Peer conversation with other integrator-practitioners</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="persona">
+        <div class="p-avatar">D</div>
+        <div class="role">Persona 04 · Pipeline</div>
+        <h3>David — the Hirsch reader</h3>
+        <p class="bio">Church planter, early 30s, discovered Alan Hirsch through APEST and <em>The Forgotten Ways</em>. Read <em>Untamed</em> because it was co-authored. Intrigued by Deb's Praxis topics but hasn't pursued her work independently. Assumes her content is "the same as Alan's."</p>
+        <div class="p-block">
+          <div class="plbl">Pain points</div>
+          <ul>
+            <li>Doesn't know Deb has a distinct body of work beyond co-authorship</li>
+            <li>Male-dominated missional reading lists miss female practitioner voices</li>
+            <li>No clear onboarding path from Alan's ecosystem to Deb's themes</li>
+            <li>Sexuality-and-faith feels like a taboo topic in his planter network</li>
+          </ul>
+        </div>
+        <div class="p-block">
+          <div class="plbl">What he needs</div>
+          <ul>
+            <li>Clear differentiation: what Deb adds that Alan doesn't cover</li>
+            <li>Entry-point content on female agency and authentic presence</li>
+            <li>Permission to engage sexuality-and-faith as missional, not marginal</li>
+            <li>Centralized discovery — one place to find her scattered work</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </div></div>
+</section>
+
+<div class="shell">
+  <aside class="sidebar" aria-hidden="true"></aside>
+  <main class="main">
+
+    <!-- PAIN & NEEDS -->
+    <section id="pain-needs">
+      <div class="eyebrow">Cross-audience analysis</div>
+      <h2 class="sec">Pain points and what they need</h2>
+      <p class="body muted">Aggregated across all six segments — the recurring tensions Deb's audience carries and the outcomes they are searching for.</p>
+
+      <div class="matrix">
+        <div class="matrix-col pain">
+          <h3>Pain points</h3>
+          <ul>
+            <li><strong>The silence around sexuality.</strong> Churches avoid the topic until crisis forces it — then leaders lack language, frameworks, or confidence.</li>
+            <li><strong>Domesticated discipleship.</strong> Missional language exists but formation still feels programmatic, safe, and "tamed."</li>
+            <li><strong>Female invisibility in movement leadership.</strong> Women lead but lack models of equal agency and authentic presence in missional discourse.</li>
+            <li><strong>Fragmentation of expertise.</strong> 25+ years of counseling, social work, and community development wisdom is embodied but not digitally accessible.</li>
+            <li><strong>Scattered discovery.</strong> Content lives across IVP, Forge, Missio Alliance, Praxis, and Twitter — no owned hub ties it together.</li>
+            <li><strong>Conference talk → dead end.</strong> Praxis topics ("Activating Female Agency," "The Presence of a Leader") may not extend into articles, series, or courses.</li>
+            <li><strong>Clinical ↔ church divide.</strong> Counselors and pastors operate in parallel without shared vocabulary or integrated resources.</li>
+            <li><strong>Leadership in fragmented societies.</strong> Leaders feel pressure to perform rather than embody authentic presence.</li>
+            <li><strong>Co-author shadow.</strong> Deb's distinct voice is under-discovered by Alan Hirsch readers who assume shared authorship means shared emphasis.</li>
+          </ul>
+        </div>
+        <div class="matrix-col need">
+          <h3>What they need from Deb</h3>
+          <ul>
+            <li><strong>Redemptive sexuality frameworks</strong> — church-safe, pastor-ready, grounded in 25 years of counseling practice.</li>
+            <li><strong>Untamed discipleship pathways</strong> — practical formation beyond <em>Untamed</em>, connected to Forge training wisdom.</li>
+            <li><strong>Female agency teaching</strong> — sustained series on activating presence and leadership, not one-off conference talks.</li>
+            <li><strong>Authentic leadership language</strong> — "The Presence of a Leader" expanded for leaders in anxious, fragmented contexts.</li>
+            <li><strong>Professional wisdom translated</strong> — social work and community-development insights made accessible to church practitioners.</li>
+            <li><strong>Integrated pastoral care resources</strong> — bridging counseling expertise and missional church leadership.</li>
+            <li><strong>Centralized content hub</strong> — one discoverable place for books, talks, insights, and series.</li>
+            <li><strong>Content series, not isolated pieces</strong> — sexuality & faith, female agency, missional discipleship, community development.</li>
+            <li><strong>Clear entry points</strong> — for Hirsch-ecosystem readers, sexuality-aware pastors, and Forge-trained practitioners respectively.</li>
+            <li><strong>Ongoing voice, not archive.</strong> Audience wants current practitioner wisdom — church leadership, community living, professional practice — not just published books from years past.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- THEMES -->
+    <section id="themes">
+      <div class="eyebrow">Content map</div>
+      <h2 class="sec">Themes that bind the audience</h2>
+      <p class="body">Deb's audience doesn't gather around a single product. They gather around overlapping themes — each with a distinct segment but shared practitioner orientation.</p>
+
+      <div class="theme-row">
+        <span class="theme-chip"><b>Sexuality & faith</b> · Redeeming Sex</span>
+        <span class="theme-chip"><b>Missional discipleship</b> · Untamed · Forge</span>
+        <span class="theme-chip"><b>Female agency</b> · Praxis</span>
+        <span class="theme-chip"><b>Authentic leadership</b> · Praxis</span>
+        <span class="theme-chip"><b>Community development</b> · 25yr practice</span>
+        <span class="theme-chip"><b>Counseling & pastoral care</b> · Professional</span>
+        <span class="theme-chip"><b>Church leadership</b> · AU · LA</span>
+      </div>
+
+      <table class="data-table" style="margin-top:2rem">
+        <thead>
+          <tr>
+            <th>Theme</th>
+            <th>Primary segment</th>
+            <th>Content opportunity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sexuality & faith integration</td>
+            <td>Pastors avoiding the conversation; counselors</td>
+            <td>Article series, conversation guides, course from <em>Redeeming Sex</em> + counseling practice</td>
+          </tr>
+          <tr>
+            <td>Missional discipleship</td>
+            <td>Forge practitioners; Hirsch readers</td>
+            <td>Formation pathways, Forge training integration, <em>Untamed</em> expansion</td>
+          </tr>
+          <tr>
+            <td>Activating female agency</td>
+            <td>Women in ministry</td>
+            <td>Praxis talk → sustained series; peer community resources</td>
+          </tr>
+          <tr>
+            <td>The presence of a leader</td>
+            <td>Missional pastors; community leaders</td>
+            <td>Leadership series for fragmented societies; authenticity frameworks</td>
+          </tr>
+          <tr>
+            <td>Community development</td>
+            <td>Church planters; community-oriented leaders</td>
+            <td>Field wisdom from 25+ years social work; community-living models</td>
+          </tr>
+          <tr>
+            <td>Counseling insights for church</td>
+            <td>Professional adjacent; pastors in crisis</td>
+            <td>Pastoral care literacy resources; integrator models</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- NETWORK -->
+    <section id="network">
+      <div class="eyebrow">Discovery channels</div>
+      <h2 class="sec">Where the audience finds her today</h2>
+      <p class="body muted">Audience quality is defined by who platforms Deb — established missional organizations, not mass-media channels.</p>
+
+      <div class="net-grid">
+        <div class="net-node lit">Forge</div>
+        <div class="net-node lit">Missio Alliance</div>
+        <div class="net-node lit">Christian Associates</div>
+        <div class="net-node lit">IVP</div>
+        <div class="net-node lit">Praxis Gathering</div>
+        <div class="net-node">V3 Movement</div>
+        <div class="net-node">Alan Hirsch network</div>
+        <div class="net-node">Twitter @debrahirsch</div>
+        <div class="net-node">Counseling referral</div>
+        <div class="net-node">Word of mouth</div>
+      </div>
+      <p class="netnote">High-signal practitioner-theologian audience — not mass reach.</p>
+
+      <p class="body" style="margin-top:1.6rem">This network overlap aligns with Movemental's trusted-voice ecosystem. Deb's audience is not broad evangelical consumption; it is <span class="ie">practitioners who need courage for conversations the church avoids</span> — sexuality, agency, authentic presence — within a missional frame they already trust.</p>
+    </section>
+
+    <!-- SIZE -->
+    <section id="size">
+      <div class="eyebrow">Reach estimate</div>
+      <h2 class="sec">Attention vs. owned reach</h2>
+      <p class="body muted">Quantitative metrics are largely unverified in current research. Estimates are qualitative, based on network reach and book distribution.</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Surface</th>
+            <th>Estimate</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Forge / Missio / Christian Associates network reach</td>
+            <td>Tens of thousands (network); low thousands (active engaged)</td>
+            <td>Co-founder + board member status provides institutional visibility</td>
+          </tr>
+          <tr>
+            <td>IVP book readership</td>
+            <td>UNKNOWN</td>
+            <td>2 books; <em>Redeeming Sex</em> serves niche high-intent audience</td>
+          </tr>
+          <tr>
+            <td>Twitter @debrahirsch</td>
+            <td>UNKNOWN</td>
+            <td>Confirmed presence; engagement metrics not catalogued</td>
+          </tr>
+          <tr>
+            <td>Personal website / email list</td>
+            <td>Minimal or none</td>
+            <td>Not easily discoverable — major owned-reach gap</td>
+          </tr>
+          <tr>
+            <td>Alan Hirsch ecosystem (pipeline)</td>
+            <td>Large passive pool; small converted fraction</td>
+            <td>Cross-discovery depends on intentional linking</td>
+          </tr>
+          <tr>
+            <td>Praxis / speaking reach</td>
+            <td>Event-scoped</td>
+            <td>Talks may not be extended digitally</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="body" style="margin-top:1.4rem"><span class="ie">The gap between network attention and owned reach is likely large.</span> Content is distributed across publisher and organizational platforms. Professional expertise (25+ years) is embodied but largely uncaptured digitally. Speaking topics exist as events, not series.</p>
+    </section>
+
+    <!-- IMPLICATIONS -->
+    <section id="implications">
+      <div class="eyebrow">Strategic implications</div>
+      <h2 class="sec">What this means for platform work</h2>
+      <p class="body">Deb's audience already exists in missional networks. The work is not primarily audience generation — it is <span class="ie">converting lent attention into owned relationship</span> and making embodied expertise digitally accessible.</p>
+
+      <div class="seg-list" style="margin-top:1.4rem">
+        <article class="seg">
+          <h3 style="margin-bottom:.6rem">1. Lead with the differentiator</h3>
+          <p style="font-size:.92rem;color:#33302c;line-height:1.55;margin:0">Sexuality-and-faith is Deb's unique niche in the missional ecosystem. Pastors searching for redemptive framing have few trusted practitioner voices. Content series here serves the highest-intent, least-served segment.</p>
+        </article>
+        <article class="seg">
+          <h3 style="margin-bottom:.6rem">2. Extend Praxis talks into series</h3>
+          <p style="font-size:.92rem;color:#33302c;line-height:1.55;margin:0">"Activating Female Agency" and "The Presence of a Leader" already have audience demand. The gap is continuity — articles, courses, and cohort resources that outlive the conference stage.</p>
+        </article>
+        <article class="seg">
+          <h3 style="margin-bottom:.6rem">3. Capture professional wisdom</h3>
+          <p style="font-size:.92rem;color:#33302c;line-height:1.55;margin:0">25+ years of counseling, social work, and community development is the deepest uncaptured asset. Translating field wisdom for church practitioners serves both the professional-adjacent and pastor segments.</p>
+        </article>
+        <article class="seg">
+          <h3 style="margin-bottom:.6rem">4. Build cross-discovery from Alan's ecosystem</h3>
+          <p style="font-size:.92rem;color:#33302c;line-height:1.55;margin:0">Pipeline audience (Hirsch readers) needs clear entry points showing what Deb adds — sexuality, female agency, integrated counseling — not assumed redundancy with co-authored work.</p>
+        </article>
+        <article class="seg">
+          <h3 style="margin-bottom:.6rem">5. Centralize before amplifying</h3>
+          <p style="font-size:.92rem;color:#33302c;line-height:1.55;margin:0">Fragmentation across IVP, Forge, Missio Alliance, and Praxis limits discoverability. A unified hub converts network credibility into owned audience — newsletter, courses, and retrievable content.</p>
+        </article>
+      </div>
+
+      <div class="source">
+        <div class="th">Research sources</div>
+        <p>Synthesized from Movemental leader research dossier, January 4, 2026 (confidence: high).</p>
+        <ul>
+          <li><code>docs/movement_leader_research/deb-hirsch/summary.md</code></li>
+          <li><code>docs/movement_leader_research/deb-hirsch/content-analysis.md</code></li>
+          <li><code>docs/movement_leader_research/deb-hirsch/gap-analysis.md</code></li>
+          <li><code>docs/movement_leader_research/deb-hirsch/identity-verification.md</code></li>
+          <li><code>docs/movement_leader_research/deb-hirsch/digital-presence-discovery.md</code></li>
+          <li><code>docs/movement_leader_research/deb-hirsch/movemental-analysis.md</code></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  var links=document.querySelectorAll('.sb-link');
+  var sections=Array.from(links).map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
+  function onScroll(){
+    var y=window.scrollY+120;
+    var current=sections[0];
+    sections.forEach(function(s){if(s.offsetTop<=y)current=s});
+    links.forEach(function(a){
+      a.classList.toggle('active',a.getAttribute('href')==='#'+current.id);
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>

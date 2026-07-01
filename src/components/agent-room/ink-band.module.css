@@ -3792,6 +3792,47 @@ button.wayCtaPaid {
   color: var(--color-ink-band-ink-muted);
   letter-spacing: 0.02em;
 }
+.localReversalRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.5rem;
+  padding: 0.15rem 0.75rem 0.35rem;
+  font-family: var(--font-ink-mono);
+  font-size: 0.68rem;
+  color: var(--color-ink-band-ink-muted);
+}
+.localReversalCaption {
+  font-family: var(--font-ink-hand);
+  font-size: 0.95rem;
+  color: var(--color-ink-band-ink);
+}
+.localReversalSep {
+  opacity: 0.45;
+}
+.localReversalBtn {
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: var(--font-ink-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-ink-band-accent);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.localReversalBtn:hover {
+  color: color-mix(in srgb, var(--color-ink-band-accent) 80%, var(--color-ink-band-ink));
+}
+.composerSendHint {
+  margin: 0.35rem 0 0;
+  padding: 0 0.15rem;
+  font-family: var(--font-ink-mono);
+  font-size: 0.62rem;
+  color: var(--color-ink-band-ink-muted);
+  text-align: right;
+}
 .threadAffordanceRow {
   display: flex;
   justify-content: flex-start;

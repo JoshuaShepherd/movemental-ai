@@ -9,14 +9,7 @@ This ADR is set by **AF-01** and is binding for every later prompt.
 Accepted — 2026-06-09 (AF-01). Supersedes ad-hoc decisions in the earlier
 stream-mode build.
 
-**Amended 2026-06-10 (INT-07): default is now `"stream"`.** The live agent
-surface was proven end-to-end (proxy → `movemental-ai-agents` engine → SSE):
-voice streams, the reality-check renders the beat, and conversion renders
-`show_capture`; engine-down/misconfig degrades to an honest error voice (never
-blank). `stub` remains the permanent **offline fallback** — set
-`NEXT_PUBLIC_AGENT_ROOM_MODE=stub` for demos / engine-down. The §1 decision below
-records the original AF-01 default (`stub`) and is kept as history. See
-[INT-07](../../../docs/build/prompts/integration-agent-backend/07-e2e-live-and-fallback.md) §10.
+**Amended 2026-06-10 (INT-07): default was `"stream"` (historical).** Superseded for production default by **HYB amendment below** — current default is **`"hybrid"`**. INT-07 documents the first live SSE proof; do not set env from INT-07 alone.
 
 **Amended 2026-06-10 (PAR-01): Local Choreography Layer in stream mode.**
 Deterministic beats (`OPENING`, `BEAT_INTRO`) run client-side without SSE on

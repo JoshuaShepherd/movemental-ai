@@ -77,9 +77,46 @@ export function AgentRoomFallback() {
       <section>
         <div className={styles.nb}>Pricing</div>
         <p>
-          Every price lives in the interactive room — open Pricing after JavaScript loads, or
-          visit <a href="/agent/about">About</a> for context on how we work.
+          Every price lives in the interactive room —{" "}
+          <a href="/agent?scene=pricing">open Pricing</a> after JavaScript loads, or visit{" "}
+          <a href="/enroll">Enroll</a> for commercial intent.
         </p>
+      </section>
+
+      <section>
+        <div className={styles.nb}>Shareable entry points</div>
+        <ul className={styles.fallbackNav}>
+          <li>
+            <a href="/agent?scene=faq">FAQ</a>
+          </li>
+          <li>
+            <a href="/agent?scene=path">The path</a>
+          </li>
+          <li>
+            <a href="/agent?scene=safety">Safety</a>
+          </li>
+          <li>
+            <a href="/agent?scene=contact">Contact</a>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <div className={styles.nb}>Document library</div>
+        <ul className={styles.fallbackNav}>
+          <li>
+            <a href="/research">Research</a>
+          </li>
+          <li>
+            <a href="/articles">Articles</a>
+          </li>
+          <li>
+            <a href="/voices">Trusted voices</a>
+          </li>
+          <li>
+            <a href="/footnotes">Footnotes</a>
+          </li>
+        </ul>
       </section>
 
       <nav aria-label="Audience pages">

@@ -1,6 +1,7 @@
 # Agent room — suggestion pills inventory and recommendations
 
 **Created:** 2026-06-10  
+**Last verified:** 2026-06-30 (added safetyFlow, path stages, safetyDashboard)  
 **Purpose:** Document every visitor-facing screen in `/agent`, the tappable “pills” (suggested chat topics) available on each, and a recommended set aligned with Ink Band design constraints and the SSSS conversion flow.
 
 **Sources of truth (code):**
@@ -384,7 +385,84 @@ Merge charter explain into **involved** voice scene or FAQ — charter + involve
 
 ---
 
-### 3.17 Discuss mode · overlay composer
+### 3.17 Safety flow wizard — `toSafetyFlow` / `toSafetyFlowDiy` / `toSafetyFlowSignup` · screen: `safetyFlow`
+
+**Composer pills on entry (`toSafetyFlow`, current — 0):**
+
+Scene shows screen + one caption line only; wizard interaction is in-sheet.
+
+**In-screen options (question step — 4 `.opt` radios):**
+
+| # | Label | Effect |
+|---|--------|--------|
+| 1 | No, we haven't decided anything yet. | `start` → result / fork path |
+| 2 | We've talked about it, but nothing's written down. | `start` |
+| 3 | We have a draft, but our board hasn't ratified it. | `draft` |
+| 4 | Yes. It's written and our board has ratified it. | `done` → ahead step |
+
+**Later steps:** fork cards (DIY vs dashboard signup), charter spread, DIY handbook, signup form — **in-screen CTAs**, not composer chips.
+
+**Follow-up scenes with composer pills (`toSafety`, `whySafetyFirst`, `safetyWithoutIt`):** lead **Build your dashboard** → `toSafetyFlowSignup`; **Start free, guided** → DIY path; cap at **4** when `DISCUSS_ENABLED` adds policy chip.
+
+**Recommendation:** Keep question step composer-empty; four in-sheet options are the interaction.
+
+---
+
+### 3.18 Path stage — Sandbox — `toSandbox` · screen: `sandbox`
+
+**Composer pills (current — 5):**
+
+| # | Label | Routes to |
+|---|--------|-----------|
+| 1 (lead) | Digital license · $5,000 | `talkToUs` |
+| 2 | Hands-on · ~$15,000 | `talkToUs` |
+| 3 | Start free, guided | `toPath` |
+| 4 | Show me Safety | `toSafety` |
+| 5 | What does it cost? | `cost` |
+
+**Recommendation:** Trim to **4** — merge license tiers or drop duplicate cost chip.
+
+---
+
+### 3.19 Path stage — Training — `toTraining` · screen: `training`
+
+**Composer pills (current — 3):**
+
+| # | Label | Routes to |
+|---|--------|-----------|
+| 1 (lead) | Talk to us about Training | `talkToUs` |
+| 2 | Show me Sandbox | `toSandbox` |
+| 3 | What does it cost? | `cost` |
+
+**Recommendation:** Keep 3.
+
+---
+
+### 3.20 Path stage — Technology — `toTechnology` · screen: `technology`
+
+**Composer pills (current — 3):**
+
+| # | Label | Routes to |
+|---|--------|-----------|
+| 1 (lead) | Talk to us about Tech | `talkToUs` |
+| 2 | See the whole path | `toPath` |
+| 3 | What does it cost? | `cost` |
+
+**Recommendation:** Keep 3.
+
+---
+
+### 3.21 Safety dashboard (legacy) — `toSafetyDashboard` · screen: `safetyDashboard`
+
+**Status:** Deprecated — prefer `toSafetyFlowSignup` and `/enroll`.
+
+**Composer pills:** Typically 0 during signup form (same as safety flow signup step).
+
+**Recommendation:** Do not add new chips; route new choreography to `safetyFlow`.
+
+---
+
+### 3.22 Discuss mode · overlay composer
 
 **Composer pills:** None — textarea + “back to the guided path” + replay.
 
@@ -392,7 +470,7 @@ Merge charter explain into **involved** voice scene or FAQ — charter + involve
 
 ---
 
-### 3.18 Stream / hybrid fallback — before agent `suggest`
+### 3.23 Stream / hybrid fallback — before agent `suggest`
 
 When the engine has not yet emitted chips, stream mode shows **`DEFAULT_SUGGESTIONS`** — same six labels as `opening` (`composer.tsx`). Hybrid LOCAL opening uses full stub `opening` scene (also six).
 
@@ -443,6 +521,11 @@ Files to edit: `src/lib/agent-room/data/scenes.ts`, `src/components/agent-room/c
 | Contact | `contact` | 3 | **2** | 4 form topics |
 | Path | `path` | 3 | 3 | Drawer UI |
 | Safety | `safety` | 5 | **4** | 2 links |
+| Safety flow | `safetyFlow` | 0 on wizard / 4–5 on `toSafety` | 4 max on follow-ups | 4 question opts |
+| Sandbox | `sandbox` | 5 | **4** | — |
+| Training | `training` | 3 | 3 | — |
+| Technology | `technology` | 3 | 3 | — |
+| Safety dashboard | `safetyDashboard` | 0 (legacy) | — | signup form |
 | Charter / Involved | — | 2 each | 2 each | — |
 | Leader | `leader` | 3–4 | 4 | — |
 | Discuss offer | — | 2 | 2 | — |

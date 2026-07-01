@@ -52,6 +52,9 @@ function AgentRoomView({
   behindScreenName,
   showBehindIndicator,
   localNavCaption,
+  localReversal,
+  onLocalReversal,
+  chatActive = false,
 }: {
   screenNode: ReactNode;
   screenKey: string;
@@ -77,6 +80,9 @@ function AgentRoomView({
   behindScreenName?: string | null;
   showBehindIndicator?: boolean;
   localNavCaption?: string | null;
+  localReversal?: { utterance: string; screenLabel: string } | null;
+  onLocalReversal?: () => void;
+  chatActive?: boolean;
 }) {
   const { gestureRootEl } = useAgentRoomRefs();
   const [dockExpanded, setDockExpanded] = useState(false);
@@ -143,6 +149,9 @@ function AgentRoomView({
         behindScreenName={behindScreenName}
         showBehindIndicator={showBehindIndicator}
         caption={localNavCaption ?? undefined}
+        localReversal={localReversal ?? null}
+        onLocalReversal={onLocalReversal}
+        chatActive={chatActive}
       />
     </div>
   );
@@ -183,7 +192,13 @@ function HybridRoom() {
       isStreaming={room.isStreaming}
       onSay={room.sendMessage}
       onReplay={room.reset}
-      placeholder={screen.id === "beat" ? BEAT_PLACEHOLDER : undefined}
+      placeholder={
+        screen.id === "beat"
+          ? BEAT_PLACEHOLDER
+          : room.chatActive
+            ? "Ask a follow-up…"
+            : "Search or ask…"
+      }
       phase={room.phase}
       thread={room.thread}
       stubDiscussCapture={room.stubDiscussCapture}
@@ -196,6 +211,9 @@ function HybridRoom() {
       behindScreenName={room.behindScreenName}
       showBehindIndicator={room.showBehindIndicator}
       localNavCaption={room.localNavCaption}
+      localReversal={room.localReversal}
+      onLocalReversal={room.onLocalReversal}
+      chatActive={room.chatActive}
     />
   );
 }

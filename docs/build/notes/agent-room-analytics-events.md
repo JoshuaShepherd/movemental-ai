@@ -1,5 +1,7 @@
 # Agent Room analytics events
 
+**Index:** [agent-room-documentation-index.md](./agent-room-documentation-index.md)
+
 **Path:** `docs/build/notes/agent-room-analytics-events.md`  
 **As of:** 2026-06-18 (AU-19)
 

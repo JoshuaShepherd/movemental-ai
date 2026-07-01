@@ -253,6 +253,14 @@ are the agent's entire UI vocabulary.
 | `about` | eyebrow → `.q` → body → `.sec/.layers` | Narrative |
 | `contact` | eyebrow → `.q` → body → `.cform` (+ `.cf-success`) | Real form |
 | `faq` | eyebrow → `.q` → `.faq-jump` → `.faq/.faq-item` | Accordion |
+| `capture` | eyebrow → `.q` → `.cform` (+ variant: map / paid / free / discuss) | Lead forms; composer hidden during `await:capture` |
+| `safetyFlow` | `.flow-stepper` → step panels (question → fork → charter → diy/signup → result) | Primary Safety on-ramp wizard; in-screen `.opt` on question step |
+| `sandbox` | eyebrow → `.q` → `.sec/.layers` | Path stage 02 detail |
+| `training` | eyebrow → `.q` → `.sec/.layers` | Path stage 03 detail |
+| `technology` | eyebrow → `.q` → `.sec/.layers` | Path stage 04 detail |
+| `safetyDashboard` | legacy paid funnel stub | Superseded by `safetyFlow` signup + `/enroll`; retained for parity |
+
+**Discuss exception (2026-06-30):** In Discuss phase, expanded dock may hide the sheet below mast (Model C overlay). Guide phase keeps manuscript-first layout. See [agent-room-discuss-layout-decision.md](../build/notes/agent-room-discuss-layout-decision.md).
 
 Common page furniture: a `.crumb` (mono back link, top-right) on every non-home screen; the
 `.settle` reveal on load; the `.static-foot` on snapshot pages.

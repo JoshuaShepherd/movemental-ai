@@ -15,14 +15,10 @@ describe("move-classifier", () => {
     fallbackStreak: 0,
   };
 
-  it("routes regex matches locally", () => {
+  it("routes regex matches locally via navigation shape", () => {
     expect(classifyTypedInput({ ...baseText, text: "what does it cost" })).toEqual({
       kind: "local",
       scene: "cost",
-    });
-    expect(classifyTypedInput({ ...baseText, text: "What's their philosophy" })).toEqual({
-      kind: "local",
-      scene: "toFaq",
     });
     expect(classifyTypedInput({ ...baseText, text: "tell me about movemental" })).toEqual({
       kind: "local",
@@ -39,6 +35,13 @@ describe("move-classifier", () => {
     expect(classifyTypedInput({ ...baseText, text: "map where we stand" })).toEqual({
       kind: "local",
       scene: "toSafetyFlow",
+    });
+  });
+
+  it("routes philosophy in non-leading position to agent (G3)", () => {
+    expect(classifyTypedInput({ ...baseText, text: "What's their philosophy" })).toEqual({
+      kind: "agent",
+      reason: "open_text",
     });
   });
 

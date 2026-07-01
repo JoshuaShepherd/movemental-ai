@@ -59,6 +59,10 @@ When visitor taps a chip or sends composer text configured for handoff:
 | `/agent/invite` | Invite flow |
 | `/agent/assessment` | Org assessment entry |
 | `/agent/*/deck` | Slide decks per audience |
+| `/agent/churches-old` | **Archived** church audience document (pre–audience-edition migration) |
+| `/agent/nonprofits-old` | **Archived** nonprofit audience document (pre–audience-edition migration) |
+
+Archive routes remain reachable for redirects and QA; they are **not** in mast nav. Live audience documents are `/agent/churches`, `/agent/nonprofits`, `/agent/institutions`.
 
 ---
 

@@ -51,3 +51,24 @@ export function shouldShowBehindIndicator(
   if (!engineExtraComponent) return true;
   return !isEngineExtra(engineExtraComponent);
 }
+
+/** LOCAL `SCENES` runner target → Ink Band screen (G1 caption / reversal). */
+export const LOCAL_SCENE_TO_SCREEN: Partial<Record<string, ScreenId>> = {
+  cost: "pricing",
+  whatIs: "about",
+  talkToUs: "contact",
+  toPath: "path",
+  toFaq: "faq",
+  whoBehind: "founders",
+  toSafety: "safety",
+  toSafetyFlow: "safetyFlow",
+  toSandbox: "sandbox",
+  toTraining: "training",
+  toTechnology: "technology",
+  toBeat: "beat",
+};
+
+export function getLocalSceneDisplayName(scene: string): string {
+  const screenId = LOCAL_SCENE_TO_SCREEN[scene];
+  return screenId ? getScreenDisplayName(screenId) : scene;
+}

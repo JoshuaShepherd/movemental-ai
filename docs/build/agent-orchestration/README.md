@@ -103,6 +103,8 @@ Files in this pack are **symlinks** to canonical paths elsewhere in the repo. Ed
 | Pack path | Canonical path |
 | --- | --- |
 | `ssot/*.md` | `docs/build/notes/*.md` |
+| `ssot/agent-room-discuss-layout-decision.md` | `docs/build/notes/agent-room-discuss-layout-decision.md` |
+| `prompts/safety-flow-migration-audit.md` | `docs/build/prompts/safety-flow-migration-audit.md` |
 | `engine/` | `docs/build/agents/agent-room/` |
 | `prompts/agent-updates/` | `docs/build/prompts/agent-updates/` |
 | `policy/*.md` | `docs/build/*.md` |

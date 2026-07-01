@@ -26,6 +26,7 @@ import {
 import type { AgentSayHandler, AgentSayOptions } from "@/lib/agent-room/ways-in-doors";
 import type { VoiceState } from "../use-agent-room-stream";
 import type { ThreadTurn } from "@/lib/agent-room/thread";
+import { composerSendHint } from "@/lib/agent-room/navigation-shape";
 import { HandbookDockEmail } from "./handbook-dock-email";
 import { WaysInPanel } from "./ways-in-panel";
 
@@ -117,6 +118,7 @@ function ComposerForm({
   onToggleExpand,
   showWaysInButton,
   onOpenWaysIn,
+  sendHint,
 }: {
   value: string;
   onChange: (next: string) => void;
@@ -128,6 +130,7 @@ function ComposerForm({
   onToggleExpand: () => void;
   showWaysInButton?: boolean;
   onOpenWaysIn?: () => void;
+  sendHint?: string | null;
 }) {
   return (
     <form className={styles.cardBody} id="composer-form" onSubmit={onSubmit}>
@@ -183,6 +186,11 @@ function ComposerForm({
           </button>
         </div>
       </div>
+      {sendHint ? (
+        <p className={styles.composerSendHint} aria-live="polite">
+          {sendHint}
+        </p>
+      ) : null}
       {expanded ? (
         <p className={styles.chatDisclaimer}>
           Responses may be imperfect. This is a guided conversation, not a substitute for
@@ -247,6 +255,9 @@ export function AgentDock({
   caption,
   behindScreenName,
   showBehindIndicator = false,
+  localReversal = null,
+  onLocalReversal,
+  chatActive = false,
 }: {
   voice: VoiceState;
   error: string | null;
@@ -269,6 +280,10 @@ export function AgentDock({
   /** Visitor label for the sheet mounted behind the scrim (G2). */
   behindScreenName?: string | null;
   showBehindIndicator?: boolean;
+  /** G1 — typed LOCAL reversal affordance (composer only, not chip taps). */
+  localReversal?: { utterance: string; screenLabel: string } | null;
+  onLocalReversal?: () => void;
+  chatActive?: boolean;
 }) {
   const [dockState, setDockState] = useState<DockState>("collapsed");
   const [value, setValue] = useState("");
@@ -387,7 +402,10 @@ export function AgentDock({
   const conversationActive = thread.length > 0 || liveThinking || Boolean(stubCapture);
   const expandedPlaceholder =
     placeholder ??
-    (conversationActive ? "Type here, or tap a suggestion…" : "Ask a question — or tap a door");
+    (conversationActive || chatActive
+      ? "Ask a follow-up…"
+      : "Search or ask…");
+  const sendHint = composerSendHint(value);
   const behindLabel =
     showBehindIndicator && behindScreenName ? `behind: ${behindScreenName}` : null;
 
@@ -402,12 +420,13 @@ export function AgentDock({
       onChange={setValue}
       onSubmit={submit}
       disabled={composerBusy}
-      placeholder={expanded ? expandedPlaceholder : placeholder}
+      placeholder={expanded ? expandedPlaceholder : placeholder ?? "Search or ask…"}
       inputRef={inputRef}
       expanded={expanded}
       onToggleExpand={() => expand("user")}
       showWaysInButton={Boolean(expanded && conversationActive)}
       onOpenWaysIn={() => setWaysInOpen(true)}
+      sendHint={sendHint}
     />
   ) : null;
 
@@ -514,8 +533,25 @@ export function AgentDock({
         <div className={styles.handwritingStrip} aria-live="polite">
           <div className={styles.handwritingInner}>
             <div ref={voiceEl} className={styles.handwritingVoice}>
-              <VoiceZone voice={voice} error={error} caption={caption} />
+              <VoiceZone voice={voice} error={error} caption={localReversal ? undefined : caption} />
             </div>
+            {localReversal && onLocalReversal ? (
+              <div className={styles.localReversalRow}>
+                <span className={styles.localReversalCaption}>
+                  {caption ?? `Showing ${localReversal.screenLabel} →`}
+                </span>
+                <span className={styles.localReversalSep} aria-hidden="true">
+                  ·
+                </span>
+                <button
+                  type="button"
+                  className={styles.localReversalBtn}
+                  onClick={onLocalReversal}
+                >
+                  Actually, just answer me ↩
+                </button>
+              </div>
+            ) : null}
           </div>
         </div>
 

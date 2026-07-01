@@ -1,5 +1,7 @@
 # The Movemental Agent Room — Phase 1 build status
 
+> **Historical snapshot (2026-06-05).** Superseded for shipped behavior by [agent-platform-complete-reference.md](./agent-platform-complete-reference.md) and [agent-room-prompt-baseline.md](./agent-room-prompt-baseline.md). **§3 handoff is resolved** (2026-06) — do not treat as blocking.
+
 **Created:** 2026-06-05
 **Brief:** "Build Brief — The Movemental Agent Room (Phase 1)"
 **Build split (your call):** engine → `movemental-ai-agents`; room → `movemental-ai`; room UI paused until prototypes are provided.

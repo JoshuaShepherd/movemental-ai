@@ -9,6 +9,7 @@ import { MAP_Q, computeMapRead, getMapQuestionForShow, isTerminalBeatIndex, type
 import { beatScene } from "@/lib/agent-room/beat-scenes";
 import { leaderScene, leaderWorkScene, leaderConnectScene } from "@/lib/agent-room/leader-scenes";
 import { clearAgentDeepLinkParams, readAgentDeepLink } from "@/lib/agent-room/deep-link";
+import { trackAgentDeepLink } from "@/lib/agent-room/deep-link-analytics";
 import { stashHandoffAudience } from "@/lib/agent-room/ways-in-doors";
 import { routeInput, FALLBACK_SAY } from "@/lib/agent-room/route-input";
 import {
@@ -346,6 +347,11 @@ export function useAgentRoomStub(): AgentRoomController {
       if (link?.kind === "leader") {
         currentLeaderRef.current = link.index;
         void play(leaderScene(link.index));
+        return;
+      }
+      if (link?.kind === "scene") {
+        trackAgentDeepLink("scene", { screenId: link.screenId, sceneKey: link.sceneKey });
+        run(link.sceneKey);
         return;
       }
       if (link?.kind === "ask") {

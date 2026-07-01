@@ -1,0 +1,121 @@
+.prose {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+  font-family: var(--font-ink-body);
+  color: var(--color-ink-band-ink);
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.82rem;
+  color: var(--color-ink-band-ink-muted);
+  text-decoration: none;
+}
+
+.back:hover {
+  color: var(--color-ink-band-blue);
+}
+
+.eyebrow {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-ink-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-ink-display);
+  font-size: clamp(1.85rem, 4vw, 2.45rem);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.deck {
+  margin: 1rem 0 0;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--color-ink-band-ink-muted);
+}
+
+.meta {
+  margin: 1rem 0 0;
+  font-family: var(--font-ink-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-band-ink-muted);
+}
+
+.body :global(h2) {
+  margin: 2rem 0 0.75rem;
+  font-family: var(--font-ink-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+.body :global(h3) {
+  margin: 1.5rem 0 0.5rem;
+  font-family: var(--font-ink-display);
+  font-size: 1.1rem;
+}
+
+.body :global(p) {
+  margin: 1rem 0 0;
+  line-height: 1.7;
+  font-size: 0.98rem;
+}
+
+.body :global(a) {
+  color: var(--color-ink-band-blue);
+}
+
+.body :global(ul),
+.body :global(ol) {
+  margin: 1rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.body :global(blockquote) {
+  margin: 1.25rem 0 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--color-ink-band-blue);
+  color: var(--color-ink-band-ink-muted);
+}
+
+.hubList {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+.hubGrid {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.hubCard {
+  display: block;
+  padding: 0.85rem 1rem;
+  text-decoration: none;
+  border: 1px solid var(--color-ink-band-border);
+  background: var(--color-ink-band-paper);
+}
+
+.hubCardTitle {
+  margin: 0;
+  font-family: var(--font-ink-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-ink-band-ink);
+}
+
+.hubCardMeta {
+  margin: 0.25rem 0 0;
+  font-size: 0.82rem;
+  color: var(--color-ink-band-ink-muted);
+}

@@ -20,6 +20,7 @@ import {
   trackAgentRoomScreenShow,
   trackAgentRoomStallRecovery,
   trackAgentRoomTurn,
+  trackSpeakShowViolation,
 } from "@/lib/analytics/agent-room-events";
 import { SCENES } from "@/lib/agent-room/data/scenes";
 import { submitLead, LEADS } from "@/lib/agent-room/capture";
@@ -35,6 +36,7 @@ import {
 import { getKnownStreamChipRoute, getOpeningChipLocalScene, resolveChipRoute } from "@/lib/agent-room/composer-routing";
 import { routeInput } from "@/lib/agent-room/route-input";
 import { readAgentDeepLink, clearAgentDeepLinkParams } from "@/lib/agent-room/deep-link";
+import { trackAgentDeepLink } from "@/lib/agent-room/deep-link-analytics";
 import { stashHandoffAudience, readHandoffScene, clearHandoffScene, WAYS_IN_LEAD_DOOR, type AgentSayOptions } from "@/lib/agent-room/ways-in-doors";
 import { CONCIERGE_VOICE } from "@/lib/agent-room/data/concierge-voice-lines";
 import {
@@ -43,8 +45,13 @@ import {
   type DiscussReason,
   type RoomPhase,
 } from "@/lib/agent-room/discuss";
-import { getScreenDisplayName, shouldShowBehindIndicator } from "@/lib/agent-room/screen-display";
+import { getScreenDisplayName, getLocalSceneDisplayName, shouldShowBehindIndicator } from "@/lib/agent-room/screen-display";
 import {
+  inferRenderableTopic,
+  renderableTopicToComponent,
+} from "@/lib/agent-room/renderable-topics";
+import {
+  COLLAPSE_CONVERSATION_EVENT,
   handleSuggestChipTarget,
   focusReadbackMapEmail,
   HANDBOOK_EMAIL_CHIP_TARGET,
@@ -127,6 +134,9 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   onDockStateChange: (state: DockState) => void;
   onDockExpand: (reason: "user" | "send" | "chip" | "discuss" | "agent") => void;
   localNavCaption: string | null;
+  localReversal: { utterance: string; screenLabel: string } | null;
+  onLocalReversal: () => void;
+  chatActive: boolean;
   behindScreenName: string | null;
   showBehindIndicator: boolean;
 } {
@@ -166,10 +176,14 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   const [engineExtra, setEngineExtra] = useState<EngineExtraState | null>(null);
   const [streamInput, setStreamInput] = useState<StreamScreenInput | null>(null);
   const [localNavCaption, setLocalNavCaption] = useState<string | null>(null);
+  const [localReversal, setLocalReversal] = useState<{
+    utterance: string;
+    screenLabel: string;
+  } | null>(null);
 
   const genRef = useRef<Generation>({ value: 0 });
   const runRef = useRef<(name: string) => void>(() => {});
-  const sendMessageRef = useRef<(raw: string) => void>(() => {});
+  const sendMessageRef = useRef<(raw: string, opts?: AgentSayOptions) => void>(() => {});
   const runAgentTurnRef = useRef<
     (text: string, opts?: { classifier?: AgentMoveReason }) => void
   >(() => {});
@@ -194,7 +208,7 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   screenRef.current = screen;
   const engineExtraRef = useRef(engineExtra);
   engineExtraRef.current = engineExtra;
-  /** Set before a LOCAL scene run from expanded empty thread — drives G6 nav caption. */
+  /** Set before a LOCAL scene run from expanded empty thread — drives nav caption. */
   const localNavFromExpandedRef = useRef(false);
 
   useEffect(() => {
@@ -299,7 +313,10 @@ export function useAgentRoomHybrid(): AgentRoomController & {
               return;
             }
             requestExpandConversation();
-            void sendMessageRef.current(route.utterance);
+            void sendMessageRef.current(route.utterance, {
+              renderComponent:
+                route.kind === "agent" ? route.renderComponent : undefined,
+            });
             return;
           }
           trackAgentRoomChipTap({
@@ -428,10 +445,16 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   const runAgentTurn = useCallback(
     async (
       text: string,
-      opts?: { isRetry?: boolean; classifier?: AgentMoveReason },
+      opts?: {
+        isRetry?: boolean;
+        classifier?: AgentMoveReason;
+        expectedRenderComponent?: ComponentId;
+      },
     ) => {
       lastTurnRef.current = text;
       hadUiRenderRef.current = false;
+      setLocalReversal(null);
+      setLocalNavCaption(null);
       const priorHistory = [...historyRef.current];
       historyRef.current = [...historyRef.current, { role: "user", content: text }];
       if (!opts?.isRetry) {
@@ -538,13 +561,25 @@ export function useAgentRoomHybrid(): AgentRoomController & {
           hadUiRender: hadUiRenderRef.current,
           roomContext: { ...buildRoomContext(), mode: AGENT_ROOM_MODE },
         });
-        if (
-          !hadUiRenderRef.current &&
-          dockExpandedRef.current &&
-          shouldShowBehindIndicator(engineExtraRef.current?.component)
-        ) {
-          const sid = screenRef.current.id;
-          appendAffordanceBackToSheet(sid, getScreenDisplayName(sid));
+        if (!hadUiRenderRef.current && dockExpandedRef.current) {
+          const inferredTopic = inferRenderableTopic(text);
+          const renderComponent =
+            opts?.expectedRenderComponent ??
+            (inferredTopic ? renderableTopicToComponent(inferredTopic) : null);
+
+          if (renderComponent) {
+            trackSpeakShowViolation({
+              topic: renderComponent,
+              autoRendered: true,
+            });
+            applyAgentUiRender(renderComponent, {});
+            if (typeof document !== "undefined") {
+              document.dispatchEvent(new CustomEvent(COLLAPSE_CONVERSATION_EVENT));
+            }
+          } else if (shouldShowBehindIndicator(engineExtraRef.current?.component)) {
+            const sid = screenRef.current.id;
+            appendAffordanceBackToSheet(sid, getScreenDisplayName(sid));
+          }
         }
         clearVoice();
         setVoice({ thinking: false, text: "" });
@@ -581,6 +616,12 @@ export function useAgentRoomHybrid(): AgentRoomController & {
       setBusy(false);
       setAgentChips(null);
 
+      const armComposerLocalReversal = (scene: string) => {
+        const label = getLocalSceneDisplayName(scene);
+        setLocalReversal({ utterance: text, screenLabel: label });
+        setLocalNavCaption(`Showing ${label} →`);
+      };
+
       const fromWaysInPanel = opts?.source === "ways-in";
       if (fromWaysInPanel) {
         if (text === WAYS_IN_LEAD_DOOR) {
@@ -597,11 +638,15 @@ export function useAgentRoomHybrid(): AgentRoomController & {
       if (isOpeningLabel) {
         const route = resolveChipRoute({ label: text, say: text }, surface);
         if (route.kind === "local") {
+          armComposerLocalReversal(route.scene);
           run(route.scene);
           return;
         }
         if (route.kind === "agent") {
-          void runAgentTurn(route.utterance, { classifier: "open_text" });
+          void runAgentTurn(route.utterance, {
+            classifier: "agent_chip",
+            expectedRenderComponent: route.renderComponent,
+          });
           return;
         }
       }
@@ -631,19 +676,27 @@ export function useAgentRoomHybrid(): AgentRoomController & {
         if (dockExpandedRef.current && historyRef.current.length === 0 && thread.length === 0) {
           localNavFromExpandedRef.current = true;
         }
+        if (route.scene !== "discussOffer") {
+          armComposerLocalReversal(route.scene);
+        }
         run(route.scene);
         return;
       }
 
       void runAgentTurn(
         text,
-        route.kind === "agent" ? { classifier: route.reason } : undefined,
+        route.kind === "agent"
+          ? {
+              classifier: route.reason,
+              expectedRenderComponent: opts?.renderComponent,
+            }
+          : { expectedRenderComponent: opts?.renderComponent },
       );
     },
     [busy, isStreaming, run, runAgentTurn, thread.length],
   );
 
-  sendMessageRef.current = (raw) => sendMessage(raw);
+  sendMessageRef.current = (raw, opts) => sendMessage(raw, opts);
   runAgentTurnRef.current = (text, opts) => void runAgentTurn(text, opts);
 
   const retry = useCallback(() => {
@@ -769,6 +822,9 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     if (link?.kind === "ask") {
       seedTextRef.current = link.text;
       if (link.audience) stashHandoffAudience(link.audience);
+    } else if (link?.kind === "scene") {
+      trackAgentDeepLink("scene", { screenId: link.screenId, sceneKey: link.sceneKey });
+      sceneHandoffRef.current = link.sceneKey;
     } else {
       const scene = readHandoffScene();
       if (scene) {
@@ -813,10 +869,23 @@ export function useAgentRoomHybrid(): AgentRoomController & {
   }, []);
 
   useEffect(() => {
-    if (!localNavCaption) return;
-    const t = window.setTimeout(() => setLocalNavCaption(null), 3500);
+    if (!localNavCaption && !localReversal) return;
+    const t = window.setTimeout(() => {
+      setLocalNavCaption(null);
+      setLocalReversal(null);
+    }, 8000);
     return () => window.clearTimeout(t);
-  }, [localNavCaption, screen.id, screen.nonce]);
+  }, [localNavCaption, localReversal, screen.id, screen.nonce]);
+
+  const onLocalReversal = useCallback(() => {
+    if (!localReversal || isStreaming) return;
+    const utterance = localReversal.utterance;
+    setLocalReversal(null);
+    setLocalNavCaption(null);
+    void runAgentTurn(utterance, { classifier: "open_text" });
+  }, [localReversal, isStreaming, runAgentTurn]);
+
+  const chatActive = thread.length > 0 || historyRef.current.length > 0;
 
   const retryChip: ComposerChip = { label: "Try again", lead: true, onSelect: retry };
   const hybridSuggestions: ComposerChip[] =
@@ -855,6 +924,9 @@ export function useAgentRoomHybrid(): AgentRoomController & {
     engineExtra,
     streamInput,
     localNavCaption,
+    localReversal,
+    onLocalReversal,
+    chatActive,
     behindScreenName: engineExtra
       ? null
       : getScreenDisplayName(screen.id),

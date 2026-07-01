@@ -61,21 +61,21 @@ The dock stays **collapsed**. The ink line appears in the handwriting strip, not
 | Chip label | Collapsed dock | Expanded dock |
 | --- | --- | --- |
 | **Get a clear next AI step** (lead) | LOCAL → safety flow wizard | LOCAL → safety flow wizard |
-| About Movemental | LOCAL → about screen | AGENT → live reply in thread |
-| What does it cost? | LOCAL → pricing screen | AGENT → live reply |
-| Get in touch | LOCAL → contact screen | AGENT → live reply |
+| About Movemental | LOCAL → about screen | AGENT → speak + `show_about` (renders the sheet; no re-authored facts) |
+| What does it cost? | LOCAL → pricing screen | AGENT → speak + `show_pricing` (renders the sheet; no re-authored facts) |
+| Get in touch | LOCAL → contact screen | AGENT → speak + `show_contact` (renders the sheet; no re-authored facts) |
 
-This asymmetry is intentional (screen-first on collapsed dock). It is the main reason visitors see a full page swap after one tap.
+Collapsed dock stays **screen-first** (instant LOCAL swap). Expanded drawer keeps conversation open but informational chips must **speak and show** the canonical sheet — not free prose with duplicated facts.
 
 ---
 
 ## 6. What the visitor can do next
 
-**Global mechanics:** [00-composer-drawer-global.md](./00-composer-drawer-global.md) — `chatActive`, LOCAL vs AGENT, opening vs follow-up chips, sheet behind scrim.
+**Global mechanics:** [00-composer-drawer-global.md](./00-composer-drawer-global.md) — `chatActive`, navigation-shape routing, composer hints, reversal affordance.
 
 ### Tap a float chip
 
-Routes per the table in section 5. Collapsed dock → instant page swap (LOCAL). Expanded drawer → informational chips become live conversation (AGENT), except the lead chip which still opens the safety-flow wizard locally.
+Routes per section 5. **Chip taps never show the G1 reversal affordance** — chips are explicit navigation.
 
 ### Tap a leader portrait
 
@@ -86,93 +86,96 @@ Runs `leaderScene(index)`:
 - Follow-up chips depend on whether a full profile is in the catalog.
 - The dock **stays collapsed** unless the visitor had already expanded it; either way, the sheet swap is visible because leader scenes always change `screenKey`, which auto-collapses an open drawer (see section 7).
 
-### Type in the composer — the fork visitors miss
+### Type in the composer
 
-Typing and sending is **not** one behavior. The hybrid controller classifies every send as **LOCAL** (scripted scene, usually with a sheet swap) or **AGENT** (live model reply in the expanded thread). On home, **most first messages that sound like navigation** go LOCAL — that is why typing *"what does it cost?"* can feel like opening a preset page instead of starting a chat.
+Every send is classified **LOCAL** (scripted scene + sheet swap) or **AGENT** (live model in the expanded thread). Behavior keys off the **shape of the input**, not invisible session state.
 
-**Step 1 — Is there already conversation history?**
+**`chatActive`** is true only when the thread (or server history) already has at least one turn. It is **not** the same as “the drawer is open.”
 
-`chatActive` is true only when the thread (or server history) already has at least one turn. It is **not** the same as “the drawer is open.”
-
-| Situation | `chatActive` | Typed send goes to… |
+| Situation | `chatActive` | Typed send |
 | --- | --- | --- |
-| Collapsed dock, first send | false | Classifier (regex + confidence) |
-| Expanded drawer, empty thread, first send | false | Classifier (same as collapsed) |
-| After any prior user+assistant exchange | true | **AGENT always** — regex bypassed |
+| Collapsed dock, first send | false | Navigation-shape classifier |
+| Expanded drawer, empty thread, first send | false | Same classifier |
+| After any prior user+assistant exchange | true | **AGENT always** |
 
-**Step 2 — Classifier when `chatActive` is false**
+**Navigation-shape rule** (`navigationShape()` in `src/lib/agent-room/navigation-shape.ts`) — applies when `chatActive === false`:
 
-Ordered checks (see [00-room-arrival-and-routing.md](./00-room-arrival-and-routing.md) for the full tree):
+1. **Discuss phase** or **meta/objection** phrasing → discuss offer or AGENT (unchanged; see global doc).
+2. First send routes **LOCAL** only if **all** hold:
+   - **Short:** ≤ 5 content tokens after stripping filler (`what / is / the / a / does / it`, …).
+   - **Leading or sole keyword:** a known route keyword (`cost`, `price`, `pricing`, `about`, `contact`, `path`, `founders`, …) is the first content token **or** the only content token (plus phrase-level matches like *what does it cost* / *tell me about movemental*).
+   - **Not question-deep:** no hedged phrasing (`should`, `could`, `what if`, `how do we`, …) and no multi-clause sentences.
+3. Anything else → **AGENT** (`open_text`), even if a route keyword appears mid-sentence.
 
-1. **Discuss phase** → AGENT (not typical on cold home visit).
-2. **Meta/objection phrasing** (e.g. *"our board is nervous"*, *"what if we tried…"*) → LOCAL `discussOffer` scene (consent chips to enter Discuss).
-3. **Regex match** in `route-input.ts` → LOCAL scene **only if high-confidence**; weak matches (e.g. bare *"about"* in a long sentence) → AGENT.
-4. **No match** → AGENT (`open_text`).
+Examples:
 
-Common home-adjacent LOCAL triggers (first send, high-confidence):
-
-| Visitor types something like… | Sheet shows |
+| Input | Route |
 | --- | --- |
-| cost / price / afford | pricing |
-| what is movemental / tell me about movemental | about |
-| contact / talk to / email | contact |
-| path / how it works / sandbox / training / tech | path or stage detail |
-| stuck / next step / assess / safe / help | safety-flow wizard |
-| who / founders / behind | founders |
+| `cost` / `pricing` | LOCAL → pricing |
+| `what does it cost?` | LOCAL → pricing |
+| `tell me about movemental` | LOCAL → about |
+| `i'm worried about what AI will cost us in trust` | AGENT |
+| `question about donors` | AGENT |
 
 **Step 3 — What the visitor sees after Send**
 
-| Classification | Drawer | Sheet | Agent text |
+| Classification | Drawer | Sheet | Visitor signal |
 | --- | --- | --- | --- |
-| **LOCAL** scene | Stays **collapsed**, or **auto-collapses** if it was open | **Swaps immediately** — this is the “preset page” feeling | Short **ink caption** in the handwriting strip (scene `say`), not thread prose |
-| **AGENT** turn | **Auto-expands** before streaming | Stays on current page **behind the scrim** (hidden) | Full reply in the **conversation thread**; host may also call `ui_render` tools |
+| **LOCAL** (typed) | Stays collapsed or auto-collapses | Swaps immediately | Ink caption + **`Showing {screen} →` · `Actually, just answer me ↩`** (~8s) in handwriting strip |
+| **LOCAL** (chip tap) | Same | Swaps | Ink caption only — **no reversal** |
+| **AGENT** | Auto-expands | Stays behind scrim until render/collapse | Thread stream; optional `ui_render` |
 
-**Important corrections:**
+**Composer hints (G2):**
 
-- Sending from the collapsed dock does **not** always expand the drawer. Only **AGENT** sends expand. LOCAL sends swap the sheet and keep the dock collapsed.
-- Manually expanding the drawer **before** the first send does **not** force conversation mode. The first send still runs through the regex table unless `chatActive` is already true.
-- After the first AGENT exchange, all further typing is conversational — no more regex page jumps.
+- Placeholder: cold → `Search or ask…`; after first exchange → `Ask a follow-up…`.
+- While typing: navigation-shaped buffer → `↵ opens the {screen} page`; else → `↵ starts a chat`. Advisory only.
+
+**G1 reversal:** Tapping **Actually, just answer me ↩** re-runs the original utterance as a forced **AGENT** turn (drawer expands, thread streams) while the sheet stays mounted behind the scrim.
 
 **Stub mode only:** unmatched text gets a fixed refusal line with no screen change and no LLM.
 
 ### Expand chat (without sending)
 
-- Sheet is hidden behind a scrim; conversation owns the viewport below the mast.
-- Empty thread shows the **Ways in** door panel (curated utterances — these still route through the same classifier on first send).
-- Float chip labels for About / Cost / Contact switch to **AGENT** utterances (section 5).
-- Collapse (backdrop, Escape, or collapse control) restores the sheet at whatever screen was last mounted behind the scrim.
+- Sheet stays mounted behind scrim (I6); **`behind: {screen}`** names it.
+- Empty thread → **Ways in** door panel.
+- Opening chip labels use expanded routing (section 5).
+- Collapse restores the last mounted sheet.
 
 ---
 
 ## 7. Sheet vs drawer — speak-and-show guarantee
 
-The screen **always stays mounted** when the drawer expands (invariant **I6**). The visitor literally cannot see sheet updates while the drawer is open — AGENT prose-only replies on renderable topics used to feel like a silent failure (*nothing changed*). That outcome is **no longer normal**.
+The screen **always stays mounted** when the drawer expands (invariant **I6**). On **renderable topics**, the default resolution is **auto-render-then-reveal** — the visitor ends up looking at the sheet, not prose about a hidden one.
 
-**Three layers enforce the guarantee:** (1) host **speak-and-show** rule on renderable topics; (2) **`behind: {screen}`** indicator in the expanded drawer header; (3) **`↩ Back to {screen}`** in-thread affordance when a turn completes with no `ui_render`.
+**Enforcement layers:** (1) host speak-and-show rule; (2) **`behind: {screen}`** while drawer is open; (3) client **auto-render + collapse** when a turn completes on a renderable topic with no `ui_render` (logs `speakshow.violation`); (4) **`↩ Back to {screen}`** only for genuinely **non-renderable** prose-only turns.
 
-What actually happens:
-
-| Event | Drawer behavior | Can the visitor see the new sheet? | Visitor signal |
+| Event | Drawer | Can visitor see new sheet? | Signal |
 | --- | --- | --- | --- |
-| LOCAL scene from **collapsed** dock (chip or typed regex) | Stays collapsed | **Yes** — immediate full-page swap | Ink caption |
-| LOCAL scene while drawer was **already expanded** (first send) | **Auto-collapses** on `screenKey` change | **Yes** | Brief `Showing {screen} →` caption |
-| AGENT turn, prose only on renderable topic (**policy violation**) | Expands (or stays expanded) | **No** until collapse | **behind:** indicator + **↩ Back to** affordance |
-| AGENT turn **with** `ui_render` (e.g. `show_pricing`) | Expands for stream, then **auto-collapses** on `screenKey` change | **Yes** — collapse reveals the rendered screen | Sheet swap on collapse |
+| LOCAL from collapsed (chip or typed nav-shape) | Collapsed | **Yes** — immediate swap | Ink caption (+ reversal if typed) |
+| LOCAL while drawer was open (first send) | Auto-collapses | **Yes** | `Showing {screen} →` (+ reversal if typed) |
+| AGENT + `ui_render` | Expands, then collapses on `screenKey` change | **Yes** | Sheet on collapse |
+| AGENT, prose only on **renderable** topic | Expands, then **client auto-renders + collapses** | **Yes** (after safety net) | `speakshow.violation` metric |
+| AGENT, prose only on **non-renderable** topic | Stays expanded | **No** until collapse | **behind:** + **↩ Back to** |
 
-**Practical expectation on home:** Treat float chips and command-like first messages (*"pricing"*, *"contact us"*) as **navigation**. Treat unmatched, conversational first messages as **chat** (drawer expands, thread streams). After one agent reply, everything is chat until replay. While the drawer is open, **`behind: {screen}`** always names the mounted sheet — tap it or **↩ Back to** to return.
+Renderable topic list: `src/lib/agent-room/renderable-topics.ts` (`RENDERABLE_TOPIC_IDS`).
 
 ---
 
 ## 8. Live model behavior on home
 
-The home screen itself is never generated by the model. The live host may call `show_home` or stream prose if the visitor is in an AGENT turn while home is visible (unusual on cold visit).
+The home screen itself is never generated by the model.
 
-If the visitor expands and asks an open question, the host **must** pair thread prose with the matching `ui_render` tool on renderable topics (speak **and** show — mandatory host rule). The behind-indicator and `↩ Back to` affordance are client safety nets if the model omits a render call.
+**Hard rule (G4):** On renderable topics, the host **must** call the matching `show_*` tool and speak a **one-line lead only**. **Never** re-author prices, plan specifics, `@` addresses, or contact details in thread prose — the sheet is the only source of truth (same copy modules as stub screens).
+
+**Renderable topics** (from `RENDERABLE_TOPIC_IDS`): about, pricing, contact, path, founders, faq, safety, safety_flow, leader — plus network/audience/handoff via engine tools when relevant.
+
+Open strategy questions (*"our board is nervous"*) remain free prose — correct and unchanged.
 
 ---
 
 ## 9. Related pages
 
+- [00-composer-drawer-global.md](./00-composer-drawer-global.md) — global composer/drawer + navigation-shape classifier
 - [02-safety-flow.md](./02-safety-flow.md) — lead chip destination
 - [14-leader-profiles.md](./14-leader-profiles.md) — portrait taps
 - [10-about.md](./10-about.md), [11-pricing.md](./11-pricing.md), [15-contact.md](./15-contact.md) — other opening chips

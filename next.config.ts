@@ -80,7 +80,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/blog",
-        destination: "/field-guide",
+        destination: "/articles",
+        permanent: true,
+      },
+      {
+        source: "/blog/:path*",
+        destination: "/articles",
         permanent: true,
       },
       {
@@ -185,12 +190,17 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/content/articles/sandbox",
-        destination: "/field-guide",
+        destination: "/articles",
         permanent: true,
       },
       {
         source: "/content/articles/sandbox/:path*",
-        destination: "/field-guide",
+        destination: "/articles",
+        permanent: true,
+      },
+      {
+        source: "/content/articles/:path*",
+        destination: "/articles",
         permanent: true,
       },
       {
@@ -285,12 +295,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/about",
-        destination: "/agent",
-        permanent: true,
-      },
-      {
-        source: "/about/:path*",
-        destination: "/agent",
+        destination: "/agent/about",
         permanent: true,
       },
       {
@@ -310,17 +315,17 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/churches",
-        destination: "/agent",
+        destination: "/agent/churches",
         permanent: true,
       },
       {
         source: "/nonprofits",
-        destination: "/agent",
+        destination: "/agent/nonprofits",
         permanent: true,
       },
       {
         source: "/institutions",
-        destination: "/agent",
+        destination: "/agent/institutions",
         permanent: true,
       },
       {
@@ -360,12 +365,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/pathway/skills",
-        destination: "/pathway/training",
+        destination: "/field-guide",
         permanent: true,
       },
       {
         source: "/pathway/skills/:path*",
-        destination: "/pathway/training",
+        destination: "/field-guide",
         permanent: true,
       },
       {
@@ -464,13 +469,28 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/voices",
-        destination: "/agent/movement-voices",
+        source: "/agent/churches-old",
+        destination: "/agent/churches",
         permanent: true,
       },
       {
-        source: "/voices/:path*",
-        destination: "/agent/movement-voices",
+        source: "/agent/nonprofits-old",
+        destination: "/agent/nonprofits",
+        permanent: true,
+      },
+      {
+        source: "/movement-voices",
+        destination: "/voices",
+        permanent: true,
+      },
+      {
+        source: "/scenius",
+        destination: "/voices",
+        permanent: true,
+      },
+      {
+        source: "/agent/movement-voices",
+        destination: "/voices",
         permanent: true,
       },
     ];

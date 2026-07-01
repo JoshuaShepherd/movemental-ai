@@ -71,6 +71,8 @@ describe("speak-and-show — host prompt (G1)", () => {
     );
     expect(prompt).toMatch(/Speak-and-Show Guarantee \(mandatory\)/i);
     expect(prompt).toMatch(/never prose-only on these topics/i);
+    expect(prompt).toMatch(/never re-author/i);
+    expect(prompt).toMatch(/renderable-topics/i);
     expect(prompt).toMatch(/`show_pricing`/);
     expect(prompt).toMatch(/`show_path`/);
   });

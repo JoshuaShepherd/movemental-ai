@@ -1,3 +1,6 @@
+import type { ComponentId } from "./stream-chunk";
+import { OPENING_CHIP_RENDER_COMPONENT } from "./renderable-topics";
+
 /**
  * Composer chip routing — stream mode (PAR-02) + dock-context hybrid routing.
  *
@@ -17,7 +20,7 @@ export type OpeningChipScene = "toSafetyFlow" | "whatIs" | "cost" | "talkToUs";
 /** How a default suggestion is handled. */
 export type ChipRoute =
   | { kind: "local"; scene: OpeningChipScene }
-  | { kind: "agent"; utterance: string }
+  | { kind: "agent"; utterance: string; renderComponent?: ComponentId }
   | { kind: "navigate"; href: string };
 
 /** @deprecated Alias — prefer `ChipRoute`. */
@@ -34,12 +37,24 @@ const OPENING_CHIP_LOCAL_SCENES: Record<string, OpeningChipScene> = {
   "Get in touch": "talkToUs",
 };
 
-/** Labels from `DEFAULT_SUGGESTIONS` → expanded-drawer / legacy stream routing. */
+/** Labels from `DEFAULT_SUGGESTIONS` → expanded-drawer / legacy stream routing (G4 speak-and-show). */
 const EXPANDED_DRAWER_CHIP_ROUTES: Record<string, ChipRoute> = {
   "Get a clear next AI step": { kind: "local", scene: "toSafetyFlow" },
-  "About Movemental": { kind: "agent", utterance: "About Movemental" },
-  "What does it cost?": { kind: "agent", utterance: "What does it cost?" },
-  "Get in touch": { kind: "agent", utterance: "Get in touch" },
+  "About Movemental": {
+    kind: "agent",
+    utterance: "About Movemental",
+    renderComponent: OPENING_CHIP_RENDER_COMPONENT["About Movemental"],
+  },
+  "What does it cost?": {
+    kind: "agent",
+    utterance: "What does it cost?",
+    renderComponent: OPENING_CHIP_RENDER_COMPONENT["What does it cost?"],
+  },
+  "Get in touch": {
+    kind: "agent",
+    utterance: "Get in touch",
+    renderComponent: OPENING_CHIP_RENDER_COMPONENT["Get in touch"],
+  },
 };
 
 /** @deprecated AU-20 — use `EXPANDED_DRAWER_CHIP_ROUTES`. */

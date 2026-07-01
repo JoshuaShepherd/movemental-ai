@@ -14,7 +14,7 @@
 | Engine code (`movemental-ai-agents`) | ✅ committed (`893a90f` feat, `0fe98af`) |
 | Room code (`movemental-ai`, `/agent` + proxy + client contract) | ✅ committed |
 | Prompts exist | ✅ `room-host.md`, `room-diagnostician.md` |
-| Models registered | ✅ host `claude-haiku-4-5-20251001`, diagnostician `claude-opus-4-6` |
+| Models registered | ✅ host `claude-opus-4-6`, diagnostician `claude-opus-4-6` (seed SSOT; see [agent-room-waf-and-model-hygiene.md](./agent-room-waf-and-model-hygiene.md)) |
 | Room → engine env wiring | ✅ `AI_AGENTS_BASE_URL` / `AI_AGENTS_SERVICE_SECRET` / `AI_AGENTS_TENANT_ORG_ID` present |
 | Engine env | ✅ `ANTHROPIC_API_KEY`, `SERVICE_API_SECRET`, `TENANT_ORG_ID` present |
 
@@ -35,7 +35,7 @@
 | | **room-host** | **room-diagnostician** |
 |---|---|---|
 | Role | First/only presence; drives the reality check; renders the repertoire | Composes the path-placement read-back, once, after the reality check |
-| Model | `claude-haiku-4-5-20251001` (fast/cheap, every turn) | `claude-opus-4-6` (best reasoning, one shot) |
+| Model | `claude-opus-4-6` (every host turn; seed SSOT) | `claude-opus-4-6` (read-back composer, one shot) |
 | Temperature | `0.6` | `0.4` |
 | max_tokens | `1500` | `2000` |
 | agent_type | `conversational` | `synthesis` |

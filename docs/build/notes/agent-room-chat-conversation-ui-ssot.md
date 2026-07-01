@@ -11,6 +11,8 @@
 
 **Supersedes for chat UI:** Sections in [agent-home-dock-functionality-2026-06-15.md](./agent-home-dock-functionality-2026-06-15.md) and platform reference §4.3 that describe voice/thread split — this doc reflects the **shipped** wiring as of 2026-06-17.
 
+**Partially superseded by:** [agent-room-conversation-choreography-model-ssot.md](./agent-room-conversation-choreography-model-ssot.md) — surface matrix, length routing, and **§6.3 Discuss collapsed caption** (trust choreography I1). Discuss **layout** (overlay vs marginalia): [agent-room-discuss-layout-decision.md](./agent-room-discuss-layout-decision.md).
+
 ---
 
 ## 0. Mental model (one paragraph)
@@ -200,7 +202,11 @@ Priority in `VoiceZone`:
 4. `voice.thinking` && !`voiceStream` → thinking pulse (+ optional `voice.note` tool label)
 5. Fallback: `voice.text` as plain wrapped line if nothing else
 
-### 6.3 Discuss phase (collapsed)
+### 6.3 Discuss phase (collapsed) — **deprecated for wiring**
+
+> **Superseded by [choreography SSOT I1](./agent-room-conversation-choreography-model-ssot.md):** collapsed dock shows **one short caption line** only. Multi-line `DiscussVoice` transcript in the band is **not** shipped behavior. AGENT-classified Discuss turns render in the **expanded thread**. See [agent-room-discuss-layout-decision.md](./agent-room-discuss-layout-decision.md).
+
+Historical notes (pre-choreography):
 
 1. `DiscussVoice` — last `DISCUSS_VOICE_LINES` (5) assistant transcript lines as Caveat `InkVoice`
 2. `voiceStream` — live turn (multiline)

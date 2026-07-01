@@ -46,7 +46,7 @@ The agent speaks through **two coupled channels** on every meaningful turn:
                                              ▼
 ┌─────────────────────────────────────────────────────────────────────────┐
 │  movemental-ai-agents — headless agent runtime                          │
-│  POST /api/agents/stream  →  agent-runner  →  room-host (Haiku)        │
+│  POST /api/agents/stream  →  agent-runner  →  room-host (Opus 4-6)        │
 │                              handoff tool  →  room-diagnostician (Opus) │
 │  Tools: render_*, gesture_at, suggest_chips, request_diagnosis, …      │
 └─────────────────────────────────────────────────────────────────────────┘
@@ -85,6 +85,7 @@ Long-form audience and trust pages use **`DocumentPageShell`** — same ink/voic
 | `/agent/invite` | Invite flow |
 | `/agent/assessment` | Org assessment entry |
 | `/agent/*/deck` | Slide decks (churches, nonprofits, institutions) |
+| `/agent/churches-old`, `/agent/nonprofits-old` | **Archived** prior audience documents (redirect targets from migration; not in mast nav) |
 
 **Hand-off pattern:** chips or typed composer text → `router.push('/agent?ask=…&from=segment')`. On mount, hybrid controller reads the deep link, stashes audience for Ways-in, clears URL, sends first turn after opening settles (`src/lib/agent-room/deep-link.ts`).
 
@@ -660,9 +661,10 @@ Prioritized for external review — not an committed roadmap.
 | [agent-room-phase1-status.md](./agent-room-phase1-status.md) | Phase 1 build history (partially historical) |
 | [agent-room-suggestion-pills-inventory-and-recommendations.md](./agent-room-suggestion-pills-inventory-and-recommendations.md) | Chip inventory |
 | [agent-room-long-form-discussion-ui.md](./agent-room-long-form-discussion-ui.md) | Discuss design spec |
+| [agent-room-discuss-layout-decision.md](./agent-room-discuss-layout-decision.md) | Shipped Discuss layout (Model C) |
 | [docs/design/INK_BAND_DESIGN_CHAIN.md](../design/INK_BAND_DESIGN_CHAIN.md) | Visual design canon |
 | [ai-agent-inventory-best-of-breed.md](./ai-agent-inventory-best-of-breed.md) | Org-wide agent architecture context |
 
 ---
 
-*This document reflects the codebase as of 2026-06-17. When behavior changes, update the relevant SSOT file first (`scenes.ts`, `composer-routing.ts`, `move-classifier.ts`, `screen-map.ts`, engine seed), then revise this reference.*
+*This document reflects the codebase as of 2026-06-30. When behavior changes, update the relevant SSOT file first (`scenes.ts`, `composer-routing.ts`, `move-classifier.ts`, `screen-map.ts`, engine seed), then revise this reference.*

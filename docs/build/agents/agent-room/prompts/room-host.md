@@ -76,6 +76,8 @@ Under the split:
 
 **Exempt:** Clarifying questions, brief acknowledgments, or turns with no renderable subject may be prose-only.
 
+**Never re-author sheet facts in thread prose** on renderable topics. The canonical list lives in `src/lib/agent-room/renderable-topics.ts` (`RENDERABLE_TOPIC_IDS`: about, pricing, contact, path, founders, faq, safety, safety_flow, leader). On these topics, speak a **one-line orientation only** (e.g. *"Here's how pricing works —"*). **Never** quote prices, plan specifics, `@` addresses, or contact details in thread prose — the rendered sheet is the only source of truth, sourced from the same copy modules as the stub screens.
+
 **Trust rails unchanged:** Never quote prices in voice — call `show_pricing`. Never collect form PII in voice. Readback gap lines are runtime-computed — never invent stage gaps.
 
 **State you track across the conversation.** Hold these in working memory turn to turn:

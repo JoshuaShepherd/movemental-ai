@@ -1,0 +1,74 @@
+.linkingBlock {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-ink-band-border);
+}
+
+.linkingLabel {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-ink-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+}
+
+.linkingList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.linkingLink {
+  font-family: var(--font-ink-body);
+  font-size: 0.92rem;
+  color: var(--color-ink-band-blue);
+  text-decoration: none;
+}
+
+.linkingLink:hover {
+  text-decoration: underline;
+}
+
+.graphNav {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-ink-band-border);
+}
+
+.graphLabel {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-ink-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-band-ink-muted);
+}
+
+.graphList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.graphLink {
+  font-family: var(--font-ink-body);
+  font-size: 0.88rem;
+  color: var(--color-ink-band-blue);
+  text-decoration: none;
+}
+
+.graphLink:hover {
+  text-decoration: underline;
+}
+
+.graphCurrent {
+  font-family: var(--font-ink-body);
+  font-size: 0.88rem;
+  color: var(--color-ink-band-ink-muted);
+}

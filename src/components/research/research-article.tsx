@@ -6,6 +6,9 @@ import type { ResearchItem } from "@/lib/research/data";
 import { ArticleActions } from "./article-actions";
 import { ArticleToc } from "./article-toc";
 import { getArticleBody } from "./article-bodies";
+import { DocumentGraphNav } from "@/components/linking/document-graph-nav";
+import { FootnotesCallout } from "@/components/linking/footnotes-callout";
+import { RelatedArticlesLinks } from "@/components/linking/related-articles-links";
 import { ResearchHeader } from "./research-header";
 import { ResearchFooter } from "./research-footer";
 import styles from "./research.module.css";
@@ -85,6 +88,15 @@ export function ResearchArticle({ item }: { item: ResearchItem }) {
             <div className={styles.articleBody}>{getArticleBody(item)}</div>
 
             <ArticleActions title={item.title} />
+
+            {item.slug === "seo-geo-discoverability" ? (
+              <RelatedArticlesLinks
+                slugs={["linking-strategy-eeat-geo-playbook"]}
+                label="Companion article"
+              />
+            ) : null}
+            <FootnotesCallout />
+            <DocumentGraphNav current="research" />
           </article>
 
           <ArticleSources item={item} />

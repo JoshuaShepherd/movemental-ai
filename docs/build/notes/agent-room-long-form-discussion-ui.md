@@ -1,6 +1,8 @@
 # Agent Room — Long-Form Discussion UI
 
 **Date:** 2026-06-10 (revised 2026-06-10)  
+**Shipped layout (2026-06-30):** [agent-room-discuss-layout-decision.md](./agent-room-discuss-layout-decision.md) — **Model C expanded dock overlay**. Sections below mix product intent (Model B marginalia) with historical overlay notes; trust the layout decision doc for wiring.
+
 **Scope:** `/agent` — how to support in-depth conversation without abandoning the Ink Band guided experience  
 **Related:** [INK_BAND_DESIGN_CHAIN.md](../../design/INK_BAND_DESIGN_CHAIN.md) · [movemental-room-script.md](../../movemental-room-script.md) · [agent-room-prompt-baseline.md](./agent-room-prompt-baseline.md) · [agent-room-chat-conversation-ui-ssot.md](./agent-room-chat-conversation-ui-ssot.md) (shipped wiring) · [AF-90](../prompts/migration-agentic-front-end/90-deferred-agent-backend-integration.md) · [INT-05](../prompts/integration-agent-backend/05-scenes-to-agent-tool-surface.md)
 

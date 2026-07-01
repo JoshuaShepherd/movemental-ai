@@ -5,6 +5,8 @@ import { useCallback, useMemo, useState } from "react";
 
 import { DocumentPageChrome } from "@/components/agent-room/document/document-page-chrome";
 import { DocumentPageShell } from "@/components/agent-room/document/document-page-shell";
+import { RelatedResearchLinks } from "@/components/linking/related-research-links";
+import { FootnotesCallout } from "@/components/linking/footnotes-callout";
 import shell from "@/components/agent-room/document/document-shell.module.css";
 import { useDocumentScrollProgress } from "@/components/agent-room/document/use-document-scroll-progress";
 import { useScrollSpy } from "@/components/agent-room/document/use-scroll-spy";
@@ -18,6 +20,12 @@ import { PathOrderGrid } from "./path-order-grid";
 import { PlatformCarousel } from "./platform-carousel";
 import { RevealOnScroll } from "./reveal-on-scroll";
 import { SolutionStack } from "./solution-stack";
+
+const AUDIENCE_RESEARCH_SLUGS: Record<string, readonly string[]> = {
+  churches: ["ai-credibility-crisis", "trust-verification", "seo-geo-discoverability"],
+  nonprofits: ["ai-credibility-crisis", "trust-verification"],
+  institutions: ["ai-credibility-crisis", "credibility-thesis"],
+};
 
 type AudienceEditionExperienceProps = {
   config: AudienceEditionConfig;
@@ -197,6 +205,15 @@ export function AudienceEditionExperience({ config }: AudienceEditionExperienceP
               </RevealOnScroll>
               <AskAiPromptButton promptKey={config.start.askAiPromptKey} />
             </div>
+          </div>
+        </section>
+
+        <section className={shell.section}>
+          <div className={shell.sectionInner}>
+            <RelatedResearchLinks
+              slugs={AUDIENCE_RESEARCH_SLUGS[config.slug] ?? []}
+            />
+            <FootnotesCallout />
           </div>
         </section>
       </DocumentPageChrome>

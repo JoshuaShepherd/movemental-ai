@@ -121,3 +121,16 @@ export function trackAgentRoomCaptureSubmit(input: {
 export function trackAgentRoomStallRecovery(retryable: boolean): void {
   capture("agent_room_stall_recovery", { retryable });
 }
+
+/** G5 — prose-only agent turn on a renderable topic (host omitted `ui_render`). */
+export function trackSpeakShowViolation(input: {
+  topic: string;
+  autoRendered: boolean;
+  modelId?: string;
+}): void {
+  capture("speakshow.violation", {
+    topic: input.topic,
+    auto_rendered: input.autoRendered,
+    model_id: input.modelId,
+  });
+}

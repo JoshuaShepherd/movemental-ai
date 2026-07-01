@@ -5,9 +5,13 @@
 
 export type WaysInAudience = "nonprofits" | "churches" | "institutions" | "exploring";
 
+import type { ComponentId } from "@/lib/agent-room/stream-chunk";
+
 export type AgentSayOptions = {
   /** Set when the utterance came from the expanded ways-in panel (not float chips). */
   source?: "ways-in";
+  /** Expected `ui_render` target for speak-and-show (G4 expanded info chips). */
+  renderComponent?: ComponentId;
 };
 
 export type AgentSayHandler = (text: string, opts?: AgentSayOptions) => void;
