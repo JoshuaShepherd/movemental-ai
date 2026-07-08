@@ -138,6 +138,8 @@ src/
 
 **Full reference: [docs/architecture/TYPE_SAFETY_CHAIN.md](docs/architecture/TYPE_SAFETY_CHAIN.md)** — topology, per-layer detail, generate/validate commands, lock status, and the schema-change waterfall. This repo shares the live `movemental` Supabase DB (`vhaiiiykcukrlyvwlgip`) with both sibling repos.
 
+**Layer-by-layer guides:** [docs/type/README.md](docs/type/README.md) — `01_OVERVIEW` through `07_LAYER_6_UI`, workflow checklist, multi-tenant notes, glossary.
+
 Types flow **downstream only** — never import from higher layers into lower:
 
 1. **Drizzle schema** (`src/lib/db/schema.ts`) — structure SSOT. Hand-maintained here (no `generate-schema` script); add the `pgTable` *and* a matching live-DB migration together.

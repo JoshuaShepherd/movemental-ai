@@ -128,7 +128,7 @@ class PreBuildValidator {
     console.log(`\n🔍 ${description}...`);
     const startTime = Date.now();
 
-    // Give tsc more heap to avoid SIGABRT/OOM on large codebases (see _docs/type/README.md)
+    // Give tsc more heap to avoid SIGABRT/OOM on large codebases (see docs/type/README.md)
     const runOptions =
       step === "typescript-check"
         ? { env: { ...process.env, NODE_OPTIONS: "--max-old-space-size=8192" } }

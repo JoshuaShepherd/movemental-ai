@@ -1,0 +1,31 @@
+/* Visual Style Finder — results */
+
+/* results */
+.res{max-width:1000px;margin:0 auto;padding:6px 6px 24px}
+  .res .hero{padding:8px 4px 18px}
+  .res .hero .k{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-blue)}
+  .res .hero h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.5rem,4vw,2.2rem);letter-spacing:-.015em;margin:.3rem 0}
+  .res .hero .lean{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--ink-muted);max-width:60ch}
+  .res .hero .lean b{color:var(--ink-blue);font-style:normal;font-weight:600}
+  .rsec{margin-top:18px}
+  .rsec .rh{display:flex;align-items:baseline;gap:.5rem;border-bottom:1px solid var(--border);padding-bottom:.4rem;margin-bottom:.7rem}
+  .rsec .rh h3{font-family:var(--serif);font-weight:600;font-size:1.05rem}
+  .rsec .rh .c{font-family:var(--mono);font-size:.62rem;color:var(--ink-muted);letter-spacing:.06em}
+  .chips2{display:flex;flex-wrap:wrap;gap:6px}
+  .chip2{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;padding:.34rem .6rem;border:1px solid var(--ink-blue);color:var(--ink-blue);border-radius:2px;text-transform:uppercase}
+  .rthumbs{display:flex;flex-wrap:wrap;gap:8px}
+  .rthumbs img{width:96px;height:96px;object-fit:cover;border-radius:3px;border:1px solid var(--border)}
+  .rpals{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
+  .rpal{border:1px solid var(--border);border-radius:3px;overflow:hidden}
+  .rpal .bands{display:flex;height:40px} .rpal .bands i{flex:1}
+  .rpal .nm{font-family:var(--mono);font-size:.6rem;padding:.34rem .5rem;color:var(--ink-muted);letter-spacing:.04em}
+  .empty{font-size:.8rem;color:var(--ink-muted);font-style:italic}
+
+/* results share card */
+.share{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    border:1px solid var(--border);border-left:3px solid var(--ink-blue);border-radius:6px;background:var(--sheet);
+    padding:14px 16px;margin:2px 0 8px}
+  .share .share-t{font-family:var(--serif);font-weight:600;font-size:1.02rem}
+  .share .share-d{font-size:.82rem;color:var(--ink-muted);margin-top:.15rem}
+  .share .share-b{display:flex;gap:8px;flex-wrap:wrap}
+  .share a.btn{text-decoration:none;display:inline-flex;align-items:center}

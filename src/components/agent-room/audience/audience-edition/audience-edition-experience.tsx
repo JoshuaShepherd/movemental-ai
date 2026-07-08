@@ -153,7 +153,7 @@ export function AudienceEditionExperience({ config }: AudienceEditionExperienceP
         </section>
 
         <section className={`${shell.section} ${shell.bandSurface}`} id="the-limit">
-          <div className={shell.sectionInner}>
+          <div className={`${shell.sectionInner} ${shell.sectionInnerWide}`}>
             <div className={styles.sheet}>
               <RevealOnScroll>
                 <p className={shell.eyebrow}>{config.limit.eyebrow}</p>
@@ -177,7 +177,7 @@ export function AudienceEditionExperience({ config }: AudienceEditionExperienceP
         </section>
 
         <section className={`${shell.section} ${shell.bandPaper}`} id="start">
-          <div className={shell.sectionInner}>
+          <div className={`${shell.sectionInner} ${shell.sectionInnerWide}`}>
             <div className={styles.sheet}>
               <RevealOnScroll>
                 <p className={shell.eyebrow}>{config.start.eyebrow}</p>

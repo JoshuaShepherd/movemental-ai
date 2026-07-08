@@ -103,10 +103,10 @@ Drizzle Schema → Zod Schemas → Services → Routes → Hooks → UI
 - ❌ **NEVER** skip type exports - they are mandatory for type safety chain
 
 **Documentation**: 
-- **Master Guide**: `_docs/type/01_OVERVIEW.md` - Complete type safety architecture guide
-- **Platform Architecture**: `_docs/type/11_PLATFORM_ARCHITECTURE_AT_A_GLANCE.md` - Architecture overview
-- **Workflow Checklist**: `_docs/type/08_CHAIN_WORKFLOW_CHECKLIST.md` - Step-by-step workflow
-- Layer-specific guides: `_docs/type/{layer}.md` (e.g., `02_LAYER_1_DATABASE.md`, `03_LAYER_2_ZOD.md`)
+- **Master Guide**: `docs/type/01_OVERVIEW.md` - Complete type safety architecture guide
+- **Platform Architecture**: `docs/type/11_PLATFORM_ARCHITECTURE_AT_A_GLANCE.md` - Architecture overview
+- **Workflow Checklist**: `docs/type/08_CHAIN_WORKFLOW_CHECKLIST.md` - Step-by-step workflow
+- Layer-specific guides: `docs/type/{layer}.md` (e.g., `02_LAYER_1_DATABASE.md`, `03_LAYER_2_ZOD.md`)
 
 ### Multi-Tenant Architecture
 
@@ -119,7 +119,7 @@ Drizzle Schema → Zod Schemas → Services → Routes → Hooks → UI
 - **Layer 5 (Hooks)**: Tenant context passed through API calls
 - **Layer 6 (UI)**: UI never directly accesses tenant—it's handled automatically
 
-**See**: `_docs/type/09_MULTI_TENANT_NOTES.md` for detailed tenant scoping information.
+**See**: `docs/type/09_MULTI_TENANT_NOTES.md` for detailed tenant scoping information.
 
 ### Security Guardrails
 - NEVER expose `SUPABASE_SERVICE_ROLE_KEY` or other service keys client-side
@@ -430,16 +430,16 @@ When debugging errors, ALWAYS combine:
 #### MCP Documentation References
 
 **Single Source of Truth:**
-- `_docs/type/01_OVERVIEW.md` - Complete type safety architecture guide
-- `_docs/type/11_PLATFORM_ARCHITECTURE_AT_A_GLANCE.md` - Architecture overview
-- `_docs/type/08_CHAIN_WORKFLOW_CHECKLIST.md` - Step-by-step workflow
-- `_docs/type/02_LAYER_1_DATABASE.md` - Layer 1 requirements
-- `_docs/type/03_LAYER_2_ZOD.md` - Layer 2 requirements
-- `_docs/type/04_LAYER_3_SERVICES.md` - Layer 3 requirements (if exists)
-- `_docs/type/05_LAYER_4_ROUTES.md` - Layer 4 requirements (if exists)
-- `_docs/type/06_LAYER_5_HOOKS.md` - Layer 5 requirements (if exists)
-- `_docs/type/07_LAYER_6_UI.md` - Layer 6 requirements (if exists)
-- `_docs/type/09_MULTI_TENANT_NOTES.md` - Multi-tenant architecture details
+- `docs/type/01_OVERVIEW.md` - Complete type safety architecture guide
+- `docs/type/11_PLATFORM_ARCHITECTURE_AT_A_GLANCE.md` - Architecture overview
+- `docs/type/08_CHAIN_WORKFLOW_CHECKLIST.md` - Step-by-step workflow
+- `docs/type/02_LAYER_1_DATABASE.md` - Layer 1 requirements
+- `docs/type/03_LAYER_2_ZOD.md` - Layer 2 requirements
+- `docs/type/04_LAYER_3_SERVICES.md` - Layer 3 requirements (if exists)
+- `docs/type/05_LAYER_4_ROUTES.md` - Layer 4 requirements (if exists)
+- `docs/type/06_LAYER_5_HOOKS.md` - Layer 5 requirements (if exists)
+- `docs/type/07_LAYER_6_UI.md` - Layer 6 requirements (if exists)
+- `docs/type/09_MULTI_TENANT_NOTES.md` - Multi-tenant architecture details
 
 **When to reference type safety docs:**
 - ✅ Before making any schema changes
@@ -468,7 +468,7 @@ When debugging errors, ALWAYS combine:
    - Verify tenant boundaries
 
 3. **FOLLOW TYPE SAFETY CHAIN** (for type errors)
-   - Read `_docs/type/01_OVERVIEW.md`
+   - Read `docs/type/01_OVERVIEW.md`
    - Run validation commands bottom-up (or check TypeScript compilation)
    - Fix from Layer 1 → Layer 6
    - Validate each layer before proceeding
@@ -719,7 +719,7 @@ npx shadcn@latest add [component]  # Add new UI components
 - Store tenant context in request/response cycle
 - Never expose tenant switching in UI (unless admin feature)
 
-**See**: `_docs/type/09_MULTI_TENANT_NOTES.md` for detailed tenant scoping information.
+**See**: `docs/type/09_MULTI_TENANT_NOTES.md` for detailed tenant scoping information.
 
 ## Collaboration Guidelines
 
@@ -823,10 +823,10 @@ npx shadcn@latest add [component]  # Add new UI components
 ## Documentation References
 
 ### Type Safety Architecture
-- `_docs/type/01_OVERVIEW.md` - Complete type safety architecture guide
-- `_docs/type/11_PLATFORM_ARCHITECTURE_AT_A_GLANCE.md` - Architecture overview
-- `_docs/type/08_CHAIN_WORKFLOW_CHECKLIST.md` - Step-by-step workflow
-- `_docs/type/09_MULTI_TENANT_NOTES.md` - Multi-tenant architecture details
+- `docs/type/01_OVERVIEW.md` - Complete type safety architecture guide
+- `docs/type/11_PLATFORM_ARCHITECTURE_AT_A_GLANCE.md` - Architecture overview
+- `docs/type/08_CHAIN_WORKFLOW_CHECKLIST.md` - Step-by-step workflow
+- `docs/type/09_MULTI_TENANT_NOTES.md` - Multi-tenant architecture details
 
 ### Business Documentation
 - `_docs/business-docs/` - Comprehensive business and product documentation
@@ -867,8 +867,8 @@ npm run ui:check              # Layer 6: UI components validation
 - `src/app/api/` or `app/api/` - Layer 4: API routes
 - `src/hooks/simplified/` - Layer 5: React hooks
 - `src/components/` or `components/` - Layer 6: UI components
-- `_docs/type/01_OVERVIEW.md` - Complete master guide (Single Source of Truth)
-- `_docs/type/11_PLATFORM_ARCHITECTURE_AT_A_GLANCE.md` - Architecture overview
+- `docs/type/01_OVERVIEW.md` - Complete master guide (Single Source of Truth)
+- `docs/type/11_PLATFORM_ARCHITECTURE_AT_A_GLANCE.md` - Architecture overview
 
 ### Important URLs
 - Development: http://localhost:3000

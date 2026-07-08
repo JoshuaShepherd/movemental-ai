@@ -188,6 +188,7 @@ These were not stray definitions — each had a full Drizzle table, Zod schema, 
 - `type-safety-chain` skill — bootstrap / verify / repair the chain.
 - `docs-type-safety` skill — keeping this documentation in sync.
 - `supabase-security-audit` skill — RLS / auth posture on the shared DB.
+- **Layer-by-layer guides:** [`../type/README.md`](../type/README.md) — `01_OVERVIEW` through `07_LAYER_6_UI`, workflow checklist, validation snapshot.
 - Cross-repo canon: `alan-hirsch/docs/architecture/TYPE_SAFETY_CHAIN.md`,
   `movemental-visual-editor-main/docs/architecture/TYPE_SAFETY_CHAIN.md`.
 - This repo's design-system rules (orthogonal to the type chain): `docs/design/DESIGN.md`.

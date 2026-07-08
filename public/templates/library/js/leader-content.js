@@ -364,7 +364,7 @@
     }
   }
 
-  /** Validate required top-level keys. Logs warnings for missing keys. Align with _docs/type/ and leader-config.schema.json (13 keys). */
+  /** Validate required top-level keys. Logs warnings for missing keys. Align with docs/type/ and leader-config.schema.json (13 keys). */
   function validateConfig(config) {
     var required = ['id', 'name', 'tagline', 'hero', 'portrait', 'themes', 'contentLibrary', 'libraryCards', 'books', 'pageTitles', 'pageCopy', 'art', 'images'];
     var missing = required.filter(function (k) { return !(k in config); });
