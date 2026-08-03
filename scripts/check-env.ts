@@ -81,11 +81,16 @@ function warnProductionComms(): void {
   if (process.env.VERCEL_ENV !== "production") return;
   const gaps: string[] = [];
   if (!process.env.RESEND_API_KEY) gaps.push("RESEND_API_KEY");
+  if (!process.env.RESEND_FROM_EMAIL) gaps.push("RESEND_FROM_EMAIL");
   if (!process.env.TENANT_ORG_ID) gaps.push("TENANT_ORG_ID");
   if (!process.env.NEXT_PUBLIC_SITE_URL) gaps.push("NEXT_PUBLIC_SITE_URL");
   if (!process.env.CONTACT_NOTIFY_EMAIL) gaps.push("CONTACT_NOTIFY_EMAIL (optional but recommended)");
   if (!process.env.NEWSLETTER_UNSUBSCRIBE_SECRET) {
     gaps.push("NEWSLETTER_UNSUBSCRIBE_SECRET (optional — one-click unsubscribe in confirmation email)");
+  }
+  const from = process.env.RESEND_FROM_EMAIL ?? "";
+  if (from.endsWith("@resend.dev")) {
+    gaps.push("RESEND_FROM_EMAIL still on resend.dev — use a verified production domain");
   }
   if (gaps.length === 0) return;
   console.warn("⚠️  VERCEL_ENV=production: review comms env before go-live:");
