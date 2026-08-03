@@ -73,6 +73,7 @@ export async function createCheckoutSession(
         },
       ],
       metadata: {
+        type: "safestart",
         enrollment_id: enrollmentId,
         safety_plan: SAFETY_ENROLLMENT_PLAN,
       },
