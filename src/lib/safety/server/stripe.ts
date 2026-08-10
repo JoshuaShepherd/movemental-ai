@@ -73,6 +73,7 @@ export async function createCheckoutSession(
         },
       ],
       metadata: {
+        type: "safestart",
         enrollment_id: enrollmentId,
         safety_plan: SAFETY_ENROLLMENT_PLAN,
       },
@@ -132,8 +133,13 @@ export async function handleStripeWebhook(
   const session = parsed.data;
   const enrollmentId = session.metadata.enrollment_id;
 
-  if (!assertEnrollmentAmount(session.amount_total ?? SAFETY_ENROLLMENT_AMOUNT_CENTS)) {
+  // Fail closed: never treat a missing amount_total as the expected price.
+  if (!assertEnrollmentAmount(session.amount_total)) {
     return err("amount_mismatch", "Checkout amount does not match SafeStart price.");
+  }
+
+  if (session.payment_status && session.payment_status !== "paid") {
+    return err("payment_incomplete", "Checkout session is not paid yet.");
   }
 
   const paymentIntentId =
