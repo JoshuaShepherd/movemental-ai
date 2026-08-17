@@ -6,6 +6,10 @@ export const runtime = "nodejs";
 
 /**
  * Stripe webhook — provisions SafeStart only on verified checkout.session.completed.
+ *
+ * Dashboard endpoint for THIS deployment must POST to `/api/webhooks/stripe`
+ * and enable at least `checkout.session.completed`. Signature verification runs
+ * before any business logic (`constructEvent` + raw body).
  */
 export async function POST(request: NextRequest) {
   const rawBody = await request.text();
@@ -17,7 +21,7 @@ export async function POST(request: NextRequest) {
       result.error.code === "invalid_signature" || result.error.code === "missing_signature"
         ? 400
         : result.error.code === "stripe_unconfigured"
-          ? 503
+          ? 501
           : 500;
     return NextResponse.json({ error: result.error }, { status });
   }
