@@ -20,8 +20,9 @@ const REQUIRED_CORE = [
 
 const COMMS_RECOMMENDED = [
   { key: "RESEND_API_KEY", note: "Transactional email (contact, newsletter, book)" },
-  { key: "RESEND_FROM_EMAIL", note: "Verified domain sender in Resend" },
-  { key: "NEXT_PUBLIC_SITE_URL", note: "Canonical URLs in emails and redirects" },
+  { key: "RESEND_FROM_EMAIL", note: "Verified domain sender in Resend (not onboarding@resend.dev in prod)" },
+  { key: "RESEND_FROM_NAME", note: "From display name (defaults to Movemental in code if unset)" },
+  { key: "NEXT_PUBLIC_SITE_URL", note: "Canonical URLs in emails and redirects (prod: https://movemental.ai)" },
   { key: "TENANT_ORG_ID", note: "Required for /api/newsletter (503 without)" },
   { key: "CONTACT_NOTIFY_EMAIL", note: "Optional team inbox for /api/contact" },
   { key: "NEWSLETTER_UNSUBSCRIBE_SECRET", note: "Min 16 chars — one-click unsubscribe links in confirmation mail" },
