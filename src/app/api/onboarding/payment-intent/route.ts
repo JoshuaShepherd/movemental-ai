@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
   });
 
   if (!result.success) {
-    const status = result.error.code === "stripe_unconfigured" ? 503 : 400;
+    const status = result.error.code === "stripe_unconfigured" ? 501 : 400;
     return NextResponse.json({ error: result.error }, { status });
   }
 
