@@ -1,3 +1,5 @@
+import "server-only";
+
 import { env } from "@/lib/env";
 import { resendFromHeader } from "@/lib/email/from";
 import { getResend } from "@/lib/email/resend";
@@ -8,7 +10,12 @@ export async function sendPublicPageRatifiedEmail(input: {
   publicPath: string;
 }): Promise<void> {
   const resend = getResend();
-  if (!resend) return;
+  if (!resend) {
+    console.warn(
+      "[public-page-ratified] RESEND_API_KEY not set; skipping notification email.",
+    );
+    return;
+  }
   const base = env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://movemental.ai";
   const url = `${base}${input.publicPath}`;
   await resend.emails.send({
@@ -23,7 +30,7 @@ export async function sendPublicPageRatifiedEmail(input: {
       "",
       "You can update or unpublish it any time from your Movemental workspace under Public page.",
       "",
-      ",  Movemental",
+      "— Movemental",
     ].join("\n"),
   });
 }

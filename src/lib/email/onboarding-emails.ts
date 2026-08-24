@@ -1,12 +1,8 @@
 import "server-only";
 
+import { resendFromHeader } from "@/lib/email/from";
 import { getResend } from "@/lib/email/resend";
 import { env } from "@/lib/env";
-
-function movementalFrom(): string {
-  const email = env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
-  return `Movemental <${email}>`;
-}
 
 function siteUrl(): string {
   return env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://movemental.ai";
@@ -18,7 +14,7 @@ export async function sendOnboardingWelcomeEmail(toEmail: string, firstName: str
   const name = firstName?.trim() || "there";
   const dashboardUrl = `${siteUrl()}/dashboard`;
   await resend.emails.send({
-    from: movementalFrom(),
+    from: resendFromHeader(),
     replyTo: "hello@movemental.ai",
     to: toEmail,
     subject: "Welcome to Movemental, let's get started",
@@ -45,7 +41,7 @@ export async function sendOnboardingPhase1CompleteEmail(
   const name = firstName?.trim() || "there";
   const welcomeUrl = `${siteUrl()}/welcome`;
   await resend.emails.send({
-    from: movementalFrom(),
+    from: resendFromHeader(),
     replyTo: "hello@movemental.ai",
     to: toEmail,
     subject: "Thanks, your engagement is confirmed",
@@ -67,7 +63,7 @@ export async function sendCorpusReadyEmail(toEmail: string, firstName: string | 
   const name = firstName?.trim() || "there";
   const url = `${siteUrl()}/onboarding/corpus`;
   await resend.emails.send({
-    from: movementalFrom(),
+    from: resendFromHeader(),
     replyTo: "hello@movemental.ai",
     to: toEmail,
     subject: "Your research corpus is ready for review",
@@ -89,7 +85,7 @@ export async function sendAgentReadyEmail(toEmail: string, firstName: string | n
   const name = firstName?.trim() || "there";
   const url = `${siteUrl()}/onboarding/agent`;
   await resend.emails.send({
-    from: movementalFrom(),
+    from: resendFromHeader(),
     replyTo: "hello@movemental.ai",
     to: toEmail,
     subject: "Your AI agent is ready to test",
@@ -114,7 +110,7 @@ export async function sendOnboardingPhase2ReminderEmail(
   const name = firstName?.trim() || "there";
   const welcomeUrl = `${siteUrl()}/welcome`;
   await resend.emails.send({
-    from: movementalFrom(),
+    from: resendFromHeader(),
     replyTo: "hello@movemental.ai",
     to: toEmail,
     subject: "Reminder, continue your Movemental onboarding",
@@ -140,7 +136,7 @@ export async function sendPreCohortOnboardingReminderEmail(
   const name = firstName?.trim() || "there";
   const welcomeUrl = `${siteUrl()}/welcome`;
   await resend.emails.send({
-    from: movementalFrom(),
+    from: resendFromHeader(),
     replyTo: "hello@movemental.ai",
     to: toEmail,
     subject: `Reminder, cohort starts ${cohortStartLabel}`,
@@ -165,7 +161,7 @@ export async function sendOnboardingCompletedEmail(
   if (!resend) return;
   const name = firstName?.trim() || "there";
   await resend.emails.send({
-    from: movementalFrom(),
+    from: resendFromHeader(),
     replyTo: "hello@movemental.ai",
     to: toEmail,
     subject: `You are fully onboarded, see you ${cohortDateLabel}`,
