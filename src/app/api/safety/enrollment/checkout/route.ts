@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
   if (!result.success) {
     const status =
       result.error.code === "stripe_unconfigured"
-        ? 503
+        ? 501
         : result.error.code === "not_found"
           ? 404
           : 400;

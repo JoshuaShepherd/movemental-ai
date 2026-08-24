@@ -121,7 +121,11 @@ export const markRolloutReadySchema = z.object({
 export const stripeCheckoutSessionCompletedSchema = z.object({
   id: z.string(),
   payment_intent: z.union([z.string(), z.object({ id: z.string() })]).nullable().optional(),
+  /** Prefer `paid` before provisioning; async methods may complete unpaid. */
+  payment_status: z.enum(["paid", "unpaid", "no_payment_required"]).optional(),
   metadata: z.object({
+    /** Stable product surface discriminator for webhook routing. */
+    type: z.literal("safestart").optional(),
     enrollment_id: z.string().uuid(),
     safety_plan: z.literal("safestart").optional(),
   }),
