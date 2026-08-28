@@ -12,9 +12,10 @@ Inventory of **image URLs referenced in this repo** (`src/`, `public/`, `docs/ai
 
 | Description | URL path (append to base) |
 |-------------|---------------------------|
-| Movemental wordmark / logo — transparent PNG (`site-header` light branch) | `logos/movemental-logo-transparent.png` |
-| Movemental logo — transparent white WebP (header on dark / midnight bar) | `logos/movemental-logo-transparent-white.webp` |
-| Movemental wordmark — transparent WebP (`site-logo` default / light) | `logos/movemental-logo-transparent.webp` |
+| Movemental wordmark — light mode (dark ink, blue O) | `logos/movemental-logo-light.webp` |
+| Movemental wordmark — dark mode (white ink, blue O) | `logos/movemental-logo-dark.webp` |
+| Movemental wordmark — light PNG | `logos/movemental-logo-light.png` |
+| Movemental wordmark — dark PNG | `logos/movemental-logo-dark.png` |
 | Alan Hirsch headshot / portrait | `voices/alan-hirsch.webp` |
 | Brad Brisco headshot | `voices/brad-brisco.webp` |
 | JR Woodward headshot | `voices/jr-woodward.webp` |
