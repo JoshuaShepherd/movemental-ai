@@ -19,7 +19,7 @@ export function MovementalLogo({ className, priority }: MovementalLogoProps) {
         height={MOVEMENTAL_LOGO.height}
         priority={priority}
         sizes="(max-width: 768px) 560px, 720px"
-        className={cn("h-[clamp(6rem,13.6vw,7rem)] w-auto dark:hidden", className)}
+        className={cn("h-[clamp(3.5rem,9.5vw,4.85rem)] w-auto dark:hidden", className)}
       />
       <Image
         src={MOVEMENTAL_LOGO.darkSrc}
@@ -28,7 +28,7 @@ export function MovementalLogo({ className, priority }: MovementalLogoProps) {
         height={MOVEMENTAL_LOGO.height}
         priority={priority}
         sizes="(max-width: 768px) 560px, 720px"
-        className={cn("hidden h-[clamp(6rem,13.6vw,7rem)] w-auto dark:block", className)}
+        className={cn("hidden h-[clamp(3.5rem,9.5vw,4.85rem)] w-auto dark:block", className)}
       />
     </span>
   );

@@ -5,7 +5,7 @@ export const MOVEMENTAL_LOGO_DARK_SRC = "/images/brand/movemental-logo-dark.webp
 export const MOVEMENTAL_LOGO = {
   lightSrc: MOVEMENTAL_LOGO_LIGHT_SRC,
   darkSrc: MOVEMENTAL_LOGO_DARK_SRC,
-  width: 1021,
-  height: 135,
+  width: 1024,
+  height: 291,
   alt: "Movemental",
 } as const;
