@@ -5,6 +5,7 @@ import {
   ARTICLE_SHAPES,
   articleFrontmatterSchema,
   type ArticleShape,
+  type ArticleStatus,
   type CanonSection,
   type Audience,
   type Topic,
@@ -73,6 +74,7 @@ export type ArticleSummary = {
   eyebrow: string;
   readTime: string;
   shape: ArticleShape;
+  status: ArticleStatus;
   deck: string | null;
   author: string;
   publishedAt: string | null;
@@ -344,11 +346,19 @@ function parseArticle(slug: string, raw: string): Article {
       ? "sandbox"
       : "story";
 
+  const status: ArticleStatus =
+    fm.status === "published"
+      ? "published"
+      : fm.status === "eeat-candidate"
+        ? "eeat-candidate"
+        : "draft";
+
   return {
     slug,
     title,
     eyebrow: shapeEyebrow(shape),
     shape,
+    status,
     deck: fm.deck ?? null,
     author: fm.author ?? "Movemental",
     publishedAt: fm.published_at ?? null,
@@ -370,8 +380,8 @@ function parseArticle(slug: string, raw: string): Article {
   };
 }
 
-/** All publishable article slugs, discovered from the filesystem at build time. */
-export function listArticleSlugs(): string[] {
+/** All raw article slugs discovered from the filesystem at build time. */
+function listRawArticleSlugs(): string[] {
   const rootSlugs = fs
     .readdirSync(ARTICLES_DIR)
     .filter((name) => name.endsWith(".md") && !name.startsWith("_"))
@@ -388,6 +398,7 @@ function toSummary(article: Article): ArticleSummary {
     eyebrow: article.eyebrow,
     readTime: article.readTime,
     shape: article.shape,
+    status: article.status,
     deck: article.deck,
     author: article.author,
     publishedAt: article.publishedAt,
@@ -411,7 +422,7 @@ let _cache: { articles: Article[]; loaded: boolean } = { articles: [], loaded: f
 function loadAll(): Article[] {
   if (_cache.loaded) return _cache.articles;
   const out: Article[] = [];
-  for (const slug of listArticleSlugs()) {
+  for (const slug of listRawArticleSlugs()) {
     try {
       out.push(parseArticle(slug, readArticleFile(slug)));
     } catch {
@@ -422,19 +433,26 @@ function loadAll(): Article[] {
   return out;
 }
 
-/** Full articles (body + TOC). Used by collection helpers. */
-export function listArticlesFull(): Article[] {
-  return loadAll();
+/** Full articles (body + TOC). By default only returns published articles. */
+export function listArticlesFull(options?: { includeDrafts?: boolean }): Article[] {
+  const all = loadAll();
+  if (options?.includeDrafts) return all;
+  return all.filter((a) => a.status === "published");
+}
+
+/** All published article slugs, discovered from the filesystem and filtered by published status. */
+export function listArticleSlugs(options?: { includeDrafts?: boolean }): string[] {
+  return listArticlesFull(options).map((a) => a.slug);
 }
 
 /** Summaries for the library / continue-reading cards. */
-export function listArticles(): ArticleSummary[] {
-  return loadAll().map(toSummary);
+export function listArticles(options?: { includeDrafts?: boolean }): ArticleSummary[] {
+  return listArticlesFull(options).map(toSummary);
 }
 
 /** Summaries plus archive metadata (mtime, chip category). */
-export function listArticlesForArchive(): ArticleArchiveEntry[] {
-  return loadAll().map((article) => {
+export function listArticlesForArchive(options?: { includeDrafts?: boolean }): ArticleArchiveEntry[] {
+  return listArticlesFull(options).map((article) => {
     const stat = fs.statSync(articleFilePath(article.slug));
     return {
       ...toSummary(article),
@@ -444,11 +462,18 @@ export function listArticlesForArchive(): ArticleArchiveEntry[] {
   });
 }
 
-/** Full article (body + TOC). Returns null when the slug is excluded or missing. */
-export function getArticle(slug: string): Article | null {
+/** Full article (body + TOC). Returns null when the slug is excluded, missing, or not published (unless includeDrafts is true). */
+export function getArticle(
+  slug: string,
+  options?: { includeDrafts?: boolean },
+): Article | null {
   if (EXCLUDED_SLUGS.has(slug)) return null;
   try {
-    return parseArticle(slug, readArticleFile(slug));
+    const article = parseArticle(slug, readArticleFile(slug));
+    if (article.status !== "published" && !options?.includeDrafts) {
+      return null;
+    }
+    return article;
   } catch {
     return null;
   }

@@ -51,6 +51,9 @@ export const SERIES_KEYS = [
 ] as const;
 export type SeriesKey = (typeof SERIES_KEYS)[number];
 
+export const ARTICLE_STATUSES = ["draft", "published", "eeat-candidate"] as const;
+export type ArticleStatus = (typeof ARTICLE_STATUSES)[number];
+
 const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "must be YYYY-MM-DD");
 
 export const articleFrontmatterSchema = z
@@ -58,6 +61,7 @@ export const articleFrontmatterSchema = z
     title: z.string().min(4),
     slug: z.string().min(2).optional(),
     shape: z.enum(ARTICLE_SHAPES),
+    status: z.enum(ARTICLE_STATUSES).catch("draft").default("draft"),
     deck: z.string().min(10).max(280).optional(),
     author: z.string().min(2).default("Movemental"),
     published_at: isoDate.optional(),
